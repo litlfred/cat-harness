@@ -1,0 +1,34 @@
+{
+  "$schema": "folio-referenced-source/v1",
+  "identity": {
+    "title": "Eye Tracking Experiments on Process Model Comprehension: Lessons Learned",
+    "version": "LNBIP 287",
+    "document_number": "doi:10.1007/978-3-319-59466-8_10",
+    "date": "2017-05",
+    "publisher": "Springer (BPMDS 2017 / EMMSAD 2017, LNBIP 287:153-168)"
+  },
+  "source": {
+    "file": "zimoch-2017-eye-tracking-lessons-learned.pdf",
+    "sha256": "18bb5ce57faef8ea3ea34dbba6dde0e9fc1b0ce260f632630e892bcb8bb23da2",
+    "bytes": 1822238,
+    "mtime": "2026-10-31T10:22:51Z",
+    "mimetype_sniffed": "application/pdf",
+    "mimetype_source": "magic-bytes"
+  },
+  "outline": [],
+  "outline_source": "none",
+  "materialization": {
+    "$schema": "folio-materialization/v1",
+    "state": "referenced",
+    "provenance": {
+      "upstream": {
+        "url": "https://web.archive.org/web/20220303111342id_/http://dbis.eprints.uni-ulm.de/1505/1/2017_BPMDS_Zimoch2_dbis.pdf"
+      }
+    },
+    "note": "Text withheld by licence; the bytes identified by `source.sha256` were read once to take this record."
+  },
+  "withheld": {
+    "what": "all text, figures and tables",
+    "why": "Publisher copyright (Springer International Publishing AG, BPMDS 2017, LNBIP 287:153-168, doi:10.1007/978-3-319-59466-8_10); institutional eprint lacks an open redistribution licence. Recorded as bibliographic reference with structured empirical notes only."
+  }
+}

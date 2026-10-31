@@ -2866,6 +2866,354 @@
         "saw": "Figure 22 on page 34: Comparison of CodeAgent-3.5 and CodeAgent-4.0",
         "draft": "Figure 22: Comparison of review dialogue between CodeAgent-3.5 and CodeAgent-4.0 on a Java project commit."
       }
+    },
+    "arxiv-2106.12880v1": {
+      "img-p003-1": {
+        "role": "figure",
+        "saw": "Figure 1 on page 3 showing the progression from Communication Theory to CMQF to PMCF with green contribution, red emerging issue, and blue focus boxes.",
+        "draft": "Figure 1: Theoretical Fundamentals and their focus. Shows a three-stage progression from Communication Theory (Contribution: Process Model Comprehension as a Process of Signal Transmission; Issue: Occurrence of Noise; Focus: Holistic Consideration of Quality) to Conceptual Modeling Quality Framework (CMQF; Contribution: Holistic Consideration of Quality in Process Model Comprehension; Issue: Missing Explicit Perspectives; Focus: Perspectives of Process Modelers and Readers) to Process Model Comprehension Framework (PMCF; Contribution: Comprehensive Overview of Quality in Process Model Comprehension; Issue: Quantification and Measurement of Quality; Focus: Evaluation Theory Tree (ETT))."
+      },
+      "img-p004-1": {
+        "role": "figure",
+        "saw": "Figure 2 on page 4 depicting Communication Theory applied to process modeling from Process Modeler (Encoding) through Process Model (Medium) to Process Reader (Decoding) with Noise sources.",
+        "draft": "Figure 2: Communication Theory applied to process models. Depicts the Process Modeler (Transmitter) encoding process information using an Alphabet and Grammar into a Process Model (Medium), which is decoded by the Process Reader (Receiver) via Visual Perception and Comprehension, while Noise sources (Conception, Language, Intention, Expertise) perturb encoding, the medium, and decoding."
+      },
+      "img-p005-1": {
+        "role": "figure",
+        "saw": "Figure 3 on page 5 depicting the Conceptual Modeling Quality Framework (CMQF) 2x4 grid of Physical/Cognitive Reality across Domain, Model, Language, and Representation.",
+        "draft": "Figure 3: Conceptual Modeling Quality Framework (CMQF). Displays a 2x4 matrix crossing Physical Reality (Domain D, Conceptual Model M, Modeling Language L, External Representation R) and Cognitive Reality (Domain Knowledge D_K, Model Knowledge M_K, Language Knowledge L_K, Representation Knowledge R_K), connected by color-coded arrows representing the Physical (red), Knowledge (green), Learning (purple), and Development (blue) quality layers."
+      },
+      "img-p006-1": {
+        "role": "figure",
+        "saw": "Figure 4 on page 6 depicting the Process Model Comprehension Framework (PMCF) separating Process Modeler and Process Reader cognitive perspectives across Physical (P1-P6), Knowledge (K1-K7), Learning (L1-L4), and Development (D1-D4) quality types.",
+        "draft": "Figure 4: Process Model Comprehension Framework (PMCF). Extends CMQF by splitting Cognitive Reality into separate Process Modeler and Process Reader perspectives across Process Domain Knowledge, Process Model Knowledge, Process Modeling Language Knowledge, and Process Model Representation Knowledge, connected to Physical Reality (Process Domain, Process Model, Process Modeling Language, Process Model Representation) via labelled quality types P1-P6 (Physical Layer), K1-K7 (Knowledge Layer), L1-L4 (Learning Layer), and D1-D4 (Development Layer)."
+      },
+      "img-p007-1": {
+        "role": "figure",
+        "saw": "Figure 5 on page 7 showing an excerpt of the Evaluation Theory Tree (ETT) decomposing Modeler and Reader perspectives into Quality Criteria and leaf Quality Metrics.",
+        "draft": "Figure 5: Excerpt from the Evaluation Theory Tree (ETT). Shows the hierarchical decomposition of Process Model Comprehension into two Perspectives (Modeler and Reader), eight Quality Criteria (Modeling Process, Domain, Model, Language, Representation, Comprehension, Learning, Perception), and leaf Quality Metrics (e.g., Modeler Documentation Expertise, Creation Duration, Syntactic Validity, Vocabulary Size, Number of Start Events, Flesch Reading Ease Score, Visually Perceivable Loops)."
+      }
+    },
+    "arxiv-1511-04055v1": {
+      "img-p003-1": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 1 on page 3: Dotted Chart for a full event log with multiple PPM instances.",
+        "draft": "Figure 1(a): Dotted Chart for a full event log containing multiple Process of Process Modeling (PPM) instances, where each horizontal line represents the modeling operations of one modeler over time."
+      },
+      "img-p003-2": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 1 on page 3: Dotted Chart for a transformed partial event log of a single PPM instance.",
+        "draft": "Figure 1(b): Dotted Chart for a transformed partial event log containing events of a single PPM instance, where each horizontal line represents operations on a distinct process model element over time."
+      },
+      "img-p005-1": {
+        "role": "figure",
+        "saw": "Figure 2 on page 5 illustrating a modeler constructing a BPMN diagram on a canvas and the recorded event log attributes (Operation, Element, Time).",
+        "draft": "Figure 2: The process of process modeling and the attributes of the captured data, showing a modeler placing activities, events, gateways, and edges on a canvas alongside the captured event table (Operation, Element, Time)."
+      },
+      "img-p006-1": {
+        "role": "figure",
+        "saw": "Top panel of Figure 3 on page 6: PPMChart with absolute timestamps on the horizontal axis and highlighted initial operations box.",
+        "draft": "Figure 3 (top panel): PPMChart visualization of the events in the construction of one process model by one modeler plotted against time (with a dashed highlight rectangle around the initial left-hand model construction operations)."
+      },
+      "img-p006-2": {
+        "role": "figure",
+        "saw": "Bottom panel of Figure 3 on page 6: PPMChart with logical operation sequence index (one column per operation) on the horizontal axis.",
+        "draft": "Figure 3 (bottom panel): PPMChart visualization of the same modeling session plotted with logical relative time (one column per consecutive operation) on the horizontal axis, revealing the sequential creation of elements 1-14 inside the highlighted rectangle."
+      },
+      "img-p006-3": {
+        "role": "figure",
+        "saw": "Figure 4 on page 6: resulting BPMN process model with numbered black circles (1-33) identifying model element creation order.",
+        "draft": "Figure 4: Process model in BPMN notation resulting from the modeling process in Figure 3, annotated with numbered black circles (1 to 33) indicating each element's identifier for comparison with the highlighted region of Figure 3."
+      },
+      "img-p007-1": {
+        "role": "figure",
+        "saw": "Top panel of Figure 5 on page 7: ProM 6 screenshot of the PPMChart window showing unfiltered event dots and configuration controls.",
+        "draft": "Figure 5 (top panel): Screenshot of the PPMChart Analysis plug-in window in ProM 6 for Model 2012-184 showing unfiltered create, move, delete, and rename operations alongside filter and sort controls."
+      },
+      "img-p007-2": {
+        "role": "figure",
+        "saw": "Bottom panel of Figure 5 on page 7: ProM 6 screenshot of the PPMChart window with operations filtered and sorted.",
+        "draft": "Figure 5 (bottom panel): Screenshot of the PPMChart Analysis plug-in window in ProM 6 for Model 2012-184 illustrating the effect of filtering out selected operation types and re-sorting the element timelines."
+      },
+      "img-p009-1": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 6 on page 9 (right column): BPMN snippet annotated with Create order from start numbers.",
+        "draft": "Figure 6(b): BPMN model fragment illustrating the 'Create order from start' sort option in the PPMChart implementation, with black circle annotations indicating creation order alongside topological distance."
+      },
+      "img-p009-2": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 6 on page 9 (left column): BPMN snippet annotated with Distance from start numbers.",
+        "draft": "Figure 6(a): BPMN model fragment illustrating the 'Distance from start' sort option in the PPMChart implementation, with white-on-black and outlined circle annotations showing shortest path distance from the start event and creation order."
+      },
+      "vfig-p009": {
+        "role": "decorative",
+        "saw": "Vector-drawn legend table for Table 2 on page 9 showing colored rectangles, circles, diamonds, and triangles for Create/Move/Delete/Rename and Activity/Event/Gateway/Edge.",
+        "draft": "Table 2 visual key on page 9: Default colors (Green=Create, Blue=Move, Red=Delete, Orange=Rename), shapes (Rectangle=Activity, Circle=Event, Diamond=Gateway, Triangle=Edge), and color shades (Bright, Very light, Dark, Light) of the PPMChart Analysis plug-in."
+      },
+      "img-p011-1": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 7 on page 11: PPMChart for Model 2010-318 showing scattered red delete dots.",
+        "draft": "Figure 7(a): PPMChart for Model 2010-318 illustrating scattered delete operations (red dots) occurring throughout the modeling session (moves and renames hidden)."
+      },
+      "img-p011-2": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 7 on page 11: PPMChart for Model 2010-213 showing simultaneous vertical columns of red delete dots.",
+        "draft": "Figure 7(b): PPMChart for Model 2010-213 illustrating simultaneous delete operations (vertical alignments of red dots where whole model chunks are removed at once)."
+      },
+      "img-p012-1": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 8 on page 12: PPMChart for Model 2010-312 showing very few blue move operations.",
+        "draft": "Figure 8(a): PPMChart for Model 2010-312 illustrating a modeling session with very few movement operations (blue dots)."
+      },
+      "img-p012-2": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 8 on page 12: PPMChart for Model 2010-210 showing blue move dots positioned immediately after green create dots.",
+        "draft": "Figure 8(b): PPMChart for Model 2010-210 illustrating movement operations (blue dots) occurring close to element creation (green dots)."
+      },
+      "img-p012-3": {
+        "role": "figure",
+        "saw": "Panel (c) of Figure 8 on page 12: PPMChart for Model 2010-170 showing blue move operations concentrated at the end of the session.",
+        "draft": "Figure 8(c): PPMChart for Model 2010-170 illustrating movement operations (blue dots) concentrated near the end of the modeling process for final layout cleanup."
+      },
+      "img-p012-4": {
+        "role": "figure",
+        "saw": "Panel (d) of Figure 8 on page 12: PPMChart for Model 2010-228 showing scattered blue move operations across timelines.",
+        "draft": "Figure 8(d): PPMChart for Model 2010-228 illustrating movement operations (blue dots) scattered throughout the modeling session."
+      },
+      "img-p013-1": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 9 on page 13: PPMChart for Model 2010-367 showing non-crossing diagonal create blocks.",
+        "draft": "Figure 9(a): PPMChart for Model 2010-367 illustrating aspect-oriented creation order where activities and gateways are created in separate non-crossing blocks before edges."
+      },
+      "img-p013-2": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 9 on page 13: PPMChart for Model 2010-237 showing interleaved creation of activities, gateways, and edges.",
+        "draft": "Figure 9(b): PPMChart for Model 2010-237 illustrating flow-oriented creation where edges are drawn immediately while creating activities and gateways."
+      },
+      "img-p013-3": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 10 on page 13: PPMChart for Model 2010-106 sorted by first operation showing dark-green gateway dots in pairs.",
+        "draft": "Figure 10(a): PPMChart for Model 2010-106 (sorted by first operation, hiding edges, moves, deletes, and renames) showing dark-green gateway creation dots occurring in split/join pairs."
+      },
+      "img-p013-4": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 10 on page 13: PPMChart for Model 2010-361 sorted by first operation showing single gateway creations separated by activities.",
+        "draft": "Figure 10(b): PPMChart for Model 2010-361 (sorted by first operation) showing single dark-green split gateway creations followed by branch activities before the corresponding join gateway is created."
+      },
+      "img-p014-1": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 11 on page 14: PPMChart for Model 2010-201 with time in minutes showing chunked groups separated by pauses.",
+        "draft": "Figure 11(a): PPMChart for Model 2010-201 (time in minutes, hiding moves, deletes, and renames) illustrating chunked modeling where groups of elements are created between thinking pauses."
+      },
+      "img-p014-2": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 11 on page 14: PPMChart for Model 2010-189 with time in minutes showing distinct creation chunks.",
+        "draft": "Figure 11(b): PPMChart for Model 2010-189 (time in minutes) illustrating chunked modeling with distinct bursts of element creation delimited by pauses."
+      },
+      "img-p014-3": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 12 on page 14: PPMChart for Model 2010-258 showing a chaotic modeling pattern.",
+        "draft": "Figure 12(a): PPMChart for Model 2010-258 illustrating a chaotic process of process modeling with no clear regular creation or layout pattern."
+      },
+      "img-p014-4": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 12 on page 14: PPMChart for Model 2010-270 showing an unstructured, chaotic modeling pattern.",
+        "draft": "Figure 12(b): PPMChart for Model 2010-270 illustrating a chaotic process of process modeling with frequent interleaved additions, deletions, and movements."
+      },
+      "img-p015-1": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 13 on page 15: PPMChart for simple case Model 2010-354 showing aspect-oriented creation.",
+        "draft": "Figure 13(a): PPMChart for simple case Model 2010-354 showing an aspect-oriented element creation pattern."
+      },
+      "img-p015-2": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 13 on page 15: PPMChart for extensive case Model 2012-156 showing the same aspect-oriented pattern.",
+        "draft": "Figure 13(b): PPMChart for extensive case Model 2012-156 showing a similar aspect-oriented creation pattern on a larger model."
+      },
+      "img-p015-3": {
+        "role": "figure",
+        "saw": "Panel (c) of Figure 13 on page 15: PPMChart for simple case Model 2010-140 showing flow-oriented creation.",
+        "draft": "Figure 13(c): PPMChart for simple case Model 2010-140 showing a flow-oriented element creation pattern."
+      },
+      "img-p015-4": {
+        "role": "figure",
+        "saw": "Panel (d) of Figure 13 on page 15: PPMChart for extensive case Model 2012-136 showing the same flow-oriented pattern.",
+        "draft": "Figure 13(d): PPMChart for extensive case Model 2012-136 showing a similar flow-oriented creation pattern on a larger model."
+      },
+      "img-p016-1": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 14 on page 16: PPMChart for Model 2010-354 (first modeling effort of a modeler).",
+        "draft": "Figure 14(a): PPMChart for Model 2010-354 representing the first modeling effort of a modeler using an aspect-oriented style."
+      },
+      "img-p016-2": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 14 on page 16: PPMChart for Model 2010-355 (second modeling effort of the same modeler as 14a).",
+        "draft": "Figure 14(b): PPMChart for Model 2010-355 representing the second modeling effort of the same modeler as Figure 14(a), preserving the aspect-oriented style."
+      },
+      "img-p016-3": {
+        "role": "figure",
+        "saw": "Panel (c) of Figure 14 on page 16 and reused as Panel (c) of Figure 15 on page 17: PPMChart for Model 2010-140.",
+        "draft": "Figure 14(c) and Figure 15(c): PPMChart for Model 2010-140 showing a flow-oriented modeling pattern in the modeler's first modeling effort."
+      },
+      "img-p016-4": {
+        "role": "figure",
+        "saw": "Panel (d) of Figure 14 on page 16: PPMChart for Model 2010-141 (second modeling effort of the same modeler as 14c).",
+        "draft": "Figure 14(d): PPMChart for Model 2010-141 representing the second modeling effort of the same modeler as Figure 14(c), preserving the flow-oriented style."
+      },
+      "img-p017-2": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 15 on page 17: PPMChart for Model 2010-354 juxtaposed with its resulting BPMN model.",
+        "draft": "Figure 15(a): PPMChart for Model 2010-354 showing aspect-oriented creation (events and activities created first, followed by gateways and edges)."
+      },
+      "img-p017-3": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 15 on page 17: resulting BPMN process model for Model 2010-354.",
+        "draft": "Figure 15(b): Resulting BPMN process model for Model 2010-354 corresponding to the aspect-oriented PPMChart in Figure 15(a)."
+      },
+      "img-p017-4": {
+        "role": "figure",
+        "saw": "Panel (d) of Figure 15 on page 17: resulting BPMN process model for Model 2010-140.",
+        "draft": "Figure 15(d): Resulting BPMN process model for Model 2010-140 corresponding to the flow-oriented PPMChart in Figure 15(c)."
+      },
+      "img-p022-1": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 16 on page 22: Modeling Phase Diagram (comprehension, modeling, reconciliation phases over time).",
+        "draft": "Figure 16(a): Modeling Phase Diagram for a PPM instance plotting cumulative elements against time in comprehension, modeling, and reconciliation phases."
+      },
+      "img-p022-2": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 16 on page 22: PPMChart for the same PPM instance as 16a.",
+        "draft": "Figure 16(b): PPMChart for the same PPM instance as Figure 16(a), showing detailed element-level create, move, delete, and rename operations."
+      },
+      "img-p024-1": {
+        "role": "figure",
+        "saw": "Panel (a) of Figure 17 on page 24: TreeMap visualization example (from Johnson, 1993).",
+        "draft": "Figure 17(a): Example of a non-traditional process visualization using a nested TreeMap (from Johnson, 1993)."
+      },
+      "img-p024-2": {
+        "role": "figure",
+        "saw": "Panel (b) of Figure 17 on page 24: Timeline tree visualization example (from Burch et al., 2008).",
+        "draft": "Figure 17(b): Example of a non-traditional process visualization using a Timeline tree (from Burch et al., 2008)."
+      },
+      "img-p024-3": {
+        "role": "figure",
+        "saw": "Panel (c) of Figure 17 on page 24: Gantt chart visualization example.",
+        "draft": "Figure 17(c): Example of a non-traditional process visualization using a Gantt chart of scheduled tasks over time."
+      },
+      "img-p024-4": {
+        "role": "figure",
+        "saw": "Panel (d) of Figure 17 on page 24: E.J. Marey's graphical train schedule (from Tufte, 1983).",
+        "draft": "Figure 17(d): Example of a non-traditional process visualization showing E.J. Marey's graphical train schedule plotting station position against time of day (from Tufte, 1983)."
+      }
+    },
+    "moeller-winter-reichert-2025-cognitive-factors-slr": {
+      "img-p003-1": {
+        "role": "decorative",
+        "saw": "Uniform translucent white rectangle (1194x521, RGBA [255,255,255,77]) forming the background fill of the 'Restaurant' Pool in vector-drawn Figure 1 on page 3.",
+        "draft": "Translucent background fill rectangle for the 'Restaurant' pool in Figure 1; the BPMN diagram itself is vector-drawn (see vfig-p003)."
+      },
+      "img-p003-2": {
+        "role": "decorative",
+        "saw": "Fully transparent rectangle (1164x251, RGBA all zeros) placed as the 'Customer' lane fill in vector-drawn Figure 1 on page 3.",
+        "draft": "Transparent lane background rectangle for the 'Customer' lane in Figure 1; the BPMN diagram itself is vector-drawn (see vfig-p003)."
+      },
+      "img-p003-3": {
+        "role": "decorative",
+        "saw": "Fully transparent rectangle (1164x146, RGBA all zeros) placed as the 'Waiter' lane fill in vector-drawn Figure 1 on page 3.",
+        "draft": "Transparent lane background rectangle for the 'Waiter' lane in Figure 1; the BPMN diagram itself is vector-drawn (see vfig-p003)."
+      },
+      "img-p003-4": {
+        "role": "decorative",
+        "saw": "Fully transparent rectangle (1164x126, RGBA all zeros) placed as the 'Chef' lane fill in vector-drawn Figure 1 on page 3.",
+        "draft": "Transparent lane background rectangle for the 'Chef' lane in Figure 1; the BPMN diagram itself is vector-drawn (see vfig-p003)."
+      },
+      "img-p009-1": {
+        "role": "decorative",
+        "saw": "128x128 black-alpha icon glyph showing a person reading a document, repeated 5 times along the bottom of vector-drawn Figure 4 on page 9.",
+        "draft": "Small icon glyph depicting a researcher next to a document, placed as a decorative stage marker across the five study-selection steps in Figure 4 (see vfig-p009)."
+      },
+      "img-p009-6": {
+        "role": "decorative",
+        "saw": "128x128 black-alpha icon glyph showing a folder with a cogwheel, repeated 5 times along the top of vector-drawn Figure 4 on page 9.",
+        "draft": "Small icon glyph depicting a folder with a gear, placed as a decorative stage marker across the five study-selection steps in Figure 4 (see vfig-p009)."
+      },
+      "img-p011-1": {
+        "role": "figure",
+        "saw": "Figure 5 on page 11 depicting the three identified research clusters (Cluster I: Cognitive Psychology Theories, Cluster II: Cognitive Factors, Cluster III: Cognitive Neuroscience Techniques) around a central brain diagram.",
+        "draft": "Figure 5: Identified research clusters in the systematic literature review, illustrating Cluster I (Cognitive Psychology Theories, 16 studies), Cluster II (Cognitive Factors in Process Model Comprehension, 28 studies), and Cluster III (Cognitive Neuroscience Techniques, 3 studies)."
+      },
+      "vfig-p003": {
+        "role": "figure",
+        "shows": [
+          "1"
+        ],
+        "saw": "Vector-drawn Figure 1 on page 3: BPMN 2.0 'Restaurant' pool with Customer, Waiter, and Chef lanes and callout labels for Pool, Lane, Start Event, AND Gateway, XOR Gateway, Timer Event, Activity, Subprocess, Sequence Flow, and End Event.",
+        "draft": "Figure 1: Example of a BPMN 2.0 process model showing a 'Restaurant' pool with three lanes (Customer: Hungry -> Order Burger -> AND split / XOR loop with 10 min Timer Event 'No Burger Received' -> 'Poke the Waiter' vs 'Burger Received' -> Receive the Burger -> Eat the Burger -> Full; Waiter: Take the Order -> Serve the Burger; Chef: Subprocess 'Make the Burger'), annotated with red callout labels naming core BPMN 2.0 constructs (Pool, Lane, Start Event, AND Gateway, XOR Gateway, Timer Event, Activity, Subprocess, Sequence Flow, End Event)."
+      },
+      "vfig-p004": {
+        "role": "figure",
+        "shows": [
+          "2",
+          "3"
+        ],
+        "saw": "Vector-drawn Figures 2 and 3 on page 4 showing 'Cognitive Neuroscience makes use of Eye Tracking, Electrodermal Activity, fMRI, ...' and 'Cognitive Psychology makes use of Cognitive Load Theory, Cognitive Fit Theory, ...'.",
+        "draft": "Figure 2 (Cognitive neuroscience: 'Cognitive Neuroscience makes use of Eye Tracking, Electrodermal Activity, fMRI, ...') and Figure 3 (Cognitive psychology: 'Cognitive Psychology makes use of Cognitive Load Theory, Cognitive Fit Theory, ...') on page 4."
+      },
+      "vfig-p009": {
+        "role": "figure",
+        "shows": [
+          "4"
+        ],
+        "saw": "Vector-drawn Figure 4 on page 9 showing the 5-step study collection funnel from 6 databases (726 initial hits -> 54 -> 44 -> 36 -> 47 studies).",
+        "draft": "Figure 4: Collection of studies in the SLR. Shows initial hits across six bibliographic databases (Web of Science: 148, IEEE Xplore: 29, Science Direct: 31, ACM Digital Library: 18, PubMed: 42, SpringerLink: 458; Total = 726 Research Works) narrowed across five filtering stages: (1) Apply Search String (726), (2) Read Title and Remove Duplicates (54), (3) Read Abstract (44), (4) Read Entire Research Work (36), and (5) Apply Backward and Forward Snowballing (47 final primary studies)."
+      }
+    },
+    "arxiv-2504-10971v1": {
+      "img-p002-1": {
+        "role": "figure",
+        "saw": "Figure 1 on page 2 showing the seven genres of narrative visualization proposed by Segel and Heer (Magazine Style, Annotated Chart, Partitioned Poster, Flow Chart, Comic Strip, Slide Show, Film/Video/Animation).",
+        "draft": "Figure 1: Genres of narrative visualization proposed by Segel and Heer [86], depicting seven visual layouts: Magazine Style, Annotated Chart, Partitioned Poster, Flow Chart, Comic Strip, Slide Show, and Film/Video/Animation."
+      },
+      "img-p004-1": {
+        "role": "figure",
+        "saw": "Figure 2 on page 4 showing the pipeline of exclusion criteria (EC1-EC5) and inclusion criteria (IC1-IC4) applied during literature screening.",
+        "draft": "Figure 2: Overview of the exclusion criteria (EC1: Non-English, EC2: Not peer-reviewed, EC3: Before 2009, EC4: <=4 pages, EC5: Non-full papers) and inclusion criteria (IC1-IC4) applied in the systematic literature review."
+      },
+      "img-p005-1": {
+        "role": "figure",
+        "saw": "Figure 3 on page 5 showing a table/funnel of paper counts across IEEE, ACM, SpringerLink, ScienceDirect, and Google Scholar from 708 initial hits to 252 after IC/EC screening.",
+        "draft": "Figure 3: Results of applying the exclusion (EC1-EC5) and inclusion (IC1-IC4) criteria across five databases (IEEE, ACM, SpringerLink, ScienceDirect, Google Scholar), reducing 708 initial hits to 252 papers before full-text reading (where 30 out-of-scope papers were subsequently removed, leaving 222 primary studies)."
+      },
+      "img-p005-2": {
+        "role": "figure",
+        "saw": "Figure 4 on page 5 containing three bar/pie chart panels: (a) number of articles per year, (b) number of articles per visualisation type, and (c) number of articles per category.",
+        "draft": "Figure 4: Review statistics across the included corpus showing (a) number of articles published per year, (b) distribution of articles per visualisation type, and (c) distribution of articles per thematic category."
+      },
+      "img-p007-1": {
+        "role": "figure",
+        "saw": "Figure 5 on page 7 showing the categorization of reviewed papers across Data-centric, Task-centric, and Internal representation views of business process visualizations.",
+        "draft": "Figure 5: Categorisation of the reviewed papers across Data-centric, Task-centric (dominated by BPMN and Petri nets), and Internal representation perspectives on business process visualisations."
+      },
+      "img-p007-2": {
+        "role": "figure",
+        "saw": "Figure 6 on page 7 showing visual patterns to facilitate the understanding of business processes (reproduced from [60]).",
+        "draft": "Figure 6: Visual patterns to facilitate the understanding of business processes (adapted from [60]), illustrating graphical encoding patterns for process structure and state."
+      },
+      "img-p018-1": {
+        "role": "figure",
+        "saw": "Top half of the Appendix table on page 18 listing classified primary studies across databases and thematic categories.",
+        "draft": "Appendix table (page 18, part 1): Classification of reviewed articles across thematic categories and digital libraries (articles in red found in multiple databases)."
+      },
+      "img-p018-2": {
+        "role": "figure",
+        "saw": "Bottom half of the Appendix table on page 18 continuing the classification of reviewed articles.",
+        "draft": "Appendix table (page 18, part 2): Continuation of the classification of reviewed articles across thematic categories and digital libraries."
+      },
+      "img-p019-1": {
+        "role": "figure",
+        "saw": "Final segment of the Appendix table on page 19 completing the classification of reviewed articles.",
+        "draft": "Appendix table (page 19, part 3): Final portion of the classification table of reviewed articles across thematic categories and digital libraries."
+      }
     }
   },
   "attribution": {
@@ -2968,6 +3316,38 @@
         "model": "gemini-2.5-pro"
       },
       "inspected_at": "2026-10-09"
+    },
+    "arxiv-2106.12880v1": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "inspected_at": "2026-10-31"
+    },
+    "arxiv-1511-04055v1": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "inspected_at": "2026-10-31"
+    },
+    "moeller-winter-reichert-2025-cognitive-factors-slr": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "inspected_at": "2026-10-31"
+    },
+    "arxiv-2504-10971v1": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "inspected_at": "2026-10-31"
     }
   }
 }

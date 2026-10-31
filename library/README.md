@@ -18,6 +18,8 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `library`, holding `libra
 | [`agent-skill-best-practices---gemini-cli/`](agent-skill-best-practices---gemini-cli/README.md) | described in its own README | |
 | [`agent-skills---google-antigravity-docs/`](agent-skills---google-antigravity-docs/README.md) | described in its own README | |
 | [`arxiv-0909.4061v2/`](arxiv-0909.4061v2/README.md) | described in its own README | |
+| [`arxiv-1511-04055v1/`](arxiv-1511-04055v1/README.md) | described in its own README | |
+| [`arxiv-2106.12880v1/`](arxiv-2106.12880v1/README.md) | described in its own README | |
 | [`arxiv-2202.02427v1/`](arxiv-2202.02427v1/README.md) | described in its own README | |
 | [`arxiv-2203.02010v1/`](arxiv-2203.02010v1/README.md) | described in its own README | |
 | [`arxiv-2312.07755v1/`](arxiv-2312.07755v1/README.md) | described in its own README | |
@@ -26,6 +28,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `library`, holding `libra
 | [`arxiv-2404.04834v4/`](arxiv-2404.04834v4/README.md) | described in its own README | |
 | [`arxiv-2405.14766v2/`](arxiv-2405.14766v2/README.md) | described in its own README | |
 | [`arxiv-2503.18813v2/`](arxiv-2503.18813v2/README.md) | described in its own README | |
+| [`arxiv-2504-10971v1/`](arxiv-2504-10971v1/README.md) | described in its own README | |
 | [`arxiv-2504.07199v3/`](arxiv-2504.07199v3/README.md) | described in its own README | |
 | [`arxiv-2504.19675v2/`](arxiv-2504.19675v2/README.md) | described in its own README | |
 | [`arxiv-2504.21474v1/`](arxiv-2504.21474v1/README.md) | described in its own README | |
@@ -48,21 +51,32 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `library`, holding `libra
 | [`arxiv-2607.25032v1/`](arxiv-2607.25032v1/README.md) | described in its own README | |
 | [`arxiv-2608.08453v1/`](arxiv-2608.08453v1/README.md) | described in its own README | |
 | [`arxiv-2608.18294v2/`](arxiv-2608.18294v2/README.md) | described in its own README | |
+| [`avila-2021-process-modeling-guidelines-slr/`](avila-2021-process-modeling-guidelines-slr/README.md) | described in its own README | |
 | [`best-practices---google-antigravity-docs/`](best-practices---google-antigravity-docs/README.md) | described in its own README | |
 | [`deerwester-1990-indexing-by-lsa/`](deerwester-1990-indexing-by-lsa/README.md) | described in its own README | |
 | [`dusengumuremyi-2026-ai-mediated-raci/`](dusengumuremyi-2026-ai-mediated-raci/README.md) | described in its own README | |
 | [`equipping-agents-for-the-real-world-with-agent-skills-anthro/`](equipping-agents-for-the-real-world-with-agent-skills-anthro/README.md) | described in its own README | |
+| [`figl-strembeck-2014-flow-direction-importance/`](figl-strembeck-2014-flow-direction-importance/README.md) | described in its own README | |
+| [`figl-strembeck-2015-flow-direction-experiment/`](figl-strembeck-2015-flow-direction-experiment/README.md) | described in its own README | |
+| [`genon-2010-bpmn2-cognitive-effectiveness/`](genon-2010-bpmn2-cognitive-effectiveness/README.md) | described in its own README | |
 | [`github-docs-actions-secure-use-reference/`](github-docs-actions-secure-use-reference/README.md) | described in its own README | |
 | [`gurel-tat-2017-swot-analysis/`](gurel-tat-2017-swot-analysis/README.md) | described in its own README | |
 | [`hmans-2026-beans-readme/`](hmans-2026-beans-readme/README.md) | described in its own README | |
 | [`kg-folio-asst-2026-09-30/`](kg-folio-asst-2026-09-30/README.md) | described in its own README | |
 | [`landauer-foltz-laham-1998-intro-lsa/`](landauer-foltz-laham-1998-intro-lsa/README.md) | described in its own README | |
+| [`leopold-2016-bpmn-quality-issues-industry/`](leopold-2016-bpmn-quality-issues-industry/README.md) | described in its own README | |
 | [`mcp-2026-specification-2026-07-28/`](mcp-2026-specification-2026-07-28/README.md) | described in its own README | |
+| [`mendling-2010-7pmg/`](mendling-2010-7pmg/README.md) | described in its own README | |
+| [`mendling-2010-activity-labeling/`](mendling-2010-activity-labeling/README.md) | described in its own README | |
+| [`mendling-2012-thresholds-error-probability/`](mendling-2012-thresholds-error-probability/README.md) | described in its own README | |
+| [`moeller-winter-reichert-2025-cognitive-factors-slr/`](moeller-winter-reichert-2025-cognitive-factors-slr/README.md) | described in its own README | |
+| [`moody-2009-physics-of-notations/`](moody-2009-physics-of-notations/README.md) | described in its own README | |
 | [`nist-sp-800-207/`](nist-sp-800-207/README.md) | described in its own README | |
 | [`omg-2013-bpmn-2-0-2/`](omg-2013-bpmn-2-0-2/README.md) | described in its own README | |
 | [`omg-2024-dmn-1-5/`](omg-2024-dmn-1-5/README.md) | described in its own README | |
 | [`omg-2024-spdx-3-0/`](omg-2024-spdx-3-0/README.md) | described in its own README | |
 | [`qi-hessen-vanderheijden-2023-ca-vs-lsa/`](qi-hessen-vanderheijden-2023-ca-vs-lsa/README.md) | described in its own README | |
+| [`reijers-2011-syntax-highlighting/`](reijers-2011-syntax-highlighting/README.md) | described in its own README | |
 | [`rfc2119-key-words-requirement-levels/`](rfc2119-key-words-requirement-levels/README.md) | described in its own README | |
 | [`rfc8174-uppercase-vs-lowercase-2119-key-words/`](rfc8174-uppercase-vs-lowercase-2119-key-words/README.md) | described in its own README | |
 | [`sammut-bonnici-galea-2015-swot-analysis/`](sammut-bonnici-galea-2015-swot-analysis/README.md) | described in its own README | |
@@ -75,5 +89,8 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `library`, holding `libra
 | [`w3c-2020-json-ld-1-1/`](w3c-2020-json-ld-1-1/README.md) | described in its own README | |
 | [`w3c-2024-prov-jsonld/`](w3c-2024-prov-jsonld/README.md) | described in its own README | |
 | [`wang-rangaiah-2026-mcdm-aggregation/`](wang-rangaiah-2026-mcdm-aggregation/README.md) | described in its own README | |
+| [`zimoch-2017-cognitive-insights-preliminary/`](zimoch-2017-cognitive-insights-preliminary/README.md) | described in its own README | |
+| [`zimoch-2017-eye-tracking-lessons-learned/`](zimoch-2017-eye-tracking-lessons-learned/README.md) | described in its own README | |
+| [`zur-muehlen-recker-2008-how-much-language/`](zur-muehlen-recker-2008-how-much-language/README.md) | described in its own README | |
 
 <!-- kg:subgraph:end -->

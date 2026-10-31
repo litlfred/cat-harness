@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/moeller-winter-reichert-2025-cognitive-factors-slr/blocks/figure-img-p011-1",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p011-1.png",
+  "pageStart": 11,
+  "pageEnd": 11,
+  "narrative": [
+    {
+      "text": "Figure 5: Identified research clusters in the systematic literature review, illustrating Cluster I (Cognitive Psychology Theories, 16 studies), Cluster II (Cognitive Factors in Process Model Comprehension, 28 studies), and Cluster III (Cognitive Neuroscience Techniques, 3 studies).",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 5 : Groupes de recherche identifiés dans la revue systématique de la littérature, illustrant le groupe I (théories de la psychologie cognitive, 16 études), le groupe II (facteurs cognitifs dans la compréhension des modèles de processus, 28 études) et le groupe III (techniques de neurosciences cognitives, 3 études).",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 5: Clústeres de investigación identificados en la revisión sistemática de la literatura, ilustrando el Clúster I (Teorías de la psicología cognitiva, 16 estudios), el Clúster II (Factores cognitivos en la comprensión de modelos de procesos, 28 estudios) y el Clúster III (Técnicas de neurociencia cognitiva, 3 estudios).",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 5: مجموعات البحث المحددة في المراجعة المنهجية للأدبيات، وتوضح المجموعة الأولى (نظريات علم النفس المعرفي، 16 دراسة)، والمجموعة الثانية (العوامل المعرفية في فهم نماذج العمليات، 28 دراسة)، والمجموعة الثالثة (تقنيات علم الأعصاب المعرفي، 3 دراسات).",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图5：系统性文献综述识别出的三大研究聚类，展示聚类I（认知心理学理论，16项研究）、聚类II（流程模型理解中的认知因素，28项研究）以及聚类III（认知神经科学技术，3项研究）。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 5: Выявленные исследовательские кластеры в систематическом обзоре литературы: кластер I (теории когнитивной психологии, 16 исследований), кластер II (когнитивные факторы понимания моделей процессов, 28 исследований) и кластер III (методы когнитивной нейробиологии, 3 исследования).",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/moeller-winter-reichert-2025-cognitive-factors-slr/sections/sec-013",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/moeller-winter-reichert-2025-cognitive-factors-slr/manifest.jsonld",
+  "provenance": "ingested"
+}

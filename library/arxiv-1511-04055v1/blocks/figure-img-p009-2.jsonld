@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-1511-04055v1/blocks/figure-img-p009-2",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p009-2.png",
+  "pageStart": 9,
+  "pageEnd": 9,
+  "narrative": [
+    {
+      "text": "Figure 6(a): BPMN model fragment illustrating the 'Distance from start' sort option in the PPMChart implementation, with white-on-black and outlined circle annotations showing shortest path distance from the start event and creation order.",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 6(a) : Fragment de modèle BPMN illustrant l'option de tri « Distance depuis le début » dans PPMChart, indiquant la distance du plus court chemin depuis l'événement de départ.",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 6(a): Fragmento de modelo BPMN que ilustra la opción de ordenación «Distancia desde el inicio» en PPMChart, mostrando la distancia del camino más corto desde el evento de inicio.",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 6(أ): جزء من نموذج BPMN يوضح خيار الترتيب حسب «المسافة من البداية» في تطبيق PPMChart، مع دوائر توضح أقصر مسافة من حدث البداية وترتيب الإنشاء.",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图6(a)：展示PPMChart中“距起点距离排序”选项的BPMN模型片段，带有显示距开始事件最短路径距离与创建顺序的黑白圆圈注释。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 6(a): Фрагмент модели BPMN, иллюстрирующий опцию сортировки «Расстояние от начала» в PPMChart с кружками кратчайшего расстояния от начального события.",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-1511-04055v1/sections/sec-020",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1511-04055v1/manifest.jsonld",
+  "provenance": "ingested"
+}

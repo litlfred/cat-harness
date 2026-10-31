@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-1511-04055v1/blocks/figure-img-p024-2",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p024-2.png",
+  "pageStart": 24,
+  "pageEnd": 24,
+  "narrative": [
+    {
+      "text": "Figure 17(b): Example of a non-traditional process visualization using a Timeline tree (from Burch et al., 2008).",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 17(b) : Exemple de visualisation de processus non traditionnelle utilisant un arbre chronologique (Timeline tree, d'après Burch et al., 2008).",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 17(b): Ejemplo de visualización de procesos no tradicional mediante un árbol de línea temporal (Timeline tree, de Burch et al., 2008).",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 17(ب): مثال لتصور عمليات غير تقليدي باستخدام شجرة الخط الزمني (Timeline tree، من Burch وآخرون، 2008).",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图17(b)：非传统流程可视化示例：使用时间线树（Timeline tree，引自Burch et al., 2008）。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 17(b): Пример нетрадиционной визуализации процессов с использованием дерева временных шкал (Timeline tree, по Burch et al., 2008).",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-1511-04055v1/sections/sec-063",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1511-04055v1/manifest.jsonld",
+  "provenance": "ingested"
+}

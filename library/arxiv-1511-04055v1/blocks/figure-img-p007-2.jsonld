@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-1511-04055v1/blocks/figure-img-p007-2",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p007-2.png",
+  "pageStart": 7,
+  "pageEnd": 7,
+  "narrative": [
+    {
+      "text": "Figure 5 (bottom panel): Screenshot of the PPMChart Analysis plug-in window in ProM 6 for Model 2012-184 illustrating the effect of filtering out selected operation types and re-sorting the element timelines.",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 5 (panneau inférieur) : Capture d'écran de la fenêtre PPMChart Analysis dans ProM 6 pour le modèle 2012-184 illustrant le filtrage et le tri des lignes temporelles.",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 5 (panel inferior): Captura de pantalla de la ventana PPMChart Analysis en ProM 6 para el Modelo 2012-184 ilustrando el filtrado y la reordenación de las líneas temporales.",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 5 (اللوحة السفلية): لقطة شاشة لنافذة إضافة PPMChart Analysis في برنامج ProM 6 للنموذج 2012-184 توضح أثر تصفية أنواع العمليات وإعادة ترتيب الخطوط الزمنية للعناصر.",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图5（下图）：ProM 6中Model 2012-184的PPMChart Analysis插件窗口截图，展示过滤特定操作类型并重新排序元素时间线后的效果。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 5 (нижняя панель): Снимок окна плагина PPMChart Analysis в ProM 6 для модели 2012-184, иллюстрирующий фильтрацию типов операций и пересортировку временных шкал элементов.",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-1511-04055v1/sections/sec-017",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1511-04055v1/manifest.jsonld",
+  "provenance": "ingested"
+}

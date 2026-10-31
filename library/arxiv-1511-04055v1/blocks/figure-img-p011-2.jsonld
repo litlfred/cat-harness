@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-1511-04055v1/blocks/figure-img-p011-2",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p011-2.png",
+  "pageStart": 11,
+  "pageEnd": 11,
+  "narrative": [
+    {
+      "text": "Figure 7(b): PPMChart for Model 2010-213 illustrating simultaneous delete operations (vertical alignments of red dots where whole model chunks are removed at once).",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 7(b) : PPMChart du modèle 2010-213 illustrant des opérations de suppression simultanées (alignements verticaux de points rouges).",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 7(b): PPMChart del Modelo 2010-213 que ilustra operaciones de eliminación simultáneas (alineaciones verticales de puntos rojos).",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 7(ب): مخطط PPMChart للنموذج 2010-213 يوضح عمليات حذف متزامنة (أعمدة رأسية من النقاط الحمراء حيث تُحذف أجزاء كاملة دفعة واحدة).",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图7(b)：Model 2010-213的PPMChart，展示同时发生的批量删除操作（垂直对齐的红点列）。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 7(b): Диаграмма PPMChart для модели 2010-213, иллюстрирующая одновременные операции удаления (вертикальные столбцы красных точек).",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-1511-04055v1/sections/sec-028",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1511-04055v1/manifest.jsonld",
+  "provenance": "ingested"
+}

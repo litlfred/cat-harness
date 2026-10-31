@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-1511-04055v1/blocks/figure-img-p013-1",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p013-1.png",
+  "pageStart": 13,
+  "pageEnd": 13,
+  "narrative": [
+    {
+      "text": "Figure 9(a): PPMChart for Model 2010-367 illustrating aspect-oriented creation order where activities and gateways are created in separate non-crossing blocks before edges.",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 9(a) : PPMChart du modèle 2010-367 illustrant un ordre de création orienté aspect où les activités et passerelles sont créées en blocs séparés avant les arcs.",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 9(a): PPMChart del Modelo 2010-367 que ilustra un orden de creación orientado a aspectos donde actividades y compuertas se crean en bloques separados antes que los arcos.",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 9(أ): مخطط PPMChart للنموذج 2010-367 يوضح نمط إنشاء موجه نحو الجوانب حيث تُنشأ الأنشطة والبوابات في كتل منفصلة قبل رسم الحواف.",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图9(a)：Model 2010-367的PPMChart，展示面向方面（aspect-oriented）的创建顺序：先分块创建活动和网关，最后创建连线。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 9(a): Диаграмма PPMChart для модели 2010-367, иллюстрирующая аспектно-ориентированный порядок создания: сначала создаются действия и шлюзы, а затем дуги.",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-1511-04055v1/sections/sec-037",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1511-04055v1/manifest.jsonld",
+  "provenance": "ingested"
+}

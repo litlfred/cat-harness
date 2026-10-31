@@ -1,0 +1,34 @@
+{
+  "$schema": "folio-referenced-source/v1",
+  "identity": {
+    "title": "Cognitive Insights into Business Process Model Comprehension: Preliminary Results for Experienced and Inexperienced Individuals",
+    "version": "LNBIP 287",
+    "document_number": "doi:10.1007/978-3-319-59466-8_9",
+    "date": "2017-05",
+    "publisher": "Springer (BPMDS 2017 / EMMSAD 2017, LNBIP 287:137-152)"
+  },
+  "source": {
+    "file": "zimoch-2017-cognitive-insights-preliminary.pdf",
+    "sha256": "58836d0484d00ae56360f5efae651e7eaa2fcf34595ccef5b3779868e84291df",
+    "bytes": 1099654,
+    "mtime": "2026-10-31T10:22:58Z",
+    "mimetype_sniffed": "application/pdf",
+    "mimetype_source": "magic-bytes"
+  },
+  "outline": [],
+  "outline_source": "none",
+  "materialization": {
+    "$schema": "folio-materialization/v1",
+    "state": "referenced",
+    "provenance": {
+      "upstream": {
+        "url": "https://web.archive.org/web/20220303111327id_/http://dbis.eprints.uni-ulm.de/1504/1/2017_BPMDS_Zimoch1_dbis.pdf"
+      }
+    },
+    "note": "Text withheld by licence; the bytes identified by `source.sha256` were read once to take this record."
+  },
+  "withheld": {
+    "what": "all text, figures and tables",
+    "why": "Publisher copyright (Springer International Publishing AG, BPMDS 2017, LNBIP 287:137-152, doi:10.1007/978-3-319-59466-8_9); institutional eprint lacks an open redistribution licence. Recorded as bibliographic reference with structured empirical notes only."
+  }
+}
