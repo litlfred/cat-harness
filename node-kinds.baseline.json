@@ -299,6 +299,10 @@
     },
     {
       "typology": "schemas",
+      "family": "archimate-relationship-table/v1"
+    },
+    {
+      "typology": "schemas",
       "family": "concern-groups/v1"
     },
     {
