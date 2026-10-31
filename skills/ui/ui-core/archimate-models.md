@@ -6,17 +6,20 @@ description: >
   view, element and relationship (an IRI, a thin page, and every view drawn as
   SVG from the model's own diagram, and its metamodel derived and checked),
   how to version the models, how to wire
-  them into a folio's staging build and navbar, and why no Java, no Archi CLI
+  them into a folio's staging build and navbar, how to count and lower the
+  crossed lines in a view before committing it, why every view carries a
+  plain-language key, why names are the source's own terms linked to their
+  SKOS concepts, and why no Java, no Archi CLI
   and no Archi HTML report is ever part of the pipeline. Read before adding,
-  publishing or rendering an `.archimate` file, before citing an ArchiMate
-  element from prose, and before reaching for Archi's own tooling in CI.
+  authoring, publishing or rendering an `.archimate` file, before citing an
+  ArchiMate element from prose, and before reaching for Archi's own tooling in CI.
 ---
 
 # ArchiMate models — every view, element and relationship a node
 
 > Skill id: `archimate-models` · Package: `ui-core` · Subgraph:
 > [`cat-harness/archimate/`](../../../archimate/README.md) · Tools:
-> `archimate-check`, `archimate-metamodel`, `archimate-pages` · Process:
+> `archimate-check`, `archimate-metamodel`, `archimate-pages`, `archimate-crossings`, `archimate-detangle` · Process:
 > `archimate-publish` (`processes/ui/archimate-publish.bpmn`)
 
 Owner, 2026-10-09: *"need new specialixed harness (like openapi) for archimate
@@ -106,6 +109,84 @@ call. Cite the derived page instead of the view in the meantime.
 The steps run in this order, all in the pipeline lane of process
 `archimate-publish`: `archimate-check`, then `archimate-metamodel --check`,
 then `archimate-pages`. A refused relationship goes back to the model's author.
+
+## Untangle every view you touch
+
+Owner, 2026-10-31, of a view with lines drawn across each other and through
+boxes: *"lots crossed lines. detangle. (skill/process always check and try
+minimize when authoring archimate)"*, then *"improve skills / make mechanical
+tools where you can"*.
+
+**A change to a view never adds tangles, and every view you touch leaves with
+no more than it came with.** A tangle is a line crossing another line, or a
+line running through a box that is not one of its ends and does not hold one.
+Groups (bands) are not boxes here; a line may cross a band.
+
+Every time you add, move or re-route anything in a view:
+
+1. **Count before.** `bun run cat archimate:crossings --model <file> --view <id or name>`
+   lists each tangle by the boxes it joins.
+2. **Make the change.**
+3. **Let the tool lower it.** `bun run cat archimate:detangle --model <file> --view <id>`
+   reports what it would do: re-route lines (straight, an L, or a Z through a
+   free lane between rows) and swap same-size boxes in the same row or column.
+   It keeps a change only if the count goes down. Add `--apply` to write it,
+   or `--routes-only` when the boxes' places carry meaning (an order, a flow).
+4. **Look at the drawing** (`gen-archimate-pages.ts --out`, or the view's SVG)
+   before and after. The count is a gate, not taste: undo a swap that breaks a
+   reading order, and fix by hand what the tool cannot (it never adds, resizes
+   or regroups boxes).
+5. **Count after, and say both numbers** in the PR: *"view X: 10 crossings,
+   13 through a box → 1, 2"*. More tangles after than before is a finding to
+   fix before review, not a note.
+
+Ways to untangle by hand, in the order to try them:
+
+- Put a box beside the boxes it is joined to: a line's ends in neighbouring
+  rows, not across the view.
+- Order a row like the row it connects to (the order of the boxes above),
+  so lines between the two rows run parallel.
+- Route a long line along the gap between rows or bands, with right-angle
+  bendpoints, rather than diagonally across boxes.
+- Nest instead of drawing a line where the notation allows it (composition,
+  aggregation, assignment, realization): a box drawn inside another already
+  says how they relate, and the renderer draws no line for it.
+- When nothing else works, a view shows too much: split it.
+
+## Every view carries a key for readers who do not know ArchiMate
+
+Owner, 2026-10-31: *"what do arrows/colors/shapes mean, need legend"*.
+
+Readers of a view are mostly not architects. **Every rendered view carries a
+plain-language key** below it, saying what each colour, shape, line and end
+used ON THAT VIEW means, in words a reader without ArchiMate understands
+("Realization: makes real, or achieves"), not the specification's terms
+alone. `render-view.ts` draws it by default (cat-harness-tools#1059), keyed
+only to what the view uses. Do not turn it off for a published view, and do
+not export a view without it. When the renderer gains a new mark, the key
+gains its line in the same change.
+
+## Names are the source's own terms, linked to their concept
+
+Owner, 2026-10-31, after an NHWA element was named in our words rather than
+the handbook's (smart-ra#163).
+
+**An element or view named from a source uses the source's own term, and
+links to that term's SKOS concept.** Not our paraphrase, shortening or
+merger of two terms. When smart-ra models a module of *National health
+workforce accounts: a handbook*, the box is named as the handbook names it,
+and the element carries the concept's IRI (a property, e.g.
+`concept` = the `skos:Concept` IRI in the source's glossary scheme) so its
+page links to the definition.
+
+- No concept for the term yet: add it to the source's glossary scheme first,
+  from the source's own words, then name the element.
+- The source's term is too long for a box: keep the full term as the name
+  and let the renderer wrap it; a short form goes in `skos:altLabel`, never
+  in place of the name.
+- Our term and the source's disagree: that is a content decision
+  ([`term-disagreement`](../../library/library-core/term-disagreement.md)),
+  not something to settle by renaming in Archi.
 
 ## No Java, no Archi CLI, no Archi report — ever
 
@@ -197,3 +278,5 @@ or `render-view.ts`, in TypeScript.
 - Commit exported view images beside a model; they go stale on the next edit.
 - Name model folders by anything but the version they describe.
 - Declare the `archimate` typology in an instance whose platform pin predates it.
+- Commit a change to a view without counting its tangles before and after.
+- Publish a view without its key, or name an element from a source in words the source does not use.

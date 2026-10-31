@@ -193,7 +193,7 @@ lean_build), затем выполняет push. **Слияние (merge) при
 | Схема блока | `schemas/types.ts` |
 | Схема файла QA | `schemas/block-qa.ts` |
 | Что умеет данное окружение | `.claude/skills/capabilities/*.json`, `--check-deps` |
-| План развития инструментов Lean | [Предложение по инструментам Lean](../proposals/llm-authoring-tool-integration.html) |
+| План развития инструментов Lean | [Предложение по инструментам Lean](https://github.com/litlfred/folio-assistant/issues/198) |
 
 ## 10. Привычки, которые уберегут вас от проблем
 
