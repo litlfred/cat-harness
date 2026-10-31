@@ -51,7 +51,7 @@ SME review of fixed test data for clinical or scientific decision support and in
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-data-sets`.
-- What: Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/sdlc/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: "human", provider, handle, role }`), and `reviewedAt` (ISO-
+- What: Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/sdlc/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: "human", provider, handle, role }`), and `reviewedAt` 
 - Record it: `workflow_complete` with `node: "Task_RecordCaseVerdict"`.
 - next: → `GW_VerdictOutcome` (SME verdict outcome?)
 

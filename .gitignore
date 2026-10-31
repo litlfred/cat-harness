@@ -77,12 +77,20 @@ node_modules/
 /docs/en/cat-harness/node-kind-index/
 /docs/en/cat-harness/bean/
 /docs/en/cat-harness/software-library/
+/docs/en/cat-harness/sme-case-verdict/
+/docs/en/cat-harness/test-data-fixed/
+/docs/en/cat-harness/test-data-generated/
 /docs/en/cat-harness/cat-harness-declaration/
 /docs/en/cat-harness/document-kind/
 /docs/en/cat-harness/document-kind-coverage/
 /docs/en/folio-assistant-core/changeset/
 /docs/en/folio-assistant-core/public-comment/
+/docs/assets/glossary/bootstrap-tools--kg-bpmn-activities.skos.jsonld
+/docs/assets/glossary/bootstrap-tools--kg-schema-fields.skos.jsonld
+/docs/assets/glossary/bootstrap-tools--kg-skills.skos.jsonld
+/docs/assets/glossary/cat-harness-tools--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/cat-harness-tools--kg-tools.skos.jsonld
+/docs/assets/glossary/who-iris--kg-bpmn-activities.skos.jsonld
 /docs/assets/glossary/fhir-harness--kg-bpmn-activities.skos.jsonld
 /docs/assets/glossary/fhir-harness--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/fhir-harness--kg-skills.skos.jsonld
@@ -106,6 +114,7 @@ node_modules/
 /docs/assets/glossary/who-iris--kg-skills.skos.jsonld
 /docs/assets/glossary/who-iris--kg-tools.skos.jsonld
 /docs/assets/glossary/who-iris--who-terms.skos.jsonld
+/docs/assets/glossary/who-iris--nhwa-2023.skos.jsonld
 /docs/en/folio-assistant-core/bibliography/
 /docs/en/folio-assistant-core/glossary/
 /docs/ar/folio-assistant-core/
@@ -229,5 +238,16 @@ node_modules/
 /docs/assets/img/workflows/questionnaire-wireframe-review.svg
 /docs/assets/img/workflows/render-kg-to-github-pages.svg
 /docs/assets/img/workflows/SGAuthoring.DAKLifecycle.svg
+/docs/assets/img/workflows/dsa-document-lifecycle.svg
+/docs/assets/img/workflows/iris-cdn-initial-load.svg
+/docs/assets/img/workflows/iris-cdn-nightly.svg
+/docs/assets/img/workflows/iris-cdn-reconcile.svg
+/docs/assets/img/workflows/iris-cdn-sign-publish.svg
 /docs/assets/img/workflows/smart-guideline-end-to-end.svg
+/docs/assets/img/workflows/content-change-review-committee.svg
+/docs/assets/img/workflows/content-change-review-make.svg
+/docs/assets/img/workflows/content-change-review-publish.svg
+/docs/assets/img/workflows/content-change-review-stage.svg
+/docs/assets/img/workflows/contributor-feedback.svg
+/docs/assets/img/workflows/public-comment-release.svg
 # END built at publish
