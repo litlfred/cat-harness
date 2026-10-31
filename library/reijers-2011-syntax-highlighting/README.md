@@ -24,6 +24,7 @@ Held in the library [`cat-harness/library/`](../README.md) as `reijers-2011-synt
 - **Citation:** Reijers, H. A., Freytag, T., Mendling, J. & Eckleder, A. (2011). *Syntax highlighting in business process models.* Decision Support Systems, 51(3), 339–349.
 - **DOI:** `10.1016/j.dss.2010.12.013`
 - **URL Fetched:** `https://repub.eur.nl/pub/22938/EPS-2011-228-LIS.pdf`
+- **Copy Used:** Erasmus University Rotterdam RePub working paper / preprint (28 pages; companion to Elsevier DSS 51(3):339-349 article)
 - **Fetch Date:** `2026-10-31`
 - **SHA-256:** `499b5fc15d393fa27d95fd5f8a227319b82a45269e014e7469efbdbe83823d02`
 - **Licence & Ingestion Route:** `LicenseRef-Elsevier-Copyright` (Elsevier copyright — Notes-only `referenced.json` rung)

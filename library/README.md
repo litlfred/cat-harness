@@ -19,6 +19,8 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `library`, holding `libra
 | [`agent-skills---google-antigravity-docs/`](agent-skills---google-antigravity-docs/README.md) | described in its own README | |
 | [`arxiv-0909.4061v2/`](arxiv-0909.4061v2/README.md) | described in its own README | |
 | [`arxiv-1511-04055v1/`](arxiv-1511-04055v1/README.md) | described in its own README | |
+| [`arxiv-1603.07466v1/`](arxiv-1603.07466v1/README.md) | described in its own README | |
+| [`arxiv-2005.09998v1/`](arxiv-2005.09998v1/README.md) | described in its own README | |
 | [`arxiv-2106.12880v1/`](arxiv-2106.12880v1/README.md) | described in its own README | |
 | [`arxiv-2202.02427v1/`](arxiv-2202.02427v1/README.md) | described in its own README | |
 | [`arxiv-2203.02010v1/`](arxiv-2203.02010v1/README.md) | described in its own README | |
@@ -34,6 +36,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `library`, holding `libra
 | [`arxiv-2504.21474v1/`](arxiv-2504.21474v1/README.md) | described in its own README | |
 | [`arxiv-2505.06046v4/`](arxiv-2505.06046v4/README.md) | described in its own README | |
 | [`arxiv-2505.10399v1/`](arxiv-2505.10399v1/README.md) | described in its own README | |
+| [`arxiv-2505.11701v2/`](arxiv-2505.11701v2/README.md) | described in its own README | |
 | [`arxiv-2507.07974v2/`](arxiv-2507.07974v2/README.md) | described in its own README | |
 | [`arxiv-2507.23348v1/`](arxiv-2507.23348v1/README.md) | described in its own README | |
 | [`arxiv-2508.05192v2/`](arxiv-2508.05192v2/README.md) | described in its own README | |
@@ -54,13 +57,18 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `library`, holding `libra
 | [`avila-2021-process-modeling-guidelines-slr/`](avila-2021-process-modeling-guidelines-slr/README.md) | described in its own README | |
 | [`best-practices---google-antigravity-docs/`](best-practices---google-antigravity-docs/README.md) | described in its own README | |
 | [`deerwester-1990-indexing-by-lsa/`](deerwester-1990-indexing-by-lsa/README.md) | described in its own README | |
+| [`djurica-2024-decision-model-comprehension-emisa/`](djurica-2024-decision-model-comprehension-emisa/README.md) | described in its own README | |
 | [`dusengumuremyi-2026-ai-mediated-raci/`](dusengumuremyi-2026-ai-mediated-raci/README.md) | described in its own README | |
 | [`equipping-agents-for-the-real-world-with-agent-skills-anthro/`](equipping-agents-for-the-real-world-with-agent-skills-anthro/README.md) | described in its own README | |
+| [`figl-2018-what-we-know-dmn-emisa/`](figl-2018-what-we-know-dmn-emisa/README.md) | described in its own README | |
 | [`figl-strembeck-2014-flow-direction-importance/`](figl-strembeck-2014-flow-direction-importance/README.md) | described in its own README | |
 | [`figl-strembeck-2015-flow-direction-experiment/`](figl-strembeck-2015-flow-direction-experiment/README.md) | described in its own README | |
 | [`genon-2010-bpmn2-cognitive-effectiveness/`](genon-2010-bpmn2-cognitive-effectiveness/README.md) | described in its own README | |
 | [`github-docs-actions-secure-use-reference/`](github-docs-actions-secure-use-reference/README.md) | described in its own README | |
 | [`gurel-tat-2017-swot-analysis/`](gurel-tat-2017-swot-analysis/README.md) | described in its own README | |
+| [`hasic-2018-5pdm-decision-intelligence/`](hasic-2018-5pdm-decision-intelligence/README.md) | described in its own README | |
+| [`hasic-2019-complexity-metrics-dmn/`](hasic-2019-complexity-metrics-dmn/README.md) | described in its own README | |
+| [`hasic-2019-measuring-complexity-dmn/`](hasic-2019-measuring-complexity-dmn/README.md) | described in its own README | |
 | [`hmans-2026-beans-readme/`](hmans-2026-beans-readme/README.md) | described in its own README | |
 | [`kg-folio-asst-2026-09-30/`](kg-folio-asst-2026-09-30/README.md) | described in its own README | |
 | [`landauer-foltz-laham-1998-intro-lsa/`](landauer-foltz-laham-1998-intro-lsa/README.md) | described in its own README | |

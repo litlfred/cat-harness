@@ -24,6 +24,7 @@ Held in the library [`cat-harness/library/`](../README.md) as `zur-muehlen-recke
 - **Citation:** zur Muehlen, M. & Recker, J. (2008). *How Much Language is Enough? Theoretical and Practical Use of the Business Process Modeling Notation.* In: *Advanced Information Systems Engineering (CAiSE 2008)*, LNCS 5074, pp. 465–479, Springer.
 - **DOI:** `10.1007/978-3-540-69534-9_35`
 - **URL Fetched:** `https://aisel.aisnet.org/cgi/viewcontent.cgi?article=1015&context=caise2008`
+- **Copy Used:** AISeL-hosted publisher LNCS 5074 PDF (15 pages, Springer copyright)
 - **Fetch Date:** `2026-10-31`
 - **SHA-256:** `d1fd0c5c750773b2aa795c0131bc67e9fa9c82ca9a24c79a613b868149334d3f`
 - **Licence & Ingestion Route:** `LicenseRef-Springer-Copyright` (Springer-Verlag LNCS copyright — Notes-only `referenced.json` rung)

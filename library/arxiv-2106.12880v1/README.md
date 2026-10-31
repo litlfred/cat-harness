@@ -38,7 +38,8 @@ Held in the library [`cat-harness/library/`](../README.md) as `arxiv-2106.12880v
 - **Case Study ($N = 33$, BPMN 2.0):** Evaluated on **5 BPMN 2.0 process models**, each in 2 variants (**Explicit vs. Implicit**: Model 1 Start Event, Model 2 End Event, Model 3 Loop, Model 4 Parallelism, Model 5 Decomposition), created by **3 modelers** and comprehended by **30 process readers** ($N = 33$ total; Section 4.1, pp. 9–11).
 - **What Was Measured:**
   - *Objective comprehension accuracy* on 3 true/false comprehension questions per model (0–3 scale; Table 1, p. 11).
-  - *Aggregated PMCF comprehensibility score* $ar{X} = rac{\sum_{k=1}^n w_k p_{i,k}}{\sum_{k=1}^n w_k} \in [1, 10]$ (Eq. 1, p. 7), broken down by Modeler Perspective, Reader Perspective, and Combined Total Score (Table 1, p. 11).
+  - *Aggregated PMCF comprehensibility score* $ar{X} = 
+rac{\sum_{k=1}^n w_k p_{i,k}}{\sum_{k=1}^n w_k} \in [1, 10]$ (Eq. 1, p. 7), broken down by Modeler Perspective, Reader Perspective, and Combined Total Score (Table 1, p. 11).
 - **Key Findings & Numeric Thresholds Stated:**
   - **Normalized PMCF Score Scale:** $[1, 10]$, where **`1` = poorest comprehensibility** and **`10` = best comprehensibility** (Section 3.2, p. 8).
   - **Explicit vs. Implicit BPMN Variant Scores (Table 1, p. 11):**

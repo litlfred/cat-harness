@@ -24,6 +24,7 @@ Held in the library [`cat-harness/library/`](../README.md) as `figl-strembeck-20
 - **Citation:** Figl, K. & Strembeck, M. (2014). *On the Importance of Flow Direction in Business Process Models.* Proceedings of the 9th International Conference on Software Engineering and Applications (ICSOFT-EA 2014), pp. 132–136.
 - **DOI:** `10.5220/0005107101320136`
 - **URL Fetched:** `https://www.scitepress.org/Papers/2014/51071/51071.pdf`
+- **Copy Used:** Publisher PDF (SCITEPRESS digital library, 5 pages)
 - **Fetch Date:** `2026-10-31`
 - **SHA-256:** `d5a200308c9716964c445c438eddf2689df324998aa87c076a520bf27bd8eb1f`
 - **Licence & Ingestion Route:** `LicenseRef-SCITEPRESS-Copyright` (SCITEPRESS copyright — Notes-only `referenced.json` rung)

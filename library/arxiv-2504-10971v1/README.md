@@ -25,6 +25,7 @@ Held in the library [`cat-harness/library/`](../README.md) as `arxiv-2504-10971v
 - **Citation:** Overes, J. & Santoro, F. M. (2025). *Effectiveness of Business Process Visualizations: A Systematic Literature Review.* arXiv preprint `arXiv:2504.10971v1`.
 - **arXiv:** `2504.10971v1`
 - **URL Fetched:** `https://arxiv.org/pdf/2504.10971v1.pdf`
+- **Copy Used:** arXiv preprint (19 pages)
 - **Fetch Date:** `2026-10-31`
 - **SHA-256:** `3b1f3b4d23c1a25c39f209c7b7779c1d3055f080da93aa0cf14e2e06905fd106`
 - **Licence & Ingestion Route:** `LicenseRef-arXiv-Nonexclusive-Distrib-1.0` (Full-text `pdf-structure` rung)

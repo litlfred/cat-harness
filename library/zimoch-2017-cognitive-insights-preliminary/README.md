@@ -24,6 +24,7 @@ Held in the library [`cat-harness/library/`](../README.md) as `zimoch-2017-cogni
 - **Citation:** Zimoch, M., Pryss, R., Probst, T., Schlee, W. & Reichert, M. (2017). *Cognitive Insights into Business Process Model Comprehension: Preliminary Findings for Novice and Experienced End-Users.* In: *Enterprise, Business-Process and Information Systems Modeling (BPMDS 2017)*, LNBIP 287, pp. 137–152, Springer.
 - **DOI:** `10.1007/978-3-319-59466-8_9`
 - **URL Fetched:** `https://dbis.eprints.uni-ulm.de/1509/1/BPMDS_2017_Zimoch.pdf`
+- **Copy Used:** Author camera-ready accepted manuscript (Ulm University DBIS eprints, 16 pages, Springer LNBIP 287)
 - **Fetch Date:** `2026-10-31`
 - **SHA-256:** `86e4f286cfeb7cc5b689d9e0f2acaa7bc3cf4c417b09d494b6eb1493d6d29713`
 - **Licence & Ingestion Route:** `LicenseRef-Springer-Copyright` (Springer Nature copyright — Notes-only `referenced.json` rung)

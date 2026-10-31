@@ -24,6 +24,7 @@ Held in the library [`cat-harness/library/`](../README.md) as `avila-2021-proces
 - **Citation:** Avila, D. T., dos Santos, R. I., Mendling, J. & Thom, L. H. (2021). *A systematic literature review of process modeling guidelines and their empirical support.* Business Process Management Journal, 27(1), 1–23. (Companion full catalogue: Avila, D. T., 2018, *An Analysis of Process Modeling Guidelines and Their Empirical Support*, UFRGS LUME Thesis, 71 pp.)
 - **DOI:** `10.1108/BPMJ-10-2019-0407`
 - **URL Fetched:** `https://lume.ufrgs.br/bitstream/handle/10183/180494/001069548.pdf`
+- **Copy Used:** Companion full catalogue / thesis (UFRGS LUME repository, 71 pages; companion to Emerald BPMJ 27(1):1-23 article)
 - **Fetch Date:** `2026-10-31`
 - **SHA-256:** `0bd509be622854bc4d03563c0178abdd6cf0cfbc8a3fa8d8dd460565d90f8c10`
 - **Licence & Ingestion Route:** `LicenseRef-Emerald-Copyright` (Emerald publishing copyright — Notes-only `referenced.json` rung)

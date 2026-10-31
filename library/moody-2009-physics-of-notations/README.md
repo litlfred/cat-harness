@@ -24,6 +24,7 @@ Held in the library [`cat-harness/library/`](../README.md) as `moody-2009-physic
 - **Citation:** Moody, D. L. (2009). *The "Physics" of Notations: Toward a Scientific Basis for Constructing Visual Notations in Software Engineering.* IEEE Transactions on Software Engineering, 35(6), 756–779.
 - **DOI:** `10.1109/TSE.2009.67`
 - **URL Fetched:** `https://www.uq.edu.au/sia/content-files/file/events/2010/BPMN2-VisualSyntaxAnalysis.pdf`
+- **Copy Used:** Author companion presentation / technical report (UQ SIA BPMN 2.0 Visual Syntax Analysis, 63 pages; IEEE TSE 35(6):756-779 has no open-access copy)
 - **Fetch Date:** `2026-10-31`
 - **SHA-256:** `492796fc13fb40d53fd2b99b6a8ca7627f8c9f8b2d560aa99d51173b3a8bb6f3`
 - **Licence & Ingestion Route:** `LicenseRef-IEEE-Copyright` (IEEE copyright — Notes-only `referenced.json` rung)
