@@ -72,6 +72,53 @@ is not enabled**. That has consequences for how you author:
   means `workflow_gate` refuses a step that is not enabled; absent policy means
   strict. Steps marked `relaxable="false"` may never be relaxed by any package.
 
+## Readable diagrams: what the research supports
+
+Owner, 2026-10-31: take what holds up from the BPMN comprehension research and
+check it mechanically. `kg:audit` reports each rule below per process
+(`src/workflow/diagram-quality.ts` in cat-harness-tools). The papers are being
+ingested under bean `folio-assistant-e0jh`.
+
+- **Separate routing from work.** A task never has two outgoing flows: put an
+  exclusive or parallel gateway after it, or a reader must guess fork vs
+  choice (`activity-implicit-split`, major). A loop-back INTO a task is fine.
+  A gateway either joins or splits, not both (`gateway-mixed`).
+- **Keep it small.** Split by phase into call activities past 20 flow nodes
+  (`process-size`). That 20 is house style. The only threshold with evidence is
+  7PMG's 50 (`process-decompose`, major), and it predicts modelling errors
+  such as deadlocks, not reading speed.
+- **One start event per process level** (`process-single-start`). Several
+  named end events are fine, and the bean CLOSE pattern needs them.
+- **A decision is a question, its branches are the answers**
+  (`decision-label-question`).
+- **Label activities verb-object**: imperative verb, then its object (*Review
+  the draft*, not *Draft review*) (`activity-label-verb-first`). The evidence
+  is one study of how ambiguous labels felt (29 students), so this is reported,
+  never gated.
+
+### Untangle every diagram you touch
+
+The same discipline as ArchiMate views ([`archimate-models`](../../ui/ui-core/archimate-models.md)
+§"Untangle every view you touch"), and the same geometry: a change never adds
+a tangle. Run `bun run cat kg:audit` before and after, and compare
+`edge-crossing`, `edge-through-node` and `edge-rectilinear` for the diagram.
+Say both counts in the PR. Route loop-backs in the channel below the lane
+([`bpmn-processes`](bpmn-processes.md) §"Edge routing"), then look at the
+rendered SVG.
+
+### What the evidence does NOT support
+
+Do not import these from style guides or model output; each was checked:
+
+- **Mandatory left-to-right flow.** Figl & Strembeck 2015 (44 people) found
+  no significant difference in accuracy or time across four directions.
+  Lay out left-to-right for consistency, not because it reads faster.
+- **A word cap on labels**, a **gateway fan-out cap of 4**, and **a fixed
+  colour palette.** No study behind them. Colour highlighting helps novices,
+  not experts (Reijers et al. 2011).
+- **OR-gateways** need no rule: the process model refuses inclusive gateways
+  at load.
+
 ## If it has actors, activities and a control flow, it is BPMN
 
 Not a Mermaid fence. Mermaid stays for the things that are *not* processes —
