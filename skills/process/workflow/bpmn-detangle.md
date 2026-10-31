@@ -45,6 +45,7 @@ in `cat-harness-tools/src/workflow/diagram-fit.ts`:
 | `label-on-edge` | a label on a flow that is not its own | move the label, or the flow |
 | `label-on-shape` | a label on a box, its own shape, or a lane's name strip | move the label |
 | `edge-diagonal` | a flow runs at a slant | `--write` routes it at right angles through the gap |
+| `header-overflow` | a pool or lane name spills out of its 30-wide strip | `--write` makes the lane taller; or shorten the name (never repeat the process id in the pool name) |
 | `text-overflow` | a name spills out of its box | `--write` widens, then heightens the box; or shorten the name |
 | `edge-crossing` | two flows cross | re-route one around the other, move a step, or swap lanes |
 | `lane-order` | another lane order crosses fewer lane boundaries | `--write` applies it |
