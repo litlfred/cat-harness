@@ -36,6 +36,24 @@ with bpmn-js in headless Chromium; `bun run cat render:bpmn:check` fails when an
 SVG is stale. Run the renderer and look at the SVG before you call a diagram
 done.
 
+## Readable at 100%: check it before and after (author check)
+
+Owner, 2026-10-31: *"make the font a bit bigger, the spacing a bit more
+compact so dont need to zoom as much"*, *"add as QA and author check"*.
+Every diagram you write or touch must, when you are done:
+
+- **fit 1400 × 900** in diagram units, so its 14px text reads at 12px or
+  more in a 1200px band without zooming;
+- have **no label on another label, on a flow or on a box**: a gateway's
+  question above the diamond, its answers beside their flows;
+- have **no crossing flows**, and the **lane order that keeps flows between
+  lanes shortest**.
+
+`bun run cat bpmn:detangle <file>` reports all of it, and `--write` swaps the
+lanes when that helps. Run it before and after, and put both counts in the
+PR. The procedure, and why the budget is 1400 × 900, is
+[`bpmn-detangle`](bpmn-detangle.md).
+
 ## In this repository, a diagram is executable
 
 `processes/**/*.bpmn` are not pictures. `workflow_start` / `workflow_next`
