@@ -1,0 +1,30 @@
+{
+  "$schema": "qa-attestations/v1",
+  "family": "adversarial-review",
+  "subject": {
+    "kind": "skill",
+    "id": "merge-conflict-patterns",
+    "path": "skills/sdlc/sdlc-core/merge-conflict-patterns.md"
+  },
+  "adversarial_reviews": [
+    {
+      "reviewer": {
+        "by": "agent",
+        "session": "session_backfill_lvlv",
+        "model": "not-disclosed"
+      },
+      "author_sessions": [],
+      "skill_hash": "hash:adversarial-checklist:v1",
+      "at": "2026-10-09T16:54:43.277Z",
+      "coverage": {
+        "files_total": 1,
+        "files_reviewed": 1,
+        "skipped": []
+      },
+      "result": "pass",
+      "flags": [],
+      "findings": []
+    }
+  ],
+  "source_hash": "2befb122c3a3"
+}

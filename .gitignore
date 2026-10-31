@@ -32,10 +32,20 @@ node_modules/
 /todos/**
 # END state mounts
 
+# The QA working copy (cat-harness.json `qa`, storage `cat/cat-harness/qa-reports`).
+# Derived verdicts live on the qa-reports store branch, keyed by commit; a local
+# run writes them here and nothing commits them (beans folio-assistant-5hox,
+# -tfqf, -7mwa). The judgement half, test/attestations/, stays committed.
+/test/results/
+
 # Agent worktree scaffolding (symlinks into an enclosing checkout); never committed.
 .claude/worktrees/
 
 # BEGIN built at publish (cat-harness.json `builtAtPublish` — kept equal by schemas/built-at-publish.test.ts)
+# Owner, 2026-10-14 (B1): computed over the checkout's other instances, or from a
+# branch-kept graph, so no commit of this instance can hold them current.
+/docs/cat-harness/auto-docs/
+/docs/assets/auto-docs/index.json
 /docs/cat-harness/published-graphs.md
 /uml/overview/
 /docs/uml/overview/
@@ -50,6 +60,19 @@ node_modules/
 /docs/en/cat-harness/uploads/
 /docs/en/cat-harness/document-kinds/
 /docs/reference/skill-instructions/
+/docs/en/cat-harness/tools/
+/docs/assets/tools/index.json
+/docs/en/cat-harness/lsi/
+/docs/en/cat-harness/translation-status/
+/docs/assets/translation-status/
+/docs/en/cat-harness/openapi/
+/docs/en/cat-harness/schemas/
+/docs/assets/schemas/index.json
+/docs/en/cat-harness/methodologies/
+/docs/en/cat-harness/external-schemas/
+/docs/subscriptions/
+/docs/en/cat-harness/processes/
+/docs/assets/processes/index.json
 /docs/_data/node-kinds.json
 /docs/en/cat-harness/node-kind-index/
 /docs/en/cat-harness/bean/
@@ -76,14 +99,14 @@ node_modules/
 /docs/assets/glossary/folio-assistant-core--kg-dmn-decisions.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--kg-skills.skos.jsonld
-/docs/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--guideline-domain.skos.jsonld
+/docs/assets/glossary/folio-assistant-core--kg-tools.skos.jsonld
+/docs/assets/glossary/folio-assistant-sci--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/folio-assistant-core--platform.skos.jsonld
 /docs/assets/glossary/folio-assistant-sci--kg-bpmn-activities.skos.jsonld
 /docs/assets/glossary/folio-assistant-sci--kg-dmn-decisions.skos.jsonld
 /docs/assets/glossary/folio-assistant-sci--kg-skills.skos.jsonld
 /docs/assets/glossary/folio-assistant-sci--kg-tools.skos.jsonld
-/docs/assets/glossary/folio-assistant-sci--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/smart-base--kg-bpmn-activities.skos.jsonld
 /docs/assets/glossary/smart-base--kg-schema-fields.skos.jsonld
 /docs/assets/glossary/smart-base--kg-skills.skos.jsonld
@@ -100,34 +123,21 @@ node_modules/
 /docs/zh/folio-assistant-core/
 /docs/smart-base/
 /ns/context/v1.jsonld
-/docs/en/cat-harness/tools/
-/docs/assets/tools/index.json
-/docs/cat-harness/auto-docs/
-/docs/assets/auto-docs/index.json
-/docs/en/cat-harness/lsi/
-/docs/en/cat-harness/translation-status/
-/docs/assets/translation-status/
-/docs/en/cat-harness/openapi/
-/docs/en/cat-harness/schemas/
-/docs/assets/schemas/index.json
-/docs/en/cat-harness/methodologies/
-/docs/en/cat-harness/external-schemas/
-/docs/subscriptions/
 /docs/_data/harness.json
 /docs/_includes/generated/navbar-footer.html
-/docs/cat-harness/kind-table.md
 /site-chrome/assets/css/avatars.css
 /site-chrome/assets/css/themes.css
 /docs/_data/instance-themes.json
+/docs/cat-harness/kind-table.md
 /docs/assets/beans/
 /docs/assets/todos/count.json
 /docs/assets/todos/index.json
 /docs/assets/qa/index.json
 /docs/assets/folio/folio-assistant-core/
 /docs/assets/folio/who-iris/
+/docs/en/cat-harness/beans/index.html
 /docs/en/cat-harness/kg/index.html
 /docs/cat-harness/index.html
-/docs/en/cat-harness/beans/index.html
 /docs/en/cat-harness/todos/index.html
 /docs/en/cat-harness/qa/index.html
 /docs/en/cat-harness/health/index.html
@@ -233,6 +243,4 @@ node_modules/
 /docs/assets/img/workflows/iris-cdn-reconcile.svg
 /docs/assets/img/workflows/iris-cdn-sign-publish.svg
 /docs/assets/img/workflows/smart-guideline-end-to-end.svg
-/docs/en/cat-harness/processes/
-/docs/assets/processes/index.json
 # END built at publish
