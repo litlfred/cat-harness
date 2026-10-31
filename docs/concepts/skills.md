@@ -157,7 +157,7 @@ model, not alternatives to choose between.
 ### Platform skill bundles (`skills/tools/folio-core`, the content core's `skills/content/folio-document-adapter`, the science layer's `skills/content/folio-paper-adapter`)
 
 Larger **platform bundles**, two of them migrated from the qou content repo (see
-[migration record]({{ '/migrations/2026-06-29-platform-skills-migration.html' | relative_url }}) and
+[migration record](https://github.com/litlfred/folio-assistant/issues/202) and
 issue [#27](https://github.com/litlfred/folio-assistant/issues/27)). These are
 content-agnostic and meant to be synced into any folio:
 

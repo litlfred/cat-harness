@@ -128,7 +128,7 @@ LLM 在仓库中高效工作所使用的技能（通过 `skill_fetch` 加载，�
 
 ### 平台技能包（`skills/tools/folio-core`、`folio-assistant-core/skills/content/folio-document-adapter`、`folio-assistant-sci/skills/content/folio-paper-adapter`）
 
-更大型的**平台技能包**（platform bundles），其中两个从 qou 内容仓库迁移而来（参见[迁移记录]({{ '/zh/migrations/2026-06-29-platform-skills-migration.html' | relative_url }})以及 issue [#27](https://github.com/litlfred/folio-assistant/issues/27)）。它们与具体内容无关，旨在同步到任何 folio 中：
+更大型的**平台技能包**（platform bundles），其中两个从 qou 内容仓库迁移而来（参见[迁移记录](https://github.com/litlfred/folio-assistant/issues/202)以及 issue [#27](https://github.com/litlfred/folio-assistant/issues/27)）。它们与具体内容无关，旨在同步到任何 folio 中：
 
 | 技能包 | 技能数 | 范围 |
 |--------|-------:|-------|

@@ -157,7 +157,7 @@ de contenido, no alternativas entre las que elegir.
 ### Paquetes de habilidades de plataforma (`skills/tools/folio-core`, `folio-assistant-core/skills/content/folio-document-adapter`, `folio-assistant-sci/skills/content/folio-paper-adapter`)
 
 **Paquetes de plataforma** más amplios, dos de ellos migrados desde el repositorio de contenido qou (consulta el
-[registro de migración]({{ '/es/migrations/2026-06-29-platform-skills-migration.html' | relative_url }}) y el
+[registro de migración](https://github.com/litlfred/folio-assistant/issues/202) y el
 *issue* [#27](https://github.com/litlfred/folio-assistant/issues/27)). Son
 independientes del contenido y están diseñados para sincronizarse en cualquier folio:
 
