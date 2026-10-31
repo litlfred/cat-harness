@@ -124,6 +124,48 @@ fix or a revert may have none. The command reports the gap and exits 0; only
 a count it cannot make (store unmounted, shallow clone, an undatable
 instance) exits 2.
 
+### Arriving without the sweep — a mid-session clone, a project thread
+
+**Measured 2026-10-30, the "Fix wonky minimap" thread.** A project thread
+started with no repository. It cloned smart-ra, the tools layer and the
+content core mid-session, fixed and merged
+https://github.com/litlfred/cat-harness-tools/pull/1025,
+and repinned smart-ra. It never named a process, never loaded
+`delivery-summary` or `staging-review`, and gave its first result with no
+staging link. Every route to this skill was closed:
+
+- the **sweep** above runs from `.claude/hooks/session-start.sh`, and a hook
+  runs only when the repository is there **at session start**;
+- the `workflow_*` and `skill_fetch` tools come from the folio-assistant MCP
+  server (`.mcp.json`), which starts with the session, so a mid-session clone
+  has neither;
+- the repository's `CLAUDE.md` reached the agent only after the work was done.
+  The platform asked it to register the clone (`register_repo_root`), and it
+  did not;
+- the coordinator's brief named the card, merge and repository rules, and no
+  process.
+
+So, **when you clone a harness repository after the session started**:
+
+1. **Register it** if the platform offers that (Claude Code on the web:
+   `register_repo_root`), so its `CLAUDE.md` and skills load.
+2. **Run the sweep by hand**, from the checkout root:
+   `bash .claude/hooks/session-start.sh`. It lays the mounts down and prints
+   `## Running processes`, the prompt this section depends on.
+3. **Name the process before the first edit.** A code fix in a layer is
+   `sdlc/code-change-review`; a repin is `sdlc/upstream-version-adoption`; a
+   preview is `sdlc/feature-staging`. A delivery is `delivery-summary` plus the
+   deep-link rule in `staging-review`.
+4. **With no `workflow_*` tools, say so.** "Process X, not recorded: this
+   session has no workflow engine" is the true third state. Never write it as
+   recorded, and never leave it out.
+
+**A coordinator that briefs a thread** (a project's coordinator session, a
+swarm lead, anything that spawns an agent) puts the process, or "none", the
+governing skill and the repository in the brief. A spawned thread starts with
+nothing else that would tell it, and the coordinator's own memory holds no
+process rules by design.
+
 ## How to tell you are out of process
 
 This is the part that makes the skill a procedure rather than an exhortation.

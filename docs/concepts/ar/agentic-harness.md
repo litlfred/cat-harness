@@ -66,9 +66,9 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 | **التأليف (paper)** | [`authoring-a-paper.bpmn`](../../../../folio-assistant-sci/processes/content/authoring-a-paper.bpmn) | يطلب المستخدم تأليف محتوى في folio من نوع paper |
 | **التأليف (document)** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/processes/content/authoring-a-document.bpmn) | يطلب المستخدم تأليف محتوى في folio من نوع document |
 | **دورة حياة المحتوى** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/processes/content/content-lifecycle.bpmn) | ينتقل المحتوى عبر التحقق → التصيير → النشر |
-| **استيعاب المستندات** | [`document-ingestion.bpmn`](../../../processes/library/document-ingestion.bpmn) | يُسقط المستخدم ملفًا في `uploads/` |
+| **استيعاب المستندات** | [`document-ingestion.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/library/document-ingestion.bpmn) | يُسقط المستخدم ملفًا في `uploads/` |
 | **من المسودة إلى النشر** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/processes/content/draft-to-publication.bpmn) | ينتقل المحتوى من مسودة إلى منشور |
-| **متطلبات CRDM** | [`crdm-requirements.bpmn`](../../../processes/process/crdm-requirements.bpmn) | يكتشف الوكيل طلب ميزة |
+| **متطلبات CRDM** | [`crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn) | يكتشف الوكيل طلب ميزة |
 | **استرجاع الأدلة** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/processes/content/evidence-retrieval.bpmn) | يبحث الوكيل عن أدلة لدعم ادعاء |
 
 **انتقالات الحالة:** يمكن **تعليق (suspend)** سير العمل عندما يطلب المستخدم
@@ -121,7 +121,7 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 | **تأليف المحتوى** | كتابة محتوى folio أو تعديله أو توسيعه (فصول، كتل، أقسام) | سير عمل التأليف (paper أو document) |
 | **مراجعة المحتوى** | مراجعة المحتوى الحالي والتحقق منه وتقديم ملاحظات بشأنه | سير عمل دورة حياة المحتوى / تحرير تفاعل الإنسان والحاسوب (HCI) |
 | **استيعاب المحتوى** | استيعاب مستند مصدر في الـ folio | سير عمل استيعاب المستندات |
-| **طلب ميزة** | طلب قدرة جديدة للمنصة (انظر [crdm-detect](../../../skills/sdlc/crdm/crdm-detect.md)) | سير عمل متطلبات CRDM |
+| **طلب ميزة** | طلب قدرة جديدة للمنصة (انظر [crdm-detect](https://github.com/litlfred/cat-harness/blob/main/skills/sdlc/crdm/crdm-detect.md)) | سير عمل متطلبات CRDM |
 | **طلب معلومات** | الاستفسار عن المنصة أو المحتوى أو العملية | لا يوجد سير عمل — الإجابة مباشرة |
 | **استدعاء أداة** | تشغيل أداة محددة (`content_validate`، و`qa_sweep`، إلخ) | لا يوجد سير عمل — التنفيذ والإبلاغ |
 | **إدارة خطة العمل** | إنشاء الـ beans أو تحديثها أو الاستعلام عنها | لا يوجد سير عمل — التنفيذ والإبلاغ |
@@ -131,7 +131,7 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 
 يقع الحد الفاصل الحرج للتصنيف بين **تأليف المحتوى** و**طلب ميزة**.
 وتوفر مهارة `crdm-detect`
-([`skills/sdlc/crdm/crdm-detect.md`](../../../skills/sdlc/crdm/crdm-detect.md))
+([`skills/sdlc/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/sdlc/crdm/crdm-detect.md))
 إشارات الاكتشاف التفصيلية. والقاعدة التلخيصية هي:
 
 > إذا كان تنفيذ الطلب يتطلب تغييرات في **folio-assistant**
@@ -263,7 +263,7 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 عندما يُصنف طلب على أنه طلب ميزة، يدخل الوكيل في
 **سير عمل متطلبات CRDM**
 ([التوثيق الكامل](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/crdm-methodology.html)،
-و[BPMN](../../../processes/process/crdm-requirements.bpmn)).
+و[BPMN](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn)).
 
 يعد سير عمل طلبات الميزات هو الموضع الذي تقدم فيه وثيقة إطار العمل هذه أكبر
 فائدة، لأنها تصف سلوكًا كان ضمنيًا في السابق. فبينما وُثقت مسارات عمل
@@ -272,7 +272,7 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 
 ### كيف يدخل الوكيل في CRDM
 
-يوجد منطق الاكتشاف في [`skills/sdlc/crdm/crdm-detect.md`](../../../skills/sdlc/crdm/crdm-detect.md).
+يوجد منطق الاكتشاف في [`skills/sdlc/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/sdlc/crdm/crdm-detect.md).
 ثلاثة سيناريوهات:
 
 **جلسة جديدة، والطلب الأول هو ميزة:**
@@ -395,18 +395,18 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 
 | السلوك | المهارة / الوثيقة المصدر | الموقع |
 |---|---|---|
-| مسح بدء الجلسة | `AGENTS.md § At session start` | [`AGENTS.md`](../../../AGENTS.md) |
-| بروتوكول Bean | `todo-manager.md`، و`bean-coordination.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
-| انضباط التثبيت وطلبات السحب | `AGENTS.md § Commit early, commit often` | [`AGENTS.md`](../../../AGENTS.md) |
-| اكتشاف طلبات الميزات | `crdm-detect.md` | [`skills/sdlc/crdm/crdm-detect.md`](../../../skills/sdlc/crdm/crdm-detect.md) |
-| سير عمل متطلبات CRDM | `crdm-requirements-workflow.md` | [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../../skills/sdlc/crdm/crdm-requirements-workflow.md) |
+| مسح بدء الجلسة | `AGENTS.md § At session start` | [`AGENTS.md`](https://github.com/litlfred/cat-harness/blob/main/AGENTS.md) |
+| بروتوكول Bean | `todo-manager.md`، و`bean-coordination.md` | [`skills/tools/folio-core/`](https://github.com/litlfred/cat-harness/tree/main/skills/tools/folio-core/) |
+| انضباط التثبيت وطلبات السحب | `AGENTS.md § Commit early, commit often` | [`AGENTS.md`](https://github.com/litlfred/cat-harness/blob/main/AGENTS.md) |
+| اكتشاف طلبات الميزات | `crdm-detect.md` | [`skills/sdlc/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/sdlc/crdm/crdm-detect.md) |
+| سير عمل متطلبات CRDM | `crdm-requirements-workflow.md` | [`skills/sdlc/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/skills/sdlc/crdm/crdm-requirements-workflow.md) |
 | تأليف المحتوى (paper) | مهارات authoring-math | `skill_list` → `authoring-math` |
 | تأليف المحتوى (document) | مهارات folio-document-adapter | `skill_list` → `folio-document-adapter` |
-| دورة حياة المحتوى | مهارات content-lifecycle | [`skills/authoring/content-lifecycle/`](../../../skills/authoring/content-lifecycle/) |
-| استيعاب المستندات | `docs-generation.md` | [`skills/ui/ui-core/docs-generation.md`](../../../skills/ui/ui-core/docs-generation.md) |
-| الإرسال والتنسيق | `dispatch-agent.md`، و`coordinate.md` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
-| أنواع المحتوى والمحولات | `AGENTS.md § Content types` | [`AGENTS.md`](../../../AGENTS.md) |
-| تأليف مخططات BPMN | مهارة `bpmn-authoring` | [`skills/tools/folio-core/`](../../../skills/tools/folio-core/) |
+| دورة حياة المحتوى | مهارات content-lifecycle | [`skills/authoring/content-lifecycle/`](https://github.com/litlfred/cat-harness/tree/main/skills/authoring/content-lifecycle/) |
+| استيعاب المستندات | `docs-generation.md` | [`skills/ui/ui-core/docs-generation.md`](https://github.com/litlfred/cat-harness/blob/main/skills/ui/ui-core/docs-generation.md) |
+| الإرسال والتنسيق | `dispatch-agent.md`، و`coordinate.md` | [`skills/tools/folio-core/`](https://github.com/litlfred/cat-harness/tree/main/skills/tools/folio-core/) |
+| أنواع المحتوى والمحولات | `AGENTS.md § Content types` | [`AGENTS.md`](https://github.com/litlfred/cat-harness/blob/main/AGENTS.md) |
+| تأليف مخططات BPMN | مهارة `bpmn-authoring` | [`skills/tools/folio-core/`](https://github.com/litlfred/cat-harness/tree/main/skills/tools/folio-core/) |
 
 **عندما تختلف إحدى المهارات مع هذه الصفحة، تسود المهارة.** فهذه الصفحة هي
 تجميع وتوحيد، وليست سلطة جديدة بحد ذاتها. وإذا وجدت تعارضًا، فقم بإصلاح هذه الصفحة.

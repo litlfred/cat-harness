@@ -157,7 +157,7 @@ de contenu, et non des alternatives entre lesquelles choisir.
 ### Lots de compétences de plateforme (`skills/tools/folio-core`, `folio-assistant-core/skills/content/folio-document-adapter`, `folio-assistant-sci/skills/content/folio-paper-adapter`)
 
 Des **lots de plateforme** plus importants, dont deux ont été migrés depuis le dépôt de contenu qou (voir le
-[registre de migration]({{ '/fr/migrations/2026-06-29-platform-skills-migration.html' | relative_url }}) et
+[registre de migration](https://github.com/litlfred/folio-assistant/issues/202) et
 le ticket [#27](https://github.com/litlfred/folio-assistant/issues/27)). Ils sont
 indépendants du contenu et conçus pour être synchronisés dans n'importe quel folio :
 
