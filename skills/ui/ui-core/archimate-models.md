@@ -5,17 +5,18 @@ description: >
   Archi models it holds, what the `archimate` subgraph gives every model,
   view, element and relationship (an IRI, a thin page, and every view drawn as
   SVG from the model's own diagram), how to version the models, how to wire
-  them into a folio's staging build and navbar, and why no Java, no Archi CLI
+  them into a folio's staging build and navbar, how to count and lower the
+  crossed lines in a view before committing it, and why no Java, no Archi CLI
   and no Archi HTML report is ever part of the pipeline. Read before adding,
-  publishing or rendering an `.archimate` file, before citing an ArchiMate
-  element from prose, and before reaching for Archi's own tooling in CI.
+  authoring, publishing or rendering an `.archimate` file, before citing an
+  ArchiMate element from prose, and before reaching for Archi's own tooling in CI.
 ---
 
 # ArchiMate models — every view, element and relationship a node
 
 > Skill id: `archimate-models` · Package: `ui-core` · Subgraph:
 > [`cat-harness/archimate/`](../../../archimate/README.md) · Tools:
-> `archimate-check`, `archimate-pages`
+> `archimate-check`, `archimate-pages`, `archimate-crossings`, `archimate-detangle`
 
 Owner, 2026-10-09: *"need new specialixed harness (like openapi) for archimate
 content in the KG"*, and then, of the Archi CLI report: *"do not do java
@@ -66,6 +67,49 @@ in cat-harness-tools). Nothing is committed and nothing redirects, so:
 
 Do not put slugs in the IRIs: the mapper keys on the ids, and a rename would
 move an IRI.
+
+## Untangle every view you touch
+
+Owner, 2026-10-31, of a view with lines drawn across each other and through
+boxes: *"lots crossed lines. detangle. (skill/process always check and try
+minimize when authoring archimate)"*, then *"improve skills / make mechanical
+tools where you can"*.
+
+**A change to a view never adds tangles, and every view you touch leaves with
+no more than it came with.** A tangle is a line crossing another line, or a
+line running through a box that is not one of its ends and does not hold one.
+Groups (bands) are not boxes here; a line may cross a band.
+
+Every time you add, move or re-route anything in a view:
+
+1. **Count before.** `bun run cat archimate:crossings --model <file> --view <id or name>`
+   lists each tangle by the boxes it joins.
+2. **Make the change.**
+3. **Let the tool lower it.** `bun run cat archimate:detangle --model <file> --view <id>`
+   reports what it would do: re-route lines (straight, an L, or a Z through a
+   free lane between rows) and swap same-size boxes in the same row or column.
+   It keeps a change only if the count goes down. Add `--apply` to write it,
+   or `--routes-only` when the boxes' places carry meaning (an order, a flow).
+4. **Look at the drawing** (`gen-archimate-pages.ts --out`, or the view's SVG)
+   before and after. The count is a gate, not taste: undo a swap that breaks a
+   reading order, and fix by hand what the tool cannot (it never adds, resizes
+   or regroups boxes).
+5. **Count after, and say both numbers** in the PR: *"view X: 10 crossings,
+   13 through a box → 1, 2"*. More tangles after than before is a finding to
+   fix before review, not a note.
+
+Ways to untangle by hand, in the order to try them:
+
+- Put a box beside the boxes it is joined to: a line's ends in neighbouring
+  rows, not across the view.
+- Order a row like the row it connects to (the order of the boxes above),
+  so lines between the two rows run parallel.
+- Route a long line along the gap between rows or bands, with right-angle
+  bendpoints, rather than diagonally across boxes.
+- Nest instead of drawing a line where the notation allows it (composition,
+  aggregation, assignment, realization): a box drawn inside another already
+  says how they relate, and the renderer draws no line for it.
+- When nothing else works, a view shows too much: split it.
 
 ## No Java, no Archi CLI, no Archi report — ever
 
@@ -154,3 +198,4 @@ or `render-view.ts`, in TypeScript.
 - Commit exported view images beside a model; they go stale on the next edit.
 - Name model folders by anything but the version they describe.
 - Declare the `archimate` typology in an instance whose platform pin predates it.
+- Commit a change to a view without counting its tangles before and after.
