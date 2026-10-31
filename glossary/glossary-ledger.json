@@ -57,9 +57,19 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/compute-authoring-agent": {
+      "prefLabel": "Compute authoring agent",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
     "role/corpus": {
       "prefLabel": "Corpus",
       "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/deep-researcher": {
+      "prefLabel": "Deep researcher",
+      "firstSeen": "2026-09-23",
       "retiredOn": null
     },
     "role/docs-authoring-agent": {
@@ -77,6 +87,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/evidence-agent": {
+      "prefLabel": "Evidence agent",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
     "role/external-registry": {
       "prefLabel": "External registry",
       "firstSeen": "2026-09-21",
@@ -87,6 +102,16 @@
       "firstSeen": "2026-09-22",
       "retiredOn": null
     },
+    "role/fhir-modeller": {
+      "prefLabel": "FHIR modeller",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/ig-publisher-service": {
+      "prefLabel": "IG publisher + validator",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
     "role/ingestion-agent": {
       "prefLabel": "Ingestion engine",
       "firstSeen": "2026-09-21",
@@ -94,6 +119,21 @@
     },
     "role/integration-watcher": {
       "prefLabel": "Integration watcher",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/l1-extraction-reviewer": {
+      "prefLabel": "L1 extraction reviewer",
+      "firstSeen": "2026-10-15",
+      "retiredOn": null
+    },
+    "role/lean-authoring-agent": {
+      "prefLabel": "Lean authoring agent",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/lean-toolchain": {
+      "prefLabel": "Lean toolchain",
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
@@ -117,6 +157,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/onboarding-agent": {
+      "prefLabel": "Onboarding agent",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
     "role/platform-authoring-agent": {
       "prefLabel": "Platform authoring agent",
       "firstSeen": "2026-09-21",
@@ -124,6 +169,11 @@
     },
     "role/programme-manager": {
       "prefLabel": "Programme manager",
+      "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/proof-review-agent": {
+      "prefLabel": "Proof review agent",
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
@@ -221,56 +271,6 @@
       "prefLabel": "Work plan (beans)",
       "firstSeen": "2026-09-21",
       "retiredOn": null
-    },
-    "role/compute-authoring-agent": {
-      "prefLabel": "Compute authoring agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/deep-researcher": {
-      "prefLabel": "Deep researcher",
-      "firstSeen": "2026-09-23",
-      "retiredOn": "2026-10-30"
-    },
-    "role/evidence-agent": {
-      "prefLabel": "Evidence agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/fhir-modeller": {
-      "prefLabel": "FHIR modeller",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/ig-publisher-service": {
-      "prefLabel": "IG publisher + validator",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/l1-extraction-reviewer": {
-      "prefLabel": "L1 extraction reviewer",
-      "firstSeen": "2026-10-15",
-      "retiredOn": "2026-10-30"
-    },
-    "role/lean-authoring-agent": {
-      "prefLabel": "Lean authoring agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/lean-toolchain": {
-      "prefLabel": "Lean toolchain",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/onboarding-agent": {
-      "prefLabel": "Onboarding agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
-    },
-    "role/proof-review-agent": {
-      "prefLabel": "Proof review agent",
-      "firstSeen": "2026-09-21",
-      "retiredOn": "2026-10-30"
     }
   }
 }
