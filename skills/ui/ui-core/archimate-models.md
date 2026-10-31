@@ -6,7 +6,9 @@ description: >
   view, element and relationship (an IRI, a thin page, and every view drawn as
   SVG from the model's own diagram), how to version the models, how to wire
   them into a folio's staging build and navbar, how to count and lower the
-  crossed lines in a view before committing it, and why no Java, no Archi CLI
+  crossed lines in a view before committing it, why every view carries a
+  plain-language key, why names are the source's own terms linked to their
+  SKOS concepts, and why no Java, no Archi CLI
   and no Archi HTML report is ever part of the pipeline. Read before adding,
   authoring, publishing or rendering an `.archimate` file, before citing an
   ArchiMate element from prose, and before reaching for Archi's own tooling in CI.
@@ -111,6 +113,41 @@ Ways to untangle by hand, in the order to try them:
   says how they relate, and the renderer draws no line for it.
 - When nothing else works, a view shows too much: split it.
 
+## Every view carries a key for readers who do not know ArchiMate
+
+Owner, 2026-10-31: *"what do arrows/colors/shapes mean, need legend"*.
+
+Readers of a view are mostly not architects. **Every rendered view carries a
+plain-language key** below it, saying what each colour, shape, line and end
+used ON THAT VIEW means, in words a reader without ArchiMate understands
+("Realization: makes real, or achieves"), not the specification's terms
+alone. `render-view.ts` draws it by default (cat-harness-tools#1059), keyed
+only to what the view uses. Do not turn it off for a published view, and do
+not export a view without it. When the renderer gains a new mark, the key
+gains its line in the same change.
+
+## Names are the source's own terms, linked to their concept
+
+Owner, 2026-10-31, after an NHWA element was named in our words rather than
+the handbook's (smart-ra#163).
+
+**An element or view named from a source uses the source's own term, and
+links to that term's SKOS concept.** Not our paraphrase, shortening or
+merger of two terms. When smart-ra models a module of *National health
+workforce accounts: a handbook*, the box is named as the handbook names it,
+and the element carries the concept's IRI (a property, e.g.
+`concept` = the `skos:Concept` IRI in the source's glossary scheme) so its
+page links to the definition.
+
+- No concept for the term yet: add it to the source's glossary scheme first,
+  from the source's own words, then name the element.
+- The source's term is too long for a box: keep the full term as the name
+  and let the renderer wrap it; a short form goes in `skos:altLabel`, never
+  in place of the name.
+- Our term and the source's disagree: that is a content decision
+  ([`term-disagreement`](../../library/library-core/term-disagreement.md)),
+  not something to settle by renaming in Archi.
+
 ## No Java, no Archi CLI, no Archi report — ever
 
 The Archi command line (`com.archimatetool.commandline.app`) renders an HTML
@@ -199,3 +236,4 @@ or `render-view.ts`, in TypeScript.
 - Name model folders by anything but the version they describe.
 - Declare the `archimate` typology in an instance whose platform pin predates it.
 - Commit a change to a view without counting its tangles before and after.
+- Publish a view without its key, or name an element from a source in words the source does not use.
