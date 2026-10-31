@@ -84,10 +84,10 @@ Groups (bands) are not boxes here; a line may cross a band.
 
 Every time you add, move or re-route anything in a view:
 
-1. **Count before.** `bun run cat archimate:crossings --model <file> --view <id or name>`
+1. **Count before.** `bun run cat archimate:crossings --model <file> --view <id or page slug>`
    lists each tangle by the boxes it joins.
 2. **Make the change.**
-3. **Let the tool lower it.** `bun run cat archimate:detangle --model <file> --view <id>`
+3. **Let the tool lower it.** `bun run cat archimate:detangle --model <file> --view <id or page slug>`
    reports what it would do: re-route lines (straight, an L, or a Z through a
    free lane between rows) and swap same-size boxes in the same row or column.
    It keeps a change only if the count goes down. Add `--apply` to write it,
