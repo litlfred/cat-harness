@@ -14,11 +14,15 @@
   behaviour. That is not a hypothetical — it is how this site's last few rounds
   of changes were assessed.
 
-  `docs/_data/build.yml` is written by the "Stamp the build sha" step in
-  .github/workflows/docs-site.yml and is NOT committed: a sha checked into the
-  repo would name the commit BEFORE the one that deployed it, which is worse
-  than no stamp at all. A local `jekyll serve` has no data file and shows
-  "dev".
+  RENDERED CONSTANT, FILLED IN THE BROWSER (owner, 2026-10-31). The values
+  were baked in from `docs/_data/build.yml`, so every page changed on every
+  deploy: a preview could share none of main's unchanged pages, and a cone
+  deploy could skip none. Now no build writes `short_sha`, `built_at` or
+  `run_url`, every build renders "deployed dev" here, and the browser fills
+  the real stamp: `docs-ui.js` (`fillBuildStamp`) from `<base>/build.json` on
+  the live site, the staging banner's script from `staging.json` on a
+  preview. The keys stay readable below, so a site that still writes them
+  keeps its stamp.
 {%- endcomment -%}
 {%- comment -%}
   THE LINEAR FLOOR, and it is page content rather than a script's output.
