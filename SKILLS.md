@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_249 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_250 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -178,11 +178,12 @@ _249 skills in 18 directories, generated from each skill's front matter. `bun ru
 |---|---|
 | [`raci`](skills/process/raci/raci.md) | RACI over this repository's processes — who is Responsible, Accountable, Consulted and Informed for each activity. |
 
-**`skills/process/workflow/`** (10)
+**`skills/process/workflow/`** (11)
 
 | Skill | What it is for |
 |---|---|
 | [`bpmn-authoring`](skills/process/workflow/bpmn-authoring.md) | Author BPMN 2.0 business process diagrams — both a DAK's L2 business processes and this repository's own `processes/**/*.bpmn`. |
+| [`bpmn-detangle`](skills/process/workflow/bpmn-detangle.md) | Make a BPMN diagram readable at 100% without zooming, and untangle it: keep it inside the size budget, give every label a place clear of other labels, flows and boxes, remove crossings, and swap… |
 | [`bpmn-processes`](skills/process/workflow/bpmn-processes.md) | Every process here is BPMN, the diagrams are executable, and the base processes are strict. |
 | [`deterministic-and-agentic`](skills/process/workflow/deterministic-and-agentic.md) | Workflow processing is a SPECTRUM, not a switch. |
 | [`dmn-authoring`](skills/process/workflow/dmn-authoring.md) | Author DMN decision tables — a DAK's clinical decision logic, and the tables that back this repository's own computed gateways. |
