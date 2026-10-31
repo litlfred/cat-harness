@@ -1,0 +1,126 @@
+{
+  "$schema": "folio-keywords/v1",
+  "entry": "arxiv-2505.11701v2",
+  "corpus": {
+    "library": "cat-harness/library",
+    "sections": 2267,
+    "terms": 15478,
+    "weighting": "log-entropy"
+  },
+  "document": [
+    {
+      "term": "dmn logic",
+      "score": 5.3823,
+      "evidence": []
+    },
+    {
+      "term": "false true",
+      "score": 5.2316,
+      "evidence": []
+    },
+    {
+      "term": "dmn rules",
+      "score": 4.7974,
+      "evidence": []
+    },
+    {
+      "term": "dmn triples",
+      "score": 4.6073,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "dmn models",
+      "score": 4.3527,
+      "evidence": []
+    },
+    {
+      "term": "decision logic",
+      "score": 4.1979,
+      "evidence": []
+    },
+    {
+      "term": "loan approval",
+      "score": 4.1578,
+      "evidence": []
+    },
+    {
+      "term": "parsed dmn",
+      "score": 4.0924,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "dmn file",
+      "score": 4.048,
+      "evidence": []
+    },
+    {
+      "term": "dmn supports",
+      "score": 3.8964,
+      "evidence": []
+    },
+    {
+      "term": "bpr rules",
+      "score": 3.8254,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "perceived usefulness",
+      "score": 3.8001,
+      "evidence": [
+        "heading"
+      ]
+    }
+  ],
+  "sections": {
+    "sec-000-dmn-guided-prompting-a-framework-for-controlling": [
+      {
+        "term": "prompting framework",
+        "score": 6.7502,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "dmn logic",
+        "score": 5.3823,
+        "evidence": []
+      },
+      {
+        "term": "false true",
+        "score": 5.2316,
+        "evidence": []
+      },
+      {
+        "term": "dmn rules",
+        "score": 4.7974,
+        "evidence": []
+      },
+      {
+        "term": "dmn triples",
+        "score": 4.6073,
+        "evidence": []
+      },
+      {
+        "term": "dmn models",
+        "score": 4.3527,
+        "evidence": []
+      },
+      {
+        "term": "decision logic",
+        "score": 4.1979,
+        "evidence": []
+      },
+      {
+        "term": "loan approval",
+        "score": 4.1578,
+        "evidence": []
+      }
+    ]
+  }
+}

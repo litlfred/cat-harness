@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-2505.11701v2/blocks/figure-img-p010-1",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p010-1.png",
+  "pageStart": 10,
+  "pageEnd": 10,
+  "narrative": [
+    {
+      "text": "Figure 9: Example of a student BPMN process model containing a merged task with ambiguous labeling ('check and register result'), leading to a Rule 2 (task composition) misclassification.",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 9 : Exemple de modèle de processus BPMN étudiant contenant une tâche fusionnée au libellé ambigu (« check and register result »), entraînant une erreur de classification sur la règle 2.",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 9: Ejemplo de un modelo de proceso BPMN estudiantil con una tarea fusionada de etiquetado ambiguo («check and register result»), que causó un error de clasificación en la Regla 2.",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 9: مثال لنموذج عملية BPMN طلابي يحتوي على مهمة مدمجة ذات تسمية غامضة («check and register result»)، مما أدى إلى خطأ تصنيف في القاعدة 2.",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图 9：包含模糊命名合并任务（“check and register result”）的学生 BPMN 流程模型示例，导致规则 2（任务合并）反馈分类错误。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 9: Пример студенческой BPMN-модели с неоднозначно названной объединённой задачей («check and register result»), приведшей к ошибке классификации по Правилу 2.",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-2505.11701v2/sections/sec-000",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2505.11701v2/manifest.jsonld",
+  "provenance": "ingested"
+}

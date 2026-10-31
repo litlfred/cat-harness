@@ -1,0 +1,2493 @@
+{
+  "_schema": "pdf-structure/v1",
+  "doc_id": "arxiv-1511-04055v1",
+  "source": {
+    "file": "arxiv-1511-04055v1.pdf",
+    "sha256": "8201ed0c0ae78f46d2def5fe80618345b53e1b94413e0b9ba23023cd02671152",
+    "bytes": 1417024,
+    "pages": 30,
+    "text_source": "embedded",
+    "extractor": "pymupdf",
+    "mtime": "2026-10-31T10:58:59Z",
+    "mimetype_sniffed": "application/pdf",
+    "mimetype_source": "magic-bytes"
+  },
+  "metadata": {
+    "arxiv": null,
+    "doi": "10.1007/s10257-014-0245-4",
+    "title": "A visual analysis of the process of process modeling 1 1 Introduction",
+    "authors_raw": "Jan Claes1,2, Irene Vanderfeesten2, Jakob Pinggera3, Hajo A. Reijers2, Barbara Weber3 and Geert Poels1",
+    "title_lines": [
+      "A\u00a0visual\u00a0analysis\u00a0of\u00a0the\u00a0process\u00a0of\u00a0process\u00a0modeling1"
+    ],
+    "abstract": "The construction of business process models has become an important requisite in the analysis and optimization of processes. The success of the analysis and optimization efforts heavily depends on the quality of the models. Therefore, a research domain emerged that studies the process of process modeling. This paper contributes to this research by presenting a way of visualizing the different steps a modeler undertakes to construct a process model, in a so-called PPMChart. The graphical representation lowers the cognitive efforts to discover properties of the modeling process, which facilitates the research and the development of theory, training and tool support for improving model quality. The paper contains an extensive overview of applications of the tool that demonstrate its usefulness for research and practice and discusses the observations from the visualization in relation to other work. The visualization was evaluated through a qualitative study that confirmed its usefulness and added value compared to the Dotted Chart on which the visualization was inspired.",
+    "docinfo": {
+      "Title": "Microsoft Word - A visual analysis of the process of process modeling.docx",
+      "Author": "Cornelia",
+      "Producer": "Acrobat Distiller 10.1.16 (Windows)",
+      "Creator": "PScript5.dll Version 5.2.2",
+      "CreationDate": "D:20151111183455+01'00'"
+    },
+    "title_raw": "A\u00a0visual\u00a0analysis\u00a0of\u00a0the\u00a0process\u00a0of\u00a0process\u00a0modeling1",
+    "title_source": "heading",
+    "title_verified": true,
+    "title_evidence": {
+      "metadata": "Microsoft Word - A visual analysis of the process of process modeling.docx",
+      "heading": "A visual analysis of the process of process modeling 1 1 Introduction",
+      "text": "A visual analysis of the process of process modeling1",
+      "corroborated_by": [
+        "text"
+      ],
+      "browser_print": false
+    },
+    "title_correction": {
+      "title": "A Visual Analysis of the Process of Process Modeling",
+      "basis": "Page 1 title and arXiv:1511.04055v1 / Information Systems and e-Business Management (doi:10.1007/s10257-014-0245-4) metadata (removing merged footnote number '1' and section heading '1 Introduction').",
+      "corrected_on": "2026-10-31",
+      "bean": "folio-assistant-e0jh"
+    }
+  },
+  "toc": [
+    {
+      "level": 1,
+      "title": "Introduction",
+      "page": 1,
+      "source": "inferred",
+      "number": "1",
+      "confidence": 0.85,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style",
+        "stock-name"
+      ],
+      "page_label": "1"
+    },
+    {
+      "level": 1,
+      "title": "Motivation",
+      "page": 2,
+      "source": "inferred",
+      "number": "2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "2"
+    },
+    {
+      "level": 2,
+      "title": "Dotted Chart",
+      "page": 2,
+      "source": "inferred",
+      "number": "2.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "2"
+    },
+    {
+      "level": 2,
+      "title": "Cognitive effectiveness of a visualization",
+      "page": 3,
+      "source": "inferred",
+      "number": "2.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "3"
+    },
+    {
+      "level": 3,
+      "title": "Visual expressiveness",
+      "page": 3,
+      "source": "inferred",
+      "number": "2.2.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "3"
+    },
+    {
+      "level": 3,
+      "title": "Perceptual discriminability",
+      "page": 3,
+      "source": "inferred",
+      "number": "2.2.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "3"
+    },
+    {
+      "level": 3,
+      "title": "Graphic economy",
+      "page": 3,
+      "source": "inferred",
+      "number": "2.2.3",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "3"
+    },
+    {
+      "level": 3,
+      "title": "Dual coding",
+      "page": 4,
+      "source": "inferred",
+      "number": "2.2.4",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "4"
+    },
+    {
+      "level": 3,
+      "title": "Semiotic clarity",
+      "page": 4,
+      "source": "inferred",
+      "number": "2.2.5",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "4"
+    },
+    {
+      "level": 3,
+      "title": "Semantic transparency",
+      "page": 4,
+      "source": "inferred",
+      "number": "2.2.6",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "4"
+    },
+    {
+      "level": 3,
+      "title": "Complexity management",
+      "page": 4,
+      "source": "inferred",
+      "number": "2.2.7",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "4"
+    },
+    {
+      "level": 3,
+      "title": "Cognitive integration",
+      "page": 4,
+      "source": "inferred",
+      "number": "2.2.8",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "4"
+    },
+    {
+      "level": 3,
+      "title": "Cognitive fit",
+      "page": 5,
+      "source": "inferred",
+      "number": "2.2.9",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "5"
+    },
+    {
+      "level": 3,
+      "title": "Conclusion",
+      "page": 5,
+      "source": "inferred",
+      "number": "2.2.10",
+      "confidence": 0.85,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style",
+        "stock-name"
+      ],
+      "page_label": "5"
+    },
+    {
+      "level": 1,
+      "title": "The PPMChart visualization",
+      "page": 5,
+      "source": "inferred",
+      "number": "3",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "5"
+    },
+    {
+      "level": 2,
+      "title": "Data requirements",
+      "page": 5,
+      "source": "inferred",
+      "number": "3.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "5"
+    },
+    {
+      "level": 2,
+      "title": "Visualization with PPMChart",
+      "page": 5,
+      "source": "inferred",
+      "number": "3.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "5"
+    },
+    {
+      "level": 2,
+      "title": "Differences with Dotted Chart",
+      "page": 6,
+      "source": "inferred",
+      "number": "3.3",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "6"
+    },
+    {
+      "level": 2,
+      "title": "Tool support",
+      "page": 7,
+      "source": "inferred",
+      "number": "3.4",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "7"
+    },
+    {
+      "level": 3,
+      "title": "Required format of the recorded data",
+      "page": 7,
+      "source": "inferred",
+      "number": "3.4.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "7"
+    },
+    {
+      "level": 3,
+      "title": "Fixed default color, shade and shape coding",
+      "page": 8,
+      "source": "inferred",
+      "number": "3.4.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "8"
+    },
+    {
+      "level": 3,
+      "title": "Fixed default time interval",
+      "page": 9,
+      "source": "inferred",
+      "number": "3.4.3",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "9"
+    },
+    {
+      "level": 3,
+      "title": "Sort options",
+      "page": 9,
+      "source": "inferred",
+      "number": "3.4.4",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "9"
+    },
+    {
+      "level": 3,
+      "title": "Distance from start",
+      "page": 9,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "numbered-style"
+      ],
+      "page_label": "9"
+    },
+    {
+      "level": 3,
+      "title": "Create order from start",
+      "page": 9,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "numbered-style"
+      ],
+      "page_label": "9"
+    },
+    {
+      "level": 3,
+      "title": "First operation",
+      "page": 10,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "numbered-style"
+      ],
+      "page_label": "10"
+    },
+    {
+      "level": 3,
+      "title": "Filter options",
+      "page": 10,
+      "source": "inferred",
+      "number": "3.4.5",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "10"
+    },
+    {
+      "level": 3,
+      "title": "Example",
+      "page": 10,
+      "source": "inferred",
+      "number": "3.4.6",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "10"
+    },
+    {
+      "level": 1,
+      "title": "Application",
+      "page": 10,
+      "source": "inferred",
+      "number": "4",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "10"
+    },
+    {
+      "level": 2,
+      "title": "Data collection",
+      "page": 10,
+      "source": "inferred",
+      "number": "4.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "10"
+    },
+    {
+      "level": 2,
+      "title": "Simple observations",
+      "page": 11,
+      "source": "inferred",
+      "number": "4.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "11"
+    },
+    {
+      "level": 3,
+      "title": "Modeling speed",
+      "page": 11,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "numbered-style"
+      ],
+      "page_label": "11"
+    },
+    {
+      "level": 3,
+      "title": "Modeling pauses",
+      "page": 11,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "numbered-style"
+      ],
+      "page_label": "11"
+    },
+    {
+      "level": 3,
+      "title": "Amount of model elements",
+      "page": 11,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "numbered-style"
+      ],
+      "page_label": "11"
+    },
+    {
+      "level": 3,
+      "title": "Amount of modeling operations",
+      "page": 11,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "numbered-style"
+      ],
+      "page_label": "11"
+    },
+    {
+      "level": 2,
+      "title": "Observations on patterns of operations on model elements",
+      "page": 11,
+      "source": "inferred",
+      "number": "4.3",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "11"
+    },
+    {
+      "level": 3,
+      "title": "Patterns of delete operations",
+      "page": 11,
+      "source": "inferred",
+      "number": "4.3.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "11"
+    },
+    {
+      "level": 3,
+      "title": "Patterns of move operations",
+      "page": 12,
+      "source": "inferred",
+      "number": "4.3.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "12"
+    },
+    {
+      "level": 3,
+      "title": "Patterns of create operations: order of creating activities, gateways and edges",
+      "page": 12,
+      "source": "inferred",
+      "number": "4.3.3",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "12"
+    },
+    {
+      "level": 3,
+      "title": "Patterns of create operations: split and join gateways",
+      "page": 13,
+      "source": "inferred",
+      "number": "4.3.4",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "13"
+    },
+    {
+      "level": 3,
+      "title": "Patterns of create operations: chunked modeling",
+      "page": 13,
+      "source": "inferred",
+      "number": "4.3.5",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "13"
+    },
+    {
+      "level": 3,
+      "title": "No clear patterns",
+      "page": 14,
+      "source": "inferred",
+      "number": "4.3.6",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "14"
+    },
+    {
+      "level": 2,
+      "title": "Observations based on multiple diagrams",
+      "page": 15,
+      "source": "inferred",
+      "number": "4.4",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "15"
+    },
+    {
+      "level": 3,
+      "title": "Comparison between PPMCharts of different cases",
+      "page": 15,
+      "source": "inferred",
+      "number": "4.4.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "15"
+    },
+    {
+      "level": 3,
+      "title": "Comparison between PPMCharts of the same modeler modeling different cases",
+      "page": 15,
+      "source": "inferred",
+      "number": "4.4.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "15"
+    },
+    {
+      "level": 3,
+      "title": "Comparison between PPMCharts and process models",
+      "page": 16,
+      "source": "inferred",
+      "number": "4.4.3",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "16"
+    },
+    {
+      "level": 1,
+      "title": "Qualitative evaluation",
+      "page": 17,
+      "source": "inferred",
+      "number": "5",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "17"
+    },
+    {
+      "level": 2,
+      "title": "Participants",
+      "page": 17,
+      "source": "inferred",
+      "number": "5.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "17"
+    },
+    {
+      "level": 2,
+      "title": "Visualization tools",
+      "page": 17,
+      "source": "inferred",
+      "number": "5.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "17"
+    },
+    {
+      "level": 2,
+      "title": "Input data",
+      "page": 18,
+      "source": "inferred",
+      "number": "5.3",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "18"
+    },
+    {
+      "level": 2,
+      "title": "Protocol",
+      "page": 18,
+      "source": "inferred",
+      "number": "5.4",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "18"
+    },
+    {
+      "level": 2,
+      "title": "Measurements",
+      "page": 18,
+      "source": "inferred",
+      "number": "5.5",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "18"
+    },
+    {
+      "level": 2,
+      "title": "Results",
+      "page": 19,
+      "source": "inferred",
+      "number": "5.6",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "19"
+    },
+    {
+      "level": 3,
+      "title": "Usefulness",
+      "page": 19,
+      "source": "inferred",
+      "number": "5.6.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "19"
+    },
+    {
+      "level": 3,
+      "title": "Increased cognitive effectiveness",
+      "page": 19,
+      "source": "inferred",
+      "number": "5.6.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "19"
+    },
+    {
+      "level": 1,
+      "title": "Limitations, implications and future research",
+      "page": 20,
+      "source": "inferred",
+      "number": "6",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "20"
+    },
+    {
+      "level": 2,
+      "title": "Limitations of this study",
+      "page": 20,
+      "source": "inferred",
+      "number": "6.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "20"
+    },
+    {
+      "level": 2,
+      "title": "Implications for research and practice",
+      "page": 20,
+      "source": "inferred",
+      "number": "6.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "20"
+    },
+    {
+      "level": 3,
+      "title": "Discovery of modeling phases and styles",
+      "page": 20,
+      "source": "inferred",
+      "number": "6.2.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "20"
+    },
+    {
+      "level": 3,
+      "title": "Link with process model quality",
+      "page": 21,
+      "source": "inferred",
+      "number": "6.2.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "21"
+    },
+    {
+      "level": 2,
+      "title": "Future research",
+      "page": 21,
+      "source": "inferred",
+      "number": "6.3",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "21"
+    },
+    {
+      "level": 1,
+      "title": "Related work",
+      "page": 22,
+      "source": "inferred",
+      "number": "7",
+      "confidence": 0.85,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style",
+        "stock-name"
+      ],
+      "page_label": "22"
+    },
+    {
+      "level": 2,
+      "title": "Visualizations of the process of process modeling",
+      "page": 22,
+      "source": "inferred",
+      "number": "7.1",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "22"
+    },
+    {
+      "level": 2,
+      "title": "Process models",
+      "page": 22,
+      "source": "inferred",
+      "number": "7.2",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "22"
+    },
+    {
+      "level": 2,
+      "title": "Visualizations that concentrate on control flow and hierarchy",
+      "page": 23,
+      "source": "inferred",
+      "number": "7.3",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "23"
+    },
+    {
+      "level": 1,
+      "title": "Conclusion",
+      "page": 24,
+      "source": "inferred",
+      "number": "8",
+      "confidence": 0.85,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style",
+        "stock-name"
+      ],
+      "page_label": "24"
+    },
+    {
+      "level": 1,
+      "title": "Acknowledgements",
+      "page": 24,
+      "source": "inferred",
+      "number": "9",
+      "confidence": 0.85,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style",
+        "stock-name"
+      ],
+      "page_label": "24"
+    },
+    {
+      "level": 2,
+      "title": "References",
+      "page": 25,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "stock-name"
+      ],
+      "page_label": "25"
+    },
+    {
+      "level": 3,
+      "title": "Parameter settings of the PPMChart Analysis plug-in in ProM.",
+      "page": 29,
+      "source": "inferred",
+      "number": "Appendix A",
+      "confidence": 0.75,
+      "evidence": [
+        "style",
+        "number",
+        "numbered-style"
+      ],
+      "page_label": "29"
+    },
+    {
+      "level": 3,
+      "title": "Configuration",
+      "page": 29,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "numbered-style"
+      ],
+      "page_label": "29"
+    },
+    {
+      "level": 3,
+      "title": "Filtering",
+      "page": 30,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "numbered-style"
+      ],
+      "page_label": "30"
+    },
+    {
+      "level": 3,
+      "title": "Settings",
+      "page": 30,
+      "source": "inferred",
+      "number": null,
+      "confidence": 0.55,
+      "evidence": [
+        "style",
+        "numbered-style"
+      ],
+      "page_label": "30"
+    }
+  ],
+  "toc_source": "inferred",
+  "toc_undetermined_reason": null,
+  "figures": [
+    {
+      "kind": "figure",
+      "number": "1",
+      "title": "Example of a Dotted Chart for the full event log with multiple PPM instances and for an event log containing events of only one PPM instance (each line representing the operations on a different process model element)",
+      "page": 3,
+      "confidence": 0.9,
+      "evidence": [
+        "referenced",
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "3"
+    },
+    {
+      "kind": "figure",
+      "number": "2",
+      "title": "The process of process modeling and the attributes of the captured data",
+      "page": 5,
+      "confidence": 0.9,
+      "evidence": [
+        "referenced",
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "5"
+    },
+    {
+      "kind": "figure",
+      "number": "3",
+      "title": "Visualization of the events in the construction of one model by one modeler.7 (85)",
+      "page": 6,
+      "confidence": 0.9,
+      "evidence": [
+        "referenced",
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "6"
+    },
+    {
+      "kind": "figure",
+      "number": "4",
+      "title": "Process model in BPMN notation as result of the modeling process in Fig. 3.8 (Numbered circles indicate the model element id for comparison with highlight of Fig. 3)",
+      "page": 6,
+      "confidence": 0.9,
+      "evidence": [
+        "referenced",
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "6"
+    },
+    {
+      "kind": "figure",
+      "number": "5",
+      "title": "Screenshot of the PPMChart window in ProM. (Model 2012-184)",
+      "page": 7,
+      "confidence": 0.9,
+      "evidence": [
+        "referenced",
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "7"
+    },
+    {
+      "kind": "table",
+      "number": "1",
+      "title": "Operations in the construction of a process model. Create",
+      "page": 8,
+      "confidence": 0.8,
+      "evidence": [
+        "referenced",
+        "in-sequence"
+      ],
+      "page_label": "8"
+    },
+    {
+      "kind": "figure",
+      "number": "6",
+      "title": "Additional sort order options in the PPMChart implementation",
+      "page": 9,
+      "confidence": 0.9,
+      "evidence": [
+        "referenced",
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "9"
+    },
+    {
+      "kind": "table",
+      "number": "2",
+      "title": "Default colors, shades and shapes of the PPMChart Analysis plug-in. Operation",
+      "page": 9,
+      "confidence": 0.8,
+      "evidence": [
+        "referenced",
+        "in-sequence"
+      ],
+      "page_label": "9"
+    },
+    {
+      "kind": "figure",
+      "number": "7",
+      "title": "Scattered or simultaneous delete operations. (charts hide moves and renames)",
+      "page": 11,
+      "confidence": 0.7,
+      "evidence": [
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "11"
+    },
+    {
+      "kind": "figure",
+      "number": "8",
+      "title": "Timing of movement operations: few (a), close to creation (b), at the end (c), scattered (d). (charts are sorted by First operation and moves and renames are hidden)",
+      "page": 12,
+      "confidence": 0.7,
+      "evidence": [
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "12"
+    },
+    {
+      "kind": "figure",
+      "number": "9",
+      "title": "Order of creation of activities, gateways and edges. (charts hide moves, deletes and renames)",
+      "page": 13,
+      "confidence": 0.7,
+      "evidence": [
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "13"
+    },
+    {
+      "kind": "figure",
+      "number": "10",
+      "title": "Order of creation of gateways and activities. (charts are sorted by First operation and hide edges, moves, deletes and renames)",
+      "page": 13,
+      "confidence": 0.7,
+      "evidence": [
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "13"
+    },
+    {
+      "kind": "figure",
+      "number": "11",
+      "title": "Chunked modeling. (Time intervals are set to minutes, charts hide moves, deletes and renames)",
+      "page": 14,
+      "confidence": 0.7,
+      "evidence": [
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "14"
+    },
+    {
+      "kind": "figure",
+      "number": "12",
+      "title": "Chaotic process of process modeling. (charts are generated with default settings)",
+      "page": 14,
+      "confidence": 0.9,
+      "evidence": [
+        "referenced",
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "14"
+    },
+    {
+      "kind": "figure",
+      "number": "13",
+      "title": "Similar patterns of creation of elements in simple (a, c) and extensive cases (b, d). (charts hide moves, deletes and renames; Time intervals of charts c-d is set to minutes)",
+      "page": 15,
+      "confidence": 0.9,
+      "evidence": [
+        "referenced",
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "15"
+    },
+    {
+      "kind": "figure",
+      "number": "14",
+      "title": "Similar patterns of element creation in a first (a, c) and second (b, d) modeling effort of the same modeler. (charts hide moves, deletes and renames; Time intervals of charts c-d is set to minutes)",
+      "page": 16,
+      "confidence": 0.9,
+      "evidence": [
+        "referenced",
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "16"
+    },
+    {
+      "kind": "figure",
+      "number": "15",
+      "title": "Patterns of creation of elements (a, c) and corresponding process models (b, d). (charts hide moves, deletes and renames; Time intervals of chart c is set to minutes)",
+      "page": 17,
+      "confidence": 0.9,
+      "evidence": [
+        "referenced",
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "17"
+    },
+    {
+      "kind": "figure",
+      "number": "16",
+      "title": "Example of a Modeling Phase Diagram and PPMChart for the same PPM instance",
+      "page": 22,
+      "confidence": 0.7,
+      "evidence": [
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "22"
+    },
+    {
+      "kind": "figure",
+      "number": "17",
+      "title": "Examples of process visualizations that are not considered to be traditional process models",
+      "page": 24,
+      "confidence": 0.7,
+      "evidence": [
+        "in-sequence",
+        "graphic"
+      ],
+      "page_label": "24"
+    },
+    {
+      "kind": "table",
+      "number": "3",
+      "title": "Default color (shade) and shape coding of events",
+      "page": 30,
+      "confidence": 0.8,
+      "evidence": [
+        "referenced",
+        "in-sequence"
+      ],
+      "page_label": "30"
+    }
+  ],
+  "pages": [
+    {
+      "physical": 1,
+      "label": "1",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 2,
+      "label": "2",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 3,
+      "label": "3",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 4,
+      "label": "4",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 5,
+      "label": "5",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 6,
+      "label": "6",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 7,
+      "label": "7",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 8,
+      "label": "8",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 9,
+      "label": "9",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 10,
+      "label": "10",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 11,
+      "label": "11",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 12,
+      "label": "12",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 13,
+      "label": "13",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 14,
+      "label": "14",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 15,
+      "label": "15",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 16,
+      "label": "16",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 17,
+      "label": "17",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 18,
+      "label": "18",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 19,
+      "label": "19",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 20,
+      "label": "20",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 21,
+      "label": "21",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 22,
+      "label": "22",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 23,
+      "label": "23",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 24,
+      "label": "24",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 25,
+      "label": "25",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 26,
+      "label": "26",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 27,
+      "label": "27",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 28,
+      "label": "28",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 29,
+      "label": "29",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    },
+    {
+      "physical": 30,
+      "label": "30",
+      "source": "printed",
+      "confidence": 0.85,
+      "evidence": [
+        "printed",
+        "pdf-labels"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "id": "sec-front-matter",
+      "number": null,
+      "title": "Front matter",
+      "level": 1,
+      "page_start": 1,
+      "page_end": 1,
+      "n_chars": 1631,
+      "n_words": 220,
+      "label_start": "1",
+      "label_end": "1"
+    },
+    {
+      "id": "sec-000-1-introduction",
+      "number": "1",
+      "title": "Introduction",
+      "level": 1,
+      "page_start": 1,
+      "page_end": 2,
+      "n_chars": 3728,
+      "n_words": 570,
+      "label_start": "1",
+      "label_end": "2"
+    },
+    {
+      "id": "sec-001-21-dotted-chart",
+      "number": "2.1",
+      "title": "Dotted Chart",
+      "level": 2,
+      "page_start": 2,
+      "page_end": 2,
+      "n_chars": 2893,
+      "n_words": 449,
+      "label_start": "2",
+      "label_end": "2"
+    },
+    {
+      "id": "sec-002-2-motivation",
+      "number": "2",
+      "title": "Motivation",
+      "level": 1,
+      "page_start": 2,
+      "page_end": 3,
+      "n_chars": 2527,
+      "n_words": 411,
+      "label_start": "2",
+      "label_end": "3"
+    },
+    {
+      "id": "sec-003-22-cognitive-effectiveness-of-a-visualization",
+      "number": "2.2",
+      "title": "Cognitive effectiveness of a visualization",
+      "level": 2,
+      "page_start": 3,
+      "page_end": 3,
+      "n_chars": 1016,
+      "n_words": 163,
+      "label_start": "3",
+      "label_end": "3"
+    },
+    {
+      "id": "sec-004-221-visual-expressiveness",
+      "number": "2.2.1",
+      "title": "Visual expressiveness",
+      "level": 3,
+      "page_start": 3,
+      "page_end": 3,
+      "n_chars": 1079,
+      "n_words": 152,
+      "label_start": "3",
+      "label_end": "3"
+    },
+    {
+      "id": "sec-005-222-perceptual-discriminability",
+      "number": "2.2.2",
+      "title": "Perceptual discriminability",
+      "level": 3,
+      "page_start": 3,
+      "page_end": 3,
+      "n_chars": 1037,
+      "n_words": 158,
+      "label_start": "3",
+      "label_end": "3"
+    },
+    {
+      "id": "sec-006-223-graphic-economy",
+      "number": "2.2.3",
+      "title": "Graphic economy",
+      "level": 3,
+      "page_start": 3,
+      "page_end": 4,
+      "n_chars": 1102,
+      "n_words": 166,
+      "label_start": "3",
+      "label_end": "4"
+    },
+    {
+      "id": "sec-007-224-dual-coding",
+      "number": "2.2.4",
+      "title": "Dual coding",
+      "level": 3,
+      "page_start": 4,
+      "page_end": 4,
+      "n_chars": 635,
+      "n_words": 99,
+      "label_start": "4",
+      "label_end": "4"
+    },
+    {
+      "id": "sec-008-225-semiotic-clarity",
+      "number": "2.2.5",
+      "title": "Semiotic clarity",
+      "level": 3,
+      "page_start": 4,
+      "page_end": 4,
+      "n_chars": 532,
+      "n_words": 82,
+      "label_start": "4",
+      "label_end": "4"
+    },
+    {
+      "id": "sec-009-226-semantic-transparency",
+      "number": "2.2.6",
+      "title": "Semantic transparency",
+      "level": 3,
+      "page_start": 4,
+      "page_end": 4,
+      "n_chars": 1074,
+      "n_words": 171,
+      "label_start": "4",
+      "label_end": "4"
+    },
+    {
+      "id": "sec-010-227-complexity-management",
+      "number": "2.2.7",
+      "title": "Complexity management",
+      "level": 3,
+      "page_start": 4,
+      "page_end": 4,
+      "n_chars": 1085,
+      "n_words": 171,
+      "label_start": "4",
+      "label_end": "4"
+    },
+    {
+      "id": "sec-011-228-cognitive-integration",
+      "number": "2.2.8",
+      "title": "Cognitive integration",
+      "level": 3,
+      "page_start": 4,
+      "page_end": 5,
+      "n_chars": 913,
+      "n_words": 133,
+      "label_start": "4",
+      "label_end": "5"
+    },
+    {
+      "id": "sec-012-229-cognitive-fit",
+      "number": "2.2.9",
+      "title": "Cognitive fit",
+      "level": 3,
+      "page_start": 5,
+      "page_end": 5,
+      "n_chars": 865,
+      "n_words": 136,
+      "label_start": "5",
+      "label_end": "5"
+    },
+    {
+      "id": "sec-013-2210-conclusion",
+      "number": "2.2.10",
+      "title": "Conclusion",
+      "level": 3,
+      "page_start": 5,
+      "page_end": 5,
+      "n_chars": 895,
+      "n_words": 145,
+      "label_start": "5",
+      "label_end": "5"
+    },
+    {
+      "id": "sec-014-3-the-ppmchart-visualization",
+      "number": "3",
+      "title": "The PPMChart visualization",
+      "level": 1,
+      "page_start": 5,
+      "page_end": 5,
+      "n_chars": 497,
+      "n_words": 76,
+      "label_start": "5",
+      "label_end": "5"
+    },
+    {
+      "id": "sec-015-31-data-requirements",
+      "number": "3.1",
+      "title": "Data requirements",
+      "level": 2,
+      "page_start": 5,
+      "page_end": 5,
+      "n_chars": 1109,
+      "n_words": 180,
+      "label_start": "5",
+      "label_end": "5"
+    },
+    {
+      "id": "sec-016-32-visualization-with-ppmchart",
+      "number": "3.2",
+      "title": "Visualization with PPMChart",
+      "level": 2,
+      "page_start": 5,
+      "page_end": 6,
+      "n_chars": 2781,
+      "n_words": 462,
+      "label_start": "5",
+      "label_end": "6"
+    },
+    {
+      "id": "sec-017-33-differences-with-dotted-chart",
+      "number": "3.3",
+      "title": "Differences with Dotted Chart",
+      "level": 2,
+      "page_start": 6,
+      "page_end": 7,
+      "n_chars": 2021,
+      "n_words": 293,
+      "label_start": "6",
+      "label_end": "7"
+    },
+    {
+      "id": "sec-018-34-tool-support",
+      "number": "3.4",
+      "title": "Tool support",
+      "level": 2,
+      "page_start": 7,
+      "page_end": 7,
+      "n_chars": 1129,
+      "n_words": 172,
+      "label_start": "7",
+      "label_end": "7"
+    },
+    {
+      "id": "sec-019-341-required-format-of-the-recorded-data",
+      "number": "3.4.1",
+      "title": "Required format of the recorded data",
+      "level": 3,
+      "page_start": 7,
+      "page_end": 8,
+      "n_chars": 3505,
+      "n_words": 532,
+      "label_start": "7",
+      "label_end": "8"
+    },
+    {
+      "id": "sec-020-342-fixed-default-color-shade-and-shape-coding",
+      "number": "3.4.2",
+      "title": "Fixed default color, shade and shape coding",
+      "level": 3,
+      "page_start": 8,
+      "page_end": 9,
+      "n_chars": 3091,
+      "n_words": 449,
+      "label_start": "8",
+      "label_end": "9"
+    },
+    {
+      "id": "sec-021-343-fixed-default-time-interval",
+      "number": "3.4.3",
+      "title": "Fixed default time interval",
+      "level": 3,
+      "page_start": 9,
+      "page_end": 9,
+      "n_chars": 362,
+      "n_words": 59,
+      "label_start": "9",
+      "label_end": "9"
+    },
+    {
+      "id": "sec-022-344-sort-options",
+      "number": "3.4.4",
+      "title": "Sort options",
+      "level": 3,
+      "page_start": 9,
+      "page_end": 9,
+      "n_chars": 128,
+      "n_words": 22,
+      "label_start": "9",
+      "label_end": "9"
+    },
+    {
+      "id": "sec-023-distance-from-start",
+      "number": null,
+      "title": "Distance from start",
+      "level": 3,
+      "page_start": 9,
+      "page_end": 10,
+      "n_chars": 2854,
+      "n_words": 501,
+      "label_start": "9",
+      "label_end": "10"
+    },
+    {
+      "id": "sec-024-first-operation",
+      "number": null,
+      "title": "First operation",
+      "level": 3,
+      "page_start": 10,
+      "page_end": 10,
+      "n_chars": 0,
+      "n_words": 0,
+      "label_start": "10",
+      "label_end": "10"
+    },
+    {
+      "id": "sec-025-346-example",
+      "number": "3.4.6",
+      "title": "Example",
+      "level": 3,
+      "page_start": 10,
+      "page_end": 10,
+      "n_chars": 234,
+      "n_words": 40,
+      "label_start": "10",
+      "label_end": "10"
+    },
+    {
+      "id": "sec-026-345-filter-options",
+      "number": "3.4.5",
+      "title": "Filter options",
+      "level": 3,
+      "page_start": 10,
+      "page_end": 10,
+      "n_chars": 1808,
+      "n_words": 297,
+      "label_start": "10",
+      "label_end": "10"
+    },
+    {
+      "id": "sec-027-4-application",
+      "number": "4",
+      "title": "Application",
+      "level": 1,
+      "page_start": 10,
+      "page_end": 10,
+      "n_chars": 215,
+      "n_words": 34,
+      "label_start": "10",
+      "label_end": "10"
+    },
+    {
+      "id": "sec-028-41-data-collection",
+      "number": "4.1",
+      "title": "Data collection",
+      "level": 2,
+      "page_start": 10,
+      "page_end": 11,
+      "n_chars": 2828,
+      "n_words": 413,
+      "label_start": "10",
+      "label_end": "11"
+    },
+    {
+      "id": "sec-029-42-simple-observations",
+      "number": "4.2",
+      "title": "Simple observations",
+      "level": 2,
+      "page_start": 11,
+      "page_end": 11,
+      "n_chars": 312,
+      "n_words": 47,
+      "label_start": "11",
+      "label_end": "11"
+    },
+    {
+      "id": "sec-030-modeling-speed",
+      "number": null,
+      "title": "Modeling speed",
+      "level": 3,
+      "page_start": 11,
+      "page_end": 11,
+      "n_chars": 198,
+      "n_words": 30,
+      "label_start": "11",
+      "label_end": "11"
+    },
+    {
+      "id": "sec-031-modeling-pauses",
+      "number": null,
+      "title": "Modeling pauses",
+      "level": 3,
+      "page_start": 11,
+      "page_end": 11,
+      "n_chars": 197,
+      "n_words": 27,
+      "label_start": "11",
+      "label_end": "11"
+    },
+    {
+      "id": "sec-032-amount-of-model-elements",
+      "number": null,
+      "title": "Amount of model elements",
+      "level": 3,
+      "page_start": 11,
+      "page_end": 11,
+      "n_chars": 166,
+      "n_words": 23,
+      "label_start": "11",
+      "label_end": "11"
+    },
+    {
+      "id": "sec-033-amount-of-modeling-operations",
+      "number": null,
+      "title": "Amount of modeling operations",
+      "level": 3,
+      "page_start": 11,
+      "page_end": 11,
+      "n_chars": 239,
+      "n_words": 35,
+      "label_start": "11",
+      "label_end": "11"
+    },
+    {
+      "id": "sec-034-43-observations-on-patterns-of-operations-on-mod",
+      "number": "4.3",
+      "title": "Observations on patterns of operations on model elements",
+      "level": 2,
+      "page_start": 11,
+      "page_end": 11,
+      "n_chars": 240,
+      "n_words": 39,
+      "label_start": "11",
+      "label_end": "11"
+    },
+    {
+      "id": "sec-035-431-patterns-of-delete-operations",
+      "number": "4.3.1",
+      "title": "Patterns of delete operations",
+      "level": 3,
+      "page_start": 11,
+      "page_end": 12,
+      "n_chars": 1238,
+      "n_words": 184,
+      "label_start": "11",
+      "label_end": "12"
+    },
+    {
+      "id": "sec-036-432-patterns-of-move-operations",
+      "number": "4.3.2",
+      "title": "Patterns of move operations",
+      "level": 3,
+      "page_start": 12,
+      "page_end": 12,
+      "n_chars": 2337,
+      "n_words": 391,
+      "label_start": "12",
+      "label_end": "12"
+    },
+    {
+      "id": "sec-037-433-patterns-of-create-operations-order-of-creat",
+      "number": "4.3.3",
+      "title": "Patterns of create operations: order of creating activities, gateways and edges",
+      "level": 3,
+      "page_start": 12,
+      "page_end": 13,
+      "n_chars": 1060,
+      "n_words": 163,
+      "label_start": "12",
+      "label_end": "13"
+    },
+    {
+      "id": "sec-038-434-patterns-of-create-operations-split-and-join",
+      "number": "4.3.4",
+      "title": "Patterns of create operations: split and join gateways",
+      "level": 3,
+      "page_start": 13,
+      "page_end": 13,
+      "n_chars": 1474,
+      "n_words": 235,
+      "label_start": "13",
+      "label_end": "13"
+    },
+    {
+      "id": "sec-039-435-patterns-of-create-operations-chunked-modeli",
+      "number": "4.3.5",
+      "title": "Patterns of create operations: chunked modeling",
+      "level": 3,
+      "page_start": 13,
+      "page_end": 14,
+      "n_chars": 1238,
+      "n_words": 192,
+      "label_start": "13",
+      "label_end": "14"
+    },
+    {
+      "id": "sec-040-436-no-clear-patterns",
+      "number": "4.3.6",
+      "title": "No clear patterns",
+      "level": 3,
+      "page_start": 14,
+      "page_end": 15,
+      "n_chars": 986,
+      "n_words": 149,
+      "label_start": "14",
+      "label_end": "15"
+    },
+    {
+      "id": "sec-041-44-observations-based-on-multiple-diagrams",
+      "number": "4.4",
+      "title": "Observations based on multiple diagrams",
+      "level": 2,
+      "page_start": 15,
+      "page_end": 15,
+      "n_chars": 396,
+      "n_words": 61,
+      "label_start": "15",
+      "label_end": "15"
+    },
+    {
+      "id": "sec-042-441-comparison-between-ppmcharts-of-different-ca",
+      "number": "4.4.1",
+      "title": "Comparison between PPMCharts of different cases",
+      "level": 3,
+      "page_start": 15,
+      "page_end": 15,
+      "n_chars": 1043,
+      "n_words": 154,
+      "label_start": "15",
+      "label_end": "15"
+    },
+    {
+      "id": "sec-043-442-comparison-between-ppmcharts-of-the-same-mod",
+      "number": "4.4.2",
+      "title": "Comparison between PPMCharts of the same modeler modeling different cases",
+      "level": 3,
+      "page_start": 15,
+      "page_end": 16,
+      "n_chars": 906,
+      "n_words": 138,
+      "label_start": "15",
+      "label_end": "16"
+    },
+    {
+      "id": "sec-044-443-comparison-between-ppmcharts-and-process-mod",
+      "number": "4.4.3",
+      "title": "Comparison between PPMCharts and process models",
+      "level": 3,
+      "page_start": 16,
+      "page_end": 17,
+      "n_chars": 1737,
+      "n_words": 250,
+      "label_start": "16",
+      "label_end": "17"
+    },
+    {
+      "id": "sec-045-5-qualitative-evaluation",
+      "number": "5",
+      "title": "Qualitative evaluation",
+      "level": 1,
+      "page_start": 17,
+      "page_end": 17,
+      "n_chars": 221,
+      "n_words": 33,
+      "label_start": "17",
+      "label_end": "17"
+    },
+    {
+      "id": "sec-046-51-participants",
+      "number": "5.1",
+      "title": "Participants",
+      "level": 2,
+      "page_start": 17,
+      "page_end": 17,
+      "n_chars": 999,
+      "n_words": 148,
+      "label_start": "17",
+      "label_end": "17"
+    },
+    {
+      "id": "sec-047-52-visualization-tools",
+      "number": "5.2",
+      "title": "Visualization tools",
+      "level": 2,
+      "page_start": 17,
+      "page_end": 18,
+      "n_chars": 527,
+      "n_words": 87,
+      "label_start": "17",
+      "label_end": "18"
+    },
+    {
+      "id": "sec-048-53-input-data",
+      "number": "5.3",
+      "title": "Input data",
+      "level": 2,
+      "page_start": 18,
+      "page_end": 18,
+      "n_chars": 892,
+      "n_words": 139,
+      "label_start": "18",
+      "label_end": "18"
+    },
+    {
+      "id": "sec-049-54-protocol",
+      "number": "5.4",
+      "title": "Protocol",
+      "level": 2,
+      "page_start": 18,
+      "page_end": 18,
+      "n_chars": 3751,
+      "n_words": 597,
+      "label_start": "18",
+      "label_end": "18"
+    },
+    {
+      "id": "sec-050-55-measurements",
+      "number": "5.5",
+      "title": "Measurements",
+      "level": 2,
+      "page_start": 18,
+      "page_end": 19,
+      "n_chars": 691,
+      "n_words": 101,
+      "label_start": "18",
+      "label_end": "19"
+    },
+    {
+      "id": "sec-051-56-results",
+      "number": "5.6",
+      "title": "Results",
+      "level": 2,
+      "page_start": 19,
+      "page_end": 19,
+      "n_chars": 244,
+      "n_words": 32,
+      "label_start": "19",
+      "label_end": "19"
+    },
+    {
+      "id": "sec-052-561-usefulness",
+      "number": "5.6.1",
+      "title": "Usefulness",
+      "level": 3,
+      "page_start": 19,
+      "page_end": 19,
+      "n_chars": 1987,
+      "n_words": 301,
+      "label_start": "19",
+      "label_end": "19"
+    },
+    {
+      "id": "sec-053-562-increased-cognitive-effectiveness",
+      "number": "5.6.2",
+      "title": "Increased cognitive effectiveness",
+      "level": 3,
+      "page_start": 19,
+      "page_end": 20,
+      "n_chars": 4130,
+      "n_words": 649,
+      "label_start": "19",
+      "label_end": "20"
+    },
+    {
+      "id": "sec-054-6-limitations-implications-and-future-research",
+      "number": "6",
+      "title": "Limitations, implications and future research",
+      "level": 1,
+      "page_start": 20,
+      "page_end": 20,
+      "n_chars": 0,
+      "n_words": 0,
+      "label_start": "20",
+      "label_end": "20"
+    },
+    {
+      "id": "sec-055-61-limitations-of-this-study",
+      "number": "6.1",
+      "title": "Limitations of this study",
+      "level": 2,
+      "page_start": 20,
+      "page_end": 20,
+      "n_chars": 2047,
+      "n_words": 309,
+      "label_start": "20",
+      "label_end": "20"
+    },
+    {
+      "id": "sec-056-62-implications-for-research-and-practice",
+      "number": "6.2",
+      "title": "Implications for research and practice",
+      "level": 2,
+      "page_start": 20,
+      "page_end": 20,
+      "n_chars": 1130,
+      "n_words": 170,
+      "label_start": "20",
+      "label_end": "20"
+    },
+    {
+      "id": "sec-057-621-discovery-of-modeling-phases-and-styles",
+      "number": "6.2.1",
+      "title": "Discovery of modeling phases and styles",
+      "level": 3,
+      "page_start": 20,
+      "page_end": 21,
+      "n_chars": 2950,
+      "n_words": 448,
+      "label_start": "20",
+      "label_end": "21"
+    },
+    {
+      "id": "sec-058-622-link-with-process-model-quality",
+      "number": "6.2.2",
+      "title": "Link with process model quality",
+      "level": 3,
+      "page_start": 21,
+      "page_end": 21,
+      "n_chars": 1054,
+      "n_words": 167,
+      "label_start": "21",
+      "label_end": "21"
+    },
+    {
+      "id": "sec-059-63-future-research",
+      "number": "6.3",
+      "title": "Future research",
+      "level": 2,
+      "page_start": 21,
+      "page_end": 22,
+      "n_chars": 1848,
+      "n_words": 291,
+      "label_start": "21",
+      "label_end": "22"
+    },
+    {
+      "id": "sec-060-7-related-work",
+      "number": "7",
+      "title": "Related work",
+      "level": 1,
+      "page_start": 22,
+      "page_end": 22,
+      "n_chars": 449,
+      "n_words": 66,
+      "label_start": "22",
+      "label_end": "22"
+    },
+    {
+      "id": "sec-061-71-visualizations-of-the-process-of-process-mode",
+      "number": "7.1",
+      "title": "Visualizations of the process of process modeling",
+      "level": 2,
+      "page_start": 22,
+      "page_end": 22,
+      "n_chars": 1750,
+      "n_words": 275,
+      "label_start": "22",
+      "label_end": "22"
+    },
+    {
+      "id": "sec-062-72-process-models",
+      "number": "7.2",
+      "title": "Process models",
+      "level": 2,
+      "page_start": 22,
+      "page_end": 23,
+      "n_chars": 2852,
+      "n_words": 427,
+      "label_start": "22",
+      "label_end": "23"
+    },
+    {
+      "id": "sec-063-73-visualizations-that-concentrate-on-control-fl",
+      "number": "7.3",
+      "title": "Visualizations that concentrate on control flow and hierarchy",
+      "level": 2,
+      "page_start": 23,
+      "page_end": 24,
+      "n_chars": 4393,
+      "n_words": 666,
+      "label_start": "23",
+      "label_end": "24"
+    },
+    {
+      "id": "sec-064-8-conclusion",
+      "number": "8",
+      "title": "Conclusion",
+      "level": 1,
+      "page_start": 24,
+      "page_end": 24,
+      "n_chars": 2435,
+      "n_words": 377,
+      "label_start": "24",
+      "label_end": "24"
+    },
+    {
+      "id": "sec-065-9-acknowledgements",
+      "number": "9",
+      "title": "Acknowledgements",
+      "level": 1,
+      "page_start": 24,
+      "page_end": 25,
+      "n_chars": 601,
+      "n_words": 73,
+      "label_start": "24",
+      "label_end": "25"
+    },
+    {
+      "id": "sec-066-references",
+      "number": null,
+      "title": "References",
+      "level": 2,
+      "page_start": 25,
+      "page_end": 29,
+      "n_chars": 18588,
+      "n_words": 2657,
+      "label_start": "25",
+      "label_end": "29"
+    },
+    {
+      "id": "sec-067-appendix-a-parameter-settings-of-the-ppmchart-an",
+      "number": "Appendix A",
+      "title": "Parameter settings of the PPMChart Analysis plug-in in ProM.",
+      "level": 3,
+      "page_start": 29,
+      "page_end": 29,
+      "n_chars": 0,
+      "n_words": 0,
+      "label_start": "29",
+      "label_end": "29"
+    },
+    {
+      "id": "sec-068-configuration",
+      "number": null,
+      "title": "Configuration",
+      "level": 3,
+      "page_start": 29,
+      "page_end": 30,
+      "n_chars": 7890,
+      "n_words": 1298,
+      "label_start": "29",
+      "label_end": "30"
+    },
+    {
+      "id": "sec-069-filtering",
+      "number": null,
+      "title": "Filtering",
+      "level": 3,
+      "page_start": 30,
+      "page_end": 30,
+      "n_chars": 1321,
+      "n_words": 214,
+      "label_start": "30",
+      "label_end": "30"
+    },
+    {
+      "id": "sec-070-settings",
+      "number": null,
+      "title": "Settings",
+      "level": 3,
+      "page_start": 30,
+      "page_end": 30,
+      "n_chars": 175,
+      "n_words": 30,
+      "label_start": "30",
+      "label_end": "30"
+    }
+  ],
+  "diagnostics": {
+    "pages_without_text": 0,
+    "likely_scanned": false,
+    "toc_entries": 72,
+    "toc_inferred_entries": 72,
+    "toc_inferred_mean_confidence": 0.726,
+    "toc_inferred_empty_share": 0.042,
+    "toc_inferred_method": "font",
+    "figure_entries": 20,
+    "figure_sequence_gaps": [],
+    "page_label_conflicts": {
+      "count": 0,
+      "items": []
+    },
+    "sections": 72,
+    "chars_total": 120266
+  }
+}
