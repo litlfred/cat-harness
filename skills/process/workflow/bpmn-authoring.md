@@ -44,14 +44,20 @@ Every diagram you write or touch must, when you are done:
 
 - **fit 1400 × 900** in diagram units, so its 16px text reads at about
   14px in a 1200px band without zooming; tasks 120 × 90;
-- have **no label on another label, on a flow or on a box**: a gateway's
-  question above the diamond, its answers beside their flows;
+- have **no label on another label, on a flow (its own included), on a box
+  or across a lane line** (owner, 2026-10-31: *"need to check for text on
+  arrows"*): a gateway's question above the diamond, its answers beside
+  their flows, every label inside one lane;
+- have **right-angled flows** and **every name inside its box**, pool and
+  lane names inside their strips;
 - have **no crossing flows**, and the **lane order that keeps flows between
   lanes shortest**.
 
-`bun run cat bpmn:detangle <file>` reports all of it, and `--write` swaps the
-lanes when that helps. Run it before and after, and put both counts in the
-PR. The procedure, and why the budget is 1400 × 900, is
+`bun run cat bpmn:detangle <file>` reports all of it, and `--write` fixes
+what it can (lane order, right angles, box and lane sizes, label places).
+Run it before and after, and put both counts in the PR. The same findings
+are in `render:bpmn`'s warnings and the process's QA report, so a reviewer
+sees what the author left. The procedure, and why the budget is 1400 × 900, is
 [`bpmn-detangle`](bpmn-detangle.md).
 
 ## In this repository, a diagram is executable
