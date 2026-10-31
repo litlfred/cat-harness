@@ -192,63 +192,65 @@ Mechanical throughout. Nothing here waits on a person, which is what makes `buil
   <bpmndi:BPMNDiagram id="Diagram_Process_CodeQualityGates">
     <bpmndi:BPMNPlane id="Plane_Process_CodeQualityGates" bpmnElement="Collaboration_Process_CodeQualityGates">
       <bpmndi:BPMNShape id="Shape_Participant_Process_CodeQualityGates" bpmnElement="Participant_Process_CodeQualityGates" isHorizontal="true">
-        <dc:Bounds x="60" y="60" width="1840" height="950"/>
+        <dc:Bounds x="60" y="60" width="1840" height="950" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Ci" bpmnElement="Lane_Ci" isHorizontal="true">
-        <dc:Bounds x="90" y="60" width="1810" height="840"/>
+        <dc:Bounds x="90" y="60" width="1810" height="840" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Change" bpmnElement="Start_Change">
-        <dc:Bounds x="122" y="332" width="36" height="36"/>
+        <dc:Bounds x="122" y="332" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="119" y="391.5" width="90" height="90" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_VerdictReuse" bpmnElement="Task_VerdictReuse">
-        <dc:Bounds x="200" y="310" width="160" height="80"/>
+        <dc:Bounds x="200" y="310" width="160" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Fork" bpmnElement="GW_Fork">
-        <dc:Bounds x="400" y="325" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="454" y="379" width="90" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="400" y="325" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="454" y="379" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_QaWorkingCopy" bpmnElement="Task_QaWorkingCopy">
-        <dc:Bounds x="480" y="610" width="160" height="80"/>
+        <dc:Bounds x="480" y="610" width="160" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Readers" bpmnElement="GW_Readers">
-        <dc:Bounds x="670" y="625" width="50" height="50"/>
+        <dc:Bounds x="670" y="625" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="724" y="632" width="135" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Hygiene" bpmnElement="Task_Hygiene">
-        <dc:Bounds x="750" y="190" width="180" height="80"/>
+        <dc:Bounds x="750" y="190" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_E2E" bpmnElement="Task_E2E">
-        <dc:Bounds x="750" y="310" width="180" height="80"/>
+        <dc:Bounds x="750" y="310" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_TypeScript" bpmnElement="Task_TypeScript">
-        <dc:Bounds x="750" y="430" width="180" height="80"/>
+        <dc:Bounds x="750" y="430" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_RepositoryGates" bpmnElement="Task_RepositoryGates">
-        <dc:Bounds x="750" y="550" width="180" height="80"/>
+        <dc:Bounds x="750" y="550" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_SkillChain" bpmnElement="Task_SkillChain">
-        <dc:Bounds x="750" y="670" width="180" height="80"/>
+        <dc:Bounds x="750" y="670" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_UnrunGates" bpmnElement="Task_UnrunGates">
-        <dc:Bounds x="750" y="790" width="180" height="80"/>
+        <dc:Bounds x="750" y="790" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Join" bpmnElement="GW_Join">
-        <dc:Bounds x="1065" y="325" width="50" height="50"/>
+        <dc:Bounds x="1065" y="325" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Hard" bpmnElement="GW_Hard" isMarkerVisible="true">
-        <dc:Bounds x="1315" y="325" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1295" y="285" width="90" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="1315" y="325" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1295" y="285" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Pass" bpmnElement="End_Pass">
-        <dc:Bounds x="1572" y="332" width="36" height="36"/>
+        <dc:Bounds x="1572" y="332" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Fail" bpmnElement="End_Fail">
-        <dc:Bounds x="1572" y="452" width="36" height="36"/>
+        <dc:Bounds x="1572" y="452" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_QaPublish" bpmnElement="Task_QaPublish">
-        <dc:Bounds x="1300" y="550" width="180" height="80"/>
+        <dc:Bounds x="1300" y="543.5" width="180" height="93" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Published" bpmnElement="End_Published">
-        <dc:Bounds x="1572" y="572" width="36" height="36"/>
+        <dc:Bounds x="1572" y="572" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_0" bpmnElement="Flow_0">
         <di:waypoint x="158" y="350"/>
@@ -339,12 +341,12 @@ Mechanical throughout. Nothing here waits on a person, which is what makes `buil
         <di:waypoint x="1572" y="470"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_22" bpmnElement="Flow_22">
-        <di:waypoint x="930" y="610"/>
-        <di:waypoint x="1300" y="610"/>
+        <di:waypoint x="930" y="610" />
+        <di:waypoint x="1300" y="610" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_23" bpmnElement="Flow_23">
-        <di:waypoint x="1480" y="590"/>
-        <di:waypoint x="1572" y="590"/>
+        <di:waypoint x="1480" y="590" />
+        <di:waypoint x="1572" y="590" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

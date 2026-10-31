@@ -242,61 +242,62 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
   <bpmndi:BPMNDiagram id="Diagram_Process_GraphDetanglement">
     <bpmndi:BPMNPlane id="Plane_Process_GraphDetanglement" bpmnElement="Collaboration_Process_GraphDetanglement">
       <bpmndi:BPMNShape id="Shape_Participant_Process_GraphDetanglement" bpmnElement="Participant_Process_GraphDetanglement" isHorizontal="true">
-        <dc:Bounds x="60" y="60" width="2780" height="620"/>
+        <dc:Bounds x="60" y="60" width="2840" height="620" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="90" y="60" width="2750" height="460"/>
+        <dc:Bounds x="90" y="60" width="2810" height="460" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Admin" bpmnElement="Lane_Admin" isHorizontal="true">
-        <dc:Bounds x="90" y="520" width="2750" height="160"/>
+        <dc:Bounds x="90" y="520" width="2810" height="160" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Wants" bpmnElement="Start_Wants">
-        <dc:Bounds x="122" y="132" width="36" height="36"/>
+        <dc:Bounds x="122" y="132" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="119" y="167.5" width="90" height="90" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Brief" bpmnElement="Task_Brief">
-        <dc:Bounds x="500" y="110" width="180" height="80"/>
+        <dc:Bounds x="500" y="110" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Declare" bpmnElement="Task_Declare">
-        <dc:Bounds x="750" y="110" width="180" height="80"/>
+        <dc:Bounds x="750" y="110" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Declared" bpmnElement="GW_Declared" isMarkerVisible="true">
-        <dc:Bounds x="1005" y="125" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1059" y="85" width="90" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="1005" y="125" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1059" y="85" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Measure" bpmnElement="Task_Measure">
-        <dc:Bounds x="1150" y="110" width="180" height="80"/>
+        <dc:Bounds x="1150" y="110" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Detangled" bpmnElement="GW_Detangled" isMarkerVisible="true">
-        <dc:Bounds x="1405" y="125" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1385" y="103" width="90" height="18" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="1425" y="125" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1405" y="103" width="90" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Move" bpmnElement="Task_Move">
-        <dc:Bounds x="1150" y="270" width="180" height="80"/>
+        <dc:Bounds x="1150" y="270" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Isolate" bpmnElement="Task_Isolate">
-        <dc:Bounds x="1550" y="110" width="180" height="80"/>
+        <dc:Bounds x="1570" y="110" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Isolated" bpmnElement="GW_Isolated" isMarkerVisible="true">
-        <dc:Bounds x="1805" y="125" width="50" height="50"/>
+        <dc:Bounds x="1825" y="125" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Propose" bpmnElement="Task_Propose">
-        <dc:Bounds x="1950" y="110" width="180" height="80"/>
+        <dc:Bounds x="1970" y="94.5" width="180" height="111" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Authorise" bpmnElement="Task_Authorise">
-        <dc:Bounds x="1950" y="560" width="180" height="80"/>
+        <dc:Bounds x="1970" y="560" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Declined" bpmnElement="End_Declined">
-        <dc:Bounds x="2392" y="582" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2432" y="582" width="90" height="89" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="2432" y="582" width="36" height="36" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="2472" y="582" width="90" height="89" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Extract" bpmnElement="Task_Extract">
-        <dc:Bounds x="2350" y="110" width="180" height="80"/>
+        <dc:Bounds x="2370" y="110" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Extracted" bpmnElement="End_Extracted">
-        <dc:Bounds x="2762" y="132" width="36" height="36"/>
+        <dc:Bounds x="2822" y="132" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Unknown" bpmnElement="End_Unknown">
-        <dc:Bounds x="1372" y="422" width="36" height="36"/>
+        <dc:Bounds x="1392" y="422" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_G0" bpmnElement="G0"><di:waypoint x="158" y="150"/><di:waypoint x="220" y="150"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G1" bpmnElement="G1">
@@ -307,7 +308,10 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
         <di:waypoint x="930" y="150"/>
         <di:waypoint x="1005" y="150"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_G3" bpmnElement="G3"><di:waypoint x="1030" y="175"/><di:waypoint x="1030" y="440"/><di:waypoint x="1212" y="440"/>
+      <bpmndi:BPMNEdge id="Edge_G3" bpmnElement="G3">
+        <di:waypoint x="1030" y="175" />
+        <di:waypoint x="1030" y="440" />
+        <di:waypoint x="1192" y="440" />
         <bpmndi:BPMNLabel><dc:Bounds x="936" y="299" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G4" bpmnElement="G4">
@@ -322,17 +326,22 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
         <bpmndi:BPMNLabel><dc:Bounds x="936" y="93.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G6" bpmnElement="G6">
-        <di:waypoint x="1330" y="150"/>
-        <di:waypoint x="1405" y="150"/>
+        <di:waypoint x="1330" y="150" />
+        <di:waypoint x="1425" y="150" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_G5b" bpmnElement="G5b"><di:waypoint x="1430" y="175"/><di:waypoint x="1430" y="440"/><di:waypoint x="1430" y="500"/><di:waypoint x="1272" y="500"/><di:waypoint x="1272" y="480"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1434" y="299" width="90" height="17" /></bpmndi:BPMNLabel>
+      <bpmndi:BPMNEdge id="Edge_G5b" bpmnElement="G5b">
+        <di:waypoint x="1450" y="175" />
+        <di:waypoint x="1450" y="440" />
+        <di:waypoint x="1450" y="500" />
+        <di:waypoint x="1272" y="500" />
+        <di:waypoint x="1272" y="480" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1454" y="299" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G8" bpmnElement="G8">
-        <di:waypoint x="1430" y="175"/>
-        <di:waypoint x="1430" y="310"/>
-        <di:waypoint x="1330" y="310"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1434" y="224.5" width="90" height="36" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1450" y="175" />
+        <di:waypoint x="1450" y="310" />
+        <di:waypoint x="1330" y="310" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1454" y="224.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G7" bpmnElement="G7">
         <di:waypoint x="1150" y="310"/>
@@ -341,54 +350,68 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
         <di:waypoint x="1150" y="190"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G9" bpmnElement="G9">
-        <di:waypoint x="1455" y="150"/>
-        <di:waypoint x="1550" y="150"/>
+        <di:waypoint x="1475" y="150" />
+        <di:waypoint x="1570" y="150" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G10" bpmnElement="G10">
-        <di:waypoint x="1730" y="150"/>
-        <di:waypoint x="1805" y="150"/>
+        <di:waypoint x="1750" y="150" />
+        <di:waypoint x="1825" y="150" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G11" bpmnElement="G11">
-        <di:waypoint x="1830" y="125"/>
-        <di:waypoint x="1830" y="80"/>
-        <di:waypoint x="1640" y="80"/>
-        <di:waypoint x="1640" y="110"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1834" y="93.5" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1850" y="125" />
+        <di:waypoint x="1850" y="80" />
+        <di:waypoint x="1660" y="80" />
+        <di:waypoint x="1660" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1854" y="93.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G12" bpmnElement="G12">
-        <di:waypoint x="1855" y="150"/>
-        <di:waypoint x="1950" y="150"/>
+        <di:waypoint x="1875" y="150" />
+        <di:waypoint x="1970" y="150" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G13" bpmnElement="G13">
-        <di:waypoint x="2040" y="190"/>
-        <di:waypoint x="2040" y="560"/>
+        <di:waypoint x="2060" y="205.5" />
+        <di:waypoint x="2060" y="560" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_G14" bpmnElement="G14">
-        <di:waypoint x="2130" y="580"/>
-        <di:waypoint x="2440" y="580"/>
-        <di:waypoint x="2440" y="190"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2444" y="376.5" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="2150" y="600" />
+        <di:waypoint x="2260" y="600" />
+        <di:waypoint x="2260" y="150" />
+        <di:waypoint x="2370" y="150" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2264" y="366.5" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_G15" bpmnElement="G15"><di:waypoint x="2130" y="600"/><di:waypoint x="2232" y="600"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2136" y="580" width="90" height="17" /></bpmndi:BPMNLabel>
+      <bpmndi:BPMNEdge id="Edge_G15" bpmnElement="G15">
+        <di:waypoint x="2150" y="600" />
+        <di:waypoint x="2252" y="600" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_G16" bpmnElement="G16"><di:waypoint x="2530" y="150"/><di:waypoint x="2602" y="150"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen"><dc:Bounds x="220" y="110" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_G16" bpmnElement="G16">
+        <di:waypoint x="2550" y="150" />
+        <di:waypoint x="2622" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen"><dc:Bounds x="220" y="110" width="120" height="80" /></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1"><di:waypoint x="420" y="150"/><di:waypoint x="500" y="150"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="370" y="125" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="350" y="86" width="90" height="35" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours"><dc:Bounds x="377" y="205" width="36" height="36"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="370" y="125" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="350" y="86" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours"><dc:Bounds x="377" y="205" width="36" height="36" /></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2"><di:waypoint x="340" y="150"/><di:waypoint x="370" y="150"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SF_Bean_3_di" bpmnElement="SF_Bean_3"><di:waypoint x="395" y="175"/><di:waypoint x="395" y="205"/>
         <bpmndi:BPMNLabel><dc:Bounds x="399" y="181" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Call_BeanClose_di" bpmnElement="Call_BeanClose"><dc:Bounds x="2232" y="560" width="120" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4"><di:waypoint x="2352" y="600"/><di:waypoint x="2392" y="600"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Call_BeanClose_2_di" bpmnElement="Call_BeanClose_2"><dc:Bounds x="2602" y="110" width="120" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5"><di:waypoint x="2722" y="150"/><di:waypoint x="2762" y="150"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Call_BeanClose_3_di" bpmnElement="Call_BeanClose_3"><dc:Bounds x="1212" y="400" width="120" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_6_di" bpmnElement="SF_Bean_6"><di:waypoint x="1332" y="440"/><di:waypoint x="1372" y="440"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanClose_di" bpmnElement="Call_BeanClose"><dc:Bounds x="2232" y="560" width="160" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4">
+        <di:waypoint x="2392" y="600" />
+        <di:waypoint x="2432" y="600" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanClose_2_di" bpmnElement="Call_BeanClose_2"><dc:Bounds x="2622" y="110" width="160" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5">
+        <di:waypoint x="2782" y="150" />
+        <di:waypoint x="2822" y="150" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanClose_3_di" bpmnElement="Call_BeanClose_3"><dc:Bounds x="1192" y="400" width="160" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_6_di" bpmnElement="SF_Bean_6">
+        <di:waypoint x="1352" y="440" />
+        <di:waypoint x="1392" y="440" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

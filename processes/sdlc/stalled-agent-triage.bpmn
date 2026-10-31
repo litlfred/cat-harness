@@ -87,6 +87,7 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_SAT" bpmnElement="Start_SAT">
         <dc:Bounds x="300" y="317" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="228" y="357" width="180" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Footprint" bpmnElement="A_Footprint">
         <dc:Bounds x="440" y="295" width="140" height="80" />

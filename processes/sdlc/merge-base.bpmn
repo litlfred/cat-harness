@@ -193,14 +193,18 @@ ALL OR NOTHING: every conflicted path is classified before any is touched, and o
       <bpmndi:BPMNShape id="Shape_End_ByHand" bpmnElement="End_ByHand"><dc:Bounds x="1120" y="365" width="36" height="36" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Report" bpmnElement="Start_Report"><dc:Bounds x="100" y="232" width="36" height="36" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Report" bpmnElement="Task_Report"><dc:Bounds x="170" y="220" width="150" height="60" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_News" bpmnElement="GW_News" isMarkerVisible="true"><dc:Bounds x="370" y="225" width="50" height="50" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_News" bpmnElement="GW_News" isMarkerVisible="true"><dc:Bounds x="370" y="225" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="186" y="279" width="180" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <!-- x=480, not 620: `m7` runs VERTICALLY down x=635 from GW_AllDeclared
            to the abort row at y=245, and an end event at 620-656 would have
            had that edge drawn through it. -->
       <bpmndi:BPMNShape id="Shape_End_Notified" bpmnElement="End_Notified"><dc:Bounds x="480" y="200" width="36" height="36" />
         <bpmndi:BPMNLabel><dc:Bounds x="520" y="200.5" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_End_Recorded" bpmnElement="End_Recorded"><dc:Bounds x="480" y="255" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Recorded" bpmnElement="End_Recorded"><dc:Bounds x="480" y="255" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="520" y="246" width="135" height="54" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_m15" bpmnElement="m15"><di:waypoint x="136" y="250"/><di:waypoint x="170" y="250"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m16" bpmnElement="m16"><di:waypoint x="320" y="250"/><di:waypoint x="370" y="250"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m17" bpmnElement="m17"><di:waypoint x="395" y="225"/><di:waypoint x="395" y="218"/><di:waypoint x="480" y="218"/></bpmndi:BPMNEdge>

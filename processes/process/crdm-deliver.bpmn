@@ -194,6 +194,7 @@ actionable direction: new beans or bean updates for the agent.</bpmn:documentati
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_MVPReady" bpmnElement="GW_MVPReady" isMarkerVisible="true">
         <dc:Bounds x="1510" y="310" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1467.5" y="252" width="135" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_BA_ShareMVP" bpmnElement="BA_ShareMVP">
         <dc:Bounds x="1910" y="295" width="140" height="80" />

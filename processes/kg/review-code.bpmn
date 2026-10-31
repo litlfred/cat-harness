@@ -124,6 +124,7 @@ The gateway picks by node KIND because the questions differ. A Tool is judged on
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_CodeNodes" bpmnElement="Start_CodeNodes">
         <dc:Bounds x="200" y="192" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="189.51" y="227.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RunNodeAudits" bpmnElement="Task_RunNodeAudits">
         <dc:Bounds x="280" y="170" width="150" height="80"/>

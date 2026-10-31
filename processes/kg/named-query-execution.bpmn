@@ -176,6 +176,7 @@ CRITICAL INVARIANTS:
 
       <bpmndi:BPMNShape id="Start_QueryRequest_di" bpmnElement="Start_QueryRequest">
         <dc:Bounds x="232" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="221.5" y="201.5" width="90" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="A_ValidateParams_di" bpmnElement="A_ValidateParams">
         <dc:Bounds x="300" y="120" width="160" height="80" />
@@ -197,6 +198,7 @@ CRITICAL INVARIANTS:
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="GW_SubgraphsLoaded_di" bpmnElement="GW_SubgraphsLoaded" isMarkerVisible="true">
         <dc:Bounds x="655" y="375" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="709" y="317" width="180" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="GW_AutoFetch_di" bpmnElement="GW_AutoFetch" isMarkerVisible="true">
         <dc:Bounds x="775" y="475" width="50" height="50" />
@@ -256,6 +258,7 @@ CRITICAL INVARIANTS:
         <di:waypoint x="680" y="425" />
         <di:waypoint x="680" y="500" />
         <di:waypoint x="775" y="500" />
+        <bpmndi:BPMNLabel><dc:Bounds x="586" y="453.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_AutoFetchYes_di" bpmnElement="Flow_AutoFetchYes">
         <di:waypoint x="825" y="500" />

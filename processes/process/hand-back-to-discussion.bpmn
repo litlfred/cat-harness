@@ -123,6 +123,7 @@ THE PERSON'S STEP is inside `Process_AskThePerson`, called by the discussion age
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_HandBackToDiscussion" bpmnElement="Start_Process_HandBackToDiscussion">
         <dc:Bounds x="232" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="221.01" y="197.5" width="90" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_S_Compose" bpmnElement="S_Compose">
         <dc:Bounds x="310" y="140" width="120" height="80" />

@@ -152,7 +152,9 @@ You are in this process when you are asked to drain beans, when you spawn draine
       <bpmndi:BPMNShape id="Lane_QueueKeeper_di" bpmnElement="Lane_QueueKeeper" isHorizontal="true"><dc:Bounds x="160" y="80" width="1200" height="180"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Drainer_di" bpmnElement="Lane_Drainer" isHorizontal="true"><dc:Bounds x="160" y="260" width="1200" height="320"/></bpmndi:BPMNShape>
 
-      <bpmndi:BPMNShape id="Drain_Start_di" bpmnElement="Drain_Start"><dc:Bounds x="200" y="142" width="36" height="36"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Start_di" bpmnElement="Drain_Start"><dc:Bounds x="200" y="142" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="189.51" y="201.5" width="90" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Drain_BuildQueue_di" bpmnElement="Drain_BuildQueue"><dc:Bounds x="270" y="120" width="150" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Drain_Refill_di" bpmnElement="Drain_Refill"><dc:Bounds x="500" y="120" width="150" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Drain_Refilled_di" bpmnElement="Drain_Refilled" isMarkerVisible="true"><dc:Bounds x="700" y="135" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="690" y="98" width="70" height="27"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
@@ -185,7 +187,9 @@ You are in this process when you are asked to drain beans, when you spawn draine
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BD_12_di" bpmnElement="BD_12"><di:waypoint x="650" y="160"/><di:waypoint x="700" y="160"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BD_13_di" bpmnElement="BD_13"><di:waypoint x="725" y="185"/><di:waypoint x="725" y="285"/><di:waypoint x="580" y="285"/><di:waypoint x="580" y="320"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BD_14_di" bpmnElement="BD_14"><di:waypoint x="750" y="160"/><di:waypoint x="810" y="160"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BD_14_di" bpmnElement="BD_14"><di:waypoint x="750" y="160"/><di:waypoint x="810" y="160"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="767.75" y="118.5" width="90" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

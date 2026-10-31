@@ -109,6 +109,7 @@ In a bean context the form is MADR's. Which methodology was followed is named he
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_OptionsAnalysis" bpmnElement="Start_Process_OptionsAnalysis">
         <dc:Bounds x="232" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="221.09" y="197.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Frame" bpmnElement="A_Frame">
         <dc:Bounds x="320" y="140" width="120" height="80" />
@@ -119,6 +120,7 @@ In a bean context the form is MADR's. Which methodology was followed is named he
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_TriggerNotMet" bpmnElement="End_TriggerNotMet">
         <dc:Bounds x="560" y="235" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="600" y="226" width="180" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Select" bpmnElement="A_Select">
         <dc:Bounds x="560" y="140" width="120" height="80" />
