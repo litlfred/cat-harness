@@ -154,7 +154,7 @@ bun run content/pipeline/qa-staleness.ts content/<paper>
 | 内容块模式 | `schemas/types.ts` |
 | QA 附属文件模式 | `schemas/block-qa.ts` |
 | 当前环境能够执行的操作 | `.claude/skills/capabilities/*.json`、`--check-deps` |
-| Lean 工具链路线图 | [Lean 工具集成提案](../proposals/llm-authoring-tool-integration.html) |
+| Lean 工具链路线图 | [Lean 工具集成提案](https://github.com/litlfred/folio-assistant/issues/198) |
 
 ## 10. 让你避免陷入麻烦的良好习惯
 
