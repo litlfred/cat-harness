@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hand-back-to-discussion\n"
-"POT-Creation-Date: 2026-10-31T15:55:40.381Z\n"
+"POT-Creation-Date: 2026-10-31T17:28:28.569Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -131,7 +131,7 @@ msgstr ""
 
 #: processes/process/hand-back-to-discussion.bpmn:59
 #. Diagram element documentation
-msgid "Review sheet: the \"Decision needed\" block in the row's agent column, Agentic status `Needs you` (folio-assistant-core `review-sheet-script`). Issue or PR: a comment. An extra copy, never instead of the discussion."
+msgid "Review sheet: the \"Decision needed\" block in the row's agent column, Agentic status `Needs you` (the document layer's `review-sheet-script` skill). Issue or PR: a comment. An extra copy, never instead of the discussion."
 msgstr ""
 
 #: processes/process/hand-back-to-discussion.bpmn:82
