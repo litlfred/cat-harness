@@ -29,10 +29,6 @@ msgstr "أنواع المحتوى"
 msgid "On this page"
 msgstr "في هذه الصفحة"
 
-#: docs/concepts/content-types.md:25
-msgid "This page is generated from  — each section below links to its own source."
-msgstr "تم توليد هذه الصفحة من  — يرتبط كل قسم أدناه بمصدره الخاص."
-
 #: docs/concepts/content-types.md:29
 msgid "folio-assistant is content-agnostic: the platform knows nothing about any particular paper or guideline. Each kind of content is supported by a content adapter (code that knows how to validate/build/render that kind) and a skill package (the authoring formalism — what an author and the LLM do)."
 msgstr "إن folio-assistant مستقل عن المحتوى: فالمنصة لا تعرف شيئًا عن أي ورقة بحثية أو دليل إرشادي بعينه. ويتم دعم كل نوع من أنواع المحتوى عبر محول محتوى (شفرة برمجية تعرف كيفية التحقق من ذلك النوع وبنائه وعرضه) و حزمة مهارات (الصياغة الرسمية للتأليف — ما يقوم به المؤلف والنموذج اللغوي الكبير)."
@@ -45,29 +41,9 @@ msgstr "تصف هذه الصفحة الصياغة الرسمية لكل نوع �
 msgid "Scientific papers & books"
 msgstr "الأوراق والكتب العلمية"
 
-#: docs/concepts/content-types.md:144
-msgid "Skill package:  · Adapter:  · Guide: Writing a paper"
-msgstr "حزمة المهارات:  · المحول:  · الدليل الإرشادي: كتابة ورقة بحثية"
-
 #: docs/concepts/content-types.md:148
 msgid "Rigorous scientific papers and books where prose and mathematics are backed by a machine-checked Lean 4 formalization and rendered through LaTeX."
 msgstr "الأوراق والكتب العلمية الدقيقة حيث يُدعم النثر والرياضيات بصياغة رسمية يتم التحقق منها آليًا عبر Lean 4 وتُصيَّر باستخدام LaTeX."
-
-#: docs/concepts/content-types.md:151
-msgid "A paper is a document plus Lean-bearing blocks. Everything in the section above applies here: the same block tree, the same editorial  graph, the same QA sidecars, the same lifecycle — and the Markdown render path, which works while drafting on a machine with no TeX. The  adapter extends the  adapter in code, for exactly that reason. What a paper adds is the seven kinds below whose assertion is a formal claim, and the two toolchains that check and typeset them."
-msgstr "الورقة البحثية هي مستند بالإضافة إلى كتل تدعم Lean. ينطبق كل ما ورد في القسم أعلاه هنا: شجرة الكتل نفسها، ومخطط  التحريري نفسه، وملفات ضمان الجودة المرافقة (QA sidecars) نفسها، ودورة الحياة نفسها — ومسار تصيير Markdown، الذي يعمل أثناء الصياغة الأولية على جهاز لا يحتوي على TeX. يوسع محول  محول  برمجياً لهذا السبب تحديدًا. وما تضيفه الورقة هو الأنواع السبعة الموضحة أدناه والتي يشكل توكيدها ادعاءً رسميًا، بالإضافة إلى سلسلتي الأدوات اللتين تتحققان منها وتنضدانها."
-
-#: docs/concepts/content-types.md:159
-msgid "Source model — content is a tree of typed blocks (, , , , , , …). See the TypeScript API reference for , , and ."
-msgstr "نموذج المصدر — المحتوى عبارة عن شجرة من الكتل المصنفة (، و، و، و، و، و، …). راجع مرجع واجهة برمجة تطبيقات TypeScript للاطلاع على  و و."
-
-#: docs/concepts/content-types.md:162
-msgid "Formalization —  and  skills drive Lean; each theorem-like block can be tracked against its Lean counterpart, and every  is auditable."
-msgstr "الصياغة الرسمية — تقود مهارتا  و نظام Lean؛ حيث يمكن تتبع كل كتلة شبيهة بالمبرهنة مقابل نظيرتها في Lean، ويكون كل تعبير  قابلاً للتدقيق."
-
-#: docs/concepts/content-types.md:165
-msgid "Rendering —  plus the paper adapter's  /  tools."
-msgstr "التصيير — مهارة  بالإضافة إلى أداتي  و التابعتين لمحول الورقة."
 
 #: docs/concepts/content-types.md:168
 msgid "The seven kinds a document folio does not get, and the eight it shares:"
@@ -113,25 +89,9 @@ msgstr "مشترك"
 msgid "n/a"
 msgstr "لا ينطبق"
 
-#: docs/concepts/content-types.md:180
-msgid "The four  rows are  in ; the  rows are , derived as the complement so a kind added later cannot go unclassified."
-msgstr "الصفوف الأربعة الخاصة بـ  هي  في ؛ أما الصفوف المشتركة فهي ، المشتقة كمتممة حتى لا يبقى أي نوع يُضاف لاحقًا دون تصنيف."
-
-#: docs/concepts/content-types.md:185
-msgid "Two of those rows are worth a second look.  is the sharpest point of the whole split — it is the one kind whose  field is required rather than optional, so a document folio could not hold one even if the profile allowed it. And the  kinds still declare an optional : the type permits what the profile forbids, which is why  has a second rule beyond \"is this kind allowed\"."
-msgstr "يستحق اثنان من تلك الصفوف نظرة فاحصة. فالنوع  هو النقطة الأوضح في هذا التقسيم بأكمله — فهو النوع الوحيد الذي يكون حقل  فيه إلزاميًا وليس اختياريًا، ولذا لا يمكن لـ folio المستند أن يحتوي عليه حتى لو سمح ملف التعريف بذلك. وما زالت الأنواع المشتركة تعلن عن حقل  اختياري: فالنوع البرمجي يسمح بما يحظره ملف التعريف، ولهذا السبب تحتوي أداة  على قاعدة ثانية تتجاوز مجرد السؤال \"هل هذا النوع مسموح به\"."
-
-#: docs/concepts/content-types.md:192
-msgid "Relevant skill schemas: , , ."
-msgstr "مخططات المهارات ذات الصلة: ، ، ."
-
 #: docs/concepts/content-types.md:265
 msgid "Others — extending folio-assistant"
 msgstr "أنواع أخرى — توسيع folio-assistant"
-
-#: docs/concepts/content-types.md:270
-msgid "New content types are first-class: add a content adapter and a skill package, and the lifecycle, RBAC, and MCP plumbing come for free. See Adding a content type."
-msgstr "أنواع المحتوى الجديدة مواطنون من الدرجة الأولى: أضف محول محتوى وحزمة مهارات، وستحصل على دورة الحياة، والتحكم في الوصول القائم على الأدوار (RBAC)، وتوصيلات خادم MCP تلقائيًا دون عناء. راجع إضافة نوع محتوى."
 
 #~ msgid "Every content type moves through the same lifecycle, provided by the cross-cutting **** skill package:"
 #~ msgstr "يمر كل نوع محتوى بدورة الحياة نفسها، والتي توفرها حزمة المهارات الشاملة ****:"
@@ -306,3 +266,33 @@ msgstr "أنواع المحتوى الجديدة مواطنون من الدرج�
 
 #~ msgid "Quality control gates ()"
 #~ msgstr "بوابات مراقبة الجودة ()"
+
+#~ msgid "This page is generated from  — each section below links to its own source."
+#~ msgstr "تم توليد هذه الصفحة من  — يرتبط كل قسم أدناه بمصدره الخاص."
+
+#~ msgid "Skill package:  · Adapter:  · Guide: Writing a paper"
+#~ msgstr "حزمة المهارات:  · المحول:  · الدليل الإرشادي: كتابة ورقة بحثية"
+
+#~ msgid "A paper is a document plus Lean-bearing blocks. Everything in the section above applies here: the same block tree, the same editorial  graph, the same QA sidecars, the same lifecycle — and the Markdown render path, which works while drafting on a machine with no TeX. The  adapter extends the  adapter in code, for exactly that reason. What a paper adds is the seven kinds below whose assertion is a formal claim, and the two toolchains that check and typeset them."
+#~ msgstr "الورقة البحثية هي مستند بالإضافة إلى كتل تدعم Lean. ينطبق كل ما ورد في القسم أعلاه هنا: شجرة الكتل نفسها، ومخطط  التحريري نفسه، وملفات ضمان الجودة المرافقة (QA sidecars) نفسها، ودورة الحياة نفسها — ومسار تصيير Markdown، الذي يعمل أثناء الصياغة الأولية على جهاز لا يحتوي على TeX. يوسع محول  محول  برمجياً لهذا السبب تحديدًا. وما تضيفه الورقة هو الأنواع السبعة الموضحة أدناه والتي يشكل توكيدها ادعاءً رسميًا، بالإضافة إلى سلسلتي الأدوات اللتين تتحققان منها وتنضدانها."
+
+#~ msgid "Source model — content is a tree of typed blocks (, , , , , , …). See the TypeScript API reference for , , and ."
+#~ msgstr "نموذج المصدر — المحتوى عبارة عن شجرة من الكتل المصنفة (، و، و، و، و، و، …). راجع مرجع واجهة برمجة تطبيقات TypeScript للاطلاع على  و و."
+
+#~ msgid "Formalization —  and  skills drive Lean; each theorem-like block can be tracked against its Lean counterpart, and every  is auditable."
+#~ msgstr "الصياغة الرسمية — تقود مهارتا  و نظام Lean؛ حيث يمكن تتبع كل كتلة شبيهة بالمبرهنة مقابل نظيرتها في Lean، ويكون كل تعبير  قابلاً للتدقيق."
+
+#~ msgid "Rendering —  plus the paper adapter's  /  tools."
+#~ msgstr "التصيير — مهارة  بالإضافة إلى أداتي  و التابعتين لمحول الورقة."
+
+#~ msgid "The four  rows are  in ; the  rows are , derived as the complement so a kind added later cannot go unclassified."
+#~ msgstr "الصفوف الأربعة الخاصة بـ  هي  في ؛ أما الصفوف المشتركة فهي ، المشتقة كمتممة حتى لا يبقى أي نوع يُضاف لاحقًا دون تصنيف."
+
+#~ msgid "Two of those rows are worth a second look.  is the sharpest point of the whole split — it is the one kind whose  field is required rather than optional, so a document folio could not hold one even if the profile allowed it. And the  kinds still declare an optional : the type permits what the profile forbids, which is why  has a second rule beyond \"is this kind allowed\"."
+#~ msgstr "يستحق اثنان من تلك الصفوف نظرة فاحصة. فالنوع  هو النقطة الأوضح في هذا التقسيم بأكمله — فهو النوع الوحيد الذي يكون حقل  فيه إلزاميًا وليس اختياريًا، ولذا لا يمكن لـ folio المستند أن يحتوي عليه حتى لو سمح ملف التعريف بذلك. وما زالت الأنواع المشتركة تعلن عن حقل  اختياري: فالنوع البرمجي يسمح بما يحظره ملف التعريف، ولهذا السبب تحتوي أداة  على قاعدة ثانية تتجاوز مجرد السؤال \"هل هذا النوع مسموح به\"."
+
+#~ msgid "Relevant skill schemas: , , ."
+#~ msgstr "مخططات المهارات ذات الصلة: ، ، ."
+
+#~ msgid "New content types are first-class: add a content adapter and a skill package, and the lifecycle, RBAC, and MCP plumbing come for free. See Adding a content type."
+#~ msgstr "أنواع المحتوى الجديدة مواطنون من الدرجة الأولى: أضف محول محتوى وحزمة مهارات، وستحصل على دورة الحياة، والتحكم في الوصول القائم على الأدوار (RBAC)، وتوصيلات خادم MCP تلقائيًا دون عناء. راجع إضافة نوع محتوى."
