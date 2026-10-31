@@ -17,6 +17,10 @@
       "operative": "Primary author or creator of the catalogue record or ingested document."
     },
     {
+      "term": "dc.contributor.other",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "dc.coverage.spatial",
       "operative": "Spatial or geographic coverage of the publication or resource."
     },
@@ -45,8 +49,20 @@
       "operative": "Abstract summarizing the contents and findings of the publication."
     },
     {
+      "term": "dc.description.endpage",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.description.startpage",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "dc.description.tableofcontents",
       "operative": "Table of contents or section outline of the document."
+    },
+    {
+      "term": "dc.format.mimetype",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "dc.identifier.govdoc",
@@ -73,6 +89,54 @@
       "operative": "Organization or publisher responsible for distributing the resource."
     },
     {
+      "term": "dc.relation",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.haspart",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.hasversion",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.ispartofjournal",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.ispartofseries",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.issue",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.isversionof",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.volume",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.rights",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.rights.holder",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.rights.uri",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.subject",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "dc.subject.mesh",
       "operative": "Medical Subject Headings (MeSH) descriptor assigned to the health topic."
     },
@@ -87,6 +151,10 @@
     {
       "term": "dc.title",
       "operative": "Formal title of the catalogue publication or document."
+    },
+    {
+      "term": "dc.title.alternative",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "dc.title.release",
