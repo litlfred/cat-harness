@@ -1,0 +1,96 @@
+{
+  "$schema": "tool-definition/v1",
+  "tool": {
+    "id": "archimate-actors",
+    "title": "Generate FHIR ActorDefinitions from the boxes an ArchiMate model tags as actors",
+    "description": "For one model an instance's `cat-archimate.config.json` names: every element carrying the Archi property `fhir-actor` (its value the FSH instance id) becomes an ActorDefinition in FSH, with the element's name, its documentation as the description, `system` or `person` from its type, and a `reference` to the element's IRI. Which box is an actor is the model authors' call, made in Archi; nothing is guessed from names. `--out` writes the file, `--check` fails when the written file is stale, and `--against` lists the ActorDefinitions a hand-written FSH file still holds that no tagged element generates, so a hand-written `actors.fsh` is retired one actor at a time.",
+    "install": {
+      "none": true
+    },
+    "invoke": {
+      "shell": "bun run cat archimate:actors"
+    },
+    "io": {
+      "inputs": [
+        {
+          "name": "instance",
+          "schema": {
+            "$type": "RepoPath"
+          },
+          "description": "The instance root whose ArchiMate model is read.",
+          "required": true,
+          "arg": {
+            "flag": "--instance"
+          }
+        },
+        {
+          "name": "model",
+          "schema": {
+            "$type": "ArchimateModelId"
+          },
+          "description": "The model's id from the config.",
+          "required": true,
+          "arg": {
+            "flag": "--model"
+          }
+        },
+        {
+          "name": "out",
+          "schema": {
+            "$type": "RepoPath"
+          },
+          "description": "The FSH file to write, relative to the instance root; absent, the FSH is printed.",
+          "required": false,
+          "arg": {
+            "flag": "--out"
+          }
+        },
+        {
+          "name": "check",
+          "schema": {
+            "$type": "Flag"
+          },
+          "description": "With `--out`: write nothing, exit 1 when the file is not what the model generates.",
+          "required": false,
+          "arg": {
+            "flag": "--check"
+          }
+        },
+        {
+          "name": "against",
+          "schema": {
+            "$type": "RepoPath"
+          },
+          "description": "A hand-written FSH file: list its ActorDefinitions no tagged element generates yet. Never fails the run.",
+          "required": false,
+          "arg": {
+            "flag": "--against"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "actors",
+          "schema": {
+            "$type": "Text"
+          },
+          "description": "The ActorDefinitions as FSH (stdout or `--out`), and the report."
+        }
+      ]
+    },
+    "satisfies": [
+      "archimate-models"
+    ],
+    "selection": {
+      "when": "In an IG whose systems are drawn in an ArchiMate model, instead of writing ActorDefinitions by hand: after the model authors tag boxes `fhir-actor` in Archi, and in CI with `--check`.",
+      "limits": "Reads one model per run. Only tagged elements; an element with no documentation gets no description rather than an invented one. A tag on an element that cannot be an actor (a data object, a goal) is reported and fails the run.",
+      "cost": "One parse of the model; milliseconds. No network, no JVM, no SUSHI."
+    },
+    "requires": {
+      "runtime": [
+        "bun"
+      ],
+      "network": false
+    }
+  }
+}

@@ -19,7 +19,7 @@ description: >
 
 > Skill id: `archimate-models` · Package: `ui-core` · Subgraph:
 > [`cat-harness/archimate/`](../../../archimate/README.md) · Tools:
-> `archimate-check`, `archimate-metamodel`, `archimate-pages`, `archimate-crossings`, `archimate-detangle` · Process:
+> `archimate-check`, `archimate-metamodel`, `archimate-pages`, `archimate-crossings`, `archimate-detangle`, `archimate-actors` · Process:
 > `archimate-publish` (`processes/ui/archimate-publish.bpmn`)
 
 Owner, 2026-10-09: *"need new specialixed harness (like openapi) for archimate
@@ -109,6 +109,30 @@ call. Cite the derived page instead of the view in the meantime.
 The steps run in this order, all in the pipeline lane of process
 `archimate-publish`: `archimate-check`, then `archimate-metamodel --check`,
 then `archimate-pages`. A refused relationship goes back to the model's author.
+
+## FHIR actors come from the model, tagged by its authors
+
+smart-ra#166 D4. An IG whose systems are drawn in an ArchiMate model does not
+write its ActorDefinitions by hand. **A model author tags the box in Archi**
+with the property `fhir-actor`, whose value is the FSH instance id
+(`fhir-actor = FacilityRegistry`), and the Tool `archimate-actors` writes the
+ActorDefinition from it: the box's name, its documentation as the
+description, `system` or `person` from its type, and a `reference` to the
+box's IRI.
+
+- Never decide which box is which actor from names. That is the model
+  authors' call, made in Archi.
+- An untagged box generates nothing. A box with no documentation gets no
+  description: copy the text into the box, do not invent one.
+- Retire a hand-written `actors.fsh` one actor at a time:
+  `bun run cat archimate:actors --instance . --model <id> --against input/fsh/actors/actors.fsh`
+  lists the actors still written by hand. Delete the file when the list is
+  empty, and run SUSHI before committing either file.
+- In CI: `--out <file> --check` fails when the generated file is stale.
+
+A data object is tagged the same way: `logical-model = <canonical>` names the
+logical model that defines its fields (D5). Its class diagram will be generated
+from that logical model once the IG holds one, so tag it now and do not draw it.
 
 ## Untangle every view you touch
 
