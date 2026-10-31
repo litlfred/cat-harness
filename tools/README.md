@@ -15,6 +15,8 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 |---|---|---|
 | [`agent-memory/`](agent-memory/) | _nothing declares what this holds_ | |
 | [`archimate-check/`](archimate-check/) | _nothing declares what this holds_ | |
+| [`archimate-crossings/`](archimate-crossings/) | _nothing declares what this holds_ | |
+| [`archimate-detangle/`](archimate-detangle/) | _nothing declares what this holds_ | |
 | [`archimate-pages/`](archimate-pages/) | _nothing declares what this holds_ | |
 | [`auto-docs-viewer/`](auto-docs-viewer/) | _nothing declares what this holds_ | |
 | [`avatars-css/`](avatars-css/) | _nothing declares what this holds_ | |
