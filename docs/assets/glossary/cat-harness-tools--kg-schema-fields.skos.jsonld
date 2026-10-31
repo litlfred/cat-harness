@@ -25341,6 +25341,25 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/folio-assistant/cat-harness-tools/ns#glossary/kg-schema-fields/prov-jsonld.owned.file",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/folio-assistant/cat-harness-tools/ns#glossary/kg-schema-fields"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Owned.file"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The file itself, absolute (plans only)."
+        }
+      ],
+      "dcterms:source": "cat-harness-tools/schemas/kg/prov-jsonld.ts#Owned.file",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/folio-assistant/cat-harness-tools/ns#glossary/kg-schema-fields/prov-jsonld.owned.path",
       "@type": "skos:Concept",
       "skos:inScheme": {
