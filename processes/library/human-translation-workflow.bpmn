@@ -391,9 +391,7 @@ official sign-off metadata and source hash for staleness detection.</bpmn:docume
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Complete_di" bpmnElement="Gateway_Complete" isMarkerVisible="true">
         <dc:Bounds x="1880" y="125" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1840" y="180" width="130" height="30" />
-        </bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="1840" y="103" width="130" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_RequestMoreWork_di" bpmnElement="Task_RequestMoreWork">
         <dc:Bounds x="1990" y="110" width="140" height="80" />
@@ -416,9 +414,7 @@ official sign-off metadata and source hash for staleness detection.</bpmn:docume
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Accurate_di" bpmnElement="Gateway_Accurate" isMarkerVisible="true">
         <dc:Bounds x="2900" y="485" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="2860" y="540" width="130" height="30" />
-        </bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="2954" y="539" width="130" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ReturnForCorrection_di" bpmnElement="Task_ReturnForCorrection">
         <dc:Bounds x="2980" y="430" width="140" height="80" />
@@ -428,9 +424,7 @@ official sign-off metadata and source hash for staleness detection.</bpmn:docume
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_OfficialTranslation_di" bpmnElement="End_OfficialTranslation">
         <dc:Bounds x="3780" y="492" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="3730" y="535" width="136" height="30" />
-        </bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="3730" y="471" width="136" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
 
       <!-- Pipeline Shapes -->
@@ -512,6 +506,7 @@ official sign-off metadata and source hash for staleness detection.</bpmn:docume
         <di:waypoint x="1905" y="175" />
         <di:waypoint x="1905" y="690" />
         <di:waypoint x="2180" y="690" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1909" y="423.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F13_di" bpmnElement="F13">
         <di:waypoint x="2320" y="690" />
@@ -522,9 +517,7 @@ official sign-off metadata and source hash for staleness detection.</bpmn:docume
         <di:waypoint x="2610" y="690" />
         <di:waypoint x="2610" y="510" />
         <di:waypoint x="2700" y="510" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="2616" y="595" width="80" height="28" />
-        </bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="2525" y="652" width="80" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F17_di" bpmnElement="F17">
         <di:waypoint x="2840" y="510" />
@@ -534,6 +527,7 @@ official sign-off metadata and source hash for staleness detection.</bpmn:docume
         <di:waypoint x="2925" y="485" />
         <di:waypoint x="2925" y="470" />
         <di:waypoint x="2980" y="470" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2884" y="432" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F19_di" bpmnElement="F19">
         <di:waypoint x="3050" y="430" />
@@ -545,6 +539,7 @@ official sign-off metadata and source hash for staleness detection.</bpmn:docume
         <di:waypoint x="2925" y="535" />
         <di:waypoint x="2925" y="690" />
         <di:waypoint x="3180" y="690" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2929" y="604" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F21_di" bpmnElement="F21">
         <di:waypoint x="3320" y="690" />

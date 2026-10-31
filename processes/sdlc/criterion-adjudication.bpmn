@@ -171,6 +171,7 @@ Do not resolve the disagreement away: both entries stay, the adjudication on top
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Outcome" bpmnElement="GW_Outcome" isMarkerVisible="true">
         <dc:Bounds x="550" y="125" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="530" y="86" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ScopeCriterion" bpmnElement="A_ScopeCriterion">
         <dc:Bounds x="650" y="230" width="150" height="80"/>
@@ -196,16 +197,19 @@ Do not resolve the disagreement away: both entries stay, the adjudication on top
       <bpmndi:BPMNEdge id="Edge_F_Stands" bpmnElement="F_Stands">
         <di:waypoint x="600" y="150"/>
         <di:waypoint x="880" y="150"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="695" y="94" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Scope" bpmnElement="F_Scope">
         <di:waypoint x="575" y="175"/>
         <di:waypoint x="575" y="270"/>
         <di:waypoint x="650" y="270"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="481" y="210.25" width="90" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Exception" bpmnElement="F_Exception">
         <di:waypoint x="575" y="175"/>
         <di:waypoint x="575" y="390"/>
         <di:waypoint x="650" y="390"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="481" y="300.25" width="90" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_C5" bpmnElement="F_C5">
         <di:waypoint x="800" y="270"/>

@@ -310,6 +310,7 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Authorised" bpmnElement="GW_Authorised" isMarkerVisible="true">
         <dc:Bounds x="1325" y="295" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1305" y="274" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Ask" bpmnElement="Task_Ask">
         <dc:Bounds x="1450" y="390" width="140" height="80" />
@@ -319,6 +320,7 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Owner" bpmnElement="GW_Owner" isMarkerVisible="true">
         <dc:Bounds x="1835" y="905" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1889" y="866" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Held" bpmnElement="End_Held">
         <dc:Bounds x="2012" y="912" width="36" height="36" />
@@ -376,16 +378,19 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
         <di:waypoint x="840" y="345" />
         <di:waypoint x="840" y="540" />
         <di:waypoint x="940" y="540" />
+        <bpmndi:BPMNLabel><dc:Bounds x="844" y="434" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m7" bpmnElement="m7">
         <di:waypoint x="840" y="345" />
         <di:waypoint x="840" y="650" />
         <di:waypoint x="992" y="650" />
+        <bpmndi:BPMNLabel><dc:Bounds x="844" y="488.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m8" bpmnElement="m8">
         <di:waypoint x="840" y="345" />
         <di:waypoint x="840" y="760" />
         <di:waypoint x="992" y="760" />
+        <bpmndi:BPMNLabel><dc:Bounds x="844" y="544" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m9" bpmnElement="m9">
         <di:waypoint x="1080" y="540" />
@@ -423,6 +428,7 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <bpmndi:BPMNEdge id="Edge_m16" bpmnElement="m16">
         <di:waypoint x="1860" y="905" />
         <di:waypoint x="1860" y="360" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1864" y="623.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m17" bpmnElement="m17">
         <di:waypoint x="1885" y="930" />
@@ -432,6 +438,7 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
         <di:waypoint x="1860" y="955" />
         <di:waypoint x="1860" y="1040" />
         <di:waypoint x="2012" y="1040" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1864" y="989" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m19" bpmnElement="m19">
         <di:waypoint x="1930" y="320" />

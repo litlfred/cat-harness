@@ -192,6 +192,7 @@ ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-ve
         <di:waypoint x="320" y="145"/>
         <di:waypoint x="320" y="115"/>
         <di:waypoint x="410" y="115"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="226" y="104.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_Indicator" bpmnElement="Flow_Indicator">
         <di:waypoint x="320" y="195"/>
@@ -224,6 +225,7 @@ ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-ve
         <di:waypoint x="1010" y="475"/>
         <di:waypoint x="1010" y="460"/>
         <di:waypoint x="1130" y="460"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1025" y="439" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_Revise" bpmnElement="Flow_Revise">
         <di:waypoint x="1010" y="525"/>

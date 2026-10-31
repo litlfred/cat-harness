@@ -299,6 +299,7 @@ differ, sets stale: true. The translation remains visible with a
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_PostQA_Edit_di" bpmnElement="Flow_PostQA_Edit">
         <di:waypoint x="1375" y="95" /><di:waypoint x="1375" y="40" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1379" y="50" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Edited_di" bpmnElement="Flow_Edited">
         <di:waypoint x="1305" y="0" /><di:waypoint x="720" y="0" /><di:waypoint x="720" y="220" />
@@ -308,9 +309,11 @@ differ, sets stale: true. The translation remains visible with a
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Signoff_di" bpmnElement="Gateway_Signoff" isMarkerVisible="true">
         <dc:Bounds x="1660" y="235" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1640" y="196" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_TranslationComplete_di" bpmnElement="End_TranslationComplete">
         <dc:Bounds x="1667" y="382" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1707" y="382" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Signoff_di" bpmnElement="Task_Signoff">
         <dc:Bounds x="1770" y="220" width="140" height="80" />
@@ -349,6 +352,7 @@ differ, sets stale: true. The translation remains visible with a
         <di:waypoint x="1075" y="235" />
         <di:waypoint x="1075" y="120" />
         <di:waypoint x="1160" y="120" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1079" y="169" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_DriftNo_di" bpmnElement="Flow_DriftNo">
         <di:waypoint x="1100" y="260" />
@@ -363,11 +367,13 @@ differ, sets stale: true. The translation remains visible with a
         <di:waypoint x="1375" y="50" />
         <di:waypoint x="520" y="50" />
         <di:waypoint x="520" y="220" />
+        <bpmndi:BPMNLabel><dc:Bounds x="902.5" y="12" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_PostQA_Accept_di" bpmnElement="Flow_PostQA_Accept">
         <di:waypoint x="1400" y="120" />
         <di:waypoint x="1530" y="120" />
         <di:waypoint x="1530" y="220" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1420" y="123" width="90" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Unofficial_di" bpmnElement="Flow_Unofficial">
         <di:waypoint x="1600" y="260" />
@@ -380,6 +386,7 @@ differ, sets stale: true. The translation remains visible with a
       <bpmndi:BPMNEdge id="Flow_SignoffNo_di" bpmnElement="Flow_SignoffNo">
         <di:waypoint x="1685" y="285" />
         <di:waypoint x="1685" y="382" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1689" y="325" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Signoff_di" bpmnElement="Flow_Signoff">
         <di:waypoint x="1910" y="260" />

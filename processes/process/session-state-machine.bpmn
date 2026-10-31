@@ -221,6 +221,7 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_ActorKnown" bpmnElement="Gateway_ActorKnown" isMarkerVisible="true">
         <dc:Bounds x="490" y="215" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="470" y="176" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_AskWhoIsActing" bpmnElement="A_AskWhoIsActing">
         <dc:Bounds x="390" y="430" width="140" height="80" />
@@ -288,6 +289,7 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
         <di:waypoint x="1205" y="215" />
         <di:waypoint x="1205" y="140" />
         <di:waypoint x="1280" y="140" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1111" y="159.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_9" bpmnElement="F_9">
         <di:waypoint x="1280" y="140" />
@@ -308,6 +310,7 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
         <di:waypoint x="1205" y="265" />
         <di:waypoint x="1205" y="340" />
         <di:waypoint x="1280" y="340" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1111" y="303.25" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_13" bpmnElement="F_13">
         <di:waypoint x="1420" y="340" />

@@ -281,6 +281,7 @@ The branch taken is emitted as `reason=merged | labelled | closed-unmerged-and-u
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Refused" bpmnElement="End_Refused">
         <dc:Bounds x="862" y="592" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="902" y="574.5" width="90" height="71" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_H_Confirm" bpmnElement="H_Confirm">
         <dc:Bounds x="255" y="680" width="170" height="80"/>
@@ -317,6 +318,7 @@ The branch taken is emitted as `reason=merged | labelled | closed-unmerged-and-u
         <di:waypoint x="525" y="330"/>
         <di:waypoint x="700" y="330"/>
         <di:waypoint x="700" y="310"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="704" y="314" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_8" bpmnElement="Flow_8">
         <di:waypoint x="785" y="270"/>
@@ -326,6 +328,7 @@ The branch taken is emitted as `reason=merged | labelled | closed-unmerged-and-u
         <di:waypoint x="525" y="330"/>
         <di:waypoint x="700" y="330"/>
         <di:waypoint x="700" y="360"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="523.75" y="274" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_10" bpmnElement="Flow_10">
         <di:waypoint x="785" y="400"/>
@@ -351,6 +354,7 @@ The branch taken is emitted as `reason=merged | labelled | closed-unmerged-and-u
         <di:waypoint x="725" y="530"/>
         <di:waypoint x="880" y="530"/>
         <di:waypoint x="880" y="510"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="884" y="514" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_16" bpmnElement="Flow_16">
         <di:waypoint x="965" y="470"/>
@@ -360,6 +364,7 @@ The branch taken is emitted as `reason=merged | labelled | closed-unmerged-and-u
         <di:waypoint x="725" y="530"/>
         <di:waypoint x="880" y="530"/>
         <di:waypoint x="880" y="592"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="757.5" y="533" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_18" bpmnElement="Flow_18">
         <di:waypoint x="425" y="720"/>

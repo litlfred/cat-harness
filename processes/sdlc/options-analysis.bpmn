@@ -102,10 +102,10 @@ In a bean context the form is MADR's. Which methodology was followed is named he
   <bpmndi:BPMNDiagram id="Diagram_Process_OptionsAnalysis">
     <bpmndi:BPMNPlane id="Plane_Process_OptionsAnalysis" bpmnElement="Collaboration_Process_OptionsAnalysis">
       <bpmndi:BPMNShape id="Shape_Participant_Process_OptionsAnalysis" bpmnElement="Participant_Process_OptionsAnalysis" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1180" height="200" />
+        <dc:Bounds x="160" y="80" width="1200" height="203" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BusinessAnalyst" bpmnElement="Lane_BusinessAnalyst" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1150" height="200" />
+        <dc:Bounds x="190" y="80" width="1170" height="203" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_OptionsAnalysis" bpmnElement="Start_Process_OptionsAnalysis">
         <dc:Bounds x="232" y="162" width="36" height="36" />
@@ -115,6 +115,7 @@ In a bean context the form is MADR's. Which methodology was followed is named he
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Trigger" bpmnElement="GW_Trigger" isMarkerVisible="true">
         <dc:Bounds x="470" y="155" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="450" y="97" width="90" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_TriggerNotMet" bpmnElement="End_TriggerNotMet">
         <dc:Bounds x="560" y="235" width="36" height="36" />
@@ -129,10 +130,10 @@ In a bean context the form is MADR's. Which methodology was followed is named he
         <dc:Bounds x="880" y="140" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Record" bpmnElement="A_Record">
-        <dc:Bounds x="1040" y="140" width="120" height="80" />
+        <dc:Bounds x="1040" y="140" width="160" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_OptionsAnalysis" bpmnElement="End_Process_OptionsAnalysis">
-        <dc:Bounds x="1240" y="162" width="36" height="36" />
+        <dc:Bounds x="1260" y="162" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_1" bpmnElement="SF_Process_OptionsAnalysis_1">
         <di:waypoint x="268" y="180" /><di:waypoint x="320" y="180" />
@@ -153,10 +154,12 @@ In a bean context the form is MADR's. Which methodology was followed is named he
         <di:waypoint x="840" y="180" /><di:waypoint x="880" y="180" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_4" bpmnElement="SF_Process_OptionsAnalysis_4">
-        <di:waypoint x="1000" y="180" /><di:waypoint x="1040" y="180" />
+        <di:waypoint x="1000" y="180" />
+        <di:waypoint x="1060" y="180" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_5" bpmnElement="SF_Process_OptionsAnalysis_5">
-        <di:waypoint x="1160" y="180" /><di:waypoint x="1240" y="180" />
+        <di:waypoint x="1200" y="180" />
+        <di:waypoint x="1260" y="180" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

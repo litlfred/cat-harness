@@ -203,17 +203,17 @@ Mechanical throughout. There is no human lane, which is what makes `build-pipeli
       <bpmndi:BPMNShape id="Shape_Task_Regenerate" bpmnElement="Task_Regenerate"><dc:Bounds x="740" y="105" width="170" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Build" bpmnElement="Task_Build"><dc:Bounds x="960" y="105" width="170" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Export" bpmnElement="Task_Export"><dc:Bounds x="1180" y="105" width="170" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_Complete" bpmnElement="GW_Complete" isMarkerVisible="true"><dc:Bounds x="1460" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="1415" y="176" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_Complete" bpmnElement="GW_Complete" isMarkerVisible="true"><dc:Bounds x="1460" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="1415" y="80" width="140" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Verify" bpmnElement="Call_Verify"><dc:Bounds x="1620" y="105" width="170" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_Verified" bpmnElement="GW_Verified" isMarkerVisible="true"><dc:Bounds x="1900" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="1855" y="176" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_Verified" bpmnElement="GW_Verified" isMarkerVisible="true"><dc:Bounds x="1900" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="1855" y="99" width="140" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Restore" bpmnElement="Task_Restore"><dc:Bounds x="2060" y="105" width="170" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Publish" bpmnElement="Task_Publish"><dc:Bounds x="2280" y="105" width="170" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_Deployed" bpmnElement="GW_Deployed" isMarkerVisible="true"><dc:Bounds x="2560" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="2515" y="176" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_Survived" bpmnElement="GW_Survived" isMarkerVisible="true"><dc:Bounds x="2780" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="2735" y="176" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_Deployed" bpmnElement="GW_Deployed" isMarkerVisible="true"><dc:Bounds x="2560" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="2515" y="81" width="140" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_Survived" bpmnElement="GW_Survived" isMarkerVisible="true"><dc:Bounds x="2780" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="2735" y="81" width="140" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_CloseAlert" bpmnElement="Task_CloseAlert"><dc:Bounds x="2940" y="105" width="170" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Published" bpmnElement="End_Published"><dc:Bounds x="3227" y="127" width="36" height="36"/><bpmndi:BPMNLabel><dc:Bounds x="3175" y="169" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Alert" bpmnElement="Call_Alert"><dc:Bounds x="3000" y="290" width="170" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_End_Failed" bpmnElement="End_Failed"><dc:Bounds x="3242" y="312" width="36" height="36"/><bpmndi:BPMNLabel><dc:Bounds x="3190" y="350" width="140" height="30"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Failed" bpmnElement="End_Failed"><dc:Bounds x="3242" y="312" width="36" height="36"/><bpmndi:BPMNLabel><dc:Bounds x="3190" y="254" width="140" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_0" bpmnElement="Flow_0"><di:waypoint x="263" y="145"/><di:waypoint x="320" y="145"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_S1" bpmnElement="Flow_S1"><di:waypoint x="490" y="145"/><di:waypoint x="580" y="145"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_S2" bpmnElement="Flow_S2"><di:waypoint x="630" y="145"/><di:waypoint x="740" y="145"/><bpmndi:BPMNLabel><dc:Bounds x="636" y="121" width="100" height="20"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>

@@ -470,10 +470,14 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         <di:waypoint x="2020" y="290" />
         <di:waypoint x="2100" y="290" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="500" y="145" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="500" y="145" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="480" y="106" width="90" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours"><dc:Bounds x="507" y="225" width="36" height="36"/></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1"><di:waypoint x="470" y="170"/><di:waypoint x="500" y="170"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2"><di:waypoint x="525" y="195"/><di:waypoint x="525" y="225"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2"><di:waypoint x="525" y="195"/><di:waypoint x="525" y="225"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="529" y="201" width="90" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
