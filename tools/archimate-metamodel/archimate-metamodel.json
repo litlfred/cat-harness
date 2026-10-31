@@ -3,7 +3,7 @@
   "tool": {
     "id": "archimate-metamodel",
     "title": "Derive the metamodel an ArchiMate model uses, and check it against ArchiMate's relationship table",
-    "description": "For each model an instance's `cat-archimate.config.json` names: the element types it uses, with counts; every (source type, relationship, target type) pattern its relationships follow, with counts and ids; whether ArchiMate's relationship table (Appendix B of ArchiMate 3.2, as Archi holds it, committed as `archimate/schemas/archimate-relationships.json` in cat-harness-tools) allows each pattern; and the placeholder elements, named after their own type, that a hand-drawn metamodel leaves in a model. Prints a report, JSON, Graphviz DOT or a Mermaid class diagram. `archimate-pages` draws the same result on each model's \"Metamodel in use\" page, so the metamodel is derived, never drawn.",
+    "description": "For each model an instance's `cat-archimate.config.json` names: the element types it uses, with counts; every (source type, relationship, target type) pattern its relationships follow, with counts and ids; whether ArchiMate's relationship table (Appendix B of ArchiMate 3.2, as Archi holds it, committed as `archimate/schemas/archimate-relationships.json` in the tools layer) allows each pattern; and the placeholder elements, named after their own type, that a hand-drawn metamodel leaves in a model. Prints a report, JSON, Graphviz DOT or a Mermaid class diagram. `archimate-pages` draws the same result on each model's \"Metamodel in use\" page, so the metamodel is derived, never drawn.",
     "install": {
       "none": true
     },
