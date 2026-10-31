@@ -33,18 +33,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Folio-Official: no\n"
 
-#: docs/concepts/skills.md:140
-msgid ", , , , and  now live (generalized) in the  bundle below — fetch them with ."
-msgstr "、、、 和  现已（通用化后）移至下方的  捆绑包中 — 请使用  获取它们。"
-
-#: docs/concepts/skills.md:73
-msgid "✅ all 22 — see reference"
-msgstr "✅ 全部 22 项 — 参见参考"
-
-#: docs/concepts/skills.md:72
-msgid "✅ all 22 authoring skills — validated in CI by"
-msgstr "✅ 全部 22 项创作技能 — 由  在 CI 中验证"
-
 #: docs/concepts/skills.md:75
 msgid "✅ all four packages"
 msgstr "✅ 全部四个技能包"
@@ -52,10 +40,6 @@ msgstr "✅ 全部四个技能包"
 #: docs/concepts/skills.md:74
 msgid "✅ lifecycle, agent, platform-bundle and folio-document-adapter skills; ⏳ authoring-math / authoring-who-smart-guidelines bodies are TBD (those packages ship the manifest + JSON definitions)"
 msgstr "✅ lifecycle、agent、platform-bundle 以及 folio-document-adapter 技能；⏳ authoring-math / authoring-who-smart-guidelines 正文待补充（这些技能包已提供清单 + JSON 定义）"
-
-#: docs/concepts/skills.md:144
-msgid "A paper folio wants the  skills too: a paper is a document plus Lean-bearing blocks, so  and  apply to both. The two bundles are halves of one content model, not alternatives to choose between."
-msgstr "论文 folio 同样需要  技能：论文本质上是包含了 Lean 块的文档，因此  与  适用于两者。这两个技能包是一个完整内容模型的两半，而不是二选一的替代关系。"
 
 #: docs/concepts/skills.md:68
 msgid "A skill is defined across a few layers — not a single file. For any skill:"
@@ -73,17 +57,9 @@ msgstr "对论证进行对抗性审阅（adversarial review）"
 msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
 msgstr "智能体协作、watcher 框架、QA／渲染／参考文献／词汇表流水线、文档、部署 — 适用于任何内容类型。"
 
-#: docs/concepts/skills.md:131
-msgid "Agent/platform skills ()"
-msgstr "智能体／平台技能（）"
-
 #: docs/concepts/skills.md:218
 msgid "Approve — it reports findings only"
 msgstr "批准（Approve） — 仅报告审查发现"
-
-#: docs/concepts/skills.md:261
-msgid "Architecture — RBAC, adapters, and the MCP server"
-msgstr "架构 — RBAC、适配器与 MCP 服务器"
 
 #: docs/concepts/skills.md:90
 msgid "author"
@@ -121,14 +97,6 @@ msgstr "不可执行的操作"
 msgid "Capabilities & requirements"
 msgstr "能力与要求"
 
-#: docs/concepts/skills.md:241
-msgid "Capabilities are concrete environment abilities a skill may require; the  MCP tool probes them:"
-msgstr "能力（Capabilities）是某项技能可能需要的具体运行环境功能； MCP 工具负责探测检查这些能力："
-
-#: docs/concepts/skills.md:50
-msgid "Capability — a concrete environment ability (e.g. , ). Skills require capabilities;  probes them."
-msgstr "能力（Capability） — 具体的运行环境能力（例如 、）。技能需要特定能力支持； 会对这些能力进行探测检测。"
-
 #: docs/concepts/skills.md:104
 msgid "Carry a recommendation, requirement or rule"
 msgstr "承载建议、要求或规则"
@@ -157,10 +125,6 @@ msgstr "收集与分流反馈"
 msgid "Commit — its output goes to the editor through the validation gate"
 msgstr "提交（Commit） — 其输出通过验证门禁流转给编辑人员"
 
-#: docs/concepts/skills.md:260
-msgid "Content types — which skills each content type uses"
-msgstr "内容类型 — 每种内容类型使用的技能"
-
 #: docs/concepts/skills.md:102
 msgid "Create and revise blocks in a prose folio"
 msgstr "在纯文本（prose）folio 中创建并修订块"
@@ -172,10 +136,6 @@ msgstr "创建结构化制品"
 #: docs/concepts/skills.md:200
 msgid "Create/modify content (inherits reviewer)."
 msgstr "创建/修改内容（继承 ）。"
-
-#: docs/concepts/skills.md:83
-msgid "Cross-cutting:"
-msgstr "跨领域通用："
 
 #: docs/concepts/skills.md:235
 msgid "default"
@@ -192,10 +152,6 @@ msgstr "弃用 / 归档"
 #: docs/concepts/skills.md:125
 msgid "DMN decision tables"
 msgstr "DMN 决策表"
-
-#: docs/concepts/skills.md:98
-msgid "Documents & policy guidance:"
-msgstr "文档与政策指南："
 
 #: docs/concepts/skills.md:217
 msgid "Drafts and revises a proposed change to a content block"
@@ -241,10 +197,6 @@ msgstr "在 Lean 4 中形式化陈述与证明"
 msgid "Full administrative access — roles, settings, all content."
 msgstr "完全管理权限 — 角色、配置及所有内容。"
 
-#: docs/concepts/skills.md:262
-msgid "Getting started — running your first skill"
-msgstr "入门指南 — 运行您的第一项技能"
-
 #: docs/concepts/skills.md:233
 #: docs/concepts/skills.md:234
 msgid "git-config"
@@ -253,14 +205,6 @@ msgstr "git-config"
 #: docs/concepts/skills.md:22
 msgid "How it works together with the LLM"
 msgstr "如何与大语言模型协同工作"
-
-#: docs/concepts/skills.md:74
-msgid "Instruction body (prose how-to the LLM loads) — browse them in the Skill instructions reference"
-msgstr "指令正文（LLM 加载的文字操作指南） — 可在技能指令参考中查阅"
-
-#: docs/concepts/skills.md:170
-msgid "Irreducible QOU physics skills were skipped; QOU-specific examples in the rest were generalized. Each bundle ships a ."
-msgstr "不可削减的 QOU 物理专用技能已被跳过；其余技能中特定于 QOU 的示例均已完成通用化。每个技能包都附带一份 。"
 
 #: docs/concepts/skills.md:122
 msgid "L2 DAK artifacts (data dictionary, etc.)"
@@ -278,10 +222,6 @@ msgstr "L3 FHIR 制品（FSH、SUSHI、CQL、IG Publisher）。"
 msgid "L3 FHIR resources via FSH"
 msgstr "通过 FSH 编写 L3 FHIR 资源"
 
-#: docs/concepts/skills.md:159
-msgid "Larger platform bundles, two of them migrated from the qou content repo (see migration record and issue #27). These are content-agnostic and meant to be synced into any folio:"
-msgstr "更大型的平台技能包（platform bundles），其中两个从 qou 内容仓库迁移而来（参见迁移记录以及 issue #27）。它们与具体内容无关，旨在同步到任何 folio 中："
-
 #: docs/concepts/skills.md:70
 msgid "Layer"
 msgstr "层次"
@@ -290,10 +230,6 @@ msgstr "层次"
 msgid "Lean 4 proof checking & diagnostics via MCP"
 msgstr "通过 MCP 提供 Lean 4 证明检查与诊断"
 
-#: docs/concepts/skills.md:149
-msgid "Local coordination skills ()"
-msgstr "本地协调技能（）"
-
 #: docs/concepts/skills.md:211
 msgid "Localization for UN-supported languages."
 msgstr "面向联合国支持语言的本地化。"
@@ -301,10 +237,6 @@ msgstr "面向联合国支持语言的本地化。"
 #: docs/concepts/skills.md:70
 msgid "Location"
 msgstr "位置"
-
-#: docs/concepts/skills.md:228
-msgid "maps a user identity (from git config / auth) to a role by priority. The shipped defaults:"
-msgstr "按优先级将用户身份（取自 git 配置／认证信息）映射到角色。系统预置的默认配置为："
 
 #: docs/concepts/skills.md:105
 msgid "Markdown → HTML / PDF, no TeX"
@@ -322,10 +254,6 @@ msgstr "非机械性验证：准确性、语调风貌（voice）、表述阐释"
 msgid "Package (Docker/runtime deps)"
 msgstr "技能包（Docker/运行时依赖项）"
 
-#: docs/concepts/skills.md:107
-msgid "Papers & books:"
-msgstr "论文与专著："
-
 #: docs/concepts/skills.md:231
 msgid "Pattern"
 msgstr "模式"
@@ -337,11 +265,6 @@ msgstr "人员角色"
 #: docs/concepts/skills.md:89
 msgid "plan"
 msgstr "plan"
-
-# agent-translated: the published page has no counterpart for this source text
-#: docs/concepts/skills.md:157
-msgid "Platform skill bundles (, the content core's , the science layer's )"
-msgstr "平台技能包（、内容核心的 、科学层的 ）"
 
 #: docs/concepts/skills.md:231
 msgid "Priority"
@@ -362,10 +285,6 @@ msgstr "纯文本（prose）folio：块创作、章/节结构、规范性陈述�
 #: docs/concepts/skills.md:215
 msgid "Provides"
 msgstr "提供能力"
-
-#: docs/concepts/skills.md:257
-msgid "Publication workflow — BPMN swimlanes: which skill runs at which step, and who decides"
-msgstr "发布工作流 — BPMN 泳道：哪个步骤运行哪项技能，以及由谁做出决策"
 
 #: docs/concepts/skills.md:209
 msgid "Publication-readiness QA across layers."
@@ -396,10 +315,6 @@ msgstr "发布版本、IG 配置、构建、版本管理、出版。"
 msgid "Render & deploy"
 msgstr "渲染与部署"
 
-#: docs/concepts/skills.md:53
-msgid "Requirement — a gate that must hold (e.g. , ) before/while a stage proceeds."
-msgstr "门禁要求（Requirement） — 在阶段推进之前或推进期间必须满足的门禁关卡（例如 、）。"
-
 #: docs/concepts/skills.md:248
 msgid "Requirements are gates that must hold during work:"
 msgstr "要求（Requirements）是工作推进过程中必须满足的门禁条件："
@@ -417,10 +332,6 @@ msgstr "review"
 msgid "Role"
 msgstr "角色"
 
-#: docs/concepts/skills.md:44
-msgid "Role (actor) — who the agent is acting as. An actor takes on a role because of the BPMN lane it acts in. What the actor may do is a W3C ODRL policy in , not a property of the role. Before every task the executor checks authentication, role assignment, policy and content access (); the HTTP routes ask the same policies through ."
-msgstr "角色（参与者）／Role (actor) — 智能体代表谁行动。参与者（actor）由于其所在的 BPMN 泳道而承担某种角色（role）。参与者可以做什么由  中的 W3C ODRL 策略定义，而非角色本身的固有属性。在每个任务开始前，执行器都会检查身份验证、角色分配、策略及内容访问权限（）；HTTP 路由也通过  查询相同的策略。"
-
 #: docs/concepts/skills.md:226
 msgid "Role assignment"
 msgstr "角色分配"
@@ -428,10 +339,6 @@ msgstr "角色分配"
 #: docs/concepts/skills.md:179
 msgid "Roles (actors)"
 msgstr "角色（参与者）"
-
-#: docs/concepts/skills.md:181
-msgid "Roles answer who the agent is acting as. The current user is mapped to a role by , and the role's capabilities bound what the agent may do (RBAC). Roles inherit (e.g.  inherits )."
-msgstr "角色回答的是智能体代表谁在行动。当前用户通过  映射到特定角色，而该角色的能力界定了智能体可以执行的操作（基于角色的访问控制 RBAC）。角色支持继承（例如  继承 ）。"
 
 #: docs/concepts/skills.md:164
 msgid "Scope"
@@ -462,26 +369,6 @@ msgstr "另请参阅"
 msgid "Skill"
 msgstr "技能"
 
-#: docs/concepts/skills.md:38
-msgid "Skill — a documented, schema-bounded unit of work (e.g. ). The agent discovers skills with the  MCP tool and loads a skill's instructions with . Each skill has a typed input/output contract."
-msgstr "技能（Skill） — 具备文档记录且受模式（schema）约束的工作单元（例如 ）。智能体使用  MCP 工具发现技能，并使用  加载技能的操作指南。每项技能都有类型化的输入/输出契约。"
-
-#: docs/concepts/skills.md:258
-msgid "Skill instructions — the prose how-to bodies the LLM loads"
-msgstr "技能指令 — LLM 加载的文本指南正文"
-
-#: docs/concepts/skills.md:42
-msgid "Skill package — a group of related skills that also declares its Docker/runtime dependencies ()."
-msgstr "技能包（Skill package） — 一组相关技能的集合，同时声明了其 Docker/运行时依赖项（）。"
-
-#: docs/concepts/skills.md:259
-msgid "Skill schema reference — typed input/output for each skill"
-msgstr "技能模式参考 — 每项技能的类型化输入/输出"
-
-#: docs/concepts/skills.md:173
-msgid "Skill schemas (typed input/output for the authoring skills) are generated into the Skill schema reference — never drift from what the framework validates."
-msgstr "技能模式（schema）（创作技能的类型化输入/输出）自动生成到技能模式参考中 — 绝不会与框架验证的规则脱节。"
-
 # the published page also renders this as: 技能数
 #: docs/concepts/skills.md:64
 #: docs/concepts/skills.md:164
@@ -491,14 +378,6 @@ msgstr "技能"
 #: docs/concepts/skills.md:10
 msgid "Skills & roles"
 msgstr "技能与角色"
-
-#: docs/concepts/skills.md:133
-msgid "Skills the LLM uses to work effectively in the repo (loaded via , package ):"
-msgstr "LLM 在仓库中高效工作所使用的技能（通过  加载，包名为 ）："
-
-#: docs/concepts/skills.md:77
-msgid "So yes, the skills exist — as structured definitions + typed schemas, with prose bodies shipped for the lifecycle and agent skills. The  MCP tool currently serves the  bodies; the authoring-skill prose bodies are the next thing to fill in (the definitions and contracts they'd attach to are already in place)."
-msgstr "所以，是的，这些技能确实存在 — 表现为结构化定义与类型化模式，且生命周期和智能体技能已随附详细的文本指南。 MCP 工具当前提供  指令正文；创作技能的文本正文是后续待补充的内容（它们所属的定义和契约均已就绪）。"
 
 #: docs/concepts/skills.md:231
 msgid "Source"
@@ -516,10 +395,6 @@ msgstr "状态"
 msgid "System actors"
 msgstr "系统参与者"
 
-#: docs/concepts/skills.md:153
-msgid "Take a branch to clean/green/mergeable (see also )"
-msgstr "将分支带入干净、绿灯、可合并的状态（另请参阅 ）"
-
 #: docs/concepts/skills.md:206
 msgid "Terminology governance (ICD-11, SNOMED CT, LOINC)."
 msgstr "术语治理（ICD-11、SNOMED CT、LOINC）。"
@@ -531,18 +406,6 @@ msgstr "test"
 #: docs/concepts/skills.md:85
 msgid "The lifecycle stages that apply to every content type:"
 msgstr "适用于所有内容类型的生命周期阶段："
-
-#: docs/concepts/skills.md:56
-msgid "The loop, in practice: the agent primes the work-plan (), checks it has the capabilities it needs (), lists and loads the right skill ( → ), does the work as the user's role (subject to RBAC), and validates/builds/publishes through the content adapter's tools."
-msgstr "在实践中，这一循环过程如下：智能体预置工作计划（），检查是否具备所需能力（），列出并加载对应的技能（ → ），以用户角色的身份开展工作（受 RBAC 约束），并通过内容适配器的工具进行验证、构建与发布。"
-
-#: docs/concepts/skills.md:13
-msgid "This page is the master list of every skill and role in folio-assistant, and explains how they fit together with the LLM. For the typed input/output contract of each skill, see the Skill schema reference."
-msgstr "本页面是 folio-assistant 中所有技能（skill）与角色（role）的总览清单，并阐述了它们如何与大语言模型（LLM）协同工作。关于各个技能的类型化输入/输出契约，请参阅技能模式参考。"
-
-#: docs/concepts/skills.md:185
-msgid "To see these roles as lanes — who edits, who reviews, who signs off, and which steps an agent may take on its own — read Publication workflow → Who is who."
-msgstr "如需以泳道的形式了解这些角色 — 谁负责编辑、谁负责审阅、谁负责签批，以及智能体可自主执行哪些步骤 — 请阅读发布工作流 → 角色分工（Who is who）。"
 
 #: docs/concepts/skills.md:73
 msgid "Typed contract (input/output JSON Schema)"
@@ -556,10 +419,6 @@ msgstr "validate"
 msgid "Validate against FHIR profiles"
 msgstr "对照 FHIR Profile（配置文件）进行验证"
 
-#: docs/concepts/skills.md:113
-msgid "Verify proofs, audit /axioms"
-msgstr "验证证明，审计  / 公理"
-
 #: docs/concepts/skills.md:199
 msgid "View + review comments; no direct changes."
 msgstr "查看 + 审阅批注；无直接修改权限。"
@@ -568,14 +427,117 @@ msgstr "查看 + 审阅批注；无直接修改权限。"
 msgid "What they can do"
 msgstr "可执行的操作"
 
-#: docs/concepts/skills.md:222
-msgid "Where each of these sits in the process — and what an agent may and may not decide — is modelled in the publication workflow BPMN diagrams."
-msgstr "它们各自在流程中所处的位置 — 以及智能体可以与不可决定的事项 — 均在发布工作流的 BPMN 图中进行了建模。"
-
 #: docs/concepts/skills.md:66
 msgid "Where skills live (and their status)"
 msgstr "技能存放位置（及其当前状态）"
 
-#: docs/concepts/skills.md:118
-msgid "WHO SMART Guidelines:"
-msgstr "WHO SMART 指南："
+#~ msgid ", , , , and  now live (generalized) in the  bundle below — fetch them with ."
+#~ msgstr "、、、 和  现已（通用化后）移至下方的  捆绑包中 — 请使用  获取它们。"
+
+#~ msgid "✅ all 22 — see reference"
+#~ msgstr "✅ 全部 22 项 — 参见参考"
+
+#~ msgid "✅ all 22 authoring skills — validated in CI by"
+#~ msgstr "✅ 全部 22 项创作技能 — 由  在 CI 中验证"
+
+#~ msgid "A paper folio wants the  skills too: a paper is a document plus Lean-bearing blocks, so  and  apply to both. The two bundles are halves of one content model, not alternatives to choose between."
+#~ msgstr "论文 folio 同样需要  技能：论文本质上是包含了 Lean 块的文档，因此  与  适用于两者。这两个技能包是一个完整内容模型的两半，而不是二选一的替代关系。"
+
+#~ msgid "Agent/platform skills ()"
+#~ msgstr "智能体／平台技能（）"
+
+#~ msgid "Architecture — RBAC, adapters, and the MCP server"
+#~ msgstr "架构 — RBAC、适配器与 MCP 服务器"
+
+#~ msgid "Capabilities are concrete environment abilities a skill may require; the  MCP tool probes them:"
+#~ msgstr "能力（Capabilities）是某项技能可能需要的具体运行环境功能； MCP 工具负责探测检查这些能力："
+
+#~ msgid "Capability — a concrete environment ability (e.g. , ). Skills require capabilities;  probes them."
+#~ msgstr "能力（Capability） — 具体的运行环境能力（例如 、）。技能需要特定能力支持； 会对这些能力进行探测检测。"
+
+#~ msgid "Content types — which skills each content type uses"
+#~ msgstr "内容类型 — 每种内容类型使用的技能"
+
+#~ msgid "Cross-cutting:"
+#~ msgstr "跨领域通用："
+
+#~ msgid "Documents & policy guidance:"
+#~ msgstr "文档与政策指南："
+
+#~ msgid "Getting started — running your first skill"
+#~ msgstr "入门指南 — 运行您的第一项技能"
+
+#~ msgid "Instruction body (prose how-to the LLM loads) — browse them in the Skill instructions reference"
+#~ msgstr "指令正文（LLM 加载的文字操作指南） — 可在技能指令参考中查阅"
+
+#~ msgid "Irreducible QOU physics skills were skipped; QOU-specific examples in the rest were generalized. Each bundle ships a ."
+#~ msgstr "不可削减的 QOU 物理专用技能已被跳过；其余技能中特定于 QOU 的示例均已完成通用化。每个技能包都附带一份 。"
+
+#~ msgid "Larger platform bundles, two of them migrated from the qou content repo (see migration record and issue #27). These are content-agnostic and meant to be synced into any folio:"
+#~ msgstr "更大型的平台技能包（platform bundles），其中两个从 qou 内容仓库迁移而来（参见迁移记录以及 issue #27）。它们与具体内容无关，旨在同步到任何 folio 中："
+
+#~ msgid "Local coordination skills ()"
+#~ msgstr "本地协调技能（）"
+
+#~ msgid "maps a user identity (from git config / auth) to a role by priority. The shipped defaults:"
+#~ msgstr "按优先级将用户身份（取自 git 配置／认证信息）映射到角色。系统预置的默认配置为："
+
+#~ msgid "Papers & books:"
+#~ msgstr "论文与专著："
+
+#~ msgid "Platform skill bundles (, the content core's , the science layer's )"
+#~ msgstr "平台技能包（、内容核心的 、科学层的 ）"
+
+#~ msgid "Publication workflow — BPMN swimlanes: which skill runs at which step, and who decides"
+#~ msgstr "发布工作流 — BPMN 泳道：哪个步骤运行哪项技能，以及由谁做出决策"
+
+#~ msgid "Requirement — a gate that must hold (e.g. , ) before/while a stage proceeds."
+#~ msgstr "门禁要求（Requirement） — 在阶段推进之前或推进期间必须满足的门禁关卡（例如 、）。"
+
+#~ msgid "Role (actor) — who the agent is acting as. An actor takes on a role because of the BPMN lane it acts in. What the actor may do is a W3C ODRL policy in , not a property of the role. Before every task the executor checks authentication, role assignment, policy and content access (); the HTTP routes ask the same policies through ."
+#~ msgstr "角色（参与者）／Role (actor) — 智能体代表谁行动。参与者（actor）由于其所在的 BPMN 泳道而承担某种角色（role）。参与者可以做什么由  中的 W3C ODRL 策略定义，而非角色本身的固有属性。在每个任务开始前，执行器都会检查身份验证、角色分配、策略及内容访问权限（）；HTTP 路由也通过  查询相同的策略。"
+
+#~ msgid "Roles answer who the agent is acting as. The current user is mapped to a role by , and the role's capabilities bound what the agent may do (RBAC). Roles inherit (e.g.  inherits )."
+#~ msgstr "角色回答的是智能体代表谁在行动。当前用户通过  映射到特定角色，而该角色的能力界定了智能体可以执行的操作（基于角色的访问控制 RBAC）。角色支持继承（例如  继承 ）。"
+
+#~ msgid "Skill — a documented, schema-bounded unit of work (e.g. ). The agent discovers skills with the  MCP tool and loads a skill's instructions with . Each skill has a typed input/output contract."
+#~ msgstr "技能（Skill） — 具备文档记录且受模式（schema）约束的工作单元（例如 ）。智能体使用  MCP 工具发现技能，并使用  加载技能的操作指南。每项技能都有类型化的输入/输出契约。"
+
+#~ msgid "Skill instructions — the prose how-to bodies the LLM loads"
+#~ msgstr "技能指令 — LLM 加载的文本指南正文"
+
+#~ msgid "Skill package — a group of related skills that also declares its Docker/runtime dependencies ()."
+#~ msgstr "技能包（Skill package） — 一组相关技能的集合，同时声明了其 Docker/运行时依赖项（）。"
+
+#~ msgid "Skill schema reference — typed input/output for each skill"
+#~ msgstr "技能模式参考 — 每项技能的类型化输入/输出"
+
+#~ msgid "Skill schemas (typed input/output for the authoring skills) are generated into the Skill schema reference — never drift from what the framework validates."
+#~ msgstr "技能模式（schema）（创作技能的类型化输入/输出）自动生成到技能模式参考中 — 绝不会与框架验证的规则脱节。"
+
+#~ msgid "Skills the LLM uses to work effectively in the repo (loaded via , package ):"
+#~ msgstr "LLM 在仓库中高效工作所使用的技能（通过  加载，包名为 ）："
+
+#~ msgid "So yes, the skills exist — as structured definitions + typed schemas, with prose bodies shipped for the lifecycle and agent skills. The  MCP tool currently serves the  bodies; the authoring-skill prose bodies are the next thing to fill in (the definitions and contracts they'd attach to are already in place)."
+#~ msgstr "所以，是的，这些技能确实存在 — 表现为结构化定义与类型化模式，且生命周期和智能体技能已随附详细的文本指南。 MCP 工具当前提供  指令正文；创作技能的文本正文是后续待补充的内容（它们所属的定义和契约均已就绪）。"
+
+#~ msgid "Take a branch to clean/green/mergeable (see also )"
+#~ msgstr "将分支带入干净、绿灯、可合并的状态（另请参阅 ）"
+
+#~ msgid "The loop, in practice: the agent primes the work-plan (), checks it has the capabilities it needs (), lists and loads the right skill ( → ), does the work as the user's role (subject to RBAC), and validates/builds/publishes through the content adapter's tools."
+#~ msgstr "在实践中，这一循环过程如下：智能体预置工作计划（），检查是否具备所需能力（），列出并加载对应的技能（ → ），以用户角色的身份开展工作（受 RBAC 约束），并通过内容适配器的工具进行验证、构建与发布。"
+
+#~ msgid "This page is the master list of every skill and role in folio-assistant, and explains how they fit together with the LLM. For the typed input/output contract of each skill, see the Skill schema reference."
+#~ msgstr "本页面是 folio-assistant 中所有技能（skill）与角色（role）的总览清单，并阐述了它们如何与大语言模型（LLM）协同工作。关于各个技能的类型化输入/输出契约，请参阅技能模式参考。"
+
+#~ msgid "To see these roles as lanes — who edits, who reviews, who signs off, and which steps an agent may take on its own — read Publication workflow → Who is who."
+#~ msgstr "如需以泳道的形式了解这些角色 — 谁负责编辑、谁负责审阅、谁负责签批，以及智能体可自主执行哪些步骤 — 请阅读发布工作流 → 角色分工（Who is who）。"
+
+#~ msgid "Verify proofs, audit /axioms"
+#~ msgstr "验证证明，审计  / 公理"
+
+#~ msgid "Where each of these sits in the process — and what an agent may and may not decide — is modelled in the publication workflow BPMN diagrams."
+#~ msgstr "它们各自在流程中所处的位置 — 以及智能体可以与不可决定的事项 — 均在发布工作流的 BPMN 图中进行了建模。"
+
+#~ msgid "WHO SMART Guidelines:"
+#~ msgstr "WHO SMART 指南："

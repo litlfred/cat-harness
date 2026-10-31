@@ -25,10 +25,6 @@ msgstr ""
 msgid "Accessibility"
 msgstr "Доступность"
 
-#: docs/start/accessibility.md:12
-msgid "Two questions were asked on issue #232, and this page answers them:"
-msgstr "В issue #232 было задано два вопроса, и эта страница дает на них ответы:"
-
 #: docs/start/accessibility.md:16
 msgid "What are the options for disability support here, and what is best practice?"
 msgstr "Каковы здесь варианты поддержки людей с инвалидностью и что считается лучшей практикой?"
@@ -36,10 +32,6 @@ msgstr "Каковы здесь варианты поддержки людей �
 #: docs/start/accessibility.md:17
 msgid "What are the options for forcing agentic Q&A into guided questions that follow DMN logic and can serve several interaction modalities?"
 msgstr "Каковы варианты сведения агентных вопросов и ответов (Q&A) к направляемым вопросам, которые следуют логике DMN и могут обслуживать несколько модальностей взаимодействия?"
-
-#: docs/start/accessibility.md:20
-msgid "They turn out to be the same question asked from two ends, which is why they share a page. The implementing skill is ."
-msgstr "Оказывается, это один и тот же вопрос, заданный с двух сторон, поэтому они объединены на одной странице. Реализующий навык — ."
 
 #: docs/start/accessibility.md:29
 msgid "1. The failure this is about"
@@ -285,10 +277,6 @@ msgstr "где"
 msgid "Agent-facing preferences, committed, read at session start"
 msgstr "Настройки для агента, зафиксированные в репозитории, считываемые в начале сессии"
 
-#: docs/start/accessibility.md:123
-msgid ", surfaced by"
-msgstr ", передаются через"
-
 #: docs/start/accessibility.md:124
 msgid "The rules an agent follows when asking"
 msgstr "Правила, которым следует агент при формулировании вопросов"
@@ -304,14 +292,6 @@ msgstr "шестеренка в шапке боковой панели — ув�
 #: docs/start/accessibility.md:126
 msgid "Reduced motion honoured without being asked"
 msgstr "Учет предпочтения об уменьшении анимации без явного запроса"
-
-#: docs/start/accessibility.md:126
-msgid "media query, and it seeds the panel's default"
-msgstr "медиа-запрос , определяющий значение по умолчанию в панели"
-
-#: docs/start/accessibility.md:128
-msgid "The two preference stores are deliberately separate.  is committed, agent-facing, and about the conversation. The site control is per-viewer , never leaves the browser, and is about reading. A reader who is not the author choosing large type must not silently reconfigure how an agent talks to the author."
-msgstr "Два хранилища настроек намеренно разделены. Файл  зафиксирован в репозитории, ориентирован на агента и относится к процессу общения. Элементы управления на сайте сохраняются в  конкретного читателя, никогда не покидают браузер и относятся к чтению. Если читатель, не являющийся автором, выбирает крупный шрифт, это не должно негласно менять то, как агент общается с автором."
 
 #: docs/start/accessibility.md:134
 msgid "2.7 What is not done"
@@ -349,10 +329,6 @@ msgstr "Второй вопрос. Ответ заключается в разд
 msgid "3.1 Two things that look like one"
 msgstr "3.1 Две вещи, которые кажутся одной"
 
-#: docs/start/accessibility.md:156
-msgid "What to ask next is a decision. Inputs are the facts known so far; output is the id of the next question, or  when enough is known. It belongs in a DMN table, is reviewable by whoever owns the process, and is identical for every user."
-msgstr "Что спросить дальше — это решение. Входными данными служат известные на данный момент факты; результатом является идентификатор следующего вопроса или , когда информации уже достаточно. Этому место в таблице DMN, это доступно для анализа владельцу процесса и одинаково для каждого пользователя."
-
 #: docs/start/accessibility.md:161
 msgid "How to render the question is the modality. A numbered list in chat; spoken alternatives, one at a time, over audio; large-type radio buttons on a web page. The decision table never learns about any of this."
 msgstr "Как отобразить вопрос — это модальность. Нумерованный список в чате; произносимые по одному варианты в аудиорежиме; радиокнопки крупным шрифтом на веб-странице. Таблица решений ничего не знает обо всем этом."
@@ -368,14 +344,6 @@ msgstr "3.2 Четыре преимущества такого подхода"
 #: docs/start/accessibility.md:176
 msgid "The question set is finite and reviewable. You can read the table and know every question the agent is able to ask. An improvising agent offers no such guarantee, and cannot be reviewed before it meets a user."
 msgstr "Набор вопросов конечен и поддается проверке. Вы можете прочитать таблицу и знать каждый вопрос, который агент способен задать. Импровизирующий агент не дает таких гарантий, и его поведение невозможно проверить до того, как он встретится с пользователем."
-
-#: docs/start/accessibility.md:179
-msgid "It terminates. A table whose output can be  has a stopping condition."
-msgstr "Процесс завершается. Таблица, результатом которой может быть , имеет условие остановки."
-
-#: docs/start/accessibility.md:181
-msgid "Asking becomes obligatory rather than optional. This is the trick  already uses:  is an outcome of the table, so the agent cannot route past it. An agent that decides for itself whether to ask will, under any pressure to seem helpful, decide not to."
-msgstr "Вопрос становится обязательным, а не факультативным. Это прием, который уже используется в :  является результатом таблицы, поэтому агент не может обойти его при маршрутизации. Агент, который сам решает, задавать ли вопрос, под любым давлением казаться полезным решит его не задавать."
 
 #: docs/start/accessibility.md:186
 msgid "A skipped question is auditable. The facts are recorded; replay the table and see which rule fired."
@@ -406,20 +374,12 @@ msgid "A — decision-per-gateway (built)"
 msgstr "A — решение на каждый шлюз (реализовано)"
 
 #: docs/start/accessibility.md:195
-msgid "each ambiguous branch point in a BPMN carries ; the table returns the branch,  included"
-msgstr "каждая неоднозначная точка ветвления в BPMN содержит ; таблица возвращает ветку, включая"
-
-#: docs/start/accessibility.md:195
 msgid "no interview state machine — the process is the state. Cannot express \"ask these four in any order\""
 msgstr "нет конечного автомата опроса — состоянием является сам процесс. Нельзя выразить условие «задайте эти четыре вопроса в любом порядке»"
 
 #: docs/start/accessibility.md:196
 msgid "B — a question set behind one gateway"
 msgstr "B — набор вопросов за одним шлюзом"
-
-#: docs/start/accessibility.md:196
-msgid "a  looping until it returns ; answers accumulate as facts"
-msgstr "цикл  до тех пор, пока не вернется ; ответы накапливаются как факты"
 
 #: docs/start/accessibility.md:196
 msgid "one more table and a fact store; the loop is the process's own, so nothing new executes"
@@ -453,10 +413,6 @@ msgstr "серьезная работа над движком, и подмнож
 msgid "3.4 Limits, stated plainly"
 msgstr "3.4 Честно сформулированные ограничения"
 
-#: docs/start/accessibility.md:202
-msgid "The FEEL subset is small.  implements equality, comparison and one-of. Ranges,  and function calls are refused rather than silently mis-evaluated — a table that returns an answer and is not the table on the page is worse than one that throws."
-msgstr "Подмножество FEEL невелико.  реализует проверку равенства, сравнение и выбор из набора («one-of»). Диапазоны, функция  и вызовы функций отклоняются, а не вычисляются молча с ошибкой: таблица, которая возвращает ответ, не соответствующий таблице на странице, хуже той, которая сразу выбрасывает ошибку."
-
 #: docs/start/accessibility.md:206
 msgid "An open question is not a decision. \"What is this paper about?\" does not belong in a table, and forcing it there produces a worse interview."
 msgstr "Открытый вопрос — это не решение. Вопросу «О чем эта статья?» не место в таблице, и попытка силой поместить его туда лишь ухудшает сценарий опроса."
@@ -473,18 +429,47 @@ msgstr "Направляемый диалог — это не допрос. Са
 msgid "See also"
 msgstr "См. также"
 
-#: docs/start/accessibility.md:218
-msgid "Getting started — the intent decision table in use"
-msgstr "Начало работы — таблица решений о намерениях в действии"
+#~ msgid "Two questions were asked on issue #232, and this page answers them:"
+#~ msgstr "В issue #232 было задано два вопроса, и эта страница дает на них ответы:"
 
-#: docs/start/accessibility.md:219
-msgid "skill"
-msgstr "Навык"
+#~ msgid "They turn out to be the same question asked from two ends, which is why they share a page. The implementing skill is ."
+#~ msgstr "Оказывается, это один и тот же вопрос, заданный с двух сторон, поэтому они объединены на одной странице. Реализующий навык — ."
 
-#: docs/start/accessibility.md:220
-msgid "Publication workflow — every process in the repo"
-msgstr "Процесс публикации — каждый процесс в репозитории"
+#~ msgid ", surfaced by"
+#~ msgstr ", передаются через"
 
-#: docs/start/accessibility.md:221
-msgid "Options for workflow state in beans"
-msgstr "Варианты состояния рабочего процесса в beans"
+#~ msgid "media query, and it seeds the panel's default"
+#~ msgstr "медиа-запрос , определяющий значение по умолчанию в панели"
+
+#~ msgid "The two preference stores are deliberately separate.  is committed, agent-facing, and about the conversation. The site control is per-viewer , never leaves the browser, and is about reading. A reader who is not the author choosing large type must not silently reconfigure how an agent talks to the author."
+#~ msgstr "Два хранилища настроек намеренно разделены. Файл  зафиксирован в репозитории, ориентирован на агента и относится к процессу общения. Элементы управления на сайте сохраняются в  конкретного читателя, никогда не покидают браузер и относятся к чтению. Если читатель, не являющийся автором, выбирает крупный шрифт, это не должно негласно менять то, как агент общается с автором."
+
+#~ msgid "What to ask next is a decision. Inputs are the facts known so far; output is the id of the next question, or  when enough is known. It belongs in a DMN table, is reviewable by whoever owns the process, and is identical for every user."
+#~ msgstr "Что спросить дальше — это решение. Входными данными служат известные на данный момент факты; результатом является идентификатор следующего вопроса или , когда информации уже достаточно. Этому место в таблице DMN, это доступно для анализа владельцу процесса и одинаково для каждого пользователя."
+
+#~ msgid "It terminates. A table whose output can be  has a stopping condition."
+#~ msgstr "Процесс завершается. Таблица, результатом которой может быть , имеет условие остановки."
+
+#~ msgid "Asking becomes obligatory rather than optional. This is the trick  already uses:  is an outcome of the table, so the agent cannot route past it. An agent that decides for itself whether to ask will, under any pressure to seem helpful, decide not to."
+#~ msgstr "Вопрос становится обязательным, а не факультативным. Это прием, который уже используется в :  является результатом таблицы, поэтому агент не может обойти его при маршрутизации. Агент, который сам решает, задавать ли вопрос, под любым давлением казаться полезным решит его не задавать."
+
+#~ msgid "each ambiguous branch point in a BPMN carries ; the table returns the branch,  included"
+#~ msgstr "каждая неоднозначная точка ветвления в BPMN содержит ; таблица возвращает ветку, включая"
+
+#~ msgid "a  looping until it returns ; answers accumulate as facts"
+#~ msgstr "цикл  до тех пор, пока не вернется ; ответы накапливаются как факты"
+
+#~ msgid "The FEEL subset is small.  implements equality, comparison and one-of. Ranges,  and function calls are refused rather than silently mis-evaluated — a table that returns an answer and is not the table on the page is worse than one that throws."
+#~ msgstr "Подмножество FEEL невелико.  реализует проверку равенства, сравнение и выбор из набора («one-of»). Диапазоны, функция  и вызовы функций отклоняются, а не вычисляются молча с ошибкой: таблица, которая возвращает ответ, не соответствующий таблице на странице, хуже той, которая сразу выбрасывает ошибку."
+
+#~ msgid "Getting started — the intent decision table in use"
+#~ msgstr "Начало работы — таблица решений о намерениях в действии"
+
+#~ msgid "skill"
+#~ msgstr "Навык"
+
+#~ msgid "Publication workflow — every process in the repo"
+#~ msgstr "Процесс публикации — каждый процесс в репозитории"
+
+#~ msgid "Options for workflow state in beans"
+#~ msgstr "Варианты состояния рабочего процесса в beans"
