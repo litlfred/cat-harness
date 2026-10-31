@@ -54,12 +54,13 @@ wrapped to three lines under the diamond, lands on the flow leaving it.
 
 ## Why 1400 × 900
 
-Arithmetic, not taste. The renderer draws text at 14px (bootstrap-tools
-`TEXT_STYLE`). A page shows a diagram at most about 1200px wide once the nav
+Arithmetic, not taste. The renderer draws text at 16px (bootstrap-tools
+`TEXT_STYLE`; owner, 2026-10-31: *"maybe make tasks a bit taller and font a
+bit bigger?"*). A page shows a diagram at most about 1200px wide once the nav
 rail is taken off a 1440px screen, so a diagram `W` wide shows its text at
-`14 × 1200 / W` px. 12px or more needs `W ≤ 1400`. About 760px of a 900px
-screen is left under the header and the figure toolbar, so `H ≤ 760 × 14 / 12
-≈ 900`. Change the budget and the text size together.
+`16 × 1200 / W` px: about 14px at 1400. About 760px of a 900px screen is
+left under the header and the figure toolbar, so 900 keeps a diagram on
+about one screen. Change the budget and the text size together.
 
 ## The procedure
 
@@ -69,7 +70,8 @@ screen is left under the header and the figure toolbar, so `H ≤ 760 × 14 / 12
    only if it adds no flow crossing. It moves shapes with their lane and
    re-draws each flow between lanes as one elbow, since its old bends were
    for the old order. Look at the result: it is a start, not a layout.
-3. **Make it compact.** Tasks 110 × 70, gateways 50, events 36. About 40–60
+3. **Make it compact.** Tasks 120 × 90 (three lines of 16px text), gateways 50,
+   events 36. About 40–70
    between neighbours in a row; wider only where a flow label needs it.
    **A column can hold one step per lane**: a hand-off straight down from
    one lane to the next is the shortest flow there is. A lane is as tall as
@@ -83,7 +85,8 @@ screen is left under the header and the figure toolbar, so `H ≤ 760 × 14 / 12
    lane's name strip; a flow label beside its own segment. Write
    `BPMNLabel` bounds for each one bpmn-js would put somewhere bad. Give a
    multi-line label room for the lines it wraps to: bpmn-js wraps external
-   labels at about 90 wide whatever bounds you give.
+   labels at about 90 wide whatever bounds you give, so a
+   three-word question is three lines: about 60 tall at 15px.
 6. **Run the check again**: zero findings on the diagram you touched, or say
    in the PR which remain and why.
 7. **Look at the rendered SVG**, at 100% in a 1200px band. The check finds
