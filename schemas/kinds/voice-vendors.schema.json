@@ -231,7 +231,8 @@
       "items": {
         "anyOf": [
           {
-            "not": {}
+            "type": "string",
+            "description": "One of the values the `block-kinds` graphs of the composition declare — an open vocabulary, extended by the layers above the harness, so not enumerated here."
           },
           {
             "type": "string",
