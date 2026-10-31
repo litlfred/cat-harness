@@ -114,6 +114,7 @@ node_modules/
 /docs/assets/glossary/who-iris--kg-skills.skos.jsonld
 /docs/assets/glossary/who-iris--kg-tools.skos.jsonld
 /docs/assets/glossary/who-iris--who-terms.skos.jsonld
+/docs/assets/glossary/who-iris--nhwa-2023.skos.jsonld
 /docs/en/folio-assistant-core/bibliography/
 /docs/en/folio-assistant-core/glossary/
 /docs/ar/folio-assistant-core/
@@ -243,4 +244,10 @@ node_modules/
 /docs/assets/img/workflows/iris-cdn-reconcile.svg
 /docs/assets/img/workflows/iris-cdn-sign-publish.svg
 /docs/assets/img/workflows/smart-guideline-end-to-end.svg
+/docs/assets/img/workflows/content-change-review-committee.svg
+/docs/assets/img/workflows/content-change-review-make.svg
+/docs/assets/img/workflows/content-change-review-publish.svg
+/docs/assets/img/workflows/content-change-review-stage.svg
+/docs/assets/img/workflows/contributor-feedback.svg
+/docs/assets/img/workflows/public-comment-release.svg
 # END built at publish
