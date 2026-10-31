@@ -195,7 +195,7 @@ before any feature branch (litlfred/dth-hrh, owner 2026-10-14).
 existing repository whose `main` has no `index.config.json` and
 `index.lock.json` gives the full PR checks nothing to compare against: the
 base side fails before any test runs, and the PR's own gates are skipped
-(cat-harness-tools#1139). So open one small PR with only what `folio_init`
+(https://github.com/litlfred/cat-harness-tools/issues/1139). So open one small PR with only what `folio_init`
 writes and the pins, merge it, and only then branch for content. Draft-tier
 checks never build the base, so this does not show until the content PR
 leaves draft (litlfred/dth-sc#1, owner 2026-10-31).
