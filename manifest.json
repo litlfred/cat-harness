@@ -1,0 +1,20 @@
+{
+  "$schema": "state-manifest/v1",
+  "status": "active",
+  "authoritative": true,
+  "subgraph": "subscribed-harnesses",
+  "note": "Authoritative branch store for subscribed-harnesses/, seeded 2026-10-31T08:41:49Z from main, which drops the directory in the same change that declares this source. check:state-on-main refused it on main as new state (fa#2781).",
+  "source": {
+    "ref": "main",
+    "sha": "508ec4f9e45df3d818fccca61d48dd7c69709ad3"
+  },
+  "seededAt": "2026-10-31T08:41:49Z",
+  "keyedBy": "tip",
+  "graphs": [
+    {
+      "path": "subscribed-harnesses",
+      "tree": "f8666dae406cd7967cc627bc9c58e736ee427b09",
+      "files": 1
+    }
+  ]
+}
