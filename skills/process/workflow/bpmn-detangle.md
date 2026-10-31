@@ -44,6 +44,8 @@ in `cat-harness-tools/src/workflow/diagram-fit.ts`:
 | `label-overlap` | two labels on each other | give one a `BPMNLabel` position clear of the other |
 | `label-on-edge` | a label on a flow that is not its own | move the label, or the flow |
 | `label-on-shape` | a label on a box, its own shape, or a lane's name strip | move the label |
+| `edge-diagonal` | a flow runs at a slant | `--write` routes it at right angles through the gap |
+| `text-overflow` | a name spills out of its box | `--write` widens, then heightens the box; or shorten the name |
 | `edge-crossing` | two flows cross | re-route one around the other, move a step, or swap lanes |
 | `lane-order` | another lane order crosses fewer lane boundaries | `--write` applies it |
 
@@ -71,25 +73,29 @@ about one screen. Change the budget and the text size together.
    re-draws each flow between lanes as one elbow, since its old bends were
    for the old order. Look at the result: it is a start, not a layout.
 3. **Make it compact.** Tasks 120 × 90 (three lines of 16px text), gateways 50,
-   events 36. About 40–70
+   events 36, and big enough for the name at 16px (`text-overflow`). About 40–70
    between neighbours in a row; wider only where a flow label needs it.
    **A column can hold one step per lane**: a hand-off straight down from
    one lane to the next is the shortest flow there is. A lane is as tall as
    its rows plus room for labels, no more.
-4. **Route the loops below.** A loop-back leaves through the bottom, runs in
+4. **Right angles only** (owner, 2026-10-31, on dth-pc: *"straight angled
+   arrows ugly"*). A flow between lanes leaves the side facing its target,
+   turns once in the gap between the two columns, and enters the target's
+   side: never one slanted line from box to box.
+5. **Route the loops below.** A loop-back leaves through the bottom, runs in
    the channel under the row and comes up into its target
    ([`bpmn-processes`](bpmn-processes.md) §"Edge routing"). A flow between
    lanes leaves on the side facing its target.
-5. **Place every label.** A gateway's question goes **above** the diamond,
+6. **Place every label.** A gateway's question goes **above** the diamond,
    its answers beside their flows; an event's name below it, clear of the
    lane's name strip; a flow label beside its own segment. Write
    `BPMNLabel` bounds for each one bpmn-js would put somewhere bad. Give a
    multi-line label room for the lines it wraps to: bpmn-js wraps external
    labels at about 90 wide whatever bounds you give, so a
    three-word question is three lines: about 60 tall at 15px.
-6. **Run the check again**: zero findings on the diagram you touched, or say
+7. **Run the check again**: zero findings on the diagram you touched, or say
    in the PR which remain and why.
-7. **Look at the rendered SVG**, at 100% in a 1200px band. The check finds
+8. **Look at the rendered SVG**, at 100% in a 1200px band. The check finds
    collisions; only looking finds a diagram that is clean and still confusing.
 
 ## When it still does not fit
