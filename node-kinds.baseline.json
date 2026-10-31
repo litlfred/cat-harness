@@ -144,6 +144,10 @@
     },
     {
       "typology": "library",
+      "family": "diig-phases-figure/v1"
+    },
+    {
+      "typology": "library",
       "family": "doco:Section"
     },
     {
@@ -205,6 +209,10 @@
     {
       "typology": "library",
       "family": "pdf-structure/v1"
+    },
+    {
+      "typology": "library",
+      "family": "smart-guidelines-approach-figure/v1"
     },
     {
       "typology": "library",

@@ -32,6 +32,12 @@ node_modules/
 /todos/**
 # END state mounts
 
+# The QA working copy (cat-harness.json `qa`, storage `cat/cat-harness/qa-reports`).
+# Derived verdicts live on the qa-reports store branch, keyed by commit; a local
+# run writes them here and nothing commits them (beans folio-assistant-5hox,
+# -tfqf, -7mwa). The judgement half, test/attestations/, stays committed.
+/test/results/
+
 # Agent worktree scaffolding (symlinks into an enclosing checkout); never committed.
 .claude/worktrees/
 

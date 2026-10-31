@@ -584,7 +584,13 @@
       "readOnlyBasis": "The subscriber's own working state: `kg:instantiate` makes each home and the subscribed harness's processes write into it. Nothing here is a copy of upstream's bytes.",
       "graphTypologies": [
         "subscribed-harnesses"
-      ]
+      ],
+      "_source_comment": "MOUNTED, 2026-10-31 (fa#2781): the typology `holds: state`, and `check:state-on-main` refuses new state on `main`, so it is kept on its own per-graph branch like beans, todos and issue-marks (owner, 2026-10-03, bean laqs) and mounted here by `bun run cat state:mount`. Main dropped it in the same commit that declared this source, because `mountTip` refuses a path the checkout still tracks.",
+      "source": {
+        "kind": "branch",
+        "branch": "cat/cat-harness/subscribed-harnesses",
+        "keyedBy": "tip"
+      }
     },
     {
       "id": "code-lists",

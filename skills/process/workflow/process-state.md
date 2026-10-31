@@ -166,6 +166,15 @@ governing skill and the repository in the brief. A spawned thread starts with
 nothing else that would tell it, and the coordinator's own memory holds no
 process rules by design.
 
+When the brief is written **during a live discussion with a person**, it also
+names the discussion: who is talking with the person, how to reach them, the
+standing card rules, and any feedback channel in play (a review sheet's id and
+tab, an issue). That is `definitions.discussion` of the
+[`hand-back-to-discussion`](../../conduct/conduct-core/hand-back-to-discussion.md)
+input schema, and it is what lets the thread hand its cards, questions and
+results back instead of leaving them in its own channel (owner, 2026-10-31,
+cat-harness#861).
+
 ## How to tell you are out of process
 
 This is the part that makes the skill a procedure rather than an exhortation.

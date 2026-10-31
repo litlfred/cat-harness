@@ -27,6 +27,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/authoring-committee": {
+      "prefLabel": "Authoring Committee",
+      "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
     "role/board-renderer": {
       "prefLabel": "Board renderer",
       "firstSeen": "2026-09-21",
