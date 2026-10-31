@@ -404,42 +404,6 @@
           "dir": "ltr"
         }
       }
-    },
-    "en/folio-assistant-core/glossary": {
-      "sourceUrl": "/en/folio-assistant-core/glossary/",
-      "sourceTitle": "Glossary",
-      "translations": {
-        "ar": {
-          "url": "/ar/folio-assistant-core/glossary/index.html",
-          "title": "مسرد",
-          "status": "unverified",
-          "dir": "rtl"
-        },
-        "es": {
-          "url": "/es/folio-assistant-core/glossary/index.html",
-          "title": "Glosario",
-          "status": "unverified",
-          "dir": "ltr"
-        },
-        "fr": {
-          "url": "/fr/folio-assistant-core/glossary/index.html",
-          "title": "Glossaire",
-          "status": "unverified",
-          "dir": "ltr"
-        },
-        "ru": {
-          "url": "/ru/folio-assistant-core/glossary/index.html",
-          "title": "Глоссарий",
-          "status": "unverified",
-          "dir": "ltr"
-        },
-        "zh": {
-          "url": "/zh/folio-assistant-core/glossary/index.html",
-          "title": "术语表",
-          "status": "unverified",
-          "dir": "ltr"
-        }
-      }
     }
   }
 }
