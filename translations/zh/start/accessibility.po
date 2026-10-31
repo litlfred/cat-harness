@@ -25,10 +25,6 @@ msgstr ""
 msgid "Accessibility"
 msgstr "无障碍功能"
 
-#: docs/start/accessibility.md:12
-msgid "Two questions were asked on issue #232, and this page answers them:"
-msgstr "在 issue #232 中有人提出了两个问题，本页面将对它们进行解答："
-
 #: docs/start/accessibility.md:16
 msgid "What are the options for disability support here, and what is best practice?"
 msgstr "此处对于残障支持有哪些选项，最佳实践又是什么？"
@@ -36,10 +32,6 @@ msgstr "此处对于残障支持有哪些选项，最佳实践又是什么？"
 #: docs/start/accessibility.md:17
 msgid "What are the options for forcing agentic Q&A into guided questions that follow DMN logic and can serve several interaction modalities?"
 msgstr "有哪些选项可以将智能体的问答强制转化为遵循 DMN 逻辑并能服务于多种交互模态的引导式提问？"
-
-#: docs/start/accessibility.md:20
-msgid "They turn out to be the same question asked from two ends, which is why they share a page. The implementing skill is ."
-msgstr "事实证明，这是从两个不同角度提出的同一个问题，这也是它们共享同一个页面的原因。具体实现的技能为 。"
 
 #: docs/start/accessibility.md:29
 msgid "1. The failure this is about"
@@ -285,10 +277,6 @@ msgstr "位置"
 msgid "Agent-facing preferences, committed, read at session start"
 msgstr "面向智能体的偏好设置，已提交，在会话启动时读取"
 
-#: docs/start/accessibility.md:123
-msgid ", surfaced by"
-msgstr "，由  呈现"
-
 #: docs/start/accessibility.md:124
 msgid "The rules an agent follows when asking"
 msgstr "智能体在提问时遵循的规则"
@@ -304,14 +292,6 @@ msgstr "侧边栏标头中的齿轮图标——更大字号、更高对比度、
 #: docs/start/accessibility.md:126
 msgid "Reduced motion honoured without being asked"
 msgstr "无需询问即可遵循减少动效偏好"
-
-#: docs/start/accessibility.md:126
-msgid "media query, and it seeds the panel's default"
-msgstr "媒体查询，并作为面板默认值的种子"
-
-#: docs/start/accessibility.md:128
-msgid "The two preference stores are deliberately separate.  is committed, agent-facing, and about the conversation. The site control is per-viewer , never leaves the browser, and is about reading. A reader who is not the author choosing large type must not silently reconfigure how an agent talks to the author."
-msgstr "这两处偏好设置存储是刻意分开的。  已提交至版本控制，面向智能体，且关乎对话交互。而站点控制项则是针对每位查看者的 ，绝不离开浏览器，且关乎阅读体验。非作者的读者选择大号字体，绝不能悄悄重置或更改智能体与作者沟通交流的方式。"
 
 #: docs/start/accessibility.md:134
 msgid "2.7 What is not done"
@@ -349,10 +329,6 @@ msgstr "第二个问题。其答案在于关注点分离，而这种分离正是
 msgid "3.1 Two things that look like one"
 msgstr "3.1 看起来合二为一的两件事"
 
-#: docs/start/accessibility.md:156
-msgid "What to ask next is a decision. Inputs are the facts known so far; output is the id of the next question, or  when enough is known. It belongs in a DMN table, is reviewable by whoever owns the process, and is identical for every user."
-msgstr "接下来问什么是一个决策。输入是迄今为止已知的事实；输出是下一个问题的 ID，或者在已知足够信息时输出 。它归属于 DMN 表，可由流程所有者进行审阅，并且对每个用户都是相同的。"
-
 #: docs/start/accessibility.md:161
 msgid "How to render the question is the modality. A numbered list in chat; spoken alternatives, one at a time, over audio; large-type radio buttons on a web page. The decision table never learns about any of this."
 msgstr "如何呈现该问题则是模态。在聊天中是一个带编号的列表；在音频中是逐一朗读的备选选项；在网页上是大号字体的单选按钮。决策表对这一切一无所知。"
@@ -368,14 +344,6 @@ msgstr "3.2 由此获得的四个特性"
 #: docs/start/accessibility.md:176
 msgid "The question set is finite and reviewable. You can read the table and know every question the agent is able to ask. An improvising agent offers no such guarantee, and cannot be reviewed before it meets a user."
 msgstr "问题集合是有限且可审阅的。 你可以查阅该表格，知晓智能体可能提出的每一个问题。自由发挥的智能体无法提供这种保证，并且在面对用户之前无法对其进行预先审阅。"
-
-#: docs/start/accessibility.md:179
-msgid "It terminates. A table whose output can be  has a stopping condition."
-msgstr "它是可终止的。 输出可能为  的表格拥有明确的停止条件。"
-
-#: docs/start/accessibility.md:181
-msgid "Asking becomes obligatory rather than optional. This is the trick  already uses:  is an outcome of the table, so the agent cannot route past it. An agent that decides for itself whether to ask will, under any pressure to seem helpful, decide not to."
-msgstr "提问变成了强制性的而非可选的。 这是  已经使用过的技巧： 是表格的一项输出结果，因此智能体无法绕过它进行路由。如果由智能体自行决定是否提问，那么在任何“表现出热心助人”的压力下，它都会倾向于决定不问。"
 
 #: docs/start/accessibility.md:186
 msgid "A skipped question is auditable. The facts are recorded; replay the table and see which rule fired."
@@ -406,20 +374,12 @@ msgid "A — decision-per-gateway (built)"
 msgstr "A — 每个网关一个决策 (已构建)"
 
 #: docs/start/accessibility.md:195
-msgid "each ambiguous branch point in a BPMN carries ; the table returns the branch,  included"
-msgstr "BPMN 中的每个歧义分支点都带有 ；表格返回分支，包括"
-
-#: docs/start/accessibility.md:195
 msgid "no interview state machine — the process is the state. Cannot express \"ask these four in any order\""
 msgstr "没有访谈状态机——流程本身即状态。无法表达“以任意顺序询问这四个问题”"
 
 #: docs/start/accessibility.md:196
 msgid "B — a question set behind one gateway"
 msgstr "B — 单个网关后的问题集"
-
-#: docs/start/accessibility.md:196
-msgid "a  looping until it returns ; answers accumulate as facts"
-msgstr "一个循环运行直至返回  的 ；回答作为事实不断累积"
 
 #: docs/start/accessibility.md:196
 msgid "one more table and a fact store; the loop is the process's own, so nothing new executes"
@@ -453,10 +413,6 @@ msgstr "真正的引擎级开发工作，且必须扩充 FEEL 子集"
 msgid "3.4 Limits, stated plainly"
 msgstr "3.4 明言限制"
 
-#: docs/start/accessibility.md:202
-msgid "The FEEL subset is small.  implements equality, comparison and one-of. Ranges,  and function calls are refused rather than silently mis-evaluated — a table that returns an answer and is not the table on the page is worse than one that throws."
-msgstr "FEEL 子集很小。  实现了相等性、比较以及多选一（one-of）。范围（ranges）、 和函数调用会被直接拒绝，而不是悄悄产生错误求值——一个返回了错误答案且与页面上的表不符的决策表，比直接抛出异常的表更糟糕。"
-
 #: docs/start/accessibility.md:206
 msgid "An open question is not a decision. \"What is this paper about?\" does not belong in a table, and forcing it there produces a worse interview."
 msgstr "开放式问题不是决策。 “这篇论文是关于什么的？”并不属于决策表，强行将其塞入表中只会带来更差的访谈体验。"
@@ -473,18 +429,47 @@ msgstr "引导并不意味着审讯。 能够获得的最大无障碍收益，�
 msgid "See also"
 msgstr "另请参阅"
 
-#: docs/start/accessibility.md:218
-msgid "Getting started — the intent decision table in use"
-msgstr "入门指南 — 使用中的意图决策表"
+#~ msgid "Two questions were asked on issue #232, and this page answers them:"
+#~ msgstr "在 issue #232 中有人提出了两个问题，本页面将对它们进行解答："
 
-#: docs/start/accessibility.md:219
-msgid "skill"
-msgstr "技能"
+#~ msgid "They turn out to be the same question asked from two ends, which is why they share a page. The implementing skill is ."
+#~ msgstr "事实证明，这是从两个不同角度提出的同一个问题，这也是它们共享同一个页面的原因。具体实现的技能为 。"
 
-#: docs/start/accessibility.md:220
-msgid "Publication workflow — every process in the repo"
-msgstr "发布工作流 — 仓库中的各项流程"
+#~ msgid ", surfaced by"
+#~ msgstr "，由  呈现"
 
-#: docs/start/accessibility.md:221
-msgid "Options for workflow state in beans"
-msgstr "在 beans 中管理工作流状态的选项"
+#~ msgid "media query, and it seeds the panel's default"
+#~ msgstr "媒体查询，并作为面板默认值的种子"
+
+#~ msgid "The two preference stores are deliberately separate.  is committed, agent-facing, and about the conversation. The site control is per-viewer , never leaves the browser, and is about reading. A reader who is not the author choosing large type must not silently reconfigure how an agent talks to the author."
+#~ msgstr "这两处偏好设置存储是刻意分开的。  已提交至版本控制，面向智能体，且关乎对话交互。而站点控制项则是针对每位查看者的 ，绝不离开浏览器，且关乎阅读体验。非作者的读者选择大号字体，绝不能悄悄重置或更改智能体与作者沟通交流的方式。"
+
+#~ msgid "What to ask next is a decision. Inputs are the facts known so far; output is the id of the next question, or  when enough is known. It belongs in a DMN table, is reviewable by whoever owns the process, and is identical for every user."
+#~ msgstr "接下来问什么是一个决策。输入是迄今为止已知的事实；输出是下一个问题的 ID，或者在已知足够信息时输出 。它归属于 DMN 表，可由流程所有者进行审阅，并且对每个用户都是相同的。"
+
+#~ msgid "It terminates. A table whose output can be  has a stopping condition."
+#~ msgstr "它是可终止的。 输出可能为  的表格拥有明确的停止条件。"
+
+#~ msgid "Asking becomes obligatory rather than optional. This is the trick  already uses:  is an outcome of the table, so the agent cannot route past it. An agent that decides for itself whether to ask will, under any pressure to seem helpful, decide not to."
+#~ msgstr "提问变成了强制性的而非可选的。 这是  已经使用过的技巧： 是表格的一项输出结果，因此智能体无法绕过它进行路由。如果由智能体自行决定是否提问，那么在任何“表现出热心助人”的压力下，它都会倾向于决定不问。"
+
+#~ msgid "each ambiguous branch point in a BPMN carries ; the table returns the branch,  included"
+#~ msgstr "BPMN 中的每个歧义分支点都带有 ；表格返回分支，包括"
+
+#~ msgid "a  looping until it returns ; answers accumulate as facts"
+#~ msgstr "一个循环运行直至返回  的 ；回答作为事实不断累积"
+
+#~ msgid "The FEEL subset is small.  implements equality, comparison and one-of. Ranges,  and function calls are refused rather than silently mis-evaluated — a table that returns an answer and is not the table on the page is worse than one that throws."
+#~ msgstr "FEEL 子集很小。  实现了相等性、比较以及多选一（one-of）。范围（ranges）、 和函数调用会被直接拒绝，而不是悄悄产生错误求值——一个返回了错误答案且与页面上的表不符的决策表，比直接抛出异常的表更糟糕。"
+
+#~ msgid "Getting started — the intent decision table in use"
+#~ msgstr "入门指南 — 使用中的意图决策表"
+
+#~ msgid "skill"
+#~ msgstr "技能"
+
+#~ msgid "Publication workflow — every process in the repo"
+#~ msgstr "发布工作流 — 仓库中的各项流程"
+
+#~ msgid "Options for workflow state in beans"
+#~ msgstr "在 beans 中管理工作流状态的选项"
