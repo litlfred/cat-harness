@@ -191,6 +191,15 @@ locally can still have an empty remote, and GitHub makes the first branch
 pushed to an empty repository its default. Run `init-folio` or push `main`
 before any feature branch (litlfred/dth-hrh, owner 2026-10-14).
 
+**If `main` has no harness yet, land a setup-only PR first.** A fork or an
+existing repository whose `main` has no `index.config.json` and
+`index.lock.json` gives the full PR checks nothing to compare against: the
+base side fails before any test runs, and the PR's own gates are skipped
+(cat-harness-tools#1139). So open one small PR with only what `folio_init`
+writes and the pins, merge it, and only then branch for content. Draft-tier
+checks never build the base, so this does not show until the content PR
+leaves draft (litlfred/dth-sc#1, owner 2026-10-31).
+
 A harness built on this platform may add adoption steps of its own for its
 kind of repository, for example about CI that already publishes a site on
 every push. Ask `skill_list` for the skill governing that kind before
