@@ -29,10 +29,6 @@ msgstr "智能代理框架"
 msgid "On this page"
 msgstr "本页目录"
 
-#: docs/concepts/agentic-harness.md:25
-msgid "This page is generated from  — each section below links to its own source."
-msgstr "本页面生成自  — 下方每个小节都链接至其自身的源文件。"
-
 #: docs/concepts/agentic-harness.md:29
 msgid "The agentic harness is the interaction model that folio-assistant runs on — the rules, states, and workflows that govern how an agent and a user collaborate inside this platform. Much of this behaviour is already described across individual skills and guidance documents; this page consolidates it into one reference so that an agent entering a session can look up the expected behaviour rather than reconstructing it from scattered rules."
 msgstr "智能代理框架（agentic harness）是 folio-assistant 运行所基于的交互模型——即规范智能体与用户在此平台中如何协作的规则、状态和工作流。此类行为大都已在各个独立技能和指导文档中有所描述；本页面将其整合为一份参考，以便进入会话的智能体能够查阅预期的行为规范，而不必从零散的规则中自行推导重构。"
@@ -52,10 +48,6 @@ msgstr "用户与智能体之间的交互始终处于以下两种状态之一：
 #: docs/concepts/agentic-harness.md:50
 msgid "Idle state"
 msgstr "空闲状态"
-
-#: docs/concepts/agentic-harness.md:52
-msgid "The agent has no active workflow. It is waiting for a user request. On receiving one, it classifies the request (see Request classification) and transitions into the appropriate workflow state."
-msgstr "智能体没有处于活动状态的工作流，正在等待用户请求。在收到请求后，它会对请求进行分类（参见请求分类），并转换到相应的工作流状态。"
 
 #: docs/concepts/agentic-harness.md:56
 msgid "Workflow state"
@@ -109,10 +101,6 @@ msgstr "内容经过 validate → render → publish 阶段"
 msgid "Document ingestion"
 msgstr "文档摄取"
 
-#: docs/concepts/agentic-harness.md:69
-msgid "User drops a file in"
-msgstr "用户将文件放入"
-
 #: docs/concepts/agentic-harness.md:70
 msgid "Draft to publication"
 msgstr "草稿至发布"
@@ -153,10 +141,6 @@ msgstr "会话生命周期"
 msgid "Every agent session follows the same lifecycle:"
 msgstr "每个智能体会话都遵循相同的生命周期："
 
-#: docs/concepts/agentic-harness.md:89
-msgid "Start — run the session-start sweep (, , ). This surfaces the current work-plan, how far the default branch has moved, and recent sibling branch activity. See ."
-msgstr "启动 — 运行会话启动巡检（、、）。这会呈现当前的工作计划、默认分支的推进程度以及近期的同胞分支活动。参见 。"
-
 #: docs/concepts/agentic-harness.md:94
 msgid "Classify — each user request is classified (see next section) and routed to the appropriate workflow."
 msgstr "分类 — 对每个用户请求进行分类（参见下一节），并路由到相应的工作流。"
@@ -164,10 +148,6 @@ msgstr "分类 — 对每个用户请求进行分类（参见下一节），并�
 #: docs/concepts/agentic-harness.md:97
 msgid "Execute — the agent works within the active workflow, following its BPMN process. Each turn reports the bean being worked on and what is next."
 msgstr "执行 — 智能体在活动工作流中开展工作，并遵循其 BPMN 流程。每个轮次都会报告正在处理的 bean 以及下一步计划。"
-
-#: docs/concepts/agentic-harness.md:100
-msgid "Commit — every meaningful unit of work gets its own commit and push. PRs are opened at the first commit, not the end. See ."
-msgstr "提交 — 每个有意义的工作单元都会单独进行 commit 和 push。PR 在第一次 commit 时即创建，而不是等到最后。参见 。"
 
 #: docs/concepts/agentic-harness.md:104
 msgid "Handoff — when the session ends (user leaves, context limit, token exhaustion), the agent's durable state is:"
@@ -250,10 +230,6 @@ msgid "Feature request"
 msgstr "功能需求"
 
 #: docs/concepts/agentic-harness.md:124
-msgid "Request new platform capability (see crdm-detect)"
-msgstr "请求新的平台功能（参见 crdm-detect）"
-
-#: docs/concepts/agentic-harness.md:124
 msgid "CRDM requirements workflow"
 msgstr "CRDM 需求工作流"
 
@@ -272,10 +248,6 @@ msgstr "无工作流 — 直接回答"
 #: docs/concepts/agentic-harness.md:126
 msgid "Tool invocation"
 msgstr "工具调用"
-
-#: docs/concepts/agentic-harness.md:126
-msgid "Run a specific tool (, , etc.)"
-msgstr "运行特定工具（、 等）"
 
 #: docs/concepts/agentic-harness.md:126
 msgid "No workflow — execute and report"
@@ -305,10 +277,6 @@ msgstr "分流处理：若问题较小则直接修复；若需要重新设计则
 msgid "The feature-request detection rule"
 msgstr "功能需求检测规则"
 
-#: docs/concepts/agentic-harness.md:132
-msgid "The critical classification boundary is between content authoring and feature request. The  skill () provides the detailed detection signals. The summary rule:"
-msgstr "最关键的分类边界存在于内容撰写与功能需求之间。 技能（）提供了详细的检测信号。总结性规则如下："
-
 #: docs/concepts/agentic-harness.md:137
 msgid "If implementing the request would require changes to folio-assistant (the platform repository) rather than to a folio repository, the request is a feature, and the agent should enter the CRDM workflow."
 msgstr "如果实现该请求需要修改 folio-assistant（平台仓库）而非 folio 仓库，则该请求属于新功能，智能体应当进入 CRDM 工作流。"
@@ -325,33 +293,9 @@ msgstr "内容工作流"
 msgid "When a request is classified as content work (authoring, review, ingestion), the agent follows the corresponding BPMN workflow. The existing documentation pages describe these in detail:"
 msgstr "当请求被归类为内容工作（撰写、评审、摄取）时，智能体将遵循相应的 BPMN 工作流。现有文档页面对此进行了详细阐述："
 
-#: docs/concepts/agentic-harness.md:154
-msgid "Publication workflow — the content lifecycle from draft through validation, rendering, and publication. Covers roles (author, reviewer, editor), the base processes, activities and skills."
-msgstr "发布工作流 — 从草稿到验证、渲染和发布的内容生命周期。涵盖各个角色（作者、评审人、编辑）、基础流程、活动及技能。"
-
-#: docs/concepts/agentic-harness.md:159
-msgid "Document ingestion — how a dropped file becomes an L1 source: extract structure, derive content, build the L1 knowledge graph, completeness gate."
-msgstr "文档摄取 — 放入的文件如何转化为 L1 源：提取结构、派生内容、构建 L1 知识图谱以及完整性关卡。"
-
 #: docs/concepts/agentic-harness.md:163
 msgid "Writing guides:"
 msgstr "撰写指南："
-
-#: docs/concepts/agentic-harness.md:164
-msgid "Writing a paper"
-msgstr "撰写论文"
-
-#: docs/concepts/agentic-harness.md:165
-msgid "Writing a document"
-msgstr "撰写文档"
-
-#: docs/concepts/agentic-harness.md:166
-msgid "WHO SMART DAK"
-msgstr "WHO SMART DAK"
-
-#: docs/concepts/agentic-harness.md:167
-msgid "WHO SMART IG"
-msgstr "WHO SMART IG"
 
 #: docs/concepts/agentic-harness.md:169
 msgid "The harness does not redefine these workflows. It provides the entry point — classifying the request and routing to the right one — and the exit point — returning to idle state when the workflow completes, or suspending if the user switches context."
@@ -361,21 +305,9 @@ msgstr "本框架并未重新定义这些工作流。它提供了入口点——
 msgid "Deterministic and agentic processing"
 msgstr "确定性与智能体化处理"
 
-#: docs/concepts/agentic-harness.md:179
-msgid "Workflow processing here is a spectrum, not a switch, and the harness is already at four different points on it without ever having named the axis:  decides whether a step that is not enabled is refused or merely noted;  decides whether a package may negotiate a base step away;  decides whether a branch is computed from a table rather than chosen; and the commit-boundary gate refuses the write by something that is not the agent."
-msgstr "在此，工作流处理是一个光谱，而非开关，而本框架在尚未为该维度命名时，就已经处于其上的四个不同点位： 决定未启用的步骤是被拒绝还是仅予记录； 决定程序包是否可以通过协商省去某个基础步骤； 决定分支是由表格计算得出还是由人工选择；而提交边界关卡则由智能体之外的机制来拒绝写入。"
-
 #: docs/concepts/agentic-harness.md:187
 msgid "Those are not one axis, and treating them as one is the first thing to get wrong. At least three questions are being conflated — who decides the branch, what happens if the decision is wrong, and who enforces. A step can be fully agentic on the first and fully deterministic on the third: the commit boundary is exactly that, an agent deciding freely and a hook refusing the write regardless."
 msgstr "这些并非同一维度，将其混为一谈首先就会导致理解偏差。这里至少混淆了三个问题——谁来决定分支、如果决定有误会发生什么，以及谁来执行约束。某个步骤在第一个问题上可以是完全智能体驱动的，而在第三个问题上则是完全确定性的：提交边界正是如此，智能体自由做出决定，而钩子无论如何都会拒绝写入。"
-
-#: docs/concepts/agentic-harness.md:194
-msgid "A gateway now says which it is.  means a table computes it and a hand-supplied outcome is refused;  means somebody's call, with the reason required. Before that marker, \"no table because this is a judgement\" and \"no table because nobody wrote one\" were indistinguishable — and  now prints the three-way split, so the question how much of this is decided by a model? has an answer that is counted rather than asserted."
-msgstr "现在网关会指明其属于哪一种。 意味着由表格进行计算，手工提供的结果将被拒绝； 意味着这是某人的主观判断，且必须提供原因。在该标记出现之前，“没有表格是因为这属于主观判断”与“没有表格是因为没人编写”之间是无法区分的——现在  会打印三向分类结果，因此“其中有多少是由模型决定的？”这个问题有了一个经过统计而非仅凭主观宣称的答案。"
-
-#: docs/concepts/agentic-harness.md:202
-msgid "What that count is for is research, and it is open. Which judgement points are safety risks, how much must be deterministic, and how models compare across sub-workflows under a controlled overlay of context and memories are three questions this repository can now ask and has not answered. The agenda, with each claim marked as measured, decided or hypothesis, is . Read it as an agenda: there is more hypothesis in it than measurement, and it says so."
-msgstr "这一统计数据的用途在于研究，且该议题保持开放。 哪些判断节点存在安全风险、有多少内容必须是确定性的，以及在受控的上下文和记忆叠加下模型在各个子工作流中的表现如何对比，这是当前仓库能够提出但尚未解答的三个问题。包含每项主张（标记为已测量、已决定或假设）的研究议程见 。请将其视为一份议程：其中假设多于实测，文内亦已如实说明。"
 
 #: docs/concepts/agentic-harness.md:211
 msgid "BPMN execution: one skill, two engines"
@@ -465,25 +397,9 @@ msgstr "引擎在步骤发生之前予以拒绝"
 msgid "mechanical + agentic QA/QC reports find it after it happened"
 msgstr "机械 + 智能体 QA/QC 报告在事后从记录中发现"
 
-#: docs/concepts/agentic-harness.md:236
-msgid "**The two ends differ in when a rule is checked, not in which rule. The same process, the same roles and the same permissions govern both. The engine checks them before a task starts and refuses; the swarm acts and a QA/QC report checks them after**, from the record of what was done. That only works if the rules and the record are data a report can read, which is the case for W3C ODRL 2.2 as the permission language and W3C PROV-O as the execution log (owner, 2026-09-23; the schema this implies is the actors, ODRL and PROV-O proposal)."
-msgstr "**两种极端在规则检查的时机上有所不同，而非检查何种规则。 相同的流程、相同的角色和相同的权限对两者均适用。引擎在任务启动之前检查规则并进行拒绝；智能体集群先行操作，而 QA/QC 报告在事后**根据操作记录进行检查。这仅在规则和记录均为报告可读取的数据时方可生效，而作为权限语言的 W3C ODRL 2.2 和作为执行日志的 W3C PROV-O 正是如此（所有者，2026-09-23；此举所蕴含的 Schema 即为参与者、ODRL 与 PROV-O 提案）。"
-
-#: docs/concepts/agentic-harness.md:246
-msgid "Most real runs sit between the ends, and per task rather than per process: the previous section already counts which gateways are computed and which are judgement calls. A signing step can be engine-enforced inside an otherwise agentic run, and that is a property of the task, not of the whole diagram."
-msgstr "大多数实际运行介于两端之间，并且是针对单个任务而非整个流程：上一节已经统计了哪些网关是计算得出的，哪些是主观判断。在通常由智能体自主执行的运行中，签名步骤可以由引擎强制执行，这是该任务本身的属性，而非整张流程图的属性。"
-
-#: docs/concepts/agentic-harness.md:252
-msgid "Partly built. No BPMN engine is wired in. The mechanical QA/QC report now exists:  writes each workflow instance's history as a PROV-O log and re-checks every step against the ODRL policies, advisory (issue #1180, step 5; the  skill). The agentic QA/QC report does not exist yet. The rest of this section names the target so the proposal has something to be measured against."
-msgstr "部分已构建。 尚未接入 BPMN 引擎。机械化 QA/QC 报告现已存在： 将每个工作流实例的历史记录编写为 PROV-O 日志，并根据 ODRL 策略重新检查每个步骤，仅提供建议（Issue #1180，第 5 步； 技能）。智能体 QA/QC 报告目前尚不存在。本节其余部分明确了目标，以便提案有据可依。"
-
 #: docs/concepts/agentic-harness.md:259
 msgid "Feature-request workflow (CRDM)"
 msgstr "功能需求工作流（CRDM）"
-
-#: docs/concepts/agentic-harness.md:264
-msgid "When a request is classified as a feature request, the agent enters the CRDM requirements workflow (full documentation, BPMN)."
-msgstr "当请求被归类为功能需求时，智能体进入 CRDM 需求工作流（完整文档，BPMN）。"
 
 #: docs/concepts/agentic-harness.md:269
 msgid "The feature-request workflow is where this harness document adds the most value, because it describes a behaviour that was previously implicit. The authoring and review workflows have been documented for months; the requirements workflow existed only as ad-hoc conversation."
@@ -492,10 +408,6 @@ msgstr "功能需求工作流是本框架文档价值最显著之处，因为它
 #: docs/concepts/agentic-harness.md:274
 msgid "How the agent enters CRDM"
 msgstr "智能体如何进入 CRDM"
-
-#: docs/concepts/agentic-harness.md:276
-msgid "The detection logic is in . Three scenarios:"
-msgstr "检测逻辑位于 。三种场景："
 
 #: docs/concepts/agentic-harness.md:279
 msgid "New session, first request is a feature: → Acknowledge, explain you will help work through requirements first, enter Phase 1."
@@ -562,10 +474,6 @@ msgid "Routed to"
 msgstr "路由至"
 
 #: docs/concepts/agentic-harness.md:318
-msgid "directory"
-msgstr "目录"
-
-#: docs/concepts/agentic-harness.md:318
 msgid "User drops a Word doc, PDF, Excel file"
 msgstr "用户放入 Word 文档、PDF、Excel 文件"
 
@@ -574,24 +482,12 @@ msgid "Document ingestion pipeline"
 msgstr "文档摄取管线"
 
 #: docs/concepts/agentic-harness.md:319
-msgid "references"
-msgstr "引用"
-
-#: docs/concepts/agentic-harness.md:319
 msgid "User references an already-ingested L1 source"
 msgstr "用户引用已摄取的 L1 源"
 
 #: docs/concepts/agentic-harness.md:319
 msgid "Direct citation in content"
 msgstr "在内容中直接引用"
-
-#: docs/concepts/agentic-harness.md:320
-msgid "edits"
-msgstr "编辑"
-
-#: docs/concepts/agentic-harness.md:320
-msgid "User edits a  block directly"
-msgstr "用户直接编辑  块"
 
 #: docs/concepts/agentic-harness.md:320
 msgid "Content authoring workflow"
@@ -616,10 +512,6 @@ msgstr "聊天界面上传"
 #: docs/concepts/agentic-harness.md:322
 msgid "User uploads a file in the LLM chat interface"
 msgstr "用户在 LLM 聊天界面上传文件"
-
-#: docs/concepts/agentic-harness.md:322
-msgid "Agent saves to  or processes inline"
-msgstr "智能体保存至  或内联处理"
 
 #: docs/concepts/agentic-harness.md:323
 msgid "URL reference"
@@ -749,14 +641,6 @@ msgstr "若无开启的匹配项，检查近期关闭的 Issue。"
 msgid "If no match at all, ask the user to create one. Do not create an issue without user permission."
 msgstr "若完全没有匹配项，请用户创建一个。未经用户许可，切勿创建 Issue。"
 
-#: docs/concepts/agentic-harness.md:364
-msgid "Always feature branch + PR. No exceptions for feature work. The branch name should reference the issue number (e.g. )."
-msgstr "始终使用 feature 分支 + PR。 功能开发绝无例外。分支名称应包含 Issue 编号（例如 ）。"
-
-#: docs/concepts/agentic-harness.md:367
-msgid "Always ask before merging to main. The user must explicitly confirm. This is stricter than the general  rule for content work, because feature changes affect the platform."
-msgstr "合并到 main 分支前务必询问。 必须得到用户的明确确认。由于功能变更会影响平台本身，这比  中针对内容工作的一般规则更为严格。"
-
 #: docs/concepts/agentic-harness.md:371
 msgid "Post round summaries to the issue. After each round of implementation (one or more beans resolved), post a comment on the linked issue containing:"
 msgstr "在 Issue 上发布轮次摘要。 每轮实现完成后（解决了一个或多个 bean），在关联的 Issue 上发布一条评论，包含："
@@ -784,10 +668,6 @@ msgstr "未经明确授权，绝不可关闭 Issue。 由 BA 或利益相关者�
 #: docs/concepts/agentic-harness.md:382
 msgid "Requirements may span multiple issues. The agent should link to all relevant issues and note the relationships."
 msgstr "需求可能跨越多个 Issue。 智能体应当链接到所有相关 Issue 并说明它们之间的关系。"
-
-#: docs/concepts/agentic-harness.md:385
-msgid "Beans are not issues.  is for work-plan items. Issues are for stakeholder-facing requirements. Do not conflate them."
-msgstr "Bean 不是 Issue。  用于工作计划项。Issue 则面向利益相关者明确需求。切勿混淆两者。"
 
 #: docs/concepts/agentic-harness.md:388
 msgid "Consolidated skill references"
@@ -857,10 +737,6 @@ msgstr "内容类型与适配器"
 msgid "BPMN diagram authoring"
 msgstr "BPMN 图绘制"
 
-#: docs/concepts/agentic-harness.md:410
-msgid "skill"
-msgstr "技能"
-
 #: docs/concepts/agentic-harness.md:412
 msgid "When a skill and this page disagree, the skill wins. This page is a consolidation, not a new authority. If you find a discrepancy, fix this page."
 msgstr "当某项技能与本页面存在分歧时，以技能为准。 本页面属于综合汇编，并非新的权威源。如果您发现差异，请修正本页面。"
@@ -877,21 +753,9 @@ msgstr "工作流状态持久化 — 本框架描述了工作流的挂起与恢�
 msgid "Automated request classification — the classification table is a reference for agents to read; there is no classifier tool that routes automatically."
 msgstr "自动化请求分类 — 分类表供智能体查阅参考；目前尚无自动进行路由的分类器工具。"
 
-#: docs/concepts/agentic-harness.md:429
-msgid "BPMN for beans lifecycle — the beans work-plan has a lifecycle (create → claim → in-progress → resolve) that is discussed in  and the todo-manager skill but has no BPMN diagram."
-msgstr "Beans 生命周期的 BPMN 图 — beans 工作计划具有生命周期（create → claim → in-progress → resolve），虽然在  和 todo-manager 技能中对此进行了讨论，但尚未绘制 BPMN 图。"
-
 #: docs/concepts/agentic-harness.md:433
 msgid "BPMN for the agentic harness itself — a top-level BPMN diagram showing the idle/workflow state machine and the classification routing is not yet authored."
 msgstr "智能代理框架本身的 BPMN 图 — 展示空闲/工作流状态机以及分类路由的顶层 BPMN 图尚未绘制。"
-
-#: docs/concepts/agentic-harness.md:437
-msgid "Session handoff protocol — the rules for what to commit before a session ends are in , but there is no structured handoff artefact that a new session can read to resume exactly where the previous one left off."
-msgstr "会话交接协议 — 会话结束前需要提交的内容规则已在  中说明，但目前尚无结构化的交接工件供新会话读取，以精确恢复到上一会话中断的位置。"
-
-#: docs/concepts/agentic-harness.md:441
-msgid "Tracked in: #203"
-msgstr "跟进于： #203"
 
 #~ msgid "TR"
 #~ msgstr "TR"
@@ -931,3 +795,105 @@ msgstr "跟进于： #203"
 
 #~ msgid "✎ Edit{: .fa-node-edit title=\"Edit content/docs/concepts-agentic-harness/what-is-not-built-yet.md\" } QA… TR"
 #~ msgstr "✎ Edit{: .fa-node-edit title=\"Edit content/docs/concepts-agentic-harness/what-is-not-built-yet.md\" } QA… TR"
+
+#~ msgid "This page is generated from  — each section below links to its own source."
+#~ msgstr "本页面生成自  — 下方每个小节都链接至其自身的源文件。"
+
+#~ msgid "The agent has no active workflow. It is waiting for a user request. On receiving one, it classifies the request (see Request classification) and transitions into the appropriate workflow state."
+#~ msgstr "智能体没有处于活动状态的工作流，正在等待用户请求。在收到请求后，它会对请求进行分类（参见请求分类），并转换到相应的工作流状态。"
+
+#~ msgid "User drops a file in"
+#~ msgstr "用户将文件放入"
+
+#~ msgid "Start — run the session-start sweep (, , ). This surfaces the current work-plan, how far the default branch has moved, and recent sibling branch activity. See ."
+#~ msgstr "启动 — 运行会话启动巡检（、、）。这会呈现当前的工作计划、默认分支的推进程度以及近期的同胞分支活动。参见 。"
+
+#~ msgid "Commit — every meaningful unit of work gets its own commit and push. PRs are opened at the first commit, not the end. See ."
+#~ msgstr "提交 — 每个有意义的工作单元都会单独进行 commit 和 push。PR 在第一次 commit 时即创建，而不是等到最后。参见 。"
+
+#~ msgid "Request new platform capability (see crdm-detect)"
+#~ msgstr "请求新的平台功能（参见 crdm-detect）"
+
+#~ msgid "Run a specific tool (, , etc.)"
+#~ msgstr "运行特定工具（、 等）"
+
+#~ msgid "The critical classification boundary is between content authoring and feature request. The  skill () provides the detailed detection signals. The summary rule:"
+#~ msgstr "最关键的分类边界存在于内容撰写与功能需求之间。 技能（）提供了详细的检测信号。总结性规则如下："
+
+#~ msgid "Publication workflow — the content lifecycle from draft through validation, rendering, and publication. Covers roles (author, reviewer, editor), the base processes, activities and skills."
+#~ msgstr "发布工作流 — 从草稿到验证、渲染和发布的内容生命周期。涵盖各个角色（作者、评审人、编辑）、基础流程、活动及技能。"
+
+#~ msgid "Document ingestion — how a dropped file becomes an L1 source: extract structure, derive content, build the L1 knowledge graph, completeness gate."
+#~ msgstr "文档摄取 — 放入的文件如何转化为 L1 源：提取结构、派生内容、构建 L1 知识图谱以及完整性关卡。"
+
+#~ msgid "Writing a paper"
+#~ msgstr "撰写论文"
+
+#~ msgid "Writing a document"
+#~ msgstr "撰写文档"
+
+#~ msgid "WHO SMART DAK"
+#~ msgstr "WHO SMART DAK"
+
+#~ msgid "WHO SMART IG"
+#~ msgstr "WHO SMART IG"
+
+#~ msgid "Workflow processing here is a spectrum, not a switch, and the harness is already at four different points on it without ever having named the axis:  decides whether a step that is not enabled is refused or merely noted;  decides whether a package may negotiate a base step away;  decides whether a branch is computed from a table rather than chosen; and the commit-boundary gate refuses the write by something that is not the agent."
+#~ msgstr "在此，工作流处理是一个光谱，而非开关，而本框架在尚未为该维度命名时，就已经处于其上的四个不同点位： 决定未启用的步骤是被拒绝还是仅予记录； 决定程序包是否可以通过协商省去某个基础步骤； 决定分支是由表格计算得出还是由人工选择；而提交边界关卡则由智能体之外的机制来拒绝写入。"
+
+#~ msgid "A gateway now says which it is.  means a table computes it and a hand-supplied outcome is refused;  means somebody's call, with the reason required. Before that marker, \"no table because this is a judgement\" and \"no table because nobody wrote one\" were indistinguishable — and  now prints the three-way split, so the question how much of this is decided by a model? has an answer that is counted rather than asserted."
+#~ msgstr "现在网关会指明其属于哪一种。 意味着由表格进行计算，手工提供的结果将被拒绝； 意味着这是某人的主观判断，且必须提供原因。在该标记出现之前，“没有表格是因为这属于主观判断”与“没有表格是因为没人编写”之间是无法区分的——现在  会打印三向分类结果，因此“其中有多少是由模型决定的？”这个问题有了一个经过统计而非仅凭主观宣称的答案。"
+
+#~ msgid "What that count is for is research, and it is open. Which judgement points are safety risks, how much must be deterministic, and how models compare across sub-workflows under a controlled overlay of context and memories are three questions this repository can now ask and has not answered. The agenda, with each claim marked as measured, decided or hypothesis, is . Read it as an agenda: there is more hypothesis in it than measurement, and it says so."
+#~ msgstr "这一统计数据的用途在于研究，且该议题保持开放。 哪些判断节点存在安全风险、有多少内容必须是确定性的，以及在受控的上下文和记忆叠加下模型在各个子工作流中的表现如何对比，这是当前仓库能够提出但尚未解答的三个问题。包含每项主张（标记为已测量、已决定或假设）的研究议程见 。请将其视为一份议程：其中假设多于实测，文内亦已如实说明。"
+
+#~ msgid "**The two ends differ in when a rule is checked, not in which rule. The same process, the same roles and the same permissions govern both. The engine checks them before a task starts and refuses; the swarm acts and a QA/QC report checks them after**, from the record of what was done. That only works if the rules and the record are data a report can read, which is the case for W3C ODRL 2.2 as the permission language and W3C PROV-O as the execution log (owner, 2026-09-23; the schema this implies is the actors, ODRL and PROV-O proposal)."
+#~ msgstr "**两种极端在规则检查的时机上有所不同，而非检查何种规则。 相同的流程、相同的角色和相同的权限对两者均适用。引擎在任务启动之前检查规则并进行拒绝；智能体集群先行操作，而 QA/QC 报告在事后**根据操作记录进行检查。这仅在规则和记录均为报告可读取的数据时方可生效，而作为权限语言的 W3C ODRL 2.2 和作为执行日志的 W3C PROV-O 正是如此（所有者，2026-09-23；此举所蕴含的 Schema 即为参与者、ODRL 与 PROV-O 提案）。"
+
+#~ msgid "Most real runs sit between the ends, and per task rather than per process: the previous section already counts which gateways are computed and which are judgement calls. A signing step can be engine-enforced inside an otherwise agentic run, and that is a property of the task, not of the whole diagram."
+#~ msgstr "大多数实际运行介于两端之间，并且是针对单个任务而非整个流程：上一节已经统计了哪些网关是计算得出的，哪些是主观判断。在通常由智能体自主执行的运行中，签名步骤可以由引擎强制执行，这是该任务本身的属性，而非整张流程图的属性。"
+
+#~ msgid "Partly built. No BPMN engine is wired in. The mechanical QA/QC report now exists:  writes each workflow instance's history as a PROV-O log and re-checks every step against the ODRL policies, advisory (issue #1180, step 5; the  skill). The agentic QA/QC report does not exist yet. The rest of this section names the target so the proposal has something to be measured against."
+#~ msgstr "部分已构建。 尚未接入 BPMN 引擎。机械化 QA/QC 报告现已存在： 将每个工作流实例的历史记录编写为 PROV-O 日志，并根据 ODRL 策略重新检查每个步骤，仅提供建议（Issue #1180，第 5 步； 技能）。智能体 QA/QC 报告目前尚不存在。本节其余部分明确了目标，以便提案有据可依。"
+
+#~ msgid "When a request is classified as a feature request, the agent enters the CRDM requirements workflow (full documentation, BPMN)."
+#~ msgstr "当请求被归类为功能需求时，智能体进入 CRDM 需求工作流（完整文档，BPMN）。"
+
+#~ msgid "The detection logic is in . Three scenarios:"
+#~ msgstr "检测逻辑位于 。三种场景："
+
+#~ msgid "directory"
+#~ msgstr "目录"
+
+#~ msgid "references"
+#~ msgstr "引用"
+
+#~ msgid "edits"
+#~ msgstr "编辑"
+
+#~ msgid "User edits a  block directly"
+#~ msgstr "用户直接编辑  块"
+
+#~ msgid "Agent saves to  or processes inline"
+#~ msgstr "智能体保存至  或内联处理"
+
+#~ msgid "Always feature branch + PR. No exceptions for feature work. The branch name should reference the issue number (e.g. )."
+#~ msgstr "始终使用 feature 分支 + PR。 功能开发绝无例外。分支名称应包含 Issue 编号（例如 ）。"
+
+#~ msgid "Always ask before merging to main. The user must explicitly confirm. This is stricter than the general  rule for content work, because feature changes affect the platform."
+#~ msgstr "合并到 main 分支前务必询问。 必须得到用户的明确确认。由于功能变更会影响平台本身，这比  中针对内容工作的一般规则更为严格。"
+
+#~ msgid "Beans are not issues.  is for work-plan items. Issues are for stakeholder-facing requirements. Do not conflate them."
+#~ msgstr "Bean 不是 Issue。  用于工作计划项。Issue 则面向利益相关者明确需求。切勿混淆两者。"
+
+#~ msgid "skill"
+#~ msgstr "技能"
+
+#~ msgid "BPMN for beans lifecycle — the beans work-plan has a lifecycle (create → claim → in-progress → resolve) that is discussed in  and the todo-manager skill but has no BPMN diagram."
+#~ msgstr "Beans 生命周期的 BPMN 图 — beans 工作计划具有生命周期（create → claim → in-progress → resolve），虽然在  和 todo-manager 技能中对此进行了讨论，但尚未绘制 BPMN 图。"
+
+#~ msgid "Session handoff protocol — the rules for what to commit before a session ends are in , but there is no structured handoff artefact that a new session can read to resume exactly where the previous one left off."
+#~ msgstr "会话交接协议 — 会话结束前需要提交的内容规则已在  中说明，但目前尚无结构化的交接工件供新会话读取，以精确恢复到上一会话中断的位置。"
+
+#~ msgid "Tracked in: #203"
+#~ msgstr "跟进于： #203"

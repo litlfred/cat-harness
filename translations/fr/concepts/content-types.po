@@ -29,10 +29,6 @@ msgstr "Types de contenu"
 msgid "On this page"
 msgstr "Sur cette page"
 
-#: docs/concepts/content-types.md:25
-msgid "This page is generated from  — each section below links to its own source."
-msgstr "Cette page est générée à partir de  — chaque section ci-dessous renvoie vers sa propre source."
-
 #: docs/concepts/content-types.md:29
 msgid "folio-assistant is content-agnostic: the platform knows nothing about any particular paper or guideline. Each kind of content is supported by a content adapter (code that knows how to validate/build/render that kind) and a skill package (the authoring formalism — what an author and the LLM do)."
 msgstr "folio-assistant est indépendant du contenu : la plateforme ne sait rien d'un article ou d'une directive en particulier. Chaque genre de contenu est pris en charge par un adaptateur de contenu (du code qui sait comment valider/construire/restituer ce genre) et un ensemble de compétences (le formalisme de rédaction — ce qu'un auteur et le LLM font)."
@@ -45,29 +41,9 @@ msgstr "Cette page décrit le formalisme de chaque type de contenu. Elle est int
 msgid "Scientific papers & books"
 msgstr "Articles scientifiques et livres"
 
-#: docs/concepts/content-types.md:144
-msgid "Skill package:  · Adapter:  · Guide: Writing a paper"
-msgstr "Ensemble de compétences :  · Adaptateur :  · Guide : Rédiger un article"
-
 #: docs/concepts/content-types.md:148
 msgid "Rigorous scientific papers and books where prose and mathematics are backed by a machine-checked Lean 4 formalization and rendered through LaTeX."
 msgstr "Articles scientifiques et livres rigoureux où la prose et les mathématiques sont appuyées par une formalisation Lean 4 vérifiée par machine et restituées via LaTeX."
-
-#: docs/concepts/content-types.md:151
-msgid "A paper is a document plus Lean-bearing blocks. Everything in the section above applies here: the same block tree, the same editorial  graph, the same QA sidecars, the same lifecycle — and the Markdown render path, which works while drafting on a machine with no TeX. The  adapter extends the  adapter in code, for exactly that reason. What a paper adds is the seven kinds below whose assertion is a formal claim, and the two toolchains that check and typeset them."
-msgstr "Un article est un document auquel s'ajoutent des blocs porteurs de Lean. Tout ce qui figure dans la section précédente s'applique ici : le même arbre de blocs, le même graphe éditorial , les mêmes sidecars de QA, le même cycle de vie — ainsi que la voie de rendu Markdown, qui fonctionne lors de la rédaction sur une machine sans TeX. L'adaptateur  étend l'adaptateur  dans le code, précisément pour cette raison. Ce qu'un article ajoute, ce sont les sept genres ci-dessous dont l'assertion est une affirmation formelle, ainsi que les deux chaînes d'outils qui les vérifient et les composent."
-
-#: docs/concepts/content-types.md:159
-msgid "Source model — content is a tree of typed blocks (, , , , , , …). See the TypeScript API reference for , , and ."
-msgstr "Modèle source — le contenu est un arbre de blocs typés (, , , , , , …). Voir la référence de l'API TypeScript pour ,  et ."
-
-#: docs/concepts/content-types.md:162
-msgid "Formalization —  and  skills drive Lean; each theorem-like block can be tracked against its Lean counterpart, and every  is auditable."
-msgstr "Formalisation — les compétences  et  pilotent Lean ; chaque bloc de type théorème peut être suivi par rapport à son équivalent Lean, et chaque  est vérifiable."
-
-#: docs/concepts/content-types.md:165
-msgid "Rendering —  plus the paper adapter's  /  tools."
-msgstr "Rendu —  ainsi que les outils  /  de l'adaptateur paper."
 
 #: docs/concepts/content-types.md:168
 msgid "The seven kinds a document folio does not get, and the eight it shares:"
@@ -113,25 +89,9 @@ msgstr "partagé"
 msgid "n/a"
 msgstr "s. o."
 
-#: docs/concepts/content-types.md:180
-msgid "The four  rows are  in ; the  rows are , derived as the complement so a kind added later cannot go unclassified."
-msgstr "Les quatre lignes « paper uniquement » correspondent à  dans  ; les lignes « partagé » correspondent à , obtenu par complémentarité pour qu'un genre ajouté ultérieurement ne puisse rester non classé."
-
-#: docs/concepts/content-types.md:185
-msgid "Two of those rows are worth a second look.  is the sharpest point of the whole split — it is the one kind whose  field is required rather than optional, so a document folio could not hold one even if the profile allowed it. And the  kinds still declare an optional : the type permits what the profile forbids, which is why  has a second rule beyond \"is this kind allowed\"."
-msgstr "Deux de ces lignes méritent un second regard.  constitue le point de démarcation le plus net de toute la séparation — c'est le seul genre dont le champ  est obligatoire plutôt qu'optionnel, si bien qu'un folio de type document ne pourrait pas en contenir un même si le profil l'autorisait. Et les genres « partagé » continuent de déclarer un  optionnel : le type autorise ce que le profil interdit, raison pour laquelle  comporte une seconde règle au-delà de « ce genre est-il autorisé ? »."
-
-#: docs/concepts/content-types.md:192
-msgid "Relevant skill schemas: , , ."
-msgstr "Schémas de compétences pertinents : , , ."
-
 #: docs/concepts/content-types.md:265
 msgid "Others — extending folio-assistant"
 msgstr "Autres — étendre folio-assistant"
-
-#: docs/concepts/content-types.md:270
-msgid "New content types are first-class: add a content adapter and a skill package, and the lifecycle, RBAC, and MCP plumbing come for free. See Adding a content type."
-msgstr "Les nouveaux types de contenu sont de premier ordre : ajoutez un adaptateur de contenu et un ensemble de compétences, et le cycle de vie, le RBAC et la plomberie MCP sont inclus d'office. Voir Ajouter un type de contenu."
 
 #~ msgid "Every content type moves through the same lifecycle, provided by the cross-cutting **** skill package:"
 #~ msgstr "Chaque type de contenu traverse le même cycle de vie, fourni par l'ensemble transversal de compétences **** :"
@@ -306,3 +266,33 @@ msgstr "Les nouveaux types de contenu sont de premier ordre : ajoutez un adaptat
 
 #~ msgid "Quality control gates ()"
 #~ msgstr "Portes de contrôle qualité ()"
+
+#~ msgid "This page is generated from  — each section below links to its own source."
+#~ msgstr "Cette page est générée à partir de  — chaque section ci-dessous renvoie vers sa propre source."
+
+#~ msgid "Skill package:  · Adapter:  · Guide: Writing a paper"
+#~ msgstr "Ensemble de compétences :  · Adaptateur :  · Guide : Rédiger un article"
+
+#~ msgid "A paper is a document plus Lean-bearing blocks. Everything in the section above applies here: the same block tree, the same editorial  graph, the same QA sidecars, the same lifecycle — and the Markdown render path, which works while drafting on a machine with no TeX. The  adapter extends the  adapter in code, for exactly that reason. What a paper adds is the seven kinds below whose assertion is a formal claim, and the two toolchains that check and typeset them."
+#~ msgstr "Un article est un document auquel s'ajoutent des blocs porteurs de Lean. Tout ce qui figure dans la section précédente s'applique ici : le même arbre de blocs, le même graphe éditorial , les mêmes sidecars de QA, le même cycle de vie — ainsi que la voie de rendu Markdown, qui fonctionne lors de la rédaction sur une machine sans TeX. L'adaptateur  étend l'adaptateur  dans le code, précisément pour cette raison. Ce qu'un article ajoute, ce sont les sept genres ci-dessous dont l'assertion est une affirmation formelle, ainsi que les deux chaînes d'outils qui les vérifient et les composent."
+
+#~ msgid "Source model — content is a tree of typed blocks (, , , , , , …). See the TypeScript API reference for , , and ."
+#~ msgstr "Modèle source — le contenu est un arbre de blocs typés (, , , , , , …). Voir la référence de l'API TypeScript pour ,  et ."
+
+#~ msgid "Formalization —  and  skills drive Lean; each theorem-like block can be tracked against its Lean counterpart, and every  is auditable."
+#~ msgstr "Formalisation — les compétences  et  pilotent Lean ; chaque bloc de type théorème peut être suivi par rapport à son équivalent Lean, et chaque  est vérifiable."
+
+#~ msgid "Rendering —  plus the paper adapter's  /  tools."
+#~ msgstr "Rendu —  ainsi que les outils  /  de l'adaptateur paper."
+
+#~ msgid "The four  rows are  in ; the  rows are , derived as the complement so a kind added later cannot go unclassified."
+#~ msgstr "Les quatre lignes « paper uniquement » correspondent à  dans  ; les lignes « partagé » correspondent à , obtenu par complémentarité pour qu'un genre ajouté ultérieurement ne puisse rester non classé."
+
+#~ msgid "Two of those rows are worth a second look.  is the sharpest point of the whole split — it is the one kind whose  field is required rather than optional, so a document folio could not hold one even if the profile allowed it. And the  kinds still declare an optional : the type permits what the profile forbids, which is why  has a second rule beyond \"is this kind allowed\"."
+#~ msgstr "Deux de ces lignes méritent un second regard.  constitue le point de démarcation le plus net de toute la séparation — c'est le seul genre dont le champ  est obligatoire plutôt qu'optionnel, si bien qu'un folio de type document ne pourrait pas en contenir un même si le profil l'autorisait. Et les genres « partagé » continuent de déclarer un  optionnel : le type autorise ce que le profil interdit, raison pour laquelle  comporte une seconde règle au-delà de « ce genre est-il autorisé ? »."
+
+#~ msgid "Relevant skill schemas: , , ."
+#~ msgstr "Schémas de compétences pertinents : , , ."
+
+#~ msgid "New content types are first-class: add a content adapter and a skill package, and the lifecycle, RBAC, and MCP plumbing come for free. See Adding a content type."
+#~ msgstr "Les nouveaux types de contenu sont de premier ordre : ajoutez un adaptateur de contenu et un ensemble de compétences, et le cycle de vie, le RBAC et la plomberie MCP sont inclus d'office. Voir Ajouter un type de contenu."
