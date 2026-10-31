@@ -96,6 +96,41 @@ ingested under bean `folio-assistant-e0jh`.
   is one study of how ambiguous labels felt (29 students), so this is reported,
   never gated.
 
+### Split by phase: how
+
+Owner, 2026-10-31, on the rendered `content-change-review` page: *"long and
+hard to read. can we improve make use of subprocess or something?"* That
+diagram had grown to 43 flow nodes in five lanes, with a start event per lane.
+Every step was right; the page was unreadable. When `process-size` fires, or
+a diagram has a start event per lane, split it like this:
+
+- **The top-level process shows the phases.** Each phase is a
+  `<bpmn:callActivity calledElement="…">` to its own process. Keep at the top
+  only what moves the work between phases: who hands off to whom, and the
+  decisions that send it back (rejected → revise). A loop that crosses phases
+  is drawn at the top; a loop inside a phase stays in that phase.
+- **A phase lives in its own file**, `<parent>-<phase>.bpmn`, next to the
+  parent, with its own process id (`Process_<Parent><Phase>`) and a first
+  documentation sentence that says what the phase does. It becomes the
+  phase's row on the publication-workflow page like any other diagram's.
+- **A phase that ends two ways ends in two named end events**, and the
+  caller's gateway right after the call reads which one it reached, as
+  `GW_BeanYours` reads `Process_BeanOpen`'s.
+- **Keep the node ids when you move nodes into a phase.** A test, a schema or
+  a skill that points at `Task_X` then changes only its file and process, not
+  its id.
+- **Open and close the bean at the top, once.** A process that is only ever
+  called runs on its caller's bean, so a phase calls neither
+  `Process_BeanOpen` nor `Process_BeanClose` (`check:bean-calls`).
+- **A caller's `adjudication accepts` looks one level down.** If the judgement
+  moves into a phase, put `accepts` on the call to that phase, and take it off
+  any caller further up.
+- **Name a call activity for the phase**, verb-object like any activity
+  ("Review the change"), not for its file.
+
+A phase that only one parent calls is still worth its own file: the point is
+the page a reader opens, not reuse.
+
 ### Untangle every diagram you touch
 
 The same discipline as ArchiMate views ([`archimate-models`](../../ui/ui-core/archimate-models.md)
