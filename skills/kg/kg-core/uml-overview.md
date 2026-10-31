@@ -25,6 +25,16 @@ while it is stale.
 | the harness **object model** (Actor, Role, Skill, Process, Task, Todo, Bean, Test, …) | `scripts/gen-object-model-uml.ts` | `uml-object-model` |
 | the harness **schemas**: the object model without Bean and Todo, shown at the top of the UML overview page | `scripts/gen-uml-overview.ts`, from `schemasViewPuml` in `gen-object-model-uml.ts` | `uml-overview` |
 
+**Content models get their class diagrams the same way.** A diagram of the
+types a CONTENT model uses is derived from that model by its own Tool, never
+drawn: an ArchiMate model's "Metamodel in use" page is written by
+`archimate-metamodel` and `archimate-pages` (skill
+[`archimate-models`](../../ui/ui-core/archimate-models.md)). Owner,
+2026-10-31: *"i dont really like native UML, rather derived"*. The UML
+overview's `archimate` box still shows only `cat-archimate-config/v1`, the one
+node schema present in that directory; the model's own node shapes are drawn
+on the metamodel page, not here.
+
 **A group is a named sub-graph,** meaning one entry of a harness's declaration
 (`<instance>.json` `directories[]`), drawn as `<instance>/<entry id>`, for
 example `bootstrap/processes`. The generator never invents a grouping. Owner,

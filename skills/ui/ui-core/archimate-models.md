@@ -4,7 +4,8 @@ description: >
   ArchiMate models as knowledge-graph content: how an instance declares the
   Archi models it holds, what the `archimate` subgraph gives every model,
   view, element and relationship (an IRI, a thin page, and every view drawn as
-  SVG from the model's own diagram), how to version the models, how to wire
+  SVG from the model's own diagram, and its metamodel derived and checked),
+  how to version the models, how to wire
   them into a folio's staging build and navbar, how to count and lower the
   crossed lines in a view before committing it, why every view carries a
   plain-language key, why names are the source's own terms linked to their
@@ -18,7 +19,8 @@ description: >
 
 > Skill id: `archimate-models` · Package: `ui-core` · Subgraph:
 > [`cat-harness/archimate/`](../../../archimate/README.md) · Tools:
-> `archimate-check`, `archimate-pages`, `archimate-crossings`, `archimate-detangle`
+> `archimate-check`, `archimate-metamodel`, `archimate-pages`, `archimate-crossings`, `archimate-detangle` · Process:
+> `archimate-publish` (`processes/ui/archimate-publish.bpmn`)
 
 Owner, 2026-10-09: *"need new specialixed harness (like openapi) for archimate
 content in the KG"*, and then, of the Archi CLI report: *"do not do java
@@ -69,6 +71,44 @@ in cat-harness-tools). Nothing is committed and nothing redirects, so:
 
 Do not put slugs in the IRIs: the mapper keys on the ids, and a rename would
 move an IRI.
+
+## The metamodel is derived, never drawn
+
+Owner, 2026-10-31: *"i dont really like native UML, rather derived"*, then
+*"make mechanical tools as parts of skills/processes"*.
+
+**Do not draw a metamodel view.** Which element types a model uses, and which
+relationships it draws between them, is computed from the model by the Tool
+`archimate-metamodel` (`schemas/metamodel.ts` in cat-harness-tools):
+
+- every element type, with how many elements it has;
+- every pattern (source type, relationship, target type), with its count and
+  the ids of the relationships that follow it;
+- for each pattern, whether ArchiMate allows it, from Appendix B of ArchiMate
+  3.2 as Archi holds it (`archimate/schemas/archimate-relationships.json`,
+  MIT, written only by `scripts/import-archi-relationships.ts`; to adopt a
+  newer table, re-run it on a newer Archi checkout);
+- the **placeholder elements**: an element named after its own type ("Goal",
+  "Application Component (MS)"). They are how a metamodel gets drawn by hand
+  inside a model, so they and their relationships are listed and kept out of
+  the patterns. A Grouping or Junction left with its default name is not one.
+
+`archimate-pages` draws the same result on each model's **Metamodel in use**
+page (`<m>/metamodel/`), linked from the model page and the rail: a class
+diagram laid out from DOT by Graphviz in WebAssembly (`@hpcc-js/wasm-graphviz`,
+no binary, no JVM), with the same diagram as DOT, Mermaid and JSON beside it
+(`<m>/metamodel.dot|.mmd|.json|.svg`), and tables of the types and patterns,
+each pattern linking its relationships.
+
+`archimate-metamodel --check` fails when a relationship follows a pattern
+ArchiMate does not allow. Placeholders are reported, never fatal: a model is
+its authors', so removing a hand-drawn metamodel view (smart-ra 0.2.0's
+"Metamodel", "Metamodel vs EIRA" and "Testing", 34 placeholders) is their
+call. Cite the derived page instead of the view in the meantime.
+
+The steps run in this order, all in the pipeline lane of process
+`archimate-publish`: `archimate-check`, then `archimate-metamodel --check`,
+then `archimate-pages`. A refused relationship goes back to the model's author.
 
 ## Untangle every view you touch
 
@@ -219,7 +259,8 @@ document as a figure (`<m>/views/<id>.svg`) and stay current with the model.
 Where the document and the model disagree — a figure in the text that is not
 a view in the model — that is a finding for the model's authors, not
 something to paper over with an exported image. (smart-ra, 2026-10-09:
-Figures 3.7.1 and 3.7.2 of the DPI-H review draft are in no committed model.)
+Figures 3.7.1 and 3.7.2 of the DPI-H review draft were in no committed model;
+the 0.2.0 model now draws them as views "B" and "D", so cite those.)
 
 ## What is not read yet
 
@@ -231,6 +272,8 @@ or `render-view.ts`, in TypeScript.
 
 ## Do not
 
+- Draw a metamodel, or any class diagram of the model's types, by hand: cite
+  the derived "Metamodel in use" page.
 - Run Archi, a JVM or `xvfb` in a workflow to render a model.
 - Commit exported view images beside a model; they go stale on the next edit.
 - Name model folders by anything but the version they describe.
