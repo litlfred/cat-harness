@@ -131,8 +131,8 @@ turn ends with "please look at this", it must carry the **PR link** and a
 > - [process-state](https://…/STAGING/claude-my-branch/reference/skill-instructions/process-state.html) — new skill
 > - [Architecture](https://…/STAGING/claude-my-branch/architecture.html) — nav entry added
 >
-> ✓ **Staging (local server at http://127.0.0.1:4000):**
-> - [Swarm management](http://127.0.0.1:4000/STAGING/claude-my-branch/swarm-management.html) — new page
+> ✓ **Staging (local server at http://127.0.0.1:4007):**
+> - [Swarm management](http://127.0.0.1:4007/<repo>/STAGING/claude-my-branch/swarm-management.html) — new page
 >
 > ✓ **Review (chat discussion only — no web surface):**
 > - `docs/concepts/architecture/swarm-management.md` — new page (outline provided in chat)
