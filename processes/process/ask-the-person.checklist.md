@@ -18,7 +18,14 @@ The ONE way a question or decision is put to a person.
 - Skill: `ask-the-person`, `decision-comparison`.
 - What: What is being decided, stated as what will differ; every id, path and coined name glossed; every option with its letter, a one-line explanation and its trade-off; the recommendation, first and marked; what will happen if no answer comes.
 - Record it: `workflow_complete` with `node: "A_Compose"`.
-- next: → `A_WriteInChat` (Write it in the chat)
+- next: → `GW_Discussing` (Talking with the person?)
+
+### Decide — Talking with the person? (`GW_Discussing`)
+
+- `yes` when this agent is the one the person is talking with right now.
+- Call `workflow_complete` with `node: "GW_Discussing"` and `outcome` set to the label that holds:
+  - «yes» → `A_WriteInChat` (Write it in the chat)
+  - «no» → `A_HandBack` (Hand it back to the discussion)
 
 ### 2. Write it in the chat (`A_WriteInChat`)
 
@@ -28,7 +35,15 @@ The ONE way a question or decision is put to a person.
 - Record it: `workflow_complete` with `node: "A_WriteInChat"`.
 - next: → `A_OfferCard` (Offer the same options as a tappable card)
 
-### 3. Offer the same options as a tappable card (`A_OfferCard`)
+### 3. Hand it back to the discussion (`A_HandBack`)
+
+- Who: the `Agent` lane (role `authoring-agent`).
+- Skill: `hand-back-to-discussion`.
+- What: The composed question goes, unchanged, to the discussion agent, which asks it through this same process on its `yes` branch and routes the answer back: the sibling's half of `Process_HandBackToDiscussion` (a task here, not a call, because that process calls this one).
+- Record it: `workflow_complete` with `node: "A_HandBack"`.
+- next: → `End_HandedBack` (Answer returned through the discussion)
+
+### 4. Offer the same options as a tappable card (`A_OfferCard`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `ask-the-person`.
@@ -36,7 +51,11 @@ The ONE way a question or decision is put to a person.
 - Record it: `workflow_complete` with `node: "A_OfferCard"`.
 - next: → `U_Choose` (Choose an option)
 
-### 4. Choose an option (`U_Choose`)
+## Done — Answer returned through the discussion (`End_HandedBack`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 5. Choose an option (`U_Choose`)
 
 - Who: the `Person` lane (role `user`).
 - Skill: `interaction-modality`.
@@ -51,7 +70,7 @@ The ONE way a question or decision is put to a person.
   - «yes» → `A_Record` (Record the answer)
   - «no» → `A_ProceedOnDefault` (Proceed on the stated default, question left open)
 
-### 5. Record the answer (`A_Record`)
+### 6. Record the answer (`A_Record`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `ask-the-person`, `symbiotic-interaction`.
@@ -59,7 +78,7 @@ The ONE way a question or decision is put to a person.
 - Record it: `workflow_complete` with `node: "A_Record"`.
 - next: → `End_Answered` (Answer returned to the caller)
 
-### 6. Proceed on the stated default, question left open (`A_ProceedOnDefault`)
+### 7. Proceed on the stated default, question left open (`A_ProceedOnDefault`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `ask-the-person`.

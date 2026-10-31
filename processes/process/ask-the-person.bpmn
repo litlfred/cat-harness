@@ -31,6 +31,9 @@ WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only 
         <bpmn:documentation>Composes, writes and offers the question, then acts on the answer or the default. Never treats a dismissed card as a choice.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Process_AskThePerson</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Compose</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_Discussing</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_HandBack</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_HandedBack</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_WriteInChat</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_OfferCard</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Answered</bpmn:flowNodeRef>
@@ -52,6 +55,14 @@ WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only 
         <bootstrap.processes:skill ref="decision-comparison"/>
       </bpmn:extensionElements>
     </bpmn:task>
+    <bpmn:exclusiveGateway id="GW_Discussing" name="Talking with&#10;the person?">
+      <bpmn:documentation>`yes` when this agent is the one the person is talking with right now. `no` when it is a sibling: a project thread, a subagent, a workflow agent or a session spawned while another agent holds the discussion. A sibling that is not sure takes `no`: one extra copy costs a line, a missed card stalls a decision (owner, 2026-10-31: "sublings not raising cards to main", cat-harness#861).</bpmn:documentation>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="A_HandBack" name="Hand it back to&#10;the discussion">
+      <bpmn:documentation>The composed question goes, unchanged, to the discussion agent, which asks it through this same process on its `yes` branch and routes the answer back: the sibling's half of `Process_HandBackToDiscussion` (a task here, not a call, because that process calls this one). The sibling also shows it in its own thread, never only there.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="hand-back-to-discussion"/></bpmn:extensionElements>
+    </bpmn:task>
+    <bpmn:endEvent id="End_HandedBack" name="Answer returned&#10;through the discussion"/>
     <bpmn:task id="A_WriteInChat" name="Write it in the chat">
       <bpmn:documentation>Post the whole composed question as ordinary chat text BEFORE any card. This is the copy that survives: a card, once answered, shows only the chosen option, and a dismissed card shows nothing. Never "see the card", never a request for a typed reply such as "1y 2n".</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="ask-the-person"/></bpmn:extensionElements>
@@ -78,7 +89,10 @@ WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only 
     <bpmn:endEvent id="End_Answered" name="Answer returned to the caller"/>
     <bpmn:endEvent id="End_Default" name="Default taken, question still open"/>
     <bpmn:sequenceFlow id="SF_Ask_1" sourceRef="Start_Process_AskThePerson" targetRef="A_Compose"/>
-    <bpmn:sequenceFlow id="SF_Ask_2" sourceRef="A_Compose" targetRef="A_WriteInChat"/>
+    <bpmn:sequenceFlow id="SF_Ask_2" sourceRef="A_Compose" targetRef="GW_Discussing"/>
+    <bpmn:sequenceFlow id="SF_Ask_10" name="yes" sourceRef="GW_Discussing" targetRef="A_WriteInChat"/>
+    <bpmn:sequenceFlow id="SF_Ask_11" name="no" sourceRef="GW_Discussing" targetRef="A_HandBack"/>
+    <bpmn:sequenceFlow id="SF_Ask_12" sourceRef="A_HandBack" targetRef="End_HandedBack"/>
     <bpmn:sequenceFlow id="SF_Ask_3" sourceRef="A_WriteInChat" targetRef="A_OfferCard"/>
     <bpmn:sequenceFlow id="SF_Ask_4" sourceRef="A_OfferCard" targetRef="U_Choose"/>
     <bpmn:sequenceFlow id="SF_Ask_5" sourceRef="U_Choose" targetRef="GW_Answered"/>
@@ -90,13 +104,13 @@ WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only 
   <bpmndi:BPMNDiagram id="Diagram_Process_AskThePerson">
     <bpmndi:BPMNPlane id="Plane_Process_AskThePerson" bpmnElement="Collaboration_Process_AskThePerson">
       <bpmndi:BPMNShape id="Shape_Participant_Process_AskThePerson" bpmnElement="Participant_Process_AskThePerson" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1180" height="380" />
+        <dc:Bounds x="160" y="80" width="1270" height="380" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1150" height="240" />
+        <dc:Bounds x="190" y="80" width="1240" height="240" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Person" bpmnElement="Lane_Person" isHorizontal="true">
-        <dc:Bounds x="190" y="320" width="1150" height="140" />
+        <dc:Bounds x="190" y="320" width="1240" height="140" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_AskThePerson" bpmnElement="Start_Process_AskThePerson">
         <dc:Bounds x="232" y="152" width="36" height="36" />
@@ -105,55 +119,73 @@ WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only 
         <dc:Bounds x="310" y="130" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_WriteInChat" bpmnElement="A_WriteInChat">
-        <dc:Bounds x="470" y="130" width="120" height="80" />
+        <dc:Bounds x="560" y="130" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_OfferCard" bpmnElement="A_OfferCard">
-        <dc:Bounds x="630" y="130" width="120" height="80" />
+        <dc:Bounds x="720" y="130" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_U_Choose" bpmnElement="U_Choose">
-        <dc:Bounds x="630" y="350" width="120" height="80" />
+        <dc:Bounds x="720" y="350" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Answered" bpmnElement="GW_Answered" isMarkerVisible="true">
-        <dc:Bounds x="800" y="145" width="50" height="50" />
+        <dc:Bounds x="890" y="145" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Record" bpmnElement="A_Record">
-        <dc:Bounds x="910" y="100" width="120" height="80" />
+        <dc:Bounds x="1000" y="100" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ProceedOnDefault" bpmnElement="A_ProceedOnDefault">
-        <dc:Bounds x="910" y="220" width="120" height="80" />
+        <dc:Bounds x="1000" y="220" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Answered" bpmnElement="End_Answered">
-        <dc:Bounds x="1100" y="122" width="36" height="36" />
+        <dc:Bounds x="1190" y="122" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Default" bpmnElement="End_Default">
-        <dc:Bounds x="1100" y="242" width="36" height="36" />
+        <dc:Bounds x="1190" y="242" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_1" bpmnElement="SF_Ask_1">
         <di:waypoint x="268" y="170" /><di:waypoint x="310" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_2" bpmnElement="SF_Ask_2">
-        <di:waypoint x="430" y="170" /><di:waypoint x="470" y="170" />
+        <di:waypoint x="430" y="170" /><di:waypoint x="455" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_3" bpmnElement="SF_Ask_3">
-        <di:waypoint x="590" y="170" /><di:waypoint x="630" y="170" />
+        <di:waypoint x="680" y="170" /><di:waypoint x="720" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_4" bpmnElement="SF_Ask_4">
-        <di:waypoint x="690" y="210" /><di:waypoint x="690" y="350" />
+        <di:waypoint x="780" y="210" /><di:waypoint x="780" y="350" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_5" bpmnElement="SF_Ask_5">
-        <di:waypoint x="750" y="390" /><di:waypoint x="825" y="390" /><di:waypoint x="825" y="195" />
+        <di:waypoint x="840" y="390" /><di:waypoint x="915" y="390" /><di:waypoint x="915" y="195" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_6" bpmnElement="SF_Ask_6">
-        <di:waypoint x="825" y="145" /><di:waypoint x="825" y="140" /><di:waypoint x="910" y="140" />
+        <di:waypoint x="915" y="145" /><di:waypoint x="915" y="140" /><di:waypoint x="1000" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_7" bpmnElement="SF_Ask_7">
-        <di:waypoint x="850" y="170" /><di:waypoint x="880" y="170" /><di:waypoint x="880" y="260" /><di:waypoint x="910" y="260" />
+        <di:waypoint x="940" y="170" /><di:waypoint x="970" y="170" /><di:waypoint x="970" y="260" /><di:waypoint x="1000" y="260" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_8" bpmnElement="SF_Ask_8">
-        <di:waypoint x="1030" y="140" /><di:waypoint x="1100" y="140" />
+        <di:waypoint x="1120" y="140" /><di:waypoint x="1190" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_9" bpmnElement="SF_Ask_9">
-        <di:waypoint x="1030" y="260" /><di:waypoint x="1100" y="260" />
+        <di:waypoint x="1120" y="260" /><di:waypoint x="1190" y="260" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_GW_Discussing" bpmnElement="GW_Discussing" isMarkerVisible="true">
+        <dc:Bounds x="455" y="145" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_HandBack" bpmnElement="A_HandBack">
+        <dc:Bounds x="530" y="230" width="120" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_HandedBack" bpmnElement="End_HandedBack">
+        <dc:Bounds x="692" y="252" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_10" bpmnElement="SF_Ask_10">
+        <di:waypoint x="505" y="170" /><di:waypoint x="560" y="170" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_11" bpmnElement="SF_Ask_11">
+        <di:waypoint x="480" y="195" /><di:waypoint x="480" y="270" /><di:waypoint x="530" y="270" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Ask_12" bpmnElement="SF_Ask_12">
+        <di:waypoint x="650" y="270" /><di:waypoint x="692" y="270" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
