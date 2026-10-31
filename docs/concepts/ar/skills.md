@@ -155,7 +155,7 @@ flowchart TD
 ### حزم مهارات المنصة (`skills/tools/folio-core`، و`folio-assistant-core/skills/content/folio-document-adapter`، و`folio-assistant-sci/skills/content/folio-paper-adapter`)
 
 **حزم المنصة** الأكبر، اثنتان منها تم ترحيلهما من مستودع محتوى qou (راجع
-[سجل الترحيل]({{ '/ar/migrations/2026-06-29-platform-skills-migration.html' | relative_url }})
+[سجل الترحيل](https://github.com/litlfred/folio-assistant/issues/202)
 والمسألة [#27](https://github.com/litlfred/folio-assistant/issues/27)). وتتميز بأنها
 مستقلة عن المحتوى ومصممة لتتم مزامنتها مع أي folio:
 

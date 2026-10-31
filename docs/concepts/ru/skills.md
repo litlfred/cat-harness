@@ -157,7 +157,7 @@ flowchart TD
 ### Платформенные наборы навыков (`skills/tools/folio-core`, `folio-assistant-core/skills/content/folio-document-adapter`, `folio-assistant-sci/skills/content/folio-paper-adapter`)
 
 Более крупные **платформенные наборы**, два из которых были перенесены из репозитория контента qou (см.
-[отчет о миграции]({{ '/ru/migrations/2026-06-29-platform-skills-migration.html' | relative_url }}) и
+[отчет о миграции](https://github.com/litlfred/folio-assistant/issues/202) и
 issue [#27](https://github.com/litlfred/folio-assistant/issues/27)). Они не зависят
 от типа контента и предназначены для синхронизации в любое фолио:
 
