@@ -31,14 +31,45 @@ subgraph, in TypeScript, with no tool installed:
 | node | IRI (under the graph's path) | page | |
 |---|---|---|---|
 | model | `<m>.jsonld` | `<m>/` | views; elements by layer |
-| view | `<m>/views/<id>.jsonld` | `<m>/views/<id>/` | the drawing, `<m>/views/<id>.svg` |
-| element | `<m>/elements/<id>.jsonld` | `<m>/elements/<id>/` | documentation, properties, relationships, views it is in |
+| view | `<m>/views/<id>.jsonld` | `<m>/views/<slug>/` | the drawing, `<m>/views/<id>.svg` |
+| element | `<m>/elements/<id>.jsonld` | `<m>/elements/<slug>/` | documentation, properties, relationships, views it is in |
 | relationship | `<m>/relationships/<id>.jsonld` | `<m>/relationships/<id>/` | its ends, the views it is drawn in |
 
 Ids are **Archi's own** (`id-<32 hex>`). An element therefore keeps its IRI
 across a model's versions wherever Archi kept its id — the property the RA
 mapper's mappings already depend on. Never rewrite one; the reader refuses an
 id that is not filename-safe rather than minting one nobody chose.
+
+## Readable page paths: slugs, pinned
+
+Owner, 2026-10-30, of `…/views/id-007936f8c2424b96ad1893ef0ff66059/`: *"do
+we need to use such ugly IDs … why not nicer slug IRIs?"*
+
+**The IRI stays the id; only the page moves.** A view's or element's page is
+at a readable slug, `<m>/views/1-central-health-workforce-registry/`, while
+its node keeps `<m>/views/<id>.jsonld`. The id path, `<m>/views/<id>/`, is a
+one-file redirect to the page, so an id link is the permanent link and every
+link ever shared still lands. Relationships keep id paths: almost none are
+named (smart-ra 0.2.0: 6 of 284).
+
+**Slugs are pinned in `cat-archimate.slugs.json`**, beside the config, and
+committed. Never let a build pick a path nobody reviewed:
+
+- a renamed object moves to its new slug; the old slug stays as an alias,
+  written as a redirect, so the old path still lands;
+- a slug, once claimed, is never given to another object, even after its
+  object leaves the model, so a path never comes to mean something else;
+- on a clash the first claimant keeps the plain slug and a later one gets
+  `-<first hex of its id>`, so adding an element never moves another's page;
+- an author can choose a slug in Archi with a `slug` property (lower-case
+  words joined by `-`); a malformed or taken one is refused, not rewritten.
+
+`bun run cat archimate:slugs --instance .` writes the ledger after objects
+are added or renamed; commit it, so review sees which paths are new and
+which moved. `archimate:validate` fails when the committed ledger is stale.
+An instance with no ledger keeps id paths: the first run of
+`archimate:slugs` is what turns slugs on. Do not put slugs in the IRIs: the
+mapper keys on the ids, and a rename would move an IRI.
 
 ## No Java, no Archi CLI, no Archi report — ever
 

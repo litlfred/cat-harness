@@ -3,7 +3,7 @@
   "tool": {
     "id": "archimate-check",
     "title": "Check an instance's ArchiMate models against its config",
-    "description": "The gate for the `archimate` graph typology: every model `cat-archimate.config.json` names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no `.archimate` file is held that the config does not name.",
+    "description": "The gate for the `archimate` graph typology: every model `cat-archimate.config.json` names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no `.archimate` file is held that the config does not name. When the instance commits `cat-archimate.slugs.json`, it must be current: what `archimate-slugs` would write.",
     "install": {
       "none": true
     },
