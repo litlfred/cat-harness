@@ -52,6 +52,16 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/cloudflare-git": {
+      "prefLabel": "Cloudflare git (Artifacts)",
+      "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
+    "role/cloudflare-r2-cdn": {
+      "prefLabel": "Cloudflare R2 and CDN",
+      "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
     "role/code-reviewer": {
       "prefLabel": "Code reviewer",
       "firstSeen": "2026-09-21",
@@ -122,6 +132,16 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/iris-cdn-exporter": {
+      "prefLabel": "IRIS CDN Exporter",
+      "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
+    "role/iris-cdn-owner": {
+      "prefLabel": "IRIS CDN owner",
+      "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
     "role/l1-extraction-reviewer": {
       "prefLabel": "L1 extraction reviewer",
       "firstSeen": "2026-10-15",
@@ -190,6 +210,11 @@
     "role/qc-reviewer": {
       "prefLabel": "QC reviewer",
       "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/release-signer": {
+      "prefLabel": "Release signer",
+      "firstSeen": "2026-10-31",
       "retiredOn": null
     },
     "role/review-coordinator": {
@@ -265,6 +290,11 @@
     "role/validation-pipeline": {
       "prefLabel": "Validation pipeline",
       "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/verifier": {
+      "prefLabel": "IRIS CDN verifier",
+      "firstSeen": "2026-10-31",
       "retiredOn": null
     },
     "role/work-plan": {

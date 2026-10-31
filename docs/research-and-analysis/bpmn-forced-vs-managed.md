@@ -58,7 +58,7 @@ manage workflow").
 
 ## 1. Experimental Design and the Two-Hash Split (`folio-test-run/v1`)
 
-Both arms execute against the same normative diagram pair and the same independent 10-case task bank, and each arm emits a [`folio-test-run/v1`](../../schemas/test-run.ts) record:
+Both arms execute against the same normative diagram pair and the same independent 10-case task bank, and each arm emits a `folio-test-run/v1` record:
 
 - **Diagram under test**: [`processes/sdlc/test-plan-execution.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/test-plan-execution.bpmn) (`Process_TestPlanExecution`, 5 swimlanes), which opens its bean through [`bean-open.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/bean-open.bpmn) and closes it through [`bean-close.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/bean-close.bpmn) (bean `m8gz`), evaluates [`processes/sdlc/decisions/test-certification.dmn`](https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/decisions/test-certification.dmn) at `GW_ExitCriteria` (`certified` | `refused` | `undetermined`) and, on the `certified` branch, enters [`processes/sdlc/qa-report-signing.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/qa-report-signing.bpmn) (`Process_QaReportSigning`, 3 swimlanes) via call activity `Call_Sign`, which in turn evaluates [`processes/sdlc/decisions/signing-route.dmn`](https://github.com/litlfred/cat-harness/blob/main/processes/sdlc/decisions/signing-route.dmn) at `Gateway_SigningRoute` (`api` | `human`).
 - **Independent task bank**: [`cat-harness-tools/scripts/eval/bpmn-forced-vs-managed-bank.json`](https://github.com/litlfred/cat-harness-tools/blob/main/scripts/eval/bpmn-forced-vs-managed-bank.json) (`bpmn-forced-vs-managed-v1`, 10 cases: 5 disciplined scenarios covering every DMN branch and 5 temptation scenarios targeting the failure modes documented in the two diagrams). Each case's facts and expected path are usable as-is with a real model; its `agentProposal` is the simulated agent's script.
@@ -69,7 +69,7 @@ Both arms execute against the same normative diagram pair and the same independe
 
 ### Why the data hash is identical and the process hash differs
 
-Per [`schemas/test-run.ts`](../../schemas/test-run.ts) (`buildTestRun`, `hashesReproduce`, `basisOverlap`), a two-arm harness experiment holds the `data` basis fixed across arms and varies only the `process` basis:
+Per `schemas/test-run.ts` (`buildTestRun`, `hashesReproduce`, `basisOverlap`), a two-arm harness experiment holds the `data` basis fixed across arms and varies only the `process` basis:
 
 | Basis | Arm 1 (`forced`) | Arm 2 (`self-managed`) | Relationship |
 |---|---|---|---|

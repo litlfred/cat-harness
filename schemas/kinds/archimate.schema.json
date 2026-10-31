@@ -51,6 +51,45 @@
             ],
             "additionalProperties": false
           }
+        },
+        "figures": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "block": {
+                "type": "string",
+                "pattern": "\\.md$"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "model": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9._-]+$"
+              },
+              "view": {
+                "type": "string",
+                "minLength": 1
+              },
+              "basis": {
+                "type": "string",
+                "enum": [
+                  "same-elements",
+                  "by-eye"
+                ]
+              }
+            },
+            "required": [
+              "block",
+              "label",
+              "model",
+              "view",
+              "basis"
+            ],
+            "additionalProperties": false
+          }
         }
       },
       "required": [

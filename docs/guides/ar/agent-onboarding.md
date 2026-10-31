@@ -193,7 +193,7 @@ lean_build)، ثم يدفع التغييرات. **إنه لا يقوم بالد�
 | مخطط الكتلة (block schema) | `schemas/types.ts` |
 | مخطط ملف QA الجانبي | `schemas/block-qa.ts` |
 | ما يمكن لهذه البيئة فعله | `.claude/skills/capabilities/*.json`، و`--check-deps` |
-| خطة طريق أدوات Lean | [مقترح أدوات Lean](../proposals/llm-authoring-tool-integration.html) |
+| خطة طريق أدوات Lean | [مقترح أدوات Lean](https://github.com/litlfred/folio-assistant/issues/198) |
 
 ## 10. عادات تبعدك عن المشاكل
 

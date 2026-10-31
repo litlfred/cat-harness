@@ -193,7 +193,7 @@ Monitorear un PR hermano: `/watch <pr|branch>`.
 | El esquema de bloques | `schemas/types.ts` |
 | El esquema del sidecar de QA | `schemas/block-qa.ts` |
 | Qué puede hacer este entorno | `.claude/skills/capabilities/*.json`, `--check-deps` |
-| Hoja de ruta de herramientas Lean | [Propuesta de herramientas Lean](../proposals/llm-authoring-tool-integration.html) |
+| Hoja de ruta de herramientas Lean | [Propuesta de herramientas Lean](https://github.com/litlfred/folio-assistant/issues/198) |
 
 ## 10. Hábitos para evitar problemas
 
