@@ -47,6 +47,12 @@ and [`output.schema.json`](../../../schemas/skills/ask-the-person/output.schema.
    to repeat the question. No card tool: say so in the chat.
 4. **Wait for the tap**; keep working on the recommended option where that can
    be undone. Never ask for a typed reply.
-5. **Return the output.** A dismissal is not an answer. A rule-level answer is
+5. **Not the one talking with the person?** If you are a sibling (a project
+   thread, a subagent or a session spawned while someone else holds the
+   discussion), steps 2 and 3 in your own channel are not enough: hand the
+   composed input back with [`hand-back-to-discussion`](hand-back-to-discussion.md),
+   so the discussion agent asks it where the person is, and the answer comes
+   back to you. Your own thread is never the only copy.
+6. **Return the output.** A dismissal is not an answer. A rule-level answer is
    written into the governing skill in the same turn
    ([`symbiotic-interaction`](symbiotic-interaction.md) §2).
