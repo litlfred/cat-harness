@@ -135,6 +135,7 @@ What is handed over includes the ambiguities from A_RecordAmbiguous and the fact
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_SwotAnalysis" bpmnElement="Start_Process_SwotAnalysis">
         <dc:Bounds x="232" y="152" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="221" y="187.5" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_FrameSubject" bpmnElement="A_FrameSubject">
         <dc:Bounds x="320" y="130" width="120" height="80" />
@@ -166,6 +167,7 @@ What is handed over includes the ambiguities from A_RecordAmbiguous and the fact
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_SituationRecorded" bpmnElement="End_SituationRecorded">
         <dc:Bounds x="1127" y="222" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1167" y="222" width="180" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_1" bpmnElement="SF_Process_SwotAnalysis_1">
         <di:waypoint x="268" y="170" /><di:waypoint x="320" y="170" />

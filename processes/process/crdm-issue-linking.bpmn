@@ -63,60 +63,60 @@ BA's permission is the thing this step exists to prevent.</bpmn:documentation>
   <bpmndi:BPMNDiagram id="Diagram_Process_CRDM_Issue">
     <bpmndi:BPMNPlane id="Plane_Process_CRDM_Issue" bpmnElement="Collaboration_Process_CRDM_Issue">
       <bpmndi:BPMNShape id="Shape_Participant_Process_CRDM_Issue" bpmnElement="Participant_Process_CRDM_Issue" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1266" height="210" />
+        <dc:Bounds x="160" y="80" width="1306" height="210" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent_Process_CRDM_Issue" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1236" height="170" />
+        <dc:Bounds x="190" y="80" width="1276" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_CRDM_Issue" bpmnElement="Start_Process_CRDM_Issue">
         <dc:Bounds x="310" y="147" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_RelatedWork" bpmnElement="Call_RelatedWork">
-        <dc:Bounds x="380" y="125" width="100" height="80" />
+        <dc:Bounds x="380" y="125" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ScanIssues" bpmnElement="A_ScanIssues">
-        <dc:Bounds x="510" y="125" width="140" height="80" />
+        <dc:Bounds x="550" y="125" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Issue" bpmnElement="GW_Issue" isMarkerVisible="true">
-        <dc:Bounds x="710" y="140" width="50" height="50" />
+        <dc:Bounds x="750" y="140" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_AskCreate" bpmnElement="A_AskCreate">
-        <dc:Bounds x="910" y="125" width="140" height="80" />
+        <dc:Bounds x="950" y="125" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_LinkIssue" bpmnElement="A_LinkIssue">
-        <dc:Bounds x="1110" y="125" width="140" height="80" />
+        <dc:Bounds x="1150" y="125" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_CRDM_Issue" bpmnElement="End_Process_CRDM_Issue">
-        <dc:Bounds x="1310" y="147" width="36" height="36" />
+        <dc:Bounds x="1350" y="147" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Issue_1" bpmnElement="SF_Process_CRDM_Issue_1">
         <di:waypoint x="346" y="165" />
-        <di:waypoint x="380" y="165" />
+        <di:waypoint x="400" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Issue_7" bpmnElement="SF_Process_CRDM_Issue_7">
-        <di:waypoint x="480" y="165" />
-        <di:waypoint x="510" y="165" />
+        <di:waypoint x="520" y="165" />
+        <di:waypoint x="550" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Issue_2" bpmnElement="SF_Process_CRDM_Issue_2">
-        <di:waypoint x="650" y="165" />
-        <di:waypoint x="710" y="165" />
+        <di:waypoint x="690" y="165" />
+        <di:waypoint x="750" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Issue_3" bpmnElement="SF_Process_CRDM_Issue_3">
-        <di:waypoint x="760" y="165" />
-        <di:waypoint x="910" y="165" />
+        <di:waypoint x="800" y="165" />
+        <di:waypoint x="950" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Issue_4" bpmnElement="SF_Process_CRDM_Issue_4">
-        <di:waypoint x="760" y="165" />
-        <di:waypoint x="1110" y="165" />
-        <bpmndi:BPMNLabel><dc:Bounds x="802.5" y="168" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="800" y="165" />
+        <di:waypoint x="1150" y="165" />
+        <bpmndi:BPMNLabel><dc:Bounds x="842.5" y="168" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Issue_5" bpmnElement="SF_Process_CRDM_Issue_5">
-        <di:waypoint x="1050" y="165" />
-        <di:waypoint x="1310" y="165" />
+        <di:waypoint x="1090" y="165" />
+        <di:waypoint x="1350" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Issue_6" bpmnElement="SF_Process_CRDM_Issue_6">
-        <di:waypoint x="1250" y="165" />
-        <di:waypoint x="1310" y="165" />
+        <di:waypoint x="1290" y="165" />
+        <di:waypoint x="1350" y="165" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

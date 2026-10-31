@@ -157,42 +157,43 @@ Do not resolve the disagreement away: both entries stay, the adjudication on top
   <bpmndi:BPMNDiagram id="BPMNDiagram_CriterionAdjudication">
     <bpmndi:BPMNPlane id="BPMNPlane_CriterionAdjudication" bpmnElement="Collab_CriterionAdjudication">
       <bpmndi:BPMNShape id="Shape_Participant_CriterionAdjudication" bpmnElement="Participant_CriterionAdjudication" isHorizontal="true">
-        <dc:Bounds x="160" y="60" width="1180" height="420"/>
+        <dc:Bounds x="160" y="60" width="1180" height="420" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_CriterionAdjudicator" bpmnElement="Lane_CriterionAdjudicator" isHorizontal="true">
-        <dc:Bounds x="190" y="60" width="1150" height="420"/>
+        <dc:Bounds x="190" y="60" width="1150" height="420" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_CriterionDisagreement" bpmnElement="Start_CriterionDisagreement">
-        <dc:Bounds x="230" y="132" width="36" height="36"/>
+        <dc:Bounds x="230" y="132" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="221.59" y="167.5" width="90" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Adjudicate" bpmnElement="Call_Adjudicate">
-        <dc:Bounds x="320" y="110" width="170" height="80"/>
+        <dc:Bounds x="315" y="110" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Outcome" bpmnElement="GW_Outcome" isMarkerVisible="true">
-        <dc:Bounds x="550" y="125" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="530" y="86" width="90" height="35" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="550" y="125" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="530" y="86" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ScopeCriterion" bpmnElement="A_ScopeCriterion">
-        <dc:Bounds x="650" y="230" width="150" height="80"/>
+        <dc:Bounds x="650" y="230" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Dispensation" bpmnElement="A_Dispensation">
-        <dc:Bounds x="650" y="350" width="150" height="80"/>
+        <dc:Bounds x="650" y="350" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_RecordEntry" bpmnElement="A_RecordEntry">
-        <dc:Bounds x="880" y="110" width="160" height="80"/>
+        <dc:Bounds x="880" y="110" width="160" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Settled" bpmnElement="End_Settled">
-        <dc:Bounds x="1110" y="132" width="36" height="36"/>
+        <dc:Bounds x="1110" y="132" width="36" height="36" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNEdge id="Edge_F_C1" bpmnElement="F_C1">
-        <di:waypoint x="266" y="150"/>
-        <di:waypoint x="320" y="150"/>
+        <di:waypoint x="266" y="150" />
+        <di:waypoint x="315" y="150" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_C2" bpmnElement="F_C2">
-        <di:waypoint x="490" y="150"/>
-        <di:waypoint x="550" y="150"/>
+        <di:waypoint x="495" y="150" />
+        <di:waypoint x="550" y="150" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Stands" bpmnElement="F_Stands">
         <di:waypoint x="600" y="150"/>

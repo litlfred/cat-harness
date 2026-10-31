@@ -151,6 +151,7 @@ Three outcomes, each leaving a record: the prose holds (attested, with a reason)
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_PairChanged" bpmnElement="Start_PairChanged">
         <dc:Bounds x="232" y="222" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="221.5" y="257.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ReadPairFindings" bpmnElement="A_ReadPairFindings">
         <dc:Bounds x="310" y="200" width="150" height="80"/>
@@ -168,6 +169,7 @@ Three outcomes, each leaving a record: the prose holds (attested, with a reason)
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Verdict" bpmnElement="GW_Verdict" isMarkerVisible="true">
         <dc:Bounds x="810" y="215" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="838.01" y="264.5" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Attest" bpmnElement="A_Attest">
         <dc:Bounds x="930" y="80" width="170" height="80"/>

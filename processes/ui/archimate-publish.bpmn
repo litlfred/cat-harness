@@ -92,6 +92,7 @@ every picture derived"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_ArchimatePublish" bpmnElement="Start_Process_ArchimatePublish">
         <dc:Bounds x="240" y="132" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="280" y="92" width="135" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_FixModel" bpmnElement="A_FixModel">
         <dc:Bounds x="695" y="110" width="140" height="80" />

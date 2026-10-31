@@ -267,16 +267,16 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
   <bpmndi:BPMNDiagram id="Diagram_Process_MergeToMain">
     <bpmndi:BPMNPlane id="Plane_Process_MergeToMain" bpmnElement="Collaboration_Process_MergeToMain">
       <bpmndi:BPMNShape id="Shape_Participant_Process_MergeToMain" bpmnElement="Participant_Process_MergeToMain" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="2880" height="1060" />
+        <dc:Bounds x="160" y="80" width="2900" height="1060" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Pipeline_Process_MergeToMain" bpmnElement="Lane_Pipeline" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="2850" height="170" />
+        <dc:Bounds x="190" y="80" width="2870" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Merger_Process_MergeToMain" bpmnElement="Lane_Merger" isHorizontal="true">
-        <dc:Bounds x="190" y="250" width="2850" height="610" />
+        <dc:Bounds x="190" y="250" width="2870" height="610" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Owner_Process_MergeToMain" bpmnElement="Lane_Owner" isHorizontal="true">
-        <dc:Bounds x="190" y="860" width="2850" height="280" />
+        <dc:Bounds x="190" y="860" width="2870" height="280" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Merge" bpmnElement="Start_Merge">
         <dc:Bounds x="312" y="302" width="36" height="36" />
@@ -289,6 +289,7 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Evidence" bpmnElement="GW_Evidence" isMarkerVisible="true">
         <dc:Bounds x="815" y="295" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="750" y="255" width="180" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_LocalGates" bpmnElement="Task_LocalGates">
         <dc:Bounds x="940" y="390" width="140" height="80" />
@@ -310,44 +311,44 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Authorised" bpmnElement="GW_Authorised" isMarkerVisible="true">
         <dc:Bounds x="1325" y="295" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1305" y="274" width="90" height="17" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1305" y="274" width="90" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Ask" bpmnElement="Task_Ask">
-        <dc:Bounds x="1450" y="390" width="140" height="80" />
+        <dc:Bounds x="1430" y="384" width="180" height="92" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_OwnerDecides" bpmnElement="Task_OwnerDecides">
-        <dc:Bounds x="1620" y="890" width="140" height="80" />
+        <dc:Bounds x="1640" y="890" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Owner" bpmnElement="GW_Owner" isMarkerVisible="true">
-        <dc:Bounds x="1835" y="905" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1889" y="866" width="90" height="35" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="1855" y="905" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1909" y="866" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Held" bpmnElement="End_Held">
-        <dc:Bounds x="2012" y="912" width="36" height="36" />
+        <dc:Bounds x="2032" y="912" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Refused" bpmnElement="End_Refused">
-        <dc:Bounds x="2012" y="1022" width="36" height="36" />
+        <dc:Bounds x="2032" y="1022" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_RecordAuthorisation" bpmnElement="Task_RecordAuthorisation">
-        <dc:Bounds x="1790" y="280" width="140" height="80" />
+        <dc:Bounds x="1810" y="280" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Merge" bpmnElement="Task_Merge">
-        <dc:Bounds x="1960" y="280" width="140" height="80" />
+        <dc:Bounds x="1980" y="280" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_ConfirmBase" bpmnElement="Task_ConfirmBase">
-        <dc:Bounds x="2130" y="280" width="140" height="80" />
+        <dc:Bounds x="2150" y="280" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Republish" bpmnElement="Task_Republish">
-        <dc:Bounds x="2300" y="280" width="140" height="80" />
+        <dc:Bounds x="2320" y="280" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Repin" bpmnElement="Task_Repin">
-        <dc:Bounds x="2470" y="280" width="140" height="80" />
+        <dc:Bounds x="2490" y="280" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Report" bpmnElement="Task_Report">
-        <dc:Bounds x="2640" y="280" width="140" height="80" />
+        <dc:Bounds x="2660" y="280" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Merged" bpmnElement="End_Merged">
-        <dc:Bounds x="2862" y="302" width="36" height="36" />
+        <dc:Bounds x="2882" y="302" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_m1" bpmnElement="m1">
         <di:waypoint x="348" y="320" />
@@ -408,61 +409,61 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m12" bpmnElement="m12">
         <di:waypoint x="1375" y="320" />
-        <di:waypoint x="1790" y="320" />
+        <di:waypoint x="1810" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m13" bpmnElement="m13">
         <di:waypoint x="1350" y="345" />
         <di:waypoint x="1350" y="430" />
-        <di:waypoint x="1450" y="430" />
+        <di:waypoint x="1430" y="430" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m14" bpmnElement="m14">
-        <di:waypoint x="1590" y="430" />
-        <di:waypoint x="1605" y="430" />
-        <di:waypoint x="1605" y="930" />
-        <di:waypoint x="1620" y="930" />
+        <di:waypoint x="1610" y="430" />
+        <di:waypoint x="1625" y="430" />
+        <di:waypoint x="1625" y="930" />
+        <di:waypoint x="1640" y="930" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m15" bpmnElement="m15">
-        <di:waypoint x="1760" y="930" />
-        <di:waypoint x="1835" y="930" />
+        <di:waypoint x="1780" y="930" />
+        <di:waypoint x="1855" y="930" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m16" bpmnElement="m16">
-        <di:waypoint x="1860" y="905" />
-        <di:waypoint x="1860" y="360" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1864" y="623.5" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1880" y="905" />
+        <di:waypoint x="1880" y="360" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1884" y="623.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m17" bpmnElement="m17">
-        <di:waypoint x="1885" y="930" />
-        <di:waypoint x="2012" y="930" />
+        <di:waypoint x="1905" y="930" />
+        <di:waypoint x="2032" y="930" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m18" bpmnElement="m18">
-        <di:waypoint x="1860" y="955" />
-        <di:waypoint x="1860" y="1040" />
-        <di:waypoint x="2012" y="1040" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1864" y="989" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1880" y="955" />
+        <di:waypoint x="1880" y="1040" />
+        <di:waypoint x="2032" y="1040" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1884" y="989" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m19" bpmnElement="m19">
-        <di:waypoint x="1930" y="320" />
-        <di:waypoint x="1960" y="320" />
+        <di:waypoint x="1950" y="320" />
+        <di:waypoint x="1980" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m20" bpmnElement="m20">
-        <di:waypoint x="2100" y="320" />
-        <di:waypoint x="2130" y="320" />
+        <di:waypoint x="2120" y="320" />
+        <di:waypoint x="2150" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m21" bpmnElement="m21">
-        <di:waypoint x="2270" y="320" />
-        <di:waypoint x="2300" y="320" />
+        <di:waypoint x="2290" y="320" />
+        <di:waypoint x="2320" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m21b" bpmnElement="m21b">
-        <di:waypoint x="2440" y="320" />
-        <di:waypoint x="2470" y="320" />
+        <di:waypoint x="2460" y="320" />
+        <di:waypoint x="2490" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m22" bpmnElement="m22">
-        <di:waypoint x="2610" y="320" />
-        <di:waypoint x="2640" y="320" />
+        <di:waypoint x="2630" y="320" />
+        <di:waypoint x="2660" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m23" bpmnElement="m23">
-        <di:waypoint x="2780" y="320" />
-        <di:waypoint x="2862" y="320" />
+        <di:waypoint x="2800" y="320" />
+        <di:waypoint x="2882" y="320" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

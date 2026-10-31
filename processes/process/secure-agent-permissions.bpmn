@@ -167,6 +167,7 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Gap" bpmnElement="GW_Gap" isMarkerVisible="true">
         <dc:Bounds x="835" y="125" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="767" y="190.5" width="90" height="90" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Current" bpmnElement="End_Current">
         <dc:Bounds x="1012" y="242" width="36" height="36" />
@@ -214,6 +215,7 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       <bpmndi:BPMNEdge id="Edge_p5" bpmnElement="p5">
         <di:waypoint x="885" y="150" />
         <di:waypoint x="960" y="150" />
+        <bpmndi:BPMNLabel><dc:Bounds x="845.51" y="108.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p6" bpmnElement="p6">
         <di:waypoint x="1120" y="150" />

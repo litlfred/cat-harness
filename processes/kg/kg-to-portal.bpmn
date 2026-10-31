@@ -258,7 +258,7 @@
       <bpmndi:BPMNShape id="A_Select_di" bpmnElement="A_Select"><dc:Bounds x="490" y="90" width="150" height="80" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="A_Serialize_di" bpmnElement="A_Serialize"><dc:Bounds x="680" y="90" width="150" height="80" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="A_Package_di" bpmnElement="A_Package"><dc:Bounds x="870" y="90" width="150" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="GW_Budget_di" bpmnElement="GW_Budget" isMarkerVisible="true"><dc:Bounds x="1065" y="105" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="1050" y="65" width="80" height="27" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GW_Budget_di" bpmnElement="GW_Budget" isMarkerVisible="true"><dc:Bounds x="1065" y="105" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="1030" y="65" width="120" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_OverBudget_di" bpmnElement="End_OverBudget"><dc:Bounds x="960" y="172" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="796" y="172" width="160" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Sign_di" bpmnElement="S_Sign"><dc:Bounds x="1160" y="286.5" width="150" height="80" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="E_HumanEyes_di" bpmnElement="E_HumanEyes"><dc:Bounds x="1160" y="453" width="150" height="80" /></bpmndi:BPMNShape>
@@ -314,6 +314,7 @@
       <bpmndi:BPMNEdge id="F11_di" bpmnElement="F11">
         <di:waypoint x="1390" y="648" />
         <di:waypoint x="1390" y="705" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1394" y="667.5" width="180" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F12_di" bpmnElement="F12">
         <di:waypoint x="1415" y="623" />

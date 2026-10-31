@@ -323,7 +323,7 @@ in a recorded state">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Wanted_di" bpmnElement="StartEvent_Wanted">
         <dc:Bounds x="210" y="142" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="176" y="183" width="104" height="40" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="190.01" y="199" width="156" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Pin_di" bpmnElement="Task_Pin">
         <dc:Bounds x="570" y="110" width="190" height="100" />
@@ -340,7 +340,7 @@ in a recorded state">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Refused_di" bpmnElement="EndEvent_Refused">
         <dc:Bounds x="1400" y="542" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1360" y="583" width="116" height="40" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="1344.5" y="598.5" width="116" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Kind_di" bpmnElement="Gateway_Kind" isMarkerVisible="true">
         <dc:Bounds x="1530" y="335" width="50" height="50" />
@@ -371,7 +371,7 @@ in a recorded state">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_NextPart_di" bpmnElement="Gateway_NextPart" isMarkerVisible="true">
         <dc:Bounds x="2880" y="335" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2780" y="392" width="150" height="40" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="2651" y="389" width="225" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Call_Materialize_di" bpmnElement="Call_Materialize">
         <dc:Bounds x="3020" y="310" width="190" height="100" />

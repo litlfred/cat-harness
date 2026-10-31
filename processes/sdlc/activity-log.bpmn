@@ -233,6 +233,7 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Task" bpmnElement="Start_Task">
         <dc:Bounds x="220" y="180" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="225.5" y="239.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_LogStart" bpmnElement="A_LogStart">
         <dc:Bounds x="300" y="158" width="110" height="80"/>
@@ -360,6 +361,7 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Sweep" bpmnElement="Start_Sweep">
         <dc:Bounds x="220" y="717" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="260" y="757" width="180" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_F_S1" bpmnElement="F_S1">
         <di:waypoint x="256" y="735" />

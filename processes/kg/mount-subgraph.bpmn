@@ -152,12 +152,14 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_SubgraphWanted" bpmnElement="Start_SubgraphWanted">
         <dc:Bounds x="200" y="212" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="188.59" y="247.5" width="90" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_ResolveSource" bpmnElement="Task_ResolveSource">
         <dc:Bounds x="280" y="190" width="160" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_SourceKind" bpmnElement="GW_SourceKind" isMarkerVisible="true">
         <dc:Bounds x="480" y="205" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="412.01" y="270.5" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_UseCheckoutPath" bpmnElement="Task_UseCheckoutPath">
         <dc:Bounds x="580" y="90" width="170" height="70"/>
