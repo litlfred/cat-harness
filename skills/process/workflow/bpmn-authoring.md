@@ -42,8 +42,8 @@ Owner, 2026-10-31: *"make the font a bit bigger, the spacing a bit more
 compact so dont need to zoom as much"*, *"add as QA and author check"*.
 Every diagram you write or touch must, when you are done:
 
-- **fit 1400 × 900** in diagram units, so its 14px text reads at 12px or
-  more in a 1200px band without zooming;
+- **fit 1400 × 900** in diagram units, so its 16px text reads at about
+  14px in a 1200px band without zooming; tasks 120 × 90;
 - have **no label on another label, on a flow or on a box**: a gateway's
   question above the diamond, its answers beside their flows;
 - have **no crossing flows**, and the **lane order that keeps flows between
