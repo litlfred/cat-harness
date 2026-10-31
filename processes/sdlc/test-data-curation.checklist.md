@@ -99,7 +99,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-data-sets`.
-- What: Parse the file with `discriminateTestDataSet` (`schemas/sdlc/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1`
+- What: Parse the file with `discriminateTestDataSet` (`schemas/sdlc/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-pla
 - Record it: `workflow_complete` with `node: "Task_VerifySelfIdentifying"`.
 - next: → `Call_BeanClose` (Close the bean)
 
