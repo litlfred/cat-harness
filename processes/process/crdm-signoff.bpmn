@@ -203,6 +203,7 @@ The default creates NOTHING. An agent that decides on its own that a requirement
         <di:waypoint x="1345" y="270" />
         <di:waypoint x="1610" y="270" />
         <di:waypoint x="1610" y="295" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1251" y="252.25" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Shape_A_AnnounceBranch" bpmnElement="A_AnnounceBranch">
         <dc:Bounds x="1610" y="295" width="140" height="80" />
@@ -232,6 +233,7 @@ The default creates NOTHING. An agent that decides on its own that a requirement
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_SignoffStopped" bpmnElement="End_SignoffStopped">
         <dc:Bounds x="960" y="417" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1000" y="390.5" width="90" height="89" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Signoff_Gate" bpmnElement="SF_Signoff_Gate">
         <di:waypoint x="850" y="435" />
@@ -241,6 +243,7 @@ The default creates NOTHING. An agent that decides on its own that a requirement
         <di:waypoint x="895" y="410" />
         <di:waypoint x="895" y="335" />
         <di:waypoint x="910" y="335" />
+        <bpmndi:BPMNLabel><dc:Bounds x="801" y="363.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Signoff_Stop" bpmnElement="SF_Signoff_Stop">
         <di:waypoint x="920" y="435" />
@@ -251,6 +254,7 @@ The default creates NOTHING. An agent that decides on its own that a requirement
         <di:waypoint x="895" y="488" />
         <di:waypoint x="740" y="488" />
         <di:waypoint x="740" y="475" />
+        <bpmndi:BPMNLabel><dc:Bounds x="646" y="478" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Signoff_4" bpmnElement="SF_Process_CRDM_Signoff_4">
         <di:waypoint x="1050" y="335" />

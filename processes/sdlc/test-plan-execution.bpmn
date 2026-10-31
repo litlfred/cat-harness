@@ -356,6 +356,7 @@ The run, the report and the certification are three records, and they point back
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Undetermined" bpmnElement="End_Undetermined">
         <dc:Bounds x="2040" y="692" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2080" y="683" width="90" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Sign" bpmnElement="Call_Sign">
         <dc:Bounds x="1930" y="790" width="150" height="80" />
@@ -404,12 +405,14 @@ The run, the report and the certification are three records, and they point back
         <di:waypoint x="1575" y="555" />
         <di:waypoint x="1575" y="620" />
         <di:waypoint x="1680" y="620" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1582.5" y="623" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Undetermined" bpmnElement="F_Undetermined">
         <di:waypoint x="1550" y="530" />
         <di:waypoint x="1525" y="530" />
         <di:waypoint x="1525" y="710" />
         <di:waypoint x="1680" y="710" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1454" y="492" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F08" bpmnElement="F08">
         <di:waypoint x="1830" y="530" />

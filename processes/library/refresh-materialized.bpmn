@@ -228,7 +228,7 @@ records against what">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Due_di" bpmnElement="StartEvent_Due">
         <dc:Bounds x="200" y="127" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="160" y="168" width="116" height="30" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="240" y="127.5" width="116" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Purpose_di" bpmnElement="Gateway_Purpose" isMarkerVisible="true">
         <dc:Bounds x="450" y="310" width="50" height="50" />
@@ -245,7 +245,7 @@ records against what">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Both_di" bpmnElement="Gateway_Both" isMarkerVisible="true">
         <dc:Bounds x="1200" y="310" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1160" y="365" width="130" height="30" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="1254" y="326" width="130" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Adjudicate_di" bpmnElement="Task_Adjudicate">
         <dc:Bounds x="1450" y="220" width="190" height="100" />
@@ -255,7 +255,7 @@ records against what">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="GW_Outcome_di" bpmnElement="GW_Outcome" isMarkerVisible="true">
         <dc:Bounds x="1700" y="245" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1670" y="200" width="112" height="40" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="1754" y="299" width="112" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Reconcile_di" bpmnElement="Task_Reconcile">
         <dc:Bounds x="1810" y="100" width="190" height="80" />
@@ -268,28 +268,38 @@ records against what">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Diverged_di" bpmnElement="EndEvent_Diverged">
         <dc:Bounds x="2060" y="497" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2010" y="538" width="140" height="30" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="2100" y="479" width="140" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_Remote_di" bpmnElement="Flow_Remote">
         <di:waypoint x="1725" y="295" /><di:waypoint x="1725" y="525" /><di:waypoint x="1640" y="525" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1729" y="392.5" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Local_di" bpmnElement="Flow_Local">
         <di:waypoint x="1750" y="270" /><di:waypoint x="1905" y="270" /><di:waypoint x="1905" y="450" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1909" y="342.5" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Merge_di" bpmnElement="Flow_Merge">
         <di:waypoint x="1725" y="245" /><di:waypoint x="1725" y="140" /><di:waypoint x="1810" y="140" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1631" y="175" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Defer_di" bpmnElement="Flow_Defer">
         <di:waypoint x="1750" y="270" /><di:waypoint x="2040" y="270" /><di:waypoint x="2040" y="585" /><di:waypoint x="2000" y="585" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1922.5" y="273" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Reconciled_di" bpmnElement="Flow_Reconciled">
         <di:waypoint x="1905" y="180" /><di:waypoint x="1905" y="210" /><di:waypoint x="1545" y="210" /><di:waypoint x="1545" y="475" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Kept_di" bpmnElement="Flow_Kept">
-        <di:waypoint x="2000" y="490" /><di:waypoint x="2060" y="505" />
+        <di:waypoint x="2000" y="490" />
+        <di:waypoint x="2030" y="490" />
+        <di:waypoint x="2030" y="515" />
+        <di:waypoint x="2060" y="515" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Deferred_di" bpmnElement="Flow_Deferred">
-        <di:waypoint x="2000" y="570" /><di:waypoint x="2060" y="527" />
+        <di:waypoint x="2000" y="585" />
+        <di:waypoint x="2030" y="585" />
+        <di:waypoint x="2030" y="515" />
+        <di:waypoint x="2060" y="515" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="EndEvent_Fresh_di" bpmnElement="EndEvent_Fresh">
         <dc:Bounds x="1700" y="507" width="36" height="36" />
@@ -302,8 +312,10 @@ records against what">
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
         <di:waypoint x="500" y="335" />
+        <di:waypoint x="600" y="335" />
+        <di:waypoint x="600" y="460" />
         <di:waypoint x="700" y="460" />
-        <bpmndi:BPMNLabel><dc:Bounds x="565" y="305" width="90" height="26" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="505" y="338" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
         <di:waypoint x="500" y="335" />
@@ -328,7 +340,7 @@ records against what">
         <di:waypoint x="1225" y="360" />
         <di:waypoint x="1225" y="525" />
         <di:waypoint x="1450" y="525" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1233" y="430" width="90" height="26" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="1229" y="392.75" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
         <di:waypoint x="1545" y="320" />

@@ -144,6 +144,7 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_NoVoice" bpmnElement="End_NoVoice">
         <dc:Bounds x="287" y="120" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="327" y="111.5" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_LoadActive" bpmnElement="Task_LoadActive">
         <dc:Bounds x="380" y="190" width="150" height="80"/>
@@ -156,6 +157,7 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_QuoteSupports" bpmnElement="GW_QuoteSupports" isMarkerVisible="true">
         <dc:Bounds x="960" y="205" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1014" y="194.5" width="90" height="71" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RuleIsWrong" bpmnElement="Task_RuleIsWrong">
         <dc:Bounds x="1050" y="100" width="170" height="70"/>
@@ -165,6 +167,7 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_MoreVoices" bpmnElement="GW_MoreVoices" isMarkerVisible="true">
         <dc:Bounds x="1270" y="205" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1176" y="203.5" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RecordOnSidecar" bpmnElement="Task_RecordOnSidecar">
         <dc:Bounds x="1370" y="190" width="170" height="80"/>

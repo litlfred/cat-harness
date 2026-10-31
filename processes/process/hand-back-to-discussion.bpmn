@@ -147,6 +147,7 @@ THE PERSON'S STEP is inside `Process_AskThePerson`, called by the discussion age
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_NeedsAnswer" bpmnElement="GW_NeedsAnswer" isMarkerVisible="true">
         <dc:Bounds x="835" y="355" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="741" y="362.5" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_D_Ask" bpmnElement="D_Ask">
         <dc:Bounds x="930" y="340" width="120" height="80" />

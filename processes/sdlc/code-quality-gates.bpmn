@@ -205,6 +205,7 @@ Mechanical throughout. Nothing here waits on a person, which is what makes `buil
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Fork" bpmnElement="GW_Fork">
         <dc:Bounds x="400" y="325" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="454" y="379" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_QaWorkingCopy" bpmnElement="Task_QaWorkingCopy">
         <dc:Bounds x="480" y="610" width="160" height="80"/>
@@ -235,6 +236,7 @@ Mechanical throughout. Nothing here waits on a person, which is what makes `buil
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Hard" bpmnElement="GW_Hard" isMarkerVisible="true">
         <dc:Bounds x="1315" y="325" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1295" y="285" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Pass" bpmnElement="End_Pass">
         <dc:Bounds x="1572" y="332" width="36" height="36"/>

@@ -125,9 +125,13 @@ this process (`check:bean-calls`).</bpmn:documentation>
 
       <bpmndi:BPMNShape id="Open_Start_di" bpmnElement="Open_Start"><dc:Bounds x="220" y="190" width="36" height="36"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Open_CheckExists_di" bpmnElement="Open_CheckExists"><dc:Bounds x="300" y="168" width="150" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Open_Exists_di" bpmnElement="Open_Exists" isMarkerVisible="true"><dc:Bounds x="490" y="183" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Open_Exists_di" bpmnElement="Open_Exists" isMarkerVisible="true"><dc:Bounds x="490" y="183" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="544" y="190.5" width="90" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Open_Create_di" bpmnElement="Open_Create"><dc:Bounds x="580" y="108" width="150" height="70"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Open_Owner_di" bpmnElement="Open_Owner" isMarkerVisible="true"><dc:Bounds x="620" y="253" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Open_Owner_di" bpmnElement="Open_Owner" isMarkerVisible="true"><dc:Bounds x="620" y="253" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="674" y="307" width="90" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Open_Claim_di" bpmnElement="Open_Claim"><dc:Bounds x="780" y="168" width="150" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Open_Claimed_di" bpmnElement="Open_Claimed"><dc:Bounds x="980" y="190" width="36" height="36"/></bpmndi:BPMNShape>
 
@@ -138,9 +142,13 @@ this process (`check:bean-calls`).</bpmn:documentation>
       <bpmndi:BPMNEdge id="BO_2_di" bpmnElement="BO_2"><di:waypoint x="450" y="208"/><di:waypoint x="490" y="208"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BO_3_di" bpmnElement="BO_3"><di:waypoint x="515" y="183"/><di:waypoint x="515" y="143"/><di:waypoint x="580" y="143"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BO_4_di" bpmnElement="BO_4"><di:waypoint x="515" y="233"/><di:waypoint x="515" y="278"/><di:waypoint x="620" y="278"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BO_5_di" bpmnElement="BO_5"><di:waypoint x="645" y="303"/><di:waypoint x="645" y="420"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BO_5_di" bpmnElement="BO_5"><di:waypoint x="645" y="303"/><di:waypoint x="645" y="420"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="649" y="344" width="90" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BO_6_di" bpmnElement="BO_6"><di:waypoint x="780" y="455"/><di:waypoint x="840" y="455"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BO_7_di" bpmnElement="BO_7"><di:waypoint x="670" y="278"/><di:waypoint x="855" y="278"/><di:waypoint x="855" y="248"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BO_7_di" bpmnElement="BO_7"><di:waypoint x="670" y="278"/><di:waypoint x="855" y="278"/><di:waypoint x="855" y="248"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="671.25" y="240" width="90" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BO_8_di" bpmnElement="BO_8"><di:waypoint x="730" y="143"/><di:waypoint x="855" y="143"/><di:waypoint x="855" y="168"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BO_9_di" bpmnElement="BO_9"><di:waypoint x="930" y="208"/><di:waypoint x="980" y="208"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

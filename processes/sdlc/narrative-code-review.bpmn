@@ -157,9 +157,11 @@ Three outcomes, each leaving a record: the prose holds (attested, with a reason)
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Open" bpmnElement="GW_Open" isMarkerVisible="true">
         <dc:Bounds x="510" y="215" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="490" y="175" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_NothingOpen" bpmnElement="End_NothingOpen">
         <dc:Bounds x="517" y="340" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="557" y="322.5" width="93.41" height="71" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ReRead" bpmnElement="A_ReRead">
         <dc:Bounds x="610" y="200" width="150" height="80"/>
@@ -178,6 +180,7 @@ Three outcomes, each leaving a record: the prose holds (attested, with a reason)
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Settled" bpmnElement="End_Settled">
         <dc:Bounds x="1200" y="222" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1240" y="213.5" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_F_1" bpmnElement="F_1">
         <di:waypoint x="268" y="240"/><di:waypoint x="310" y="240"/>
@@ -196,12 +199,14 @@ Three outcomes, each leaving a record: the prose holds (attested, with a reason)
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Holds" bpmnElement="F_Holds">
         <di:waypoint x="835" y="215"/><di:waypoint x="835" y="120"/><di:waypoint x="930" y="120"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="839" y="150" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Mismatch" bpmnElement="F_Mismatch">
         <di:waypoint x="860" y="240"/><di:waypoint x="930" y="240"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Disagree" bpmnElement="F_Disagree">
         <di:waypoint x="835" y="265"/><di:waypoint x="835" y="360"/><di:waypoint x="930" y="360"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="741" y="300.75" width="90" height="71" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_4" bpmnElement="F_4">
         <di:waypoint x="1100" y="120"/><di:waypoint x="1218" y="120"/><di:waypoint x="1218" y="222"/>

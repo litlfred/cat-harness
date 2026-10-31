@@ -262,6 +262,7 @@ Either way the decision is written down before the process ends, and the bean is
         <di:waypoint x="2015" y="105" />
         <di:waypoint x="1060" y="105" />
         <di:waypoint x="1060" y="125" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2019" y="437.25" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_UA_9" bpmnElement="SF_UA_9">
         <di:waypoint x="2040" y="585" />
@@ -292,10 +293,14 @@ Either way the decision is written down before the process ends, and the bean is
       <bpmndi:BPMNEdge id="Edge_SF_UA_14" bpmnElement="SF_UA_14"><di:waypoint x="2730" y="265"/><di:waypoint x="2820" y="265"/><di:waypoint x="2820" y="165"/><di:waypoint x="2840" y="165"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen"><dc:Bounds x="510" y="125" width="120" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1"><di:waypoint x="710" y="165"/><di:waypoint x="790" y="165"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="660" y="140" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="660" y="140" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="640" y="101" width="90" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours"><dc:Bounds x="667" y="220" width="36" height="36"/></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2"><di:waypoint x="630" y="165"/><di:waypoint x="660" y="165"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SF_Bean_3_di" bpmnElement="SF_Bean_3"><di:waypoint x="685" y="190"/><di:waypoint x="685" y="220"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SF_Bean_3_di" bpmnElement="SF_Bean_3"><di:waypoint x="685" y="190"/><di:waypoint x="685" y="220"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="689" y="196" width="90" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Call_BeanClose_di" bpmnElement="Call_BeanClose"><dc:Bounds x="2840" y="125" width="120" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4"><di:waypoint x="2960" y="165"/><di:waypoint x="3000" y="165"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

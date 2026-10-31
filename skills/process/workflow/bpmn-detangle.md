@@ -51,6 +51,7 @@ in `cat-harness-tools/src/workflow/diagram-fit.ts`:
 | `header-overflow` | a pool or lane name spills out of its 30-wide strip | `--write` makes the lane taller; or shorten the name (never repeat the process id in the pool name) |
 | `text-overflow` | a name spills out of its box | `--write` widens, then heightens the box; or shorten the name |
 | `edge-crossing` | two flows cross | re-route one around the other, move a step, or swap lanes |
+| `edge-through-shape` | a flow is drawn through a box it neither leaves nor enters | route it around the box (`--write` never adds one) |
 | `lane-order` | another lane order crosses fewer lane boundaries | `--write` applies it |
 
 Labels are checked where bpmn-js **draws** them, so the check uses the
@@ -73,9 +74,13 @@ about one screen. Change the budget and the text size together.
 1. **Run the check before you edit**, and note the counts.
 2. **Fix the lane order first.** `--write` tries every order of the lanes (up
    to 8) and keeps the one whose flows cross the fewest lane boundaries,
-   only if it adds no flow crossing. It moves shapes with their lane and
-   re-draws each flow between lanes as one elbow, since its old bends were
-   for the old order. Look at the result: it is a start, not a layout.
+   only if it adds no flow crossing and draws no flow through a box. It
+   moves shapes with their lane, and each flow between lanes keeps its
+   bends, each moving with the lane it lies in; only a flow that would then
+   run through a box is re-drawn, by the first right-angled route that runs
+   through none. If the layout fixes together would add a flow through a
+   box, a crossing or a slant, the file keeps its layout and only its labels
+   move. Look at the result: it is a start, not a layout.
 3. **Make it compact.** Tasks 120 × 90 (three lines of 16px text), gateways 50,
    events 36, and big enough for the name at 16px (`text-overflow`). About 40–70
    between neighbours in a row; wider only where a flow label needs it.

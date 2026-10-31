@@ -156,6 +156,7 @@ What is handed over includes the ambiguities from A_RecordAmbiguous and the fact
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_DecisionFollows" bpmnElement="GW_DecisionFollows" isMarkerVisible="true">
         <dc:Bounds x="1120" y="145" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1100" y="88" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_HandOff" bpmnElement="A_HandOff">
         <dc:Bounds x="1220" y="130" width="120" height="80" />

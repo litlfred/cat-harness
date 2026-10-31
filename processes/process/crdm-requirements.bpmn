@@ -193,7 +193,9 @@ They do not need to know it is called CRDM.</bpmn:documentation>
         <di:waypoint x="960" y="335" />
         <di:waypoint x="1110" y="335" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_5" bpmnElement="SF_Process_CRDM_5"><di:waypoint x="960" y="335"/><di:waypoint x="1310" y="335"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_5" bpmnElement="SF_Process_CRDM_5"><di:waypoint x="960" y="335"/><di:waypoint x="1310" y="335"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1002.5" y="338" width="90" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_6" bpmnElement="SF_Process_CRDM_6">
         <di:waypoint x="1730" y="335" />
         <di:waypoint x="1790" y="335" />
