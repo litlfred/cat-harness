@@ -183,11 +183,24 @@ await page.route(`${ORIGIN}/**`, (route) => {
   let p = u.pathname.startsWith(BASE) ? u.pathname.slice(BASE.length) : u.pathname;
   p = p.replace(/^\/+/, "");
   if (p === "" || p.endsWith("/")) p += "index.html";
-  const b = blob(p) ?? blob(`${p}/index.html`);
+  const b = blob(p) ?? blob(`${p}/index.html`) ?? shared(p);
   if (!b) { missing++; return route.fulfill({ status: 404, body: "not in the publish ref" }); }
   return route.fulfill({ contentType: typeFor(p), body: b });
 });
 ```
+
+**A preview that shares with the live site falls back to it.** Since
+2026-10-31 (owner: *"if asset not changed in staging then link to main
+asset"*; `cat-harness-tools/scripts/staging-share.ts`) a preview stores only
+the files that differ from the live site, and its `staging-sw.js` serves the
+rest from the live root in the browser. So when `STAGING/<slug>/staging-sw.js`
+is in the ref, a file absent from the preview is the live site's file at the
+same path, and `shared(p)` must read it from the root (`blob` with `ROOT` set
+to `""`). Without that, every shared file reads as missing. Where there is no
+`staging-sw.js`, `shared` returns `undefined` and an absent file is a finding,
+as before. The worker also puts the banner and `fa-staging` back on a live
+page it serves, which the route handler does not, so judge banner presence on
+the preview's own pages.
 
 `ROOT` is `""` for the canonical deploy and `STAGING/<slug>` for a preview, so
 the same handler gives you the **before/after pair this skill is about** — and
@@ -681,8 +694,11 @@ only the `name` and `size` fields while you are at it.
 A person handed a URL with no timing either refreshes a 404 or walks away.
 Give them the number and the follow-up, in the same breath as the link:
 
-- **The `stage` job takes ~2 minutes, plus its wait at the rate limit.**
-  Measured 2026-09-20 over three consecutive runs: 1m44s, 1m58s, 2m17s. Since
+- **The `stage` job takes about 22 minutes, plus its wait at the rate limit.**
+  Measured 2026-10-31 (run 41191827071): 8 min derived artefacts, 6 min
+  knowledge-graph export, the rest mounting, Jekyll and checks. (It was ~2
+  minutes in 2026-09, before the site grew.) Drafts are staged too, from the
+  first push (owner, 2026-10-31). Since
   #1956 the job then waits until `gh-pages` has gone 5 minutes without a
   staging push and 10 without a main-site one
   ([`feature-staging`](feature-staging.md) §7), and its PR comment says
