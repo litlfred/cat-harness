@@ -26,9 +26,9 @@
         {
           "name": "view",
           "schema": {
-            "$type": "Text"
+            "$type": "Slug"
           },
-          "description": "One view, by id or exact name. Absent: every view in the model.",
+          "description": "One view, by its Archi id (`id-<hex>`) or its page slug (e.g. `1-central-health-workforce-registry`). A slug, not free text, so no shell payload can ride on it. Absent: every view in the model.",
           "required": false,
           "arg": {
             "flag": "--view"
