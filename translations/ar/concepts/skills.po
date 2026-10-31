@@ -28,18 +28,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Folio-Official: no\n"
 
-#: docs/concepts/skills.md:140
-msgid ", , , , and  now live (generalized) in the  bundle below — fetch them with ."
-msgstr "توجد مهارات ، و، و، و، و الآن (بصورة عامة) في حزمة  أدناه — ويمكن جلبها باستخدام ."
-
-#: docs/concepts/skills.md:73
-msgid "✅ all 22 — see reference"
-msgstr "✅ جميع الـ 22 — راجع المرجع"
-
-#: docs/concepts/skills.md:72
-msgid "✅ all 22 authoring skills — validated in CI by"
-msgstr "✅ جميع مهارات التأليف الـ 22 — تم التحقق منها في التكامل المستمر (CI) عبر"
-
 #: docs/concepts/skills.md:75
 msgid "✅ all four packages"
 msgstr "✅ جميع الحزم الأربع"
@@ -47,10 +35,6 @@ msgstr "✅ جميع الحزم الأربع"
 #: docs/concepts/skills.md:74
 msgid "✅ lifecycle, agent, platform-bundle and folio-document-adapter skills; ⏳ authoring-math / authoring-who-smart-guidelines bodies are TBD (those packages ship the manifest + JSON definitions)"
 msgstr "✅ مهارات دورة الحياة، والوكيل، وحزمة المنصة، وfolio-document-adapter؛ ⏳ نصوص authoring-math / authoring-who-smart-guidelines قيد التحديد (TBD) (توفر تلك الحزم البيان الرسمي + تعريفات JSON)"
-
-#: docs/concepts/skills.md:144
-msgid "A paper folio wants the  skills too: a paper is a document plus Lean-bearing blocks, so  and  apply to both. The two bundles are halves of one content model, not alternatives to choose between."
-msgstr "يحتاج folio الورقة البحثية إلى مهارات  أيضًا: فالورقة البحثية هي مستند بالإضافة إلى كتل تحتوي على كود Lean، ولذلك ينطبق  و  على كليهما. وتُعد الحزمتان نصفين لنموذج محتوى واحد، وليستا بديلين للاختيار بينهما."
 
 #: docs/concepts/skills.md:68
 msgid "A skill is defined across a few layers — not a single file. For any skill:"
@@ -68,17 +52,9 @@ msgstr "المراجعة النقدية والجدلية للحجج"
 msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
 msgstr "تنسيق الوكلاء، وإطار عمل المراقب (watcher)، ومسار ضمان الجودة / التصيير / المراجع / المسرد، والتوثيق، والنشر — ينطبق على أي نوع محتوى."
 
-#: docs/concepts/skills.md:131
-msgid "Agent/platform skills ()"
-msgstr "مهارات الوكيل/المنصة ()"
-
 #: docs/concepts/skills.md:218
 msgid "Approve — it reports findings only"
 msgstr "الاعتماد (Approve) — يقدم تقارير بالنتائج فقط"
-
-#: docs/concepts/skills.md:261
-msgid "Architecture — RBAC, adapters, and the MCP server"
-msgstr "البنية الهندسية — التحكم في الوصول القائم على الأدوار (RBAC)، والمحولات، وخادم MCP"
 
 #: docs/concepts/skills.md:90
 msgid "author"
@@ -116,14 +92,6 @@ msgstr "ما لا يمكنه فعله"
 msgid "Capabilities & requirements"
 msgstr "القدرات والمتطلبات"
 
-#: docs/concepts/skills.md:241
-msgid "Capabilities are concrete environment abilities a skill may require; the  MCP tool probes them:"
-msgstr "القدرات هي إمكانيات بيئية ملموسة قد تتطلبها المهارة؛ وتستكشفها أداة MCP المسماة :"
-
-#: docs/concepts/skills.md:50
-msgid "Capability — a concrete environment ability (e.g. , ). Skills require capabilities;  probes them."
-msgstr "القدرة (Capability) — إمكانية بيئية ملموسة (مثل ، و). تتطلب المهارات قدرات معينة؛ وتستكشفها أداة ."
-
 #: docs/concepts/skills.md:104
 msgid "Carry a recommendation, requirement or rule"
 msgstr "تضمين توصية أو متطلب أو قاعدة"
@@ -152,10 +120,6 @@ msgstr "جمع الملاحظات وتصنيفها وتوجيهها"
 msgid "Commit — its output goes to the editor through the validation gate"
 msgstr "التثبيت (Commit) — تنتقل مخرجاته إلى المحرر عبر بوابة التحقق"
 
-#: docs/concepts/skills.md:260
-msgid "Content types — which skills each content type uses"
-msgstr "أنواع المحتوى — المهارات التي يستخدمها كل نوع محتوى"
-
 #: docs/concepts/skills.md:102
 msgid "Create and revise blocks in a prose folio"
 msgstr "إنشاء الكتل ومراجعتها في folio نثري"
@@ -167,10 +131,6 @@ msgstr "إنشاء مخرجات مهيكلة"
 #: docs/concepts/skills.md:200
 msgid "Create/modify content (inherits reviewer)."
 msgstr "إنشاء/تعديل المحتوى (يرث صلاحيات reviewer)."
-
-#: docs/concepts/skills.md:83
-msgid "Cross-cutting:"
-msgstr "شاملة لعدة مجالات:"
 
 #: docs/concepts/skills.md:235
 msgid "default"
@@ -187,10 +147,6 @@ msgstr "إيقاف الاستخدام / الأرشفة"
 #: docs/concepts/skills.md:125
 msgid "DMN decision tables"
 msgstr "جداول قرارات DMN"
-
-#: docs/concepts/skills.md:98
-msgid "Documents & policy guidance:"
-msgstr "المستندات وإرشادات السياسات:"
 
 #: docs/concepts/skills.md:217
 msgid "Drafts and revises a proposed change to a content block"
@@ -236,10 +192,6 @@ msgstr "الصياغة الرياضية الرسمية للعبارات/البر
 msgid "Full administrative access — roles, settings, all content."
 msgstr "وصول إداري كامل — الأدوار، والإعدادات، وجميع المحتويات."
 
-#: docs/concepts/skills.md:262
-msgid "Getting started — running your first skill"
-msgstr "البدء — تشغيل أول مهارة لك"
-
 #: docs/concepts/skills.md:233
 #: docs/concepts/skills.md:234
 msgid "git-config"
@@ -248,14 +200,6 @@ msgstr "git-config"
 #: docs/concepts/skills.md:22
 msgid "How it works together with the LLM"
 msgstr "كيف تعمل معًا مع النموذج اللغوي الكبير (LLM)"
-
-#: docs/concepts/skills.md:74
-msgid "Instruction body (prose how-to the LLM loads) — browse them in the Skill instructions reference"
-msgstr "متن التعليمات (الدليل النثري الإرشادي الذي يحمّله النموذج اللغوي) — تصفحها في مرجع تعليمات المهارات"
-
-#: docs/concepts/skills.md:170
-msgid "Irreducible QOU physics skills were skipped; QOU-specific examples in the rest were generalized. Each bundle ships a ."
-msgstr "تم تجاوز مهارات فيزياء QOU غير القابلة للاختزال؛ وتم تعميم الأمثلة الخاصة بـ QOU في البقية. وتشحن كل حزمة ملف ."
 
 #: docs/concepts/skills.md:122
 msgid "L2 DAK artifacts (data dictionary, etc.)"
@@ -273,10 +217,6 @@ msgstr "مخرجات FHIR للمستوى L3 (FSH، وSUSHI، وCQL، وناشر 
 msgid "L3 FHIR resources via FSH"
 msgstr "موارد FHIR للمستوى L3 عبر FSH"
 
-#: docs/concepts/skills.md:159
-msgid "Larger platform bundles, two of them migrated from the qou content repo (see migration record and issue #27). These are content-agnostic and meant to be synced into any folio:"
-msgstr "حزم المنصة الأكبر، اثنتان منها تم ترحيلهما من مستودع محتوى qou (راجع سجل الترحيل والمسألة #27). وتتميز بأنها مستقلة عن المحتوى ومصممة لتتم مزامنتها مع أي folio:"
-
 #: docs/concepts/skills.md:70
 msgid "Layer"
 msgstr "الطبقة"
@@ -285,10 +225,6 @@ msgstr "الطبقة"
 msgid "Lean 4 proof checking & diagnostics via MCP"
 msgstr "فحص براهين Lean 4 والتشخيص عبر MCP"
 
-#: docs/concepts/skills.md:149
-msgid "Local coordination skills ()"
-msgstr "مهارات التنسيق المحلي ()"
-
 #: docs/concepts/skills.md:211
 msgid "Localization for UN-supported languages."
 msgstr "التوطين والترجمة للغات المعتمدة في الأمم المتحدة."
@@ -296,10 +232,6 @@ msgstr "التوطين والترجمة للغات المعتمدة في الأ�
 #: docs/concepts/skills.md:70
 msgid "Location"
 msgstr "الموقع"
-
-#: docs/concepts/skills.md:228
-msgid "maps a user identity (from git config / auth) to a role by priority. The shipped defaults:"
-msgstr "يقوم ملف  بتعيين هوية المستخدم (من إعدادات git أو المصادقة) إلى دور بحسب الأولوية. الإعدادات الافتراضية المضمنة:"
 
 #: docs/concepts/skills.md:105
 msgid "Markdown → HTML / PDF, no TeX"
@@ -317,10 +249,6 @@ msgstr "تحقق غير آلي: الدقة، والأسلوب، والعرض و�
 msgid "Package (Docker/runtime deps)"
 msgstr "الحزمة (تبعات Docker/بيئة التشغيل)"
 
-#: docs/concepts/skills.md:107
-msgid "Papers & books:"
-msgstr "الأوراق والكتب العلمية:"
-
 #: docs/concepts/skills.md:231
 msgid "Pattern"
 msgstr "النمط"
@@ -332,11 +260,6 @@ msgstr "الأشخاص"
 #: docs/concepts/skills.md:89
 msgid "plan"
 msgstr "plan (تخطيط)"
-
-# agent-translated: the published page has no counterpart for this source text
-#: docs/concepts/skills.md:157
-msgid "Platform skill bundles (, the content core's , the science layer's )"
-msgstr "حزم مهارات المنصة (، و الخاصة بنواة المحتوى، و الخاصة بطبقة العلوم)"
 
 #: docs/concepts/skills.md:231
 msgid "Priority"
@@ -357,10 +280,6 @@ msgstr "الـ folios النثرية: تأليف الكتل، وهيكل الف�
 #: docs/concepts/skills.md:215
 msgid "Provides"
 msgstr "ما يوفره"
-
-#: docs/concepts/skills.md:257
-msgid "Publication workflow — BPMN swimlanes: which skill runs at which step, and who decides"
-msgstr "مسار عمل النشر — مسارات BPMN: أي مهارة تعمل في أي خطوة، ومن يقرر"
 
 #: docs/concepts/skills.md:209
 msgid "Publication-readiness QA across layers."
@@ -391,10 +310,6 @@ msgstr "الإصدارات، وتكوين دليل التطبيق (IG config)، 
 msgid "Render & deploy"
 msgstr "التصيير والنشر"
 
-#: docs/concepts/skills.md:53
-msgid "Requirement — a gate that must hold (e.g. , ) before/while a stage proceeds."
-msgstr "المتطلب (Requirement) — بوابة يجب استيفاؤها (مثل ، و) قبل المضي في مرحلة ما أو في أثنائها."
-
 #: docs/concepts/skills.md:248
 msgid "Requirements are gates that must hold during work:"
 msgstr "المتطلبات هي بوابات يجب استيفاؤها أثناء العمل:"
@@ -412,10 +327,6 @@ msgstr "review (مراجعة)"
 msgid "Role"
 msgstr "الدور"
 
-#: docs/concepts/skills.md:44
-msgid "Role (actor) — who the agent is acting as. An actor takes on a role because of the BPMN lane it acts in. What the actor may do is a W3C ODRL policy in , not a property of the role. Before every task the executor checks authentication, role assignment, policy and content access (); the HTTP routes ask the same policies through ."
-msgstr "الدور (الفاعل / Role (actor)) — من يتصرف الوكيل بصفته. يتخذ الفاعل (actor) دورًا بناءً على مسار BPMN الذي يعمل فيه. أما ما يجوز للفاعل القيام به فهو سياسة W3C ODRL في ، وليس خاصية تابعة للدور ذاته. وقبل كل مهمة، يتحقق المنفذ من المصادقة، وتعيين الدور، والسياسة، والوصول إلى المحتوى ()؛ وتستعلم مسارات HTTP عن السياسات نفسها من خلال ."
-
 #: docs/concepts/skills.md:226
 msgid "Role assignment"
 msgstr "تعيين الأدوار"
@@ -423,10 +334,6 @@ msgstr "تعيين الأدوار"
 #: docs/concepts/skills.md:179
 msgid "Roles (actors)"
 msgstr "الأدوار (الفاعلون)"
-
-#: docs/concepts/skills.md:181
-msgid "Roles answer who the agent is acting as. The current user is mapped to a role by , and the role's capabilities bound what the agent may do (RBAC). Roles inherit (e.g.  inherits )."
-msgstr "تجيب الأدوار عن من يتصرف الوكيل بصفته. ويُعيَّن المستخدم الحالي إلى دور بواسطة ، وتحد قدرات الدور مما يمكن للوكيل القيام به (RBAC). كما أن الأدوار تتورث (على سبيل المثال، يرث  صلاحيات )."
 
 #: docs/concepts/skills.md:164
 msgid "Scope"
@@ -457,26 +364,6 @@ msgstr "انظر أيضًا"
 msgid "Skill"
 msgstr "المهارة"
 
-#: docs/concepts/skills.md:38
-msgid "Skill — a documented, schema-bounded unit of work (e.g. ). The agent discovers skills with the  MCP tool and loads a skill's instructions with . Each skill has a typed input/output contract."
-msgstr "المهارة (Skill) — وحدة عمل موثقة ومحددة بالمخطط (مثل ). يكتشف الوكيل المهارات عبر أداة MCP المسماة  ويحمّل تعليمات المهارة عبر . ولكل مهارة عقد مدخلات/مخرجات محدد الأنواع."
-
-#: docs/concepts/skills.md:258
-msgid "Skill instructions — the prose how-to bodies the LLM loads"
-msgstr "تعليمات المهارات — النصوص النثرية الإرشادية التي يحمّلها النموذج اللغوي (LLM)"
-
-#: docs/concepts/skills.md:42
-msgid "Skill package — a group of related skills that also declares its Docker/runtime dependencies ()."
-msgstr "حزمة المهارات (Skill package) — مجموعة من المهارات المترابطة التي تصرّح أيضًا عن تبعات Docker/بيئة التشغيل الخاصة بها ()."
-
-#: docs/concepts/skills.md:259
-msgid "Skill schema reference — typed input/output for each skill"
-msgstr "مرجع مخططات المهارات — المدخلات/المخرجات محددة الأنواع لكل مهارة"
-
-#: docs/concepts/skills.md:173
-msgid "Skill schemas (typed input/output for the authoring skills) are generated into the Skill schema reference — never drift from what the framework validates."
-msgstr "يتم توليد مخططات المهارات (المدخلات/المخرجات محددة الأنواع لمهارات التأليف) في مرجع مخططات المهارات — ولا تحيد أبدًا عما يتحقق منه إطار العمل."
-
 #: docs/concepts/skills.md:64
 #: docs/concepts/skills.md:164
 msgid "Skills"
@@ -485,14 +372,6 @@ msgstr "المهارات"
 #: docs/concepts/skills.md:10
 msgid "Skills & roles"
 msgstr "المهارات والأدوار"
-
-#: docs/concepts/skills.md:133
-msgid "Skills the LLM uses to work effectively in the repo (loaded via , package ):"
-msgstr "المهارات التي يستخدمها النموذج اللغوي للعمل بفعالية في المستودع (تُحمَّل عبر ، ضمن حزمة ):"
-
-#: docs/concepts/skills.md:77
-msgid "So yes, the skills exist — as structured definitions + typed schemas, with prose bodies shipped for the lifecycle and agent skills. The  MCP tool currently serves the  bodies; the authoring-skill prose bodies are the next thing to fill in (the definitions and contracts they'd attach to are already in place)."
-msgstr "إذن، نعم، المهارات موجودة بالفعل — كتعريفات مهيكلة + مخططات محددة الأنواع، مع توفير النصوص النثرية لمهارات دورة الحياة والوكيل. وتخدم أداة MCP المسماة  حاليًا النصوص الموجودة في ؛ بينما تمثل النصوص النثرية لمهارات التأليف الخطوة التالية التي سيتم استكمالها (مع وجود التعريفات والعقود التي ترتبط بها بالفعل)."
 
 #: docs/concepts/skills.md:231
 msgid "Source"
@@ -510,10 +389,6 @@ msgstr "الحالة"
 msgid "System actors"
 msgstr "الفاعلون في النظام"
 
-#: docs/concepts/skills.md:153
-msgid "Take a branch to clean/green/mergeable (see also )"
-msgstr "إيصال الفرع إلى حالة نظيفة/سليمة (green)/قابلة للدمج (راجع أيضًا )"
-
 #: docs/concepts/skills.md:206
 msgid "Terminology governance (ICD-11, SNOMED CT, LOINC)."
 msgstr "حوكمة المصطلحات (ICD-11، وSNOMED CT، وLOINC)."
@@ -525,18 +400,6 @@ msgstr "test (اختبار)"
 #: docs/concepts/skills.md:85
 msgid "The lifecycle stages that apply to every content type:"
 msgstr "مراحل دورة الحياة التي تنطبق على كل نوع من أنواع المحتوى:"
-
-#: docs/concepts/skills.md:56
-msgid "The loop, in practice: the agent primes the work-plan (), checks it has the capabilities it needs (), lists and loads the right skill ( → ), does the work as the user's role (subject to RBAC), and validates/builds/publishes through the content adapter's tools."
-msgstr "الحلقة في التطبيق العملي: يقوم الوكيل بتهيئة خطة العمل ()، ويتحقق من امتلاكه للقدرات التي يحتاجها ()، ويسرد المهارة المناسبة ويحمّلها ( ← )، وينجز العمل بصفته دور المستخدم (وفقًا لنظام RBAC)، ثم يتحقق من الصحة/يبني/ينشر عبر أدوات محول المحتوى."
-
-#: docs/concepts/skills.md:13
-msgid "This page is the master list of every skill and role in folio-assistant, and explains how they fit together with the LLM. For the typed input/output contract of each skill, see the Skill schema reference."
-msgstr "هذه الصفحة هي القائمة الرئيسية لكل مهارة ودور في folio-assistant، وتوضح كيفية تناسقها وعملها مع النموذج اللغوي الكبير (LLM). للاطلاع على عقد المدخلات/المخرجات محدد الأنواع لكل مهارة، راجع مرجع مخططات المهارات."
-
-#: docs/concepts/skills.md:185
-msgid "To see these roles as lanes — who edits, who reviews, who signs off, and which steps an agent may take on its own — read Publication workflow → Who is who."
-msgstr "لمعرفة هذه الأدوار كمسارات — من يحرر، ومن يراجع، ومن يعتمد، والخطوات التي يمكن للوكيل اتخاذها بمفرده — اقرأ مسار عمل النشر ← من هو من."
 
 #: docs/concepts/skills.md:73
 msgid "Typed contract (input/output JSON Schema)"
@@ -550,10 +413,6 @@ msgstr "validate (تحقق)"
 msgid "Validate against FHIR profiles"
 msgstr "التحقق مقابل ملفات تعريف FHIR"
 
-#: docs/concepts/skills.md:113
-msgid "Verify proofs, audit /axioms"
-msgstr "التحقق من البراهين، وتدقيق /المسلّمات"
-
 #: docs/concepts/skills.md:199
 msgid "View + review comments; no direct changes."
 msgstr "العرض + التعليقات والملاحظات؛ دون إجراء تغييرات مباشرة."
@@ -562,14 +421,117 @@ msgstr "العرض + التعليقات والملاحظات؛ دون إجراء
 msgid "What they can do"
 msgstr "ما يمكنهم فعله"
 
-#: docs/concepts/skills.md:222
-msgid "Where each of these sits in the process — and what an agent may and may not decide — is modelled in the publication workflow BPMN diagrams."
-msgstr "يتم نمذجة موقع كل طرف من هؤلاء في العملية — وما يجوز للوكيل وما لا يجوز له اتخاذ قرار بشأنه — في مخططات BPMN الخاصة بـ مسار عمل النشر."
-
 #: docs/concepts/skills.md:66
 msgid "Where skills live (and their status)"
 msgstr "أين توجد المهارات (وحالتها)"
 
-#: docs/concepts/skills.md:118
-msgid "WHO SMART Guidelines:"
-msgstr "إرشادات WHO SMART:"
+#~ msgid ", , , , and  now live (generalized) in the  bundle below — fetch them with ."
+#~ msgstr "توجد مهارات ، و، و، و، و الآن (بصورة عامة) في حزمة  أدناه — ويمكن جلبها باستخدام ."
+
+#~ msgid "✅ all 22 — see reference"
+#~ msgstr "✅ جميع الـ 22 — راجع المرجع"
+
+#~ msgid "✅ all 22 authoring skills — validated in CI by"
+#~ msgstr "✅ جميع مهارات التأليف الـ 22 — تم التحقق منها في التكامل المستمر (CI) عبر"
+
+#~ msgid "A paper folio wants the  skills too: a paper is a document plus Lean-bearing blocks, so  and  apply to both. The two bundles are halves of one content model, not alternatives to choose between."
+#~ msgstr "يحتاج folio الورقة البحثية إلى مهارات  أيضًا: فالورقة البحثية هي مستند بالإضافة إلى كتل تحتوي على كود Lean، ولذلك ينطبق  و  على كليهما. وتُعد الحزمتان نصفين لنموذج محتوى واحد، وليستا بديلين للاختيار بينهما."
+
+#~ msgid "Agent/platform skills ()"
+#~ msgstr "مهارات الوكيل/المنصة ()"
+
+#~ msgid "Architecture — RBAC, adapters, and the MCP server"
+#~ msgstr "البنية الهندسية — التحكم في الوصول القائم على الأدوار (RBAC)، والمحولات، وخادم MCP"
+
+#~ msgid "Capabilities are concrete environment abilities a skill may require; the  MCP tool probes them:"
+#~ msgstr "القدرات هي إمكانيات بيئية ملموسة قد تتطلبها المهارة؛ وتستكشفها أداة MCP المسماة :"
+
+#~ msgid "Capability — a concrete environment ability (e.g. , ). Skills require capabilities;  probes them."
+#~ msgstr "القدرة (Capability) — إمكانية بيئية ملموسة (مثل ، و). تتطلب المهارات قدرات معينة؛ وتستكشفها أداة ."
+
+#~ msgid "Content types — which skills each content type uses"
+#~ msgstr "أنواع المحتوى — المهارات التي يستخدمها كل نوع محتوى"
+
+#~ msgid "Cross-cutting:"
+#~ msgstr "شاملة لعدة مجالات:"
+
+#~ msgid "Documents & policy guidance:"
+#~ msgstr "المستندات وإرشادات السياسات:"
+
+#~ msgid "Getting started — running your first skill"
+#~ msgstr "البدء — تشغيل أول مهارة لك"
+
+#~ msgid "Instruction body (prose how-to the LLM loads) — browse them in the Skill instructions reference"
+#~ msgstr "متن التعليمات (الدليل النثري الإرشادي الذي يحمّله النموذج اللغوي) — تصفحها في مرجع تعليمات المهارات"
+
+#~ msgid "Irreducible QOU physics skills were skipped; QOU-specific examples in the rest were generalized. Each bundle ships a ."
+#~ msgstr "تم تجاوز مهارات فيزياء QOU غير القابلة للاختزال؛ وتم تعميم الأمثلة الخاصة بـ QOU في البقية. وتشحن كل حزمة ملف ."
+
+#~ msgid "Larger platform bundles, two of them migrated from the qou content repo (see migration record and issue #27). These are content-agnostic and meant to be synced into any folio:"
+#~ msgstr "حزم المنصة الأكبر، اثنتان منها تم ترحيلهما من مستودع محتوى qou (راجع سجل الترحيل والمسألة #27). وتتميز بأنها مستقلة عن المحتوى ومصممة لتتم مزامنتها مع أي folio:"
+
+#~ msgid "Local coordination skills ()"
+#~ msgstr "مهارات التنسيق المحلي ()"
+
+#~ msgid "maps a user identity (from git config / auth) to a role by priority. The shipped defaults:"
+#~ msgstr "يقوم ملف  بتعيين هوية المستخدم (من إعدادات git أو المصادقة) إلى دور بحسب الأولوية. الإعدادات الافتراضية المضمنة:"
+
+#~ msgid "Papers & books:"
+#~ msgstr "الأوراق والكتب العلمية:"
+
+#~ msgid "Platform skill bundles (, the content core's , the science layer's )"
+#~ msgstr "حزم مهارات المنصة (، و الخاصة بنواة المحتوى، و الخاصة بطبقة العلوم)"
+
+#~ msgid "Publication workflow — BPMN swimlanes: which skill runs at which step, and who decides"
+#~ msgstr "مسار عمل النشر — مسارات BPMN: أي مهارة تعمل في أي خطوة، ومن يقرر"
+
+#~ msgid "Requirement — a gate that must hold (e.g. , ) before/while a stage proceeds."
+#~ msgstr "المتطلب (Requirement) — بوابة يجب استيفاؤها (مثل ، و) قبل المضي في مرحلة ما أو في أثنائها."
+
+#~ msgid "Role (actor) — who the agent is acting as. An actor takes on a role because of the BPMN lane it acts in. What the actor may do is a W3C ODRL policy in , not a property of the role. Before every task the executor checks authentication, role assignment, policy and content access (); the HTTP routes ask the same policies through ."
+#~ msgstr "الدور (الفاعل / Role (actor)) — من يتصرف الوكيل بصفته. يتخذ الفاعل (actor) دورًا بناءً على مسار BPMN الذي يعمل فيه. أما ما يجوز للفاعل القيام به فهو سياسة W3C ODRL في ، وليس خاصية تابعة للدور ذاته. وقبل كل مهمة، يتحقق المنفذ من المصادقة، وتعيين الدور، والسياسة، والوصول إلى المحتوى ()؛ وتستعلم مسارات HTTP عن السياسات نفسها من خلال ."
+
+#~ msgid "Roles answer who the agent is acting as. The current user is mapped to a role by , and the role's capabilities bound what the agent may do (RBAC). Roles inherit (e.g.  inherits )."
+#~ msgstr "تجيب الأدوار عن من يتصرف الوكيل بصفته. ويُعيَّن المستخدم الحالي إلى دور بواسطة ، وتحد قدرات الدور مما يمكن للوكيل القيام به (RBAC). كما أن الأدوار تتورث (على سبيل المثال، يرث  صلاحيات )."
+
+#~ msgid "Skill — a documented, schema-bounded unit of work (e.g. ). The agent discovers skills with the  MCP tool and loads a skill's instructions with . Each skill has a typed input/output contract."
+#~ msgstr "المهارة (Skill) — وحدة عمل موثقة ومحددة بالمخطط (مثل ). يكتشف الوكيل المهارات عبر أداة MCP المسماة  ويحمّل تعليمات المهارة عبر . ولكل مهارة عقد مدخلات/مخرجات محدد الأنواع."
+
+#~ msgid "Skill instructions — the prose how-to bodies the LLM loads"
+#~ msgstr "تعليمات المهارات — النصوص النثرية الإرشادية التي يحمّلها النموذج اللغوي (LLM)"
+
+#~ msgid "Skill package — a group of related skills that also declares its Docker/runtime dependencies ()."
+#~ msgstr "حزمة المهارات (Skill package) — مجموعة من المهارات المترابطة التي تصرّح أيضًا عن تبعات Docker/بيئة التشغيل الخاصة بها ()."
+
+#~ msgid "Skill schema reference — typed input/output for each skill"
+#~ msgstr "مرجع مخططات المهارات — المدخلات/المخرجات محددة الأنواع لكل مهارة"
+
+#~ msgid "Skill schemas (typed input/output for the authoring skills) are generated into the Skill schema reference — never drift from what the framework validates."
+#~ msgstr "يتم توليد مخططات المهارات (المدخلات/المخرجات محددة الأنواع لمهارات التأليف) في مرجع مخططات المهارات — ولا تحيد أبدًا عما يتحقق منه إطار العمل."
+
+#~ msgid "Skills the LLM uses to work effectively in the repo (loaded via , package ):"
+#~ msgstr "المهارات التي يستخدمها النموذج اللغوي للعمل بفعالية في المستودع (تُحمَّل عبر ، ضمن حزمة ):"
+
+#~ msgid "So yes, the skills exist — as structured definitions + typed schemas, with prose bodies shipped for the lifecycle and agent skills. The  MCP tool currently serves the  bodies; the authoring-skill prose bodies are the next thing to fill in (the definitions and contracts they'd attach to are already in place)."
+#~ msgstr "إذن، نعم، المهارات موجودة بالفعل — كتعريفات مهيكلة + مخططات محددة الأنواع، مع توفير النصوص النثرية لمهارات دورة الحياة والوكيل. وتخدم أداة MCP المسماة  حاليًا النصوص الموجودة في ؛ بينما تمثل النصوص النثرية لمهارات التأليف الخطوة التالية التي سيتم استكمالها (مع وجود التعريفات والعقود التي ترتبط بها بالفعل)."
+
+#~ msgid "Take a branch to clean/green/mergeable (see also )"
+#~ msgstr "إيصال الفرع إلى حالة نظيفة/سليمة (green)/قابلة للدمج (راجع أيضًا )"
+
+#~ msgid "The loop, in practice: the agent primes the work-plan (), checks it has the capabilities it needs (), lists and loads the right skill ( → ), does the work as the user's role (subject to RBAC), and validates/builds/publishes through the content adapter's tools."
+#~ msgstr "الحلقة في التطبيق العملي: يقوم الوكيل بتهيئة خطة العمل ()، ويتحقق من امتلاكه للقدرات التي يحتاجها ()، ويسرد المهارة المناسبة ويحمّلها ( ← )، وينجز العمل بصفته دور المستخدم (وفقًا لنظام RBAC)، ثم يتحقق من الصحة/يبني/ينشر عبر أدوات محول المحتوى."
+
+#~ msgid "This page is the master list of every skill and role in folio-assistant, and explains how they fit together with the LLM. For the typed input/output contract of each skill, see the Skill schema reference."
+#~ msgstr "هذه الصفحة هي القائمة الرئيسية لكل مهارة ودور في folio-assistant، وتوضح كيفية تناسقها وعملها مع النموذج اللغوي الكبير (LLM). للاطلاع على عقد المدخلات/المخرجات محدد الأنواع لكل مهارة، راجع مرجع مخططات المهارات."
+
+#~ msgid "To see these roles as lanes — who edits, who reviews, who signs off, and which steps an agent may take on its own — read Publication workflow → Who is who."
+#~ msgstr "لمعرفة هذه الأدوار كمسارات — من يحرر، ومن يراجع، ومن يعتمد، والخطوات التي يمكن للوكيل اتخاذها بمفرده — اقرأ مسار عمل النشر ← من هو من."
+
+#~ msgid "Verify proofs, audit /axioms"
+#~ msgstr "التحقق من البراهين، وتدقيق /المسلّمات"
+
+#~ msgid "Where each of these sits in the process — and what an agent may and may not decide — is modelled in the publication workflow BPMN diagrams."
+#~ msgstr "يتم نمذجة موقع كل طرف من هؤلاء في العملية — وما يجوز للوكيل وما لا يجوز له اتخاذ قرار بشأنه — في مخططات BPMN الخاصة بـ مسار عمل النشر."
+
+#~ msgid "WHO SMART Guidelines:"
+#~ msgstr "إرشادات WHO SMART:"
