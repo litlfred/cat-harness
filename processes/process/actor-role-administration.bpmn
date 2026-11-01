@@ -198,13 +198,13 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
   <bpmndi:BPMNDiagram id="Diagram_ActorRoleAdministration">
     <bpmndi:BPMNPlane id="Plane_ActorRoleAdministration" bpmnElement="Collaboration_ActorRoleAdministration">
       <bpmndi:BPMNShape id="Shape_Participant_ActorRoleAdministration" bpmnElement="Participant_ActorRoleAdministration" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1460" height="564" />
+        <dc:Bounds x="160" y="80" width="1460" height="530" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Administrator" bpmnElement="Lane_Administrator" isHorizontal="true">
         <dc:Bounds x="190" y="80" width="1430" height="420" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Audit" bpmnElement="Lane_Audit" isHorizontal="true">
-        <dc:Bounds x="190" y="500" width="1430" height="144" />
+        <dc:Bounds x="190" y="500" width="1430" height="110" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_AdminRequest" bpmnElement="Start_AdminRequest">
@@ -219,28 +219,28 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
         <dc:Bounds x="465" y="110" width="180" height="70" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_AssignRoles" bpmnElement="Task_AssignRoles">
-        <dc:Bounds x="495" y="175" width="120" height="120" />
+        <dc:Bounds x="465" y="194.5" width="180" height="81" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_GrantOrRevoke" bpmnElement="Task_GrantOrRevoke">
-        <dc:Bounds x="495" y="265" width="120" height="120" />
+        <dc:Bounds x="465" y="290" width="180" height="70" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_RetireActor" bpmnElement="Task_RetireActor">
-        <dc:Bounds x="495" y="355" width="120" height="120" />
+        <dc:Bounds x="465" y="380" width="180" height="70" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_Changed" bpmnElement="Gateway_Changed" isMarkerVisible="true">
         
         <dc:Bounds x="700" y="253" width="50" height="50" />
       <bpmndi:BPMNLabel><dc:Bounds x="726" y="195.5" width="110" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_CallActivity_CodeChangeReview" bpmnElement="CallActivity_CodeChangeReview">
-        <dc:Bounds x="850" y="218" width="120" height="120" />
+        <dc:Bounds x="820" y="231.5" width="180" height="93" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_RunKgAudit" bpmnElement="Task_RunKgAudit">
-        <dc:Bounds x="850" y="512" width="120" height="120" />
+        <dc:Bounds x="830" y="520" width="160" height="70" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_AuditClean" bpmnElement="Gateway_AuditClean" isMarkerVisible="true">
         
         <dc:Bounds x="1105" y="253" width="50" height="50" />
-      <bpmndi:BPMNLabel><dc:Bounds x="1085" y="307" width="90" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="1011" y="269.5" width="90" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Administered" bpmnElement="End_Administered">
         
         <dc:Bounds x="1292" y="260" width="36" height="36" />
@@ -258,22 +258,23 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A03" bpmnElement="A03">
         <di:waypoint x="405" y="278" />
-        <di:waypoint x="450" y="278" />
-        <di:waypoint x="450" y="235" />
-        <di:waypoint x="495" y="235" />
+        <di:waypoint x="440" y="278" />
+        <di:waypoint x="440" y="235" />
+        <di:waypoint x="465" y="235" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A04" bpmnElement="A04">
         <di:waypoint x="405" y="278" />
-        <di:waypoint x="450" y="278" />
-        <di:waypoint x="450" y="325" />
-        <di:waypoint x="495" y="325" />
-        <bpmndi:BPMNLabel><dc:Bounds x="356" y="304.25" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="440" y="278" />
+        <di:waypoint x="440" y="325" />
+        <di:waypoint x="465" y="325" />
+        <bpmndi:BPMNLabel><dc:Bounds x="346" y="304.25" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A05" bpmnElement="A05">
         <di:waypoint x="405" y="278" />
-        <di:waypoint x="450" y="278" />
-        <di:waypoint x="450" y="415" />
-        <di:waypoint x="495" y="415" />
+        <di:waypoint x="440" y="278" />
+        <di:waypoint x="440" y="415" />
+        <di:waypoint x="465" y="415" />
+        <bpmndi:BPMNLabel><dc:Bounds x="346" y="338" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A06" bpmnElement="A06">
         <di:waypoint x="645" y="145" />
@@ -281,36 +282,32 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
         <di:waypoint x="725" y="253" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A07" bpmnElement="A07">
-        <di:waypoint x="615" y="235" />
-        <di:waypoint x="657.5" y="235" />
-        <di:waypoint x="657.5" y="278" />
-        <di:waypoint x="700" y="278" />
+        <di:waypoint x="645" y="235" />
+        <di:waypoint x="725" y="235" />
+        <di:waypoint x="725" y="253" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A08" bpmnElement="A08">
-        <di:waypoint x="615" y="325" />
-        <di:waypoint x="657.5" y="325" />
-        <di:waypoint x="657.5" y="278" />
-        <di:waypoint x="700" y="278" />
+        <di:waypoint x="645" y="325" />
+        <di:waypoint x="725" y="325" />
+        <di:waypoint x="725" y="303" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A09" bpmnElement="A09">
-        <di:waypoint x="615" y="415" />
-        <di:waypoint x="657.5" y="415" />
-        <di:waypoint x="657.5" y="278" />
-        <di:waypoint x="700" y="278" />
+        <di:waypoint x="645" y="415" />
+        <di:waypoint x="725" y="415" />
+        <di:waypoint x="725" y="303" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A10" bpmnElement="A10">
         <di:waypoint x="750" y="278" />
-        <di:waypoint x="850" y="278" />
+        <di:waypoint x="820" y="278" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A11" bpmnElement="A11">
         <di:waypoint x="910" y="324.5" />
         <di:waypoint x="910" y="520" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A12" bpmnElement="A12">
-        <di:waypoint x="970" y="572" />
-        <di:waypoint x="1037.5" y="572" />
-        <di:waypoint x="1037.5" y="278" />
-        <di:waypoint x="1105" y="278" />
+        <di:waypoint x="990" y="555" />
+        <di:waypoint x="1130" y="555" />
+        <di:waypoint x="1130" y="303" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A13" bpmnElement="A13">
         <bpmndi:BPMNLabel><dc:Bounds x="1134" y="168" width="30" height="17" /></bpmndi:BPMNLabel>
