@@ -203,97 +203,101 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
   <bpmndi:BPMNDiagram id="Diagram_QaReportSigning">
     <bpmndi:BPMNPlane id="Plane_QaReportSigning" bpmnElement="Collaboration_QaReportSigning">
       <bpmndi:BPMNShape id="Shape_Participant_QaReportSigning" bpmnElement="Participant_QaReportSigning" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1640" height="450" />
+        <dc:Bounds x="160" y="80" width="1640" height="518" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Qa" bpmnElement="Lane_Qa" isHorizontal="true">
-        <dc:Bounds x="190" y="190" width="1610" height="230" />
+        <dc:Bounds x="190" y="224" width="1610" height="230" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Api" bpmnElement="Lane_Api" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1610" height="110" />
+        <dc:Bounds x="190" y="80" width="1610" height="144" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Human" bpmnElement="Lane_Human" isHorizontal="true">
-        <dc:Bounds x="190" y="420" width="1610" height="110" />
+        <dc:Bounds x="190" y="454" width="1610" height="144" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_ReportReady" bpmnElement="Start_ReportReady">
         
-        <dc:Bounds x="250" y="272" width="36" height="36" />
-      <bpmndi:BPMNLabel><dc:Bounds x="222" y="316" width="92" height="27" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="250" y="306" width="36" height="36" />
+      <bpmndi:BPMNLabel><dc:Bounds x="222" y="350" width="92" height="27" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_BuildRun" bpmnElement="Task_BuildRun">
-        <dc:Bounds x="326" y="250" width="180" height="80" />
+        <dc:Bounds x="356" y="264" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_ResolveReach" bpmnElement="Task_ResolveReach">
-        <dc:Bounds x="546" y="250" width="180" height="80" />
+        <dc:Bounds x="576" y="264" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_SigningRoute" bpmnElement="Gateway_SigningRoute" isMarkerVisible="true">
         
-        <dc:Bounds x="766" y="265" width="50" height="50" />
-      <bpmndi:BPMNLabel><dc:Bounds x="820" y="272.5" width="100" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="766" y="299" width="50" height="50" />
+      <bpmndi:BPMNLabel><dc:Bounds x="741" y="353" width="100" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_ApiSign" bpmnElement="Task_ApiSign">
-        <dc:Bounds x="885" y="100" width="150" height="70" />
+        <dc:Bounds x="900" y="92" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_HumanSign" bpmnElement="Task_HumanSign">
-        <dc:Bounds x="870" y="440" width="180" height="70" />
+        <dc:Bounds x="900" y="466" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_Signed" bpmnElement="Gateway_Signed" isMarkerVisible="true">
         
-        <dc:Bounds x="1115" y="265" width="50" height="50" />
-      <bpmndi:BPMNLabel><dc:Bounds x="1051" y="281" width="60" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="1115" y="299" width="50" height="50" />
+      <bpmndi:BPMNLabel><dc:Bounds x="1110" y="353" width="60" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_RecordAttestation" bpmnElement="Task_RecordAttestation">
-        <dc:Bounds x="1235" y="250" width="150" height="80" />
+        <dc:Bounds x="1250" y="264" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_StoreSigned" bpmnElement="Task_StoreSigned">
-        <dc:Bounds x="1425" y="249" width="180" height="82" />
+        <dc:Bounds x="1455" y="264" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Signed" bpmnElement="End_Signed">
         
-        <dc:Bounds x="1670" y="272" width="36" height="36" />
-      <bpmndi:BPMNLabel><dc:Bounds x="1640" y="316" width="96" height="27" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="1670" y="306" width="36" height="36" />
+      <bpmndi:BPMNLabel><dc:Bounds x="1640" y="350" width="96" height="27" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
 
       <bpmndi:BPMNEdge id="Edge_S01" bpmnElement="S01">
-        <di:waypoint x="286" y="290" />
-        <di:waypoint x="326" y="290" />
+        <di:waypoint x="286" y="324" />
+        <di:waypoint x="356" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S02" bpmnElement="S02">
-        <di:waypoint x="506" y="290" />
-        <di:waypoint x="546" y="290" />
+        <di:waypoint x="476" y="324" />
+        <di:waypoint x="576" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S03" bpmnElement="S03">
-        <di:waypoint x="726" y="290" />
-        <di:waypoint x="766" y="290" />
+        <di:waypoint x="696" y="324" />
+        <di:waypoint x="766" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S04" bpmnElement="S04">
-        <di:waypoint x="791" y="315" />
-        <di:waypoint x="791" y="135" />
-        <di:waypoint x="885" y="135" />
+        <di:waypoint x="816" y="324" />
+        <di:waypoint x="858" y="324" />
+        <di:waypoint x="858" y="152" />
+        <di:waypoint x="900" y="152" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S05" bpmnElement="S05">
-        <di:waypoint x="791" y="315" />
-        <di:waypoint x="791" y="475" />
-        <di:waypoint x="870" y="475" />
-        <bpmndi:BPMNLabel><dc:Bounds x="795" y="386.5" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="816" y="324" />
+        <di:waypoint x="858" y="324" />
+        <di:waypoint x="858" y="526" />
+        <di:waypoint x="900" y="526" />
+        <bpmndi:BPMNLabel><dc:Bounds x="862" y="416.5" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S06" bpmnElement="S06">
-        <di:waypoint x="1035" y="135" />
-        <di:waypoint x="1140" y="135" />
-        <di:waypoint x="1140" y="315" />
+        <di:waypoint x="1020" y="152" />
+        <di:waypoint x="1067.5" y="152" />
+        <di:waypoint x="1067.5" y="324" />
+        <di:waypoint x="1115" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S07" bpmnElement="S07">
-        <di:waypoint x="1050" y="475" />
-        <di:waypoint x="1140" y="475" />
-        <di:waypoint x="1140" y="315" />
+        <di:waypoint x="1020" y="526" />
+        <di:waypoint x="1067.5" y="526" />
+        <di:waypoint x="1067.5" y="324" />
+        <di:waypoint x="1115" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S08" bpmnElement="S08">
-        <di:waypoint x="1165" y="290" />
-        <di:waypoint x="1235" y="290" />
+        <di:waypoint x="1165" y="324" />
+        <di:waypoint x="1250" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S09" bpmnElement="S09">
-        <di:waypoint x="1385" y="290" />
-        <di:waypoint x="1425" y="290" />
+        <di:waypoint x="1370" y="324" />
+        <di:waypoint x="1455" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S10" bpmnElement="S10">
-        <di:waypoint x="1605" y="290" />
-        <di:waypoint x="1670" y="290" />
+        <di:waypoint x="1575" y="324" />
+        <di:waypoint x="1670" y="324" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

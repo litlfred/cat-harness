@@ -241,78 +241,81 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
   <bpmndi:BPMNDiagram id="BPMNDiagram_ActivityLog">
     <bpmndi:BPMNPlane id="BPMNPlane_ActivityLog" bpmnElement="Collab_ActivityLog">
       <bpmndi:BPMNShape id="Shape_Participant" bpmnElement="Participant_ActivityLog" isHorizontal="true">
-        <dc:Bounds x="160" y="90" width="1270" height="620"/>
+        <dc:Bounds x="160" y="90" width="1270" height="620" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="90" width="1240" height="290"/>
+        <dc:Bounds x="190" y="90" width="1240" height="290" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Operator" bpmnElement="Lane_Operator" isHorizontal="true">
-        <dc:Bounds x="190" y="380" width="1240" height="240"/>
+        <dc:Bounds x="190" y="380" width="1240" height="240" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Task" bpmnElement="Start_Task">
-        <dc:Bounds x="220" y="180" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="225.5" y="239.5" width="90" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="220" y="180" width="36" height="36" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="225.5" y="239.5" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_LogStart" bpmnElement="A_LogStart">
-        <dc:Bounds x="300" y="158" width="110" height="80"/>
+        <dc:Bounds x="300" y="158" width="110" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_DoWork" bpmnElement="GW_DoWork" isMarkerVisible="true"><dc:Bounds x="580" y="173" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="560" y="133" width="90" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Edge_Flow_GW_DoWork" bpmnElement="Flow_GW_DoWork"><di:waypoint x="560" y="198"/><di:waypoint x="580" y="198"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_GW_DoWork" bpmnElement="GW_DoWork" isMarkerVisible="true"><dc:Bounds x="580" y="173" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="560" y="133" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Flow_GW_DoWork" bpmnElement="Flow_GW_DoWork">
+        <di:waypoint x="560" y="198" />
+        <di:waypoint x="580" y="198" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Shape_A_DoWork" bpmnElement="A_DoWork">
-        <dc:Bounds x="450" y="158" width="110" height="80"/>
+        <dc:Bounds x="445" y="138" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_LogMessage" bpmnElement="A_LogMessage">
-        <dc:Bounds x="450" y="268" width="110" height="80"/>
+        <dc:Bounds x="450" y="268" width="110" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_LogEnd" bpmnElement="A_LogEnd">
-        <dc:Bounds x="690" y="158" width="110" height="80"/>
+        <dc:Bounds x="690" y="158" width="110" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_Capture" bpmnElement="Gateway_Capture" isMarkerVisible="true">
-        <dc:Bounds x="850" y="176" width="50" height="50"/>
+        <dc:Bounds x="850" y="176" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_PersistLog" bpmnElement="A_PersistLog">
-        <dc:Bounds x="950" y="108" width="120" height="80"/>
+        <dc:Bounds x="950" y="108" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ReportCaptureState" bpmnElement="A_ReportCaptureState">
-        <dc:Bounds x="950" y="228" width="120" height="80"/>
+        <dc:Bounds x="950" y="208" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Task" bpmnElement="End_Task">
-        <dc:Bounds x="1130" y="183" width="36" height="36"/>
+        <dc:Bounds x="1130" y="183" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Empty" bpmnElement="Start_Empty">
-        <dc:Bounds x="220" y="470" width="36" height="36"/>
+        <dc:Bounds x="220" y="470" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_EmptyScope" bpmnElement="Gateway_EmptyScope" isMarkerVisible="true">
-        <dc:Bounds x="320" y="463" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="300" y="424" width="90" height="35" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="320" y="463" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="226" y="424" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_EmptyOne" bpmnElement="A_EmptyOne">
-        <dc:Bounds x="430" y="410" width="120" height="80"/>
+        <dc:Bounds x="430" y="410" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_EmptyAll" bpmnElement="A_EmptyAll">
-        <dc:Bounds x="430" y="510" width="120" height="80"/>
+        <dc:Bounds x="430" y="510" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Emptied" bpmnElement="End_Emptied">
-        <dc:Bounds x="700" y="473" width="36" height="36"/>
+        <dc:Bounds x="700" y="473" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="745.5" y="508.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_F_1" bpmnElement="F_1">
         <di:waypoint x="238" y="198"/>
         <di:waypoint x="355" y="198"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_2" bpmnElement="F_2">
-        <di:waypoint x="355" y="198"/>
-        <di:waypoint x="505" y="198"/>
+        <di:waypoint x="355" y="198" />
+        <di:waypoint x="505" y="198" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_3" bpmnElement="F_3">
         <di:waypoint x="605" y="223"/><di:waypoint x="605" y="308"/>
         <di:waypoint x="505" y="308"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_3b" bpmnElement="F_3b">
-        <di:waypoint x="505" y="308"/>
-        <di:waypoint x="505" y="198"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="509" y="244.5" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="505" y="308" />
+        <di:waypoint x="505" y="198" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_4" bpmnElement="F_4">
         <di:waypoint x="630" y="198"/>
@@ -379,19 +382,21 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
         <di:waypoint x="700" y="491" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Shape_Lane_Sweep" bpmnElement="Lane_Sweep" isHorizontal="true">
-        <dc:Bounds x="190" y="620" width="1240" height="90"/>
+        <dc:Bounds x="190" y="620" width="1240" height="90" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Sweep" bpmnElement="Start_Sweep">
-        <dc:Bounds x="220" y="647" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="260" y="687" width="180" height="18" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="220" y="647" width="36" height="36" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="260" y="687" width="180" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_F_S1" bpmnElement="F_S1">
         <di:waypoint x="256" y="665" />
         <di:waypoint x="343" y="665" />
         <di:waypoint x="343" y="550" />
         <di:waypoint x="430" y="550" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Shape_DSR_log" bpmnElement="DSR_log"><dc:Bounds x="574.167" y="750" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DSR_log" bpmnElement="DSR_log"><dc:Bounds x="574.17" y="750" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="628.17" y="766" width="90" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_DOA_A_LogStart" bpmnElement="DOA_A_LogStart"><di:waypoint x="355" y="238"/><di:waypoint x="355" y="725"/><di:waypoint x="599.167" y="725"/><di:waypoint x="599.167" y="750"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_DOA_A_LogMessage" bpmnElement="DOA_A_LogMessage"><di:waypoint x="505" y="348"/><di:waypoint x="505" y="725"/><di:waypoint x="599.167" y="725"/><di:waypoint x="599.167" y="750"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_DOA_A_LogEnd" bpmnElement="DOA_A_LogEnd"><di:waypoint x="745" y="238"/><di:waypoint x="745" y="725"/><di:waypoint x="599.167" y="725"/><di:waypoint x="599.167" y="750"/></bpmndi:BPMNEdge>

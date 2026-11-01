@@ -581,7 +581,9 @@ in a recorded state">
       <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5"><di:waypoint x="4165" y="585"/><di:waypoint x="4165" y="610"/><di:waypoint x="4280" y="610"/>
         <bpmndi:BPMNLabel><dc:Bounds x="4169" y="589" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Shape_DSR_corpus" bpmnElement="DSR_corpus"><dc:Bounds x="2489" y="704" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_DSR_corpus" bpmnElement="DSR_corpus"><dc:Bounds x="2489" y="704" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="2543" y="720" width="90" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_DOA_Task_Refuse" bpmnElement="DOA_Task_Refuse"><di:waypoint x="1095" y="610"/><di:waypoint x="1095" y="679"/><di:waypoint x="2514" y="679"/><di:waypoint x="2514" y="704"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_DOA_Task_Record" bpmnElement="DOA_Task_Record"><di:waypoint x="1555" y="610"/><di:waypoint x="1555" y="679"/><di:waypoint x="2514" y="679"/><di:waypoint x="2514" y="704"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_DOA_Task_RePin" bpmnElement="DOA_Task_RePin"><di:waypoint x="2065" y="610"/><di:waypoint x="2065" y="679"/><di:waypoint x="2514" y="679"/><di:waypoint x="2514" y="704"/></bpmndi:BPMNEdge>

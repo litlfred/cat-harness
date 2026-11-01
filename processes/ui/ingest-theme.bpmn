@@ -155,60 +155,62 @@ THE OLD AUTOMATED CHECK IS INSIDE THE CALL, NOT DROPPED. "A theme sets the strip
       <bpmndi:BPMNShape id="StartEvent_Source_di" bpmnElement="StartEvent_Source"><dc:Bounds x="247" y="222" width="36" height="36" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Kind_di" bpmnElement="Gateway_Kind" isMarkerVisible="true"><dc:Bounds x="340" y="215" width="50" height="50" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="394" y="222.5" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_ReadStylesheet_di" bpmnElement="Task_ReadStylesheet"><dc:Bounds x="435" y="130" width="180" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_ReadGuide_di" bpmnElement="Task_ReadGuide"><dc:Bounds x="435" y="270" width="180" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_MapRoles_di" bpmnElement="Task_MapRoles"><dc:Bounds x="655" y="199" width="180" height="82" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_Contradictions_di" bpmnElement="Task_Contradictions"><dc:Bounds x="875" y="200" width="150" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="246" y="176" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ReadStylesheet_di" bpmnElement="Task_ReadStylesheet"><dc:Bounds x="465" y="110" width="120" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ReadGuide_di" bpmnElement="Task_ReadGuide"><dc:Bounds x="465" y="250" width="120" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_MapRoles_di" bpmnElement="Task_MapRoles"><dc:Bounds x="685" y="180" width="120" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Contradictions_di" bpmnElement="Task_Contradictions"><dc:Bounds x="890" y="180" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Layouts_di" bpmnElement="Gateway_Layouts" isMarkerVisible="true"><dc:Bounds x="1075" y="215" width="50" height="50" />
         
       <bpmndi:BPMNLabel><dc:Bounds x="1055" y="175" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Refused_di" bpmnElement="EndEvent_Refused"><dc:Bounds x="1082" y="345" width="36" height="36" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_Review_di" bpmnElement="Task_Review"><dc:Bounds x="1170" y="200" width="180" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Review_di" bpmnElement="Task_Review"><dc:Bounds x="1200" y="180" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Theme_di" bpmnElement="EndEvent_Theme"><dc:Bounds x="1415" y="222" width="36" height="36" /></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_t1_di" bpmnElement="Flow_t1"><di:waypoint x="283" y="240" /><di:waypoint x="340" y="240" /></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_t2_di" bpmnElement="Flow_t2">
-        <di:waypoint x="365" y="215" />
-        <di:waypoint x="365" y="170" />
-        <di:waypoint x="435" y="170" />
-        <bpmndi:BPMNLabel><dc:Bounds x="271" y="174.5" width="90" height="36" /></bpmndi:BPMNLabel>
+        <di:waypoint x="390" y="240" />
+        <di:waypoint x="427.5" y="240" />
+        <di:waypoint x="427.5" y="170" />
+        <di:waypoint x="465" y="170" />
+        <bpmndi:BPMNLabel><dc:Bounds x="369" y="131" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_t3_di" bpmnElement="Flow_t3">
-        <di:waypoint x="365" y="265" />
-        <di:waypoint x="365" y="310" />
-        <di:waypoint x="435" y="310" />
-        <bpmndi:BPMNLabel><dc:Bounds x="337.5" y="313" width="90" height="36" /></bpmndi:BPMNLabel>
+        <di:waypoint x="390" y="240" />
+        <di:waypoint x="427.5" y="240" />
+        <di:waypoint x="427.5" y="310" />
+        <di:waypoint x="465" y="310" />
+        <bpmndi:BPMNLabel><dc:Bounds x="333.5" y="274.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_t4_di" bpmnElement="Flow_t4">
-        <di:waypoint x="615" y="170" />
-        <di:waypoint x="645" y="170" />
-        <di:waypoint x="645" y="240" />
-        <di:waypoint x="655" y="240" />
+        <di:waypoint x="585" y="170" />
+        <di:waypoint x="635" y="170" />
+        <di:waypoint x="635" y="240" />
+        <di:waypoint x="685" y="240" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_t5_di" bpmnElement="Flow_t5">
-        <di:waypoint x="615" y="310" />
-        <di:waypoint x="645" y="310" />
-        <di:waypoint x="645" y="240" />
-        <di:waypoint x="655" y="240" />
+        <di:waypoint x="585" y="310" />
+        <di:waypoint x="635" y="310" />
+        <di:waypoint x="635" y="240" />
+        <di:waypoint x="685" y="240" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_t6_di" bpmnElement="Flow_t6">
-        <di:waypoint x="835" y="240" />
-        <di:waypoint x="875" y="240" />
+        <di:waypoint x="805" y="240" />
+        <di:waypoint x="890" y="240" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_t7_di" bpmnElement="Flow_t7">
-        <di:waypoint x="1025" y="240" />
+        <di:waypoint x="1010" y="240" />
         <di:waypoint x="1075" y="240" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_t8_di" bpmnElement="Flow_t8">
         <di:waypoint x="1125" y="240" />
-        <di:waypoint x="1185" y="240" />
+        <di:waypoint x="1200" y="240" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_t9_di" bpmnElement="Flow_t9">
         <di:waypoint x="1100" y="265" />
         <di:waypoint x="1100" y="345" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_t10_di" bpmnElement="Flow_t10">
-        <di:waypoint x="1350" y="240" />
+        <di:waypoint x="1320" y="240" />
         <di:waypoint x="1415" y="240" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
