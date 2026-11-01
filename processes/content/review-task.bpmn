@@ -189,9 +189,11 @@ The accept-or-send-back decision lives here and nowhere beneath it. The subproce
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_R3" bpmnElement="F_R3">
         <di:waypoint x="505" y="195"/><di:waypoint x="505" y="132"/><di:waypoint x="590" y="132"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="411" y="154.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_R4" bpmnElement="F_R4">
         <di:waypoint x="505" y="245"/><di:waypoint x="505" y="312"/><di:waypoint x="590" y="312"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="411" y="286.75" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_R5" bpmnElement="F_R5">
         <di:waypoint x="770" y="132"/><di:waypoint x="855" y="132"/><di:waypoint x="855" y="195"/>

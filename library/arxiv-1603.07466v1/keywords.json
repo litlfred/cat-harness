@@ -1,0 +1,132 @@
+{
+  "$schema": "folio-keywords/v1",
+  "entry": "arxiv-1603.07466v1",
+  "corpus": {
+    "library": "cat-harness/library",
+    "sections": 2267,
+    "terms": 15478,
+    "weighting": "log-entropy"
+  },
+  "document": [
+    {
+      "term": "dmn tables",
+      "score": 6.0598,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "dmn decision",
+      "score": 5.2549,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "overlapping rules",
+      "score": 5.0448,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "columns tables",
+      "score": 4.8149,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "input dmn",
+      "score": 4.4982,
+      "evidence": []
+    },
+    {
+      "term": "priority hit",
+      "score": 4.352,
+      "evidence": []
+    },
+    {
+      "term": "missing rules",
+      "score": 4.3296,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "hit indicator",
+      "score": 4.2746,
+      "evidence": []
+    },
+    {
+      "term": "dmn editor",
+      "score": 4.09,
+      "evidence": []
+    },
+    {
+      "term": "detecting overlapping",
+      "score": 3.9279,
+      "evidence": []
+    },
+    {
+      "term": "output conﬁguration",
+      "score": 3.921,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "categorical columns",
+      "score": 3.8796,
+      "evidence": []
+    }
+  ],
+  "sections": {
+    "sec-000-semantics-and-analysis-of-dmn-decision-tables": [
+      {
+        "term": "dmn tables",
+        "score": 12.1197,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "dmn decision",
+        "score": 10.5099,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "overlapping rules",
+        "score": 5.0448,
+        "evidence": []
+      },
+      {
+        "term": "columns tables",
+        "score": 4.8149,
+        "evidence": []
+      },
+      {
+        "term": "input dmn",
+        "score": 4.4982,
+        "evidence": []
+      },
+      {
+        "term": "priority hit",
+        "score": 4.352,
+        "evidence": []
+      },
+      {
+        "term": "missing rules",
+        "score": 4.3296,
+        "evidence": []
+      },
+      {
+        "term": "hit indicator",
+        "score": 4.2746,
+        "evidence": []
+      }
+    ]
+  }
+}

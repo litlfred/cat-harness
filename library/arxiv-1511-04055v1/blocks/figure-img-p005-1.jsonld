@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-1511-04055v1/blocks/figure-img-p005-1",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p005-1.png",
+  "pageStart": 5,
+  "pageEnd": 5,
+  "narrative": [
+    {
+      "text": "Figure 2: The process of process modeling and the attributes of the captured data, showing a modeler placing activities, events, gateways, and edges on a canvas alongside the captured event table (Operation, Element, Time).",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 2 : Le processus de modélisation de processus et les attributs des données capturées, montrant un modélisateur plaçant des activités, événements, passerelles et arcs sur un canevas ainsi que la table d'événements (Opération, Élément, Temps).",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 2: El proceso de modelado de procesos y los atributos de los datos capturados, mostrando a un modelador colocando actividades, eventos, compuertas y arcos en un lienzo junto con la tabla de eventos (Operación, Elemento, Tiempo).",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 2: عملية نمذجة العمليات وسمات البيانات الملتقطة، ويوضح مصمماً يضع الأنشطة والأحداث والبوابات والحواف على لوحة الرسم إلى جانب جدول الأحداث المسجلة (العملية، العنصر، الوقت).",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图2：流程建模过程及所捕获数据的属性，展示建模者在画布上放置活动、事件、网关和连线，以及右侧捕获的事件表（操作、元素、时间）。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 2: Процесс моделирования процессов и атрибуты собираемых данных: разработчик размещает действия, события, шлюзы и дуги на холсте рядом с таблицей зафиксированных событий (Операция, Элемент, Время).",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-1511-04055v1/sections/sec-011",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1511-04055v1/manifest.jsonld",
+  "provenance": "ingested"
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "folio-keywords/v1",
+  "entry": "arxiv-2005.09998v1",
+  "corpus": {
+    "library": "cat-harness/library",
+    "sections": 2267,
+    "terms": 15478,
+    "weighting": "log-entropy"
+  },
+  "document": [
+    {
+      "term": "constraint tables",
+      "score": 5.2427,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "decision tables",
+      "score": 4.8173,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "solver tables",
+      "score": 4.7694,
+      "evidence": []
+    },
+    {
+      "term": "openrules implementations",
+      "score": 4.3154,
+      "evidence": []
+    },
+    {
+      "term": "dmn standard",
+      "score": 3.9132,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "universal quantiﬁcation",
+      "score": 3.8857,
+      "evidence": []
+    },
+    {
+      "term": "tables allow",
+      "score": 3.7256,
+      "evidence": []
+    },
+    {
+      "term": "data tables",
+      "score": 3.5719,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "constraint modeling",
+      "score": 3.4112,
+      "evidence": []
+    },
+    {
+      "term": "variable expressions",
+      "score": 3.1728,
+      "evidence": []
+    },
+    {
+      "term": "s-feel expressions",
+      "score": 3.1502,
+      "evidence": []
+    },
+    {
+      "term": "constraint solving",
+      "score": 3.0528,
+      "evidence": []
+    }
+  ],
+  "sections": {
+    "sec-000-tackling-the-dmn-challenges-with-cdmn-a-tight-in": [
+      {
+        "term": "dmn",
+        "score": 5.9887,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "constraint tables",
+        "score": 5.2427,
+        "evidence": []
+      },
+      {
+        "term": "decision tables",
+        "score": 4.8173,
+        "evidence": []
+      },
+      {
+        "term": "solver tables",
+        "score": 4.7694,
+        "evidence": []
+      },
+      {
+        "term": "openrules implementations",
+        "score": 4.3154,
+        "evidence": []
+      },
+      {
+        "term": "dmn standard",
+        "score": 3.9132,
+        "evidence": []
+      },
+      {
+        "term": "universal quantiﬁcation",
+        "score": 3.8857,
+        "evidence": []
+      },
+      {
+        "term": "tables allow",
+        "score": 3.7256,
+        "evidence": []
+      }
+    ]
+  }
+}

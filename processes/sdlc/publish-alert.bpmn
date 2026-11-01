@@ -83,7 +83,7 @@
       <bpmndi:BPMNShape id="Shape_Lane_PubMgr" bpmnElement="Lane_PubMgr" isHorizontal="true"><dc:Bounds x="90" y="230" width="1430" height="170"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Failed" bpmnElement="Start_Failed"><dc:Bounds x="227" y="127" width="36" height="36"/><bpmndi:BPMNLabel><dc:Bounds x="175" y="169" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Label" bpmnElement="A_Label"><dc:Bounds x="380" y="105" width="170" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_Open" bpmnElement="GW_Open" isMarkerVisible="true"><dc:Bounds x="660" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="615" y="176" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_Open" bpmnElement="GW_Open" isMarkerVisible="true"><dc:Bounds x="660" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="599.25" y="191.5" width="140" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Open" bpmnElement="A_Open"><dc:Bounds x="820" y="70" width="170" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Comment" bpmnElement="A_Comment"><dc:Bounds x="820" y="150" width="170" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_U_Triage" bpmnElement="U_Triage"><dc:Bounds x="1040" y="275" width="170" height="80"/></bpmndi:BPMNShape>

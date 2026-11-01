@@ -152,15 +152,18 @@ ONE TRACKING ISSUE, EDITED IN PLACE, never a comment and never a second issue â€
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Sweep" bpmnElement="Start_Sweep">
         <dc:Bounds x="122" y="92" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="162" y="132" width="90" height="90" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Check" bpmnElement="Task_Check">
         <dc:Bounds x="300" y="70" width="180" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Determined" bpmnElement="GW_Determined" isMarkerVisible="true">
         <dc:Bounds x="615" y="85" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="669" y="139" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Unknown" bpmnElement="End_Unknown">
         <dc:Bounds x="622" y="332" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="662" y="305.5" width="90" height="89" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Label" bpmnElement="Task_Label">
         <dc:Bounds x="800" y="70" width="180" height="80"/>
@@ -203,6 +206,7 @@ ONE TRACKING ISSUE, EDITED IN PLACE, never a comment and never a second issue â€
       <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
         <di:waypoint x="1165" y="110"/>
         <di:waypoint x="1300" y="110"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1187.5" y="113" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
         <di:waypoint x="1480" y="110"/>
@@ -212,6 +216,7 @@ ONE TRACKING ISSUE, EDITED IN PLACE, never a comment and never a second issue â€
         <di:waypoint x="1165" y="110"/>
         <di:waypoint x="1390" y="110"/>
         <di:waypoint x="1390" y="190"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1176.25" y="90" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_8" bpmnElement="Flow_8">
         <di:waypoint x="1480" y="230"/>

@@ -209,33 +209,33 @@ content">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Proposed_di" bpmnElement="StartEvent_Proposed">
         <dc:Bounds x="200" y="167" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="160" y="208" width="116" height="30" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="160" y="208" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Scope_di" bpmnElement="Task_Scope">
-        <dc:Bounds x="300" y="135" width="190" height="100" />
+        <dc:Bounds x="300" y="125.5" width="190" height="119" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Upstream_di" bpmnElement="StartEvent_Upstream">
         <dc:Bounds x="200" y="417" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="160" y="458" width="116" height="40" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="160" y="458" width="116" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Call_Refresh_di" bpmnElement="Call_Refresh">
         <dc:Bounds x="300" y="385" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Refreshed_di" bpmnElement="EndEvent_Refreshed">
         <dc:Bounds x="510" y="417" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="490" y="458" width="76" height="20" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="490" y="458" width="76" height="20" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Call_Materialize_di" bpmnElement="Call_Materialize">
         <dc:Bounds x="600" y="385" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Materialized_di" bpmnElement="Gateway_Materialized" isMarkerVisible="true">
         <dc:Bounds x="840" y="410" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="820" y="385" width="90" height="20" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="820" y="385" width="90" height="20" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Permanent_di" bpmnElement="Gateway_Permanent" isMarkerVisible="true">
         <dc:Bounds x="950" y="410" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="905" y="465" width="80" height="30" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="865.94" y="464" width="80.06" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Library_di" bpmnElement="Task_Library">
         <dc:Bounds x="1070" y="325" width="190" height="100" />
       </bpmndi:BPMNShape>
@@ -247,23 +247,23 @@ content">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Passed_di" bpmnElement="Gateway_Passed" isMarkerVisible="true">
         <dc:Bounds x="1580" y="410" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1560" y="375" width="90" height="30" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1560" y="375" width="90" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Refused_di" bpmnElement="EndEvent_Refused">
         <dc:Bounds x="847" y="667" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="800" y="708" width="130" height="30" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="800" y="708" width="130" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_RecordFindings_di" bpmnElement="Task_RecordFindings">
         <dc:Bounds x="1650" y="660" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Failed_di" bpmnElement="EndEvent_Failed">
         <dc:Bounds x="1900" y="692" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1860" y="733" width="116" height="30" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1860" y="733" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Imported_di" bpmnElement="EndEvent_Imported">
         <dc:Bounds x="1900" y="592" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1860" y="633" width="116" height="30" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1860" y="633" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
         <di:waypoint x="236" y="185" />
         <di:waypoint x="300" y="185" />

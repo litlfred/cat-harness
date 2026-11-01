@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-1511-04055v1/blocks/figure-img-p003-1",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p003-1.png",
+  "pageStart": 3,
+  "pageEnd": 3,
+  "narrative": [
+    {
+      "text": "Figure 1(a): Dotted Chart for a full event log containing multiple Process of Process Modeling (PPM) instances, where each horizontal line represents the modeling operations of one modeler over time.",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 1(a) : Diagramme à points (Dotted Chart) pour un journal d'événements complet contenant plusieurs instances PPM, où chaque ligne horizontale représente les opérations d'un modélisateur au fil du temps.",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 1(a): Gráfico de puntos (Dotted Chart) para un registro de eventos completo con múltiples instancias PPM, donde cada línea horizontal representa las operaciones de un modelador a lo largo del tiempo.",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 1(أ): مخطط منقط لسجل أحداث كامل يحتوي على عدة حالات لعملية نمذجة العمليات (PPM)، حيث يمثل كل خط أفقي عمليات مصمم واحد عبر الزمن.",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图1(a)：包含多个流程建模过程（PPM）实例的完整事件日志点状图，其中每条水平线代表一名建模者随时间进行的建模操作。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 1(a): Точечная диаграмма (Dotted Chart) для полного журнала событий с несколькими экземплярами PPM, где каждая горизонтальная линия представляет операции одного разработчика модели во времени.",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-1511-04055v1/sections/sec-002",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1511-04055v1/manifest.jsonld",
+  "provenance": "ingested"
+}

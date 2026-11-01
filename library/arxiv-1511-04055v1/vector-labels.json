@@ -1,0 +1,4854 @@
+{
+  "$schema": "folio-vector-labels/v1",
+  "doc_id": "arxiv-1511-04055v1",
+  "pages": [
+    {
+      "page": 3,
+      "rotation": 0,
+      "drawings": 1,
+      "rasterImagesOnPage": 2,
+      "captionCandidates": [
+        "Fig. 1. Example of a Dotted Chart for the full event log with multiple PPM instances and for an event log containing events of only one"
+      ],
+      "labels": [
+        {
+          "text": "investigating attributes in the event log (i.e., without leaving the plug-in). Therefore, one could focus on a single",
+          "bbox": [
+            72.0,
+            72.25,
+            525.91,
+            83.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "PPM instance if the event log is split into multiple event logs (one for each instance). The events in these event",
+          "bbox": [
+            72.0,
+            83.77,
+            525.8,
+            94.86
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "logs can then be grouped per model element (rather than per PPM instance). In this case, a Dotted Chart taking",
+          "bbox": [
+            72.0,
+            95.23,
+            525.89,
+            106.32
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "one such event log as input represents the operations of only one PPM instance (see e.g. Fig. 1b). We conclude,",
+          "bbox": [
+            72.0,
+            106.75,
+            525.94,
+            117.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "that it is possible to use the Dotted Chart for the visual study of the PPM. In the next section, we discuss the",
+          "bbox": [
+            72.0,
+            118.27,
+            525.92,
+            129.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "cognitive effectiveness of a visualization in general and of the Dotted Chart in particular.",
+          "bbox": [
+            72.0,
+            129.73,
+            430.57,
+            140.82
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "(b) Transformed partial event log: only one PPM instance",
+          "bbox": [
+            303.06,
+            147.76,
+            491.9,
+            157.11
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Cambria",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(a) Full event log: multiple PPM instances",
+          "bbox": [
+            72.0,
+            148.05,
+            209.5,
+            156.88
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Fig. 1. Example of a Dotted Chart for the full event log with multiple PPM instances and for an event log containing events of only one",
+          "bbox": [
+            80.94,
+            297.33,
+            516.38,
+            306.16
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "PPM instance (each line representing the operations on a different process model element).",
+          "bbox": [
+            152.1,
+            306.51,
+            445.35,
+            315.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "2.2",
+          "bbox": [
+            72.0,
+            327.83,
+            87.26,
+            339.06
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldItalicMT",
+            "TimesNewRomanPS-BoldItalicMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Cognitive effectiveness of a visualization",
+          "bbox": [
+            100.8,
+            327.97,
+            270.5,
+            339.06
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Before the PPMChart visualization is described in more detail in Section 3, this section explains what is meant",
+          "bbox": [
+            72.0,
+            342.31,
+            525.86,
+            353.4
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "with a ‘cognitive effective visualization’. Moody collected nine concrete principles that can be applied to",
+          "bbox": [
+            72.0,
+            353.83,
+            525.88,
+            364.92
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "improve the cognitive quality of visual notations, which are presented and discussed below (Moody, 2009). The",
+          "bbox": [
+            72.0,
+            365.29,
+            526.0,
+            376.38
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "design principles are also used to evaluate the Dotted Chart (when used on an event log containing a single PPM",
+          "bbox": [
+            72.0,
+            376.81,
+            526.02,
+            387.9
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "instance). The conclusion is that even with a limited amount of data in the event log, the cognitive effectiveness",
+          "bbox": [
+            72.0,
+            388.33,
+            525.9,
+            399.42
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "of the Dotted Chart can be substantially improved for the study of the PPM.",
+          "bbox": [
+            72.0,
+            399.79,
+            377.81,
+            410.88
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "2.2.1",
+          "bbox": [
+            72.0,
+            423.29,
+            94.76,
+            434.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldMT",
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Visual expressiveness",
+          "bbox": [
+            108.0,
+            423.43,
+            201.84,
+            434.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "A graphical representation is visually expressive if it makes optimal use of the different graphical variables on",
+          "bbox": [
+            72.0,
+            437.83,
+            525.94,
+            448.92
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "which symbols can differ (Moody, 2009). Eight graphical variables are defined: shape, size, color, brightness,",
+          "bbox": [
+            72.0,
+            449.29,
+            525.96,
+            460.38
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "orientation, texture, horizontal position and vertical position (Bertin, 2010). Moreover, some graphical variables",
+          "bbox": [
+            72.0,
+            460.81,
+            525.93,
+            471.9
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "have a stronger impact on the cognitive load for interpreting the diagrams. Color is considered the most",
+          "bbox": [
+            72.0,
+            472.33,
+            525.96,
+            483.42
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "effective graphical variable (Lohse, 1993; Treisman, 1982; Winn, 1993), although in some situations it causes",
+          "bbox": [
+            72.0,
+            483.79,
+            525.86,
+            494.88
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "problems with visual perception (e.g., color blindness, black-and-white printers) (Moody, 2009). Therefore,",
+          "bbox": [
+            72.0,
+            495.31,
+            525.98,
+            506.4
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "other graphical variables should be used in combination with color.",
+          "bbox": [
+            72.0,
+            506.83,
+            343.92,
+            517.92
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The visual expressiveness of the Dotted Chart is rather low. With default settings, it makes no use of shape, size,",
+          "bbox": [
+            72.0,
+            518.29,
+            526.15,
+            529.38
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "brightness, orientation or texture. The various dots only differ in color and position. This can easily be improved",
+          "bbox": [
+            72.0,
+            529.81,
+            526.0,
+            540.9
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "by introducing the use of different shapes, brightness, size and/or texture of dots.",
+          "bbox": [
+            72.0,
+            541.33,
+            398.04,
+            552.42
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "2.2.2",
+          "bbox": [
+            72.0,
+            564.77,
+            94.76,
+            576.0
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldMT",
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Perceptual discriminability",
+          "bbox": [
+            108.0,
+            564.91,
+            226.91,
+            576.0
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Perceptual discriminability advocates that symbols are clearly distinguishable and that the more two concepts",
+          "bbox": [
+            72.0,
+            579.31,
+            525.86,
+            590.4
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "differ from each other, the more the corresponding symbols should differ (Winn, 1990). In this context, the",
+          "bbox": [
+            72.0,
+            590.83,
+            525.99,
+            601.92
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "visual distance is determined by the number of graphical variables for which two symbols have different values",
+          "bbox": [
+            72.0,
+            602.29,
+            525.95,
+            613.38
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "and by the size of these differences (Moody, 2009).",
+          "bbox": [
+            72.0,
+            613.81,
+            283.07,
+            624.9
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The perceptual discriminability of the Dotted Chart is also rather low. The colors of the dots are assigned",
+          "bbox": [
+            72.0,
+            625.27,
+            525.93,
+            636.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "randomly to the event classes that are present in the event log, which means that two dots with similar colors",
+          "bbox": [
+            72.0,
+            636.79,
+            525.93,
+            647.88
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "(e.g. blue and violet), do not necessarily represent similar events. Therefore, to increase perceptual",
+          "bbox": [
+            72.0,
+            648.31,
+            525.9,
+            659.4
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "discriminability, it is proposed (i) to assign fixed colors to fixed operations4, (ii) to choose colors in such a way",
+          "bbox": [
+            72.0,
+            659.77,
+            525.85,
+            670.86
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            10.02
+          ]
+        },
+        {
+          "text": "that similar events get similar colors, and (iii) to introduce other graphical variables such as shape and",
+          "bbox": [
+            72.0,
+            671.29,
+            525.98,
+            682.38
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "brightness in order to distinguish more easily between different dots.",
+          "bbox": [
+            72.0,
+            682.81,
+            349.52,
+            693.9
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "2.2.3",
+          "bbox": [
+            72.0,
+            706.25,
+            94.77,
+            717.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldMT",
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Graphic economy",
+          "bbox": [
+            108.0,
+            706.39,
+            186.28,
+            717.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "There is a limit on the amount of different values for each graphical variable to assure that these design",
+          "bbox": [
+            72.0,
+            720.79,
+            525.87,
+            731.88
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "principles increase cognitive effectiveness (Nordbotten & Crosby, 1999). The span of absolute judgment, the",
+          "bbox": [
+            72.0,
+            732.31,
+            525.79,
+            743.4
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "4 Note that this is only possible when there is a fixed, known set of possible occurring operations, which is the case in the study of the PPM.",
+          "bbox": [
+            72.0,
+            759.41,
+            524.29,
+            769.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            7.98
+          ]
+        },
+        {
+          "text": "3",
+          "bbox": [
+            72.0,
+            772.27,
+            79.48,
+            783.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        }
+      ]
+    },
+    {
+      "page": 6,
+      "rotation": 0,
+      "drawings": 1,
+      "rasterImagesOnPage": 3,
+      "captionCandidates": [
+        "Fig. 3. Visualization of the events in the construction of one model by one modeler.7 (85)",
+        "Fig. 4. Process model in BPMN notation as result of the modeling process in Fig. 3.8 (Numbered circles indicate the model element id for comparison with highlight of Fig. 3)",
+        "Fig. 3 shows the different operations in the creation of the process model represented in Fig. 4. The highlighted rectangle in Fig. 3 displays the first operations on the left part of the model in Fig. 4 (from start event to first XOR join gateway). On the first line, one can observe the creation of the start event (very light green circular dot). More to the right a very light blue circular dot represents a movement of that start event. The second line shows a light green triangle at the right that corresponds with the creation of the edge that connects the start event and the first activity. Within the highlighted rectangle, different other light green triangles can be discovered on different lines. These dots represent the creation of other edges in the process model. The third line contains a bright green square shaped dot. This is the creation of an activity. More to the right, a blue square shaped dot indicates that this activity is moved later on. If one focuses on all colored dots in the rectangular selection, one can conclude that the creation of start event, activities and split gateway in the highlighted section is followed by an almost simultaneous movement of these model elements (vertical pattern of blue dots). Only later (i.e., more at the right), the edges that connect these model elements were created (light green triangles)."
+      ],
+      "labels": [
+        {
+          "text": "element of the process model, as it was present during modeling. The model element identifier is displayed at",
+          "bbox": [
+            72.0,
+            72.67,
+            525.93,
+            83.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "the beginning of the line. Each colored dot on the line represents one operation performed on the element.",
+          "bbox": [
+            72.0,
+            84.67,
+            500.41,
+            95.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            90.0,
+            95.53,
+            97.4,
+            107.79
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "ArialMT",
+            "SymbolMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The color of the dot corresponds with the type of operation: create (green), move (blue), delete (red)",
+          "bbox": [
+            108.0,
+            96.67,
+            525.94,
+            107.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "and (re)name (orange).",
+          "bbox": [
+            108.0,
+            108.67,
+            202.4,
+            119.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            90.0,
+            119.53,
+            97.41,
+            131.79
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "ArialMT",
+            "SymbolMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The color shade and shape of the dot corresponds with the type of model element: activity (bright, box),",
+          "bbox": [
+            108.0,
+            120.67,
+            525.88,
+            131.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "event (very light, circle), gateway (dark, diamond) and edge (light, triangle).",
+          "bbox": [
+            108.0,
+            132.67,
+            416.27,
+            143.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "",
+          "bbox": [
+            90.0,
+            143.53,
+            97.41,
+            155.79
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "ArialMT",
+            "SymbolMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The position of the dot on the timeline corresponds with the time at which the operation was executed.",
+          "bbox": [
+            108.0,
+            144.67,
+            522.37,
+            155.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The user can configure the order in which the timelines are presented. The default order of lines corresponds",
+          "bbox": [
+            72.0,
+            156.67,
+            525.89,
+            167.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "with the logical order from start event to end event of the elements in the process model (see Section 3.4.4).",
+          "bbox": [
+            72.0,
+            168.67,
+            505.43,
+            179.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Fig. 3. Visualization of the events in the construction of one model by one modeler.7 (85)",
+          "bbox": [
+            154.62,
+            389.93,
+            442.69,
+            400.0
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            7.98
+          ]
+        },
+        {
+          "text": "Fig. 4. Process model in BPMN notation as result of the modeling process in Fig. 3.8",
+          "bbox": [
+            162.06,
+            523.31,
+            437.23,
+            533.38
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            7.98
+          ]
+        },
+        {
+          "text": "(Numbered circles indicate the model element id for comparison with highlight of Fig. 3)",
+          "bbox": [
+            154.8,
+            533.73,
+            442.51,
+            542.56
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Fig. 3 shows the different operations in the creation of the process model represented in Fig. 4. The highlighted",
+          "bbox": [
+            72.0,
+            549.43,
+            525.92,
+            560.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "rectangle in Fig. 3 displays the first operations on the left part of the model in Fig. 4 (from start event to first",
+          "bbox": [
+            72.0,
+            561.43,
+            525.87,
+            572.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "XOR join gateway). On the first line, one can observe the creation of the start event (very light green circular",
+          "bbox": [
+            72.0,
+            573.43,
+            525.93,
+            584.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "dot). More to the right a very light blue circular dot represents a movement of that start event. The second line",
+          "bbox": [
+            72.0,
+            585.43,
+            525.92,
+            596.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "shows a light green triangle at the right that corresponds with the creation of the edge that connects the start",
+          "bbox": [
+            72.0,
+            597.43,
+            525.92,
+            608.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "event and the first activity. Within the highlighted rectangle, different other light green triangles can be",
+          "bbox": [
+            72.0,
+            609.43,
+            525.96,
+            620.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "discovered on different lines. These dots represent the creation of other edges in the process model. The third",
+          "bbox": [
+            72.0,
+            621.43,
+            526.01,
+            632.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "line contains a bright green square shaped dot. This is the creation of an activity. More to the right, a blue square",
+          "bbox": [
+            72.0,
+            633.43,
+            525.96,
+            644.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "shaped dot indicates that this activity is moved later on. If one focuses on all colored dots in the rectangular",
+          "bbox": [
+            72.0,
+            645.43,
+            525.75,
+            656.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "selection, one can conclude that the creation of start event, activities and split gateway in the highlighted section",
+          "bbox": [
+            72.0,
+            657.43,
+            525.89,
+            668.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "is followed by an almost simultaneous movement of these model elements (vertical pattern of blue dots). Only",
+          "bbox": [
+            72.0,
+            669.43,
+            525.91,
+            680.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "later (i.e., more at the right), the edges that connect these model elements were created (light green triangles).",
+          "bbox": [
+            72.0,
+            681.43,
+            512.2,
+            692.52
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "3.3",
+          "bbox": [
+            72.0,
+            704.99,
+            87.26,
+            716.22
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldItalicMT",
+            "TimesNewRomanPS-BoldItalicMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Differences with Dotted Chart",
+          "bbox": [
+            100.8,
+            705.13,
+            227.45,
+            716.22
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The PPMChart visualization differs from the classical Dotted Chart mainly in four ways:",
+          "bbox": [
+            72.0,
+            719.53,
+            429.98,
+            730.62
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "7 High resolution graphs in color of all figures in this paper are available from http://www.janclaes.info/papers/PPMISeB.",
+          "bbox": [
+            72.0,
+            748.43,
+            464.05,
+            758.5
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            7.98
+          ]
+        },
+        {
+          "text": "8 Download an animation showing how the PPMChart evolves during the model construction at http://www.janclaes.info/papers/PPMISeB.",
+          "bbox": [
+            72.0,
+            759.41,
+            521.05,
+            769.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            7.98
+          ]
+        },
+        {
+          "text": "6",
+          "bbox": [
+            72.0,
+            772.27,
+            79.48,
+            783.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        }
+      ]
+    },
+    {
+      "page": 7,
+      "rotation": 0,
+      "drawings": 1,
+      "rasterImagesOnPage": 2,
+      "captionCandidates": [
+        "Fig. 5. Screenshot of the PPMChart window in ProM. (Model 2012-184)"
+      ],
+      "labels": [
+        {
+          "text": "(i)",
+          "bbox": [
+            90.0,
+            72.11,
+            102.2,
+            83.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "ArialMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "In contrast to the typical use of a Dotted Chart, the PPMChart displays information about only one",
+          "bbox": [
+            121.62,
+            72.25,
+            525.87,
+            83.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "process instance. Each timeline represents a particular model element of the constructed process",
+          "bbox": [
+            121.62,
+            83.77,
+            525.88,
+            94.86
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "model (i.e., activity, gateway, edge, etc.). The events in the PPM, represented by the colored dots,",
+          "bbox": [
+            121.62,
+            95.23,
+            525.87,
+            106.32
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "are the operations (i.e., creation, movement, deletion, etc.) performed on the particular model",
+          "bbox": [
+            121.62,
+            106.75,
+            525.96,
+            117.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "element represented by the timeline. See Section 3.4.1.",
+          "bbox": [
+            121.62,
+            118.27,
+            343.84,
+            129.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "(ii)",
+          "bbox": [
+            90.0,
+            129.59,
+            105.02,
+            140.82
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "ArialMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The PPM has a fixed set of possible operations and therefore, in a PPMChart, these operations are",
+          "bbox": [
+            121.62,
+            129.73,
+            525.91,
+            140.82
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "mapped on fixed default colors, color shades and shapes, which eases the visual comparison of",
+          "bbox": [
+            121.62,
+            141.25,
+            525.94,
+            152.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "different charts. For the same reason, every PPMChart shows initially information of the same",
+          "bbox": [
+            121.62,
+            152.77,
+            525.88,
+            163.86
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "timespan (i.e., one hour). Nevertheless, the option to change the color (shade) and shape coding of",
+          "bbox": [
+            121.62,
+            164.23,
+            525.97,
+            175.32
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "the dots and to zoom in or zoom out to influence the displayed timespan still exists. See Sections",
+          "bbox": [
+            121.62,
+            175.75,
+            525.88,
+            186.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "3.4.2 and 3.4.3.",
+          "bbox": [
+            121.62,
+            187.27,
+            186.06,
+            198.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "(iii)",
+          "bbox": [
+            90.0,
+            198.59,
+            107.78,
+            209.82
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "ArialMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "For different graphical pattern analyses, the Dotted Chart can be sorted according to several sort",
+          "bbox": [
+            121.62,
+            198.73,
+            525.94,
+            209.82
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "options. Two sort options are added in the PPMChart implementation, which facilitate the study of",
+          "bbox": [
+            121.62,
+            210.25,
+            525.88,
+            221.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "the PPM with the charts. See Section 3.4.4.",
+          "bbox": [
+            121.62,
+            221.71,
+            297.26,
+            232.8
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "(iv)",
+          "bbox": [
+            90.0,
+            233.09,
+            107.24,
+            244.32
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "ArialMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The option to filter certain operations (individual dots) or model elements (individual timelines)",
+          "bbox": [
+            121.62,
+            233.23,
+            525.93,
+            244.32
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "enables the analyst to take different views at different abstraction levels on the data from within the",
+          "bbox": [
+            121.62,
+            244.75,
+            525.89,
+            255.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "PPMChart implementation. For example, one can focus on creation of model elements if other",
+          "bbox": [
+            121.62,
+            256.21,
+            525.94,
+            267.3
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "operation types are filtered out. See Section 3.4.5.",
+          "bbox": [
+            121.62,
+            267.73,
+            323.84,
+            278.82
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "3.4",
+          "bbox": [
+            72.0,
+            291.23,
+            87.26,
+            302.46
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldItalicMT",
+            "TimesNewRomanPS-BoldItalicMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Tool support",
+          "bbox": [
+            100.8,
+            291.37,
+            155.8,
+            302.46
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The PPMChart Analysis plug-in9 (see Fig. 5) is an adapted version of the existing Dotted Chart Analysis plug-in",
+          "bbox": [
+            72.0,
+            305.71,
+            525.9,
+            316.8
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            10.02
+          ]
+        },
+        {
+          "text": "in ProM. In the middle, the PPMChart is presented. At the left hand side, one can configure the view, and at the",
+          "bbox": [
+            72.0,
+            317.23,
+            525.88,
+            328.32
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "right one can filter the data. The previous version of this plug-in (Claes et al., 2013) remained closely to the",
+          "bbox": [
+            72.0,
+            328.75,
+            525.93,
+            339.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Dotted Chart Analysis plug-in implementation in order to not confuse users that are familiar with that plug-in.",
+          "bbox": [
+            72.0,
+            340.21,
+            525.91,
+            351.3
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The version described here was fully redesigned after feedback of various experts (i.e., participants to the BPM",
+          "bbox": [
+            72.0,
+            351.73,
+            525.86,
+            362.82
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "2012 conference, international process modeling and visualization experts at various occasions). Every",
+          "bbox": [
+            72.0,
+            363.25,
+            525.93,
+            374.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "visualization property and tool setting was evaluated against principles of cognitive efficacy optimization.",
+          "bbox": [
+            72.0,
+            374.71,
+            498.62,
+            385.8
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Fig. 5. Screenshot of the PPMChart window in ProM. (Model 2012-184)",
+          "bbox": [
+            181.5,
+            639.72,
+            415.82,
+            648.88
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            4.98,
+            7.98
+          ]
+        },
+        {
+          "text": "This section describes the data format for the PPMChart plug-in and the configuration options that were added",
+          "bbox": [
+            72.0,
+            655.33,
+            525.9,
+            666.42
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "to the Dotted Chart Analysis plug-in. A more detailed description about every configuration option of the",
+          "bbox": [
+            72.0,
+            666.85,
+            525.93,
+            677.94
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "implementation can be found in Appendix A.",
+          "bbox": [
+            72.0,
+            678.31,
+            255.94,
+            689.4
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "3.4.1",
+          "bbox": [
+            72.0,
+            701.81,
+            94.76,
+            713.04
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldMT",
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Required format of the recorded data",
+          "bbox": [
+            108.0,
+            701.95,
+            271.28,
+            713.04
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "For the sake of complexity management and cognitive fit, it was decided to define a PPMChart as a visualization",
+          "bbox": [
+            72.0,
+            716.29,
+            525.96,
+            727.38
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "to display information of a single process modeling effort. Therefore, the tool requires as input an event log",
+          "bbox": [
+            72.0,
+            727.81,
+            525.94,
+            738.9
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "9 The PPMChart Analysis plug-in for ProM 6 can be downloaded at http://www.janclaes.info/plugins.php.",
+          "bbox": [
+            72.0,
+            759.41,
+            414.35,
+            769.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            7.98
+          ]
+        },
+        {
+          "text": "7",
+          "bbox": [
+            72.0,
+            772.27,
+            79.48,
+            783.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        }
+      ]
+    },
+    {
+      "page": 9,
+      "rotation": 0,
+      "drawings": 13,
+      "rasterImagesOnPage": 2,
+      "captionCandidates": [
+        "Fig. 6. Additional sort order options in the PPMChart implementation."
+      ],
+      "labels": [
+        {
+          "text": "Furthermore, semantic transparency is increased by selecting logical colors. Shades of green represent create",
+          "bbox": [
+            72.0,
+            79.15,
+            525.95,
+            90.24
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "operations and shades of red represent delete operations. For move operations, the third primary color was",
+          "bbox": [
+            72.0,
+            90.67,
+            525.92,
+            101.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "selected (i.e., blue). The selected shapes are similar to the BPMN symbol for the element type (square for",
+          "bbox": [
+            72.0,
+            102.13,
+            525.87,
+            113.22
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "activities, circle for events, diamond for gateways). Lastly, cognitive integration is facilitated by selecting fixed",
+          "bbox": [
+            72.0,
+            113.65,
+            528.42,
+            124.74
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "default coding. This resulted in the fixed default color (shade) and shape coding as presented in Table 2.",
+          "bbox": [
+            72.0,
+            125.17,
+            525.98,
+            136.26
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "However, the user can still modify the color (shades) and shapes in the Settings tab.",
+          "bbox": [
+            72.0,
+            136.63,
+            408.91,
+            147.72
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Table 2. Default colors, shades and shapes of the PPMChart Analysis plug-in.",
+          "bbox": [
+            173.04,
+            154.05,
+            424.2,
+            162.88
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Operation",
+          "bbox": [
+            167.52,
+            167.73,
+            201.5,
+            176.56
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Color",
+          "bbox": [
+            216.79,
+            167.73,
+            237.0,
+            176.56
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Model element",
+          "bbox": [
+            280.3,
+            167.73,
+            330.5,
+            176.56
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Shape",
+          "bbox": [
+            339.9,
+            167.73,
+            361.45,
+            176.56
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Color shade",
+          "bbox": [
+            389.27,
+            167.73,
+            429.69,
+            176.56
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Create",
+          "bbox": [
+            167.52,
+            178.47,
+            190.43,
+            187.3
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Green",
+          "bbox": [
+            216.81,
+            178.47,
+            238.41,
+            187.3
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Activity",
+          "bbox": [
+            280.4,
+            178.47,
+            308.59,
+            187.3
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Rectangle",
+          "bbox": [
+            339.95,
+            178.47,
+            373.91,
+            187.3
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Bright",
+          "bbox": [
+            389.31,
+            178.47,
+            411.73,
+            187.3
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Move",
+          "bbox": [
+            167.52,
+            187.65,
+            188.16,
+            196.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Blue",
+          "bbox": [
+            216.76,
+            187.65,
+            233.89,
+            196.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Event",
+          "bbox": [
+            280.32,
+            187.65,
+            300.99,
+            196.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Circle",
+          "bbox": [
+            339.91,
+            187.65,
+            361.45,
+            196.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Very light",
+          "bbox": [
+            389.28,
+            187.65,
+            423.92,
+            196.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Delete",
+          "bbox": [
+            167.52,
+            196.83,
+            190.45,
+            205.66
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Red",
+          "bbox": [
+            216.83,
+            196.83,
+            231.74,
+            205.66
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Gateway",
+          "bbox": [
+            280.38,
+            196.83,
+            310.86,
+            205.66
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Diamond",
+          "bbox": [
+            340.01,
+            196.83,
+            371.72,
+            205.66
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Dark",
+          "bbox": [
+            389.35,
+            196.83,
+            407.4,
+            205.66
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(Re)name",
+          "bbox": [
+            167.52,
+            206.01,
+            201.05,
+            214.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Orange",
+          "bbox": [
+            216.76,
+            206.01,
+            242.32,
+            214.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Edge",
+          "bbox": [
+            280.34,
+            206.01,
+            298.78,
+            214.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Triangle",
+          "bbox": [
+            339.92,
+            206.01,
+            369.04,
+            214.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Light",
+          "bbox": [
+            389.3,
+            206.01,
+            408.64,
+            214.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "3.4.3",
+          "bbox": [
+            72.0,
+            228.83,
+            94.76,
+            240.06
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldMT",
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Fixed default time interval",
+          "bbox": [
+            108.0,
+            228.97,
+            224.1,
+            240.06
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "By default, the time interval represented by a PPMChart is fixed, which makes it easier to compare time related",
+          "bbox": [
+            72.0,
+            243.31,
+            525.87,
+            254.4
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "issues between different PPMCharts (i.e., facilitating cognitive integration). The length of this interval is set to",
+          "bbox": [
+            72.0,
+            254.83,
+            525.88,
+            265.92
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "an arbitrary value of one hour, but this interval can be modified with the use of the zoom (X) button.",
+          "bbox": [
+            72.0,
+            266.35,
+            478.72,
+            277.44
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "3.4.4",
+          "bbox": [
+            72.0,
+            289.79,
+            94.76,
+            301.02
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldMT",
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Sort options",
+          "bbox": [
+            108.0,
+            289.93,
+            162.47,
+            301.02
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Cognitive integration also promotes the addition of two sort options that help the user to find a link between the",
+          "bbox": [
+            72.0,
+            304.33,
+            525.92,
+            315.42
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "PPMCharts and the corresponding process model elements: ‘Distance from start’ and ‘Create order from start’",
+          "bbox": [
+            72.0,
+            315.85,
+            525.88,
+            326.94
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "(see Fig. 6). This subsection explains both additional sort options, as well as the option to sort by ‘First",
+          "bbox": [
+            72.0,
+            327.31,
+            525.88,
+            338.4
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "operation’, which existed already in the Dotted Chart implementation and is used in two examples in this paper.",
+          "bbox": [
+            72.0,
+            338.83,
+            523.11,
+            349.92
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "(a) Distance from start",
+          "bbox": [
+            72.0,
+            357.15,
+            146.23,
+            365.98
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(b) Create order from start",
+          "bbox": [
+            296.82,
+            357.15,
+            383.14,
+            365.98
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Fig. 6. Additional sort order options in the PPMChart implementation.",
+          "bbox": [
+            185.04,
+            483.33,
+            412.33,
+            492.16
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Distance from start",
+          "bbox": [
+            72.0,
+            498.73,
+            157.25,
+            509.82
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The Distance from start sort option was added to sort the timelines according to the processing order of the",
+          "bbox": [
+            72.0,
+            510.13,
+            525.95,
+            521.22
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "corresponding model elements from start event to end event. This can be observed in Fig. 6a, which represents",
+          "bbox": [
+            72.0,
+            521.65,
+            525.85,
+            532.74
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "the left part of the process model of Fig. 4 and where the order of model elements is indicated with black circle",
+          "bbox": [
+            72.0,
+            533.11,
+            525.98,
+            544.2
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "annotations. For elements in parallel paths the order is rather arbitrary (see technical details below).",
+          "bbox": [
+            72.0,
+            544.63,
+            472.67,
+            555.72
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "To determine this order technically, we used the notion of length of an arc, path, path distance and shortest path.",
+          "bbox": [
+            72.0,
+            556.15,
+            525.88,
+            567.24
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "We define the length of an arc as the graphical distance between start and end point of the arc, regardless the",
+          "bbox": [
+            72.0,
+            567.61,
+            525.83,
+            578.7
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "actual routing of the arc through possible bend points. A path is a route between two elements in the process",
+          "bbox": [
+            72.0,
+            579.13,
+            525.89,
+            590.22
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "model and summarizes the consecutive model elements that are to be passed when traversing the model from A",
+          "bbox": [
+            72.0,
+            590.65,
+            525.96,
+            601.74
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "to B through nodes and directed arcs that connect these nodes. The distance of a path is the sum of the lengths of",
+          "bbox": [
+            72.0,
+            602.11,
+            525.88,
+            613.2
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "the arcs in the path. If an arc is the first or last element in the path, only half of its length is included in the",
+          "bbox": [
+            72.0,
+            613.63,
+            525.85,
+            624.72
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "distance. The shortest path between two nodes is the path that starts in one of the nodes and ends in the other",
+          "bbox": [
+            72.0,
+            625.09,
+            525.87,
+            636.18
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "node with the lowest distance. The distance from start orders each model element according to the distance from",
+          "bbox": [
+            72.0,
+            636.61,
+            525.97,
+            647.7
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "the shortest path from the start event to the model element. The distance from start for each model element in",
+          "bbox": [
+            72.0,
+            648.13,
+            525.82,
+            659.22
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Fig. 6a is displayed right above or below the black circle annotation that indicates the order of the model",
+          "bbox": [
+            72.0,
+            659.59,
+            525.89,
+            670.68
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "elements. If two elements get the same distance value, the order of the related records in the log is preserved.",
+          "bbox": [
+            72.0,
+            671.11,
+            510.42,
+            682.2
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Create order from start",
+          "bbox": [
+            72.0,
+            688.75,
+            175.85,
+            699.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The Create order from start sort option was added under the assumption that in several modeling tools (e.g.,",
+          "bbox": [
+            72.0,
+            700.09,
+            525.89,
+            711.18
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "ARIS, CEP) an edge connecting two nodes can only be created after the two nodes exist. Hence, it uses the same",
+          "bbox": [
+            72.0,
+            711.61,
+            525.96,
+            722.7
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "ordering mechanism as Distance from start, except that it puts each arc after the nodes it connects (see Fig. 6b).",
+          "bbox": [
+            72.0,
+            723.13,
+            525.9,
+            734.22
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "This sort option was added to resemble (our interpretation of) the logical order of creating the model elements in",
+          "bbox": [
+            72.0,
+            734.59,
+            525.96,
+            745.68
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-ItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "a process model from start event to end event (i.e., from left to right in the example).",
+          "bbox": [
+            72.0,
+            746.11,
+            413.27,
+            757.2
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "9",
+          "bbox": [
+            72.0,
+            772.27,
+            79.48,
+            783.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        }
+      ]
+    },
+    {
+      "page": 11,
+      "rotation": 0,
+      "drawings": 1,
+      "rasterImagesOnPage": 2,
+      "captionCandidates": [
+        "Fig. 7. Scattered or simultaneous delete operations."
+      ],
+      "labels": [
+        {
+          "text": "the second modeling session. For this session, every student modeled only one case (Mortgage case13). Again,",
+          "bbox": [
+            72.0,
+            72.25,
+            525.87,
+            83.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            10.02
+          ]
+        },
+        {
+          "text": "CEP was used to record the modeling operations. This session resulted in models of 27 activities and using 276",
+          "bbox": [
+            72.0,
+            83.77,
+            525.9,
+            94.86
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "recorded operations on average. This indicates the mortgage case is more extensive than the other two cases.",
+          "bbox": [
+            72.0,
+            95.23,
+            508.89,
+            106.32
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "4.2",
+          "bbox": [
+            72.0,
+            118.73,
+            87.27,
+            129.96
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldItalicMT",
+            "TimesNewRomanPS-BoldItalicMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Simple observations",
+          "bbox": [
+            100.8,
+            118.87,
+            185.8,
+            129.96
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "A visualization of high quality supports the discovery of surprising insights in highly complex data, but should",
+          "bbox": [
+            72.0,
+            133.27,
+            525.87,
+            144.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "also support the easy derivation of simple characteristics. For the sake of brevity, this section is limited to a brief",
+          "bbox": [
+            72.0,
+            144.73,
+            525.9,
+            155.82
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "presentation of four of such rather simple observations.",
+          "bbox": [
+            72.0,
+            156.25,
+            295.56,
+            167.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Modeling speed",
+          "bbox": [
+            72.0,
+            174.79,
+            141.49,
+            185.88
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Observation: The width of the part of the chart that contains dots differs between charts from different modelers",
+          "bbox": [
+            72.0,
+            186.13,
+            525.98,
+            197.22
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "that modeled the same case.",
+          "bbox": [
+            72.0,
+            197.65,
+            186.46,
+            208.74
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Interpretation: Some modelers work faster than others.",
+          "bbox": [
+            72.0,
+            209.11,
+            297.03,
+            220.2
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Modeling pauses",
+          "bbox": [
+            72.0,
+            227.65,
+            145.94,
+            238.74
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Observation: Some charts have clear horizontal gaps: i.e., a non-trivial time interval where no line contains dots.",
+          "bbox": [
+            72.0,
+            239.05,
+            527.92,
+            250.14
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Interpretation: Some modelers pause their modeling operations at certain times.",
+          "bbox": [
+            72.0,
+            250.51,
+            396.12,
+            261.6
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Amount of model elements",
+          "bbox": [
+            72.0,
+            269.05,
+            188.57,
+            280.14
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Observation: The number of lines differs between charts from different modelers that modeled the same case.",
+          "bbox": [
+            72.0,
+            280.45,
+            513.93,
+            291.54
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Interpretation: Some modelers create more model elements.",
+          "bbox": [
+            72.0,
+            291.91,
+            316.92,
+            303.0
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Amount of modeling operations",
+          "bbox": [
+            72.0,
+            310.45,
+            209.62,
+            321.54
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Observation: The relative number of blue, red, and orange dots differs between charts from different modelers",
+          "bbox": [
+            72.0,
+            321.85,
+            526.01,
+            332.94
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "that modeled the same case.",
+          "bbox": [
+            72.0,
+            333.31,
+            186.46,
+            344.4
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Interpretation: Some modelers tend to move, delete, or rename elements relatively more than others.",
+          "bbox": [
+            72.0,
+            344.83,
+            479.0,
+            355.92
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "4.3",
+          "bbox": [
+            72.0,
+            368.33,
+            87.26,
+            379.56
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldItalicMT",
+            "TimesNewRomanPS-BoldItalicMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Observations on patterns of operations on model elements",
+          "bbox": [
+            100.8,
+            368.47,
+            341.76,
+            379.56
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "This section discusses a number of observations that relate to patterns of operations on model elements. These",
+          "bbox": [
+            72.0,
+            382.81,
+            525.97,
+            393.9
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "can be derived from the amount and position of dots of a certain type.",
+          "bbox": [
+            72.0,
+            394.33,
+            353.33,
+            405.42
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "4.3.1",
+          "bbox": [
+            72.0,
+            417.83,
+            94.76,
+            429.06
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldMT",
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Patterns of delete operations",
+          "bbox": [
+            108.0,
+            417.97,
+            232.44,
+            429.06
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Observation: If the chart contains red dots, they are sometimes scattered around the chart (without a clear",
+          "bbox": [
+            72.0,
+            432.31,
+            525.97,
+            443.4
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "pattern), and sometimes a vertical line of red dots can be distinguished.",
+          "bbox": [
+            72.0,
+            443.83,
+            359.21,
+            454.92
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Interpretation: Some modelers delete model elements at various times, some modelers decide to delete a whole",
+          "bbox": [
+            72.0,
+            455.35,
+            525.95,
+            466.44
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "part of the model (i.e., multiple model elements) at the same time.",
+          "bbox": [
+            72.0,
+            466.81,
+            338.72,
+            477.9
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Possible explanations: In Fig. 7a the red dots are scattered over the PPMChart. Possibly, this means the modeler",
+          "bbox": [
+            72.0,
+            485.23,
+            526.03,
+            496.32
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "occasionally changed her/his mind about the content of the model. When the PPMChart shows a vertical line of",
+          "bbox": [
+            72.0,
+            496.69,
+            525.85,
+            507.78
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "delete operations as can be observed in Fig. 7b, the modeler threw away a whole part of the model at once.",
+          "bbox": [
+            72.0,
+            508.21,
+            525.92,
+            519.3
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Possibly, the modeler wanted to start over and remodel that part or decided that that part was not necessary in",
+          "bbox": [
+            72.0,
+            519.73,
+            526.08,
+            530.82
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "the model (a closer inspection of the data about the operations after the deletion might reveal the exact cause).",
+          "bbox": [
+            72.0,
+            531.19,
+            514.78,
+            542.28
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "(a) Model 2010-318",
+          "bbox": [
+            72.0,
+            549.51,
+            138.43,
+            558.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(b) Model 2010-213",
+          "bbox": [
+            303.06,
+            549.51,
+            369.97,
+            558.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Fig. 7. Scattered or simultaneous delete operations.",
+          "bbox": [
+            215.82,
+            726.03,
+            381.5,
+            734.86
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(charts hide moves and renames)",
+          "bbox": [
+            245.04,
+            734.88,
+            351.58,
+            744.04
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            4.98,
+            7.98
+          ]
+        },
+        {
+          "text": "13 Case description can be downloaded from http://bpm.q-e.at/experiment/MortgageEindhoven.",
+          "bbox": [
+            72.0,
+            759.41,
+            379.89,
+            769.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            7.98
+          ]
+        },
+        {
+          "text": "11",
+          "bbox": [
+            72.0,
+            772.27,
+            84.52,
+            783.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        }
+      ]
+    },
+    {
+      "page": 16,
+      "rotation": 0,
+      "drawings": 1,
+      "rasterImagesOnPage": 4,
+      "captionCandidates": [
+        "Fig. 14. Similar patterns of element creation in a first (a, c) and second (b, d) modeling effort of the same modeler."
+      ],
+      "labels": [
+        {
+          "text": "(a) Model 2010-354",
+          "bbox": [
+            72.0,
+            72.15,
+            136.42,
+            80.98
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(b) Model 2010-355",
+          "bbox": [
+            303.07,
+            72.15,
+            367.95,
+            80.98
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(c) Model 2010-140",
+          "bbox": [
+            72.0,
+            245.67,
+            136.42,
+            254.5
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(d) Model 2010-141",
+          "bbox": [
+            303.07,
+            245.67,
+            367.95,
+            254.5
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Fig. 14. Similar patterns of element creation in a first (a, c) and second (b, d) modeling effort of the same modeler.",
+          "bbox": [
+            114.48,
+            422.13,
+            484.92,
+            430.96
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(charts hide moves, deletes and renames; Time intervals of charts c-d is set to minutes)",
+          "bbox": [
+            158.76,
+            431.37,
+            438.62,
+            440.2
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "4.4.3",
+          "bbox": [
+            72.0,
+            452.63,
+            94.76,
+            463.86
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldMT",
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Comparison between PPMCharts and process models",
+          "bbox": [
+            108.0,
+            452.77,
+            339.6,
+            463.86
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Observation: Some specific patterns seem to occur only in combination with particular process models.",
+          "bbox": [
+            72.0,
+            467.17,
+            488.93,
+            478.26
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Interpretation: Modeling approaches can be discovered with the aid of PPMCharts that seem to have a relation",
+          "bbox": [
+            72.0,
+            478.63,
+            525.95,
+            489.72
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "with the properties of the modeling result (i.e., the constructed process model).",
+          "bbox": [
+            72.0,
+            490.15,
+            389.65,
+            501.24
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Possible explanations: Fig. 15 illustrates the comparison between PPMCharts and process models. The models",
+          "bbox": [
+            72.0,
+            508.57,
+            525.84,
+            519.66
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPS-BoldItalicMT",
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "at the right correspond to the charts at the left. The modeling approach in Fig. 15a-b is aspect-oriented (i.e., first",
+          "bbox": [
+            72.0,
+            520.03,
+            525.93,
+            531.12
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "creating events and activities, only afterwards gateways and edges). The PPM instance depicted in Fig. 15c-d",
+          "bbox": [
+            72.0,
+            531.55,
+            525.81,
+            542.64
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "shows chunked modeling. These are two different examples of a modeler that uses a clear modeling strategy that",
+          "bbox": [
+            72.0,
+            543.01,
+            525.88,
+            554.1
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "the modeler consistently applied. Note, how the corresponding process models also have a clear structure14.",
+          "bbox": [
+            72.0,
+            554.53,
+            525.88,
+            565.62
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            10.02
+          ]
+        },
+        {
+          "text": "Because this particular relation can be observed in a high number of examples, this might indicate that having a",
+          "bbox": [
+            72.0,
+            566.05,
+            525.98,
+            577.14
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "clear modeling style (i.e., the patterns as described above are clearly recognizable), has an impact on the",
+          "bbox": [
+            72.0,
+            577.51,
+            525.87,
+            588.6
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "structuredness of the resulting process model.",
+          "bbox": [
+            72.0,
+            589.03,
+            259.7,
+            600.12
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "14 We are aware of the fact the models are unreadable. This does not prevent to judge the structure of the models.",
+          "bbox": [
+            72.0,
+            748.43,
+            438.49,
+            758.5
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            7.98
+          ]
+        },
+        {
+          "text": "The process models can be downloaded in high resolution from http://www.janclaes.info/papers/PPMISeB.",
+          "bbox": [
+            80.52,
+            760.65,
+            426.19,
+            769.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "16",
+          "bbox": [
+            72.0,
+            772.27,
+            84.52,
+            783.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        }
+      ]
+    },
+    {
+      "page": 24,
+      "rotation": 0,
+      "drawings": 1,
+      "rasterImagesOnPage": 4,
+      "captionCandidates": [
+        "Fig. 17. Examples of process visualizations that are not considered to be traditional process models."
+      ],
+      "labels": [
+        {
+          "text": "(a) TreeMap (from Johnson, 1993)",
+          "bbox": [
+            72.0,
+            72.15,
+            185.3,
+            80.98
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(b) Timeline tree (from Burch et al., 2008)",
+          "bbox": [
+            299.34,
+            72.15,
+            437.55,
+            80.98
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "(c) Gantt chart (from SE blog15)",
+          "bbox": [
+            72.0,
+            197.34,
+            176.11,
+            206.5
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            4.98,
+            7.98
+          ]
+        },
+        {
+          "text": "(d) E.J. Marey’s train schedule (from Tufte, 1983)",
+          "bbox": [
+            299.34,
+            197.49,
+            462.23,
+            206.32
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "Fig. 17. Examples of process visualizations that are not considered to be traditional process models.",
+          "bbox": [
+            138.06,
+            326.07,
+            459.31,
+            334.9
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            7.98
+          ]
+        },
+        {
+          "text": "8 Conclusion",
+          "bbox": [
+            72.0,
+            347.78,
+            169.58,
+            366.28
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldMT",
+            "Calibri-Bold"
+          ],
+          "sizes": [
+            16.02
+          ]
+        },
+        {
+          "text": "The goal of the research described in this paper was to design and implement a visualization that helps to study",
+          "bbox": [
+            72.0,
+            369.85,
+            525.92,
+            380.94
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "observational data about the process of process modeling (PPM) in a cognitive effective way. The visualization",
+          "bbox": [
+            72.0,
+            381.37,
+            525.77,
+            392.46
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "makes the characteristics of PPM instances explicit, which facilitates the development of theory, training and",
+          "bbox": [
+            72.0,
+            392.89,
+            525.9,
+            403.98
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "tool support for various aspects of the PPM, and especially in the context of increasing the quality of the",
+          "bbox": [
+            72.0,
+            404.35,
+            526.03,
+            415.44
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "resulting process models.",
+          "bbox": [
+            72.0,
+            415.87,
+            175.86,
+            426.96
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "The PPMChart visualization of the PPM presented in this paper displays modeling operations of one modeler in",
+          "bbox": [
+            72.0,
+            434.29,
+            525.99,
+            445.38
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "the construction of a single process model as colored and shaped dots in a chart. The dots are positioned on",
+          "bbox": [
+            72.0,
+            445.75,
+            525.93,
+            456.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "horizontal timelines that represent the model elements on which the operations are performed. The PPMChart is",
+          "bbox": [
+            72.0,
+            457.27,
+            525.9,
+            468.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "implemented in the process mining tool ProM in such a way that various options can be configured and that the",
+          "bbox": [
+            72.0,
+            468.79,
+            525.94,
+            479.88
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "data can be filtered from within the plug-in. This allows to effortlessly take different views at different levels of",
+          "bbox": [
+            72.0,
+            480.25,
+            525.9,
+            491.34
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "abstraction on the modeling operations. The paper contains an extensive list of examples and observations to",
+          "bbox": [
+            72.0,
+            491.77,
+            525.93,
+            502.86
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "demonstrate the usefulness of this graphical representation in analyzing the PPM and the modeling behavior and",
+          "bbox": [
+            72.0,
+            503.29,
+            525.97,
+            514.38
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "styles of different modelers. A qualitative study confirms the usefulness of the PPMChart and the improved",
+          "bbox": [
+            72.0,
+            514.75,
+            525.92,
+            525.84
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "cognitive effectiveness compared to the Dotted Chart.",
+          "bbox": [
+            72.0,
+            526.27,
+            290.33,
+            537.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Two specific characteristics of the visualization need special attention. Firstly, the PPMCharts show raw,",
+          "bbox": [
+            72.0,
+            544.69,
+            525.71,
+            555.78
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "uninterpreted data. Each dot represents a clearly observable distinct modeling operation of the modeler. The",
+          "bbox": [
+            72.0,
+            556.15,
+            525.98,
+            567.24
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "interpretation of the meaning or cause of a specific operation is left up to the reader of the charts. Secondly, the",
+          "bbox": [
+            72.0,
+            567.67,
+            525.86,
+            578.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "visualization makes advantage of the same benefits that were originally present in the Dotted Chart Analysis",
+          "bbox": [
+            72.0,
+            579.19,
+            525.9,
+            590.28
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "plug-in. The presentation of operations makes use of dots that have a particular color, shade, shape and position,",
+          "bbox": [
+            72.0,
+            590.65,
+            525.76,
+            601.74
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "which means that all available data are presented in the visualization and that the reader can zoom in on details",
+          "bbox": [
+            72.0,
+            602.17,
+            525.84,
+            613.26
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "or at the same time take a so-called helicopter view on the whole chart. This is in contrast with classical process",
+          "bbox": [
+            72.0,
+            613.63,
+            525.91,
+            624.72
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "visualizations (i.e., process models) that mostly abstract from the data on individual cases and try to summarize",
+          "bbox": [
+            72.0,
+            625.15,
+            525.94,
+            636.24
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "the data. Both properties are beneficial for the explorative purpose the PPMCharts were developed for.",
+          "bbox": [
+            72.0,
+            636.67,
+            487.97,
+            647.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "9 Acknowledgements",
+          "bbox": [
+            72.0,
+            660.56,
+            227.78,
+            679.06
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "Arial-BoldMT",
+            "Calibri-Bold"
+          ],
+          "sizes": [
+            16.02
+          ]
+        },
+        {
+          "text": "Our research builds upon the work of the development team of CEP and the researchers involved in the",
+          "bbox": [
+            72.0,
+            682.69,
+            525.84,
+            693.78
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "modeling sessions. Therefore, we express our extensive gratitude to Stefan Zugal, Jan Mendling and Dirk",
+          "bbox": [
+            72.0,
+            694.21,
+            525.92,
+            705.3
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Fahland. We also thank the various people that provided feedback on the plug-in, subjects of the initial",
+          "bbox": [
+            72.0,
+            705.67,
+            525.86,
+            716.76
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "experiments and participants of the qualitative evaluation study. This research was funded by the Austrian",
+          "bbox": [
+            72.0,
+            717.19,
+            525.8,
+            728.28
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "Science Fund (FWF): P23699-N23.",
+          "bbox": [
+            72.0,
+            728.71,
+            217.32,
+            739.8
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        },
+        {
+          "text": "15 See http://software-document.blogspot.be/2010/07/activity-network-methods.html.",
+          "bbox": [
+            72.0,
+            759.41,
+            347.5,
+            769.48
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            6.0,
+            7.98
+          ]
+        },
+        {
+          "text": "24",
+          "bbox": [
+            72.0,
+            772.27,
+            84.52,
+            783.36
+          ],
+          "intersectsDrawing": false,
+          "fonts": [
+            "TimesNewRomanPSMT"
+          ],
+          "sizes": [
+            10.02
+          ]
+        }
+      ]
+    }
+  ]
+}

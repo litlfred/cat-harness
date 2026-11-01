@@ -102,6 +102,7 @@ statement">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Needs" bpmnElement="GW_Needs" isMarkerVisible="true">
         <dc:Bounds x="1310" y="310" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1290" y="270" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_CRDM_Needs" bpmnElement="End_Process_CRDM_Needs">
         <dc:Bounds x="1510" y="317" width="36" height="36" />

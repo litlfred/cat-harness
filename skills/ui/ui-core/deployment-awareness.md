@@ -141,7 +141,7 @@ A critical architectural distinction is whether deployment surfaces are
 
 | Concept | Nature | Mechanism | Example |
 |---|---|---|---|
-| **Capability** | An environment probe | Tested dynamically at runtime by inspecting the environment | "Is `git` installed?", "Is port 4000 free?", "Does the token have repo write scope?" |
+| **Capability** | An environment probe | Tested dynamically at runtime by inspecting the environment | "Is `git` installed?", "Is port 4007 free?", "Does the token have repo write scope?" |
 | **Deployment Surface** | An architectural fact / context | Declared statically by configuration or scenario topology | "This folio publishes to GitHub Pages", "The server is a static host", "Current mode is chat-only" |
 
 ### Why deployment surfaces must NOT be probed

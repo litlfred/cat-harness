@@ -49,7 +49,9 @@ id that is not filename-safe rather than minting one nobody chose.
 
 Owner, 2026-10-30, of `…/views/id-007936f8c2424b96ad1893ef0ff66059/`: *"do
 we need to use such ugly IDs … why not nicer slug IRIs?"*; then, of the
-designs offered (cat-harness-tools#1054): *"B. clean break ok"*.
+designs offered
+([issue 1054](https://github.com/litlfred/cat-harness-tools/issues/1054)):
+*"B. clean break ok"*.
 
 **The IRI stays the id; only the page is at a slug.** A view's or element's
 page is at `<m>/views/1-central-health-workforce-registry/`, while its node
@@ -57,8 +59,9 @@ keeps `<m>/views/<id>.jsonld`. Cite the IRI when a link must last: the page
 path is for reading. Relationships keep id paths, since almost none are
 named (smart-ra 0.2.0: 6 of 284).
 
-Slugs are worked out from the names on every build (`archimate/schemas/slugs.ts`
-in cat-harness-tools). Nothing is committed and nothing redirects, so:
+Slugs are worked out from the names on every build
+(`cat-harness-tools/archimate/schemas/slugs.ts`). Nothing is committed and
+nothing redirects, so:
 
 - a rename moves the page, and the old path is gone (a clean break, as the
   owner chose; old `<m>/views/<id>/` page paths are gone too);
@@ -79,7 +82,7 @@ Owner, 2026-10-31: *"i dont really like native UML, rather derived"*, then
 
 **Do not draw a metamodel view.** Which element types a model uses, and which
 relationships it draws between them, is computed from the model by the Tool
-`archimate-metamodel` (`schemas/metamodel.ts` in cat-harness-tools):
+`archimate-metamodel` (`cat-harness-tools/archimate/schemas/metamodel.ts`):
 
 - every element type, with how many elements it has;
 - every pattern (source type, relationship, target type), with its count and
@@ -161,7 +164,8 @@ Readers of a view are mostly not architects. **Every rendered view carries a
 plain-language key** below it, saying what each colour, shape, line and end
 used ON THAT VIEW means, in words a reader without ArchiMate understands
 ("Realization: makes real, or achieves"), not the specification's terms
-alone. `render-view.ts` draws it by default (cat-harness-tools#1059), keyed
+alone. `render-view.ts` draws it by default
+([pull 1059](https://github.com/litlfred/cat-harness-tools/pull/1059)), keyed
 only to what the view uses. Do not turn it off for a published view, and do
 not export a view without it. When the renderer gains a new mark, the key
 gains its line in the same change.

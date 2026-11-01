@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-1511-04055v1/blocks/figure-img-p006-2",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p006-2.png",
+  "pageStart": 6,
+  "pageEnd": 6,
+  "narrative": [
+    {
+      "text": "Figure 3 (bottom panel): PPMChart visualization of the same modeling session plotted with logical relative time (one column per consecutive operation) on the horizontal axis, revealing the sequential creation of elements 1-14 inside the highlighted rectangle.",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 3 (panneau inférieur) : Visualisation PPMChart de la même session avec le temps logique relatif (une colonne par opération consécutive), révélant la création séquentielle des éléments 1 à 14.",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 3 (panel inferior): Visualización PPMChart de la misma sesión con tiempo lógico relativo (una columna por operación consecutiva), revelando la creación secuencial de los elementos 1 a 14.",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 3 (اللوحة السفلية): تصور PPMChart لنفس جلسة النمذجة وفق الترتيب المنطقي للعمليات (عمود لكل عملية متتالية)، مما يوضح الإنشاء المتسلسل للعناصر من 1 إلى 14.",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图3（下图）：同一建模会话按逻辑相对时间（每次连续操作占一列）绘制的PPMChart可视化，清晰显示高亮框内元素1至14的顺序创建。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 3 (нижняя панель): Визуализация PPMChart того же сеанса моделирования в логическом относительном времени (один столбец на каждую операцию), показывающая последовательное создание элементов 1–14.",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-1511-04055v1/sections/sec-016",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1511-04055v1/manifest.jsonld",
+  "provenance": "ingested"
+}

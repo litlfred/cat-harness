@@ -134,43 +134,47 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
   <bpmndi:BPMNDiagram id="Diagram_VoiceReview">
     <bpmndi:BPMNPlane id="Plane_VoiceReview" bpmnElement="Process_VoiceReview">
       <bpmndi:BPMNShape id="S_Lane_NarrativeReviewer_V" bpmnElement="Lane_NarrativeReviewer" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1560" height="360"/>
+        <dc:Bounds x="160" y="80" width="1565" height="360" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_BaseVoiceDone" bpmnElement="Start_BaseVoiceDone">
-        <dc:Bounds x="200" y="212" width="36" height="36"/>
+        <dc:Bounds x="200" y="212" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="189.5" y="175.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_AnyActive" bpmnElement="GW_AnyActive" isMarkerVisible="true">
-        <dc:Bounds x="280" y="205" width="50" height="50"/>
+        <dc:Bounds x="280" y="205" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_NoVoice" bpmnElement="End_NoVoice">
-        <dc:Bounds x="287" y="120" width="36" height="36"/>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="287" y="120" width="36" height="36" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="327" y="111.5" width="90" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_LoadActive" bpmnElement="Task_LoadActive">
-        <dc:Bounds x="380" y="190" width="150" height="80"/>
+        <dc:Bounds x="380" y="190" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_MechanicalHalf" bpmnElement="Task_MechanicalHalf">
-        <dc:Bounds x="570" y="190" width="160" height="80"/>
+        <dc:Bounds x="570" y="190" width="160" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_OpenCitation" bpmnElement="Task_OpenCitation">
-        <dc:Bounds x="770" y="190" width="150" height="80"/>
+        <dc:Bounds x="770" y="190" width="150" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_QuoteSupports" bpmnElement="GW_QuoteSupports" isMarkerVisible="true">
-        <dc:Bounds x="960" y="205" width="50" height="50"/>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="960" y="205" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1014" y="194.5" width="90" height="71" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RuleIsWrong" bpmnElement="Task_RuleIsWrong">
-        <dc:Bounds x="1050" y="100" width="170" height="70"/>
+        <dc:Bounds x="1050" y="100" width="170" height="70" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_Adjudicate" bpmnElement="Task_Adjudicate">
-        <dc:Bounds x="1050" y="290" width="170" height="70"/>
+        <dc:Bounds x="1050" y="288" width="180" height="74" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_MoreVoices" bpmnElement="GW_MoreVoices" isMarkerVisible="true">
-        <dc:Bounds x="1270" y="205" width="50" height="50"/>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="1275" y="205" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1181" y="203.5" width="90" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RecordOnSidecar" bpmnElement="Task_RecordOnSidecar">
-        <dc:Bounds x="1370" y="190" width="170" height="80"/>
+        <dc:Bounds x="1375" y="190" width="170" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_VoiceReviewed" bpmnElement="End_VoiceReviewed">
-        <dc:Bounds x="1600" y="212" width="36" height="36"/>
+        <dc:Bounds x="1605" y="212" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="E_F_V1" bpmnElement="F_V1">
         <di:waypoint x="236" y="230"/><di:waypoint x="280" y="230"/>
@@ -194,22 +198,33 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
         <di:waypoint x="985" y="205"/><di:waypoint x="985" y="135"/><di:waypoint x="1050" y="135"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V8" bpmnElement="F_V8">
-        <di:waypoint x="985" y="255"/><di:waypoint x="985" y="325"/><di:waypoint x="1050" y="325"/>
+        <di:waypoint x="985" y="255" />
+        <di:waypoint x="985" y="325" />
+        <di:waypoint x="1050" y="325" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V9" bpmnElement="F_V9">
-        <di:waypoint x="1220" y="135"/><di:waypoint x="1295" y="135"/><di:waypoint x="1295" y="205"/>
+        <di:waypoint x="1220" y="135" />
+        <di:waypoint x="1300" y="135" />
+        <di:waypoint x="1300" y="205" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V10" bpmnElement="F_V10">
-        <di:waypoint x="1220" y="325"/><di:waypoint x="1295" y="325"/><di:waypoint x="1295" y="255"/>
+        <di:waypoint x="1230" y="325" />
+        <di:waypoint x="1300" y="325" />
+        <di:waypoint x="1300" y="255" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V11" bpmnElement="F_V11">
-        <di:waypoint x="1295" y="205"/><di:waypoint x="1295" y="410"/><di:waypoint x="650" y="410"/><di:waypoint x="650" y="270"/>
+        <di:waypoint x="1300" y="205" />
+        <di:waypoint x="1300" y="410" />
+        <di:waypoint x="650" y="410" />
+        <di:waypoint x="650" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V12" bpmnElement="F_V12">
-        <di:waypoint x="1320" y="230"/><di:waypoint x="1370" y="230"/>
+        <di:waypoint x="1325" y="230" />
+        <di:waypoint x="1375" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V13" bpmnElement="F_V13">
-        <di:waypoint x="1540" y="230"/><di:waypoint x="1600" y="230"/>
+        <di:waypoint x="1545" y="230" />
+        <di:waypoint x="1605" y="230" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

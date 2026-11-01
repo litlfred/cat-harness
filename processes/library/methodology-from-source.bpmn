@@ -126,12 +126,14 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Decision" bpmnElement="GW_Decision" isMarkerVisible="true">
         <dc:Bounds x="2005" y="140" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1985" y="118" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Adopted" bpmnElement="End_Adopted">
         <dc:Bounds x="2202" y="147" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Declined" bpmnElement="End_Declined">
         <dc:Bounds x="2202" y="317" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2242" y="299.5" width="90" height="71" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_MethodologyFromSource_1" bpmnElement="SF_Process_MethodologyFromSource_1">
         <di:waypoint x="338" y="165" />
@@ -182,6 +184,7 @@
         <di:waypoint x="2177" y="165" />
         <di:waypoint x="2177" y="335" />
         <di:waypoint x="2202" y="335" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2071" y="168" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_MethodologyFromSource_12" bpmnElement="SF_Process_MethodologyFromSource_12">
         <di:waypoint x="2030" y="190" />

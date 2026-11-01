@@ -1,0 +1,1212 @@
+{
+  "$schema": "folio-vector-figures/v1",
+  "doc_id": "moeller-winter-reichert-2025-cognitive-factors-slr",
+  "figures": [
+    {
+      "id": "vfig-p003",
+      "file": "figures/vfig-p003.png",
+      "role": "figure",
+      "basis": {
+        "method": "inspection",
+        "by": {
+          "kind": "agent",
+          "id": "antigravity",
+          "model": "gemini-2.5-pro"
+        },
+        "at": "2026-10-31",
+        "saw": "Vector-drawn Figure 1 on page 3: BPMN 2.0 'Restaurant' pool with Customer, Waiter, and Chef lanes and callout labels for Pool, Lane, Start Event, AND Gateway, XOR Gateway, Timer Event, Activity, Subprocess, Sequence Flow, and End Event.",
+        "page": 3
+      },
+      "page": 3,
+      "rotation": 0,
+      "captionLabels": [
+        "1"
+      ],
+      "region": [
+        47.79,
+        131.71,
+        545.47,
+        352.51
+      ],
+      "assembly": {
+        "drawings": 143,
+        "background": 0,
+        "groups": [
+          {
+            "bbox": [
+              -32.47,
+              78.32,
+              625.73,
+              116.71
+            ],
+            "drawings": 8,
+            "pageEdge": true,
+            "rendered": false,
+            "labels": [
+              "BPMN 2.0 is a widely used standard for modeling business processes in an imperative",
+              "style [9]. It uses a graphical notation to describe the flow of activities in a process, as",
+              "illustrated in Figure 1."
+            ]
+          },
+          {
+            "bbox": [
+              47.79,
+              131.71,
+              545.47,
+              352.51
+            ],
+            "drawings": 130,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "Restaurant",
+              "Customer",
+              "Customer",
+              "Hungry",
+              "Order Burger",
+              "Receive the",
+              "Burger",
+              "Eat the Burger",
+              "10 min",
+              "Poke the Waiter",
+              "Full",
+              "Waiter",
+              "Waiter",
+              "Take the Order",
+              "Serve the",
+              "Burger",
+              "Chef",
+              "Chef",
+              "Make the Burger",
+              "No Burger Received",
+              "Burger",
+              "Received",
+              "Subprocess",
+              "Activity",
+              "End Event",
+              "Start Event",
+              "AND Gateway",
+              "XOR Gateway",
+              "Sequence Flow",
+              "Pool",
+              "Lane",
+              "Timer Event"
+            ]
+          }
+        ],
+        "boxes": [
+          {
+            "id": "b0",
+            "bbox": [
+              47.79,
+              131.71,
+              60.31,
+              348.64
+            ],
+            "parent": null,
+            "labels": [
+              "Restaurant"
+            ]
+          },
+          {
+            "id": "b1",
+            "bbox": [
+              60.31,
+              131.71,
+              545.47,
+              236
+            ],
+            "parent": null,
+            "labels": [
+              "Customer",
+              "Customer",
+              "Hungry",
+              "Order Burger",
+              "Receive the",
+              "Burger",
+              "Eat the Burger",
+              "10 min",
+              "Poke the Waiter",
+              "Full",
+              "No Burger Received",
+              "Burger",
+              "Received",
+              "End Event",
+              "Start Event",
+              "AND Gateway",
+              "XOR Gateway",
+              "Sequence Flow",
+              "Pool",
+              "Timer Event"
+            ]
+          },
+          {
+            "id": "b2",
+            "bbox": [
+              60.31,
+              236,
+              545.47,
+              296.49
+            ],
+            "parent": null,
+            "labels": [
+              "Waiter",
+              "Waiter",
+              "Take the Order",
+              "Serve the",
+              "Burger",
+              "Activity",
+              "Lane"
+            ]
+          },
+          {
+            "id": "b3",
+            "bbox": [
+              60.31,
+              296.49,
+              545.47,
+              348.64
+            ],
+            "parent": null,
+            "labels": [
+              "Chef",
+              "Chef",
+              "Make the Burger",
+              "Subprocess"
+            ]
+          }
+        ],
+        "unlabelledClosedShapes": 36,
+        "connectors": [
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              35.72,
+              51.52,
+              558.99,
+              51.52
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              36,
+              51.52,
+              559.28,
+              51.52
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              -32.47,
+              78.53,
+              187,
+              78.53
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              -32.47,
+              116.5,
+              187,
+              116.5
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              -32.26,
+              78.32,
+              -32.26,
+              116.71
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              187,
+              78.53,
+              296.63,
+              78.53
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              187,
+              116.5,
+              296.63,
+              116.5
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              296.63,
+              78.53,
+              406.26,
+              78.53
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              296.63,
+              116.5,
+              406.26,
+              116.5
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              406.26,
+              78.53,
+              625.73,
+              78.53
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              625.52,
+              78.32,
+              625.52,
+              116.71
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              406.26,
+              116.5,
+              625.73,
+              116.5
+            ]
+          },
+          {
+            "from": "b1",
+            "to": "b2",
+            "bbox": [
+              181.33,
+              192.18,
+              181.47,
+              249.56
+            ]
+          },
+          {
+            "from": "b1",
+            "to": "b2",
+            "bbox": [
+              181.33,
+              192.18,
+              181.47,
+              249.56
+            ]
+          },
+          {
+            "from": "b2",
+            "to": "b3",
+            "bbox": [
+              181.29,
+              283.35,
+              220.74,
+              322.77
+            ]
+          },
+          {
+            "from": "b2",
+            "to": "b3",
+            "bbox": [
+              181.29,
+              283.35,
+              220.74,
+              322.77
+            ]
+          },
+          {
+            "from": "b3",
+            "to": "b2",
+            "bbox": [
+              262.84,
+              266.45,
+              305.39,
+              322.77
+            ]
+          },
+          {
+            "from": "b3",
+            "to": "b2",
+            "bbox": [
+              262.84,
+              266.45,
+              305.39,
+              322.77
+            ]
+          },
+          {
+            "from": "b2",
+            "to": "b1",
+            "bbox": [
+              347.53,
+              183.86,
+              393.83,
+              266.45
+            ]
+          },
+          {
+            "from": "b2",
+            "to": "b1",
+            "bbox": [
+              347.53,
+              183.86,
+              393.83,
+              266.45
+            ]
+          },
+          {
+            "from": "b1",
+            "to": "b0",
+            "bbox": [
+              55.16,
+              143.85,
+              71.51,
+              154.88
+            ]
+          }
+        ],
+        "between": [],
+        "outside": 32
+      },
+      "shows": [
+        "1"
+      ],
+      "narrative": [
+        {
+          "text": "Figure 1: Example of a BPMN 2.0 process model showing a 'Restaurant' pool with three lanes (Customer: Hungry -> Order Burger -> AND split / XOR loop with 10 min Timer Event 'No Burger Received' -> 'Poke the Waiter' vs 'Burger Received' -> Receive the Burger -> Eat the Burger -> Full; Waiter: Take the Order -> Serve the Burger; Chef: Subprocess 'Make the Burger'), annotated with red callout labels naming core BPMN 2.0 constructs (Pool, Lane, Start Event, AND Gateway, XOR Gateway, Timer Event, Activity, Subprocess, Sequence Flow, End Event).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "vfig-p004",
+      "file": "figures/vfig-p004.png",
+      "role": "figure",
+      "basis": {
+        "method": "inspection",
+        "by": {
+          "kind": "agent",
+          "id": "antigravity",
+          "model": "gemini-2.5-pro"
+        },
+        "at": "2026-10-31",
+        "saw": "Vector-drawn Figures 2 and 3 on page 4 showing 'Cognitive Neuroscience makes use of Eye Tracking, Electrodermal Activity, fMRI, ...' and 'Cognitive Psychology makes use of Cognitive Load Theory, Cognitive Fit Theory, ...'.",
+        "page": 4
+      },
+      "page": 4,
+      "rotation": 0,
+      "captionLabels": [
+        "2",
+        "3"
+      ],
+      "region": [
+        166.89,
+        153.8,
+        410.35,
+        575.78
+      ],
+      "assembly": {
+        "drawings": 29,
+        "background": 0,
+        "groups": [
+          {
+            "bbox": [
+              245.5,
+              153.8,
+              357.48,
+              172.39
+            ],
+            "drawings": 1,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "Cognitive Neuroscience"
+            ]
+          },
+          {
+            "bbox": [
+              166.89,
+              227.6,
+              232.48,
+              246.2
+            ],
+            "drawings": 1,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "Eye Tracking"
+            ]
+          },
+          {
+            "bbox": [
+              200.04,
+              172.89,
+              402.94,
+              246.2
+            ],
+            "drawings": 11,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "Electrodermal Activity",
+              "makes use of"
+            ]
+          },
+          {
+            "bbox": [
+              357.05,
+              227.6,
+              388.6,
+              246.2
+            ],
+            "drawings": 1,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "fMRI"
+            ]
+          },
+          {
+            "bbox": [
+              396.24,
+              227.6,
+              410.35,
+              246.2
+            ],
+            "drawings": 1,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "..."
+            ]
+          },
+          {
+            "bbox": [
+              260.93,
+              483.38,
+              364.21,
+              501.98
+            ],
+            "drawings": 1,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "Cognitive Psychology"
+            ]
+          },
+          {
+            "bbox": [
+              166.89,
+              557.19,
+              278.71,
+              575.78
+            ],
+            "drawings": 1,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "Cognitive Load Theory"
+            ]
+          },
+          {
+            "bbox": [
+              286.34,
+              557.19,
+              387.64,
+              575.78
+            ],
+            "drawings": 1,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "Cognitive Fit Theory"
+            ]
+          },
+          {
+            "bbox": [
+              395.28,
+              557.19,
+              409.39,
+              575.78
+            ],
+            "drawings": 1,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "..."
+            ]
+          },
+          {
+            "bbox": [
+              223.14,
+              502.48,
+              401.99,
+              556.48
+            ],
+            "drawings": 8,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "makes use of"
+            ]
+          }
+        ],
+        "boxes": [
+          {
+            "id": "b0",
+            "bbox": [
+              245.5,
+              153.8,
+              357.48,
+              172.39
+            ],
+            "parent": null,
+            "labels": [
+              "Cognitive Neuroscience"
+            ]
+          },
+          {
+            "id": "b1",
+            "bbox": [
+              269.64,
+              190.08,
+              333.34,
+              204.14
+            ],
+            "parent": null,
+            "labels": [
+              "makes use of"
+            ]
+          },
+          {
+            "id": "b2",
+            "bbox": [
+              260.93,
+              483.38,
+              364.21,
+              501.98
+            ],
+            "parent": null,
+            "labels": [
+              "Cognitive Psychology"
+            ]
+          },
+          {
+            "id": "b3",
+            "bbox": [
+              280.72,
+              519.67,
+              344.42,
+              533.73
+            ],
+            "parent": null,
+            "labels": [
+              "makes use of"
+            ]
+          }
+        ],
+        "unlabelledClosedShapes": 7,
+        "connectors": [
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              35.72,
+              51.52,
+              558.99,
+              51.52
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              36,
+              51.52,
+              559.28,
+              51.52
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              166.89,
+              227.6,
+              232.48,
+              246.2
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              240.12,
+              227.6,
+              349.41,
+              246.2
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              357.05,
+              227.6,
+              388.6,
+              246.2
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              396.24,
+              227.6,
+              410.35,
+              246.2
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              202.75,
+              172.89,
+              301.49,
+              225.47
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              295.19,
+              172.89,
+              301.49,
+              223.66
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              301.49,
+              172.89,
+              370.06,
+              225
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              301.49,
+              172.89,
+              400.23,
+              225.47
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              253.49,
+              193.27,
+              349.48,
+              227.76
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              166.89,
+              557.19,
+              278.71,
+              575.78
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              286.34,
+              557.19,
+              387.64,
+              575.78
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              395.28,
+              557.19,
+              409.39,
+              575.78
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              225.77,
+              502.48,
+              312.57,
+              554.89
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              312.57,
+              502.48,
+              335.57,
+              553.52
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              312.57,
+              502.48,
+              399.36,
+              554.89
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              266.41,
+              525.59,
+              358.73,
+              551.05
+            ]
+          }
+        ],
+        "between": [
+          "Figure 2. Cognitive neuroscience.",
+          "2.4. Cognitive Psychology",
+          "Cognitive psychology is the branch of science that applies the principles of epistemol-",
+          "ogy to investigate how humans comprehend and react to information, including how they",
+          "perceive, process, and behave in response to this information [12].",
+          "The use of cognitive psychology in comprehending (business) process models is highly",
+          "advantageous. It provides a framework for comprehending the corresponding mental",
+          "processes, including how humans perceive and organize visual information, which is",
+          "essential for creating clear and effective designs. It further examines the limitations of",
+          "human memory and information processing, guiding the creation of models that reduce",
+          "cognitive strain and enhance retention. Applying these principles helps researchers and",
+          "practitioners to design models that align well with natural cognitive functions, improving",
+          "comprehension, usability, and effectiveness.",
+          "Cognitive psychology focuses on the practical use of methodological theories (see",
+          "Figure 3) [13], of which the following five are referenced later in this article."
+        ],
+        "outside": 21
+      },
+      "shows": [
+        "2",
+        "3"
+      ],
+      "narrative": [
+        {
+          "text": "Figure 2 (Cognitive neuroscience: 'Cognitive Neuroscience makes use of Eye Tracking, Electrodermal Activity, fMRI, ...') and Figure 3 (Cognitive psychology: 'Cognitive Psychology makes use of Cognitive Load Theory, Cognitive Fit Theory, ...') on page 4.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "vfig-p009",
+      "file": "figures/vfig-p009.png",
+      "role": "figure",
+      "basis": {
+        "method": "inspection",
+        "by": {
+          "kind": "agent",
+          "id": "antigravity",
+          "model": "gemini-2.5-pro"
+        },
+        "at": "2026-10-31",
+        "saw": "Vector-drawn Figure 4 on page 9 showing the 5-step study collection funnel from 6 databases (726 initial hits -> 54 -> 44 -> 36 -> 47 studies).",
+        "page": 9
+      },
+      "page": 9,
+      "rotation": 0,
+      "captionLabels": [
+        "4"
+      ],
+      "region": [
+        48.13,
+        442.86,
+        723.3,
+        810.15
+      ],
+      "assembly": {
+        "drawings": 24,
+        "background": 0,
+        "groups": [
+          {
+            "bbox": [
+              48.13,
+              442.86,
+              723.3,
+              810.15
+            ],
+            "drawings": 22,
+            "pageEdge": true,
+            "rendered": true,
+            "labels": [
+              "•",
+              "Search string (The * character was used to search for variations of terms, for example,",
+              "not only for the term “cognitive” but also for “cognition”): (“process model*”) AND",
+              "(understand* OR comprehen*) AND (cogniti*).",
+              "•",
+              "Timespan = none.",
+              "The search string was modified according to the library, as it was only feasible to limit",
+              "the search field in certain libraries. The studies collection process is shown in Figure 4.",
+              "Bibliographic Database",
+              "Result",
+              "Web of Science",
+              "148",
+              "IEEE Xplore",
+              "29",
+              "Science Direct",
+              "31",
+              "ACM Digital Library",
+              "18",
+              "PubMed",
+              "42",
+              "SpringerLink",
+              "458",
+              "1. Apply",
+              "Search String",
+              "2. Read Title and",
+              "Remove Duplicates",
+              "Total Research Works 726",
+              "54 Research Works",
+              "3. Read Abstract",
+              "44 Research Works",
+              "4. Read Entire",
+              "Research Work",
+              "36 Research Works",
+              "5. Apply Snowballing",
+              "Backward and Forward",
+              "47 Research Works",
+              "Total Studies 726",
+              "54 Studies",
+              "44 Studies",
+              "36 Studies",
+              "47 Studies",
+              "Studies",
+              "Figure 4. Collection of studies.",
+              "3.3. Inclusion and Exclusion Criteria",
+              "All studies that explicitly deal with the cognitive processes involved in reading and",
+              "comprehending process models were included. It did not matter whether the cognitive",
+              "processes were investigated with the help of an empirical study or theoretically. By incorpo-",
+              "rating both empirical and theoretical studies, the SLR provides a comprehensive synthesis",
+              "of diverse insights. Empirical studies provide concrete evidence and practical insights,",
+              "whereas theoretical studies offer foundational frameworks and hypotheses that can help",
+              "when interpreting empirical findings."
+            ]
+          }
+        ],
+        "boxes": [
+          {
+            "id": "b0",
+            "bbox": [
+              48.13,
+              450.91,
+              537.68,
+              726.28
+            ],
+            "parent": null,
+            "labels": [
+              "•",
+              "Search string (The * character was used to search for variations of terms, for example,",
+              "not only for the term “cognitive” but also for “cognition”): (“process model*”) AND",
+              "(understand* OR comprehen*) AND (cogniti*).",
+              "•",
+              "Timespan = none.",
+              "The search string was modified according to the library, as it was only feasible to limit",
+              "the search field in certain libraries. The studies collection process is shown in Figure 4.",
+              "Bibliographic Database",
+              "Result",
+              "Web of Science",
+              "148",
+              "IEEE Xplore",
+              "29",
+              "Science Direct",
+              "31",
+              "ACM Digital Library",
+              "18",
+              "PubMed",
+              "42",
+              "SpringerLink",
+              "458",
+              "1. Apply",
+              "Search String",
+              "2. Read Title and",
+              "Remove Duplicates",
+              "3. Read Abstract",
+              "4. Read Entire",
+              "5. Apply Snowballing",
+              "Backward and Forward",
+              "Figure 4. Collection of studies.",
+              "3.3. Inclusion and Exclusion Criteria",
+              "All studies that explicitly deal with the cognitive processes involved in reading and",
+              "comprehending process models were included. It did not matter whether the cognitive",
+              "processes were investigated with the help of an empirical study or theoretically. By incorpo-"
+            ]
+          },
+          {
+            "id": "b1",
+            "bbox": [
+              75.67,
+              442.86,
+              723.14,
+              810.15
+            ],
+            "parent": null,
+            "labels": [
+              "rating both empirical and theoretical studies, the SLR provides a comprehensive synthesis",
+              "of diverse insights. Empirical studies provide concrete evidence and practical insights,",
+              "whereas theoretical studies offer foundational frameworks and hypotheses that can help",
+              "when interpreting empirical findings."
+            ]
+          },
+          {
+            "id": "b2",
+            "bbox": [
+              264.96,
+              610.76,
+              505.51,
+              617.5
+            ],
+            "parent": "b0",
+            "labels": [
+              "54 Research Works",
+              "44 Research Works",
+              "36 Research Works",
+              "47 Research Works",
+              "54 Studies",
+              "44 Studies",
+              "36 Studies",
+              "47 Studies"
+            ]
+          },
+          {
+            "id": "b3",
+            "bbox": [
+              120.65,
+              631.43,
+              361.2,
+              638.11
+            ],
+            "parent": "b0",
+            "labels": [
+              "Total Research Works 726",
+              "Total Studies 726"
+            ]
+          },
+          {
+            "id": "b4",
+            "bbox": [
+              393.54,
+              559.8,
+              438.73,
+              564.43
+            ],
+            "parent": "b0",
+            "labels": [
+              "Research Work",
+              "Studies"
+            ]
+          }
+        ],
+        "unlabelledClosedShapes": 6,
+        "connectors": [
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              35.72,
+              51.52,
+              558.99,
+              51.52
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              36,
+              51.52,
+              559.28,
+              51.52
+            ]
+          }
+        ],
+        "between": [],
+        "outside": 27
+      },
+      "shows": [
+        "4"
+      ],
+      "narrative": [
+        {
+          "text": "Figure 4: Collection of studies in the SLR. Shows initial hits across six bibliographic databases (Web of Science: 148, IEEE Xplore: 29, Science Direct: 31, ACM Digital Library: 18, PubMed: 42, SpringerLink: 458; Total = 726 Research Works) narrowed across five filtering stages: (1) Apply Search String (726), (2) Read Title and Remove Duplicates (54), (3) Read Abstract (44), (4) Read Entire Research Work (36), and (5) Apply Backward and Forward Snowballing (47 final primary studies).",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "vfig-p011",
+      "file": null,
+      "unrendered_reason": "no drawing component on this page contains a text line, so there is no labelled region to render -- the caption candidates are recorded and nothing is claimed about what the page draws",
+      "role": "undetermined",
+      "basis": {
+        "method": "assembly",
+        "by": {
+          "kind": "script",
+          "id": "cat-harness/scripts/pdf-vector-figures.py"
+        },
+        "page": 11
+      },
+      "page": 11,
+      "rotation": 0,
+      "captionLabels": [
+        "5"
+      ],
+      "region": null,
+      "assembly": {
+        "drawings": 7,
+        "background": 0,
+        "groups": [],
+        "boxes": [],
+        "unlabelledClosedShapes": 0,
+        "connectors": [
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              35.72,
+              51.52,
+              558.99,
+              51.52
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              36,
+              51.52,
+              559.28,
+              51.52
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              166.39,
+              518.8,
+              559.28,
+              518.8
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              166.39,
+              535.91,
+              559.28,
+              535.91
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              166.39,
+              552.87,
+              559.28,
+              552.87
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              166.39,
+              569.82,
+              559.28,
+              569.82
+            ]
+          },
+          {
+            "from": null,
+            "to": null,
+            "bbox": [
+              166.39,
+              586.93,
+              559.28,
+              586.93
+            ]
+          }
+        ],
+        "between": [],
+        "outside": 0
+      }
+    }
+  ]
+}
