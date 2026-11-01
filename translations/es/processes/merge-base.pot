@@ -166,7 +166,7 @@ msgstr ""
 
 #: processes/sdlc/merge-base.bpmn:83
 #. Diagram element documentation
-msgid "qa-sidecar paths first, through `qa:resolve-conflicts`; take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction."
+msgid "take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction."
 msgstr ""
 
 #: processes/sdlc/merge-base.bpmn:144
@@ -211,7 +211,7 @@ msgstr ""
 
 #: processes/sdlc/merge-base.bpmn:71
 #. Diagram element documentation
-msgid "The first matching pattern decides: take-base, generated-regions, qa-sidecar, or refuse. A path no pattern names refuses."
+msgid "The first matching pattern decides: take-base, owned-tree, generated-regions, or refuse. A path no pattern names refuses."
 msgstr ""
 
 #: processes/sdlc/merge-base.bpmn:150
