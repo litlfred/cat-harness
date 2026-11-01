@@ -3,85 +3,85 @@
   "entry": "arxiv-2503.18813v2",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "email query",
-      "score": 53.7229,
-      "evidence": [
-        "heading"
-      ]
-    },
-    {
-      "term": "camel security",
-      "score": 47.6264,
+      "score": 53.8494,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "defeating prompt",
-      "score": 47.4409,
+      "score": 48.1535,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "tool query",
-      "score": 45.1866,
-      "evidence": []
+      "term": "camel security",
+      "score": 48.0025,
+      "evidence": [
+        "heading"
+      ]
     },
     {
       "term": "prompt injections",
-      "score": 45.0912,
+      "score": 45.8301,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "send email",
-      "score": 44.8958,
+      "score": 45.0542,
       "evidence": [
         "heading"
       ]
     },
     {
+      "term": "tool query",
+      "score": 44.5794,
+      "evidence": []
+    },
+    {
       "term": "user query",
-      "score": 41.5988,
+      "score": 41.2233,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "email get",
-      "score": 39.6306,
+      "score": 39.6255,
       "evidence": []
     },
     {
       "term": "recipient email",
-      "score": 39.3812,
+      "score": 39.451,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "find email",
-      "score": 39.2024,
+      "score": 39.2343,
       "evidence": []
     },
     {
       "term": "camel interpreter",
-      "score": 38.5198,
+      "score": 38.7019,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "figure camel",
-      "score": 37.9878,
+      "score": 38.2145,
       "evidence": [
         "heading"
       ]
@@ -91,32 +91,32 @@
     "sec-000-defeating-prompt-injections-by-design": [
       {
         "term": "untrusted data",
-        "score": 1.1151,
+        "score": 1.1166,
         "evidence": []
       },
       {
         "term": "camel",
-        "score": 1.0553,
+        "score": 1.0607,
         "evidence": []
       },
       {
         "term": "data flows",
-        "score": 0.9893,
-        "evidence": []
-      },
-      {
-        "term": "google",
-        "score": 0.5556,
+        "score": 0.9744,
         "evidence": []
       },
       {
         "term": "attacks",
-        "score": 0.5536,
+        "score": 0.5577,
+        "evidence": []
+      },
+      {
+        "term": "google",
+        "score": 0.5539,
         "evidence": []
       },
       {
         "term": "prompt",
-        "score": 0.5028,
+        "score": 0.5149,
         "evidence": [
           "heading"
         ]
@@ -125,215 +125,215 @@
     "sec-001-introduction": [
       {
         "term": "meeting notes",
-        "score": 3.6453,
+        "score": 3.6206,
         "evidence": []
       },
       {
         "term": "bob email",
-        "score": 3.2473,
+        "score": 3.2554,
         "evidence": []
       },
       {
         "term": "quarantined llm",
-        "score": 3.1014,
+        "score": 3.1251,
         "evidence": []
       },
       {
         "term": "send confidential",
-        "score": 3.0702,
+        "score": 3.0835,
         "evidence": []
       },
       {
         "term": "confidential document",
-        "score": 2.757,
-        "evidence": []
-      },
-      {
-        "term": "notes file",
-        "score": 2.7392,
+        "score": 2.772,
         "evidence": []
       },
       {
         "term": "email address",
-        "score": 2.7388,
+        "score": 2.7283,
+        "evidence": []
+      },
+      {
+        "term": "notes file",
+        "score": 2.7228,
         "evidence": []
       },
       {
         "term": "recent meeting",
-        "score": 2.5714,
+        "score": 2.5528,
         "evidence": []
       }
     ],
     "sec-002-threat-model": [
       {
         "term": "prompt injection",
-        "score": 1.4057,
+        "score": 1.4298,
         "evidence": []
       },
       {
         "term": "ωprompt",
-        "score": 1.1493,
+        "score": 1.1511,
         "evidence": []
       },
       {
         "term": "trace",
-        "score": 1.0604,
+        "score": 1.0399,
         "evidence": []
       },
       {
         "term": "flow graph",
-        "score": 1.0483,
+        "score": 1.02,
         "evidence": []
       },
       {
         "term": "memstep",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "args",
-        "score": 0.9926,
+        "score": 0.9934,
         "evidence": []
       },
       {
         "term": "mem",
-        "score": 0.9505,
+        "score": 0.8899,
         "evidence": []
       },
       {
         "term": "bob",
-        "score": 0.7141,
+        "score": 0.717,
         "evidence": []
       }
     ],
     "sec-003-the-prompt-injection-security-game": [
       {
         "term": "prompt",
-        "score": 1.1674,
+        "score": 1.1956,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "injection",
-        "score": 0.72,
+        "score": 0.725,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "adversary",
-        "score": 0.6971,
+        "score": 0.7001,
         "evidence": []
       }
     ],
     "sec-004-explicit-non-goals-of-camel": [
       {
         "term": "camel",
-        "score": 2.5881,
+        "score": 2.6016,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "camel agent",
-        "score": 2.0583,
+        "score": 2.0772,
         "evidence": []
       },
       {
         "term": "return trace",
-        "score": 2.0304,
+        "score": 2.0034,
         "evidence": []
       },
       {
         "term": "mem",
-        "score": 1.7992,
+        "score": 1.6843,
         "evidence": []
       },
       {
         "term": "security game",
-        "score": 1.6422,
+        "score": 1.64,
         "evidence": []
       },
       {
         "term": "args",
-        "score": 1.6189,
+        "score": 1.6202,
         "evidence": []
       },
       {
         "term": "defend against",
-        "score": 1.1777,
+        "score": 1.1796,
         "evidence": []
       },
       {
         "term": "data flow",
-        "score": 1.039,
+        "score": 0.9995,
         "evidence": []
       }
     ],
     "sec-005-camel-design": [
       {
         "term": "meeting tomorrow",
-        "score": 2.12,
+        "score": 2.1197,
         "evidence": []
       },
       {
         "term": "bob email",
-        "score": 2.0346,
+        "score": 2.039,
         "evidence": []
       },
       {
         "term": "email address",
-        "score": 2.0007,
+        "score": 1.9942,
         "evidence": []
       },
       {
         "term": "quarantined llm",
-        "score": 1.928,
+        "score": 1.9433,
         "evidence": []
       },
       {
         "term": "actions ωprompt",
-        "score": 1.7458,
+        "score": 1.7519,
         "evidence": []
       },
       {
         "term": "privileged llm",
-        "score": 1.7215,
+        "score": 1.7383,
         "evidence": []
       },
       {
         "term": "camel",
-        "score": 1.6329,
+        "score": 1.6414,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "camel interpreter",
-        "score": 1.6184,
+        "score": 1.6249,
         "evidence": []
       }
     ],
     "sec-006-security-policies": [
       {
         "term": "email readers",
-        "score": 1.9056,
+        "score": 1.83,
         "evidence": []
       },
       {
         "term": "query",
-        "score": 0.7138,
+        "score": 0.7165,
         "evidence": []
       },
       {
         "term": "camel",
-        "score": 0.647,
+        "score": 0.6504,
         "evidence": []
       },
       {
         "term": "policies",
-        "score": 0.638,
+        "score": 0.6364,
         "evidence": [
           "heading"
         ]
@@ -342,1633 +342,1633 @@
     "sec-007-the-privileged-and-quarantined-llms": [
       {
         "term": "quarantined",
-        "score": 2.285,
+        "score": 2.2887,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "calendar event",
-        "score": 2.1017,
+        "term": "p-llm",
+        "score": 2.0959,
         "evidence": []
       },
       {
-        "term": "p-llm",
-        "score": 2.0908,
+        "term": "calendar event",
+        "score": 2.0107,
         "evidence": []
       },
       {
         "term": "quarantined llm",
-        "score": 1.9656,
+        "score": 1.9816,
         "evidence": []
       },
       {
         "term": "python code",
-        "score": 1.8876,
+        "score": 1.8868,
         "evidence": []
       },
       {
         "term": "security policies",
-        "score": 1.7725,
+        "score": 1.7784,
         "evidence": []
       },
       {
         "term": "user query",
-        "score": 1.7499,
+        "score": 1.73,
         "evidence": []
       },
       {
-        "term": "participants",
-        "score": 1.6864,
+        "term": "q-llm",
+        "score": 1.6775,
         "evidence": []
       }
     ],
     "sec-008-capabilities": [
       {
         "term": "capabilities",
-        "score": 1.7052,
+        "score": 1.6952,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "control flow",
-        "score": 1.5357,
+        "score": 1.4794,
         "evidence": []
       },
       {
         "term": "data provenance",
-        "score": 1.4307,
+        "score": 1.4313,
         "evidence": []
       },
       {
         "term": "pii",
-        "score": 1.4274,
-        "evidence": []
-      },
-      {
-        "term": "individual data",
-        "score": 1.1567,
+        "score": 1.4287,
         "evidence": []
       },
       {
         "term": "inner source",
-        "score": 1.1266,
+        "score": 1.1218,
+        "evidence": []
+      },
+      {
+        "term": "individual data",
+        "score": 1.1213,
         "evidence": []
       },
       {
         "term": "passport",
-        "score": 0.9511,
+        "score": 0.9522,
         "evidence": []
       },
       {
         "term": "watson",
-        "score": 0.8313,
+        "score": 0.8332,
         "evidence": []
       }
     ],
     "sec-009-camel-interpreter": [
       {
         "term": "camel interpreter",
-        "score": 5.2904,
+        "score": 5.311,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "python interpreter",
-        "score": 2.4857,
+        "score": 2.4829,
         "evidence": []
       },
       {
         "term": "dependency graph",
-        "score": 2.4653,
+        "score": 2.462,
         "evidence": []
       },
       {
         "term": "email get",
-        "score": 2.365,
+        "score": 2.364,
         "evidence": []
       },
       {
         "term": "send email",
-        "score": 2.3369,
+        "score": 2.3447,
         "evidence": []
       },
       {
         "term": "flow graph",
-        "score": 1.8032,
+        "score": 1.7621,
         "evidence": []
       },
       {
         "term": "strict mode",
-        "score": 1.6095,
+        "score": 1.6099,
         "evidence": []
       },
       {
         "term": "graph generated",
-        "score": 1.5998,
+        "score": 1.5976,
         "evidence": []
       }
     ],
     "sec-010-evaluation": [
       {
-        "term": "touch",
-        "score": 0.5938,
-        "evidence": []
-      },
-      {
         "term": "utility",
-        "score": 0.5715,
+        "score": 0.5736,
         "evidence": []
       },
       {
         "term": "agentic",
-        "score": 0.5659,
+        "score": 0.5699,
+        "evidence": []
+      },
+      {
+        "term": "touch",
+        "score": 0.5531,
         "evidence": []
       }
     ],
     "sec-011-utility-evaluation": [
       {
         "term": "reasoning effort",
-        "score": 1.3773,
+        "score": 1.3241,
         "evidence": []
       },
       {
         "term": "claude-sonnet",
-        "score": 0.7186,
+        "score": 0.7214,
         "evidence": []
       },
       {
         "term": "pro-preview",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-012-camel-has-a-small-impact-on-utility": [
       {
         "term": "camel",
-        "score": 1.8958,
+        "score": 1.9056,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "travel suite",
-        "score": 1.5072,
+        "score": 1.5124,
         "evidence": []
       },
       {
         "term": "utility",
-        "score": 1.143,
+        "score": 1.1472,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "models",
-        "score": 0.5689,
+        "score": 0.5676,
         "evidence": []
       }
     ],
     "sec-013-how-does-camel-impact-utility": [
       {
         "term": "claude sonnet",
-        "score": 2.6474,
+        "score": 2.6676,
         "evidence": []
       },
       {
         "term": "camel",
-        "score": 2.5881,
+        "score": 2.6016,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "travel suite",
-        "score": 2.4582,
+        "score": 2.4666,
         "evidence": []
       },
       {
         "term": "utility",
-        "score": 1.8641,
+        "score": 1.871,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "p-llm",
-        "score": 1.6569,
+        "score": 1.6609,
         "evidence": []
       },
       {
         "term": "failure modes",
-        "score": 1.6281,
+        "score": 1.635,
         "evidence": []
       },
       {
         "term": "q-llm",
-        "score": 1.5839,
+        "score": 1.5876,
         "evidence": []
       },
       {
         "term": "native tool",
-        "score": 1.4238,
+        "score": 1.4021,
         "evidence": []
       }
     ],
     "sec-014-cheaper-q-llm-models-have-little-impact-on-utili": [
       {
         "term": "q-llm",
-        "score": 3.9074,
+        "score": 3.9165,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cheaper",
-        "score": 1.6511,
+        "score": 1.6551,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "underdocumented api",
-        "score": 1.6181,
+        "score": 1.6204,
         "evidence": []
       },
       {
         "term": "query misunderstanding",
-        "score": 1.5222,
+        "score": 1.5271,
         "evidence": []
       },
       {
         "term": "wrong assumptions",
-        "score": 1.4703,
+        "score": 1.4764,
         "evidence": []
       },
       {
         "term": "p-llm",
-        "score": 1.4674,
+        "score": 1.471,
         "evidence": []
       },
       {
         "term": "utility",
-        "score": 1.4423,
+        "score": 1.4476,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "enough context",
-        "score": 1.0545,
+        "score": 1.041,
         "evidence": []
       }
     ],
     "sec-015-security-evaluation": [
       {
         "term": "security",
-        "score": 1.1066,
+        "score": 1.1208,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "evaluation",
-        "score": 0.8137,
+        "score": 0.7898,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "camel-specific",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
-        "term": "turn",
-        "score": 0.575,
+        "term": "discuss",
+        "score": 0.5478,
         "evidence": []
       }
     ],
     "sec-016-case-study-without-any-security-policies": [
       {
         "term": "security policies",
-        "score": 3.0789,
+        "score": 3.0933,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "successful attacks",
-        "score": 2.5223,
+        "score": 2.5118,
         "evidence": []
       },
       {
         "term": "claude sonnet",
-        "score": 1.9307,
+        "score": 1.9453,
         "evidence": []
       },
       {
         "term": "banking suite",
-        "score": 1.9249,
+        "score": 1.9308,
         "evidence": []
       },
       {
         "term": "travel suite",
-        "score": 1.8706,
+        "score": 1.8769,
         "evidence": []
       },
       {
         "term": "prompt injection",
-        "score": 1.7298,
+        "score": 1.753,
         "evidence": []
       },
       {
         "term": "calling api",
-        "score": 1.5945,
+        "score": 1.5991,
         "evidence": []
       },
       {
         "term": "suite task",
-        "score": 1.5644,
+        "score": 1.5667,
         "evidence": []
       }
     ],
     "sec-017-case-study-with-security-policies": [
       {
         "term": "security policies",
-        "score": 3.9359,
+        "score": 3.9515,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "workspace suite",
-        "score": 3.0245,
+        "score": 3.035,
         "evidence": []
       },
       {
         "term": "travel suite",
-        "score": 2.8309,
+        "score": 2.8403,
         "evidence": []
       },
       {
         "term": "policies deny",
-        "score": 2.1188,
+        "score": 2.1191,
         "evidence": []
       },
       {
         "term": "banking slack",
-        "score": 1.8944,
+        "score": 1.9009,
         "evidence": []
       },
       {
         "term": "rate workspace",
-        "score": 1.8696,
+        "score": 1.8762,
         "evidence": []
       },
       {
         "term": "get triggered",
-        "score": 1.6694,
+        "score": 1.6852,
         "evidence": []
       },
       {
-        "term": "deny tool",
-        "score": 1.6297,
+        "term": "policy triggering",
+        "score": 1.6278,
         "evidence": []
       }
     ],
     "sec-018-baseline-comparisons": [
       {
         "term": "successful attacks",
-        "score": 2.1094,
+        "score": 2.1032,
         "evidence": []
       },
       {
         "term": "camel approach",
-        "score": 2.0321,
+        "score": 2.0407,
         "evidence": []
       },
       {
         "term": "prompt sandwiching",
-        "score": 1.7412,
+        "score": 1.7591,
         "evidence": []
       },
       {
         "term": "security guarantees",
-        "score": 1.5708,
+        "score": 1.5856,
         "evidence": []
       },
       {
         "term": "security policies",
-        "score": 1.5395,
-        "evidence": []
-      },
-      {
-        "term": "tool filter",
-        "score": 1.5305,
+        "score": 1.5467,
         "evidence": []
       },
       {
         "term": "instruction hierarchy",
-        "score": 1.5251,
+        "score": 1.4785,
+        "evidence": []
+      },
+      {
+        "term": "tool filter",
+        "score": 1.4718,
         "evidence": []
       },
       {
         "term": "formal security",
-        "score": 1.3353,
+        "score": 1.3341,
         "evidence": []
       }
     ],
     "sec-019-case-study-when-data-flow-becomes-control-flow": [
       {
         "term": "control flow",
-        "score": 4.438,
+        "score": 4.2567,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "data flow",
-        "score": 3.5265,
+        "score": 3.38,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "becomes control",
-        "score": 2.862,
+        "score": 2.8039,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "camel tokens",
-        "score": 2.205,
+        "score": 2.2194,
         "evidence": []
       },
       {
         "term": "monitor emails",
-        "score": 2.1768,
+        "score": 2.1566,
         "evidence": []
       },
       {
         "term": "email now",
-        "score": 1.943,
+        "score": 1.949,
         "evidence": []
       },
       {
         "term": "malicious instructions",
-        "score": 1.9345,
+        "score": 1.946,
         "evidence": []
       },
       {
         "term": "output tokens",
-        "score": 1.6128,
+        "score": 1.6507,
         "evidence": []
       }
     ],
     "sec-020-overheads": [
       {
         "term": "camel requires",
-        "score": 1.8007,
+        "score": 1.8073,
         "evidence": []
       },
       {
         "term": "output tokens",
-        "score": 1.556,
+        "score": 1.5935,
         "evidence": []
       },
       {
         "term": "token usage",
-        "score": 1.4281,
+        "score": 1.4306,
         "evidence": []
       },
       {
         "term": "malware",
-        "score": 1.0076,
+        "score": 1.0104,
         "evidence": []
       },
       {
         "term": "overhead",
-        "score": 0.8927,
+        "score": 0.8963,
         "evidence": []
       },
       {
         "term": "p-llm",
-        "score": 0.8284,
+        "score": 0.8305,
         "evidence": []
       },
       {
         "term": "count",
-        "score": 0.6954,
+        "score": 0.6855,
         "evidence": []
       },
       {
         "term": "defenses",
-        "score": 0.6365,
+        "score": 0.64,
         "evidence": []
       }
     ],
     "sec-021-side-channels-can-be-a-problem": [
       {
         "term": "private variable",
-        "score": 3.5439,
+        "score": 3.5566,
         "evidence": []
       },
       {
         "term": "fetch confidential",
-        "score": 3.4262,
+        "score": 3.4334,
         "evidence": []
       },
       {
         "term": "private var",
-        "score": 3.1676,
+        "score": 3.1818,
         "evidence": []
       },
       {
         "term": "send confidential",
-        "score": 2.9745,
-        "evidence": []
-      },
-      {
-        "term": "camel strict",
-        "score": 2.7845,
-        "evidence": []
-      },
-      {
-        "term": "adversary observable",
-        "score": 2.7736,
+        "score": 2.9859,
         "evidence": []
       },
       {
         "term": "constraints private",
-        "score": 2.7556,
+        "score": 2.8017,
+        "evidence": []
+      },
+      {
+        "term": "camel strict",
+        "score": 2.7887,
         "evidence": []
       },
       {
         "term": "side-channel attacks",
-        "score": 2.7546,
+        "score": 2.7624,
+        "evidence": []
+      },
+      {
+        "term": "adversary observable",
+        "score": 2.7461,
         "evidence": []
       }
     ],
     "sec-022-secondary-attack-scenarios-that-camel-can-help-w": [
       {
         "term": "malicious insiders",
-        "score": 2.1574,
+        "score": 2.1637,
         "evidence": []
       },
       {
         "term": "insider threats",
-        "score": 1.9855,
+        "score": 1.9737,
         "evidence": []
       },
       {
         "term": "scenario illustrates",
-        "score": 1.7974,
+        "score": 1.7875,
         "evidence": []
       },
       {
         "term": "spy tool",
-        "score": 1.6674,
+        "score": 1.6453,
         "evidence": []
       },
       {
         "term": "compromised user",
-        "score": 1.6597,
+        "score": 1.6423,
         "evidence": []
       },
       {
         "term": "camel",
-        "score": 1.6329,
+        "score": 1.6414,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "threat models",
-        "score": 1.2449,
+        "score": 1.2494,
         "evidence": []
       },
       {
         "term": "security policies",
-        "score": 1.1746,
+        "score": 1.1819,
         "evidence": []
       }
     ],
     "sec-023-discussion": [
       {
         "term": "security literature",
-        "score": 0.8371,
+        "score": 0.8194,
         "evidence": []
       },
       {
         "term": "defense",
-        "score": 0.6252,
+        "score": 0.6288,
         "evidence": []
       },
       {
         "term": "capability-based",
-        "score": 0.6025,
+        "score": 0.6032,
         "evidence": []
       }
     ],
     "sec-025-past-problems-with-adoption-of-capabilities": [
       {
         "term": "capability-based system",
-        "score": 2.2514,
+        "score": 2.2664,
         "evidence": []
       },
       {
         "term": "user fatigue",
-        "score": 1.6672,
+        "score": 1.6531,
         "evidence": []
       },
       {
         "term": "third-party tools",
-        "score": 1.5997,
+        "score": 1.5941,
         "evidence": []
       },
       {
         "term": "capabilities",
-        "score": 1.3906,
+        "score": 1.3823,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "significant effort",
-        "score": 1.0734,
+        "score": 1.0168,
         "evidence": []
       },
       {
         "term": "de-classification",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "adoption",
-        "score": 0.9532,
+        "score": 0.9144,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "security",
-        "score": 0.8243,
+        "score": 0.835,
         "evidence": []
       }
     ],
     "sec-026-so-are-prompt-injections-solved-now": [
       {
         "term": "injection attacks",
-        "score": 1.6229,
+        "score": 1.6346,
         "evidence": []
       },
       {
         "term": "control flow",
-        "score": 1.5803,
+        "score": 1.5196,
         "evidence": []
       },
       {
         "term": "solved",
-        "score": 1.3613,
+        "score": 1.3532,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "security guarantees",
-        "score": 1.2991,
-        "evidence": []
-      },
-      {
-        "term": "camel",
-        "score": 1.2247,
+        "score": 1.3122,
         "evidence": []
       },
       {
         "term": "prompt injection",
-        "score": 1.2228,
+        "score": 1.2399,
+        "evidence": []
+      },
+      {
+        "term": "camel",
+        "score": 1.2311,
         "evidence": []
       },
       {
         "term": "rop",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "exploitation",
-        "score": 0.798,
+        "score": 0.7876,
         "evidence": []
       }
     ],
     "sec-027-future-work": [
       {
         "term": "security policies",
-        "score": 1.6225,
+        "score": 1.632,
         "evidence": []
       },
       {
         "term": "formal verification",
-        "score": 1.5733,
+        "score": 1.5469,
         "evidence": []
       },
       {
         "term": "security policy",
-        "score": 1.4282,
-        "evidence": []
-      },
-      {
-        "term": "contextual integrity",
-        "score": 1.3064,
+        "score": 1.442,
         "evidence": []
       },
       {
         "term": "camel",
-        "score": 1.2941,
+        "score": 1.3008,
+        "evidence": []
+      },
+      {
+        "term": "contextual integrity",
+        "score": 1.2964,
         "evidence": []
       },
       {
         "term": "work",
-        "score": 0.9293,
+        "score": 0.9026,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "interpreter",
-        "score": 0.802,
+        "score": 0.8042,
         "evidence": []
       },
       {
         "term": "python",
-        "score": 0.6014,
+        "score": 0.5976,
         "evidence": []
       }
     ],
     "sec-028-conclusion": [
       {
         "term": "arxiv preprint",
-        "score": 4.1245,
+        "score": 4.1026,
         "evidence": []
       },
       {
         "term": "jonathan anderson",
-        "score": 2.8068,
+        "score": 2.7945,
         "evidence": []
       },
       {
         "term": "ben laurie",
-        "score": 2.7888,
+        "score": 2.7934,
         "evidence": []
       },
       {
         "term": "usenix security",
-        "score": 2.7419,
+        "score": 2.7582,
         "evidence": []
       },
       {
         "term": "brooks davis",
-        "score": 2.6123,
-        "evidence": []
-      },
-      {
-        "term": "peter neumann",
-        "score": 2.5362,
-        "evidence": []
-      },
-      {
-        "term": "security symposium",
-        "score": 2.5001,
+        "score": 2.5511,
         "evidence": []
       },
       {
         "term": "prompt injection",
-        "score": 2.4532,
+        "score": 2.4895,
+        "evidence": []
+      },
+      {
+        "term": "security symposium",
+        "score": 2.4523,
+        "evidence": []
+      },
+      {
+        "term": "david wagner",
+        "score": 2.4201,
         "evidence": []
       }
     ],
     "sec-031-computer-security-nomenclature": [
       {
         "term": "control flow",
-        "score": 2.0511,
+        "score": 1.9692,
         "evidence": []
       },
       {
         "term": "flow refers",
-        "score": 2.0275,
+        "score": 1.9341,
         "evidence": []
       },
       {
         "term": "meeting notes",
-        "score": 1.8841,
+        "score": 1.8706,
         "evidence": []
       },
       {
         "term": "execution flow",
-        "score": 1.6183,
+        "score": 1.5516,
         "evidence": []
       },
       {
         "term": "data flow",
-        "score": 1.5953,
-        "evidence": []
-      },
-      {
-        "term": "possess",
-        "score": 1.0074,
-        "evidence": []
-      },
-      {
-        "term": "machine learning",
-        "score": 0.9627,
+        "score": 1.5309,
         "evidence": []
       },
       {
         "term": "security",
-        "score": 0.9531,
+        "score": 0.9654,
         "evidence": [
           "heading"
         ]
+      },
+      {
+        "term": "machine learning",
+        "score": 0.9536,
+        "evidence": []
+      },
+      {
+        "term": "possess",
+        "score": 0.9508,
+        "evidence": []
       }
     ],
     "sec-032-access-and-information-flow-controls": [
       {
         "term": "control flow",
-        "score": 1.705,
+        "score": 1.6414,
         "evidence": []
       },
       {
         "term": "access control",
-        "score": 1.464,
+        "score": 1.4477,
         "evidence": []
       },
       {
         "term": "denning",
-        "score": 1.1907,
+        "score": 1.1921,
         "evidence": []
       },
       {
         "term": "integrity",
-        "score": 0.9513,
+        "score": 0.9562,
         "evidence": []
       },
       {
         "term": "program",
-        "score": 0.9278,
-        "evidence": []
-      },
-      {
-        "term": "myers",
-        "score": 0.85,
+        "score": 0.9292,
         "evidence": []
       },
       {
         "term": "confidentiality",
-        "score": 0.8283,
+        "score": 0.8303,
+        "evidence": []
+      },
+      {
+        "term": "myers",
+        "score": 0.8114,
         "evidence": []
       }
     ],
     "sec-033-tool-calling-llm-agents": [
       {
         "term": "tool call",
-        "score": 1.1355,
+        "score": 1.1109,
         "evidence": []
       },
       {
         "term": "llm",
-        "score": 0.9911,
+        "score": 1.0081,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "both data",
-        "score": 0.7188,
+        "score": 0.7113,
         "evidence": []
       },
       {
         "term": "runtime",
-        "score": 0.6119,
+        "score": 0.6155,
         "evidence": []
       },
       {
         "term": "flow",
-        "score": 0.5484,
+        "score": 0.5196,
         "evidence": []
       },
       {
         "term": "prompt",
-        "score": 0.3984,
+        "score": 0.4081,
         "evidence": []
       }
     ],
     "sec-034-prompt-injection-defenses": [
       {
         "term": "prompt injection",
-        "score": 2.7396,
+        "score": 2.781,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "privileged llm",
-        "score": 1.5649,
+        "score": 1.5817,
         "evidence": []
       },
       {
         "term": "injection attacks",
-        "score": 1.5311,
+        "score": 1.542,
         "evidence": []
       },
       {
         "term": "tool calls",
-        "score": 1.348,
+        "score": 1.3255,
         "evidence": []
       },
       {
         "term": "defenses",
-        "score": 1.273,
+        "score": 1.2799,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "tool access",
-        "score": 1.2439,
-        "evidence": []
-      },
-      {
-        "term": "keep track",
-        "score": 1.1841,
+        "score": 1.2219,
         "evidence": []
       },
       {
         "term": "defend against",
-        "score": 1.1777,
+        "score": 1.1796,
+        "evidence": []
+      },
+      {
+        "term": "keep track",
+        "score": 1.1769,
         "evidence": []
       }
     ],
     "sec-035-full-results-tables": [
       {
         "term": "calling api",
-        "score": 3.3867,
+        "score": 3.3965,
         "evidence": []
       },
       {
         "term": "tool calling",
-        "score": 3.1666,
+        "score": 3.1352,
         "evidence": []
       },
       {
         "term": "native tool",
-        "score": 3.0054,
+        "score": 2.9751,
         "evidence": []
       },
       {
         "term": "banking slack",
-        "score": 2.1993,
+        "score": 2.2069,
         "evidence": []
       },
       {
         "term": "slack travel",
-        "score": 2.1197,
+        "score": 2.1279,
         "evidence": []
       },
       {
         "term": "travel workspace",
-        "score": 2.1025,
+        "score": 2.1108,
         "evidence": []
       },
       {
         "term": "claude sonnet",
-        "score": 1.9307,
+        "score": 1.9453,
         "evidence": []
       },
       {
         "term": "camel",
-        "score": 1.9189,
+        "score": 1.9288,
         "evidence": []
       }
     ],
     "sec-037-normal-vs-strict-modes": [
       {
         "term": "strict modes",
-        "score": 3.3415,
+        "score": 3.3411,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "normal",
-        "score": 2.1672,
+        "score": 2.1778,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prompt sandwiching",
-        "score": 1.7412,
+        "score": 1.7591,
         "evidence": []
       },
       {
         "term": "send email",
-        "score": 1.5626,
+        "score": 1.5679,
         "evidence": []
       },
       {
         "term": "table defenses",
-        "score": 1.366,
+        "score": 1.4532,
         "evidence": []
       },
       {
         "term": "undefended model",
-        "score": 1.356,
+        "score": 1.3502,
         "evidence": []
       },
       {
         "term": "triggering rates",
-        "score": 1.3433,
+        "score": 1.3497,
         "evidence": []
       },
       {
         "term": "dependency graph",
-        "score": 1.3175,
+        "score": 1.3156,
         "evidence": []
       }
     ],
     "sec-038-security-policy-evaluation": [
       {
-        "term": "event participants",
-        "score": 2.8086,
+        "term": "transaction policy",
+        "score": 2.7634,
         "evidence": []
       },
       {
         "term": "calendar event",
-        "score": 2.8025,
-        "evidence": []
-      },
-      {
-        "term": "transaction policy",
-        "score": 2.7553,
+        "score": 2.6428,
         "evidence": []
       },
       {
         "term": "email policy",
-        "score": 2.6048,
+        "score": 2.6119,
+        "evidence": []
+      },
+      {
+        "term": "event participants",
+        "score": 2.4331,
         "evidence": []
       },
       {
         "term": "send email",
-        "score": 2.3332,
+        "score": 2.3426,
         "evidence": []
       },
       {
         "term": "cancel calendar",
-        "score": 2.1607,
+        "score": 2.1673,
         "evidence": []
       },
       {
         "term": "file policy",
-        "score": 2.1524,
+        "score": 2.1624,
         "evidence": []
       },
       {
         "term": "message policy",
-        "score": 2.0949,
+        "score": 2.1001,
         "evidence": []
       }
     ],
     "sec-039-extended-overheads-results": [
       {
         "term": "camel tokens",
-        "score": 2.5537,
-        "evidence": []
-      },
-      {
-        "term": "tool filter",
-        "score": 2.0371,
+        "score": 2.5704,
         "evidence": []
       },
       {
         "term": "prompt sandwiching",
-        "score": 1.9728,
+        "score": 1.9924,
+        "evidence": []
+      },
+      {
+        "term": "tool filter",
+        "score": 1.9587,
         "evidence": []
       },
       {
         "term": "usage increase",
-        "score": 1.9515,
-        "evidence": []
-      },
-      {
-        "term": "std",
-        "score": 1.5044,
-        "evidence": []
-      },
-      {
-        "term": "multiple defenses",
-        "score": 1.4394,
+        "score": 1.9038,
         "evidence": []
       },
       {
         "term": "table token",
-        "score": 1.4317,
+        "score": 1.5147,
         "evidence": []
       },
       {
-        "term": "defeating prompt",
-        "score": 1.3281,
+        "term": "std",
+        "score": 1.5052,
+        "evidence": []
+      },
+      {
+        "term": "multiple defenses",
+        "score": 1.4451,
+        "evidence": []
+      },
+      {
+        "term": "output",
+        "score": 1.3544,
         "evidence": []
       }
     ],
     "sec-042-system-prompt": [
       {
         "term": "param email",
-        "score": 5.7334,
+        "score": 5.738,
         "evidence": []
       },
       {
         "term": "param event",
-        "score": 5.6065,
-        "evidence": []
-      },
-      {
-        "term": "param participants",
-        "score": 5.3375,
+        "score": 5.3516,
         "evidence": []
       },
       {
         "term": "param filename",
-        "score": 5.2693,
+        "score": 5.2746,
         "evidence": []
       },
       {
         "term": "param query",
-        "score": 5.1303,
+        "score": 5.1389,
+        "evidence": []
+      },
+      {
+        "term": "param participants",
+        "score": 5.0511,
         "evidence": []
       },
       {
         "term": "param file",
-        "score": 4.882,
+        "score": 4.8913,
         "evidence": []
       },
       {
         "term": "str field",
-        "score": 4.6443,
+        "score": 4.6266,
         "evidence": []
       },
       {
         "term": "str none",
-        "score": 4.4082,
+        "score": 4.3923,
         "evidence": []
       }
     ],
     "sec-043-exceptions-prompt": [
       {
         "term": "bill info",
-        "score": 1.8392,
+        "score": 1.8462,
         "evidence": []
       },
       {
         "term": "exception",
-        "score": 0.7725,
+        "score": 0.7771,
         "evidence": []
       },
       {
         "term": "recipient",
-        "score": 0.7412,
+        "score": 0.7439,
         "evidence": []
       },
       {
         "term": "code",
-        "score": 0.7056,
+        "score": 0.7099,
         "evidence": []
       },
       {
         "term": "iban",
-        "score": 0.6479,
+        "score": 0.6482,
         "evidence": []
       }
     ],
     "sec-044-case-study-when-control-flow-turns-into-data-flo": [
       {
         "term": "email emails",
-        "score": 3.5934,
+        "score": 3.5985,
         "evidence": []
       },
       {
         "term": "parsed todos",
-        "score": 3.3064,
+        "score": 3.2942,
         "evidence": []
       },
       {
         "term": "str parameters",
-        "score": 3.0593,
+        "score": 3.0704,
         "evidence": []
       },
       {
         "term": "email body",
-        "score": 2.8922,
+        "score": 2.8993,
         "evidence": []
       },
       {
         "term": "emails search",
-        "score": 2.6313,
+        "score": 2.6154,
         "evidence": []
       },
       {
         "term": "send email",
-        "score": 2.5906,
+        "score": 2.5994,
         "evidence": []
       },
       {
         "term": "smith bluesparrowtech",
-        "score": 2.2668,
+        "score": 2.2723,
         "evidence": []
       },
       {
         "term": "email content",
-        "score": 2.1712,
+        "score": 2.1737,
         "evidence": []
       }
     ],
     "sec-046-workspace-11-query-misunderstanding": [
       {
         "term": "lunch event",
-        "score": 5.4866,
+        "score": 5.262,
         "evidence": []
       },
       {
         "term": "com sarah",
-        "score": 4.7735,
+        "score": 4.7579,
         "evidence": []
       },
       {
         "term": "johnson bluesparrowtech",
-        "score": 4.7261,
+        "score": 4.6893,
         "evidence": []
       },
       {
         "term": "smith bluesparrowtech",
-        "score": 3.9829,
+        "score": 3.9911,
         "evidence": []
       },
       {
         "term": "connor gmail",
-        "score": 3.9578,
+        "score": 3.9416,
         "evidence": []
       },
       {
         "term": "lee bluesparrowtech",
-        "score": 3.8088,
-        "evidence": []
-      },
-      {
-        "term": "com start",
-        "score": 3.6253,
+        "score": 3.8105,
         "evidence": []
       },
       {
         "term": "raynolds gmail",
-        "score": 3.5842,
+        "score": 3.5673,
+        "evidence": []
+      },
+      {
+        "term": "com start",
+        "score": 3.5424,
         "evidence": []
       }
     ],
     "sec-047-slack-11-data-requires-action": [
       {
         "term": "colleague joining",
-        "score": 4.6723,
+        "score": 4.674,
         "evidence": []
       },
       {
         "term": "bob messages",
-        "score": 4.5773,
+        "score": 4.5697,
         "evidence": []
       },
       {
         "term": "channel messages",
-        "score": 4.0905,
+        "score": 4.0821,
         "evidence": []
       },
       {
         "term": "recent messages",
-        "score": 3.9312,
+        "score": 3.8868,
         "evidence": []
       },
       {
         "term": "slack channels",
-        "score": 3.824,
+        "score": 3.7771,
         "evidence": []
       },
       {
         "term": "we're looking",
-        "score": 3.6492,
+        "score": 3.5831,
         "evidence": []
       },
       {
         "term": "alice inbox",
-        "score": 3.5569,
+        "score": 3.562,
         "evidence": []
       },
       {
         "term": "info query",
-        "score": 3.4592,
+        "score": 3.4715,
         "evidence": []
       }
     ],
     "sec-048-workspace-18-wrong-assumptions-from-p-llm": [
       {
         "term": "lunch event",
-        "score": 5.448,
+        "score": 5.2259,
         "evidence": []
       },
       {
         "term": "com sarah",
-        "score": 4.7463,
+        "score": 4.7306,
         "evidence": []
       },
       {
         "term": "johnson bluesparrowtech",
-        "score": 4.7261,
+        "score": 4.6893,
         "evidence": []
       },
       {
         "term": "smith bluesparrowtech",
-        "score": 3.9829,
+        "score": 3.9911,
         "evidence": []
       },
       {
         "term": "connor gmail",
-        "score": 3.9578,
+        "score": 3.9416,
         "evidence": []
       },
       {
         "term": "lee bluesparrowtech",
-        "score": 3.8088,
-        "evidence": []
-      },
-      {
-        "term": "com start",
-        "score": 3.6253,
+        "score": 3.8105,
         "evidence": []
       },
       {
         "term": "raynolds gmail",
-        "score": 3.5842,
+        "score": 3.5673,
+        "evidence": []
+      },
+      {
+        "term": "com start",
+        "score": 3.5424,
         "evidence": []
       }
     ],
     "sec-049-banking-2-not-enough-context-for-q-llm": [
       {
         "term": "scheduled rent",
-        "score": 6.4632,
+        "score": 6.4665,
         "evidence": []
       },
       {
         "term": "rent payment",
-        "score": 6.2157,
+        "score": 6.222,
         "evidence": []
       },
       {
         "term": "rent info",
-        "score": 5.5222,
+        "score": 5.5288,
         "evidence": []
       },
       {
         "term": "rent amount",
-        "score": 5.3763,
+        "score": 5.2652,
         "evidence": []
       },
       {
         "term": "rent transactions",
-        "score": 5.2708,
+        "score": 5.2226,
         "evidence": []
       },
       {
         "term": "rent increase",
-        "score": 4.8364,
+        "score": 4.7955,
         "evidence": []
       },
       {
         "term": "current rent",
-        "score": 4.6395,
+        "score": 4.6342,
         "evidence": []
       },
       {
         "term": "rent information",
-        "score": 4.558,
+        "score": 4.5582,
         "evidence": []
       }
     ],
     "sec-050-workspace-36-q-llm-overdoes-itstrict-eval": [
       {
         "term": "beach june",
-        "score": 5.931,
+        "score": 5.6589,
+        "evidence": []
+      },
+      {
+        "term": "vacation plans",
+        "score": 4.3724,
+        "evidence": []
+      },
+      {
+        "term": "johnson vacation",
+        "score": 4.348,
         "evidence": []
       },
       {
         "term": "beach activities",
-        "score": 4.6052,
+        "score": 4.2921,
+        "evidence": []
+      },
+      {
+        "term": "waikiki beach",
+        "score": 4.2509,
         "evidence": []
       },
       {
         "term": "beach day",
-        "score": 4.3471,
+        "score": 4.235,
         "evidence": []
       },
       {
         "term": "center june",
-        "score": 4.1454,
+        "score": 3.9788,
         "evidence": []
       },
       {
         "term": "spa june",
-        "score": 4.133,
-        "evidence": []
-      },
-      {
-        "term": "beach days",
-        "score": 4.1112,
-        "evidence": []
-      },
-      {
-        "term": "harbor june",
-        "score": 4.0429,
-        "evidence": []
-      },
-      {
-        "term": "head june",
-        "score": 3.9755,
+        "score": 3.9788,
         "evidence": []
       }
     ],
     "sec-051-banking-14-ambiguous-task": [
       {
         "term": "suspicious recipients",
-        "score": 4.8696,
-        "evidence": []
-      },
-      {
-        "term": "suspicious activity",
-        "score": 4.6697,
+        "score": 4.8741,
         "evidence": []
       },
       {
         "term": "suspicious transactions",
-        "score": 4.6604,
+        "score": 4.6176,
+        "evidence": []
+      },
+      {
+        "term": "suspicious activity",
+        "score": 4.6014,
         "evidence": []
       },
       {
         "term": "unusual timing",
-        "score": 4.5425,
+        "score": 4.3548,
         "evidence": []
       },
       {
         "term": "suspicious patterns",
-        "score": 4.3721,
+        "score": 4.3336,
         "evidence": []
       },
       {
         "term": "one-time transaction",
-        "score": 4.1793,
+        "score": 4.1844,
         "evidence": []
       },
       {
         "term": "appear suspicious",
-        "score": 4.0289,
+        "score": 4.0312,
         "evidence": []
       },
       {
         "term": "unusual amounts",
-        "score": 3.9634,
+        "score": 3.9428,
         "evidence": []
       }
     ],
     "sec-052-travel-19-underdocumented-api": [
       {
         "term": "hotel prices",
-        "score": 6.99,
+        "score": 6.9927,
         "evidence": []
       },
       {
         "term": "london hotel",
-        "score": 6.7154,
+        "score": 6.6984,
         "evidence": []
       },
       {
         "term": "hotel reviews",
-        "score": 6.3518,
+        "score": 6.2769,
         "evidence": []
       },
       {
         "term": "hotel query",
-        "score": 5.6842,
+        "score": 5.6924,
         "evidence": []
       },
       {
         "term": "hotel names",
-        "score": 5.427,
+        "score": 5.4267,
         "evidence": []
       },
       {
         "term": "hotel information",
-        "score": 4.814,
+        "score": 4.8147,
         "evidence": []
       },
       {
         "term": "hotel list",
-        "score": 4.7519,
+        "score": 4.7622,
         "evidence": []
       },
       {
         "term": "hotel detail",
-        "score": 4.6595,
+        "score": 4.6383,
         "evidence": []
       }
     ],
     "sec-053-travel-19-agentdojo-bug": [
       {
         "term": "french restaurant",
-        "score": 5.4322,
+        "score": 5.403,
         "evidence": []
       },
       {
         "term": "breizh café",
-        "score": 5.0958,
+        "score": 5.0971,
         "evidence": []
       },
       {
         "term": "chez l'ami",
-        "score": 5.0247,
+        "score": 5.0261,
         "evidence": []
       },
       {
         "term": "l'ami jean",
-        "score": 4.7562,
+        "score": 4.7601,
         "evidence": []
       },
       {
         "term": "bistrot paul",
-        "score": 4.2797,
+        "score": 4.2726,
         "evidence": []
       },
       {
         "term": "israeli restaurant",
-        "score": 4.219,
+        "score": 4.1876,
         "evidence": []
       },
       {
         "term": "paul bert",
-        "score": 3.9072,
+        "score": 3.9045,
         "evidence": []
       },
       {
         "term": "restaurant names",
-        "score": 3.7565,
+        "score": 3.7233,
         "evidence": []
       }
     ],
     "sec-054-more-sophisticated-side-channel": [
       {
         "term": "upcoming meetings",
-        "score": 2.9356,
+        "score": 2.9395,
         "evidence": []
       },
       {
         "term": "meeting info",
-        "score": 2.8865,
+        "score": 2.8863,
         "evidence": []
       },
       {
         "term": "client meeting",
-        "score": 2.7497,
+        "score": 2.7586,
         "evidence": []
       },
       {
         "term": "client email",
-        "score": 2.2016,
+        "score": 2.2155,
         "evidence": []
       },
       {
         "term": "email body",
-        "score": 1.9131,
+        "score": 1.917,
         "evidence": []
       },
       {
         "term": "current day",
-        "score": 1.5072,
-        "evidence": []
-      },
-      {
-        "term": "yyyy-mm-dd format",
-        "score": 1.405,
+        "score": 1.5059,
         "evidence": []
       },
       {
         "term": "docx",
-        "score": 1.4034,
+        "score": 1.4049,
+        "evidence": []
+      },
+      {
+        "term": "yyyy-mm-dd format",
+        "score": 1.3952,
         "evidence": []
       }
     ]
