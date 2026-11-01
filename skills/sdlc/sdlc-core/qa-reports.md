@@ -30,8 +30,8 @@ two on that line, by the owner's rulings of 2026-10-01:
 | schema | the family's own | `qa-attestations/v1`, `schemas/sdlc/qa-attestations.ts` |
 | on a merge conflict | take the base's side (`merge:main`), then regenerate | a person reads both sides |
 
-**cat-harness and folio-assistant-core no longer commit the derived files**
-(bean `5hox`, ruling D4; cat-harness#857, folio-assistant-core#482). Where an
+**cat-harness and the content core no longer commit the derived files**
+(bean `5hox`, ruling D4; cat-harness#857, https://github.com/litlfred/folio-assistant-core/pull/482). Where an
 instance still does, they are a copy on its way out, not the
 record. Do not regenerate one in order to commit it, and do not hand-resolve
 one. Every `qa` directory already declares `storage` and is ignored by version
