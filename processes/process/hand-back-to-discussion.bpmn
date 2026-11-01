@@ -56,7 +56,7 @@ THE PERSON'S STEP is inside `Process_AskThePerson`, called by the discussion age
       <bpmn:documentation>`yes` when the brief or the work names a review sheet, issue or PR where the people concerned read; `no` otherwise.</bpmn:documentation>
     </bpmn:exclusiveGateway>
     <bpmn:task id="S_Mirror" name="Mirror it to the&#10;feedback channel">
-      <bpmn:documentation>Review sheet: the "Decision needed" block in the row's agent column, Agentic status `Needs you` (folio-assistant-core `review-sheet-script`). Issue or PR: a comment. An extra copy, never instead of the discussion.</bpmn:documentation>
+      <bpmn:documentation>Review sheet: the "Decision needed" block in the row's agent column, Agentic status `Needs you` (the document layer's `review-sheet-script` skill). Issue or PR: a comment. An extra copy, never instead of the discussion.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="hand-back-to-discussion"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:exclusiveGateway id="GW_ChannelJoin"/>
@@ -123,6 +123,7 @@ THE PERSON'S STEP is inside `Process_AskThePerson`, called by the discussion age
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_HandBackToDiscussion" bpmnElement="Start_Process_HandBackToDiscussion">
         <dc:Bounds x="232" y="162" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="221.01" y="197.5" width="90" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_S_Compose" bpmnElement="S_Compose">
         <dc:Bounds x="310" y="140" width="120" height="80" />
@@ -147,6 +148,7 @@ THE PERSON'S STEP is inside `Process_AskThePerson`, called by the discussion age
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_NeedsAnswer" bpmnElement="GW_NeedsAnswer" isMarkerVisible="true">
         <dc:Bounds x="835" y="355" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="741" y="362.5" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_D_Ask" bpmnElement="D_Ask">
         <dc:Bounds x="930" y="340" width="120" height="80" />

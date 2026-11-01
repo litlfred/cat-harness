@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-2005.09998v1/blocks/figure-img-p011-1",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p011-1.png",
+  "pageStart": 11,
+  "pageEnd": 11,
+  "narrative": [
+    {
+      "text": "Figure 7: Extract of the Monkey Business implementation in (a) OpenRules (requiring n rows for n monkeys) and (b) cDMN (requiring 1 quantified E* row specifying that the monkey sitting on the rock eats the apple).",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 7 : Extrait de l'implémentation de Monkey Business dans (a) OpenRules (n lignes pour n singes) et (b) cDMN (1 ligne de contrainte quantifiée E*).",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 7: Extracto de la implementación de Monkey Business en (a) OpenRules (n filas para n monos) y (b) cDMN (1 fila de restricción cuantificada E*).",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 7: مقتطف من تنفيذ تحدي Monkey Business في (أ) OpenRules (يتطلب n صفاً لـ n من القرود) و(ب) cDMN (يتطلب صف قيد مكمم واحد E*).",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图 7：Monkey Business 在 (a) OpenRules（n 只猴子需要 n 行）和 (b) cDMN（仅需 1 行量化 E* 约束）中的实现对比摘录。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 7: Фрагмент реализации задачи Monkey Business в (a) OpenRules (требуется n строк для n обезьян) и (b) cDMN (одна квантифицированная строка ограничения E*).",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-2005.09998v1/sections/sec-000",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2005.09998v1/manifest.jsonld",
+  "provenance": "ingested"
+}

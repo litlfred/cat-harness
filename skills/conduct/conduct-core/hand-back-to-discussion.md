@@ -88,7 +88,7 @@ and [`output.schema.json`](../../../schemas/skills/hand-back-to-discussion/outpu
    **never the only copy**.
 3. **Mirror it to the feedback channel in play.** When a review sheet governs
    the work, write the "Decision needed" block into the row's agent column and
-   set Agentic status to `Needs you` (folio-assistant-core `review-sheet-script`
+   set Agentic status to `Needs you` (the document layer's `review-sheet-script` skill,
    §"A question to people goes in the sheet"). An issue or PR in play gets a
    comment. These are extra copies, never instead of the discussion.
 4. **Hand back** to the discussion agent with the host's route:

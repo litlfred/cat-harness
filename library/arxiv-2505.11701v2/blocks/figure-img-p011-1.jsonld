@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-2505.11701v2/blocks/figure-img-p011-1",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p011-1.png",
+  "pageStart": 11,
+  "pageEnd": 11,
+  "narrative": [
+    {
+      "text": "Figure 10: Example of an incorrectly modeled deferred choice in BPMN where an unnecessary 'Wait for Result' task was added despite the automated reminder timer mechanism.",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 10 : Exemple de choix différé mal modélisé en BPMN où une tâche inutile « Wait for Result » a été ajoutée malgré le mécanisme de rappel automatique.",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 10: Ejemplo de elección diferida modelada incorrectamente en BPMN donde se añadió una tarea innecesaria «Wait for Result» pese al mecanismo de recordatorio automático.",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 10: مثال لنمذجة غير صحيحة للاختيار المؤجل في BPMN حيث تمت إضافة مهمة غير ضرورية «Wait for Result» رغم وجود آلية التذكير التلقائي.",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图 10：BPMN 中延迟选择错误建模的示例，尽管存在自动提醒计时机制，仍添加了不必要的“Wait for Result”任务。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 10: Пример некорректно смоделированного отложенного выбора в BPMN, где была добавлена лишняя задача «Wait for Result» несмотря на автоматический таймер напоминания.",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-2505.11701v2/sections/sec-000",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2505.11701v2/manifest.jsonld",
+  "provenance": "ingested"
+}

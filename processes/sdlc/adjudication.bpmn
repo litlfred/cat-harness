@@ -163,9 +163,11 @@ What could NOT be fixed by passing the codes as data, which was this bean's firs
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Adjudicable" bpmnElement="GW_Adjudicable" isMarkerVisible="true">
         <dc:Bounds x="370" y="250" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="276" y="248" width="90" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_NotAdjudicable" bpmnElement="End_NotAdjudicable">
         <dc:Bounds x="377" y="480" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="417" y="444" width="90" height="108" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Dispatch" bpmnElement="A_Dispatch">
         <dc:Bounds x="480" y="235" width="150" height="80"/>
@@ -196,6 +198,7 @@ What could NOT be fixed by passing the codes as data, which was this bean's firs
       <bpmndi:BPMNEdge id="Edge_F_NotAdjudicable" bpmnElement="F_NotAdjudicable">
         <di:waypoint x="395" y="300"/>
         <di:waypoint x="395" y="480"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="399" y="381" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_3" bpmnElement="F_3">
         <di:waypoint x="630" y="275"/>

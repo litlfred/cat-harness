@@ -115,12 +115,14 @@ WHAT DID NOT MOVE. There is still no role-to-theme mapping — theme choice rema
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Findings" bpmnElement="GW_Findings" isMarkerVisible="true">
         <dc:Bounds x="1330" y="310" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1310" y="288" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_RaiseFindings" bpmnElement="A_RaiseFindings">
         <dc:Bounds x="1440" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_TUR" bpmnElement="End_TUR">
         <dc:Bounds x="1660" y="317" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1633" y="278" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_TUR_1" bpmnElement="SF_TUR_1">
         <di:waypoint x="276" y="335" />

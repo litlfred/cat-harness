@@ -31,7 +31,7 @@ How a sibling agent gets a card, question, result, blocker or context in front o
 
 - Who: the `Sibling` lane (role `sibling-session`).
 - Skill: `hand-back-to-discussion`.
-- What: Review sheet: the "Decision needed" block in the row's agent column, Agentic status `Needs you` (folio-assistant-core `review-sheet-script`).
+- What: Review sheet: the "Decision needed" block in the row's agent column, Agentic status `Needs you` (the document layer's `review-sheet-script` skill).
 - Record it: `workflow_complete` with `node: "S_Mirror"`.
 - next: → `GW_ChannelJoin`
 

@@ -96,10 +96,10 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
         <dc:Bounds x="160" y="80" width="1686" height="550" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BA_Process_CRDM_Close" bpmnElement="Lane_BA" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1656" height="170" />
+        <dc:Bounds x="190" y="250" width="1656" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent_Process_CRDM_Close" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="250" width="1656" height="170" />
+        <dc:Bounds x="190" y="80" width="1656" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Stakeholders_Process_CRDM_Close" bpmnElement="Lane_Stakeholders" isHorizontal="true">
         <dc:Bounds x="190" y="420" width="1656" height="170" />
@@ -111,16 +111,16 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
         <dc:Bounds x="510" y="465" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_BA_Confirm" bpmnElement="BA_Confirm">
-        <dc:Bounds x="710" y="125" width="140" height="80" />
+        <dc:Bounds x="690" y="295" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_MergeToMain" bpmnElement="Call_MergeToMain">
-        <dc:Bounds x="1030" y="295" width="140" height="80" />
+        <dc:Bounds x="1010" y="125" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Close" bpmnElement="A_Close">
-        <dc:Bounds x="1250" y="295" width="140" height="80" />
+        <dc:Bounds x="1250" y="125" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_CRDM_Close" bpmnElement="End_Process_CRDM_Close">
-        <dc:Bounds x="1710" y="317" width="36" height="36" />
+        <dc:Bounds x="1710" y="147" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Close_1" bpmnElement="SF_Process_CRDM_Close_1">
         <di:waypoint x="346" y="505" />
@@ -129,45 +129,46 @@ says so rather than leaving a reader to trace the flow for it.</bpmn:documentati
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Close_2" bpmnElement="SF_Process_CRDM_Close_2">
         <di:waypoint x="650" y="505" />
         <di:waypoint x="680" y="505" />
-        <di:waypoint x="680" y="165" />
-        <di:waypoint x="710" y="165" />
+        <di:waypoint x="680" y="335" />
+        <di:waypoint x="690" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Close_3" bpmnElement="SF_Process_CRDM_Close_3">
-        <di:waypoint x="780" y="205" />
-        <di:waypoint x="780" y="295" />
+        <di:waypoint x="780" y="375" />
+        <di:waypoint x="780" y="109.5" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Shape_A_RecordSignoff" bpmnElement="A_RecordSignoff">
-        <dc:Bounds x="710" y="295" width="140" height="80" />
+        <dc:Bounds x="690" y="109.5" width="180" height="111" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_SignoffRecorded" bpmnElement="GW_SignoffRecorded" isMarkerVisible="true">
-        <dc:Bounds x="910" y="310" width="50" height="50" />
+        <dc:Bounds x="910" y="140" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_NotAccepted" bpmnElement="End_NotAccepted">
-        <dc:Bounds x="917" y="372" width="36" height="36" />
+        <dc:Bounds x="917" y="202" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Close_Gate" bpmnElement="SF_Close_Gate">
-        <di:waypoint x="850" y="335" />
-        <di:waypoint x="910" y="335" />
+        <di:waypoint x="870" y="165" />
+        <di:waypoint x="910" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Close_Proceed" bpmnElement="SF_Close_Proceed">
-        <di:waypoint x="960" y="335" />
-        <di:waypoint x="1030" y="335" />
+        <di:waypoint x="960" y="165" />
+        <di:waypoint x="1010" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Close_Merged" bpmnElement="SF_Close_Merged">
-        <di:waypoint x="1170" y="335" />
-        <di:waypoint x="1250" y="335" />
+        <di:waypoint x="1190" y="165" />
+        <di:waypoint x="1250" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Close_Stop" bpmnElement="SF_Close_Stop">
-        <di:waypoint x="935" y="360" />
-        <di:waypoint x="935" y="372" />
+        <di:waypoint x="935" y="190" />
+        <di:waypoint x="935" y="202" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Close_Missing" bpmnElement="SF_Close_Missing">
-        <di:waypoint x="935" y="310" />
-        <di:waypoint x="935" y="270" />
-        <di:waypoint x="820" y="270" />
-        <di:waypoint x="820" y="295" />
+        <di:waypoint x="935" y="140" />
+        <di:waypoint x="935" y="100" />
+        <di:waypoint x="820" y="100" />
+        <di:waypoint x="820" y="109.5" />
+        <bpmndi:BPMNLabel><dc:Bounds x="939" y="101" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Close_4" bpmnElement="SF_Process_CRDM_Close_4"><di:waypoint x="1390" y="335"/><di:waypoint x="1710" y="335"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Close_4" bpmnElement="SF_Process_CRDM_Close_4"><di:waypoint x="1390" y="165"/><di:waypoint x="1710" y="165"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

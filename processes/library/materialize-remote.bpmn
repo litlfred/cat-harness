@@ -208,8 +208,8 @@ and the graph says why">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Asked_di" bpmnElement="StartEvent_Asked">
         <dc:Bounds x="200" y="127" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="160" y="168" width="116" height="30" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="240" y="167" width="116" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Purpose_di" bpmnElement="Task_Purpose">
         <dc:Bounds x="450" y="95" width="190" height="100" />
       </bpmndi:BPMNShape>
@@ -220,7 +220,7 @@ and the graph says why">
         <dc:Bounds x="950" y="285" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Restrictions_di" bpmnElement="Task_Restrictions">
-        <dc:Bounds x="1200" y="285" width="190" height="100" />
+        <dc:Bounds x="1200" y="284.5" width="190" height="101" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Copyright_di" bpmnElement="Task_Copyright">
         <dc:Bounds x="1450" y="285" width="190" height="100" />
@@ -233,8 +233,8 @@ and the graph says why">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Gates_di" bpmnElement="Gateway_Gates" isMarkerVisible="true">
         <dc:Bounds x="2200" y="310" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2160" y="365" width="130" height="30" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="2160" y="271" width="130" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Fetch_di" bpmnElement="Task_Fetch">
         <dc:Bounds x="2450" y="285" width="190" height="100" />
       </bpmndi:BPMNShape>
@@ -246,12 +246,12 @@ and the graph says why">
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Done_di" bpmnElement="EndEvent_Done">
         <dc:Bounds x="2950" y="507" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2910" y="548" width="116" height="30" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="2990" y="480.5" width="116" height="89" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Refused_di" bpmnElement="EndEvent_Refused">
         <dc:Bounds x="2950" y="632" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2910" y="673" width="116" height="30" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="2910" y="574" width="116" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
         <di:waypoint x="236" y="145" />
         <di:waypoint x="450" y="145" />
