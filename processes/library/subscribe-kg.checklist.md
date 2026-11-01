@@ -60,22 +60,22 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Skill: `kg-subscription`.
 - What: No subscription entry is written for a repository that is not a substrate.
 - Record it: `workflow_complete` with `node: "Task_Refuse"`.
-- next: → `Call_BeanClose_2` (Close the bean)
+- next: → `Call_BeanClose` (Close the bean)
 
 ### Decide — New subscription, or moving a held pin? (`Gateway_Kind`)
 
 - Answered by the subscriber's declaration: an entry with this id already exists or it does not.
 - Call `workflow_complete` with `node: "Gateway_Kind"` and `outcome` set to the label that holds:
   - «new» → `Task_Record` (Write the entry and cache the declaration)
-  - «moving a held pin» → `Gateway_NextHeld` (Another held part not yet refreshed?)
+  - «moving a held pin» → `Gateway_NextHeld_Join`
 
-### 5. Close the bean (`Call_BeanClose_2`)
+### 5. Close the bean (`Call_BeanClose`)
 
 - Who: the `Corpus — the subscriber's declaration` lane (role `corpus`).
 - Skill: `todo-manager`.
 - What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
 - A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `EndEvent_Refused` (Not subscribed, and the record says why)
+- next: → `GW_BeanClosedHow` (How did it end?)
 
 ### 6. Write the entry and cache the declaration (`Task_Record`)
 
@@ -85,16 +85,17 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Record it: `workflow_complete` with `node: "Task_Record"`.
 - next: → `Task_Review` (Review what the substrate offers)
 
-### Decide — Another held part not yet refreshed? (`Gateway_NextHeld`)
+### Merge — `Gateway_NextHeld_Join`
 
-- Walks the parts this subscription already holds — every subgraph and asset with a materialisation record — one at a time.
-- Call `workflow_complete` with `node: "Gateway_NextHeld"` and `outcome` set to the label that holds:
-  - «yes» → `Call_Refresh` (Refresh the held part)
-  - «no, all refreshed» → `Task_RePin` (Move the entry's ref and re-cache the declaration)
+- Nothing to do or decide: the paths meet here and the engine passes through.
+- next: → `Gateway_NextHeld` (Another held part not yet refreshed?)
 
-## Done — Not subscribed, and the record says why (`EndEvent_Refused`)
+### Decide — How did it end? (`GW_BeanClosedHow`)
 
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- Which outcome the bean was closed with, so each ends at its own named end event.
+- Call `workflow_complete` with `node: "GW_BeanClosedHow"` and `outcome` set to the label that holds:
+  - «subscribed» → `EndEvent_Done` (Subscribed, every part in a recorded state)
+  - «refused» → `EndEvent_Refused` (Not subscribed, and the record says why)
 
 ### 7. Review what the substrate offers (`Task_Review`)
 
@@ -104,23 +105,22 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Record it: `workflow_complete` with `node: "Task_Review"`.
 - next: → `Task_Choose` (Choose subgraphs, the asset policy, harnesses)
 
-### 8. Refresh the held part (`Call_Refresh`)
+### Decide — Another held part not yet refreshed? (`Gateway_NextHeld`)
 
-- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
-- Skill: `materialize-remote`.
-- What: The shared refresh, called, not re-described: what changed upstream, what changed locally, and what to do when both did.
-- A subprocess (`Process_RefreshMaterialized`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Gateway_NextHeld` (Another held part not yet refreshed?)
+- Walks the parts this subscription already holds — every subgraph and asset with a materialisation record — one at a time.
+- Call `workflow_complete` with `node: "Gateway_NextHeld"` and `outcome` set to the label that holds:
+  - «yes» → `Call_Refresh` (Refresh the held part)
+  - «no, all refreshed» → `Task_RePin` (Move the entry's ref and re-cache the declaration)
 
-### 9. Move the entry's ref and re-cache the declaration (`Task_RePin`)
+## Done — Subscribed, every part in a recorded state (`EndEvent_Done`)
 
-- Who: the `Corpus — the subscriber's declaration` lane (role `corpus`).
-- Skill: `kg-subscription`.
-- What: Only after every held part has been through the refresh.
-- Record it: `workflow_complete` with `node: "Task_RePin"`.
-- next: → `Task_Review` (Review what the substrate offers)
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 10. Choose subgraphs, the asset policy, harnesses (`Task_Choose`)
+## Done — Not subscribed, and the record says why (`EndEvent_Refused`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 8. Choose subgraphs, the asset policy, harnesses (`Task_Choose`)
 
 - Who: the `Subscriber (the folio's owner)` lane (role `user`).
 - Skill: `kg-subscription`.
@@ -128,19 +128,40 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Record it: `workflow_complete` with `node: "Task_Choose"`.
 - next: → `Gateway_NeedsHeld` (Every chosen harness's needs held here?)
 
+### 9. Refresh the held part (`Call_Refresh`)
+
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
+- Skill: `materialize-remote`.
+- What: The shared refresh, called, not re-described: what changed upstream, what changed locally, and what to do when both did.
+- A subprocess (`Process_RefreshMaterialized`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `Gateway_NextHeld_Join`
+
+### 10. Move the entry's ref and re-cache the declaration (`Task_RePin`)
+
+- Who: the `Corpus — the subscriber's declaration` lane (role `corpus`).
+- Skill: `kg-subscription`.
+- What: Only after every held part has been through the refresh.
+- Record it: `workflow_complete` with `node: "Task_RePin"`.
+- next: → `Task_Review` (Review what the substrate offers)
+
 ### Decide — Every chosen harness's needs held here? (`Gateway_NeedsHeld`)
 
 - For each chosen harness, is every instance it `needs` either local to this checkout or itself subscribed?
 - Call `workflow_complete` with `node: "Gateway_NeedsHeld"` and `outcome` set to the label that holds:
   - «no — choose again» → `Task_Choose` (Choose subgraphs, the asset policy, harnesses)
-  - «yes» → `Gateway_NextPart` (Another chosen subgraph or asset not yet walked?)
+  - «yes» → `Gateway_NextPart_Join`
+
+### Merge — `Gateway_NextPart_Join`
+
+- Nothing to do or decide: the paths meet here and the engine passes through.
+- next: → `Gateway_NextPart` (Another chosen subgraph or asset not yet walked?)
 
 ### Decide — Another chosen subgraph or asset not yet walked? (`Gateway_NextPart`)
 
 - One part at a time, in the order chosen.
 - Call `workflow_complete` with `node: "Gateway_NextPart"` and `outcome` set to the label that holds:
   - «yes» → `Call_Materialize` (Materialise the part)
-  - «no, every part walked» → `Gateway_NextHarness` (Another chosen harness not yet instantiated?)
+  - «no, every part walked» → `Gateway_NextHarness_Join`
 
 ### 11. Materialise the part (`Call_Materialize`)
 
@@ -148,7 +169,12 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Skill: `materialize-remote`.
 - What: The ONLY way bytes arrive.
 - A subprocess (`Process_MaterializeRemote`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Gateway_NextPart` (Another chosen subgraph or asset not yet walked?)
+- next: → `Gateway_NextPart_Join`
+
+### Merge — `Gateway_NextHarness_Join`
+
+- Nothing to do or decide: the paths meet here and the engine passes through.
+- next: → `Gateway_NextHarness` (Another chosen harness not yet instantiated?)
 
 ### Decide — Another chosen harness not yet instantiated? (`Gateway_NextHarness`)
 
@@ -163,7 +189,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Skill: `kg-subscription`, `index-config`.
 - What: Write `<harness>.config.json` at the repository root, plus the state directories the harness declares, and — where the checkout has a root `index.config.json` — add the harness to its `instances[]` (kg:instantiate does both), because the index, not the file, is then what reads as INSTANTIATED (index
 - Record it: `workflow_complete` with `node: "Task_Instantiate"`.
-- next: → `Gateway_NextHarness` (Another chosen harness not yet instantiated?)
+- next: → `Gateway_NextHarness_Join`
 
 ### 13. Record how the walk ended, part by part (`Task_Summarise`)
 
@@ -172,15 +198,3 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - What: One line per offered part: materialised, referenced by choice, or referenced because a gate refused (and which).
 - Record it: `workflow_complete` with `node: "Task_Summarise"`.
 - next: → `Call_BeanClose` (Close the bean)
-
-### 14. Close the bean (`Call_BeanClose`)
-
-- Who: the `Corpus — the subscriber's declaration` lane (role `corpus`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `EndEvent_Done` (Subscribed, every part in a recorded state)
-
-## Done — Subscribed, every part in a recorded state (`EndEvent_Done`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.

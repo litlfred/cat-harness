@@ -132,6 +132,24 @@
             ],
             "additionalProperties": false
           }
+        },
+        "poster": {
+          "type": "object",
+          "properties": {
+            "noteProperty": {
+              "type": "string",
+              "minLength": 1
+            },
+            "starProperty": {
+              "type": "string",
+              "minLength": 1
+            },
+            "starLabel": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "additionalProperties": false
         }
       },
       "required": [
