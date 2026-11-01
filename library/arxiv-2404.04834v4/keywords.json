@@ -3,75 +3,75 @@
   "entry": "arxiv-2404.04834v4",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "lma agents",
-      "score": 30.6881,
+      "score": 30.8696,
       "evidence": []
     },
     {
       "term": "lma systems",
-      "score": 29.814,
+      "score": 29.984,
       "evidence": []
     },
     {
       "term": "lma roles",
-      "score": 25.4824,
+      "score": 25.4953,
       "evidence": []
     },
     {
       "term": "software systems",
-      "score": 23.7411,
+      "score": 23.6921,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "engineering agents",
-      "score": 23.4766,
+      "score": 23.376,
       "evidence": []
     },
     {
       "term": "llm-based agents",
-      "score": 22.9584,
-      "evidence": []
-    },
-    {
-      "term": "current lma",
-      "score": 22.0831,
+      "score": 23.1384,
       "evidence": []
     },
     {
       "term": "lma framework",
-      "score": 22.0799,
+      "score": 22.1872,
+      "evidence": []
+    },
+    {
+      "term": "current lma",
+      "score": 22.1113,
       "evidence": []
     },
     {
       "term": "software development",
-      "score": 21.2968,
+      "score": 20.6645,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "multi-agent systems",
-      "score": 20.0682,
+      "score": 20.2322,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "trustworthy lma",
-      "score": 20.0283,
+      "score": 20.0929,
       "evidence": []
     },
     {
       "term": "lma applications",
-      "score": 19.7074,
+      "score": 19.7439,
       "evidence": []
     }
   ],
@@ -79,747 +79,745 @@
     "sec-000-1-introduction": [
       {
         "term": "singapore management",
-        "score": 2.5106,
+        "score": 2.4543,
         "evidence": []
       },
       {
         "term": "christoph treude",
-        "score": 1.4868,
+        "score": 1.4845,
         "evidence": []
       },
       {
         "term": "management university",
-        "score": 1.3448,
+        "score": 1.2804,
         "evidence": []
       },
       {
         "term": "autonomous agents",
-        "score": 1.1589,
+        "score": 1.1661,
         "evidence": []
       },
       {
         "term": "copies",
-        "score": 0.9876,
+        "score": 0.9905,
         "evidence": []
       },
       {
         "term": "edu",
-        "score": 0.9489,
+        "score": 0.914,
         "evidence": []
       },
       {
         "term": "junda",
-        "score": 0.7935,
+        "score": 0.7958,
         "evidence": []
       },
       {
         "term": "permissions",
-        "score": 0.6216,
+        "score": 0.6251,
         "evidence": []
       }
     ],
     "sec-001-21-autonomous-agent": [
       {
         "term": "lma systems",
-        "score": 2.8258,
+        "score": 2.8412,
         "evidence": []
       },
       {
         "term": "software systems",
-        "score": 1.9145,
+        "score": 1.9118,
         "evidence": []
       },
       {
         "term": "software engineering",
-        "score": 1.8652,
-        "evidence": []
-      },
-      {
-        "term": "software development",
-        "score": 1.716,
+        "score": 1.8342,
         "evidence": []
       },
       {
         "term": "llm-based agents",
-        "score": 1.6762,
+        "score": 1.6892,
+        "evidence": []
+      },
+      {
+        "term": "software development",
+        "score": 1.6629,
         "evidence": []
       },
       {
         "term": "systems ensure",
-        "score": 1.4114,
+        "score": 1.4111,
         "evidence": []
       },
       {
         "term": "quality assurance",
-        "score": 1.1387,
+        "score": 1.1412,
         "evidence": []
       },
       {
         "term": "collaborative",
-        "score": 0.9426,
+        "score": 0.9297,
         "evidence": []
       }
     ],
     "sec-003-3-literature-review": [
       {
         "term": "lma systems",
-        "score": 1.708,
+        "score": 1.7173,
         "evidence": []
       },
       {
         "term": "software engineering",
-        "score": 1.1851,
+        "score": 1.1649,
         "evidence": []
       },
       {
-        "term": "review",
-        "score": 0.567,
-        "evidence": [
-          "heading"
-        ]
+        "term": "paving",
+        "score": 0.631,
+        "evidence": []
       }
     ],
     "sec-004-2-preliminary": [
       {
         "term": "autonomous agent",
-        "score": 1.0711,
+        "score": 1.0795,
         "evidence": []
       },
       {
         "term": "manages",
-        "score": 0.7386,
+        "score": 0.7413,
         "evidence": []
       },
       {
         "term": "ences",
-        "score": 0.6305,
+        "score": 0.5946,
         "evidence": []
       }
     ],
     "sec-005-22-llm-based-autonomous-agent": [
       {
         "term": "llm-based agent",
-        "score": 4.4261,
+        "score": 4.4688,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "llm-based multi-agent",
-        "score": 2.3902,
+        "score": 2.404,
         "evidence": []
       },
       {
         "term": "orchestration platform",
-        "score": 2.3619,
+        "score": 2.3085,
         "evidence": []
       },
       {
         "term": "decentralized execution",
-        "score": 1.9015,
+        "score": 1.8958,
         "evidence": []
       },
       {
         "term": "lma systems",
-        "score": 1.879,
+        "score": 1.8899,
         "evidence": []
       },
       {
         "term": "agents communicate",
-        "score": 1.7892,
+        "score": 1.78,
         "evidence": []
       },
       {
         "term": "among agents",
-        "score": 1.7658,
+        "score": 1.7767,
         "evidence": []
       },
       {
         "term": "software engineering",
-        "score": 1.7576,
+        "score": 1.728,
         "evidence": []
       }
     ],
     "sec-007-32-code-generation": [
       {
         "term": "code generation",
-        "score": 4.0243,
+        "score": 4.0397,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "exclusion criterion",
-        "score": 2.8881,
-        "evidence": []
-      },
-      {
-        "term": "exclusion criteria",
-        "score": 2.3742,
+        "score": 2.7072,
         "evidence": []
       },
       {
         "term": "lma systems",
-        "score": 2.3139,
+        "score": 2.3259,
         "evidence": []
       },
       {
         "term": "lma framework",
-        "score": 2.2888,
+        "score": 2.3027,
+        "evidence": []
+      },
+      {
+        "term": "exclusion criteria",
+        "score": 2.1611,
         "evidence": []
       },
       {
         "term": "code teacher",
-        "score": 2.1465,
+        "score": 2.1157,
         "evidence": []
       },
       {
         "term": "papers identified",
-        "score": 2.1399,
+        "score": 2.0994,
         "evidence": []
       },
       {
         "term": "code learner",
-        "score": 2.0869,
+        "score": 2.0713,
         "evidence": []
       }
     ],
     "sec-008-33-software-quality-assurance": [
       {
         "term": "bug detection",
-        "score": 1.9729,
+        "score": 1.9529,
         "evidence": []
       },
       {
         "term": "fault localization",
-        "score": 1.6938,
+        "score": 1.7014,
         "evidence": []
       },
       {
         "term": "vulnerability detection",
-        "score": 1.6556,
-        "evidence": []
-      },
-      {
-        "term": "llm-based agents",
-        "score": 1.5146,
-        "evidence": []
-      },
-      {
-        "term": "lma systems",
-        "score": 1.4712,
+        "score": 1.6455,
         "evidence": []
       },
       {
         "term": "false positives",
-        "score": 1.4696,
+        "score": 1.5669,
+        "evidence": []
+      },
+      {
+        "term": "llm-based agents",
+        "score": 1.526,
+        "evidence": []
+      },
+      {
+        "term": "lma systems",
+        "score": 1.4792,
         "evidence": []
       },
       {
         "term": "code analysis",
-        "score": 1.3644,
+        "score": 1.3477,
         "evidence": []
       },
       {
         "term": "testing",
-        "score": 1.1025,
+        "score": 1.0988,
         "evidence": []
       }
     ],
     "sec-009-34-software-maintenance": [
       {
         "term": "maintenance",
-        "score": 2.3733,
+        "score": 2.3242,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "code review",
-        "score": 1.917,
+        "score": 1.8723,
         "evidence": []
       },
       {
         "term": "fault localization",
-        "score": 1.7306,
+        "score": 1.7383,
         "evidence": []
       },
       {
         "term": "specialized agents",
-        "score": 1.6652,
+        "score": 1.6703,
         "evidence": []
       },
       {
         "term": "code changes",
-        "score": 1.5247,
+        "score": 1.5265,
         "evidence": []
       },
       {
         "term": "monte carlo",
-        "score": 1.3996,
+        "score": 1.4056,
         "evidence": []
       },
       {
         "term": "software",
-        "score": 1.3407,
+        "score": 1.3232,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "carlo tree",
-        "score": 1.3288,
+        "score": 1.2941,
         "evidence": []
       }
     ],
     "sec-010-35-end-to-end-software-development": [
       {
         "term": "software development",
-        "score": 4.9755,
+        "score": 4.8081,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "end-to-end software",
-        "score": 4.4008,
+        "score": 4.3547,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "development process",
-        "score": 2.1154,
+        "score": 2.2251,
         "evidence": []
       },
       {
         "term": "development practices",
-        "score": 1.8937,
+        "score": 1.8238,
         "evidence": []
       },
       {
         "term": "dynamic process",
-        "score": 1.6165,
+        "score": 1.77,
+        "evidence": []
+      },
+      {
+        "term": "process models",
+        "score": 1.5464,
         "evidence": []
       },
       {
         "term": "project requirements",
-        "score": 1.53,
+        "score": 1.5096,
         "evidence": []
       },
       {
         "term": "agent roles",
-        "score": 1.4762,
-        "evidence": []
-      },
-      {
-        "term": "waterfall model",
-        "score": 1.4372,
+        "score": 1.4782,
         "evidence": []
       }
     ],
     "sec-011-4-case-study": [
       {
         "term": "chatdev",
-        "score": 1.377,
+        "score": 1.3801,
         "evidence": []
       },
       {
         "term": "turbo",
-        "score": 0.8131,
+        "score": 0.8153,
         "evidence": []
       },
       {
         "term": "lma",
-        "score": 0.7664,
+        "score": 0.7689,
         "evidence": []
       }
     ],
     "sec-012-41-snake-game": [
       {
         "term": "snake game",
-        "score": 6.9569,
+        "score": 6.9289,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "chatdev",
-        "score": 1.2369,
+        "score": 1.2397,
         "evidence": []
       },
       {
         "term": "game-over",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "screen",
-        "score": 0.8085,
+        "score": 0.7468,
         "evidence": []
       },
       {
         "term": "food",
-        "score": 0.7126,
+        "score": 0.6984,
         "evidence": []
       },
       {
         "term": "displayed",
-        "score": 0.7079,
+        "score": 0.6492,
+        "evidence": []
+      },
+      {
+        "term": "prompt",
+        "score": 0.5978,
         "evidence": []
       },
       {
         "term": "generated",
-        "score": 0.6,
-        "evidence": []
-      },
-      {
-        "term": "attempt",
-        "score": 0.585,
+        "score": 0.5967,
         "evidence": []
       }
     ],
     "sec-013-42-tetris-game": [
       {
         "term": "tetris game",
-        "score": 7.0634,
+        "score": 7.0295,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "snake game",
-        "score": 2.6329,
+        "score": 2.6154,
         "evidence": []
       },
       {
         "term": "game still",
-        "score": 2.0585,
+        "score": 2.0332,
         "evidence": []
       },
       {
         "term": "tenth attempt",
-        "score": 1.8645,
+        "score": 1.8708,
         "evidence": []
       },
       {
         "term": "lma systems",
-        "score": 1.4712,
+        "score": 1.4792,
         "evidence": []
       },
       {
         "term": "completed rows",
-        "score": 1.4083,
+        "score": 1.3882,
         "evidence": []
       },
       {
         "term": "current lma",
-        "score": 1.381,
+        "score": 1.3808,
         "evidence": []
       },
       {
         "term": "chatdev",
-        "score": 1.377,
+        "score": 1.3801,
         "evidence": []
       }
     ],
     "sec-014-5-research-agenda": [
       {
+        "term": "lma systems",
+        "score": 1.1722,
+        "evidence": []
+      },
+      {
         "term": "research",
-        "score": 1.2654,
+        "score": 1.151,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "research questions",
-        "score": 1.1729,
-        "evidence": []
-      },
-      {
-        "term": "lma systems",
-        "score": 1.1659,
+        "score": 1.0916,
         "evidence": []
       }
     ],
     "sec-015-51-phase-1-enhancing-individual-agent-capabiliti": [
       {
         "term": "llm-based agents",
-        "score": 3.3204,
+        "score": 3.3449,
         "evidence": []
       },
       {
         "term": "lma roles",
-        "score": 3.3074,
+        "score": 3.2993,
         "evidence": []
       },
       {
         "term": "engineering roles",
-        "score": 3.1447,
+        "score": 3.1081,
         "evidence": []
       },
       {
         "term": "llm-based multi-agent",
-        "score": 2.8578,
+        "score": 2.8742,
         "evidence": []
       },
       {
         "term": "key roles",
-        "score": 2.7592,
+        "score": 2.7402,
         "evidence": []
       },
       {
         "term": "role-playing abilities",
-        "score": 2.5146,
+        "score": 2.4711,
         "evidence": []
       },
       {
         "term": "role-playing capabilities",
-        "score": 2.4178,
+        "score": 2.4146,
         "evidence": []
       },
       {
         "term": "lma systems",
-        "score": 2.3172,
+        "score": 2.3308,
         "evidence": []
       }
     ],
     "sec-016-52-phase-two-optimizing-agent-synergy": [
       {
         "term": "lma agents",
-        "score": 3.9552,
+        "score": 3.9785,
         "evidence": []
       },
       {
         "term": "lma systems",
-        "score": 3.633,
+        "score": 3.6528,
         "evidence": []
       },
       {
         "term": "existing lma",
-        "score": 3.005,
+        "score": 2.9905,
         "evidence": []
       },
       {
         "term": "llm-based agents",
-        "score": 2.7832,
+        "score": 2.8053,
         "evidence": []
       },
       {
         "term": "project evolves",
-        "score": 2.7183,
+        "score": 2.6684,
         "evidence": []
       },
       {
         "term": "software projects",
-        "score": 2.5959,
+        "score": 2.5686,
         "evidence": []
       },
       {
         "term": "project management",
-        "score": 2.386,
+        "score": 2.3506,
         "evidence": []
       },
       {
         "term": "project manager",
-        "score": 2.2961,
+        "score": 2.2996,
         "evidence": []
       }
     ],
     "sec-018-61-a-comparison-with-the-mixture-of-experts-para": [
       {
         "term": "experts",
-        "score": 2.6246,
+        "score": 2.4519,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "lma systems",
-        "score": 2.0651,
+        "score": 2.0763,
         "evidence": []
       },
       {
         "term": "gating mechanism",
-        "score": 1.6797,
+        "score": 1.679,
         "evidence": []
       },
       {
         "term": "paradigm",
-        "score": 1.3046,
+        "score": 1.3112,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "mixture",
-        "score": 0.9891,
+        "score": 0.9921,
         "evidence": [
           "heading"
         ]
       },
       {
+        "term": "feedback",
+        "score": 0.6306,
+        "evidence": []
+      },
+      {
         "term": "specialized",
-        "score": 0.5923,
+        "score": 0.5891,
         "evidence": []
       },
       {
         "term": "training",
-        "score": 0.5691,
-        "evidence": []
-      },
-      {
-        "term": "feedback",
-        "score": 0.5662,
+        "score": 0.5617,
         "evidence": []
       }
     ],
     "sec-019-62-threat-to-validity": [
       {
         "term": "validity",
-        "score": 0.847,
+        "score": 0.8358,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "threat",
-        "score": 0.7718,
+        "score": 0.7764,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "search",
-        "score": 0.6511,
+        "score": 0.6347,
         "evidence": []
       }
     ],
     "sec-020-7-conclusion-and-future-work": [
       {
         "term": "lma systems",
-        "score": 2.2404,
+        "score": 2.2522,
         "evidence": []
       },
       {
         "term": "software engineering",
-        "score": 1.5018,
+        "score": 1.4767,
         "evidence": []
       },
       {
         "term": "software development",
-        "score": 1.3364,
+        "score": 1.2952,
         "evidence": []
       },
       {
         "term": "llm-based agents",
-        "score": 1.2758,
+        "score": 1.2856,
         "evidence": []
       },
       {
         "term": "research questions",
-        "score": 1.0852,
+        "score": 1.0118,
         "evidence": []
       },
       {
         "term": "future",
-        "score": 0.8513,
+        "score": 0.8283,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "synergy",
-        "score": 0.8085,
+        "score": 0.8106,
         "evidence": []
       },
       {
         "term": "exploring",
-        "score": 0.6425,
+        "score": 0.6103,
         "evidence": []
       }
     ],
     "sec-021-references": [
       {
         "term": "arxiv preprint",
-        "score": 5.6746,
+        "score": 5.6453,
         "evidence": []
       },
       {
         "term": "yang liu",
-        "score": 4.2861,
+        "score": 4.2873,
         "evidence": []
       },
       {
         "term": "lingming zhang",
-        "score": 4.0335,
+        "score": 4.0168,
         "evidence": []
       },
       {
         "term": "zhiyuan liu",
-        "score": 3.9484,
+        "score": 3.9524,
         "evidence": []
       },
       {
         "term": "wei liu",
-        "score": 3.9252,
+        "score": 3.9142,
         "evidence": []
       },
       {
         "term": "cheng yang",
-        "score": 3.8314,
+        "score": 3.838,
         "evidence": []
       },
       {
         "term": "yifei wang",
-        "score": 3.8101,
+        "score": 3.7967,
         "evidence": []
       },
       {
         "term": "zhou yang",
-        "score": 3.746,
+        "score": 3.7377,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "singapore management",
-        "score": 2.2191,
+        "score": 2.1674,
         "evidence": []
       },
       {
         "term": "lma systems",
-        "score": 1.9576,
+        "score": 1.9684,
         "evidence": []
       },
       {
         "term": "software engineering",
-        "score": 1.8327,
+        "score": 1.8021,
         "evidence": []
       },
       {
         "term": "autonomous agents",
-        "score": 1.6088,
+        "score": 1.6184,
         "evidence": []
       },
       {
         "term": "multi-agent systems",
-        "score": 1.585,
+        "score": 1.5973,
         "evidence": []
       },
       {
         "term": "llm-based multi-agent",
-        "score": 1.5116,
-        "evidence": []
-      },
-      {
-        "term": "software development",
-        "score": 1.5055,
+        "score": 1.5206,
         "evidence": []
       },
       {
         "term": "christoph treude",
-        "score": 1.4868,
+        "score": 1.4845,
+        "evidence": []
+      },
+      {
+        "term": "software development",
+        "score": 1.4621,
         "evidence": []
       }
     ]

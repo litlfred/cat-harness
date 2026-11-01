@@ -3,69 +3,69 @@
   "entry": "arxiv-2504.19675v2",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "gnd subject",
-      "score": 13.3468,
+      "score": 13.3791,
       "evidence": []
     },
     {
       "term": "synthetic records",
-      "score": 13.1026,
+      "score": 13.1575,
       "evidence": []
     },
     {
       "term": "annif projects",
-      "score": 11.8417,
+      "score": 11.8256,
       "evidence": []
     },
     {
       "term": "training records",
-      "score": 11.0378,
+      "score": 11.0122,
       "evidence": []
     },
     {
       "term": "bonsai projects",
-      "score": 10.9642,
+      "score": 10.936,
       "evidence": []
     },
     {
       "term": "subject predictions",
-      "score": 10.6473,
+      "score": 10.6675,
       "evidence": []
     },
     {
       "term": "german synthetic",
-      "score": 10.427,
+      "score": 10.4537,
       "evidence": []
     },
     {
       "term": "subject indexing",
-      "score": 10.2546,
-      "evidence": []
-    },
-    {
-      "term": "tibkat subject",
-      "score": 10.1756,
+      "score": 10.2815,
       "evidence": []
     },
     {
       "term": "english synthetic",
-      "score": 10.1589,
+      "score": 10.1992,
+      "evidence": []
+    },
+    {
+      "term": "tibkat subject",
+      "score": 10.1891,
       "evidence": []
     },
     {
       "term": "xtransformer projects",
-      "score": 10.154,
+      "score": 10.1233,
       "evidence": []
     },
     {
       "term": "bibliographic records",
-      "score": 10.1045,
+      "score": 10.1127,
       "evidence": []
     }
   ],
@@ -73,182 +73,182 @@
     "sec-000-introduction": [
       {
         "term": "subject indexing",
-        "score": 1.5561,
+        "score": 1.5626,
         "evidence": []
       },
       {
         "term": "nlp",
-        "score": 0.7745,
+        "score": 0.7769,
         "evidence": []
       },
       {
         "term": "souza",
-        "score": 0.7547,
+        "score": 0.7472,
         "evidence": []
       },
       {
         "term": "toolkit",
-        "score": 0.7504,
+        "score": 0.7421,
         "evidence": []
       },
       {
         "term": "bibliographic",
-        "score": 0.6709,
+        "score": 0.6676,
         "evidence": []
       },
       {
         "term": "llm-based",
-        "score": 0.6343,
+        "score": 0.6377,
         "evidence": []
       },
       {
         "term": "traditional",
-        "score": 0.5547,
+        "score": 0.5417,
         "evidence": []
       }
     ],
     "sec-001-synthetic-training-data": [
       {
         "term": "synthetic",
-        "score": 0.7892,
+        "score": 0.7937,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "gory",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "heav",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "ier",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-002-background": [
       {
         "term": "gnd subjects",
-        "score": 2.0623,
+        "score": 2.0711,
         "evidence": []
       },
       {
         "term": "subject vocabulary",
-        "score": 0.9452,
-        "evidence": []
-      },
-      {
-        "term": "subsets",
-        "score": 0.8151,
+        "score": 0.9479,
         "evidence": []
       },
       {
         "term": "all-subjects",
-        "score": 0.8116,
+        "score": 0.8138,
         "evidence": []
       },
       {
         "term": "tib-core-subjects",
-        "score": 0.8092,
+        "score": 0.8114,
+        "evidence": []
+      },
+      {
+        "term": "subsets",
+        "score": 0.8003,
         "evidence": []
       },
       {
         "term": "xmtc",
-        "score": 0.7438,
+        "score": 0.7465,
         "evidence": []
       },
       {
         "term": "records",
-        "score": 0.7214,
+        "score": 0.7236,
         "evidence": []
       }
     ],
     "sec-003-system-overview": [
       {
         "term": "xmtc algorithms",
-        "score": 1.5607,
+        "score": 1.5817,
         "evidence": []
       },
       {
         "term": "backends",
-        "score": 1.405,
+        "score": 1.4065,
         "evidence": []
       },
       {
         "term": "subject indexing",
-        "score": 1.3127,
+        "score": 1.3183,
         "evidence": []
       },
       {
         "term": "ensembles",
-        "score": 0.8817,
+        "score": 0.8833,
         "evidence": []
       },
       {
         "term": "annif",
-        "score": 0.8747,
+        "score": 0.8785,
         "evidence": []
       },
       {
         "term": "scores",
-        "score": 0.7774,
+        "score": 0.7632,
         "evidence": []
       },
       {
         "term": "averaging",
-        "score": 0.6829,
+        "score": 0.686,
         "evidence": []
       },
       {
-        "term": "suggested",
-        "score": 0.6786,
+        "term": "lexical",
+        "score": 0.6634,
         "evidence": []
       }
     ],
     "sec-004-translation-of-data-sets": [
       {
         "term": "german synthetic",
-        "score": 2.4321,
+        "score": 2.438,
         "evidence": []
       },
       {
         "term": "english synthetic",
-        "score": 2.3359,
+        "score": 2.3451,
         "evidence": []
       },
       {
         "term": "synthetic training",
-        "score": 1.9715,
+        "score": 1.9704,
         "evidence": []
       },
       {
         "term": "gnd preferred",
-        "score": 1.8749,
+        "score": 1.8515,
         "evidence": []
       },
       {
         "term": "training records",
-        "score": 1.5927,
+        "score": 1.5871,
         "evidence": []
       },
       {
         "term": "preferred terms",
-        "score": 1.3267,
+        "score": 1.2879,
         "evidence": []
       },
       {
         "term": "training data",
-        "score": 0.9291,
+        "score": 0.9182,
         "evidence": []
       },
       {
         "term": "translation",
-        "score": 0.9074,
+        "score": 0.8886,
         "evidence": [
           "heading"
         ]
@@ -257,63 +257,63 @@
     "sec-006-base-projects": [
       {
         "term": "base projects",
-        "score": 3.9412,
+        "score": 3.9288,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "top suggestions",
-        "score": 1.142,
+        "score": 1.1262,
         "evidence": []
       },
       {
         "term": "xtrans",
-        "score": 0.9993,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "hyperparameters",
-        "score": 0.9239,
+        "score": 0.9273,
         "evidence": []
       },
       {
         "term": "annif",
-        "score": 0.8747,
+        "score": 0.8785,
         "evidence": []
       },
       {
         "term": "bonsai",
-        "score": 0.7892,
+        "score": 0.7915,
         "evidence": []
       },
       {
         "term": "calculated",
-        "score": 0.6123,
+        "score": 0.5898,
         "evidence": []
       },
       {
         "term": "development",
-        "score": 0.4821,
+        "score": 0.4571,
         "evidence": []
       }
     ],
     "sec-007-adding-synthetic-data": [
       {
         "term": "synthetic data",
-        "score": 2.6633,
+        "score": 2.6692,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "mllm",
-        "score": 0.8067,
+        "score": 0.8089,
         "evidence": []
       },
       {
         "term": "adding",
-        "score": 0.6809,
+        "score": 0.672,
         "evidence": [
           "heading"
         ]
@@ -322,373 +322,373 @@
     "sec-008-results": [
       {
         "term": "projects",
-        "score": 0.6607,
+        "score": 0.6549,
         "evidence": []
       },
       {
         "term": "sai",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       },
       {
         "term": "scores",
-        "score": 0.5307,
+        "score": 0.521,
         "evidence": []
       }
     ],
     "sec-009-ensemble-projects": [
       {
         "term": "bmx ensembles",
-        "score": 3.4012,
+        "score": 3.4064,
         "evidence": []
       },
       {
         "term": "projects",
-        "score": 2.7693,
+        "score": 2.7454,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "simple ensemble",
-        "score": 2.1767,
+        "score": 2.1784,
         "evidence": []
       },
       {
         "term": "base projects",
-        "score": 2.1048,
+        "score": 2.0974,
         "evidence": []
       },
       {
         "term": "optimised weights",
-        "score": 1.8438,
+        "score": 1.8318,
         "evidence": []
       },
       {
         "term": "bonsai model",
-        "score": 1.6564,
+        "score": 1.6538,
         "evidence": []
       },
       {
         "term": "mllm",
-        "score": 1.4288,
+        "score": 1.4327,
         "evidence": []
       },
       {
         "term": "xtransformer",
-        "score": 1.1595,
+        "score": 1.1628,
         "evidence": []
       }
     ],
     "sec-010-test-set-predictions": [
       {
         "term": "predictions",
-        "score": 1.251,
+        "score": 1.258,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "ensemble",
-        "score": 1.041,
+        "score": 1.0436,
         "evidence": []
       },
       {
         "term": "record",
-        "score": 0.8465,
+        "score": 0.8443,
         "evidence": []
       }
     ],
     "sec-012-quantitative-evaluation": [
       {
         "term": "recall scores",
-        "score": 1.9344,
+        "score": 1.9119,
         "evidence": []
       },
       {
         "term": "qualitative evaluation",
-        "score": 1.838,
+        "score": 1.738,
         "evidence": []
       },
       {
         "term": "average recall",
-        "score": 1.7177,
+        "score": 1.7105,
         "evidence": []
       },
       {
         "term": "ruc team",
-        "score": 1.465,
+        "score": 1.4678,
         "evidence": []
       },
       {
         "term": "considered correct",
-        "score": 1.4425,
+        "score": 1.4004,
         "evidence": []
       },
       {
         "term": "subject annotations",
-        "score": 1.3212,
+        "score": 1.3095,
         "evidence": []
       },
       {
         "term": "scores across",
-        "score": 1.0882,
+        "score": 1.0753,
         "evidence": []
       },
       {
         "term": "thresholds",
-        "score": 1.0553,
+        "score": 1.0578,
         "evidence": []
       }
     ],
     "sec-013-analysis": [
       {
         "term": "bmx ensembles",
-        "score": 2.6986,
+        "score": 2.7025,
         "evidence": []
       },
       {
         "term": "neural ensemble",
-        "score": 2.4508,
+        "score": 2.4354,
         "evidence": []
       },
       {
         "term": "subject predictions",
-        "score": 2.0463,
+        "score": 2.0531,
         "evidence": []
       },
       {
         "term": "bmx simple",
-        "score": 2.0221,
+        "score": 2.0214,
         "evidence": []
       },
       {
         "term": "achieved higher",
-        "score": 1.7262,
+        "score": 1.7024,
         "evidence": []
       },
       {
         "term": "systems achieved",
-        "score": 1.6979,
+        "score": 1.6954,
         "evidence": []
       },
       {
         "term": "quantitative evaluations",
-        "score": 1.6884,
+        "score": 1.6655,
         "evidence": []
       },
       {
         "term": "higher scores",
-        "score": 1.6759,
+        "score": 1.6442,
         "evidence": []
       }
     ],
     "sec-015-performance": [
       {
-        "term": "mathias begoin",
-        "score": 1.7847,
+        "term": "holger israel",
+        "score": 1.7565,
         "evidence": []
       },
       {
-        "term": "holger israel",
-        "score": 1.7532,
+        "term": "mathias begoin",
+        "score": 1.7304,
         "evidence": []
       },
       {
         "term": "sameer sadruddin",
-        "score": 1.7252,
+        "score": 1.7287,
         "evidence": []
       },
       {
         "term": "diana slawig",
-        "score": 1.6667,
+        "score": 1.6706,
         "evidence": []
       },
       {
         "term": "jennifer souza",
-        "score": 1.5004,
+        "score": 1.4956,
         "evidence": []
       },
       {
         "term": "subject indexing",
-        "score": 1.3127,
+        "score": 1.3183,
         "evidence": []
       },
       {
         "term": "thank",
-        "score": 1.206,
+        "score": 1.1972,
         "evidence": []
       },
       {
         "term": "annif",
-        "score": 0.8747,
+        "score": 0.8785,
         "evidence": []
       }
     ],
     "sec-016-effect-of-synthetic-data": [
       {
         "term": "synthetic",
-        "score": 1.2508,
+        "score": 1.2579,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "synthetic training",
-        "score": 1.0764,
+        "score": 1.0741,
         "evidence": []
       },
       {
         "term": "all-subjects",
-        "score": 0.8116,
+        "score": 0.8138,
         "evidence": []
       }
     ],
     "sec-017-results-for-base-projects": [
       {
         "term": "xtrans",
-        "score": 0.9993,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "projects",
-        "score": 0.8337,
+        "score": 0.8264,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "mllm",
-        "score": 0.8067,
+        "score": 0.8089,
         "evidence": []
       }
     ],
     "sec-019-details-about-llm-usage": [
       {
         "term": "vllm",
-        "score": 0.9078,
+        "score": 0.9092,
         "evidence": []
       },
       {
         "term": "llm",
-        "score": 0.7855,
+        "score": 0.7989,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "records",
-        "score": 0.7214,
+        "score": 0.7236,
         "evidence": []
       }
     ],
     "sec-022-record-translation": [
       {
         "term": "translating",
-        "score": 0.7684,
+        "score": 0.7579,
         "evidence": []
       },
       {
         "term": "translator",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "title",
-        "score": 0.4754,
+        "score": 0.4726,
         "evidence": []
       }
     ],
     "sec-023-record-synthesis": [
       {
         "term": "document title",
-        "score": 1.1431,
+        "score": 1.1443,
         "evidence": []
       },
       {
         "term": "subject keywords",
-        "score": 1.0426,
+        "score": 1.0115,
         "evidence": []
       },
       {
         "term": "following subject",
-        "score": 0.7265,
+        "score": 0.7293,
         "evidence": []
       }
     ],
     "sec-024-gnd-translation": [
       {
         "term": "und die",
-        "score": 4.2093,
+        "score": 4.214,
         "evidence": []
       },
       {
         "term": "flood protection",
-        "score": 2.1283,
+        "score": 2.1326,
         "evidence": []
       },
       {
         "term": "flood risk",
-        "score": 1.9865,
+        "score": 1.9871,
+        "evidence": []
+      },
+      {
+        "term": "den",
+        "score": 1.8954,
         "evidence": []
       },
       {
         "term": "gnd",
-        "score": 1.6437,
+        "score": 1.6521,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "climate change",
-        "score": 1.6429,
-        "evidence": []
-      },
-      {
-        "term": "der",
-        "score": 1.6139,
+        "score": 1.634,
         "evidence": []
       },
       {
         "term": "des",
-        "score": 1.6057,
+        "score": 1.6071,
         "evidence": []
       },
       {
-        "term": "translated",
-        "score": 1.4418,
+        "term": "der",
+        "score": 1.5031,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "traditional xmtc",
-        "score": 1.4438,
+        "score": 1.43,
         "evidence": []
       },
       {
         "term": "semeval task",
-        "score": 1.2592,
+        "score": 1.26,
         "evidence": []
       },
       {
         "term": "subject indexing",
-        "score": 1.1788,
+        "score": 1.1833,
         "evidence": []
       },
       {
         "term": "helsinki",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "annif",
-        "score": 0.8747,
+        "score": 0.8785,
         "evidence": []
       },
       {
         "term": "predictions",
-        "score": 0.6255,
+        "score": 0.629,
         "evidence": []
       }
     ]

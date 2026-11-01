@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: feature-staging\n"
-"POT-Creation-Date: 2026-11-01T11:34:43.217Z\n"
+"POT-Creation-Date: 2026-11-01T22:18:39.831Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"

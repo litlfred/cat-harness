@@ -3,69 +3,69 @@
   "entry": "arxiv-2607.14456v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "agentic workflow",
-      "score": 17.4808,
-      "evidence": []
-    },
-    {
-      "term": "workflow agent",
-      "score": 17.0096,
+      "score": 17.2843,
       "evidence": []
     },
     {
       "term": "scale icml",
-      "score": 16.9354,
+      "score": 16.9833,
+      "evidence": []
+    },
+    {
+      "term": "workflow agent",
+      "score": 16.8521,
       "evidence": []
     },
     {
       "term": "workflow generation",
-      "score": 16.768,
+      "score": 16.5378,
       "evidence": []
     },
     {
       "term": "workflow execution",
-      "score": 16.194,
-      "evidence": []
-    },
-    {
-      "term": "bpmn workflows",
-      "score": 16.0586,
+      "score": 15.9083,
       "evidence": []
     },
     {
       "term": "workshop paper",
-      "score": 15.6626,
+      "score": 15.2439,
+      "evidence": []
+    },
+    {
+      "term": "bpmn workflows",
+      "score": 14.6312,
       "evidence": []
     },
     {
       "term": "workflow logic",
-      "score": 14.374,
+      "score": 14.4024,
       "evidence": []
     },
     {
       "term": "promotion workflow",
-      "score": 14.3315,
+      "score": 14.1014,
       "evidence": []
     },
     {
       "term": "specialist workflows",
-      "score": 13.5364,
-      "evidence": []
-    },
-    {
-      "term": "workflow structure",
-      "score": 13.1611,
+      "score": 13.5662,
       "evidence": []
     },
     {
       "term": "classification workflow",
-      "score": 13.1522,
+      "score": 12.9186,
+      "evidence": []
+    },
+    {
+      "term": "workflow structure",
+      "score": 12.8991,
       "evidence": []
     }
   ],
@@ -73,708 +73,708 @@
     "page-001": [
       {
         "term": "generalist agents",
-        "score": 2.2608,
+        "score": 2.2739,
         "evidence": []
       },
       {
         "term": "ide extensions",
-        "score": 1.9265,
+        "score": 1.9328,
         "evidence": []
       },
       {
         "term": "sapkota",
-        "score": 1.2646,
+        "score": 1.2655,
         "evidence": []
       },
       {
         "term": "specialist",
-        "score": 1.2179,
+        "score": 1.2208,
         "evidence": []
       },
       {
         "term": "roo",
-        "score": 1.1059,
+        "score": 1.108,
         "evidence": []
       },
       {
         "term": "cline",
-        "score": 1.0785,
+        "score": 1.0808,
         "evidence": []
       },
       {
         "term": "business process",
-        "score": 0.9525,
+        "score": 1.0501,
         "evidence": []
       },
       {
-        "term": "australia",
-        "score": 0.934,
+        "term": "wide range",
+        "score": 0.9188,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "specialist workflows",
-        "score": 2.3837,
+        "score": 2.389,
         "evidence": []
       },
       {
         "term": "generalist agentic",
-        "score": 2.0012,
+        "score": 2.0103,
         "evidence": []
       },
       {
         "term": "generalist systems",
-        "score": 1.9713,
-        "evidence": []
-      },
-      {
-        "term": "bpmn",
-        "score": 1.6127,
-        "evidence": []
-      },
-      {
-        "term": "context management",
-        "score": 1.6046,
+        "score": 1.9822,
         "evidence": []
       },
       {
         "term": "business process",
-        "score": 1.5279,
+        "score": 1.6655,
+        "evidence": []
+      },
+      {
+        "term": "context management",
+        "score": 1.5597,
         "evidence": []
       },
       {
         "term": "business processes",
-        "score": 1.5255,
+        "score": 1.479,
+        "evidence": []
+      },
+      {
+        "term": "bpmn",
+        "score": 1.3678,
         "evidence": []
       },
       {
         "term": "maintaining performance",
-        "score": 1.1479,
+        "score": 1.1294,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "agentic workflows",
-        "score": 2.2368,
-        "evidence": []
-      },
-      {
-        "term": "bpmn",
-        "score": 1.6795,
+        "score": 2.2463,
         "evidence": []
       },
       {
         "term": "automation tasks",
-        "score": 1.6778,
+        "score": 1.6468,
         "evidence": []
       },
       {
         "term": "executable agentic",
-        "score": 1.6308,
-        "evidence": []
-      },
-      {
-        "term": "der aalst",
-        "score": 1.6229,
-        "evidence": []
-      },
-      {
-        "term": "structural complexity",
-        "score": 1.4996,
-        "evidence": []
-      },
-      {
-        "term": "van der",
-        "score": 1.3739,
+        "score": 1.6313,
         "evidence": []
       },
       {
         "term": "business process",
-        "score": 1.3417,
+        "score": 1.496,
+        "evidence": []
+      },
+      {
+        "term": "structural complexity",
+        "score": 1.4293,
+        "evidence": []
+      },
+      {
+        "term": "der aalst",
+        "score": 1.4258,
+        "evidence": []
+      },
+      {
+        "term": "bpmn",
+        "score": 1.4244,
+        "evidence": []
+      },
+      {
+        "term": "van der",
+        "score": 1.3147,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "workflow logic",
-        "score": 1.8202,
+        "score": 1.8937,
         "evidence": []
       },
       {
         "term": "react agent",
-        "score": 1.7458,
+        "score": 1.7521,
         "evidence": []
       },
       {
         "term": "api service",
-        "score": 1.6963,
+        "score": 1.6948,
         "evidence": []
       },
       {
         "term": "api specifications",
-        "score": 1.5264,
+        "score": 1.5288,
         "evidence": []
       },
       {
         "term": "system generates",
-        "score": 1.3859,
+        "score": 1.4028,
         "evidence": []
       },
       {
         "term": "proposed system",
-        "score": 1.1892,
+        "score": 1.1922,
         "evidence": []
       },
       {
         "term": "roo",
-        "score": 1.1059,
+        "score": 1.108,
         "evidence": []
       },
       {
         "term": "cline",
-        "score": 1.0785,
+        "score": 1.0808,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "repair iterations",
-        "score": 1.8889,
+        "score": 1.8972,
         "evidence": []
       },
       {
         "term": "successful agents",
-        "score": 1.8249,
+        "score": 1.8187,
         "evidence": []
       },
       {
         "term": "agent generation",
-        "score": 1.5774,
+        "score": 1.5901,
         "evidence": []
       },
       {
         "term": "fastapi service",
-        "score": 1.474,
+        "score": 1.4725,
         "evidence": []
       },
       {
         "term": "roo",
-        "score": 1.4294,
+        "score": 1.4321,
         "evidence": []
       },
       {
         "term": "cline",
-        "score": 1.3939,
+        "score": 1.3969,
         "evidence": []
       },
       {
         "term": "generation process",
-        "score": 1.1561,
+        "score": 1.2329,
         "evidence": []
       },
       {
         "term": "success rate",
-        "score": 1.0963,
+        "score": 1.0969,
         "evidence": []
       }
     ],
     "page-006": [
       {
+        "term": "tue score",
+        "score": 2.436,
+        "evidence": []
+      },
+      {
         "term": "specialist system",
-        "score": 2.4013,
+        "score": 2.4194,
         "evidence": []
       },
       {
         "term": "penalty-adjusted latency",
-        "score": 2.3405,
+        "score": 2.3467,
         "evidence": []
       },
       {
         "term": "roo",
-        "score": 1.9129,
+        "score": 1.9166,
         "evidence": []
       },
       {
         "term": "cline",
-        "score": 1.8654,
-        "evidence": []
-      },
-      {
-        "term": "tool calls",
-        "score": 1.7684,
+        "score": 1.8694,
         "evidence": []
       },
       {
         "term": "repair iterations",
-        "score": 1.7524,
+        "score": 1.76,
+        "evidence": []
+      },
+      {
+        "term": "tool calls",
+        "score": 1.7529,
         "evidence": []
       },
       {
         "term": "tool-call errors",
-        "score": 1.7409,
-        "evidence": []
-      },
-      {
-        "term": "tool-use exactness",
-        "score": 1.7006,
+        "score": 1.7346,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "specialist system",
-        "score": 1.5712,
+        "score": 1.5824,
         "evidence": []
       },
       {
         "term": "repair iterations",
-        "score": 1.3888,
+        "score": 1.3948,
         "evidence": []
       },
       {
         "term": "targeted context",
-        "score": 1.0748,
+        "score": 1.0734,
         "evidence": []
       },
       {
         "term": "generalist",
-        "score": 1.0097,
-        "evidence": []
-      },
-      {
-        "term": "context management",
-        "score": 0.8775,
+        "score": 1.0125,
         "evidence": []
       },
       {
         "term": "roo",
-        "score": 0.8764,
+        "score": 0.8781,
         "evidence": []
       },
       {
         "term": "cline",
-        "score": 0.8547,
+        "score": 0.8565,
+        "evidence": []
+      },
+      {
+        "term": "context management",
+        "score": 0.8525,
         "evidence": []
       },
       {
         "term": "assistants",
-        "score": 0.8198,
+        "score": 0.8219,
         "evidence": []
       }
     ],
     "page-008": [
       {
         "term": "url org",
-        "score": 2.2321,
+        "score": 2.2296,
         "evidence": []
       },
       {
         "term": "url https",
-        "score": 2.2017,
+        "score": 2.2099,
         "evidence": []
       },
       {
         "term": "org abs",
-        "score": 1.9401,
+        "score": 1.9376,
         "evidence": []
       },
       {
         "term": "international confer",
-        "score": 1.8732,
+        "score": 1.8682,
         "evidence": []
       },
       {
         "term": "international conference",
-        "score": 1.8439,
+        "score": 1.8197,
         "evidence": []
       },
       {
         "term": "confer ence",
-        "score": 1.5783,
+        "score": 1.5713,
+        "evidence": []
+      },
+      {
+        "term": "business process",
+        "score": 1.5059,
         "evidence": []
       },
       {
         "term": "net forum",
-        "score": 1.4472,
-        "evidence": []
-      },
-      {
-        "term": "systems engineering",
-        "score": 1.4254,
+        "score": 1.4308,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "url org",
-        "score": 2.1411,
+        "score": 2.1384,
         "evidence": []
       },
       {
         "term": "arxiv preprint",
-        "score": 2.1169,
+        "score": 2.1048,
         "evidence": []
       },
       {
         "term": "org abs",
-        "score": 1.9401,
-        "evidence": []
-      },
-      {
-        "term": "der aalst",
-        "score": 1.861,
+        "score": 1.9376,
         "evidence": []
       },
       {
         "term": "business process",
-        "score": 1.6962,
+        "score": 1.8712,
         "evidence": []
       },
       {
         "term": "international conference",
-        "score": 1.6631,
+        "score": 1.6402,
+        "evidence": []
+      },
+      {
+        "term": "der aalst",
+        "score": 1.6251,
         "evidence": []
       },
       {
         "term": "process modeling",
-        "score": 1.4809,
+        "score": 1.5735,
         "evidence": []
       },
       {
         "term": "process mining",
-        "score": 1.4507,
+        "score": 1.5646,
         "evidence": []
       }
     ],
     "page-010": [
       {
         "term": "international conference",
-        "score": 1.9855,
+        "score": 1.9556,
         "evidence": []
       },
       {
         "term": "url https",
-        "score": 1.8056,
+        "score": 1.8119,
         "evidence": []
       },
       {
         "term": "arxiv preprint",
-        "score": 1.7986,
-        "evidence": []
-      },
-      {
-        "term": "der aalst",
-        "score": 1.6229,
+        "score": 1.788,
         "evidence": []
       },
       {
         "term": "net forum",
-        "score": 1.6158,
+        "score": 1.5987,
         "evidence": []
       },
       {
         "term": "process automation",
-        "score": 1.4681,
+        "score": 1.5816,
+        "evidence": []
+      },
+      {
+        "term": "der aalst",
+        "score": 1.4258,
+        "evidence": []
+      },
+      {
+        "term": "business process",
+        "score": 1.4001,
         "evidence": []
       },
       {
         "term": "van der",
-        "score": 1.3739,
-        "evidence": []
-      },
-      {
-        "term": "language models",
-        "score": 1.326,
+        "score": 1.3147,
         "evidence": []
       }
     ],
     "page-011": [
       {
         "term": "workflow agent",
-        "score": 0.8575,
+        "score": 0.8534,
         "evidence": []
       },
       {
         "term": "tool-call",
-        "score": 0.5808,
+        "score": 0.5817,
         "evidence": []
       },
       {
         "term": "exactness",
-        "score": 0.5521,
+        "score": 0.5531,
         "evidence": []
       }
     ],
     "page-012": [
       {
         "term": "fetches",
-        "score": 1.3185,
-        "evidence": []
-      },
-      {
-        "term": "eligibility",
-        "score": 1.2145,
+        "score": 1.3207,
         "evidence": []
       },
       {
         "term": "validates",
-        "score": 1.212,
+        "score": 1.2149,
+        "evidence": []
+      },
+      {
+        "term": "eligibility",
+        "score": 1.1634,
         "evidence": []
       },
       {
         "term": "social media",
-        "score": 1.1172,
-        "evidence": []
-      },
-      {
-        "term": "filters",
-        "score": 1.0298,
-        "evidence": []
-      },
-      {
-        "term": "fraud",
-        "score": 1.0074,
+        "score": 1.109,
         "evidence": []
       },
       {
         "term": "tournament",
-        "score": 1.0074,
+        "score": 1.0081,
+        "evidence": []
+      },
+      {
+        "term": "filters",
+        "score": 0.9907,
+        "evidence": []
+      },
+      {
+        "term": "fraud",
+        "score": 0.9548,
         "evidence": []
       },
       {
         "term": "weather",
-        "score": 0.9249,
+        "score": 0.9283,
         "evidence": []
       }
     ],
     "page-013": [
       {
         "term": "key metrics",
-        "score": 1.1823,
+        "score": 1.149,
         "evidence": []
       },
       {
         "term": "icml",
-        "score": 0.3896,
+        "score": 0.3919,
         "evidence": []
       },
       {
         "term": "approach",
-        "score": 0.3635,
+        "score": 0.3634,
         "evidence": []
       }
     ],
     "page-014": [
       {
         "term": "genai powered",
-        "score": 2.2012,
+        "score": 2.1874,
         "evidence": []
       },
       {
         "term": "powered react",
-        "score": 1.9987,
+        "score": 1.9781,
         "evidence": []
       },
       {
         "term": "react agent",
-        "score": 1.9149,
+        "score": 1.9239,
         "evidence": []
       },
       {
         "term": "accepts conversation",
-        "score": 1.7485,
+        "score": 1.7556,
         "evidence": []
       },
       {
         "term": "openai api",
-        "score": 1.5953,
+        "score": 1.5999,
         "evidence": []
       },
       {
         "term": "openai base",
-        "score": 1.5157,
+        "score": 1.5229,
         "evidence": []
       },
       {
         "term": "agent generation",
-        "score": 1.362,
+        "score": 1.3767,
         "evidence": []
       },
       {
-        "term": "tool calls",
-        "score": 1.3305,
+        "term": "base prompt",
+        "score": 1.3225,
         "evidence": []
       }
     ],
     "page-015": [
       {
         "term": "cart",
-        "score": 0.9094,
+        "score": 0.9108,
         "evidence": []
       },
       {
         "term": "payment",
-        "score": 0.8515,
+        "score": 0.8534,
         "evidence": []
       },
       {
         "term": "shipping",
-        "score": 0.8504,
+        "score": 0.8522,
         "evidence": []
       }
     ],
     "page-016": [
       {
         "term": "costing",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       },
       {
         "term": "price",
-        "score": 0.5626,
+        "score": 0.5539,
         "evidence": []
       },
       {
-        "term": "gateways",
-        "score": 0.4636,
+        "term": "cost",
+        "score": 0.4575,
         "evidence": []
       }
     ],
     "page-017": [
       {
         "term": "deal",
-        "score": 0.7081,
+        "score": 0.686,
         "evidence": []
       },
       {
         "term": "checks",
-        "score": 0.6157,
+        "score": 0.6131,
         "evidence": []
       },
       {
-        "term": "staged",
-        "score": 0.5531,
+        "term": "escalate",
+        "score": 0.5488,
         "evidence": []
       }
     ],
     "page-018": [
       {
         "term": "labelling",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "terminating",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       },
       {
         "term": "exclude",
-        "score": 0.479,
+        "score": 0.4726,
         "evidence": []
       }
     ],
     "page-019": [
       {
         "term": "categorisation",
-        "score": 0.6305,
-        "evidence": []
-      },
-      {
-        "term": "eligibility",
-        "score": 0.6073,
+        "score": 0.5946,
         "evidence": []
       },
       {
         "term": "enrichment",
-        "score": 0.5938,
+        "score": 0.5946,
+        "evidence": []
+      },
+      {
+        "term": "eligibility",
+        "score": 0.5817,
         "evidence": []
       }
     ],
     "page-020": [
       {
         "term": "risk opportunity",
-        "score": 1.5231,
+        "score": 1.5265,
         "evidence": []
       },
       {
         "term": "neutral",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       },
       {
         "term": "derives",
-        "score": 0.5312,
+        "score": 0.5324,
         "evidence": []
       }
     ],
     "page-021": [
       {
         "term": "escalate",
-        "score": 0.5477,
+        "score": 0.5488,
         "evidence": []
       },
       {
         "term": "ending",
-        "score": 0.5352,
+        "score": 0.5363,
         "evidence": []
       },
       {
         "term": "multi-step",
-        "score": 0.4992,
+        "score": 0.5006,
         "evidence": []
       }
     ],
     "page-022": [
       {
         "term": "promotion",
-        "score": 1.1554,
+        "score": 1.1572,
         "evidence": []
       },
       {
         "term": "customer",
-        "score": 0.7081,
+        "score": 0.6949,
         "evidence": []
       },
       {
         "term": "tiers",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "page-023": [
       {
         "term": "tournament",
-        "score": 0.6356,
+        "score": 0.636,
         "evidence": []
       },
       {
         "term": "advancement",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       },
       {
         "term": "staged",
-        "score": 0.5531,
+        "score": 0.5377,
         "evidence": []
       }
     ],
     "page-024": [
       {
         "term": "forecast",
-        "score": 0.6467,
+        "score": 0.647,
         "evidence": []
       },
       {
         "term": "branches",
-        "score": 0.4878,
+        "score": 0.4806,
         "evidence": []
       },
       {
         "term": "weather",
-        "score": 0.4624,
+        "score": 0.4642,
         "evidence": []
       }
     ]
