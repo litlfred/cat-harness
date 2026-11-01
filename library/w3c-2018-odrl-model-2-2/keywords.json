@@ -3,77 +3,77 @@
   "entry": "w3c-2018-odrl-model-2-2",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "odrl policy",
-      "score": 65.2226,
+      "score": 65.5708,
       "evidence": []
     },
     {
       "term": "odrl rule",
-      "score": 55.8695,
+      "score": 58.0483,
       "evidence": []
     },
     {
       "term": "odrl profile",
-      "score": 52.1599,
+      "score": 52.5059,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "odrl policies",
-      "score": 44.8437,
+      "term": "odrl vocabulary",
+      "score": 45.1067,
       "evidence": []
     },
     {
-      "term": "odrl vocabulary",
-      "score": 44.842,
+      "term": "odrl policies",
+      "score": 45.0561,
       "evidence": []
     },
     {
       "term": "normative odrl",
-      "score": 43.5172,
+      "score": 43.777,
       "evidence": []
     },
     {
       "term": "odrl information",
-      "score": 43.0967,
+      "score": 43.3194,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "odrl core",
-      "score": 42.4262,
+      "score": 42.701,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "odrl common",
-      "score": 42.3936,
+      "score": 42.634,
       "evidence": []
     },
     {
       "term": "odrl community",
-      "score": 41.7423,
+      "score": 41.9806,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "odrl validation",
-      "score": 40.8334,
+      "term": "party asset",
+      "score": 41.074,
       "evidence": []
     },
     {
-      "term": "party asset",
-      "score": 40.8085,
+      "term": "odrl validation",
+      "score": 41.0698,
       "evidence": []
     }
   ],
@@ -81,290 +81,290 @@
     "sec-001-w3c-recommendation-15-february-2018": [
       {
         "term": "w3c",
-        "score": 1.3154,
+        "score": 1.322,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "iannella",
-        "score": 0.6025,
+        "score": 0.6032,
         "evidence": []
       },
       {
         "term": "renato",
-        "score": 0.6025,
+        "score": 0.6032,
         "evidence": []
       }
     ],
     "sec-002-abstract": [
       {
         "term": "odrl",
-        "score": 0.769,
+        "score": 0.7737,
         "evidence": []
       },
       {
         "term": "payments",
-        "score": 0.6524,
+        "score": 0.6527,
         "evidence": []
       },
       {
         "term": "policies",
-        "score": 0.638,
+        "score": 0.6364,
         "evidence": []
       }
     ],
     "sec-003-status-of-this-document": [
       {
         "term": "w3c patent",
-        "score": 2.8806,
+        "score": 2.8903,
         "evidence": []
       },
       {
         "term": "patent policy",
-        "score": 1.8781,
+        "score": 1.8826,
         "evidence": []
       },
       {
         "term": "document",
-        "score": 1.5451,
+        "score": 1.5635,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "working group",
-        "score": 1.3851,
+        "score": 1.3201,
         "evidence": []
       },
       {
         "term": "recommendation",
-        "score": 0.7343,
+        "score": 0.7329,
         "evidence": []
       },
       {
         "term": "status",
-        "score": 0.7257,
+        "score": 0.7231,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "please",
-        "score": 0.5499,
+        "score": 0.5516,
         "evidence": []
       }
     ],
     "sec-008-13-terminology": [
       {
-        "term": "odrl profile",
-        "score": 1.9107,
-        "evidence": []
-      },
-      {
         "term": "constraint class",
-        "score": 1.9,
+        "score": 1.9602,
         "evidence": []
       },
       {
-        "term": "prohibited actions",
-        "score": 1.6059,
+        "term": "odrl profile",
+        "score": 1.924,
         "evidence": []
       },
       {
         "term": "refinement property",
-        "score": 1.6044,
+        "score": 1.6135,
+        "evidence": []
+      },
+      {
+        "term": "prohibited actions",
+        "score": 1.6131,
         "evidence": []
       },
       {
         "term": "policy",
-        "score": 1.0111,
+        "score": 1.0155,
         "evidence": []
       },
       {
         "term": "duty",
-        "score": 0.9346,
+        "score": 0.938,
         "evidence": []
       },
       {
         "term": "permitted",
-        "score": 0.924,
+        "score": 0.9274,
         "evidence": []
       },
       {
         "term": "obligation",
-        "score": 0.7634,
+        "score": 0.7659,
         "evidence": []
       }
     ],
     "sec-009-2-odrl-information-model": [
       {
         "term": "odrl information",
-        "score": 4.9302,
+        "score": 4.9495,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "information model",
-        "score": 2.8589,
+        "score": 2.8197,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "odrl policy",
-        "score": 2.7741,
+        "score": 2.7891,
         "evidence": []
       },
       {
         "term": "party asset",
-        "score": 2.7147,
+        "score": 2.7323,
         "evidence": []
       },
       {
         "term": "asset collection",
-        "score": 2.4067,
+        "score": 2.4041,
         "evidence": []
       },
       {
         "term": "odrl core",
-        "score": 2.2284,
+        "score": 2.244,
         "evidence": []
       },
       {
         "term": "parent class",
-        "score": 1.8272,
+        "score": 1.8279,
         "evidence": []
       },
       {
-        "term": "relation property",
-        "score": 1.7164,
+        "term": "agreed action",
+        "score": 1.6964,
         "evidence": []
       }
     ],
     "sec-010-21-policy-class": [
       {
         "term": "odrl policy",
-        "score": 2.2704,
+        "score": 2.2822,
         "evidence": []
       },
       {
         "term": "odrl profile",
-        "score": 1.8057,
+        "score": 1.8181,
         "evidence": []
       },
       {
         "term": "conflict strategy",
-        "score": 1.3375,
+        "score": 1.3266,
         "evidence": []
       },
       {
         "term": "type iri",
-        "score": 1.1234,
+        "score": 1.1342,
         "evidence": []
       },
       {
         "term": "property values",
-        "score": 1.0341,
+        "score": 1.0473,
         "evidence": []
       },
       {
         "term": "obligation",
-        "score": 0.7634,
+        "score": 0.7659,
         "evidence": []
       },
       {
         "term": "prohibition",
-        "score": 0.7524,
+        "score": 0.7549,
         "evidence": []
       }
     ],
     "sec-011-note": [
       {
         "term": "odrl profiles",
-        "score": 2.1355,
+        "score": 2.1484,
         "evidence": []
       },
       {
         "term": "odrl information",
-        "score": 1.7152,
+        "score": 1.7231,
         "evidence": []
       },
       {
         "term": "policy subclasses",
-        "score": 1.5256,
+        "score": 1.5315,
         "evidence": []
       },
       {
         "term": "implementable",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "serialisations",
-        "score": 0.9078,
+        "score": 0.9092,
         "evidence": []
       }
     ],
     "sec-012-211-set-class": [
       {
         "term": "subclass",
-        "score": 0.9483,
+        "score": 0.9516,
         "evidence": []
       },
       {
         "term": "policy",
-        "score": 0.6344,
+        "score": 0.6372,
         "evidence": []
       },
       {
         "term": "asset",
-        "score": 0.5723,
+        "score": 0.5762,
         "evidence": []
       }
     ],
     "sec-013-212-offer-class": [
       {
         "term": "subclass offer",
-        "score": 1.419,
+        "score": 1.4238,
         "evidence": []
       },
       {
         "term": "odrl policy",
-        "score": 1.0425,
+        "score": 1.0481,
         "evidence": []
       },
       {
-        "term": "assigner",
-        "score": 0.6393,
+        "term": "rules",
+        "score": 0.7166,
         "evidence": []
       }
     ],
     "sec-014-note": [
       {
         "term": "property cardinalities",
-        "score": 1.2616,
+        "score": 1.2684,
         "evidence": []
       },
       {
         "term": "above property",
-        "score": 0.9725,
+        "score": 0.9761,
         "evidence": []
       },
       {
         "term": "odrl",
-        "score": 0.8928,
+        "score": 0.8982,
         "evidence": []
       },
       {
         "term": "policy",
-        "score": 0.767,
+        "score": 0.7704,
         "evidence": []
       },
       {
         "term": "note",
-        "score": 0.6685,
+        "score": 0.658,
         "evidence": [
           "heading"
         ]
@@ -373,710 +373,710 @@
     "sec-015-213-agreement-class": [
       {
         "term": "subclass agreement",
-        "score": 1.4491,
+        "score": 1.4535,
         "evidence": []
       },
       {
-        "term": "functional role",
-        "score": 1.0477,
+        "term": "same rules",
+        "score": 1.1058,
         "evidence": []
       },
       {
         "term": "odrl policy",
-        "score": 1.0425,
+        "score": 1.0481,
         "evidence": []
       }
     ],
     "sec-016-note": [
       {
         "term": "property cardinalities",
-        "score": 1.1705,
+        "score": 1.1763,
         "evidence": []
       },
       {
         "term": "above property",
-        "score": 0.7121,
+        "score": 0.715,
         "evidence": []
       },
       {
         "term": "policy",
-        "score": 0.6344,
+        "score": 0.6372,
         "evidence": []
       }
     ],
     "sec-017-22-asset-class": [
       {
         "term": "asset class",
-        "score": 4.1206,
+        "score": 4.1485,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "assetcollection",
-        "score": 1.6454,
+        "score": 1.6486,
         "evidence": []
       },
       {
         "term": "refinement property",
-        "score": 1.2254,
+        "score": 1.2321,
         "evidence": []
       },
       {
         "term": "type iri",
-        "score": 1.0157,
+        "score": 1.0259,
         "evidence": []
       },
       {
         "term": "property values",
-        "score": 0.9347,
+        "score": 0.9461,
         "evidence": []
       },
       {
         "term": "odrl",
-        "score": 0.8928,
+        "score": 0.8982,
         "evidence": []
       },
       {
         "term": "uid",
-        "score": 0.8142,
+        "score": 0.8185,
         "evidence": []
       },
       {
         "term": "profile",
-        "score": 0.7572,
+        "score": 0.7635,
         "evidence": []
       }
     ],
     "sec-018-221-relation-property": [
       {
         "term": "relation property",
-        "score": 3.3112,
+        "score": 3.249,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "target asset",
-        "score": 2.0079,
+        "score": 2.0203,
         "evidence": []
       },
       {
         "term": "odrl",
-        "score": 1.1536,
+        "score": 1.1605,
         "evidence": []
       },
       {
         "term": "subtype",
-        "score": 0.9537,
+        "score": 0.9548,
         "evidence": []
       },
       {
         "term": "profile",
-        "score": 0.6522,
+        "score": 0.6577,
         "evidence": []
       },
       {
         "term": "uid",
-        "score": 0.6453,
+        "score": 0.6486,
         "evidence": []
       },
       {
         "term": "action",
-        "score": 0.6426,
+        "score": 0.6445,
         "evidence": []
       }
     ],
     "sec-019-222-part-of-property": [
       {
         "term": "assetcollection",
-        "score": 1.2735,
+        "score": 1.276,
         "evidence": []
       },
       {
         "term": "membership relationships",
-        "score": 1.1832,
+        "score": 1.1707,
         "evidence": []
       },
       {
         "term": "partof property",
-        "score": 1.1562,
+        "score": 1.1621,
         "evidence": []
       },
       {
         "term": "assets",
-        "score": 0.7349,
+        "score": 0.7397,
         "evidence": []
       }
     ],
     "sec-020-223-target-policy-property": [
       {
         "term": "odrl policy",
-        "score": 2.059,
+        "score": 2.0698,
         "evidence": []
       },
       {
         "term": "target asset",
-        "score": 1.9935,
+        "score": 2.0059,
         "evidence": []
       },
       {
         "term": "haspolicy property",
-        "score": 1.5622,
-        "evidence": []
-      },
-      {
-        "term": "inferred",
-        "score": 0.695,
+        "score": 1.5673,
         "evidence": []
       },
       {
         "term": "rules",
-        "score": 0.6623,
+        "score": 0.832,
+        "evidence": []
+      },
+      {
+        "term": "inferred",
+        "score": 0.698,
         "evidence": []
       },
       {
         "term": "uid",
-        "score": 0.6453,
+        "score": 0.6486,
         "evidence": []
       }
     ],
     "sec-021-23-party-class": [
       {
         "term": "party class",
-        "score": 4.2769,
+        "score": 4.3035,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "partycollection",
-        "score": 1.7096,
+        "score": 1.7123,
         "evidence": []
       },
       {
         "term": "refinement property",
-        "score": 1.1766,
+        "score": 1.1828,
         "evidence": []
       },
       {
         "term": "type iri",
-        "score": 0.9355,
+        "score": 0.9446,
         "evidence": []
       },
       {
         "term": "property values",
-        "score": 0.8859,
-        "evidence": []
-      },
-      {
-        "term": "undertake",
-        "score": 0.8557,
+        "score": 0.8968,
         "evidence": []
       },
       {
         "term": "rule",
-        "score": 0.7766,
+        "score": 0.8623,
+        "evidence": []
+      },
+      {
+        "term": "undertake",
+        "score": 0.8575,
         "evidence": []
       }
     ],
     "sec-022-231-function-property": [
       {
         "term": "function property",
-        "score": 2.0597,
+        "score": 2.0827,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "party",
-        "score": 1.1473,
-        "evidence": []
-      },
-      {
-        "term": "odrl",
-        "score": 0.8928,
+        "score": 1.1542,
         "evidence": []
       },
       {
         "term": "rule",
-        "score": 0.8646,
+        "score": 0.96,
+        "evidence": []
+      },
+      {
+        "term": "odrl",
+        "score": 0.8982,
         "evidence": []
       },
       {
         "term": "assignee",
-        "score": 0.8265,
+        "score": 0.8307,
         "evidence": []
       }
     ],
     "sec-023-note": [
       {
         "term": "vcard",
-        "score": 0.8755,
+        "score": 0.8772,
         "evidence": []
       },
       {
         "term": "assignee",
-        "score": 0.8265,
+        "score": 0.8307,
         "evidence": []
       },
       {
         "term": "assigner",
-        "score": 0.8066,
+        "score": 0.811,
         "evidence": []
       },
       {
         "term": "external properties",
-        "score": 0.7675,
+        "score": 0.7696,
         "evidence": []
       }
     ],
     "sec-024-232-part-of-property": [
       {
         "term": "vcard",
-        "score": 1.7511,
+        "score": 1.7544,
         "evidence": []
       },
       {
         "term": "partycollection",
-        "score": 1.473,
+        "score": 1.4754,
         "evidence": []
       },
       {
         "term": "partof property",
-        "score": 1.2472,
+        "score": 1.2541,
         "evidence": []
       },
       {
         "term": "membership relationships",
-        "score": 1.1832,
+        "score": 1.1707,
         "evidence": []
       },
       {
         "term": "hasemail",
-        "score": 0.9993,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "party",
-        "score": 0.9886,
+        "score": 0.9946,
         "evidence": []
       },
       {
         "term": "assignee",
-        "score": 0.9595,
+        "score": 0.9644,
         "evidence": []
       }
     ],
     "sec-025-233-assigned-policy-properties": [
       {
         "term": "odrl policy",
-        "score": 2.0906,
+        "score": 2.1015,
         "evidence": []
       },
       {
         "term": "functional role",
-        "score": 1.322,
+        "score": 1.2902,
         "evidence": []
       },
       {
         "term": "assigneeof",
-        "score": 1.2145,
+        "score": 1.2158,
         "evidence": []
       },
       {
         "term": "party",
-        "score": 1.1473,
+        "score": 1.1542,
         "evidence": []
       },
       {
         "term": "undertake",
-        "score": 1.0797,
+        "score": 1.082,
         "evidence": []
       }
     ],
     "sec-026-24-action-class": [
       {
         "term": "action class",
-        "score": 2.7258,
+        "score": 2.737,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "action indicates",
-        "score": 1.4771,
+        "score": 1.4635,
         "evidence": []
       },
       {
         "term": "exercised",
-        "score": 0.9563,
+        "score": 0.9595,
         "evidence": []
       },
       {
         "term": "asset",
-        "score": 0.8384,
+        "score": 0.8441,
         "evidence": []
       }
     ],
     "sec-027-25-constraints": [
       {
         "term": "includedin property",
-        "score": 2.8894,
+        "score": 2.899,
         "evidence": []
       },
       {
         "term": "includedin relationship",
-        "score": 2.7964,
+        "score": 2.7983,
         "evidence": []
       },
       {
         "term": "encompassing action",
-        "score": 2.2165,
+        "score": 2.2213,
         "evidence": []
       },
       {
         "term": "logical constraint",
-        "score": 2.0518,
+        "score": 2.085,
         "evidence": []
       },
       {
         "term": "policy conflict",
-        "score": 2.0032,
+        "score": 2.0036,
         "evidence": []
       },
       {
         "term": "party asset",
-        "score": 1.8481,
+        "score": 1.8601,
         "evidence": []
       },
       {
         "term": "asset collection",
-        "score": 1.7882,
+        "score": 1.7864,
         "evidence": []
       },
       {
         "term": "target asset",
-        "score": 1.7519,
+        "score": 1.7628,
         "evidence": []
       }
     ],
     "sec-028-251-constraint-class": [
       {
         "term": "constraint class",
-        "score": 4.9829,
+        "score": 5.2105,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "rightoperand reference",
-        "score": 3.069,
+        "score": 3.0674,
         "evidence": []
       },
       {
         "term": "rightoperand property",
-        "score": 3.0468,
+        "score": 3.0595,
         "evidence": []
       },
       {
         "term": "leftoperand property",
-        "score": 2.7028,
+        "score": 2.7155,
         "evidence": []
       },
       {
         "term": "leftoperand action",
-        "score": 2.559,
+        "score": 2.5651,
         "evidence": []
       },
       {
         "term": "rightoperandreference represents",
-        "score": 2.3943,
+        "score": 2.3693,
         "evidence": []
       },
       {
         "term": "operator property",
-        "score": 1.9557,
+        "score": 1.9507,
         "evidence": []
       },
       {
         "term": "property value",
-        "score": 1.7239,
+        "score": 1.7366,
         "evidence": []
       }
     ],
     "sec-029-252-logical-constraint-class": [
       {
         "term": "logical constraint",
-        "score": 5.774,
+        "score": 5.8221,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "constraint class",
-        "score": 3.7746,
+        "score": 3.9644,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "operand sub-property",
-        "score": 2.4605,
+        "score": 2.4659,
         "evidence": []
       },
       {
         "term": "constraint instances",
-        "score": 2.1311,
+        "score": 2.192,
         "evidence": []
       },
       {
         "term": "logical relationship",
-        "score": 1.9471,
+        "score": 1.8792,
         "evidence": []
       },
       {
         "term": "existing constraints",
-        "score": 1.5582,
+        "score": 1.5813,
         "evidence": []
       },
       {
         "term": "odrl profiles",
-        "score": 1.4927,
+        "score": 1.5018,
         "evidence": []
       }
     ],
     "sec-031-note": [
       {
         "term": "constraint property",
-        "score": 1.1825,
+        "score": 1.2394,
         "evidence": []
       },
       {
         "term": "permission",
-        "score": 0.7361,
+        "score": 0.7375,
         "evidence": []
       },
       {
         "term": "condition",
-        "score": 0.6859,
+        "score": 0.6998,
         "evidence": []
       }
     ],
     "sec-032-254-refinement-property-with-an-action": [
       {
         "term": "refinement property",
-        "score": 1.9145,
+        "score": 1.9221,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "action",
-        "score": 1.1071,
+        "score": 1.1103,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "constraint",
-        "score": 0.6615,
+        "score": 0.7036,
         "evidence": []
       }
     ],
     "sec-033-note": [
       {
         "term": "target asset",
-        "score": 1.241,
+        "score": 1.2483,
         "evidence": []
       },
       {
         "term": "printing",
-        "score": 1.0074,
-        "evidence": []
-      },
-      {
-        "term": "rightoperand",
-        "score": 0.8764,
-        "evidence": []
-      },
-      {
-        "term": "permission",
-        "score": 0.8546,
-        "evidence": []
-      },
-      {
-        "term": "leftoperand",
-        "score": 0.8472,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "constraint",
-        "score": 0.8347,
+        "score": 0.8879,
+        "evidence": []
+      },
+      {
+        "term": "rightoperand",
+        "score": 0.8781,
+        "evidence": []
+      },
+      {
+        "term": "permission",
+        "score": 0.8562,
+        "evidence": []
+      },
+      {
+        "term": "leftoperand",
+        "score": 0.8491,
         "evidence": []
       }
     ],
     "sec-034-255-refinement-property-with-an-asset-collection": [
       {
         "term": "refinement property",
-        "score": 3.829,
+        "score": 3.8442,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "assetcollection",
-        "score": 1.6454,
+        "score": 1.6486,
         "evidence": []
       },
       {
         "term": "asset",
-        "score": 1.1445,
+        "score": 1.1524,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "leftoperand",
-        "score": 1.0691,
+        "score": 1.0715,
         "evidence": []
       },
       {
         "term": "constraint",
-        "score": 0.9691,
+        "score": 1.0308,
+        "evidence": []
+      },
+      {
+        "term": "uid",
+        "score": 0.9502,
         "evidence": []
       },
       {
         "term": "collection",
-        "score": 0.9625,
+        "score": 0.9499,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "uid",
-        "score": 0.9453,
-        "evidence": []
-      },
-      {
         "term": "rightoperand",
-        "score": 0.8764,
+        "score": 0.8781,
         "evidence": []
       }
     ],
     "sec-035-256-refinement-property-with-a-party-collection": [
       {
         "term": "refinement property",
-        "score": 3.6699,
+        "score": 3.6834,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "partycollection",
-        "score": 1.7096,
+        "score": 1.7123,
         "evidence": []
       },
       {
-        "term": "collection",
-        "score": 1.2145,
+        "term": "party",
+        "score": 1.2196,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "party",
-        "score": 1.2123,
+        "term": "collection",
+        "score": 1.1986,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "assigner",
-        "score": 0.9365,
+        "score": 0.9415,
         "evidence": []
       },
       {
         "term": "rightoperand",
-        "score": 0.8764,
+        "score": 0.8781,
         "evidence": []
       },
       {
         "term": "ies",
-        "score": 0.875,
+        "score": 0.8501,
         "evidence": []
       }
     ],
     "sec-036-26-rule-class": [
       {
         "term": "rule class",
-        "score": 4.0888,
+        "score": 4.4052,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "sub-property values",
-        "score": 1.5534,
+        "score": 1.5639,
         "evidence": []
       },
       {
         "term": "property cardinalities",
-        "score": 1.4387,
+        "score": 1.4474,
         "evidence": []
       },
       {
         "term": "above property",
-        "score": 0.9803,
+        "score": 0.9861,
         "evidence": []
       },
       {
         "term": "none",
-        "score": 0.8641,
-        "evidence": []
-      },
-      {
-        "term": "relation",
-        "score": 0.7641,
+        "score": 0.8478,
         "evidence": []
       },
       {
         "term": "duty",
-        "score": 0.7407,
+        "score": 0.7434,
+        "evidence": []
+      },
+      {
+        "term": "relation",
+        "score": 0.7397,
         "evidence": []
       }
     ],
     "sec-037-261-permission-class": [
       {
         "term": "permission",
-        "score": 2.3335,
+        "score": 2.3378,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "duty property",
-        "score": 2.0074,
+        "score": 2.0196,
         "evidence": []
       },
       {
         "term": "property cardinalities",
-        "score": 1.5183,
+        "score": 1.5278,
         "evidence": []
       },
       {
         "term": "above property",
-        "score": 1.0598,
+        "score": 1.0665,
         "evidence": []
       },
       {
         "term": "property values",
-        "score": 1.0142,
+        "score": 1.0265,
         "evidence": []
       },
       {
         "term": "class",
-        "score": 0.8869,
+        "score": 0.8928,
         "evidence": [
           "heading"
         ]
@@ -1085,401 +1085,401 @@
     "sec-038-262-prohibition-class": [
       {
         "term": "prohibition",
-        "score": 3.5131,
+        "score": 3.5251,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "remedy property",
-        "score": 2.0495,
+        "score": 2.0601,
         "evidence": []
       },
       {
         "term": "target asset",
-        "score": 1.5828,
+        "score": 1.5924,
         "evidence": []
       },
       {
         "term": "property cardinalities",
-        "score": 1.5818,
+        "score": 1.592,
         "evidence": []
       },
       {
         "term": "infringed",
-        "score": 1.1912,
+        "score": 1.1927,
         "evidence": []
       },
       {
         "term": "above property",
-        "score": 1.1233,
+        "score": 1.1307,
         "evidence": []
       },
       {
         "term": "property values",
-        "score": 1.0777,
+        "score": 1.0907,
         "evidence": []
       },
       {
         "term": "assigner",
-        "score": 1.0426,
+        "score": 1.0482,
         "evidence": []
       }
     ],
     "sec-039-263-duty-class": [
       {
         "term": "duty class",
-        "score": 5.2872,
+        "score": 5.3096,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "policy obligation",
-        "score": 2.0585,
+        "score": 2.0661,
         "evidence": []
       },
       {
         "term": "consequence property",
-        "score": 2.057,
+        "score": 2.0094,
         "evidence": []
       },
       {
         "term": "obligation properties",
-        "score": 1.9085,
-        "evidence": []
-      },
-      {
-        "term": "refinements satisfied",
-        "score": 1.6754,
+        "score": 1.9151,
         "evidence": []
       },
       {
         "term": "party obligated",
-        "score": 1.6726,
+        "score": 1.6787,
+        "evidence": []
+      },
+      {
+        "term": "refinements satisfied",
+        "score": 1.6737,
         "evidence": []
       },
       {
         "term": "property cardinalities",
-        "score": 1.5516,
+        "score": 1.5615,
         "evidence": []
       },
       {
         "term": "fulfilled",
-        "score": 1.2283,
+        "score": 1.2325,
         "evidence": []
       }
     ],
     "sec-041-note": [
       {
         "term": "duty obligation",
-        "score": 2.8081,
+        "score": 2.8177,
         "evidence": []
       },
       {
         "term": "original duty",
-        "score": 1.8611,
+        "score": 1.8637,
         "evidence": []
       },
       {
         "term": "consequence",
-        "score": 1.1445,
+        "score": 1.0967,
+        "evidence": []
+      },
+      {
+        "term": "fulfilled",
+        "score": 0.9536,
         "evidence": []
       },
       {
         "term": "below agreement",
         "score": 0.9514,
         "evidence": []
-      },
-      {
-        "term": "fulfilled",
-        "score": 0.9503,
-        "evidence": []
       }
     ],
     "sec-042-265-duty-property-with-a-permission": [
       {
         "term": "duty",
-        "score": 3.1048,
+        "score": 3.116,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "permission",
-        "score": 1.9029,
+        "score": 1.9064,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "payamount",
-        "score": 1.2846,
+        "score": 1.2854,
         "evidence": []
       },
       {
         "term": "compensate",
-        "score": 1.0831,
+        "score": 1.0572,
         "evidence": []
       },
       {
         "term": "rightoperand",
-        "score": 0.8764,
+        "score": 0.8781,
         "evidence": []
       },
       {
         "term": "leftoperand",
-        "score": 0.8472,
+        "score": 0.8491,
         "evidence": []
       }
     ],
     "sec-043-266-consequence-property-with-a-permissionobliga": [
       {
         "term": "consequence property",
-        "score": 3.1665,
+        "score": 3.0804,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "duty",
-        "score": 2.9628,
+        "score": 2.9734,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "obligation",
-        "score": 1.9267,
+        "score": 1.933,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "permission",
-        "score": 1.4723,
+        "score": 1.475,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "rightoperand",
-        "score": 0.8764,
+        "score": 0.8781,
         "evidence": []
       }
     ],
     "sec-044-267-remedy-property-with-a-prohibition": [
       {
         "term": "remedy property",
-        "score": 3.7511,
+        "score": 3.7658,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prohibition",
-        "score": 1.8987,
+        "score": 1.9052,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "target asset",
-        "score": 1.1786,
+        "score": 1.1859,
         "evidence": []
       }
     ],
     "sec-045-27-policy-rule-composition": [
       {
         "term": "rule",
-        "score": 2.5469,
+        "score": 2.828,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "permission rule",
-        "score": 2.3777,
+        "score": 2.5202,
+        "evidence": []
+      },
+      {
+        "term": "existing rule",
+        "score": 1.8861,
         "evidence": []
       },
       {
         "term": "policy",
-        "score": 1.8153,
+        "score": 1.8233,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "existing rule",
-        "score": 1.7627,
-        "evidence": []
-      },
-      {
         "term": "created rules",
-        "score": 1.5639,
+        "score": 1.7527,
         "evidence": []
       },
       {
         "term": "multiple assets",
-        "score": 1.5142,
+        "score": 1.5212,
         "evidence": []
       },
       {
         "term": "assigner",
-        "score": 1.2785,
+        "score": 1.2854,
         "evidence": []
       },
       {
         "term": "odrl information",
-        "score": 1.1597,
+        "score": 1.1647,
         "evidence": []
       }
     ],
     "sec-046-271-compact-policy": [
       {
         "term": "policy",
-        "score": 1.8153,
+        "score": 1.8233,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "shared properties",
-        "score": 1.7268,
+        "score": 1.736,
         "evidence": []
       },
       {
         "term": "odrl validation",
-        "score": 1.6934,
+        "score": 1.7016,
         "evidence": []
       },
       {
         "term": "validation requirements",
-        "score": 1.2221,
+        "score": 1.2113,
         "evidence": []
       },
       {
         "term": "policy-level",
-        "score": 1.1945,
+        "score": 1.1959,
         "evidence": []
       },
       {
         "term": "compact",
-        "score": 1.1253,
+        "score": 1.1272,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "sub-properties",
-        "score": 0.7328,
+        "score": 0.7355,
         "evidence": []
       }
     ],
     "sec-047-28-policy-metadata": [
       {
         "term": "policy",
-        "score": 2.4719,
+        "score": 2.4828,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "type policy",
-        "score": 1.6197,
+        "score": 1.6302,
         "evidence": []
       },
       {
         "term": "dublin core",
-        "score": 1.473,
+        "score": 1.4809,
         "evidence": []
       },
       {
         "term": "property values",
-        "score": 1.3329,
+        "score": 1.3501,
         "evidence": []
       },
       {
         "term": "metadata properties",
-        "score": 1.0921,
+        "score": 1.1042,
         "evidence": []
       },
       {
         "term": "jurisdiction",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "supersedes",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "none",
-        "score": 1.0029,
+        "score": 0.9839,
         "evidence": []
       }
     ],
     "sec-048-29-policy-inheritance": [
       {
         "term": "child policy",
-        "score": 3.1124,
+        "score": 3.1239,
         "evidence": []
       },
       {
         "term": "parent policy",
-        "score": 3.0663,
+        "score": 3.0646,
         "evidence": []
       },
       {
         "term": "inheritance",
-        "score": 2.8992,
+        "score": 2.9066,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "updated child",
-        "score": 2.5398,
+        "score": 2.5461,
         "evidence": []
       },
       {
         "term": "original child",
-        "score": 2.2447,
+        "score": 2.2492,
         "evidence": []
       },
       {
         "term": "atomic rules",
-        "score": 1.6481,
+        "score": 1.8405,
         "evidence": []
       },
       {
         "term": "inheritfrom property",
-        "score": 1.5622,
+        "score": 1.5673,
         "evidence": []
       },
       {
         "term": "target asset",
-        "score": 1.3908,
+        "score": 1.3992,
         "evidence": []
       }
     ],
     "sec-049-210-policy-conflict-strategy": [
       {
         "term": "conflict",
-        "score": 2.1911,
+        "score": 2.1839,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "conflict property",
-        "score": 1.5344,
+        "score": 1.5354,
         "evidence": []
       },
       {
         "term": "policy",
-        "score": 1.0929,
+        "score": 1.0977,
         "evidence": [
           "heading"
         ]
@@ -1488,345 +1488,345 @@
     "sec-050-3-odrl-profiles": [
       {
         "term": "conflict property",
-        "score": 1.975,
+        "score": 1.9765,
         "evidence": []
       },
       {
         "term": "conflict strategy",
-        "score": 1.8978,
+        "score": 1.885,
         "evidence": []
       },
       {
         "term": "prohibition rule",
-        "score": 1.726,
+        "score": 1.8149,
         "evidence": []
       },
       {
         "term": "conflicting rules",
-        "score": 1.6351,
+        "score": 1.7307,
         "evidence": []
       },
       {
         "term": "entire policy",
-        "score": 1.5175,
+        "score": 1.5126,
         "evidence": []
       },
       {
         "term": "void",
-        "score": 1.2098,
+        "score": 1.2112,
         "evidence": []
       },
       {
         "term": "perm",
-        "score": 1.1475,
+        "score": 1.1493,
         "evidence": []
       }
     ],
     "sec-051-31-odrl-profile-purpose": [
       {
         "term": "odrl profile",
-        "score": 4.0614,
+        "score": 4.0888,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "odrl policy",
-        "score": 2.0129,
+        "score": 2.024,
         "evidence": []
       },
       {
         "term": "odrl common",
-        "score": 1.8556,
+        "score": 1.8652,
         "evidence": []
       },
       {
         "term": "odrl core",
-        "score": 1.8439,
+        "score": 1.8572,
         "evidence": []
       },
       {
         "term": "vocabulary terms",
-        "score": 1.5759,
+        "score": 1.5696,
         "evidence": []
       }
     ],
     "sec-052-32-odrl-profile-conformance": [
       {
         "term": "odrl profile",
-        "score": 4.8244,
+        "score": 4.8582,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "odrl policy",
-        "score": 2.1456,
+        "score": 2.1572,
         "evidence": []
       },
       {
         "term": "odrl processing",
-        "score": 1.9095,
+        "score": 1.9025,
         "evidence": []
       },
       {
         "term": "policy conforms",
-        "score": 1.439,
+        "score": 1.4455,
         "evidence": []
       }
     ],
     "sec-053-33-odrl-profile-mechanism": [
       {
         "term": "odrl profile",
-        "score": 4.4632,
+        "score": 4.4924,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "subpropertyof odrl",
-        "score": 2.9994,
+        "score": 3.0104,
         "evidence": []
       },
       {
         "term": "subclassof odrl",
-        "score": 2.2481,
+        "score": 2.2626,
         "evidence": []
       },
       {
         "term": "create sub-property",
-        "score": 2.0052,
-        "evidence": []
-      },
-      {
-        "term": "create subclass",
-        "score": 1.7231,
-        "evidence": []
-      },
-      {
-        "term": "additional constraint",
-        "score": 1.7203,
+        "score": 2.0051,
         "evidence": []
       },
       {
         "term": "rule class",
-        "score": 1.7061,
+        "score": 1.7979,
+        "evidence": []
+      },
+      {
+        "term": "additional constraint",
+        "score": 1.776,
+        "evidence": []
+      },
+      {
+        "term": "create subclass",
+        "score": 1.723,
         "evidence": []
       },
       {
         "term": "policy subclasses",
-        "score": 1.6634,
+        "score": 1.6698,
         "evidence": []
       }
     ],
     "sec-055-4-privacy-considerations": [
       {
         "term": "odrl",
-        "score": 1.0795,
+        "score": 1.086,
         "evidence": []
       },
       {
         "term": "personal information",
-        "score": 0.9647,
+        "score": 0.9399,
         "evidence": []
       },
       {
         "term": "parties",
-        "score": 0.6413,
+        "score": 0.6447,
         "evidence": []
       }
     ],
     "sec-056-a-acknowledgements": [
       {
         "term": "kasten",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "paehler",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "odrl",
-        "score": 0.6095,
+        "score": 0.6131,
         "evidence": []
       }
     ],
     "sec-057-b-candidate-recommendation-exit-criteria": [
       {
         "term": "party collection",
-        "score": 1.2134,
+        "score": 1.2091,
+        "evidence": []
+      },
+      {
+        "term": "policy",
+        "score": 1.1658,
         "evidence": []
       },
       {
         "term": "recommendation",
-        "score": 1.1638,
+        "score": 1.1617,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "policy",
-        "score": 1.1607,
-        "evidence": []
-      },
-      {
         "term": "exit",
-        "score": 0.9518,
+        "score": 0.955,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "feature",
-        "score": 0.9071,
+        "score": 0.8927,
         "evidence": []
       },
       {
         "term": "prohibition",
-        "score": 0.7524,
+        "score": 0.7549,
         "evidence": []
       }
     ],
     "sec-058-c-relationship-to-the-w3c-odrl-community-group-r": [
       {
         "term": "odrl community",
-        "score": 5.3854,
+        "score": 5.4107,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "community group",
-        "score": 4.4479,
+        "score": 4.3815,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "odrl version",
-        "score": 1.9647,
+        "score": 1.9749,
         "evidence": []
       },
       {
         "term": "working group",
-        "score": 1.8853,
+        "score": 1.7989,
         "evidence": []
       },
       {
         "term": "w3c",
-        "score": 1.6599,
+        "score": 1.6682,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "group report",
-        "score": 1.6294,
+        "score": 1.592,
         "evidence": []
       }
     ],
     "sec-059-d-changes-from-previous-versions": [
       {
         "term": "issue",
-        "score": 1.968,
-        "evidence": []
-      },
-      {
-        "term": "added",
-        "score": 1.6749,
+        "score": 1.9672,
         "evidence": []
       },
       {
         "term": "odrl profiles",
-        "score": 1.6498,
+        "score": 1.6599,
+        "evidence": []
+      },
+      {
+        "term": "added",
+        "score": 1.651,
         "evidence": []
       },
       {
         "term": "changes",
-        "score": 1.4946,
+        "score": 1.4795,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "refinement property",
-        "score": 1.3685,
+        "score": 1.3767,
         "evidence": []
       },
       {
         "term": "constraint",
-        "score": 1.2521,
+        "score": 1.3318,
         "evidence": []
       },
       {
         "term": "working draft",
-        "score": 1.1397,
+        "score": 1.1039,
         "evidence": []
       },
       {
         "term": "removed",
-        "score": 1.0707,
+        "score": 1.0721,
         "evidence": []
       }
     ],
     "sec-061-e1-normative-references": [
       {
         "term": "ietf",
-        "score": 0.7372,
+        "score": 0.7399,
         "evidence": []
       },
       {
         "term": "url",
-        "score": 0.6919,
+        "score": 0.6938,
         "evidence": []
       },
       {
         "term": "w3c",
-        "score": 0.6577,
+        "score": 0.661,
         "evidence": []
       }
     ],
     "sec-062-e2-informative-references": [
       {
         "term": "renato iannella",
-        "score": 3.3829,
+        "score": 3.3867,
         "evidence": []
       },
       {
         "term": "w3c community",
-        "score": 2.6715,
+        "score": 2.6827,
         "evidence": []
       },
       {
         "term": "susanne guth",
-        "score": 2.4193,
+        "score": 2.4219,
         "evidence": []
       },
       {
         "term": "odrl version",
-        "score": 1.9044,
+        "score": 1.9128,
         "evidence": []
       },
       {
         "term": "community group",
-        "score": 1.8817,
+        "score": 1.8562,
         "evidence": []
       },
       {
         "term": "group final",
-        "score": 1.6105,
+        "score": 1.5842,
         "evidence": []
       },
       {
         "term": "final specification",
-        "score": 1.4639,
+        "score": 1.4692,
         "evidence": []
       },
       {
         "term": "url",
-        "score": 1.2403,
+        "score": 1.2436,
         "evidence": []
       }
     ]

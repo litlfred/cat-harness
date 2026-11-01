@@ -56,7 +56,9 @@ stage 10).
 
 ### 1. Feature branch → staging deployment
 
-When an agent pushes to a feature branch, `feature-staging.yml` automatically:
+When an agent pushes to a feature branch with an open pull request, drafts
+included (owner, 2026-10-31, "drafts get previews"),
+`feature-staging.yml` automatically:
 
 1. Builds the docs site (Jekyll + TypeDoc + BPMN diagrams)
 2. Writes the build's facts — commit SHA, timestamp, branch, PR, issue, build
@@ -66,7 +68,18 @@ When an agent pushes to a feature branch, `feature-staging.yml` automatically:
 4. Comments on the PR that the preview is **staged and queued**, with the
    earliest push time and when it should be live
 5. Waits for the rate-limit window (§7), then deploys to
-   `gh-pages/STAGING/<branch-slug>/`
+   `gh-pages/STAGING/<branch-slug>/` **only the files that differ from the
+   live site** (`staging-share.ts apply`, owner 2026-10-31). The preview's
+   `staging-sw.js` serves the rest from the live site in the browser and puts
+   the banner back on its pages; the live site's root `404.html`
+   (`staging-share.ts write-404`, written by `docs-site.yml`) installs that
+   worker for a deep link opened before it exists. A page is shared only when
+   it matches the live one once the per-preview edits are set aside (banner,
+   SEO strip, `fa-staging` and `fa-search-index`, TypeDoc's title suffix);
+   anything else keeps the preview's own copy. The footer build stamp is
+   filled in the browser on every build, the live site's from `build.json`
+   (folio-assistant#2837), so an unchanged page is byte-identical across
+   deploys
 6. Rewrites the same comment: **pushed** at a time, live by about five
    minutes later
 
@@ -526,8 +539,8 @@ served page, and the bot's *"Staging preview"* comment reports at most the
 first, not the second — and while it says **queued**, not even that. List
 `STAGING/<slug>/` on `refs/heads/gh-pages` before relaying the URL; quote the
 comment's own push and live-by times (the rate limit in §7 can hold a push for
-several windows), or say the `stage` job takes ~2 minutes plus the wait and
-Pages adds a few on top; schedule the re-check rather than promising it.
+several windows), or say the `stage` job takes about 22 minutes plus the wait and
+Pages adds 3 to 4 on top (measured 2026-10-31); schedule the re-check rather than promising it.
 
 The reason it is a rule: an agent relayed one preview URL to the owner **five
 times in a session** without checking anything, each time straight off the

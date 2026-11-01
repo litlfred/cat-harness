@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-2005.09998v1/blocks/figure-img-p010-1",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p010-1.png",
+  "pageStart": 10,
+  "pageEnd": 10,
+  "narrative": [
+    {
+      "text": "Figure 6: Extract of the map coloring solution in standard DMN with FEEL expressions (table 'BorderingCountries' checking Country != Belgium and Country != Germany).",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 6 : Extrait de la solution de coloration de carte en DMN standard avec des expressions FEEL (table 'BorderingCountries' vérifiant Country != Belgium et Country != Germany).",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 6: Extracto de la solución de coloreado de mapas en DMN estándar con expresiones FEEL (tabla 'BorderingCountries' que verifica Country != Belgium y Country != Germany).",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 6: مقتطف من حل تلوين الخرائط في معيار DMN القياسي باستخدام تعبيرات FEEL (جدول 'BorderingCountries' للتحقق من الدول المتجاورة).",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图 6：使用 FEEL 表达式的标准 DMN 地图着色方案摘录（检查 Country != Belgium 和 Country != Germany 的 'BorderingCountries' 表）。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 6: Фрагмент решения задачи раскраски карты в стандартном DMN с выражениями FEEL (таблица 'BorderingCountries', проверяющая Country != Belgium и Country != Germany).",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-2005.09998v1/sections/sec-000",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2005.09998v1/manifest.jsonld",
+  "provenance": "ingested"
+}

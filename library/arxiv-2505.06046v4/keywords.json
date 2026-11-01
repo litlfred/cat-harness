@@ -3,83 +3,83 @@
   "entry": "arxiv-2505.06046v4",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "health guidance",
-      "score": 33.2484,
+      "score": 33.3232,
       "evidence": []
     },
     {
       "term": "mcqa questions",
-      "score": 30.9327,
-      "evidence": [
-        "heading"
-      ]
-    },
-    {
-      "term": "mcqa answer",
-      "score": 29.6483,
+      "score": 30.4111,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "public health",
-      "score": 29.6462,
+      "score": 29.7343,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "mcqa answer",
+      "score": 29.6366,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "mcqa benchmark",
-      "score": 26.7854,
+      "score": 26.9772,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "government guidance",
-      "score": 21.7656,
+      "term": "invalid mcqa",
+      "score": 21.8297,
       "evidence": []
     },
     {
-      "term": "invalid mcqa",
-      "score": 21.7164,
+      "term": "government guidance",
+      "score": 21.8152,
       "evidence": []
     },
     {
       "term": "guidance text",
-      "score": 21.6168,
+      "score": 21.6805,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "ukhsa guidance",
-      "score": 21.3529,
+      "score": 21.4176,
       "evidence": []
     },
     {
       "term": "mcqa samples",
-      "score": 21.2588,
-      "evidence": [
-        "heading"
-      ]
-    },
-    {
-      "term": "guidance source",
-      "score": 20.9632,
+      "score": 21.3777,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "llm benchmark",
-      "score": 20.9055,
+      "score": 21.2104,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "guidance source",
+      "score": 21.0257,
       "evidence": [
         "heading"
       ]
@@ -89,256 +89,256 @@
     "sec-000-introduction": [
       {
         "term": "health guidance",
-        "score": 2.3395,
+        "score": 2.3447,
         "evidence": []
       },
       {
         "term": "public health",
-        "score": 2.2618,
+        "score": 2.2686,
         "evidence": []
       },
       {
         "term": "reviewed subset",
-        "score": 1.325,
+        "score": 1.307,
         "evidence": []
       },
       {
         "term": "response benchmark",
-        "score": 1.2606,
+        "score": 1.2733,
         "evidence": []
       },
       {
         "term": "human baseline",
-        "score": 1.2275,
+        "score": 1.2073,
         "evidence": []
       },
       {
         "term": "mcqa",
-        "score": 1.1811,
+        "score": 1.1868,
         "evidence": []
       },
       {
         "term": "broad range",
-        "score": 1.144,
+        "score": 1.1402,
         "evidence": []
       },
       {
         "term": "across broad",
-        "score": 1.1061,
+        "score": 1.1007,
         "evidence": []
       }
     ],
     "sec-002-mcqa-llm-evaluations": [
       {
         "term": "mcqa",
-        "score": 1.9537,
+        "score": 1.9631,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "evaluations",
-        "score": 1.5874,
+        "score": 1.5928,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "llm",
-        "score": 0.9911,
+        "score": 1.0081,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "llm knowledge",
-        "score": 0.9706,
+        "score": 0.9699,
         "evidence": []
       },
       {
         "term": "mmlu",
-        "score": 0.7672,
+        "score": 0.7696,
         "evidence": []
       },
       {
         "term": "medical",
-        "score": 0.6766,
+        "score": 0.675,
         "evidence": []
       }
     ],
     "sec-003-synthetic-mcqa-datasets": [
       {
         "term": "shashidhar",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "mcqa",
-        "score": 0.8414,
+        "score": 0.8455,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "mmlu",
-        "score": 0.7672,
+        "score": 0.7696,
         "evidence": []
       },
       {
         "term": "corpora",
-        "score": 0.7578,
+        "score": 0.7604,
         "evidence": []
       }
     ],
     "sec-004-public-health-evaluations": [
       {
         "term": "public health",
-        "score": 3.3272,
+        "score": 3.3371,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "evaluations",
-        "score": 1.0835,
+        "score": 1.0872,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "dfph",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "chatgpt",
-        "score": 0.8056,
+        "score": 0.8078,
         "evidence": []
       },
       {
         "term": "questions",
-        "score": 0.6817,
+        "score": 0.6512,
         "evidence": []
       }
     ],
     "sec-005-methods": [
       {
         "term": "mcqa samples",
-        "score": 1.3396,
+        "score": 1.3481,
         "evidence": []
       },
       {
         "term": "amenable",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       },
       {
         "term": "chunk",
-        "score": 0.5131,
+        "score": 0.5042,
         "evidence": []
       }
     ],
     "sec-006-uk-public-health-information": [
       {
         "term": "health",
-        "score": 1.1463,
+        "score": 1.148,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "government",
-        "score": 0.6209,
+        "score": 0.6208,
         "evidence": []
       },
       {
         "term": "corpus",
-        "score": 0.6117,
+        "score": 0.6154,
         "evidence": []
       }
     ],
     "sec-007-pre-processing-and-chunking": [
       {
         "term": "markdown headers",
-        "score": 1.8624,
+        "score": 1.8637,
         "evidence": []
       },
       {
         "term": "pdf",
-        "score": 0.7789,
+        "score": 0.7834,
         "evidence": []
       },
       {
         "term": "existing tools",
-        "score": 0.775,
-        "evidence": []
-      },
-      {
-        "term": "hierarchy",
-        "score": 0.6832,
+        "score": 0.7562,
         "evidence": []
       },
       {
         "term": "page",
-        "score": 0.6819,
+        "score": 0.6812,
+        "evidence": []
+      },
+      {
+        "term": "hierarchy",
+        "score": 0.6453,
         "evidence": []
       }
     ],
     "sec-008-question-generation": [
       {
         "term": "text chunks",
-        "score": 1.7051,
+        "score": 1.6573,
         "evidence": []
       },
       {
         "term": "question",
-        "score": 1.088,
+        "score": 1.0546,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "public health",
-        "score": 1.02,
+        "score": 1.0231,
         "evidence": []
       },
       {
         "term": "filter out",
-        "score": 0.9969,
+        "score": 0.964,
         "evidence": []
       },
       {
         "term": "mcqa",
-        "score": 0.8414,
+        "score": 0.8455,
         "evidence": []
       },
       {
         "term": "recommendations",
-        "score": 0.6325,
+        "score": 0.6261,
         "evidence": []
       }
     ],
     "sec-009-automated-mcqa-error-detection-and-sampling": [
       {
         "term": "pdf documents",
-        "score": 1.409,
+        "score": 1.4197,
         "evidence": []
       },
       {
         "term": "mcqa",
-        "score": 0.8414,
+        "score": 0.8455,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "questions",
-        "score": 0.7914,
+        "score": 0.7561,
         "evidence": []
       },
       {
         "term": "detection",
-        "score": 0.7572,
+        "score": 0.7454,
         "evidence": [
           "heading"
         ]
@@ -347,17 +347,17 @@
     "sec-010-final-mcqa-benchmark-dataset": [
       {
         "term": "topic area",
-        "score": 1.3097,
+        "score": 1.307,
         "evidence": []
       },
       {
         "term": "public health",
-        "score": 1.2278,
+        "score": 1.2319,
         "evidence": []
       },
       {
         "term": "benchmark",
-        "score": 1.0931,
+        "score": 1.1056,
         "evidence": [
           "heading"
         ]
@@ -366,95 +366,95 @@
     "sec-011-human-expert-quality-assurance": [
       {
         "term": "invalid questions",
-        "score": 1.8025,
+        "score": 1.7654,
         "evidence": []
       },
       {
         "term": "correct answer",
-        "score": 1.3082,
+        "score": 1.2922,
         "evidence": []
       },
       {
         "term": "ambiguous",
-        "score": 0.6627,
+        "score": 0.6537,
         "evidence": []
       },
       {
         "term": "benchmark",
-        "score": 0.6345,
+        "score": 0.6418,
         "evidence": []
       },
       {
-        "term": "assure",
-        "score": 0.6305,
+        "term": "guesses",
+        "score": 0.5999,
         "evidence": []
       }
     ],
     "sec-012-model-evaluation-approach": [
       {
         "term": "olmo",
-        "score": 0.9993,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "abdin",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "phi",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       }
     ],
     "sec-014-results": [
       {
         "term": "full benchmark",
-        "score": 1.0121,
+        "score": 1.0202,
         "evidence": []
       },
       {
         "term": "pubhealthbench-reviewed",
-        "score": 0.8846,
+        "score": 0.8862,
         "evidence": []
       },
       {
         "term": "mcqa",
-        "score": 0.6668,
+        "score": 0.67,
         "evidence": []
       },
       {
         "term": "reviewed",
-        "score": 0.6599,
+        "score": 0.6451,
         "evidence": []
       },
       {
         "term": "broadest",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-015-human-baseline": [
       {
         "term": "test takers",
-        "score": 1.3861,
+        "score": 1.3871,
+        "evidence": []
+      },
+      {
+        "term": "upper bound",
+        "score": 1.1293,
         "evidence": []
       },
       {
         "term": "baseline",
-        "score": 1.1028,
+        "score": 1.1052,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "upper bound",
-        "score": 1.0636,
-        "evidence": []
-      },
-      {
         "term": "human",
-        "score": 1.0462,
+        "score": 1.0131,
         "evidence": [
           "heading"
         ]
@@ -463,110 +463,110 @@
     "sec-016-experimental-setup": [
       {
         "term": "setup",
-        "score": 0.832,
+        "score": 0.8289,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "mmlu-pro",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       },
       {
         "term": "comparability",
-        "score": 0.5521,
+        "score": 0.5363,
         "evidence": []
       }
     ],
     "sec-017-free-form-response-evaluation": [
       {
         "term": "ground truth",
-        "score": 1.188,
-        "evidence": []
-      },
-      {
-        "term": "judge",
-        "score": 0.792,
+        "score": 1.1885,
         "evidence": []
       },
       {
         "term": "response",
-        "score": 0.7886,
+        "score": 0.7943,
         "evidence": [
           "heading"
         ]
+      },
+      {
+        "term": "judge",
+        "score": 0.7916,
+        "evidence": []
       }
     ],
     "sec-018-pubhealthbench---overall-mcqa-benchmark-results": [
       {
         "term": "mcqa",
-        "score": 2.3621,
+        "score": 2.3735,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "pubhealthbench-full zero-shot",
-        "score": 1.9608,
+        "score": 1.959,
         "evidence": []
       },
       {
         "term": "zero-shot accuracy",
-        "score": 1.6085,
+        "score": 1.6159,
         "evidence": []
       },
       {
         "term": "benchmark",
-        "score": 1.4128,
-        "evidence": [
-          "heading"
-        ]
-      },
-      {
-        "term": "overall",
-        "score": 1.2965,
+        "score": 1.429,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "o3-mini",
-        "score": 1.2842,
+        "score": 1.2866,
         "evidence": []
       },
       {
         "term": "generate benchmark",
-        "score": 1.276,
+        "score": 1.285,
         "evidence": []
       },
       {
+        "term": "overall",
+        "score": 1.2819,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
         "term": "refusals",
-        "score": 1.261,
+        "score": 1.2619,
         "evidence": []
       }
     ],
     "sec-019-pubhealthbench---results-by-topic-area-and-audie": [
       {
         "term": "guidance audience",
-        "score": 1.6244,
+        "score": 1.6232,
         "evidence": []
       },
       {
         "term": "topic",
-        "score": 1.0924,
+        "score": 1.0899,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "pubhealthbench-full",
-        "score": 0.8522,
+        "score": 0.854,
         "evidence": []
       },
       {
         "term": "area",
-        "score": 0.783,
+        "score": 0.7815,
         "evidence": [
           "heading"
         ]
@@ -575,671 +575,671 @@
     "sec-020-pubhealthbench-freeform-results": [
       {
         "term": "mcqa",
-        "score": 0.9768,
+        "score": 0.9816,
         "evidence": []
       },
       {
         "term": "ppts",
-        "score": 0.944,
+        "score": 0.9452,
         "evidence": []
       },
       {
         "term": "free form",
-        "score": 0.8229,
+        "score": 0.8225,
         "evidence": []
       },
       {
         "term": "llms",
-        "score": 0.6326,
+        "score": 0.6434,
         "evidence": []
       },
       {
         "term": "guidance",
-        "score": 0.6293,
+        "score": 0.6312,
         "evidence": []
       },
       {
         "term": "comparable",
-        "score": 0.6056,
+        "score": 0.6093,
         "evidence": []
       }
     ],
     "sec-021-discussion": [
       {
         "term": "health guidance",
-        "score": 2.0233,
+        "score": 2.028,
         "evidence": []
       },
       {
         "term": "public health",
-        "score": 1.7806,
+        "score": 1.7862,
         "evidence": []
       },
       {
         "term": "mcqa questions",
-        "score": 1.5171,
+        "score": 1.4977,
         "evidence": []
       },
       {
         "term": "judge llm",
-        "score": 1.203,
+        "score": 1.2125,
         "evidence": []
       },
       {
         "term": "free form",
-        "score": 1.1096,
+        "score": 1.1094,
         "evidence": []
       },
       {
         "term": "freeform",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "claude-haiku",
-        "score": 0.9466,
+        "score": 0.9478,
         "evidence": []
       },
       {
         "term": "command-r-32b",
-        "score": 0.9466,
+        "score": 0.9478,
         "evidence": []
       }
     ],
     "sec-022-limitations": [
       {
         "term": "public health",
-        "score": 1.4036,
+        "score": 1.4076,
         "evidence": []
       },
       {
         "term": "llm performance",
-        "score": 0.9223,
+        "score": 0.9274,
         "evidence": []
       },
       {
         "term": "incorporated",
-        "score": 0.7684,
+        "score": 0.7356,
         "evidence": []
       },
       {
         "term": "further work",
-        "score": 0.7214,
+        "score": 0.7006,
         "evidence": []
       },
       {
         "term": "topics",
-        "score": 0.683,
+        "score": 0.6861,
         "evidence": []
       }
     ],
     "sec-023-conclusion": [
       {
         "term": "health guidance",
-        "score": 1.4538,
+        "score": 1.4571,
         "evidence": []
       },
       {
         "term": "public health",
-        "score": 1.2871,
+        "score": 1.291,
         "evidence": []
       },
       {
         "term": "free form",
-        "score": 1.0384,
+        "score": 1.0378,
         "evidence": []
       },
       {
         "term": "llms across",
-        "score": 1.0149,
+        "score": 1.0284,
         "evidence": []
       },
       {
         "term": "risks",
-        "score": 0.6058,
+        "score": 0.6057,
         "evidence": []
       }
     ],
     "sec-024-ethics-statement": [
       {
         "term": "gov",
-        "score": 0.7291,
+        "score": 0.7318,
         "evidence": []
       },
       {
         "term": "licence",
-        "score": 0.6479,
+        "score": 0.6483,
         "evidence": []
       },
       {
         "term": "assuring",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-025-reproducibility-statement": [
       {
         "term": "hao zhang",
-        "score": 3.2817,
+        "score": 3.2706,
         "evidence": []
       },
       {
         "term": "url abs",
-        "score": 3.0675,
+        "score": 3.0768,
         "evidence": []
       },
       {
         "term": "yubo wang",
-        "score": 2.9823,
+        "score": 2.9707,
         "evidence": []
       },
       {
         "term": "jie wang",
-        "score": 2.8443,
+        "score": 2.8338,
         "evidence": []
       },
       {
         "term": "url https",
-        "score": 2.6065,
+        "score": 2.6157,
         "evidence": []
       },
       {
         "term": "org abs",
-        "score": 2.4143,
+        "score": 2.4134,
         "evidence": []
       },
       {
         "term": "karan singhal",
-        "score": 2.3478,
+        "score": 2.3509,
         "evidence": []
       },
       {
         "term": "ying sheng",
-        "score": 2.2749,
+        "score": 2.2803,
         "evidence": []
       }
     ],
     "sec-027-automated-mcqa-error-detection": [
       {
         "term": "error detection",
-        "score": 2.5381,
+        "score": 2.532,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "valid question",
-        "score": 2.451,
+        "score": 2.4123,
         "evidence": []
       },
       {
         "term": "mcqa",
-        "score": 2.3621,
+        "score": 2.3735,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "question refers",
-        "score": 2.0827,
+        "score": 2.0147,
         "evidence": []
       },
       {
         "term": "mcqa samples",
-        "score": 1.9935,
+        "score": 2.0066,
         "evidence": []
       },
       {
         "term": "generated mcqa",
-        "score": 1.9566,
+        "score": 1.958,
         "evidence": []
       },
       {
         "term": "correct answer",
-        "score": 1.8363,
+        "score": 1.8139,
         "evidence": []
       },
       {
         "term": "final pipeline",
-        "score": 1.4016,
+        "score": 1.4095,
         "evidence": []
       }
     ],
     "sec-028-additional-benchmark-statistics": [
       {
         "term": "pubhealthbench-full",
-        "score": 0.8522,
+        "score": 0.854,
         "evidence": []
       },
       {
         "term": "mcqa",
-        "score": 0.6668,
+        "score": 0.67,
         "evidence": []
       },
       {
         "term": "revision",
-        "score": 0.6019,
+        "score": 0.6056,
         "evidence": []
       }
     ],
     "sec-029-mcqa-generation-prompts": [
       {
         "term": "insert incorrect",
-        "score": 3.7126,
+        "score": 3.6884,
         "evidence": []
       },
       {
         "term": "insert question",
-        "score": 3.4952,
+        "score": 3.4591,
         "evidence": []
       },
       {
         "term": "highlighted passage",
-        "score": 3.3332,
+        "score": 3.1644,
         "evidence": []
       },
       {
         "term": "incorrect answer",
-        "score": 3.1126,
+        "score": 3.0712,
         "evidence": []
       },
       {
         "term": "insert correct",
-        "score": 2.9972,
+        "score": 2.9875,
         "evidence": []
       },
       {
         "term": "answer options",
-        "score": 2.4211,
+        "score": 2.3669,
         "evidence": []
       },
       {
         "term": "mcqa generation",
-        "score": 2.2517,
+        "score": 2.2588,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "generate question",
-        "score": 2.1953,
+        "score": 2.1556,
         "evidence": []
       }
     ],
     "sec-030-human-manual-annotation": [
       {
         "term": "human",
-        "score": 0.8291,
+        "score": 0.8029,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "annotation",
-        "score": 0.8058,
+        "score": 0.7945,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "organisation",
-        "score": 0.5312,
+        "score": 0.5066,
         "evidence": []
       }
     ],
     "sec-031-estimating-the-benchmark-error-rate": [
       {
         "term": "answer options",
-        "score": 2.7538,
+        "score": 2.6777,
         "evidence": []
       },
       {
         "term": "incorrect options",
-        "score": 2.4873,
+        "score": 2.4007,
         "evidence": []
       },
       {
         "term": "correct answer",
-        "score": 2.3672,
+        "score": 2.3396,
         "evidence": []
       },
       {
         "term": "valid answer",
-        "score": 2.2893,
+        "score": 2.2845,
         "evidence": []
       },
       {
         "term": "question valid",
-        "score": 2.2148,
+        "score": 2.1798,
         "evidence": []
       },
       {
         "term": "standard answer",
-        "score": 1.7824,
+        "score": 1.7772,
         "evidence": []
       },
       {
         "term": "mcqa samples",
-        "score": 1.3396,
+        "score": 1.3481,
         "evidence": []
       },
       {
         "term": "some relevance",
-        "score": 1.2213,
+        "score": 1.1852,
         "evidence": []
       }
     ],
     "sec-032-human-baseline": [
       {
         "term": "human baseline",
-        "score": 3.2737,
+        "score": 3.2248,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "test takers",
-        "score": 1.6301,
+        "score": 1.6314,
         "evidence": []
       },
       {
         "term": "questions",
-        "score": 1.1323,
+        "score": 1.0817,
         "evidence": []
       },
       {
         "term": "public health",
-        "score": 1.02,
+        "score": 1.0231,
         "evidence": []
       },
       {
         "term": "answer",
-        "score": 0.9934,
+        "score": 0.9857,
         "evidence": []
       },
       {
         "term": "multiple choice",
-        "score": 0.9028,
+        "score": 0.8973,
         "evidence": []
       },
       {
         "term": "ukhsa",
-        "score": 0.782,
+        "score": 0.7843,
         "evidence": []
       },
       {
         "term": "reviewed",
-        "score": 0.6599,
+        "score": 0.6451,
         "evidence": []
       }
     ],
     "sec-033-experimental-setup-and-compute-resources": [
       {
         "term": "proprietary",
-        "score": 0.6931,
+        "score": 0.6961,
         "evidence": []
       },
       {
         "term": "compute",
-        "score": 0.6345,
+        "score": 0.6354,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "addi",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-034-pubhealthbench-prompts": [
       {
         "term": "health agency",
-        "score": 1.9406,
+        "score": 1.9472,
         "evidence": []
       },
       {
         "term": "question relates",
-        "score": 1.8157,
+        "score": 1.7578,
         "evidence": []
       },
       {
         "term": "health guidance",
-        "score": 1.7458,
+        "score": 1.7495,
         "evidence": []
       },
       {
         "term": "public health",
-        "score": 1.6699,
+        "score": 1.6746,
         "evidence": []
       },
       {
         "term": "health security",
-        "score": 1.3928,
+        "score": 1.3992,
         "evidence": []
       }
     ],
     "sec-035-free-form-evaluation---llm-as-a-judge-setup": [
       {
         "term": "llm judge",
-        "score": 4.3221,
+        "score": 4.3443,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "judge evaluation",
-        "score": 3.9577,
+        "score": 3.9258,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "free form",
-        "score": 2.411,
+        "score": 2.4098,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "correct answer",
-        "score": 1.5188,
+        "score": 1.5002,
         "evidence": []
       },
       {
         "term": "answer option",
-        "score": 1.4005,
+        "score": 1.4391,
         "evidence": []
       },
       {
         "term": "source text",
-        "score": 1.0692,
+        "score": 1.0722,
         "evidence": []
       },
       {
         "term": "form responses",
-        "score": 1.0065,
+        "score": 1.0046,
         "evidence": []
       },
       {
         "term": "chunks",
-        "score": 0.8189,
+        "score": 0.789,
         "evidence": []
       }
     ],
     "sec-036-judge-model-comparisons": [
       {
         "term": "judge",
-        "score": 1.839,
+        "score": 1.838,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "judge models",
-        "score": 1.3597,
+        "score": 1.3581,
         "evidence": []
       },
       {
         "term": "re-run",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       }
     ],
     "sec-037-error-analysis": [
       {
         "term": "truth answer",
-        "score": 2.4961,
+        "score": 2.4915,
         "evidence": []
       },
       {
         "term": "ground truth",
-        "score": 2.1042,
+        "score": 2.1052,
         "evidence": []
       },
       {
         "term": "official guidance",
-        "score": 1.4632,
+        "score": 1.4702,
         "evidence": []
       },
       {
         "term": "correct based",
-        "score": 1.1375,
+        "score": 1.122,
         "evidence": []
       },
       {
         "term": "public health",
-        "score": 1.02,
+        "score": 1.0231,
         "evidence": []
       },
       {
         "term": "incorrect",
-        "score": 0.8186,
+        "score": 0.8032,
         "evidence": []
       },
       {
         "term": "question",
-        "score": 0.7969,
+        "score": 0.7725,
         "evidence": []
       },
       {
         "term": "preprint",
-        "score": 0.6482,
+        "score": 0.6472,
         "evidence": []
       }
     ],
     "sec-038-problematic-response-examples": [
       {
         "term": "problematic",
-        "score": 3.1709,
+        "score": 3.1763,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "problematic responses",
-        "score": 2.3886,
+        "score": 2.3853,
         "evidence": []
       },
       {
         "term": "pubhealthbench-freeform",
-        "score": 1.2426,
+        "score": 1.2453,
         "evidence": []
       },
       {
         "term": "preprint",
-        "score": 0.6482,
+        "score": 0.6472,
         "evidence": []
       },
       {
-        "term": "involved",
-        "score": 0.609,
+        "term": "official",
+        "score": 0.5844,
         "evidence": []
       }
     ],
     "sec-039-confidence-intervals": [
       {
         "term": "confidence intervals",
-        "score": 3.4345,
+        "score": 3.4383,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "wilson score",
-        "score": 1.9741,
+        "score": 1.9737,
         "evidence": []
       },
       {
         "term": "accu racy",
-        "score": 1.756,
+        "score": 1.7593,
         "evidence": []
       },
       {
         "term": "pubhealthbench-full zero-shot",
-        "score": 1.7376,
+        "score": 1.7354,
         "evidence": []
       },
       {
         "term": "accuracy wilson",
-        "score": 1.6236,
+        "score": 1.5905,
         "evidence": []
       },
       {
         "term": "claude-haiku",
-        "score": 1.3868,
+        "score": 1.3885,
         "evidence": []
       },
       {
         "term": "command-r-32b",
-        "score": 1.3868,
+        "score": 1.3885,
         "evidence": []
       },
       {
         "term": "command-r-7b",
-        "score": 1.3868,
+        "score": 1.3885,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "public health",
-        "score": 1.744,
+        "score": 1.7491,
         "evidence": []
       },
       {
         "term": "pubhealthbench",
-        "score": 1.2334,
+        "score": 1.2362,
         "evidence": []
       },
       {
         "term": "free form",
-        "score": 1.1342,
+        "score": 1.1334,
         "evidence": []
       },
       {
         "term": "form responses",
-        "score": 0.9353,
+        "score": 0.9331,
         "evidence": []
       },
       {
         "term": "model accuracy",
-        "score": 0.8857,
+        "score": 0.8861,
         "evidence": []
       },
       {
         "term": "mcqa",
-        "score": 0.8414,
+        "score": 0.8455,
         "evidence": []
       },
       {
         "term": "llms",
-        "score": 0.7648,
+        "score": 0.778,
         "evidence": []
       },
       {
         "term": "infor",
-        "score": 0.7371,
+        "score": 0.729,
         "evidence": []
       }
     ]

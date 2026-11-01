@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-1511-04055v1/blocks/figure-img-p024-4",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p024-4.png",
+  "pageStart": 24,
+  "pageEnd": 24,
+  "narrative": [
+    {
+      "text": "Figure 17(d): Example of a non-traditional process visualization showing E.J. Marey's graphical train schedule plotting station position against time of day (from Tufte, 1983).",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 17(d) : Exemple de visualisation de processus non traditionnelle montrant l'horaire graphique des trains d'E.J. Marey (d'après Tufte, 1983).",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 17(d): Ejemplo de visualización de procesos no tradicional que muestra el horario gráfico de trenes de E.J. Marey (de Tufte, 1983).",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 17(د): مثال لتصور عمليات غير تقليدي يعرض الجدول الرسومي لحركة القطارات لـ E.J. Marey (من Tufte، 1983).",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图17(d)：非传统流程可视化示例：E.J. Marey的列车运行图（横轴为时间，纵轴为车站位置，引自Tufte, 1983）。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 17(d): Пример нетрадиционной визуализации процессов: графическое расписание поездов Э.-Ж. Маре (по Tufte, 1983).",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-1511-04055v1/sections/sec-063",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1511-04055v1/manifest.jsonld",
+  "provenance": "ingested"
+}

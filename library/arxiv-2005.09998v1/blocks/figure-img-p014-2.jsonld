@@ -1,0 +1,89 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/arxiv-2005.09998v1/blocks/figure-img-p014-2",
+  "@type": [
+    "folio-assistant-core:Figure",
+    "doco:Figure"
+  ],
+  "kind": "figure",
+  "file": "../images/img-p014-2.png",
+  "pageStart": 14,
+  "pageEnd": 14,
+  "narrative": [
+    {
+      "text": "Figure 11(a): Corticon implementation of the rule 'A killer always hates and is no richer than their victim' in the Who Killed Agatha? challenge.",
+      "lang": "en",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figure 11(a) : Implémentation Corticon de la règle « Un tueur déteste toujours sa victime et n'est pas plus riche qu'elle » dans le défi Who Killed Agatha?.",
+      "lang": "fr",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Figura 11(a): Implementación en Corticon de la regla «Un asesino siempre odia a su víctima y no es más rico que ella» en el desafío Who Killed Agatha?.",
+      "lang": "es",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "الشكل 11(أ): تنفيذ Corticon لقاعدة «القاتل يكره ضحيته دائماً وليس أغنى منها» في تحدي Who Killed Agatha?.",
+      "lang": "ar",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "图 11(a)：Who Killed Agatha? 挑战中“凶手总是憎恨受害者且不比受害者更富有”规则的 Corticon 实现。",
+      "lang": "zh",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    },
+    {
+      "text": "Рисунок 11(a): Реализация правила «Убийца всегда ненавидит свою жертву и не богаче её» в Corticon для задачи Who Killed Agatha?.",
+      "lang": "ru",
+      "state": "draft",
+      "drafted_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "drafted_at": "2026-10-31"
+    }
+  ],
+  "derivedFrom": "library/arxiv-2005.09998v1/sections/sec-000",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2005.09998v1/manifest.jsonld",
+  "provenance": "ingested"
+}

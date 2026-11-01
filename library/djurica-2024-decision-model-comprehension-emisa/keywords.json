@@ -1,0 +1,246 @@
+{
+  "$schema": "folio-keywords/v1",
+  "entry": "djurica-2024-decision-model-comprehension-emisa",
+  "corpus": {
+    "library": "cat-harness/library",
+    "sections": 2267,
+    "terms": 15478,
+    "weighting": "log-entropy"
+  },
+  "document": [
+    {
+      "term": "decision tables",
+      "score": 6.4472,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "decision trees",
+      "score": 5.7917,
+      "evidence": []
+    },
+    {
+      "term": "decision models",
+      "score": 5.7552,
+      "evidence": []
+    },
+    {
+      "term": "cognitive fit",
+      "score": 5.3436,
+      "evidence": []
+    },
+    {
+      "term": "fit theory",
+      "score": 4.4073,
+      "evidence": []
+    },
+    {
+      "term": "djordje djurica",
+      "score": 4.0589,
+      "evidence": []
+    },
+    {
+      "term": "kathrin figl",
+      "score": 3.4802,
+      "evidence": []
+    },
+    {
+      "term": "bad score",
+      "score": 3.2839,
+      "evidence": []
+    },
+    {
+      "term": "income household",
+      "score": 3.2127,
+      "evidence": []
+    },
+    {
+      "term": "systems research",
+      "score": 3.1748,
+      "evidence": []
+    },
+    {
+      "term": "comprehension accuracy",
+      "score": 3.0632,
+      "evidence": []
+    },
+    {
+      "term": "representation features",
+      "score": 2.8824,
+      "evidence": []
+    }
+  ],
+  "sections": {
+    "sec-000-1-introduction": [
+      {
+        "term": "decision models",
+        "score": 1.4286,
+        "evidence": []
+      },
+      {
+        "term": "research question",
+        "score": 1.168,
+        "evidence": []
+      },
+      {
+        "term": "emisa",
+        "score": 0.9508,
+        "evidence": []
+      },
+      {
+        "term": "innsbruck",
+        "score": 0.9508,
+        "evidence": []
+      },
+      {
+        "term": "vienna",
+        "score": 0.9044,
+        "evidence": []
+      },
+      {
+        "term": "cft",
+        "score": 0.8821,
+        "evidence": []
+      },
+      {
+        "term": "berlin",
+        "score": 0.8747,
+        "evidence": []
+      },
+      {
+        "term": "austria",
+        "score": 0.8631,
+        "evidence": []
+      }
+    ],
+    "sec-001-2-experimental-study": [
+      {
+        "term": "bad score",
+        "score": 3.2839,
+        "evidence": []
+      },
+      {
+        "term": "income household",
+        "score": 3.2127,
+        "evidence": []
+      },
+      {
+        "term": "double income",
+        "score": 2.7313,
+        "evidence": []
+      },
+      {
+        "term": "credit score",
+        "score": 2.6843,
+        "evidence": []
+      },
+      {
+        "term": "debt credit",
+        "score": 2.3919,
+        "evidence": []
+      },
+      {
+        "term": "decision tables",
+        "score": 2.3133,
+        "evidence": []
+      },
+      {
+        "term": "household prior",
+        "score": 2.2093,
+        "evidence": []
+      },
+      {
+        "term": "true",
+        "score": 1.9847,
+        "evidence": []
+      }
+    ],
+    "sec-002-3-discussion-conclusion": [
+      {
+        "term": "fit theory",
+        "score": 1.1687,
+        "evidence": []
+      },
+      {
+        "term": "cognitive fit",
+        "score": 1.1252,
+        "evidence": []
+      },
+      {
+        "term": "frugal",
+        "score": 0.9486,
+        "evidence": []
+      },
+      {
+        "term": "decision model",
+        "score": 0.8812,
+        "evidence": []
+      }
+    ],
+    "sec-003-references": [
+      {
+        "term": "cognitive fit",
+        "score": 1.1252,
+        "evidence": []
+      },
+      {
+        "term": "vessey",
+        "score": 1.1216,
+        "evidence": []
+      },
+      {
+        "term": "information systems",
+        "score": 1.0256,
+        "evidence": []
+      },
+      {
+        "term": "problem solving",
+        "score": 0.9941,
+        "evidence": []
+      },
+      {
+        "term": "decision model",
+        "score": 0.9628,
+        "evidence": []
+      },
+      {
+        "term": "representation features",
+        "score": 0.8527,
+        "evidence": []
+      }
+    ],
+    "sec-front-matter": [
+      {
+        "term": "decision models",
+        "score": 1.4864,
+        "evidence": []
+      },
+      {
+        "term": "representation features",
+        "score": 0.9672,
+        "evidence": []
+      },
+      {
+        "term": "versus",
+        "score": 0.8174,
+        "evidence": []
+      },
+      {
+        "term": "cognitive",
+        "score": 0.6918,
+        "evidence": []
+      },
+      {
+        "term": "information systems",
+        "score": 0.6699,
+        "evidence": []
+      },
+      {
+        "term": "color",
+        "score": 0.6531,
+        "evidence": []
+      }
+    ]
+  }
+}

@@ -3,69 +3,69 @@
   "entry": "dusengumuremyi-2026-ai-mediated-raci",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "al-mediated raci",
-      "score": 13.8499,
+      "score": 13.8769,
       "evidence": []
     },
     {
       "term": "mediated raci",
-      "score": 12.2448,
+      "score": 12.1836,
       "evidence": []
     },
     {
       "term": "ai-mediated raci",
-      "score": 12.0684,
+      "score": 12.0906,
       "evidence": []
     },
     {
       "term": "human-mediated raci",
-      "score": 12.0138,
+      "score": 12.0357,
       "evidence": []
     },
     {
       "term": "raci matrix",
-      "score": 11.843,
+      "score": 11.8983,
       "evidence": []
     },
     {
       "term": "real-time operational",
-      "score": 11.4093,
+      "score": 11.065,
       "evidence": []
     },
     {
       "term": "error-free sensemaking",
-      "score": 10.5055,
+      "score": 10.529,
       "evidence": []
     },
     {
       "term": "raci framework",
-      "score": 10.1452,
-      "evidence": []
-    },
-    {
-      "term": "organisational defensibility",
-      "score": 10.0494,
+      "score": 10.1786,
       "evidence": []
     },
     {
       "term": "organizational defensibility",
-      "score": 9.934,
+      "score": 9.8702,
+      "evidence": []
+    },
+    {
+      "term": "organisational defensibility",
+      "score": 9.7705,
       "evidence": []
     },
     {
       "term": "dusengumuremyi anathole",
-      "score": 9.4074,
+      "score": 9.4259,
       "evidence": []
     },
     {
       "term": "operational efficiency",
-      "score": 9.3618,
+      "score": 8.8975,
       "evidence": []
     }
   ],
@@ -73,252 +73,252 @@
     "page-001": [
       {
         "term": "ai-mediated raci",
-        "score": 3.2538,
+        "score": 3.2594,
         "evidence": []
       },
       {
         "term": "al-mediated raci",
-        "score": 3.1814,
-        "evidence": []
-      },
-      {
-        "term": "real-time operational",
-        "score": 3.0179,
+        "score": 3.1876,
         "evidence": []
       },
       {
         "term": "error-free sensemaking",
-        "score": 2.9851,
+        "score": 2.9918,
+        "evidence": []
+      },
+      {
+        "term": "real-time operational",
+        "score": 2.9244,
         "evidence": []
       },
       {
         "term": "human-mediated raci",
-        "score": 2.8305,
+        "score": 2.8355,
         "evidence": []
       },
       {
         "term": "raci matrix",
-        "score": 2.6524,
+        "score": 2.666,
         "evidence": []
       },
       {
         "term": "organisational defensibility",
-        "score": 2.6382,
+        "score": 2.5429,
         "evidence": []
       },
       {
         "term": "operational losses",
-        "score": 2.6164,
+        "score": 2.5374,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "mediated raci",
-        "score": 2.579,
+        "score": 2.5621,
         "evidence": []
       },
       {
         "term": "raci matrix",
-        "score": 2.4453,
-        "evidence": []
-      },
-      {
-        "term": "real-time operational",
-        "score": 2.3197,
+        "score": 2.458,
         "evidence": []
       },
       {
         "term": "error-free sensemaking",
-        "score": 2.3018,
+        "score": 2.307,
+        "evidence": []
+      },
+      {
+        "term": "real-time operational",
+        "score": 2.2511,
         "evidence": []
       },
       {
         "term": "organizational defensibility",
-        "score": 1.9566,
+        "score": 1.94,
         "evidence": []
       },
       {
         "term": "operational efficiency",
-        "score": 1.834,
+        "score": 1.743,
         "evidence": []
       },
       {
         "term": "international business",
-        "score": 1.4003,
+        "score": 1.3972,
         "evidence": []
       },
       {
-        "term": "management effectiveness",
-        "score": 1.2596,
+        "term": "project management",
+        "score": 1.2196,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "al-mediated raci",
-        "score": 3.2498,
+        "score": 3.2561,
         "evidence": []
       },
       {
         "term": "organizational defensibility",
-        "score": 1.7753,
+        "score": 1.7626,
         "evidence": []
       },
       {
         "term": "operational efficiency",
-        "score": 1.5676,
+        "score": 1.4892,
         "evidence": []
       },
       {
         "term": "vulnerability gates",
-        "score": 1.3418,
+        "score": 1.3335,
         "evidence": []
       },
       {
         "term": "african",
-        "score": 1.2035,
+        "score": 1.1572,
         "evidence": []
       },
       {
         "term": "real-time",
-        "score": 1.1142,
+        "score": 1.1051,
         "evidence": []
       },
       {
         "term": "sensemaking",
-        "score": 1.0884,
+        "score": 1.0906,
         "evidence": []
       },
       {
         "term": "human-mediated",
-        "score": 0.944,
+        "score": 0.9452,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "al-mediated raci",
-        "score": 2.2935,
+        "score": 2.298,
         "evidence": []
       },
       {
         "term": "real-time operational",
-        "score": 1.7759,
+        "score": 1.731,
         "evidence": []
       },
       {
         "term": "defensibility",
-        "score": 1.3998,
+        "score": 1.4027,
         "evidence": []
       },
       {
         "term": "operational efficiency",
-        "score": 1.2599,
+        "score": 1.1982,
         "evidence": []
       },
       {
         "term": "phase",
-        "score": 1.1991,
+        "score": 1.1153,
         "evidence": []
       },
       {
         "term": "dispute",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "decision-to-action",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "ex-ante",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "al-mediated raci",
-        "score": 2.2935,
+        "score": 2.298,
         "evidence": []
       },
       {
         "term": "raci matrix",
-        "score": 2.0696,
+        "score": 2.0809,
         "evidence": []
       },
       {
         "term": "sub-saharan africa",
-        "score": 1.85,
+        "score": 1.8526,
         "evidence": []
       },
       {
         "term": "anathole",
-        "score": 1.3903,
+        "score": 1.3933,
         "evidence": []
       },
       {
         "term": "secondary sources",
-        "score": 1.2842,
+        "score": 1.2711,
         "evidence": []
       },
       {
         "term": "future research",
-        "score": 1.2415,
+        "score": 1.1633,
         "evidence": []
       },
       {
         "term": "international business",
-        "score": 1.1097,
+        "score": 1.1072,
         "evidence": []
       },
       {
-        "term": "management effectiveness",
-        "score": 1.028,
+        "term": "ali-mediated",
+        "score": 1.0081,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "international business",
-        "score": 2.0288,
-        "evidence": []
-      },
-      {
-        "term": "project management",
-        "score": 1.4626,
+        "score": 2.0245,
         "evidence": []
       },
       {
         "term": "business studies",
-        "score": 1.4523,
+        "score": 1.4607,
+        "evidence": []
+      },
+      {
+        "term": "project management",
+        "score": 1.4239,
         "evidence": []
       },
       {
         "term": "anathole",
-        "score": 1.2488,
+        "score": 1.2515,
+        "evidence": []
+      },
+      {
+        "term": "russia",
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "sage",
-        "score": 1.0074,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "journal",
-        "score": 0.926,
+        "score": 0.9208,
         "evidence": []
       },
       {
         "term": "dusengumuremyi",
-        "score": 0.9081,
-        "evidence": []
-      },
-      {
-        "term": "author",
-        "score": 0.8633,
+        "score": 0.9095,
         "evidence": []
       }
     ]
