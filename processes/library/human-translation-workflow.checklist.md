@@ -18,13 +18,14 @@ The human half of translation: a coordinator assigns a locale to a qualified tra
 - Skill: `translation-manager`.
 - What: The coordinator selects: - Which content nodes need translation (block, section, chapter, or folio) - The target locale (one of the supportedLocales in <name>.config.json) - The priority and deadline
 - Record it: `workflow_complete` with `node: "Task_IdentifyContent"`.
-- next: → `Task_ExtractPOT` (Extract POT (translatable strings))
+- next: → `Task_ExtractPOT` (Extract the POT)
 
-### 2. Extract POT (translatable strings) (`Task_ExtractPOT`)
+### 2. Extract the POT (`Task_ExtractPOT`)
 
 - Who: the `Automated Pipeline` lane (role `build-pipeline`).
 - Skill: `translation-manager`.
-- What: Pre-processes source markdown: 1.
+- What: Scan the source content and write the translatable strings to .pot files at the configured granularity: segment prose by paragraph, shield what must not be translated (math, code, labels, Lean companions) as placeholders, normalise whitespace, and extract metadata such as titles, alt text and captio
+- Shared step `GT_ExtractPot`.
 - Record it: `workflow_complete` with `node: "Task_ExtractPOT"`.
 - next: → `Task_PrepareGlossary` (Prepare domain glossary)
 
@@ -81,7 +82,7 @@ The human half of translation: a coordinator assigns a locale to a qualified tra
 - Answered by the completeness check on the submitted PO file: are enough strings translated?
 - Call `workflow_complete` with `node: "Gateway_Complete"` and `outcome` set to the label that holds:
   - «Incomplete» → `Task_RequestMoreWork` (Request completion of remaining strings)
-  - «Complete» → `Task_InjectPO` (Inject PO → translated Markdown)
+  - «Complete» → `Task_InjectPO` (Inject the PO)
 
 ### 9. Request completion of remaining strings (`Task_RequestMoreWork`)
 
@@ -91,11 +92,12 @@ The human half of translation: a coordinator assigns a locale to a qualified tra
 - Record it: `workflow_complete` with `node: "Task_RequestMoreWork"`.
 - next: → `Task_TranslateInTool` (Translate strings in preferred tool)
 
-### 10. Inject PO → translated Markdown (`Task_InjectPO`)
+### 10. Inject the PO (`Task_InjectPO`)
 
 - Who: the `Automated Pipeline` lane (role `build-pipeline`).
 - Skill: `translation-manager`.
-- What: Post-processes the completed .po file: 1.
+- What: Read the .po file and the source .md, substitute msgstr for msgid, unshield the placeholders, and write the translated .md to translations/<locale>/.
+- Shared step `GT_InjectPo`.
 - Record it: `workflow_complete` with `node: "Task_InjectPO"`.
 - next: → `Task_RoundTripQA` (Round-trip translation QA)
 
@@ -103,7 +105,8 @@ The human half of translation: a coordinator assigns a locale to a qualified tra
 
 - Who: the `Automated Pipeline` lane (role `build-pipeline`).
 - Skill: `translation-manager`.
-- What: Bean: folio-assistant-ktt2 Back-translates target-language .md to source language and compares meaning.
+- What: Back-translate the target-language .md into the source language and compare the meaning with the original (bean folio-assistant-ktt2).
+- Shared step `GT_RoundTripQa`.
 - Record it: `workflow_complete` with `node: "Task_RoundTripQA"`.
 - next: → `Task_SMEReview` (Review translation for accuracy)
 
@@ -150,7 +153,8 @@ The human half of translation: a coordinator assigns a locale to a qualified tra
 
 - Who: the `Automated Pipeline` lane (role `build-pipeline`).
 - Skill: `translation-manager`.
-- What: Writes translations/<locale>/status.json with the official sign-off metadata and source hash for staleness detection.
+- What: Record the translation's standing in translations/<locale>/status.json.
+- Shared step `GT_WriteTranslationStatus`, with `official` = `true`.
 - Record it: `workflow_complete` with `node: "Task_WriteStatus"`.
 - next: → `End_OfficialTranslation` (Translation is official)
 
