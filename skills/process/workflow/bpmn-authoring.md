@@ -85,6 +85,13 @@ is not enabled**. That has consequences for how you author:
   namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#"
   location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld"
   importType="http://www.w3.org/ns/json-ld"/>`.
+- **A store is not a lane.** Lanes are for people and agents, the roles that
+  act. A place where things are kept, such as the work plan (beans), a corpus,
+  a session record, an activity log or a published bucket, is a
+  `<bpmn:dataStoreReference>`. The tasks that read or write it point at it
+  with data associations, and each task sits in the lane of whoever does it
+  (owner, 2026-11-01, Q-BR-3 A). A "Work plan — beans" lane holding "Open the
+  bean" says the store does the work, when the agent does.
 - **The process's own `bpmn:documentation` opens with what it is for.** Its
   first sentence is the diagram's row on the publication-workflow page.
   `kg-export` carries it on the `Process` node as `summary` (the whole text as
