@@ -143,7 +143,7 @@ cache the declaration">
       <bpmn:outgoing>Flow_9</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="Gateway_NextHeld_Join">
-      <bpmn:documentation>Joins the paths into Gateway_NextHeld, so that gateway only splits.</bpmn:documentation>
+      <bpmn:documentation>Brings the paths together before the decision after it, so that decision only splits.</bpmn:documentation>
       <bpmn:incoming>Flow_8</bpmn:incoming>
       <bpmn:incoming>Flow_11</bpmn:incoming>
       <bpmn:outgoing>Flow_Gateway_NextHeld_Join</bpmn:outgoing>
@@ -207,7 +207,7 @@ needs held here?">
       <bpmn:outgoing>Flow_17</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:exclusiveGateway id="Gateway_NextPart_Join">
-      <bpmn:documentation>Joins the paths into Gateway_NextPart, so that gateway only splits.</bpmn:documentation>
+      <bpmn:documentation>Brings the paths together before the decision after it, so that decision only splits.</bpmn:documentation>
       <bpmn:incoming>Flow_17</bpmn:incoming>
       <bpmn:incoming>Flow_19</bpmn:incoming>
       <bpmn:outgoing>Flow_Gateway_NextPart_Join</bpmn:outgoing>
@@ -232,7 +232,7 @@ or asset not yet walked?">
       <bpmn:outgoing>Flow_19</bpmn:outgoing>
     </bpmn:callActivity>
     <bpmn:exclusiveGateway id="Gateway_NextHarness_Join">
-      <bpmn:documentation>Joins the paths into Gateway_NextHarness, so that gateway only splits.</bpmn:documentation>
+      <bpmn:documentation>Brings the paths together before the decision after it, so that decision only splits.</bpmn:documentation>
       <bpmn:incoming>Flow_20</bpmn:incoming>
       <bpmn:incoming>Flow_22</bpmn:incoming>
       <bpmn:outgoing>Flow_Gateway_NextHarness_Join</bpmn:outgoing>

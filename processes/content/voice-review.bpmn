@@ -106,7 +106,7 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
     </bpmn:callActivity>
 
     <bpmn:exclusiveGateway id="GW_MoreVoices_Join">
-      <bpmn:documentation>Joins the paths into GW_MoreVoices, so that gateway only splits.</bpmn:documentation>
+      <bpmn:documentation>Brings the paths together before the decision after it, so that decision only splits.</bpmn:documentation>
     </bpmn:exclusiveGateway>
     <bpmn:exclusiveGateway id="GW_MoreVoices" name="Another active&#10;voice?">
       <bpmn:documentation>Is another active voice left to review? `yes` runs that voice's mechanical half; `no` records the results on the block's QA sidecar.</bpmn:documentation>

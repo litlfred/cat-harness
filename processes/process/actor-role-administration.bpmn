@@ -97,7 +97,7 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
     </bpmn:startEvent>
 
     <bpmn:exclusiveGateway id="Gateway_WhichChange_Join">
-      <bpmn:documentation>Joins the paths into Gateway_WhichChange, so that gateway only splits.</bpmn:documentation>
+      <bpmn:documentation>Brings the paths together before the decision after it, so that decision only splits.</bpmn:documentation>
       <bpmn:incoming>A01</bpmn:incoming>
       <bpmn:incoming>A13</bpmn:incoming>
       <bpmn:outgoing>Flow_Gateway_WhichChange_Join</bpmn:outgoing>
