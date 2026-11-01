@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: generated-file-drift\n"
-"POT-Creation-Date: 2026-11-01T10:29:43.889Z\n"
+"POT-Creation-Date: 2026-11-01T10:34:11.914Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -46,7 +46,7 @@ msgstr ""
 
 #: processes/sdlc/generated-file-drift.bpmn:32
 #. Diagram label
-msgid "Generated file to check"
+msgid "File to check"
 msgstr ""
 
 #: processes/sdlc/generated-file-drift.bpmn:50

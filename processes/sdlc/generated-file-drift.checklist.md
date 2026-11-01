@@ -6,7 +6,7 @@
 
 Check that a committed generated file still matches the source it is generated from.
 
-## Begin — Generated file to check (`Start_Change`)
+## Begin — File to check (`Start_Change`)
 
 - Begin here: A caller's job has started: on a pull request, a push to main, or a dispatch.
 - Call `workflow_start` with `process: "Process_GeneratedFileDrift"` and the subject this run is about; keep the instance id it returns.

@@ -29,11 +29,11 @@ Every drift check draws this same shape, so it is drawn once here (shared block 
         <bpmn:flowNodeRef>End_Drift</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="Start_Change" name="Generated file&#10;to check">
+    <bpmn:startEvent id="Start_Change" name="File to check">
       <bpmn:documentation>A caller's job has started: on a pull request, a push to main, or a dispatch.</bpmn:documentation>
       <bpmn:outgoing>Flow_GD_1</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Task_Check" name="Regenerate from&#10;the source and diff">
+    <bpmn:task id="Task_Check" name="Regenerate from the source and diff">
       <bpmn:documentation>Run the caller's generator with --check: regenerate the file from its source in memory and diff it against the committed copy. Several independent generators run in one job are still one step, because they have no order between them.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:no-skill reason="A mechanical actor runs this — GitHub Actions executes a command in a runner. There is no instruction body an agent could be handed, and a skill here would describe somebody else&apos;s behaviour."/>
@@ -41,7 +41,7 @@ Every drift check draws this same shape, so it is drawn once here (shared block 
       <bpmn:incoming>Flow_GD_1</bpmn:incoming>
       <bpmn:outgoing>Flow_GD_2</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:exclusiveGateway id="GW_Drift" name="Did anything&#10;change?">
+    <bpmn:exclusiveGateway id="GW_Drift" name="Did anything change?">
       <bpmn:documentation>Answered by the diff Task_Check takes. No difference ends clean; any difference ends the job red, because the committed file is stale against its source.</bpmn:documentation>
       <bpmn:incoming>Flow_GD_2</bpmn:incoming>
       <bpmn:outgoing>Flow_GD_3</bpmn:outgoing>
@@ -68,22 +68,22 @@ Every drift check draws this same shape, so it is drawn once here (shared block 
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Change" bpmnElement="Start_Change">
         <dc:Bounds x="150" y="182" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="128" y="222" width="80" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="108" y="222" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Check" bpmnElement="Task_Check">
         <dc:Bounds x="250" y="140" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Drift" bpmnElement="GW_Drift" isMarkerVisible="true">
         <dc:Bounds x="430" y="175" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="405" y="120" width="100" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="395" y="120" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Clean" bpmnElement="End_Clean">
         <dc:Bounds x="572" y="182" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="550" y="222" width="80" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="530" y="222" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Drift" bpmnElement="End_Drift">
         <dc:Bounds x="437" y="332" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="480" y="330" width="100" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="470" y="330" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_GD_1" bpmnElement="Flow_GD_1">
         <di:waypoint x="186" y="200"/>
