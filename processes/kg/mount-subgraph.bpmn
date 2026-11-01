@@ -148,114 +148,92 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
   <bpmndi:BPMNDiagram id="Diagram_MountSubgraph">
     <bpmndi:BPMNPlane id="Plane_MountSubgraph" bpmnElement="Process_MountSubgraph">
       <bpmndi:BPMNShape id="S_Lane_MountPipeline" bpmnElement="Lane_MountPipeline" isHorizontal="true">
-        <dc:Bounds x="160" y="60" width="1080" height="562" />
+        <dc:Bounds x="160" y="60" width="1080" height="560"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_SubgraphWanted" bpmnElement="Start_SubgraphWanted">
-        <dc:Bounds x="200" y="212" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="188.59" y="247.5" width="90" height="72" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="200" y="212" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="188.59" y="247.5" width="90" height="72" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_ResolveSource" bpmnElement="Task_ResolveSource">
-        <dc:Bounds x="300" y="170" width="120" height="120" />
+        <dc:Bounds x="280" y="190" width="160" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_SourceKind" bpmnElement="GW_SourceKind" isMarkerVisible="true">
-        <dc:Bounds x="480" y="205" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="460" y="259" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="480" y="205" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="412.01" y="270.5" width="90" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_UseCheckoutPath" bpmnElement="Task_UseCheckoutPath">
-        <dc:Bounds x="605" y="72" width="120" height="120" />
+        <dc:Bounds x="580" y="90" width="170" height="70"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_MountBranchTip" bpmnElement="Task_MountBranchTip">
-        <dc:Bounds x="605" y="170" width="120" height="120" />
+        <dc:Bounds x="580" y="195" width="170" height="70"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_MountRemotePin" bpmnElement="Task_MountRemotePin">
-        <dc:Bounds x="605" y="275" width="120" height="120" />
+        <dc:Bounds x="580" y="300" width="170" height="70"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RetrieveNpmPackage" bpmnElement="Task_RetrieveNpmPackage">
-        <dc:Bounds x="605" y="385" width="120" height="120" />
+        <dc:Bounds x="580" y="410" width="170" height="70"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RefuseUnknownKind" bpmnElement="Task_RefuseUnknownKind">
-        <dc:Bounds x="605" y="490" width="120" height="120" />
+        <dc:Bounds x="580" y="515" width="170" height="70"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_Join" bpmnElement="GW_Join" isMarkerVisible="true">
-        <dc:Bounds x="800" y="150" width="50" height="50" />
+        <dc:Bounds x="800" y="150" width="50" height="50"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_Mounted" bpmnElement="End_Mounted">
-        <dc:Bounds x="920" y="157" width="36" height="36" />
+        <dc:Bounds x="920" y="157" width="36" height="36"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_Refused" bpmnElement="End_Refused">
-        <dc:Bounds x="920" y="532" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="893" y="475" width="90" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="920" y="532" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="893" y="475" width="90" height="53" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="E_F_M1" bpmnElement="F_M1">
-        <di:waypoint x="236" y="230" />
-        <di:waypoint x="300" y="230" />
+        <di:waypoint x="236" y="230"/><di:waypoint x="280" y="230"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M2" bpmnElement="F_M2">
-        <di:waypoint x="420" y="230" />
-        <di:waypoint x="480" y="230" />
+        <di:waypoint x="440" y="230"/><di:waypoint x="480" y="230"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M3" bpmnElement="F_M3">
-        <di:waypoint x="530" y="230" />
-        <di:waypoint x="567.5" y="230" />
-        <di:waypoint x="567.5" y="132" />
-        <di:waypoint x="605" y="132" />
-        <bpmndi:BPMNLabel><dc:Bounds x="473.5" y="172" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="505" y="205"/><di:waypoint x="505" y="125"/><di:waypoint x="580" y="125"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="411" y="156" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M4" bpmnElement="F_M4">
-        <di:waypoint x="530" y="230" />
-        <di:waypoint x="605" y="230" />
+        <di:waypoint x="530" y="230"/><di:waypoint x="580" y="230"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M5" bpmnElement="F_M5">
-        <di:waypoint x="530" y="230" />
-        <di:waypoint x="567.5" y="230" />
-        <di:waypoint x="567.5" y="550" />
-        <di:waypoint x="605" y="550" />
-        <bpmndi:BPMNLabel><dc:Bounds x="473.5" y="372.5" width="90" height="35" /></bpmndi:BPMNLabel>
+        <di:waypoint x="505" y="255"/><di:waypoint x="505" y="550"/><di:waypoint x="580" y="550"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="411" y="385" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M6" bpmnElement="F_M6">
-        <di:waypoint x="725" y="132" />
-        <di:waypoint x="762.5" y="132" />
-        <di:waypoint x="762.5" y="175" />
-        <di:waypoint x="800" y="175" />
+        <di:waypoint x="750" y="125"/><di:waypoint x="825" y="125"/><di:waypoint x="825" y="150"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M7" bpmnElement="F_M7">
-        <di:waypoint x="725" y="230" />
-        <di:waypoint x="762.5" y="230" />
-        <di:waypoint x="762.5" y="175" />
-        <di:waypoint x="800" y="175" />
+        <di:waypoint x="750" y="230"/><di:waypoint x="825" y="230"/><di:waypoint x="825" y="200"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M8" bpmnElement="F_M8">
         <di:waypoint x="850" y="175"/><di:waypoint x="920" y="175"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M9" bpmnElement="F_M9">
-        <di:waypoint x="725" y="550" />
-        <di:waypoint x="920" y="550" />
+        <di:waypoint x="750" y="550"/><di:waypoint x="920" y="550"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M10" bpmnElement="F_M10">
         <di:waypoint x="530" y="230" />
-        <di:waypoint x="567.5" y="230" />
-        <di:waypoint x="567.5" y="335" />
-        <di:waypoint x="605" y="335" />
-        <bpmndi:BPMNLabel><dc:Bounds x="473.5" y="300.25" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="555" y="230" />
+        <di:waypoint x="555" y="335" />
+        <di:waypoint x="580" y="335" />
+        <bpmndi:BPMNLabel><dc:Bounds x="559" y="274" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M11" bpmnElement="F_M11">
-        <di:waypoint x="725" y="335" />
-        <di:waypoint x="762.5" y="335" />
-        <di:waypoint x="762.5" y="175" />
-        <di:waypoint x="800" y="175" />
+        <di:waypoint x="750" y="335"/><di:waypoint x="840" y="335"/><di:waypoint x="840" y="190"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M12" bpmnElement="F_M12">
         <di:waypoint x="530" y="230" />
-        <di:waypoint x="567.5" y="230" />
-        <di:waypoint x="567.5" y="445" />
-        <di:waypoint x="605" y="445" />
-        <bpmndi:BPMNLabel><dc:Bounds x="473.5" y="328.5" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="555" y="230" />
+        <di:waypoint x="555" y="445" />
+        <di:waypoint x="580" y="445" />
+        <bpmndi:BPMNLabel><dc:Bounds x="559" y="382.25" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M13" bpmnElement="F_M13">
-        <di:waypoint x="725" y="445" />
-        <di:waypoint x="762.5" y="445" />
-        <di:waypoint x="762.5" y="175" />
-        <di:waypoint x="800" y="175" />
+        <di:waypoint x="750" y="445"/><di:waypoint x="835" y="445"/><di:waypoint x="835" y="195"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

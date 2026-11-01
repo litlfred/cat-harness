@@ -159,109 +159,108 @@ CRITICAL INVARIANTS:
   <bpmndi:BPMNDiagram id="BPMNDiagram_Process_NQuadsDistribution">
     <bpmndi:BPMNPlane id="BPMNPlane_Process_NQuadsDistribution" bpmnElement="Collaboration_Process_NQuadsDistribution">
       <bpmndi:BPMNShape id="Participant_Process_NQuadsDistribution_di" bpmnElement="Participant_Process_NQuadsDistribution" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1508" height="482" />
+        <dc:Bounds x="160" y="80" width="1508" height="480" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Author_di" bpmnElement="Lane_Author" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1478" height="282" />
+        <dc:Bounds x="190" y="80" width="1478" height="280" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Ci_di" bpmnElement="Lane_Ci" isHorizontal="true">
-        <dc:Bounds x="190" y="362" width="1478" height="200" />
+        <dc:Bounds x="190" y="360" width="1478" height="200" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Start_Dataset_di" bpmnElement="Start_Dataset">
         <dc:Bounds x="232" y="162" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="221.92" y="221.5" width="90" height="71" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <bpmndi:BPMNLabel><dc:Bounds x="221.92" y="221.5" width="90" height="71" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="A_ExtractSkolemize_di" bpmnElement="A_ExtractSkolemize">
-        <dc:Bounds x="300" y="120" width="120" height="120" />
+        <dc:Bounds x="300" y="140" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="A_PartitionQuads_di" bpmnElement="A_PartitionQuads">
-        <dc:Bounds x="455" y="120" width="120" height="120" />
+        <dc:Bounds x="450" y="140" width="130" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="GW_PartitionBudget_di" bpmnElement="GW_PartitionBudget" isMarkerVisible="true">
         <dc:Bounds x="635" y="155" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="A_ReportBudgetExcess_di" bpmnElement="A_ReportBudgetExcess">
-        <dc:Bounds x="600" y="230" width="120" height="120" />
+        <dc:Bounds x="580" y="250" width="160" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_BudgetStopped_di" bpmnElement="End_BudgetStopped">
         <dc:Bounds x="792" y="272" width="36" height="36" />
         
       <bpmndi:BPMNLabel><dc:Bounds x="832" y="263" width="90" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="A_DeclareManifest_di" bpmnElement="A_DeclareManifest">
-        <dc:Bounds x="775" y="120" width="120" height="120" />
+        <dc:Bounds x="750" y="140" width="170" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="A_VerifyQueries_di" bpmnElement="A_VerifyQueries">
-        <dc:Bounds x="950" y="120" width="120" height="120" />
+        <dc:Bounds x="950" y="140" width="120" height="80" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="A_GateCheck_di" bpmnElement="A_GateCheck">
-        <dc:Bounds x="980" y="392" width="120" height="120" />
+        <dc:Bounds x="950" y="400" width="180" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="GW_CiGreen_di" bpmnElement="GW_CiGreen" isMarkerVisible="true">
-        <dc:Bounds x="1170" y="427" width="50" height="50" />
+        <dc:Bounds x="1170" y="425" width="50" height="50" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="1150" y="387" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="1150" y="385" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_CiFailed_di" bpmnElement="End_CiFailed">
-        <dc:Bounds x="1177" y="504" width="36" height="36" />
+        <dc:Bounds x="1177" y="502" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="1105" y="544" width="180" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="1217" y="502.5" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="A_DeployPages_di" bpmnElement="A_DeployPages">
-        <dc:Bounds x="1285" y="392" width="120" height="120" />
+        <dc:Bounds x="1260" y="399.5" width="170" height="101" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_Distributed_di" bpmnElement="End_Distributed">
-        <dc:Bounds x="1470" y="434" width="36" height="36" />
+        <dc:Bounds x="1470" y="432" width="36" height="36" />
       </bpmndi:BPMNShape>
 
       <!-- Edges -->
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
-        <di:waypoint x="268" y="180" />
-        <di:waypoint x="300" y="180" />
+        <di:waypoint x="268" y="180"/>
+        <di:waypoint x="300" y="180"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
-        <di:waypoint x="420" y="180" />
-        <di:waypoint x="455" y="180" />
+        <di:waypoint x="420" y="180"/>
+        <di:waypoint x="450" y="180"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
-        <di:waypoint x="575" y="180" />
+        <di:waypoint x="580" y="180" />
         <di:waypoint x="635" y="180" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_BudgetPass_di" bpmnElement="Flow_BudgetPass">
         <di:waypoint x="685" y="180" />
-        <di:waypoint x="775" y="180" />
-        <bpmndi:BPMNLabel><dc:Bounds x="685" y="141" width="90" height="36" /></bpmndi:BPMNLabel>
+        <di:waypoint x="750" y="180" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_BudgetFail_di" bpmnElement="Flow_BudgetFail">
         <di:waypoint x="660" y="205" />
         <di:waypoint x="660" y="250" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_StopBudget_di" bpmnElement="Flow_StopBudget">
-        <di:waypoint x="720" y="290" />
+        <di:waypoint x="740" y="290" />
         <di:waypoint x="792" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
-        <di:waypoint x="895" y="180" />
+        <di:waypoint x="920" y="180" />
         <di:waypoint x="950" y="180" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
         <di:waypoint x="1010" y="220" />
-        <di:waypoint x="1010" y="402" />
+        <di:waypoint x="1010" y="400" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
-        <di:waypoint x="1100" y="452" />
-        <di:waypoint x="1170" y="452" />
+        <di:waypoint x="1130" y="450" />
+        <di:waypoint x="1170" y="450" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_CiPass_di" bpmnElement="Flow_CiPass">
-        <di:waypoint x="1220" y="452" />
-        <di:waypoint x="1285" y="452" />
+        <di:waypoint x="1220" y="450" />
+        <di:waypoint x="1260" y="450" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_CiFail_di" bpmnElement="Flow_CiFail">
-        <di:waypoint x="1195" y="477" />
-        <di:waypoint x="1195" y="504" />
+        <di:waypoint x="1195" y="475" />
+        <di:waypoint x="1195" y="502" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
-        <di:waypoint x="1405" y="452" />
-        <di:waypoint x="1470" y="452" />
+        <di:waypoint x="1430" y="450" />
+        <di:waypoint x="1470" y="450" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

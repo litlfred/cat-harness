@@ -146,58 +146,54 @@ What could NOT be fixed by passing the codes as data, which was this bean's firs
   <bpmndi:BPMNDiagram id="BPMNDiagram_Adjudication">
     <bpmndi:BPMNPlane id="BPMNPlane_Adjudication" bpmnElement="Collab_Adjudication">
       <bpmndi:BPMNShape id="Shape_Participant_Adjudication" bpmnElement="Participant_Adjudication" isHorizontal="true">
-        <dc:Bounds x="160" y="60" width="820" height="520" />
+        <dc:Bounds x="160" y="60" width="820" height="520"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_FeedbackProvider" bpmnElement="Lane_FeedbackProvider" isHorizontal="true">
-        <dc:Bounds x="190" y="60" width="790" height="150" />
+        <dc:Bounds x="190" y="60" width="790" height="150"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Adjudicator" bpmnElement="Lane_Adjudicator" isHorizontal="true">
-        <dc:Bounds x="190" y="210" width="790" height="370" />
+        <dc:Bounds x="190" y="210" width="790" height="370"/>
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_Disagreement" bpmnElement="Start_Disagreement">
-        <dc:Bounds x="230" y="117" width="36" height="36" />
+        <dc:Bounds x="230" y="117" width="36" height="36"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_StateFinding" bpmnElement="A_StateFinding">
-        <dc:Bounds x="335" y="75" width="120" height="120" />
+        <dc:Bounds x="320" y="95" width="150" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Adjudicable" bpmnElement="GW_Adjudicable" isMarkerVisible="true">
-        <dc:Bounds x="370" y="250" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="276" y="248" width="90" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="370" y="250" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="276" y="248" width="90" height="54" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_NotAdjudicable" bpmnElement="End_NotAdjudicable">
-        <dc:Bounds x="377" y="480" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="417" y="444" width="90" height="108" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="377" y="480" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="417" y="444" width="90" height="108" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Dispatch" bpmnElement="A_Dispatch">
-        <dc:Bounds x="495" y="222" width="120" height="120" />
+        <dc:Bounds x="480" y="235" width="150" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Adjudicate" bpmnElement="A_Adjudicate">
-        <dc:Bounds x="695" y="222" width="120" height="120" />
+        <dc:Bounds x="680" y="235" width="150" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Adjudicated" bpmnElement="End_Adjudicated">
-        <dc:Bounds x="890" y="257" width="36" height="36" />
+        <dc:Bounds x="890" y="257" width="36" height="36"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_F_4" bpmnElement="F_4">
-        <di:waypoint x="815" y="282" />
-        <di:waypoint x="852.5" y="282" />
-        <di:waypoint x="852.5" y="275" />
-        <di:waypoint x="890" y="275" />
+        <di:waypoint x="830" y="275"/>
+        <di:waypoint x="890" y="275"/>
       </bpmndi:BPMNEdge>
 
       <bpmndi:BPMNEdge id="Edge_F_1" bpmnElement="F_1">
-        <di:waypoint x="266" y="135" />
-        <di:waypoint x="335" y="135" />
+        <di:waypoint x="266" y="135"/>
+        <di:waypoint x="320" y="135"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_2" bpmnElement="F_2">
-        <di:waypoint x="395" y="175" />
-        <di:waypoint x="395" y="250" />
+        <di:waypoint x="395" y="175"/>
+        <di:waypoint x="395" y="250"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_Adjudicable" bpmnElement="F_Adjudicable">
-        <di:waypoint x="420" y="275" />
-        <di:waypoint x="457.5" y="275" />
-        <di:waypoint x="457.5" y="282" />
-        <di:waypoint x="495" y="282" />
+        <di:waypoint x="420" y="275"/>
+        <di:waypoint x="480" y="275"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_NotAdjudicable" bpmnElement="F_NotAdjudicable">
         <di:waypoint x="395" y="300"/>
@@ -205,8 +201,8 @@ What could NOT be fixed by passing the codes as data, which was this bean's firs
         <bpmndi:BPMNLabel><dc:Bounds x="399" y="381" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_3" bpmnElement="F_3">
-        <di:waypoint x="615" y="282" />
-        <di:waypoint x="695" y="282" />
+        <di:waypoint x="630" y="275"/>
+        <di:waypoint x="680" y="275"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

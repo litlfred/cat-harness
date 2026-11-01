@@ -192,98 +192,92 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Start_WantCopy_di" bpmnElement="Start_WantCopy">
         <dc:Bounds x="210" y="522" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="191" y="557.5" width="90" height="71" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <bpmndi:BPMNLabel><dc:Bounds x="191" y="557.5" width="90" height="71" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ChooseAsset_di" bpmnElement="Task_ChooseAsset">
-        <dc:Bounds x="320" y="480" width="120" height="120" />
+        <dc:Bounds x="290" y="499" width="180" height="82" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ProbeWriteCapability_di" bpmnElement="Task_ProbeWriteCapability">
-        <dc:Bounds x="325" y="280" width="120" height="120" />
+        <dc:Bounds x="290" y="289.5" width="190" height="101" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="GW_CanWrite_di" bpmnElement="GW_CanWrite" isMarkerVisible="true">
         <dc:Bounds x="530" y="315" width="50" height="50" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="487.5" y="369" width="135" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="584" y="369" width="135" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_InspectReadOnly_di" bpmnElement="Task_InspectReadOnly">
-        <dc:Bounds x="665" y="480" width="120" height="120" />
+        <dc:Bounds x="630" y="480" width="190" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_ReadOnlyDegraded_di" bpmnElement="End_ReadOnlyDegraded">
         <dc:Bounds x="870" y="522" width="36" height="36" />
         
       <bpmndi:BPMNLabel><dc:Bounds x="910" y="495.5" width="90" height="89" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ReadUpstreamAsset_di" bpmnElement="Task_ReadUpstreamAsset">
-        <dc:Bounds x="665" y="90" width="120" height="120" />
+        <dc:Bounds x="630" y="99.5" width="190" height="101" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_CopyAndDeclareAsset_di" bpmnElement="Task_CopyAndDeclareAsset">
-        <dc:Bounds x="915" y="280" width="120" height="120" />
+        <dc:Bounds x="880" y="289.5" width="190" height="101" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_StampAssetSource_di" bpmnElement="Task_StampAssetSource">
-        <dc:Bounds x="1155" y="280" width="120" height="120" />
+        <dc:Bounds x="1120" y="299" width="190" height="82" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ValidateDeclaredAsset_di" bpmnElement="Task_ValidateDeclaredAsset">
-        <dc:Bounds x="1395" y="670" width="120" height="120" />
+        <dc:Bounds x="1360" y="670" width="190" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_WorkOnCopy_di" bpmnElement="Task_WorkOnCopy">
-        <dc:Bounds x="1625" y="480" width="120" height="120" />
+        <dc:Bounds x="1590" y="489.5" width="190" height="101" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_CopiedAndEditable_di" bpmnElement="End_CopiedAndEditable">
         <dc:Bounds x="1820" y="522" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1747" y="567.5" width="135" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_StartToChoose_di" bpmnElement="Flow_StartToChoose">
         <di:waypoint x="246" y="540" />
-        <di:waypoint x="320" y="540" />
+        <di:waypoint x="290" y="540" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_ChooseToProbe_di" bpmnElement="Flow_ChooseToProbe">
         <di:waypoint x="380" y="581" />
         <di:waypoint x="380" y="289.5" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_ProbeToGW_di" bpmnElement="Flow_ProbeToGW">
-        <di:waypoint x="445" y="340" />
+        <di:waypoint x="480" y="340" />
         <di:waypoint x="530" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_CanWriteNo_di" bpmnElement="Flow_CanWriteNo">
-        <di:waypoint x="580" y="340" />
-        <di:waypoint x="622.5" y="340" />
-        <di:waypoint x="622.5" y="540" />
-        <di:waypoint x="665" y="540" />
-        <bpmndi:BPMNLabel><dc:Bounds x="626.5" y="372" width="90" height="36" /></bpmndi:BPMNLabel>
+        <di:waypoint x="555" y="315" />
+        <di:waypoint x="555" y="540" />
+        <di:waypoint x="630" y="540" />
+        <bpmndi:BPMNLabel><dc:Bounds x="528.75" y="543" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_InspectToEnd_di" bpmnElement="Flow_InspectToEnd">
-        <di:waypoint x="785" y="540" />
+        <di:waypoint x="820" y="540" />
         <di:waypoint x="870" y="540" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_CanWriteYes_di" bpmnElement="Flow_CanWriteYes">
-        <di:waypoint x="580" y="340" />
-        <di:waypoint x="622.5" y="340" />
-        <di:waypoint x="622.5" y="150" />
-        <di:waypoint x="665" y="150" />
-        <bpmndi:BPMNLabel><dc:Bounds x="626.5" y="248" width="90" height="89" /></bpmndi:BPMNLabel>
+        <di:waypoint x="555" y="365" />
+        <di:waypoint x="555" y="150" />
+        <di:waypoint x="630" y="150" />
+        <bpmndi:BPMNLabel><dc:Bounds x="416" y="167.75" width="135" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_ReadToCopy_di" bpmnElement="Flow_ReadToCopy">
-        <di:waypoint x="785" y="150" />
-        <di:waypoint x="850" y="150" />
-        <di:waypoint x="850" y="340" />
-        <di:waypoint x="915" y="340" />
+        <di:waypoint x="820" y="150" />
+        <di:waypoint x="975" y="150" />
+        <di:waypoint x="975" y="390.5" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_CopyToStamp_di" bpmnElement="Flow_CopyToStamp">
-        <di:waypoint x="1035" y="340" />
-        <di:waypoint x="1155" y="340" />
+        <di:waypoint x="1070" y="340" />
+        <di:waypoint x="1120" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_StampToValidate_di" bpmnElement="Flow_StampToValidate">
-        <di:waypoint x="1275" y="340" />
-        <di:waypoint x="1335" y="340" />
-        <di:waypoint x="1335" y="730" />
-        <di:waypoint x="1395" y="730" />
+        <di:waypoint x="1215" y="381" />
+        <di:waypoint x="1215" y="730" />
+        <di:waypoint x="1360" y="730" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_ValidateToWork_di" bpmnElement="Flow_ValidateToWork">
-        <di:waypoint x="1515" y="730" />
-        <di:waypoint x="1570" y="730" />
-        <di:waypoint x="1570" y="540" />
-        <di:waypoint x="1625" y="540" />
+        <di:waypoint x="1550" y="730" />
+        <di:waypoint x="1685" y="730" />
+        <di:waypoint x="1685" y="590.5" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_WorkToEnd_di" bpmnElement="Flow_WorkToEnd">
-        <di:waypoint x="1745" y="540" />
+        <di:waypoint x="1780" y="540" />
         <di:waypoint x="1820" y="540" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
