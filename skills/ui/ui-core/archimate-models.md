@@ -113,29 +113,40 @@ The steps run in this order, all in the pipeline lane of process
 `archimate-publish`: `archimate-check`, then `archimate-metamodel --check`,
 then `archimate-pages`. A refused relationship goes back to the model's author.
 
-## FHIR actors come from the model, tagged by its authors
+## Actors come first; the model points at them
 
-smart-ra#166 D4. An IG whose systems are drawn in an ArchiMate model does not
-write its ActorDefinitions by hand. **A model author tags the box in Archi**
-with the property `fhir-actor`, whose value is the FSH instance id
-(`fhir-actor = FacilityRegistry`), and the Tool `archimate-actors` writes the
-ActorDefinition from it: the box's name, its documentation as the
-description, `system` or `person` from its type, and a `reference` to the
-box's IRI.
+smart-ra#166 D4, owner's choice of 2026-11-01. The SMART Guidelines order is
+fixed: a DAK's L2 generic personas become the IG's L3 FHIR ActorDefinitions,
+and the architecture realizes them (DPI-H RA §4.3.2). So **the ActorDefinitions
+are written in the IG, from the DAK personas, and the model only points at
+them.** A model author tags the box that realizes an actor in Archi with the
+property `fhir-actor`, whose value is the actor's canonical URL
+(`fhir-actor = http://smart.who.int/ra/ActorDefinition/FacilityRegistry`), the
+same way an element carries `skosConcept`.
 
-- Never decide which box is which actor from names. That is the model
-  authors' call, made in Archi.
-- An untagged box generates nothing. A box with no documentation gets no
-  description: copy the text into the box, do not invent one.
-- Retire a hand-written `actors.fsh` one actor at a time:
-  `bun run cat archimate:actors --instance . --model <id> --against input/fsh/actors/actors.fsh`
-  lists the actors still written by hand. Delete the file when the list is
-  empty, and run SUSHI before committing either file.
-- In CI: `--out <file> --check` fails when the generated file is stale.
+- Never generate an ActorDefinition, or any FSH, from the model. When the
+  model has a box with no actor, the actor is missing from the IG: add it there,
+  from the persona, then tag the box.
+- Never decide which box realizes which actor from names. That is the model
+  authors' call, made in Archi. A box may realize several actors (one tag each),
+  and an actor may be realized by several boxes.
+- A `#system` actor goes on an application or technology element (an
+  `ApplicationComponent`, an `ApplicationInterface`, a `Node`). A `#person`
+  actor goes on a `BusinessActor` or `BusinessRole`. Any other kind of element
+  cannot realize an actor.
+- Check the tags with the Tool `archimate-actors`:
+  `bun run cat archimate:actors --instance . --model <id>`. It fails on a value
+  that is not a canonical URL, a tag that names no ActorDefinition of the IG, an
+  element kind that cannot be an actor, and a type mismatch. It warns about each
+  ActorDefinition that no element realizes. With `--strict` that warning becomes
+  a failure. `--json` gives element → actors and actor → elements, for the
+  pages' back-links.
 
-A data object is tagged the same way: `logical-model = <canonical>` names the
-logical model that defines its fields (D5). Its class diagram will be generated
-from that logical model once the IG holds one, so tag it now and do not draw it.
+**Data objects follow the same rule (D5).** A data object points at an existing
+logical model with `logical-model = <canonical>`. Write the logical model in the
+IG first. Never derive a logical model from the model's boxes. The data
+object's class diagram will be generated from that logical model once the IG
+holds one, so tag the data object now and do not draw the diagram.
 
 ## Untangle every view you touch
 

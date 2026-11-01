@@ -2,8 +2,8 @@
   "$schema": "tool-definition/v1",
   "tool": {
     "id": "archimate-actors",
-    "title": "Generate FHIR ActorDefinitions from the boxes an ArchiMate model tags as actors",
-    "description": "For one model an instance's `cat-archimate.config.json` names: every element carrying the Archi property `fhir-actor` (its value the FSH instance id) becomes an ActorDefinition in FSH, with the element's name, its documentation as the description, `system` or `person` from its type, and a `reference` to the element's IRI. Which box is an actor is the model authors' call, made in Archi; nothing is guessed from names. `--out` writes the file, `--check` fails when the written file is stale, and `--against` lists the ActorDefinitions a hand-written FSH file still holds that no tagged element generates, so a hand-written `actors.fsh` is retired one actor at a time.",
+    "title": "Check that an ArchiMate model's fhir-actor tags point at the IG's FHIR ActorDefinitions",
+    "description": "Actors come first (owner, 2026-11-01, smart-ra#166 D4): the IG's ActorDefinitions are written from the DAK's personas, and an ArchiMate model only points at them. For one model an instance's `cat-archimate.config.json` names, this reads every element carrying the Archi property `fhir-actor`, whose value is an ActorDefinition's canonical URL, and the IG's ActorDefinitions: FSH `InstanceOf: ActorDefinition` under `input/fsh/`, and FHIR JSON under `fsh-generated/resources/` or `input/resources/`, each canonical being `<sushi-config canonical>/ActorDefinition/<id>` unless its `url` says otherwise. It fails on a value that is not a canonical URL, a tag that names no ActorDefinition, an element kind that cannot be an actor (a data object, a goal), and a type mismatch (a `#person` actor on an application or technology element, a `#system` actor on a business actor or role). It warns about each ActorDefinition no element realizes; `--strict` makes that a failure. `--json` prints element → actors and actor → elements, for page back-links. It never writes an ActorDefinition or any FSH, and never matches boxes to actors by name.",
     "install": {
       "none": true
     },
@@ -35,46 +35,46 @@
           }
         },
         {
-          "name": "out",
+          "name": "ig",
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "The FSH file to write, relative to the instance root; absent, the FSH is printed.",
+          "description": "The IG directory holding `sushi-config.yaml` and `input/fsh/`; absent, the instance root.",
           "required": false,
           "arg": {
-            "flag": "--out"
+            "flag": "--ig"
           }
         },
         {
-          "name": "check",
+          "name": "strict",
           "schema": {
             "$type": "Flag"
           },
-          "description": "With `--out`: write nothing, exit 1 when the file is not what the model generates.",
+          "description": "Fail, not only warn, when an ActorDefinition is realized by no element of the model.",
           "required": false,
           "arg": {
-            "flag": "--check"
+            "flag": "--strict"
           }
         },
         {
-          "name": "against",
+          "name": "json",
           "schema": {
-            "$type": "RepoPath"
+            "$type": "Flag"
           },
-          "description": "A hand-written FSH file: list its ActorDefinitions no tagged element generates yet. Never fails the run.",
+          "description": "Print the back-links as JSON (element → actors, actor → elements, problems, unrealized) instead of the report.",
           "required": false,
           "arg": {
-            "flag": "--against"
+            "flag": "--json"
           }
         }
       ],
       "outputs": [
         {
-          "name": "actors",
+          "name": "report",
           "schema": {
             "$type": "Text"
           },
-          "description": "The ActorDefinitions as FSH (stdout or `--out`), and the report."
+          "description": "The problems, the unrealized ActorDefinitions and a summary line; with `--json`, the back-links as JSON. Exit 1 on any problem, or on an unrealized actor under `--strict`."
         }
       ]
     },
@@ -82,9 +82,9 @@
       "archimate-models"
     ],
     "selection": {
-      "when": "In an IG whose systems are drawn in an ArchiMate model, instead of writing ActorDefinitions by hand: after the model authors tag boxes `fhir-actor` in Archi, and in CI with `--check`.",
-      "limits": "Reads one model per run. Only tagged elements; an element with no documentation gets no description rather than an invented one. A tag on an element that cannot be an actor (a data object, a goal) is reported and fails the run.",
-      "cost": "One parse of the model; milliseconds. No network, no JVM, no SUSHI."
+      "when": "In an IG whose systems are drawn in an ArchiMate model, after its ActorDefinitions are written from the DAK personas: when model authors tag boxes `fhir-actor` in Archi, in CI, and before generating pages that link boxes to actors.",
+      "limits": "Reads one model per run. Checks pointers only: it never creates an ActorDefinition, and an actor missing from the IG is added there, by hand, from its persona. Reads FSH by pattern, not with SUSHI, so an ActorDefinition made only through a RuleSet is not seen until its JSON is generated.",
+      "cost": "One parse of the model and of the IG's FSH; milliseconds. No network, no JVM, no SUSHI."
     },
     "requires": {
       "runtime": [
