@@ -180,12 +180,14 @@ Every instance reached ends in one of three states — mounted, missing, could-n
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_State" bpmnElement="GW_State" isMarkerVisible="true">
         <dc:Bounds x="1300" y="285" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1232.01" y="350.5" width="90" height="71" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_Mounted" bpmnElement="End_Mounted">
         <dc:Bounds x="1410" y="232" width="36" height="36"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_Reported" bpmnElement="End_Reported">
         <dc:Bounds x="1410" y="362" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1450" y="344" width="135" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="E_F_D1" bpmnElement="F_D1">
         <di:waypoint x="236" y="130"/><di:waypoint x="270" y="130"/>

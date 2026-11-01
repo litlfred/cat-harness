@@ -1,0 +1,276 @@
+{
+  "$schema": "folio-vector-figures/v1",
+  "doc_id": "arxiv-1511-04055v1",
+  "figures": [
+    {
+      "id": "vfig-p003",
+      "file": null,
+      "unrendered_reason": "no drawing component on this page contains a text line, so there is no labelled region to render -- the caption candidates are recorded and nothing is claimed about what the page draws",
+      "role": "undetermined",
+      "basis": {
+        "method": "assembly",
+        "by": {
+          "kind": "script",
+          "id": "cat-harness/scripts/pdf-vector-figures.py"
+        },
+        "page": 3
+      },
+      "page": 3,
+      "rotation": 0,
+      "captionLabels": [
+        "1"
+      ],
+      "region": null,
+      "assembly": {
+        "drawings": 1,
+        "background": 0,
+        "groups": [],
+        "boxes": [],
+        "unlabelledClosedShapes": 1,
+        "connectors": [],
+        "between": [],
+        "outside": 0
+      }
+    },
+    {
+      "id": "vfig-p006",
+      "file": null,
+      "unrendered_reason": "no drawing component on this page contains a text line, so there is no labelled region to render -- the caption candidates are recorded and nothing is claimed about what the page draws",
+      "role": "undetermined",
+      "basis": {
+        "method": "assembly",
+        "by": {
+          "kind": "script",
+          "id": "cat-harness/scripts/pdf-vector-figures.py"
+        },
+        "page": 6
+      },
+      "page": 6,
+      "rotation": 0,
+      "captionLabels": [
+        "3",
+        "4"
+      ],
+      "region": null,
+      "assembly": {
+        "drawings": 1,
+        "background": 0,
+        "groups": [],
+        "boxes": [],
+        "unlabelledClosedShapes": 1,
+        "connectors": [],
+        "between": [],
+        "outside": 0
+      }
+    },
+    {
+      "id": "vfig-p007",
+      "file": null,
+      "unrendered_reason": "no drawing component on this page contains a text line, so there is no labelled region to render -- the caption candidates are recorded and nothing is claimed about what the page draws",
+      "role": "undetermined",
+      "basis": {
+        "method": "assembly",
+        "by": {
+          "kind": "script",
+          "id": "cat-harness/scripts/pdf-vector-figures.py"
+        },
+        "page": 7
+      },
+      "page": 7,
+      "rotation": 0,
+      "captionLabels": [
+        "5"
+      ],
+      "region": null,
+      "assembly": {
+        "drawings": 1,
+        "background": 0,
+        "groups": [],
+        "boxes": [],
+        "unlabelledClosedShapes": 1,
+        "connectors": [],
+        "between": [],
+        "outside": 0
+      }
+    },
+    {
+      "id": "vfig-p009",
+      "file": "figures/vfig-p009.png",
+      "role": "decorative",
+      "basis": {
+        "method": "inspection",
+        "by": {
+          "kind": "agent",
+          "id": "antigravity",
+          "model": "gemini-2.5-pro"
+        },
+        "at": "2026-10-31",
+        "saw": "Vector-drawn legend table for Table 2 on page 9 showing colored rectangles, circles, diamonds, and triangles for Create/Move/Delete/Rename and Activity/Event/Gateway/Edge.",
+        "page": 9
+      },
+      "page": 9,
+      "rotation": 0,
+      "captionLabels": [
+        "6"
+      ],
+      "region": [
+        161.46,
+        166.08,
+        433.2,
+        216.6
+      ],
+      "assembly": {
+        "drawings": 13,
+        "background": 0,
+        "groups": [
+          {
+            "bbox": [
+              161.46,
+              166.08,
+              433.2,
+              216.6
+            ],
+            "drawings": 13,
+            "pageEdge": false,
+            "rendered": true,
+            "labels": [
+              "Operation",
+              "Color",
+              "Model element",
+              "Shape",
+              "Color shade",
+              "Create",
+              "Green",
+              "Activity",
+              "Rectangle",
+              "Bright",
+              "Move",
+              "Blue",
+              "Event",
+              "Circle",
+              "Very light",
+              "Delete",
+              "Red",
+              "Gateway",
+              "Diamond",
+              "Dark",
+              "(Re)name",
+              "Orange",
+              "Edge",
+              "Triangle",
+              "Light"
+            ]
+          }
+        ],
+        "boxes": [],
+        "unlabelledClosedShapes": 13,
+        "connectors": [],
+        "between": [],
+        "outside": 44
+      },
+      "narrative": [
+        {
+          "text": "Table 2 visual key on page 9: Default colors (Green=Create, Blue=Move, Red=Delete, Orange=Rename), shapes (Rectangle=Activity, Circle=Event, Diamond=Gateway, Triangle=Edge), and color shades (Bright, Very light, Dark, Light) of the PPMChart Analysis plug-in.",
+          "lang": "en",
+          "state": "draft",
+          "drafted_by": {
+            "kind": "agent",
+            "id": "antigravity",
+            "model": "gemini-2.5-pro"
+          },
+          "drafted_at": "2026-10-31"
+        }
+      ]
+    },
+    {
+      "id": "vfig-p011",
+      "file": null,
+      "unrendered_reason": "no drawing component on this page contains a text line, so there is no labelled region to render -- the caption candidates are recorded and nothing is claimed about what the page draws",
+      "role": "undetermined",
+      "basis": {
+        "method": "assembly",
+        "by": {
+          "kind": "script",
+          "id": "cat-harness/scripts/pdf-vector-figures.py"
+        },
+        "page": 11
+      },
+      "page": 11,
+      "rotation": 0,
+      "captionLabels": [
+        "7"
+      ],
+      "region": null,
+      "assembly": {
+        "drawings": 1,
+        "background": 0,
+        "groups": [],
+        "boxes": [],
+        "unlabelledClosedShapes": 1,
+        "connectors": [],
+        "between": [],
+        "outside": 0
+      }
+    },
+    {
+      "id": "vfig-p016",
+      "file": null,
+      "unrendered_reason": "no drawing component on this page contains a text line, so there is no labelled region to render -- the caption candidates are recorded and nothing is claimed about what the page draws",
+      "role": "undetermined",
+      "basis": {
+        "method": "assembly",
+        "by": {
+          "kind": "script",
+          "id": "cat-harness/scripts/pdf-vector-figures.py"
+        },
+        "page": 16
+      },
+      "page": 16,
+      "rotation": 0,
+      "captionLabels": [
+        "14"
+      ],
+      "region": null,
+      "assembly": {
+        "drawings": 1,
+        "background": 0,
+        "groups": [],
+        "boxes": [],
+        "unlabelledClosedShapes": 1,
+        "connectors": [],
+        "between": [],
+        "outside": 0
+      }
+    },
+    {
+      "id": "vfig-p024",
+      "file": null,
+      "unrendered_reason": "no drawing component on this page contains a text line, so there is no labelled region to render -- the caption candidates are recorded and nothing is claimed about what the page draws",
+      "role": "undetermined",
+      "basis": {
+        "method": "assembly",
+        "by": {
+          "kind": "script",
+          "id": "cat-harness/scripts/pdf-vector-figures.py"
+        },
+        "page": 24
+      },
+      "page": 24,
+      "rotation": 0,
+      "captionLabels": [
+        "17"
+      ],
+      "region": null,
+      "assembly": {
+        "drawings": 1,
+        "background": 0,
+        "groups": [],
+        "boxes": [],
+        "unlabelledClosedShapes": 1,
+        "connectors": [],
+        "between": [],
+        "outside": 0
+      }
+    }
+  ]
+}

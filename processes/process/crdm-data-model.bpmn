@@ -129,13 +129,14 @@
         <dc:Bounds x="550" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_BA_ConfirmEntities" bpmnElement="BA_ConfirmEntities">
-        <dc:Bounds x="750" y="125" width="140" height="80" />
+        <dc:Bounds x="730" y="125" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_S_ConfirmCardinality" bpmnElement="S_ConfirmCardinality">
         <dc:Bounds x="950" y="465" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Model" bpmnElement="GW_Model" isMarkerVisible="true">
         <dc:Bounds x="1170" y="310" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="941" y="252" width="225" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Declare" bpmnElement="A_Declare">
         <dc:Bounds x="1300" y="295" width="140" height="80" />
@@ -155,12 +156,12 @@
         <di:waypoint x="690" y="335" />
         <di:waypoint x="720" y="335" />
         <di:waypoint x="720" y="165" />
-        <di:waypoint x="750" y="165" />
+        <di:waypoint x="730" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_DataModel_4" bpmnElement="SF_Process_CRDM_DataModel_4">
-        <di:waypoint x="890" y="165" />
-        <di:waypoint x="920" y="165" />
-        <di:waypoint x="920" y="505" />
+        <di:waypoint x="910" y="165" />
+        <di:waypoint x="940" y="165" />
+        <di:waypoint x="940" y="505" />
         <di:waypoint x="950" y="505" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_DataModel_5" bpmnElement="SF_Process_CRDM_DataModel_5">
@@ -174,6 +175,7 @@
         <di:waypoint x="1195" y="610" />
         <di:waypoint x="420" y="610" />
         <di:waypoint x="420" y="375" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1199" y="539" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_DataModel_7" bpmnElement="SF_Process_CRDM_DataModel_7">
         <di:waypoint x="1220" y="335" />

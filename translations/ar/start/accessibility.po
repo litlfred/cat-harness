@@ -25,10 +25,6 @@ msgstr ""
 msgid "Accessibility"
 msgstr "إمكانية الوصول"
 
-#: docs/start/accessibility.md:12
-msgid "Two questions were asked on issue #232, and this page answers them:"
-msgstr "طُرح سؤالان في المسألة رقم 232، وتجيب هذه الصفحة عنهما:"
-
 #: docs/start/accessibility.md:16
 msgid "What are the options for disability support here, and what is best practice?"
 msgstr "ما خيارات دعم ذوي الإعاقة هنا، وما هي أفضل الممارسات؟"
@@ -36,10 +32,6 @@ msgstr "ما خيارات دعم ذوي الإعاقة هنا، وما هي أف
 #: docs/start/accessibility.md:17
 msgid "What are the options for forcing agentic Q&A into guided questions that follow DMN logic and can serve several interaction modalities?"
 msgstr "ما خيارات إلزام الأسئلة والأجوبة الخاصة بالوكيل بنمط أسئلة موجّهة تتبع منطق DMN ويمكنها خدمة عدة أنماط تفاعل؟"
-
-#: docs/start/accessibility.md:20
-msgid "They turn out to be the same question asked from two ends, which is why they share a page. The implementing skill is ."
-msgstr "وتبين أنهما السؤال نفسه مطروحاً من طرفين مختلفين، ولهذا السبب يشتركان في صفحة واحدة. المهارة المنفّذة لذلك هي ."
 
 #: docs/start/accessibility.md:29
 msgid "1. The failure this is about"
@@ -285,10 +277,6 @@ msgstr "أين"
 msgid "Agent-facing preferences, committed, read at session start"
 msgstr "تفضيلات موجهة للوكيل، محفوظة في المستودع، وتُقرأ عند بدء الجلسة"
 
-#: docs/start/accessibility.md:123
-msgid ", surfaced by"
-msgstr "، وتُوفَّر عبر"
-
 #: docs/start/accessibility.md:124
 msgid "The rules an agent follows when asking"
 msgstr "القواعد التي يتبعها الوكيل عند طرح الأسئلة"
@@ -304,14 +292,6 @@ msgstr "رمز الترس في رأس الشريط الجانبي — نص أك�
 #: docs/start/accessibility.md:126
 msgid "Reduced motion honoured without being asked"
 msgstr "مراعاة تقليل الحركة دون الحاجة لطلب ذلك"
-
-#: docs/start/accessibility.md:126
-msgid "media query, and it seeds the panel's default"
-msgstr "استعلام الوسائط ، وهو الذي يُعيّن القيمة الافتراضية للوحة"
-
-#: docs/start/accessibility.md:128
-msgid "The two preference stores are deliberately separate.  is committed, agent-facing, and about the conversation. The site control is per-viewer , never leaves the browser, and is about reading. A reader who is not the author choosing large type must not silently reconfigure how an agent talks to the author."
-msgstr "مخزنا التفضيلات منفصلان عن قصد. ملف  محفوظ في المستودع، وموجّه للوكيل، ويتعلق بالمحادثة. أما عناصر التحكم في الموقع فهي مخزنة في  لكل قارئ، ولا تغادر المتصفح أبداً، وتتعلق بالقراءة. ولا ينبغي لقارئ غير المؤلف يختار خطاً كبيراً أن يعيد تكوين الطريقة التي يتحدث بها الوكيل مع المؤلف دون علمه."
 
 #: docs/start/accessibility.md:134
 msgid "2.7 What is not done"
@@ -349,10 +329,6 @@ msgstr "السؤال الثاني. الإجابة تكمن في الفصل، و�
 msgid "3.1 Two things that look like one"
 msgstr "3.1 أمران يبدوان كأمر واحد"
 
-#: docs/start/accessibility.md:156
-msgid "What to ask next is a decision. Inputs are the facts known so far; output is the id of the next question, or  when enough is known. It belongs in a DMN table, is reviewable by whoever owns the process, and is identical for every user."
-msgstr "ما يجب سؤاله بعد ذلك هو قرار. المدخلات هي الحقائق المعروفة حتى الآن؛ والمخرجات هي معرّف السؤال التالي، أو  عندما تتوفر معرفة كافية. هذا القرار مكانه في جدول DMN، ويمكن مراجعته من قبل أي شخص يملك العملية، وهو متطابق لكل مستخدم."
-
 #: docs/start/accessibility.md:161
 msgid "How to render the question is the modality. A numbered list in chat; spoken alternatives, one at a time, over audio; large-type radio buttons on a web page. The decision table never learns about any of this."
 msgstr "كيفية عرض السؤال هي طريقة التفاعل. قائمة مرقمة في الدردشة؛ بدائل منطوقة، واحداً تلو الآخر، عبر الصوت؛ أزرار اختيار بخط كبير على صفحة ويب. لا يعلم جدول القرارات أي شيء عن كل هذا على الإطلاق."
@@ -368,14 +344,6 @@ msgstr "3.2 أربع خصائص يوفّرها هذا النهج"
 #: docs/start/accessibility.md:176
 msgid "The question set is finite and reviewable. You can read the table and know every question the agent is able to ask. An improvising agent offers no such guarantee, and cannot be reviewed before it meets a user."
 msgstr "مجموعة الأسئلة محدودة وقابلة للمراجعة. يمكنك قراءة الجدول ومعرفة كل سؤال يستطيع الوكيل طرحه. أما الوكيل الذي يرتجل فلا يقدّم أي ضمان من هذا القبيل، ولا يمكن مراجعته قبل أن يلتقي بمستخدم."
-
-#: docs/start/accessibility.md:179
-msgid "It terminates. A table whose output can be  has a stopping condition."
-msgstr "العملية تنتهي حتماً. الجدول الذي يمكن أن تكون مخرجاته  يمتلك شرط توقف."
-
-#: docs/start/accessibility.md:181
-msgid "Asking becomes obligatory rather than optional. This is the trick  already uses:  is an outcome of the table, so the agent cannot route past it. An agent that decides for itself whether to ask will, under any pressure to seem helpful, decide not to."
-msgstr "يصبح طرح السؤال إلزامياً وليس اختيارياً. هذه هي الحيلة التي يستخدمها  بالفعل:  هو مخرج من مخرجات الجدول، لذا لا يمكن للوكيل تجاوزه. والوكيل الذي يقرر بنفسه ما إذا كان سيطرح سؤالاً أم لا، سيقرر عدم السؤال تحت أي ضغط يبدو فيه وكأنه يساعد المستخدم."
 
 #: docs/start/accessibility.md:186
 msgid "A skipped question is auditable. The facts are recorded; replay the table and see which rule fired."
@@ -406,20 +374,12 @@ msgid "A — decision-per-gateway (built)"
 msgstr "أ — قرار لكل بوابة (decision-per-gateway) (مُنفَّذ)"
 
 #: docs/start/accessibility.md:195
-msgid "each ambiguous branch point in a BPMN carries ; the table returns the branch,  included"
-msgstr "تحمل كل نقطة تفرع غامضة في BPMN السمة ؛ ويعيد الجدول الفرع المطلوب، بما في ذلك"
-
-#: docs/start/accessibility.md:195
 msgid "no interview state machine — the process is the state. Cannot express \"ask these four in any order\""
 msgstr "لا توجد آلة حالة للمقابلة — فالـ عملية نفسها هي الحالة. ولا يمكن التعبير عن \"اطرح هذه الأسئلة الأربعة بأي ترتيب\""
 
 #: docs/start/accessibility.md:196
 msgid "B — a question set behind one gateway"
 msgstr "ب — مجموعة أسئلة خلف بوابة واحدة"
-
-#: docs/start/accessibility.md:196
-msgid "a  looping until it returns ; answers accumulate as facts"
-msgstr "تكرار حلقة  حتى تعيد ؛ وتتراكم الإجابات كحقائق"
 
 #: docs/start/accessibility.md:196
 msgid "one more table and a fact store; the loop is the process's own, so nothing new executes"
@@ -453,10 +413,6 @@ msgstr "عمل برمجي حقيقي على المحرك، مع ضرورة تو�
 msgid "3.4 Limits, stated plainly"
 msgstr "3.4 القيود، موضحة بصراحة"
 
-#: docs/start/accessibility.md:202
-msgid "The FEEL subset is small.  implements equality, comparison and one-of. Ranges,  and function calls are refused rather than silently mis-evaluated — a table that returns an answer and is not the table on the page is worse than one that throws."
-msgstr "المجموعة الفرعية المدعومة من FEEL صغيرة. ينفّذ  عمليات المساواة، والمقارنة، وواحداً من متعدد (one-of). أما النطاقات (ranges)، و، واستدعاءات الدوال، فإنه يتم رفضها بدلاً من تقييمها بشكل خاطئ بصمت — إذ إن جدولاً يعيد إجابة لا تطابق ما هو مكتوب على الصفحة أسوأ من جدول يرمي خطأً."
-
 #: docs/start/accessibility.md:206
 msgid "An open question is not a decision. \"What is this paper about?\" does not belong in a table, and forcing it there produces a worse interview."
 msgstr "السؤال المفتوح ليس قراراً. سؤال مثل \"عما تدور هذه الورقة البحثية؟\" ليس مكانه في جدول، وحشره هناك ينتج عنه مقابلة أسوأ."
@@ -473,18 +429,47 @@ msgstr "الإرشاد لا يعني الاستجواب. أكبر مكسب لإ�
 msgid "See also"
 msgstr "انظر أيضاً"
 
-#: docs/start/accessibility.md:218
-msgid "Getting started — the intent decision table in use"
-msgstr "البدء — جدول قرارات النية قيد الاستخدام"
+#~ msgid "Two questions were asked on issue #232, and this page answers them:"
+#~ msgstr "طُرح سؤالان في المسألة رقم 232، وتجيب هذه الصفحة عنهما:"
 
-#: docs/start/accessibility.md:219
-msgid "skill"
-msgstr "مهارة"
+#~ msgid "They turn out to be the same question asked from two ends, which is why they share a page. The implementing skill is ."
+#~ msgstr "وتبين أنهما السؤال نفسه مطروحاً من طرفين مختلفين، ولهذا السبب يشتركان في صفحة واحدة. المهارة المنفّذة لذلك هي ."
 
-#: docs/start/accessibility.md:220
-msgid "Publication workflow — every process in the repo"
-msgstr "سير عمل النشر — كل عملية في المستودع"
+#~ msgid ", surfaced by"
+#~ msgstr "، وتُوفَّر عبر"
 
-#: docs/start/accessibility.md:221
-msgid "Options for workflow state in beans"
-msgstr "خيارات حالة سير العمل في beans"
+#~ msgid "media query, and it seeds the panel's default"
+#~ msgstr "استعلام الوسائط ، وهو الذي يُعيّن القيمة الافتراضية للوحة"
+
+#~ msgid "The two preference stores are deliberately separate.  is committed, agent-facing, and about the conversation. The site control is per-viewer , never leaves the browser, and is about reading. A reader who is not the author choosing large type must not silently reconfigure how an agent talks to the author."
+#~ msgstr "مخزنا التفضيلات منفصلان عن قصد. ملف  محفوظ في المستودع، وموجّه للوكيل، ويتعلق بالمحادثة. أما عناصر التحكم في الموقع فهي مخزنة في  لكل قارئ، ولا تغادر المتصفح أبداً، وتتعلق بالقراءة. ولا ينبغي لقارئ غير المؤلف يختار خطاً كبيراً أن يعيد تكوين الطريقة التي يتحدث بها الوكيل مع المؤلف دون علمه."
+
+#~ msgid "What to ask next is a decision. Inputs are the facts known so far; output is the id of the next question, or  when enough is known. It belongs in a DMN table, is reviewable by whoever owns the process, and is identical for every user."
+#~ msgstr "ما يجب سؤاله بعد ذلك هو قرار. المدخلات هي الحقائق المعروفة حتى الآن؛ والمخرجات هي معرّف السؤال التالي، أو  عندما تتوفر معرفة كافية. هذا القرار مكانه في جدول DMN، ويمكن مراجعته من قبل أي شخص يملك العملية، وهو متطابق لكل مستخدم."
+
+#~ msgid "It terminates. A table whose output can be  has a stopping condition."
+#~ msgstr "العملية تنتهي حتماً. الجدول الذي يمكن أن تكون مخرجاته  يمتلك شرط توقف."
+
+#~ msgid "Asking becomes obligatory rather than optional. This is the trick  already uses:  is an outcome of the table, so the agent cannot route past it. An agent that decides for itself whether to ask will, under any pressure to seem helpful, decide not to."
+#~ msgstr "يصبح طرح السؤال إلزامياً وليس اختيارياً. هذه هي الحيلة التي يستخدمها  بالفعل:  هو مخرج من مخرجات الجدول، لذا لا يمكن للوكيل تجاوزه. والوكيل الذي يقرر بنفسه ما إذا كان سيطرح سؤالاً أم لا، سيقرر عدم السؤال تحت أي ضغط يبدو فيه وكأنه يساعد المستخدم."
+
+#~ msgid "each ambiguous branch point in a BPMN carries ; the table returns the branch,  included"
+#~ msgstr "تحمل كل نقطة تفرع غامضة في BPMN السمة ؛ ويعيد الجدول الفرع المطلوب، بما في ذلك"
+
+#~ msgid "a  looping until it returns ; answers accumulate as facts"
+#~ msgstr "تكرار حلقة  حتى تعيد ؛ وتتراكم الإجابات كحقائق"
+
+#~ msgid "The FEEL subset is small.  implements equality, comparison and one-of. Ranges,  and function calls are refused rather than silently mis-evaluated — a table that returns an answer and is not the table on the page is worse than one that throws."
+#~ msgstr "المجموعة الفرعية المدعومة من FEEL صغيرة. ينفّذ  عمليات المساواة، والمقارنة، وواحداً من متعدد (one-of). أما النطاقات (ranges)، و، واستدعاءات الدوال، فإنه يتم رفضها بدلاً من تقييمها بشكل خاطئ بصمت — إذ إن جدولاً يعيد إجابة لا تطابق ما هو مكتوب على الصفحة أسوأ من جدول يرمي خطأً."
+
+#~ msgid "Getting started — the intent decision table in use"
+#~ msgstr "البدء — جدول قرارات النية قيد الاستخدام"
+
+#~ msgid "skill"
+#~ msgstr "مهارة"
+
+#~ msgid "Publication workflow — every process in the repo"
+#~ msgstr "سير عمل النشر — كل عملية في المستودع"
+
+#~ msgid "Options for workflow state in beans"
+#~ msgstr "خيارات حالة سير العمل في beans"

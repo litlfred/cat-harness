@@ -152,12 +152,14 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_SubgraphWanted" bpmnElement="Start_SubgraphWanted">
         <dc:Bounds x="200" y="212" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="188.59" y="247.5" width="90" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_ResolveSource" bpmnElement="Task_ResolveSource">
         <dc:Bounds x="280" y="190" width="160" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_SourceKind" bpmnElement="GW_SourceKind" isMarkerVisible="true">
         <dc:Bounds x="480" y="205" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="412.01" y="270.5" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_UseCheckoutPath" bpmnElement="Task_UseCheckoutPath">
         <dc:Bounds x="580" y="90" width="170" height="70"/>
@@ -182,6 +184,7 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_Refused" bpmnElement="End_Refused">
         <dc:Bounds x="920" y="532" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="893" y="475" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="E_F_M1" bpmnElement="F_M1">
         <di:waypoint x="236" y="230"/><di:waypoint x="280" y="230"/>
@@ -191,12 +194,14 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M3" bpmnElement="F_M3">
         <di:waypoint x="505" y="205"/><di:waypoint x="505" y="125"/><di:waypoint x="580" y="125"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="411" y="156" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M4" bpmnElement="F_M4">
         <di:waypoint x="530" y="230"/><di:waypoint x="580" y="230"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M5" bpmnElement="F_M5">
         <di:waypoint x="505" y="255"/><di:waypoint x="505" y="550"/><di:waypoint x="580" y="550"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="411" y="385" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M6" bpmnElement="F_M6">
         <di:waypoint x="750" y="125"/><di:waypoint x="825" y="125"/><di:waypoint x="825" y="150"/>
@@ -211,13 +216,21 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
         <di:waypoint x="750" y="550"/><di:waypoint x="920" y="550"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M10" bpmnElement="F_M10">
-        <di:waypoint x="520" y="245"/><di:waypoint x="540" y="335"/><di:waypoint x="580" y="335"/>
+        <di:waypoint x="530" y="230" />
+        <di:waypoint x="555" y="230" />
+        <di:waypoint x="555" y="335" />
+        <di:waypoint x="580" y="335" />
+        <bpmndi:BPMNLabel><dc:Bounds x="559" y="274" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M11" bpmnElement="F_M11">
         <di:waypoint x="750" y="335"/><di:waypoint x="840" y="335"/><di:waypoint x="840" y="190"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M12" bpmnElement="F_M12">
-        <di:waypoint x="515" y="245"/><di:waypoint x="535" y="445"/><di:waypoint x="580" y="445"/>
+        <di:waypoint x="530" y="230" />
+        <di:waypoint x="555" y="230" />
+        <di:waypoint x="555" y="445" />
+        <di:waypoint x="580" y="445" />
+        <bpmndi:BPMNLabel><dc:Bounds x="559" y="382.25" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_M13" bpmnElement="F_M13">
         <di:waypoint x="750" y="445"/><di:waypoint x="835" y="445"/><di:waypoint x="835" y="195"/>

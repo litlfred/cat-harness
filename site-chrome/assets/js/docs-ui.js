@@ -2820,6 +2820,36 @@
     return natural / column >= AUTO_MIN_RATIO;
   }
 
+  /* THE BAND A FULL-WIDTH FIGURE MAY USE: the viewport minus the nav rail.
+     Owner, 2026-10-31, with a screenshot of a BPMN pool whose lane labels
+     were under the rail: "full width images/diagrma/etc should not be cut off
+     by LHS nav". Full width used to run from x=0, but from 50rem up the rail
+     is `position: fixed` over that strip, so the figure's start edge was
+     hidden. Below 50rem the theme's sidebar is an in-flow bar on top, takes
+     no strip, and the band is the whole viewport, as before. The rail is
+     MEASURED rather than read from `--fa-nav-collapsed`, so an open, pinned
+     or RTL rail is right without knowing which state it is in. */
+  function navRail() {
+    return document.querySelector(".side-bar") || document.querySelector("nav.fa-nav");
+  }
+
+  function fullWidthBand() {
+    var vw = document.documentElement.clientWidth;
+    var band = { left: 0, right: vw };
+    var rail = navRail();
+    if (!rail) return band;
+    var pos = getComputedStyle(rail).position;
+    if (pos !== "fixed" && pos !== "sticky") return band;
+    var r = rail.getBoundingClientRect();
+    if (r.width <= 0 || r.height <= 0) return band;
+    // A rail at the start edge (left in LTR, right in RTL). A rail that spans
+    // most of the width is a top bar, not a side rail, and takes nothing.
+    if (r.width >= vw / 2) return band;
+    if (r.left <= 1) band.left = Math.max(0, r.right);
+    else if (r.right >= vw - 1) band.right = Math.min(vw, r.left);
+    return band;
+  }
+
   function markFullWidthOnRoot() {
     document.documentElement.classList.toggle(
       "fa-has-fullwidth",
@@ -10502,16 +10532,21 @@
     // theme's geometry, and clientWidth excludes the scrollbar, which 100vw
     // does not.
     function applyFullWidth() {
-      if (!scope.classList.contains("is-fullwidth")) {
-        scope.style.marginLeft = "";
-        scope.style.width = "";
-        return;
-      }
       scope.style.marginLeft = "";
+      scope.style.marginRight = "";
       scope.style.width = "";
-      var left = scope.getBoundingClientRect().left;
-      scope.style.marginLeft = -left + "px";
-      scope.style.width = document.documentElement.clientWidth + "px";
+      if (!scope.classList.contains("is-fullwidth")) return;
+      var box = scope.getBoundingClientRect();
+      var band = fullWidthBand();
+      // A block with a set width anchors to its START edge and ignores the
+      // other margin, so RTL moves the right margin. Moving the left one in
+      // RTL did nothing and the figure ran off the left of the window.
+      if (getComputedStyle(scope).direction === "rtl") {
+        scope.style.marginRight = (box.right - band.right) + "px";
+      } else {
+        scope.style.marginLeft = (band.left - box.left) + "px";
+      }
+      scope.style.width = (band.right - band.left) + "px";
       markPannable();
     }
     wide.addEventListener("click", function () {
@@ -10525,6 +10560,17 @@
     });
     // The measured offset is only right for the width it was measured at.
     window.addEventListener("resize", applyFullWidth);
+    // Opening the rail pushes the content column over, so the band moves
+    // without the window resizing, and both slide on a CSS transition. Watch
+    // the rail and the column: each fires on every frame of the slide, and
+    // the last one lands after it, so the figure settles where they do.
+    if (typeof ResizeObserver === "function") {
+      var ro = new ResizeObserver(applyFullWidth);
+      var rail = navRail();
+      var column = document.querySelector(".main");
+      if (rail) ro.observe(rail);
+      if (column) ro.observe(column);
+    }
 
     // Scroll pass-through in full width.
     //
@@ -10583,13 +10629,39 @@
     // events rather than mouse events, so a touch drag works the same way.
     var drag = null;
     var panned = false;
+    // A grab on a figure that fits zooms it by one more 100% for every
+    // GROW_PX of sideways drag, so it grows smoothly instead of jumping.
+    var GROW_PX = 400;
+    // It grows until the drawing is 15% wider than its card, so the pan that
+    // follows has room to move rather than stopping at once at the edge.
+    var GROW_UNTIL = 1.15;
 
     scope.addEventListener("pointerdown", function (e) {
       if (e.button !== 0) return;
       // A control or a link owns its own press.
       if (e.target.closest && e.target.closest("a, button, input, select, textarea")) return;
-      drag = { x: e.clientX, y: e.clientY, sl: scope.scrollLeft, st: scope.scrollTop, moved: false };
+      drag = { x: e.clientX, y: e.clientY, sl: scope.scrollLeft, st: scope.scrollTop, py: e.clientY, moved: false };
       try { scope.setPointerCapture(e.pointerId); } catch (_e) { /* not captureable */ }
+      // Owner, 2026-10-31, with a screenshot: *"i cant drag Figure"*. A mouse
+      // press on an inline SVG's text started a text selection before the 4px
+      // threshold put `is-panning` (and its `user-select: none`) on the scope,
+      // so the drag selected labels instead. Cancelling the press stops the
+      // selection from starting; it also cancels the focus the press would
+      // give, so focus is taken here, without scrolling, to keep the arrow
+      // keys working after a click.
+      if (e.pointerType === "mouse") {
+        e.preventDefault();
+        try { scope.focus({ preventScroll: true }); } catch (_e) { /* not focusable */ }
+      }
+    });
+
+    // Safari and Firefox fire `selectstart` from the compatibility mousedown
+    // even when the pointerdown was cancelled. A selection never starts
+    // inside a figure, except in a form control.
+    scope.addEventListener("selectstart", function (e) {
+      var t = e.target && e.target.nodeType === 3 ? e.target.parentNode : e.target;
+      if (t && t.closest && t.closest("input, textarea")) return;
+      e.preventDefault();
     });
 
     scope.addEventListener("pointermove", function (e) {
@@ -10597,10 +10669,53 @@
       var dx = e.clientX - drag.x;
       var dy = e.clientY - drag.y;
       if (!drag.moved && Math.abs(dx) + Math.abs(dy) < 4) return;
+      if (!drag.moved && Math.abs(dx) >= Math.abs(dy) &&
+          scope.scrollWidth <= scope.clientWidth + 1 && step < ZOOM_STEPS.length - 1) {
+        // Owner, 2026-11-01, card Q-DRAG1 "B. Nothing moves": a figure that
+        // fits its card has no room to pan, so a sideways drag did nothing.
+        // The drag now zooms it in, around the press point, a little at a
+        // time as the pointer moves, and pans once it overflows. Jumping
+        // whole zoom steps on the first move took a narrow drawing to 200%
+        // at once ("jumps to 200% size as soon as you grab").
+        var box0 = scope.getBoundingClientRect();
+        drag.grow = { z0: ZOOM_STEPS[step], at: drag.x - box0.left, px: drag.x - box0.left + scope.scrollLeft };
+      }
+      if (drag.grow) {
+        var g = drag.grow;
+        var z = Math.min(ZOOM_STEPS[ZOOM_STEPS.length - 1], g.z0 * (1 + Math.abs(dx) / GROW_PX));
+        scope.style.setProperty("--fa-zoom", String(z));
+        level.textContent = Math.round(z * 100) + "%";
+        scope.scrollLeft = Math.max(0, g.px * (z / g.z0) - g.at);
+        drag.moved = true;
+        scope.classList.add("is-panning");
+        if (scope.scrollWidth > scope.clientWidth * GROW_UNTIL || z >= ZOOM_STEPS[ZOOM_STEPS.length - 1]) {
+          // Room to pan now: the buttons step on from the nearest step below.
+          while (step < ZOOM_STEPS.length - 1 && ZOOM_STEPS[step + 1] <= z) step++;
+          out.disabled = false;
+          markPannable();
+          drag.grow = null;
+          drag.sl = scope.scrollLeft;
+          drag.x = e.clientX;
+        }
+        e.preventDefault();
+        return;
+      }
       drag.moved = true;
       scope.classList.add("is-panning");
       scope.scrollLeft = drag.sl - dx;
+      var top = scope.scrollTop;
       scope.scrollTop = drag.st - dy;
+      // A figure that fits its card, or one already scrolled to its edge,
+      // cannot take the vertical part of the drag, and a drag that moves
+      // nothing reads as broken. That part moves the page instead, the way
+      // the wheel over the margin already does.
+      var dyStep = e.clientY - drag.py;
+      drag.py = e.clientY;
+      if (scope.scrollTop === top && dyStep !== 0) {
+        window.scrollBy(0, -dyStep);
+        drag.y += dyStep;
+        drag.st = scope.scrollTop;
+      }
       e.preventDefault();
     });
 
@@ -12737,6 +12852,44 @@
     anchor.parentNode.insertBefore(box, anchor);
   }
 
+  /* ── The footer's build stamp, filled from build.json ─────────────────
+   *
+   * `footer_custom.html` renders the stamp CONSTANTLY ("deployed dev") on
+   * every build, the live site included, so a page that did not change is
+   * byte-identical on every deploy and in every preview. A stamp baked in at
+   * build time changed every page on every main deploy, which is what kept a
+   * preview from sharing main's unchanged files and the cone deploy from
+   * skipping anything (owner, 2026-10-31: "if asset not changed in staging
+   * then link to main asset").
+   *
+   * The live site's facts are in `<base>/build.json`, which `docs-site.yml`
+   * writes for client-side readers. A preview's are in `staging.json`, and
+   * the staging banner's own script fills the stamp from it, so this leaves a
+   * preview alone. A failed fetch leaves "dev" and says the details are
+   * unavailable: it never shows a stamp it could not read.
+   */
+  function fillBuildStamp() {
+    if (isStagingPreview()) return;
+    var p = document.querySelector(".fa-build-stamp");
+    if (!p || typeof fetch !== "function") return;
+    fetch(withBase("/build.json"), { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(String(r.status)); return r.json(); })
+      .then(function (b) {
+        var sha = typeof b.sha === "string" ? b.sha : "";
+        if (!/^[0-9a-f]{7,40}$/.test(sha)) return;
+        while (p.firstChild) p.removeChild(p.firstChild);
+        p.appendChild(document.createTextNode("deployed "));
+        var a = document.createElement("a");
+        a.href = (/^https:\/\//.test(b.runUrl || "") && safeHref(b.runUrl)) || "https://github.com/litlfred/folio-assistant/actions";
+        var code = document.createElement("code");
+        code.textContent = sha.slice(0, 7);
+        a.appendChild(code);
+        p.appendChild(a);
+        if (typeof b.built === "string" && b.built) p.appendChild(document.createTextNode(" \u00b7 " + b.built));
+      })
+      .catch(function () { p.setAttribute("title", "build details unavailable"); });
+  }
+
   function init() {
     // RTL detection — Arabic pages get dir="rtl" on <html> which
     // triggers the CSS rules in docs-ui.css for smooth sidebar slide.
@@ -12752,6 +12905,7 @@
     // BEFORE the tiles and the rows: it adds the class the stylesheet keys the
     // close control on, and a control offered before its handler exists is a
     // control that does the wrong thing if pressed in that window.
+    fillBuildStamp();
     mountNavPreference();
     // BEFORE the tiles: Page settings drops its own Discarded control when the
     // navbar already carries fsh-guts (#1925), and asks by looking for it.

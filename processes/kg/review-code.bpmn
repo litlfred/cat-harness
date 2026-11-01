@@ -124,12 +124,14 @@ The gateway picks by node KIND because the questions differ. A Tool is judged on
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_CodeNodes" bpmnElement="Start_CodeNodes">
         <dc:Bounds x="200" y="192" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="189.51" y="227.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RunNodeAudits" bpmnElement="Task_RunNodeAudits">
         <dc:Bounds x="280" y="170" width="150" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_NodeKind" bpmnElement="GW_NodeKind" isMarkerVisible="true">
         <dc:Bounds x="470" y="185" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="524" y="192.5" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_ReviewTool" bpmnElement="Task_ReviewTool">
         <dc:Bounds x="570" y="110" width="170" height="70"/>
@@ -157,6 +159,7 @@ The gateway picks by node KIND because the questions differ. A Tool is judged on
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_C4" bpmnElement="F_C4">
         <di:waypoint x="495" y="235"/><di:waypoint x="495" y="275"/><di:waypoint x="570" y="275"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="401" y="256.5" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_C5" bpmnElement="F_C5">
         <di:waypoint x="740" y="145"/><di:waypoint x="815" y="145"/><di:waypoint x="815" y="185"/>

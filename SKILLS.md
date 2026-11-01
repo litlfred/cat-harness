@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_249 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_251 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -49,7 +49,7 @@ _249 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`content-validate`](skills/authoring/content-lifecycle/content-validate.md) | Content Validation |
 | [`evidence-appraisal`](skills/authoring/content-lifecycle/evidence-appraisal.md) | Evidence Appraisal |
 
-**`skills/conduct/conduct-core/`** (16)
+**`skills/conduct/conduct-core/`** (17)
 
 | Skill | What it is for |
 |---|---|
@@ -61,6 +61,7 @@ _249 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`decision-comparison`](skills/conduct/conduct-core/decision-comparison.md) | Lay a decision out as a comparison before you ask it — what each option does, its pro, its con, what it changes downstream, and how reversible it is — in the prose that precedes the question, never… |
 | [`deletion-requires-confirmation`](skills/conduct/conduct-core/deletion-requires-confirmation.md) | An agent never removes a durable artefact on its own initiative. |
 | [`getting-started`](skills/conduct/conduct-core/getting-started.md) | Triage what a person means when they ask to create a folio, and route them. |
+| [`hand-back-to-discussion`](skills/conduct/conduct-core/hand-back-to-discussion.md) | A sibling agent, spawned during or working beside a live agent-human discussion, hands every card, question, decision, result, blocker or piece of context back to the discussion agent that is… |
 | [`harness-projections`](skills/conduct/conduct-core/harness-projections.md) | Who may write under `.claude/`, and when. |
 | [`interaction-modality`](skills/conduct/conduct-core/interaction-modality.md) | Establish how to talk to the person in front of you before deciding what to say — audio, ordinary chat, selectable options for limited hand function, large-type for low vision, plain language — and… |
 | [`repo-conversion`](skills/conduct/conduct-core/repo-conversion.md) | Lay folio-assistant over a repository that already exists, without losing or silently moving what is in it. |
@@ -178,11 +179,12 @@ _249 skills in 18 directories, generated from each skill's front matter. `bun ru
 |---|---|
 | [`raci`](skills/process/raci/raci.md) | RACI over this repository's processes — who is Responsible, Accountable, Consulted and Informed for each activity. |
 
-**`skills/process/workflow/`** (10)
+**`skills/process/workflow/`** (11)
 
 | Skill | What it is for |
 |---|---|
 | [`bpmn-authoring`](skills/process/workflow/bpmn-authoring.md) | Author BPMN 2.0 business process diagrams — both a DAK's L2 business processes and this repository's own `processes/**/*.bpmn`. |
+| [`bpmn-detangle`](skills/process/workflow/bpmn-detangle.md) | Make a BPMN diagram readable at 100% without zooming, and untangle it: keep it inside the size budget, give every label a place clear of other labels, flows and boxes, remove crossings, and swap… |
 | [`bpmn-processes`](skills/process/workflow/bpmn-processes.md) | Every process here is BPMN, the diagrams are executable, and the base processes are strict. |
 | [`deterministic-and-agentic`](skills/process/workflow/deterministic-and-agentic.md) | Workflow processing is a SPECTRUM, not a switch. |
 | [`dmn-authoring`](skills/process/workflow/dmn-authoring.md) | Author DMN decision tables — a DAK's clinical decision logic, and the tables that back this repository's own computed gateways. |

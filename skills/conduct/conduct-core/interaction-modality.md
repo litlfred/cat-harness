@@ -356,7 +356,10 @@ Two things this rules out:
 
 And when you are the one **relaying** somebody else's blocked question: say
 that you are relaying, and say where the answer has to be given. An answer
-typed at the relay does not reach the asker.
+typed at the relay does not reach the asker. The reverse direction, a
+sibling getting its question to the agent that is talking with the person, and
+the answer back, is [`hand-back-to-discussion`](hand-back-to-discussion.md)
+(owner, 2026-10-31: *"sublings not raising cards to main"*).
 
 #### Worked example — a real failure, 2026-09-18
 
