@@ -1040,7 +1040,7 @@
     {"id": "document-kinds", "renderedBy": "document-kinds-viewer", "coversKinds": ["document-kinds"], "subgraphs": "instance"},
     {"id": "folio", "renderedBy": "folio-viewer", "covers": ["folio"], "coversKinds": ["folio"], "subgraphs": "instance"},
     {"id": "auto-docs", "renderedBy": "auto-docs-viewer", "coversKinds": ["skills", "docs", "swimlane-glossary", "uml"], "subgraphs": "directory", "subgraphUnder": {"skills": "index/skills", "docs": "index/docs", "swimlane-glossary": "glossary", "uml": "uml"}},
-    {"id": "processes", "renderedBy": "processes-viewer", "coversKinds": ["processes"], "alias": "processes"},
+    {"id": "processes", "renderedBy": "processes-viewer", "coversKinds": ["processes"], "subgraphs": "instance", "alias": "processes"},
     {"id": "tools", "renderedBy": "tools-viewer", "coversKinds": ["tools"], "subgraphs": "instance", "alias": "tools"},
     {"id": "methodologies", "renderedBy": "methodologies-viewer", "coversKinds": ["methodology"], "alias": "methodologies"},
     {"id": "external-schemas", "renderedBy": "external-schemas-viewer", "covers": ["external-schemas"], "coversKinds": ["external-schema"], "subgraphs": "instance", "subgraphUnder": {"external-schema": "instance"}, "alias": "external-schemas"},
