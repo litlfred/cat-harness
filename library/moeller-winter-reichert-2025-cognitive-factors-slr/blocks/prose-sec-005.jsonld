@@ -1,0 +1,22 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/",
+      "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns#"
+    }
+  ],
+  "@id": "library/moeller-winter-reichert-2025-cognitive-factors-slr/blocks/prose-sec-005",
+  "@type": [
+    "folio-assistant-core:Prose",
+    "doco:Section"
+  ],
+  "kind": "prose",
+  "title": "Cognitive Psychology",
+  "pageStart": 4,
+  "pageEnd": 5,
+  "text": "../sections/sec-005-cognitive-psychology.md",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/moeller-winter-reichert-2025-cognitive-factors-slr/manifest.jsonld",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/moeller-winter-reichert-2025-cognitive-factors-slr/manifest.jsonld",
+  "provenance": "ingested"
+}

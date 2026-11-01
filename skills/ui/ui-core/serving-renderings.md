@@ -139,8 +139,45 @@ this rather than a prerequisite for it. So the contract moved into code and
 the server reads it, instead of the server becoming the contract.
 
 ```sh
-bun run cat serve:rendering --dir docs/_site --port 4000
+bun run cat serve:rendering --dir docs/_site            # one site at /
+bun run cat serve:local --repos <repo-a>,<repo-b>       # several, fetched from gh-pages
 ```
+
+The default address is **`http://127.0.0.1:4007`** (owner, 2026-10-31: a prime
+near 4000, which `jekyll serve` already uses). Use `127.0.0.1`, not
+`localhost`: the two are different origins, so cookies, storage and service
+workers split between them, and `localhost` may resolve to IPv6 `::1` first.
+The server sends `localhost` and `[::1]` requests to `127.0.0.1`.
+
+### Several sites on one origin, as Pages lays them out
+
+`--mount /<repo>=<dir>` (repeatable) serves each built site under its own
+prefix, so root-relative links and IRI paths line up with
+`https://<owner>.github.io/<repo>/`. It copies the Pages behaviours links
+depend on: `<dir>` redirects to `<dir>/`, `/page` serves `page.html`, and a
+miss serves the site's own `404.html`. `STAGING/<branch>/` previews in a
+gh-pages checkout need no extra rule.
+
+### Published IRIs open the local copy
+
+For each mounted repo, text responses have the published base
+`<origin>/<repo>` replaced by the local one as they are served. Files on disk
+never change. Whole path segments only (`/a` never touches `/ab`), and a
+repo that is not mounted keeps its live links. `<origin>` is the declared
+`canonicalUrl`'s origin; `--iri-origin` overrides it and `--iri
+/<prefix>=<base>` adds a base on another host. `Accept: application/ld+json`
+on an extensionless IRI serves its `.jsonld` sibling, which Pages cannot do.
+
+**Rewriting changes bytes.** Check signatures and digests with
+`--no-rewrite`; a rewritten response carries `X-Rendering-Rewritten: iri`.
+
+### One command — `serve:local`
+
+`--repos a,b` fetches each repo's `gh-pages` branch into a cache (shallow,
+blob-less, sparse, updated each run) and serves them all. `STAGING/` is left
+out unless `--staging <branch>` names a preview; a repo with no published
+main site lists its previews. `--site <repo>=<dir>` serves a site you built
+yourself, for changes not yet published. `--offline` uses the cache as it is.
 
 `RENDERING_MEDIA_TYPES` and `renderingMediaType()` in `schemas/kg/cat-harness.ts`
 are the table, beside `renderingPath()` — where a rendering LIVES and what it

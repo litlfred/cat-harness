@@ -29,12 +29,14 @@ and the diagram you touch leaves cleaner than it came.**
 
 ```
 bun run cat bpmn:detangle <file.bpmn|dir>            # report
-bun run cat bpmn:detangle <file.bpmn> --write        # also swap lanes when it helps
+bun run cat bpmn:detangle <file.bpmn> --write        # also fix what it can: lanes, flows, boxes, labels
 bun run cat bpmn:detangle <file.bpmn|dir> --check    # exit 1 on any finding
 ```
 
 `render:bpmn` prints the same findings as warnings for every diagram it
-draws, so the QA side sees them without running anything. The criteria live
+draws, and `kg:audit` writes the ones the DI alone can show into each
+process's QA report, so the QA side sees them without running anything
+(owner, 2026-10-31: *"and QA reports and author checks"*). The criteria live
 in `cat-harness-tools/src/workflow/diagram-fit.ts`:
 
 | finding | means | fix |
@@ -42,12 +44,14 @@ in `cat-harness-tools/src/workflow/diagram-fit.ts`:
 | `diagram-too-wide` | wider than 1400 | close column gaps; stack steps of different lanes in one column; split by phase |
 | `diagram-too-tall` | taller than 900 | shrink each lane to its rows; split by phase |
 | `label-overlap` | two labels on each other | give one a `BPMNLabel` position clear of the other |
-| `label-on-edge` | a label on a flow that is not its own | move the label, or the flow |
-| `label-on-shape` | a label on a box, its own shape, or a lane's name strip | move the label |
+| `label-on-edge` | a label on a flow, its own included (owner, 2026-10-31: *"need to check for text on arrows"*) | `--write` moves it to the nearest clear place |
+| `label-on-shape` | a label on a box, its own shape, or a lane's name strip | `--write` moves it |
+| `label-on-lane-line` | a label drawn across the line between two lanes, or a pool's edge | `--write` moves it inside one lane |
 | `edge-diagonal` | a flow runs at a slant | `--write` routes it at right angles through the gap |
 | `header-overflow` | a pool or lane name spills out of its 30-wide strip | `--write` makes the lane taller; or shorten the name (never repeat the process id in the pool name) |
 | `text-overflow` | a name spills out of its box | `--write` widens, then heightens the box; or shorten the name |
 | `edge-crossing` | two flows cross | re-route one around the other, move a step, or swap lanes |
+| `edge-through-shape` | a flow is drawn through a box it neither leaves nor enters | route it around the box (`--write` never adds one) |
 | `lane-order` | another lane order crosses fewer lane boundaries | `--write` applies it |
 
 Labels are checked where bpmn-js **draws** them, so the check uses the
@@ -70,9 +74,13 @@ about one screen. Change the budget and the text size together.
 1. **Run the check before you edit**, and note the counts.
 2. **Fix the lane order first.** `--write` tries every order of the lanes (up
    to 8) and keeps the one whose flows cross the fewest lane boundaries,
-   only if it adds no flow crossing. It moves shapes with their lane and
-   re-draws each flow between lanes as one elbow, since its old bends were
-   for the old order. Look at the result: it is a start, not a layout.
+   only if it adds no flow crossing and draws no flow through a box. It
+   moves shapes with their lane, and each flow between lanes keeps its
+   bends, each moving with the lane it lies in; only a flow that would then
+   run through a box is re-drawn, by the first right-angled route that runs
+   through none. If the layout fixes together would add a flow through a
+   box, a crossing or a slant, the file keeps its layout and only its labels
+   move. Look at the result: it is a start, not a layout.
 3. **Make it compact.** Tasks 120 × 90 (three lines of 16px text), gateways 50,
    events 36, and big enough for the name at 16px (`text-overflow`). About 40–70
    between neighbours in a row; wider only where a flow label needs it.
@@ -88,12 +96,17 @@ about one screen. Change the budget and the text size together.
    ([`bpmn-processes`](bpmn-processes.md) §"Edge routing"). A flow between
    lanes leaves on the side facing its target.
 6. **Place every label.** A gateway's question goes **above** the diamond,
-   its answers beside their flows; an event's name below it, clear of the
-   lane's name strip; a flow label beside its own segment. Write
-   `BPMNLabel` bounds for each one bpmn-js would put somewhere bad. Give a
-   multi-line label room for the lines it wraps to: bpmn-js wraps external
-   labels at about 90 wide whatever bounds you give, so a
-   three-word question is three lines: about 60 tall at 15px.
+   its answers beside their flows; an event's name beside or below it, clear
+   of the flows leaving it and of the lane's name strip; a flow label beside
+   its own segment; and every label inside one lane, never across a lane
+   line. `--write` moves each label that touches a flow, a shape, another
+   label, a lane line or a name strip to the nearest clear place (around its
+   shape, or beside a run of its flow), and writes that as its `BPMNLabel`
+   bounds; what it cannot place it still reports. Give a multi-line label
+   room for the lines it wraps to: bpmn-js wraps an outside label to the
+   width of its `BPMNLabel` bounds, so a gateway question about 40
+   characters long is five lines (about 90 tall) at width 90 and three lines
+   at width 130. The check measures the text bpmn-js drew, not the bounds.
 7. **Run the check again**: zero findings on the diagram you touched, or say
    in the PR which remain and why.
 8. **Look at the rendered SVG**, at 100% in a 1200px band. The check finds

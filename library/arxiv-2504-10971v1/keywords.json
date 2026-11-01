@@ -1,0 +1,686 @@
+{
+  "$schema": "folio-keywords/v1",
+  "entry": "arxiv-2504-10971v1",
+  "corpus": {
+    "library": "cat-harness/library",
+    "sections": 2257,
+    "terms": 15326,
+    "weighting": "log-entropy"
+  },
+  "document": [
+    {
+      "term": "process visualisation",
+      "score": 27.1629,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "business process",
+      "score": 21.3271,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "data visualisation",
+      "score": 19.7351,
+      "evidence": []
+    },
+    {
+      "term": "visualisation tools",
+      "score": 17.8584,
+      "evidence": []
+    },
+    {
+      "term": "visualisation format",
+      "score": 17.6021,
+      "evidence": []
+    },
+    {
+      "term": "both visualisation",
+      "score": 17.4741,
+      "evidence": []
+    },
+    {
+      "term": "effective visualisations",
+      "score": 16.9744,
+      "evidence": []
+    },
+    {
+      "term": "process modelling",
+      "score": 15.7925,
+      "evidence": []
+    },
+    {
+      "term": "visualising business",
+      "score": 14.7084,
+      "evidence": []
+    },
+    {
+      "term": "process design",
+      "score": 13.9525,
+      "evidence": []
+    },
+    {
+      "term": "business processes",
+      "score": 13.8971,
+      "evidence": []
+    },
+    {
+      "term": "process visualization",
+      "score": 13.6122,
+      "evidence": []
+    }
+  ],
+  "sections": {
+    "sec-000-1-introduction": [
+      {
+        "term": "business process",
+        "score": 1.751,
+        "evidence": []
+      },
+      {
+        "term": "process analytics",
+        "score": 1.5656,
+        "evidence": []
+      },
+      {
+        "term": "visualisations",
+        "score": 1.3149,
+        "evidence": []
+      },
+      {
+        "term": "bpvs",
+        "score": 1.2916,
+        "evidence": []
+      },
+      {
+        "term": "cognitive sense",
+        "score": 1.2842,
+        "evidence": []
+      },
+      {
+        "term": "user interaction",
+        "score": 0.9691,
+        "evidence": []
+      },
+      {
+        "term": "sight",
+        "score": 0.9507,
+        "evidence": []
+      },
+      {
+        "term": "organisations",
+        "score": 0.8499,
+        "evidence": []
+      }
+    ],
+    "sec-001-2-graphical-perspective-on-effectiveness-of-visu": [
+      {
+        "term": "visualisations",
+        "score": 3.1118,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "data visualisation",
+        "score": 2.6286,
+        "evidence": []
+      },
+      {
+        "term": "effective visualisations",
+        "score": 2.3446,
+        "evidence": []
+      },
+      {
+        "term": "task-centric view",
+        "score": 2.244,
+        "evidence": []
+      },
+      {
+        "term": "effectiveness",
+        "score": 1.8532,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "view focuses",
+        "score": 1.4345,
+        "evidence": []
+      },
+      {
+        "term": "internal representation",
+        "score": 1.3161,
+        "evidence": []
+      },
+      {
+        "term": "accurate data",
+        "score": 1.2406,
+        "evidence": []
+      }
+    ],
+    "sec-002-3-methodological-approach": [
+      {
+        "term": "process visualisation",
+        "score": 2.6169,
+        "evidence": []
+      },
+      {
+        "term": "inclusion criteria",
+        "score": 2.0495,
+        "evidence": []
+      },
+      {
+        "term": "exclusion criteria",
+        "score": 2.0445,
+        "evidence": []
+      },
+      {
+        "term": "business process",
+        "score": 2.0147,
+        "evidence": []
+      },
+      {
+        "term": "articles",
+        "score": 1.7984,
+        "evidence": []
+      },
+      {
+        "term": "selection process",
+        "score": 1.6313,
+        "evidence": []
+      },
+      {
+        "term": "business processes",
+        "score": 1.6228,
+        "evidence": []
+      },
+      {
+        "term": "search string",
+        "score": 1.5639,
+        "evidence": []
+      }
+    ],
+    "sec-004-41-bpv-frameworks-used": [
+      {
+        "term": "visual thinking",
+        "score": 2.4073,
+        "evidence": []
+      },
+      {
+        "term": "process visualisation",
+        "score": 2.086,
+        "evidence": []
+      },
+      {
+        "term": "frameworks",
+        "score": 1.8981,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "visual learning",
+        "score": 1.8489,
+        "evidence": []
+      },
+      {
+        "term": "bpv",
+        "score": 1.6874,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "modelling languages",
+        "score": 1.4231,
+        "evidence": []
+      },
+      {
+        "term": "visualising",
+        "score": 1.0096,
+        "evidence": []
+      },
+      {
+        "term": "dashboards",
+        "score": 0.8781,
+        "evidence": []
+      }
+    ],
+    "sec-005-42-objectives-of-visualisations-of-processes": [
+      {
+        "term": "process visualisation",
+        "score": 2.0366,
+        "evidence": []
+      },
+      {
+        "term": "business process",
+        "score": 1.4507,
+        "evidence": []
+      },
+      {
+        "term": "objectives",
+        "score": 1.2912,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "process models",
+        "score": 1.2695,
+        "evidence": []
+      },
+      {
+        "term": "exploitation",
+        "score": 0.9936,
+        "evidence": []
+      },
+      {
+        "term": "displaying",
+        "score": 0.8781,
+        "evidence": []
+      },
+      {
+        "term": "behaviour",
+        "score": 0.7394,
+        "evidence": []
+      },
+      {
+        "term": "view",
+        "score": 0.734,
+        "evidence": []
+      }
+    ],
+    "sec-006-43-visualisation-types-used-in-bp-visualisations": [
+      {
+        "term": "visualisations",
+        "score": 2.175,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "business process",
+        "score": 1.5529,
+        "evidence": []
+      },
+      {
+        "term": "business processes",
+        "score": 1.427,
+        "evidence": []
+      },
+      {
+        "term": "task-centric",
+        "score": 0.926,
+        "evidence": []
+      },
+      {
+        "term": "diagrams",
+        "score": 0.8861,
+        "evidence": []
+      },
+      {
+        "term": "colour",
+        "score": 0.8819,
+        "evidence": []
+      },
+      {
+        "term": "bpmn",
+        "score": 0.8367,
+        "evidence": []
+      },
+      {
+        "term": "contributed",
+        "score": 0.764,
+        "evidence": []
+      }
+    ],
+    "sec-007-44-tools-and-languages": [
+      {
+        "term": "process visualisation",
+        "score": 2.3626,
+        "evidence": []
+      },
+      {
+        "term": "visualisation tools",
+        "score": 2.1691,
+        "evidence": []
+      },
+      {
+        "term": "business process",
+        "score": 1.9813,
+        "evidence": []
+      },
+      {
+        "term": "visualise",
+        "score": 1.0081,
+        "evidence": []
+      },
+      {
+        "term": "colour",
+        "score": 0.8819,
+        "evidence": []
+      },
+      {
+        "term": "user-centric",
+        "score": 0.8781,
+        "evidence": []
+      },
+      {
+        "term": "ppi",
+        "score": 0.8771,
+        "evidence": []
+      },
+      {
+        "term": "paragraph",
+        "score": 0.7118,
+        "evidence": []
+      }
+    ],
+    "sec-008-45-case-studies": [
+      {
+        "term": "case studies",
+        "score": 1.8811,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "business process",
+        "score": 1.3571,
+        "evidence": []
+      },
+      {
+        "term": "visualisations",
+        "score": 1.3149,
+        "evidence": []
+      },
+      {
+        "term": "quick overview",
+        "score": 1.2631,
+        "evidence": []
+      },
+      {
+        "term": "colour",
+        "score": 1.1129,
+        "evidence": []
+      },
+      {
+        "term": "study found",
+        "score": 1.0681,
+        "evidence": []
+      },
+      {
+        "term": "texture",
+        "score": 0.9169,
+        "evidence": []
+      },
+      {
+        "term": "symbol",
+        "score": 0.8167,
+        "evidence": []
+      }
+    ],
+    "sec-009-5-user-perspective-on-bpv-effectiveness": [
+      {
+        "term": "business process",
+        "score": 1.0625,
+        "evidence": []
+      },
+      {
+        "term": "effectiveness",
+        "score": 0.9791,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "user",
+        "score": 0.8695,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "understandability",
+        "score": 0.7875,
+        "evidence": []
+      }
+    ],
+    "sec-010-51-visual-literacy-and-visual-experience": [
+      {
+        "term": "visual literacy",
+        "score": 3.201,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "experience",
+        "score": 1.5304,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "experienced users",
+        "score": 1.5163,
+        "evidence": []
+      },
+      {
+        "term": "bpmn diagrams",
+        "score": 1.4264,
+        "evidence": []
+      },
+      {
+        "term": "comprehension",
+        "score": 0.9907,
+        "evidence": []
+      },
+      {
+        "term": "visualisations",
+        "score": 0.9367,
+        "evidence": []
+      }
+    ],
+    "sec-011-52-culture-media-and-comprehension": [
+      {
+        "term": "comprehension",
+        "score": 1.2148,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "cultural",
+        "score": 0.979,
+        "evidence": []
+      },
+      {
+        "term": "business process",
+        "score": 0.9522,
+        "evidence": []
+      },
+      {
+        "term": "visualisation",
+        "score": 0.7621,
+        "evidence": []
+      },
+      {
+        "term": "preference",
+        "score": 0.6603,
+        "evidence": []
+      }
+    ],
+    "sec-012-54-gestalt-and-cognitive-load-theory": [
+      {
+        "term": "gestalt theory",
+        "score": 4.383,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "cognitive load",
+        "score": 3.854,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "extraneous cognitive",
+        "score": 2.2853,
+        "evidence": []
+      },
+      {
+        "term": "visualisations",
+        "score": 1.0875,
+        "evidence": []
+      },
+      {
+        "term": "significance",
+        "score": 0.9091,
+        "evidence": []
+      },
+      {
+        "term": "comprehension",
+        "score": 0.8898,
+        "evidence": []
+      },
+      {
+        "term": "principles",
+        "score": 0.6426,
+        "evidence": []
+      },
+      {
+        "term": "designing",
+        "score": 0.6416,
+        "evidence": []
+      }
+    ],
+    "sec-013-6-discussion-and-final-remarks": [
+      {
+        "term": "data visualisation",
+        "score": 1.2682,
+        "evidence": []
+      },
+      {
+        "term": "bpv",
+        "score": 1.236,
+        "evidence": []
+      },
+      {
+        "term": "bpvs",
+        "score": 1.1126,
+        "evidence": []
+      },
+      {
+        "term": "user-centric",
+        "score": 0.8781,
+        "evidence": []
+      },
+      {
+        "term": "effectiveness",
+        "score": 0.7984,
+        "evidence": []
+      },
+      {
+        "term": "papers",
+        "score": 0.5863,
+        "evidence": []
+      },
+      {
+        "term": "research",
+        "score": 0.5861,
+        "evidence": []
+      },
+      {
+        "term": "users",
+        "score": 0.5713,
+        "evidence": []
+      }
+    ],
+    "sec-014-references": [
+      {
+        "term": "international workshops",
+        "score": 3.5977,
+        "evidence": []
+      },
+      {
+        "term": "international conference",
+        "score": 3.5514,
+        "evidence": []
+      },
+      {
+        "term": "process visualisation",
+        "score": 3.5403,
+        "evidence": []
+      },
+      {
+        "term": "process visualization",
+        "score": 3.4481,
+        "evidence": []
+      },
+      {
+        "term": "business process",
+        "score": 3.4312,
+        "evidence": []
+      },
+      {
+        "term": "international journal",
+        "score": 3.2628,
+        "evidence": []
+      },
+      {
+        "term": "management workshops",
+        "score": 3.1506,
+        "evidence": []
+      },
+      {
+        "term": "bpm international",
+        "score": 3.0955,
+        "evidence": []
+      }
+    ],
+    "sec-front-matter": [
+      {
+        "term": "data visualisation",
+        "score": 1.6911,
+        "evidence": []
+      },
+      {
+        "term": "process visualisations",
+        "score": 1.6243,
+        "evidence": []
+      },
+      {
+        "term": "business process",
+        "score": 1.4649,
+        "evidence": []
+      },
+      {
+        "term": "bpvs",
+        "score": 1.1126,
+        "evidence": []
+      },
+      {
+        "term": "overes",
+        "score": 0.7933,
+        "evidence": []
+      },
+      {
+        "term": "organisational",
+        "score": 0.7781,
+        "evidence": []
+      },
+      {
+        "term": "santoro",
+        "score": 0.7765,
+        "evidence": []
+      }
+    ]
+  }
+}

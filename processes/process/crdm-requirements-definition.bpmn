@@ -123,16 +123,16 @@ requirements">
   <bpmndi:BPMNDiagram id="Diagram_Process_CRDM_Requirements">
     <bpmndi:BPMNPlane id="Plane_Process_CRDM_Requirements" bpmnElement="Collaboration_Process_CRDM_Requirements">
       <bpmndi:BPMNShape id="Shape_Participant_Process_CRDM_Requirements" bpmnElement="Participant_Process_CRDM_Requirements" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1946" height="584" />
+        <dc:Bounds x="160" y="80" width="1956" height="584" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BA_Process_CRDM_Requirements" bpmnElement="Lane_BA" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1916" height="170" />
+        <dc:Bounds x="190" y="80" width="1926" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent_Process_CRDM_Requirements" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="250" width="1916" height="170" />
+        <dc:Bounds x="190" y="250" width="1926" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Stakeholders_Process_CRDM_Requirements" bpmnElement="Lane_Stakeholders" isHorizontal="true">
-        <dc:Bounds x="190" y="420" width="1916" height="170" />
+        <dc:Bounds x="190" y="420" width="1926" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_CRDM_Requirements" bpmnElement="Start_Process_CRDM_Requirements">
         <dc:Bounds x="310" y="317" width="36" height="36" />
@@ -147,22 +147,23 @@ requirements">
         <dc:Bounds x="890" y="310" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Wireframe" bpmnElement="Call_Wireframe">
-        <dc:Bounds x="990" y="295" width="140" height="80" />
+        <dc:Bounds x="980" y="295" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_CompareOptions" bpmnElement="A_CompareOptions">
-        <dc:Bounds x="1190" y="295" width="140" height="80" />
+        <dc:Bounds x="1200" y="295" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_BA_ReviewReqs" bpmnElement="BA_ReviewReqs">
-        <dc:Bounds x="1390" y="125" width="140" height="80" />
+        <dc:Bounds x="1400" y="125" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_S_ApproveReqs" bpmnElement="S_ApproveReqs">
-        <dc:Bounds x="1590" y="465" width="140" height="80" />
+        <dc:Bounds x="1600" y="465" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Reqs" bpmnElement="GW_Reqs" isMarkerVisible="true">
-        <dc:Bounds x="1790" y="310" width="50" height="50" />
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="1800" y="310" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1780" y="270" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_CRDM_Requirements" bpmnElement="End_Process_CRDM_Requirements">
-        <dc:Bounds x="1990" y="317" width="36" height="36" />
+        <dc:Bounds x="2000" y="317" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Requirements_1" bpmnElement="SF_Process_CRDM_Requirements_1">
         <di:waypoint x="346" y="335" />
@@ -178,45 +179,45 @@ requirements">
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Requirements_3w" bpmnElement="SF_Process_CRDM_Requirements_3w">
         <di:waypoint x="940" y="335" />
-        <di:waypoint x="990" y="335" />
+        <di:waypoint x="980" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Requirements_3x" bpmnElement="SF_Process_CRDM_Requirements_3x">
-        <di:waypoint x="1130" y="335" />
-        <di:waypoint x="1190" y="335" />
+        <di:waypoint x="1160" y="335" />
+        <di:waypoint x="1200" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Requirements_3n" bpmnElement="SF_Process_CRDM_Requirements_3n">
         <di:waypoint x="915" y="360" />
         <di:waypoint x="915" y="400" />
-        <di:waypoint x="1260" y="400" />
-        <di:waypoint x="1260" y="375" />
+        <di:waypoint x="1270" y="400" />
+        <di:waypoint x="1270" y="375" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Requirements_3b" bpmnElement="SF_Process_CRDM_Requirements_3b">
-        <di:waypoint x="1330" y="335" />
-        <di:waypoint x="1360" y="335" />
-        <di:waypoint x="1360" y="165" />
-        <di:waypoint x="1390" y="165" />
+        <di:waypoint x="1340" y="335" />
+        <di:waypoint x="1370" y="335" />
+        <di:waypoint x="1370" y="165" />
+        <di:waypoint x="1400" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Requirements_4" bpmnElement="SF_Process_CRDM_Requirements_4">
-        <di:waypoint x="1530" y="165" />
-        <di:waypoint x="1560" y="165" />
-        <di:waypoint x="1560" y="505" />
-        <di:waypoint x="1590" y="505" />
+        <di:waypoint x="1540" y="165" />
+        <di:waypoint x="1570" y="165" />
+        <di:waypoint x="1570" y="505" />
+        <di:waypoint x="1600" y="505" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Requirements_5" bpmnElement="SF_Process_CRDM_Requirements_5">
-        <di:waypoint x="1730" y="505" />
-        <di:waypoint x="1760" y="505" />
-        <di:waypoint x="1760" y="335" />
-        <di:waypoint x="1790" y="335" />
+        <di:waypoint x="1740" y="505" />
+        <di:waypoint x="1770" y="505" />
+        <di:waypoint x="1770" y="335" />
+        <di:waypoint x="1800" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Requirements_6" bpmnElement="SF_Process_CRDM_Requirements_6">
-        <di:waypoint x="1815" y="360" />
-        <di:waypoint x="1815" y="585" />
+        <di:waypoint x="1825" y="360" />
+        <di:waypoint x="1825" y="585" />
         <di:waypoint x="780" y="585" />
         <di:waypoint x="780" y="375" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Requirements_7" bpmnElement="SF_Process_CRDM_Requirements_7">
-        <di:waypoint x="1840" y="335" />
-        <di:waypoint x="1990" y="335" />
+        <di:waypoint x="1850" y="335" />
+        <di:waypoint x="2000" y="335" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
