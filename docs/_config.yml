@@ -47,6 +47,14 @@ footer_content: >-
 keep_files:
   - api
 
+# Jekyll's EntryFilter skips every directory segment starting with `_`, even
+# deep inside a page tree (`en/cat-harness/node-kind-index/cat-harness/docs/_data/node-kinds/index.html`,
+# the node-kind page for `docs/_data/node-kinds.json`, #2741). Listing the file
+# under `include:` makes `Reader#read_included_excludes` read and render it as a
+# page without exposing top-level `_data/`.
+include:
+  - en/cat-harness/node-kind-index/cat-harness/docs/_data/node-kinds/index.html
+
 exclude:
   # The docs graph's own SOURCE (owner, 2026-10-09: "move content/docs into
   # docs/"): authored blocks and their manifests, which gen-docs-pages.ts
