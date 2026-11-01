@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: feature-staging\n"
-"POT-Creation-Date: 2026-10-22T17:11:43.308Z\n"
+"POT-Creation-Date: 2026-11-01T08:56:32.982Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:65
 #. Diagram element documentation
-msgid "Build the preview from the PR's head: regenerate the generated docs, trim what this preview does not need, render the BPMN diagrams, then Jekyll, TypeDoc and the knowledge-graph export, with the staging banner and SEO identity claims stripped."
+msgid "Build the preview from the PR's head: regenerate the generated docs, trim what this preview does not need, render the BPMN diagrams, then Jekyll, TypeDoc and the knowledge-graph export, with the staging banner and SEO identity claims stripped. It is a PREVIEW build (CAT_BUILD_TYPE=preview, owner 2026-11-01): only what the change reaches, and every whole-corpus index (builtAtPublish entries marked index: true, and the search index) is main's copy, put back rather than rebuilt. A branch frozen for public comment is dispatched with build_type: full instead. Skill feature-staging, section Build types."
 msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:148

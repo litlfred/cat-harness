@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: docs-site-publish\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.378Z\n"
+"POT-Creation-Date: 2026-11-01T08:56:32.976Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -81,7 +81,7 @@ msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:88
 #. Diagram element documentation
-msgid "Compose the docs layers, build the Jekyll site, mount instance-rendered content, and generate the TypeScript API reference with TypeDoc."
+msgid "Compose the docs layers, build the Jekyll site, mount instance-rendered content, and generate the TypeScript API reference with TypeDoc. The main deploy is a FULL build (owner 2026-11-01): every index is rebuilt from the tree being published, never borrowed. Skill feature-staging, section Build types."
 msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:126
