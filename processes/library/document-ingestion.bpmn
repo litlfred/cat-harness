@@ -141,28 +141,32 @@ as referenced">
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Ingestion">
     <bpmndi:BPMNPlane id="Plane_Ingestion" bpmnElement="Collaboration_Ingestion">
-      <bpmndi:BPMNShape id="Participant_Ingestion_di" bpmnElement="Participant_Ingestion" isHorizontal="true"><dc:Bounds x="160" y="80" width="1180" height="362" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_Ingestion_di" bpmnElement="Participant_Ingestion" isHorizontal="true"><dc:Bounds x="160" y="80" width="1180" height="382" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0_di" bpmnElement="Lane_0" isHorizontal="true"><dc:Bounds x="190" y="80" width="1150" height="180" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true"><dc:Bounds x="190" y="260" width="1150" height="182" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true"><dc:Bounds x="190" y="260" width="1150" height="202" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Dropped_di" bpmnElement="StartEvent_Dropped"><dc:Bounds x="227" y="152" width="36" height="36" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_Place_di" bpmnElement="Task_Place"><dc:Bounds x="310" y="130" width="150" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_ExtractMetadata_di" bpmnElement="Task_ExtractMetadata"><dc:Bounds x="395" y="299.5" width="180" height="101" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_Place_di" bpmnElement="Task_Place"><dc:Bounds x="325" y="110" width="120" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_ExtractMetadata_di" bpmnElement="Task_ExtractMetadata"><dc:Bounds x="425" y="290" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Materialized_di" bpmnElement="Gateway_Materialized" isMarkerVisible="true"><dc:Bounds x="620" y="325" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="600" y="390.5" width="90" height="17" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="600" y="390.5" width="90" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_PlaceInLibrary_di" bpmnElement="Task_PlaceInLibrary"><dc:Bounds x="725" y="275" width="180" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Task_CatalogueReference_di" bpmnElement="Task_CatalogueReference"><dc:Bounds x="945" y="350" width="180" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_CatalogueReference_di" bpmnElement="Task_CatalogueReference"><dc:Bounds x="975" y="330" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Catalogued_di" bpmnElement="EndEvent_Catalogued"><dc:Bounds x="1197" y="332" width="36" height="36" />
         
       <bpmndi:BPMNLabel><dc:Bounds x="1237" y="332" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_i1_di" bpmnElement="Flow_i1"><di:waypoint x="263" y="170" /><di:waypoint x="310" y="170" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_i1_di" bpmnElement="Flow_i1">
+        <di:waypoint x="263" y="170" />
+        <di:waypoint x="325" y="170" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_i2_di" bpmnElement="Flow_i2">
-        <di:waypoint x="385" y="210" />
-        <di:waypoint x="385" y="350" />
-        <di:waypoint x="395" y="350" />
+        <di:waypoint x="385" y="230" />
+        <di:waypoint x="385" y="260" />
+        <di:waypoint x="485" y="260" />
+        <di:waypoint x="485" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_i3_di" bpmnElement="Flow_i3">
-        <di:waypoint x="575" y="350" />
+        <di:waypoint x="545" y="350" />
         <di:waypoint x="620" y="350" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_held_di" bpmnElement="Flow_held">
@@ -174,8 +178,8 @@ as referenced">
       <bpmndi:BPMNEdge id="Flow_referenced_di" bpmnElement="Flow_referenced">
         <di:waypoint x="645" y="375" />
         <di:waypoint x="645" y="390" />
-        <di:waypoint x="945" y="390" />
-        <bpmndi:BPMNLabel><dc:Bounds x="750" y="370" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="975" y="390" />
+        <bpmndi:BPMNLabel><dc:Bounds x="765" y="370" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_held_done_di" bpmnElement="Flow_held_done">
         <di:waypoint x="905" y="315" />
@@ -183,9 +187,10 @@ as referenced">
         <di:waypoint x="1215" y="332" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_referenced_done_di" bpmnElement="Flow_referenced_done">
-        <di:waypoint x="1125" y="390" />
-        <di:waypoint x="1215" y="390" />
-        <di:waypoint x="1215" y="368" />
+        <di:waypoint x="1095" y="390" />
+        <di:waypoint x="1146" y="390" />
+        <di:waypoint x="1146" y="350" />
+        <di:waypoint x="1197" y="350" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
