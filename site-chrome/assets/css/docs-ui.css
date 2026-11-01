@@ -607,6 +607,16 @@
   cursor: grab;
 }
 
+/* Owner, 2026-11-01: "still not working". A press on a label must start a
+ * pan, not a text selection, in every browser. Safari and Firefox can start
+ * the selection before the JS cancels the press, so the drawing's text is
+ * never selectable; the Copy button copies the whole diagram. */
+.fa-figure-scope svg,
+.fa-figure-scope svg * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 .fa-figure-scope.is-panning {
   cursor: grabbing;
   /* Without this a drag across a label selects the text instead of panning,

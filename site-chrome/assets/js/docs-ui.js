@@ -10649,11 +10649,41 @@
       }
     });
 
+    // Safari and Firefox fire `selectstart` from the compatibility mousedown
+    // even when the pointerdown was cancelled. A selection never starts
+    // inside a figure, except in a form control.
+    scope.addEventListener("selectstart", function (e) {
+      var t = e.target && e.target.nodeType === 3 ? e.target.parentNode : e.target;
+      if (t && t.closest && t.closest("input, textarea")) return;
+      e.preventDefault();
+    });
+
     scope.addEventListener("pointermove", function (e) {
       if (!drag) return;
       var dx = e.clientX - drag.x;
       var dy = e.clientY - drag.y;
       if (!drag.moved && Math.abs(dx) + Math.abs(dy) < 4) return;
+      if (!drag.moved && Math.abs(dx) >= Math.abs(dy) &&
+          scope.scrollWidth <= scope.clientWidth + 1 && step < ZOOM_STEPS.length - 1) {
+        // Owner, 2026-11-01, card Q-DRAG1 "B. Nothing moves": a figure that
+        // fits its card has no room to pan, so a sideways drag on it did
+        // nothing. Zoom in around the press point until it overflows, then pan from
+        // there, so the first drag always moves the drawing.
+        var z0 = ZOOM_STEPS[step];
+        var box = scope.getBoundingClientRect();
+        var px = drag.x - box.left + scope.scrollLeft;
+        // A drawing narrower than its card needs more than one step before
+        // it overflows; scrollWidth is read after each step, so it is real.
+        do {
+          step++;
+          apply();
+        } while (scope.scrollWidth <= scope.clientWidth + 1 && step < ZOOM_STEPS.length - 1);
+        var ratio = ZOOM_STEPS[step] / z0;
+        scope.scrollLeft = Math.max(0, px * ratio - (drag.x - box.left));
+        drag.sl = scope.scrollLeft;
+        drag.x = e.clientX;
+        dx = 0;
+      }
       drag.moved = true;
       scope.classList.add("is-panning");
       scope.scrollLeft = drag.sl - dx;
@@ -10663,11 +10693,11 @@
       // cannot take the vertical part of the drag, and a drag that moves
       // nothing reads as broken. That part moves the page instead, the way
       // the wheel over the margin already does.
-      var step = e.clientY - drag.py;
+      var dyStep = e.clientY - drag.py;
       drag.py = e.clientY;
-      if (scope.scrollTop === top && step !== 0) {
-        window.scrollBy(0, -step);
-        drag.y += step;
+      if (scope.scrollTop === top && dyStep !== 0) {
+        window.scrollBy(0, -dyStep);
+        drag.y += dyStep;
         drag.st = scope.scrollTop;
       }
       e.preventDefault();
