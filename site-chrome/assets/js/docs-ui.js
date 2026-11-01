@@ -10828,7 +10828,14 @@
     });
 
     [out, level, into, reset, wide, svgBtn, pngBtn, copyBtn, openLink, said].forEach(function (n) { tools.appendChild(n); });
-    scope.parentNode.insertBefore(tools, scope);
+    // One host holds the controls and the figure, so on a laptop the
+    // controls can float over the figure and show only on hover (owner,
+    // 2026-11-01: "controls should only appear ... on mouse hover", "tighten
+    // up ... vertical space"). A touch screen keeps them in a row above.
+    var host = el("div", { class: "fa-figure-host" });
+    scope.parentNode.insertBefore(host, scope);
+    host.appendChild(tools);
+    host.appendChild(scope);
     apply();
 
     // After insertion, so `clientWidth` is the real column width rather than 0.
