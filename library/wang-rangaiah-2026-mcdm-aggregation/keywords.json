@@ -3,69 +3,69 @@
   "entry": "wang-rangaiah-2026-mcdm-aggregation",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "normalized criteria",
-      "score": 35.6857,
+      "score": 34.5851,
       "evidence": []
     },
     {
       "term": "criteria weights",
-      "score": 34.6844,
+      "score": 33.4736,
       "evidence": []
     },
     {
       "term": "criteria values",
-      "score": 31.0167,
-      "evidence": []
-    },
-    {
-      "term": "minimization criteria",
-      "score": 29.6714,
-      "evidence": []
-    },
-    {
-      "term": "maximization criteria",
-      "score": 29.6613,
+      "score": 30.0666,
       "evidence": []
     },
     {
       "term": "alternatives cluster",
-      "score": 29.3263,
+      "score": 29.4099,
       "evidence": []
     },
     {
       "term": "among alternatives",
-      "score": 29.1968,
+      "score": 29.2831,
+      "evidence": []
+    },
+    {
+      "term": "minimization criteria",
+      "score": 28.635,
+      "evidence": []
+    },
+    {
+      "term": "maximization criteria",
+      "score": 28.6266,
       "evidence": []
     },
     {
       "term": "alternatives based",
-      "score": 27.6575,
-      "evidence": []
-    },
-    {
-      "term": "preliminary draft",
-      "score": 27.1651,
+      "score": 27.7389,
       "evidence": []
     },
     {
       "term": "draft manuscript",
-      "score": 27.0099,
+      "score": 27.1666,
+      "evidence": []
+    },
+    {
+      "term": "preliminary draft",
+      "score": 26.9588,
       "evidence": []
     },
     {
       "term": "cost criteria",
-      "score": 26.9532,
+      "score": 25.9089,
       "evidence": []
     },
     {
       "term": "benefit criteria",
-      "score": 26.8854,
+      "score": 25.8273,
       "evidence": []
     }
   ],
@@ -73,816 +73,816 @@
     "page-001": [
       {
         "term": "aggregation-type methods",
-        "score": 2.1416,
+        "score": 2.1347,
         "evidence": []
       },
       {
         "term": "mcdm methods",
-        "score": 1.9839,
+        "score": 1.9782,
         "evidence": []
       },
       {
         "term": "multi-criteria decision-making",
-        "score": 1.8326,
+        "score": 1.8148,
         "evidence": []
       },
       {
         "term": "singapore",
-        "score": 1.5905,
+        "score": 1.565,
         "evidence": []
       },
       {
         "term": "chapter",
-        "score": 0.9268,
+        "score": 0.9333,
         "evidence": []
       },
       {
         "term": "additive",
-        "score": 0.9168,
+        "score": 0.9204,
         "evidence": []
       },
       {
         "term": "multiplicative",
-        "score": 0.9147,
+        "score": 0.9182,
         "evidence": []
       },
       {
-        "term": "chemical",
-        "score": 0.8504,
+        "term": "performance score",
+        "score": 0.8532,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "aggregation-type mcdm",
-        "score": 2.6674,
+        "score": 2.6754,
         "evidence": []
       },
       {
         "term": "mcdm methods",
-        "score": 2.0874,
+        "score": 2.082,
         "evidence": []
       },
       {
         "term": "𝑗𝑡ℎ criterion",
-        "score": 2.0186,
+        "score": 2.0261,
         "evidence": []
       },
       {
         "term": "methods covered",
-        "score": 1.5137,
-        "evidence": []
-      },
-      {
-        "term": "acm",
-        "score": 1.0093,
+        "score": 1.4963,
         "evidence": []
       },
       {
         "term": "chapter",
-        "score": 1.0066,
+        "score": 1.0136,
+        "evidence": []
+      },
+      {
+        "term": "acm",
+        "score": 0.9852,
         "evidence": []
       },
       {
         "term": "fuca",
-        "score": 0.8566,
+        "score": 0.8584,
         "evidence": []
       },
       {
         "term": "𝑓𝑖𝑗",
-        "score": 0.8504,
+        "score": 0.8522,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "𝐹𝑖𝑗",
-        "score": 1.4288,
+        "score": 1.4315,
         "evidence": []
       },
       {
         "term": "weighted sum",
-        "score": 1.1535,
-        "evidence": []
-      },
-      {
-        "term": "criteria",
-        "score": 1.0823,
+        "score": 1.1327,
         "evidence": []
       },
       {
         "term": "minimization",
-        "score": 1.0804,
+        "score": 1.0843,
         "evidence": []
       },
       {
         "term": "maximization",
-        "score": 1.0508,
-        "evidence": []
-      },
-      {
-        "term": "normalized value",
-        "score": 1.0304,
+        "score": 1.055,
         "evidence": []
       },
       {
         "term": "criterion",
-        "score": 1.0303,
+        "score": 1.0397,
+        "evidence": []
+      },
+      {
+        "term": "criteria",
+        "score": 1.0346,
+        "evidence": []
+      },
+      {
+        "term": "normalized value",
+        "score": 1.0292,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "normalized acm",
-        "score": 2.2719,
+        "score": 2.2405,
         "evidence": []
       },
       {
         "term": "weighted normalized",
-        "score": 1.9691,
+        "score": 1.9569,
         "evidence": []
       },
       {
         "term": "saw walkthrough",
-        "score": 1.55,
+        "score": 1.5549,
         "evidence": []
       },
       {
         "term": "numerical calculations",
-        "score": 1.4216,
+        "score": 1.4251,
         "evidence": []
       },
       {
         "term": "𝑤𝑗",
-        "score": 0.7787,
+        "score": 0.7811,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "mew method",
-        "score": 1.6141,
+        "score": 1.6189,
         "evidence": []
       },
       {
         "term": "top-ranked alternative",
-        "score": 1.4111,
+        "score": 1.4102,
         "evidence": []
       },
       {
         "term": "mcdm methods",
-        "score": 1.3212,
+        "score": 1.3196,
         "evidence": []
       },
       {
         "term": "saw",
-        "score": 1.0852,
+        "score": 1.0891,
         "evidence": []
       },
       {
         "term": "criteria values",
-        "score": 1.0538,
+        "score": 1.0312,
         "evidence": []
       },
       {
         "term": "𝑃𝑖",
-        "score": 0.7944,
+        "score": 0.7967,
         "evidence": []
       },
       {
         "term": "multiplicative",
-        "score": 0.7248,
+        "score": 0.7276,
         "evidence": []
       },
       {
         "term": "ranking",
-        "score": 0.6969,
+        "score": 0.7021,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "multiplicative aggregation",
-        "score": 1.9633,
+        "score": 1.9607,
         "evidence": []
       },
       {
         "term": "top-ranked alternative",
-        "score": 1.9471,
+        "score": 1.945,
         "evidence": []
       },
       {
         "term": "mew",
-        "score": 1.4399,
+        "score": 1.4437,
         "evidence": []
       },
       {
         "term": "performance score",
-        "score": 1.3081,
+        "score": 1.3292,
         "evidence": []
       },
       {
         "term": "numerical calculations",
-        "score": 1.1333,
+        "score": 1.1374,
         "evidence": []
       },
       {
         "term": "𝑃𝑖",
-        "score": 1.0024,
+        "score": 1.0053,
         "evidence": []
       },
       {
         "term": "criterion",
-        "score": 0.9487,
+        "score": 0.9574,
         "evidence": []
       },
       {
         "term": "saw",
-        "score": 0.9348,
+        "score": 0.9381,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "criteria weights",
-        "score": 1.9685,
+        "score": 1.9095,
         "evidence": []
       },
       {
         "term": "pairwise comparisons",
-        "score": 1.8503,
+        "score": 1.8304,
         "evidence": []
       },
       {
         "term": "ahp method",
-        "score": 1.7385,
+        "score": 1.7454,
         "evidence": []
       },
       {
         "term": "subjective pairwise",
-        "score": 1.7065,
+        "score": 1.7074,
         "evidence": []
       },
       {
         "term": "eigenvalue method",
-        "score": 1.3071,
+        "score": 1.3121,
         "evidence": []
       },
       {
         "term": "saaty",
-        "score": 1.2612,
+        "score": 1.2651,
         "evidence": []
       },
       {
         "term": "decision hierarchy",
-        "score": 1.1396,
+        "score": 1.2086,
         "evidence": []
       },
       {
         "term": "comparison matrix",
-        "score": 1.0578,
+        "score": 1.056,
         "evidence": []
       }
     ],
     "page-008": [
       {
-        "term": "ahp method",
-        "score": 2.0494,
+        "term": "local priority",
+        "score": 2.0681,
         "evidence": []
       },
       {
-        "term": "local priority",
-        "score": 1.9694,
+        "term": "ahp method",
+        "score": 2.0575,
         "evidence": []
       },
       {
         "term": "subjective pairwise",
-        "score": 1.9653,
+        "score": 1.9669,
         "evidence": []
       },
       {
         "term": "pairwise comparisons",
-        "score": 1.9423,
-        "evidence": []
-      },
-      {
-        "term": "criteria weights",
-        "score": 1.7552,
+        "score": 1.9222,
         "evidence": []
       },
       {
         "term": "priority vectors",
-        "score": 1.7033,
+        "score": 1.8042,
         "evidence": []
       },
       {
         "term": "priority matrix",
-        "score": 1.6924,
+        "score": 1.7955,
+        "evidence": []
+      },
+      {
+        "term": "criteria weights",
+        "score": 1.7028,
         "evidence": []
       },
       {
         "term": "saaty scale",
-        "score": 1.5913,
+        "score": 1.5939,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "relative importance",
-        "score": 1.8914,
+        "score": 1.7941,
         "evidence": []
       },
       {
         "term": "criterion compared",
-        "score": 1.6338,
+        "score": 1.629,
         "evidence": []
       },
       {
         "term": "𝑎𝑛",
-        "score": 1.2846,
+        "score": 1.2854,
         "evidence": []
       },
       {
         "term": "saaty scale",
-        "score": 1.261,
+        "score": 1.2631,
         "evidence": []
       },
       {
         "term": "leading diagonal",
-        "score": 1.1402,
+        "score": 1.1233,
         "evidence": []
       },
       {
         "term": "pairwise comparison",
-        "score": 1.0894,
+        "score": 1.0813,
         "evidence": []
       },
       {
         "term": "comparison matrix",
-        "score": 1.0264,
+        "score": 1.0274,
         "evidence": []
       },
       {
         "term": "𝑎𝑖𝑗",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       }
     ],
     "page-010": [
       {
         "term": "principal eigenvector",
-        "score": 2.938,
+        "score": 2.947,
         "evidence": []
       },
       {
         "term": "principal eigenvalue",
-        "score": 2.5505,
+        "score": 2.5599,
         "evidence": []
       },
       {
         "term": "corresponding principal",
-        "score": 1.9375,
+        "score": 1.9493,
         "evidence": []
       },
       {
         "term": "criteria weights",
-        "score": 1.6922,
+        "score": 1.6454,
         "evidence": []
       },
       {
         "term": "𝜆max",
-        "score": 1.1493,
+        "score": 1.1511,
         "evidence": []
       },
       {
         "term": "𝑤𝑗",
-        "score": 1.1407,
+        "score": 1.1442,
         "evidence": []
       },
       {
         "term": "pairwise comparison",
-        "score": 1.0894,
+        "score": 1.0813,
         "evidence": []
       }
     ],
     "page-011": [
       {
         "term": "𝐶𝑅",
-        "score": 1.8418,
+        "score": 1.8426,
         "evidence": []
       },
       {
         "term": "pairwise comparison",
-        "score": 1.6679,
+        "score": 1.6549,
         "evidence": []
       },
       {
         "term": "transitive property",
-        "score": 1.3863,
+        "score": 1.3921,
         "evidence": []
       },
       {
         "term": "comparison matrix",
-        "score": 1.3,
+        "score": 1.2969,
         "evidence": []
       },
       {
         "term": "criterion",
-        "score": 1.1634,
+        "score": 1.174,
         "evidence": []
       },
       {
         "term": "saaty",
-        "score": 1.1328,
+        "score": 1.1364,
         "evidence": []
       },
       {
         "term": "𝜆max",
-        "score": 0.9108,
+        "score": 0.9122,
         "evidence": []
       },
       {
         "term": "consistency",
-        "score": 0.886,
+        "score": 0.8746,
         "evidence": []
       }
     ],
     "page-012": [
       {
         "term": "pairwise comparison",
-        "score": 1.7768,
+        "score": 1.7635,
         "evidence": []
       },
       {
         "term": "saaty scale",
-        "score": 1.6903,
+        "score": 1.6929,
         "evidence": []
       },
       {
         "term": "value 𝐹𝑖𝑗",
-        "score": 1.5043,
+        "score": 1.5082,
         "evidence": []
       },
       {
         "term": "comparison matrices",
-        "score": 1.3332,
+        "score": 1.3281,
         "evidence": []
       },
       {
         "term": "objective measurement",
-        "score": 1.3132,
+        "score": 1.283,
         "evidence": []
       },
       {
         "term": "mathematical mapping",
-        "score": 1.2407,
+        "score": 1.2354,
         "evidence": []
       },
       {
         "term": "criterion",
-        "score": 1.2192,
+        "score": 1.2303,
         "evidence": []
       },
       {
         "term": "alternatives",
-        "score": 1.1729,
+        "score": 1.177,
         "evidence": []
       }
     ],
     "page-013": [
       {
         "term": "𝐹𝑖𝑗 𝑚𝑖𝑛",
-        "score": 3.7938,
+        "score": 3.7998,
         "evidence": []
       },
       {
         "term": "comparing 𝐹𝑖𝑗",
-        "score": 3.2144,
+        "score": 3.2074,
         "evidence": []
       },
       {
         "term": "minimum 𝐹𝑖𝑗",
-        "score": 2.943,
+        "score": 2.9487,
         "evidence": []
       },
       {
         "term": "value 𝑎𝑖𝑘",
-        "score": 2.1495,
+        "score": 2.1524,
         "evidence": []
       },
       {
         "term": "logarithmic transformation",
-        "score": 2.0474,
+        "score": 2.0287,
         "evidence": []
       },
       {
         "term": "𝑙𝑛",
-        "score": 1.7726,
+        "score": 1.7739,
         "evidence": []
       },
       {
         "term": "pairwise comparison",
-        "score": 1.6679,
+        "score": 1.6549,
         "evidence": []
       },
       {
         "term": "𝑟𝑚𝑖𝑛",
-        "score": 1.6372,
+        "score": 1.6383,
         "evidence": []
       }
     ],
     "page-014": [
       {
         "term": "𝑙𝑛",
-        "score": 2.0016,
+        "score": 2.003,
         "evidence": []
       },
       {
         "term": "𝑟𝑚𝑖𝑛",
-        "score": 1.2667,
+        "score": 1.2676,
         "evidence": []
       },
       {
         "term": "𝑚𝑖𝑛",
-        "score": 1.2102,
-        "evidence": []
-      },
-      {
-        "term": "normalized value",
-        "score": 1.1454,
+        "score": 1.2115,
         "evidence": []
       },
       {
         "term": "local priority",
-        "score": 1.1073,
+        "score": 1.1596,
+        "evidence": []
+      },
+      {
+        "term": "normalized value",
+        "score": 1.1438,
         "evidence": []
       }
     ],
     "page-015": [
       {
         "term": "local priority",
-        "score": 1.7258,
+        "score": 1.8109,
         "evidence": []
       },
       {
         "term": "priority scores",
-        "score": 1.688,
+        "score": 1.7589,
         "evidence": []
       },
       {
         "term": "𝑣𝑖",
-        "score": 1.4089,
+        "score": 1.4104,
         "evidence": []
       },
       {
         "term": "pairwise comparison",
-        "score": 1.3747,
+        "score": 1.3644,
         "evidence": []
       },
       {
         "term": "criteria weights",
-        "score": 1.2253,
+        "score": 1.1884,
         "evidence": []
       }
     ],
     "page-016": [
       {
         "term": "superdecisions",
-        "score": 1.4529,
+        "score": 1.4554,
         "evidence": []
       },
       {
         "term": "ahp model",
-        "score": 1.2917,
+        "score": 1.2893,
         "evidence": []
       },
       {
         "term": "pairwise comparison",
-        "score": 1.0894,
+        "score": 1.0813,
         "evidence": []
       },
       {
         "term": "alternatives",
-        "score": 0.8198,
+        "score": 0.8227,
         "evidence": []
       },
       {
         "term": "anp",
-        "score": 0.7619,
+        "score": 0.7644,
         "evidence": []
       },
       {
         "term": "criteria",
-        "score": 0.6516,
+        "score": 0.6229,
         "evidence": []
       },
       {
         "term": "calculations",
-        "score": 0.62,
+        "score": 0.6187,
         "evidence": []
       }
     ],
     "page-017": [
       {
         "term": "superdecisions",
-        "score": 0.8908,
+        "score": 0.8924,
         "evidence": []
       },
       {
         "term": "ahp",
-        "score": 0.7052,
+        "score": 0.7082,
         "evidence": []
       },
       {
         "term": "screenshot",
-        "score": 0.5224,
+        "score": 0.5114,
         "evidence": []
       }
     ],
     "page-018": [
       {
         "term": "saaty scale",
-        "score": 1.6903,
+        "score": 1.6929,
         "evidence": []
       },
       {
         "term": "mcdm methods",
-        "score": 1.4235,
+        "score": 1.4205,
         "evidence": []
       },
       {
         "term": "ahp",
-        "score": 1.3349,
+        "score": 1.3404,
         "evidence": []
       },
       {
         "term": "hybrid approach",
-        "score": 1.1821,
+        "score": 1.1819,
         "evidence": []
       },
       {
         "term": "alternatives",
-        "score": 1.0592,
-        "evidence": []
-      },
-      {
-        "term": "acm",
-        "score": 0.8348,
+        "score": 1.0629,
         "evidence": []
       },
       {
         "term": "mew",
-        "score": 0.8129,
+        "score": 0.8151,
+        "evidence": []
+      },
+      {
+        "term": "acm",
+        "score": 0.8149,
         "evidence": []
       },
       {
         "term": "objective",
-        "score": 0.7943,
+        "score": 0.7827,
         "evidence": []
       }
     ],
     "page-019": [
       {
         "term": "anp",
-        "score": 1.5968,
+        "score": 1.6021,
         "evidence": []
       },
       {
         "term": "clusters",
-        "score": 1.362,
+        "score": 1.3004,
         "evidence": []
       },
       {
         "term": "technical feasibility",
-        "score": 1.3434,
+        "score": 1.2715,
         "evidence": []
       },
       {
         "term": "network structure",
-        "score": 1.2327,
+        "score": 1.2185,
         "evidence": []
       },
       {
         "term": "alternatives",
-        "score": 1.1729,
+        "score": 1.177,
         "evidence": []
       },
       {
         "term": "criteria",
-        "score": 1.168,
+        "score": 1.1166,
         "evidence": []
       },
       {
         "term": "influences",
-        "score": 1.1523,
+        "score": 1.111,
         "evidence": []
       },
       {
         "term": "ahp",
-        "score": 1.0332,
+        "score": 1.0375,
         "evidence": []
       }
     ],
     "page-020": [
       {
         "term": "criteria cluster",
-        "score": 1.8744,
+        "score": 1.8332,
         "evidence": []
       },
       {
         "term": "alternatives clusters",
-        "score": 1.8263,
+        "score": 1.792,
         "evidence": []
       },
       {
         "term": "child nodes",
-        "score": 1.4685,
+        "score": 1.4735,
         "evidence": []
       },
       {
         "term": "influences both",
-        "score": 1.4302,
-        "evidence": []
-      },
-      {
-        "term": "technical feasibility",
-        "score": 1.3434,
+        "score": 1.3858,
         "evidence": []
       },
       {
         "term": "arrows",
-        "score": 1.2846,
+        "score": 1.2854,
+        "evidence": []
+      },
+      {
+        "term": "technical feasibility",
+        "score": 1.2715,
         "evidence": []
       },
       {
         "term": "market risk",
-        "score": 1.0233,
+        "score": 1.0274,
         "evidence": []
       }
     ],
     "page-021": [
       {
         "term": "pairwise comparison",
-        "score": 1.203,
-        "evidence": []
-      },
-      {
-        "term": "influences both",
-        "score": 1.1695,
+        "score": 1.1931,
         "evidence": []
       },
       {
         "term": "𝜆max",
-        "score": 1.1493,
+        "score": 1.1511,
+        "evidence": []
+      },
+      {
+        "term": "influences both",
+        "score": 1.1344,
         "evidence": []
       },
       {
         "term": "comparison matrix",
-        "score": 1.0578,
+        "score": 1.056,
         "evidence": []
       },
       {
         "term": "criteria",
-        "score": 0.9775,
+        "score": 0.9344,
         "evidence": []
       },
       {
         "term": "twice",
-        "score": 0.7828,
+        "score": 0.7851,
         "evidence": []
       }
     ],
     "page-022": [
       {
         "term": "parent influence",
-        "score": 2.0801,
+        "score": 1.9986,
         "evidence": []
       },
       {
         "term": "𝑤𝐶",
-        "score": 1.9611,
+        "score": 1.9629,
         "evidence": []
       },
       {
         "term": "alternatives cluster",
-        "score": 1.6739,
+        "score": 1.6748,
         "evidence": []
       },
       {
         "term": "corresponding priorities",
-        "score": 1.6717,
+        "score": 1.6745,
         "evidence": []
       },
       {
         "term": "criteria cluster",
-        "score": 1.6307,
+        "score": 1.6068,
         "evidence": []
       }
     ],
     "page-023": [
       {
         "term": "weighted supermatrix",
-        "score": 2.1121,
+        "score": 2.1068,
         "evidence": []
       },
       {
@@ -892,574 +892,574 @@
       },
       {
         "term": "alternative node",
-        "score": 1.4348,
-        "evidence": []
-      },
-      {
-        "term": "𝑤𝐶",
-        "score": 1.2373,
+        "score": 1.4367,
         "evidence": []
       },
       {
         "term": "feedback loop",
-        "score": 1.2017,
+        "score": 1.254,
+        "evidence": []
+      },
+      {
+        "term": "𝑤𝐶",
+        "score": 1.2385,
         "evidence": []
       }
     ],
     "page-024": [
       {
         "term": "limit supermatrix",
-        "score": 2.7235,
+        "score": 2.7221,
         "evidence": []
       },
       {
         "term": "weighted supermatrix",
-        "score": 2.4706,
+        "score": 2.4674,
         "evidence": []
       },
       {
         "term": "parent node",
-        "score": 1.5022,
-        "evidence": []
-      },
-      {
-        "term": "influence among",
-        "score": 1.2271,
+        "score": 1.5036,
         "evidence": []
       },
       {
         "term": "global priority",
-        "score": 1.2125,
+        "score": 1.26,
+        "evidence": []
+      },
+      {
+        "term": "influence among",
+        "score": 1.1611,
         "evidence": []
       },
       {
         "term": "powers",
-        "score": 1.1143,
+        "score": 1.1163,
         "evidence": []
       }
     ],
     "page-025": [
       {
         "term": "weighted supermatrix",
-        "score": 1.9625,
+        "score": 1.9587,
         "evidence": []
       },
       {
         "term": "limit supermatrix",
-        "score": 1.9538,
+        "score": 1.953,
         "evidence": []
       },
       {
         "term": "superdecisions",
-        "score": 1.4529,
+        "score": 1.4554,
         "evidence": []
       }
     ],
     "page-026": [
       {
         "term": "weighted normalized",
-        "score": 1.5502,
+        "score": 1.5402,
         "evidence": []
       },
       {
         "term": "anp",
-        "score": 1.5238,
-        "evidence": []
-      },
-      {
-        "term": "copras",
-        "score": 0.9977,
+        "score": 1.5288,
         "evidence": []
       },
       {
         "term": "decision problems",
-        "score": 0.9358,
+        "score": 1.0362,
+        "evidence": []
+      },
+      {
+        "term": "copras",
+        "score": 1.0006,
         "evidence": []
       },
       {
         "term": "superdecisions",
-        "score": 0.8908,
+        "score": 0.8924,
         "evidence": []
       },
       {
         "term": "criteria",
-        "score": 0.7565,
+        "score": 0.7232,
         "evidence": []
       },
       {
         "term": "alternatives",
-        "score": 0.7062,
+        "score": 0.7086,
         "evidence": []
       },
       {
         "term": "loops",
-        "score": 0.6863,
+        "score": 0.6745,
         "evidence": []
       }
     ],
     "page-027": [
       {
         "term": "normalized acm",
-        "score": 2.1971,
+        "score": 2.1648,
         "evidence": []
       },
       {
         "term": "weighted normalized",
-        "score": 1.7236,
+        "score": 1.713,
         "evidence": []
       },
       {
         "term": "copras walkthrough",
-        "score": 1.5999,
+        "score": 1.6044,
         "evidence": []
       },
       {
         "term": "numerical calculations",
-        "score": 1.4216,
+        "score": 1.4251,
         "evidence": []
       },
       {
         "term": "𝐹𝑖𝑗",
-        "score": 0.876,
+        "score": 0.8777,
         "evidence": []
       },
       {
         "term": "performance score",
-        "score": 0.8337,
+        "score": 0.8532,
         "evidence": []
       }
     ],
     "page-028": [
       {
         "term": "𝑆𝑖 𝑣𝑖𝑗",
-        "score": 2.6945,
+        "score": 2.699,
         "evidence": []
       },
       {
         "term": "maximization criteria",
-        "score": 1.9655,
+        "score": 1.9293,
         "evidence": []
       },
       {
         "term": "minimization criteria",
-        "score": 1.8453,
+        "score": 1.8083,
         "evidence": []
       },
       {
         "term": "weighted normalized",
-        "score": 1.4352,
+        "score": 1.4257,
         "evidence": []
       }
     ],
     "page-029": [
       {
         "term": "minimization criteria",
-        "score": 2.1132,
+        "score": 2.0716,
         "evidence": []
       },
       {
         "term": "maximization criteria",
-        "score": 2.0836,
-        "evidence": []
-      },
-      {
-        "term": "criteria exist",
-        "score": 1.8518,
+        "score": 2.0422,
         "evidence": []
       },
       {
         "term": "𝑆𝑖",
-        "score": 1.8159,
+        "score": 1.8179,
         "evidence": []
       },
       {
-        "term": "criteria values",
-        "score": 1.435,
+        "term": "criteria exist",
+        "score": 1.7463,
         "evidence": []
       },
       {
         "term": "both maximization",
-        "score": 1.4015,
+        "score": 1.4016,
         "evidence": []
       },
       {
         "term": "performance score",
-        "score": 1.3698,
+        "score": 1.3964,
+        "evidence": []
+      },
+      {
+        "term": "criteria values",
+        "score": 1.3956,
         "evidence": []
       },
       {
         "term": "copras",
-        "score": 1.2896,
+        "score": 1.2933,
         "evidence": []
       }
     ],
     "page-030": [
       {
         "term": "normalized acm",
-        "score": 2.1971,
+        "score": 2.1648,
         "evidence": []
       },
       {
         "term": "moora walkthrough",
-        "score": 1.8586,
+        "score": 1.8632,
         "evidence": []
       },
       {
         "term": "weighted normalized",
-        "score": 1.7236,
+        "score": 1.713,
         "evidence": []
       },
       {
         "term": "numerical calculations",
-        "score": 1.4216,
+        "score": 1.4251,
         "evidence": []
       },
       {
         "term": "𝐹𝑖𝑗",
-        "score": 0.876,
+        "score": 0.8777,
         "evidence": []
       }
     ],
     "page-031": [
       {
         "term": "choix adéquat",
-        "score": 1.8993,
+        "score": 1.9015,
         "evidence": []
       },
       {
         "term": "maximization criteria",
-        "score": 1.6947,
+        "score": 1.6545,
         "evidence": []
       },
       {
         "term": "copras method",
-        "score": 1.4529,
+        "score": 1.4574,
         "evidence": []
       },
       {
         "term": "performance score",
-        "score": 1.2287,
+        "score": 1.251,
         "evidence": []
       },
       {
         "term": "𝑃𝑖",
-        "score": 1.1638,
+        "score": 1.1671,
         "evidence": []
       },
       {
         "term": "fuca",
-        "score": 1.0809,
+        "score": 1.0832,
         "evidence": []
       },
       {
         "term": "moora",
-        "score": 1.0493,
+        "score": 1.0518,
         "evidence": []
       },
       {
         "term": "faire",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       }
     ],
     "page-032": [
       {
         "term": "receiving rank",
-        "score": 1.9266,
+        "score": 1.9502,
         "evidence": []
       },
       {
         "term": "receives rank",
-        "score": 1.8892,
+        "score": 1.9108,
         "evidence": []
       },
       {
         "term": "worst receives",
-        "score": 1.5377,
+        "score": 1.5247,
         "evidence": []
       },
       {
         "term": "𝑅𝑖",
-        "score": 1.2846,
+        "score": 1.2854,
         "evidence": []
       },
       {
         "term": "alternative",
-        "score": 1.2093,
+        "score": 1.2027,
         "evidence": []
       },
       {
         "term": "criterion",
-        "score": 1.101,
+        "score": 1.1111,
         "evidence": []
       },
       {
         "term": "assigned",
-        "score": 0.9199,
+        "score": 0.8987,
         "evidence": []
       },
       {
         "term": "criteria",
-        "score": 0.8422,
+        "score": 0.8051,
         "evidence": []
       }
     ],
     "page-033": [
       {
         "term": "waspas method",
-        "score": 1.8085,
+        "score": 1.8129,
         "evidence": []
       },
       {
         "term": "fuca",
-        "score": 1.6214,
+        "score": 1.6248,
         "evidence": []
       },
       {
         "term": "numerical calculations",
-        "score": 1.43,
+        "score": 1.4353,
         "evidence": []
       },
       {
         "term": "ranks",
-        "score": 1.1617,
+        "score": 1.1417,
         "evidence": []
       },
       {
         "term": "alternatives",
-        "score": 1.0592,
+        "score": 1.0629,
         "evidence": []
       },
       {
         "term": "saw",
-        "score": 0.9348,
+        "score": 0.9381,
         "evidence": []
       },
       {
         "term": "normalization",
-        "score": 0.8252,
+        "score": 0.8221,
         "evidence": []
       },
       {
         "term": "mew",
-        "score": 0.8129,
+        "score": 0.8151,
         "evidence": []
       }
     ],
     "page-034": [
       {
         "term": "waspas",
-        "score": 1.4251,
+        "score": 1.4279,
         "evidence": []
       },
       {
         "term": "mew",
-        "score": 1.3258,
+        "score": 1.3293,
         "evidence": []
       },
       {
         "term": "saw",
-        "score": 1.2082,
+        "score": 1.2125,
         "evidence": []
       },
       {
         "term": "mcdm methods",
-        "score": 1.1281,
+        "score": 1.1257,
         "evidence": []
       },
       {
         "term": "multiplicative",
-        "score": 1.0619,
+        "score": 1.066,
         "evidence": []
       },
       {
         "term": "𝑃𝑖",
-        "score": 1.0024,
+        "score": 1.0053,
         "evidence": []
       },
       {
         "term": "additive",
-        "score": 0.9168,
+        "score": 0.9204,
         "evidence": []
       },
       {
         "term": "alternative",
-        "score": 0.8117,
+        "score": 0.8072,
         "evidence": []
       }
     ],
     "page-035": [
       {
         "term": "aggregation-type mcdm",
-        "score": 2.6977,
+        "score": 2.7059,
         "evidence": []
       },
       {
         "term": "mcdm methods",
-        "score": 2.4377,
+        "score": 2.4306,
         "evidence": []
       },
       {
         "term": "fuca",
-        "score": 1.2549,
+        "score": 1.2576,
         "evidence": []
       },
       {
         "term": "aggregation type",
-        "score": 1.1634,
-        "evidence": []
-      },
-      {
-        "term": "criteria values",
-        "score": 1.0538,
+        "score": 1.1602,
         "evidence": []
       },
       {
         "term": "moora",
-        "score": 1.0493,
+        "score": 1.0518,
+        "evidence": []
+      },
+      {
+        "term": "criteria values",
+        "score": 1.0312,
         "evidence": []
       },
       {
         "term": "alternatives",
-        "score": 0.9912,
+        "score": 0.9947,
         "evidence": []
       },
       {
         "term": "waspas",
-        "score": 0.8738,
+        "score": 0.8755,
         "evidence": []
       }
     ],
     "page-036": [
       {
-        "term": "analytic hierarchy",
-        "score": 1.718,
+        "term": "multi-criteria decision",
+        "score": 1.7376,
         "evidence": []
       },
       {
-        "term": "multi-criteria decision",
-        "score": 1.5794,
+        "term": "analytic hierarchy",
+        "score": 1.6617,
         "evidence": []
       },
       {
         "term": "analytic network",
-        "score": 1.5333,
+        "score": 1.5162,
         "evidence": []
       },
       {
         "term": "multi-objective optimization",
-        "score": 1.4163,
+        "score": 1.4219,
         "evidence": []
       },
       {
         "term": "hierarchy process",
-        "score": 1.2426,
+        "score": 1.329,
         "evidence": []
       },
       {
         "term": "saaty",
-        "score": 1.1328,
+        "score": 1.1364,
         "evidence": []
       },
       {
         "term": "nabavi",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       },
       {
         "term": "journal",
-        "score": 0.926,
+        "score": 0.9208,
         "evidence": []
       }
     ],
     "page-037": [
       {
         "term": "chemical engineering",
-        "score": 2.3867,
+        "score": 2.3695,
         "evidence": []
       },
       {
         "term": "multi-criteria decision",
-        "score": 1.8179,
+        "score": 1.9764,
         "evidence": []
       },
       {
         "term": "multiobjective optimization",
-        "score": 1.7981,
+        "score": 1.8045,
         "evidence": []
       },
       {
         "term": "rangaiah",
-        "score": 1.6865,
+        "score": 1.6873,
         "evidence": []
       },
       {
         "term": "multi-objective optimization",
-        "score": 1.6672,
+        "score": 1.6747,
         "evidence": []
       },
       {
         "term": "learning aided",
-        "score": 1.4612,
+        "score": 1.4523,
         "evidence": []
       },
       {
         "term": "wang",
-        "score": 1.0508,
+        "score": 1.0443,
         "evidence": []
       },
       {
         "term": "zaidan",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       }
     ],
     "page-038": [
       {
         "term": "benefit criteria",
-        "score": 1.7207,
+        "score": 1.6708,
         "evidence": []
       },
       {
         "term": "acm consisting",
-        "score": 1.5502,
+        "score": 1.4948,
         "evidence": []
       },
       {
         "term": "top-ranked alternative",
-        "score": 1.266,
+        "score": 1.2659,
         "evidence": []
       },
       {
         "term": "mcdm methods",
-        "score": 1.1281,
+        "score": 1.1257,
         "evidence": []
       },
       {
         "term": "methods covered",
-        "score": 1.1232,
+        "score": 1.111,
         "evidence": []
       }
     ],
     "page-039": [
       {
         "term": "similarities",
-        "score": 0.9699,
+        "score": 0.9569,
         "evidence": []
       },
       {
         "term": "differences",
-        "score": 0.6943,
+        "score": 0.6558,
         "evidence": []
       },
       {
         "term": "criteria",
-        "score": 0.6516,
+        "score": 0.6229,
         "evidence": []
       },
       {
         "term": "methods",
-        "score": 0.5719,
+        "score": 0.5645,
         "evidence": []
       }
     ]

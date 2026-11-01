@@ -5461,7 +5461,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The first matching pattern decides: take-base, generated-regions, qa-sidecar, or refuse. A path no pattern names refuses."
+          "@value": "The first matching pattern decides: take-base, owned-tree, generated-regions, or refuse. A path no pattern names refuses."
         }
       ],
       "skos:notation": "Task_Classify",
@@ -5556,7 +5556,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "qa-sidecar paths first, through `qa:resolve-conflicts`; take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction."
+          "@value": "take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction."
         }
       ],
       "skos:notation": "Task_Resolve",

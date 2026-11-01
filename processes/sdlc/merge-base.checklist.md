@@ -60,7 +60,7 @@ Bring the base branch into a pull-request branch: merge, classify every conflict
 
 - Who: the `merge:main command` lane (role `build-pipeline`).
 - Skill: `merge-conflict-patterns`.
-- What: The first matching pattern decides: take-base, generated-regions, qa-sidecar, or refuse.
+- What: The first matching pattern decides: take-base, owned-tree, generated-regions, or refuse.
 - Record it: `workflow_complete` with `node: "Task_Classify"`.
 - next: → `GW_AllDeclared` (Every path resolvable?)
 
@@ -105,7 +105,7 @@ Bring the base branch into a pull-request branch: merge, classify every conflict
 
 - Who: the `merge:main command` lane (role `build-pipeline`).
 - Skill: `merge-conflict-patterns`.
-- What: qa-sidecar paths first, through `qa:resolve-conflicts`; take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction.
+- What: take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction.
 - Record it: `workflow_complete` with `node: "Task_Resolve"`.
 - next: → `Task_Regen` (Regenerate, asking every CI gate)
 
