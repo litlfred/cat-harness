@@ -10421,7 +10421,7 @@
     var isImg = String(art.nodeName).toLowerCase() === "img";
     var src = art.getAttribute("data-fa-src") || (isImg ? art.getAttribute("src") : "") || "";
     if (!src) return "";
-    try { return new URL(src, document.baseURI).href; } catch (e) { return ""; }
+    try { return new URL(src, document.baseURI).href; } catch (_e) { return ""; }
   }
 
   /**
