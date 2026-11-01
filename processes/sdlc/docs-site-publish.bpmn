@@ -75,7 +75,7 @@ Mechanical throughout. There is no human lane, which is what makes `build-pipeli
     <bpmn:task id="Task_Regenerate" name="Regenerate every derived&#10;reference from its source">
 
 
-      <bpmn:documentation>Regenerate every derived reference from its source before building: skill schema and instruction pages, content-backed docs pages, the graph projections and viewers, the handler and translation indexes, and the rendered BPMN diagrams. The published site is built from sources, never from committed copies that may be stale.</bpmn:documentation>
+      <bpmn:documentation>Regenerate every derived reference from its source before building: skill schema and instruction pages, content-backed docs pages, the graph projections and viewers, the handler and translation indexes, and the rendered BPMN diagrams. The published site is built from sources, never from committed copies that may be stale. After a main deploy, a side job (writer-records) runs every writer, and every step of the QA working copy, again under strace. It records what each one READ and keeps what it wrote, so a preview can rerun only the writers and QA steps whose reads changed (owner card Q-CONE-2 B, 2026-11-01). The main deploy itself still runs everything.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:no-skill reason="Five independent generators run from their own sources. Each is documented where it lives; there is no single procedure for &quot;regenerate everything&quot;, and inventing one here would name a skill nobody could open."/>
       </bpmn:extensionElements>

@@ -3,69 +3,69 @@
   "entry": "best-practices---google-antigravity-docs",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "google antigravity",
-      "score": 4.1069,
+      "score": 4.1091,
       "evidence": []
     },
     {
       "term": "antigravity docs",
-      "score": 3.9996,
+      "score": 4.0172,
       "evidence": []
     },
     {
       "term": "antigravity cli",
-      "score": 3.7149,
+      "score": 3.7273,
       "evidence": []
     },
     {
       "term": "get started",
-      "score": 3.2891,
+      "score": 3.278,
       "evidence": []
     },
     {
       "term": "agent execute",
-      "score": 3.0999,
+      "score": 3.1314,
       "evidence": []
     },
     {
       "term": "keyboard arrow",
-      "score": 3.0517,
+      "score": 3.0578,
       "evidence": []
     },
     {
       "term": "practices google",
-      "score": 2.8499,
-      "evidence": []
-    },
-    {
-      "term": "implementation plan",
-      "score": 2.2185,
+      "score": 2.8415,
       "evidence": []
     },
     {
       "term": "content copy",
-      "score": 2.2112,
+      "score": 2.2265,
+      "evidence": []
+    },
+    {
+      "term": "implementation plan",
+      "score": 2.2132,
       "evidence": []
     },
     {
       "term": "test command",
-      "score": 2.194,
+      "score": 2.2002,
       "evidence": []
     },
     {
       "term": "local agents",
-      "score": 2.181,
+      "score": 2.1939,
       "evidence": []
     },
     {
       "term": "prompt box",
-      "score": 2.1326,
+      "score": 2.15,
       "evidence": []
     }
   ],
@@ -73,153 +73,153 @@
     "page-001": [
       {
         "term": "implementation plan",
-        "score": 1.2872,
+        "score": 1.2857,
         "evidence": []
       },
       {
         "term": "get started",
-        "score": 1.137,
+        "score": 1.1331,
         "evidence": []
       },
       {
         "term": "antigravity",
-        "score": 0.8292,
+        "score": 0.8312,
         "evidence": []
       },
       {
         "term": "agent",
-        "score": 0.7642,
+        "score": 0.7764,
         "evidence": []
       },
       {
         "term": "autonomous",
-        "score": 0.721,
+        "score": 0.7238,
         "evidence": []
       },
       {
         "term": "local",
-        "score": 0.7075,
+        "score": 0.7094,
         "evidence": []
       },
       {
         "term": "command",
-        "score": 0.6592,
+        "score": 0.6625,
         "evidence": []
       },
       {
         "term": "test",
-        "score": 0.6308,
+        "score": 0.6313,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "prompt box",
-        "score": 1.2314,
+        "score": 1.227,
         "evidence": []
       },
       {
         "term": "workspace",
-        "score": 0.8953,
+        "score": 0.899,
         "evidence": []
       },
       {
         "term": "file",
-        "score": 0.7079,
+        "score": 0.7115,
         "evidence": []
       },
       {
         "term": "path",
-        "score": 0.677,
+        "score": 0.6814,
         "evidence": []
       },
       {
         "term": "write",
-        "score": 0.6658,
+        "score": 0.6618,
         "evidence": []
       },
       {
         "term": "boundaries",
-        "score": 0.6534,
+        "score": 0.6446,
+        "evidence": []
+      },
+      {
+        "term": "rules",
+        "score": 0.5679,
         "evidence": []
       },
       {
         "term": "visual",
-        "score": 0.6353,
-        "evidence": []
-      },
-      {
-        "term": "gemini",
-        "score": 0.551,
+        "score": 0.5661,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "thread",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "session",
-        "score": 0.9926,
+        "score": 0.9473,
         "evidence": []
       },
       {
         "term": "fork",
-        "score": 0.8766,
+        "score": 0.8782,
         "evidence": []
       },
       {
         "term": "branch",
-        "score": 0.875,
+        "score": 0.8501,
         "evidence": []
       },
       {
         "term": "stable",
-        "score": 0.6939,
+        "score": 0.6957,
         "evidence": []
       },
       {
         "term": "commands",
-        "score": 0.6187,
+        "score": 0.6223,
         "evidence": []
       },
       {
         "term": "back",
-        "score": 0.5989,
+        "score": 0.5867,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "keyboard arrow",
-        "score": 1.9639,
+        "score": 1.9678,
         "evidence": []
       },
       {
         "term": "subagents",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "antigravity",
-        "score": 0.8292,
+        "score": 0.8312,
         "evidence": []
       },
       {
         "term": "git",
-        "score": 0.7617,
+        "score": 0.7642,
         "evidence": []
       },
       {
         "term": "automate",
-        "score": 0.7464,
+        "score": 0.7267,
         "evidence": []
       },
       {
-        "term": "background",
-        "score": 0.6331,
+        "term": "commands",
+        "score": 0.6223,
         "evidence": []
       }
     ]
