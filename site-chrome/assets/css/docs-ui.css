@@ -631,6 +631,36 @@
   -webkit-user-select: none;
 }
 
+/* The bottom-edge handle that makes a figure longer (owner, 2026-11-01).
+ * A full-width bar, tall enough to hit without aiming, with a short grip in
+ * the middle so it reads as something to pull. */
+.fa-figure-grip {
+  height: 12px;
+  margin: 0 0 0.4em;
+  cursor: ns-resize;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 6px 6px;
+}
+.fa-figure-grip::before {
+  content: "";
+  width: 48px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(128, 128, 128, 0.45);
+}
+.fa-figure-grip:hover::before,
+.fa-figure-grip:focus-visible::before,
+.fa-figure-grip.is-sizing::before {
+  background: rgba(128, 128, 128, 0.85);
+}
+.fa-figure-grip:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
 .fa-figure-scope.is-panning {
   cursor: grabbing;
   /* Without this a drag across a label selects the text instead of panning,
