@@ -3,69 +3,69 @@
   "entry": "landauer-foltz-laham-1998-intro-lsa",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "latent semantic",
-      "score": 33.521,
-      "evidence": []
-    },
-    {
-      "term": "semantic analysis",
-      "score": 31.2322,
+      "score": 33.1664,
       "evidence": []
     },
     {
       "term": "lsa vectors",
-      "score": 31.1914,
+      "score": 31.3922,
       "evidence": []
     },
     {
       "term": "lsa space",
-      "score": 30.9708,
+      "score": 31.1049,
       "evidence": []
     },
     {
       "term": "lsa measure",
-      "score": 30.4058,
+      "score": 30.4794,
       "evidence": []
     },
     {
       "term": "lsa simulation",
-      "score": 30.122,
+      "score": 30.2838,
+      "evidence": []
+    },
+    {
+      "term": "semantic analysis",
+      "score": 30.1873,
       "evidence": []
     },
     {
       "term": "lsa estimates",
-      "score": 29.5421,
+      "score": 29.725,
       "evidence": []
     },
     {
       "term": "lsa induces",
-      "score": 29.3138,
-      "evidence": []
-    },
-    {
-      "term": "analysis words",
-      "score": 29.31,
+      "score": 29.4886,
       "evidence": []
     },
     {
       "term": "lsa chose",
-      "score": 28.7283,
+      "score": 28.8812,
+      "evidence": []
+    },
+    {
+      "term": "analysis words",
+      "score": 28.7342,
       "evidence": []
     },
     {
       "term": "lsa got",
-      "score": 28.5113,
+      "score": 28.59,
       "evidence": []
     },
     {
       "term": "lsa performs",
-      "score": 28.3752,
+      "score": 28.5518,
       "evidence": []
     }
   ],
@@ -73,1529 +73,1529 @@
     "page-001": [
       {
         "term": "latent semantic",
-        "score": 1.2369,
+        "score": 1.2255,
         "evidence": []
       },
       {
         "term": "semantic analysis",
-        "score": 1.0648,
+        "score": 1.0292,
         "evidence": []
       },
       {
-        "term": "psychology",
-        "score": 0.9315,
+        "term": "department",
+        "score": 0.8684,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "latent semantic",
-        "score": 0.9803,
+        "score": 0.9712,
         "evidence": []
       },
       {
         "term": "semantic analysis",
-        "score": 0.8438,
+        "score": 0.8156,
         "evidence": []
       },
       {
         "term": "word",
-        "score": 0.6912,
+        "score": 0.6934,
         "evidence": []
       },
       {
-        "term": "mimics",
-        "score": 0.6305,
+        "term": "learnability",
+        "score": 0.631,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "latent semantic",
-        "score": 1.3327,
+        "score": 1.3185,
         "evidence": []
       },
       {
         "term": "semantic analysis",
-        "score": 1.298,
+        "score": 1.2542,
         "evidence": []
       },
       {
         "term": "text corpora",
-        "score": 1.2241,
+        "score": 1.2279,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.9799,
+        "score": 0.986,
         "evidence": []
       },
       {
         "term": "landauer",
-        "score": 0.8655,
+        "score": 0.8694,
         "evidence": []
       },
       {
         "term": "kintsch",
-        "score": 0.7996,
+        "score": 0.8018,
         "evidence": []
       },
       {
         "term": "issue",
-        "score": 0.7086,
+        "score": 0.7083,
         "evidence": []
       },
       {
         "term": "articles",
-        "score": 0.7045,
+        "score": 0.6976,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "writers",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "similarity",
-        "score": 0.9281,
+        "score": 0.9282,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.8802,
+        "score": 0.8857,
         "evidence": []
       },
       {
         "term": "correlations",
-        "score": 0.8379,
+        "score": 0.8398,
         "evidence": []
       },
       {
         "term": "meaning",
-        "score": 0.8265,
+        "score": 0.8075,
         "evidence": []
       },
       {
         "term": "phenomena",
-        "score": 0.7395,
+        "score": 0.7422,
         "evidence": []
       },
       {
         "term": "passages",
-        "score": 0.7103,
+        "score": 0.7132,
         "evidence": []
       },
       {
-        "term": "representations",
-        "score": 0.6715,
+        "term": "judgments",
+        "score": 0.6564,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "lsa",
-        "score": 1.0642,
+        "score": 1.0708,
         "evidence": []
       },
       {
         "term": "words",
-        "score": 0.8642,
+        "score": 0.8628,
         "evidence": []
       },
       {
         "term": "unitary",
-        "score": 0.7672,
+        "score": 0.7697,
         "evidence": []
       },
       {
         "term": "meanings",
-        "score": 0.7314,
+        "score": 0.7246,
         "evidence": []
       },
       {
         "term": "passage",
-        "score": 0.7161,
+        "score": 0.719,
         "evidence": []
       },
       {
         "term": "knowledge",
-        "score": 0.5515,
+        "score": 0.5408,
         "evidence": []
       },
       {
         "term": "differences",
-        "score": 0.5502,
+        "score": 0.5197,
         "evidence": []
       },
       {
         "term": "representations",
-        "score": 0.5322,
+        "score": 0.5048,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "lsa",
-        "score": 1.0642,
+        "score": 1.0708,
         "evidence": []
       },
       {
         "term": "dimensionality",
-        "score": 1.0369,
-        "evidence": []
-      },
-      {
-        "term": "meaning",
-        "score": 0.8976,
+        "score": 1.0412,
         "evidence": []
       },
       {
         "term": "word",
-        "score": 0.8933,
+        "score": 0.8962,
+        "evidence": []
+      },
+      {
+        "term": "meaning",
+        "score": 0.877,
         "evidence": []
       },
       {
         "term": "passage",
-        "score": 0.7161,
+        "score": 0.719,
         "evidence": []
       },
       {
         "term": "relations",
-        "score": 0.7159,
+        "score": 0.6957,
         "evidence": []
       },
       {
         "term": "think",
-        "score": 0.6145,
+        "score": 0.6224,
         "evidence": []
       },
       {
         "term": "kind",
-        "score": 0.5975,
+        "score": 0.5769,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "lsa",
-        "score": 1.2017,
+        "score": 1.2091,
         "evidence": []
       },
       {
         "term": "dimensionality",
-        "score": 1.0369,
-        "evidence": []
-      },
-      {
-        "term": "observational",
-        "score": 0.8482,
+        "score": 1.0412,
         "evidence": []
       },
       {
         "term": "space",
-        "score": 0.844,
+        "score": 0.836,
+        "evidence": []
+      },
+      {
+        "term": "observational",
+        "score": 0.7374,
         "evidence": []
       },
       {
         "term": "dimensions",
-        "score": 0.7479,
+        "score": 0.7188,
         "evidence": []
       },
       {
         "term": "meaning",
-        "score": 0.6394,
-        "evidence": []
-      },
-      {
-        "term": "experience",
-        "score": 0.6189,
+        "score": 0.6248,
         "evidence": []
       },
       {
         "term": "source",
-        "score": 0.613,
+        "score": 0.6147,
+        "evidence": []
+      },
+      {
+        "term": "experience",
+        "score": 0.5925,
         "evidence": []
       }
     ],
     "page-008": [
       {
         "term": "factor analysis",
-        "score": 1.0993,
+        "score": 1.0736,
         "evidence": []
       },
       {
         "term": "cell",
-        "score": 0.9351,
+        "score": 0.9134,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.8802,
+        "score": 0.8857,
         "evidence": []
       },
       {
         "term": "discourse",
-        "score": 0.8791,
+        "score": 0.8645,
         "evidence": []
       },
       {
         "term": "decomposed",
-        "score": 0.8313,
+        "score": 0.8332,
+        "evidence": []
+      },
+      {
+        "term": "column",
+        "score": 0.8142,
         "evidence": []
       },
       {
         "term": "stands",
-        "score": 0.7912,
+        "score": 0.8089,
         "evidence": []
       },
       {
         "term": "row",
-        "score": 0.7741,
-        "evidence": []
-      },
-      {
-        "term": "matrix",
-        "score": 0.7659,
+        "score": 0.7786,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "original matrix",
-        "score": 1.5063,
+        "score": 1.5134,
         "evidence": []
       },
       {
         "term": "titles",
-        "score": 0.78,
-        "evidence": []
-      },
-      {
-        "term": "nine",
-        "score": 0.7757,
+        "score": 0.7793,
         "evidence": []
       },
       {
         "term": "reconstruction",
-        "score": 0.7533,
-        "evidence": []
-      },
-      {
-        "term": "dimensions",
-        "score": 0.7479,
-        "evidence": []
-      },
-      {
-        "term": "cell",
-        "score": 0.741,
+        "score": 0.7559,
         "evidence": []
       },
       {
         "term": "smallest",
-        "score": 0.7262,
+        "score": 0.729,
+        "evidence": []
+      },
+      {
+        "term": "cell",
+        "score": 0.7238,
+        "evidence": []
+      },
+      {
+        "term": "dimensions",
+        "score": 0.7188,
+        "evidence": []
+      },
+      {
+        "term": "nine",
+        "score": 0.7128,
         "evidence": []
       },
       {
         "term": "linear",
-        "score": 0.6549,
+        "score": 0.6604,
         "evidence": []
       }
     ],
     "page-010": [
       {
         "term": "graph minors",
-        "score": 2.1352,
+        "score": 2.1383,
         "evidence": []
       },
       {
         "term": "eps",
-        "score": 1.2048,
+        "score": 1.2061,
         "evidence": []
       },
       {
         "term": "trees",
-        "score": 1.0779,
-        "evidence": []
-      },
-      {
-        "term": "response time",
-        "score": 0.9579,
+        "score": 1.0059,
         "evidence": []
       },
       {
         "term": "system response",
-        "score": 0.9542,
+        "score": 0.9685,
         "evidence": []
       },
       {
-        "term": "survey",
-        "score": 0.7948,
+        "term": "response time",
+        "score": 0.9462,
+        "evidence": []
+      },
+      {
+        "term": "titles",
+        "score": 0.7793,
         "evidence": []
       }
     ],
     "page-011": [
       {
         "term": "lesser",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "appear",
-        "score": 0.6215,
+        "score": 0.6229,
         "evidence": []
       },
       {
         "term": "collapsed",
-        "score": 0.5992,
+        "score": 0.5541,
         "evidence": []
       }
     ],
     "page-012": [
       {
         "term": "minors",
-        "score": 1.32,
+        "score": 1.3221,
         "evidence": []
       },
       {
         "term": "shaded",
-        "score": 1.0547,
+        "score": 1.0572,
         "evidence": []
       },
       {
         "term": "cells",
-        "score": 0.8322,
+        "score": 0.8247,
         "evidence": []
       },
       {
         "term": "survey",
-        "score": 0.7948,
-        "evidence": []
-      },
-      {
-        "term": "trees",
-        "score": 0.7358,
+        "score": 0.7584,
         "evidence": []
       },
       {
         "term": "graph",
-        "score": 0.7323,
+        "score": 0.7331,
+        "evidence": []
+      },
+      {
+        "term": "trees",
+        "score": 0.6866,
         "evidence": []
       }
     ],
     "page-013": [
       {
         "term": "correlations among",
-        "score": 1.4917,
+        "score": 1.494,
         "evidence": []
       },
       {
         "term": "raw co-occurrence",
-        "score": 1.4172,
+        "score": 1.4204,
         "evidence": []
       },
       {
         "term": "theory papers",
-        "score": 1.401,
+        "score": 1.3321,
         "evidence": []
       },
       {
         "term": "minors",
-        "score": 1.32,
+        "score": 1.3221,
         "evidence": []
       },
       {
         "term": "graph theory",
-        "score": 1.2787,
+        "score": 1.2233,
         "evidence": []
       },
       {
         "term": "abstract concept",
-        "score": 1.247,
+        "score": 1.2179,
         "evidence": []
       },
       {
         "term": "co-occurrence data",
-        "score": 1.0039,
+        "score": 1.0043,
         "evidence": []
       },
       {
         "term": "reconstructed",
-        "score": 0.9078,
+        "score": 0.9092,
         "evidence": []
       }
     ],
     "page-014": [
       {
         "term": "hci titles",
-        "score": 2.0777,
+        "score": 2.0781,
         "evidence": []
       },
       {
         "term": "correlations",
-        "score": 1.0573,
+        "score": 1.0597,
         "evidence": []
       },
       {
         "term": "raw data",
-        "score": 0.8944,
+        "score": 0.8929,
         "evidence": []
       },
       {
         "term": "dimensional",
-        "score": 0.8017,
+        "score": 0.8012,
         "evidence": []
       },
       {
         "term": "reconstruction",
-        "score": 0.7533,
+        "score": 0.7559,
         "evidence": []
       }
     ],
     "page-015": [
       {
         "term": "inferences",
-        "score": 1.2846,
+        "score": 1.2158,
         "evidence": []
       },
       {
         "term": "ann",
-        "score": 1.2125,
+        "score": 1.1966,
         "evidence": []
       },
       {
         "term": "mother",
-        "score": 1.1554,
+        "score": 1.1572,
         "evidence": []
       },
       {
         "term": "bob",
-        "score": 1.0462,
+        "score": 1.0504,
         "evidence": []
       },
       {
         "term": "mary",
-        "score": 1.0298,
+        "score": 1.0324,
         "evidence": []
       },
       {
         "term": "relations",
-        "score": 0.8311,
+        "score": 0.8077,
         "evidence": []
       },
       {
         "term": "john",
-        "score": 0.8141,
+        "score": 0.8046,
         "evidence": []
       },
       {
-        "term": "son",
-        "score": 0.7731,
+        "term": "lsa",
+        "score": 0.7629,
         "evidence": []
       }
     ],
     "page-016": [
       {
         "term": "nearby locations",
-        "score": 1.6074,
+        "score": 1.6118,
         "evidence": []
       },
       {
         "term": "meanings even",
-        "score": 1.0929,
+        "score": 1.0842,
         "evidence": []
       },
       {
         "term": "even though",
-        "score": 0.9354,
+        "score": 0.9246,
         "evidence": []
       },
       {
         "term": "dimensionality",
-        "score": 0.8932,
+        "score": 0.8969,
         "evidence": []
       },
       {
         "term": "dimensions",
-        "score": 0.7479,
+        "score": 0.7188,
         "evidence": []
       },
       {
         "term": "original data",
-        "score": 0.7142,
+        "score": 0.7106,
         "evidence": []
       },
       {
         "term": "infer",
-        "score": 0.7012,
+        "score": 0.7042,
         "evidence": []
       },
       {
         "term": "words",
-        "score": 0.6689,
+        "score": 0.6678,
         "evidence": []
       }
     ],
     "page-017": [
       {
         "term": "training corpora",
-        "score": 1.2088,
+        "score": 1.2056,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 1.1373,
+        "score": 1.1443,
         "evidence": []
       },
       {
         "term": "passage",
-        "score": 1.0491,
+        "score": 1.0533,
         "evidence": []
       },
       {
         "term": "investigators",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "entropy",
-        "score": 0.8313,
-        "evidence": []
-      },
-      {
-        "term": "transformation",
-        "score": 0.809,
+        "score": 0.8332,
         "evidence": []
       },
       {
         "term": "words",
-        "score": 0.8087,
+        "score": 0.8074,
+        "evidence": []
+      },
+      {
+        "term": "transformation",
+        "score": 0.7875,
         "evidence": []
       },
       {
         "term": "cell",
-        "score": 0.741,
+        "score": 0.7238,
         "evidence": []
       }
     ],
     "page-018": [
       {
         "term": "assessed",
-        "score": 1.5519,
+        "score": 1.4661,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 1.3114,
+        "score": 1.3195,
         "evidence": []
       },
       {
         "term": "predictor",
-        "score": 1.2776,
+        "score": 1.2801,
         "evidence": []
       },
       {
         "term": "word-word",
-        "score": 0.9078,
+        "score": 0.9092,
         "evidence": []
       },
       {
         "term": "synonym",
-        "score": 0.8584,
+        "score": 0.8602,
         "evidence": []
       },
       {
         "term": "simulation",
-        "score": 0.7995,
+        "score": 0.7975,
         "evidence": []
       },
       {
         "term": "replicate",
-        "score": 0.7789,
+        "score": 0.7813,
         "evidence": []
       },
       {
         "term": "relations",
-        "score": 0.7159,
+        "score": 0.6957,
         "evidence": []
       }
     ],
     "page-019": [
       {
-        "term": "weighted average",
-        "score": 1.0156,
+        "term": "standard collections",
+        "score": 1.0128,
         "evidence": []
       },
       {
-        "term": "standard collections",
-        "score": 1.0036,
+        "term": "weighted average",
+        "score": 1.011,
         "evidence": []
       },
       {
         "term": "information retrieval",
-        "score": 0.8436,
+        "score": 0.837,
         "evidence": []
       },
       {
         "term": "query",
-        "score": 0.8286,
+        "score": 0.8318,
         "evidence": []
       },
       {
         "term": "documents",
-        "score": 0.7619,
+        "score": 0.7693,
         "evidence": []
       },
       {
         "term": "lsi",
-        "score": 0.7494,
+        "score": 0.752,
         "evidence": []
       },
       {
         "term": "meaning",
-        "score": 0.7424,
+        "score": 0.7253,
         "evidence": []
       },
       {
         "term": "queries",
-        "score": 0.6806,
+        "score": 0.6859,
         "evidence": []
       }
     ],
     "page-020": [
       {
         "term": "lsi",
-        "score": 1.0979,
+        "score": 1.1017,
         "evidence": []
       },
       {
         "term": "synonym",
-        "score": 1.0831,
+        "score": 1.0854,
         "evidence": []
       },
       {
         "term": "antonym",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "words",
-        "score": 0.7447,
+        "score": 0.7434,
         "evidence": []
       },
       {
         "term": "dumais",
-        "score": 0.6999,
+        "score": 0.7029,
         "evidence": []
       },
       {
         "term": "somewhat",
-        "score": 0.6613,
+        "score": 0.6581,
         "evidence": []
       },
       {
         "term": "near",
-        "score": 0.6577,
+        "score": 0.6548,
         "evidence": []
       },
       {
-        "term": "similar",
-        "score": 0.6047,
+        "term": "lsa",
+        "score": 0.6046,
         "evidence": []
       }
     ],
     "page-021": [
       {
         "term": "ivens",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.9799,
+        "score": 0.986,
         "evidence": []
       },
       {
         "term": "ets",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "encyclopedia",
-        "score": 0.8085,
+        "score": 0.7935,
         "evidence": []
       },
       {
         "term": "grade",
-        "score": 0.7736,
+        "score": 0.763,
         "evidence": []
       },
       {
         "term": "similarities",
-        "score": 0.7686,
+        "score": 0.7583,
         "evidence": []
       },
       {
         "term": "word",
-        "score": 0.6912,
+        "score": 0.6934,
         "evidence": []
       },
       {
         "term": "mind",
-        "score": 0.6738,
+        "score": 0.6334,
         "evidence": []
       }
     ],
     "page-022": [
       {
         "term": "correct alternative",
-        "score": 1.6493,
+        "score": 1.633,
         "evidence": []
       },
       {
         "term": "average correlation",
-        "score": 1.4,
+        "score": 1.4051,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 1.1373,
+        "score": 1.1443,
         "evidence": []
       },
       {
         "term": "students",
-        "score": 1.1026,
+        "score": 1.1025,
         "evidence": []
       },
       {
         "term": "stem",
-        "score": 1.0296,
+        "score": 1.0323,
         "evidence": []
       },
       {
         "term": "chose",
-        "score": 0.9365,
+        "score": 0.9258,
         "evidence": []
       },
       {
         "term": "word",
-        "score": 0.8024,
+        "score": 0.805,
         "evidence": []
       },
       {
         "term": "million",
-        "score": 0.777,
+        "score": 0.7794,
         "evidence": []
       }
     ],
     "page-023": [
       {
         "term": "dimension reduction",
-        "score": 1.2494,
+        "score": 1.2331,
         "evidence": []
       },
       {
         "term": "guessing",
-        "score": 0.9078,
+        "score": 0.8767,
         "evidence": []
       },
       {
         "term": "co-occurrence",
-        "score": 0.7912,
+        "score": 0.7935,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.7582,
+        "score": 0.7629,
         "evidence": []
       },
       {
         "term": "chance",
-        "score": 0.7262,
+        "score": 0.729,
         "evidence": []
       },
       {
         "term": "dimensionality",
-        "score": 0.7078,
+        "score": 0.7107,
         "evidence": []
       }
     ],
     "page-024": [
       {
         "term": "word sorting",
-        "score": 1.4824,
+        "score": 1.4869,
         "evidence": []
       },
       {
         "term": "primary school",
-        "score": 1.2929,
+        "score": 1.2872,
         "evidence": []
       },
       {
         "term": "anglin",
-        "score": 0.9412,
+        "score": 0.9424,
         "evidence": []
       },
       {
         "term": "landauer",
-        "score": 0.8655,
+        "score": 0.8694,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.7582,
+        "score": 0.7629,
         "evidence": []
       },
       {
         "term": "simulating",
-        "score": 0.7489,
+        "score": 0.7398,
         "evidence": []
       },
       {
         "term": "paragraph",
-        "score": 0.7278,
+        "score": 0.7121,
         "evidence": []
       }
     ],
     "page-025": [
       {
         "term": "grade scaling",
-        "score": 2.4735,
+        "score": 2.4485,
         "evidence": []
       },
       {
         "term": "lsa estimates",
-        "score": 2.0093,
+        "score": 2.0219,
         "evidence": []
       },
       {
         "term": "level scaling",
-        "score": 1.8072,
+        "score": 1.7734,
         "evidence": []
       },
       {
         "term": "college level",
-        "score": 1.6958,
+        "score": 1.6735,
         "evidence": []
       },
       {
         "term": "child data",
-        "score": 1.6334,
+        "score": 1.634,
         "evidence": []
       },
       {
         "term": "both child",
-        "score": 1.5345,
+        "score": 1.5354,
         "evidence": []
       },
       {
         "term": "adults",
-        "score": 1.5044,
+        "score": 1.5052,
         "evidence": []
       },
       {
         "term": "part-of-speech",
-        "score": 1.4758,
+        "score": 1.4768,
         "evidence": []
       }
     ],
     "page-026": [
       {
         "term": "part-of-speech cosine",
-        "score": 1.8366,
+        "score": 1.8414,
         "evidence": []
       },
       {
         "term": "introductory psychology",
-        "score": 1.6121,
+        "score": 1.5459,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.9799,
+        "score": 0.986,
         "evidence": []
       },
       {
         "term": "foltz",
-        "score": 0.9748,
+        "score": 0.9778,
         "evidence": []
       },
       {
         "term": "laham",
-        "score": 0.7604,
-        "evidence": []
-      },
-      {
-        "term": "university",
-        "score": 0.7163,
+        "score": 0.7629,
         "evidence": []
       },
       {
         "term": "landauer",
-        "score": 0.6859,
+        "score": 0.689,
+        "evidence": []
+      },
+      {
+        "term": "university",
+        "score": 0.678,
         "evidence": []
       },
       {
         "term": "documents",
-        "score": 0.6302,
+        "score": 0.6363,
         "evidence": []
       }
     ],
     "page-027": [
       {
         "term": "polysemous word",
-        "score": 1.8011,
+        "score": 1.8054,
         "evidence": []
       },
       {
         "term": "lsa predictions",
-        "score": 1.7692,
+        "score": 1.7797,
         "evidence": []
       },
       {
         "term": "semantic priming",
-        "score": 1.4667,
+        "score": 1.4514,
         "evidence": []
       },
       {
         "term": "target words",
-        "score": 1.4133,
+        "score": 1.4156,
         "evidence": []
       },
       {
         "term": "control word",
-        "score": 1.3696,
+        "score": 1.3613,
         "evidence": []
       },
       {
         "term": "mint",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "passages",
-        "score": 0.8963,
+        "score": 0.9,
         "evidence": []
       },
       {
         "term": "lexical",
-        "score": 0.6602,
+        "score": 0.6634,
         "evidence": []
       }
     ],
     "page-028": [
       {
         "term": "inference words",
-        "score": 1.5818,
+        "score": 1.5838,
         "evidence": []
       },
       {
         "term": "priming",
-        "score": 1.4218,
+        "score": 1.4246,
         "evidence": []
       },
       {
         "term": "target words",
-        "score": 1.4134,
+        "score": 1.4142,
         "evidence": []
       },
       {
         "term": "passages",
-        "score": 1.1585,
+        "score": 1.1632,
         "evidence": []
       },
       {
         "term": "mimic",
-        "score": 0.8504,
+        "score": 0.8522,
         "evidence": []
       },
       {
         "term": "cosines",
-        "score": 0.7886,
+        "score": 0.7909,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.7582,
+        "score": 0.7629,
         "evidence": []
       },
       {
         "term": "associates",
-        "score": 0.7423,
+        "score": 0.7269,
         "evidence": []
       }
     ],
     "page-029": [
       {
         "term": "combining mechanism",
-        "score": 1.2183,
+        "score": 1.1994,
         "evidence": []
       },
       {
         "term": "candy",
-        "score": 1.0074,
-        "evidence": []
-      },
-      {
-        "term": "latent semantic",
-        "score": 0.9803,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.9799,
+        "score": 0.986,
+        "evidence": []
+      },
+      {
+        "term": "latent semantic",
+        "score": 0.9712,
         "evidence": []
       },
       {
         "term": "till",
-        "score": 0.875,
+        "score": 0.8767,
         "evidence": []
       },
       {
         "term": "priming",
-        "score": 0.8718,
+        "score": 0.8735,
         "evidence": []
       },
       {
         "term": "semantic analysis",
-        "score": 0.8438,
+        "score": 0.8156,
         "evidence": []
       }
     ],
     "page-030": [
       {
         "term": "student essay",
-        "score": 2.9142,
+        "score": 2.9184,
         "evidence": []
       },
       {
         "term": "holistic quality",
-        "score": 1.451,
+        "score": 1.4136,
         "evidence": []
       },
       {
         "term": "quality scores",
-        "score": 1.1537,
+        "score": 1.1564,
         "evidence": []
       },
       {
         "term": "cosine",
-        "score": 1.0717,
+        "score": 1.077,
         "evidence": []
       },
       {
         "term": "instructor",
-        "score": 0.9157,
+        "score": 0.9027,
         "evidence": []
       },
       {
         "term": "distances",
-        "score": 0.83,
-        "evidence": []
-      },
-      {
-        "term": "dimension",
-        "score": 0.7608,
+        "score": 0.8321,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.7582,
+        "score": 0.7629,
+        "evidence": []
+      },
+      {
+        "term": "dimension",
+        "score": 0.7425,
         "evidence": []
       }
     ],
     "page-031": [
       {
         "term": "kintsch",
-        "score": 1.3041,
+        "score": 1.3078,
         "evidence": []
       },
       {
         "term": "propositional",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "correlated",
-        "score": 0.9662,
+        "score": 0.971,
         "evidence": []
       },
       {
         "term": "coherence",
-        "score": 0.9593,
+        "score": 0.9494,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.8802,
+        "score": 0.8857,
         "evidence": []
       },
       {
         "term": "comprehension",
-        "score": 0.8695,
+        "score": 0.7549,
         "evidence": []
       },
       {
         "term": "expert",
-        "score": 0.7406,
+        "score": 0.7231,
         "evidence": []
       },
       {
         "term": "discourse",
-        "score": 0.6967,
+        "score": 0.6851,
         "evidence": []
       }
     ],
     "page-032": [
       {
         "term": "kintsch",
-        "score": 1.4163,
+        "score": 1.4203,
         "evidence": []
       },
       {
         "term": "coherence",
-        "score": 1.1138,
+        "score": 1.1022,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 1.0642,
+        "score": 1.0708,
         "evidence": []
       },
       {
         "term": "student",
-        "score": 0.9485,
+        "score": 0.9484,
         "evidence": []
       },
       {
         "term": "text",
-        "score": 0.7744,
+        "score": 0.7765,
         "evidence": []
       },
       {
         "term": "foltz",
-        "score": 0.7725,
+        "score": 0.7749,
         "evidence": []
       },
       {
         "term": "issue",
-        "score": 0.7086,
+        "score": 0.7083,
         "evidence": []
       },
       {
         "term": "articles",
-        "score": 0.7045,
+        "score": 0.6976,
         "evidence": []
       }
     ],
     "page-033": [
       {
         "term": "human cognitive",
-        "score": 1.295,
+        "score": 1.1984,
         "evidence": []
       },
       {
         "term": "detailed processes",
-        "score": 1.1785,
+        "score": 1.1158,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.8802,
+        "score": 0.8857,
         "evidence": []
       },
       {
         "term": "phenomena",
-        "score": 0.7395,
+        "score": 0.7422,
         "evidence": []
       },
       {
         "term": "lacks",
-        "score": 0.7066,
+        "score": 0.7007,
         "evidence": []
       },
       {
         "term": "lexical",
-        "score": 0.6602,
+        "score": 0.6634,
         "evidence": []
       },
       {
         "term": "theory",
-        "score": 0.6479,
+        "score": 0.5918,
         "evidence": []
       },
       {
         "term": "ability",
-        "score": 0.4929,
+        "score": 0.4776,
         "evidence": []
       }
     ],
     "page-034": [
       {
         "term": "discourse comprehension",
-        "score": 1.3858,
+        "score": 1.2833,
         "evidence": []
       },
       {
         "term": "corpora",
-        "score": 0.9563,
-        "evidence": []
-      },
-      {
-        "term": "brain",
-        "score": 0.8846,
+        "score": 0.9595,
         "evidence": []
       },
       {
         "term": "lsa",
-        "score": 0.8802,
+        "score": 0.8857,
         "evidence": []
       },
       {
         "term": "kintsch",
-        "score": 0.7996,
-        "evidence": []
-      },
-      {
-        "term": "seems",
-        "score": 0.7686,
+        "score": 0.8018,
         "evidence": []
       },
       {
         "term": "representative",
-        "score": 0.7448,
+        "score": 0.7446,
+        "evidence": []
+      },
+      {
+        "term": "seems",
+        "score": 0.7253,
+        "evidence": []
+      },
+      {
+        "term": "brain",
+        "score": 0.6778,
         "evidence": []
       },
       {
         "term": "mind",
-        "score": 0.6738,
+        "score": 0.6334,
         "evidence": []
       }
     ],
     "page-035": [
       {
         "term": "lsa",
-        "score": 0.8802,
+        "score": 0.8857,
         "evidence": []
       },
       {
         "term": "thousands",
-        "score": 0.7592,
+        "score": 0.7491,
         "evidence": []
       },
       {
         "term": "hundreds",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       },
       {
         "term": "millions",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       },
       {
         "term": "tens",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       }
     ],
     "page-036": [
       {
         "term": "latent semantic",
-        "score": 1.2369,
+        "score": 1.2255,
         "evidence": []
       },
       {
         "term": "dumais",
-        "score": 1.0254,
+        "score": 1.0297,
         "evidence": []
       },
       {
         "term": "information retrieval",
-        "score": 0.9763,
-        "evidence": []
-      },
-      {
-        "term": "semantic analysis",
-        "score": 0.9673,
+        "score": 0.9681,
         "evidence": []
       },
       {
         "term": "anglin",
-        "score": 0.9412,
+        "score": 0.9424,
         "evidence": []
       },
       {
-        "term": "discourse",
-        "score": 0.8791,
+        "term": "semantic analysis",
+        "score": 0.9356,
         "evidence": []
       },
       {
         "term": "berry",
-        "score": 0.875,
+        "score": 0.8767,
+        "evidence": []
+      },
+      {
+        "term": "discourse",
+        "score": 0.8645,
         "evidence": []
       }
     ],
     "page-037": [
       {
         "term": "latent semantic",
-        "score": 1.436,
-        "evidence": []
-      },
-      {
-        "term": "semantic analysis",
-        "score": 1.3502,
+        "score": 1.4228,
         "evidence": []
       },
       {
         "term": "computing machinery",
-        "score": 1.3266,
+        "score": 1.3281,
         "evidence": []
       },
       {
         "term": "kintsch",
-        "score": 1.3041,
+        "score": 1.3078,
+        "evidence": []
+      },
+      {
+        "term": "semantic analysis",
+        "score": 1.3044,
         "evidence": []
       },
       {
         "term": "foltz",
-        "score": 1.1317,
-        "evidence": []
-      },
-      {
-        "term": "comprehension",
-        "score": 1.0095,
+        "score": 1.1352,
         "evidence": []
       },
       {
         "term": "erlbaum",
-        "score": 0.9537,
+        "score": 0.9548,
+        "evidence": []
+      },
+      {
+        "term": "hillsdale",
+        "score": 0.9508,
         "evidence": []
       }
     ],
     "page-038": [
       {
         "term": "lawrence erlbaum",
-        "score": 2.029,
+        "score": 2.0324,
         "evidence": []
       },
       {
         "term": "erlbaum associates",
-        "score": 1.9457,
+        "score": 1.9317,
         "evidence": []
       },
       {
         "term": "latent semantic",
-        "score": 1.7363,
-        "evidence": []
-      },
-      {
-        "term": "semantic analysis",
-        "score": 1.4946,
+        "score": 1.7202,
         "evidence": []
       },
       {
         "term": "unpublished manuscript",
-        "score": 1.4677,
+        "score": 1.4713,
+        "evidence": []
+      },
+      {
+        "term": "semantic analysis",
+        "score": 1.4447,
         "evidence": []
       },
       {
         "term": "educational testing",
-        "score": 1.4231,
-        "evidence": []
-      },
-      {
-        "term": "science society",
-        "score": 1.2162,
+        "score": 1.396,
         "evidence": []
       },
       {
         "term": "landauer",
-        "score": 1.2149,
+        "score": 1.2203,
+        "evidence": []
+      },
+      {
+        "term": "science society",
+        "score": 1.1898,
         "evidence": []
       }
     ],
     "page-039": [
       {
         "term": "discourse processes",
-        "score": 1.5002,
+        "score": 1.4443,
         "evidence": []
       },
       {
         "term": "kintsch",
-        "score": 1.4163,
+        "score": 1.4203,
         "evidence": []
       },
       {
         "term": "latent semantic",
-        "score": 1.2369,
+        "score": 1.2255,
         "evidence": []
       },
       {
         "term": "semantic analysis",
-        "score": 1.0648,
+        "score": 1.0292,
         "evidence": []
       },
       {
         "term": "schreiner",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
-        "term": "cognition",
-        "score": 0.9078,
+        "term": "rehder",
+        "score": 0.8767,
         "evidence": []
       }
     ],
     "page-040": [
       {
         "term": "lsa",
-        "score": 1.1373,
+        "score": 1.1443,
         "evidence": []
       },
       {
         "term": "essay",
-        "score": 0.8306,
+        "score": 0.8326,
         "evidence": []
       },
       {
         "term": "demonstrations",
-        "score": 0.8059,
+        "score": 0.8081,
         "evidence": []
       },
       {
         "term": "save",
-        "score": 0.8057,
+        "score": 0.8078,
+        "evidence": []
+      },
+      {
+        "term": "website",
+        "score": 0.6878,
         "evidence": []
       },
       {
         "term": "page",
-        "score": 0.6819,
+        "score": 0.6812,
         "evidence": [
           "heading"
         ]
-      },
-      {
-        "term": "website",
-        "score": 0.6806,
-        "evidence": []
       }
     ],
     "page-041": [
       {
         "term": "landauer",
-        "score": 1.1186,
+        "score": 1.1237,
         "evidence": []
       },
       {
         "term": "colorado",
-        "score": 1.0831,
+        "score": 1.0854,
         "evidence": []
       },
       {
         "term": "latent semantic",
-        "score": 0.9803,
+        "score": 0.9712,
         "evidence": []
       }
     ]

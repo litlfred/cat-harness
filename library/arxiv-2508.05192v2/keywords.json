@@ -3,77 +3,77 @@
   "entry": "arxiv-2508.05192v2",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "json schema",
-      "score": 15.1885,
+      "score": 15.3169,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "schema mapping",
-      "score": 13.5891,
+      "score": 13.6117,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "schema creation",
-      "score": 13.1146,
+      "score": 12.7541,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "schema validation",
-      "score": 11.8685,
+      "score": 11.9345,
       "evidence": []
     },
     {
       "term": "schema editor",
-      "score": 11.7117,
+      "score": 11.7197,
       "evidence": []
     },
     {
       "term": "automated schema",
-      "score": 11.1245,
+      "score": 11.2005,
       "evidence": []
     },
     {
       "term": "target schema",
-      "score": 10.99,
+      "score": 11.0573,
       "evidence": []
     },
     {
       "term": "generate schema",
-      "score": 10.9444,
+      "score": 11.0055,
       "evidence": []
     },
     {
       "term": "schema matching",
-      "score": 10.9375,
+      "score": 10.9849,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "schema discovery",
-      "score": 10.7538,
+      "score": 10.7642,
       "evidence": []
     },
     {
       "term": "create schema",
-      "score": 10.5047,
+      "score": 10.5597,
       "evidence": []
     },
     {
       "term": "schema inference",
-      "score": 10.0506,
+      "score": 10.1134,
       "evidence": []
     }
   ],
@@ -81,445 +81,445 @@
     "sec-000-json-schema-creation": [
       {
         "term": "stuttgart",
-        "score": 1.4661,
+        "score": 1.4672,
         "evidence": []
       },
       {
         "term": "schema",
-        "score": 1.3649,
+        "score": 1.3735,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "json",
-        "score": 1.0736,
+        "score": 1.0863,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "data integration",
-        "score": 1.0209,
-        "evidence": []
-      },
-      {
         "term": "biochemistry",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "neubauer",
-        "score": 0.9993,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "pleiss",
-        "score": 0.9993,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "uekermann",
-        "score": 0.9993,
+        "score": 1.0001,
+        "evidence": []
+      },
+      {
+        "term": "data integration",
+        "score": 0.9663,
         "evidence": []
       }
     ],
     "sec-001-introduction": [
       {
         "term": "model-driven",
-        "score": 1.1196,
+        "score": 1.0871,
         "evidence": []
       },
       {
         "term": "data models",
-        "score": 1.0636,
+        "score": 1.0582,
         "evidence": []
       },
       {
         "term": "natural language",
-        "score": 0.974,
+        "score": 0.9581,
         "evidence": []
       },
       {
         "term": "mde",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       },
       {
         "term": "safeguards",
-        "score": 0.8255,
+        "score": 0.8276,
         "evidence": []
       },
       {
         "term": "metaconfigurator",
-        "score": 0.8133,
+        "score": 0.8155,
         "evidence": []
       },
       {
         "term": "csv",
-        "score": 0.798,
+        "score": 0.8003,
         "evidence": []
       },
       {
         "term": "post-processing",
-        "score": 0.7386,
+        "score": 0.7413,
         "evidence": []
       }
     ],
     "sec-003-json-and-json-schema": [
       {
         "term": "json schema",
-        "score": 4.0529,
+        "score": 4.0879,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "schema editor",
-        "score": 2.1386,
+        "score": 2.1262,
         "evidence": []
       },
       {
         "term": "generate schema",
-        "score": 1.8369,
+        "score": 1.8454,
         "evidence": []
       },
       {
         "term": "programming languages",
-        "score": 1.155,
+        "score": 1.1215,
         "evidence": []
       },
       {
         "term": "metaconfigurator",
-        "score": 1.0263,
-        "evidence": []
-      },
-      {
-        "term": "furthermore",
-        "score": 0.589,
+        "score": 1.029,
         "evidence": []
       },
       {
         "term": "services",
-        "score": 0.569,
+        "score": 0.5698,
         "evidence": []
       },
       {
-        "term": "exist",
-        "score": 0.559,
+        "term": "llms",
+        "score": 0.5542,
+        "evidence": []
+      },
+      {
+        "term": "furthermore",
+        "score": 0.5238,
         "evidence": []
       }
     ],
     "sec-004-schema-matching-and-mapping": [
       {
         "term": "schema mapping",
-        "score": 3.2611,
+        "score": 3.2626,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "schema matching",
-        "score": 2.9037,
+        "score": 2.9097,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "transform json",
-        "score": 1.5639,
+        "score": 1.5707,
         "evidence": []
       },
       {
         "term": "json documents",
-        "score": 1.4344,
+        "score": 1.4502,
         "evidence": []
       },
       {
         "term": "acc",
-        "score": 1.0285,
+        "score": 1.0312,
         "evidence": []
       },
       {
         "term": "transformation",
-        "score": 0.809,
+        "score": 0.7875,
         "evidence": []
       },
       {
         "term": "databases",
-        "score": 0.6599,
+        "score": 0.6281,
         "evidence": []
       },
       {
         "term": "another",
-        "score": 0.5812,
+        "score": 0.5697,
         "evidence": []
       }
     ],
     "sec-005-large-language-models-llms-and-prompt-engineerin": [
       {
         "term": "prompt engineering",
-        "score": 2.0619,
+        "score": 2.0649,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "subtasks",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "llms",
-        "score": 0.5449,
+        "score": 0.5542,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "input-output",
-        "score": 0.5424,
+        "score": 0.5464,
         "evidence": []
       },
       {
         "term": "persona",
-        "score": 0.5399,
+        "score": 0.541,
         "evidence": []
       }
     ],
     "sec-006-design-and-implementation": [
       {
         "term": "acc",
-        "score": 0.8151,
+        "score": 0.8172,
         "evidence": []
       },
       {
         "term": "api",
-        "score": 0.7184,
+        "score": 0.7202,
         "evidence": []
       },
       {
         "term": "cost-efficiency",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "iii-a",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "iii-b",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-007-ai-assisted-json-schema-creation": [
       {
         "term": "schema creation",
-        "score": 3.6939,
+        "score": 3.5497,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "metaconfigurator",
-        "score": 1.0263,
+        "score": 1.029,
         "evidence": []
       },
       {
         "term": "natural language",
-        "score": 0.974,
+        "score": 0.9581,
         "evidence": []
       },
       {
         "term": "visualized",
-        "score": 0.9078,
+        "score": 0.8276,
         "evidence": []
       },
       {
         "term": "modifications",
-        "score": 0.7099,
+        "score": 0.7042,
         "evidence": []
       },
       {
         "term": "editing",
-        "score": 0.6734,
+        "score": 0.6697,
         "evidence": []
       },
       {
         "term": "modular",
-        "score": 0.6421,
+        "score": 0.643,
         "evidence": []
       },
       {
         "term": "prompt",
-        "score": 0.5837,
+        "score": 0.5978,
         "evidence": []
       }
     ],
     "sec-008-ai-assisted-schema-matching-and-mapping": [
       {
         "term": "schema mapping",
-        "score": 4.6702,
+        "score": 4.668,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "metal salt",
-        "score": 2.8638,
+        "score": 2.8665,
         "evidence": []
       },
       {
         "term": "generated jsonata",
-        "score": 2.3695,
+        "score": 2.3683,
         "evidence": []
       },
       {
         "term": "json schema",
-        "score": 2.1401,
+        "score": 2.1585,
         "evidence": []
       },
       {
         "term": "ligand both",
-        "score": 1.8265,
+        "score": 1.8235,
         "evidence": []
       },
       {
         "term": "mapping rules",
-        "score": 1.657,
+        "score": 1.7942,
         "evidence": []
       },
       {
         "term": "json document",
-        "score": 1.6335,
+        "score": 1.6528,
         "evidence": []
       },
       {
         "term": "input json",
-        "score": 1.4448,
+        "score": 1.4984,
         "evidence": []
       }
     ],
     "sec-009-application-example": [
       {
         "term": "metal salt",
-        "score": 2.8519,
+        "score": 2.8543,
         "evidence": []
       },
       {
         "term": "schema mapping",
-        "score": 1.9351,
+        "score": 1.9363,
         "evidence": []
       },
       {
         "term": "target schema",
-        "score": 1.7516,
+        "score": 1.762,
         "evidence": []
       },
       {
         "term": "mof",
-        "score": 1.5044,
+        "score": 1.5052,
         "evidence": []
       },
       {
         "term": "json document",
-        "score": 1.4235,
+        "score": 1.4403,
         "evidence": []
       },
       {
         "term": "linker",
-        "score": 1.2846,
+        "score": 1.2854,
         "evidence": []
       },
       {
         "term": "input json",
-        "score": 1.0927,
+        "score": 1.128,
         "evidence": []
       },
       {
         "term": "excel table",
-        "score": 1.0868,
+        "score": 1.1114,
         "evidence": []
       }
     ],
     "sec-010-conclusion": [
       {
         "term": "stuttgart",
-        "score": 1.2628,
+        "score": 1.2638,
         "evidence": []
       },
       {
         "term": "instance transformation",
-        "score": 1.1999,
+        "score": 1.1599,
         "evidence": []
       },
       {
         "term": "chemistry",
-        "score": 0.9247,
+        "score": 0.9282,
         "evidence": []
       },
       {
         "term": "germany",
-        "score": 0.7489,
+        "score": 0.7894,
         "evidence": []
       },
       {
         "term": "schema",
-        "score": 0.6824,
+        "score": 0.6867,
         "evidence": []
       },
       {
         "term": "editing",
-        "score": 0.6734,
+        "score": 0.6697,
         "evidence": []
       },
       {
         "term": "mapping",
-        "score": 0.5184,
+        "score": 0.5141,
         "evidence": []
       }
     ],
     "sec-011-references": [
       {
         "term": "arxiv preprint",
-        "score": 3.6085,
+        "score": 3.5894,
         "evidence": []
       },
       {
         "term": "unpublished",
-        "score": 2.2548,
+        "score": 2.2577,
         "evidence": []
       },
       {
         "term": "json schema",
-        "score": 1.8602,
+        "score": 1.877,
         "evidence": []
       },
       {
         "term": "vldb journal",
-        "score": 1.8392,
+        "score": 1.7779,
         "evidence": []
       },
       {
         "term": "language models",
-        "score": 1.7999,
+        "score": 1.7726,
         "evidence": []
       },
       {
         "term": "doi",
-        "score": 1.7358,
+        "score": 1.7165,
         "evidence": []
       },
       {
         "term": "markup language",
-        "score": 1.7084,
+        "score": 1.6858,
         "evidence": []
       },
       {
         "term": "schema discovery",
-        "score": 1.6775,
+        "score": 1.6594,
         "evidence": []
       }
     ]

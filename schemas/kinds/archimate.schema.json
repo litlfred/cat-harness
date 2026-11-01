@@ -79,6 +79,10 @@
                   "same-elements",
                   "by-eye"
                 ]
+              },
+              "svg": {
+                "type": "string",
+                "pattern": "\\.svg$"
               }
             },
             "required": [
@@ -87,6 +91,44 @@
               "model",
               "view",
               "basis"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "tables": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "block": {
+                "type": "string",
+                "pattern": "\\.md$"
+              },
+              "label": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "relationship-types",
+                  "relationship-rules"
+                ]
+              },
+              "rules": {
+                "type": "string",
+                "pattern": "\\.json$"
+              },
+              "model": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9._-]+$"
+              }
+            },
+            "required": [
+              "block",
+              "label",
+              "kind",
+              "rules"
             ],
             "additionalProperties": false
           }

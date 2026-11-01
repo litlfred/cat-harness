@@ -100,8 +100,8 @@ is not enabled**. That has consequences for how you author:
 
 Owner, 2026-10-31: take what holds up from the BPMN comprehension research and
 check it mechanically. `kg:audit` reports each rule below per process
-(`src/workflow/diagram-quality.ts` in cat-harness-tools). The sources, and how
-strong each rule's evidence is, are in the
+(`src/workflow/diagram-quality.ts` in https://github.com/litlfred/cat-harness-tools). The
+sources, and how strong each rule's evidence is, are in the
 [`process-model-quality`](../../../methodologies/process-model-quality.md)
 methodology.
 

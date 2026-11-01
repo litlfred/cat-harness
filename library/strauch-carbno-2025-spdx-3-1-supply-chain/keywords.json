@@ -3,73 +3,73 @@
   "entry": "strauch-carbno-2025-spdx-3-1-supply-chain",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "bulk hardware",
-      "score": 3.8041,
+      "score": 3.8121,
       "evidence": []
     },
     {
       "term": "chain profile",
-      "score": 3.5417,
+      "score": 3.55,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "licensed",
-      "score": 3.2012,
+      "score": 3.2056,
       "evidence": []
     },
     {
       "term": "alfred",
-      "score": 3.1633,
+      "score": 3.1645,
       "evidence": []
     },
     {
       "term": "product passport",
-      "score": 3.0214,
-      "evidence": []
-    },
-    {
-      "term": "regulatory compliance",
-      "score": 2.9708,
+      "score": 3.0196,
       "evidence": []
     },
     {
       "term": "regulatory requirements",
-      "score": 2.9693,
+      "score": 2.9483,
+      "evidence": []
+    },
+    {
+      "term": "regulatory compliance",
+      "score": 2.938,
       "evidence": []
     },
     {
       "term": "smart talk",
-      "score": 2.823,
-      "evidence": []
-    },
-    {
-      "term": "com www",
-      "score": 2.7444,
+      "score": 2.8149,
       "evidence": []
     },
     {
       "term": "solution ltd",
-      "score": 2.7273,
+      "score": 2.7512,
+      "evidence": []
+    },
+    {
+      "term": "com www",
+      "score": 2.7291,
       "evidence": []
     },
     {
       "term": "spdx history",
-      "score": 2.6752,
+      "score": 2.6855,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "digital product",
-      "score": 2.4863,
+      "score": 2.4255,
       "evidence": []
     }
   ],
@@ -77,42 +77,42 @@
     "sec-000-document": [
       {
         "term": "bulk hardware",
-        "score": 3.8041,
+        "score": 3.8121,
         "evidence": []
       },
       {
         "term": "chain profile",
-        "score": 3.5417,
+        "score": 3.55,
         "evidence": []
       },
       {
         "term": "licensed",
-        "score": 3.2012,
+        "score": 3.2056,
         "evidence": []
       },
       {
         "term": "alfred",
-        "score": 3.1633,
+        "score": 3.1645,
         "evidence": []
       },
       {
         "term": "product passport",
-        "score": 3.0214,
-        "evidence": []
-      },
-      {
-        "term": "regulatory compliance",
-        "score": 2.9708,
+        "score": 3.0196,
         "evidence": []
       },
       {
         "term": "regulatory requirements",
-        "score": 2.9693,
+        "score": 2.9483,
+        "evidence": []
+      },
+      {
+        "term": "regulatory compliance",
+        "score": 2.938,
         "evidence": []
       },
       {
         "term": "smart talk",
-        "score": 2.823,
+        "score": 2.8149,
         "evidence": []
       }
     ]

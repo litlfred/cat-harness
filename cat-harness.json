@@ -1013,7 +1013,7 @@
     {"id": "document-kinds", "renderedBy": "document-kinds-viewer", "coversKinds": ["document-kinds"], "subgraphs": "instance"},
     {"id": "folio", "renderedBy": "folio-viewer", "covers": ["folio"], "coversKinds": ["folio"], "subgraphs": "instance"},
     {"id": "auto-docs", "renderedBy": "auto-docs-viewer", "coversKinds": ["skills", "docs", "swimlane-glossary", "uml"], "subgraphs": "directory", "subgraphUnder": {"skills": "index/skills", "docs": "index/docs", "swimlane-glossary": "glossary", "uml": "uml"}},
-    {"id": "processes", "renderedBy": "processes-viewer", "coversKinds": ["processes"], "alias": "processes"},
+    {"id": "processes", "renderedBy": "processes-viewer", "coversKinds": ["processes"], "subgraphs": "instance", "alias": "processes"},
     {"id": "tools", "renderedBy": "tools-viewer", "coversKinds": ["tools"], "subgraphs": "instance", "alias": "tools"},
     {"id": "methodologies", "renderedBy": "methodologies-viewer", "coversKinds": ["methodology"], "alias": "methodologies"},
     {"id": "external-schemas", "renderedBy": "external-schemas-viewer", "covers": ["external-schemas"], "coversKinds": ["external-schema"], "subgraphs": "instance", "subgraphUnder": {"external-schema": "instance"}, "alias": "external-schemas"},
@@ -1256,6 +1256,7 @@
     {"path": "docs/assets/img/workflows/contributor-feedback.svg", "writer": ["render:bpmn"], "because": "checkout", "reason": "a drawing of another instance's diagram, rendered from that instance's .bpmn at the index's pin"},
     {"path": "docs/assets/img/workflows/public-comment-change.svg", "writer": ["render:bpmn"], "because": "checkout", "reason": "a drawing of another instance's diagram, rendered from that instance's .bpmn at the index's pin"},
     {"path": "docs/assets/img/workflows/public-comment-release.svg", "writer": ["render:bpmn"], "because": "checkout", "reason": "a drawing of another instance's diagram, rendered from that instance's .bpmn at the index's pin"},
+    {"path": "docs/assets/img/workflows/review-log-watch.svg", "writer": ["render:bpmn"], "because": "checkout", "reason": "a drawing of another instance's diagram, rendered from that instance's .bpmn at the index's pin"},
     {"path": "docs/en/cat-harness/processes/", "writer": ["processes:viz"], "because": "checkout", "reason": "a page per diagram of every instance, 32 of 100 of them other instances' (measured: a foreign task name rewrote public-comment.md); listed after the render:bpmn drawings, because its Findings section reports which diagrams have one. It also reads the bean stores' workflow instances (beans/workflows/, kept on the beans branch and mounted by state:mount before this runs) to link each diagram's running instances (bean v49e, cat-harness-tools#684), so a state:push moves it as well as a re-pin"},
     {"path": "docs/assets/processes/index.json", "writer": ["processes:viz"], "because": "checkout", "reason": "the tile count of each page this writer draws that a landing tile opens, keyed by that tile's directory id (folio-assistant#931, owner's ruling 2026-10-29). Build-time data read by docs:harness, never committed. docs:harness in derive:publish runs before this writer, so the tile reads it from the publish workflow's own later docs:harness step"}
   ],
