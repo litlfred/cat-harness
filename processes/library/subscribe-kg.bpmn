@@ -57,10 +57,13 @@ STRICT. The pin and the five gates are the reason: an unpinned subscription is h
         <bpmn:flowNodeRef>Task_Validate</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Substrate</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Kind</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_NextHeld_Join</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_NextHeld</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Refresh</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_NextPart_Join</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_NextPart</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Materialize</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_NextHarness_Join</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_NextHarness</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Instantiate</bpmn:flowNodeRef>
       </bpmn:lane>
@@ -68,12 +71,12 @@ STRICT. The pin and the five gates are the reason: an unpinned subscription is h
         <bpmn:documentation>Where the subscription is written down: the entry in the subscriber's instance declaration (choice and pin only, never state), the cached copy of the substrate's declaration the visualizer reads offline, and the record of how the walk ended. A refusal lands here with the same weight as a success, so the next caller does not re-litigate it.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_Refuse</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_Refused</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Call_BeanClose_2</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Record</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RePin</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Summarise</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_Done</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_BeanClose</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_BeanClosedHow</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="StartEvent_Wanted" name="A substrate is wanted,
@@ -139,11 +142,17 @@ cache the declaration">
       <bpmn:incoming>Flow_7</bpmn:incoming>
       <bpmn:outgoing>Flow_9</bpmn:outgoing>
     </bpmn:serviceTask>
+    <bpmn:exclusiveGateway id="Gateway_NextHeld_Join">
+      <bpmn:documentation>Brings the paths together before the decision after it, so that decision only splits.</bpmn:documentation>
+      <bpmn:incoming>Flow_8</bpmn:incoming>
+      <bpmn:incoming>Flow_11</bpmn:incoming>
+      <bpmn:outgoing>Flow_Gateway_NextHeld_Join</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
     <bpmn:exclusiveGateway id="Gateway_NextHeld" name="Another held part
 not yet refreshed?">
       <bpmn:documentation>Walks the parts this subscription already holds — every subgraph and asset with a materialisation record — one at a time. `yes` refreshes the next; `no` re-pins. Held parts are found from their records, never from the entry's `subgraphs` list, which says what was chosen, not what arrived.</bpmn:documentation>
-      <bpmn:incoming>Flow_8</bpmn:incoming>
-      <bpmn:incoming>Flow_11</bpmn:incoming>
+      
+      <bpmn:incoming>Flow_Gateway_NextHeld_Join</bpmn:incoming>
       <bpmn:outgoing>Flow_10</bpmn:outgoing>
       <bpmn:outgoing>Flow_12</bpmn:outgoing>
     </bpmn:exclusiveGateway>
@@ -197,11 +206,17 @@ needs held here?">
       <bpmn:outgoing>Flow_16</bpmn:outgoing>
       <bpmn:outgoing>Flow_17</bpmn:outgoing>
     </bpmn:exclusiveGateway>
+    <bpmn:exclusiveGateway id="Gateway_NextPart_Join">
+      <bpmn:documentation>Brings the paths together before the decision after it, so that decision only splits.</bpmn:documentation>
+      <bpmn:incoming>Flow_17</bpmn:incoming>
+      <bpmn:incoming>Flow_19</bpmn:incoming>
+      <bpmn:outgoing>Flow_Gateway_NextPart_Join</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
     <bpmn:exclusiveGateway id="Gateway_NextPart" name="Another chosen subgraph
 or asset not yet walked?">
       <bpmn:documentation>One part at a time, in the order chosen. `yes` hands the next subgraph — or, under an `all` asset policy, the next referenced asset — to the shared subprocess. Under `on-demand`, assets are not walked here at all: each is materialised through the same subprocess when first asked for. `no` moves on to harnesses.</bpmn:documentation>
-      <bpmn:incoming>Flow_17</bpmn:incoming>
-      <bpmn:incoming>Flow_19</bpmn:incoming>
+      
+      <bpmn:incoming>Flow_Gateway_NextPart_Join</bpmn:incoming>
       <bpmn:outgoing>Flow_18</bpmn:outgoing>
       <bpmn:outgoing>Flow_20</bpmn:outgoing>
     </bpmn:exclusiveGateway>
@@ -216,11 +231,17 @@ or asset not yet walked?">
       <bpmn:incoming>Flow_18</bpmn:incoming>
       <bpmn:outgoing>Flow_19</bpmn:outgoing>
     </bpmn:callActivity>
+    <bpmn:exclusiveGateway id="Gateway_NextHarness_Join">
+      <bpmn:documentation>Brings the paths together before the decision after it, so that decision only splits.</bpmn:documentation>
+      <bpmn:incoming>Flow_20</bpmn:incoming>
+      <bpmn:incoming>Flow_22</bpmn:incoming>
+      <bpmn:outgoing>Flow_Gateway_NextHarness_Join</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
     <bpmn:exclusiveGateway id="Gateway_NextHarness" name="Another chosen harness
 not yet instantiated?">
       <bpmn:documentation>Walks the chosen harnesses, whose needs the pre-check already found held. `yes` instantiates the next; `no` closes the walk. A harness already instantiated at this pin is skipped rather than rewritten.</bpmn:documentation>
-      <bpmn:incoming>Flow_20</bpmn:incoming>
-      <bpmn:incoming>Flow_22</bpmn:incoming>
+      
+      <bpmn:incoming>Flow_Gateway_NextHarness_Join</bpmn:incoming>
       <bpmn:outgoing>Flow_21</bpmn:outgoing>
       <bpmn:outgoing>Flow_23</bpmn:outgoing>
     </bpmn:exclusiveGateway>
@@ -268,58 +289,58 @@ in a recorded state">
     <bpmn:callActivity id="Call_BeanClose" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
       <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
-      <bpmn:incoming>Flow_24</bpmn:incoming>
-      <bpmn:outgoing>SF_Bean_4</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:callActivity id="Call_BeanClose_2" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
-      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
-      <bpmn:incoming>Flow_6</bpmn:incoming>
-      <bpmn:outgoing>SF_Bean_5</bpmn:outgoing>
-    </bpmn:callActivity>
+    <bpmn:exclusiveGateway id="GW_BeanClosedHow" name="How did it end?">
+      <bpmn:documentation>Which outcome the bean was closed with, so each ends at its own named end event. The bean is closed once, on every path (bpmn-authoring: open and close the bean at the top, once).</bpmn:documentation>
+    </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent_Wanted" targetRef="Call_BeanOpen" />
     <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_Pin" targetRef="Task_Validate" />
     <bpmn:sequenceFlow id="Flow_3" sourceRef="Task_Validate" targetRef="Gateway_Substrate" />
     <bpmn:sequenceFlow id="Flow_4" name="no, or could not tell" sourceRef="Gateway_Substrate" targetRef="Task_Refuse" />
     <bpmn:sequenceFlow id="Flow_5" name="yes" sourceRef="Gateway_Substrate" targetRef="Gateway_Kind" />
-    <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_Refuse" targetRef="Call_BeanClose_2" />
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_Refuse" targetRef="Call_BeanClose" />
     <bpmn:sequenceFlow id="Flow_7" name="new" sourceRef="Gateway_Kind" targetRef="Task_Record" />
-    <bpmn:sequenceFlow id="Flow_8" name="moving a held pin" sourceRef="Gateway_Kind" targetRef="Gateway_NextHeld" />
+    <bpmn:sequenceFlow id="Flow_8" name="moving a held pin" sourceRef="Gateway_Kind" targetRef="Gateway_NextHeld_Join" />
     <bpmn:sequenceFlow id="Flow_9" sourceRef="Task_Record" targetRef="Task_Review" />
     <bpmn:sequenceFlow id="Flow_10" name="yes" sourceRef="Gateway_NextHeld" targetRef="Call_Refresh" />
-    <bpmn:sequenceFlow id="Flow_11" sourceRef="Call_Refresh" targetRef="Gateway_NextHeld" />
+    <bpmn:sequenceFlow id="Flow_11" sourceRef="Call_Refresh" targetRef="Gateway_NextHeld_Join" />
+    <bpmn:sequenceFlow id="Flow_Gateway_NextHeld_Join" sourceRef="Gateway_NextHeld_Join" targetRef="Gateway_NextHeld"/>
     <bpmn:sequenceFlow id="Flow_12" name="no, all refreshed" sourceRef="Gateway_NextHeld" targetRef="Task_RePin" />
     <bpmn:sequenceFlow id="Flow_13" sourceRef="Task_RePin" targetRef="Task_Review" />
     <bpmn:sequenceFlow id="Flow_14" sourceRef="Task_Review" targetRef="Task_Choose" />
     <bpmn:sequenceFlow id="Flow_15" sourceRef="Task_Choose" targetRef="Gateway_NeedsHeld" />
     <bpmn:sequenceFlow id="Flow_16" name="no — choose again" sourceRef="Gateway_NeedsHeld" targetRef="Task_Choose" />
-    <bpmn:sequenceFlow id="Flow_17" name="yes" sourceRef="Gateway_NeedsHeld" targetRef="Gateway_NextPart" />
+    <bpmn:sequenceFlow id="Flow_17" name="yes" sourceRef="Gateway_NeedsHeld" targetRef="Gateway_NextPart_Join" />
     <bpmn:sequenceFlow id="Flow_18" name="yes" sourceRef="Gateway_NextPart" targetRef="Call_Materialize" />
-    <bpmn:sequenceFlow id="Flow_19" sourceRef="Call_Materialize" targetRef="Gateway_NextPart" />
-    <bpmn:sequenceFlow id="Flow_20" name="no, every part walked" sourceRef="Gateway_NextPart" targetRef="Gateway_NextHarness" />
+    <bpmn:sequenceFlow id="Flow_19" sourceRef="Call_Materialize" targetRef="Gateway_NextPart_Join" />
+    <bpmn:sequenceFlow id="Flow_Gateway_NextPart_Join" sourceRef="Gateway_NextPart_Join" targetRef="Gateway_NextPart"/>
+    <bpmn:sequenceFlow id="Flow_20" name="no, every part walked" sourceRef="Gateway_NextPart" targetRef="Gateway_NextHarness_Join" />
     <bpmn:sequenceFlow id="Flow_21" name="yes" sourceRef="Gateway_NextHarness" targetRef="Task_Instantiate" />
-    <bpmn:sequenceFlow id="Flow_22" sourceRef="Task_Instantiate" targetRef="Gateway_NextHarness" />
+    <bpmn:sequenceFlow id="Flow_22" sourceRef="Task_Instantiate" targetRef="Gateway_NextHarness_Join" />
+    <bpmn:sequenceFlow id="Flow_Gateway_NextHarness_Join" sourceRef="Gateway_NextHarness_Join" targetRef="Gateway_NextHarness"/>
     <bpmn:sequenceFlow id="Flow_23" name="no, every harness walked" sourceRef="Gateway_NextHarness" targetRef="Task_Summarise" />
     <bpmn:sequenceFlow id="Flow_24" sourceRef="Task_Summarise" targetRef="Call_BeanClose" />
     <bpmn:sequenceFlow id="SF_Bean_1" name="claimed" sourceRef="GW_BeanYours" targetRef="Task_Pin"/>
     <bpmn:sequenceFlow id="SF_Bean_2" sourceRef="Call_BeanOpen" targetRef="GW_BeanYours"/>
     <bpmn:sequenceFlow id="SF_Bean_3" name="not yours" sourceRef="GW_BeanYours" targetRef="End_BeanNotYours"/>
-    <bpmn:sequenceFlow id="SF_Bean_4" sourceRef="Call_BeanClose" targetRef="EndEvent_Done"/>
-    <bpmn:sequenceFlow id="SF_Bean_5" sourceRef="Call_BeanClose_2" targetRef="EndEvent_Refused"/>
+    <bpmn:sequenceFlow id="Flow_GW_BeanClosedHow" sourceRef="Call_BeanClose" targetRef="GW_BeanClosedHow"/>
+    <bpmn:sequenceFlow name="subscribed" id="SF_Bean_4" sourceRef="GW_BeanClosedHow" targetRef="EndEvent_Done"/>
+    <bpmn:sequenceFlow name="refused" id="SF_Bean_5" sourceRef="GW_BeanClosedHow" targetRef="EndEvent_Refused"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_SubscribeKg">
     <bpmndi:BPMNPlane id="Plane_SubscribeKg" bpmnElement="Collaboration_SubscribeKg">
+      <bpmndi:BPMNEdge id="Edge_Flow_GW_BeanClosedHow" bpmnElement="Flow_GW_BeanClosedHow"><di:waypoint x="4100" y="560"/><di:waypoint x="4140" y="560"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Participant_SubscribeKg_di" bpmnElement="Participant_SubscribeKg" isHorizontal="true">
-        <dc:Bounds x="130" y="60" width="3850" height="600" />
+        <dc:Bounds x="130" y="60" width="4120" height="604" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0_di" bpmnElement="Lane_0" isHorizontal="true">
-        <dc:Bounds x="160" y="60" width="3820" height="200" />
+        <dc:Bounds x="160" y="60" width="4090" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true">
-        <dc:Bounds x="160" y="260" width="3820" height="200" />
+        <dc:Bounds x="160" y="260" width="4090" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_2_di" bpmnElement="Lane_2" isHorizontal="true">
-        <dc:Bounds x="160" y="460" width="3820" height="200" />
+        <dc:Bounds x="160" y="460" width="4090" height="204" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Wanted_di" bpmnElement="StartEvent_Wanted">
         <dc:Bounds x="210" y="142" width="36" height="36" />
@@ -339,8 +360,8 @@ in a recorded state">
         <dc:Bounds x="1000" y="510" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Refused_di" bpmnElement="EndEvent_Refused">
-        <dc:Bounds x="1400" y="542" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1344.5" y="598.5" width="116" height="54" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="4280" y="592" width="36" height="36" />
+        
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Kind_di" bpmnElement="Gateway_Kind" isMarkerVisible="true">
         <dc:Bounds x="1530" y="335" width="50" height="50" />
@@ -349,46 +370,69 @@ in a recorded state">
       <bpmndi:BPMNShape id="Task_Record_di" bpmnElement="Task_Record">
         <dc:Bounds x="1460" y="510" width="190" height="100" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Gateway_NextHeld_Join" bpmnElement="Gateway_NextHeld_Join" isMarkerVisible="true">
+        <dc:Bounds x="1730" y="335" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Flow_Gateway_NextHeld_Join" bpmnElement="Flow_Gateway_NextHeld_Join">
+        <di:waypoint x="1780" y="360"/>
+        <di:waypoint x="1820" y="360"/>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Gateway_NextHeld_di" bpmnElement="Gateway_NextHeld" isMarkerVisible="true">
-        <dc:Bounds x="1730" y="335" width="50" height="50" />
+        <dc:Bounds x="1820" y="335" width="50" height="50" />
         <bpmndi:BPMNLabel><dc:Bounds x="1600" y="392" width="130" height="40" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Call_Refresh_di" bpmnElement="Call_Refresh">
-        <dc:Bounds x="1880" y="310" width="190" height="100" />
+        <dc:Bounds x="1970" y="310" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_RePin_di" bpmnElement="Task_RePin">
-        <dc:Bounds x="1880" y="510" width="190" height="100" />
+        <dc:Bounds x="1970" y="510" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Review_di" bpmnElement="Task_Review">
-        <dc:Bounds x="2200" y="110" width="190" height="100" />
+        <dc:Bounds x="2290" y="110" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Choose_di" bpmnElement="Task_Choose">
-        <dc:Bounds x="2450" y="110" width="190" height="100" />
+        <dc:Bounds x="2540" y="110" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_NeedsHeld_di" bpmnElement="Gateway_NeedsHeld" isMarkerVisible="true">
-        <dc:Bounds x="2745" y="135" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2805" y="115" width="150" height="40" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="2835" y="135" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2895" y="115" width="240" height="40" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Gateway_NextPart_Join" bpmnElement="Gateway_NextPart_Join" isMarkerVisible="true">
+        <dc:Bounds x="2970" y="335" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Flow_Gateway_NextPart_Join" bpmnElement="Flow_Gateway_NextPart_Join">
+        <di:waypoint x="3020" y="360"/>
+        <di:waypoint x="3060" y="360"/>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Gateway_NextPart_di" bpmnElement="Gateway_NextPart" isMarkerVisible="true">
-        <dc:Bounds x="2880" y="335" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2651" y="389" width="225" height="54" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="3060" y="335" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2741" y="389" width="225" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Call_Materialize_di" bpmnElement="Call_Materialize">
-        <dc:Bounds x="3020" y="310" width="190" height="100" />
+        <dc:Bounds x="3200" y="310" width="190" height="100" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Gateway_NextHarness_Join" bpmnElement="Gateway_NextHarness_Join" isMarkerVisible="true">
+        <dc:Bounds x="3495" y="335" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Flow_Gateway_NextHarness_Join" bpmnElement="Flow_Gateway_NextHarness_Join">
+        <di:waypoint x="3545" y="360"/>
+        <di:waypoint x="3585" y="360"/>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Gateway_NextHarness_di" bpmnElement="Gateway_NextHarness" isMarkerVisible="true">
-        <dc:Bounds x="3315" y="335" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="3220" y="222" width="150" height="40" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="3585" y="335" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="3400" y="222" width="150" height="40" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Instantiate_di" bpmnElement="Task_Instantiate">
-        <dc:Bounds x="3450" y="310" width="190" height="100" />
+        <dc:Bounds x="3720" y="310" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Summarise_di" bpmnElement="Task_Summarise">
-        <dc:Bounds x="3450" y="510" width="190" height="100" />
+        <dc:Bounds x="3720" y="510" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Done_di" bpmnElement="EndEvent_Done">
-        <dc:Bounds x="3870" y="542" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="3830" y="583" width="116" height="40" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="4280" y="492" width="36" height="36" />
+        
+        <bpmndi:BPMNLabel><dc:Bounds x="4189" y="511.5" width="90" height="71" /></bpmndi:BPMNLabel>
+        
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1"><di:waypoint x="246" y="160"/><di:waypoint x="290" y="160"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
@@ -410,7 +454,7 @@ in a recorded state">
         <di:waypoint x="1530" y="360" />
         <bpmndi:BPMNLabel><dc:Bounds x="1225" y="338" width="40" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6"><di:waypoint x="1190" y="560"/><di:waypoint x="1240" y="560"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6"><di:waypoint x="1095" y="610"/><di:waypoint x="1095" y="649"/><di:waypoint x="4040" y="649"/><di:waypoint x="4040" y="600"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
         <di:waypoint x="1555" y="385" />
         <di:waypoint x="1555" y="510" />
@@ -424,90 +468,90 @@ in a recorded state">
       <bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="Flow_9">
         <di:waypoint x="1555" y="610" />
         <di:waypoint x="1555" y="640" />
-        <di:waypoint x="2320" y="640" />
-        <di:waypoint x="2320" y="210" />
+        <di:waypoint x="2410" y="640" />
+        <di:waypoint x="2410" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="Flow_10">
-        <di:waypoint x="1780" y="360" />
-        <di:waypoint x="1880" y="360" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1810" y="338" width="40" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1870" y="360" />
+        <di:waypoint x="1970" y="360" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1900" y="338" width="40" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_11_di" bpmnElement="Flow_11">
-        <di:waypoint x="1975" y="310" />
-        <di:waypoint x="1975" y="285" />
+        <di:waypoint x="2065" y="310" />
+        <di:waypoint x="2065" y="285" />
         <di:waypoint x="1755" y="285" />
         <di:waypoint x="1755" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12_di" bpmnElement="Flow_12">
-        <di:waypoint x="1755" y="385" />
-        <di:waypoint x="1755" y="560" />
-        <di:waypoint x="1880" y="560" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1762" y="530" width="116" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1845" y="385" />
+        <di:waypoint x="1845" y="560" />
+        <di:waypoint x="1970" y="560" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1852" y="530" width="116" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13_di" bpmnElement="Flow_13">
-        <di:waypoint x="2070" y="560" />
-        <di:waypoint x="2140" y="560" />
-        <di:waypoint x="2140" y="160" />
-        <di:waypoint x="2200" y="160" />
+        <di:waypoint x="2160" y="560" />
+        <di:waypoint x="2230" y="560" />
+        <di:waypoint x="2230" y="160" />
+        <di:waypoint x="2290" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_14_di" bpmnElement="Flow_14">
-        <di:waypoint x="2390" y="160" />
-        <di:waypoint x="2450" y="160" />
+        <di:waypoint x="2480" y="160" />
+        <di:waypoint x="2540" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_15_di" bpmnElement="Flow_15">
-        <di:waypoint x="2640" y="160" />
-        <di:waypoint x="2745" y="160" />
+        <di:waypoint x="2730" y="160" />
+        <di:waypoint x="2835" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_16_di" bpmnElement="Flow_16">
-        <di:waypoint x="2770" y="135" />
-        <di:waypoint x="2770" y="85" />
-        <di:waypoint x="2545" y="85" />
-        <di:waypoint x="2545" y="110" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2590" y="66" width="140" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="2860" y="135" />
+        <di:waypoint x="2860" y="85" />
+        <di:waypoint x="2635" y="85" />
+        <di:waypoint x="2635" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2680" y="66" width="140" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_17_di" bpmnElement="Flow_17">
-        <di:waypoint x="2770" y="185" />
-        <di:waypoint x="2770" y="360" />
-        <di:waypoint x="2880" y="360" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2777" y="230" width="40" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="2860" y="185" />
+        <di:waypoint x="2860" y="360" />
+        <di:waypoint x="2970" y="360" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2867" y="230" width="40" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_18_di" bpmnElement="Flow_18">
-        <di:waypoint x="2930" y="360" />
-        <di:waypoint x="3020" y="360" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2955" y="338" width="40" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="3110" y="360" />
+        <di:waypoint x="3200" y="360" />
+        <bpmndi:BPMNLabel><dc:Bounds x="3135" y="338" width="40" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_19_di" bpmnElement="Flow_19">
-        <di:waypoint x="3115" y="310" />
-        <di:waypoint x="3115" y="285" />
-        <di:waypoint x="2905" y="285" />
-        <di:waypoint x="2905" y="335" />
+        <di:waypoint x="3295" y="310" />
+        <di:waypoint x="3295" y="285" />
+        <di:waypoint x="2995" y="285" />
+        <di:waypoint x="2995" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_20_di" bpmnElement="Flow_20">
-        <di:waypoint x="2905" y="385" />
-        <di:waypoint x="2905" y="440" />
-        <di:waypoint x="3270" y="440" />
-        <di:waypoint x="3270" y="360" />
-        <di:waypoint x="3315" y="360" />
-        <bpmndi:BPMNLabel><dc:Bounds x="3000" y="418" width="160" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="3085" y="385" />
+        <di:waypoint x="3085" y="440" />
+        <di:waypoint x="3450" y="440" />
+        <di:waypoint x="3450" y="360" />
+        <di:waypoint x="3495" y="360" />
+        <bpmndi:BPMNLabel><dc:Bounds x="3180" y="418" width="160" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_21_di" bpmnElement="Flow_21">
-        <di:waypoint x="3365" y="360" />
-        <di:waypoint x="3450" y="360" />
-        <bpmndi:BPMNLabel><dc:Bounds x="3388" y="338" width="40" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="3635" y="360" />
+        <di:waypoint x="3720" y="360" />
+        <bpmndi:BPMNLabel><dc:Bounds x="3658" y="338" width="40" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_22_di" bpmnElement="Flow_22">
-        <di:waypoint x="3545" y="310" />
-        <di:waypoint x="3545" y="285" />
-        <di:waypoint x="3340" y="285" />
-        <di:waypoint x="3340" y="335" />
+        <di:waypoint x="3815" y="310" />
+        <di:waypoint x="3815" y="285" />
+        <di:waypoint x="3520" y="285" />
+        <di:waypoint x="3520" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_23_di" bpmnElement="Flow_23">
-        <di:waypoint x="3340" y="385" />
-        <di:waypoint x="3340" y="560" />
-        <di:waypoint x="3450" y="560" />
-        <bpmndi:BPMNLabel><dc:Bounds x="3347" y="490" width="100" height="30" /></bpmndi:BPMNLabel>
+        <di:waypoint x="3610" y="385" />
+        <di:waypoint x="3610" y="560" />
+        <di:waypoint x="3720" y="560" />
+        <bpmndi:BPMNLabel><dc:Bounds x="3617" y="490" width="100" height="30" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_24_di" bpmnElement="Flow_24"><di:waypoint x="3640" y="560"/><di:waypoint x="3710" y="560"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_24_di" bpmnElement="Flow_24"><di:waypoint x="3910" y="560"/><di:waypoint x="3980" y="560"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen"><dc:Bounds x="290" y="120" width="120" height="80"/></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1"><di:waypoint x="490" y="160"/><di:waypoint x="570" y="160"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="440" y="135" width="50" height="50"/>
@@ -520,10 +564,16 @@ in a recorded state">
       <bpmndi:BPMNEdge id="SF_Bean_3_di" bpmnElement="SF_Bean_3"><di:waypoint x="465" y="185"/><di:waypoint x="465" y="215"/>
         <bpmndi:BPMNLabel><dc:Bounds x="469" y="191" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Call_BeanClose_di" bpmnElement="Call_BeanClose"><dc:Bounds x="3710" y="520" width="120" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4"><di:waypoint x="3830" y="560"/><di:waypoint x="3870" y="560"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Call_BeanClose_2_di" bpmnElement="Call_BeanClose_2"><dc:Bounds x="1240" y="520" width="120" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5"><di:waypoint x="1360" y="560"/><di:waypoint x="1400" y="560"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_GW_BeanClosedHow" bpmnElement="GW_BeanClosedHow" isMarkerVisible="true"><dc:Bounds x="4140" y="535" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="4122.08" y="608.5" width="90" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Call_BeanClose_di" bpmnElement="Call_BeanClose"><dc:Bounds x="3980" y="520" width="120" height="80"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4"><di:waypoint x="4165" y="535"/><di:waypoint x="4165" y="510"/><di:waypoint x="4280" y="510"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="4177.5" y="490" width="90" height="17" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5"><di:waypoint x="4165" y="585"/><di:waypoint x="4165" y="610"/><di:waypoint x="4280" y="610"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="4169" y="589" width="90" height="17" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

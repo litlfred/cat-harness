@@ -19,7 +19,7 @@ description: >
 
 > Skill id: `archimate-models` · Package: `ui-core` · Subgraph:
 > [`cat-harness/archimate/`](../../../archimate/README.md) · Tools:
-> `archimate-check`, `archimate-metamodel`, `archimate-pages`, `archimate-crossings`, `archimate-detangle`, `archimate-actors` · Process:
+> `archimate-check`, `archimate-metamodel`, `archimate-blocks`, `archimate-pages`, `archimate-crossings`, `archimate-detangle`, `archimate-actors` · Process:
 > `archimate-publish` (`processes/ui/archimate-publish.bpmn`)
 
 Owner, 2026-10-09: *"need new specialixed harness (like openapi) for archimate
@@ -147,6 +147,30 @@ logical model with `logical-model = <canonical>`. Write the logical model in the
 IG first. Never derive a logical model from the model's boxes. The data
 object's class diagram will be generated from that logical model once the IG
 holds one, so tag the data object now and do not draw the diagram.
+
+## A document's tables and figures are drawn, not typed
+
+Owner, 2026-11-01 (smart-ra, cards Q-RAC-1 B and Q-RAC-2 A, "the rules stay
+in charge"): a table or figure in the document that restates the model is
+generated from data by the Tool `archimate-blocks`, and `--check` keeps it
+from drifting.
+
+- **Relationship rules and types** live once, as an
+  `archimate-relationship-rules/v1` file in the archimate directory
+  (`cat-harness-tools/archimate/schemas/rules.ts`). The document's rules table
+  and relationship-types table are drawn from it (config `tables`), with the
+  caption and footnotes left as the editors wrote them.
+- **The rules are in charge, not the model.** For a rules table that names a
+  `model`, the Tool reports rules the model never uses, relationships no rule
+  covers, rules ArchiMate's own table refuses, and relationship types the
+  rules use but the document never explains. The editors decide, link by
+  link, whether to fix the model or add a rule; nothing is rewritten from the
+  model.
+- **A figure that is a view** names an `svg` in its `figures` entry. The Tool
+  writes the view there with the same renderer as the view's page, and the
+  block shows that SVG instead of a picture. Check the drawing against the
+  published figure first: element names in the model must match the
+  document's.
 
 ## Untangle every view you touch
 

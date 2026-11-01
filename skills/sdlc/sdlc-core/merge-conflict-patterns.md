@@ -247,8 +247,8 @@ A modify/delete conflict has no stage for the side that deleted it, so
 `checkout --theirs` (or `--ours`) has nothing to take. Every resolving
 strategy takes the **base's side of the deletion** instead: its copy when the
 base kept the file, `git rm` when the base removed it — `takeBase` in
-`merge-base.ts`, and `provisionalSide` in `qa-resolve-conflicts.ts` for the
-delegated sidecars (#1854). Regeneration recreates the file if it is still
+`merge-base.ts`. The retired `qa:resolve-conflicts` did the same for the
+sidecars it was delegated (#1854, bean `7mwa`). Regeneration recreates the file if it is still
 produced. Classification is by path, so an authored path in a modify/delete
 conflict is refused exactly like any other conflict on it. The `owned-tree`
 patterns are the exception. They read which **parent commits** hold the path
@@ -272,9 +272,9 @@ again, since it is now untracked and ignored. The failure signature is
 none"). `git add -A` is not what removes such a file, though. It stages a
 rewrite of a file that is still tracked; it only fails to restore one that
 something has already removed from the index. On #1898 (`edf52fcf6`) that was
-a `git rm` from `takeBase`. `qa:resolve-conflicts` claims every conflicted
-path under a declared `qa` directory, detangle sidecars included, and had
-already resolved three of them. The pre-`vsv7` `takeBase` then read "no
+a `git rm` from `takeBase`. `qa:resolve-conflicts`, retired since, claimed
+every conflicted path under a declared `qa` directory, detangle sidecars
+included, and had already resolved three of them. The pre-`vsv7` `takeBase` then read "no
 stages" as "the base deleted it". The refusal line says when the dropped file
 is still on disk, which is the case that local checks cannot see.
 
@@ -282,22 +282,12 @@ is still on disk, which is the case that local checks cannot see.
 
 Counts are conflicted files in the 2026-09-30 measurement.
 
-### `kg-qa-sidecar` — delegated (53)
-
-`**/test/results/kg-qa/**`. A kg-audit sidecar can carry an attestation that
-an earlier run or a person recorded, which no generator reproduces.
-`qa:resolve-conflicts` reads git's stages and refuses such a file, so this
-pattern hands over rather than taking either side. Listed FIRST: these paths
-are also under `test/results/`, and falling through to `take-base` would drop
-a recorded adjudication silently.
-
 ### `kg-qa-manifest` — take the base, regenerate
 
 `**/test/results/**/kg-qa.manifest.json`. One per instance (hosted ones one level deeper), holding only the
 auditor's script hash, so any change to `kg-audit.ts` restamps every one at
 once. Not in the first measurement's top list; found when a replay of 40 real
-merges refused one merge on these files alone. It holds no attestation, unlike
-the sidecars it indexes.
+merges refused one merge on these files alone. It holds no attestation.
 
 ### `qa-results` — take the base, regenerate (292)
 
@@ -307,9 +297,17 @@ any finding does.
 
 ### `derived-results` — take the base, regenerate (142)
 
-LSI indexes, detangle sidecars, tool-run records and translation-qa sidecars under `test/results/`.
+kg-qa sidecars, LSI indexes, detangle sidecars, tool-run records and translation-qa sidecars under `test/results/`.
 Recomputed from the whole corpus, so any concurrent skill or schema change
 touches them.
+
+The **kg-qa** sidecars joined in bean `7mwa`. They were the `kg-qa-sidecar`
+pattern (53 conflicts in the measurement), delegated to `qa:resolve-conflicts`
+because a sidecar could carry an attestation no generator reproduces. The
+attestations moved to `test/attestations/` (bean `2gst`), which no pattern
+names and a merge therefore refuses, and cat-harness and the content core
+(https://github.com/litlfred/folio-assistant-core) stopped committing `test/results/`. So the command and the pattern were
+retired, and a branch still carrying a sidecar takes the base's side.
 
 The **LSI** half is untracked on `main` since bean `tqjj`, and the globs are
 kept for the branches still carrying it. See §"A pattern is not always the
@@ -415,8 +413,7 @@ rewrites it. Its authored neighbours in `docs/_includes/` stay refused.
 
 `test/results/viewer-nav/viewer-nav.qa.json`: `check-viewer-nav`'s mechanical
 layout verdict over every viewer page. Recomputed from the pages, and it
-carries no reviewer's attestation — unlike a kg-qa sidecar, which is why it is
-not delegated to `qa:resolve-conflicts`.
+carries no reviewer's attestation.
 
 ### `handler-index` — take the base, regenerate
 
@@ -545,8 +542,7 @@ rewrites it. Found on the same merge.
 
 `test/results/witnesses/**`: witness projections (`qa-witness/v1`) and page
 verdict indexes, written by `gen-docs-pages.ts` from the kg-qa sidecars and the
-live subject. A projection, never an attestation — the sidecars it reads are
-the delegated `kg-qa-sidecar` family — and the docs-site build regenerates them
+live subject. A projection, never an attestation, and the docs-site build regenerates them
 at publish. Found on #1754's eighth merge, 2026-10-01.
 
 ### `pot-templates` — take the base, regenerate

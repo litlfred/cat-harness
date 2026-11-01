@@ -52,7 +52,7 @@ What an agent writes down about its own run, and what a person can do with it af
 - Who: the `Agent (this session)` lane (role `authoring-agent`).
 - What: The task itself.
 - Record it: `workflow_complete` with `node: "A_DoWork"`.
-- next: → `A_LogMessage` (Log a message or an error), → `A_LogEnd` (Log task-end)
+- next: → `GW_DoWork` (Task complete?)
 
 ## Done — Log emptied (`End_Emptied`)
 
@@ -65,6 +65,13 @@ What an agent writes down about its own run, and what a person can do with it af
 - What: Remove one entry by its stable id, with emptyLog({ id }).
 - Record it: `workflow_complete` with `node: "A_EmptyOne"`.
 - next: → `End_Emptied` (Log emptied)
+
+### Decide — Task complete? (`GW_DoWork`)
+
+- Which way the work goes after it.
+- Call `workflow_complete` with `node: "GW_DoWork"` and `outcome` set to the label that holds:
+  - «no» → `A_LogMessage` (Log a message or an error)
+  - «yes» → `A_LogEnd` (Log task-end)
 
 ### 5. Log a message or an error (`A_LogMessage`)
 

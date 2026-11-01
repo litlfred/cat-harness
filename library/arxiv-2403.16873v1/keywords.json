@@ -3,75 +3,75 @@
   "entry": "arxiv-2403.16873v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "ngse technique",
-      "score": 12.0785,
+      "score": 11.9817,
       "evidence": []
     },
     {
       "term": "rwt technique",
-      "score": 11.004,
+      "score": 10.9043,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "no-gold-standard technique",
-      "score": 9.6337,
+      "score": 9.5293,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "true quantitative",
+      "score": 8.975,
+      "evidence": []
+    },
+    {
+      "term": "upper bound",
+      "score": 8.4346,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "imaging methods",
-      "score": 8.5362,
+      "score": 8.4012,
       "evidence": []
-    },
-    {
-      "term": "quantitative imaging",
-      "score": 8.4222,
-      "evidence": []
-    },
-    {
-      "term": "true quantitative",
-      "score": 8.1829,
-      "evidence": []
-    },
-    {
-      "term": "upper bound",
-      "score": 7.9446,
-      "evidence": [
-        "heading"
-      ]
     },
     {
       "term": "measured quantitative",
-      "score": 7.4873,
+      "score": 7.2516,
       "evidence": []
     },
     {
       "term": "segmentation methods",
-      "score": 7.2447,
+      "score": 7.1537,
       "evidence": []
     },
     {
       "term": "technique assumes",
-      "score": 7.0428,
-      "evidence": []
-    },
-    {
-      "term": "quantitative values",
-      "score": 6.8694,
+      "score": 6.9355,
       "evidence": []
     },
     {
       "term": "gold standards",
-      "score": 6.8084,
+      "score": 6.7881,
+      "evidence": []
+    },
+    {
+      "term": "quantitative values",
+      "score": 6.762,
+      "evidence": []
+    },
+    {
+      "term": "ranking performance",
+      "score": 6.6784,
       "evidence": []
     }
   ],
@@ -79,163 +79,163 @@
     "sec-000-methods": [
       {
         "term": "ngse technique",
-        "score": 1.8756,
+        "score": 1.8643,
         "evidence": []
       },
       {
         "term": "rao bound",
-        "score": 1.6567,
-        "evidence": []
-      },
-      {
-        "term": "no-gold-standard evaluation",
-        "score": 1.606,
+        "score": 1.7158,
         "evidence": []
       },
       {
         "term": "upper bound",
-        "score": 1.519,
+        "score": 1.6149,
+        "evidence": []
+      },
+      {
+        "term": "no-gold-standard evaluation",
+        "score": 1.5912,
         "evidence": []
       },
       {
         "term": "ground truth",
-        "score": 1.4991,
+        "score": 1.4997,
         "evidence": []
       },
       {
         "term": "quantitative imaging",
-        "score": 1.4019,
+        "score": 1.3689,
         "evidence": []
       },
       {
         "term": "gold standards",
-        "score": 1.3297,
+        "score": 1.3247,
         "evidence": []
       }
     ],
     "sec-001-introduction": [
       {
         "term": "ngse technique",
-        "score": 3.3655,
+        "score": 3.341,
         "evidence": []
       },
       {
         "term": "rwt technique",
-        "score": 2.7525,
-        "evidence": []
-      },
-      {
-        "term": "metabolic tumor",
-        "score": 2.4222,
-        "evidence": []
-      },
-      {
-        "term": "segmentation methods",
-        "score": 2.2937,
+        "score": 2.7263,
         "evidence": []
       },
       {
         "term": "true quantitative",
-        "score": 2.2268,
+        "score": 2.4719,
+        "evidence": []
+      },
+      {
+        "term": "metabolic tumor",
+        "score": 2.4265,
+        "evidence": []
+      },
+      {
+        "term": "segmentation methods",
+        "score": 2.2655,
         "evidence": []
       },
       {
         "term": "technique assumes",
-        "score": 2.0868,
+        "score": 2.0604,
         "evidence": []
       },
       {
         "term": "tumor volume",
-        "score": 2.0014,
+        "score": 1.9913,
         "evidence": []
       },
       {
         "term": "spect reconstruction",
-        "score": 1.9768,
+        "score": 1.9823,
         "evidence": []
       }
     ],
     "sec-002-theory": [
       {
         "term": "estimated foms",
-        "score": 2.2132,
-        "evidence": []
-      },
-      {
-        "term": "pth patient",
-        "score": 1.902,
+        "score": 2.2142,
         "evidence": []
       },
       {
         "term": "true quantitative",
-        "score": 1.9,
-        "evidence": []
-      },
-      {
-        "term": "crb",
-        "score": 1.894,
-        "evidence": []
-      },
-      {
-        "term": "ˆap",
-        "score": 1.8915,
-        "evidence": []
-      },
-      {
-        "term": "ngse techniques",
-        "score": 1.8372,
-        "evidence": []
-      },
-      {
-        "term": "estimated parameters",
-        "score": 1.6954,
+        "score": 2.1545,
         "evidence": []
       },
       {
         "term": "true values",
-        "score": 1.6428,
+        "score": 1.9326,
+        "evidence": []
+      },
+      {
+        "term": "pth patient",
+        "score": 1.9064,
+        "evidence": []
+      },
+      {
+        "term": "crb",
+        "score": 1.8954,
+        "evidence": []
+      },
+      {
+        "term": "ˆap",
+        "score": 1.8929,
+        "evidence": []
+      },
+      {
+        "term": "ngse techniques",
+        "score": 1.8196,
+        "evidence": []
+      },
+      {
+        "term": "estimated parameters",
+        "score": 1.7008,
         "evidence": []
       }
     ],
     "sec-003-demonstrating-utility-of-the-proposed-framework": [
       {
         "term": "rwt technique",
-        "score": 2.4728,
-        "evidence": []
-      },
-      {
-        "term": "beta distribution",
-        "score": 1.701,
+        "score": 2.4549,
         "evidence": []
       },
       {
         "term": "true values",
-        "score": 1.5705,
+        "score": 1.8182,
+        "evidence": []
+      },
+      {
+        "term": "beta distribution",
+        "score": 1.6691,
         "evidence": []
       },
       {
         "term": "noise-to-slope ratio",
-        "score": 1.3782,
+        "score": 1.3797,
         "evidence": []
       },
       {
         "term": "linear relationship",
-        "score": 1.2908,
+        "score": 1.2963,
         "evidence": []
       },
       {
         "term": "hypothetical",
-        "score": 1.0849,
+        "score": 1.0323,
         "evidence": []
       },
       {
         "term": "noise",
-        "score": 0.911,
+        "score": 0.855,
         "evidence": []
       },
       {
         "term": "framework",
-        "score": 0.837,
+        "score": 0.8476,
         "evidence": [
           "heading"
         ]
@@ -244,79 +244,79 @@
     "sec-004-results": [
       {
         "term": "rwt technique",
-        "score": 2.5338,
+        "score": 2.5146,
         "evidence": []
       },
       {
         "term": "patients required",
-        "score": 1.6499,
+        "score": 1.6525,
         "evidence": []
       },
       {
         "term": "upper bounds",
-        "score": 1.4184,
+        "score": 1.4955,
         "evidence": []
       },
       {
         "term": "derived accuracy",
-        "score": 1.4041,
+        "score": 1.3862,
         "evidence": []
       },
       {
         "term": "precise method",
-        "score": 1.3586,
+        "score": 1.3386,
         "evidence": []
       },
       {
         "term": "ranking",
-        "score": 0.9782,
+        "score": 0.9855,
         "evidence": []
       },
       {
         "term": "fig",
-        "score": 0.6971,
+        "score": 0.6449,
         "evidence": []
       }
     ],
     "sec-005-discussion-and-conclusion": [
       {
         "term": "quantitative imaging",
-        "score": 3.5022,
+        "score": 3.4198,
         "evidence": []
       },
       {
         "term": "medical imaging",
-        "score": 3.3501,
-        "evidence": []
-      },
-      {
-        "term": "imaging methods",
-        "score": 3.0036,
+        "score": 3.3074,
         "evidence": []
       },
       {
         "term": "gold standards",
-        "score": 2.9848,
+        "score": 2.9762,
+        "evidence": []
+      },
+      {
+        "term": "imaging methods",
+        "score": 2.9511,
         "evidence": []
       },
       {
         "term": "ngse technique",
-        "score": 2.9666,
+        "score": 2.9462,
         "evidence": []
       },
       {
         "term": "no-gold-standard technique",
-        "score": 2.9191,
+        "score": 2.8983,
+        "evidence": []
+      },
+      {
+        "term": "upper bound",
+        "score": 2.5544,
         "evidence": []
       },
       {
         "term": "no-gold-standard evaluation",
-        "score": 2.4912,
-        "evidence": []
-      },
-      {
-        "term": "academic radiology",
-        "score": 2.4418,
+        "score": 2.4719,
         "evidence": []
       }
     ]
