@@ -96,25 +96,25 @@ TOOL-AGNOSTIC ON PURPOSE. Owner, 2026-09-30: &quot;tools can describe their own 
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Render" bpmnElement="Start_Render">
         <dc:Bounds x="212" y="212" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="201.09" y="271.5" width="90" height="72" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="201.09" y="271.5" width="90" height="72" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Resolve" bpmnElement="Task_Resolve">
-        <dc:Bounds x="288" y="190" width="180" height="80" />
+        <dc:Bounds x="318" y="170" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Tool" bpmnElement="GW_Tool" isMarkerVisible="true">
         <dc:Bounds x="508" y="205" width="50" height="50" />
         
       <bpmndi:BPMNLabel><dc:Bounds x="488" y="165" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_ToolSubprocess" bpmnElement="Call_ToolSubprocess">
-        <dc:Bounds x="598" y="183.5" width="180" height="93" />
+        <dc:Bounds x="628" y="170" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Report" bpmnElement="Task_Report">
-        <dc:Bounds x="833" y="190" width="150" height="80" />
+        <dc:Bounds x="848" y="170" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Pushed" bpmnElement="GW_Pushed" isMarkerVisible="true">
         <dc:Bounds x="1043" y="205" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="975" y="270.5" width="90" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="975" y="270.5" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Pushed" bpmnElement="End_Pushed">
         <dc:Bounds x="1165" y="142" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -124,15 +124,15 @@ TOOL-AGNOSTIC ON PURPOSE. Owner, 2026-09-30: &quot;tools can describe their own 
       <bpmndi:BPMNLabel><dc:Bounds x="1205" y="282" width="90" height="108" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_1" bpmnElement="Flow_1">
         <di:waypoint x="248" y="230" />
-        <di:waypoint x="288" y="230" />
+        <di:waypoint x="318" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_2" bpmnElement="Flow_2">
-        <di:waypoint x="468" y="230" />
+        <di:waypoint x="438" y="230" />
         <di:waypoint x="508" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_3" bpmnElement="Flow_3">
         <di:waypoint x="558" y="230" />
-        <di:waypoint x="598" y="230" />
+        <di:waypoint x="628" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
         <di:waypoint x="533" y="255" />
@@ -141,11 +141,11 @@ TOOL-AGNOSTIC ON PURPOSE. Owner, 2026-09-30: &quot;tools can describe their own 
         <di:waypoint x="908" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
-        <di:waypoint x="778" y="230" />
-        <di:waypoint x="833" y="230" />
+        <di:waypoint x="748" y="230" />
+        <di:waypoint x="848" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
-        <di:waypoint x="983" y="230" />
+        <di:waypoint x="968" y="230" />
         <di:waypoint x="1043" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_7" bpmnElement="Flow_7">

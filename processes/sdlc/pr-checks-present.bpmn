@@ -158,46 +158,50 @@ TWO CHANNELS, ON THE OWNER'S INSTRUCTION, AND THEY BEHAVE DIFFERENTLY. The track
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Sweep" bpmnElement="Start_Sweep">
         <dc:Bounds x="122" y="92" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="162" y="132" width="90" height="54" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="154.5" y="131.5" width="90" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Sweep" bpmnElement="Task_Sweep">
-        <dc:Bounds x="300" y="72" width="180" height="129" />
+        <dc:Bounds x="330" y="76.5" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Determined" bpmnElement="GW_Determined" isMarkerVisible="true">
         <dc:Bounds x="615" y="85" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="669" y="139" width="90" height="35" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="669" y="139" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Unknown" bpmnElement="End_Unknown">
         <dc:Bounds x="622" y="332" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="662" y="305.5" width="90" height="89" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="662" y="305.5" width="90" height="89" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Label" bpmnElement="Task_Label">
-        <dc:Bounds x="800" y="72" width="180" height="80" />
+        <dc:Bounds x="830" y="72" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Finding" bpmnElement="GW_Finding" isMarkerVisible="true">
         <dc:Bounds x="1115" y="85" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Close" bpmnElement="Task_Close">
-        <dc:Bounds x="1300" y="72" width="180" height="80" />
+        <dc:Bounds x="1330" y="72" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Clean" bpmnElement="End_Clean">
         <dc:Bounds x="1622" y="92" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Track" bpmnElement="Task_Track">
-        <dc:Bounds x="1300" y="190" width="180" height="80" />
+        <dc:Bounds x="1330" y="170" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Comment" bpmnElement="Task_Comment">
-        <dc:Bounds x="1550" y="190" width="180" height="80" />
+        <dc:Bounds x="1580" y="170" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Recorded" bpmnElement="End_Recorded">
         <dc:Bounds x="1872" y="212" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_0" bpmnElement="Flow_0">
         <di:waypoint x="158" y="110" />
-        <di:waypoint x="300" y="110" />
+        <di:waypoint x="244" y="110" />
+        <di:waypoint x="244" y="136.5" />
+        <di:waypoint x="330" y="136.5" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_1" bpmnElement="Flow_1">
-        <di:waypoint x="480" y="110" />
+        <di:waypoint x="450" y="136.5" />
+        <di:waypoint x="532.5" y="136.5" />
+        <di:waypoint x="532.5" y="110" />
         <di:waypoint x="615" y="110" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_2" bpmnElement="Flow_2">
@@ -206,34 +210,40 @@ TWO CHANNELS, ON THE OWNER'S INSTRUCTION, AND THEY BEHAVE DIFFERENTLY. The track
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_3" bpmnElement="Flow_3">
         <di:waypoint x="665" y="110" />
-        <di:waypoint x="800" y="110" />
+        <di:waypoint x="747.5" y="110" />
+        <di:waypoint x="747.5" y="132" />
+        <di:waypoint x="830" y="132" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
-        <di:waypoint x="980" y="110" />
+        <di:waypoint x="950" y="132" />
+        <di:waypoint x="1032.5" y="132" />
+        <di:waypoint x="1032.5" y="110" />
         <di:waypoint x="1115" y="110" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
         <di:waypoint x="1165" y="110" />
-        <di:waypoint x="1300" y="110" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1187.5" y="113" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1247.5" y="110" />
+        <di:waypoint x="1247.5" y="132" />
+        <di:waypoint x="1330" y="132" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
-        <di:waypoint x="1480" y="110" />
+        <di:waypoint x="1450" y="132" />
+        <di:waypoint x="1536" y="132" />
+        <di:waypoint x="1536" y="110" />
         <di:waypoint x="1622" y="110" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_7" bpmnElement="Flow_7">
-        <di:waypoint x="1165" y="110"/>
-        <di:waypoint x="1390" y="110"/>
-        <di:waypoint x="1390" y="190"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1176.25" y="90" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1165" y="110" />
+        <di:waypoint x="1390" y="110" />
+        <di:waypoint x="1390" y="190" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_8" bpmnElement="Flow_8">
-        <di:waypoint x="1480" y="230"/>
-        <di:waypoint x="1550" y="230"/>
+        <di:waypoint x="1450" y="230" />
+        <di:waypoint x="1580" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_9" bpmnElement="Flow_9">
-        <di:waypoint x="1730" y="230"/>
-        <di:waypoint x="1872" y="230"/>
+        <di:waypoint x="1700" y="230" />
+        <di:waypoint x="1872" y="230" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -111,90 +111,89 @@ The entry condition matches exactly rather than approximately: GW_Agree asks whe
         <dc:Bounds x="302" y="147" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_D_Intent" bpmnElement="D_Intent">
-        <dc:Bounds x="440" y="125" width="140" height="80" />
+        <dc:Bounds x="450" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_D_Candidates" bpmnElement="D_Candidates">
-        <dc:Bounds x="630" y="125" width="140" height="80" />
+        <dc:Bounds x="640" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_D_Check" bpmnElement="D_Check">
-        <dc:Bounds x="820" y="125" width="140" height="80" />
+        <dc:Bounds x="830" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Checks" bpmnElement="GW_Checks" isMarkerVisible="true">
         <dc:Bounds x="1055" y="140" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1035" y="100" width="90" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1035" y="100" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_R_Review" bpmnElement="R_Review">
-        <dc:Bounds x="1200" y="295" width="140" height="80" />
+        <dc:Bounds x="1210" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Agree" bpmnElement="GW_Agree" isMarkerVisible="true">
         <dc:Bounds x="1435" y="310" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Adjudicate" bpmnElement="Call_Adjudicate">
-        <dc:Bounds x="1580" y="465" width="140" height="80" />
+        <dc:Bounds x="1590" y="445" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Choose" bpmnElement="Call_Choose">
-        <dc:Bounds x="1770" y="465" width="140" height="80" />
+        <dc:Bounds x="1780" y="445" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Iterate" bpmnElement="GW_Iterate" isMarkerVisible="true">
         <dc:Bounds x="2005" y="480" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1985" y="441" width="90" height="35" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1985" y="441" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_WDR" bpmnElement="End_WDR">
         <dc:Bounds x="2202" y="487" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_1" bpmnElement="SF_Process_WireframeDesignReview_1">
         <di:waypoint x="338" y="165" />
-        <di:waypoint x="440" y="165" />
+        <di:waypoint x="450" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_2" bpmnElement="SF_Process_WireframeDesignReview_2">
-        <di:waypoint x="580" y="165" />
-        <di:waypoint x="630" y="165" />
+        <di:waypoint x="570" y="165" />
+        <di:waypoint x="640" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_3" bpmnElement="SF_Process_WireframeDesignReview_3">
-        <di:waypoint x="770" y="165" />
-        <di:waypoint x="820" y="165" />
+        <di:waypoint x="760" y="165" />
+        <di:waypoint x="830" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_4" bpmnElement="SF_Process_WireframeDesignReview_4">
-        <di:waypoint x="960" y="165" />
+        <di:waypoint x="950" y="165" />
         <di:waypoint x="1055" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_5" bpmnElement="SF_Process_WireframeDesignReview_5">
         <di:waypoint x="1105" y="165" />
-        <di:waypoint x="1175" y="165" />
-        <di:waypoint x="1175" y="335" />
-        <di:waypoint x="1200" y="335" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1112.5" y="144" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1157.5" y="165" />
+        <di:waypoint x="1157.5" y="335" />
+        <di:waypoint x="1210" y="335" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1111" y="144" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_6" bpmnElement="SF_Process_WireframeDesignReview_6">
         <di:waypoint x="1080" y="190" />
         <di:waypoint x="1080" y="238" />
         <di:waypoint x="700" y="238" />
         <di:waypoint x="700" y="205" />
+        <bpmndi:BPMNLabel><dc:Bounds x="986" y="205.5" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_7" bpmnElement="SF_Process_WireframeDesignReview_7">
-        <di:waypoint x="1340" y="335" />
+        <di:waypoint x="1330" y="335" />
         <di:waypoint x="1435" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_8" bpmnElement="SF_Process_WireframeDesignReview_8">
         <di:waypoint x="1485" y="335" />
-        <di:waypoint x="1555" y="335" />
-        <di:waypoint x="1555" y="505" />
-        <di:waypoint x="1580" y="505" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1492.5" y="315" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1537.5" y="335" />
+        <di:waypoint x="1537.5" y="505" />
+        <di:waypoint x="1590" y="505" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1491" y="315" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_9" bpmnElement="SF_Process_WireframeDesignReview_9">
         <di:waypoint x="1485" y="335" />
-        <di:waypoint x="1745" y="335" />
-        <di:waypoint x="1745" y="505" />
-        <di:waypoint x="1770" y="505" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1570" y="338" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1840" y="335" />
+        <di:waypoint x="1840" y="445" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_10" bpmnElement="SF_Process_WireframeDesignReview_10">
-        <di:waypoint x="1720" y="505" />
-        <di:waypoint x="1770" y="505" />
+        <di:waypoint x="1710" y="505" />
+        <di:waypoint x="1780" y="505" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_11" bpmnElement="SF_Process_WireframeDesignReview_11">
-        <di:waypoint x="1910" y="505" />
+        <di:waypoint x="1900" y="505" />
         <di:waypoint x="2005" y="505" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_12" bpmnElement="SF_Process_WireframeDesignReview_12">

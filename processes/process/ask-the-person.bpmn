@@ -104,39 +104,39 @@ WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only 
   <bpmndi:BPMNDiagram id="Diagram_Process_AskThePerson">
     <bpmndi:BPMNPlane id="Plane_Process_AskThePerson" bpmnElement="Collaboration_Process_AskThePerson">
       <bpmndi:BPMNShape id="Shape_Participant_Process_AskThePerson" bpmnElement="Participant_Process_AskThePerson" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1300" height="382" />
+        <dc:Bounds x="160" y="80" width="1300" height="406" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1270" height="242" />
+        <dc:Bounds x="190" y="80" width="1270" height="262" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Person" bpmnElement="Lane_Person" isHorizontal="true">
-        <dc:Bounds x="190" y="322" width="1270" height="140" />
+        <dc:Bounds x="190" y="342" width="1270" height="144" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_AskThePerson" bpmnElement="Start_Process_AskThePerson">
         <dc:Bounds x="232" y="152" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="222.68" y="211.5" width="90" height="35" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="222.68" y="211.5" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Compose" bpmnElement="A_Compose">
-        <dc:Bounds x="310" y="130" width="120" height="80" />
+        <dc:Bounds x="310" y="110" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_WriteInChat" bpmnElement="A_WriteInChat">
-        <dc:Bounds x="560" y="130" width="120" height="80" />
+        <dc:Bounds x="560" y="110" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_OfferCard" bpmnElement="A_OfferCard">
-        <dc:Bounds x="720" y="130" width="120" height="80" />
+        <dc:Bounds x="720" y="110" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_U_Choose" bpmnElement="U_Choose">
-        <dc:Bounds x="720" y="352" width="160" height="80" />
+        <dc:Bounds x="740" y="354" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Answered" bpmnElement="GW_Answered" isMarkerVisible="true">
         <dc:Bounds x="920" y="145" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="852" y="194.5" width="90" height="17" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="900" y="199" width="90" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Record" bpmnElement="A_Record">
-        <dc:Bounds x="1030" y="100" width="120" height="80" />
+        <dc:Bounds x="1030" y="92" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ProceedOnDefault" bpmnElement="A_ProceedOnDefault">
-        <dc:Bounds x="1010" y="220" width="160" height="80" />
+        <dc:Bounds x="1030" y="200" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Answered" bpmnElement="End_Answered">
         <dc:Bounds x="1220" y="122" width="36" height="36" />
@@ -146,22 +146,26 @@ WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only 
         
       <bpmndi:BPMNLabel><dc:Bounds x="1260" y="224" width="90" height="72" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_1" bpmnElement="SF_Ask_1">
-        <di:waypoint x="268" y="170" /><di:waypoint x="310" y="170" />
+        <di:waypoint x="268" y="170" />
+        <di:waypoint x="310" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_2" bpmnElement="SF_Ask_2">
-        <di:waypoint x="430" y="170" /><di:waypoint x="455" y="170" />
+        <di:waypoint x="430" y="170" />
+        <di:waypoint x="455" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_3" bpmnElement="SF_Ask_3">
-        <di:waypoint x="680" y="170" /><di:waypoint x="720" y="170" />
+        <di:waypoint x="680" y="170" />
+        <di:waypoint x="720" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_4" bpmnElement="SF_Ask_4">
         <di:waypoint x="780" y="210" />
-        <di:waypoint x="780" y="352" />
+        <di:waypoint x="780" y="372" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_5" bpmnElement="SF_Ask_5">
-        <di:waypoint x="880" y="392" />
-        <di:waypoint x="945" y="392" />
-        <di:waypoint x="945" y="195" />
+        <di:waypoint x="860" y="414" />
+        <di:waypoint x="890" y="414" />
+        <di:waypoint x="890" y="170" />
+        <di:waypoint x="920" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_6" bpmnElement="SF_Ask_6">
         <di:waypoint x="945" y="145" />
@@ -173,14 +177,14 @@ WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only 
         <di:waypoint x="970" y="170" />
         <di:waypoint x="1000" y="170" />
         <di:waypoint x="1000" y="260" />
-        <di:waypoint x="1010" y="260" />
+        <di:waypoint x="1030" y="260" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_8" bpmnElement="SF_Ask_8">
         <di:waypoint x="1150" y="140" />
         <di:waypoint x="1220" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_9" bpmnElement="SF_Ask_9">
-        <di:waypoint x="1170" y="260" />
+        <di:waypoint x="1150" y="260" />
         <di:waypoint x="1220" y="260" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Shape_GW_Discussing" bpmnElement="GW_Discussing" isMarkerVisible="true">
@@ -188,19 +192,23 @@ WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only 
         
       <bpmndi:BPMNLabel><dc:Bounds x="435" y="105" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_HandBack" bpmnElement="A_HandBack">
-        <dc:Bounds x="530" y="230" width="120" height="80" />
+        <dc:Bounds x="530" y="210" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_HandedBack" bpmnElement="End_HandedBack">
         <dc:Bounds x="692" y="252" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_10" bpmnElement="SF_Ask_10">
-        <di:waypoint x="505" y="170" /><di:waypoint x="560" y="170" />
+        <di:waypoint x="505" y="170" />
+        <di:waypoint x="560" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_11" bpmnElement="SF_Ask_11">
-        <di:waypoint x="480" y="195" /><di:waypoint x="480" y="270" /><di:waypoint x="530" y="270" />
+        <di:waypoint x="480" y="195" />
+        <di:waypoint x="480" y="270" />
+        <di:waypoint x="530" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Ask_12" bpmnElement="SF_Ask_12">
-        <di:waypoint x="650" y="270" /><di:waypoint x="692" y="270" />
+        <di:waypoint x="650" y="270" />
+        <di:waypoint x="692" y="270" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
