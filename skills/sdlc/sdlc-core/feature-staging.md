@@ -316,6 +316,36 @@ The `cleanup` and `cleanup-dispatch` jobs do NOT pass through the gate yet.
 They push once per closed PR rather than once per push, so they are far rarer;
 gating them is the next step if cancellations by cleanup are ever measured.
 
+### 9. Build types — `preview` and `full`
+
+**Owner ruling, 2026-11-01:** *"preview" = no reindex, only changes, and
+"full".* A public comment (PC) build is a full build, and so is a release.
+
+| build type | used for | builds |
+|---|---|---|
+| `preview` | every pull request's `STAGING/<slug>/` preview | only what the change can reach (the cone, §7); every whole-corpus **index** is main's copy, put back rather than rebuilt |
+| `full` | the main site deploy, a public comment release, a release | everything; every index rebuilt from the tree being published |
+
+An **index** is computed over the whole corpus and is not a page a reviewer
+reads to judge a change: the search index, the LSI viewer, the SQLite slices,
+the handler index. A `builtAtPublish` entry says so with `index: true`; a
+writer is borrowed only when every entry it writes says so. Rebuilding an
+index in a preview shows the reviewer almost nothing and costs minutes, so
+`derive:publish` puts back main's copy from main's writer-cone recording and
+logs `borrowed <writer>`. The search index was already served from main in a
+preview (§"Serve the published search index" in the preview workflow).
+
+The switch is `CAT_BUILD_TYPE` (`cat-harness-tools/scripts/lib/build-type.ts`).
+**Any doubt builds full**: unset means `full`, and a value that is neither word
+is refused. A preview whose main recording holds no copy of an index builds it.
+
+**A public comment release must be frozen from a full build.** A frozen
+release is cited by page and line for the whole comment period, so its search
+and slices must describe the draft, not main. Dispatch the preview workflow
+for the branch with `build_type: full`, then run `pc:release freeze`. Freeze
+refuses a copy whose `staging.json` says `buildType: "preview"`, and records
+the build type in `release.json`.
+
 ## Agent workflow
 
 When an author requests a content change:
