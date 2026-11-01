@@ -112,7 +112,7 @@ What a merge steward does with a PR it dropped from a merge train: its merge (`m
 - Who: the `Dispatched agent` lane (role `authoring-agent`).
 - Skill: `interaction-modality`.
 - Record it: `workflow_complete` with `node: "Task_AskOwner"`.
-- next: → `Call_BeanClose` (Close the bean)
+- next: → `Call_BeanClose_2` (Close the bean)
 
 ### Decide — The PR's fate? (`GW_Fate`)
 
@@ -121,13 +121,13 @@ What a merge steward does with a PR it dropped from a merge train: its merge (`m
   - «refused again» → `Task_Record` (Record the refusal on the bean)
   - «closed unmerged» → `Task_Scrap` (Scrap the bean, with the reason)
 
-### 10. Close the bean (`Call_BeanClose`)
+### 10. Close the bean (`Call_BeanClose_2`)
 
-- Who: the `Dispatched agent` lane (role `authoring-agent`).
+- Who: the `Merge steward` lane (role `session-coordinator`).
 - Skill: `todo-manager`.
 - What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
 - A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_AwaitOwner` (Waiting on the owner's ruling)
+- next: → `GW_BeanClosedHow` (How did it end?)
 
 ### 11. Record the merge commit as evidence (`Task_Close`)
 
@@ -142,27 +142,19 @@ What a merge steward does with a PR it dropped from a merge train: its merge (`m
 - Skill: `bean-coordination`.
 - What: The agent's own `beans update --status scrapped`; never deleted.
 - Record it: `workflow_complete` with `node: "Task_Scrap"`.
-- next: → `Call_BeanClose_3` (Close the bean)
+- next: → `Call_BeanClose_2` (Close the bean)
+
+### Decide — How did it end? (`GW_BeanClosedHow`)
+
+- Which outcome the bean was closed with, so each ends at its own named end event.
+- Call `workflow_complete` with `node: "GW_BeanClosedHow"` and `outcome` set to the label that holds:
+  - «waiting on the owner» → `End_AwaitOwner` (Waiting on the owner's ruling)
+  - «landed» → `End_Closed` (Landed)
+  - «closed unmerged» → `End_Scrapped` (PR closed unmerged)
 
 ## Done — Waiting on the owner's ruling (`End_AwaitOwner`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 13. Close the bean (`Call_BeanClose_2`)
-
-- Who: the `Merge steward` lane (role `session-coordinator`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Closed` (Landed)
-
-### 14. Close the bean (`Call_BeanClose_3`)
-
-- Who: the `Merge steward` lane (role `session-coordinator`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Scrapped` (PR closed unmerged)
 
 ## Done — Landed (`End_Closed`)
 
