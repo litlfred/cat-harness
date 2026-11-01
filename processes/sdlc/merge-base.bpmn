@@ -68,7 +68,7 @@ ALL OR NOTHING: every conflicted path is classified before any is touched, and o
       <bpmn:outgoing>m4</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:task id="Task_Classify" name="Classify every conflicted&#10;path against the&#10;declared patterns">
-      <bpmn:documentation>The first matching pattern decides: take-base, generated-regions, qa-sidecar, or refuse. A path no pattern names refuses.</bpmn:documentation>
+      <bpmn:documentation>The first matching pattern decides: take-base, owned-tree, generated-regions, or refuse. A path no pattern names refuses.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="merge-conflict-patterns"/></bpmn:extensionElements>
       <bpmn:incoming>m4</bpmn:incoming>
       <bpmn:outgoing>m5</bpmn:outgoing>
@@ -80,7 +80,7 @@ ALL OR NOTHING: every conflicted path is classified before any is touched, and o
       <bpmn:outgoing>m7</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:task id="Task_Resolve" name="Resolve each by&#10;its declared strategy">
-      <bpmn:documentation>qa-sidecar paths first, through `qa:resolve-conflicts`; take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction.</bpmn:documentation>
+      <bpmn:documentation>take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="merge-conflict-patterns"/></bpmn:extensionElements>
       <bpmn:incoming>m6</bpmn:incoming>
       <bpmn:outgoing>m8</bpmn:outgoing>

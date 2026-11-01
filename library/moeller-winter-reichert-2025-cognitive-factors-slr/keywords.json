@@ -3,81 +3,81 @@
   "entry": "moeller-winter-reichert-2025-cognitive-factors-slr",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2257,
-    "terms": 15326,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "cognitive process",
-      "score": 43.5065,
+      "score": 42.8016,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "comprehension process",
-      "score": 38.9845,
+      "score": 38.5839,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "cognitive processes",
-      "score": 33.3934,
+      "score": 32.702,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "cognitive load",
-      "score": 32.5439,
-      "evidence": []
-    },
-    {
-      "term": "cognitive research",
-      "score": 31.8682,
+      "score": 31.8769,
       "evidence": []
     },
     {
       "term": "process models",
-      "score": 31.8641,
+      "score": 31.7058,
+      "evidence": []
+    },
+    {
+      "term": "cognitive research",
+      "score": 31.1255,
       "evidence": []
     },
     {
       "term": "cognitive factors",
-      "score": 31.7448,
+      "score": 31.1045,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "influence cognitive",
-      "score": 30.991,
+      "score": 30.3981,
       "evidence": []
     },
     {
       "term": "cognitive insights",
-      "score": 30.9897,
+      "score": 30.309,
       "evidence": []
     },
     {
       "term": "cognitive neuroscience",
-      "score": 29.6968,
+      "score": 29.1011,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "cognitive psychology",
-      "score": 29.4457,
+      "score": 28.8511,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "cognitive complexity",
-      "score": 28.9746,
+      "score": 28.3263,
       "evidence": []
     }
   ],
@@ -85,317 +85,315 @@
     "sec-000-introduction": [
       {
         "term": "process models",
-        "score": 1.5045,
+        "score": 1.4972,
         "evidence": []
       },
       {
         "term": "brain sci",
-        "score": 1.3425,
+        "score": 1.343,
         "evidence": []
       },
       {
         "term": "comprehend",
-        "score": 0.8061,
+        "score": 0.8063,
         "evidence": []
       },
       {
         "term": "factors",
-        "score": 0.5985,
+        "score": 0.5952,
         "evidence": []
       },
       {
         "term": "humans",
-        "score": 0.5795,
+        "score": 0.5798,
         "evidence": []
       },
       {
         "term": "visual",
-        "score": 0.5686,
+        "score": 0.5661,
         "evidence": []
       },
       {
-        "term": "cognitive",
-        "score": 0.5624,
+        "term": "processes",
+        "score": 0.5561,
         "evidence": []
       }
     ],
     "sec-001-process-model": [
       {
         "term": "process model",
-        "score": 2.5096,
+        "score": 2.4985,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "model comprehension",
-        "score": 1.4023,
+        "score": 1.3864,
         "evidence": []
       },
       {
         "term": "literature review",
-        "score": 1.1757,
+        "score": 1.17,
         "evidence": []
       },
       {
         "term": "cognitive",
-        "score": 0.9172,
+        "score": 0.8942,
         "evidence": []
       },
       {
         "term": "explored",
-        "score": 0.842,
+        "score": 0.834,
         "evidence": []
       },
       {
         "term": "comprehensibility",
-        "score": 0.7639,
+        "score": 0.7641,
         "evidence": []
       },
       {
         "term": "slr",
-        "score": 0.7594,
+        "score": 0.7596,
         "evidence": []
       }
     ],
     "sec-002-theoretical-background": [
       {
-        "term": "burger",
-        "score": 1.978,
+        "term": "business process",
+        "score": 1.8569,
         "evidence": []
       },
       {
-        "term": "business process",
-        "score": 1.878,
+        "term": "burger",
+        "score": 1.8377,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.6316,
+        "score": 1.6235,
         "evidence": []
       },
       {
         "term": "declarative models",
-        "score": 1.5915,
+        "score": 1.5728,
         "evidence": []
       },
       {
         "term": "business processes",
-        "score": 1.3105,
+        "score": 1.2905,
         "evidence": []
       },
       {
         "term": "activities",
-        "score": 0.9561,
+        "score": 0.9565,
         "evidence": []
       },
       {
         "term": "imperative",
-        "score": 0.917,
+        "score": 0.9172,
         "evidence": []
       },
       {
-        "term": "background",
-        "score": 0.7898,
-        "evidence": [
-          "heading"
-        ]
+        "term": "executed",
+        "score": 0.7764,
+        "evidence": []
       }
     ],
     "sec-003-process-model-comprehension": [
       {
         "term": "process model",
-        "score": 1.8799,
+        "score": 1.8712,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "comprehension",
-        "score": 1.2148,
+        "score": 1.1964,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "sented",
-        "score": 0.6309,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-004-cognitive-neuroscience": [
       {
         "term": "cognitive neuroscience",
-        "score": 6.2794,
+        "score": 6.2123,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cognitive load",
-        "score": 1.9867,
+        "score": 1.9477,
         "evidence": []
       },
       {
         "term": "eye tracking",
-        "score": 1.8921,
+        "score": 1.8926,
         "evidence": []
       },
       {
         "term": "electrodermal activity",
-        "score": 1.865,
+        "score": 1.8655,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.0439,
+        "score": 1.0388,
         "evidence": []
       },
       {
         "term": "sensing",
-        "score": 0.8767,
+        "score": 0.8769,
         "evidence": []
       },
       {
         "term": "fmri",
-        "score": 0.865,
+        "score": 0.8652,
         "evidence": []
       },
       {
         "term": "brain",
-        "score": 0.855,
+        "score": 0.8553,
         "evidence": []
       }
     ],
     "sec-005-cognitive-psychology": [
       {
         "term": "cognitive psychology",
-        "score": 5.3955,
+        "score": 5.3159,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cognitive load",
-        "score": 2.8766,
+        "score": 2.8261,
         "evidence": []
       },
       {
         "term": "cognitive fit",
-        "score": 2.4762,
-        "evidence": []
-      },
-      {
-        "term": "intrinsic cognitive",
-        "score": 2.4129,
+        "score": 2.4099,
         "evidence": []
       },
       {
         "term": "extraneous cognitive",
-        "score": 2.3972,
+        "score": 2.3431,
+        "evidence": []
+      },
+      {
+        "term": "intrinsic cognitive",
+        "score": 2.3404,
         "evidence": []
       },
       {
         "term": "human cognitive",
-        "score": 2.1937,
+        "score": 2.1529,
         "evidence": []
       },
       {
         "term": "load theory",
-        "score": 2.1787,
+        "score": 2.1491,
         "evidence": []
       },
       {
         "term": "long-term memory",
-        "score": 2.1552,
+        "score": 2.1422,
         "evidence": []
       }
     ],
     "sec-006-categories-of-cognition": [
       {
         "term": "process models",
-        "score": 2.5081,
+        "score": 2.4958,
         "evidence": []
       },
       {
         "term": "visual elements",
-        "score": 2.3169,
+        "score": 2.2973,
         "evidence": []
       },
       {
         "term": "enabling humans",
-        "score": 2.2718,
+        "score": 2.275,
         "evidence": []
       },
       {
         "term": "visual cues",
-        "score": 2.1957,
+        "score": 2.1898,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 2.1558,
+        "score": 2.1308,
         "evidence": []
       },
       {
         "term": "emotional states",
-        "score": 1.9691,
+        "score": 1.9853,
+        "evidence": []
+      },
+      {
+        "term": "allowing viewers",
+        "score": 1.9629,
         "evidence": []
       },
       {
         "term": "cognitive schemas",
-        "score": 1.9425,
-        "evidence": []
-      },
-      {
-        "term": "visual features",
-        "score": 1.8089,
+        "score": 1.9049,
         "evidence": []
       }
     ],
     "sec-008-research-method": [
       {
         "term": "digital libraries",
-        "score": 1.3504,
+        "score": 1.351,
         "evidence": []
       },
       {
         "term": "exclusion criteria",
-        "score": 1.3299,
+        "score": 1.3274,
         "evidence": []
       },
       {
         "term": "slr",
-        "score": 1.1125,
+        "score": 1.1128,
         "evidence": []
       },
       {
         "term": "phase",
-        "score": 0.8728,
+        "score": 0.8632,
         "evidence": []
       },
       {
         "term": "research",
-        "score": 0.8002,
+        "score": 0.7857,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "methodology",
-        "score": 0.7728,
+        "score": 0.7731,
         "evidence": []
       }
     ],
     "sec-009-inclusion-and-exclusion-criteria": [
       {
         "term": "forward snowballing",
-        "score": 1.6633,
+        "score": 1.6554,
         "evidence": []
       },
       {
         "term": "research questions",
-        "score": 0.92,
+        "score": 0.9089,
         "evidence": []
       },
       {
@@ -405,7 +403,7 @@
       },
       {
         "term": "criteria",
-        "score": 0.6263,
+        "score": 0.6229,
         "evidence": [
           "heading"
         ]
@@ -414,461 +412,461 @@
     "sec-010-digital-libraries-and-search-string": [
       {
         "term": "search string",
-        "score": 2.8904,
+        "score": 2.8845,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cognitive processes",
-        "score": 1.7903,
+        "score": 1.7565,
         "evidence": []
       },
       {
         "term": "digital",
-        "score": 1.7217,
+        "score": 1.7225,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "theoretical studies",
-        "score": 1.6908,
+        "score": 1.6787,
         "evidence": []
       },
       {
         "term": "digital library",
-        "score": 1.654,
+        "score": 1.6549,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.6316,
+        "score": 1.6235,
         "evidence": []
       },
       {
         "term": "ieee xplore",
-        "score": 1.5553,
+        "score": 1.5531,
         "evidence": []
       },
       {
         "term": "research works",
-        "score": 1.5414,
+        "score": 1.5225,
         "evidence": []
       }
     ],
     "sec-011-resulting-studies": [
       {
         "term": "studies",
-        "score": 1.9966,
+        "score": 1.9885,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "further studies",
-        "score": 1.3416,
+        "score": 1.3372,
         "evidence": []
       },
       {
         "term": "snowballing",
-        "score": 1.0595,
+        "score": 1.0597,
         "evidence": []
       },
       {
         "term": "resulted",
-        "score": 0.7093,
+        "score": 0.7095,
         "evidence": []
       }
     ],
     "sec-013-research-clusters": [
       {
         "term": "research clusters",
-        "score": 4.6338,
+        "score": 4.6016,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "identified research",
-        "score": 1.4915,
+        "score": 1.472,
         "evidence": []
       },
       {
         "term": "collaborations",
-        "score": 1.2157,
+        "score": 1.2158,
         "evidence": []
       },
       {
         "term": "researchers",
-        "score": 0.9511,
+        "score": 0.9516,
         "evidence": []
       },
       {
         "term": "interconnected",
-        "score": 0.8766,
+        "score": 0.8767,
         "evidence": []
       },
       {
         "term": "studies",
-        "score": 0.8437,
+        "score": 0.8402,
         "evidence": []
       },
       {
         "term": "jan",
-        "score": 0.8111,
+        "score": 0.7687,
         "evidence": []
       },
       {
         "term": "slr",
-        "score": 0.7594,
+        "score": 0.7596,
         "evidence": []
       }
     ],
     "sec-014-cognitive-factors-in-process-model-comprehension": [
       {
         "term": "model comprehension",
-        "score": 4.0969,
+        "score": 4.0501,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "process model",
-        "score": 3.5508,
+        "score": 3.5352,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cognitive",
-        "score": 3.0669,
+        "score": 2.9901,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cognitive load",
-        "score": 2.5704,
+        "score": 2.5236,
         "evidence": []
       },
       {
         "term": "cognitive research",
-        "score": 2.2908,
+        "score": 2.2386,
         "evidence": []
       },
       {
         "term": "cognitive processes",
-        "score": 2.2593,
+        "score": 2.2138,
         "evidence": []
       },
       {
         "term": "reduce cognitive",
-        "score": 2.0524,
+        "score": 2.0143,
         "evidence": []
       },
       {
         "term": "cognitive processing",
-        "score": 2.05,
+        "score": 2.0107,
         "evidence": []
       }
     ],
     "sec-015-empirical-studies": [
       {
         "term": "empirical studies",
-        "score": 4.7684,
+        "score": 4.7354,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "eye tracking",
-        "score": 3.5018,
+        "score": 3.5027,
         "evidence": []
       },
       {
         "term": "eye movements",
-        "score": 2.9487,
+        "score": 2.9492,
         "evidence": []
       },
       {
         "term": "studies analyzed",
-        "score": 2.5301,
+        "score": 2.5069,
         "evidence": []
       },
       {
         "term": "scan path",
-        "score": 2.4641,
+        "score": 2.4607,
         "evidence": []
       },
       {
         "term": "electrodermal activity",
-        "score": 2.2641,
+        "score": 2.2648,
         "evidence": []
       },
       {
         "term": "cognitive psychology",
-        "score": 2.209,
+        "score": 2.1786,
         "evidence": []
       },
       {
         "term": "cognitive neuroscience",
-        "score": 2.0809,
+        "score": 2.0503,
         "evidence": []
       }
     ],
     "sec-016-theoretical-discussion": [
       {
         "term": "cognitive psychology",
-        "score": 2.0892,
+        "score": 2.0539,
         "evidence": []
       },
       {
         "term": "cognitive complexity",
-        "score": 2.0572,
+        "score": 2.0153,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.8498,
+        "score": 1.8407,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 1.7006,
+        "score": 1.682,
         "evidence": []
       },
       {
         "term": "theoretical",
-        "score": 1.6856,
+        "score": 1.6613,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "theoretical framework",
-        "score": 1.6098,
+        "score": 1.6329,
         "evidence": []
       },
       {
         "term": "mental effort",
-        "score": 1.2857,
+        "score": 1.2829,
         "evidence": []
       },
       {
         "term": "comprehensibility",
-        "score": 0.964,
+        "score": 0.9642,
         "evidence": []
       }
     ],
     "sec-018-answering-the-research-question": [
       {
         "term": "cognitive engagement",
-        "score": 2.2881,
+        "score": 2.2555,
         "evidence": []
       },
       {
         "term": "cognitive processes",
-        "score": 2.0388,
+        "score": 1.9988,
         "evidence": []
       },
       {
         "term": "cognitive factors",
-        "score": 2.0078,
+        "score": 1.9711,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.6456,
+        "score": 1.6375,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 1.5846,
+        "score": 1.5654,
         "evidence": []
       },
       {
         "term": "processes involved",
-        "score": 1.2824,
+        "score": 1.2697,
         "evidence": []
       },
       {
         "term": "research",
-        "score": 1.1723,
+        "score": 1.151,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "underexplored",
-        "score": 1.0576,
+        "score": 1.0578,
         "evidence": []
       }
     ],
     "sec-020-theoretical-implications": [
       {
         "term": "sensing technologies",
-        "score": 1.6466,
+        "score": 1.6364,
         "evidence": []
       },
       {
         "term": "brain activity",
-        "score": 1.5889,
+        "score": 1.5895,
         "evidence": []
       },
       {
         "term": "cognitive processes",
-        "score": 1.5698,
+        "score": 1.5372,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 1.4023,
+        "score": 1.3864,
         "evidence": []
       },
       {
         "term": "eeg",
-        "score": 1.312,
+        "score": 1.3122,
         "evidence": []
       },
       {
         "term": "fmri",
-        "score": 1.2673,
+        "score": 1.2675,
         "evidence": []
       },
       {
         "term": "allowing researchers",
-        "score": 1.1236,
+        "score": 1.1204,
         "evidence": []
       },
       {
         "term": "process model",
-        "score": 1.0992,
+        "score": 1.0945,
         "evidence": []
       }
     ],
     "sec-021-practical-implications": [
       {
         "term": "cognitive load",
-        "score": 1.6319,
+        "score": 1.6018,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.5449,
+        "score": 1.5374,
         "evidence": []
       },
       {
         "term": "cognitive research",
-        "score": 1.3962,
+        "score": 1.364,
         "evidence": []
       },
       {
         "term": "practical",
-        "score": 0.9326,
+        "score": 0.9301,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "stakeholder",
-        "score": 0.8517,
+        "score": 0.8519,
         "evidence": []
       },
       {
         "term": "emotional",
-        "score": 0.8331,
+        "score": 0.8332,
         "evidence": []
       },
       {
         "term": "findings",
-        "score": 0.8147,
+        "score": 0.8018,
         "evidence": []
       },
       {
         "term": "humans",
-        "score": 0.7313,
+        "score": 0.7317,
         "evidence": []
       }
     ],
     "sec-022-future-work": [
       {
         "term": "cognitive load",
-        "score": 1.7002,
+        "score": 1.6684,
         "evidence": []
       },
       {
         "term": "sensing technologies",
-        "score": 1.6466,
-        "evidence": []
-      },
-      {
-        "term": "cognitive processes",
-        "score": 1.5095,
+        "score": 1.6364,
         "evidence": []
       },
       {
         "term": "eye tracking",
-        "score": 1.4994,
+        "score": 1.4998,
+        "evidence": []
+      },
+      {
+        "term": "cognitive processes",
+        "score": 1.4784,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 1.0189,
+        "score": 1.0067,
         "evidence": []
       },
       {
         "term": "eeg",
-        "score": 0.8956,
+        "score": 0.8957,
         "evidence": []
       },
       {
         "term": "fmri",
-        "score": 0.865,
+        "score": 0.8652,
         "evidence": []
       }
     ],
     "sec-023-threats-to-validity": [
       {
         "term": "cognitive processes",
-        "score": 1.7165,
+        "score": 1.6833,
         "evidence": []
       },
       {
         "term": "relevant studies",
-        "score": 1.348,
+        "score": 1.3427,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 1.085,
+        "score": 1.0727,
         "evidence": []
       },
       {
         "term": "process model",
-        "score": 0.9361,
-        "evidence": []
-      },
-      {
-        "term": "exclusion",
-        "score": 0.8336,
+        "score": 0.932,
         "evidence": []
       },
       {
         "term": "validity",
-        "score": 0.8257,
+        "score": 0.8358,
         "evidence": [
           "heading"
         ]
       },
       {
+        "term": "exclusion",
+        "score": 0.8337,
+        "evidence": []
+      },
+      {
         "term": "screening",
-        "score": 0.8079,
+        "score": 0.8081,
         "evidence": []
       },
       {
         "term": "threats",
-        "score": 0.7682,
+        "score": 0.7645,
         "evidence": [
           "heading"
         ]
@@ -877,168 +875,168 @@
     "sec-024-conclusions": [
       {
         "term": "skin conductance",
-        "score": 1.9485,
-        "evidence": []
-      },
-      {
-        "term": "business process",
-        "score": 1.6538,
+        "score": 1.9487,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.6456,
+        "score": 1.6375,
+        "evidence": []
+      },
+      {
+        "term": "business process",
+        "score": 1.6363,
         "evidence": []
       },
       {
         "term": "cognitive processes",
-        "score": 1.5095,
+        "score": 1.4784,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 0.9259,
+        "score": 0.916,
         "evidence": []
       },
       {
         "term": "abbreviations",
-        "score": 0.8766,
+        "score": 0.8767,
         "evidence": []
       },
       {
         "term": "funding",
-        "score": 0.8517,
+        "score": 0.8303,
         "evidence": []
       },
       {
-        "term": "slr",
-        "score": 0.7594,
+        "term": "perceived",
+        "score": 0.7917,
         "evidence": []
       }
     ],
     "sec-025-appendix-a": [
       {
         "term": "rüdiger pryss",
-        "score": 4.8371,
+        "score": 4.8376,
         "evidence": []
       },
       {
         "term": "manfred reichert",
-        "score": 4.2757,
+        "score": 4.2763,
         "evidence": []
       },
       {
         "term": "comprehension process",
-        "score": 4.1201,
+        "score": 4.0751,
         "evidence": []
       },
       {
         "term": "jan mendling",
-        "score": 4.0578,
+        "score": 3.8632,
         "evidence": []
       },
       {
         "term": "jan recker",
-        "score": 3.7924,
+        "score": 3.6768,
         "evidence": []
       },
       {
         "term": "michael winter",
-        "score": 3.6749,
+        "score": 3.6759,
+        "evidence": []
+      },
+      {
+        "term": "comprehend process",
+        "score": 3.6175,
         "evidence": []
       },
       {
         "term": "comprehend bpmn",
-        "score": 3.6315,
-        "evidence": []
-      },
-      {
-        "term": "cognitive load",
-        "score": 3.5898,
+        "score": 3.6032,
         "evidence": []
       }
     ],
     "sec-026-references": [
       {
         "term": "berlin heidelberg",
-        "score": 4.6992,
+        "score": 4.6594,
         "evidence": []
       },
       {
         "term": "international workshops",
-        "score": 3.9258,
+        "score": 3.9126,
         "evidence": []
       },
       {
         "term": "expert syst",
-        "score": 3.6951,
+        "score": 3.6922,
         "evidence": []
       },
       {
         "term": "support syst",
-        "score": 3.5723,
+        "score": 3.5701,
         "evidence": []
       },
       {
         "term": "engineering workshops",
-        "score": 3.3908,
+        "score": 3.3876,
         "evidence": []
       },
       {
         "term": "international conference",
-        "score": 3.3455,
+        "score": 3.325,
         "evidence": []
       },
       {
         "term": "caise international",
-        "score": 3.3426,
+        "score": 3.2884,
         "evidence": []
       },
       {
         "term": "management workshops",
-        "score": 3.2372,
+        "score": 3.2175,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "cognitive factors",
-        "score": 1.5946,
-        "evidence": []
-      },
-      {
-        "term": "cognitive processes",
-        "score": 1.5577,
+        "score": 1.5663,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 1.5537,
+        "score": 1.5363,
+        "evidence": []
+      },
+      {
+        "term": "cognitive processes",
+        "score": 1.5272,
         "evidence": []
       },
       {
         "term": "literature review",
-        "score": 1.5192,
+        "score": 1.5119,
         "evidence": []
       },
       {
         "term": "systematic literature",
-        "score": 1.4619,
+        "score": 1.4549,
         "evidence": []
       },
       {
         "term": "process model",
-        "score": 1.3979,
+        "score": 1.3918,
         "evidence": []
       },
       {
         "term": "winter",
-        "score": 1.1056,
+        "score": 1.1058,
         "evidence": []
       },
       {
         "term": "reichert",
-        "score": 1.0374,
+        "score": 1.0376,
         "evidence": []
       }
     ]

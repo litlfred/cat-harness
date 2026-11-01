@@ -3,71 +3,71 @@
   "entry": "hmans-2026-beans-readme",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "beans",
-      "score": 5.5095,
+      "score": 5.521,
       "evidence": []
     },
     {
       "term": "coding agent",
-      "score": 5.2286,
+      "score": 4.9917,
       "evidence": []
     },
     {
       "term": "project memory",
-      "score": 3.0772,
+      "score": 3.0666,
       "evidence": []
     },
     {
       "term": "get",
-      "score": 1.6239,
+      "score": 1.6184,
       "evidence": []
     },
     {
       "term": "cli",
-      "score": 1.5632,
+      "score": 1.5723,
       "evidence": []
     },
     {
       "term": "right alongside",
-      "score": 1.4502,
-      "evidence": []
-    },
-    {
-      "term": "tasks",
-      "score": 1.2499,
+      "score": 1.4183,
       "evidence": []
     },
     {
       "term": "create",
-      "score": 1.2426,
+      "score": 1.2392,
+      "evidence": []
+    },
+    {
+      "term": "tasks",
+      "score": 1.2389,
       "evidence": []
     },
     {
       "term": "robot",
-      "score": 1.1877,
+      "score": 1.1892,
       "evidence": []
     },
     {
       "term": "you've",
-      "score": 1.1455,
+      "score": 1.1473,
       "evidence": []
     },
     {
       "term": "configure",
-      "score": 1.1421,
+      "score": 1.087,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "interact",
-      "score": 1.0297,
+      "score": 1.0136,
       "evidence": []
     }
   ],
@@ -75,132 +75,132 @@
     "s001-readme-md": [
       {
         "term": "beans",
-        "score": 0.8587,
-        "evidence": []
-      },
-      {
-        "term": "coding",
-        "score": 0.6546,
+        "score": 0.8604,
         "evidence": []
       },
       {
         "term": "juicy",
-        "score": 0.6305,
+        "score": 0.631,
+        "evidence": []
+      },
+      {
+        "term": "coding",
+        "score": 0.5996,
         "evidence": []
       }
     ],
     "s003-stability-warning": [
       {
         "term": "warning",
-        "score": 1.0417,
+        "score": 1.0197,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "stability",
-        "score": 0.9226,
+        "score": 0.9261,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "beans",
-        "score": 0.8587,
+        "score": 0.8604,
         "evidence": []
       }
     ],
     "s004-features": [
       {
         "term": "project memory",
-        "score": 1.4372,
-        "evidence": []
-      },
-      {
-        "term": "coding agent",
-        "score": 1.0964,
+        "score": 1.4253,
         "evidence": []
       },
       {
         "term": "beans",
-        "score": 1.0835,
+        "score": 1.0858,
+        "evidence": []
+      },
+      {
+        "term": "coding agent",
+        "score": 1.0485,
         "evidence": []
       },
       {
         "term": "features",
-        "score": 0.8931,
+        "score": 0.8743,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "built-in",
-        "score": 0.7596,
+        "score": 0.7505,
         "evidence": []
       }
     ],
     "s005-installation": [
       {
         "term": "installation",
-        "score": 1.1877,
+        "score": 1.1892,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "install",
-        "score": 0.8784,
+        "score": 0.8822,
         "evidence": []
       },
       {
         "term": "configure",
-        "score": 0.7003,
+        "score": 0.6665,
         "evidence": []
       }
     ],
     "s006-configure-your-project": [
       {
         "term": "project",
-        "score": 1.3119,
+        "score": 1.313,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "configure",
-        "score": 0.8837,
+        "score": 0.841,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "dive",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "s011-example-workflows": [
       {
         "term": "beans",
-        "score": 1.6252,
+        "score": 1.6286,
         "evidence": []
       },
       {
         "term": "coding agent",
-        "score": 1.2257,
-        "evidence": []
-      },
-      {
-        "term": "manage",
-        "score": 0.6502,
+        "score": 1.1797,
         "evidence": []
       },
       {
         "term": "workflows",
-        "score": 0.6485,
+        "score": 0.6498,
         "evidence": [
           "heading"
         ]
+      },
+      {
+        "term": "manage",
+        "score": 0.6315,
+        "evidence": []
       }
     ]
   }

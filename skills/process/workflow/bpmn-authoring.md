@@ -100,7 +100,7 @@ is not enabled**. That has consequences for how you author:
 
 Owner, 2026-10-31: take what holds up from the BPMN comprehension research and
 check it mechanically. `kg:audit` reports each rule below per process
-(`src/workflow/diagram-quality.ts` in cat-harness-tools). The papers are being
+(`src/workflow/diagram-quality.ts` in https://github.com/litlfred/cat-harness-tools). The papers are being
 ingested under bean `folio-assistant-e0jh`.
 
 - **Separate routing from work.** A task never has two outgoing flows: put an

@@ -28,11 +28,11 @@ two on that line, by the owner's rulings of 2026-10-01:
 | written to | `<instance>/test/results/**`, the **working copy** | `<instance>/test/attestations/<family>/<mirrored subject path>.attestations.json` |
 | record | the orphan **`qa-reports`** branch, `main/<sha>/` or `pr/<n>/<sha>/` | **`main`** (ruling D2 (a)) |
 | schema | the family's own | `qa-attestations/v1`, `schemas/sdlc/qa-attestations.ts` |
-| on a merge conflict | regenerate (`qa:resolve-conflicts`) | a person reads both sides |
+| on a merge conflict | take the base's side (`merge:main`), then regenerate | a person reads both sides |
 
-**The derived files are still committed on `main` today.** Bean `5hox` removes
-them once every reader is migrated and the branch holds a hash-verified copy
-(ruling D4, "right away"). Until then they are a copy on its way out, not the
+**cat-harness and the content core no longer commit the derived files**
+(bean `5hox`, ruling D4; cat-harness#857, https://github.com/litlfred/folio-assistant-core/pull/482). Where an
+instance still does, they are a copy on its way out, not the
 record. Do not regenerate one in order to commit it, and do not hand-resolve
 one. Every `qa` directory already declares `storage` and is ignored by version
 control, so a new file there is not committed. Before the removal is pushed,
@@ -120,7 +120,7 @@ so read that rather than this list.
   qa:attestations:migrate` does a whole instance at once, and `:check` exits 1
   while any judgement is still only in a derived file.
 - **A corrupt store reads UNKNOWN and is refused.** No writer overwrites it,
-  and `qa:resolve-conflicts` will not regenerate past it.
+  and no writer regenerates past it.
 - **Two disagreeing judgements are a person's to reconcile.** The migration
   refuses that case, and so should you. Never take one side.
 - **Commit the store file.** It is authored content on `main`, the same class
@@ -131,7 +131,7 @@ so read that rather than this list.
 | you are about to | do instead |
 |---|---|
 | regenerate a `test/results` file and commit it | regenerate it so the gates see the tree; `qa-publish` stores the record |
-| resolve a conflict in `test/results/` | `bun run cat qa:resolve-conflicts`, then `bun run cat regen` ([`prepare-merge`](prepare-merge.md)) |
+| resolve a conflict in `test/results/` | `bun run cat merge:main` takes the base's side, then `bun run cat regen` ([`prepare-merge`](prepare-merge.md)) |
 | resolve a conflict in `test/attestations/` | read both sides. Keep both judgements unless they are the same one |
 | cite a derived result | `qa-reports:main/<sha>/<path>` ([`decision-audit`](decision-audit.md)) |
 | read a result in a test | build a fixture, or read it through `readQa` and assert the state ([`test-engineer`](test-engineer.md)) |
