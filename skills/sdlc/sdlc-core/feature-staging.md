@@ -326,10 +326,14 @@ gating them is the next step if cancellations by cleanup are ever measured.
 | `preview` | every pull request's `STAGING/<slug>/` preview | only what the change can reach (the cone, §7); every whole-corpus **index** is main's copy, put back rather than rebuilt |
 | `full` | the main site deploy, a public comment release, a release | everything; every index rebuilt from the tree being published |
 
-An **index** is computed over the whole corpus and is not a page a reviewer
-reads to judge a change: the search index, the LSI viewer, the SQLite slices,
-the handler index. A `builtAtPublish` entry says so with `index: true`; a
-writer is borrowed only when every entry it writes says so. Rebuilding an
+An **index** is computed over the whole corpus: the search index, the LSI
+viewer, the SQLite slices, the handler index, and (owner, Q-CI5-1 "B",
+2026-11-01) the glossary pages, the translation status pages and the node-kind
+pages. A `builtAtPublish` entry says so with `index: true`; a writer is
+borrowed only when every entry it writes says so. **The cost the owner
+accepted:** a preview of a glossary, translation or node-kind change shows
+main's copy of those pages, so review such a change on a `full` build
+(dispatch with `build_type: full`) or in its source. Rebuilding an
 index in a preview shows the reviewer almost nothing and costs minutes, so
 `derive:publish` puts back main's copy from main's writer-cone recording and
 logs `borrowed <writer>`. The search index was already served from main in a
