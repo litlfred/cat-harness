@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qa-report-signing\n"
-"POT-Creation-Date: 2026-10-29T15:13:05.784Z\n"
+"POT-Creation-Date: 2026-11-01T09:29:15.673Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:116
 #. Diagram element documentation
-msgid "Assemble the run record the signature will cover: the data hash and the process hash, each all-or-nothing. An UNKNOWN_HASH never reproduces another unknown, so a run that could not be hashed is signable only as what it is — unverifiable."
+msgid "Assemble the run record the signature will cover: the data hash and the process hash, each all-or-nothing. An UNKNOWN_HASH never reproduces another unknown, so a run that could not be hashed is signable only as what it is — unverifiable. Builds a `folio-test-run/v1`."
 msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:96
@@ -46,12 +46,12 @@ msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:115
 #. Diagram label
-msgid "Build the test run [folio-test-run/v1]"
+msgid "Build the test run"
 msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:126
 #. Diagram element documentation
-msgid "Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/process/actor-reach.ts, and whether the signing-api capability is configured. Undeclared reach resolves to \"unknown\" rather than to the deployment's value — an aggregate does not determine a member."
+msgid "Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/process/actor-reach.ts, and whether the signing-api capability is configured. Undeclared reach resolves to \"unknown\" rather than to the deployment's value — an aggregate does not determine a member. Reads `effectiveReach` and runs the signing-api probe."
 msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:101
@@ -106,7 +106,7 @@ msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:125
 #. Diagram label
-msgid "Resolve the performer's reach [effectiveReach + signing-api probe]"
+msgid "Resolve the performer's reach"
 msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:153

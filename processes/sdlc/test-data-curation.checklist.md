@@ -44,7 +44,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Routes to the fixed-set curation branch (`fixed`) or the generated-recipe synthesis branch (`generated`).
 - Call `workflow_complete` with `node: "GW_SetKind"` and `outcome` set to the label that holds:
   - «fixed» → `Task_CurateFixed` (Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0)
-  - «generated» → `Call_ContentTypeSpecialisation` (Synthesise recipe via content-type specialisation [its own subprocess])
+  - «generated» → `Call_ContentTypeSpecialisation` (Synthesise recipe via content-type specialisation)
 
 ### 3. Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0 (`Task_CurateFixed`)
 
@@ -54,7 +54,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Record it: `workflow_complete` with `node: "Task_CurateFixed"`.
 - next: → `GW_NeedsSmeReview` (Exercises decision support or indicator definition?)
 
-### 4. Synthesise recipe via content-type specialisation [its own subprocess] (`Call_ContentTypeSpecialisation`)
+### 4. Synthesise recipe via content-type specialisation (`Call_ContentTypeSpecialisation`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.

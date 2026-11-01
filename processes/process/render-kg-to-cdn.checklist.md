@@ -24,10 +24,10 @@ Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — for
 
 - Answered by the Tool registry: does any Tool satisfy `render-kg-to-cdn` for the named CDN?
 - Call `workflow_complete` with `node: "GW_Tool"` and `outcome` set to the label that holds:
-  - «yes» → `Call_ToolSubprocess` (Render and push with the target's Tool [its own subprocess])
+  - «yes» → `Call_ToolSubprocess` (Render and push with the target's Tool)
   - «no» → `Task_Report` (Report the push: status and message)
 
-### 2. Render and push with the target's Tool [its own subprocess] (`Call_ToolSubprocess`)
+### 2. Render and push with the target's Tool (`Call_ToolSubprocess`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `render-kg-to-cdn`.

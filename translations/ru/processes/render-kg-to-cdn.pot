@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: render-kg-to-cdn\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.330Z\n"
+"POT-Creation-Date: 2026-11-01T09:29:15.609Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -81,7 +81,7 @@ msgstr ""
 
 #: processes/process/render-kg-to-cdn.bpmn:55
 #. Diagram label
-msgid "Render and push with the target's Tool [its own subprocess]"
+msgid "Render and push with the target's Tool"
 msgstr ""
 
 #: processes/process/render-kg-to-cdn.bpmn:61

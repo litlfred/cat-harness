@@ -52,7 +52,7 @@ TOOL-AGNOSTIC ON PURPOSE. Owner, 2026-09-30: &quot;tools can describe their own 
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Call_ToolSubprocess" name="Render and push with&#10;the target's Tool&#10;[its own subprocess]">
+    <bpmn:callActivity id="Call_ToolSubprocess" name="Render and push with&#10;the target's Tool">
       <bpmn:documentation>BOUND BY THE TOOL, so no `calledElement` is written here: the activity names the skill, the Tool satisfies it, and the Tool's `subprocesses` are what this descends into — for `gh-pages`, bootstrap-tools' render-kg-to-github-pages (make sure gh-pages exists and Pages serves it, stage, check the staging, commit onto gh-pages, check what is served). A diagram that named it would make every other CDN a second copy of this process. Whatever the Tool, it returns the two outputs below.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="render-kg-to-cdn"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_3</bpmn:incoming>

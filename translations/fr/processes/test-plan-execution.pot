@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: test-plan-execution\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.211Z\n"
+"POT-Creation-Date: 2026-11-01T09:29:15.688Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -41,7 +41,7 @@ msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:128
 #. Diagram label
-msgid "Bind the test data [fixed or generated]"
+msgid "Bind the test data"
 msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:104
@@ -101,7 +101,7 @@ msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:222
 #. Diagram label
-msgid "File the signed certification [qa-attestations/v1]"
+msgid "File the signed certification"
 msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:160
@@ -156,7 +156,7 @@ msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:181
 #. Diagram label
-msgid "Record the certification decision [attestations]"
+msgid "Record the certification decision"
 msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:192
@@ -191,7 +191,7 @@ msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:118
 #. Diagram label
-msgid "Resolve the plan [test-plan/v1]"
+msgid "Resolve the plan"
 msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:74
@@ -241,17 +241,17 @@ msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:119
 #. Diagram element documentation
-msgid "The plan parses, names at least one `req:` requirement, its `exitCriteria` resolves to a decision in a `.dmn` that exists, and its `scope.kind` is the system's facet kind. A plan that does not resolve is not run — `test-plan-resolves` audits the same join afterwards."
+msgid "The plan parses, names at least one `req:` requirement, its `exitCriteria` resolves to a decision in a `.dmn` that exists, and its `scope.kind` is the system's facet kind. A plan that does not resolve is not run — `test-plan-resolves` audits the same join afterwards. Reads a `test-plan/v1`."
 msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:150
 #. Diagram element documentation
-msgid "The run records `plan {id, version}` and `sut {actor, version, reach}` with its data and process hashes; the report rolls up per plan, never across plans, and goes to the `qa-reports` branch at `tests/plan/sut/run/`. No verdict in it may name the system under test as its reviewer."
+msgid "The run records `plan {id, version}` and `sut {actor, version, reach}` with its data and process hashes; the report rolls up per plan, never across plans, and goes to the `qa-reports` branch at `tests/plan/sut/run/`. No verdict in it may name the system under test as its reviewer. Writes a `folio-test-run/v1` and a `test-report/v1`."
 msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:223
 #. Diagram element documentation
-msgid "The signed certification goes under the declared `attestations` graph on main (owner ruling D2 (a), D5 default), pointing at the report it certifies. The bean resolves here, once the process has actually finished."
+msgid "The signed certification goes under the declared `attestations` graph on main (owner ruling D2 (a), D5 default), pointing at the report it certifies. The bean resolves here, once the process has actually finished. Files it as `qa-attestations/v1`."
 msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:66
@@ -281,5 +281,5 @@ msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:149
 #. Diagram label
-msgid "Write the test run and the test report [folio-test-run/v1 + test-report/v1]"
+msgid "Write the test run and the test report"
 msgstr ""

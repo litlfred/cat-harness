@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: docs-site-publish\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.161Z\n"
+"POT-Creation-Date: 2026-11-01T09:30:07.192Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:133
 #. Diagram label
-msgid "Push to the CDN [render-kg-to-cdn] gh-pages, FULL REPLACE"
+msgid "Push to the CDN gh-pages, FULL REPLACE"
 msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:178
@@ -186,7 +186,7 @@ msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:61
 #. Diagram label
-msgid "Run the release security gate [security:gate]"
+msgid "Run the release security gate"
 msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:69

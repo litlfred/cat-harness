@@ -441,7 +441,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Audit the graph [kg:audit]"
+          "@value": "Audit the graph"
         }
       ],
       "skos:definition": [
@@ -1721,7 +1721,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Point at the upload target [scripts/upload-url.ts]"
+          "@value": "Point at the upload target"
         }
       ],
       "skos:definition": [
@@ -3261,7 +3261,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Push to the CDN [render-kg-to-cdn] gh-pages, FULL REPLACE"
+          "@value": "Push to the CDN gh-pages, FULL REPLACE"
         }
       ],
       "skos:definition": [
@@ -3321,7 +3321,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Run the release security gate [security:gate]"
+          "@value": "Run the release security gate"
         }
       ],
       "skos:definition": [
@@ -7596,7 +7596,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Back off [backoff-sleep]"
+          "@value": "Back off"
         }
       ],
       "skos:definition": [
@@ -7616,7 +7616,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Build the entry [tree + manifest]"
+          "@value": "Build the entry"
         }
       ],
       "skos:definition": [
@@ -7636,7 +7636,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Derive the key [main/<sha> or pr/<n>/<sha>]"
+          "@value": "Derive the key"
         }
       ],
       "skos:definition": [
@@ -7656,7 +7656,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Plan the prune [planPrune]"
+          "@value": "Plan the prune"
         }
       ],
       "skos:definition": [
@@ -7736,7 +7736,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Build the test run [folio-test-run/v1]"
+          "@value": "Build the test run"
         }
       ],
       "skos:definition": [
@@ -7796,7 +7796,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Resolve the performer's reach [effectiveReach + signing-api probe]"
+          "@value": "Resolve the performer's reach"
         }
       ],
       "skos:definition": [
@@ -8091,7 +8091,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Render and push with the target's Tool [its own subprocess]"
+          "@value": "Render and push with the target's Tool"
         }
       ],
       "skos:definition": [
@@ -10406,7 +10406,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Synthesise recipe via content-type specialisation [its own subprocess]"
+          "@value": "Synthesise recipe via content-type specialisation"
         }
       ],
       "skos:definition": [
@@ -10526,7 +10526,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Bind the test data [fixed or generated]"
+          "@value": "Bind the test data"
         }
       ],
       "skos:definition": [
@@ -10566,7 +10566,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "File the signed certification [qa-attestations/v1]"
+          "@value": "File the signed certification"
         }
       ],
       "skos:definition": [
@@ -10586,7 +10586,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Record the certification decision [attestations]"
+          "@value": "Record the certification decision"
         }
       ],
       "skos:definition": [
@@ -10686,7 +10686,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Resolve the plan [test-plan/v1]"
+          "@value": "Resolve the plan"
         }
       ],
       "skos:definition": [
@@ -10706,7 +10706,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Write the test run and the test report [folio-test-run/v1 + test-report/v1]"
+          "@value": "Write the test run and the test report"
         }
       ],
       "skos:definition": [

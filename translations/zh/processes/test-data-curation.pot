@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: test-data-curation\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.207Z\n"
+"POT-Creation-Date: 2026-11-01T09:29:15.684Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:111
 #. Diagram label
-msgid "Synthesise recipe via content-type specialisation [its own subprocess]"
+msgid "Synthesise recipe via content-type specialisation"
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:15

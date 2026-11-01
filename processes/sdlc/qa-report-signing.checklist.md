@@ -10,17 +10,17 @@ Attesting a QA report: build the test run, work out what the performer can actua
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_QaReportSigning"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_BuildRun` (Build the test run [folio-test-run/v1])
+- next: → `Task_BuildRun` (Build the test run)
 
-### 1. Build the test run [folio-test-run/v1] (`Task_BuildRun`)
+### 1. Build the test run (`Task_BuildRun`)
 
 - Who: the `Validation and QA (mechanical + agents)` lane (role `validation-pipeline`).
 - Skill: `qa-report-signing`, `content-test`.
 - What: Assemble the run record the signature will cover: the data hash and the process hash, each all-or-nothing.
 - Record it: `workflow_complete` with `node: "Task_BuildRun"`.
-- next: → `Task_ResolveReach` (Resolve the performer's reach [effectiveReach + signing-api probe])
+- next: → `Task_ResolveReach` (Resolve the performer's reach)
 
-### 2. Resolve the performer's reach [effectiveReach + signing-api probe] (`Task_ResolveReach`)
+### 2. Resolve the performer's reach (`Task_ResolveReach`)
 
 - Who: the `Validation and QA (mechanical + agents)` lane (role `validation-pipeline`).
 - Skill: `qa-report-signing`.

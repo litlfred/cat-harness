@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: actor-role-administration\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.105Z\n"
+"POT-Creation-Date: 2026-11-01T09:29:15.593Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -46,7 +46,7 @@ msgstr ""
 
 #: processes/process/actor-role-administration.bpmn:163
 #. Diagram element documentation
-msgid "AFTER the change, not before. Every criterion here is a join — role to lane, actor to role, activity to skill — so what an administrative edit breaks is not in the file it edited. The sidecars under `test/results/kg-qa/` are committed for the reason a printed verdict is not: without them, \"unbound since it was drawn\" and \"broken by this change\" are indistinguishable."
+msgid "AFTER the change, not before. Every criterion here is a join — role to lane, actor to role, activity to skill — so what an administrative edit breaks is not in the file it edited. The sidecars under `test/results/kg-qa/` are committed for the reason a printed verdict is not: without them, \"unbound since it was drawn\" and \"broken by this change\" are indistinguishable. Runs `kg:audit`."
 msgstr ""
 
 #: processes/process/actor-role-administration.bpmn:73
@@ -71,7 +71,7 @@ msgstr ""
 
 #: processes/process/actor-role-administration.bpmn:162
 #. Diagram label
-msgid "Audit the graph [kg:audit]"
+msgid "Audit the graph"
 msgstr ""
 
 #: processes/process/actor-role-administration.bpmn:152

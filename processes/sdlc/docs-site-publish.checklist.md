@@ -10,9 +10,9 @@ Publish the docs site to `gh-pages`, verify the export before the deploy, and ke
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_DocsSite"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_SecurityGate` (Run the release security gate [security:gate])
+- next: → `Task_SecurityGate` (Run the release security gate)
 
-### 1. Run the release security gate [security:gate] (`Task_SecurityGate`)
+### 1. Run the release security gate (`Task_SecurityGate`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `security`.
@@ -88,9 +88,9 @@ Publish the docs site to `gh-pages`, verify the export before the deploy, and ke
 - Skill: `feature-staging`.
 - What: Copy every OPEN pull request's STAGING/<slug>/ preview from gh-pages into the publish directory before the replace, once per publish attempt.
 - Record it: `workflow_complete` with `node: "Task_Restore"`.
-- next: → `Task_Publish` (Push to the CDN [render-kg-to-cdn] gh-pages, FULL REPLACE)
+- next: → `Task_Publish` (Push to the CDN gh-pages, FULL REPLACE)
 
-### 8. Push to the CDN [render-kg-to-cdn] gh-pages, FULL REPLACE (`Task_Publish`)
+### 8. Push to the CDN gh-pages, FULL REPLACE (`Task_Publish`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-kg-to-cdn`.
