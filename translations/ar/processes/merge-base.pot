@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-base\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.394Z\n"
+"POT-Creation-Date: 2026-11-01T17:57:55.212Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -164,11 +164,6 @@ msgstr ""
 msgid "none"
 msgstr ""
 
-#: processes/sdlc/merge-base.bpmn:83
-#. Diagram element documentation
-msgid "take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction."
-msgstr ""
-
 #: processes/sdlc/merge-base.bpmn:144
 #. Diagram element documentation
 msgid "Quiet is not silent. The finding stays in the PR's comment, in the member's job summary, in a warning annotation and in that member's own red job; only the email is withheld. `1xhc`: a report nobody receives must still be a report somebody can find."
@@ -207,6 +202,11 @@ msgstr ""
 #: processes/sdlc/merge-base.bpmn:140
 #. Diagram label
 msgid "Run red: one email"
+msgstr ""
+
+#: processes/sdlc/merge-base.bpmn:83
+#. Diagram element documentation
+msgid "take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction."
 msgstr ""
 
 #: processes/sdlc/merge-base.bpmn:71
