@@ -3,69 +3,69 @@
   "entry": "arxiv-260327124v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "quantitative imaging",
-      "score": 10.4829,
+      "score": 10.2332,
       "evidence": []
     },
     {
       "term": "imaging methods",
-      "score": 9.6731,
-      "evidence": []
-    },
-    {
-      "term": "rwt technique",
-      "score": 8.2639,
+      "score": 9.5094,
       "evidence": []
     },
     {
       "term": "true quantitative",
-      "score": 7.75,
+      "score": 8.4196,
       "evidence": []
     },
     {
-      "term": "quantitative spect",
-      "score": 7.4838,
+      "term": "rwt technique",
+      "score": 8.2146,
       "evidence": []
     },
     {
       "term": "patient samples",
-      "score": 7.3964,
+      "score": 7.4377,
+      "evidence": []
+    },
+    {
+      "term": "quantitative spect",
+      "score": 7.3516,
       "evidence": []
     },
     {
       "term": "quantitative values",
-      "score": 6.9933,
+      "score": 6.8875,
       "evidence": []
     },
     {
       "term": "medical imaging",
-      "score": 6.9144,
+      "score": 6.8,
       "evidence": []
     },
     {
       "term": "segmentation methods",
-      "score": 6.8565,
+      "score": 6.7713,
       "evidence": []
     },
     {
       "term": "patient data",
-      "score": 6.5878,
+      "score": 6.5942,
       "evidence": []
     },
     {
       "term": "patient cohort",
-      "score": 6.3025,
+      "score": 6.3236,
       "evidence": []
     },
     {
-      "term": "evaluating quantitative",
-      "score": 6.285,
+      "term": "known-ground-truth samples",
+      "score": 6.2697,
       "evidence": []
     }
   ],
@@ -73,232 +73,232 @@
     "page-001": [
       {
         "term": "quantitative imaging",
-        "score": 2.6536,
+        "score": 2.591,
         "evidence": []
       },
       {
         "term": "imaging methods",
-        "score": 2.4829,
-        "evidence": []
-      },
-      {
-        "term": "rwt techniques",
-        "score": 2.2175,
+        "score": 2.4405,
         "evidence": []
       },
       {
         "term": "true quantitative",
-        "score": 2.0639,
+        "score": 2.2838,
+        "evidence": []
+      },
+      {
+        "term": "rwt techniques",
+        "score": 2.1963,
         "evidence": []
       },
       {
         "term": "segmentation methods",
-        "score": 2.044,
+        "score": 2.0188,
         "evidence": []
       },
       {
         "term": "apparent diffusion",
-        "score": 1.9015,
+        "score": 1.8975,
         "evidence": []
       },
       {
         "term": "diffusion coefficient",
-        "score": 1.8823,
+        "score": 1.8885,
         "evidence": []
       },
       {
         "term": "patient samples",
-        "score": 1.8522,
+        "score": 1.8621,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "physical phantom",
-        "score": 2.8151,
+        "score": 2.8217,
         "evidence": []
       },
       {
         "term": "true quantitative",
-        "score": 2.2409,
-        "evidence": []
-      },
-      {
-        "term": "quantitative imaging",
-        "score": 2.1544,
+        "score": 2.5101,
         "evidence": []
       },
       {
         "term": "phantom study",
-        "score": 2.1114,
+        "score": 2.1115,
+        "evidence": []
+      },
+      {
+        "term": "quantitative imaging",
+        "score": 2.1016,
+        "evidence": []
+      },
+      {
+        "term": "true value",
+        "score": 2.0526,
         "evidence": []
       },
       {
         "term": "rwt techniques",
-        "score": 1.8707,
+        "score": 1.8565,
         "evidence": []
       },
       {
-        "term": "quantitative value",
-        "score": 1.8184,
+        "term": "patient",
+        "score": 1.6245,
         "evidence": []
       },
       {
-        "term": "measured value",
-        "score": 1.6521,
-        "evidence": []
-      },
-      {
-        "term": "certain quantitative",
-        "score": 1.6496,
+        "term": "ground truth",
+        "score": 1.6233,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "estimating nsr",
-        "score": 2.5797,
+        "score": 2.588,
         "evidence": []
       },
       {
         "term": "rwt technique",
-        "score": 2.3698,
+        "score": 2.3599,
         "evidence": []
       },
       {
         "term": "nsr values",
-        "score": 2.2688,
+        "score": 2.2826,
         "evidence": []
       },
       {
         "term": "physical phantom",
-        "score": 2.1355,
+        "score": 2.1403,
         "evidence": []
       },
       {
         "term": "proposed approach",
-        "score": 2.1022,
+        "score": 2.0722,
         "evidence": []
       },
       {
         "term": "ground truth",
-        "score": 2.0184,
+        "score": 2.0198,
         "evidence": []
       },
       {
         "term": "integrating known-ground-truth",
-        "score": 1.9902,
+        "score": 1.9589,
         "evidence": []
       },
       {
-        "term": "known-ground-truth data",
-        "score": 1.84,
+        "term": "true values",
+        "score": 1.839,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "proposed approach",
-        "score": 1.8157,
+        "score": 1.7876,
         "evidence": []
       },
       {
         "term": "known-ground-truth dataset",
-        "score": 1.761,
+        "score": 1.7607,
         "evidence": []
       },
       {
         "term": "different known-ground-truth",
-        "score": 1.6426,
+        "score": 1.6282,
         "evidence": []
       },
       {
         "term": "realistic settings",
-        "score": 1.4255,
+        "score": 1.4225,
         "evidence": []
       },
       {
         "term": "realistic scenarios",
-        "score": 1.424,
+        "score": 1.4182,
         "evidence": []
       },
       {
         "term": "numerical simulation",
-        "score": 1.2812,
+        "score": 1.2866,
         "evidence": []
       },
       {
         "term": "patient data",
-        "score": 1.2143,
+        "score": 1.2151,
         "evidence": []
       },
       {
-        "term": "motivate further",
-        "score": 1.1734,
+        "term": "ground-truth known",
+        "score": 1.1555,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "quantitative imaging",
-        "score": 3.0032,
+        "score": 2.9337,
         "evidence": []
       },
       {
         "term": "medical imaging",
-        "score": 2.7011,
+        "score": 2.6625,
         "evidence": []
       },
       {
         "term": "imaging methods",
-        "score": 2.2377,
+        "score": 2.1961,
         "evidence": []
       },
       {
         "term": "ieee trans",
-        "score": 2.2177,
+        "score": 2.1571,
         "evidence": []
       },
       {
         "term": "med",
-        "score": 1.7715,
+        "score": 1.7762,
         "evidence": []
       },
       {
         "term": "radiopharmaceutical therapy",
-        "score": 1.74,
+        "score": 1.7434,
         "evidence": []
       },
       {
         "term": "gold standard",
-        "score": 1.5628,
+        "score": 1.5757,
         "evidence": []
       },
       {
         "term": "ejection fraction",
-        "score": 1.5272,
+        "score": 1.5322,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "frey",
-        "score": 0.9387,
+        "score": 0.9399,
         "evidence": []
       },
       {
         "term": "jha",
-        "score": 0.8578,
+        "score": 0.8596,
         "evidence": []
       },
       {
         "term": "med",
-        "score": 0.8116,
+        "score": 0.8138,
         "evidence": []
       },
       {
         "term": "imaging",
-        "score": 0.7912,
+        "score": 0.7756,
         "evidence": []
       }
     ]

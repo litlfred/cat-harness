@@ -3,73 +3,73 @@
   "entry": "arxiv-2608.08453v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "routing defects",
-      "score": 19.987,
+      "score": 19.8617,
       "evidence": []
     },
     {
       "term": "agent skills",
-      "score": 18.8914,
+      "score": 19.0109,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "safety defects",
-      "score": 17.5777,
+      "score": 17.5609,
       "evidence": []
     },
     {
       "term": "public skills",
-      "score": 17.0098,
+      "score": 17.0548,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "skills paths",
-      "score": 16.8439,
+      "score": 16.8146,
       "evidence": []
     },
     {
       "term": "spec-aware skills",
-      "score": 16.6658,
+      "score": 16.6962,
       "evidence": []
     },
     {
       "term": "detected defects",
-      "score": 16.5739,
+      "score": 16.4439,
       "evidence": []
     },
     {
       "term": "skills specification",
-      "score": 15.9757,
+      "score": 16.0146,
       "evidence": []
     },
     {
       "term": "ai-marked skills",
-      "score": 15.4759,
-      "evidence": []
-    },
-    {
-      "term": "skills work",
-      "score": 15.4154,
+      "score": 15.5022,
       "evidence": []
     },
     {
       "term": "r1-clean skills",
-      "score": 15.407,
+      "score": 15.4348,
+      "evidence": []
+    },
+    {
+      "term": "skills work",
+      "score": 15.3706,
       "evidence": []
     },
     {
       "term": "unmarked skills",
-      "score": 15.3169,
+      "score": 15.3432,
       "evidence": []
     }
   ],
@@ -77,7 +77,7 @@
     "sec-000-abstract": [
       {
         "term": "quality-assured generation",
-        "score": 1.3668,
+        "score": 1.3686,
         "evidence": []
       },
       {
@@ -87,73 +87,73 @@
       },
       {
         "term": "agent skills",
-        "score": 1.2777,
+        "score": 1.285,
         "evidence": []
       },
       {
         "term": "routing metadata",
-        "score": 1.2518,
+        "score": 1.2495,
         "evidence": []
       },
       {
         "term": "defect",
-        "score": 0.9972,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "repair",
-        "score": 0.672,
+        "score": 0.6752,
         "evidence": []
       },
       {
         "term": "lightweight",
-        "score": 0.618,
+        "score": 0.6216,
         "evidence": []
       },
       {
         "term": "safety",
-        "score": 0.5994,
+        "score": 0.6031,
         "evidence": []
       }
     ],
     "sec-001-1-introduction": [
       {
         "term": "public skills",
-        "score": 1.8824,
+        "score": 1.8884,
         "evidence": []
       },
       {
         "term": "skill quality",
-        "score": 1.6779,
+        "score": 1.7008,
         "evidence": []
       },
       {
         "term": "agent skills",
-        "score": 1.6619,
+        "score": 1.6731,
         "evidence": []
       },
       {
         "term": "defects",
-        "score": 1.1406,
+        "score": 1.1347,
         "evidence": []
       },
       {
         "term": "require ments",
-        "score": 1.0809,
+        "score": 1.0775,
         "evidence": []
       },
       {
         "term": "reusable",
-        "score": 1.0452,
+        "score": 1.0508,
         "evidence": []
       },
       {
         "term": "diagnosis",
-        "score": 0.8092,
+        "score": 0.7946,
         "evidence": []
       },
       {
-        "term": "platform",
+        "term": "official",
         "score": 0.7374,
         "evidence": []
       }
@@ -161,86 +161,86 @@
     "sec-005-21-agent-skills-and-the-skillmd-format": [
       {
         "term": "agent skills",
-        "score": 3.9125,
+        "score": 3.9423,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "public skills",
-        "score": 1.819,
+        "score": 1.8245,
         "evidence": []
       },
       {
         "term": "malicious skills",
-        "score": 1.7601,
+        "score": 1.7661,
         "evidence": []
       },
       {
         "term": "skill quality",
-        "score": 1.6339,
+        "score": 1.6535,
         "evidence": []
       },
       {
         "term": "safety concerns",
-        "score": 1.4935,
+        "score": 1.4901,
         "evidence": []
       },
       {
         "term": "body",
-        "score": 1.0182,
-        "evidence": []
-      },
-      {
-        "term": "disclosure",
-        "score": 0.8882,
+        "score": 1.0228,
         "evidence": []
       },
       {
         "term": "upstream",
-        "score": 0.8804,
+        "score": 0.8821,
+        "evidence": []
+      },
+      {
+        "term": "disclosure",
+        "score": 0.8812,
         "evidence": []
       }
     ],
     "sec-007-31-data-collection": [
       {
         "term": "repository cloning",
-        "score": 1.8252,
+        "score": 1.8272,
         "evidence": []
       },
       {
         "term": "ecosystem-wide",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "case-insensitive",
-        "score": 0.9081,
+        "score": 0.9095,
         "evidence": []
       },
       {
         "term": "repositories",
-        "score": 0.8934,
+        "score": 0.8866,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 0.7355,
+        "score": 0.7423,
         "evidence": []
       },
       {
         "term": "github",
-        "score": 0.7076,
+        "score": 0.7086,
         "evidence": []
       },
       {
         "term": "registry",
-        "score": 0.6081,
+        "score": 0.6118,
         "evidence": []
       },
       {
         "term": "collection",
-        "score": 0.6073,
+        "score": 0.5993,
         "evidence": [
           "heading"
         ]
@@ -249,426 +249,426 @@
     "sec-008-34-routing-stress-test": [
       {
         "term": "tier categories",
-        "score": 2.3117,
+        "score": 2.2836,
         "evidence": []
       },
       {
         "term": "spec clause",
-        "score": 2.2723,
-        "evidence": []
-      },
-      {
-        "term": "pat terns",
-        "score": 2.0148,
+        "score": 2.2655,
         "evidence": []
       },
       {
         "term": "persona redefinition",
-        "score": 1.9879,
+        "score": 1.9916,
+        "evidence": []
+      },
+      {
+        "term": "pat terns",
+        "score": 1.9015,
         "evidence": []
       },
       {
         "term": "platform-specific paths",
-        "score": 1.8464,
-        "evidence": []
-      },
-      {
-        "term": "hardcoded credentials",
-        "score": 1.7979,
+        "score": 1.8393,
         "evidence": []
       },
       {
         "term": "oversized bodies",
-        "score": 1.7831,
+        "score": 1.7862,
         "evidence": []
       },
       {
-        "term": "github issues",
-        "score": 1.5285,
+        "term": "hardcoded credentials",
+        "score": 1.7843,
+        "evidence": []
+      },
+      {
+        "term": "skills specification",
+        "score": 1.518,
         "evidence": []
       }
     ],
     "sec-009-33-detector-validation": [
       {
         "term": "stress test",
-        "score": 1.1848,
+        "score": 1.1582,
         "evidence": []
       },
       {
         "term": "detectors",
-        "score": 0.9526,
+        "score": 0.9558,
         "evidence": []
       },
       {
         "term": "fixture",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "routing",
-        "score": 0.8701,
+        "score": 0.8634,
         "evidence": []
       },
       {
         "term": "defect",
-        "score": 0.7903,
+        "score": 0.7926,
         "evidence": []
       },
       {
         "term": "length",
-        "score": 0.7401,
+        "score": 0.7283,
         "evidence": []
       },
       {
         "term": "lexical",
-        "score": 0.6602,
+        "score": 0.6634,
         "evidence": []
       },
       {
-        "term": "discovery",
-        "score": 0.5911,
+        "term": "missing",
+        "score": 0.6044,
         "evidence": []
       }
     ],
     "sec-011-41-ecosystem-overview": [
       {
         "term": "ecosystem",
-        "score": 0.8782,
+        "score": 0.882,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "unmarked",
-        "score": 0.6524,
+        "score": 0.6527,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.6483,
+        "score": 0.6496,
         "evidence": []
       },
       {
         "term": "contributor",
-        "score": 0.6475,
+        "score": 0.6392,
         "evidence": []
       },
       {
         "term": "ai-generation",
-        "score": 0.6356,
+        "score": 0.636,
         "evidence": []
       }
     ],
     "sec-012-42-rq1-what-reusability-defects-are-prevalent-in": [
       {
         "term": "defects",
-        "score": 2.2811,
+        "score": 2.2695,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "detected defects",
-        "score": 2.1302,
+        "score": 2.1111,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 1.4435,
+        "score": 1.4463,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prevalent",
-        "score": 1.0345,
+        "score": 1.0371,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prevalence",
-        "score": 0.9526,
+        "score": 0.9558,
         "evidence": []
       },
       {
         "term": "tier",
-        "score": 0.8267,
+        "score": 0.8287,
         "evidence": []
       }
     ],
     "sec-013-43-rq2-how-do-these-defects-limit-skill-reuse": [
       {
         "term": "spec conformance",
-        "score": 2.0188,
+        "score": 2.0057,
         "evidence": []
       },
       {
         "term": "tier",
-        "score": 1.6534,
+        "score": 1.6575,
         "evidence": []
       },
       {
         "term": "reuse",
-        "score": 1.641,
+        "score": 1.6348,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
+        "term": "defects",
+        "score": 1.5492,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "stress test",
-        "score": 1.5736,
+        "score": 1.5401,
         "evidence": []
       },
       {
-        "term": "defects",
-        "score": 1.5571,
-        "evidence": [
-          "heading"
-        ]
-      },
-      {
         "term": "agent skills",
-        "score": 1.5053,
+        "score": 1.5169,
         "evidence": []
       },
       {
         "term": "r1-defective",
-        "score": 1.2846,
+        "score": 1.2854,
         "evidence": []
       },
       {
         "term": "reduce discovery",
-        "score": 1.28,
+        "score": 1.2411,
         "evidence": []
       }
     ],
     "sec-014-44-rq3-which-platform-and-provenance-signals-are": [
       {
         "term": "ai-marked skills",
-        "score": 3.2503,
+        "score": 3.2538,
         "evidence": []
       },
       {
         "term": "avg defects",
-        "score": 3.1599,
-        "evidence": []
-      },
-      {
-        "term": "detected defects",
-        "score": 3.1096,
+        "score": 3.1531,
         "evidence": []
       },
       {
         "term": "unmarked skills",
-        "score": 3.0949,
+        "score": 3.0985,
+        "evidence": []
+      },
+      {
+        "term": "detected defects",
+        "score": 3.0845,
         "evidence": []
       },
       {
         "term": "portability defects",
-        "score": 3.0148,
+        "score": 3.0074,
         "evidence": []
       },
       {
         "term": "safety defects",
-        "score": 2.8859,
+        "score": 2.8812,
         "evidence": []
       },
       {
         "term": "exemplary skills",
-        "score": 2.623,
+        "score": 2.627,
         "evidence": []
       },
       {
         "term": "defect rates",
-        "score": 2.1103,
+        "score": 2.1199,
         "evidence": []
       }
     ],
     "sec-016-5-discussion": [
       {
         "term": "detected defects",
-        "score": 3.3541,
+        "score": 3.327,
         "evidence": []
       },
       {
         "term": "defects eliminated",
-        "score": 3.2772,
+        "score": 3.2682,
         "evidence": []
       },
       {
         "term": "structural defects",
-        "score": 2.7196,
+        "score": 2.6981,
         "evidence": []
       },
       {
         "term": "critical defects",
-        "score": 2.6748,
+        "score": 2.6391,
         "evidence": []
       },
       {
         "term": "safety bypasses",
-        "score": 2.4754,
+        "score": 2.4859,
         "evidence": []
       },
       {
         "term": "marginal defect",
-        "score": 2.4607,
+        "score": 2.4684,
         "evidence": []
       },
       {
         "term": "observed defect",
-        "score": 2.4434,
+        "score": 2.4096,
         "evidence": []
       },
       {
         "term": "defect instances",
-        "score": 2.4122,
+        "score": 2.3862,
         "evidence": []
       }
     ],
     "sec-017-6-threats-to-validity": [
       {
         "term": "skills paths",
-        "score": 1.9398,
+        "score": 1.9304,
         "evidence": []
       },
       {
         "term": "persona redefinition",
-        "score": 1.7638,
+        "score": 1.767,
         "evidence": []
       },
       {
         "term": "plat form",
-        "score": 1.7275,
+        "score": 1.7297,
         "evidence": []
       },
       {
         "term": "generic skills",
-        "score": 1.6997,
+        "score": 1.702,
         "evidence": []
       },
       {
         "term": "validity",
-        "score": 1.6941,
+        "score": 1.6716,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "agent skills",
-        "score": 1.5587,
+        "score": 1.5679,
         "evidence": []
       },
       {
         "term": "follow-up work",
-        "score": 1.4472,
+        "score": 1.3761,
         "evidence": []
       },
       {
         "term": "file paths",
-        "score": 1.3707,
+        "score": 1.3618,
         "evidence": []
       }
     ],
     "sec-018-7-conclusion": [
       {
         "term": "routing",
-        "score": 0.9687,
+        "score": 0.9612,
         "evidence": []
       },
       {
         "term": "repair",
-        "score": 0.672,
+        "score": 0.6752,
         "evidence": []
       },
       {
         "term": "lexical",
-        "score": 0.6602,
+        "score": 0.6634,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.6483,
+        "score": 0.6496,
         "evidence": []
       },
       {
         "term": "safety",
-        "score": 0.5994,
+        "score": 0.6031,
         "evidence": []
       },
       {
         "term": "baseline",
-        "score": 0.5514,
+        "score": 0.5526,
         "evidence": []
       },
       {
         "term": "workflow",
-        "score": 0.5074,
+        "score": 0.4977,
         "evidence": []
       }
     ],
     "sec-019-references": [
       {
         "term": "yimin liu",
-        "score": 2.2098,
+        "score": 2.2123,
         "evidence": []
       },
       {
         "term": "xiaokun chen",
-        "score": 1.9924,
+        "score": 1.9908,
         "evidence": []
       },
       {
         "term": "wenbo chen",
-        "score": 1.8928,
+        "score": 1.8919,
         "evidence": []
       },
       {
         "term": "sahar abdelnabi",
-        "score": 1.7556,
+        "score": 1.7589,
         "evidence": []
       },
       {
         "term": "han chung",
-        "score": 1.7368,
+        "score": 1.7424,
         "evidence": []
       },
       {
         "term": "jiankai sun",
-        "score": 1.7029,
+        "score": 1.7006,
         "evidence": []
       },
       {
         "term": "alex beutel",
-        "score": 1.6334,
+        "score": 1.6376,
         "evidence": []
       },
       {
         "term": "kai xiao",
-        "score": 1.6078,
+        "score": 1.6143,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "city university",
-        "score": 1.8133,
+        "score": 1.7719,
         "evidence": []
       },
       {
         "term": "graduate center",
-        "score": 1.6073,
+        "score": 1.6024,
         "evidence": []
       },
       {
         "term": "york",
-        "score": 1.2714,
+        "score": 1.2477,
         "evidence": []
       },
       {
-        "term": "usa",
-        "score": 0.9664,
+        "term": "hunter",
+        "score": 0.9508,
         "evidence": []
       }
     ]

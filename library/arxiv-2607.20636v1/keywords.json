@@ -3,73 +3,73 @@
   "entry": "arxiv-2607.20636v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "reward algorithm",
-      "score": 88.346,
-      "evidence": []
-    },
-    {
-      "term": "optimal arm",
-      "score": 72.7748,
+      "score": 89.7272,
       "evidence": []
     },
     {
       "term": "arm now",
-      "score": 72.4491,
+      "score": 72.966,
       "evidence": []
     },
     {
       "term": "reward ratio",
-      "score": 72.4186,
+      "score": 72.8338,
+      "evidence": []
+    },
+    {
+      "term": "optimal arm",
+      "score": 72.7689,
       "evidence": []
     },
     {
       "term": "arm pulls",
-      "score": 69.9733,
-      "evidence": []
-    },
-    {
-      "term": "get reward",
-      "score": 66.9003,
-      "evidence": []
-    },
-    {
-      "term": "striving arm",
-      "score": 66.678,
+      "score": 70.4011,
       "evidence": []
     },
     {
       "term": "arm lower",
-      "score": 66.0721,
+      "score": 67.4454,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "reward function",
-      "score": 65.0992,
+      "term": "get reward",
+      "score": 67.2766,
       "evidence": []
     },
     {
+      "term": "striving arm",
+      "score": 67.0792,
+      "evidence": []
+    },
+    {
+      "term": "reward function",
+      "score": 65.6806,
+      "evidence": []
+    },
+    {
+      "term": "cumulative reward",
+      "score": 64.5431,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
       "term": "some arm",
-      "score": 64.2256,
+      "score": 64.3776,
       "evidence": []
     },
     {
       "term": "fixed arm",
-      "score": 64.2015,
-      "evidence": [
-        "heading"
-      ]
-    },
-    {
-      "term": "cumulative reward",
-      "score": 64.1791,
+      "score": 64.3563,
       "evidence": [
         "heading"
       ]
@@ -79,84 +79,84 @@
     "sec-000-introduction": [
       {
         "term": "decision-making problem",
-        "score": 1.5745,
+        "score": 1.5447,
         "evidence": []
       },
       {
         "term": "theoretical settings",
-        "score": 1.5697,
+        "score": 1.5183,
         "evidence": []
       },
       {
         "term": "theoretical models",
-        "score": 1.3915,
+        "score": 1.3413,
         "evidence": []
       },
       {
         "term": "institutions",
-        "score": 0.8504,
+        "score": 0.8522,
         "evidence": []
       },
       {
         "term": "thesis",
-        "score": 0.8352,
+        "score": 0.8331,
         "evidence": []
       },
       {
         "term": "investment",
-        "score": 0.7743,
+        "score": 0.7767,
         "evidence": []
       },
       {
-        "term": "decisions",
-        "score": 0.719,
+        "term": "decision",
+        "score": 0.7109,
         "evidence": []
       },
       {
         "term": "start",
-        "score": 0.6812,
+        "score": 0.656,
         "evidence": []
       }
     ],
     "sec-001-unifying-framework": [
       {
         "term": "sequential decision-making",
-        "score": 2.0749,
+        "score": 2.0364,
         "evidence": []
       },
       {
         "term": "optimal decision-making",
-        "score": 1.9554,
+        "score": 1.9075,
         "evidence": []
       },
       {
         "term": "real world",
-        "score": 1.3429,
+        "score": 1.3309,
         "evidence": []
       },
       {
         "term": "abstract sense",
-        "score": 1.2547,
+        "score": 1.2121,
         "evidence": []
       },
       {
         "term": "outcomes",
-        "score": 1.2295,
+        "score": 1.1974,
         "evidence": []
       },
       {
         "term": "social modeling",
-        "score": 1.1936,
+        "score": 1.1253,
         "evidence": []
       },
       {
         "term": "perspective",
-        "score": 1.1648,
+        "score": 1.0871,
         "evidence": []
       },
       {
         "term": "framework",
-        "score": 1.0562,
+        "score": 1.0696,
         "evidence": [
           "heading"
         ]
@@ -165,613 +165,611 @@
     "sec-002-outline-of-thesis": [
       {
         "term": "thesis",
-        "score": 1.6705,
+        "score": 1.6662,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "theoretical models",
-        "score": 1.0265,
+        "score": 0.9907,
         "evidence": []
       },
       {
         "term": "social",
-        "score": 0.7369,
+        "score": 0.7312,
         "evidence": []
       },
       {
         "term": "influences",
-        "score": 0.7065,
+        "score": 0.6812,
         "evidence": []
       },
       {
         "term": "decision-making",
-        "score": 0.6833,
+        "score": 0.6637,
         "evidence": []
       }
     ],
     "sec-003-part-i-improving-multi-armed-bandits": [
       {
         "term": "improving multi-armed",
-        "score": 2.2592,
+        "score": 2.2276,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "previous chapter",
-        "score": 1.5622,
+        "score": 1.5661,
         "evidence": []
       },
       {
         "term": "data-driven algorithm",
-        "score": 1.3632,
+        "score": 1.376,
         "evidence": []
       },
       {
         "term": "final reward",
-        "score": 1.3074,
+        "score": 1.3151,
         "evidence": []
       },
       {
         "term": "algorithm design",
-        "score": 1.0675,
+        "score": 1.0659,
         "evidence": []
       },
       {
         "term": "approximation factor",
-        "score": 0.9828,
+        "score": 0.9817,
         "evidence": []
       },
       {
         "term": "imab",
-        "score": 0.9643,
+        "score": 0.9674,
         "evidence": []
       },
       {
         "term": "worst-case",
-        "score": 0.9599,
+        "score": 0.9648,
         "evidence": []
       }
     ],
     "sec-004-part-ii-social-epistemology": [
       {
         "term": "pessimism traps",
-        "score": 1.6259,
+        "score": 1.6323,
         "evidence": []
       },
       {
         "term": "social",
-        "score": 1.4739,
+        "score": 1.4624,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "ambitious choice",
-        "score": 1.4009,
+        "score": 1.3982,
         "evidence": []
       },
       {
         "term": "mathematical models",
-        "score": 1.309,
+        "score": 1.3078,
         "evidence": []
       },
       {
         "term": "chapter",
-        "score": 1.0066,
+        "score": 1.0136,
         "evidence": []
       },
       {
         "term": "grit",
-        "score": 0.8869,
+        "score": 0.8906,
         "evidence": []
       },
       {
         "term": "deciding",
-        "score": 0.7886,
+        "score": 0.7909,
         "evidence": []
       },
       {
         "term": "phenomena",
-        "score": 0.7395,
+        "score": 0.7422,
         "evidence": []
       }
     ],
     "sec-005-bibliographic-notes": [
       {
         "term": "avrim blum",
-        "score": 3.0977,
+        "score": 3.1013,
         "evidence": []
       },
       {
         "term": "williams tolbert",
-        "score": 1.7352,
+        "score": 1.7387,
         "evidence": []
       },
       {
         "term": "alexander williams",
-        "score": 1.5389,
+        "score": 1.5337,
         "evidence": []
       },
       {
         "term": "chapter",
-        "score": 1.0066,
+        "score": 1.0136,
         "evidence": []
       }
     ],
     "sec-006-takeaways": [
       {
         "term": "financial incentives",
-        "score": 1.6458,
+        "score": 1.6521,
         "evidence": []
       },
       {
         "term": "takeaways",
-        "score": 1.1877,
+        "score": 1.1892,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "ambition",
-        "score": 1.1842,
+        "score": 1.1874,
         "evidence": []
       },
       {
         "term": "beliefs",
-        "score": 0.7573,
+        "score": 0.7598,
         "evidence": []
       },
       {
         "term": "thesis",
-        "score": 0.6619,
+        "score": 0.6602,
         "evidence": []
       },
       {
         "term": "bounds",
-        "score": 0.5623,
-        "evidence": []
-      },
-      {
-        "term": "theoretical",
-        "score": 0.5371,
+        "score": 0.5948,
         "evidence": []
       },
       {
         "term": "problem",
-        "score": 0.5349,
+        "score": 0.5314,
+        "evidence": []
+      },
+      {
+        "term": "theoretical",
+        "score": 0.5093,
         "evidence": []
       }
     ],
     "sec-008-improving-multi-armed-bandit-setting": [
       {
         "term": "improving multi-armed",
-        "score": 2.2592,
+        "score": 2.2276,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bandit",
-        "score": 1.6425,
+        "score": 1.6509,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "setting",
-        "score": 1.5886,
+        "score": 1.5849,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bandits problem",
-        "score": 1.3716,
+        "score": 1.3703,
         "evidence": []
       },
       {
         "term": "suboptimality",
-        "score": 1.2846,
+        "score": 1.2854,
         "evidence": []
       },
       {
         "term": "maximize",
-        "score": 1.1977,
+        "score": 1.1912,
+        "evidence": []
+      },
+      {
+        "term": "lower bound",
+        "score": 1.1751,
         "evidence": []
       },
       {
         "term": "reward",
-        "score": 1.1361,
-        "evidence": []
-      },
-      {
-        "term": "pulled",
-        "score": 1.1351,
+        "score": 1.1455,
         "evidence": []
       }
     ],
     "sec-009-formal-preliminaries": [
       {
         "term": "reward function",
-        "score": 1.3752,
+        "score": 1.3886,
         "evidence": []
       },
       {
         "term": "arm",
-        "score": 1.0322,
+        "score": 1.039,
+        "evidence": []
+      },
+      {
+        "term": "creasing",
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "tth",
-        "score": 0.6305,
-        "evidence": []
-      },
-      {
-        "term": "arms",
-        "score": 0.6038,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-010-external-and-policy-regret-adversary-model": [
       {
         "term": "policy regret",
-        "score": 4.9947,
+        "score": 5.0043,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "external regret",
-        "score": 4.5704,
+        "score": 4.5746,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "comparator algorithm",
-        "score": 3.8659,
+        "score": 3.8969,
         "evidence": []
       },
       {
         "term": "adversary model",
-        "score": 3.7722,
+        "score": 3.7728,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "oblivious adversaries",
-        "score": 3.0618,
+        "score": 3.0655,
         "evidence": []
       },
       {
         "term": "reward functions",
-        "score": 2.2794,
+        "score": 2.2809,
         "evidence": []
       },
       {
         "term": "pulls arm",
-        "score": 2.0228,
+        "score": 2.0345,
         "evidence": []
       },
       {
         "term": "returns reward",
-        "score": 1.9982,
+        "score": 2.0101,
         "evidence": []
       }
     ],
     "sec-011-optimality-and-competitive-ratio": [
       {
         "term": "optimal reward",
-        "score": 1.8545,
-        "evidence": []
-      },
-      {
-        "term": "until time",
-        "score": 1.4769,
+        "score": 1.8487,
         "evidence": []
       },
       {
         "term": "expected reward",
-        "score": 1.4744,
+        "score": 1.4842,
+        "evidence": []
+      },
+      {
+        "term": "until time",
+        "score": 1.4526,
         "evidence": []
       },
       {
         "term": "arm",
-        "score": 1.3999,
+        "score": 1.4091,
         "evidence": []
       },
       {
         "term": "non-trivial guarantee",
-        "score": 1.3163,
+        "score": 1.3004,
         "evidence": []
       },
       {
         "term": "approximation factor",
-        "score": 1.1095,
+        "score": 1.1096,
         "evidence": []
       },
       {
         "term": "playing",
-        "score": 0.9705,
+        "score": 0.9753,
         "evidence": []
       },
       {
         "term": "opt",
-        "score": 0.9216,
+        "score": 0.925,
         "evidence": []
       }
     ],
     "sec-012-diminishing-returns": [
       {
         "term": "diminishing returns",
-        "score": 3.3154,
+        "score": 3.3226,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "comparator",
-        "score": 1.0065,
+        "score": 1.0072,
         "evidence": []
       },
       {
         "term": "rewards",
-        "score": 0.9421,
+        "score": 0.9471,
         "evidence": []
       },
       {
         "term": "arm",
-        "score": 0.8537,
+        "score": 0.8594,
         "evidence": []
       },
       {
         "term": "hkr",
-        "score": 0.7839,
+        "score": 0.7862,
         "evidence": []
       },
       {
         "term": "pngk",
-        "score": 0.7686,
+        "score": 0.7711,
         "evidence": []
       },
       {
         "term": "arms",
-        "score": 0.7619,
+        "score": 0.7666,
         "evidence": []
       }
     ],
     "sec-013-related-work": [
       {
         "term": "sublinear regret",
-        "score": 2.3813,
+        "score": 2.3851,
         "evidence": []
       },
       {
         "term": "rising bandits",
-        "score": 1.7178,
+        "score": 1.7252,
         "evidence": []
       },
       {
         "term": "rested rising",
-        "score": 1.6849,
+        "score": 1.6887,
         "evidence": []
       },
       {
         "term": "competitive ratio",
-        "score": 1.6811,
+        "score": 1.6802,
         "evidence": []
       },
       {
         "term": "reward maximization",
-        "score": 1.6392,
+        "score": 1.6497,
         "evidence": []
       },
       {
         "term": "multi-armed bandits",
-        "score": 1.5364,
+        "score": 1.5451,
         "evidence": []
       },
       {
         "term": "lower bound",
-        "score": 1.395,
+        "score": 1.4997,
         "evidence": []
       },
       {
-        "term": "work",
-        "score": 1.3939,
-        "evidence": [
-          "heading"
-        ]
+        "term": "upper bound",
+        "score": 1.4539,
+        "evidence": []
       }
     ],
     "sec-014-worst-case-setting": [
       {
         "term": "worst instance",
-        "score": 2.3365,
+        "score": 2.282,
         "evidence": []
       },
       {
         "term": "algorithm designer",
-        "score": 2.1655,
+        "score": 2.167,
         "evidence": []
       },
       {
         "term": "adversary chooses",
-        "score": 2.0525,
+        "score": 2.0507,
         "evidence": []
       },
       {
         "term": "worst case",
-        "score": 1.6482,
+        "score": 1.6466,
         "evidence": []
       },
       {
         "term": "worst-case",
-        "score": 1.3105,
+        "score": 1.3171,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "optimization problem",
-        "score": 1.2311,
+        "score": 1.2305,
         "evidence": []
       },
       {
         "term": "playing against",
-        "score": 1.0376,
+        "score": 1.04,
         "evidence": []
       },
       {
         "term": "objective",
-        "score": 0.6842,
+        "score": 0.6741,
         "evidence": []
       }
     ],
     "sec-015-lower-bound": [
       {
         "term": "lower",
-        "score": 0.6133,
+        "score": 0.6606,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bound",
-        "score": 0.6048,
+        "score": 0.6492,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "characterizing",
-        "score": 0.4976,
+        "score": 0.4893,
         "evidence": []
       }
     ],
     "sec-016-upper-bound": [
       {
         "term": "upper bound",
-        "score": 3.3919,
+        "score": 3.6097,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "optt min",
-        "score": 3.3822,
+        "score": 3.384,
         "evidence": []
       },
       {
         "term": "least optt",
-        "score": 3.2077,
+        "score": 3.214,
         "evidence": []
       },
       {
         "term": "algorithm chooses",
-        "score": 2.2127,
+        "score": 2.2368,
         "evidence": []
       },
       {
         "term": "randomized algorithm",
-        "score": 2.1894,
+        "score": 2.2295,
         "evidence": []
       },
       {
         "term": "approximation factor",
-        "score": 2.1017,
+        "score": 2.0999,
         "evidence": []
       },
       {
         "term": "maximum reward",
-        "score": 2.0783,
+        "score": 2.0873,
         "evidence": []
       },
       {
         "term": "expected reward",
-        "score": 2.0492,
+        "score": 2.0622,
         "evidence": []
       }
     ],
     "sec-017-removing-assumptions": [
       {
         "term": "parameter tpred",
-        "score": 1.9455,
+        "score": 1.9524,
         "evidence": []
       },
       {
         "term": "previous algorithm",
-        "score": 1.4818,
+        "score": 1.5013,
         "evidence": []
       },
       {
         "term": "constant factor",
-        "score": 1.1954,
-        "evidence": []
-      },
-      {
-        "term": "initial exploration",
-        "score": 1.0386,
+        "score": 1.1944,
         "evidence": []
       },
       {
         "term": "arm",
-        "score": 1.0322,
+        "score": 1.039,
+        "evidence": []
+      },
+      {
+        "term": "initial exploration",
+        "score": 1.0085,
         "evidence": []
       },
       {
         "term": "half",
-        "score": 0.983,
+        "score": 0.9431,
         "evidence": []
       },
       {
         "term": "analyzed",
-        "score": 0.8854,
+        "score": 0.8385,
         "evidence": []
       },
       {
         "term": "time available",
-        "score": 0.8113,
+        "score": 0.7949,
         "evidence": []
       }
     ],
     "sec-018-computing-range-for-a-fixed-arm": [
       {
         "term": "ˆmu ˆml",
-        "score": 2.9301,
+        "score": 2.9322,
         "evidence": []
       },
       {
         "term": "fixed arm",
-        "score": 2.0735,
+        "score": 2.0658,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "diminishing returns",
-        "score": 1.6577,
+        "score": 1.6613,
         "evidence": []
       }
     ],
     "sec-019-upper-and-lower-bounds-on-final-value-of-best-ar": [
       {
         "term": "diminishing returns",
-        "score": 1.3137,
+        "score": 1.3166,
         "evidence": []
       },
       {
         "term": "maxi",
-        "score": 1.0646,
+        "score": 1.0686,
         "evidence": []
       },
       {
-        "term": "arm",
-        "score": 0.7354,
+        "term": "bounds",
+        "score": 0.7505,
         "evidence": [
           "heading"
         ]
@@ -780,515 +778,517 @@
     "sec-020-reward-approximation-guarantee-with-learned-para": [
       {
         "term": "reward",
-        "score": 1.8439,
+        "score": 1.8592,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "least log",
-        "score": 1.6868,
+        "score": 1.6367,
         "evidence": []
       },
       {
         "term": "expected reward",
-        "score": 1.4688,
+        "score": 1.478,
         "evidence": []
       },
       {
         "term": "tpred",
-        "score": 1.1907,
+        "score": 1.1921,
         "evidence": []
       },
       {
         "term": "optt",
-        "score": 1.1848,
+        "score": 1.188,
         "evidence": []
       },
       {
         "term": "parameter",
-        "score": 0.9257,
+        "score": 0.9324,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "lemma",
-        "score": 0.9088,
+        "score": 0.914,
         "evidence": []
       },
       {
         "term": "putting",
-        "score": 0.8482,
+        "score": 0.8081,
         "evidence": []
       }
     ],
     "sec-021-removing-dependence-on-having-to-know-t": [
       {
         "term": "reward received",
-        "score": 1.35,
+        "score": 1.3446,
         "evidence": []
       },
       {
         "term": "constant factor",
-        "score": 1.0648,
+        "score": 1.0653,
         "evidence": []
       },
       {
         "term": "tpred",
-        "score": 0.9436,
+        "score": 0.9447,
         "evidence": []
       },
       {
         "term": "algorithm",
-        "score": 0.9152,
+        "score": 0.939,
         "evidence": []
       },
       {
         "term": "dependence",
-        "score": 0.9046,
+        "score": 0.9082,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "guess",
-        "score": 0.7476,
+        "score": 0.7397,
         "evidence": []
       }
     ],
     "sec-022-conclusion": [
       {
         "term": "approximation factor",
-        "score": 1.2401,
+        "score": 1.2388,
         "evidence": []
       },
       {
         "term": "algorithm design",
-        "score": 1.1243,
+        "score": 1.1241,
         "evidence": []
       },
       {
         "term": "lower bounds",
-        "score": 1.0484,
-        "evidence": []
-      },
-      {
-        "term": "instances",
-        "score": 1.0309,
+        "score": 1.1183,
         "evidence": []
       },
       {
         "term": "chapter",
-        "score": 1.0066,
+        "score": 1.0136,
+        "evidence": []
+      },
+      {
+        "term": "instances",
+        "score": 0.9844,
         "evidence": []
       },
       {
         "term": "worst-case",
-        "score": 0.8269,
+        "score": 0.831,
         "evidence": []
       },
       {
         "term": "pessimistic",
-        "score": 0.7433,
+        "score": 0.746,
         "evidence": []
       },
       {
         "term": "arm",
-        "score": 0.7354,
+        "score": 0.7402,
         "evidence": []
       }
     ],
     "sec-023-data-driven-algorithm-design-setting": [
       {
         "term": "algorithm",
-        "score": 2.087,
+        "score": 2.1412,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "imab instances",
-        "score": 1.9529,
+        "score": 1.9018,
         "evidence": []
       },
       {
         "term": "approximation guarantees",
-        "score": 1.8688,
+        "score": 1.8837,
         "evidence": []
       },
       {
         "term": "reward functions",
-        "score": 1.8136,
+        "score": 1.813,
         "evidence": []
       },
       {
         "term": "instances drawn",
-        "score": 1.8008,
+        "score": 1.7377,
         "evidence": []
       },
       {
         "term": "hybrid algorithm",
-        "score": 1.6328,
-        "evidence": []
-      },
-      {
-        "term": "improving bandits",
-        "score": 1.4177,
+        "score": 1.6598,
         "evidence": []
       },
       {
         "term": "optimal approximation",
-        "score": 1.4147,
+        "score": 1.4145,
         "evidence": []
+      },
+      {
+        "term": "data-driven",
+        "score": 1.398,
+        "evidence": [
+          "heading"
+        ]
       }
     ],
     "sec-024-our-contributions": [
       {
         "term": "worst-case instances",
-        "score": 2.5828,
+        "score": 2.5285,
         "evidence": []
       },
       {
         "term": "imab instances",
-        "score": 2.462,
+        "score": 2.4051,
         "evidence": []
       },
       {
         "term": "data-driven algorithm",
-        "score": 2.0277,
+        "score": 2.0473,
         "evidence": []
       },
       {
         "term": "algorithm design",
-        "score": 1.7194,
+        "score": 1.712,
         "evidence": []
       },
       {
         "term": "parameterized",
-        "score": 1.1175,
+        "score": 1.1212,
         "evidence": []
       },
       {
         "term": "prior work",
-        "score": 1.0817,
+        "score": 1.0577,
         "evidence": []
       },
       {
         "term": "hybrid approach",
-        "score": 1.0479,
+        "score": 1.0478,
         "evidence": []
       },
       {
         "term": "parameter",
-        "score": 0.9701,
+        "score": 0.9771,
         "evidence": []
       }
     ],
     "sec-025-data-driven-algorithm-design-perspective": [
       {
         "term": "data-driven algorithm",
-        "score": 3.4013,
+        "score": 3.4445,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "algorithm design",
-        "score": 2.81,
+        "score": 2.8242,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "future hyperparameter",
-        "score": 1.8885,
-        "evidence": []
-      },
-      {
         "term": "hyperparameter tuning",
-        "score": 1.8774,
+        "score": 1.8871,
         "evidence": []
       },
       {
-        "term": "hyperparameter transfer",
-        "score": 1.8654,
-        "evidence": []
-      },
-      {
-        "term": "hyperparameter selection",
-        "score": 1.8619,
+        "term": "future hyperparameter",
+        "score": 1.8777,
         "evidence": []
       },
       {
         "term": "loss function",
-        "score": 1.8568,
+        "score": 1.8722,
+        "evidence": []
+      },
+      {
+        "term": "hyperparameter transfer",
+        "score": 1.8629,
+        "evidence": []
+      },
+      {
+        "term": "hyperparameter selection",
+        "score": 1.8553,
         "evidence": []
       },
       {
         "term": "future instances",
-        "score": 1.6545,
+        "score": 1.5911,
         "evidence": []
       }
     ],
     "sec-026-using-strength-of-concavity": [
       {
         "term": "concavity",
-        "score": 0.9248,
+        "score": 0.9283,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "instances",
-        "score": 0.8883,
+        "score": 0.8482,
         "evidence": []
       },
       {
         "term": "guarantees",
-        "score": 0.7372,
+        "score": 0.7421,
         "evidence": []
       },
       {
         "term": "worst-case",
-        "score": 0.6553,
+        "score": 0.6586,
         "evidence": []
       },
       {
         "term": "distribution",
-        "score": 0.6161,
+        "score": 0.6113,
         "evidence": []
       },
       {
         "term": "satisfy",
-        "score": 0.6049,
+        "score": 0.6086,
         "evidence": []
       }
     ],
     "sec-027-algorithm-family": [
       {
-        "term": "final pull",
-        "score": 1.1931,
-        "evidence": []
-      },
-      {
         "term": "algorithm",
-        "score": 1.1855,
+        "score": 1.2163,
         "evidence": [
           "heading"
         ]
       },
       {
+        "term": "final pull",
+        "score": 1.1989,
+        "evidence": []
+      },
+      {
         "term": "internal horizon",
-        "score": 1.1827,
+        "score": 1.1829,
         "evidence": []
       },
       {
         "term": "ptrrα",
-        "score": 1.089,
+        "score": 1.0928,
         "evidence": []
       }
     ],
     "sec-028-sharper-competitive-ratio": [
       {
         "term": "competitive ratio",
-        "score": 3.02,
+        "score": 3.0185,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "arm satisfies",
-        "score": 2.9884,
+        "score": 3.0044,
         "evidence": []
       },
       {
         "term": "arm now",
-        "score": 2.4128,
+        "score": 2.4301,
         "evidence": []
       },
       {
         "term": "concavity envelope",
-        "score": 2.3779,
+        "score": 2.3855,
         "evidence": []
       },
       {
         "term": "envelope exponent",
-        "score": 2.3697,
+        "score": 2.3687,
         "evidence": []
       },
       {
         "term": "every arm",
-        "score": 2.3519,
+        "score": 2.3597,
         "evidence": []
       },
       {
         "term": "threshold arm",
-        "score": 2.2876,
+        "score": 2.2987,
         "evidence": []
       },
       {
         "term": "lower bound",
-        "score": 1.8194,
+        "score": 1.9563,
         "evidence": []
       }
     ],
     "sec-029-sample-complexity-of-learning-the-curvature-para": [
       {
         "term": "sample complexity",
-        "score": 3.5284,
+        "score": 3.3872,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "empirical loss",
-        "score": 2.0226,
-        "evidence": []
-      },
-      {
         "term": "multi-armed bandits",
-        "score": 2.018,
+        "score": 2.0295,
         "evidence": []
       },
       {
-        "term": "dual complexity",
-        "score": 1.9785,
+        "term": "empirical loss",
+        "score": 2.0099,
         "evidence": []
       },
       {
         "term": "loss function",
-        "score": 1.8991,
+        "score": 1.914,
+        "evidence": []
+      },
+      {
+        "term": "dual complexity",
+        "score": 1.8103,
         "evidence": []
       },
       {
         "term": "derandomized dual",
-        "score": 1.8667,
-        "evidence": []
-      },
-      {
-        "term": "augmented instance",
-        "score": 1.7516,
+        "score": 1.7736,
         "evidence": []
       },
       {
         "term": "bandits problem",
-        "score": 1.7206,
+        "score": 1.7229,
+        "evidence": []
+      },
+      {
+        "term": "augmented instance",
+        "score": 1.7191,
         "evidence": []
       }
     ],
     "sec-030-empirical-evaluation": [
       {
         "term": "cumulative reward",
-        "score": 2.2284,
+        "score": 2.2322,
         "evidence": []
       },
       {
         "term": "reward curves",
-        "score": 2.2067,
+        "score": 2.2201,
         "evidence": []
       },
       {
         "term": "mean reward",
-        "score": 1.902,
+        "score": 1.9092,
         "evidence": []
       },
       {
         "term": "normalized cumulative",
-        "score": 1.6584,
+        "score": 1.6507,
         "evidence": []
       },
       {
         "term": "lcdb",
-        "score": 1.6376,
+        "score": 1.6399,
         "evidence": []
       },
       {
         "term": "ptrrα",
-        "score": 1.407,
+        "score": 1.412,
         "evidence": []
       },
       {
         "term": "confidence intervals",
-        "score": 1.2622,
+        "score": 1.265,
         "evidence": []
       },
       {
         "term": "erri",
-        "score": 1.1894,
+        "score": 1.1909,
         "evidence": []
       }
     ],
     "sec-031-achieving-best-of-both-worlds-best-arm-identific": [
       {
         "term": "arm identification",
-        "score": 5.1259,
+        "score": 5.1448,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "sub-optimal arm",
-        "score": 3.6632,
+        "score": 3.6781,
         "evidence": []
       },
       {
         "term": "optimal arm",
-        "score": 2.8359,
+        "score": 2.8304,
         "evidence": []
       },
       {
         "term": "arm pulls",
-        "score": 2.6957,
-        "evidence": []
-      },
-      {
-        "term": "worst-case instances",
-        "score": 2.5118,
+        "score": 2.7118,
         "evidence": []
       },
       {
         "term": "arm gets",
-        "score": 2.4925,
+        "score": 2.5021,
+        "evidence": []
+      },
+      {
+        "term": "worst-case instances",
+        "score": 2.4607,
         "evidence": []
       },
       {
         "term": "nice instances",
-        "score": 2.4557,
+        "score": 2.4016,
         "evidence": []
       },
       {
         "term": "reward optimal",
-        "score": 2.0386,
+        "score": 2.0295,
         "evidence": []
       }
     ],
     "sec-032-hybrid-algorithm-family": [
       {
         "term": "terminal upper",
-        "score": 1.6607,
+        "score": 1.6951,
         "evidence": []
       },
       {
         "term": "upper bound",
-        "score": 1.2865,
+        "score": 1.3686,
         "evidence": []
       },
       {
         "term": "lower bound",
-        "score": 1.1882,
+        "score": 1.2772,
         "evidence": []
       },
       {
         "term": "algorithm",
-        "score": 1.1855,
+        "score": 1.2163,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "hybrid",
-        "score": 1.1786,
+        "score": 1.1784,
         "evidence": [
           "heading"
         ]
@@ -1297,369 +1297,369 @@
     "sec-033-best-of-both-worlds-bai-guarantees": [
       {
         "term": "suboptimal arm",
-        "score": 2.6572,
+        "score": 2.6711,
         "evidence": []
       },
       {
         "term": "arm identification",
-        "score": 2.2374,
+        "score": 2.2463,
         "evidence": []
       },
       {
         "term": "clearance condition",
-        "score": 1.7956,
+        "score": 1.8125,
         "evidence": []
       },
       {
         "term": "gap clearance",
-        "score": 1.6399,
+        "score": 1.6278,
         "evidence": []
       },
       {
         "term": "gcc",
-        "score": 1.5772,
+        "score": 1.5788,
         "evidence": []
       },
       {
         "term": "bai",
-        "score": 1.5255,
+        "score": 1.5305,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "benign instances",
-        "score": 1.4422,
+        "score": 1.4095,
         "evidence": []
       },
       {
         "term": "trem",
-        "score": 1.2228,
+        "score": 1.224,
         "evidence": []
       }
     ],
     "sec-034-sample-complexity-for-tuning-curvature-and-switc": [
       {
+        "term": "h-bounded loss",
+        "score": 2.6592,
+        "evidence": []
+      },
+      {
         "term": "sample complexity",
-        "score": 2.7305,
+        "score": 2.6212,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "h-bounded loss",
-        "score": 2.6506,
+        "term": "exact bai",
+        "score": 2.5132,
         "evidence": []
       },
       {
         "term": "bai goal",
-        "score": 2.5409,
-        "evidence": []
-      },
-      {
-        "term": "exact bai",
-        "score": 2.5105,
+        "score": 2.5101,
         "evidence": []
       },
       {
         "term": "approximate bai",
-        "score": 2.4634,
-        "evidence": []
-      },
-      {
-        "term": "instances drawn",
-        "score": 2.0853,
+        "score": 2.4749,
         "evidence": []
       },
       {
         "term": "generic h-bounded",
-        "score": 2.0587,
+        "score": 2.0598,
+        "evidence": []
+      },
+      {
+        "term": "instances drawn",
+        "score": 2.0178,
         "evidence": []
       },
       {
         "term": "attempting exact",
-        "score": 1.8324,
+        "score": 1.8326,
         "evidence": []
       }
     ],
     "sec-035-conclusion": [
       {
         "term": "improving bandits",
-        "score": 1.4177,
+        "score": 1.3978,
         "evidence": []
       },
       {
         "term": "interesting",
-        "score": 0.8797,
+        "score": 0.8731,
         "evidence": []
       },
       {
         "term": "best-of-both-worlds",
-        "score": 0.8234,
+        "score": 0.8254,
         "evidence": []
       },
       {
         "term": "regret",
-        "score": 0.8138,
+        "score": 0.8142,
         "evidence": []
       },
       {
         "term": "concavity",
-        "score": 0.7329,
-        "evidence": []
-      },
-      {
-        "term": "instances",
-        "score": 0.6873,
+        "score": 0.7356,
         "evidence": []
       },
       {
         "term": "worst-case",
-        "score": 0.6553,
+        "score": 0.6586,
         "evidence": []
       },
       {
-        "term": "strength",
-        "score": 0.6481,
+        "term": "instances",
+        "score": 0.6562,
+        "evidence": []
+      },
+      {
+        "term": "benign",
+        "score": 0.6477,
         "evidence": []
       }
     ],
     "sec-036-why-algorithmic-approaches": [
       {
         "term": "algorithmic",
-        "score": 0.9015,
+        "score": 0.9052,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "social",
-        "score": 0.7369,
+        "score": 0.7312,
         "evidence": []
       },
       {
         "term": "laying",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-038-introduction": [
       {
         "term": "years ago",
-        "score": 2.3518,
+        "score": 2.2988,
         "evidence": []
       },
       {
         "term": "theoretical computer",
-        "score": 1.8751,
+        "score": 1.823,
         "evidence": []
       },
       {
         "term": "computer science",
-        "score": 1.8375,
-        "evidence": []
-      },
-      {
-        "term": "social problems",
-        "score": 1.7794,
+        "score": 1.8052,
         "evidence": []
       },
       {
         "term": "tcs",
-        "score": 1.7761,
+        "score": 1.7783,
         "evidence": []
       },
       {
-        "term": "few years",
-        "score": 1.5952,
+        "term": "social problems",
+        "score": 1.7598,
         "evidence": []
       },
       {
         "term": "social world",
-        "score": 1.5406,
+        "score": 1.5305,
+        "evidence": []
+      },
+      {
+        "term": "few years",
+        "score": 1.5289,
         "evidence": []
       },
       {
         "term": "essay",
-        "score": 1.0481,
+        "score": 1.0507,
         "evidence": []
       }
     ],
     "sec-039-taxonomy-of-tcs-based-social-models": [
       {
         "term": "epistemic purposes",
-        "score": 2.0472,
+        "score": 2.0342,
         "evidence": []
       },
       {
         "term": "schelling model",
-        "score": 1.9574,
+        "score": 1.9384,
         "evidence": []
       },
       {
         "term": "real-world phenomenon",
-        "score": 1.8892,
+        "score": 1.8871,
         "evidence": []
       },
       {
         "term": "parker further",
-        "score": 1.7563,
+        "score": 1.6842,
         "evidence": []
       },
       {
         "term": "representational target",
-        "score": 1.5273,
+        "score": 1.5153,
         "evidence": []
       },
       {
         "term": "fidelity criteria",
-        "score": 1.503,
+        "score": 1.4832,
         "evidence": []
       },
       {
         "term": "real world",
-        "score": 1.4934,
+        "score": 1.4784,
         "evidence": []
       },
       {
         "term": "theoretical model",
-        "score": 1.4858,
+        "score": 1.43,
         "evidence": []
       }
     ],
     "sec-040-reproduce-phenomenon": [
       {
         "term": "phenomenon",
-        "score": 2.8115,
+        "score": 2.8233,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "reproduce",
-        "score": 1.7297,
+        "score": 1.7375,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "real world",
-        "score": 1.6408,
+        "score": 1.6241,
         "evidence": []
       },
       {
         "term": "statistical mechanics",
-        "score": 1.3718,
+        "score": 1.371,
         "evidence": []
       },
       {
         "term": "theoretical computer",
-        "score": 1.2749,
+        "score": 1.2327,
         "evidence": []
       },
       {
         "term": "reproduction",
-        "score": 1.0367,
+        "score": 1.0393,
         "evidence": []
       },
       {
         "term": "elgin",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
-        "term": "pretty",
-        "score": 1.0074,
+        "term": "responsive",
+        "score": 1.0081,
         "evidence": []
       }
     ],
     "sec-041-explain-phenomenon": [
       {
         "term": "idealizations",
-        "score": 2.4721,
+        "score": 2.4734,
         "evidence": []
       },
       {
         "term": "posited mechanism",
-        "score": 2.364,
+        "score": 2.3606,
         "evidence": []
       },
       {
         "term": "explain",
-        "score": 2.2638,
+        "score": 2.2211,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "real world",
-        "score": 2.1409,
+        "score": 2.1185,
         "evidence": []
       },
       {
         "term": "phenomenon",
-        "score": 2.0594,
+        "score": 2.068,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "rationality assumption",
-        "score": 2.0075,
+        "score": 2.0085,
         "evidence": []
       },
       {
         "term": "egw",
-        "score": 1.7592,
+        "score": 1.7606,
         "evidence": []
       },
       {
         "term": "weisberg",
-        "score": 1.7167,
+        "score": 1.7194,
         "evidence": []
       }
     ],
     "sec-042-suggest-intervention": [
       {
         "term": "intervention",
-        "score": 3.764,
+        "score": 3.7522,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "change outcomes",
-        "score": 1.8761,
+        "score": 1.8323,
         "evidence": []
       },
       {
         "term": "lexical scoping",
-        "score": 1.8195,
+        "score": 1.8244,
         "evidence": []
       },
       {
         "term": "schelling model",
-        "score": 1.7336,
+        "score": 1.7138,
         "evidence": []
       },
       {
         "term": "causal structure",
-        "score": 1.7326,
-        "evidence": []
-      },
-      {
-        "term": "applied prediction",
-        "score": 1.5318,
+        "score": 1.7134,
         "evidence": []
       },
       {
         "term": "fidelity criterion",
-        "score": 1.5159,
+        "score": 1.5249,
+        "evidence": []
+      },
+      {
+        "term": "applied prediction",
+        "score": 1.5102,
         "evidence": []
       },
       {
         "term": "suggest",
-        "score": 1.4987,
+        "score": 1.4599,
         "evidence": [
           "heading"
         ]
@@ -1668,353 +1668,353 @@
     "sec-043-what-models-can-and-cannot-do": [
       {
         "term": "erm oracle",
-        "score": 2.2264,
-        "evidence": []
-      },
-      {
-        "term": "grey hair",
-        "score": 2.0096,
+        "score": 2.2335,
         "evidence": []
       },
       {
         "term": "theoretical models",
-        "score": 1.9677,
+        "score": 1.913,
+        "evidence": []
+      },
+      {
+        "term": "grey hair",
+        "score": 1.9125,
         "evidence": []
       },
       {
         "term": "encapsulation itself",
-        "score": 1.7128,
+        "score": 1.7143,
         "evidence": []
       },
       {
         "term": "unified theory",
-        "score": 1.6728,
+        "score": 1.5681,
         "evidence": []
       },
       {
         "term": "learning theory",
-        "score": 1.6366,
-        "evidence": []
-      },
-      {
-        "term": "theoretical computer",
-        "score": 1.5046,
+        "score": 1.5385,
         "evidence": []
       },
       {
         "term": "deep learning",
-        "score": 1.4665,
+        "score": 1.4569,
+        "evidence": []
+      },
+      {
+        "term": "theoretical computer",
+        "score": 1.4506,
         "evidence": []
       }
     ],
     "sec-044-on-process": [
       {
         "term": "real world",
-        "score": 1.5624,
+        "score": 1.547,
         "evidence": []
       },
       {
         "term": "social problems",
-        "score": 1.4255,
+        "score": 1.4107,
         "evidence": []
       },
       {
         "term": "theoretical models",
-        "score": 1.2956,
+        "score": 1.2591,
         "evidence": []
       },
       {
         "term": "intervention",
-        "score": 1.1453,
-        "evidence": []
-      },
-      {
-        "term": "transparency",
-        "score": 1.029,
+        "score": 1.1417,
         "evidence": []
       },
       {
         "term": "oracles",
-        "score": 0.977,
+        "score": 0.9779,
+        "evidence": []
+      },
+      {
+        "term": "transparency",
+        "score": 0.9612,
+        "evidence": []
+      },
+      {
+        "term": "scholarship",
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "modules",
-        "score": 0.9763,
-        "evidence": []
-      },
-      {
-        "term": "articulating",
-        "score": 0.9497,
+        "score": 0.942,
         "evidence": []
       }
     ],
     "sec-045-modeling-ambition": [
       {
         "term": "communities out",
-        "score": 2.0819,
+        "score": 2.0741,
         "evidence": []
       },
       {
         "term": "empowering interventions",
-        "score": 1.9699,
+        "score": 1.9759,
         "evidence": []
       },
       {
         "term": "pessimism traps",
-        "score": 1.4365,
-        "evidence": []
-      },
-      {
-        "term": "individuals",
-        "score": 1.15,
+        "score": 1.4422,
         "evidence": []
       },
       {
         "term": "mor",
-        "score": 1.1158,
+        "score": 1.1195,
         "evidence": []
       },
       {
-        "term": "circumstances",
-        "score": 1.093,
+        "term": "individuals",
+        "score": 1.1031,
         "evidence": []
       },
       {
         "term": "chapter",
-        "score": 1.0757,
+        "score": 1.0831,
+        "evidence": []
+      },
+      {
+        "term": "circumstances",
+        "score": 1.0677,
         "evidence": []
       },
       {
         "term": "poverty",
-        "score": 1.0547,
+        "score": 1.0572,
         "evidence": []
       }
     ],
     "sec-046-introduction": [
       {
         "term": "pessimism traps",
-        "score": 2.176,
+        "score": 2.1846,
         "evidence": []
       },
       {
         "term": "play role",
-        "score": 1.2974,
+        "score": 1.2623,
         "evidence": []
       },
       {
         "term": "mor",
-        "score": 1.1158,
+        "score": 1.1195,
         "evidence": []
       },
       {
         "term": "beliefs",
-        "score": 0.9556,
+        "score": 0.9588,
         "evidence": []
       },
       {
         "term": "pessimistic",
-        "score": 0.938,
+        "score": 0.9413,
         "evidence": []
       },
       {
         "term": "marginalized",
-        "score": 0.9157,
+        "score": 0.917,
         "evidence": []
       },
       {
         "term": "formalism",
-        "score": 0.875,
+        "score": 0.8501,
         "evidence": []
       },
       {
         "term": "discrimination",
-        "score": 0.8454,
+        "score": 0.8472,
         "evidence": []
       }
     ],
     "sec-047-our-contributions": [
       {
         "term": "pessimism traps",
-        "score": 2.8639,
+        "score": 2.8752,
         "evidence": []
       },
       {
         "term": "community toward",
-        "score": 2.2916,
+        "score": 2.2837,
         "evidence": []
       },
       {
         "term": "study pessimism",
-        "score": 2.1389,
+        "score": 2.1418,
         "evidence": []
       },
       {
         "term": "optimal action",
-        "score": 1.8749,
-        "evidence": []
-      },
-      {
-        "term": "ambitious action",
-        "score": 1.8122,
+        "score": 1.8598,
         "evidence": []
       },
       {
         "term": "single community",
-        "score": 1.8115,
+        "score": 1.8208,
+        "evidence": []
+      },
+      {
+        "term": "ambitious action",
+        "score": 1.8181,
         "evidence": []
       },
       {
         "term": "communities out",
-        "score": 1.5661,
+        "score": 1.5625,
         "evidence": []
       },
       {
         "term": "subsidy",
-        "score": 1.5435,
+        "score": 1.5492,
         "evidence": []
       }
     ],
     "sec-048-related-work": [
       {
         "term": "pessimism traps",
-        "score": 1.8127,
+        "score": 1.8198,
         "evidence": []
       },
       {
         "term": "nudging",
-        "score": 1.405,
-        "evidence": []
-      },
-      {
-        "term": "behavioral economics",
-        "score": 1.3781,
+        "score": 1.4065,
         "evidence": []
       },
       {
         "term": "information cascade",
-        "score": 1.3658,
+        "score": 1.3687,
+        "evidence": []
+      },
+      {
+        "term": "behavioral economics",
+        "score": 1.3627,
         "evidence": []
       },
       {
         "term": "beliefs",
-        "score": 1.2351,
+        "score": 1.2392,
         "evidence": []
       },
       {
         "term": "individual behavior",
-        "score": 1.1793,
+        "score": 1.1505,
         "evidence": []
       },
       {
         "term": "private information",
-        "score": 1.0223,
+        "score": 1.0256,
         "evidence": []
       },
       {
         "term": "nudges",
-        "score": 0.9617,
+        "score": 0.9627,
         "evidence": []
       }
     ],
     "sec-049-preliminaries-and-basic-model": [
       {
         "term": "single sequence",
-        "score": 1.0019,
+        "score": 0.982,
         "evidence": []
       },
       {
         "term": "parallel",
-        "score": 0.6156,
+        "score": 0.6009,
         "evidence": []
       },
       {
         "term": "flesh",
-        "score": 0.5477,
+        "score": 0.5488,
         "evidence": []
       }
     ],
     "sec-050-single-sequence-model": [
       {
         "term": "private signal",
-        "score": 2.1615,
+        "score": 2.1549,
         "evidence": []
       },
       {
         "term": "random walk",
-        "score": 2.0669,
-        "evidence": []
-      },
-      {
-        "term": "correct action",
-        "score": 1.9918,
+        "score": 2.0718,
         "evidence": []
       },
       {
         "term": "information cascade",
-        "score": 1.9809,
+        "score": 1.986,
+        "evidence": []
+      },
+      {
+        "term": "correct action",
+        "score": 1.9818,
         "evidence": []
       },
       {
         "term": "receives reward",
-        "score": 1.7546,
+        "score": 1.7571,
         "evidence": []
       },
       {
         "term": "agent receives",
-        "score": 1.5613,
+        "score": 1.5682,
         "evidence": []
       },
       {
         "term": "pea",
-        "score": 1.5044,
+        "score": 1.5052,
         "evidence": []
       },
       {
         "term": "expected reward",
-        "score": 1.4186,
+        "score": 1.428,
         "evidence": []
       }
     ],
     "sec-051-on-our-modeling-choices": [
       {
         "term": "pessimism traps",
-        "score": 2.5296,
+        "score": 2.5396,
         "evidence": []
       },
       {
         "term": "ambitious choice",
-        "score": 1.7681,
+        "score": 1.7632,
         "evidence": []
       },
       {
         "term": "ambitious end",
-        "score": 1.5513,
+        "score": 1.5364,
         "evidence": []
       },
       {
         "term": "cascade model",
-        "score": 1.5154,
+        "score": 1.5037,
         "evidence": []
       },
       {
         "term": "information cascade",
-        "score": 1.2673,
-        "evidence": []
-      },
-      {
-        "term": "people like",
-        "score": 1.2239,
+        "score": 1.2703,
         "evidence": []
       },
       {
         "term": "morton",
-        "score": 1.1977,
+        "score": 1.2022,
+        "evidence": []
+      },
+      {
+        "term": "people like",
+        "score": 1.1936,
         "evidence": []
       },
       {
         "term": "modeling",
-        "score": 1.1176,
+        "score": 0.991,
         "evidence": [
           "heading"
         ]
@@ -2023,691 +2023,689 @@
     "sec-052-time-varying-subsidy": [
       {
         "term": "subsidy",
-        "score": 4.0163,
+        "score": 4.031,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "correct cascade",
-        "score": 2.9229,
+        "score": 2.9081,
         "evidence": []
       },
       {
         "term": "incorrect cascade",
-        "score": 2.6722,
+        "score": 2.6606,
         "evidence": []
       },
       {
         "term": "subsidy scheme",
-        "score": 2.5534,
+        "score": 2.5622,
         "evidence": []
       },
       {
         "term": "subsidy value",
-        "score": 2.407,
+        "score": 2.4162,
         "evidence": []
       },
       {
         "term": "correct action",
-        "score": 2.3551,
+        "score": 2.3375,
         "evidence": []
       },
       {
         "term": "chooses action",
-        "score": 1.8871,
+        "score": 1.8831,
         "evidence": []
       },
       {
         "term": "private signals",
-        "score": 1.7856,
+        "score": 1.795,
         "evidence": []
       }
     ],
     "sec-053-extension-to-multiple-groups": [
       {
         "term": "groups",
-        "score": 1.8962,
+        "score": 1.8613,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "respective correct",
-        "score": 1.7133,
+        "score": 1.698,
         "evidence": []
       },
       {
         "term": "government knows",
-        "score": 1.6644,
+        "score": 1.6631,
         "evidence": []
       },
       {
         "term": "correct action",
-        "score": 1.6162,
+        "score": 1.6026,
         "evidence": []
       },
       {
         "term": "random walk",
-        "score": 1.3158,
+        "score": 1.3189,
         "evidence": []
       },
       {
         "term": "subsidy",
-        "score": 1.3044,
+        "score": 1.3092,
         "evidence": []
       },
       {
         "term": "town",
-        "score": 1.2035,
+        "score": 1.2048,
         "evidence": []
       },
       {
         "term": "previous section",
-        "score": 0.9154,
+        "score": 0.8997,
         "evidence": []
       }
     ],
     "sec-054-formally-defining-the-setting": [
       {
         "term": "probability mass",
-        "score": 1.7379,
+        "score": 1.745,
         "evidence": []
       },
       {
         "term": "private signal",
-        "score": 1.3898,
+        "score": 1.385,
         "evidence": []
       },
       {
         "term": "subsidy",
-        "score": 1.3044,
+        "score": 1.3092,
         "evidence": []
       },
       {
         "term": "correct action",
-        "score": 1.2432,
+        "score": 1.2345,
         "evidence": []
       },
       {
         "term": "group",
-        "score": 1.1647,
+        "score": 1.1286,
         "evidence": []
       },
       {
         "term": "history",
-        "score": 0.7894,
+        "score": 0.7841,
         "evidence": []
       },
       {
         "term": "draws",
-        "score": 0.7161,
+        "score": 0.7189,
         "evidence": []
       }
     ],
     "sec-055-main-result": [
       {
         "term": "random walk",
-        "score": 2.9125,
+        "score": 2.9194,
         "evidence": []
       },
       {
         "term": "gmin log",
-        "score": 2.7582,
+        "score": 2.7101,
         "evidence": []
       },
       {
         "term": "failure probability",
-        "score": 2.1014,
+        "score": 2.1119,
         "evidence": []
       },
       {
         "term": "pmin",
-        "score": 1.9518,
+        "score": 1.9528,
         "evidence": []
       },
       {
         "term": "union bound",
-        "score": 1.666,
+        "score": 1.7184,
         "evidence": []
       },
       {
         "term": "correct action",
-        "score": 1.5944,
+        "score": 1.5797,
         "evidence": []
       },
       {
         "term": "steps scales",
-        "score": 1.5697,
+        "score": 1.5496,
         "evidence": []
       },
       {
         "term": "correct direction",
-        "score": 1.5505,
+        "score": 1.52,
         "evidence": []
       }
     ],
     "sec-056-experiments": [
       {
         "term": "financial supplements",
-        "score": 1.4353,
+        "score": 1.441,
         "evidence": []
       },
       {
         "term": "experiments",
-        "score": 0.6129,
+        "score": 0.6152,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "overcoming",
-        "score": 0.5312,
+        "score": 0.5324,
         "evidence": []
       }
     ],
     "sec-057-data-generation-and-procedure": [
       {
         "term": "agents",
-        "score": 0.6415,
+        "score": 0.6479,
         "evidence": []
       },
       {
         "term": "sequen",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "population",
-        "score": 0.6187,
+        "score": 0.6223,
         "evidence": []
       }
     ],
     "sec-058-results": [
       {
         "term": "financial supplement",
-        "score": 3.3795,
+        "score": 3.3883,
         "evidence": []
       },
       {
         "term": "subsidy progression",
-        "score": 2.5712,
+        "score": 2.5786,
         "evidence": []
       },
       {
         "term": "correct cascades",
-        "score": 2.1969,
+        "score": 2.1859,
         "evidence": []
       },
       {
         "term": "average subsidy",
-        "score": 2.0291,
+        "score": 2.0352,
         "evidence": []
       },
       {
         "term": "signal strengths",
-        "score": 1.8162,
+        "score": 1.7969,
         "evidence": []
       },
       {
         "term": "few agents",
-        "score": 1.6419,
+        "score": 1.6423,
         "evidence": []
       },
       {
         "term": "finding correct",
-        "score": 1.5021,
+        "score": 1.4671,
         "evidence": []
       },
       {
         "term": "error bars",
-        "score": 1.1719,
+        "score": 1.1656,
         "evidence": []
       }
     ],
     "sec-059-discussion-and-implications": [
       {
         "term": "financial supplements",
-        "score": 1.5884,
+        "score": 1.5951,
         "evidence": []
       },
       {
         "term": "subsidies",
-        "score": 1.0611,
+        "score": 1.0636,
         "evidence": []
       },
       {
         "term": "interventions",
-        "score": 0.6405,
+        "score": 0.6439,
         "evidence": []
       },
       {
         "term": "efit",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-060-discussion-and-conclusion": [
       {
         "term": "pessimism traps",
-        "score": 2.2245,
+        "score": 2.2333,
         "evidence": []
       },
       {
         "term": "centralized agency",
-        "score": 1.4817,
+        "score": 1.4871,
         "evidence": []
       },
       {
         "term": "theoretical model",
-        "score": 0.995,
+        "score": 0.9554,
         "evidence": []
       },
       {
         "term": "communities",
-        "score": 0.9031,
+        "score": 0.9067,
         "evidence": []
       },
       {
         "term": "intervention",
-        "score": 0.8861,
+        "score": 0.8833,
         "evidence": []
       },
       {
         "term": "intervene",
-        "score": 0.875,
+        "score": 0.8767,
         "evidence": []
       },
       {
         "term": "shift",
-        "score": 0.8728,
+        "score": 0.8675,
         "evidence": []
       },
       {
         "term": "interesting",
-        "score": 0.7578,
+        "score": 0.7521,
         "evidence": []
       }
     ],
     "sec-062-introduction": [
       {
         "term": "long-term ends",
-        "score": 1.9628,
+        "score": 1.9113,
         "evidence": []
       },
       {
         "term": "grit",
-        "score": 1.7737,
+        "score": 1.7812,
         "evidence": []
       },
       {
         "term": "ambitious",
-        "score": 1.0853,
+        "score": 1.0892,
         "evidence": []
       },
       {
         "term": "resilience",
-        "score": 1.0171,
+        "score": 1.0198,
         "evidence": []
       },
       {
         "term": "disadvantaged",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "tolerate",
-        "score": 0.9993,
-        "evidence": []
-      },
-      {
-        "term": "external support",
-        "score": 0.9973,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "optimism",
-        "score": 0.9876,
+        "score": 0.9905,
+        "evidence": []
+      },
+      {
+        "term": "external support",
+        "score": 0.9671,
         "evidence": []
       }
     ],
     "sec-063-our-approach-to-studying-grit": [
       {
         "term": "grit",
-        "score": 2.2925,
+        "score": 2.3021,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "study agents",
-        "score": 1.2856,
+        "score": 1.2888,
         "evidence": []
       },
       {
         "term": "formal models",
-        "score": 1.2231,
+        "score": 1.2088,
         "evidence": []
       },
       {
         "term": "rationality",
-        "score": 1.121,
+        "score": 1.1246,
         "evidence": []
       },
       {
         "term": "stick",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "ratio",
-        "score": 0.6688,
+        "score": 0.6684,
         "evidence": []
       },
       {
         "term": "impact",
-        "score": 0.5937,
+        "score": 0.5615,
         "evidence": []
       }
     ],
     "sec-064-our-contributions": [
       {
         "term": "grit",
-        "score": 1.534,
+        "score": 1.5404,
         "evidence": []
       },
       {
         "term": "multiplicative regret",
-        "score": 1.3698,
+        "score": 1.3729,
         "evidence": []
       },
       {
         "term": "rationality",
-        "score": 1.121,
+        "score": 1.1246,
         "evidence": []
       },
       {
         "term": "notions",
-        "score": 1.0298,
+        "score": 1.0104,
         "evidence": []
       },
       {
         "term": "tolerate",
-        "score": 0.9993,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "financial support",
-        "score": 0.9746,
+        "score": 0.9573,
         "evidence": []
       },
       {
         "term": "discomfort",
-        "score": 0.8504,
+        "score": 0.8522,
         "evidence": []
       },
       {
         "term": "gritty",
-        "score": 0.7865,
+        "score": 0.7888,
         "evidence": []
       }
     ],
     "sec-065-related-work": [
       {
         "term": "evidential threshold",
-        "score": 2.2483,
+        "score": 2.2205,
         "evidence": []
       },
       {
         "term": "martin seligman",
-        "score": 1.643,
+        "score": 1.6471,
         "evidence": []
       },
       {
         "term": "gritty agent",
-        "score": 1.5634,
+        "score": 1.5755,
         "evidence": []
       },
       {
         "term": "grit",
-        "score": 1.4056,
+        "score": 1.4115,
+        "evidence": []
+      },
+      {
+        "term": "morton",
+        "score": 1.3056,
         "evidence": []
       },
       {
         "term": "computer science",
-        "score": 1.3228,
+        "score": 1.2981,
         "evidence": []
       },
       {
         "term": "work",
-        "score": 1.3044,
+        "score": 1.2669,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "morton",
-        "score": 1.3008,
-        "evidence": []
-      },
-      {
         "term": "paul",
-        "score": 1.2671,
+        "score": 1.2617,
         "evidence": []
       }
     ],
     "sec-066-formal-setting-improving-mab": [
       {
         "term": "two-armed bandit",
-        "score": 1.7294,
+        "score": 1.735,
         "evidence": []
       },
       {
         "term": "paying off",
-        "score": 1.5556,
+        "score": 1.5579,
         "evidence": []
       },
       {
-        "term": "improving",
-        "score": 1.2686,
-        "evidence": [
-          "heading"
-        ]
+        "term": "multi-armed bandits",
+        "score": 1.2548,
+        "evidence": []
       },
       {
         "term": "improving multi-armed",
-        "score": 1.2612,
+        "score": 1.2404,
         "evidence": []
       },
       {
         "term": "arm",
-        "score": 1.103,
+        "score": 1.1103,
         "evidence": []
       },
       {
         "term": "played",
-        "score": 1.0399,
+        "score": 1.0442,
+        "evidence": []
+      },
+      {
+        "term": "option",
+        "score": 0.7872,
         "evidence": []
       },
       {
         "term": "reward",
-        "score": 0.7625,
-        "evidence": []
-      },
-      {
-        "term": "options",
-        "score": 0.7466,
+        "score": 0.7689,
         "evidence": []
       }
     ],
     "sec-068-rationality-in-this-model": [
       {
         "term": "competitive ratio",
-        "score": 2.1583,
-        "evidence": []
-      },
-      {
-        "term": "evidential threshold",
-        "score": 1.9728,
+        "score": 2.1572,
         "evidence": []
       },
       {
         "term": "striving arm",
-        "score": 1.9518,
+        "score": 1.9621,
+        "evidence": []
+      },
+      {
+        "term": "evidential threshold",
+        "score": 1.9488,
         "evidence": []
       },
       {
         "term": "optimal reward",
-        "score": 1.8797,
+        "score": 1.8789,
         "evidence": []
       },
       {
         "term": "switch point",
-        "score": 1.7325,
+        "score": 1.7304,
         "evidence": []
       },
       {
         "term": "stable arm",
-        "score": 1.5821,
+        "score": 1.5903,
         "evidence": []
       },
       {
         "term": "plays",
-        "score": 1.0612,
+        "score": 1.0482,
         "evidence": []
       },
       {
         "term": "playing",
-        "score": 0.9705,
+        "score": 0.9753,
         "evidence": []
       }
     ],
     "sec-069-modelling-grit-optimism": [
       {
         "term": "striving arm",
-        "score": 2.8501,
+        "score": 2.8651,
         "evidence": []
       },
       {
         "term": "grit",
-        "score": 2.8113,
+        "score": 2.8231,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "stable arm",
-        "score": 2.3676,
+        "score": 2.3796,
         "evidence": []
       },
       {
         "term": "less reward",
-        "score": 2.1923,
+        "score": 2.1964,
         "evidence": []
       },
       {
         "term": "arm starts",
-        "score": 2.0769,
+        "score": 2.0761,
         "evidence": []
       },
       {
         "term": "agent switches",
-        "score": 1.9297,
+        "score": 1.9372,
         "evidence": []
       },
       {
         "term": "different beliefs",
-        "score": 1.7039,
+        "score": 1.6735,
         "evidence": []
       },
       {
         "term": "gritty",
-        "score": 1.5729,
+        "score": 1.5776,
         "evidence": []
       }
     ],
     "sec-070-modelling-grit-discomfort-tolerance": [
       {
         "term": "striving arm",
-        "score": 2.7793,
+        "score": 2.7938,
         "evidence": []
       },
       {
         "term": "stable arm",
-        "score": 2.2967,
+        "score": 2.3083,
         "evidence": []
       },
       {
         "term": "competitive ratio",
-        "score": 1.951,
+        "score": 1.95,
         "evidence": []
       },
       {
         "term": "time spent",
-        "score": 1.9309,
+        "score": 1.9017,
         "evidence": []
       },
       {
         "term": "spent exploring",
-        "score": 1.764,
+        "score": 1.7266,
         "evidence": []
       },
       {
         "term": "net reward",
-        "score": 1.6849,
+        "score": 1.6911,
         "evidence": []
       },
       {
         "term": "average reward",
-        "score": 1.6017,
+        "score": 1.6114,
         "evidence": []
       },
       {
         "term": "time followed",
-        "score": 1.5174,
+        "score": 1.4661,
         "evidence": []
       }
     ],
     "sec-071-financial-support": [
       {
         "term": "comfort",
-        "score": 0.8804,
+        "score": 0.8821,
         "evidence": []
       },
       {
         "term": "financial",
-        "score": 0.7381,
+        "score": 0.7429,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "rent",
-        "score": 0.667,
+        "score": 0.6672,
         "evidence": []
       },
       {
         "term": "buy",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       }
     ],
     "sec-072-no-safety-net": [
       {
         "term": "competitive ratio",
-        "score": 1.3007,
+        "score": 1.3,
         "evidence": []
       },
       {
         "term": "net",
-        "score": 0.8125,
+        "score": 0.8094,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "safety",
-        "score": 0.7564,
+        "score": 0.7611,
         "evidence": [
           "heading"
         ]
@@ -2716,571 +2714,569 @@
     "sec-073-free-reimbursement": [
       {
         "term": "striving arm",
-        "score": 1.803,
+        "score": 1.8119,
         "evidence": []
       },
       {
         "term": "safety net",
-        "score": 1.6996,
-        "evidence": []
-      },
-      {
-        "term": "financial support",
-        "score": 1.5174,
+        "score": 1.7008,
         "evidence": []
       },
       {
         "term": "discomfort tolerance",
-        "score": 1.508,
+        "score": 1.5132,
+        "evidence": []
+      },
+      {
+        "term": "financial support",
+        "score": 1.48,
         "evidence": []
       },
       {
         "term": "benefactor",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "gets",
-        "score": 0.9582,
+        "score": 0.9545,
         "evidence": []
       },
       {
         "term": "agent",
-        "score": 0.792,
+        "score": 0.8046,
         "evidence": []
       }
     ],
     "sec-074-which-wins-trust-fund-or-grit": [
       {
         "term": "trust fund",
-        "score": 4.1611,
+        "score": 4.1262,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "grit",
-        "score": 2.2925,
+        "score": 2.3021,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "increased grit",
-        "score": 1.9906,
+        "score": 1.9747,
         "evidence": []
       },
       {
         "term": "safety net",
-        "score": 1.8214,
+        "score": 1.8233,
         "evidence": []
       },
       {
         "term": "same grit",
-        "score": 1.4954,
+        "score": 1.4966,
         "evidence": []
       },
       {
         "term": "stable reward",
-        "score": 1.4565,
+        "score": 1.4645,
         "evidence": []
       },
       {
         "term": "net allows",
-        "score": 1.3328,
+        "score": 1.3322,
         "evidence": []
       },
       {
         "term": "exploration time",
-        "score": 1.3098,
+        "score": 1.2586,
         "evidence": []
       }
     ],
     "sec-075-setting": [
       {
         "term": "doesn pay",
-        "score": 1.5428,
+        "score": 1.5477,
         "evidence": []
       },
       {
         "term": "pay off",
-        "score": 1.3219,
+        "score": 1.3248,
         "evidence": []
       },
       {
         "term": "risk doesn",
-        "score": 1.2971,
+        "score": 1.2991,
         "evidence": []
       },
       {
         "term": "grittier",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       }
     ],
     "sec-077-rationality-in-this-model": [
       {
         "term": "reward accrued",
-        "score": 3.0769,
+        "score": 3.0912,
         "evidence": []
       },
       {
         "term": "striving arm",
-        "score": 2.8159,
+        "score": 2.8306,
         "evidence": []
       },
       {
         "term": "total reward",
-        "score": 2.2546,
+        "score": 2.2539,
         "evidence": []
       },
       {
         "term": "expected reward",
-        "score": 2.1493,
+        "score": 2.1632,
         "evidence": []
       },
       {
         "term": "stable arm",
-        "score": 2.1304,
+        "score": 2.1416,
         "evidence": []
       },
       {
         "term": "get reward",
-        "score": 2.0707,
-        "evidence": []
-      },
-      {
-        "term": "correct total",
-        "score": 1.5883,
+        "score": 2.0805,
         "evidence": []
       },
       {
         "term": "uncertainty tolerance",
-        "score": 1.5818,
+        "score": 1.5902,
+        "evidence": []
+      },
+      {
+        "term": "correct total",
+        "score": 1.562,
         "evidence": []
       }
     ],
     "sec-078-results-for-modelling-grit-as-uncertainty-tolera": [
       {
         "term": "uncertainty tolerance",
-        "score": 2.577,
+        "score": 2.5905,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "impartial observer",
-        "score": 2.3117,
+        "score": 2.316,
         "evidence": []
       },
       {
         "term": "gritty agent",
-        "score": 1.6927,
+        "score": 1.7068,
         "evidence": []
       },
       {
         "term": "pay off",
-        "score": 1.5981,
+        "score": 1.6011,
         "evidence": []
       },
       {
         "term": "striving arm",
-        "score": 1.5825,
+        "score": 1.5909,
         "evidence": []
       },
       {
         "term": "gaussian prior",
-        "score": 1.3005,
+        "score": 1.292,
         "evidence": []
       },
       {
         "term": "stable reward",
-        "score": 1.2144,
+        "score": 1.2205,
         "evidence": []
       },
       {
         "term": "latitude",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       }
     ],
     "sec-079-discussion-of-modelling-choices": [
       {
         "term": "modelling",
-        "score": 1.6113,
+        "score": 1.3667,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bandit instance",
-        "score": 1.373,
+        "score": 1.3467,
         "evidence": []
       },
       {
         "term": "grit",
-        "score": 1.2449,
+        "score": 1.2501,
         "evidence": []
       },
       {
         "term": "grants",
-        "score": 1.0446,
+        "score": 1.0471,
         "evidence": []
       },
       {
         "term": "entrepreneurs",
-        "score": 0.9993,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "two-armed",
-        "score": 0.9081,
+        "score": 0.9095,
         "evidence": []
       },
       {
         "term": "profits",
-        "score": 0.8752,
+        "score": 0.8519,
         "evidence": []
       },
       {
         "term": "notions",
-        "score": 0.8161,
+        "score": 0.8008,
         "evidence": []
       }
     ],
     "sec-080-conclusion": [
       {
         "term": "grit",
-        "score": 0.8869,
-        "evidence": []
-      },
-      {
-        "term": "quantitative",
-        "score": 0.6107,
+        "score": 0.8906,
         "evidence": []
       },
       {
         "term": "engages",
-        "score": 0.5938,
+        "score": 0.5946,
+        "evidence": []
+      },
+      {
+        "term": "quantitative",
+        "score": 0.5933,
         "evidence": []
       }
     ],
     "sec-081-discussion-in-relation-to-pessimsim-traps": [
       {
         "term": "she discusses",
-        "score": 1.6085,
+        "score": 1.5077,
         "evidence": []
       },
       {
         "term": "mor",
-        "score": 1.1158,
+        "score": 1.1195,
         "evidence": []
       },
       {
         "term": "ambition",
-        "score": 1.02,
+        "score": 1.0227,
         "evidence": []
       },
       {
         "term": "morton",
-        "score": 0.9267,
+        "score": 0.9301,
         "evidence": []
       },
       {
         "term": "traps",
-        "score": 0.9127,
+        "score": 0.9162,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "investment",
-        "score": 0.7743,
+        "score": 0.7767,
         "evidence": []
       },
       {
         "term": "rational",
-        "score": 0.7556,
+        "score": 0.7483,
         "evidence": []
       },
       {
         "term": "evidence",
-        "score": 0.6576,
+        "score": 0.6466,
         "evidence": []
       }
     ],
     "sec-082-conclusion": [
       {
         "term": "thesis",
-        "score": 1.1724,
+        "score": 1.1694,
         "evidence": []
       },
       {
         "term": "conclusion",
-        "score": 0.8721,
+        "score": 0.8106,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "theoretical",
-        "score": 0.6777,
+        "term": "synthesize",
+        "score": 0.6427,
         "evidence": []
       },
       {
-        "term": "synthesize",
-        "score": 0.6423,
+        "term": "theoretical",
+        "score": 0.6427,
         "evidence": []
       }
     ],
     "sec-083-interplay-between-sequential-and-social-decision": [
       {
-        "term": "decision-making",
-        "score": 1.5865,
-        "evidence": [
-          "heading"
-        ]
-      },
-      {
         "term": "decision-making heuristic",
-        "score": 1.5664,
+        "score": 1.5462,
         "evidence": []
       },
       {
         "term": "affected outcomes",
-        "score": 1.39,
+        "score": 1.3578,
         "evidence": []
       },
       {
         "term": "bayesian updates",
-        "score": 1.2496,
+        "score": 1.251,
         "evidence": []
       },
       {
         "term": "social",
-        "score": 1.0061,
+        "score": 0.9983,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "studied",
-        "score": 0.9374,
+        "score": 0.9136,
         "evidence": []
       },
       {
         "term": "sequential",
-        "score": 0.8501,
+        "score": 0.8467,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "chapter",
-        "score": 0.7171,
+        "score": 0.7221,
+        "evidence": []
+      },
+      {
+        "term": "grit",
+        "score": 0.7058,
         "evidence": []
       }
     ],
     "sec-084-general-vs-specific": [
       {
         "term": "thesis",
-        "score": 1.1724,
+        "score": 1.1694,
         "evidence": []
       },
       {
         "term": "complexity",
-        "score": 1.0791,
+        "score": 1.0011,
+        "evidence": []
+      },
+      {
+        "term": "lose",
+        "score": 0.9716,
         "evidence": []
       },
       {
         "term": "general",
-        "score": 0.9896,
+        "score": 0.9648,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "lose",
-        "score": 0.9684,
-        "evidence": []
-      },
-      {
         "term": "chapter",
-        "score": 0.8325,
+        "score": 0.8383,
         "evidence": []
       },
       {
         "term": "imab",
-        "score": 0.7642,
-        "evidence": []
-      },
-      {
-        "term": "options",
-        "score": 0.7466,
+        "score": 0.7667,
         "evidence": []
       },
       {
         "term": "going",
-        "score": 0.7369,
+        "score": 0.7294,
+        "evidence": []
+      },
+      {
+        "term": "options",
+        "score": 0.7104,
         "evidence": []
       }
     ],
     "sec-085-open-problems-and-future-directions": [
       {
         "term": "open",
-        "score": 0.8122,
+        "score": 0.8109,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "plenty",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "prospects",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-086-concrete-technical-questions": [
       {
         "term": "opinion dynamics",
-        "score": 1.3872,
+        "score": 1.3725,
         "evidence": []
       },
       {
         "term": "beyond-worst case",
-        "score": 1.3529,
+        "score": 1.3641,
         "evidence": []
       },
       {
         "term": "additional advice",
-        "score": 1.0893,
+        "score": 1.0892,
         "evidence": []
       },
       {
         "term": "interesting",
-        "score": 0.7578,
+        "score": 0.7521,
         "evidence": []
       },
       {
         "term": "intervention",
-        "score": 0.7022,
+        "score": 0.7,
         "evidence": []
       },
       {
         "term": "sequential",
-        "score": 0.6737,
+        "score": 0.671,
         "evidence": []
       },
       {
-        "term": "problems",
-        "score": 0.605,
+        "term": "arms",
+        "score": 0.6075,
         "evidence": []
       }
     ],
     "sec-087-broad-future-directions": [
       {
         "term": "theoretical models",
-        "score": 1.2978,
+        "score": 1.2559,
         "evidence": []
       },
       {
         "term": "instantiated",
-        "score": 0.8255,
+        "score": 0.8276,
         "evidence": []
       },
       {
         "term": "framework",
-        "score": 0.7413,
+        "score": 0.7507,
         "evidence": []
       },
       {
         "term": "broad",
-        "score": 0.714,
+        "score": 0.7069,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "problems",
-        "score": 0.7024,
+        "term": "study",
+        "score": 0.696,
         "evidence": []
       },
       {
-        "term": "study",
-        "score": 0.6994,
+        "term": "problems",
+        "score": 0.6927,
         "evidence": []
       }
     ],
     "sec-088-parting-thoughts": [
       {
         "term": "aaai press",
-        "score": 3.7456,
+        "score": 3.7025,
         "evidence": []
       },
       {
         "term": "dravyansh sharma",
-        "score": 3.3834,
+        "score": 3.3892,
         "evidence": []
       },
       {
         "term": "avrim blum",
-        "score": 3.3642,
+        "score": 3.3681,
         "evidence": []
       },
       {
         "term": "university press",
-        "score": 3.3192,
+        "score": 3.1978,
         "evidence": []
       },
       {
         "term": "international conference",
-        "score": 3.2239,
+        "score": 3.1756,
         "evidence": []
       },
       {
         "term": "artificial intelligence",
-        "score": 3.092,
+        "score": 3.0594,
         "evidence": []
       },
       {
         "term": "kavya ravichandran",
-        "score": 2.9517,
+        "score": 2.9537,
         "evidence": []
       },
       {
         "term": "annual conference",
-        "score": 2.9166,
+        "score": 2.8591,
         "evidence": []
       }
     ],
     "sec-089-proof-of-lemma-344": [
       {
         "term": "optt",
-        "score": 1.4325,
+        "score": 1.4363,
         "evidence": []
       },
       {
         "term": "reward achieved",
-        "score": 1.2159,
+        "score": 1.2161,
         "evidence": []
       },
       {
         "term": "maxi",
-        "score": 0.917,
+        "score": 0.9205,
         "evidence": []
       },
       {
         "term": "algt",
-        "score": 0.8306,
+        "score": 0.8326,
         "evidence": []
       },
       {
         "term": "lemma",
-        "score": 0.7828,
+        "score": 0.7873,
         "evidence": [
           "heading"
         ]
@@ -3289,19 +3285,19 @@
     "sec-090-maximum-reward-objective": [
       {
         "term": "maximize",
-        "score": 0.6762,
+        "score": 0.6725,
         "evidence": []
       },
       {
         "term": "reward",
-        "score": 0.6568,
+        "score": 0.6623,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "maximum",
-        "score": 0.6339,
+        "score": 0.6321,
         "evidence": [
           "heading"
         ]
@@ -3310,103 +3306,103 @@
     "sec-092-lower-bound": [
       {
         "term": "maximum pull",
-        "score": 2.2114,
+        "score": 2.2159,
         "evidence": []
       },
       {
         "term": "pull achievable",
-        "score": 1.9532,
+        "score": 1.9632,
         "evidence": []
       },
       {
         "term": "maximum reward",
-        "score": 1.9266,
+        "score": 1.9314,
         "evidence": []
       },
       {
         "term": "translating theorem",
-        "score": 1.7168,
+        "score": 1.71,
         "evidence": []
       },
       {
         "term": "diminishing returns",
-        "score": 1.3137,
+        "score": 1.3166,
         "evidence": []
       },
       {
         "term": "divide both",
-        "score": 1.1529,
+        "score": 1.1125,
         "evidence": []
       },
       {
         "term": "both sides",
-        "score": 1.0838,
+        "score": 1.0828,
         "evidence": []
       },
       {
-        "term": "competitive ratio",
-        "score": 1.0307,
+        "term": "alg",
+        "score": 1.0328,
         "evidence": []
       }
     ],
     "sec-094-extension-of-algorithm-1": [
       {
         "term": "optt min",
-        "score": 2.6406,
+        "score": 2.6428,
         "evidence": []
       },
       {
         "term": "hat problem",
-        "score": 2.2685,
+        "score": 2.2643,
         "evidence": []
       },
       {
         "term": "total reward",
-        "score": 1.6358,
-        "evidence": []
-      },
-      {
-        "term": "arm",
-        "score": 1.4707,
+        "score": 1.6384,
         "evidence": []
       },
       {
         "term": "lower bound",
-        "score": 1.4141,
+        "score": 1.5206,
+        "evidence": []
+      },
+      {
+        "term": "arm",
+        "score": 1.4804,
         "evidence": []
       },
       {
         "term": "original problem",
-        "score": 1.3649,
+        "score": 1.3582,
         "evidence": []
       },
       {
         "term": "algorithm",
-        "score": 1.3198,
+        "score": 1.3541,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "hand side",
-        "score": 1.1322,
+        "score": 1.1019,
         "evidence": []
       }
     ],
     "sec-095-extension-of-algorithm-2": [
       {
         "term": "ˆmu",
-        "score": 1.464,
+        "score": 1.465,
         "evidence": []
       },
       {
         "term": "ˆml",
-        "score": 1.2628,
+        "score": 1.2638,
         "evidence": []
       },
       {
         "term": "algorithm",
-        "score": 0.8093,
+        "score": 0.8303,
         "evidence": [
           "heading"
         ]
@@ -3415,239 +3411,239 @@
     "sec-096-additional-related-work": [
       {
         "term": "regret",
-        "score": 0.6449,
+        "score": 0.6452,
         "evidence": []
       },
       {
         "term": "sub-linear",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "bandits",
-        "score": 0.6208,
+        "score": 0.6244,
         "evidence": []
       }
     ],
     "sec-097-upper-bound": [
       {
         "term": "tune hyperparameters",
-        "score": 1.7618,
+        "score": 1.7672,
         "evidence": []
       },
       {
         "term": "policy regret",
-        "score": 1.7581,
+        "score": 1.7617,
         "evidence": []
       },
       {
         "term": "bandit algorithms",
-        "score": 1.5138,
+        "score": 1.5377,
         "evidence": []
       },
       {
         "term": "data-driven algorithm",
-        "score": 1.296,
+        "score": 1.3071,
         "evidence": []
       },
       {
         "term": "algorithm design",
-        "score": 1.1071,
+        "score": 1.0988,
         "evidence": []
       },
       {
         "term": "machine learning",
-        "score": 1.0815,
+        "score": 1.0699,
         "evidence": []
       },
       {
         "term": "line",
-        "score": 0.6955,
+        "score": 0.6797,
         "evidence": []
       },
       {
         "term": "paradigm",
-        "score": 0.6523,
+        "score": 0.6556,
         "evidence": []
       }
     ],
     "sec-098-full-proofs-for-sharper-competitive-ratio": [
       {
         "term": "non-optimal arm",
-        "score": 2.1292,
+        "score": 2.1386,
         "evidence": []
       },
       {
         "term": "value recurrence",
-        "score": 2.0802,
+        "score": 2.085,
         "evidence": []
       },
       {
         "term": "optimal arm",
-        "score": 2.0348,
+        "score": 2.0285,
         "evidence": []
       },
       {
         "term": "concavity envelope",
-        "score": 1.742,
+        "score": 1.7475,
         "evidence": []
       },
       {
         "term": "balancing inequality",
-        "score": 1.7385,
+        "score": 1.7462,
         "evidence": []
       },
       {
         "term": "envelope exponent",
-        "score": 1.6624,
+        "score": 1.6623,
         "evidence": []
       },
       {
         "term": "optτ",
-        "score": 1.5044,
+        "score": 1.5052,
         "evidence": []
       },
       {
         "term": "optt",
-        "score": 1.4325,
+        "score": 1.4363,
         "evidence": []
       }
     ],
     "sec-099-lower-bound": [
       {
         "term": "lower bound",
-        "score": 3.3188,
+        "score": 3.5671,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "deterministic schedule",
-        "score": 2.2291,
+        "score": 2.1955,
         "evidence": []
       },
       {
         "term": "bound holds",
-        "score": 1.9997,
+        "score": 2.0838,
         "evidence": []
       },
       {
         "term": "unique minimizer",
-        "score": 1.917,
+        "score": 1.9095,
         "evidence": []
       },
       {
         "term": "schedule against",
-        "score": 1.8758,
+        "score": 1.8375,
         "evidence": []
       },
       {
         "term": "optt",
-        "score": 1.6951,
+        "score": 1.6996,
         "evidence": []
       },
       {
-        "term": "yao principle",
-        "score": 1.5984,
+        "term": "randomized algorithm",
+        "score": 1.5853,
         "evidence": []
       },
       {
         "term": "every deterministic",
-        "score": 1.5788,
+        "score": 1.5786,
         "evidence": []
       }
     ],
     "sec-100-doubling-trick-for-unknown-t": [
       {
         "term": "doubling",
-        "score": 1.6964,
+        "score": 1.7002,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "optt",
-        "score": 1.1848,
+        "score": 1.188,
         "evidence": []
       },
       {
         "term": "trick",
-        "score": 1.0298,
+        "score": 1.0324,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "exploit",
-        "score": 0.998,
+        "score": 1.0026,
         "evidence": []
       },
       {
         "term": "spending",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       },
       {
         "term": "ptrrα",
-        "score": 0.938,
+        "score": 0.9413,
         "evidence": []
       },
       {
         "term": "arm",
-        "score": 0.8537,
+        "score": 0.8594,
         "evidence": []
       },
       {
         "term": "algt",
-        "score": 0.8306,
+        "score": 0.8326,
         "evidence": []
       }
     ],
     "sec-102-results-from-prior-work": [
       {
         "term": "derandomized dual",
-        "score": 2.1048,
+        "score": 2.0121,
         "evidence": []
       },
       {
         "term": "piecewise constant",
-        "score": 1.9286,
+        "score": 1.9376,
         "evidence": []
       },
       {
         "term": "dual function",
-        "score": 1.6394,
-        "evidence": []
-      },
-      {
-        "term": "complexity",
-        "score": 0.6808,
+        "score": 1.5527,
         "evidence": []
       },
       {
         "term": "hyperparameter",
-        "score": 0.6683,
+        "score": 0.6715,
+        "evidence": []
+      },
+      {
+        "term": "theorem",
+        "score": 0.6491,
         "evidence": []
       }
     ],
     "sec-103-uniform-convergence-implies-population-loss-near": [
       {
         "term": "uniform convergence",
-        "score": 3.2055,
+        "score": 3.1949,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "near-optimality",
-        "score": 1.261,
+        "score": 1.2619,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "loss",
-        "score": 1.1747,
+        "score": 1.1823,
         "evidence": [
           "heading"
         ]
@@ -3656,304 +3652,304 @@
     "sec-104-average-regret": [
       {
         "term": "average regret",
-        "score": 3.5628,
+        "score": 3.5661,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "h-bounded",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "corollary",
-        "score": 0.7833,
+        "score": 0.7857,
         "evidence": []
       },
       {
         "term": "pulls",
-        "score": 0.6794,
+        "score": 0.6826,
         "evidence": []
       }
     ],
     "sec-105-computational-complexity-of-erm": [
       {
         "term": "erm",
-        "score": 3.4934,
+        "score": 3.5001,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "erm minimizer",
-        "score": 3.2186,
+        "score": 3.2255,
         "evidence": []
       },
       {
         "term": "exact erm",
-        "score": 2.8785,
+        "score": 2.8781,
         "evidence": []
       },
       {
         "term": "local breakpoint",
-        "score": 2.4512,
-        "evidence": []
-      },
-      {
-        "term": "dual loss",
-        "score": 1.8178,
+        "score": 2.4536,
         "evidence": []
       },
       {
         "term": "arg minα",
-        "score": 1.7594,
+        "score": 1.7513,
         "evidence": []
       },
       {
         "term": "reward curves",
-        "score": 1.7274,
+        "score": 1.7368,
+        "evidence": []
+      },
+      {
+        "term": "dual loss",
+        "score": 1.7289,
         "evidence": []
       },
       {
         "term": "open interval",
-        "score": 1.7021,
+        "score": 1.7246,
         "evidence": []
       }
     ],
     "sec-106-an-algorithm-for-finding-a-suitable-value-of-the": [
       {
         "term": "induced distribution",
-        "score": 2.6721,
+        "score": 2.6398,
         "evidence": []
       },
       {
         "term": "cee",
-        "score": 2.2585,
+        "score": 2.2608,
         "evidence": []
       },
       {
         "term": "reward ratio",
-        "score": 2.1805,
+        "score": 2.1896,
         "evidence": []
       },
       {
         "term": "failure probability",
-        "score": 2.1366,
+        "score": 2.1473,
         "evidence": []
       },
       {
         "term": "learned parameter",
-        "score": 2.0404,
+        "score": 2.0001,
         "evidence": []
       },
       {
         "term": "cumulative density",
-        "score": 2.027,
+        "score": 1.9996,
         "evidence": []
       },
       {
         "term": "test instance",
-        "score": 1.8651,
+        "score": 1.8208,
         "evidence": []
       },
       {
         "term": "instance drawn",
-        "score": 1.8639,
+        "score": 1.807,
         "evidence": []
       }
     ],
     "sec-107-full-empirical-evaluation": [
       {
         "term": "aggressive abandonment",
-        "score": 2.9147,
+        "score": 2.9183,
         "evidence": []
       },
       {
         "term": "lcdb stores",
-        "score": 2.6706,
+        "score": 2.6661,
         "evidence": []
       },
       {
         "term": "reward curves",
-        "score": 2.6226,
+        "score": 2.6374,
         "evidence": []
       },
       {
         "term": "learning curves",
-        "score": 2.3353,
+        "score": 2.3241,
         "evidence": []
       },
       {
         "term": "datasets preferring",
-        "score": 1.9928,
+        "score": 1.9861,
         "evidence": []
       },
       {
         "term": "cumulative reward",
-        "score": 1.936,
+        "score": 1.9408,
         "evidence": []
       },
       {
         "term": "nested cross-validation",
-        "score": 1.7011,
+        "score": 1.707,
         "evidence": []
       },
       {
         "term": "mean learning",
-        "score": 1.6925,
+        "score": 1.673,
         "evidence": []
       }
     ],
     "sec-108-best-of-both-worlds-for-maximizing-cumulative-re": [
       {
         "term": "competitive ratio",
-        "score": 1.1619,
+        "score": 1.1613,
         "evidence": []
       },
       {
         "term": "optimal competitive",
-        "score": 1.1306,
+        "score": 1.1216,
         "evidence": []
       },
       {
         "term": "policy regret",
-        "score": 1.078,
+        "score": 1.0802,
         "evidence": []
       },
       {
         "term": "algorithm known",
-        "score": 1.0166,
+        "score": 1.027,
         "evidence": []
       }
     ],
     "sec-109-motivating-examples": [
       {
         "term": "sub-optimal arm",
-        "score": 2.6972,
+        "score": 2.7083,
         "evidence": []
       },
       {
         "term": "sublinear regret",
-        "score": 2.2635,
+        "score": 2.2673,
         "evidence": []
       },
       {
         "term": "optimal arm",
-        "score": 2.0912,
+        "score": 2.0873,
         "evidence": []
       },
       {
         "term": "arm gets",
-        "score": 2.0147,
+        "score": 2.0211,
         "evidence": []
       },
       {
         "term": "ucb-based algorithm",
-        "score": 1.9201,
+        "score": 1.9401,
         "evidence": []
       },
       {
         "term": "policy regret",
-        "score": 1.8363,
+        "score": 1.8394,
         "evidence": []
       },
       {
         "term": "gets pulled",
-        "score": 1.6318,
+        "score": 1.6323,
         "evidence": []
       },
       {
         "term": "worst-case instances",
-        "score": 1.5435,
+        "score": 1.5068,
         "evidence": []
       }
     ],
     "sec-110-data-driven-hybrid-approach": [
       {
         "term": "sublinear regret",
-        "score": 1.8235,
+        "score": 1.8264,
         "evidence": []
       },
       {
         "term": "nice instances",
-        "score": 1.6966,
+        "score": 1.6587,
         "evidence": []
       },
       {
         "term": "loss function",
-        "score": 1.2689,
+        "score": 1.2797,
         "evidence": []
       },
       {
         "term": "multi-armed bandits",
-        "score": 1.2477,
+        "score": 1.2548,
         "evidence": []
       },
       {
         "term": "defn",
-        "score": 1.2145,
+        "score": 1.2158,
         "evidence": []
       },
       {
         "term": "competitive ratio",
-        "score": 1.1619,
+        "score": 1.1613,
         "evidence": []
       },
       {
         "term": "improving multi-armed",
-        "score": 1.1296,
+        "score": 1.1138,
         "evidence": []
       },
       {
         "term": "bandits problem",
-        "score": 1.0447,
+        "score": 1.0455,
         "evidence": []
       }
     ],
     "sec-111-bai-comparison-with-prior-work-and-proof-details": [
       {
         "term": "prior work",
-        "score": 2.1791,
+        "score": 2.1278,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bai",
-        "score": 1.925,
+        "score": 1.9313,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cumulative reward",
-        "score": 1.83,
+        "score": 1.8321,
         "evidence": []
       },
       {
         "term": "single pull",
-        "score": 1.6241,
+        "score": 1.6376,
         "evidence": []
       },
       {
         "term": "arm",
-        "score": 1.4365,
+        "score": 1.446,
         "evidence": []
       },
       {
         "term": "mmt",
-        "score": 1.37,
+        "score": 1.3732,
         "evidence": []
       },
       {
         "term": "consider setting",
-        "score": 1.1798,
+        "score": 1.1772,
         "evidence": []
       },
       {
         "term": "comparison",
-        "score": 1.0944,
+        "score": 1.0777,
         "evidence": [
           "heading"
         ]
@@ -3962,105 +3958,105 @@
     "sec-112-difficulty-in-corralling-improving-bandit-algori": [
       {
         "term": "corralling improving",
-        "score": 5.3122,
+        "score": 5.2484,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "pulls arm",
-        "score": 3.3915,
+        "score": 3.4108,
         "evidence": []
       },
       {
         "term": "sub-optimal arm",
-        "score": 2.7671,
+        "score": 2.7808,
         "evidence": []
       },
       {
         "term": "concave reward",
-        "score": 2.6386,
+        "score": 2.6526,
         "evidence": []
       },
       {
         "term": "concave rising",
-        "score": 2.6076,
+        "score": 2.6146,
         "evidence": []
       },
       {
         "term": "arm yield",
-        "score": 2.5146,
-        "evidence": []
-      },
-      {
-        "term": "arm selected",
-        "score": 2.4851,
+        "score": 2.5301,
         "evidence": []
       },
       {
         "term": "cumulative reward",
-        "score": 2.4829,
+        "score": 2.4865,
+        "evidence": []
+      },
+      {
+        "term": "arm selected",
+        "score": 2.4669,
         "evidence": []
       }
     ],
     "sec-113-proofs-for-results-in-section-442": [
       {
         "term": "trem rewardt",
-        "score": 3.5488,
+        "score": 3.552,
         "evidence": []
       },
       {
         "term": "single-pull reward",
-        "score": 1.7619,
+        "score": 1.7689,
         "evidence": []
       },
       {
         "term": "maximum single-pull",
-        "score": 1.5016,
+        "score": 1.5009,
         "evidence": []
       },
       {
         "term": "cαc",
-        "score": 1.464,
+        "score": 1.465,
         "evidence": []
       },
       {
         "term": "monotonicity",
-        "score": 1.3238,
+        "score": 1.3273,
         "evidence": []
       },
       {
         "term": "optres",
-        "score": 1.2102,
+        "score": 1.2115,
         "evidence": []
       },
       {
         "term": "fˆi",
-        "score": 1.2091,
+        "score": 1.2105,
         "evidence": []
       },
       {
         "term": "know",
-        "score": 1.08,
+        "score": 1.0471,
         "evidence": []
       }
     ],
     "sec-114-proof-of-lemma-442": [
       {
         "term": "lemma",
-        "score": 1.2407,
+        "score": 1.2478,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "fixed value",
-        "score": 1.2035,
+        "score": 1.193,
         "evidence": []
       },
       {
         "term": "proof",
-        "score": 1.0163,
+        "score": 1.0251,
         "evidence": [
           "heading"
         ]
@@ -4069,497 +4065,499 @@
     "sec-115-cumulative-reward-best-arm-identification": [
       {
         "term": "arm",
-        "score": 2.4428,
+        "score": 2.4589,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "reward",
-        "score": 1.6979,
+        "score": 1.7119,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "terminal upper",
-        "score": 1.6607,
+        "score": 1.6951,
         "evidence": []
       },
       {
         "term": "upper bound",
-        "score": 1.2865,
+        "score": 1.3686,
         "evidence": []
       },
       {
         "term": "lower bound",
-        "score": 1.1882,
+        "score": 1.2772,
         "evidence": []
       },
       {
         "term": "hybridα",
-        "score": 1.1593,
+        "score": 1.161,
         "evidence": []
       }
     ],
     "sec-116-best-of-both-worlds-best-arm-identification-guar": [
       {
         "term": "arm identification",
-        "score": 4.52,
+        "score": 4.538,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "trem rewardt",
-        "score": 3.6847,
+        "score": 3.6882,
         "evidence": []
       },
       {
         "term": "trem steps",
-        "score": 3.1416,
+        "score": 3.1387,
         "evidence": []
       },
       {
         "term": "suboptimal arm",
-        "score": 2.6798,
+        "score": 2.6938,
         "evidence": []
       },
       {
         "term": "arm gap",
-        "score": 2.4295,
+        "score": 2.4257,
         "evidence": []
       },
       {
         "term": "instance satisfies",
-        "score": 2.087,
+        "score": 2.0595,
         "evidence": []
       },
       {
         "term": "terminal budget",
-        "score": 2.044,
+        "score": 2.0527,
         "evidence": []
       },
       {
         "term": "single-pull reward",
-        "score": 2.0403,
+        "score": 2.0497,
         "evidence": []
       }
     ],
     "sec-118-key-features-of-pessimism-traps": [
       {
         "term": "pessimism traps",
-        "score": 2.873,
+        "score": 2.8844,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "ambitious choice",
-        "score": 1.7964,
+        "score": 1.7931,
         "evidence": []
       },
       {
         "term": "ambitious end",
-        "score": 1.6743,
+        "score": 1.6598,
         "evidence": []
       },
       {
         "term": "morton",
-        "score": 0.7344,
+        "score": 0.7371,
         "evidence": []
       },
       {
         "term": "payoff",
-        "score": 0.7092,
+        "score": 0.7121,
         "evidence": []
       }
     ],
     "sec-119-related-works": [
       {
         "term": "pessimism traps",
-        "score": 1.9596,
+        "score": 1.9673,
         "evidence": []
       },
       {
         "term": "information cascades",
-        "score": 1.8785,
-        "evidence": []
-      },
-      {
-        "term": "philosophical perspective",
-        "score": 1.8602,
+        "score": 1.8826,
         "evidence": []
       },
       {
         "term": "societal biases",
-        "score": 1.8195,
+        "score": 1.8124,
+        "evidence": []
+      },
+      {
+        "term": "philosophical perspective",
+        "score": 1.8061,
         "evidence": []
       },
       {
         "term": "indi viduals",
-        "score": 1.7228,
+        "score": 1.7125,
         "evidence": []
       },
       {
         "term": "herding behavior",
-        "score": 1.6392,
+        "score": 1.643,
         "evidence": []
       },
       {
         "term": "economic models",
-        "score": 1.5366,
+        "score": 1.5282,
         "evidence": []
       },
       {
         "term": "nudges",
-        "score": 1.4089,
+        "score": 1.4104,
         "evidence": []
       }
     ],
     "sec-120-proof-for-posterior-update-eqn-61": [
       {
         "term": "proof",
-        "score": 0.6412,
+        "score": 0.6468,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bayes",
-        "score": 0.5521,
+        "score": 0.5531,
         "evidence": []
       },
       {
         "term": "conditioned",
-        "score": 0.5477,
+        "score": 0.5488,
         "evidence": []
       }
     ],
     "sec-121-formulation-as-a-random-walk": [
       {
         "term": "random walk",
-        "score": 4.9811,
+        "score": 4.993,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "gets signal",
-        "score": 2.5598,
+        "score": 2.5381,
         "evidence": []
       },
       {
         "term": "receives signal",
-        "score": 2.3441,
+        "score": 2.3211,
         "evidence": []
       },
       {
         "term": "incorrect cascade",
-        "score": 2.1944,
+        "score": 2.1879,
         "evidence": []
       },
       {
         "term": "agents acted",
-        "score": 1.9149,
+        "score": 1.9253,
         "evidence": []
       },
       {
         "term": "acted according",
-        "score": 1.8204,
+        "score": 1.7932,
         "evidence": []
       },
       {
         "term": "posterior",
-        "score": 1.6032,
+        "score": 1.6091,
         "evidence": []
       },
       {
         "term": "choose action",
-        "score": 1.5852,
+        "score": 1.59,
         "evidence": []
       }
     ],
     "sec-123-proof-of-theorem-631": [
       {
         "term": "choosing action",
-        "score": 1.1676,
+        "score": 1.1729,
         "evidence": []
       },
       {
         "term": "subsidy",
-        "score": 0.9293,
+        "score": 0.9327,
         "evidence": []
       },
       {
         "term": "re-write",
-        "score": 0.8292,
+        "score": 0.8312,
         "evidence": []
       },
       {
         "term": "preferable",
-        "score": 0.7757,
+        "score": 0.7781,
         "evidence": []
       },
       {
         "term": "region",
-        "score": 0.7631,
+        "score": 0.7656,
         "evidence": []
       }
     ],
     "sec-124-proof-of-theorem-632": [
       {
         "term": "subsidy",
-        "score": 1.0789,
+        "score": 1.0828,
         "evidence": []
       },
       {
         "term": "stopping",
-        "score": 0.8766,
+        "score": 0.8782,
         "evidence": []
       },
       {
         "term": "wald",
-        "score": 0.875,
+        "score": 0.8767,
         "evidence": []
       }
     ],
     "sec-126-defining-the-setting": [
       {
         "term": "subsidy",
-        "score": 1.0789,
+        "score": 1.0828,
         "evidence": []
       },
       {
         "term": "signal",
-        "score": 0.9318,
+        "score": 0.9219,
         "evidence": []
       },
       {
         "term": "subsidize",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "sec-127-analyzing-the-subsidy-scheme": [
       {
         "term": "walk rgvt",
-        "score": 5.0745,
+        "score": 5.0821,
         "evidence": []
       },
       {
         "term": "pmin step",
-        "score": 4.2542,
+        "score": 4.2457,
         "evidence": []
       },
       {
         "term": "walk hits",
-        "score": 4.1648,
+        "score": 4.1727,
         "evidence": []
       },
       {
         "term": "random walk",
-        "score": 4.0992,
+        "score": 4.1089,
         "evidence": []
       },
       {
         "term": "correct cascade",
-        "score": 2.8566,
+        "score": 2.8451,
         "evidence": []
       },
       {
         "term": "subsidy",
-        "score": 2.7879,
+        "score": 2.7981,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bad cascade",
-        "score": 2.5971,
+        "score": 2.6649,
         "evidence": []
       },
       {
         "term": "government subsidy",
-        "score": 2.4936,
+        "score": 2.4986,
         "evidence": []
       }
     ],
     "sec-130-subsidy-size": [
       {
         "term": "subsidy progression",
-        "score": 1.6012,
+        "score": 1.6056,
         "evidence": []
       },
       {
         "term": "correct cascades",
-        "score": 1.2076,
+        "score": 1.202,
         "evidence": []
       },
       {
         "term": "average subsidy",
-        "score": 1.1808,
+        "score": 1.1843,
         "evidence": []
       }
     ],
     "sec-132-related-work": [
       {
         "term": "grit",
-        "score": 1.5897,
+        "score": 1.5963,
         "evidence": []
       },
       {
         "term": "work",
-        "score": 1.3939,
+        "score": 1.3538,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "computer science",
-        "score": 1.3228,
+        "score": 1.2981,
         "evidence": []
       },
       {
         "term": "science literature",
-        "score": 1.2867,
+        "score": 1.2354,
         "evidence": []
       },
       {
         "term": "schools",
-        "score": 1.2048,
+        "score": 1.2061,
+        "evidence": []
+      },
+      {
+        "term": "excuses",
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "related",
-        "score": 1.0195,
+        "score": 0.9797,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "excuses",
-        "score": 1.0074,
-        "evidence": []
-      },
-      {
         "term": "wooten",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       }
     ],
     "sec-133-why-this-instance-and-not-something-else": [
       {
         "term": "striving arm",
-        "score": 2.0226,
+        "score": 2.0334,
         "evidence": []
       },
       {
         "term": "stable arm",
-        "score": 1.7969,
+        "score": 1.806,
         "evidence": []
       },
       {
         "term": "competitive ratio",
-        "score": 1.6811,
+        "score": 1.6802,
         "evidence": []
       },
       {
         "term": "agent spent",
-        "score": 1.6197,
+        "score": 1.6316,
         "evidence": []
       },
       {
         "term": "spent time",
-        "score": 1.567,
+        "score": 1.5555,
         "evidence": []
       },
       {
         "term": "instance",
-        "score": 1.1176,
+        "score": 1.0716,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "phd",
-        "score": 0.9918,
+        "score": 0.9636,
         "evidence": []
       },
       {
         "term": "years",
-        "score": 0.9326,
+        "score": 0.8847,
         "evidence": []
       }
     ],
     "sec-135-proof-of-lemma-732": [
       {
         "term": "competitive ratio",
-        "score": 1.1695,
+        "score": 1.1689,
         "evidence": []
       },
       {
         "term": "spent",
-        "score": 0.7555,
+        "score": 0.758,
         "evidence": []
       },
       {
-        "term": "boil",
-        "score": 0.6423,
-        "evidence": []
+        "term": "proof",
+        "score": 0.6468,
+        "evidence": [
+          "heading"
+        ]
       }
     ],
     "sec-136-proof-of-lemma-733": [
       {
         "term": "striving arm",
-        "score": 2.1916,
+        "score": 2.2034,
         "evidence": []
       },
       {
         "term": "stable arm",
-        "score": 2.0776,
+        "score": 2.088,
         "evidence": []
       },
       {
         "term": "time spent",
-        "score": 2.0572,
+        "score": 2.034,
         "evidence": []
       },
       {
         "term": "rearrange",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "accumulating",
-        "score": 0.9993,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "comfort",
-        "score": 0.8804,
+        "score": 0.8821,
         "evidence": []
       },
       {
-        "term": "strategy",
-        "score": 0.8677,
+        "term": "reward",
+        "score": 0.856,
         "evidence": []
       }
     ],
     "sec-137-proof-of-lemma-734": [
       {
         "term": "striving arm",
-        "score": 1.4641,
+        "score": 1.4717,
         "evidence": []
       },
       {
         "term": "competitive ratio",
-        "score": 1.0307,
+        "score": 1.0302,
         "evidence": []
       },
       {
         "term": "proof",
-        "score": 0.6412,
+        "score": 0.6468,
         "evidence": [
           "heading"
         ]
@@ -4568,63 +4566,63 @@
     "sec-138-fixed-time-financial-support": [
       {
         "term": "financial support",
-        "score": 2.8566,
+        "score": 2.7913,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "stable arm",
-        "score": 1.2853,
+        "score": 1.2915,
         "evidence": []
       },
       {
         "term": "time",
-        "score": 1.0688,
+        "score": 1.0333,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "competitive ratio",
-        "score": 1.0307,
+        "score": 1.0302,
         "evidence": []
       },
       {
         "term": "little",
-        "score": 0.7586,
+        "score": 0.7475,
         "evidence": []
       },
       {
         "term": "striving",
-        "score": 0.7288,
+        "score": 0.7315,
         "evidence": []
       },
       {
         "term": "spend",
-        "score": 0.7176,
+        "score": 0.7205,
         "evidence": []
       }
     ],
     "sec-139-calculations-for-interplay-of-grit-and-trust-fun": [
       {
         "term": "striving arm",
-        "score": 1.655,
+        "score": 1.6633,
         "evidence": []
       },
       {
         "term": "time spent",
-        "score": 1.2157,
+        "score": 1.2031,
         "evidence": []
       },
       {
         "term": "switching point",
-        "score": 1.1282,
+        "score": 1.1264,
         "evidence": []
       },
       {
         "term": "fund",
-        "score": 1.0415,
+        "score": 1.0217,
         "evidence": [
           "heading"
         ]
@@ -4633,42 +4631,42 @@
     "sec-front-matter": [
       {
         "term": "phd journey",
-        "score": 4.8046,
+        "score": 4.7266,
         "evidence": []
       },
       {
         "term": "lcdb reward",
-        "score": 3.1434,
+        "score": 3.1582,
         "evidence": []
       },
       {
         "term": "cumulative reward",
-        "score": 2.8452,
-        "evidence": []
-      },
-      {
-        "term": "modelling grit",
-        "score": 2.7699,
+        "score": 2.8508,
         "evidence": []
       },
       {
         "term": "reward curves",
-        "score": 2.6976,
+        "score": 2.7145,
         "evidence": []
       },
       {
         "term": "lcdb instances",
-        "score": 2.6685,
+        "score": 2.6243,
         "evidence": []
       },
       {
         "term": "mean lcdb",
-        "score": 2.6218,
+        "score": 2.6213,
         "evidence": []
       },
       {
         "term": "social epistemology",
-        "score": 2.6093,
+        "score": 2.604,
+        "evidence": []
+      },
+      {
+        "term": "modelling grit",
+        "score": 2.5974,
         "evidence": []
       }
     ]

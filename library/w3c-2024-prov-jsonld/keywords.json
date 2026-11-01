@@ -3,69 +3,69 @@
   "entry": "w3c-2024-prov-jsonld",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "definitions prov",
-      "score": 113.3271,
-      "evidence": []
-    },
-    {
-      "term": "activity prov",
-      "score": 108.2435,
+      "score": 113.8548,
       "evidence": []
     },
     {
       "term": "entity prov",
-      "score": 107.7782,
+      "score": 108.2968,
       "evidence": []
     },
     {
       "term": "type prov",
-      "score": 107.3588,
+      "score": 108.0938,
+      "evidence": []
+    },
+    {
+      "term": "activity prov",
+      "score": 107.0611,
       "evidence": []
     },
     {
       "term": "prov-dm prov",
-      "score": 101.4683,
+      "score": 101.9609,
       "evidence": []
     },
     {
       "term": "properties prov",
-      "score": 96.9594,
+      "score": 97.4005,
       "evidence": []
     },
     {
       "term": "property prov",
-      "score": 95.7393,
+      "score": 96.2852,
       "evidence": []
     },
     {
       "term": "derivation prov",
-      "score": 88.3494,
-      "evidence": []
-    },
-    {
-      "term": "datetime prov",
-      "score": 87.3213,
+      "score": 88.7026,
       "evidence": []
     },
     {
       "term": "agent prov",
-      "score": 87.2943,
+      "score": 87.7881,
+      "evidence": []
+    },
+    {
+      "term": "datetime prov",
+      "score": 87.7513,
       "evidence": []
     },
     {
       "term": "attime prov",
-      "score": 86.6914,
+      "score": 87.089,
       "evidence": []
     },
     {
       "term": "generation prov",
-      "score": 86.5798,
+      "score": 86.9589,
       "evidence": []
     }
   ],
@@ -73,1872 +73,1872 @@
     "page-001": [
       {
         "term": "college london",
-        "score": 1.6276,
+        "score": 1.6243,
         "evidence": []
       },
       {
         "term": "king college",
-        "score": 1.5397,
+        "score": 1.5293,
         "evidence": []
       },
       {
         "term": "prov",
-        "score": 0.988,
+        "score": 0.9926,
         "evidence": []
       },
       {
         "term": "w3c",
-        "score": 0.9635,
+        "score": 0.9683,
         "evidence": []
       },
       {
         "term": "provenance",
-        "score": 0.7922,
+        "score": 0.7966,
         "evidence": []
       },
       {
         "term": "prov-jsonld",
-        "score": 0.7522,
+        "score": 0.7586,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "member submissions",
-        "score": 1.8751,
+        "score": 1.8651,
         "evidence": []
       },
       {
         "term": "w3c",
-        "score": 1.6212,
+        "score": 1.6294,
         "evidence": []
       },
       {
         "term": "please consult",
-        "score": 1.3385,
+        "score": 1.3425,
         "evidence": []
       },
       {
         "term": "acknowledged",
-        "score": 0.868,
+        "score": 0.8274,
         "evidence": []
       },
       {
         "term": "jsonld",
-        "score": 0.7617,
+        "score": 0.7642,
         "evidence": []
       },
       {
         "term": "prov-jsonld",
-        "score": 0.7522,
+        "score": 0.7586,
         "evidence": []
       },
       {
         "term": "status",
-        "score": 0.7257,
+        "score": 0.7231,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "prov",
-        "score": 1.839,
+        "score": 1.8476,
         "evidence": []
       },
       {
         "term": "invalidation",
-        "score": 0.7675,
+        "score": 0.77,
         "evidence": []
       },
       {
         "term": "delegation",
-        "score": 0.7426,
+        "score": 0.7453,
         "evidence": []
       },
       {
         "term": "derivation",
-        "score": 0.73,
+        "score": 0.7282,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "prov",
-        "score": 0.988,
+        "score": 0.9926,
         "evidence": []
       },
       {
         "term": "prov-xml",
-        "score": 0.8702,
+        "score": 0.8719,
         "evidence": []
       },
       {
         "term": "prov-n",
-        "score": 0.8273,
+        "score": 0.8293,
         "evidence": []
       },
       {
         "term": "prov-jsonld",
-        "score": 0.7522,
+        "score": 0.7586,
         "evidence": []
       },
       {
         "term": "normative",
-        "score": 0.6163,
+        "score": 0.6199,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "prov data",
-        "score": 1.7223,
+        "score": 1.7243,
         "evidence": []
       },
       {
         "term": "semantic web",
-        "score": 1.6823,
+        "score": 1.6556,
         "evidence": []
       },
       {
         "term": "semantic markup",
-        "score": 1.6153,
+        "score": 1.5926,
         "evidence": []
       },
       {
         "term": "lightweight web",
-        "score": 1.5698,
+        "score": 1.5731,
         "evidence": []
       },
       {
         "term": "web applications",
-        "score": 1.3835,
-        "evidence": []
-      },
-      {
-        "term": "linked data",
-        "score": 1.219,
+        "score": 1.3729,
         "evidence": []
       },
       {
         "term": "prov-json",
-        "score": 1.2035,
+        "score": 1.2048,
+        "evidence": []
+      },
+      {
+        "term": "linked data",
+        "score": 1.199,
         "evidence": []
       },
       {
         "term": "support lightweight",
-        "score": 1.1695,
+        "score": 1.1529,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "semantic mappings",
-        "score": 1.3832,
+        "score": 1.3399,
         "evidence": []
       },
       {
         "term": "prov",
-        "score": 1.2765,
+        "score": 1.2825,
         "evidence": []
       },
       {
         "term": "namespace",
-        "score": 1.2103,
+        "score": 1.2167,
         "evidence": []
       },
       {
         "term": "json object",
-        "score": 1.0538,
+        "score": 1.0607,
         "evidence": []
       },
       {
         "term": "data structure",
-        "score": 0.8949,
+        "score": 0.8735,
         "evidence": []
       },
       {
         "term": "prov-jsonld",
-        "score": 0.8374,
+        "score": 0.8445,
         "evidence": []
       },
       {
         "term": "prefix",
-        "score": 0.7201,
+        "score": 0.7229,
         "evidence": []
       },
       {
         "term": "rdf",
-        "score": 0.7133,
+        "score": 0.7183,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "prov expressions",
-        "score": 1.828,
+        "score": 1.8452,
         "evidence": []
       },
       {
         "term": "derek",
-        "score": 1.3686,
+        "score": 1.3717,
         "evidence": []
       },
       {
         "term": "prov-jsonld serialization",
-        "score": 1.3054,
+        "score": 1.3172,
         "evidence": []
       },
       {
         "term": "article based",
-        "score": 1.2464,
+        "score": 1.2238,
         "evidence": []
       },
       {
         "term": "json object",
-        "score": 1.0538,
+        "score": 1.0607,
         "evidence": []
       },
       {
         "term": "derivation",
-        "score": 0.73,
+        "score": 0.7282,
         "evidence": []
       },
       {
         "term": "responsible",
-        "score": 0.6145,
+        "score": 0.6139,
         "evidence": []
       }
     ],
     "page-008": [
       {
         "term": "prov expressions",
-        "score": 1.7334,
+        "score": 1.7501,
         "evidence": []
       },
       {
         "term": "foaf",
-        "score": 0.6638,
+        "score": 0.6671,
         "evidence": []
       },
       {
         "term": "predefined",
-        "score": 0.6624,
+        "score": 0.6421,
         "evidence": []
       },
       {
         "term": "viewpoint",
-        "score": 0.6305,
+        "score": 0.5946,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "derek",
-        "score": 1.0589,
+        "score": 1.0613,
         "evidence": []
       },
       {
         "term": "foaf",
-        "score": 0.8376,
+        "score": 0.8417,
         "evidence": []
       },
       {
         "term": "compose",
-        "score": 0.8283,
+        "score": 0.8303,
         "evidence": []
       }
     ],
     "page-010": [
       {
         "term": "qualifiedname",
-        "score": 1.3874,
+        "score": 1.3891,
         "evidence": []
       },
       {
         "term": "json schema",
-        "score": 1.1079,
+        "score": 1.1172,
         "evidence": []
       },
       {
         "term": "compose",
-        "score": 0.8283,
+        "score": 0.8303,
         "evidence": []
       },
       {
         "term": "datetime",
-        "score": 0.6971,
+        "score": 0.7022,
         "evidence": []
       }
     ],
     "page-011": [
       {
         "term": "typed value",
-        "score": 1.4778,
+        "score": 1.4711,
         "evidence": []
       },
       {
         "term": "lang string",
-        "score": 1.4308,
+        "score": 1.4229,
         "evidence": []
       },
       {
         "term": "qualified names",
-        "score": 1.3442,
+        "score": 1.3458,
         "evidence": []
       },
       {
         "term": "properties value",
-        "score": 1.1318,
+        "score": 1.1366,
         "evidence": []
       }
     ],
     "page-012": [
       {
         "term": "definitions lang",
-        "score": 1.749,
+        "score": 1.7412,
         "evidence": []
       },
       {
         "term": "prov-dm prov",
-        "score": 1.6231,
+        "score": 1.6312,
         "evidence": []
       },
       {
         "term": "arrayoflabelvalues",
-        "score": 1.2646,
+        "score": 1.2655,
         "evidence": []
       },
       {
         "term": "arrayofvalues",
-        "score": 1.2646,
+        "score": 1.2655,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.0799,
+        "score": 1.0926,
         "evidence": []
       }
     ],
     "page-013": [
       {
         "term": "prov-dm prov",
-        "score": 2.7422,
+        "score": 2.756,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 1.9173,
+        "score": 1.9251,
         "evidence": []
       },
       {
         "term": "explicit prefix",
-        "score": 1.3441,
+        "score": 1.3437,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.2073,
+        "score": 1.2215,
         "evidence": []
       },
       {
         "term": "activity",
-        "score": 1.1946,
+        "score": 1.1292,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.0815,
+        "score": 1.088,
         "evidence": []
       }
     ],
     "page-014": [
       {
         "term": "definitions arra",
-        "score": 2.426,
+        "score": 2.4359,
         "evidence": []
       },
       {
         "term": "prov-dm prov",
-        "score": 2.2069,
+        "score": 2.218,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 1.7805,
+        "score": 1.7889,
         "evidence": []
       },
       {
         "term": "definitions date",
-        "score": 1.6389,
+        "score": 1.6425,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.4256,
+        "score": 1.4341,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.1597,
+        "score": 1.1735,
         "evidence": []
       }
     ],
     "page-015": [
       {
         "term": "derivation",
-        "score": 1.46,
+        "score": 1.4563,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.2798,
+        "score": 1.2874,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.2528,
+        "score": 1.2675,
         "evidence": []
       },
       {
         "term": "prov-dm",
-        "score": 1.2021,
+        "score": 1.2087,
         "evidence": []
       },
       {
         "term": "prov",
-        "score": 1.0999,
+        "score": 1.1051,
         "evidence": []
       },
       {
         "term": "generatedentity",
-        "score": 1.0831,
+        "score": 1.0854,
         "evidence": []
       }
     ],
     "page-016": [
       {
         "term": "prov-dm prov",
-        "score": 2.2304,
+        "score": 2.2416,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 1.672,
+        "score": 1.68,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 1.5736,
+        "score": 1.5801,
         "evidence": []
       },
       {
         "term": "attribution",
-        "score": 1.4321,
+        "score": 1.4287,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.1399,
+        "score": 1.1534,
         "evidence": []
       }
     ],
     "page-017": [
       {
         "term": "prov-dm prov",
-        "score": 2.6156,
+        "score": 2.6288,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 1.9408,
+        "score": 1.95,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 1.9012,
+        "score": 1.909,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.2528,
-        "evidence": []
-      },
-      {
-        "term": "association",
-        "score": 1.252,
+        "score": 1.2675,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.2212,
+        "score": 1.2285,
+        "evidence": []
+      },
+      {
+        "term": "association",
+        "score": 1.2189,
         "evidence": []
       }
     ],
     "page-018": [
       {
         "term": "prov-dm prov",
-        "score": 2.3195,
+        "score": 2.3312,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 1.8787,
+        "score": 1.8876,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 1.6454,
+        "score": 1.6522,
         "evidence": []
       },
       {
         "term": "delegation",
-        "score": 1.4852,
+        "score": 1.4906,
         "evidence": []
       },
       {
         "term": "delegate",
-        "score": 1.2334,
+        "score": 1.2362,
         "evidence": []
       }
     ],
     "page-019": [
       {
         "term": "prov-dm prov",
-        "score": 2.6156,
+        "score": 2.6288,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 2.1062,
+        "score": 2.1148,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 1.8609,
+        "score": 1.8696,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.2798,
+        "score": 1.2874,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.2528,
+        "score": 1.2675,
         "evidence": []
       },
       {
         "term": "usage",
-        "score": 0.971,
+        "score": 0.9654,
         "evidence": []
       }
     ],
     "page-020": [
       {
         "term": "prov-dm prov",
-        "score": 2.619,
+        "score": 2.6323,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 2.1062,
+        "score": 2.1148,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 1.8609,
+        "score": 1.8696,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.2798,
+        "score": 1.2874,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.2528,
+        "score": 1.2675,
         "evidence": []
       },
       {
         "term": "entity",
-        "score": 0.9523,
+        "score": 0.9572,
         "evidence": []
       }
     ],
     "page-021": [
       {
         "term": "prov-dm prov",
-        "score": 2.619,
+        "score": 2.6323,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 2.1062,
+        "score": 2.1148,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 1.8609,
+        "score": 1.8696,
         "evidence": []
       },
       {
         "term": "invalidation",
-        "score": 1.535,
+        "score": 1.54,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.2798,
+        "score": 1.2874,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.2528,
+        "score": 1.2675,
         "evidence": []
       }
     ],
     "page-022": [
       {
         "term": "prov-dm prov",
-        "score": 2.6741,
+        "score": 2.6876,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 2.1552,
+        "score": 2.1641,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 2.0448,
+        "score": 2.0544,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.3328,
+        "score": 1.3407,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.2829,
+        "score": 1.298,
         "evidence": []
       },
       {
         "term": "starter",
-        "score": 1.2091,
+        "score": 1.2121,
         "evidence": []
       },
       {
         "term": "start",
-        "score": 1.0796,
+        "score": 1.0397,
         "evidence": []
       }
     ],
     "page-023": [
       {
         "term": "prov-dm prov",
-        "score": 2.6741,
+        "score": 2.6876,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 2.1552,
+        "score": 2.1641,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 2.0448,
+        "score": 2.0544,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.3328,
+        "score": 1.3407,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.2829,
+        "score": 1.298,
         "evidence": []
       },
       {
         "term": "ender",
-        "score": 1.212,
+        "score": 1.2149,
         "evidence": []
       },
       {
         "term": "activity",
-        "score": 1.0294,
+        "score": 0.973,
         "evidence": []
       }
     ],
     "page-024": [
       {
         "term": "prov-dm prov",
-        "score": 2.4737,
+        "score": 2.4862,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 1.672,
+        "score": 1.68,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 1.5736,
+        "score": 1.5801,
         "evidence": []
       },
       {
         "term": "contain property",
-        "score": 1.3607,
+        "score": 1.3653,
         "evidence": []
       },
       {
         "term": "informant",
-        "score": 1.3185,
+        "score": 1.3207,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.2445,
+        "score": 1.2592,
         "evidence": []
       }
     ],
     "page-025": [
       {
         "term": "prov-dm prov",
-        "score": 2.6799,
+        "score": 2.6935,
         "evidence": []
       },
       {
         "term": "definitions qua",
-        "score": 2.0328,
+        "score": 2.038,
         "evidence": []
       },
       {
         "term": "definitions arr",
-        "score": 1.7819,
+        "score": 1.7868,
         "evidence": []
       },
       {
         "term": "property label",
-        "score": 1.685,
+        "score": 1.6959,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.3515,
+        "score": 1.3675,
         "evidence": []
       },
       {
         "term": "explicit prefix",
-        "score": 1.1555,
+        "score": 1.1544,
         "evidence": []
       }
     ],
     "page-026": [
       {
         "term": "prov-dm alternate",
-        "score": 2.5205,
+        "score": 2.5117,
         "evidence": []
       },
       {
         "term": "property alternate",
-        "score": 2.206,
+        "score": 2.1988,
         "evidence": []
       },
       {
         "term": "prov",
-        "score": 1.4135,
+        "score": 1.4201,
         "evidence": []
       },
       {
         "term": "property type",
-        "score": 1.1877,
+        "score": 1.2018,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.0815,
+        "score": 1.088,
         "evidence": []
       }
     ],
     "page-027": [
       {
         "term": "definitions qua",
-        "score": 2.315,
+        "score": 2.3215,
         "evidence": []
       },
       {
         "term": "prov-dm prov",
-        "score": 2.2304,
+        "score": 2.2416,
         "evidence": []
       },
       {
         "term": "definitions arr",
-        "score": 2.0642,
+        "score": 2.0704,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 1.9543,
+        "score": 1.9635,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 1.8559,
+        "score": 1.8637,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.3811,
+        "score": 1.3894,
         "evidence": []
       }
     ],
     "page-028": [
       {
         "term": "definitions qualifiedname",
-        "score": 2.0295,
+        "score": 2.0347,
         "evidence": []
       },
       {
         "term": "bundle",
-        "score": 1.3847,
+        "score": 1.3907,
         "evidence": []
       },
       {
         "term": "prov",
-        "score": 1.3488,
+        "score": 1.3551,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 0.9959,
+        "score": 1.0018,
         "evidence": []
       }
     ],
     "page-029": [
       {
         "term": "definitions prov",
-        "score": 2.7347,
+        "score": 2.7474,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.2798,
+        "score": 1.2874,
         "evidence": []
       },
       {
         "term": "statementorbundle",
-        "score": 1.2145,
+        "score": 1.2158,
         "evidence": []
       },
       {
         "term": "contain statements",
-        "score": 0.9344,
+        "score": 0.93,
         "evidence": []
       },
       {
         "term": "bundles",
-        "score": 0.7176,
+        "score": 0.7205,
         "evidence": []
       }
     ],
     "page-030": [
       {
         "term": "definitions prov",
-        "score": 2.9235,
+        "score": 2.9371,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.4668,
+        "score": 1.4755,
         "evidence": []
       },
       {
         "term": "statementorbundle",
-        "score": 0.6073,
+        "score": 0.6079,
         "evidence": []
       },
       {
         "term": "schema",
-        "score": 0.5878,
+        "score": 0.5915,
         "evidence": []
       },
       {
         "term": "iris",
-        "score": 0.57,
+        "score": 0.5739,
         "evidence": []
       }
     ],
     "page-031": [
       {
         "term": "qualification pattern",
-        "score": 1.98,
+        "score": 1.9725,
         "evidence": []
       },
       {
         "term": "prov-o",
-        "score": 1.0082,
-        "evidence": []
-      },
-      {
-        "term": "influence",
-        "score": 0.9203,
+        "score": 1.0127,
         "evidence": []
       },
       {
         "term": "json-ld context",
-        "score": 0.8453,
+        "score": 0.8457,
+        "evidence": []
+      },
+      {
+        "term": "influence",
+        "score": 0.8438,
         "evidence": []
       },
       {
         "term": "summarises",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "page-032": [
       {
         "term": "entity prov",
-        "score": 3.5582,
+        "score": 3.5756,
         "evidence": []
       },
       {
         "term": "activity prov",
-        "score": 3.5155,
+        "score": 3.4471,
         "evidence": []
       },
       {
         "term": "attime prov",
-        "score": 3.3258,
+        "score": 3.3397,
         "evidence": []
       },
       {
         "term": "datetime prov",
-        "score": 2.9889,
+        "score": 3.0053,
         "evidence": []
       },
       {
         "term": "attime xsd",
-        "score": 1.9671,
+        "score": 1.9792,
         "evidence": []
       }
     ],
     "page-033": [
       {
         "term": "agent prov",
-        "score": 2.5663,
+        "score": 2.5872,
         "evidence": []
       },
       {
         "term": "qualified resource",
-        "score": 1.1642,
+        "score": 1.1681,
         "evidence": []
       },
       {
         "term": "entity",
-        "score": 1.0602,
+        "score": 1.0657,
         "evidence": []
       },
       {
         "term": "activity",
-        "score": 1.0294,
+        "score": 0.973,
         "evidence": []
       },
       {
         "term": "prov-o",
-        "score": 0.6882,
+        "score": 0.6913,
         "evidence": []
       },
       {
         "term": "prov-jsonld",
-        "score": 0.6479,
+        "score": 0.6534,
         "evidence": []
       }
     ],
     "page-034": [
       {
         "term": "prov",
-        "score": 1.2765,
+        "score": 1.2825,
         "evidence": []
       },
       {
         "term": "entity",
-        "score": 1.0602,
+        "score": 1.0657,
         "evidence": []
       },
       {
         "term": "hadrole",
-        "score": 0.8619,
+        "score": 0.8637,
         "evidence": []
       },
       {
         "term": "atlocation",
-        "score": 0.7984,
+        "score": 0.8007,
         "evidence": []
       }
     ],
     "page-035": [
       {
         "term": "prov",
-        "score": 1.1945,
+        "score": 1.2001,
         "evidence": []
       },
       {
         "term": "mapping context",
-        "score": 1.0511,
+        "score": 1.0407,
         "evidence": []
       },
       {
         "term": "activity",
-        "score": 1.0294,
+        "score": 0.973,
         "evidence": []
       }
     ],
     "page-036": [
       {
         "term": "prov",
-        "score": 1.5254,
+        "score": 1.5326,
         "evidence": []
       },
       {
         "term": "derivation",
-        "score": 1.1906,
+        "score": 1.1876,
         "evidence": []
       },
       {
         "term": "generatedentity",
-        "score": 0.8584,
+        "score": 0.8602,
         "evidence": []
       }
     ],
     "page-037": [
       {
         "term": "prov",
-        "score": 1.2765,
+        "score": 1.2825,
         "evidence": []
       },
       {
         "term": "qualification pattern",
-        "score": 1.214,
+        "score": 1.2094,
         "evidence": []
       },
       {
         "term": "attribution",
-        "score": 1.1144,
+        "score": 1.1117,
         "evidence": []
       },
       {
         "term": "mapping context",
-        "score": 1.0511,
+        "score": 1.0407,
         "evidence": []
       }
     ],
     "page-038": [
       {
         "term": "prov",
-        "score": 1.3488,
+        "score": 1.3551,
         "evidence": []
       },
       {
         "term": "delegation",
-        "score": 1.2112,
+        "score": 1.2155,
         "evidence": []
       },
       {
         "term": "delegate",
-        "score": 0.8419,
+        "score": 0.8438,
         "evidence": []
       }
     ],
     "page-039": [
       {
         "term": "property prov",
-        "score": 1.8582,
+        "score": 1.87,
         "evidence": []
       },
       {
         "term": "datatype xsd",
-        "score": 1.2522,
+        "score": 1.2614,
         "evidence": []
       },
       {
         "term": "qualification pattern",
-        "score": 1.214,
+        "score": 1.2094,
         "evidence": []
       },
       {
         "term": "mapping context",
-        "score": 1.0511,
+        "score": 1.0407,
         "evidence": []
       },
       {
         "term": "time map",
-        "score": 0.98,
+        "score": 0.9615,
         "evidence": []
       }
     ],
     "page-040": [
       {
         "term": "property prov",
-        "score": 1.6242,
+        "score": 1.634,
         "evidence": []
       },
       {
         "term": "invalidation",
-        "score": 1.2518,
+        "score": 1.2558,
         "evidence": []
       },
       {
         "term": "attime",
-        "score": 0.9578,
+        "score": 0.961,
         "evidence": []
       }
     ],
     "page-041": [
       {
         "term": "properties prov",
-        "score": 2.0251,
+        "score": 2.0342,
         "evidence": []
       },
       {
         "term": "properties activity",
-        "score": 1.2961,
+        "score": 1.2544,
         "evidence": []
       },
       {
         "term": "qualification pattern",
-        "score": 1.214,
+        "score": 1.2094,
         "evidence": []
       },
       {
         "term": "time map",
-        "score": 0.98,
+        "score": 0.9615,
         "evidence": []
       },
       {
         "term": "mapping context",
-        "score": 0.959,
+        "score": 0.9497,
         "evidence": []
       }
     ],
     "page-042": [
       {
         "term": "prov",
-        "score": 1.4135,
+        "score": 1.4201,
         "evidence": []
       },
       {
         "term": "hadactivity",
-        "score": 0.7684,
+        "score": 0.7709,
         "evidence": []
       },
       {
         "term": "attime",
-        "score": 0.759,
+        "score": 0.7616,
         "evidence": []
       }
     ],
     "page-043": [
       {
         "term": "prov",
-        "score": 1.3488,
+        "score": 1.3551,
         "evidence": []
       },
       {
         "term": "influencer",
-        "score": 1.171,
+        "score": 1.1742,
         "evidence": []
       },
       {
         "term": "influence",
-        "score": 1.0246,
+        "score": 0.9394,
         "evidence": []
       }
     ],
     "page-044": [
       {
         "term": "qualification pattern",
-        "score": 1.7785,
+        "score": 1.7718,
         "evidence": []
       },
       {
         "term": "define qualification",
-        "score": 1.5546,
+        "score": 1.5574,
         "evidence": []
       },
       {
         "term": "provext",
-        "score": 1.4438,
+        "score": 1.4475,
         "evidence": []
       },
       {
         "term": "prov relations",
-        "score": 1.4183,
+        "score": 1.4063,
         "evidence": []
       }
     ],
     "page-045": [
       {
         "term": "prefix provext",
-        "score": 2.4285,
+        "score": 2.4358,
         "evidence": []
       },
       {
         "term": "properties provext",
-        "score": 2.3126,
+        "score": 2.3194,
         "evidence": []
       },
       {
         "term": "alternate",
-        "score": 1.4866,
+        "score": 1.4736,
         "evidence": []
       },
       {
         "term": "prov extension",
-        "score": 1.3197,
+        "score": 1.3206,
         "evidence": []
       },
       {
         "term": "qualification pattern",
-        "score": 1.214,
+        "score": 1.2094,
         "evidence": []
       }
     ],
     "page-046": [
       {
         "term": "membership",
-        "score": 1.1018,
+        "score": 1.0975,
         "evidence": []
       },
       {
         "term": "entity",
-        "score": 1.0602,
+        "score": 1.0657,
         "evidence": []
       },
       {
         "term": "provext",
-        "score": 1.0286,
+        "score": 1.0313,
         "evidence": []
       },
       {
         "term": "prov-o",
-        "score": 0.8684,
+        "score": 0.8723,
         "evidence": []
       },
       {
         "term": "prov-dm",
-        "score": 0.8014,
-        "evidence": []
-      },
-      {
-        "term": "activity",
-        "score": 0.7964,
+        "score": 0.8058,
         "evidence": []
       },
       {
         "term": "provenance",
-        "score": 0.7922,
+        "score": 0.7966,
+        "evidence": []
+      },
+      {
+        "term": "qualified",
+        "score": 0.7853,
         "evidence": []
       }
     ],
     "page-047": [
       {
         "term": "type prov",
-        "score": 1.993,
+        "score": 2.0051,
         "evidence": []
       },
       {
         "term": "prov-xml",
-        "score": 1.0981,
+        "score": 1.1003,
         "evidence": []
       },
       {
         "term": "subrelations",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "subtypes",
-        "score": 1.0074,
-        "evidence": []
-      },
-      {
-        "term": "encoded",
-        "score": 0.774,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "json-ld context",
-        "score": 0.7666,
+        "score": 0.7679,
+        "evidence": []
+      },
+      {
+        "term": "encoded",
+        "score": 0.7438,
         "evidence": []
       }
     ],
     "page-048": [
       {
         "term": "roundtrip testing",
-        "score": 1.5899,
-        "evidence": []
-      },
-      {
-        "term": "programming language",
-        "score": 1.4487,
+        "score": 1.5886,
         "evidence": []
       },
       {
         "term": "prov-jsonld serialization",
-        "score": 1.4378,
+        "score": 1.4511,
+        "evidence": []
+      },
+      {
+        "term": "programming language",
+        "score": 1.4334,
         "evidence": []
       },
       {
         "term": "some programming",
-        "score": 1.1651,
-        "evidence": []
-      },
-      {
-        "term": "internal representation",
-        "score": 1.1512,
+        "score": 1.1597,
         "evidence": []
       },
       {
         "term": "same programming",
-        "score": 1.1397,
+        "score": 1.1366,
+        "evidence": []
+      },
+      {
+        "term": "internal representation",
+        "score": 1.1039,
         "evidence": []
       }
     ],
     "page-049": [
       {
         "term": "definitions qualifiedname",
-        "score": 2.6459,
+        "score": 2.6523,
         "evidence": []
       },
       {
         "term": "roundtrip testing",
-        "score": 2.0583,
+        "score": 2.0574,
         "evidence": []
       },
       {
         "term": "java org",
-        "score": 1.7951,
+        "score": 1.7733,
         "evidence": []
       },
       {
         "term": "non prov",
-        "score": 1.7394,
+        "score": 1.748,
         "evidence": []
       }
     ],
     "page-050": [
       {
         "term": "lang string",
-        "score": 1.3891,
+        "score": 1.3809,
         "evidence": []
       },
       {
         "term": "typed value",
-        "score": 1.23,
+        "score": 1.225,
         "evidence": []
       },
       {
         "term": "arrayoflabelvalues",
-        "score": 1.0022,
+        "score": 1.0029,
         "evidence": []
       }
     ],
     "page-051": [
       {
         "term": "definitions prov",
-        "score": 3.1787,
+        "score": 3.1935,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.6065,
+        "score": 1.6161,
         "evidence": []
       },
       {
         "term": "oneof",
-        "score": 1.0364,
+        "score": 1.039,
         "evidence": []
       },
       {
         "term": "items",
-        "score": 0.6969,
+        "score": 0.6942,
         "evidence": []
       },
       {
         "term": "statementorbundle",
-        "score": 0.6073,
+        "score": 0.6079,
         "evidence": []
       }
     ],
     "page-052": [
       {
         "term": "definitions prov",
-        "score": 2.4557,
+        "score": 2.4671,
         "evidence": []
       },
       {
         "term": "definitions array",
-        "score": 2.1822,
+        "score": 2.1967,
         "evidence": []
       },
       {
         "term": "definitions qual",
-        "score": 2.0988,
+        "score": 2.1086,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.5747,
+        "score": 1.5841,
         "evidence": []
       },
       {
         "term": "definit",
-        "score": 0.8067,
+        "score": 0.8089,
         "evidence": []
       }
     ],
     "page-053": [
       {
         "term": "definitions qual",
-        "score": 2.5936,
+        "score": 2.6058,
         "evidence": []
       },
       {
         "term": "definitions datet",
-        "score": 2.5733,
+        "score": 2.5815,
         "evidence": []
       },
       {
         "term": "definitions array",
-        "score": 2.5185,
+        "score": 2.5354,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.7427,
+        "score": 1.7531,
         "evidence": []
       },
       {
         "term": "definit",
-        "score": 0.8067,
+        "score": 0.8089,
         "evidence": []
       },
       {
         "term": "prov",
-        "score": 0.6744,
+        "score": 0.6776,
         "evidence": []
       }
     ],
     "page-054": [
       {
         "term": "definitions qual",
-        "score": 2.6025,
+        "score": 2.6148,
         "evidence": []
       },
       {
         "term": "definitions array",
-        "score": 2.3193,
+        "score": 2.3346,
         "evidence": []
       },
       {
         "term": "definitions datet",
-        "score": 2.2617,
+        "score": 2.2692,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.6922,
+        "score": 1.7023,
         "evidence": []
       },
       {
         "term": "definit",
-        "score": 1.0179,
+        "score": 1.0207,
         "evidence": []
       },
       {
         "term": "patternproperties",
-        "score": 0.8131,
+        "score": 0.8174,
         "evidence": []
       }
     ],
     "page-055": [
       {
         "term": "definitions qual",
-        "score": 2.5176,
+        "score": 2.5295,
         "evidence": []
       },
       {
         "term": "definitions array",
-        "score": 2.1231,
+        "score": 2.137,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.5747,
+        "score": 1.5841,
         "evidence": []
       },
       {
         "term": "definit",
-        "score": 0.8067,
+        "score": 0.8089,
         "evidence": []
       },
       {
         "term": "additionalproperties",
-        "score": 0.7691,
+        "score": 0.7737,
         "evidence": []
       }
     ],
     "page-056": [
       {
         "term": "definitions qual",
-        "score": 2.5566,
+        "score": 2.5687,
         "evidence": []
       },
       {
         "term": "definitions array",
-        "score": 2.0227,
+        "score": 2.0358,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.541,
+        "score": 1.5502,
         "evidence": []
       },
       {
         "term": "prov",
-        "score": 0.851,
+        "score": 0.855,
         "evidence": []
       },
       {
         "term": "definit",
-        "score": 0.8067,
+        "score": 0.8089,
         "evidence": []
       }
     ],
     "page-057": [
       {
         "term": "definitions qual",
-        "score": 2.0988,
+        "score": 2.1086,
         "evidence": []
       },
       {
         "term": "definitions array",
-        "score": 1.7478,
+        "score": 1.7581,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.5747,
+        "score": 1.5841,
         "evidence": []
       },
       {
         "term": "alternate",
-        "score": 0.9978,
+        "score": 0.989,
         "evidence": []
       },
       {
         "term": "definit",
-        "score": 0.8067,
+        "score": 0.8089,
         "evidence": []
       }
     ],
     "page-058": [
       {
         "term": "definitions qua",
-        "score": 2.9432,
+        "score": 2.951,
         "evidence": []
       },
       {
         "term": "definitions arra",
-        "score": 2.3441,
+        "score": 2.3538,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.6065,
+        "score": 1.6161,
         "evidence": []
       },
       {
         "term": "definit",
-        "score": 1.0179,
+        "score": 1.0207,
         "evidence": []
       },
       {
         "term": "patternproperties",
-        "score": 0.8131,
+        "score": 0.8174,
         "evidence": []
       }
     ],
     "page-059": [
       {
         "term": "definitions qual",
-        "score": 1.9957,
+        "score": 2.0051,
         "evidence": []
       },
       {
         "term": "definitions array",
-        "score": 1.6373,
+        "score": 1.6478,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 1.2798,
+        "score": 1.2874,
         "evidence": []
       },
       {
         "term": "prov",
-        "score": 0.851,
+        "score": 0.855,
         "evidence": []
       }
     ],
     "page-060": [
       {
         "term": "prov",
-        "score": 0.988,
+        "score": 0.9926,
         "evidence": []
       },
       {
         "term": "rdfs",
-        "score": 0.784,
+        "score": 0.7863,
         "evidence": []
       },
       {
         "term": "ref",
-        "score": 0.7705,
+        "score": 0.7751,
         "evidence": []
       }
     ],
     "page-061": [
       {
         "term": "prov",
-        "score": 1.4135,
+        "score": 1.4201,
         "evidence": []
       },
       {
         "term": "entity",
-        "score": 0.9523,
+        "score": 0.9572,
         "evidence": []
       },
       {
         "term": "activity",
-        "score": 0.9246,
+        "score": 0.874,
         "evidence": []
       }
     ],
     "page-062": [
       {
         "term": "prov",
-        "score": 1.472,
+        "score": 1.4789,
         "evidence": []
       },
       {
         "term": "reverse",
-        "score": 0.7753,
+        "score": 0.7752,
         "evidence": []
       },
       {
         "term": "attime",
-        "score": 0.759,
+        "score": 0.7616,
         "evidence": []
       }
     ],
     "page-063": [
       {
         "term": "prov",
-        "score": 1.3488,
+        "score": 1.3551,
         "evidence": []
       },
       {
         "term": "reverse",
-        "score": 0.7753,
+        "score": 0.7752,
         "evidence": []
       },
       {
         "term": "invalidation",
-        "score": 0.7675,
+        "score": 0.77,
         "evidence": []
       }
     ],
     "page-064": [
       {
         "term": "prov",
-        "score": 1.472,
+        "score": 1.4789,
         "evidence": []
       },
       {
         "term": "influencer",
-        "score": 0.7993,
+        "score": 0.8015,
         "evidence": []
       },
       {
         "term": "reverse",
-        "score": 0.7753,
+        "score": 0.7752,
         "evidence": []
       }
     ],
     "page-065": [
       {
         "term": "prov",
-        "score": 1.4135,
-        "evidence": []
-      },
-      {
-        "term": "activity",
-        "score": 0.7964,
+        "score": 1.4201,
         "evidence": []
       },
       {
         "term": "hadactivity",
-        "score": 0.7684,
+        "score": 0.7709,
+        "evidence": []
+      },
+      {
+        "term": "activity",
+        "score": 0.7528,
         "evidence": []
       }
     ],
     "page-066": [
       {
         "term": "provext",
-        "score": 1.4438,
+        "score": 1.4475,
         "evidence": []
       },
       {
         "term": "prov",
-        "score": 0.851,
+        "score": 0.855,
         "evidence": []
       },
       {
         "term": "generalentity",
-        "score": 0.8419,
+        "score": 0.8438,
         "evidence": []
       }
     ],
     "page-067": [
       {
         "term": "type owl",
-        "score": 1.4554,
+        "score": 1.4645,
         "evidence": []
       },
       {
         "term": "prefix",
-        "score": 1.3629,
+        "score": 1.3683,
         "evidence": []
       },
       {
         "term": "provext",
-        "score": 1.3294,
+        "score": 1.3329,
         "evidence": []
       },
       {
         "term": "alternate",
-        "score": 1.2063,
+        "score": 1.1958,
         "evidence": []
       }
     ],
     "page-068": [
       {
         "term": "alternate rdf",
-        "score": 2.1825,
+        "score": 2.1822,
         "evidence": []
       },
       {
         "term": "type owl",
-        "score": 2.1457,
+        "score": 2.1589,
         "evidence": []
       },
       {
         "term": "rdfs",
-        "score": 1.8304,
+        "score": 1.8358,
         "evidence": []
       },
       {
         "term": "domain prov",
-        "score": 1.719,
+        "score": 1.7037,
         "evidence": []
       },
       {
         "term": "entity",
-        "score": 1.1514,
+        "score": 1.1573,
         "evidence": []
       }
     ],
     "page-069": [
       {
         "term": "pierre-antoine champin",
-        "score": 1.8162,
+        "score": 1.8191,
         "evidence": []
       },
       {
         "term": "gregg kellogg",
-        "score": 1.3798,
+        "score": 1.3859,
         "evidence": []
       },
       {
         "term": "w3c",
-        "score": 0.9635,
+        "score": 0.9683,
         "evidence": []
       },
       {
         "term": "owl",
-        "score": 0.9231,
+        "score": 0.9265,
         "evidence": []
       }
     ],
     "page-070": [
       {
         "term": "w3c recommendation",
-        "score": 2.5703,
+        "score": 2.5767,
         "evidence": []
       },
       {
         "term": "paolo missier",
-        "score": 1.8694,
+        "score": 1.8718,
         "evidence": []
       },
       {
         "term": "luc moreau",
-        "score": 1.7114,
+        "score": 1.715,
         "evidence": []
       },
       {
         "term": "url",
-        "score": 1.2403,
+        "score": 1.2436,
         "evidence": []
       },
       {
         "term": "april",
-        "score": 1.2369,
+        "score": 1.2121,
         "evidence": []
       },
       {
         "term": "ietf",
-        "score": 1.08,
+        "score": 1.0839,
         "evidence": []
       },
       {
         "term": "xml schema",
-        "score": 0.9981,
+        "score": 1.0001,
         "evidence": []
       },
       {
-        "term": "current practice",
-        "score": 0.8733,
+        "term": "prov-xml",
+        "score": 0.8719,
         "evidence": []
       }
     ],
     "page-071": [
       {
         "term": "w3c working",
-        "score": 1.736,
+        "score": 1.702,
         "evidence": []
       },
       {
         "term": "working group",
-        "score": 1.1268,
+        "score": 1.0697,
         "evidence": []
       },
       {
-        "term": "april",
-        "score": 0.957,
+        "term": "poster",
+        "score": 1.0081,
         "evidence": []
       }
     ]

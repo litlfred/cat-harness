@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-base\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.394Z\n"
+"POT-Creation-Date: 2026-11-01T17:11:52.331Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -164,11 +164,6 @@ msgstr ""
 msgid "none"
 msgstr ""
 
-#: processes/sdlc/merge-base.bpmn:83
-#. Diagram element documentation
-msgid "qa-sidecar paths first, through `qa:resolve-conflicts`; take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction."
-msgstr ""
-
 #: processes/sdlc/merge-base.bpmn:144
 #. Diagram element documentation
 msgid "Quiet is not silent. The finding stays in the PR's comment, in the member's job summary, in a warning annotation and in that member's own red job; only the email is withheld. `1xhc`: a report nobody receives must still be a report somebody can find."
@@ -209,9 +204,14 @@ msgstr ""
 msgid "Run red: one email"
 msgstr ""
 
+#: processes/sdlc/merge-base.bpmn:83
+#. Diagram element documentation
+msgid "take-base paths take the base's copy; generated-regions files take the base's side of each hunk, which lies inside a generated region by construction."
+msgstr ""
+
 #: processes/sdlc/merge-base.bpmn:71
 #. Diagram element documentation
-msgid "The first matching pattern decides: take-base, generated-regions, qa-sidecar, or refuse. A path no pattern names refuses."
+msgid "The first matching pattern decides: take-base, owned-tree, generated-regions, or refuse. A path no pattern names refuses."
 msgstr ""
 
 #: processes/sdlc/merge-base.bpmn:150

@@ -3,77 +3,77 @@
   "entry": "arxiv-2608.18294v2",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
-      "term": "conditional moment",
-      "score": 34.5209,
-      "evidence": []
-    },
-    {
       "term": "proxy labels",
-      "score": 34.4397,
+      "score": 34.322,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "conditional bridge",
-      "score": 32.8895,
+      "term": "conditional moment",
+      "score": 34.2825,
       "evidence": []
     },
     {
       "term": "conditional independence",
-      "score": 32.7868,
+      "score": 32.7405,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "downstream moment",
-      "score": 32.7271,
+      "score": 32.6875,
+      "evidence": []
+    },
+    {
+      "term": "conditional bridge",
+      "score": 32.5856,
       "evidence": []
     },
     {
       "term": "gold-standard labels",
-      "score": 30.9643,
+      "score": 30.7982,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "dmm moment",
-      "score": 30.803,
+      "score": 30.7195,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "imperfect labels",
-      "score": 28.5313,
+      "term": "downstream inference",
+      "score": 28.6122,
       "evidence": []
     },
     {
-      "term": "downstream inference",
-      "score": 28.4569,
+      "term": "imperfect labels",
+      "score": 28.3699,
       "evidence": []
     },
     {
       "term": "dmm estimator",
-      "score": 27.903,
+      "score": 28.0118,
       "evidence": []
     },
     {
       "term": "independent conditional",
-      "score": 27.644,
+      "score": 27.45,
       "evidence": []
     },
     {
       "term": "independence assumption",
-      "score": 26.889,
+      "score": 26.9009,
       "evidence": [
         "heading"
       ]
@@ -83,508 +83,508 @@
     "sec-000-introduction": [
       {
         "term": "gold-standard labels",
-        "score": 3.6672,
+        "score": 3.6575,
         "evidence": []
       },
       {
         "term": "downstream inference",
-        "score": 3.553,
+        "score": 3.5726,
         "evidence": []
       },
       {
         "term": "dawid skene",
-        "score": 3.4269,
+        "score": 3.4323,
         "evidence": []
       },
       {
         "term": "causal inference",
-        "score": 3.2176,
+        "score": 3.2209,
         "evidence": []
       },
       {
         "term": "imperfect measurements",
-        "score": 3.1611,
+        "score": 3.1497,
         "evidence": []
       },
       {
         "term": "independence assumption",
-        "score": 3.1434,
-        "evidence": []
-      },
-      {
-        "term": "downstream analyses",
-        "score": 3.0582,
+        "score": 3.1452,
         "evidence": []
       },
       {
         "term": "conditional independence",
-        "score": 3.0558,
+        "score": 3.0548,
+        "evidence": []
+      },
+      {
+        "term": "error-prone variable",
+        "score": 3.0429,
         "evidence": []
       }
     ],
     "sec-001-the-problem-setting-and-existing-approaches": [
       {
         "term": "error-prone variable",
-        "score": 1.8031,
+        "score": 1.8055,
         "evidence": []
       },
       {
         "term": "downstream analysis",
-        "score": 1.18,
+        "score": 1.1696,
         "evidence": []
       },
       {
         "term": "annotation step",
-        "score": 1.055,
+        "score": 1.0418,
         "evidence": []
       }
     ],
     "sec-002-setup": [
       {
         "term": "linear regression",
-        "score": 1.6491,
+        "score": 1.6592,
         "evidence": []
       },
       {
         "term": "moment function",
-        "score": 1.6261,
+        "score": 1.6233,
         "evidence": []
       },
       {
         "term": "downstream analysis",
-        "score": 1.4163,
+        "score": 1.4071,
         "evidence": []
       },
       {
         "term": "regression model",
-        "score": 1.3204,
-        "evidence": []
-      },
-      {
-        "term": "rdβ",
-        "score": 1.0074,
+        "score": 1.3166,
         "evidence": []
       },
       {
         "term": "true label",
-        "score": 0.9689,
+        "score": 1.104,
+        "evidence": []
+      },
+      {
+        "term": "rdβ",
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "coefficients",
-        "score": 0.9684,
+        "score": 0.9716,
         "evidence": []
       },
       {
         "term": "estimators",
-        "score": 0.7549,
+        "score": 0.7575,
         "evidence": []
       }
     ],
     "sec-003-naive-approaches-ignoring-measurement-errors": [
       {
         "term": "downstream analysis",
-        "score": 1.31,
+        "score": 1.3003,
         "evidence": []
       },
       {
         "term": "classification errors",
-        "score": 1.1489,
+        "score": 1.1424,
         "evidence": []
       },
       {
         "term": "naive",
-        "score": 1.0455,
+        "score": 1.0481,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "multiple labels",
-        "score": 0.9971,
+        "score": 0.9917,
         "evidence": []
       }
     ],
     "sec-004-gold-standard-only-estimation": [
       {
         "term": "gold-standard labels",
-        "score": 1.823,
+        "score": 1.8171,
         "evidence": []
       },
       {
         "term": "sampling probability",
-        "score": 1.68,
+        "score": 1.6919,
         "evidence": []
       },
       {
         "term": "gso",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "estimation",
-        "score": 0.8365,
+        "score": 0.8406,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "units",
-        "score": 0.637,
+        "score": 0.6352,
         "evidence": []
       }
     ],
     "sec-005-debiased-inference-with-gold-standard-labels": [
       {
         "term": "dsl estimator",
-        "score": 2.6087,
+        "score": 2.6175,
         "evidence": []
       },
       {
         "term": "inference",
-        "score": 2.0382,
+        "score": 2.0498,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "gold-standard",
-        "score": 2.004,
+        "score": 2.0098,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "proxy labels",
-        "score": 1.8516,
+        "score": 1.847,
         "evidence": []
       },
       {
         "term": "bias-correction methods",
-        "score": 1.6886,
+        "score": 1.6799,
         "evidence": []
       },
       {
         "term": "valid inference",
-        "score": 1.6017,
+        "score": 1.6116,
         "evidence": []
       },
       {
         "term": "prediction model",
-        "score": 1.3135,
+        "score": 1.3076,
         "evidence": []
       },
       {
         "term": "known sampling",
-        "score": 1.2868,
+        "score": 1.2869,
         "evidence": []
       }
     ],
     "sec-006-assumptions": [
       {
         "term": "gold-standard labels",
-        "score": 1.3545,
+        "score": 1.3508,
         "evidence": []
       },
       {
         "term": "assume access",
-        "score": 0.8524,
+        "score": 0.8577,
         "evidence": []
       },
       {
         "term": "units",
-        "score": 0.4019,
+        "score": 0.4008,
         "evidence": []
       }
     ],
     "sec-007-debiased-inference-with-multiple-imperfect-measu": [
       {
         "term": "multiple imperfect",
-        "score": 3.3304,
+        "score": 3.3411,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "classical assumption",
-        "score": 2.6397,
+        "score": 2.6103,
         "evidence": []
       },
       {
         "term": "independence assumption",
-        "score": 2.5484,
+        "score": 2.5483,
         "evidence": []
       },
       {
         "term": "imperfect labels",
-        "score": 2.4666,
+        "score": 2.4574,
         "evidence": []
       },
       {
         "term": "classical conditional",
-        "score": 2.3573,
+        "score": 2.3263,
         "evidence": []
       },
       {
         "term": "gold-standard labels",
-        "score": 2.3104,
+        "score": 2.2993,
         "evidence": []
       },
       {
         "term": "proxy labels",
-        "score": 2.116,
+        "score": 2.1065,
         "evidence": []
       },
       {
         "term": "across labels",
-        "score": 1.8151,
+        "score": 1.8034,
         "evidence": []
       }
     ],
     "sec-008-identification": [
       {
-        "term": "bridge function",
-        "score": 1.554,
-        "evidence": []
-      },
-      {
         "term": "true label",
-        "score": 1.3997,
+        "score": 1.6194,
         "evidence": []
       },
       {
-        "term": "conditional classification",
-        "score": 1.3321,
+        "term": "bridge function",
+        "score": 1.5477,
         "evidence": []
       },
       {
         "term": "downstream moment",
-        "score": 1.3318,
+        "score": 1.3286,
+        "evidence": []
+      },
+      {
+        "term": "conditional classification",
+        "score": 1.328,
         "evidence": []
       },
       {
         "term": "classification rate",
-        "score": 1.2583,
+        "score": 1.2598,
         "evidence": []
       },
       {
         "term": "unbiased",
-        "score": 1.0494,
+        "score": 1.0519,
         "evidence": []
       }
     ],
     "sec-009-identification-of-conditional-classification-rat": [
       {
         "term": "conditional classification",
-        "score": 4.599,
+        "score": 4.5844,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "classification rates",
-        "score": 2.9048,
+        "score": 2.9122,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "conditional probability",
-        "score": 2.4601,
+        "score": 2.4587,
         "evidence": []
       },
       {
         "term": "kruskal uniqueness",
-        "score": 2.4063,
+        "score": 2.411,
         "evidence": []
       },
       {
         "term": "proxy-specific conditional",
-        "score": 2.3159,
+        "score": 2.3103,
         "evidence": []
       },
       {
         "term": "kruskal rank",
-        "score": 2.0172,
+        "score": 2.0312,
         "evidence": []
       },
       {
         "term": "anchoring rule",
-        "score": 1.9276,
+        "score": 2.004,
         "evidence": []
       },
       {
         "term": "latent classes",
-        "score": 1.8703,
+        "score": 1.8822,
         "evidence": []
       }
     ],
     "sec-010-identification-via-the-robust-bridge-function": [
       {
         "term": "robust bridge",
-        "score": 4.9979,
+        "score": 4.9627,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bridge function",
-        "score": 4.6072,
+        "score": 4.5738,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "downstream moment",
-        "score": 2.2692,
+        "score": 2.2629,
         "evidence": []
       },
       {
         "term": "bridge error",
-        "score": 2.2318,
+        "score": 2.213,
         "evidence": []
       },
       {
         "term": "observed-data law",
-        "score": 2.1424,
+        "score": 2.1471,
         "evidence": []
       },
       {
         "term": "conditional classification",
-        "score": 2.0698,
+        "score": 2.0636,
         "evidence": []
       },
       {
         "term": "unbiased downstream",
-        "score": 1.8756,
+        "score": 1.8831,
         "evidence": []
       },
       {
         "term": "classification rate",
-        "score": 1.752,
+        "score": 1.7538,
         "evidence": []
       }
     ],
     "sec-011-estimation-and-inference": [
       {
         "term": "dmm estimator",
-        "score": 3.3762,
+        "score": 3.3898,
         "evidence": []
       },
       {
         "term": "asymptotic variance",
-        "score": 3.1025,
+        "score": 3.1055,
         "evidence": []
       },
       {
         "term": "bridge variance",
-        "score": 2.9356,
+        "score": 2.9089,
         "evidence": []
       },
       {
         "term": "fold-specific nuisance",
-        "score": 2.869,
+        "score": 2.8759,
         "evidence": []
       },
       {
         "term": "conditional variance",
-        "score": 2.8352,
+        "score": 2.8259,
         "evidence": []
       },
       {
         "term": "nuisance function",
-        "score": 2.6855,
+        "score": 2.7028,
         "evidence": []
       },
       {
         "term": "asymptotic normality",
-        "score": 2.6225,
+        "score": 2.629,
         "evidence": []
       },
       {
-        "term": "single-proxy bridge",
-        "score": 2.3831,
+        "term": "conditional classification",
+        "score": 2.3689,
         "evidence": []
       }
     ],
     "sec-012-extensions": [
       {
         "term": "dependent variable",
-        "score": 1.3277,
+        "score": 1.322,
         "evidence": []
       },
       {
         "term": "extend",
-        "score": 0.6108,
+        "score": 0.6107,
         "evidence": []
       },
       {
         "term": "multicategory",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       }
     ],
     "sec-014-setup-and-identification": [
       {
         "term": "latent outcome",
-        "score": 1.7318,
+        "score": 1.72,
         "evidence": []
       },
       {
         "term": "outcome labels",
-        "score": 1.6936,
+        "score": 1.6679,
         "evidence": []
       },
       {
         "term": "anchoring conditions",
-        "score": 1.459,
+        "score": 1.4661,
         "evidence": []
       },
       {
         "term": "ϕdmm",
-        "score": 1.2646,
+        "score": 1.2655,
         "evidence": []
       },
       {
         "term": "moment function",
-        "score": 1.11,
-        "evidence": []
-      },
-      {
-        "term": "bridge",
-        "score": 1.0122,
+        "score": 1.1081,
         "evidence": []
       },
       {
         "term": "analogs",
-        "score": 1.0074,
+        "score": 1.0081,
+        "evidence": []
+      },
+      {
+        "term": "bridge",
+        "score": 0.9959,
         "evidence": []
       },
       {
         "term": "unique solution",
-        "score": 0.989,
+        "score": 0.9937,
         "evidence": []
       }
     ],
     "sec-015-estimation-and-inference": [
       {
         "term": "bβdmm",
-        "score": 1.1779,
+        "score": 1.1794,
         "evidence": []
       },
       {
         "term": "bhr",
-        "score": 1.0438,
+        "score": 1.0464,
         "evidence": []
       },
       {
         "term": "ϕdmm",
-        "score": 1.0022,
+        "score": 1.0029,
         "evidence": []
       },
       {
         "term": "estimation",
-        "score": 0.8365,
+        "score": 0.8406,
         "evidence": [
           "heading"
         ]
@@ -593,63 +593,63 @@
     "sec-016-multicategory-labels": [
       {
         "term": "multicategory",
-        "score": 3.7649,
+        "score": 3.7696,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "kruskal rank",
-        "score": 3.0828,
+        "score": 3.1135,
         "evidence": []
       },
       {
         "term": "multicategory latent",
-        "score": 3.0703,
-        "evidence": []
-      },
-      {
-        "term": "class-specific bridges",
-        "score": 2.9277,
-        "evidence": []
-      },
-      {
-        "term": "binary proxy",
-        "score": 2.8795,
+        "score": 3.0829,
         "evidence": []
       },
       {
         "term": "kruskal condition",
-        "score": 2.8598,
+        "score": 2.8859,
+        "evidence": []
+      },
+      {
+        "term": "class-specific bridges",
+        "score": 2.8852,
+        "evidence": []
+      },
+      {
+        "term": "binary proxy",
+        "score": 2.8846,
         "evidence": []
       },
       {
         "term": "multicategory analog",
-        "score": 2.7307,
+        "score": 2.7349,
         "evidence": []
       },
       {
-        "term": "joint proxy",
-        "score": 2.4325,
+        "term": "column rank",
+        "score": 2.4796,
         "evidence": []
       }
     ],
     "sec-017-designing-and-assessing-conditional-independence": [
       {
         "term": "conditional independence",
-        "score": 2.6391,
+        "score": 2.6389,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "assumption",
-        "score": 0.8865,
+        "score": 0.8839,
         "evidence": []
       },
       {
         "term": "designing",
-        "score": 0.8605,
+        "score": 0.803,
         "evidence": [
           "heading"
         ]
@@ -658,130 +658,130 @@
     "sec-018-making-the-conditional-independence-assumption-m": [
       {
         "term": "independence assumption",
-        "score": 3.5323,
+        "score": 3.5347,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "conditional independence",
-        "score": 3.3302,
+        "score": 3.3299,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "across annotators",
-        "score": 1.5329,
+        "score": 1.5381,
         "evidence": []
       },
       {
         "term": "proxies",
-        "score": 1.2994,
+        "score": 1.3042,
         "evidence": []
       },
       {
         "term": "group",
-        "score": 1.1647,
+        "score": 1.1286,
         "evidence": []
       },
       {
         "term": "task difficulty",
-        "score": 1.0698,
-        "evidence": []
-      },
-      {
-        "term": "researchers",
-        "score": 1.0349,
+        "score": 1.0606,
         "evidence": []
       },
       {
         "term": "open-source model",
-        "score": 1.0204,
+        "score": 1.0089,
+        "evidence": []
+      },
+      {
+        "term": "conditioning",
+        "score": 1.0087,
         "evidence": []
       }
     ],
     "sec-019-diagnostics-without-gold-standard-labels": [
       {
         "term": "conditional independence",
-        "score": 1.7915,
+        "score": 1.7908,
         "evidence": []
       },
       {
         "term": "independence assumption",
-        "score": 1.4848,
+        "score": 1.4868,
         "evidence": []
       },
       {
         "term": "label distribution",
-        "score": 1.2335,
+        "score": 1.2305,
         "evidence": []
       },
       {
         "term": "proxies",
-        "score": 1.0747,
+        "score": 1.0787,
         "evidence": []
       },
       {
         "term": "diagnostic",
-        "score": 0.938,
+        "score": 0.9413,
         "evidence": []
       },
       {
         "term": "bβdmm",
-        "score": 0.9334,
+        "score": 0.9347,
         "evidence": []
       },
       {
         "term": "edi",
-        "score": 0.8891,
+        "score": 0.8907,
         "evidence": []
       },
       {
         "term": "restrictions",
-        "score": 0.8532,
+        "score": 0.8572,
         "evidence": []
       }
     ],
     "sec-020-testing-and-bias-correction-with-small-gold-stan": [
       {
         "term": "dmm moment",
-        "score": 3.0557,
+        "score": 3.0449,
         "evidence": []
       },
       {
         "term": "dsl moment",
-        "score": 2.9314,
+        "score": 2.9193,
         "evidence": []
       },
       {
         "term": "cross-fitted dmm",
-        "score": 2.7506,
+        "score": 2.7576,
         "evidence": []
       },
       {
         "term": "full-data moment",
-        "score": 2.6982,
+        "score": 2.6848,
         "evidence": []
       },
       {
         "term": "conditional independence",
-        "score": 2.4976,
+        "score": 2.4975,
         "evidence": []
       },
       {
         "term": "moment function",
-        "score": 2.4067,
+        "score": 2.4001,
         "evidence": []
       },
       {
         "term": "independence assumption",
-        "score": 2.206,
+        "score": 2.2091,
         "evidence": []
       },
       {
         "term": "gold-standard",
-        "score": 2.004,
+        "score": 2.0098,
         "evidence": [
           "heading"
         ]
@@ -790,219 +790,219 @@
     "sec-021-simulation-and-empirical-validation": [
       {
         "term": "empirical validation",
-        "score": 2.74,
+        "score": 2.6935,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "simulation",
-        "score": 1.5991,
+        "score": 1.595,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "independence assumption",
-        "score": 1.4607,
+        "score": 1.4615,
         "evidence": []
       },
       {
         "term": "simulation study",
-        "score": 1.378,
+        "score": 1.3732,
         "evidence": []
       }
     ],
     "sec-022-simulation-study-platform-differences-in-politic": [
       {
         "term": "proxy labels",
-        "score": 2.6859,
+        "score": 2.6767,
         "evidence": []
       },
       {
         "term": "imperfect labels",
-        "score": 2.3705,
+        "score": 2.3585,
         "evidence": []
       },
       {
         "term": "majority-vote estimator",
-        "score": 2.1022,
+        "score": 2.1081,
         "evidence": []
       },
       {
         "term": "expert labels",
-        "score": 2.0612,
+        "score": 2.0317,
         "evidence": []
       },
       {
         "term": "rmse",
-        "score": 1.9649,
+        "score": 1.9674,
         "evidence": []
       },
       {
         "term": "informative labels",
-        "score": 1.9479,
-        "evidence": []
-      },
-      {
-        "term": "majority voting",
-        "score": 1.7413,
+        "score": 1.9369,
         "evidence": []
       },
       {
         "term": "empirical coverage",
-        "score": 1.7336,
+        "score": 1.7238,
+        "evidence": []
+      },
+      {
+        "term": "majority voting",
+        "score": 1.7161,
         "evidence": []
       }
     ],
     "sec-023-empirical-validation-accusations-of-wrongdoing-i": [
       {
         "term": "proxy labels",
-        "score": 2.6091,
+        "score": 2.6028,
         "evidence": []
       },
       {
         "term": "gold-standard labels",
-        "score": 2.5626,
+        "score": 2.5529,
         "evidence": []
       },
       {
         "term": "dmm estimator",
-        "score": 2.3693,
+        "score": 2.3784,
         "evidence": []
       },
       {
         "term": "wrongdoing",
-        "score": 2.2324,
+        "score": 2.2364,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "prefecture-level wrongdoing",
-        "score": 2.0637,
+        "score": 2.0668,
         "evidence": []
       },
       {
         "term": "naive majority",
-        "score": 2.0591,
+        "score": 2.0409,
         "evidence": []
       },
       {
         "term": "coverage rates",
-        "score": 1.6389,
+        "score": 1.6494,
         "evidence": []
       },
       {
         "term": "confidence intervals",
-        "score": 1.5927,
+        "score": 1.5962,
         "evidence": []
       }
     ],
     "sec-024-discussion": [
       {
         "term": "arxiv preprint",
-        "score": 3.2147,
+        "score": 3.1975,
         "evidence": []
       },
       {
         "term": "royal statistical",
-        "score": 2.875,
+        "score": 2.87,
         "evidence": []
       },
       {
         "term": "downstream inference",
-        "score": 2.823,
+        "score": 2.8386,
         "evidence": []
       },
       {
         "term": "causal inference",
-        "score": 2.7613,
+        "score": 2.7648,
         "evidence": []
       },
       {
         "term": "conditional independence",
-        "score": 2.624,
+        "score": 2.6232,
         "evidence": []
       },
       {
         "term": "political science",
-        "score": 2.6202,
+        "score": 2.5687,
         "evidence": []
       },
       {
         "term": "statistical society",
-        "score": 2.5628,
+        "score": 2.5404,
         "evidence": []
       },
       {
         "term": "eric tchetgen",
-        "score": 2.5179,
+        "score": 2.524,
         "evidence": []
       }
     ],
     "sec-025-proofs": [
       {
         "term": "folds",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       },
       {
         "term": "nuisance",
-        "score": 0.758,
+        "score": 0.7606,
         "evidence": []
       },
       {
         "term": "fitted",
-        "score": 0.7511,
+        "score": 0.7537,
         "evidence": []
       }
     ],
     "sec-026-proof-of-proposition-31-bounds-for-the-robust-br": [
       {
         "term": "robust bridge",
-        "score": 2.8008,
+        "score": 2.7812,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "bridge error",
-        "score": 1.5408,
+        "score": 1.5331,
         "evidence": []
       },
       {
         "term": "bounded away",
-        "score": 1.4558,
+        "score": 1.453,
         "evidence": []
       },
       {
         "term": "class contrasts",
-        "score": 1.3512,
+        "score": 1.3556,
         "evidence": []
       },
       {
         "term": "nuisance functions",
-        "score": 1.2854,
+        "score": 1.2816,
         "evidence": []
       },
       {
         "term": "fitted class",
-        "score": 1.1945,
+        "score": 1.2,
         "evidence": []
       }
     ],
     "sec-027-proof-of-theorem-32-second-order-remainder-for-t": [
       {
         "term": "moment function",
-        "score": 3.8441,
+        "score": 3.8328,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "ψdmm",
-        "score": 2.7709,
+        "score": 2.7745,
         "evidence": []
       },
       {
@@ -1012,127 +1012,127 @@
       },
       {
         "term": "remainder",
-        "score": 2.1157,
+        "score": 2.0584,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "moment contrast",
-        "score": 1.9878,
+        "score": 1.9565,
         "evidence": []
       },
       {
         "term": "proxy-specific nuisance",
-        "score": 1.8647,
+        "score": 1.8693,
         "evidence": []
       },
       {
         "term": "bβdmm",
-        "score": 1.7668,
+        "score": 1.7691,
         "evidence": []
       },
       {
         "term": "asymptotic normality",
-        "score": 1.7149,
+        "score": 1.7185,
         "evidence": []
       }
     ],
     "sec-028-details-for-the-efficiency-discussion": [
       {
         "term": "added proxy",
-        "score": 1.2269,
+        "score": 1.222,
         "evidence": []
       },
       {
         "term": "bridge",
-        "score": 1.1269,
+        "score": 1.1087,
         "evidence": []
       },
       {
         "term": "equation",
-        "score": 0.9794,
+        "score": 0.9797,
         "evidence": []
       },
       {
         "term": "conditional",
-        "score": 0.9118,
+        "score": 0.9073,
         "evidence": []
       },
       {
         "term": "edi",
-        "score": 0.8891,
+        "score": 0.8907,
         "evidence": []
       },
       {
         "term": "nuisance",
-        "score": 0.758,
+        "score": 0.7606,
         "evidence": []
       },
       {
         "term": "proxies",
-        "score": 0.7336,
+        "score": 0.7363,
         "evidence": []
       }
     ],
     "sec-029-additional-details-on-the-experiments": [
       {
         "term": "latent-class",
-        "score": 0.5352,
+        "score": 0.5363,
         "evidence": []
       },
       {
         "term": "application-specific",
-        "score": 0.5052,
+        "score": 0.5066,
         "evidence": []
       },
       {
         "term": "clarify",
-        "score": 0.4976,
+        "score": 0.4893,
         "evidence": []
       }
     ],
     "sec-030-scope-and-relationship-to-the-original-applicati": [
       {
         "term": "original",
-        "score": 1.5792,
+        "score": 1.5751,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "original analysis",
-        "score": 1.3351,
+        "score": 1.3114,
         "evidence": []
       },
       {
         "term": "original study",
-        "score": 1.2879,
+        "score": 1.2834,
         "evidence": []
       },
       {
         "term": "ads",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "dmm",
-        "score": 0.9605,
+        "score": 0.9636,
         "evidence": []
       },
       {
         "term": "prefecture-level",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       },
       {
         "term": "coefficient",
-        "score": 0.8922,
+        "score": 0.8958,
         "evidence": []
       },
       {
         "term": "expert-coded",
-        "score": 0.8752,
+        "score": 0.8769,
         "evidence": []
       }
     ],
@@ -1144,211 +1144,211 @@
       },
       {
         "term": "pan chen",
-        "score": 1.3011,
+        "score": 1.3027,
         "evidence": []
       },
       {
         "term": "expit",
-        "score": 1.1593,
+        "score": 1.161,
         "evidence": []
       },
       {
         "term": "nuisance",
-        "score": 0.9565,
+        "score": 0.9597,
         "evidence": []
       },
       {
         "term": "likelihood",
-        "score": 0.6729,
+        "score": 0.6761,
         "evidence": []
       }
     ],
     "sec-032-expectationmaximization-algorithm": [
       {
         "term": "logistic regression",
-        "score": 1.7787,
+        "score": 1.7856,
         "evidence": []
       },
       {
         "term": "arg max",
-        "score": 1.6846,
+        "score": 1.6711,
         "evidence": []
       },
       {
         "term": "class-specific",
-        "score": 0.9617,
+        "score": 0.9627,
         "evidence": []
       },
       {
         "term": "proxy",
-        "score": 0.9377,
+        "score": 0.9427,
         "evidence": []
       },
       {
         "term": "cross-fitting",
-        "score": 0.8766,
+        "score": 0.8782,
         "evidence": []
       },
       {
         "term": "parametric",
-        "score": 0.8482,
-        "evidence": []
-      },
-      {
-        "term": "log",
-        "score": 0.828,
+        "score": 0.8501,
         "evidence": []
       },
       {
         "term": "algorithm",
-        "score": 0.8093,
+        "score": 0.8303,
         "evidence": [
           "heading"
         ]
+      },
+      {
+        "term": "log",
+        "score": 0.7933,
+        "evidence": []
       }
     ],
     "sec-033-from-the-em-nuisance-fit-to-dmm": [
       {
         "term": "mij",
-        "score": 1.8032,
+        "score": 1.8043,
         "evidence": []
       },
       {
         "term": "bhr",
-        "score": 1.2118,
+        "score": 1.2148,
         "evidence": []
       },
       {
         "term": "estimate solves",
-        "score": 1.189,
+        "score": 1.1965,
         "evidence": []
       }
     ],
     "sec-034-monte-carlo-simulations": [
       {
         "term": "monte carlo",
-        "score": 2.7993,
+        "score": 2.8112,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "expert labels",
-        "score": 1.8711,
+        "score": 1.8388,
         "evidence": []
       },
       {
         "term": "calibration models",
-        "score": 1.8219,
+        "score": 1.8243,
         "evidence": []
       },
       {
         "term": "multi shot",
-        "score": 1.64,
+        "score": 1.629,
         "evidence": []
       },
       {
         "term": "original expert",
-        "score": 1.403,
+        "score": 1.3792,
         "evidence": []
       },
       {
         "term": "same logistic",
-        "score": 1.3529,
+        "score": 1.352,
         "evidence": []
       },
       {
         "term": "promote",
-        "score": 1.3094,
+        "score": 1.2654,
         "evidence": []
       },
       {
         "term": "gpt multi",
-        "score": 1.2292,
+        "score": 1.2213,
         "evidence": []
       }
     ],
     "sec-035-empirical-validation": [
       {
         "term": "gpt shot",
-        "score": 2.9852,
+        "score": 2.9984,
         "evidence": []
       },
       {
         "term": "llama shot",
-        "score": 2.8342,
+        "score": 2.8442,
         "evidence": []
       },
       {
         "term": "full-sample expert-label",
-        "score": 2.2343,
+        "score": 2.2362,
         "evidence": []
       },
       {
         "term": "proxy labels",
-        "score": 2.1046,
+        "score": 2.0989,
         "evidence": []
       },
       {
         "term": "gpt multi",
-        "score": 1.975,
+        "score": 1.9618,
         "evidence": []
       },
       {
         "term": "expert labels",
-        "score": 1.8013,
+        "score": 1.7725,
         "evidence": []
       },
       {
         "term": "naive",
-        "score": 1.6571,
+        "score": 1.6612,
         "evidence": []
       },
       {
         "term": "dmm",
-        "score": 1.5953,
+        "score": 1.6006,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "imperfect measurements",
-        "score": 2.1194,
+        "score": 2.1117,
         "evidence": []
       },
       {
         "term": "debiased inference",
-        "score": 1.9789,
+        "score": 1.9868,
         "evidence": []
       },
       {
         "term": "downstream analyses",
-        "score": 1.766,
+        "score": 1.736,
         "evidence": []
       },
       {
         "term": "gold-standard labels",
-        "score": 1.7092,
+        "score": 1.7045,
         "evidence": []
       },
       {
         "term": "valid inference",
-        "score": 1.6894,
+        "score": 1.6998,
         "evidence": []
       },
       {
         "term": "political science",
-        "score": 1.4452,
+        "score": 1.416,
         "evidence": []
       },
       {
         "term": "multiple imperfect",
-        "score": 1.3328,
+        "score": 1.337,
         "evidence": []
       },
       {
         "term": "edu url",
-        "score": 1.3003,
+        "score": 1.2741,
         "evidence": []
       }
     ]
