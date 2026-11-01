@@ -1,0 +1,21 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/"
+    }
+  ],
+  "@id": "library/figl-2018-what-we-know-dmn-emisa/sections/page-002",
+  "@type": [
+    "doco:Section"
+  ],
+  "title": "Page 2",
+  "pageStart": 2,
+  "pageEnd": 2,
+  "contains": [
+    "library/figl-2018-what-we-know-dmn-emisa/blocks/prose-page-002"
+  ],
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/figl-2018-what-we-know-dmn-emisa/manifest.jsonld",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/figl-2018-what-we-know-dmn-emisa/manifest.jsonld",
+  "provenance": "ingested"
+}

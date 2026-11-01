@@ -1,0 +1,21 @@
+{
+  "@context": [
+    "https://litlfred.github.io/cat-harness/ns/context/v1.jsonld",
+    {
+      "@base": "https://litlfred.github.io/folio/"
+    }
+  ],
+  "@id": "library/moeller-winter-reichert-2025-cognitive-factors-slr/sections/sec-012",
+  "@type": [
+    "doco:Section"
+  ],
+  "title": "Reporting the Results",
+  "pageStart": 10,
+  "pageEnd": 10,
+  "contains": [
+    "library/moeller-winter-reichert-2025-cognitive-factors-slr/blocks/prose-sec-012"
+  ],
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/moeller-winter-reichert-2025-cognitive-factors-slr/manifest.jsonld",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/moeller-winter-reichert-2025-cognitive-factors-slr/manifest.jsonld",
+  "provenance": "ingested"
+}

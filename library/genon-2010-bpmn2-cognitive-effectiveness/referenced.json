@@ -1,0 +1,34 @@
+{
+  "$schema": "folio-referenced-source/v1",
+  "identity": {
+    "title": "Analysing the Cognitive Effectiveness of the BPMN 2.0 Visual Notation",
+    "version": "LNCS 6563",
+    "document_number": "doi:10.1007/978-3-642-19440-5_25",
+    "date": "2011-01",
+    "publisher": "Springer (SLE 2010, LNCS 6563:377-396) / University of Namur PReCISE"
+  },
+  "source": {
+    "file": "genon-2010-bpmn2-cognitive-effectiveness.pdf",
+    "sha256": "90fa06a357cf9e6c169df7756b20e773540cf7b70089b2f2e4e55a1824192b1f",
+    "bytes": 6316081,
+    "mtime": "2026-10-31T10:39:10Z",
+    "mimetype_sniffed": "application/pdf",
+    "mimetype_source": "magic-bytes"
+  },
+  "outline": [],
+  "outline_source": "none",
+  "materialization": {
+    "$schema": "folio-materialization/v1",
+    "state": "referenced",
+    "provenance": {
+      "upstream": {
+        "url": "https://web.archive.org/web/20131228070057id_/http://www.info.fundp.ac.be/~nge/BPMN/BPMN2_PoN_Analysis.pdf"
+      }
+    },
+    "note": "Text withheld by licence; the bytes identified by `source.sha256` were read once to take this record."
+  },
+  "withheld": {
+    "what": "all text, figures and tables",
+    "why": "Conference paper under Springer-Verlag copyright (SLE 2010, LNCS 6563:377-396, doi:10.1007/978-3-642-19440-5_25); companion 71-page University of Namur PReCISE technical report carries no open redistribution licence. Recorded as bibliographic reference with structured empirical notes only."
+  }
+}
