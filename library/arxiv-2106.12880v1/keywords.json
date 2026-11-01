@@ -3,507 +3,507 @@
   "entry": "arxiv-2106.12880v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2257,
-    "terms": 15326,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "quality process",
-      "score": 29.9542,
+      "score": 29.7775,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "modeling process",
-      "score": 28.2136,
+      "score": 27.9274,
       "evidence": []
     },
     {
       "term": "process readers",
-      "score": 27.8558,
+      "score": 27.7018,
       "evidence": []
     },
     {
       "term": "process modelers",
-      "score": 27.4171,
+      "score": 27.3214,
       "evidence": []
     },
     {
       "term": "process models",
-      "score": 26.2763,
+      "score": 26.1432,
       "evidence": []
     },
     {
       "term": "model comprehension",
-      "score": 25.1197,
+      "score": 24.8447,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "process knowledge",
-      "score": 24.5375,
+      "score": 24.3864,
       "evidence": []
     },
     {
       "term": "process information",
-      "score": 23.7577,
-      "evidence": []
-    },
-    {
-      "term": "regarding process",
-      "score": 23.5331,
+      "score": 23.6126,
       "evidence": []
     },
     {
       "term": "comprehension framework",
-      "score": 23.4096,
+      "score": 23.4464,
       "evidence": [
         "heading"
       ]
     },
     {
+      "term": "regarding process",
+      "score": 23.3991,
+      "evidence": []
+    },
+    {
       "term": "comprehensible process",
-      "score": 22.6188,
+      "score": 22.5202,
       "evidence": []
     },
     {
       "term": "proper process",
-      "score": 21.8901,
+      "score": 21.7919,
       "evidence": []
     }
   ],
   "sections": {
     "sec-000-1-introduction": [
       {
-        "term": "process readers",
-        "score": 2.8078,
+        "term": "process modelers",
+        "score": 2.795,
         "evidence": []
       },
       {
-        "term": "process modelers",
-        "score": 2.8029,
+        "term": "process readers",
+        "score": 2.7922,
         "evidence": []
       },
       {
         "term": "comprehension framework",
-        "score": 2.6269,
+        "score": 2.648,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 2.499,
+        "score": 2.4866,
         "evidence": []
       },
       {
         "term": "process modeling",
-        "score": 2.4248,
+        "score": 2.3998,
         "evidence": []
       },
       {
         "term": "process information",
-        "score": 2.1579,
+        "score": 2.1444,
         "evidence": []
       },
       {
         "term": "created process",
-        "score": 2.1541,
+        "score": 2.1391,
         "evidence": []
       },
       {
         "term": "conceptual models",
-        "score": 2.0051,
+        "score": 1.9968,
         "evidence": []
       }
     ],
     "sec-001-2-theoretical-fundamentals": [
       {
         "term": "pmcf",
-        "score": 1.0548,
+        "score": 1.0551,
         "evidence": []
       },
       {
         "term": "fundamentals",
-        "score": 0.9978,
+        "score": 0.998,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "case study",
-        "score": 0.7324,
+        "score": 0.7489,
         "evidence": []
       }
     ],
     "sec-002-21-communication-theory": [
       {
         "term": "communication theory",
-        "score": 3.2587,
+        "score": 3.2341,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "process modeler",
-        "score": 2.4026,
+        "score": 2.3897,
         "evidence": []
       },
       {
         "term": "process modeling",
-        "score": 2.3804,
+        "score": 2.3549,
         "evidence": []
       },
       {
         "term": "process model",
-        "score": 2.1352,
+        "score": 2.1258,
         "evidence": []
       },
       {
         "term": "process reader",
-        "score": 2.1092,
+        "score": 2.1016,
         "evidence": []
       },
       {
         "term": "conceptual modeling",
-        "score": 1.813,
+        "score": 1.7917,
         "evidence": []
       },
       {
         "term": "modeling quality",
-        "score": 1.7288,
+        "score": 1.7061,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 1.7009,
+        "score": 1.6843,
         "evidence": []
       }
     ],
     "sec-003-22-conceptual-modeling-quality-framework": [
       {
         "term": "conceptual modeling",
-        "score": 4.7231,
+        "score": 4.676,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "modeling quality",
-        "score": 4.1629,
+        "score": 4.1129,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "quality framework",
-        "score": 3.0624,
+        "score": 3.0849,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cmqf deﬁnes",
-        "score": 2.35,
+        "score": 2.3109,
         "evidence": []
       },
       {
         "term": "quality dimensions",
-        "score": 2.0659,
+        "score": 2.0477,
         "evidence": []
       },
       {
         "term": "vertical clusters",
-        "score": 2.0319,
+        "score": 2.0324,
         "evidence": []
       },
       {
         "term": "conceptual model",
-        "score": 1.9109,
+        "score": 1.9039,
         "evidence": []
       },
       {
         "term": "cognitive reality",
-        "score": 1.8443,
+        "score": 1.8215,
         "evidence": []
       }
     ],
     "sec-004-3-process-model-comprehension-framework": [
       {
         "term": "process model",
-        "score": 3.5151,
+        "score": 3.4997,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "model comprehension",
-        "score": 3.4781,
+        "score": 3.4407,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "comprehension framework",
-        "score": 3.3222,
+        "score": 3.3342,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "process modelers",
-        "score": 1.8044,
+        "score": 1.7982,
         "evidence": []
       },
       {
         "term": "vertical clusters",
-        "score": 1.7206,
+        "score": 1.721,
         "evidence": []
       },
       {
         "term": "quality types",
-        "score": 1.4361,
+        "score": 1.4365,
         "evidence": []
       },
       {
         "term": "model knowledge",
-        "score": 1.3693,
+        "score": 1.3618,
         "evidence": []
       },
       {
         "term": "cmqf",
-        "score": 1.315,
+        "score": 1.3152,
         "evidence": []
       }
     ],
     "sec-005-31-evaluation-theory-tree-ett": [
       {
         "term": "ett",
-        "score": 3.6786,
+        "score": 3.6791,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "quality criterion",
-        "score": 2.9512,
+        "score": 2.9367,
         "evidence": []
       },
       {
         "term": "process modeling",
-        "score": 2.8461,
+        "score": 2.8143,
         "evidence": []
       },
       {
         "term": "process modelers",
-        "score": 2.7285,
+        "score": 2.7202,
         "evidence": []
       },
       {
         "term": "quality metrics",
-        "score": 2.6384,
+        "score": 2.6241,
         "evidence": []
       },
       {
         "term": "quality criteria",
-        "score": 2.5937,
+        "score": 2.5781,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 2.4513,
+        "score": 2.4249,
         "evidence": []
       },
       {
         "term": "criterion covers",
-        "score": 2.247,
+        "score": 2.2418,
         "evidence": []
       }
     ],
     "sec-006-4-implementation-of-the-process-model-comprehens": [
       {
         "term": "process model",
-        "score": 5.1204,
+        "score": 5.0977,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "model comprehension",
-        "score": 5.0518,
+        "score": 4.9965,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "comprehension framework",
-        "score": 4.4408,
+        "score": 4.4358,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "speciﬁc questionnaire",
-        "score": 3.618,
+        "score": 3.5159,
         "evidence": []
       },
       {
         "term": "process modeler",
-        "score": 3.3883,
+        "score": 3.3703,
         "evidence": []
       },
       {
         "term": "process readers",
-        "score": 3.2342,
+        "score": 3.2163,
         "evidence": []
       },
       {
         "term": "process modeling",
-        "score": 3.2036,
+        "score": 3.167,
         "evidence": []
       },
       {
         "term": "comprehension score",
-        "score": 3.0447,
+        "score": 3.0529,
         "evidence": []
       }
     ],
     "sec-007-5-case-study-and-application-of-the-process-mode": [
       {
         "term": "model comprehension",
-        "score": 4.9152,
+        "score": 4.8602,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "process model",
-        "score": 4.4354,
+        "score": 4.416,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "comprehension framework",
-        "score": 4.2285,
+        "score": 4.2139,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "process modeler",
-        "score": 3.0721,
+        "score": 3.0559,
         "evidence": []
       },
       {
         "term": "comprehension scores",
-        "score": 2.6944,
+        "score": 2.6692,
         "evidence": []
       },
       {
         "term": "comprehension questions",
-        "score": 2.6298,
+        "score": 2.5973,
         "evidence": []
       },
       {
         "term": "pmcf worksheet",
-        "score": 2.3709,
+        "score": 2.3714,
         "evidence": []
       },
       {
         "term": "process modeling",
-        "score": 2.2086,
+        "score": 2.1869,
         "evidence": []
       }
     ],
     "sec-008-51-application-of-the-process-model-comprehensio": [
       {
         "term": "model comprehension",
-        "score": 4.2078,
+        "score": 4.1588,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "process model",
-        "score": 4.1441,
+        "score": 4.1251,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "comprehension framework",
-        "score": 3.8764,
+        "score": 3.8671,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "process modeler",
-        "score": 2.8357,
+        "score": 2.8207,
         "evidence": []
       },
       {
         "term": "ﬁnal comprehension",
-        "score": 2.8114,
+        "score": 2.7676,
         "evidence": []
       },
       {
         "term": "comprehension score",
-        "score": 2.7301,
+        "score": 2.7375,
         "evidence": []
       },
       {
         "term": "process reader",
-        "score": 2.7131,
+        "score": 2.7053,
         "evidence": []
       },
       {
         "term": "score regarding",
-        "score": 2.3,
+        "score": 2.3236,
         "evidence": []
       }
     ],
     "sec-009-52-limitations": [
       {
         "term": "quality aspects",
-        "score": 1.4769,
+        "score": 1.4639,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.361,
+        "score": 1.3542,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 1.3604,
+        "score": 1.3446,
         "evidence": []
       },
       {
         "term": "quality criteria",
-        "score": 1.3384,
+        "score": 1.3303,
         "evidence": []
       },
       {
         "term": "cognitive aspects",
-        "score": 1.3272,
+        "score": 1.3047,
         "evidence": []
       },
       {
         "term": "workbook",
-        "score": 1.3028,
+        "score": 1.3029,
         "evidence": []
       },
       {
         "term": "pmcf",
-        "score": 1.2754,
+        "score": 1.2757,
         "evidence": []
       },
       {
         "term": "limitations",
-        "score": 0.9824,
+        "score": 0.9796,
         "evidence": [
           "heading"
         ]
@@ -512,110 +512,110 @@
     "sec-010-53-implications": [
       {
         "term": "process modeling",
-        "score": 2.0264,
+        "score": 2.0046,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.9355,
+        "score": 1.9259,
         "evidence": []
       },
       {
         "term": "process information",
-        "score": 1.679,
+        "score": 1.6686,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 1.4023,
+        "score": 1.3864,
         "evidence": []
       },
       {
         "term": "modeling language",
-        "score": 1.3169,
+        "score": 1.2996,
         "evidence": []
       },
       {
         "term": "pmcf",
-        "score": 1.2754,
+        "score": 1.2757,
         "evidence": []
       },
       {
         "term": "implications",
-        "score": 1.1495,
+        "score": 1.1434,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "information systems",
-        "score": 0.8842,
+        "score": 0.8754,
         "evidence": []
       }
     ],
     "sec-011-54-future-work": [
       {
         "term": "process modeling",
-        "score": 1.7786,
+        "score": 1.7593,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.609,
+        "score": 1.601,
         "evidence": []
       },
       {
         "term": "future work",
-        "score": 1.5495,
+        "score": 1.5435,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "quality criteria",
-        "score": 1.4392,
+        "score": 1.4306,
         "evidence": []
       },
       {
         "term": "process knowledge",
-        "score": 1.4113,
+        "score": 1.4026,
         "evidence": []
       },
       {
         "term": "pmcf",
-        "score": 1.2754,
+        "score": 1.2757,
         "evidence": []
       },
       {
         "term": "weighting factor",
-        "score": 1.1445,
+        "score": 1.1436,
         "evidence": []
       },
       {
         "term": "model comprehension",
-        "score": 1.0189,
+        "score": 1.0067,
         "evidence": []
       }
     ],
     "sec-012-6-conclusion": [
       {
         "term": "model comprehension",
-        "score": 1.085,
+        "score": 1.0727,
         "evidence": []
       },
       {
         "term": "process model",
-        "score": 1.0652,
+        "score": 1.0604,
         "evidence": []
       },
       {
         "term": "quality criteria",
-        "score": 1.0473,
+        "score": 1.041,
         "evidence": []
       },
       {
         "term": "conclusion",
-        "score": 0.84,
+        "score": 0.8106,
         "evidence": [
           "heading"
         ]
@@ -624,84 +624,84 @@
     "sec-014-b": [
       {
         "term": "rüdiger pryss",
-        "score": 3.093,
-        "evidence": []
-      },
-      {
-        "term": "jan mendling",
-        "score": 3.0311,
+        "score": 3.0933,
         "evidence": []
       },
       {
         "term": "business process",
-        "score": 2.945,
+        "score": 2.9102,
+        "evidence": []
+      },
+      {
+        "term": "jan mendling",
+        "score": 2.8853,
         "evidence": []
       },
       {
         "term": "manfred reichert",
-        "score": 2.829,
+        "score": 2.8294,
         "evidence": []
       },
       {
         "term": "process modeling",
-        "score": 2.726,
-        "evidence": []
-      },
-      {
-        "term": "jan claes",
-        "score": 2.6894,
+        "score": 2.6945,
         "evidence": []
       },
       {
         "term": "michael zimoch",
-        "score": 2.6242,
+        "score": 2.6248,
+        "evidence": []
+      },
+      {
+        "term": "jan claes",
+        "score": 2.6006,
         "evidence": []
       },
       {
         "term": "winfried schlee",
-        "score": 2.4543,
+        "score": 2.4545,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "proper comprehension",
-        "score": 2.164,
+        "score": 2.1443,
         "evidence": []
       },
       {
         "term": "process modelers",
-        "score": 1.9522,
+        "score": 1.9462,
         "evidence": []
       },
       {
         "term": "comprehension framework",
-        "score": 1.9195,
+        "score": 1.9266,
         "evidence": []
       },
       {
         "term": "process models",
-        "score": 1.8819,
+        "score": 1.8726,
         "evidence": []
       },
       {
         "term": "both perspectives",
-        "score": 1.1974,
+        "score": 1.1884,
         "evidence": []
       },
       {
         "term": "pmcf",
-        "score": 1.0548,
+        "score": 1.0551,
         "evidence": []
       },
       {
         "term": "würzburg",
-        "score": 1,
+        "score": 1.0001,
         "evidence": []
       },
       {
         "term": "pryss",
-        "score": 0.9229,
+        "score": 0.923,
         "evidence": []
       }
     ]

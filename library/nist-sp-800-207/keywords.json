@@ -3,455 +3,457 @@
   "entry": "nist-sp-800-207",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "trust enterprise",
-      "score": 74.6533,
+      "score": 74.2594,
       "evidence": []
     },
     {
       "term": "enterprise network",
-      "score": 68.3916,
+      "score": 67.8721,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "access enterprise",
-      "score": 67.653,
+      "score": 67.2745,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "enterprise assets",
-      "score": 63.8004,
+      "score": 63.3434,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "enterprise resources",
-      "score": 61.7757,
+      "score": 61.2554,
       "evidence": []
     },
     {
       "term": "enterprise infrastructure",
-      "score": 58.7038,
+      "score": 58.0419,
       "evidence": []
     },
     {
       "term": "enterprise business",
-      "score": 57.7312,
+      "score": 57.1858,
       "evidence": []
     },
     {
       "term": "enterprise policy",
-      "score": 56.8333,
+      "score": 56.3045,
       "evidence": []
     },
     {
       "term": "enterprise subjects",
-      "score": 56.5588,
+      "score": 56.0146,
       "evidence": []
     },
     {
       "term": "enterprise perimeter",
-      "score": 53.6676,
+      "score": 53.1166,
       "evidence": []
     },
     {
       "term": "enterprise cybersecurity",
-      "score": 53.3869,
+      "score": 52.8419,
       "evidence": []
     },
     {
-      "term": "enterprise administrator",
-      "score": 53.3228,
-      "evidence": []
+      "term": "zero trust",
+      "score": 52.7227,
+      "evidence": [
+        "heading"
+      ]
     }
   ],
   "sections": {
     "sec-000-1-introduction": [
       {
         "term": "zero trust",
-        "score": 2.565,
+        "score": 2.5836,
         "evidence": []
       },
       {
         "term": "trust architecture",
-        "score": 2.2341,
+        "score": 2.2432,
         "evidence": []
       },
       {
         "term": "trust principles",
-        "score": 2.0734,
+        "score": 2.0378,
         "evidence": []
       },
       {
         "term": "enterprise infrastructure",
-        "score": 2.0132,
-        "evidence": []
-      },
-      {
-        "term": "lateral movement",
-        "score": 1.8,
+        "score": 1.9932,
         "evidence": []
       },
       {
         "term": "security posture",
-        "score": 1.6624,
+        "score": 1.6749,
+        "evidence": []
+      },
+      {
+        "term": "lateral movement",
+        "score": 1.6581,
         "evidence": []
       },
       {
         "term": "perimeter-based network",
-        "score": 1.505,
+        "score": 1.5092,
         "evidence": []
       },
       {
         "term": "business functions",
-        "score": 1.183,
+        "score": 1.1786,
         "evidence": []
       }
     ],
     "sec-001-11-history-of-zero-trust-efforts-related-to-fede": [
       {
         "term": "zero trust",
-        "score": 4.3357,
+        "score": 4.3667,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "federal",
-        "score": 1.866,
+        "score": 1.8727,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "trust principles",
-        "score": 1.7893,
+        "score": 1.762,
         "evidence": []
       },
       {
         "term": "trust based",
-        "score": 1.6782,
+        "score": 1.685,
         "evidence": []
       },
       {
         "term": "perimeter-based security",
-        "score": 1.553,
+        "score": 1.565,
         "evidence": []
       },
       {
         "term": "network location",
-        "score": 1.2246,
+        "score": 1.2289,
         "evidence": []
       },
       {
         "term": "black core",
-        "score": 1.1115,
+        "score": 1.0974,
         "evidence": []
       },
       {
         "term": "jericho",
-        "score": 1.0022,
+        "score": 1.0029,
         "evidence": []
       }
     ],
     "sec-002-12-structure-of-this-document": [
       {
         "term": "zta",
-        "score": 1.29,
+        "score": 1.2958,
         "evidence": []
       },
       {
         "term": "section discusses",
-        "score": 1.2865,
+        "score": 1.1912,
         "evidence": []
       },
       {
         "term": "zero trust",
-        "score": 1.1149,
+        "score": 1.123,
         "evidence": []
       },
       {
         "term": "trust architecture",
-        "score": 1.1132,
+        "score": 1.1171,
         "evidence": []
       },
       {
         "term": "tenets",
-        "score": 1.0322,
+        "score": 1.0348,
         "evidence": []
       },
       {
         "term": "nist",
-        "score": 0.9756,
+        "score": 0.9803,
         "evidence": []
       },
       {
         "term": "lists some",
-        "score": 0.893,
+        "score": 0.8846,
         "evidence": []
       }
     ],
     "sec-003-2-zero-trust-basics": [
       {
         "term": "zero trust",
-        "score": 6.2732,
+        "score": 6.3184,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "pdp pep",
-        "score": 3.535,
+        "score": 3.5414,
         "evidence": []
       },
       {
         "term": "trust zone",
-        "score": 2.9045,
+        "score": 2.8754,
         "evidence": []
       },
       {
         "term": "trust architecture",
-        "score": 2.7239,
+        "score": 2.7353,
         "evidence": []
       },
       {
         "term": "implicit trust",
-        "score": 2.7057,
+        "score": 2.7045,
         "evidence": []
       },
       {
         "term": "enterprise resource",
-        "score": 2.1,
+        "score": 2.0875,
         "evidence": []
       },
       {
         "term": "perimeter firewalls",
-        "score": 2.0157,
+        "score": 2.0209,
         "evidence": []
       },
       {
         "term": "resource access",
-        "score": 1.9262,
+        "score": 1.9391,
         "evidence": []
       }
     ],
     "sec-004-21-tenets-of-zero-trust": [
       {
         "term": "zero trust",
-        "score": 4.1897,
+        "score": 4.2196,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "tenets",
-        "score": 2.8978,
+        "score": 2.9052,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "owned devices",
-        "score": 2.5198,
+        "score": 2.5285,
         "evidence": []
       },
       {
         "term": "enterprise resources",
-        "score": 2.3235,
-        "evidence": []
-      },
-      {
-        "term": "enterprise implementing",
-        "score": 1.9533,
+        "score": 2.3087,
         "evidence": []
       },
       {
         "term": "basic tenets",
-        "score": 1.9368,
+        "score": 1.938,
         "evidence": []
       },
       {
-        "term": "network infrastructure",
-        "score": 1.91,
+        "term": "enterprise implementing",
+        "score": 1.9339,
         "evidence": []
       },
       {
         "term": "trust architecture",
-        "score": 1.9008,
+        "score": 1.9089,
+        "evidence": []
+      },
+      {
+        "term": "network infrastructure",
+        "score": 1.9086,
         "evidence": []
       }
     ],
     "sec-005-22-a-zero-trust-view-of-a-network": [
       {
         "term": "enterprise-owned infrastructure",
-        "score": 2.4583,
+        "score": 2.4569,
         "evidence": []
       },
       {
         "term": "network",
-        "score": 2.3948,
+        "score": 2.4011,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "remote enterprise",
-        "score": 2.2243,
+        "score": 2.2128,
         "evidence": []
       },
       {
         "term": "enterprise subjects",
-        "score": 2.1863,
+        "score": 2.1727,
         "evidence": []
       },
       {
         "term": "enterprise resources",
-        "score": 1.85,
+        "score": 1.8357,
         "evidence": []
       },
       {
         "term": "trust",
-        "score": 1.5012,
+        "score": 1.5106,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "security posture",
-        "score": 1.4241,
+        "score": 1.4335,
         "evidence": []
       },
       {
         "term": "nonenterprise",
-        "score": 1.3963,
+        "score": 1.3993,
         "evidence": []
       }
     ],
     "sec-006-3-logical-components-of-zero-trust-architecture": [
       {
         "term": "logical components",
-        "score": 4.5359,
+        "score": 4.4224,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zero trust",
-        "score": 3.2527,
+        "score": 3.2759,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "trust architecture",
-        "score": 2.9769,
+        "score": 2.9895,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "policy engine",
-        "score": 2.6134,
+        "score": 2.6241,
         "evidence": []
       },
       {
         "term": "enterprise assets",
-        "score": 2.5115,
+        "score": 2.4977,
         "evidence": []
       },
       {
         "term": "enterprise resource",
-        "score": 2.3939,
+        "score": 2.377,
         "evidence": []
       },
       {
         "term": "policy administrator",
-        "score": 2.232,
+        "score": 2.2149,
         "evidence": []
       },
       {
-        "term": "cdm systems",
-        "score": 1.8277,
+        "term": "policy rules",
+        "score": 1.9977,
         "evidence": []
       }
     ],
     "sec-007-31-variations-of-zero-trust-architecture-approac": [
       {
         "term": "approaches",
-        "score": 1.6082,
+        "score": 1.5551,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "segmentation",
-        "score": 0.839,
-        "evidence": []
-      },
-      {
-        "term": "enterprise",
-        "score": 0.6905,
+        "score": 0.8292,
         "evidence": []
       },
       {
         "term": "zta",
-        "score": 0.6815,
+        "score": 0.6846,
+        "evidence": []
+      },
+      {
+        "term": "enterprise",
+        "score": 0.6816,
         "evidence": []
       }
     ],
     "sec-008-311-zta-using-enhanced-identity-governance": [
       {
         "term": "enhanced identity",
-        "score": 3.297,
+        "score": 3.2457,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "access privileges",
-        "score": 1.6908,
+        "score": 1.7015,
         "evidence": []
       },
       {
         "term": "resource access",
-        "score": 1.4807,
+        "score": 1.4912,
         "evidence": []
       },
       {
         "term": "enterprise resources",
-        "score": 1.3855,
+        "score": 1.3758,
         "evidence": []
       },
       {
         "term": "granting",
-        "score": 1.1196,
+        "score": 1.1216,
         "evidence": []
       },
       {
         "term": "network",
-        "score": 0.9969,
+        "score": 0.9996,
         "evidence": []
       },
       {
         "term": "governance",
-        "score": 0.9249,
+        "score": 0.9284,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zta",
-        "score": 0.86,
+        "score": 0.8639,
         "evidence": [
           "heading"
         ]
@@ -460,79 +462,79 @@
     "sec-009-312-zta-using-micro-segmentation": [
       {
         "term": "gateway devices",
-        "score": 2.484,
+        "score": 2.3779,
         "evidence": []
       },
       {
         "term": "pep",
-        "score": 1.2402,
+        "score": 1.2443,
         "evidence": []
       },
       {
         "term": "micro-segmentation",
-        "score": 1.1877,
+        "score": 1.1892,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "firewalls",
-        "score": 1.1554,
+        "score": 1.1572,
         "evidence": []
       },
       {
         "term": "zta",
-        "score": 0.86,
+        "score": 0.8639,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "protecting",
-        "score": 0.8059,
+        "score": 0.8081,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 0.8016,
+        "score": 0.7913,
         "evidence": []
       },
       {
         "term": "component",
-        "score": 0.6381,
+        "score": 0.6361,
         "evidence": []
       }
     ],
     "sec-010-313-zta-using-network-infrastructure-and-softwar": [
       {
         "term": "network",
-        "score": 1.7658,
+        "score": 1.7705,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "software defined",
-        "score": 1.4893,
+        "score": 1.4789,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zta",
-        "score": 1.363,
+        "score": 1.3692,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "layer",
-        "score": 0.8604,
+        "score": 0.8667,
         "evidence": []
       },
       {
         "term": "infrastructure",
-        "score": 0.7462,
+        "score": 0.7417,
         "evidence": [
           "heading"
         ]
@@ -541,505 +543,505 @@
     "sec-011-32-deployed-variations-of-the-abstract-architect": [
       {
         "term": "issuing certificates",
-        "score": 1.9508,
+        "score": 1.9548,
         "evidence": []
       },
       {
         "term": "logical components",
-        "score": 1.5259,
+        "score": 1.488,
         "evidence": []
       },
       {
         "term": "variations",
-        "score": 0.8822,
+        "score": 0.8484,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "consist",
-        "score": 0.7347,
+        "score": 0.7267,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 0.6905,
+        "score": 0.6816,
         "evidence": []
       }
     ],
     "sec-012-321-device-agentgateway-based-deployment": [
       {
         "term": "device agent",
-        "score": 3.8869,
+        "score": 3.9217,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "policy administrator",
-        "score": 2.3294,
+        "score": 2.3049,
         "evidence": []
       },
       {
         "term": "resource gateway",
-        "score": 2.1937,
+        "score": 2.0793,
         "evidence": []
       },
       {
         "term": "policy engine",
-        "score": 1.6716,
+        "score": 1.6786,
         "evidence": []
       },
       {
         "term": "enterprise-issued",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "enterprises",
-        "score": 0.895,
+        "score": 0.8784,
         "evidence": []
       },
       {
         "term": "front",
-        "score": 0.8255,
+        "score": 0.8081,
         "evidence": []
       },
       {
         "term": "pep",
-        "score": 0.7604,
+        "score": 0.7629,
         "evidence": []
       }
     ],
     "sec-013-322-enclave-based-deployment": [
       {
         "term": "gateway model",
-        "score": 2.0846,
+        "score": 1.9465,
         "evidence": []
       },
       {
         "term": "agent gateway",
-        "score": 2.0127,
+        "score": 1.8979,
         "evidence": []
       },
       {
         "term": "device agent",
-        "score": 1.5841,
+        "score": 1.5977,
         "evidence": []
       },
       {
         "term": "enclave",
-        "score": 1.2145,
+        "score": 1.2158,
         "evidence": []
       },
       {
         "term": "deployment model",
-        "score": 1.1329,
+        "score": 1.1193,
         "evidence": []
       },
       {
         "term": "reside",
-        "score": 0.9078,
+        "score": 0.9092,
         "evidence": []
       },
       {
         "term": "single business",
-        "score": 0.8487,
+        "score": 0.8546,
         "evidence": []
       },
       {
         "term": "enterprises",
-        "score": 0.7092,
+        "score": 0.6961,
         "evidence": []
       }
     ],
     "sec-014-323-resource-portal-based-deployment": [
       {
         "term": "gateway portal",
-        "score": 2.5199,
+        "score": 2.4502,
         "evidence": []
       },
       {
         "term": "dos",
-        "score": 0.8766,
+        "score": 0.8782,
         "evidence": []
       },
       {
         "term": "devices",
-        "score": 0.8739,
+        "score": 0.8778,
         "evidence": []
       },
       {
         "term": "scan",
-        "score": 0.8059,
+        "score": 0.8122,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 0.8016,
+        "score": 0.7913,
         "evidence": []
       },
       {
         "term": "resource",
-        "score": 0.7625,
+        "score": 0.7655,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "pep",
-        "score": 0.7604,
+        "score": 0.7629,
         "evidence": []
       },
       {
         "term": "assets",
-        "score": 0.7349,
+        "score": 0.7397,
         "evidence": []
       }
     ],
     "sec-015-324-device-application-sandboxing": [
       {
         "term": "vetted applications",
-        "score": 1.7989,
+        "score": 1.7866,
         "evidence": []
       },
       {
         "term": "pep",
-        "score": 0.9595,
+        "score": 0.9627,
         "evidence": []
       },
       {
         "term": "asset",
-        "score": 0.9333,
+        "score": 0.9397,
         "evidence": []
       },
       {
         "term": "device",
-        "score": 0.8288,
+        "score": 0.8329,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "host",
-        "score": 0.5993,
+        "score": 0.6031,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 0.5472,
+        "score": 0.5402,
         "evidence": []
       }
     ],
     "sec-016-33-trust-algorithm": [
       {
         "term": "trust algorithm",
-        "score": 3.427,
+        "score": 3.4746,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "policy database",
-        "score": 1.9004,
+        "score": 1.8936,
         "evidence": []
       },
       {
         "term": "subject attributes",
-        "score": 1.8399,
-        "evidence": []
-      },
-      {
-        "term": "observable status",
-        "score": 1.74,
+        "score": 1.8462,
         "evidence": []
       },
       {
         "term": "policy engine",
-        "score": 1.7363,
+        "score": 1.7434,
+        "evidence": []
+      },
+      {
+        "term": "observable status",
+        "score": 1.7023,
         "evidence": []
       },
       {
         "term": "zero trust",
-        "score": 1.5736,
+        "score": 1.5846,
         "evidence": []
       },
       {
         "term": "trust architecture",
-        "score": 1.5719,
+        "score": 1.5787,
         "evidence": []
       },
       {
         "term": "deny access",
-        "score": 1.5406,
+        "score": 1.5499,
         "evidence": []
       }
     ],
     "sec-017-331-trust-algorithm-variations": [
       {
         "term": "access requests",
-        "score": 1.7755,
+        "score": 1.7941,
         "evidence": []
       },
       {
         "term": "trust",
-        "score": 1.7428,
+        "score": 1.7538,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "confidence level",
-        "score": 1.6628,
+        "score": 1.6208,
         "evidence": []
       },
       {
         "term": "normal business",
-        "score": 1.4941,
+        "score": 1.5,
         "evidence": []
       },
       {
         "term": "business hours",
-        "score": 1.4602,
+        "score": 1.4475,
         "evidence": []
       },
       {
         "term": "zero trust",
-        "score": 1.3915,
+        "score": 1.4013,
         "evidence": []
       },
       {
         "term": "trust architecture",
-        "score": 1.3897,
+        "score": 1.3954,
         "evidence": []
       },
       {
         "term": "contextual",
-        "score": 1.377,
+        "score": 1.3491,
         "evidence": []
       }
     ],
     "sec-018-34-networkenvironment-components": [
       {
         "term": "control plane",
-        "score": 2.3718,
+        "score": 2.356,
         "evidence": []
       },
       {
         "term": "communication flows",
-        "score": 2.0037,
+        "score": 1.8789,
         "evidence": []
       },
       {
         "term": "service communication",
-        "score": 1.9612,
+        "score": 1.8476,
         "evidence": []
       },
       {
         "term": "data plane",
-        "score": 1.7966,
+        "score": 1.7983,
         "evidence": []
       },
       {
         "term": "application service",
-        "score": 1.2873,
+        "score": 1.2684,
         "evidence": []
       }
     ],
     "sec-019-341-network-requirements-to-support-zta": [
       {
         "term": "enterprise assets",
-        "score": 2.768,
+        "score": 2.7551,
         "evidence": []
       },
       {
         "term": "enterprise network",
-        "score": 2.767,
+        "score": 2.7495,
         "evidence": []
       },
       {
         "term": "enterprise resources",
-        "score": 2.4871,
+        "score": 2.4697,
         "evidence": []
       },
       {
         "term": "remote enterprise",
-        "score": 2.4187,
+        "score": 2.4024,
         "evidence": []
       },
       {
         "term": "accessing pep",
-        "score": 2.2164,
+        "score": 2.2245,
         "evidence": []
       },
       {
         "term": "network infrastructure",
-        "score": 2.2112,
+        "score": 2.208,
         "evidence": []
       },
       {
         "term": "pep component",
-        "score": 2.1589,
+        "score": 2.162,
         "evidence": []
       },
       {
         "term": "policy administrator",
-        "score": 1.9375,
+        "score": 1.919,
         "evidence": []
       }
     ],
     "sec-020-4-deployment-scenariosuse-cases": [
       {
         "term": "zero trust",
-        "score": 1.6333,
+        "score": 1.6451,
         "evidence": []
       },
       {
         "term": "trust architecture",
-        "score": 1.3897,
+        "score": 1.3954,
         "evidence": []
       },
       {
         "term": "zta",
-        "score": 0.9984,
+        "score": 1.003,
         "evidence": []
       },
       {
-        "term": "enterprise",
-        "score": 0.8016,
+        "term": "perimeter-based",
+        "score": 0.7999,
         "evidence": []
       }
     ],
     "sec-021-41-enterprise-with-satellite-facilities": [
       {
         "term": "enterprise",
-        "score": 2.4754,
+        "score": 2.4435,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "remote location",
-        "score": 1.5483,
+        "score": 1.5563,
         "evidence": []
       },
       {
         "term": "local network",
-        "score": 1.3659,
+        "score": 1.3695,
         "evidence": []
       },
       {
         "term": "applications services",
-        "score": 0.9742,
+        "score": 0.9686,
         "evidence": []
       },
       {
         "term": "employees",
-        "score": 0.9246,
+        "score": 0.9151,
         "evidence": []
       },
       {
         "term": "cloud",
-        "score": 0.8731,
+        "score": 0.8742,
         "evidence": []
       },
       {
         "term": "hosted",
-        "score": 0.8361,
+        "score": 0.8402,
         "evidence": []
       }
     ],
     "sec-022-42-multi-cloudcloud-to-cloud-enterprise": [
       {
         "term": "cloud provider",
-        "score": 2.2233,
+        "score": 2.2309,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 2.1888,
+        "score": 2.1606,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cloud service",
-        "score": 2.1042,
+        "score": 2.1016,
         "evidence": []
       },
       {
         "term": "multi-cloud",
-        "score": 1.9986,
+        "score": 2.0001,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "application service",
-        "score": 1.4579,
+        "score": 1.4361,
         "evidence": []
       },
       {
         "term": "zero trust",
-        "score": 1.1149,
+        "score": 1.123,
         "evidence": []
       },
       {
         "term": "hosted",
-        "score": 0.9707,
+        "score": 0.9755,
         "evidence": []
       },
       {
         "term": "operated",
-        "score": 0.9078,
+        "score": 0.9092,
         "evidence": []
       }
     ],
     "sec-023-43-enterprise-with-contracted-services-andor-non": [
       {
         "term": "enterprise",
-        "score": 2.3887,
+        "score": 2.3579,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "enterprise resources",
-        "score": 1.8865,
+        "score": 1.8736,
         "evidence": []
       },
       {
         "term": "service providers",
-        "score": 1.7859,
+        "score": 1.7866,
         "evidence": []
       },
       {
         "term": "contracted",
-        "score": 1.75,
+        "score": 1.7534,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "access",
-        "score": 1.6092,
+        "score": 1.6236,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "visitors",
-        "score": 1.5044,
+        "score": 1.5052,
         "evidence": []
       },
       {
         "term": "cannot access",
-        "score": 1.3185,
+        "score": 1.3208,
         "evidence": []
       },
       {
         "term": "nonemployee",
-        "score": 1.2712,
+        "score": 1.2721,
         "evidence": [
           "heading"
         ]
@@ -1048,288 +1050,290 @@
     "sec-024-44-collaboration-across-enterprise-boundaries": [
       {
         "term": "enterprise",
-        "score": 2.5551,
+        "score": 2.5222,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cross-enterprise collaboration",
-        "score": 1.5614,
+        "score": 1.5562,
         "evidence": []
       },
       {
         "term": "both organizations",
-        "score": 1.0977,
+        "score": 1.0711,
         "evidence": []
       },
       {
         "term": "employees",
-        "score": 1.0735,
+        "score": 1.0624,
         "evidence": []
       },
       {
         "term": "federated",
-        "score": 0.8482,
+        "score": 0.8276,
         "evidence": []
       },
       {
         "term": "access",
-        "score": 0.8046,
+        "score": 0.8118,
         "evidence": []
       },
       {
         "term": "federal",
-        "score": 0.7394,
+        "score": 0.742,
         "evidence": []
       },
       {
         "term": "hosted",
-        "score": 0.6626,
+        "score": 0.6659,
         "evidence": []
       }
     ],
     "sec-025-45-enterprise-with-public--or-customer-facing-se": [
       {
         "term": "employee dependents",
-        "score": 1.7879,
+        "score": 1.7788,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 1.7849,
+        "score": 1.7619,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "login credentials",
-        "score": 1.7068,
+        "score": 1.7143,
         "evidence": []
       },
       {
         "term": "public",
-        "score": 1.5831,
+        "score": 1.5909,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "requesting assets",
-        "score": 1.5632,
+        "score": 1.5722,
         "evidence": []
       },
       {
         "term": "public web",
-        "score": 1.4027,
+        "score": 1.4057,
         "evidence": []
       },
       {
         "term": "web page",
-        "score": 1.1516,
+        "score": 1.1501,
         "evidence": []
       },
       {
         "term": "business relationship",
-        "score": 1.0235,
+        "score": 1.025,
         "evidence": []
       }
     ],
     "sec-026-5-threats-associated-with-zero-trust-architectur": [
       {
         "term": "threats",
-        "score": 1.2308,
+        "score": 1.2117,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cybersecurity",
-        "score": 0.6972,
+        "score": 0.7002,
         "evidence": []
       },
       {
         "term": "zta",
-        "score": 0.6815,
+        "score": 0.6846,
         "evidence": []
       }
     ],
     "sec-027-51-subversion-of-zta-decision-process": [
       {
-        "term": "configured",
-        "score": 0.8719,
-        "evidence": []
-      },
-      {
         "term": "zta",
-        "score": 0.86,
+        "score": 0.8639,
         "evidence": [
           "heading"
         ]
       },
       {
+        "term": "configured",
+        "score": 0.8519,
+        "evidence": []
+      },
+      {
         "term": "enterprise",
-        "score": 0.8016,
+        "score": 0.7913,
         "evidence": []
       }
     ],
     "sec-028-52-denial-of-service-or-network-disruption": [
       {
         "term": "enterprise subjects",
-        "score": 1.5929,
+        "score": 1.5813,
         "evidence": []
       },
       {
         "term": "enterprise resources",
-        "score": 1.4265,
+        "score": 1.4146,
         "evidence": []
       },
       {
         "term": "network",
-        "score": 1.258,
+        "score": 1.2613,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "disruption",
-        "score": 1.073,
+        "score": 1.0754,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "dos",
-        "score": 0.8766,
+        "score": 0.8782,
         "evidence": []
       },
       {
         "term": "pep",
-        "score": 0.7604,
+        "score": 0.7629,
         "evidence": []
       },
       {
         "term": "internet",
-        "score": 0.6945,
+        "score": 0.687,
         "evidence": []
       },
       {
         "term": "zta",
-        "score": 0.6815,
+        "score": 0.6846,
         "evidence": []
       }
     ],
     "sec-029-53-stolen-credentialsinsider-threat": [
       {
-        "term": "compromised account",
-        "score": 2.191,
-        "evidence": []
-      },
-      {
         "term": "insider",
-        "score": 2.1678,
+        "score": 2.1724,
         "evidence": [
           "heading"
         ]
       },
       {
+        "term": "compromised account",
+        "score": 2.167,
+        "evidence": []
+      },
+      {
         "term": "credentials",
-        "score": 2.0262,
+        "score": 2.0379,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "access patterns",
-        "score": 1.3566,
+        "score": 1.3458,
         "evidence": []
       },
       {
         "term": "stolen",
-        "score": 1.1877,
+        "score": 1.1892,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "attackers",
-        "score": 1.1044,
+        "score": 1.1082,
         "evidence": []
       },
       {
         "term": "employee",
-        "score": 0.9849,
+        "score": 0.9725,
         "evidence": []
       },
       {
-        "term": "valuable",
-        "score": 0.7867,
-        "evidence": []
+        "term": "threat",
+        "score": 0.7764,
+        "evidence": [
+          "heading"
+        ]
       }
     ],
     "sec-030-54-visibility-on-the-network": [
       {
         "term": "encrypted traffic",
-        "score": 2.3515,
+        "score": 2.3607,
         "evidence": []
       },
       {
         "term": "network",
-        "score": 1.7658,
+        "score": 1.7705,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "enterprise",
-        "score": 1.0357,
+        "score": 1.0224,
         "evidence": []
       },
       {
         "term": "machine learning",
-        "score": 0.9627,
-        "evidence": []
-      },
-      {
-        "term": "mentioned",
-        "score": 0.6512,
+        "score": 0.9536,
         "evidence": []
       },
       {
         "term": "attacker",
-        "score": 0.6284,
+        "score": 0.6319,
+        "evidence": []
+      },
+      {
+        "term": "mentioned",
+        "score": 0.6149,
         "evidence": []
       }
     ],
     "sec-031-55-storage-of-system-and-network-information": [
       {
         "term": "network traffic",
-        "score": 1.5481,
+        "score": 1.5542,
         "evidence": []
       },
       {
         "term": "access policies",
-        "score": 1.4673,
+        "score": 1.472,
         "evidence": []
       },
       {
         "term": "reconnaissance",
-        "score": 0.9497,
-        "evidence": []
-      },
-      {
-        "term": "enterprise",
-        "score": 0.8016,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "attacker",
-        "score": 0.7929,
+        "score": 0.7974,
+        "evidence": []
+      },
+      {
+        "term": "enterprise",
+        "score": 0.7913,
         "evidence": []
       },
       {
         "term": "information",
-        "score": 0.6734,
+        "score": 0.6726,
         "evidence": [
           "heading"
         ]
@@ -1338,101 +1342,101 @@
     "sec-032-56-reliance-on-proprietary-data-formats-or-solut": [
       {
         "term": "service providers",
-        "score": 1.401,
+        "score": 1.4023,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 0.9692,
+        "score": 0.9567,
         "evidence": []
       },
       {
         "term": "proprietary",
-        "score": 0.8746,
+        "score": 0.8784,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zta",
-        "score": 0.86,
+        "score": 0.8639,
         "evidence": []
       },
       {
         "term": "disruption",
-        "score": 0.8504,
+        "score": 0.8522,
         "evidence": []
       },
       {
         "term": "assets",
-        "score": 0.5824,
+        "score": 0.5862,
         "evidence": []
       }
     ],
     "sec-033-57-use-of-non-person-entities-npe-in-zta-adminis": [
       {
         "term": "zta",
-        "score": 1.363,
+        "score": 1.3692,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "mistaken",
-        "score": 1.2846,
+        "score": 1.2854,
         "evidence": []
       },
       {
         "term": "npe",
-        "score": 1.1877,
+        "score": 1.1892,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zero trust",
-        "score": 1.1149,
-        "evidence": []
-      },
-      {
-        "term": "trust architecture",
-        "score": 1.1132,
+        "score": 1.123,
         "evidence": []
       },
       {
         "term": "attacker",
-        "score": 1.113,
+        "score": 1.1192,
+        "evidence": []
+      },
+      {
+        "term": "trust architecture",
+        "score": 1.1171,
         "evidence": []
       },
       {
         "term": "automated technology",
-        "score": 1.0285,
+        "score": 0.998,
         "evidence": []
       },
       {
         "term": "software agent",
-        "score": 0.9821,
+        "score": 0.9858,
         "evidence": []
       }
     ],
     "sec-034-6-zero-trust-architecture-and-possible-interacti": [
       {
         "term": "guidance",
-        "score": 1.2587,
+        "score": 1.2625,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zero",
-        "score": 1.0401,
+        "score": 1.0488,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "federal",
-        "score": 0.933,
+        "score": 0.9364,
         "evidence": [
           "heading"
         ]
@@ -1441,31 +1445,31 @@
     "sec-035-61-zta-and-nist-risk-management-framework": [
       {
         "term": "zta",
-        "score": 1.7199,
+        "score": 1.7278,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "risk",
-        "score": 1.2165,
+        "score": 1.2163,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "mission",
-        "score": 0.9596,
+        "score": 0.9627,
         "evidence": []
       },
       {
         "term": "rmf",
-        "score": 0.9078,
+        "score": 0.9092,
         "evidence": []
       },
       {
         "term": "nist",
-        "score": 0.8403,
+        "score": 0.8444,
         "evidence": [
           "heading"
         ]
@@ -1474,261 +1478,261 @@
     "sec-036-62-zero-trust-and-nist-privacy-framework": [
       {
         "term": "privacy framework",
-        "score": 3.6351,
+        "score": 3.6401,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "privacy risks",
-        "score": 2.2774,
+        "score": 2.2731,
         "evidence": []
       },
       {
         "term": "zero trust",
-        "score": 2.2298,
+        "score": 2.2459,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "nist",
-        "score": 1.6806,
+        "score": 1.6888,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "private information",
-        "score": 1.1761,
+        "score": 1.1804,
         "evidence": []
       },
       {
         "term": "trust architecture",
-        "score": 1.1132,
+        "score": 1.1171,
         "evidence": []
       },
       {
         "term": "nistpriv",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "traffic",
-        "score": 0.9494,
+        "score": 0.9544,
         "evidence": []
       }
     ],
     "sec-037-63-zta-and-federal-identity-credential-and-acces": [
       {
         "term": "identity management",
-        "score": 3.4011,
+        "score": 3.3304,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zta",
-        "score": 1.7199,
+        "score": 1.7278,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "federal",
-        "score": 1.4787,
+        "score": 1.4841,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "icam",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "office",
-        "score": 0.91,
+        "score": 0.9115,
         "evidence": []
       }
     ],
     "sec-038-64-zta-and-trusted-internet-connections-30": [
       {
         "term": "tic",
-        "score": 2.3483,
+        "score": 2.3106,
         "evidence": []
       },
       {
         "term": "zta",
-        "score": 2.223,
+        "score": 2.2331,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "trust zones",
-        "score": 2.061,
+        "score": 2.0683,
         "evidence": []
       },
       {
         "term": "pep security",
-        "score": 1.9383,
+        "score": 1.9526,
         "evidence": []
       },
       {
         "term": "agency perimeter",
-        "score": 1.7447,
+        "score": 1.7523,
         "evidence": []
       },
       {
         "term": "security capabilities",
-        "score": 1.7178,
+        "score": 1.7232,
         "evidence": []
       },
       {
         "term": "network-based security",
-        "score": 1.6725,
+        "score": 1.685,
         "evidence": []
       },
       {
         "term": "whereas zta",
-        "score": 1.6708,
+        "score": 1.6505,
         "evidence": []
       }
     ],
     "sec-039-65-zta-and-einstein-ncps-national-cybersecurity": [
       {
         "term": "ncps",
-        "score": 4.1946,
+        "score": 4.196,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zta",
-        "score": 2.5799,
+        "score": 2.5917,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "intrusion prevention",
-        "score": 2.1762,
+        "score": 2.1419,
         "evidence": []
       },
       {
         "term": "situational awareness",
-        "score": 2.1314,
+        "score": 2.1198,
         "evidence": []
       },
       {
         "term": "federal government",
-        "score": 2.093,
+        "score": 2.0977,
         "evidence": []
       },
       {
         "term": "federal agencies",
-        "score": 2.0279,
+        "score": 2.0355,
         "evidence": []
       },
       {
         "term": "einstein",
-        "score": 2.0148,
+        "score": 2.0162,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zta systems",
-        "score": 1.6895,
+        "score": 1.6992,
         "evidence": []
       }
     ],
     "sec-040-66-zta-and-dhs-continuous-diagnostics-and-mitiga": [
       {
         "term": "dhs cdm",
-        "score": 4.3795,
+        "score": 4.3882,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cdm program",
-        "score": 3.807,
+        "score": 3.8142,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zta",
-        "score": 1.9968,
+        "score": 2.0059,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "agencies",
-        "score": 1.0522,
+        "score": 1.0564,
         "evidence": []
       },
       {
         "term": "hwam",
-        "score": 0.944,
+        "score": 0.9452,
         "evidence": []
       },
       {
         "term": "network",
-        "score": 0.813,
+        "score": 0.8151,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 0.8016,
+        "score": 0.7913,
         "evidence": []
       },
       {
         "term": "posture",
-        "score": 0.7509,
+        "score": 0.7535,
         "evidence": []
       }
     ],
     "sec-041-67-zta-cloud-smart-and-the-federal-data-strategy": [
       {
         "term": "federal data",
-        "score": 2.9715,
+        "score": 2.9722,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "data strategy",
-        "score": 2.5405,
+        "score": 2.5048,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zta",
-        "score": 2.223,
+        "score": 2.2331,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "cloud",
-        "score": 1.7462,
+        "score": 1.7483,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "agencies",
-        "score": 1.0522,
+        "score": 1.0564,
         "evidence": []
       },
       {
         "term": "smart",
-        "score": 0.872,
+        "score": 0.8638,
         "evidence": [
           "heading"
         ]
@@ -1737,488 +1741,488 @@
     "sec-042-7-migrating-to-a-zero-trust-architecture": [
       {
         "term": "business processes",
-        "score": 1.1247,
+        "score": 1.0772,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 0.8924,
+        "score": 0.881,
         "evidence": []
       },
       {
         "term": "modernization",
-        "score": 0.8255,
+        "score": 0.8276,
         "evidence": []
       },
       {
         "term": "trust",
-        "score": 0.7506,
+        "score": 0.7553,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "assets",
-        "score": 0.7349,
+        "score": 0.7397,
         "evidence": []
       }
     ],
     "sec-043-71-pure-zero-trust-architecture": [
       {
         "term": "zero trust",
-        "score": 2.5413,
+        "score": 2.5594,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "architecture",
-        "score": 1.0367,
+        "score": 1.037,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "infrastructure",
-        "score": 0.8663,
+        "score": 0.8611,
         "evidence": []
       },
       {
         "term": "responsibility",
-        "score": 0.717,
-        "evidence": []
-      },
-      {
-        "term": "organizational",
-        "score": 0.6923,
+        "score": 0.7123,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 0.6905,
+        "score": 0.6816,
         "evidence": []
       },
       {
         "term": "building",
-        "score": 0.6903,
+        "score": 0.6816,
+        "evidence": []
+      },
+      {
+        "term": "organizational",
+        "score": 0.6773,
         "evidence": []
       }
     ],
     "sec-044-72-hybrid-zta-and-perimeter-based-architecture": [
       {
         "term": "zta",
-        "score": 2.223,
+        "score": 2.2331,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zero trust",
-        "score": 1.1149,
+        "score": 1.123,
         "evidence": []
       },
       {
         "term": "architecture",
-        "score": 1.0367,
+        "score": 1.037,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "perimeter-based",
-        "score": 1.0065,
+        "score": 1.0094,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "enterprise",
-        "score": 0.8924,
+        "score": 0.881,
         "evidence": []
       }
     ],
     "sec-045-73-steps-to-introducing-zta-to-a-perimeter-based": [
       {
         "term": "zta",
-        "score": 2.4142,
+        "score": 2.4253,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zta deployment",
-        "score": 1.7552,
+        "score": 1.7622,
         "evidence": []
       },
       {
         "term": "business processes",
-        "score": 1.7024,
+        "score": 1.6417,
         "evidence": []
       },
       {
         "term": "certificate",
-        "score": 1.0648,
+        "score": 1.0672,
         "evidence": []
       },
       {
         "term": "steps",
-        "score": 0.9124,
+        "score": 0.9011,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "updating",
-        "score": 0.7191,
+        "score": 0.7219,
         "evidence": []
       },
       {
         "term": "cycle",
-        "score": 0.7138,
+        "score": 0.7167,
         "evidence": []
       },
       {
         "term": "organization",
-        "score": 0.6464,
+        "score": 0.6453,
         "evidence": []
       }
     ],
     "sec-046-731-identify-actors-on-the-enterprise": [
       {
         "term": "enterprise",
-        "score": 1.381,
+        "score": 1.3632,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "administrators",
-        "score": 1.0525,
+        "score": 1.055,
         "evidence": []
       },
       {
         "term": "zta",
-        "score": 0.6815,
+        "score": 0.6846,
         "evidence": []
       },
       {
-        "term": "blanket",
-        "score": 0.6305,
+        "term": "scrutiny",
+        "score": 0.636,
         "evidence": []
       }
     ],
     "sec-047-732-identify-assets-owned-by-the-enterprise": [
       {
         "term": "enterprise assets",
-        "score": 5.1896,
+        "score": 5.1741,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "zta",
-        "score": 1.363,
+        "score": 1.3692,
         "evidence": []
       },
       {
         "term": "enterprise-owned",
-        "score": 1.2872,
-        "evidence": []
-      },
-      {
-        "term": "shadow",
-        "score": 1.2846,
+        "score": 1.2909,
         "evidence": []
       },
       {
         "term": "network location",
-        "score": 1.2246,
+        "score": 1.2289,
+        "evidence": []
+      },
+      {
+        "term": "shadow",
+        "score": 1.2158,
         "evidence": []
       },
       {
         "term": "access decisions",
-        "score": 1.1169,
+        "score": 1.109,
+        "evidence": []
+      },
+      {
+        "term": "swam",
+        "score": 1.0029,
         "evidence": []
       },
       {
         "term": "identify",
-        "score": 1.0242,
+        "score": 0.9908,
         "evidence": [
           "heading"
         ]
-      },
-      {
-        "term": "swam",
-        "score": 1.0022,
-        "evidence": []
       }
     ],
     "sec-048-733-identify-key-processes-and-evaluate-risks-as": [
       {
         "term": "business processes",
-        "score": 1.6229,
+        "score": 1.5686,
         "evidence": []
       },
       {
         "term": "business process",
-        "score": 1.2634,
+        "score": 1.3422,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 0.9692,
+        "score": 0.9567,
         "evidence": []
       },
       {
         "term": "zta",
-        "score": 0.86,
+        "score": 0.8639,
         "evidence": []
       },
       {
         "term": "resource access",
-        "score": 0.7651,
+        "score": 0.7701,
         "evidence": []
       },
       {
         "term": "candidates",
-        "score": 0.7066,
+        "score": 0.7095,
         "evidence": []
       }
     ],
     "sec-049-734-formulating-policies-for-the-zta-candidate": [
       {
         "term": "candidate",
-        "score": 1.466,
+        "score": 1.4758,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "workflow",
-        "score": 0.8987,
+        "score": 0.8816,
         "evidence": []
       },
       {
         "term": "zta",
-        "score": 0.86,
+        "score": 0.8639,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "administrators",
-        "score": 0.8341,
+        "score": 0.8361,
         "evidence": []
       },
       {
         "term": "asset",
-        "score": 0.7221,
+        "score": 0.7271,
         "evidence": []
       },
       {
         "term": "subjects",
-        "score": 0.7031,
+        "score": 0.7053,
         "evidence": []
       }
     ],
     "sec-050-735-identifying-candidate-solutions": [
       {
         "term": "candidate solutions",
-        "score": 3.6941,
+        "score": 3.7115,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "candidate business",
-        "score": 1.7714,
+        "score": 1.7796,
         "evidence": []
       },
       {
         "term": "pilot program",
-        "score": 1.7306,
-        "evidence": []
-      },
-      {
-        "term": "some solutions",
-        "score": 1.5678,
+        "score": 1.7331,
         "evidence": []
       },
       {
         "term": "business process",
-        "score": 1.5279,
+        "score": 1.6655,
+        "evidence": []
+      },
+      {
+        "term": "some solutions",
+        "score": 1.561,
         "evidence": []
       },
       {
         "term": "business processes",
-        "score": 1.5255,
+        "score": 1.479,
         "evidence": []
       },
       {
         "term": "solution require",
-        "score": 1.4,
+        "score": 1.4229,
         "evidence": []
       },
       {
         "term": "process resources",
-        "score": 1.1006,
+        "score": 1.2375,
         "evidence": []
       }
     ],
     "sec-051-736-initial-deployment-and-monitoring": [
       {
         "term": "initial deployment",
-        "score": 2.254,
+        "score": 2.2429,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "lenient",
-        "score": 0.875,
+        "score": 0.8767,
+        "evidence": []
+      },
+      {
+        "term": "enterprise",
+        "score": 0.7913,
         "evidence": []
       },
       {
         "term": "monitoring",
-        "score": 0.8035,
+        "score": 0.7813,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "enterprise",
-        "score": 0.8016,
-        "evidence": []
-      },
-      {
-        "term": "logs",
-        "score": 0.7783,
+        "term": "policies",
+        "score": 0.7389,
         "evidence": []
       },
       {
         "term": "workflow",
-        "score": 0.7433,
+        "score": 0.7291,
         "evidence": []
       },
       {
-        "term": "policies",
-        "score": 0.7407,
+        "term": "logs",
+        "score": 0.7074,
         "evidence": []
       }
     ],
     "sec-052-737-expanding-the-zta": [
       {
         "term": "workflow",
-        "score": 0.7433,
+        "score": 0.7291,
         "evidence": []
       },
       {
         "term": "devices",
-        "score": 0.6926,
-        "evidence": []
-      },
-      {
-        "term": "phase",
-        "score": 0.6335,
+        "score": 0.6956,
         "evidence": []
       },
       {
         "term": "done",
-        "score": 0.597,
+        "score": 0.5928,
+        "evidence": []
+      },
+      {
+        "term": "phase",
+        "score": 0.5892,
         "evidence": []
       },
       {
         "term": "enterprise",
-        "score": 0.5472,
+        "score": 0.5402,
         "evidence": []
       },
       {
         "term": "architecture",
-        "score": 0.5183,
+        "score": 0.5185,
         "evidence": []
       }
     ],
     "sec-053-references": [
       {
         "term": "zta components",
-        "score": 3.8055,
+        "score": 3.8141,
         "evidence": []
       },
       {
         "term": "zta tenets",
-        "score": 3.6497,
+        "score": 3.6643,
         "evidence": []
       },
       {
         "term": "zta ecosystem",
-        "score": 3.4958,
+        "score": 3.5115,
         "evidence": []
       },
       {
         "term": "trust enterprise",
-        "score": 3.4237,
+        "score": 3.4135,
         "evidence": []
       },
       {
         "term": "adopting zta",
-        "score": 3.3775,
-        "evidence": []
-      },
-      {
-        "term": "zta environments",
-        "score": 3.3125,
+        "score": 3.3691,
         "evidence": []
       },
       {
         "term": "zero trust",
-        "score": 3.3063,
+        "score": 3.3303,
+        "evidence": []
+      },
+      {
+        "term": "zta environments",
+        "score": 3.3261,
         "evidence": []
       },
       {
         "term": "zta conflicts",
-        "score": 3.2835,
+        "score": 3.2863,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "zero trust",
-        "score": 3.72,
+        "score": 3.7469,
         "evidence": []
       },
       {
         "term": "trust architecture",
-        "score": 3.49,
+        "score": 3.5032,
         "evidence": []
       },
       {
         "term": "federal agencies",
-        "score": 3.0782,
+        "score": 3.0897,
         "evidence": []
       },
       {
         "term": "patent claims",
-        "score": 2.9915,
+        "score": 2.9984,
         "evidence": []
       },
       {
         "term": "federal cio",
-        "score": 2.9142,
+        "score": 2.9218,
         "evidence": []
       },
       {
         "term": "nist special",
-        "score": 2.7563,
+        "score": 2.761,
         "evidence": []
       },
       {
-        "term": "technology laboratory",
-        "score": 2.6398,
+        "term": "federal information",
+        "score": 2.601,
         "evidence": []
       },
       {
         "term": "national cybersecurity",
-        "score": 2.5969,
+        "score": 2.5908,
         "evidence": []
       }
     ]
