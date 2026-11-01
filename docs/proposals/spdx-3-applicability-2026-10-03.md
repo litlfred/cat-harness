@@ -12,7 +12,7 @@ summary: >-
 **Status:** analysis for review. Bean `sd5v`. **Nothing is built.** The
 specification is now held: the owner uploaded SPDX 3.0 (OMG formal/24-11-01)
 mid-analysis, and it is ingested as
-[`library/omg-2024-spdx-3-0`](../../library/omg-2024-spdx-3-0/), with the
+[`library/omg-2024-spdx-3-0`](../../library/conduct/omg-2024-spdx-3-0/), with the
 methodology node [`spdx-3`](../../methodologies/spdx-3.md). §2 and §4.1 were
 **corrected against it**. Three claims made from memory did not survive, and
 §2.1 says which.
