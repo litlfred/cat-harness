@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: docs-site-publish\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.379Z\n"
+"POT-Creation-Date: 2026-11-01T11:54:05.814Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -176,7 +176,7 @@ msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:78
 #. Diagram element documentation
-msgid "Regenerate every derived reference from its source before building: skill schema and instruction pages, content-backed docs pages, the graph projections and viewers, the handler and translation indexes, and the rendered BPMN diagrams. The published site is built from sources, never from committed copies that may be stale."
+msgid "Regenerate every derived reference from its source before building: skill schema and instruction pages, content-backed docs pages, the graph projections and viewers, the handler and translation indexes, and the rendered BPMN diagrams. The published site is built from sources, never from committed copies that may be stale. After a main deploy, a side job (writer-records) runs every writer, and every step of the QA working copy, again under strace. It records what each one READ and keeps what it wrote, so a preview can rerun only the writers and QA steps whose reads changed (owner card Q-CONE-2 B, 2026-11-01). The main deploy itself still runs everything."
 msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:123
