@@ -318,7 +318,8 @@
   font-size: 0.75rem;
 }
 
-.fa-figure-tools button {
+.fa-figure-tools button,
+.fa-figure-tools .fa-figure-open {
   white-space: nowrap;
   min-width: 1.9rem;
   padding: 0.15rem 0.45rem;
@@ -332,7 +333,9 @@
 }
 
 .fa-figure-tools button:hover,
-.fa-figure-tools button:focus-visible {
+.fa-figure-tools button:focus-visible,
+.fa-figure-tools .fa-figure-open:hover,
+.fa-figure-tools .fa-figure-open:focus-visible {
   border-color: var(--link-color, #7253ed);
   outline: none;
 }
@@ -346,6 +349,13 @@
    controls: one acts on the page, the other on a file. */
 .fa-figure-tools .fa-figure-export-start {
   margin-left: 0.6rem;
+}
+
+/* "Open ↗" is a link (#915) drawn like its neighbours, so middle-click and
+   "Open link in new tab" work on it as on any link. */
+.fa-figure-tools .fa-figure-open {
+  display: inline-block;
+  text-decoration: none;
 }
 
 .fa-figure-tools .fa-figure-status {
