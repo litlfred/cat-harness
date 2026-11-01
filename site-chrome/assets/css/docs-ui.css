@@ -9009,6 +9009,54 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
   .fa-numbered > p { max-width: none; }
 }
 
+/* ── Structured blocks: a light card ──────────────────────────────────────
+ * Owner, 2026-11-01: "structured content in the narrative doesnt really
+ * appear so. needs _light_ styling", "make more condensed", "look at all the
+ * structured assets". render-markdown.ts frames every headed block that is
+ * not a figure, diagram or table (requirements, personas, scenarios, data
+ * elements, remarks…) as `.fa-block`, with a small kind label, an id chip and
+ * a `.fa-block-meta` row for trailing "*Priority:* …" lines. Tints are
+ * currentColor mixes, so the card reads the same in light and dark. */
+.fa-block {
+  margin: 0.9em 0;
+  padding: 0.45em 0.8em 0.45em 0.85em;
+  border-left: 3px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 0 4px 4px 0;
+  background: color-mix(in srgb, currentColor 3.5%, transparent);
+}
+.fa-block > :first-child { margin-top: 0; }
+.fa-block > :last-child { margin-bottom: 0; }
+.fa-block p { margin: 0.35em 0; }
+.fa-block-kind {
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.68;
+  margin-right: 0.35em;
+  white-space: nowrap;
+}
+.fa-block-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8em;
+  font-weight: 600;
+  padding: 0.05em 0.4em;
+  border: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+  border-radius: 3px;
+  margin-right: 0.35em;
+  white-space: nowrap;
+}
+.fa-block-meta {
+  font-size: 0.85em;
+  opacity: 0.78;
+  margin-top: 0.3em;
+}
+.fa-block-meta p { margin: 0.15em 0; }
+.fa-block table { margin-top: 0.4em; }
+@media print {
+  .fa-block { background: none; }
+}
+
 /* A drawing moved inside a card it fits (drag pans, never rescales: owner,
  * 2026-11-01 "i want it to pan") is clipped by the card rather than giving
  * the card scroll room. */
