@@ -731,6 +731,121 @@
   });
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => addSuggest());
   else addSuggest();
+  // ── The block panel: icons on each block, one slide-out pane per icon ──
+  //
+  // Owner, 2026-11-01 (Q-STY-2): only icons show beside a block; each opens
+  // its own pane from the right edge. ✎ "Help improve this section" holds the
+  // block's own links (moved in while open, so their facts and handlers stay
+  // theirs) with a line on what each does. Another layer adds a pane with
+  // window.faBlockPanel.pane(id, { icon, title, render(label, body) }) and
+  // its icon with .icon(box, id, count).
+  const panes = { edit: { icon: "✎", title: "Help improve this section" } };
+  const EXPLAIN = {
+    suggest: ["✍ Suggest a change", "Propose new wording in an editor. It is sent as a GitHub issue with your change, and the editors decide on it."],
+    feedback: ["📣 Give feedback", "Raise a question, concern or error without proposing text. Opens a GitHub issue that names this section."],
+    edit: ["✎ Edit the source", "For editors: change the text yourself on GitHub. The edit becomes a pull request, reviewed before it is published."],
+  };
+  const ORDER = ["suggest", "feedback", "edit"];
+  let panel = null, home = null, moved = null, state = null;
+  const titleOf = (box) => {
+    if (box.dataset.sec) return box.dataset.sec;
+    for (let n = box; n && n !== document.body; n = n.previousElementSibling || n.parentElement)
+      if (/^H[1-6]$/.test(n.tagName)) return n.textContent.trim();
+    return box.dataset.block || "";
+  };
+  const restore = () => { if (moved && home) home.parentNode.insertBefore(moved, home); if (home) home.remove(); moved = home = null; };
+  const close = () => {
+    if (!panel) return;
+    restore();
+    panel.classList.remove("open");
+    document.querySelectorAll('.ba-ic[aria-expanded="true"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
+    if (state && state.from && state.from.isConnected) state.from.focus();
+    state = null;
+  };
+  const open = (box, id, from) => {
+    if (!panel) {
+      panel = el("aside", { className: "fa-block-panel", tabIndex: -1 });
+      panel.setAttribute("aria-label", "Section panel");
+      document.body.append(panel);
+    }
+    restore();
+    const label = box.dataset.block || "";
+    state = { box: box, id: id, from: from };
+    document.querySelectorAll('.ba-ic[aria-expanded="true"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
+    box.querySelectorAll(".ba-ic").forEach((b) => b.setAttribute("aria-expanded", String(b.dataset.pane === id)));
+    const tabs = el("div", { className: "bp-tabs" });
+    for (const b of box.querySelectorAll(".ba-ic")) {
+      const t = b.cloneNode(true);
+      t.setAttribute("aria-expanded", String(b.dataset.pane === id));
+      t.onclick = (e) => { e.stopPropagation(); open(box, b.dataset.pane, from); };
+      tabs.append(t);
+    }
+    const x = el("button", { className: "bp-x", type: "button", textContent: "✕", title: "Close (Esc)" });
+    x.onclick = close;
+    const p = panes[id] || { title: id };
+    const body = el("div", { className: "bp-body" });
+    panel.replaceChildren(x, tabs, el("h3", { textContent: p.title }), el("div", { className: "bp-sub", textContent: titleOf(box) }), body);
+    if (id === "edit") {
+      fill(box);
+      ready(box);
+      for (const a of box.querySelectorAll(":scope > a[data-fa-link]")) {
+        const e = EXPLAIN[a.dataset.faLink];
+        if (!e || a.dataset.bpDone) continue;
+        a.dataset.bpDone = "1";
+        a.replaceChildren(el("b", { textContent: e[0] }), el("small", { textContent: e[1] }));
+      }
+      const links = Array.from(box.querySelectorAll(":scope > a[data-fa-link]"));
+      links.sort((a, b) => ORDER.indexOf(a.dataset.faLink) - ORDER.indexOf(b.dataset.faLink)).forEach((a) => box.append(a));
+      box.querySelectorAll(":scope > .ba-existing").forEach((s) => box.append(s));
+      home = el("span", { hidden: true });
+      box.parentNode.insertBefore(home, box);
+      moved = box;
+      body.append(box);
+    } else if (p.render) p.render(label, body);
+    panel.classList.add("open");
+    panel.focus({ preventScroll: true });
+  };
+  const icon = (box, id, count) => {
+    if (box.querySelector('.ba-ic[data-pane="' + id + '"]')) return;
+    const p = panes[id] || {};
+    const b = el("button", { className: "ba-ic", type: "button", title: (p.title || id) + (count ? " (" + count + ")" : "") });
+    b.dataset.pane = id;
+    b.setAttribute("aria-expanded", "false");
+    b.append(el("span", { textContent: p.icon || "•" }));
+    if (count) b.append(el("b", { className: "ba-n", textContent: String(count) }));
+    // ✎ last; every other pane's icon above it.
+    if (id === "edit") box.append(b);
+    else box.insertBefore(b, box.querySelector('.ba-ic[data-pane="edit"]') || box.firstChild);
+  };
+  const icons = (root) => {
+    const r = root || document;
+    if (!r || typeof r.querySelectorAll !== "function") return;
+    for (const box of r.querySelectorAll(".block-actions")) if (box.querySelector("a[data-fa-link]")) icon(box, "edit");
+  };
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest && e.target.closest(".ba-ic");
+    if (b && !(panel && panel.contains(b))) {
+      e.preventDefault();
+      const box = b.closest(".block-actions");
+      if (state && state.box === box && state.id === b.dataset.pane) close();
+      else if (box) open(box, b.dataset.pane, b);
+      return;
+    }
+    if (panel && panel.classList.contains("open") && !panel.contains(e.target) && !e.target.closest(".fa-suggest, dialog")) close();
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && panel && panel.classList.contains("open") && !document.querySelector("dialog[open]")) close(); });
+  if (typeof document.documentElement === "object" && document.documentElement && document.documentElement.classList) {
+    document.documentElement.classList.add("fa-bp");
+    if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", () => icons());
+    else icons();
+  }
+  window.faBlockPanel = {
+    pane: (id, p) => { panes[id] = p; },
+    icon: icon,
+    icons: icons,
+    open: (label, id) => { const box = document.querySelector('.block-actions[data-block="' + CSS.escape(label) + '"]'); if (box) open(box, id || "edit"); },
+    close: close,
+  };
   window.faEditLinks = { urls: faBlockUrls, fill: fill, configure: configure };
   // Both the link reached and the host it sits in: a pointer that lands
   // straight on a compact host's link (no gap crossed) or keyboard focus on it

@@ -3,521 +3,523 @@
   "entry": "arxiv-2607.25032v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "skill loaded",
-      "score": 15.562,
+      "score": 15.6837,
       "evidence": []
     },
     {
       "term": "reads skill",
-      "score": 14.0134,
+      "score": 14.1347,
       "evidence": []
     },
     {
       "term": "skill authoring",
-      "score": 13.3141,
+      "score": 13.4336,
       "evidence": []
     },
     {
       "term": "selects skill",
-      "score": 13.0483,
+      "score": 13.1582,
       "evidence": []
     },
     {
       "term": "skill name",
-      "score": 12.8003,
+      "score": 12.9202,
       "evidence": []
     },
     {
       "term": "skill fails",
-      "score": 12.187,
+      "score": 12.296,
       "evidence": []
     },
     {
       "term": "skill sits",
-      "score": 12.093,
+      "score": 12.1788,
       "evidence": []
     },
     {
       "term": "skill end",
-      "score": 11.5508,
+      "score": 11.6237,
       "evidence": []
     },
     {
       "term": "bundled files",
-      "score": 10.0509,
+      "score": 10.0643,
       "evidence": []
     },
     {
       "term": "bundled scripts",
-      "score": 9.1887,
+      "score": 9.1413,
       "evidence": []
     },
     {
       "term": "claude skills",
-      "score": 8.6131,
+      "score": 8.6605,
       "evidence": []
     },
     {
-      "term": "agent behaviour",
-      "score": 8.2581,
-      "evidence": []
+      "term": "agent skills",
+      "score": 8.1883,
+      "evidence": [
+        "heading"
+      ]
     }
   ],
   "sections": {
     "sec-000-introduction": [
       {
         "term": "staged loading",
-        "score": 1.5369,
+        "score": 1.5158,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 1.02,
+        "score": 1.0294,
         "evidence": []
       },
       {
         "term": "claude code",
-        "score": 1.0083,
+        "score": 1.0163,
         "evidence": []
       },
       {
         "term": "loading model",
-        "score": 0.9188,
+        "score": 0.9154,
         "evidence": []
       },
       {
         "term": "surrounding",
-        "score": 0.85,
+        "score": 0.8303,
         "evidence": []
       },
       {
         "term": "authoring",
-        "score": 0.7856,
+        "score": 0.7918,
         "evidence": []
       },
       {
         "term": "behaviour",
-        "score": 0.7596,
+        "score": 0.7304,
         "evidence": []
       },
       {
         "term": "bundles",
-        "score": 0.7176,
+        "score": 0.7205,
         "evidence": []
       }
     ],
     "sec-001-skills-as-software-artefacts": [
       {
         "term": "skill name",
-        "score": 1.8983,
-        "evidence": []
-      },
-      {
-        "term": "agent behaviour",
-        "score": 1.6955,
+        "score": 1.9162,
         "evidence": []
       },
       {
         "term": "bundled files",
-        "score": 1.6648,
+        "score": 1.6636,
+        "evidence": []
+      },
+      {
+        "term": "agent behaviour",
+        "score": 1.6494,
         "evidence": []
       },
       {
         "term": "uml class",
-        "score": 1.5,
-        "evidence": []
-      },
-      {
-        "term": "usual sense",
-        "score": 1.3825,
+        "score": 1.3953,
         "evidence": []
       },
       {
         "term": "static form",
-        "score": 1.3695,
+        "score": 1.3716,
         "evidence": []
       },
       {
-        "term": "class style",
-        "score": 1.2816,
+        "term": "usual sense",
+        "score": 1.354,
         "evidence": []
       },
       {
         "term": "model selects",
-        "score": 1.2508,
+        "score": 1.2449,
+        "evidence": []
+      },
+      {
+        "term": "class style",
+        "score": 1.2418,
         "evidence": []
       }
     ],
     "sec-002-the-skill-as-a-unit": [
       {
         "term": "skill",
-        "score": 1.5975,
+        "score": 1.6123,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "claude skills",
-        "score": 1.2358,
+        "score": 1.2438,
         "evidence": []
       },
       {
         "term": "xml tags",
-        "score": 1.1479,
+        "score": 1.1506,
         "evidence": []
       },
       {
         "term": "holding",
-        "score": 0.8161,
+        "score": 0.8182,
         "evidence": []
       },
       {
         "term": "frontmatter",
-        "score": 0.6217,
+        "score": 0.6253,
         "evidence": []
       }
     ],
     "sec-003-staged-loading": [
       {
         "term": "staged loading",
-        "score": 3.0738,
+        "score": 3.0316,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "body enters",
-        "score": 1.726,
+        "score": 1.7327,
         "evidence": []
       },
       {
         "term": "bundled files",
-        "score": 1.4893,
+        "score": 1.4909,
         "evidence": []
       },
       {
         "term": "reference files",
-        "score": 1.3479,
+        "score": 1.35,
         "evidence": []
       },
       {
         "term": "context window",
-        "score": 1.1649,
+        "score": 1.1562,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 1.0529,
+        "score": 1.0626,
         "evidence": []
       },
       {
         "term": "loaded",
-        "score": 0.9993,
+        "score": 1.0038,
         "evidence": []
       },
       {
         "term": "hundred",
-        "score": 0.9078,
+        "score": 0.9092,
         "evidence": []
       }
     ],
     "sec-004-writing-the-description": [
       {
         "term": "invocation",
-        "score": 0.7341,
+        "score": 0.7272,
         "evidence": []
       },
       {
         "term": "description",
-        "score": 0.7218,
+        "score": 0.7239,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "skill",
-        "score": 0.6606,
-        "evidence": []
-      },
-      {
-        "term": "cutting",
-        "score": 0.6305,
+        "score": 0.6667,
         "evidence": []
       },
       {
         "term": "deserves",
-        "score": 0.6305,
+        "score": 0.631,
+        "evidence": []
+      },
+      {
+        "term": "disable",
+        "score": 0.6272,
         "evidence": []
       }
     ],
     "sec-005-anatomy-of-a-well-formed-skill": [
       {
         "term": "skill",
-        "score": 1.8038,
+        "score": 1.8205,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "chips",
-        "score": 1.652,
+        "score": 1.653,
         "evidence": []
       },
       {
         "term": "skill reads",
-        "score": 1.4826,
+        "score": 1.4948,
         "evidence": []
       },
       {
         "term": "bundled script",
-        "score": 1.4679,
+        "score": 1.4658,
         "evidence": []
       },
       {
         "term": "reference file",
-        "score": 1.3806,
+        "score": 1.3783,
         "evidence": []
       },
       {
         "term": "partial read",
-        "score": 1.1369,
+        "score": 1.1233,
         "evidence": []
       },
       {
         "term": "anatomy",
-        "score": 1.0345,
+        "score": 1.0371,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "artefacts",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       }
     ],
     "sec-006-skills-within-the-agent-tool-surface": [
       {
         "term": "slash command",
-        "score": 1.9228,
+        "score": 1.9308,
         "evidence": []
       },
       {
         "term": "command end",
-        "score": 1.6484,
+        "score": 1.6257,
         "evidence": []
       },
       {
         "term": "skill end",
-        "score": 1.4182,
+        "score": 1.3974,
         "evidence": []
       },
       {
         "term": "memory file",
-        "score": 1.3796,
+        "score": 1.3669,
         "evidence": []
       },
       {
         "term": "decides",
-        "score": 1.1221,
+        "score": 1.1257,
         "evidence": []
       },
       {
         "term": "claude code",
-        "score": 1.11,
+        "score": 1.1195,
         "evidence": []
       },
       {
         "term": "external tool",
-        "score": 1.0445,
+        "score": 1.0279,
         "evidence": []
       },
       {
         "term": "advisory",
-        "score": 0.9663,
+        "score": 0.9694,
         "evidence": []
       }
     ],
     "sec-007-skills-and-hooks": [
       {
         "term": "event fires",
-        "score": 2.4715,
+        "score": 2.3505,
         "evidence": []
       },
       {
         "term": "hook",
-        "score": 2.3119,
+        "score": 2.2787,
         "evidence": []
       },
       {
         "term": "finishes responding",
-        "score": 1.9152,
-        "evidence": []
-      },
-      {
-        "term": "session start",
-        "score": 1.7399,
+        "score": 1.9173,
         "evidence": []
       },
       {
         "term": "shell command",
-        "score": 1.7256,
+        "score": 1.733,
         "evidence": []
       },
       {
-        "term": "during session",
-        "score": 1.6557,
-        "evidence": []
-      },
-      {
-        "term": "tool call",
-        "score": 1.6117,
+        "term": "session start",
+        "score": 1.6652,
         "evidence": []
       },
       {
         "term": "runtime controls",
-        "score": 1.5791,
+        "score": 1.5889,
+        "evidence": []
+      },
+      {
+        "term": "tool call",
+        "score": 1.5818,
+        "evidence": []
+      },
+      {
+        "term": "during session",
+        "score": 1.5713,
         "evidence": []
       }
     ],
     "sec-008-an-evaluation-driven-authoring-process": [
       {
         "term": "skill",
-        "score": 0.9019,
+        "score": 0.9102,
         "evidence": []
       },
       {
         "term": "fails",
-        "score": 0.5831,
-        "evidence": []
-      },
-      {
-        "term": "instance",
-        "score": 0.5588,
+        "score": 0.5869,
         "evidence": []
       },
       {
         "term": "file",
-        "score": 0.5477,
+        "score": 0.5505,
         "evidence": []
       },
       {
         "term": "expected",
-        "score": 0.5469,
+        "score": 0.5484,
         "evidence": []
       },
       {
         "term": "body",
-        "score": 0.5379,
+        "score": 0.5404,
         "evidence": []
       },
       {
-        "term": "observe",
-        "score": 0.5318,
+        "term": "instance",
+        "score": 0.5358,
+        "evidence": []
+      },
+      {
+        "term": "write",
+        "score": 0.5245,
         "evidence": []
       }
     ],
     "sec-009-patterns-and-faults": [
       {
         "term": "leaving",
-        "score": 0.828,
+        "score": 0.7781,
         "evidence": []
       },
       {
         "term": "matters",
-        "score": 0.6956,
+        "score": 0.6986,
         "evidence": []
       },
       {
         "term": "style",
-        "score": 0.6319,
+        "score": 0.5878,
+        "evidence": []
+      },
+      {
+        "term": "output",
+        "score": 0.5833,
         "evidence": []
       },
       {
         "term": "patterns",
-        "score": 0.5808,
+        "score": 0.5571,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "output",
-        "score": 0.5538,
-        "evidence": []
-      },
-      {
         "term": "run",
-        "score": 0.4557,
+        "score": 0.4594,
         "evidence": []
       }
     ],
     "sec-010-trust-and-third-party-skills": [
       {
         "term": "carry instructions",
-        "score": 1.0708,
+        "score": 1.0767,
         "evidence": []
       },
       {
         "term": "external content",
-        "score": 0.9912,
+        "score": 0.9929,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 0.8536,
+        "score": 0.8615,
         "evidence": []
       },
       {
         "term": "fetches",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       }
     ],
     "sec-011-summary-of-guidance": [
       {
         "term": "claude code",
-        "score": 1.5246,
+        "score": 1.5372,
         "evidence": []
       },
       {
         "term": "code documentation",
-        "score": 1.4988,
+        "score": 1.49,
         "evidence": []
       },
       {
         "term": "claude api",
-        "score": 1.3093,
+        "score": 1.3189,
         "evidence": []
       },
       {
         "term": "agent skills",
-        "score": 1.2347,
+        "score": 1.2443,
         "evidence": []
       },
       {
         "term": "hooks",
-        "score": 0.8804,
-        "evidence": []
-      },
-      {
-        "term": "belongs",
-        "score": 0.875,
+        "score": 0.8821,
         "evidence": []
       },
       {
         "term": "anthropic",
-        "score": 0.8184,
+        "score": 0.8243,
+        "evidence": []
+      },
+      {
+        "term": "belongs",
+        "score": 0.8106,
         "evidence": []
       },
       {
         "term": "guidance",
-        "score": 0.6293,
+        "score": 0.6312,
         "evidence": [
           "heading"
         ]
@@ -526,42 +528,42 @@
     "sec-front-matter": [
       {
         "term": "agent skills",
-        "score": 1.6278,
+        "score": 1.6408,
         "evidence": []
       },
       {
         "term": "hooks",
-        "score": 1.111,
+        "score": 1.113,
         "evidence": []
       },
       {
         "term": "software-engineering",
-        "score": 0.9078,
+        "score": 0.9092,
         "evidence": []
       },
       {
         "term": "claude code",
-        "score": 0.895,
+        "score": 0.9023,
         "evidence": []
       },
       {
         "term": "authoring",
-        "score": 0.7856,
+        "score": 0.7918,
         "evidence": []
       },
       {
         "term": "anthropic",
-        "score": 0.5586,
+        "score": 0.5627,
         "evidence": []
       },
       {
         "term": "together",
-        "score": 0.5206,
+        "score": 0.5144,
         "evidence": []
       },
       {
         "term": "mechanism",
-        "score": 0.4949,
+        "score": 0.4923,
         "evidence": []
       }
     ]

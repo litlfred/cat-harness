@@ -3,69 +3,69 @@
   "entry": "gurel-tat-2017-swot-analysis",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "swot analysis",
-      "score": 27.0711,
+      "score": 26.7624,
       "evidence": []
     },
     {
       "term": "swot matrix",
-      "score": 20.7513,
+      "score": 20.8575,
       "evidence": []
     },
     {
       "term": "acronym swot",
-      "score": 20.0392,
-      "evidence": []
-    },
-    {
-      "term": "strategic analysis",
-      "score": 20.0362,
+      "score": 20.1092,
       "evidence": []
     },
     {
       "term": "organization strengths",
-      "score": 19.7495,
+      "score": 19.6373,
+      "evidence": []
+    },
+    {
+      "term": "strategic analysis",
+      "score": 19.5348,
       "evidence": []
     },
     {
       "term": "swot method",
-      "score": 19.4603,
+      "score": 19.5328,
       "evidence": []
     },
     {
       "term": "dynamic swot",
-      "score": 19.0659,
+      "score": 19.0876,
       "evidence": []
     },
     {
       "term": "enhancing swot",
-      "score": 18.6507,
+      "score": 18.6454,
       "evidence": []
     },
     {
       "term": "organizational weaknesses",
-      "score": 18.0943,
+      "score": 17.8949,
       "evidence": []
     },
     {
       "term": "strategic management",
-      "score": 17.7807,
+      "score": 17.3541,
       "evidence": []
     },
     {
       "term": "organization internal",
-      "score": 17.0409,
+      "score": 16.9857,
       "evidence": []
     },
     {
       "term": "strategic planning",
-      "score": 15.9855,
+      "score": 15.7916,
       "evidence": []
     }
   ],
@@ -73,521 +73,521 @@
     "page-001": [
       {
         "term": "strategic management",
-        "score": 2.9733,
+        "score": 2.9032,
         "evidence": []
       },
       {
         "term": "strategic planning",
-        "score": 2.8744,
+        "score": 2.8395,
         "evidence": []
       },
       {
         "term": "swot analysis",
-        "score": 2.6885,
+        "score": 2.6562,
         "evidence": []
       },
       {
         "term": "management process",
-        "score": 1.8489,
+        "score": 1.953,
         "evidence": []
       },
       {
         "term": "competitive advantage",
-        "score": 1.7165,
-        "evidence": []
-      },
-      {
-        "term": "internal analysis",
-        "score": 1.6081,
+        "score": 1.6809,
         "evidence": []
       },
       {
         "term": "external analysis",
-        "score": 1.6043,
+        "score": 1.5667,
+        "evidence": []
+      },
+      {
+        "term": "internal analysis",
+        "score": 1.5656,
         "evidence": []
       },
       {
         "term": "organization",
-        "score": 1.4196,
+        "score": 1.4171,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "swot analysis",
-        "score": 2.8269,
+        "score": 2.795,
         "evidence": []
       },
       {
         "term": "strategic management",
-        "score": 1.7113,
+        "score": 1.6722,
         "evidence": []
       },
       {
         "term": "strategic planning",
-        "score": 1.6835,
+        "score": 1.6631,
         "evidence": []
       },
       {
         "term": "analysis matrix",
-        "score": 1.6395,
+        "score": 1.6092,
         "evidence": []
       },
       {
         "term": "environmental factors",
-        "score": 1.4874,
+        "score": 1.4273,
         "evidence": []
       },
       {
         "term": "acronym",
-        "score": 1.3099,
+        "score": 1.3122,
         "evidence": []
       },
       {
         "term": "word formed",
-        "score": 1.2521,
+        "score": 1.2246,
         "evidence": []
       },
       {
         "term": "threats",
-        "score": 1.0037,
+        "score": 0.9881,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "swot analysis",
-        "score": 1.7318,
+        "score": 1.7097,
         "evidence": []
       },
       {
         "term": "environmental opportunities",
-        "score": 1.6355,
+        "score": 1.6185,
         "evidence": []
       },
       {
         "term": "organizational objectives",
-        "score": 1.3464,
+        "score": 1.3177,
         "evidence": []
       },
       {
         "term": "threats",
-        "score": 1.0037,
+        "score": 0.9881,
         "evidence": []
       },
       {
         "term": "weaknesses",
-        "score": 0.9617,
+        "score": 0.9601,
         "evidence": []
       },
       {
         "term": "strengths",
-        "score": 0.897,
+        "score": 0.8875,
         "evidence": []
       },
       {
-        "term": "posed",
-        "score": 0.8419,
+        "term": "organization",
+        "score": 0.834,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "organizational strengths",
-        "score": 2.7248,
+        "score": 2.6787,
         "evidence": []
       },
       {
         "term": "organizational weaknesses",
-        "score": 2.6365,
+        "score": 2.6009,
         "evidence": []
       },
       {
         "term": "weakness means",
-        "score": 2.1472,
+        "score": 2.1304,
         "evidence": []
       },
       {
         "term": "organizational level",
-        "score": 1.9723,
+        "score": 1.9206,
         "evidence": []
       },
       {
         "term": "competitor organizations",
-        "score": 1.7256,
+        "score": 1.7011,
         "evidence": []
       },
       {
         "term": "efficient compared",
-        "score": 1.3665,
+        "score": 1.3287,
         "evidence": []
       },
       {
         "term": "characteristic",
-        "score": 1.2717,
+        "score": 1.2742,
         "evidence": []
       },
       {
         "term": "financial resources",
-        "score": 1.1289,
+        "score": 1.1351,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "organizational managements",
-        "score": 2.5713,
+        "score": 2.5439,
         "evidence": []
       },
       {
         "term": "environmental threats",
-        "score": 2.0588,
+        "score": 2.0371,
         "evidence": []
       },
       {
         "term": "opportunities",
-        "score": 1.058,
+        "score": 1.0432,
         "evidence": []
       },
       {
         "term": "situation",
-        "score": 0.9638,
+        "score": 0.9431,
         "evidence": []
       },
       {
         "term": "opportunity",
-        "score": 0.9149,
+        "score": 0.9184,
         "evidence": []
       },
       {
         "term": "favourable",
-        "score": 0.9078,
+        "score": 0.9092,
         "evidence": []
       },
       {
         "term": "organization",
-        "score": 0.9073,
+        "score": 0.9057,
         "evidence": []
       },
       {
         "term": "characteristic",
-        "score": 0.868,
+        "score": 0.8698,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "internal weaknesses",
-        "score": 1.8002,
+        "score": 1.7943,
         "evidence": []
       },
       {
         "term": "internal strengths",
-        "score": 1.6266,
+        "score": 1.6129,
         "evidence": []
       },
       {
         "term": "external threats",
-        "score": 1.5263,
+        "score": 1.5135,
         "evidence": []
       },
       {
         "term": "opportunities",
-        "score": 0.8751,
+        "score": 0.8628,
         "evidence": []
       },
       {
         "term": "organization",
-        "score": 0.8355,
+        "score": 0.834,
         "evidence": []
       },
       {
         "term": "marketing",
-        "score": 0.7507,
-        "evidence": []
-      },
-      {
-        "term": "activities",
-        "score": 0.6731,
+        "score": 0.7314,
         "evidence": []
       },
       {
         "term": "environmental",
-        "score": 0.6613,
+        "score": 0.658,
+        "evidence": []
+      },
+      {
+        "term": "management",
+        "score": 0.6024,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "nike",
-        "score": 1.4089,
+        "score": 1.4104,
         "evidence": []
       },
       {
         "term": "sports",
-        "score": 1.2145,
+        "score": 1.2158,
         "evidence": []
       },
       {
         "term": "apparel",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "athletic",
-        "score": 1.0022,
+        "score": 1.0029,
         "evidence": []
       }
     ],
     "page-008": [
       {
         "term": "business school",
-        "score": 2.926,
+        "score": 2.9136,
         "evidence": []
       },
       {
         "term": "swot analysis",
-        "score": 2.6465,
+        "score": 2.6199,
         "evidence": []
       },
       {
         "term": "design school",
-        "score": 2.6027,
+        "score": 2.5603,
         "evidence": []
       },
       {
         "term": "philip selznick",
-        "score": 2.4957,
+        "score": 2.4987,
         "evidence": []
       },
       {
         "term": "school model",
-        "score": 2.2641,
+        "score": 2.2425,
         "evidence": []
       },
       {
         "term": "firm distinctive",
-        "score": 2.1131,
+        "score": 2.0828,
         "evidence": []
       },
       {
         "term": "strategic planning",
-        "score": 2.0625,
+        "score": 2.0374,
         "evidence": []
       },
       {
         "term": "strategic management",
-        "score": 1.7113,
+        "score": 1.6722,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "swot analysis",
-        "score": 2.8202,
+        "score": 2.792,
         "evidence": []
       },
       {
         "term": "business school",
-        "score": 1.9868,
+        "score": 1.9807,
         "evidence": []
       },
       {
         "term": "harvard business",
-        "score": 1.9163,
+        "score": 1.9227,
         "evidence": []
       },
       {
         "term": "strategic factors",
-        "score": 1.8249,
+        "score": 1.7608,
         "evidence": []
       },
       {
         "term": "design school",
-        "score": 1.5469,
+        "score": 1.5196,
         "evidence": []
       },
       {
-        "term": "analysis summary",
-        "score": 1.2883,
+        "term": "score card",
+        "score": 1.2871,
         "evidence": []
       },
       {
         "term": "ansoff",
-        "score": 1.2846,
+        "score": 1.2854,
         "evidence": []
       },
       {
-        "term": "project management",
-        "score": 1.2845,
+        "term": "business policy",
+        "score": 1.2848,
         "evidence": []
       }
     ],
     "page-010": [
       {
         "term": "swot analysis",
-        "score": 3.2303,
+        "score": 3.193,
         "evidence": []
       },
       {
         "term": "organizational managements",
-        "score": 2.3901,
+        "score": 2.3666,
         "evidence": []
       },
       {
         "term": "analysis technique",
-        "score": 1.9746,
+        "score": 1.9124,
         "evidence": []
       },
       {
         "term": "delphi panel",
-        "score": 1.6628,
+        "score": 1.6564,
         "evidence": []
       },
       {
         "term": "strategic",
-        "score": 1.176,
+        "score": 1.1618,
         "evidence": []
       },
       {
         "term": "radar",
-        "score": 1.0074,
-        "evidence": []
-      },
-      {
-        "term": "screen",
-        "score": 0.8085,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "competitors",
-        "score": 0.7628,
+        "score": 0.7653,
+        "evidence": []
+      },
+      {
+        "term": "screen",
+        "score": 0.7468,
         "evidence": []
       }
     ],
     "page-011": [
       {
         "term": "swot analysis",
-        "score": 3.1922,
+        "score": 3.1588,
         "evidence": []
       },
       {
         "term": "analysis technique",
-        "score": 2.1243,
+        "score": 2.0609,
         "evidence": []
       },
       {
         "term": "organization strengths",
-        "score": 2.0663,
+        "score": 2.0525,
         "evidence": []
       },
       {
         "term": "weaknesses",
-        "score": 1.1627,
+        "score": 1.1609,
         "evidence": []
       },
       {
         "term": "fuzzy",
-        "score": 1.0839,
+        "score": 1.0862,
         "evidence": []
       },
       {
         "term": "disadvantages",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       },
       {
         "term": "brad",
-        "score": 0.9412,
+        "score": 0.9424,
         "evidence": []
       },
       {
         "term": "threats",
-        "score": 0.9015,
+        "score": 0.8876,
         "evidence": []
       }
     ],
     "page-012": [
       {
         "term": "swot analysis",
-        "score": 3.113,
+        "score": 3.0763,
         "evidence": []
       },
       {
         "term": "strategic analysis",
-        "score": 2.4449,
+        "score": 2.3847,
         "evidence": []
       },
       {
         "term": "strategic management",
-        "score": 2.1402,
+        "score": 2.0905,
         "evidence": []
       },
       {
         "term": "internal analysis",
-        "score": 1.9992,
+        "score": 1.9498,
         "evidence": []
       },
       {
         "term": "competitive advantage",
-        "score": 1.9646,
+        "score": 1.9233,
         "evidence": []
       },
       {
         "term": "achieve competitive",
-        "score": 1.7645,
+        "score": 1.759,
         "evidence": []
       },
       {
         "term": "external analysis",
-        "score": 1.7417,
+        "score": 1.6987,
         "evidence": []
       },
       {
         "term": "management process",
-        "score": 1.3148,
+        "score": 1.3928,
         "evidence": []
       }
     ],
     "page-013": [
       {
         "term": "strategic management",
-        "score": 3.0312,
+        "score": 2.9569,
         "evidence": []
       },
       {
         "term": "swot analysis",
-        "score": 2.9584,
+        "score": 2.9318,
         "evidence": []
       },
       {
         "term": "enhancing swot",
-        "score": 2.7327,
+        "score": 2.6969,
         "evidence": []
       },
       {
         "term": "dynamic swot",
-        "score": 2.6459,
+        "score": 2.6369,
         "evidence": []
       },
       {
         "term": "prentice hall",
-        "score": 1.7657,
+        "score": 1.7515,
         "evidence": []
       },
       {
         "term": "international journal",
-        "score": 1.7503,
+        "score": 1.7397,
         "evidence": []
       },
       {
         "term": "business policy",
-        "score": 1.5672,
+        "score": 1.5723,
         "evidence": []
       },
       {
         "term": "edition",
-        "score": 1.5521,
+        "score": 1.5206,
         "evidence": []
       }
     ]
