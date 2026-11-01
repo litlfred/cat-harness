@@ -802,3 +802,81 @@
 </style>
   {%- endif -%}
 {%- endfor -%}
+
+<!--
+  THE PAGE GROUND: a harness's theme art behind every one of its docs pages.
+
+  Bean `yj32`, owner card Q-DEP-2 A (2026-11-01): the avatar is "the default
+  display background for their corresponding docs/ (ghpages) rendering".
+
+  WHICH HARNESS. Each tile in `_data/harness.json` carries `pageGround`
+  (cat-harness-tools `harness-tiles.ts`): the URL segments that make a page
+  that instance's, and its three crops. The FIRST tile whose scope the URL
+  contains wins; tiles come dependents first, so the content instance a page
+  is about beats the platform that renders it. The site owner is the fallback
+  (`siteDefault`), never a `/` scope, because `/` is in every URL. A tile with
+  no `art` gets no ground: a palette-only theme is a choice, not a gap.
+
+  A CSS BACKGROUND HERE, where the stickies use `<picture>`. A sticky places
+  words inside a measured quiet region of one crop, so the crop must be the
+  file. The page ground places nothing on the art, so a media query choosing
+  the crop is exact, and no markup is added to any page.
+
+  TWO SCRIMS, both the page's own background colour (not the theme's sticky
+  scrim, because the ink they protect is the page's ink). The page gets 85%,
+  so the art shows in the margins and under the header. The text column,
+  `.main-content`, gets a second layer at 96%, so the words sit on 99.4% page
+  colour. The art runs the full range (measured: every crop of the three
+  grounds has pixels at luminance 0.000 and 1.000), so the bound is the worst
+  pixel: text and links stay within 0.1:1 of the plain page in both schemes
+  (light links 4.94:1 against 5.03:1, dark links 4.09:1 against 4.14:1, dark body text 11.5:1 against 11.7:1).
+  A single 92% layer was measured first and dropped: it took dark-scheme
+  links from 4.14:1 to 3.35:1.
+-->
+{%- assign fa_ground = nil -%}
+{%- assign fa_ground_default = nil -%}
+{%- for fa_t in site.data.harness.harnesses -%}
+  {%- if fa_t.pageGround.siteDefault -%}{%- assign fa_ground_default = fa_t -%}{%- endif -%}
+  {%- if fa_ground == nil -%}
+    {%- for fa_sc in fa_t.pageGround.scopes -%}
+      {%- if fa_page_url contains fa_sc -%}{%- assign fa_ground = fa_t -%}{%- break -%}{%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- if fa_ground == nil -%}{%- assign fa_ground = fa_ground_default -%}{%- endif -%}
+{%- assign fa_art = fa_ground.pageGround.art -%}
+{%- if fa_art.laptop and fa_art.mobile and fa_art.card -%}
+<style id="fa-page-ground" data-instance="{{ fa_ground.name }}">
+  /* {{ fa_ground.pageGround.title }}, the theme of {{ fa_ground.name }}. */
+  :root { --fa-page-scrim: rgba(39, 38, 43, 0.85); --fa-text-scrim: rgba(39, 38, 43, 0.96); }
+  :root[data-fa-scheme="light"] { --fa-page-scrim: rgba(255, 255, 255, 0.85); --fa-text-scrim: rgba(255, 255, 255, 0.96); }
+  html body .main-content { background-color: var(--fa-text-scrim); border-radius: 6px; }
+  html body {
+    background-image:
+      linear-gradient(var(--fa-page-scrim), var(--fa-page-scrim)),
+      url("{{ fa_art.laptop | relative_url }}");
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  @media (max-width: 48rem) {
+    html body {
+      background-image:
+        linear-gradient(var(--fa-page-scrim), var(--fa-page-scrim)),
+        url("{{ fa_art.card | relative_url }}");
+    }
+  }
+  @media (max-width: 30rem) {
+    html body {
+      background-image:
+        linear-gradient(var(--fa-page-scrim), var(--fa-page-scrim)),
+        url("{{ fa_art.mobile | relative_url }}");
+    }
+  }
+  /* Print and forced colours get the plain page: art is decoration. */
+  @media print, (forced-colors: active) {
+    html body { background-image: none; }
+  }
+</style>
+{%- endif -%}
