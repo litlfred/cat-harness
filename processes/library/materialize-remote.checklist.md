@@ -85,7 +85,7 @@ One process, called wherever remote content is landed locally.
 
 ### 9. Leave it `referenced`, record why (`Task_StayRef`)
 
-- Who: the `Corpus — L1 source knowledge graph` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: A refusal is not a failure of the process — it is the process working.
 - Record it: `workflow_complete` with `node: "Task_StayRef"`.
@@ -93,7 +93,7 @@ One process, called wherever remote content is landed locally.
 
 ### 10. Declare the node `materialized` (`Task_Declare`)
 
-- Who: the `Corpus — L1 source knowledge graph` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: The node's state moves from `referenced` to `materialized`, carrying purpose, localPath, gates and (archival) fixity.
 - Record it: `workflow_complete` with `node: "Task_Declare"`.

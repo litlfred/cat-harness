@@ -51,9 +51,6 @@ An ARCHIVAL copy is not refreshed. Re-fetching it would defeat it: the copy exis
         <bpmn:flowNodeRef>Task_Upstream</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Local</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Both</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="Lane_2" name="Corpus — L1 source knowledge graph" partitionElementRef="corpus">
-        <bpmn:documentation>Where the refreshed content actually lands, and the one place the five import gates are re-asked rather than inherited — a licence can change since the original import, and a collection can grow past a size somebody already agreed to, so passing the gates once is never treated as passing them for good.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_Apply</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_KeepLocal</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RecordConflict</bpmn:flowNodeRef>
@@ -153,6 +150,9 @@ This is the owner's publication exception, stated as a rule rather than as a car
       <bpmn:incoming>Flow_Remote</bpmn:incoming>
       <bpmn:incoming>Flow_Reconciled</bpmn:incoming>
       <bpmn:outgoing>Flow_10</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_Apply">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_KeepLocal" name="Keep the local edit,
 and re-pin so it stops being asked">
@@ -163,6 +163,9 @@ and re-pin so it stops being asked">
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_Local</bpmn:incoming>
       <bpmn:outgoing>Flow_Kept</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_KeepLocal">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_RecordConflict" name="Record the conflict, decide nothing,
 and do NOT re-pin">
@@ -174,6 +177,9 @@ and do NOT re-pin">
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_Defer</bpmn:incoming>
       <bpmn:outgoing>Flow_Deferred</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_RecordConflict">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Diverged" name="Diverged on purpose,
 and the record says why">
@@ -211,6 +217,7 @@ records against what">
     <bpmn:sequenceFlow id="Flow_Deferred" sourceRef="Task_RecordConflict" targetRef="EndEvent_Diverged" />
     <bpmn:sequenceFlow id="Flow_9" sourceRef="Task_Fixity" targetRef="EndEvent_Fresh" />
     <bpmn:sequenceFlow id="Flow_10" sourceRef="Task_Apply" targetRef="EndEvent_Fresh" />
+    <bpmn:dataStoreReference id="DSR_corpus" name="Corpus" dataStoreRef="corpus"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_RefreshMaterialized">
     <bpmndi:BPMNPlane id="Plane_RefreshMaterialized" bpmnElement="Collaboration_RefreshMaterialized">
@@ -221,10 +228,7 @@ records against what">
         <dc:Bounds x="160" y="60" width="2100" height="190" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true">
-        <dc:Bounds x="160" y="250" width="2100" height="190" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_2_di" bpmnElement="Lane_2" isHorizontal="true">
-        <dc:Bounds x="160" y="440" width="2100" height="190" />
+        <dc:Bounds x="160" y="250" width="2100" height="380" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Due_di" bpmnElement="StartEvent_Due">
         <dc:Bounds x="200" y="127" width="36" height="36" />
@@ -356,6 +360,10 @@ records against what">
         <di:waypoint x="1640" y="525" />
         <di:waypoint x="1700" y="525" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_corpus" bpmnElement="DSR_corpus"><dc:Bounds x="1760" y="710" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_Apply" bpmnElement="DOA_Task_Apply"><di:waypoint x="1545" y="575"/><di:waypoint x="1545" y="685"/><di:waypoint x="1785" y="685"/><di:waypoint x="1785" y="710"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_KeepLocal" bpmnElement="DOA_Task_KeepLocal"><di:waypoint x="1905" y="530"/><di:waypoint x="1905" y="685"/><di:waypoint x="1785" y="685"/><di:waypoint x="1785" y="710"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_RecordConflict" bpmnElement="DOA_Task_RecordConflict"><di:waypoint x="1905" y="625"/><di:waypoint x="1905" y="685"/><di:waypoint x="1785" y="685"/><di:waypoint x="1785" y="710"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

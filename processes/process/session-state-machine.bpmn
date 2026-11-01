@@ -86,8 +86,6 @@ The distinction between refreshing a timestamp and writing what changed is the d
       </bpmn:lane>
       <!-- Written to, decides nothing. No flowNodeRef, which is what
            `actedUpon` means. -->
-      <bpmn:lane id="Lane_Record" name="Session record" partitionElementRef="session-record">
-      </bpmn:lane>
     </bpmn:laneSet>
 
     <bpmn:startEvent id="Start_Session" name="An actor picks up">
@@ -124,6 +122,9 @@ The distinction between refreshing a timestamp and writing what changed is the d
       <bpmn:extensionElements><bootstrap.processes:skill ref="session-context"/></bpmn:extensionElements>
       <bpmn:incoming>F_5</bpmn:incoming>
       <bpmn:outgoing>F_6</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_A_OpenSession">
+        <bpmn:targetRef>DSR_session_record</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
 
     <bpmn:callActivity id="Call_SecurePermissions" name="Secure the agent's&#10;permissions" calledElement="Process_SecureAgentPermissions">
@@ -160,6 +161,9 @@ The distinction between refreshing a timestamp and writing what changed is the d
       <bpmn:extensionElements><bootstrap.processes:skill ref="session-context"/></bpmn:extensionElements>
       <bpmn:incoming>F_8</bpmn:incoming>
       <bpmn:outgoing>F_9</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_A_Touch">
+        <bpmn:targetRef>DSR_session_record</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
 
     <bpmn:task id="A_UpdateSession" name="Write what changed">
@@ -169,6 +173,9 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
       <bpmn:extensionElements><bootstrap.processes:skill ref="session-context"/></bpmn:extensionElements>
       <bpmn:incoming>F_10</bpmn:incoming>
       <bpmn:outgoing>F_11</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_A_UpdateSession">
+        <bpmn:targetRef>DSR_session_record</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
 
     <bpmn:task id="A_CloseSession" name="Close the session">
@@ -176,6 +183,9 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
       <bpmn:extensionElements><bootstrap.processes:skill ref="session-context"/></bpmn:extensionElements>
       <bpmn:incoming>F_12</bpmn:incoming>
       <bpmn:outgoing>F_13</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_A_CloseSession">
+        <bpmn:targetRef>DSR_session_record</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
 
     <bpmn:endEvent id="End_Session" name="Session closed">
@@ -196,21 +206,19 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
     <bpmn:sequenceFlow id="F_11" sourceRef="A_UpdateSession" targetRef="A_ReadTurn"/>
     <bpmn:sequenceFlow id="F_12" name="the session is ending" sourceRef="Gateway_TurnEffect" targetRef="A_CloseSession"/>
     <bpmn:sequenceFlow id="F_13" sourceRef="A_CloseSession" targetRef="End_Session"/>
+    <bpmn:dataStoreReference id="DSR_session_record" name="Session record" dataStoreRef="session-record"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="Diagram_SessionStateMachine">
     <bpmndi:BPMNPlane id="Plane_SessionStateMachine" bpmnElement="Collab_SessionStateMachine">
       <bpmndi:BPMNShape id="Shape_Participant_SessionStateMachine" bpmnElement="Participant_SessionStateMachine" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1400" height="610" />
+        <dc:Bounds x="160" y="80" width="1400" height="490" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Machine" bpmnElement="Lane_Machine" isHorizontal="true">
         <dc:Bounds x="190" y="80" width="1370" height="320" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Human" bpmnElement="Lane_Human" isHorizontal="true">
         <dc:Bounds x="190" y="400" width="1370" height="170" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Lane_Record" bpmnElement="Lane_Record" isHorizontal="true">
-        <dc:Bounds x="190" y="570" width="1370" height="120" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_Session" bpmnElement="Start_Session">
@@ -317,6 +325,11 @@ NO `cat-harness.processes:bean` on this step. It records that a claim happened; 
         <di:waypoint x="1420" y="340" />
         <di:waypoint x="1490" y="340" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_session_record" bpmnElement="DSR_session_record"><dc:Bounds x="1152.5" y="610" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_A_OpenSession" bpmnElement="DOA_A_OpenSession"><di:waypoint x="660" y="280"/><di:waypoint x="660" y="585"/><di:waypoint x="1177.5" y="585"/><di:waypoint x="1177.5" y="610"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_A_Touch" bpmnElement="DOA_A_Touch"><di:waypoint x="1350" y="180"/><di:waypoint x="1350" y="585"/><di:waypoint x="1177.5" y="585"/><di:waypoint x="1177.5" y="610"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_A_UpdateSession" bpmnElement="DOA_A_UpdateSession"><di:waypoint x="1350" y="280"/><di:waypoint x="1350" y="585"/><di:waypoint x="1177.5" y="585"/><di:waypoint x="1177.5" y="610"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_A_CloseSession" bpmnElement="DOA_A_CloseSession"><di:waypoint x="1350" y="380"/><di:waypoint x="1350" y="585"/><di:waypoint x="1177.5" y="585"/><di:waypoint x="1177.5" y="610"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

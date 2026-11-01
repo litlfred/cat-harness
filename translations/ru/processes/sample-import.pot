@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sample-import\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.284Z\n"
+"POT-Creation-Date: 2026-11-01T10:53:08.936Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -19,22 +19,22 @@ msgstr ""
 msgid "A permanent sample is due or changed upstream"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:105
+#: processes/library/sample-import.bpmn:102
 #. Diagram element documentation
 msgid "A permanent sample joins the library as an L1 source, with the materialization record (purpose, gates, fixity) beside it. From here refresh-materialized governs it."
 msgstr ""
 
-#: processes/library/sample-import.bpmn:66
+#: processes/library/sample-import.bpmn:63
 #. Diagram label
 msgid "A sample of a remote source is proposed"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:115
+#: processes/library/sample-import.bpmn:112
 #. Diagram element documentation
 msgid "A trial goes to the kept trashcan: addressable, exported, never published. Its node declares `$schema: folio-fsh-guts/v1` and carries the bean or issue it was written under, since it was never moved from anywhere and a `movedFrom` would be invented provenance. It is NOT refreshed: a trial records what the source looked like when it was tried. Promoting a trial means running this process again with permanent = yes, so the gates are asked afresh."
 msgstr ""
 
-#: processes/library/sample-import.bpmn:135
+#: processes/library/sample-import.bpmn:132
 #. Diagram element documentation
 msgid "All of them, and each one ran. Anything else goes to Task_RecordFindings."
 msgstr ""
@@ -49,19 +49,14 @@ msgstr ""
 msgid "Contributor (human or agent)"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:58
+#: processes/library/sample-import.bpmn:195
 #. Diagram label
-msgid "Corpus — L1 source knowledge graph"
+msgid "Corpus"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:133
+#: processes/library/sample-import.bpmn:130
 #. Diagram label
 msgid "Every check passed?"
-msgstr ""
-
-#: processes/library/sample-import.bpmn:59
-#. Diagram element documentation
-msgid "Every path ends here with something written down. A refused sample stays referenced with the refusing gate's reason, a failed import records what failed, and a passed one records where it landed. None ends in silence, because an import nobody can tell was tried is the one somebody tries again."
 msgstr ""
 
 #: processes/library/sample-import.bpmn:153
@@ -69,7 +64,7 @@ msgstr ""
 msgid "Import failed, findings recorded"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:123
+#: processes/library/sample-import.bpmn:120
 #. Diagram label
 msgid "Import into the store, and test the import"
 msgstr ""
@@ -79,27 +74,27 @@ msgstr ""
 msgid "Ingestion Engine (agent, runs unattended)"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:113
+#: processes/library/sample-import.bpmn:110
 #. Diagram label
 msgid "Keep it as a trial: the unpublished trashcan"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:104
+#: processes/library/sample-import.bpmn:101
 #. Diagram label
 msgid "Land it in library/"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:81
+#: processes/library/sample-import.bpmn:78
 #. Diagram label
 msgid "Materialize remote content (the five gates)"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:91
+#: processes/library/sample-import.bpmn:88
 #. Diagram label
 msgid "Materialized?"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:97
+#: processes/library/sample-import.bpmn:94
 #. Diagram label
 msgid "Meant to be permanent?"
 msgstr ""
@@ -129,12 +124,12 @@ msgstr ""
 msgid "permanent"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:92
+#: processes/library/sample-import.bpmn:89
 #. Diagram element documentation
 msgid "Read off materialize-remote's end state, never re-decided. `referenced` (any gate refused or unknown) ends the sample here; `materialized` continues."
 msgstr ""
 
-#: processes/library/sample-import.bpmn:140
+#: processes/library/sample-import.bpmn:137
 #. Diagram label
 msgid "Record what failed"
 msgstr ""
@@ -164,22 +159,22 @@ msgstr ""
 msgid "Sample imported and tested"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:71
+#: processes/library/sample-import.bpmn:68
 #. Diagram label
 msgid "Scope the sample: which items, which store, and is it PERMANENT?"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:99
+#: processes/library/sample-import.bpmn:96
 #. Diagram element documentation
 msgid "The answer from Task_Scope. There is no default, and none is needed here: Task_Scope does not complete until permanence is stated, so an unscoped sample never reaches this gateway."
 msgstr ""
 
-#: processes/library/sample-import.bpmn:68
+#: processes/library/sample-import.bpmn:65
 #. Diagram element documentation
 msgid "The caller names a source (ideally one with a source descriptor in the declared sources/ of the instance that owns the corpus) and a reason to try it. Nothing about size, licence or permanence is assumed at this point."
 msgstr ""
 
-#: processes/library/sample-import.bpmn:125
+#: processes/library/sample-import.bpmn:122
 #. Diagram element documentation
 msgid "The part only this process does. Load the landed sample into the chosen store and check what an import can get wrong: every item arrived (count against the request), identifiers survived (the descriptor's authoritative ones), structure validates against the store's schema, and provenance (source, revision, fixity) is attached to each node. A check that could not run is a failure, not a pass."
 msgstr ""
@@ -194,12 +189,12 @@ msgstr ""
 msgid "The second entry. Only library/ copies arrive here; fsh-guts/ trials are never refreshed."
 msgstr ""
 
-#: processes/library/sample-import.bpmn:83
+#: processes/library/sample-import.bpmn:80
 #. Diagram element documentation
 msgid "The shared subprocess. It resolves the request against the source descriptor, then asks size, restrictions, copyright, retention and source loss, and either fetches with fixity or leaves the content referenced. This process does not restate any of that; it waits for the outcome."
 msgstr ""
 
-#: processes/library/sample-import.bpmn:74
+#: processes/library/sample-import.bpmn:71
 #. Diagram element documentation
 msgid "Three answers, recorded before anything is fetched. WHICH ITEMS: named by the source's identifiers, or by a subset strategy its descriptor supports. WHICH STORE: the knowledge graph or other structured store the import is tested against. PERMANENT OR TRIAL: a permanent sample lands in library/ and is refreshed; a trial lands in fsh-guts/ and is not. The purpose materialize-remote asks for (working or archival) is asked there, not here."
 msgstr ""
@@ -209,7 +204,7 @@ msgstr ""
 msgid "trial"
 msgstr ""
 
-#: processes/library/sample-import.bpmn:141
+#: processes/library/sample-import.bpmn:138
 #. Diagram element documentation
 msgid "Which check failed, on which items, and the evidence. The landed copy is not removed: a failed import is information about the source or the store, and deleting the copy would destroy the evidence."
 msgstr ""

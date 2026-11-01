@@ -64,7 +64,7 @@ Keep a materialized copy of remote content current: what changed upstream, what 
 
 ### 5. Re-materialize, re-asking the five gates — and record the new fixity (`Task_Apply`)
 
-- Who: the `Corpus — L1 source knowledge graph` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: The gates are re-asked, not inherited: a licence can change, and a collection can grow past the size a caller agreed to.
 - Record it: `workflow_complete` with `node: "Task_Apply"`.
@@ -81,7 +81,7 @@ Keep a materialized copy of remote content current: what changed upstream, what 
 
 ### 6. Keep the local edit, and re-pin so it stops being asked (`Task_KeepLocal`)
 
-- Who: the `Corpus — L1 source knowledge graph` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: The local edit wins, so nothing is re-materialized — and the pin moves to the upstream revision that was compared against.
 - Record it: `workflow_complete` with `node: "Task_KeepLocal"`.
@@ -97,7 +97,7 @@ Keep a materialized copy of remote content current: what changed upstream, what 
 
 ### 8. Record the conflict, decide nothing, and do NOT re-pin (`Task_RecordConflict`)
 
-- Who: the `Corpus — L1 source knowledge graph` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: Both copies stay and the conflict is written down with what each side says.
 - Record it: `workflow_complete` with `node: "Task_RecordConflict"`.

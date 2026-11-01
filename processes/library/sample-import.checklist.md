@@ -101,7 +101,7 @@ The SDLC for testing an import of a SAMPLE of a remote source into a knowledge g
 
 ### 7. Record what failed (`Task_RecordFindings`)
 
-- Who: the `Corpus — L1 source knowledge graph` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `sample-import`.
 - What: Which check failed, on which items, and the evidence.
 - Record it: `workflow_complete` with `node: "Task_RecordFindings"`.

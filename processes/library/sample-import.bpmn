@@ -54,9 +54,6 @@ WHERE A SAMPLE LANDS depends on whether it is meant to last. The owner, 2026-09-
         <bpmn:flowNodeRef>Task_Trial</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ImportTest</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Passed</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="Lane_2" name="Corpus — L1 source knowledge graph" partitionElementRef="corpus">
-        <bpmn:documentation>Every path ends here with something written down. A refused sample stays referenced with the refusing gate's reason, a failed import records what failed, and a passed one records where it landed. None ends in silence, because an import nobody can tell was tried is the one somebody tries again.</bpmn:documentation>
         <bpmn:flowNodeRef>EndEvent_Refused</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RecordFindings</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_Failed</bpmn:flowNodeRef>
@@ -145,6 +142,9 @@ passed?">
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12</bpmn:incoming>
       <bpmn:outgoing>Flow_13</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_RecordFindings">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Refused" name="Not imported;
 stays referenced, with why">
@@ -192,6 +192,7 @@ content">
     <bpmn:sequenceFlow id="Flow_13" sourceRef="Task_RecordFindings" targetRef="EndEvent_Failed" />
     <bpmn:sequenceFlow id="Flow_14" sourceRef="StartEvent_Upstream" targetRef="Call_Refresh" />
     <bpmn:sequenceFlow id="Flow_15" sourceRef="Call_Refresh" targetRef="EndEvent_Refreshed" />
+    <bpmn:dataStoreReference id="DSR_corpus" name="Corpus" dataStoreRef="corpus"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_SampleImport">
     <bpmndi:BPMNPlane id="Plane_SampleImport" bpmnElement="Collaboration_SampleImport">
@@ -202,10 +203,7 @@ content">
         <dc:Bounds x="160" y="60" width="1820" height="250" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true">
-        <dc:Bounds x="160" y="310" width="1820" height="250" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_2_di" bpmnElement="Lane_2" isHorizontal="true">
-        <dc:Bounds x="160" y="560" width="1820" height="250" />
+        <dc:Bounds x="160" y="310" width="1820" height="500" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Proposed_di" bpmnElement="StartEvent_Proposed">
         <dc:Bounds x="200" y="167" width="36" height="36" />
@@ -339,6 +337,8 @@ content">
         <di:waypoint x="490" y="435" />
         <di:waypoint x="510" y="435" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_corpus" bpmnElement="DSR_corpus"><dc:Bounds x="1720" y="850" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_RecordFindings" bpmnElement="DOA_Task_RecordFindings"><di:waypoint x="1745" y="760"/><di:waypoint x="1745" y="850"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

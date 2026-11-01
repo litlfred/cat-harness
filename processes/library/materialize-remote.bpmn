@@ -54,9 +54,6 @@ The three states (referenced / materialized / unknown) and the five gates are sc
         <bpmn:flowNodeRef>Task_SourceLoss</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Gates</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Fetch</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="Lane_2" name="Corpus — L1 source knowledge graph" partitionElementRef="corpus">
-        <bpmn:documentation>Whichever branch Gateway_Gates takes, this lane is where the outcome lands, and it is never silence: Task_Declare and Task_StayRef are the process's only two ends, both bean-noted, because a node with no recorded state is invalid rather than defaulted. A refusal is written down with the same weight as a success — the graph still knows the node exists either way.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_Declare</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_StayRef</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_Done</bpmn:flowNodeRef>
@@ -159,6 +156,9 @@ none refused?">
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_10</bpmn:incoming>
       <bpmn:outgoing>Flow_11</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_Declare">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_StayRef" name="Leave it `referenced`,
 record why">
@@ -169,6 +169,9 @@ record why">
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_9</bpmn:incoming>
       <bpmn:outgoing>Flow_12</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_StayRef">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Done" name="Local copy exists,
 with its five answers">
@@ -191,6 +194,7 @@ and the graph says why">
     <bpmn:sequenceFlow id="Flow_10" sourceRef="Task_Fetch" targetRef="Task_Declare" />
     <bpmn:sequenceFlow id="Flow_11" sourceRef="Task_Declare" targetRef="EndEvent_Done" />
     <bpmn:sequenceFlow id="Flow_12" sourceRef="Task_StayRef" targetRef="EndEvent_Refused" />
+    <bpmn:dataStoreReference id="DSR_corpus" name="Corpus" dataStoreRef="corpus"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_MaterializeRemote">
     <bpmndi:BPMNPlane id="Plane_MaterializeRemote" bpmnElement="Collaboration_MaterializeRemote">
@@ -201,10 +205,7 @@ and the graph says why">
         <dc:Bounds x="160" y="60" width="3230" height="190" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true">
-        <dc:Bounds x="160" y="250" width="3230" height="190" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_2_di" bpmnElement="Lane_2" isHorizontal="true">
-        <dc:Bounds x="160" y="440" width="3230" height="190" />
+        <dc:Bounds x="160" y="250" width="3230" height="380" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Asked_di" bpmnElement="StartEvent_Asked">
         <dc:Bounds x="200" y="127" width="36" height="36" />
@@ -309,6 +310,9 @@ and the graph says why">
         <di:waypoint x="2890" y="650" />
         <di:waypoint x="2950" y="650" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_corpus" bpmnElement="DSR_corpus"><dc:Bounds x="2770" y="710" width="50" height="50"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_Declare" bpmnElement="DOA_Task_Declare"><di:waypoint x="2795" y="575"/><di:waypoint x="2795" y="710"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_StayRef" bpmnElement="DOA_Task_StayRef"><di:waypoint x="2795" y="700"/><di:waypoint x="2795" y="710"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
