@@ -111,7 +111,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmn:incoming>t4</bpmn:incoming>
       <bpmn:outgoing>t6</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:callActivity id="Call_HandBack" name="Hand it back&#10;[merge-refusal]" calledElement="Process_MergeRefusal">
+    <bpmn:callActivity id="Call_HandBack" name="Hand it back" calledElement="Process_MergeRefusal">
       <bpmn:documentation>`merge-refusal.bpmn` (PR #1888, bean `zacz`): a bean under the right epic, a hand-back to the owning session with a fail condition (agent-handoff, #1884), or a dispatch when nobody owns it. R4: the PR returns with its reason.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-conflict-patterns"/>
@@ -150,7 +150,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmn:incoming>t21</bpmn:incoming>
     </bpmn:endEvent>
 
-    <bpmn:callActivity id="Call_ChecksPresent" name="Find members with no CI&#10;on their head&#10;[pr-checks-present]" calledElement="Process_PrChecksPresent">
+    <bpmn:callActivity id="Call_ChecksPresent" name="Find members with no CI&#10;on their head" calledElement="Process_PrChecksPresent">
       <bpmn:documentation>GitHub runs no `pull_request` CI while a PR conflicts, so a member can arrive with nothing on its head (bean `u7be` item 3). That member is T2's first suspect if the train goes red.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="ci-health"/>
@@ -159,7 +159,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmn:incoming>t11</bpmn:incoming>
       <bpmn:outgoing>t12</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:callActivity id="Call_MergeMembers" name="Merge each member&#10;onto the base&#10;[merge-base]" calledElement="Process_MergeBase">
+    <bpmn:callActivity id="Call_MergeMembers" name="Merge each member&#10;onto the base" calledElement="Process_MergeBase">
       <bpmn:documentation>`merge-base.bpmn` once per member, in order, `--no-regen`; then ONE `bun run cat regen` over the result. Tool: `merge:train`. Always onto the current base, never a cached one (R5).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="prepare-merge"/>
@@ -175,7 +175,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmn:outgoing>t14</bpmn:outgoing>
       <bpmn:outgoing>t15</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Call_Gates" name="Run the gate set&#10;on the train&#10;[code-quality-gates]" calledElement="Process_CodeQualityGates">
+    <bpmn:callActivity id="Call_Gates" name="Run the gate set&#10;on the train" calledElement="Process_CodeQualityGates">
       <bpmn:documentation>Every gate CI runs, on the combination (R2): a member that passes alone can still break `main` with another. The merge-gate epic (`nok9`, #1887) adds its gates here when they land. The release security gate (`bun run cat security:gate`, bean `ieum`) is one of them: it runs inside the gate set, so no train merges past a blocking security finding or a security check that could not run.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="platform-gates"/>
@@ -241,7 +241,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmn:incoming>t27</bpmn:incoming>
       <bpmn:outgoing>t30</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:callActivity id="Call_EjectHandBack" name="Hand the culprit back&#10;[merge-refusal]" calledElement="Process_MergeRefusal">
+    <bpmn:callActivity id="Call_EjectHandBack" name="Hand the culprit back" calledElement="Process_MergeRefusal">
       <bpmn:documentation>The same hand-back as a refused placement (#1888), carrying the ejection's evidence (R4). Then the train re-runs without it.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-conflict-patterns"/>
@@ -251,7 +251,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmn:outgoing>t31</bpmn:outgoing>
     </bpmn:callActivity>
 
-    <bpmn:callActivity id="Call_MergeToMain" name="Land each member&#10;[merge-to-main]" calledElement="Process_MergeToMain">
+    <bpmn:callActivity id="Call_MergeToMain" name="Land each member" calledElement="Process_MergeToMain">
       <bpmn:documentation>Once per member, in train order, at the SHA the train's gate set tested. `merge-to-main.bpmn` is where merging is a step with its own gate: it reads the head's evidence live (the train's green run is that evidence, and `merge:guard` re-evaluates it), establishes that the owner authorised THIS merge (explicitly, or by a standing ruling quoted verbatim with its date, e.g. 2026-10-01 "you may merge green PRs", which covers green heads only and only the queue as it stood), records the authorisation, merges pinned to the head, and then confirms `main`, re-pins downstream mounts and notes the bean. Until 2026-10-09 this was two steps here, `Task_Release` in the owner's lane bound to interaction-modality and `Task_Land` bound to prepare-merge; neither could refuse a merge, and neither said what happens when a repository has no CI. R1 still holds: what lands is exactly what CI tested. If `main` moved after the train's CI started, re-run rather than land. Each member's `trainId` is cleared, and its preview is then taken down by `feature-staging.bpmn`. A member the sub-process does not merge (held, refused, handed back) leaves the train with its reason on its queue entry.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>

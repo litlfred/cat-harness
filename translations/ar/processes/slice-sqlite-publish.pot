@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: slice-sqlite-publish\n"
-"POT-Creation-Date: 2026-10-24T08:43:21.634Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.057Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: processes/kg/slice-sqlite-publish.bpmn:160
 #. Diagram label
-msgid "Close the bean [bean-close]"
+msgid "Close the bean"
 msgstr ""
 
 #: processes/kg/slice-sqlite-publish.bpmn:113
@@ -131,7 +131,7 @@ msgstr ""
 
 #: processes/kg/slice-sqlite-publish.bpmn:144
 #. Diagram label
-msgid "Open the bean [bean-open]"
+msgid "Open the bean"
 msgstr ""
 
 #: processes/kg/slice-sqlite-publish.bpmn:29

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-refusal\n"
-"POT-Creation-Date: 2026-10-24T08:43:21.740Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.171Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: processes/sdlc/merge-refusal.bpmn:182
 #. Diagram label
-msgid "Close the bean [bean-close]"
+msgid "Close the bean"
 msgstr ""
 
 #: processes/sdlc/merge-refusal.bpmn:217
@@ -156,7 +156,7 @@ msgstr ""
 
 #: processes/sdlc/merge-refusal.bpmn:166
 #. Diagram label
-msgid "Open the bean [bean-open]"
+msgid "Open the bean"
 msgstr ""
 
 #: processes/sdlc/merge-refusal.bpmn:46

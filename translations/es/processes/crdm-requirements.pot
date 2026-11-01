@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: crdm-requirements\n"
-"POT-Creation-Date: 2026-10-24T08:43:21.693Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.120Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: processes/process/crdm-requirements.bpmn:107
 #. Diagram label
-msgid "Close the bean [bean-close]"
+msgid "Close the bean"
 msgstr ""
 
 #: processes/process/crdm-requirements.bpmn:92
@@ -146,7 +146,7 @@ msgstr ""
 
 #: processes/process/crdm-requirements.bpmn:97
 #. Diagram label
-msgid "Open the bean [bean-open]"
+msgid "Open the bean"
 msgstr ""
 
 #: processes/process/crdm-requirements.bpmn:72

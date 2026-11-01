@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bean-drain\n"
-"POT-Creation-Date: 2026-10-24T10:05:31.718Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.142Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: processes/sdlc/bean-drain.bpmn:117
 #. Diagram label
-msgid "Close the bean [bean-close]"
+msgid "Close the bean"
 msgstr ""
 
 #: processes/sdlc/bean-drain.bpmn:45
@@ -96,7 +96,7 @@ msgstr ""
 
 #: processes/sdlc/bean-drain.bpmn:98
 #. Diagram label
-msgid "Open the bean [bean-open]"
+msgid "Open the bean"
 msgstr ""
 
 #: processes/sdlc/bean-drain.bpmn:118

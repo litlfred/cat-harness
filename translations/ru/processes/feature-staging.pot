@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: feature-staging\n"
-"POT-Creation-Date: 2026-10-22T17:11:43.309Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.165Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -151,7 +151,7 @@ msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:72
 #. Diagram label
-msgid "Push to the CDN at STAGING/&lt;slug&gt;/ [render-kg-to-cdn]"
+msgid "Push to the CDN at STAGING/&lt;slug&gt;/"
 msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:156

@@ -147,8 +147,7 @@ not yet refreshed?">
       <bpmn:outgoing>Flow_10</bpmn:outgoing>
       <bpmn:outgoing>Flow_12</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Call_Refresh" name="Refresh the held part
-[refresh-materialized]" calledElement="Process_RefreshMaterialized">
+    <bpmn:callActivity id="Call_Refresh" name="Refresh the held part" calledElement="Process_RefreshMaterialized">
       <bpmn:documentation>The shared refresh, called, not re-described: what changed upstream, what changed locally, and what to do when both did. An archival copy is fixity-checked and never re-fetched. Whatever that process decides — refreshed, kept divergent, or deferred — is the part's new state; this loop only moves to the next part.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="materialize-remote" />
@@ -205,8 +204,7 @@ or asset not yet walked?">
       <bpmn:outgoing>Flow_18</bpmn:outgoing>
       <bpmn:outgoing>Flow_20</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Call_Materialize" name="Materialise the part
-[materialize-remote]" calledElement="Process_MaterializeRemote">
+    <bpmn:callActivity id="Call_Materialize" name="Materialise the part" calledElement="Process_MaterializeRemote">
       <bpmn:documentation>The ONLY way bytes arrive. Purpose first, then the five gates — size, restrictions, copyright, retention, source loss — then fetch with fixity, or stay referenced with the refusing gate's basis recorded. Both ends of that subprocess return here and the walk continues: one part refused is not the subscription refused.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="materialize-remote" />
@@ -249,7 +247,7 @@ part by part">
 in a recorded state">
       <bpmn:incoming>SF_Bean_4</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Call_BeanOpen" name="Open the bean&#10;[bean-open]" calledElement="Process_BeanOpen">
+    <bpmn:callActivity id="Call_BeanOpen" name="Open the bean" calledElement="Process_BeanOpen">
       <bpmn:documentation>Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_1</bpmn:incoming>
@@ -265,13 +263,13 @@ in a recorded state">
       <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
       <bpmn:incoming>SF_Bean_3</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Call_BeanClose" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+    <bpmn:callActivity id="Call_BeanClose" name="Close the bean" calledElement="Process_BeanClose">
       <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_24</bpmn:incoming>
       <bpmn:outgoing>SF_Bean_4</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:callActivity id="Call_BeanClose_2" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+    <bpmn:callActivity id="Call_BeanClose_2" name="Close the bean" calledElement="Process_BeanClose">
       <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_6</bpmn:incoming>

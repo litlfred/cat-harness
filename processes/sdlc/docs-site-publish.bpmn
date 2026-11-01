@@ -108,7 +108,7 @@ Mechanical throughout. There is no human lane, which is what makes `build-pipeli
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Call_Verify" name="Verify the export&#10;[publish-verification]" calledElement="Process_PublishVerification">
+    <bpmn:callActivity id="Call_Verify" name="Verify the export" calledElement="Process_PublishVerification">
       <bpmn:documentation>Process_PublishVerification: the verifier set over the built tree, before anything is deployed. Owner, 2026-09-23: before deployment, blocking.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="publish-verification"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_5</bpmn:incoming>
@@ -159,7 +159,7 @@ Mechanical throughout. There is no human lane, which is what makes `build-pipeli
     <bpmn:endEvent id="End_Published" name="Site published,&#10;previews intact">
       <bpmn:incoming>Flow_C1</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Call_Alert" name="Alert the publication&#10;manager [publish-verification]" calledElement="Process_PublishAlert">
+    <bpmn:callActivity id="Call_Alert" name="Alert the publication&#10;manager" calledElement="Process_PublishAlert">
       <bpmn:documentation>Process_PublishAlert — the ONE alert every failing step after the publish button goes through, whichever step it was.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="publish-verification"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_S3</bpmn:incoming>

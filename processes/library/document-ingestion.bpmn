@@ -75,8 +75,7 @@ RENAMED 2026-09-30, and the id is deliberately unchanged. This event was named "
       <bpmn:outgoing>Flow_i1</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:task id="Task_Place" name="Place it in uploads/
-by a declared route
-[upload-routes]">
+by a declared route">
       <bpmn:documentation>THE FIRST LINK, and it did not exist until 2026-09-30. Everything downstream of here takes a file that is already in the queue, and both ingest Tools type their first input as "The upload to ingest, under the declared `uploads` graph". So the act of PUTTING it there was performed by three different mechanisms and governed by none of them.
 
 WHAT THIS STEP IS. The basic flow's ACCEPT step: choosing an arrival route, writing the bytes into the declared queue of the instance that will own them, and discharging what that route does not discharge for you. The routes, what each writer owes, and the two that are mechanisms against the one that is a persona are in the `upload-routes` skill; `upload-url` composes the forge URL for the web route from the declaration rather than from a literal, because a hand-written one 404'd.
@@ -92,8 +91,7 @@ WHY THE BEAN OP IS `note` AND NOT `claim`. Placing a file claims nothing; it add
       <bpmn:outgoing>Flow_i2</bpmn:outgoing>
     </bpmn:task>
     <bpmn:serviceTask id="Task_ExtractMetadata" name="Extract its metadata
-into the KG
-[asset-extraction]">
+into the KG">
       <bpmn:documentation>THE METADATA STEP. What enters the knowledge graph is the asset's INDEX — what it is, how big, what type, when it says it was written — and, for a container, what is in it; its contents do not go in unless somebody asks, with a reason. Owner, 2026-09-20: "make sure you have zip ingestion skills to extract metadata of assets into KG. don't extract contents unless explict ask by user." The tool is `cat-harness-tools/scripts/extract-assets.ts`, writing a `folio-extraction/v1` record (`schemas/content/extraction.ts`, moved down to this layer in placement PR5).
 
 The media type is sniffed from the leading bytes, never taken from the extension.</bpmn:documentation>
@@ -110,8 +108,7 @@ The media type is sniffed from the leading bytes, never taken from the extension
       <bpmn:outgoing>Flow_referenced</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:serviceTask id="Task_PlaceInLibrary" name="Place the asset in
-library/&lt;slug&gt;/
-[library-ingestion]">
+library/&lt;slug&gt;/">
       <bpmn:documentation>The materialized branch. The asset lands in library/&lt;slug&gt;/ with its metadata record, its provenance and its fixity. The folder name IS the citation key, so a citation and a directory are the same string.
 
 The upload is then RETIRED, not left and not deleted: it moves to fsh-guts/uploads/ beside a sidecar naming where it came from and when (owner, 2026-09-29), and `check:uploads-retired` finds one that was not. A refining process that derives content from the bytes does so before that retirement; `library-ingestion` carries the rule.</bpmn:documentation>
@@ -122,8 +119,7 @@ The upload is then RETIRED, not left and not deleted: it moves to fsh-guts/uploa
       <bpmn:outgoing>Flow_held_done</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_CatalogueReference" name="Record it in library/
-as referenced
-[library-ingestion]">
+as referenced">
       <bpmn:documentation>The referenced branch. Nothing is fetched and no bytes are written: the catalogue record says where the asset is and that we hold none. A reference is not a fetch — it stays navigable without being held, and materializing it later is `materialize-remote.bpmn`'s decision, with its purpose and five gates, not this flow's.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="library-ingestion" />

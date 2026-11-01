@@ -341,7 +341,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Branch, gates, PR and review [code-change-review]"
+          "@value": "Branch, gates, PR and review"
         }
       ],
       "skos:definition": [
@@ -841,7 +841,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -861,7 +861,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -961,7 +961,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -981,7 +981,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -1201,7 +1201,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -1241,7 +1241,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -2101,7 +2101,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -2121,7 +2121,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -2341,7 +2341,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Land the feature's PRs [merge-to-main]"
+          "@value": "Land the feature's PRs"
         }
       ],
       "skos:definition": [
@@ -3161,7 +3161,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Alert the publication manager [publish-verification]"
+          "@value": "Alert the publication manager"
         }
       ],
       "skos:definition": [
@@ -3181,7 +3181,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Verify the export [publish-verification]"
+          "@value": "Verify the export"
         }
       ],
       "skos:definition": [
@@ -3401,7 +3401,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Push to the CDN at STAGING/&lt;slug&gt;/ [render-kg-to-cdn]"
+          "@value": "Push to the CDN at STAGING/&lt;slug&gt;/"
         }
       ],
       "skos:definition": [
@@ -3581,7 +3581,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -3601,7 +3601,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -3621,7 +3621,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -3641,7 +3641,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -4301,7 +4301,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Record it in library/ as referenced [library-ingestion]"
+          "@value": "Record it in library/ as referenced"
         }
       ],
       "skos:definition": [
@@ -4321,7 +4321,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Extract its metadata into the KG [asset-extraction]"
+          "@value": "Extract its metadata into the KG"
         }
       ],
       "skos:definition": [
@@ -4341,7 +4341,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Place it in uploads/ by a declared route [upload-routes]"
+          "@value": "Place it in uploads/ by a declared route"
         }
       ],
       "skos:definition": [
@@ -4361,7 +4361,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Place the asset in library/<slug>/ [library-ingestion]"
+          "@value": "Place the asset in library/<slug>/"
         }
       ],
       "skos:definition": [
@@ -4461,7 +4461,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Theme and UI review [theme-ui-review]"
+          "@value": "Theme and UI review"
         }
       ],
       "skos:definition": [
@@ -4501,7 +4501,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -4521,7 +4521,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -4541,7 +4541,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -4561,7 +4561,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -4581,7 +4581,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -4601,7 +4601,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -4621,7 +4621,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -5571,7 +5571,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -5591,7 +5591,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -5611,7 +5611,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -5631,7 +5631,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -5841,7 +5841,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Hand it back [merge-refusal]"
+          "@value": "Hand it back"
         }
       ],
       "skos:definition": [
@@ -6101,7 +6101,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Find members with no CI on their head [pr-checks-present]"
+          "@value": "Find members with no CI on their head"
         }
       ],
       "skos:definition": [
@@ -6121,7 +6121,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Hand the culprit back [merge-refusal]"
+          "@value": "Hand the culprit back"
         }
       ],
       "skos:definition": [
@@ -6141,7 +6141,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Run the gate set on the train [code-quality-gates]"
+          "@value": "Run the gate set on the train"
         }
       ],
       "skos:definition": [
@@ -6161,7 +6161,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Hand it back [merge-refusal]"
+          "@value": "Hand it back"
         }
       ],
       "skos:definition": [
@@ -6181,7 +6181,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Merge each member onto the base [merge-base]"
+          "@value": "Merge each member onto the base"
         }
       ],
       "skos:definition": [
@@ -6201,7 +6201,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Land each member [merge-to-main]"
+          "@value": "Land each member"
         }
       ],
       "skos:definition": [
@@ -9191,7 +9191,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9211,7 +9211,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9231,7 +9231,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9251,7 +9251,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -9466,7 +9466,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9486,7 +9486,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9506,7 +9506,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9526,7 +9526,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9546,7 +9546,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9566,7 +9566,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9586,7 +9586,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9606,7 +9606,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -9946,7 +9946,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9966,7 +9966,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -9986,7 +9986,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -10006,7 +10006,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Materialise the part [materialize-remote]"
+          "@value": "Materialise the part"
         }
       ],
       "skos:definition": [
@@ -10026,7 +10026,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Refresh the held part [refresh-materialized]"
+          "@value": "Refresh the held part"
         }
       ],
       "skos:definition": [
@@ -10366,7 +10366,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -10386,7 +10386,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -10426,7 +10426,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "SME review of cases or cohorts [sme-test-data-review]"
+          "@value": "SME review of cases or cohorts"
         }
       ],
       "skos:definition": [
@@ -10726,7 +10726,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -10746,7 +10746,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -10766,7 +10766,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -10786,7 +10786,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -11246,7 +11246,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -11266,7 +11266,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [
@@ -11426,7 +11426,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Close the bean [bean-close]"
+          "@value": "Close the bean"
         }
       ],
       "skos:definition": [
@@ -11446,7 +11446,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Open the bean [bean-open]"
+          "@value": "Open the bean"
         }
       ],
       "skos:definition": [

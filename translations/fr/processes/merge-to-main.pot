@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-to-main\n"
-"POT-Creation-Date: 2026-10-30T20:28:10.218Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.176Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -101,7 +101,7 @@ msgstr ""
 
 #: processes/sdlc/merge-to-main.bpmn:110
 #. Diagram label
-msgid "Hand it back [merge-refusal]"
+msgid "Hand it back"
 msgstr ""
 
 #: processes/sdlc/merge-to-main.bpmn:247

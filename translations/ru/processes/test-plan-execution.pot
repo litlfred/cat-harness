@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: test-plan-execution\n"
-"POT-Creation-Date: 2026-10-24T09:08:26.261Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.212Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -71,7 +71,7 @@ msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:258
 #. Diagram label
-msgid "Close the bean [bean-close]"
+msgid "Close the bean"
 msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:171
@@ -126,7 +126,7 @@ msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:242
 #. Diagram label
-msgid "Open the bean [bean-open]"
+msgid "Open the bean"
 msgstr ""
 
 #: processes/sdlc/test-plan-execution.bpmn:129

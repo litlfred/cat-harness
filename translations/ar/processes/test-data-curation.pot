@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: test-data-curation\n"
-"POT-Creation-Date: 2026-10-29T13:02:26.658Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.206Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:167
 #. Diagram label
-msgid "Close the bean [bean-close]"
+msgid "Close the bean"
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:131
@@ -116,7 +116,7 @@ msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:151
 #. Diagram label
-msgid "Open the bean [bean-open]"
+msgid "Open the bean"
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:138
@@ -151,7 +151,7 @@ msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:95
 #. Diagram label
-msgid "SME review of cases or cohorts [sme-test-data-review]"
+msgid "SME review of cases or cohorts"
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:164

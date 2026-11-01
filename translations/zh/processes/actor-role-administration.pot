@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: actor-role-administration\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.307Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.105Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: processes/process/actor-role-administration.bpmn:152
 #. Diagram label
-msgid "Branch, gates, PR and review [code-change-review]"
+msgid "Branch, gates, PR and review"
 msgstr ""
 
 #: processes/process/actor-role-administration.bpmn:153
