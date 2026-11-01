@@ -39,10 +39,10 @@ The verdict is reported through the shared `tracked-watch` process (Process_Trac
         <bpmn:flowNodeRef>End_Recorded</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="Start_Sweep" name="Hourly (:37),&#10;or on dispatch">
+    <bpmn:startEvent id="Start_Sweep" name="Hourly (:37), or on dispatch">
       <bpmn:outgoing>Flow_0</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Task_Sweep" name="Ask whether each open&#10;PR head has a run">
+    <bpmn:task id="Task_Sweep" name="Ask whether each open PR head has a run">
       <bpmn:documentation>Run check:prs-have-runs --min-age-minutes 15, writing the report file first. A head younger than 15 minutes legitimately has no run yet and is skipped. Exit 0 clean, 1 findings, 2 could not determine; an exit 1 with no report file is a crash and is treated as could-not-determine.
 
 Where its verdict comes from: Asked of the `verdict` output of the `Sweep` step in .github/workflows/pr-checks-present.yml, which runs `check:prs-have-runs --min-age-minutes 15`. Exit 0 is clean, 1 findings, 2 could not determine; an exit 1 with no report file is a crash and is reclassified as could-not-determine, as is any other code. `no` is verdict == 'unknown': 'Refuse to report success on an unchecked repository' runs `exit 1` and the tracking issue is left untouched. `yes` is verdict != 'unknown', the guard on ensuring the `pr-no-checks` label.</bpmn:documentation>
@@ -52,7 +52,7 @@ Where its verdict comes from: Asked of the `verdict` output of the `Sweep` step 
       <bpmn:incoming>Flow_0</bpmn:incoming>
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:callActivity id="Call_Watch" name="Report the verdict on&#10;the tracking issue" calledElement="Process_TrackedWatch">
+    <bpmn:callActivity id="Call_Watch" name="Report the verdict on the tracking issue" calledElement="Process_TrackedWatch">
       <bpmn:documentation>Runs the shared tracking watch with the label `pr-no-checks`. Asked of the same `verdict`. `none` is verdict == 'clean': every open PR's head older than 15 minutes has a run, and the tracking issue is closed. `one or more` is verdict == 'findings': the one tracking issue is opened or edited in place, and the workflow also comments once on each affected pull request. Clean here means every open pull request's head now has a CI run. The body is the sweep's report.</bpmn:documentation>
       <bpmn:incoming>Flow_1</bpmn:incoming>
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
@@ -76,10 +76,10 @@ Where its verdict comes from: Asked of the `verdict` output of the `Sweep` step 
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:endEvent id="End_Done" name="Every head has a run,&#10;or could not tell">
+    <bpmn:endEvent id="End_Done" name="Every head has a run, or could not tell">
       <bpmn:incoming>Flow_4</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:task id="Task_Comment" name="Comment once per&#10;PR and head">
+    <bpmn:task id="Task_Comment" name="Comment once per PR and head">
       <bpmn:documentation>Comment on each affected open PR once per (PR, head sha): a hidden marker carrying the sha is checked first, so a re-run on the same head stays silent and a new push can be reported again. A PR that is no longer open is skipped.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="ci-health"/>
@@ -87,7 +87,7 @@ Where its verdict comes from: Asked of the `verdict` output of the `Sweep` step 
       <bpmn:incoming>Flow_3</bpmn:incoming>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:endEvent id="End_Recorded" name="Recorded:&#10;job stays green">
+    <bpmn:endEvent id="End_Recorded" name="Recorded: job stays green">
       <bpmn:incoming>Flow_5</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_0" sourceRef="Start_Sweep" targetRef="Task_Sweep"/>
@@ -107,7 +107,7 @@ Where its verdict comes from: Asked of the `verdict` output of the `Sweep` step 
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Sweep" bpmnElement="Start_Sweep">
         <dc:Bounds x="130" y="182" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="110" y="222" width="110" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="105" y="222" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Sweep" bpmnElement="Task_Sweep">
         <dc:Bounds x="230" y="140" width="120" height="120"/>
@@ -128,7 +128,7 @@ Where its verdict comes from: Asked of the `verdict` output of the `Sweep` step 
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Recorded" bpmnElement="End_Recorded">
         <dc:Bounds x="860" y="182" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="840" y="222" width="90" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="825" y="222" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_0" bpmnElement="Flow_0">
         <di:waypoint x="166" y="200"/>

@@ -38,11 +38,11 @@ The verdict is reported through the shared `tracked-watch` process (Process_Trac
         <bpmn:flowNodeRef>End_Reported</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="Start_Sweep" name="Weekly (Mon 09:17 UTC),&#10;a FAILING gating run on main,&#10;or on dispatch">
+    <bpmn:startEvent id="Start_Sweep" name="Weekly (Mon 09:17 UTC), a FAILING gating run on main, or on dispatch">
       <bpmn:documentation>Three ways in, and the first two answer different questions. The weekly cron bounds a QUIET stretch, with nobody working — ynu8's original case. A workflow_run on a failing gating run bounds an ACTIVE one, where main moves every 7.7 min (186 merges in 24h, measured 2026-09-30) and the cost is the time to NOTICE rather than the time to detect; main already gate-checks every push, so all nine of 391j's incidents were detected automatically. Bean kgho. On workflow_run the job is conditioned on the triggering run having FAILED, so a green main starts no sweep at all: the cost scales with the defect, not with the merge cadence. Not a push trigger — a push-triggered run starts alongside the workflows it reports on and would read them as in_progress, which check:ci-health rightly calls neither red nor green, giving a job that runs 186 times a day to report could-not-determine.</bpmn:documentation>
       <bpmn:outgoing>Flow_0</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Task_Check" name="Run check:ci-health,&#10;WRITING the report file">
+    <bpmn:task id="Task_Check" name="Run check:ci-health, WRITING the report file">
       <bpmn:documentation>Run check:ci-health --out, writing the report file before any exit path. Exit 0 clean, 1 live failures, 2 could not check. bun also exits 1 on an uncaught exception, so an exit 1 with no report file is a crash and is treated as could-not-check.
 
 Where its verdict comes from: Asked of the `verdict` output that the `check` step of .github/workflows/ci-health.yml writes, not of the raw exit code. `check:ci-health` exits 0 clean, 1 live failure(s), 2 could not check; an exit 1 with no report file is a crash and is reclassified as could-not-check, as is any other code. `no` is verdict == 'unknown': the last step runs `exit 1` and no issue step runs, so the tracking issue is left untouched. `yes` is verdict != 'unknown', the guard on the label step and so on both issue paths.</bpmn:documentation>
@@ -52,7 +52,7 @@ Where its verdict comes from: Asked of the `verdict` output that the `check` ste
       <bpmn:incoming>Flow_0</bpmn:incoming>
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:callActivity id="Call_Watch" name="Report the verdict on&#10;the tracking issue" calledElement="Process_TrackedWatch">
+    <bpmn:callActivity id="Call_Watch" name="Report the verdict on the tracking issue" calledElement="Process_TrackedWatch">
       <bpmn:documentation>Runs the shared tracking watch with the label `ci-health`. Asked of the same `verdict`, once it is known. `clean` is verdict == 'clean' (exit 0): the open `ci-health` issue, if there is one, is closed saying main is clean. `not clean` is verdict == 'red' (exit 1 with a report): the one open issue labelled `ci-health` is edited in place with the report as its body, or created if there is none. Neither branch fails the job — a red main speaks through the issue, not through this workflow's status. Clean here means main is clean.</bpmn:documentation>
       <bpmn:incoming>Flow_1</bpmn:incoming>
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
@@ -87,7 +87,7 @@ Where its verdict comes from: Asked of the `verdict` output that the `check` ste
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Sweep" bpmnElement="Start_Sweep">
         <dc:Bounds x="130" y="182" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="110" y="222" width="110" height="60"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="124" y="222" width="110" height="110"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Check" bpmnElement="Task_Check">
         <dc:Bounds x="230" y="140" width="120" height="120"/>
@@ -97,7 +97,7 @@ Where its verdict comes from: Asked of the `verdict` output that the `check` ste
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Reported" bpmnElement="End_Reported">
         <dc:Bounds x="590" y="182" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="570" y="222" width="80" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="550" y="222" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_0" bpmnElement="Flow_0">
         <di:waypoint x="166" y="200"/>

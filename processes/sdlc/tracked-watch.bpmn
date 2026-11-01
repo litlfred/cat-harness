@@ -44,7 +44,7 @@ The verdict is the calling watch's: its check writes a report file before any ex
         <bpmn:flowNodeRef>End_Found</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:startEvent id="Start_Verdict" name="Check run,&#10;verdict written">
+    <bpmn:startEvent id="Start_Verdict" name="Check run, verdict written">
       <bpmn:documentation>The calling watch's check has run and written its verdict: clean, findings, or unknown.</bpmn:documentation>
       <bpmn:outgoing>Flow_TW_1</bpmn:outgoing>
     </bpmn:startEvent>
@@ -54,10 +54,10 @@ The verdict is the calling watch's: its check writes a report file before any ex
       <bpmn:outgoing>Flow_TW_2</bpmn:outgoing>
       <bpmn:outgoing>Flow_TW_3</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:endEvent id="End_Unknown" name="Unknown: job red,&#10;issue untouched">
+    <bpmn:endEvent id="End_Unknown" name="Unknown: job red, issue untouched">
       <bpmn:incoming>Flow_TW_2</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Task_Label" name="Ensure the tracking&#10;label exists" calledElement="GT_EnsureTrackingLabel">
+    <bpmn:callActivity id="Task_Label" name="Ensure the tracking label exists" calledElement="GT_EnsureTrackingLabel">
       <bpmn:incoming>Flow_TW_3</bpmn:incoming>
       <bpmn:outgoing>Flow_TW_4</bpmn:outgoing>
 
@@ -77,7 +77,7 @@ The verdict is the calling watch's: its check writes a report file before any ex
       <bpmn:outgoing>Flow_TW_5</bpmn:outgoing>
       <bpmn:outgoing>Flow_TW_7</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Task_Close" name="Close the&#10;tracking issue" calledElement="GT_CloseTrackingIssue">
+    <bpmn:callActivity id="Task_Close" name="Close the tracking issue" calledElement="GT_CloseTrackingIssue">
       <bpmn:incoming>Flow_TW_5</bpmn:incoming>
       <bpmn:outgoing>Flow_TW_6</bpmn:outgoing>
 
@@ -91,10 +91,10 @@ The verdict is the calling watch's: its check writes a report file before any ex
         <bpmn:targetRef>Task_Close_label</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:callActivity>
-    <bpmn:endEvent id="End_Clean" name="Clean:&#10;issue closed">
+    <bpmn:endEvent id="End_Clean" name="Clean: issue closed">
       <bpmn:incoming>Flow_TW_6</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Task_Track" name="Open or edit the one&#10;tracking issue" calledElement="GT_TrackIssue">
+    <bpmn:callActivity id="Task_Track" name="Open or edit the one tracking issue" calledElement="GT_TrackIssue">
       <bpmn:incoming>Flow_TW_7</bpmn:incoming>
       <bpmn:outgoing>Flow_TW_8</bpmn:outgoing>
 
@@ -108,7 +108,7 @@ The verdict is the calling watch's: its check writes a report file before any ex
         <bpmn:targetRef>Task_Track_label</bpmn:targetRef>
       </bpmn:dataInputAssociation>
     </bpmn:callActivity>
-    <bpmn:endEvent id="End_Found" name="Found: recorded,&#10;job stays green">
+    <bpmn:endEvent id="End_Found" name="Found: recorded, job stays green">
       <bpmn:incoming>Flow_TW_8</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_TW_1" sourceRef="Start_Verdict" targetRef="GW_Determined"/>
@@ -123,10 +123,10 @@ The verdict is the calling watch's: its check writes a report file before any ex
   <bpmndi:BPMNDiagram id="Diagram_Process_TrackedWatch">
     <bpmndi:BPMNPlane id="Plane_Process_TrackedWatch" bpmnElement="Collaboration_Process_TrackedWatch">
       <bpmndi:BPMNShape id="Shape_Participant_Process_TrackedWatch" bpmnElement="Participant_Process_TrackedWatch" isHorizontal="true">
-        <dc:Bounds x="60" y="60" width="806" height="360"/>
+        <dc:Bounds x="60" y="60" width="806" height="420"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Ci" bpmnElement="Lane_Ci" isHorizontal="true">
-        <dc:Bounds x="90" y="60" width="776" height="360"/>
+        <dc:Bounds x="90" y="60" width="776" height="420"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Verdict" bpmnElement="Start_Verdict">
         <dc:Bounds x="130" y="182" width="36" height="36"/>
@@ -134,32 +134,32 @@ The verdict is the calling watch's: its check writes a report file before any ex
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Determined" bpmnElement="GW_Determined" isMarkerVisible="true">
         <dc:Bounds x="230" y="175" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="205" y="120" width="100" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="195" y="120" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Unknown" bpmnElement="End_Unknown">
         <dc:Bounds x="237" y="332" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="280" y="330" width="110" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="275" y="330" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Label" bpmnElement="Task_Label">
         <dc:Bounds x="330" y="140" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Finding" bpmnElement="GW_Finding" isMarkerVisible="true">
         <dc:Bounds x="500" y="175" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="470" y="120" width="110" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="465" y="120" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Close" bpmnElement="Task_Close">
         <dc:Bounds x="600" y="140" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Clean" bpmnElement="End_Clean">
         <dc:Bounds x="770" y="182" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="750" y="222" width="80" height="40"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="730" y="222" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Track" bpmnElement="Task_Track">
         <dc:Bounds x="600" y="300" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Found" bpmnElement="End_Found">
         <dc:Bounds x="770" y="342" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="738" y="266" width="100" height="72" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="728" y="382" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_TW_1" bpmnElement="Flow_TW_1">
         <di:waypoint x="166" y="200"/>
