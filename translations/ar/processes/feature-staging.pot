@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: feature-staging\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.164Z\n"
+"POT-Creation-Date: 2026-11-01T21:56:13.007Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:65
 #. Diagram element documentation
-msgid "Build the preview from the PR's head: regenerate the generated docs, trim what this preview does not need, render the BPMN diagrams, then Jekyll, TypeDoc and the knowledge-graph export, with the staging banner and SEO identity claims stripped."
+msgid "Build the preview from the PR's head: regenerate the generated docs, trim what this preview does not need, render the BPMN diagrams, then Jekyll, TypeDoc and the knowledge-graph export, with the staging banner and SEO identity claims stripped. A PREVIEW REBUILDS ONLY ITS DEPENDENCY CONE (owner cards Q-CONE-1 C and Q-CONE-2 B, 2026-11-01): main's writer records say what each derive:publish writer and each step of the QA working copy READ. A writer or QA step whose recorded reads all match is not run, and main's outputs for it are put back. Every other one runs. QA is not left out of a preview, only narrowed to what the change can reach. Inside a preview's QA build, `skill:register` also leaves to derive:publish the two pages that derive:publish builds anyway and that no later QA step reads (`skills:docs` and `lsi:viz`), so they are built once."
 msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:148

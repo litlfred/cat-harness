@@ -3,69 +3,69 @@
   "entry": "deerwester-1990-indexing-by-lsa",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "term document",
-      "score": 29.4993,
+      "score": 29.7641,
       "evidence": []
     },
     {
       "term": "query terms",
-      "score": 28.2943,
+      "score": 28.0084,
       "evidence": []
     },
     {
       "term": "document retrieval",
-      "score": 27.2402,
+      "score": 27.227,
       "evidence": []
     },
     {
       "term": "term space",
-      "score": 26.2464,
+      "score": 26.2587,
       "evidence": []
     },
     {
       "term": "indexing terms",
-      "score": 25.5366,
+      "score": 25.2813,
       "evidence": []
     },
     {
       "term": "document matrix",
-      "score": 23.8616,
+      "score": 24.155,
       "evidence": []
     },
     {
       "term": "factor lsi",
-      "score": 23.7867,
+      "score": 23.6989,
       "evidence": []
     },
     {
       "term": "term vectors",
-      "score": 22.3544,
+      "score": 22.5121,
       "evidence": []
     },
     {
       "term": "documents relevant",
-      "score": 21.4767,
+      "score": 21.5856,
       "evidence": []
     },
     {
       "term": "term matching",
-      "score": 21.3291,
-      "evidence": []
-    },
-    {
-      "term": "terms occurring",
-      "score": 21.0207,
+      "score": 21.4033,
       "evidence": []
     },
     {
       "term": "original term",
-      "score": 20.6954,
+      "score": 20.7911,
+      "evidence": []
+    },
+    {
+      "term": "terms occurring",
+      "score": 20.4873,
       "evidence": []
     }
   ],
@@ -73,353 +73,432 @@
     "page-001": [
       {
         "term": "latent semantic",
-        "score": 1.1037,
-        "evidence": []
-      },
-      {
-        "term": "semantic analysis",
-        "score": 0.9673,
+        "score": 1.0911,
         "evidence": []
       },
       {
         "term": "chicago",
-        "score": 0.9644,
+        "score": 0.9654,
+        "evidence": []
+      },
+      {
+        "term": "semantic analysis",
+        "score": 0.9356,
         "evidence": []
       },
       {
         "term": "harshman",
-        "score": 0.8584,
+        "score": 0.8602,
         "evidence": []
       },
       {
         "term": "furnas",
-        "score": 0.8482,
+        "score": 0.85,
         "evidence": []
       },
       {
         "term": "dumais",
-        "score": 0.6999,
+        "score": 0.7029,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "semantic indexing",
-        "score": 1.7264,
+        "score": 1.708,
         "evidence": []
       },
       {
         "term": "term-document association",
-        "score": 1.6403,
+        "score": 1.6213,
         "evidence": []
       },
       {
         "term": "latent semantic",
-        "score": 1.6378,
-        "evidence": []
-      },
-      {
-        "term": "semantic structure",
-        "score": 1.5418,
+        "score": 1.6187,
         "evidence": []
       },
       {
         "term": "singular-value decomposition",
-        "score": 1.5048,
+        "score": 1.5045,
+        "evidence": []
+      },
+      {
+        "term": "semantic structure",
+        "score": 1.4956,
         "evidence": []
       },
       {
         "term": "retrieval methods",
-        "score": 1.4528,
+        "score": 1.4348,
         "evidence": []
       },
       {
         "term": "automatic indexing",
-        "score": 1.4264,
+        "score": 1.4301,
         "evidence": []
       },
       {
         "term": "individual words",
-        "score": 1.305,
+        "score": 1.2825,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "automatic indexing",
-        "score": 1.8003,
+        "score": 1.8017,
         "evidence": []
       },
       {
         "term": "index terms",
-        "score": 1.6637,
+        "score": 1.6446,
         "evidence": []
       },
       {
         "term": "current automatic",
-        "score": 1.3803,
+        "score": 1.3712,
         "evidence": []
       },
       {
         "term": "polysemy",
-        "score": 1.1554,
+        "score": 1.1572,
         "evidence": []
       },
       {
         "term": "retrieval systems",
-        "score": 1.1438,
+        "score": 1.1408,
         "evidence": []
       },
       {
         "term": "same term",
-        "score": 1.0735,
+        "score": 1.0747,
         "evidence": []
       },
       {
         "term": "data bases",
-        "score": 0.9858,
+        "score": 0.9864,
         "evidence": []
       },
       {
         "term": "precision",
-        "score": 0.8068,
+        "score": 0.8071,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "query",
-        "score": 1.3943,
+        "score": 1.3996,
         "evidence": []
       },
       {
         "term": "document matrix",
-        "score": 1.3175,
-        "evidence": []
-      },
-      {
-        "term": "occurrence",
-        "score": 1.0553,
+        "score": 1.3335,
         "evidence": []
       },
       {
         "term": "retrieval",
-        "score": 1.0137,
+        "score": 1.0014,
+        "evidence": []
+      },
+      {
+        "term": "occurrence",
+        "score": 0.9728,
         "evidence": []
       },
       {
         "term": "doc",
-        "score": 0.9309,
+        "score": 0.9343,
         "evidence": []
       },
       {
         "term": "terms",
-        "score": 0.8539,
+        "score": 0.8373,
         "evidence": []
       },
       {
         "term": "contained",
-        "score": 0.7986,
+        "score": 0.783,
         "evidence": []
       },
       {
         "term": "rel",
-        "score": 0.7592,
+        "score": 0.7617,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "document clustering",
-        "score": 2.0118,
+        "score": 1.9877,
         "evidence": []
       },
       {
         "term": "hierarchical classiﬁcation",
-        "score": 1.8354,
+        "score": 1.7729,
         "evidence": []
       },
       {
         "term": "observed occurrences",
-        "score": 1.3873,
+        "score": 1.3563,
         "evidence": []
       },
       {
         "term": "proximity",
-        "score": 0.9078,
+        "score": 0.8767,
         "evidence": []
       },
       {
         "term": "ﬁnd",
-        "score": 0.8888,
+        "score": 0.8722,
         "evidence": []
       },
       {
         "term": "terms",
-        "score": 0.8539,
+        "score": 0.8373,
         "evidence": []
       },
       {
         "term": "latent",
-        "score": 0.7453,
+        "score": 0.7518,
         "evidence": []
       },
       {
-        "term": "retrieval",
-        "score": 0.7426,
+        "term": "distance",
+        "score": 0.7358,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "factor analytic",
-        "score": 1.979,
+        "score": 1.95,
         "evidence": []
       },
       {
         "term": "previous attempts",
-        "score": 1.7998,
+        "score": 1.7999,
         "evidence": []
       },
       {
         "term": "underlying axes",
-        "score": 1.5924,
+        "score": 1.5689,
         "evidence": []
       },
       {
         "term": "analytic model",
-        "score": 1.4927,
+        "score": 1.4626,
         "evidence": []
       },
       {
         "term": "analytic approaches",
-        "score": 1.4887,
+        "score": 1.4554,
         "evidence": []
       },
       {
         "term": "factor analysis",
-        "score": 1.4141,
+        "score": 1.3848,
         "evidence": []
       },
       {
         "term": "clustering",
-        "score": 1.2699,
+        "score": 1.2371,
         "evidence": []
       },
       {
-        "term": "both terms",
-        "score": 1.1655,
+        "term": "koll",
+        "score": 1.1572,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "multidimensional unfolding",
-        "score": 2.2818,
+        "score": 2.2678,
         "evidence": []
       },
       {
         "term": "two-mode factor",
-        "score": 2.1397,
+        "score": 2.1329,
         "evidence": []
       },
       {
         "term": "both terms",
-        "score": 1.6543,
+        "score": 1.6269,
         "evidence": []
       },
       {
         "term": "factor analysis",
-        "score": 1.3381,
+        "score": 1.3058,
         "evidence": []
       },
       {
         "term": "centroid",
-        "score": 1.1475,
+        "score": 1.1493,
         "evidence": []
       },
       {
         "term": "documents",
-        "score": 1.1317,
+        "score": 1.1427,
         "evidence": []
       },
       {
         "term": "explicit representation",
-        "score": 1.1121,
+        "score": 1.0689,
         "evidence": []
       },
       {
         "term": "placed",
-        "score": 1.0255,
+        "score": 1.0298,
         "evidence": []
       }
     ],
     "page-008": [
       {
         "term": "two-mode factor",
-        "score": 1.9594,
+        "score": 1.9491,
         "evidence": []
       },
       {
         "term": "spatial conﬁguration",
-        "score": 1.884,
+        "score": 1.7966,
         "evidence": []
       },
       {
         "term": "rectangular matrix",
-        "score": 1.7635,
-        "evidence": []
-      },
-      {
-        "term": "factor analysis",
-        "score": 1.7025,
+        "score": 1.7204,
         "evidence": []
       },
       {
         "term": "symmetric matrix",
-        "score": 1.6922,
+        "score": 1.7063,
+        "evidence": []
+      },
+      {
+        "term": "factor analysis",
+        "score": 1.6633,
         "evidence": []
       },
       {
         "term": "estimated similarity",
-        "score": 1.6149,
+        "score": 1.6151,
         "evidence": []
       },
       {
         "term": "special matrices",
-        "score": 1.5904,
+        "score": 1.5928,
         "evidence": []
       },
       {
         "term": "factor values",
-        "score": 1.5623,
+        "score": 1.5596,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "term space",
-        "score": 2.0178,
+        "score": 2.0129,
         "evidence": []
       },
       {
         "term": "factor space",
-        "score": 1.9431,
+        "score": 1.9232,
         "evidence": []
       },
       {
         "term": "original term",
-        "score": 1.6153,
+        "score": 1.6193,
         "evidence": []
       },
       {
         "term": "dimensional factor",
-        "score": 1.6153,
+        "score": 1.6055,
         "evidence": []
       },
       {
         "term": "term vectors",
-        "score": 1.5463,
+        "score": 1.5576,
+        "evidence": []
+      },
+      {
+        "term": "document matrix",
+        "score": 1.2678,
+        "evidence": []
+      },
+      {
+        "term": "weighted sum",
+        "score": 1.1327,
+        "evidence": []
+      },
+      {
+        "term": "query",
+        "score": 0.926,
+        "evidence": []
+      }
+    ],
+    "page-011": [
+      {
+        "term": "graph minors",
+        "score": 1.8719,
+        "evidence": []
+      },
+      {
+        "term": "eps",
+        "score": 1.2061,
+        "evidence": []
+      },
+      {
+        "term": "trees",
+        "score": 1.0059,
+        "evidence": []
+      },
+      {
+        "term": "system response",
+        "score": 0.9685,
+        "evidence": []
+      },
+      {
+        "term": "response time",
+        "score": 0.9462,
+        "evidence": []
+      },
+      {
+        "term": "survey",
+        "score": 0.7584,
+        "evidence": []
+      },
+      {
+        "term": "documents",
+        "score": 0.7084,
+        "evidence": []
+      },
+      {
+        "term": "svd",
+        "score": 0.6675,
+        "evidence": []
+      }
+    ],
+    "page-012": [
+      {
+        "term": "factor space",
+        "score": 1.5553,
+        "evidence": []
+      },
+      {
+        "term": "singular value",
+        "score": 1.3907,
+        "evidence": []
+      },
+      {
+        "term": "query",
+        "score": 1.2842,
+        "evidence": []
+      },
+      {
+        "term": "value decomposition",
+        "score": 1.2763,
         "evidence": []
       },
       {
@@ -428,630 +507,551 @@
         "evidence": []
       },
       {
-        "term": "weighted sum",
-        "score": 1.1535,
-        "evidence": []
-      },
-      {
-        "term": "query",
-        "score": 0.9225,
-        "evidence": []
-      }
-    ],
-    "page-011": [
-      {
-        "term": "graph minors",
-        "score": 1.8693,
-        "evidence": []
-      },
-      {
-        "term": "eps",
-        "score": 1.2048,
-        "evidence": []
-      },
-      {
-        "term": "trees",
-        "score": 1.0779,
-        "evidence": []
-      },
-      {
-        "term": "response time",
-        "score": 0.9579,
-        "evidence": []
-      },
-      {
-        "term": "system response",
-        "score": 0.9542,
-        "evidence": []
-      },
-      {
-        "term": "survey",
-        "score": 0.7948,
-        "evidence": []
-      },
-      {
-        "term": "documents",
-        "score": 0.7016,
-        "evidence": []
-      },
-      {
         "term": "terms",
-        "score": 0.6644,
-        "evidence": []
-      }
-    ],
-    "page-012": [
-      {
-        "term": "factor space",
-        "score": 1.5717,
-        "evidence": []
-      },
-      {
-        "term": "singular value",
-        "score": 1.3852,
-        "evidence": []
-      },
-      {
-        "term": "query",
-        "score": 1.2794,
-        "evidence": []
-      },
-      {
-        "term": "value decomposition",
-        "score": 1.2764,
-        "evidence": []
-      },
-      {
-        "term": "document matrix",
-        "score": 1.2372,
-        "evidence": []
-      },
-      {
-        "term": "terms",
-        "score": 0.8148,
-        "evidence": []
-      },
-      {
-        "term": "indicated",
-        "score": 0.6729,
+        "score": 0.799,
         "evidence": []
       },
       {
         "term": "labeled",
-        "score": 0.6627,
+        "score": 0.6678,
+        "evidence": []
+      },
+      {
+        "term": "near",
+        "score": 0.6548,
         "evidence": []
       }
     ],
     "page-013": [
       {
         "term": "matrix xhihat",
-        "score": 1.8252,
+        "score": 1.8383,
         "evidence": []
       },
       {
         "term": "eigen vectors",
-        "score": 1.8061,
+        "score": 1.8112,
         "evidence": []
       },
       {
         "term": "symmetric matrix",
-        "score": 1.6922,
+        "score": 1.7063,
         "evidence": []
       },
       {
         "term": "square symmetric",
-        "score": 1.4583,
+        "score": 1.459,
+        "evidence": []
+      },
+      {
+        "term": "interchanged",
+        "score": 1.2854,
         "evidence": []
       },
       {
         "term": "singular values",
-        "score": 1.0814,
+        "score": 1.0892,
         "evidence": []
       },
       {
         "term": "value decomposition",
-        "score": 1.0166,
+        "score": 1.0162,
         "evidence": []
       },
       {
         "term": "diagonal",
-        "score": 0.9018,
-        "evidence": []
-      },
-      {
-        "term": "permutations",
-        "score": 0.8766,
+        "score": 0.9007,
         "evidence": []
       }
     ],
     "page-014": [
       {
         "term": "reduced model",
-        "score": 1.445,
+        "score": 1.4128,
         "evidence": []
       },
       {
         "term": "svd model",
-        "score": 1.12,
-        "evidence": []
-      },
-      {
-        "term": "comparing",
-        "score": 0.9191,
+        "score": 1.1136,
         "evidence": []
       },
       {
         "term": "xhihat",
-        "score": 0.91,
+        "score": 0.9114,
+        "evidence": []
+      },
+      {
+        "term": "comparing",
+        "score": 0.9063,
         "evidence": []
       },
       {
         "term": "deleting",
-        "score": 0.8504,
+        "score": 0.8522,
         "evidence": []
       },
       {
         "term": "quantities",
-        "score": 0.8085,
+        "score": 0.7935,
         "evidence": []
       },
       {
         "term": "comparisons",
-        "score": 0.7807,
+        "score": 0.7634,
         "evidence": []
       },
       {
         "term": "rows",
-        "score": 0.7579,
+        "score": 0.7562,
         "evidence": []
       }
     ],
     "page-015": [
       {
         "term": "xhihat tsd",
-        "score": 3.244,
+        "score": 3.2487,
         "evidence": []
       },
       {
         "term": "matrix xhihat",
-        "score": 3.1446,
+        "score": 3.159,
         "evidence": []
       },
       {
         "term": "dot product",
-        "score": 2.6917,
+        "score": 2.497,
         "evidence": []
       },
       {
         "term": "coordinates",
-        "score": 1.2566,
+        "score": 1.2617,
         "evidence": []
       },
       {
         "term": "rows",
-        "score": 1.1368,
+        "score": 1.1343,
         "evidence": []
       },
       {
         "term": "cell",
-        "score": 1.0856,
+        "score": 1.0604,
         "evidence": []
       },
       {
         "term": "space",
-        "score": 0.9166,
+        "score": 0.9079,
         "evidence": []
       },
       {
-        "term": "comparing",
-        "score": 0.8256,
+        "term": "documents",
+        "score": 0.8221,
         "evidence": []
       }
     ],
     "page-016": [
       {
-        "term": "like row",
-        "score": 1.1624,
+        "term": "computational constraints",
+        "score": 1.1726,
         "evidence": []
       },
       {
-        "term": "computational constraints",
-        "score": 1.15,
+        "term": "like row",
+        "score": 1.1567,
         "evidence": []
       },
       {
         "term": "stop list",
-        "score": 1.0818,
+        "score": 1.0765,
         "evidence": []
       },
       {
         "term": "common words",
-        "score": 1.047,
+        "score": 1.0469,
         "evidence": []
       },
       {
         "term": "latent structure",
-        "score": 1.0402,
+        "score": 1.033,
         "evidence": []
       },
       {
         "term": "just like",
-        "score": 1.0068,
+        "score": 1.0008,
         "evidence": []
       },
       {
         "term": "preprocessing",
-        "score": 0.9699,
+        "score": 0.973,
         "evidence": []
       },
       {
         "term": "pseudo",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       }
     ],
     "page-017": [
       {
         "term": "lsi method",
-        "score": 2.0101,
+        "score": 2.0172,
         "evidence": []
       },
       {
         "term": "term matching",
-        "score": 1.8116,
+        "score": 1.8125,
         "evidence": []
       },
       {
         "term": "voorhees data",
-        "score": 1.8029,
+        "score": 1.8035,
         "evidence": []
       },
       {
         "term": "boolean queries",
-        "score": 1.7035,
+        "score": 1.7055,
         "evidence": []
       },
       {
         "term": "raw term",
-        "score": 1.5954,
+        "score": 1.6027,
         "evidence": []
       },
       {
         "term": "extended boolean",
-        "score": 1.4083,
+        "score": 1.3586,
         "evidence": []
       },
       {
         "term": "smart",
-        "score": 1.308,
+        "score": 1.2957,
         "evidence": []
       },
       {
         "term": "sequential search",
-        "score": 1.1897,
+        "score": 1.1739,
         "evidence": []
       }
     ],
     "page-018": [
       {
         "term": "lsi method",
-        "score": 2.4391,
+        "score": 2.4477,
         "evidence": []
       },
       {
         "term": "term matching",
-        "score": 1.6637,
+        "score": 1.6645,
         "evidence": []
       },
       {
         "term": "raw term",
-        "score": 1.5143,
+        "score": 1.521,
         "evidence": []
       },
       {
         "term": "smart",
-        "score": 1.4484,
+        "score": 1.4348,
         "evidence": []
       },
       {
         "term": "odds against",
-        "score": 1.423,
+        "score": 1.4231,
         "evidence": []
       },
       {
         "term": "lowest levels",
-        "score": 1.4215,
+        "score": 1.3674,
         "evidence": []
       },
       {
         "term": "against difference",
-        "score": 1.3185,
+        "score": 1.3059,
         "evidence": []
       },
       {
         "term": "voorhees",
-        "score": 1.2691,
+        "score": 1.2717,
         "evidence": []
       }
     ],
     "page-019": [
       {
         "term": "med dataset",
-        "score": 1.6131,
+        "score": 1.6126,
         "evidence": []
       },
       {
         "term": "keyword searches",
-        "score": 1.4746,
+        "score": 1.4771,
         "evidence": []
       },
       {
         "term": "factor analytic",
-        "score": 1.4371,
+        "score": 1.4164,
         "evidence": []
       },
       {
         "term": "abnormal",
-        "score": 0.9497,
-        "evidence": []
-      },
-      {
-        "term": "dimensions",
-        "score": 0.7479,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "isolated",
-        "score": 0.7262,
+        "score": 0.729,
+        "evidence": []
+      },
+      {
+        "term": "dimensions",
+        "score": 0.7188,
         "evidence": []
       },
       {
         "term": "precision",
-        "score": 0.6949,
+        "score": 0.6952,
         "evidence": []
       },
       {
-        "term": "retrieval",
-        "score": 0.6396,
+        "term": "documents",
+        "score": 0.6363,
         "evidence": []
       }
     ],
     "page-020": [
       {
         "term": "lsi",
-        "score": 1.8002,
+        "score": 1.8065,
         "evidence": []
       },
       {
         "term": "term matching",
-        "score": 1.5694,
+        "score": 1.5718,
         "evidence": []
       },
       {
         "term": "smart",
-        "score": 1.5631,
+        "score": 1.5484,
         "evidence": []
       },
       {
         "term": "term selection",
-        "score": 1.4425,
+        "score": 1.4388,
         "evidence": []
       },
       {
         "term": "svd solution",
-        "score": 1.4114,
+        "score": 1.4342,
         "evidence": []
       },
       {
         "term": "index terms",
-        "score": 1.3374,
+        "score": 1.3219,
         "evidence": []
       },
       {
         "term": "cisi",
-        "score": 1.1196,
+        "score": 1.1216,
         "evidence": []
       },
       {
         "term": "voorhees",
-        "score": 1.0932,
+        "score": 1.0954,
         "evidence": []
       }
     ],
     "page-021": [
       {
         "term": "relevance judgments",
-        "score": 1.792,
+        "score": 1.7414,
         "evidence": []
       },
       {
         "term": "term matching",
-        "score": 1.7063,
+        "score": 1.7074,
         "evidence": []
       },
       {
         "term": "lsi",
-        "score": 1.4185,
+        "score": 1.4234,
         "evidence": []
       },
       {
         "term": "term selection",
-        "score": 1.4039,
+        "score": 1.4001,
         "evidence": []
       },
       {
         "term": "retrieval system",
-        "score": 1.2511,
+        "score": 1.2484,
         "evidence": []
       },
       {
         "term": "smart",
-        "score": 1.1271,
+        "score": 1.1165,
         "evidence": []
       },
       {
         "term": "selection differences",
-        "score": 1.0233,
+        "score": 0.9827,
         "evidence": []
       },
       {
         "term": "latent semantic",
-        "score": 0.9803,
+        "score": 0.9712,
         "evidence": []
       }
     ],
     "page-022": [
       {
         "term": "factor space",
-        "score": 1.6576,
+        "score": 1.6404,
         "evidence": []
       },
       {
         "term": "document retrieval",
-        "score": 1.4122,
+        "score": 1.4136,
         "evidence": []
       },
       {
         "term": "meanings",
-        "score": 1.0715,
+        "score": 1.0615,
         "evidence": []
       },
       {
         "term": "placed",
-        "score": 1.0255,
+        "score": 1.0298,
         "evidence": []
       },
       {
         "term": "distortion",
-        "score": 1.0074,
-        "evidence": []
-      },
-      {
-        "term": "efﬁcient",
-        "score": 0.9497,
-        "evidence": []
-      },
-      {
-        "term": "terms",
-        "score": 0.9215,
+        "score": 1.0081,
         "evidence": []
       },
       {
         "term": "borko",
-        "score": 0.9157,
+        "score": 0.917,
+        "evidence": []
+      },
+      {
+        "term": "koll",
+        "score": 0.917,
+        "evidence": []
+      },
+      {
+        "term": "centroid",
+        "score": 0.9108,
         "evidence": []
       }
     ],
     "page-023": [
       {
         "term": "raw term",
-        "score": 1.4406,
+        "score": 1.446,
         "evidence": []
       },
       {
         "term": "stemming",
-        "score": 1.0263,
+        "score": 1.029,
         "evidence": []
       },
       {
         "term": "retrieval system",
-        "score": 1.0225,
+        "score": 1.02,
         "evidence": []
       },
       {
         "term": "lsi",
-        "score": 0.9457,
+        "score": 0.949,
         "evidence": []
       },
       {
         "term": "query",
-        "score": 0.7138,
+        "score": 0.7165,
         "evidence": []
       },
       {
         "term": "deal",
-        "score": 0.7081,
+        "score": 0.686,
         "evidence": []
       },
       {
         "term": "procedures",
-        "score": 0.6534,
+        "score": 0.6519,
         "evidence": []
       },
       {
-        "term": "similarity",
-        "score": 0.6336,
+        "term": "documents",
+        "score": 0.6363,
         "evidence": []
       }
     ],
     "page-024": [
       {
         "term": "voorhees systems",
-        "score": 1.6687,
+        "score": 1.675,
         "evidence": []
       },
       {
         "term": "precision-recall curves",
-        "score": 1.6059,
+        "score": 1.6104,
         "evidence": []
       },
       {
         "term": "factor lsi",
-        "score": 1.5967,
+        "score": 1.5949,
         "evidence": []
       },
       {
         "term": "term matching",
-        "score": 1.5848,
+        "score": 1.5861,
         "evidence": []
       },
       {
         "term": "voorhees data",
-        "score": 1.5807,
+        "score": 1.5805,
         "evidence": []
       },
       {
         "term": "measuring precision",
-        "score": 1.4547,
+        "score": 1.4265,
         "evidence": []
       },
       {
         "term": "original term",
-        "score": 1.3341,
+        "score": 1.3388,
         "evidence": []
       },
       {
         "term": "med dataset",
-        "score": 1.3189,
+        "score": 1.3183,
         "evidence": []
       }
     ],
     "page-025": [
       {
         "term": "thank",
-        "score": 0.8232,
+        "score": 0.8172,
         "evidence": []
       },
       {
         "term": "john",
-        "score": 0.6452,
+        "score": 0.6376,
         "evidence": []
       },
       {
         "term": "lochbaum",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "page-026": [
       {
         "term": "document matrix",
-        "score": 1.0707,
+        "score": 1.0841,
         "evidence": []
       },
       {
         "term": "singular value",
-        "score": 0.973,
+        "score": 0.9769,
         "evidence": []
       },
       {
@@ -1061,164 +1061,164 @@
       },
       {
         "term": "svd",
-        "score": 0.7687,
+        "score": 0.775,
         "evidence": []
       }
     ],
     "page-027": [
       {
         "term": "length columns",
-        "score": 1.2735,
+        "score": 1.3249,
         "evidence": []
       },
       {
         "term": "unit length",
-        "score": 1.1614,
+        "score": 1.1494,
         "evidence": []
       },
       {
         "term": "tsd",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       }
     ],
     "page-028": [
       {
         "term": "xhihat",
-        "score": 0.91,
+        "score": 0.9114,
         "evidence": []
       },
       {
         "term": "closer",
-        "score": 0.7138,
+        "score": 0.6903,
         "evidence": []
       },
       {
         "term": "versa",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       }
     ],
     "page-029": [
       {
         "term": "van rijsbergen",
-        "score": 1.6678,
+        "score": 1.6582,
         "evidence": []
       },
       {
         "term": "annual meeting",
-        "score": 1.5766,
+        "score": 1.5608,
         "evidence": []
       },
       {
         "term": "information retrieval",
-        "score": 1.5188,
+        "score": 1.5058,
         "evidence": []
       },
       {
         "term": "classiﬁcation",
-        "score": 1.2634,
+        "score": 1.266,
         "evidence": []
       },
       {
         "term": "automatic document",
-        "score": 1.2219,
+        "score": 1.221,
         "evidence": []
       },
       {
         "term": "borko",
-        "score": 1.1554,
+        "score": 1.1572,
         "evidence": []
       },
       {
         "term": "proceedings",
-        "score": 1.0014,
+        "score": 0.9839,
         "evidence": []
       },
       {
         "term": "gomez",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       }
     ],
     "page-030": [
       {
         "term": "parafac model",
-        "score": 1.4817,
+        "score": 1.475,
         "evidence": []
       },
       {
         "term": "factor analysis",
-        "score": 1.3742,
-        "evidence": []
-      },
-      {
-        "term": "data analysis",
-        "score": 1.1214,
+        "score": 1.3376,
         "evidence": []
       },
       {
         "term": "least squares",
-        "score": 1.1202,
-        "evidence": []
-      },
-      {
-        "term": "harshman",
-        "score": 1.0831,
+        "score": 1.1228,
         "evidence": []
       },
       {
         "term": "singular values",
-        "score": 1.0814,
+        "score": 1.0892,
+        "evidence": []
+      },
+      {
+        "term": "data analysis",
+        "score": 1.0886,
+        "evidence": []
+      },
+      {
+        "term": "harshman",
+        "score": 1.0854,
+        "evidence": []
+      },
+      {
+        "term": "eds",
+        "score": 1.0109,
         "evidence": []
       },
       {
         "term": "jasis",
-        "score": 1.0074,
-        "evidence": []
-      },
-      {
-        "term": "lundy",
-        "score": 1.0074,
+        "score": 1.0081,
         "evidence": []
       }
     ],
     "page-031": [
       {
         "term": "lesk",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       },
       {
         "term": "cone",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       },
       {
         "term": "amsler",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ],
     "page-032": [
       {
         "term": "semantic indexing",
-        "score": 1.2402,
+        "score": 1.2287,
         "evidence": []
       },
       {
         "term": "latent semantic",
-        "score": 1.2369,
+        "score": 1.2255,
         "evidence": []
       },
       {
         "term": "svd model",
-        "score": 1.182,
+        "score": 1.1806,
         "evidence": []
       },
       {
         "term": "lsi",
-        "score": 0.9457,
+        "score": 0.949,
         "evidence": []
       }
     ]

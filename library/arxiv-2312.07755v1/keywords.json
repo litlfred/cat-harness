@@ -3,71 +3,71 @@
   "entry": "arxiv-2312.07755v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "mid-fidelity wireframes",
-      "score": 24.8539,
+      "score": 24.927,
       "evidence": []
     },
     {
       "term": "wireframe design",
-      "score": 24.2045,
+      "score": 23.7922,
       "evidence": []
     },
     {
       "term": "low-fidelity wireframes",
-      "score": 21.4643,
+      "score": 21.524,
       "evidence": []
     },
     {
       "term": "wireframe generations",
-      "score": 20.2701,
+      "score": 20.3423,
       "evidence": []
     },
     {
       "term": "generated wireframes",
-      "score": 18.8961,
+      "score": 18.9244,
       "evidence": []
     },
     {
       "term": "raw wireframe",
-      "score": 17.1219,
+      "score": 17.1781,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "design language",
-      "score": 16.827,
-      "evidence": []
-    },
-    {
-      "term": "design intent",
-      "score": 16.5076,
+      "score": 16.1891,
       "evidence": []
     },
     {
       "term": "generative llms",
-      "score": 15.9502,
+      "score": 16.1343,
+      "evidence": []
+    },
+    {
+      "term": "design intent",
+      "score": 16.0384,
       "evidence": []
     },
     {
       "term": "wireframe sharing",
-      "score": 15.276,
+      "score": 15.3329,
       "evidence": []
     },
     {
       "term": "generate mid-fidelity",
-      "score": 14.6528,
+      "score": 14.6865,
       "evidence": []
     },
     {
-      "term": "visual design",
-      "score": 14.3893,
+      "term": "fine-tuning llms",
+      "score": 13.8985,
       "evidence": []
     }
   ],
@@ -75,656 +75,658 @@
     "sec-000-1-introduction": [
       {
         "term": "low-fidelity wireframes",
-        "score": 3.7435,
+        "score": 3.7531,
         "evidence": []
       },
       {
         "term": "mid-fidelity wireframes",
-        "score": 3.6184,
+        "score": 3.6289,
         "evidence": []
       },
       {
         "term": "design intent",
-        "score": 2.0578,
+        "score": 2.0119,
         "evidence": []
       },
       {
         "term": "intent descriptions",
-        "score": 1.7982,
+        "score": 1.7807,
         "evidence": []
       },
       {
         "term": "wiregen",
-        "score": 1.7236,
+        "score": 1.7272,
         "evidence": []
       },
       {
         "term": "designers",
-        "score": 1.6902,
+        "score": 1.6097,
         "evidence": []
       },
       {
         "term": "design rules",
-        "score": 1.4312,
+        "score": 1.5019,
         "evidence": []
       },
       {
         "term": "design process",
-        "score": 1.3221,
+        "score": 1.3533,
         "evidence": []
       }
     ],
     "sec-003-22-designing-with-natural-language": [
       {
         "term": "mobile",
-        "score": 0.7813,
+        "score": 0.7836,
         "evidence": []
       },
       {
         "term": "wireframing",
-        "score": 0.7663,
+        "score": 0.7688,
         "evidence": []
       },
       {
-        "term": "visual",
-        "score": 0.6353,
+        "term": "well-suited",
+        "score": 0.5688,
         "evidence": []
       }
     ],
     "sec-004-abstract": [
       {
         "term": "designers",
-        "score": 1.5264,
+        "score": 1.4537,
         "evidence": []
       },
       {
         "term": "wireframes",
-        "score": 1.3731,
+        "score": 1.3774,
         "evidence": []
       },
       {
         "term": "low-fidelity",
-        "score": 1.2776,
+        "score": 1.2801,
         "evidence": []
       },
       {
         "term": "mid-fidelity",
-        "score": 1.186,
+        "score": 1.1891,
         "evidence": []
       },
       {
         "term": "inspiration",
-        "score": 0.9947,
+        "score": 0.9651,
         "evidence": []
       },
       {
         "term": "natural language",
-        "score": 0.8693,
+        "score": 0.8561,
         "evidence": []
       },
       {
         "term": "sketch",
-        "score": 0.7191,
+        "score": 0.7126,
         "evidence": []
       },
       {
-        "term": "designing",
-        "score": 0.682,
+        "term": "interactive",
+        "score": 0.6492,
         "evidence": []
       }
     ],
     "sec-005-3-approach": [
       {
-        "term": "graphic designs",
-        "score": 2.0876,
+        "term": "generative llms",
+        "score": 2.0664,
         "evidence": []
       },
       {
-        "term": "generative llms",
-        "score": 2.0461,
+        "term": "graphic designs",
+        "score": 1.9406,
         "evidence": []
       },
       {
         "term": "fine-tuning phase",
-        "score": 1.9837,
+        "score": 1.9108,
         "evidence": []
       },
       {
         "term": "preparation phase",
-        "score": 1.9107,
+        "score": 1.8192,
         "evidence": []
       },
       {
         "term": "natural language",
-        "score": 1.765,
+        "score": 1.7359,
         "evidence": []
       },
       {
         "term": "few-shot prompts",
-        "score": 1.6573,
+        "score": 1.6636,
         "evidence": []
       },
       {
         "term": "language models",
-        "score": 1.5512,
+        "score": 1.5258,
         "evidence": []
       },
       {
         "term": "high-level descriptions",
-        "score": 1.411,
+        "score": 1.3973,
         "evidence": []
       }
     ],
     "sec-006-31-prepare-dataset-of-ui-wireframes-and-descript": [
       {
         "term": "wireframes",
-        "score": 3.2496,
+        "score": 3.2597,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "mid-fidelity wireframes",
-        "score": 3.1571,
+        "score": 3.1663,
         "evidence": []
       },
       {
         "term": "view hierarchy",
-        "score": 2.8329,
-        "evidence": []
-      },
-      {
-        "term": "style sheet",
-        "score": 2.7011,
+        "score": 2.6684,
         "evidence": []
       },
       {
         "term": "html syntax",
-        "score": 2.5342,
+        "score": 2.522,
+        "evidence": []
+      },
+      {
+        "term": "style sheet",
+        "score": 2.4724,
         "evidence": []
       },
       {
         "term": "html tags",
-        "score": 2.4177,
+        "score": 2.4311,
         "evidence": []
       },
       {
         "term": "html code",
-        "score": 2.4072,
+        "score": 2.4207,
         "evidence": []
       },
       {
         "term": "commonly-used classes",
-        "score": 1.9928,
+        "score": 1.9974,
         "evidence": []
       }
     ],
     "sec-007-32-fine-tune-large-language-models-with-best-pra": [
       {
         "term": "html syntax",
-        "score": 2.0977,
+        "score": 2.0831,
         "evidence": []
       },
       {
         "term": "fine-tuning llms",
-        "score": 2.0184,
+        "score": 2.0419,
         "evidence": []
       },
       {
         "term": "app categories",
-        "score": 1.6014,
+        "score": 1.5841,
         "evidence": []
       },
       {
         "term": "training dataset",
-        "score": 1.5108,
+        "score": 1.4967,
         "evidence": []
       },
       {
         "term": "model selection",
-        "score": 1.4227,
+        "score": 1.3899,
         "evidence": []
       },
       {
         "term": "turbo",
-        "score": 1.1912,
-        "evidence": []
-      },
-      {
-        "term": "data selection",
-        "score": 1.1848,
+        "score": 1.1943,
         "evidence": []
       },
       {
         "term": "hyperparameter configuration",
-        "score": 1.1763,
+        "score": 1.1676,
+        "evidence": []
+      },
+      {
+        "term": "data selection",
+        "score": 1.164,
         "evidence": []
       }
     ],
     "sec-008-33-transform-raw-generation-into-beautiful-ui-wi": [
       {
         "term": "icon semantics",
-        "score": 3.2672,
+        "score": 3.3264,
         "evidence": []
       },
       {
         "term": "text wrapping",
-        "score": 2.6142,
+        "score": 2.6195,
         "evidence": []
       },
       {
         "term": "font size",
-        "score": 2.5044,
+        "score": 2.4922,
         "evidence": []
       },
       {
         "term": "text typography",
-        "score": 2.451,
-        "evidence": []
-      },
-      {
-        "term": "html syntax",
-        "score": 2.1745,
+        "score": 2.4562,
         "evidence": []
       },
       {
         "term": "wireframe",
-        "score": 2.1546,
+        "score": 2.1625,
         "evidence": [
           "heading"
         ]
       },
       {
+        "term": "html syntax",
+        "score": 2.1581,
+        "evidence": []
+      },
+      {
         "term": "text alignment",
-        "score": 2.0812,
+        "score": 2.0541,
         "evidence": []
       },
       {
         "term": "design flaws",
-        "score": 2.0344,
+        "score": 1.9907,
         "evidence": []
       }
     ],
     "sec-010-41-research-questions": [
       {
         "term": "variations",
-        "score": 0.8822,
+        "score": 0.8484,
         "evidence": []
       },
       {
         "term": "fine-tuning",
-        "score": 0.7421,
+        "score": 0.7469,
         "evidence": []
       },
       {
         "term": "ada",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       }
     ],
     "sec-011-42-testing-data": [
       {
         "term": "wireframes",
-        "score": 0.7752,
+        "score": 0.7776,
         "evidence": []
       },
       {
         "term": "ground-truth",
-        "score": 0.7339,
+        "score": 0.7367,
         "evidence": []
       },
       {
         "term": "llms",
-        "score": 0.6326,
+        "score": 0.6434,
         "evidence": []
       }
     ],
     "sec-012-43-annotation-methodology": [
       {
         "term": "wireframe designs",
-        "score": 1.8246,
+        "score": 1.7963,
         "evidence": []
       },
       {
         "term": "annotators",
-        "score": 0.9827,
+        "score": 0.9857,
         "evidence": []
       },
       {
         "term": "grid",
-        "score": 0.9217,
+        "score": 0.9251,
         "evidence": []
       },
       {
         "term": "generations",
-        "score": 0.7635,
+        "score": 0.766,
         "evidence": []
       }
     ],
     "sec-013-44-rq1-performance-of-fine-tuning": [
       {
         "term": "wireframe generations",
-        "score": 2.4445,
+        "score": 2.453,
         "evidence": []
       },
       {
         "term": "zero-shot learning",
-        "score": 2.187,
+        "score": 2.1627,
         "evidence": []
       },
       {
         "term": "few-shot learning",
-        "score": 1.9828,
+        "score": 1.9569,
         "evidence": []
       },
       {
         "term": "in-context learning",
-        "score": 1.8106,
+        "score": 1.7957,
         "evidence": []
       },
       {
         "term": "fine-tuning",
-        "score": 1.4842,
+        "score": 1.4939,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "wiregen",
-        "score": 1.2625,
+        "score": 1.2651,
         "evidence": []
       },
       {
         "term": "music",
-        "score": 0.8766,
+        "score": 0.8782,
         "evidence": []
       },
       {
-        "term": "ratings",
-        "score": 0.8304,
+        "term": "llms",
+        "score": 0.8313,
         "evidence": []
       }
     ],
     "sec-014-45-rq2-performance-of-variations": [
       {
         "term": "ada",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       },
       {
         "term": "babbage",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       },
       {
         "term": "curie",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       }
     ],
     "sec-015-53-results": [
       {
         "term": "ada",
-        "score": 1.3185,
+        "score": 1.3207,
         "evidence": []
       },
       {
         "term": "babbage",
-        "score": 1.3185,
+        "score": 1.3207,
         "evidence": []
       },
       {
         "term": "curie",
-        "score": 1.3185,
+        "score": 1.3207,
         "evidence": []
       },
       {
         "term": "turbo",
-        "score": 1.1912,
+        "score": 1.1943,
         "evidence": []
       },
       {
         "term": "baseline models",
-        "score": 0.9915,
+        "score": 0.9917,
         "evidence": []
       },
       {
         "term": "wireframes",
-        "score": 0.9782,
+        "score": 0.9813,
         "evidence": []
       }
     ],
     "sec-016-5-user-study": [
       {
         "term": "assisting",
-        "score": 0.5312,
+        "score": 0.5186,
         "evidence": []
       },
       {
-        "term": "usefulness",
-        "score": 0.5224,
-        "evidence": []
+        "term": "study",
+        "score": 0.4959,
+        "evidence": [
+          "heading"
+        ]
       },
       {
         "term": "designers",
-        "score": 0.5088,
+        "score": 0.4846,
         "evidence": []
       }
     ],
     "sec-017-51-participants": [
       {
         "term": "visual designer",
-        "score": 2.3191,
+        "score": 2.1943,
         "evidence": []
       },
       {
         "term": "interaction designer",
-        "score": 2.0397,
+        "score": 1.9717,
         "evidence": []
       },
       {
         "term": "working experience",
-        "score": 1.6365,
+        "score": 1.544,
         "evidence": []
       },
       {
         "term": "years",
-        "score": 1.2053,
+        "score": 1.1435,
         "evidence": []
       }
     ],
     "sec-018-52-procedure": [
       {
-        "term": "wireframe designs",
-        "score": 3.2535,
+        "term": "wireframe generations",
+        "score": 3.2228,
         "evidence": []
       },
       {
-        "term": "wireframe generations",
-        "score": 3.2116,
+        "term": "wireframe designs",
+        "score": 3.2177,
         "evidence": []
       },
       {
         "term": "wireframes generated",
-        "score": 3.032,
-        "evidence": []
-      },
-      {
-        "term": "asked participants",
-        "score": 2.966,
+        "score": 3.0321,
         "evidence": []
       },
       {
         "term": "participants appreciated",
-        "score": 2.9479,
+        "score": 2.6493,
         "evidence": []
       },
       {
-        "term": "layout generation",
-        "score": 2.5409,
+        "term": "asked participants",
+        "score": 2.6266,
         "evidence": []
       },
       {
         "term": "login page",
-        "score": 2.531,
+        "score": 2.5342,
         "evidence": []
       },
       {
         "term": "wireframe sharing",
-        "score": 2.4716,
+        "score": 2.481,
+        "evidence": []
+      },
+      {
+        "term": "layout generation",
+        "score": 2.3912,
         "evidence": []
       }
     ],
     "sec-019-6-discussion": [
       {
-        "term": "incorporating semantic",
-        "score": 1.4323,
+        "term": "design process",
+        "score": 1.4936,
         "evidence": []
       },
       {
-        "term": "design process",
-        "score": 1.4244,
+        "term": "incorporating semantic",
+        "score": 1.3894,
         "evidence": []
       },
       {
         "term": "login page",
-        "score": 1.3372,
+        "score": 1.3389,
         "evidence": []
       },
       {
         "term": "future work",
-        "score": 1.2758,
-        "evidence": []
-      },
-      {
-        "term": "work focuses",
-        "score": 1.2342,
+        "score": 1.2402,
         "evidence": []
       },
       {
         "term": "google authentication",
-        "score": 1.2013,
+        "score": 1.2029,
+        "evidence": []
+      },
+      {
+        "term": "work focuses",
+        "score": 1.1808,
         "evidence": []
       },
       {
         "term": "wireframes",
-        "score": 1.1357,
+        "score": 1.1392,
         "evidence": []
       },
       {
         "term": "designer",
-        "score": 1.081,
+        "score": 1.0544,
         "evidence": []
       }
     ],
     "sec-020-7-conclusion": [
       {
         "term": "wiregen",
-        "score": 1.0875,
+        "score": 1.0897,
         "evidence": []
       },
       {
         "term": "mid-fidelity",
-        "score": 1.0215,
+        "score": 1.0243,
         "evidence": []
       },
       {
         "term": "wireframes",
-        "score": 0.7752,
+        "score": 0.7776,
         "evidence": []
       },
       {
         "term": "llms",
-        "score": 0.6326,
+        "score": 0.6434,
         "evidence": []
       },
       {
-        "term": "creation",
-        "score": 0.5769,
+        "term": "billions",
+        "score": 0.5688,
         "evidence": []
       }
     ],
     "sec-021-references": [
       {
         "term": "sidong feng",
-        "score": 4.2649,
+        "score": 4.2589,
         "evidence": []
       },
       {
         "term": "chunyang chen",
-        "score": 4.1987,
+        "score": 4.1965,
         "evidence": []
       },
       {
         "term": "arxiv preprint",
-        "score": 3.9334,
+        "score": 3.9127,
         "evidence": []
       },
       {
         "term": "zhenchang xing",
-        "score": 3.631,
+        "score": 3.6367,
         "evidence": []
       },
       {
         "term": "chi conference",
-        "score": 3.3654,
+        "score": 3.3159,
         "evidence": []
       },
       {
         "term": "jieshan chen",
-        "score": 3.2281,
+        "score": 3.2249,
         "evidence": []
       },
       {
         "term": "companion proceedings",
-        "score": 3.1889,
+        "score": 3.1134,
         "evidence": []
       },
       {
         "term": "cvf conference",
-        "score": 3.138,
+        "score": 3.0986,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "mid-fidelity wireframes",
-        "score": 2.3217,
+        "score": 2.3284,
+        "evidence": []
+      },
+      {
+        "term": "monash university",
+        "score": 1.7953,
         "evidence": []
       },
       {
         "term": "design intent",
-        "score": 1.54,
+        "score": 1.5039,
         "evidence": []
       },
       {
         "term": "australia",
-        "score": 1.5233,
+        "score": 1.3978,
         "evidence": []
       },
       {
         "term": "wiregen",
-        "score": 1.2625,
+        "score": 1.2651,
         "evidence": []
       },
       {
         "term": "design process",
-        "score": 1.2043,
+        "score": 1.265,
         "evidence": []
       },
       {
         "term": "language models",
-        "score": 1.0922,
+        "score": 1.0744,
         "evidence": []
       },
       {
         "term": "generative",
-        "score": 0.8828,
-        "evidence": []
-      },
-      {
-        "term": "university",
-        "score": 0.8316,
+        "score": 0.8866,
         "evidence": []
       }
     ]
