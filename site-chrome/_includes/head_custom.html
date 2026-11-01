@@ -850,8 +850,11 @@
   /* {{ fa_ground.pageGround.title }}, the theme of {{ fa_ground.name }}. */
   :root { --fa-page-scrim: rgba(39, 38, 43, 0.85); --fa-text-scrim: rgba(39, 38, 43, 0.96); }
   :root[data-fa-scheme="light"] { --fa-page-scrim: rgba(255, 255, 255, 0.85); --fa-text-scrim: rgba(255, 255, 255, 0.96); }
+  /* The root carries the art, so it covers the whole viewport however short
+     the page; the body is made see-through so the art is not painted over. */
+  html:root body { background-color: transparent; }
   html body .main-content { background-color: var(--fa-text-scrim); border-radius: 6px; }
-  html body {
+  html:root {
     background-image:
       linear-gradient(var(--fa-page-scrim), var(--fa-page-scrim)),
       url("{{ fa_art.laptop | relative_url }}");
@@ -861,14 +864,14 @@
     background-attachment: fixed;
   }
   @media (max-width: 48rem) {
-    html body {
+    html:root {
       background-image:
         linear-gradient(var(--fa-page-scrim), var(--fa-page-scrim)),
         url("{{ fa_art.card | relative_url }}");
     }
   }
   @media (max-width: 30rem) {
-    html body {
+    html:root {
       background-image:
         linear-gradient(var(--fa-page-scrim), var(--fa-page-scrim)),
         url("{{ fa_art.mobile | relative_url }}");
@@ -876,7 +879,7 @@
   }
   /* Print and forced colours get the plain page: art is decoration. */
   @media print, (forced-colors: active) {
-    html body { background-image: none; }
+    html:root { background-image: none; }
   }
 </style>
 {%- endif -%}
