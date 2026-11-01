@@ -56,6 +56,7 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
         <bpmn:flowNodeRef>GW_QuoteSupports</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RuleIsWrong</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Adjudicate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_MoreVoices_Join</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_MoreVoices</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RecordOnSidecar</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_VoiceReviewed</bpmn:flowNodeRef>
@@ -104,6 +105,9 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
       <bpmn:extensionElements><bootstrap.processes:skill ref="voice-overlay-review"/><bootstrap.processes:skill ref="adjudication"/><cat-harness.processes:adjudication accepts="stands scope dispensation"/></bpmn:extensionElements>
     </bpmn:callActivity>
 
+    <bpmn:exclusiveGateway id="GW_MoreVoices_Join">
+      <bpmn:documentation>Brings the paths together before the decision after it, so that decision only splits.</bpmn:documentation>
+    </bpmn:exclusiveGateway>
     <bpmn:exclusiveGateway id="GW_MoreVoices" name="Another active&#10;voice?">
       <bpmn:documentation>Is another active voice left to review? `yes` runs that voice's mechanical half; `no` records the results on the block's QA sidecar.</bpmn:documentation>
     </bpmn:exclusiveGateway>
@@ -123,8 +127,9 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
     <bpmn:sequenceFlow id="F_V6" sourceRef="Task_OpenCitation" targetRef="GW_QuoteSupports"/>
     <bpmn:sequenceFlow id="F_V7" name="no" sourceRef="GW_QuoteSupports" targetRef="Task_RuleIsWrong"/>
     <bpmn:sequenceFlow id="F_V8" name="yes" sourceRef="GW_QuoteSupports" targetRef="Task_Adjudicate"/>
-    <bpmn:sequenceFlow id="F_V9" sourceRef="Task_RuleIsWrong" targetRef="GW_MoreVoices"/>
-    <bpmn:sequenceFlow id="F_V10" sourceRef="Task_Adjudicate" targetRef="GW_MoreVoices"/>
+    <bpmn:sequenceFlow id="F_V9" sourceRef="Task_RuleIsWrong" targetRef="GW_MoreVoices_Join"/>
+    <bpmn:sequenceFlow id="F_V10" sourceRef="Task_Adjudicate" targetRef="GW_MoreVoices_Join"/>
+    <bpmn:sequenceFlow id="Flow_GW_MoreVoices_Join" sourceRef="GW_MoreVoices_Join" targetRef="GW_MoreVoices"/>
     <bpmn:sequenceFlow id="F_V11" name="yes" sourceRef="GW_MoreVoices" targetRef="Task_MechanicalHalf"/>
     <bpmn:sequenceFlow id="F_V12" name="no" sourceRef="GW_MoreVoices" targetRef="Task_RecordOnSidecar"/>
     <bpmn:sequenceFlow id="F_V13" sourceRef="Task_RecordOnSidecar" targetRef="End_VoiceReviewed"/>
@@ -134,7 +139,7 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
   <bpmndi:BPMNDiagram id="Diagram_VoiceReview">
     <bpmndi:BPMNPlane id="Plane_VoiceReview" bpmnElement="Process_VoiceReview">
       <bpmndi:BPMNShape id="S_Lane_NarrativeReviewer_V" bpmnElement="Lane_NarrativeReviewer" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1565" height="360" />
+        <dc:Bounds x="160" y="80" width="1655" height="360" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_BaseVoiceDone" bpmnElement="Start_BaseVoiceDone">
         <dc:Bounds x="200" y="212" width="36" height="36" />
@@ -166,15 +171,22 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
       <bpmndi:BPMNShape id="S_Task_Adjudicate" bpmnElement="Task_Adjudicate">
         <dc:Bounds x="1050" y="288" width="180" height="74" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_MoreVoices_Join" bpmnElement="GW_MoreVoices_Join" isMarkerVisible="true">
+        <dc:Bounds x="1275" y="205" width="50" height="50"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Flow_GW_MoreVoices_Join" bpmnElement="Flow_GW_MoreVoices_Join">
+        <di:waypoint x="1325" y="230"/>
+        <di:waypoint x="1365" y="230"/>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="S_GW_MoreVoices" bpmnElement="GW_MoreVoices" isMarkerVisible="true">
-        <dc:Bounds x="1275" y="205" width="50" height="50" />
+        <dc:Bounds x="1365" y="205" width="50" height="50" />
         
       <bpmndi:BPMNLabel><dc:Bounds x="1181" y="203.5" width="90" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RecordOnSidecar" bpmnElement="Task_RecordOnSidecar">
-        <dc:Bounds x="1375" y="190" width="170" height="80" />
+        <dc:Bounds x="1465" y="190" width="170" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_VoiceReviewed" bpmnElement="End_VoiceReviewed">
-        <dc:Bounds x="1605" y="212" width="36" height="36" />
+        <dc:Bounds x="1695" y="212" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="E_F_V1" bpmnElement="F_V1">
         <di:waypoint x="236" y="230"/><di:waypoint x="280" y="230"/>
@@ -213,18 +225,18 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
         <di:waypoint x="1300" y="255" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V11" bpmnElement="F_V11">
-        <di:waypoint x="1300" y="205" />
-        <di:waypoint x="1300" y="410" />
+        <di:waypoint x="1390" y="205" />
+        <di:waypoint x="1390" y="410" />
         <di:waypoint x="650" y="410" />
         <di:waypoint x="650" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V12" bpmnElement="F_V12">
-        <di:waypoint x="1325" y="230" />
-        <di:waypoint x="1375" y="230" />
+        <di:waypoint x="1415" y="230" />
+        <di:waypoint x="1465" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V13" bpmnElement="F_V13">
-        <di:waypoint x="1545" y="230" />
-        <di:waypoint x="1605" y="230" />
+        <di:waypoint x="1635" y="230" />
+        <di:waypoint x="1695" y="230" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -44,7 +44,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Routes to the fixed-set curation branch (`fixed`) or the generated-recipe synthesis branch (`generated`).
 - Call `workflow_complete` with `node: "GW_SetKind"` and `outcome` set to the label that holds:
   - «fixed» → `Task_CurateFixed` (Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0)
-  - «generated» → `Call_ContentTypeSpecialisation` (Synthesise recipe via content-type specialisation [its own subprocess])
+  - «generated» → `Task_DetermineSpecialisation` (Determine the content type and its specialisation)
 
 ### 3. Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0 (`Task_CurateFixed`)
 
@@ -54,13 +54,13 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Record it: `workflow_complete` with `node: "Task_CurateFixed"`.
 - next: → `GW_NeedsSmeReview` (Exercises decision support or indicator definition?)
 
-### 4. Synthesise recipe via content-type specialisation [its own subprocess] (`Call_ContentTypeSpecialisation`)
+### 4. Determine the content type and its specialisation (`Task_DetermineSpecialisation`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
-- What: BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/sdlc/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess.
-- Record it: `workflow_complete` with `node: "Call_ContentTypeSpecialisation"`.
-- next: → `Task_WriteRecipe` (Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0)
+- What: Read the folio's `contentType` and the `specialisation` registered for it (`TestDataSpecialisationSchema` in `schemas/sdlc/test-data.ts`): `fhir-templating` for FHIR IG and DAK content, `markdown-fixture` for document folios, `lean-counterexample` for proof folios, `tabular-cohort` for aggregate ind
+- Record it: `workflow_complete` with `node: "Task_DetermineSpecialisation"`.
+- next: → `Call_ContentTypeSpecialisation` (Synthesise the recipe with that specialisation)
 
 ### Decide — Exercises decision support or indicator definition? (`GW_NeedsSmeReview`)
 
@@ -69,13 +69,13 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
   - «yes» → `Call_SmeReview` (SME review of cases or cohorts)
   - «no» → `GW_JoinFixed` (Fixed set ready)
 
-### 5. Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0 (`Task_WriteRecipe`)
+### 5. Synthesise the recipe with that specialisation (`Call_ContentTypeSpecialisation`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
-- What: Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: "test-data-generated/1.0.0"` and `kind: "generated"` in the instance's declared `test-data-generated` directory.
-- Record it: `workflow_complete` with `node: "Task_WriteRecipe"`.
-- next: → `GW_MergeKind` (Data set written)
+- What: BOUND BY THE CONTENT TYPE, so no `calledElement` is written here: each specialisation process belongs to the layer that owns its content type (fhir-harness, folio-assistant-core, folio-assistant-sci), and a lower layer cannot name a higher layer\'s process.
+- Record it: `workflow_complete` with `node: "Call_ContentTypeSpecialisation"`.
+- next: → `Task_WriteRecipe` (Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0)
 
 ### 6. SME review of cases or cohorts (`Call_SmeReview`)
 
@@ -90,12 +90,20 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Nothing to do or decide: the paths meet here and the engine passes through.
 - next: → `GW_MergeKind` (Data set written)
 
+### 7. Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0 (`Task_WriteRecipe`)
+
+- Who: the `Authoring agent` lane (role `authoring-agent`).
+- Skill: `test-data-sets`.
+- What: Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: "test-data-generated/1.0.0"` and `kind: "generated"` in the instance's declared `test-data-generated` directory.
+- Record it: `workflow_complete` with `node: "Task_WriteRecipe"`.
+- next: → `GW_MergeKind` (Data set written)
+
 ### Merge — Data set written (`GW_MergeKind`)
 
 - Nothing to do or decide: the paths meet here and the engine passes through.
 - next: → `Task_VerifySelfIdentifying` (Verify file self-identifies by $schema and kind and bind into test plan)
 
-### 7. Verify file self-identifies by $schema and kind and bind into test plan (`Task_VerifySelfIdentifying`)
+### 8. Verify file self-identifies by $schema and kind and bind into test plan (`Task_VerifySelfIdentifying`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-data-sets`.
@@ -103,7 +111,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Record it: `workflow_complete` with `node: "Task_VerifySelfIdentifying"`.
 - next: → `Call_BeanClose` (Close the bean)
 
-### 8. Close the bean (`Call_BeanClose`)
+### 9. Close the bean (`Call_BeanClose`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `todo-manager`.

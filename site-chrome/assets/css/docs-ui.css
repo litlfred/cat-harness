@@ -8989,3 +8989,25 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
 .fa-figure-scope {
   cursor: grab;
 }
+
+/* ── Section headings that stand out ──────────────────────────────────────
+ * Owner, 2026-11-01: "section headers are small and not apparent" (the
+ * theme draws h4 to h6 as small, spaced capitals, so "3.4.2 Governance
+ * principles" read like a caption). Every level below h3 is now bold,
+ * normal case and a step larger than body text, smallest last, on every
+ * site that uses this chrome. h3 grows a little so it stays above h4.
+ */
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.4em;
+  margin-bottom: 0.4em;
+}
+.main-content h3 { font-size: 1.3rem; }
+.main-content h4 { font-size: 1.125rem; }
+.main-content h5 { font-size: 1rem; }
+.main-content h6 { font-size: 0.95rem; font-style: italic; }
