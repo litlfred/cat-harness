@@ -159,7 +159,7 @@ Mechanical throughout. Nothing here waits on a person, which is what makes `buil
     <bpmn:endEvent id="End_Fail" name="Blocked">
       <bpmn:incoming>Flow_13</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Task_QaPublish" name="Publish QA results&#10;to qa-reports (NOT A GATE)" calledElement="Process_QaPublish">
+    <bpmn:callActivity id="Task_QaPublish" name="Publish QA results (not a gate)" calledElement="Process_QaPublish">
       <bpmn:documentation>Bean `16ei`, arc `3fva`. After Task_RepositoryGates, WHATEVER it concluded (`needs:` its two corpus parts, with `always()`), and after Task_QaWorkingCopy, whose copy it restores and publishes rather than building a second time (bean `jtfk`), `qa:publish --github` writes this run's `test/results` trees to the orphan `qa-reports` branch: `main/&lt;sha&gt;/` on a push to main, `pr/&lt;n&gt;/&lt;head-sha&gt;/` on a same-repository PR (owner rulings D1, D3). A fork PR's token is read-only, so it is skipped with a `::notice` naming why. It does NOT reach GW_Join: a red publish is its own red and never decides mergeability, and the hard gates never wait on it. The only job here holding `contents: write`, which is also how `bun run cat gates` knows not to run it locally. A CALL ACTIVITY: the key derivation, the fork skip and the never-`-f` retry loop are `qa-publish.bpmn`, which also draws the retention run that takes entries off the branch again.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-reports"/>

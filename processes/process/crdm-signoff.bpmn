@@ -57,7 +57,7 @@ what this step records here is a note that the plan now exists.</bpmn:documentat
         <cat-harness.processes:fulfilment kinds="person" reason="A sign-off on a requirements document is the requester's decision about their own requirements (issue #2405 FR-011): `approved` and `accepted` need a HUMAN sign-off, which `check:requirements` refuses without, so an agent may not take this step on their behalf. An agent records the decision in A_RecordSignoff; it does not make it."/>
       </bpmn:extensionElements>
     </bpmn:callActivity>
-    <bpmn:callActivity id="A_RecordSignoff" name="Record the sign-off as a&#10;requirement-signoff attestation" calledElement="GT_RecordSignoff">
+    <bpmn:callActivity id="A_RecordSignoff" name="Record the sign-off attestation" calledElement="GT_RecordSignoff">
     </bpmn:callActivity>
     <bpmn:exclusiveGateway id="GW_SignoffRecorded" name="Sign-off on the record?">
       <bpmn:documentation>Computed, never chosen: `decisions/requirement-signoff-recorded.dmn` reads `signoffRecorded` and `signoffOutcome`, which `check:requirements` prints from the set's recorded sign-offs (its signoff-facts flag). `missing` loops back to the record; `proceed` is an approval (as written or amended); `stop` is a recorded reject, defer or cancel.</bpmn:documentation>
@@ -91,7 +91,7 @@ result recorded in the bean before the first edit.</bpmn:documentation>
     <bpmn:endEvent id="End_Process_CRDM_Signoff" name="Phase complete"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Signoff_1" sourceRef="Start_Process_CRDM_Signoff" targetRef="A_CreateBeans"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Signoff_2" sourceRef="A_CreateBeans" targetRef="BA_Signoff"/>
-    <bpmn:serviceTask id="A_OfferKg" name="Offer the knowledge-graph&#10;destinations for the agreed set">
+    <bpmn:serviceTask id="A_OfferKg" name="Offer KG destinations for the agreed set">
       <bpmn:documentation>THE STEP THAT WAS MISSING. Requirements were elicited, agreed and signed off, and then existed as an issue and a conversation — so the output of the process that exists to produce durable requirements was the one thing the knowledge graph never learned.
 
 ONE question for the SET, not one per requirement: a six-phase run can agree many, and asking six times is the same failure as a form that re-asks what it was already told.
@@ -123,7 +123,7 @@ The default creates NOTHING. An agent that decides on its own that a requirement
       <bpmn:outgoing>SF_Kg_3</bpmn:outgoing>
       <bpmn:outgoing>SF_Kg_None</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:serviceTask id="A_RecordKg" name="Run placement, and raise&#10;a bean for the authoring">
+    <bpmn:serviceTask id="A_RecordKg" name="Run placement, file a bean">
       <bpmn:documentation>The offer produces a DECISION, not a node. `placement` then decides instance, graph and node kind — it is the step that catches a hardcoded path or a literal naming one folio — and the authoring itself becomes a bean, because work here is a bean before it is a file.
 
 `op="note"` and not `create`, for the reason `A_CreateBeans` above states: the engine has no `create` op — it claims, notes and resolves the instance's OWN bean. The agent mints the authoring bean itself with `beans create`, running the exact-title existence check first, and what this step records is a note that the decision was taken.</bpmn:documentation>

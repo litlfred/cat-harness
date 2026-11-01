@@ -112,8 +112,7 @@ the copier's own folio/">
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
     </bpmn:serviceTask>
 
-    <bpmn:serviceTask id="Task_RecordProvenance" name="Record provenance.local —
-what this is a copy OF">
+    <bpmn:serviceTask id="Task_RecordProvenance" name="Record what this is a copy of">
       <bpmn:documentation>The step that is easy to omit and impossible to reconstruct afterwards. `provenance` is a PAIR: `upstream` is the remote thing, `local` is the original in this repository. A copy-out writes `local`; it does not overwrite `upstream`, and it does not reuse `upstream` for a local value — that was one field until 2026-09-22, and by then 5 of the 9 who-iris item records were using it for a local one in violation of its own documentation. Without `local`, one rename later the copy is indistinguishable from original work and nothing downstream can repair it, because the information was never written down.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="copy-out-materialized" />

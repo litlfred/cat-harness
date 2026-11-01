@@ -91,8 +91,7 @@ pin a full commit SHA">
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
       <bpmn:incoming>SF_Bean_1</bpmn:incoming>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Task_Validate" name="Fetch the root declaration
-at the pin, and validate it">
+    <bpmn:serviceTask id="Task_Validate" name="Fetch and validate the pinned declaration">
       <bpmn:documentation>A sparse, shallow fetch of the substrate's root declaration only. Two questions: does it parse as bootstrap's KnowledgeGraphDeclarationSchema, and does it declare at least one harness? `could not fetch` is a third answer and is never read as `conforms`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-subscription" />
@@ -262,8 +261,7 @@ write its config">
       <bpmn:incoming>Flow_21</bpmn:incoming>
       <bpmn:outgoing>Flow_22</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Task_Summarise" name="Record how the walk ended,
-part by part">
+    <bpmn:serviceTask id="Task_Summarise" name="Record how each part of the walk ended">
       <bpmn:documentation>One line per offered part: materialised, referenced by choice, or referenced because a gate refused (and which). Nothing new is decided here; it is the account the visualizer and the next refresh read, written once rather than reconstructed from the loop.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-subscription" />
@@ -295,7 +293,7 @@ in a recorded state">
       <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
       <bpmn:incoming>SF_Bean_3</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Call_BeanClose" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+    <bpmn:callActivity id="Call_BeanClose" name="Close the bean" calledElement="Process_BeanClose">
       <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
     </bpmn:callActivity>

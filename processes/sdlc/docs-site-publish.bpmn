@@ -130,7 +130,7 @@ Mechanical throughout. There is no human lane, which is what makes `build-pipeli
       <bpmn:incoming>Flow_V2</bpmn:incoming>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:callActivity id="Task_Publish" name="Push to the CDN&#10;[render-kg-to-cdn]&#10;gh-pages, FULL REPLACE" calledElement="Process_RenderKgToCdn">
+    <bpmn:callActivity id="Task_Publish" name="Push to the CDN (full replace)" calledElement="Process_RenderKgToCdn">
       <bpmn:documentation>THIS SITE IS ONE INSTANCE OF THE GENERAL STEP (owner, 2026-09-30: gh-pages is &quot;one specific tool of general 'publish to CDN'&quot;). Process_RenderKgToCdn, entered with the tree this build already rendered and verified, the site root as the publication root URL, and GitHub Pages as the target — so its `gh-pages` Tool pushes. Here that push is a FULL REPLACE of the `gh-pages` branch: anything on it this build did not produce is gone unless the restore put it back, which is why the restore and the survival check either side of this call stay in THIS process rather than in the general one. The call returns the push's status and message (the gh-pages merge commit and the QA result); a status other than `pushed` takes the `no` branch of Did the deploy succeed?.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="render-kg-to-cdn"/>
@@ -159,7 +159,7 @@ Mechanical throughout. There is no human lane, which is what makes `build-pipeli
     <bpmn:endEvent id="End_Published" name="Site published,&#10;previews intact">
       <bpmn:incoming>Flow_C1</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Call_Alert" name="Alert the publication&#10;manager [publish-verification]" calledElement="Process_PublishAlert">
+    <bpmn:callActivity id="Call_Alert" name="Alert the publication manager" calledElement="Process_PublishAlert">
       <bpmn:documentation>Process_PublishAlert — the ONE alert every failing step after the publish button goes through, whichever step it was.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="publish-verification"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_S3</bpmn:incoming>

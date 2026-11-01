@@ -150,7 +150,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmn:incoming>t21</bpmn:incoming>
     </bpmn:endEvent>
 
-    <bpmn:callActivity id="Call_ChecksPresent" name="Find members with no CI&#10;on their head&#10;[pr-checks-present]" calledElement="Process_PrChecksPresent">
+    <bpmn:callActivity id="Call_ChecksPresent" name="Find members with no CI on their head" calledElement="Process_PrChecksPresent">
       <bpmn:documentation>GitHub runs no `pull_request` CI while a PR conflicts, so a member can arrive with nothing on its head (bean `u7be` item 3). That member is T2's first suspect if the train goes red.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="ci-health"/>
@@ -175,7 +175,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       <bpmn:outgoing>t14</bpmn:outgoing>
       <bpmn:outgoing>t15</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Call_Gates" name="Run the gate set&#10;on the train&#10;[code-quality-gates]" calledElement="Process_CodeQualityGates">
+    <bpmn:callActivity id="Call_Gates" name="Run the gate set on the train" calledElement="Process_CodeQualityGates">
       <bpmn:documentation>Every gate CI runs, on the combination (R2): a member that passes alone can still break `main` with another. The merge-gate epic (`nok9`, #1887) adds its gates here when they land. The release security gate (`bun run cat security:gate`, bean `ieum`) is one of them: it runs inside the gate set, so no train merges past a blocking security finding or a security check that could not run.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="platform-gates"/>

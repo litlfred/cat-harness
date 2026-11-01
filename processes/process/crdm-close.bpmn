@@ -52,7 +52,7 @@ on issue">
         <cat-harness.processes:fulfilment kinds="person" reason="A sign-off on a requirements document is the requester's decision about their own requirements (issue #2405 FR-011): `approved` and `accepted` need a HUMAN sign-off, which `check:requirements` refuses without, so an agent may not take this step on their behalf. An agent records the decision in A_RecordSignoff; it does not make it."/>
       </bpmn:extensionElements>
     </bpmn:callActivity>
-    <bpmn:callActivity id="A_RecordSignoff" name="Record the sign-off as a&#10;requirement-signoff attestation" calledElement="GT_RecordSignoff">
+    <bpmn:callActivity id="A_RecordSignoff" name="Record the sign-off attestation" calledElement="GT_RecordSignoff">
     </bpmn:callActivity>
     <bpmn:exclusiveGateway id="GW_SignoffRecorded" name="Sign-off on the record?">
       <bpmn:documentation>Computed, never chosen: `decisions/requirement-signoff-recorded.dmn` reads `signoffRecorded` and `signoffOutcome`, which `check:requirements` prints from the set's recorded sign-offs (its signoff-facts flag). `missing` loops back to the record; `proceed` is an approval (as written or amended); `stop` is a recorded reject, defer or cancel.</bpmn:documentation>

@@ -18,33 +18,33 @@ One process, called wherever remote content is landed locally.
 - Skill: `materialize-remote`.
 - What: working or archival, and it is asked FIRST because three of the five gates mean different things under each.
 - Record it: `workflow_complete` with `node: "Task_Purpose"`.
-- next: → `Task_Enumerate` (ENUMERATE + SUBSET against the source descriptor)
+- next: → `Task_Enumerate` (Enumerate the subset against the source)
 
-### 2. ENUMERATE + SUBSET against the source descriptor (`Task_Enumerate`)
+### 2. Enumerate the subset against the source (`Task_Enumerate`)
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: Resolve the request against the source's descriptor (one per corpus, in the declared sources/ of the instance that owns it, e.g.
 - Record it: `workflow_complete` with `node: "Task_Enumerate"`.
-- next: → `Task_Size` (SIZE what fraction, and what the whole would cost)
+- next: → `Task_Size` (Size the fraction and the whole)
 
-### 3. SIZE what fraction, and what the whole would cost (`Task_Size`)
+### 3. Size the fraction and the whole (`Task_Size`)
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: What is being taken, and what the whole collection would cost.
 - Record it: `workflow_complete` with `node: "Task_Size"`.
-- next: → `Task_Restrictions` (RESTRICTIONS unknown is an answer, not a green light)
+- next: → `Task_Restrictions` (Check restrictions (unknown is not yes))
 
-### 4. RESTRICTIONS unknown is an answer, not a green light (`Task_Restrictions`)
+### 4. Check restrictions (unknown is not yes) (`Task_Restrictions`)
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: The owner's phrase is 'no restrictions known in context', and that is a STATE, not a green light.
 - Record it: `workflow_complete` with `node: "Task_Restrictions"`.
-- next: → `Task_Copyright` (COPYRIGHT per bitstream, and for the derived work)
+- next: → `Task_Copyright` (Check copyright per file and derivative)
 
-### 5. COPYRIGHT per bitstream, and for the derived work (`Task_Copyright`)
+### 5. Check copyright per file and derivative (`Task_Copyright`)
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
@@ -58,9 +58,9 @@ One process, called wherever remote content is landed locally.
 - Skill: `materialize-remote`.
 - What: A copy with no expiry cannot be told from an abandoned one — the same argument bean-blocking makes about a block with no expiry.
 - Record it: `workflow_complete` with `node: "Task_Retention"`.
-- next: → `Task_SourceLoss` (SOURCE LOSS what survives if the origin goes)
+- next: → `Task_SourceLoss` (Check what survives if the origin goes)
 
-### 7. SOURCE LOSS what survives if the origin goes (`Task_SourceLoss`)
+### 7. Check what survives if the origin goes (`Task_SourceLoss`)
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.

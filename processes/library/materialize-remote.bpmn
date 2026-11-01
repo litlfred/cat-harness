@@ -73,9 +73,7 @@ working or archival">
       <bpmn:incoming>Flow_1</bpmn:incoming>
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Task_Enumerate" name="ENUMERATE + SUBSET
-against the source
-descriptor">
+    <bpmn:serviceTask id="Task_Enumerate" name="Enumerate the subset against the source">
       <bpmn:documentation>Resolve the request against the source's descriptor (one per corpus, in the declared sources/ of the instance that owns it, e.g. who-iris/sources/), read against cat-harness/schemas/library/source-descriptor.ts BEFORE any gate. Three things come from it and none may be guessed. (1) Which subset strategies the source supports — supportsSubset(). (2) Whether a subset stands on its own: when subsetIsSelfContained is false (mathlib), the request is closed over its dependencies here, and every gate after this one is asked about the CLOSURE, because a subset that omits what its members depend on is not a smaller corpus, it is one that does not build. (3) What enumerating the whole costs — enumerationCost(), which is undefined when the descriptor has no measured denominator; SIZE then refuses rather than estimates. A source with no descriptor is not an error here: it is an unknown, and SIZE refuses on it. Bean w5bn: the descriptor is CALLED here rather than restated.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="materialize-remote" />
@@ -83,9 +81,7 @@ descriptor">
       <bpmn:incoming>Flow_2</bpmn:incoming>
       <bpmn:outgoing>Flow_2b</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Task_Size" name="SIZE
-what fraction, and what
-the whole would cost">
+    <bpmn:serviceTask id="Task_Size" name="Size the fraction and the whole">
       <bpmn:documentation>What is being taken, and what the whole collection would cost. REFUSES when it cannot tell: 'three items' with no denominator is not a size answer. 0.7 TB is the measured reason the IRIS import is by reference.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="materialize-remote" />
@@ -93,9 +89,7 @@ the whole would cost">
       <bpmn:incoming>Flow_2b</bpmn:incoming>
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:userTask id="Task_Restrictions" name="RESTRICTIONS
-unknown is an answer,
-not a green light">
+    <bpmn:userTask id="Task_Restrictions" name="Check restrictions (unknown is not yes)">
       <bpmn:documentation>The owner's phrase is 'no restrictions known in context', and that is a STATE, not a green light. GateVerdict is three-valued for this reason alone, and `unknown` is never rendered as `permitted`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="materialize-remote" />
@@ -103,9 +97,7 @@ not a green light">
       <bpmn:incoming>Flow_3</bpmn:incoming>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_Copyright" name="COPYRIGHT
-per bitstream, and for
-the derived work">
+    <bpmn:userTask id="Task_Copyright" name="Check copyright per file and derivative">
       <bpmn:documentation>What the licence permits for THIS bitstream, and separately whether it permits the derivation. LICENSE-CONTENT.md exists in this repository and the ingestion pipeline does not read it.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="materialize-remote" />
@@ -122,9 +114,7 @@ what expires this copy">
       <bpmn:incoming>Flow_5</bpmn:incoming>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="Task_SourceLoss" name="SOURCE LOSS
-what survives if the
-origin goes">
+    <bpmn:userTask id="Task_SourceLoss" name="Check what survives if the origin goes">
       <bpmn:documentation>Not hypothetical. The one IRIS record this repository holds carries a handle on iris.wpro.who.int, a regional instance merged into the global one. Only an ARCHIVAL copy of the original bytes discharges this; a working copy cannot, because the derived sections are not the publication.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="materialize-remote" />

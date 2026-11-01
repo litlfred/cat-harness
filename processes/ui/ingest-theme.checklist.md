@@ -25,7 +25,7 @@ Decide whether an ingested artefact is a theme source and, when it is, extract i
 - Skill: `theme-art-intake`.
 - What: Read the ROLE, never the prettiest value.
 - Record it: `workflow_complete` with `node: "Task_ReadStylesheet"`.
-- next: → `Task_MapRoles` (Map values onto the shared palette ROLES)
+- next: → `Task_MapRoles` (Map values onto palette roles)
 
 ### 2. Read the guide's own stated rules (`Task_ReadGuide`)
 
@@ -33,9 +33,9 @@ Decide whether an ingested artefact is a theme source and, when it is, extract i
 - Skill: `theme-art-intake`.
 - What: From the INGESTED document's sections, not from a screenshot and not inferred from a site that happens to use the brand.
 - Record it: `workflow_complete` with `node: "Task_ReadGuide"`.
-- next: → `Task_MapRoles` (Map values onto the shared palette ROLES)
+- next: → `Task_MapRoles` (Map values onto palette roles)
 
-### 3. Map values onto the shared palette ROLES (`Task_MapRoles`)
+### 3. Map values onto palette roles (`Task_MapRoles`)
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `theme-art-intake`.

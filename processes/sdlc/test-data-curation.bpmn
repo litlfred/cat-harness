@@ -73,7 +73,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
       <bpmn:outgoing>Flow_Generated</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
-    <bpmn:task id="Task_CurateFixed" name="Author fixed set in&#10;test-data-fixed/ with&#10;$schema test-data-fixed/1.0.0">
+    <bpmn:task id="Task_CurateFixed" name="Author the fixed test data set">
       <bpmn:documentation>Write the curated `records` and optional `citations` with `$schema: &quot;test-data-fixed/1.0.0&quot;` and `kind: &quot;fixed&quot;` into the instance's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
@@ -93,7 +93,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
       <bpmn:outgoing>Flow_SmeNo</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
-    <bpmn:callActivity id="Call_SmeReview" name="SME review of&#10;cases or cohorts&#10;[sme-test-data-review]" calledElement="Process_SmeTestDataReview">
+    <bpmn:callActivity id="Call_SmeReview" name="SME review of cases or cohorts" calledElement="Process_SmeTestDataReview">
       <bpmn:documentation>Calls `Process_SmeTestDataReview` (`processes/sdlc/sme-test-data-review.bpmn`) so a human SME in a `judgementOnly` lane reviews each worked case (`decision-support`) or cohort plus expected value (`indicator-definition`) and records an attributable `sme-case-verdict/1.0.0` node.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
@@ -128,7 +128,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
     </bpmn:callActivity>
 
-    <bpmn:task id="Task_WriteRecipe" name="Write recipe in&#10;test-data-generated/ with&#10;$schema test-data-generated/1.0.0">
+    <bpmn:task id="Task_WriteRecipe" name="Write the generated-data recipe">
       <bpmn:documentation>Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: &quot;test-data-generated/1.0.0&quot;` and `kind: &quot;generated&quot;` in the instance's declared `test-data-generated` directory. Never store materialised records.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>

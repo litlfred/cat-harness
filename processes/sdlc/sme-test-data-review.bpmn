@@ -99,7 +99,7 @@ ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-ve
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
     </bpmn:userTask>
 
-    <bpmn:task id="Task_RecordCaseVerdict" name="Record sme-case-verdict/1.0.0&#10;with SME identity, date,&#10;verdict and rationale">
+    <bpmn:task id="Task_RecordCaseVerdict" name="Record the SME's verdict and rationale">
       <bpmn:documentation>Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/sdlc/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: &quot;human&quot;, provider, handle, role }`), and `reviewedAt` (ISO-8601 date/timestamp).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>

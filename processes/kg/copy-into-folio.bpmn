@@ -78,7 +78,7 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
       <bpmn:outgoing>Flow_ChooseToProbe</bpmn:outgoing>
     </bpmn:userTask>
 
-    <bpmn:serviceTask id="Task_ProbeWriteCapability" name="Probe write capability&#10;(git-push, github-api, github-connector)">
+    <bpmn:serviceTask id="Task_ProbeWriteCapability" name="Probe write capability">
       <bpmn:documentation>Check whether the session holds at least one of the three write capabilities (`git-push`, `github-api`, or `github-connector` under `scenarios/capabilities/`). Keep available, absent and could-not-determine distinct.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-affordances"/>
@@ -94,7 +94,7 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
       <bpmn:outgoing>Flow_CanWriteNo</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
-    <bpmn:userTask id="Task_InspectReadOnly" name="Browse in place and emit&#10;KgAsset snippet (read-only)">
+    <bpmn:userTask id="Task_InspectReadOnly" name="Browse in place, emit a KgAsset snippet">
       <bpmn:documentation>Clean degradation when no write capability (`git-push`, `github-api`, `github-connector`) is present: inspect the asset in place through the zero-write `browse` affordance and output the ready-to-paste `KgAsset` entry (with `source: { instance, path, ref }` populated) so the author can apply it where they have write access.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-affordances"/>
@@ -107,7 +107,7 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
       <bpmn:incoming>Flow_InspectToEnd</bpmn:incoming>
     </bpmn:endEvent>
 
-    <bpmn:serviceTask id="Task_ReadUpstreamAsset" name="Read upstream asset and&#10;origin — write nothing">
+    <bpmn:serviceTask id="Task_ReadUpstreamAsset" name="Read the upstream asset (no writes)">
       <bpmn:documentation>Read the asset bytes and its origin coordinates (`instance` as `&lt;owner&gt;/&lt;repo&gt;`, `path` within that instance, and commit `ref`) from the source knowledge graph without modifying anything in the source lane.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-affordances"/>
@@ -126,7 +126,7 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
       <bpmn:outgoing>Flow_CopyToStamp</bpmn:outgoing>
     </bpmn:serviceTask>
 
-    <bpmn:serviceTask id="Task_StampAssetSource" name="Stamp KgAsset.source&#10;{ instance, path, ref }">
+    <bpmn:serviceTask id="Task_StampAssetSource" name="Stamp the asset's source">
       <bpmn:documentation>Populate `source: { instance, path, ref }` (`AssetSourceSchema` in `schemas/kg/kg-node.ts`) on the new `KgAsset` entry in the same change. Because `source` absent is a third state meaning "authored locally in this instance", omitting `source` on a copied asset is forbidden.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-affordances"/>
@@ -137,7 +137,7 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
       <bpmn:outgoing>Flow_StampToValidate</bpmn:outgoing>
     </bpmn:serviceTask>
 
-    <bpmn:serviceTask id="Task_ValidateDeclaredAsset" name="Validate declared asset and&#10;provenance (check:declared-assets)">
+    <bpmn:serviceTask id="Task_ValidateDeclaredAsset" name="Validate the asset and provenance">
       <bpmn:documentation>Run `bun run cat check:declaration-resolution` (`check:declared-assets`) to verify that the copied asset exists at its declared path, its `KgAsset.source` conforms to `AssetSourceSchema`, and the upstream source graph remains untouched.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-affordances"/>

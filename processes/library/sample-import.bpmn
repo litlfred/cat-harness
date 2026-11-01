@@ -65,9 +65,7 @@ source is proposed">
       <bpmn:documentation>The caller names a source (ideally one with a source descriptor in the declared sources/ of the instance that owns the corpus) and a reason to try it. Nothing about size, licence or permanence is assumed at this point.</bpmn:documentation>
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="Task_Scope" name="Scope the sample:
-which items, which store,
-and is it PERMANENT?">
+    <bpmn:userTask id="Task_Scope" name="Scope the sample: items, store, permanence">
       <bpmn:documentation>Three answers, recorded before anything is fetched. WHICH ITEMS: named by the source's identifiers, or by a subset strategy its descriptor supports. WHICH STORE: the knowledge graph or other structured store the import is tested against. PERMANENT OR TRIAL: a permanent sample lands in library/ and is refreshed; a trial lands in fsh-guts/ and is not. The purpose materialize-remote asks for (working or archival) is asked there, not here.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sample-import" />

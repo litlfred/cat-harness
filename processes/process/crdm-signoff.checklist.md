@@ -26,9 +26,9 @@ The approved requirements become work-plan items, the BA signs off, and the bran
 - Skill: `adjudication`.
 - What: The business analyst / requester signs off on the agreed requirement set, on the issue: what was agreed and what was deferred.
 - A subprocess (`Process_Adjudication`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `A_RecordSignoff` (Record the sign-off as a requirement-signoff attestation)
+- next: → `A_RecordSignoff` (Record the sign-off attestation)
 
-### 3. Record the sign-off as a requirement-signoff attestation (`A_RecordSignoff`)
+### 3. Record the sign-off attestation (`A_RecordSignoff`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `adjudication`.
@@ -41,11 +41,11 @@ The approved requirements become work-plan items, the BA signs off, and the bran
 
 - Computed, never chosen: `decisions/requirement-signoff-recorded.dmn` reads `signoffRecorded` and `signoffOutcome`, which `check:requirements` prints from the set's recorded sign-offs (its signoff-facts flag).
 - Computed by the DMN table `decisions/requirement-signoff-recorded.dmn#Decision_RequirementSignoffRecorded`: call `workflow_complete` with `node: "GW_SignoffRecorded"` and the `facts` it reads — the table returns the branch; pass no `outcome`.
-  - «proceed» → `A_OfferKg` (Offer the knowledge-graph destinations for the agreed set)
+  - «proceed» → `A_OfferKg` (Offer KG destinations for the agreed set)
   - «stop» → `End_SignoffStopped` (Not approved — recorded, with its reason)
-  - «missing» → `A_RecordSignoff` (Record the sign-off as a requirement-signoff attestation)
+  - «missing» → `A_RecordSignoff` (Record the sign-off attestation)
 
-### 4. Offer the knowledge-graph destinations for the agreed set (`A_OfferKg`)
+### 4. Offer KG destinations for the agreed set (`A_OfferKg`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `kg-contribution-offer`.
@@ -69,11 +69,11 @@ The approved requirements become work-plan items, the BA signs off, and the bran
 
 - Drawn as a branch rather than folded into the task above, because `none` being a real outcome is the property worth being able to see.
 - Call `workflow_complete` with `node: "GW_KgChosen"` and `outcome` set to the label that holds:
-  - «a graph» → `A_RecordKg` (Run placement, and raise a bean for the authoring)
+  - «a graph» → `A_RecordKg` (Run placement, file a bean)
   - «none — recorded
 as an answer» → `A_AnnounceBranch` (Announce the branch on the issue)
 
-### 6. Run placement, and raise a bean for the authoring (`A_RecordKg`)
+### 6. Run placement, file a bean (`A_RecordKg`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `placement`.

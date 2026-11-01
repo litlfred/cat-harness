@@ -144,7 +144,7 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <bpmn:outgoing>m12</bpmn:outgoing>
       <bpmn:outgoing>m13</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Task_Ask" calledElement="Process_AskThePerson" name="Put the merge to&#10;the owner, evidence&#10;first">
+    <bpmn:callActivity id="Task_Ask" calledElement="Process_AskThePerson" name="Put the merge to the owner">
       <bpmn:documentation>Context, options, recommendation, question (interaction-modality §4.1). One row per PR: repo, PR, head, CI on head, mergeable, review, local gates. A repository with no CI is named as such, in words. One question may cover a batch, provided every PR in it is a row.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>

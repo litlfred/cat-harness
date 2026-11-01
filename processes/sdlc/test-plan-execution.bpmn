@@ -218,7 +218,7 @@ The run, the report and the certification are three records, and they point back
       <bpmn:outgoing>F11</bpmn:outgoing>
     </bpmn:callActivity>
 
-    <bpmn:serviceTask id="A_FileCertification" name="File the signed certification&#10;[qa-attestations/v1]">
+    <bpmn:serviceTask id="A_FileCertification" name="File the signed certification">
       <bpmn:documentation>The signed certification goes under the declared `attestations` graph on main (owner ruling D2 (a), D5 default), pointing at the report it certifies. The bean resolves here, once the process has actually finished.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-plan-execution" />

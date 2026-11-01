@@ -138,7 +138,7 @@
       <bpmn:outgoing>F5</bpmn:outgoing>
     </bpmn:serviceTask>
 
-    <bpmn:serviceTask id="A_Package" name="Package: files plus&#10;a manifest of digests">
+    <bpmn:serviceTask id="A_Package" name="Package with digests">
       <bpmn:documentation>The serialization alone is not a package. A package is an addressable set — the JSON-LD, the assets it references, and a manifest naming every file with its digest and byte count. The manifest is what makes a REMOVED file detectable, which a per-file signature cannot do on its own.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="kg-to-portal"/></bpmn:extensionElements>
       <bpmn:incoming>F5</bpmn:incoming>

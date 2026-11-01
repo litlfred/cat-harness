@@ -18,9 +18,9 @@ Taking an asset from an upstream knowledge graph into your own folio so you can 
 - Skill: `kg-affordances`.
 - What: Name the upstream instance (`<owner>/<repo>`), the asset's declared path in that instance, the commit `ref` (when pinned), and the target folio declaration that will receive the copy.
 - Record it: `workflow_complete` with `node: "Task_ChooseAsset"`.
-- next: → `Task_ProbeWriteCapability` (Probe write capability (git-push, github-api, github-connector))
+- next: → `Task_ProbeWriteCapability` (Probe write capability)
 
-### 2. Probe write capability (git-push, github-api, github-connector) (`Task_ProbeWriteCapability`)
+### 2. Probe write capability (`Task_ProbeWriteCapability`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `kg-affordances`.
@@ -32,10 +32,10 @@ Taking an asset from an upstream knowledge graph into your own folio so you can 
 
 - Decided from the capability probe over `git-push`, `github-api` and `github-connector`.
 - Call `workflow_complete` with `node: "GW_CanWrite"` and `outcome` set to the label that holds:
-  - «yes — git-push, github-api or github-connector» → `Task_ReadUpstreamAsset` (Read upstream asset and origin — write nothing)
-  - «no — read-only session» → `Task_InspectReadOnly` (Browse in place and emit KgAsset snippet (read-only))
+  - «yes — git-push, github-api or github-connector» → `Task_ReadUpstreamAsset` (Read the upstream asset (no writes))
+  - «no — read-only session» → `Task_InspectReadOnly` (Browse in place, emit a KgAsset snippet)
 
-### 3. Read upstream asset and origin — write nothing (`Task_ReadUpstreamAsset`)
+### 3. Read the upstream asset (no writes) (`Task_ReadUpstreamAsset`)
 
 - Who: the `Source knowledge graph — read-only` lane (role `corpus`).
 - Skill: `kg-affordances`.
@@ -43,7 +43,7 @@ Taking an asset from an upstream knowledge graph into your own folio so you can 
 - Record it: `workflow_complete` with `node: "Task_ReadUpstreamAsset"`.
 - next: → `Task_CopyAndDeclareAsset` (Copy asset into target folio and declare in assets[])
 
-### 4. Browse in place and emit KgAsset snippet (read-only) (`Task_InspectReadOnly`)
+### 4. Browse in place, emit a KgAsset snippet (`Task_InspectReadOnly`)
 
 - Who: the `Folio author` lane (role `author`).
 - Skill: `kg-affordances`.
@@ -57,21 +57,21 @@ Taking an asset from an upstream knowledge graph into your own folio so you can 
 - Skill: `kg-affordances`, `directory-conventions`.
 - What: Write the asset bytes into a declared path inside the target folio and add the `KgAsset` entry to the target folio's `<name>.json` `assets[]` list (`directory-conventions`).
 - Record it: `workflow_complete` with `node: "Task_CopyAndDeclareAsset"`.
-- next: → `Task_StampAssetSource` (Stamp KgAsset.source { instance, path, ref })
+- next: → `Task_StampAssetSource` (Stamp the asset's source)
 
 ## Done — Inspected in place; snippet emitted without write (`End_ReadOnlyDegraded`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 6. Stamp KgAsset.source { instance, path, ref } (`Task_StampAssetSource`)
+### 6. Stamp the asset's source (`Task_StampAssetSource`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `kg-affordances`, `directory-conventions`.
 - What: Populate `source: { instance, path, ref }` (`AssetSourceSchema` in `schemas/kg/kg-node.ts`) on the new `KgAsset` entry in the same change.
 - Record it: `workflow_complete` with `node: "Task_StampAssetSource"`.
-- next: → `Task_ValidateDeclaredAsset` (Validate declared asset and provenance (check:declared-assets))
+- next: → `Task_ValidateDeclaredAsset` (Validate the asset and provenance)
 
-### 7. Validate declared asset and provenance (check:declared-assets) (`Task_ValidateDeclaredAsset`)
+### 7. Validate the asset and provenance (`Task_ValidateDeclaredAsset`)
 
 - Who: the `Validation pipeline` lane (role `validation-pipeline`).
 - Skill: `kg-affordances`.

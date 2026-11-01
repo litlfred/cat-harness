@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: code-quality-gates\n"
-"POT-Creation-Date: 2026-11-01T10:25:15.335Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.205Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -106,7 +106,7 @@ msgstr ""
 
 #: processes/sdlc/code-quality-gates.bpmn:162
 #. Diagram label
-msgid "Publish QA results to qa-reports (NOT A GATE)"
+msgid "Publish QA results (not a gate)"
 msgstr ""
 
 #: processes/sdlc/code-quality-gates.bpmn:58

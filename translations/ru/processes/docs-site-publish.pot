@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: docs-site-publish\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.380Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.213Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:162
 #. Diagram label
-msgid "Alert the publication manager [publish-verification]"
+msgid "Alert the publication manager"
 msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:142
@@ -161,7 +161,7 @@ msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:133
 #. Diagram label
-msgid "Push to the CDN [render-kg-to-cdn] gh-pages, FULL REPLACE"
+msgid "Push to the CDN (full replace)"
 msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:178

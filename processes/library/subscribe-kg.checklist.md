@@ -33,13 +33,13 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Skill: `kg-subscription`.
 - What: `owner/repo` and a 40-character commit SHA — never a branch, never an abbreviated SHA.
 - Record it: `workflow_complete` with `node: "Task_Pin"`.
-- next: → `Task_Validate` (Fetch the root declaration at the pin, and validate it)
+- next: → `Task_Validate` (Fetch and validate the pinned declaration)
 
 ## Done — Not yours — left alone (`End_BeanNotYours`)
 
 - The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 3. Fetch the root declaration at the pin, and validate it (`Task_Validate`)
+### 3. Fetch and validate the pinned declaration (`Task_Validate`)
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `kg-subscription`.
@@ -181,7 +181,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Walks the chosen harnesses, whose needs the pre-check already found held.
 - Call `workflow_complete` with `node: "Gateway_NextHarness"` and `outcome` set to the label that holds:
   - «yes» → `Task_Instantiate` (Instantiate the harness: write its config)
-  - «no, every harness walked» → `Task_Summarise` (Record how the walk ended, part by part)
+  - «no, every harness walked» → `Task_Summarise` (Record how each part of the walk ended)
 
 ### 12. Instantiate the harness: write its config (`Task_Instantiate`)
 
@@ -191,7 +191,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Record it: `workflow_complete` with `node: "Task_Instantiate"`.
 - next: → `Gateway_NextHarness_Join`
 
-### 13. Record how the walk ended, part by part (`Task_Summarise`)
+### 13. Record how each part of the walk ended (`Task_Summarise`)
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `kg-subscription`.

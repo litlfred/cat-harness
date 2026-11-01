@@ -89,8 +89,7 @@ own stated rules">
       <bpmn:incoming>Flow_t3</bpmn:incoming>
       <bpmn:outgoing>Flow_t5</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Task_MapRoles" name="Map values onto the
-shared palette ROLES">
+    <bpmn:serviceTask id="Task_MapRoles" name="Map values onto palette roles">
       <bpmn:documentation>surface / ink / edge / accent, shared across every kind. A palette per kind would be three spellings of "accent colour", free to disagree about what an accent IS. Where the source is SILENT on a role, say so and mark the value a choice rather than dressing an invention as a measurement.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="theme-art-intake" />

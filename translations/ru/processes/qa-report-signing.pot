@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qa-report-signing\n"
-"POT-Creation-Date: 2026-10-29T15:13:05.784Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.253Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -106,7 +106,7 @@ msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:125
 #. Diagram label
-msgid "Resolve the performer's reach [effectiveReach + signing-api probe]"
+msgid "Resolve the performer's reach"
 msgstr ""
 
 #: processes/sdlc/qa-report-signing.bpmn:153

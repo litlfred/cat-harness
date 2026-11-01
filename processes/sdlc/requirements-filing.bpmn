@@ -72,7 +72,7 @@
       </bpmn:extensionElements>
     </bpmn:task>
 
-    <bpmn:task id="A_UpdateLifecycle" name="Mark superseded or&#10;retired record in place&#10;and update RequirementSet">
+    <bpmn:task id="A_UpdateLifecycle" name="Mark the record superseded or retired">
       <bpmn:documentation>Never delete (`git rm`) a superseded or retired requirement. When superseding `req:&lt;old-slug&gt;`, set `status: superseded` and `supersededBy: req:&lt;new-slug&gt;` on `docs/requirements/&lt;old-slug&gt;.md`. When retiring, set `status: retired` and document the retirement reason and authorising issue in prose. Update any `RequirementSet` (`docs/requirements/*.set.json`) so approved/accepted sets hold only `in-force` members.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="specification-management"/>
@@ -86,7 +86,7 @@
       </bpmn:extensionElements>
     </bpmn:task>
 
-    <bpmn:serviceTask id="A_RunCheck" name="Run check:requirements&#10;schema, collision, and&#10;lineage gate">
+    <bpmn:serviceTask id="A_RunCheck" name="Run the requirements check">
       <bpmn:documentation>Run `bun run cat check:requirements` to verify schema conformance (`bootstrap/schemas/requirement.schema.json`), slug uniqueness across `docs/proposals/` and `docs/requirements/`, acyclicity of `derivedFrom`, existence of all referenced `derivedFrom` / `dependsOn` / `supersededBy` / `skills` / `processes` targets, and `RequirementSet` sign-off invariants.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="specification-management"/>
@@ -101,7 +101,7 @@
       </bpmn:extensionElements>
     </bpmn:exclusiveGateway>
 
-    <bpmn:callActivity id="BA_ReviewFiling" name="Review filed requirement,&#10;organisation, and&#10;sign off" calledElement="Process_Adjudication">
+    <bpmn:callActivity id="BA_ReviewFiling" name="Review the filed requirement, sign off" calledElement="Process_Adjudication">
       <bpmn:documentation>The Business Analyst / Owner reviews the filed requirement in `docs/requirements/&lt;slug&gt;.md`, its concern-group organisation in `docs/requirements/index.md`, its three-axis traceability, and any supersession or retirement update, deciding `approve`, `amend`, `reject`, `defer`, or `cancel`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="adjudication"/>
@@ -110,7 +110,7 @@
       </bpmn:extensionElements>
     </bpmn:callActivity>
 
-    <bpmn:serviceTask id="A_RecordFilingSignoff" name="Record requirement-signoff&#10;attestation and set&#10;stage">
+    <bpmn:serviceTask id="A_RecordFilingSignoff" name="Record the sign-off and set the stage">
       <bpmn:documentation>Append the human sign-off decision to `test/attestations/requirement-signoff/&lt;set-slug&gt;.attestations.json` (recording who, at, scope, outcome, stage, reason, and issue comment permalink) and update the `RequirementSet` stage to match.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="adjudication"/>

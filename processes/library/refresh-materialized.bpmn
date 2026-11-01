@@ -135,8 +135,7 @@ since">
       <bpmn:incoming>Flow_Merge</bpmn:incoming>
       <bpmn:outgoing>Flow_Reconciled</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:serviceTask id="Task_Apply" name="Re-materialize, re-asking the five gates
-— and record the new fixity">
+    <bpmn:serviceTask id="Task_Apply" name="Re-materialize and record new fixity">
       <bpmn:documentation>The gates are re-asked, not inherited: a licence can change, and a collection can grow past the size a caller agreed to.
 
 AND THE NEW FIXITY IS RECORDED IN THE SAME CHANGE. This step rewrites bytes that a materialization record describes, so leaving the old digest behind would make a CORRECT run of this process fail check:materialized-fixity as a mismatch — the gate reading "somebody edited held content without saying so" about the one process whose job is to replace it. Measured 2026-09-22 (bean 10s1): this task named no fixity write at all.
@@ -154,8 +153,7 @@ This is the owner's publication exception, stated as a rule rather than as a car
         <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Task_KeepLocal" name="Keep the local edit,
-and re-pin so it stops being asked">
+    <bpmn:serviceTask id="Task_KeepLocal" name="Keep the edit, re-pin">
       <bpmn:documentation>The local edit wins, so nothing is re-materialized — and the pin moves to the upstream revision that was compared against. Re-pinning is the half that is easy to forget and is the reason this is a step rather than an absence: without it the same upstream change is detected as new on every cycle, and a contributor is asked the same settled question for ever. The record says the copy is deliberately divergent FROM a named revision, which is a different claim from being stale against an unknown one.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="materialize-remote" />

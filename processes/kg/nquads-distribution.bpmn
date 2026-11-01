@@ -109,7 +109,7 @@ CRITICAL INVARIANTS:
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
     </bpmn:task>
 
-    <bpmn:serviceTask id="A_GateCheck" name="CI Gate Verification:&#10;Audit Manifest &amp; Schemas">
+    <bpmn:serviceTask id="A_GateCheck" name="Audit the manifest and schemas">
       <bpmn:documentation>Validate that subgraph-manifest.json conforms to NQuadsDistributionManifestSchema, all referenced partitions exist, and external schema w3c-n-quads is satisfied.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="named-query-execution"/>
