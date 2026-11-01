@@ -59,10 +59,11 @@ in [`kg-export`](../../kg/kg-core/kg-export.md) §"`fsh-guts` NEVER reaches a pu
      green check. A rebase needs a force-push **with lease**:
      `git push --force-with-lease` — never a bare `--force` (it clobbers sibling
      pushes).
-   **A conflict in a generated QA sidecar has a command** —
-   `bun run cat qa:resolve-conflicts`. A conflict in `test/attestations/` is a
-   judgement and has none. See §"Conflicts in `test/results/` and
-   `test/attestations/`" below before resolving either by hand.
+   **A conflict in `test/results/` is a stale copy**: nothing commits that
+   tree now, so `merge:main` takes the base's side. A conflict in
+   `test/attestations/` is a judgement and has no command. See §"Conflicts in
+   `test/results/` and `test/attestations/`" below before resolving either by
+   hand.
 
    **Merge with `bun run cat merge:main`, never a plain `git merge` followed by
    regen.** It resolves every conflict a declared pattern covers (glossaries,
@@ -418,8 +419,9 @@ git diff --stat origin/<base> HEAD   # should list your files, not hundreds
 A diff against the base far larger than your PR is the signal. On #1968 it was
 146 files for a 16-file change.
 
-**Why it is not `qa:resolve-conflicts`, and not bean `520m`.** That command
-only ever inspects UNMERGED paths, and here there were none; `520m` is about
+**Why it is not `qa:resolve-conflicts`, and not bean `520m`.** That command,
+retired since bean `7mwa`, only ever inspected UNMERGED paths, and here there
+were none; `520m` is about
 generated artefacts that *conflict*, which is noisy but git stops you. This is
 the inverse and worse, which is why it is a separate bean with a separate
 repair.
@@ -437,11 +439,12 @@ nothing about what the merge broke.
 
 | tree | holds | durable home | on a conflict |
 |---|---|---|---|
-| `<instance>/test/results/**` | DERIVED verdicts — every `script` entry | the orphan `qa-reports` branch, `main/<sha>/` and `pr/<n>/<sha>/`, written by the CI job `qa-publish` | **regenerate**: `bun run cat qa:resolve-conflicts`, then `bun run cat regen` |
+| `<instance>/test/results/**` | DERIVED verdicts — every `script` entry | the orphan `qa-reports` branch, `main/<sha>/` and `pr/<n>/<sha>/`, written by the CI job `qa-publish` | **take the base's side**: `bun run cat merge:main` does, then `bun run cat regen` |
 | `<instance>/test/attestations/**` | JUDGEMENTS — every agent, human and baseline-pair attestation, `qa-attestations/v1` | `main`, as authored content | **a person reads both sides**; never regenerated, never "take ours" |
 
-The `test/results/` files are still committed on `main` until bean `5hox`
-removes them, so a base merge can still conflict there. Treat such a file as
+The `test/results/` files are no longer committed on `main` (bean `5hox`;
+cat-harness#857, https://github.com/litlfred/folio-assistant-core/pull/482), so a base merge conflicts there
+only for a branch older than the removal. Treat such a file as
 a working copy that has a right answer, not as a record: the record of a
 commit is its `qa-reports` entry, which no merge touches. **Do not
 hand-resolve one and do not regenerate one in order to "commit the result"** —
@@ -449,62 +452,38 @@ regenerate it so the gates see the merged tree, and let `qa-publish` store it.
 
 A conflict in `test/attestations/` is different in kind: it is two
 judgements that disagree, and `qa:attestations:migrate` refuses that case for
-the same reason — reconciling them is a person's call. `qa:resolve-conflicts`
-leaves it untouched and unstaged, because it resolves only under the declared
-`qa` graph. Keep both sides' entries unless they are the same judgement; then
+the same reason — reconciling them is a person's call. `merge:main` refuses
+it, because no merge-conflict pattern names that tree. Keep both sides' entries unless they are the same judgement; then
 run `bun run cat qa:attestations:migrate:check`, which exits 1 if a judgement is
 still only in a derived file.
 
-**Measured, not impressionistic.** Across one working session on PR #773 and
-its successor: **four base merges, four conflicts, every one in a committed
-generated QA sidecar and none in authored code.** Bean `520m`.
+### `qa:resolve-conflicts` is retired (bean `7mwa`, 2026-11-01)
 
-```sh
-bun run cat qa:resolve-conflicts             # resolve what is safe, report the rest
-bun run cat qa:resolve-conflicts --dry-run   # say what it would do, change nothing
-bun run cat qa:resolve-conflicts --explain   # ...and why, per file
-```
+There is nothing left for it to resolve. It existed because the derived
+sidecars were committed: across one working session on PR #773 and its
+successor, **four base merges gave four conflicts, every one in a committed
+generated QA sidecar** (bean `520m`), and the command regenerated each one,
+refusing any file that carried a judgement the attestation store did not hold.
+cat-harness (cat-harness#857) and the content core
+(https://github.com/litlfred/folio-assistant-core/pull/482) no longer commit `test/results/`, and the
+judgements moved to `test/attestations/` (bean `2gst`). The owner retired the
+command, its `qa-sidecar` merge pattern and the `test/results/` entries in
+`.gitattributes` together (2026-11-01, "A. Retire in that tools PR").
 
-**Why regenerating is a resolution and not a guess.** Both writers are
-idempotent — `bun run cat translation:block-qa` and `bun run cat kg:audit` over an
-unchanged tree write nothing, because `sameScriptVerdict` keeps a reproduced
-entry verbatim and ignores `reviewed_at`, `reviewed_sha` and
-`script_commit_sha`. So a sidecar is a pure function of the tree, and the
-merged tree has exactly one correct answer; both sides are stale with respect
-to it by definition, which is why *which* side you take does not matter.
+What replaces it:
 
-That also corrects the first explanation anyone reaches for. These conflicts
-are **not** a timestamp both sides restamped — the machinery preventing that
-already exists and works. Both sides really had changed the inputs. The verdict
-being unchanged does not make the conflict empty; it makes it trivially
-resolvable.
+- **A conflict in `test/results/`** means the branch is older than the
+  removal and still carries a copy. `merge:main` takes the base's side (the
+  `derived-results` pattern in [`merge-conflict-patterns`](merge-conflict-patterns.md)),
+  which is the deletion, and `regen` rewrites the working copy. The record is
+  the commit's `qa-reports` entry, which no merge touches.
+- **A conflict in `test/attestations/`** is still a person's call. No pattern
+  names that tree, so `merge:main` refuses it.
 
-> **The 13.** Across all 630 committed sidecars there are **5,883 `script`
-> entries and 13 `agent` ones** (11 `block-qa/v1`, 2 `translation-qa/v1`).
-> Regenerating blindly is right for 5,883 and would silently destroy 13 — two
-> of them in the family that churns most.
-
-**Since bean `8wj1` the guard reads the attestation store.** Every block and
-translation writer now takes its non-script entries from `test/attestations/`
-rather than from the file it is rewriting, so a sidecar whose non-script
-entries are ALL held in the store, byte for byte, regenerates without losing
-one and is resolved. The command still refuses a file carrying a judgement
-the store does NOT hold, a store file that is itself conflicted, or a store
-that cannot be read — a corrupt store reads UNKNOWN, and unknown is never
-resolved as clean. It checks the same predicate again *after* regenerating,
-and leaves every conflict outside the declared `qa` graph untouched and
-unstaged. **If it refuses one, move the judgement into the store first**
-(`bun run cat qa:attestations:migrate`, or let a writer move it on its next save)
-and re-run — do not hand-edit the derived file.
-
-And the habit this guards: a conflict an agent resolves without reading teaches
-that conflicts in `test/results/` are safe to wave through, which is exactly
-what would wave through the one that is not.
-
-**The owner chose the script over a git merge driver**, 2026-09-21. A driver
-needs a `git config` step in every clone and CI runner, and the people hitting
-these conflicts are mostly agents in fresh containers — where a setup step
-nobody ran is a driver that is not there, failing open and silently.
+Why regenerating was always a resolution and not a guess still holds: both
+writers are idempotent (`sameScriptVerdict` keeps a reproduced entry verbatim
+and ignores `reviewed_at`, `reviewed_sha` and `script_commit_sha`), so a
+sidecar is a pure function of the tree.
 
 ## Shipping is not merging — hand over on the PR itself
 
