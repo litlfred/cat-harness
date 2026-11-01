@@ -36,8 +36,8 @@ source differ, the source is right and this file is wrong.
 
 | source | what it carries | ingested |
 |---|---|---|
-| Gürel & Tat (2017), theoretical review, 13pp | the history, the variants, the criticism, a worked example | [`library/gurel-tat-2017-swot-analysis`](../library/gurel-tat-2017-swot-analysis/) |
-| Sammut-Bonnici & Galea (2015), *Wiley Encyclopedia of Management*, 9pp | the conceptual framework, the resource-based internal analysis, the practical discipline | [`library/sammut-bonnici-galea-2015-swot-analysis`](../library/sammut-bonnici-galea-2015-swot-analysis/) |
+| Gürel & Tat (2017), theoretical review, 13pp | the history, the variants, the criticism, a worked example | [`library/gurel-tat-2017-swot-analysis`](../library/process/gurel-tat-2017-swot-analysis/) |
+| Sammut-Bonnici & Galea (2015), *Wiley Encyclopedia of Management*, 9pp | the conceptual framework, the resource-based internal analysis, the practical discipline | [`library/sammut-bonnici-galea-2015-swot-analysis`](../library/process/sammut-bonnici-galea-2015-swot-analysis/) |
 
 **These are the first methodology sources in this repository a reader can
 actually open** — the other four adopted methodologies still cite origins that

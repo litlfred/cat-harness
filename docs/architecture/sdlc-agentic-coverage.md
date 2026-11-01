@@ -7,7 +7,7 @@ nav_order: 10
 
 # SDLC Agentic Coverage — Mapping Folio-Assistant to the State of the Art
 
-This architectural analysis cross-examines **folio-assistant** against the state of the art in Large Language Model-Based Multi-Agent (LMA) systems for Software Engineering, synthesizing findings from the comprehensive 30-page systematic survey by He, Treude, and Lo (arXiv:2404.04834v4, 2025; ingested at [`library/arxiv-2404.04834v4`](../../library/arxiv-2404.04834v4/)).
+This architectural analysis cross-examines **folio-assistant** against the state of the art in Large Language Model-Based Multi-Agent (LMA) systems for Software Engineering, synthesizing findings from the comprehensive 30-page systematic survey by He, Treude, and Lo (arXiv:2404.04834v4, 2025; ingested at [`library/arxiv-2404.04834v4`](../../library/sdlc/arxiv-2404.04834v4/)).
 
 Corresponding methodology node: [`methodologies/sdlc-agentic-landscape.md`](../../methodologies/sdlc-agentic-landscape.md).
 
