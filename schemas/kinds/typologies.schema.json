@@ -107,6 +107,10 @@
                   "generated": {
                     "type": "boolean",
                     "const": true
+                  },
+                  "derived": {
+                    "type": "boolean",
+                    "const": true
                   }
                 },
                 "required": [
@@ -122,6 +126,10 @@
                     "minLength": 1
                   },
                   "generated": {
+                    "type": "boolean",
+                    "const": true
+                  },
+                  "derived": {
                     "type": "boolean",
                     "const": true
                   }
@@ -141,6 +149,10 @@
                   "generated": {
                     "type": "boolean",
                     "const": true
+                  },
+                  "derived": {
+                    "type": "boolean",
+                    "const": true
                   }
                 },
                 "required": [
@@ -152,6 +164,10 @@
                 "type": "object",
                 "properties": {
                   "generated": {
+                    "type": "boolean",
+                    "const": true
+                  },
+                  "derived": {
                     "type": "boolean",
                     "const": true
                   }

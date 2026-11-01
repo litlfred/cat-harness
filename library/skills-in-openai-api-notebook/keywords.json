@@ -3,71 +3,71 @@
   "entry": "skills-in-openai-api-notebook",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "upload zip",
-      "score": 8.7458,
+      "score": 8.7667,
       "evidence": []
     },
     {
       "term": "hosted shell",
-      "score": 7.6375,
+      "score": 7.6674,
       "evidence": []
     },
     {
       "term": "local shell",
-      "score": 6.5499,
-      "evidence": []
-    },
-    {
-      "term": "shell tool",
-      "score": 6.4172,
+      "score": 6.5705,
       "evidence": []
     },
     {
       "term": "uploaded skill",
-      "score": 6.4021,
+      "score": 6.4501,
       "evidence": []
     },
     {
-      "term": "upload multiple",
-      "score": 6.2015,
+      "term": "shell tool",
+      "score": 6.3752,
       "evidence": []
     },
     {
       "term": "skill version",
-      "score": 6.1847,
+      "score": 6.2309,
+      "evidence": []
+    },
+    {
+      "term": "upload multiple",
+      "score": 6.2125,
       "evidence": []
     },
     {
       "term": "zip bundle",
-      "score": 5.7666,
+      "score": 5.7882,
       "evidence": []
     },
     {
       "term": "live api",
-      "score": 4.7766,
+      "score": 4.791,
       "evidence": []
     },
     {
       "term": "api call",
-      "score": 4.1738,
+      "score": 4.1742,
       "evidence": []
     },
     {
       "term": "system prompts",
-      "score": 3.5246,
+      "score": 3.5899,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "api request",
-      "score": 3.375,
+      "score": 3.3923,
       "evidence": []
     }
   ],
@@ -75,19 +75,19 @@
     "s001-skills-in-openai-api": [
       {
         "term": "skills",
-        "score": 0.8851,
+        "score": 0.8868,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "shell",
-        "score": 0.7599,
+        "score": 0.7625,
         "evidence": []
       },
       {
         "term": "openai",
-        "score": 0.6853,
+        "score": 0.6875,
         "evidence": [
           "heading"
         ]
@@ -96,125 +96,125 @@
     "s002-what-is-a-skill": [
       {
         "term": "skill",
-        "score": 1.5975,
+        "score": 1.6123,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "shell tool",
-        "score": 1.3602,
+        "score": 1.3495,
         "evidence": []
       },
       {
         "term": "bundle",
-        "score": 0.6923,
+        "score": 0.6954,
         "evidence": []
       },
       {
         "term": "scripts",
-        "score": 0.6876,
+        "score": 0.6859,
         "evidence": []
       },
       {
         "term": "instructions",
-        "score": 0.6441,
+        "score": 0.6476,
         "evidence": []
       }
     ],
     "s003-when-to-use-skills": [
       {
         "term": "skills",
-        "score": 1.7702,
+        "score": 1.7736,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "keep system",
-        "score": 0.8571,
+        "score": 0.857,
         "evidence": []
       },
       {
         "term": "system prompts",
-        "score": 0.7629,
+        "score": 0.777,
         "evidence": []
       },
       {
         "term": "live",
-        "score": 0.733,
+        "score": 0.7357,
         "evidence": []
       },
       {
         "term": "workflow",
-        "score": 0.6402,
+        "score": 0.628,
         "evidence": []
       },
       {
         "term": "procedure",
-        "score": 0.5134,
+        "score": 0.5118,
         "evidence": []
       },
       {
         "term": "standard",
-        "score": 0.367,
+        "score": 0.3727,
         "evidence": []
       }
     ],
     "s004-skills-vs-tools-vs-system-prompts": [
       {
         "term": "system prompts",
-        "score": 1.6725,
+        "score": 1.7041,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "side effects",
-        "score": 1.1968,
+        "score": 1.1836,
         "evidence": []
       },
       {
         "term": "tools",
-        "score": 1.1346,
+        "score": 1.1194,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "every turn",
-        "score": 0.9511,
+        "score": 0.9189,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 0.8851,
+        "score": 0.8868,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "procedures",
-        "score": 0.6534,
+        "score": 0.6519,
         "evidence": []
       }
     ],
     "s007-skill-md-frontmatter": [
       {
         "term": "frontmatter",
-        "score": 1.569,
+        "score": 1.578,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "upload multiple",
-        "score": 1.457,
+        "score": 1.4595,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 0.9019,
+        "score": 0.9102,
         "evidence": [
           "heading"
         ]
@@ -223,24 +223,24 @@
     "s008-creating-skills-via-api": [
       {
         "term": "upload zip",
-        "score": 2.8793,
+        "score": 2.8862,
         "evidence": []
       },
       {
         "term": "api",
-        "score": 0.9808,
+        "score": 0.9832,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "skill",
-        "score": 0.8536,
+        "score": 0.8615,
         "evidence": []
       },
       {
         "term": "creating",
-        "score": 0.6805,
+        "score": 0.6465,
         "evidence": [
           "heading"
         ]
@@ -249,138 +249,138 @@
     "s009-mounting-skills-into-execution": [
       {
         "term": "local shell",
-        "score": 1.5962,
+        "score": 1.6012,
         "evidence": []
       },
       {
         "term": "skills",
-        "score": 1.1168,
+        "score": 1.119,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "hosted",
-        "score": 0.6626,
+        "score": 0.6659,
         "evidence": []
       }
     ],
     "s010-runnable-example-csv-insights-skill-skill": [
       {
         "term": "hosted shell",
-        "score": 2.4091,
+        "score": 2.4186,
         "evidence": []
       },
       {
         "term": "local shell",
-        "score": 2.1459,
+        "score": 2.1526,
         "evidence": []
       },
       {
         "term": "skill",
-        "score": 2.1057,
+        "score": 2.1252,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "live api",
-        "score": 1.8531,
+        "score": 1.8589,
         "evidence": []
       },
       {
         "term": "api request",
-        "score": 1.4307,
+        "score": 1.4404,
         "evidence": []
       },
       {
         "term": "runnable",
-        "score": 1.261,
+        "score": 1.2619,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "directory containing",
-        "score": 1.2081,
+        "score": 1.207,
         "evidence": []
       },
       {
         "term": "save",
-        "score": 1.1803,
+        "score": 1.1835,
         "evidence": []
       }
     ],
     "s011-operational-best-practices": [
       {
         "term": "skill version",
-        "score": 1.4258,
+        "score": 1.4339,
         "evidence": []
       },
       {
         "term": "network access",
-        "score": 1.2926,
+        "score": 1.2996,
         "evidence": []
       },
       {
         "term": "add explicit",
-        "score": 1.25,
+        "score": 1.234,
         "evidence": []
       },
       {
         "term": "expected outputs",
-        "score": 1.0666,
+        "score": 1.0628,
         "evidence": []
       },
       {
         "term": "uploads",
-        "score": 0.9475,
+        "score": 0.9486,
         "evidence": []
       },
       {
         "term": "pin",
-        "score": 0.85,
+        "score": 0.8519,
+        "evidence": []
+      },
+      {
+        "term": "multi-step",
+        "score": 0.7935,
         "evidence": []
       },
       {
         "term": "operational",
-        "score": 0.835,
+        "score": 0.7898,
         "evidence": [
           "heading"
         ]
-      },
-      {
-        "term": "multi-step",
-        "score": 0.7912,
-        "evidence": []
       }
     ],
     "s012-conclusion": [
       {
         "term": "conclusion",
-        "score": 0.8721,
+        "score": 0.8106,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "skills",
-        "score": 0.7838,
+        "score": 0.7854,
         "evidence": []
       },
       {
         "term": "spaghetti",
-        "score": 0.6524,
+        "score": 0.6527,
         "evidence": []
       },
       {
         "term": "durable",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       },
       {
         "term": "runnable",
-        "score": 0.6305,
+        "score": 0.631,
         "evidence": []
       }
     ]

@@ -3,71 +3,71 @@
   "entry": "arxiv-2601.04544v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "multi-agent routing",
-      "score": 19.1318,
+      "score": 19.0917,
       "evidence": []
     },
     {
       "term": "reasoning router",
-      "score": 15.7878,
+      "score": 15.7025,
       "evidence": []
     },
     {
       "term": "routing conflicts",
-      "score": 15.6584,
+      "score": 15.511,
       "evidence": []
     },
     {
       "term": "model routing",
-      "score": 15.3619,
+      "score": 15.1712,
       "evidence": []
     },
     {
       "term": "collaborative routing",
-      "score": 14.8562,
+      "score": 14.7202,
       "evidence": []
     },
     {
       "term": "routing performance",
-      "score": 14.6149,
+      "score": 14.4818,
       "evidence": []
     },
     {
       "term": "task routing",
-      "score": 14.4276,
-      "evidence": []
-    },
-    {
-      "term": "routing accuracy",
-      "score": 14.2297,
+      "score": 14.3309,
       "evidence": []
     },
     {
       "term": "refining agent",
-      "score": 14.0945,
+      "score": 14.2038,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "llm routing",
-      "score": 13.6571,
+      "term": "routing accuracy",
+      "score": 14.1864,
       "evidence": []
     },
     {
       "term": "tcar output",
-      "score": 13.444,
+      "score": 13.6409,
       "evidence": []
     },
     {
-      "term": "during routing",
-      "score": 13.3972,
+      "term": "llm routing",
+      "score": 13.6077,
+      "evidence": []
+    },
+    {
+      "term": "based routing",
+      "score": 13.259,
       "evidence": []
     }
   ],
@@ -75,37 +75,37 @@
     "sec-000-introduction": [
       {
         "term": "multi-agent routing",
-        "score": 2.8699,
+        "score": 2.8659,
         "evidence": []
       },
       {
         "term": "based routing",
-        "score": 2.1202,
+        "score": 2.1067,
         "evidence": []
       },
       {
         "term": "multi-agent systems",
-        "score": 1.8925,
+        "score": 1.9062,
         "evidence": []
       },
       {
         "term": "domain experts",
-        "score": 1.8694,
+        "score": 1.7812,
         "evidence": []
       },
       {
         "term": "expert agent",
-        "score": 1.5936,
+        "score": 1.585,
         "evidence": []
       },
       {
         "term": "agent conflicts",
-        "score": 1.5743,
+        "score": 1.5744,
         "evidence": []
       },
       {
         "term": "enterprise environments",
-        "score": 1.4432,
+        "score": 1.433,
         "evidence": []
       },
       {
@@ -117,545 +117,545 @@
     "sec-001-related-work": [
       {
         "term": "based routing",
-        "score": 1.1212,
+        "score": 1.1145,
         "evidence": []
       },
       {
         "term": "confidence",
-        "score": 0.7737,
+        "score": 0.7637,
         "evidence": []
       },
       {
         "term": "diﬀiculty",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       }
     ],
     "sec-002-method": [
       {
         "term": "multiple agents",
-        "score": 1.3545,
+        "score": 1.3641,
         "evidence": []
       },
       {
         "term": "multi-agent collaboration",
-        "score": 1.2107,
+        "score": 1.2081,
         "evidence": []
       },
       {
         "term": "router",
-        "score": 0.694,
+        "score": 0.697,
         "evidence": []
       },
       {
         "term": "preference",
-        "score": 0.6772,
+        "score": 0.6606,
         "evidence": []
       },
       {
         "term": "decide",
-        "score": 0.6436,
-        "evidence": []
-      },
-      {
-        "term": "frameworks",
-        "score": 0.6003,
+        "score": 0.6358,
         "evidence": []
       },
       {
         "term": "routing",
-        "score": 0.594,
+        "score": 0.5894,
         "evidence": []
       },
       {
         "term": "train",
-        "score": 0.5831,
+        "score": 0.5851,
+        "evidence": []
+      },
+      {
+        "term": "frameworks",
+        "score": 0.5789,
         "evidence": []
       }
     ],
     "sec-003-problem-formulation": [
       {
         "term": "expert agents",
-        "score": 1.1785,
+        "score": 1.1653,
         "evidence": []
       },
       {
         "term": "user query",
-        "score": 0.92,
+        "score": 0.9122,
         "evidence": []
       },
       {
         "term": "router",
-        "score": 0.8757,
+        "score": 0.8795,
         "evidence": []
       },
       {
         "term": "natural-language",
-        "score": 0.7757,
+        "score": 0.7781,
         "evidence": []
       },
       {
         "term": "routing",
-        "score": 0.7495,
+        "score": 0.7437,
         "evidence": []
       }
     ],
     "sec-004-dynamic-agent-addition": [
       {
         "term": "retrained",
-        "score": 0.875,
+        "score": 0.8767,
         "evidence": []
       },
       {
         "term": "agent",
-        "score": 0.7003,
+        "score": 0.7114,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "router",
-        "score": 0.694,
+        "score": 0.697,
         "evidence": []
       }
     ],
     "sec-005-multi-agent-conflicts": [
       {
         "term": "multi-agent",
-        "score": 1.7547,
+        "score": 1.7656,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "natural-language reasoning",
-        "score": 1.6913,
+        "score": 1.6813,
         "evidence": []
       },
       {
         "term": "conflicts",
-        "score": 1.6808,
+        "score": 1.6576,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "collaborative execution",
-        "score": 1.5342,
+        "score": 1.5133,
         "evidence": []
       },
       {
         "term": "agent subset",
-        "score": 1.4843,
+        "score": 1.4989,
         "evidence": []
       },
       {
         "term": "agent descriptions",
-        "score": 1.4333,
+        "score": 1.4338,
         "evidence": []
       },
       {
         "term": "cross-domain",
-        "score": 1.3549,
+        "score": 1.3568,
         "evidence": []
       },
       {
-        "term": "routing",
-        "score": 1.3435,
+        "term": "multiple agents",
+        "score": 1.3447,
         "evidence": []
       }
     ],
     "sec-006-training-tcar": [
       {
         "term": "sft stage",
-        "score": 2.3242,
+        "score": 2.3245,
         "evidence": []
       },
       {
         "term": "router outputs",
-        "score": 1.9056,
+        "score": 1.903,
         "evidence": []
       },
       {
         "term": "reinforcement learning",
-        "score": 1.9043,
+        "score": 1.87,
         "evidence": []
       },
       {
         "term": "candidate agent",
-        "score": 1.5741,
+        "score": 1.5924,
         "evidence": []
       },
       {
         "term": "refining agent",
-        "score": 1.517,
+        "score": 1.5268,
         "evidence": []
       },
       {
         "term": "correct agents",
-        "score": 1.4764,
+        "score": 1.4745,
         "evidence": []
       },
       {
         "term": "agent selection",
-        "score": 1.438,
+        "score": 1.4388,
         "evidence": []
       },
       {
         "term": "supervised fine-tuning",
-        "score": 1.3015,
+        "score": 1.2994,
         "evidence": []
       }
     ],
     "sec-008-experimental-setup": [
       {
         "term": "evaluate routing",
-        "score": 1.7559,
+        "score": 1.735,
         "evidence": []
       },
       {
         "term": "routing performance",
-        "score": 1.5621,
+        "score": 1.5473,
         "evidence": []
       },
       {
         "term": "enterprise scenarios",
-        "score": 1.3607,
+        "score": 1.3459,
         "evidence": []
       },
       {
         "term": "real-world enterprise",
-        "score": 1.3347,
+        "score": 1.3185,
         "evidence": []
       },
       {
         "term": "sft",
-        "score": 1.2199,
+        "score": 1.2228,
         "evidence": []
       },
       {
         "term": "evaluation metrics",
-        "score": 1.102,
+        "score": 1.0606,
         "evidence": []
       },
       {
         "term": "qwen",
-        "score": 0.9549,
+        "score": 0.9581,
         "evidence": []
       },
       {
         "term": "intents",
-        "score": 0.9497,
+        "score": 0.9508,
         "evidence": []
       }
     ],
     "sec-009-main-results": [
       {
         "term": "qcloud dataset",
-        "score": 1.9754,
+        "score": 1.9748,
         "evidence": []
       },
       {
         "term": "refining agent",
-        "score": 1.4731,
+        "score": 1.4785,
         "evidence": []
       },
       {
         "term": "clinc",
-        "score": 1.3545,
+        "score": 1.3564,
         "evidence": []
       },
       {
         "term": "tcar",
-        "score": 1.2649,
+        "score": 1.2688,
         "evidence": []
       },
       {
         "term": "general-purpose llms",
-        "score": 1.1782,
+        "score": 1.1883,
         "evidence": []
       },
       {
         "term": "sgd",
-        "score": 1.1593,
+        "score": 1.161,
         "evidence": []
       },
       {
         "term": "minds",
-        "score": 1.0892,
+        "score": 1.0914,
         "evidence": []
       },
       {
         "term": "deepseek-v",
-        "score": 0.9599,
+        "score": 0.9631,
         "evidence": []
       }
     ],
     "sec-010-ablation-studies": [
       {
         "term": "sft slerp",
-        "score": 4.3525,
+        "score": 4.3583,
         "evidence": []
       },
       {
         "term": "sft model",
-        "score": 2.8854,
+        "score": 2.8715,
         "evidence": []
       },
       {
         "term": "different sft",
-        "score": 2.4312,
+        "score": 2.42,
         "evidence": []
       },
       {
         "term": "higher entropy",
-        "score": 2.175,
+        "score": 2.1622,
         "evidence": []
       },
       {
         "term": "qcloud dataset",
-        "score": 1.9754,
+        "score": 1.9748,
         "evidence": []
       },
       {
         "term": "merged model",
-        "score": 1.6679,
+        "score": 1.629,
         "evidence": []
       },
       {
         "term": "model generalization",
-        "score": 1.5705,
+        "score": 1.5557,
         "evidence": []
       },
       {
-        "term": "win rate",
-        "score": 1.5468,
+        "term": "troubleshooting-type queries",
+        "score": 1.5517,
         "evidence": []
       }
     ],
     "sec-011-conclusion": [
       {
         "term": "slerp-based",
-        "score": 0.5938,
+        "score": 0.5946,
         "evidence": []
       },
       {
         "term": "collapse",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       },
       {
         "term": "prone",
-        "score": 0.5678,
+        "score": 0.5688,
         "evidence": []
       }
     ],
     "sec-012-analysis": [
       {
         "term": "eﬀiciency",
-        "score": 0.5521,
+        "score": 0.5531,
         "evidence": []
       },
       {
         "term": "tcar",
-        "score": 0.4893,
+        "score": 0.4908,
         "evidence": []
       },
       {
-        "term": "in-depth",
-        "score": 0.4764,
+        "term": "ablation",
+        "score": 0.4705,
         "evidence": []
       }
     ],
     "sec-014-error-analysis": [
       {
         "term": "reasoning",
-        "score": 0.8431,
+        "score": 0.8316,
         "evidence": []
       },
       {
         "term": "tcar",
-        "score": 0.7756,
+        "score": 0.778,
         "evidence": []
       },
       {
         "term": "insuﬀicient",
-        "score": 0.5992,
+        "score": 0.5999,
         "evidence": []
       },
       {
         "term": "routing",
-        "score": 0.594,
+        "score": 0.5894,
         "evidence": []
       },
       {
         "term": "tencent",
-        "score": 0.5581,
+        "score": 0.5591,
         "evidence": []
       }
     ],
     "sec-015-multi-agent-collaboration-analysis": [
       {
         "term": "multi-agent collaboration",
-        "score": 5.1197,
+        "score": 5.1158,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "arxiv preprint",
-        "score": 4.1004,
+        "score": 4.0789,
         "evidence": []
       },
       {
         "term": "reinforcement learning",
-        "score": 2.5526,
+        "score": 2.5064,
         "evidence": []
       },
       {
         "term": "multi-agent collaborative",
-        "score": 2.4189,
+        "score": 2.4151,
         "evidence": []
       },
       {
         "term": "xuezhi wang",
-        "score": 2.3325,
+        "score": 2.3252,
         "evidence": []
       },
       {
         "term": "llm routing",
-        "score": 2.275,
+        "score": 2.2795,
         "evidence": []
       },
       {
         "term": "spoken dialogue",
-        "score": 2.2531,
+        "score": 2.2404,
         "evidence": []
       },
       {
         "term": "eﬀicient llm",
-        "score": 2.1028,
+        "score": 2.1193,
         "evidence": []
       }
     ],
     "sec-016-prompt": [
       {
         "term": "final answer",
-        "score": 1.6976,
+        "score": 1.6917,
         "evidence": []
       },
       {
         "term": "refining agent",
-        "score": 1.4098,
+        "score": 1.4179,
         "evidence": []
       },
       {
         "term": "chat history",
-        "score": 1.3128,
+        "score": 1.3117,
         "evidence": []
       },
       {
         "term": "final response",
-        "score": 1.2818,
+        "score": 1.2878,
         "evidence": []
       },
       {
         "term": "user problem",
-        "score": 1.199,
+        "score": 1.1786,
         "evidence": []
       },
       {
         "term": "different agents",
-        "score": 1.1125,
+        "score": 1.1044,
         "evidence": []
       },
       {
         "term": "output",
-        "score": 0.8307,
+        "score": 0.875,
         "evidence": []
       },
       {
         "term": "query",
-        "score": 0.8286,
+        "score": 0.8318,
         "evidence": []
       }
     ],
     "sec-017-badcase": [
       {
         "term": "message queue",
-        "score": 2.5889,
+        "score": 2.5892,
         "evidence": []
       },
       {
         "term": "queue agent",
-        "score": 2.5276,
+        "score": 2.5418,
         "evidence": []
       },
       {
         "term": "cdn agent",
-        "score": 2.0556,
+        "score": 2.0703,
         "evidence": []
       },
       {
         "term": "network agent",
-        "score": 1.5713,
+        "score": 1.5867,
         "evidence": []
       },
       {
         "term": "webpage loads",
-        "score": 1.5643,
+        "score": 1.5577,
         "evidence": []
       },
       {
         "term": "configuration change",
-        "score": 1.3866,
+        "score": 1.3561,
         "evidence": []
       },
       {
         "term": "tcar output",
-        "score": 1.2144,
+        "score": 1.2402,
         "evidence": []
       }
     ],
     "sec-front-matter": [
       {
         "term": "routing conflicts",
-        "score": 1.8539,
+        "score": 1.8355,
         "evidence": []
       },
       {
         "term": "reasoning router",
-        "score": 1.528,
+        "score": 1.523,
         "evidence": []
       },
       {
         "term": "task routing",
-        "score": 1.5203,
+        "score": 1.5102,
         "evidence": []
       },
       {
         "term": "adaptive reasoning",
-        "score": 1.265,
+        "score": 1.2515,
         "evidence": []
       },
       {
         "term": "tcar",
-        "score": 1.1362,
+        "score": 1.1397,
         "evidence": []
       },
       {
         "term": "tencent",
-        "score": 1.1162,
+        "score": 1.1182,
         "evidence": []
       },
       {
         "term": "tcandon-router",
-        "score": 1.0055,
+        "score": 1.0084,
         "evidence": []
       },
       {
         "term": "multi-agent",
-        "score": 0.8774,
+        "score": 0.8828,
         "evidence": []
       }
     ]

@@ -3,24 +3,19 @@
   "entry": "rfc8174-uppercase-vs-lowercase-2119-key-words",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2140,
-    "terms": 14687,
+    "sections": 2267,
+    "terms": 15478,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "words rfc",
-      "score": 7.356,
+      "score": 7.3849,
       "evidence": []
     },
     {
       "term": "rfc key",
-      "score": 6.4689,
-      "evidence": []
-    },
-    {
-      "term": "rfc clarification",
-      "score": 5.9119,
+      "score": 6.4849,
       "evidence": []
     },
     {
@@ -29,167 +24,172 @@
       "evidence": []
     },
     {
+      "term": "rfc clarification",
+      "score": 5.7943,
+      "evidence": []
+    },
+    {
       "term": "rfc specifies",
-      "score": 4.7984,
+      "score": 4.8361,
       "evidence": []
     },
     {
       "term": "ietf documents",
-      "score": 4.1939,
+      "score": 4.2177,
       "evidence": []
     },
     {
       "term": "uppercase usage",
-      "score": 3.6152,
+      "score": 3.6198,
       "evidence": []
     },
     {
       "term": "ietf trust",
-      "score": 3.5413,
+      "score": 3.5563,
       "evidence": []
     },
     {
       "term": "clarifying capitalization",
-      "score": 3.2409,
+      "score": 3.1721,
       "evidence": []
     },
     {
       "term": "common key",
-      "score": 2.7523,
+      "score": 2.7354,
       "evidence": []
     },
     {
       "term": "document defines",
-      "score": 2.6373,
+      "score": 2.6633,
       "evidence": []
     },
     {
       "term": "iana considerations",
-      "score": 2.5855,
+      "score": 2.5911,
       "evidence": []
     }
   ],
   "sections": {
     "page-001": [
       {
-        "term": "internet engineering",
-        "score": 1.684,
+        "term": "rfc key",
+        "score": 1.6831,
         "evidence": []
       },
       {
-        "term": "rfc key",
-        "score": 1.6796,
+        "term": "internet engineering",
+        "score": 1.6596,
         "evidence": []
       },
       {
         "term": "key words",
-        "score": 1.3744,
-        "evidence": []
-      },
-      {
-        "term": "current practice",
-        "score": 1.1861,
+        "score": 1.3681,
         "evidence": []
       },
       {
         "term": "uppercase",
-        "score": 1.1803,
+        "score": 1.1835,
+        "evidence": []
+      },
+      {
+        "term": "current practice",
+        "score": 1.174,
         "evidence": []
       },
       {
         "term": "task force",
-        "score": 1.0647,
+        "score": 1.0666,
         "evidence": []
       }
     ],
     "page-003": [
       {
-        "term": "simplified bsd",
-        "score": 1.7004,
+        "term": "ietf trust",
+        "score": 1.689,
         "evidence": []
       },
       {
-        "term": "ietf trust",
-        "score": 1.6808,
+        "term": "simplified bsd",
+        "score": 1.6889,
         "evidence": []
       },
       {
         "term": "bsd license",
-        "score": 1.5599,
+        "score": 1.5637,
         "evidence": []
       },
       {
         "term": "trust legal",
-        "score": 1.4673,
+        "score": 1.466,
         "evidence": []
       },
       {
         "term": "key words",
-        "score": 1.4384,
+        "score": 1.432,
         "evidence": []
       },
       {
         "term": "rfc",
-        "score": 0.9936,
+        "score": 1.0017,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "key words",
-        "score": 1.782,
+        "score": 1.775,
         "evidence": []
       },
       {
         "term": "ietf documents",
-        "score": 1.6318,
+        "score": 1.642,
         "evidence": []
       },
       {
         "term": "phrase near",
-        "score": 1.4728,
+        "score": 1.4551,
         "evidence": []
       },
       {
         "term": "document defines",
-        "score": 1.1667,
+        "score": 1.1752,
         "evidence": []
       },
       {
         "term": "capitalized",
-        "score": 1.1617,
+        "score": 1.1634,
         "evidence": []
       },
       {
         "term": "capitals",
-        "score": 1.1617,
+        "score": 1.1634,
         "evidence": []
       },
       {
         "term": "normative text",
-        "score": 1.1471,
+        "score": 1.1526,
         "evidence": []
       },
       {
         "term": "rfc",
-        "score": 1.1003,
+        "score": 1.1092,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "security considerations",
-        "score": 1.0868,
+        "score": 1.0929,
         "evidence": []
       },
       {
         "term": "rfc",
-        "score": 1.0499,
+        "score": 1.0585,
         "evidence": []
       },
       {
         "term": "key words",
-        "score": 0.8427,
+        "score": 0.8388,
         "evidence": []
       }
     ]
