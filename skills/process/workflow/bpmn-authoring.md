@@ -43,7 +43,9 @@ compact so dont need to zoom as much"*, *"add as QA and author check"*.
 Every diagram you write or touch must, when you are done:
 
 - **fit 1400 × 900** in diagram units, so its 16px text reads at about
-  14px in a 1200px band without zooming; tasks 120 × 90;
+  14px in a 1200px band without zooming; **every task a fixed 120 × 120
+  square** (owner, 2026-11-01: boxes never grow to fit their names; a name
+  that does not fit is shortened, `TASK_SIZE` in cat-harness-tools);
 - have **no label on another label, on a flow (its own included), on a box
   or across a lane line** (owner, 2026-10-31: *"need to check for text on
   arrows"*): a gateway's question above the diamond, its answers beside
@@ -107,6 +109,10 @@ ingested under bean `folio-assistant-e0jh`.
   exclusive or parallel gateway after it, or a reader must guess fork vs
   choice (`activity-implicit-split`, major). A loop-back INTO a task is fine.
   A gateway either joins or splits, not both (`gateway-mixed`).
+  **A question is a gateway, never a task**: a box named "Should it leave
+  now?" or "Separate this graph?" is a decision drawn as work. If someone must
+  judge first, draw that as a task ("Judge whether it should leave") or a call
+  to `Process_AskThePerson`, then the question on the gateway after it.
 - **Keep it small.** Split by phase into call activities past 20 flow nodes
   (`process-size`). That 20 is house style. The only threshold with evidence is
   7PMG's 50 (`process-decompose`, major), and it predicts modelling errors
@@ -119,6 +125,13 @@ ingested under bean `folio-assistant-e0jh`.
   the draft*, not *Draft review*) (`activity-label-verb-first`). The evidence
   is one study of how ambiguous labels felt (29 students), so this is reported,
   never gated.
+- **A name says the step, nothing else.** No trailing `[skill]` slug: the
+  skill is in `<bootstrap.processes:skill ref>`, and the page links it from
+  there (owner, 2026-11-01, Q-RED-3 B). No step numbers ("1 ·", "Phase 2:",
+  "P1.1"): the flows already give the order, and a number in front breaks
+  verb-first. A number that cites a section of a source document goes in the
+  task's documentation. A list of numbered steps is a sign the diagram copies
+  a document's outline; group the steps into phases instead.
 
 ### Split by phase: how
 
@@ -146,6 +159,11 @@ a diagram has a start event per lane, split it like this:
 - **Open and close the bean at the top, once.** A process that is only ever
   called runs on its caller's bean, so a phase calls neither
   `Process_BeanOpen` nor `Process_BeanClose` (`check:bean-calls`).
+  "Once" holds for the top as well: a process with several outcomes routes
+  them all into **one** `Process_BeanClose` call, which decides itself whether
+  the bean is completed, scrapped or blocked, and only then branches to its
+  named end events. One close per outcome (seven in one diagram, before
+  2026-11-01) repeats the same box and makes the diagram wide for no reason.
 - **A caller's `adjudication accepts` looks one level down.** If the judgement
   moves into a phase, put `accepts` on the call to that phase, and take it off
   any caller further up.
