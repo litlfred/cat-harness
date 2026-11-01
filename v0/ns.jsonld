@@ -570,6 +570,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:graphTypology/business-processes",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "business-processes",
+      "comment": "BPMN that describes work as content (a guideline's business processes), drawn by the processes viewer and never run.",
+      "prefLabel": "business-processes",
+      "definition": "BPMN that describes work as content (a guideline's business processes), drawn by the processes viewer and never run.",
+      "notation": "cat-harness:graphTypology/business-processes",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:graphTypology/cat-harness",
       "@type": [
         "bootstrap:GraphTypology",
