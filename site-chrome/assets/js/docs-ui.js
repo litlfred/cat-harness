@@ -10341,6 +10341,11 @@
         return r.text();
       });
     }
+    return Promise.resolve(inlineSvgText(art));
+  }
+
+  /** An inline <svg> serialised as a standalone file, at its own size. */
+  function inlineSvgText(art) {
     var clone = art.cloneNode(true);
     clone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
     clone.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
@@ -10349,7 +10354,7 @@
     var size = svgSize(art);
     clone.setAttribute("width", String(size.w));
     clone.setAttribute("height", String(size.h));
-    return Promise.resolve('<?xml version="1.0" encoding="UTF-8"?>\n' + new window.XMLSerializer().serializeToString(clone));
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + new window.XMLSerializer().serializeToString(clone);
   }
 
   /** The drawing's own size: its viewBox, else its width/height, else its box. */
@@ -10403,6 +10408,49 @@
         img.src = url;
       });
     });
+  }
+
+  /**
+   * The address of a figure's source .svg file, absolute, or "" when the
+   * drawing has no file of its own (#915). The file is the committed
+   * artefact, so its address can be bookmarked and shared.
+   */
+  function figureFileUrl(scope) {
+    var art = figureArt(scope);
+    if (!art) return "";
+    var isImg = String(art.nodeName).toLowerCase() === "img";
+    var src = art.getAttribute("data-fa-src") || (isImg ? art.getAttribute("src") : "") || "";
+    if (!src) return "";
+    try { return new URL(src, document.baseURI).href; } catch (_e) { return ""; }
+  }
+
+  /**
+   * Set up a figure's "Open" link (#915). With a source file it is a plain
+   * link to it, so a click, a middle-click and "Open link in new tab" all
+   * work. A drawing with no file has nothing to link to, so the link acts as
+   * a button instead and opens the serialised drawing as a blob: in a new tab.
+   */
+  function figureOpenTarget(scope, link) {
+    var url = figureFileUrl(scope);
+    if (url && safeHref(url)) {
+      link.href = safeHref(url);
+      link.removeAttribute("role");
+      link.removeAttribute("tabindex");
+      return;
+    }
+    link.removeAttribute("href");
+    link.setAttribute("role", "button");
+    link.setAttribute("tabindex", "0");
+  }
+
+  /** Open a figure with no file of its own as a blob: in a new tab. */
+  function openFigureBlob(scope) {
+    var art = figureArt(scope);
+    if (!art || String(art.nodeName).toLowerCase() !== "svg") return false;
+    var url = URL.createObjectURL(new Blob([inlineSvgText(art)], { type: "image/svg+xml" }));
+    window.open(url, "_blank", "noopener");
+    setTimeout(function () { URL.revokeObjectURL(url); }, 60000);
+    return true;
   }
 
   /** Save a blob under a filename, through a transient link. */
@@ -10762,7 +10810,24 @@
     });
     copyBtn.addEventListener("click", function () { copyFigure(scope).then(say); });
 
-    [out, level, into, reset, wide, svgBtn, pngBtn, copyBtn, said].forEach(function (n) { tools.appendChild(n); });
+    // Open in a new tab (#915, owner: "with SVGs and such there is no 'view in
+    // new tab' option"). Inlining an <img> as <svg> takes away the browser's
+    // own "Open image in new tab", so this puts it back. It is a LINK, not a
+    // button, so a click, a middle-click and the right-click "Open link in new
+    // tab" all work.
+    var openLink = el("a", { class: "fa-figure-open", target: "_blank", rel: "noopener", "aria-label": "Open this diagram in a new tab" }, "Open ↗");
+    figureOpenTarget(scope, openLink);
+    function openNoFile(e) {
+      if (openLink.hasAttribute("href")) return;
+      e.preventDefault();
+      if (!openFigureBlob(scope)) say("Could not open this diagram");
+    }
+    openLink.addEventListener("click", openNoFile);
+    openLink.addEventListener("keydown", function (e) {
+      if (!openLink.hasAttribute("href") && (e.key === "Enter" || e.key === " ")) openNoFile(e);
+    });
+
+    [out, level, into, reset, wide, svgBtn, pngBtn, copyBtn, openLink, said].forEach(function (n) { tools.appendChild(n); });
     scope.parentNode.insertBefore(tools, scope);
     apply();
 
