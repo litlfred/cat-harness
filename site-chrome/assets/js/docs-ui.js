@@ -10477,8 +10477,28 @@
       });
     }
 
+    // Owner, 2026-11-01, after the drag grew the figure ("dragging now
+    // rescales", "i want it to pan"): a drag never changes the size. On an
+    // axis with scroll room it scrolls the figure; on an axis where the
+    // drawing fits its card, it moves the drawing inside the card, by
+    // `translate`, up to PAN_KEEP of the card from where it was drawn so it
+    // cannot be lost. Zoom and Reset put the drawing back.
+    var PAN_KEEP = 0.75;
+    var shift = { x: 0, y: 0 };
+    function art() { return scope.querySelector("svg, img, object"); }
+    function setShift(x, y) {
+      shift.x = x; shift.y = y;
+      var a = art();
+      if (a) a.style.translate = (x || y) ? x + "px " + y + "px" : "";
+      // A moved drawing must not grow the card's scroll room, or the next
+      // drag would scroll where it should move.
+      scope.classList.toggle("is-shifted", !!(x || y));
+    }
+    function clampShift(v, room) { return Math.max(-room * PAN_KEEP, Math.min(room * PAN_KEEP, v)); }
+
     function apply() {
       var z = ZOOM_STEPS[step];
+      setShift(0, 0);
       scope.style.setProperty("--fa-zoom", String(z));
       level.textContent = Math.round(z * 100) + "%";
       out.disabled = step === 0;
@@ -10629,18 +10649,21 @@
     // events rather than mouse events, so a touch drag works the same way.
     var drag = null;
     var panned = false;
-    // A grab on a figure that fits zooms it by one more 100% for every
-    // GROW_PX of sideways drag, so it grows smoothly instead of jumping.
-    var GROW_PX = 400;
-    // It grows until the drawing is 15% wider than its card, so the pan that
-    // follows has room to move rather than stopping at once at the edge.
-    var GROW_UNTIL = 1.15;
-
     scope.addEventListener("pointerdown", function (e) {
       if (e.button !== 0) return;
       // A control or a link owns its own press.
       if (e.target.closest && e.target.closest("a, button, input, select, textarea")) return;
-      drag = { x: e.clientX, y: e.clientY, sl: scope.scrollLeft, st: scope.scrollTop, py: e.clientY, moved: false };
+      // Which axes scroll and which move the drawing is fixed for the drag,
+      // measured without the drawing's own move, which adds scroll room.
+      var a = art(), was = a ? a.style.translate : "";
+      if (a) a.style.translate = "";
+      var canX = scope.scrollWidth > scope.clientWidth + 1;
+      var canY = scope.scrollHeight > scope.clientHeight + 1;
+      if (a) a.style.translate = was;
+      drag = {
+        x: e.clientX, y: e.clientY, sl: scope.scrollLeft, st: scope.scrollTop, py: e.clientY, moved: false,
+        canX: canX, canY: canY, tx: shift.x, ty: shift.y, touch: e.pointerType === "touch",
+      };
       try { scope.setPointerCapture(e.pointerId); } catch (_e) { /* not captureable */ }
       // Owner, 2026-10-31, with a screenshot: *"i cant drag Figure"*. A mouse
       // press on an inline SVG's text started a text selection before the 4px
@@ -10669,52 +10692,20 @@
       var dx = e.clientX - drag.x;
       var dy = e.clientY - drag.y;
       if (!drag.moved && Math.abs(dx) + Math.abs(dy) < 4) return;
-      if (!drag.moved && Math.abs(dx) >= Math.abs(dy) &&
-          scope.scrollWidth <= scope.clientWidth + 1 && step < ZOOM_STEPS.length - 1) {
-        // Owner, 2026-11-01, card Q-DRAG1 "B. Nothing moves": a figure that
-        // fits its card has no room to pan, so a sideways drag did nothing.
-        // The drag now zooms it in, around the press point, a little at a
-        // time as the pointer moves, and pans once it overflows. Jumping
-        // whole zoom steps on the first move took a narrow drawing to 200%
-        // at once ("jumps to 200% size as soon as you grab").
-        var box0 = scope.getBoundingClientRect();
-        drag.grow = { z0: ZOOM_STEPS[step], at: drag.x - box0.left, px: drag.x - box0.left + scope.scrollLeft };
-      }
-      if (drag.grow) {
-        var g = drag.grow;
-        var z = Math.min(ZOOM_STEPS[ZOOM_STEPS.length - 1], g.z0 * (1 + Math.abs(dx) / GROW_PX));
-        scope.style.setProperty("--fa-zoom", String(z));
-        level.textContent = Math.round(z * 100) + "%";
-        scope.scrollLeft = Math.max(0, g.px * (z / g.z0) - g.at);
-        drag.moved = true;
-        scope.classList.add("is-panning");
-        if (scope.scrollWidth > scope.clientWidth * GROW_UNTIL || z >= ZOOM_STEPS[ZOOM_STEPS.length - 1]) {
-          // Room to pan now: the buttons step on from the nearest step below.
-          while (step < ZOOM_STEPS.length - 1 && ZOOM_STEPS[step + 1] <= z) step++;
-          out.disabled = false;
-          markPannable();
-          drag.grow = null;
-          drag.sl = scope.scrollLeft;
-          drag.x = e.clientX;
-        }
-        e.preventDefault();
-        return;
-      }
       drag.moved = true;
       scope.classList.add("is-panning");
-      scope.scrollLeft = drag.sl - dx;
-      var top = scope.scrollTop;
-      scope.scrollTop = drag.st - dy;
-      // A figure that fits its card, or one already scrolled to its edge,
-      // cannot take the vertical part of the drag, and a drag that moves
-      // nothing reads as broken. That part moves the page instead, the way
-      // the wheel over the margin already does.
-      var dyStep = e.clientY - drag.py;
-      drag.py = e.clientY;
-      if (scope.scrollTop === top && dyStep !== 0) {
-        window.scrollBy(0, -dyStep);
-        drag.y += dyStep;
-        drag.st = scope.scrollTop;
+      if (drag.canX) scope.scrollLeft = drag.sl - dx;
+      if (drag.canY) scope.scrollTop = drag.st - dy;
+      if (!drag.canX || (!drag.canY && !drag.touch)) {
+        setShift(drag.canX ? 0 : clampShift(drag.tx + dx, scope.clientWidth),
+          drag.canY || drag.touch ? 0 : clampShift(drag.ty + dy, scope.clientHeight));
+      }
+      // A finger on a figure that cannot scroll down still scrolls the page,
+      // so a phone reader is never stuck on a figure.
+      if (drag.touch && !drag.canY) {
+        var dyStep = e.clientY - drag.py;
+        drag.py = e.clientY;
+        if (dyStep !== 0) window.scrollBy(0, -dyStep);
       }
       e.preventDefault();
     });

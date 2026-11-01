@@ -8888,3 +8888,14 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
     opacity: 0.75;
   }
 }
+
+/* A drawing moved inside a card it fits (drag pans, never rescales: owner,
+ * 2026-11-01 "i want it to pan") is clipped by the card rather than giving
+ * the card scroll room. */
+.fa-figure-scope.is-shifted {
+  overflow: hidden !important;
+}
+/* Every figure can be dragged now, so every figure shows the grab cursor. */
+.fa-figure-scope {
+  cursor: grab;
+}
