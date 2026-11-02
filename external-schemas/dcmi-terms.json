@@ -61,6 +61,10 @@
       "operative": "Table of contents or section outline of the document."
     },
     {
+      "term": "dc.description.version",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "dc.format.mimetype",
       "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
