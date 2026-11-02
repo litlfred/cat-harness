@@ -16,10 +16,10 @@ How a resource gets into the graph in the first place.
 
 - Did the resource arrive with the request?
 - Call `workflow_complete` with `node: "GW_Offered"` and `outcome` set to the label that holds:
-  - «no» → `A_Ask` (Say what is needed, and ask for a link OR a description)
+  - «no» → `A_Ask` (Ask for a link or a description)
   - «yes» → `A_Accept` (Accept it, and record where it came from)
 
-### 1. Say what is needed, and ask for a link OR a description (`A_Ask`)
+### 1. Ask for a link or a description (`A_Ask`)
 
 - Who: the `Agent` lane (role `ingestion-agent`).
 - Skill: `content-acquisition`.

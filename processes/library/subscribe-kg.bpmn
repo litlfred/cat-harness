@@ -66,9 +66,6 @@ STRICT. The pin and the five gates are the reason: an unpinned subscription is h
         <bpmn:flowNodeRef>Gateway_NextHarness_Join</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_NextHarness</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Instantiate</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="Lane_2" name="Corpus — the subscriber's declaration" partitionElementRef="corpus">
-        <bpmn:documentation>Where the subscription is written down: the entry in the subscriber's instance declaration (choice and pin only, never state), the cached copy of the substrate's declaration the visualizer reads offline, and the record of how the walk ended. A refusal lands here with the same weight as a success, so the next caller does not re-litigate it.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_Refuse</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_Refused</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Record</bpmn:flowNodeRef>
@@ -94,8 +91,7 @@ pin a full commit SHA">
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
       <bpmn:incoming>SF_Bean_1</bpmn:incoming>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Task_Validate" name="Fetch the root declaration
-at the pin, and validate it">
+    <bpmn:serviceTask id="Task_Validate" name="Fetch and validate the pinned declaration">
       <bpmn:documentation>A sparse, shallow fetch of the substrate's root declaration only. Two questions: does it parse as bootstrap's KnowledgeGraphDeclarationSchema, and does it declare at least one harness? `could not fetch` is a third answer and is never read as `conforms`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-subscription" />
@@ -120,6 +116,9 @@ a substrate; write no entry">
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_4</bpmn:incoming>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_Refuse">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Refused" name="Not subscribed,
 and the record says why">
@@ -141,6 +140,9 @@ cache the declaration">
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_7</bpmn:incoming>
       <bpmn:outgoing>Flow_9</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_Record">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:exclusiveGateway id="Gateway_NextHeld_Join">
       <bpmn:documentation>Brings the paths together before the decision after it, so that decision only splits.</bpmn:documentation>
@@ -176,6 +178,9 @@ and re-cache the declaration">
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12</bpmn:incoming>
       <bpmn:outgoing>Flow_13</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_RePin">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:userTask id="Task_Review" name="Review what the
 substrate offers">
@@ -256,8 +261,7 @@ write its config">
       <bpmn:incoming>Flow_21</bpmn:incoming>
       <bpmn:outgoing>Flow_22</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Task_Summarise" name="Record how the walk ended,
-part by part">
+    <bpmn:serviceTask id="Task_Summarise" name="Record how each part of the walk ended">
       <bpmn:documentation>One line per offered part: materialised, referenced by choice, or referenced because a gate refused (and which). Nothing new is decided here; it is the account the visualizer and the next refresh read, written once rather than reconstructed from the loop.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-subscription" />
@@ -265,6 +269,9 @@ part by part">
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_23</bpmn:incoming>
       <bpmn:outgoing>Flow_24</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_Summarise">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Done" name="Subscribed, every part
 in a recorded state">
@@ -286,7 +293,7 @@ in a recorded state">
       <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
       <bpmn:incoming>SF_Bean_3</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Call_BeanClose" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+    <bpmn:callActivity id="Call_BeanClose" name="Close the bean" calledElement="Process_BeanClose">
       <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
     </bpmn:callActivity>
@@ -326,6 +333,7 @@ in a recorded state">
     <bpmn:sequenceFlow id="Flow_GW_BeanClosedHow" sourceRef="Call_BeanClose" targetRef="GW_BeanClosedHow"/>
     <bpmn:sequenceFlow name="subscribed" id="SF_Bean_4" sourceRef="GW_BeanClosedHow" targetRef="EndEvent_Done"/>
     <bpmn:sequenceFlow name="refused" id="SF_Bean_5" sourceRef="GW_BeanClosedHow" targetRef="EndEvent_Refused"/>
+    <bpmn:dataStoreReference id="DSR_corpus" name="Corpus" dataStoreRef="corpus"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_SubscribeKg">
     <bpmndi:BPMNPlane id="Plane_SubscribeKg" bpmnElement="Collaboration_SubscribeKg">
@@ -337,10 +345,7 @@ in a recorded state">
         <dc:Bounds x="160" y="60" width="4090" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true">
-        <dc:Bounds x="160" y="260" width="4090" height="200" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_2_di" bpmnElement="Lane_2" isHorizontal="true">
-        <dc:Bounds x="160" y="460" width="4090" height="204" />
+        <dc:Bounds x="160" y="260" width="4090" height="404" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Wanted_di" bpmnElement="StartEvent_Wanted">
         <dc:Bounds x="210" y="142" width="36" height="36" />
@@ -574,6 +579,13 @@ in a recorded state">
       <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5"><di:waypoint x="4165" y="585"/><di:waypoint x="4165" y="610"/><di:waypoint x="4280" y="610"/>
         <bpmndi:BPMNLabel><dc:Bounds x="4169" y="589" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_corpus" bpmnElement="DSR_corpus"><dc:Bounds x="2489" y="704" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="2543" y="720" width="90" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_Refuse" bpmnElement="DOA_Task_Refuse"><di:waypoint x="1095" y="610"/><di:waypoint x="1095" y="679"/><di:waypoint x="2514" y="679"/><di:waypoint x="2514" y="704"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_Record" bpmnElement="DOA_Task_Record"><di:waypoint x="1555" y="610"/><di:waypoint x="1555" y="679"/><di:waypoint x="2514" y="679"/><di:waypoint x="2514" y="704"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_RePin" bpmnElement="DOA_Task_RePin"><di:waypoint x="2065" y="610"/><di:waypoint x="2065" y="679"/><di:waypoint x="2514" y="679"/><di:waypoint x="2514" y="704"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_Summarise" bpmnElement="DOA_Task_Summarise"><di:waypoint x="3815" y="610"/><di:waypoint x="3815" y="679"/><di:waypoint x="2514" y="679"/><di:waypoint x="2514" y="704"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

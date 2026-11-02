@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: requirements-filing\n"
-"POT-Creation-Date: 2026-10-24T09:47:02.535Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.257Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -116,7 +116,7 @@ msgstr ""
 
 #: processes/sdlc/requirements-filing.bpmn:75
 #. Diagram label
-msgid "Mark superseded or retired record in place and update RequirementSet"
+msgid "Mark the record superseded or retired"
 msgstr ""
 
 #: processes/sdlc/requirements-filing.bpmn:76
@@ -139,14 +139,14 @@ msgstr ""
 msgid "promote"
 msgstr ""
 
-#: processes/sdlc/requirements-filing.bpmn:113
-#. Diagram label
-msgid "Record requirement-signoff attestation and set stage"
-msgstr ""
-
 #: processes/sdlc/requirements-filing.bpmn:62
 #. Diagram element documentation
 msgid "Record the last commit SHA touching docs/proposals/<slug>.md, execute `git mv docs/proposals/<slug>.md docs/requirements/<slug>.md` so git log --follow preserves the proposal's history, and record `proposedIn: { commit, path: \"docs/proposals/<slug>.md\" }` in the YAML front matter."
+msgstr ""
+
+#: processes/sdlc/requirements-filing.bpmn:113
+#. Diagram label
+msgid "Record the sign-off and set the stage"
 msgstr ""
 
 #: processes/sdlc/requirements-filing.bpmn:146
@@ -171,7 +171,7 @@ msgstr ""
 
 #: processes/sdlc/requirements-filing.bpmn:104
 #. Diagram label
-msgid "Review filed requirement, organisation, and sign off"
+msgid "Review the filed requirement, sign off"
 msgstr ""
 
 #: processes/sdlc/requirements-filing.bpmn:24
@@ -191,7 +191,7 @@ msgstr ""
 
 #: processes/sdlc/requirements-filing.bpmn:89
 #. Diagram label
-msgid "Run check:requirements schema, collision, and lineage gate"
+msgid "Run the requirements check"
 msgstr ""
 
 #: processes/sdlc/requirements-filing.bpmn:105

@@ -38,9 +38,6 @@ The three states (referenced / materialized / unknown) and the five gates are sc
         <bpmn:flowNodeRef>Task_AnswerGates</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Gates</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Fetch</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="Lane_2" name="Corpus: L1 source knowledge graph" partitionElementRef="corpus">
-        <bpmn:documentation>Whichever branch Gateway_Gates takes, this lane is where the outcome lands, and it is never silence: Task_Declare and Task_StayRef are the process's only two ends, both bean-noted, because a node with no recorded state is invalid rather than defaulted. A refusal is written down with the same weight as a success — the graph still knows the node exists either way.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_Declare</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_Done</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_StayRef</bpmn:flowNodeRef>
@@ -116,6 +113,9 @@ SOURCE LOSS. Not hypothetical. The one IRIS record this repository holds carries
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_6</bpmn:incoming>
       <bpmn:outgoing>Flow_7</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_Declare">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Done" name="Local copy exists, with its five answers">
       <bpmn:incoming>Flow_7</bpmn:incoming>
@@ -128,6 +128,9 @@ SOURCE LOSS. Not hypothetical. The one IRIS record this repository holds carries
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_No</bpmn:incoming>
       <bpmn:outgoing>Flow_8</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_StayRef">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Refused" name="Not materialized, and the graph says why">
       <bpmn:incoming>Flow_8</bpmn:incoming>
@@ -142,6 +145,7 @@ SOURCE LOSS. Not hypothetical. The one IRIS record this repository holds carries
     <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_Fetch" targetRef="Task_Declare"/>
     <bpmn:sequenceFlow id="Flow_7" sourceRef="Task_Declare" targetRef="EndEvent_Done"/>
     <bpmn:sequenceFlow id="Flow_8" sourceRef="Task_StayRef" targetRef="EndEvent_Refused"/>
+    <bpmn:dataStoreReference id="DSR_corpus" name="Corpus" dataStoreRef="corpus"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_MaterializeRemote">
     <bpmndi:BPMNPlane id="Plane_Process_MaterializeRemote" bpmnElement="Collaboration_Process_MaterializeRemote">
@@ -152,10 +156,7 @@ SOURCE LOSS. Not hypothetical. The one IRIS record this repository holds carries
         <dc:Bounds x="90" y="60" width="1188" height="150"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_1" bpmnElement="Lane_1" isHorizontal="true">
-        <dc:Bounds x="90" y="210" width="1188" height="200"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Lane_2" bpmnElement="Lane_2" isHorizontal="true">
-        <dc:Bounds x="90" y="410" width="1188" height="150"/>
+        <dc:Bounds x="90" y="210" width="1188" height="350"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_StartEvent_Asked" bpmnElement="StartEvent_Asked">
         <dc:Bounds x="140" y="117" width="36" height="36"/>
@@ -236,6 +237,11 @@ SOURCE LOSS. Not hypothetical. The one IRIS record this repository holds carries
         <di:waypoint x="700" y="485"/>
         <di:waypoint x="636" y="485"/>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_corpus" bpmnElement="DSR_corpus"><dc:Bounds x="890" y="600" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="944" y="616" width="90" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_Declare" bpmnElement="DOA_Task_Declare"><di:waypoint x="1070" y="545"/><di:waypoint x="1070" y="575"/><di:waypoint x="915" y="575"/><di:waypoint x="915" y="600"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_StayRef" bpmnElement="DOA_Task_StayRef"><di:waypoint x="760" y="545"/><di:waypoint x="760" y="575"/><di:waypoint x="915" y="575"/><di:waypoint x="915" y="600"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

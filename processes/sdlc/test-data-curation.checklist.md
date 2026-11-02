@@ -43,10 +43,10 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 
 - Routes to the fixed-set curation branch (`fixed`) or the generated-recipe synthesis branch (`generated`).
 - Call `workflow_complete` with `node: "GW_SetKind"` and `outcome` set to the label that holds:
-  - «fixed» → `Task_CurateFixed` (Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0)
+  - «fixed» → `Task_CurateFixed` (Author the fixed test data set)
   - «generated» → `Task_DetermineSpecialisation` (Determine the content type and its specialisation)
 
-### 3. Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0 (`Task_CurateFixed`)
+### 3. Author the fixed test data set (`Task_CurateFixed`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
@@ -75,7 +75,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Skill: `test-data-sets`.
 - What: BOUND BY THE CONTENT TYPE, so no `calledElement` is written here: each specialisation process belongs to the layer that owns its content type, and a lower layer cannot name a higher layer\'s process.
 - Record it: `workflow_complete` with `node: "Call_ContentTypeSpecialisation"`.
-- next: → `Task_WriteRecipe` (Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0)
+- next: → `Task_WriteRecipe` (Write the generated-data recipe)
 
 ### 6. SME review of cases or cohorts (`Call_SmeReview`)
 
@@ -90,7 +90,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 - Nothing to do or decide: the paths meet here and the engine passes through.
 - next: → `GW_MergeKind` (Data set written)
 
-### 7. Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0 (`Task_WriteRecipe`)
+### 7. Write the generated-data recipe (`Task_WriteRecipe`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.

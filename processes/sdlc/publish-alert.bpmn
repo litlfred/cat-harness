@@ -78,23 +78,41 @@
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_PublishAlert">
     <bpmndi:BPMNPlane id="Plane_Process_PublishAlert" bpmnElement="Collaboration_Process_PublishAlert">
-      <bpmndi:BPMNShape id="Shape_Participant_Process_PublishAlert" bpmnElement="Participant_Process_PublishAlert" isHorizontal="true"><dc:Bounds x="60" y="60" width="1460" height="340"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Lane_Ci" bpmnElement="Lane_Ci" isHorizontal="true"><dc:Bounds x="90" y="60" width="1430" height="170"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Lane_PubMgr" bpmnElement="Lane_PubMgr" isHorizontal="true"><dc:Bounds x="90" y="230" width="1430" height="170"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Start_Failed" bpmnElement="Start_Failed"><dc:Bounds x="227" y="127" width="36" height="36"/><bpmndi:BPMNLabel><dc:Bounds x="175" y="169" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_A_Label" bpmnElement="A_Label"><dc:Bounds x="380" y="105" width="170" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_GW_Open" bpmnElement="GW_Open" isMarkerVisible="true"><dc:Bounds x="660" y="120" width="50" height="50"/><bpmndi:BPMNLabel><dc:Bounds x="599.25" y="191.5" width="140" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_A_Open" bpmnElement="A_Open"><dc:Bounds x="820" y="70" width="170" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_A_Comment" bpmnElement="A_Comment"><dc:Bounds x="820" y="150" width="170" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_U_Triage" bpmnElement="U_Triage"><dc:Bounds x="1040" y="275" width="170" height="80"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_End_Triaged" bpmnElement="End_Triaged"><dc:Bounds x="1327" y="297" width="36" height="36"/><bpmndi:BPMNLabel><dc:Bounds x="1275" y="339" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Participant_Process_PublishAlert" bpmnElement="Participant_Process_PublishAlert" isHorizontal="true"><dc:Bounds x="60" y="60" width="1460" height="352" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Lane_Ci" bpmnElement="Lane_Ci" isHorizontal="true"><dc:Bounds x="90" y="60" width="1430" height="182" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Lane_PubMgr" bpmnElement="Lane_PubMgr" isHorizontal="true"><dc:Bounds x="90" y="242" width="1430" height="170" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Start_Failed" bpmnElement="Start_Failed"><dc:Bounds x="227" y="127" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="175" y="169" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_Label" bpmnElement="A_Label"><dc:Bounds x="380" y="105" width="170" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_Open" bpmnElement="GW_Open" isMarkerVisible="true"><dc:Bounds x="660" y="120" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="599.25" y="191.5" width="140" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_Open" bpmnElement="A_Open"><dc:Bounds x="820" y="72" width="170" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_Comment" bpmnElement="A_Comment"><dc:Bounds x="820" y="150" width="170" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_U_Triage" bpmnElement="U_Triage"><dc:Bounds x="1065" y="267" width="120" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Triaged" bpmnElement="End_Triaged"><dc:Bounds x="1327" y="309" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="1275" y="351" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_F_1" bpmnElement="F_1"><di:waypoint x="263" y="145"/><di:waypoint x="380" y="145"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_2" bpmnElement="F_2"><di:waypoint x="550" y="145"/><di:waypoint x="660" y="145"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_F_3" bpmnElement="F_3"><di:waypoint x="685" y="120"/><di:waypoint x="685" y="110"/><di:waypoint x="820" y="110"/><bpmndi:BPMNLabel><dc:Bounds x="691" y="114" width="130" height="20"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_3" bpmnElement="F_3">
+        <di:waypoint x="685" y="120" />
+        <di:waypoint x="685" y="110" />
+        <di:waypoint x="820" y="110" />
+        <bpmndi:BPMNLabel><dc:Bounds x="707.5" y="90" width="90" height="17" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_4" bpmnElement="F_4"><di:waypoint x="685" y="170"/><di:waypoint x="685" y="190"/><di:waypoint x="820" y="190"/><bpmndi:BPMNLabel><dc:Bounds x="691" y="194" width="130" height="20"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_F_5" bpmnElement="F_5"><di:waypoint x="905" y="150"/><di:waypoint x="905" y="315"/><di:waypoint x="1040" y="315"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_F_6" bpmnElement="F_6"><di:waypoint x="905" y="230"/><di:waypoint x="905" y="315"/><di:waypoint x="1040" y="315"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_F_7" bpmnElement="F_7"><di:waypoint x="1210" y="315"/><di:waypoint x="1327" y="315"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_5" bpmnElement="F_5">
+        <di:waypoint x="990" y="112" />
+        <di:waypoint x="1027.5" y="112" />
+        <di:waypoint x="1027.5" y="327" />
+        <di:waypoint x="1065" y="327" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_6" bpmnElement="F_6">
+        <di:waypoint x="990" y="190" />
+        <di:waypoint x="1027.5" y="190" />
+        <di:waypoint x="1027.5" y="327" />
+        <di:waypoint x="1065" y="327" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_7" bpmnElement="F_7">
+        <di:waypoint x="1185" y="327" />
+        <di:waypoint x="1327" y="327" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

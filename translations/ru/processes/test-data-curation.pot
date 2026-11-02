@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: test-data-curation\n"
-"POT-Creation-Date: 2026-11-01T10:45:43.152Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.265Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:76
 #. Diagram label
-msgid "Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0"
+msgid "Author the fixed test data set"
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:27
@@ -161,7 +161,7 @@ msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:96
 #. Diagram label
-msgid "SME review of cases or cohorts [sme-test-data-review]"
+msgid "SME review of cases or cohorts"
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:174
@@ -209,14 +209,14 @@ msgstr ""
 msgid "When the fixed data set exercises clinical/scientific decision support or an indicator definition, it must pass SME review (`Process_SmeTestDataReview`) before `review` is recorded and the set can stand as certification evidence."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:131
-#. Diagram label
-msgid "Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0"
-msgstr ""
-
 #: processes/sdlc/test-data-curation.bpmn:77
 #. Diagram element documentation
 msgid "Write the curated `records` and optional `citations` with `$schema: \"test-data-fixed/1.0.0\"` and `kind: \"fixed\"` into the instance's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema."
+msgstr ""
+
+#: processes/sdlc/test-data-curation.bpmn:131
+#. Diagram label
+msgid "Write the generated-data recipe"
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:193

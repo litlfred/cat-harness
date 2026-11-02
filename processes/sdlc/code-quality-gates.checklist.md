@@ -108,10 +108,10 @@ The gates a change must pass before it can merge: the jobs of the code-quality w
 
 ### Do all of — `Fork_RepositoryGates`
 
-- Work every branch; none is optional. Branches: → `GW_Join`, → `Task_QaPublish` (Publish QA results to qa-reports (NOT A GATE))
+- Work every branch; none is optional. Branches: → `GW_Join`, → `Task_QaPublish` (Publish QA results (not a gate))
 - The engine passes through this gateway itself; there is nothing to record here.
 
-### 9. Publish QA results to qa-reports (NOT A GATE) (`Task_QaPublish`)
+### 9. Publish QA results (not a gate) (`Task_QaPublish`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `qa-reports`.

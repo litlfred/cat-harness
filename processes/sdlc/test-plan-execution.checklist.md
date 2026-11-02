@@ -117,7 +117,7 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Skill: `qa-report-signing`.
 - What: `qa-report-signing.bpmn`, unchanged: it builds the signable run record, resolves the signer's reach, and routes the signature to the API or to a human release authority.
 - A subprocess (`Process_QaReportSigning`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `A_FileCertification` (File the signed certification [qa-attestations/v1])
+- next: → `A_FileCertification` (File the signed certification)
 
 ### 12. Close the bean (`Call_BeanClose`)
 
@@ -127,7 +127,7 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `GW_BeanClosedHow` (How did it end?)
 
-### 13. File the signed certification [qa-attestations/v1] (`A_FileCertification`)
+### 13. File the signed certification (`A_FileCertification`)
 
 - Who: the `Attestation service` lane (role `attestation-service`).
 - Skill: `test-plan-execution`.

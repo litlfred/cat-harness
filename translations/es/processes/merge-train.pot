@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-train\n"
-"POT-Creation-Date: 2026-10-29T13:02:26.628Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.235Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: processes/sdlc/merge-train.bpmn:153
 #. Diagram label
-msgid "Find members with no CI on their head [pr-checks-present]"
+msgid "Find members with no CI on their head"
 msgstr ""
 
 #: processes/sdlc/merge-train.bpmn:140
@@ -291,7 +291,7 @@ msgstr ""
 
 #: processes/sdlc/merge-train.bpmn:178
 #. Diagram label
-msgid "Run the gate set on the train [code-quality-gates]"
+msgid "Run the gate set on the train"
 msgstr ""
 
 #: processes/sdlc/merge-train.bpmn:51

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: copy-out-materialized\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.253Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.113Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/library/copy-out-materialized.bpmn:128
+#: processes/library/copy-out-materialized.bpmn:127
 #. Diagram element documentation
 msgid "`check:materialized-fixity`. Run against the SOURCE, not the copy — the copy is new content with no claim to verify, and the source is the thing a botched copy-out would have disturbed. A mismatch here means the copy-out was an edit in place wearing a copy's clothes, and it is the only signal that tells the two apart."
 msgstr ""
@@ -24,7 +24,7 @@ msgstr ""
 msgid "A read, and the only interaction this process has with the source. Its digest and `provenance` are carried forward: the digest so Task_VerifySourceUntouched has something to check against, and `provenance` so the copy can name what it came out of without re-deriving it."
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:136
+#: processes/library/copy-out-materialized.bpmn:135
 #. Diagram label
 msgid "A working copy, saying what it is a copy of"
 msgstr ""
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Edit it in place — it is your own content"
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:140
+#: processes/library/copy-out-materialized.bpmn:139
 #. Diagram label
 msgid "Edited where it lives — no copy needed"
 msgstr ""
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Land the bytes in the copier's own folio/"
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:147
+#: processes/library/copy-out-materialized.bpmn:146
 #. Diagram label
 msgid "no, or not declared"
 msgstr ""
@@ -91,7 +91,7 @@ msgstr ""
 
 #: processes/library/copy-out-materialized.bpmn:115
 #. Diagram label
-msgid "Record provenance.local — what this is a copy OF"
+msgid "Record what this is a copy of"
 msgstr ""
 
 #: processes/library/copy-out-materialized.bpmn:38
@@ -124,7 +124,7 @@ msgstr ""
 msgid "The ordinary path, drawn so the process does not read as though every edit needs a copy. Content in a writable directory is authored content and is edited where it lives; the copy-out is for somebody else's bytes, not for yours."
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:117
+#: processes/library/copy-out-materialized.bpmn:116
 #. Diagram element documentation
 msgid "The step that is easy to omit and impossible to reconstruct afterwards. `provenance` is a PAIR: `upstream` is the remote thing, `local` is the original in this repository. A copy-out writes `local`; it does not overwrite `upstream`, and it does not reuse `upstream` for a local value — that was one field until 2026-09-22, and by then 5 of the 9 who-iris item records were using it for a local one in violation of its own documentation. Without `local`, one rename later the copy is indistinguishable from original work and nothing downstream can repair it, because the information was never written down."
 msgstr ""
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Verification"
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:126
+#: processes/library/copy-out-materialized.bpmn:125
 #. Diagram label
 msgid "Verify the ORIGINAL still hashes to its digest"
 msgstr ""
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Where the copy lands, chosen by the owner 2026-09-22 over a scratch area. A scratch area lost because it makes the copy publishable by accident: a directory nobody declared is a directory nobody gates. The two writes here are ordered and both required — Task_Land puts the bytes somewhere, Task_RecordProvenance says what they are a copy OF, and a process that stopped after the first would produce a file indistinguishable from original work one rename later."
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:146
+#: processes/library/copy-out-materialized.bpmn:145
 #. Diagram label
 msgid "yes — read-only"
 msgstr ""

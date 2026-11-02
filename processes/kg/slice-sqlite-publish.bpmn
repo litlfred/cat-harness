@@ -197,29 +197,29 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Need" bpmnElement="Start_Need">
         <dc:Bounds x="122" y="112" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="120.68" y="147.5" width="90" height="89" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="120.68" y="147.5" width="90" height="89" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Define" bpmnElement="A_Define">
-        <dc:Bounds x="490" y="90" width="150" height="80" />
+        <dc:Bounds x="505" y="72" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Measure" bpmnElement="A_Measure">
-        <dc:Bounds x="860" y="90" width="150" height="80" />
+        <dc:Bounds x="875" y="72" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Budget" bpmnElement="GW_Budget" isMarkerVisible="true">
         <dc:Bounds x="1090" y="105" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1047.5" y="65" width="135" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1047.5" y="65" width="135" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Report" bpmnElement="A_Report">
-        <dc:Bounds x="1040" y="190" width="150" height="70" />
+        <dc:Bounds x="1055" y="165" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Stopped" bpmnElement="End_Stopped">
         <dc:Bounds x="2177" y="268" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Wire" bpmnElement="A_Wire">
-        <dc:Bounds x="1220" y="90" width="150" height="80" />
+        <dc:Bounds x="1235" y="72" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Check" bpmnElement="A_Check">
-        <dc:Bounds x="1220" y="390" width="180" height="80" />
+        <dc:Bounds x="1250" y="370" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Green" bpmnElement="GW_Green" isMarkerVisible="true">
         <dc:Bounds x="1480" y="405" width="50" height="50" />
@@ -230,46 +230,57 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
         
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Deploy" bpmnElement="A_Deploy">
-        <dc:Bounds x="1610" y="389" width="180" height="82" />
+        <dc:Bounds x="1640" y="370" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Verify" bpmnElement="A_Verify">
-        <dc:Bounds x="1625" y="90" width="150" height="80" />
+        <dc:Bounds x="1640" y="72" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Shipped" bpmnElement="End_Shipped">
-        <dc:Bounds x="2177" y="68" width="36" height="36" />
+        <dc:Bounds x="2177" y="72" width="36" height="36" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Edge_Flow_0" bpmnElement="Flow_0"><di:waypoint x="158" y="130"/><di:waypoint x="210" y="130"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_0" bpmnElement="Flow_0">
+        <di:waypoint x="158" y="130" />
+        <di:waypoint x="210" y="130" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_1" bpmnElement="Flow_1">
-        <di:waypoint x="640" y="130"/>
-        <di:waypoint x="700" y="130"/>
+        <di:waypoint x="625" y="132" />
+        <di:waypoint x="875" y="132" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_2" bpmnElement="Flow_2">
-        <di:waypoint x="1010" y="130" />
+        <di:waypoint x="995" y="132" />
+        <di:waypoint x="1042.5" y="132" />
+        <di:waypoint x="1042.5" y="130" />
         <di:waypoint x="1090" y="130" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_3" bpmnElement="Flow_3">
         <di:waypoint x="1140" y="130" />
-        <di:waypoint x="1220" y="130" />
+        <di:waypoint x="1187.5" y="130" />
+        <di:waypoint x="1187.5" y="132" />
+        <di:waypoint x="1235" y="132" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1146" y="109" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
         <di:waypoint x="1115" y="155" />
         <di:waypoint x="1115" y="190" />
         
-        <bpmndi:BPMNLabel><dc:Bounds x="1119" y="164" width="90" height="17" /></bpmndi:BPMNLabel>
-        
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5"><di:waypoint x="1115" y="260"/><di:waypoint x="1115" y="325"/><di:waypoint x="1917" y="325"/><di:waypoint x="1917" y="170"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
+        <di:waypoint x="1115" y="260" />
+        <di:waypoint x="1115" y="325" />
+        <di:waypoint x="1917" y="325" />
+        <di:waypoint x="1917" y="170" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
         <di:waypoint x="1295" y="170" />
         <di:waypoint x="1295" y="390" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_7" bpmnElement="Flow_7">
-        <di:waypoint x="1400" y="430" />
+        <di:waypoint x="1370" y="430" />
         <di:waypoint x="1480" y="430" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_8" bpmnElement="Flow_8">
         <di:waypoint x="1530" y="430" />
-        <di:waypoint x="1610" y="430" />
+        <di:waypoint x="1640" y="430" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_9" bpmnElement="Flow_9"><di:waypoint x="1530" y="430"/><di:waypoint x="1817" y="430"/><di:waypoint x="1817" y="130"/><di:waypoint x="1837" y="130"/>
         <bpmndi:BPMNLabel><dc:Bounds x="1821" y="271.5" width="90" height="17" /></bpmndi:BPMNLabel>
@@ -278,23 +289,40 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
         <di:waypoint x="1700" y="389" />
         <di:waypoint x="1700" y="170" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_11" bpmnElement="Flow_11"><di:waypoint x="1775" y="130"/><di:waypoint x="1837" y="130"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen"><dc:Bounds x="210" y="90" width="120" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1"><di:waypoint x="410" y="130"/><di:waypoint x="490" y="130"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_11" bpmnElement="Flow_11">
+        <di:waypoint x="1760" y="132" />
+        <di:waypoint x="1798.5" y="132" />
+        <di:waypoint x="1798.5" y="130" />
+        <di:waypoint x="1837" y="130" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen"><dc:Bounds x="210" y="72" width="120" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1">
+        <di:waypoint x="410" y="130" />
+        <di:waypoint x="457.5" y="130" />
+        <di:waypoint x="457.5" y="132" />
+        <di:waypoint x="505" y="132" />
+        <bpmndi:BPMNLabel><dc:Bounds x="416" y="110" width="90" height="17" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="360" y="105" width="50" height="50" />
         
       <bpmndi:BPMNLabel><dc:Bounds x="340" y="66" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours"><dc:Bounds x="367" y="185" width="36" height="36" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2"><di:waypoint x="330" y="130"/><di:waypoint x="360" y="130"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2">
+        <di:waypoint x="330" y="130" />
+        <di:waypoint x="360" y="130" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SF_Bean_3_di" bpmnElement="SF_Bean_3"><di:waypoint x="385" y="155"/><di:waypoint x="385" y="185"/>
         <bpmndi:BPMNLabel><dc:Bounds x="389" y="161" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4"><di:waypoint x="2062" y="155"/><di:waypoint x="2062" y="186"/><di:waypoint x="2177" y="186"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Shape_GW_BeanClosedHow" bpmnElement="GW_BeanClosedHow" isMarkerVisible="true"><dc:Bounds x="2037" y="105" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1971.08" y="170.5" width="90" height="35" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_BeanClosedHow" bpmnElement="GW_BeanClosedHow" isMarkerVisible="true"><dc:Bounds x="2037" y="105" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1971.08" y="170.5" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Call_BeanClose_2_di" bpmnElement="Call_BeanClose_2"><dc:Bounds x="1837" y="90" width="160" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5"><di:waypoint x="2062" y="105"/><di:waypoint x="2062" y="86"/><di:waypoint x="2177" y="86"/>
+      <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5">
+        <di:waypoint x="2062" y="105" />
+        <di:waypoint x="2062" y="86" />
+        <di:waypoint x="2177" y="86" />
         <bpmndi:BPMNLabel><dc:Bounds x="2074.5" y="65" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SF_Bean_6_di" bpmnElement="SF_Bean_6"><di:waypoint x="2062" y="155"/><di:waypoint x="2062" y="286"/><di:waypoint x="2177" y="286"/>

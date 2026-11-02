@@ -57,7 +57,7 @@ what this step records here is a note that the plan now exists.</bpmn:documentat
         <cat-harness.processes:fulfilment kinds="person" reason="A sign-off on a requirements document is the requester's decision about their own requirements (issue #2405 FR-011): `approved` and `accepted` need a HUMAN sign-off, which `check:requirements` refuses without, so an agent may not take this step on their behalf. An agent records the decision in A_RecordSignoff; it does not make it."/>
       </bpmn:extensionElements>
     </bpmn:callActivity>
-    <bpmn:callActivity id="A_RecordSignoff" name="Record the sign-off as a&#10;requirement-signoff attestation" calledElement="GT_RecordSignoff">
+    <bpmn:callActivity id="A_RecordSignoff" name="Record the sign-off attestation" calledElement="GT_RecordSignoff">
     </bpmn:callActivity>
     <bpmn:exclusiveGateway id="GW_SignoffRecorded" name="Sign-off on the record?">
       <bpmn:documentation>Computed, never chosen: `decisions/requirement-signoff-recorded.dmn` reads `signoffRecorded` and `signoffOutcome`, which `check:requirements` prints from the set's recorded sign-offs (its signoff-facts flag). `missing` loops back to the record; `proceed` is an approval (as written or amended); `stop` is a recorded reject, defer or cancel.</bpmn:documentation>
@@ -91,7 +91,7 @@ result recorded in the bean before the first edit.</bpmn:documentation>
     <bpmn:endEvent id="End_Process_CRDM_Signoff" name="Phase complete"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Signoff_1" sourceRef="Start_Process_CRDM_Signoff" targetRef="A_CreateBeans"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Signoff_2" sourceRef="A_CreateBeans" targetRef="BA_Signoff"/>
-    <bpmn:serviceTask id="A_OfferKg" name="Offer the knowledge-graph&#10;destinations for the agreed set">
+    <bpmn:serviceTask id="A_OfferKg" name="Offer KG destinations for the agreed set">
       <bpmn:documentation>THE STEP THAT WAS MISSING. Requirements were elicited, agreed and signed off, and then existed as an issue and a conversation — so the output of the process that exists to produce durable requirements was the one thing the knowledge graph never learned.
 
 ONE question for the SET, not one per requirement: a six-phase run can agree many, and asking six times is the same failure as a form that re-asks what it was already told.
@@ -123,7 +123,7 @@ The default creates NOTHING. An agent that decides on its own that a requirement
       <bpmn:outgoing>SF_Kg_3</bpmn:outgoing>
       <bpmn:outgoing>SF_Kg_None</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:serviceTask id="A_RecordKg" name="Run placement, and raise&#10;a bean for the authoring">
+    <bpmn:serviceTask id="A_RecordKg" name="Run placement, file a bean">
       <bpmn:documentation>The offer produces a DECISION, not a node. `placement` then decides instance, graph and node kind — it is the step that catches a hardcoded path or a literal naming one folio — and the authoring itself becomes a bean, because work here is a bean before it is a file.
 
 `op="note"` and not `create`, for the reason `A_CreateBeans` above states: the engine has no `create` op — it claims, notes and resolves the instance's OWN bean. The agent mints the authoring bean itself with `beans create`, running the exact-title existence check first, and what this step records is a note that the decision was taken.</bpmn:documentation>
@@ -149,44 +149,46 @@ The default creates NOTHING. An agent that decides on its own that a requirement
   <bpmndi:BPMNDiagram id="Diagram_Process_CRDM_Signoff">
     <bpmndi:BPMNPlane id="Plane_Process_CRDM_Signoff" bpmnElement="Collaboration_Process_CRDM_Signoff">
       <bpmndi:BPMNShape id="Shape_Participant_Process_CRDM_Signoff" bpmnElement="Participant_Process_CRDM_Signoff" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1810" height="422.5" />
+        <dc:Bounds x="160" y="80" width="1810" height="427" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BA_Process_CRDM_Signoff" bpmnElement="Lane_BA" isHorizontal="true">
         <dc:Bounds x="190" y="80" width="1780" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent_Process_CRDM_Signoff" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="250" width="1780" height="252.5" />
+        <dc:Bounds x="190" y="250" width="1780" height="257" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_CRDM_Signoff" bpmnElement="Start_Process_CRDM_Signoff">
         <dc:Bounds x="310" y="317" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_CreateBeans" bpmnElement="A_CreateBeans">
-        <dc:Bounds x="510" y="295" width="140" height="80" />
+        <dc:Bounds x="520" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_BA_Signoff" bpmnElement="BA_Signoff">
-        <dc:Bounds x="710" y="125" width="140" height="80" />
+        <dc:Bounds x="720" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_OfferKg" bpmnElement="A_OfferKg">
-        <dc:Bounds x="930" y="275" width="140" height="120" />
+        <dc:Bounds x="940" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_BA_ChooseKg" bpmnElement="BA_ChooseKg">
-        <dc:Bounds x="1110" y="125" width="180" height="80" />
+        <dc:Bounds x="1140" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_KgChosen" bpmnElement="GW_KgChosen" isMarkerVisible="true">
         <dc:Bounds x="1340" y="305" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_RecordKg" bpmnElement="A_RecordKg">
-        <dc:Bounds x="1430" y="360" width="180" height="120" />
+        <dc:Bounds x="1460" y="360" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Kg_1" bpmnElement="SF_Kg_1">
-        <di:waypoint x="1070" y="335" />
-        <di:waypoint x="1200" y="335" />
-        <di:waypoint x="1200" y="205" />
+        <di:waypoint x="1060" y="335" />
+        <di:waypoint x="1100" y="335" />
+        <di:waypoint x="1100" y="165" />
+        <di:waypoint x="1140" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Kg_2" bpmnElement="SF_Kg_2">
-        <di:waypoint x="1290" y="165" />
-        <di:waypoint x="1365" y="165" />
-        <di:waypoint x="1365" y="305" />
+        <di:waypoint x="1260" y="165" />
+        <di:waypoint x="1300" y="165" />
+        <di:waypoint x="1300" y="330" />
+        <di:waypoint x="1340" y="330" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Kg_3" bpmnElement="SF_Kg_3">
         <di:waypoint x="1390" y="330" />
@@ -194,57 +196,59 @@ The default creates NOTHING. An agent that decides on its own that a requirement
         <di:waypoint x="1520" y="360" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Kg_4" bpmnElement="SF_Kg_4">
-        <di:waypoint x="1610" y="420" />
-        <di:waypoint x="1720" y="420" />
-        <di:waypoint x="1720" y="375" />
+        <di:waypoint x="1580" y="420" />
+        <di:waypoint x="1620" y="420" />
+        <di:waypoint x="1620" y="335" />
+        <di:waypoint x="1660" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Kg_None" bpmnElement="SF_Kg_None">
-        <di:waypoint x="1365" y="305" />
-        <di:waypoint x="1365" y="270" />
-        <di:waypoint x="1650" y="270" />
-        <di:waypoint x="1650" y="295" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1271" y="252.25" width="90" height="53" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1390" y="330" />
+        <di:waypoint x="1525" y="330" />
+        <di:waypoint x="1525" y="335" />
+        <di:waypoint x="1660" y="335" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1529" y="278" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Shape_A_AnnounceBranch" bpmnElement="A_AnnounceBranch">
-        <dc:Bounds x="1650" y="295" width="140" height="80" />
+        <dc:Bounds x="1660" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_CRDM_Signoff" bpmnElement="End_Process_CRDM_Signoff">
         <dc:Bounds x="1850" y="317" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Signoff_1" bpmnElement="SF_Process_CRDM_Signoff_1">
         <di:waypoint x="346" y="335" />
-        <di:waypoint x="510" y="335" />
+        <di:waypoint x="520" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Signoff_2" bpmnElement="SF_Process_CRDM_Signoff_2">
-        <di:waypoint x="650" y="335" />
+        <di:waypoint x="640" y="335" />
         <di:waypoint x="680" y="335" />
         <di:waypoint x="680" y="165" />
-        <di:waypoint x="710" y="165" />
+        <di:waypoint x="720" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Signoff_3" bpmnElement="SF_Process_CRDM_Signoff_3">
         <di:waypoint x="780" y="205" />
         <di:waypoint x="780" y="379.5" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Shape_A_RecordSignoff" bpmnElement="A_RecordSignoff">
-        <dc:Bounds x="690" y="379.5" width="180" height="111" />
+        <dc:Bounds x="720" y="375" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_SignoffRecorded" bpmnElement="GW_SignoffRecorded" isMarkerVisible="true">
         <dc:Bounds x="890" y="410" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="918.01" y="459.5" width="90" height="35" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="918.01" y="459.5" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_SignoffStopped" bpmnElement="End_SignoffStopped">
         <dc:Bounds x="980" y="417" width="36" height="36" />
         
       <bpmndi:BPMNLabel><dc:Bounds x="1020" y="399" width="135" height="72" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Signoff_Gate" bpmnElement="SF_Signoff_Gate">
-        <di:waypoint x="870" y="435" />
+        <di:waypoint x="840" y="435" />
         <di:waypoint x="890" y="435" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Signoff_Proceed" bpmnElement="SF_Signoff_Proceed">
-        <di:waypoint x="915" y="410" />
-        <di:waypoint x="915" y="335" />
-        <di:waypoint x="930" y="335" />
-        <bpmndi:BPMNLabel><dc:Bounds x="821" y="363.5" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="940" y="435" />
+        <di:waypoint x="940" y="435" />
+        <di:waypoint x="940" y="335" />
+        <di:waypoint x="940" y="335" />
+        <bpmndi:BPMNLabel><dc:Bounds x="846" y="376" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Signoff_Stop" bpmnElement="SF_Signoff_Stop">
         <di:waypoint x="940" y="435" />
@@ -257,7 +261,7 @@ The default creates NOTHING. An agent that decides on its own that a requirement
         <di:waypoint x="740" y="490.5" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Signoff_4" bpmnElement="SF_Process_CRDM_Signoff_4">
-        <di:waypoint x="1790" y="335" />
+        <di:waypoint x="1780" y="335" />
         <di:waypoint x="1850" y="335" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

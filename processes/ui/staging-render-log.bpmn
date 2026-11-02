@@ -98,10 +98,10 @@ history intact"/>
   <bpmndi:BPMNDiagram id="Diagram_Process_RenderLog">
     <bpmndi:BPMNPlane id="Plane_Process_RenderLog" bpmnElement="Collaboration_Process_RenderLog">
       <bpmndi:BPMNShape id="Shape_Participant_Process_RenderLog" bpmnElement="Participant_Process_RenderLog" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1466" height="432" />
+        <dc:Bounds x="160" y="80" width="1466" height="452" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Pipeline_Process_RenderLog" bpmnElement="Lane_Pipeline" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1436" height="392" />
+        <dc:Bounds x="190" y="80" width="1436" height="412" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_RenderLog" bpmnElement="Start_Process_RenderLog">
         <dc:Bounds x="240" y="257" width="36" height="36" />
@@ -109,28 +109,28 @@ history intact"/>
       <bpmndi:BPMNShape id="Shape_GW_What" bpmnElement="GW_What" isMarkerVisible="true">
         <dc:Bounds x="360" y="250" width="50" height="50" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="414" y="304" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="340" y="304" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_LogRendered" bpmnElement="A_LogRendered">
         <dc:Bounds x="520" y="120" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Preflight" bpmnElement="A_Preflight">
-        <dc:Bounds x="520" y="235" width="140" height="80" />
+        <dc:Bounds x="530" y="215" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Live" bpmnElement="GW_Live" isMarkerVisible="true">
         <dc:Bounds x="720" y="250" width="50" height="50" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="774" y="257" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="700" y="304" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_LogRetained" bpmnElement="A_LogRetained">
-        <dc:Bounds x="840" y="150" width="180" height="80" />
+        <dc:Bounds x="870" y="130" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_LogRemoved" bpmnElement="A_LogRemoved">
-        <dc:Bounds x="860" y="300" width="140" height="80" />
+        <dc:Bounds x="870" y="280" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Remove" bpmnElement="A_Remove">
-        <dc:Bounds x="1060" y="300" width="140" height="80" />
+        <dc:Bounds x="1070" y="280" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_LogRestored" bpmnElement="A_LogRestored">
-        <dc:Bounds x="520" y="380" width="140" height="80" />
+        <dc:Bounds x="530" y="360" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_RenderLog" bpmnElement="End_Process_RenderLog">
         <dc:Bounds x="1420" y="257" width="36" height="36" />
@@ -148,32 +148,35 @@ history intact"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_RenderLog_3" bpmnElement="SF_Process_RenderLog_3">
         <di:waypoint x="410" y="275" />
-        <di:waypoint x="520" y="275" />
+        <di:waypoint x="530" y="275" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_RenderLog_4" bpmnElement="SF_Process_RenderLog_4">
-        <di:waypoint x="385" y="300" />
-        <di:waypoint x="385" y="420" />
-        <di:waypoint x="520" y="420" />
-        <bpmndi:BPMNLabel><dc:Bounds x="291" y="333" width="90" height="54" /></bpmndi:BPMNLabel>
+        <di:waypoint x="410" y="275" />
+        <di:waypoint x="470" y="275" />
+        <di:waypoint x="470" y="420" />
+        <di:waypoint x="530" y="420" />
+        <bpmndi:BPMNLabel><dc:Bounds x="376" y="356.75" width="90" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_RenderLog_5" bpmnElement="SF_Process_RenderLog_5">
-        <di:waypoint x="660" y="275" />
+        <di:waypoint x="650" y="275" />
         <di:waypoint x="720" y="275" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_RenderLog_6" bpmnElement="SF_Process_RenderLog_6">
-        <di:waypoint x="745" y="250" />
-        <di:waypoint x="745" y="190" />
-        <di:waypoint x="840" y="190" />
-        <bpmndi:BPMNLabel><dc:Bounds x="749" y="211" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="770" y="275" />
+        <di:waypoint x="820" y="275" />
+        <di:waypoint x="820" y="190" />
+        <di:waypoint x="870" y="190" />
+        <bpmndi:BPMNLabel><dc:Bounds x="726" y="223.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_RenderLog_7" bpmnElement="SF_Process_RenderLog_7">
-        <di:waypoint x="745" y="300" />
-        <di:waypoint x="745" y="340" />
-        <di:waypoint x="860" y="340" />
+        <di:waypoint x="770" y="275" />
+        <di:waypoint x="820" y="275" />
+        <di:waypoint x="820" y="340" />
+        <di:waypoint x="870" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_RenderLog_8" bpmnElement="SF_Process_RenderLog_8">
-        <di:waypoint x="1000" y="340" />
-        <di:waypoint x="1060" y="340" />
+        <di:waypoint x="990" y="340" />
+        <di:waypoint x="1070" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_RenderLog_9" bpmnElement="SF_Process_RenderLog_9">
         <di:waypoint x="660" y="160" />
@@ -181,20 +184,21 @@ history intact"/>
         <di:waypoint x="1438" y="257" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_RenderLog_10" bpmnElement="SF_Process_RenderLog_10">
-        <di:waypoint x="1020" y="190" />
-        <di:waypoint x="1210" y="190" />
-        <di:waypoint x="1210" y="275" />
+        <di:waypoint x="990" y="190" />
+        <di:waypoint x="1205" y="190" />
+        <di:waypoint x="1205" y="275" />
         <di:waypoint x="1420" y="275" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_RenderLog_11" bpmnElement="SF_Process_RenderLog_11">
-        <di:waypoint x="1200" y="340" />
-        <di:waypoint x="1438" y="340" />
-        <di:waypoint x="1438" y="293" />
+        <di:waypoint x="1190" y="340" />
+        <di:waypoint x="1305" y="340" />
+        <di:waypoint x="1305" y="275" />
+        <di:waypoint x="1420" y="275" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_RenderLog_12" bpmnElement="SF_Process_RenderLog_12">
-        <di:waypoint x="660" y="420" />
-        <di:waypoint x="1040" y="420" />
-        <di:waypoint x="1040" y="275" />
+        <di:waypoint x="650" y="420" />
+        <di:waypoint x="1035" y="420" />
+        <di:waypoint x="1035" y="275" />
         <di:waypoint x="1420" y="275" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
