@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_252 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_254 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -207,7 +207,7 @@ _252 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`crdm-requirements-template`](skills/sdlc/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
 | [`crdm-requirements-workflow`](skills/sdlc/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
 
-**`skills/sdlc/sdlc-core/`** (76)
+**`skills/sdlc/sdlc-core/`** (78)
 
 | Skill | What it is for |
 |---|---|
@@ -245,6 +245,7 @@ _252 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`integration-watcher`](skills/sdlc/sdlc-core/integration-watcher.md) | Abstract parent skill for domain-specific **integration watchers**. |
 | [`issue-working`](skills/sdlc/sdlc-core/issue-working.md) | Working a tracked issue — announce the branch when you create it rather than when you finish, and re-check the issue for new AND edited comments while you work. |
 | [`merge-conflict-patterns`](skills/sdlc/sdlc-core/merge-conflict-patterns.md) | Merge the base branch in and resolve, without a person, only the conflicts a DECLARED pattern covers — generated files, generated README regions, QA sidecars — then prove the result with the gate set. |
+| [`merge-manager-watcher`](skills/sdlc/sdlc-core/merge-manager-watcher.md) | The merge manager agent's watch loop: what wakes it, how often it looks, how it tells whether it is the active merge manager, what it reads each time, which process each reading sends it to (merge… |
 | [`merge-queue`](skills/sdlc/sdlc-core/merge-queue.md) | Order the ready PRs and land them as a train: read each PR's live facts, let the reprioritisation table place it, merge the members together, run the gate set on the combination, and on red… |
 | [`merge-to-main`](skills/sdlc/sdlc-core/merge-to-main.md) | Merging to `main` is its own step with its own gate: the `merge-to-main` sub-process, which every process that lands work CALLS rather than inlines. |
 | [`minimal-change`](skills/sdlc/sdlc-core/minimal-change.md) | Three rules for any edit to a repository: make the smallest change that does the job and keep the diff minimal; read the repository's code-style files before writing code; and write Markdown without… |
@@ -268,6 +269,7 @@ _252 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`release-lifecycle`](skills/sdlc/sdlc-core/release-lifecycle.md) | Governs the release lifecycle: semver policy, draft/named releases, changelogs, release gating, and the relationship between feature branches, PRs, beans, and releases. |
 | [`rendered-impact`](skills/sdlc/sdlc-core/rendered-impact.md) | The list of rendered files a Change Set alters, and how a reviewer approves against it. |
 | [`rendered-verification`](skills/sdlc/sdlc-core/rendered-verification.md) | Confirm a UI change by LOOKING at it in a browser and sending the screenshots to the author, rather than describing it. |
+| [`saturation-meta-merge`](skills/sdlc/sdlc-core/saturation-meta-merge.md) | When the CI runners have been full for a long time, drain a repository's ready PRs in one step: hold the swarm, cancel the queued PR runs, stack every admitted PR onto one meta-merge branch with… |
 | [`secrets`](skills/sdlc/sdlc-core/secrets.md) | Adding, rotating and revoking the credentials the harness's automation needs, one mechanism at a time, with the exact GitHub UI path for each step. |
 | [`session-intent`](skills/sdlc/sdlc-core/session-intent.md) | Session-start intent declaration + session-end results recording, against the goal-scoped master ledger and queue file. |
 | [`signing`](skills/sdlc/sdlc-core/signing.md) | What any signature in the harness must answer, whatever it covers: who signs, what bytes are signed, which signature suites are accepted and who decides that, where the key is kept, which route… |
