@@ -262,8 +262,8 @@ in the SKOS glossary, read from the source documents. So:
 - Never write a term, label, definition, `focus` or relationship into a
   glossary from a model someone authored in Archi. An element with no term
   is a term to add from the source's own words, not from the box.
-- The glossary may drive the model (`archimate-from-glossary`, in
-  folio-assistant-core): names, documentation and relationships flow from
+- The glossary may drive the model (`archimate-from-glossary`, a content
+  layer's Tool): names, documentation and relationships flow from
   the terms into the model, and Archi keeps the layout.
 - The term pages' "depicted by" links read `skosConcept` on each build and
   write nothing into the glossary, so they are allowed.
