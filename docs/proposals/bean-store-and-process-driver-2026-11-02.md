@@ -17,7 +17,7 @@ summary: >-
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
-**Status:** proposal, nothing built. Questions for the owner are in §7.
+**Status:** proposal, nothing built. Q1 ruled (instances only); Q2 to Q5 open in §7.
 Issue [#991](https://github.com/litlfred/cat-harness/issues/991), bean
 `folio-assistant-bsd1`. It builds on the work-plan store contract
 ([`work-plan-store`](../../skills/sdlc/sdlc-core/work-plan-store.md), Q-DS-1 A
@@ -211,7 +211,7 @@ provide, each with its guarantee:
 | `update(id, change, ifMatch)` | refused when `ifMatch` is stale; **never loses a concurrent write** |
 | `note(id, text, by)` | appended, never rewritten |
 | `history(id)` | every change, oldest first: when, by whom, what, and from which process step |
-| `link(id, instance, node)` | the bean's current position (§4.4) |
+| `positions(id)`, `beansAt(process, node)` | where a bean is, read from the instances (§4.4) |
 
 Keep the six responsibilities and phrase each against the operations.
 "Lose nothing to a race" becomes "`update` with a stale `ifMatch` is refused,
@@ -243,23 +243,24 @@ Put a `WorkPlanStore` interface in cat-harness-tools with the operations of
 (`deployment-descriptions.md`), the same way other Tools are chosen. This
 fits the platform-boundary rule: different code, so an adapter.
 
-### 4.4 A bean knows where it is (N5, N6)
+### 4.4 Where a bean is: read from the instances (N5, N6)
 
-Add an optional, engine-written `process` block to the bean schema:
+**Ruled 2026-11-02, Q-BSD-1 B: instances only.** A bean's position lives only
+in the workflow instances that name it; the bean file gets no position
+field, so there is one source of truth and nothing to keep in sync.
 
-```yaml
-process:
-  - instance: code-change-review--bean-1j3q
-    process: Process_CodeChangeReview
-    node: Task_RunCI
-    since: 2026-10-03T13:33:00Z
-```
+The work-plan store already holds `workflow-state` beside `bean-defs`, so the
+lookup is a **store operation**, not a scan each caller writes:
 
-The instance stays the source of truth. The block is a projection the engine
-writes on every `workflow_start` and `workflow_complete`, so `list(filter:
-process, step)` works on any Tool without scanning instances. Ordinary tags
-(`process:code-change-review`) were considered and rejected as the only
-mechanism: they cannot hold the instance or the time.
+| Operation | Returns |
+|---|---|
+| `positions(beanId)` | every instance naming the bean: process, node(s), status, last move |
+| `beansAt(process, node?)` | the beans with a token at that step |
+
+The git Tool answers both by reading `beans/workflows/` (what the
+beans-by-process pages already do, cat-harness-tools#1414); a server Tool can
+index them. Process and step tags on the bean (`process:code-change-review`)
+stay optional labels for people, never the position.
 
 `TaskContext` gains the bean itself (title, status, body, links, position),
 read through `get`, not just its id.
@@ -272,7 +273,7 @@ hands a **work order** to an `agent-launch` Tool:
 
 | Field | From |
 |---|---|
-| bean | `get(bean)`, with its `process` block |
+| bean | `get(bean)`, with `positions(bean)` |
 | instance, node | the token |
 | role, skills, conventions | `TaskContext` |
 | store | which work-plan Tool to use, and how to reach it |
@@ -349,7 +350,7 @@ settings, and no new runner:
 | 1 | Rewrite `work-plan-store.md` as operations (§4.1); add the Tool pages (§4.2), git commands moved there | cat-harness | owner OK on §7 |
 | 2 | Conformance tests for the operations, run against the git Tool | cat-harness-tools | 1 |
 | 3 | `WorkPlanStore` interface; `applyWorkPlanOp` through it (§4.3) | cat-harness-tools | 2 |
-| 4 | `process` block in the bean schema, written by the engine; bean in `TaskContext` (§4.4) | cat-harness + tools | 3 |
+| 4 | `positions` and `beansAt` store operations over the instances; bean in `TaskContext` (§4.4) | tools | 3 |
 | 5 | `history(id)` and the event model for the git Tool; timeline on `processed-bean/<bean>/` (§4.6) | tools | 3 |
 | 6 | Skills rewritten to name operations; `check:store-tool-neutral` (§4.2) | cat-harness | 1 |
 | 7 | `Task_DispatchAgent` and the first `agent-launch` Tool (§4.5) | cat-harness + tools | 4 |
@@ -378,7 +379,7 @@ would pay for; steps 1 to 8 are needed first and need neither.
 
 | Q | Question | Options (recommended first) |
 |---|---|---|
-| Q1 | Where does a bean's position live? | **A** engine-written `process` block on the bean, instance stays the truth · B only in instances, found by scanning · C only on the bean |
+| Q1 | Where does a bean's position live? | **Ruled B (2026-11-02): only in the instances**, read through store operations (§4.4) |
 | Q2 | How is the store Tool chosen? | **A** by deployment description, per checkout · B per call, by `selection` · C fixed per harness |
 | Q3 | First `agent-launch` Tool? | **A** `beans-serve` `sendAgentMessage` (exists) · B Claude Code session API · C Gemini through Antigravity · D local CLI agent |
 | Q4 | Where does history come from for the git Tool? | **A** derived from git log plus instance histories, no migration · B a new events file per bean on the branch |
