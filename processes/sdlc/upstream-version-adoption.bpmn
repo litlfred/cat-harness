@@ -85,8 +85,10 @@ A red gate is EVIDENCE, not an exit. It does not end the process and it does not
       <bpmn:documentation>Staging URL, gate results and the impact analysis, on the PR. Enough for the reviewer to answer without opening anything else.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="delivery-summary"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
+      <bpmn:dataOutputAssociation id="DOA_Beans_A_Evidence">
+        <bpmn:targetRef>DSR_beans_A_Evidence</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:userTask id="R_Review" name="Review the MVP against&#10;what we bind to">
       <bpmn:documentation>A narrower question than "is the new version good": does everything in `binds` still hold, checked against the deployed page.
@@ -166,6 +168,7 @@ Either way the decision is written down before the process ends, and the bean is
     <bpmn:sequenceFlow id="SF_Bean_2" sourceRef="Call_BeanOpen" targetRef="GW_BeanYours"/>
     <bpmn:sequenceFlow id="SF_Bean_3" name="not yours" sourceRef="GW_BeanYours" targetRef="End_BeanNotYours"/>
     <bpmn:sequenceFlow id="SF_Bean_4" sourceRef="Call_BeanClose" targetRef="End_Adopt"/>
+    <bpmn:dataStoreReference id="DSR_beans_A_Evidence" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_UpstreamAdoption">
     <bpmndi:BPMNPlane id="Plane_Process_UpstreamAdoption" bpmnElement="Collaboration_Process_UpstreamAdoption">
@@ -323,6 +326,8 @@ Either way the decision is written down before the process ends, and the bean is
         <di:waypoint x="3060" y="165" />
         <di:waypoint x="3120" y="165" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_A_Evidence" bpmnElement="DSR_beans_A_Evidence"><dc:Bounds x="1720" y="243" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1720" y="285" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_A_Evidence" bpmnElement="DOA_Beans_A_Evidence"><di:waypoint x="1740" y="225"/><di:waypoint x="1740" y="243"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

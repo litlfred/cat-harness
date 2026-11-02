@@ -100,8 +100,10 @@ can act. An in-progress bean nobody is progressing reads as active work. Not
 archived: the work is still wanted.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="bean-coordination"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Close_RecordBlocker">
+        <bpmn:targetRef>DSR_beans_Close_RecordBlocker</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
 
     <bpmn:endEvent id="Close_Archived" name="Recorded&#10;and archived"/>
@@ -115,6 +117,7 @@ archived: the work is still wanted.</bpmn:documentation>
     <bpmn:sequenceFlow id="BC_6" sourceRef="Close_Scrap" targetRef="Close_Archive"/>
     <bpmn:sequenceFlow id="BC_7" sourceRef="Close_Archive" targetRef="Close_Archived"/>
     <bpmn:sequenceFlow id="BC_8" sourceRef="Close_RecordBlocker" targetRef="Close_HandedBack"/>
+    <bpmn:dataStoreReference id="DSR_beans_Close_RecordBlocker" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="BPMNDiagram_BeanClose">
@@ -166,6 +169,8 @@ archived: the work is still wanted.</bpmn:documentation>
         <di:waypoint x="540" y="318" />
         <di:waypoint x="840" y="318" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Close_RecordBlocker" bpmnElement="DSR_beans_Close_RecordBlocker"><dc:Bounds x="556" y="338" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="600" y="351" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Close_RecordBlocker" bpmnElement="DOA_Beans_Close_RecordBlocker"><di:waypoint x="540" y="358"/><di:waypoint x="556" y="358"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

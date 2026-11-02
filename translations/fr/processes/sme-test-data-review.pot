@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sme-test-data-review\n"
-"POT-Creation-Date: 2026-11-01T11:34:43.260Z\n"
+"POT-Creation-Date: 2026-11-02T10:19:20.531Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid "Assemble the `DecisionSupportWorkedCase` (`id`, `summary`, `decisionLogicRef`, structured `input`, `systemOutput`, and optional `expectedGuidance`) from the fixed data set so the SME can judge clinical/scientific correctness without reading raw schema internals."
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:78
+#: processes/sdlc/sme-test-data-review.bpmn:80
 #. Diagram element documentation
 msgid "Assemble the `IndicatorCohortCase` (`id`, `summary`, `indicatorRef`, `populationSize`, `inputs`, `expectedValue`, `computedValue`, and optional `period`, `numerator`, `denominator`) from the fixed data set for SME review."
 msgstr ""
@@ -29,7 +29,12 @@ msgstr ""
 msgid "Authoring agent"
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:122
+#: processes/sdlc/sme-test-data-review.bpmn:146
+#. Diagram label
+msgid "Beans"
+msgstr ""
+
+#: processes/sdlc/sme-test-data-review.bpmn:128
 #. Diagram label
 msgid "Case/verdict pair recorded; fixed data set is audited evidence"
 msgstr ""
@@ -39,17 +44,17 @@ msgstr ""
 msgid "Clinical / scientific SME"
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:131
+#: processes/sdlc/sme-test-data-review.bpmn:137
 #. Diagram label
 msgid "decision-support"
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:126
+#: processes/sdlc/sme-test-data-review.bpmn:132
 #. Diagram label
 msgid "Discrepancy recorded; logic or case returned for revision"
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:139
+#: processes/sdlc/sme-test-data-review.bpmn:145
 #. Diagram label
 msgid "fail or needs-revision"
 msgstr ""
@@ -64,27 +69,27 @@ msgstr ""
 msgid "Human subject-matter expert (`clinical-sme`, `judgementOnly: true`). Judges whether the decision-support output on a worked case or the indicator value on a cohort is clinically/scientifically right. No procedure yields the answer, which is why a person is in this lane."
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:132
+#: processes/sdlc/sme-test-data-review.bpmn:138
 #. Diagram label
 msgid "indicator-definition"
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:93
+#: processes/sdlc/sme-test-data-review.bpmn:97
 #. Diagram label
 msgid "Judge domain correctness of worked case or indicator cohort"
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:138
+#: processes/sdlc/sme-test-data-review.bpmn:144
 #. Diagram label
 msgid "pass"
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:94
+#: processes/sdlc/sme-test-data-review.bpmn:98
 #. Diagram element documentation
 msgid "Performed by the human SME in `Lane_SME` (`clinical-sme`, `judgementOnly: true`). The SME inspects the worked case (for decision support) or the cohort and expected vs computed value (for an indicator definition) and renders a domain verdict (`pass`, `fail`, or `needs-revision`) with rationale. Deliberately carries no skill reference: no procedure yields the answer, which is the whole reason a person is in this lane."
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:77
+#: processes/sdlc/sme-test-data-review.bpmn:79
 #. Diagram label
 msgid "Prepare cohort: inputs, indicatorRef, expected & computed value"
 msgstr ""
@@ -99,7 +104,7 @@ msgstr ""
 msgid "Prepares the review package from the fixed test data set (`test-data-fixed/1.0.0`): either a worked case with system output for decision support, or a cohort with computed and expected values for an indicator definition."
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:102
+#: processes/sdlc/sme-test-data-review.bpmn:106
 #. Diagram label
 msgid "Record the SME's verdict and rationale"
 msgstr ""
@@ -109,12 +114,12 @@ msgstr ""
 msgid "Records the SME's judgement as a validated `sme-case-verdict/1.0.0` node with attributable human `reviewer` identity and `reviewedAt` date, and updates the fixed data set's `review` status when passed."
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:87
+#: processes/sdlc/sme-test-data-review.bpmn:91
 #. Diagram label
 msgid "Review unit prepared"
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:113
+#: processes/sdlc/sme-test-data-review.bpmn:119
 #. Diagram element documentation
 msgid "Routes on the recorded `verdict` field of the `sme-case-verdict/1.0.0` node: `pass` marks the fixed set reviewed and usable as certification evidence; `fail` or `needs-revision` withholds `reviewed: true` until the logic or case is revised."
 msgstr ""
@@ -134,7 +139,7 @@ msgstr ""
 msgid "SME review of fixed test data for clinical or scientific decision support and indicator definitions. It runs on its caller's bean (Process_TestDataCuration calls it), so it opens and closes none: every step that touches the plan notes on it. TWO UNITS OF REVIEW (`SmeCaseVerdictKind`, `$schema: \"sme-case-verdict/1.0.0\"` in `schemas/sdlc/test-data.ts`): - `decision-support`: the unit of review is a **worked case** (`case`: input state, `decisionLogicRef`, `systemOutput`, optional `expectedGuidance`). - `indicator-definition`: the unit of review is a **cohort plus an expected value** (`cohort`: `indicatorRef`, `populationSize`, `inputs`, `expectedValue`, `computedValue`, optional `period`, `numerator`, `denominator`). JUDGEMENT-ONLY SME LANE. `Lane_SME` binds `clinical-sme`, which is declared `judgementOnly: true` in `scenarios/roles.json`. `Task_SmeJudge` carries no skill reference because no mechanical procedure yields the clinical or scientific answer — that is the whole reason a person is in the lane. ATTRIBUTABLE REVIEWER AND DATE. `Task_RecordCaseVerdict` writes the `sme-case-verdict/1.0.0` node with the SME's attributable human identity (`reviewer: { kind: \"human\", provider, handle, role }`) and ISO-8601 review date (`reviewedAt`), because an audited review without an attributable reviewer and date is not audited."
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:112
+#: processes/sdlc/sme-test-data-review.bpmn:118
 #. Diagram label
 msgid "SME verdict outcome?"
 msgstr ""
@@ -149,7 +154,7 @@ msgstr ""
 msgid "Tester"
 msgstr ""
 
-#: processes/sdlc/sme-test-data-review.bpmn:103
+#: processes/sdlc/sme-test-data-review.bpmn:107
 #. Diagram element documentation
 msgid "Write the `sme-case-verdict/1.0.0` node (`SmeCaseVerdictKind` in `schemas/sdlc/test-data.ts`) recording `dataSetRef`, `subjectKind`, the worked `case` or `cohort`, `verdict`, `rationale`, the SME's attributable human identity (`reviewer: { kind: \"human\", provider, handle, role }`), and `reviewedAt` (ISO-8601 date/timestamp)."
 msgstr ""

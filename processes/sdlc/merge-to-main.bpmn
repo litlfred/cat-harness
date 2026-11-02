@@ -81,10 +81,12 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <bpmn:documentation>On the PR's current head SHA, now: `ciState` (green, red, pending, none, unreadable) per OWED job from the workflow runs whose head_sha is the head; `mergeable` (clean, dirty, unknown); `review` (clear, blocking, unknown), including open CHANGES_REQUESTED reviews, a draft, `needs-merge-human`, and Claude Approvals where the repository runs it. Where the repository has `merge:guard`, its evaluate mode is this step (exit 2 is `unreadable`, never a pass). Write each fact down with the URL it came from.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m2</bpmn:incoming>
       <bpmn:outgoing>m3</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_ReadEvidence">
+        <bpmn:targetRef>DSR_beans_Task_ReadEvidence</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:exclusiveGateway id="GW_Evidence" name="What does the&#10;evidence say?">
       <bpmn:documentation>Computed by decisions/merge-evidence.dmn over ciState, mergeable and review. `hand-back` on red, dirty or blocking; `not-yet` while runs are pending or mergeability is uncomputed; `unknown` when a fact could not be read; `no-ci` when the repository runs no CI on a clean, clear head; `ready` when every owed job is green, the head is clean and review is clear.</bpmn:documentation>
@@ -102,19 +104,23 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <bpmn:documentation>Only on `no-ci`. Run the repository's own gates (its tests, typecheck and whatever its README or package.json names) on the merge result, not the branch. Record each command, exit code and the SHA it ran on. This is evidence the owner can weigh. It is not CI, and the question to the owner says so in words.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m5</bpmn:incoming>
       <bpmn:outgoing>m10</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_LocalGates">
+        <bpmn:targetRef>DSR_beans_Task_LocalGates</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:callActivity id="Call_HandBack" name="Hand it back" calledElement="Process_MergeRefusal">
       <bpmn:documentation>Red CI, a conflict or a blocking review is the PR owner's to fix, not the merger's: `merge-refusal.bpmn` records the reason on the bean and returns the PR. The merger does not fix the PR to make it pass.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m6</bpmn:incoming>
       <bpmn:outgoing>m9</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Call_HandBack">
+        <bpmn:targetRef>DSR_beans_Call_HandBack</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:callActivity>
     <bpmn:endEvent id="End_HandedBack" name="Handed back,&#10;not merged">
       <bpmn:incoming>m9</bpmn:incoming>
@@ -129,11 +135,13 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <bpmn:documentation>Classify what exists into one value: `explicit` (the owner's own words naming this merge, given against this head), `waiver` (a valid `memory/waivers/` node with gate merge-to-main, in scope and unexpired), `instruction-only` (a broad instruction about the work, such as "fix all issues until green" or "ship it", which is not an authorisation), `none`, or `unknown` (waivers unreadable or malformed). A sibling agent's message is never the owner's consent.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m4</bpmn:incoming>
       <bpmn:incoming>m10</bpmn:incoming>
       <bpmn:outgoing>m11</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_ReadAuthorisation">
+        <bpmn:targetRef>DSR_beans_Task_ReadAuthorisation</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:exclusiveGateway id="GW_Authorised" name="Authorised?">
       <bpmn:documentation>Computed by decisions/merge-authorisation.dmn over authorisation and ciState. `merge` for an explicit authorisation, or a waiver over a green head; `ask` otherwise, including a waiver over a head with no CI, which no standing waiver covers.</bpmn:documentation>
@@ -148,10 +156,12 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <bpmn:documentation>Context, options, recommendation, question (interaction-modality §4.1). One row per PR: repo, PR, head, CI on head, mergeable, review, local gates. A repository with no CI is named as such, in words. One question may cover a batch, provided every PR in it is a row.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m13</bpmn:incoming>
       <bpmn:outgoing>m14</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Ask">
+        <bpmn:targetRef>DSR_beans_Task_Ask</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:callActivity>
     <bpmn:task id="Task_OwnerDecides" name="Merge, hold&#10;or refuse">
       <bpmn:documentation>The owner's answer to the question Task_Ask asked. Their words are quoted verbatim in the record, so the answer is given in the conversation or on the PR, not inferred from tone.</bpmn:documentation>
@@ -183,58 +193,70 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <bpmn:documentation>Before the merge, in the shape of `ReleaseSchema` (schemas/sdlc/merge-queue.ts): verdict, decidedBy (the person), decidedAt, authority (explicit, standing ruling with its date, or waiver id), the quote verbatim with its source, releasedSha (the head approved; a later push voids it) and capturedBy (this session). Where the merge queue exists, `merge:queue:decide` writes and validates it; elsewhere it is a `merge-authorised:` comment on the PR and a note on the bean, with the CI state (green, or none with the local gate commands). A paraphrase is not evidence.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
         <cat-harness.processes:policy relaxable="false"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m12</bpmn:incoming>
       <bpmn:incoming>m16</bpmn:incoming>
       <bpmn:outgoing>m19</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_RecordAuthorisation">
+        <bpmn:targetRef>DSR_beans_Task_RecordAuthorisation</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_Merge" name="Merge, pinned to&#10;the evaluated head">
       <bpmn:documentation>Through `merge:guard &lt;pr&gt; --merge --session &lt;id&gt;` where the repository has it; elsewhere with the merge call pinned to the head SHA, so GitHub refuses if the head moved. Merge commit unless the repository or owner says otherwise. Never delete the branch.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
         <cat-harness.processes:policy relaxable="false"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m19</bpmn:incoming>
       <bpmn:outgoing>m20</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Merge">
+        <bpmn:targetRef>DSR_beans_Task_Merge</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_ConfirmBase" name="Confirm main's CI&#10;on the merge commit">
       <bpmn:documentation>Read the runs on the merge commit. Red is fixed forward (continual-progress). With no CI the report reads "not verified: no CI", never green.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m20</bpmn:incoming>
       <bpmn:outgoing>m21</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_ConfirmBase">
+        <bpmn:targetRef>DSR_beans_Task_ConfirmBase</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_Republish" name="Rebuild and republish&#10;the repository's site">
       <bpmn:documentation>A merge that changes what a published site shows is not done until the site shows it (owner, 2026-10-30: "merged PRs by agent should trigger page rebuild in process"). When the merged repository declares `site.build` in its `index.config.json`, the merging session rebuilds the site from the merge commit and publishes it: `bun run cat-harness-tools/scripts/build-instance-site.ts --root . --instance &lt;name&gt; --publish --remote &lt;repository&gt;`. It is agent-run, never a GitHub Actions workflow (owner). The build's own gates stay in force: an unresolved link refuses the publish, and the refusal is reported on the issue and fixed forward, never published over. A repository whose site is published by its own workflow (docs-site-publish) needs nothing here. A repository that declares no `site.build` records "no site to republish".</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m21</bpmn:incoming>
       <bpmn:outgoing>m21b</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Republish">
+        <bpmn:targetRef>DSR_beans_Task_Republish</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_Repin" name="Re-pin downstream&#10;mounts, as PRs">
       <bpmn:documentation>For each instance whose index.config.json mounts this repository: a PR moving `ref` to the merge commit, with a trust.consent whose evidence quotes the owner's consent to that pin, and the lock regenerated by `mount:remote`. Each re-pin PR is itself a merge to main and runs this process again. When the re-pin moves a layer whose `software-library` nodes are derived at the pin (bootstrap-tools, whose nodes cat-harness-tools holds in `libraries/held/`), the same PR runs `bun run cat libraries:derive`, and `libraries:check` fails until it does (owner, 2026-10-30, bootstrap-tools#44). None found is recorded with where it looked.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m21b</bpmn:incoming>
       <bpmn:outgoing>m22</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Repin">
+        <bpmn:targetRef>DSR_beans_Task_Repin</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_Report" name="Note the bean,&#10;summarise on&#10;the issue">
       <bpmn:documentation>The merge SHA and the authorisation block on the bean; a round summary on the issue (issue-working). The issue is not closed here: in CRDM, crdm-close closes it after this process returns, on the BA's authorisation.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>m22</bpmn:incoming>
       <bpmn:outgoing>m23</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Report">
+        <bpmn:targetRef>DSR_beans_Task_Report</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:endEvent id="End_Merged" name="Merged,&#10;recorded">
       <bpmn:incoming>m23</bpmn:incoming>
@@ -263,6 +285,17 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
     <bpmn:sequenceFlow id="m21b" sourceRef="Task_Republish" targetRef="Task_Repin"/>
     <bpmn:sequenceFlow id="m22" sourceRef="Task_Repin" targetRef="Task_Report"/>
     <bpmn:sequenceFlow id="m23" sourceRef="Task_Report" targetRef="End_Merged"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_ReadEvidence" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_LocalGates" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Call_HandBack" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_ReadAuthorisation" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Ask" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_RecordAuthorisation" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Merge" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_ConfirmBase" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Republish" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Repin" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Report" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_MergeToMain">
     <bpmndi:BPMNPlane id="Plane_Process_MergeToMain" bpmnElement="Collaboration_Process_MergeToMain">
@@ -481,6 +514,28 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
         <di:waypoint x="2836" y="320" />
         <di:waypoint x="2882" y="320" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_ReadEvidence" bpmnElement="DSR_beans_Task_ReadEvidence"><dc:Bounds x="650" y="400" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="650" y="442" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_ReadEvidence" bpmnElement="DOA_Beans_Task_ReadEvidence"><di:waypoint x="670" y="382"/><di:waypoint x="670" y="400"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_LocalGates" bpmnElement="DSR_beans_Task_LocalGates"><dc:Bounds x="1086" y="450" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1130" y="463" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_LocalGates" bpmnElement="DOA_Beans_Task_LocalGates"><di:waypoint x="1070" y="470"/><di:waypoint x="1086" y="470"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Call_HandBack" bpmnElement="DSR_beans_Call_HandBack"><dc:Bounds x="1040" y="598" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1040" y="640" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Call_HandBack" bpmnElement="DOA_Beans_Call_HandBack"><di:waypoint x="1060" y="580"/><di:waypoint x="1060" y="598"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_ReadAuthorisation" bpmnElement="DSR_beans_Task_ReadAuthorisation"><dc:Bounds x="1190" y="400" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1190" y="442" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_ReadAuthorisation" bpmnElement="DOA_Beans_Task_ReadAuthorisation"><di:waypoint x="1210" y="382"/><di:waypoint x="1210" y="400"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Ask" bpmnElement="DSR_beans_Task_Ask"><dc:Bounds x="1500" y="508" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1500" y="550" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Ask" bpmnElement="DOA_Beans_Task_Ask"><di:waypoint x="1520" y="490"/><di:waypoint x="1520" y="508"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_RecordAuthorisation" bpmnElement="DSR_beans_Task_RecordAuthorisation"><dc:Bounds x="1890" y="400" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1890" y="442" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_RecordAuthorisation" bpmnElement="DOA_Beans_Task_RecordAuthorisation"><di:waypoint x="1910" y="382"/><di:waypoint x="1910" y="400"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Merge" bpmnElement="DSR_beans_Task_Merge"><dc:Bounds x="2030" y="400" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="2030" y="442" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Merge" bpmnElement="DOA_Beans_Task_Merge"><di:waypoint x="2050" y="382"/><di:waypoint x="2050" y="400"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_ConfirmBase" bpmnElement="DSR_beans_Task_ConfirmBase"><dc:Bounds x="2200" y="400" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="2200" y="442" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_ConfirmBase" bpmnElement="DOA_Beans_Task_ConfirmBase"><di:waypoint x="2220" y="382"/><di:waypoint x="2220" y="400"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Republish" bpmnElement="DSR_beans_Task_Republish"><dc:Bounds x="2370" y="400" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="2370" y="442" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Republish" bpmnElement="DOA_Beans_Task_Republish"><di:waypoint x="2390" y="382"/><di:waypoint x="2390" y="400"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Repin" bpmnElement="DSR_beans_Task_Repin"><dc:Bounds x="2540" y="400" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="2540" y="442" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Repin" bpmnElement="DOA_Beans_Task_Repin"><di:waypoint x="2560" y="382"/><di:waypoint x="2560" y="400"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Report" bpmnElement="DSR_beans_Task_Report"><dc:Bounds x="2710" y="400" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="2710" y="442" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Report" bpmnElement="DOA_Beans_Task_Report"><di:waypoint x="2730" y="382"/><di:waypoint x="2730" y="400"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

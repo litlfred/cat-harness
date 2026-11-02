@@ -96,8 +96,10 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
       <bpmn:documentation>A rule its own quote does not support is a finding against the voice, not against the block. Measured precedent: `voice-editorializing` flags "clearly", and the exemplar the Milnor gate is named after uses it fourteen times as proof economy (bean `2t41`).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="voice-overlay-review"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_RuleIsWrong">
+        <bpmn:targetRef>DSR_beans_Task_RuleIsWrong</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
 
     <bpmn:callActivity id="Task_Adjudicate" calledElement="Process_CriterionAdjudication" name="Adjudicate: prose, scope, or exception">
@@ -134,12 +136,13 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
     <bpmn:sequenceFlow id="F_V12" name="no" sourceRef="GW_MoreVoices" targetRef="Task_RecordOnSidecar"/>
     <bpmn:sequenceFlow id="F_V13" sourceRef="Task_RecordOnSidecar" targetRef="End_VoiceReviewed"/>
 
+    <bpmn:dataStoreReference id="DSR_beans_Task_RuleIsWrong" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="Diagram_VoiceReview">
     <bpmndi:BPMNPlane id="Plane_VoiceReview" bpmnElement="Process_VoiceReview">
       <bpmndi:BPMNShape id="S_Lane_NarrativeReviewer_V" bpmnElement="Lane_NarrativeReviewer" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1655" height="360" />
+        <dc:Bounds x="160" y="80" width="1655" height="440" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_BaseVoiceDone" bpmnElement="Start_BaseVoiceDone">
         <dc:Bounds x="200" y="212" width="36" height="36" />
@@ -169,7 +172,7 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
         <dc:Bounds x="1075" y="92" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_Adjudicate" bpmnElement="Task_Adjudicate">
-        <dc:Bounds x="1080" y="265" width="120" height="120" />
+        <dc:Bounds x="1080" y="345" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_MoreVoices_Join" bpmnElement="GW_MoreVoices_Join" isMarkerVisible="true">
         <dc:Bounds x="1275" y="205" width="50" height="50" />
@@ -212,32 +215,32 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V7" bpmnElement="F_V7">
         <di:waypoint x="1010" y="230" />
-        <di:waypoint x="1042.5" y="230" />
+        <di:waypoint x="1042.5" y="310" />
         <di:waypoint x="1042.5" y="152" />
         <di:waypoint x="1075" y="152" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V8" bpmnElement="F_V8">
         <di:waypoint x="1010" y="230" />
-        <di:waypoint x="1045" y="230" />
-        <di:waypoint x="1045" y="325" />
-        <di:waypoint x="1080" y="325" />
+        <di:waypoint x="1045" y="310" />
+        <di:waypoint x="1045" y="405" />
+        <di:waypoint x="1080" y="405" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V9" bpmnElement="F_V9">
         <di:waypoint x="1195" y="152" />
         <di:waypoint x="1235" y="152" />
-        <di:waypoint x="1235" y="230" />
+        <di:waypoint x="1235" y="310" />
         <di:waypoint x="1275" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V10" bpmnElement="F_V10">
-        <di:waypoint x="1200" y="325" />
-        <di:waypoint x="1237.5" y="325" />
-        <di:waypoint x="1237.5" y="230" />
+        <di:waypoint x="1200" y="405" />
+        <di:waypoint x="1237.5" y="405" />
+        <di:waypoint x="1237.5" y="310" />
         <di:waypoint x="1275" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V11" bpmnElement="F_V11">
         <di:waypoint x="1390" y="205" />
-        <di:waypoint x="1390" y="410" />
-        <di:waypoint x="650" y="410" />
+        <di:waypoint x="1390" y="490" />
+        <di:waypoint x="650" y="490" />
         <di:waypoint x="650" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V12" bpmnElement="F_V12">
@@ -248,6 +251,8 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
         <di:waypoint x="1610" y="230" />
         <di:waypoint x="1695" y="230" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_RuleIsWrong" bpmnElement="DSR_beans_Task_RuleIsWrong"><dc:Bounds x="1115" y="230" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1115" y="272" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_RuleIsWrong" bpmnElement="DOA_Beans_Task_RuleIsWrong"><di:waypoint x="1135" y="212"/><di:waypoint x="1135" y="230"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

@@ -85,10 +85,12 @@ WHY A PLAIN `bpmn:task` AND NOT A `userTask`. A `userTask` asserts a human perfo
 WHY THE BEAN OP IS `note` AND NOT `claim`. Placing a file claims nothing; it adds to a queue. What it owes the work plan is visibility — three batches of PDFs arrived through the forge's web UI (`c8349950fa5`, `f4ddfc65c8d`, `b8549160bb1`) with no bean, no PR and no note, and the first sibling to notice was a generator going stale. A note against the ingestion bean is what makes the queue's growth something another session can see.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="upload-routes" />
-        <cat-harness.processes:bean op="note" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_i1</bpmn:incoming>
       <bpmn:outgoing>Flow_i2</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Place">
+        <bpmn:targetRef>DSR_beans_Task_Place</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:serviceTask id="Task_ExtractMetadata" name="Extract its metadata into the KG">
       <bpmn:documentation>THE METADATA STEP. What enters the knowledge graph is the asset's INDEX — what it is, how big, what type, when it says it was written — and, for a container, what is in it; its contents do not go in unless somebody asks, with a reason. Owner, 2026-09-20: "make sure you have zip ingestion skills to extract metadata of assets into KG. don't extract contents unless explict ask by user." The tool is `cat-harness-tools/scripts/extract-assets.ts`, writing a `folio-extraction/v1` record (`schemas/content/extraction.ts`, moved down to this layer in placement PR5).
@@ -136,6 +138,7 @@ The upload is then RETIRED, not left and not deleted: it moves to fsh-guts/uploa
     <bpmn:sequenceFlow id="Flow_referenced" name="referenced" sourceRef="Gateway_Materialized" targetRef="Task_CatalogueReference" />
     <bpmn:sequenceFlow id="Flow_held_done" sourceRef="Task_PlaceInLibrary" targetRef="EndEvent_Catalogued" />
     <bpmn:sequenceFlow id="Flow_referenced_done" sourceRef="Task_CatalogueReference" targetRef="EndEvent_Catalogued" />
+    <bpmn:dataStoreReference id="DSR_beans_Task_Place" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Ingestion">
     <bpmndi:BPMNPlane id="Plane_Ingestion" bpmnElement="Collaboration_Ingestion">
@@ -190,6 +193,8 @@ The upload is then RETIRED, not left and not deleted: it moves to fsh-guts/uploa
         <di:waypoint x="1146" y="350" />
         <di:waypoint x="1197" y="350" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Place" bpmnElement="DSR_beans_Task_Place"><dc:Bounds x="461" y="190" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="505" y="203" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Place" bpmnElement="DOA_Beans_Task_Place"><di:waypoint x="445" y="210"/><di:waypoint x="461" y="210"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

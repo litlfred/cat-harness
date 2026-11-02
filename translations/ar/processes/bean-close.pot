@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bean-close\n"
-"POT-Creation-Date: 2026-10-24T08:43:21.709Z\n"
+"POT-Creation-Date: 2026-11-02T10:19:20.457Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -29,12 +29,17 @@ msgstr ""
 msgid "Archive the bean (completed or scrapped)"
 msgstr ""
 
-#: processes/sdlc/bean-close.bpmn:113
+#: processes/sdlc/bean-close.bpmn:120
+#. Diagram label
+msgid "Beans"
+msgstr ""
+
+#: processes/sdlc/bean-close.bpmn:115
 #. Diagram label
 msgid "blocked"
 msgstr ""
 
-#: processes/sdlc/bean-close.bpmn:108
+#: processes/sdlc/bean-close.bpmn:110
 #. Diagram label
 msgid "Blocked — handed back"
 msgstr ""
@@ -59,7 +64,7 @@ msgstr ""
 msgid "Complete (no unchecked todos left)"
 msgstr ""
 
-#: processes/sdlc/bean-close.bpmn:111
+#: processes/sdlc/bean-close.bpmn:113
 #. Diagram label
 msgid "done"
 msgstr ""
@@ -69,7 +74,7 @@ msgstr ""
 msgid "Move the bean, now completed or scrapped, into the archive, with a line saying which process closed it. A bean still open stays where it is with a note saying why: only a completed or scrapped bean may be archived (check:bean-archive), and only once the calling process has finished. The periodic sweep (`beans archive`) still archives anything this step leaves — it stays the floor, this op the exception (`todo-manager` § Archiving). The owner's 2026-10-20 ruling keeps archive a per-activity op; this is that activity, shared by both terminal outcomes and by every caller."
 msgstr ""
 
-#: processes/sdlc/bean-close.bpmn:112
+#: processes/sdlc/bean-close.bpmn:114
 #. Diagram label
 msgid "not wanted"
 msgstr ""
@@ -89,7 +94,7 @@ msgstr ""
 msgid "Record the blocker and hand back"
 msgstr ""
 
-#: processes/sdlc/bean-close.bpmn:107
+#: processes/sdlc/bean-close.bpmn:109
 #. Diagram label
 msgid "Recorded and archived"
 msgstr ""

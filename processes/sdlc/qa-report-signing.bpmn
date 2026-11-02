@@ -169,10 +169,12 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
       <bpmn:documentation>The attestation records the route, not only the signature. A reader who cannot tell an API signature from a human one cannot tell which trust assumption they are relying on.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-report-signing" />
-        <cat-harness.processes:bean op="note" />
       </bpmn:extensionElements>
       <bpmn:incoming>S08</bpmn:incoming>
       <bpmn:outgoing>S09</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_RecordAttestation">
+        <bpmn:targetRef>DSR_beans_Task_RecordAttestation</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_StoreSigned" name="Store the signed report&#10;on qa-reports">
@@ -198,21 +200,22 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
     <bpmn:sequenceFlow id="S08" sourceRef="Gateway_Signed" targetRef="Task_RecordAttestation" />
     <bpmn:sequenceFlow id="S09" sourceRef="Task_RecordAttestation" targetRef="Task_StoreSigned" />
     <bpmn:sequenceFlow id="S10" sourceRef="Task_StoreSigned" targetRef="End_Signed" />
+    <bpmn:dataStoreReference id="DSR_beans_Task_RecordAttestation" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="Diagram_QaReportSigning">
     <bpmndi:BPMNPlane id="Plane_QaReportSigning" bpmnElement="Collaboration_QaReportSigning">
       <bpmndi:BPMNShape id="Shape_Participant_QaReportSigning" bpmnElement="Participant_QaReportSigning" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1640" height="518" />
+        <dc:Bounds x="160" y="80" width="1640" height="598" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Qa" bpmnElement="Lane_Qa" isHorizontal="true">
-        <dc:Bounds x="190" y="224" width="1610" height="230" />
+        <dc:Bounds x="190" y="224" width="1610" height="310" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Api" bpmnElement="Lane_Api" isHorizontal="true">
         <dc:Bounds x="190" y="80" width="1610" height="144" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Human" bpmnElement="Lane_Human" isHorizontal="true">
-        <dc:Bounds x="190" y="454" width="1610" height="144" />
+        <dc:Bounds x="190" y="534" width="1610" height="144" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_ReportReady" bpmnElement="Start_ReportReady">
@@ -233,7 +236,7 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
         <dc:Bounds x="900" y="92" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_HumanSign" bpmnElement="Task_HumanSign">
-        <dc:Bounds x="900" y="466" width="120" height="120" />
+        <dc:Bounds x="900" y="546" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_Signed" bpmnElement="Gateway_Signed" isMarkerVisible="true">
         
@@ -271,9 +274,9 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
       <bpmndi:BPMNEdge id="Edge_S05" bpmnElement="S05">
         <di:waypoint x="816" y="324" />
         <di:waypoint x="858" y="324" />
-        <di:waypoint x="858" y="526" />
-        <di:waypoint x="900" y="526" />
-        <bpmndi:BPMNLabel><dc:Bounds x="862" y="416.5" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="858" y="606" />
+        <di:waypoint x="900" y="606" />
+        <bpmndi:BPMNLabel><dc:Bounds x="862" y="496" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S06" bpmnElement="S06">
         <di:waypoint x="1020" y="152" />
@@ -282,8 +285,8 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
         <di:waypoint x="1115" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_S07" bpmnElement="S07">
-        <di:waypoint x="1020" y="526" />
-        <di:waypoint x="1067.5" y="526" />
+        <di:waypoint x="1020" y="606" />
+        <di:waypoint x="1067.5" y="606" />
         <di:waypoint x="1067.5" y="324" />
         <di:waypoint x="1115" y="324" />
       </bpmndi:BPMNEdge>
@@ -299,6 +302,8 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
         <di:waypoint x="1575" y="324" />
         <di:waypoint x="1670" y="324" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_RecordAttestation" bpmnElement="DSR_beans_Task_RecordAttestation"><dc:Bounds x="1290" y="402" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1290" y="444" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_RecordAttestation" bpmnElement="DOA_Beans_Task_RecordAttestation"><di:waypoint x="1310" y="384"/><di:waypoint x="1310" y="402"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

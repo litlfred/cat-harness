@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: options-analysis\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.451Z\n"
+"POT-Creation-Date: 2026-11-02T10:19:20.513Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "A decision reached by a NAMED methodology, with its rejected options recorded. Called as a subprocess, never run on its own. WHEN IT APPLIES: the trigger is `opening-brief`'s — IRREVERSIBILITY AND SURPRISE, not size. A reversible choice needs no subprocess; an irreversible one cannot skip it. A subprocess fired on every decision becomes ceremony, and ceremony is how a gate stops being read. WHY IT IS ONE SUBPROCESS AND NOT A BRANCH PER METHODOLOGY: the methodologies are parallel tracks selected by context, and the selection is a judgement made inside A_Select rather than a gateway. A gateway per methodology would assert the choice is computable from data, which is the claim `dmn` says to make only when the criteria recur. WHAT IT DOES NOT DO: it does not decide. It produces the options, their trade-offs and a recommendation; the decision and its authorisation belong to whoever owns the calling step."
 msgstr ""
 
-#: processes/sdlc/options-analysis.bpmn:91
+#: processes/sdlc/options-analysis.bpmn:93
 #. Diagram element documentation
 msgid "A SEPARATE end event, rather than a short-circuit into the other one, because the two outcomes are different facts for the caller: \"no analysis was needed\" is not \"the analysis recommends X\". Collapsing them would leave a caller unable to tell a considered skip from a completed comparison — the same reason a could-not-determine is never reported as a pass."
 msgstr ""
@@ -42,6 +42,11 @@ msgstr ""
 #: processes/sdlc/options-analysis.bpmn:55
 #. Diagram element documentation
 msgid "Ask the selection question in order, first yes decides: do the criteria RECUR with the same inputs having to produce the same answer; is this the CERTAINTY of a body of evidence behind a recommendation; is the context a BEAN recording a decision; otherwise a one-off choice among candidates. If none fits, that is a finding — say which question the decision is and that no adopted methodology covers it. Do not improvise one and do not stretch the nearest fit. The declared set is the contents of the `methodology` graph. Ask for it; do not remember it."
+msgstr ""
+
+#: processes/sdlc/options-analysis.bpmn:103
+#. Diagram label
+msgid "Beans"
 msgstr ""
 
 #: processes/sdlc/options-analysis.bpmn:61
@@ -74,7 +79,7 @@ msgstr ""
 msgid "Irreversible or surprising?"
 msgstr ""
 
-#: processes/sdlc/options-analysis.bpmn:96
+#: processes/sdlc/options-analysis.bpmn:98
 #. Diagram label
 msgid "no"
 msgstr ""
@@ -89,7 +94,7 @@ msgstr ""
 msgid "Options analysis"
 msgstr ""
 
-#: processes/sdlc/options-analysis.bpmn:89
+#: processes/sdlc/options-analysis.bpmn:91
 #. Diagram label
 msgid "Options and recommendation recorded"
 msgstr ""
@@ -114,12 +119,12 @@ msgstr ""
 msgid "This lane's deliverable is the recommendation together with the rejected options — a rejected option with no record is a dead end the next agent walks back into — but it never authorises anything; A_Record hands both to whoever called the subprocess, and the decision stays theirs. Answering GW_Trigger `no` is not a skipped step either: End_TriggerNotMet is recorded as a distinct outcome from a completed comparison, because a caller unable to tell \"not needed\" from \"we chose X\" cannot audit either one."
 msgstr ""
 
-#: processes/sdlc/options-analysis.bpmn:90
+#: processes/sdlc/options-analysis.bpmn:92
 #. Diagram label
 msgid "Trigger not met — the caller decides without an analysis"
 msgstr ""
 
-#: processes/sdlc/options-analysis.bpmn:95
+#: processes/sdlc/options-analysis.bpmn:97
 #. Diagram label
 msgid "yes"
 msgstr ""

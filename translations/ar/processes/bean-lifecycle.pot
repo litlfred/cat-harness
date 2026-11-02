@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: bean-lifecycle\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.143Z\n"
+"POT-Creation-Date: 2026-11-02T10:19:20.463Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -29,17 +29,22 @@ msgstr ""
 msgid "Bean claimed?"
 msgstr ""
 
+#: processes/sdlc/bean-lifecycle.bpmn:110
+#. Diagram label
+msgid "Beans"
+msgstr ""
+
 #: processes/sdlc/bean-lifecycle.bpmn:74
 #. Diagram element documentation
 msgid "Check before you create (exact-title search), create the bean when none exists, find out whose it is, and claim it — or leave it alone when a sibling holds it. Process_BeanOpen is the one place a claim is drawn."
 msgstr ""
 
-#: processes/sdlc/bean-lifecycle.bpmn:105
+#: processes/sdlc/bean-lifecycle.bpmn:107
 #. Diagram label
 msgid "claimed"
 msgstr ""
 
-#: processes/sdlc/bean-lifecycle.bpmn:95
+#: processes/sdlc/bean-lifecycle.bpmn:97
 #. Diagram label
 msgid "Close the bean"
 msgstr ""
@@ -54,12 +59,12 @@ msgstr ""
 msgid "Editing a bean is not a separate ceremony: check off todo items as they happen, append measurements with the command and date that produced them, and record what you now know that the next agent does not. A bean whose body is a title is a placeholder, not a plan."
 msgstr ""
 
-#: processes/sdlc/bean-lifecycle.bpmn:96
+#: processes/sdlc/bean-lifecycle.bpmn:98
 #. Diagram element documentation
 msgid "End the bean in a state that says why: done is completed and archived, not wanted is scrapped with its reasons and archived, blocked records what it waits on and goes back to `todo`. Process_BeanClose is the one place resolve and archive are drawn."
 msgstr ""
 
-#: processes/sdlc/bean-lifecycle.bpmn:104
+#: processes/sdlc/bean-lifecycle.bpmn:106
 #. Diagram label
 msgid "not yours"
 msgstr ""
@@ -84,7 +89,7 @@ msgstr ""
 msgid "Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress, so work it. `not yours`: someone else holds it and nothing was written; stop here rather than resolve, scrap or edit a bean you do not own."
 msgstr ""
 
-#: processes/sdlc/bean-lifecycle.bpmn:100
+#: processes/sdlc/bean-lifecycle.bpmn:102
 #. Diagram label
 msgid "State recorded"
 msgstr ""

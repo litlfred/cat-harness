@@ -100,20 +100,24 @@ permanent?">
       <bpmn:documentation>A permanent sample joins the library as an L1 source, with the materialization record (purpose, gates, fixity) beside it. From here refresh-materialized governs it.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sample-import" />
-        <cat-harness.processes:bean op="note" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_6</bpmn:incoming>
       <bpmn:outgoing>Flow_8</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Library">
+        <bpmn:targetRef>DSR_beans_Task_Library</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_Trial" name="Keep it as a trial:
 the unpublished trashcan">
       <bpmn:documentation>A trial goes to the kept trashcan: addressable, exported, never published. Its node declares `$schema: folio-fsh-guts/v1` and carries the bean or issue it was written under, since it was never moved from anywhere and a `movedFrom` would be invented provenance. It is NOT refreshed: a trial records what the source looked like when it was tried. Promoting a trial means running this process again with permanent = yes, so the gates are asked afresh.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sample-import" />
-        <cat-harness.processes:bean op="note" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_7</bpmn:incoming>
       <bpmn:outgoing>Flow_9</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Trial">
+        <bpmn:targetRef>DSR_beans_Task_Trial</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_ImportTest" name="Import into the store,
 and test the import">
@@ -136,12 +140,14 @@ passed?">
       <bpmn:documentation>Which check failed, on which items, and the evidence. The landed copy is not removed: a failed import is information about the source or the store, and deleting the copy would destroy the evidence.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sample-import" />
-        <cat-harness.processes:bean op="note" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12</bpmn:incoming>
       <bpmn:outgoing>Flow_13</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DOA_Task_RecordFindings">
         <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_RecordFindings">
+        <bpmn:targetRef>DSR_beans_Task_RecordFindings</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Refused" name="Not imported;
@@ -191,17 +197,20 @@ content">
     <bpmn:sequenceFlow id="Flow_14" sourceRef="StartEvent_Upstream" targetRef="Call_Refresh" />
     <bpmn:sequenceFlow id="Flow_15" sourceRef="Call_Refresh" targetRef="EndEvent_Refreshed" />
     <bpmn:dataStoreReference id="DSR_corpus" name="Corpus" dataStoreRef="corpus"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Library" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Trial" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_RecordFindings" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_SampleImport">
     <bpmndi:BPMNPlane id="Plane_SampleImport" bpmnElement="Collaboration_SampleImport">
       <bpmndi:BPMNShape id="Participant_SampleImport_di" bpmnElement="Participant_SampleImport" isHorizontal="true">
-        <dc:Bounds x="130" y="60" width="1850" height="750" />
+        <dc:Bounds x="130" y="60" width="1850" height="830" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_0_di" bpmnElement="Lane_0" isHorizontal="true">
         <dc:Bounds x="160" y="60" width="1820" height="250" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true">
-        <dc:Bounds x="160" y="310" width="1820" height="500" />
+        <dc:Bounds x="160" y="310" width="1820" height="580" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Proposed_di" bpmnElement="StartEvent_Proposed">
         <dc:Bounds x="200" y="167" width="36" height="36" />
@@ -236,7 +245,7 @@ content">
         <dc:Bounds x="1105" y="322" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Trial_di" bpmnElement="Task_Trial">
-        <dc:Bounds x="1070" y="445" width="190" height="100" />
+        <dc:Bounds x="1070" y="525" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ImportTest_di" bpmnElement="Task_ImportTest">
         <dc:Bounds x="1365" y="375" width="120" height="120" />
@@ -246,20 +255,20 @@ content">
         
       <bpmndi:BPMNLabel><dc:Bounds x="1560" y="375" width="90" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Refused_di" bpmnElement="EndEvent_Refused">
-        <dc:Bounds x="847" y="667" width="36" height="36" />
+        <dc:Bounds x="847" y="747" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="800" y="708" width="130" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="800" y="788" width="130" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_RecordFindings_di" bpmnElement="Task_RecordFindings">
-        <dc:Bounds x="1650" y="660" width="190" height="100" />
+        <dc:Bounds x="1650" y="740" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Failed_di" bpmnElement="EndEvent_Failed">
-        <dc:Bounds x="1900" y="692" width="36" height="36" />
+        <dc:Bounds x="1900" y="772" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="1860" y="733" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="1860" y="813" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Imported_di" bpmnElement="EndEvent_Imported">
-        <dc:Bounds x="1900" y="592" width="36" height="36" />
+        <dc:Bounds x="1900" y="672" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="1860" y="633" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="1860" y="713" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
         <di:waypoint x="236" y="185" />
         <di:waypoint x="335" y="185" />
@@ -280,21 +289,21 @@ content">
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
         <di:waypoint x="865" y="460" />
-        <di:waypoint x="865" y="667" />
-        <bpmndi:BPMNLabel><dc:Bounds x="873" y="590" width="90" height="26" /></bpmndi:BPMNLabel>
+        <di:waypoint x="865" y="747" />
+        <bpmndi:BPMNLabel><dc:Bounds x="873" y="670" width="90" height="26" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
         <di:waypoint x="1000" y="435" />
         <di:waypoint x="1052.5" y="435" />
         <di:waypoint x="1052.5" y="382" />
         <di:waypoint x="1105" y="382" />
-        <bpmndi:BPMNLabel><dc:Bounds x="958.5" y="386.25" width="90" height="18" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="958.5" y="386" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
         <di:waypoint x="975" y="460" />
-        <di:waypoint x="975" y="495" />
-        <di:waypoint x="1070" y="495" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1000" y="500" width="40" height="16" /></bpmndi:BPMNLabel>
+        <di:waypoint x="975" y="575" />
+        <di:waypoint x="1070" y="575" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1000" y="580" width="40" height="16" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
         <di:waypoint x="1225" y="382" />
@@ -303,8 +312,8 @@ content">
         <di:waypoint x="1365" y="435" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="Flow_9">
-        <di:waypoint x="1260" y="495" />
-        <di:waypoint x="1312.5" y="495" />
+        <di:waypoint x="1260" y="575" />
+        <di:waypoint x="1312.5" y="575" />
         <di:waypoint x="1312.5" y="435" />
         <di:waypoint x="1365" y="435" />
       </bpmndi:BPMNEdge>
@@ -315,18 +324,18 @@ content">
       <bpmndi:BPMNEdge id="Flow_11_di" bpmnElement="Flow_11">
         <di:waypoint x="1630" y="435" />
         <di:waypoint x="1918" y="435" />
-        <di:waypoint x="1918" y="592" />
+        <di:waypoint x="1918" y="672" />
         <bpmndi:BPMNLabel><dc:Bounds x="1700" y="415" width="30" height="16" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_12_di" bpmnElement="Flow_12">
         <di:waypoint x="1605" y="460" />
-        <di:waypoint x="1605" y="710" />
-        <di:waypoint x="1650" y="710" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1500" y="590" width="100" height="26" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1605" y="790" />
+        <di:waypoint x="1650" y="790" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1500" y="670" width="100" height="26" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_13_di" bpmnElement="Flow_13">
-        <di:waypoint x="1840" y="710" />
-        <di:waypoint x="1900" y="710" />
+        <di:waypoint x="1840" y="790" />
+        <di:waypoint x="1900" y="790" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_14_di" bpmnElement="Flow_14">
         <di:waypoint x="236" y="435" />
@@ -336,10 +345,16 @@ content">
         <di:waypoint x="455" y="435" />
         <di:waypoint x="510" y="435" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Shape_DSR_corpus" bpmnElement="DSR_corpus"><dc:Bounds x="1720" y="850" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1774" y="866" width="90" height="18" /></bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="Shape_DSR_corpus" bpmnElement="DSR_corpus"><dc:Bounds x="1720" y="930" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1774" y="946" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Edge_DOA_Task_RecordFindings" bpmnElement="DOA_Task_RecordFindings"><di:waypoint x="1745" y="760"/><di:waypoint x="1745" y="850"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_RecordFindings" bpmnElement="DOA_Task_RecordFindings"><di:waypoint x="1745" y="840"/><di:waypoint x="1745" y="930"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Library" bpmnElement="DSR_beans_Task_Library"><dc:Bounds x="1145" y="460" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1145" y="502" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Library" bpmnElement="DOA_Beans_Task_Library"><di:waypoint x="1165" y="442"/><di:waypoint x="1165" y="460"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Trial" bpmnElement="DSR_beans_Task_Trial"><dc:Bounds x="1145" y="643" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1145" y="685" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Trial" bpmnElement="DOA_Beans_Task_Trial"><di:waypoint x="1165" y="625"/><di:waypoint x="1165" y="643"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_RecordFindings" bpmnElement="DSR_beans_Task_RecordFindings"><dc:Bounds x="1725" y="682" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1769" y="695" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_RecordFindings" bpmnElement="DOA_Beans_Task_RecordFindings"><di:waypoint x="1745" y="740"/><di:waypoint x="1745" y="722"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

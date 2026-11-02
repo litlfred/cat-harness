@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: slice-sqlite-publish\n"
-"POT-Creation-Date: 2026-11-02T03:11:06.712Z\n"
+"POT-Creation-Date: 2026-11-02T10:19:20.360Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/kg/slice-sqlite-publish.bpmn:122
+#: processes/kg/slice-sqlite-publish.bpmn:128
 #. Diagram element documentation
 msgid "`gen-slice-sqlite.ts --out ./_site/assets/slices --payload-out ./_site/payload/sha256 --slice <name>`, once per slice, from the tree being published: the file, its manifest, the slice index, and the deploy payloads beside the committed KG payloads. Never into the committed `docs/payload/`, whose orphan audit admits KG nodes only."
 msgstr ""
@@ -29,19 +29,24 @@ msgstr ""
 msgid "Add one `SliceDef` to the builder's slice table: the DDL (one table per node type, edge tables, one CONTENTLESS full-detail FTS5), the order each table's rows go in, the `load` that turns the source into rows, where the payloads live (written at deploy, or already published), and the `search` block the generic page reads. Choose the heavy fields by `kg-export` §\"What is heavy\": a heavy field is a `payload_sha256` pointer, never a stored column. Never copy the builder."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:113
+#: processes/kg/slice-sqlite-publish.bpmn:119
 #. Diagram element documentation
 msgid "Answered by the exit code of `slice:sqlite:check`, one line per slice. Any red line fails the pull request; a source the builder could not read is could-not-determine, which is red rather than an empty green slice."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:75
+#: processes/kg/slice-sqlite-publish.bpmn:77
 #. Diagram element documentation
 msgid "Answered by the manifest `A_Measure` read: `bytes` against `SIZE_BUDGET_BYTES`. Under it, the slice is wired. Over it, the slice stops here and the measurement is reported, because shipping it would be a decision about every reader's download that nobody made. The no-body variant (nodes, edges and an FTS over names, titles and summaries, bodies as payload pointers) is the first thing to try before reporting."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:149
+#: processes/kg/slice-sqlite-publish.bpmn:157
 #. Diagram label
 msgid "Bean claimed?"
+msgstr ""
+
+#: processes/kg/slice-sqlite-publish.bpmn:193
+#. Diagram label
+msgid "Beans"
 msgstr ""
 
 #: processes/kg/slice-sqlite-publish.bpmn:14
@@ -49,7 +54,7 @@ msgstr ""
 msgid "Build and publish a per-slice SQLite file"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:121
+#: processes/kg/slice-sqlite-publish.bpmn:127
 #. Diagram label
 msgid "Build each slice into _site at deploy"
 msgstr ""
@@ -69,72 +74,72 @@ msgstr ""
 msgid "CI/CD Pipeline"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:178
+#: processes/kg/slice-sqlite-publish.bpmn:186
 #. Diagram label
 msgid "claimed"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:159
+#: processes/kg/slice-sqlite-publish.bpmn:167
 #. Diagram label
 msgid "Close the bean"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:112
+#: processes/kg/slice-sqlite-publish.bpmn:118
 #. Diagram label
 msgid "Every slice green?"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:102
+#: processes/kg/slice-sqlite-publish.bpmn:108
 #. Diagram element documentation
 msgid "For every slice: build twice and require one sha256; read the row digest back from the file and require it to equal the digest computed from the source without SQLite; run an FTS5 phrase query for a known row; and audit the payloads with `auditPayloadTree` (deploy payloads as written, the kg slice's pointers against the committed payload tree). A slice whose rows do not match its source fails; it never passes as whole."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:101
+#: processes/kg/slice-sqlite-publish.bpmn:107
 #. Diagram label
 msgid "Gate every slice: slice:sqlite:check"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:93
+#: processes/kg/slice-sqlite-publish.bpmn:97
 #. Diagram element documentation
 msgid "Give the slice everything a slice owes: its manifest (written by the builder from the definition), its `--check` (covered by `slice:sqlite:check`), one deploy line in `docs-site.yml` and in `feature-staging.yml`, its search (the generic page needs no code, only the definition's `search` block), a unit test over a fixture and over the real source, and a search in `slice-sqlite.e2e.ts`."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:163
+#: processes/kg/slice-sqlite-publish.bpmn:171
 #. Diagram label
 msgid "How did it end?"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:118
+#: processes/kg/slice-sqlite-publish.bpmn:124
 #. Diagram label
 msgid "Job RED"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:170
+#: processes/kg/slice-sqlite-publish.bpmn:178
 #. Diagram label
 msgid "no — over"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:175
+#: processes/kg/slice-sqlite-publish.bpmn:183
 #. Diagram label
 msgid "no — red"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:180
+#: processes/kg/slice-sqlite-publish.bpmn:188
 #. Diagram label
 msgid "not yours"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:155
+#: processes/kg/slice-sqlite-publish.bpmn:163
 #. Diagram label
 msgid "Not yours — left alone"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:132
+#: processes/kg/slice-sqlite-publish.bpmn:138
 #. Diagram element documentation
 msgid "Open `slices/search.html?slice=<name>` on the deployed site, run a phrase search for a known row, open it so its payload is fetched, and look at the result; send the screenshot rather than a description of it. Report the mode the page says it used (OPFS or in memory), never an assumed one."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:143
+#: processes/kg/slice-sqlite-publish.bpmn:151
 #. Diagram label
 msgid "Open the bean"
 msgstr ""
@@ -144,27 +149,27 @@ msgstr ""
 msgid "Platform authoring agent"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:160
+#: processes/kg/slice-sqlite-publish.bpmn:168
 #. Diagram element documentation
 msgid "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:144
+#: processes/kg/slice-sqlite-publish.bpmn:152
 #. Diagram element documentation
 msgid "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:150
+#: processes/kg/slice-sqlite-publish.bpmn:158
 #. Diagram element documentation
 msgid "Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination)."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:182
+#: processes/kg/slice-sqlite-publish.bpmn:190
 #. Diagram label
 msgid "red"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:80
+#: processes/kg/slice-sqlite-publish.bpmn:82
 #. Diagram label
 msgid "Report the measurement; ship nothing"
 msgstr ""
@@ -174,32 +179,32 @@ msgstr ""
 msgid "Run `bun run cat slice:sqlite -- --slice <name> --out <scratch>` and read the manifest: `bytes`, the row counts, the payload count and bytes, `overBudget`, `duplicateIds` and `findings`. Record the measurement on the bean with its provenance (the command and the date), beside the size of the source it replaces."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:131
+#: processes/kg/slice-sqlite-publish.bpmn:137
 #. Diagram label
 msgid "Search the published slice in a browser"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:183
+#: processes/kg/slice-sqlite-publish.bpmn:191
 #. Diagram label
 msgid "shipped"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:140
+#: processes/kg/slice-sqlite-publish.bpmn:148
 #. Diagram label
 msgid "Slice searchable on the site"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:156
+#: processes/kg/slice-sqlite-publish.bpmn:164
 #. Diagram element documentation
 msgid "Someone else holds the bean; this run stops without touching it."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:184
+#: processes/kg/slice-sqlite-publish.bpmn:192
 #. Diagram label
 msgid "stopped"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:89
+#: processes/kg/slice-sqlite-publish.bpmn:93
 #. Diagram label
 msgid "Stopped, with its measurement"
 msgstr ""
@@ -209,12 +214,12 @@ msgstr ""
 msgid "The gate and the deploy. `code-quality-gates.yml` runs `slice:sqlite:check` on every pull request; `docs-site.yml` and `feature-staging.yml` build each slice into `_site/` from the tree they publish, one line per slice."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:74
+#: processes/kg/slice-sqlite-publish.bpmn:76
 #. Diagram label
 msgid "Under the ~5 MB budget?"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:164
+#: processes/kg/slice-sqlite-publish.bpmn:172
 #. Diagram element documentation
 msgid "Which outcome the bean was closed with, so each ends at its own named end event. The bean is closed once, on every path (bpmn-authoring: open and close the bean at the top, once)."
 msgstr ""
@@ -224,12 +229,12 @@ msgstr ""
 msgid "Whoever adds or changes a slice: writes its definition in the builder's slice table, measures the built file against the budget, wires it when it fits, and looks at the published search once it has deployed. The judgement in this process is theirs, at the budget gateway."
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:92
+#: processes/kg/slice-sqlite-publish.bpmn:96
 #. Diagram label
 msgid "Wire it: gate, deploy line, search, tests"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:81
+#: processes/kg/slice-sqlite-publish.bpmn:83
 #. Diagram element documentation
 msgid "Write the measurement and what was tried onto the bean, and ask the owner whether the slice should ship at that size, be cut further, or not exist. Nothing is wired: no manifest is published, no gate added, no deploy line written."
 msgstr ""
@@ -239,12 +244,12 @@ msgstr ""
 msgid "Write the slice definition"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:174
+#: processes/kg/slice-sqlite-publish.bpmn:182
 #. Diagram label
 msgid "yes — green"
 msgstr ""
 
-#: processes/kg/slice-sqlite-publish.bpmn:169
+#: processes/kg/slice-sqlite-publish.bpmn:177
 #. Diagram label
 msgid "yes — under"
 msgstr ""

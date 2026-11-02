@@ -131,10 +131,12 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-affordances"/>
         <bootstrap.processes:skill ref="directory-conventions"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_CopyToStamp</bpmn:incoming>
       <bpmn:outgoing>Flow_StampToValidate</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_StampAssetSource">
+        <bpmn:targetRef>DSR_beans_Task_StampAssetSource</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_ValidateDeclaredAsset" name="Validate the asset and provenance">
@@ -171,31 +173,32 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
     <bpmn:sequenceFlow id="Flow_StampToValidate" sourceRef="Task_StampAssetSource" targetRef="Task_ValidateDeclaredAsset"/>
     <bpmn:sequenceFlow id="Flow_ValidateToWork" sourceRef="Task_ValidateDeclaredAsset" targetRef="Task_WorkOnCopy"/>
     <bpmn:sequenceFlow id="Flow_WorkToEnd" sourceRef="Task_WorkOnCopy" targetRef="End_CopiedAndEditable"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_StampAssetSource" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="Diagram_CopyIntoFolio">
     <bpmndi:BPMNPlane id="Plane_CopyIntoFolio" bpmnElement="Collaboration_CopyIntoFolio">
       <bpmndi:BPMNShape id="Participant_CopyIntoFolio_di" bpmnElement="Participant_CopyIntoFolio" isHorizontal="true">
-        <dc:Bounds x="130" y="60" width="1760" height="760" />
+        <dc:Bounds x="130" y="60" width="1760" height="840" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Author_di" bpmnElement="Lane_Author" isHorizontal="true">
-        <dc:Bounds x="160" y="440" width="1730" height="200" />
+        <dc:Bounds x="160" y="520" width="1730" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Agent_di" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="160" y="240" width="1730" height="200" />
+        <dc:Bounds x="160" y="240" width="1730" height="280" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Source_di" bpmnElement="Lane_Source" isHorizontal="true">
         <dc:Bounds x="160" y="60" width="1730" height="180" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Validate_di" bpmnElement="Lane_Validate" isHorizontal="true">
-        <dc:Bounds x="160" y="640" width="1730" height="180" />
+        <dc:Bounds x="160" y="720" width="1730" height="180" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Start_WantCopy_di" bpmnElement="Start_WantCopy">
-        <dc:Bounds x="210" y="522" width="36" height="36" />
+        <dc:Bounds x="210" y="602" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="191" y="557.5" width="90" height="71" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="191" y="638" width="90" height="71" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ChooseAsset_di" bpmnElement="Task_ChooseAsset">
-        <dc:Bounds x="320" y="480" width="120" height="120" />
+        <dc:Bounds x="320" y="560" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ProbeWriteCapability_di" bpmnElement="Task_ProbeWriteCapability">
         <dc:Bounds x="325" y="280" width="120" height="120" />
@@ -205,12 +208,12 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
         
       <bpmndi:BPMNLabel><dc:Bounds x="487.5" y="369" width="135" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_InspectReadOnly_di" bpmnElement="Task_InspectReadOnly">
-        <dc:Bounds x="665" y="480" width="120" height="120" />
+        <dc:Bounds x="665" y="560" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_ReadOnlyDegraded_di" bpmnElement="End_ReadOnlyDegraded">
-        <dc:Bounds x="870" y="522" width="36" height="36" />
+        <dc:Bounds x="870" y="602" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="910" y="495.5" width="90" height="89" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="910" y="576" width="90" height="89" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ReadUpstreamAsset_di" bpmnElement="Task_ReadUpstreamAsset">
         <dc:Bounds x="665" y="90" width="120" height="120" />
       </bpmndi:BPMNShape>
@@ -221,22 +224,22 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
         <dc:Bounds x="1155" y="280" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ValidateDeclaredAsset_di" bpmnElement="Task_ValidateDeclaredAsset">
-        <dc:Bounds x="1395" y="670" width="120" height="120" />
+        <dc:Bounds x="1395" y="750" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_WorkOnCopy_di" bpmnElement="Task_WorkOnCopy">
-        <dc:Bounds x="1625" y="480" width="120" height="120" />
+        <dc:Bounds x="1625" y="560" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_CopiedAndEditable_di" bpmnElement="End_CopiedAndEditable">
-        <dc:Bounds x="1820" y="522" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1747" y="567.5" width="135" height="72" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="1820" y="602" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1747" y="648" width="135" height="72" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_StartToChoose_di" bpmnElement="Flow_StartToChoose">
-        <di:waypoint x="246" y="540" />
-        <di:waypoint x="320" y="540" />
+        <di:waypoint x="246" y="620" />
+        <di:waypoint x="320" y="620" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_ChooseToProbe_di" bpmnElement="Flow_ChooseToProbe">
-        <di:waypoint x="380" y="581" />
-        <di:waypoint x="380" y="289.5" />
+        <di:waypoint x="380" y="661" />
+        <di:waypoint x="380" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_ProbeToGW_di" bpmnElement="Flow_ProbeToGW">
         <di:waypoint x="445" y="340" />
@@ -245,13 +248,13 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
       <bpmndi:BPMNEdge id="Flow_CanWriteNo_di" bpmnElement="Flow_CanWriteNo">
         <di:waypoint x="580" y="340" />
         <di:waypoint x="622.5" y="340" />
-        <di:waypoint x="622.5" y="540" />
-        <di:waypoint x="665" y="540" />
+        <di:waypoint x="622.5" y="620" />
+        <di:waypoint x="665" y="620" />
         <bpmndi:BPMNLabel><dc:Bounds x="626.5" y="372" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_InspectToEnd_di" bpmnElement="Flow_InspectToEnd">
-        <di:waypoint x="785" y="540" />
-        <di:waypoint x="870" y="540" />
+        <di:waypoint x="785" y="620" />
+        <di:waypoint x="870" y="620" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_CanWriteYes_di" bpmnElement="Flow_CanWriteYes">
         <di:waypoint x="580" y="340" />
@@ -273,19 +276,21 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
       <bpmndi:BPMNEdge id="Flow_StampToValidate_di" bpmnElement="Flow_StampToValidate">
         <di:waypoint x="1275" y="340" />
         <di:waypoint x="1335" y="340" />
-        <di:waypoint x="1335" y="730" />
-        <di:waypoint x="1395" y="730" />
+        <di:waypoint x="1335" y="810" />
+        <di:waypoint x="1395" y="810" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_ValidateToWork_di" bpmnElement="Flow_ValidateToWork">
-        <di:waypoint x="1515" y="730" />
-        <di:waypoint x="1570" y="730" />
-        <di:waypoint x="1570" y="540" />
-        <di:waypoint x="1625" y="540" />
+        <di:waypoint x="1515" y="810" />
+        <di:waypoint x="1570" y="810" />
+        <di:waypoint x="1570" y="620" />
+        <di:waypoint x="1625" y="620" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_WorkToEnd_di" bpmnElement="Flow_WorkToEnd">
-        <di:waypoint x="1745" y="540" />
-        <di:waypoint x="1820" y="540" />
+        <di:waypoint x="1745" y="620" />
+        <di:waypoint x="1820" y="620" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_StampAssetSource" bpmnElement="DSR_beans_Task_StampAssetSource"><dc:Bounds x="1195" y="418" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1195" y="460" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_StampAssetSource" bpmnElement="DOA_Beans_Task_StampAssetSource"><di:waypoint x="1215" y="400"/><di:waypoint x="1215" y="418"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
