@@ -15,7 +15,6 @@ A SUB-PROCESS, never an entry point.
 ### 1. Compose the message (`A_Compose`)
 
 - Who: the `Actor` lane.
-- Skill: `log-message`.
 - What: Five required strings — timestamp, actor, process, task, message — and one optional markdown body.
 - Record it: `workflow_complete` with `node: "A_Compose"`.
 - next: → `GW_Complete` (All five present?)
@@ -33,7 +32,6 @@ A SUB-PROCESS, never an entry point.
 ### 2. Record it where a person can read it (`A_Record`)
 
 - Who: the `Logger` lane (role `logger`).
-- Skill: `logger`.
 - What: Performed by the Logger, which records and decides nothing.
 - Record it: `workflow_complete` with `node: "A_Record"`.
 - next: → `End_Logged` (Recorded)
