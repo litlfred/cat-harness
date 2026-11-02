@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: test-data-curation\n"
-"POT-Creation-Date: 2026-11-01T11:34:43.264Z\n"
+"POT-Creation-Date: 2026-11-02T04:02:34.843Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:122
 #. Diagram element documentation
-msgid "BOUND BY THE CONTENT TYPE, so no `calledElement` is written here: each specialisation process belongs to the layer that owns its content type (fhir-harness, folio-assistant-core, folio-assistant-sci), and a lower layer cannot name a higher layer\\'s process. The specialisation is the one Task_DetermineSpecialisation found; so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own."
+msgid "BOUND BY THE CONTENT TYPE, so no `calledElement` is written here: each specialisation process belongs to the layer that owns its content type, and a lower layer cannot name a higher layer\\'s process. The specialisation is the one Task_DetermineSpecialisation found; so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own."
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:97
