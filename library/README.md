@@ -7,7 +7,7 @@ generated: "scripts/subgraph-readmes.ts of the bootstrap toolset (https://github
 
 # library
 
-L1 source content — one `<bib-slug>/` per ingested document, holding `sections/*.md`, `structure.json` and, where the source was scanned, `ocr/page-NNN.txt`. THIS INSTANCE HOLDS NONE. Bean `frs5` moved all four entries out (the three IRIS items to the IRIS replica, milnorlink to the science layer) because the platform holds no content, and this entry was removed with them. It is back, on the owner's ruling of 2026-09-20, for ONE reason and it is not about this instance: `wwi6` pins the guarantee that a DEPENDENT folio materialises its own `uploads/` and `library/`, and a dependent inherits the convention — an id and a relative path — from what the harness declares. Remove this and every downstream folio silently stops getting a library. IT IS THE `dh4f` SHAPE AND THAT IS KNOWN, NOT OVERLOOKED: a declared directory this instance does not hold is exactly what that bean is about. The cost is paid deliberately and it is bounded — the consumers that scan libraries now fan out over EVERY declared one (bean `a02m`), so an empty one contributes nothing rather than shadowing the two that have content. What it must never become again is the FIRST of several silently taken as the only one. The real fix is the core relocation — `uploads`, `voices`, `translation-sources` and this moving to the content core, per the owner's earlier "voices, uploads library in folio-asst-core" — after which a dependent inherits them from the layer that owns content and this entry goes for good. THE AGENT-SKILL CORPUS JOINED IT on 2026-10-01 (owner ruling: agent-skills dissolves into cat-harness's concern groups; bean `j7ql`): the 14 documents listed in `heldEntries` — vendor skill documentation (ASSERTION: a publisher describing its own product) and three arXiv papers (EVIDENCE: a measurement somebody else can repeat); each entry's `structure.json` carries its publisher, which is how a reader tells the two kinds apart. They sit flat here until placement PR8 (bean `f8wp`) regroups `library/` into `library/<group>/<slug>/`; the audit (#1778) assigns them conduct (10), sdlc (`hmans-2026-beans-readme`), tools (`mcp-2026-specification-2026-07-28`) and content (the two RFCs). Their summaries stay HELD, per entry, on the owner's 2026-09-24 ruling (bean `x80s`: 'Library summaries for agent-skills entries — No, keep held back'), which was stated about these documents and not about this directory.
+L1 source content — one `<bib-slug>/` per ingested document, holding `sections/*.md`, `structure.json` and, where the source was scanned, `ocr/page-NNN.txt`. THIS INSTANCE HOLDS NONE. Bean `frs5` moved all four entries out (the three IRIS items to the IRIS replica, milnorlink to the science layer) because the platform holds no content, and this entry was removed with them. It is back, on the owner's ruling of 2026-09-20, for ONE reason and it is not about this instance: `wwi6` pins the guarantee that a DEPENDENT folio materialises its own `uploads/` and `library/`, and a dependent inherits the convention — an id and a relative path — from what the harness declares. Remove this and every downstream folio silently stops getting a library. IT IS THE `dh4f` SHAPE AND THAT IS KNOWN, NOT OVERLOOKED: a declared directory this instance does not hold is exactly what that bean is about. The cost is paid deliberately and it is bounded — the consumers that scan libraries now fan out over EVERY declared one (bean `a02m`), so an empty one contributes nothing rather than shadowing the two that have content. What it must never become again is the FIRST of several silently taken as the only one. The real fix is the core relocation — `uploads`, `voices`, `translation-sources` and this moving to the content core, per the owner's earlier "voices, uploads library in folio-asst-core" — after which a dependent inherits them from the layer that owns content and this entry goes for good. THE AGENT-SKILL CORPUS JOINED IT on 2026-10-01 (owner ruling: agent-skills dissolves into cat-harness's concern groups; bean `j7ql`): the 14 documents listed in `heldEntries` — vendor skill documentation (ASSERTION: a publisher describing its own product) and three arXiv papers (EVIDENCE: a measurement somebody else can repeat); each entry's `structure.json` carries its publisher, which is how a reader tells the two kinds apart. Since bean `6fez` (2026-11-01) every entry is filed by concern group at `library/<group>/<slug>/`, the groups named in `library/library.json`; the audit (#1778) put them in conduct (10), sdlc (`hmans-2026-beans-readme`), tools (`mcp-2026-specification-2026-07-28`) and content (the two RFCs). A new upload still lands unfiled at `library/<slug>/`, and ids are minted from the slug, so filing an entry changes none of them. Their summaries stay HELD, per entry, on the owner's 2026-09-24 ruling (bean `x80s`: 'Library summaries for agent-skills entries — No, keep held back'), which was stated about these documents and not about this directory.
 
 Part of [C@T Harness](../README.md) 0.1.0, declared as `library`, holding `library`.
 
@@ -15,79 +15,13 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `library`, holding `libra
 |---|---|---|
 | [`figure-descriptions.json`](figure-descriptions.json) | data |  |
 | [`image-verdicts.json`](image-verdicts.json) | data |  |
-| [`agent-skill-best-practices---gemini-cli/`](agent-skill-best-practices---gemini-cli/README.md) | described in its own README | |
-| [`agent-skills---google-antigravity-docs/`](agent-skills---google-antigravity-docs/README.md) | described in its own README | |
-| [`arxiv-0909.4061v2/`](arxiv-0909.4061v2/README.md) | described in its own README | |
-| [`arxiv-1603.07466v1/`](arxiv-1603.07466v1/README.md) | described in its own README | |
-| [`arxiv-2106.12880v1/`](arxiv-2106.12880v1/README.md) | described in its own README | |
-| [`arxiv-2202.02427v1/`](arxiv-2202.02427v1/README.md) | described in its own README | |
-| [`arxiv-2203.02010v1/`](arxiv-2203.02010v1/README.md) | described in its own README | |
-| [`arxiv-2312.07755v1/`](arxiv-2312.07755v1/README.md) | described in its own README | |
-| [`arxiv-2402.02172v5/`](arxiv-2402.02172v5/README.md) | described in its own README | |
-| [`arxiv-2403.16873v1/`](arxiv-2403.16873v1/README.md) | described in its own README | |
-| [`arxiv-2404.04834v4/`](arxiv-2404.04834v4/README.md) | described in its own README | |
-| [`arxiv-2405.14766v2/`](arxiv-2405.14766v2/README.md) | described in its own README | |
-| [`arxiv-2503.18813v2/`](arxiv-2503.18813v2/README.md) | described in its own README | |
-| [`arxiv-2504-10971v1/`](arxiv-2504-10971v1/README.md) | described in its own README | |
-| [`arxiv-2504.07199v3/`](arxiv-2504.07199v3/README.md) | described in its own README | |
-| [`arxiv-2504.19675v2/`](arxiv-2504.19675v2/README.md) | described in its own README | |
-| [`arxiv-2504.21474v1/`](arxiv-2504.21474v1/README.md) | described in its own README | |
-| [`arxiv-2505.06046v4/`](arxiv-2505.06046v4/README.md) | described in its own README | |
-| [`arxiv-2505.10399v1/`](arxiv-2505.10399v1/README.md) | described in its own README | |
-| [`arxiv-2507.07974v2/`](arxiv-2507.07974v2/README.md) | described in its own README | |
-| [`arxiv-2507.23348v1/`](arxiv-2507.23348v1/README.md) | described in its own README | |
-| [`arxiv-2508.05192v2/`](arxiv-2508.05192v2/README.md) | described in its own README | |
-| [`arxiv-2508.21620v2/`](arxiv-2508.21620v2/README.md) | described in its own README | |
-| [`arxiv-2510.19207v2/`](arxiv-2510.19207v2/README.md) | described in its own README | |
-| [`arxiv-2601.04544v1/`](arxiv-2601.04544v1/README.md) | described in its own README | |
-| [`arxiv-2602.12670v4/`](arxiv-2602.12670v4/README.md) | described in its own README | |
-| [`arxiv-260327124v1/`](arxiv-260327124v1/README.md) | described in its own README | |
-| [`arxiv-2605.03537v1/`](arxiv-2605.03537v1/README.md) | described in its own README | |
-| [`arxiv-2606.04382v1/`](arxiv-2606.04382v1/README.md) | described in its own README | |
-| [`arxiv-2606.21008v3/`](arxiv-2606.21008v3/README.md) | described in its own README | |
-| [`arxiv-2607.00053v1/`](arxiv-2607.00053v1/README.md) | described in its own README | |
-| [`arxiv-2607.14456v1/`](arxiv-2607.14456v1/README.md) | described in its own README | |
-| [`arxiv-2607.20636v1/`](arxiv-2607.20636v1/README.md) | described in its own README | |
-| [`arxiv-2607.25032v1/`](arxiv-2607.25032v1/README.md) | described in its own README | |
-| [`arxiv-2608.08453v1/`](arxiv-2608.08453v1/README.md) | described in its own README | |
-| [`arxiv-2608.18294v2/`](arxiv-2608.18294v2/README.md) | described in its own README | |
-| [`avila-2021-process-modeling-guidelines-slr/`](avila-2021-process-modeling-guidelines-slr/README.md) | described in its own README | |
-| [`best-practices---google-antigravity-docs/`](best-practices---google-antigravity-docs/README.md) | described in its own README | |
-| [`deerwester-1990-indexing-by-lsa/`](deerwester-1990-indexing-by-lsa/README.md) | described in its own README | |
-| [`djurica-2024-decision-model-comprehension-emisa/`](djurica-2024-decision-model-comprehension-emisa/README.md) | described in its own README | |
-| [`dusengumuremyi-2026-ai-mediated-raci/`](dusengumuremyi-2026-ai-mediated-raci/README.md) | described in its own README | |
-| [`equipping-agents-for-the-real-world-with-agent-skills-anthro/`](equipping-agents-for-the-real-world-with-agent-skills-anthro/README.md) | described in its own README | |
-| [`figl-strembeck-2015-flow-direction-experiment/`](figl-strembeck-2015-flow-direction-experiment/README.md) | described in its own README | |
-| [`github-docs-actions-secure-use-reference/`](github-docs-actions-secure-use-reference/README.md) | described in its own README | |
-| [`gurel-tat-2017-swot-analysis/`](gurel-tat-2017-swot-analysis/README.md) | described in its own README | |
-| [`hasic-2018-5pdm-decision-intelligence/`](hasic-2018-5pdm-decision-intelligence/README.md) | described in its own README | |
-| [`hasic-2019-complexity-metrics-dmn/`](hasic-2019-complexity-metrics-dmn/README.md) | described in its own README | |
-| [`hmans-2026-beans-readme/`](hmans-2026-beans-readme/README.md) | described in its own README | |
-| [`kg-folio-asst-2026-09-30/`](kg-folio-asst-2026-09-30/README.md) | described in its own README | |
-| [`landauer-foltz-laham-1998-intro-lsa/`](landauer-foltz-laham-1998-intro-lsa/README.md) | described in its own README | |
-| [`leopold-2016-bpmn-quality-issues-industry/`](leopold-2016-bpmn-quality-issues-industry/README.md) | described in its own README | |
-| [`mcp-2026-specification-2026-07-28/`](mcp-2026-specification-2026-07-28/README.md) | described in its own README | |
-| [`mendling-2010-7pmg/`](mendling-2010-7pmg/README.md) | described in its own README | |
-| [`mendling-2010-activity-labeling/`](mendling-2010-activity-labeling/README.md) | described in its own README | |
-| [`mendling-2012-thresholds-error-probability/`](mendling-2012-thresholds-error-probability/README.md) | described in its own README | |
-| [`nist-sp-800-207/`](nist-sp-800-207/README.md) | described in its own README | |
-| [`omg-2013-bpmn-2-0-2/`](omg-2013-bpmn-2-0-2/README.md) | described in its own README | |
-| [`omg-2024-dmn-1-5/`](omg-2024-dmn-1-5/README.md) | described in its own README | |
-| [`omg-2024-spdx-3-0/`](omg-2024-spdx-3-0/README.md) | described in its own README | |
-| [`qi-hessen-vanderheijden-2023-ca-vs-lsa/`](qi-hessen-vanderheijden-2023-ca-vs-lsa/README.md) | described in its own README | |
-| [`reijers-2011-syntax-highlighting/`](reijers-2011-syntax-highlighting/README.md) | described in its own README | |
-| [`rfc2119-key-words-requirement-levels/`](rfc2119-key-words-requirement-levels/README.md) | described in its own README | |
-| [`rfc8174-uppercase-vs-lowercase-2119-key-words/`](rfc8174-uppercase-vs-lowercase-2119-key-words/README.md) | described in its own README | |
-| [`sammut-bonnici-galea-2015-swot-analysis/`](sammut-bonnici-galea-2015-swot-analysis/README.md) | described in its own README | |
-| [`skill-authoring-best-practices---claude-platform-docs/`](skill-authoring-best-practices---claude-platform-docs/README.md) | described in its own README | |
-| [`skills-in-openai-api/`](skills-in-openai-api/README.md) | described in its own README | |
-| [`skills-in-openai-api-notebook/`](skills-in-openai-api-notebook/README.md) | described in its own README | |
-| [`strauch-carbno-2025-spdx-3-1-supply-chain/`](strauch-carbno-2025-spdx-3-1-supply-chain/README.md) | described in its own README | |
-| [`w3c-2013-prov-o/`](w3c-2013-prov-o/README.md) | described in its own README | |
-| [`w3c-2018-odrl-model-2-2/`](w3c-2018-odrl-model-2-2/README.md) | described in its own README | |
-| [`w3c-2020-json-ld-1-1/`](w3c-2020-json-ld-1-1/README.md) | described in its own README | |
-| [`w3c-2024-prov-jsonld/`](w3c-2024-prov-jsonld/README.md) | described in its own README | |
-| [`wang-rangaiah-2026-mcdm-aggregation/`](wang-rangaiah-2026-mcdm-aggregation/README.md) | described in its own README | |
-| [`zur-muehlen-recker-2008-how-much-language/`](zur-muehlen-recker-2008-how-much-language/README.md) | described in its own README | |
+| [`conduct/`](conduct/) | _nothing declares what this holds_ | |
+| [`content/`](content/) | _nothing declares what this holds_ | |
+| [`kg/`](kg/) | _nothing declares what this holds_ | |
+| [`library/`](library/) | _nothing declares what this holds_ | |
+| [`process/`](process/) | _nothing declares what this holds_ | |
+| [`sdlc/`](sdlc/) | _nothing declares what this holds_ | |
+| [`tools/`](tools/) | _nothing declares what this holds_ | |
+| [`ui/`](ui/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->
