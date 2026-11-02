@@ -2748,6 +2748,20 @@ button.fa-qa-badge[aria-busy="true"] { opacity: 0.6; }
   vertical-align: -0.32em;
 }
 
+/* THE HOME MARK — the default when an instance declares no art (owner,
+ * 2026-11-02: home icon as the default avatar beside the title). The same
+ * frame column as the initial it replaced, with no border: the house is the
+ * whole mark. */
+.fa-site-mark--home {
+  border: 0;
+}
+.fa-site-mark--home svg {
+  width: 100%;
+  height: 100%;
+  padding: 3px;
+  box-sizing: border-box;
+}
+
 /* ── Action tiles ─────────────────────────────────────────────────────── */
 
 /* ONE PANEL, THE SIZE OF THE QR CODE, HOLDING EVERY HEADER ACTION.
