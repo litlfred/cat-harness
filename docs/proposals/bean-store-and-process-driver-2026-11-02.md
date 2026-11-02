@@ -17,7 +17,7 @@ summary: >-
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
-**Status:** proposal, nothing built. Q1 ruled (instances only), Q2 ruled (deployment description), Q3 ruled (`beans-serve` first); Q4 and Q5 open in §7.
+**Status:** proposal, nothing built. Q1 ruled (instances only), Q2 ruled (deployment description), Q3 ruled (`beans-serve` first), Q4 ruled (git log + instances); Q5 open in §7.
 Issue [#991](https://github.com/litlfred/cat-harness/issues/991), bean
 `folio-assistant-bsd1`. It builds on the work-plan store contract
 ([`work-plan-store`](../../skills/sdlc/sdlc-core/work-plan-store.md), Q-DS-1 A
@@ -310,7 +310,7 @@ and, when it came from the engine, `instance` and `node`. `history(id)` returns
 them in order.
 
 - The git Tool builds `history` from `git log` on the bean file plus the
-  instance histories, so nothing is migrated.
+  instance histories, so nothing is migrated (**ruled 2026-11-02, Q-BSD-4 A**).
 - A server Tool keeps the events as rows.
 
 The beans-by-process pages then gain a timeline per bean
@@ -382,5 +382,5 @@ would pay for; steps 1 to 8 are needed first and need neither.
 | Q1 | Where does a bean's position live? | **Ruled B (2026-11-02): only in the instances**, read through store operations (§4.4) |
 | Q2 | How is the store Tool chosen? | **Ruled A (2026-11-02): by the deployment description**, per checkout (§4.3) |
 | Q3 | First `agent-launch` Tool? | **Ruled A (2026-11-02): `beans-serve` `sendAgentMessage`** (§4.5) |
-| Q4 | Where does history come from for the git Tool? | **A** derived from git log plus instance histories, no migration · B a new events file per bean on the branch |
+| Q4 | Where does history come from for the git Tool? | **Ruled A (2026-11-02): derived from git log plus instance histories**, no migration (§4.6) |
 | Q5 | Where does a benchmark run keep its beans and instances? | **A** a run-scoped store Tool (in memory, or a scratch branch per run) · B a dedicated benchmark branch shared by runs · C the real work plan, tagged |
