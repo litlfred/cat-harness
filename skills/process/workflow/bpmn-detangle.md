@@ -114,6 +114,40 @@ about one screen. Change the budget and the text size together.
 8. **Look at the rendered SVG**, at 100% in a 1200px band. The check finds
    collisions; only looking finds a diagram that is clean and still confusing.
 
+## Laying it out by hand: patterns that work
+
+`--write` moves labels, lane order and right angles; it refuses any move
+that would add a crossing, so on a tangled diagram it changes little and the
+layout is redone by hand (cat-harness#989: 43 diagrams). What worked:
+
+- **Rows inside a lane.** The happy path is one row; each branch or
+  loop target gets a row below it, in the column of the gateway that
+  leads there. A loop-back leaves its task, runs left in its row or in the
+  channel under it, and comes up into its target's bottom. Two loops into
+  one task enter at different x, the longer one further left, so they
+  never cross.
+- **Hand-offs in one column.** A step in another lane sits straight above
+  or below the step that hands to it. Put the lanes a path visits **on the
+  same side** of the main lane (both helper lanes above, say), so the loops
+  below stay free.
+- **Wrap a long row.** More than about eight tasks in a row will not fit
+  1400. Drop from the end of the first row into a channel, run left, and
+  start the second row under the first. Nothing else may sit in that
+  channel.
+- **A data store inside the region its writers bound.** Place the store
+  where every association can reach it without crossing a sequence flow,
+  usually in a row under the tasks that write it. If a flow encloses some
+  writers, the store goes inside the enclosure too.
+- **A gateway has four corners.** Count its flows first. With five or more,
+  leave from the midpoints of its lower edges as well, and turn away from
+  each other at once.
+- **Labels.** A gateway's question goes in a free corner (above, or
+  above-left if a flow enters from the top); answers sit beside their own
+  segment. A label never starts inside a lane's name strip (the first 30
+  units of the lane).
+- **Shorten a name** that overflows the fixed 120 box, and say so in the
+  PR: a name is content.
+
 ## When it still does not fit
 
 Split by phase ([`bpmn-authoring`](bpmn-authoring.md) §"Split by phase:

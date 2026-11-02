@@ -57,7 +57,17 @@ Every diagram you write or touch must, when you are done:
 
 `bun run cat bpmn:detangle <file>` reports all of it, and `--write` fixes
 what it can (lane order, right angles, box and lane sizes, label places).
-Run it before and after, and put both counts in the PR. The same findings
+Run it before and after, and put both counts in the PR.
+
+**Zero findings on every diagram you touch, or it does not merge** (owner,
+2026-11-02, after 63 of 80 harness diagrams were found with findings: *"improve
+bpmn authoring process/skills so doesnt happen again"*). A report nobody
+has to act on is how they piled up. Run `bpmn:detangle <file> --check`
+last; a finding you leave needs a reason in the PR, and only
+`diagram-too-wide` / `lane-order` may be left that way. Then **look at the
+render**: the check cannot yet see a box drawn across a lane line or
+outside its own lane, two flows drawn on top of each other, or a flow that
+wanders through a lane it does not stop in. Those are found only by looking. The same findings
 are in `render:bpmn`'s warnings and the process's QA report, so a reviewer
 sees what the author left. The procedure, and why the budget is 1400 × 900, is
 [`bpmn-detangle`](bpmn-detangle.md).
