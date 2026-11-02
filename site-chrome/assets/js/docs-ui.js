@@ -5846,7 +5846,9 @@
       box.appendChild(img);
     } else {
       // A pinned block with no picture draws ITS GRAPH KIND's avatar.
-      box.appendChild(fallbackAvatar(a.kind === "pin" && kindWord(a.nodeKind) ? kindWord(a.nodeKind) : a.kind));
+      // A bookmark with no cover draws the `docs` kind: it marks a place in a document.
+      box.appendChild(fallbackAvatar(a.kind === "pin" && kindWord(a.nodeKind) ? kindWord(a.nodeKind)
+        : a.kind === "bookmark" ? "docs" : a.kind));
     }
     return box;
   }
