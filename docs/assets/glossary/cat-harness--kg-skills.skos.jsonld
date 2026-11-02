@@ -2639,6 +2639,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills/merge-manager-watcher",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "merge-manager-watcher"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The merge manager agent's watch loop: what wakes it, how often it looks, how it tells whether it is the active merge manager, what it reads each time, which process each reading sends it to (merge train, saturation meta-merge, stalled-agent takeover), and how it keeps the swarm in step with hold and done broadcasts. Use for \"be the merge manager\", \"watch the queue\", \"who merges\", \"the queue is stuck\", and when starting or handing over the merge-steward lane."
+        }
+      ],
+      "skos:notation": "merge-manager-watcher",
+      "dcterms:source": "cat-harness/skills/sdlc/sdlc-core/merge-manager-watcher.md",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills/merge-queue",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -3556,6 +3576,26 @@
       ],
       "skos:notation": "sample-import",
       "dcterms:source": "cat-harness/skills/library/large-datasets/sample-import.md",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills/saturation-meta-merge",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "saturation-meta-merge"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "When the CI runners have been full for a long time, drain a repository's ready PRs in one step: hold the swarm, cancel the queued PR runs, stack every admitted PR onto one meta-merge branch with merge commits, and land that branch on `main` without waiting for CI, on the owner's card that names each PR. Then re-run main's checks and report. Use for \"runners are full\", \"cancel everything and merge what's ready\", \"meta-merge\", \"consolidate the queue\", and when the queue has not moved for an hour or more."
+        }
+      ],
+      "skos:notation": "saturation-meta-merge",
+      "dcterms:source": "cat-harness/skills/sdlc/sdlc-core/saturation-meta-merge.md",
       "skos:note": "candidate"
     },
     {
