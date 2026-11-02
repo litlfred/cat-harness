@@ -3286,7 +3286,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Regenerate every derived reference from its source before building: skill schema and instruction pages, content-backed docs pages, the graph projections and viewers, the handler and translation indexes, and the rendered BPMN diagrams. The published site is built from sources, never from committed copies that may be stale."
+          "@value": "Regenerate every derived reference from its source before building: skill schema and instruction pages, content-backed docs pages, the graph projections and viewers, the handler and translation indexes, and the rendered BPMN diagrams. The published site is built from sources, never from committed copies that may be stale. After a main deploy, a side job (writer-records) runs every writer, and every step of the QA working copy, again under strace. It records what each one READ and keeps what it wrote, so a preview can rerun only the writers and QA steps whose reads changed (owner card Q-CONE-2 B, 2026-11-01). The main deploy itself still runs everything."
         }
       ],
       "skos:notation": "Task_Regenerate",
@@ -3366,7 +3366,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Build the preview from the PR's head: regenerate the generated docs, trim what this preview does not need, render the BPMN diagrams, then Jekyll, TypeDoc and the knowledge-graph export, with the staging banner and SEO identity claims stripped."
+          "@value": "Build the preview from the PR's head: regenerate the generated docs, trim what this preview does not need, render the BPMN diagrams, then Jekyll, TypeDoc and the knowledge-graph export, with the staging banner and SEO identity claims stripped. A PREVIEW REBUILDS ONLY ITS DEPENDENCY CONE (owner cards Q-CONE-1 C and Q-CONE-2 B, 2026-11-01): main's writer records say what each derive:publish writer and each step of the QA working copy READ. A writer or QA step whose recorded reads all match is not run, and main's outputs for it are put back. Every other one runs. QA is not left out of a preview, only narrowed to what the change can reach. Inside a preview's QA build, `skill:register` also leaves to derive:publish the two pages that derive:publish builds anyway and that no later QA step reads (`skills:docs` and `lsi:viz`), so they are built once."
         }
       ],
       "skos:notation": "Task_Build",
@@ -3971,6 +3971,146 @@
       ],
       "skos:notation": "S_Mirror",
       "dcterms:source": "cat-harness/processes/process/hand-back-to-discussion.bpmn#S_Mirror",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_harnessrendering.a_board",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Draw the board of todos and beans"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The todo board mounts inside the landing board, so harness cards and todo stickies share one surface. Each card carries an edit link only when the build composed one."
+        }
+      ],
+      "skos:notation": "A_Board",
+      "dcterms:source": "cat-harness/processes/ui/harness-default-rendering.bpmn#A_Board",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_harnessrendering.a_ground",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Resolve each harness's page ground"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The theme art for that harness's pages, all three crops or none, and the URL scopes that make a page that harness's (`pageGround`). The site owner's ground is the fallback for a page no scope claims."
+        }
+      ],
+      "skos:notation": "A_Ground",
+      "dcterms:source": "cat-harness/processes/ui/harness-default-rendering.bpmn#A_Ground",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_harnessrendering.a_propose",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Propose the change"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Through whichever write tool the session has. The change is a proposal: it goes into the content change review, which decides whether it is published."
+        }
+      ],
+      "skos:notation": "A_Propose",
+      "dcterms:source": "cat-harness/processes/ui/harness-default-rendering.bpmn#A_Propose",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_harnessrendering.a_publish",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Publish docs on their theme's art"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "`head_custom.html` sets the ground behind every page of the harness, under two scrims of the page's own colour, so text and links keep the plain page's contrast."
+        }
+      ],
+      "skos:notation": "A_Publish",
+      "dcterms:source": "cat-harness/processes/ui/harness-default-rendering.bpmn#A_Publish",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_harnessrendering.a_read",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Read a page or a card"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The floor of the interface: everything a harness publishes can be read with no account and no tool."
+        }
+      ],
+      "skos:notation": "A_Read",
+      "dcterms:source": "cat-harness/processes/ui/harness-default-rendering.bpmn#A_Read",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_harnessrendering.a_tiles",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Compose each harness's nav and tile"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "One themed section per instance in dependency order, from its declaration: its docs, its declared subgraphs (a graph with no viewer is shown inert and labelled), and its theme. Written to `_data/harness.json` by `sync-docs-harness.ts`."
+        }
+      ],
+      "skos:notation": "A_Tiles",
+      "dcterms:source": "cat-harness/processes/ui/harness-default-rendering.bpmn#A_Tiles",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_harnessrendering.a_todo",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Leave it as feedback"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "With no write tool the reader's point is not lost: it is recorded as feedback for someone who can write."
+        }
+      ],
+      "skos:notation": "A_Todo",
+      "dcterms:source": "cat-harness/processes/ui/harness-default-rendering.bpmn#A_Todo",
       "skos:note": "candidate"
     },
     {
@@ -5214,23 +5354,23 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_materializeremote.task_copyright",
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_materializeremote.task_answergates",
       "@type": "skos:Concept",
       "skos:inScheme": {
         "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
       },
       "skos:prefLabel": [
         {
-          "@value": "COPYRIGHT per bitstream, and for the derived work"
+          "@value": "Answer the other four gates"
         }
       ],
       "skos:definition": [
         {
-          "@value": "What the licence permits for THIS bitstream, and separately whether it permits the derivation. LICENSE-CONTENT.md exists in this repository and the ingestion pipeline does not read it."
+          "@value": "Restrictions, copyright, retention and source loss, each answered permitted, refused or unknown. They were four steps in a row; they are four answers to one decision (shared block G10 of the BPMN guidance review, 2026-11-01), and Gateway_Gates reads them with size through decisions/materialization-gate.dmn. RESTRICTIONS. The owner's phrase is 'no restrictions known in context', and that is a STATE, not a green light. GateVerdict is three-valued for this reason alone, and `unknown` is never rendered as `permitted`. COPYRIGHT. What the licence permits for THIS bitstream, and separately whether it permits the derivation. LICENSE-CONTENT.md exists in this repository and the ingestion pipeline does not read it. RETENTION. A copy with no expiry cannot be told from an abandoned one — the same argument bean-blocking makes about a block with no expiry. An ARCHIVAL copy is the exception and it is a specification rather than an omission: freshness() reports it `permanent`, not `no-expiry`. SOURCE LOSS. Not hypothetical. The one IRIS record this repository holds carries a handle on iris.wpro.who.int, a regional instance merged into the global one. Only an ARCHIVAL copy of the original bytes discharges this; a working copy cannot, because the derived sections are not the publication."
         }
       ],
-      "skos:notation": "Task_Copyright",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_Copyright",
+      "skos:notation": "Task_AnswerGates",
+      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_AnswerGates",
       "skos:note": "candidate"
     },
     {
@@ -5241,7 +5381,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Declare the node `materialized`"
+          "@value": "Declare the node materialized"
         }
       ],
       "skos:definition": [
@@ -5261,7 +5401,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "ENUMERATE + SUBSET against the source descriptor"
+          "@value": "Enumerate the source descriptor"
         }
       ],
       "skos:definition": [
@@ -5314,46 +5454,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_materializeremote.task_restrictions",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "RESTRICTIONS unknown is an answer, not a green light"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "The owner's phrase is 'no restrictions known in context', and that is a STATE, not a green light. GateVerdict is three-valued for this reason alone, and `unknown` is never rendered as `permitted`."
-        }
-      ],
-      "skos:notation": "Task_Restrictions",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_Restrictions",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_materializeremote.task_retention",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "RETENTION what expires this copy"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "A copy with no expiry cannot be told from an abandoned one — the same argument bean-blocking makes about a block with no expiry. An ARCHIVAL copy is the exception and it is a specification rather than an omission: freshness() reports it `permanent`, not `no-expiry`."
-        }
-      ],
-      "skos:notation": "Task_Retention",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_Retention",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_materializeremote.task_size",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -5361,7 +5461,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "SIZE what fraction, and what the whole would cost"
+          "@value": "Size the take and the whole"
         }
       ],
       "skos:definition": [
@@ -5374,26 +5474,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_materializeremote.task_sourceloss",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "SOURCE LOSS what survives if the origin goes"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Not hypothetical. The one IRIS record this repository holds carries a handle on iris.wpro.who.int, a regional instance merged into the global one. Only an ARCHIVAL copy of the original bytes discharges this; a working copy cannot, because the derived sections are not the publication."
-        }
-      ],
-      "skos:notation": "Task_SourceLoss",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_SourceLoss",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_materializeremote.task_stayref",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -5401,7 +5481,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Leave it `referenced`, record why"
+          "@value": "Leave it referenced, record why"
         }
       ],
       "skos:definition": [
@@ -5564,26 +5644,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_mergerefusal.call_beanclose",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "Close the bean [bean-close]"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
-        }
-      ],
-      "skos:notation": "Call_BeanClose",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Call_BeanClose",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_mergerefusal.call_beanclose_2",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -5601,26 +5661,6 @@
       ],
       "skos:notation": "Call_BeanClose_2",
       "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Call_BeanClose_2",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_mergerefusal.call_beanclose_3",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "Close the bean [bean-close]"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
-        }
-      ],
-      "skos:notation": "Call_BeanClose_3",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Call_BeanClose_3",
       "skos:note": "candidate"
     },
     {
@@ -8084,6 +8124,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_renderkgtocdn.call_githubpages",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Render and push to GitHub Pages"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The `gh-pages` Tool's process, bootstrap-tools' render-kg-to-github-pages: make sure gh-pages exists and Pages serves it, stage, check the staging, commit onto gh-pages, check what is served. It returns the status and the message Task_Report records."
+        }
+      ],
+      "skos:notation": "Call_GitHubPages",
+      "dcterms:source": "cat-harness/processes/process/render-kg-to-cdn.bpmn#Call_GitHubPages",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_renderkgtocdn.call_toolsubprocess",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -8091,12 +8151,12 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Render and push with the target's Tool [its own subprocess]"
+          "@value": "Render and push with that CDN's own Tool"
         }
       ],
       "skos:definition": [
         {
-          "@value": "BOUND BY THE TOOL, so no `calledElement` is written here: the activity names the skill, the Tool satisfies it, and the Tool's `subprocesses` are what this descends into — for `gh-pages`, bootstrap-tools' render-kg-to-github-pages (make sure gh-pages exists and Pages serves it, stage, check the staging, commit onto gh-pages, check what is served). A diagram that named it would make every other CDN a second copy of this process. Whatever the Tool, it returns the two outputs below."
+          "@value": "BOUND BY THE TOOL, so no `calledElement` is written here, and only on this branch: the CDN is not GitHub Pages, and its Tool, which a higher layer owns (who-iris\\'s Cloudflare publish, for one), lists the process this descends into. A lower layer cannot name a higher layer\\'s process. Whatever the Tool, it returns the same status and message."
         }
       ],
       "skos:notation": "Call_ToolSubprocess",
@@ -8131,7 +8191,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Resolve the Subgraphs, the root URL and the target's Tool"
+          "@value": "Determine which CDN, the root URL and the Subgraphs"
         }
       ],
       "skos:definition": [
@@ -9184,26 +9244,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_slicesqlitepublish.call_beanclose",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "Close the bean [bean-close]"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
-        }
-      ],
-      "skos:notation": "Call_BeanClose",
-      "dcterms:source": "cat-harness/processes/kg/slice-sqlite-publish.bpmn#Call_BeanClose",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_slicesqlitepublish.call_beanclose_2",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -9221,26 +9261,6 @@
       ],
       "skos:notation": "Call_BeanClose_2",
       "dcterms:source": "cat-harness/processes/kg/slice-sqlite-publish.bpmn#Call_BeanClose_2",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_slicesqlitepublish.call_beanclose_3",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "Close the bean [bean-close]"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
-        }
-      ],
-      "skos:notation": "Call_BeanClose_3",
-      "dcterms:source": "cat-harness/processes/kg/slice-sqlite-publish.bpmn#Call_BeanClose_3",
       "skos:note": "candidate"
     },
     {
@@ -9959,26 +9979,6 @@
       "skos:note": "candidate"
     },
     {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subscribekg.call_beanclose_2",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "Close the bean [bean-close]"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
-        }
-      ],
-      "skos:notation": "Call_BeanClose_2",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Call_BeanClose_2",
-      "skos:note": "candidate"
-    },
-    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_subscribekg.call_beanopen",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -10406,12 +10406,12 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Synthesise recipe via content-type specialisation [its own subprocess]"
+          "@value": "Synthesise the recipe with that specialisation"
         }
       ],
       "skos:definition": [
         {
-          "@value": "BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/sdlc/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own."
+          "@value": "BOUND BY THE CONTENT TYPE, so no `calledElement` is written here: each specialisation process belongs to the layer that owns its content type (fhir-harness, folio-assistant-core, folio-assistant-sci), and a lower layer cannot name a higher layer\\'s process. The specialisation is the one Task_DetermineSpecialisation found; so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own."
         }
       ],
       "skos:notation": "Call_ContentTypeSpecialisation",
@@ -10476,6 +10476,26 @@
       ],
       "skos:notation": "Task_CurateFixed",
       "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_CurateFixed",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testdatacuration.task_determinespecialisation",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Determine the content type and its specialisation"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Read the folio's `contentType` and the `specialisation` registered for it (`TestDataSpecialisationSchema` in `schemas/sdlc/test-data.ts`): `fhir-templating` for FHIR IG and DAK content, `markdown-fixture` for document folios, `lean-counterexample` for proof folios, `tabular-cohort` for aggregate indicator tables. None registered stops here and says so, rather than guessing one."
+        }
+      ],
+      "skos:notation": "Task_DetermineSpecialisation",
+      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_DetermineSpecialisation",
       "skos:note": "candidate"
     },
     {
@@ -10736,46 +10756,6 @@
       ],
       "skos:notation": "Call_BeanClose",
       "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#Call_BeanClose",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testplanexecution.call_beanclose_2",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "Close the bean [bean-close]"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
-        }
-      ],
-      "skos:notation": "Call_BeanClose_2",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#Call_BeanClose_2",
-      "skos:note": "candidate"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities/process_testplanexecution.call_beanclose_3",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-bpmn-activities"
-      },
-      "skos:prefLabel": [
-        {
-          "@value": "Close the bean [bean-close]"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
-        }
-      ],
-      "skos:notation": "Call_BeanClose_3",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#Call_BeanClose_3",
       "skos:note": "candidate"
     },
     {
