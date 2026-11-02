@@ -4,7 +4,7 @@ kind: proposal
 issue: 991
 bean: folio-assistant-bsd1
 summary: >-
-  Proposed 2026-11-02, in the context of the WHO Assured AI concept note on
+  Proposed 2026-11-02 (ITB test harness added 19:07Z), in the context of the WHO Assured AI concept note on
   Gemini integration and benchmarking: make every process and skill that
   touches the work plan speak only the work-plan store's contract, with the
   git state branch as one Tool among others (a beans server, an MCP service).
@@ -17,7 +17,7 @@ summary: >-
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
-**Status:** proposal, nothing built. All five questions ruled 2026-11-02 (§7): Q1 B, Q2 A, Q3 A, Q4 A, Q5 A. Next: step 1 of §5.
+**Status:** proposal, nothing built. Q1 to Q5 ruled 2026-11-02 (§7): Q1 B, Q2 A, Q3 A, Q4 A, Q5 A. §4.8 (the ITB as the test harness) added 19:07Z; Q6 open. Step 1 is draft PR #993.
 Issue [#991](https://github.com/litlfred/cat-harness/issues/991), bean
 `folio-assistant-bsd1`. It builds on the work-plan store contract
 ([`work-plan-store`](../../skills/sdlc/sdlc-core/work-plan-store.md), Q-DS-1 A
@@ -43,6 +43,7 @@ work below:
 | Agents use MCP servers for tools and data | The work plan reachable over MCP, not only through git commands a given agent may not have | §4.2 (`beans-mcp`) |
 | Usability parity across frontier models; guardrails replicated in `GEMINI.md` | A **model-neutral work order** an agent of any model receives, so guardrails live in the process and the work order, not in one vendor's prompt file | §4.5 |
 | Routes 0, A and B, run through Gherkin test specifications and the BPMN harness, with reasoning traces captured for the ITB | One dispatcher that can start the same case under each route and record every step, refusal and bean change as a trace | §4.6, §4.7 |
+| The ITB is the testing tool (owner, 2026-11-02 19:07Z) | A test harness the ITB drives: a state machine, a Beans store and a materialised knowledge graph per run, agents A, B, C… started with bean sets S_A, S_B, S_C…, end state and behaviour observed | §4.8 |
 
 Two facts about today matter here. `GEMINI.md` in each repository is five
 lines that point to `AGENTS.md`, so the guardrails an agent gets are the same
@@ -74,6 +75,18 @@ Owner, 2026-11-02:
 
 > look at what we have and what needs to be done
 
+> also in proposal doc, i want to integrate ITB as the testing tool for this.
+> so it needs to spin up a bpmn state machine, a bean data store as part of
+> test harness. then a testplan would be to start "agents A, B, C,... each
+> with their bean sets S_A, S_B, ..." and see what end state is/monitor
+> behaviour.
+>
+> we want agents to know as minimal as possible they are in a test
+> environment. we use skills and memory.md to help set up consistent memory
+> (based on needs for processes in test plan) across models. we layer all of
+> them into a more singular KG (e.g. materialized within a git repo) as part
+> of consistent context.
+
 Four goals follow from this:
 
 - **G1.** Process and skill text says *what* happens to the work plan, never
@@ -87,6 +100,10 @@ Four goals follow from this:
 - **G5.** (from the concept note) The same process can be run by an agent of
   any model, under Route 0, A or B, and the run leaves a trace that can be
   scored and compared.
+- **G6.** The ITB runs these tests: it stands up a state machine, a Beans store
+  and one consistent context per run, starts several agents each with its
+  own beans, and checks the end state and the behaviour on the way. The
+  agents should not be able to tell a test run from real work.
 
 ---
 
@@ -193,6 +210,8 @@ A server-backed store could not be used without changing the engine.
 | N10 | The guardrails an agent receives depend on how it was started and which model it is | G5 |
 | N11 | A benchmark run has nowhere to write beans and instances that is not the real work plan | G5 |
 | N12 | Route 0, A and B are not a setting of any runner; the trace of a run is spread over git, instance files and session logs | G5 |
+| N13 | The ITB proposal (`test-interop-itb-fhir-testplan-2026-10-24.md`, D4 = I1: plans reach the ITB as OpenTestBed Gherkin) has no steps that stand up a state machine, seed a Beans store or start agents | G6 |
+| N14 | An agent's context is assembled differently per model and per session (`CLAUDE.md`, `GEMINI.md`, memory directories, skills mounted or not), so two models in one test do not see the same world | G5, G6 |
 
 ---
 
@@ -343,6 +362,74 @@ settings, and no new runner:
 
 ---
 
+### 4.8 The ITB as the test harness (N13, N14)
+
+The ITB (GITB, through OpenTestBed Gherkin as already ruled, D4 = I1 in
+[the ITB proposal](test-interop-itb-fhir-testplan-2026-10-24.md)) orchestrates
+the test. The harness gives it a small set of services, each a Tool, so a
+test step is a call and not a script:
+
+| Service | Does |
+|---|---|
+| `harness-up` | stands up one **test harness**: a BPMN state machine, a run-scoped Beans store (§4.7) and the run's materialised context (below), and returns its handle |
+| `seed` | writes beans, notes and started instances into that store |
+| `start-agents` | dispatches agents through the launch Tools (§4.5), each with its model, route and bean set |
+| `observe` | streams the run's events (`history`, instance moves, refusals, dispatches) while it runs |
+| `state` | the store and the instances at a moment: the end state a `Then` is checked against |
+| `harness-down` | exports the trace and removes the run's store |
+
+**A test plan in these terms.** A Gherkin feature reads like a scenario of
+work, not of tests:
+
+```gherkin
+Feature: two agents share a merge window
+  Background:
+    Given a harness with processes "code-change-review" and "merge-train"
+    And the context "folio-assistant@<hash>"
+  Scenario: A opens changes, B lands them
+    Given agent A (gemini, route B) holds beans S_A = {a1, a2}
+    And agent B (claude, route B) holds beans S_B = {b1}
+    When the agents are started
+    Then within 2 hours every bean in S_A is completed
+    And bean b1 is at "merge-train" step "End_Landed"
+    And no instance recorded a refused step
+```
+
+`Given` seeds the store and the agents' bean sets, `When` dispatches, and
+`Then` is checked against `state` and `observe`. The ITB keeps its own role
+of running the plan and judging the result; the TAR comes back as a
+`folio-test-run/v1`, as the ITB proposal already describes.
+
+**Agents should not know they are in a test.** What an agent sees is the same
+as in real work:
+
+- the same work order (§4.5), the same store operations, the same skills;
+- beans written as real work items, never titled or tagged as tests;
+- the run's identity (run id, plan, route, model) kept in the harness, never
+  in the work order, the bean or the context;
+- the store reached through the same Tool interface as production; only the
+  deployment description behind it differs (Q-BSD-2 A).
+
+What cannot be hidden (an empty repository history, a fresh store) is listed
+on the test plan as a known difference, so a result can be read with it in
+mind.
+
+**One consistent context, materialised.** Each run gets one git repository
+built from layers, the same for every model in the run:
+
+| Layer | From |
+|---|---|
+| the knowledge graph | L1, L2, L3 content and the harness layers the processes need, as a composed checkout pins them today (`index.lock.json`) |
+| skills | the skills the test plan's processes name, closed over their roles |
+| memory | a `MEMORY.md` per role, generated from the memory graph (`agent-memory`) and filtered to the plan's processes, so each model starts with the same memories |
+| entry files | `AGENTS.md`, with `CLAUDE.md` and `GEMINI.md` pointing to it as they do today, so no model gets guidance the others lack |
+
+The repository is pinned by its commit hash, and the hash is the `context`
+named in the plan's `Background`. Two runs with the same hash gave their
+agents the same world, which is what makes a comparison across models fair.
+Route 0 runs get an empty context; Route A gets skills and memory without
+the knowledge-graph layer; Route B gets all of it.
+
 ## 5. Order of work
 
 | Step | Work | Repo | Depends on |
@@ -357,6 +444,8 @@ settings, and no new runner:
 | 8 | A server Tool (`beans-serve` or MCP) passes the same conformance tests | tools | 2, 3 |
 | 9 | Run-scoped store Tool; route setting on dispatch; Gherkin case → seeded bean + instance (§4.7) | tools | 2, 7 |
 | 10 | `launch-antigravity` Tool; the same cases under Routes 0, A, B for Claude and Gemini; traces exported for the ITB | tools | 7, 9 |
+| 11 | Context materialiser: one pinned repository per run from KG, skills, memory and entry files (§4.8) | tools | 9 |
+| 12 | ITB services (`harness-up`, `seed`, `start-agents`, `observe`, `state`, `harness-down`) and the Gherkin steps that call them; first multi-agent plan | tools | 9, 11 |
 
 Steps 1 to 6 change no behaviour for the git Tool. Step 7 changes how agents
 are started, so it needs the owner's choice of first launch Tool (§7, Q3).
@@ -372,6 +461,9 @@ would pay for; steps 1 to 8 are needed first and need neither.
   Tool-neutral; #972's Beans store links stay.
 - It does not decide what an agent works on. Dispatch starts an agent on a
   step that the process has already enabled.
+- It does not replace the ITB proposal's model (`test-plan/v1`,
+  `folio-test-run/v1`, `system/v1`); §4.8 adds the services a plan needs to
+  test agents working through processes.
 
 ---
 
@@ -384,3 +476,4 @@ would pay for; steps 1 to 8 are needed first and need neither.
 | Q3 | First `agent-launch` Tool? | **Ruled A (2026-11-02): `beans-serve` `sendAgentMessage`** (§4.5) |
 | Q4 | Where does history come from for the git Tool? | **Ruled A (2026-11-02): derived from git log plus instance histories**, no migration (§4.6) |
 | Q5 | Where does a benchmark run keep its beans and instances? | **Ruled A (2026-11-02): a run-scoped store Tool** (in memory, or a scratch branch per run) (§4.7) |
+| Q6 | Who drives a test run? | **A** the ITB runs the Gherkin plan and calls the harness services (§4.8) · B the harness runs the plan itself and sends the ITB a TAR afterwards · C both: the harness runs locally for development, the ITB for recorded runs |
