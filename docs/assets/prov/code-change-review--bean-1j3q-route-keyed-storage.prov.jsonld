@@ -3,7 +3,7 @@
     "https://openprovenance.org/prov-jsonld/context.jsonld",
     {
       "@base": "https://litlfred.github.io/folio/",
-      "cat-harness": "https://litlfred.github.io/cat-harness/v0/ns#",
+      "cat-harness": "https://litlfred.github.io/cat-harness/v0/ns/",
       "cat-harness:agentSubject": {
         "@type": "@id"
       },
