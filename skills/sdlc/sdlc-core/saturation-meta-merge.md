@@ -68,6 +68,9 @@ the owner's tap.
    Options: A go with green and pending, B also include the red ones, C dry
    run only, D cancel. Recommend A. A PR the card does not name gets no merge
    from this card. The safety check refuses it, and the owner must tap again.
+   The owner taps the card in the thread that merges. An answer relayed
+   from the project chat or another thread is refused by the safety check
+   (round 2, 2026-11-02), so post the merge card in this thread.
 4. **Cancel the queued PR runs** on the repositories in scope, and log each
    one to a TSV file. Do NOT cancel a `main` push run that has already
    started (Q-CIS-1). It is cancelled by the next push anyway, and cancelling
@@ -77,7 +80,9 @@ the owner's tap.
    is already merged is skipped as a no-op.
 6. **Open one PR per repository** from the meta-merge branch, listing its
    members and the card. Merge it with `merge_method=merge`.
-7. **Close out.** Check that every member PR shows `merged`. Comment on each
+7. **Close out.** Check that every member PR shows `merged`. A stacked PR
+   (its base is another PR's branch, not `main`) is not marked merged by
+   GitHub. Its commits are on `main`, so close it with a comment saying so. Comment on each
    with a link to the meta-merge PR and the session. Post `meta-merge done`
    to every sibling you held, with what landed and what is still open.
 8. **Watch `main`.** Re-run any `main` run that a closing PR's run cancelled
