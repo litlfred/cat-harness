@@ -33,124 +33,74 @@ Part of a repository wants to leave, for size or a semantic reason: four gated s
 - Skill: `opening-brief`.
 - What: What am I doing and why is it worth doing; what do I already know, with each measurement's provenance; how do I plan to do it and WHAT WOULD FALSIFY THE APPROACH.
 - Record it: `workflow_complete` with `node: "Task_Brief"`.
-- next: → `Task_Declare` (1 · Declare in place (nothing moves))
+- next: → `Call_Detangle` (Declare, detangle and isolate it)
 
 ## Done — Not yours — left alone (`End_BeanNotYours`)
 
 - The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 3. 1 · Declare in place (nothing moves) (`Task_Declare`)
+### 3. Declare, detangle and isolate it (`Call_Detangle`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `graph-detanglement`.
-- What: A `<name>.json` entry with its `graphs[]` kinds.
-- Record it: `workflow_complete` with `node: "Task_Declare"`.
-- next: → `GW_Declared` (Declared in place?)
+- What: The four gates, stages 1-3: declared in place, detangled with the unassigned column first, and isolated.
+- A subprocess (`Process_KgSeparationDetangle`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_MeasuredOut` (Measured out?)
 
-### Decide — Declared in place? (`GW_Declared`)
+### Decide — Measured out? (`GW_MeasuredOut`)
 
-- Computed, not chosen: decisions/subgraph-declared-gate.dmn (hit policy FIRST) over three inputs — the declaration parsed (`readable`), an entry present for the sub-graph, and every declared path exists.
-- Computed by the DMN table `decisions/subgraph-declared-gate.dmn#Decision_SubgraphDeclaredGate`: call `workflow_complete` with `node: "GW_Declared"` and the `facts` it reads — the table returns the branch; pass no `outcome`.
-  - «unknown» → `Call_BeanClose_3` (Close the bean)
-  - «declared» → `Task_Measure` (2a · Measure — unassigned column FIRST)
-  - «not yet» → `Task_Declare` (1 · Declare in place (nothing moves))
+- Reads which end the detangle phase reached: isolated, or could not determine.
+- Call `workflow_complete` with `node: "GW_MeasuredOut"` and `outcome` set to the label that holds:
+  - «isolated» → `Call_Authorise` (Authorise the extraction)
+  - «unknown» → `Call_BeanClose` (Close the bean)
 
-### 4. Close the bean (`Call_BeanClose_3`)
-
-- Who: the `Authoring agent` lane (role `authoring-agent`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Unknown` (UNKNOWN — stop. Not “not yet”, not clean)
-
-### 5. 2a · Measure — unassigned column FIRST (`Task_Measure`)
-
-- Who: the `Authoring agent` lane (role `authoring-agent`).
-- Skill: `graph-detanglement`.
-- What: `bun run cat check:partition`.
-- Record it: `workflow_complete` with `node: "Task_Measure"`.
-- next: → `GW_Detangled` (Detangled?)
-
-## Done — UNKNOWN — stop. Not “not yet”, not clean (`End_Unknown`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### Decide — Detangled? (`GW_Detangled`)
-
-- Computed from `check:partition`'s counts by decisions/detanglement-gate.dmn (hit policy FIRST).
-- Computed by the DMN table `decisions/detanglement-gate.dmn#Decision_DetanglementGate`: call `workflow_complete` with `node: "GW_Detangled"` and the `facts` it reads — the table returns the branch; pass no `outcome`.
-  - «unknown» → `Call_BeanClose_3` (Close the bean)
-  - «keep detangling» → `Task_Move` (2b · Prune, merge, factor — or the classification is wrong)
-  - «detangled» → `Task_Isolate` (3 · Isolate — own declaration, namespace, artefact)
-
-### 6. 2b · Prune, merge, factor — or the classification is wrong (`Task_Move`)
-
-- Who: the `Authoring agent` lane (role `authoring-agent`).
-- Skill: `graph-detanglement`.
-- What: The only four moves.
-- Record it: `workflow_complete` with `node: "Task_Move"`.
-- next: → `Task_Measure` (2a · Measure — unassigned column FIRST)
-
-### 7. 3 · Isolate — own declaration, namespace, artefact (`Task_Isolate`)
-
-- Who: the `Authoring agent` lane (role `authoring-agent`).
-- Skill: `graph-detanglement`.
-- What: Only once cross-edges measure zero: give the sub-graph its own declaration, its own namespace and its own published artefact, as bootstrap/ has (its own declaration, bs: namespace and graph document).
-- Record it: `workflow_complete` with `node: "Task_Isolate"`.
-- next: → `GW_Isolated` (Stands alone?)
-
-### Decide — Stands alone? (`GW_Isolated`)
-
-- Computed by decisions/isolation-gate.dmn (hit policy FIRST) over three inputs: its own declaration with paths relative to itself, its own namespace with every minted term defined, and a published artefact of its own.
-- Computed by the DMN table `decisions/isolation-gate.dmn#Decision_IsolationGate`: call `workflow_complete` with `node: "GW_Isolated"` and the `facts` it reads — the table returns the branch; pass no `outcome`.
-  - «not yet» → `Task_Isolate` (3 · Isolate — own declaration, namespace, artefact)
-  - «isolated» → `Task_Propose` (Report what would move — sizes, and what breaks)
-
-### 8. Report what would move — sizes, and what breaks (`Task_Propose`)
-
-- Who: the `Authoring agent` lane (role `authoring-agent`).
-- Skill: `deletion-requires-confirmation`.
-- What: The agent reports and waits: what would move, how large, what in the parent breaks, and the rollback.
-- Shared step `GT_ReportWhatMoves`.
-- Record it: `workflow_complete` with `node: "Task_Propose"`.
-- next: → `Task_Authorise` (Authorise the extraction)
-
-### 9. Authorise the extraction (`Task_Authorise`)
+### 4. Authorise the extraction (`Call_Authorise`)
 
 - Who: the `Administrator` lane (role `administrator`).
 - Skill: `deletion-requires-confirmation`.
-- What: The one step no package may relax.
-- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Task_Extract` (4 · Extract — a directory move, not a file-by-file sift), → `Call_BeanClose` (Close the bean)
+- What: Report what would move, then ask the administrator to authorise the extraction.
+- A subprocess (`Process_KgSeparationAuthorise`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_Authorised` (Authorised?)
 
-### 10. 4 · Extract — a directory move, not a file-by-file sift (`Task_Extract`)
+### 5. Close the bean (`Call_BeanClose`)
+
+- Who: the `Administrator` lane (role `administrator`).
+- Skill: `todo-manager`.
+- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
+- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_BeanClosedHow` (How did it end?)
+
+### Decide — Authorised? (`GW_Authorised`)
+
+- Reads which end the authorise phase reached.
+- Call `workflow_complete` with `node: "GW_Authorised"` and `outcome` set to the label that holds:
+  - «authorised» → `Task_Extract` (Extract — a directory move, not a file-by-file sift)
+  - «declined» → `Call_BeanClose` (Close the bean)
+
+### Decide — How did it end? (`GW_BeanClosedHow`)
+
+- Which outcome the bean was closed with, so each ends at its own named end event.
+- Call `workflow_complete` with `node: "GW_BeanClosedHow"` and `outcome` set to the label that holds:
+  - «extracted» → `End_Extracted` (Extracted)
+  - «declined» → `End_Declined` (Stays where it is — declared, detangled, isolated)
+  - «unknown» → `End_Unknown` (UNKNOWN — stop. Not “not yet”, not clean)
+
+### 6. Extract — a directory move, not a file-by-file sift (`Task_Extract`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `graph-detanglement`.
 - What: Only once edges are zero and the declaration stands alone: move the sub-graph out as one directory move, not a file-by-file sift.
 - Record it: `workflow_complete` with `node: "Task_Extract"`.
-- next: → `Call_BeanClose_2` (Close the bean)
+- next: → `Call_BeanClose` (Close the bean)
 
-### 11. Close the bean (`Call_BeanClose`)
+## Done — Extracted (`End_Extracted`)
 
-- Who: the `Administrator` lane (role `administrator`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Declined` (Stays where it is — declared, detangled, isolated)
-
-### 12. Close the bean (`Call_BeanClose_2`)
-
-- Who: the `Authoring agent` lane (role `authoring-agent`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Extracted` (Extracted)
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
 ## Done — Stays where it is — declared, detangled, isolated (`End_Declined`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-## Done — Extracted (`End_Extracted`)
+## Done — UNKNOWN — stop. Not “not yet”, not clean (`End_Unknown`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
