@@ -17,7 +17,7 @@ summary: >-
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
-**Status:** proposal, nothing built. Q1 ruled (instances only); Q2 to Q5 open in §7.
+**Status:** proposal, nothing built. Q1 ruled (instances only), Q2 ruled (deployment description); Q3 to Q5 open in §7.
 Issue [#991](https://github.com/litlfred/cat-harness/issues/991), bean
 `folio-assistant-bsd1`. It builds on the work-plan store contract
 ([`work-plan-store`](../../skills/sdlc/sdlc-core/work-plan-store.md), Q-DS-1 A
@@ -240,7 +240,7 @@ page. The skill already has a precedent in `selection.when`.
 Put a `WorkPlanStore` interface in cat-harness-tools with the operations of
 §4.1, and make `applyWorkPlanOp` call it. The git Tool is its first adapter
 (today's code, moved). The adapter in use comes from the deployment
-(`deployment-descriptions.md`), the same way other Tools are chosen. This
+(`deployment-descriptions.md`), the same way other Tools are chosen (**ruled 2026-11-02, Q-BSD-2 A**). This
 fits the platform-boundary rule: different code, so an adapter.
 
 ### 4.4 Where a bean is: read from the instances (N5, N6)
@@ -297,7 +297,7 @@ store Tools:
 | `launch-local` | any CLI agent, for example `claude -p` | no |
 
 The agent moves the token with `workflow_complete`, which writes the instance
-history, updates the bean's `process` block and notes the bean (§4.6). The
+history (so `positions` moves with it) and notes the bean (§4.6). The
 diagram draws dispatch as a step, so whoever reads the process sees where
 agents start. #988's rule ("an agent working a bean through a process starts
 or advances an instance") becomes a property of the engine, not a habit.
@@ -380,7 +380,7 @@ would pay for; steps 1 to 8 are needed first and need neither.
 | Q | Question | Options (recommended first) |
 |---|---|---|
 | Q1 | Where does a bean's position live? | **Ruled B (2026-11-02): only in the instances**, read through store operations (§4.4) |
-| Q2 | How is the store Tool chosen? | **A** by deployment description, per checkout · B per call, by `selection` · C fixed per harness |
+| Q2 | How is the store Tool chosen? | **Ruled A (2026-11-02): by the deployment description**, per checkout (§4.3) |
 | Q3 | First `agent-launch` Tool? | **A** `beans-serve` `sendAgentMessage` (exists) · B Claude Code session API · C Gemini through Antigravity · D local CLI agent |
 | Q4 | Where does history come from for the git Tool? | **A** derived from git log plus instance histories, no migration · B a new events file per bean on the branch |
 | Q5 | Where does a benchmark run keep its beans and instances? | **A** a run-scoped store Tool (in memory, or a scratch branch per run) · B a dedicated benchmark branch shared by runs · C the real work plan, tagged |
