@@ -45,7 +45,7 @@ Every diagram you write or touch must, when you are done:
 - **fit 1400 × 900** in diagram units, so its 16px text reads at about
   14px in a 1200px band without zooming; **every task a fixed 120 × 120
   square** (owner, 2026-11-01: boxes never grow to fit their names; a name
-  that does not fit is shortened, `TASK_SIZE` in cat-harness-tools);
+  that does not fit is shortened, `TASK_SIZE` in the tools layer);
 - have **no label on another label, on a flow (its own included), on a box
   or across a lane line** (owner, 2026-10-31: *"need to check for text on
   arrows"*): a gateway's question above the diamond, its answers beside
@@ -109,7 +109,7 @@ is not enabled**. That has consequences for how you author:
 
 Owner, 2026-10-31: take what holds up from the BPMN comprehension research and
 check it mechanically. `kg:audit` reports each rule below per process
-(`src/workflow/diagram-quality.ts` in https://github.com/litlfred/cat-harness-tools). The
+(`src/workflow/diagram-quality.ts` in the tools layer). The
 sources, and how strong each rule's evidence is, are in the
 [`process-model-quality`](../../../methodologies/process-model-quality.md)
 methodology.
