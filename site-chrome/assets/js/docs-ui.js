@@ -2815,7 +2815,9 @@
     if (window.innerWidth < AUTO_MIN_VIEWPORT_PX) return false;
     var column = scope.clientWidth;
     if (!column) return false;
-    var natural = intrinsicWidth(scope);
+    // The width the drawing will be drawn at: its text-fitted width when it
+    // has one, else its own coordinate width.
+    var natural = parseFloat(scope.style.getPropertyValue("--fa-natural")) || intrinsicWidth(scope);
     if (!natural) return false;
     return natural / column >= AUTO_MIN_RATIO;
   }
@@ -10486,6 +10488,54 @@
     return attempt.catch(function (e) { return "Could not copy: " + e.message; });
   }
 
+  /* A BPMN FIGURE'S LABELS READ AT THE SIZE OF THE TEXT AROUND IT (owner,
+     2026-11-02: "bpmn diagrams should be scaled so the text size matches
+     narrative text size"). The drawing used to fill the column with a 1200px
+     floor, so a small process came out with labels bigger than the prose and
+     a wide one with labels a third of its size. Now 100% means: the label
+     size the drawing uses most often, scaled to the body text's size. A
+     drawing wider than its card scrolls (and pans) inside it, and zoom still
+     multiplies from there. The label size is read from the inlined SVG, so a
+     figure that stayed an <img> keeps the old sizing. */
+  // The size the task names use. bpmn-js draws a task name a step larger
+  // than the "yes"/"no" and event labels beside it, and those labels can
+  // carry more characters between them, so the most common size would be the
+  // wrong one. So: the LARGEST size that carries at least a quarter of the
+  // drawing's characters, which skips a lone title and keeps the task names.
+  function labelFontPx(svg) {
+    var chars = {}, total = 0;
+    [].forEach.call(svg.querySelectorAll("text"), function (t) {
+      var n = (t.textContent || "").replace(/\s+/g, "").length;
+      if (!n) return;
+      var px = Math.round(parseFloat(getComputedStyle(t).fontSize) * 10) / 10;
+      if (!(px > 0)) return;
+      chars[px] = (chars[px] || 0) + n;
+      total += n;
+    });
+    var best = 0;
+    Object.keys(chars).forEach(function (k) {
+      var px = parseFloat(k);
+      if (chars[k] >= total / 4 && px > best) best = px;
+    });
+    return best;
+  }
+
+  function bodyFontPx(scope) {
+    var main = (scope.closest && scope.closest(".main-content")) || document.body;
+    var p = main.querySelector("p");
+    return parseFloat(getComputedStyle(p || main).fontSize) || 16;
+  }
+
+  function fitTextToBody(scope) {
+    var svg = scope.querySelector("svg");
+    var width = intrinsicWidth(scope);
+    if (!svg || !width) return;
+    var label = labelFontPx(svg);
+    if (!label) return;
+    scope.classList.add("fa-textfit");
+    scope.style.setProperty("--fa-natural", (width * bodyFontPx(scope) / label).toFixed(1) + "px");
+  }
+
   function mountFigure(scope, isPlain) {
     if (scope.dataset.faTools === "1") return;
     scope.dataset.faTools = "1";
@@ -10502,6 +10552,8 @@
         (art0 && art0.tagName.toLowerCase() === "img" ? art0.naturalWidth : 0) ||
         (art0 ? parseFloat(art0.getAttribute("width") || "") || 0 : 0);
       if (natural > 0) scope.style.setProperty("--fa-natural", natural + "px");
+    } else {
+      fitTextToBody(scope);
     }
 
     var step = DEFAULT_STEP;
