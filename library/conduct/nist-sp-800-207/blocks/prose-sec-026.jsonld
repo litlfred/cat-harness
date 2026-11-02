@@ -16,7 +16,7 @@
   "pageStart": 37,
   "pageEnd": 37,
   "text": "../sections/sec-026-5-threats-associated-with-zero-trust-architectur.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
+  "derivedFrom": "library/nist-sp-800-207/manifest",
+  "sourceDocument": "library/nist-sp-800-207/manifest",
   "provenance": "ingested"
 }

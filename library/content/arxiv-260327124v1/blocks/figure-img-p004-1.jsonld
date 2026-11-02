@@ -89,6 +89,6 @@
     }
   ],
   "derivedFrom": "library/arxiv-260327124v1/sections/page-004",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-260327124v1/manifest.jsonld",
+  "sourceDocument": "library/arxiv-260327124v1/manifest",
   "provenance": "ingested"
 }

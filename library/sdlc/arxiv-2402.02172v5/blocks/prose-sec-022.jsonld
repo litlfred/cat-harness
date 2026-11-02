@@ -16,7 +16,7 @@
   "pageStart": 17,
   "pageEnd": 17,
   "text": "../sections/sec-022-differences-and-implications.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2402.02172v5/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2402.02172v5/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2402.02172v5/manifest",
+  "sourceDocument": "library/arxiv-2402.02172v5/manifest",
   "provenance": "ingested"
 }

@@ -16,7 +16,7 @@
   "pageStart": 9,
   "pageEnd": 9,
   "text": "../sections/sec-014-5-conclusion.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2507.07974v2/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2507.07974v2/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2507.07974v2/manifest",
+  "sourceDocument": "library/arxiv-2507.07974v2/manifest",
   "provenance": "ingested"
 }

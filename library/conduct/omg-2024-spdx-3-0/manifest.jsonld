@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/omg-2024-spdx-3-0/manifest.jsonld",
+  "@id": "library/omg-2024-spdx-3-0/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

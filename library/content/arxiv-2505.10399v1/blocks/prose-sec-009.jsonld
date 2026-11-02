@@ -16,7 +16,7 @@
   "pageStart": 7,
   "pageEnd": 7,
   "text": "../sections/sec-009-4-experiments.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2505.10399v1/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2505.10399v1/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2505.10399v1/manifest",
+  "sourceDocument": "library/arxiv-2505.10399v1/manifest",
   "provenance": "ingested"
 }

@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/mendling-2010-activity-labeling/manifest.jsonld",
+  "@id": "library/mendling-2010-activity-labeling/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

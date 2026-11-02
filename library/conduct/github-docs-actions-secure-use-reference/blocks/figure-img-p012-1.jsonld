@@ -89,6 +89,6 @@
     }
   ],
   "derivedFrom": "library/github-docs-actions-secure-use-reference/sections/page-012",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/github-docs-actions-secure-use-reference/manifest.jsonld",
+  "sourceDocument": "library/github-docs-actions-secure-use-reference/manifest",
   "provenance": "ingested"
 }

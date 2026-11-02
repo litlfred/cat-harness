@@ -16,7 +16,7 @@
   "pageStart": 21,
   "pageEnd": 22,
   "text": "../sections/sec-010-313-zta-using-network-infrastructure-and-softwar.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
+  "derivedFrom": "library/nist-sp-800-207/manifest",
+  "sourceDocument": "library/nist-sp-800-207/manifest",
   "provenance": "ingested"
 }

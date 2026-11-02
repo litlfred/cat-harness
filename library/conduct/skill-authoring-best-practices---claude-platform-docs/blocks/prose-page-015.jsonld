@@ -16,7 +16,7 @@
   "pageStart": 15,
   "pageEnd": 15,
   "text": "../sections/page-015.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/skill-authoring-best-practices---claude-platform-docs/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/skill-authoring-best-practices---claude-platform-docs/manifest.jsonld",
+  "derivedFrom": "library/skill-authoring-best-practices---claude-platform-docs/manifest",
+  "sourceDocument": "library/skill-authoring-best-practices---claude-platform-docs/manifest",
   "provenance": "ingested"
 }

@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/strauch-carbno-2025-spdx-3-1-supply-chain/manifest.jsonld",
+  "@id": "library/strauch-carbno-2025-spdx-3-1-supply-chain/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

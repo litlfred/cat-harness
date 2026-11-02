@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2504-10971v1/manifest.jsonld",
+  "@id": "library/arxiv-2504-10971v1/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

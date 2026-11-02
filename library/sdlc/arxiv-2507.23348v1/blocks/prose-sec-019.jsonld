@@ -16,7 +16,7 @@
   "pageStart": 8,
   "pageEnd": 8,
   "text": "../sections/sec-019-55-case-study.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2507.23348v1/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2507.23348v1/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2507.23348v1/manifest",
+  "sourceDocument": "library/arxiv-2507.23348v1/manifest",
   "provenance": "ingested"
 }

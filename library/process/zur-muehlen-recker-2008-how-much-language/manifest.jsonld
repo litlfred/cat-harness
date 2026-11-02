@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/zur-muehlen-recker-2008-how-much-language/manifest.jsonld",
+  "@id": "library/zur-muehlen-recker-2008-how-much-language/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

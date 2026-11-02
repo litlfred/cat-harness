@@ -15,7 +15,7 @@
   "contains": [
     "library/agent-skills---google-antigravity-docs/blocks/prose-page-004"
   ],
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/agent-skills---google-antigravity-docs/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/agent-skills---google-antigravity-docs/manifest.jsonld",
+  "derivedFrom": "library/agent-skills---google-antigravity-docs/manifest",
+  "sourceDocument": "library/agent-skills---google-antigravity-docs/manifest",
   "provenance": "ingested"
 }
