@@ -10493,7 +10493,7 @@
      narrative text size"). The drawing used to fill the column with a 1200px
      floor, so a small process came out with labels bigger than the prose and
      a wide one with labels a third of its size. Now 100% means: the label
-     size the drawing uses most often, scaled to the body text's size. A
+     size the drawing's task names use, scaled to 80% of the body text's size. A
      drawing wider than its card scrolls (and pans) inside it, and zoom still
      multiplies from there. The label size is read from the inlined SVG, so a
      figure that stayed an <img> keeps the old sizing. */
@@ -10526,6 +10526,10 @@
     return parseFloat(getComputedStyle(p || main).fontSize) || 16;
   }
 
+  // Owner, 2026-11-02 (follow-up): "make it 80% same size" -- the task names
+  // are drawn at 80% of the body text size, a little quieter than the prose.
+  var FIGURE_TEXT_RATIO = 0.8;
+
   function fitTextToBody(scope) {
     var svg = scope.querySelector("svg");
     var width = intrinsicWidth(scope);
@@ -10533,7 +10537,7 @@
     var label = labelFontPx(svg);
     if (!label) return;
     scope.classList.add("fa-textfit");
-    scope.style.setProperty("--fa-natural", (width * bodyFontPx(scope) / label).toFixed(1) + "px");
+    scope.style.setProperty("--fa-natural", (width * FIGURE_TEXT_RATIO * bodyFontPx(scope) / label).toFixed(1) + "px");
   }
 
   function mountFigure(scope, isPlain) {

@@ -407,7 +407,7 @@
 }
 
 /* A BPMN figure whose labels were measured (`fitTextToBody` in docs-ui.js):
- * `--fa-natural` is the width at which those labels match the body text, so
+ * `--fa-natural` is the width at which those labels are 80% of the body text, so
  * 100% is that width exactly, NOT capped at the column. Owner, 2026-11-02:
  * "bpmn diagrams should be scaled so the text size matches narrative text
  * size". A wider drawing scrolls and pans inside its card. */
