@@ -5624,6 +5624,86 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_mergemanagerwatch.call_meta",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Saturation meta-merge"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Offer the card and land only on the owner's tap."
+        }
+      ],
+      "skos:notation": "Call_Meta",
+      "dcterms:source": "cat-harness/processes/sdlc/merge-manager-watch.bpmn#Call_Meta",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_mergemanagerwatch.call_stalled",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Stalled-agent triage"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Tell the owner, then take the stalled PR over."
+        }
+      ],
+      "skos:notation": "Call_Stalled",
+      "dcterms:source": "cat-harness/processes/sdlc/merge-manager-watch.bpmn#Call_Stalled",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_mergemanagerwatch.call_train",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Merge train"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Ready PRs that stack land as a train through merge:guard."
+        }
+      ],
+      "skos:notation": "Call_Train",
+      "dcterms:source": "cat-harness/processes/sdlc/merge-manager-watch.bpmn#Call_Train",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_mergemanagerwatch.task_read",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Read PRs, runner queue, main verdict and owners"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, and each PR owner's last push or comment."
+        }
+      ],
+      "skos:notation": "Task_Read",
+      "dcterms:source": "cat-harness/processes/sdlc/merge-manager-watch.bpmn#Task_Read",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_mergerefusal.call_beanclose_2",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -8721,6 +8801,166 @@
       ],
       "skos:notation": "Task_Trial",
       "dcterms:source": "cat-harness/processes/library/sample-import.bpmn#Task_Trial",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_saturationmetamerge.task_ask",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Dry-run, then ask the owner naming every PR"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Stack the PRs on a meta-merge branch without pushing. Then post the full question (include, leave out with the reason, merge method, per repository), followed by the card: A go, B also the red ones, C dry run only, D cancel."
+        }
+      ],
+      "skos:notation": "Task_Ask",
+      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Ask",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_saturationmetamerge.task_done",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Post done to every held sibling"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Post done with what landed and what is still open, also when nothing was merged. A hold with no done is an outage."
+        }
+      ],
+      "skos:notation": "Task_Done",
+      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Done",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_saturationmetamerge.task_hold",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Broadcast the hold to siblings"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Message every sibling that pushes to the repositories involved: what is about to land, and hold pushes, merges and run cancels until done. Ask the coordinator to pass it on to any thread that cannot be reached."
+        }
+      ],
+      "skos:notation": "Task_Hold",
+      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Hold",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_saturationmetamerge.task_land",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Cancel queued PR runs; build, push, merge"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Never cancel a main push run that has started. Build from fresh main with merge commits, skipping conflicts, .github/workflows/ and subscriptions/. Open one PR per repository, merge it with a merge commit, and comment on each member PR with the link."
+        }
+      ],
+      "skos:notation": "Task_Land",
+      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Land",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_saturationmetamerge.task_mainrun",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Run main's checks"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "The merge starts main's checks. Until tools#1384, a closed PR's run can cancel them, so the steward re-runs a cancelled main run."
+        }
+      ],
+      "skos:notation": "Task_MainRun",
+      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_MainRun",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_saturationmetamerge.task_owner",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Choose A, B, C or D"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Only the owner's own tap or words approve the landing. A PR the card does not name gets no merge from it."
+        }
+      ],
+      "skos:notation": "Task_Owner",
+      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Owner",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_saturationmetamerge.task_report",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Report what landed and main's verdict"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "One message to the owner: what merged, main's verdict per repository, and any open decision. On red, the fix goes to main as its own PR."
+        }
+      ],
+      "skos:notation": "Task_Report",
+      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Report",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities/process_saturationmetamerge.task_sibhold",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-bpmn-activities"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "Hold, and name the heads to merge"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "A sibling that owns a PR in the batch names the head it wants merged."
+        }
+      ],
+      "skos:notation": "Task_SibHold",
+      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_SibHold",
       "skos:note": "candidate"
     },
     {
