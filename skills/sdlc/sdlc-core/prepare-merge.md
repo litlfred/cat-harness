@@ -443,7 +443,7 @@ nothing about what the merge broke.
 | `<instance>/test/attestations/**` | JUDGEMENTS — every agent, human and baseline-pair attestation, `qa-attestations/v1` | `main`, as authored content | **a person reads both sides**; never regenerated, never "take ours" |
 
 The `test/results/` files are no longer committed on `main` (bean `5hox`;
-cat-harness#857, folio-assistant-core#482), so a base merge conflicts there
+cat-harness#857, https://github.com/litlfred/folio-assistant-core/pull/482), so a base merge conflicts there
 only for a branch older than the removal. Treat such a file as
 a working copy that has a right answer, not as a record: the record of a
 commit is its `qa-reports` entry, which no merge touches. **Do not
@@ -464,8 +464,8 @@ sidecars were committed: across one working session on PR #773 and its
 successor, **four base merges gave four conflicts, every one in a committed
 generated QA sidecar** (bean `520m`), and the command regenerated each one,
 refusing any file that carried a judgement the attestation store did not hold.
-cat-harness (cat-harness#857) and folio-assistant-core
-(folio-assistant-core#482) no longer commit `test/results/`, and the
+cat-harness (cat-harness#857) and the content core
+(https://github.com/litlfred/folio-assistant-core/pull/482) no longer commit `test/results/`, and the
 judgements moved to `test/attestations/` (bean `2gst`). The owner retired the
 command, its `qa-sidecar` merge pattern and the `test/results/` entries in
 `.gitattributes` together (2026-11-01, "A. Retire in that tools PR").

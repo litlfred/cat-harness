@@ -52,7 +52,7 @@ Keep a materialized copy of remote content current: what changed upstream, what 
 - Did the copy change both upstream and locally since it was fetched?
 - Call `workflow_complete` with `node: "Gateway_Both"` and `outcome` set to the label that holds:
   - «yes» → `Task_Adjudicate` (Adjudicate the conflict)
-  - «no» → `Task_Apply` (Re-materialize, re-asking the five gates — and record the new fixity)
+  - «no» → `Task_Apply` (Re-materialize and record new fixity)
 
 ### 4. Adjudicate the conflict (`Task_Adjudicate`)
 
@@ -62,9 +62,9 @@ Keep a materialized copy of remote content current: what changed upstream, what 
 - A subprocess (`Process_Adjudication`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `GW_Outcome` (Which side, and on what terms?)
 
-### 5. Re-materialize, re-asking the five gates — and record the new fixity (`Task_Apply`)
+### 5. Re-materialize and record new fixity (`Task_Apply`)
 
-- Who: the `Corpus — L1 source knowledge graph` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: The gates are re-asked, not inherited: a licence can change, and a collection can grow past the size a caller agreed to.
 - Record it: `workflow_complete` with `node: "Task_Apply"`.
@@ -74,14 +74,14 @@ Keep a materialized copy of remote content current: what changed upstream, what 
 
 - Four answers, and they do four different things — which is the whole reason this gateway now exists.
 - Call `workflow_complete` with `node: "GW_Outcome"` and `outcome` set to the label that holds:
-  - «the remote wins» → `Task_Apply` (Re-materialize, re-asking the five gates — and record the new fixity)
-  - «the local edit wins» → `Task_KeepLocal` (Keep the local edit, and re-pin so it stops being asked)
+  - «the remote wins» → `Task_Apply` (Re-materialize and record new fixity)
+  - «the local edit wins» → `Task_KeepLocal` (Keep the edit, re-pin)
   - «neither whole — reconcile» → `Task_Reconcile` (Reconcile the two by hand)
   - «not decidable today» → `Task_RecordConflict` (Record the conflict, decide nothing, and do NOT re-pin)
 
-### 6. Keep the local edit, and re-pin so it stops being asked (`Task_KeepLocal`)
+### 6. Keep the edit, re-pin (`Task_KeepLocal`)
 
-- Who: the `Corpus — L1 source knowledge graph` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: The local edit wins, so nothing is re-materialized — and the pin moves to the upstream revision that was compared against.
 - Record it: `workflow_complete` with `node: "Task_KeepLocal"`.
@@ -93,11 +93,11 @@ Keep a materialized copy of remote content current: what changed upstream, what 
 - Skill: `materialize-remote`.
 - What: Neither side wins whole: the contributor produces content that is neither the local copy nor the remote one, and THEN it is applied.
 - Record it: `workflow_complete` with `node: "Task_Reconcile"`.
-- next: → `Task_Apply` (Re-materialize, re-asking the five gates — and record the new fixity)
+- next: → `Task_Apply` (Re-materialize and record new fixity)
 
 ### 8. Record the conflict, decide nothing, and do NOT re-pin (`Task_RecordConflict`)
 
-- Who: the `Corpus — L1 source knowledge graph` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
 - What: Both copies stay and the conflict is written down with what each side says.
 - Record it: `workflow_complete` with `node: "Task_RecordConflict"`.

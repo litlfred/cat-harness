@@ -17,7 +17,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap",
-          "ref": "9ecfb729b38b9196063fee76c6f7932f92502353",
+          "ref": "0d655b74e9ffd1e246a0bd4df60967e158d665de",
           "overrides": {
             "bootstrap": {
               "whole": true
@@ -27,9 +27,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-15",
-              "ref": "9ecfb729b38b9196063fee76c6f7932f92502353",
-              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
+              "on": "2026-11-01",
+              "ref": "0d655b74e9ffd1e246a0bd4df60967e158d665de",
+              "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread cmsg_017WNUkNK8kdDziPK58Pv6G991qa3xg86ZCWdyH2spZ7FS): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.'"
             }
           }
         }
@@ -41,7 +41,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "7dc55773590bbc3158c877a3d61222aa7864006c",
+          "ref": "ed547a9ab77e8445f13f52fe2152d6e82776bcaf",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -54,9 +54,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-10-15",
-              "ref": "7dc55773590bbc3158c877a3d61222aa7864006c",
-              "evidence": "Owner litlfred, 2026-10-15 (17:30Z): 'merge and repin for next 3 hrs. keep draining'"
+              "on": "2026-11-01",
+              "ref": "ed547a9ab77e8445f13f52fe2152d6e82776bcaf",
+              "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread cmsg_017WNUkNK8kdDziPK58Pv6G991qa3xg86ZCWdyH2spZ7FS): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.'"
             }
           }
         }

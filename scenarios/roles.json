@@ -574,8 +574,36 @@
       ],
       "skills": [
         "todo-manager",
-        "content-feedback"
-      ]
+        "content-feedback",
+        "work-plan-store"
+      ],
+      "store": {
+        "holds": [
+          "bean-defs",
+          "bean-notes",
+          "workflow-state"
+        ],
+        "api": [
+          {
+            "style": "graphql",
+            "document": "https://github.com/litlfred/beans/blob/main/internal/graph/schema.graphqls"
+          },
+          {
+            "style": "cli",
+            "tools": [
+              "beans-cli",
+              "bean-query",
+              "bean-claim-check"
+            ]
+          },
+          {
+            "style": "json-schema-files",
+            "document": "schemas/kinds/bean-defs.schema.json"
+          }
+        ],
+        "realisedBy": "beans",
+        "published": true
+      }
     },
     {
       "id": "corpus",
@@ -588,7 +616,20 @@
         "kg-affordances",
         "kg-subscription",
         "materialize-remote"
-      ]
+      ],
+      "store": {
+        "api": [
+          {
+            "style": "git"
+          },
+          {
+            "style": "json-schema-files",
+            "document": "schemas/kinds/"
+          }
+        ],
+        "realisedBy": "git",
+        "published": true
+      }
     },
     {
       "id": "external-registry",
@@ -610,7 +651,19 @@
       ],
       "skills": [
         "activity-log"
-      ]
+      ],
+      "store": {
+        "api": [
+          {
+            "style": "cli",
+            "tools": [
+              "log-message",
+              "render-log"
+            ]
+          }
+        ],
+        "published": false
+      }
     },
     {
       "id": "session-record",
@@ -621,7 +674,18 @@
       ],
       "skills": [
         "session-context"
-      ]
+      ],
+      "store": {
+        "api": [
+          {
+            "style": "cli",
+            "tools": [
+              "sibling-sessions"
+            ]
+          }
+        ],
+        "published": false
+      }
     },
     {
       "id": "editorial-authoring-agent",

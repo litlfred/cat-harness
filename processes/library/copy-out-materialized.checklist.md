@@ -41,13 +41,13 @@ Somebody wants to change content this repository holds a read-only materialized 
 - Skill: `copy-out-materialized`.
 - What: Into the copier's own declared `folio/`, never a scratch area — a directory nobody declared is a directory nobody gates, and the copy would be publishable by accident.
 - Record it: `workflow_complete` with `node: "Task_Land"`.
-- next: → `Task_RecordProvenance` (Record provenance.local — what this is a copy OF)
+- next: → `Task_RecordProvenance` (Record what this is a copy of)
 
 ## Done — Edited where it lives — no copy needed (`EndEvent_NotFrozen`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 4. Record provenance.local — what this is a copy OF (`Task_RecordProvenance`)
+### 4. Record what this is a copy of (`Task_RecordProvenance`)
 
 - Who: the `Copier's own folio/` lane (role `author`).
 - Skill: `copy-out-materialized`.

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: copy-into-folio\n"
-"POT-Creation-Date: 2026-10-29T08:39:28.695Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.058Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:97
 #. Diagram label
-msgid "Browse in place and emit KgAsset snippet (read-only)"
+msgid "Browse in place, emit a KgAsset snippet"
 msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:82
@@ -91,7 +91,7 @@ msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:81
 #. Diagram label
-msgid "Probe write capability (git-push, github-api, github-connector)"
+msgid "Probe write capability"
 msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:51
@@ -106,7 +106,7 @@ msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:110
 #. Diagram label
-msgid "Read upstream asset and origin — write nothing"
+msgid "Read the upstream asset (no writes)"
 msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:141
@@ -126,7 +126,7 @@ msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:129
 #. Diagram label
-msgid "Stamp KgAsset.source { instance, path, ref }"
+msgid "Stamp the asset's source"
 msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:28
@@ -151,7 +151,7 @@ msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:140
 #. Diagram label
-msgid "Validate declared asset and provenance (check:declared-assets)"
+msgid "Validate the asset and provenance"
 msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:61

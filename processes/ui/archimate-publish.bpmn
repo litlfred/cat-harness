@@ -82,65 +82,65 @@ every picture derived"/>
   <bpmndi:BPMNDiagram id="Diagram_Process_ArchimatePublish">
     <bpmndi:BPMNPlane id="Plane_Process_ArchimatePublish" bpmnElement="Collaboration_Process_ArchimatePublish">
       <bpmndi:BPMNShape id="Shape_Participant_Process_ArchimatePublish" bpmnElement="Participant_Process_ArchimatePublish" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1060" height="360" />
+        <dc:Bounds x="160" y="80" width="1060" height="364" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Author_Process_ArchimatePublish" bpmnElement="Lane_Author" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1030" height="140" />
+        <dc:Bounds x="190" y="80" width="1030" height="144" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Pipeline_Process_ArchimatePublish" bpmnElement="Lane_Pipeline" isHorizontal="true">
-        <dc:Bounds x="190" y="220" width="1030" height="220" />
+        <dc:Bounds x="190" y="224" width="1030" height="220" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_ArchimatePublish" bpmnElement="Start_Process_ArchimatePublish">
         <dc:Bounds x="240" y="132" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="280" y="92" width="135" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="280" y="92" width="135" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_FixModel" bpmnElement="A_FixModel">
-        <dc:Bounds x="695" y="110" width="140" height="80" />
+        <dc:Bounds x="705" y="92" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Check" bpmnElement="A_Check">
-        <dc:Bounds x="330" y="280" width="140" height="80" />
+        <dc:Bounds x="340" y="264" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Metamodel" bpmnElement="A_Metamodel">
-        <dc:Bounds x="530" y="280" width="140" height="80" />
+        <dc:Bounds x="540" y="264" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Allowed" bpmnElement="GW_Allowed" isMarkerVisible="true">
-        <dc:Bounds x="740" y="295" width="50" height="50" />
+        <dc:Bounds x="740" y="299" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Pages" bpmnElement="A_Pages">
-        <dc:Bounds x="870" y="280" width="140" height="80" />
+        <dc:Bounds x="880" y="264" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_ArchimatePublish" bpmnElement="End_Process_ArchimatePublish">
-        <dc:Bounds x="1100" y="302" width="36" height="36" />
+        <dc:Bounds x="1100" y="306" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_ArchimatePublish_1" bpmnElement="SF_Process_ArchimatePublish_1">
         <di:waypoint x="276" y="150" />
         <di:waypoint x="380" y="150" />
-        <di:waypoint x="380" y="280" />
+        <di:waypoint x="380" y="284" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_ArchimatePublish_2" bpmnElement="SF_Process_ArchimatePublish_2">
-        <di:waypoint x="470" y="320" />
-        <di:waypoint x="530" y="320" />
+        <di:waypoint x="460" y="324" />
+        <di:waypoint x="540" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_ArchimatePublish_3" bpmnElement="SF_Process_ArchimatePublish_3">
-        <di:waypoint x="670" y="320" />
-        <di:waypoint x="740" y="320" />
+        <di:waypoint x="660" y="324" />
+        <di:waypoint x="740" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_ArchimatePublish_4" bpmnElement="SF_Process_ArchimatePublish_4">
-        <di:waypoint x="790" y="320" />
-        <di:waypoint x="870" y="320" />
+        <di:waypoint x="790" y="324" />
+        <di:waypoint x="880" y="324" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_ArchimatePublish_5" bpmnElement="SF_Process_ArchimatePublish_5">
-        <di:waypoint x="765" y="295" />
+        <di:waypoint x="765" y="299" />
         <di:waypoint x="765" y="190" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_ArchimatePublish_6" bpmnElement="SF_Process_ArchimatePublish_6">
-        <di:waypoint x="695" y="150" />
-        <di:waypoint x="430" y="150" />
-        <di:waypoint x="430" y="280" />
+        <di:waypoint x="705" y="152" />
+        <di:waypoint x="400" y="152" />
+        <di:waypoint x="400" y="264" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_ArchimatePublish_7" bpmnElement="SF_Process_ArchimatePublish_7">
-        <di:waypoint x="1010" y="320" />
-        <di:waypoint x="1100" y="320" />
+        <di:waypoint x="1000" y="324" />
+        <di:waypoint x="1100" y="324" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

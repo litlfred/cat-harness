@@ -10,7 +10,7 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_FeatureStaging"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_Build` (Build the docs site Jekyll · TypeDoc · KG export)
+- next: → `Task_Build` (Build the docs site)
 
 ## Begin — Pull request closed (`Start_Closed`)
 
@@ -22,15 +22,15 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_FeatureStaging"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_Validate` (Check the slug's SHAPE and that the confirmation repeats it)
+- next: → `Task_Validate` (Check the slug and its confirmation)
 
-### 1. Build the docs site Jekyll · TypeDoc · KG export (`Task_Build`)
+### 1. Build the docs site (`Task_Build`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `feature-staging`.
 - What: Build the preview from the PR's head: regenerate the generated docs, trim what this preview does not need, render the BPMN diagrams, then Jekyll, TypeDoc and the knowledge-graph export, with the staging banner and SEO identity claims stripped.
 - Record it: `workflow_complete` with `node: "Task_Build"`.
-- next: → `Task_Deploy` (Push to the CDN at STAGING/&lt;slug&gt;/)
+- next: → `Task_Deploy` (Push to the CDN under STAGING/)
 
 ### 2. Derive the slug from the head ref (`Task_Slug`)
 
@@ -40,7 +40,7 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 - Record it: `workflow_complete` with `node: "Task_Slug"`.
 - next: → `GW_Confirmed` (Removal confirmed?)
 
-### 3. Check the slug's SHAPE and that the confirmation repeats it (`Task_Validate`)
+### 3. Check the slug and its confirmation (`Task_Validate`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `deletion-requires-confirmation`.
@@ -48,7 +48,7 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 - Record it: `workflow_complete` with `node: "Task_Validate"`.
 - next: → `Task_Preflight` (Re-evaluate liveness AT REMOVAL TIME)
 
-### 4. Push to the CDN at STAGING/&lt;slug&gt;/ (`Task_Deploy`)
+### 4. Push to the CDN under STAGING/ (`Task_Deploy`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-kg-to-cdn`.
@@ -60,7 +60,7 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 
 - THREE inputs, two outcomes, and bean `1feu` set the split: a MERGED pull request needs no label, because the merge IS the confirmation — a person decided the content belongs on `main`, which says more about the preview than a label does.
 - Call `workflow_complete` with `node: "GW_Confirmed"` and `outcome` set to the label that holds:
-  - «merged, or labelled» → `Task_Remove` (Remove the preview AND append `removed` — one commit)
+  - «merged, or labelled» → `Task_Remove` (Remove the preview and log it)
   - «closed unmerged,
 no label» → `Task_LogRetained` (Append `retained`, with why it stays)
 
@@ -80,7 +80,7 @@ no label» → `Task_LogRetained` (Append `retained`, with why it stays)
 - Record it: `workflow_complete` with `node: "Task_LogRendered"`.
 - next: → `Task_Comment` (Comment the preview URL on the PR)
 
-### 7. Remove the preview AND append `removed` — one commit (`Task_Remove`)
+### 7. Remove the preview and log it (`Task_Remove`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `deletion-requires-confirmation`.

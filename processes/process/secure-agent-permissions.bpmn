@@ -160,50 +160,54 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
         <dc:Bounds x="312" y="132" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_IdentifyTools" bpmnElement="Task_IdentifyTools">
-        <dc:Bounds x="430" y="110" width="140" height="80" />
+        <dc:Bounds x="440" y="92" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_ReadGrants" bpmnElement="Task_ReadGrants">
-        <dc:Bounds x="600" y="110" width="180" height="80" />
+        <dc:Bounds x="630" y="92" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Gap" bpmnElement="GW_Gap" isMarkerVisible="true">
         <dc:Bounds x="835" y="125" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="767" y="190.5" width="90" height="90" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="767" y="190.5" width="90" height="90" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Current" bpmnElement="End_Current">
         <dc:Bounds x="1012" y="242" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Explain" bpmnElement="Task_Explain">
-        <dc:Bounds x="940" y="110" width="180" height="80" />
+        <dc:Bounds x="970" y="92" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_OwnerGrants" bpmnElement="Task_OwnerGrants">
-        <dc:Bounds x="1150" y="390" width="140" height="80" />
+        <dc:Bounds x="1160" y="372" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Granted" bpmnElement="GW_Granted" isMarkerVisible="true">
         <dc:Bounds x="1555" y="125" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1535" y="85" width="90" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1535" y="85" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Refused" bpmnElement="End_Refused">
         <dc:Bounds x="1732" y="242" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_RecordGrant" bpmnElement="Task_RecordGrant">
-        <dc:Bounds x="1320" y="110" width="180" height="80" />
+        <dc:Bounds x="1350" y="92" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_WriteConfig" bpmnElement="Task_WriteConfig">
-        <dc:Bounds x="1680" y="110" width="140" height="80" />
+        <dc:Bounds x="1690" y="92" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Granted" bpmnElement="End_Granted">
         <dc:Bounds x="1902" y="132" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_p1" bpmnElement="p1">
         <di:waypoint x="348" y="150" />
-        <di:waypoint x="430" y="150" />
+        <di:waypoint x="394" y="150" />
+        <di:waypoint x="394" y="152" />
+        <di:waypoint x="440" y="152" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p2" bpmnElement="p2">
-        <di:waypoint x="570" y="150" />
-        <di:waypoint x="620" y="150" />
+        <di:waypoint x="560" y="152" />
+        <di:waypoint x="630" y="152" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p3" bpmnElement="p3">
-        <di:waypoint x="780" y="150" />
+        <di:waypoint x="750" y="152" />
+        <di:waypoint x="792.5" y="152" />
+        <di:waypoint x="792.5" y="150" />
         <di:waypoint x="835" y="150" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p4" bpmnElement="p4">
@@ -214,23 +218,27 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p5" bpmnElement="p5">
         <di:waypoint x="885" y="150" />
-        <di:waypoint x="960" y="150" />
-        <bpmndi:BPMNLabel><dc:Bounds x="845.51" y="108.5" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="927.5" y="150" />
+        <di:waypoint x="927.5" y="152" />
+        <di:waypoint x="970" y="152" />
+        <bpmndi:BPMNLabel><dc:Bounds x="881.51" y="108.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p6" bpmnElement="p6">
-        <di:waypoint x="1120" y="150" />
-        <di:waypoint x="1135" y="150" />
-        <di:waypoint x="1135" y="430" />
-        <di:waypoint x="1150" y="430" />
+        <di:waypoint x="1090" y="152" />
+        <di:waypoint x="1125" y="152" />
+        <di:waypoint x="1125" y="432" />
+        <di:waypoint x="1160" y="432" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p7" bpmnElement="p7">
-        <di:waypoint x="1290" y="430" />
-        <di:waypoint x="1305" y="430" />
-        <di:waypoint x="1305" y="150" />
-        <di:waypoint x="1320" y="150" />
+        <di:waypoint x="1280" y="432" />
+        <di:waypoint x="1315" y="432" />
+        <di:waypoint x="1315" y="152" />
+        <di:waypoint x="1350" y="152" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p8" bpmnElement="p8">
-        <di:waypoint x="1500" y="150" />
+        <di:waypoint x="1470" y="152" />
+        <di:waypoint x="1512.5" y="152" />
+        <di:waypoint x="1512.5" y="150" />
         <di:waypoint x="1555" y="150" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p9" bpmnElement="p9">
@@ -241,10 +249,14 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p10" bpmnElement="p10">
         <di:waypoint x="1605" y="150" />
-        <di:waypoint x="1680" y="150" />
+        <di:waypoint x="1647.5" y="150" />
+        <di:waypoint x="1647.5" y="152" />
+        <di:waypoint x="1690" y="152" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_p11" bpmnElement="p11">
-        <di:waypoint x="1820" y="150" />
+        <di:waypoint x="1810" y="152" />
+        <di:waypoint x="1856" y="152" />
+        <di:waypoint x="1856" y="150" />
         <di:waypoint x="1902" y="150" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>

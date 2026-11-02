@@ -43,7 +43,9 @@ compact so dont need to zoom as much"*, *"add as QA and author check"*.
 Every diagram you write or touch must, when you are done:
 
 - **fit 1400 × 900** in diagram units, so its 16px text reads at about
-  14px in a 1200px band without zooming; tasks 120 × 90;
+  14px in a 1200px band without zooming; **every task a fixed 120 × 120
+  square** (owner, 2026-11-01: boxes never grow to fit their names; a name
+  that does not fit is shortened, `TASK_SIZE` in cat-harness-tools);
 - have **no label on another label, on a flow (its own included), on a box
   or across a lane line** (owner, 2026-10-31: *"need to check for text on
   arrows"*): a gateway's question above the diamond, its answers beside
@@ -83,6 +85,13 @@ is not enabled**. That has consequences for how you author:
   namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#"
   location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld"
   importType="http://www.w3.org/ns/json-ld"/>`.
+- **A store is not a lane.** Lanes are for people and agents, the roles that
+  act. A place where things are kept, such as the work plan (beans), a corpus,
+  a session record, an activity log or a published bucket, is a
+  `<bpmn:dataStoreReference>`. The tasks that read or write it point at it
+  with data associations, and each task sits in the lane of whoever does it
+  (owner, 2026-11-01, Q-BR-3 A). A "Work plan — beans" lane holding "Open the
+  bean" says the store does the work, when the agent does.
 - **The process's own `bpmn:documentation` opens with what it is for.** Its
   first sentence is the diagram's row on the publication-workflow page.
   `kg-export` carries it on the `Process` node as `summary` (the whole text as
@@ -100,13 +109,19 @@ is not enabled**. That has consequences for how you author:
 
 Owner, 2026-10-31: take what holds up from the BPMN comprehension research and
 check it mechanically. `kg:audit` reports each rule below per process
-(`src/workflow/diagram-quality.ts` in https://github.com/litlfred/cat-harness-tools). The papers are being
-ingested under bean `folio-assistant-e0jh`.
+(`src/workflow/diagram-quality.ts` in https://github.com/litlfred/cat-harness-tools). The
+sources, and how strong each rule's evidence is, are in the
+[`process-model-quality`](../../../methodologies/process-model-quality.md)
+methodology.
 
 - **Separate routing from work.** A task never has two outgoing flows: put an
   exclusive or parallel gateway after it, or a reader must guess fork vs
   choice (`activity-implicit-split`, major). A loop-back INTO a task is fine.
   A gateway either joins or splits, not both (`gateway-mixed`).
+  **A question is a gateway, never a task**: a box named "Should it leave
+  now?" or "Separate this graph?" is a decision drawn as work. If someone must
+  judge first, draw that as a task ("Judge whether it should leave") or a call
+  to `Process_AskThePerson`, then the question on the gateway after it.
 - **Keep it small.** Split by phase into call activities past 20 flow nodes
   (`process-size`). That 20 is house style. The only threshold with evidence is
   7PMG's 50 (`process-decompose`, major), and it predicts modelling errors
@@ -119,6 +134,13 @@ ingested under bean `folio-assistant-e0jh`.
   the draft*, not *Draft review*) (`activity-label-verb-first`). The evidence
   is one study of how ambiguous labels felt (29 students), so this is reported,
   never gated.
+- **A name says the step, nothing else.** No trailing `[skill]` slug: the
+  skill is in `<bootstrap.processes:skill ref>`, and the page links it from
+  there (owner, 2026-11-01, Q-RED-3 B). No step numbers ("1 ·", "Phase 2:",
+  "P1.1"): the flows already give the order, and a number in front breaks
+  verb-first. A number that cites a section of a source document goes in the
+  task's documentation. A list of numbered steps is a sign the diagram copies
+  a document's outline; group the steps into phases instead.
 
 ### Split by phase: how
 
@@ -146,6 +168,11 @@ a diagram has a start event per lane, split it like this:
 - **Open and close the bean at the top, once.** A process that is only ever
   called runs on its caller's bean, so a phase calls neither
   `Process_BeanOpen` nor `Process_BeanClose` (`check:bean-calls`).
+  "Once" holds for the top as well: a process with several outcomes routes
+  them all into **one** `Process_BeanClose` call, which decides itself whether
+  the bean is completed, scrapped or blocked, and only then branches to its
+  named end events. One close per outcome (seven in one diagram, before
+  2026-11-01) repeats the same box and makes the diagram wide for no reason.
 - **A caller's `adjudication accepts` looks one level down.** If the judgement
   moves into a phase, put `accepts` on the call to that phase, and take it off
   any caller further up.
@@ -173,8 +200,9 @@ Do not import these from style guides or model output; each was checked:
   no significant difference in accuracy or time across four directions.
   Lay out left-to-right for consistency, not because it reads faster.
 - **A word cap on labels**, a **gateway fan-out cap of 4**, and **a fixed
-  colour palette.** No study behind them. Colour highlighting helps novices,
-  not experts (Reijers et al. 2011).
+  colour palette.** No study behind them. Colouring matching split and join
+  gateways made novices more accurate and experts faster, not more accurate
+  (Reijers et al. 2011).
 - **OR-gateways** need no rule: the process model refuses inclusive gateways
   at load.
 

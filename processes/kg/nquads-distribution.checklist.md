@@ -57,13 +57,13 @@ Extract, partition, package, and distribute knowledge graph datasets as W3C RDF 
 - Skill: `named-query-execution`.
 - What: Execute named queries using scripts/nquads-query.ts and the nquads-query MCP tool.
 - Record it: `workflow_complete` with `node: "A_VerifyQueries"`.
-- next: → `A_GateCheck` (CI Gate Verification: Audit Manifest & Schemas)
+- next: → `A_GateCheck` (Audit the manifest and schemas)
 
 ## Done — Stopped on partition budget (`End_BudgetStopped`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 6. CI Gate Verification: Audit Manifest & Schemas (`A_GateCheck`)
+### 6. Audit the manifest and schemas (`A_GateCheck`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `named-query-execution`.

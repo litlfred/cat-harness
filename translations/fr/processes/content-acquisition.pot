@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: content-acquisition\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.251Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.111Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -37,6 +37,11 @@ msgstr ""
 #: processes/library/content-acquisition.bpmn:32
 #. Diagram label
 msgid "Agent"
+msgstr ""
+
+#: processes/library/content-acquisition.bpmn:47
+#. Diagram label
+msgid "Ask for a link or a description"
 msgstr ""
 
 #: processes/library/content-acquisition.bpmn:68
@@ -112,11 +117,6 @@ msgstr ""
 #: processes/library/content-acquisition.bpmn:71
 #. Diagram label
 msgid "Route it, and watch the queue"
-msgstr ""
-
-#: processes/library/content-acquisition.bpmn:47
-#. Diagram label
-msgid "Say what is needed, and ask for a link OR a description"
 msgstr ""
 
 #: processes/library/content-acquisition.bpmn:33

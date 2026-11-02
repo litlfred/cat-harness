@@ -305,8 +305,8 @@ The **kg-qa** sidecars joined in bean `7mwa`. They were the `kg-qa-sidecar`
 pattern (53 conflicts in the measurement), delegated to `qa:resolve-conflicts`
 because a sidecar could carry an attestation no generator reproduces. The
 attestations moved to `test/attestations/` (bean `2gst`), which no pattern
-names and a merge therefore refuses, and cat-harness and folio-assistant-core
-stopped committing `test/results/`. So the command and the pattern were
+names and a merge therefore refuses, and cat-harness and the content core
+(https://github.com/litlfred/folio-assistant-core) stopped committing `test/results/`. So the command and the pattern were
 retired, and a branch still carrying a sidecar takes the base's side.
 
 The **LSI** half is untracked on `main` since bean `tqjj`, and the globs are

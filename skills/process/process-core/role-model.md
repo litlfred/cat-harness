@@ -171,6 +171,25 @@ for the duration of a lane.
 > `mechanical-role-untested`, and `role-has-actor` now asks the fair question
 > of what plays the corpus.
 
+> **A store is a mechanical role with a `store` block, and is drawn as a data
+> store, not a lane** (owner, 2026-11-01, Q-BR-3 A, Q-DS-1 A to Q-DS-4 A).
+> `work-plan`, `corpus`, `log` and `session-record` keep things rather than
+> do them. Each stays a Role, so its skills are still its contract, and adds
+> `store`: what it `holds` (typology ids), its `api` (one entry per
+> transport, in that transport's own format: `openapi`, `fhir-capability`,
+> `graphql`, `cli` tools, `json-schema-files`, `git`), what it is
+> `realisedBy`, and whether it is `published`. Only a role played by `system`
+> or `external` actors may declare one. The role id is the store id: each
+> layer declares `<bpmn:dataStore id="<role id>">` once in
+> `processes/global-tasks.bpmn`, and a process draws a `dataStoreReference`
+> pointing at it, with `dataInputAssociation` for a read and
+> `dataOutputAssociation` for a write. A system that does its own step
+> (validates, decides, returns a result) keeps a lane; one that only keeps
+> what others write is a data store. The same store is an ArchiMate
+> application component (its interfaces, data objects and services hang off
+> it) and, in a FHIR layer, an `ActorDefinition` of type system whose
+> `capabilities` or `reference` points at its API.
+
 > **Some roles perform, but by judgement.** `stakeholder` carries
 > `judgementOnly: true`: somebody really does sign off, deliberates and is
 > accountable — they simply cannot be handed a procedure that produces the

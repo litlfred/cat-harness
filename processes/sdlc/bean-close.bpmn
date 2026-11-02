@@ -119,29 +119,53 @@ archived: the work is still wanted.</bpmn:documentation>
 
   <bpmndi:BPMNDiagram id="BPMNDiagram_BeanClose">
     <bpmndi:BPMNPlane id="BPMNPlane_BeanClose" bpmnElement="Process_BeanClose">
-      <bpmndi:BPMNShape id="Lane_Agent_di" bpmnElement="Lane_Agent" isHorizontal="true"><dc:Bounds x="160" y="40" width="800" height="340"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Agent_di" bpmnElement="Lane_Agent" isHorizontal="true"><dc:Bounds x="160" y="40" width="800" height="350" /></bpmndi:BPMNShape>
 
-      <bpmndi:BPMNShape id="Close_Start_di" bpmnElement="Close_Start"><dc:Bounds x="220" y="190" width="36" height="36"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Close_Outcome_di" bpmnElement="Close_Outcome" isMarkerVisible="true"><dc:Bounds x="300" y="183" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="206" y="162" width="90" height="17" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Close_Complete_di" bpmnElement="Close_Complete"><dc:Bounds x="400" y="68" width="160" height="70"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Close_Scrap_di" bpmnElement="Close_Scrap"><dc:Bounds x="400" y="173" width="160" height="70"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Close_RecordBlocker_di" bpmnElement="Close_RecordBlocker"><dc:Bounds x="400" y="283" width="160" height="70"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Close_Archive_di" bpmnElement="Close_Archive"><dc:Bounds x="620" y="120" width="160" height="70"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Close_Archived_di" bpmnElement="Close_Archived"><dc:Bounds x="840" y="137" width="36" height="36"/></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Close_HandedBack_di" bpmnElement="Close_HandedBack"><dc:Bounds x="840" y="300" width="36" height="36"/></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Close_Start_di" bpmnElement="Close_Start"><dc:Bounds x="220" y="190" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Close_Outcome_di" bpmnElement="Close_Outcome" isMarkerVisible="true"><dc:Bounds x="300" y="183" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="206" y="162" width="90" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Close_Complete_di" bpmnElement="Close_Complete"><dc:Bounds x="420" y="52" width="120" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Close_Scrap_di" bpmnElement="Close_Scrap"><dc:Bounds x="400" y="173" width="160" height="70" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Close_RecordBlocker_di" bpmnElement="Close_RecordBlocker"><dc:Bounds x="420" y="258" width="120" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Close_Archive_di" bpmnElement="Close_Archive"><dc:Bounds x="640" y="95" width="120" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Close_Archived_di" bpmnElement="Close_Archived"><dc:Bounds x="840" y="137" width="36" height="36" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Close_HandedBack_di" bpmnElement="Close_HandedBack"><dc:Bounds x="840" y="300" width="36" height="36" /></bpmndi:BPMNShape>
 
       <bpmndi:BPMNEdge id="BC_1_di" bpmnElement="BC_1"><di:waypoint x="256" y="208"/><di:waypoint x="300" y="208"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BC_2_di" bpmnElement="BC_2"><di:waypoint x="325" y="183"/><di:waypoint x="325" y="103"/><di:waypoint x="400" y="103"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BC_3_di" bpmnElement="BC_3"><di:waypoint x="350" y="208"/><di:waypoint x="400" y="208"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BC_4_di" bpmnElement="BC_4"><di:waypoint x="325" y="233"/><di:waypoint x="325" y="318"/><di:waypoint x="400" y="318"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="329" y="267" width="90" height="17" /></bpmndi:BPMNLabel>
+      <bpmndi:BPMNEdge id="BC_2_di" bpmnElement="BC_2">
+        <di:waypoint x="350" y="208" />
+        <di:waypoint x="385" y="208" />
+        <di:waypoint x="385" y="112" />
+        <di:waypoint x="420" y="112" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BC_5_di" bpmnElement="BC_5"><di:waypoint x="560" y="103"/><di:waypoint x="700" y="103"/><di:waypoint x="700" y="120"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BC_6_di" bpmnElement="BC_6"><di:waypoint x="560" y="208"/><di:waypoint x="700" y="208"/><di:waypoint x="700" y="190"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BC_7_di" bpmnElement="BC_7"><di:waypoint x="780" y="155"/><di:waypoint x="840" y="155"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BC_8_di" bpmnElement="BC_8"><di:waypoint x="560" y="318"/><di:waypoint x="840" y="318"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BC_3_di" bpmnElement="BC_3"><di:waypoint x="350" y="208"/><di:waypoint x="400" y="208"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BC_4_di" bpmnElement="BC_4">
+        <di:waypoint x="350" y="208" />
+        <di:waypoint x="385" y="208" />
+        <di:waypoint x="385" y="318" />
+        <di:waypoint x="420" y="318" />
+        <bpmndi:BPMNLabel><dc:Bounds x="291" y="254.5" width="90" height="17" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BC_5_di" bpmnElement="BC_5">
+        <di:waypoint x="540" y="112" />
+        <di:waypoint x="590" y="112" />
+        <di:waypoint x="590" y="155" />
+        <di:waypoint x="640" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BC_6_di" bpmnElement="BC_6">
+        <di:waypoint x="560" y="208" />
+        <di:waypoint x="700" y="208" />
+        <di:waypoint x="700" y="190" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BC_7_di" bpmnElement="BC_7">
+        <di:waypoint x="760" y="155" />
+        <di:waypoint x="840" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BC_8_di" bpmnElement="BC_8">
+        <di:waypoint x="540" y="318" />
+        <di:waypoint x="840" y="318" />
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

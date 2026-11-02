@@ -68,7 +68,7 @@ Build one named slice of a knowledge graph as a SQLite file a browser mounts wit
 - Skill: `kg-export`.
 - What: Write the measurement and what was tried onto the bean, and ask the owner whether the slice should ship at that size, be cut further, or not exist.
 - Record it: `workflow_complete` with `node: "A_Report"`.
-- next: → `Call_BeanClose_3` (Close the bean)
+- next: → `Call_BeanClose_2` (Close the bean)
 
 ### 6. Gate every slice: slice:sqlite:check (`A_Check`)
 
@@ -78,24 +78,28 @@ Build one named slice of a knowledge graph as a SQLite file a browser mounts wit
 - Record it: `workflow_complete` with `node: "A_Check"`.
 - next: → `GW_Green` (Every slice green?)
 
-### 7. Close the bean (`Call_BeanClose_3`)
+### 7. Close the bean (`Call_BeanClose_2`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `todo-manager`.
 - What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
 - A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Stopped` (Stopped, with its measurement)
+- next: → `GW_BeanClosedHow` (How did it end?)
 
 ### Decide — Every slice green? (`GW_Green`)
 
 - Answered by the exit code of `slice:sqlite:check`, one line per slice.
 - Call `workflow_complete` with `node: "GW_Green"` and `outcome` set to the label that holds:
   - «yes — green» → `A_Deploy` (Build each slice into _site at deploy)
-  - «no — red» → `Call_BeanClose` (Close the bean)
+  - «no — red» → `Call_BeanClose_2` (Close the bean)
 
-## Done — Stopped, with its measurement (`End_Stopped`)
+### Decide — How did it end? (`GW_BeanClosedHow`)
 
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- Which outcome the bean was closed with, so each ends at its own named end event.
+- Call `workflow_complete` with `node: "GW_BeanClosedHow"` and `outcome` set to the label that holds:
+  - «red» → `End_Red` (Job RED)
+  - «shipped» → `End_Shipped` (Slice searchable on the site)
+  - «stopped» → `End_Stopped` (Stopped, with its measurement)
 
 ### 8. Build each slice into _site at deploy (`A_Deploy`)
 
@@ -105,34 +109,22 @@ Build one named slice of a knowledge graph as a SQLite file a browser mounts wit
 - Record it: `workflow_complete` with `node: "A_Deploy"`.
 - next: → `A_Verify` (Search the published slice in a browser)
 
-### 9. Close the bean (`Call_BeanClose`)
+## Done — Job RED (`End_Red`)
 
-- Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Red` (Job RED)
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 10. Search the published slice in a browser (`A_Verify`)
+## Done — Slice searchable on the site (`End_Shipped`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+## Done — Stopped, with its measurement (`End_Stopped`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 9. Search the published slice in a browser (`A_Verify`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `rendered-verification`.
 - What: Open `slices/search.html?slice=<name>` on the deployed site, run a phrase search for a known row, open it so its payload is fetched, and look at the result; send the screenshot rather than a description of it.
 - Record it: `workflow_complete` with `node: "A_Verify"`.
 - next: → `Call_BeanClose_2` (Close the bean)
-
-## Done — Job RED (`End_Red`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 11. Close the bean (`Call_BeanClose_2`)
-
-- Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Shipped` (Slice searchable on the site)
-
-## Done — Slice searchable on the site (`End_Shipped`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.

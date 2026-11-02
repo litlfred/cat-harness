@@ -54,9 +54,6 @@ WHERE A SAMPLE LANDS depends on whether it is meant to last. The owner, 2026-09-
         <bpmn:flowNodeRef>Task_Trial</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ImportTest</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Passed</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="Lane_2" name="Corpus — L1 source knowledge graph" partitionElementRef="corpus">
-        <bpmn:documentation>Every path ends here with something written down. A refused sample stays referenced with the refusing gate's reason, a failed import records what failed, and a passed one records where it landed. None ends in silence, because an import nobody can tell was tried is the one somebody tries again.</bpmn:documentation>
         <bpmn:flowNodeRef>EndEvent_Refused</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RecordFindings</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_Failed</bpmn:flowNodeRef>
@@ -68,9 +65,7 @@ source is proposed">
       <bpmn:documentation>The caller names a source (ideally one with a source descriptor in the declared sources/ of the instance that owns the corpus) and a reason to try it. Nothing about size, licence or permanence is assumed at this point.</bpmn:documentation>
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:userTask id="Task_Scope" name="Scope the sample:
-which items, which store,
-and is it PERMANENT?">
+    <bpmn:userTask id="Task_Scope" name="Scope the sample: items, store, permanence">
       <bpmn:documentation>Three answers, recorded before anything is fetched. WHICH ITEMS: named by the source's identifiers, or by a subset strategy its descriptor supports. WHICH STORE: the knowledge graph or other structured store the import is tested against. PERMANENT OR TRIAL: a permanent sample lands in library/ and is refreshed; a trial lands in fsh-guts/ and is not. The purpose materialize-remote asks for (working or archival) is asked there, not here.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sample-import" />
@@ -145,6 +140,9 @@ passed?">
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_12</bpmn:incoming>
       <bpmn:outgoing>Flow_13</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Task_RecordFindings">
+        <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Refused" name="Not imported;
 stays referenced, with why">
@@ -192,6 +190,7 @@ content">
     <bpmn:sequenceFlow id="Flow_13" sourceRef="Task_RecordFindings" targetRef="EndEvent_Failed" />
     <bpmn:sequenceFlow id="Flow_14" sourceRef="StartEvent_Upstream" targetRef="Call_Refresh" />
     <bpmn:sequenceFlow id="Flow_15" sourceRef="Call_Refresh" targetRef="EndEvent_Refreshed" />
+    <bpmn:dataStoreReference id="DSR_corpus" name="Corpus" dataStoreRef="corpus"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_SampleImport">
     <bpmndi:BPMNPlane id="Plane_SampleImport" bpmnElement="Collaboration_SampleImport">
@@ -202,31 +201,28 @@ content">
         <dc:Bounds x="160" y="60" width="1820" height="250" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_1_di" bpmnElement="Lane_1" isHorizontal="true">
-        <dc:Bounds x="160" y="310" width="1820" height="250" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_2_di" bpmnElement="Lane_2" isHorizontal="true">
-        <dc:Bounds x="160" y="560" width="1820" height="250" />
+        <dc:Bounds x="160" y="310" width="1820" height="500" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Proposed_di" bpmnElement="StartEvent_Proposed">
         <dc:Bounds x="200" y="167" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="160" y="208" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="193.67" y="207.5" width="116" height="72" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Scope_di" bpmnElement="Task_Scope">
-        <dc:Bounds x="300" y="125.5" width="190" height="119" />
+        <dc:Bounds x="335" y="125" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_Upstream_di" bpmnElement="StartEvent_Upstream">
         <dc:Bounds x="200" y="417" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="160" y="458" width="116" height="40" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="192" y="457.5" width="116" height="90" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Call_Refresh_di" bpmnElement="Call_Refresh">
-        <dc:Bounds x="300" y="385" width="190" height="100" />
+        <dc:Bounds x="335" y="375" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Refreshed_di" bpmnElement="EndEvent_Refreshed">
         <dc:Bounds x="510" y="417" width="36" height="36" />
         
       <bpmndi:BPMNLabel><dc:Bounds x="490" y="458" width="76" height="20" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Call_Materialize_di" bpmnElement="Call_Materialize">
-        <dc:Bounds x="600" y="385" width="190" height="100" />
+        <dc:Bounds x="635" y="375" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Materialized_di" bpmnElement="Gateway_Materialized" isMarkerVisible="true">
         <dc:Bounds x="840" y="410" width="50" height="50" />
@@ -237,13 +233,13 @@ content">
         
       <bpmndi:BPMNLabel><dc:Bounds x="865.94" y="464" width="80.06" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Library_di" bpmnElement="Task_Library">
-        <dc:Bounds x="1070" y="325" width="190" height="100" />
+        <dc:Bounds x="1105" y="322" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Trial_di" bpmnElement="Task_Trial">
         <dc:Bounds x="1070" y="445" width="190" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ImportTest_di" bpmnElement="Task_ImportTest">
-        <dc:Bounds x="1330" y="385" width="190" height="100" />
+        <dc:Bounds x="1365" y="375" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Passed_di" bpmnElement="Gateway_Passed" isMarkerVisible="true">
         <dc:Bounds x="1580" y="410" width="50" height="50" />
@@ -266,15 +262,15 @@ content">
       <bpmndi:BPMNLabel><dc:Bounds x="1860" y="633" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
         <di:waypoint x="236" y="185" />
-        <di:waypoint x="300" y="185" />
+        <di:waypoint x="335" y="185" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_2_di" bpmnElement="Flow_2">
-        <di:waypoint x="490" y="185" />
+        <di:waypoint x="455" y="185" />
         <di:waypoint x="695" y="185" />
         <di:waypoint x="695" y="385" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
-        <di:waypoint x="790" y="435" />
+        <di:waypoint x="755" y="435" />
         <di:waypoint x="840" y="435" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
@@ -288,10 +284,11 @@ content">
         <bpmndi:BPMNLabel><dc:Bounds x="873" y="590" width="90" height="26" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
-        <di:waypoint x="975" y="410" />
-        <di:waypoint x="975" y="375" />
-        <di:waypoint x="1070" y="375" />
-        <bpmndi:BPMNLabel><dc:Bounds x="985" y="355" width="70" height="16" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1000" y="435" />
+        <di:waypoint x="1052.5" y="435" />
+        <di:waypoint x="1052.5" y="382" />
+        <di:waypoint x="1105" y="382" />
+        <bpmndi:BPMNLabel><dc:Bounds x="958.5" y="386.25" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_7_di" bpmnElement="Flow_7">
         <di:waypoint x="975" y="460" />
@@ -300,19 +297,19 @@ content">
         <bpmndi:BPMNLabel><dc:Bounds x="1000" y="500" width="40" height="16" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_8_di" bpmnElement="Flow_8">
-        <di:waypoint x="1260" y="375" />
-        <di:waypoint x="1295" y="375" />
+        <di:waypoint x="1225" y="382" />
+        <di:waypoint x="1295" y="382" />
         <di:waypoint x="1295" y="435" />
-        <di:waypoint x="1330" y="435" />
+        <di:waypoint x="1365" y="435" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_9_di" bpmnElement="Flow_9">
         <di:waypoint x="1260" y="495" />
-        <di:waypoint x="1295" y="495" />
-        <di:waypoint x="1295" y="435" />
-        <di:waypoint x="1330" y="435" />
+        <di:waypoint x="1312.5" y="495" />
+        <di:waypoint x="1312.5" y="435" />
+        <di:waypoint x="1365" y="435" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_10_di" bpmnElement="Flow_10">
-        <di:waypoint x="1520" y="435" />
+        <di:waypoint x="1485" y="435" />
         <di:waypoint x="1580" y="435" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_11_di" bpmnElement="Flow_11">
@@ -333,12 +330,16 @@ content">
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_14_di" bpmnElement="Flow_14">
         <di:waypoint x="236" y="435" />
-        <di:waypoint x="300" y="435" />
+        <di:waypoint x="335" y="435" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_15_di" bpmnElement="Flow_15">
-        <di:waypoint x="490" y="435" />
+        <di:waypoint x="455" y="435" />
         <di:waypoint x="510" y="435" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_corpus" bpmnElement="DSR_corpus"><dc:Bounds x="1720" y="850" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1774" y="866" width="90" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Task_RecordFindings" bpmnElement="DOA_Task_RecordFindings"><di:waypoint x="1745" y="760"/><di:waypoint x="1745" y="850"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

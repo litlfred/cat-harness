@@ -75,7 +75,7 @@ Land ONE pull request on `main`, in any repository, as its own step with its own
 - Computed by decisions/merge-authorisation.dmn over authorisation and ciState.
 - Computed by the DMN table `decisions/merge-authorisation.dmn#Decision_MergeAuthorisation`: call `workflow_complete` with `node: "GW_Authorised"` and the `facts` it reads — the table returns the branch; pass no `outcome`.
   - «merge» → `Task_RecordAuthorisation` (Record who authorised, when, and the quote)
-  - «ask» → `Task_Ask` (Put the merge to the owner, evidence first)
+  - «ask» → `Task_Ask` (Put the merge to the owner)
 
 ## Done — Handed back, not merged (`End_HandedBack`)
 
@@ -89,7 +89,7 @@ Land ONE pull request on `main`, in any repository, as its own step with its own
 - Record it: `workflow_complete` with `node: "Task_RecordAuthorisation"`.
 - next: → `Task_Merge` (Merge, pinned to the evaluated head)
 
-### 7. Put the merge to the owner, evidence first (`Task_Ask`)
+### 7. Put the merge to the owner (`Task_Ask`)
 
 - Who: the `Merging session` lane (role `merge-steward`).
 - Skill: `merge-to-main`.

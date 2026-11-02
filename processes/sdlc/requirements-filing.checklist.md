@@ -26,7 +26,7 @@ How a proposal in docs/proposals/<slug>.md is promoted into docs/requirements/<s
 - Call `workflow_complete` with `node: "GW_FilingMode"` and `outcome` set to the label that holds:
   - «promote» → `A_PromoteOrUpdate` (git mv proposal to docs/requirements/<slug>.md and record proposedIn)
   - «amend-or-supersede» → `A_BindFrontMatter` (Bind Requirement front matter, statements, and 3-axis lineage)
-  - «retire» → `A_UpdateLifecycle` (Mark superseded or retired record in place and update RequirementSet)
+  - «retire» → `A_UpdateLifecycle` (Mark the record superseded or retired)
 
 ### 2. git mv proposal to docs/requirements/<slug>.md and record proposedIn (`A_PromoteOrUpdate`)
 
@@ -42,9 +42,9 @@ How a proposal in docs/proposals/<slug>.md is promoted into docs/requirements/<s
 - Skill: `specification-management`.
 - What: Author or update the YAML front matter conforming to bootstrap/schemas/requirement.schema.json: `id: req:<slug>`, `title`, `status`, `statements[]` (each with stable `#<key>`, RFC 2119 modality MUST/SHOULD/MAY, normative statement, and measurable successCriteria), backward lineage (`proposedIn`, `de
 - Record it: `workflow_complete` with `node: "A_BindFrontMatter"`.
-- next: → `A_UpdateLifecycle` (Mark superseded or retired record in place and update RequirementSet)
+- next: → `A_UpdateLifecycle` (Mark the record superseded or retired)
 
-### 4. Mark superseded or retired record in place and update RequirementSet (`A_UpdateLifecycle`)
+### 4. Mark the record superseded or retired (`A_UpdateLifecycle`)
 
 - Who: the `Authoring Agent` lane (role `authoring-agent`).
 - Skill: `specification-management`.
@@ -58,9 +58,9 @@ How a proposal in docs/proposals/<slug>.md is promoted into docs/requirements/<s
 - Skill: `crdm-requirements-workflow`.
 - What: Add or update the requirement's row in `docs/requirements/index.md` under its canonical concern group (`sdlc`, `process`, `tools`, `kg`, `library`, `content`, `ui`, `conduct` from `code-lists/concern-group.json`) for `in-force` requirements, or move it to the Superseded and Retired Requirements tabl
 - Record it: `workflow_complete` with `node: "A_UpdateIndex"`.
-- next: → `A_RunCheck` (Run check:requirements schema, collision, and lineage gate)
+- next: → `A_RunCheck` (Run the requirements check)
 
-### 6. Run check:requirements schema, collision, and lineage gate (`A_RunCheck`)
+### 6. Run the requirements check (`A_RunCheck`)
 
 - Who: the `Authoring Agent` lane (role `authoring-agent`).
 - Skill: `specification-management`.
@@ -73,17 +73,17 @@ How a proposal in docs/proposals/<slug>.md is promoted into docs/requirements/<s
 - Branches on the exit code of `bun run cat check:requirements`: any schema violation, slug collision, cycle in `derivedFrom`, or unresolved reference loops back to `A_BindFrontMatter` before human review.
 - Call `workflow_complete` with `node: "GW_CheckPassed"` and `outcome` set to the label that holds:
   - «fail» → `A_BindFrontMatter` (Bind Requirement front matter, statements, and 3-axis lineage)
-  - «pass» → `BA_ReviewFiling` (Review filed requirement, organisation, and sign off)
+  - «pass» → `BA_ReviewFiling` (Review the filed requirement, sign off)
 
-### 7. Review filed requirement, organisation, and sign off (`BA_ReviewFiling`)
+### 7. Review the filed requirement, sign off (`BA_ReviewFiling`)
 
 - Who: the `BA / Feature Requestor` lane (role `business-analyst`).
 - Skill: `adjudication`.
 - What: The Business Analyst / Owner reviews the filed requirement in `docs/requirements/<slug>.md`, its concern-group organisation in `docs/requirements/index.md`, its three-axis traceability, and any supersession or retirement update, deciding `approve`, `amend`, `reject`, `defer`, or `cancel`.
 - A subprocess (`Process_Adjudication`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `A_RecordFilingSignoff` (Record requirement-signoff attestation and set stage)
+- next: → `A_RecordFilingSignoff` (Record the sign-off and set the stage)
 
-### 8. Record requirement-signoff attestation and set stage (`A_RecordFilingSignoff`)
+### 8. Record the sign-off and set the stage (`A_RecordFilingSignoff`)
 
 - Who: the `Authoring Agent` lane (role `authoring-agent`).
 - Skill: `adjudication`.

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
                    xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
@@ -232,19 +232,7 @@ Tool: translation_signoff MCP tool</bpmn:documentation>
 
     <!-- ══════ PIPELINE LANE ══════════════════════════════════ -->
 
-    <bpmn:serviceTask id="Task_ExtractPOT" name="Extract POT&#10;(translatable strings)">
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="translation-manager"/>
-      </bpmn:extensionElements>
-
-      <bpmn:documentation>Pre-processes source markdown:
-1. Segments prose by paragraph
-2. Shields non-translatable content (math, code, labels) as placeholders
-3. Normalizes whitespace
-4. Extracts metadata (titles, alt text, captions)
-Produces .pot file(s) at the configured granularity.
-Tool: translation_extract MCP tool</bpmn:documentation>
-    </bpmn:serviceTask>
+    <bpmn:callActivity id="Task_ExtractPOT" calledElement="GT_ExtractPot" name="Extract the POT"/>
 
     <bpmn:serviceTask id="Task_PrepareGlossary" name="Prepare domain&#10;glossary">
       <bpmn:extensionElements>
@@ -259,36 +247,12 @@ target locale. Sources:
 4. Previous translations of related content</bpmn:documentation>
     </bpmn:serviceTask>
 
-    <bpmn:serviceTask id="Task_InjectPO" name="Inject PO →&#10;translated Markdown">
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="translation-manager"/>
-      </bpmn:extensionElements>
+    <bpmn:callActivity id="Task_InjectPO" calledElement="GT_InjectPo" name="Inject the PO"/>
 
-      <bpmn:documentation>Post-processes the completed .po file:
-1. Substitutes msgstr for msgid in source markdown
-2. Unshields placeholder tokens back to original content
-3. Validates structural integrity (paragraph count, heading levels)
-4. Validates completeness (flags empty msgstr)
-5. Runs linting (doubled punctuation, orphaned placeholders)
-Tool: translation_inject MCP tool</bpmn:documentation>
-    </bpmn:serviceTask>
+    <bpmn:callActivity id="Task_RoundTripQA" calledElement="GT_RoundTripQa" name="Round-trip&#10;translation QA">
 
-    <bpmn:serviceTask id="Task_RoundTripQA" name="Round-trip&#10;translation QA">
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="translation-manager"/>
-      </bpmn:extensionElements>
-
-      <bpmn:documentation>Bean: folio-assistant-ktt2
-Back-translates target-language .md to source language and compares
-meaning. Distinguishes semantic drift from terminology misses.
-Tool: translation_validate MCP tool
-
-No gateway follows: drift or clean, the translation goes to Task_SMEReview
-with the findings attached. Which of two readings is right is a human call
-(translation-manager, "route drift to a human reviewer"), and every
-translation in this workflow is reviewed and signed off anyway, so a clean
-result is evidence for the reviewer and never a way around them.</bpmn:documentation>
-    </bpmn:serviceTask>
+      <bpmn:documentation>No gateway follows: drift or clean, the translation goes to Task_SMEReview with the findings attached. Which of two readings is right is a human call (translation-manager, &quot;route drift to a human reviewer&quot;), and every translation in this workflow is reviewed and signed off anyway, so a clean result is evidence for the reviewer and never a way around them.</bpmn:documentation>
+    </bpmn:callActivity>
 
 
     <bpmn:serviceTask id="Task_AppendDisclaimer" name="Append WHO&#10;disclaimer (if DAK)">
@@ -305,14 +269,20 @@ the WHO legal disclaimer:
 Only applies when folio contentType includes WHO/DAK content.</bpmn:documentation>
     </bpmn:serviceTask>
 
-    <bpmn:serviceTask id="Task_WriteStatus" name="Write status.json&#10;(official)">
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="translation-manager"/>
-      </bpmn:extensionElements>
-
-      <bpmn:documentation>Writes translations/&lt;locale&gt;/status.json with the
-official sign-off metadata and source hash for staleness detection.</bpmn:documentation>
-    </bpmn:serviceTask>
+    <bpmn:callActivity id="Task_WriteStatus" calledElement="GT_WriteTranslationStatus" name="Write status.json&#10;(official)">
+      <bpmn:ioSpecification id="Task_WriteStatus_IO">
+        <bpmn:dataInput id="Task_WriteStatus_official" name="official"/>
+        <bpmn:inputSet id="Task_WriteStatus_In"><bpmn:dataInputRefs>Task_WriteStatus_official</bpmn:dataInputRefs></bpmn:inputSet>
+        <bpmn:outputSet id="Task_WriteStatus_Out"/>
+      </bpmn:ioSpecification>
+      <bpmn:dataInputAssociation id="Task_WriteStatus_official_Value">
+        <bpmn:targetRef>Task_WriteStatus_official</bpmn:targetRef>
+        <bpmn:assignment id="Task_WriteStatus_official_Assign">
+          <bpmn:from xsi:type="bpmn:tFormalExpression">true</bpmn:from>
+          <bpmn:to xsi:type="bpmn:tFormalExpression">Task_WriteStatus_official</bpmn:to>
+        </bpmn:assignment>
+      </bpmn:dataInputAssociation>
+    </bpmn:callActivity>
 
     <!-- ══════ SEQUENCE FLOWS ═════════════════════════════════ -->
 

@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_251 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_252 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -286,6 +286,7 @@ _251 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`watch`](skills/sdlc/sdlc-core/watch.md) | Background-watch a branch (default origin/main) or a GitHub PR for new activity while you work, and on every event report whether to integrate / whether it conflicts with the current branch /… |
 | [`where-a-proposal-goes`](skills/sdlc/sdlc-core/where-a-proposal-goes.md) | Where a proposal goes — the issue, not the documentation |
 | [`work-plan-restructure`](skills/sdlc/sdlc-core/work-plan-restructure.md) | Reorganise a work plan that has outgrown one-bean-at-a-time repair — session logs typed as epics, duplicate families, generated template beans, stale claims, unparented work — through a reviewed… |
+| [`work-plan-store`](skills/sdlc/sdlc-core/work-plan-store.md) | The contract the work plan (beans) keeps as a data store: give back a bean exactly as written, keep ids unique, keep links between beans pointing at beans that exist, keep status and type to their… |
 
 **`skills/sdlc/spec-kit/`** (3)
 

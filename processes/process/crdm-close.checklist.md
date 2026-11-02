@@ -25,9 +25,9 @@ The stakeholders sign off, the BA confirms every criterion is met, the feature l
 - Skill: `adjudication`.
 - What: The business analyst confirms every acceptance criterion from the requirements is met.
 - A subprocess (`Process_Adjudication`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `A_RecordSignoff` (Record the sign-off as a requirement-signoff attestation)
+- next: → `A_RecordSignoff` (Record the sign-off attestation)
 
-### 3. Record the sign-off as a requirement-signoff attestation (`A_RecordSignoff`)
+### 3. Record the sign-off attestation (`A_RecordSignoff`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `adjudication`.
@@ -42,7 +42,7 @@ The stakeholders sign off, the BA confirms every criterion is met, the feature l
 - Computed by the DMN table `decisions/requirement-signoff-recorded.dmn#Decision_RequirementSignoffRecorded`: call `workflow_complete` with `node: "GW_SignoffRecorded"` and the `facts` it reads — the table returns the branch; pass no `outcome`.
   - «proceed» → `Call_MergeToMain` (Land the feature's PRs)
   - «stop» → `End_NotAccepted` (Not accepted — recorded, with its reason)
-  - «missing» → `A_RecordSignoff` (Record the sign-off as a requirement-signoff attestation)
+  - «missing» → `A_RecordSignoff` (Record the sign-off attestation)
 
 ### 4. Land the feature's PRs (`Call_MergeToMain`)
 

@@ -45,9 +45,9 @@ SME review of fixed test data for clinical or scientific decision support and in
 - Who: the `Clinical / scientific SME` lane (role `clinical-sme`).
 - What: Performed by the human SME in `Lane_SME` (`clinical-sme`, `judgementOnly: true`).
 - Record it: `workflow_complete` with `node: "Task_SmeJudge"`.
-- next: → `Task_RecordCaseVerdict` (Record sme-case-verdict/1.0.0 with SME identity, date, verdict and rationale)
+- next: → `Task_RecordCaseVerdict` (Record the SME's verdict and rationale)
 
-### 4. Record sme-case-verdict/1.0.0 with SME identity, date, verdict and rationale (`Task_RecordCaseVerdict`)
+### 4. Record the SME's verdict and rationale (`Task_RecordCaseVerdict`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-data-sets`.

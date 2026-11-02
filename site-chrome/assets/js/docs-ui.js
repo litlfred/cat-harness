@@ -10827,6 +10827,56 @@
     scope.parentNode.insertBefore(host, scope);
     host.appendChild(tools);
     host.appendChild(scope);
+
+    // Drag the bottom edge down to make the figure longer (owner,
+    // 2026-11-01: "you should also be able to drag bottom of figure down to
+    // make longer"). The card is as tall as its drawing, so a longer card is
+    // a bigger drawing: the handle sets the zoom so the drawing's height
+    // follows the pointer, and up makes it shorter again. A full-width bar,
+    // not the browser's corner grip, so it is easy to hit; focusable, so the
+    // arrow keys do the same in zoom steps.
+    var grip = el("div", {
+      class: "fa-figure-grip", role: "separator", tabindex: "0",
+      "aria-orientation": "horizontal", "aria-label": "Drag down to make the figure longer, up to make it shorter",
+      title: "Drag down to make the figure longer",
+    });
+    host.appendChild(grip);
+    var sizing = null;
+    function setZoom(z) {
+      z = Math.max(ZOOM_STEPS[0], Math.min(ZOOM_STEPS[ZOOM_STEPS.length - 1], z));
+      scope.style.setProperty("--fa-zoom", String(z));
+      level.textContent = Math.round(z * 100) + "%";
+      step = 0;
+      while (step < ZOOM_STEPS.length - 1 && ZOOM_STEPS[step + 1] <= z + 1e-9) step++;
+      out.disabled = z <= ZOOM_STEPS[0];
+      into.disabled = z >= ZOOM_STEPS[ZOOM_STEPS.length - 1];
+      markPannable();
+    }
+    grip.addEventListener("pointerdown", function (e) {
+      if (e.button !== 0) return;
+      var art = scope.querySelector("svg, img, object");
+      var h = art ? art.getBoundingClientRect().height : scope.clientHeight;
+      if (!(h > 0)) return;
+      var cur = parseFloat(scope.style.getPropertyValue("--fa-zoom")) || ZOOM_STEPS[step];
+      sizing = { y: e.clientY, h: h, z: cur };
+      try { grip.setPointerCapture(e.pointerId); } catch (_e) { /* not captureable */ }
+      grip.classList.add("is-sizing");
+      e.preventDefault();
+    });
+    grip.addEventListener("pointermove", function (e) {
+      if (!sizing) return;
+      setZoom(sizing.z * Math.max(0.1, sizing.h + (e.clientY - sizing.y)) / sizing.h);
+      e.preventDefault();
+    });
+    function endSizing() { sizing = null; grip.classList.remove("is-sizing"); }
+    grip.addEventListener("pointerup", endSizing);
+    grip.addEventListener("pointercancel", endSizing);
+    grip.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown" && step < ZOOM_STEPS.length - 1) { step++; apply(); }
+      else if (e.key === "ArrowUp" && step > 0) { step--; apply(); }
+      else return;
+      e.preventDefault();
+    });
     apply();
 
     // After insertion, so `clientWidth` is the real column width rather than 0.
@@ -10866,7 +10916,12 @@
     // image the column has SHRUNK qualifies: one shown at its own size is
     // already readable and gains nothing but chrome.
     var rasterOk = !!document.querySelector("[data-fa-figure-images]");
-    var sel = ".main-content img[src$='.svg'], .main-content svg, .main-content object[data$='.svg']" +
+    // A rendered DOCUMENT (`.fa-doc`, a handbook or guideline page) says the
+    // same thing by being one: its images are the publication's figures, never
+    // card faces, so every large one gets the controls, shrunk or not. A
+    // reader still wants to zoom, pan and copy a figure shown at its own size.
+    var docFigures = ".fa-doc img";
+    var sel = ".main-content img[src$='.svg'], .main-content svg, .main-content object[data$='.svg'], " + docFigures +
       (rasterOk ? ", .main-content img" : "");
 
     document.querySelectorAll(sel).forEach(function (node) {
@@ -10888,7 +10943,8 @@
         }
         var shown = node.getBoundingClientRect().width;
         var column = node.parentElement ? node.parentElement.clientWidth : 0;
-        if (shown < MIN_FIGURE_PX || node.naturalWidth <= shown + 1 || shown < 0.9 * column) return;
+        if (shown < MIN_FIGURE_PX) return;
+        if (!node.closest(".fa-doc") && (node.naturalWidth <= shown + 1 || shown < 0.9 * column)) return;
       }
       var box = node.getBoundingClientRect();
       if (box.width < MIN_FIGURE_PX && box.height < MIN_FIGURE_PX) return;

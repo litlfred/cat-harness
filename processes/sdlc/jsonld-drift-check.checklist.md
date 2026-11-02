@@ -10,26 +10,15 @@ Check that the committed `.jsonld` siblings are still in sync with the `.ts` man
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_JsonLdDrift"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_Check` (Regenerate the context, block, library and site graphs — and diff)
+- next: → `Call_Drift` (Check the .jsonld siblings are in sync)
 
-### 1. Regenerate the context, block, library and site graphs — and diff (`Task_Check`)
+### 1. Check the .jsonld siblings are in sync (`Call_Drift`)
 
-- Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
+- Who: the `Build pipeline` lane (role `build-pipeline`).
 - What: Run the five --check generators in one job — the JSON-LD context, block siblings, library nodes, site graph, then the label-resolution and emitter tests.
-- Record it: `workflow_complete` with `node: "Task_Check"`.
-- next: → `GW_Drift` (Did anything change?)
+- A subprocess (`Process_GeneratedFileDrift`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `End_Checked` (Checked)
 
-### Decide — Did anything change? (`GW_Drift`)
-
-- Answered by the diff Task_Check takes after regenerating the context, block, library and site graphs.
-- Call `workflow_complete` with `node: "GW_Drift"` and `outcome` set to the label that holds:
-  - «no — in sync» → `End_Clean` (Every sibling in sync)
-  - «yes — drifted» → `End_Drift` (Job RED — the generated file is stale)
-
-## Done — Every sibling in sync (`End_Clean`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-## Done — Job RED — the generated file is stale (`End_Drift`)
+## Done — Checked (`End_Checked`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.

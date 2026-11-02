@@ -42,9 +42,9 @@ How a knowledge graph reaches a public portal this repository does not run: sele
 - Skill: `kg-export`.
 - What: kg-export, already built and host-agnostic by design.
 - Record it: `workflow_complete` with `node: "A_Serialize"`.
-- next: → `A_Package` (Package: files plus a manifest of digests)
+- next: → `A_Package` (Package with digests)
 
-### 5. Package: files plus a manifest of digests (`A_Package`)
+### 5. Package with digests (`A_Package`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `kg-to-portal`.

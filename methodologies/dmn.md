@@ -9,6 +9,10 @@ origin: >
   identifies the exact PDF (sha256) and its outline and holds no text.
 evidence:
   - library/omg-2024-dmn-1-5
+  - library/arxiv-1603.07466v1
+  - library/djurica-2024-decision-model-comprehension-emisa
+  - library/hasic-2018-5pdm-decision-intelligence
+  - library/hasic-2019-complexity-metrics-dmn
 applies-when: >
   The criteria RECUR and the inputs are data. A gateway that must branch the same
   way on the same facts every time. Not for a one-off judgement — that is
@@ -48,6 +52,31 @@ they may overlap and order decides. `COLLECT` returns every match.
 **Prefer `UNIQUE`,** because it is the only policy under which an overlapping pair
 of rules is an error rather than a silent precedence. `FIRST` makes rule order
 load-bearing, and a reader of the table cannot see that the order was deliberate.
+
+## What the research adds
+
+The specification says what a table means. Four sources say how to use one well:
+
+- **Overlap and gaps can be checked mechanically.** Calvanese et al. 2016
+  (`arxiv-1603.07466v1`) give algorithms that find overlapping rules and
+  input combinations no rule covers, on tables up to 1,506 rules. This is
+  formal analysis, not a user study. `dmn-qa` checks the same two properties
+  (`dmn-rule-shadowed`, `dmn-table-complete`), by enumeration.
+- **Tables read better than trees, and compact tables best.** Djurica et al.
+  2024 (`djurica-2024-decision-model-comprehension-emisa`, 139 participants,
+  32 questions): tables beat trees on accuracy, and contracted ("frugal")
+  versions beat expanded ones. Colour helped trees but lowered accuracy on
+  tables (92.8% to 86.5% for frugal tables). So: keep tables contracted, and
+  do not colour their cells.
+- **Take decision logic out of the process.** Hasić et al. 2018
+  (`hasic-2018-5pdm-decision-intelligence`), principle P2: no cascades of
+  exclusive gateways in BPMN; put the logic in a decision table. This is the
+  computed gateway above. Their validation is one case study, not an
+  experiment.
+- **Hit policy and input count drive perceived complexity.** Hasić et al.
+  2019 (`hasic-2019-complexity-metrics-dmn`): of 26 metrics, hit-policy usage
+  and the number of input variables tracked perceived complexity best. The
+  paper sets no cut-off, so this methodology sets none either.
 
 ## Where DMN and the other methodologies meet
 

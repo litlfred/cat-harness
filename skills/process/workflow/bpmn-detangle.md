@@ -49,7 +49,7 @@ in `cat-harness-tools/src/workflow/diagram-fit.ts`:
 | `label-on-lane-line` | a label drawn across the line between two lanes, or a pool's edge | `--write` moves it inside one lane |
 | `edge-diagonal` | a flow runs at a slant | `--write` routes it at right angles through the gap |
 | `header-overflow` | a pool or lane name spills out of its 30-wide strip | `--write` makes the lane taller; or shorten the name (never repeat the process id in the pool name) |
-| `text-overflow` | a name spills out of its box | `--write` widens, then heightens the box; or shorten the name |
+| `text-overflow` | a name spills out of its box | shorten the name: a task box is a fixed 120 × 120 square and never grows (owner, 2026-11-01) |
 | `edge-crossing` | two flows cross | re-route one around the other, move a step, or swap lanes |
 | `edge-through-shape` | a flow is drawn through a box it neither leaves nor enters | route it around the box (`--write` never adds one) |
 | `lane-order` | another lane order crosses fewer lane boundaries | `--write` applies it |
@@ -81,8 +81,10 @@ about one screen. Change the budget and the text size together.
    through none. If the layout fixes together would add a flow through a
    box, a crossing or a slant, the file keeps its layout and only its labels
    move. Look at the result: it is a start, not a layout.
-3. **Make it compact.** Tasks 120 × 90 (three lines of 16px text), gateways 50,
-   events 36, and big enough for the name at 16px (`text-overflow`). About 40–70
+3. **Make it compact.** Tasks a fixed 120 × 120 square (owner, 2026-11-01:
+   *"FIXED square"*; `--write` squares them), gateways 50, events 36. A name
+   that does not fit at 16px is shortened, never given a bigger box
+   (`text-overflow`). About 40–70
    between neighbours in a row; wider only where a flow label needs it.
    **A column can hold one step per lane**: a hand-off straight down from
    one lane to the next is the shortest flow there is. A lane is as tall as

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: crdm-signoff\n"
-"POT-Creation-Date: 2026-10-22T17:11:43.275Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.170Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -86,7 +86,7 @@ msgstr ""
 
 #: processes/process/crdm-signoff.bpmn:94
 #. Diagram label
-msgid "Offer the knowledge-graph destinations for the agreed set"
+msgid "Offer KG destinations for the agreed set"
 msgstr ""
 
 #: processes/process/crdm-signoff.bpmn:71
@@ -116,12 +116,12 @@ msgstr ""
 
 #: processes/process/crdm-signoff.bpmn:60
 #. Diagram label
-msgid "Record the sign-off as a requirement-signoff attestation"
+msgid "Record the sign-off attestation"
 msgstr ""
 
 #: processes/process/crdm-signoff.bpmn:126
 #. Diagram label
-msgid "Run placement, and raise a bean for the authoring"
+msgid "Run placement, file a bean"
 msgstr ""
 
 #: processes/process/crdm-signoff.bpmn:52

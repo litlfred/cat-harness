@@ -24,18 +24,18 @@ The ONE way a question or decision is put to a person.
 
 - `yes` when this agent is the one the person is talking with right now.
 - Call `workflow_complete` with `node: "GW_Discussing"` and `outcome` set to the label that holds:
-  - «yes» → `A_WriteInChat` (Write it in the chat)
-  - «no» → `A_HandBack` (Hand it back to the discussion)
+  - «yes» → `Call_Discuss` (Discuss it with the person)
+  - «no» → `A_HandBack` (Hand back to the discussion)
 
-### 2. Write it in the chat (`A_WriteInChat`)
+### 2. Discuss it with the person (`Call_Discuss`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `ask-the-person`.
-- What: Post the whole composed question as ordinary chat text BEFORE any card.
-- Record it: `workflow_complete` with `node: "A_WriteInChat"`.
-- next: → `A_OfferCard` (Offer the same options as a tappable card)
+- Skill: `ask-the-person`, `interaction-modality`, `symbiotic-interaction`.
+- What: Bootstrap's human-agent discussion, given the composed question.
+- A subprocess (`Process_HumanAgentDiscussion`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `End_Returned` (Answer, default or open question returned)
 
-### 3. Hand it back to the discussion (`A_HandBack`)
+### 3. Hand back to the discussion (`A_HandBack`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `hand-back-to-discussion`.
@@ -43,53 +43,10 @@ The ONE way a question or decision is put to a person.
 - Record it: `workflow_complete` with `node: "A_HandBack"`.
 - next: → `End_HandedBack` (Answer returned through the discussion)
 
-### 4. Offer the same options as a tappable card (`A_OfferCard`)
+## Done — Answer, default or open question returned (`End_Returned`)
 
-- Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `ask-the-person`.
-- What: Whatever the host calls its selection tool (`AskUserQuestion`, `request_decision`, a button card): the same letters and labels as the chat text, the recommended option marked.
-- Record it: `workflow_complete` with `node: "A_OfferCard"`.
-- next: → `U_Choose` (Choose an option)
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
 ## Done — Answer returned through the discussion (`End_HandedBack`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 5. Choose an option (`U_Choose`)
-
-- Who: the `Person` lane (role `user`).
-- Skill: `interaction-modality`.
-- What: One tap on the card, or any answer the person prefers to give.
-- Record it: `workflow_complete` with `node: "U_Choose"`.
-- next: → `GW_Answered` (Answered?)
-
-### Decide — Answered? (`GW_Answered`)
-
-- `yes` when the person chose an option.
-- Call `workflow_complete` with `node: "GW_Answered"` and `outcome` set to the label that holds:
-  - «yes» → `A_Record` (Record the answer)
-  - «no» → `A_ProceedOnDefault` (Proceed on the stated default, question left open)
-
-### 6. Record the answer (`A_Record`)
-
-- Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `ask-the-person`, `symbiotic-interaction`.
-- What: Hand the answer back to the calling step, quoted.
-- Record it: `workflow_complete` with `node: "A_Record"`.
-- next: → `End_Answered` (Answer returned to the caller)
-
-### 7. Proceed on the stated default, question left open (`A_ProceedOnDefault`)
-
-- Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `ask-the-person`.
-- What: Do what the question said would happen with no answer, and say so.
-- Record it: `workflow_complete` with `node: "A_ProceedOnDefault"`.
-- next: → `End_Default` (Default taken, question still open)
-
-## Done — Answer returned to the caller (`End_Answered`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-## Done — Default taken, question still open (`End_Default`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.

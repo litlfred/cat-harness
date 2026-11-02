@@ -631,6 +631,36 @@
   -webkit-user-select: none;
 }
 
+/* The bottom-edge handle that makes a figure longer (owner, 2026-11-01).
+ * A full-width bar, tall enough to hit without aiming, with a short grip in
+ * the middle so it reads as something to pull. */
+.fa-figure-grip {
+  height: 12px;
+  margin: 0 0 0.4em;
+  cursor: ns-resize;
+  touch-action: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 0 6px 6px;
+}
+.fa-figure-grip::before {
+  content: "";
+  width: 48px;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(128, 128, 128, 0.45);
+}
+.fa-figure-grip:hover::before,
+.fa-figure-grip:focus-visible::before,
+.fa-figure-grip.is-sizing::before {
+  background: rgba(128, 128, 128, 0.85);
+}
+.fa-figure-grip:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: -2px;
+}
+
 .fa-figure-scope.is-panning {
   cursor: grabbing;
   /* Without this a drag across a label selects the text instead of panning,
@@ -8979,6 +9009,54 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
   .fa-numbered > p { max-width: none; }
 }
 
+/* ── Structured blocks: a light card ──────────────────────────────────────
+ * Owner, 2026-11-01: "structured content in the narrative doesnt really
+ * appear so. needs _light_ styling", "make more condensed", "look at all the
+ * structured assets". render-markdown.ts frames every headed block that is
+ * not a figure, diagram or table (requirements, personas, scenarios, data
+ * elements, remarks…) as `.fa-block`, with a small kind label, an id chip and
+ * a `.fa-block-meta` row for trailing "*Priority:* …" lines. Tints are
+ * currentColor mixes, so the card reads the same in light and dark. */
+.fa-block {
+  margin: 0.9em 0;
+  padding: 0.45em 0.8em 0.45em 0.85em;
+  border-left: 3px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 0 4px 4px 0;
+  background: color-mix(in srgb, currentColor 3.5%, transparent);
+}
+.fa-block > :first-child { margin-top: 0; }
+.fa-block > :last-child { margin-bottom: 0; }
+.fa-block p { margin: 0.35em 0; }
+.fa-block-kind {
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.68;
+  margin-right: 0.35em;
+  white-space: nowrap;
+}
+.fa-block-id {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8em;
+  font-weight: 600;
+  padding: 0.05em 0.4em;
+  border: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+  border-radius: 3px;
+  margin-right: 0.35em;
+  white-space: nowrap;
+}
+.fa-block-meta {
+  font-size: 0.85em;
+  opacity: 0.78;
+  margin-top: 0.3em;
+}
+.fa-block-meta p { margin: 0.15em 0; }
+.fa-block table { margin-top: 0.4em; }
+@media print {
+  .fa-block { background: none; }
+}
+
 /* A drawing moved inside a card it fits (drag pans, never rescales: owner,
  * 2026-11-01 "i want it to pan") is clipped by the card rather than giving
  * the card scroll room. */
@@ -8989,3 +9067,25 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
 .fa-figure-scope {
   cursor: grab;
 }
+
+/* ── Section headings that stand out ──────────────────────────────────────
+ * Owner, 2026-11-01: "section headers are small and not apparent" (the
+ * theme draws h4 to h6 as small, spaced capitals, so "3.4.2 Governance
+ * principles" read like a caption). Every level below h3 is now bold,
+ * normal case and a step larger than body text, smallest last, on every
+ * site that uses this chrome. h3 grows a little so it stays above h4.
+ */
+.main-content h4,
+.main-content h5,
+.main-content h6 {
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 1.4em;
+  margin-bottom: 0.4em;
+}
+.main-content h3 { font-size: 1.3rem; }
+.main-content h4 { font-size: 1.125rem; }
+.main-content h5 { font-size: 1rem; }
+.main-content h6 { font-size: 0.95rem; font-style: italic; }

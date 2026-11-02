@@ -16,7 +16,8 @@ The machine half of translation, end to end: extract the translatable strings, i
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
-- What: Scans content nodes and extracts translatable strings to .pot files.
+- What: Scan the source content and write the translatable strings to .pot files at the configured granularity: segment prose by paragraph, shield what must not be translated (math, code, labels, Lean companions) as placeholders, normalise whitespace, and extract metadata such as titles, alt text and captio
+- Shared step `GT_ExtractPot`.
 - Record it: `workflow_complete` with `node: "Task_PotExtract"`.
 - next: → `Task_Translate` (Produce translation (PO file))
 
@@ -32,7 +33,8 @@ The machine half of translation, end to end: extract the translatable strings, i
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
-- What: Reads .po file and source .md, substitutes msgstr for msgid, preserves non-translatable elements, writes translated .md to translations/<locale>/block.md.
+- What: Read the .po file and the source .md, substitute msgstr for msgid, unshield the placeholders, and write the translated .md to translations/<locale>/.
+- Shared step `GT_InjectPo`.
 - Record it: `workflow_complete` with `node: "Task_PoInject"`.
 - next: → `Task_RoundTripQA` (Round-trip translation QA (back-translate))
 
@@ -40,7 +42,8 @@ The machine half of translation, end to end: extract the translatable strings, i
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
-- What: Bean: folio-assistant-ktt2 Back-translates the target-language .md into the source language and compares meaning with the original.
+- What: Back-translate the target-language .md into the source language and compare the meaning with the original (bean folio-assistant-ktt2).
+- Shared step `GT_RoundTripQa`.
 - Record it: `workflow_complete` with `node: "Task_RoundTripQA"`.
 - next: → `Gateway_Drift` (Drift or bad terminology?)
 
@@ -63,7 +66,8 @@ The machine half of translation, end to end: extract the translatable strings, i
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
-- What: Records the translation as unofficial in translations/<locale>/status.json: { official: false, generatedBy: "...", generatedAt: "..." } The translation is usable but carries a visible warning badge.
+- What: Record the translation's standing in translations/<locale>/status.json.
+- Shared step `GT_WriteTranslationStatus`, with `official` = `false`.
 - Record it: `workflow_complete` with `node: "Task_WriteUnofficial"`.
 - next: → `Gateway_Signoff` (Human sign-off?)
 
@@ -106,7 +110,8 @@ The machine half of translation, end to end: extract the translatable strings, i
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
-- What: Records the sign-off with the SHA-256 of the source .md, enabling staleness detection on future source changes.
+- What: Record the translation's standing in translations/<locale>/status.json.
+- Shared step `GT_WriteTranslationStatus`, with `official` = `true`.
 - Record it: `workflow_complete` with `node: "Task_WriteOfficial"`.
 - next: → `Task_StalenessCheck` (Check staleness (source hash))
 

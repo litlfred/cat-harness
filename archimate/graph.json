@@ -6,7 +6,7 @@
       "id": "archimate-validators",
       "path": "validators/",
       "subgraph": true,
-      "description": "The validators the archimate subgraph's code provides, one folio-validator/v1 node each naming the graph typology and $schema family it checks — today one, for `cat-archimate-config/v1`.",
+      "description": "The validators the archimate subgraph's code provides, one folio-validator/v1 node each naming the graph typology and $schema family it checks — `cat-archimate-config/v1` for the config, and `archimate-model/v1`, the model as `readArchimate` reads it (a derived family: no file carries it).",
       "graphTypologies": [
         "validators"
       ]
