@@ -47,13 +47,19 @@ Every Tool provides these. Each line says what a caller can rely on.
 | Operation | Guarantee |
 |---|---|
 | `get(id)` | the bean as last written, or "none". A short id resolves to exactly one bean or to none |
-| `list(filter)` | beans by status, type, tag or parent |
+| `list(filter)` | beans by status, type, tag or parent; archived beans only when the filter asks for them |
 | `create(bean)` | the id is unique; the bean is readable by `get` once `create` returns |
-| `update(id, change, ifMatch)` | refused when `ifMatch` names a version that is no longer current; a retry on the current version lands |
+| `update(id, change, ifMatch)` | refused when `ifMatch` names a version that is no longer current; a retry on the current version lands. `archived: true` archives the bean |
 | `note(id, text, by)` | appended to the bean's notes, never rewriting earlier ones |
 | `history(id)` | every change to the bean, oldest first: when, by whom, what changed, and which process step made it when one did |
 | `positions(id)` | every workflow instance that names the bean: process, step(s), instance status, last move |
 | `beansAt(process, step?)` | the beans with a token at that process (and step) |
+
+**Archiving is a field, not an operation** (owner, 2026-11-02, Q-BSD-7 B).
+`update(id, { archived: true }, ifMatch)` is refused unless the bean is
+`completed` or `scrapped`, and the bean keeps its status. `get` still finds an
+archived bean; `list` leaves it out unless asked. Where an archived bean lives
+is the Tool's choice, stated on its page.
 
 **A bean's position lives only in the workflow instances** (owner,
 2026-11-02, Q-BSD-1 B). The bean records no process or step of its own;
@@ -77,7 +83,9 @@ Each line is something a test can check against any Tool.
    and lands. Nothing is overwritten unread.
 6. **Keep the history.** `history(id)` answers who changed what and when, and
    which process step did it.
-7. **Know where a bean is.** `positions` and `beansAt` agree with the
+7. **Archive only what is finished.** `archived: true` on a bean that is not
+   `completed` or `scrapped` is refused.
+8. **Know where a bean is.** `positions` and `beansAt` agree with the
    instances the store holds.
 
 ## Tools
@@ -91,10 +99,12 @@ Each line is something a test can check against any Tool.
 
 ## Tests
 
-None yet. Until a conformance suite names each responsibility above and runs
-against each Tool, `kg-audit` reports this role as `mechanical-role-untested`,
-which is the truth. The suite belongs with the toolset (cat-harness#991,
-step 2), and this file gains a `tested-by:` line when it exists.
+None merged yet. The conformance suite is open as cat-harness-tools#1418
+(`scripts/tests/sdlc/work-plan-store-conformance.ts`, one `describe` per
+responsibility above), and cat-harness-tools#1420 runs it against both of the
+git Tool's access modes. Until it merges, `kg-audit` reports this role as
+`mechanical-role-untested`, which is the truth; this file gains a
+`tested-by:` line when it lands.
 
 ## Not its responsibility
 

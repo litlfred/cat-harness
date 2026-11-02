@@ -42,6 +42,7 @@ bun run cat state:mount
 | `create(bean)` | `beans create "<title>" --type … --parent …` after the existence check in [`todo-manager`](todo-manager.md) | write the file with its front matter |
 | `update(id, change, ifMatch)` | `beans update <id> …` | edit the front matter |
 | `note(id, text)` | `beans update <id> --body-append …`, or a file in `beans/notes/` | append to the body, or add a note file |
+| `update(id, { archived: true }, …)` | `beans archive` (the sweep), or move the file | move `defs/<id>--*.md` into `defs/archive/`; the status is kept |
 | `history(id)` | `git log --follow -- beans/defs/<id>--*.md` on the branch, merged with the `history` of every instance in `beans/workflows/` that names the bean (Q-BSD-4 A) | the same |
 | `positions(id)`, `beansAt(…)` | read `beans/workflows/*.json`: an instance names its bean in `bean` and `carriedBeans`, its position in `tokens` | the same |
 
