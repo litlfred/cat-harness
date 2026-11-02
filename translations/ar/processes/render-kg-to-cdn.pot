@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: render-kg-to-cdn\n"
-"POT-Creation-Date: 2026-11-01T10:45:43.049Z\n"
+"POT-Creation-Date: 2026-11-02T04:36:34.470Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -26,12 +26,17 @@ msgstr ""
 
 #: processes/process/render-kg-to-cdn.bpmn:51
 #. Diagram element documentation
-msgid "Answered by the target just determined and the Tool registry. GitHub Pages runs bootstrap-tools\\' process by name. Another CDN whose Tool satisfies `render-kg-to-cdn` runs that Tool\\'s own process, which a higher layer owns (who-iris\\'s Cloudflare publish, for one), so this layer cannot name it. No Tool for the target reports not-pushed and names the missing Tool, rather than guessing a mechanism."
+msgid "Answered by the target just determined and the Tool registry. GitHub Pages runs bootstrap-tools\\' process by name. Another CDN whose Tool satisfies `render-kg-to-cdn` runs that Tool\\'s own process, which a higher layer owns (a Cloudflare publish, for one), so this layer cannot name it. No Tool for the target reports not-pushed and names the missing Tool, rather than guessing a mechanism."
 msgstr ""
 
 #: processes/process/render-kg-to-cdn.bpmn:64
 #. Diagram element documentation
-msgid "BOUND BY THE TOOL, so no `calledElement` is written here, and only on this branch: the CDN is not GitHub Pages, and its Tool, which a higher layer owns (who-iris\\'s Cloudflare publish, for one), lists the process this descends into. A lower layer cannot name a higher layer\\'s process. Whatever the Tool, it returns the same status and message."
+msgid "BOUND BY THE TOOL, so no `calledElement` is written here, and only on this branch: the CDN is not GitHub Pages, and its Tool, which a higher layer owns (a Cloudflare publish, for one), lists the process this descends into. A lower layer cannot name a higher layer\\'s process. Whatever the Tool, it returns the same status and message."
+msgstr ""
+
+#: processes/process/render-kg-to-cdn.bpmn:58
+#. Diagram element documentation
+msgid "BOUND BY THE TOOL, so no `calledElement` is written here: the `gh-pages` Tool lists the process this descends into, render-kg-to-github-pages, and that process is held by a layer cat-harness does not need, so naming it would bind upward. What it does: make sure gh-pages exists and Pages serves it, stage, check the staging, commit onto gh-pages, check what is served. It returns the status and the message Task_Report records."
 msgstr ""
 
 #: processes/process/render-kg-to-cdn.bpmn:28
@@ -107,11 +112,6 @@ msgstr ""
 #: processes/process/render-kg-to-cdn.bpmn:77
 #. Diagram label
 msgid "Status is pushed?"
-msgstr ""
-
-#: processes/process/render-kg-to-cdn.bpmn:58
-#. Diagram element documentation
-msgid "The `gh-pages` Tool's process, bootstrap-tools' render-kg-to-github-pages: make sure gh-pages exists and Pages serves it, stage, check the staging, commit onto gh-pages, check what is served. It returns the status and the message Task_Report records."
 msgstr ""
 
 #: processes/process/render-kg-to-cdn.bpmn:70

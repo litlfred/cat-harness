@@ -37,6 +37,18 @@
       "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
+      "term": "bpmn:dataOutputAssociation",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "bpmn:dataStore",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "bpmn:dataStoreReference",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "bpmn:definitions",
       "operative": "Root element of a BPMN diagram carrying namespaces and targetNamespace."
     },

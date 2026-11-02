@@ -207,7 +207,7 @@ _252 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`crdm-requirements-template`](skills/sdlc/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
 | [`crdm-requirements-workflow`](skills/sdlc/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
 
-**`skills/sdlc/sdlc-core/`** (75)
+**`skills/sdlc/sdlc-core/`** (76)
 
 | Skill | What it is for |
 |---|---|

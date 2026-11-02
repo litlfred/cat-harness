@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: discussion\n"
-"POT-Creation-Date: 2026-10-16T14:16:27.862Z\n"
+"POT-Creation-Date: 2026-11-02T04:36:37.767Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: processes/discussion.bpmn:69
 #. Diagram label
-msgid "Ask the Requestor: which harness, and where?"
+msgid "Ask which harness, and where"
 msgstr ""
 
 #: processes/discussion.bpmn:78
