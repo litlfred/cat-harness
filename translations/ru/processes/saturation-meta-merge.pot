@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: saturation-meta-merge\n"
-"POT-Creation-Date: 2026-11-02T21:17:16.982Z\n"
+"POT-Creation-Date: 2026-11-02T21:25:34.288Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -79,6 +79,11 @@ msgstr ""
 msgid "Landed and reported"
 msgstr ""
 
+#: processes/sdlc/saturation-meta-merge.bpmn:19
+#. Diagram element documentation
+msgid "Landing a batch while the runners are full: cancel everything queued, pause new work, consolidate all ready PRs on one meta-merge branch, skip CI and rendering, and merge it, holding the swarm siblings until it is done. It repeats across repositories. Skill saturation-meta-merge holds the steps, the safety rules and the record of its first run. This process bypasses merge:guard on purpose, so the owner's card, the PR body and a comment on each member PR are the record."
+msgstr ""
+
 #: processes/sdlc/saturation-meta-merge.bpmn:25
 #. Diagram label
 msgid "Merge steward"
@@ -117,11 +122,6 @@ msgstr ""
 #: processes/sdlc/saturation-meta-merge.bpmn:38
 #. Diagram label
 msgid "Owner"
-msgstr ""
-
-#: processes/sdlc/saturation-meta-merge.bpmn:19
-#. Diagram element documentation
-msgid "Owner, 2026-11-02 06:57Z, with the runners full: cancel everything queued, pause new work, consolidate all ready PRs on one meta-merge branch, skip CI and rendering, and merge it. Then: coordinate with the swarm siblings when this happens, and make it repeatable across repositories. First run 2026-11-02 07:03Z: cat-harness#956 (7 PRs), and two layers that build on this one (4 PRs and 1 PR). Skill saturation-meta-merge holds the steps and the safety rules. This process bypasses merge:guard on purpose, so the owner's card, the PR body and a comment on each member PR are the record."
 msgstr ""
 
 #: processes/sdlc/saturation-meta-merge.bpmn:87

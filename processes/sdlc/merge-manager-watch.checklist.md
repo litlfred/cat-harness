@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/sdlc/merge-manager-watch.bpmn` (process `Process_MergeManagerWatch`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-The loop run by the agent that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher).
+The loop run by the agent that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher), which coordinates with the swarm siblings whenever a batch lands.
 
 ## Begin — Timer, PR event, main run done, or sibling message (`Start_Wake`)
 

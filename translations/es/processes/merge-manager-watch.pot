@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-manager-watch\n"
-"POT-Creation-Date: 2026-11-02T20:23:49.138Z\n"
+"POT-Creation-Date: 2026-11-02T21:25:34.261Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -101,7 +101,7 @@ msgstr ""
 
 #: processes/sdlc/merge-manager-watch.bpmn:16
 #. Diagram element documentation
-msgid "The loop run by the agent that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher). Owner, 2026-11-02: formalise the merge manager agent's role, skills and process, and coordinate with the swarm siblings whenever a batch lands. Each wake reads the open PRs, the runner queue, main's verdict and the PR owners live, and routes to one sub-process. A wake with nothing to do ends with no message. Every merge on any route waits for the owner's own OK."
+msgid "The loop run by the agent that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher), which coordinates with the swarm siblings whenever a batch lands. Each wake reads the open PRs, the runner queue, main's verdict and the PR owners live, and routes to one sub-process. A wake with nothing to do ends with no message. Every merge on any route waits for the owner's own OK."
 msgstr ""
 
 #: processes/sdlc/merge-manager-watch.bpmn:19
