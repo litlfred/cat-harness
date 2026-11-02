@@ -18,57 +18,15 @@ Is CI actually working on the default branch: record each workflow's state on on
 - Skill: `ci-health`.
 - What: Run check:ci-health --out, writing the report file before any exit path.
 - Record it: `workflow_complete` with `node: "Task_Check"`.
-- next: → `GW_Determined` (Could we tell?)
+- next: → `Call_Watch` (Report the verdict on the tracking issue)
 
-### Decide — Could we tell? (`GW_Determined`)
-
-- Asked of the `verdict` output that the `check` step of .github/workflows/ci-health.yml writes, not of the raw exit code.
-- Call `workflow_complete` with `node: "GW_Determined"` and `outcome` set to the label that holds:
-  - «no» → `End_Unknown` (Unknown — job RED, issue UNTOUCHED)
-  - «yes» → `Task_Label` (Ensure the tracking label exists)
-
-## Done — Unknown — job RED, issue UNTOUCHED (`End_Unknown`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 2. Ensure the tracking label exists (`Task_Label`)
+### 2. Report the verdict on the tracking issue (`Call_Watch`)
 
 - Who: the `Scheduled log sweep` lane (role `build-pipeline`).
-- Skill: `ci-health`.
-- What: Create the tracking label (the `label` input) with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet.
-- Shared step `GT_EnsureTrackingLabel`, with `label` = `ci-health`.
-- Record it: `workflow_complete` with `node: "Task_Label"`.
-- next: → `GW_Finding` (Anything red on main?)
+- What: Runs the shared tracking watch with the label `ci-health`.
+- A subprocess (`Process_TrackedWatch`, with `label` = `ci-health`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `End_Reported` (Verdict reported)
 
-### Decide — Anything red on main? (`GW_Finding`)
-
-- Asked of the same `verdict`, once it is known.
-- Call `workflow_complete` with `node: "GW_Finding"` and `outcome` set to the label that holds:
-  - «clean» → `Task_Close` (Close the tracking issue)
-  - «not clean» → `Task_Track` (Open or EDIT the one tracking issue)
-
-### 3. Close the tracking issue (`Task_Close`)
-
-- Who: the `Scheduled log sweep` lane (role `build-pipeline`).
-- Skill: `ci-health`.
-- What: Clean: close the open issue carrying the tracking label (the `label` input), if any, saying why the verdict is clean.
-- Shared step `GT_CloseTrackingIssue`, with `label` = `ci-health`.
-- Record it: `workflow_complete` with `node: "Task_Close"`.
-- next: → `End_Clean` (main is green)
-
-### 4. Open or EDIT the one tracking issue (`Task_Track`)
-
-- Who: the `Scheduled log sweep` lane (role `build-pipeline`).
-- Skill: `ci-health`.
-- What: Findings: EDIT the one open issue carrying the tracking label (the `label` input) if there is one, otherwise create it, with the report as the body.
-- Shared step `GT_TrackIssue`, with `label` = `ci-health`.
-- Record it: `workflow_complete` with `node: "Task_Track"`.
-- next: → `End_Found` (Recorded — job stays GREEN)
-
-## Done — main is green (`End_Clean`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-## Done — Recorded — job stays GREEN (`End_Found`)
+## Done — Verdict reported (`End_Reported`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
