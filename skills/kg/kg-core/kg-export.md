@@ -107,10 +107,10 @@ included:
 | a host Tool | `https://litlfred.github.io/folio-assistant/cat-harness/tools/beans-cli.jsonld` |
 | ❌ retired | `https://litlfred.github.io/folio-assistant/cat-harness.jsonld`, `…/folio-assistant/tools/<id>.jsonld`: the host at the site root |
 
-Do not mint, link or write anything at a root-level host path. The old root
-addresses keep a one-release tombstone
-([`instance-publication`](instance-publication.md) §"An `@id` that moved keeps
-a tombstone for ONE release").
+Do not mint, link or write anything at a root-level host path. Nothing answers
+at the old root addresses: a clean break
+([`instance-publication`](instance-publication.md) §"An `@id` that moved is
+not forwarded").
 
 | | IRI |
 |---|---|
@@ -301,7 +301,7 @@ Owner, 2026-09-23: *"prefix -> match stub"*. Each of our namespaces is
 
 | namespace | prefix |
 |---|---|
-| `https://litlfred.github.io/bootstrap/v0/ns#` | `bootstrap` |
+| `https://litlfred.github.io/bootstrap/v0/ns/` | `bootstrap` |
 | `…/folio-assistant/cat-harness/ns#` | `cat-harness` |
 | `…/folio-assistant/<content-core>/ns#` | the content core |
 
@@ -619,13 +619,12 @@ Three consequences, all of which the implementation carries:
    checked only against the exporter's own collection would have passed the
    original bug.
 
-## Whose nodes — an instance publishes its own, and leaves a tombstone
+## Whose nodes — an instance publishes its own
 
 **The policy is [`instance-publication`](instance-publication.md) §"What each
 instance publishes — graph, address, schema, and what is stripped"**: which
 instance publishes which document where, the owner's 2026-10-05 ruling
-(option B; bean `4ak5` item 2), and when the tombstones are removed. This
-section is the exporter's side of it.
+(option B; bean `4ak5` item 2). This section is the exporter's side of it.
 
 `buildExport` takes `scope`, and the CLI `--scope <instance|checkout>`:
 
@@ -634,21 +633,11 @@ section is the exporter's side of it.
 | `instance` (default) | this instance's declaration alone | the published document, its locale variants, its QA sidecar |
 | `checkout` | this instance plus every instance stacked on it | a corpus-wide consumer that says so — the `kg` search slice |
 
-A tombstone, one per `@id` the checkout-scope document mints and the
-instance-scope one does not:
-
-```json
-{ "@id": "<old>", "deprecated": true, "isReplacedBy": "<the same node in its owner's document>" }
-```
-
-`deprecated` and `isReplacedBy` are `owl:deprecated` and
-`dcterms:isReplacedBy` in the context, as `ns-export` already publishes a
-retired term. A tombstone has no `@type` and is in neither `counts` nor
-`danglingLinks` — a link to a node that left still reads as dangling. A node
-no owner's document mints (a package, a schema module: those collectors are
-instance-bound) forwards to the owner's DOCUMENT. The owner's IRI is minted
-the way the deploy publishes it (`publishedIdentity`). Removing them means
-deleting `tombstonesFor`, its call, and the two terms.
+An `@id` the checkout-scope document mints and the instance-scope one does
+not is held by its owner's own document, and this one says nothing about it:
+no forwarding node (clean break, owner 2026-11-02,
+[litlfred/cat-harness-tools#1378](https://github.com/litlfred/cat-harness-tools/issues/1378)).
+A link to a node that left reads as dangling until it is re-homed.
 
 ## Named subgraphs — one IRI, two files, framed from one graph
 
@@ -712,7 +701,7 @@ Rules for the pair:
 - **Where it is built.** `bun run cat subgraph:jsonld`
   (`scripts/gen-subgraph-jsonld.ts`) frames kg-export's in-memory graphs —
   one per framed instance, each from its OWN export, never a stacked
-  instance's node under this document's tombstoned `@id` — and
+  instance's node under this document's name — and
   writes `docs/subgraph/<HARNESS>/<PATH>/index[.hydrated].jsonld`, which Pages
   serves at the subgraph IRI, plus the context at `ns/subgraph/v1.jsonld`.
   `subgraph:jsonld:check` is the gate. The file shape is

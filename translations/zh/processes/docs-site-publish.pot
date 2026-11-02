@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: docs-site-publish\n"
-"POT-Creation-Date: 2026-11-01T22:18:39.827Z\n"
+"POT-Creation-Date: 2026-11-02T04:04:25.089Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -186,7 +186,7 @@ msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:61
 #. Diagram label
-msgid "Run the release security gate [security:gate]"
+msgid "Run the release security gate"
 msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:69
@@ -216,7 +216,7 @@ msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:111
 #. Diagram label
-msgid "Verify the export [publish-verification]"
+msgid "Verify the export"
 msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:185

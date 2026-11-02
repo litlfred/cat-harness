@@ -406,6 +406,18 @@
   width: calc(var(--fa-zoom, 1) * min(100%, var(--fa-natural, 100%))) !important;
 }
 
+/* A BPMN figure whose labels were measured (`fitTextToBody` in docs-ui.js):
+ * `--fa-natural` is the width at which those labels are 80% of the body text, so
+ * 100% is that width exactly, NOT capped at the column. Owner, 2026-11-02:
+ * "bpmn diagrams should be scaled so the text size matches narrative text
+ * size". A wider drawing scrolls and pans inside its card. */
+.fa-figure-scope.fa-textfit img,
+.fa-figure-scope.fa-textfit svg,
+.fa-figure-scope.fa-textfit object {
+  min-width: 0;
+  width: calc(var(--fa-zoom, 1) * var(--fa-natural)) !important;
+}
+
 /* The figure takes keyboard focus so it can be panned without a drag
  * (bean `n7f8`, `board-windows` §"The floor"); focus has to be seen. */
 .fa-figure-scope:focus-visible {
@@ -2734,6 +2746,20 @@ button.fa-qa-badge[aria-busy="true"] { opacity: 0.6; }
   font-size: 1rem;
   line-height: 1;
   vertical-align: -0.32em;
+}
+
+/* THE HOME MARK — the default when an instance declares no art (owner,
+ * 2026-11-02: home icon as the default avatar beside the title). The same
+ * frame column as the initial it replaced, with no border: the house is the
+ * whole mark. */
+.fa-site-mark--home {
+  border: 0;
+}
+.fa-site-mark--home svg {
+  width: 100%;
+  height: 100%;
+  padding: 3px;
+  box-sizing: border-box;
 }
 
 /* ── Action tiles ─────────────────────────────────────────────────────── */

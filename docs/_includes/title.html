@@ -125,8 +125,13 @@
     showed an empty strip where the control to open it should be — the avatar
     IS that control (`docs-ui.js`, "THE AVATAR OPENS AND CLOSES THE BAR").
   {%- endcomment -%}
-  {%- assign mark_title = h.title | default: site.title | strip -%}
-  <span class="fa-site-mark fa-site-mark--initial" aria-hidden="true">{{ mark_title | slice: 0 | upcase }}</span>
+  {%- comment -%}
+    THE HOME MARK when the instance declares no art. Owner, 2026-11-02:
+    *"use home icon as default avatar at top navbar next to harness title"*.
+    The title is the home link, so its default mark is a house, the same
+    path as `HOME_GLYPH` in cat-harness-tools `scripts/lib/navbar.ts`.
+  {%- endcomment -%}
+  <span class="fa-site-mark fa-site-mark--initial fa-site-mark--home" aria-hidden="true"><svg viewBox="0 0 24 24" focusable="false"><path d="M3 11.5 12 4l9 7.5M5.5 9.5V20h5v-6h3v6h5V9.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 {%- endif -%}
 {%- comment -%}
   The title's OWN language, which the row's direction follows (docs-ui.css,

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qa-publish\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.471Z\n"
+"POT-Creation-Date: 2026-11-01T09:29:15.671Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: processes/sdlc/qa-publish.bpmn:87
 #. Diagram element documentation
-msgid "`qa:publish --github` reads the event: a push to main publishes under `main/<sha>/`, a pull request under `pr/<n>/<head-sha>/` — the head that was tested, not the merge ref. It also reads whether the token can write, which the gateway after it routes on."
+msgid "`qa:publish --github` reads the event: a push to main publishes under `main/<sha>/`, a pull request under `pr/<n>/<head-sha>/` — the head that was tested, not the merge ref. It also reads whether the token can write, which the gateway after it routes on. The key is `main/<sha>` or `pr/<n>/<sha>`."
 msgstr ""
 
 #: processes/sdlc/qa-publish.bpmn:156
@@ -51,12 +51,12 @@ msgstr ""
 
 #: processes/sdlc/qa-publish.bpmn:134
 #. Diagram label
-msgid "Back off [backoff-sleep]"
+msgid "Back off"
 msgstr ""
 
 #: processes/sdlc/qa-publish.bpmn:107
 #. Diagram label
-msgid "Build the entry [tree + manifest]"
+msgid "Build the entry"
 msgstr ""
 
 #: processes/sdlc/qa-publish.bpmn:95
@@ -81,7 +81,7 @@ msgstr ""
 
 #: processes/sdlc/qa-publish.bpmn:86
 #. Diagram label
-msgid "Derive the key [main/<sha> or pr/<n>/<sha>]"
+msgid "Derive the key"
 msgstr ""
 
 #: processes/sdlc/qa-publish.bpmn:103
@@ -141,7 +141,7 @@ msgstr ""
 
 #: processes/sdlc/qa-publish.bpmn:169
 #. Diagram label
-msgid "Plan the prune [planPrune]"
+msgid "Plan the prune"
 msgstr ""
 
 #: processes/sdlc/qa-publish.bpmn:43

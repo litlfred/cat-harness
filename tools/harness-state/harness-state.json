@@ -49,6 +49,13 @@
             "$type": "Text"
           },
           "description": "One line per harness: its position, the next step, and its badges."
+        },
+        {
+          "name": "result",
+          "schema": {
+            "$type": "HarnessStates"
+          },
+          "description": "With --json, or with no --out, every harness's state as one `HarnessStates` record, in name order. Programs read this; people read `report`."
         }
       ]
     },

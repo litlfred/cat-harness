@@ -18,7 +18,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 ## Totals
 
-12 instance(s), 141 step(s) checked, 141 `prov:Activity` emitted, 134 finding(s). Policies evaluated: `https://litlfred.github.io/folio-assistant/policies/folio-defaults`, `https://litlfred.github.io/folio-assistant/policies/http-gateway`.
+12 instance(s), 137 step(s) checked, 137 `prov:Activity` emitted, 139 finding(s). Policies evaluated: `https://litlfred.github.io/folio-assistant/policies/folio-defaults`, `https://litlfred.github.io/folio-assistant/policies/http-gateway`.
 
 | finding | count | means |
 |---|---|---|
@@ -29,7 +29,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 | `unknown` | 79 | no ODRL policy grants `perform-task` here; `unknown` is never permit |
 | `deny` | 0 | an ODRL policy prohibits `perform-task` here |
 | `authz-disagrees` | 2 | the verdict recorded in the entry's `authz` differs from the one recomputed now |
-| `node-not-in-model` | 14 | the entry names a node its process model does not have |
+| `node-not-in-model` | 19 | the entry names a node its process model does not have |
 | `source-moved` | 18 | the `.bpmn` the instance recorded is gone; the diagram was found by file name, as `workflow_start` resolves one, and its process id matches the instance's |
 | `source-missing` | 0 | the `.bpmn` the instance recorded is gone and no diagram with that name and process id exists; nothing in it can be checked |
 | `unaddressed` | 16 | the agent, role or plan has no release address — its owning instance declares no `iriBase`, or no instance declares it — so the PROV-JSONLD record carries it as a literal, not a link (`linked-data` voice, `ld-link-is-the-node-release-address`) |
@@ -198,7 +198,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 ### mergetrain--merge-train-2026-10-04a
 
-34 step(s) checked, 34 `prov:Activity` emitted, 19 finding(s). Sources: `cat-harness/processes/sdlc/merge-train.bpmn`, `cat-harness/processes/sdlc/pr-checks-present.bpmn`, `cat-harness/processes/sdlc/merge-refusal.bpmn`, `cat-harness/processes/sdlc/merge-base.bpmn`. [PROV JSON-LD]({{ '/assets/prov/mergetrain--merge-train-2026-10-04a.prov.jsonld' | relative_url }})
+30 step(s) checked, 30 `prov:Activity` emitted, 24 finding(s). Sources: `cat-harness/processes/sdlc/merge-train.bpmn`, `cat-harness/processes/sdlc/pr-checks-present.bpmn`, `cat-harness/processes/sdlc/merge-refusal.bpmn`, `cat-harness/processes/sdlc/merge-base.bpmn`. [PROV JSON-LD]({{ '/assets/prov/mergetrain--merge-train-2026-10-04a.prov.jsonld' | relative_url }})
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
@@ -217,6 +217,11 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 | `mergetrain--merge-train-2026-10-04a` | 14 | `build-pipeline` | `unaddressed` | agent: no instance in this checkout declares actor "build-pipeline" |
 | `mergetrain--merge-train-2026-10-04a` | 15 | `build-pipeline` | `unaddressed` | agent: no instance in this checkout declares actor "build-pipeline" |
 | `mergetrain--merge-train-2026-10-04a` | 17 | `#1898` | `unaddressed` | entity: no instance in this checkout catalogues "#1898" |
+| `mergetrain--merge-train-2026-10-04a/Call_ChecksPresent` | 2 | `GW_Determined` | `node-not-in-model` | GW_Determined is not a node of Process_PrChecksPresent as the diagram now stands |
+| `mergetrain--merge-train-2026-10-04a/Call_ChecksPresent` | 3 | `Task_Label` | `node-not-in-model` | Task_Label is not a node of Process_PrChecksPresent as the diagram now stands |
+| `mergetrain--merge-train-2026-10-04a/Call_ChecksPresent` | 4 | `GW_Finding` | `node-not-in-model` | GW_Finding is not a node of Process_PrChecksPresent as the diagram now stands |
+| `mergetrain--merge-train-2026-10-04a/Call_ChecksPresent` | 5 | `Task_Close` | `node-not-in-model` | Task_Close is not a node of Process_PrChecksPresent as the diagram now stands |
+| `mergetrain--merge-train-2026-10-04a/Call_ChecksPresent` | 6 | `End_Clean` | `node-not-in-model` | End_Clean is not a node of Process_PrChecksPresent as the diagram now stands |
 | `mergetrain--merge-train-2026-10-04a/Call_EjectHandBack` | 1 | `folio-assistant-b8de` | `unaddressed` | entity: no instance in this checkout catalogues "folio-assistant-b8de" |
 | `mergetrain--merge-train-2026-10-04a/Call_EjectHandBack` | 2 | `#1898` | `unaddressed` | entity: no instance in this checkout catalogues "#1898" |
 | `mergetrain--merge-train-2026-10-04a/Call_EjectHandBack` | 3 | `1898` | `unaddressed` | entity: no instance in this checkout catalogues "1898" |

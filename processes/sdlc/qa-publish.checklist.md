@@ -10,7 +10,7 @@ How a run's derived QA results become a durable, commit-keyed record without bei
 
 - Begin here: `needs: gates` with `always()`: the publish runs whether the gates were green or red, because the evidence of a red commit is evidence too.
 - Call `workflow_start` with `process: "Process_QaPublish"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_DeriveKey` (Derive the key [main/<sha> or pr/<n>/<sha>])
+- next: → `Task_DeriveKey` (Derive the key)
 
 ## Begin — Daily schedule, or dispatched (`Start_Daily`)
 
@@ -18,7 +18,7 @@ How a run's derived QA results become a durable, commit-keyed record without bei
 - Call `workflow_start` with `process: "Process_QaPublish"` and the subject this run is about; keep the instance id it returns.
 - next: → `Task_ReadPrStates` (Read every PR's state)
 
-### 1. Derive the key [main/<sha> or pr/<n>/<sha>] (`Task_DeriveKey`)
+### 1. Derive the key (`Task_DeriveKey`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `qa-reports`.
@@ -38,7 +38,7 @@ How a run's derived QA results become a durable, commit-keyed record without bei
 
 - A fork PR's token is read-only (spike `3ds9`).
 - Call `workflow_complete` with `node: "Gateway_CanWrite"` and `outcome` set to the label that holds:
-  - «yes» → `Task_BuildEntry` (Build the entry [tree + manifest])
+  - «yes» → `Task_BuildEntry` (Build the entry)
   - «no: fork PR» → `End_SkippedFork` (Skipped: fork PR (::notice says why))
 
 ### 3. Plan the prune (`Task_PlanPrune`)
@@ -49,7 +49,7 @@ How a run's derived QA results become a durable, commit-keyed record without bei
 - Record it: `workflow_complete` with `node: "Task_PlanPrune"`.
 - next: → `Gateway_Apply` (Apply?)
 
-### 4. Build the entry [tree + manifest] (`Task_BuildEntry`)
+### 4. Build the entry (`Task_BuildEntry`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `qa-reports`.

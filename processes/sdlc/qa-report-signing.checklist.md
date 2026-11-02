@@ -10,9 +10,9 @@ Attesting a QA report: build the test run, work out what the performer can actua
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_QaReportSigning"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_BuildRun` (Build the test run [folio-test-run/v1])
+- next: → `Task_BuildRun` (Build the test run)
 
-### 1. Build the test run [folio-test-run/v1] (`Task_BuildRun`)
+### 1. Build the test run (`Task_BuildRun`)
 
 - Who: the `Validation and QA (mechanical + agents)` lane (role `validation-pipeline`).
 - Skill: `qa-report-signing`, `content-test`.

@@ -177,7 +177,7 @@ all take the one form:
 
 | reader | form | example (bootstrap `0.1.1`) |
 |---|---|---|
-| a program or agent — a namespace, a schema `$id`, a BPMN `xmlns`, a JSON-LD `@id` | `<iriBase>v<major>/…` | `https://litlfred.github.io/bootstrap/v0/ns#` |
+| a program or agent — a namespace, a schema `$id`, a BPMN `xmlns`, a JSON-LD `@id` | `<iriBase>v<major>/…` | `https://litlfred.github.io/bootstrap/v0/ns/` |
 | a person — a page to read | `<iriBase>v<major>/…` | `https://litlfred.github.io/bootstrap/v0/` |
 
 **The exact release comes from the pin, not the address.** A reader is handed
@@ -391,53 +391,21 @@ such lists do, missing every instance added since `l4ay`.
   the host's name: `PUBLISHED_ELSEWHERE`'s pattern for the host refuses it.
 
 The exporter's contract (the two scopes, what each collector reads) is
-[`kg-export`](kg-export.md) §"Whose nodes — an instance publishes its own,
-and leaves a tombstone".
+[`kg-export`](kg-export.md) §"Whose nodes — an instance publishes its own".
 
-### An `@id` that moved keeps a tombstone for ONE release
+### An `@id` that moved is not forwarded
 
-GitHub Pages cannot redirect a fragment. So each `@id` the checkout-scope
-host document minted and the instance-scope one does not keeps a node:
-
-```json
-{ "@id": "<old>", "deprecated": true, "isReplacedBy": "<the same node in its owner's document>" }
-```
-
-`deprecated` is `owl:deprecated` and `isReplacedBy` is
-`dcterms:isReplacedBy`. The replacement is minted the way the deploy
-publishes the owner (`publishedIdentity` in `kg-export.ts`): an instance that
-declares its own `canonicalUrl` is forwarded to its `canonicalUrl`-based
-`@id`, so `smart-base`'s tombstones point under `http://smart.who.int/base/`, its
-publication identity. Until that site serves it, the root index's `url` says
-where this site stages it.
-A node no owner's document mints (a package, a schema module) forwards to the
-owner's DOCUMENT. A node with no home, or two, is a `problems[]` entry, and
-the export exits non-zero rather than publish a tombstone that points
-nowhere.
-
-The same mechanism carries the move from `….jsonld#<kind>/<id>` to
-`<doc dir>/<kind>/<id>` subject IRIs: one tombstone per published hash `@id`,
-flows included (owner decision 5a, 2026-10-23), each also `owl:sameAs` the
-path, for one release
-([`kg-export`](kg-export.md) §"Subject IRIs — a path, not a `#fragment`";
-[#435](https://github.com/litlfred/cat-harness/issues/435)).
-
-**A document that moved is a tombstone at its old address.** When the host
-moved under `<site>/<name>/` (2026-10-23, decision 1b), each old root address
-became a small document: the old `<site>/<stub>.jsonld`, each old
-`<site>/tools/<id>.jsonld`, and the old glossary and code-list documents.
-Each one says `deprecated`, `isReplacedBy` and `sameAs` for its new address,
-and its `@graph` holds one tombstone for each `@id` it used to carry. A
-consumer holding an old `@id` fetches the old document, so that is where the
-new name has to be. The root `.json` aliases are copies of those tombstones.
-The exporters write them (`writeLegacyDocuments` in `kg-export.ts`, and
-`legacyGlossaryDocuments` in `glossary-export.ts`), and they go with the
-other tombstones.
-
-**Removal is due one release after the split** (`tombstonesFor`'s banner:
-*"ONE RELEASE ONLY; REMOVE IN THE NEXT"*). Delete `tombstonesFor`, its call in
-`buildExport`, the two context terms, and the test in `kg-export.test.ts` that
-holds every tombstone to a replacement the deploy writes.
+A clean break (owner, 2026-11-02,
+[litlfred/cat-harness-tools#1378](https://github.com/litlfred/cat-harness-tools/issues/1378);
+it closed #962). An `@id` that moved to its owner's document, a subject whose
+IRI went from `….jsonld#<kind>/<id>` to `<doc dir>/<kind>/<id>`, and a document
+that moved under `<site>/<name>/` (2026-10-23, decision 1b) all keep NO
+forwarding node and NO document at the old address. The one-release
+tombstones that did this (`tombstonesFor`, `migrationTombstones`,
+`writeLegacyDocuments`, `legacyGlossaryDocuments`) are gone. A consumer
+holding an old `@id` must re-resolve it. What stays is `placedOut`, so a
+deploy step still naming an old `--out` path writes the document where its
+`@id` says it is.
 
 ### Which base an `@id` is minted against
 
@@ -649,7 +617,7 @@ names in an `export { … }` instead.
 | `root-index.ts` at deploy | an instance's export is missing; the deploy fails rather than publish a shorter map |
 | `subgraph:jsonld:check` | the committed subgraph tree or its payloads are stale |
 | `check:process-index` | a declared BPMN has no `Process` node in the published subgraphs |
-| `kg-export.test.ts` | a tombstone forwards to a document the deploy does not write, or a published `@id` dangles |
+| `kg-export.test.ts` | the published graph holds a forwarding node, or a published `@id` dangles |
 | `fsh-guts-unpublished.test.ts` | the string `fsh-guts` appears anywhere in the built export |
 | `check:node-iris` | a node's identifier is not its file's path under the release address (§"The release site") |
 

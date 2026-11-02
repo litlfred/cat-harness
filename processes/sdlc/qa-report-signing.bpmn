@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
- xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+<bpmn:definitions xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns/"
+ xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns/" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
                   id="Definitions_QaReportSigning"
                   targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="0.1.0">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns/" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="attestation-service" name="Attestation service"/>
   <bpmn:resource id="publication-manager" name="Publication manager"/>
   <bpmn:resource id="validation-pipeline" name="Validation pipeline"/>
@@ -112,8 +112,8 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
       <bpmn:outgoing>S01</bpmn:outgoing>
     </bpmn:startEvent>
 
-    <bpmn:serviceTask id="Task_BuildRun" name="Build the test run&#10;[folio-test-run/v1]">
-      <bpmn:documentation>Assemble the run record the signature will cover: the data hash and the process hash, each all-or-nothing. An UNKNOWN_HASH never reproduces another unknown, so a run that could not be hashed is signable only as what it is — unverifiable.</bpmn:documentation>
+    <bpmn:serviceTask id="Task_BuildRun" name="Build the test run">
+      <bpmn:documentation>Assemble the run record the signature will cover: the data hash and the process hash, each all-or-nothing. An UNKNOWN_HASH never reproduces another unknown, so a run that could not be hashed is signable only as what it is — unverifiable. Builds a `folio-test-run/v1`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-report-signing" />
         <bootstrap.processes:skill ref="content-test" />
@@ -123,7 +123,7 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_ResolveReach" name="Resolve the performer's reach">
-      <bpmn:documentation>Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/process/actor-reach.ts, and whether the signing-api capability is configured. Undeclared reach resolves to "unknown" rather than to the deployment's value — an aggregate does not determine a member.</bpmn:documentation>
+      <bpmn:documentation>Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/process/actor-reach.ts, and whether the signing-api capability is configured. Undeclared reach resolves to "unknown" rather than to the deployment's value — an aggregate does not determine a member. Reads `effectiveReach` and runs the signing-api probe.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-report-signing" />
       </bpmn:extensionElements>

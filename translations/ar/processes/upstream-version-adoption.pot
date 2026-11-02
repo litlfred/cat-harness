@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: upstream-version-adoption\n"
-"POT-Creation-Date: 2026-10-24T08:43:21.781Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.218Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -81,7 +81,7 @@ msgstr ""
 
 #: processes/sdlc/upstream-version-adoption.bpmn:146
 #. Diagram label
-msgid "Close the bean [bean-close]"
+msgid "Close the bean"
 msgstr ""
 
 #: processes/sdlc/upstream-version-adoption.bpmn:135
@@ -141,7 +141,7 @@ msgstr ""
 
 #: processes/sdlc/upstream-version-adoption.bpmn:136
 #. Diagram label
-msgid "Open the bean [bean-open]"
+msgid "Open the bean"
 msgstr ""
 
 #: processes/sdlc/upstream-version-adoption.bpmn:100
