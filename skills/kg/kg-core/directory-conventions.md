@@ -1319,8 +1319,8 @@ its declaration's `iriBase`, and the list follows.
 Since 2026-09-30 (bean `yn2k`, the owner's decision), `cat-harness` and
 the content core declare an `iriBase` on their planned repositories'
 hosts, versioned as bootstrap's is:
-- `https://litlfred.github.io/cat-harness/v0/ns#`
-- `https://litlfred.github.io/folio-assistant-core/v0/ns#`
+- `https://litlfred.github.io/cat-harness/v0/ns/`
+- `https://litlfred.github.io/folio-assistant-core/v0/ns/`
 
 Their namespace documents are still published beside the site, as
 bootstrap's are.

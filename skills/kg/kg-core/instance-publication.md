@@ -177,7 +177,7 @@ all take the one form:
 
 | reader | form | example (bootstrap `0.1.1`) |
 |---|---|---|
-| a program or agent — a namespace, a schema `$id`, a BPMN `xmlns`, a JSON-LD `@id` | `<iriBase>v<major>/…` | `https://litlfred.github.io/bootstrap/v0/ns#` |
+| a program or agent — a namespace, a schema `$id`, a BPMN `xmlns`, a JSON-LD `@id` | `<iriBase>v<major>/…` | `https://litlfred.github.io/bootstrap/v0/ns/` |
 | a person — a page to read | `<iriBase>v<major>/…` | `https://litlfred.github.io/bootstrap/v0/` |
 
 **The exact release comes from the pin, not the address.** A reader is handed
