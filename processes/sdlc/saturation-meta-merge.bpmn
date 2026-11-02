@@ -3,11 +3,11 @@
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
                   xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
                   xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
-                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
-                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#"
+                  xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns/"
+                  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns/"
                   id="Definitions_Process_SaturationMetaMerge" targetNamespace="https://litlfred.github.io/folio-assistant/workflows"
                   exporter="folio-assistant" exporterVersion="1">
-  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
+  <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns/" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
   <bpmn:resource id="sibling-session" name="Sibling session"/>
   <bpmn:resource id="merge-steward" name="Merge steward"/>
   <bpmn:resource id="user" name="Owner"/>
@@ -56,6 +56,7 @@
     </bpmn:task>
     <bpmn:task id="Task_SibHold" name="Hold, and name the heads to merge">
       <bpmn:documentation>A sibling that owns a PR in the batch names the head it wants merged.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="saturation-meta-merge"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_2</bpmn:incoming>
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
     </bpmn:task>
@@ -67,6 +68,7 @@
     </bpmn:task>
     <bpmn:userTask id="Task_Owner" name="Choose A, B, C or D">
       <bpmn:documentation>Only the owner's own tap or words approve the landing. A PR the card does not name gets no merge from it.</bpmn:documentation>
+      <bpmn:extensionElements><cat-harness.processes:no-skill reason="the owner's own choice on the card; no agent performs it"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_4</bpmn:incoming>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
     </bpmn:userTask>
@@ -96,6 +98,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:serviceTask id="Task_MainRun" name="Run main's checks">
       <bpmn:documentation>The merge starts main's checks. Until tools#1384, a closed PR's run can cancel them, so the steward re-runs a cancelled main run.</bpmn:documentation>
+      <bpmn:extensionElements><cat-harness.processes:no-skill reason="CI runs main's checks on the merge; the steward only re-runs a cancelled run, under merge-to-main"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_10</bpmn:incoming>
       <bpmn:outgoing>Flow_12</bpmn:outgoing>
     </bpmn:serviceTask>
