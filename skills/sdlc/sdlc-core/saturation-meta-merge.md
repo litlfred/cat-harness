@@ -19,7 +19,10 @@ CI through `merge:guard`. When the runners are full, that rule is what stops
 the queue: each PR waits for a runner, and then a newer push to `main` makes
 its result stale. A meta-merge trades per-PR CI for one CI run on `main`
 after landing. It is only run when the owner asks for it, and on a card that
-names every PR.
+names every PR. The process is
+[`processes/sdlc/saturation-meta-merge.bpmn`](../../../processes/sdlc/saturation-meta-merge.bpmn)
+(`Process_SaturationMetaMerge`), called from the merge manager's watch loop
+([`merge-manager-watcher`](merge-manager-watcher.md)).
 
 First run: 2026-11-02 07:03Z, on cat-harness (#956, 7 PRs),
 cat-harness-tools (#1385, 4 PRs) and fhir-harness (#274, 1 PR).
@@ -129,7 +132,5 @@ echo "branch $br = $(git rev-parse --short HEAD) on main $(git rev-parse --short
 
 ## What this does not do yet
 
-- It is not a `merge-train.bpmn` path. It should become an owner-gated
-  branch of that process, run by the `merge-steward` role.
 - The trigger is measured by hand. A watcher that offers the card when the
   threshold is crossed is follow-up work.
