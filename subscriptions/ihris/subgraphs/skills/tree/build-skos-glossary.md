@@ -45,9 +45,9 @@ Owner, 2026-09-24: *"What does folio-assistant do? B should follow. Update skill
 
   | scheme | owner | namespace |
   |---|---|---|
-  | toolkit technical terms | `ihris-toolkit` | `https://litlfred.github.io/ihris/ihris-toolkit/ns/` |
-  | use-case glossaries | `ihris-use-cases` | `https://litlfred.github.io/ihris/ihris-use-cases/ns/` |
-  | a code list | the package whose data model **declares** the form; if several packages declare it, the earliest in dependency order (i2ce, then ihris-common, then the products) | e.g. `role`: `https://litlfred.github.io/ihris/i2ce/ns/` |
+  | toolkit technical terms | `ihris-toolkit` | `https://litlfred.github.io/ihris/ihris-toolkit/ns#` |
+  | use-case glossaries | `ihris-use-cases` | `https://litlfred.github.io/ihris/ihris-use-cases/ns#` |
+  | a code list | the package whose data model **declares** the form; if several packages declare it, the earliest in dependency order (i2ce, then ihris-common, then the products) | e.g. `role`: `https://litlfred.github.io/ihris/i2ce/ns#` |
 
   A code list that later packages extend stays one scheme, owned by its definer, and each term's `source` still names the package that contributed it. The SKOS is published as `assets/glossary/<owner>--<scheme>.skos.jsonld`. QA `glossary-namespaces` checks that:
   - the owner is a declared sub-instance, never the root;
