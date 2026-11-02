@@ -109,8 +109,10 @@ is not enabled**. That has consequences for how you author:
 
 Owner, 2026-10-31: take what holds up from the BPMN comprehension research and
 check it mechanically. `kg:audit` reports each rule below per process
-(`src/workflow/diagram-quality.ts` in https://github.com/litlfred/cat-harness-tools). The papers are being
-ingested under bean `folio-assistant-e0jh`.
+(`src/workflow/diagram-quality.ts` in https://github.com/litlfred/cat-harness-tools). The
+sources, and how strong each rule's evidence is, are in the
+[`process-model-quality`](../../../methodologies/process-model-quality.md)
+methodology.
 
 - **Separate routing from work.** A task never has two outgoing flows: put an
   exclusive or parallel gateway after it, or a reader must guess fork vs
@@ -198,8 +200,9 @@ Do not import these from style guides or model output; each was checked:
   no significant difference in accuracy or time across four directions.
   Lay out left-to-right for consistency, not because it reads faster.
 - **A word cap on labels**, a **gateway fan-out cap of 4**, and **a fixed
-  colour palette.** No study behind them. Colour highlighting helps novices,
-  not experts (Reijers et al. 2011).
+  colour palette.** No study behind them. Colouring matching split and join
+  gateways made novices more accurate and experts faster, not more accurate
+  (Reijers et al. 2011).
 - **OR-gateways** need no rule: the process model refuses inclusive gateways
   at load.
 
