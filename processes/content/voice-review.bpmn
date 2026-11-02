@@ -139,114 +139,120 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
   <bpmndi:BPMNDiagram id="Diagram_VoiceReview">
     <bpmndi:BPMNPlane id="Plane_VoiceReview" bpmnElement="Process_VoiceReview">
       <bpmndi:BPMNShape id="S_Lane_NarrativeReviewer_V" bpmnElement="Lane_NarrativeReviewer" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1655" height="360" />
+        <dc:Bounds x="160" y="40" width="1390" height="410" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_BaseVoiceDone" bpmnElement="Start_BaseVoiceDone">
-        <dc:Bounds x="200" y="212" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="189.5" y="175.5" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="216" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="196" y="243" width="70" height="36" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_AnyActive" bpmnElement="GW_AnyActive" isMarkerVisible="true">
-        <dc:Bounds x="280" y="205" width="50" height="50" />
+        <dc:Bounds x="282" y="195" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="270" y="252" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_NoVoice" bpmnElement="End_NoVoice">
-        <dc:Bounds x="287" y="120" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="327" y="111.5" width="90" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="289" y="100" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="332" y="100" width="110" height="36" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_LoadActive" bpmnElement="Task_LoadActive">
-        <dc:Bounds x="395" y="170" width="120" height="120" />
+        <dc:Bounds x="432" y="160" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_MechanicalHalf" bpmnElement="Task_MechanicalHalf">
-        <dc:Bounds x="590" y="170" width="120" height="120" />
+        <dc:Bounds x="592" y="160" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_OpenCitation" bpmnElement="Task_OpenCitation">
-        <dc:Bounds x="785" y="170" width="120" height="120" />
+        <dc:Bounds x="752" y="160" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_QuoteSupports" bpmnElement="GW_QuoteSupports" isMarkerVisible="true">
-        <dc:Bounds x="960" y="205" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="940" y="259" width="90" height="71" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="912" y="195" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="842" y="292" width="70" height="54" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RuleIsWrong" bpmnElement="Task_RuleIsWrong">
-        <dc:Bounds x="1075" y="92" width="120" height="120" />
+        <dc:Bounds x="1012" y="60" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_Adjudicate" bpmnElement="Task_Adjudicate">
-        <dc:Bounds x="1080" y="265" width="120" height="120" />
+        <dc:Bounds x="1012" y="260" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_MoreVoices_Join" bpmnElement="GW_MoreVoices_Join" isMarkerVisible="true">
-        <dc:Bounds x="1275" y="205" width="50" height="50" />
+        <dc:Bounds x="1162" y="195" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Edge_Flow_GW_MoreVoices_Join" bpmnElement="Flow_GW_MoreVoices_Join">
-        <di:waypoint x="1325" y="230"/>
-        <di:waypoint x="1365" y="230"/>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="S_GW_MoreVoices" bpmnElement="GW_MoreVoices" isMarkerVisible="true">
-        <dc:Bounds x="1365" y="205" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="1345" y="148" width="90" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="1232" y="195" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1210" y="140" width="95" height="36" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RecordOnSidecar" bpmnElement="Task_RecordOnSidecar">
-        <dc:Bounds x="1490" y="170" width="120" height="120" />
+        <dc:Bounds x="1322" y="160" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_VoiceReviewed" bpmnElement="End_VoiceReviewed">
-        <dc:Bounds x="1695" y="212" width="36" height="36" />
+        <dc:Bounds x="1472" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1452" y="243" width="76" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="E_F_V1" bpmnElement="F_V1">
-        <di:waypoint x="236" y="230"/><di:waypoint x="280" y="230"/>
+        <di:waypoint x="252" y="220" />
+        <di:waypoint x="282" y="220" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V2" bpmnElement="F_V2">
-        <di:waypoint x="305" y="205"/><di:waypoint x="305" y="156"/>
+        <di:waypoint x="307" y="195" />
+        <di:waypoint x="307" y="136" />
+        <bpmndi:BPMNLabel><dc:Bounds x="312" y="150" width="40" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V3" bpmnElement="F_V3">
-        <di:waypoint x="330" y="230" />
-        <di:waypoint x="395" y="230" />
+        <di:waypoint x="332" y="220" />
+        <di:waypoint x="432" y="220" />
+        <bpmndi:BPMNLabel><dc:Bounds x="340" y="198" width="88" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V4" bpmnElement="F_V4">
-        <di:waypoint x="515" y="230" />
-        <di:waypoint x="590" y="230" />
+        <di:waypoint x="552" y="220" />
+        <di:waypoint x="592" y="220" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V5" bpmnElement="F_V5">
-        <di:waypoint x="710" y="230" />
-        <di:waypoint x="785" y="230" />
+        <di:waypoint x="712" y="220" />
+        <di:waypoint x="752" y="220" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V6" bpmnElement="F_V6">
-        <di:waypoint x="905" y="230" />
-        <di:waypoint x="960" y="230" />
+        <di:waypoint x="872" y="220" />
+        <di:waypoint x="912" y="220" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V7" bpmnElement="F_V7">
-        <di:waypoint x="1010" y="230" />
-        <di:waypoint x="1042.5" y="230" />
-        <di:waypoint x="1042.5" y="152" />
-        <di:waypoint x="1075" y="152" />
+        <di:waypoint x="937" y="195" />
+        <di:waypoint x="937" y="120" />
+        <di:waypoint x="1012" y="120" />
+        <bpmndi:BPMNLabel><dc:Bounds x="942" y="150" width="25" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V8" bpmnElement="F_V8">
-        <di:waypoint x="1010" y="230" />
-        <di:waypoint x="1045" y="230" />
-        <di:waypoint x="1045" y="325" />
-        <di:waypoint x="1080" y="325" />
+        <di:waypoint x="937" y="245" />
+        <di:waypoint x="937" y="320" />
+        <di:waypoint x="1012" y="320" />
+        <bpmndi:BPMNLabel><dc:Bounds x="942" y="270" width="30" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V9" bpmnElement="F_V9">
-        <di:waypoint x="1195" y="152" />
-        <di:waypoint x="1235" y="152" />
-        <di:waypoint x="1235" y="230" />
-        <di:waypoint x="1275" y="230" />
+        <di:waypoint x="1132" y="120" />
+        <di:waypoint x="1187" y="120" />
+        <di:waypoint x="1187" y="195" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V10" bpmnElement="F_V10">
-        <di:waypoint x="1200" y="325" />
-        <di:waypoint x="1237.5" y="325" />
-        <di:waypoint x="1237.5" y="230" />
-        <di:waypoint x="1275" y="230" />
+        <di:waypoint x="1132" y="320" />
+        <di:waypoint x="1187" y="320" />
+        <di:waypoint x="1187" y="245" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_GW_MoreVoices_Join" bpmnElement="Flow_GW_MoreVoices_Join">
+        <di:waypoint x="1212" y="220" />
+        <di:waypoint x="1232" y="220" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V11" bpmnElement="F_V11">
-        <di:waypoint x="1390" y="205" />
-        <di:waypoint x="1390" y="410" />
-        <di:waypoint x="650" y="410" />
-        <di:waypoint x="650" y="270" />
+        <di:waypoint x="1257" y="245" />
+        <di:waypoint x="1257" y="420" />
+        <di:waypoint x="652" y="420" />
+        <di:waypoint x="652" y="280" />
+        <bpmndi:BPMNLabel><dc:Bounds x="660" y="424" width="30" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V12" bpmnElement="F_V12">
-        <di:waypoint x="1415" y="230" />
-        <di:waypoint x="1490" y="230" />
+        <di:waypoint x="1282" y="220" />
+        <di:waypoint x="1322" y="220" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1286" y="198" width="25" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_V13" bpmnElement="F_V13">
-        <di:waypoint x="1610" y="230" />
-        <di:waypoint x="1695" y="230" />
+        <di:waypoint x="1442" y="220" />
+        <di:waypoint x="1472" y="220" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

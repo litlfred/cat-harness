@@ -149,90 +149,127 @@ You are in this process when you are asked to drain beans, when you spawn draine
 
   <bpmndi:BPMNDiagram id="BPMNDiagram_BeanDrain">
     <bpmndi:BPMNPlane id="BPMNPlane_BeanDrain" bpmnElement="Process_BeanDrain">
-      <bpmndi:BPMNShape id="Lane_QueueKeeper_di" bpmnElement="Lane_QueueKeeper" isHorizontal="true"><dc:Bounds x="160" y="80" width="1200" height="180" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_Drainer_di" bpmnElement="Lane_Drainer" isHorizontal="true"><dc:Bounds x="160" y="260" width="1200" height="320" /></bpmndi:BPMNShape>
-
-      <bpmndi:BPMNShape id="Drain_Start_di" bpmnElement="Drain_Start"><dc:Bounds x="200" y="142" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="189.51" y="201.5" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_BuildQueue_di" bpmnElement="Drain_BuildQueue"><dc:Bounds x="285" y="100" width="120" height="120" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_Refill_di" bpmnElement="Drain_Refill"><dc:Bounds x="515" y="100" width="120" height="120" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_Refilled_di" bpmnElement="Drain_Refilled" isMarkerVisible="true"><dc:Bounds x="700" y="135" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="690" y="98" width="70" height="27"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_Drained_di" bpmnElement="Drain_Drained"><dc:Bounds x="810" y="142" width="36" height="36" /></bpmndi:BPMNShape>
-
-      <bpmndi:BPMNShape id="Drain_Next_di" bpmnElement="Drain_Next" isMarkerVisible="true"><dc:Bounds x="320" y="335" width="50" height="50" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_More_di" bpmnElement="Drain_More" isMarkerVisible="true"><dc:Bounds x="420" y="335" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="405" y="392" width="80" height="27"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_TakeNext_di" bpmnElement="Drain_TakeNext"><dc:Bounds x="520" y="300" width="120" height="120" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_Open_di" bpmnElement="Drain_Open"><dc:Bounds x="700" y="300" width="120" height="120" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_Claimed_di" bpmnElement="Drain_Claimed" isMarkerVisible="true"><dc:Bounds x="870" y="335" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="855" y="296" width="80" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_Work_di" bpmnElement="Drain_Work"><dc:Bounds x="980" y="300" width="120" height="120" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_Close_di" bpmnElement="Drain_Close"><dc:Bounds x="1180" y="300" width="120" height="120" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Drain_Skip_di" bpmnElement="Drain_Skip"><dc:Bounds x="835" y="425" width="120" height="120" /></bpmndi:BPMNShape>
-
+      <bpmndi:BPMNShape id="Lane_QueueKeeper_di" bpmnElement="Lane_QueueKeeper" isHorizontal="true">
+        <dc:Bounds x="160" y="60" width="1180" height="200" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Drainer_di" bpmnElement="Lane_Drainer" isHorizontal="true">
+        <dc:Bounds x="160" y="260" width="1180" height="380" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Start_di" bpmnElement="Drain_Start">
+        <dc:Bounds x="216" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="196" y="183" width="76" height="36" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_BuildQueue_di" bpmnElement="Drain_BuildQueue">
+        <dc:Bounds x="282" y="100" width="120" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Refill_di" bpmnElement="Drain_Refill">
+        <dc:Bounds x="552" y="100" width="120" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Refilled_di" bpmnElement="Drain_Refilled" isMarkerVisible="true">
+        <dc:Bounds x="712" y="135" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="702" y="98" width="70" height="27" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Drained_di" bpmnElement="Drain_Drained">
+        <dc:Bounds x="862" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="904" y="151" width="100" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Next_di" bpmnElement="Drain_Next" isMarkerVisible="true">
+        <dc:Bounds x="322" y="355" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_More_di" bpmnElement="Drain_More" isMarkerVisible="true">
+        <dc:Bounds x="422" y="355" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="410" y="410" width="80" height="27" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_TakeNext_di" bpmnElement="Drain_TakeNext">
+        <dc:Bounds x="532" y="320" width="120" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Open_di" bpmnElement="Drain_Open">
+        <dc:Bounds x="712" y="320" width="120" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Claimed_di" bpmnElement="Drain_Claimed" isMarkerVisible="true">
+        <dc:Bounds x="882" y="355" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="862" y="310" width="90" height="36" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Work_di" bpmnElement="Drain_Work">
+        <dc:Bounds x="992" y="320" width="120" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Close_di" bpmnElement="Drain_Close">
+        <dc:Bounds x="1172" y="320" width="120" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Drain_Skip_di" bpmnElement="Drain_Skip">
+        <dc:Bounds x="847" y="465" width="120" height="120" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="BD_1_di" bpmnElement="BD_1">
-        <di:waypoint x="236" y="160" />
-        <di:waypoint x="285" y="160" />
+        <di:waypoint x="252" y="160" />
+        <di:waypoint x="282" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BD_2_di" bpmnElement="BD_2">
-        <di:waypoint x="345" y="200" />
-        <di:waypoint x="345" y="335" />
+        <di:waypoint x="347" y="220" />
+        <di:waypoint x="347" y="355" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BD_15_di" bpmnElement="BD_15"><di:waypoint x="370" y="360"/><di:waypoint x="420" y="360"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BD_15_di" bpmnElement="BD_15">
+        <di:waypoint x="372" y="380" />
+        <di:waypoint x="422" y="380" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BD_3_di" bpmnElement="BD_3">
-        <di:waypoint x="470" y="360" />
-        <di:waypoint x="520" y="360" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BD_4_di" bpmnElement="BD_4">
-        <di:waypoint x="640" y="360" />
-        <di:waypoint x="700" y="360" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BD_5_di" bpmnElement="BD_5">
-        <di:waypoint x="820" y="360" />
-        <di:waypoint x="870" y="360" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BD_6_di" bpmnElement="BD_6">
-        <di:waypoint x="920" y="360" />
-        <di:waypoint x="980" y="360" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BD_7_di" bpmnElement="BD_7">
-        <di:waypoint x="1100" y="360" />
-        <di:waypoint x="1180" y="360" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BD_8_di" bpmnElement="BD_8">
-        <di:waypoint x="1240" y="400" />
-        <di:waypoint x="1240" y="555" />
-        <di:waypoint x="290" y="555" />
-        <di:waypoint x="290" y="360" />
-        <di:waypoint x="320" y="360" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BD_9_di" bpmnElement="BD_9">
-        <di:waypoint x="895" y="385" />
-        <di:waypoint x="895" y="450" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BD_10_di" bpmnElement="BD_10">
-        <di:waypoint x="835" y="485" />
-        <di:waypoint x="345" y="485" />
-        <di:waypoint x="345" y="385" />
+        <di:waypoint x="472" y="380" />
+        <di:waypoint x="532" y="380" />
+        <bpmndi:BPMNLabel><dc:Bounds x="480" y="360" width="30" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BD_11_di" bpmnElement="BD_11">
-        <di:waypoint x="470" y="360" />
-        <di:waypoint x="492.5" y="360" />
-        <di:waypoint x="492.5" y="160" />
-        <di:waypoint x="515" y="160" />
-        <bpmndi:BPMNLabel><dc:Bounds x="398.5" y="301" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="447" y="355" />
+        <di:waypoint x="447" y="160" />
+        <di:waypoint x="552" y="160" />
+        <bpmndi:BPMNLabel><dc:Bounds x="452" y="222" width="80" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BD_12_di" bpmnElement="BD_12">
-        <di:waypoint x="635" y="160" />
-        <di:waypoint x="700" y="160" />
+        <di:waypoint x="672" y="160" />
+        <di:waypoint x="712" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BD_14_di" bpmnElement="BD_14">
+        <di:waypoint x="762" y="160" />
+        <di:waypoint x="862" y="160" />
+        <bpmndi:BPMNLabel><dc:Bounds x="772" y="138" width="84" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BD_13_di" bpmnElement="BD_13">
-        <di:waypoint x="725" y="185" />
-        <di:waypoint x="725" y="285" />
-        <di:waypoint x="580" y="285" />
-        <di:waypoint x="580" y="320" />
+        <di:waypoint x="737" y="185" />
+        <di:waypoint x="737" y="280" />
+        <di:waypoint x="592" y="280" />
+        <di:waypoint x="592" y="320" />
+        <bpmndi:BPMNLabel><dc:Bounds x="742" y="222" width="60" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="BD_14_di" bpmnElement="BD_14"><di:waypoint x="750" y="160"/><di:waypoint x="810" y="160"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="767.75" y="118.5" width="90" height="18" /></bpmndi:BPMNLabel>
+      <bpmndi:BPMNEdge id="BD_4_di" bpmnElement="BD_4">
+        <di:waypoint x="652" y="380" />
+        <di:waypoint x="712" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BD_5_di" bpmnElement="BD_5">
+        <di:waypoint x="832" y="380" />
+        <di:waypoint x="882" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BD_6_di" bpmnElement="BD_6">
+        <di:waypoint x="932" y="380" />
+        <di:waypoint x="992" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BD_7_di" bpmnElement="BD_7">
+        <di:waypoint x="1112" y="380" />
+        <di:waypoint x="1172" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BD_8_di" bpmnElement="BD_8">
+        <di:waypoint x="1232" y="440" />
+        <di:waypoint x="1232" y="620" />
+        <di:waypoint x="300" y="620" />
+        <di:waypoint x="300" y="380" />
+        <di:waypoint x="322" y="380" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BD_9_di" bpmnElement="BD_9">
+        <di:waypoint x="907" y="405" />
+        <di:waypoint x="907" y="465" />
+        <bpmndi:BPMNLabel><dc:Bounds x="912" y="420" width="70" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="BD_10_di" bpmnElement="BD_10">
+        <di:waypoint x="847" y="525" />
+        <di:waypoint x="347" y="525" />
+        <di:waypoint x="347" y="405" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
