@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: content-acquisition\n"
-"POT-Creation-Date: 2026-11-01T11:34:43.111Z\n"
+"POT-Creation-Date: 2026-11-02T04:04:24.911Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: processes/library/content-acquisition.bpmn:58
 #. Diagram element documentation
-msgid "Composed from the declaration, never written by hand. The queue is declared with INSTANCE scope, so its declared path is missing the segment a repository-relative forge URL needs: /upload/main/uploads is a 404 and /upload/main/cat-harness/uploads is not, verified against GitHub 2026-09-20. Every failure is named — no origin remote, a non-GitHub forge, a declared-but-absent queue — because a URL is believed, and somebody sent to a wrong one cannot tell it from an empty directory. On failure, fall back to the conversation."
+msgid "Composed from the declaration, never written by hand. The queue is declared with INSTANCE scope, so its declared path is missing the segment a repository-relative forge URL needs: /upload/main/uploads is a 404 and /upload/main/cat-harness/uploads is not, verified against GitHub 2026-09-20. Every failure is named — no origin remote, a non-GitHub forge, a declared-but-absent queue — because a URL is believed, and somebody sent to a wrong one cannot tell it from an empty directory. On failure, fall back to the conversation. Uses `scripts/upload-url.ts`."
 msgstr ""
 
 #: processes/library/content-acquisition.bpmn:14
@@ -111,7 +111,7 @@ msgstr ""
 
 #: processes/library/content-acquisition.bpmn:57
 #. Diagram label
-msgid "Point at the upload target [scripts/upload-url.ts]"
+msgid "Point at the upload target"
 msgstr ""
 
 #: processes/library/content-acquisition.bpmn:71

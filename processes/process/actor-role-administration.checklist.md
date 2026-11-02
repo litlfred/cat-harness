@@ -69,9 +69,9 @@ Changing who can do what: adding an actor, opening or closing a role to one, gra
 - Skill: `prepare-merge`, `continual-progress`.
 - What: Called rather than restated.
 - A subprocess (`Process_CodeChangeReview`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Task_RunKgAudit` (Audit the graph [kg:audit])
+- next: → `Task_RunKgAudit` (Audit the graph)
 
-### 6. Audit the graph [kg:audit] (`Task_RunKgAudit`)
+### 6. Audit the graph (`Task_RunKgAudit`)
 
 - Who: the `Graph audit (system)` lane (role `build-pipeline`).
 - Skill: `role-model`.

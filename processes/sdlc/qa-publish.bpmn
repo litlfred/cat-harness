@@ -83,8 +83,8 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
       <bpmn:outgoing>P01</bpmn:outgoing>
     </bpmn:startEvent>
 
-    <bpmn:serviceTask id="Task_DeriveKey" name="Derive the key&#10;[main/&lt;sha&gt; or pr/&lt;n&gt;/&lt;sha&gt;]">
-      <bpmn:documentation>`qa:publish --github` reads the event: a push to main publishes under `main/&lt;sha&gt;/`, a pull request under `pr/&lt;n&gt;/&lt;head-sha&gt;/` — the head that was tested, not the merge ref. It also reads whether the token can write, which the gateway after it routes on.</bpmn:documentation>
+    <bpmn:serviceTask id="Task_DeriveKey" name="Derive the key">
+      <bpmn:documentation>`qa:publish --github` reads the event: a push to main publishes under `main/&lt;sha&gt;/`, a pull request under `pr/&lt;n&gt;/&lt;head-sha&gt;/` — the head that was tested, not the merge ref. It also reads whether the token can write, which the gateway after it routes on. The key is `main/&lt;sha&gt;` or `pr/&lt;n&gt;/&lt;sha&gt;`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-reports" />
       </bpmn:extensionElements>
@@ -104,7 +104,7 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
       <bpmn:incoming>P04</bpmn:incoming>
     </bpmn:endEvent>
 
-    <bpmn:serviceTask id="Task_BuildEntry" name="Build the entry&#10;[tree + manifest]">
+    <bpmn:serviceTask id="Task_BuildEntry" name="Build the entry">
       <bpmn:documentation>First the working copy is produced (`qa:refresh`, bean `3hk4`): while the checkout still tracks `test/results/`, the commit's own copy is the record and nothing runs; once it does not, every declared QA writer runs into the empty tree, because the gates are in judge mode and wrote nothing a publish could carry. A refresh that leaves a writer failed, a family empty or a file unclaimed is INCOMPLETE: the job goes red and `qa:publish --completeness` refuses, so a partial tree is never stored as the commit's record — the "Not stored" outcome, reached before any push. Then it hashes the working copy of every declared `qa` directory (`&lt;instance&gt;/test/results/**`, byte-identical to the checkout's layout) into a tree through a private index, and writes `manifest.json` (`qa-reports-manifest/v1`): inputs, producers, verdict counts and the gates' result. Identical JSON is the same blob, so an unchanged family costs nothing to store again. Its git objects live in a private bare repository, never in the checkout's own store.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-reports" />
@@ -131,7 +131,7 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
       <bpmn:outgoing>P10</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
-    <bpmn:serviceTask id="Task_Backoff" name="Back off&#10;[backoff-sleep]">
+    <bpmn:serviceTask id="Task_Backoff" name="Back off">
       <bpmn:documentation>Wait the same intervals `backoff-sleep.ts` uses, then go round again: fetch the new tip and splice onto it. Three attempts in all.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-reports" />
@@ -166,7 +166,7 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
       <bpmn:outgoing>R02</bpmn:outgoing>
     </bpmn:serviceTask>
 
-    <bpmn:serviceTask id="Task_PlanPrune" name="Plan the prune&#10;[planPrune]">
+    <bpmn:serviceTask id="Task_PlanPrune" name="Plan the prune">
       <bpmn:documentation>Keep every `main/&lt;sha&gt;` for 90 days and one per day after that; drop `pr/&lt;n&gt;` 7 days after the PR closed. The rule is `planPrune` in `scripts/qa-store.ts`, pinned by its tests, and the plan is printed whether or not it is applied.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-reports" />

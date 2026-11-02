@@ -54,8 +54,8 @@
         <cat-harness.processes:no-skill reason="A person answering a question. The skill governs how the agent ASKS, which is A_Ask; there is nothing here for a skill to instruct."/>
       </bpmn:extensionElements>
     </bpmn:task>
-    <bpmn:task id="A_PointToUpload" name="Point at the upload target&#10;[scripts/upload-url.ts]">
-      <bpmn:documentation>Composed from the declaration, never written by hand. The queue is declared with INSTANCE scope, so its declared path is missing the segment a repository-relative forge URL needs: /upload/main/uploads is a 404 and /upload/main/cat-harness/uploads is not, verified against GitHub 2026-09-20. Every failure is named — no origin remote, a non-GitHub forge, a declared-but-absent queue — because a URL is believed, and somebody sent to a wrong one cannot tell it from an empty directory. On failure, fall back to the conversation.</bpmn:documentation>
+    <bpmn:task id="A_PointToUpload" name="Point at the upload target">
+      <bpmn:documentation>Composed from the declaration, never written by hand. The queue is declared with INSTANCE scope, so its declared path is missing the segment a repository-relative forge URL needs: /upload/main/uploads is a 404 and /upload/main/cat-harness/uploads is not, verified against GitHub 2026-09-20. Every failure is named — no origin remote, a non-GitHub forge, a declared-but-absent queue — because a URL is believed, and somebody sent to a wrong one cannot tell it from an empty directory. On failure, fall back to the conversation. Uses `scripts/upload-url.ts`.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="content-acquisition"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="P_Upload" name="Drop the file&#10;in the queue">

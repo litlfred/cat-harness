@@ -61,7 +61,7 @@ on issue">
       </bpmn:extensionElements>
     </bpmn:exclusiveGateway>
     <bpmn:endEvent id="End_NotAccepted" name="Not accepted — recorded, with its reason"/>
-    <bpmn:callActivity id="Call_MergeToMain" name="Land the feature's PRs&#10;[merge-to-main]" calledElement="Process_MergeToMain">
+    <bpmn:callActivity id="Call_MergeToMain" name="Land the feature's PRs" calledElement="Process_MergeToMain">
       <bpmn:documentation>Phase 6's "explicit confirmation before merging to main", made a step that can refuse. Once per pull request the feature still has open, after the sign-off is recorded and before the issue is closed: an issue is not closed on a feature that is not on `main`. `merge-to-main.bpmn` reads each head's evidence live, establishes that the owner authorised THAT merge (a stakeholder sign-off or the BA's confirmation is acceptance of the feature, not authorisation to merge it, unless the owner's own words say so), records the authorisation, merges, and confirms the base. A PR the owner holds or refuses stays open, and A_Close then waits: the BA's authorisation to close does not cover a feature that did not land. An increment the owner asked to land earlier in Phase 6 went through the same sub-process at that time.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>

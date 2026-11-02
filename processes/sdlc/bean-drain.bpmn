@@ -95,7 +95,7 @@ You are in this process when you are asked to drain beans, when you spawn draine
       <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
     </bpmn:task>
 
-    <bpmn:callActivity id="Drain_Open" name="Open the bean&#10;[bean-open]" calledElement="Process_BeanOpen">
+    <bpmn:callActivity id="Drain_Open" name="Open the bean" calledElement="Process_BeanOpen">
       <bpmn:documentation>Process_BeanOpen on the bean just taken: check it, find out whose it is, and claim it — or leave it alone when another agent holds it. OPEN's check is where the drain's claim check runs (the `bean-claim-check` Tool, bean n7x7): recent commits on every bean copy and any open PR naming the bean, before the claim. The gateway after this reads which end OPEN reached.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
     </bpmn:callActivity>
@@ -114,7 +114,7 @@ You are in this process when you are asked to drain beans, when you spawn draine
       <bpmn:extensionElements><bootstrap.processes:skill ref="continual-progress"/></bpmn:extensionElements>
     </bpmn:task>
 
-    <bpmn:callActivity id="Drain_Close" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+    <bpmn:callActivity id="Drain_Close" name="Close the bean" calledElement="Process_BeanClose">
       <bpmn:documentation>Process_BeanClose on the bean just worked: complete and archive it on evidence, scrap it with its reasons, or record its blocker and hand it back to `todo`. On every bean copy. More of the drain follows, so on the drain's own bean the engine notes rather than resolves (see the process comment); then the drainer takes the next bean.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
     </bpmn:callActivity>

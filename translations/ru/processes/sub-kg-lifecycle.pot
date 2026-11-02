@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sub-kg-lifecycle\n"
-"POT-Creation-Date: 2026-10-24T08:43:21.644Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.067Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: processes/kg/sub-kg-lifecycle.bpmn:328
 #. Diagram label
-msgid "Close the bean [bean-close]"
+msgid "Close the bean"
 msgstr ""
 
 #: processes/kg/sub-kg-lifecycle.bpmn:386
@@ -296,7 +296,7 @@ msgstr ""
 
 #: processes/kg/sub-kg-lifecycle.bpmn:312
 #. Diagram label
-msgid "Open the bean [bean-open]"
+msgid "Open the bean"
 msgstr ""
 
 #: processes/kg/sub-kg-lifecycle.bpmn:64
