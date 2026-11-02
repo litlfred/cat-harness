@@ -15,7 +15,6 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 ### 1. Read PRs, runner queue, main verdict and owners (`Task_Read`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
-- Skill: `merge-manager-watcher`.
 - What: Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, and each PR owner's last push or comment.
 - Record it: `workflow_complete` with `node: "Task_Read"`.
 - next: → `Gw_Route` (What does the queue need?)
