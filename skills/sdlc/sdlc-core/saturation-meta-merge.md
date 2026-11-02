@@ -24,8 +24,8 @@ names every PR. The process is
 (`Process_SaturationMetaMerge`), called from the merge manager's watch loop
 ([`merge-manager-watcher`](merge-manager-watcher.md)).
 
-First run: 2026-11-02 07:03Z, on cat-harness (#956, 7 PRs),
-cat-harness-tools (#1385, 4 PRs) and fhir-harness (#274, 1 PR).
+First run: 2026-11-02 07:03Z, on three harness repositories: 12 PRs in
+three meta-merge PRs, cat-harness#956 among them (7 PRs).
 
 ## Trigger
 

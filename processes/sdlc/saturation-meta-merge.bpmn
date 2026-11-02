@@ -19,9 +19,11 @@
     <bpmn:documentation>Owner, 2026-11-02 06:57Z, with the runners full: cancel everything queued, pause new work, consolidate all ready PRs on one meta-merge branch, skip CI and rendering, and merge it. Then: coordinate with the swarm siblings when this happens, and make it repeatable across repositories. First run 2026-11-02 07:03Z: cat-harness#956 (7 PRs), cat-harness-tools#1385 (4) and fhir-harness#274 (1). Skill saturation-meta-merge holds the steps and the safety rules. This process bypasses merge:guard on purpose, so the owner's card, the PR body and a comment on each member PR are the record.</bpmn:documentation>
     <bpmn:laneSet id="LaneSet_Process_SaturationMetaMerge">
       <bpmn:lane id="Lane_Sibling" name="Sibling session" partitionElementRef="sibling-session">
+        <bpmn:documentation>A session that pushes to a repository in scope. Holds pushes, merges, run cancels and re-runs there from the hold until `meta-merge done`, and names the head it wants merged for a PR it owns.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_SibHold</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Steward" name="Merge steward" partitionElementRef="merge-steward">
+        <bpmn:documentation>Holds the swarm, runs the dry run, asks the owner once naming every PR, cancels queued PR runs (never a started main run), builds and lands one meta-merge PR per repository with a merge commit, closes out the members, and reports main's verdict.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Saturated</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Hold</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Ask</bpmn:flowNodeRef>
@@ -34,9 +36,11 @@
         <bpmn:flowNodeRef>End_Nothing</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Owner" name="Owner" partitionElementRef="user">
+        <bpmn:documentation>Taps the card in the thread that merges: go with green and pending, also the red ones, dry run only, or cancel. A PR the card does not name gets no merge from it.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_Owner</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Pipeline" name="Build pipeline" partitionElementRef="build-pipeline">
+        <bpmn:documentation>Mechanical: runs main's checks after the meta-merge lands and reports green or red. Judges nothing a declaration has not decided.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_MainRun</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>

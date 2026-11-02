@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: saturation-meta-merge\n"
-"POT-Creation-Date: 2026-11-02T07:24:14.591Z\n"
+"POT-Creation-Date: 2026-11-02T19:21:48.705Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -14,102 +14,117 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/sdlc/saturation-meta-merge.bpmn:70
+#: processes/sdlc/saturation-meta-merge.bpmn:74
 #. Diagram element documentation
 msgid "A or B is yes. C or D is no."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:54
+#: processes/sdlc/saturation-meta-merge.bpmn:22
+#. Diagram element documentation
+msgid "A session that pushes to a repository in scope. Holds pushes, merges, run cancels and re-runs there from the hold until `meta-merge done`, and names the head it wants merged for a PR it owns."
+msgstr ""
+
+#: processes/sdlc/saturation-meta-merge.bpmn:58
 #. Diagram element documentation
 msgid "A sibling that owns a PR in the batch names the head it wants merged."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:47
+#: processes/sdlc/saturation-meta-merge.bpmn:51
 #. Diagram label
 msgid "Broadcast the hold to siblings"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:39
+#: processes/sdlc/saturation-meta-merge.bpmn:42
 #. Diagram label
 msgid "Build pipeline"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:44
+#: processes/sdlc/saturation-meta-merge.bpmn:48
 #. Diagram element documentation
 msgid "Called by the merge manager watch when queued runs are 60+ minutes old and nothing has landed, or when the owner says the runners are full."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:75
+#: processes/sdlc/saturation-meta-merge.bpmn:79
 #. Diagram label
 msgid "Cancel queued PR runs; build, push, merge"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:64
+#: processes/sdlc/saturation-meta-merge.bpmn:68
 #. Diagram label
 msgid "Choose A, B, C or D"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:58
+#: processes/sdlc/saturation-meta-merge.bpmn:62
 #. Diagram label
 msgid "Dry-run, then ask the owner naming every PR"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:69
+#: processes/sdlc/saturation-meta-merge.bpmn:73
 #. Diagram label
 msgid "Go?"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:107
+#: processes/sdlc/saturation-meta-merge.bpmn:111
 #. Diagram label
 msgid "Hold released, nothing merged"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:53
+#: processes/sdlc/saturation-meta-merge.bpmn:57
 #. Diagram label
 msgid "Hold, and name the heads to merge"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:104
+#: processes/sdlc/saturation-meta-merge.bpmn:26
+#. Diagram element documentation
+msgid "Holds the swarm, runs the dry run, asks the owner once naming every PR, cancels queued PR runs (never a started main run), builds and lands one meta-merge PR per repository with a merge commit, closes out the members, and reports main's verdict."
+msgstr ""
+
+#: processes/sdlc/saturation-meta-merge.bpmn:108
 #. Diagram label
 msgid "Landed and reported"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:24
+#: processes/sdlc/saturation-meta-merge.bpmn:43
+#. Diagram element documentation
+msgid "Mechanical: runs main's checks after the meta-merge lands and reports green or red. Judges nothing a declaration has not decided."
+msgstr ""
+
+#: processes/sdlc/saturation-meta-merge.bpmn:25
 #. Diagram label
 msgid "Merge steward"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:88
+#: processes/sdlc/saturation-meta-merge.bpmn:92
 #. Diagram label
 msgid "Merged?"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:48
+#: processes/sdlc/saturation-meta-merge.bpmn:52
 #. Diagram element documentation
 msgid "Message every sibling that pushes to the repositories involved: what is about to land, and hold pushes, merges and run cancels until done. Ask the coordinator to pass it on to any thread that cannot be reached."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:76
+#: processes/sdlc/saturation-meta-merge.bpmn:80
 #. Diagram element documentation
 msgid "Never cancel a main push run that has started. Build from fresh main with merge commits, skipping conflicts, .github/workflows/ and subscriptions/. Open one PR per repository, merge it with a merge commit, and comment on each member PR with the link."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:116
+#: processes/sdlc/saturation-meta-merge.bpmn:120
 #. Diagram label
 msgid "No"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:99
+#: processes/sdlc/saturation-meta-merge.bpmn:103
 #. Diagram element documentation
 msgid "One message to the owner: what merged, main's verdict per repository, and any open decision. On red, the fix goes to main as its own PR."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:65
+#: processes/sdlc/saturation-meta-merge.bpmn:69
 #. Diagram element documentation
 msgid "Only the owner's own tap or words approve the landing. A PR the card does not name gets no merge from it."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:36
+#: processes/sdlc/saturation-meta-merge.bpmn:38
 #. Diagram label
 msgid "Owner"
 msgstr ""
@@ -119,27 +134,27 @@ msgstr ""
 msgid "Owner, 2026-11-02 06:57Z, with the runners full: cancel everything queued, pause new work, consolidate all ready PRs on one meta-merge branch, skip CI and rendering, and merge it. Then: coordinate with the swarm siblings when this happens, and make it repeatable across repositories. First run 2026-11-02 07:03Z: cat-harness#956 (7 PRs), cat-harness-tools#1385 (4) and fhir-harness#274 (1). Skill saturation-meta-merge holds the steps and the safety rules. This process bypasses merge:guard on purpose, so the owner's card, the PR body and a comment on each member PR are the record."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:81
+#: processes/sdlc/saturation-meta-merge.bpmn:85
 #. Diagram label
 msgid "Post done to every held sibling"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:82
+#: processes/sdlc/saturation-meta-merge.bpmn:86
 #. Diagram element documentation
 msgid "Post done with what landed and what is still open, also when nothing was merged. A hold with no done is an outage."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:98
+#: processes/sdlc/saturation-meta-merge.bpmn:102
 #. Diagram label
 msgid "Report what landed and main's verdict"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:93
+#: processes/sdlc/saturation-meta-merge.bpmn:97
 #. Diagram label
 msgid "Run main's checks"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:43
+#: processes/sdlc/saturation-meta-merge.bpmn:47
 #. Diagram label
 msgid "Runners saturated"
 msgstr ""
@@ -154,17 +169,22 @@ msgstr ""
 msgid "Sibling session"
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:59
+#: processes/sdlc/saturation-meta-merge.bpmn:63
 #. Diagram element documentation
 msgid "Stack the PRs on a meta-merge branch without pushing. Then post the full question (include, leave out with the reason, merge method, per repository), followed by the card: A go, B also the red ones, C dry run only, D cancel."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:94
+#: processes/sdlc/saturation-meta-merge.bpmn:39
+#. Diagram element documentation
+msgid "Taps the card in the thread that merges: go with green and pending, also the red ones, dry run only, or cancel. A PR the card does not name gets no merge from it."
+msgstr ""
+
+#: processes/sdlc/saturation-meta-merge.bpmn:98
 #. Diagram element documentation
 msgid "The merge starts main's checks. Until tools#1384, a closed PR's run can cancel them, so the steward re-runs a cancelled main run."
 msgstr ""
 
-#: processes/sdlc/saturation-meta-merge.bpmn:115
+#: processes/sdlc/saturation-meta-merge.bpmn:119
 #. Diagram label
 msgid "Yes"
 msgstr ""
