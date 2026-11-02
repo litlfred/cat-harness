@@ -16,7 +16,7 @@
   "pageStart": 10,
   "pageEnd": 10,
   "text": "../sections/sec-010-51-visual-literacy-and-visual-experience.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2504-10971v1/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2504-10971v1/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2504-10971v1/manifest",
+  "sourceDocument": "library/arxiv-2504-10971v1/manifest",
   "provenance": "ingested"
 }

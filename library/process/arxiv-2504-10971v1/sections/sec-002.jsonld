@@ -18,7 +18,7 @@
     "library/arxiv-2504-10971v1/blocks/figure-img-p005-1",
     "library/arxiv-2504-10971v1/blocks/figure-img-p005-2"
   ],
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2504-10971v1/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2504-10971v1/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2504-10971v1/manifest",
+  "sourceDocument": "library/arxiv-2504-10971v1/manifest",
   "provenance": "ingested"
 }

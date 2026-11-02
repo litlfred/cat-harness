@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/hmans-2026-beans-readme/manifest.jsonld",
+  "@id": "library/hmans-2026-beans-readme/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

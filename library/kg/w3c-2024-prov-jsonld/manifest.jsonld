@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/w3c-2024-prov-jsonld/manifest.jsonld",
+  "@id": "library/w3c-2024-prov-jsonld/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

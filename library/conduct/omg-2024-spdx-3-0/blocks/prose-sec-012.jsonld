@@ -16,7 +16,7 @@
   "pageStart": 16,
   "pageEnd": 16,
   "text": "../sections/sec-012-terms-and-definitions.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/omg-2024-spdx-3-0/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/omg-2024-spdx-3-0/manifest.jsonld",
+  "derivedFrom": "library/omg-2024-spdx-3-0/manifest",
+  "sourceDocument": "library/omg-2024-spdx-3-0/manifest",
   "provenance": "ingested"
 }

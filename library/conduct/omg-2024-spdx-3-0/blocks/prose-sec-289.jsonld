@@ -16,7 +16,7 @@
   "pageStart": 159,
   "pageEnd": 159,
   "text": "../sections/sec-289-inferenceenergyconsumption.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/omg-2024-spdx-3-0/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/omg-2024-spdx-3-0/manifest.jsonld",
+  "derivedFrom": "library/omg-2024-spdx-3-0/manifest",
+  "sourceDocument": "library/omg-2024-spdx-3-0/manifest",
   "provenance": "ingested"
 }

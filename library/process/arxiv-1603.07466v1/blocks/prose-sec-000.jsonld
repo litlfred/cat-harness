@@ -16,7 +16,7 @@
   "pageStart": 1,
   "pageEnd": 16,
   "text": "../sections/sec-000-semantics-and-analysis-of-dmn-decision-tables.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1603.07466v1/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-1603.07466v1/manifest.jsonld",
+  "derivedFrom": "library/arxiv-1603.07466v1/manifest",
+  "sourceDocument": "library/arxiv-1603.07466v1/manifest",
   "provenance": "ingested"
 }

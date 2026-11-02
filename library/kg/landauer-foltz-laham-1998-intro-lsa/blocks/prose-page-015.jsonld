@@ -16,7 +16,7 @@
   "pageStart": 15,
   "pageEnd": 15,
   "text": "../sections/page-015.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/landauer-foltz-laham-1998-intro-lsa/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/landauer-foltz-laham-1998-intro-lsa/manifest.jsonld",
+  "derivedFrom": "library/landauer-foltz-laham-1998-intro-lsa/manifest",
+  "sourceDocument": "library/landauer-foltz-laham-1998-intro-lsa/manifest",
   "provenance": "ingested"
 }

@@ -90,6 +90,6 @@
     }
   ],
   "derivedFrom": "library/strauch-carbno-2025-spdx-3-1-supply-chain/sections/sec-000",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/strauch-carbno-2025-spdx-3-1-supply-chain/manifest.jsonld",
+  "sourceDocument": "library/strauch-carbno-2025-spdx-3-1-supply-chain/manifest",
   "provenance": "ingested"
 }

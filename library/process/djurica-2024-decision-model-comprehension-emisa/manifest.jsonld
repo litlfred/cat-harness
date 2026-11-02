@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/djurica-2024-decision-model-comprehension-emisa/manifest.jsonld",
+  "@id": "library/djurica-2024-decision-model-comprehension-emisa/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/equipping-agents-for-the-real-world-with-agent-skills-anthro/manifest.jsonld",
+  "@id": "library/equipping-agents-for-the-real-world-with-agent-skills-anthro/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

@@ -16,7 +16,7 @@
   "pageStart": 3,
   "pageEnd": 4,
   "text": "../sections/sec-006-dataset-format-and-statistics.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2504.07199v3/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2504.07199v3/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2504.07199v3/manifest",
+  "sourceDocument": "library/arxiv-2504.07199v3/manifest",
   "provenance": "ingested"
 }

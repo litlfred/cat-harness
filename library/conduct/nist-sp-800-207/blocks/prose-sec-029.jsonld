@@ -16,7 +16,7 @@
   "pageStart": 38,
   "pageEnd": 38,
   "text": "../sections/sec-029-53-stolen-credentialsinsider-threat.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
+  "derivedFrom": "library/nist-sp-800-207/manifest",
+  "sourceDocument": "library/nist-sp-800-207/manifest",
   "provenance": "ingested"
 }

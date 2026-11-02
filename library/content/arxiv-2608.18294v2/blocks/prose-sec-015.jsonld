@@ -16,7 +16,7 @@
   "pageStart": 19,
   "pageEnd": 19,
   "text": "../sections/sec-015-estimation-and-inference.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2608.18294v2/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2608.18294v2/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2608.18294v2/manifest",
+  "sourceDocument": "library/arxiv-2608.18294v2/manifest",
   "provenance": "ingested"
 }

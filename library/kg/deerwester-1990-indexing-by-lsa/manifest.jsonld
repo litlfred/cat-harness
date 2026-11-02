@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/deerwester-1990-indexing-by-lsa/manifest.jsonld",
+  "@id": "library/deerwester-1990-indexing-by-lsa/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

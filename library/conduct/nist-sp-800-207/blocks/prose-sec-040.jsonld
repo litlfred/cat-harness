@@ -16,7 +16,7 @@
   "pageStart": 43,
   "pageEnd": 44,
   "text": "../sections/sec-040-66-zta-and-dhs-continuous-diagnostics-and-mitiga.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
+  "derivedFrom": "library/nist-sp-800-207/manifest",
+  "sourceDocument": "library/nist-sp-800-207/manifest",
   "provenance": "ingested"
 }

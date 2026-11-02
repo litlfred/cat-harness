@@ -16,7 +16,7 @@
   "pageStart": 3,
   "pageEnd": 4,
   "text": "../sections/sec-005-multi-agent-conflicts.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2601.04544v1/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2601.04544v1/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2601.04544v1/manifest",
+  "sourceDocument": "library/arxiv-2601.04544v1/manifest",
   "provenance": "ingested"
 }

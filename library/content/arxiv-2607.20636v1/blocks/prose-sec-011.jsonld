@@ -16,7 +16,7 @@
   "pageStart": 27,
   "pageEnd": 28,
   "text": "../sections/sec-011-optimality-and-competitive-ratio.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2607.20636v1/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2607.20636v1/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2607.20636v1/manifest",
+  "sourceDocument": "library/arxiv-2607.20636v1/manifest",
   "provenance": "ingested"
 }

@@ -89,6 +89,6 @@
     }
   ],
   "derivedFrom": "library/nist-sp-800-207/sections/sec-014",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
+  "sourceDocument": "library/nist-sp-800-207/manifest",
   "provenance": "ingested"
 }
