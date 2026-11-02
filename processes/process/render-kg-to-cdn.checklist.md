@@ -32,15 +32,15 @@ Render a Knowledge Graph — the whole of it, or a list of its Subgraphs — for
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `render-kg-to-cdn`.
-- What: The `gh-pages` Tool's process, bootstrap-tools' render-kg-to-github-pages: make sure gh-pages exists and Pages serves it, stage, check the staging, commit onto gh-pages, check what is served.
-- A subprocess (`Process_RenderKgToGitHubPages`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- What: BOUND BY THE TOOL, so no `calledElement` is written here: the `gh-pages` Tool lists the process this descends into, render-kg-to-github-pages, and that process is held by a layer cat-harness does not need, so naming it would bind upward.
+- Record it: `workflow_complete` with `node: "Call_GitHubPages"`.
 - next: → `Task_Report` (Report the push: status and message)
 
 ### 3. Render and push with that CDN's own Tool (`Call_ToolSubprocess`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `render-kg-to-cdn`.
-- What: BOUND BY THE TOOL, so no `calledElement` is written here, and only on this branch: the CDN is not GitHub Pages, and its Tool, which a higher layer owns (who-iris\'s Cloudflare publish, for one), lists the process this descends into.
+- What: BOUND BY THE TOOL, so no `calledElement` is written here, and only on this branch: the CDN is not GitHub Pages, and its Tool, which a higher layer owns (a Cloudflare publish, for one), lists the process this descends into.
 - Record it: `workflow_complete` with `node: "Call_ToolSubprocess"`.
 - next: → `Task_Report` (Report the push: status and message)
 
