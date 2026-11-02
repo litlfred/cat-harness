@@ -9070,6 +9070,41 @@ a.fa-block-kind:hover, a.fa-block-kind:focus-visible { text-decoration: underlin
 .fa-block-details > summary { cursor: pointer; font-size: 0.8em; opacity: 0.7; width: max-content; }
 .fa-block-details > summary:hover, .fa-block-details[open] > summary { opacity: 1; }
 .fa-block-details > summary ~ * { margin-top: 0.4em; }
+
+/* An indicator's calculation, numerator over denominator (render-markdown.ts
+ * `indicatorParts`; owner 2026-11-02, card Q-IND-1 = A). A fraction bar in
+ * currentColor, so it reads in light and dark alike. */
+.fa-block-ratio {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin: 0.5em 0;
+  font-size: 0.95em;
+}
+.fa-block-ratio-frac {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.fa-block-ratio-num,
+.fa-block-ratio-den {
+  padding: 0.15em 0.2em;
+}
+.fa-block-ratio-num {
+  border-bottom: 1.5px solid color-mix(in srgb, currentColor 55%, transparent);
+}
+.fa-block-ratio-label {
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-right: 0.4em;
+}
+.fa-block-ratio-unit {
+  white-space: nowrap;
+  opacity: 0.8;
+}
 @media print {
   .fa-block { background: none; }
 }
