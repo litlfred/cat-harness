@@ -16,6 +16,7 @@
     <bpmn:documentation>The loop run by the agent that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher). Owner, 2026-11-02: formalise the merge manager agent's role, skills and process, and coordinate with the swarm siblings whenever a batch lands. Each wake reads the open PRs, the runner queue, main's verdict and the PR owners live, and routes to one sub-process. A wake with nothing to do ends with no message. Every merge on any route waits for the owner's own OK.</bpmn:documentation>
     <bpmn:laneSet id="LaneSet_Process_MergeManagerWatch">
       <bpmn:lane id="Lane_Steward" name="Merge steward" partitionElementRef="merge-steward">
+        <bpmn:documentation>The merge manager, holding the merge-steward role across one or more repositories. Each wake it reads the open PRs, the runner queue, main's verdict and who owns each PR, then routes to the process the queue needs (merge train, saturation meta-merge, stalled-agent takeover) or stays idle.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Wake</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Read</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gw_Route</bpmn:flowNodeRef>
