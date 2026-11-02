@@ -2,7 +2,8 @@
 <!--
   "All five answered, none refused?" — Gateway_Gates in materialize-remote.bpmn.
 
-  The five gates are folio-assistant-core schemas/materialization.ts (size,
+  The five gates are those of schemas/materialization.ts in the layer that
+  runs this process (size,
   restrictions, copyright, retention, sourceLoss), each answered with a
   GateVerdict: permitted, refused or unknown. `unknown` is a first-class
   verdict and NOT a synonym for `permitted` (owner: "no restrictions known in
