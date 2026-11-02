@@ -44,11 +44,18 @@
       ],
       "outputs": [
         {
-          "name": "result",
+          "name": "report",
           "schema": {
             "$type": "Markdown"
           },
-          "description": "Query results formatted as table, JSON, or IDs."
+          "description": "Query results formatted as a table, JSON or IDs, for people to read."
+        },
+        {
+          "name": "result",
+          "schema": {
+            "$type": "BeanQueryRows"
+          },
+          "description": "The rows as one `BeanQueryRows` record, each variable to its value with bean IRIs shortened to ids: `structuredContent.rows` over MCP in every format, and the text itself with format json. Programs and BPMN gateways read this; people read `report`."
         }
       ]
     },
