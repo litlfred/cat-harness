@@ -7,7 +7,8 @@ summary: >-
   Reference Architecture define, extracted with a verbatim citation each, for
   the owner to choose from BEFORE anything is authored (bean 5blc). 16
   methodologies, 24 processes, 241 glossary terms; 40 terms conflict with
-  another definition.
+  another definition. 2026-11-01: the falsified products handbook (SFP) added,
+  263 glossary terms in all.
 ---
 
 # DTH candidates: methodologies, processes and glossary
@@ -410,3 +411,77 @@ Each could be drawn as BPMN; the JSON carries its steps, actors, inputs and outp
 | Workflow | glossary | new | PHC p.11; PHC p.35-39 |
 | ZAMMSA | abbreviation | new | PC p.7 |
 | ZAMRA | abbreviation | new | PC p.7 |
+
+## Added 2026-11-01: the falsified products handbook (SFP)
+
+litlfred/dth-sfp#1, step P2 (finding F9). **SFP** = DTH for reporting
+substandard and falsified medical products (9789240120747), now
+section-granular in who-iris (litlfred/who-iris#154). Its 35 glossary terms
+and 19 abbreviations are merged by term into the JSON: 32 join an
+existing entry and 22 are new. Nothing is chosen: every SFP definition
+that differs from an entry's first definition is recorded in `conflictsWith`.
+The tables above are left as they were on 2026-10-02; the SFP rows are here.
+
+Read these first:
+
+1. **"Substandard" is defined two ways inside SFP**: the glossary (WHO
+   quality assurance terminology) says "national or international quality
+   standards or specifications"; the Introduction (WHA70) says "their quality
+   standards or their specifications, or both".
+2. **SFP's "Persona" is wider than PHC's "User persona"**: anyone "involved in
+   or benefiting from a health programme", not only an end-user.
+3. **SFP adds claims** to open source (costs; an OSI-approved licence) and to
+   SMART Guidelines (software- and context-agnostic), and, like SC and PC, the
+   "initial / second step" sequencing to digitization and digitalization.
+4. **SFP's "Registry" is cut short** ("minimum data etc.").
+
+### SFP definitions that differ (19)
+
+| term | SFP term | severity | difference |
+|---|---|---|---|
+| Business process | Business process | wording | SFP ties the objectives to "the health programme area" and lists counselling as an example; PHC speaks of "a specified business objective, or to deliver value in a specific way to a health service user". |
+| Digitalization | Digitalization | substantive | SFP, like SC and PC, adds a sequencing claim (digitalization is the second step towards digital transformation) that PHC does not make. |
+| Digitization | Digitization | substantive | SFP, like SC and PC, adds a sequencing claim (digitization is the initial step towards digital transformation) that PHC does not make. |
+| Enterprise architecture | Enterprise architecture | wording | SFP says the blueprint helps "implementers"; PHC and SC say "planners, software developers and managers". |
+| Falsified medical products | Falsified medical products (Introduction) | internal | SFP Introduction gives only the first sentence of the glossary definition (with "and or" for "or") and leaves out the intellectual-property exclusion and the substitution, adulteration or reproduction clause. |
+| Features | Features | wording | Same text as PC (example: "approval workflow" of a product master data management solution); PHC's example is "reporting" in a PCPOSS. |
+| Functional requirements | Functional requirements | wording | SFP: "Capabilities the system must have to meet the end users' needs"; PHC: "what the digital system needs to do to support the tasks" and "address the identified health system challenges". |
+| Non-functional requirements | Non-functional requirements | wording | Near-identical to PHC: differs only in phrasing, punctuation and the section pointer. |
+| Open source | Open source | substantive | SFP adds two claims PHC does not make: open source does not mean implementation is without costs, and open-source software must have a licence approved by the Open-Source Initiative. |
+| organogram | Organogram | wording | Same text as PC; SC words it "an organization's structure that shows". |
+| Registry | Registry | wording | SFP's text is cut short: it ends "using predefined canonical minimum data etc." where the others say "a predefined canonical minimum data set" (dth-sfp#1 finding F6). |
+| SMART Guidelines | SMART Guidelines | substantive | SFP keeps PHC's first sentence and adds that the guidelines are packages of documentation and reusable components, a starting point and foundational specifications, and "software-agnostic, context-agnostic and ... applicable to all levels of digital maturity". |
+| Substandard products | Substandard products (Introduction) | internal | SFP glossary (ref 9, WHO quality assurance terminology): "fail to meet either national or international quality standards or specifications"; SFP Introduction (ref 23, WHA70, A70/23): "fail to meet either their quality standards or their specifications, or both" (dth-sfp#1 finding F1). |
+| User acceptance testing | User acceptance testing (UAT) | wording | Near-identical: differs only in phrasing and citation markers. |
+| User persona | Persona | substantive | SFP's "Persona" covers any person "involved in or benefiting from a health programme"; PHC's "User persona" is a profile of an end-user only. |
+| Workflow | Workflow | substantive | SFP defines a workflow as "a visual representation" of activities, as PHC's body text does, where PHC's glossary defines it as "the sequence of activities"; SFP also names decision points and "a logical flow". |
+| ICT | ICT | wording | SFP "communication" vs PHC "communications". |
+| ID | ID | wording | SFP adds "identifier" to "identity/identification". |
+| ITU | ITU | wording | SFP, like SC, has "Telecommunication" (the organisation's own name is singular); PHC has "Telecommunications". |
+
+### Terms only SFP defines (22)
+
+| term | kind | source |
+|---|---|---|
+| Active pharmacovigilance | glossary | SFP p.9-11 |
+| Adverse drug reactions | glossary | SFP p.9-11 |
+| Enabling environment | glossary | SFP p.9-11 |
+| Evaluation | glossary | SFP p.9-11 |
+| Falsified medical products | glossary | SFP p.9-11 |
+| Health care professional | glossary | SFP p.9-11 |
+| Member State Mechanism (MSM) | glossary | SFP p.9-11 |
+| Monitoring | glossary | SFP p.9-11 |
+| Passive pharmacovigilance | glossary | SFP p.9-11 |
+| Pharmacovigilance | glossary | SFP p.9-11 |
+| Polypharmacy | glossary | SFP p.9-11 |
+| Post-market surveillance (PMS) | glossary | SFP p.9-11 |
+| Substandard products | glossary | SFP p.9-11 |
+| Unregistered | glossary | SFP p.9-11 |
+| GSMS | abbreviation | SFP p.8 |
+| M&E | abbreviation | SFP p.8 |
+| NMRA | abbreviation | SFP p.8 |
+| PMS | abbreviation | SFP p.8 |
+| RACI | abbreviation | SFP p.8 |
+| Rb-PMS | abbreviation | SFP p.8 |
+| SaaS | abbreviation | SFP p.8 |
+| UHF | abbreviation | SFP p.8 |
