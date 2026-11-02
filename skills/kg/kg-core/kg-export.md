@@ -301,7 +301,7 @@ Owner, 2026-09-23: *"prefix -> match stub"*. Each of our namespaces is
 
 | namespace | prefix |
 |---|---|
-| `https://litlfred.github.io/bootstrap/v0/ns#` | `bootstrap` |
+| `https://litlfred.github.io/bootstrap/v0/ns/` | `bootstrap` |
 | `…/folio-assistant/cat-harness/ns#` | `cat-harness` |
 | `…/folio-assistant/<content-core>/ns#` | the content core |
 
