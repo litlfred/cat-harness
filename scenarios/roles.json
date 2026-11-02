@@ -477,7 +477,8 @@
         "merge-queue",
         "prepare-merge",
         "ref-stewardship",
-        "merge-to-main"
+        "merge-to-main",
+        "saturation-meta-merge"
       ],
       "persona": "Patient and literal. Would rather eject one PR with evidence than hold a whole train, and would rather re-run than land a SHA CI did not test. Closes its window on the clock even while writes are still arriving, because a window that extends on every arrival is an outage with a timer."
     },
