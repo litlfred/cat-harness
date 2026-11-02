@@ -11,8 +11,8 @@
       "kind": "implements",
       "prose": "cat-harness/processes/sdlc/code-quality-gates.bpmn",
       "code": ".github/workflows/code-quality-gates.yml",
-      "prose_hash": "3d470d842e96",
-      "code_hash": "6e3e70c9e6a7",
+      "prose_hash": "372efd7ced51",
+      "code_hash": "e0c063b09572",
       "by": "baseline"
     }
   ]

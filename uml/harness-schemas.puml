@@ -39,6 +39,10 @@ package scenario {
     requiredCapabilities.context_window [0..1] : integer
     requiredCapabilities.multimodal [0..1] : boolean
     requiredCapabilities.capabilities [0..*] : string[]
+    store.holds [0..*] : string[]
+    store.api [0..*] : {style, document, tools}[]
+    store.realisedBy [0..1] : string
+    store.published [0..1] : boolean
   }
   class "Skill" as Skill <<json: SkillDefinitionSchema>> [[../../../en/folio-assistant-core/glossary/instance/bootstrap/#bootstrap--terms--skill]] #e8f0ee {
     id [1] : string
