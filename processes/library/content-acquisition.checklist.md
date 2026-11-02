@@ -40,7 +40,7 @@ How a resource gets into the graph in the first place.
 - Who: the `Contributor` lane (role `user`).
 - What: "Or neither" is a real outcome, not a failure.
 - Record it: `workflow_complete` with `node: "P_Respond"`.
-- next: → `A_PointToUpload` (Point at the upload target [scripts/upload-url.ts])
+- next: → `A_PointToUpload` (Point at the upload target)
 
 ### 4. Route it, and watch the queue (`A_Route`)
 
@@ -50,7 +50,7 @@ How a resource gets into the graph in the first place.
 - Record it: `workflow_complete` with `node: "A_Route"`.
 - next: → `End_Acquired` (In the queue, or recorded in the conversation)
 
-### 5. Point at the upload target [scripts/upload-url.ts] (`A_PointToUpload`)
+### 5. Point at the upload target (`A_PointToUpload`)
 
 - Who: the `Agent` lane (role `ingestion-agent`).
 - Skill: `content-acquisition`.

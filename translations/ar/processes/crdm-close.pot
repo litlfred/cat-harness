@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: crdm-close\n"
-"POT-Creation-Date: 2026-11-01T11:34:43.155Z\n"
+"POT-Creation-Date: 2026-11-02T04:04:25.004Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: processes/process/crdm-close.bpmn:64
 #. Diagram label
-msgid "Land the feature's PRs [merge-to-main]"
+msgid "Land the feature's PRs"
 msgstr ""
 
 #: processes/process/crdm-close.bpmn:90

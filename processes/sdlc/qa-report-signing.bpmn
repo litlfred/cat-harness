@@ -112,8 +112,8 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
       <bpmn:outgoing>S01</bpmn:outgoing>
     </bpmn:startEvent>
 
-    <bpmn:serviceTask id="Task_BuildRun" name="Build the test run&#10;[folio-test-run/v1]">
-      <bpmn:documentation>Assemble the run record the signature will cover: the data hash and the process hash, each all-or-nothing. An UNKNOWN_HASH never reproduces another unknown, so a run that could not be hashed is signable only as what it is — unverifiable.</bpmn:documentation>
+    <bpmn:serviceTask id="Task_BuildRun" name="Build the test run">
+      <bpmn:documentation>Assemble the run record the signature will cover: the data hash and the process hash, each all-or-nothing. An UNKNOWN_HASH never reproduces another unknown, so a run that could not be hashed is signable only as what it is — unverifiable. Builds a `folio-test-run/v1`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-report-signing" />
         <bootstrap.processes:skill ref="content-test" />
@@ -123,7 +123,7 @@ A signature whose route is unrecorded is a signature whose weight cannot be judg
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_ResolveReach" name="Resolve the performer's reach">
-      <bpmn:documentation>Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/process/actor-reach.ts, and whether the signing-api capability is configured. Undeclared reach resolves to "unknown" rather than to the deployment's value — an aggregate does not determine a member.</bpmn:documentation>
+      <bpmn:documentation>Compute the two facts the gateway reads: effectiveReach(deployment, actor) from schemas/process/actor-reach.ts, and whether the signing-api capability is configured. Undeclared reach resolves to "unknown" rather than to the deployment's value — an aggregate does not determine a member. Reads `effectiveReach` and runs the signing-api probe.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-report-signing" />
       </bpmn:extensionElements>
