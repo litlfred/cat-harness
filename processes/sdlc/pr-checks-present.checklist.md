@@ -10,73 +10,42 @@ Find the open pull requests whose head has no CI run, past an age gate, and say 
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_PrChecksPresent"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_Sweep` (Ask, per open PR, whether its HEAD has a run — skipping heads younger than 15 min)
+- next: → `Task_Sweep` (Ask whether each open PR head has a run)
 
-### 1. Ask, per open PR, whether its HEAD has a run — skipping heads younger than 15 min (`Task_Sweep`)
+### 1. Ask whether each open PR head has a run (`Task_Sweep`)
 
 - Who: the `Scheduled log sweep` lane (role `build-pipeline`).
 - Skill: `ci-health`.
 - What: Run check:prs-have-runs --min-age-minutes 15, writing the report file first.
 - Record it: `workflow_complete` with `node: "Task_Sweep"`.
-- next: → `GW_Determined` (Could we tell?)
+- next: → `Call_Watch` (Report the verdict on the tracking issue)
 
-### Decide — Could we tell? (`GW_Determined`)
+### 2. Report the verdict on the tracking issue (`Call_Watch`)
 
-- Asked of the `verdict` output of the `Sweep` step in .github/workflows/pr-checks-present.yml, which runs `check:prs-have-runs --min-age-minutes 15`.
-- Call `workflow_complete` with `node: "GW_Determined"` and `outcome` set to the label that holds:
-  - «no» → `End_Unknown` (Unknown — job RED, issue UNTOUCHED)
-  - «yes» → `Task_Label` (Ensure the tracking label exists)
+- Who: the `Scheduled log sweep` lane (role `build-pipeline`).
+- What: Runs the shared tracking watch with the label `pr-no-checks`.
+- A subprocess (`Process_TrackedWatch`, with `label` = `pr-no-checks`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_Found` (Any head with no run?)
 
-## Done — Unknown — job RED, issue UNTOUCHED (`End_Unknown`)
+### Decide — Any head with no run? (`GW_Found`)
 
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- Reads which end the tracking watch reached.
+- Call `workflow_complete` with `node: "GW_Found"` and `outcome` set to the label that holds:
+  - «yes» → `Task_Comment` (Comment once per PR and head)
+  - «no» → `End_Done` (Every head has a run, or could not tell)
 
-### 2. Ensure the tracking label exists (`Task_Label`)
+### 3. Comment once per PR and head (`Task_Comment`)
 
 - Who: the `Scheduled log sweep` lane (role `build-pipeline`).
 - Skill: `ci-health`.
-- What: Create the tracking label (the `label` input) with --force so it exists before either issue path runs — the close path filters on it too, and on a repository that has never had a finding it would not exist yet.
-- Shared step `GT_EnsureTrackingLabel`, with `label` = `pr-no-checks`.
-- Record it: `workflow_complete` with `node: "Task_Label"`.
-- next: → `GW_Finding` (Any head with no run?)
-
-### Decide — Any head with no run? (`GW_Finding`)
-
-- Asked of the same `verdict`.
-- Call `workflow_complete` with `node: "GW_Finding"` and `outcome` set to the label that holds:
-  - «none» → `Task_Close` (Close the tracking issue)
-  - «one or more» → `Task_Track` (Open or EDIT the one tracking issue)
-
-### 3. Close the tracking issue (`Task_Close`)
-
-- Who: the `Scheduled log sweep` lane (role `build-pipeline`).
-- Skill: `ci-health`.
-- What: Clean: close the open issue carrying the tracking label (the `label` input), if any, saying why the verdict is clean.
-- Shared step `GT_CloseTrackingIssue`, with `label` = `pr-no-checks`.
-- Record it: `workflow_complete` with `node: "Task_Close"`.
-- next: → `End_Clean` (Every head has a run)
-
-### 4. Open or EDIT the one tracking issue (`Task_Track`)
-
-- Who: the `Scheduled log sweep` lane (role `build-pipeline`).
-- Skill: `ci-health`.
-- What: Findings: EDIT the one open issue carrying the tracking label (the `label` input) if there is one, otherwise create it, with the report as the body.
-- Shared step `GT_TrackIssue`, with `label` = `pr-no-checks`.
-- Record it: `workflow_complete` with `node: "Task_Track"`.
-- next: → `Task_Comment` (Comment ONCE per (PR, head sha))
-
-## Done — Every head has a run (`End_Clean`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 5. Comment ONCE per (PR, head sha) (`Task_Comment`)
-
-- Who: the `Scheduled log sweep` lane (role `build-pipeline`).
-- Skill: `issue-working`.
 - What: Comment on each affected open PR once per (PR, head sha): a hidden marker carrying the sha is checked first, so a re-run on the same head stays silent and a new push can be reported again.
 - Record it: `workflow_complete` with `node: "Task_Comment"`.
-- next: → `End_Recorded` (Recorded — job stays GREEN)
+- next: → `End_Recorded` (Recorded: job stays green)
 
-## Done — Recorded — job stays GREEN (`End_Recorded`)
+## Done — Every head has a run, or could not tell (`End_Done`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+## Done — Recorded: job stays green (`End_Recorded`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.

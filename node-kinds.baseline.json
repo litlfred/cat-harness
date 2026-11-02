@@ -204,6 +204,10 @@
     },
     {
       "typology": "library",
+      "family": "ingest-candidates/v1"
+    },
+    {
+      "typology": "library",
       "family": "notebook-structure/v1"
     },
     {
