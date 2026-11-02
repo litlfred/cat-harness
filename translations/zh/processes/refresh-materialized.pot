@@ -151,7 +151,7 @@ msgstr ""
 
 #: processes/library/refresh-materialized.bpmn:168
 #. Diagram label
-msgid "Record the conflict, decide nothing, and do NOT re-pin"
+msgid "Record the conflict: no decision, no re-pin"
 msgstr ""
 
 #: processes/library/refresh-materialized.bpmn:28
