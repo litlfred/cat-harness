@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: qa-report-signing\n"
-"POT-Creation-Date: 2026-11-02T04:04:25.150Z\n"
+"POT-Creation-Date: 2026-11-02T10:19:20.525Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -24,7 +24,7 @@ msgstr ""
 msgid "Answered by the performer's resolved reach (effectiveReach plus the signing-api probe). `api` signs over the API; `human` has a release authority sign."
 msgstr ""
 
-#: processes/sdlc/qa-report-signing.bpmn:194
+#: processes/sdlc/qa-report-signing.bpmn:196
 #. Diagram label
 msgid "api"
 msgstr ""
@@ -44,6 +44,11 @@ msgstr ""
 msgid "Attesting a QA report: build the test run, work out what the performer can actually reach, and sign — over the API where that is available, or as release authority where it is not. You are in this process when a report needs to become evidence somebody else can rely on. The reach resolution before the gateway is the point: the route is CHOSEN from what the signer can do, not assumed, and the process records which route signed it so a reader of the attestation can tell. A signature whose route is unrecorded is a signature whose weight cannot be judged later, which is why that step is drawn rather than left implicit."
 msgstr ""
 
+#: processes/sdlc/qa-report-signing.bpmn:203
+#. Diagram label
+msgid "Beans"
+msgstr ""
+
 #: processes/sdlc/qa-report-signing.bpmn:115
 #. Diagram label
 msgid "Build the test run"
@@ -59,7 +64,7 @@ msgstr ""
 msgid "Deleting this lane's role binding is not a documentation nicety: `check:fallback-roles` DERIVES the fallback role from whichever lane holds a task only a person can fill, so removing it turns that check red rather than merely undocumented. The gate that sends work here fires BEFORE any API attempt, never after one fails — an air-gapped host has no degraded mode to retry into, so this lane is a routing destination, not a retry path."
 msgstr ""
 
-#: processes/sdlc/qa-report-signing.bpmn:195
+#: processes/sdlc/qa-report-signing.bpmn:197
 #. Diagram label
 msgid "human"
 msgstr ""
@@ -99,7 +104,7 @@ msgstr ""
 msgid "Record which route signed it"
 msgstr ""
 
-#: processes/sdlc/qa-report-signing.bpmn:187
+#: processes/sdlc/qa-report-signing.bpmn:189
 #. Diagram label
 msgid "Report attested and stored"
 msgstr ""
@@ -124,7 +129,7 @@ msgstr ""
 msgid "Signed"
 msgstr ""
 
-#: processes/sdlc/qa-report-signing.bpmn:178
+#: processes/sdlc/qa-report-signing.bpmn:180
 #. Diagram label
 msgid "Store the signed report on qa-reports"
 msgstr ""
@@ -139,7 +144,7 @@ msgstr ""
 msgid "The attestation service signs the run hashes. Reached only from the one table row that has both egress and a configured endpoint."
 msgstr ""
 
-#: processes/sdlc/qa-report-signing.bpmn:179
+#: processes/sdlc/qa-report-signing.bpmn:181
 #. Diagram element documentation
 msgid "The signed report, its signature and the route that produced it are written TOGETHER into the `qa-reports` entry keyed by the commit the report judged (`main/<sha>/` or `pr/<n>/<sha>/`), through `scripts/qa-store.ts` — never committed to main and never pushed by hand (arc `3fva`, owner ruling D1). A signature kept apart from the bytes it covers attests nothing a reader can check. A certification DECISION taken on the report is a separate node that stays on main beside `test/attestations/` (ruling D5, default (a)); it is not written here."
 msgstr ""

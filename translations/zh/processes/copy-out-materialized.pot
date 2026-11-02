@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: copy-out-materialized\n"
-"POT-Creation-Date: 2026-11-01T11:34:43.115Z\n"
+"POT-Creation-Date: 2026-11-02T10:19:20.379Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/library/copy-out-materialized.bpmn:127
+#: processes/library/copy-out-materialized.bpmn:129
 #. Diagram element documentation
 msgid "`check:materialized-fixity`. Run against the SOURCE, not the copy — the copy is new content with no claim to verify, and the source is the thing a botched copy-out would have disturbed. A mismatch here means the copy-out was an edit in place wearing a copy's clothes, and it is the only signal that tells the two apart."
 msgstr ""
@@ -24,7 +24,7 @@ msgstr ""
 msgid "A read, and the only interaction this process has with the source. Its digest and `provenance` are carried forward: the digest so Task_VerifySourceUntouched has something to check against, and `provenance` so the copy can name what it came out of without re-deriving it."
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:135
+#: processes/library/copy-out-materialized.bpmn:137
 #. Diagram label
 msgid "A working copy, saying what it is a copy of"
 msgstr ""
@@ -37,6 +37,11 @@ msgstr ""
 #: processes/library/copy-out-materialized.bpmn:66
 #. Diagram element documentation
 msgid "Asks the question the whole process exists to keep answerable: does the SOURCE still hash to its recorded digest? A copy-out that disturbed the original is not a copy-out, and this lane is the only thing that can tell the difference after the fact — the bytes look the same either way."
+msgstr ""
+
+#: processes/library/copy-out-materialized.bpmn:154
+#. Diagram label
+msgid "Beans"
 msgstr ""
 
 #: processes/library/copy-out-materialized.bpmn:60
@@ -54,7 +59,7 @@ msgstr ""
 msgid "Edit it in place — it is your own content"
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:139
+#: processes/library/copy-out-materialized.bpmn:141
 #. Diagram label
 msgid "Edited where it lives — no copy needed"
 msgstr ""
@@ -74,7 +79,7 @@ msgstr ""
 msgid "Land the bytes in the copier's own folio/"
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:146
+#: processes/library/copy-out-materialized.bpmn:148
 #. Diagram label
 msgid "no, or not declared"
 msgstr ""
@@ -139,7 +144,7 @@ msgstr ""
 msgid "Verification"
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:125
+#: processes/library/copy-out-materialized.bpmn:127
 #. Diagram label
 msgid "Verify the ORIGINAL still hashes to its digest"
 msgstr ""
@@ -149,7 +154,7 @@ msgstr ""
 msgid "Where the copy lands, chosen by the owner 2026-09-22 over a scratch area. A scratch area lost because it makes the copy publishable by accident: a directory nobody declared is a directory nobody gates. The two writes here are ordered and both required — Task_Land puts the bytes somewhere, Task_RecordProvenance says what they are a copy OF, and a process that stopped after the first would produce a file indistinguishable from original work one rename later."
 msgstr ""
 
-#: processes/library/copy-out-materialized.bpmn:145
+#: processes/library/copy-out-materialized.bpmn:147
 #. Diagram label
 msgid "yes — read-only"
 msgstr ""

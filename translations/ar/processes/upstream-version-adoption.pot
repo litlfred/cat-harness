@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: upstream-version-adoption\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.218Z\n"
+"POT-Creation-Date: 2026-11-02T10:19:20.551Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -14,17 +14,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/sdlc/upstream-version-adoption.bpmn:128
+#: processes/sdlc/upstream-version-adoption.bpmn:130
 #. Diagram element documentation
 msgid "A HOLD is a block with an expiry and a revisit trigger: a hold with neither cannot be told from abandoned work, and the next watcher run re-raises the same pin with no memory of why it was left. A DECLINE is a scrapped bean carrying its reasons — what stops the next agent re-entering the same dead end. Either way the decision is written down before the process ends, and the bean is resolved from here: a run that stops at \"we looked and said no\" is as finished as one that moved the pin."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:92
+#: processes/sdlc/upstream-version-adoption.bpmn:94
 #. Diagram element documentation
 msgid "A narrower question than \"is the new version good\": does everything in `binds` still hold, checked against the deployed page. A `userTask`, and the lane admits `person` and `agent` — a review agent is a legitimate reviewer here, and the separation that matters is the next lane's: a reviewer cannot accept."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:108
+#: processes/sdlc/upstream-version-adoption.bpmn:110
 #. Diagram element documentation
 msgid "A PERSON decides. The lane admits `person` only, so `activity-fulfilment-kind` fails the moment somebody makes an agent the accepting party, and `relaxable=\"false\"` means no package may relax the step. The publication manager rather than the editor because a pin is not a change to the corpus — it is a change to what the published artefact is BUILT FROM, and that role is the one accountable for what is live. Deliberately NOT a DMN-backed gateway. Every computed gateway in this repository reduces to arithmetic over tool output; this one weighs a rendering nobody can score against the cost of staying behind, and a table here would look authoritative without being so."
 msgstr ""
@@ -34,12 +34,12 @@ msgstr ""
 msgid "A REUSABLE SUBPROCESS, entered once per pinned upstream dependency that has fallen behind a release. Callers invoke it with `calledElement=\"Process_UpstreamAdoption\"`; `upstream-pin-watch.bpmn` is the first, and a person may enter it directly with `workflow_start` when they want to try a version the watcher has not raised. Reusable means the tenant-specific part is DATA. `upstream-pins.json` carries, per row, what of ours binds to the dependency and what its MVP runs; this diagram carries the order those are done in, which is the same for every tenant. A second tenant is a registry row, not a second diagram. Shaped after `crdm-requirements.bpmn` because the question is the same one: something outside the repository wants to change what we ship, and the answer has to be a judgement somebody made on evidence rather than a merge that happened. The loop back into impact analysis is the MVP loop — findings the agent can fix are fixed on the same branch and re-evidenced, and only what remains reaches the decider."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:107
+#: processes/sdlc/upstream-version-adoption.bpmn:109
 #. Diagram label
 msgid "Adopt, hold or decline"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:118
+#: processes/sdlc/upstream-version-adoption.bpmn:120
 #. Diagram label
 msgid "Adopt?"
 msgstr ""
@@ -59,9 +59,14 @@ msgstr ""
 msgid "An MVP is a DEPLOYED BUILD, not a description of one. The pin is moved on a branch and `feature-staging.yml` publishes it under `STAGING/<branch-slug>/`, so the reviewer looks at the artefact rather than at a screenshot — the same argument the merge discipline makes about rendered work."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:140
+#: processes/sdlc/upstream-version-adoption.bpmn:142
 #. Diagram label
 msgid "Bean claimed?"
+msgstr ""
+
+#: processes/sdlc/upstream-version-adoption.bpmn:171
+#. Diagram label
+msgid "Beans"
 msgstr ""
 
 #: processes/sdlc/upstream-version-adoption.bpmn:59
@@ -74,22 +79,22 @@ msgstr ""
 msgid "CI/CD Pipeline"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:165
+#: processes/sdlc/upstream-version-adoption.bpmn:167
 #. Diagram label
 msgid "claimed"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:146
+#: processes/sdlc/upstream-version-adoption.bpmn:148
 #. Diagram label
 msgid "Close the bean"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:135
+#: processes/sdlc/upstream-version-adoption.bpmn:137
 #. Diagram label
 msgid "Decision recorded"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:97
+#: processes/sdlc/upstream-version-adoption.bpmn:99
 #. Diagram label
 msgid "Findings we can fix?"
 msgstr ""
@@ -104,7 +109,7 @@ msgstr ""
 msgid "Impact analysis what of ours binds it"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:121
+#: processes/sdlc/upstream-version-adoption.bpmn:123
 #. Diagram label
 msgid "Move the pin and open the PR"
 msgstr ""
@@ -119,32 +124,32 @@ msgstr ""
 msgid "Narrower than a general release review: the question is only whether what upstream-pins.json lists as bound still holds against the deployed MVP, not whether the new version is good on its own terms, and a finding here (GW_Findings) sends the run back to the Agent lane's own impact analysis rather than stopping it."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:158
+#: processes/sdlc/upstream-version-adoption.bpmn:160
 #. Diagram label
 msgid "no"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:167
+#: processes/sdlc/upstream-version-adoption.bpmn:169
 #. Diagram label
 msgid "not yours"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:143
+#: processes/sdlc/upstream-version-adoption.bpmn:145
 #. Diagram label
 msgid "Not yours — left alone"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:101
+#: processes/sdlc/upstream-version-adoption.bpmn:103
 #. Diagram element documentation
 msgid "On the single edge into `PM_Decide`, and deliberately not earlier: the MVP build and its gates are HOW the options' costs are measured, so an analysis before `Task_Mvp` would weigh alternatives against no evidence. Everything the decider needs exists by the time the reviewer has finished and the fixable findings are fixed. In the Agent lane, because this step produces the analysis and does not make the decision — `PM_Decide` is a `userTask` whose lane admits `person` only, and putting the analysis in the agent's lane is what keeps that separation legible rather than implied. A subprocess that decided would be a second accepting party. Reached through the loop as well as straight through: `SF_UA_8` re-enters at `A_Impact`, so a run where the reviewer found something fixable arrives here a second time with different evidence. That is a genuine re-analysis and its `op=\"note\"` appends rather than deduping, which is the behaviour wanted — a second note records that the options were weighed again against changed inputs."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:136
+#: processes/sdlc/upstream-version-adoption.bpmn:138
 #. Diagram label
 msgid "Open the bean"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:100
+#: processes/sdlc/upstream-version-adoption.bpmn:102
 #. Diagram label
 msgid "Options analysis adopt · hold · decline"
 msgstr ""
@@ -159,12 +164,12 @@ msgstr ""
 msgid "Post the MVP evidence staging URL + gate results"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:147
+#: processes/sdlc/upstream-version-adoption.bpmn:149
 #. Diagram element documentation
 msgid "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:137
+#: processes/sdlc/upstream-version-adoption.bpmn:139
 #. Diagram element documentation
 msgid "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
 msgstr ""
@@ -179,12 +184,12 @@ msgstr ""
 msgid "Publication manager"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:141
+#: processes/sdlc/upstream-version-adoption.bpmn:143
 #. Diagram element documentation
 msgid "Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination)."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:127
+#: processes/sdlc/upstream-version-adoption.bpmn:129
 #. Diagram label
 msgid "Record the hold or the decline"
 msgstr ""
@@ -194,7 +199,7 @@ msgstr ""
 msgid "Restricted to the directories that reach our output — for a Jekyll theme `_sass`, `_includes`, `_layouts`, `assets`. Upstream's own docs, CI and tests cannot reach us, and counting them makes a harmless release look alarming. The changelog is the claim; `git diff --stat pinned..candidate` over those paths is the evidence."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:91
+#: processes/sdlc/upstream-version-adoption.bpmn:93
 #. Diagram label
 msgid "Review the MVP against what we bind to"
 msgstr ""
@@ -214,7 +219,7 @@ msgstr ""
 msgid "Scope the delta pinned → candidate"
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:144
+#: processes/sdlc/upstream-version-adoption.bpmn:146
 #. Diagram element documentation
 msgid "Someone else holds the bean; this run stops without touching it."
 msgstr ""
@@ -234,22 +239,22 @@ msgstr ""
 msgid "The half a changelog cannot supply, because upstream does not know what you reached into. Worked from the row's `binds` list in `upstream-pins.json`. For the theme: `site-chrome/assets/js/docs-ui.js` MOVES the theme's own search markup into the action launcher and binds `.search`, `#search-input` and `.search-label`; `docs-ui.css` overrides `.side-bar`, `.site-header` and `.main-header`; three e2e specs assert the structure the theme emits. An upstream rename of any of those is not a build failure — it is a shipped feature that quietly stops working."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:122
+#: processes/sdlc/upstream-version-adoption.bpmn:124
 #. Diagram element documentation
 msgid "The pin literal moves in the one file `upstream-pins.json` declares, and the PR body says what the version range changed in RENDERED output — the evidence, not just the verdict."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:119
+#: processes/sdlc/upstream-version-adoption.bpmn:121
 #. Diagram element documentation
 msgid "The project manager's decision. `yes` moves the pin and opens the PR; `no` records the hold or the decline."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:98
+#: processes/sdlc/upstream-version-adoption.bpmn:100
 #. Diagram element documentation
 msgid "The review of the upstream MVP against what we bind to: are there findings we can fix on our side? `yes` goes to impact analysis; `no` goes to the options analysis (adopt, hold or decline)."
 msgstr ""
 
-#: processes/sdlc/upstream-version-adoption.bpmn:157
+#: processes/sdlc/upstream-version-adoption.bpmn:159
 #. Diagram label
 msgid "yes"
 msgstr ""

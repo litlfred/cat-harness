@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: materialize-remote\n"
-"POT-Creation-Date: 2026-11-01T22:18:39.724Z\n"
+"POT-Creation-Date: 2026-11-02T10:19:20.390Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/library/materialize-remote.bpmn:124
+#: processes/library/materialize-remote.bpmn:126
 #. Diagram element documentation
 msgid "A refusal is not a failure of the process — it is the process working. The node stays `referenced`, which means the graph still knows it exists and where, and the refusing gate's basis is recorded so the next caller does not re-litigate it."
 msgstr ""
@@ -29,6 +29,11 @@ msgstr ""
 msgid "Answer the other four gates"
 msgstr ""
 
+#: processes/library/materialize-remote.bpmn:153
+#. Diagram label
+msgid "Beans"
+msgstr ""
+
 #: processes/library/materialize-remote.bpmn:92
 #. Diagram element documentation
 msgid "Computed by decisions/materialization-gate.dmn (hit policy FIRST) over the five verdicts: size, restrictions, copyright, retention and source loss. Have all five gates been answered, with none refusing? `yes` fetches the copy and records its fixity; `no, or unknown` leaves the source `referenced` and records why. An unanswered gate counts as a refusal."
@@ -39,7 +44,7 @@ msgstr ""
 msgid "Contributor (human or agent)"
 msgstr ""
 
-#: processes/library/materialize-remote.bpmn:148
+#: processes/library/materialize-remote.bpmn:152
 #. Diagram label
 msgid "Corpus"
 msgstr ""
@@ -74,12 +79,12 @@ msgstr ""
 msgid "Ingestion engine (agent, runs unattended)"
 msgstr ""
 
-#: processes/library/materialize-remote.bpmn:123
+#: processes/library/materialize-remote.bpmn:125
 #. Diagram label
 msgid "Leave it referenced, record why"
 msgstr ""
 
-#: processes/library/materialize-remote.bpmn:120
+#: processes/library/materialize-remote.bpmn:122
 #. Diagram label
 msgid "Local copy exists, with its five answers"
 msgstr ""
@@ -89,12 +94,12 @@ msgstr ""
 msgid "Materialize remote content: the shared subprocess"
 msgstr ""
 
-#: processes/library/materialize-remote.bpmn:144
+#: processes/library/materialize-remote.bpmn:148
 #. Diagram label
 msgid "no, or unknown"
 msgstr ""
 
-#: processes/library/materialize-remote.bpmn:135
+#: processes/library/materialize-remote.bpmn:139
 #. Diagram label
 msgid "Not materialized, and the graph says why"
 msgstr ""
@@ -154,7 +159,7 @@ msgstr ""
 msgid "working or archival, and it is asked FIRST because three of the five gates mean different things under each. An archival copy keeps the original bytes, never expires, requires fixity, and is the only thing that discharges sourceLoss; a working copy keeps derived content and discharges none of that. A process that gated first and asked afterwards would be judging a copy whose obligations it did not yet know."
 msgstr ""
 
-#: processes/library/materialize-remote.bpmn:143
+#: processes/library/materialize-remote.bpmn:147
 #. Diagram label
 msgid "yes"
 msgstr ""

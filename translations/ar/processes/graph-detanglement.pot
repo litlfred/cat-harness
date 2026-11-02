@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: graph-detanglement\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.021Z\n"
+"POT-Creation-Date: 2026-11-02T10:19:20.325Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -34,12 +34,12 @@ msgstr ""
 msgid "2b · Prune, merge, factor — or the classification is wrong"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:131
+#: processes/kg/graph-detanglement.bpmn:133
 #. Diagram label
 msgid "3 · Isolate — own declaration, namespace, artefact"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:166
+#: processes/kg/graph-detanglement.bpmn:168
 #. Diagram label
 msgid "4 · Extract — a directory move, not a file-by-file sift"
 msgstr ""
@@ -64,19 +64,24 @@ msgstr ""
 msgid "Authoring agent"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:153
+#: processes/kg/graph-detanglement.bpmn:155
 #. Diagram label
 msgid "Authorise the extraction"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:231
+#: processes/kg/graph-detanglement.bpmn:233
 #. Diagram label
 msgid "authorised"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:187
+#: processes/kg/graph-detanglement.bpmn:189
 #. Diagram label
 msgid "Bean claimed?"
+msgstr ""
+
+#: processes/kg/graph-detanglement.bpmn:242
+#. Diagram label
+msgid "Beans"
 msgstr ""
 
 #: processes/kg/graph-detanglement.bpmn:74
@@ -84,17 +89,17 @@ msgstr ""
 msgid "Brief the topic before touching anything"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:234
+#: processes/kg/graph-detanglement.bpmn:236
 #. Diagram label
 msgid "claimed"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:197
+#: processes/kg/graph-detanglement.bpmn:199
 #. Diagram label
 msgid "Close the bean"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:140
+#: processes/kg/graph-detanglement.bpmn:142
 #. Diagram element documentation
 msgid "Computed by decisions/isolation-gate.dmn (hit policy FIRST) over three inputs: its own declaration with paths relative to itself, its own namespace with every minted term defined, and a published artefact of its own. Any one missing answers `not yet`, back to Isolate. All three answer `isolated`, on to reporting what would move and waiting for a person to authorise it. Zero edges alone is not isolation."
 msgstr ""
@@ -109,7 +114,7 @@ msgstr ""
 msgid "Computed, not chosen: decisions/subgraph-declared-gate.dmn (hit policy FIRST) over three inputs — the declaration parsed (`readable`), an entry present for the sub-graph, and every declared path exists. Unparseable goes to `unknown`, a fault rather than 'not yet', and stops the process. No entry, or a declared path that does not exist (bean `dh4f`), goes to `not yet`, back to Declare. Otherwise `declared`, on to Measure."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:220
+#: processes/kg/graph-detanglement.bpmn:222
 #. Diagram label
 msgid "declared"
 msgstr ""
@@ -119,12 +124,12 @@ msgstr ""
 msgid "Declared in place?"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:232
+#: processes/kg/graph-detanglement.bpmn:234
 #. Diagram label
 msgid "declined"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:226
+#: processes/kg/graph-detanglement.bpmn:228
 #. Diagram label
 msgid "detangled"
 msgstr ""
@@ -134,47 +139,47 @@ msgstr ""
 msgid "Detangled?"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:174
+#: processes/kg/graph-detanglement.bpmn:176
 #. Diagram label
 msgid "Extracted"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:229
+#: processes/kg/graph-detanglement.bpmn:231
 #. Diagram label
 msgid "isolated"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:224
+#: processes/kg/graph-detanglement.bpmn:226
 #. Diagram label
 msgid "keep detangling"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:221
+#: processes/kg/graph-detanglement.bpmn:223
 #. Diagram label
 msgid "not yet"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:236
+#: processes/kg/graph-detanglement.bpmn:238
 #. Diagram label
 msgid "not yours"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:193
+#: processes/kg/graph-detanglement.bpmn:195
 #. Diagram label
 msgid "Not yours — left alone"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:132
+#: processes/kg/graph-detanglement.bpmn:134
 #. Diagram element documentation
 msgid "Only once cross-edges measure zero: give the sub-graph its own declaration, its own namespace and its own published artefact, as bootstrap/ has (its own declaration, bs: namespace and graph document). Nothing moves yet; the sub-graph now stands alone in place."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:167
+#: processes/kg/graph-detanglement.bpmn:169
 #. Diagram element documentation
 msgid "Only once edges are zero and the declaration stands alone: move the sub-graph out as one directory move, not a file-by-file sift. Its nested declaration resolves paths against its own directory, so moving the folder moves the graph. The five-point gate is in migration-plan.md Phase II."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:181
+#: processes/kg/graph-detanglement.bpmn:183
 #. Diagram label
 msgid "Open the bean"
 msgstr ""
@@ -184,12 +189,12 @@ msgstr ""
 msgid "Part of a repository wants to leave, for size or a semantic reason: four gated stages measure it out of the graph before anything moves, and an administrator authorises the extraction. THE FOUR STAGES ARE GATES, NOT ADVICE, AND THAT IS THE WHOLE REASON THIS IS A DIAGRAM. `graph-detanglement.md` says \"nothing moves until the stage before it measures zero\" in prose, and prose is what an agent under pressure talks itself past. Each gate here is a DECISION TABLE: `workflow_complete` refuses a hand-supplied outcome at a `cat-harness.processes:decision` gateway, so the branch is computed from the counts a tool already produced rather than asserted. THE SHARPEST GATE IS `Detangled?`, AND IT IS SHARP BECAUSE OF ITS RULE ORDER. `unassignedEdges &gt; 0` returns `unknown` BEFORE the cross-edge rule is reached, so a zero cross-edge count over an unjudged corpus cannot be read as a pass. `repo-partition.ts` states it in its own voice — \"these are not cross-edges, they are edges this tool declined to judge. Do not read them as clean\" — and move 1 of the practice is exactly that sentence. A person can skip it. A table cannot. EVERY GATE HAS A THIRD STATE AND NONE OF THEM RENDERS IT AS CLEAN. `Declared in place?` answers `unknown` on a declaration that did not parse rather than \"not yet\", because one says the work has not started and the other says nobody can tell. `Detangled?` answers `unknown` on an incomplete measurement. Both route to `End_Unknown`, which is a REFUSAL to advance — the process stops rather than proceeding on a guess. DECLARING IS CHEAP AND EXTRACTING IS EXPENSIVE, WHICH IS THE POINT. Stage 1 moves nothing: the sub-graph is declared where it already sits, still inside the repository, still connected. The worked example was the WHO base harness's `methodologies/`, declared in place and lifted out whole when that harness became its own repository. STAGE 2 IS A LOOP, AND THE LOOP IS LOAD-BEARING. `Prune, merge, factor, or reclassify` returns to `Measure` rather than to the gate, because an assignment is verified by RE-RUNNING and never by being locally reasonable — the obvious move, the one the tool's own message asks for, once took the count from 5 to 15. The four moves are the only four: the first three are the block-scale rule, and \"the classification is wrong\" is the fourth the repository scale adds because a module's layer is in doubt the way a block's chapter is not. ISOLATION IS NOT ZERO EDGES. A sub-graph with no inbound edges can still carry no declaration, no namespace and no published artefact, and lifting that directory produces a repository that cannot say what it is. `bootstrap/` is the demonstrated case and the shape to match. THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extraction` sits in the Administrator lane because an extraction moves durable artefacts out of a repository, and `deletion-requires-confirmation` is not a courtesy the agent may waive: the agent reports what would move, and waits. The administrator lane is the one whose activities change the substrate every other diagram's lanes bind to, which is exactly what a repository cut does."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:198
+#: processes/kg/graph-detanglement.bpmn:200
 #. Diagram element documentation
 msgid "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:182
+#: processes/kg/graph-detanglement.bpmn:184
 #. Diagram element documentation
 msgid "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
 msgstr ""
@@ -199,12 +204,12 @@ msgstr ""
 msgid "Reached only after Declared, Detangled and Isolated have each independently cleared — so this lane is never asked to judge the measurement, only whether an already-clean extraction may proceed. Declining is not a refusal back to unknown: End_Declined leaves the sub-graph declared, detangled and isolated in place, which is a real outcome of this process and not merely the absence of one."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:188
+#: processes/kg/graph-detanglement.bpmn:190
 #. Diagram element documentation
 msgid "Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination)."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:149
+#: processes/kg/graph-detanglement.bpmn:151
 #. Diagram label
 msgid "Report what would move — sizes, and what breaks"
 msgstr ""
@@ -219,22 +224,22 @@ msgstr ""
 msgid "Size, or a semantic reason to separate"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:194
+#: processes/kg/graph-detanglement.bpmn:196
 #. Diagram element documentation
 msgid "Someone else holds the bean; this run stops without touching it."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:139
+#: processes/kg/graph-detanglement.bpmn:141
 #. Diagram label
 msgid "Stands alone?"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:162
+#: processes/kg/graph-detanglement.bpmn:164
 #. Diagram label
 msgid "Stays where it is — declared, detangled, isolated"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:154
+#: processes/kg/graph-detanglement.bpmn:156
 #. Diagram element documentation
 msgid "The one step no package may relax. A repository cut changes the substrate every other diagram's lanes bind to, and that is a person's decision."
 msgstr ""
@@ -244,12 +249,12 @@ msgstr ""
 msgid "The only four moves. Move the shared TARGET first and the importers after; check the target's layer before the importer's; a schema moves with its script. The fix is never an exemption, it is the right owner."
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:219
+#: processes/kg/graph-detanglement.bpmn:221
 #. Diagram label
 msgid "unknown"
 msgstr ""
 
-#: processes/kg/graph-detanglement.bpmn:177
+#: processes/kg/graph-detanglement.bpmn:179
 #. Diagram label
 msgid "UNKNOWN — stop. Not “not yet”, not clean"
 msgstr ""
