@@ -5467,9 +5467,20 @@
       // `avatars.css` already declares — so the glass can draw the kind avatar
       // when there is no picture, or when the reader chose kind avatars.
       kind: (meta && meta.kind) || (all[key] && all[key].kind) || "library",
+      // A PINNED BLOCK's graph kind (`glossary`, `bpmn`, `fhir-instance`, ...)
+      // and the page or document it came from (#982). Only a kind-shaped word
+      // is kept: it reaches a `data-` attribute and picks a kind avatar.
+      nodeKind: kindWord((meta && meta.nodeKind) || (all[key] && all[key].nodeKind)),
+      source: String((meta && meta.source) || (all[key] && all[key].source) || "").replace(/\s+/g, " ").trim(),
     };
     setFolioAssets(all);
     announceFolio(key, "glass");
+  }
+
+  /** A graph kind as a safe word, or "" (it reaches an attribute and a CSS selector). */
+  function kindWord(v) {
+    var w = String(v || "").trim().toLowerCase();
+    return /^[a-z0-9][a-z0-9:_-]{0,63}$/.test(w) ? w : "";
   }
 
   /**
@@ -5834,7 +5845,13 @@
       });
       box.appendChild(img);
     } else {
-      box.appendChild(fallbackAvatar(a.kind));
+      // A pinned block with no picture draws ITS GRAPH KIND's avatar.
+      box.appendChild(fallbackAvatar(a.kind === "pin" && kindWord(a.nodeKind) ? kindWord(a.nodeKind) : a.kind));
+    }
+    // A bookmark is the document's own face with a ribbon on it; a pinned
+    // block wears a pin. Decorative: the card's name says what it is.
+    if (a.kind === "bookmark" || a.kind === "pin") {
+      box.appendChild(el("span", { class: "fa-glass-badge", "data-fa-badge": a.kind }, a.kind === "bookmark" ? "\uD83D\uDD16" : "\uD83D\uDCCC"));
     }
     return box;
   }
@@ -6212,7 +6229,9 @@
       // square sticky avatar"*. A todo is a sticky note everywhere else on
       // this site, and a sticky note is square; the wide 152px strip it used
       // to pop out as read as a list row, not as the note.
-      var h = zoomKindOf(a) === "library" && prefs.avatars !== "text"
+      // A BOOKMARK with its document's cover is portrait like the book it marks.
+      var portrait = zoomKindOf(a) === "library" || (a.kind === "bookmark" && a.avatar);
+      var h = portrait && prefs.avatars !== "text"
         ? Math.round(w * 4 / 3) : zoomKindOf(a) === "todo" ? w : GLASS_CARD_H;
       return { width: w, height: h };
     }
@@ -6897,6 +6916,12 @@
         return { kind: "library", name: libName, href: safeHref(lib.library), entry: safeHref(lib.entry),
                  heading: "Back to the library?", tip: "Back in " + libName };
       }
+      if (a && PIN_KINDS[a.kind]) {
+        var from = String(a.source || "").replace(/\s+/g, " ").trim();
+        var fromName = from ? "its page, " + from : "the page it came from";
+        return { kind: "sticky", name: fromName, href: safeHref(a.href) || safeHref(withBase("/")),
+                 heading: "Back on its page?", tip: "Back on " + fromName };
+      }
       if (a && a.kind === "sticky") {
         var page = String(a.label || "").replace(/\s+/g, " ").trim();
         var pageName = page ? "its page, " + page : "the page it came from";
@@ -6972,12 +6997,15 @@
       var href = place ? place.entry : safeHref(a.href);
       // WHERE A PRESS GOES: the entry page until the index names a visualizer,
       // or the external URL for a linked document (R28).
-      var opens = place ? place.entry : (isLibrary ? href || "" : "");
+      var isPin = !!PIN_KINDS[a.kind];
+      var opens = place ? place.entry : (isLibrary || isPin ? href || "" : "");
       var card = el("article", {
         class: "fa-glass-asset",
         "data-fa-asset": key,
         "data-fa-asset-kind": a.kind || "library",
         "data-fa-zoom-kind": zoomKindOf(a),
+        "data-fa-node-kind": isPin ? kindWord(a.nodeKind) : "",
+        "data-fa-source": isPin ? String(a.source || "") : "",
         "aria-label": label,
         // A library card OPENS (issue #1900), so it is a stop in the tab
         // order: zoomed to its cover the title link is not drawn, and Enter on
@@ -8096,19 +8124,21 @@
         // read here with the rest — there is no second, floating list.
         var todo = kind === "todos";
         var sticky = kind === "sticky";
+        var pinned = kind === "bookmark" || kind === "pin";
         out.push({
           el: c,
           key: key,
           title: c.getAttribute("aria-label") || key,
-          kind: todo ? "todo" : sticky ? "sticky" : "book",
+          kind: todo ? "todo" : sticky ? "sticky" : pinned ? kind : "book",
           from: todo ? "Todo board" : sticky ? (c.getAttribute("data-fa-home-label") || "Home page")
+            : pinned ? (c.getAttribute("data-fa-source") || c.getAttribute("data-fa-node-kind") || "Pinned")
             : key.split("/")[0] + " library",
         });
       });
       return out;
     }
 
-    var KIND_LABELS = { book: "Books", todo: "Todos", sticky: "Stickies" };
+    var KIND_LABELS = { book: "Books", todo: "Todos", sticky: "Stickies", bookmark: "Bookmarks", pin: "Pinned blocks" };
 
     /** Show or hide each item; say so when a filter hides everything. */
     function applyGlassFilter() {
@@ -13076,6 +13106,116 @@
       .catch(function () { p.setAttribute("title", "build details unavailable"); });
   }
 
+  /*
+   * PIN ANY BLOCK, OF ANY GRAPH KIND, TO THE FOLIO — issue #982. Owner,
+   * 2026-11-02: a bookmark icon in the block gutter puts *"a bookmark kind
+   * [item] to the folio which is a link to the document at that point"*, and
+   * *"user should also be able to add content blocks in general to folio so
+   * they can return to them (e.g. glossary of a harness or ingested library,
+   * a BPMN diagram, a FHIR resource instance, etc.)"* — *"any graph kind
+   * really"*, *"core infra of the viewer/graph kind"*.
+   *
+   * So there is ONE contract, the same shape a library row uses, and no
+   * per-kind code. Any rendered block declares itself:
+   *
+   *     <div data-fa-pin="<node IRI or page URL#anchor>"
+   *          data-fa-pin-title="Health worker"
+   *          data-fa-pin-href="<where opening it goes>"
+   *          data-fa-pin-kind="bookmark | pin"          (default pin)
+   *          data-fa-pin-node-kind="glossary"           (its graph kind)
+   *          data-fa-pin-avatar="<the document's cover>"
+   *          data-fa-pin-source="DTH-HRH">
+   *       ... <button data-fa-pin-control>🔖</button> ...
+   *
+   * and a press on any `[data-fa-pin-control]` inside it toggles it on the
+   * glass. A viewer that builds its controls in script (the block panel)
+   * calls `window.faFolio.pin(key, meta)` instead of growing a second store.
+   *
+   * ON THE GLASS IT IS A LINK CARD (Q-BMK-1 = C): the avatar, the title and
+   * where it came from, opening to `href`. Nothing of the block's own viewer
+   * is loaded for it, so a glass holding many items of many kinds costs one
+   * small card each (owner, 2026-11-02: *"lazy load all visualizers ... can
+   * be a lot if lots of different item types"*).
+   */
+  var PIN_KINDS = { bookmark: 1, pin: 1 };
+
+  function pinMetaOf(host) {
+    var kind = host.getAttribute("data-fa-pin-kind");
+    var key = host.getAttribute("data-fa-pin") || "";
+    return {
+      key: key,
+      title: host.getAttribute("data-fa-pin-title") || key,
+      href: safeHref(host.getAttribute("data-fa-pin-href") || undefined) || "",
+      avatar: safeHref(host.getAttribute("data-fa-pin-avatar") || undefined) || "",
+      kind: PIN_KINDS[kind] ? kind : "pin",
+      nodeKind: host.getAttribute("data-fa-pin-node-kind") || "",
+      source: host.getAttribute("data-fa-pin-source") || "",
+    };
+  }
+
+  /** The store key of a pinned item: kind-prefixed, so it can never be read as a library `<instance>/<id>`. */
+  function pinKeyOf(kind, key) {
+    var k = String(key || "");
+    return /^(bookmark|pin):/.test(k) ? k : (PIN_KINDS[kind] ? kind : "pin") + ":" + k;
+  }
+
+  /** Put it on the glass, or take it off when it is already there. Returns the new state. */
+  function togglePin(key, meta) {
+    var m = meta || {};
+    if (!key) return "library";
+    var k = pinKeyOf(m.kind, key);
+    if (folioStateOf(k) === "glass") { shelveFromGlass(k); return "folio"; }
+    displayInFolio(k, {
+      title: m.title || key,
+      href: safeHref(m.href || undefined) || "",
+      avatar: safeHref(m.avatar || undefined) || "",
+      kind: PIN_KINDS[m.kind] ? m.kind : "pin",
+      nodeKind: m.nodeKind,
+      source: m.source,
+    });
+    return "glass";
+  }
+
+  /** Every pin control shows its block's state, read from the store. */
+  function paintBlockPins(root) {
+    var r = root && root.querySelectorAll ? root : document;
+    Array.prototype.forEach.call(r.querySelectorAll("[data-fa-pin-control]"), function (btn) {
+      var host = btn.closest("[data-fa-pin]");
+      var m = host ? pinMetaOf(host) : null;
+      if (!m || !m.key) return;
+      var on = folioStateOf(pinKeyOf(m.kind, m.key)) === "glass";
+      var what = m.kind === "bookmark" ? "bookmark" : "pin";
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.setAttribute("aria-label", (on ? "Remove the " + what + " of " : (what === "bookmark" ? "Bookmark " : "Pin ")) +
+        m.title + (on ? " from your folio glass" : " to your folio glass"));
+      btn.title = on ? "On your folio glass (press to take it off)" : (what === "bookmark" ? "Bookmark on your folio" : "Pin to your folio");
+    });
+  }
+
+  function mountBlockPins() {
+    if (document.__faPinsMounted) return;
+    document.__faPinsMounted = true;
+    // ONE delegated listener, for the same reason as the pull-outs (`ebvl`):
+    // lazy pages and viewers fill their blocks after this runs.
+    document.addEventListener("click", function (ev) {
+      var btn = ev.target && ev.target.closest && ev.target.closest("[data-fa-pin-control]");
+      if (!btn) return;
+      var host = btn.closest("[data-fa-pin]");
+      if (!host) return;
+      ev.preventDefault();
+      ev.stopPropagation();
+      var m = pinMetaOf(host);
+      togglePin(m.key, m);
+    });
+    document.addEventListener("fa:folio-changed", function () { paintBlockPins(); });
+    paintBlockPins();
+    window.faFolio = {
+      pin: togglePin,
+      stateOf: function (kind, key) { return folioStateOf(pinKeyOf(kind, key)); },
+      paint: paintBlockPins,
+    };
+  }
+
   function init() {
     // RTL detection — Arabic pages get dir="rtl" on <html> which
     // triggers the CSS rules in docs-ui.css for smooth sidebar slide.
@@ -13129,6 +13269,7 @@
     mountGlass();
     mountLandingHomes();
     mountLibraryPullouts();
+    mountBlockPins();
     mountTodoStickies();
     mountPageLanguageBar();
     mountTableFilters();
