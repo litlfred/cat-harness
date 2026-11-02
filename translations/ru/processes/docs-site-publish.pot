@@ -81,7 +81,7 @@ msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:88
 #. Diagram element documentation
-msgid "Compose the docs layers, build the Jekyll site, mount instance-rendered content, and generate the TypeScript API reference with TypeDoc."
+msgid "Compose the docs layers, build the Jekyll site, mount instance-rendered content, and generate the TypeScript API reference with TypeDoc. The main deploy is a FULL build (owner 2026-11-01): every index is rebuilt from the tree being published, never borrowed. Skill feature-staging, section Build types."
 msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:126

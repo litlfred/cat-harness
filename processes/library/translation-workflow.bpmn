@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
+<definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns#"
  xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes/ns#" xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL"
              xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
              xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
@@ -81,15 +81,7 @@ A change to source content also triggers this event for staleness re-evaluation.
     </startEvent>
 
     <!-- ── Extract ────────────────────────────────────────────── -->
-    <serviceTask id="Task_PotExtract" name="Extract translatable strings&#10;(POT generation)">
-      <extensionElements>
-        <bootstrap.processes:skill ref="translation-manager"/>
-      </extensionElements>
-
-      <documentation>Scans content nodes and extracts translatable strings
-to .pot files. Excludes math, labels, code, and Lean companions.
-Tool: translation_extract MCP tool or bun run content/pipeline/pot-extract.ts</documentation>
-    </serviceTask>
+    <callActivity id="Task_PotExtract" calledElement="GT_ExtractPot" name="Extract translatable strings&#10;(POT generation)"/>
 
     <!-- ── Translate ──────────────────────────────────────────── -->
     <serviceTask id="Task_Translate" name="Produce translation&#10;(PO file)">
@@ -107,29 +99,10 @@ Result: &lt;locale&gt;/block.po with msgid/msgstr pairs.</documentation>
     </serviceTask>
 
     <!-- ── Inject ─────────────────────────────────────────────── -->
-    <serviceTask id="Task_PoInject" name="Inject translations&#10;(PO → Markdown)">
-      <extensionElements>
-        <bootstrap.processes:skill ref="translation-manager"/>
-      </extensionElements>
-
-      <documentation>Reads .po file and source .md, substitutes msgstr for
-msgid, preserves non-translatable elements, writes translated .md to
-translations/&lt;locale&gt;/block.md.
-Tool: translation_inject MCP tool or bun run content/pipeline/po-inject.ts</documentation>
-    </serviceTask>
+    <callActivity id="Task_PoInject" calledElement="GT_InjectPo" name="Inject translations&#10;(PO → Markdown)"/>
 
     <!-- ── Round-trip QA ──────────────────────────────────────── -->
-    <serviceTask id="Task_RoundTripQA" name="Round-trip translation QA&#10;(back-translate)">
-      <extensionElements>
-        <bootstrap.processes:skill ref="translation-manager"/>
-      </extensionElements>
-
-      <documentation>Bean: folio-assistant-ktt2
-Back-translates the target-language .md into the source language and
-compares meaning with the original. Detects semantic drift and
-terminology misses that a forward-only fluency check cannot see.
-Tool: translation_validate MCP tool</documentation>
-    </serviceTask>
+    <callActivity id="Task_RoundTripQA" calledElement="GT_RoundTripQa" name="Round-trip translation QA&#10;(back-translate)"/>
 
     <!-- ── Drift gateway ──────────────────────────────────────── -->
     <exclusiveGateway id="Gateway_Drift" name="Drift or bad terminology?">
@@ -181,16 +154,20 @@ A userTask, not a service task: this is the one step here where a person edits c
       <incoming>Flow_PostQA_Edit</incoming>
       <outgoing>Flow_Edited</outgoing>
     </userTask>
-    <serviceTask id="Task_WriteUnofficial" name="Write status.json&#10;(unofficial)">
-      <extensionElements>
-        <bootstrap.processes:skill ref="translation-manager"/>
-      </extensionElements>
-
-      <documentation>Records the translation as unofficial in
-translations/&lt;locale&gt;/status.json:
-{ official: false, generatedBy: "...", generatedAt: "..." }
-The translation is usable but carries a visible warning badge.</documentation>
-    </serviceTask>
+    <callActivity id="Task_WriteUnofficial" calledElement="GT_WriteTranslationStatus" name="Write status.json&#10;(unofficial)">
+      <ioSpecification id="Task_WriteUnofficial_IO">
+        <dataInput id="Task_WriteUnofficial_official" name="official"/>
+        <inputSet id="Task_WriteUnofficial_In"><dataInputRefs>Task_WriteUnofficial_official</dataInputRefs></inputSet>
+        <outputSet id="Task_WriteUnofficial_Out"/>
+      </ioSpecification>
+      <dataInputAssociation id="Task_WriteUnofficial_official_Value">
+        <targetRef>Task_WriteUnofficial_official</targetRef>
+        <assignment id="Task_WriteUnofficial_official_Assign">
+          <from xsi:type="tFormalExpression">false</from>
+          <to xsi:type="tFormalExpression">Task_WriteUnofficial_official</to>
+        </assignment>
+      </dataInputAssociation>
+    </callActivity>
 
     <!-- ── Sign-off gateway ───────────────────────────────────── -->
     <exclusiveGateway id="Gateway_Signoff" name="Human sign-off?">
@@ -211,14 +188,20 @@ Tool: translation_signoff MCP tool</documentation>
     </userTask>
 
     <!-- ── Write status (official) ────────────────────────────── -->
-    <serviceTask id="Task_WriteOfficial" name="Write status.json&#10;(official)">
-      <extensionElements>
-        <bootstrap.processes:skill ref="translation-manager"/>
-      </extensionElements>
-
-      <documentation>Records the sign-off with the SHA-256 of the source
-.md, enabling staleness detection on future source changes.</documentation>
-    </serviceTask>
+    <callActivity id="Task_WriteOfficial" calledElement="GT_WriteTranslationStatus" name="Write status.json&#10;(official)">
+      <ioSpecification id="Task_WriteOfficial_IO">
+        <dataInput id="Task_WriteOfficial_official" name="official"/>
+        <inputSet id="Task_WriteOfficial_In"><dataInputRefs>Task_WriteOfficial_official</dataInputRefs></inputSet>
+        <outputSet id="Task_WriteOfficial_Out"/>
+      </ioSpecification>
+      <dataInputAssociation id="Task_WriteOfficial_official_Value">
+        <targetRef>Task_WriteOfficial_official</targetRef>
+        <assignment id="Task_WriteOfficial_official_Assign">
+          <from xsi:type="tFormalExpression">true</from>
+          <to xsi:type="tFormalExpression">Task_WriteOfficial_official</to>
+        </assignment>
+      </dataInputAssociation>
+    </callActivity>
 
     <!-- ── Staleness check ────────────────────────────────────── -->
     <serviceTask id="Task_StalenessCheck" name="Check staleness&#10;(source hash)">

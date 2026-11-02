@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: test-data-curation\n"
-"POT-Creation-Date: 2026-11-01T09:29:15.684Z\n"
+"POT-Creation-Date: 2026-11-02T03:11:07.045Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/sdlc/test-data-curation.bpmn:75
+#: processes/sdlc/test-data-curation.bpmn:76
 #. Diagram label
 msgid "Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0"
 msgstr ""
@@ -29,62 +29,67 @@ msgstr ""
 msgid "Authors or curates the test data set: classifies whether the case requires a fixed curated set or a deterministic generated recipe, invokes the content-type specialisation subprocess on the generated branch or SME review on the fixed branch, and writes the self-identifying node into its declared graph directory."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:157
+#: processes/sdlc/test-data-curation.bpmn:167
 #. Diagram label
 msgid "Bean claimed?"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:112
+#: processes/sdlc/test-data-curation.bpmn:122
 #. Diagram element documentation
-msgid "BOUND BY THE CONTENT TYPE (`contentType` and `specialisation` in `schemas/sdlc/test-data.ts`), so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own."
+msgid "BOUND BY THE CONTENT TYPE, so no `calledElement` is written here: each specialisation process belongs to the layer that owns its content type (fhir-harness, folio-assistant-core, folio-assistant-sci), and a lower layer cannot name a higher layer\\'s process. The specialisation is the one Task_DetermineSpecialisation found; so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:96
+#: processes/sdlc/test-data-curation.bpmn:97
 #. Diagram element documentation
 msgid "Calls `Process_SmeTestDataReview` (`processes/sdlc/sme-test-data-review.bpmn`) so a human SME in a `judgementOnly` lane reviews each worked case (`decision-support`) or cohort plus expected value (`indicator-definition`) and records an attributable `sme-case-verdict/1.0.0` node."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:176
+#: processes/sdlc/test-data-curation.bpmn:186
 #. Diagram label
 msgid "claimed"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:55
+#: processes/sdlc/test-data-curation.bpmn:56
 #. Diagram label
 msgid "Classify data set: fixed (curated) or generated (recipe)"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:167
+#: processes/sdlc/test-data-curation.bpmn:177
 #. Diagram label
 msgid "Close the bean"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:131
+#: processes/sdlc/test-data-curation.bpmn:141
 #. Diagram label
 msgid "Data set written"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:56
+#: processes/sdlc/test-data-curation.bpmn:57
 #. Diagram element documentation
 msgid "Decide whether the test case requires a small, committed, cited fixed data set (`test-data-fixed/1.0.0`, usable as certification evidence once reviewed) or a deterministic generated recipe (`test-data-generated/1.0.0`, `template` + `params` + `seed`, never stored materialised)."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:85
+#: processes/sdlc/test-data-curation.bpmn:112
+#. Diagram label
+msgid "Determine the content type and its specialisation"
+msgstr ""
+
+#: processes/sdlc/test-data-curation.bpmn:86
 #. Diagram label
 msgid "Exercises decision support or indicator definition?"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:179
+#: processes/sdlc/test-data-curation.bpmn:189
 #. Diagram label
 msgid "fixed"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:65
+#: processes/sdlc/test-data-curation.bpmn:66
 #. Diagram label
 msgid "Fixed or generated?"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:105
+#: processes/sdlc/test-data-curation.bpmn:106
 #. Diagram label
 msgid "Fixed set ready"
 msgstr ""
@@ -94,74 +99,79 @@ msgstr ""
 msgid "General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`test-data-generated/1.0.0`) test data sets. It opens its bean with Process_BeanOpen before any work and closes it with Process_BeanClose before it ends; the steps between note on it. SEPARATE GRAPH DIRECTORIES, SELF-IDENTIFYING FILES. Fixed sets live in a declared `test-data-fixed` directory and generated recipes live in a declared `test-data-generated` directory (`schemas/kg/graph-typology-registry.ts`). Every file carries both its `$schema` tag (`test-data-fixed/1.0.0` vs `test-data-generated/1.0.0`) and `kind: \"fixed\" | \"generated\"` (`schemas/sdlc/test-data.ts`), so a consumer (`discriminateTestDataSet`) tells which it is reading from the file content, never from the directory path. CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises test inputs or how a fixed payload is structured depends on the folio's `contentType`. `Call_ContentTypeSpecialisation` delegates that step to the content type's own subprocess (`specialisation` in `schemas/sdlc/test-data.ts`). FHIR templating (`specialisation: \"fhir-templating\"`) is one named specialisation for FHIR IG / DAK content, not the platform design."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:180
+#: processes/sdlc/test-data-curation.bpmn:190
 #. Diagram label
 msgid "generated"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:183
+#: processes/sdlc/test-data-curation.bpmn:194
 #. Diagram label
 msgid "no"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:177
+#: processes/sdlc/test-data-curation.bpmn:187
 #. Diagram label
 msgid "not yours"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:163
+#: processes/sdlc/test-data-curation.bpmn:173
 #. Diagram label
 msgid "Not yours — left alone"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:151
+#: processes/sdlc/test-data-curation.bpmn:161
 #. Diagram label
 msgid "Open the bean"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:138
+#: processes/sdlc/test-data-curation.bpmn:148
 #. Diagram element documentation
 msgid "Parse the file with `discriminateTestDataSet` (`schemas/sdlc/test-data.ts`) to confirm a consumer can tell fixed from generated from the file content alone (never the path), verify `verifyGeneratedSetDigest` on generated sets, and bind the resulting `TestDataRef` (`toTestDataRef`) into the `test-plan/v1` case."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:168
+#: processes/sdlc/test-data-curation.bpmn:178
 #. Diagram element documentation
 msgid "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn; placed straight before the end so the engine's resolve sees nothing left but the archive step."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:152
+#: processes/sdlc/test-data-curation.bpmn:162
 #. Diagram element documentation
 msgid "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn; the gateway after this reads which end it reached."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:158
+#: processes/sdlc/test-data-curation.bpmn:113
+#. Diagram element documentation
+msgid "Read the folio's `contentType` and the `specialisation` registered for it (`TestDataSpecialisationSchema` in `schemas/sdlc/test-data.ts`): `fhir-templating` for FHIR IG and DAK content, `markdown-fixture` for document folios, `lean-counterexample` for proof folios, `tabular-cohort` for aggregate indicator tables. None registered stops here and says so, rather than guessing one."
+msgstr ""
+
+#: processes/sdlc/test-data-curation.bpmn:168
 #. Diagram element documentation
 msgid "Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination)."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:122
+#: processes/sdlc/test-data-curation.bpmn:132
 #. Diagram element documentation
 msgid "Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: \"test-data-generated/1.0.0\"` and `kind: \"generated\"` in the instance's declared `test-data-generated` directory. Never store materialised records."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:66
+#: processes/sdlc/test-data-curation.bpmn:67
 #. Diagram element documentation
 msgid "Routes to the fixed-set curation branch (`fixed`) or the generated-recipe synthesis branch (`generated`)."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:95
+#: processes/sdlc/test-data-curation.bpmn:96
 #. Diagram label
 msgid "SME review of cases or cohorts"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:164
+#: processes/sdlc/test-data-curation.bpmn:174
 #. Diagram element documentation
 msgid "Someone else holds the bean; this run stops without touching it."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:111
+#: processes/sdlc/test-data-curation.bpmn:121
 #. Diagram label
-msgid "Synthesise recipe via content-type specialisation"
+msgid "Synthesise the recipe with that specialisation"
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:15
@@ -169,47 +179,47 @@ msgstr ""
 msgid "Test Data Curation — Fixed Sets and Generated Recipes"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:51
+#: processes/sdlc/test-data-curation.bpmn:52
 #. Diagram label
 msgid "Test data needed for a test plan case"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:147
+#: processes/sdlc/test-data-curation.bpmn:157
 #. Diagram label
 msgid "Test data set curated and bound into plan"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:42
+#: processes/sdlc/test-data-curation.bpmn:43
 #. Diagram label
 msgid "Tester"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:43
+#: processes/sdlc/test-data-curation.bpmn:44
 #. Diagram element documentation
 msgid "Verifies that the curated fixed set or generated recipe self-identifies from its file content (`discriminateTestDataSet`) rather than from its directory path, verifies the canonical SHA-256 digest, and binds the `TestDataRef` into the `test-plan/v1` test case."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:137
+#: processes/sdlc/test-data-curation.bpmn:147
 #. Diagram label
 msgid "Verify file self-identifies by $schema and kind and bind into test plan"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:86
+#: processes/sdlc/test-data-curation.bpmn:87
 #. Diagram element documentation
 msgid "When the fixed data set exercises clinical/scientific decision support or an indicator definition, it must pass SME review (`Process_SmeTestDataReview`) before `review` is recorded and the set can stand as certification evidence."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:121
+#: processes/sdlc/test-data-curation.bpmn:131
 #. Diagram label
 msgid "Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0"
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:76
+#: processes/sdlc/test-data-curation.bpmn:77
 #. Diagram element documentation
 msgid "Write the curated `records` and optional `citations` with `$schema: \"test-data-fixed/1.0.0\"` and `kind: \"fixed\"` into the instance's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:182
+#: processes/sdlc/test-data-curation.bpmn:193
 #. Diagram label
 msgid "yes"
 msgstr ""

@@ -21,6 +21,10 @@ jobs:
     with:
       # On a draft PR: prepare and typecheck only; the full tier runs on ready_for_review.
       draft-fast-tier: true
+      # One job a side, not four (Q-CIS-2 A, fix 1). This layer's tests and
+      # gates are about 6 minutes of work in all, while each extra job waited
+      # about 18 minutes for a runner (measured 2026-11-01).
+      gate-shards: 1
   # Post-merge QA of main (owner, 2026-10-30, "Both"): the push run above
   # judged main's whole gate set; this keeps one `main-red` issue open while
   # main is red and closes it when main is green. See

@@ -60,7 +60,7 @@ The voice axis: load whichever editorial voices are active, run each rule's mech
 - Skill: `voice-overlay-review`.
 - What: A rule its own quote does not support is a finding against the voice, not against the block.
 - Record it: `workflow_complete` with `node: "Task_RuleIsWrong"`.
-- next: → `GW_MoreVoices` (Another active voice?)
+- next: → `GW_MoreVoices_Join`
 
 ### 5. Adjudicate: prose, scope, or exception (`Task_Adjudicate`)
 
@@ -68,6 +68,11 @@ The voice axis: load whichever editorial voices are active, run each rule's mech
 - Skill: `voice-overlay-review`, `adjudication`.
 - What: The same three outcomes as the base voice axis.
 - A subprocess (`Process_CriterionAdjudication`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `GW_MoreVoices_Join`
+
+### Merge — `GW_MoreVoices_Join`
+
+- Nothing to do or decide: the paths meet here and the engine passes through.
 - next: → `GW_MoreVoices` (Another active voice?)
 
 ### Decide — Another active voice? (`GW_MoreVoices`)

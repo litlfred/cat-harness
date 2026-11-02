@@ -64,6 +64,7 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
         <bpmn:flowNodeRef>Start_Task</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_LogStart</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_DoWork</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>GW_DoWork</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_LogMessage</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_LogEnd</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Capture</bpmn:flowNodeRef>
@@ -115,9 +116,11 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
       </bpmn:extensionElements>
       <bpmn:incoming>F_2</bpmn:incoming>
       <bpmn:incoming>F_3b</bpmn:incoming>
-      <bpmn:outgoing>F_3</bpmn:outgoing>
-      <bpmn:outgoing>F_4</bpmn:outgoing>
+      <bpmn:outgoing>Flow_GW_DoWork</bpmn:outgoing>
     </bpmn:task>
+    <bpmn:exclusiveGateway id="GW_DoWork" name="Task complete?">
+      <bpmn:documentation>Which way the work goes after it.</bpmn:documentation>
+    </bpmn:exclusiveGateway>
 
     <bpmn:task id="A_LogMessage" name="Log a message or an error">
       <bpmn:documentation>Write a message or error entry whenever a later reader would need it. A command run goes in `execution` (command, exit code, where output went) — never the output itself, and never a secret, token or credential: capture on puts entries in git.</bpmn:documentation>
@@ -201,9 +204,10 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
 
     <bpmn:sequenceFlow id="F_1" sourceRef="Start_Task" targetRef="A_LogStart"/>
     <bpmn:sequenceFlow id="F_2" sourceRef="A_LogStart" targetRef="A_DoWork"/>
-    <bpmn:sequenceFlow id="F_3" sourceRef="A_DoWork" targetRef="A_LogMessage"/>
+    <bpmn:sequenceFlow id="Flow_GW_DoWork" sourceRef="A_DoWork" targetRef="GW_DoWork"/>
+    <bpmn:sequenceFlow name="no" id="F_3" sourceRef="GW_DoWork" targetRef="A_LogMessage"/>
     <bpmn:sequenceFlow id="F_3b" sourceRef="A_LogMessage" targetRef="A_DoWork" name="more work"/>
-    <bpmn:sequenceFlow id="F_4" sourceRef="A_DoWork" targetRef="A_LogEnd" name="task complete"/>
+    <bpmn:sequenceFlow name="yes" id="F_4" sourceRef="GW_DoWork" targetRef="A_LogEnd"/>
     <bpmn:sequenceFlow id="F_5" sourceRef="A_LogEnd" targetRef="Gateway_Capture"/>
     <bpmn:sequenceFlow id="F_On" sourceRef="Gateway_Capture" targetRef="A_PersistLog" name="on"/>
     <bpmn:sequenceFlow id="F_OffOrUnknown" sourceRef="Gateway_Capture" targetRef="A_ReportCaptureState" name="off or unknown"/>
@@ -220,16 +224,16 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
   <bpmndi:BPMNDiagram id="BPMNDiagram_ActivityLog">
     <bpmndi:BPMNPlane id="BPMNPlane_ActivityLog" bpmnElement="Collab_ActivityLog">
       <bpmndi:BPMNShape id="Shape_Participant" bpmnElement="Participant_ActivityLog" isHorizontal="true">
-        <dc:Bounds x="160" y="90" width="1180" height="690"/>
+        <dc:Bounds x="160" y="90" width="1270" height="690"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="90" width="1150" height="290"/>
+        <dc:Bounds x="190" y="90" width="1240" height="290"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Log" bpmnElement="Lane_Log" isHorizontal="true">
-        <dc:Bounds x="190" y="380" width="1150" height="70"/>
+        <dc:Bounds x="190" y="380" width="1240" height="70"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Operator" bpmnElement="Lane_Operator" isHorizontal="true">
-        <dc:Bounds x="190" y="450" width="1150" height="240"/>
+        <dc:Bounds x="190" y="450" width="1240" height="240"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Task" bpmnElement="Start_Task">
         <dc:Bounds x="220" y="180" width="36" height="36"/>
@@ -238,6 +242,10 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
       <bpmndi:BPMNShape id="Shape_A_LogStart" bpmnElement="A_LogStart">
         <dc:Bounds x="300" y="158" width="110" height="80"/>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_GW_DoWork" bpmnElement="GW_DoWork" isMarkerVisible="true"><dc:Bounds x="580" y="173" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="560" y="133" width="90" height="36" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Flow_GW_DoWork" bpmnElement="Flow_GW_DoWork"><di:waypoint x="560" y="198"/><di:waypoint x="580" y="198"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Shape_A_DoWork" bpmnElement="A_DoWork">
         <dc:Bounds x="450" y="158" width="110" height="80"/>
       </bpmndi:BPMNShape>
@@ -245,19 +253,19 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
         <dc:Bounds x="450" y="268" width="110" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_LogEnd" bpmnElement="A_LogEnd">
-        <dc:Bounds x="600" y="158" width="110" height="80"/>
+        <dc:Bounds x="690" y="158" width="110" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_Capture" bpmnElement="Gateway_Capture" isMarkerVisible="true">
-        <dc:Bounds x="760" y="176" width="50" height="50"/>
+        <dc:Bounds x="850" y="176" width="50" height="50"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_PersistLog" bpmnElement="A_PersistLog">
-        <dc:Bounds x="860" y="108" width="120" height="80"/>
+        <dc:Bounds x="950" y="108" width="120" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ReportCaptureState" bpmnElement="A_ReportCaptureState">
-        <dc:Bounds x="860" y="228" width="120" height="80"/>
+        <dc:Bounds x="950" y="228" width="120" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Task" bpmnElement="End_Task">
-        <dc:Bounds x="1040" y="183" width="36" height="36"/>
+        <dc:Bounds x="1130" y="183" width="36" height="36"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Empty" bpmnElement="Start_Empty">
         <dc:Bounds x="220" y="540" width="36" height="36"/>
@@ -273,7 +281,7 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
         <dc:Bounds x="430" y="580" width="120" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Emptied" bpmnElement="End_Emptied">
-        <dc:Bounds x="610" y="543" width="36" height="36"/>
+        <dc:Bounds x="700" y="543" width="36" height="36"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_F_1" bpmnElement="F_1">
         <di:waypoint x="238" y="198"/>
@@ -284,7 +292,7 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
         <di:waypoint x="505" y="198"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_3" bpmnElement="F_3">
-        <di:waypoint x="505" y="198"/>
+        <di:waypoint x="605" y="223"/><di:waypoint x="605" y="308"/>
         <di:waypoint x="505" y="308"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_3b" bpmnElement="F_3b">
@@ -293,39 +301,39 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
         <bpmndi:BPMNLabel><dc:Bounds x="509" y="244.5" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_4" bpmnElement="F_4">
-        <di:waypoint x="505" y="198"/>
-        <di:waypoint x="655" y="198"/>
+        <di:waypoint x="630" y="198"/>
+        <di:waypoint x="745" y="198"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_5" bpmnElement="F_5">
-        <di:waypoint x="710" y="198" />
-        <di:waypoint x="735" y="198" />
-        <di:waypoint x="735" y="201" />
-        <di:waypoint x="760" y="201" />
+        <di:waypoint x="800" y="198" />
+        <di:waypoint x="825" y="198" />
+        <di:waypoint x="825" y="201" />
+        <di:waypoint x="850" y="201" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_On" bpmnElement="F_On">
-        <di:waypoint x="810" y="201" />
-        <di:waypoint x="835" y="201" />
-        <di:waypoint x="835" y="148" />
-        <di:waypoint x="860" y="148" />
+        <di:waypoint x="900" y="201" />
+        <di:waypoint x="925" y="201" />
+        <di:waypoint x="925" y="148" />
+        <di:waypoint x="950" y="148" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_OffOrUnknown" bpmnElement="F_OffOrUnknown">
-        <di:waypoint x="810" y="201" />
-        <di:waypoint x="835" y="201" />
-        <di:waypoint x="835" y="268" />
-        <di:waypoint x="860" y="268" />
-        <bpmndi:BPMNLabel><dc:Bounds x="766" y="271" width="90" height="35" /></bpmndi:BPMNLabel>
+        <di:waypoint x="900" y="201" />
+        <di:waypoint x="925" y="201" />
+        <di:waypoint x="925" y="268" />
+        <di:waypoint x="950" y="268" />
+        <bpmndi:BPMNLabel><dc:Bounds x="856" y="271" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_6" bpmnElement="F_6">
-        <di:waypoint x="980" y="148" />
-        <di:waypoint x="1010" y="148" />
-        <di:waypoint x="1010" y="201" />
-        <di:waypoint x="1040" y="201" />
+        <di:waypoint x="1070" y="148" />
+        <di:waypoint x="1100" y="148" />
+        <di:waypoint x="1100" y="201" />
+        <di:waypoint x="1130" y="201" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_7" bpmnElement="F_7">
-        <di:waypoint x="980" y="268" />
-        <di:waypoint x="1010" y="268" />
-        <di:waypoint x="1010" y="201" />
-        <di:waypoint x="1040" y="201" />
+        <di:waypoint x="1070" y="268" />
+        <di:waypoint x="1100" y="268" />
+        <di:waypoint x="1100" y="201" />
+        <di:waypoint x="1130" y="201" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_E1" bpmnElement="F_E1">
         <di:waypoint x="238" y="558"/>
@@ -346,18 +354,18 @@ This is not the work plan. `beans` records WHAT is being worked on and survives 
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_E2" bpmnElement="F_E2">
         <di:waypoint x="550" y="520" />
-        <di:waypoint x="580" y="520" />
-        <di:waypoint x="580" y="561" />
-        <di:waypoint x="610" y="561" />
+        <di:waypoint x="670" y="520" />
+        <di:waypoint x="670" y="561" />
+        <di:waypoint x="700" y="561" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_E3" bpmnElement="F_E3">
         <di:waypoint x="550" y="620" />
-        <di:waypoint x="580" y="620" />
-        <di:waypoint x="580" y="561" />
-        <di:waypoint x="610" y="561" />
+        <di:waypoint x="670" y="620" />
+        <di:waypoint x="670" y="561" />
+        <di:waypoint x="700" y="561" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Shape_Lane_Sweep" bpmnElement="Lane_Sweep" isHorizontal="true">
-        <dc:Bounds x="190" y="690" width="1150" height="90"/>
+        <dc:Bounds x="190" y="690" width="1240" height="90"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Sweep" bpmnElement="Start_Sweep">
         <dc:Bounds x="220" y="717" width="36" height="36"/>

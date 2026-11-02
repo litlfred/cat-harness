@@ -4,48 +4,48 @@
     {
       "harness": "bootstrap",
       "repository": "litlfred/bootstrap",
-      "ref": "9ecfb729b38b9196063fee76c6f7932f92502353"
+      "ref": "0d655b74e9ffd1e246a0bd4df60967e158d665de"
     },
     {
       "harness": "bootstrap-tools",
       "repository": "litlfred/bootstrap-tools",
-      "ref": "7dc55773590bbc3158c877a3d61222aa7864006c"
+      "ref": "ed547a9ab77e8445f13f52fe2152d6e82776bcaf"
     }
   ],
   "instances": [
     {
       "instance": "bootstrap",
       "repository": "litlfred/bootstrap",
-      "sha": "9ecfb729b38b9196063fee76c6f7932f92502353",
+      "sha": "0d655b74e9ffd1e246a0bd4df60967e158d665de",
       "upstreamRoot": "",
       "path": "bootstrap",
       "via": "bootstrap",
       "pinnedBy": "declared",
       "declaration": {
         "file": "bootstrap.json",
-        "sha256": "4203f2b4eb0ac9fc3917014aedab966f82135f873062526d8940c1ae5f4fdfbf"
+        "sha256": "552302244e03debe8692429afc7c0385fbe8b2bed135be078ba3166970597ea3"
       },
       "directories": [
         {
           "id": "*",
           "path": "bootstrap",
           "upstreamPath": ".",
-          "treeDigest": "c4223a12266fcdff230b85571a8c40c5aa18b7347b6556b11e8a0cc15f5bfb2d",
-          "files": 47
+          "treeDigest": "5a530191098c1128c469a5925ef0a427a955224a069e731522548abc47f89f9e",
+          "files": 49
         }
       ],
       "trust": {
         "basis": "consent",
         "by": "litlfred",
-        "on": "2026-10-15",
-        "ref": "9ecfb729b38b9196063fee76c6f7932f92502353",
+        "on": "2026-11-01",
+        "ref": "0d655b74e9ffd1e246a0bd4df60967e158d665de",
         "approver": "declared"
       }
     },
     {
       "instance": "bootstrap-tools",
       "repository": "litlfred/bootstrap-tools",
-      "sha": "7dc55773590bbc3158c877a3d61222aa7864006c",
+      "sha": "ed547a9ab77e8445f13f52fe2152d6e82776bcaf",
       "upstreamRoot": "",
       "path": "bootstrap-tools",
       "via": "bootstrap-tools",
@@ -59,15 +59,15 @@
           "id": "*",
           "path": "bootstrap-tools",
           "upstreamPath": ".",
-          "treeDigest": "5e661501f24ce54516d6c9f7b72e58fa48e2c7269556516a341ab9e1f585b0ad",
-          "files": 90
+          "treeDigest": "6ef4dcb60fa3f52e0c91e0385b6990267f08d02563c2c2ddf0691fbdfe94a0c6",
+          "files": 94
         }
       ],
       "trust": {
         "basis": "consent",
         "by": "litlfred",
-        "on": "2026-10-15",
-        "ref": "7dc55773590bbc3158c877a3d61222aa7864006c",
+        "on": "2026-11-01",
+        "ref": "ed547a9ab77e8445f13f52fe2152d6e82776bcaf",
         "approver": "declared"
       }
     }

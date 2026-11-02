@@ -19,7 +19,7 @@ description: >
 
 > Skill id: `archimate-models` · Package: `ui-core` · Subgraph:
 > [`cat-harness/archimate/`](../../../archimate/README.md) · Tools:
-> `archimate-check`, `archimate-metamodel`, `archimate-blocks`, `archimate-pages`, `archimate-crossings`, `archimate-detangle` · Process:
+> `archimate-check`, `archimate-metamodel`, `archimate-blocks`, `archimate-pages`, `archimate-crossings`, `archimate-detangle`, `archimate-actors` · Process:
 > `archimate-publish` (`processes/ui/archimate-publish.bpmn`)
 
 Owner, 2026-10-09: *"need new specialixed harness (like openapi) for archimate
@@ -112,6 +112,41 @@ call. Cite the derived page instead of the view in the meantime.
 The steps run in this order, all in the pipeline lane of process
 `archimate-publish`: `archimate-check`, then `archimate-metamodel --check`,
 then `archimate-pages`. A refused relationship goes back to the model's author.
+
+## Actors come first; the model points at them
+
+smart-ra#166 D4, owner's choice of 2026-11-01. The SMART Guidelines order is
+fixed: a DAK's L2 generic personas become the IG's L3 FHIR ActorDefinitions,
+and the architecture realizes them (DPI-H RA §4.3.2). So **the ActorDefinitions
+are written in the IG, from the DAK personas, and the model only points at
+them.** A model author tags the box that realizes an actor in Archi with the
+property `fhir-actor`, whose value is the actor's canonical URL
+(`fhir-actor = http://smart.who.int/ra/ActorDefinition/FacilityRegistry`), the
+same way an element carries `skosConcept`.
+
+- Never generate an ActorDefinition, or any FSH, from the model. When the
+  model has a box with no actor, the actor is missing from the IG: add it there,
+  from the persona, then tag the box.
+- Never decide which box realizes which actor from names. That is the model
+  authors' call, made in Archi. A box may realize several actors (one tag each),
+  and an actor may be realized by several boxes.
+- A `#system` actor goes on an application or technology element (an
+  `ApplicationComponent`, an `ApplicationInterface`, a `Node`). A `#person`
+  actor goes on a `BusinessActor` or `BusinessRole`. Any other kind of element
+  cannot realize an actor.
+- Check the tags with the Tool `archimate-actors`:
+  `bun run cat archimate:actors --instance . --model <id>`. It fails on a value
+  that is not a canonical URL, a tag that names no ActorDefinition of the IG, an
+  element kind that cannot be an actor, and a type mismatch. It warns about each
+  ActorDefinition that no element realizes. With `--strict` that warning becomes
+  a failure. `--json` gives element → actors and actor → elements, for the
+  pages' back-links.
+
+**Data objects follow the same rule (D5).** A data object points at an existing
+logical model with `logical-model = <canonical>`. Write the logical model in the
+IG first. Never derive a logical model from the model's boxes. The data
+object's class diagram will be generated from that logical model once the IG
+holds one, so tag the data object now and do not draw the diagram.
 
 ## A document's tables and figures are drawn, not typed
 

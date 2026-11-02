@@ -101,7 +101,7 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Skill: `test-plan-execution`.
 - What: A complete, trusted run in which a case failed.
 - Record it: `workflow_complete` with `node: "A_RecordRefusal"`.
-- next: → `Call_BeanClose_2` (Close the bean)
+- next: → `Call_BeanClose` (Close the bean)
 
 ### 10. Record why it could not be decided (`A_RecordUndetermined`)
 
@@ -109,7 +109,7 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Skill: `test-plan-execution`.
 - What: The third state: which fact kept the table from deciding — a run not finished, an unknown data hash, an unexecuted case, a checker that disagreed or could not run, or nothing passed.
 - Record it: `workflow_complete` with `node: "A_RecordUndetermined"`.
-- next: → `Call_BeanClose_3` (Close the bean)
+- next: → `Call_BeanClose` (Close the bean)
 
 ### 11. Sign the certification (`Call_Sign`)
 
@@ -119,23 +119,15 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - A subprocess (`Process_QaReportSigning`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `A_FileCertification` (File the signed certification)
 
-### 12. Close the bean (`Call_BeanClose_2`)
+### 12. Close the bean (`Call_BeanClose`)
 
-- Who: the `Certifier` lane (role `certifier`).
+- Who: the `Attestation service` lane (role `attestation-service`).
 - Skill: `todo-manager`.
 - What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
 - A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Refused` (Refused)
+- next: → `GW_BeanClosedHow` (How did it end?)
 
-### 13. Close the bean (`Call_BeanClose_3`)
-
-- Who: the `Certifier` lane (role `certifier`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Undetermined` (Undetermined — nothing signed)
-
-### 14. File the signed certification (`A_FileCertification`)
+### 13. File the signed certification (`A_FileCertification`)
 
 - Who: the `Attestation service` lane (role `attestation-service`).
 - Skill: `test-plan-execution`.
@@ -143,22 +135,22 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Record it: `workflow_complete` with `node: "A_FileCertification"`.
 - next: → `Call_BeanClose` (Close the bean)
 
+### Decide — How did it end? (`GW_BeanClosedHow`)
+
+- Which outcome the bean was closed with, so each ends at its own named end event.
+- Call `workflow_complete` with `node: "GW_BeanClosedHow"` and `outcome` set to the label that holds:
+  - «certified» → `End_Certified` (Certified and signed)
+  - «refused» → `End_Refused` (Refused)
+  - «undetermined» → `End_Undetermined` (Undetermined — nothing signed)
+
+## Done — Certified and signed (`End_Certified`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
 ## Done — Refused (`End_Refused`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
 ## Done — Undetermined — nothing signed (`End_Undetermined`)
-
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 15. Close the bean (`Call_BeanClose`)
-
-- Who: the `Attestation service` lane (role `attestation-service`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Certified` (Certified and signed)
-
-## Done — Certified and signed (`End_Certified`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
