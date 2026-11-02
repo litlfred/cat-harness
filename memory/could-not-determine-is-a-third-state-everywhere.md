@@ -13,7 +13,7 @@ references:
 A section that cannot read its source returns `skip` and the region is left
 exactly as it was. Not decoration:
 
-- qou configured its simulators under `folio-assistant/simulators`, which
+- qou configured its simulators under the platform submodule's `simulators/`, which
   existed only once the platform submodule was checked out. The first version
   rendered "directory absent" as "this folio has no simulators" — replacing a
   correct nine-row table with a sentence. qou owns them outright since

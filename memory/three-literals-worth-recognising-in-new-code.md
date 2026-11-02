@@ -18,6 +18,6 @@ Each shipped once:
    pastes into an `import`.
 2. **Workflow descriptions from a hardcoded map of twelve `qou` filenames**,
    consulted *before* the workflow's own `name:`. Now always the `name:`.
-3. **The simulator directory as the literal `folio-assistant/simulators`.**
+3. **The simulator directory as a literal path inside the platform submodule.**
    Now `<name>.config.json`, and the fallback is the folio-root `simulators`
    — the platform has no such directory since 2026-09-19.
