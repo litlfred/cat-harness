@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: global-tasks\n"
-"POT-Creation-Date: 2026-11-01T22:18:39.650Z\n"
+"POT-Creation-Date: 2026-11-02T03:08:25.896Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -22,6 +22,11 @@ msgstr ""
 #: processes/global-tasks.bpmn:103
 #. Diagram label
 msgid "Append `retained` with the reason"
+msgstr ""
+
+#: processes/global-tasks.bpmn:124
+#. Diagram element documentation
+msgid "Back-translate the target-language .md into the source language and compare the meaning with the original (bean folio-assistant-ktt2). It catches semantic drift and terminology misses that a forward-only fluency check cannot see, and tells the two apart. Tool: the translation_validate MCP tool."
 msgstr ""
 
 #: processes/global-tasks.bpmn:81
@@ -59,9 +64,19 @@ msgstr ""
 msgid "Ensure the tracking label exists"
 msgstr ""
 
+#: processes/global-tasks.bpmn:111
+#. Diagram label
+msgid "Extract translatable strings (POT)"
+msgstr ""
+
 #: processes/global-tasks.bpmn:47
 #. Diagram element documentation
 msgid "Findings: EDIT the one open issue carrying the tracking label (the `label` input) if there is one, otherwise create it, with the report as the body. One issue edited in place, never a new issue or a comment per run, so the tracking issue never becomes a feed."
+msgstr ""
+
+#: processes/global-tasks.bpmn:117
+#. Diagram label
+msgid "Inject the PO into translated Markdown"
 msgstr ""
 
 #: processes/global-tasks.bpmn:46
@@ -69,14 +84,34 @@ msgstr ""
 msgid "Open or EDIT the one tracking issue"
 msgstr ""
 
+#: processes/global-tasks.bpmn:118
+#. Diagram element documentation
+msgid "Read the .po file and the source .md, substitute msgstr for msgid, unshield the placeholders, and write the translated .md to translations/<locale>/. Check structure (paragraph count, heading levels) and completeness (no empty msgstr), and lint (doubled punctuation, orphaned placeholders). Tool: the translation_inject MCP tool, or bun run content/pipeline/po-inject.ts."
+msgstr ""
+
 #: processes/global-tasks.bpmn:70
 #. Diagram label
 msgid "Record the sign-off as a requirement-signoff attestation"
 msgstr ""
 
+#: processes/global-tasks.bpmn:130
+#. Diagram element documentation
+msgid "Record the translation's standing in translations/<locale>/status.json. The `official` input says which: `false` records it as unofficial ({ official: false, generatedBy, generatedAt }), usable but shown with a warning badge; `true` records the human sign-off with the SHA-256 of the source .md, so a later change to the source marks it stale."
+msgstr ""
+
 #: processes/global-tasks.bpmn:96
 #. Diagram label
 msgid "Report what would move — sizes, and what breaks"
+msgstr ""
+
+#: processes/global-tasks.bpmn:123
+#. Diagram label
+msgid "Round-trip translation QA"
+msgstr ""
+
+#: processes/global-tasks.bpmn:112
+#. Diagram element documentation
+msgid "Scan the source content and write the translatable strings to .pot files at the configured granularity: segment prose by paragraph, shield what must not be translated (math, code, labels, Lean companions) as placeholders, normalise whitespace, and extract metadata such as titles, alt text and captions. Tool: the translation_extract MCP tool, or bun run content/pipeline/pot-extract.ts."
 msgstr ""
 
 #: processes/global-tasks.bpmn:31
@@ -112,4 +147,9 @@ msgstr ""
 #: processes/global-tasks.bpmn:88
 #. Diagram element documentation
 msgid "Work the PRs `seed:ready` named until the source settles: land or close the heavy movers and the next layer's PRs, bring the layer's open PRs to five or fewer, and finish any move in flight. Fix a red rehearsal or a discovery miss where it is. Nothing is seeded from here; it goes back to the gateway, which re-asks."
+msgstr ""
+
+#: processes/global-tasks.bpmn:129
+#. Diagram label
+msgid "Write status.json"
 msgstr ""

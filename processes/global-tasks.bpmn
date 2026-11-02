@@ -106,4 +106,36 @@ GW_SignoffRecorded after this reads the record back, so this step cannot be skip
       <bootstrap.processes:skill ref="render-logging"/>
     </bpmn:extensionElements>
   </bpmn:globalScriptTask>
+
+  <!-- translation-workflow and human-translation-workflow (shared block G7). -->
+  <bpmn:globalTask id="GT_ExtractPot" name="Extract translatable strings (POT)">
+    <bpmn:documentation>Scan the source content and write the translatable strings to .pot files at the configured granularity: segment prose by paragraph, shield what must not be translated (math, code, labels, Lean companions) as placeholders, normalise whitespace, and extract metadata such as titles, alt text and captions. Tool: the translation_extract MCP tool, or bun run content/pipeline/pot-extract.ts.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <bootstrap.processes:skill ref="translation-manager"/>
+    </bpmn:extensionElements>
+  </bpmn:globalTask>
+  <bpmn:globalTask id="GT_InjectPo" name="Inject the PO into translated Markdown">
+    <bpmn:documentation>Read the .po file and the source .md, substitute msgstr for msgid, unshield the placeholders, and write the translated .md to translations/&lt;locale&gt;/. Check structure (paragraph count, heading levels) and completeness (no empty msgstr), and lint (doubled punctuation, orphaned placeholders). Tool: the translation_inject MCP tool, or bun run content/pipeline/po-inject.ts.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <bootstrap.processes:skill ref="translation-manager"/>
+    </bpmn:extensionElements>
+  </bpmn:globalTask>
+  <bpmn:globalTask id="GT_RoundTripQa" name="Round-trip translation QA">
+    <bpmn:documentation>Back-translate the target-language .md into the source language and compare the meaning with the original (bean folio-assistant-ktt2). It catches semantic drift and terminology misses that a forward-only fluency check cannot see, and tells the two apart. Tool: the translation_validate MCP tool.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <bootstrap.processes:skill ref="translation-manager"/>
+    </bpmn:extensionElements>
+  </bpmn:globalTask>
+  <bpmn:globalTask id="GT_WriteTranslationStatus" name="Write status.json">
+    <bpmn:documentation>Record the translation's standing in translations/&lt;locale&gt;/status.json. The `official` input says which: `false` records it as unofficial ({ official: false, generatedBy, generatedAt }), usable but shown with a warning badge; `true` records the human sign-off with the SHA-256 of the source .md, so a later change to the source marks it stale.</bpmn:documentation>
+    <bpmn:extensionElements>
+      <bootstrap.processes:skill ref="translation-manager"/>
+    </bpmn:extensionElements>
+    <bpmn:ioSpecification id="GT_WriteTranslationStatus_IO">
+      <bpmn:dataInput id="GT_WriteTranslationStatus_official" name="official"/>
+      <bpmn:inputSet id="GT_WriteTranslationStatus_In"><bpmn:dataInputRefs>GT_WriteTranslationStatus_official</bpmn:dataInputRefs></bpmn:inputSet>
+      <bpmn:outputSet id="GT_WriteTranslationStatus_Out"/>
+    </bpmn:ioSpecification>
+  </bpmn:globalTask>
 </bpmn:definitions>
+
