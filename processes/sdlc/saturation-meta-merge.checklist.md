@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/sdlc/saturation-meta-merge.bpmn` (process `Process_SaturationMetaMerge`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Owner, 2026-11-02 06:57Z, with the runners full: cancel everything queued, pause new work, consolidate all ready PRs on one meta-merge branch, skip CI and rendering, and merge it.
+Landing a batch while the runners are full: cancel everything queued, pause new work, consolidate all ready PRs on one meta-merge branch, skip CI and rendering, and merge it, holding the swarm siblings until it is done.
 
 ## Begin — Runners saturated (`Start_Saturated`)
 
@@ -15,6 +15,7 @@ Owner, 2026-11-02 06:57Z, with the runners full: cancel everything queued, pause
 ### 1. Broadcast the hold to siblings (`Task_Hold`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
+- Skill: `merge-manager-watcher`.
 - What: Message every sibling that pushes to the repositories involved: what is about to land, and hold pushes, merges and run cancels until done.
 - Record it: `workflow_complete` with `node: "Task_Hold"`.
 - next: → `Task_SibHold` (Hold, and name the heads to merge)
@@ -22,6 +23,7 @@ Owner, 2026-11-02 06:57Z, with the runners full: cancel everything queued, pause
 ### 2. Hold, and name the heads to merge (`Task_SibHold`)
 
 - Who: the `Sibling session` lane (role `sibling-session`).
+- Skill: `saturation-meta-merge`.
 - What: A sibling that owns a PR in the batch names the head it wants merged.
 - Record it: `workflow_complete` with `node: "Task_SibHold"`.
 - next: → `Task_Ask` (Dry-run, then ask the owner naming every PR)
@@ -29,6 +31,7 @@ Owner, 2026-11-02 06:57Z, with the runners full: cancel everything queued, pause
 ### 3. Dry-run, then ask the owner naming every PR (`Task_Ask`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
+- Skill: `ask-the-person`.
 - What: Stack the PRs on a meta-merge branch without pushing.
 - Record it: `workflow_complete` with `node: "Task_Ask"`.
 - next: → `Task_Owner` (Choose A, B, C or D)
@@ -50,6 +53,7 @@ Owner, 2026-11-02 06:57Z, with the runners full: cancel everything queued, pause
 ### 5. Cancel queued PR runs; build, push, merge (`Task_Land`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
+- Skill: `saturation-meta-merge`.
 - What: Never cancel a main push run that has started.
 - Record it: `workflow_complete` with `node: "Task_Land"`.
 - next: → `Task_Done` (Post done to every held sibling)
@@ -57,6 +61,7 @@ Owner, 2026-11-02 06:57Z, with the runners full: cancel everything queued, pause
 ### 6. Post done to every held sibling (`Task_Done`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
+- Skill: `merge-manager-watcher`.
 - What: Post done with what landed and what is still open, also when nothing was merged.
 - Record it: `workflow_complete` with `node: "Task_Done"`.
 - next: → `Gw_Merged` (Merged?)
@@ -81,6 +86,7 @@ Owner, 2026-11-02 06:57Z, with the runners full: cancel everything queued, pause
 ### 8. Report what landed and main's verdict (`Task_Report`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
+- Skill: `merge-to-main`.
 - What: One message to the owner: what merged, main's verdict per repository, and any open decision.
 - Record it: `workflow_complete` with `node: "Task_Report"`.
 - next: → `End_Landed` (Landed and reported)
