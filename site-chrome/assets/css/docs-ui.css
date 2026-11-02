@@ -8975,8 +8975,8 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
 
 /* Every figure, diagram and table block of a document sits in one frame
  * (render-markdown.ts, `.fa-numbered`), so all document sites share this
- * look: the drawing or table centred, and the title and caption lines
- * centred at no more than two thirds of the column. */
+ * look: the drawing centred, and its title and caption lines centred at no
+ * more than two thirds of the column. Tables are the exception (below). */
 .fa-numbered {
   margin: 0.75em 0;
 }
@@ -8990,20 +8990,28 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
 .fa-numbered > p:has(> object) {
   max-width: none;
 }
+/* Tables sit at the start of the column, not centred (owner, 2026-11-02:
+ * "tables should be left aligned"). `start` is right in a right-to-left
+ * language. A table's title and caption go with it, to the same edge. */
 .fa-numbered > .table-wrapper,
-.fa-numbered > table {
-  margin-left: auto;
-  margin-right: auto;
-}
+.fa-numbered > table,
 .fa-numbered table {
   width: auto;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: 0 auto;
+}
+.fa-numbered-table > p {
+  max-width: none;
+  margin-inline: 0;
+  text-align: start;
 }
 .fa-numbered pre,
 .fa-numbered td,
 .fa-numbered th {
-  text-align: left;
+  text-align: start;
+}
+.fa-numbered td,
+.fa-numbered th {
+  vertical-align: top;
 }
 @media (max-width: 49.99rem) {
   .fa-numbered > p { max-width: none; }
