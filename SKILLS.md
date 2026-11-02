@@ -288,7 +288,8 @@ _254 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`watch`](skills/sdlc/sdlc-core/watch.md) | Background-watch a branch (default origin/main) or a GitHub PR for new activity while you work, and on every event report whether to integrate / whether it conflicts with the current branch /… |
 | [`where-a-proposal-goes`](skills/sdlc/sdlc-core/where-a-proposal-goes.md) | Where a proposal goes — the issue, not the documentation |
 | [`work-plan-restructure`](skills/sdlc/sdlc-core/work-plan-restructure.md) | Reorganise a work plan that has outgrown one-bean-at-a-time repair — session logs typed as epics, duplicate families, generated template beans, stale claims, unparented work — through a reviewed… |
-| [`work-plan-store`](skills/sdlc/sdlc-core/work-plan-store.md) | The contract the work plan (beans) keeps as a data store: give back a bean exactly as written, keep ids unique, keep links between beans pointing at beans that exist, keep status and type to their… |
+| [`work-plan-store`](skills/sdlc/sdlc-core/work-plan-store.md) | The contract the work plan (beans) keeps as a data store, as operations any Tool must provide: get, list, create, update with ifMatch, note, history, and where a bean is in its… |
+| [`work-plan-store-git-branch`](skills/sdlc/sdlc-core/work-plan-store-git-branch.md) | How the git state branch Tool performs the work-plan store's operations: the branch per graph, the mount at beans/, which command does get, list, create, update, note… |
 
 **`skills/sdlc/spec-kit/`** (3)
 
