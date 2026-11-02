@@ -21,7 +21,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Ask the person to do what only they can"
+          "@value": "Ask the person"
         }
       ],
       "skos:definition": [
@@ -201,7 +201,7 @@
       },
       "skos:prefLabel": [
         {
-          "@value": "Ask the Requestor: which harness, and where?"
+          "@value": "Ask which harness, and where"
         }
       ],
       "skos:definition": [
