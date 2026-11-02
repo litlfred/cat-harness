@@ -17,7 +17,7 @@ summary: >-
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
-**Status:** proposal, nothing built. Q1 to Q5 ruled 2026-11-02 (§7): Q1 B, Q2 A, Q3 A, Q4 A, Q5 A. §4.8 (the ITB as the test harness) added 19:07Z; Q6 ruled A (the ITB drives). Step 1 is draft PR #993.
+**Status:** proposal, nothing built. Q1 to Q5 ruled 2026-11-02 (§7): Q1 B, Q2 A, Q3 A, Q4 A, Q5 A. §4.8 (the ITB as the test harness) added 19:07Z; Q6 ruled A (the ITB drives). Q7 ruled B (archiving is a field set by `update`). Step 1 is draft PR #993.
 Issue [#991](https://github.com/litlfred/cat-harness/issues/991), bean
 `folio-assistant-bsd1`. It builds on the work-plan store contract
 ([`work-plan-store`](../../skills/sdlc/sdlc-core/work-plan-store.md), Q-DS-1 A
@@ -231,6 +231,13 @@ provide, each with its guarantee:
 | `note(id, text, by)` | appended, never rewritten |
 | `history(id)` | every change, oldest first: when, by whom, what, and from which process step |
 | `positions(id)`, `beansAt(process, node)` | where a bean is, read from the instances (§4.4) |
+
+**Archiving is a field, not an operation (ruled 2026-11-02, Q-BSD-7 B).**
+`update(id, { archived: true }, ifMatch)` archives a bean. It is refused unless
+the bean is `completed` or `scrapped` (`check:bean-archive`'s invariant);
+`get` still finds an archived bean, and `list` leaves it out unless asked.
+Each Tool decides where an archived bean lives: the git Tool keeps today's
+`defs/archive/`.
 
 Keep the six responsibilities and phrase each against the operations.
 "Lose nothing to a race" becomes "`update` with a stale `ifMatch` is refused,
@@ -477,3 +484,4 @@ would pay for; steps 1 to 8 are needed first and need neither.
 | Q4 | Where does history come from for the git Tool? | **Ruled A (2026-11-02): derived from git log plus instance histories**, no migration (§4.6) |
 | Q5 | Where does a benchmark run keep its beans and instances? | **Ruled A (2026-11-02): a run-scoped store Tool** (in memory, or a scratch branch per run) (§4.7) |
 | Q6 | Who drives a test run? | **Ruled A (2026-11-02): the ITB runs the Gherkin plan and calls the harness services** (§4.8) |
+| Q7 | How does the contract express archiving, which the engine's `archive` step does? | **Ruled B (2026-11-02): a field set by `update`**, not a new operation and not left outside the store (§4.1) |
