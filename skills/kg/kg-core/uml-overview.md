@@ -30,10 +30,17 @@ types a CONTENT model uses is derived from that model by its own Tool, never
 drawn: an ArchiMate model's "Metamodel in use" page is written by
 `archimate-metamodel` and `archimate-pages` (skill
 [`archimate-models`](../../ui/ui-core/archimate-models.md)). Owner,
-2026-10-31: *"i dont really like native UML, rather derived"*. The UML
-overview's `archimate` box still shows only `cat-archimate-config/v1`, the one
-node schema present in that directory; the model's own node shapes are drawn
-on the metamodel page, not here.
+2026-10-31: *"i dont really like native UML, rather derived"*.
+
+**A family no file carries can still be drawn: mark it `derived`.** The
+overview draws only the `$schema` families a directory's files carry, so a
+kind whose source files are read into a shape in memory (an `.archimate` file
+read into Model, Element, Relationship and View) drew nothing of that shape.
+Register the shape as a family with `derived: true` in the kind's
+`nodeSchemas`, give it a validator node naming its Zod schema, and the
+overview draws it wherever the kind is: the `archimate` kind's
+`archimate-model/v1` (`ArchimateModelSchema`, smart-ra#166 D2). Never invent a
+`$schema` tag on files to get a box drawn.
 
 **A group is a named sub-graph,** meaning one entry of a harness's declaration
 (`<instance>.json` `directories[]`), drawn as `<instance>/<entry id>`, for

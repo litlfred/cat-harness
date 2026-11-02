@@ -80,7 +80,7 @@ The gates a change must pass before it can merge: the jobs of the code-quality w
 - Skill: `platform-gates`.
 - What: The 43 repository-gate steps — workflow refs, lane and process documentation, kg:audit:check, detangle, skills, published packages — 150 `bun run` invocations in all.
 - Record it: `workflow_complete` with `node: "Task_RepositoryGates"`.
-- next: → `GW_Join`, → `Task_QaPublish` (Publish QA results to qa-reports (NOT A GATE))
+- next: → `Fork_RepositoryGates`
 
 ### 7. Skill-registration chain (UNMASKED) (`Task_SkillChain`)
 
@@ -105,6 +105,11 @@ The gates a change must pass before it can merge: the jobs of the code-quality w
 ## Done — Blocked (`End_Fail`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### Do all of — `Fork_RepositoryGates`
+
+- Work every branch; none is optional. Branches: → `GW_Join`, → `Task_QaPublish` (Publish QA results to qa-reports (NOT A GATE))
+- The engine passes through this gateway itself; there is nothing to record here.
 
 ### 9. Publish QA results to qa-reports (NOT A GATE) (`Task_QaPublish`)
 
