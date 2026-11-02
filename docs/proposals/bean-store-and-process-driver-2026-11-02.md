@@ -17,7 +17,7 @@ summary: >-
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
-**Status:** proposal, nothing built. Q1 ruled (instances only), Q2 ruled (deployment description), Q3 ruled (`beans-serve` first), Q4 ruled (git log + instances); Q5 open in §7.
+**Status:** proposal, nothing built. All five questions ruled 2026-11-02 (§7): Q1 B, Q2 A, Q3 A, Q4 A, Q5 A. Next: step 1 of §5.
 Issue [#991](https://github.com/litlfred/cat-harness/issues/991), bean
 `folio-assistant-bsd1`. It builds on the work-plan store contract
 ([`work-plan-store`](../../skills/sdlc/sdlc-core/work-plan-store.md), Q-DS-1 A
@@ -325,7 +325,7 @@ settings, and no new runner:
 |---|---|
 | system under test | model + launch Tool + configuration (the `req:model-benchmark` notion) |
 | route | **0** the case text only, no work order, no skills, no graph · **A** work order with skills, graph Tools withheld · **B** work order with skills and the knowledge-graph Tools |
-| store | a **run-scoped store** Tool (in memory, or a scratch branch per run), seeded from the case, never the real work plan |
+| store | a **run-scoped store** Tool (in memory, or a scratch branch per run), seeded from the case, never the real work plan (**ruled 2026-11-02, Q-BSD-5 A**) |
 
 - **Cases.** A Gherkin scenario from the test plan becomes a seeded bean and a
   started instance in the run's store. The `Given` seeds the store, the `When`
@@ -347,7 +347,7 @@ settings, and no new runner:
 
 | Step | Work | Repo | Depends on |
 |---|---|---|---|
-| 1 | Rewrite `work-plan-store.md` as operations (§4.1); add the Tool pages (§4.2), git commands moved there | cat-harness | owner OK on §7 |
+| 1 | Rewrite `work-plan-store.md` as operations (§4.1); add the Tool pages (§4.2), git commands moved there | cat-harness | §7 ruled |
 | 2 | Conformance tests for the operations, run against the git Tool | cat-harness-tools | 1 |
 | 3 | `WorkPlanStore` interface; `applyWorkPlanOp` through it (§4.3) | cat-harness-tools | 2 |
 | 4 | `positions` and `beansAt` store operations over the instances; bean in `TaskContext` (§4.4) | tools | 3 |
@@ -383,4 +383,4 @@ would pay for; steps 1 to 8 are needed first and need neither.
 | Q2 | How is the store Tool chosen? | **Ruled A (2026-11-02): by the deployment description**, per checkout (§4.3) |
 | Q3 | First `agent-launch` Tool? | **Ruled A (2026-11-02): `beans-serve` `sendAgentMessage`** (§4.5) |
 | Q4 | Where does history come from for the git Tool? | **Ruled A (2026-11-02): derived from git log plus instance histories**, no migration (§4.6) |
-| Q5 | Where does a benchmark run keep its beans and instances? | **A** a run-scoped store Tool (in memory, or a scratch branch per run) · B a dedicated benchmark branch shared by runs · C the real work plan, tagged |
+| Q5 | Where does a benchmark run keep its beans and instances? | **Ruled A (2026-11-02): a run-scoped store Tool** (in memory, or a scratch branch per run) (§4.7) |
