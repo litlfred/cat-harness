@@ -8975,8 +8975,8 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
 
 /* Every figure, diagram and table block of a document sits in one frame
  * (render-markdown.ts, `.fa-numbered`), so all document sites share this
- * look: the drawing or table centred, and the title and caption lines
- * centred at no more than two thirds of the column. */
+ * look: the drawing centred, and its title and caption lines centred at no
+ * more than two thirds of the column. Tables are the exception (below). */
 .fa-numbered {
   margin: 0.75em 0;
 }
@@ -8990,20 +8990,28 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
 .fa-numbered > p:has(> object) {
   max-width: none;
 }
+/* Tables sit at the start of the column, not centred (owner, 2026-11-02:
+ * "tables should be left aligned"). `start` is right in a right-to-left
+ * language. A table's title and caption go with it, to the same edge. */
 .fa-numbered > .table-wrapper,
-.fa-numbered > table {
-  margin-left: auto;
-  margin-right: auto;
-}
+.fa-numbered > table,
 .fa-numbered table {
   width: auto;
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: 0 auto;
+}
+.fa-numbered-table > p {
+  max-width: none;
+  margin-inline: 0;
+  text-align: start;
 }
 .fa-numbered pre,
 .fa-numbered td,
 .fa-numbered th {
-  text-align: left;
+  text-align: start;
+}
+.fa-numbered td,
+.fa-numbered th {
+  vertical-align: top;
 }
 @media (max-width: 49.99rem) {
   .fa-numbered > p { max-width: none; }
@@ -9053,6 +9061,50 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
 }
 .fa-block-meta p { margin: 0.15em 0; }
 .fa-block table { margin-top: 0.4em; }
+/* The kind label links to the document's structured-assets page: it keeps
+ * the label's look, and underlines only under the pointer or focus. */
+a.fa-block-kind { color: inherit; text-decoration: none; }
+a.fa-block-kind:hover, a.fa-block-kind:focus-visible { text-decoration: underline; opacity: 1; }
+/* A data element's details table, folded (owner, Q-DE-1 A): a quiet toggle. */
+.fa-block-details { margin-top: 0.25em; }
+.fa-block-details > summary { cursor: pointer; font-size: 0.8em; opacity: 0.7; width: max-content; }
+.fa-block-details > summary:hover, .fa-block-details[open] > summary { opacity: 1; }
+.fa-block-details > summary ~ * { margin-top: 0.4em; }
+
+/* An indicator's calculation, numerator over denominator (render-markdown.ts
+ * `indicatorParts`; owner 2026-11-02, card Q-IND-1 = A). A fraction bar in
+ * currentColor, so it reads in light and dark alike. */
+.fa-block-ratio {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  margin: 0.5em 0;
+  font-size: 0.95em;
+}
+.fa-block-ratio-frac {
+  display: inline-flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.fa-block-ratio-num,
+.fa-block-ratio-den {
+  padding: 0.15em 0.2em;
+}
+.fa-block-ratio-num {
+  border-bottom: 1.5px solid color-mix(in srgb, currentColor 55%, transparent);
+}
+.fa-block-ratio-label {
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  margin-right: 0.4em;
+}
+.fa-block-ratio-unit {
+  white-space: nowrap;
+  opacity: 0.8;
+}
 @media print {
   .fa-block { background: none; }
 }
@@ -9089,3 +9141,28 @@ table[data-fa-filtered] tr[hidden] { display: none !important; }
 .main-content h4 { font-size: 1.125rem; }
 .main-content h5 { font-size: 1rem; }
 .main-content h6 { font-size: 0.95rem; font-style: italic; }
+
+/* External glossaries a document cites, noted above its own glossary
+ * (folio-assistant-core external-glossaries.ts; owner, 2026-11-02: "link to
+ * it in the DTH-HRH glossary ... a feature of any ingested external library
+ * reference with a glossary"). A light card like the structured blocks. */
+.fa-ext-glossaries {
+  display: block;
+  margin: 0.6em 0 1em;
+  padding: 0.4em 0.8em;
+  border-left: 3px solid color-mix(in srgb, currentColor 22%, transparent);
+  border-radius: 0 4px 4px 0;
+  background: color-mix(in srgb, currentColor 3.5%, transparent);
+  font-size: 0.92em;
+}
+.fa-ext-glossaries .fa-block-kind {
+  font-size: 0.72em;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.68;
+  margin-right: 0.35em;
+}
+.fa-ext-glossaries-note {
+  opacity: 0.75;
+}
