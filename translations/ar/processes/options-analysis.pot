@@ -96,7 +96,7 @@ msgstr ""
 
 #: processes/sdlc/options-analysis.bpmn:79
 #. Diagram label
-msgid "Record the recommendation AND the rejected options"
+msgid "Record the chosen option AND the rejected ones"
 msgstr ""
 
 #: processes/sdlc/options-analysis.bpmn:53
