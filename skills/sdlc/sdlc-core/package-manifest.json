@@ -77,7 +77,8 @@
     "visual-diff",
     "watch",
     "where-a-proposal-goes",
-    "work-plan-restructure"
+    "work-plan-restructure",
+    "work-plan-store"
   ],
   "docker": {
     "baseImage": "ubuntu:24.04",
