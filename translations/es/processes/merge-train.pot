@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-train\n"
-"POT-Creation-Date: 2026-11-01T11:34:43.235Z\n"
+"POT-Creation-Date: 2026-11-02T04:04:25.119Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -166,17 +166,17 @@ msgstr ""
 
 #: processes/sdlc/merge-train.bpmn:114
 #. Diagram label
-msgid "Hand it back [merge-refusal]"
+msgid "Hand it back"
 msgstr ""
 
 #: processes/sdlc/merge-train.bpmn:244
 #. Diagram label
-msgid "Hand the culprit back [merge-refusal]"
+msgid "Hand the culprit back"
 msgstr ""
 
 #: processes/sdlc/merge-train.bpmn:254
 #. Diagram label
-msgid "Land each member [merge-to-main]"
+msgid "Land each member"
 msgstr ""
 
 #: processes/sdlc/merge-train.bpmn:19
@@ -201,7 +201,7 @@ msgstr ""
 
 #: processes/sdlc/merge-train.bpmn:162
 #. Diagram label
-msgid "Merge each member onto the base [merge-base]"
+msgid "Merge each member onto the base"
 msgstr ""
 
 #: processes/sdlc/merge-train.bpmn:32

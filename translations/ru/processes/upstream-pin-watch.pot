@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: upstream-pin-watch\n"
-"POT-Creation-Date: 2026-10-24T08:43:21.778Z\n"
+"POT-Creation-Date: 2026-11-01T09:16:44.215Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: processes/sdlc/upstream-pin-watch.bpmn:100
 #. Diagram label
-msgid "Close the bean [bean-close]"
+msgid "Close the bean"
 msgstr ""
 
 #: processes/sdlc/upstream-pin-watch.bpmn:70
@@ -131,7 +131,7 @@ msgstr ""
 
 #: processes/sdlc/upstream-pin-watch.bpmn:90
 #. Diagram label
-msgid "Open the bean [bean-open]"
+msgid "Open the bean"
 msgstr ""
 
 #: processes/sdlc/upstream-pin-watch.bpmn:29
