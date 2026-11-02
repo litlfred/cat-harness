@@ -178,7 +178,7 @@ disagreement N−2 more times, at full price.
 
 ## Adaptive reasoning routing and Andon-cord stopping (TCAndon-Router / 2601.04544v1)
 
-TCAndon-Router ([`arxiv-2601.04544v1`](../../../library/arxiv-2601.04544v1/README.md))
+TCAndon-Router ([`arxiv-2601.04544v1`](../../../library/sdlc/arxiv-2601.04544v1/README.md))
 refines two critical assumptions in swarm execution: **uniform model allocation**
 and **run-to-completion fan-out**.
 

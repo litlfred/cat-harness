@@ -116,6 +116,13 @@
       "label": "convention",
       "comment": "On a process, lane or task: a convention in force there. Attribute ref: the convention's id.",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/processes/ns"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/processes/ns#narrative",
+      "@type": "rdfs:Class",
+      "label": "narrative",
+      "comment": "On a task: where a reader finds the task's narrative text. Attribute href, relative to the diagram, usually a heading in the .md beside it (GDHCN.ONB.Apply.md#A.P.Interest). Descriptive only: the engine does not read it; it is there for the processes viewer and kg-export to follow (owner, 2026-11-01, Q-OB-17 A).",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/processes/ns"
     }
   ]
 }
