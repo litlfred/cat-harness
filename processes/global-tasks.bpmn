@@ -19,6 +19,17 @@
                   exporter="folio-assistant" exporterVersion="1">
   <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns#" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
 
+  <!-- The stores this layer's processes read and write (owner, 2026-11-01,
+       Q-BR-3 A and Q-DS-3 A). A store is not a lane: a process draws a
+       dataStoreReference whose dataStoreRef is one of these ids, and the
+       tasks that read or write it say so with data associations. Each id is
+       the store's Role id in scenarios/roles.json, where its store block says
+       what it holds and how it is reached, and its skills are its contract. -->
+  <bpmn:dataStore id="work-plan" name="Work plan (beans)"/>
+  <bpmn:dataStore id="corpus" name="Corpus"/>
+  <bpmn:dataStore id="log" name="Activity log"/>
+  <bpmn:dataStore id="session-record" name="Session record"/>
+
   <!-- The tracking issue a watch keeps: ci-health-watch, pr-checks-present,
        repository-health-watch. Each call names its own label. -->
   <bpmn:globalTask id="GT_EnsureTrackingLabel" name="Ensure the tracking&#10;label exists">
