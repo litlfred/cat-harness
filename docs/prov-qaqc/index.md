@@ -18,7 +18,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 ## Totals
 
-12 instance(s), 149 step(s) checked, 149 `prov:Activity` emitted, 124 finding(s). Policies evaluated: `https://litlfred.github.io/folio-assistant/policies/folio-defaults`, `https://litlfred.github.io/folio-assistant/policies/http-gateway`.
+12 instance(s), 141 step(s) checked, 141 `prov:Activity` emitted, 134 finding(s). Policies evaluated: `https://litlfred.github.io/folio-assistant/policies/folio-defaults`, `https://litlfred.github.io/folio-assistant/policies/http-gateway`.
 
 | finding | count | means |
 |---|---|---|
@@ -28,8 +28,8 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 | `not-eligible` | 2 | the actor's `roles` do not include the role the lane binds |
 | `unknown` | 79 | no ODRL policy grants `perform-task` here; `unknown` is never permit |
 | `deny` | 0 | an ODRL policy prohibits `perform-task` here |
-| `authz-disagrees` | 0 | the verdict recorded in the entry's `authz` differs from the one recomputed now |
-| `node-not-in-model` | 6 | the entry names a node its process model does not have |
+| `authz-disagrees` | 2 | the verdict recorded in the entry's `authz` differs from the one recomputed now |
+| `node-not-in-model` | 14 | the entry names a node its process model does not have |
 | `source-moved` | 18 | the `.bpmn` the instance recorded is gone; the diagram was found by file name, as `workflow_start` resolves one, and its process id matches the instance's |
 | `source-missing` | 0 | the `.bpmn` the instance recorded is gone and no diagram with that name and process id exists; nothing in it can be checked |
 | `unaddressed` | 16 | the agent, role or plan has no release address — its owning instance declares no `iriBase`, or no instance declares it — so the PROV-JSONLD record carries it as a literal, not a link (`linked-data` voice, `ld-link-is-the-node-release-address`) |
@@ -224,7 +224,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 ### sampleimport--xlg2-wpro-trial
 
-12 step(s) checked, 12 `prov:Activity` emitted, 4 finding(s). Sources: `large-datasets/processes/sample-import.bpmn`, `large-datasets/processes/materialize-remote.bpmn`. [PROV JSON-LD]({{ '/assets/prov/sampleimport--xlg2-wpro-trial.prov.jsonld' | relative_url }})
+8 step(s) checked, 8 `prov:Activity` emitted, 9 finding(s). Sources: `large-datasets/processes/sample-import.bpmn`, `large-datasets/processes/materialize-remote.bpmn`. [PROV JSON-LD]({{ '/assets/prov/sampleimport--xlg2-wpro-trial.prov.jsonld' | relative_url }})
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
@@ -232,10 +232,15 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 | `sampleimport--xlg2-wpro-trial` | 2 | `Call_Materialize` | `not-eligible` | claude may act as authoring-agent, business-analyst, code-reviewer, not as ingestion-agent |
 | `sampleimport--xlg2-wpro-trial` | 2 | `Call_Materialize` | `unknown` | no policy grants perform-task for Process_SampleImport/Call_Materialize as ingestion-agent |
 | `sampleimport--xlg2-wpro-trial/Call_Materialize` | (instance) | `Process_MaterializeRemote` | `source-moved` | large-datasets/processes/materialize-remote.bpmn does not exist; read cat-harness/processes/library/materialize-remote.bpmn, which defines Process_MaterializeRemote |
+| `sampleimport--xlg2-wpro-trial/Call_Materialize` | 4 | `Task_Restrictions` | `node-not-in-model` | Task_Restrictions is not a node of Process_MaterializeRemote as the diagram now stands |
+| `sampleimport--xlg2-wpro-trial/Call_Materialize` | 5 | `Task_Copyright` | `node-not-in-model` | Task_Copyright is not a node of Process_MaterializeRemote as the diagram now stands |
+| `sampleimport--xlg2-wpro-trial/Call_Materialize` | 6 | `Task_Retention` | `node-not-in-model` | Task_Retention is not a node of Process_MaterializeRemote as the diagram now stands |
+| `sampleimport--xlg2-wpro-trial/Call_Materialize` | 7 | `Task_SourceLoss` | `node-not-in-model` | Task_SourceLoss is not a node of Process_MaterializeRemote as the diagram now stands |
+| `sampleimport--xlg2-wpro-trial/Call_Materialize` | 9 | `Task_StayRef` | `authz-disagrees` | recorded vs recomputed: role corpus → ingestion-agent |
 
 ### sampleimport--xlg2-wpro-trial-original
 
-17 step(s) checked, 17 `prov:Activity` emitted, 4 finding(s). Sources: `large-datasets/processes/sample-import.bpmn`, `large-datasets/processes/materialize-remote.bpmn`. [PROV JSON-LD]({{ '/assets/prov/sampleimport--xlg2-wpro-trial-original.prov.jsonld' | relative_url }})
+13 step(s) checked, 13 `prov:Activity` emitted, 9 finding(s). Sources: `large-datasets/processes/sample-import.bpmn`, `large-datasets/processes/materialize-remote.bpmn`. [PROV JSON-LD]({{ '/assets/prov/sampleimport--xlg2-wpro-trial-original.prov.jsonld' | relative_url }})
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
@@ -243,6 +248,11 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 | `sampleimport--xlg2-wpro-trial-original` | 2 | `Call_Materialize` | `not-eligible` | claude may act as authoring-agent, business-analyst, code-reviewer, not as ingestion-agent |
 | `sampleimport--xlg2-wpro-trial-original` | 2 | `Call_Materialize` | `unknown` | no policy grants perform-task for Process_SampleImport/Call_Materialize as ingestion-agent |
 | `sampleimport--xlg2-wpro-trial-original/Call_Materialize` | (instance) | `Process_MaterializeRemote` | `source-moved` | large-datasets/processes/materialize-remote.bpmn does not exist; read cat-harness/processes/library/materialize-remote.bpmn, which defines Process_MaterializeRemote |
+| `sampleimport--xlg2-wpro-trial-original/Call_Materialize` | 4 | `Task_Restrictions` | `node-not-in-model` | Task_Restrictions is not a node of Process_MaterializeRemote as the diagram now stands |
+| `sampleimport--xlg2-wpro-trial-original/Call_Materialize` | 5 | `Task_Copyright` | `node-not-in-model` | Task_Copyright is not a node of Process_MaterializeRemote as the diagram now stands |
+| `sampleimport--xlg2-wpro-trial-original/Call_Materialize` | 6 | `Task_Retention` | `node-not-in-model` | Task_Retention is not a node of Process_MaterializeRemote as the diagram now stands |
+| `sampleimport--xlg2-wpro-trial-original/Call_Materialize` | 7 | `Task_SourceLoss` | `node-not-in-model` | Task_SourceLoss is not a node of Process_MaterializeRemote as the diagram now stands |
+| `sampleimport--xlg2-wpro-trial-original/Call_Materialize` | 10 | `Task_Declare` | `authz-disagrees` | recorded vs recomputed: role corpus → ingestion-agent |
 
 ## Regenerate
 
