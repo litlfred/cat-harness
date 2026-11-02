@@ -5848,11 +5848,6 @@
       // A pinned block with no picture draws ITS GRAPH KIND's avatar.
       box.appendChild(fallbackAvatar(a.kind === "pin" && kindWord(a.nodeKind) ? kindWord(a.nodeKind) : a.kind));
     }
-    // A bookmark is the document's own face with a ribbon on it; a pinned
-    // block wears a pin. Decorative: the card's name says what it is.
-    if (a.kind === "bookmark" || a.kind === "pin") {
-      box.appendChild(el("span", { class: "fa-glass-badge", "data-fa-badge": a.kind }, a.kind === "bookmark" ? "\uD83D\uDD16" : "\uD83D\uDCCC"));
-    }
     return box;
   }
 
@@ -7021,6 +7016,15 @@
         ? el("a", { class: "fa-glass-asset-name", href: href }, a.title)
         : el("span", { class: "fa-glass-asset-name" }, a.title));
       card.appendChild(face);
+      // A BOOKMARK wears a ribbon and a PINNED BLOCK a pin, on the CARD's top
+      // corner rather than inside the avatar: the avatar fills the card under
+      // the title strip, which would cover a badge drawn in it. Decorative:
+      // the card's name says what it is.
+      if (isPin) {
+        card.setAttribute("data-fa-badged", "");
+        card.appendChild(el("span", { class: "fa-glass-badge", "data-fa-badge": a.kind, "aria-hidden": "true" },
+          a.kind === "bookmark" ? "\uD83D\uDD16" : "\uD83D\uDCCC"));
+      }
       // What the card shows once it is its avatar (`gistOf`). Drawn only in
       // that state — the CSS hides it at full size, where the title and the
       // body already say it — and a <p>, so it is read as text when shown.

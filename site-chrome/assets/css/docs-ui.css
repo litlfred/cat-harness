@@ -4083,15 +4083,15 @@ a.fa-tile[data-fa-readonly]:focus-visible {
   background: rgba(var(--fa-glass-tint), 0.35);
 }
 .fa-glass-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
-/* A BOOKMARK wears a ribbon and a PINNED BLOCK a pin, in the avatar's top
- * right corner, over the document's cover or the graph kind's avatar (#982). */
-.fa-glass-avatar:has(> .fa-glass-badge) { position: relative; }
-.fa-glass-badge {
-  position: absolute; top: 0.2rem; right: 0.2rem;
-  font-size: 1.1rem; line-height: 1;
-  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45));
+/* A BOOKMARK wears a ribbon and a PINNED BLOCK a pin, on the card's top right
+ * corner above the title strip (#982); the title leaves room for it. */
+.fa-glass-asset > .fa-glass-badge {
+  position: absolute; top: 0.3rem; right: 0.4rem; z-index: 3;
+  font-size: 1.35rem; line-height: 1;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.5));
   pointer-events: none;
 }
+.fa-glass-asset[data-fa-badged] .fa-glass-asset-name { padding-right: 2.2rem; }
 /* The pin control any block may carry ([data-fa-pin-control]): faint until
  * its block is hovered, full colour while the block is on the glass. */
 [data-fa-pin-control] {
@@ -8308,6 +8308,8 @@ a.fa-harness-tab__body:focus-visible {
    the same as every other card is its avatar alone. */
 .fa-glass-asset[data-fa-zoom="avatar"] .fa-glass-sticky-body { display: none; }
 .fa-glass-asset:has(> .fa-glass-asset-face > .fa-glass-avatar) .fa-glass-asset-name { margin: -0.5rem -0.5rem 0; width: calc(100% + 1rem); box-sizing: border-box; }
+/* Room for a bookmark or pin badge on the title strip (#982). */
+.fa-glass-asset[data-fa-badged]:has(> .fa-glass-asset-face > .fa-glass-avatar) .fa-glass-asset-name { padding-right: 2.2rem; }
 /* Zoomed out to its avatar, the cover is the whole card: no strip over it. */
 .fa-glass-asset[data-fa-zoom="avatar"] .fa-glass-asset-tools { background: transparent; }
 /* On a phone the column gives a card no height of its own, so a covered card
