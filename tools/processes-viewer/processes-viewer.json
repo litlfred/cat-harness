@@ -55,7 +55,8 @@
       "network": false
     },
     "renders": [
-      "processes"
+      "processes",
+      "business-processes"
     ]
   },
   "$comment": [
