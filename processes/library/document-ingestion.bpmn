@@ -75,8 +75,7 @@ RENAMED 2026-09-30, and the id is deliberately unchanged. This event was named "
       <bpmn:outgoing>Flow_i1</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:task id="Task_Place" name="Place it in uploads/
-by a declared route
-[upload-routes]">
+by a declared route">
       <bpmn:documentation>THE FIRST LINK, and it did not exist until 2026-09-30. Everything downstream of here takes a file that is already in the queue, and both ingest Tools type their first input as "The upload to ingest, under the declared `uploads` graph". So the act of PUTTING it there was performed by three different mechanisms and governed by none of them.
 
 WHAT THIS STEP IS. The basic flow's ACCEPT step: choosing an arrival route, writing the bytes into the declared queue of the instance that will own them, and discharging what that route does not discharge for you. The routes, what each writer owes, and the two that are mechanisms against the one that is a persona are in the `upload-routes` skill; `upload-url` composes the forge URL for the web route from the declaration rather than from a literal, because a hand-written one 404'd.
@@ -108,8 +107,7 @@ The media type is sniffed from the leading bytes, never taken from the extension
       <bpmn:outgoing>Flow_referenced</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:serviceTask id="Task_PlaceInLibrary" name="Place the asset in
-library/&lt;slug&gt;/
-[library-ingestion]">
+library/&lt;slug&gt;/">
       <bpmn:documentation>The materialized branch. The asset lands in library/&lt;slug&gt;/ with its metadata record, its provenance and its fixity. The folder name IS the citation key, so a citation and a directory are the same string.
 
 The upload is then RETIRED, not left and not deleted: it moves to fsh-guts/uploads/ beside a sidecar naming where it came from and when (owner, 2026-09-29), and `check:uploads-retired` finds one that was not. A refining process that derives content from the bytes does so before that retirement; `library-ingestion` carries the rule.</bpmn:documentation>

@@ -114,8 +114,8 @@ The run, the report and the certification are three records, and they point back
       <bpmn:incoming>SF_Bean_1</bpmn:incoming>
     </bpmn:task>
 
-    <bpmn:task id="A_ResolvePlan" name="Resolve the plan&#10;[test-plan/v1]">
-      <bpmn:documentation>The plan parses, names at least one `req:` requirement, its `exitCriteria` resolves to a decision in a `.dmn` that exists, and its `scope.kind` is the system's facet kind. A plan that does not resolve is not run — `test-plan-resolves` audits the same join afterwards.</bpmn:documentation>
+    <bpmn:task id="A_ResolvePlan" name="Resolve the plan">
+      <bpmn:documentation>The plan parses, names at least one `req:` requirement, its `exitCriteria` resolves to a decision in a `.dmn` that exists, and its `scope.kind` is the system's facet kind. A plan that does not resolve is not run — `test-plan-resolves` audits the same join afterwards. Reads a `test-plan/v1`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-plan-execution" />
         <cat-harness.processes:bean op="note" />
@@ -124,7 +124,7 @@ The run, the report and the certification are three records, and they point back
       <bpmn:outgoing>F03</bpmn:outgoing>
     </bpmn:task>
 
-    <bpmn:task id="A_BindData" name="Bind the test data&#10;[fixed or generated]">
+    <bpmn:task id="A_BindData" name="Bind the test data">
       <bpmn:documentation>Per bean `vm6m`: a fixed set is a committed path and counts as evidence only once reviewed; a generated set is template + params + seed and is never materialised. Both feed the run's data hash, and nothing that feeds the process hash may feed it too.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-plan-execution" />
@@ -145,8 +145,8 @@ The run, the report and the certification are three records, and they point back
       <bpmn:outgoing>F05</bpmn:outgoing>
     </bpmn:task>
 
-    <bpmn:task id="A_WriteRun" name="Write the test run and the test report&#10;[folio-test-run/v1 + test-report/v1]">
-      <bpmn:documentation>The run records `plan {id, version}` and `sut {actor, version, reach}` with its data and process hashes; the report rolls up per plan, never across plans, and goes to the `qa-reports` branch at `tests/plan/sut/run/`. No verdict in it may name the system under test as its reviewer.</bpmn:documentation>
+    <bpmn:task id="A_WriteRun" name="Write the test run and the test report">
+      <bpmn:documentation>The run records `plan {id, version}` and `sut {actor, version, reach}` with its data and process hashes; the report rolls up per plan, never across plans, and goes to the `qa-reports` branch at `tests/plan/sut/run/`. No verdict in it may name the system under test as its reviewer. Writes a `folio-test-run/v1` and a `test-report/v1`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-plan-execution" />
         <cat-harness.processes:bean op="note" />
@@ -177,7 +177,7 @@ The run, the report and the certification are three records, and they point back
       <bpmn:outgoing>F_Undetermined</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
-    <bpmn:userTask id="A_RecordCertification" name="Record the certification decision&#10;[attestations]">
+    <bpmn:userTask id="A_RecordCertification" name="Record the certification decision">
       <bpmn:documentation>The judgement: the certifier records, under their own name, that the system meets plan P at this version on this run. It is written under the declared `attestations` graph beside the other judgements, never on the `qa-reports` branch with derived results. A user task, so no agent or pipeline can fill it.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-plan-execution" />
@@ -219,7 +219,7 @@ The run, the report and the certification are three records, and they point back
     </bpmn:callActivity>
 
     <bpmn:serviceTask id="A_FileCertification" name="File the signed certification">
-      <bpmn:documentation>The signed certification goes under the declared `attestations` graph on main (owner ruling D2 (a), D5 default), pointing at the report it certifies. The bean resolves here, once the process has actually finished.</bpmn:documentation>
+      <bpmn:documentation>The signed certification goes under the declared `attestations` graph on main (owner ruling D2 (a), D5 default), pointing at the report it certifies. The bean resolves here, once the process has actually finished. Files it as `qa-attestations/v1`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-plan-execution" />
         <cat-harness.processes:bean op="note" />
@@ -238,7 +238,7 @@ The run, the report and the certification are three records, and they point back
       <bpmn:incoming>SF_Bean_6</bpmn:incoming>
     </bpmn:endEvent>
 
-    <bpmn:callActivity id="Call_BeanOpen" name="Open the bean&#10;[bean-open]" calledElement="Process_BeanOpen">
+    <bpmn:callActivity id="Call_BeanOpen" name="Open the bean" calledElement="Process_BeanOpen">
       <bpmn:documentation>Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
       <bpmn:incoming>F01</bpmn:incoming>
@@ -254,7 +254,7 @@ The run, the report and the certification are three records, and they point back
       <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
       <bpmn:incoming>SF_Bean_3</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Call_BeanClose" name="Close the bean&#10;[bean-close]" calledElement="Process_BeanClose">
+    <bpmn:callActivity id="Call_BeanClose" name="Close the bean" calledElement="Process_BeanClose">
       <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
     </bpmn:callActivity>

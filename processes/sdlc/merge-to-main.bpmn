@@ -107,7 +107,7 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
       <bpmn:incoming>m5</bpmn:incoming>
       <bpmn:outgoing>m10</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:callActivity id="Call_HandBack" name="Hand it back&#10;[merge-refusal]" calledElement="Process_MergeRefusal">
+    <bpmn:callActivity id="Call_HandBack" name="Hand it back" calledElement="Process_MergeRefusal">
       <bpmn:documentation>Red CI, a conflict or a blocking review is the PR owner's to fix, not the merger's: `merge-refusal.bpmn` records the reason on the bean and returns the PR. The merger does not fix the PR to make it pass.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>

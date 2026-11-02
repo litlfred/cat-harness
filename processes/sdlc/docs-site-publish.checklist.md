@@ -10,9 +10,9 @@ Publish the docs site to `gh-pages`, verify the export before the deploy, and ke
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_DocsSite"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_SecurityGate` (Run the release security gate [security:gate])
+- next: → `Task_SecurityGate` (Run the release security gate)
 
-### 1. Run the release security gate [security:gate] (`Task_SecurityGate`)
+### 1. Run the release security gate (`Task_SecurityGate`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `security`.

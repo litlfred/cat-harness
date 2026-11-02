@@ -33,21 +33,21 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Skill: `test-plan-execution`.
 - What: Name the plan by id AND version, and the system under test by actor id.
 - Record it: `workflow_complete` with `node: "A_Request"`.
-- next: → `A_ResolvePlan` (Resolve the plan [test-plan/v1])
+- next: → `A_ResolvePlan` (Resolve the plan)
 
 ## Done — Not yours — left alone (`End_BeanNotYours`)
 
 - The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 3. Resolve the plan [test-plan/v1] (`A_ResolvePlan`)
+### 3. Resolve the plan (`A_ResolvePlan`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-plan-execution`.
 - What: The plan parses, names at least one `req:` requirement, its `exitCriteria` resolves to a decision in a `.dmn` that exists, and its `scope.kind` is the system's facet kind.
 - Record it: `workflow_complete` with `node: "A_ResolvePlan"`.
-- next: → `A_BindData` (Bind the test data [fixed or generated])
+- next: → `A_BindData` (Bind the test data)
 
-### 4. Bind the test data [fixed or generated] (`A_BindData`)
+### 4. Bind the test data (`A_BindData`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-plan-execution`.
@@ -61,9 +61,9 @@ Executing a `test-plan/v1` against a system under test and taking the result to 
 - Skill: `test-plan-execution`, `test-engineer`.
 - What: Every case in dependency order.
 - Record it: `workflow_complete` with `node: "A_Execute"`.
-- next: → `A_WriteRun` (Write the test run and the test report [folio-test-run/v1 + test-report/v1])
+- next: → `A_WriteRun` (Write the test run and the test report)
 
-### 6. Write the test run and the test report [folio-test-run/v1 + test-report/v1] (`A_WriteRun`)
+### 6. Write the test run and the test report (`A_WriteRun`)
 
 - Who: the `Tester` lane (role `tester`).
 - Skill: `test-plan-execution`.

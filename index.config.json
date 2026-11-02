@@ -17,7 +17,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap",
-          "ref": "0d655b74e9ffd1e246a0bd4df60967e158d665de",
+          "ref": "a83ae82db8a7d03c3febdf367a0a62b46c2eb0ed",
           "overrides": {
             "bootstrap": {
               "whole": true
@@ -27,9 +27,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-11-01",
-              "ref": "0d655b74e9ffd1e246a0bd4df60967e158d665de",
-              "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread cmsg_017WNUkNK8kdDziPK58Pv6G991qa3xg86ZCWdyH2spZ7FS): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.'"
+              "on": "2026-11-02",
+              "ref": "a83ae82db8a7d03c3febdf367a0a62b46c2eb0ed",
+              "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
             }
           }
         }
@@ -41,7 +41,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "ed547a9ab77e8445f13f52fe2152d6e82776bcaf",
+          "ref": "f57b9e72a5a4fd3777aa8c1cee33088ce5899188",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -54,9 +54,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-11-01",
-              "ref": "ed547a9ab77e8445f13f52fe2152d6e82776bcaf",
-              "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread cmsg_017WNUkNK8kdDziPK58Pv6G991qa3xg86ZCWdyH2spZ7FS): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.'"
+              "on": "2026-11-02",
+              "ref": "f57b9e72a5a4fd3777aa8c1cee33088ce5899188",
+              "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
             }
           }
         }

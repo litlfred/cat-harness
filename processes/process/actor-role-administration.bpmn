@@ -156,7 +156,7 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
       <bpmn:outgoing>A10</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
-    <bpmn:callActivity id="CallActivity_CodeChangeReview" name="Branch, gates, PR and review&#10;[code-change-review]" calledElement="Process_CodeChangeReview">
+    <bpmn:callActivity id="CallActivity_CodeChangeReview" name="Branch, gates, PR and review" calledElement="Process_CodeChangeReview">
       <bpmn:documentation>Called rather than restated. The mechanics of getting an edit reviewed and merged are not specific to the role graph, and a second description of them is a second thing free to disagree with the first.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="prepare-merge" />
@@ -166,8 +166,8 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
       <bpmn:outgoing>A11</bpmn:outgoing>
     </bpmn:callActivity>
 
-    <bpmn:serviceTask id="Task_RunKgAudit" name="Audit the graph&#10;[kg:audit]">
-      <bpmn:documentation>AFTER the change, not before. Every criterion here is a join — role to lane, actor to role, activity to skill — so what an administrative edit breaks is not in the file it edited. The sidecars under `test/results/kg-qa/` are committed for the reason a printed verdict is not: without them, "unbound since it was drawn" and "broken by this change" are indistinguishable.</bpmn:documentation>
+    <bpmn:serviceTask id="Task_RunKgAudit" name="Audit the graph">
+      <bpmn:documentation>AFTER the change, not before. Every criterion here is a join — role to lane, actor to role, activity to skill — so what an administrative edit breaks is not in the file it edited. The sidecars under `test/results/kg-qa/` are committed for the reason a printed verdict is not: without them, "unbound since it was drawn" and "broken by this change" are indistinguishable. Runs `kg:audit`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="role-model" />
       </bpmn:extensionElements>
