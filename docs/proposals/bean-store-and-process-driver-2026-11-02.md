@@ -17,7 +17,7 @@ summary: >-
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
-**Status:** proposal, nothing built. Q1 ruled (instances only), Q2 ruled (deployment description); Q3 to Q5 open in §7.
+**Status:** proposal, nothing built. Q1 ruled (instances only), Q2 ruled (deployment description), Q3 ruled (`beans-serve` first); Q4 and Q5 open in §7.
 Issue [#991](https://github.com/litlfred/cat-harness/issues/991), bean
 `folio-assistant-bsd1`. It builds on the work-plan store contract
 ([`work-plan-store`](../../skills/sdlc/sdlc-core/work-plan-store.md), Q-DS-1 A
@@ -290,7 +290,7 @@ store Tools:
 
 | Tool | Model | Exists today |
 |---|---|---|
-| `launch-beans-serve` | Claude (`claude` CLI) | yes, `sendAgentMessage` |
+| `launch-beans-serve` | Claude (`claude` CLI) | yes, `sendAgentMessage`. **First, ruled 2026-11-02 (Q-BSD-3 A)** |
 | `launch-claude-session` | Claude, cloud session or routine through its API | the API exists; no harness Tool |
 | `launch-antigravity` | Gemini through Antigravity, on the GCP project the concept note requests | prompts written by hand today |
 | `launch-copilot` | GitHub Copilot, assign-to-issue | the API exists; no harness Tool |
@@ -381,6 +381,6 @@ would pay for; steps 1 to 8 are needed first and need neither.
 |---|---|---|
 | Q1 | Where does a bean's position live? | **Ruled B (2026-11-02): only in the instances**, read through store operations (§4.4) |
 | Q2 | How is the store Tool chosen? | **Ruled A (2026-11-02): by the deployment description**, per checkout (§4.3) |
-| Q3 | First `agent-launch` Tool? | **A** `beans-serve` `sendAgentMessage` (exists) · B Claude Code session API · C Gemini through Antigravity · D local CLI agent |
+| Q3 | First `agent-launch` Tool? | **Ruled A (2026-11-02): `beans-serve` `sendAgentMessage`** (§4.5) |
 | Q4 | Where does history come from for the git Tool? | **A** derived from git log plus instance histories, no migration · B a new events file per bean on the branch |
 | Q5 | Where does a benchmark run keep its beans and instances? | **A** a run-scoped store Tool (in memory, or a scratch branch per run) · B a dedicated benchmark branch shared by runs · C the real work plan, tagged |
