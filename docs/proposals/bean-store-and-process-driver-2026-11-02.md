@@ -17,7 +17,7 @@ summary: >-
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
-**Status:** proposal, nothing built. Q1 to Q5 ruled 2026-11-02 (§7): Q1 B, Q2 A, Q3 A, Q4 A, Q5 A. §4.8 (the ITB as the test harness) added 19:07Z; Q6 open. Step 1 is draft PR #993.
+**Status:** proposal, nothing built. Q1 to Q5 ruled 2026-11-02 (§7): Q1 B, Q2 A, Q3 A, Q4 A, Q5 A. §4.8 (the ITB as the test harness) added 19:07Z; Q6 ruled A (the ITB drives). Step 1 is draft PR #993.
 Issue [#991](https://github.com/litlfred/cat-harness/issues/991), bean
 `folio-assistant-bsd1`. It builds on the work-plan store contract
 ([`work-plan-store`](../../skills/sdlc/sdlc-core/work-plan-store.md), Q-DS-1 A
@@ -364,9 +364,9 @@ settings, and no new runner:
 
 ### 4.8 The ITB as the test harness (N13, N14)
 
-The ITB (GITB, through OpenTestBed Gherkin as already ruled, D4 = I1 in
-[the ITB proposal](test-interop-itb-fhir-testplan-2026-10-24.md)) orchestrates
-the test. The harness gives it a small set of services, each a Tool, so a
+The ITB drives the run (**ruled 2026-11-02, Q-BSD-6 A**). It uses GITB, through OpenTestBed Gherkin as already ruled (D4 = I1 in
+[the ITB proposal](test-interop-itb-fhir-testplan-2026-10-24.md)), and
+orchestrates the test. The harness gives it a small set of services, each a Tool, so a
 test step is a call and not a script:
 
 | Service | Does |
@@ -476,4 +476,4 @@ would pay for; steps 1 to 8 are needed first and need neither.
 | Q3 | First `agent-launch` Tool? | **Ruled A (2026-11-02): `beans-serve` `sendAgentMessage`** (§4.5) |
 | Q4 | Where does history come from for the git Tool? | **Ruled A (2026-11-02): derived from git log plus instance histories**, no migration (§4.6) |
 | Q5 | Where does a benchmark run keep its beans and instances? | **Ruled A (2026-11-02): a run-scoped store Tool** (in memory, or a scratch branch per run) (§4.7) |
-| Q6 | Who drives a test run? | **A** the ITB runs the Gherkin plan and calls the harness services (§4.8) · B the harness runs the plan itself and sends the ITB a TAR afterwards · C both: the harness runs locally for development, the ITB for recorded runs |
+| Q6 | Who drives a test run? | **Ruled A (2026-11-02): the ITB runs the Gherkin plan and calls the harness services** (§4.8) |
