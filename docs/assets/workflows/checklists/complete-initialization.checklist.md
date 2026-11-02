@@ -34,6 +34,11 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 - Skill: `initialization-steps`.
 - What: In the order of the table in `initialization-steps`: declaration, needs, each dependency's instructions, the documents at their IRIs (checked above, and listed first), directories, assets, README, README sections, site.
 - Record it: `workflow_complete` with `node: "A_ListSteps"`.
+- next: → `GW_NextStep_Join`
+
+### Merge — `GW_NextStep_Join`
+
+- Nothing to do or decide: the paths meet here and the engine passes through.
 - next: → `GW_NextStep` (A step not yet checked?)
 
 ### Decide — A step not yet checked? (`GW_NextStep`)
@@ -78,7 +83,7 @@ A SUB-PROCESS of initialize-harness, called after a harness is installed and als
 - Skill: `initialization-steps`.
 - What: The step, the declaration that named it, its state, what was seen, and — for anything not done — exactly what to do next.
 - Record it: `workflow_complete` with `node: "A_RecordStep"`.
-- next: → `GW_NextStep` (A step not yet checked?)
+- next: → `GW_NextStep_Join`
 
 ### 7. Do it, then check again (`A_PerformStep`)
 
