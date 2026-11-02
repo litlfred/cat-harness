@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: feature-staging\n"
-"POT-Creation-Date: 2026-11-01T21:56:13.009Z\n"
+"POT-Creation-Date: 2026-11-02T03:08:26.145Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:64
 #. Diagram label
-msgid "Build the docs site Jekyll · TypeDoc · KG export"
+msgid "Build the docs site"
 msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:65
@@ -41,7 +41,7 @@ msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:148
 #. Diagram label
-msgid "Check the slug's SHAPE and that the confirmation repeats it"
+msgid "Check the slug and its confirmation"
 msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:30
@@ -151,7 +151,7 @@ msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:72
 #. Diagram label
-msgid "Push to the CDN at STAGING/&lt;slug&gt;/"
+msgid "Push to the CDN under STAGING/"
 msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:156
@@ -186,7 +186,7 @@ msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:118
 #. Diagram label
-msgid "Remove the preview AND append `removed` — one commit"
+msgid "Remove the preview and log it"
 msgstr ""
 
 #: processes/sdlc/feature-staging.bpmn:184

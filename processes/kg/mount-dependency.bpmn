@@ -152,63 +152,69 @@ Every instance reached ends in one of three states — mounted, missing, could-n
   <bpmndi:BPMNDiagram id="Diagram_MountDependency">
     <bpmndi:BPMNPlane id="Plane_MountDependency" bpmnElement="Process_MountDependency">
       <bpmndi:BPMNShape id="S_Lane_Author" bpmnElement="Lane_Author" isHorizontal="true">
-        <dc:Bounds x="160" y="60" width="1470" height="140"/>
+        <dc:Bounds x="160" y="60" width="1470" height="140" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Lane_Pipeline" bpmnElement="Lane_Pipeline" isHorizontal="true">
-        <dc:Bounds x="160" y="200" width="1470" height="240"/>
+        <dc:Bounds x="160" y="200" width="1470" height="240" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_LayerNeeded" bpmnElement="Start_LayerNeeded">
-        <dc:Bounds x="200" y="112" width="36" height="36"/>
+        <dc:Bounds x="200" y="112" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_DeclareMount" bpmnElement="Task_DeclareMount">
-        <dc:Bounds x="270" y="90" width="170" height="80"/>
+        <dc:Bounds x="270" y="90" width="170" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_ResolveClosure" bpmnElement="Task_ResolveClosure">
-        <dc:Bounds x="270" y="270" width="170" height="80"/>
+        <dc:Bounds x="295" y="250" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_MountInstances" bpmnElement="Task_MountInstances">
-        <dc:Bounds x="480" y="270" width="170" height="80"/>
+        <dc:Bounds x="505" y="250" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_WriteLock" bpmnElement="Task_WriteLock">
-        <dc:Bounds x="690" y="270" width="150" height="80"/>
+        <dc:Bounds x="705" y="250" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RenderAgentSurface" bpmnElement="Task_RenderAgentSurface">
-        <dc:Bounds x="880" y="270" width="170" height="80"/>
+        <dc:Bounds x="905" y="250" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_CheckAgainstLock" bpmnElement="Task_CheckAgainstLock">
-        <dc:Bounds x="1090" y="270" width="170" height="80"/>
+        <dc:Bounds x="1115" y="250" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_State" bpmnElement="GW_State" isMarkerVisible="true">
-        <dc:Bounds x="1300" y="285" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1232.01" y="350.5" width="90" height="71" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="1300" y="285" width="50" height="50" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1232.01" y="350.5" width="90" height="71" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_Mounted" bpmnElement="End_Mounted">
-        <dc:Bounds x="1410" y="232" width="36" height="36"/>
+        <dc:Bounds x="1410" y="232" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_Reported" bpmnElement="End_Reported">
-        <dc:Bounds x="1410" y="362" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1450" y="344" width="135" height="72" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        <dc:Bounds x="1410" y="362" width="36" height="36" />
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1450" y="344" width="135" height="72" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="E_F_D1" bpmnElement="F_D1">
         <di:waypoint x="236" y="130"/><di:waypoint x="270" y="130"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_D2" bpmnElement="F_D2">
-        <di:waypoint x="355" y="170"/><di:waypoint x="355" y="270"/>
+        <di:waypoint x="355" y="170" />
+        <di:waypoint x="355" y="270" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_D3" bpmnElement="F_D3">
-        <di:waypoint x="440" y="310"/><di:waypoint x="480" y="310"/>
+        <di:waypoint x="415" y="310" />
+        <di:waypoint x="505" y="310" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_D4" bpmnElement="F_D4">
-        <di:waypoint x="650" y="310"/><di:waypoint x="690" y="310"/>
+        <di:waypoint x="625" y="310" />
+        <di:waypoint x="705" y="310" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_D5" bpmnElement="F_D5">
-        <di:waypoint x="840" y="310"/><di:waypoint x="880" y="310"/>
+        <di:waypoint x="825" y="310" />
+        <di:waypoint x="905" y="310" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_D5b" bpmnElement="F_D5b">
-        <di:waypoint x="1050" y="310"/><di:waypoint x="1090" y="310"/>
+        <di:waypoint x="1025" y="310" />
+        <di:waypoint x="1115" y="310" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_D6" bpmnElement="F_D6">
-        <di:waypoint x="1260" y="310"/><di:waypoint x="1300" y="310"/>
+        <di:waypoint x="1235" y="310" />
+        <di:waypoint x="1300" y="310" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_D7" bpmnElement="F_D7">
         <di:waypoint x="1325" y="285"/><di:waypoint x="1325" y="250"/><di:waypoint x="1410" y="250"/>

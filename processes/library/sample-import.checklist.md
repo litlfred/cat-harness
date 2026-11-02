@@ -10,7 +10,7 @@ The SDLC for testing an import of a SAMPLE of a remote source into a knowledge g
 
 - Begin here: The caller names a source (ideally one with a source descriptor in the declared sources/ of the instance that owns the corpus) and a reason to try it.
 - Call `workflow_start` with `process: "Process_SampleImport"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_Scope` (Scope the sample: which items, which store, and is it PERMANENT?)
+- next: → `Task_Scope` (Scope the sample: items, store, permanence)
 
 ## Begin — A permanent sample is due or changed upstream (`StartEvent_Upstream`)
 
@@ -18,7 +18,7 @@ The SDLC for testing an import of a SAMPLE of a remote source into a knowledge g
 - Call `workflow_start` with `process: "Process_SampleImport"` and the subject this run is about; keep the instance id it returns.
 - next: → `Call_Refresh` (Refresh materialized content)
 
-### 1. Scope the sample: which items, which store, and is it PERMANENT? (`Task_Scope`)
+### 1. Scope the sample: items, store, permanence (`Task_Scope`)
 
 - Who: the `Contributor (human or agent)` lane (role `user`).
 - Skill: `sample-import`.
@@ -101,7 +101,7 @@ The SDLC for testing an import of a SAMPLE of a remote source into a knowledge g
 
 ### 7. Record what failed (`Task_RecordFindings`)
 
-- Who: the `Corpus — L1 source knowledge graph` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `sample-import`.
 - What: Which check failed, on which items, and the evidence.
 - Record it: `workflow_complete` with `node: "Task_RecordFindings"`.

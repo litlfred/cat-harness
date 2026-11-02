@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: crdm-close\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.109Z\n"
+"POT-Creation-Date: 2026-11-02T04:04:25.005Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -96,7 +96,7 @@ msgstr ""
 
 #: processes/process/crdm-close.bpmn:55
 #. Diagram label
-msgid "Record the sign-off as a requirement-signoff attestation"
+msgid "Record the sign-off attestation"
 msgstr ""
 
 #: processes/process/crdm-close.bpmn:57

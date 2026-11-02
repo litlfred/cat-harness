@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: test-data-curation\n"
-"POT-Creation-Date: 2026-11-02T03:11:07.045Z\n"
+"POT-Creation-Date: 2026-11-02T04:04:25.167Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:76
 #. Diagram label
-msgid "Author fixed set in test-data-fixed/ with $schema test-data-fixed/1.0.0"
+msgid "Author the fixed test data set"
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:27
@@ -36,7 +36,7 @@ msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:122
 #. Diagram element documentation
-msgid "BOUND BY THE CONTENT TYPE, so no `calledElement` is written here: each specialisation process belongs to the layer that owns its content type (fhir-harness, folio-assistant-core, folio-assistant-sci), and a lower layer cannot name a higher layer\\'s process. The specialisation is the one Task_DetermineSpecialisation found; so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own."
+msgid "BOUND BY THE CONTENT TYPE, so no `calledElement` is written here: each specialisation process belongs to the layer that owns its content type, and a lower layer cannot name a higher layer\\'s process. The specialisation is the one Task_DetermineSpecialisation found; so no single content-type `calledElement` is hardcoded here: the activity names `test-data-sets`, and each content-type adapter supplies its own specialisation subprocess. `fhir-templating` (`FHIR_TEMPLATING_SPECIALISATION`) is one named specialisation for FHIR IG / DAK content (MeasureReport cohorts, questionnaire responses, bundle templates) — named as such, not the platform design; document folios (`markdown-fixture`), proof folios (`lean-counterexample`), and tabular cohorts (`tabular-cohort`) supply their own."
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:97
@@ -209,14 +209,14 @@ msgstr ""
 msgid "When the fixed data set exercises clinical/scientific decision support or an indicator definition, it must pass SME review (`Process_SmeTestDataReview`) before `review` is recorded and the set can stand as certification evidence."
 msgstr ""
 
-#: processes/sdlc/test-data-curation.bpmn:131
-#. Diagram label
-msgid "Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0"
-msgstr ""
-
 #: processes/sdlc/test-data-curation.bpmn:77
 #. Diagram element documentation
 msgid "Write the curated `records` and optional `citations` with `$schema: \"test-data-fixed/1.0.0\"` and `kind: \"fixed\"` into the instance's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema."
+msgstr ""
+
+#: processes/sdlc/test-data-curation.bpmn:131
+#. Diagram label
+msgid "Write the generated-data recipe"
 msgstr ""
 
 #: processes/sdlc/test-data-curation.bpmn:193

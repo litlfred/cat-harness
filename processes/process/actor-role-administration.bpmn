@@ -206,13 +206,13 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
   <bpmndi:BPMNDiagram id="Diagram_ActorRoleAdministration">
     <bpmndi:BPMNPlane id="Plane_ActorRoleAdministration" bpmnElement="Collaboration_ActorRoleAdministration">
       <bpmndi:BPMNShape id="Shape_Participant_ActorRoleAdministration" bpmnElement="Participant_ActorRoleAdministration" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1550" height="530" />
+        <dc:Bounds x="160" y="80" width="1550" height="564" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Administrator" bpmnElement="Lane_Administrator" isHorizontal="true">
         <dc:Bounds x="190" y="80" width="1520" height="420" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Audit" bpmnElement="Lane_Audit" isHorizontal="true">
-        <dc:Bounds x="190" y="500" width="1520" height="110" />
+        <dc:Bounds x="190" y="500" width="1520" height="144" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_AdminRequest" bpmnElement="Start_AdminRequest">
@@ -220,7 +220,7 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
         <dc:Bounds x="250" y="260" width="36" height="36" />
       <bpmndi:BPMNLabel><dc:Bounds x="219.59" y="303.5" width="112" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_WhichChange_Join" bpmnElement="Gateway_WhichChange_Join" isMarkerVisible="true">
-        <dc:Bounds x="355" y="253" width="50" height="50"/>
+        <dc:Bounds x="355" y="253" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_Gateway_WhichChange_Join" bpmnElement="Flow_Gateway_WhichChange_Join">
         <di:waypoint x="405" y="278"/>
@@ -247,15 +247,15 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
         <dc:Bounds x="790" y="253" width="50" height="50" />
       <bpmndi:BPMNLabel><dc:Bounds x="816" y="195.5" width="110" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_CallActivity_CodeChangeReview" bpmnElement="CallActivity_CodeChangeReview">
-        <dc:Bounds x="910" y="231.5" width="180" height="93" />
+        <dc:Bounds x="940" y="218" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_RunKgAudit" bpmnElement="Task_RunKgAudit">
-        <dc:Bounds x="920" y="520" width="160" height="70" />
+        <dc:Bounds x="940" y="512" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gateway_AuditClean" bpmnElement="Gateway_AuditClean" isMarkerVisible="true">
         
         <dc:Bounds x="1195" y="253" width="50" height="50" />
-      <bpmndi:BPMNLabel><dc:Bounds x="1101" y="269.5" width="90" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="1175" y="307" width="90" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Administered" bpmnElement="End_Administered">
         
         <dc:Bounds x="1382" y="260" width="36" height="36" />
@@ -315,16 +315,17 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A10" bpmnElement="A10">
         <di:waypoint x="840" y="278" />
-        <di:waypoint x="910" y="278" />
+        <di:waypoint x="940" y="278" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A11" bpmnElement="A11">
         <di:waypoint x="1000" y="324.5" />
         <di:waypoint x="1000" y="520" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A12" bpmnElement="A12">
-        <di:waypoint x="1080" y="555" />
-        <di:waypoint x="1220" y="555" />
-        <di:waypoint x="1220" y="303" />
+        <di:waypoint x="1060" y="572" />
+        <di:waypoint x="1127.5" y="572" />
+        <di:waypoint x="1127.5" y="278" />
+        <di:waypoint x="1195" y="278" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A13" bpmnElement="A13">
         <bpmndi:BPMNLabel><dc:Bounds x="1224" y="168" width="30" height="17" /></bpmndi:BPMNLabel>

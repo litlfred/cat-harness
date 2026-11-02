@@ -48,20 +48,20 @@ TOOL-AGNOSTIC ON PURPOSE. Owner, 2026-09-30: &quot;tools can describe their own 
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
     </bpmn:task>
     <bpmn:exclusiveGateway id="GW_Tool" name="Which CDN?">
-      <bpmn:documentation>Answered by the target just determined and the Tool registry. GitHub Pages runs bootstrap-tools\' process by name. Another CDN whose Tool satisfies `render-kg-to-cdn` runs that Tool\'s own process, which a higher layer owns (who-iris\'s Cloudflare publish, for one), so this layer cannot name it. No Tool for the target reports not-pushed and names the missing Tool, rather than guessing a mechanism.</bpmn:documentation>
+      <bpmn:documentation>Answered by the target just determined and the Tool registry. GitHub Pages runs bootstrap-tools\' process by name. Another CDN whose Tool satisfies `render-kg-to-cdn` runs that Tool\'s own process, which a higher layer owns (a Cloudflare publish, for one), so this layer cannot name it. No Tool for the target reports not-pushed and names the missing Tool, rather than guessing a mechanism.</bpmn:documentation>
       <bpmn:incoming>Flow_2</bpmn:incoming>
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
       <bpmn:outgoing>Flow_3b</bpmn:outgoing>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Call_GitHubPages" name="Render and push to&#10;GitHub Pages" calledElement="Process_RenderKgToGitHubPages">
-      <bpmn:documentation>The `gh-pages` Tool's process, bootstrap-tools' render-kg-to-github-pages: make sure gh-pages exists and Pages serves it, stage, check the staging, commit onto gh-pages, check what is served. It returns the status and the message Task_Report records.</bpmn:documentation>
+    <bpmn:callActivity id="Call_GitHubPages" name="Render and push to&#10;GitHub Pages">
+      <bpmn:documentation>BOUND BY THE TOOL, so no `calledElement` is written here: the `gh-pages` Tool lists the process this descends into, render-kg-to-github-pages, and that process is held by a layer cat-harness does not need, so naming it would bind upward. What it does: make sure gh-pages exists and Pages serves it, stage, check the staging, commit onto gh-pages, check what is served. It returns the status and the message Task_Report records.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="render-kg-to-cdn"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_3</bpmn:incoming>
       <bpmn:outgoing>Flow_5b</bpmn:outgoing>
     </bpmn:callActivity>
     <bpmn:callActivity id="Call_ToolSubprocess" name="Render and push with&#10;that CDN's own Tool">
-      <bpmn:documentation>BOUND BY THE TOOL, so no `calledElement` is written here, and only on this branch: the CDN is not GitHub Pages, and its Tool, which a higher layer owns (who-iris\'s Cloudflare publish, for one), lists the process this descends into. A lower layer cannot name a higher layer\'s process. Whatever the Tool, it returns the same status and message.</bpmn:documentation>
+      <bpmn:documentation>BOUND BY THE TOOL, so no `calledElement` is written here, and only on this branch: the CDN is not GitHub Pages, and its Tool, which a higher layer owns (a Cloudflare publish, for one), lists the process this descends into. A lower layer cannot name a higher layer\'s process. Whatever the Tool, it returns the same status and message.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="render-kg-to-cdn"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_3b</bpmn:incoming>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
@@ -107,15 +107,15 @@ TOOL-AGNOSTIC ON PURPOSE. Owner, 2026-09-30: &quot;tools can describe their own 
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Render" bpmnElement="Start_Render">
         <dc:Bounds x="212" y="212" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="201.09" y="271.5" width="90" height="72" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="201.09" y="271.5" width="90" height="72" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Resolve" bpmnElement="Task_Resolve">
-        <dc:Bounds x="288" y="190" width="180" height="80" />
+        <dc:Bounds x="318" y="170" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Tool" bpmnElement="GW_Tool" isMarkerVisible="true">
         <dc:Bounds x="508" y="205" width="50" height="50" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="432.5" y="164.5" width="90" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="562" y="259" width="90" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_GitHubPages" bpmnElement="Call_GitHubPages">
         <dc:Bounds x="668" y="95" width="180" height="80" />
       </bpmndi:BPMNShape>
@@ -123,12 +123,12 @@ TOOL-AGNOSTIC ON PURPOSE. Owner, 2026-09-30: &quot;tools can describe their own 
         <dc:Bounds x="668" y="190" width="180" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Report" bpmnElement="Task_Report">
-        <dc:Bounds x="903" y="190" width="150" height="80" />
+        <dc:Bounds x="918" y="170" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Pushed" bpmnElement="GW_Pushed" isMarkerVisible="true">
         <dc:Bounds x="1113" y="205" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1045" y="270.5" width="90" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1045" y="270.5" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Pushed" bpmnElement="End_Pushed">
         <dc:Bounds x="1235" y="142" width="36" height="36" />
       </bpmndi:BPMNShape>
@@ -138,17 +138,21 @@ TOOL-AGNOSTIC ON PURPOSE. Owner, 2026-09-30: &quot;tools can describe their own 
       <bpmndi:BPMNLabel><dc:Bounds x="1275" y="282" width="90" height="108" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_1" bpmnElement="Flow_1">
         <di:waypoint x="248" y="230" />
-        <di:waypoint x="288" y="230" />
+        <di:waypoint x="318" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_2" bpmnElement="Flow_2">
-        <di:waypoint x="468" y="230" />
+        <di:waypoint x="438" y="230" />
         <di:waypoint x="508" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_3" bpmnElement="Flow_3"><di:waypoint x="533" y="205"/><di:waypoint x="533" y="135"/><di:waypoint x="668" y="135"/>
         <bpmndi:BPMNLabel><dc:Bounds x="504.25" y="96" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_3b" bpmnElement="Flow_3b"><di:waypoint x="558" y="230"/><di:waypoint x="668" y="230"/><bpmndi:BPMNLabel><dc:Bounds x="566" y="236" width="90" height="20"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_5b" bpmnElement="Flow_5b"><di:waypoint x="848" y="135"/><di:waypoint x="978" y="135"/><di:waypoint x="978" y="190"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_5b" bpmnElement="Flow_5b">
+        <di:waypoint x="848" y="135" />
+        <di:waypoint x="978" y="135" />
+        <di:waypoint x="978" y="190" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
         <di:waypoint x="533" y="255" />
         <di:waypoint x="533" y="340" />
@@ -157,10 +161,10 @@ TOOL-AGNOSTIC ON PURPOSE. Owner, 2026-09-30: &quot;tools can describe their own 
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
         <di:waypoint x="848" y="230" />
-        <di:waypoint x="903" y="230" />
+        <di:waypoint x="918" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
-        <di:waypoint x="1053" y="230" />
+        <di:waypoint x="1038" y="230" />
         <di:waypoint x="1113" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_7" bpmnElement="Flow_7">

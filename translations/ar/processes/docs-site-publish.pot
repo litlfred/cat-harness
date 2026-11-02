@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: docs-site-publish\n"
-"POT-Creation-Date: 2026-11-01T21:56:13.004Z\n"
+"POT-Creation-Date: 2026-11-02T04:04:25.087Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -161,7 +161,7 @@ msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:133
 #. Diagram label
-msgid "Push to the CDN gh-pages, FULL REPLACE"
+msgid "Push to the CDN (full replace)"
 msgstr ""
 
 #: processes/sdlc/docs-site-publish.bpmn:178

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-train\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.184Z\n"
+"POT-Creation-Date: 2026-11-02T04:04:25.122Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"

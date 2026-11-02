@@ -33,13 +33,13 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Skill: `kg-subscription`.
 - What: `owner/repo` and a 40-character commit SHA — never a branch, never an abbreviated SHA.
 - Record it: `workflow_complete` with `node: "Task_Pin"`.
-- next: → `Task_Validate` (Fetch the root declaration at the pin, and validate it)
+- next: → `Task_Validate` (Fetch and validate the pinned declaration)
 
 ## Done — Not yours — left alone (`End_BeanNotYours`)
 
 - The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 3. Fetch the root declaration at the pin, and validate it (`Task_Validate`)
+### 3. Fetch and validate the pinned declaration (`Task_Validate`)
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `kg-subscription`.
@@ -56,7 +56,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 
 ### 4. Record why it is not a substrate; write no entry (`Task_Refuse`)
 
-- Who: the `Corpus — the subscriber's declaration` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `kg-subscription`.
 - What: No subscription entry is written for a repository that is not a substrate.
 - Record it: `workflow_complete` with `node: "Task_Refuse"`.
@@ -71,7 +71,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 
 ### 5. Close the bean (`Call_BeanClose`)
 
-- Who: the `Corpus — the subscriber's declaration` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `todo-manager`.
 - What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
 - A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
@@ -79,7 +79,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 
 ### 6. Write the entry and cache the declaration (`Task_Record`)
 
-- Who: the `Corpus — the subscriber's declaration` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `kg-subscription`.
 - What: The `subscriptions` entry in the subscriber's instance declaration — id, repository, ref, and nothing chosen yet — plus a cached copy of the substrate's declaration at the pin.
 - Record it: `workflow_complete` with `node: "Task_Record"`.
@@ -138,7 +138,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 
 ### 10. Move the entry's ref and re-cache the declaration (`Task_RePin`)
 
-- Who: the `Corpus — the subscriber's declaration` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `kg-subscription`.
 - What: Only after every held part has been through the refresh.
 - Record it: `workflow_complete` with `node: "Task_RePin"`.
@@ -181,7 +181,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Walks the chosen harnesses, whose needs the pre-check already found held.
 - Call `workflow_complete` with `node: "Gateway_NextHarness"` and `outcome` set to the label that holds:
   - «yes» → `Task_Instantiate` (Instantiate the harness: write its config)
-  - «no, every harness walked» → `Task_Summarise` (Record how the walk ended, part by part)
+  - «no, every harness walked» → `Task_Summarise` (Record how each part of the walk ended)
 
 ### 12. Instantiate the harness: write its config (`Task_Instantiate`)
 
@@ -191,9 +191,9 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Record it: `workflow_complete` with `node: "Task_Instantiate"`.
 - next: → `Gateway_NextHarness_Join`
 
-### 13. Record how the walk ended, part by part (`Task_Summarise`)
+### 13. Record how each part of the walk ended (`Task_Summarise`)
 
-- Who: the `Corpus — the subscriber's declaration` lane (role `corpus`).
+- Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `kg-subscription`.
 - What: One line per offered part: materialised, referenced by choice, or referenced because a gate refused (and which).
 - Record it: `workflow_complete` with `node: "Task_Summarise"`.

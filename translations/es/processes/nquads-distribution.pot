@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: nquads-distribution\n"
-"POT-Creation-Date: 2026-10-29T13:02:26.434Z\n"
+"POT-Creation-Date: 2026-11-01T11:34:43.095Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -19,6 +19,11 @@ msgstr ""
 msgid "All partitions under 5 MB / 50k quads budget?"
 msgstr ""
 
+#: processes/kg/nquads-distribution.bpmn:112
+#. Diagram label
+msgid "Audit the manifest and schemas"
+msgstr ""
+
 #: processes/kg/nquads-distribution.bpmn:41
 #. Diagram element documentation
 msgid "Automated CI validation and deployment pipeline: validates schema conformance, enforces graph availability guards, and publishes to GitHub Pages."
@@ -27,11 +32,6 @@ msgstr ""
 #: processes/kg/nquads-distribution.bpmn:127
 #. Diagram label
 msgid "CI Gate Failed"
-msgstr ""
-
-#: processes/kg/nquads-distribution.bpmn:112
-#. Diagram label
-msgid "CI Gate Verification: Audit Manifest & Schemas"
 msgstr ""
 
 #: processes/kg/nquads-distribution.bpmn:40
