@@ -251,6 +251,28 @@ page links to the definition.
   ([`term-disagreement`](../../library/library-core/term-disagreement.md)),
   not something to settle by renaming in Archi.
 
+## The model is never a source of the glossary
+
+Owner, 2026-11-02: *"i dont want ArchiMate to be source of SKOS (unless it
+was ingested)"*.
+
+**An authored model depicts concepts; it never defines them.** Meaning lives
+in the SKOS glossary, read from the source documents. So:
+
+- Never write a term, label, definition, `focus` or relationship into a
+  glossary from a model someone authored in Archi. An element with no term
+  is a term to add from the source's own words, not from the box.
+- The glossary may drive the model (`archimate-from-glossary`, in
+  folio-assistant-core): names, documentation and relationships flow from
+  the terms into the model, and Archi keeps the layout.
+- The term pages' "depicted by" links read `skosConcept` on each build and
+  write nothing into the glossary, so they are allowed.
+- The one exception is an **ingested** model, received from elsewhere and
+  held as a source under the instance's `library/`. It may seed the glossary
+  once (`archimate-from-glossary --seed --from library/…`), like any other
+  ingested source. The Tool refuses `--seed` on any model outside
+  `library/`.
+
 ## No Java, no Archi CLI, no Archi report — ever
 
 The Archi command line (`com.archimatetool.commandline.app`) renders an HTML
