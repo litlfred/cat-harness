@@ -56,10 +56,14 @@ bun run cat state:push
 
 ## How it keeps the race guarantee
 
-The contract's `ifMatch` is the branch tip. A push that is refused because the
-tip moved fetches, rebuilds the change on the new tip and pushes again; it is
-never forced. Two sessions writing the same bean both land, and the later one
-sees the earlier one's change before it writes.
+The contract's `ifMatch` is the blob id of the bean file the writer read
+(`BranchStore`'s `expect`). A write whose file has changed at the tip since
+that read is refused as a conflict, so the caller re-reads and retries. A push
+refused only because the tip moved for another file fetches, rebuilds the
+change on the new tip and pushes again. It is never forced. Two sessions
+writing the same bean both land, and the later one sees the earlier one's
+change before it writes. The conformance suite holds this Tool to it
+(cat-harness-tools#1418).
 
 ## Limits
 
