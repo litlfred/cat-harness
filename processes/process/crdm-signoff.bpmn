@@ -46,8 +46,10 @@ no `create` op — it claims, notes and resolves the instance's OWN bean — so
 what this step records here is a note that the plan now exists.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="todo-manager"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
+      <bpmn:dataOutputAssociation id="DOA_Beans_A_CreateBeans">
+        <bpmn:targetRef>DSR_beans_A_CreateBeans</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:callActivity id="BA_Signoff" name="Sign off on&#10;requirements" calledElement="Process_Adjudication">
       <bpmn:documentation>The business analyst / requester signs off on the agreed requirement set, on the issue: what was agreed and what was deferred. Recorded as their decision, with its reason, never by an agent on their behalf. Since issue #2405 (FR-013) it IS an adjudication: it calls Process_Adjudication with the requirement-set answers, and every answer goes through A_RecordSignoff before anything follows it.</bpmn:documentation>
@@ -85,8 +87,10 @@ result recorded in the bean before the first edit.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="crdm-requirements-workflow"/>
         <bootstrap.processes:skill ref="coordinate"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
+      <bpmn:dataOutputAssociation id="DOA_Beans_A_AnnounceBranch">
+        <bpmn:targetRef>DSR_beans_A_AnnounceBranch</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:endEvent id="End_Process_CRDM_Signoff" name="Phase complete"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Signoff_1" sourceRef="Start_Process_CRDM_Signoff" targetRef="A_CreateBeans"/>
@@ -129,10 +133,12 @@ The default creates NOTHING. An agent that decides on its own that a requirement
 `op="note"` and not `create`, for the reason `A_CreateBeans` above states: the engine has no `create` op — it claims, notes and resolves the instance's OWN bean. The agent mints the authoring bean itself with `beans create`, running the exact-title existence check first, and what this step records is a note that the decision was taken.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="placement"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>SF_Kg_3</bpmn:incoming>
       <bpmn:outgoing>SF_Kg_4</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_A_RecordKg">
+        <bpmn:targetRef>DSR_beans_A_RecordKg</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Signoff_3" sourceRef="BA_Signoff" targetRef="A_RecordSignoff"/>
     <bpmn:sequenceFlow id="SF_Signoff_Gate" sourceRef="A_RecordSignoff" targetRef="GW_SignoffRecorded"/>
@@ -145,6 +151,9 @@ The default creates NOTHING. An agent that decides on its own that a requirement
     <bpmn:sequenceFlow id="SF_Kg_4" sourceRef="A_RecordKg" targetRef="A_AnnounceBranch"/>
     <bpmn:sequenceFlow id="SF_Kg_None" name="none — recorded&#10;as an answer" sourceRef="GW_KgChosen" targetRef="A_AnnounceBranch"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Signoff_4" sourceRef="A_AnnounceBranch" targetRef="End_Process_CRDM_Signoff"/>
+    <bpmn:dataStoreReference id="DSR_beans_A_CreateBeans" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_A_AnnounceBranch" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_A_RecordKg" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_CRDM_Signoff">
     <bpmndi:BPMNPlane id="Plane_Process_CRDM_Signoff" bpmnElement="Collaboration_Process_CRDM_Signoff">
@@ -264,6 +273,12 @@ The default creates NOTHING. An agent that decides on its own that a requirement
         <di:waypoint x="1780" y="335" />
         <di:waypoint x="1850" y="335" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_A_CreateBeans" bpmnElement="DSR_beans_A_CreateBeans"><dc:Bounds x="560" y="413" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="560" y="455" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_A_CreateBeans" bpmnElement="DOA_Beans_A_CreateBeans"><di:waypoint x="580" y="395"/><di:waypoint x="580" y="413"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_A_AnnounceBranch" bpmnElement="DSR_beans_A_AnnounceBranch"><dc:Bounds x="1700" y="413" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1700" y="455" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_A_AnnounceBranch" bpmnElement="DOA_Beans_A_AnnounceBranch"><di:waypoint x="1720" y="395"/><di:waypoint x="1720" y="413"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_A_RecordKg" bpmnElement="DSR_beans_A_RecordKg"><dc:Bounds x="1596" y="440" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1640" y="453" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_A_RecordKg" bpmnElement="DOA_Beans_A_RecordKg"><di:waypoint x="1580" y="460"/><di:waypoint x="1596" y="460"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

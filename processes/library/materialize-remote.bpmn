@@ -109,12 +109,14 @@ SOURCE LOSS. Not hypothetical. The one IRIS record this repository holds carries
       <bpmn:documentation>The node's state moves from `referenced` to `materialized`, carrying purpose, localPath, gates and (archival) fixity. There is NO default state: a node that has not said is invalid, because 'the author did not say' and 'the author said they could not tell' are different facts.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="materialize-remote"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_6</bpmn:incoming>
       <bpmn:outgoing>Flow_7</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DOA_Task_Declare">
         <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Declare">
+        <bpmn:targetRef>DSR_beans_Task_Declare</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Done" name="Local copy exists, with its five answers">
@@ -124,12 +126,14 @@ SOURCE LOSS. Not hypothetical. The one IRIS record this repository holds carries
       <bpmn:documentation>A refusal is not a failure of the process — it is the process working. The node stays `referenced`, which means the graph still knows it exists and where, and the refusing gate's basis is recorded so the next caller does not re-litigate it.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="materialize-remote"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_No</bpmn:incoming>
       <bpmn:outgoing>Flow_8</bpmn:outgoing>
       <bpmn:dataOutputAssociation id="DOA_Task_StayRef">
         <bpmn:targetRef>DSR_corpus</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_StayRef">
+        <bpmn:targetRef>DSR_beans_Task_StayRef</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
     <bpmn:endEvent id="EndEvent_Refused" name="Not materialized, and the graph says why">
@@ -146,6 +150,8 @@ SOURCE LOSS. Not hypothetical. The one IRIS record this repository holds carries
     <bpmn:sequenceFlow id="Flow_7" sourceRef="Task_Declare" targetRef="EndEvent_Done"/>
     <bpmn:sequenceFlow id="Flow_8" sourceRef="Task_StayRef" targetRef="EndEvent_Refused"/>
     <bpmn:dataStoreReference id="DSR_corpus" name="Corpus" dataStoreRef="corpus"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Declare" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_StayRef" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_MaterializeRemote">
     <bpmndi:BPMNPlane id="Plane_Process_MaterializeRemote" bpmnElement="Collaboration_Process_MaterializeRemote">
@@ -242,6 +248,10 @@ SOURCE LOSS. Not hypothetical. The one IRIS record this repository holds carries
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_DOA_Task_Declare" bpmnElement="DOA_Task_Declare"><di:waypoint x="1070" y="545"/><di:waypoint x="1070" y="575"/><di:waypoint x="915" y="575"/><di:waypoint x="915" y="600"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_DOA_Task_StayRef" bpmnElement="DOA_Task_StayRef"><di:waypoint x="760" y="545"/><di:waypoint x="760" y="575"/><di:waypoint x="915" y="575"/><di:waypoint x="915" y="600"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Declare" bpmnElement="DSR_beans_Task_Declare"><dc:Bounds x="1080" y="367" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1124" y="380" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Declare" bpmnElement="DOA_Beans_Task_Declare"><di:waypoint x="1100" y="425"/><di:waypoint x="1100" y="407"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_StayRef" bpmnElement="DSR_beans_Task_StayRef"><dc:Bounds x="836" y="505" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="880" y="518" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_StayRef" bpmnElement="DOA_Beans_Task_StayRef"><di:waypoint x="820" y="525"/><di:waypoint x="836" y="525"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

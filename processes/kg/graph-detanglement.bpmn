@@ -122,10 +122,12 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
       <bpmn:documentation>The only four moves. Move the shared TARGET first and the importers after; check the target's layer before the importer's; a schema moves with its script. The fix is never an exemption, it is the right owner.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="graph-detanglement"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>G8</bpmn:incoming>
       <bpmn:outgoing>G7</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Move">
+        <bpmn:targetRef>DSR_beans_Task_Move</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
 
     <bpmn:task id="Task_Isolate" name="3 · Isolate — own declaration,&#10;namespace, artefact">
@@ -237,6 +239,7 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
     <bpmn:sequenceFlow id="SF_Bean_4" sourceRef="Call_BeanClose" targetRef="End_Declined"/>
     <bpmn:sequenceFlow id="SF_Bean_5" sourceRef="Call_BeanClose_2" targetRef="End_Extracted"/>
     <bpmn:sequenceFlow id="SF_Bean_6" sourceRef="Call_BeanClose_3" targetRef="End_Unknown"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Move" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="Diagram_Process_GraphDetanglement">
@@ -412,6 +415,8 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
         <di:waypoint x="1352" y="440" />
         <di:waypoint x="1392" y="440" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Move" bpmnElement="DSR_beans_Task_Move"><dc:Bounds x="1220" y="212" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1264" y="225" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Move" bpmnElement="DOA_Beans_Task_Move"><di:waypoint x="1240" y="270"/><di:waypoint x="1240" y="252"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

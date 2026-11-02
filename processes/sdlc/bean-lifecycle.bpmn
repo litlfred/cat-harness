@@ -88,8 +88,10 @@ produced them, and record what you now know that the next agent does not. A
 bean whose body is a title is a placeholder, not a plan.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="todo-manager"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Work">
+        <bpmn:targetRef>DSR_beans_Task_Work</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
 
     <bpmn:callActivity id="Call_BeanClose" name="Close the bean" calledElement="Process_BeanClose">
@@ -105,6 +107,7 @@ bean whose body is a title is a placeholder, not a plan.</bpmn:documentation>
     <bpmn:sequenceFlow id="BF_4" name="claimed" sourceRef="GW_Yours" targetRef="Task_Work"/>
     <bpmn:sequenceFlow id="BF_5" sourceRef="Task_Work" targetRef="Call_BeanClose"/>
     <bpmn:sequenceFlow id="BF_6" sourceRef="Call_BeanClose" targetRef="End_Recorded"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Work" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="BPMNDiagram_BeanLifecycle">
@@ -146,6 +149,8 @@ bean whose body is a title is a placeholder, not a plan.</bpmn:documentation>
         <di:waypoint x="935" y="208" />
         <di:waypoint x="1010" y="208" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Work" bpmnElement="DSR_beans_Task_Work"><dc:Bounds x="650" y="90" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="694" y="103" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Work" bpmnElement="DOA_Beans_Task_Work"><di:waypoint x="670" y="148"/><di:waypoint x="670" y="130"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

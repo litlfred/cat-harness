@@ -80,8 +80,10 @@ Disagreement about which quadrant a factor belongs in is an OUTPUT of this step,
 A scan that silently forced every factor into one quadrant would report a cleanliness the method does not have. This is the same third-state discipline the rest of this repository applies to "could not determine": an unclassifiable factor is a finding, not a blank.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="swot-analysis"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
+      <bpmn:dataOutputAssociation id="DOA_Beans_A_RecordAmbiguous">
+        <bpmn:targetRef>DSR_beans_A_RecordAmbiguous</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="A_Cross" name="Cross the axes&#10;into SO, WO, ST, WT">
       <bpmn:documentation>The TOWS matching step, and the only step that produces anything actionable. Strengths and weaknesses across, opportunities and threats down, and each cell names the strategy the pairing implies: SO — achieve opportunities that greatly match the strengths; WO — overcome weaknesses to attain opportunities; ST — use strengths to reduce vulnerability to threats; WT — prevent weaknesses, to avoid becoming more susceptible to threats.
@@ -121,17 +123,18 @@ What is handed over includes the ambiguities from A_RecordAmbiguous and the fact
     <bpmn:sequenceFlow id="SF_Process_SwotAnalysis_8" name="yes" sourceRef="GW_DecisionFollows" targetRef="A_HandOff"/>
     <bpmn:sequenceFlow id="SF_Process_SwotAnalysis_9" name="no" sourceRef="GW_DecisionFollows" targetRef="End_SituationRecorded"/>
     <bpmn:sequenceFlow id="SF_Process_SwotAnalysis_10" sourceRef="A_HandOff" targetRef="End_HandedToDecision"/>
+    <bpmn:dataStoreReference id="DSR_beans_A_RecordAmbiguous" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_SwotAnalysis">
     <bpmndi:BPMNPlane id="Plane_Process_SwotAnalysis" bpmnElement="Collaboration_Process_SwotAnalysis">
       <bpmndi:BPMNShape id="Shape_Participant_Process_SwotAnalysis" bpmnElement="Participant_Process_SwotAnalysis" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1340" height="280" />
+        <dc:Bounds x="160" y="80" width="1340" height="360" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BusinessAnalyst" bpmnElement="Lane_BusinessAnalyst" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1310" height="180" />
+        <dc:Bounds x="190" y="80" width="1310" height="260" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Stakeholder" bpmnElement="Lane_Stakeholder" isHorizontal="true">
-        <dc:Bounds x="190" y="260" width="1310" height="100" />
+        <dc:Bounds x="190" y="340" width="1310" height="100" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_SwotAnalysis" bpmnElement="Start_Process_SwotAnalysis">
         <dc:Bounds x="232" y="152" width="36" height="36" />
@@ -147,7 +150,7 @@ What is handed over includes the ambiguities from A_RecordAmbiguous and the fact
         <dc:Bounds x="640" y="130" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_GroupReview" bpmnElement="A_GroupReview">
-        <dc:Bounds x="640" y="270" width="120" height="80" />
+        <dc:Bounds x="640" y="350" width="120" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_RecordAmbiguous" bpmnElement="A_RecordAmbiguous">
         <dc:Bounds x="800" y="130" width="120" height="80" />
@@ -166,8 +169,8 @@ What is handed over includes the ambiguities from A_RecordAmbiguous and the fact
         <dc:Bounds x="1400" y="152" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_SituationRecorded" bpmnElement="End_SituationRecorded">
-        <dc:Bounds x="1127" y="222" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1167" y="222" width="180" height="36" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="1127" y="302" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1167" y="302" width="180" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_1" bpmnElement="SF_Process_SwotAnalysis_1">
         <di:waypoint x="268" y="170" /><di:waypoint x="320" y="170" />
@@ -179,10 +182,10 @@ What is handed over includes the ambiguities from A_RecordAmbiguous and the fact
         <di:waypoint x="600" y="170" /><di:waypoint x="640" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_4" bpmnElement="SF_Process_SwotAnalysis_4">
-        <di:waypoint x="700" y="210" /><di:waypoint x="700" y="270" />
+        <di:waypoint x="700" y="210" /><di:waypoint x="700" y="350" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_5" bpmnElement="SF_Process_SwotAnalysis_5">
-        <di:waypoint x="760" y="310" /><di:waypoint x="860" y="310" /><di:waypoint x="860" y="210" />
+        <di:waypoint x="760" y="390" /><di:waypoint x="860" y="390" /><di:waypoint x="860" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_6" bpmnElement="SF_Process_SwotAnalysis_6">
         <di:waypoint x="920" y="170" /><di:waypoint x="960" y="170" />
@@ -194,11 +197,13 @@ What is handed over includes the ambiguities from A_RecordAmbiguous and the fact
         <di:waypoint x="1170" y="170" /><di:waypoint x="1220" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_9" bpmnElement="SF_Process_SwotAnalysis_9">
-        <di:waypoint x="1145" y="195" /><di:waypoint x="1145" y="222" />
+        <di:waypoint x="1145" y="195" /><di:waypoint x="1145" y="302" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_10" bpmnElement="SF_Process_SwotAnalysis_10">
         <di:waypoint x="1340" y="170" /><di:waypoint x="1400" y="170" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_A_RecordAmbiguous" bpmnElement="DSR_beans_A_RecordAmbiguous"><dc:Bounds x="870" y="228" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="870" y="270" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_A_RecordAmbiguous" bpmnElement="DOA_Beans_A_RecordAmbiguous"><di:waypoint x="890" y="210"/><di:waypoint x="890" y="228"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

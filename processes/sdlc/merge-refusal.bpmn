@@ -62,11 +62,13 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
       <bpmn:documentation>The PR, the head sha the train used, the train and its other members, each refused path or failing gate and why. A repeat refusal goes under `## Attempts` with `--body-append`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-conflict-patterns"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>r17</bpmn:incoming>
       <bpmn:outgoing>r2</bpmn:outgoing>
       <bpmn:incoming>SF_Bean_1</bpmn:incoming>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Record">
+        <bpmn:targetRef>DSR_beans_Task_Record</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_Comment" name="Comment on the PR&#10;once, linking the bean">
       <bpmn:documentation>One comment per refused PR, edited in place on every later event.</bpmn:documentation>
@@ -84,10 +86,12 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
       <bpmn:documentation>The `agent-handoff` format (#1884): Roles, Report to (the PR), Done when, Fails if. The fail condition: no `started` line within 4 h, no push within 24 h, the session gone, or `blocked` on something it cannot settle. One line to the session; the instructions are in the bean.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-conflict-patterns"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>r4</bpmn:incoming>
       <bpmn:outgoing>r6</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_HandBack">
+        <bpmn:targetRef>DSR_beans_Task_HandBack</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_Fix" name="Fix the PR, report&#10;on the PR">
       <bpmn:documentation>Claims the refusal bean, brings main in with `merge:main`, settles what it refused, pushes. Completed with the outcome `fail condition` by the steward when the condition fires first.</bpmn:documentation>
@@ -104,11 +108,13 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
       <bpmn:documentation>Before the agent starts: the date, why the fail condition fired, the agent's id, its budget. Never while the first writer may still be live. Two failed attempts with the same cause go to the owner instead.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="dispatch-agent"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>r5</bpmn:incoming>
       <bpmn:incoming>r9</bpmn:incoming>
       <bpmn:outgoing>r10</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_Dispatch">
+        <bpmn:targetRef>DSR_beans_Task_Dispatch</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:task id="Task_AgentFix" name="Merge main in,&#10;regenerate, fix&#10;mechanical gates">
       <bpmn:documentation>Merge commits only; never a force-push.</bpmn:documentation>
@@ -212,6 +218,9 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
     <bpmn:sequenceFlow name="waiting on the owner" id="SF_Bean_4" sourceRef="GW_BeanClosedHow" targetRef="End_AwaitOwner"/>
     <bpmn:sequenceFlow name="landed" id="SF_Bean_5" sourceRef="GW_BeanClosedHow" targetRef="End_Closed"/>
     <bpmn:sequenceFlow name="closed unmerged" id="SF_Bean_6" sourceRef="GW_BeanClosedHow" targetRef="End_Scrapped"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Record" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_HandBack" name="Beans" dataStoreRef="work-plan"/>
+    <bpmn:dataStoreReference id="DSR_beans_Task_Dispatch" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_MergeRefusal">
     <bpmndi:BPMNPlane id="Plane_Process_MergeRefusal" bpmnElement="Collaboration_Process_MergeRefusal">
@@ -386,6 +395,12 @@ ONE INSTANCE PER REFUSED PR, started with `bean:` set to the refusal bean. The s
       <bpmndi:BPMNEdge id="SF_Bean_6_di" bpmnElement="SF_Bean_6"><di:waypoint x="2125" y="285"/><di:waypoint x="2125" y="386"/><di:waypoint x="2240" y="386"/>
         <bpmndi:BPMNLabel><dc:Bounds x="2031" y="317.5" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Record" bpmnElement="DSR_beans_Task_Record"><dc:Bounds x="500" y="338" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="500" y="380" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Record" bpmnElement="DOA_Beans_Task_Record"><di:waypoint x="520" y="320"/><di:waypoint x="520" y="338"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_HandBack" bpmnElement="DSR_beans_Task_HandBack"><dc:Bounds x="950" y="370" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="950" y="412" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_HandBack" bpmnElement="DOA_Beans_Task_HandBack"><di:waypoint x="970" y="320"/><di:waypoint x="970" y="370"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_Dispatch" bpmnElement="DSR_beans_Task_Dispatch"><dc:Bounds x="1246" y="380" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1290" y="393" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_Dispatch" bpmnElement="DOA_Beans_Task_Dispatch"><di:waypoint x="1230" y="400"/><di:waypoint x="1246" y="400"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>

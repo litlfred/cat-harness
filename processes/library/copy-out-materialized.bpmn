@@ -116,10 +116,12 @@ the copier's own folio/">
       <bpmn:documentation>The step that is easy to omit and impossible to reconstruct afterwards. `provenance` is a PAIR: `upstream` is the remote thing, `local` is the original in this repository. A copy-out writes `local`; it does not overwrite `upstream`, and it does not reuse `upstream` for a local value — that was one field until 2026-09-22, and by then 5 of the 9 who-iris item records were using it for a local one in violation of its own documentation. Without `local`, one rename later the copy is indistinguishable from original work and nothing downstream can repair it, because the information was never written down.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="copy-out-materialized" />
-        <cat-harness.processes:bean op="note" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_4</bpmn:incoming>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
+      <bpmn:dataOutputAssociation id="DOA_Beans_Task_RecordProvenance">
+        <bpmn:targetRef>DSR_beans_Task_RecordProvenance</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_VerifySourceUntouched" name="Verify the ORIGINAL
@@ -149,12 +151,13 @@ no copy needed">
     <bpmn:sequenceFlow id="Flow_4" sourceRef="Task_Land" targetRef="Task_RecordProvenance" />
     <bpmn:sequenceFlow id="Flow_5" sourceRef="Task_RecordProvenance" targetRef="Task_VerifySourceUntouched" />
     <bpmn:sequenceFlow id="Flow_6" sourceRef="Task_VerifySourceUntouched" targetRef="EndEvent_Copied" />
+    <bpmn:dataStoreReference id="DSR_beans_Task_RecordProvenance" name="Beans" dataStoreRef="work-plan"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="Diagram_CopyOutMaterialized">
     <bpmndi:BPMNPlane id="Plane_CopyOutMaterialized" bpmnElement="Collaboration_CopyOutMaterialized">
       <bpmndi:BPMNShape id="Participant_CopyOutMaterialized_di" bpmnElement="Participant_CopyOutMaterialized" isHorizontal="true">
-        <dc:Bounds x="130" y="60" width="1760" height="800" />
+        <dc:Bounds x="130" y="60" width="1760" height="880" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Reader_di" bpmnElement="Lane_Reader" isHorizontal="true">
         <dc:Bounds x="160" y="60" width="1730" height="200" />
@@ -163,10 +166,10 @@ no copy needed">
         <dc:Bounds x="160" y="260" width="1730" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Folio_di" bpmnElement="Lane_Folio" isHorizontal="true">
-        <dc:Bounds x="160" y="460" width="1730" height="200" />
+        <dc:Bounds x="160" y="460" width="1730" height="280" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Verify_di" bpmnElement="Lane_Verify" isHorizontal="true">
-        <dc:Bounds x="160" y="660" width="1730" height="200" />
+        <dc:Bounds x="160" y="740" width="1730" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_WantToEdit_di" bpmnElement="StartEvent_WantToEdit">
         <dc:Bounds x="220" y="142" width="36" height="36" />
@@ -193,12 +196,12 @@ no copy needed">
         <dc:Bounds x="1215" y="500" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_VerifySourceUntouched_di" bpmnElement="Task_VerifySourceUntouched">
-        <dc:Bounds x="1495" y="700" width="120" height="120" />
+        <dc:Bounds x="1495" y="780" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Copied_di" bpmnElement="EndEvent_Copied">
-        <dc:Bounds x="1740" y="742" width="36" height="36" />
+        <dc:Bounds x="1740" y="822" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="1700" y="783" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="1700" y="863" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
         <di:waypoint x="256" y="160" />
         <di:waypoint x="400" y="160" />
@@ -232,13 +235,15 @@ no copy needed">
       <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
         <di:waypoint x="1335" y="560" />
         <di:waypoint x="1415" y="560" />
-        <di:waypoint x="1415" y="760" />
-        <di:waypoint x="1495" y="760" />
+        <di:waypoint x="1415" y="840" />
+        <di:waypoint x="1495" y="840" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
-        <di:waypoint x="1615" y="760" />
-        <di:waypoint x="1740" y="760" />
+        <di:waypoint x="1615" y="840" />
+        <di:waypoint x="1740" y="840" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_DSR_beans_Task_RecordProvenance" bpmnElement="DSR_beans_Task_RecordProvenance"><dc:Bounds x="1255" y="638" width="40" height="40"/><bpmndi:BPMNLabel><dc:Bounds x="1255" y="680" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_DOA_Beans_Task_RecordProvenance" bpmnElement="DOA_Beans_Task_RecordProvenance"><di:waypoint x="1275" y="620"/><di:waypoint x="1275" y="638"/></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
