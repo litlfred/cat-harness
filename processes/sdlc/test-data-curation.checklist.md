@@ -73,7 +73,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
-- What: BOUND BY THE CONTENT TYPE, so no `calledElement` is written here: each specialisation process belongs to the layer that owns its content type (fhir-harness, folio-assistant-core, folio-assistant-sci), and a lower layer cannot name a higher layer\'s process.
+- What: BOUND BY THE CONTENT TYPE, so no `calledElement` is written here: each specialisation process belongs to the layer that owns its content type, and a lower layer cannot name a higher layer\'s process.
 - Record it: `workflow_complete` with `node: "Call_ContentTypeSpecialisation"`.
 - next: → `Task_WriteRecipe` (Write recipe in test-data-generated/ with $schema test-data-generated/1.0.0)
 
