@@ -16,7 +16,7 @@
   "pageStart": 16,
   "pageEnd": 16,
   "text": "../sections/sec-024-appendix.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2510.19207v2/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2510.19207v2/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2510.19207v2/manifest",
+  "sourceDocument": "library/arxiv-2510.19207v2/manifest",
   "provenance": "ingested"
 }

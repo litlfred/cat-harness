@@ -15,7 +15,7 @@
   "contains": [
     "library/omg-2024-spdx-3-0/blocks/prose-sec-288"
   ],
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/omg-2024-spdx-3-0/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/omg-2024-spdx-3-0/manifest.jsonld",
+  "derivedFrom": "library/omg-2024-spdx-3-0/manifest",
+  "sourceDocument": "library/omg-2024-spdx-3-0/manifest",
   "provenance": "ingested"
 }

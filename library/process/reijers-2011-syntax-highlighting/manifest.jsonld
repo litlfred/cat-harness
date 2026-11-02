@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/reijers-2011-syntax-highlighting/manifest.jsonld",
+  "@id": "library/reijers-2011-syntax-highlighting/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

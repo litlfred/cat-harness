@@ -89,6 +89,6 @@
     }
   ],
   "derivedFrom": "library/gurel-tat-2017-swot-analysis/sections/page-002",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/gurel-tat-2017-swot-analysis/manifest.jsonld",
+  "sourceDocument": "library/gurel-tat-2017-swot-analysis/manifest",
   "provenance": "ingested"
 }

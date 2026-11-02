@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/w3c-2018-odrl-model-2-2/manifest.jsonld",
+  "@id": "library/w3c-2018-odrl-model-2-2/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

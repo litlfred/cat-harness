@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/hasic-2018-5pdm-decision-intelligence/manifest.jsonld",
+  "@id": "library/hasic-2018-5pdm-decision-intelligence/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

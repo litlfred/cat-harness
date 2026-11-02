@@ -44,6 +44,21 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-dmn-decisions/decision_materializationgate",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-dmn-decisions"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "All five answered, none refused?"
+        }
+      ],
+      "skos:notation": "Decision_MaterializationGate",
+      "dcterms:source": "cat-harness/processes/library/decisions/materialization-gate.dmn#Decision_MaterializationGate",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns#glossary/kg-dmn-decisions/decision_mergeauthorisation",
       "@type": "skos:Concept",
       "skos:inScheme": {

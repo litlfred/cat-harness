@@ -16,7 +16,7 @@
   "pageStart": 19,
   "pageEnd": 21,
   "text": "../sections/sec-015-gp-ucb-high-probability-regret-bound.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2508.21620v2/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2508.21620v2/manifest.jsonld",
+  "derivedFrom": "library/arxiv-2508.21620v2/manifest",
+  "sourceDocument": "library/arxiv-2508.21620v2/manifest",
   "provenance": "ingested"
 }

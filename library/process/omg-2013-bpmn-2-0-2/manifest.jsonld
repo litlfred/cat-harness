@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/omg-2013-bpmn-2-0-2/manifest.jsonld",
+  "@id": "library/omg-2013-bpmn-2-0-2/manifest",
   "@type": [
     "cat-harness:SourceDocument"
   ],

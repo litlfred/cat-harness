@@ -90,6 +90,6 @@
     }
   ],
   "derivedFrom": "library/kg-folio-asst-2026-09-30/sections/slide-005",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/kg-folio-asst-2026-09-30/manifest.jsonld",
+  "sourceDocument": "library/kg-folio-asst-2026-09-30/manifest",
   "provenance": "ingested"
 }

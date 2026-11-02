@@ -16,7 +16,7 @@
   "pageStart": 1,
   "pageEnd": 1,
   "text": "../sections/sec-front-matter.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/djurica-2024-decision-model-comprehension-emisa/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/djurica-2024-decision-model-comprehension-emisa/manifest.jsonld",
+  "derivedFrom": "library/djurica-2024-decision-model-comprehension-emisa/manifest",
+  "sourceDocument": "library/djurica-2024-decision-model-comprehension-emisa/manifest",
   "provenance": "ingested"
 }
