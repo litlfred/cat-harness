@@ -57,7 +57,16 @@ The order is the load-bearing part, not the individual steps.
    `init-folio --instance` writes both. After its first run on `main`, the
    owner switches GitHub Pages on: *Deploy from a branch: `gh-pages`, `/ (root)`*.
    See [`instance-publication`](https://litlfred.github.io/folio-assistant/reference/skill-instructions/instance-publication.html).
-5. **Re-enter through this harness.** Read *its* next steps rather than any
+5. **Publish the instance's QA results.** An instance that declares a `qa`
+   directory with `storage` (`test/results/` on `cat/cat-harness/qa-reports`,
+   keyed by commit) keeps its results on that branch of **its own**
+   repository: add `.github/workflows/publish-qa.yml`, the caller of the tools
+   layer's `layer-qa-publish.yml`, and ignore `test/results/`. `init-folio
+   --instance` writes the caller. The branch is created by its first run; an
+   instance with no `qa` directory of its own is skipped with a notice, and its
+   results are the index's. Before 2026-11-03 this step did not exist, so no
+   layer's declared store was ever written (bean folio-assistant-7mwa).
+6. **Re-enter through this harness.** Read *its* next steps rather than any
    list held in bootstrap — the set of available steps changed the moment the
    harness arrived, and the authority on what they are is the harness, not the
    bootstrap that predates it.
