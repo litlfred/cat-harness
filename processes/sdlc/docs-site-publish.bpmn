@@ -13,27 +13,15 @@
     <bpmn:participant id="Participant_Process_DocsSite" name="Publishing the docs site, and keeping the previews alive" processRef="Process_DocsSite"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_DocsSite" name="Publishing the docs site, and keeping the previews alive" isExecutable="false">
-    <bpmn:documentation>Publish the docs site to `gh-pages`, verify the export before the deploy, and keep the open pull requests' previews alive across a deploy that replaces the whole branch. PUBLISHING THE SITE IS A FULL REPLACE, AND THAT IS THE WHOLE REASON THIS IS DRAWN. Bean `7yvd`. The workflow is 432 lines and its shape is not legible from them: what a reader needs to know is that `gh-pages` is REPLACED wholesale, so anything on that branch which this build did not produce is gone unless something puts it back.
-
-That is bean `plj1` — every open pull request's review preview deleted by an unrelated merge, silently, for months. The repair is the two steps either side of the publish, and they are a PAIR: `Restore the open PRs' staging previews` copies them into the publish directory before the replace, and `Did the previews survive?` reads the deployed ref afterwards. Neither is sufficient alone — a restore nobody verifies is a restore that can silently stop working, which is exactly how the original defect lasted.
-
-BOTH GATEWAYS REFUSE RATHER THAN WARN, and the second is three-state: it fails on a preview that is missing AND on a check that could not tell, because a verification that has gone blind must not read as permission. Same rule as `ci-health` — could-not-determine is never rendered as clean.
-
-`Regenerate every derived reference from its source` stands for five separate generators (schema reference, skill instruction pages, content-backed docs, the translation index, the BPMN renders). They are drawn as one task on purpose: they are independent of each other and sequential only because a single job runs them, so five boxes would assert an ordering the workflow does not have.
-
-Mechanical throughout. There is no human lane, which is what makes `build-pipeline` the right lane rather than a convenient one. VERIFIED AND ALERTED (bean vigi, owner 2026-09-23): the export is verified BEFORE the deploy and blocks it on anything but a pass; and every step after the publish button that fails — an incomplete export, a verification failure, a failed deploy, a lost preview — goes through one alert to the publication manager. A clean publish closes that alert.</bpmn:documentation>
+    <bpmn:documentation>Builds the docs site from this checkout's sources and publishes it to `gh-pages` (`.github/workflows/docs-site.yml`). Publishing replaces `gh-pages` wholesale: anything on the branch that this build did not produce is gone unless restored, so the open pull requests' staging previews are copied in before the replace and checked on the deployed branch after it. Every gateway refuses rather than warns, and a check that could not tell counts as a failure (`ci-health`). Every failure after the publish button, from a refused security gate to a lost preview, goes through one alert to the publication manager, and the next clean publish closes it. Mechanical throughout; there is no human lane.</bpmn:documentation>
     <bpmn:extensionElements>
-      <!-- STRICT, and declared (bean `30hn`). Publishing is a FULL REPLACE, and
-           the two steps either side of it are the gate: restore the open PRs'
-           previews before, verify they survived after. Bean `plj1` is what
-           skipping either costs — every open PR's preview deleted by an
-           unrelated merge, silently, for months. A process whose whole point
-           is a compensation pair cannot be advisory about performing it. -->
+      <!-- STRICT: the restore before and the survival check after the full
+           replace are mandatory. -->
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_DocsSite">
       <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline" partitionElementRef="build-pipeline">
-        <bpmn:documentation>Before it will even attempt the risky part, GW_Complete can refuse outright and end at End_Refused if a maintained artefact is missing — so an incomplete build never reaches Task_Publish's full replace at all, which is a harder stop than the restore/verify pair further down the same lane makes for a partial one.</bpmn:documentation>
+        <bpmn:documentation>GitHub Actions runs every step; no step waits on a human decision.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Push</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_SecurityGate</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Secure</bpmn:flowNodeRef>
@@ -60,7 +48,7 @@ Mechanical throughout. There is no human lane, which is what makes `build-pipeli
       <bpmn:outgoing>Flow_0</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:task id="Task_SecurityGate" name="Run the release&#10;security gate">
-      <bpmn:documentation>`bun run cat security:gate`, before anything is built (bean `ieum`, owner 2026-10-07: "security check before release"). It runs every security check this repository has by name: workflow injection, secret leaks, lockfile and toolchain pins, QA reviewer permission, materialised fixity, and third-party action SHA pinning outside staging-only workflows. Each is reported as pass, fail or unknown. A blocking fail OR unknown refuses the publish, because could-not-check is never clean. Until this step existed, no publish or merge process named any security check; they ran only inside the CI gate set.</bpmn:documentation>
+      <bpmn:documentation>`bun run cat security:gate`, before the site is built. It runs every security check the repository names: workflow injection, secret leaks, lockfile and toolchain pins, QA reviewer permission, materialised fixity, and third-party action SHA pinning outside staging-only workflows. Each reports pass, fail or unknown; a blocking fail or unknown refuses the publish.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="security"/>
       </bpmn:extensionElements>
@@ -76,19 +64,15 @@ Mechanical throughout. There is no human lane, which is what makes `build-pipeli
     <bpmn:task id="Task_Regenerate" name="Regenerate every derived&#10;reference from its source">
 
 
-      <bpmn:documentation>Regenerate every derived reference from its source before building: skill schema and instruction pages, content-backed docs pages, the graph projections and viewers, the handler and translation indexes, and the rendered BPMN diagrams. The published site is built from sources, never from committed copies that may be stale. After a main deploy, a side job (writer-records) runs every writer, and every step of the QA working copy, again under strace. It records what each one READ and keeps what it wrote, so a preview can rerun only the writers and QA steps whose reads changed (owner card Q-CONE-2 B, 2026-11-01). The main deploy itself still runs everything.</bpmn:documentation>
+      <bpmn:documentation>Regenerates every derived reference from its source, so the site is never built from committed copies that may be stale: the derived artefacts kept off the commit (`bun run cat derive:publish`), the skill schema and instruction pages (`gen-schema-docs.ts`, `gen-skill-docs.ts`), the content-backed docs pages (`gen-docs-pages.ts`), the graph projections and viewers (`schema:viz`, `library:viz`, `uploads:viz`, `voices:viz` and others), the handler and translation indexes (`handler:index`, `translation:index`), and the BPMN drawings and process pages (`render:bpmn`, `processes:viz`). After a main deploy, `writer-records` reruns every writer and QA step under strace to record its reads, so a preview reruns only those whose reads changed; the main deploy runs everything.</bpmn:documentation>
       <bpmn:extensionElements>
-        <cat-harness.processes:no-skill reason="Five independent generators run from their own sources. Each is documented where it lives; there is no single procedure for &quot;regenerate everything&quot;, and inventing one here would name a skill nobody could open."/>
+        <cat-harness.processes:no-skill reason="Independent generators, each documented where it lives; there is no single procedure to name."/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_S2</bpmn:incoming>
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
     </bpmn:task>
     <bpmn:callActivity id="Call_InstanceSites" name="Compose each instance's&#10;own site into the&#10;docs source [its Tool]">
-      <bpmn:documentation>The docs layers are composed into ONE Jekyll source (`compose-docs`: `cat-harness/docs/` the base, the checkout root's `docs/` laid over it), and then every instance that builds a site of its own INSIDE this one composes it into that source at `&lt;instance&gt;/`, before the Jekyll build that renders all of it. The site is then one site: one sidebar, one search, one language selector, rather than a site per instance.
-
-BOUND BY THE TOOL, as `render-kg-to-cdn` binds its push, so no `calledElement` is written here (owner, 2026-09-30: &quot;tools can describe their own specific subprocesses if needed to not bog down general skills&quot;). The activity names the skill; each Tool that satisfies `docs-generation` and composes a site into a host source lists its own `subprocesses`, and those are what this descends into: the steps, and the Tool that runs each one. Which instances compose a site is DATA in their own declarations, so this diagram names none, and an instance added tomorrow needs no edit here.
-
-A composing Tool may also name a post-build pass over what it composed. The Jekyll build is this process's (`Task_Build`), so that pass runs there, right after the build, over the build list the Tool printed. No composing Tool, or none with anything to compose, leaves the source as `compose-docs` wrote it: nothing to build is reported, never mistaken for a build that failed.</bpmn:documentation>
+      <bpmn:documentation>`compose-docs.ts` composes the docs layers into one Jekyll source (`cat-harness/docs/` as the base, the checkout root's `docs/` laid over it); then each instance that builds a site of its own composes it into that source at `&lt;instance&gt;/`, so the result is one site with one sidebar, search and language selector. The step is bound by the Tool, not by a `calledElement`: the step names skill `docs-generation`, each Tool that satisfies it and composes a site lists its own `subprocesses`, and those carry the steps; which instances compose a site is data in their declarations. A composing Tool may name a post-build pass, which `Task_Build` runs after the Jekyll build. With nothing to compose, the source is left as `compose-docs` wrote it, and that is reported.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="docs-generation"/>
       </bpmn:extensionElements>
@@ -98,7 +82,7 @@ A composing Tool may also name a post-build pass over what it composed. The Jeky
     <bpmn:task id="Task_Build" name="Build the Jekyll site&#10;and the API reference">
 
 
-      <bpmn:documentation>Build the Jekyll site from the source `Call_InstanceSites` composed, run each composing Tool's post-build pass over what it composed, mount instance-rendered content, and generate the TypeScript API reference with TypeDoc. The main deploy is a FULL build (owner 2026-11-01): every index is rebuilt from the tree being published, never borrowed. Skill feature-staging, section Build types.</bpmn:documentation>
+      <bpmn:documentation>Builds the composed source with Jekyll 4 and just-the-docs (`bundle exec jekyll build`), runs each composing Tool's post-build pass, mounts instance-rendered content (`mount-instance-docs.ts`), and generates the TypeScript API reference with TypeDoc (`.github/actions/typedoc-api`). The main deploy is a full build: every index is rebuilt from the tree being published. See skill `feature-staging`, section Build types.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:no-skill reason="A mechanical actor runs this — GitHub Actions executes a command in a runner. There is no instruction body an agent could be handed, and a skill here would describe somebody else&apos;s behaviour."/>
       </bpmn:extensionElements>
@@ -108,7 +92,7 @@ A composing Tool may also name a post-build pass over what it composed. The Jeky
     <bpmn:task id="Task_Export" name="Export the knowledge graph&#10;and its schema">
 
 
-      <bpmn:documentation>Export the knowledge graph and its schema into the published tree, then check every maintained artefact is present and no block-level markup escaped. The unpublished graph typologies are stripped on export.</bpmn:documentation>
+      <bpmn:documentation>Exports the knowledge graph and its schema into the published tree (`kg-export.ts`, `harness-schema-export.ts`, `kg-viewer.ts`), stripping the unpublished graph typologies, then checks that every maintained artefact is present (`bun run cat check:maintained-artefacts`) and that no block-level markup escaped (`check:escaped-markup`).</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:no-skill reason="A mechanical actor runs this — GitHub Actions executes a command in a runner. There is no instruction body an agent could be handed, and a skill here would describe somebody else&apos;s behaviour."/>
       </bpmn:extensionElements>
@@ -122,7 +106,7 @@ A composing Tool may also name a post-build pass over what it composed. The Jeky
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:callActivity id="Call_Verify" name="Verify the export" calledElement="Process_PublishVerification">
-      <bpmn:documentation>Process_PublishVerification: the verifier set over the built tree, before anything is deployed. Owner, 2026-09-23: before deployment, blocking.</bpmn:documentation>
+      <bpmn:documentation>Process_PublishVerification: the verifier set over the built tree (`publish-verify.ts`). Blocking, before the deploy.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="publish-verification"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_5</bpmn:incoming>
       <bpmn:outgoing>Flow_V1</bpmn:outgoing>
@@ -136,15 +120,15 @@ A composing Tool may also name a post-build pass over what it composed. The Jeky
     <bpmn:task id="Task_Restore" name="Restore the OPEN PRs'&#10;staging previews">
 
 
-      <bpmn:documentation>Copy every OPEN pull request's STAGING/&lt;slug&gt;/ preview from gh-pages into the publish directory before the replace, once per publish attempt. Without it the full replace deletes every preview, silently (bean plj1). Only open PRs' previews are carried.</bpmn:documentation>
+      <bpmn:documentation>Copies every open pull request's `STAGING/&lt;slug&gt;/` preview from `gh-pages` into the publish directory before the replace, once per publish attempt (`restore-staging.ts`, run inside `publish-gh-pages.sh`). Only open PRs' previews are carried; a branch that cannot be read refuses the publish.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="feature-staging"/>
-      <cat-harness.processes:no-call reason="Re-deploys EVERY open PR's preview after a publish — a loop over many previews. A call runs feature-staging once, for one PR, from its first start event."/></bpmn:extensionElements>
+      <cat-harness.processes:no-call reason="Copies every open PR's preview before the replace, a loop; a call would run feature-staging once, for one PR."/></bpmn:extensionElements>
       <bpmn:incoming>Flow_V2</bpmn:incoming>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
     </bpmn:task>
     <bpmn:callActivity id="Task_Publish" name="Push to the CDN (full replace)" calledElement="Process_RenderKgToCdn">
-      <bpmn:documentation>THIS SITE IS ONE INSTANCE OF THE GENERAL STEP (owner, 2026-09-30: gh-pages is &quot;one specific tool of general 'publish to CDN'&quot;). Process_RenderKgToCdn, entered with the tree this build already rendered and verified, the site root as the publication root URL, and GitHub Pages as the target — so its `gh-pages` Tool pushes. Here that push is a FULL REPLACE of the `gh-pages` branch: anything on it this build did not produce is gone unless the restore put it back, which is why the restore and the survival check either side of this call stay in THIS process rather than in the general one. The call returns the push's status and message (the gh-pages merge commit and the QA result); a status other than `pushed` takes the `no` branch of Did the deploy succeed?.</bpmn:documentation>
+      <bpmn:documentation>Calls Process_RenderKgToCdn with the verified tree, the site root as publication root URL, and GitHub Pages as target, so its `gh-pages` Tool (`publish-gh-pages.sh`) replaces the branch and returns the push's status and message. A status other than `pushed` takes `no` at Did the deploy succeed?.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="render-kg-to-cdn"/>
       </bpmn:extensionElements>
@@ -152,13 +136,13 @@ A composing Tool may also name a post-build pass over what it composed. The Jeky
       <bpmn:outgoing>Flow_7</bpmn:outgoing>
     </bpmn:callActivity>
     <bpmn:exclusiveGateway id="GW_Deployed" name="Did the deploy&#10;succeed?">
-      <bpmn:documentation>Answered by the deploy step itself. `no` goes to the alert: a failed deploy after the publish button is exactly the failure the owner asked to be told about. `yes` checks the previews survived.</bpmn:documentation>
+      <bpmn:documentation>Answered by the deploy step. `no` goes to the alert; `yes` checks the previews survived.</bpmn:documentation>
       <bpmn:incoming>Flow_7</bpmn:incoming>
       <bpmn:outgoing>Flow_D1</bpmn:outgoing>
       <bpmn:outgoing>Flow_D2</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:exclusiveGateway id="GW_Survived" name="Did the previews&#10;survive?">
-      <bpmn:documentation>Asked after the full-replace publish: are the open PRs' previews still there? `yes` closes any open alert and ends published; `no, or could not tell` goes to the alert, because a preview that cannot be confirmed is treated as deleted.</bpmn:documentation>
+      <bpmn:documentation>Asked after the full-replace publish (`restore-staging.ts --verify`): are the open PRs' previews still there? `yes` closes any open alert and ends published; `no, or could not tell` goes to the alert, because a preview that cannot be confirmed is treated as deleted.</bpmn:documentation>
       <bpmn:incoming>Flow_D1</bpmn:incoming>
       <bpmn:outgoing>Flow_8</bpmn:outgoing>
       <bpmn:outgoing>Flow_9</bpmn:outgoing>
