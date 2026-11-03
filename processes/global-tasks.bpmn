@@ -79,7 +79,7 @@ GW_SignoffRecorded after this reads the record back, so this step cannot be skip
 
   <!-- kg-separation and sub-kg-lifecycle. -->
   <bpmn:globalTask id="GT_Brief" name="Brief the work">
-    <bpmn:documentation>What the work is and why, what is already measured with its provenance, how it will be done, and what would falsify the approach. The bean is already claimed by the Process_BeanOpen call before this step (bean m8gz), so a sibling session sees the work before the brief is written.</bpmn:documentation>
+    <bpmn:documentation>What the work is and why, what is already measured with its provenance, how it will be done, and what would falsify the approach. The work item is already taken up when the process starts, so a sibling session sees the work before the brief is written.</bpmn:documentation>
     <bpmn:extensionElements>
       <bootstrap.processes:skill ref="opening-brief"/>
     </bpmn:extensionElements>
@@ -88,7 +88,6 @@ GW_SignoffRecorded after this reads the record back, so this step cannot be skip
     <bpmn:documentation>Work the PRs `seed:ready` named until the source settles: land or close the heavy movers and the next layer's PRs, bring the layer's open PRs to five or fewer, and finish any move in flight. Fix a red rehearsal or a discovery miss where it is. Nothing is seeded from here; it goes back to the gateway, which re-asks.</bpmn:documentation>
     <bpmn:extensionElements>
       <bootstrap.processes:skill ref="kg-separation"/>
-      <cat-harness.processes:bean op="note"/>
     </bpmn:extensionElements>
   </bpmn:globalTask>
 

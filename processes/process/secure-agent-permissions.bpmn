@@ -54,7 +54,6 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       <bpmn:documentation>Which coding-agent Tool is running this session, and which others the instance is configured for (each has its own config files: AGENTS.md is read by many; Claude Code, Gemini CLI, Cursor, Copilot and Codex each add their own). The Tool's adapter says where its permissions live and how a rule is written. A Tool with no adapter is reported, and its permissions are left to the person.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="agent-permissions"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>p1</bpmn:incoming>
       <bpmn:outgoing>p2</bpmn:outgoing>
@@ -63,7 +62,6 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       <bpmn:documentation>The needed set is the agent-permissions skill's list (write generated projections: CI only, never the agent; edit hooks or settings; run the gates; push a feature branch; open a PR), scoped to what this instance's processes actually call. The granted set is the recorded grants plus the Tool's current config, read through its adapter. A config rule with no recorded grant is reported as unrecorded, not treated as granted.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="agent-permissions"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>p2</bpmn:incoming>
       <bpmn:outgoing>p3</bpmn:outgoing>
@@ -84,7 +82,6 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       <bpmn:documentation>Per permission: what it allows the agent to do without asking, why a process here needs it, the narrowest form that would do, and the exact change to the Tool's config. Context, options, recommendation, question (interaction-modality §4.1). Least privilege is the recommendation unless there is a measured reason for more.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="agent-permissions"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>p5</bpmn:incoming>
       <bpmn:outgoing>p6</bpmn:outgoing>
@@ -115,7 +112,6 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       <bpmn:documentation>One record per permission: by, on, tool, permission, scope (session, instance, or until a date), the config diff, and evidence (the owner's words verbatim, with where they were said). Refusals are recorded the same way.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="agent-permissions"/>
-        <cat-harness.processes:bean op="note"/>
         <cat-harness.processes:policy relaxable="false"/>
       </bpmn:extensionElements>
       <bpmn:incoming>p7</bpmn:incoming>
@@ -125,7 +121,6 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       <bpmn:documentation>The exact diff the owner saw, nothing more, written by the person or by the agent under their consent to that diff. Hand-edited agent config only; generated projections are CI's (harness-projections).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="agent-permissions"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>p10</bpmn:incoming>
       <bpmn:outgoing>p11</bpmn:outgoing>

@@ -30,9 +30,6 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
         <bpmn:documentation>Whoever adds or changes a slice: writes its definition in the builder's slice table, measures the built file against the budget, wires it when it fits, and looks at the published search once it has deployed. The judgement in this process is theirs, at the budget gateway.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Need</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Define</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Call_BeanOpen</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>GW_BeanYours</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>End_BeanNotYours</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Measure</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Budget</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Report</bpmn:flowNodeRef>
@@ -40,8 +37,6 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
         <bpmn:flowNodeRef>A_Wire</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Verify</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Shipped</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Call_BeanClose_2</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>GW_BeanClosedHow</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Ci" name="CI/CD Pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>The gate and the deploy. `code-quality-gates.yml` runs `slice:sqlite:check` on every pull request; `docs-site.yml` and `feature-staging.yml` build each slice into `_site/` from the tree they publish, one line per slice.</bpmn:documentation>
@@ -60,13 +55,12 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
         <bootstrap.processes:skill ref="kg-export"/>
       </bpmn:extensionElements>
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
-      <bpmn:incoming>SF_Bean_1</bpmn:incoming>
+      <bpmn:incoming>Flow_0</bpmn:incoming>
     </bpmn:task>
     <bpmn:task id="A_Measure" name="Build it locally and&#10;measure the file">
-      <bpmn:documentation>Run `bun run cat slice:sqlite -- --slice &lt;name&gt; --out &lt;scratch&gt;` and read the manifest: `bytes`, the row counts, the payload count and bytes, `overBudget`, `duplicateIds` and `findings`. Record the measurement on the bean with its provenance (the command and the date), beside the size of the source it replaces.</bpmn:documentation>
+      <bpmn:documentation>Run `bun run cat slice:sqlite -- --slice &lt;name&gt; --out &lt;scratch&gt;` and read the manifest: `bytes`, the row counts, the payload count and bytes, `overBudget`, `duplicateIds` and `findings`. Record the measurement in the work context with its provenance (the command and the date), beside the size of the source it replaces.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-export"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1</bpmn:incoming>
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
@@ -78,22 +72,20 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:task id="A_Report" name="Report the measurement;&#10;ship nothing">
-      <bpmn:documentation>Write the measurement and what was tried onto the bean, and ask the owner whether the slice should ship at that size, be cut further, or not exist. Nothing is wired: no manifest is published, no gate added, no deploy line written.</bpmn:documentation>
+      <bpmn:documentation>Write the measurement and what was tried into the work context, and ask the owner whether the slice should ship at that size, be cut further, or not exist. Nothing is wired: no manifest is published, no gate added, no deploy line written.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-export"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_4</bpmn:incoming>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
     </bpmn:task>
     <bpmn:endEvent id="End_Stopped" name="Stopped, with&#10;its measurement">
-      <bpmn:incoming>SF_Bean_6</bpmn:incoming>
+      <bpmn:incoming>Flow_5</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:task id="A_Wire" name="Wire it: gate, deploy&#10;line, search, tests">
       <bpmn:documentation>Give the slice everything a slice owes: its manifest (written by the builder from the definition), its `--check` (covered by `slice:sqlite:check`), one deploy line in `docs-site.yml` and in `feature-staging.yml`, its search (the generic page needs no code, only the definition's `search` block), a unit test over a fixture and over the real source, and a search in `slice-sqlite.e2e.ts`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-export"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_3</bpmn:incoming>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
@@ -102,9 +94,6 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
       <bpmn:documentation>For every slice: build twice and require one sha256; read the row digest back from the file and require it to equal the digest computed from the source without SQLite; run an FTS5 phrase query for a known row; and audit the payloads with `auditPayloadTree` (deploy payloads as written, the kg slice's pointers against the committed payload tree). A slice whose rows do not match its source fails; it never passes as whole.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-export"/>
-        <!-- No op: the step READS the work plan (the beans slice is built from
-             it) and writes nothing to it. -->
-        <cat-harness.processes:bean/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_6</bpmn:incoming>
       <bpmn:outgoing>Flow_7</bpmn:outgoing>
@@ -116,14 +105,12 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
       <bpmn:outgoing>Flow_9</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:endEvent id="End_Red" name="Job RED">
-      <bpmn:incoming>SF_Bean_4</bpmn:incoming>
+      <bpmn:incoming>Flow_9</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:serviceTask id="A_Deploy" name="Build each slice into&#10;_site at deploy">
       <bpmn:documentation>`gen-slice-sqlite.ts --out ./_site/assets/slices --payload-out ./_site/payload/sha256 --slice &lt;name&gt;`, once per slice, from the tree being published: the file, its manifest, the slice index, and the deploy payloads beside the committed KG payloads. Never into the committed `docs/payload/`, whose orphan audit admits KG nodes only.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-export"/>
-        <!-- No op, as for A_Check: the beans slice reads the work plan. -->
-        <cat-harness.processes:bean/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_8</bpmn:incoming>
       <bpmn:outgoing>Flow_10</bpmn:outgoing>
@@ -132,201 +119,137 @@ NO BINARY IS COMMITTED. The file is built at deploy from the tree being publishe
       <bpmn:documentation>Open `slices/search.html?slice=&lt;name&gt;` on the deployed site, run a phrase search for a known row, open it so its payload is fetched, and look at the result; send the screenshot rather than a description of it. Report the mode the page says it used (OPFS or in memory), never an assumed one.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="rendered-verification"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_10</bpmn:incoming>
       <bpmn:outgoing>Flow_11</bpmn:outgoing>
     </bpmn:task>
     <bpmn:endEvent id="End_Shipped" name="Slice searchable&#10;on the site">
-      <bpmn:incoming>SF_Bean_5</bpmn:incoming>
+      <bpmn:incoming>Flow_11</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:callActivity id="Call_BeanOpen" name="Open the bean" calledElement="Process_BeanOpen">
-      <bpmn:documentation>Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
-      <bpmn:incoming>Flow_0</bpmn:incoming>
-      <bpmn:outgoing>SF_Bean_2</bpmn:outgoing>
-    </bpmn:callActivity>
-    <bpmn:exclusiveGateway id="GW_BeanYours" name="Bean claimed?">
-      <bpmn:documentation>Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination).</bpmn:documentation>
-      <bpmn:outgoing>SF_Bean_1</bpmn:outgoing>
-      <bpmn:incoming>SF_Bean_2</bpmn:incoming>
-      <bpmn:outgoing>SF_Bean_3</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:endEvent id="End_BeanNotYours" name="Not yours —&#10;left alone">
-      <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
-      <bpmn:incoming>SF_Bean_3</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:callActivity id="Call_BeanClose_2" name="Close the bean" calledElement="Process_BeanClose">
-      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
-    </bpmn:callActivity>
-    <bpmn:exclusiveGateway id="GW_BeanClosedHow" name="How did it end?">
-      <bpmn:documentation>Which outcome the bean was closed with, so each ends at its own named end event. The bean is closed once, on every path (bpmn-authoring: open and close the bean at the top, once).</bpmn:documentation>
-    </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_0" sourceRef="Start_Need" targetRef="Call_BeanOpen"/>
+    <bpmn:sequenceFlow id="Flow_0" sourceRef="Start_Need" targetRef="A_Define"/>
     <bpmn:sequenceFlow id="Flow_1" sourceRef="A_Define" targetRef="A_Measure"/>
     <bpmn:sequenceFlow id="Flow_2" sourceRef="A_Measure" targetRef="GW_Budget"/>
     <bpmn:sequenceFlow id="Flow_3" sourceRef="GW_Budget" targetRef="A_Wire" name="yes — under"/>
     <bpmn:sequenceFlow id="Flow_4" sourceRef="GW_Budget" targetRef="A_Report" name="no — over"/>
-    <bpmn:sequenceFlow id="Flow_5" sourceRef="A_Report" targetRef="Call_BeanClose_2"/>
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="A_Report" targetRef="End_Stopped"/>
     <bpmn:sequenceFlow id="Flow_6" sourceRef="A_Wire" targetRef="A_Check"/>
     <bpmn:sequenceFlow id="Flow_7" sourceRef="A_Check" targetRef="GW_Green"/>
     <bpmn:sequenceFlow id="Flow_8" sourceRef="GW_Green" targetRef="A_Deploy" name="yes — green"/>
-    <bpmn:sequenceFlow id="Flow_9" sourceRef="GW_Green" targetRef="Call_BeanClose_2" name="no — red"/>
+    <bpmn:sequenceFlow id="Flow_9" sourceRef="GW_Green" targetRef="End_Red" name="no — red"/>
     <bpmn:sequenceFlow id="Flow_10" sourceRef="A_Deploy" targetRef="A_Verify"/>
-    <bpmn:sequenceFlow id="Flow_11" sourceRef="A_Verify" targetRef="Call_BeanClose_2"/>
-    <bpmn:sequenceFlow id="SF_Bean_1" name="claimed" sourceRef="GW_BeanYours" targetRef="A_Define"/>
-    <bpmn:sequenceFlow id="SF_Bean_2" sourceRef="Call_BeanOpen" targetRef="GW_BeanYours"/>
-    <bpmn:sequenceFlow id="SF_Bean_3" name="not yours" sourceRef="GW_BeanYours" targetRef="End_BeanNotYours"/>
-    <bpmn:sequenceFlow id="Flow_GW_BeanClosedHow" sourceRef="Call_BeanClose_2" targetRef="GW_BeanClosedHow"/>
-    <bpmn:sequenceFlow name="red" id="SF_Bean_4" sourceRef="GW_BeanClosedHow" targetRef="End_Red"/>
-    <bpmn:sequenceFlow name="shipped" id="SF_Bean_5" sourceRef="GW_BeanClosedHow" targetRef="End_Shipped"/>
-    <bpmn:sequenceFlow name="stopped" id="SF_Bean_6" sourceRef="GW_BeanClosedHow" targetRef="End_Stopped"/>
+    <bpmn:sequenceFlow id="Flow_11" sourceRef="A_Verify" targetRef="End_Shipped"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_SliceSqlitePublish">
     <bpmndi:BPMNPlane id="Plane_Process_SliceSqlitePublish" bpmnElement="Collaboration_Process_SliceSqlitePublish">
-      <bpmndi:BPMNEdge id="Edge_Flow_GW_BeanClosedHow" bpmnElement="Flow_GW_BeanClosedHow"><di:waypoint x="1997" y="130"/><di:waypoint x="2037" y="130"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Shape_Participant_Process_SliceSqlitePublish" bpmnElement="Participant_Process_SliceSqlitePublish" isHorizontal="true">
-        <dc:Bounds x="60" y="60" width="2223" height="640" />
+        <dc:Bounds x="60" y="60" width="1466" height="640" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Author" bpmnElement="Lane_Author" isHorizontal="true">
-        <dc:Bounds x="90" y="60" width="2193" height="280" />
+        <dc:Bounds x="90" y="60" width="1436" height="280" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Ci" bpmnElement="Lane_Ci" isHorizontal="true">
-        <dc:Bounds x="90" y="340" width="2193" height="360" />
+        <dc:Bounds x="90" y="340" width="1436" height="360" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Need" bpmnElement="Start_Need">
         <dc:Bounds x="122" y="112" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="120.68" y="147.5" width="90" height="89" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="120.7" y="147.5" width="90" height="89" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Define" bpmnElement="A_Define">
-        <dc:Bounds x="505" y="72" width="120" height="120" />
+        <dc:Bounds x="240" y="72" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Measure" bpmnElement="A_Measure">
-        <dc:Bounds x="875" y="72" width="120" height="120" />
+        <dc:Bounds x="430" y="72" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Budget" bpmnElement="GW_Budget" isMarkerVisible="true">
-        <dc:Bounds x="1090" y="105" width="50" height="50" />
+        <dc:Bounds x="645" y="105" width="50" height="50" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="1047.5" y="65" width="135" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="602.5" y="65" width="135" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Report" bpmnElement="A_Report">
-        <dc:Bounds x="1055" y="165" width="120" height="120" />
+        <dc:Bounds x="610" y="195" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Stopped" bpmnElement="End_Stopped">
-        <dc:Bounds x="2177" y="268" width="36" height="36" />
+        <dc:Bounds x="755" y="207" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Wire" bpmnElement="A_Wire">
-        <dc:Bounds x="1235" y="72" width="120" height="120" />
+        <dc:Bounds x="790" y="72" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Check" bpmnElement="A_Check">
-        <dc:Bounds x="1250" y="370" width="120" height="120" />
+        <dc:Bounds x="805" y="370" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Green" bpmnElement="GW_Green" isMarkerVisible="true">
-        <dc:Bounds x="1480" y="405" width="50" height="50" />
+        <dc:Bounds x="1035" y="405" width="50" height="50" />
+        
+        <bpmndi:BPMNLabel><dc:Bounds x="1015" y="365" width="90" height="36" /></bpmndi:BPMNLabel>
         
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Red" bpmnElement="End_Red">
-        <dc:Bounds x="2177" y="168" width="36" height="36" />
+        <dc:Bounds x="1392" y="412" width="36" height="36" />
+        
+        <bpmndi:BPMNLabel><dc:Bounds x="1365" y="391" width="90" height="17" /></bpmndi:BPMNLabel>
         
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Deploy" bpmnElement="A_Deploy">
-        <dc:Bounds x="1640" y="370" width="120" height="120" />
+        <dc:Bounds x="1195" y="370" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Verify" bpmnElement="A_Verify">
-        <dc:Bounds x="1640" y="72" width="120" height="120" />
+        <dc:Bounds x="1195" y="72" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Shipped" bpmnElement="End_Shipped">
-        <dc:Bounds x="2177" y="72" width="36" height="36" />
+        <dc:Bounds x="1392" y="114" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_0" bpmnElement="Flow_0">
-        <di:waypoint x="158" y="130" />
-        <di:waypoint x="210" y="130" />
+        <di:waypoint x="158" y="130"/>
+        <di:waypoint x="240" y="130"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_1" bpmnElement="Flow_1">
-        <di:waypoint x="625" y="132" />
-        <di:waypoint x="875" y="132" />
+        <di:waypoint x="360" y="132"/>
+        <di:waypoint x="430" y="132"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_2" bpmnElement="Flow_2">
-        <di:waypoint x="995" y="132" />
-        <di:waypoint x="1042.5" y="132" />
-        <di:waypoint x="1042.5" y="130" />
-        <di:waypoint x="1090" y="130" />
+        <di:waypoint x="550" y="132" />
+        <di:waypoint x="597.5" y="132" />
+        <di:waypoint x="597.5" y="130" />
+        <di:waypoint x="645" y="130" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_3" bpmnElement="Flow_3">
-        <di:waypoint x="1140" y="130" />
-        <di:waypoint x="1187.5" y="130" />
-        <di:waypoint x="1187.5" y="132" />
-        <di:waypoint x="1235" y="132" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1146" y="109" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="695" y="130" />
+        <di:waypoint x="742.5" y="130" />
+        <di:waypoint x="742.5" y="132" />
+        <di:waypoint x="790" y="132" />
+        <bpmndi:BPMNLabel><dc:Bounds x="701" y="109" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
-        <di:waypoint x="1115" y="155" />
-        <di:waypoint x="1115" y="190" />
+        <di:waypoint x="670" y="155"/>
+        <di:waypoint x="670" y="195"/>
         
+        <bpmndi:BPMNLabel><dc:Bounds x="676" y="166" width="70" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
-        <di:waypoint x="1115" y="260" />
-        <di:waypoint x="1115" y="325" />
-        <di:waypoint x="1917" y="325" />
-        <di:waypoint x="1917" y="170" />
+        <di:waypoint x="730" y="225"/>
+        <di:waypoint x="755" y="225"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
-        <di:waypoint x="1295" y="170" />
-        <di:waypoint x="1295" y="390" />
+        <di:waypoint x="850" y="192"/>
+        <di:waypoint x="850" y="370"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_7" bpmnElement="Flow_7">
-        <di:waypoint x="1370" y="430" />
-        <di:waypoint x="1480" y="430" />
+        <di:waypoint x="925" y="430" />
+        <di:waypoint x="1035" y="430" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_8" bpmnElement="Flow_8">
-        <di:waypoint x="1530" y="430" />
-        <di:waypoint x="1640" y="430" />
+        <di:waypoint x="1085" y="430" />
+        <di:waypoint x="1195" y="430" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_9" bpmnElement="Flow_9"><di:waypoint x="1530" y="430"/><di:waypoint x="1817" y="430"/><di:waypoint x="1817" y="130"/><di:waypoint x="1837" y="130"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1821" y="271.5" width="90" height="17" /></bpmndi:BPMNLabel>
+      <bpmndi:BPMNEdge id="Edge_Flow_9" bpmnElement="Flow_9"><di:waypoint x="1060" y="455"/><di:waypoint x="1060" y="540"/><di:waypoint x="1410" y="540"/><di:waypoint x="1410" y="448"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1120" y="546" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_10" bpmnElement="Flow_10">
-        <di:waypoint x="1700" y="389" />
-        <di:waypoint x="1700" y="170" />
+        <di:waypoint x="1255" y="370"/>
+        <di:waypoint x="1255" y="192"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_11" bpmnElement="Flow_11">
-        <di:waypoint x="1760" y="132" />
-        <di:waypoint x="1798.5" y="132" />
-        <di:waypoint x="1798.5" y="130" />
-        <di:waypoint x="1837" y="130" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen"><dc:Bounds x="210" y="72" width="120" height="120" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1">
-        <di:waypoint x="410" y="130" />
-        <di:waypoint x="457.5" y="130" />
-        <di:waypoint x="457.5" y="132" />
-        <di:waypoint x="505" y="132" />
-        <bpmndi:BPMNLabel><dc:Bounds x="416" y="110" width="90" height="17" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true"><dc:Bounds x="360" y="105" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="340" y="66" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours"><dc:Bounds x="367" y="185" width="36" height="36" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2">
-        <di:waypoint x="330" y="130" />
-        <di:waypoint x="360" y="130" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SF_Bean_3_di" bpmnElement="SF_Bean_3"><di:waypoint x="385" y="155"/><di:waypoint x="385" y="185"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="389" y="161" width="90" height="18" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4"><di:waypoint x="2062" y="155"/><di:waypoint x="2062" y="186"/><di:waypoint x="2177" y="186"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Shape_GW_BeanClosedHow" bpmnElement="GW_BeanClosedHow" isMarkerVisible="true"><dc:Bounds x="2037" y="105" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="1971.08" y="170.5" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Call_BeanClose_2_di" bpmnElement="Call_BeanClose_2"><dc:Bounds x="1837" y="90" width="160" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="SF_Bean_5_di" bpmnElement="SF_Bean_5">
-        <di:waypoint x="2062" y="105" />
-        <di:waypoint x="2062" y="86" />
-        <di:waypoint x="2177" y="86" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2074.5" y="65" width="90" height="18" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SF_Bean_6_di" bpmnElement="SF_Bean_6"><di:waypoint x="2062" y="155"/><di:waypoint x="2062" y="286"/><di:waypoint x="2177" y="286"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2066" y="211.5" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1315" y="132"/>
+        <di:waypoint x="1392" y="132"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
