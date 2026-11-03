@@ -108,29 +108,22 @@ first minutes reading it.
 3. **No manual `.md` checklists:** Never use `session-beans.md` or raw Markdown `- [ ]` checklists to track global tasks. Always use the `beans` CLI to prevent namespace pollution and maintain the official project tracking.
 4. **Check before you create:** `beans create` is **not** idempotent. Run the existence check below before every `beans create` — no exceptions.
 5. **Brief before you work:** claiming a bean records *which* item is taken; the opening brief records what it is taken **for**. Write it before the first tool call, in the chat. See §"Opening brief" below.
-6. **Push beans to the state branch, not code PRs:** `beans/` is mounted from the dedicated state branch (e.g. `cat/cat-harness/beans`). Bean creation, claim, note, and status changes are pushed to the branch store via `bun cat-harness-tools/scripts/branch-store.ts push --id beans` (or `bun run cat state:push`). Do **not** commit bean files directly to code PR branches on `main`.
+6. **Write beans to the work-plan store, never into a code PR:** create, claim, note and status changes go to the store through its Tool. The store's operations are in [`work-plan-store`](work-plan-store.md); how the Tool in use performs them (today the git state branch, [`work-plan-store-git-branch`](work-plan-store-git-branch.md)) is on that Tool's page. Do **not** commit bean files to code PR branches on `main`.
 
-## Where beans live — the state mount and pushing changes
+## Where beans live
 
-Under the state branch architecture (proposal `cat-harness/docs/proposals/state-branch-2026-10-02.md`),
-the work plan does not live on `main`. It lives on a dedicated tip-keyed branch
-store (`cat/cat-harness/beans`), mounted at `beans/` (e.g. by `bun run cat state:mount`
-during session start).
+The work plan is a data store with a contract,
+[`work-plan-store`](work-plan-store.md), and this skill uses it only through
+that contract's operations (`get`, `list`, `create`, `update`, `note`,
+`history`, `positions`). Which Tool backs it is the deployment's choice
+(cat-harness#991, Q-BSD-2 A). Today every checkout uses the git state branch;
+how to mount it, which commands perform each operation and how changes are
+pushed are on its page,
+[`work-plan-store-git-branch`](work-plan-store-git-branch.md).
 
-- **The CLI still works off disk**: `beans` reads and writes files under the
-  mounted `beans/defs/`.
-- **Pushing changes**: When you create, update, or resolve a bean in `beans/`,
-  push the state branch:
-  ```bash
-  bun cat-harness-tools/scripts/branch-store.ts push --id beans
-  # or equivalently:
-  bun run cat state:push
-  ```
-- **Never bundle beans in code PR commits**: Committing bean files directly to
-  code PRs on `main` is replaced by pushing the state branch. Code PRs touch code
-  and documentation on `main`; bean updates are pushed to the state branch store,
-  keeping the work plan globally up-to-date in real time without merge conflicts
-  or spurious CI runs.
+- **Never bundle beans in code PR commits.** Code PRs touch code and
+  documentation; bean changes go to the store, which keeps the work plan
+  current for every session without merge conflicts or spurious CI runs.
 
 ## Check before you create — `beans create` is not idempotent (STRICT)
 

@@ -80,7 +80,8 @@
     "watch",
     "where-a-proposal-goes",
     "work-plan-restructure",
-    "work-plan-store"
+    "work-plan-store",
+    "work-plan-store-git-branch"
   ],
   "docker": {
     "baseImage": "ubuntu:24.04",
