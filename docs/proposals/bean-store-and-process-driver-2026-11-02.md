@@ -672,6 +672,106 @@ A sketch of a profile file:
 }
 ```
 
+### 4.13 Work context, and beans out of the content layers
+
+Owner, 2026-11-03: *"the beans stay out of the smart base dependency tree …
+the knowledge graphs for the smart guidelines should not have any reference to
+beans in it. Otherwise it pollutes the testing run because the agent will then
+learn about beans and processes"*; *"when an agent takes up / processes /
+completes a task it should preserve memory/context. one Tool is a bean"*; *"so
+we remove beans from explicit in most diagrams, make sdlc a subgraph and clean
+up it and dependent harness use of beans"*.
+
+**Where beans reach a content layer today** (review of 2026-11-03):
+
+- Through the dependency chain: smart-base → fhir-harness →
+  folio-assistant-core → cat-harness. smart-base mounts cat-harness whole, and
+  its instruction file tells the agent to read the cat-harness skills.
+- Through the diagrams. `Process_BeanOpen` and `Process_BeanClose` sit in
+  `processes/sdlc/`, a folder of the one `processes` graph rather than a
+  sub-graph, and are called by 15 cat-harness diagrams (7 of them outside
+  `sdlc/`: kg, library, process, global tasks), by 8 fhir-harness diagrams and
+  by 4 smart-base diagrams, including the DAK diagram
+  `diig-investment-path.bpmn`. cat-harness's diagrams also carry 115 task-level
+  `op="note"` steps.
+- Through the MCP server, which offers every Tool in the chain, and the skill
+  scan, which reads every sibling folder.
+- Through prose: about 200 of 265 cat-harness skill files say "bean", many
+  only as a provenance id ("bean `kg83`").
+
+The bean **data** does not leak: it is on its own branch. The **words** do.
+
+**A bean is tied to a process instance, not to a task.** An instance names
+its bean (`bean`, `carriedBeans`), and every sub-process it calls inherits it.
+Tasks only act on it: the `op` steps, a data output to the Beans store
+(Q-BR-8 F), and a call activity naming extra beans.
+
+**Work context: what replaces the markup** (ruled, Q11: all three):
+
+1. **The engine**, at every task boundary and with no markup in the diagram:
+   - on *take up*, it hands the agent what was kept from earlier work on the
+     same item;
+   - on *complete*, it stores the agent's completion summary, links and what
+     is left open;
+   - at the instance's start and end, it does what `Process_BeanOpen` and
+     `Process_BeanClose` did: claim, resolve, archive.
+2. **A neutral data store**: a diagram may mark a task that must read or
+   write the context explicitly with a standard BPMN data store named
+   *Work context*. The engine binds it to the chosen Tool.
+3. **The agent** may record context during a task through a neutral MCP tool,
+   `work_context_note`.
+
+All three write to one **work-context store**, a role like the work plan
+(§4.1), whose Tool the deployment or run profile chooses (§4.12):
+
+| Tool | Used by |
+|---|---|
+| beans (the work-plan store) | folio-assistant development, bean-aware runs |
+| the run trace | bean-blind test runs: the context is kept and measured, the agent never learns of beans |
+| none | a run that tests a cold start |
+
+This is separate from `agent-memory`, which assembles each agent's long-lived
+memory file; work context belongs to one item and one run.
+
+**Two switches, not one.** The harness's own machinery (store, engine,
+trace) stays on in a test run, because the bean is the test's context. What
+the **agent** is given (skills, knowledge graph, Tool list, instruction files,
+prompt) follows the run profile. A sub-graph that is switched off removes the
+material from the agent's context; it does not stop the harness using it.
+
+**`sdlc` becomes a named sub-graph of cat-harness** (ruled, Q12), on the
+pattern of `openapi/` and `archimate/`: one folder whose `graph.json` declares
+what it holds — the `sdlc` skills, the `sdlc` processes, the work-plan and
+work-context typologies, and the bean and workflow Tool definitions. It is
+off by default in every layer above cat-harness; folio-assistant switches it
+on. The MCP registrar and the skill scan honour the switch, and a whole-mount
+does not override it.
+
+**Clean-up** (ruled, Q13):
+
+- No bean markup in diagrams outside the `sdlc` sub-graph: no calls to
+  `Process_BeanOpen`/`Process_BeanClose`, no `op` steps, no Beans-store data
+  outputs. The engine does that work (above). This covers cat-harness,
+  fhir-harness and smart-base.
+- Provenance ids move out of agent-facing text (into the node's provenance
+  fields or the changelog).
+- Generic skills say *work context* and the operation, never "bean".
+- The instruction files are generated from the run profile.
+- Development checkouts keep beans on; every content layer's knowledge graph
+  and every agent test context has them off.
+
+**The leak check, `check:context-leak`.** The runner is generic, in
+cat-harness-tools; the vocabulary is a code list the `sdlc` sub-graph
+declares. It scans a built context — every file, the live MCP tool list, the
+generated instruction files and the fixed prompt — and, in each content
+layer's CI, that layer's bean-blind context. It matches *bean*, the
+provenance-id pattern, `beans/`, the beans branch name, *work plan*,
+*work order*, the `workflow_*` and work-plan tool ids, `Process_Bean*` and
+`cat-harness.processes:bean`. It does **not** match *process*, *BPMN* or
+*business process*: DAKs hold business processes as content. "Could not
+determine" is never clean. It starts in report mode and becomes a gate once
+the clean-up lands.
+
 ## 5. Order of work
 
 | Step | Work | Status |
@@ -694,6 +794,10 @@ A sketch of a profile file:
 | 13 | The live local refresh (§4.10) | in review (#1429) |
 | 14 | `launch` on a placement (§4.11), once Q8 is ruled; the `itb-benchmark` deployment | |
 | 15 | Run profiles (§4.12): the file format and the standard profiles (`route-0`, `route-A`, `route-B`); the context builder reads knowledge sources from a profile (DAK files, GitHub repositories, FHIR implementation guides pinned); MCP or command-line Tools started with only the Tools that are on; skills and instruction files filtered to match; the prompt-equality check | |
+| 16 | Work context (§4.13): the engine's take-up and complete at every task boundary, open/close done by the engine, the *Work context* data store binding, `work_context_note`; `check:context-leak` in report mode | next |
+| 17 | Bean markup out of the diagrams, cat-harness first; `check:bean-calls` replaced by the leak check | |
+| 18 | `sdlc` as a named sub-graph; the registrar and skill scan honour it; folio-assistant switches it on | |
+| 19 | The dependent harnesses (fhir-harness, smart-base): the same clean-up; provenance ids out of agent-facing text; the leak check becomes a gate | |
 
 Steps 1 to 6 change nothing for anyone using the git branch today. Steps 9,
 10 and 12 are what the concept note's cloud credits and model access would
@@ -745,6 +849,9 @@ reported, never blocked:
 | Q8 | How does a deployment say which model runs each agent? | **Open.** Recommended: `launch: { tool, model }` on the agent's placement (§4.11). Default if unruled: that |
 | Q9 | Who records progress in a bean-blind run? | **Open.** Recommended: the harness, observing the agent's output (§4.9). Default if unruled: that |
 | Q10 | Where do run profiles live? | **Open.** Recommended: one file per profile, in a declared `test-run-profiles/` directory of cat-harness, beside the deployment descriptions, with a schema; a test plan names a profile by its id (§4.12). Default if unruled: that |
+| Q11 | How is an agent's context kept as it takes up, works and completes a task? | **All three** (2026-11-03): the engine at every task boundary; an optional neutral *Work context* data store in a diagram; the agent's own `work_context_note`. One work-context store, its Tool chosen by the deployment or run profile: beans, the run trace, or none (§4.13) |
+| Q12 | Where does the development material sit? | **`sdlc` becomes a named sub-graph of cat-harness**, off in the layers above, switched on by folio-assistant (2026-11-03, §4.13) |
+| Q13 | Do diagrams carry bean markup? | **No, outside `sdlc`** (2026-11-03): the engine does open, close and the per-task record; cat-harness, fhir-harness and smart-base are cleaned up (§4.13) |
 
 ---
 
