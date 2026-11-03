@@ -17,7 +17,7 @@ summary: >-
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
-**Status:** proposal, nothing built. Q1 to Q5 ruled 2026-11-02 (§7): Q1 B, Q2 A, Q3 A, Q4 A, Q5 A. §4.8 (the ITB as the test harness) added 19:07Z; Q6 ruled A (the ITB drives). Q7 ruled B (archiving is a field set by `update`). Step 1 is draft PR #993.
+**Status:** proposal, nothing built. Q1 to Q5 ruled 2026-11-02 (§7): Q1 B, Q2 A, Q3 A, Q4 A, Q5 A. §4.8 (the ITB as the test harness) added 19:07Z; Q6 ruled A (the ITB drives). Q7 ruled B (archiving is a field set by `update`). Steps 1 to 3 merged or in review (cat-harness#993, cat-harness-tools#1418, #1420 onward; the list is on #991). §4.9 (a live store on localhost) and §4.10 (configuring a run) added 2026-11-03 at the owner's request.
 Issue [#991](https://github.com/litlfred/cat-harness/issues/991), bean
 `folio-assistant-bsd1`. It builds on the work-plan store contract
 ([`work-plan-store`](../../skills/sdlc/sdlc-core/work-plan-store.md), Q-DS-1 A
@@ -437,6 +437,138 @@ agents the same world, which is what makes a comparison across models fair.
 Route 0 runs get an empty context; Route A gets skills and memory without
 the knowledge-graph layer; Route B gets all of it.
 
+### 4.9 A live store on localhost
+
+Owner, 2026-11-03: *"for mcp server, this will only work i think on localhost
+(or hosted like hetzner which we dont have) deployments. do localhost setup."*
+
+**The constraint.** The published site is static (GitHub Pages). It can show
+what the store held when the site was built, and nothing newer: a page there
+cannot reach a beans server or an MCP service, because none runs where Pages
+runs. A store server is reachable only from a machine that runs one, which
+today is the developer's own (`localhost`). A hosted server (Hetzner or
+similar) would make it reachable from anywhere, but there is none, so it is
+out of scope here and noted under "Later".
+
+**The setup.** Every piece below already exists except the one route:
+
+| Piece | What | Where |
+|---|---|---|
+| The harness server | `bun run cat-harness-tools/src/server.ts` (or the MCP server image); MCP at `http://localhost:8080/mcp`, viewer at `http://localhost:3200/` | cat-harness-tools, exists |
+| The deployment | `CAT_DEPLOYMENT=developer` names `scenarios/deployments/developer.json`, whose `stores` names the work-plan Tool (§4.3). Unset means the git branch on its mount | cat-harness + tools#1424 |
+| The read route | `GET /api/work-plan/processed-beans` returns the same rows the all-beans page embeds, read through the store's operations (`list`, `positions`, `beansAt`), so it answers from whichever Tool the deployment names | **new**, tools |
+| The page | `processed-beans/` keeps its embedded rows and, every 5 s, asks the route for fresh ones; it re-renders only when the answer changed | **new**, tools |
+
+How a reader turns it on:
+
+1. Start the harness server in the checkout: `CAT_DEPLOYMENT=developer bun run cat-harness-tools/src/server.ts`.
+2. Open the all-beans page (published, or a local preview of the site) with `?live=http://localhost:8080`. A page served by the harness server itself would poll it without the parameter, if the viewer serves the site pages (not yet checked).
+3. The page shows a **Live** chip with the time of the last answer. With no server it shows **Live updates off: no local store server answered**, and keeps the built rows. It never shows an empty plan because a request failed.
+
+**Security, because the route is a door into the work plan:**
+
+- The server binds to `127.0.0.1` only. A deployment that wants it on a network
+  must say so in its description, and that is the hosted case under "Later".
+- The route is **read-only**: no store operation that writes is reachable from it.
+- CORS allows the published site's origin and `localhost`, not `*`. The server
+  allows `*` today for its other routes; this route does not inherit that.
+- No credential travels to the page: the server reads the store with the
+  checkout's own access, and the page receives rows only.
+
+**The MCP service Tool** (`beans-mcp`, §4.2, proposed) would sit on the same
+server: MCP tools that are the store operations (proposed names
+`work_plan_get`, `work_plan_list`, `work_plan_positions`, `work_plan_history`),
+for agents. None of them exists yet. The page
+uses the plain HTTP route rather than MCP, because a browser polling every
+5 s needs one cheap GET, not an MCP session.
+
+**Later (not now):** the same server hosted (for example on Hetzner), with
+authentication in front of the route and its address in the deployment
+description. Nothing on the page changes except the address it polls.
+
+### 4.10 Configuring a run: models, the ITB, the deployment
+
+One question, asked whenever a run is set up: *which model runs which agent,
+against which store, under which test plan?* Each part has one home; nothing
+is configured in two places.
+
+| Setting | Home | Example |
+|---|---|---|
+| Which deployment this checkout is | `CAT_DEPLOYMENT` (environment) | `itb-benchmark` |
+| Which store backs the work plan | the deployment's `stores` | `{ "work-plan": "beans-run-scoped" }` |
+| Which actors exist, and where each runs | the deployment's `placements` (`actor`, `host`, `compute`, `toolSurface`, `modelProvenance`, `reach`) | `{ "actor": "agent-gemini", "compute": "vendor-cloud", "modelProvenance": "hosted" }` |
+| Which model an agent actor is, and how it is started | the placement's **`launch`** (proposed, below) | `{ "tool": "launch-antigravity", "model": "gemini-…" }` |
+| Credentials | the placement's `credentials`, by **name** of the secret or mechanism, never a value (the schema refuses a value's shape) | `{ "model-api": "GCP_WIF_ASSURED_AI" }` |
+| What is tested, with which bean sets per agent | the ITB test plan (Gherkin, §4.8) | `Given agent A (gemini, route B) holds beans S_A` |
+| The world the agents see | the context hash in the plan's `Background` (§4.8) | `Given the context "folio-assistant@<hash>"` |
+| The route (0, A, B) | the test plan, per agent | `route B` |
+
+**The one proposed field: `launch` on a placement.** A placement says where
+an actor runs; for an agent actor it must also say which model and which
+launch Tool (§4.5) starts it. Proposed shape, following Q-BSD-2 A (the
+deployment chooses Tools):
+
+```json
+{
+  "actor": "agent-gemini",
+  "host": "vendor-cloud",
+  "compute": "vendor-cloud",
+  "toolSurface": "mcp",
+  "modelProvenance": "hosted",
+  "launch": { "tool": "launch-antigravity", "model": "gemini-<version>" },
+  "credentials": { "model-api": "GCP_WIF_ASSURED_AI" }
+}
+```
+
+`launch.tool` names a launch Tool by id, as `stores` names a store Tool, and
+an id this toolset lacks is refused, never replaced. `launch.model` is passed
+to the Tool as given. The test plan names agents by actor id, so a plan never
+names a model: changing the model is a one-line change to the deployment, and
+the same plan then compares models fairly.
+
+**A worked example: Claude and Gemini on one plan.**
+
+`scenarios/deployments/itb-benchmark.json` (sketch):
+
+```json
+{
+  "id": "itb-benchmark",
+  "title": "ITB benchmark run: Claude and Gemini on one plan",
+  "modes": ["test"],
+  "stores": { "work-plan": "beans-run-scoped" },
+  "placements": [
+    { "actor": "agent-claude", "host": "local", "compute": "workstation", "toolSurface": "mcp",
+      "launch": { "tool": "launch-beans-serve", "model": "claude-<version>" } },
+    { "actor": "agent-gemini", "host": "vendor-cloud", "compute": "vendor-cloud", "toolSurface": "mcp",
+      "modelProvenance": "hosted",
+      "launch": { "tool": "launch-antigravity", "model": "gemini-<version>" },
+      "credentials": { "model-api": "GCP_WIF_ASSURED_AI" } }
+  ],
+  "liveData": "artefacts-only"
+}
+```
+
+The run, end to end:
+
+1. `CAT_DEPLOYMENT=itb-benchmark` is set where the harness runs.
+2. The ITB calls `harness-up` (§4.8): a state machine, a run-scoped store
+   (because `stores` says so), and the materialised context the plan pins.
+3. The plan's `Given` steps call `seed`: beans and started instances in the
+   run's store, never the real work plan.
+4. `When the agents are started` calls `start-agents`: for each agent in the
+   plan, its placement's `launch` names the Tool and model; the work order is
+   the same for both (§4.5).
+5. The agents move through the processes with `workflow_complete`; `observe`
+   streams `history`, instance moves and refusals; on `localhost` the
+   all-beans page shows the run live (§4.9).
+6. `Then` steps check `state`; `harness-down` exports the trace and removes
+   the run's store. The TAR comes back as `folio-test-run/v1`.
+
+What each model needs from outside the harness, named in the deployment and
+supplied by whoever runs it: Claude, a `claude` CLI and its login on the
+machine `launch-beans-serve` runs on; Gemini, the GCP project and Workload
+Identity named by the concept note, reached by `launch-antigravity`.
+
 ## 5. Order of work
 
 | Step | Work | Repo | Depends on |
@@ -453,6 +585,9 @@ the knowledge-graph layer; Route B gets all of it.
 | 10 | `launch-antigravity` Tool; the same cases under Routes 0, A, B for Claude and Gemini; traces exported for the ITB | tools | 7, 9 |
 | 11 | Context materialiser: one pinned repository per run from KG, skills, memory and entry files (§4.8) | tools | 9 |
 | 12 | ITB services (`harness-up`, `seed`, `start-agents`, `observe`, `state`, `harness-down`) and the Gherkin steps that call them; first multi-agent plan | tools | 9, 11 |
+| 5b | The bean's history on `processed-bean/<bean>/`, stepped through with buttons and keys (owner, 2026-11-03) | tools | 5 |
+| 13 | The live read route on the local harness server, and the all-beans page refreshing from it every 5 s (§4.9) | tools | 4, Q2 |
+| 14 | `launch` on a placement (§4.10), read by `start-agents`; `itb-benchmark` deployment | cat-harness + tools | 7, 9 |
 
 Steps 1 to 6 change no behaviour for the git Tool. Step 7 changes how agents
 are started, so it needs the owner's choice of first launch Tool (§7, Q3).
