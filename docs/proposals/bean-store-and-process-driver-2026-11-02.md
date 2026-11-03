@@ -456,22 +456,23 @@ out of scope here and noted under "Later".
 |---|---|---|
 | The harness server | `bun run cat-harness-tools/src/server.ts` (or the MCP server image); MCP at `http://localhost:8080/mcp`, viewer at `http://localhost:3200/` | cat-harness-tools, exists |
 | The deployment | `CAT_DEPLOYMENT=developer` names `scenarios/deployments/developer.json`, whose `stores` names the work-plan Tool (§4.3). Unset means the git branch on its mount | cat-harness + tools#1424 |
-| The read route | `GET /api/work-plan/processed-beans` returns the same rows the all-beans page embeds, read through the store's operations (`list`, `positions`, `beansAt`), so it answers from whichever Tool the deployment names | **new**, tools |
-| The page | `beans-processed/` keeps its embedded rows and, every 5 s, asks the route for fresh ones; it re-renders only when the answer changed | **new**, tools |
+| The read route | `GET /api/work-plan/beans-processed` returns the same rows the all-beans page embeds, read through the store's operations, so it answers from whichever Tool the deployment names | cat-harness-tools#1429 |
+| The page | `beans-processed/` keeps its embedded rows and, every 5 s, asks the route for fresh ones; it re-renders only when the answer changed. Only on a page opened from localhost: on GitHub Pages there is nothing to refresh from, so there is no control (owner, 2026-11-03) | cat-harness-tools#1429 |
 
 How a reader turns it on:
 
 1. Start the harness server in the checkout: `CAT_DEPLOYMENT=developer bun run cat-harness-tools/src/server.ts`.
-2. Open the all-beans page (published, or a local preview of the site) with `?live=http://localhost:8080`. A page served by the harness server itself would poll it without the parameter, if the viewer serves the site pages (not yet checked).
-3. The page shows a **Live** chip with the time of the last answer. With no server it shows **Live updates off: no local store server answered**, and keeps the built rows. It never shows an empty plan because a request failed.
+2. Open the all-beans page from this machine (a local preview of the site, or the harness server). The page polls its own origin, then the MCP server's default port (8080).
+3. The page shows **Live** with the store Tool and the time of the last answer. With no server it shows **Live updates off: no local store server answered**, and keeps the built rows. It never shows an empty plan because a request failed.
 
 **Security, because the route is a door into the work plan:**
 
 - The server binds to `127.0.0.1` only. A deployment that wants it on a network
   must say so in its description, and that is the hosted case under "Later".
 - The route is **read-only**: no store operation that writes is reachable from it.
-- CORS allows the published site's origin and `localhost`, not `*`. The server
-  allows `*` today for its other routes; this route does not inherit that.
+- CORS allows a `localhost` origin only, not `*`. The server allows `*` today
+  for its other routes; this route does not inherit that. The published site
+  never calls it.
 - No credential travels to the page: the server reads the store with the
   checkout's own access, and the page receives rows only.
 
