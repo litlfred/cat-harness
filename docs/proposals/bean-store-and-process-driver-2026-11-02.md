@@ -15,6 +15,8 @@ summary: >-
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
+**Superseded for reading by [Testing AI agents fairly: the WHO Assured AI test harness](assured-ai-test-harness-2026-11-03.md)** (2026-11-03), which combines this proposal with the other one on the topic in plain language. This document stays unchanged below as the record of how its decisions were reached.
+
 **Status (2026-11-03):** steps 1 to 5 built and merged, the visual pages and
 local refresh in review; Q1 to Q7 ruled by the owner (§8). Issue
 [#991](https://github.com/litlfred/cat-harness/issues/991) lists every pull

@@ -5,6 +5,8 @@ parent: Proposals
 
 # Test plans, FHIR TestPlan and the ITB: one model, several exports
 
+**Superseded for reading by [Testing AI agents fairly: the WHO Assured AI test harness](assured-ai-test-harness-2026-11-03.md)** (2026-11-03), which combines this proposal with the other one on the topic in plain language. This document stays unchanged below as the record of how its decisions were reached.
+
 **Draft, 2026-10-24. Not built.**
 
 **Owner decisions, 2026-10-24 (all five answered):**
