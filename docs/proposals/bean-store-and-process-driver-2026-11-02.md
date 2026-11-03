@@ -880,14 +880,14 @@ ITB compares them.
 | 13 | The live local refresh (§4.10) | in review (#1429) |
 | 14 | `launch` on a placement (§4.11), once Q8 is ruled; the `itb-benchmark` deployment | |
 | 15 | Run profiles (§4.12): the file format and the standard profiles (`route-0`, `route-A`, `route-B`); the context builder reads knowledge sources from a profile (DAK files, GitHub repositories, FHIR implementation guides pinned); MCP or command-line Tools started with only the Tools that are on; skills and instruction files filtered to match; the prompt-equality check | |
-| 16 | The engine keeps work context at every task boundary; open and close done by the engine; `work_context_note` as its own Tool (§4.13) | in review (cat-harness-tools#1435, cat-harness#1010) |
-| 17 | Bean markup out of the cat-harness diagrams outside `sdlc` (§4.13) | branch `claude/diagrams-no-bean-markup` |
-| 18 | The `memory-record` base schema with structured entries, `bean-defs` extending it; `MemoryStore` (keep, recall, checkpoint over item, run and shared scopes) with `WorkPlanStore` extending it; the bean Tool for both; conformance tests for both layers; `stores["memory"]` (§4.14, Q17) | next |
-| 19 | The engine binds a drawn `memory` data store: a task that reads it is handed the recalled entries, a task that writes it keeps its output; shared scopes for a swarm with `ifMatch` | |
-| 20 | Neutral tools `memory_note`, `memory_recall`, `memory_checkpoint`, and their skill; `work_context_note` folded in | |
-| 21 | A second memory Tool (a run-scoped file store) passes the same conformance tests, so the Role is proven Tool-neutral | |
-| 22 | `check:context-leak` in report mode; `check:bean-calls` retired; `bpmn-authoring` teaches the memory store patterns instead of bean open and close | |
-| 23 | The `beans` sub-graph (the Tool) and the `sdlc` sub-graph (the development processes and skills); the registrar and skill scan honour sub-graph switches; folio-assistant switches both on | |
+| 16 | The engine keeps work context at every task boundary; open and close done by the engine; `work_context_note` as its own Tool (§4.13) | merged (cat-harness-tools#1435; Tool nodes cat-harness#1010 in review) |
+| 17 | Bean markup out of the cat-harness diagrams outside `sdlc` (§4.13) | merged (cat-harness#1011, cat-harness-tools#1436) |
+| 18 | The `memory-record` base schema with structured entries, `bean-defs` extending it; `MemoryStore` (keep, recall, checkpoint over item, run and shared scopes) with `WorkPlanStore` extending it; the bean Tool for both; conformance tests for both layers; `stores["memory"]` (§4.14, Q17) | merged (cat-harness-tools#1437) |
+| 19 | The engine binds a drawn `memory` data store: a task that reads it is handed the recalled entries, a task that writes it keeps its output; shared scopes for a swarm with `ifMatch` | merged (cat-harness-tools#1438) |
+| 20 | Neutral tools `memory_note`, `memory_recall`, `memory_checkpoint`, and their skill; `work_context_note` folded in | merged (cat-harness-tools#1438) |
+| 21 | A second memory Tool (a run-scoped file store) passes the same conformance tests, so the Role is proven Tool-neutral | merged (cat-harness-tools#1439) |
+| 22 | `check:context-leak` in report mode; `check:bean-calls` retired; `bpmn-authoring` teaches the memory store patterns instead of bean open and close | in review (cat-harness-tools#1440) |
+| 23 | Two named sub-graph folders of cat-harness, on the pattern of `openapi/` (Q18): `sdlc/` (the development processes and skills) and `work-plan/` (the bean Tool, its skills, the bean and workflow Tool definitions, the work-plan store skills). 23.1 the opt-in switch: a sub-graph marked `optIn`, a layer's `enableSubgraphs`, the development override; honoured by the directory resolver, the skill scan, the tool server and the mount plan. 23.2 the move, a clean break (no redirects). 23.3 the tools layer's paths and tests. 23.4 folio-assistant enables both; development-session hooks. 23.5 the leak check over a smart-base bean-blind context | in progress |
 | 24 | fhir-harness and smart-base: bean markup out of their diagrams; their instruction files generated; the leak check a gate in their CI | |
 | 25 | Provenance ids out of agent-facing skill text across the layers | |
 | 26 | folio-assistant's content-development processes draw the memory store where they need it (checkpoint, shared space) | |
@@ -948,7 +948,9 @@ reported, never blocked:
 | Q13 | Do diagrams carry bean markup? | **No, outside `sdlc`** (2026-11-03): the engine does open, close and the per-task record; cat-harness, fhir-harness and smart-base are cleaned up (§4.13) |
 | Q14 | When does a diagram draw the memory store? | **Only where the process needs memory** (2026-11-03): a checkpoint before stopping, a shared space for a swarm, a hand-over; never as bookkeeping. Beans are one Tool for it; there may be others (§4.14) |
 | Q17 | How are beans and the memory store formalised? | **Layered, one service** (2026-11-03): `memory-record` base schema with structured entries; `bean-defs` extends it; `WorkPlanStore` extends `MemoryStore` (§4.14) |
-| Q15 | Where does the bean Tool sit? | **Open.** Recommended: its own `beans` sub-graph, used by `sdlc` and by folio-assistant's content development; the memory store Role in cat-harness itself (§4.14). Default if unruled: that |
+| Q15 | Where does the bean Tool sit? | **Its own sub-graph** (2026-11-03, the default): `work-plan`, used by `sdlc` and by folio-assistant's content development; the memory store Role stays in cat-harness itself (§4.14) |
+| Q16 | Does the engine keep the basics when no memory store is drawn? | **Yes, whenever the deployment names a memory Tool** (2026-11-03, the default): taken up, each step done, closed; not drawn, not seen by the agent |
+| Q18 | How are `sdlc` and `work-plan` carved out? | **Named sub-graph folders**, `sdlc/` and `work-plan/`, like `openapi/` (owner, 2026-11-03: option 2), **a clean break**: *"dont worry old IRIs"* — no redirects. Off in every layer unless that layer enables it for itself; a development override turns them on in a working checkout |
 
 ---
 
