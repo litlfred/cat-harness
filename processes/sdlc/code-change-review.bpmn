@@ -392,13 +392,13 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         <dc:Bounds x="1555" y="255" width="50" height="50" />
       <bpmndi:BPMNLabel><dc:Bounds x="1545" y="222" width="70" height="14" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_AddressReview" bpmnElement="Task_AddressReview">
-        <dc:Bounds x="1510" y="360" width="140" height="80" />
+        <dc:Bounds x="1530" y="360" width="140" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_PrepareMerge" bpmnElement="Task_PrepareMerge">
-        <dc:Bounds x="1690" y="220" width="120" height="120" />
+        <dc:Bounds x="1690" y="200" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_CloseBean" bpmnElement="Task_CloseBean">
-        <dc:Bounds x="1690" y="340" width="120" height="120" />
+        <dc:Bounds x="1690" y="360" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Merged" bpmnElement="End_Merged">
         
@@ -436,13 +436,13 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         <di:waypoint x="1210" y="280" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f6" bpmnElement="f6">
-        <di:waypoint x="1270" y="320" />
-        <di:waypoint x="1270" y="95" />
+        <di:waypoint x="1270" y="220" />
+        <di:waypoint x="1270" y="175" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f7" bpmnElement="f7">
         <di:waypoint x="1380" y="135" />
         <di:waypoint x="1430" y="135" />
-        <di:waypoint x="1430" y="280" />
+        <di:waypoint x="1430" y="255" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f8" bpmnElement="f8">
         <di:waypoint x="1455" y="280" />
@@ -451,7 +451,7 @@ The loop back through "root-cause the failure" is the point of drawing this at a
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f9" bpmnElement="f9">
         <di:waypoint x="1430" y="305" />
-        <di:waypoint x="1430" y="360" />
+        <di:waypoint x="1430" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f11" bpmnElement="f11">
         <di:waypoint x="1370" y="400" />
@@ -459,16 +459,20 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         <di:waypoint x="890" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f12" bpmnElement="f12">
-        <di:waypoint x="1500" y="505" />
-        <di:waypoint x="1500" y="280" />
+        <di:waypoint x="1520" y="502" />
+        <di:waypoint x="1520" y="280" />
         <di:waypoint x="1555" y="280" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f13" bpmnElement="f13">
         <bpmndi:BPMNLabel><dc:Bounds x="1584" y="323.5" width="51.7" height="18" /></bpmndi:BPMNLabel>
-        <di:waypoint x="1580" y="305" /><di:waypoint x="1580" y="360" />
+        <di:waypoint x="1580" y="305" />
+        <di:waypoint x="1580" y="360" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f14" bpmnElement="f14">
-        <di:waypoint x="1510" y="400" /><di:waypoint x="890" y="400" /><di:waypoint x="890" y="320" />
+        <di:waypoint x="1600" y="440" />
+        <di:waypoint x="1600" y="475" />
+        <di:waypoint x="870" y="475" />
+        <di:waypoint x="870" y="320" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f15" bpmnElement="f15">
         <di:waypoint x="1605" y="280" />

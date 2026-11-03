@@ -189,6 +189,45 @@ sees. The rendered page is the artefact under review — `preview:site` exists
 for exactly this reason, after a generator shipped 22 headings with one anchor
 and every gate was green across it.
 
+## Rendering: what a reader can click, and what must not collide
+
+Owner, 2026-11-03 (cat-harness#991), on the published diagrams: *"linked
+tasks should be on the task title only, not the whole box. the subprocess
+should be opened by the [+] not the whole box."* `render:bpmn`
+(`cat-harness-tools/src/workflow/diagram-links.ts`) draws the links; the
+layout rules are checked by `bpmn:detangle`
+([`bpmn-detangle`](bpmn-detangle.md)).
+
+**Links.**
+
+- A step's **title** links to the step's own page (`process/P/node/T`). The
+  link wraps the title's text only, never the box, so a badge or the ⓘ drawn
+  on the box is a target of its own.
+- A call activity's **[+]** links to the process it calls. The link is the
+  marker and a 24 × 24 hit area around it, never the box.
+- Every link is focusable, shows a focus ring the size of the link, and has
+  an accessible name: "Open step: …" or "Open subprocess: …".
+- An overlay drawn over the picture (the process page's `.pt-go`) follows
+  the same rule: it covers the [+] only.
+
+**Layout.** The picture is the `BPMNDiagram` as written: bpmn-js lays
+nothing out, so every rule below is fixed in the DI.
+
+- **No flow through a box**: not a box it skips, and not its own source or
+  target. A flow starts on the side of the box it leaves and ends on the side
+  of the box it enters. When a box is resized (every task is 120 × 120), move
+  the waypoints with it: a flow laid for the old size runs through the new
+  box (`edge-through-own-end`).
+- **No two labels on each other, and no label on a flow, a box or a lane
+  line**, a pool's right edge included. A word wider than its `BPMNLabel`
+  width breaks mid-word, so give the label the width of its longest word.
+- **Every step inside its pool** (`shape-outside-pool`). Only data stores,
+  data objects, annotations and groups may sit outside.
+- **Labels inside the picture.** The SVG's `viewBox` is bpmn-js's bounding
+  box of everything drawn, labels included, so a label never falls outside
+  it. A label that looks cut off at the edge is cut off by the page, not by
+  the SVG.
+
 ## Running one: the engine refuses work claimed out of order
 
 The list / start / next / complete calls run a process from its diagram.
