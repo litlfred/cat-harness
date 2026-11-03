@@ -4,59 +4,154 @@ kind: proposal
 issue: 991
 bean: folio-assistant-bsd1
 summary: >-
-  Proposed 2026-11-02 (ITB test harness added 19:07Z), in the context of the WHO Assured AI concept note on
-  Gemini integration and benchmarking: make every process and skill that
-  touches the work plan speak only the work-plan store's contract, with the
-  git state branch as one Tool among others (a beans server, an MCP service).
-  Then let the BPMN state machine start an agent of any model (Claude, Gemini
-  through Antigravity) on an enabled step, hand it a bean tagged with its
-  process and step, and record every move. The same records are the trace a
-  benchmark run (Route 0, A, B) is scored on.
+  How the WHO authoring harness keeps an AI agent's work plan in a store that
+  any tool can back, starts an agent of any model (Claude, Gemini) on one step
+  of a process with exactly the context that step needs, records every move,
+  and lets the ITB test bed run the same work under controlled conditions —
+  with the agent told it is working a tracked task, or not told at all — so
+  models can be compared fairly for the WHO Assured AI benchmarks.
 ---
 
 # The Beans store behind any Tool, and a state machine that starts any model's agent
 {: .no_toc }
 
-**Status:** proposal, nothing built. Q1 to Q5 ruled 2026-11-02 (§7): Q1 B, Q2 A, Q3 A, Q4 A, Q5 A. §4.8 (the ITB as the test harness) added 19:07Z; Q6 ruled A (the ITB drives). Q7 ruled B (archiving is a field set by `update`). Steps 1 to 3 merged or in review (cat-harness#993, cat-harness-tools#1418, #1420 onward; the list is on #991). §4.9 (a live store on localhost) and §4.10 (configuring a run) added 2026-11-03 at the owner's request.
-Issue [#991](https://github.com/litlfred/cat-harness/issues/991), bean
-`folio-assistant-bsd1`. It builds on the work-plan store contract
-([`work-plan-store`](../../skills/sdlc/sdlc-core/work-plan-store.md), Q-DS-1 A
-and Q-DS-2 A), Beans store links in diagrams (Q-BR-8 F, PR #972), the
-beans-by-process pages (cat-harness-tools#1413) and the recording follow-up
-(#988).
+**Status (2026-11-03):** steps 1 to 5 built and merged, the visual pages and
+local refresh in review; Q1 to Q7 ruled by the owner (§8). Issue
+[#991](https://github.com/litlfred/cat-harness/issues/991) lists every pull
+request.
 
 1. TOC
 {:toc}
 
 ---
 
-## 0. Context: WHO Assured AI, Gemini parity and benchmarking
+## In brief
 
-This proposal is written for the concept note *Gemini Integration and
-Benchmarking Methodology for WHO Assured AI* (owner, 2026-11-02). That note
-asks for three things this harness must deliver, and each depends on the
-work below:
+WHO is building **SMART Guidelines** content (guidance turned into
+structured, computable, testable form) with AI agents doing part of the
+authoring. To keep those agents accurate, every piece of work runs through a
+**process diagram** (BPMN): each step belongs to a **role**, and an agent
+taking that role is given only that step, with only the knowledge it needs.
+The software that enforces this is the **harness**.
 
-| The concept note says | What it needs from the harness | Where in this proposal |
-|---|---|---|
-| Agents are confined to BPMN swimlanes, each task backed by skills and Tools, with bounded context, to keep them on track | The state machine, not the agent, decides the step and hands over only that step's context | §4.4, §4.5 |
-| Agents use MCP servers for tools and data | The work plan reachable over MCP, not only through git commands a given agent may not have | §4.2 (`beans-mcp`) |
-| Usability parity across frontier models; guardrails replicated in `GEMINI.md` | A **model-neutral work order** an agent of any model receives, so guardrails live in the process and the work order, not in one vendor's prompt file | §4.5 |
-| Routes 0, A and B, run through Gherkin test specifications and the BPMN harness, with reasoning traces captured for the ITB | One dispatcher that can start the same case under each route and record every step, refusal and bean change as a trace | §4.6, §4.7 |
-| The ITB is the testing tool (owner, 2026-11-02 19:07Z) | A test harness the ITB drives: a state machine, a Beans store and a materialised knowledge graph per run, agents A, B, C… started with bean sets S_A, S_B, S_C…, end state and behaviour observed | §4.8 |
+This proposal does four things:
 
-Two facts about today matter here. `GEMINI.md` in each repository is five
-lines that point to `AGENTS.md`, so the guardrails an agent gets are the same
-text for every model, and anything Claude-specific lives in Claude's own
-session configuration rather than in the process. And
-[`req:model-benchmark`](../../skills/requirements/model-benchmark.json)
-(cat-harness#686) already says **a benchmark never writes to `beans/`**, which
-a store that can only be the git branch cannot honour without care: a
-benchmark run needs a store of its own (§4.7).
+1. **One work plan, any storage.** The list of work items (each one a
+   **bean**) is kept by a store that offers a fixed set of operations (read,
+   update, note, history, "where is this item in its process?"). Today the
+   store is a git branch; tomorrow it can be a server or an MCP service.
+   Nothing that uses the work plan needs to change when the storage does.
+2. **The process starts the agent.** When a step is ready and its role is an
+   AI agent, the harness starts an agent of a chosen model (Claude, Gemini
+   through Antigravity, others) and hands it a **work order**: the item, the
+   step, the role's skills. The work order is the same for every model.
+3. **Everything is recorded.** Every change to an item, and every step it
+   passes through, is kept as history. That history is also the **trace** a
+   benchmark is scored on.
+4. **Fair testing in the ITB.** The ITB test bed stands up a private copy of
+   all of this per test run, starts several agents (possibly of different
+   models), and checks what they did. A test can hand the agent its task as a
+   tracked work item, or **hide that entirely**: the agent gets an ordinary
+   prompt written from the item and works as it would in the real world, while
+   the harness tracks the item behind the scenes (§4.9).
 
 ---
 
-## 1. The ask
+## Terms used
+
+| Term | Meaning here |
+|---|---|
+| **WHO Assured AI** | The WHO initiative defining how AI may be used, and tested, for turning health guidance into computable formats |
+| **SMART Guidelines, L1–L5** | WHO's layers of a guideline: **L1** the narrative guideline; **L2** its digital adaptation (operational requirements); **L3** machine-readable, executable logic; **L4** and **L5** later layers (software and dynamic, verifiable clinical and public-health workflows) that will be built once the agents have robust guardrails |
+| **folio**, **folio-assistant** | A folio is one body of authored content (a guideline, a paper). folio-assistant is the system that authors and publishes folios with AI help |
+| **harness**, **cat-harness** | The part of folio-assistant that governs agents: processes, roles, skills, the work plan. *cat-harness* is its repository; *cat-harness-tools* holds the code that runs it |
+| **BPMN process**, **diagram** | A standard flow-chart notation for work. Each process here is a diagram the harness can execute |
+| **swimlane**, **lane** | A horizontal band in a diagram; every step in it is done by one **role** (a human author, a reviewer, an AI agent) |
+| **step** (task), **gateway** | A box in the diagram (something to do) and a diamond (a decision) |
+| **instance**, **token** | One run of a process for one piece of work, and the marker showing which step that run is at |
+| **state machine**, **engine** | The harness code that moves tokens: it allows a step only when the diagram says it is next, and refuses an out-of-order one |
+| **skill** | Written guidance (and sometimes a tool) for doing one kind of task; a role carries a set of skills |
+| **Tool** (capital T) | A concrete way of doing something the harness needs, for example "keep the work plan on a git branch" or "start a Claude agent". Several Tools can do the same job; a deployment picks one |
+| **MCP** | Model Context Protocol: a standard way for an AI agent to call tools and fetch data from a server |
+| **knowledge graph** | The authored content and its links (L1, L2, L3 and the harness's own definitions), which agents read from instead of guessing |
+| **bean** | One work item: a title, a status (`todo`, `in-progress`, `completed`…), a description and links to other items. Named after the `beans` tool that manages them |
+| **work plan**, **Beans store** | All the beans, plus the process instances that track them |
+| **deployment description** | A file saying how one installation is set up: where each actor runs, which Tools it uses, which credentials it is allowed (by name only) |
+| **work order** | What an agent is handed when a step is ready: the bean, the step, the role's skills, how to report back |
+| **launch Tool** | A Tool that starts an agent of one model, for example Claude through `beans-serve` or Gemini through Antigravity |
+| **Route 0 / A / B** | The concept note's evaluation routes: **0** the bare model; **A** the model with skills; **B** the model with skills and the knowledge graph |
+| **bean-aware / bean-blind** | Whether the agent is told it is working a tracked item (§4.9) |
+| **ITB** | The Interoperability Test Bed, a test-orchestration service. It runs a test plan and reports the result |
+| **Gherkin** | A plain-language test format: *Given* a situation, *When* something happens, *Then* this must hold |
+| **trace** | The ordered record of a run: every step reached or refused, every change to a bean, what the agent did |
+| **Antigravity** (`agy`) | Google's agent environment through which Gemini is run |
+| **`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `MEMORY.md`** | The instruction files an agent reads first. `CLAUDE.md` and `GEMINI.md` point at the shared `AGENTS.md`; `MEMORY.md` holds what a role should remember between sessions |
+
+---
+
+## 1. Why: the WHO Assured AI concept note
+
+The concept note *Gemini Integration and Benchmarking Methodology for WHO
+Assured AI* (2026-11-02) sets the purpose of this work.
+
+**Its background.** WHO Assured AI is establishing how complex health
+guidance becomes computable, structured and verifiable (L2, L3, L5), and how
+large language models are to be **benchmarked** for high-stakes health work.
+To keep the infrastructure model-agnostic, Gemini must be integrated deeply
+enough to reach **usability parity** with the models already in use, and the
+methods must be validated against Gemini's own reasoning and tool-calling.
+
+**Its architecture**, which this proposal implements:
+
+- **BPMN swimlanes as a guardrail.** Work is split into swimlanes; each task
+  belongs to a role (human or AI) and is supported by skills with tooling or
+  prompts behind them. An agent gets one specific, checkable task with
+  bounded context, which structurally limits hallucination.
+- **MCP servers** give agents their tools and precise data.
+- **Layered knowledge graphs**: L1 foundations, L2 importing L1 for digital
+  adaptation, L3 importing both for executable logic; L4 and L5 to follow
+  once the guardrails are proven.
+- **Central instructions, model-specific prompting.** Behaviour is defined
+  once, but each model may need its own wording to stay on track. Claude
+  already has such prompts in its workflow; replicating them for Gemini
+  (`GEMINI.md`) needs dedicated testing.
+
+**Its method.** Models are tested against WHO baselines and new projects
+through three routes (Route 0 bare, Route A with skills, Route B with skills
+and the knowledge graph), driven by **executable Gherkin test
+specifications** through the BPMN harness, so that reasoning traces are
+captured and models can be compared on a WHO-approved benchmark.
+
+**Its asks** of Google: Cloud credits to run Antigravity at enterprise scale
+for the benchmark pipelines; Gemini Ultra access for three engineers; and a
+consultation with the Antigravity developer-experience team on replicating
+guardrail prompts, on Gemini's use of the MCP servers and skills, and on
+shaping outputs for the ITB.
+
+**Its expected outcomes**: a native Gemini path through the harness, a
+validated benchmarking method, and progress toward a WHO-approved standard
+for testing LLM output in digital health.
+
+What that requires of the harness, and where this proposal provides it:
+
+| The concept note needs | What the harness must do | Section |
+|---|---|---|
+| Agents confined to one step with bounded context | The engine, not the agent, decides the step and hands over only that step's context | §4.4, §4.5 |
+| Agents reach tools and data over MCP | The work plan reachable over MCP, not only through git commands an agent may not have | §4.2, §4.10 |
+| Usability parity; guardrails that do not depend on one vendor's prompt file | A model-neutral work order; model-specific wording kept in the launch Tool, where a test can check it | §4.5 |
+| Routes 0, A, B through Gherkin and the BPMN harness, with traces | One dispatcher that runs the same case under each route and records everything in one shape | §4.6, §4.7 |
+| Outputs shaped for the ITB | The ITB drives each run through a small set of harness services and receives the trace | §4.8 |
+| Behaviour comparable with real-world use | Runs where the agent is not told it is working a tracked item, or that it is being tested | §4.8, §4.9 |
+
+Two facts matter from the start. Each repository's `GEMINI.md` is a short
+pointer to `AGENTS.md`, so today every model gets the same written guidance,
+and anything Claude-specific lives outside the process. And the harness's
+benchmark requirement already says **a benchmark never writes to the real
+work plan**, so a run needs a store of its own (§4.7).
+
+---
+
+## 2. What the owner asked
 
 Owner, 2026-11-02:
 
@@ -73,8 +168,6 @@ Owner, 2026-11-02:
 > and also track process with (as they go through processes and tasks). we
 > should be able to track the evolution of the bean over time.
 
-> look at what we have and what needs to be done
-
 > also in proposal doc, i want to integrate ITB as the testing tool for this.
 > so it needs to spin up a bpmn state machine, a bean data store as part of
 > test harness. then a testplan would be to start "agents A, B, C,... each
@@ -87,306 +180,195 @@ Owner, 2026-11-02:
 > them into a more singular KG (e.g. materialized within a git repo) as part
 > of consistent context.
 
-Four goals follow from this:
+Owner, 2026-11-03:
 
-- **G1.** Process and skill text says *what* happens to the work plan, never
-  *how one Tool does it*.
-- **G2.** The state machine gives an agent its bean as context. Partly true
-  today.
-- **G3.** The state machine can start an agent on a step, with a bean tagged
-  by process and step. Not true today.
-- **G4.** A bean's history over time can be read from the store, whatever
-  Tool backs it. Only true for the git Tool, and only by reading git.
-- **G5.** (from the concept note) The same process can be run by an agent of
-  any model, under Route 0, A or B, and the run leaves a trace that can be
-  scored and compared.
-- **G6.** The ITB runs these tests: it stands up a state machine, a Beans store
-  and one consistent context per run, starts several agents each with its
-  own beans, and checks the end state and the behaviour on the way. The
-  agents should not be able to tell a test run from real work.
+> One of the ways that we want to be able to run an agent on a process is to
+> use the bean context. However, as part of the testing scenarios, we should
+> also include divorcing the content of the bean from the fact that it is a
+> bean. In particular, we want to have test scenarios in which the agent is
+> running without any knowledge of beans, as in a real world situation, but
+> the prompting is fixed from the active bean being tested. In other words,
+> the bean is the test context.
 
----
+The goals that follow:
 
-## 2. What we have
-
-Measured on cat-harness `f06cff0` and cat-harness-tools `main` (2026-11-02).
-
-### 2.1 The store is already modelled as a Role with Tools
-
-| Piece | Where | State |
-|---|---|---|
-| The work plan as a mechanical Role with a `store` block (holds, api, realisedBy) | `scenarios/roles.json` → `work-plan` | done (Q-DS-1 A) |
-| The contract the store keeps (6 responsibilities) | `skills/sdlc/sdlc-core/work-plan-store.md` | written, **no tests** (`mechanical-role-untested`) |
-| One global `bpmn:dataStore id="work-plan"` | `processes/global-tasks.bpmn` | done |
-| Tools that satisfy the bean skills | `tools/beans-cli`, `tools/beans-manual`, `tools/bean-query`, `tools/bean-claim-check`, `tools/work-plan-prime` | declared, each with `satisfies` and `selection` |
-| Bean schema | `schemas/kinds/bean-defs.schema.json` | `id, title, status, type, priority, parent, blocking, blocked_by, created_at, updated_at, tags, issue, targets` |
-
-So the shape G1 needs exists: Role → contract skill → several Tools, picked by
-`selection`. The gap is in the prose around it.
-
-### 2.2 Where the git Tool leaks into Tool-neutral text
-
-| File | Lines naming git or the branch store |
+| Goal | In plain words |
 |---|---|
-| `work-plan-store.md` (the contract itself) | 0 literal, but responsibilities 5 ("a push that is refused fetches, rebuilds on the tip") and 6 ("Git shows who changed a bean") **are** the git Tool, and "Where: `beans/` in each instance" is a layout |
-| `todo-manager.md` | 14 (`branch-store.ts push --id beans`, `state:mount`, `cat/cat-harness/beans`) |
-| `bean-coordination.md` | 16 |
-| `idle-backlog.md` | 12 |
-| `bean-drain.md` | 7 |
-| `continual-progress.md` | 5 |
-| `workflow-state.md` / `process-state.md` | 2 / 1 |
-| BPMN diagrams | **clean**: no diagram names the branch. The 115 `<folio:bean op="note">` marks (being swapped for Beans store links in #972) are Tool-neutral |
-
-The diagrams already meet G1. The skills do not: about 57 lines across 7
-skills tell an agent to run git commands to change a bean.
-
-### 2.3 The engine writes beans through one Tool
-
-`workflow_complete` (cat-harness-tools `src/tools/workflow.ts`) calls
-`applyWorkPlanOp` (`src/workflow/bean-link.ts`), which runs the `beans` CLI and
-falls back to **editing the Markdown file**. That code path is the git Tool.
-A server-backed store could not be used without changing the engine.
-
-### 2.4 Beans as agent context (G2): half there
-
-- `TaskContext` (`src/workflow/instance.ts`) carries `carriedBeans`, together
-  with role, role stack, skills and conventions. `workflow_next` returns it.
-- An instance names its bean (`bean`, `carriedBeans`), but **a bean does not
-  name its instance, process or step**. Nothing in the bean's front matter
-  says "I am at `Task_RunCI` of `Process_CodeChangeReview`". The only way to
-  place a bean is to scan every instance file. The beans-by-process pages do
-  exactly that.
-- The bean's body (what to do) is not in `TaskContext`: the agent gets the id
-  and must fetch the bean through a Tool.
-
-### 2.5 Starting agents (G3): exists outside the harness only
-
-- The harness has **no** step that starts an agent. `arm-forced.ts` (bean
-  `502c`) walks a diagram and hands one agent the enabled step, but inside one
-  process run, as an experiment arm.
-- **`beans-serve` already starts agents per bean.** Its GraphQL API
-  (`litlfred/beans`, `internal/graph/schema.graphqls`) has
-  `sendAgentMessage(beanId, message)` ("Starts a session if none exists"),
-  `stopAgent`, `agentSession(beanId)`, `agentSessionChanged` and
-  `activeAgentStatuses` subscriptions, and a worktree per bean. It runs the
-  `claude` CLI (`internal/agent/claude.go`). The beans repository also has a
-  draft bean `beans-kp3h`, "Wrap beans in an MCP server", with one
-  `beans_graphql` tool.
-- Other ways to start an agent: a Claude Code session or routine through its
-  API, Gemini through Antigravity (`agy`; the project already hands it prompts,
-  for example `bean-drain-2026-10-31/agy-prompt-1142.md`), GitHub Copilot's
-  assign-to-issue, a local `claude -p`. Each is started by hand today, with a
-  prompt written for that model.
-- The closest thing to a benchmark driver is bean `502c`'s two arms in
-  cat-harness-tools: `arm-forced.ts` (the token machine hands one step at a
-  time and refuses out-of-order steps) and `arm-self-managed.ts` (the agent
-  gets the whole diagram and manages itself). They measure exactly the
-  guardrail the concept note describes, but run one bank case in-process, not
-  a dispatched agent of a chosen model.
-
-### 2.6 History (G4): only in git, and recording stopped
-
-- The bean: `git log` on `cat/cat-harness/beans`. Notes in `beans/notes/`.
-  No API: `beans-serve` has no history query.
-- The process position: each instance's `history` (node, at, actor, note).
-- Recording stopped in early October. The 12 instances on the branch last
-  moved 28 to 42 days ago (#988).
+| **G1** | Process and skill text says *what* happens to the work plan, never *how one storage does it* |
+| **G2** | An agent working a step is given its bean as context |
+| **G3** | The harness can start an agent on a step and hand it the bean, tagged with its process and step |
+| **G4** | A bean's history can be read whatever storage backs it |
+| **G5** | The same process can be run by any model, under Route 0, A or B, leaving a trace that can be scored and compared |
+| **G6** | The ITB runs these tests: a private harness per run, several agents with their own beans, the end state and behaviour checked, and agents unable to tell a test from real work |
+| **G7** | A test can give the agent its task without the bean: a fixed prompt written from the bean, the agent unaware of beans, the bean still the test's context |
 
 ---
 
-## 3. What needs to be done
+## 3. Where things stood (2026-11-02)
 
-| # | Gap | Goal |
-|---|---|---|
-| N1 | The contract names git behaviour (race handling, history via git) | G1, G4 |
-| N2 | 7 skills give git commands for bean operations | G1 |
-| N3 | The engine writes beans through the CLI or the file, not through a store interface | G1, G3 |
-| N4 | No store operation reads a bean's history; there is no event model | G4 |
-| N5 | A bean does not record which process, step and instance it is at | G2, G3 |
-| N6 | `TaskContext` carries bean ids, not the bean | G2 |
-| N7 | Nothing in a diagram or the engine starts an agent | G3 |
-| N8 | Agents do not start or advance instances, so positions are stale | G3, G4 (#988) |
-| N9 | No test holds any Tool to the contract | G1 |
-| N10 | The guardrails an agent receives depend on how it was started and which model it is | G5 |
-| N11 | A benchmark run has nowhere to write beans and instances that is not the real work plan | G5 |
-| N12 | Route 0, A and B are not a setting of any runner; the trace of a run is spread over git, instance files and session logs | G5 |
-| N13 | The ITB proposal (`test-interop-itb-fhir-testplan-2026-10-24.md`, D4 = I1: plans reach the ITB as OpenTestBed Gherkin) has no steps that stand up a state machine, seed a Beans store or start agents | G6 |
-| N14 | An agent's context is assembled differently per model and per session (`CLAUDE.md`, `GEMINI.md`, memory directories, skills mounted or not), so two models in one test do not see the same world | G5, G6 |
+- **The store was already modelled as a role with Tools**, and its contract
+  was written, but it was phrased in terms of git, and **nothing tested it**.
+- **The process diagrams were already storage-neutral.** The skills were
+  not: about 57 lines in 7 skills told agents to run git commands to change
+  a bean.
+- **The engine wrote beans one way only**: by running the `beans` command or
+  editing the file directly. A server-backed store could not be used without
+  changing the engine.
+- **Agents got bean ids, not beans.** A step's context named its beans but
+  did not carry their content, and nothing on a bean said which process or
+  step it was at; the only way to place a bean was to read every instance.
+- **Nothing in the harness started an agent.** `beans-serve` (a separate
+  beans server) can already start a Claude agent per bean. Gemini through
+  Antigravity, GitHub Copilot and local agents were all started by hand, with
+  a prompt written for each model.
+- **History lived only in git**, with no way to ask for it, and recording
+  through processes had stopped in early October.
+
+The detailed findings, with file names, are in Appendix A.
 
 ---
 
-## 4. Proposal
+## 4. Design
 
-### 4.1 The contract speaks operations, not git (N1, N9)
+### 4.1 The work plan is a set of operations
 
-Rewrite `work-plan-store.md` as a list of **operations** every Tool must
-provide, each with its guarantee:
+Every Tool that keeps the work plan provides the same operations, each with a
+guarantee a test can check:
 
-| Operation | Guarantee |
+| Operation | What a caller can rely on |
 |---|---|
 | `get(id)` | the bean as last written, or "none" |
-| `list(filter)` | by status, type, tag, parent, process, step |
-| `create(bean)` | id is unique |
-| `update(id, change, ifMatch)` | refused when `ifMatch` is stale; **never loses a concurrent write** |
-| `note(id, text, by)` | appended, never rewritten |
+| `list(filter)` | beans by status, type, tag or parent |
+| `create(bean)` | the id is unique |
+| `update(id, change, ifMatch)` | refused if someone else changed the bean since you read it (`ifMatch` is the version you read); a retry on the fresh version lands, so **no concurrent change is ever lost** |
+| `note(id, text, by)` | added to the bean's notes, never rewriting earlier ones |
 | `history(id)` | every change, oldest first: when, by whom, what, and from which process step |
-| `positions(id)`, `beansAt(process, node)` | where a bean is, read from the instances (§4.4) |
+| `positions(id)`, `beansAt(process, step)` | where a bean is in its processes, and which beans are at a step (§4.4) |
 
-**Archiving is a field, not an operation (ruled 2026-11-02, Q-BSD-7 B).**
-`update(id, { archived: true }, ifMatch)` archives a bean. It is refused unless
-the bean is `completed` or `scrapped` (`check:bean-archive`'s invariant);
-`get` still finds an archived bean, and `list` leaves it out unless asked.
-Each Tool decides where an archived bean lives: the git Tool keeps today's
-`defs/archive/`.
+**Archiving** is a field set through `update`, not a separate operation
+(ruled, Q7): it is refused unless the bean is completed or scrapped, and an
+archived bean can still be read.
 
-Keep the six responsibilities and phrase each against the operations.
-"Lose nothing to a race" becomes "`update` with a stale `ifMatch` is refused,
-and a retry on the fresh version lands". How the git Tool does that (fetch,
-rebuild on the tip, push, never force) moves to the git Tool's own page.
+**One conformance test suite** checks every Tool against these guarantees.
+*Built: the contract (cat-harness#993), the tests (cat-harness-tools#1418).*
 
-Then **one conformance test suite** runs against each Tool (N9). `kg-audit`
-stops reporting `mechanical-role-untested` once the git Tool passes it.
+### 4.2 Tools behind the work plan
 
-### 4.2 Tools, each with its own page (N2)
-
-| Tool | Backed by | Status |
+| Tool | Kept where | Status |
 |---|---|---|
-| `beans-git-branch` | the `cat/<harness>/beans` branch, `branch-store.ts`, `beans` CLI or manual edit | today's behaviour, renamed and documented as one Tool |
-| `beans-server` | `beans-serve` GraphQL (`ifMatch` already exists on mutations) | proposed |
-| `beans-mcp` | an MCP server, for example `beans-kp3h`'s single `beans_graphql` tool, or harness MCP tools over the same operations | proposed |
+| git state branch | a git branch per work plan, read and written with the `beans` command or by editing files | today's storage; has its own page |
+| beans server | `beans-serve`, which already offers versioned updates | proposed |
+| MCP service | an MCP server offering the operations as tools to any agent | proposed (§4.10) |
+| run-scoped store | a private store for one test run (§4.7) | proposed |
 
-The git commands in the 7 skills move into `beans-git-branch`'s page. Each
-skill line becomes the operation ("note the bean", "claim it"), with a link
-to the Tool pages. A check, `check:store-tool-neutral`, refuses git or branch
-terms in a skill whose Role is `work-plan` unless the line sits in a Tool
-page. The skill already has a precedent in `selection.when`.
+The git commands now in the skills move to the git Tool's page; each skill
+says the operation ("note the bean", "claim it"). A check refuses git terms
+in work-plan skills outside a Tool page.
 
-### 4.3 The engine calls the store, not the CLI (N3)
+### 4.3 The engine uses the operations
 
-Put a `WorkPlanStore` interface in cat-harness-tools with the operations of
-§4.1, and make `applyWorkPlanOp` call it. The git Tool is its first adapter
-(today's code, moved). The adapter in use comes from the deployment
-(`deployment-descriptions.md`), the same way other Tools are chosen (**ruled 2026-11-02, Q-BSD-2 A**). This
-fits the platform-boundary rule: different code, so an adapter.
+The engine reads and writes beans only through the operations, so the Tool
+can change without touching it. **Which Tool** is named in the deployment
+description (ruled, Q2), for example `"stores": { "work-plan":
+"beans-git-branch" }`; a checkout says which description is its own with the
+`CAT_DEPLOYMENT` environment variable, and without it uses the git branch as
+today. A description naming a Tool the toolset does not have is refused,
+never silently replaced by the real work plan. *Built (cat-harness-tools#1420,
+#1424; cat-harness#1005 names the store in every deployment).*
 
-### 4.4 Where a bean is: read from the instances (N5, N6)
+### 4.4 Where a bean is, and what the agent is given
 
-**Ruled 2026-11-02, Q-BSD-1 B: instances only.** A bean's position lives only
-in the workflow instances that name it; the bean file gets no position
-field, so there is one source of truth and nothing to keep in sync.
+A bean's position lives **only in the process instances** that name it
+(ruled, Q1): there is one source of truth and nothing to keep in step.
+`positions(id)` and `beansAt(process, step)` read the instances, including
+the sub-processes an instance calls. *Built (cat-harness-tools#1421).*
 
-The work-plan store already holds `workflow-state` beside `bean-defs`, so the
-lookup is a **store operation**, not a scan each caller writes:
+When the engine reports what step is ready, each step's context now carries
+its beans themselves (title, status, description, links, position), not only
+their ids. *Built (cat-harness-tools#1423).*
 
-| Operation | Returns |
+### 4.5 The process starts the agent
+
+A shared step, **Dispatch agent**, is added to the diagrams. When a ready
+step's lane belongs to an AI role, the engine hands a **work order** to a
+launch Tool:
+
+| Work order field | From |
 |---|---|
-| `positions(beanId)` | every instance naming the bean: process, node(s), status, last move |
-| `beansAt(process, node?)` | the beans with a token at that step |
+| the bean | `get` and `positions` |
+| the instance and step | the token |
+| role, skills, conventions | the step's context |
+| the store | which Tool to use and how to reach it |
+| how to report | "when done, complete this step of this instance" |
 
-The git Tool answers both by reading `beans/workflows/` (what the
-beans-by-process pages already do, cat-harness-tools#1414); a server Tool can
-index them. Process and step tags on the bean (`process:code-change-review`)
-stay optional labels for people, never the position.
+The work order is **the same for every model**: plain data and the skill
+texts. How a particular model is best told to stay on the step is the launch
+Tool's job, written on that Tool's page and tested, so parity between models
+is checked by a test instead of depending on someone copying a prompt into
+`GEMINI.md`.
 
-`TaskContext` gains the bean itself (title, status, body, links, position),
-read through `get`, not just its id.
-
-### 4.5 The state machine can start an agent (N7, N8)
-
-Add a global task `Task_DispatchAgent` to `processes/global-tasks.bpmn`.
-When an enabled step's lane binds an agent Role, the engine (or a watcher)
-hands a **work order** to an `agent-launch` Tool:
-
-| Field | From |
-|---|---|
-| bean | `get(bean)`, with `positions(bean)` |
-| instance, node | the token |
-| role, skills, conventions | `TaskContext` |
-| store | which work-plan Tool to use, and how to reach it |
-| report | "call `workflow_complete` on this instance and node when done" |
-
-The work order is **model-neutral**: plain data plus the skill texts, the same
-for every model. Model-specific wording (how Claude or Gemini is best told to
-stay on the step) is the launch Tool's job, kept on that Tool's page and
-tested, so parity is something a test can check rather than a prompt someone
-remembers to copy into `GEMINI.md`.
-
-Candidate `agent-launch` Tools, each a Tool page with `selection`, like the
-store Tools:
-
-| Tool | Model | Exists today |
+| Launch Tool | Model | Today |
 |---|---|---|
-| `launch-beans-serve` | Claude (`claude` CLI) | yes, `sendAgentMessage`. **First, ruled 2026-11-02 (Q-BSD-3 A)** |
-| `launch-claude-session` | Claude, cloud session or routine through its API | the API exists; no harness Tool |
-| `launch-antigravity` | Gemini through Antigravity, on the GCP project the concept note requests | prompts written by hand today |
-| `launch-copilot` | GitHub Copilot, assign-to-issue | the API exists; no harness Tool |
-| `launch-local` | any CLI agent, for example `claude -p` | no |
+| `launch-beans-serve` | Claude, through the beans server | exists; **first** (ruled, Q3) |
+| `launch-claude-session` | Claude, cloud session or routine | API exists, no Tool yet |
+| `launch-antigravity` | Gemini through Antigravity, on the project the concept note requests | prompts written by hand today |
+| `launch-copilot` | GitHub Copilot | API exists, no Tool yet |
+| `launch-local` | any command-line agent | no |
 
-The agent moves the token with `workflow_complete`, which writes the instance
-history (so `positions` moves with it) and notes the bean (§4.6). The
-diagram draws dispatch as a step, so whoever reads the process sees where
-agents start. #988's rule ("an agent working a bean through a process starts
-or advances an instance") becomes a property of the engine, not a habit.
+The agent reports by completing its step; that moves the token, writes the
+instance history and notes the bean, so the position and history stay current
+without anyone remembering to update them.
 
-### 4.6 One event log, readable from any store (N4)
+### 4.6 History: one event log
 
-Every store change is an **event**: `created`, `status-changed`, `claimed`,
-`noted`, `step-reached`, `dispatched`, `completed`, each with `at`, `by`,
-and, when it came from the engine, `instance` and `node`. `history(id)` returns
-them in order.
+Every change is an **event**: created, status changed, claimed, noted,
+changed, archived, step reached, each with when, who and what, and for a
+process step the instance and step. `history(id)` returns them in order. For
+the git Tool the events are derived from the git history of the bean plus the
+instances' own histories, so nothing is migrated (ruled, Q4); a server Tool
+would keep them as rows. *Built (cat-harness-tools#1425).*
 
-- The git Tool builds `history` from `git log` on the bean file plus the
-  instance histories, so nothing is migrated (**ruled 2026-11-02, Q-BSD-4 A**).
-- A server Tool keeps the events as rows.
+Each bean's page shows this history with a stepper (buttons and keyboard),
+drawing the process the bean was in at each moment. *In review
+(cat-harness-tools#1426).*
 
-The beans-by-process pages then gain a timeline per bean
-(`bean-processed/<bean>/` from cat-harness-tools#1414), from `history(id)`.
+### 4.7 Benchmark runs: route, private store, trace
 
-### 4.7 Benchmark runs: routes, isolated stores, traces (N10, N11, N12)
-
-With §4.1 to §4.6 in place, a benchmark run is the same dispatch with three
-settings, and no new runner:
+A benchmark run is the same dispatch with a few settings, not a new runner:
 
 | Setting | Values |
 |---|---|
-| system under test | model + launch Tool + configuration (the `req:model-benchmark` notion) |
-| route | **0** the case text only, no work order, no skills, no graph · **A** work order with skills, graph Tools withheld · **B** work order with skills and the knowledge-graph Tools |
-| store | a **run-scoped store** Tool (in memory, or a scratch branch per run), seeded from the case, never the real work plan (**ruled 2026-11-02, Q-BSD-5 A**) |
+| system under test | model + launch Tool + its configuration |
+| route | **0** the task text only: no skills, no knowledge graph · **A** skills, knowledge-graph tools withheld · **B** skills and the knowledge graph |
+| context mode | **bean-aware** or **bean-blind** (§4.9) |
+| store | a **run-scoped store**: private to the run, seeded from the test case, thrown away after (ruled, Q5) |
 
-- **Cases.** A Gherkin scenario from the test plan becomes a seeded bean and a
-  started instance in the run's store. The `Given` seeds the store, the `When`
-  is the dispatched step, the `Then` is checked against the store and the
-  instance after the agent finishes.
-- **Trace.** `history(id)` on the run's store, the instance history and its
-  `refusals` (each refused out-of-order step or hand-asserted gateway) are the
-  run's trace, in one shape whatever the model. That is the reasoning trace
-  the concept note wants handed to the ITB, and bean `502c`'s refusal counts
-  become a metric of every run, not of one experiment.
-- **Isolation.** The run-scoped store is what lets a benchmark honour "never
-  writes to `beans/`" while still exercising every bean step.
-- **Results** land where `benchmarking-mode` says (`build/benchmarks/`,
-  `reports/`), never in a declared graph.
+- **A test case** becomes seeded beans and started instances in the run's
+  store: *Given* seeds, *When* dispatches, *Then* checks the store and the
+  instances afterwards.
+- **The trace** is the run's history, its instance histories and every step
+  the engine refused, in the same shape whatever the model. That is the
+  reasoning trace the concept note wants handed to the ITB, and the count of
+  refused steps becomes a metric of every run.
+- **Results** are written to the benchmark output area, never into the
+  authored content.
 
----
+### 4.8 The ITB runs the test
 
-### 4.8 The ITB as the test harness (N13, N14)
-
-The ITB drives the run (**ruled 2026-11-02, Q-BSD-6 A**). It uses GITB, through OpenTestBed Gherkin as already ruled (D4 = I1 in
-[the ITB proposal](test-interop-itb-fhir-testplan-2026-10-24.md)), and
-orchestrates the test. The harness gives it a small set of services, each a Tool, so a
-test step is a call and not a script:
+The ITB drives each run (ruled, Q6), using Gherkin test plans as already
+agreed in [the ITB proposal](test-interop-itb-fhir-testplan-2026-10-24.md).
+The harness offers it a few services, so a test step is a call, not a script:
 
 | Service | Does |
 |---|---|
-| `harness-up` | stands up one **test harness**: a BPMN state machine, a run-scoped Beans store (§4.7) and the run's materialised context (below), and returns its handle |
-| `seed` | writes beans, notes and started instances into that store |
-| `start-agents` | dispatches agents through the launch Tools (§4.5), each with its model, route and bean set |
-| `observe` | streams the run's events (`history`, instance moves, refusals, dispatches) while it runs |
-| `state` | the store and the instances at a moment: the end state a `Then` is checked against |
-| `harness-down` | exports the trace and removes the run's store |
+| `harness-up` | creates one private harness: a state machine, a run-scoped store and the run's context (below) |
+| `seed` | writes beans and started instances into it |
+| `start-agents` | starts each agent through its launch Tool, with its model, route, context mode and beans |
+| `observe` | streams events while the run goes on |
+| `state` | the store and instances at a moment, for *Then* to check |
+| `harness-down` | exports the trace and removes the private store |
 
-**A test plan in these terms.** A Gherkin feature reads like a scenario of
-work, not of tests:
+A test plan reads like a description of work:
 
 ```gherkin
 Feature: two agents share a merge window
@@ -394,142 +376,137 @@ Feature: two agents share a merge window
     Given a harness with processes "code-change-review" and "merge-train"
     And the context "folio-assistant@<hash>"
   Scenario: A opens changes, B lands them
-    Given agent A (gemini, route B) holds beans S_A = {a1, a2}
-    And agent B (claude, route B) holds beans S_B = {b1}
+    Given agent A (gemini, route B, bean-aware) holds beans S_A = {a1, a2}
+    And agent B (claude, route B, bean-aware) holds beans S_B = {b1}
     When the agents are started
     Then within 2 hours every bean in S_A is completed
     And bean b1 is at "merge-train" step "End_Landed"
     And no instance recorded a refused step
 ```
 
-`Given` seeds the store and the agents' bean sets, `When` dispatches, and
-`Then` is checked against `state` and `observe`. The ITB keeps its own role
-of running the plan and judging the result; the TAR comes back as a
-`folio-test-run/v1`, as the ITB proposal already describes.
+The ITB keeps its role of running the plan and judging the result; the
+result comes back in the ITB's own report format.
 
-**Agents should not know they are in a test.** What an agent sees is the same
-as in real work:
+**Agents should not know they are in a test.** What an agent sees is what it
+would see in real work: the same work order, operations and skills; beans
+written as real work, never labelled as tests; the run's identity (plan,
+route, model) kept in the harness, never shown to the agent. What cannot be
+hidden (a fresh store, a short repository history) is listed on the test plan
+so a result can be read with it in mind.
 
-- the same work order (§4.5), the same store operations, the same skills;
-- beans written as real work items, never titled or tagged as tests;
-- the run's identity (run id, plan, route, model) kept in the harness, never
-  in the work order, the bean or the context;
-- the store reached through the same Tool interface as production; only the
-  deployment description behind it differs (Q-BSD-2 A).
-
-What cannot be hidden (an empty repository history, a fresh store) is listed
-on the test plan as a known difference, so a result can be read with it in
-mind.
-
-**One consistent context, materialised.** Each run gets one git repository
-built from layers, the same for every model in the run:
+**One consistent context.** Each run gets one repository built in layers, the
+same for every model in the run:
 
 | Layer | From |
 |---|---|
-| the knowledge graph | L1, L2, L3 content and the harness layers the processes need, as a composed checkout pins them today (`index.lock.json`) |
-| skills | the skills the test plan's processes name, closed over their roles |
-| memory | a `MEMORY.md` per role, generated from the memory graph (`agent-memory`) and filtered to the plan's processes, so each model starts with the same memories |
-| entry files | `AGENTS.md`, with `CLAUDE.md` and `GEMINI.md` pointing to it as they do today, so no model gets guidance the others lack |
+| knowledge graph | the L1, L2, L3 content and harness definitions the processes need, at pinned versions |
+| skills | the skills the plan's processes use |
+| memory | a `MEMORY.md` per role, generated for the plan's processes, so every model starts with the same memories |
+| instruction files | `AGENTS.md`, with `CLAUDE.md` and `GEMINI.md` pointing to it, so no model gets guidance the others lack |
 
-The repository is pinned by its commit hash, and the hash is the `context`
-named in the plan's `Background`. Two runs with the same hash gave their
-agents the same world, which is what makes a comparison across models fair.
-Route 0 runs get an empty context; Route A gets skills and memory without
-the knowledge-graph layer; Route B gets all of it.
+The repository is identified by its commit hash, named in the plan's
+*Background*: two runs with the same hash gave their agents the same world.
+Route 0 gets an empty context; Route A skills and memory without the
+knowledge graph; Route B all of it.
 
-### 4.9 A live store on localhost
+### 4.9 Bean-aware and bean-blind runs
 
-Owner, 2026-11-03: *"for mcp server, this will only work i think on localhost
-(or hosted like hetzner which we dont have) deployments. do localhost setup."*
+Owner, 2026-11-03: *"the bean is the test context."*
 
-**The constraint.** The published site is static (GitHub Pages). It can show
-what the store held when the site was built, and nothing newer: a page there
-cannot reach a beans server or an MCP service, because none runs where Pages
-runs. A store server is reachable only from a machine that runs one, which
-today is the developer's own (`localhost`). A hosted server (Hetzner or
-similar) would make it reachable from anywhere, but there is none, so it is
-out of scope here and noted under "Later".
+A run hands an agent its task in one of two ways. Both are measured against
+the same bean.
 
-**The setup.** Every piece below already exists except the one route:
-
-| Piece | What | Where |
+| | **Bean-aware** | **Bean-blind** |
 |---|---|---|
-| The harness server | `bun run cat-harness-tools/src/server.ts` (or the MCP server image); MCP at `http://localhost:8080/mcp`, viewer at `http://localhost:3200/` | cat-harness-tools, exists |
-| The deployment | `CAT_DEPLOYMENT=developer` names `scenarios/deployments/developer.json`, whose `stores` names the work-plan Tool (§4.3). Unset means the git branch on its mount | cat-harness + tools#1424 |
-| The read route | `GET /api/work-plan/beans-processed` returns the same rows the all-beans page embeds, read through the store's operations, so it answers from whichever Tool the deployment names | cat-harness-tools#1429 |
-| The page | `beans-processed/` keeps its embedded rows and, every 5 s, asks the route for fresh ones; it re-renders only when the answer changed. Only on a page opened from localhost: on GitHub Pages there is nothing to refresh from, so there is no control (owner, 2026-11-03) | cat-harness-tools#1429 |
+| What the agent receives | the work order (§4.5): the bean, its step, the store, how to report | **one fixed prompt**, written from the bean |
+| What the agent knows | that it is working a tracked item in a process | only the task, as a person would phrase it in real work |
+| Who records progress | the agent, by completing its step | the harness, observing what the agent produced |
+| What it measures | how well a model works *inside* the harness | how a model behaves on the same task *without* the harness telling it anything: the real-world case |
 
-How a reader turns it on:
+**The fixed prompt.** For a bean-blind run, the bean under test is turned
+into a prompt by a fixed, reviewed template: the task (from the title and
+description), the acceptance criteria, the material to work on. It contains
+no bean id, no store, no process or step names and no harness vocabulary; a
+check refuses a prompt that leaks any of them. The prompt is generated once,
+stored with the test case and identified by its hash, so **every model gets
+exactly the same words**, and a re-run is reproducible.
 
-1. Start the harness server in the checkout: `CAT_DEPLOYMENT=developer bun run cat-harness-tools/src/server.ts`.
-2. Open the all-beans page from this machine (a local preview of the site, or the harness server). The page polls its own origin, then the MCP server's default port (8080).
-3. The page shows **Live** with the store Tool and the time of the last answer. With no server it shows **Live updates off: no local store server answered**, and keeps the built rows. It never shows an empty plan because a request failed.
+**The bean is the test context.** The bean still exists, in the run's private
+store, and is what the test is scored against: its acceptance criteria are
+the *Then*. The harness plays the agent's part in the process: it watches what
+the agent produces (files, answers, a change), moves the instance and notes
+the bean on the agent's behalf, so the run leaves the same trace as a
+bean-aware run. The agent's own transcript is kept as its reasoning trace.
 
-**Security, because the route is a door into the work plan:**
+**With the routes**, this gives a small grid to compare models in:
 
-- The server binds to `127.0.0.1` only. A deployment that wants it on a network
-  must say so in its description, and that is the hosted case under "Later".
-- The route is **read-only**: no store operation that writes is reachable from it.
-- CORS allows a `localhost` origin only, not `*`. The server allows `*` today
-  for its other routes; this route does not inherit that. The published site
-  never calls it.
-- No credential travels to the page: the server reads the store with the
-  checkout's own access, and the page receives rows only.
+| | Bean-aware | Bean-blind |
+|---|---|---|
+| **Route 0** (bare model) | — (no work order without skills) | the bare model on the task: the baseline |
+| **Route A** (skills) | skills and the work order | skills available, task in plain words |
+| **Route B** (skills + knowledge graph) | the full harness | the full knowledge, no harness framing |
 
-**The MCP service Tool** (`beans-mcp`, §4.2, proposed) would sit on the same
-server: MCP tools that are the store operations (proposed names
-`work_plan_get`, `work_plan_list`, `work_plan_positions`, `work_plan_history`),
-for agents. None of them exists yet. The page
-uses the plain HTTP route rather than MCP, because a browser polling every
-5 s needs one cheap GET, not an MCP session.
+The gap between a bean-aware and a bean-blind run of the same model and route
+measures what the process harness itself contributes, which is the guardrail
+claim the concept note makes.
 
-**Later (not now):** the same server hosted (for example on Hetzner), with
-authentication in front of the route and its address in the deployment
-description. Nothing on the page changes except the address it polls.
+In a test plan:
 
-### 4.10 Configuring a run: models, the ITB, the deployment
+```gherkin
+Scenario: the same task, told and untold
+  Given bean g7 "Encode the ANC contact schedule as decision logic"
+  And agent G1 (gemini, route B, bean-aware) holds bean g7
+  And agent G2 (gemini, route B, bean-blind) is given the prompt of bean g7
+  When the agents are started
+  Then both outputs meet the acceptance criteria of bean g7
+  And the trace of G2 shows no harness vocabulary in its prompt
+```
 
-One question, asked whenever a run is set up: *which model runs which agent,
-against which store, under which test plan?* Each part has one home; nothing
-is configured in two places.
+### 4.10 A live work plan on your own machine
+
+Owner, 2026-11-03: *"5 sec refresh is local mcp bean store. on ghpages,
+refresh makes no sense."*
+
+The published site (GitHub Pages) shows the work plan as it was when the site
+was built; it cannot reach a store server. A store server can only be reached
+on the machine that runs it (`localhost`). A hosted server (for example on
+Hetzner) would change that, but there is none, so it is out of scope.
+
+The local setup:
+
+1. Run the harness server in the checkout:
+   `CAT_DEPLOYMENT=developer bun run cat-harness-tools/src/server.ts`.
+2. Open the beans-by-process page from the same machine. It offers
+   "Refresh every 5 s from the local bean store" and shows what the store
+   holds now, through whichever Tool the deployment names. On GitHub Pages
+   the control does not appear.
+3. If no server answers, the page says so and keeps what it was built with;
+   it never shows an empty plan because a request failed.
+
+The route it reads (`GET /api/work-plan/beans-processed`) answers only on
+`localhost`, is read-only, and allows cross-site reads from `localhost` pages
+only. The proposed **MCP service** (§4.2) would sit on the same server,
+offering the operations to agents. *In review (cat-harness-tools#1429).*
+
+### 4.11 Configuring a run: models, the ITB, the deployment
+
+Each setting has one home:
 
 | Setting | Home | Example |
 |---|---|---|
-| Which deployment this checkout is | `CAT_DEPLOYMENT` (environment) | `itb-benchmark` |
-| Which store backs the work plan | the deployment's `stores` | `{ "work-plan": "beans-run-scoped" }` |
-| Which actors exist, and where each runs | the deployment's `placements` (`actor`, `host`, `compute`, `toolSurface`, `modelProvenance`, `reach`) | `{ "actor": "agent-gemini", "compute": "vendor-cloud", "modelProvenance": "hosted" }` |
-| Which model an agent actor is, and how it is started | the placement's **`launch`** (proposed, below) | `{ "tool": "launch-antigravity", "model": "gemini-…" }` |
-| Credentials | the placement's `credentials`, by **name** of the secret or mechanism, never a value (the schema refuses a value's shape) | `{ "model-api": "GCP_WIF_ASSURED_AI" }` |
-| What is tested, with which bean sets per agent | the ITB test plan (Gherkin, §4.8) | `Given agent A (gemini, route B) holds beans S_A` |
-| The world the agents see | the context hash in the plan's `Background` (§4.8) | `Given the context "folio-assistant@<hash>"` |
-| The route (0, A, B) | the test plan, per agent | `route B` |
+| which deployment this machine is | `CAT_DEPLOYMENT` | `itb-benchmark` |
+| which store keeps the work plan | the deployment's `stores` | `{ "work-plan": "beans-run-scoped" }` |
+| which actors exist and where they run | the deployment's `placements` | `{ "actor": "agent-gemini", "compute": "vendor-cloud" }` |
+| which model an agent is, and how it is started | the placement's **`launch`** (proposed, Q8) | `{ "tool": "launch-antigravity", "model": "gemini-<version>" }` |
+| credentials | the placement's `credentials`, by the secret's **name** only, never its value | `{ "model-api": "GCP_WIF_ASSURED_AI" }` |
+| what is tested, with which beans per agent | the ITB test plan | `Given agent A (gemini, route B, bean-blind) …` |
+| the agents' world | the context hash in the plan's *Background* | `Given the context "folio-assistant@<hash>"` |
+| route and context mode | the test plan, per agent | `route B, bean-blind` |
 
-**The one proposed field: `launch` on a placement.** A placement says where
-an actor runs; for an agent actor it must also say which model and which
-launch Tool (§4.5) starts it. Proposed shape, following Q-BSD-2 A (the
-deployment chooses Tools):
+A test plan names **agents**, never models: changing a model is a one-line
+change to the deployment, and the same plan then compares models fairly.
 
-```json
-{
-  "actor": "agent-gemini",
-  "host": "vendor-cloud",
-  "compute": "vendor-cloud",
-  "toolSurface": "mcp",
-  "modelProvenance": "hosted",
-  "launch": { "tool": "launch-antigravity", "model": "gemini-<version>" },
-  "credentials": { "model-api": "GCP_WIF_ASSURED_AI" }
-}
-```
-
-`launch.tool` names a launch Tool by id, as `stores` names a store Tool, and
-an id this toolset lacks is refused, never replaced. `launch.model` is passed
-to the Tool as given. The test plan names agents by actor id, so a plan never
-names a model: changing the model is a one-line change to the deployment, and
-the same plan then compares models fairly.
-
-**A worked example: Claude and Gemini on one plan.**
-
-`scenarios/deployments/itb-benchmark.json` (sketch):
+A sketch of a benchmark deployment with Claude and Gemini:
 
 ```json
 {
@@ -549,75 +526,146 @@ the same plan then compares models fairly.
 }
 ```
 
-The run, end to end:
+A run, end to end:
 
 1. `CAT_DEPLOYMENT=itb-benchmark` is set where the harness runs.
-2. The ITB calls `harness-up` (§4.8): a state machine, a run-scoped store
-   (because `stores` says so), and the materialised context the plan pins.
-3. The plan's `Given` steps call `seed`: beans and started instances in the
-   run's store, never the real work plan.
-4. `When the agents are started` calls `start-agents`: for each agent in the
-   plan, its placement's `launch` names the Tool and model; the work order is
-   the same for both (§4.5).
-5. The agents move through the processes with `workflow_complete`; `observe`
-   streams `history`, instance moves and refusals; on `localhost` the
-   all-beans page shows the run live (§4.9).
-6. `Then` steps check `state`; `harness-down` exports the trace and removes
-   the run's store. The TAR comes back as `folio-test-run/v1`.
+2. The ITB calls `harness-up`: a state machine, a run-scoped store (because
+   `stores` says so) and the pinned context.
+3. The plan's *Given* steps call `seed`, and for bean-blind agents the fixed
+   prompts are generated and pinned.
+4. *When the agents are started* calls `start-agents`: each agent's `launch`
+   names its Tool and model; bean-aware agents get the work order, bean-blind
+   agents their prompt.
+5. The agents work; `observe` streams the events. On `localhost` the
+   beans-by-process page shows the run live (§4.10).
+6. *Then* steps check `state`; `harness-down` exports the trace and removes
+   the store. The ITB reports the result.
 
-What each model needs from outside the harness, named in the deployment and
-supplied by whoever runs it: Claude, a `claude` CLI and its login on the
-machine `launch-beans-serve` runs on; Gemini, the GCP project and Workload
-Identity named by the concept note, reached by `launch-antigravity`.
+From outside the harness, each model needs what the deployment names and
+whoever runs it supplies: for Claude, the `claude` command and its login; for
+Gemini, the Google Cloud project and identity the concept note requests,
+reached through Antigravity.
+
+---
 
 ## 5. Order of work
 
-| Step | Work | Repo | Depends on |
-|---|---|---|---|
-| 1 | Rewrite `work-plan-store.md` as operations (§4.1); add the Tool pages (§4.2), git commands moved there | cat-harness | §7 ruled |
-| 2 | Conformance tests for the operations, run against the git Tool | cat-harness-tools | 1 |
-| 3 | `WorkPlanStore` interface; `applyWorkPlanOp` through it (§4.3) | cat-harness-tools | 2 |
-| 4 | `positions` and `beansAt` store operations over the instances; bean in `TaskContext` (§4.4) | tools | 3 |
-| 5 | `history(id)` and the event model for the git Tool; timeline on `bean-processed/<bean>/` (§4.6) | tools | 3 |
-| 6 | Skills rewritten to name operations; `check:store-tool-neutral` (§4.2) | cat-harness | 1 |
-| 7 | `Task_DispatchAgent` and the first `agent-launch` Tool (§4.5) | cat-harness + tools | 4 |
-| 8 | A server Tool (`beans-serve` or MCP) passes the same conformance tests | tools | 2, 3 |
-| 9 | Run-scoped store Tool; route setting on dispatch; Gherkin case → seeded bean + instance (§4.7) | tools | 2, 7 |
-| 10 | `launch-antigravity` Tool; the same cases under Routes 0, A, B for Claude and Gemini; traces exported for the ITB | tools | 7, 9 |
-| 11 | Context materialiser: one pinned repository per run from KG, skills, memory and entry files (§4.8) | tools | 9 |
-| 12 | ITB services (`harness-up`, `seed`, `start-agents`, `observe`, `state`, `harness-down`) and the Gherkin steps that call them; first multi-agent plan | tools | 9, 11 |
-| 5b | The bean's history on `bean-processed/<bean>/`, stepped through with buttons and keys (owner, 2026-11-03) | tools | 5 |
-| 13 | The live read route on the local harness server, and the all-beans page refreshing from it every 5 s (§4.9) | tools | 4, Q2 |
-| 14 | `launch` on a placement (§4.10), read by `start-agents`; `itb-benchmark` deployment | cat-harness + tools | 7, 9 |
-
-Steps 1 to 6 change no behaviour for the git Tool. Step 7 changes how agents
-are started, so it needs the owner's choice of first launch Tool (§7, Q3).
-Steps 9 and 10 are the part the concept note's GCP credits and model access
-would pay for; steps 1 to 8 are needed first and need neither.
-
----
-
-## 6. What this does not do
-
-- It does not move beans off the git branch. The git Tool stays the default.
-- It does not change the diagrams' meaning. The diagrams are already
-  Tool-neutral; #972's Beans store links stay.
-- It does not decide what an agent works on. Dispatch starts an agent on a
-  step that the process has already enabled.
-- It does not replace the ITB proposal's model (`test-plan/v1`,
-  `folio-test-run/v1`, `system/v1`); §4.8 adds the services a plan needs to
-  test agents working through processes.
-
----
-
-## 7. Questions for the owner
-
-| Q | Question | Options (recommended first) |
+| Step | Work | Status |
 |---|---|---|
-| Q1 | Where does a bean's position live? | **Ruled B (2026-11-02): only in the instances**, read through store operations (§4.4) |
-| Q2 | How is the store Tool chosen? | **Ruled A (2026-11-02): by the deployment description**, per checkout (§4.3) |
-| Q3 | First `agent-launch` Tool? | **Ruled A (2026-11-02): `beans-serve` `sendAgentMessage`** (§4.5) |
-| Q4 | Where does history come from for the git Tool? | **Ruled A (2026-11-02): derived from git log plus instance histories**, no migration (§4.6) |
-| Q5 | Where does a benchmark run keep its beans and instances? | **Ruled A (2026-11-02): a run-scoped store Tool** (in memory, or a scratch branch per run) (§4.7) |
-| Q6 | Who drives a test run? | **Ruled A (2026-11-02): the ITB runs the Gherkin plan and calls the harness services** (§4.8) |
-| Q7 | How does the contract express archiving, which the engine's `archive` step does? | **Ruled B (2026-11-02): a field set by `update`**, not a new operation and not left outside the store (§4.1) |
+| 1 | The contract as operations; the git Tool's own page (§4.1, §4.2) | merged (cat-harness#993) |
+| 2 | Conformance tests, run against the git Tool | merged (cat-harness-tools#1418) |
+| 3 | The engine uses the operations (§4.3) | merged (#1420) |
+| 4 | Where a bean is; the bean in each step's context (§4.4) | merged (#1421, #1423) |
+| 4c | The deployment names the store (§4.3) | merged (#1424); deployments updated in cat-harness#1005 |
+| 5 | History and its event model (§4.6) | merged (#1425) |
+| 5b | The history stepper on each bean's page; open/closed filter; all stores on one page | in review (#1426, #1428, #1432) |
+| 6 | Skills say the operation, not the git command; a check keeps it so | next |
+| 7 | *Dispatch agent* and the first launch Tool, `launch-beans-serve` (§4.5) | |
+| 8 | A server Tool passes the same conformance tests | |
+| 9 | Run-scoped store; route and context-mode settings; a test case becomes seeded beans and instances (§4.7) | |
+| 9b | Bean-blind runs: the fixed-prompt template, the leak check, the harness recording on the agent's behalf (§4.9) | |
+| 10 | `launch-antigravity`; the same cases under Routes 0, A, B for Claude and Gemini; traces exported for the ITB | |
+| 11 | The context builder: one pinned repository per run (§4.8) | |
+| 12 | The ITB services and the Gherkin steps that call them; the first multi-agent plan | |
+| 13 | The live local refresh (§4.10) | in review (#1429) |
+| 14 | `launch` on a placement (§4.11), once Q8 is ruled; the `itb-benchmark` deployment | |
+
+Steps 1 to 6 change nothing for anyone using the git branch today. Steps 9,
+10 and 12 are what the concept note's cloud credits and model access would
+pay for; steps 1 to 8 come first and need neither.
+
+---
+
+## 6. Keeping the process recorded
+
+A bean's place in its process is only as good as the habit of recording it,
+and nothing can force that: anyone can edit the work-plan branch directly.
+So (owner, 2026-11-03) the recorded path is made the easy one, and drift is
+reported, never blocked:
+
+- **Claiming or creating a bean starts its process.** The claim command
+  starts or advances the bean's process instance.
+- **Agents get the bean with its step** (§4.4), and completing the step
+  records the move (§4.5).
+- **Drift is reported**: an in-progress bean that no running instance names
+  is flagged on the beans-by-process pages, in the repository health report
+  and when a session starts.
+- **The skills say so**: working a bean means starting or advancing its
+  instance.
+
+---
+
+## 7. What this does not do
+
+- It does not move beans off the git branch; the git Tool stays the default.
+- It does not change what the diagrams mean.
+- It does not decide what an agent works on: dispatch starts an agent only on
+  a step the process has already made ready.
+- It does not replace the ITB proposal's test-plan and result formats; it
+  adds the services a plan needs to test agents working through processes.
+
+---
+
+## 8. Decisions
+
+| | Question | Decision |
+|---|---|---|
+| Q1 | Where does a bean's position live? | **Only in the process instances**, read through store operations (2026-11-02) |
+| Q2 | How is the store Tool chosen? | **By the deployment description** (2026-11-02); a checkout names its own with `CAT_DEPLOYMENT` |
+| Q3 | First launch Tool? | **`launch-beans-serve`** (2026-11-02) |
+| Q4 | Where does the git Tool's history come from? | **Derived from git history plus instance histories**, nothing migrated (2026-11-02) |
+| Q5 | Where does a benchmark run keep its beans? | **A run-scoped store** (2026-11-02) |
+| Q6 | Who drives a test run? | **The ITB**, calling the harness services (2026-11-02) |
+| Q7 | How is archiving expressed? | **A field set through `update`** (2026-11-02) |
+| Q8 | How does a deployment say which model runs each agent? | **Open.** Recommended: `launch: { tool, model }` on the agent's placement (§4.11). Default if unruled: that |
+| Q9 | Who records progress in a bean-blind run? | **Open.** Recommended: the harness, observing the agent's output (§4.9). Default if unruled: that |
+
+---
+
+## Appendix A. Detailed findings (2026-11-02)
+
+Measured on cat-harness `f06cff0` and cat-harness-tools `main`.
+
+**The store as a role.** `scenarios/roles.json` defines `work-plan` as a
+mechanical role with a `store` block; `skills/sdlc/sdlc-core/work-plan-store.md`
+was its contract; `processes/global-tasks.bpmn` declared one shared data store;
+the Tools `beans-cli`, `beans-manual`, `bean-query`, `bean-claim-check` and
+`work-plan-prime` satisfied the bean skills; the bean schema is
+`schemas/kinds/bean-defs.schema.json`.
+
+**Git in the skills.** Lines naming git or the branch store: `todo-manager` 14,
+`bean-coordination` 16, `idle-backlog` 12, `bean-drain` 7,
+`continual-progress` 5, `workflow-state` 2, `process-state` 1. The contract's
+race and history responsibilities described git behaviour. The diagrams named
+no branch.
+
+**The engine.** `workflow_complete` (cat-harness-tools `src/tools/workflow.ts`)
+called `applyWorkPlanOp` (`src/workflow/bean-link.ts`), which ran the `beans`
+command and fell back to editing the Markdown file.
+
+**Agent context.** `TaskContext` (`src/workflow/instance.ts`) carried
+`carriedBeans` (ids), role, skills and conventions; an instance named its bean
+but a bean named no instance.
+
+**Starting agents.** No harness step started an agent. `beans-serve`
+(`litlfred/beans`) offers `sendAgentMessage`, `stopAgent` and session
+subscriptions, with a worktree per bean, running the `claude` command; a
+draft bean there wraps it in one MCP tool. The two experiment arms in
+cat-harness-tools (`arm-forced.ts`, one step at a time with refusals;
+`arm-self-managed.ts`, the whole diagram) already measure the guardrail the
+concept note describes, for one case in-process.
+
+**History.** Git history of the beans branch and the instances' own
+`history`; the 12 instances on the branch had last moved 28 to 42 days
+earlier (#988).
+
+**Gaps, as numbered in the first draft:** N1 contract names git behaviour;
+N2 skills give git commands; N3 engine writes through one Tool; N4 no history
+operation; N5 a bean does not record its position; N6 context carries ids not
+beans; N7 nothing starts an agent; N8 positions go stale; N9 no conformance
+tests; N10 guardrails depend on how and which model is started; N11 no
+private store for benchmarks; N12 routes are no runner's setting and traces
+are scattered; N13 the ITB plan has no steps to stand up a harness or start
+agents; N14 each model's context is assembled differently; N15 (added
+2026-11-03) no way to run a task without telling the agent it is a tracked
+item.
