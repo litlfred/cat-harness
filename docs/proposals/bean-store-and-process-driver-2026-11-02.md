@@ -53,7 +53,9 @@ This proposal does four things:
    models), and checks what they did. A test can hand the agent its task as a
    tracked work item, or **hide that entirely**: the agent gets an ordinary
    prompt written from the item and works as it would in the real world, while
-   the harness tracks the item behind the scenes (§4.9).
+   the harness tracks the item behind the scenes (§4.9). Every run is set up
+   from a saved **run profile** (which model, which knowledge sources, MCP or
+   command line, which tools are on), so runs are comparable (§4.12).
 
 ---
 
@@ -83,6 +85,9 @@ This proposal does four things:
 | **bean-aware / bean-blind** | Whether the agent is told it is working a tracked item (§4.9) |
 | **ITB** | The Interoperability Test Bed, a test-orchestration service. It runs a test plan and reports the result |
 | **Gherkin** | A plain-language test format: *Given* a situation, *When* something happens, *Then* this must hold |
+| **DAK** | Digital Adaptation Kit: WHO's published L2 package for a guideline (documents, spreadsheets of data elements and decision logic), usually as PDF and Excel files |
+| **FHIR implementation guide (IG)** | A published, versioned set of FHIR resources (the L3 computable form of a guideline), identified by its canonical URL and version |
+| **run profile** | A named, saved set of test options (models, knowledge sources, tool access, tools on or off, route, context mode) that a test run uses, so every run with the same profile is set up the same way (§4.12) |
 | **trace** | The ordered record of a run: every step reached or refused, every change to a bean, what the agent did |
 | **Antigravity** (`agy`) | Google's agent environment through which Gemini is run |
 | **`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `MEMORY.md`** | The instruction files an agent reads first. `CLAUDE.md` and `GEMINI.md` point at the shared `AGENTS.md`; `MEMORY.md` holds what a role should remember between sessions |
@@ -142,6 +147,7 @@ What that requires of the harness, and where this proposal provides it:
 | Routes 0, A, B through Gherkin and the BPMN harness, with traces | One dispatcher that runs the same case under each route and records everything in one shape | §4.6, §4.7 |
 | Outputs shaped for the ITB | The ITB drives each run through a small set of harness services and receives the trace | §4.8 |
 | Behaviour comparable with real-world use | Runs where the agent is not told it is working a tracked item, or that it is being tested | §4.8, §4.9 |
+| Models switched and compared on equal terms, with the same sources and tools | A standing test configuration: named run profiles for models, knowledge sources, MCP or command line, and which tools are on | §4.12 |
 
 Two facts matter from the start. Each repository's `GEMINI.md` is a short
 pointer to `AGENTS.md`, so today every model gets the same written guidance,
@@ -190,6 +196,19 @@ Owner, 2026-11-03:
 > the prompting is fixed from the active bean being tested. In other words,
 > the bean is the test context.
 
+Owner, 2026-11-03, on the test configuration:
+
+> each test run has a standard set of options of how it can be run. For
+> example, the agent can be pointed to the full knowledge graph, published DAK
+> resources, such as PDF and Excel files, GitHub repositories, published FHIR
+> implementation guides, some combination or none of the above. The test
+> harness should have consistent infrastructure and prompting for this.
+>
+> In amongst the scenarios, we want to be able to switch models, be able to
+> choose whether we're using MCP services or only local CLI, determine which of
+> the tools are turned on and available as skills for the agents or not. This
+> needs to be a part of the standing test configuration.
+
 The goals that follow:
 
 | Goal | In plain words |
@@ -201,6 +220,7 @@ The goals that follow:
 | **G5** | The same process can be run by any model, under Route 0, A or B, leaving a trace that can be scored and compared |
 | **G6** | The ITB runs these tests: a private harness per run, several agents with their own beans, the end state and behaviour checked, and agents unable to tell a test from real work |
 | **G7** | A test can give the agent its task without the bean: a fixed prompt written from the bean, the agent unaware of beans, the bean still the test's context |
+| **G8** | Every run is set up from a standing configuration: which model, which knowledge sources (the full knowledge graph, published DAK files, GitHub repositories, published FHIR implementation guides, any combination or none), MCP services or local command line only, and which tools (and so which skills) are on, with the same infrastructure and prompting whatever is chosen |
 
 ---
 
@@ -341,6 +361,7 @@ A benchmark run is the same dispatch with a few settings, not a new runner:
 | system under test | model + launch Tool + its configuration |
 | route | **0** the task text only: no skills, no knowledge graph · **A** skills, knowledge-graph tools withheld · **B** skills and the knowledge graph |
 | context mode | **bean-aware** or **bean-blind** (§4.9) |
+| sources and tools | the run profile (§4.12): knowledge sources, MCP or command line, which Tools are on |
 | store | a **run-scoped store**: private to the run, seeded from the test case, thrown away after (ruled, Q5) |
 
 - **A test case** becomes seeded beans and started instances in the run's
@@ -501,7 +522,7 @@ Each setting has one home:
 | credentials | the placement's `credentials`, by the secret's **name** only, never its value | `{ "model-api": "GCP_WIF_ASSURED_AI" }` |
 | what is tested, with which beans per agent | the ITB test plan | `Given agent A (gemini, route B, bean-blind) …` |
 | the agents' world | the context hash in the plan's *Background* | `Given the context "folio-assistant@<hash>"` |
-| route and context mode | the test plan, per agent | `route B, bean-blind` |
+| knowledge sources, tool access, Tools on, route and context mode | the **run profile** the plan names (§4.12) | `Given the run profile "route-B-dak"` |
 
 A test plan names **agents**, never models: changing a model is a one-line
 change to the deployment, and the same plan then compares models fairly.
@@ -548,6 +569,109 @@ reached through Antigravity.
 
 ---
 
+### 4.12 The standing test configuration: run profiles
+
+Every test run is set up from a **run profile**: a named, saved file listing
+the options below. A test plan names the profile it uses; it never sets these
+options in its own text. Two runs with the same profile (and the same pinned
+context, §4.8) were set up identically, whatever model ran.
+
+| Option | Choices | What the harness does with it |
+|---|---|---|
+| **Models** | which model each agent actor runs, through its launch Tool (§4.11) | starts each agent through that launch Tool; switching a model changes this line only |
+| **Knowledge sources**, any combination or none | the **knowledge graph** (all of it, or chosen layers L1, L2, L3); **published DAK files** (PDF, Excel); **GitHub repositories**; **published FHIR implementation guides** | puts exactly those sources into the run's context repository (below), each pinned to a version, and nothing else |
+| **Tool access** | **MCP** services, **local command line** only, or **both** | starts the harness's MCP server for the run, or puts the command-line Tools on the agent's path, or both |
+| **Tools on or off** | a list of Tools that are on; every other Tool is off | an agent can call only the Tools that are on. A skill whose Tools are all off is not offered to the agent at all, so no agent is told about something it cannot use |
+| **Route** | 0, A, B | a shorthand for a combination of the rows above (below) |
+| **Context mode** | bean-aware or bean-blind (§4.9) | decides whether the agent gets the work order or the fixed prompt |
+
+**The routes are profiles.** Route 0, A and B are not separate machinery; they
+are three standard profiles, and any other combination is a profile too:
+
+| Profile | Knowledge sources | Tools on | Skills offered |
+|---|---|---|---|
+| `route-0` | none | none | none |
+| `route-A` | none | the authoring Tools | the authoring skills |
+| `route-B` | the knowledge graph | the authoring Tools and the knowledge-graph Tools | the authoring skills and the knowledge-graph skills |
+| `route-B-dak` *(example)* | the knowledge graph and the published DAK files | as `route-B` | as `route-B` |
+| `docs-only` *(example)* | published DAK files and FHIR implementation guides, no knowledge graph | file reading only | none |
+
+**Consistent infrastructure.** Whatever the profile, a run is built the same
+way, in the same order:
+
+1. **The context repository** (§4.8) is assembled from the profile's
+   knowledge sources: knowledge-graph layers at their pinned versions; DAK
+   files downloaded once and pinned by their checksum; GitHub repositories
+   at a pinned commit; FHIR implementation guides as their published package
+   at a pinned version. The repository's commit hash identifies the whole
+   context.
+2. **Tools**: the run's MCP server (when the profile says MCP) is started
+   offering only the Tools that are on; the command-line wrappers (when it
+   says command line) are installed for only those Tools. A Tool that is off
+   is simply not there; the agent is not told it exists.
+3. **Skills**: only skills backed by a Tool that is on (or needing no Tool)
+   are copied into the context.
+4. **Instruction files** (`AGENTS.md`, with `CLAUDE.md` and `GEMINI.md`
+   pointing to it) and `MEMORY.md` are generated from the profile, so every
+   model reads the same text.
+
+**Consistent prompting.** The prompt an agent receives comes from one
+template per context mode, filled from the profile. It says, in the same
+words for every model, what the agent has to work with ("you have the
+following documents… you can use the following tools…") and nothing about
+sources or Tools that are off. A check compares the prompts the run gave each
+agent: for the same profile they must be identical apart from the model's own
+launch wording (§4.5), which is kept on the launch Tool's page and reviewed.
+
+**Where the configuration lives, and who reads it:**
+
+| What | Where |
+|---|---|
+| where agents run, which store, which credentials | the deployment description (§4.11) |
+| what a run is allowed to see and use | the **run profile** |
+| what is tested | the ITB test plan, which names a profile |
+
+In a test plan:
+
+```gherkin
+Scenario Outline: the same task under each profile and model
+  Given the run profile "<profile>"
+  And agent A (<model>, bean-blind) is given the prompt of bean g7
+  When the agents are started
+  Then the output meets the acceptance criteria of bean g7
+
+  Examples:
+    | profile     | model  |
+    | route-0     | claude |
+    | route-0     | gemini |
+    | route-B     | claude |
+    | route-B     | gemini |
+    | route-B-dak | claude |
+    | route-B-dak | gemini |
+```
+
+One plan then sweeps models and profiles, and every row runs on identical
+infrastructure; only the line that varies differs.
+
+A sketch of a profile file:
+
+```json
+{
+  "id": "route-B-dak",
+  "title": "Knowledge graph and published DAK files, MCP tools",
+  "knowledgeSources": {
+    "knowledgeGraph": { "layers": ["L1", "L2", "L3"] },
+    "dak": [{ "title": "ANC DAK", "files": ["anc-dak.pdf", "anc-data-dictionary.xlsx"], "sha256": ["…", "…"] }],
+    "githubRepositories": [],
+    "fhirImplementationGuides": []
+  },
+  "toolAccess": "mcp",
+  "tools": ["kg-search", "kg-read", "skill-fetch", "workflow-next", "workflow-complete"],
+  "route": "B",
+  "contextMode": "bean-blind"
+}
+```
+
 ## 5. Order of work
 
 | Step | Work | Status |
@@ -569,6 +693,7 @@ reached through Antigravity.
 | 12 | The ITB services and the Gherkin steps that call them; the first multi-agent plan | |
 | 13 | The live local refresh (§4.10) | in review (#1429) |
 | 14 | `launch` on a placement (§4.11), once Q8 is ruled; the `itb-benchmark` deployment | |
+| 15 | Run profiles (§4.12): the file format and the standard profiles (`route-0`, `route-A`, `route-B`); the context builder reads knowledge sources from a profile (DAK files, GitHub repositories, FHIR implementation guides pinned); MCP or command-line Tools started with only the Tools that are on; skills and instruction files filtered to match; the prompt-equality check | |
 
 Steps 1 to 6 change nothing for anyone using the git branch today. Steps 9,
 10 and 12 are what the concept note's cloud credits and model access would
@@ -619,6 +744,7 @@ reported, never blocked:
 | Q7 | How is archiving expressed? | **A field set through `update`** (2026-11-02) |
 | Q8 | How does a deployment say which model runs each agent? | **Open.** Recommended: `launch: { tool, model }` on the agent's placement (§4.11). Default if unruled: that |
 | Q9 | Who records progress in a bean-blind run? | **Open.** Recommended: the harness, observing the agent's output (§4.9). Default if unruled: that |
+| Q10 | Where do run profiles live? | **Open.** Recommended: one file per profile, in a declared `test-run-profiles/` directory of cat-harness, beside the deployment descriptions, with a schema; a test plan names a profile by its id (§4.12). Default if unruled: that |
 
 ---
 
@@ -668,4 +794,5 @@ private store for benchmarks; N12 routes are no runner's setting and traces
 are scattered; N13 the ITB plan has no steps to stand up a harness or start
 agents; N14 each model's context is assembled differently; N15 (added
 2026-11-03) no way to run a task without telling the agent it is a tracked
-item.
+item; N16 (added 2026-11-03) no standing configuration of a run's models,
+knowledge sources, tool access and tools.
