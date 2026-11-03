@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_254 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_255 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -207,7 +207,7 @@ _254 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`crdm-requirements-template`](skills/sdlc/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
 | [`crdm-requirements-workflow`](skills/sdlc/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
 
-**`skills/sdlc/sdlc-core/`** (78)
+**`skills/sdlc/sdlc-core/`** (79)
 
 | Skill | What it is for |
 |---|---|
@@ -288,8 +288,8 @@ _254 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`watch`](skills/sdlc/sdlc-core/watch.md) | Background-watch a branch (default origin/main) or a GitHub PR for new activity while you work, and on every event report whether to integrate / whether it conflicts with the current branch /… |
 | [`where-a-proposal-goes`](skills/sdlc/sdlc-core/where-a-proposal-goes.md) | Where a proposal goes — the issue, not the documentation |
 | [`work-plan-restructure`](skills/sdlc/sdlc-core/work-plan-restructure.md) | Reorganise a work plan that has outgrown one-bean-at-a-time repair — session logs typed as epics, duplicate families, generated template beans, stale claims, unparented work — through a reviewed… |
-| [`work-plan-store`](skills/sdlc/sdlc-core/work-plan-store.md) | The contract the work plan (beans) keeps as a data store, as operations any Tool must provide: get, list, create, update with ifMatch, note, history, and where a bean is in its… |
-| [`work-plan-store-git-branch`](skills/sdlc/sdlc-core/work-plan-store-git-branch.md) | How the git state branch Tool performs the work-plan store's operations: the branch per graph, the mount at beans/, which command does get, list, create, update, note… |
+| [`work-plan-store-git-branch`](skills/sdlc/sdlc-core/work-plan-store-git-branch.md) | How the git state branch Tool performs the work-plan store's operations: the branch per graph, the mount at beans/, which command does get, list, create, update, note, history and positions, and how… |
+| [`work-plan-store`](skills/sdlc/sdlc-core/work-plan-store.md) | The contract the work plan (beans) keeps as a data store, as operations any Tool must provide: get, list, create, update with ifMatch, note, history, and where a bean is in its processes. |
 
 **`skills/sdlc/spec-kit/`** (3)
 
