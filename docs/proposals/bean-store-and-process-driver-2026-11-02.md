@@ -826,6 +826,38 @@ store**:
   sit in cat-harness itself, outside both, so a content layer's diagram (a
   DAK authoring process, say) can draw a memory store without naming beans.
 
+**A bean is a memory record with more structure** (owner, 2026-11-03:
+*"bean is a memory note w/ additional structure for process/role/ etc... can
+we formalize this a bit more in schema to show this and align a bit the
+services"*; ruled Q17, layered):
+
+| Layer | Schema | Store interface | What it adds |
+|---|---|---|---|
+| memory record | `memory-record` (new base) | `MemoryStore`: keep, recall, checkpoint, list by scope | id, title, scope (item, run, shared), `about`, tags, timestamps, and **structured entries**: each with text, when, who, kind (note, step done, checkpoint, taken up, closed) and, when the engine knows them, process, step, instance and role |
+| bean | `bean-defs` extends `memory-record` | `WorkPlanStore` extends `MemoryStore`: create, update with `ifMatch`, relations, positions, beansAt | status lifecycle, type, priority, parent and blocking |
+
+So the memory service and the bean service are **one service**: a memory
+note is a bean note without the work-item fields, and the process and role
+are entry metadata the backend fills in. The beans Tool implements both
+layers and keeps entries in the bean body as lines it can parse back (the
+conformance tests check the round trip, so existing beans stay valid); a
+file store implements only `MemoryStore`. The curated agent memory (the
+`memory` kind, "never written by a process") stays separate.
+
+**The ITB chooses the memory Tool**, and the test scenarios include (owner,
+2026-11-03: *"the test scenarios should include cases where agent is offered
+no memory store vs when it is offered beans as a Tool and the SDLC type
+processes"*):
+
+| Scenario | The agent is offered | Behind it |
+|---|---|---|
+| no memory | no memory tools | nothing kept for the agent; the harness still records the run |
+| memory, neutral | `memory_note`, `memory_recall`, `memory_checkpoint` | beans (run-scoped) or the file store, chosen by the run profile |
+| beans and SDLC | the bean Tools and the `sdlc` processes and skills | the run-scoped beans store, bean-aware (§4.9) |
+
+Each is a run profile (§4.12), so the same case runs under all three and the
+ITB compares them.
+
 ## 5. Order of work
 
 | Step | Work | Status |
@@ -850,7 +882,7 @@ store**:
 | 15 | Run profiles (§4.12): the file format and the standard profiles (`route-0`, `route-A`, `route-B`); the context builder reads knowledge sources from a profile (DAK files, GitHub repositories, FHIR implementation guides pinned); MCP or command-line Tools started with only the Tools that are on; skills and instruction files filtered to match; the prompt-equality check | |
 | 16 | The engine keeps work context at every task boundary; open and close done by the engine; `work_context_note` as its own Tool (§4.13) | in review (cat-harness-tools#1435, cat-harness#1010) |
 | 17 | Bean markup out of the cat-harness diagrams outside `sdlc` (§4.13) | branch `claude/diagrams-no-bean-markup` |
-| 18 | The memory store Role: its operations (keep, recall, checkpoint) over scopes (item, run, shared); the bean Tool for it; conformance tests; `stores["memory"]` (§4.14) | |
+| 18 | The `memory-record` base schema with structured entries, `bean-defs` extending it; `MemoryStore` (keep, recall, checkpoint over item, run and shared scopes) with `WorkPlanStore` extending it; the bean Tool for both; conformance tests for both layers; `stores["memory"]` (§4.14, Q17) | next |
 | 19 | The engine binds a drawn `memory` data store: a task that reads it is handed the recalled entries, a task that writes it keeps its output; shared scopes for a swarm with `ifMatch` | |
 | 20 | Neutral tools `memory_note`, `memory_recall`, `memory_checkpoint`, and their skill; `work_context_note` folded in | |
 | 21 | A second memory Tool (a run-scoped file store) passes the same conformance tests, so the Role is proven Tool-neutral | |
@@ -859,7 +891,7 @@ store**:
 | 24 | fhir-harness and smart-base: bean markup out of their diagrams; their instruction files generated; the leak check a gate in their CI | |
 | 25 | Provenance ids out of agent-facing skill text across the layers | |
 | 26 | folio-assistant's content-development processes draw the memory store where they need it (checkpoint, shared space) | |
-| 27 | Run profiles switch the memory tools on or off, and pick the memory Tool, so the ITB can compare runs with and without memory | |
+| 27 | Run profiles for the three memory scenarios (none, neutral memory, beans and SDLC), the memory Tool chosen per run, so the ITB compares them on the same cases | |
 
 Steps 1 to 6 change nothing for anyone using the git branch today. Steps 9,
 10 and 12 are what the concept note's cloud credits and model access would
@@ -915,6 +947,7 @@ reported, never blocked:
 | Q12 | Where does the development material sit? | **`sdlc` becomes a named sub-graph of cat-harness**, off in the layers above, switched on by folio-assistant (2026-11-03, §4.13) |
 | Q13 | Do diagrams carry bean markup? | **No, outside `sdlc`** (2026-11-03): the engine does open, close and the per-task record; cat-harness, fhir-harness and smart-base are cleaned up (§4.13) |
 | Q14 | When does a diagram draw the memory store? | **Only where the process needs memory** (2026-11-03): a checkpoint before stopping, a shared space for a swarm, a hand-over; never as bookkeeping. Beans are one Tool for it; there may be others (§4.14) |
+| Q17 | How are beans and the memory store formalised? | **Layered, one service** (2026-11-03): `memory-record` base schema with structured entries; `bean-defs` extends it; `WorkPlanStore` extends `MemoryStore` (§4.14) |
 | Q15 | Where does the bean Tool sit? | **Open.** Recommended: its own `beans` sub-graph, used by `sdlc` and by folio-assistant's content development; the memory store Role in cat-harness itself (§4.14). Default if unruled: that |
 
 ---
