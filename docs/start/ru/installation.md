@@ -16,10 +16,9 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 ---
 
-> Установка — это более простая половина. То, что нужно запустить **перед push**, — это
-> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }}) —
-> успешное прохождение `bun test` не означает прохождение гейтов платформы, а сам их список выводится из
-> рабочего процесса CI, а не просто где-то записан. Если вы разворачиваете folio-assistant
+> То, что нужно запустить **перед push**, — это
+> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }});
+> успешное прохождение `bun test` не означает прохождение гейтов платформы. Если вы разворачиваете folio-assistant
 > поверх уже существующего репозитория, сначала прочитайте
 > [`repo-conversion`]({{ '/reference/skill-instructions/repo-conversion.html' | relative_url }}).
 
@@ -39,11 +38,8 @@ MCP. Самой платформе требуется только Bun; отде
 | Java 21 + IG Publisher + SUSHI | WHO SMART IG (L3) | см. [руководство по WHO SMART IG](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`, затем руководство |
 | `pandoc`, `ripgrep` | преобразования, поиск | `apt install pandoc ripgrep` | `winget install JohnMacFarlane.Pandoc BurntSushi.ripgrep.MSVC` |
 
-Вам не обязательно всё это устанавливать — устанавливайте только то, что требуется
-создаваемым вами типам контента. Встроенная проверка возможностей сообщит, чего именно не хватает.
-
-> **Обязателен только Bun.** Каждая остальная строка относится к конкретному типу контента и проверяется
-> во время выполнения, поэтому ничего другого устанавливать не нужно, пока об этом не попросит `check-deps`.
+Обязателен только Bun. Каждая остальная строка относится к конкретному типу контента и проверяется
+во время выполнения, поэтому ничего другого устанавливать не нужно, пока об этом не попросит `check-deps`.
 
 
 ## Клонирование и установка
@@ -97,9 +93,7 @@ cat-harness-tools\scripts\upload-to-uploads.bat https://example.org/guideline.pd
 `cat-harness-tools/scripts/start-folio-assistant.sh` устанавливает Bun, если он отсутствует, а
 затем запускает сервер, а
 `cat-harness-tools/adapters/mcp-server/install.sh` представляет собой более полный установщик, охватывающий
-также и TeX Live. Оба оставались недокументированными до 2026-09-21
-([#740](https://github.com/litlfred/folio-assistant/issues/740)) — вот почему
-существует этот раздел.
+также и TeX Live.
 
 ## Проверка окружения
 

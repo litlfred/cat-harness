@@ -60,10 +60,9 @@ key, a workflow instance under `beans/workflows/`.
 
 **Pin a derived QA citation to its commit.** A file under `test/results/` is
 a working copy: its record is the entry the CI job `qa-publish` stores on the
-orphan `qa-reports` branch, keyed `main/<sha>/` or `pr/<n>/<sha>/` (arc
-`3fva`), and the committed copy goes when bean `5hox` removes it. So cite it
+orphan `qa-reports` branch, keyed `main/<sha>/` or `pr/<n>/<sha>/`. Cite it
 as `qa-reports:main/<sha>/<path>` — the same locator `bun run cat qa:fetch --ref`
-reads — or the citation dangles the day the file leaves `main`. A judgement in
+reads — or the citation dangles once the file leaves `main`. A judgement in
 `test/attestations/` stays on `main` and is cited by path.
 
 ## The agent assembles the citations; the human is still the author
@@ -79,9 +78,8 @@ and say what each one shows:
    usually the right precedent to cite.
 4. Quote at the locator, so a citation that goes stale is visible as stale.
 
-Record yourself in `proposed_by`, never in `author`. The reasoning belongs to
-whoever made the decision, and a tool appearing as its author misattributes a
-judgement to something that did not make one.
+Record yourself in `proposed_by`, never in `author`: the reasoning belongs to
+whoever made the decision.
 
 ## Citations you could not resolve are not citations you checked
 

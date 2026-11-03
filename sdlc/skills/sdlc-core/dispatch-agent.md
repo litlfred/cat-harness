@@ -18,11 +18,9 @@ MUST be used together:
    "still working on it".
 2. **Parent-side 2-minute heartbeat** — the parent extracts the latest
    block from each running agent every ~120 s and posts ONE consolidated
-   synthesis table to the user, so monitoring is passive and effortless.
+   synthesis table to the user.
 
-Both halves are load-bearing. An agent that doesn't follow the contract
-can't be synthesized; a parent that doesn't run the heartbeat leaves the
-user blind. Do not dispatch without both.
+Do not dispatch without both.
 
 ---
 
@@ -107,10 +105,8 @@ Do bean folio-assistant-<id> on branch <branch-to-create> of repo <owner>/<repo>
 ```
 
 Take the front from that line rather than inventing a scope: the bean carries
-its own Done-when, so an agent dispatched on a bean can be judged, while one
-dispatched on a theme cannot. If you are dispatching work that has no bean,
-bean it first — that is intake, and it is cheaper than a round spent agreeing
-what "done" was.
+its own Done-when. If you are dispatching work that has no bean, bean it
+first.
 
 1. **Scope each front** to one independent agent (no shared files between
    agents — worktree isolation makes parallel file writes safe; use
@@ -122,10 +118,8 @@ what "done" was.
    convention).
 3. **Name the skills that govern the front** in the brief, by path, and
    quote the rules they set that the work could touch — rendering, layering,
-   what is forbidden. An agent cannot follow a rule it was never pointed at,
-   and "fix the site" read without `ig-render-jekyll` produced a site that
-   copied the IG Publisher's HTML, which that skill forbids (owner,
-   2026-10-14: *"I DO NOT WANT THE IG PUBLISHER HTML"*). If the skills are
+   what is forbidden. An agent cannot follow a rule it was never pointed at.
+   If the skills are
    served over MCP and the server is unreachable, read them from the mounted
    layers (`<layer>/skills/**`) instead: an unreachable server is never a
    reason to work without them.
@@ -203,9 +197,8 @@ Every ~120 s while any agent is still `[live]`:
   you; run the extractor on each and treat it as an off-cadence heartbeat,
   then re-arm the 120 s fallback so quiet stretches still tick.
 
-The 120 s tick is a *fallback heartbeat*, not the only signal — completion
-notifications arrive on their own. Pick 120 s because the user asked for
-2-minute updates; honor that literally.
+The 120 s tick is a *fallback heartbeat*; completion notifications arrive on
+their own.
 
 ### 3c. Nudging a silent agent
 
@@ -237,14 +230,12 @@ When an agent emits `⟦DONE⟧` (or the harness notifies completion):
 ## 5. Anti-patterns (each is a skill violation)
 
 - **Going dark** — dispatching background agents without arming the
-  heartbeat. The user then has to ask "what's happening?" — the exact
-  friction this skill removes.
+  heartbeat.
 - **Semi-static updates** — "agent still running the proof" with no log
   tail, no step counter, no evidence. If a command is in flight, the
   block MUST carry its live output.
 - **Reading the full transcript** — tailing/`cat`-ing the `*.output`
-  JSONL into context instead of using the targeted extractor. Overflows
-  context and defeats the point.
+  JSONL into context instead of using the targeted extractor.
 - **A brief with no governing skills** — dispatching a front without naming
   the skills that rule it (§2 step 3). The agent then decides a design
   question the owner already ruled on, and the PR carries it in.

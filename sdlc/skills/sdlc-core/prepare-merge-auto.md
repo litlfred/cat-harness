@@ -113,7 +113,8 @@ If any review comment requires a judgment call (ambiguous intent,
 architectural decision, multiple valid approaches), use
 `AskUserQuestion` with:
 
-- **Rich context** per AGENTS.md user-accessibility rules:
+- **Rich context** per
+  [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md):
   - Quote the exact comment + file path + line number
   - Show the current code vs proposed change (preview)
   - State trade-offs for each option
@@ -169,11 +170,8 @@ After merge:
   renders identically to one whose checks have not started. Match the PR's
   `head_sha` against the branch's workflow-run list before calling it green,
   and re-run the workflows by dispatch when no run exists for that sha.
-  Measured six times here (bean `3pqn`), twice on one PR in eight minutes.
-  Same rule, with the evidence and the procedure, in
-  [`prepare-merge.md`](prepare-merge.md) §Guardrails; change one and change
-  the other — that file records what happened the last time a rule lived in
-  only one of these two.
+  Same rule, with the procedure, in [`prepare-merge.md`](prepare-merge.md)
+  §Guardrails; change one and change the other.
 - Do NOT squash unless the user explicitly says "squash".
 - Do NOT skip sibling coordination — it prevents post-merge conflicts.
 - Do NOT ask trivial questions in Phase 3 — only genuinely ambiguous

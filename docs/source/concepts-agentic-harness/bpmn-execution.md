@@ -1,4 +1,4 @@
-The owner, 2026-09-23, naming the skill this spectrum is about:
+The skill this spectrum is about:
 
 > **BPMN Execution Skill:** given a Process, Context, State and Role, utilize
 > one or more Skills in order to execute a Task.
@@ -21,12 +21,10 @@ behind a skill in the way every other Tool here is.
 **The two ends differ in *when* a rule is checked, not in *which* rule.** The
 same process, the same roles and the same permissions govern both. The engine
 checks them **before** a task starts and refuses; the swarm acts and a QA/QC
-report checks them **after**, from the record of what was done. That only works
-if the rules and the record are data a report can read, which is the case for
-[W3C ODRL 2.2](https://www.w3.org/TR/odrl-model/) as the permission language
-and [W3C PROV-O](https://www.w3.org/TR/prov-o/) as the execution log (owner,
-2026-09-23; the schema this implies is the
-[actors, ODRL and PROV-O proposal]({{ '/proposals/odrl-prov-actor-model.html' | relative_url }})).
+report checks them **after**, from the record of what was done. That needs the
+rules and the record to be data a report can read:
+[W3C ODRL 2.2](https://www.w3.org/TR/odrl-model/) is the permission language
+and [W3C PROV-O](https://www.w3.org/TR/prov-o/) the execution log.
 
 **Most real runs sit between the ends**, and per task rather than per process:
 the [previous section](#deterministic-and-agentic) already counts which
@@ -34,9 +32,7 @@ gateways are computed and which are judgement calls. A signing step can be
 engine-enforced inside an otherwise agentic run, and that is a property of the
 task, not of the whole diagram.
 
-**Partly built.** No BPMN engine is wired in. The mechanical QA/QC report
-now exists: `bun run cat prov:qaqc` writes each workflow instance's history as a
-PROV-O log and re-checks every step against the ODRL policies, advisory
-(issue #1180, step 5; the `task-authorization` skill). The agentic QA/QC
-report does not exist yet. The rest of this section names the target so the
-proposal has something to be measured against.
+**Partly built.** No BPMN engine is wired in. The mechanical QA/QC report is
+`bun run cat prov:qaqc`: it writes each workflow instance's history as a PROV-O
+log and re-checks every step against the ODRL policies, as advice (the
+`task-authorization` skill). The agentic QA/QC report does not exist yet.

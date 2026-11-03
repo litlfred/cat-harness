@@ -87,13 +87,9 @@ Decision-Making Algorithms" (arXiv:2508.21620).
 | **Tree search** (MCTS) | Sequential decisions with branching outcomes | No natural tree structure | High |
 | **Contextual bandits** | Payoff depends on observable context | Context is not available or not meaningful | Medium |
 
-**Two caveats on the source, measured 2026-09-30.** The monograph's abstract
-promises *"bandit algorithms, Bayesian optimization, and tree search
-algorithms"*, but **v2 as ingested has no tree-search chapter** — its sections
-run decision theory, concentration inequalities, frequentist bandits
-(explore-then-exploit, UCB), Gaussian processes, and discrete then continuous
-Bayesian optimisation. And **`contextual bandit` occurs nowhere in it.** So of
-the four rows above, two are backed by the cited source and two are not.
+The source backs bandits and Bayesian optimisation only: the ingested version
+has no tree-search chapter and does not mention contextual bandits, so those two
+rows are UNSOURCED.
 
 ### 3. Social / behavioral decision methods
 
@@ -102,10 +98,8 @@ must be accounted for.
 
 Source: Ravichandran, "Algorithmic Approaches to Sequential Decision-Making
 and Social Epistemology" (arXiv:2607.20636) — **for `grit-aware evaluation`
-only.** Checked against the ingested text 2026-09-30: `grit` occurs in 35 of
-its sections; **`Delphi` occurs in none, and `nominal group` in none.** Those
-two come from the group-consensus literature and are UNSOURCED here; the
-attribution above covered all three rows until this was measured.
+only.** Delphi and nominal group technique come from the group-consensus
+literature and are UNSOURCED here.
 
 | method | best for | avoid when | complexity |
 |---|---|---|---|
@@ -134,12 +128,10 @@ method — see §"What this does NOT cover".
 **When**: reference-point comparison (ideal solution), outranking rather than
 scoring.
 
-**No source in this repository**, and the gap is a known one rather than an
-oversight: the MCDM source ingested here is Chapter 8, *"selected
-**aggregation-type**"* methods by its own abstract, so outranking (ELECTRE,
-PROMETHEE) and distance-based (TOPSIS, VIKOR) are somebody else's chapter.
-TOPSIS appears in that chapter only inside a reference title. The rows below
-are textbook recall — see §"What this does NOT cover".
+**No source in this repository**: the ingested MCDM source covers
+aggregation-type methods only, not outranking (ELECTRE, PROMETHEE) or
+distance-based (TOPSIS, VIKOR) methods. The rows below are textbook recall —
+see §"What this does NOT cover".
 
 | method | best for | avoid when | complexity |
 |---|---|---|---|
@@ -148,12 +140,7 @@ are textbook recall — see §"What this does NOT cover".
 | **PROMETHEE** | Preference functions on each criterion | All criteria are simple linear | Medium |
 | **VIKOR** | Compromise solution for conflicting criteria | Stakeholders refuse compromise | Medium |
 
-## What this does NOT cover — bean `7e59`, measured 2026-09-30
-
-The title of the bean that commissioned this skill claims it *"covers all
-methodology families with when-to-use criteria"*. Checked against the three
-sources now that they are in `library/`, that does not hold, and the honest
-shape is:
+## What this does NOT cover
 
 | | methods | backed by an ingested source |
 |---|---:|:--:|
@@ -164,52 +151,37 @@ shape is:
 | §5 distance-based / outranking | 4 | no |
 | **total** | **23** | **11** |
 
-**An unsourced row is not thereby wrong** — these are standard methods and the
-guidance in them may be perfectly good. It means something narrower and worth
-saying: nobody here has read a source for it, no methodology node renders it,
-and `methodology-adoption`'s *"never adopt a method by naming it"* applies.
+**An unsourced row is not thereby wrong.** It means nobody here has read a
+source for it, no methodology node renders it, and `methodology-adoption`'s
+*"never adopt a method by naming it"* applies.
 
-**The output schema already makes this structural, and that is the sharper
-point.** `MethodologyRecommendationSchema` requires `methodologyId` — *"the
-methodology's `name` from its front matter"* — so a recommendation must name a
-node in the methodology graph. **No individual method above has one.** The
-graph's nodes are families and adopted processes (`mcdm-aggregation`,
+**The selector returns a FAMILY, plus prose.** `MethodologyRecommendationSchema`
+requires `methodologyId` — the methodology's `name` from its front matter — so
+a recommendation must name a node in the methodology graph. The graph's nodes
+are families and adopted processes (`mcdm-aggregation`,
 `probabilistic-decision-analysis`, `adequacy-for-purpose-modelling`,
-`kepner-tregoe`, `dmn`, `swot`, `madr`, `raci`/`rasci`, …), so the tables in
-this skill are at METHOD granularity while the declared output is at NODE
-granularity.
-
-Two consequences, and neither is cosmetic. A recommendation of "use TOPSIS" or
-"run a Delphi" **cannot be expressed** in the output shape — there is no id to
-put in `methodologyId`. And an implementation that emits one anyway is
-inventing an id, which is how a consumer ends up resolving a methodology that
-does not exist.
-
-**Owner ruled 2026-09-30: FAMILY plus prose.** The selector returns a
-methodology node that exists — `mcdm-aggregation`,
-`probabilistic-decision-analysis`, `kepner-tregoe`, `dmn` and the rest — and
-names the within-family method in `rationale`, as prose. The 23 rows above are
-material for that prose. They are not a menu of returnable answers, and no
-individual method gets a node.
-
-Three things follow, and the third is the one to keep in view:
+`kepner-tregoe`, `dmn`, `swot`, `madr`, `raci`/`rasci`, …); no individual
+method in the tables above has a node. So the selector returns a methodology
+node that exists and names the within-family method in `rationale`, as prose.
+The 23 rows are material for that prose, not a menu of returnable answers, and
+no individual method gets a node.
 
 1. **`methodologyId` is always resolvable.** Every value the selector can emit
-   is a node in the graph, so a consumer that follows the id finds a document.
+   is a node in the graph. Never invent an id for a method.
 2. **An unsourced row may still be named in prose**, and must be named as what
    it is. "Of the distance-based family, TOPSIS is the usual first reach —
    note that nothing in this repository's library covers it" is honest; "use
    TOPSIS" as a returned recommendation is not.
 3. **A request that lands wholly outside the sourced families gets a refusal,
-   not the nearest fit.** `SelectionResultSchema` already carries the field
-   for it — the explanation for when no methodology fits. An agent asking for
-   an outranking method is told none is adopted here.
+   not the nearest fit.** `SelectionResultSchema` carries the explanation for
+   when no methodology fits. An agent asking for an outranking method is told
+   none is adopted here.
 
-**And these families are entirely absent, even as recall**: ambiguity and
+**These families are entirely absent, even as recall**: ambiguity and
 robust decision-making (maximin under unknown distributions), real options,
-voting rules and social choice beyond the thesis's cascades, multi-objective
-optimisation proper (Pareto fronts rather than scalarisation), and
-satisficing / bounded-rationality methods.
+voting rules and social choice, multi-objective optimisation proper (Pareto
+fronts rather than scalarisation), and satisficing / bounded-rationality
+methods.
 
 ## Selection algorithm
 

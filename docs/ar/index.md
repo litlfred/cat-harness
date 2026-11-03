@@ -23,12 +23,8 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 {: .fs-6 .fw-300 }
 
 <!--
-  `View on GitHub` STAYS. The site-wide `aux_links` GitHub text was removed from
-  the chrome above every page (bean `udx8`, PR #352), and the obvious follow-up
-  is to delete this button for consistency. Do not. Put to the repo owner on
-  2026-09-19: this button is part of the landing page's own readme/description
-  note — authored content on one page, not chrome — and the forge remains
-  reachable from the navbar's Source tile regardless.
+  `View on GitHub` STAYS: it is the landing page's own authored content, not
+  site chrome, so it is not removed with the site-wide GitHub link.
 -->
 [البدء]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }}){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [التثبيت]({{ '/docs/cat-harness/start/installation.html' | relative_url }}){: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 }
@@ -47,7 +43,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list                          # ما هو مفتوح
 beans create "<title>"              # …بعد التحقق من أن العنوان غير موجود
-beans <id> --status in-progress     # احجزه، بشكل مرئي
+bun run cat beans:claim <id>        # احجزه، بشكل مرئي
 ```
 
 **2. أنشئ أول folio لك.** هذا المستودع هو *المنصة*؛ أما محتواك فيعيش في مستودعه الخاص. أمر واحد يُنشئ هيكله — البيانات الوصفية، والإعلان، وملفات الوكيل، والرابط إلى هنا:
@@ -61,7 +57,7 @@ bun run cat init-folio --help
 **3. اعرف نوع ما تكتبه.** *المستند* نثر منظَّم؛ و*الورقة* (paper) هي ذلك بالإضافة إلى أنواع الكتل التي يكون تقريرها ادعاءً رياضيًا صوريًا، مدعومًا بـ Lean ومنضَّدًا عبر LaTeX. يحدد هذا الاختيار الكتل المسموح بها والفحوص التي تُشغَّل: [أنواع المحتوى]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }}).
 
 **4. التوثيق الذي لن تقرأه أبدًا.**
-[كله]({{ '/docs/cat-harness/guides/index.html' | relative_url }}) — أدلة التأليف، والبنية، وسير عمل النشر، والمرجع المولَّد للمخططات والمهارات. إنه هنا، وهو شامل، والتوقع الصادق أنك ستصل إليه من محرك بحث في اللحظة نفسها التي يتعطل فيها شيء ما. وهذه طريقة جيدة لاستخدامه. الخطوات الثلاث أعلاه هي التي تستحق القراءة الآن.
+[كله]({{ '/docs/cat-harness/guides/index.html' | relative_url }}) — أدلة التأليف، والبنية، وسير عمل النشر، والمرجع المولَّد للمخططات والمهارات. الخطوات الثلاث أعلاه هي التي تستحق القراءة الآن.
 
 عندما تكون *الآلية* هي ما يحيّرك وليس التأليف — من يفعل أمرًا ما، وضمن أي عملية، وباستخدام أي مهارة — فابدأ من [المنصة]({{ '/docs/cat-harness/platform.html' | relative_url }}). جملة واحدة هناك تحمل النموذج كله، وكل كلمة فيها كائن مُعلَن على حدة.
 
