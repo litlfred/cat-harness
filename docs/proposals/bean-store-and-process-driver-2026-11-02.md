@@ -780,6 +780,52 @@ provenance-id pattern, `beans/`, the beans branch name, *work plan*,
 determine" is never clean. It starts in report mode and becomes a gate once
 the clean-up lands.
 
+### 4.14 The memory store: drawn only where a process needs it
+
+Owner, 2026-11-03: *"We need the memory store in the diagrams, only if a
+process explicitly requires it. For example, if an agent knows that it is
+shutting down and wants to write a record of where it's at. Or if an agent
+wants to create a shared memory store as part of a swarm that they can
+collectively access. It may be that it gets implemented as a tool as beans.
+There may be other tools. We use beans as a tool in SDLC. We also use it as a
+tool for the same type of agentic memory in collaborative agent-assisted
+content development."*
+
+So the work context of §4.13 is one use of a more general Role, the **memory
+store**:
+
+- **A Role, not a Tool.** Like the work plan (§4.1), it is a set of
+  operations — *keep* an entry, *recall* entries, *checkpoint* where the work
+  stands — over a **scope**: one item, one run, or one shared space a group
+  of agents opens together. Beans are one Tool for it; a run-scoped store, a
+  plain file store or a server are others. The deployment or run profile
+  picks the Tool (`stores["memory"]`).
+- **Drawn only where a process needs it.** A diagram draws a standard BPMN
+  data store whose `dataStoreRef` is `memory` only where the process itself
+  depends on memory:
+  - **Checkpoint before stopping:** a task such as *Record where the work
+    stands* writes to it before an agent shuts down or hands over, and the
+    task that resumes reads from it.
+  - **Shared memory for a swarm:** a task such as *Open a shared memory
+    space* creates a scope that the agents of a parallel or multi-instance
+    step all read and write; writes carry the version they read
+    (`ifMatch`), so two agents never overwrite each other silently.
+  - **Hand-over between lanes:** a task in one lane writes what the next
+    lane needs to know.
+  No diagram draws it as routine bookkeeping. What every process needs (who
+  took the work, when it finished) the engine keeps without a drawing (§4.13).
+- **The agent's side is neutral.** The MCP tools (`memory_note`,
+  `memory_recall`, `memory_checkpoint`) and their skill name no Tool. The
+  backend wraps each entry with its metadata (process, step, instance, agent,
+  time). It is its own Tool group, so a bean-blind agent can be offered it.
+- **Two kinds of work use beans for it today**, and both keep them:
+  software development (`sdlc`) and collaborative, agent-assisted content
+  development (folio-assistant). So the bean Tool is **not** inside `sdlc`:
+  it is its own sub-graph, `beans`, which `sdlc` and folio-assistant both
+  switch on. The memory store Role, its data store, its tools and its skill
+  sit in cat-harness itself, outside both, so a content layer's diagram (a
+  DAK authoring process, say) can draw a memory store without naming beans.
+
 ## 5. Order of work
 
 | Step | Work | Status |
@@ -802,10 +848,18 @@ the clean-up lands.
 | 13 | The live local refresh (§4.10) | in review (#1429) |
 | 14 | `launch` on a placement (§4.11), once Q8 is ruled; the `itb-benchmark` deployment | |
 | 15 | Run profiles (§4.12): the file format and the standard profiles (`route-0`, `route-A`, `route-B`); the context builder reads knowledge sources from a profile (DAK files, GitHub repositories, FHIR implementation guides pinned); MCP or command-line Tools started with only the Tools that are on; skills and instruction files filtered to match; the prompt-equality check | |
-| 16 | Work context (§4.13): the engine's take-up and complete at every task boundary, open/close done by the engine, the *Work context* data store binding, `work_context_note`; `check:context-leak` in report mode | in review (cat-harness-tools#1435) |
-| 17 | Bean markup out of the diagrams, cat-harness first; `check:bean-calls` replaced by the leak check | |
-| 18 | `sdlc` as a named sub-graph; the registrar and skill scan honour it; folio-assistant switches it on | |
-| 19 | The dependent harnesses (fhir-harness, smart-base): the same clean-up; provenance ids out of agent-facing text; the leak check becomes a gate | |
+| 16 | The engine keeps work context at every task boundary; open and close done by the engine; `work_context_note` as its own Tool (§4.13) | in review (cat-harness-tools#1435, cat-harness#1010) |
+| 17 | Bean markup out of the cat-harness diagrams outside `sdlc` (§4.13) | branch `claude/diagrams-no-bean-markup` |
+| 18 | The memory store Role: its operations (keep, recall, checkpoint) over scopes (item, run, shared); the bean Tool for it; conformance tests; `stores["memory"]` (§4.14) | |
+| 19 | The engine binds a drawn `memory` data store: a task that reads it is handed the recalled entries, a task that writes it keeps its output; shared scopes for a swarm with `ifMatch` | |
+| 20 | Neutral tools `memory_note`, `memory_recall`, `memory_checkpoint`, and their skill; `work_context_note` folded in | |
+| 21 | A second memory Tool (a run-scoped file store) passes the same conformance tests, so the Role is proven Tool-neutral | |
+| 22 | `check:context-leak` in report mode; `check:bean-calls` retired; `bpmn-authoring` teaches the memory store patterns instead of bean open and close | |
+| 23 | The `beans` sub-graph (the Tool) and the `sdlc` sub-graph (the development processes and skills); the registrar and skill scan honour sub-graph switches; folio-assistant switches both on | |
+| 24 | fhir-harness and smart-base: bean markup out of their diagrams; their instruction files generated; the leak check a gate in their CI | |
+| 25 | Provenance ids out of agent-facing skill text across the layers | |
+| 26 | folio-assistant's content-development processes draw the memory store where they need it (checkpoint, shared space) | |
+| 27 | Run profiles switch the memory tools on or off, and pick the memory Tool, so the ITB can compare runs with and without memory | |
 
 Steps 1 to 6 change nothing for anyone using the git branch today. Steps 9,
 10 and 12 are what the concept note's cloud credits and model access would
@@ -860,6 +914,8 @@ reported, never blocked:
 | Q11 | How is an agent's context kept as it takes up, works and completes a task? | **All three** (2026-11-03): the engine at every task boundary; an optional neutral *Work context* data store in a diagram; the agent's own `work_context_note`. One work-context store, its Tool chosen by the deployment or run profile: beans, the run trace, or none (§4.13) |
 | Q12 | Where does the development material sit? | **`sdlc` becomes a named sub-graph of cat-harness**, off in the layers above, switched on by folio-assistant (2026-11-03, §4.13) |
 | Q13 | Do diagrams carry bean markup? | **No, outside `sdlc`** (2026-11-03): the engine does open, close and the per-task record; cat-harness, fhir-harness and smart-base are cleaned up (§4.13) |
+| Q14 | When does a diagram draw the memory store? | **Only where the process needs memory** (2026-11-03): a checkpoint before stopping, a shared space for a swarm, a hand-over; never as bookkeeping. Beans are one Tool for it; there may be others (§4.14) |
+| Q15 | Where does the bean Tool sit? | **Open.** Recommended: its own `beans` sub-graph, used by `sdlc` and by folio-assistant's content development; the memory store Role in cat-harness itself (§4.14). Default if unruled: that |
 
 ---
 
