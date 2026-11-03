@@ -32,7 +32,7 @@ Publish the docs site to `gh-pages`, verify the export before the deploy, and ke
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - What: Regenerate every derived reference from its source before building: skill schema and instruction pages, content-backed docs pages, the graph projections and viewers, the handler and translation indexes, and the rendered BPMN diagrams.
 - Record it: `workflow_complete` with `node: "Task_Regenerate"`.
-- next: → `Task_Build` (Build the Jekyll site and the API reference)
+- next: → `Call_InstanceSites` (Compose each instance's own site into the docs source [its Tool])
 
 ### 3. Alert the publication manager (`Call_Alert`)
 
@@ -42,18 +42,26 @@ Publish the docs site to `gh-pages`, verify the export before the deploy, and ke
 - A subprocess (`Process_PublishAlert`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Failed` (Job RED — publication manager alerted)
 
-### 4. Build the Jekyll site and the API reference (`Task_Build`)
+### 4. Compose each instance's own site into the docs source [its Tool] (`Call_InstanceSites`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
-- What: Compose the docs layers, build the Jekyll site, mount instance-rendered content, and generate the TypeScript API reference with TypeDoc.
-- Record it: `workflow_complete` with `node: "Task_Build"`.
-- next: → `Task_Export` (Export the knowledge graph and its schema)
+- Skill: `docs-generation`.
+- What: The docs layers are composed into ONE Jekyll source (`compose-docs`: `cat-harness/docs/` the base, the checkout root's `docs/` laid over it), and then every instance that builds a site of its own INSIDE this one composes it into that source at `<instance>/`, before the Jekyll build that renders all 
+- Record it: `workflow_complete` with `node: "Call_InstanceSites"`.
+- next: → `Task_Build` (Build the Jekyll site and the API reference)
 
 ## Done — Job RED — publication manager alerted (`End_Failed`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 5. Export the knowledge graph and its schema (`Task_Export`)
+### 5. Build the Jekyll site and the API reference (`Task_Build`)
+
+- Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
+- What: Build the Jekyll site from the source `Call_InstanceSites` composed, run each composing Tool's post-build pass over what it composed, mount instance-rendered content, and generate the TypeScript API reference with TypeDoc.
+- Record it: `workflow_complete` with `node: "Task_Build"`.
+- next: → `Task_Export` (Export the knowledge graph and its schema)
+
+### 6. Export the knowledge graph and its schema (`Task_Export`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - What: Export the knowledge graph and its schema into the published tree, then check every maintained artefact is present and no block-level markup escaped.
@@ -67,7 +75,7 @@ Publish the docs site to `gh-pages`, verify the export before the deploy, and ke
   - «something is missing» → `Call_Alert` (Alert the publication manager)
   - «complete» → `Call_Verify` (Verify the export)
 
-### 6. Verify the export (`Call_Verify`)
+### 7. Verify the export (`Call_Verify`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `publish-verification`.
@@ -82,7 +90,7 @@ Publish the docs site to `gh-pages`, verify the export before the deploy, and ke
   - «yes» → `Task_Restore` (Restore the OPEN PRs' staging previews)
   - «no, or could not tell» → `Call_Alert` (Alert the publication manager)
 
-### 7. Restore the OPEN PRs' staging previews (`Task_Restore`)
+### 8. Restore the OPEN PRs' staging previews (`Task_Restore`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `feature-staging`.
@@ -90,7 +98,7 @@ Publish the docs site to `gh-pages`, verify the export before the deploy, and ke
 - Record it: `workflow_complete` with `node: "Task_Restore"`.
 - next: → `Task_Publish` (Push to the CDN (full replace))
 
-### 8. Push to the CDN (full replace) (`Task_Publish`)
+### 9. Push to the CDN (full replace) (`Task_Publish`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-kg-to-cdn`.
@@ -112,7 +120,7 @@ Publish the docs site to `gh-pages`, verify the export before the deploy, and ke
   - «yes» → `Task_CloseAlert` (Close the publication manager's alert, if open)
   - «no, or could not tell» → `Call_Alert` (Alert the publication manager)
 
-### 9. Close the publication manager's alert, if open (`Task_CloseAlert`)
+### 10. Close the publication manager's alert, if open (`Task_CloseAlert`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - What: A clean publish resolves whatever the last failure raised: close the open publication-manager tracking issue with a comment naming this run.
