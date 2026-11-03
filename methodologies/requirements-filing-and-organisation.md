@@ -15,7 +15,7 @@ evidence:
 
 # Requirements filing and organisation — literature search, candidate methodologies, and filing process
 
-This methodology node completes bean `folio-assistant-qh1s` (Issue [#1164](https://github.com/litlfred/folio-assistant/issues/1164)): a literature search over requirements-management practice across the five lifecycle dimensions (**organisation**, **identifiers**, **traceability**, **change**, and **retirement**), the explicit adoption or rejection of candidate methodologies through [`methodology-adoption`](../skills/process/process-core/methodology-adoption.md), and the proposed executable BPMN filing process ([`processes/sdlc/requirements-filing.bpmn`](../processes/sdlc/requirements-filing.bpmn)) put to the owner before automation is built.
+This methodology node completes bean `folio-assistant-qh1s` (Issue [#1164](https://github.com/litlfred/folio-assistant/issues/1164)): a literature search over requirements-management practice across the five lifecycle dimensions (**organisation**, **identifiers**, **traceability**, **change**, and **retirement**), the explicit adoption or rejection of candidate methodologies through [`methodology-adoption`](../skills/process/process-core/methodology-adoption.md), and the proposed executable BPMN filing process ([`sdlc/processes/requirements-filing.bpmn`](../sdlc/processes/requirements-filing.bpmn)) put to the owner before automation is built.
 
 Whereas sibling methodology [`requirements-standards-assessment.md`](requirements-standards-assessment.md) (bean `folio-assistant-1gf7`) assessed open interchange and syntax standards (ReqIF, OSLC RM, EARS, RFC 2119 / RFC 8174, IEEE 29148, Planguage, SysML, Gherkin) to map their constructs onto [`bootstrap/schemas/requirement.schema.json`](../../bootstrap/schemas/requirement.schema.json) and [`bootstrap/schemas/requirement-set.schema.json`](../../bootstrap/schemas/requirement-set.schema.json), this node governs **how requirements are organised, identified, traced, amended, superseded, and retired as they are filed** into [`docs/requirements/`](../docs/requirements/index.md) once `docs/requirements/` grows past a flat hand-maintained list.
 
@@ -140,18 +140,18 @@ Following [`skills/process/process-core/methodology-adoption.md`](../skills/proc
 
 ---
 
-## 3. Proposed filing process (`processes/sdlc/requirements-filing.bpmn`)
+## 3. Proposed filing process (`sdlc/processes/requirements-filing.bpmn`)
 
-To fulfil Criterion 3 of bean `folio-assistant-qh1s` (*"a filing PROCESS proposed as BPMN, to be put to the owner before it is built"*), the executable BPMN diagram [`processes/sdlc/requirements-filing.bpmn`](../processes/sdlc/requirements-filing.bpmn) (`Process_RequirementsFiling`) models the end-to-end process for filing, organising,superseding, or retiring a requirement in `docs/requirements/`.
+To fulfil Criterion 3 of bean `folio-assistant-qh1s` (*"a filing PROCESS proposed as BPMN, to be put to the owner before it is built"*), the executable BPMN diagram [`sdlc/processes/requirements-filing.bpmn`](../sdlc/processes/requirements-filing.bpmn) (`Process_RequirementsFiling`) models the end-to-end process for filing, organising,superseding, or retiring a requirement in `docs/requirements/`.
 
 ![Requirements filing workflow](../docs/assets/img/workflows/requirements-filing.svg)
 
 ### 3.1 Where `Process_RequirementsFiling` sits in the lifecycle
 
-In the CRDM lifecycle ([`skills/sdlc/crdm/crdm-requirements-workflow.md`](../skills/sdlc/crdm/crdm-requirements-workflow.md)):
+In the CRDM lifecycle ([`sdlc/skills/crdm/crdm-requirements-workflow.md`](../sdlc/skills/crdm/crdm-requirements-workflow.md)):
 1. Phases 1–4 (`crdm-needs.bpmn`, `crdm-requirements-definition.bpmn`, `crdm-data-model.bpmn`, `crdm-signoff.bpmn`) produce and sign off a proposal in `docs/proposals/<slug>.md` (and optionally a `RequirementSet` moving from `draft` → `proposed` → `approved`).
 2. Phase 5 (`crdm-deliver.bpmn`) builds and verifies the MVP in code, skills, and processes.
-3. **At Phase 6 (`crdm-close.bpmn`), when the feature ships and stakeholders/BA confirm acceptance criteria are met**, `Process_RequirementsFiling` (`processes/sdlc/requirements-filing.bpmn`) governs the transition of the proposal into `docs/requirements/<slug>.md` (or the amendment, supersession, or retirement of an existing filed requirement).
+3. **At Phase 6 (`crdm-close.bpmn`), when the feature ships and stakeholders/BA confirm acceptance criteria are met**, `Process_RequirementsFiling` (`sdlc/processes/requirements-filing.bpmn`) governs the transition of the proposal into `docs/requirements/<slug>.md` (or the amendment, supersession, or retirement of an existing filed requirement).
 
 ### 3.2 Lanes and responsibilities
 
@@ -160,7 +160,7 @@ In the CRDM lifecycle ([`skills/sdlc/crdm/crdm-requirements-workflow.md`](../ski
 | **BA / Feature Requestor** (`Lane_BA`) | `business-analyst` | Reviews the filed requirement's organisation, traceability links, normative statements, and any supersession/retirement transition (`BA_ReviewFiling`), and issues the human sign-off decision (`approve`, `amend`, `reject`, `defer`, `cancel`) required by `check:requirements` before a `RequirementSet` can reach `accepted`. |
 | **Authoring Agent** (`Lane_Agent`) | `authoring-agent` | Executes the deterministic filing steps: classifies the requirement's concern group and filing mode (`A_ClassifyFiling`), moves or updates the file in `docs/requirements/<slug>.md` (`A_PromoteOrUpdate`), binds the `Requirement` front matter (`A_BindFrontMatter`), updates superseded/retired records (`A_UpdateLifecycle`), indexes the requirement in `docs/requirements/index.md` (`A_UpdateIndex`), runs `check:requirements` (`A_RunCheck`), and records the human sign-off attestation (`A_RecordFilingSignoff`). |
 
-### 3.3 Step-by-step walkthrough of `processes/sdlc/requirements-filing.bpmn`
+### 3.3 Step-by-step walkthrough of `sdlc/processes/requirements-filing.bpmn`
 
 1. **`A_ClassifyFiling` — Classify filing mode, concern group, and `req:<slug>` identifier** (`skill: crdm-requirements-workflow`):
    - Determine which of the three filing modes applies:

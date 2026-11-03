@@ -6,10 +6,10 @@ written twice is a description one copy gets wrong. This says what to **do**,
 and it augments rather than replaces the `AGENTS.md` at the root of whatever
 checkout includes this layer. The rules that bind everywhere are skills of
 this layer, so they are linked here rather than there:
-[beans](skills/sdlc/sdlc-core/todo-manager.md),
-[the opening brief](skills/sdlc/sdlc-core/opening-brief.md),
+[beans](work-plan/skills/work-plan/todo-manager.md),
+[the opening brief](sdlc/skills/sdlc-core/opening-brief.md),
 [process state](skills/process/workflow/process-state.md),
-[continual progress](skills/sdlc/sdlc-core/continual-progress.md),
+[continual progress](sdlc/skills/sdlc-core/continual-progress.md),
 [context before the question](skills/conduct/conduct-core/interaction-modality.md).
 
 1. **Get the work-plan CLI** — `cat-harness-tools/scripts/install-beans.sh &&
@@ -125,9 +125,9 @@ and the walk-through is [`writing-a-document`](https://litlfred.github.io/folio-
 The commands are listed in [`README.md`](README.md#running-it). Two are worth an
 agent's attention. **`bun run cat gates` before you push** — it derives its list
 from `.github/workflows/code-quality-gates.yml`, and **a subset of the gate set
-is not the gate set** ([`platform-gates`](skills/sdlc/sdlc-core/platform-gates.md)).
+is not the gate set** ([`platform-gates`](sdlc/skills/sdlc-core/platform-gates.md)).
 **`bun run cat preview:site`**, because a green gate set is not a rendered page
-([`rendered-verification`](skills/sdlc/sdlc-core/rendered-verification.md), bean `gjli`).
+([`rendered-verification`](sdlc/skills/sdlc-core/rendered-verification.md), bean `gjli`).
 
 ### Where the harness keeps its state — `beans/` is a graph
 
@@ -146,14 +146,14 @@ are kept on state branches now and mounted by the session-start hook
 judgements stay in `test/attestations/`
 ([`directory-conventions`](skills/kg/kg-core/directory-conventions.md),
 [`workflow-state`](skills/process/workflow/workflow-state.md),
-[`qa-reports`](skills/sdlc/sdlc-core/qa-reports.md),
+[`qa-reports`](sdlc/skills/sdlc-core/qa-reports.md),
 [the proposal](docs/proposals/workflow-state-in-beans.md)).
 
 ### Work-plan & todos — use `beans`
 
 One todo mechanism for agent work, session-local and cross-session alike
-([`todo-manager`](skills/sdlc/sdlc-core/todo-manager.md),
-[`bean-coordination`](skills/sdlc/sdlc-core/bean-coordination.md)). Two
+([`todo-manager`](work-plan/skills/work-plan/todo-manager.md),
+[`bean-coordination`](work-plan/skills/work-plan/bean-coordination.md)). Two
 spellings to avoid: `beans <id> --status in-progress` **exits 1 with `unknown
 command`**, and `beans update <id> --status in-progress` is not a claim (it
 writes no holder note — use `bun run cat beans:claim <id>`). `beans update` stays
@@ -174,7 +174,7 @@ store in the same layout. The session-start sweep
 (`scripts/session-start-coord-sweep.sh`) prints a copy-paste line for resuming;
 set `BEANS_CHECKOUT_ROOT` if your clones live under one predictable directory
 and it will name the path there. What the sweep emits, and in what order, is
-[`todo-manager`](skills/sdlc/sdlc-core/todo-manager.md).
+[`todo-manager`](work-plan/skills/work-plan/todo-manager.md).
 
 ### README sections
 
@@ -199,7 +199,7 @@ executable diagrams in the content layer's `processes/ui/`.
 
 Three questions, three commands. **`bun run cat check:ci-health`** — do the
 workflows pass, and are the Pages previews building
-([`ci-health`](skills/sdlc/sdlc-core/ci-health.md); one workflow failed all 30
+([`ci-health`](sdlc/skills/sdlc-core/ci-health.md); one workflow failed all 30
 times over two months with nothing saying so, bean `xom7`). Do not "fix" a
 dispatch-only workflow by dispatching it
 ([`memory/`](memory/two-workflows-fail-by-design-here-do-not-fix-them-by-dispatc.md)).
@@ -232,8 +232,8 @@ the work ([`agent-memory`](skills/conduct/conduct-core/agent-memory.md)).
 ### Feature requests and CRDM
 
 A feature request enters the CRDM requirements workflow rather than being
-implemented directly ([`crdm-detect`](skills/sdlc/crdm/crdm-detect.md),
-[`crdm-requirements-workflow`](skills/sdlc/crdm/crdm-requirements-workflow.md),
+implemented directly ([`crdm-detect`](sdlc/skills/crdm/crdm-detect.md),
+[`crdm-requirements-workflow`](sdlc/skills/crdm/crdm-requirements-workflow.md),
 [the methodology](docs/process/crdm-methodology.md)). **The process is
 executable — do not hand-roll a phase tracker**: `workflow_start` /
 `workflow_next` / `workflow_complete` run it, and `crdm_start` / `crdm_status`
@@ -247,10 +247,10 @@ should not be built. The interaction model as a whole is
   ([`process-state`](skills/process/workflow/process-state.md)).
 - **Working an issue**: announce the branch when you create it, and re-check
   the issue for new *and edited* comments while you work
-  ([`issue-working`](skills/sdlc/sdlc-core/issue-working.md)).
+  ([`issue-working`](sdlc/skills/sdlc-core/issue-working.md)).
 - **Commit early, commit often, always PR** (STRICT) — open the PR at the first
   commit, and do not hold a green PR back
-  ([`continual-progress`](skills/sdlc/sdlc-core/continual-progress.md)). A folio
+  ([`continual-progress`](sdlc/skills/sdlc-core/continual-progress.md)). A folio
   may be stricter, and it wins.
 
 ### Context before the question (STRICT)
@@ -263,13 +263,13 @@ card alone, never a request for a typed reply. The one canonical statement is
 the box at the top of
 [`interaction-modality`](skills/conduct/conduct-core/interaction-modality.md).
 ([`interaction-modality`](skills/conduct/conduct-core/interaction-modality.md) §4.1,
-[`turn-reporting`](skills/sdlc/sdlc-core/turn-reporting.md)).
+[`turn-reporting`](sdlc/skills/sdlc-core/turn-reporting.md)).
 
 ### Opening a bean or a topic — brief it before you touch anything (STRICT)
 
 Before the first tool call: what and why, what you already know and its
 provenance, how you will do it and what would falsify it, and what you are not
-doing ([`opening-brief`](skills/sdlc/sdlc-core/opening-brief.md)).
+doing ([`opening-brief`](sdlc/skills/sdlc-core/opening-brief.md)).
 
 ### More
 
@@ -285,8 +285,8 @@ doing ([`opening-brief`](skills/sdlc/sdlc-core/opening-brief.md)).
   `bun run cat render:bpmn` regenerates the pictures.
 - **Process state, blocking and swarms** —
   [`process-state`](skills/process/workflow/process-state.md),
-  [`bean-blocking`](skills/sdlc/sdlc-core/bean-blocking.md),
-  [`swarm-management`](skills/sdlc/sdlc-core/swarm-management.md).
+  [`bean-blocking`](work-plan/skills/work-plan/bean-blocking.md),
+  [`swarm-management`](sdlc/skills/sdlc-core/swarm-management.md).
 - **An instance declares the directories it scans** in `<instance>.json`, each
   with the kind of graph it holds; overrides match on the entry's `id`, not its
   `path`, and only what exists is declared
@@ -295,8 +295,8 @@ doing ([`opening-brief`](skills/sdlc/sdlc-core/opening-brief.md)).
   `cat-harness.json` is the list — not a sentence anywhere.
 - **Adding a skill is never a one-file change** — `bun run cat skill:register`
   ([`skill-registration`](skills/kg/kg-core/skill-registration.md)).
-- **Shipping a branch** — [`prepare-merge`](skills/sdlc/sdlc-core/prepare-merge.md);
-  **watching a sibling PR** — [`watch`](skills/sdlc/sdlc-core/watch.md).
+- **Shipping a branch** — [`prepare-merge`](sdlc/skills/sdlc-core/prepare-merge.md);
+  **watching a sibling PR** — [`watch`](sdlc/skills/sdlc-core/watch.md).
 - **Migration plan and cross-repo coordination** —
   [`docs/folio-assistant-migration.md`](docs/folio-assistant-migration.md); the
   Lean tooling roadmap is issue #198.
@@ -316,7 +316,7 @@ declared (`scripts/index-render.ts`). Issue #592.*
 
 <!-- skills:index:begin -->
 
-_255 skills in 18 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_255 skills in 19 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 | Directory | Skills |
 |---|---|
@@ -332,11 +332,12 @@ _255 skills in 18 directories. The full list, with what each skill is for, is in
 | [`skills/process/process-core/`](skills/process/process-core/) | 7 |
 | [`skills/process/raci/`](skills/process/raci/) | 1 |
 | [`skills/process/workflow/`](skills/process/workflow/) | 11 |
-| [`skills/sdlc/crdm/`](skills/sdlc/crdm/) | 7 |
-| [`skills/sdlc/sdlc-core/`](skills/sdlc/sdlc-core/) | 79 |
-| [`skills/sdlc/spec-kit/`](skills/sdlc/spec-kit/) | 3 |
 | [`skills/tools/folio-core/`](skills/tools/folio-core/) | 7 |
 | [`skills/ui/theming/`](skills/ui/theming/) | 8 |
 | [`skills/ui/ui-core/`](skills/ui/ui-core/) | 22 |
+| [`sdlc/skills/crdm/`](sdlc/skills/crdm/) | 7 |
+| [`sdlc/skills/sdlc-core/`](sdlc/skills/sdlc-core/) | 71 |
+| [`sdlc/skills/spec-kit/`](sdlc/skills/spec-kit/) | 3 |
+| [`work-plan/skills/work-plan/`](work-plan/skills/work-plan/) | 8 |
 
 <!-- skills:index:end -->

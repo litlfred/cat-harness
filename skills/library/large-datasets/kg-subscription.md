@@ -159,13 +159,13 @@ path whose parent is not chosen.
 
 ## A subgraph's nodes without its bytes: metadata mode
 
-To know *what is in* a subgraph — every node of `skills/sdlc`, typed, labelled
+To know *what is in* a subgraph — every node of `sdlc/skills`, typed, labelled
 and linked — you do not need its files. Ask for its published
 `index.hydrated.jsonld` instead
 ([`kg-export`](../../kg/kg-core/kg-export.md) §"Named subgraphs"):
 
 ```sh
-bun run cat kg:materialize --nodes <subscription> <subgraph-path>   # e.g. --nodes cat skills/sdlc
+bun run cat kg:materialize --nodes <subscription> <subgraph-path>   # e.g. --nodes cat sdlc/skills
 ```
 
 - It fetches **one file** at the pin,

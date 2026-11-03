@@ -298,7 +298,7 @@ operational vulnerabilities across its 69 BPMN/DMN processes and SDLC skills:
 
 ### 2. Context Poisoning in Swarm Dispatch and Escalation
 - **Vulnerability**:
-  In `skills/sdlc/sdlc-core/dispatch-agent.md` and `swarm-management.md`, sub-tasks are spawned when an agent
+  In `sdlc/skills/sdlc-core/dispatch-agent.md` and `swarm-management.md`, sub-tasks are spawned when an agent
   encounters complex sub-problems. In common usage, the parent agent frequently forwards its entire ongoing
   conversation transcript—including failed search attempts, erroneous grep commands, and hallucinated root-cause
   hypotheses—into the subagent's prompt.
@@ -330,7 +330,7 @@ operational vulnerabilities across its 69 BPMN/DMN processes and SDLC skills:
 
 ### 4. Zombie Agent Runs and the Lack of Programmatic Andon Cords
 - **Vulnerability**:
-  While `skills/sdlc/sdlc-core/swarm-management.md` describes the conceptual discipline of stopping early, the
+  While `sdlc/skills/sdlc-core/swarm-management.md` describes the conceptual discipline of stopping early, the
   underlying runner (`invoke_subagent`, background shell commands) lacked automated runtime predicates to detect
   and kill runaway agents.
 - **Risk**:

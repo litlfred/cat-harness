@@ -135,8 +135,8 @@ beans update <id> --status in-progress    # CLAIM before you work
 موازيًا. ولا تستخدم `beans create` لإنشاء طوابير ضخمة مولدة آليًا
 (`*.qa.json`، ملفات الشواهد) — فهذه تبقى بصيغة JSON مجمعة.
 
-القواعد الكاملة: `skills/sdlc/sdlc-core/todo-manager.md`، و
-`skills/sdlc/sdlc-core/bean-coordination.md`.
+القواعد الكاملة: `work-plan/skills/work-plan/todo-manager.md`، و
+`work-plan/skills/work-plan/bean-coordination.md`.
 
 ## 7. ملفات QA الجانبية والمحاور
 

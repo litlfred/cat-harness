@@ -76,4 +76,4 @@ a SWOT would be ceremony in front of it.
 - [`methodology-adoption`](methodology-adoption.md) — the selection question, and
   why methodologies are parallel rather than composable
 - `processes/process/swot-analysis.bpmn` — the executable process
-- `processes/sdlc/options-analysis.bpmn` — where the candidates go next
+- `sdlc/processes/options-analysis.bpmn` — where the candidates go next

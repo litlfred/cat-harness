@@ -6,7 +6,7 @@ generated: cat-harness-tools/scripts/gen-skill-commands.ts
 
 # /pending-show
 
-Run the `pending-show` skill. Read [`skills/sdlc/sdlc-core/pending-show.md`](../../skills/sdlc/sdlc-core/pending-show.md) and follow it.
+Run the `pending-show` skill. Read [`sdlc/skills/sdlc-core/pending-show.md`](../../sdlc/skills/sdlc-core/pending-show.md) and follow it.
 
 This command is a pointer, generated from that skill's `user_invocable: true`; the
 instructions live in the skill and nowhere else. The same skill is also served as the

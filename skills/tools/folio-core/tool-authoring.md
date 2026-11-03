@@ -50,7 +50,7 @@ along heavy runtime dependencies, SDKs, or compiler toolchains.
 ### Step 1: Identify or Author the Skill Contract
 
 Before writing code, identify the generic capability the tool satisfies:
-- Find the skill in `skills/` (e.g., `skills/sdlc/sdlc-core/package-release.md`).
+- Find the skill in `skills/` (e.g., `sdlc/skills/sdlc-core/package-release.md`).
 - If the skill accepts inputs, verify or define its `input:` JSON Schema
   contract in the skill's front matter or under `schemas/skills/`.
 

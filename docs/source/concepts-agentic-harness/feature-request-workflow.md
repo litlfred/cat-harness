@@ -10,7 +10,7 @@ requirements workflow existed only as ad-hoc conversation.
 
 ### How the agent enters CRDM
 
-The detection logic is in [`skills/sdlc/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/sdlc/crdm/crdm-detect.md).
+The detection logic is in [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md).
 Three scenarios:
 
 **New session, first request is a feature:**

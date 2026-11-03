@@ -6,7 +6,7 @@ generated: cat-harness-tools/scripts/gen-skill-commands.ts
 
 # /dispatch-agent
 
-Run the `dispatch-agent` skill. Read [`skills/sdlc/sdlc-core/dispatch-agent.md`](../../skills/sdlc/sdlc-core/dispatch-agent.md) and follow it.
+Run the `dispatch-agent` skill. Read [`sdlc/skills/sdlc-core/dispatch-agent.md`](../../sdlc/skills/sdlc-core/dispatch-agent.md) and follow it.
 
 This command is a pointer, generated from that skill's `user_invocable: true`; the
 instructions live in the skill and nowhere else. The same skill is also served as the
