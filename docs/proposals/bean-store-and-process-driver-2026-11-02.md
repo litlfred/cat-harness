@@ -340,7 +340,7 @@ them in order.
 - A server Tool keeps the events as rows.
 
 The beans-by-process pages then gain a timeline per bean
-(`processed-bean/<bean>/` from cat-harness-tools#1414), from `history(id)`.
+(`bean-processed/<bean>/` from cat-harness-tools#1414), from `history(id)`.
 
 ### 4.7 Benchmark runs: routes, isolated stores, traces (N10, N11, N12)
 
@@ -457,7 +457,7 @@ out of scope here and noted under "Later".
 | The harness server | `bun run cat-harness-tools/src/server.ts` (or the MCP server image); MCP at `http://localhost:8080/mcp`, viewer at `http://localhost:3200/` | cat-harness-tools, exists |
 | The deployment | `CAT_DEPLOYMENT=developer` names `scenarios/deployments/developer.json`, whose `stores` names the work-plan Tool (§4.3). Unset means the git branch on its mount | cat-harness + tools#1424 |
 | The read route | `GET /api/work-plan/processed-beans` returns the same rows the all-beans page embeds, read through the store's operations (`list`, `positions`, `beansAt`), so it answers from whichever Tool the deployment names | **new**, tools |
-| The page | `processed-beans/` keeps its embedded rows and, every 5 s, asks the route for fresh ones; it re-renders only when the answer changed | **new**, tools |
+| The page | `beans-processed/` keeps its embedded rows and, every 5 s, asks the route for fresh ones; it re-renders only when the answer changed | **new**, tools |
 
 How a reader turns it on:
 
@@ -577,7 +577,7 @@ Identity named by the concept note, reached by `launch-antigravity`.
 | 2 | Conformance tests for the operations, run against the git Tool | cat-harness-tools | 1 |
 | 3 | `WorkPlanStore` interface; `applyWorkPlanOp` through it (§4.3) | cat-harness-tools | 2 |
 | 4 | `positions` and `beansAt` store operations over the instances; bean in `TaskContext` (§4.4) | tools | 3 |
-| 5 | `history(id)` and the event model for the git Tool; timeline on `processed-bean/<bean>/` (§4.6) | tools | 3 |
+| 5 | `history(id)` and the event model for the git Tool; timeline on `bean-processed/<bean>/` (§4.6) | tools | 3 |
 | 6 | Skills rewritten to name operations; `check:store-tool-neutral` (§4.2) | cat-harness | 1 |
 | 7 | `Task_DispatchAgent` and the first `agent-launch` Tool (§4.5) | cat-harness + tools | 4 |
 | 8 | A server Tool (`beans-serve` or MCP) passes the same conformance tests | tools | 2, 3 |
@@ -585,7 +585,7 @@ Identity named by the concept note, reached by `launch-antigravity`.
 | 10 | `launch-antigravity` Tool; the same cases under Routes 0, A, B for Claude and Gemini; traces exported for the ITB | tools | 7, 9 |
 | 11 | Context materialiser: one pinned repository per run from KG, skills, memory and entry files (§4.8) | tools | 9 |
 | 12 | ITB services (`harness-up`, `seed`, `start-agents`, `observe`, `state`, `harness-down`) and the Gherkin steps that call them; first multi-agent plan | tools | 9, 11 |
-| 5b | The bean's history on `processed-bean/<bean>/`, stepped through with buttons and keys (owner, 2026-11-03) | tools | 5 |
+| 5b | The bean's history on `bean-processed/<bean>/`, stepped through with buttons and keys (owner, 2026-11-03) | tools | 5 |
 | 13 | The live read route on the local harness server, and the all-beans page refreshing from it every 5 s (§4.9) | tools | 4, Q2 |
 | 14 | `launch` on a placement (§4.10), read by `start-agents`; `itb-benchmark` deployment | cat-harness + tools | 7, 9 |
 
