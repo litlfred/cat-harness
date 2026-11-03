@@ -16,5 +16,6 @@
     { "actor": "authoring-agent", "host": "local", "compute": "workstation", "toolSurface": "cli" },
     { "actor": "author", "host": "local", "compute": "workstation" }
   ],
-  "liveData": "artefacts-only"
+  "liveData": "artefacts-only",
+  "stores": { "work-plan": "beans-git-branch" }
 }
