@@ -92,6 +92,31 @@ means the record was not stored, never that the commit is bad
 ([`ci-health`](ci-health.md)). Diagram: `processes/sdlc/qa-publish.bpmn`, called
 from `Task_QaPublish` in `code-quality-gates.bpmn`.
 
+### Whose branch: each layer publishes its own
+
+**The branch is the store of the repository that declares it.** A layer
+repository that declares a `qa` directory with `storage` (`test/results/`,
+keyed by commit) keeps its results on `cat/cat-harness/qa-reports` of **its
+own** repository, keyed by **its own** commits (owner, 2026-11-03, "2. Each
+layer publishes"; bean `folio-assistant-7mwa`). Its
+`.github/workflows/publish-qa.yml` calls the tools layer's reusable
+`layer-qa-publish.yml`, which audits that one instance with the layer at the
+pushed commit and publishes `main/<sha>` or `pr/<n>/<sha>`.
+
+An index reads a mounted layer's results from that layer's store at the
+commit its lock pins (`scripts/layer-qa.ts`, `readQaTreeAtCommit`), and never
+from its own store. A pin the layer has not published is a `miss` naming the
+commit. cat-harness, and the instances it hosts (`kgQaHomeFor` "hosted"), are
+still written by the index's `qa-publish`.
+
+Before this, no layer had a publisher. The declarations dated from the
+monorepo, where "the same repository" was folio-assistant, and neither layer
+initialisation nor the separation cutover had a step for it. So when a layer
+stopped committing `test/results/`, its verdicts were nowhere. Setting a
+layer up now includes the caller ([`initialization`](../../../docs/bootstrap/initialization.md)
+step 5, [`sub-kg-lifecycle`](../../kg/graph-management/sub-kg-lifecycle.md)
+stage 10 "its QA record"), and `init-folio --instance` writes it.
+
 ## Gates compute and judge
 
 A gate over the `qa` graph cannot compare a fresh run against a committed file

@@ -231,6 +231,7 @@ orphaned. Its criteria and thresholds are in
 | pins | the host pins a commit while staging, a version once released ([`upstream-version-adoption`](../../sdlc/sdlc-core/upstream-version-adoption.md)) |
 | its site | the new repository publishes and previews itself ([`feature-staging`](../../sdlc/sdlc-core/feature-staging.md), *Which site*): `"site": { "agentRun": true }` in its `index.config.json` when an agent publishes it, plus whatever workflow its publisher layer's own creation skill requires (an IG's AST-cache refresh, for one) |
 | its checks | `.github/workflows/harness-pr-checks.yml` calling the tools layer's `layer-pr-checks.yml`, so its gates run on every pull request |
+| its QA record | when it declares a `qa` directory with `storage` (`test/results/`, `cat/cat-harness/qa-reports`, keyed by commit): `.github/workflows/publish-qa.yml` calling the tools layer's `layer-qa-publish.yml`, so every push to `main` and every pull request publishes its results to **its own** qa-reports branch, and `test/results/` in `.gitignore`. A host reads them at the commit it pins. Missing from every layer separated before 2026-11-03: the declarations named a store that no job wrote, and once a layer stopped committing its results no reader could find them (bean folio-assistant-7mwa) |
 | `.gitignore` | the mount block, written by the mount tool between its own markers. Never typed: a hand-written marker makes `remote-mount.ts` refuse (*markers unpaired*) |
 
 **Copy these from a sibling repository of the same kind; never type them.**

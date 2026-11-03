@@ -134,7 +134,7 @@ VERSIONS: the pair starts at the content's version at the split, then each is ve
       <bpmn:outgoing>F6</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_Hosted" name="5 · Move harness output&#10;about it to the host">
-      <bpmn:documentation>QA verdicts, translation templates, the exported graph and the glossary ledger are harness output ABOUT the graph: they live with the harness (kgQaHomeFor, translationsHomeFor). The content keeps only what its own checks need; the leak test's pending list is empty.</bpmn:documentation>
+      <bpmn:documentation>QA verdicts, translation templates, the exported graph and the glossary ledger are harness output ABOUT the graph: they live with the harness (kgQaHomeFor, translationsHomeFor). The content keeps only what its own checks need; the leak test's pending list is empty. The one exception is a separated layer that declares a `qa` directory of its own with `storage`: its verdicts are its own repository's, published to that repository's qa-reports branch (step 10), and read by a host at the commit it pins (owner, 2026-11-03, bean folio-assistant-7mwa).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-separation"/>
         <cat-harness.processes:bean op="note"/>
@@ -239,7 +239,7 @@ VERSIONS: the pair starts at the content's version at the split, then each is ve
       <bpmn:incoming>SF_Bean_6</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:task id="Task_Seed" name="10 · Seed both&#10;repositories">
-      <bpmn:documentation>Seed main, then bring the content and the tools in as reviewed pull requests with their history, so neither repository's first commit is unreviewable.</bpmn:documentation>
+      <bpmn:documentation>Seed main, then bring the content and the tools in as reviewed pull requests with their history, so neither repository's first commit is unreviewable. The seed includes every publisher the declaration promises (`sub-kg-lifecycle` stage 10): a `qa` directory with `storage` needs `.github/workflows/publish-qa.yml`, the caller of the tools layer's `layer-qa-publish.yml`, and `test/results/` ignored. Without it the declared store is never written, and once the layer stops committing its results no reader finds them (bean folio-assistant-7mwa, 2026-11-03).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-separation"/>
         <cat-harness.processes:bean op="note"/>
