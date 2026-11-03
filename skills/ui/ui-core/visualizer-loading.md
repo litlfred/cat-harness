@@ -126,7 +126,7 @@ one taken after the load holds the resource.
 A static check cannot see fetched content: the built HTML holds only
 "Loading…". Verification therefore means loading each page in a browser
 (Playwright, with the pre-installed Chromium) and comparing what it
-**displays** against the reference, as [`rendered-verification`](../../sdlc/sdlc-core/rendered-verification.md)
+**displays** against the reference, as [`rendered-verification`](../../../sdlc/skills/sdlc-core/rendered-verification.md)
 requires of any rendered artefact.
 
 Measured 2026-10-01: all 33 DAK view pages, served from a local Jekyll build,

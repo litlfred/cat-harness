@@ -234,7 +234,7 @@ It used to fail on a stale sidecar, and the falsification pass caught that
 first version repairing the staleness it reported: red once, green on the
 rerun, the file still stale in the repository. The lesson survives the move:
 **a checker that mutates its own subject cannot be falsified**, which is the one
-property [`generalise-the-fix`](../../sdlc/sdlc-core/generalise-the-fix.md)
+property [`generalise-the-fix`](../../../sdlc/skills/sdlc-core/generalise-the-fix.md)
 Move 3 asks a guard to have.
 
 **A kind whose directory is declared but absent from the checkout reads

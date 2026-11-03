@@ -30,8 +30,8 @@ outcome writes, as data. This skill says when to use it and how to choose.
    CONTENT decision: what the corpus should say.
 2. **Two judges disagree about a mapping.** That includes a person who
    thinks an automated match is wrong. It is
-   [`adjudication`](../../sdlc/sdlc-core/adjudication.md) plus
-   [`untainted-verification`](../../sdlc/sdlc-core/untainted-verification.md),
+   [`adjudication`](../../../sdlc/skills/sdlc-core/adjudication.md) plus
+   [`untainted-verification`](../../../sdlc/skills/sdlc-core/untainted-verification.md),
    and it is **not built**. The owner's ruling keeps it waiting until
    something maps. Do not answer it with an outcome from this skill:
    `vocabulary-wrong` says a vocabulary does not serve a domain, not that

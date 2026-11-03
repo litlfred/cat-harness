@@ -38,7 +38,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 ### code-change-review--bean-1j3q-route-keyed-storage
 
-5 step(s) checked, 5 `prov:Activity` emitted, 5 finding(s). Source: `cat-harness/processes/sdlc/code-change-review.bpmn`. [PROV JSON-LD]({{ '/assets/prov/code-change-review--bean-1j3q-route-keyed-storage.prov.jsonld' | relative_url }})
+5 step(s) checked, 5 `prov:Activity` emitted, 5 finding(s). Source: `cat-harness/sdlc/processes/code-change-review.bpmn`. [PROV JSON-LD]({{ '/assets/prov/code-change-review--bean-1j3q-route-keyed-storage.prov.jsonld' | relative_url }})
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
@@ -54,7 +54,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
-| `code-change-review--consolidation-956` | (instance) | `Process_CodeChangeReview` | `source-moved` | cat-harness/processes/code-change-review.bpmn does not exist; read cat-harness/processes/sdlc/code-change-review.bpmn, which defines Process_CodeChangeReview |
+| `code-change-review--consolidation-956` | (instance) | `Process_CodeChangeReview` | `source-moved` | cat-harness/processes/code-change-review.bpmn does not exist; read cat-harness/sdlc/processes/code-change-review.bpmn, which defines Process_CodeChangeReview |
 | `code-change-review--consolidation-956` | 1 | `Task_ClaimBean` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_ClaimBean as authoring-agent |
 | `code-change-review--consolidation-956` | 2 | `Task_BranchAndAnnounce` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_BranchAndAnnounce as authoring-agent |
 | `code-change-review--consolidation-956` | 3 | `Task_RunGates` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_RunGates as authoring-agent |
@@ -69,7 +69,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
-| `code-change-review--issue-1015-prefix-is-stub` | (instance) | `Process_CodeChangeReview` | `source-moved` | cat-harness/processes/code-change-review.bpmn does not exist; read cat-harness/processes/sdlc/code-change-review.bpmn, which defines Process_CodeChangeReview |
+| `code-change-review--issue-1015-prefix-is-stub` | (instance) | `Process_CodeChangeReview` | `source-moved` | cat-harness/processes/code-change-review.bpmn does not exist; read cat-harness/sdlc/processes/code-change-review.bpmn, which defines Process_CodeChangeReview |
 | `code-change-review--issue-1015-prefix-is-stub` | 1 | `Task_ClaimBean` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_ClaimBean as authoring-agent |
 | `code-change-review--issue-1015-prefix-is-stub` | 2 | `Task_BranchAndAnnounce` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_BranchAndAnnounce as authoring-agent |
 | `code-change-review--issue-1015-prefix-is-stub` | 3 | `Task_Implement` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_Implement as authoring-agent |
@@ -86,7 +86,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
-| `code-change-review--issue-1190-bean-restates-skill` | (instance) | `Process_CodeChangeReview` | `source-moved` | cat-harness/processes/code-change-review.bpmn does not exist; read cat-harness/processes/sdlc/code-change-review.bpmn, which defines Process_CodeChangeReview |
+| `code-change-review--issue-1190-bean-restates-skill` | (instance) | `Process_CodeChangeReview` | `source-moved` | cat-harness/processes/code-change-review.bpmn does not exist; read cat-harness/sdlc/processes/code-change-review.bpmn, which defines Process_CodeChangeReview |
 | `code-change-review--issue-1190-bean-restates-skill` | 1 | `Task_ClaimBean` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_ClaimBean as authoring-agent |
 | `code-change-review--issue-1190-bean-restates-skill` | 2 | `Task_BranchAndAnnounce` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_BranchAndAnnounce as authoring-agent |
 | `code-change-review--issue-1190-bean-restates-skill` | 3 | `Task_Implement` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_Implement as authoring-agent |
@@ -99,7 +99,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
-| `code-change-review--issue-1531-upload-step` | (instance) | `Process_CodeChangeReview` | `source-moved` | cat-harness/processes/code-change-review.bpmn does not exist; read cat-harness/processes/sdlc/code-change-review.bpmn, which defines Process_CodeChangeReview |
+| `code-change-review--issue-1531-upload-step` | (instance) | `Process_CodeChangeReview` | `source-moved` | cat-harness/processes/code-change-review.bpmn does not exist; read cat-harness/sdlc/processes/code-change-review.bpmn, which defines Process_CodeChangeReview |
 | `code-change-review--issue-1531-upload-step` | 1 | `Task_ClaimBean` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_ClaimBean as authoring-agent |
 | `code-change-review--issue-1531-upload-step` | 2 | `Task_BranchAndAnnounce` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_BranchAndAnnounce as authoring-agent |
 | `code-change-review--issue-1531-upload-step` | 3 | `Task_Implement` | `unknown` | no policy grants perform-task for Process_CodeChangeReview/Task_Implement as authoring-agent |
@@ -179,7 +179,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 ### merge-train--train-6
 
-10 step(s) checked, 10 `prov:Activity` emitted, 12 finding(s). Source: `cat-harness/processes/sdlc/merge-train.bpmn`. [PROV JSON-LD]({{ '/assets/prov/merge-train--train-6.prov.jsonld' | relative_url }})
+10 step(s) checked, 10 `prov:Activity` emitted, 12 finding(s). Source: `cat-harness/sdlc/processes/merge-train.bpmn`. [PROV JSON-LD]({{ '/assets/prov/merge-train--train-6.prov.jsonld' | relative_url }})
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
@@ -198,7 +198,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 
 ### mergetrain--merge-train-2026-10-04a
 
-30 step(s) checked, 30 `prov:Activity` emitted, 24 finding(s). Sources: `cat-harness/processes/sdlc/merge-train.bpmn`, `cat-harness/processes/sdlc/pr-checks-present.bpmn`, `cat-harness/processes/sdlc/merge-refusal.bpmn`, `cat-harness/processes/sdlc/merge-base.bpmn`. [PROV JSON-LD]({{ '/assets/prov/mergetrain--merge-train-2026-10-04a.prov.jsonld' | relative_url }})
+30 step(s) checked, 30 `prov:Activity` emitted, 24 finding(s). Sources: `cat-harness/sdlc/processes/merge-train.bpmn`, `cat-harness/sdlc/processes/pr-checks-present.bpmn`, `cat-harness/sdlc/processes/merge-refusal.bpmn`, `cat-harness/sdlc/processes/merge-base.bpmn`. [PROV JSON-LD]({{ '/assets/prov/mergetrain--merge-train-2026-10-04a.prov.jsonld' | relative_url }})
 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|

@@ -111,8 +111,8 @@ index-config:migrate --write` moves the entries across.
   `mountDefaults.directories`.
   An id may also be a **concern name**, a code from
   `code-lists/concern-group.json` such as `sdlc`. It expands to every
-  kind-first member the instance declares, such as `processes/sdlc/` and
-  `skills/sdlc/`, read from each grouping kind's own declaration file at the
+  kind-first member the instance declares, such as `sdlc/processes/` and
+  `sdlc/skills/`, read from each grouping kind's own declaration file at the
   pin. Each member is locked as `<directory id>/<code>`. A code that none of
   the instance's kinds declares is refused like any other unknown id.
 - After a review of hydrated metadata, `mount:remote --choose

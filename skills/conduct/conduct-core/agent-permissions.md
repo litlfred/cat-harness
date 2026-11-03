@@ -50,7 +50,7 @@ that does the job.
 | open and update a PR | create a PR, comment, label it | `continual-progress`, `issue-working`, `merge-queue` handover | never merge |
 | edit agent hooks and settings | change the Tool's hand-edited config | only when a hook or setting is itself the defect | **per change, never standing**: the exact diff, the reason, then the owner's yes ([`harness-projections`](harness-projections.md)) |
 | write generated projections | regenerate the Tool's projections of the graph | none: CI regenerates them on the PR head | **not granted to an agent at all** ([`harness-projections`](harness-projections.md)) |
-| merge to `main` | — | — | **never a Tool permission.** Every merge is its own owner-authorised run of [`merge-to-main`](../../sdlc/sdlc-core/merge-to-main.md). No allow-rule for a merge command is ever written. |
+| merge to `main` | — | — | **never a Tool permission.** Every merge is its own owner-authorised run of [`merge-to-main`](../../../sdlc/skills/sdlc-core/merge-to-main.md). No allow-rule for a merge command is ever written. |
 
 ## Explaining one before it is granted
 
@@ -107,7 +107,7 @@ cannot be told from one an agent wrote for itself.
   grant to edit settings does not exist. Each edit is its own diff, reason and
   yes.
 - **Merging to `main` is never granted here.** See
-  [`merge-to-main`](../../sdlc/sdlc-core/merge-to-main.md).
+  [`merge-to-main`](../../../sdlc/skills/sdlc-core/merge-to-main.md).
 - **A broad instruction is not a grant.** "Fix all issues until green", "get
   the session start working" and "stop the prompts" authorise investigation.
   They do not authorise widening what the agent may do. Bring the diff back.

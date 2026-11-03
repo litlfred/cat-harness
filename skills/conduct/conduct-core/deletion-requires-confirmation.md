@@ -156,7 +156,7 @@ commit message, the job log and a `removed` render-log entry — and retires its
 `staging-preview.json` into `STAGING/_retired/` rather than deleting it. And it
 is scoped exactly as given: it covers rotation over the cap, not any other
 removal of a preview, and it does not extend to `_retired/` or anything else
-on the branch. See [`staging-review`](../../sdlc/sdlc-core/staging-review.md)
+on the branch. See [`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md)
 §"The cap".
 
 ## The failure this skill was written from — bean `plj1`
@@ -266,7 +266,7 @@ One that is LONGER extracts a permission the instrument never justified, and
 this skill's central assumption — that the person is choosing from a true list
 — fails silently. So the rule is not "re-derive carefully"; it is **do not
 re-derive what a committed check already computes**, which is
-[`goal-review`](../../sdlc/sdlc-core/goal-review.md) rule 2's qualification, stated there for the
+[`goal-review`](../../../sdlc/skills/sdlc-core/goal-review.md) rule 2's qualification, stated there for the
 reviewing side.
 
 `stagingSlug` was exported from `schemas/sdlc/staging.ts` at the time, and

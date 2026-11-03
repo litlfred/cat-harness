@@ -270,7 +270,7 @@
         }
       ],
       "skos:notation": "A_DoWork",
-      "dcterms:source": "cat-harness/processes/sdlc/activity-log.bpmn#A_DoWork",
+      "dcterms:source": "cat-harness/sdlc/processes/activity-log.bpmn#A_DoWork",
       "skos:note": "candidate"
     },
     {
@@ -290,7 +290,7 @@
         }
       ],
       "skos:notation": "A_EmptyAll",
-      "dcterms:source": "cat-harness/processes/sdlc/activity-log.bpmn#A_EmptyAll",
+      "dcterms:source": "cat-harness/sdlc/processes/activity-log.bpmn#A_EmptyAll",
       "skos:note": "candidate"
     },
     {
@@ -310,7 +310,7 @@
         }
       ],
       "skos:notation": "A_EmptyOne",
-      "dcterms:source": "cat-harness/processes/sdlc/activity-log.bpmn#A_EmptyOne",
+      "dcterms:source": "cat-harness/sdlc/processes/activity-log.bpmn#A_EmptyOne",
       "skos:note": "candidate"
     },
     {
@@ -330,7 +330,7 @@
         }
       ],
       "skos:notation": "A_LogEnd",
-      "dcterms:source": "cat-harness/processes/sdlc/activity-log.bpmn#A_LogEnd",
+      "dcterms:source": "cat-harness/sdlc/processes/activity-log.bpmn#A_LogEnd",
       "skos:note": "candidate"
     },
     {
@@ -350,7 +350,7 @@
         }
       ],
       "skos:notation": "A_LogMessage",
-      "dcterms:source": "cat-harness/processes/sdlc/activity-log.bpmn#A_LogMessage",
+      "dcterms:source": "cat-harness/sdlc/processes/activity-log.bpmn#A_LogMessage",
       "skos:note": "candidate"
     },
     {
@@ -370,7 +370,7 @@
         }
       ],
       "skos:notation": "A_LogStart",
-      "dcterms:source": "cat-harness/processes/sdlc/activity-log.bpmn#A_LogStart",
+      "dcterms:source": "cat-harness/sdlc/processes/activity-log.bpmn#A_LogStart",
       "skos:note": "candidate"
     },
     {
@@ -390,7 +390,7 @@
         }
       ],
       "skos:notation": "A_PersistLog",
-      "dcterms:source": "cat-harness/processes/sdlc/activity-log.bpmn#A_PersistLog",
+      "dcterms:source": "cat-harness/sdlc/processes/activity-log.bpmn#A_PersistLog",
       "skos:note": "candidate"
     },
     {
@@ -410,7 +410,7 @@
         }
       ],
       "skos:notation": "A_ReportCaptureState",
-      "dcterms:source": "cat-harness/processes/sdlc/activity-log.bpmn#A_ReportCaptureState",
+      "dcterms:source": "cat-harness/sdlc/processes/activity-log.bpmn#A_ReportCaptureState",
       "skos:note": "candidate"
     },
     {
@@ -550,7 +550,7 @@
         }
       ],
       "skos:notation": "A_Adjudicate",
-      "dcterms:source": "cat-harness/processes/sdlc/adjudication.bpmn#A_Adjudicate",
+      "dcterms:source": "cat-harness/sdlc/processes/adjudication.bpmn#A_Adjudicate",
       "skos:note": "candidate"
     },
     {
@@ -570,7 +570,7 @@
         }
       ],
       "skos:notation": "A_Dispatch",
-      "dcterms:source": "cat-harness/processes/sdlc/adjudication.bpmn#A_Dispatch",
+      "dcterms:source": "cat-harness/sdlc/processes/adjudication.bpmn#A_Dispatch",
       "skos:note": "candidate"
     },
     {
@@ -590,7 +590,7 @@
         }
       ],
       "skos:notation": "A_StateFinding",
-      "dcterms:source": "cat-harness/processes/sdlc/adjudication.bpmn#A_StateFinding",
+      "dcterms:source": "cat-harness/sdlc/processes/adjudication.bpmn#A_StateFinding",
       "skos:note": "candidate"
     },
     {
@@ -750,7 +750,7 @@
         }
       ],
       "skos:notation": "Close_Archive",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-close.bpmn#Close_Archive",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-close.bpmn#Close_Archive",
       "skos:note": "candidate"
     },
     {
@@ -770,7 +770,7 @@
         }
       ],
       "skos:notation": "Close_Complete",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-close.bpmn#Close_Complete",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-close.bpmn#Close_Complete",
       "skos:note": "candidate"
     },
     {
@@ -790,7 +790,7 @@
         }
       ],
       "skos:notation": "Close_RecordBlocker",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-close.bpmn#Close_RecordBlocker",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-close.bpmn#Close_RecordBlocker",
       "skos:note": "candidate"
     },
     {
@@ -810,7 +810,7 @@
         }
       ],
       "skos:notation": "Close_Scrap",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-close.bpmn#Close_Scrap",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-close.bpmn#Close_Scrap",
       "skos:note": "candidate"
     },
     {
@@ -830,7 +830,7 @@
         }
       ],
       "skos:notation": "Drain_BuildQueue",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-drain.bpmn#Drain_BuildQueue",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-drain.bpmn#Drain_BuildQueue",
       "skos:note": "candidate"
     },
     {
@@ -850,7 +850,7 @@
         }
       ],
       "skos:notation": "Drain_Close",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-drain.bpmn#Drain_Close",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-drain.bpmn#Drain_Close",
       "skos:note": "candidate"
     },
     {
@@ -870,7 +870,7 @@
         }
       ],
       "skos:notation": "Drain_Open",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-drain.bpmn#Drain_Open",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-drain.bpmn#Drain_Open",
       "skos:note": "candidate"
     },
     {
@@ -890,7 +890,7 @@
         }
       ],
       "skos:notation": "Drain_Refill",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-drain.bpmn#Drain_Refill",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-drain.bpmn#Drain_Refill",
       "skos:note": "candidate"
     },
     {
@@ -910,7 +910,7 @@
         }
       ],
       "skos:notation": "Drain_Skip",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-drain.bpmn#Drain_Skip",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-drain.bpmn#Drain_Skip",
       "skos:note": "candidate"
     },
     {
@@ -930,7 +930,7 @@
         }
       ],
       "skos:notation": "Drain_TakeNext",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-drain.bpmn#Drain_TakeNext",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-drain.bpmn#Drain_TakeNext",
       "skos:note": "candidate"
     },
     {
@@ -950,7 +950,7 @@
         }
       ],
       "skos:notation": "Drain_Work",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-drain.bpmn#Drain_Work",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-drain.bpmn#Drain_Work",
       "skos:note": "candidate"
     },
     {
@@ -970,7 +970,7 @@
         }
       ],
       "skos:notation": "Call_BeanClose",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Call_BeanClose",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-lifecycle.bpmn#Call_BeanClose",
       "skos:note": "candidate"
     },
     {
@@ -990,7 +990,7 @@
         }
       ],
       "skos:notation": "Call_BeanOpen",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Call_BeanOpen",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-lifecycle.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -1010,7 +1010,7 @@
         }
       ],
       "skos:notation": "Task_Work",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-lifecycle.bpmn#Task_Work",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-lifecycle.bpmn#Task_Work",
       "skos:note": "candidate"
     },
     {
@@ -1030,7 +1030,7 @@
         }
       ],
       "skos:notation": "Open_CheckExists",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-open.bpmn#Open_CheckExists",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-open.bpmn#Open_CheckExists",
       "skos:note": "candidate"
     },
     {
@@ -1050,7 +1050,7 @@
         }
       ],
       "skos:notation": "Open_Claim",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-open.bpmn#Open_Claim",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-open.bpmn#Open_Claim",
       "skos:note": "candidate"
     },
     {
@@ -1070,7 +1070,7 @@
         }
       ],
       "skos:notation": "Open_Create",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-open.bpmn#Open_Create",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-open.bpmn#Open_Create",
       "skos:note": "candidate"
     },
     {
@@ -1090,7 +1090,7 @@
         }
       ],
       "skos:notation": "Open_LeaveAlone",
-      "dcterms:source": "cat-harness/processes/sdlc/bean-open.bpmn#Open_LeaveAlone",
+      "dcterms:source": "cat-harness/sdlc/processes/bean-open.bpmn#Open_LeaveAlone",
       "skos:note": "candidate"
     },
     {
@@ -1110,7 +1110,7 @@
         }
       ],
       "skos:notation": "Call_Watch",
-      "dcterms:source": "cat-harness/processes/sdlc/ci-health-watch.bpmn#Call_Watch",
+      "dcterms:source": "cat-harness/sdlc/processes/ci-health-watch.bpmn#Call_Watch",
       "skos:note": "candidate"
     },
     {
@@ -1130,7 +1130,7 @@
         }
       ],
       "skos:notation": "Task_Check",
-      "dcterms:source": "cat-harness/processes/sdlc/ci-health-watch.bpmn#Task_Check",
+      "dcterms:source": "cat-harness/sdlc/processes/ci-health-watch.bpmn#Task_Check",
       "skos:note": "candidate"
     },
     {
@@ -1150,7 +1150,7 @@
         }
       ],
       "skos:notation": "Task_AddressReview",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_AddressReview",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_AddressReview",
       "skos:note": "candidate"
     },
     {
@@ -1170,7 +1170,7 @@
         }
       ],
       "skos:notation": "Task_ArchiveBean",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_ArchiveBean",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_ArchiveBean",
       "skos:note": "candidate"
     },
     {
@@ -1190,7 +1190,7 @@
         }
       ],
       "skos:notation": "Task_BranchAndAnnounce",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_BranchAndAnnounce",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_BranchAndAnnounce",
       "skos:note": "candidate"
     },
     {
@@ -1210,7 +1210,7 @@
         }
       ],
       "skos:notation": "Task_ClaimBean",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_ClaimBean",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_ClaimBean",
       "skos:note": "candidate"
     },
     {
@@ -1230,7 +1230,7 @@
         }
       ],
       "skos:notation": "Task_CloseBean",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_CloseBean",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_CloseBean",
       "skos:note": "candidate"
     },
     {
@@ -1250,7 +1250,7 @@
         }
       ],
       "skos:notation": "Task_CommitAndOpenPR",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_CommitAndOpenPR",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_CommitAndOpenPR",
       "skos:note": "candidate"
     },
     {
@@ -1270,7 +1270,7 @@
         }
       ],
       "skos:notation": "Task_Diagnose",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_Diagnose",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_Diagnose",
       "skos:note": "candidate"
     },
     {
@@ -1290,7 +1290,7 @@
         }
       ],
       "skos:notation": "Task_Implement",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_Implement",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_Implement",
       "skos:note": "candidate"
     },
     {
@@ -1310,7 +1310,7 @@
         }
       ],
       "skos:notation": "Task_PrepareMerge",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_PrepareMerge",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_PrepareMerge",
       "skos:note": "candidate"
     },
     {
@@ -1330,7 +1330,7 @@
         }
       ],
       "skos:notation": "Task_Review",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_Review",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_Review",
       "skos:note": "candidate"
     },
     {
@@ -1350,7 +1350,7 @@
         }
       ],
       "skos:notation": "Task_RunCI",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_RunCI",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_RunCI",
       "skos:note": "candidate"
     },
     {
@@ -1370,7 +1370,7 @@
         }
       ],
       "skos:notation": "Task_RunGates",
-      "dcterms:source": "cat-harness/processes/sdlc/code-change-review.bpmn#Task_RunGates",
+      "dcterms:source": "cat-harness/sdlc/processes/code-change-review.bpmn#Task_RunGates",
       "skos:note": "candidate"
     },
     {
@@ -1390,7 +1390,7 @@
         }
       ],
       "skos:notation": "Task_E2E",
-      "dcterms:source": "cat-harness/processes/sdlc/code-quality-gates.bpmn#Task_E2E",
+      "dcterms:source": "cat-harness/sdlc/processes/code-quality-gates.bpmn#Task_E2E",
       "skos:note": "candidate"
     },
     {
@@ -1410,7 +1410,7 @@
         }
       ],
       "skos:notation": "Task_Hygiene",
-      "dcterms:source": "cat-harness/processes/sdlc/code-quality-gates.bpmn#Task_Hygiene",
+      "dcterms:source": "cat-harness/sdlc/processes/code-quality-gates.bpmn#Task_Hygiene",
       "skos:note": "candidate"
     },
     {
@@ -1430,7 +1430,7 @@
         }
       ],
       "skos:notation": "Task_QaPublish",
-      "dcterms:source": "cat-harness/processes/sdlc/code-quality-gates.bpmn#Task_QaPublish",
+      "dcterms:source": "cat-harness/sdlc/processes/code-quality-gates.bpmn#Task_QaPublish",
       "skos:note": "candidate"
     },
     {
@@ -1450,7 +1450,7 @@
         }
       ],
       "skos:notation": "Task_QaWorkingCopy",
-      "dcterms:source": "cat-harness/processes/sdlc/code-quality-gates.bpmn#Task_QaWorkingCopy",
+      "dcterms:source": "cat-harness/sdlc/processes/code-quality-gates.bpmn#Task_QaWorkingCopy",
       "skos:note": "candidate"
     },
     {
@@ -1470,7 +1470,7 @@
         }
       ],
       "skos:notation": "Task_RepositoryGates",
-      "dcterms:source": "cat-harness/processes/sdlc/code-quality-gates.bpmn#Task_RepositoryGates",
+      "dcterms:source": "cat-harness/sdlc/processes/code-quality-gates.bpmn#Task_RepositoryGates",
       "skos:note": "candidate"
     },
     {
@@ -1490,7 +1490,7 @@
         }
       ],
       "skos:notation": "Task_SkillChain",
-      "dcterms:source": "cat-harness/processes/sdlc/code-quality-gates.bpmn#Task_SkillChain",
+      "dcterms:source": "cat-harness/sdlc/processes/code-quality-gates.bpmn#Task_SkillChain",
       "skos:note": "candidate"
     },
     {
@@ -1510,7 +1510,7 @@
         }
       ],
       "skos:notation": "Task_TypeScript",
-      "dcterms:source": "cat-harness/processes/sdlc/code-quality-gates.bpmn#Task_TypeScript",
+      "dcterms:source": "cat-harness/sdlc/processes/code-quality-gates.bpmn#Task_TypeScript",
       "skos:note": "candidate"
     },
     {
@@ -1530,7 +1530,7 @@
         }
       ],
       "skos:notation": "Task_UnrunGates",
-      "dcterms:source": "cat-harness/processes/sdlc/code-quality-gates.bpmn#Task_UnrunGates",
+      "dcterms:source": "cat-harness/sdlc/processes/code-quality-gates.bpmn#Task_UnrunGates",
       "skos:note": "candidate"
     },
     {
@@ -1550,7 +1550,7 @@
         }
       ],
       "skos:notation": "Task_VerdictReuse",
-      "dcterms:source": "cat-harness/processes/sdlc/code-quality-gates.bpmn#Task_VerdictReuse",
+      "dcterms:source": "cat-harness/sdlc/processes/code-quality-gates.bpmn#Task_VerdictReuse",
       "skos:note": "candidate"
     },
     {
@@ -3050,7 +3050,7 @@
         }
       ],
       "skos:notation": "A_Dispensation",
-      "dcterms:source": "cat-harness/processes/sdlc/criterion-adjudication.bpmn#A_Dispensation",
+      "dcterms:source": "cat-harness/sdlc/processes/criterion-adjudication.bpmn#A_Dispensation",
       "skos:note": "candidate"
     },
     {
@@ -3070,7 +3070,7 @@
         }
       ],
       "skos:notation": "A_RecordEntry",
-      "dcterms:source": "cat-harness/processes/sdlc/criterion-adjudication.bpmn#A_RecordEntry",
+      "dcterms:source": "cat-harness/sdlc/processes/criterion-adjudication.bpmn#A_RecordEntry",
       "skos:note": "candidate"
     },
     {
@@ -3090,7 +3090,7 @@
         }
       ],
       "skos:notation": "A_ScopeCriterion",
-      "dcterms:source": "cat-harness/processes/sdlc/criterion-adjudication.bpmn#A_ScopeCriterion",
+      "dcterms:source": "cat-harness/sdlc/processes/criterion-adjudication.bpmn#A_ScopeCriterion",
       "skos:note": "candidate"
     },
     {
@@ -3110,7 +3110,7 @@
         }
       ],
       "skos:notation": "Call_Adjudicate",
-      "dcterms:source": "cat-harness/processes/sdlc/criterion-adjudication.bpmn#Call_Adjudicate",
+      "dcterms:source": "cat-harness/sdlc/processes/criterion-adjudication.bpmn#Call_Adjudicate",
       "skos:note": "candidate"
     },
     {
@@ -3130,7 +3130,7 @@
         }
       ],
       "skos:notation": "Call_Alert",
-      "dcterms:source": "cat-harness/processes/sdlc/docs-site-publish.bpmn#Call_Alert",
+      "dcterms:source": "cat-harness/sdlc/processes/docs-site-publish.bpmn#Call_Alert",
       "skos:note": "candidate"
     },
     {
@@ -3150,7 +3150,7 @@
         }
       ],
       "skos:notation": "Call_Verify",
-      "dcterms:source": "cat-harness/processes/sdlc/docs-site-publish.bpmn#Call_Verify",
+      "dcterms:source": "cat-harness/sdlc/processes/docs-site-publish.bpmn#Call_Verify",
       "skos:note": "candidate"
     },
     {
@@ -3170,7 +3170,7 @@
         }
       ],
       "skos:notation": "Task_Build",
-      "dcterms:source": "cat-harness/processes/sdlc/docs-site-publish.bpmn#Task_Build",
+      "dcterms:source": "cat-harness/sdlc/processes/docs-site-publish.bpmn#Task_Build",
       "skos:note": "candidate"
     },
     {
@@ -3190,7 +3190,7 @@
         }
       ],
       "skos:notation": "Task_CloseAlert",
-      "dcterms:source": "cat-harness/processes/sdlc/docs-site-publish.bpmn#Task_CloseAlert",
+      "dcterms:source": "cat-harness/sdlc/processes/docs-site-publish.bpmn#Task_CloseAlert",
       "skos:note": "candidate"
     },
     {
@@ -3210,7 +3210,7 @@
         }
       ],
       "skos:notation": "Task_Export",
-      "dcterms:source": "cat-harness/processes/sdlc/docs-site-publish.bpmn#Task_Export",
+      "dcterms:source": "cat-harness/sdlc/processes/docs-site-publish.bpmn#Task_Export",
       "skos:note": "candidate"
     },
     {
@@ -3230,7 +3230,7 @@
         }
       ],
       "skos:notation": "Task_Publish",
-      "dcterms:source": "cat-harness/processes/sdlc/docs-site-publish.bpmn#Task_Publish",
+      "dcterms:source": "cat-harness/sdlc/processes/docs-site-publish.bpmn#Task_Publish",
       "skos:note": "candidate"
     },
     {
@@ -3250,7 +3250,7 @@
         }
       ],
       "skos:notation": "Task_Regenerate",
-      "dcterms:source": "cat-harness/processes/sdlc/docs-site-publish.bpmn#Task_Regenerate",
+      "dcterms:source": "cat-harness/sdlc/processes/docs-site-publish.bpmn#Task_Regenerate",
       "skos:note": "candidate"
     },
     {
@@ -3270,7 +3270,7 @@
         }
       ],
       "skos:notation": "Task_Restore",
-      "dcterms:source": "cat-harness/processes/sdlc/docs-site-publish.bpmn#Task_Restore",
+      "dcterms:source": "cat-harness/sdlc/processes/docs-site-publish.bpmn#Task_Restore",
       "skos:note": "candidate"
     },
     {
@@ -3290,7 +3290,7 @@
         }
       ],
       "skos:notation": "Task_SecurityGate",
-      "dcterms:source": "cat-harness/processes/sdlc/docs-site-publish.bpmn#Task_SecurityGate",
+      "dcterms:source": "cat-harness/sdlc/processes/docs-site-publish.bpmn#Task_SecurityGate",
       "skos:note": "candidate"
     },
     {
@@ -3310,7 +3310,7 @@
         }
       ],
       "skos:notation": "H_Confirm",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#H_Confirm",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#H_Confirm",
       "skos:note": "candidate"
     },
     {
@@ -3330,7 +3330,7 @@
         }
       ],
       "skos:notation": "Task_Build",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_Build",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_Build",
       "skos:note": "candidate"
     },
     {
@@ -3350,7 +3350,7 @@
         }
       ],
       "skos:notation": "Task_Comment",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_Comment",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_Comment",
       "skos:note": "candidate"
     },
     {
@@ -3370,7 +3370,7 @@
         }
       ],
       "skos:notation": "Task_Deploy",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_Deploy",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_Deploy",
       "skos:note": "candidate"
     },
     {
@@ -3390,7 +3390,7 @@
         }
       ],
       "skos:notation": "Task_LogRendered",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_LogRendered",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_LogRendered",
       "skos:note": "candidate"
     },
     {
@@ -3410,7 +3410,7 @@
         }
       ],
       "skos:notation": "Task_LogRetained",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_LogRetained",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_LogRetained",
       "skos:note": "candidate"
     },
     {
@@ -3430,7 +3430,7 @@
         }
       ],
       "skos:notation": "Task_Notice",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_Notice",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_Notice",
       "skos:note": "candidate"
     },
     {
@@ -3450,7 +3450,7 @@
         }
       ],
       "skos:notation": "Task_Preflight",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_Preflight",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_Preflight",
       "skos:note": "candidate"
     },
     {
@@ -3470,7 +3470,7 @@
         }
       ],
       "skos:notation": "Task_Remove",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_Remove",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_Remove",
       "skos:note": "candidate"
     },
     {
@@ -3490,7 +3490,7 @@
         }
       ],
       "skos:notation": "Task_RemoveDisp",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_RemoveDisp",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_RemoveDisp",
       "skos:note": "candidate"
     },
     {
@@ -3510,7 +3510,7 @@
         }
       ],
       "skos:notation": "Task_Slug",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_Slug",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_Slug",
       "skos:note": "candidate"
     },
     {
@@ -3530,7 +3530,7 @@
         }
       ],
       "skos:notation": "Task_Validate",
-      "dcterms:source": "cat-harness/processes/sdlc/feature-staging.bpmn#Task_Validate",
+      "dcterms:source": "cat-harness/sdlc/processes/feature-staging.bpmn#Task_Validate",
       "skos:note": "candidate"
     },
     {
@@ -3550,7 +3550,7 @@
         }
       ],
       "skos:notation": "Task_Check",
-      "dcterms:source": "cat-harness/processes/sdlc/generated-file-drift.bpmn#Task_Check",
+      "dcterms:source": "cat-harness/sdlc/processes/generated-file-drift.bpmn#Task_Check",
       "skos:note": "candidate"
     },
     {
@@ -4610,7 +4610,7 @@
         }
       ],
       "skos:notation": "Call_Drift",
-      "dcterms:source": "cat-harness/processes/sdlc/jsonld-drift-check.bpmn#Call_Drift",
+      "dcterms:source": "cat-harness/sdlc/processes/jsonld-drift-check.bpmn#Call_Drift",
       "skos:note": "candidate"
     },
     {
@@ -5490,7 +5490,7 @@
         }
       ],
       "skos:notation": "Task_Abort",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-base.bpmn#Task_Abort",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-base.bpmn#Task_Abort",
       "skos:note": "candidate"
     },
     {
@@ -5505,7 +5505,7 @@
         }
       ],
       "skos:notation": "Task_ByHand",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-base.bpmn#Task_ByHand",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-base.bpmn#Task_ByHand",
       "skos:note": "candidate"
     },
     {
@@ -5525,7 +5525,7 @@
         }
       ],
       "skos:notation": "Task_Classify",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-base.bpmn#Task_Classify",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-base.bpmn#Task_Classify",
       "skos:note": "candidate"
     },
     {
@@ -5540,7 +5540,7 @@
         }
       ],
       "skos:notation": "Task_Commit",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-base.bpmn#Task_Commit",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-base.bpmn#Task_Commit",
       "skos:note": "candidate"
     },
     {
@@ -5560,7 +5560,7 @@
         }
       ],
       "skos:notation": "Task_Merge",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-base.bpmn#Task_Merge",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-base.bpmn#Task_Merge",
       "skos:note": "candidate"
     },
     {
@@ -5580,7 +5580,7 @@
         }
       ],
       "skos:notation": "Task_Regen",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-base.bpmn#Task_Regen",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-base.bpmn#Task_Regen",
       "skos:note": "candidate"
     },
     {
@@ -5600,7 +5600,7 @@
         }
       ],
       "skos:notation": "Task_Report",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-base.bpmn#Task_Report",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-base.bpmn#Task_Report",
       "skos:note": "candidate"
     },
     {
@@ -5620,7 +5620,7 @@
         }
       ],
       "skos:notation": "Task_Resolve",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-base.bpmn#Task_Resolve",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-base.bpmn#Task_Resolve",
       "skos:note": "candidate"
     },
     {
@@ -5640,7 +5640,7 @@
         }
       ],
       "skos:notation": "Call_Meta",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-manager-watch.bpmn#Call_Meta",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-manager-watch.bpmn#Call_Meta",
       "skos:note": "candidate"
     },
     {
@@ -5660,7 +5660,7 @@
         }
       ],
       "skos:notation": "Call_Stalled",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-manager-watch.bpmn#Call_Stalled",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-manager-watch.bpmn#Call_Stalled",
       "skos:note": "candidate"
     },
     {
@@ -5680,7 +5680,7 @@
         }
       ],
       "skos:notation": "Call_Train",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-manager-watch.bpmn#Call_Train",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-manager-watch.bpmn#Call_Train",
       "skos:note": "candidate"
     },
     {
@@ -5700,7 +5700,7 @@
         }
       ],
       "skos:notation": "Task_Read",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-manager-watch.bpmn#Task_Read",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-manager-watch.bpmn#Task_Read",
       "skos:note": "candidate"
     },
     {
@@ -5720,7 +5720,7 @@
         }
       ],
       "skos:notation": "Call_BeanClose_2",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Call_BeanClose_2",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Call_BeanClose_2",
       "skos:note": "candidate"
     },
     {
@@ -5740,7 +5740,7 @@
         }
       ],
       "skos:notation": "Call_BeanOpen",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Call_BeanOpen",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -5760,7 +5760,7 @@
         }
       ],
       "skos:notation": "Task_AgentFix",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Task_AgentFix",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Task_AgentFix",
       "skos:note": "candidate"
     },
     {
@@ -5775,7 +5775,7 @@
         }
       ],
       "skos:notation": "Task_AskOwner",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Task_AskOwner",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Task_AskOwner",
       "skos:note": "candidate"
     },
     {
@@ -5790,7 +5790,7 @@
         }
       ],
       "skos:notation": "Task_Close",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Task_Close",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Task_Close",
       "skos:note": "candidate"
     },
     {
@@ -5810,7 +5810,7 @@
         }
       ],
       "skos:notation": "Task_Comment",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Task_Comment",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Task_Comment",
       "skos:note": "candidate"
     },
     {
@@ -5830,7 +5830,7 @@
         }
       ],
       "skos:notation": "Task_Dispatch",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Task_Dispatch",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Task_Dispatch",
       "skos:note": "candidate"
     },
     {
@@ -5850,7 +5850,7 @@
         }
       ],
       "skos:notation": "Task_Fix",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Task_Fix",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Task_Fix",
       "skos:note": "candidate"
     },
     {
@@ -5870,7 +5870,7 @@
         }
       ],
       "skos:notation": "Task_HandBack",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Task_HandBack",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Task_HandBack",
       "skos:note": "candidate"
     },
     {
@@ -5890,7 +5890,7 @@
         }
       ],
       "skos:notation": "Task_Record",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Task_Record",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Task_Record",
       "skos:note": "candidate"
     },
     {
@@ -5910,7 +5910,7 @@
         }
       ],
       "skos:notation": "Task_Retrain",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Task_Retrain",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Task_Retrain",
       "skos:note": "candidate"
     },
     {
@@ -5930,7 +5930,7 @@
         }
       ],
       "skos:notation": "Task_Scrap",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-refusal.bpmn#Task_Scrap",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-refusal.bpmn#Task_Scrap",
       "skos:note": "candidate"
     },
     {
@@ -5950,7 +5950,7 @@
         }
       ],
       "skos:notation": "Call_HandBack",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Call_HandBack",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Call_HandBack",
       "skos:note": "candidate"
     },
     {
@@ -5970,7 +5970,7 @@
         }
       ],
       "skos:notation": "Task_Ask",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_Ask",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_Ask",
       "skos:note": "candidate"
     },
     {
@@ -5990,7 +5990,7 @@
         }
       ],
       "skos:notation": "Task_ConfirmBase",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_ConfirmBase",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_ConfirmBase",
       "skos:note": "candidate"
     },
     {
@@ -6010,7 +6010,7 @@
         }
       ],
       "skos:notation": "Task_LocalGates",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_LocalGates",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_LocalGates",
       "skos:note": "candidate"
     },
     {
@@ -6030,7 +6030,7 @@
         }
       ],
       "skos:notation": "Task_Merge",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_Merge",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_Merge",
       "skos:note": "candidate"
     },
     {
@@ -6050,7 +6050,7 @@
         }
       ],
       "skos:notation": "Task_OwnerDecides",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_OwnerDecides",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_OwnerDecides",
       "skos:note": "candidate"
     },
     {
@@ -6070,7 +6070,7 @@
         }
       ],
       "skos:notation": "Task_ReadAuthorisation",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_ReadAuthorisation",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_ReadAuthorisation",
       "skos:note": "candidate"
     },
     {
@@ -6090,7 +6090,7 @@
         }
       ],
       "skos:notation": "Task_ReadEvidence",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_ReadEvidence",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_ReadEvidence",
       "skos:note": "candidate"
     },
     {
@@ -6110,7 +6110,7 @@
         }
       ],
       "skos:notation": "Task_RecordAuthorisation",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_RecordAuthorisation",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_RecordAuthorisation",
       "skos:note": "candidate"
     },
     {
@@ -6130,7 +6130,7 @@
         }
       ],
       "skos:notation": "Task_RegenProjections",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_RegenProjections",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_RegenProjections",
       "skos:note": "candidate"
     },
     {
@@ -6150,7 +6150,7 @@
         }
       ],
       "skos:notation": "Task_Repin",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_Repin",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_Repin",
       "skos:note": "candidate"
     },
     {
@@ -6170,7 +6170,7 @@
         }
       ],
       "skos:notation": "Task_Report",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_Report",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_Report",
       "skos:note": "candidate"
     },
     {
@@ -6190,7 +6190,7 @@
         }
       ],
       "skos:notation": "Task_Republish",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-to-main.bpmn#Task_Republish",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-to-main.bpmn#Task_Republish",
       "skos:note": "candidate"
     },
     {
@@ -6210,7 +6210,7 @@
         }
       ],
       "skos:notation": "Call_ChecksPresent",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Call_ChecksPresent",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Call_ChecksPresent",
       "skos:note": "candidate"
     },
     {
@@ -6230,7 +6230,7 @@
         }
       ],
       "skos:notation": "Call_EjectHandBack",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Call_EjectHandBack",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Call_EjectHandBack",
       "skos:note": "candidate"
     },
     {
@@ -6250,7 +6250,7 @@
         }
       ],
       "skos:notation": "Call_Gates",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Call_Gates",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Call_Gates",
       "skos:note": "candidate"
     },
     {
@@ -6270,7 +6270,7 @@
         }
       ],
       "skos:notation": "Call_HandBack",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Call_HandBack",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Call_HandBack",
       "skos:note": "candidate"
     },
     {
@@ -6290,7 +6290,7 @@
         }
       ],
       "skos:notation": "Call_MergeMembers",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Call_MergeMembers",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Call_MergeMembers",
       "skos:note": "candidate"
     },
     {
@@ -6310,7 +6310,7 @@
         }
       ],
       "skos:notation": "Call_MergeToMain",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Call_MergeToMain",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Call_MergeToMain",
       "skos:note": "candidate"
     },
     {
@@ -6330,7 +6330,7 @@
         }
       ],
       "skos:notation": "Task_Admit",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Task_Admit",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Task_Admit",
       "skos:note": "candidate"
     },
     {
@@ -6350,7 +6350,7 @@
         }
       ],
       "skos:notation": "Task_Attribute",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Task_Attribute",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Task_Attribute",
       "skos:note": "candidate"
     },
     {
@@ -6370,7 +6370,7 @@
         }
       ],
       "skos:notation": "Task_Bisect",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Task_Bisect",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Task_Bisect",
       "skos:note": "candidate"
     },
     {
@@ -6390,7 +6390,7 @@
         }
       ],
       "skos:notation": "Task_Eject",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Task_Eject",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Task_Eject",
       "skos:note": "candidate"
     },
     {
@@ -6410,7 +6410,7 @@
         }
       ],
       "skos:notation": "Task_Override",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Task_Override",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Task_Override",
       "skos:note": "candidate"
     },
     {
@@ -6430,7 +6430,7 @@
         }
       ],
       "skos:notation": "Task_ReadLive",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Task_ReadLive",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Task_ReadLive",
       "skos:note": "candidate"
     },
     {
@@ -6450,7 +6450,7 @@
         }
       ],
       "skos:notation": "Task_RetryFlaky",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Task_RetryFlaky",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Task_RetryFlaky",
       "skos:note": "candidate"
     },
     {
@@ -6470,7 +6470,7 @@
         }
       ],
       "skos:notation": "Task_SiblingFix",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Task_SiblingFix",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Task_SiblingFix",
       "skos:note": "candidate"
     },
     {
@@ -6490,7 +6490,7 @@
         }
       ],
       "skos:notation": "Task_TakeNext",
-      "dcterms:source": "cat-harness/processes/sdlc/merge-train.bpmn#Task_TakeNext",
+      "dcterms:source": "cat-harness/sdlc/processes/merge-train.bpmn#Task_TakeNext",
       "skos:note": "candidate"
     },
     {
@@ -7045,7 +7045,7 @@
         }
       ],
       "skos:notation": "A_Attest",
-      "dcterms:source": "cat-harness/processes/sdlc/narrative-code-review.bpmn#A_Attest",
+      "dcterms:source": "cat-harness/sdlc/processes/narrative-code-review.bpmn#A_Attest",
       "skos:note": "candidate"
     },
     {
@@ -7065,7 +7065,7 @@
         }
       ],
       "skos:notation": "A_RaiseFinding",
-      "dcterms:source": "cat-harness/processes/sdlc/narrative-code-review.bpmn#A_RaiseFinding",
+      "dcterms:source": "cat-harness/sdlc/processes/narrative-code-review.bpmn#A_RaiseFinding",
       "skos:note": "candidate"
     },
     {
@@ -7085,7 +7085,7 @@
         }
       ],
       "skos:notation": "A_ReadPairFindings",
-      "dcterms:source": "cat-harness/processes/sdlc/narrative-code-review.bpmn#A_ReadPairFindings",
+      "dcterms:source": "cat-harness/sdlc/processes/narrative-code-review.bpmn#A_ReadPairFindings",
       "skos:note": "candidate"
     },
     {
@@ -7105,7 +7105,7 @@
         }
       ],
       "skos:notation": "A_ReRead",
-      "dcterms:source": "cat-harness/processes/sdlc/narrative-code-review.bpmn#A_ReRead",
+      "dcterms:source": "cat-harness/sdlc/processes/narrative-code-review.bpmn#A_ReRead",
       "skos:note": "candidate"
     },
     {
@@ -7125,7 +7125,7 @@
         }
       ],
       "skos:notation": "Call_Adjudication",
-      "dcterms:source": "cat-harness/processes/sdlc/narrative-code-review.bpmn#Call_Adjudication",
+      "dcterms:source": "cat-harness/sdlc/processes/narrative-code-review.bpmn#Call_Adjudication",
       "skos:note": "candidate"
     },
     {
@@ -7385,7 +7385,7 @@
         }
       ],
       "skos:notation": "A_Apply",
-      "dcterms:source": "cat-harness/processes/sdlc/options-analysis.bpmn#A_Apply",
+      "dcterms:source": "cat-harness/sdlc/processes/options-analysis.bpmn#A_Apply",
       "skos:note": "candidate"
     },
     {
@@ -7405,7 +7405,7 @@
         }
       ],
       "skos:notation": "A_CheckEvidence",
-      "dcterms:source": "cat-harness/processes/sdlc/options-analysis.bpmn#A_CheckEvidence",
+      "dcterms:source": "cat-harness/sdlc/processes/options-analysis.bpmn#A_CheckEvidence",
       "skos:note": "candidate"
     },
     {
@@ -7425,7 +7425,7 @@
         }
       ],
       "skos:notation": "A_Frame",
-      "dcterms:source": "cat-harness/processes/sdlc/options-analysis.bpmn#A_Frame",
+      "dcterms:source": "cat-harness/sdlc/processes/options-analysis.bpmn#A_Frame",
       "skos:note": "candidate"
     },
     {
@@ -7445,7 +7445,7 @@
         }
       ],
       "skos:notation": "A_Record",
-      "dcterms:source": "cat-harness/processes/sdlc/options-analysis.bpmn#A_Record",
+      "dcterms:source": "cat-harness/sdlc/processes/options-analysis.bpmn#A_Record",
       "skos:note": "candidate"
     },
     {
@@ -7465,7 +7465,7 @@
         }
       ],
       "skos:notation": "A_Select",
-      "dcterms:source": "cat-harness/processes/sdlc/options-analysis.bpmn#A_Select",
+      "dcterms:source": "cat-harness/sdlc/processes/options-analysis.bpmn#A_Select",
       "skos:note": "candidate"
     },
     {
@@ -7485,7 +7485,7 @@
         }
       ],
       "skos:notation": "Call_Watch",
-      "dcterms:source": "cat-harness/processes/sdlc/pr-checks-present.bpmn#Call_Watch",
+      "dcterms:source": "cat-harness/sdlc/processes/pr-checks-present.bpmn#Call_Watch",
       "skos:note": "candidate"
     },
     {
@@ -7505,7 +7505,7 @@
         }
       ],
       "skos:notation": "Task_Comment",
-      "dcterms:source": "cat-harness/processes/sdlc/pr-checks-present.bpmn#Task_Comment",
+      "dcterms:source": "cat-harness/sdlc/processes/pr-checks-present.bpmn#Task_Comment",
       "skos:note": "candidate"
     },
     {
@@ -7525,7 +7525,7 @@
         }
       ],
       "skos:notation": "Task_Sweep",
-      "dcterms:source": "cat-harness/processes/sdlc/pr-checks-present.bpmn#Task_Sweep",
+      "dcterms:source": "cat-harness/sdlc/processes/pr-checks-present.bpmn#Task_Sweep",
       "skos:note": "candidate"
     },
     {
@@ -7545,7 +7545,7 @@
         }
       ],
       "skos:notation": "A_Comment",
-      "dcterms:source": "cat-harness/processes/sdlc/publish-alert.bpmn#A_Comment",
+      "dcterms:source": "cat-harness/sdlc/processes/publish-alert.bpmn#A_Comment",
       "skos:note": "candidate"
     },
     {
@@ -7565,7 +7565,7 @@
         }
       ],
       "skos:notation": "A_Label",
-      "dcterms:source": "cat-harness/processes/sdlc/publish-alert.bpmn#A_Label",
+      "dcterms:source": "cat-harness/sdlc/processes/publish-alert.bpmn#A_Label",
       "skos:note": "candidate"
     },
     {
@@ -7585,7 +7585,7 @@
         }
       ],
       "skos:notation": "A_Open",
-      "dcterms:source": "cat-harness/processes/sdlc/publish-alert.bpmn#A_Open",
+      "dcterms:source": "cat-harness/sdlc/processes/publish-alert.bpmn#A_Open",
       "skos:note": "candidate"
     },
     {
@@ -7605,7 +7605,7 @@
         }
       ],
       "skos:notation": "U_Triage",
-      "dcterms:source": "cat-harness/processes/sdlc/publish-alert.bpmn#U_Triage",
+      "dcterms:source": "cat-harness/sdlc/processes/publish-alert.bpmn#U_Triage",
       "skos:note": "candidate"
     },
     {
@@ -7625,7 +7625,7 @@
         }
       ],
       "skos:notation": "A_Verify",
-      "dcterms:source": "cat-harness/processes/sdlc/publish-verification.bpmn#A_Verify",
+      "dcterms:source": "cat-harness/sdlc/processes/publish-verification.bpmn#A_Verify",
       "skos:note": "candidate"
     },
     {
@@ -7645,7 +7645,7 @@
         }
       ],
       "skos:notation": "Task_ApplyPrune",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-publish.bpmn#Task_ApplyPrune",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-publish.bpmn#Task_ApplyPrune",
       "skos:note": "candidate"
     },
     {
@@ -7665,7 +7665,7 @@
         }
       ],
       "skos:notation": "Task_Backoff",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-publish.bpmn#Task_Backoff",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-publish.bpmn#Task_Backoff",
       "skos:note": "candidate"
     },
     {
@@ -7685,7 +7685,7 @@
         }
       ],
       "skos:notation": "Task_BuildEntry",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-publish.bpmn#Task_BuildEntry",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-publish.bpmn#Task_BuildEntry",
       "skos:note": "candidate"
     },
     {
@@ -7705,7 +7705,7 @@
         }
       ],
       "skos:notation": "Task_DeriveKey",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-publish.bpmn#Task_DeriveKey",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-publish.bpmn#Task_DeriveKey",
       "skos:note": "candidate"
     },
     {
@@ -7725,7 +7725,7 @@
         }
       ],
       "skos:notation": "Task_PlanPrune",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-publish.bpmn#Task_PlanPrune",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-publish.bpmn#Task_PlanPrune",
       "skos:note": "candidate"
     },
     {
@@ -7745,7 +7745,7 @@
         }
       ],
       "skos:notation": "Task_ReadPrStates",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-publish.bpmn#Task_ReadPrStates",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-publish.bpmn#Task_ReadPrStates",
       "skos:note": "candidate"
     },
     {
@@ -7765,7 +7765,7 @@
         }
       ],
       "skos:notation": "Task_SpliceAndPush",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-publish.bpmn#Task_SpliceAndPush",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-publish.bpmn#Task_SpliceAndPush",
       "skos:note": "candidate"
     },
     {
@@ -7785,7 +7785,7 @@
         }
       ],
       "skos:notation": "Task_ApiSign",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-report-signing.bpmn#Task_ApiSign",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-report-signing.bpmn#Task_ApiSign",
       "skos:note": "candidate"
     },
     {
@@ -7805,7 +7805,7 @@
         }
       ],
       "skos:notation": "Task_BuildRun",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-report-signing.bpmn#Task_BuildRun",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-report-signing.bpmn#Task_BuildRun",
       "skos:note": "candidate"
     },
     {
@@ -7825,7 +7825,7 @@
         }
       ],
       "skos:notation": "Task_HumanSign",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-report-signing.bpmn#Task_HumanSign",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-report-signing.bpmn#Task_HumanSign",
       "skos:note": "candidate"
     },
     {
@@ -7845,7 +7845,7 @@
         }
       ],
       "skos:notation": "Task_RecordAttestation",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-report-signing.bpmn#Task_RecordAttestation",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-report-signing.bpmn#Task_RecordAttestation",
       "skos:note": "candidate"
     },
     {
@@ -7865,7 +7865,7 @@
         }
       ],
       "skos:notation": "Task_ResolveReach",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-report-signing.bpmn#Task_ResolveReach",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-report-signing.bpmn#Task_ResolveReach",
       "skos:note": "candidate"
     },
     {
@@ -7885,7 +7885,7 @@
         }
       ],
       "skos:notation": "Task_StoreSigned",
-      "dcterms:source": "cat-harness/processes/sdlc/qa-report-signing.bpmn#Task_StoreSigned",
+      "dcterms:source": "cat-harness/sdlc/processes/qa-report-signing.bpmn#Task_StoreSigned",
       "skos:note": "candidate"
     },
     {
@@ -8065,7 +8065,7 @@
         }
       ],
       "skos:notation": "A_Categorize",
-      "dcterms:source": "cat-harness/processes/sdlc/related-work.bpmn#A_Categorize",
+      "dcterms:source": "cat-harness/sdlc/processes/related-work.bpmn#A_Categorize",
       "skos:note": "candidate"
     },
     {
@@ -8085,7 +8085,7 @@
         }
       ],
       "skos:notation": "A_Record",
-      "dcterms:source": "cat-harness/processes/sdlc/related-work.bpmn#A_Record",
+      "dcterms:source": "cat-harness/sdlc/processes/related-work.bpmn#A_Record",
       "skos:note": "candidate"
     },
     {
@@ -8105,7 +8105,7 @@
         }
       ],
       "skos:notation": "A_SearchBeans",
-      "dcterms:source": "cat-harness/processes/sdlc/related-work.bpmn#A_SearchBeans",
+      "dcterms:source": "cat-harness/sdlc/processes/related-work.bpmn#A_SearchBeans",
       "skos:note": "candidate"
     },
     {
@@ -8125,7 +8125,7 @@
         }
       ],
       "skos:notation": "A_SearchIssues",
-      "dcterms:source": "cat-harness/processes/sdlc/related-work.bpmn#A_SearchIssues",
+      "dcterms:source": "cat-harness/sdlc/processes/related-work.bpmn#A_SearchIssues",
       "skos:note": "candidate"
     },
     {
@@ -8140,7 +8140,7 @@
         }
       ],
       "skos:notation": "U_Coordinate",
-      "dcterms:source": "cat-harness/processes/sdlc/related-work.bpmn#U_Coordinate",
+      "dcterms:source": "cat-harness/sdlc/processes/related-work.bpmn#U_Coordinate",
       "skos:note": "candidate"
     },
     {
@@ -8360,7 +8360,7 @@
         }
       ],
       "skos:notation": "Call_Watch",
-      "dcterms:source": "cat-harness/processes/sdlc/repository-health-watch.bpmn#Call_Watch",
+      "dcterms:source": "cat-harness/sdlc/processes/repository-health-watch.bpmn#Call_Watch",
       "skos:note": "candidate"
     },
     {
@@ -8380,7 +8380,7 @@
         }
       ],
       "skos:notation": "Task_Check",
-      "dcterms:source": "cat-harness/processes/sdlc/repository-health-watch.bpmn#Task_Check",
+      "dcterms:source": "cat-harness/sdlc/processes/repository-health-watch.bpmn#Task_Check",
       "skos:note": "candidate"
     },
     {
@@ -8400,7 +8400,7 @@
         }
       ],
       "skos:notation": "A_BindFrontMatter",
-      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_BindFrontMatter",
+      "dcterms:source": "cat-harness/sdlc/processes/requirements-filing.bpmn#A_BindFrontMatter",
       "skos:note": "candidate"
     },
     {
@@ -8420,7 +8420,7 @@
         }
       ],
       "skos:notation": "A_ClassifyFiling",
-      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_ClassifyFiling",
+      "dcterms:source": "cat-harness/sdlc/processes/requirements-filing.bpmn#A_ClassifyFiling",
       "skos:note": "candidate"
     },
     {
@@ -8440,7 +8440,7 @@
         }
       ],
       "skos:notation": "A_PromoteOrUpdate",
-      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_PromoteOrUpdate",
+      "dcterms:source": "cat-harness/sdlc/processes/requirements-filing.bpmn#A_PromoteOrUpdate",
       "skos:note": "candidate"
     },
     {
@@ -8460,7 +8460,7 @@
         }
       ],
       "skos:notation": "A_RecordFilingSignoff",
-      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_RecordFilingSignoff",
+      "dcterms:source": "cat-harness/sdlc/processes/requirements-filing.bpmn#A_RecordFilingSignoff",
       "skos:note": "candidate"
     },
     {
@@ -8480,7 +8480,7 @@
         }
       ],
       "skos:notation": "A_RunCheck",
-      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_RunCheck",
+      "dcterms:source": "cat-harness/sdlc/processes/requirements-filing.bpmn#A_RunCheck",
       "skos:note": "candidate"
     },
     {
@@ -8500,7 +8500,7 @@
         }
       ],
       "skos:notation": "A_UpdateIndex",
-      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_UpdateIndex",
+      "dcterms:source": "cat-harness/sdlc/processes/requirements-filing.bpmn#A_UpdateIndex",
       "skos:note": "candidate"
     },
     {
@@ -8520,7 +8520,7 @@
         }
       ],
       "skos:notation": "A_UpdateLifecycle",
-      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#A_UpdateLifecycle",
+      "dcterms:source": "cat-harness/sdlc/processes/requirements-filing.bpmn#A_UpdateLifecycle",
       "skos:note": "candidate"
     },
     {
@@ -8540,7 +8540,7 @@
         }
       ],
       "skos:notation": "BA_ReviewFiling",
-      "dcterms:source": "cat-harness/processes/sdlc/requirements-filing.bpmn#BA_ReviewFiling",
+      "dcterms:source": "cat-harness/sdlc/processes/requirements-filing.bpmn#BA_ReviewFiling",
       "skos:note": "candidate"
     },
     {
@@ -8820,7 +8820,7 @@
         }
       ],
       "skos:notation": "Task_Ask",
-      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Ask",
+      "dcterms:source": "cat-harness/sdlc/processes/saturation-meta-merge.bpmn#Task_Ask",
       "skos:note": "candidate"
     },
     {
@@ -8840,7 +8840,7 @@
         }
       ],
       "skos:notation": "Task_Done",
-      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Done",
+      "dcterms:source": "cat-harness/sdlc/processes/saturation-meta-merge.bpmn#Task_Done",
       "skos:note": "candidate"
     },
     {
@@ -8860,7 +8860,7 @@
         }
       ],
       "skos:notation": "Task_Hold",
-      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Hold",
+      "dcterms:source": "cat-harness/sdlc/processes/saturation-meta-merge.bpmn#Task_Hold",
       "skos:note": "candidate"
     },
     {
@@ -8880,7 +8880,7 @@
         }
       ],
       "skos:notation": "Task_Land",
-      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Land",
+      "dcterms:source": "cat-harness/sdlc/processes/saturation-meta-merge.bpmn#Task_Land",
       "skos:note": "candidate"
     },
     {
@@ -8900,7 +8900,7 @@
         }
       ],
       "skos:notation": "Task_MainRun",
-      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_MainRun",
+      "dcterms:source": "cat-harness/sdlc/processes/saturation-meta-merge.bpmn#Task_MainRun",
       "skos:note": "candidate"
     },
     {
@@ -8920,7 +8920,7 @@
         }
       ],
       "skos:notation": "Task_Owner",
-      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Owner",
+      "dcterms:source": "cat-harness/sdlc/processes/saturation-meta-merge.bpmn#Task_Owner",
       "skos:note": "candidate"
     },
     {
@@ -8940,7 +8940,7 @@
         }
       ],
       "skos:notation": "Task_Report",
-      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_Report",
+      "dcterms:source": "cat-harness/sdlc/processes/saturation-meta-merge.bpmn#Task_Report",
       "skos:note": "candidate"
     },
     {
@@ -8960,7 +8960,7 @@
         }
       ],
       "skos:notation": "Task_SibHold",
-      "dcterms:source": "cat-harness/processes/sdlc/saturation-meta-merge.bpmn#Task_SibHold",
+      "dcterms:source": "cat-harness/sdlc/processes/saturation-meta-merge.bpmn#Task_SibHold",
       "skos:note": "candidate"
     },
     {
@@ -9440,7 +9440,7 @@
         }
       ],
       "skos:notation": "Task_PrepareCohort",
-      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_PrepareCohort",
+      "dcterms:source": "cat-harness/sdlc/processes/sme-test-data-review.bpmn#Task_PrepareCohort",
       "skos:note": "candidate"
     },
     {
@@ -9460,7 +9460,7 @@
         }
       ],
       "skos:notation": "Task_PrepareWorkedCase",
-      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_PrepareWorkedCase",
+      "dcterms:source": "cat-harness/sdlc/processes/sme-test-data-review.bpmn#Task_PrepareWorkedCase",
       "skos:note": "candidate"
     },
     {
@@ -9480,7 +9480,7 @@
         }
       ],
       "skos:notation": "Task_RecordCaseVerdict",
-      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_RecordCaseVerdict",
+      "dcterms:source": "cat-harness/sdlc/processes/sme-test-data-review.bpmn#Task_RecordCaseVerdict",
       "skos:note": "candidate"
     },
     {
@@ -9500,7 +9500,7 @@
         }
       ],
       "skos:notation": "Task_SmeJudge",
-      "dcterms:source": "cat-harness/processes/sdlc/sme-test-data-review.bpmn#Task_SmeJudge",
+      "dcterms:source": "cat-harness/sdlc/processes/sme-test-data-review.bpmn#Task_SmeJudge",
       "skos:note": "candidate"
     },
     {
@@ -9520,7 +9520,7 @@
         }
       ],
       "skos:notation": "A_Collect",
-      "dcterms:source": "cat-harness/processes/sdlc/stalled-agent-triage.bpmn#A_Collect",
+      "dcterms:source": "cat-harness/sdlc/processes/stalled-agent-triage.bpmn#A_Collect",
       "skos:note": "candidate"
     },
     {
@@ -9540,7 +9540,7 @@
         }
       ],
       "skos:notation": "A_Consolidate",
-      "dcterms:source": "cat-harness/processes/sdlc/stalled-agent-triage.bpmn#A_Consolidate",
+      "dcterms:source": "cat-harness/sdlc/processes/stalled-agent-triage.bpmn#A_Consolidate",
       "skos:note": "candidate"
     },
     {
@@ -9560,7 +9560,7 @@
         }
       ],
       "skos:notation": "A_Footprint",
-      "dcterms:source": "cat-harness/processes/sdlc/stalled-agent-triage.bpmn#A_Footprint",
+      "dcterms:source": "cat-harness/sdlc/processes/stalled-agent-triage.bpmn#A_Footprint",
       "skos:note": "candidate"
     },
     {
@@ -9580,7 +9580,7 @@
         }
       ],
       "skos:notation": "A_Record",
-      "dcterms:source": "cat-harness/processes/sdlc/stalled-agent-triage.bpmn#A_Record",
+      "dcterms:source": "cat-harness/sdlc/processes/stalled-agent-triage.bpmn#A_Record",
       "skos:note": "candidate"
     },
     {
@@ -9600,7 +9600,7 @@
         }
       ],
       "skos:notation": "S_Reroute",
-      "dcterms:source": "cat-harness/processes/sdlc/stalled-agent-triage.bpmn#S_Reroute",
+      "dcterms:source": "cat-harness/sdlc/processes/stalled-agent-triage.bpmn#S_Reroute",
       "skos:note": "candidate"
     },
     {
@@ -9615,7 +9615,7 @@
         }
       ],
       "skos:notation": "U_Decide",
-      "dcterms:source": "cat-harness/processes/sdlc/stalled-agent-triage.bpmn#U_Decide",
+      "dcterms:source": "cat-harness/sdlc/processes/stalled-agent-triage.bpmn#U_Decide",
       "skos:note": "candidate"
     },
     {
@@ -10515,7 +10515,7 @@
         }
       ],
       "skos:notation": "Call_BeanClose",
-      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_BeanClose",
+      "dcterms:source": "cat-harness/sdlc/processes/test-data-curation.bpmn#Call_BeanClose",
       "skos:note": "candidate"
     },
     {
@@ -10535,7 +10535,7 @@
         }
       ],
       "skos:notation": "Call_BeanOpen",
-      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_BeanOpen",
+      "dcterms:source": "cat-harness/sdlc/processes/test-data-curation.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -10555,7 +10555,7 @@
         }
       ],
       "skos:notation": "Call_ContentTypeSpecialisation",
-      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_ContentTypeSpecialisation",
+      "dcterms:source": "cat-harness/sdlc/processes/test-data-curation.bpmn#Call_ContentTypeSpecialisation",
       "skos:note": "candidate"
     },
     {
@@ -10571,11 +10571,11 @@
       ],
       "skos:definition": [
         {
-          "@value": "Calls `Process_SmeTestDataReview` (`processes/sdlc/sme-test-data-review.bpmn`) so a human SME in a `judgementOnly` lane reviews each worked case (`decision-support`) or cohort plus expected value (`indicator-definition`) and records an attributable `sme-case-verdict/1.0.0` node."
+          "@value": "Calls `Process_SmeTestDataReview` (`sdlc/processes/sme-test-data-review.bpmn`) so a human SME in a `judgementOnly` lane reviews each worked case (`decision-support`) or cohort plus expected value (`indicator-definition`) and records an attributable `sme-case-verdict/1.0.0` node."
         }
       ],
       "skos:notation": "Call_SmeReview",
-      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Call_SmeReview",
+      "dcterms:source": "cat-harness/sdlc/processes/test-data-curation.bpmn#Call_SmeReview",
       "skos:note": "candidate"
     },
     {
@@ -10595,7 +10595,7 @@
         }
       ],
       "skos:notation": "Task_ClassifySet",
-      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_ClassifySet",
+      "dcterms:source": "cat-harness/sdlc/processes/test-data-curation.bpmn#Task_ClassifySet",
       "skos:note": "candidate"
     },
     {
@@ -10615,7 +10615,7 @@
         }
       ],
       "skos:notation": "Task_CurateFixed",
-      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_CurateFixed",
+      "dcterms:source": "cat-harness/sdlc/processes/test-data-curation.bpmn#Task_CurateFixed",
       "skos:note": "candidate"
     },
     {
@@ -10635,7 +10635,7 @@
         }
       ],
       "skos:notation": "Task_DetermineSpecialisation",
-      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_DetermineSpecialisation",
+      "dcterms:source": "cat-harness/sdlc/processes/test-data-curation.bpmn#Task_DetermineSpecialisation",
       "skos:note": "candidate"
     },
     {
@@ -10655,7 +10655,7 @@
         }
       ],
       "skos:notation": "Task_VerifySelfIdentifying",
-      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_VerifySelfIdentifying",
+      "dcterms:source": "cat-harness/sdlc/processes/test-data-curation.bpmn#Task_VerifySelfIdentifying",
       "skos:note": "candidate"
     },
     {
@@ -10675,7 +10675,7 @@
         }
       ],
       "skos:notation": "Task_WriteRecipe",
-      "dcterms:source": "cat-harness/processes/sdlc/test-data-curation.bpmn#Task_WriteRecipe",
+      "dcterms:source": "cat-harness/sdlc/processes/test-data-curation.bpmn#Task_WriteRecipe",
       "skos:note": "candidate"
     },
     {
@@ -10695,7 +10695,7 @@
         }
       ],
       "skos:notation": "A_BindData",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_BindData",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#A_BindData",
       "skos:note": "candidate"
     },
     {
@@ -10715,7 +10715,7 @@
         }
       ],
       "skos:notation": "A_Execute",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_Execute",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#A_Execute",
       "skos:note": "candidate"
     },
     {
@@ -10735,7 +10735,7 @@
         }
       ],
       "skos:notation": "A_FileCertification",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_FileCertification",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#A_FileCertification",
       "skos:note": "candidate"
     },
     {
@@ -10755,7 +10755,7 @@
         }
       ],
       "skos:notation": "A_RecordCertification",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_RecordCertification",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#A_RecordCertification",
       "skos:note": "candidate"
     },
     {
@@ -10775,7 +10775,7 @@
         }
       ],
       "skos:notation": "A_RecordRefusal",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_RecordRefusal",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#A_RecordRefusal",
       "skos:note": "candidate"
     },
     {
@@ -10795,7 +10795,7 @@
         }
       ],
       "skos:notation": "A_RecordUndetermined",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_RecordUndetermined",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#A_RecordUndetermined",
       "skos:note": "candidate"
     },
     {
@@ -10815,7 +10815,7 @@
         }
       ],
       "skos:notation": "A_ReExecuteSample",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_ReExecuteSample",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#A_ReExecuteSample",
       "skos:note": "candidate"
     },
     {
@@ -10835,7 +10835,7 @@
         }
       ],
       "skos:notation": "A_Request",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_Request",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#A_Request",
       "skos:note": "candidate"
     },
     {
@@ -10855,7 +10855,7 @@
         }
       ],
       "skos:notation": "A_ResolvePlan",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_ResolvePlan",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#A_ResolvePlan",
       "skos:note": "candidate"
     },
     {
@@ -10875,7 +10875,7 @@
         }
       ],
       "skos:notation": "A_WriteRun",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#A_WriteRun",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#A_WriteRun",
       "skos:note": "candidate"
     },
     {
@@ -10895,7 +10895,7 @@
         }
       ],
       "skos:notation": "Call_BeanClose",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#Call_BeanClose",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#Call_BeanClose",
       "skos:note": "candidate"
     },
     {
@@ -10915,7 +10915,7 @@
         }
       ],
       "skos:notation": "Call_BeanOpen",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#Call_BeanOpen",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -10935,7 +10935,7 @@
         }
       ],
       "skos:notation": "Call_Sign",
-      "dcterms:source": "cat-harness/processes/sdlc/test-plan-execution.bpmn#Call_Sign",
+      "dcterms:source": "cat-harness/sdlc/processes/test-plan-execution.bpmn#Call_Sign",
       "skos:note": "candidate"
     },
     {
@@ -11075,7 +11075,7 @@
         }
       ],
       "skos:notation": "Task_Close",
-      "dcterms:source": "cat-harness/processes/sdlc/tracked-watch.bpmn#Task_Close",
+      "dcterms:source": "cat-harness/sdlc/processes/tracked-watch.bpmn#Task_Close",
       "skos:note": "candidate"
     },
     {
@@ -11095,7 +11095,7 @@
         }
       ],
       "skos:notation": "Task_Label",
-      "dcterms:source": "cat-harness/processes/sdlc/tracked-watch.bpmn#Task_Label",
+      "dcterms:source": "cat-harness/sdlc/processes/tracked-watch.bpmn#Task_Label",
       "skos:note": "candidate"
     },
     {
@@ -11115,7 +11115,7 @@
         }
       ],
       "skos:notation": "Task_Track",
-      "dcterms:source": "cat-harness/processes/sdlc/tracked-watch.bpmn#Task_Track",
+      "dcterms:source": "cat-harness/sdlc/processes/tracked-watch.bpmn#Task_Track",
       "skos:note": "candidate"
     },
     {
@@ -11335,7 +11335,7 @@
         }
       ],
       "skos:notation": "A_ApplyPin",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#A_ApplyPin",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#A_ApplyPin",
       "skos:note": "candidate"
     },
     {
@@ -11355,7 +11355,7 @@
         }
       ],
       "skos:notation": "A_Evidence",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#A_Evidence",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#A_Evidence",
       "skos:note": "candidate"
     },
     {
@@ -11375,7 +11375,7 @@
         }
       ],
       "skos:notation": "A_Impact",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#A_Impact",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#A_Impact",
       "skos:note": "candidate"
     },
     {
@@ -11395,7 +11395,7 @@
         }
       ],
       "skos:notation": "A_RecordOutcome",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#A_RecordOutcome",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#A_RecordOutcome",
       "skos:note": "candidate"
     },
     {
@@ -11415,7 +11415,7 @@
         }
       ],
       "skos:notation": "A_Scope",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#A_Scope",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#A_Scope",
       "skos:note": "candidate"
     },
     {
@@ -11435,7 +11435,7 @@
         }
       ],
       "skos:notation": "Call_BeanClose",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#Call_BeanClose",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#Call_BeanClose",
       "skos:note": "candidate"
     },
     {
@@ -11455,7 +11455,7 @@
         }
       ],
       "skos:notation": "Call_BeanOpen",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#Call_BeanOpen",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -11475,7 +11475,7 @@
         }
       ],
       "skos:notation": "Call_OptionsAnalysis",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#Call_OptionsAnalysis",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#Call_OptionsAnalysis",
       "skos:note": "candidate"
     },
     {
@@ -11495,7 +11495,7 @@
         }
       ],
       "skos:notation": "PM_Decide",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#PM_Decide",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#PM_Decide",
       "skos:note": "candidate"
     },
     {
@@ -11515,7 +11515,7 @@
         }
       ],
       "skos:notation": "R_Review",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#R_Review",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#R_Review",
       "skos:note": "candidate"
     },
     {
@@ -11535,7 +11535,7 @@
         }
       ],
       "skos:notation": "Task_Gates",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#Task_Gates",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#Task_Gates",
       "skos:note": "candidate"
     },
     {
@@ -11555,7 +11555,7 @@
         }
       ],
       "skos:notation": "Task_Mvp",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-version-adoption.bpmn#Task_Mvp",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-version-adoption.bpmn#Task_Mvp",
       "skos:note": "candidate"
     },
     {
@@ -11575,7 +11575,7 @@
         }
       ],
       "skos:notation": "A_PickUp",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#A_PickUp",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-pin-watch.bpmn#A_PickUp",
       "skos:note": "candidate"
     },
     {
@@ -11595,7 +11595,7 @@
         }
       ],
       "skos:notation": "Call_Adopt",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#Call_Adopt",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-pin-watch.bpmn#Call_Adopt",
       "skos:note": "candidate"
     },
     {
@@ -11615,7 +11615,7 @@
         }
       ],
       "skos:notation": "Call_BeanClose",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#Call_BeanClose",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-pin-watch.bpmn#Call_BeanClose",
       "skos:note": "candidate"
     },
     {
@@ -11635,7 +11635,7 @@
         }
       ],
       "skos:notation": "Call_BeanOpen",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#Call_BeanOpen",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-pin-watch.bpmn#Call_BeanOpen",
       "skos:note": "candidate"
     },
     {
@@ -11655,7 +11655,7 @@
         }
       ],
       "skos:notation": "Task_CloseIssue",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#Task_CloseIssue",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-pin-watch.bpmn#Task_CloseIssue",
       "skos:note": "candidate"
     },
     {
@@ -11675,7 +11675,7 @@
         }
       ],
       "skos:notation": "Task_QueryUpstream",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#Task_QueryUpstream",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-pin-watch.bpmn#Task_QueryUpstream",
       "skos:note": "candidate"
     },
     {
@@ -11695,7 +11695,7 @@
         }
       ],
       "skos:notation": "Task_ReadPins",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#Task_ReadPins",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-pin-watch.bpmn#Task_ReadPins",
       "skos:note": "candidate"
     },
     {
@@ -11715,7 +11715,7 @@
         }
       ],
       "skos:notation": "Task_TrackIssue",
-      "dcterms:source": "cat-harness/processes/sdlc/upstream-pin-watch.bpmn#Task_TrackIssue",
+      "dcterms:source": "cat-harness/sdlc/processes/upstream-pin-watch.bpmn#Task_TrackIssue",
       "skos:note": "candidate"
     },
     {

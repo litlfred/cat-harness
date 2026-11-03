@@ -13,7 +13,7 @@ _Generated from JSON Schema — do not edit by hand. Run `bun run cat-harness-to
 
 ## Input
 
-What a drain starts from: every bean copy to read, the agents that may hold a bean and how each is recognised, what each owner already holds, the activity window, and where the queue is written. Skill skills/sdlc/sdlc-core/bean-drain.md, bean n7x7.
+What a drain starts from: every bean copy to read, the agents that may hold a bean and how each is recognised, what each owner already holds, the activity window, and where the queue is written. Skill work-plan/skills/work-plan/bean-drain.md, bean n7x7.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
@@ -45,14 +45,14 @@ What a drain starts from: every bean copy to read, the agents that may hold a be
 
 ## Output
 
-What a drain produces: the queue, one claim check per bean taken, and what each bean ended as. The three definitions are also the outputs of the drain-queue, bean-claim-check and open-work-lookup Tools. Skill skills/sdlc/sdlc-core/bean-drain.md, bean n7x7.
+What a drain produces: the queue, one claim check per bean taken, and what each bean ended as. The three definitions are also the outputs of the drain-queue, bean-claim-check and open-work-lookup Tools. Skill work-plan/skills/work-plan/bean-drain.md, bean n7x7.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|
 | `queue` | any | **yes** |  |
 | `checks` | array<any> | **yes** | One per bean a drainer tried to take, skips included. |
 | `results` | array<object> | **yes** | What each claimed bean ended as. |
-| `stagingLinks` | any | no | The staging preview behind any request the drain puts to the owner (an asked-owner question, a PR left for review): one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
+| `stagingLinks` | any | no | The staging preview behind any request the drain puts to the owner (an asked-owner question, a PR left for review): one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness sdlc/skills/sdlc-core/staging-review.md §"The deep-link rule". |
 
 ### `results[]`
 

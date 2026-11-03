@@ -6,7 +6,7 @@ generated: cat-harness-tools/scripts/gen-skill-commands.ts
 
 # /rendered-impact
 
-Run the `rendered-impact` skill. Read [`skills/sdlc/sdlc-core/rendered-impact.md`](../../skills/sdlc/sdlc-core/rendered-impact.md) and follow it.
+Run the `rendered-impact` skill. Read [`sdlc/skills/sdlc-core/rendered-impact.md`](../../sdlc/skills/sdlc-core/rendered-impact.md) and follow it.
 
 This command is a pointer, generated from that skill's `user_invocable: true`; the
 instructions live in the skill and nowhere else. The same skill is also served as the

@@ -244,8 +244,8 @@ about one page on it: *"next time give appropraite link
 …/STAGING/<branch>/<iris-replica>/"*. Linking the root hands the reader a route the
 agent already knew, and hands it to somebody who types with difficulty. The rule
 and where the page list comes from:
-[`staging-review`](../../sdlc/sdlc-core/staging-review.md) §"The deep-link rule"; the failure it also
-hides: [`continual-progress`](../../sdlc/sdlc-core/continual-progress.md) §"Link the PAGE, never the
+[`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §"The deep-link rule"; the failure it also
+hides: [`continual-progress`](../../../sdlc/skills/sdlc-core/continual-progress.md) §"Link the PAGE, never the
 site root".
 
 Six parts, in order:
@@ -272,7 +272,7 @@ explicit question tool: the end-of-turn "next" line, a bean's `## Done when`, a
 PR body asking the author to choose, a comment on an issue. Those are where it
 is most often broken, because they feel like reporting rather than asking.
 A PR body as a whole, not only its question, is governed by
-[`pr-description`](../../sdlc/sdlc-core/pr-description.md).
+[`pr-description`](../../../sdlc/skills/sdlc-core/pr-description.md).
 
 **Feature work breaks this more than content work, and for a specific reason:
 the agent has just finished an impact analysis, and the vocabulary it built

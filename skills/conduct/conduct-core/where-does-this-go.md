@@ -51,11 +51,11 @@ placement.
 
 | # | the question you are actually asking | who answers it |
 |---|---|---|
-| 1 | Is this a work item, a sign-off, or a code review? | [`issue-working`](../../sdlc/sdlc-core/issue-working.md) §"What an issue is *for*, against its neighbours" |
-| 2 | Is this feature work that needs a GitHub issue first? | [`crdm-detect`](../../sdlc/crdm/crdm-detect.md) §"Issue association" |
-| 3 | What TYPE of bean is it, and under which parent? | [`todo-manager`](../../sdlc/sdlc-core/todo-manager.md), and `check:bean-parents` enforces it |
-| 4 | Does a bean for this already exist? | [`todo-manager`](../../sdlc/sdlc-core/todo-manager.md) §"Check before you create" |
-| 5 | May I claim it — is a sibling already on it? | [`bean-coordination`](../../sdlc/sdlc-core/bean-coordination.md) §"A claim is branch-local" |
+| 1 | Is this a work item, a sign-off, or a code review? | [`issue-working`](../../../sdlc/skills/sdlc-core/issue-working.md) §"What an issue is *for*, against its neighbours" |
+| 2 | Is this feature work that needs a GitHub issue first? | [`crdm-detect`](../../../sdlc/skills/crdm/crdm-detect.md) §"Issue association" |
+| 3 | What TYPE of bean is it, and under which parent? | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), and `check:bean-parents` enforces it |
+| 4 | Does a bean for this already exist? | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"Check before you create" |
+| 5 | May I claim it — is a sibling already on it? | [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"A claim is branch-local" |
 | 6 | Which directory, and what KIND of graph does it hold? | [`content-context-and-state-graphs`](../../kg/kg-core/content-context-and-state-graphs.md) and [`directory-conventions`](../../kg/kg-core/directory-conventions.md) |
 | 7 | Is this an adapter, a profile, or a visualiser? | [`content-profiles`](../../authoring/authoring-core/content-profiles.md), and [issue #764](https://github.com/litlfred/folio-assistant/issues/764) for the axis still open |
 | 8 | Does this belong in `AGENTS.md` or in a skill? | [`AGENTS.md`](../../../AGENTS.md) §"What is specific to THIS layer" — **always the skill** |
@@ -110,5 +110,5 @@ It is not a decision procedure you run every turn. Filing decisions are
 frequent and mostly obvious, and a router consulted for every obvious one is
 overhead that gets skipped, taking the non-obvious cases with it. Reach for it
 when you notice yourself **about to guess** — which is the same trigger
-[`opening-brief`](../../sdlc/sdlc-core/opening-brief.md) uses, and for the same reason: the cost is
+[`opening-brief`](../../../sdlc/skills/sdlc-core/opening-brief.md) uses, and for the same reason: the cost is
 in the decision nobody paused over.

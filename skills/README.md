@@ -22,7 +22,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `skills`, holding `skills
 | [`permissions/`](permissions/) | _nothing declares what this holds_ | |
 | [`process/`](process/) | How work is modelled and run: BPMN and DMN, roles and authorization, RACI, methodologies, and the workflow engine's state. | |
 | [`requirements/`](requirements/) | _nothing declares what this holds_ | |
-| [`sdlc/`](sdlc/) | How work is planned, claimed, reviewed, merged, released and coordinated: the work plan, issues and PRs, CI and gates, requirements (CRDM, spec-kit), and multi-session coordination. | |
+| [`sdlc/`](../sdlc/skills/) | How work is planned, claimed, reviewed, merged, released and coordinated: the work plan, issues and PRs, CI and gates, requirements (CRDM, spec-kit), and multi-session coordination. | |
 | [`skill-definitions/`](skill-definitions/) | _nothing declares what this holds_ | |
 | [`tools/`](tools/) | How the harness's Tools are defined, assembled and served: the MCP contract, assembly and projection, how a skill names the Tool it uses, and why a covered Tool is not yet a reachable one. | |
 | [`ui/`](ui/) | How the corpus is rendered, published and presented: the docs site, viewers, boards, themes, and their QC. | |

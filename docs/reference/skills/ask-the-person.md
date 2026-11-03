@@ -55,7 +55,7 @@ What the calling step gets back: proof the question went out twice, and the pers
 | `quote` | string \| null | **yes** | The person's answer, verbatim, with who and when; null unless answered. |
 | `defaultTaken` | boolean | **yes** | true when the work went ahead on ifSilent. Never true for an irreversible step. |
 | `rule` | string | no | When the answer settles how a kind of thing is decided: the skill it was written into, in the same turn. |
-| `stagingLinks` | any | no | When the question asks the person to look at changed pages: the staging preview, one deep link per changed page with the same page on main, shown in the chat copy. When there is no preview, say so in `missing`. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
+| `stagingLinks` | any | no | When the question asks the person to look at changed pages: the staging preview, one deep link per changed page with the same page on main, shown in the chat copy. When there is no preview, say so in `missing`. Rule: cat-harness sdlc/skills/sdlc-core/staging-review.md §"The deep-link rule". |
 
 ### `asked`
 

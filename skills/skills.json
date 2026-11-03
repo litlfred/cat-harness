@@ -43,12 +43,6 @@
       "path": "tools",
       "title": "The tool surface",
       "description": "How the harness's Tools are defined, assembled and served: the MCP contract, assembly and projection, how a skill names the Tool it uses, and why a covered Tool is not yet a reachable one."
-    },
-    {
-      "id": "sdlc",
-      "path": "sdlc",
-      "title": "Software delivery practice",
-      "description": "How work is planned, claimed, reviewed, merged, released and coordinated: the work plan, issues and PRs, CI and gates, requirements (CRDM, spec-kit), and multi-session coordination."
     }
   ],
   "directories": [

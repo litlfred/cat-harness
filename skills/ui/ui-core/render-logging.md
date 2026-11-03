@@ -179,7 +179,7 @@ knows how to push, this one knows what to write.
 Reading back: `--read [--day YYYY-MM-DD]`. It **exits 1 when any line could
 not be read**, and prints which — a short count must be visible as short,
 never passed off as complete. Same rule as
-[`ci-health`](../../sdlc/sdlc-core/ci-health.md): could-not-determine is never rendered as clean.
+[`ci-health`](../../../sdlc/skills/sdlc-core/ci-health.md): could-not-determine is never rendered as clean.
 
 ## A path is checked by VALUE, never trusted by provenance
 
@@ -213,7 +213,7 @@ is on the publish branch belongs where its subject's absence can be seen.
 | | |
 |---|---|
 | the process | [`staging-render-log.bpmn`](../../../processes/ui/staging-render-log.bpmn) |
-| the entry shape it specialises | `schemas/sdlc/log-entry.ts`, `skills/sdlc/sdlc-core/activity-log.md` |
+| the entry shape it specialises | `schemas/sdlc/log-entry.ts`, `sdlc/skills/sdlc-core/activity-log.md` |
 | why the publish branch loses things | bean `plj1`, `scripts/restore-staging.ts` |
 | why a closed PR is not an abandoned branch | bean `w2g5` |
 | the path hazard | bean `fuzm` |

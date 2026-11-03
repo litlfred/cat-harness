@@ -25,7 +25,7 @@ Method: [`wiregen`](../../../methodologies/wiregen.md). Process: [`processes/ui/
 | use | directory |
 |---|---|
 | **As-is** | `<instance>/docs/wireframes/<topic>/`, in the instance that declares the visualiser: `cat-harness/docs/wireframes/<topic>/` for this harness's own pages, and a content layer's own `docs/wireframes/<topic>/` for a page it declares |
-| **Design**, from a CRDM request | `docs/proposals/<slug>/wireframes/`, beside the request's proposal `docs/proposals/<slug>.md`: the candidates are **assets of the proposal**. When the proposal is filed (`git mv` to `docs/requirements/`, [`crdm-requirements-workflow`](../../sdlc/crdm/crdm-requirements-workflow.md)), its asset directory moves with it in the same commit. |
+| **Design**, from a CRDM request | `docs/proposals/<slug>/wireframes/`, beside the request's proposal `docs/proposals/<slug>.md`: the candidates are **assets of the proposal**. When the proposal is filed (`git mv` to `docs/requirements/`, [`crdm-requirements-workflow`](../../../sdlc/skills/crdm/crdm-requirements-workflow.md)), its asset directory moves with it in the same commit. |
 
 Either directory holds:
 - `intent.md`
@@ -43,7 +43,7 @@ The contract is [`input.schema.json`](../../../schemas/skills/wireframe-design-r
 - **In:** the `use` (`design` or `as-is`), the `topic` (for CRDM, the proposal slug), the `surface`, and, from CRDM, the `requirements` that change it, the `proposal` path, the `humanReviewer` (requester or BA), the `channels` the candidates are shown in, and the `branch`.
 - **Out — the renderings:** `assetDir`, `intent`, and one `candidates[]` entry per candidate: its `source` HTML path, its `screenshots.web` and `screenshots.mobile` paths (from `wireframe-check`), their `staging` deep links, its per-criterion `entries`, and its `outcome` with the `reason`. `chosen` names the candidate, who chose it and the comment that records it; it is absent until a person chooses.
 - **Out — as changed assets:** `changedAssets[]` lists every wireframe file the branch adds, changes or removes (candidate HTML, screenshots, intent, reviews) in the record shape a staging preview's graph carries (`change`, `kind`, `title`, `before`, `after`, `source`, `pages` or `pagesUnknown`; `ChangedAsset` in cat-harness-tools `scripts/kg-changed-assets.ts`). The review therefore lists the drawings the same way it lists every other changed asset.
-- **Out — staging links:** `stagingLinks`, the shape every request for feedback carries ([`staging-review`](../../sdlc/sdlc-core/staging-review.md)), copied inline as `definitions.stagingLinks`.
+- **Out — staging links:** `stagingLinks`, the shape every request for feedback carries ([`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md)), copied inline as `definitions.stagingLinks`.
 
 ## Two uses
 
@@ -98,19 +98,19 @@ review or sign-off carries it: one deep link per changed page, to the anchor
 where the change sits, with the same page on main as *before*. Where the skill
 declares an output contract, they go in its `stagingLinks` field. The rule, and
 where the page list comes from:
-[`staging-review`](../../sdlc/sdlc-core/staging-review.md) §"The deep-link rule".
+[`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §"The deep-link rule".
 
 ## Showing it to the requester
 
 Design use from CRDM ends in a person's choice, so the candidates must be in front of that person before implementation starts:
 
 1. **Commit** the candidates, `intent.md`, `checks/` (screenshots) and `reviews/` under `docs/proposals/<slug>/wireframes/` **on the feature branch**, so `feature-staging` publishes them with the rest of the branch.
-2. **Show** them where the requester will look, chosen from context: the conversation, the issue the request came from, the pull request, or more than one of these. Where it goes is a judgement ([`staging-review`](../../sdlc/sdlc-core/staging-review.md), the deep-link rule, point 5); every place chosen carries the same content: a short narrative of what each candidate does differently; STAGING deep links to each candidate's HTML (not the site root); and its web and mobile screenshots shown as images, not only linked. Say which could not be linked or rendered, and why.
+2. **Show** them where the requester will look, chosen from context: the conversation, the issue the request came from, the pull request, or more than one of these. Where it goes is a judgement ([`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md), the deep-link rule, point 5); every place chosen carries the same content: a short narrative of what each candidate does differently; STAGING deep links to each candidate's HTML (not the site root); and its web and mobile screenshots shown as images, not only linked. Say which could not be linked or rendered, and why.
 3. **Ask** the requester or BA to choose, with the comparison (one row per candidate, from `A_CompareOptions`) and a recommendation, per [`interaction-modality`](../../conduct/conduct-core/interaction-modality.md) where it applies.
 4. **Record** their choice in the proposal and in the output's `chosen`. An agent never chooses on their behalf. Implementation (CRDM Phase 6) builds against the chosen candidate, and the delivery summary links it beside the after-screenshot.
 
 ## Related
 
 - [`theme-ui-review`](theme-ui-review.md): reviews the **ingested graphical assets** in their design, also at both viewports. At ingestion only (bean `9fdi`) — it no longer reviews the built result.
-- [`adjudication`](../../sdlc/sdlc-core/adjudication.md)
+- [`adjudication`](../../../sdlc/skills/sdlc-core/adjudication.md)
 - [`methodology-adoption`](../../process/process-core/methodology-adoption.md)
