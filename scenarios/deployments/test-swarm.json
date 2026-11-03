@@ -19,5 +19,6 @@
     { "actor": "untainted-checker", "host": "codex" },
     { "actor": "ci-pipeline", "host": "github-actions" }
   ],
-  "liveData": "artefacts-only"
+  "liveData": "artefacts-only",
+  "stores": { "work-plan": "beans-git-branch" }
 }

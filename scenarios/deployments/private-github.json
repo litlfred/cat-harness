@@ -53,5 +53,6 @@
   "jurisdiction": {
     "audience": "operator-only"
   },
-  "liveData": "artefacts-only"
+  "liveData": "artefacts-only",
+  "stores": { "work-plan": "beans-git-branch" }
 }

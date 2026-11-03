@@ -27,5 +27,6 @@
     "retention": "as long as the published version is in force, then archived",
     "residency": "in-country"
   },
-  "liveData": "artefacts-only"
+  "liveData": "artefacts-only",
+  "stores": { "work-plan": "beans-git-branch" }
 }

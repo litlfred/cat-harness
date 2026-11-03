@@ -19,5 +19,6 @@
     { "actor": "owner", "host": "local", "compute": "own-infrastructure", "credentials": { "sign-artefact": "LOCAL_KEYSTORE" } }
   ],
   "jurisdiction": { "audience": "operator-only", "residency": "the owner's own machine" },
-  "liveData": "may-hold-credentials"
+  "liveData": "may-hold-credentials",
+  "stores": { "work-plan": "beans-git-branch" }
 }
