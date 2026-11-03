@@ -724,11 +724,19 @@ Tasks only act on it: the `op` steps, a data output to the Beans store
 All three write to one **work-context store**, a role like the work plan
 (§4.1), whose Tool the deployment or run profile chooses (§4.12):
 
-| Tool | Used by |
+| `stores["work-context"]` | Used by |
 |---|---|
-| beans (the work-plan store) | folio-assistant development, bean-aware runs |
-| the run trace | bean-blind test runs: the context is kept and measured, the agent never learns of beans |
-| none | a run that tests a cold start |
+| `work-plan` (default): a bean in the work-plan store, with each line's metadata wrapped by the server | folio-assistant development and bean-aware runs (the real store); bean-blind test runs (the run-scoped store, Q5): the context is kept and measured, and the agent never learns it is a bean |
+| `none` | a run that tests a cold start |
+
+Owner, 2026-11-03: *"the neutral work_context_note is in reality a bean with
+metadata wrapped in the backend (just not exposed to agent)"*. So
+`work_context_note` is **its own Tool**, registered apart from the
+`workflow_*` tools and outside the `sdlc` sub-graph: an agent that is offered
+it sees a neutral name, description and one input, never the workflow tools
+it would otherwise reach through the dependency tree. The run's launcher binds
+the session to its instance (`CAT_WORK_INSTANCE`); the agent never sees an
+instance or item id. *Built (cat-harness-tools#1435).*
 
 This is separate from `agent-memory`, which assembles each agent's long-lived
 memory file; work context belongs to one item and one run.
@@ -794,7 +802,7 @@ the clean-up lands.
 | 13 | The live local refresh (§4.10) | in review (#1429) |
 | 14 | `launch` on a placement (§4.11), once Q8 is ruled; the `itb-benchmark` deployment | |
 | 15 | Run profiles (§4.12): the file format and the standard profiles (`route-0`, `route-A`, `route-B`); the context builder reads knowledge sources from a profile (DAK files, GitHub repositories, FHIR implementation guides pinned); MCP or command-line Tools started with only the Tools that are on; skills and instruction files filtered to match; the prompt-equality check | |
-| 16 | Work context (§4.13): the engine's take-up and complete at every task boundary, open/close done by the engine, the *Work context* data store binding, `work_context_note`; `check:context-leak` in report mode | next |
+| 16 | Work context (§4.13): the engine's take-up and complete at every task boundary, open/close done by the engine, the *Work context* data store binding, `work_context_note`; `check:context-leak` in report mode | in review (cat-harness-tools#1435) |
 | 17 | Bean markup out of the diagrams, cat-harness first; `check:bean-calls` replaced by the leak check | |
 | 18 | `sdlc` as a named sub-graph; the registrar and skill scan honour it; folio-assistant switches it on | |
 | 19 | The dependent harnesses (fhir-harness, smart-base): the same clean-up; provenance ids out of agent-facing text; the leak check becomes a gate | |
