@@ -46,12 +46,15 @@ in `cat-harness-tools/src/workflow/diagram-fit.ts`:
 | `label-overlap` | two labels on each other | give one a `BPMNLabel` position clear of the other |
 | `label-on-edge` | a label on a flow, its own included (owner, 2026-10-31: *"need to check for text on arrows"*) | `--write` moves it to the nearest clear place |
 | `label-on-shape` | a label on a box, its own shape, or a lane's name strip | `--write` moves it |
-| `label-on-lane-line` | a label drawn across the line between two lanes, or a pool's edge | `--write` moves it inside one lane |
+| `label-on-lane-line` | a label drawn across the line between two lanes, or a pool's top, bottom or right edge | `--write` moves it inside one lane |
 | `edge-diagonal` | a flow runs at a slant | `--write` routes it at right angles through the gap |
 | `header-overflow` | a pool or lane name spills out of its 30-wide strip | `--write` makes the lane taller; or shorten the name (never repeat the process id in the pool name) |
 | `text-overflow` | a name spills out of its box | shorten the name: a task box is a fixed 120 × 120 square and never grows (owner, 2026-11-01) |
 | `edge-crossing` | two flows cross | re-route one around the other, move a step, or swap lanes |
 | `edge-through-shape` | a flow is drawn through a box it neither leaves nor enters | route it around the box (`--write` never adds one) |
+| `edge-through-own-end` | a flow starts inside the box it leaves, or runs on inside the box it enters: its waypoints were laid for a box of another size (cat-harness#991) | start it on the side of the box it leaves, end it on the side it enters |
+| `edge-detached` | a flow's first or last waypoint is more than 6 from its own box | move that waypoint onto the box's edge |
+| `shape-outside-pool` | a step drawn above, below or past its pool | move it into its lane, or widen the pool and its lanes |
 | `lane-order` | another lane order crosses fewer lane boundaries | `--write` applies it |
 
 Labels are checked where bpmn-js **draws** them, so the check uses the
