@@ -7,8 +7,8 @@
   by `bun run cat render:bpmn` — never hand-edit the SVG.
 
   The <bootstrap.processes:skill> extension on an activity names the folio-assistant skill
-  that implements it; <cat-harness.processes:bean> marks a step that reads or writes the shared
-  work plan in beans/.
+  that implements it.
+  The engine keeps the work context; no step carries work-plan markup.
 
   Bean j66n. A theme is ingested from a SOURCE the same way a document is, and
   the two sources are genuinely different kinds of thing: a deployed site SERVES
@@ -38,8 +38,8 @@
   by `bun run cat render:bpmn` — never hand-edit the SVG.
 
   The &lt;bootstrap.processes:skill&gt; extension on an activity names the folio-assistant skill
-  that implements it; &lt;cat-harness.processes:bean&gt; marks a step that reads or writes the shared
-  work plan in beans/.
+  that implements it.
+  The engine keeps the work context; no step carries work-plan markup.
 
   Bean j66n. One Theme node with kind sticky | webpage | publication, not three
   node kinds: the palette vocabulary is shared and only the GEOMETRY varies.</bpmn:documentation>

@@ -7,8 +7,8 @@
   by `bun run cat render:bpmn` — never hand-edit the SVG.
 
   The <bootstrap.processes:skill> extension on an activity names the folio-assistant skill
-  that implements it; <cat-harness.processes:bean> marks a step that reads or writes the shared
-  work plan in beans/.
+  that implements it.
+  The engine keeps the work context; no step carries work-plan markup.
 -->
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
@@ -33,8 +33,8 @@
   by `bun run cat render:bpmn` — never hand-edit the SVG.
 
   The &lt;bootstrap.processes:skill&gt; extension on an activity names the folio-assistant skill
-  that implements it; &lt;cat-harness.processes:bean&gt; marks a step that reads or writes the shared
-  work plan in beans/.
+  that implements it.
+  The engine keeps the work context; no step carries work-plan markup.
 
 REWRITTEN AS THE BASIC FLOW in placement PR6 (bean `apcg`; owner ruling 3, 2026-09-30): "only basic doc ingestion high level workflow in cat-harness. very little process context assumed. just that the uploaded asset has extracted metadata inserted into KG and asset in library/ (if materialized)." Accept, extract the metadata into the KG, ask whether the asset is materialized, place it in library/&lt;slug&gt;/. It calls NO subprocess and makes no content-type decision.
 
@@ -85,7 +85,6 @@ WHY A PLAIN `bpmn:task` AND NOT A `userTask`. A `userTask` asserts a human perfo
 WHY THE BEAN OP IS `note` AND NOT `claim`. Placing a file claims nothing; it adds to a queue. What it owes the work plan is visibility — three batches of PDFs arrived through the forge's web UI (`c8349950fa5`, `f4ddfc65c8d`, `b8549160bb1`) with no bean, no PR and no note, and the first sibling to notice was a generator going stale. A note against the ingestion bean is what makes the queue's growth something another session can see.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="upload-routes" />
-        <cat-harness.processes:bean op="note" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_i1</bpmn:incoming>
       <bpmn:outgoing>Flow_i2</bpmn:outgoing>

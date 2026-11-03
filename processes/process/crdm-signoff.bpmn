@@ -46,7 +46,6 @@ no `create` op — it claims, notes and resolves the instance's OWN bean — so
 what this step records here is a note that the plan now exists.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="todo-manager"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:callActivity id="BA_Signoff" name="Sign off on&#10;requirements" calledElement="Process_Adjudication">
@@ -85,7 +84,6 @@ result recorded in the bean before the first edit.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="crdm-requirements-workflow"/>
         <bootstrap.processes:skill ref="coordinate"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:endEvent id="End_Process_CRDM_Signoff" name="Phase complete"/>
@@ -129,7 +127,6 @@ The default creates NOTHING. An agent that decides on its own that a requirement
 `op="note"` and not `create`, for the reason `A_CreateBeans` above states: the engine has no `create` op — it claims, notes and resolves the instance's OWN bean. The agent mints the authoring bean itself with `beans create`, running the exact-title existence check first, and what this step records is a note that the decision was taken.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="placement"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>SF_Kg_3</bpmn:incoming>
       <bpmn:outgoing>SF_Kg_4</bpmn:outgoing>
