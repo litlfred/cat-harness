@@ -23,7 +23,7 @@ INPUT AND OUTPUT: the `ask-the-person` skill's schemas, schemas/skills/ask-the-p
 
 WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only gets an answer back to it, or the stated default when none comes.
 
-WHAT IS BOOTSTRAP'S AND WHAT IS OURS. The discussion itself (say what is decided and why, lay out the options with their costs, recommend one, ask ONE question, follow up narrower, apply a default only if allowed, record what is still open) is bootstrap's `Process_HumanAgentDiscussion`, which cat-harness reaches through `needs: ["bootstrap"]`. What this process adds is the harness's own part: the composed question with lettered options and glossed names, the sibling hand-back, and the delivery rule that the full question goes in the chat FIRST and the card second.</bpmn:documentation>
+WHAT IS BOOTSTRAP'S AND WHAT IS OURS. The discussion itself (say what is decided and why, lay out the options with their costs, recommend one, ask ONE question, follow up narrower, apply a default only if allowed, record what is still open) is bootstrap's `Process_HumanAgentDiscussion`, which cat-harness reaches through `needs: ["bootstrap"]`, so the steps are not drawn here a second time. What this process adds is the harness's own part: the composed question with lettered options and glossed names, the sibling hand-back, and the delivery rule that the full question goes in the chat FIRST and the card second.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>

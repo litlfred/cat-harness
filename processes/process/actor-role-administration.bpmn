@@ -27,7 +27,9 @@
        adds the three things that are specific to changing the graph:
        a judgement about what kind of participant this is, an audit that
        runs AFTER rather than before, and a retirement that is not a
-       deletion.
+       deletion. `administrator` is a role because administration IS a
+       swimlane; a role invented only to make a diagram drawable is the
+       closure-widening failure `role-model.md` records.
        ═══════════════════════════════════════════════════════════════ -->
 
   <bpmn:collaboration id="Collaboration_ActorRoleAdministration">
