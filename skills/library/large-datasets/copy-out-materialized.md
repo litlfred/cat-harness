@@ -9,14 +9,9 @@ description: >
 # Working on materialized content — copy it out
 
 **Materialized content is a copy of somebody else's bytes, and this repository
-does not edit it in place.** The owner, 2026-09-21:
-
-> *"if we have a materialized `<stub>/<sub-graph>`, the contents of it should be
-> immutable … you would need to copy/materialize it to your own `folio/` in
-> order to mess around with it."*
-
-And 2026-09-22, choosing between advising and enforcing: **enforce from the
-start.**
+does not edit it in place.** The contents of a materialized
+`<stub>/<sub-graph>` are immutable, and the rule is enforced: to work on them,
+copy them into your own `folio/`.
 
 Diagram: [`copy-out-materialized.bpmn`](../../../processes/library/copy-out-materialized.bpmn).
 Schema: the `folio-materialization/v1` record (`MaterializationSchema`, owned
@@ -37,8 +32,7 @@ of them: you are copying something this repository already decided it may hold.
 
 ## Who may copy out
 
-**Any reader** — the owner's ruling, 2026-09-22. This is deliberately not a
-permission: refusing a copy would not protect the original, because the
+**Any reader.** This is deliberately not a permission: refusing a copy would not protect the original, because the
 original is protected by being read-only. A gate here would only stop people
 working.
 
@@ -49,9 +43,8 @@ other authored content is.
 
 ## Where the copy goes
 
-**Into the copier's own `folio/`, with provenance** — owner's ruling,
-2026-09-22, chosen over a scratch area. The reason a scratch area lost is that
-it makes the copy publishable by accident: a directory nobody declared is a
+**Into the copier's own `folio/`, with provenance** — never a scratch area,
+which makes the copy publishable by accident: a directory nobody declared is a
 directory nobody gates.
 
 ## The copy records what it is a copy of
@@ -66,9 +59,7 @@ This is the part that is easy to leave out and impossible to reconstruct later.
 | `local` | the original **in this repository** it was taken from |
 
 A copy-out writes **`local`**. It does not overwrite `upstream`, and it does not
-reuse `upstream` for the local original — that was one field until 2026-09-22,
-and by then 5 of the 9 the IRIS replica item records were using it for a local value in
-violation of its own documentation.
+reuse `upstream` for the local original.
 
 Without `local`, one rename later a copy is indistinguishable from original
 work. That is the whole failure this step exists to prevent, and nothing
@@ -86,12 +77,8 @@ would need a copy of the copy.
 
 ## The exception is "say what you did", not a list of who may skip
 
-The owner's exception is *"expect for publication worfklow purposes or so"*.
-Written as an allowlist it would be a list that goes stale the first time
-somebody adds a sixth writer, and it would need every writer to announce itself
-— passing silently for anyone who forgot.
-
-Written as a rule it is checkable and cannot go stale:
+The exception — for publication workflow purposes and the like — is a rule,
+not an allowlist of writers that would go stale:
 
 > **A step that rewrites a materialized artefact records the new fixity in the
 > same change.**
@@ -102,23 +89,16 @@ because it has forked upstream without saying so — which is exactly what the
 rule exists to prevent. The check asks a question about BYTES and never about
 who wrote them, so it needs no attribution of a commit to a process step.
 
-### Where this bites, measured
+### Where it applies
 
-**`refresh-materialized.bpmn`'s `Task_Apply`** — the one step in the declared
-corpus that rewrites bytes a materialization record describes. Until 2026-09-22
-it named no fixity write at all, so a **correct** run of that process would have
-failed the gate as a mismatch: *"somebody edited held content without saying
-so"*, said about the one process whose job is to replace it.
+**`refresh-materialized.bpmn`'s `Task_Apply`** is the one step in the declared
+corpus that rewrites bytes a materialization record describes, so it writes
+the new fixity in the same change.
 
-### And where it does NOT bite, also measured
-
-**No publication process in this repository writes to materialized content.**
+**No publication process writes to materialized content.**
 `kg-to-portal.bpmn`'s `S_Sign` signs a subgraph cut from the KG — derived
-content, not held upstream bytes — and nothing else comes close. So the
-publication case is a rule with no instance yet, which is why it is stated here
-as a rule rather than drawn as a step in a diagram that does not do it. A
-declared-but-absent step is the `dh4f` defect: a consumer scans it and reports a
-clean run over nothing.
+content, not held upstream bytes. So the publication case is a rule with no
+instance yet, stated here rather than drawn as a step no diagram does.
 
 ## What to check afterwards
 
