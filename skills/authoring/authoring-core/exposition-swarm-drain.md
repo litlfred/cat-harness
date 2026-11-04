@@ -217,6 +217,6 @@ of `needs_owner` blocks for the author.
 
 - Rubric spec: `docs/requirements/2026-07-04-folio-assistant-proof-narrative-checkers.md` §5A
 - Author voice: the active content layer's exposition-standard skill
-- Merge pipeline: `skills/sdlc/sdlc-core/prepare-merge-auto.md`
+- Merge pipeline: `sdlc/skills/sdlc-core/prepare-merge-auto.md`
 - Sister drain: `.claude/skills/local/integration-backlog.md`
 - Flag guard: `pipeline/qa-flag-preservation-audit.ts`

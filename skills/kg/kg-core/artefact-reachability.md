@@ -50,7 +50,7 @@ it — no `package.json` script, no workflow, no command — and the only thing 
 imported it was its own test. So the ordering a declared decision table exists
 to provide could not be asked for, and the queue was ordered by hand.
 
-**`cat-harness/processes/sdlc/decisions/merge-priority.dmn`** used the FEEL
+**`cat-harness/sdlc/processes/decisions/merge-priority.dmn`** used the FEEL
 unary test `not("green")` from the day it was drawn. `unaryTest` **throws** on
 `not(...)`, so the table was unevaluable by **any** caller, not merely uncalled.
 

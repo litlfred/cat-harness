@@ -434,7 +434,7 @@ entry of its own, and adding one declares the same directory twice — the same
 defect, one level down from where it was.
 
 That is not a judgement call made in prose: on 2026-09-22 CRDM's skills were
-repointed from `methodologies/crdm/` to `skills/sdlc/crdm/` with the entry kept, and
+repointed from `methodologies/crdm/` to `sdlc/skills/crdm/` with the entry kept, and
 `gen-skill-docs` immediately demanded a category under **both** the basename
 and the declaration id, because both discovery branches found the one
 directory. The three entries were dropped and `methodologies/` now holds its
@@ -637,7 +637,7 @@ The same from-within rule, one more use of it:
   `schemas/schemas.json`, `library/library.json`, `uml/uml.json`, a test
   directory's `code.json` (`groups`, `"$schema": "concern-groups/v1"`).
 - **A group is a CODE** of `code-lists/concern-group.json`, which carries its
-  title and definition once; its directory is the code (`processes/sdlc/`).
+  title and definition once; its directory is the code (`sdlc/processes/`).
   A ninth code is a ruling, not an edit.
 - **Declared once, inherited as members** — option A one level down. The
   harness declares a group; each higher instance's same-named

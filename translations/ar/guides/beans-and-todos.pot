@@ -47,7 +47,7 @@ msgid "✎ Edit{: .fa-node-edit title=\"Edit content/docs/guides-beans-and-todos
 msgstr ""
 
 #: docs/guides/beans-and-todos.md:75
-msgid "✎ Edit{: .fa-node-edit title=\"Edit processes/sdlc/bean-lifecycle.bpmn\" } QA… TR… KG…"
+msgid "✎ Edit{: .fa-node-edit title=\"Edit sdlc/processes/bean-lifecycle.bpmn\" } QA… TR… KG…"
 msgstr ""
 
 #: docs/guides/beans-and-todos.md:103

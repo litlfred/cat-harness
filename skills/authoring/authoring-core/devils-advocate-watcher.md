@@ -26,7 +26,7 @@ uses-methodology:
 
 # /devils-advocate-watcher
 
-A concrete instance of [`integration-watcher`](../../sdlc/sdlc-core/integration-watcher.md).
+A concrete instance of [`integration-watcher`](../../../sdlc/skills/sdlc-core/integration-watcher.md).
 The parent encodes the shared mechanics; this file fills the nine
 domain-specific slots A–I. This watcher's job is **adversarial**: it
 does not check style or wiring, it tries to *break* each block — to

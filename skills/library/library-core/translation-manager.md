@@ -269,7 +269,7 @@ gap that says it is a gap — a reader who sees the tick stops asking.
 ### The agentic round trip — an INSTANCE of untainted verification
 
 **The discipline is generic and lives in
-[`untainted-verification`](../../sdlc/sdlc-core/untainted-verification.md)**: the two parties, why
+[`untainted-verification`](../../../sdlc/skills/sdlc-core/untainted-verification.md)**: the two parties, why
 neither may see what would let it shortcut, the `TOOLS_USED` declaration that
 is recorded rather than assumed, which party rules, how both are written as
 witnesses, the `model` / `model_source` rule, and the two traps — a sweep
@@ -719,4 +719,4 @@ review or sign-off carries it: one deep link per changed page, to the anchor
 where the change sits, with the same page on main as *before*. Where the skill
 declares an output contract, they go in its `stagingLinks` field. The rule, and
 where the page list comes from:
-[`staging-review`](../../sdlc/sdlc-core/staging-review.md) §"The deep-link rule".
+[`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §"The deep-link rule".

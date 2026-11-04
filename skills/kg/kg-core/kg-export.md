@@ -519,7 +519,7 @@ owner's standing rule: **a downstream consumer must never have to
 string-manipulate or infer a rule to follow a link.** A rule a consumer has to
 know is a rule a consumer can get wrong, and the cost is paid by someone who
 cannot see the code that made the assumption look reasonable. See
-[`crdm-requirements-workflow`](../../sdlc/crdm/crdm-requirements-workflow.md) §"Consumer burden
+[`crdm-requirements-workflow`](../../../sdlc/skills/crdm/crdm-requirements-workflow.md) §"Consumer burden
 is a requirement".
 
 **Vocabulary nodes get no `alternateOf`.** Graph typologies are minted under the
@@ -643,16 +643,16 @@ A link to a node that left reads as dangling until it is re-homed.
 
 **Contract (bean `c1m4`; owner rulings 2026-10-03).** A *named subgraph* is a
 directory of a declared graph, read as a set of KG nodes: `skills/` is one, and
-so is `skills/sdlc/`. Asking for "every node of `cat-harness/skills/sdlc`" must
+so is `sdlc/skills/`. Asking for "every node of `cat-harness/sdlc/skills`" must
 take one fetch. Before this contract it could not be done in one step. Today's
-export is one document per instance, and `skills/sdlc` is not a subgraph
+export is one document per instance, and `sdlc/skills` is not a subgraph
 anywhere (measured 2026-10-03; the evidence is on bean `c1m4`).
 
 ### Identity
 
 - **The subgraph IRI is a directory IRI in its own namespace:**
   `<BASE_URL>/subgraph/<HARNESS>/<PATH>/`, for example
-  `…/subgraph/cat-harness/skills/sdlc/`.
+  `…/subgraph/cat-harness/sdlc/skills/`.
 - It is kept apart from content-node IRIs on purpose. A subgraph is a *view* of
   nodes, not one of them, so renaming a file never renames the subgraph, and
   re-homing a node never re-mints the subgraph.
@@ -670,7 +670,7 @@ Both files have root `@id` = the directory IRI.
 | file | what is in it | who it is for |
 |---|---|---|
 | `index.jsonld` | **referenced**: each direct member as a pointer (`@id`, `@type`, label), and each child subgraph by its IRI | search, navigation, skeleton loading (`f233`) |
-| `index.hydrated.jsonld` | **dereferenced**: every node in the subgraph's *transitive* membership, inline and fully hydrated | "give me all of `skills/sdlc`" in one fetch |
+| `index.hydrated.jsonld` | **dereferenced**: every node in the subgraph's *transitive* membership, inline and fully hydrated | "give me all of `sdlc/skills`" in one fetch |
 
 Rules for the pair:
 

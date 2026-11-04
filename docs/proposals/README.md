@@ -16,6 +16,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `proposals`, holding `
 | [`5hox-removal-inventory.md`](5hox-removal-inventory.md) | 5hox: the QA files that leave main |  |
 | [`actor-facts-and-their-processes.md`](actor-facts-and-their-processes.md) | [Actor](https://litlfred.github.io/bootstrap/schemas/#actor) facts and the processes that must read them |  |
 | [`agents-md-migration.md`](agents-md-migration.md) | Migrating AGENTS.md into skills — the classification |  |
+| [`assured-ai-test-harness-2026-11-03.md`](assured-ai-test-harness-2026-11-03.md) | Testing AI agents fairly: the WHO Assured AI test harness |  |
 | [`auto-doc-rendered-graphs-2026-10-03.md`](auto-doc-rendered-graphs-2026-10-03.md) | Auto-docs as rendered sub-graphs |  |
 | [`bean-archiving-in-bpmn.md`](bean-archiving-in-bpmn.md) | Bean archiving in BPMN — the terminal state nothing draws |  |
 | [`bootstrap.md`](bootstrap.md) | bootstrap/ — the graph an agent can read before it knows anything |  |

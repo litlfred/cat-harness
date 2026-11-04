@@ -14,7 +14,7 @@ The docs site is one Jekyll site built from the checkout's sources and
 published to `gh-pages`. The host checkout's `.github/workflows/docs-site.yml`
 runs it on a push to the default branch that touches its inputs, or on
 dispatch. Its steps, gateways and alerts are drawn in
-[`docs-site-publish.bpmn`](../../../processes/sdlc/docs-site-publish.bpmn).
+[`docs-site-publish.bpmn`](../../../sdlc/processes/docs-site-publish.bpmn).
 
 ## Regenerate derived references
 
@@ -96,12 +96,12 @@ and Lean API docs belong to the paper layer: see `build-pdf` and
 
 ## Read next
 
-- [`feature-staging`](../../sdlc/sdlc-core/feature-staging.md): previews and
+- [`feature-staging`](../../../sdlc/skills/sdlc-core/feature-staging.md): previews and
   build types.
-- [`publish-verification`](../../sdlc/sdlc-core/publish-verification.md): the
+- [`publish-verification`](../../../sdlc/skills/sdlc-core/publish-verification.md): the
   verifier set and the alert.
 - [`render-kg-to-cdn`](../../process/workflow/render-kg-to-cdn.md): the
   general publish step that `gh-pages` instantiates.
-- [`before-after-preview`](../../sdlc/sdlc-core/before-after-preview.md) and
-  [`rendered-impact`](../../sdlc/sdlc-core/rendered-impact.md): reviewing a
+- [`before-after-preview`](../../../sdlc/skills/sdlc-core/before-after-preview.md) and
+  [`rendered-impact`](../../../sdlc/skills/sdlc-core/rendered-impact.md): reviewing a
   rendered change.

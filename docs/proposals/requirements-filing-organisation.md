@@ -11,18 +11,18 @@ summary: >-
 - **Bean**: `folio-assistant-qh1s`
 - **Issue**: [#1164](https://github.com/litlfred/folio-assistant/issues/1164)
 - **Methodology node**: [`methodologies/requirements-filing-and-organisation.md`](../../methodologies/requirements-filing-and-organisation.md)
-- **Proposed BPMN diagram**: [`processes/sdlc/requirements-filing.bpmn`](../../processes/sdlc/requirements-filing.bpmn) ([checklist](../../processes/sdlc/requirements-filing.checklist.md))
+- **Proposed BPMN diagram**: [`processes/sdlc/requirements-filing.bpmn`](../../sdlc/processes/requirements-filing.bpmn) ([checklist](../../sdlc/processes/requirements-filing.checklist.md))
 - **Status**: Proposed — put to the owner before any automation beyond `check:requirements` is built.
 
 ---
 
 ## 1. Question and scope
 
-[`docs/requirements/index.md`](../requirements/index.md) currently holds only its index, and [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../skills/sdlc/crdm/crdm-requirements-workflow.md) explicitly deferred the corpus-level organisation and lifecycle rules to bean `folio-assistant-qh1s`:
+[`docs/requirements/index.md`](../requirements/index.md) currently holds only its index, and [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../sdlc/skills/crdm/crdm-requirements-workflow.md) explicitly deferred the corpus-level organisation and lifecycle rules to bean `folio-assistant-qh1s`:
 
 > *"Today the directory is empty and a flat list in `index.md` is enough. Once it is not, how requirements are grouped, cross-referenced, superseded and retired needs a method rather than an ad-hoc table — tracked as `folio-assistant-qh1s`, which begins with a literature search over requirements-management practice and proposes the filing process as BPMN before anything is built."*
 
-This proposal summarizes the literature search and methodology adoption recorded in [`methodologies/requirements-filing-and-organisation.md`](../../methodologies/requirements-filing-and-organisation.md), presents the proposed executable BPMN process ([`processes/sdlc/requirements-filing.bpmn`](../../processes/sdlc/requirements-filing.bpmn)), and sets out the three design decisions for the owner before any new code or schema field is added.
+This proposal summarizes the literature search and methodology adoption recorded in [`methodologies/requirements-filing-and-organisation.md`](../../methodologies/requirements-filing-and-organisation.md), presents the proposed executable BPMN process ([`processes/sdlc/requirements-filing.bpmn`](../../sdlc/processes/requirements-filing.bpmn)), and sets out the three design decisions for the owner before any new code or schema field is added.
 
 ---
 
@@ -79,7 +79,7 @@ Full adoption bindings and partial-adoption boundaries are in [`methodologies/re
 
 ![Requirements filing workflow](../assets/img/workflows/requirements-filing.svg)
 
-The diagram [`processes/sdlc/requirements-filing.bpmn`](../../processes/sdlc/requirements-filing.bpmn) (`Process_RequirementsFiling`, step-by-step checklist at [`processes/sdlc/requirements-filing.checklist.md`](../../processes/sdlc/requirements-filing.checklist.md)) models the filing workflow across two lanes (`BA / Feature Requestor` and `Authoring Agent`):
+The diagram [`processes/sdlc/requirements-filing.bpmn`](../../sdlc/processes/requirements-filing.bpmn) (`Process_RequirementsFiling`, step-by-step checklist at [`processes/sdlc/requirements-filing.checklist.md`](../../sdlc/processes/requirements-filing.checklist.md)) models the filing workflow across two lanes (`BA / Feature Requestor` and `Authoring Agent`):
 
 1. **`A_ClassifyFiling`** (`crdm-requirements-workflow`): Classify the transition (`promote` from `docs/proposals/<slug>.md`, `amend-or-supersede` an existing requirement, or `retire` an obsolete requirement), assign the primary concern group from `code-lists/concern-group.json`, and check `req:<slug>` uniqueness.
 2. **`GW_FilingMode`**: Route by transition kind (`promote` | `amend-or-supersede` | `retire`).

@@ -122,8 +122,8 @@ Before acting on an instance you did not start, ask what it is waiting on. A
 bean's status defaults to **non-blocking**; a real block carries what it waits
 on, since when, an **expiry** and a handoff — because a block with no expiry
 cannot be told from abandoned work.
-[`bean-blocking`](../../sdlc/sdlc-core/bean-blocking.md) carries that, and
-[`bean-coordination`](../../sdlc/sdlc-core/bean-coordination.md) carries the rule that
+[`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md) carries that, and
+[`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) carries the rule that
 a claim **announces rather than reserves** until your PR exists.
 
 ## See also
@@ -134,5 +134,5 @@ a claim **announces rather than reserves** until your PR exists.
   five detectors for being out of process, and the recovery.
 - [`content-context-and-state-graphs`](../../kg/kg-core/content-context-and-state-graphs.md)
   — the layer each store sits on, and why memory is not writable by a step.
-- [`todo-manager`](../../sdlc/sdlc-core/todo-manager.md) — the work plan's own store.
+- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) — the work plan's own store.
   A todo is a **person's** outstanding item and is not a second work plan.

@@ -6,7 +6,7 @@ generated: cat-harness-tools/scripts/gen-skill-commands.ts
 
 # /staging-review
 
-Run the `staging-review` skill. Read [`skills/sdlc/sdlc-core/staging-review.md`](../../skills/sdlc/sdlc-core/staging-review.md) and follow it.
+Run the `staging-review` skill. Read [`sdlc/skills/sdlc-core/staging-review.md`](../../sdlc/skills/sdlc-core/staging-review.md) and follow it.
 
 This command is a pointer, generated from that skill's `user_invocable: true`; the
 instructions live in the skill and nowhere else. The same skill is also served as the

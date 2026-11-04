@@ -69,9 +69,9 @@ A feature request turned into agreed, signed-off requirements and delivered, wit
 - Skill: `crdm-requirements-workflow`.
 - What: Between requirements and sign-off, and the order is the argument: requirements are statements about things, and the model says what the things ARE.
 - A subprocess (`Process_CRDM_DataModel`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Call_Signoff` (Phase 5 Work items + sign-off)
+- next: → `Call_Signoff` (Phase 5 Plan + sign-off)
 
-### 7. Phase 5 Work items + sign-off (`Call_Signoff`)
+### 7. Phase 5 Plan + sign-off (`Call_Signoff`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `crdm-requirements-workflow`.

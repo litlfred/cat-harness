@@ -309,9 +309,9 @@ resolving a sibling's.
 
 **You do not draw `claim`, `resolve` or `archive` yourself.** They live in two
 called processes and nowhere else (bean `folio-assistant-m8gz`, owner
-2026-10-24): `Process_BeanOpen` (`processes/sdlc/bean-open.bpmn`: check,
+2026-10-24): `Process_BeanOpen` (`sdlc/processes/bean-open.bpmn`: check,
 create, whose bean, claim or leave alone) and `Process_BeanClose`
-(`processes/sdlc/bean-close.bpmn`: complete or scrap, then one shared archive
+(`sdlc/processes/bean-close.bpmn`: complete or scrap, then one shared archive
 step; or record the blocker and hand back). A process that works on a bean
 calls OPEN where the bean becomes its own, follows it with a `claimed` /
 `not yours` gateway, and calls CLOSE straight before each end it reaches from
@@ -319,7 +319,7 @@ there. `note` stays on the steps where the work happens. `check:bean-calls`
 (run inside `check:workflow-refs`) refuses the three ops anywhere else, and a
 process that calls one of the pair without the other. Why: 219 beans resolved
 and never archived, and 7 processes that claimed and never closed —
-[`todo-manager`](../../sdlc/sdlc-core/todo-manager.md) §"Archiving — two dispositions".
+[`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"Archiving — two dispositions".
 
 Work-plan priming reports every instance's position next to its bean, so the
 plan and the process are one answer rather than two.
