@@ -33,8 +33,8 @@ Requirements enter the harness via two distinct, non-blended tracks
    detect → requirements → impact → signoff → close`). Authored in
    `docs/requirements/<slug>.md`.
 
-**They share one underlying definition of a requirement** (Issue #2405, FR-007/FR-008;
-detailed in `requirement-definition.md`):
+**They share one underlying definition of a requirement** (detailed in
+`requirement-definition.md`):
 
 | Part | Field in `bootstrap/schemas/requirement.schema.json` | Obligation |
 |---|---|---|

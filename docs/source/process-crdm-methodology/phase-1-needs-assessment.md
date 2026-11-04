@@ -5,7 +5,7 @@ solution is specified before the problem is understood.
 **What the agent does in this phase:**
 
 1. **Identify the requester and stakeholders** — who is asking, who else is
-   affected? The word-document-import request ([#197](https://github.com/litlfred/folio-assistant/issues/197))
+   affected? A Word-document import request
    came from one person but affects anyone doing public consultation review,
    HRH handbook adaptation, or PCMT traceability. The agent should surface
    those connections.

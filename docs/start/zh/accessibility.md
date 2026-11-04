@@ -11,12 +11,12 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 # 无障碍功能
 {: .no_toc }
 
-在 [issue #232](https://github.com/litlfred/folio-assistant/issues/232) 中有人提出了两个问题，本页面将对它们进行解答：
+本页面解答两个问题：
 
 1. 此处对于残障支持有哪些选项，最佳实践又是什么？
 2. 有哪些选项可以将智能体的问答强制转化为遵循 DMN 逻辑并能服务于多种交互模态的引导式提问？
 
-事实证明，这是从两个不同角度提出的同一个问题，这也是它们共享同一个页面的原因。具体实现的技能为 [`interaction-modality`]({{ '/reference/skill-instructions/interaction-modality.html' | relative_url }})。
+这是从两个不同角度提出的同一个问题。具体实现的技能为 [`interaction-modality`]({{ '/reference/skill-instructions/interaction-modality.html' | relative_url }})。
 
 1. TOC
 {:toc}
@@ -29,7 +29,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 其常见的表现形式为：一段冗长而开放的提示——*“请向我描述您心中的 folio、您期望的内容类型以及您希望如何组织它”*——发送给了一位打字缓慢且痛苦的用户。收到的回复非常简短。智能体将简短的回复理解为参与度不高，于是又抛出了另一个开放式问题。在这次交互中，没有人做错任何明显的事情，但对话已经在走向失败。
 
-本仓库的拥有者手部功能极其有限，因此这种情况在这里并非假设。但无论对任何人而言，这一规则都具有普遍意义：
+这一规则适用于所有人：
 
 > **问题的代价是由回答者承担的。** 在设计问题时，应当让成本最低的回答依然是一个完整的回答。
 
@@ -88,16 +88,14 @@ ATAG Part B 值得重点关注，因为这是内容平台能够唯独提供的�
 
 | | 位置 |
 |---|---|
-| 面向智能体的偏好设置，已提交，在会话启动时读取 | `interaction/interaction.json`，由 `scripts/session-start-coord-sweep.sh` 呈现 |
+| 面向智能体的偏好设置，已提交，在会话启动时读取 | `memory/interaction.json`，由 `scripts/session-start-coord-sweep.sh` 呈现 |
 | 智能体在提问时遵循的规则 | [`interaction-modality`]({{ site.baseurl }}/reference/skill-instructions/interaction-modality.html) |
 | 本站点上面向读者的控制项 | 侧边栏标头中的齿轮图标——更大字号、更高对比度、带下划线的链接、减少动效 |
 | 无需询问即可遵循减少动效偏好 | `prefers-reduced-motion` 媒体查询，并作为面板默认值的种子 |
 
-**这两处偏好设置存储是刻意分开的。** `interaction/interaction.json` 已提交至版本控制，面向智能体，且关乎对话交互。而站点控制项则是针对每位查看者的 `localStorage`，绝不离开浏览器，且关乎阅读体验。非作者的读者选择大号字体，绝不能悄悄重置或更改智能体与作者沟通交流的方式。
+**这两处偏好设置存储是刻意分开的。** `memory/interaction.json` 已提交至版本控制，面向智能体，且关乎对话交互。而站点控制项则是针对每位查看者的 `localStorage`，绝不离开浏览器，且关乎阅读体验。非作者的读者选择大号字体，绝不能悄悄重置或更改智能体与作者沟通交流的方式。
 
 ### 2.7 尚未完成的内容
-
-公开说明而非含糊暗示，因为半吊子宣称的无障碍功能比根本没有实现还要糟糕：
 
 - **QA 全面检查中尚无 ATAG Part B 检查。** 目前还没有机制验证已发布的 folio 是否具备替代文本、正确的标题顺序或表格表头。
 - **未对生成的 PDF 进行审计。** 文档渲染路径通过 weasyprint/prince/wkhtmltopdf 进行，尚未对带标签的 PDF（tagged-PDF）输出进行检查。
@@ -152,4 +150,3 @@ ATAG Part B 值得重点关注，因为这是内容平台能够唯独提供的�
 - [入门指南](getting-started.html) — 使用中的意图决策表
 - [`interaction-modality` 技能]({{ '/reference/skill-instructions/interaction-modality.html' | relative_url }})
 - [发布工作流](../../process/zh/publication-workflow.html) — 仓库中的各项流程
-- [在 beans 中管理工作流状态的选项]({{ '/proposals/workflow-state-in-beans.html' | relative_url }})

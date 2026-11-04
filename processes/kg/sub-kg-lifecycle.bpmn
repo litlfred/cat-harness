@@ -7,11 +7,6 @@
   Source of truth: this file. The SVG under docs/assets/img/workflows/ is
   generated from it by `bun run cat render:bpmn`; never hand-edit the SVG.
 
-  Extracted in retrospect, owner 2026-10-06 (bean 3tza), from the staged IG
-  separations of 2026-09-21 to 2026-10-06: beans n3ni (stages A-F), kg83
-  (stage D), rbz3 (fork rehearsal), hcpz (seed:ready); PRs #1767, #1860, #2082.
-  sub-kg-lifecycle.md carries each stage's provenance.
-
   The light sibling of kg-separation.bpmn. That process splits a graph into a
   content repository and a tools repository; this one moves a DATA instance
   whole. The two share their seeding gateway: GW_SeedReady here is the same
@@ -41,9 +36,9 @@
     <bpmn:participant id="Participant_Process_SubKgLifecycle" name="A sub-KG is staged in place, then leaves for its own repository" processRef="Process_SubKgLifecycle"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_SubKgLifecycle" name="A sub-KG is staged in place, then leaves for its own repository" isExecutable="false">
-    <bpmn:documentation>Create a knowledge graph inside a harnessed repository as an instance of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository. Declared in place with a planned `repository` and a `livesAt` saying where it sits today; staged by one import seam (`&lt;name&gt;/platform.ts`), the separation guard and a self-contained rehearsal; then, each behind an explicit owner confirmation, the repository is created, the staged contents are copied in with their history, the declaration is re-pointed, a fresh clone is verified, and the in-repo copy is deleted.
+    <bpmn:documentation>Create a knowledge graph inside a harnessed repository as an instance of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository. Declared in place with a planned `repository` and a `livesAt` saying where it sits today; staged by one import seam (`&lt;name&gt;/platform.ts`), the separation guard and a self-contained rehearsal; then, each behind an explicit owner confirmation, the repository is created, the staged contents are copied in with their history, the declaration is re-pointed, a fresh clone is verified, and the in-repo copy is frozen in the kept trashcan.
 
-Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-06 (beans n3ni, kg83, rbz3, hcpz). The light sibling of kg-separation, which splits a graph into a content and a tools repository; this moves a data instance whole, and shares kg-separation's seeding gateway and decision table.</bpmn:documentation>
+The light sibling of kg-separation, which splits a graph into a content and a tools repository; this moves a data instance whole, and shares kg-separation's seeding gateway and decision table.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
@@ -100,7 +95,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:incoming>F0</bpmn:incoming>
     </bpmn:callActivity>
     <bpmn:task id="Task_Declare" name="1 · Declare it in place,&#10;with its seam">
-      <bpmn:documentation>`&lt;name&gt;/&lt;name&gt;.json` with name, version, `repository` (the planned home), `livesAt` (where it sits today), `needs`, and only the directories that exist, each declared with its files in one commit (bean dh4f). `&lt;name&gt;/platform.ts` from the first commit, so no climb out of the directory ever needs rerouting. Scaffolded by `init-folio --staged &lt;path&gt;`, which writes those two files and nothing at the host root; never `--instance`, which writes a whole repository.</bpmn:documentation>
+      <bpmn:documentation>`&lt;name&gt;/&lt;name&gt;.json` with name, version, `repository` (the planned home), `livesAt` (where it sits today), `needs`, and only the directories that exist, each declared with its files in one commit. `&lt;name&gt;/platform.ts` from the first commit, so no climb out of the directory ever needs rerouting. Scaffolded by `init-folio --staged &lt;path&gt;`, which writes those two files and nothing at the host root; never `--instance`, which writes a whole repository.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sub-kg-lifecycle"/>
       </bpmn:extensionElements>
@@ -129,7 +124,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:incoming>F4</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:task id="Task_PushDown" name="3 · Push generic&#10;down first">
-      <bpmn:documentation>Move what is generic into the harness below before the seam is closed, and consolidate what the sub-KG needs into the harness it instantiates. Wrong-direction edges hide in declarations and data as well as imports: run check:import-direction, check:reference-direction and check:process-bindings. Learned from stages A-D of bean n3ni (#1768, #1782, #1783, #1795).</bpmn:documentation>
+      <bpmn:documentation>Move what is generic into the harness below before the seam is closed, and consolidate what the sub-KG needs into the harness it instantiates. Wrong-direction edges hide in declarations and data as well as imports: run check:import-direction, check:reference-direction and check:process-bindings.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="graph-detanglement"/>
         <cat-harness.processes:no-call reason="Uses the detanglement practice's direction checks on an instance already declared in place. graph-detanglement.bpmn starts from declaring a tangled sub-graph, which stage 1 of this process has already done."/>
@@ -138,7 +133,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:outgoing>F6</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_Seam" name="4 · Route every climb&#10;through platform.ts">
-      <bpmn:documentation>Every platform symbol the sub-KG uses is re-exported from `&lt;name&gt;/platform.ts`, so re-pointing the platform is a one-file edit. A merge from main is where new climbs arrive; reroute them here. Learned from #1767 and #1860.</bpmn:documentation>
+      <bpmn:documentation>Every platform symbol the sub-KG uses is re-exported from `&lt;name&gt;/platform.ts`, so re-pointing the platform is a one-file edit. A merge from main is where new climbs arrive; reroute them here.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sub-kg-lifecycle"/>
       </bpmn:extensionElements>
@@ -154,7 +149,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:outgoing>F9</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:task id="Task_Rehearse" name="5 · Rehearse&#10;self-contained">
-      <bpmn:documentation>`bun run cat seed:ready --layer &lt;name&gt; --rehearse` copies the layer and what it needs into a scratch workspace of sibling directories and runs the tests there. Run the gates rather than scanning imports: the fork rehearsal (bean rbz3) found a static scan saw 20 of the 23 platform files the gates loaded, and that renaming the directory changed every generated page.</bpmn:documentation>
+      <bpmn:documentation>`bun run cat seed:ready --layer &lt;name&gt; --rehearse` copies the layer and what it needs into a scratch workspace of sibling directories and runs the tests there. Run the gates rather than scanning imports: a static scan misses files the gates load at run time, and renaming the directory changes every generated page.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sub-kg-lifecycle"/>
       </bpmn:extensionElements>
@@ -226,15 +221,15 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:incoming>F20</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:task id="Task_Seed" name="9 · Copy the staged&#10;contents in, with history">
-      <bpmn:documentation>`git subtree split --prefix=&lt;name&gt;` in the host, then the split branch added to the new repository on a branch, as a draft pull request, never straight to main. The new repository's own root files are a second commit, so the copy stays byte-identical and reviewable. The first fork seed carried 378 commits this way (bean n3ni, stage E).</bpmn:documentation>
+      <bpmn:documentation>`git subtree split --prefix=&lt;name&gt;` in the host, then the split branch added to the new repository on a branch, as a draft pull request, never straight to main. The new repository's own root files are a second commit, so the copy stays byte-identical and reviewable.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sub-kg-lifecycle"/>
       </bpmn:extensionElements>
       <bpmn:incoming>F21</bpmn:incoming>
       <bpmn:outgoing>F22</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:task id="Task_Repoint" name="10 · Re-point: livesAt,&#10;seam, submodule or subscription">
-      <bpmn:documentation>In the new repository `livesAt` goes (absent means it sits at the root of `repository`) and `platform.ts` points at where the platform now is. The host consumes it as a submodule if it imports its code, or a subscription if it only reads its content, pinned to a commit while staging. Additive: the host keeps its copy.</bpmn:documentation>
+    <bpmn:task id="Task_Repoint" name="10 · Re-point: livesAt,&#10;seam, mount or subscription">
+      <bpmn:documentation>In the new repository `livesAt` goes (absent means it sits at the root of `repository`) and `platform.ts` points at where the platform now is. The host consumes it as a remote mount (a `source.remote` instance in its root `index.config.json`) if it imports its code, or a subscription if it only reads its content, pinned to a commit while staging. Additive: the host keeps its copy.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sub-kg-lifecycle"/>
         <bootstrap.processes:skill ref="upstream-version-adoption"/>
@@ -245,7 +240,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:outgoing>F23</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_FreshClone" name="11 · Verify on a&#10;fresh clone">
-      <bpmn:documentation>`bun run cat sub-kg:verify-clone --repo &lt;owner&gt;/&lt;name&gt; --ref &lt;branch&gt;` (Tool sub-kg-verify-clone): clone into an empty scratch directory with submodules and any sibling it needs, install, and run its own gates. Green, red or unknown, and unknown is never green. The measured falsifier (#2082): the first seeded fork failed with "Cannot find module" because nothing in a seed runs standalone until the seam is re-pointed.</bpmn:documentation>
+      <bpmn:documentation>`bun run cat sub-kg:verify-clone --repo &lt;owner&gt;/&lt;name&gt; --ref &lt;branch&gt;` (Tool sub-kg-verify-clone): clone into an empty scratch directory with submodules and any sibling it needs, install, and run its own gates. Green, red or unknown, and unknown is never green. Nothing in a seed runs standalone until the seam is re-pointed, so a missing module shows here.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sub-kg-lifecycle"/>
       </bpmn:extensionElements>
@@ -264,7 +259,7 @@ Extracted in retrospect from the staged IG separations of 2026-09-21 to 2026-10-
       <bpmn:incoming>F26</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:callActivity id="Task_ConfirmCutover" calledElement="Process_AskThePerson" name="12 · Owner confirms:&#10;freeze the in-repo copy">
-      <bpmn:documentation>The agent reports the files that would move, their size, the new repository and the commit the copy matches, then asks: (1) freeze it in the kept trashcan now, (2) keep in place until the first release, (3) show the file list first. Default if there is no answer: (2), nothing moves. A green fresh clone is the precondition for asking, not the answer. Non-relaxable. Owner ruling, 2026-10-06 (bean 3tza, "1"): the host keeps a FROZEN copy in the kept trashcan, not a refreshed mirror and not a deletion; the live copy is the submodule or subscription set up at stage 10.</bpmn:documentation>
+      <bpmn:documentation>The agent reports the files that would move, their size, the new repository and the commit the copy matches, then asks: (1) freeze it in the kept trashcan now, (2) keep in place until the first release, (3) show the file list first. Default if there is no answer: (2), nothing moves. A green fresh clone is the precondition for asking, not the answer. Non-relaxable. The host keeps a FROZEN copy in the kept trashcan, not a refreshed mirror and not a deletion; the live copy is the remote mount or subscription set up at stage 10.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:policy relaxable="false"/>
         <bootstrap.processes:skill ref="deletion-requires-confirmation"/>

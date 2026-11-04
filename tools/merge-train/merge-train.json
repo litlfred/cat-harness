@@ -86,7 +86,7 @@
     "selection": {
       "when": "The steward has chosen a batch of green, mutually independent PRs (see merge-overlap) and wants one branch that carries them all, regenerated once.",
       "limits": "Each member's merge commit is not proved on its own; the train is proved at its end by one regen. A refused member is left out and reported — handing it back to its owner is the steward's step. It does not push: CI on the train runs only after the steward pushes it.",
-      "cost": "One `merge-base.ts` per member (seconds each), then one regen (5-13 min measured 2026-10-02) and the three checks; a second regen if main had generated conflicts."
+      "cost": "One `merge-base.ts` per member (seconds each), then one regen (5-13 min) and the three checks; a second regen if main had generated conflicts."
     },
     "requires": {
       "runtime": [

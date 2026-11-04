@@ -30,11 +30,7 @@ with them is [`before-after-preview`](before-after-preview.md).
 **This is the one home of the rule.** Every skill or process that asks a person
 for feedback, review, sign-off or acceptance on something rendered (CRDM,
 SDLC code review, content authoring, translation, wireframes, a DAK or a
-guideline) points here rather than restating it. Owner, 2026-10-14: *"update
-your feedback skills as part of crdm, SDLC, other content authoring processes,
-if there is a staging URL provided, ideally with a deep link to the relevant
-features being edited or shown"*, and the request it repeats, beans `u1os`,
-`28k2` and `g4dv`.
+guideline) points here rather than restating it.
 
 1. **When a staging preview exists, the request carries it.** A request for
    feedback with a PR link and no staging link asks the person to read source
@@ -59,9 +55,9 @@ features being edited or shown"*, and the request it repeats, beans `u1os`,
 5. **Where it goes is a judgement, and more than one place may be right.**
    Human feedback is gathered through several Tools: the agent conversation
    (the turn that asks the person), a GitHub issue, a pull request (its body,
-   or the comment the staging workflow posts). Owner, 2026-10-14: *"it is a
-   Judgement as to the context which one to use. more than one can be
-   used."* Ask where the person will look. Work driven through, or primarily
+   or the comment the staging workflow posts). Which to use is a judgement
+   about context, and more than one can be used. Ask where the person will
+   look. Work driven through, or primarily
    referencing, a GitHub issue may warrant the request on that issue as well
    as in the turn; a change reviewed on its PR carries it there. Whichever
    places are chosen, each carries the same deep links. This rule fixes what
@@ -74,9 +70,8 @@ travel with the request rather than being rebuilt.
 
 ## Signature — one optional string in, a reviewable list out
 
-Stated formally because this skill is invoked by other processes and by a
-person typing `/staging-review`, and a contract that lives in prose is one each
-caller re-derives.
+Other processes invoke this skill, and so does a person typing
+`/staging-review`.
 
 ### Input
 
@@ -88,9 +83,8 @@ caller re-derives.
 | **absent** | the whole preview: every page this branch changed |
 
 Keep the wording **verbatim** wherever the output echoes it — the same rule
-[`goal-review`](goal-review.md) applies to a goal, and for the same reason: a
-request the agent paraphrased is a different request, and the reader cannot
-tell which one the list was built for.
+[`goal-review`](goal-review.md) applies to a goal: a request the agent
+paraphrased is a different request.
 
 It **narrows**; it never adds. *"The navbar"* gets the pages carrying it, not a
 page that mentions it. **An ask matching nothing that changed is said, not
@@ -108,8 +102,7 @@ not dropped.
    are any). One paragraph per PR or per coherent change. A table of URLs
    tells a reviewer *where* to look; only the narrative tells them *what
    they are looking for*, and a reviewer who has not read the code cannot
-   reconstruct it from a filename (owner, 2026-10-01: *"provide/show
-   before/after, provide narrative description of change"*).
+   reconstruct it from a filename.
 2. **Where to start** — one line, one URL: the one that best answers the input,
    or the page with the most change behind it when there was none. A reader
    opens one thing first whether or not you choose it for them.
@@ -141,16 +134,13 @@ surfaces:
 
 **Where a change is only visible after an interaction — a control behind a
 disclosure, a mode a reader turns on — say WHICH interaction.** A reviewer who
-cannot find the thing reports it as missing. That failure is on the record: a
-contrast defect survived two days behind a tile nobody clicked (bean `rptk`),
-because the gate that swept the page never opened the view.
+cannot find the thing reports it as missing, and a gate that sweeps the page
+without opening the view misses a defect behind it.
 
 ### You can open it yourself — the publish ref is a git branch
 
 Everything above composes URLs **for a reader**. The agent writing them
-usually cannot open them, and that gap has a measured cost.
-
-Probed 2026-09-22 from inside a session container, all three routes:
+usually cannot open them. From inside a session container:
 
 | route | result |
 |---|---|
@@ -159,14 +149,7 @@ Probed 2026-09-22 from inside a session container, all three routes:
 | Playwright / Chromium | `net::ERR_TUNNEL_CONNECTION_FAILED` |
 
 **A browser is not a way around it** — Chromium is proxy-configured too, so
-"use Playwright" fails identically. That is worth stating because it is the
-first thing anybody tries.
-
-WHAT IT COST: twelve navbar tiles shipped pointing at the ORIGIN rather than
-the site, because their href carried no `baseurl` (#801). Over a hundred green
-gates were fine with it, and the owner found it by clicking one — which is
-exactly `rptk`'s shape one layer out. Nothing in the repository could look at
-what deployed.
+"use Playwright" fails identically.
 
 **But the site is published to the `gh-pages` BRANCH, and git works.** So the
 deployed bytes are readable with `git show`, and a Playwright route handler can
@@ -189,16 +172,14 @@ await page.route(`${ORIGIN}/**`, (route) => {
 });
 ```
 
-**A preview that shares with the live site falls back to it.** Since
-2026-10-31 (owner: *"if asset not changed in staging then link to main
-asset"*; `cat-harness-tools/scripts/staging-share.ts`) a preview stores only
-the files that differ from the live site, and its `staging-sw.js` serves the
+**A preview that shares with the live site falls back to it.** A preview
+(`cat-harness-tools/scripts/staging-share.ts`) stores only the files that
+differ from the live site, and its `staging-sw.js` serves the
 rest from the live root in the browser. So when `STAGING/<slug>/staging-sw.js`
 is in the ref, a file absent from the preview is the live site's file at the
 same path, and `shared(p)` must read it from the root (`blob` with `ROOT` set
 to `""`). Without that, every shared file reads as missing. Where there is no
-`staging-sw.js`, `shared` returns `undefined` and an absent file is a finding,
-as before. The worker also puts the banner and `fa-staging` back on a live
+`staging-sw.js`, `shared` returns `undefined` and an absent file is a finding. The worker also puts the banner and `fa-staging` back on a live
 page it serves, which the route handler does not, so judge banner presence on
 the preview's own pages.
 
@@ -209,8 +190,8 @@ a count, not an impression. Fetch the ref first (`git fetch --depth=1
 
 **Serve it under the real `BASE`.** A page served at the origin root cannot
 reveal a missing `baseurl`, because *"composed against the base"* and *"not
-composed at all"* are the same string there. That is precisely how #801's e2e
-stayed green over the defect.
+composed at all"* are the same string there, so an e2e at the root stays
+green over a missing `baseurl`.
 
 **And `BASE` is NOT the site's base when you are reading a preview.** A
 preview is published at `<origin>/folio-assistant/STAGING/<slug>/`, so that
@@ -228,30 +209,17 @@ and every asset 404s.
 #### Report the absent count, and read it before anything else
 
 **A run that could not fetch the page's assets has established nothing**, and
-its other numbers are not merely unreliable, they are actively misleading.
-This page's own technique produced, on a deploy that was in fact correct:
-
-```
-STAGED SITE — 0 distinct tiles, 14 asset(s) absent from the ref
-OFF-SITE hrefs (#801): 0
-badged: 0
-```
-
-Read at face value that says the staged site has no tiles — which is the shape
-of the very defect this section exists to catch. It was a broken rig: the
-`BASE` above. The corrected run on the same commit gave 23 tiles, 0 absent,
-12 badged.
-
-So the rule, and it outranks every other number the run prints:
+its other numbers are actively misleading: a wrong `BASE` on a correct deploy
+reports zero tiles, which looks like the very defect being checked for. The
+rule outranks every other number the run prints:
 
 > **`missing > 0` is COULD NOT DETERMINE.** Not clean, and not a finding.
 > Discard the run's other counts rather than reading them, fix the rig, and
 > re-run.
 
-`dh4f` is this repository's name for scanning nothing and reporting it clean.
-This is its mirror — scanning nothing and reporting it *broken* — and it is
-the more expensive of the two, because an agent acting on it goes looking for
-a defect that is not there, or "fixes" one.
+Scanning nothing and reporting it *broken* is as wrong as reporting it clean,
+and costlier: an agent acting on it goes looking for a defect that is not
+there, or "fixes" one.
 
 #### What this does NOT verify, and it matters
 
@@ -265,18 +233,14 @@ cannot see:
   Pages has not served yet (§"Say how long")
 
 So a green result here means *"the published bytes are right"*, never *"the
-site works"*. Report it in those words. A stronger claim than the method
-supports is the thing this skill's third-state table exists to stop.
+site works"*. Report it in those words.
 
 #### When it stops applying
 
-The technique rests on one assumption: **publishing goes to a branch.** If this
-repository ever moves to the Pages artifact API, `git fetch origin gh-pages`
-fails and there is nothing to read.
-
-That failure must be reported as **could not determine**, never as a clean run
-— an empty ref and a correct deploy are opposite facts, and `dh4f` is this
-repository's name for the defect of scanning nothing and calling it clean.
+The technique rests on one assumption: **publishing goes to a branch.** If
+publishing moves to the Pages artifact API, `git fetch origin gh-pages` fails
+and there is nothing to read. Report that as **could not determine**, never as
+a clean run — an empty ref and a correct deploy are opposite facts.
 
 ### The third state, here as everywhere
 
@@ -295,13 +259,10 @@ broken".
 
 ### The commit in the bot's comment is NOT your branch head
 
-Measured 2026-09-21, by getting it wrong in this skill's own first use. The
-comment named `3894c41`; the branch head was `037812c7`; I reported the preview
-as *"one commit behind"*. **It was current.** On a `pull_request` trigger the
-stage job builds `refs/pull/<n>/merge` — your head merged into the base — so
-the commit it names is an object that **never** equals your head and is not
-even in your clone. Comparing the two reports a stale preview on every PR,
-forever.
+On a `pull_request` trigger the stage job builds `refs/pull/<n>/merge` — your
+head merged into the base — so the commit the comment names **never** equals
+your head and is not even in your clone. Comparing the two reports a stale
+preview on every PR.
 
 Resolve it instead. The merge commit's **second parent** is the head it was
 built from:
@@ -455,7 +416,7 @@ When an author has made content changes on a feature branch:
    before/after pictures themselves
 4. **Offer to run the staging workflow** if not already running
 
-### Finding your way on the review page (bean `eb4l`)
+### Finding your way on the review page
 
 A 300-page review needs to know where it is, and to move in one key or one
 click. The review page has a navigation pane, beside the list on a wide
@@ -466,8 +427,8 @@ screen and above it on a narrow one:
   - A section with something to review is a button that moves focus to it,
     with word badges ("2 changed, 1 comment, QA failing").
   - Any other section links to its published page.
-  - By the owner's ruling it is **on the review page only**. The "no toc"
-    ruling for normal pages stands.
+  - It is **on the review page only**; normal pages carry no table of
+    contents.
 - **Minimap.** One cell per block, in order. It is **one tab stop**: Up and
   Down move, Home and End jump to either end, and Enter opens the block.
   Each cell is labelled in words and marked with glyphs (Δ changed, + added,
@@ -483,7 +444,7 @@ screen and above it on a narrow one:
 | `k` | Previous | the previous item |
 | `n` | Next with comments | the next block with open comments |
 | `p` | Previous with comments | the previous block with open comments |
-| `u` | Next unreviewed | the next changed block with no reviewer verdict on its CURRENT version (bean `px0t`) |
+| `u` | Next unreviewed | the next changed block with no reviewer verdict on its CURRENT version |
 
 **"Unreviewed" means no verdict on this version**, not "no comments". A
 block whose only verdict is on an earlier version is unreviewed, and says so
@@ -498,14 +459,14 @@ keyboard alone. It uses no mouse, no click and no hover.
 
 A folio's preview carries `review/index.html`: every changed block, grouped by
 section, with its reviewer comments (the `review-comments` skill). Each
-changed block has a **"Show this change as"** selector (bean `d903`), and one
+changed block has a **"Show this change as"** selector, and one
 at the top applies to every block:
 
 | renderer | shows | the default for | needs |
 |---|---|---|---|
 | **Word diff of the source** | the Markdown with removed words struck and added words marked: exactly what the author typed | any kind not listed below | the block's prose |
 | **Inline, as rendered** | the block as a reader sees it now, with the change marked in place | `prose`, `remark`, `definition`, `example` | the block's prose |
-| **Pictures, before and after** | a picture of the block on each side, the changed pixels marked, and the share changed in words ([`visual-diff`](visual-diff.md), bean `0rxe`) | `table`, `figure`, `diagram`, `equation`, `simulator` | `visual-diff.json` from the `folio-block-screenshots` Tool |
+| **Pictures, before and after** | a picture of the block on each side, the changed pixels marked, and the share changed in words ([`visual-diff`](visual-diff.md)) | `table`, `figure`, `diagram`, `equation`, `simulator` | `visual-diff.json` from the `folio-block-screenshots` Tool |
 | **Side by side** | `main` and the preview next to each other, each scrolled to the block | the same kinds, as the second choice when a build published no pictures | a page on either side |
 
 - **Where the data comes from.** The ChangeSet step's `--text-out` writes
@@ -531,8 +492,7 @@ at the top applies to every block:
 ## Staging retention
 
 **A MERGED pull request's preview goes away. Everything else is retained by
-default.** Owner, 2026-09-20: *"change policy, if merged to main, then staging
-goes away"* — replacing a blanket retain-on-close.
+default**, subject to the size cap below.
 
 The distinction is about **where the content lives**, not about how confident
 anyone is:
@@ -542,34 +502,17 @@ anyone is:
 | **merged** | the same thing the MAIN SITE now shows | redundant on the instant, and removed automatically — no label |
 | **closed, unmerged** | the ONLY rendering of that work | the last copy, and retained unless a person says otherwise |
 
-**The store DRAINS, and the size threshold depends on it.** Under the old
-retain-on-everything policy the total only ever grew, so any warning point was
-breached once and stayed breached — a permanent verdict rather than a signal.
-Now what remains is bounded by **concurrent reviews**, not by cumulative
-history, which is why the warning point could move from 100 MB to **500 MB**
-on 2026-09-20 and start meaning something again: at the measured ~38 MB per
-preview it is about **thirteen concurrent reviews**, and half the documented
-1 GB Pages ceiling.
+The store therefore drains: what remains is bounded by **concurrent reviews**,
+not by cumulative history.
 
-The floor still governs and pruning is still not the action: a live branch's
-preview must not be removed, so N concurrent reviews floor the total at
-N × ~38 MB. What changed is that the floor now **falls on its own** as work
-merges, instead of being carried forever.
+**This applies
+[`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md);
+it does not relax it.** The merge *is* the confirmation: a person decided this
+content belongs on `main`. What the label guards is the case where nobody
+decided anything. Removal is one preview directory at a time.
 
-**This is not a relaxation of
-[`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md) — it is
-that rule applied more precisely.** The merge *is* the confirmation: a person
-decided this content belongs on `main`, which says more about the preview than
-a label does. What the label still guards is the case where nobody decided
-anything.
-
-And it does **not** reverse `plj1`. That failure deleted every **open** PR's
-preview — work nobody had accepted, mid-review. Nothing here touches an open
-PR, and the one-directory-at-a-time shape that bean forced on the job is
-unchanged.
-
-**Which mechanism depends on whether the PR is still open, and that is not a
-detail.** Three cases, and the label cannot reach a closed PR:
+**Which mechanism depends on whether the PR is still open.** Three cases, and
+the label cannot reach a closed PR:
 
 0. **Merged** — nothing to do. `cleanup` reads
    `github.event.pull_request.merged` off the close event and removes without
@@ -587,31 +530,20 @@ detail.** Three cases, and the label cannot reach a closed PR:
 
 **Labelling a closed PR does nothing, and re-running its old workflow run does
 nothing either** — a re-run replays the stored event payload, which still
-carries no label. That was the state of things until bean `w2g5`: the health
-sweep's `staging-preview-orphans` finding can only ever name a preview whose PR
-is already closed, so the remedy it documented was unreachable for every orphan
-it could report. If you find yourself reaching for a hand-pushed `gh-pages`
-commit instead, stop: that is the unilateral removal
+carries no label. So for an orphan the health sweep's
+`staging-preview-orphans` finding names, option 2 is the remedy. If you find
+yourself reaching for a hand-pushed `gh-pages` commit instead, stop: that is the unilateral removal
 [`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md) exists to
 stop, and option 2 exists so you do not have to.
 
 ### The cap — 3 GB of previews in total, the oldest rotated off
 
-**Owner ruling, 2026-10-02 (issue #1868):** *"for going forward, we should cap
-the maximum number of previews (<= 10) and rotate old ones off."* **Amended
-2026-10-04: "Cap by size, not count", budget "3gb".** Previews had grown to
-200–780 MB each, so ten of them came to 3–5 GB and any one lasted an hour or
-two; a count bounds the total only while preview size holds still, and it did
-not.
+Previews are capped by total size, not count, because preview sizes vary
+widely. GitHub Pages deploys `gh-pages` as-is, and past its 10 GB artifact
+limit the **live** site stops deploying. Every removal path above is
+per-preview and event-driven; none bounds the total.
 
-Why a cap rather than a better threshold: GitHub Pages deploys `gh-pages`
-as-is, every preview is a full copy of the site (~200–500 MB by then, not the
-~38 MB measured above), and nothing bounded how many existed at once. The
-branch passed GitHub's 10 GB Pages artifact limit and the **live** site stopped
-deploying on 2026-10-01. Every removal path above is per-preview and
-event-driven; none bounds the total, which is the quantity the limit is about.
-
-What the `stage` job now does, on every deploy, before its one push:
+What the `stage` job does, on every deploy, before its one push:
 
 - **Sums the size of the previews under `STAGING/`, including the one it is
   staging, and keeps them within 3 GB.** The number lives once, as
@@ -629,9 +561,8 @@ What the `stage` job now does, on every deploy, before its one push:
   reason, the preview's `staging-preview.json` retired into `_retired/`, and a
   line in the commit message and the job log giving slug, age and size.
 
-**This DOES reach open pull requests, and that is the ruling, not a defect.**
-The paragraphs above say nothing here touches an open PR; under the cap, the
-oldest preview goes whatever its PR's state. The ruling is the confirmation
+**This DOES reach open pull requests.** Under the cap, the oldest preview goes
+whatever its PR's state; the owner's cap is the confirmation
 [`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)
 asks for, given for the class. It is recoverable because a preview is a build,
 not content: **the next push to that PR's branch re-stages it**, and the run
@@ -642,11 +573,10 @@ empty commit will do) or re-run the PR's `Feature Staging` workflow.
 
 ### A closed PR is not an abandoned preview
 
-`staging-preview-orphans` does **not** ask "is there an open PR?" any more, and
-neither should you. A session that reuses one branch across successive pull
-requests has no open PR for the whole gap between one merging and the next
-opening — measured at 5m42s on `claude/brave-hypatia-r820sf`, 2026-09-19, and
-the sweep landed inside it and called a live branch an orphan. Liveness is
+`staging-preview-orphans` does **not** ask "is there an open PR?", and neither
+should you. A session that reuses one branch across successive pull requests
+has no open PR for the whole gap between one merging and the next opening.
+Liveness is
 three signals, any one of which means leave it alone: an open PR, a branch on
 the remote carrying work not in the default branch, or a tip commit in the last
 30 minutes. `scripts/staging-cleanup-preflight.ts --slug <slug>` answers the
@@ -655,10 +585,8 @@ same question on demand, and the dispatch above runs it before removing.
 ## Before you hand a staging URL to a person (STRICT)
 
 **A staging URL is not a deliverable until you have checked the ref, and it is
-never "live" on your say-so.** The rule exists because it was broken here: in
-one session an agent relayed the same preview URL to the owner **five times**
-without once checking anything, each time off the back of the bot's comment —
-which says a workflow *pushed*, not that a site *serves*.
+never "live" on your say-so.** The bot's comment says a workflow *pushed*, not
+that a site *serves*.
 
 Three states, and conflating any two of them is the defect:
 
@@ -671,9 +599,9 @@ Three states, and conflating any two of them is the defect:
 **The third is not available to you, and `curl` will not make it available.**
 The proxy blocks `github.io`, so a fetch returns `000` and says nothing either
 way. And where Pages is configured as *Deploy from a branch* — as it is here —
-its builds produce **no workflow runs at all**: measured 2026-09-20,
-`event: page_build` returns `total_count: 0` and there is no
-`pages-build-deployment` workflow to query. So there is no API answer either.
+its builds produce **no workflow runs at all** (`event: page_build` returns
+`total_count: 0`, and there is no `pages-build-deployment` workflow to query).
+So there is no API answer either.
 
 So: **verify the ref, and report the third state as unverified rather than
 inferring it.** Listing `STAGING/<slug>/` on `gh-pages` and finding
@@ -681,26 +609,22 @@ inferring it.** Listing `STAGING/<slug>/` on `gh-pages` and finding
 Pages has rebuilt. Those are different claims and only one of them is yours to
 make.
 
-**LIST the directory. Do not FETCH the page.** Found by doing it wrong within
-minutes of writing this rule: asking for `STAGING/<slug>/index.html` returns
-the file, and a staging page here is ~100 KB of rendered HTML — 107,844
-characters on the first try, which is a context window spent to learn a fact
-the directory listing gives for free. The listing returns a name and a byte
-count per entry; `index.html` present and non-zero is the whole check. Request
-only the `name` and `size` fields while you are at it.
+**LIST the directory. Do not FETCH the page.** A staging page is ~100 KB of
+rendered HTML, a context window spent to learn a fact the directory listing
+gives for free. The listing returns a name and a byte count per entry;
+`index.html` present and non-zero is the whole check. Request only the `name`
+and `size` fields.
 
 ### Say how long, and come back
 
 A person handed a URL with no timing either refreshes a 404 or walks away.
 Give them the number and the follow-up, in the same breath as the link:
 
-- **The `stage` job takes about 22 minutes, plus its wait at the rate limit.**
-  Measured 2026-10-31 (run 41191827071): 8 min derived artefacts, 6 min
-  knowledge-graph export, the rest mounting, Jekyll and checks. (It was ~2
-  minutes in 2026-09, before the site grew.) Drafts are staged too, from the
-  first push (owner, 2026-10-31). Since
-  #1956 the job then waits until `gh-pages` has gone 5 minutes without a
-  staging push and 10 without a main-site one
+- **The `stage` job takes about 22 minutes, plus its wait at the rate limit**
+  (derived artefacts, the knowledge-graph export, mounting, Jekyll and
+  checks). Drafts are staged too, from the first push. The job then waits
+  until `gh-pages` has gone 5 minutes without a staging push and 10 without a
+  main-site one
   ([`feature-staging`](feature-staging.md) §7), and its PR comment says
   **queued** with an earliest push time and a live-by time while it waits.
   Quote those times; they are the job's own estimate.
@@ -715,7 +639,7 @@ Give them the number and the follow-up, in the same breath as the link:
 Never present a URL as though it is already serving. *"Deployed to `gh-pages`,
 should be live in ~5 minutes"* is the honest sentence and costs nothing.
 
-### Check for newer cleanup commits on gh-pages (bean oz5w)
+### Check for newer cleanup commits on gh-pages
 
 Before declaring a preview good, check the `gh-pages` commit log for any
 `staging(cleanup)` commit touching that slug that is **newer than** the last
@@ -754,7 +678,7 @@ queueing a new Pages build.
 
 - **Do not hand over a staging URL without listing `STAGING/<slug>/` on
   `gh-pages` first.** The bot's comment says a workflow pushed, not that a
-  site serves, and relaying it unchecked is what this section exists for.
+  site serves.
 - **Do not declare a preview good without checking the `gh-pages` commit log for
   newer cleanup commits.** A `staging(cleanup)` commit newer than the publish
   means a cancelled Pages build leaves the live site serving a 404.
@@ -762,9 +686,10 @@ queueing a new Pages build.
   someone has loaded it. You cannot see that from here.
 - **Do not provide before/after URLs without checking the staging workflow
   has run.** A URL that 404s is worse than no URL.
-- **Do not auto-remove staging previews.** A person confirms every removal —
-  the label while the PR is open, or the dispatch with its repeated-slug
-  confirmation once it is closed.
+- **Do not remove a staging preview by hand without confirmation.** Apart
+  from a merged PR's preview and the size cap's rotation, a person confirms
+  every removal — the label while the PR is open, or the dispatch with its
+  repeated-slug confirmation once it is closed.
 - **Do not read "no open pull request" as "abandoned".** It is true of a live
   branch for the whole gap between one PR merging and the next opening.
 - **Do not assume all pages are at the root.** Guides are under `guides/`,
@@ -781,5 +706,4 @@ composing it from the source path yields a 404 for a page that is there. From
 an agent container a `curl` against a Pages URL fails on the proxy regardless,
 so a failed fetch is not evidence either way.
 
-Full rule and the measured failure:
-[`github-state-inspection`](github-state-inspection.md).
+Full rule: [`github-state-inspection`](github-state-inspection.md).

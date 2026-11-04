@@ -3,7 +3,7 @@
   "tool": {
     "id": "kg-validate",
     "title": "Validate a node in the graph",
-    "description": "Check one file against the schema for its graph typology. ONE tool rather than one per schema: the declaration already says which directory holds which kind, so the kind is the parameter and the lookup does the rest.",
+    "description": "Check one file against the schema for its graph typology. ONE tool for every schema: the kind is resolved from the declared directory that holds the file.",
     "install": {
       "none": true
     },
@@ -49,8 +49,8 @@
       "kg-navigation"
     ],
     "selection": {
-      "when": "Whenever a node's shape matters and you are not in this repository's CI. That is the case the tool exists for: `tools/` is an INHERITED declaration and `.github/workflows/` is not, so a downstream instance gets this and gets none of the 41 gates. #363's self-sovereign topology has no CI to inherit from at all.",
-      "limits": "It can only check a kind that declares a validator — 2 of 16 today, so most nodes come back UNDETERMINED and it exits non-zero saying so. That is the honest state rather than a gap to paper over: `qa`, the largest generated graph here, has no Zod schema anywhere. `bun run cat check:kind-validators` reports the coverage.",
+      "when": "Whenever a node's shape matters and you are not in this repository's CI: `tools/` is an INHERITED declaration and `.github/workflows/` is not, so a downstream instance gets this and none of the CI gates.",
+      "limits": "It can only check a kind that declares a validator; a node of any other kind comes back UNDETERMINED and it exits non-zero saying so. `bun run cat check:kind-validators` reports the coverage.",
       "cost": "One module import per kind. Nothing to install, no network."
     },
     "requires": {

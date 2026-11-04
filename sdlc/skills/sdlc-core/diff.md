@@ -40,8 +40,8 @@ links the platform. Its stderr line is the summary. The JSON
 the content core's `schemas/changeset.ts`) lists every block that differs,
 keyed on its **label**, in reading order.
 
-**Why not `git diff --name-only` over `.ts` files**, which this section used
-to do. That misses three things a reviewer needs:
+**Do not use `git diff --name-only` over `.ts` files.** It misses three
+things a reviewer needs:
 - **A prose-only edit.** The `.md` changed and the `.ts` did not, which is
   the commonest edit in a document folio.
 - **A move** between sections. It either vanishes or reads as noise.
@@ -93,12 +93,11 @@ review page never disagree:
 **Once the branch is pushed, link the review page as well.** The folio's
 staging preview publishes this same ChangeSet as `changeset.json` and renders
 it at `STAGING/<slug>/review/`: before and after for every block, the heat
-map, and the outline. Give that URL next to the table. It is the one a
-reviewer can open without a local server, and it shows the same changes in
-the same words, because it reads the same file.
+map, and the outline. Give that URL next to the table: a reviewer can open
+it without a local server.
 
 Rendered-asset changes (re-rendered or new SVGs) are not in the ChangeSet.
-Report them separately from `rendered[]` hashes, as before.
+Report them separately, from `rendered[]` hashes.
 
 ## 3. Viewer features for reviewing changes
 

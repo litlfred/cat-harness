@@ -11,12 +11,6 @@ say-so.
 **The agent** does everything else with the `beans` CLI: creating, scrapping,
 retitling, setting a blocker. The engine has no operation for any of these.
 
-This is not a hypothetical distinction. An activity in the CRDM diagram
-carried `<cat-harness.processes:bean action="create"/>` — `action`, where the engine reads
-`op` — so it parsed as no operation at all. The step advertised that sign-off
-produced beans, performed nothing, and did so silently until somebody read the
-parser.
-
 **When you add a bean-marked step,** use one of the three operations the
 engine implements, and say in the step's documentation which parts are the
 agent's own CLI calls. `bun run cat check:workflow-refs` will catch a skill

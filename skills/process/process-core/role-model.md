@@ -19,23 +19,23 @@ One sentence carries the whole model:
 
 > **An actor performs a task in a process as a role, using that role's skills.**
 
-Four objects, each with a home:
+Six objects, each with a home:
 
 | object | what it is | declared in |
 |---|---|---|
-| **Actor** | a concrete participant. Human, agentic or mechanical. Persists across every process. | `cat-harness/scenarios/actors/*.json` (the declared `scenarios` graph, beside the roles; `.claude/skills/actors/` until 2026-09-30, bean `rqao`) |
+| **Actor** | a concrete participant. Human, agentic or mechanical. Persists across every process. | `scenarios/actors/*.json` (the declared `scenarios` graph, beside the roles) |
 | **Role** | **the swimlane** — a persona an actor *takes on* because of the lane it is acting in. Carries a collection of Skills. | `scenarios/roles.json` |
-| **Skill** | an instruction body: what the actor needs to know to perform the task it was handed. | `skills/<pkg>/*.md` (naming its `input:`/`output:` contracts, usually under `schemas/skills/<name>/`); JSON `SkillDefinition`s in each owning instance's `skills/skill-definitions/` (bean `rqao`) |
+| **Skill** | an instruction body: what the actor needs to know to perform the task it was handed. | `skills/<pkg>/*.md` (naming its `input:`/`output:` contracts, usually under `schemas/skills/<name>/`); JSON `SkillDefinition`s in each owning instance's `skills/skill-definitions/` |
 | **Process / Decision** | BPMN and DMN. Lanes bind roles; activities name skills; gateways may compute their branch from a table. | `processes/**/*.bpmn`, `processes/**/decisions/*.dmn` |
 | **Requirement** | a conformance obligation, **pointed at** by what discharges it: a skill or capability names the statement in `satisfies: req:<id>#<key>`. The requirement points at `actors` (who is bound) and `derivedFrom` (the broader requirement it specialises). | `skills/requirements/*.json` |
-| **Permission** | what an actor is **allowed to do**. Cross-cuts roles. A W3C ODRL 2.2 rule, scoped by Process, Task or Role when it needs to be (issue #1180). | actions: `skills/permissions/permissions.json`; who holds them: `policies/*.jsonld` |
+| **Permission** | what an actor is **allowed to do**. Cross-cuts roles. A W3C ODRL 2.2 rule, scoped by Process, Task or Role when it needs to be. | actions: `skills/permissions/permissions.json`; who holds them: `policies/*.jsonld` |
 
 **WHO's "actor" is this model's Role.** An actor in the WHO DPI-H Reference
 Architecture's conformance model (§3.7.2, an abstract information-processing
 role) and a DAK generic persona each map to a folio-assistant **Role**, never
 to an Actor. The RA's system *realising* an actor maps to a mechanical Actor
-taking on that role. Owner, 2026-10-03 (#1984); the comparison is on
-the DAK layer's `findings/dth-terms.md`.
+taking on that role. The comparison is on the DAK layer's
+`findings/dth-terms.md`.
 
 Schema: [`schemas/process/role-graph.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/process/role-graph.ts). Audit:
 `scripts/kg-audit.ts`, sidecar schema
@@ -49,17 +49,9 @@ Schema: [`schemas/process/role-graph.ts`](https://github.com/litlfred/cat-harnes
 kinds are skills; only the first can sit in a swimlane.
 
 A skill that is reference material declares `consulted: true` in its front
-matter. Absent means performed — the exception is annotated, not the rule,
-because an axis whose default costs an edit in every skill file does not get
-adopted.
-
-**Why it had to be declared.** `kg-audit`'s `skill-in-role-or-process`
-counted both kinds together. Two mechanical discriminators were tested over
-the unbound set (bean `y1w9`) and both cut across the distinction rather
-than along it: a sibling `.ts` `SkillDefinition` covers a fifth of them and
-misses `glossary-build` and `editor`; an `allowed-tools:` line covers half
-and splits the same families arbitrarily. The distinction is real,
-load-bearing for a criterion, and was declared nowhere.
+matter. Absent means performed. No mechanical signal (a sibling
+`SkillDefinition`, an `allowed-tools:` line) tells the two kinds apart, so it
+must be declared.
 
 **It is checked in BOTH directions**, which is what stops it being an
 opt-out. `skill-in-role-or-process` skips a consulted skill; the separate
@@ -68,71 +60,28 @@ activity names, because a skill cannot be reference material *and* a step
 somebody performs. Which of the two declarations is wrong takes a person,
 so the criterion reports both rather than choosing.
 
-**It shipped with its reader in the same commit** — the rule the retired
-`roles:` field broke, immediately below.
+### A skill does not carry `roles:` front matter
 
-### A skill's `roles:` front matter is GONE — do not bring it back
+Do not write `roles:` in a skill's front matter.
+`bun run cat check:retired-front-matter` fails if it appears. To learn who
+performs a skill, read `scenarios/roles.json`; the registry is the only answer
+that resolves. A role→skill edge for a skill above the harness is an
+`extensions` entry in that instance's role graph (§"A higher instance EXTENDS
+a role by id").
 
-**Removed 2026-09-20**, bean `folio-assistant-qif9`, on the owner's
-instruction. 114 skill files lost it; the full record, with every value every
-file carried, is `fsh-guts/retired/skill-roles-front-matter.md` — a path
-rather than a link, because the trashcan is not published and a link from
-here would break on the site.
+**`roles:` in a `folio-memory/v1` entry is a DIFFERENT field and stays.**
+`memoryForRoles` filters on `tags.roles`. Sharing a key name across graph
+typologies is not sharing a field, and `check:retired-front-matter` keys its
+exemption on `$schema`, never on the directory.
 
-The note here used to say the field was *inert but present* and to be read
-past. It is now absent, and this entry exists for one reason: **the corpus is
-what taught agents to write it.** Copy an adjacent skill's front matter and
-the field comes back — which is exactly how it reached 140 files, six from the
-qou migration and the rest copy-paste, never a decision.
-`bun run cat check:retired-front-matter` fails if it reappears.
-
-Three facts, in case the question comes up again:
-
-- **Nothing read it — with one instructive exception.** 0 of 180 Skill nodes
-  in the exported graph carried any role-ish key; the only 27 carriers were
-  `Actor` nodes, from actor JSON, and `gen-skill-docs` dropped it. The
-  exception was `src/impact/stakeholder-map.ts`, which printed it as
-  *"Roles reached"* — beside real lane-derived roles, with nothing marking
-  which was which. It now derives roles from the **lanes** it already
-  computes, resolved through `roleForLane`, so every value it prints
-  resolves.
-- **`roles:` in a `folio-memory/v1` entry is a DIFFERENT field and stays.**
-  `memoryForRoles` filters on `tags.roles`; the 26 memory entries keep it.
-  The first pass of the excision took all 140 files and `agent-memory.test.ts`
-  caught it — every entry untagged means every lane sees everything. Sharing
-  a key name across graph typologies is not sharing a field, and
-  `check:retired-front-matter` keys its exemption on `$schema`, never on the
-  directory.
-- **It was dangling from its first commit, not from a later rename.** At
-  migration (`2734a70f`, 2026-06-15) the contract read *"Actor IDs (roles)
-  that may invoke this skill"*, pointing at `ActorDefinition.id`. No
-  `reader.json`, `collaborator.json` or `owner.json` has ever been added to
-  `.claude/skills/actors/`, in any commit in the repository's history.
-- **The second vocabulary was a collision.** `Role` was later given to the
-  BPMN swimlane, and authors reading the field by its new name wrote
-  swimlane roles into it. At removal, across the 114 skill files: 288
-  annotations, **260 of them — 90 % — resolving to nothing.**
-
-To learn who performs a skill, read `scenarios/roles.json`. The registry is
-the only answer that resolves.
-
-**What the removal did not decide.** Whether a skill *should* declare its
-performer (bean `y1w9`), and what the tier words mean — if
-`reader`/`collaborator`/`owner` are forge permission tiers, that is a
-deployment fact belonging to the topology axes rather than to a skill. Either
-way the field gets **declared before it is written**, which is the step the
-original skipped.
-`qif9` carries the four options; `folio-assistant-y1w9` (110 skills bound
-to no role or process) is blocked on the answer, because the obvious
-evidence for that triage is exactly this field.
+Whether a skill should declare its performer is undecided; if it ever does,
+the field is **declared in the schema before it is written**.
 
 ## Why a lane names a role, and the role is not the person
 
 A lane is not itself a role: **a lane names the Role its tasks are performed
-in** (owner, 2026-10-16: *"Lane names Role, not Actor"*).
-
-Because the same actor is a different thing in two diagrams, and two different
-actors are the same thing in one.
+in**, not an Actor. The same actor is a different thing in two diagrams, and
+two different actors are the same thing in one.
 
 In `crdm-requirements.bpmn` the session agent acts in `Lane_Agent`. In
 `bean-lifecycle.bpmn` that very same session agent is, from the other diagram's
@@ -143,36 +92,27 @@ not because the actor did.
 So nothing is "a reviewer". Somebody **acts as** reviewer, inside a process,
 for the duration of a lane.
 
-> **The actor registry used to model this backwards, and now does not.**
-> `.claude/skills/actors/*.json` held eighteen entries with an `inherits`
-> chain — `author` inherits `reviewer` inherits `viewer`. That is a **role**
-> lattice wearing an actor's name: "can review", "can push" are properties of a
-> position, not of a person. Those entries now carry **`roles[]`** — the roles
-> each actor may take on — and the lattice lives in the role graph, where
-> `inherits` means what it says. Six actors were added for participants that
-> had none: the end user, a stakeholder, the onboarding / ingestion / evidence
-> agents, and the CI pipeline.
+> **An actor carries `roles[]`, never `inherits`.** "Can review" and "can
+> push" are properties of a position, not of a person, so the `inherits`
+> lattice lives in the role graph. An actor lists the roles it may take on.
 >
 > `roles: []` and an **absent** `roles` mean different things. `[]` says the
 > actor takes on no role, which is the honest value for a read-only identity
 > that never appears in a swimlane; absent says nothing has been asserted.
 >
-> The `actor-is-not-a-role` criterion stays even though it now passes, because
-> the next registry written by hand will reach for `inherits` again.
+> The `actor-is-not-a-role` criterion reports an actor that carries `inherits`.
 
-> **Roles played by mechanical actors are real roles** (owner, 2026-10-16).
+> **Roles played by mechanical actors are real roles.**
 > `Work plan (beans)`, `Corpus`, `Publish target`, a build pipeline and the
 > external registries are roles a machine or an outside party plays. Their
 > skills are their **contract**: the responsibilities they must perform, which
 > a test can hold them to — a contract skill names its tests in front matter as
-> `tested-by:`. These roles used to carry `actedUpon: true`, which said they
-> "take no part"; the diagrams hand them tasks, so the flag is retired. The QA
-> report lists a mechanical role whose skills name no test as
-> `mechanical-role-untested`, and `role-has-actor` now asks the fair question
-> of what plays the corpus.
+> `tested-by:`. The QA report lists a mechanical role whose skills name no test
+> as `mechanical-role-untested`, and `role-has-actor` asks what actor plays
+> each such role.
 
 > **A store is a mechanical role with a `store` block, and is drawn as a data
-> store, not a lane** (owner, 2026-11-01, Q-BR-3 A, Q-DS-1 A to Q-DS-4 A).
+> store, not a lane.**
 > `work-plan`, `corpus`, `log` and `session-record` keep things rather than
 > do them. Each stays a Role, so its skills are still its contract, and adds
 > `store`: what it `holds` (typology ids), its `api` (one entry per
@@ -197,17 +137,8 @@ for the duration of a lane.
 > judgement to exercise and whose skills are a contract it can be tested
 > against.
 >
-> The flag exists because prose did not hold. The role's own summary has said
-> "carries no skills deliberately: sign-off is a judgement, not a procedure, and
-> a skill here would suggest an agent could supply it" since the graph was
-> written — and a later pass, reading four `activity-names-skill` findings on
-> that lane, came within one commit of resolving them by giving the role a
-> skill. A decision recorded only in a summary is a decision the next agent
-> re-litigates.
->
-> Effect: `activity-names-skill` records **n/a** for activities in the lane,
-> which is what lets that criterion gate on the undeclared ones instead of
-> staying advisory for ever.
+> Do not give such a role a skill. `activity-names-skill` records **n/a** for
+> activities in its lane.
 
 ## An actor is one of three kinds — human, agentic, mechanical
 
@@ -228,33 +159,12 @@ not ours to task at all.
 
 **The line is judgement.** An agent and a person can both be handed an
 instruction body and asked to decide something; a mechanical system executes a
-procedure and decides nothing. That is not a taxonomy for its own sake — it is
-what says whether a given step may be given to a given participant.
+procedure and decides nothing. That says whether a given step may be given to a
+given participant.
 
-**It was two values until 2026-09-19 and the conflation was the defect.** Every
-entry carried `type`, which read `person` or `system`, and `system` covered an
-LLM agent and a CI runner alike. Measured on `main` that morning: **16 `person`,
-8 `system`** — and those 8 held **five agents and three mechanical services**.
-So "which tasks can this actor perform" had no answer for a third of the
-registry, because the question turns on judgement and both sides wore one label.
-
-**The distinction was already written down, in prose nothing could read.**
-`ci-pipeline`'s own description has always said *"It runs a fixed program and
-exercises no judgement, so anything needing a decision belongs in another
-lane."* `review-agent`'s says it performs *"NON-MECHANICAL validation …
-judgement calls escalate to a human reviewer."* Both sentences state exactly
-this rule; neither was machine-readable. That is the `judgementOnly` lesson
-again — a load-bearing rule kept only in a summary is one the next pass
-re-litigates.
-
-**It was also already in a schema — the wrong one of two.** `ACTOR_KINDS` in
-`schemas/process/role-graph.ts` has read all four values since the role graph was
-written, while `ActorTypeSchema` in `schemas/kg/skill-package.ts` read
-`["person", "system"]` — and the registry validated the actor files against the
-narrower one, so the four-kind vocabulary could not be used by the files it
-existed for. There is now one declaration, in `skill-package.ts` (the zod-only
-base both the registry schema and the role graph import), re-exported from
-`role-graph.ts`.
+The vocabulary is declared once, in `schemas/kg/skill-package.ts` (the
+zod-only base both the registry schema and the role graph import), and
+re-exported from `schemas/process/role-graph.ts`, where it is `ACTOR_KINDS`.
 
 **A legacy `type` still loads, and is never read as `agent`.** An unmigrated
 downstream registry has not said whether its non-person actors exercise
@@ -304,8 +214,7 @@ silencing it has to cost a sentence somebody reads in the diff.
 
 **Read a failure as a question with three answers, not one.** The task type may
 be wrong, the lane may be wrong, or the step may really admit that kind — and
-only the third is a `<cat-harness.processes:fulfilment/>`. Reaching for the exemption first is
-how it becomes a rubber stamp.
+only the third is a `<cat-harness.processes:fulfilment/>`.
 
 ## Three questions about an actor, and only two are answered on the actor
 
@@ -325,10 +234,8 @@ how it becomes a rubber stamp.
 | what may it **DO**? | ODRL rules in `policies/` naming it as `assignee` | everywhere, or as narrow as a rule's `cat-harness:process`, `cat-harness:task` and `cat-harness:role` constraints |
 | what does its **machine have**? | `capabilities` on the actor | the environment |
 
-**What an actor may DO moved off the actor on 2026-09-23** (issue #1180; owner:
-*"W3C ODRL 2.2 and W3C PROV-O for logging"*). Every `permissions` list became
-one ODRL rule per action, and `schemas/odrl.test.ts` pins that nobody lost or gained
-one. What this buys:
+**What an actor may DO is not on the actor.** It is a W3C ODRL 2.2 rule per
+action in `policies/`:
 
 - **Inheritance.** Each action in `permissions.json` says which broader actions
   it is `includedIn`, ending at ODRL's own (`odrl:display`, `odrl:modify`,
@@ -340,16 +247,14 @@ one. What this buys:
   `permit`, `deny` or `unknown`, and `unknown` is never permit. Performing a
   task in a lane needs the permission **and** the lane's role, so eligibility
   (`roles`) and permission stay separate, as below.
-- **Anyone.** `cat-harness:anyone` is an unauthenticated reader. The owner's floor:
-  it may `visualize` and `render`, and nothing else. Owner, 2026-09-24:
-  *"person acting w/ no login = reader/browser"*. A person with no login is a
-  reader/browser, whoever they are, and holds exactly this.
+- **Anyone.** `cat-harness:anyone` is an unauthenticated reader: a person with
+  no login, whoever they are. It may `visualize` and `render`, and nothing
+  else.
 
 **Identity is not here.** Which login is which actor is the data store's to
-know (owner, 2026-09-23). No actor file and no policy carries a login, and
-workflow history names the **actor**, never the login: the repository owner's
-steps are recorded as `owner` (owner, 2026-09-24, *"Yes, exactly"*), and the
-data store maps the login to `owner`.
+know. No actor file and no policy carries a login, and workflow history names
+the **actor**, never the login: the repository owner's steps are recorded as
+`owner`, and the data store maps the login to `owner`.
 
 **Who reads all three before a task runs:** the BPMN executor. Before any task
 or decision is recorded, `authorizeTask` asks whether the actor is
@@ -357,7 +262,7 @@ authenticated, eligible for the lane's role (`roles`), and permitted by policy
 to `perform-task` here and on this content. A role mismatch or a `deny`
 refuses; `unknown` is recorded while the rollout is advisory. The HTTP routes
 ask the same policies through `src/core/rbac.ts`. See
-[`task-authorization`](task-authorization.md), issue #1207.
+[`task-authorization`](task-authorization.md).
 
 **Adding a permission:** declare the action in `permissions.json` with its
 `includedIn`, then add a rule to a policy in `policies/`. Never add a
@@ -365,19 +270,9 @@ ask the same policies through `src/core/rbac.ts`. See
 downstream registry still works), but a list there is invisible to every
 scoped decision.
 
-**These were one field until 2026-09** (bean `ind9`), and the conflation meant
-nothing could resolve any of them: 27 claims across 19 names pointed at a
-capability registry that only ever held environment probes.
-
-**The obvious fix was wrong, and testing it is what found the real one.** "Can
-review" and "can push" are properties of a position — that is exactly the
-reasoning that moved `inherits` off actors — so permissions look like they
-belong on Role. They do not survive the data. A permission **cross-cuts**:
-`content-authoring` is held by actors taking on five different roles;
-`qa-reporting` by three, one a build pipeline and one a human QC reviewer;
-`admin` holds `admin-settings` in all five lanes it enters. Placing them on Role
-produced **36** conflicts where a permission was held by some but not all actors
-sharing a role.
+**Permissions do not belong on Role either.** A permission **cross-cuts**: one
+action is held by actors taking on several different roles, and not by every
+actor sharing a role.
 
 The line that does hold: **a skill answers what the performer of this task needs
 to KNOW, and belongs to the lane. A permission answers what this participant may
@@ -385,13 +280,7 @@ DO, and travels with the participant through every lane it enters.**
 
 Both are audited and both are `critical` — `actor-permissions-resolve` (which
 also checks that every policy rule names a declared action and a declared actor
-or `cat-harness:anyone`) and `actor-capabilities-resolve`. The latter was `major` only while the field was
-overloaded, carrying entries no vocabulary could ever resolve.
-
-**Three names were neither**: `cql-authoring`, `data-dictionary-authoring` and
-`lean-diagnostics` are skills with no body anywhere. Dropped rather than
-relocated — claiming an unmodelled thing is worse than not claiming it, and
-putting them on a role would fail `role-skills-resolve`. Bean `dtod`.
+or `cat-harness:anyone`) and `actor-capabilities-resolve`.
 
 ## Requirements are the fifth node kind, and they only point
 
@@ -413,7 +302,7 @@ satisfies:
   - "req:commit-hygiene#no-secrets"
 ```
 
-The statement names no satisfier (#1168): a requirement is written once, and
+The statement names no satisfier: a requirement is written once, and
 what discharges it arrives later, so the pointer lives on the arrival.
 
 The references are audited. `satisfies-resolves`, `requirement-actors-resolve`
@@ -430,15 +319,6 @@ the only machine-checkable things about it, and prose in a skill doc carries
 none of them. `satisfies` is many-to-many in both directions — one skill
 discharges statements in several requirements — so inlining duplicates rather
 than relocates.
-
-**They were in `.claude/skills/requirements/` until 2026-09-18**, which is a
-Claude-Code-only directory that Gemini, Cursor and Copilot never read, and their
-joins were unchecked the whole time. Moving them into the `kg` graph found four
-broken references on the first run: `req:agent-workflow` did not exist although
-three requirements declared `derivedFrom` it, and `capability:role-detection`
-did not exist either — capabilities here are environment probes
-(`detection: { method: "command" }`), and role detection is the actor registry
-read against the session identity, which is a skill.
 
 ## Two compositions, and they are not the same
 
@@ -463,14 +343,14 @@ resolveRoleStack(graph, ["editor", "viewer"]) // scoped: the union for this call
 skill any caller ever had, and a closure that broad cannot fail an audit, which
 is the same as not having one.
 
-## A higher instance EXTENDS a role by id — it never edits it (placement PR0b)
+## A higher instance EXTENDS a role by id — it never edits it
 
 A third relation, across instances rather than within one graph. When a skill
 belongs above the harness (a core cataloguing skill, a sci Lean skill), the
 role→skill edge naming it must not stay in `cat-harness/scenarios/roles.json`
 — that is an upward reference. So the **dependent holds the pointer**, the
 way a voice points at the role it addresses and a story at the role it is
-told as (#1168):
+told as:
 
 ```jsonc
 // <content-core>/scenarios/roles.json
@@ -485,8 +365,7 @@ told as (#1168):
 | extend a lower actor: `actors/<f>.json` with `"extends": "<id>"`, adding `roles` / `capabilities` | carry any other field on an extension |
 | extend a capability: `"extends"` adding `requires`; or add a new probe | point an extension UP or sideways — only at an id declared below it |
 
-**The one exception — a move in flight** (owner, 2026-10-23, "Relax the
-rule"). Moving a role, actor, capability or policy up a layer is two pull
+**The one exception — a move in flight.** Moving a role, actor, capability or policy up a layer is two pull
 requests: the higher layer adds it, then the lower layer removes it, and in
 between both declare the id. A redeclaration that **only adds** — every field
 the lower declaration carries is there unchanged (the same scalar, every
@@ -504,28 +383,18 @@ harness sees only its own roles. `kg:audit`, `check:raci`,
 `check:fallback-roles`, `check:actor-reach`, `kg-export` and the
 stakeholder map read the checkout's view on the platform's own run.
 
-It does **not** restore `roles:` in skill front matter (above): the edge is
-still on a role graph — just the graph of the instance that owns the skill.
+The edge stays on a role graph — the graph of the instance that owns the
+skill — never in skill front matter.
 
-## Lanes are free text — which is the problem the role graph solves
+## A lane binds its role with `partitionElementRef`
 
-Measured across the twenty diagrams on 2026-09-18: **60 distinct lane names for
-roughly two dozen actual positions.** Four spellings of *reviewer*
-("Reviewer / SME", "Reviewer / subject-matter expert", "Reviewer (SME or
-editor)", "Review Committee"); three of *the work plan*. Nothing joined any of
-them to anything, so "which skills does this task's performer have" had no
-answer and an undefined lane was a silence rather than a finding.
-
-The first fix had each role declare the lane names it bound, a `lanes[]` of
-exact strings. That resolved the corpus without editing a `.bpmn`, but it put
-the pointer on the wrong node: a role is the general node, a lane the dependent
-one, and a general node never names its users (`data-modelling` step 8; owner,
-2026-09-23, #1168). So every one of the ~140 lanes that bound by name was given
-an explicit reference, and `lanes[]` was removed. **A lane binds its role
-itself, with BPMN's own `partitionElementRef`** (owner, 2026-10-16): the role
-is declared once per diagram as a top-level `<bpmn:resource>` whose `id` is
-the role id verbatim and whose `name` is its title, before the collaboration
-and the process.
+Lane names are free text, and several spellings name one position. So **a lane
+binds its role itself, with BPMN's own `partitionElementRef`**: the role is
+declared once per diagram as a top-level `<bpmn:resource>` whose `id` is the
+role id verbatim and whose `name` is its title, before the collaboration and
+the process. The role lists no lanes: a role is the general node and a lane the
+dependent one, and a general node never names its users (`data-modelling`
+step 8).
 
 ```xml
 <bpmn:resource id="reviewer" name="Reviewer"/>
@@ -535,8 +404,8 @@ and the process.
 </bpmn:lane>
 ```
 
-The older `<bootstrap.processes:role ref="reviewer"/>` in the lane's
-`extensionElements` is read for one release, with a warning, and only when
+A `<bootstrap.processes:role ref="reviewer"/>` in the lane's
+`extensionElements` is read, with a warning, only when
 `partitionElementRef` is absent (`laneRoleRef` in `schemas/process/role-graph.ts`); the
 QA report lists it as `lane-role-legacy-binding`. `<bootstrap.processes:role
 variable="true"/>` stays: it declares a performer who is whoever invoked the
@@ -550,9 +419,7 @@ name-matched instead.
 One criterion per join in the sentence at the top. The list below is the
 actor→role→skill→task core; **`KG_CRITERIA` in `schemas/sdlc/kg-qa.ts` is the
 registry**, and it is longer — it also covers requirements, skill bodies and
-the graph as a whole. This said "Fourteen criteria" while the registry held
-**32**, which is the same defect the audit exists to catch, one level up: a
-count in prose is a claim, and the thing it counts is a file you can read.
+the graph as a whole.
 
 ```
 activity ──names────▶ skill      skill-ref-resolves             critical
@@ -585,7 +452,7 @@ actor    ──is not a─▶ role       actor-is-not-a-role            minor
 `check-workflow-refs.ts` prints and exits, so its **previous** answer is gone.
 That makes *"this lane has been unbound since the day it was drawn"* and
 *"this lane broke in the commit under review"* indistinguishable, and a
-reviewer cannot separate a new defect from inherited debt. The 53 sidecars are
+reviewer cannot separate a new defect from inherited debt. The sidecars are
 committed, under `kg-qa/` beside whatever they audit, so the diff says exactly
 which findings a change introduced. Same argument and same file shape as the
 block sweep's `*.qa.json` and the script sweep's `*.script-qa.json`.
@@ -599,8 +466,7 @@ auditing harness's `qa` directory under the instance's stub —
 on the `qa-reports` branch with the rest of that `qa` directory; a JUDGEMENT
 about it is hosted the same way, under `test/attestations/`). A verdict ABOUT an
 instance is the auditor's output, and bootstrap is the layer that must read
-cleanly with no harness present (owner, 2026-09-29, decision 2 of bean
-`r3gy`). The same holds once bootstrap is its own repository: the verdicts stay
+cleanly with no harness present. The same holds once bootstrap is its own repository: the verdicts stay
 with the harness that computed them, against the pinned bootstrap
 ([`kg-separation`](../../kg/graph-management/kg-separation.md) §"The pair").
 
@@ -611,12 +477,9 @@ A criterion returns `pass`, `fail`, `n/a` (does not apply to this subject) or
 absent). **`unknown` is never written as a pass.** It counts as a failure at
 its criterion's own severity.
 
-It is not *promoted* to `major` either, and the distinction matters: a diagram
-that will not load records `unknown` against its `critical` criteria too, so it
-still fails the gate — which is the case promotion was reaching for. Promoting
-an unevaluable `minor` criterion as well would gate the build on something
-nobody agreed was blocking, and a gate that fires on those is a gate somebody
-switches off.
+It is not *promoted* to `major` either: a diagram that will not load records
+`unknown` against its `critical` criteria too, so it still fails the gate,
+while an unevaluable `minor` criterion does not gate the build.
 
 ### Severity, and why coverage is only `minor`
 
@@ -630,18 +493,14 @@ than the gap.
 
 ### Never quote a count from prose — run the audit
 
-**A number written in a document is a claim; only a run is evidence.** This has
-already gone wrong here in the way that is hardest to catch: a finding was
-resolved, the count describing it stayed in `AGENTS.md`, and a later session
-repeated it back to the author as live.
-
-Two criteria make the trap easy to fall into, because they ask **different
-reachability questions** and only one of them is about the role model:
+**A number written in a document is a claim; only a run is evidence.** Two
+criteria ask **different reachability questions**, and only one of them is
+about the role model:
 
 - **`skill-has-entry-point`** — is there ANY way in: servable, in the harness,
   carried by a role, or named by an activity? The servable clause alone covers
-  nearly the whole corpus, so this passes near-trivially. Its green was once
-  read as an answer to the question its old name (`skill-reachable`) implied.
+  nearly the whole corpus, so this passes near-trivially; its green is not an
+  answer to the coverage question.
 - **`skill-in-role-or-process`** — what does the actor → role → task model
   actually reach? This is the real coverage question, and **it must never
   gate.** A skill invoked directly by name is doing its job without appearing
@@ -654,19 +513,17 @@ reachability questions** and only one of them is about the role model:
 `scripts/known-skills.ts` is the single answer, shared by `kg-audit` and
 `check-workflow-refs` so the two cannot disagree.
 
-**`.claude/skills/` is not uniformly skills**, and reading it as though it were
-was a live defect: `actors/` holds participants, `capabilities/` holds
-environment probes (`docker`, `pandoc`, `python3`), `roles/` holds an assignment
-table and `hooks/` holds a shell script. Scanning all of them put 46 non-skills
-into the set, so `<bootstrap.processes:skill ref="viewer"/>` or `ref="latex-compiler"` would
-have resolved. `NON_SKILL_GROUPS` excludes them — 176 names down to 136, with no
-existing reference becoming dangling.
+**Not every group under a skills directory holds skills**: `actors/` holds
+participants, `capabilities/` holds environment probes (`docker`, `pandoc`,
+`python3`), `roles/` holds an assignment table and `hooks/` holds a shell
+script. `NON_SKILL_GROUPS` excludes them, so
+`<bootstrap.processes:skill ref="viewer"/>` does not resolve.
 
 It is a **deny-list of groups known not to hold skills**, not an allow-list of
 `local/`, so a new group of real skills is picked up automatically and a new
 group of something else is a one-line addition.
 
-## Administration IS a swimlane — settled 2026-09-20
+## Administration IS a swimlane
 
 The role graph is the substrate every diagram's lanes bind to. Changing it —
 adding an actor, opening a role, granting a permission, retiring a
@@ -674,16 +531,11 @@ participant — is therefore a process like any other, and it is drawn:
 [`actor-role-administration.bpmn`](../../../processes/process/actor-role-administration.bpmn),
 in the `administrator` lane.
 
-**That was a question, not a deduction.** Until the owner answered it, there
-was an `admin` ACTOR and no `administrator` ROLE, and the honest alternative
-was live: administration could have been recorded as *a reviewed filesystem
-edit* with no lane of its own. The bean (`folio-assistant-hb2o`) was blocked
-on exactly that, and blocked on purpose — **do not invent a role to make a
-diagram drawable.** That is the closure-widening failure this skill records
-in §"Two compositions", arrived at from the other end: a role minted for a
-picture is a role no audit can fail, because nothing was ever true of it.
+**Do not invent a role to make a diagram drawable.** A role minted for a
+picture is a role no audit can fail, because nothing was ever true of it — the
+closure-widening failure of §"Two compositions", from the other end.
 
-What the answer settles, and what it does not:
+What follows from administration being a lane:
 
 | | |
 |---|---|
@@ -691,14 +543,6 @@ What the answer settles, and what it does not:
 | the lane is `person`-only | a permission grant is a standing decision, not a task; the agentic/mechanical line is judgement, and this one is **authority** |
 | the mechanics are NOT re-drawn | the diagram **calls** `code-change-review`; a second description of branch-gates-review is a second thing free to disagree with the first |
 | the audit runs **after** | every criterion is a join, so what an administrative edit breaks is never in the file it edited |
-
-The measurement that made this a *missing process* rather than a broken
-reference, 2026-09-20 across 26 actors, 31 roles and 34 diagrams: 31 of 31
-roles bound a lane, no actor named a role that did not exist, no lane bound
-nothing. One actor had no roles — `viewer`, a **determined** empty, stated
-in its own description. Nothing was dangling. `admin` simply appeared in
-seventeen diagrams as something else every time, and the one thing it
-uniquely was had no picture.
 
 ## Adding a role
 
@@ -709,33 +553,26 @@ uniquely was had no picture.
    checks the lane's steps against, so it is a claim about who can actually
    stand there, not a label.
 
-   > **This step said `summary` and `actorKind` until 2026-09-20, and both
-   > were wrong in the way that costs something.** `title`/`description` are
-   > the two labels EVERY knowledge-graph node carries — the reason is on
-   > `RoleDef.title` — and `actorKinds` is plural because the corpus settled
-   > it (see §"An actor is one of three kinds"). Neither is a spelling
-   > preference: **Zod strips an unknown key**, so a role written to this
-   > instruction type-checks, parses, and silently loses the field. That is
-   > bean `zdrf`'s failure class, and it happened — the three roles added in
-   > #453 each carry a `summary` that reaches no graph.
+   Use `title`/`description` (the two labels every knowledge-graph node
+   carries), never `summary`, and `actorKinds`, never `actorKind`: **Zod strips
+   an unknown key**, so a misnamed field type-checks, parses, and is silently
+   lost.
 2. Bind its lanes: each diagram declares `<bpmn:resource id="<role id>"
    name="<title>"/>` once, and each lane that names this role carries
    `partitionElementRef="<role id>"`. The role lists no lanes, since a role is the
-   general node and a lane the dependent one (`data-modelling` step 8, #1168).
+   general node and a lane the dependent one (`data-modelling` step 8).
    A lane with no ref is unbound, whatever its name.
 3. Give it the skills its lane's activities name. `role-carries-activity-skill`
    fails if an activity demands something its performer was never given.
 4. `bun run cat kg:audit`. The kg-qa sidecars it writes are derived results whose
-   record the CI job `qa-publish` stores on the `qa-reports` branch; they are
-   committed only until bean `5hox` takes them off `main`.
+   record the CI job `qa-publish` stores on the `qa-reports` branch.
 
 A role that binds no lane in any diagram is reported by `role-binds-a-lane`:
 either a lane name has drifted, or the role is dead.
 
 ## Renaming a role, and a role's other names
 
-**Never let a name go silently.** A role carries every name it goes by
-(owner, 2026-09-30: *"model both retired names and alternative names"*):
+**Never let a name go silently.** A role carries every name it goes by:
 
 - **`otherNames`** — names in use today: synonyms, a local title, an example.
   The same field, and meaning, as `otherNames` on WHO SMART Base's Generic

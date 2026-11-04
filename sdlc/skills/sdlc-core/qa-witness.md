@@ -17,27 +17,15 @@ heading on the docs site. One JSON document per subject, all of them
 `test/results/witnesses/`, **stored** on the orphan `qa-reports` branch under
 `main/<sha>/` or `pr/<n>/<sha>/`, and **published** at `/assets/qa/`.
 
-Those are different questions. Where a witness LIVES follows provenance —
-it is a QA process's output, so it belongs in the declared `test/results/`
-tree with everything else a QA reviewer produced. That tree is the run's
-WORKING COPY; the durable record is the commit-keyed entry the CI job
-`qa-publish` writes to `qa-reports` through `qa-store.ts` (arc `3fva`). Until
-bean `5hox` removes them, the files are also still committed on `main` — a
-copy on its way out, not the record, so do not regenerate a witness to
-"commit the result". Where it is SERVED FROM is
-unchanged: every `data-qa-src` in a generated page says `/assets/qa/…`, and
-the publishing workflows copy the directory into `_site/assets/qa/` after
-Jekyll runs. It sat in `docs/` until 2026-09-19 only because that is where
-Jekyll could reach it, which is a fact about the build and not about the
-artefact.
-
-Measured 2026-09-19: **134 documents — 113 `block`, 20 `kg`, 1
-`translation`.**
+Where a witness LIVES and where it is SERVED FROM are different questions. It
+is a QA process's output, so it lives in the declared `test/results/` tree —
+the run's WORKING COPY; the durable record is the commit-keyed entry the CI job
+`qa-publish` writes to `qa-reports` through `qa-store.ts`. Do not regenerate a
+witness to "commit the result". It is served from `/assets/qa/`: every
+`data-qa-src` in a generated page says `/assets/qa/…`, and the publishing
+workflows copy the directory into `_site/assets/qa/` after Jekyll runs.
 
 ## It is a projection, not the verdict
-
-This is the distinction to hold on to, because getting it backwards is how a
-fix lands in the wrong place.
 
 The **verdict** is produced by a sweep and lives beside its subject —
 `*.qa.json` beside a content block, `test/results/kg-qa/**/*.kg-qa.json` for a skill or a
@@ -49,7 +37,7 @@ page is fixed in `pipeline/qa-witness.ts` or in `docs-ui.js`. Editing a
 file under `test/results/witnesses/` by hand fixes neither — it is generated, and the
 next `gen-docs-pages` run discards the edit.
 
-## The three families, and why the distinction is load-bearing
+## The three families
 
 `family` is a field in the document, not only a suffix on the filename.
 
@@ -65,7 +53,7 @@ They matter apart because **their witnesses are not equally specific.** A
 — so a per-criterion `scriptHash` is real information. A `kg` document's
 criteria all come from one auditor, so the same field is the same value
 repeated, and the auditor's identity is recorded once in
-`skills/kg-qa.manifest.json` rather than in each sidecar (bean `cflw`).
+`skills/kg-qa.manifest.json` rather than in each sidecar.
 
 Read a per-criterion hash as evidence about that criterion only in the `block`
 family.
@@ -103,13 +91,9 @@ fold is what keeps the two rows that need reading at the top.
 
 ## Do not write a spec against a live verdict
 
-The trap this family has already paid for, twice in one day.
-
-`test/qa-panel.e2e.ts` read a real sidecar and asserted the panel put its one
-`fail` first. Then the finding was correctly adjudicated to `pass`, the block
-went to zero failures, and a test of the PANEL went red because the CONTENT got
-better. **A verdict is not a fixture.** The corpus is supposed to reach zero
-failures.
+**A verdict is not a fixture.** A test of the panel that asserts on a real
+sidecar's `fail` goes red when the content is fixed and the finding becomes
+`pass`; the corpus is supposed to reach zero failures.
 
 Drive the shape from the real document and put the state under test back in
 yourself — and locate the criterion **by id**, never by index, because index
@@ -127,8 +111,7 @@ and render order coincide only while nothing sorts above it.
 | drawn by | `site-chrome/assets/js/docs-ui.js` (`qaBuildPanel`) |
 | block verdicts | `content/**/*.qa.json` |
 | kg verdicts | `test/results/kg-qa/<subject-dir>/<stem>.kg-qa.json` — the tree MIRRORS the subject's path, because four basenames already collide across packages. Path from `kgQaSidecarPath` in `schemas/sdlc/kg-qa.ts`, never composed by hand. Auditor in `skills/kg-qa.manifest.json` |
-| judgements behind a verdict | `test/attestations/<family>/<mirrored subject path>.attestations.json` (`qa-attestations/v1`, the `attestations` graph): every agent, human and baseline-pair judgement, kept on `main` because regeneration cannot reproduce it (owner ruling D2 (a)). Schema `schemas/sdlc/qa-attestations.ts` |
+| judgements behind a verdict | `test/attestations/<family>/<mirrored subject path>.attestations.json` (`qa-attestations/v1`, the `attestations` graph): every agent, human and baseline-pair judgement, kept on `main` because regeneration cannot reproduce it. Schema `schemas/sdlc/qa-attestations.ts` |
 
-The schema lives in `pipeline/` rather than `schemas/` because it is
-the pipeline's own output shape. Worth knowing when you go looking for it in
-the declared `schemas/` graph and do not find it.
+The schema lives in `pipeline/`, not in the declared `schemas/` graph,
+because it is the pipeline's own output shape.

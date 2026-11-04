@@ -52,9 +52,7 @@ git diff --name-only main...HEAD -- 'content/**/*.ts' 'content/**/*.md'
 
 For each changed file, check whether the feedback store has open items
 referencing that block. If matches are found, present them and offer to
-address the branch-relevant items now (via `todo-review`) or skip. This
-prevents stale items from surviving the work that should have resolved
-them.
+address the branch-relevant items now (via `todo-review`) or skip.
 
 ### 2. Triage
 
@@ -138,7 +136,7 @@ Content change detected
 2. **Delegate to agents**: dispatch sub-editor skills; review their
    output for cross-file consistency before presenting to the author.
 3. **Resolve concerns**: bring content/structural questions to the
-   author as multiple-choice questions (author may type with difficulty).
+   author as multiple-choice questions (see §Accessibility).
 4. **Maintain consistency**: enforce notation per the project's notation
    register (the register is the authority). After editing any `.md`,
    delegate to `markdown-render-check` for the rendered-view sanity pass,
@@ -210,8 +208,7 @@ minimize typing:
 - Use the todo mechanism to track multi-item work; keep it current.
 - **Commit early, commit often.** Never let results live only in inline
   scripts or in-memory sessions: write to a file, `git add` + commit
-  immediately, push at natural milestones. A chain of small commits
-  beats one large commit that never happens.
+  immediately, push at natural milestones.
 
 ### "What next?" prompt (after completing a task)
 

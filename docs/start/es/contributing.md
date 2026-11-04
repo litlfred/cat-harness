@@ -30,14 +30,14 @@ bun run cat test:e2e      # e2e (test:e2e)
 ## Plan de trabajo con `beans`
 
 Este proyecto utiliza [`beans`](https://github.com/hmans/beans) como el mecanismo único
-de tareas pendientes/plan de trabajo (consulta `AGENTS.md`). **No** configures un almacén
+de tareas pendientes/plan de trabajo (el skill `todo-manager`). **No** configures un almacén
 de tareas separado.
 
 ```sh
-scripts/install-beans.sh
+cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list
 beans create "<título>"
-beans <id> --status in-progress   # reclama antes de trabajar
+bun run cat beans:claim <id>      # reclama antes de trabajar
 ```
 
 `beans ≠ sidecars`: nunca uses `beans create` para colas masivas generadas por máquinas (QA,
@@ -45,10 +45,10 @@ witness, watcher); esas se mantienen como JSON masivo.
 
 ## Guía para agentes
 
-`AGENTS.md` es la fuente única de verdad genérica para agentes (leída de forma nativa por Claude Code,
-Gemini CLI, Antigravity, Cursor, Copilot). `CLAUDE.md` / `GEMINI.md` son stubs mínimos
-que apuntan a él. Actualiza `AGENTS.md` en lugar de un archivo específico de una herramienta cuando
-cambies las pautas para agentes.
+`AGENTS.md` es el punto de entrada genérico para agentes (leído de forma nativa por Claude Code,
+Gemini CLI, Antigravity, Cursor, Copilot); `CLAUDE.md` / `GEMINI.md` son stubs mínimos
+que apuntan a él. Las reglas viven en los skills: para cambiar cómo se comportan los agentes,
+edita el skill, no `AGENTS.md`.
 
 ## Documentación
 
@@ -58,15 +58,15 @@ cambies las pautas para agentes.
   `schemas/skills/<skill>/` y vuelve a generar:
 
   ```sh
-  bun run scripts/gen-schema-docs.ts
+  bun run cat-harness-tools/scripts/gen-schema-docs.ts
   ```
 
 - Las **instrucciones de habilidades** (`docs/reference/skill-instructions/*.md`) también son
   generadas — nunca las edites a mano. Edita el cuerpo de las habilidades en
-  `skills/authoring/content-lifecycle/*.md` o `src/skills/*.md` y vuelve a generar:
+  `skills/`, `sdlc/skills/` o `work-plan/skills/` y vuelve a generar:
 
   ```sh
-  bun run scripts/gen-skill-docs.ts
+  bun run cat-harness-tools/scripts/gen-skill-docs.ts
   ```
 
 - La **referencia de la API de TypeScript** (`/api/`) es generada por TypeDoc en CI.
@@ -84,7 +84,8 @@ bundle exec jekyll serve
 
 ## Publicar un cambio
 
-Verifica → confirma que se pueda fusionar → push → (solo si se solicita) abre un PR. Consulta
-`sdlc/skills/sdlc-core/prepare-merge.md`. Mantén el **formalismo del marco de trabajo
+Abre el PR en el primer commit y haz push de incrementos pequeños
+(`sdlc/skills/sdlc-core/continual-progress.md`); lleva la rama a un estado limpio, en verde
+y publicado con `sdlc/skills/sdlc-core/prepare-merge.md`. Mantén el **formalismo del marco de trabajo
 separado del contenido** — el contenido pertenece a su propio repositorio, y cualquier contenido
 en esta documentación es solo ilustrativo.

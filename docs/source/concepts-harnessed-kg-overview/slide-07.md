@@ -16,7 +16,7 @@ state marker where its task is. On the agentic side the human rides *above* the
 board, a row of agents hangs *beneath* it, and beans lie in every lane.
 
 **Sources:** [BPMN execution](agentic-harness.html);
-[`specification-compiled-agents`]({{ '/methodologies/index.html' | relative_url }}) (which now cites this deck).
+[`specification-compiled-agents`]({{ '/methodologies/index.html' | relative_url }}) (which cites this deck).
 
 > **Partly built:** no BPMN engine is wired in, and the agentic QA/QC report
 > does not exist yet. The mechanical one does: `bun run cat prov:qaqc`.

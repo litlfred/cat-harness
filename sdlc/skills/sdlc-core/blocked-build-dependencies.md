@@ -31,7 +31,7 @@ or unset the proxy to get past any of these.
 
 ## Maven Central through a 429
 
-Measured 2026-10-06, building Grobid from source for issue #2302:
+Measured 2026-10-06, building Grobid from source:
 
 | host | result |
 |---|---|
@@ -76,14 +76,14 @@ is already running. When it does not, **hand the step to an agent that has the
 access** rather than stall: open a bean whose steps run end to end without this
 session (install, run, the exact scoring command, where the result goes), and
 give the person a one-line instruction of the form *"do bean X on branch Y of
-repo Z"*. Bean `u9lb` (scoring Nougat for #2302) is the worked example, and the
-code it needs — a reader for the tool's saved output — lands first, in this
-session, so the other agent only runs the tool.
+repo Z"* ([`agent-handoff`](agent-handoff.md)). Code the step needs, such as a
+reader for the tool's saved output, lands first, in this session, so the other
+agent only runs the tool.
 
 ## Running code from outside the repository
 
 Cloning and building a third-party project is running code nobody here wrote.
 Do it only when the person has asked for that tool by name, keep it under the
 scratch directory rather than the repository, and commit only what reads its
-OUTPUT. In the #2302 session the first attempt was refused by the session's
-permission check and went ahead once the owner said to clone it.
+OUTPUT. A session's permission check may refuse the clone until the person
+says to go ahead.

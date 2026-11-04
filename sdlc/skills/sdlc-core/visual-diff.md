@@ -13,7 +13,7 @@ allowed-tools: Read Grep Glob Bash
 
 # Visual diff — see a figure change
 
-> Skill id: `visual-diff` · Package: `sdlc-core` · Bean: `0rxe` · Epic: `q4jm`
+> Skill id: `visual-diff` · Package: `sdlc-core`
 
 For a figure, a diagram, a table, an equation or a simulator, the change a
 reviewer must judge is how the block LOOKS. The Markdown or SVG diff of a
@@ -25,15 +25,13 @@ chrome, scroll behaviour, a PDF page, an IG page, a slide), and for the rules
 every reviewer-facing pair follows, see
 [`before-after-preview`](before-after-preview.md).
 
-## The owner's rulings this follows
+## Design rules
 
-- **A Skill and a Tool, built into the processes** (2026-09-23). The steps
-  live in the `folio-block-screenshots` Tool and in this skill. The staging
-  workflow and the review process CALL them; nobody copies them.
-- **No new dependency.** Asked between a library and none, the owner took
-  the Tool route. The pictures are taken with Playwright, which the platform
-  already uses. The comparison runs in Chromium's own canvas, so nothing new
-  needs a licence.
+- **A Skill and a Tool, built into the processes.** The steps live in the
+  `folio-block-screenshots` Tool and in this skill. The staging workflow and
+  the review process CALL them; nobody copies them.
+- **No new dependency.** The pictures are taken with Playwright, which the
+  platform already uses, and the comparison runs in Chromium's own canvas.
 - **One key or one click; never a drag.** The page offers four views as
   radio buttons, not a slider.
 
@@ -109,8 +107,8 @@ next to the site. The review page reads `../visual-diff.json`.
   - **main's site**, at the publish branch's root, published by the same
     workflow's `publish-main` job on every push to main;
   - **for a stacked PR**, its base branch's preview, `STAGING/<base-slug>/`,
-    so the pictures and the ChangeSet compare with the same branch (bean
-    `5uuf`). When the base has no preview, main's site is used and the
+    so the pictures and the ChangeSet compare with the same branch. When the
+    base has no preview, main's site is used and the
     banner, the review page and the PR comment all say so.
 
   It installs Chromium only when `--count` is above zero.

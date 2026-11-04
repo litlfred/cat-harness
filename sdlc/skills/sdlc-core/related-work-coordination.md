@@ -11,8 +11,6 @@ description: >
 
 # Related work: find it, sort it, ask
 
-Owner, 2026-09-23 (issue #1023): *"when CRDM is initiated/updated through human agent chat discussions existing beans need to be searched for relevance and categorized (and summarized), same for issues (e.g. github). ask user if they want to coordinate. judgement is used to determine how"*.
-
 ## When
 
 - **CRDM:** a requirement is **initiated or updated** in a human-agent chat. `crdm-issue-linking.bpmn` calls `Process_RelatedWork` before it scans for an issue to link.

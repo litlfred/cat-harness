@@ -17,7 +17,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "A checkout of the publish branch, or a publish directory about to become one. This tool NEVER fetches, commits or pushes: the workflows that call it already hold the checkout with their own retry and concurrency handling, and a second pusher racing those is a new way to lose a deploy.",
+          "description": "A checkout of the publish branch, or a publish directory about to become one. This tool NEVER fetches, commits or pushes: the calling workflows hold the checkout and do that.",
           "required": true,
           "arg": {
             "flag": "--dir"
@@ -28,7 +28,7 @@
           "schema": {
             "$type": "RenderEvent"
           },
-          "description": "`rendered`, `removed`, `restored` or `retained`. `retained` is the one that makes the log worth reading — a removal CONSIDERED and refused, which otherwise leaves no trace at all.",
+          "description": "`rendered`, `removed`, `restored` or `retained`. `retained` records a removal CONSIDERED and refused.",
           "required": true,
           "arg": {
             "flag": "--event"
@@ -39,7 +39,7 @@
           "schema": {
             "$type": "Slug"
           },
-          "description": "What was rendered — `staging-preview`, `site`, `export`. Open on purpose: the publish branch carries more than previews, and a closed enum would put a schema change between somebody and logging what they published.",
+          "description": "What was rendered — `staging-preview`, `site`, `export`. Open, not an enum: the publish branch carries more than previews.",
           "required": true,
           "arg": {
             "flag": "--kind"
@@ -50,7 +50,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "The path on the publish branch. Checked as a VALUE, never trusted by provenance: the slug sanitiser can emit `..`, and that is only safe for a slug taken from a git ref — a dispatch input is not one (bean `fuzm`).",
+          "description": "The path on the publish branch. Checked as a VALUE, never trusted by provenance: the slug sanitiser can emit `..`, which is only safe for a slug taken from a git ref, and a dispatch input is not one.",
           "required": true,
           "arg": {
             "flag": "--path"
@@ -105,7 +105,7 @@
           "schema": {
             "$type": "Markdown"
           },
-          "description": "One JSON object on STDIN: `{summary, reason?, detail?, format?}`. `summary` is required and one line. `reason` is required by the SCRIPT for `removed` and `retained` — an entry saying an artefact went and not why is the ambiguity the log exists to prevent. `format` declares how the prose reads (absent means plain text, never sniffed). Build it with `jq -n --arg`, never by concatenation.",
+          "description": "One JSON object on STDIN: `{summary, reason?, detail?, format?}`. `summary` is required and one line. `reason` is required by the SCRIPT for `removed` and `retained`. `format` declares how the prose reads (absent means plain text, never sniffed). Build it with `jq -n --arg`, never by concatenation.",
           "required": true,
           "arg": {
             "stdin": true
@@ -118,7 +118,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "The day's JSONL the entry was APPENDED to. Append is the only verb: there is no `--remove`, no `--edit` and no `--id`, so a takedown is a `removed` ENTRY rather than the erasure of the `rendered` one before it — the never-delete rule made structural instead of a guard three cleanup paths have to remember."
+          "description": "The day's JSONL the entry was APPENDED to. Append is the only verb: there is no `--remove`, no `--edit` and no `--id`, so a takedown is a `removed` ENTRY rather than the erasure of the `rendered` one before it."
         }
       ]
     },
@@ -127,7 +127,7 @@
     ],
     "selection": {
       "when": "Whenever something is published to or removed from the publish branch — including a removal that was refused. Called from `feature-staging.yml` at four points; `staging-render-log.bpmn` is the process.",
-      "limits": "It writes into a directory and does not push, so a caller that forgets to commit the log has written nothing durable. It cannot edit or delete an entry, by design. And `--summary` / `--reason` / `--detail` are REFUSED as flags at exit 2 rather than ignored, so a caller left behind by the stdin migration is told instead of silently logging an entry with no summary.",
+      "limits": "It writes into a directory and does not push, so a caller that forgets to commit the log has written nothing durable. It cannot edit or delete an entry, by design. `--summary` / `--reason` / `--detail` are REFUSED as flags at exit 2 rather than ignored: they go on stdin.",
       "cost": "One appended line. No network."
     },
     "requires": {

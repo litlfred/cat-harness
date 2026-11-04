@@ -11,12 +11,10 @@ consulted: true
 
 # Turn reporting — say which bean you are on, every turn
 
-Split out of `todo-manager.md` on 2026-09-19 (bean `tdmg`), which had reached
-396 lines against `skill-not-a-document`'s 400-line threshold while carrying
-three separable disciplines. This is the one that governs what you say
-**during and after** the work; [`opening-brief.md`](opening-brief.md) governs
-what you say before starting it; [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) keeps the
-bean mechanics. Nothing in this file changed in the split.
+This skill governs what you say **during and after** the work;
+[`opening-brief.md`](opening-brief.md) governs what you say before starting
+it; [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md)
+keeps the bean mechanics.
 
 ## Say which bean you are on — every turn
 
@@ -41,24 +39,10 @@ attempting — before the first tool call, not after the work lands:
 
 ### Before you send the report — one pass for named decisions (STRICT)
 
-The §"next" rule below is precise and was still broken by the agent enforcing it.
-Measured 2026-09-19: after a session spent applying it — including shipping a
-rule that a bean mention carries two sentences or does not appear — that same
-agent closed a turn with
-
-> Two decisions still yours, neither blocking: `35nj` (three claim-visibility
-> mechanism options, each with a cost I shouldn't pick unilaterally) and `wlqd`
-> (remote-package sync, needing pinned-commit vs `ref: main`).
-
-Every clause of that is the forbidden teaser. `35nj` and `wlqd` are opaque, the
-"three options" are unnamed, "pinned-commit vs `ref: main`" is two phrases whose
-costs live in a bean, and "neither blocking" is the framing that made it feel
-like reporting. The author's reply was *"show questions and context/pros/cons"* —
-the round trip the rule exists to prevent, paid by somebody who types with
-difficulty.
-
-**So prose was not the gap; a write-time pass is.** Before sending a closing
-report, scan your own text for anything that hands over a choice — a bean id, an
+Knowing the §"next" rule below does not stop a closing report from handing
+over a teaser — "two decisions still yours: `35nj` (three options) and `wlqd`
+(pinned-commit vs `ref: main`)" names choices whose options and costs live
+elsewhere. **So do a write-time pass.** Before sending a closing report, scan your own text for anything that hands over a choice — a bean id, an
 option name, a "your call", a "needing X vs Y" — and for each one:
 
 - **carries its options with their costs, a recommendation and a default** → send it;
@@ -98,22 +82,11 @@ a reader assumes it is queued. Two sentences settle a bean somebody can say yes
 to; when **next** hands over a real decision between costed routes, §"The `next`
 line is a question" below is the binding form.
 
-**EVERY MENTION, not every report.** This rule is filed under "what makes a
-report worth reading" and the scope is wider than that heading: a bean id in an
-ordinary sentence is exactly as opaque as one in a list, and a reader hunting for
-its meaning cannot see which section of your message it came from. So it binds a
-one-line status, a mid-paragraph aside, a commit message, a PR body, an issue
-comment — anywhere the id appears at all. If naming the bean is not worth two
-sentences, do not name it: say "nothing outstanding" or describe the work without
-the id.
-
-Measured here, 2026-09-19. A turn ended *"Next unstarted is `5o3a`, or either
-standing decision."* — bare id, no summary, no link — in the same session that
-shipped the two-sentence rule and listed four other beans correctly under a
-**Beans** heading. The rule was obeyed where it was filed and broken one line
-below it, which is what a scope written as a section heading buys you. The
-author's reply was *"what is 5o3a?"*, which is the round-trip the whole rule
-exists to remove.
+**EVERY MENTION, not every report.** A bean id in an ordinary sentence is
+exactly as opaque as one in a list. So the rule binds a one-line status, a
+mid-paragraph aside, a commit message, a PR body, an issue comment — anywhere
+the id appears at all. If naming the bean is not worth two sentences, do not
+name it: say "nothing outstanding" or describe the work without the id.
 
 **2. Asking for review means linking the artefact — deep, not the root, and naming the host.** If a
 turn ends with "please look at this", it must carry the **PR link** and a
@@ -148,14 +121,13 @@ does not tell a reader whether it is new, changed, or just context.
 **Never assume `github.io` or compose a URL from a git remote.** On a private
 repository there is no public Pages; on a local-git-only topology there is no
 forge at all. In both cases an agent that guesses hands over a URL that
-**does not resolve**, costing the author — who types with difficulty — an
-expensive round trip finding that out. The staging host is an architectural fact,
-not an inference from a remote name.
+**does not resolve**. The staging host is an architectural fact, not an
+inference from a remote name.
 
-`AGENTS.md` records the underlying rule (PR #178, 2026-09-16): a human cannot
-assess a rendered artefact from a description, and withholding it makes
-assessment harder rather than safer. **A root-only link is a partial
-withholding** — the artefact is technically reachable and practically hidden.
+A human cannot assess a rendered artefact from a description
+([`continual-progress`](continual-progress.md)). **A root-only link is a
+partial withholding** — the artefact is technically reachable and practically
+hidden.
 
 **Where to get the links.** Look to the declared topology and configuration
 ([`deployment-awareness`](../../../skills/ui/ui-core/deployment-awareness.md)), never a
@@ -204,32 +176,20 @@ bean, say so and open one; that omission is the failure this exists to catch.
 `https://github.com/<owner>/<repo>/blob/<sha>/<path>`, pinned to a commit sha,
 never a repo-relative path and never a branch. A repo-relative path is not
 clickable when the reader's working directory is not that repository, and a
-branch link shows whatever was pushed since the reader was asked to look
-(issue #2405 FR-003, observed in the session that raised it). The rule and its
-reasons live with the plan-request operation, in the content layer:
+branch link shows whatever was pushed since the reader was asked to look. The
+rule and its reasons live with the plan-request operation, in the content layer:
 the `plan-request-gate` skill (`skill_fetch plan-request-gate`)
 §"Hand over both as permalinks".
 
-### The worked failure
-
-Measured here, 2026-09-18. A real end-of-turn report, verbatim:
+### A failing report, for contrast
 
 > **worked** `fa/fsch` — Green on all three workflows. Also corrected the PR
 > body, which had drifted from the code after your detangle instruction.
 > **next** `fa/nvbr`, `fa/rnfl` — both gated on #251.
 
-It breaks the first three rules at once. `fa/nvbr` and `fa/rnfl` appear with no
-gloss and no link, so the reader cannot tell what either is. The turn asked for
-review and gave no staging link, so the reader had to ask for it. And "green on
-all three workflows" describes CI rather than the change: it never says the PR
-introduces a root declaration schema, never says the conventions doc is the
-thing worth reading, and never says which decision was wanted. The author's
-reply was *"staging link???"*, then a request for more context — two
-round-trips that a longer report would have spent nothing to avoid.
-
-The old version of this rule capped entries at "up to 50 words", which read as a
-budget to spend rather than a floor to clear and rewarded exactly that
-terseness. Rule 4 replaces it.
+It breaks the first three rules at once: bare ids with no gloss or link, a
+request for review with no staging link, and "green" in place of what the
+change does and what judgement is wanted.
 
 ### The "next" line is a question, so it carries its context (STRICT)
 
@@ -239,8 +199,7 @@ stronger form for the case where **next** also hands over a *decision*:
 governs it — context → options → recommendation → question — and the test is
 whether the author can answer **without opening anything**.
 
-A bean id plus a term you coined is the specific failure. Measured here on
-2026-09-18:
+A bean id plus a term you coined is the specific failure:
 
 > **next** `x4mt` — Cross-agent skill install + `fa-` prefix (#247). Unstarted,
 > and I'd want your call on prefix-at-rest vs prefix-at-install before writing

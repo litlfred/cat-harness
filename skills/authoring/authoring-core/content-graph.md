@@ -465,5 +465,5 @@ Directory names are **descriptive slugs** with NO chapter numbers:
 - portrait and landscape views, and a `--check` that needs no Java.
 
 It builds on `buildContentGraph`, so it draws exactly the graph the QA checks
-read. The older `content-graph-analysis.py` drawing re-parses the sources and
-has no staleness check.
+read. `content-graph-analysis.py --visualise` re-parses the sources instead
+and has no staleness check.

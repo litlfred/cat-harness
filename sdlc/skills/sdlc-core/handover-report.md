@@ -119,12 +119,8 @@ Do bean folio-assistant-<id> on branch <branch-to-create> of repo <owner>/<repo>
    Do bean folio-assistant-<id> on branch <branch-to-create> of repo <owner>/<repo>.
    ```
 
-   The owner asked for exactly this shape, twice, 2026-10-03: *"for the agent,
-   i mean something like \"Do bean folio-assistant-tlk2 on branch
-   claude/blissful-ride-c2f26u-rename-script of repo litlfred/folio-assistant.\""*
-   — and then *"make sure those short dispatch is part of the handover skills,
-   so it is used again"*. It is a format, not a suggestion: write it verbatim
-   with the three slots filled.
+   It is a format, not a suggestion: write it verbatim with the three slots
+   filled.
 
    **Why one sentence, and why these three slots.** A dispatch is read by
    somebody with no context — the owner pasting it into a new session, or a
@@ -134,19 +130,15 @@ Do bean folio-assistant-<id> on branch <branch-to-create> of repo <owner>/<repo>
    an agent's session may be scoped to a different one. Drop any slot and the
    recipient has to come back and ask.
 
-   Three rules measured the same day:
+   Three rules:
 
    - **Name a branch that does not exist yet**, and say so. A line naming a
-     branch that was already finished sent an agent to a dead ref, which it
-     reported back as "that branch does not exist and the bean is already
-     completed" — a whole round lost to a stale line.
+     finished branch sends an agent to a dead ref.
    - **One bean per line.** Not a theme, not "the three remaining X". The bean
      is what carries the Done-when, and a line that names a theme hands over a
      judgement instead of a task.
    - **Order them, and say what is ordered.** If a line must follow another,
      write that above the block — not inside the sentence, which stays fixed.
-     A handover that lists four dispatchable beans with a hidden prerequisite
-     is worse than one that lists the one that is ready.
 
    `dispatch-agent` governs what happens AFTER the line is sent — the progress
    contract and the heartbeat. This rule is only about writing the line so the

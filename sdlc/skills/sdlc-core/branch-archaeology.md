@@ -20,7 +20,7 @@ it wrong. It tests **ancestry**, so a branch landed by **squash** or
 `lsi:epics` uses it to find unmerged branches, which is fine for filing and
 wrong for disposal.
 
-**Measured in the `qou` folio, 2026-10-04 (issue #2106, bean `nrrf`):** 6,480
+**Measured in one folio, 2026-10-04:** 6,480
 remote branches, of which **461 held mathematics not on main**. Those 461 are
 the reason for the rule in §2. A sweep that labelled them "stale" would have
 offered the only copy of proofs for deletion.

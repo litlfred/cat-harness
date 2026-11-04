@@ -4,7 +4,7 @@ description: >
   Scaffold a new folio instance from the harness — the instantiate affordance
   of the knowledge graph. Covers when to run folio-init vs remote-mount, what
   the scaffold writes, the builder shim, state branch seeding, write capability
-  requirements, and --dry-run degradation. Bean dp1j.
+  requirements, and --dry-run degradation.
 adapters: [document, paper, dak]
 profiles: [document, paper]
 tested-by:
@@ -21,7 +21,7 @@ branches) linked back to the harness.
 
 | | where |
 |---|---|
-| the Tool node | [`tools/folio-init/folio-init.ts`](../../../tools/folio-init/folio-init.json) (`id: "folio-init"`, MCP `folio_init`, CLI `bun run cat init-folio`) |
+| the Tool node | [`tools/folio-init/folio-init.json`](../../../tools/folio-init/folio-init.json) (`id: "folio-init"`, MCP `folio_init`, CLI `bun run cat init-folio`) |
 | the entry processes | `getting-started.bpmn` (`new-repo` and `add-folio` branches), `repo-conversion.bpmn` (`overlay` branch) |
 | companion skills | [`getting-started`](../../conduct/conduct-core/getting-started.md), [`repo-conversion`](../../conduct/conduct-core/repo-conversion.md), [`index-config`](index-config.md), [`remote-mount`](remote-mount.md) |
 
@@ -51,8 +51,8 @@ content-type adapter.
 ## Write capability requirement and read-only degradation
 
 `folio-init` is a **writing verb**: it creates directories, writes manifests and
-agent stubs, and (when git is available) seeds the `cat/<instance>/beans` and
-`cat/<instance>/todos` orphan state branches.
+agent stubs, and (when git is available) prints the command that seeds the
+`cat/<instance>/beans` and `cat/<instance>/todos` orphan state branches.
 
 Before invoking `folio-init` to write, check that at least one write capability
 is present (`scenarios/capabilities/`):
@@ -92,9 +92,12 @@ Given `title` and one or more `authors` (plus optional `content_type`, `slug`,
    pointing at that link.
 4. **The agent instructions** — `AGENTS.md` and the one-line `CLAUDE.md` and
    `GEMINI.md` stubs pointing to it.
-5. **The work-plan state branches** — initialises the `cat/<slug>/beans` and
-   `cat/<slug>/todos` state branches so `bun run cat state:mount` mounts a
-   working store on the first session start.
+5. **The work-plan state branches** — declares `beans` and `todos` on the
+   `cat/<slug>/beans` and `cat/<slug>/todos` branches and prints the seed
+   command; once it has been run, `bun run cat state:mount` mounts a working
+   store on the first session start
+   ([`directory-conventions`](directory-conventions.md) §"Where a NEW
+   instance's state lives").
 
 ## What to check afterwards
 

@@ -13,22 +13,17 @@ nav_order: 4
 
 ---
 
-> **Status: proposed, nothing started.** This plan is the deliverable of
-> [issue #223](https://github.com/litlfred/folio-assistant/issues/223). It is
-> written to be argued with before any code moves.
+> **Status: under way.** Phase 0.1 and 0.2 are built; the rest is proposed and
+> written to be argued with before code moves.
 
 ## The governing principle
 
-**Move wiring and script together.** Every boundary this migration creates is an
-opportunity to reproduce the defect `AGENTS.md` records from qou commit
-`39fc90f6`: a script deleted while its hook reference survived, or a path
-computed from a script's own location that was correct before a split and wrong
-after.
-
-Bean `dh4f` is the measured cost of that defect at the *last* split: 30 scripts
-triaged, 23 broken, and three of them —
+**Move wiring and script together.** Every boundary this migration creates can
+reproduce two defects: a script deleted while its hook reference survives, and
+a path computed from a script's own location that was correct before a split
+and wrong after. At the last split such scripts —
 [including a CI gate](current-state.html#the-failure-mode-this-repo-has-already-paid-for)
-— silently passing over a corpus they could no longer read. **A green check is
+— passed silently over a corpus they could no longer read. **A green check is
 the symptom, not the reassurance.**
 
 Hence every phase gate below is a *positive* assertion (this tool read this
@@ -36,13 +31,12 @@ corpus and found this) rather than a negative one (nothing went red).
 
 ## Phase 0 — unblock, before anything moves
 
-Phase I is described in the issue as "move code around to prepare for change".
-Three things have to be true first, and none of them is a move. Skipping them
+Phase I moves code around to prepare for change. Three things have to be true first, and none of them is a move. Skipping them
 means discovering in Phase II that the target shape is unreachable.
 
 ### 0.1 — Make the dependency model able to carry the split · **decided and built**
 
-**Decision (2026-09-18, maintainer): load-time registration.**
+**Decision: load-time registration.**
 
 A dependency names a module in its `<name>.config.json`:
 
@@ -78,16 +72,15 @@ would change what every existing folio validates against.
 `<dak-layer> → smart-kg → core` and `<science-layer> → core` — so a depth-first
 walk reaches `core` twice. Re-registering identical content from the same
 contributor is a no-op. Without that rule every realistic dependency tree throws
-a false collision on first load, and the obvious fix (dropping the collision
-check) is precisely the one that must not be made.
+a false collision on first load; dropping the collision check is not the fix.
 
 **The dependency entry's name is authoritative** over whatever the contributed
 module says about itself. A contributor able to rename itself could claim
 another's namespace and turn a collision into a silent merge.
 
 **A declared-but-missing `contributes` module is a hard error**, not a silent
-zero contribution — the `AGENTS.md` "move wiring and script together" failure
-mode, caught at the point it occurs.
+zero contribution — the "move wiring and script together" failure, caught where
+it occurs.
 
 #### Where it lives, and why that mattered
 
@@ -96,16 +89,14 @@ model — which kinds exist, which adapter owns them — so it belongs with the
 model, and putting it under `src/` would have added another
 `cat-harness → <content-core>` import, already the largest
 wrong-direction group. A mechanism built to enable the split must not deepen
-what the split has to undo. Verified: `check:partition` reports 45 edges before
-and after. MCP tool contributions are carried as opaque registrar callbacks for
+what the split has to undo. MCP tool contributions are carried as opaque registrar callbacks for
 the same reason, so the MCP SDK type never reaches the content model.
 
 #### Still open under 0.1
 
-`resolveSkillDirs` still has no caller, and there is no content-directory
-resolver at all. The docstring table in `schemas/harness-config.ts` has been
-corrected to say so rather than claiming both work. Wiring them is finishing
-work, not a design question, and does not block Phase I.
+There is no content-directory resolver. (`resolveSkillDirs` is wired: the
+cross-instance skill overlay is built from it.) Writing it is finishing work,
+not a design question, and does not block Phase I.
 
 ### 0.2 — Replace the filename heuristic with a real dependency scan · **done**
 
@@ -117,8 +108,7 @@ meta-scripts were triaged by hand, and are reported with their own provenance so
 a judgement stays visible as a judgement). Full results in
 [current state](current-state.html#the-wrong-direction-edges--phase-is-worklist).
 
-**Scope, which this paragraph did not state until 2026-09-30 (bean `p11x`).**
-That scan's root is **one instance**, so its edge count is over modules under
+**Scope.** That scan's root is **one instance**, so its edge count is over modules under
 that instance only and says nothing about imports between the instances already
 sitting side by side in the checkout. The cross-instance axis is a separate
 question with a separate tool — see I.1b below.
@@ -133,21 +123,15 @@ Two results change the plan below rather than merely confirming it:
   failing in practice. Extracting the harness is therefore *harder* than
   extracting sci, not easier, and Phase II's order reflects that.
 
-The count moved 33 → 41 → 45 as classification improved, and stopped only when
-the unassigned column reached zero. **When re-running this, read the unassigned
-column before the edge count** — a low edge count over an unclassified corpus is
-the same false comfort as a green check over an empty one.
-
-It then reached 46 when ten commits from `main` merged in: five new harness
-modules, one of which imports the content model. **The harness → core violation
-grows as ordinary work lands**, because nothing stops a new `src/` module
-importing `schemas/types.ts`. Add `check:partition --strict` as a CI gate once
+**When re-running this, read the unassigned column before the edge count** — a
+low edge count over an unclassified corpus is the same false comfort as a green
+check over an empty one. **The harness → core violation grows as ordinary work
+lands**, because nothing stops a new `src/` module importing `schemas/types.ts`. Add `check:partition --strict` as a CI gate once
 the count is driven down — the flag exists for it.
 
 ### 0.3 — Decide what `folio` is
 
-From the [issue comment](https://github.com/litlfred/folio-assistant/issues/223#issuecomment-5726628913):
-top-level `content/` becomes `folio/`; **`folio` becomes its own schema which
+Top-level `content/` becomes `folio/`; **`folio` becomes its own schema which
 can contain zero or more Content instances**; the left-hand navbar gets a
 section per node in the folio instance.
 
@@ -173,39 +157,21 @@ archaeology.
 | I.1 | Resolve each wrong-direction cross-edge from 0.2 — invert the dependency, move the module, or record why it is legitimate | **both** axes below are empty, or every survivor has a written reason |
 | I.1a | The **within-instance** axis: modules under this instance's root, bucketed into the five proposed repos by path rule — `bun run cat check:partition`, enforcing in CI | a new wrong-direction edge among this instance's own modules fails the PR that introduces it |
 | I.1b | The **cross-instance** axis: edges between instances that already exist side by side, checked against each one's declared `needs` — `bun run cat kg:detangle:direction`, blocking in CI | a new edge from an instance into one that declares a dependency on it fails the PR that introduces it |
-
-**I.1 takes two gates, and it took one until 2026-09-30.** The row above read
-*"Gate the result: `bun run cat check:partition --strict` in CI"*, which was the
-whole gate — and `check:partition` resolves its `ROOT` to **one instance**, so
-every `0 wrong-direction edges` it prints is scoped to that instance's own
-modules and is silent about edges between the already-extracted siblings.
-I.1 was therefore discharged on one instance's evidence and reported as done.
-
-Bean `bf5l` measured the gap rather than arguing it. With a real
-wrong-direction import in place (`cat-harness/schemas/intake.ts` importing
-`folio-assistant-core`): `check:instance-graph` ✓ no cycle, `check:partition`
-**0**, `kg:detangle` **1**. Its own sentence — *"three green checks did not mean
-the layering held."*
-
-Bean `p11x`, owner's ruling of 2026-09-30 (**Option 2**): `check:partition`
-stays instance-scoped and `kg:detangle` owns the cross-instance axis, since it
-already sees it. The alternative — widening `check:partition`'s root to the
-checkout — was considered and rejected: its path rules are written against
-instance-relative paths, so it would have meant reclassifying ~17 instances'
-modules to reach a fact another tool already reports.
-
-**The two are not each other's second opinion.** `check:partition` partitions a
-**future** layout by path rule; `kg:detangle:direction` checks the **present**
-layout against declared `needs`. Either can be green while the other is red, and
-a survivor recorded against one says nothing about the other. Read
-`check:partition`'s count with the scope it now prints beside it.
 | I.2 | Introduce the `folio` schema (0.3); a folio holds 0..n content instances | `content_validate` passes on a zero-instance folio **and** a two-instance folio |
 | I.3 | Rename `content/` → `folio/` | no `content/` path literal survives outside intentional content-instance paths; full test suite green **and** a synthetic-folio run proves each moved tool still reads its corpus |
 | I.4 | LHS navbar renders a section per node in the folio instance | a two-instance folio shows two sections; a zero-instance folio renders without error |
 | I.5 | Group modules into the five target trees | each tree builds with only its declared dependencies on the path |
 | I.6 | Split QA **infrastructure** (harness) from QA **criteria** (downstream) | the criterion registry loads zero criteria without erroring; criteria come from a dependency |
-| I.7 | Reconcile the three `todo-manager.md` copies (`AGENTS.md` records a 188-line divergence and one copy with **no CI guard**) | one canonical copy; every other is generated and checked |
+| I.7 | Reconcile the three `todo-manager.md` copies | one canonical copy; every other is generated and checked |
 | I.8 | **Every repo declares `stub` + `canonicalUrl` and publishes `<stub>.jsonld` / `<stub>.schema.json`** | `bun run cat kg:export` in each repo emits artefacts named after that repo, with absolute `@id`s under its own `canonicalUrl` |
+
+**I.1 takes two gates.** `check:partition` resolves its root to **one
+instance**, so its `0 wrong-direction edges` says nothing about edges between
+instances side by side; `kg:detangle:direction` owns that axis. The two are not
+each other's second opinion: `check:partition` partitions a **future** layout by
+path rule, `kg:detangle:direction` checks the **present** layout against
+declared `needs`. Either can be green while the other is red, and a survivor
+recorded against one says nothing about the other.
 
 **I.8 is what keeps five repos from becoming five vocabularies.** Each split
 repo publishes its own knowledge graph, and the graphs are only mergeable if
@@ -214,21 +180,12 @@ minting `@id`s under that repository's `canonicalUrl` guarantees that by
 construction: `cat-harness.jsonld` and `<content-core>.jsonld` cannot
 assert the same node IRI, because the document IRI is part of every node's.
 
-The corollary is the rule the skill states and a test enforces: **artefacts are
-stub-named, the declaration file is not.** The first half still holds; the
-second was re-decided on 2026-09-21, and the declaration is now `<name>.json`
-— named for the instance's `name` rather than its `stub`, which is what keeps
-it out of the stub-named set.
-
-The concern recorded here was **discovery**, and it was real: a consumer must
-be able to open a repository it has never seen without first knowing what it
-is called. It was answered rather than dropped. The failure this paragraph
-warned of — *a resolver computing the filename from the directory finds
-nothing when a repo is cloned under a different name, and reports "no config"
-rather than an error* — is the failure `findDeclarationFile()` is built to
-avoid: it never computes the name from the directory, but scans for a `*.json`
-whose stem equals the `name` **inside** it, and throws when a directory holds
-two rather than picking one.
+The rule the skill states and a test enforces: **artefacts are stub-named, the
+declaration file is not** — the declaration is `<name>.json`, named for the
+instance's `name`. A consumer opening a repository it has never seen finds it
+with `findDeclarationFile()`, which never computes the name from the directory:
+it scans for a `*.json` whose stem equals the `name` **inside** it, and throws
+when a directory holds two rather than picking one.
 See [`directory-conventions`](../../../skills/kg/kg-core/directory-conventions.md)
 §Naming and [`kg-export`](../../../skills/kg/kg-core/kg-export.md).
 
@@ -260,7 +217,7 @@ The content core is never extracted: it is what remains.
    dependencies and nothing else on the path.
 3. The parent, with the extraction declared as a dependency, is green.
 4. **Every moved tool is run against a synthetic folio and asserted to have read
-   a non-empty corpus** — the `dh4f` gate. An empty corpus exits non-zero.
+   a non-empty corpus**. An empty corpus exits non-zero.
 5. No wiring left behind: every hook, workflow and doc reference to a moved
    script is repointed in the *same* change.
 
@@ -272,7 +229,7 @@ and it is the only commit in Phase II worth reverting as a unit.
 
 New construction, not migration. L4/L5 Content, Tool and Test repos built off
 `cat-harness`, and healthworker- and individual-facing workflows
-(immunizations is the issue's example).
+(immunizations, for example).
 
 The Test repos are the substantive new thing, because
 [no Test repo exists today](current-state.html#what-this-repo-is-authoritative-for-today):
@@ -291,9 +248,9 @@ install, the boundary is in the wrong place and Phase II is not finished.
 | risk | why it bites here | mitigation |
 |---|---|---|
 | **Silent-success scripts** | proven at the last split: 30 scripts, 23 broken, a CI gate passing over 0 blocks | every gate is a positive assertion over a synthetic folio |
-| **The dependency model cannot carry it** | schemas and MCP tools are ruled out by design *today* | Phase 0.1 is a hard blocker, sequenced before any move |
+| **The dependency model stops carrying it** | a change makes a schema, adapter or MCP tool contribution unreachable from a dependency | Phase 0.1's contribution tests; the science layer is extracted first |
 | **The rename swamps review** | 2,408 occurrences across 429 files | staged by consumer; schema before rename |
-| **Folio specifics leak into a split repo** | already the most-repeated defect in `AGENTS.md` | `platform-boundary-guard` subagent on every extraction; a TRAP entry per incident |
+| **Folio specifics leak into a split repo** | a literal naming one folio is the most repeated platform defect | `platform-boundary-guard` subagent on every extraction; a TRAP entry per incident |
 | **Boundaries drawn without domain context** | the L1/L2 line needs WHO knowledge this repo does not encode | `smart-kg` sequenced 4th; the line is drawn by a person, not inferred |
 | **Five changelogs, one change** | a cross-cutting fix now needs five PRs | the ordering test: split only where consumers or cadences differ |
 
@@ -301,11 +258,9 @@ install, the boundary is in the wrong place and Phase II is not finished.
 
 Stated plainly so the gaps are not mistaken for omissions:
 
-- **Whether a dependency may contribute adapters and MCP tools** (0.1). The
-  largest open question; the science layer is unbuildable until it is answered.
 - **Where the L1/L2 boundary falls** between `smart-kg` and the DAK layer.
 - **Whether the viewer splits by content type** or exposes a registration point
   ([future state](future-state.html#the-content-core)).
 - **Repo ownership, naming and hosting** — org, visibility, release cadence.
-- **Whether the science layer depends on core only**, as the issue states, or
+- **Whether the science layer depends on core only**, or
   also needs harness surface that core does not re-export.

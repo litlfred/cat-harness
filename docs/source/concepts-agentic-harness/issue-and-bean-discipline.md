@@ -22,8 +22,7 @@ two are related but not synonymous.
    name should reference the issue number (e.g. `feat/197-word-import`).
 
 3. **Always ask before merging to main.** The user must explicitly confirm.
-   This is stricter than the general `AGENTS.md` rule for content work,
-   because feature changes affect the platform.
+   Feature changes affect the platform.
 
 4. **Post round summaries to the issue.** After each round of implementation
    (one or more beans resolved), post a comment on the linked issue containing:

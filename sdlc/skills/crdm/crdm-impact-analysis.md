@@ -41,7 +41,7 @@ Check `adapters/` routing and inheritance:
 - `PaperContentAdapter` extends `DocumentContentAdapter`
 - `adapterForKind` must stay total and unambiguous
 - Adding a kind: which adapter owns it?
-- Profile vs adapter distinction (AGENTS.md §Content types)
+- Profile vs adapter distinction (AGENTS.md §"Content types, and starting a folio")
 
 ### 4. Folio impact
 
@@ -54,7 +54,7 @@ For each active downstream folio:
 ### 5. Skill impact
 
 ```bash
-rg "affected_file_or_concept" cat-harness/skills/
+rg "affected_file_or_concept" cat-harness/skills/ cat-harness/sdlc/skills/ cat-harness/work-plan/skills/
 ```
 
 Check `.claude/agent-memory/` for rules/traps that reference the changed area.
@@ -115,7 +115,7 @@ rg "CONCEPT" adapters/ content/adapters/
 # Check folio.config.json in each active folio
 
 # 5. Skills
-rg "CONCEPT" cat-harness/skills/
+rg "CONCEPT" cat-harness/skills/ cat-harness/sdlc/skills/ cat-harness/work-plan/skills/
 
 # 6. Tests
 bun test 2>&1 | tail -20

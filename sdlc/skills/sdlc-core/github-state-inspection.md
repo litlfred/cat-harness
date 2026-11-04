@@ -22,28 +22,15 @@ in an HTTP request. This skill says which to reach for and in what order.
 > **A published URL is LOOKED UP in the publish ref's tree. It is never built
 > from the source path.**
 
-`folio-assistant/docs/guides/agent-onboarding.md` publishes to
-`/guides/agent-onboarding.html`. The `folio-assistant/` segment is a
-source-tree stub that Jekyll does not carry into the site. Anyone composing
-the URL from the source path gets a 404 and concludes the page is missing.
+`cat-harness/docs/guides/agent-onboarding.md` publishes to
+`/docs/cat-harness/guides/agent-onboarding.html`: the layer segment moves from
+in front of `docs/` to behind it. Anyone composing the URL from the source
+path gets a 404 and concludes the page is missing.
 
-**And a source path moves under you.** The worked example below was
-`docs/folio-assistant/proposals/bootstrap.md`; the stub pattern inverted it to
-`folio-assistant/docs/proposals/` (bean `wggr`), and then proposals were
-relocated out of the site entirely to `fsh-guts/proposals/` — and back INTO it on
-2026-09-23, to `cat-harness/docs/proposals/`, on the owner's ruling that a
-proposal belongs in the `docs/` of the stub that needs it. The sentence is kept
-rather than rewritten because what it describes did happen; what is kept and
-addressable but **deliberately unpublished** — so that page has no URL at all
-now. Three moves in one day, and a URL composed from any remembered source
-path would have been wrong after each. The third move is the worst case for
-composing, because the composed URL is not merely the wrong path: it asserts a
-page exists where the repository has decided none should.
-
-This is the same defect `AGENTS.md` records for generated README links —
-*"It composed links instead of resolving them"*, where all twenty-three
-chapter PDF links were 404 and always had been — arriving one layer up, in an
-agent's own reasoning rather than in a generator.
+Source paths also move, and some pages (proposals, for one) are kept in the
+repository but **deliberately unpublished**. A URL composed from a remembered
+source path can assert a page exists where the repository has decided none
+should.
 
 ## First check for ANY deployment question
 
@@ -89,14 +76,10 @@ actions_list  method: list_workflow_runs
 
 Read `conclusion` per run, not just the newest — `cancelled` is the one that
 misleads, because nothing is red and yet nothing shipped from that commit.
-
-Measured 2026-09-20, on a repository with four concurrent agent sessions:
-**64 commits to `gh-pages` in 90 minutes**, and **6 of the last 10 Pages
-deployments `cancelled`**. The pattern was exact rather than random — each
-staging deploy pushes *two* commits about ten seconds apart, the payload
-(`staging(<slug>): from <sha>`) and then `render-log: rendered …`, and the second
-reliably cancels the first's build. Two pushes, two builds, one of them always
-wasted.
+Each staging deploy pushes *two* commits about ten seconds apart, the payload
+(`staging(<slug>): from <sha>`) and then `render-log: rendered …`, and the
+second reliably cancels the first's build, so on a busy publish ref many recent
+deployments read `cancelled`.
 
 So when a preview 404s and the file **is** on the ref:
 
@@ -128,9 +111,7 @@ them means the page is missing:
 
 In a Claude Code container, outbound HTTPS goes through a proxy that **blocks
 `github.io`**. A `curl` against a Pages URL from here returns `000` and a 403
-tunnel error regardless of whether the page exists. Reporting that as "could
-not determine whether it rendered" is honest but useless when the ref was
-sitting there with the answer.
+tunnel error regardless of whether the page exists.
 
 **"Could not determine" is a third state and must never be rendered as a
 pass** — but it is also not a place to stop when another source can determine
@@ -145,7 +126,7 @@ the second. `pull_request_read` with `method: "get_status"` returns
 are green, because there are no legacy statuses to report. Use
 `method: "get_check_runs"`.
 
-Two further traps:
+Further traps:
 
 - **Check the sha.** A `check_suite.completed` event names a `head_sha` that
   may already be superseded by your own later push, and the staging workflow's
@@ -164,34 +145,27 @@ suites and legacy statuses are not covered; verify the PR's overall state
 before acting.* So the event is evidence about the suites that EXIST, and
 silence about the ones that do not yet.
 
-The same hole one layer down cost real pushes. Measured twice on 2026-09-30:
-
-    16:13:58  29b10a68923  PASS — 1 check(s) completed clean
-    17:25:41  0d714756f3d  PASS — 1 check(s) completed clean
-
-exit **0** both times, against `total_count: 1`, while thirteen checks ran on
-neighbouring commits of the same branch. The second was authorised for merge on
-that verdict. The classifier guarded the EMPTY run list; with one clean run a
-PARTIAL list reached the pass branch carrying a plausible number, which is what
-made it convincing.
+The same hole exists one layer down: a classifier that guards only the EMPTY
+run list passes a PARTIAL one — one clean run where thirteen are owed reads as
+`PASS — 1 check(s) completed clean`.
 
 **So before reading a clean check set as green, ask whether it is the whole
-set.** `check:head-has-run` (bean `3pqn`) already answers it — `coverageFor`
-reconciles the runs against the workflows the tree itself declares, and
-`mergeStateForHead` returns `conflicted` for the case below. `bun run cat ci:watch`
-composes both since #1664. **Do not build a second reconciliation**; two
-answers to one question are free to disagree.
+set.** `check:head-has-run` answers it — `coverageFor` reconciles the runs
+against the workflows the tree itself declares, and `mergeStateForHead`
+returns `conflicted` for the case below. `bun run cat ci:watch` composes both.
+**Do not build a second reconciliation**; two answers to one question are free
+to disagree.
 
 Four causes of an absent-or-inert run, which must not collapse into one
-silence. The fourth is not an ABSENCE at all, which is why it hid: the run
-exists, it completed, and it executed nothing.
+silence. The fourth is not an absence: the run exists, it completed, and it
+executed nothing.
 
 | cause | how it reads | what to do |
 |---|---|---|
-| **a conflicted head** | no `pull_request` run is published AT ALL — the forge mints no `refs/pull/N/merge`, and a `pull_request` run checks that ref out (bean `52cz`) | merge the base in. The checks are not slow; they are never coming |
-| **a filtered trigger that owed no run** | genuinely nothing was due | stay silent — `g62s` measured that loosening this produces false fires |
-| **a run never created, unexplained** | a workflow the tree declares `on: pull_request` has no run and the head is mergeable | a **finding** (bean `3pqn`), not a wait |
-| **a bot-actor push** | the runs EXIST and are `completed`, with `conclusion: action_required` — approval was owed and never given, so no job ran (bean `0qjq`) | read the dispatched run instead; see below |
+| **a conflicted head** | no `pull_request` run is published AT ALL — the forge mints no `refs/pull/N/merge`, and a `pull_request` run checks that ref out | merge the base in. The checks are not slow; they are never coming |
+| **a filtered trigger that owed no run** | genuinely nothing was due | stay silent — loosening this produces false fires |
+| **a run never created, unexplained** | a workflow the tree declares `on: pull_request` has no run and the head is mergeable | a **finding**, not a wait |
+| **a bot-actor push** | the runs EXIST and are `completed`, with `conclusion: action_required` — approval was owed and never given, so no job ran | read the dispatched run instead; see below |
 
 A `draft` PR is a fifth reading of the same silence: `Code-quality gates` does
 not fire from `pull_request` while a PR is a draft, so a draft head owes those
@@ -206,45 +180,32 @@ conclusion that is neither `success` nor `failure`, so a predicate written as
 what is true: **the workflow was reached, approval was owed, and no job body
 executed.**
 
-Established by intervention rather than inference, on #1939, 2026-10-03 — four
-consecutive commits alternating strictly with the pushing actor:
+A head pushed by a bot actor gets `pull_request` runs that are all
+`action_required`; a head pushed by a session gets runs that execute.
 
-| head | pushed by | `pull_request` runs |
-|---|---|---|
-| `915370757a0` | bot | all three `action_required` |
-| `4c188f31368` | a session | executed |
-| `dea5195eece` | bot | all three `action_required` |
-| `96926836d53` | a session | executed |
-
-**And the compensation is real, which corrects the obvious conclusion.** It is
-tempting to say the merge-forward bot voids the gates it helps. It does not:
-with no `MERGE_MAIN_TOKEN` set, `merge-main.yml` **dispatches** both gating
-workflows — `code-quality-gates.yml` and `jsonld-gen-check.yml` — so the merge
-commit is proved by CI rather than trusted, and Feature Staging is left alone
-because it is preview-only. Measured on #1947, #1888, #1892, #1808 and #1804:
-every one shows the same pair, `pull_request: action_required` beside
+**The merge-forward bot does not void the gates.** With no `MERGE_MAIN_TOKEN`
+set, `merge-main.yml` **dispatches** both gating workflows —
+`code-quality-gates.yml` and `jsonld-gen-check.yml` — so the merge commit is
+proved by CI rather than trusted; Feature Staging is left alone because it is
+preview-only. Such a head shows the pair `pull_request: action_required` beside
 `workflow_dispatch: success`, on the identical head sha.
 
 So the rule for reading a head is **by workflow and sha, never by event**: a
 `workflow_dispatch` run of an owed workflow on the exact head is proof, and
 after a merge-forward it is arguably better proof, because the branch tip
 already contains the base and the dispatch tests the merged content rather
-than a synthesised merge ref. `check:head-has-run` already reads it this way —
-its own header records crediting `Code-quality gates` via `workflow_dispatch`
-alone on #1222 — so do not add an event filter to it.
+than a synthesised merge ref. `check:head-has-run` already reads it this way,
+so do not add an event filter to it.
 
-The consequence worth carrying: `MERGE_MAIN_TOKEN` (#1829 D1) is a
-**convenience**, not a correctness fix. It makes the PR's own runs fire on the
-bot's push instead of needing a dispatch. Saying the bot leaves its merges
-unproved is wrong, and a steward who believes it will hand-push commits to
-"restore" gates that already ran.
+`MERGE_MAIN_TOKEN` is a **convenience**, not a correctness fix: it makes the
+PR's own runs fire on the bot's push instead of needing a dispatch. Do not
+hand-push commits to "restore" gates that already ran.
 
 **Ask whether the BASE moved before calling any verdict non-deterministic.** A
 `pull_request` run tests the head merged with `main` as it was at push time, so
-main moving flips verdicts in both directions with no change to your branch. On
-2026-09-30 it turned a green branch head into a red merge commit, and six
-minutes later turned a red check green when a sibling's fix landed mid-cycle.
-The second was diagnosed as a flapping gate; it was not. One command settles it.
+main moving flips verdicts in both directions with no change to your branch —
+a green head can become a red merge commit, and a red check can turn green when
+a sibling's fix lands. That is not a flapping gate.
 
 ## Order of resort
 
@@ -263,13 +224,3 @@ The second was diagnosed as a flapping gate; it was not. One command settles it.
 works. Actions log blob URLs return 403 through the same proxy, so read logs
 with the GitHub MCP `get_job_logs` (`return_content`, `tail_lines`), not by
 fetching the URL it would hand you.
-
-## Where the agent goes wrong, measured
-
-2026-09-19. A new proposal page was published and I reported that I *could not
-verify it rendered*, on the strength of two `curl` calls that returned `000`
-because the proxy had refused the tunnel — and I had built the URL from
-`docs/folio-assistant/proposals/` rather than resolving it. One
-`git ls-tree -r FETCH_HEAD | grep proposal` showed the page present at
-`proposals/bootstrap.html`. Both halves of the error — a composed URL and a
-fetch mistaken for evidence — are what this skill exists to prevent.

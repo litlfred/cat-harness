@@ -2,28 +2,18 @@
 part-of: library-ingestion
 description: >
   Detail for `library-ingestion`, split out of it so the parent stays a short
-  entry point (placement PR6, bean `apcg`). NOT a skill of its own — reached
-  through the parent. What happens to an upload once it is ingested, the
-  2026-09-30 sweep and the check that replaced it, and why a rename comes first.
+  entry point. NOT a skill of its own — reached through the parent. What
+  happens to an upload once it is ingested, the check that enforces it, and
+  why a rename comes first.
 ---
 
 # library-ingestion — retiring an ingested upload
 
 ## What happens to the upload after it is ingested — it is RETIRED, not left and not deleted
 
-**Owner's ruling, 2026-09-29**, in two parts. First, answering *"why are
-ingested things still sitting in uploads and not moived to library of
-appropraite harness?"*:
-
-> **no, uploads is archival copy.**
-
-and then, refining where that archival copy belongs:
-
-> **archival (once ingested into KG and put into a proper `library/` under a
-> harness repo) then it should be moved to `fsh-guts`.**
-
-So the lifecycle has **three** places, not two, and `uploads/` is the only one
-that is temporary:
+`uploads/` is a queue, not an archive. Once a source is ingested into the KG
+and into a proper `library/` under a harness, its bytes move to `fsh-guts/`.
+The lifecycle has **three** places, and `uploads/` is the only temporary one:
 
 | stage | where | what it holds |
 |---|---|---|
@@ -31,34 +21,30 @@ that is temporary:
 | derived | `library/<slug>/` | `sections/`, `blocks/`, `images/`, `structure.json`, the manifest |
 | archived | `fsh-guts/uploads/FILE.pdf` + its sidecar | the **source bytes**, kept and addressable, off the rendered site |
 
+An ingested source's `*.pdf.extraction.json` companion moves with it, being a
+derived artefact of the same ingest rather than a queue item.
+
 ### Why the library cannot be the destination
 
-A library entry may not hold the bytes, and that is enforced rather than
-conventional. `ENTRY_DIRECTORIES` is `sections`, `blocks`, `images`, `ocr`;
-`ENTRY_SIDECARS` is `images.json`, `vector-labels.json`, `manifest.jsonld`,
-`summaries.json`, plus the one kind marker. Dropping the PDF into a promoted
-entry makes `check:l1-complete` report it — measured 2026-09-29:
+A library entry may not hold the bytes, and that is enforced.
+`ENTRY_DIRECTORIES` is `sections`, `blocks`, `images`, `ocr`; `ENTRY_SIDECARS`
+is `images.json`, `vector-labels.json`, `manifest.jsonld`, `summaries.json`,
+plus the one kind marker. A PDF dropped into a promoted entry makes
+`check:l1-complete` report it as an unexpected child.
 
-```
-✗ contents   1 unexpected child(ren): source.pdf
-```
-
-The entry records `source_sha256` and the technical metadata, which is what
-lets a re-derivation be checked against the original. It does not record the
-original. So "move it to the library" is not available, and the source needs
-somewhere else to live — which is what the second half of the ruling settles.
+The entry records `source_sha256` and the technical metadata, which lets a
+re-derivation be checked against the original. It does not record the
+original, so the source lives elsewhere.
 
 ### `fsh-guts/` is that somewhere, and it already has the contract
 
 [`fsh-guts`](../../../kg/kg-core/fsh-guts.md) is *"the trashcan that is kept"*: addressable,
 exported, greppable, and deliberately absent from the canonical render.
-**Delete means relocate**, and this is that rule applied to a source whose
-derivation has landed.
+**Delete means relocate.**
 
-A PDF cannot carry front matter, and the directory already answers that —
-`extract-lean-blocks.py`, `split-docs-page.py`, `detangle-schema-viewer.html`
-each keep their bytes beside a same-basename `.md` sidecar that declares them.
-An archived upload follows the same convention:
+A PDF cannot carry front matter, so an archived upload keeps its bytes beside
+a same-basename `.md` sidecar that declares them, as other `fsh-guts/` files
+do:
 
 ```yaml
 ---
@@ -73,58 +59,27 @@ summary: >-
 ---
 ```
 
-`movedFrom` and `movedOn` are the load-bearing pair, for the reason `fsh-guts`
-gives: without them a node there is an orphan, and *"abandonment or accident"*
-becomes indistinguishable.
+`movedFrom` and `movedOn` are required: without them a node there is an
+orphan, and abandonment cannot be told from accident.
 
-**`fsh-guts/uploads/` is the sub-directory this proposes** — the existing two
-are `retired/` and `scripts/`, named for what the thing is, and an ingested
-source is neither. Not yet ruled on.
+### What this makes true
 
-### What this makes true, and what it costs
+`gen-uploads-viz.ts`'s `itemState` returns `waiting` or `ingested`, and the
+headline is the UNINGESTED count, because that is what means work is owed.
+`ingested` is a **transient** state: an upload sitting in it is a retirement
+nobody has done yet.
 
-`uploads/` becomes what its viewer already says it is. `gen-uploads-viz.ts`'s
-`itemState` returns `waiting` or `ingested`, and the headline is the
-UNINGESTED count because that is the one that means work is owed — under this
-rule `ingested` becomes a **transient** state rather than a resting place, and
-an upload sitting in it is a retirement nobody has done yet.
+**Never `rm`.** Deleting an ingested upload removes the only copy of the
+source from the working tree (git history is not the same thing), and every
+derived artefact in `library/` becomes unreproducible from a checkout.
+`deletion-requires-confirmation` governs any exception.
 
-**Never `rm`.** An ingested upload is not cleanup: deleting it removes the only
-copy of the source from the working tree, leaving git history, which is not the
-same thing — every derived artefact in `library/` becomes unreproducible from a
-checkout. `deletion-requires-confirmation` governs any exception, and an ingest
-step that removed its own input would be the `plj1` shape exactly.
+### The check: `check:uploads-retired`
 
-### Swept 2026-09-30 — and the sweep is now `check:uploads-retired`, not a habit
-
-`fsh-guts/uploads/` is the sub-directory. An ingested source's
-`*.pdf.extraction.json` companion moves with it, being a derived artefact of
-the same ingest rather than a queue item.
-
-**The hand sweep that first implemented this rule got four things wrong, in
-one commit, and each was invisible from its own output.** They are recorded
-here in full because they are one defect wearing four faces, and because the
-third and fourth were found only after the first two had been "corrected":
-
-| # | what it reported | what was true |
-|---|---|---|
-| 1 | **nine** sources to retire | **28**, across five harnesses — it had resolved `cat-harness/library/` alone, 14 of the corpus's entries |
-| 2 | **five sources RESTORED** from `4b10661cdde` after an earlier session deleted them | **none had been deleted.** All five were at `cat-harness/uploads/` continuously and are in that commit at that path. The sweep `git show`-ed a second copy of each into the archive |
-| 3 | 28 relocated | three of them were **copied, not moved** — the original stayed in `uploads/` |
-| 4 | the IRIS replica among the five harnesses swept | **three ingested sources still in its queue** — that queue keeps a DIRECTORY per source, and the sweep listed only the top level |
-
-Eight files in two places, and a recovery claim with nothing recovered.
-
-**The common cause is one sentence: an answer computed over less than the
-corpus looks exactly like an answer over all of it.** (2) is the sharpest
-case — the five were *absent from `uploads/`* because they had been RENAMED
-into `cat-harness/uploads/`, and "absent from the one directory I looked in"
-was read as "deleted from the repository".
-
-**And correcting (1)'s number did not prevent (2), (3) or (4).** The count was
-re-derived across five libraries; the deleted-or-not determination, the
-move-or-copy, and the per-harness enumeration each kept the original method.
-That is the argument for the check rather than for a more careful sweep:
+Do not retire uploads by a hand sweep: an answer computed over less than the
+corpus looks exactly like an answer over all of it (one library instead of
+every harness's, the top level of a queue instead of its per-source
+directories, a copy mistaken for a move).
 
 ```sh
 bun run cat check:uploads-retired
@@ -132,44 +87,25 @@ bun run cat check:uploads-retired
 
 It matches on **sha256 against every declared library's recorded
 `source_sha256`**, never on filename — `2509.06388v1.pdf` is archived as
-`wang-rangaiah-2026-mcdm-aggregation.pdf`, and a name comparison would have
-called that unarchived and minted a ninth duplicate. Two families:
+`wang-rangaiah-2026-mcdm-aggregation.pdf`. Two families:
 
 - **blocking** — an already-ingested **bare drop** in a queue. The remedy is a
   `git mv` plus a sidecar, or a `git rm` when identical bytes are already
-  archived. Those two are distinguished, because conflating them is exactly
-  how eight files ended up in two places.
+  archived. The two are distinguished, because conflating them leaves files
+  in two places.
 - **advisory** — an already-ingested file inside a **per-source intake
   directory** (the IRIS replica's `uploads/<slug>/` holds the PDF beside an
   `intake.json` and an `iris-capture/`). Moving the PDF alone would leave that
   record naming a file that is not there, so whether such a source retires as
-  a file or as a directory is a IRIS replica layout decision. Reported on every
-  run with its count; **not** exempted, because a family that goes quiet is a
-  family nobody revisits.
+  a file or as a directory is that instance's layout decision. Reported on
+  every run with its count; **not** exempted.
 
-It refuses rather than passing when no library records a `source_sha256` — the
-first version of it resolved libraries from the repository root, got **zero**,
-and printed a green line over 15 files. `dh4f`, inside the check written to
-stop `dh4f`. The repository root is not an instance that declares a library;
-`cat-harness` is, and the root declares the `uploads/` that `cat-harness` does
-not — so both roots are asked and neither alone is the corpus.
+It refuses rather than passing when no library records a `source_sha256`. It
+asks both roots — the repository root, which declares the checkout's
+`uploads/`, and `cat-harness`, which declares a library — because neither
+alone is the corpus.
 
 It reports and never moves anything: `deletion-requires-confirmation`.
-
-**State after the correction, 2026-09-30:**
-
-| | |
-|---|---:|
-| sources archived in `fsh-guts/uploads/` | **41** |
-| duplicates removed from queues (identical bytes already archived) | 8 |
-| retired late, missed by the sweep | 1 (`milnorlink.pdf`, ingested to the science layer) |
-| still queued, none of them ingested | 32 |
-| advisory, inside a IRIS replica intake directory | 3 |
-
-`milnorlink.pdf` is the cleanest statement of the whole class: it was ingested
-to the science layer's `library/`, so a sweep matching against
-`cat-harness/library/` found no match and read it as still queued. Nobody was
-careless; the method could not see it.
 
 ### Renaming an upload is done BEFORE the first ingest
 
@@ -178,4 +114,4 @@ page one's text layer and falls back to the basename slug. A source with no
 arXiv stamp is therefore named by hand first, to the author-year convention —
 `gurel-tat-2017-swot-analysis`, `wang-rangaiah-2026-mcdm-aggregation` — and the
 slug follows. Renaming afterwards means re-ingesting under the new name and
-removing the old entry, which is why it is worth getting right on the way in.
+removing the old entry.

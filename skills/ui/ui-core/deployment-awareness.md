@@ -11,24 +11,15 @@ profiles: [document, paper]
 
 # Deployment awareness — UI surfaces, host constraints, and chat degradation
 
-The owner, 2026-09-20:
-
-> agent should be aware of how ui is deployed (e.g. ghpages , no XSS, etc),
-> local server, w/ or w/o mcp, chat discussion only.  part of skills to know
-> which tools
-
-Epic `5a3l` establishes that **topology** (where things live) and **operating
-mode** (what the harness is doing) are orthogonal axes. Deployment awareness is
-the product of those axes applied to the **interaction surface**: it tells the
-agent **which tools apply**, what it **must not assume** about the host, and how
-to **degrade gracefully** when no graphical canvas exists.
+**Topology** (where things live) and **operating mode** (what the harness is
+doing) are orthogonal axes. Deployment awareness applies both to the
+**interaction surface**: it tells the agent **which tools apply**, what it
+**must not assume** about the host, and how to **degrade gracefully** when no
+graphical canvas exists.
 
 ---
 
 ## The four deployment surfaces and their constraints
-
-These four surfaces are not a single sliding scale; they govern different
-layers of interaction and hosting:
 
 | Surface | Nature | What it provides | What it constrains / forbids |
 |---|---|---|---|
@@ -41,22 +32,15 @@ layers of interaction and hosting:
 
 ## 1. Static host (`gh-pages`) — why escaping is the only defence
 
-On a static host like GitHub Pages, files are served directly from storage
-without an application server intercepting the request:
+On a static host like GitHub Pages, files are served directly from storage:
 
-1. **No request-time sanitisation or computation:**
-   There is no server-side template engine, no middleware sanitiser, and no API
-   gateway to inspect or reject malformed or hostile payloads before they reach
-   the browser.
-2. **Escaping at render is the whole depth:**
-   On a dynamic server, input might be sanitised upon upload, filtered upon
-   retrieval, or scrubbed by a templating layer. On `gh-pages`, none of these
-   exist. Content authored in files or graphs (such as todos, notes, or
-   `fsh-guts/` items) reaches the client directly via JSON. If the client-side
-   render does not insert that content as **text** (e.g. `textContent`,
-   `createTextNode`) rather than `innerHTML`, the application is immediately
-   vulnerable to Cross-Site Scripting (XSS).
-3. **No custom header enforcement:**
+1. **Escaping at render is the whole depth:**
+   There is no server-side template engine, middleware sanitiser or gateway.
+   Content authored in files or graphs (such as todos, notes, or `fsh-guts/`
+   items) reaches the client directly via JSON, so the client-side render must
+   insert it as **text** (`textContent`, `createTextNode`), never through
+   `innerHTML`.
+2. **No custom header enforcement:**
    As detailed in [`serving-renderings`](serving-renderings.md), GitHub Pages
    serves files according to its own extension table. It cannot set
    `Content-Type: application/ld+json` for `.jsonld`. The harness accommodates
@@ -78,10 +62,8 @@ When the UI is backed by a local server (such as `bun run cat serve:rendering`):
    outside the published root, and binds loopback (`127.0.0.1`) by default to
    prevent unintended network exposure.
 3. **No reliance on server-side second chances:**
-   Even when running under a local server, client-side rendering must continue
-   to escape content as text. The same UI code serves both local and `gh-pages`
-   deployments; it must never relax escaping because a dynamic server happens to
-   be present during development.
+   The same UI code serves both local and `gh-pages` deployments, so it must
+   never relax escaping because a dynamic server is present.
 
 ---
 
@@ -107,8 +89,8 @@ the MCP tool path and the filesystem/CLI equivalent (as documented in
 
 ## 4. Chat discussion only — the graceful degradation discipline
 
-Agents frequently run in pure chat sessions: in an interactive terminal, a PR
-comment review, or an IDE assistant panel with no webview attached.
+Agents run in pure chat sessions: an interactive terminal, a PR comment review,
+or an IDE assistant panel with no webview attached.
 
 > **Rule:** A skill that assumes a web page or board exists is wrong in
 > chat-only mode.
@@ -126,18 +108,17 @@ comment review, or an IDE assistant panel with no webview attached.
    - A window open/close state degrades to an outline of active inspection targets.
    - A graph visualisation degrades to an indented hierarchy or JSON-LD summary.
    - A tile status degrades to a one-line status badge in chat.
-3. **Parallels to browse-without-write (`dp1j`):**
-   Bean `dp1j` established that browsing must remain fully functional with zero
-   write credentials. Similarly, UI inspection and manipulation skills must
-   remain completely informative in chat mode without throwing "window not found"
-   or demanding a browser context.
+3. **Stay informative without a browser:**
+   As browsing works with zero write credentials, UI inspection and
+   manipulation skills must stay informative in chat mode without throwing
+   "window not found" or demanding a browser context.
 
 ---
 
 ## Declared architectural facts vs. environment capabilities
 
-A critical architectural distinction is whether deployment surfaces are
-**capabilities** or **declared architectural facts**:
+A deployment surface is a **declared architectural fact**, not a
+**capability**:
 
 | Concept | Nature | Mechanism | Example |
 |---|---|---|---|
@@ -146,17 +127,12 @@ A critical architectural distinction is whether deployment surfaces are
 
 ### Why deployment surfaces must NOT be probed
 
-1. **Probes cannot answer architectural intent:**
-   An environment probe can inspect the local filesystem or check if a port is
-   open, but it cannot know whether the committed HTML in `docs/` will be pushed
-   to GitHub Pages, synced to an S3 bucket, or viewed via a local file URI.
-   "Am I rendering to a static host" is an architectural fact declared by
-   whoever configured the site.
-2. **Category errors produce brittle fallbacks:**
-   Attempting to probe deployment topology (e.g. checking if `gh-pages` branch
-   exists or pinging `github.io`) yields false negatives in offline environments,
-   sparse checkouts, or pre-deployment staging.
-3. **Where the declaration lives:**
+1. **Probes cannot answer architectural intent:** a probe cannot know whether
+   the committed HTML in `docs/` will be pushed to GitHub Pages, synced to a
+   bucket, or viewed via a file URI; and probing topology (checking for a
+   `gh-pages` branch, pinging `github.io`) gives false negatives offline, in
+   sparse checkouts, or before deployment.
+2. **Where the declaration lives:**
    Deployment surfaces and topologies are declared in instance configurations
    (`<instance>.json`, `<name>.config.json`), role graphs, or workflow
    definitions (`scenarios/*.json`, `beans/workflows/`). The agent reads these

@@ -11,11 +11,6 @@ allowed-tools: Read Grep Glob
 
 # pr-description — a PR body a first-time reader can follow
 
-Owner, 2026-10-02, on litlfred/fhir-ig-publisher#8: *"PR should be readable
-for human for first time. what probelm trying to address, why, how approached,
-constratins, soltion... ...usage"*, then *"make that a general skill when
-writing/updating PRs"*. Issue #1879, bean `19wc`.
-
 ## What a PR description is for
 
 **The reader has not been here.** A reviewer, the owner coming back a week
@@ -23,10 +18,9 @@ later, or the next agent opens the PR cold. The description is the one place
 they can learn what the change is *for*, without the chat, the bean or the
 commit log. If they need any of those to follow it, it has failed.
 
-The failure this replaces is the **change log**: commit titles turned into
-bullets ("W5/W6 — incremental plan", "fix fsh-index path", "one file per
-key"). Every line is true, and only the author can read it. #8's first
-description was exactly that.
+It is not a **change log** of commit titles turned into bullets ("fix
+fsh-index path", "one file per key"): every line is true, and only the author
+can read it.
 
 ## The sections, in order
 
@@ -70,9 +64,8 @@ with what the work found.
 
 ## Updating a PR: comments, not edits
 
-Owner, 2026-10-02: *"updates to PRs should be mainly comments, not on
-original text"*. A reader who has already read the description must be able
-to trust that it still says what it said. A change they need to see goes
+A reader who has already read the description must be able to trust that it
+still says what it said. A change they need to see goes
 where GitHub shows it as new, which is a comment: a push, a CI round, a
 review answered, a decision taken.
 
@@ -96,8 +89,7 @@ comment.
 
 ## Cross-reference everything
 
-Owner, 2026-10-02: *"maximize use of x-ref and links to beans/epics etc and
-the dashboard"*. Every identifier is a link:
+Every identifier is a link:
 
 | thing | link to |
 |---|---|
@@ -107,9 +99,8 @@ the dashboard"*. Every identifier is a link:
 | skill or process | its file, or its page under `<site>/reference/` |
 | a measurement | the committed sidecar or the CI run that produced it |
 
-**The dashboard has no per-bean deep link yet.** Its epic scope lives only
-in page memory, so a link opens the whole board. Until it gains one, link the
-bean's file for the bean, and the dashboard for the overview.
+**The dashboard has no per-bean deep link.** A link opens the whole board, so
+link the bean's file for the bean, and the dashboard for the overview.
 
 ## What never goes in it
 
@@ -121,7 +112,8 @@ bean's file for the bean, and the dashboard for the overview.
 
 ## Worked example
 
-litlfred/fhir-ig-publisher#8, before and after, 2026-10-02.
+A PR adding an incremental-build library to the FHIR IG Publisher, before
+and after.
 
 - **Before:** "What's in it": twelve bullets, one per commit ("W1:", "W2:",
   "`-fsh-users`:", …), then "Housekeeping". Accurate, and unreadable to anyone

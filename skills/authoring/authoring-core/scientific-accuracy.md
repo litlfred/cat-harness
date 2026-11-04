@@ -7,8 +7,7 @@ name: scientific-accuracy
 ## Purpose
 
 Evaluate commits for technical correctness, scientific/scholarly rigor,
-and logical consistency. This skill is derived from established
-peer-review practices.
+and logical consistency.
 
 ## Checks
 
@@ -22,7 +21,7 @@ peer-review practices.
   (a witness file, a registry, an upstream result) should be referenced
   through the project's value-citation mechanism rather than copied as a
   bare literal. See the value-witnessing skill for the registry
-  contract, the directive syntax, and the codemod that rewrites legacy
+  contract, the directive syntax, and the codemod that rewrites bare
   literals. Flag any new hard-coded numeral that has (or could have) a
   registry entry as a drift risk.
 
@@ -35,7 +34,7 @@ peer-review practices.
   possible.** Carry symbolic or exact-arithmetic expressions through the
   derivation and only evaluate numerically at the final step;
   premature numerical evaluation discards structure that later steps
-  rely on. Label any approximation explicitly as such.
+  rely on.
 - **NO APPROXIMATIONS unless explicitly labeled as such.**
 - **NO correction factors, fudge factors, or empirical scaling**
   presented as if derived.
@@ -113,7 +112,7 @@ A content type that carries a formal-proof layer beside the narrative adds
 its own accuracy checks on top of these: the consequence-versus-axiom audit,
 formal cross-references, and validation across the content-object triple.
 The layer that ships that content type holds them and names this skill from
-its side (for a paper folio, the science layer; bean `syiq`).
+its side (for a paper folio, the science layer).
 
 ## Glossary terms
 
@@ -128,10 +127,8 @@ warnings.
 ## Mandatory fallback participation
 
 This skill is invoked automatically by the editor's **content-change
-fallback** (see `editor.md § Content-change fallback`). Whenever any
-content is modified during a session, the editor triggers a
-scientific-accuracy pass before the task is considered complete. When
-invoked as a fallback, focus on the changed blocks and their immediate
+fallback** (see `editor` §"Content-change fallback (mandatory review)")
+whenever content is modified. When invoked as a fallback, focus on the changed blocks and their immediate
 dependencies.
 
 ## Output Format

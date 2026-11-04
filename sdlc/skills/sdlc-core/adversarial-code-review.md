@@ -16,9 +16,8 @@ allowed-tools: Read Bash Grep Glob
 The `Task_Review` step of
 [`code-change-review.bpmn`](../../processes/code-change-review.bpmn),
 for a change an agent touched. Its verdict is what `check:adversarial-review`
-reads (bean `w8jq`, proposal `docs/proposals/merge-gate-2026-10-02.md` §5–§6).
-It is warn-only by the owner's ruling of 2026-10-03: a missing, stale or
-failing verdict is reported, not blocking, until the owner promotes the gate.
+reads. The gate is warn-only: a missing, stale or failing verdict is reported,
+not blocking, until an owner promotes the gate.
 
 ## Who may review
 
@@ -49,8 +48,7 @@ pull request's description and the `## Done when` of the bean it names.
 The RED FLAG categories are closed and live in `schemas/sdlc/red-flag.ts`:
 `security`, `data-loss`, `correctness`, `false-green`, `provenance`,
 `scope-breach`, `irreversible-action` and `licence`. Read the definitions
-there rather than from a copy: the proposal's own table already differs from
-the schema. Beyond the categories, ask:
+there rather than from a copy. Beyond the categories, ask:
 
 - can a new or changed check report green without evaluating its subject?
 - does prose (a skill, the PR body, the bean) assert something the code does
@@ -66,7 +64,7 @@ then the verdict is final.
 
 The verdict lives on its own state branch, **never in the pull request**.
 Committing it into the pull request moves the head it names, which makes it
-stale at once (owner, 2026-10-20, "State branch").
+stale at once.
 
 1. `bun run cat state:mount` mounts the `merge-reviews` graph at
    `merge-reviews/`.

@@ -13,8 +13,8 @@ graph-typologies:
 
 A process instance is not self-contained. It walks a diagram that lives
 somewhere else, records its position somewhere else again, and reads facts it
-must not change. **Four stores, and confusing any two of them is how a work
-plan comes to disagree with itself.**
+must not change. **Five stores; confusing any two of them is how a work plan
+comes to disagree with itself.**
 
 ## Which store answers which question
 
@@ -26,7 +26,7 @@ plan comes to disagree with itself.**
 | what does a PERSON still owe? | `todos/` | `todo-items` | **state** |
 | what do I already know? | agent memory | `memory` | **context** |
 
-The `layer` column is not decoration — it says **what a step may do**. A step
+The `layer` column says **what a step may do**. A step
 may write to a `state` graph; that is what state is for. **A step that writes
 to `context` is a defect**, not an update: memory changes when a human directs
 an authoring act, outside any instance.
@@ -41,7 +41,7 @@ means nothing detached from the file it walks. That is why the two live in
 different graphs and why an instance names its process rather than embedding
 it.
 
-Two consequences worth stating, because both have been got wrong:
+Two consequences:
 
 **An instance is never edited by hand.** It carries
 `"$schema": "folio-workflow-instance/v1"` and the interpreter owns it. Hand-
@@ -71,10 +71,10 @@ completing the step performs it:
 | `archive` | move a completed or scrapped bean into the archive, **only once the instance finished** |
 
 `claim` is drawn only in `Process_BeanOpen`, and `resolve` and `archive` only
-in `Process_BeanClose`; every process that works on a bean calls both (bean
-`m8gz`, `check:bean-calls`). `note` is drawn where the work happens.
+in `Process_BeanClose`; every process that works on a bean calls both
+(`check:bean-calls`). `note` is drawn where the work happens.
 
-**`resolve` is the careful one, and the care is the point.** A bean is never
+**`resolve` is the careful one.** A bean is never
 closed on somebody else's judgement, so it does not fire on the caller's
 say-so: the bean completes only when the instance tracking it has completed,
 which is a fact *derived from the process* rather than asserted by the agent
@@ -97,8 +97,8 @@ arrived, not that the commit is good.
 ## Where running instances live — the state graph on the branch store
 
 Running instances are part of the `beans` graph (`workflow-state` graph typology).
-Under the state branch architecture (proposal `cat-harness/docs/proposals/state-branch-2026-10-02.md`),
-the bean graph is mounted from the tip-keyed branch store (`cat/cat-harness/beans`).
+The bean graph is mounted from the tip-keyed branch store
+(`cat/cat-harness/beans`).
 
 The container is ephemeral and **a work plan only one agent can see is not a
 work plan**. Instance state lives on the branch store for the same reason
@@ -111,10 +111,9 @@ via the branch store (`bun cat-harness-tools/scripts/branch-store.ts push --id b
 This keeps instance state globally visible without cluttering code PR diffs on `main`.
 
 Instance ids are **derived from the subject rather than random**, so re-entering
-a step finds the instance that is already there. That is not a stylistic
-preference: `beans create` is not idempotent and dedupes on nothing, which
-produced 14,688 duplicates in one afternoon — 92 % of every open bean in that
-repo. An id you can recompute is the fix, and it is cheap.
+a step finds the instance that is already there: `beans create` is not
+idempotent and dedupes on nothing, so an id you can recompute is what prevents
+duplicates.
 
 ## Reading the state you did not write
 

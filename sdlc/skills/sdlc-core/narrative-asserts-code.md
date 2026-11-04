@@ -10,13 +10,8 @@ description: >-
 
 # Does the prose say what the code does?
 
-Issue #1042, feature bean `flbx`, stage C. The owner, 2026-09-21: *"need to see
-if semantic/narrative assertion matches code written … need adjudication if
-code and narrative disagree."*
-
 A reader acts on what the prose says. When prose and code disagree, the reader
-either avoids a working feature or rebuilds it. Bean `77ex` put it as *"a stale
-gap notice is worse than none"*. This skill is the **judgement** step. The
+either avoids a working feature or rebuilds it. This skill is the **judgement** step. The
 machine has already done everything it can, and your job is the rest.
 
 ## The pairs this applies to — declared, never inferred
@@ -35,10 +30,10 @@ guess is how a check gets switched off.
 
 Two kg-qa criteria on the subject's sidecar tell you what is open:
 
-- **`prose-reviewed-since-code-changed`** (stage B). `fail` means the code
+- **`prose-reviewed-since-code-changed`**. `fail` means the code
   changed and the prose did not. It says nothing about truth, only that
   nobody re-read the prose.
-- **`prose-claims-resolve`** (stage A). Each claim the prose makes about the
+- **`prose-claims-resolve`**. Each claim the prose makes about the
   code comes out `holds`, `false` or `undetermined`. `bun run cat pairs:claims`
   prints the whole list, including what it did not check.
 
@@ -74,12 +69,11 @@ mechanically, which no other pair kind allows. That work belongs to
 `proof-narrative-lean-equivalence` (the science layer):
 stub-weakening, overreach, hypothesis mismatch and notation drift. This skill
 states the question for every pair kind, and that one answers it for Lean.
-Nothing Lean-specific goes here (requirement R5), so a pair kind added later
+Nothing Lean-specific goes here, so a pair kind added later
 inherits the general question without inheriting Lean's machinery.
 
 ## Where it runs
 
 `narrative-code-review.bpmn`, entered from `review-task.bpmn` when a change is
-**prose and the code it describes**. That branch exists because the review
-dispatcher's gateway is exclusive, and its own documentation promised that a
-change which is both "goes through both". Found while designing this stage.
+**prose and the code it describes**. The review dispatcher's gateway is
+exclusive, so a change that is both goes through this branch.

@@ -34,44 +34,34 @@ a real subprocess in its own file:
 | Phase 6 — implement + acceptance | `crdm-deliver.bpmn` | implement, review increment, share MVP, take findings |
 | Close-out | `crdm-close.bpmn` | stakeholder sign-off, BA confirmation (an adjudication, recorded as a `requirement-signoff` attestation that moves the set to `accepted`), then the close |
 
-**Nothing about running it changes.** Step ids are unchanged, so
-`workflow_complete` still takes `A_Implement`, `A_Close`, `BA_Signoff` by name;
-the interpreter enters a phase by itself and `workflow_next` tells you which one
+`workflow_complete` takes step ids such as `A_Implement`, `A_Close` and
+`BA_Signoff` by name; the interpreter enters a phase by itself and `workflow_next` tells you which one
 you are in (`inside: Phase 6 Implement + acceptance`). You cannot complete a
 phase — a phase is done when its steps are.
 
-**Phase 6 is one subprocess and not three** because the loops say so: a rejected
-increment, an MVP that is not ready, and stakeholder findings all route back into
-implementation. A subprocess has one exit and cannot be re-entered once finished,
-so splitting that region would have changed what the diagram says.
+**Phase 6 is one subprocess**, because a rejected increment, an MVP that is not
+ready, and stakeholder findings all route back into implementation, and a
+subprocess has one exit and cannot be re-entered once finished.
 
 ## Every question you put to the BA carries its context first (STRICT)
 
-This process is almost entirely questions. Six phases of them — needs, process,
-requirements, impact, sign-off, feedback — and each one is the agent handing a
-decision to a person who was not inside the analysis that produced it.
-
-**So the ordering rule in
+Every phase of this process hands the BA a decision they were not inside the
+analysis for. **The ordering rule in
 [`interaction-modality.md` §4.1](../../../skills/conduct/conduct-core/interaction-modality.md) governs this whole
 workflow, not just its explicit checkpoints: context → options → recommendation
 → question.** Its test applies unchanged:
 
 > **Can the BA answer without opening anything?**
 
-Feature work breaks this in a way content work does not, and the reason is worth
-naming. The agent has just done impact analysis, read the schemas, traced the
-consumers — and the vocabulary it built doing that is the vocabulary it asks in.
-Terms coined during the analysis feel defined, because to the agent they are.
-Three specific traps:
+Terms the agent coined during its analysis feel defined to it and are new to
+everybody else. Three traps:
 
 - **An option name you invented.** "Prefix-at-rest or prefix-at-install?" names
   two things that exist nowhere outside your own head and your own issue.
   Describe what each one *does* instead, and put the coined name in parentheses
   if it earns its place at all.
 - **A question that resolves to "go read the issue".** The issue is where the
-  BA goes for depth. It is never where the question's terms are defined — and
-  posting a question whose answer requires reading it is how a one-character
-  decision becomes a twenty-minute one.
+  BA goes for depth. It is never where the question's terms are defined.
 - **Options without their costs.** "A or B" is not a choice; "A, which changes
   nothing here, or B, which rewrites every `bootstrap.processes:skill` ref in the diagrams"
   is. The BA is deciding on the consequences, so the consequences are the
@@ -79,8 +69,7 @@ Three specific traps:
 
 This applies to **every** surface this workflow uses: the chat, the summary
 comment posted to the issue after each round, the PR body, and a bean's
-`## Done when`. A question buried in an issue comment with its context two
-comments up is the same defect wearing a different hat.
+`## Done when`.
 
 ## Phase 1 — Needs assessment
 
@@ -150,16 +139,16 @@ For each requirement:
    point 5). The
    candidates are the options Phase 4's comparison lays out; the requester or
    BA chooses one at the review. Record "N/A — no rendered surface" in the
-   template otherwise. Owner, 2026-09-23 ([`wiregen`](../../../methodologies/wiregen.md)):
-   *"wireframe is part of design process for adjudication"*.
+   template otherwise. The wireframe is part of the design process for
+   adjudication ([`wiregen`](../../../methodologies/wiregen.md)).
 
 ### Consumer burden is a requirement, not a nicety (STRICT)
 
 **Every requirement states what a downstream consumer must do to use the
 result — and the target is nothing.**
 
-The standing rule, from the repository owner: *a downstream consumer must never
-have to string-manipulate, re-derive, or assume a rule in order to use what we
+The standing rule: *a downstream consumer must never have to
+string-manipulate, re-derive, or assume a rule in order to use what we
 publish.* If an artefact makes a consumer parse a name, strip a prefix,
 substitute a base URL, or know a convention that is written down only in prose,
 the requirement is not met.
@@ -168,19 +157,11 @@ Ask it in this form, because the failure is always phrased as a saving:
 
 > *"We don't need to emit X — it can be derived from Y."*
 
-That sentence is the smell. It is true and it is the wrong trade. **A rule a
-consumer has to know is a rule a consumer can get wrong**, and the cost of
-being wrong is paid by someone who cannot see the code that made the
-assumption reasonable. Emitting the derivable field costs bytes in an artefact
-that is regenerated on every build; the derivation rule costs correctness in
-every consumer, forever, including ones not written yet.
-
-Worked example, 2026-09-18. A preview knowledge graph's nodes could link back
-to their canonical counterparts by swapping one base URL for another — the
-fragment is identical by construction. The recommendation was to document the
-rule and emit one link at document level: 1 field instead of 968. **Overruled,
-correctly.** The 968 explicit `prov:alternateOf` links shipped, because an
-agent consuming the graph should follow a link, not implement a substitution.
+That sentence is the smell. **A rule a consumer has to know is a rule a
+consumer can get wrong**; emit the derivable field. For example, a preview
+knowledge graph's nodes each carry an explicit `prov:alternateOf` link to
+their canonical counterpart, rather than relying on a documented base-URL
+substitution: a consumer should follow a link, not implement a substitution.
 
 Three checks that catch most of it:
 
@@ -229,21 +210,16 @@ linked: a **comparison**, per
 what it changes **downstream** and how reversible it is, laid out where the rows
 can be read against each other, then one recommendation and a stated default.
 
-Items 1–6 above have just enumerated the downstream question for the change as a
-whole; per option is that same question once per row, so an agent that leaves
-the column empty is discarding work it has already done. And this phase breaks
-the rule more than any other, because the vocabulary it just built *feels*
-defined to the agent and is new to everybody else.
+Items 1–6 above enumerate the downstream question for the change as a whole;
+the comparison asks it once per option.
 ## Phase 4b — Prioritization and dependency ordering
 
 **Input:** impact analysis complete, possibly multiple capability areas identified
 
 When a feature request decomposes into **more than one capability area** (as
 most non-trivial requests do), the agent must explicitly order them before
-creating beans. This is not optional — skipping it produces a flat bean list
-with no implementation sequence, and the first session that picks it up will
-either guess the order (often wrong) or ask the BA (wasting their time on a
-question the analysis already answered).
+creating beans. This is not optional: a flat bean list has no implementation
+sequence.
 
 ### The prioritization protocol
 
@@ -304,7 +280,7 @@ content (prose), which must precede its presentation (PDF layout).
 **Input:** requirements + impact analysis reviewed and approved by stakeholders
 
 1. **Post sign-off summary** on the issue — what was agreed, what was deferred
-   — **and record it.** `BA_Signoff` is an adjudication (issue #2405, FR-013):
+   — **and record it.** `BA_Signoff` is an adjudication:
    the BA answers `approve`, `amend`, `reject`, `defer` or `cancel`, and
    `A_RecordSignoff` appends a `requirement-signoff` attestation for the
    requirement set (who, when, scope, outcome, the stage it moves the set to,
@@ -324,17 +300,10 @@ content (prose), which must precede its presentation (PDF layout).
 
 ### The agreed set is an ASSET, and Phase 5 is where it gets a home
 
-Owner, 2026-09-21, on a run where this step had been reached and the offer left
-`docs/` out of it:
-
-> this is a memory asset as part of design, so it goes into docs/ […] if it is
-> realated to some harness/feature/tool that detailed infromation/design/
-> planning/etc go into that harness' docs/
-
-**Requirements are produced while BUILDING, and they are not the thing built.**
-Without this step they end as an issue and a conversation — which is how the
-output of the process that exists to produce durable requirements becomes the
-one thing the knowledge graph never learns.
+The agreed set is a design-memory asset, so it goes into `docs/`; when it
+relates to a harness, feature or tool, its detailed design and planning go
+into that harness's `docs/`. Without this step requirements end as an issue
+and a conversation.
 
 Three rules, and the first is the one a run skips:
 
@@ -361,8 +330,7 @@ writing before you write it.
 
 ### A harness feature's documents: proposed in `docs/proposals/`, filed in `docs/requirements/` (STRICT)
 
-Owner, 2026-09-23 (issue #1164): when the feature is **the harness's own**, the
-documents this process produces (initial analysis, MVP, the options, the
+When the feature is **the harness's own**, the documents this process produces (initial analysis, MVP, the options, the
 agreed requirements) **live and are updated under `docs/`**, in two declared
 sub-graphs of it.
 
@@ -371,13 +339,12 @@ sub-graphs of it.
 | Phases 1–5, and while building | `docs/proposals/<slug>.md` | the argument: needs, options, MVP, what was agreed | — |
 | the feature ships | `docs/requirements/<slug>.md` | the promise: its front matter is a `Requirement` | `check:requirements` |
 
-**The directory says what KIND of document it is; the stage is a field**
-(issue #2405, FR-010). The requirements document is a `RequirementSet`
-whose `stage` (`draft` … `accepted`, or `rejected`, `cancelled`,
-`superseded`) is recorded in the set and moved only by a recorded sign-off.
-The directory follows the stage — a set reaching `accepted` is when its
-proposal is filed — but it no longer stands in for it: before this, "where the
-file is" was the only record of a decision, and nothing said who made it.
+**The directory says what KIND of document it is; the stage is a field.** The
+requirements document is a `RequirementSet` whose `stage` (`draft` …
+`accepted`, or `rejected`, `cancelled`, `superseded`) is recorded in the set
+and moved only by a recorded sign-off. The directory follows the stage — a set
+reaching `accepted` is when its proposal is filed — but does not stand in for
+it.
 
 Both kinds, `proposals` and `requirements`, declare `within: "docs"`. Every
 list of kinds (the navbar's Folders among them) therefore draws them inside
@@ -419,7 +386,7 @@ standard. A harness that follows a particular standard maps that standard's
 fields onto these fields **in its own layer**, never in the base.
 
 **How filed requirements are organised, traced, superseded, and retired:**
-- The assessment of open requirements standards is in [`methodologies/requirements-standards-assessment.md`](../../../methodologies/requirements-standards-assessment.md) (bean `folio-assistant-1gf7`), and the literature search, adopted/rejected methodologies, and proposed BPMN filing workflow (`Process_RequirementsFiling`, [`sdlc/processes/requirements-filing.bpmn`](../../processes/requirements-filing.bpmn)) are in [`methodologies/requirements-filing-and-organisation.md`](../../../methodologies/requirements-filing-and-organisation.md) and [`docs/proposals/requirements-filing-organisation.md`](../../../docs/proposals/requirements-filing-organisation.md) (bean `folio-assistant-qh1s`, issue #1164).
+- The assessment of open requirements standards is in [`methodologies/requirements-standards-assessment.md`](../../../methodologies/requirements-standards-assessment.md), and the literature search, adopted/rejected methodologies, and the BPMN filing workflow (`Process_RequirementsFiling`, [`sdlc/processes/requirements-filing.bpmn`](../../processes/requirements-filing.bpmn)) are in [`methodologies/requirements-filing-and-organisation.md`](../../../methodologies/requirements-filing-and-organisation.md).
 - Physical files stay flat at `docs/requirements/<slug>.md` (`id: req:<slug>`, statement keys `req:<slug>#<key>`), organised in `docs/requirements/index.md` under the eight canonical concern groups (`code-lists/concern-group.json`), with three-axis traceability (`proposedIn`, `derivedFrom`, `dependsOn`, `beans`, `skills`, `processes`, `test/attestations/`) and an immutable lifecycle (`proposed → in-force → superseded | retired`, never `git rm`).
 
 **A folio's features are not filed here.** This applies to the harness's own
@@ -446,8 +413,8 @@ For each bean:
    branch and provides a "compare with main" link.
 5. **Post before/after comparison to issue** — use the `staging-review`
    skill. Every changed page gets a before (main) and after (staging)
-   URL pair in a Markdown table. See `schemas/sdlc/staging.ts` for the
-   `StagingComparison` schema:
+   URL pair in a Markdown table. See `schemas/staging-comparison.schema.json`
+   for the schema:
    ```
    | Page | Before (main) | After (staging) | What changed |
    |---|---|---|---|
@@ -474,8 +441,8 @@ For each bean:
    where that page is written and kept true; if the implementation diverged
    from what was agreed, the divergence is recorded there rather than
    smoothed.
-9. **Staging cleanup** — **a merged PR's preview goes away on its own**
-   (owner, 2026-09-20): the merge is the confirmation, since the main site
+9. **Staging cleanup** — **a merged PR's preview goes away on its own**:
+   the merge is the confirmation, since the main site
    now shows the same thing. Everything else is retained by default. While a
    PR that will not be merged is open, the user adds the `staging:cleanup`
    label; **once it is closed the label can no longer reach it**, and removal
@@ -486,17 +453,11 @@ For each bean:
 
 ### Theme and UI review is NOT a Phase 6 step — it happens at ingestion
 
-This section used to put [`theme-ui-review`](../../../skills/ui/ui-core/theme-ui-review.md)
-on the single edge out of MVP acceptance in `crdm-deliver.bpmn`. **That call was
-removed on 2026-09-24.** The owner ruled that theme review happens *"at
-ingestion of graphical assets in context of website or app design"*, and, asked
-whether that meant only there: *"Yes only at ingestion"* (bean `9fdi`).
-
-So `GW_StakeholderOK`'s `accepted` branch now closes the phase directly. The
-review runs when the graphical assets arrive, from `ingest-theme.bpmn`, where a
-finding is a decision about what the assets will be rather than a defect in
-something that shipped. If you are looking for where accessibility, branding and
-locales get checked for a UI, look there — not here.
+[`theme-ui-review`](../../../skills/ui/ui-core/theme-ui-review.md) runs only at
+ingestion of graphical assets for a website or app design, from
+`ingest-theme.bpmn`. `GW_StakeholderOK`'s `accepted` branch in
+`crdm-deliver.bpmn` closes the phase directly. Accessibility, branding and
+locales for a UI are checked there, not here.
 
 When a round of implementation is complete (one or more beans resolved):
 1. **Post a round summary comment on the issue** — addressed to the BA and
@@ -519,7 +480,6 @@ When a round of implementation is complete (one or more beans resolved):
 - [`bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) — cross-session bean coordination
 - [`coordinate.md`](../sdlc-core/coordinate.md) — session coordination
 - [Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) — the content lifecycle this fits within
-- Issue [#203](https://github.com/litlfred/folio-assistant/issues/203)
 
 ## Staging links
 

@@ -10,10 +10,9 @@ description: >
 # Materialize on demand
 
 Bootstrap brings an agent to a working harness. It does **not** bring the
-corpus, and must not: the IRIS replica alone is 1,057,223 files and 361.55 GB
-(IRIS's own storage report, read 2026-09-20). What arrives is the
-**reference**. Owner, 2026-09-20: *"user can ask (as they come in need to
-use) if they want to material parts of subgraphs."*
+corpus, and must not: a remote source such as IRIS runs to about a million
+files and hundreds of gigabytes. What arrives is the **reference**; a person
+asks, as they come to need it, for parts of subgraphs to be materialized.
 
 This skill is that ask. The gates are not here; they are in
 [`materialize-remote`](materialize-remote.md), once.
@@ -31,14 +30,14 @@ Read the columns for what they are:
 |---|---|---|
 | size | `recorded` · `measured` · `directory` · `absent` | `measured` is the file now, not when it landed. A directory is counted through its parts. `absent` is not zero. |
 | fetched | a date, or `not recorded` | only the record's `materializedAt` |
-| last read | `not recorded`, always | nothing records reads. The owner chose to say so rather than read file access times, which are often off or reset by a checkout. |
+| last read | `not recorded`, always | nothing records reads; file access times are not used, because they are often off or reset by a checkout. |
 | freshness | `fresh` · `expired` · `no-expiry` · `permanent` | from `freshness()`. `no-expiry` is a finding: a working copy nobody gave a lifetime. |
 
 If what they want is already held and fresh, stop: point them at it.
 
 ## 2. Put a number on the ask BEFORE anything moves
 
-"The user can ask" must not mean 361 GB arrives without a number first. Before
+Asking must not mean hundreds of gigabytes arrive without a number first. Before
 calling `materialize-remote`:
 
 - **Name the subset** in the source's own terms: its identifiers, or a subset
@@ -65,6 +64,4 @@ recorded. That is the process working, not failing.
 `cache:index` lists candidates: `expired` first, then `no-expiry` working
 copies, largest first. **An archival copy is never a candidate.** Nothing is
 removed by the tool or by you. Show the list with sizes and reasons, and let
-the person decide (`deletion-requires-confirmation`). Its worked example,
-`plj1`, is a workflow whose shape deleted every open PR's preview with nobody
-deciding.
+the person decide (`deletion-requires-confirmation`).

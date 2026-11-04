@@ -18,9 +18,6 @@ description: >-
 > carries it is a RENDERING, reached by a declared mapping with stated
 > equivalence — never a second copy of the fact.**
 
-Owner, 2026-09-22: *"need to identify one authoritative scheme to map against.
-SKOS?"* — asked twice, which is why this is a skill rather than a chat answer.
-
 | the fact | authoritative | why not the others |
 |---|---|---|
 | what a term **MEANS** | **SKOS** | the only candidate here whose subject IS a meaning |
@@ -47,14 +44,13 @@ an artefact, a record, or a distribution.
 
 ## Pros and cons, as ruled
 
-Each ruling is the owner's. The reasons are measured against this corpus, not
-read off the specs.
+The reasons are measured against this corpus, not read off the specs.
 
 ### SKOS — **adopted, authoritative for meaning**
 
 | | |
 |---|---|
-| **Pro** | Native JSON-LD. Multilingual labels first-class. `notation` **is** the code — the "coded glossary" requirement was already satisfied by `TermGloss`'s prefixed names. Mapping properties with stated equivalence. Carries 135 vocabulary terms + 44 swimlane roles here |
+| **Pro** | Native JSON-LD. Multilingual labels first-class. `notation` **is** the code — `TermGloss`'s prefixed names. Mapping properties with stated equivalence. Carries the vocabulary terms and swimlane roles here |
 | **Con** | **No versioning model at all.** No designation `use`. No post-coordination. Mapping properties carry no provenance |
 
 **The con is why convergence STOPS at SKOS.** The failure this exists to
@@ -76,15 +72,12 @@ version. That graph validates, publishes, and is wrong the next release.
 | **Pro** | Search engines consume it. Native JSON-LD |
 | **Con** | A **publishing vocabulary, not a terminology one**. `DefinedTerm` has `name` + `description` and stops: no versioning, no designation concept at all, no mapping semantics, no deprecation-with-successor |
 
-Owner: *"i find it hard to find actual definitions/glossary … not sure of
-utility."* That is diagnosable rather than taste — there is no there there.
-**Measured usage: 3 predicates** (`softwareVersion`, `codeRepository`, `text`).
+It has no definitions to speak of. **Used for 3 predicates**
+(`softwareVersion`, `codeRepository`, `text`).
 
-**A measurement warning that belongs with this entry.** A naive grep for
-`schema.org` returns **716** hits in this repo. Almost all are
-`json-schema.org` — JSON Schema's `$schema` keyword — plus the `schema:viz`
-npm script. Two independent false-positive sources in one query. Never cite
-that number.
+**Measuring usage:** a naive grep for `schema.org` mostly matches
+`json-schema.org` (JSON Schema's `$schema` keyword) and the `schema:viz` npm
+script. Never cite that count.
 
 ### TBX — **not closed, and still not adopted**
 
@@ -101,10 +94,10 @@ the ruling does not rest on it.
 
 ### Rejected outright
 
-**SKOS-XL** — owner: *"nah"*. It reifies labels to fix part of the designation
-gap and nothing else; the gap it does not fix is the one that matters.
-**OWL** — owner: *"no"*. Overkill: prose definitions, no reasoner in the
-pipeline. **DCAT** — held as a bean, for the *render* of whatever is landed on.
+**SKOS-XL** — it reifies labels to fix part of the designation gap and nothing
+else; the gap it does not fix is the one that matters. **OWL** — overkill:
+prose definitions, no reasoner in the pipeline. **DCAT** — held, for the
+*render* of whatever is landed on.
 
 ## DC ↔ SKOS: the overlap, and what stops the drift
 
@@ -118,26 +111,13 @@ pipeline. **DCAT** — held as a bean, for the *render* of whatever is landed on
 > **DC describes a RESOURCE. SKOS describes a CONCEPT. One object, one type,
 > one naming predicate.**
 
-They collide only where a node is genuinely both — and one node here is: the
-glossary document is a *file* and a `skos:ConceptScheme`. Measured 2026-09-22,
-on output shipped that morning:
-
-```
-_kg/cat-harness-glossary.jsonld
-   skos:prefLabel : 'cat-harness swimlane glossary'
-   dcterms:title  : 'cat-harness swimlane glossary'   ← identical
-```
-
-Two predicates, one fact, nothing declaring which is authoritative. **That is
-the drift, already live.** The rule above resolves it: the node is a concept
-scheme, so `skos:prefLabel` is the source and `dcterms:title` is the derived
-copy for resource-metadata consumers. Bean `sl9u`.
+They collide only where a node is genuinely both — such as the glossary
+document, which is a *file* and a `skos:ConceptScheme`, carrying both
+`skos:prefLabel` and `dcterms:title`. The node is a concept scheme, so
+`skos:prefLabel` is the source and `dcterms:title` is the derived copy for
+resource-metadata consumers.
 
 ## Guidance for schema and data modelling
-
-Owner, 2026-09-22: *"use open standards for modeling. tools can be used to map
-non-standard/proprietary to standards. first step is data normalization in any
-schema data model mapping exercise. (make sure defined processes)"*
 
 1. **Model in an open standard.** Not a proprietary or house schema that
    happens to be convenient.
@@ -154,14 +134,8 @@ schema data model mapping exercise. (make sure defined processes)"*
 **edition** and carrying the operative terms **derived from the corpus**, never
 hand-listed. `bun run cat-harness-tools/scripts/external-schemas.ts --check`.
 
-Two things about that registry worth knowing before you trust its output.
-It was **undeclared** in `cat-harness.json` until 2026-09-22 — the `dh4f` shape
-inverted, a held directory nothing declares, so every consumer that fans out
-over declared directories skipped it. And its unused-record check read **only**
-`processes/*.bpmn|dmn`, so it reported Dublin Core — 43 uses, live in the
-glossary's own `@context` — as *"a record outliving its dependency"*. A
-vocabulary can be used in more than one syntax; a reader that knows one reports
-the other as absent.
+A vocabulary can be used in more than one syntax (a BPMN file, a JSON-LD
+`@context`); a usage check that reads only one reports the other as absent.
 
 ## Related
 

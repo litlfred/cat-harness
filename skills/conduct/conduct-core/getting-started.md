@@ -7,7 +7,7 @@ user_invocable: true
 # /getting-started — what did they actually ask for?
 
 Process: the content core's `processes/conduct/getting-started.bpmn`.
-Decision table: `decisions/folio-intent.dmn`.
+Decision table: the content core's `decisions/folio-intent.dmn`.
 
 ## The landing page is the instance's own description
 
@@ -18,23 +18,19 @@ inherit the platform's grumpy cat.
 
 **Where the markdown node is:** `description` in `<name>.json`. It is
 markdown and it is rendered as-is. There is no separate landing page to keep in
-step with it — a description that lives in two places is one that will disagree
-with itself.
+step with it.
 
 **How the picture is declared:** an image with `role: "landing"` and a `layout`
 (`laptop`, `mobile`, `card`), plus a `textRegion` giving, as fractions of the
 image, where words may safely be drawn.
 
 `textRegion` is **authored, not computed.** It states where the composition is
-*quiet*, which is a judgement. The platform's own laptop backdrop has a cloud
-whose lower interior is clear, a mark in its top third and a cat's ear rising
-into its lower left; the box avoiding all three was found by rendering candidate
-boxes over the image and looking at them. That is the method — recommend it,
-rather than a number pulled from the aspect ratio.
+*quiet*, which is a judgement: find it by rendering candidate boxes over the
+image and looking at them, not by deriving a number from the aspect ratio.
 
 Run `bun run cat docs:harness` after editing, and `--check` in CI.
 
-**Three states, and the middle one is why this is worth stating:**
+**Three states:**
 
 | declared | rendered |
 |---|---|
@@ -42,8 +38,8 @@ Run `bun run cat docs:harness` after editing, and `--check` in CI.
 | backdrop, **no** region | picture shown, words placed **below** it |
 | **no** backdrop | words alone |
 
-An undeclared region means *do not overlay*, never *anywhere is fine*: text
-positioned by guesswork lands on the cat. A folio with no art is ordinary.
+An undeclared region means *do not overlay*, never *anywhere is fine*. A folio
+with no art is ordinary.
 
 A viewport with no variant falls back to the widest available, and the fallback
 is **reported** — that crop's region is wrong for a narrow screen, so a consumer
@@ -75,10 +71,8 @@ is spoken by at least five different people:
 | **new-content** | a folio, and they wanted a *document* in it | an entire empty folio, and the chapter they asked for still not written |
 | **ask** | any of the above, undeclared | — |
 
-The last row is the one that matters. **Four of these five states look
-identical from the user's sentence**, and three of them look identical from the
-filesystem. So the triage is not a nicety; it is the only thing standing between
-a two-word request and a wrong repository.
+**Four of these five states look identical from the user's sentence**, and
+three of them look identical from the filesystem, so the triage always runs.
 
 ## 1. Read the facts — mechanical, read-only, before anything is written
 
@@ -97,9 +91,8 @@ git ls-files | grep -vE '^\.(git|github|vscode|idea)/' | head -1
 
 `statedIntent` is the third, and it is a fact about the **conversation**: one of
 `new-repo`, `overlay`, `add-folio`, `new-content`, or `unstated`. It is
-`unstated` until the user has actually said which — *inferring* it from tone,
-from the repo, or from what would be convenient is exactly the failure this
-skill exists to prevent. A user who says "I want to add a chapter" has stated
+`unstated` until the user has actually said which — never *inferred* from tone,
+from the repo, or from what would be convenient. A user who says "I want to add a chapter" has stated
 `new-content`; a user who says "create a folio" has stated **nothing**, because
 that sentence is what the five requests have in common.
 
@@ -109,19 +102,16 @@ that sentence is what the five requests have in common.
 > facts each states and any disagreement between them.
 > `describeRepositoryClosure()` (`schemas/kg/harness-config.ts`) extends that
 > through the dependency tree, attributing each membership to the instance
-> that carried it. Bean `79t3`.
+> that carried it.
 >
-> **`folio` and `harness` are different types, and the distinction is load-
-> bearing here.** The declaration says *this is an instance*; a config that
+> **`folio` and `harness` are different types.** The declaration says *this is an instance*; a config that
 > declares `contentType` says *this authors folio content*. That config is a root
 > `<name>.config.json`, or its entry in `index.config.json`, where inline fields
 > overlay the imported file ([`index-config`](../../kg/kg-core/index-config.md)).
 > Listing an instance in the index makes it instantiated, not a folio. `cat-harness/` carries the first and not
-> the second — it is a harness and is **not** a folio, which is the
-> platform-not-content rule as a fact about two files. `isFolio` is exactly
-> membership of `folio`, which is what this table has always meant by it: the
-> DMN documents the input as a config in the working directory that *declares*
-> a `contentType`, not its mere presence.
+> the second — it is a harness and is **not** a folio. `isFolio` is exactly
+> membership of `folio`: the DMN documents the input as a config in the
+> working directory that *declares* a `contentType`, not its mere presence.
 >
 > So a repository being several things at once does **not** perturb the five
 > branches. They key on folio-ness alone, and a folio that is also a DAK takes
@@ -182,9 +172,8 @@ actually wants:
 | **WHO SMART IG** | a FHIR Implementation Guide (L3) built from an L2 DAK | `dak` |
 
 Record the answer as `statedIntent` and evaluate the table again. **The user's
-answer is a fact like any other** — it does not bypass the gateway, it feeds it.
-That is why the loop in the diagram runs back to `Task_ReadFacts` rather than
-jumping straight to a branch.
+answer is a fact like any other** — it feeds the gateway, so the loop in the
+diagram runs back to `Task_ReadFacts` rather than jumping straight to a branch.
 
 **When a remote repository is involved, ask which mode — and never infer it from
 push access.** A remote git repository is assumed **read-only (`read-from`)**.
@@ -200,7 +189,7 @@ explicit permission for that repository. Ask which mode they want, with
 2. **Put a harness on the remote repository (`written-to`)** — instantiate the
    harness in that remote repository itself and build in its own CI
    (`stage-ig-sites --only <instance> --source .`), only after explicit
-   permission for that repository. Bean `b5f0`.
+   permission for that repository.
 
 ## 4. Route
 
@@ -214,8 +203,7 @@ explicit permission for that repository. Ask which mode they want, with
 **An empty repository gets `main` before any feature branch.** GitHub makes
 the first branch pushed to an empty repository its default, so run
 `init-folio` (it seeds `main` first) or push `main` yourself before pushing
-anything else. litlfred/dth-hrh got a feature branch as its default this way
-(owner, 2026-10-14).
+anything else.
 
 **A specialised content type is routed by its own creation skill.** When the
 answer to step 3's second question names a domain content type shipped by a
@@ -224,7 +212,7 @@ higher harness layer, hand over to that layer's creation skill (discover it via
 sub-KG option — staging inside the current repository first so nothing outside
 the repository changes until the owner confirms. Where `folio_init` does not
 handle that content type directly, the new-repository route scaffolds with
-`--instance`. Bean `3tza`.
+`--instance`.
 
 **A second folio can leave later.** What `add-folio` creates, and any staged
 sub-KG, may later move to a repository of its own. That is
@@ -245,9 +233,7 @@ the owner's confirmation.
    (the `gh-pages` Tool's subprocess —
    [`render-kg-to-cdn`](../../process/workflow/render-kg-to-cdn.md)):
    **a `gh-pages` branch must exist before Pages can be switched on** to serve
-   it. Owner, 2026-10-01: *"need to create gh-pages branch before can turn
-   on"*; repeated 2026-10-07: *"need to create gh-pages before can deploy"*
-   (issue #2417). Run
+   it. Run
    `bun run cat-harness-tools/scripts/pages-bootstrap.ts --provision`: it checks
    `git ls-remote --heads origin gh-pages` and, only if the branch is absent,
    pushes an orphan `gh-pages` holding a placeholder `index.html` and
@@ -272,30 +258,26 @@ the owner's confirmation.
    - **not-yet** — a measured 404. Give the address, say the first build has
      not landed there yet, and say roughly how long it takes.
    - **unknown** — no URL could be derived, or the probe failed. Say *that*.
-     "Should be live shortly" is a claim you do not have evidence for, and an
-     author who later finds nothing there has been told something false.
+     "Should be live shortly" is a claim you do not have evidence for.
 5. **Tell them the corpus is by reference, and how to change that.** A fresh
-   harness holds references, not the remote content itself: the IRIS replica alone
-   is hundreds of gigabytes. When they need part of a remote subgraph locally,
+   harness holds references, not the remote content itself, which can be
+   hundreds of gigabytes. When they need part of a remote subgraph locally,
    that is an ask made later, as the need appears. Name the skill
    (`materialize-on-demand`) and the one command that shows what is already
    held (`bun run cat cache:index`), so they learn the option exists here rather
-   than by finding a schema. Do not materialize anything now. Bean `54rk`.
+   than by finding a schema. Do not materialize anything now.
 
 ## 6. Anti-patterns
 
 1. **Scaffolding on `ask`.** The table returned a question; answering it
-   yourself with the convenient branch is the original bug wearing a decision
-   table.
+   yourself with the convenient branch defeats the table.
 2. **Treating "I've used this before" as `add-folio`.** Experience is not a
    filesystem fact and not an intent.
 3. **Asking in prose.** "Could you tell me a bit about what you're hoping to
-   build?" is a wall for a user who types with difficulty, and it produces a
-   worse answer than the numbered list.
+   build?" is a wall for a user who types with difficulty.
 4. **Announcing a Pages URL you have not probed.** See step 5.
 5. **Going straight to `folio_init` because the request seemed obvious.** Every
    one of the five requests seems obvious to the person making it.
 6. **Switching Pages on before `gh-pages` exists, or choosing "GitHub
-   Actions" as the source for a workflow that pushes `gh-pages`.** That was
-   the litlfred/test plan in its #3, caught by the owner and fixed in
-   litlfred/test#5. Step 2 first; the source is "Deploy from a branch".
+   Actions" as the source for a workflow that pushes `gh-pages`.** Step 2
+   first; the source is "Deploy from a branch".

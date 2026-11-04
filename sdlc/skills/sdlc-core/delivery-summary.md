@@ -36,7 +36,8 @@ Always provide:
   viewer configuration)
 - **Remote/deployed links** (when applicable):
   - **GitHub Pages**: `https://<owner>.github.io/<repo>/`
-  - **Draft preview** (feature branches): `https://<owner>.github.io/<repo>/drafts/<branch>/`
+  - **Staging preview** (feature branches): `https://<owner>.github.io/<repo>/STAGING/<branch-slug>/`
+    ([`feature-staging`](feature-staging.md))
 
 When delivering in a content layer that refines this skill with a content-block
 change summary, include that layer's per-block change table alongside the

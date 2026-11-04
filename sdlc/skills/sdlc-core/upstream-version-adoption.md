@@ -32,7 +32,7 @@ thing in different words.
 ## The registry is the tenant list, and it does not hold the version
 
 `upstream/upstream-pins.json` — in this harness's declared `upstream/`
-directory, and at the repository root until 2026-10-06 (bean `ar1s`) — declares
+directory — declares
 each pinned dependency, with each `pinnedIn` resolved against the harness root:
 the upstream repo, **the file the pin literal actually lives in**, the pattern
 that reads it, what of ours binds to it, and the commands that constitute its
@@ -41,8 +41,8 @@ MVP.
 **It deliberately does not store the pinned version.** The version lives in
 exactly one place — `site-chrome/_config.yml` for the theme — and the registry says
 how to read it from there. A registry that carried its own copy would be a
-second answer to "what are we running", free to disagree with the build, and
-this repository has paid for that shape before. `bun run cat check:upstream-pins`
+second answer to "what are we running", free to disagree with the build.
+`bun run cat check:upstream-pins`
 reads the literal out of the declared file; a pattern that matches nothing is
 reported as an error, not as "no pin".
 
@@ -68,9 +68,8 @@ Three rules it inherits from `check-ci-health.ts`, and they are not optional:
 
 - **"Could not check" is never rendered as current.** An unreachable upstream
   is exit 2, not exit 0. A watchdog that goes blind must not read as good news.
-- **One issue, edited in place.** GitHub's own notifications are the channel
-  that was already ignored thirty times; an edit does not notify, so a pin that
-  stays stale for two months stays one unread item rather than nine.
+- **One issue, edited in place.** An edit does not notify, so a pin that stays
+  stale for months stays one unread item rather than many.
 - **The job fails on exit 2**, which makes this workflow itself red on the
   default branch, which `check:ci-health` reports. The watchdog is watched.
 
@@ -113,9 +112,8 @@ CI=1 bun run cat test:e2e                 # a11y, action tiles, sidebar panels, 
 bun run cat-harness-tools/scripts/site-links.ts --site ./_site   # every navbar tile resolves in the BUILT site
 ```
 
-`site-links.ts` is the one that earns its place here: it checks the tiles
-against the real `_site` rather than against the attribute, which is the
-distinction that let a 404 ship unnoticed once already.
+`site-links.ts` checks the tiles against the real `_site` rather than against
+the attribute, which is what catches a tile that 404s.
 
 **A red gate is evidence, not an exit.** It does not end the process and it
 does not loop on its own — it goes to the reviewer with everything else,

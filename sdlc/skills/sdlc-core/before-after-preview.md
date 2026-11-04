@@ -16,8 +16,8 @@ user_invocable: true
 
 # /before-after-preview — show the reviewer the change, not a description of it
 
-> Skill id: `before-after-preview` · Package: `sdlc-core` · Issue: #1710 ·
-> Bean: `y2jh` · Worked example: the Folio tab, #1693 / PR #1709
+> Skill id: `before-after-preview` · Package: `sdlc-core` · Worked example: the
+> Folio tab
 
 [`continual-progress`](continual-progress.md) holds that **a human cannot
 assess a rendered artefact from a description of it.**
@@ -26,10 +26,6 @@ wrote the change cannot either. This skill is about **what goes to the
 reviewer**: a before/after preview that is a fair comparison, carries a number,
 and can be read without opening anything else. It covers every content type
 this platform renders.
-
-Owner, 2026-09-30: *"make sure before after previews are well documented skill
-that genealizes (e.g. fhir, documenation, papers, websites) as parr of. review
-and feedback processes"*.
 
 ## How this sits beside its neighbours
 
@@ -47,8 +43,7 @@ link to those. Use this skill for everything the job cannot make: page chrome,
 behaviour on scroll, a PDF page, an IG page, a slide.
 
 **A staging "after" is not permanent.** `gh-pages` keeps at most ten
-`STAGING/<slug>/` previews and rotates the least recently updated off (owner
-ruling 2026-10-02, issue #1868), so a link in a preview can 404 days later
+`STAGING/<slug>/` previews and rotates the least recently updated off, so a link in a preview can 404 days later
 while the PR is still open. The next push to the branch re-stages it. Where the
 comparison must outlive that, publish the captures themselves (§6) rather than
 only the staging URL. Detail: [`staging-review`](staging-review.md) §"The cap".
@@ -72,8 +67,7 @@ The narrative comes first, above the pictures. A pair without it makes the
 reviewer play spot-the-difference, and the difference they find first is not
 always the one that changed: a re-render shifts anti-aliasing, a merge brings
 in somebody else's edit. Name the change so the reviewer looks for it, then
-let the pair confirm it (owner, 2026-10-01: *"provide/show before/after,
-provide narrative description of change"*).
+let the pair confirm it.
 
 If any part is missing, say so in the preview. Never drop a missing part
 silently.
@@ -133,12 +127,10 @@ Do all of these before either shot:
   change, such as a heading. If either differs, the shots are invalid. Retake
   them. Do not caption around the mismatch.
 
-**The failure this section is written from.** The first capture of the Folio
-tab fix (#1693) was invalid. Lazy images loaded between the before and after
-shots, so the text moved and the two pictures showed *different content* at
-the same scroll offset. They looked plausible, and a reviewer would have been
-comparing text positions rather than the fix. The reference-element check
-catches this. Looking at the pictures does not.
+Lazy images that load between the before and after shots move the text, so
+the two pictures show *different content* at the same scroll offset and still
+look plausible. The reference-element check catches this; looking at the
+pictures does not.
 
 ## 3. Measure, don't just show
 
@@ -159,8 +151,7 @@ A picture shows one position. A count shows all of them. Send both, and
 
 Folio tab, `platform.html`, 19 scroll positions at 1280×900:
 *text visible beside the handle at **16 of 19** positions before, **0 of 19**
-after*. At 390×844: **18 of 20** before, **0 of 20** after. PR #1709's own
-table used 97 px steps across four page and viewport pairs:
+after*. At 390×844: **18 of 20** before, **0 of 20** after. A second table used 97 px steps across four page and viewport pairs:
 platform 1280 9/21 → 0, platform 390 32/39 → 0, index 1280 25/50 → 0,
 cat-harness/index 390 36/60 → 0.
 
@@ -204,8 +195,7 @@ entries:
 - the IG Publisher's full build (only sushi ran);
 - the PPTX was not rendered, only its geometry was reconstructed.
 
-A preview that looks complete but hides an unchecked axis is a false green
-(`dh4f`).
+A preview that looks complete but hides an unchecked axis is a false green.
 
 ## 6. Publishing — a private page, updated in place
 
@@ -218,17 +208,15 @@ A preview that looks complete but hides an unchecked axis is a false green
 - **Alt text on every image**, saying what the reader should see. For
   example: *"Before, phone, scrolled 1200 px: the Folio tab covers the first
   three words of each line"*. Do not write "before screenshot". A preview
-  without alt text cannot be used by a reviewer with a screen reader, and the
-  owner is one of this platform's reviewers with access needs.
+  without alt text cannot be used by a reviewer with a screen reader.
 - **Label each pair in words**, not only with position or colour:
   "Before" and "After", then viewport and scheme.
 - **Committed evidence:** do not commit screenshots to the repository. The
   page and the PR are the record. `visual-diff`'s pictures are built by CI and
   are not committed either.
 
-The Folio tab preview was published this way as a private artifact page. It
-has the before/after pairs, the counts above, the method and the link to PR
-#1709.
+The Folio tab preview was published this way as a private artifact page, with
+the before/after pairs, the counts above, the method and the PR link.
 
 ## 7. By content type
 
@@ -247,7 +235,7 @@ build it, what one "position" is, and what you toggle.
 - **Toggle:** inject CSS into the one build.
 - **Position:** a scroll step (for example 97 px) or a page.
 
-**The worked example is the Folio tab (#1693, PR #1709).** The fixed "Folio"
+**The worked example is the Folio tab.** The fixed "Folio"
 handle covered body text as the page scrolled. The capture used one
 `preview:site` build of commit `438268976`. "Before" was made by injecting
 `.fa-glass-band{visibility:hidden!important}`, so the new strip was the only
@@ -281,7 +269,7 @@ shots. The counts are in section 3.
   (`ig-publication` (the FHIR IG layer),
   `fhir-validation` (the FHIR IG layer)).
 - **Build:** two builds with identical tooling. The Publisher jar floats to
-  the latest release on every run (bean `dhvf`), so **record its version for
+  the latest release on every run, so **record its version for
   both sides**. If the versions differ, some differences in the pictures may
   come from the tool and not from the change. `ig-incremental-build.bpmn`'s
   restored-state assembly is fine for an authoring preview but is not the

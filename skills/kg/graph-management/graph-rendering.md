@@ -3,18 +3,13 @@ name: graph-rendering
 description: >-
   Draw any graph in a harness (schemas, processes, a folio's block graph and
   any formal relation its content type adds, a detangle partition) so the picture is derived,
-  checkable and readable. Ten rules learned on the UML overview, which engine
-  to lay a graph out with and why, and how each graph typology here applies them.
+  checkable and readable. Ten rules, which engine to lay a graph out with and
+  why, and how each graph typology here applies them.
 ---
 
 # Graph rendering: one set of rules for every drawn graph
 
 > Skill id: `graph-rendering` · Package: `graph-management`
-
-This repository draws graphs in at least six places, and until this skill each
-one followed its own conventions. Owner, 2026-09-23 (issue #1137): *"make
-skill that applies to graphs in general.... then apply to papers, schemas,
-math proofs/lean etc"*.
 
 This skill is the general part. It says what any drawing of a graph owes its
 reader. The per-graph skills say how one generator meets it:
@@ -28,9 +23,6 @@ cannot see is a partition you argue about from numbers alone.
 
 ## The ten rules
 
-Each rule was learned on the UML overview (issue #990). The failure each one
-prevents is stated beside it.
-
 1. **Draw from a declared graph, never by hand.** Every node and edge in the
    picture is read from a source: a schema, a declaration, a BPMN file, a
    `uses[]` list, a dependency cache. A wrong picture is fixed at its
@@ -38,13 +30,11 @@ prevents is stated beside it.
    fails while it is stale.
 2. **Groups are declared sub-graphs.** A box around nodes is a named
    sub-graph (a `directories[]` entry, a chapter, a package), never a
-   grouping the renderer invented. Owner, 2026-09-23: *"sections are
-   sub-graphs in a harness"*.
+   grouping the renderer invented.
 3. **No empty box without a reason.** A node drawn with nothing in it reads
-   as a rendering fault; the owner asked *"why empty?"* of exactly that. A
-   node with no fields to show carries one line saying why. A node whose
-   shape could not be determined is drawn dashed, as a finding, never as a
-   quiet empty shape. The UML overview went from 242 empty boxes to 0.
+   as a rendering fault. A node with no fields to show carries one line saying
+   why. A node whose shape could not be determined is drawn dashed, as a
+   finding, never as a quiet empty shape.
 4. **Edge kinds are drawn distinctly and never merged.** A graph has more
    than one kind of edge ([`edge-kinds-and-blast-radius`](edge-kinds-and-blast-radius.md)).
    Editorial `uses[]` and a content type's formal edges, enforced and prose-only
@@ -58,8 +48,7 @@ prevents is stated beside it.
 6. **Offer two orientations from one source.** A tall graph on a wide screen
    and a wide graph on a phone are both unreadable. Derive the second view
    from the first (`landscapeOf` in `scripts/plantuml-render.ts`) rather than keeping
-   two sources that can drift apart. Owner: *"can we have portrait and
-   landscape views?"*
+   two sources that can drift apart.
 7. **Declare colour once.** Colour a node by its family (for the UML: schema,
    scenario, process, state, test) in one stylesheet, and have every renderer
    read that stylesheet (`uml-palette.ts`). A second palette is a second answer
@@ -73,17 +62,15 @@ prevents is stated beside it.
 9. **Show it in a zoomable figure.** On the site, use the `bpmn-figure`
    markup so `docs-ui.js` adds zoom, reset and full-width controls, and the
    export ones: download the SVG, download a 2× PNG, or copy it (as an image
-   where the browser allows, else as SVG text, and it says which; #1270). A pages
+   where the browser allows, else as SVG text, and it says which). A pages
    template missing `layout: default` renders with no site script and so no
    controls, and nothing reports it.
 
    **There is ONE viewer, and every diagram on a folio or IG page gets it.**
    It is `mountFigure` in `docs-ui.js`; `mountFigures` decides what is a
    figure. Do not write a second one for a new kind of page. Extend what
-   `mountFigures` and `inlineDiagrams` recognise instead. Since bean `n7f8`
-   (owner, 2026-10-06, on an IG's sequence-diagrams page: *"…are now
-   resiable/scrollable like the bpmn diagrams are. tehy should be"*), it
-   takes each way a page embeds a drawing:
+   `mountFigures` and `inlineDiagrams` recognise instead. It takes each way a
+   page embeds a drawing:
 
    | embedded as | taken by | where it appears |
    |---|---|---|
@@ -110,7 +97,7 @@ prevents is stated beside it.
    figure takes focus (Tab from its toolbar). While it has focus, the arrow
    keys pan it, `+` and `-` zoom, and `0` resets. An arrow key is taken only
    when the figure can scroll in that direction. Otherwise the page scrolls as
-   usual. the tools layer's `test/ig-diagram-viewer.e2e.ts` checks all of this on
+   usual. The tools layer's `test/ig-diagram-viewer.e2e.ts` checks all of this on
    a fixture page.
 10. **Put the measurement on the drawing.** When a graph is being partitioned,
     show each group's detangle numbers (size, cohesion, links in and out)
@@ -121,8 +108,8 @@ prevents is stated beside it.
 
 ## Layout engines
 
-Measured on the UML overview, 2026-09-23. Re-measure before relying on it for
-a different graph.
+Measured on the UML overview. Re-measure before relying on it for a different
+graph.
 
 | engine | use it for | what it gets wrong |
 |---|---|---|
@@ -130,7 +117,7 @@ a different graph.
 | **ELK** (`!pragma layout elk` in PlantUML) | the compact, portrait default; it routes edges around boxes | it lays everything top to bottom and **ignores `left to right direction` and arrow hints** (output byte-identical). Unconnected groups end up in one wide row. |
 | **ELK + hidden links** | a grid of unconnected groups (an overview) | nothing, if the column count suits the orientation: `ceil(√(n/2))` for portrait, `ceil(√(2n))` for landscape |
 | **Graphviz dot, left to right, polyline edges** | the landscape view of a connected graph | it can route a long edge across a box, which is why ELK stays the portrait default. Use `nodesep 70`, `ranksep 160`. |
-| Graphviz with **orthogonal** edges | avoid | it places edge labels away from their edges and runs lines through boxes. The owner: *"make wider, its messy"*. |
+| Graphviz with **orthogonal** edges | avoid | it places edge labels away from their edges and runs lines through boxes. |
 | Mermaid (dagre) | a secondary view where CSS classes on nodes matter | the same model came out three times taller than ELK's |
 | **Graphviz dot in the browser** (WASM, `unflatten` then `dot`) | the interactive view a reader rearranges by dragging nodes ([`kg-subgraph-layout`](kg-subgraph-layout.md)) | like ELK it sets unconnected clusters, and unconnected nodes in one cluster, on one rank: fold both into grids with invisible, marked anchors |
 

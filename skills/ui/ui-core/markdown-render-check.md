@@ -14,7 +14,7 @@ sees them in the browser.
 
 A content type with its own markup (a paper folio's math, for example)
 adds checks of its own. The layer that ships that content type holds them
-and names this skill from its side (bean `syiq`).
+and names this skill from its side.
 
 ## When to use
 

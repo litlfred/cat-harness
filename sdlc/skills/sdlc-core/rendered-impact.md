@@ -13,27 +13,21 @@ allowed-tools: Read Grep Glob Bash
 
 # Rendered impact — which rendered files a Change Set changes
 
-> Skill id: `rendered-impact` · Package: `sdlc-core` · Bean: `bnjs` · Epic: `q4jm` · Issue #971
+> Skill id: `rendered-impact` · Package: `sdlc-core`
 
 A Change Set's PR is approved against **what it does to the rendered site**,
 not only against its source diff. A one-line FSH edit can re-render one page
 of 722 or all of them, and a reviewer cannot tell which from the diff. So
 every renderer answers one question, and the PR shows the answer.
 
-## The owner's rulings this follows
+## Scope
 
-- 2026-10-06: *"for a Change Set ... and Issue -> create PR with change set.
-  see a list of rendered justthedocs files (fhir IG, whatever) that changed
-  due to the described changeset. use that as part of review process of
-  changeset PR approval."*
-- 2026-10-06: *"each renderer should be able to give you from list of input
-  changed files, the list of output changed rendered files ... from the
-  dependency cone"*.
-- 2026-10-06: the public-comment Change Set (`changeset/1.0.0`) is the Change
-  Set for ANY folio change, and the rendered list is one of its fields.
-- 2026-10-06: *"original stays in library/ ... materialized to folio/ to make
-  changes on"*. A Change Set applies to the materialised folio, never to the
-  library source.
+- Every renderer maps a list of changed input files to the list of changed
+  rendered files, from its dependency cone.
+- The public-comment Change Set (`changeset/1.0.0`) is the Change Set for ANY
+  folio change, and the rendered list is one of its fields.
+- The original stays in `library/`; a Change Set applies to the folio
+  materialised in `folio/`, never to the library source.
 
 ## The contract: `rendered-impact/v1`
 
@@ -54,7 +48,7 @@ Three rules, each one a refusal:
    words. A renderer that drops an input it cannot map is broken.
 2. **Index files are listed and marked, not dropped.** The reviewer's list
    (`reviewList`) leaves out `role: index` (search data, sitemaps, an
-   artefact index) because the owner reviews content, not indexes. The
+   artefact index) because review is of content, not indexes. The
    renderer marks the role; the reader filters.
 3. **A page whose bytes do not change can still change.** An AST artefact
    page loads its resource in the browser, so the cone names the page AND
@@ -78,15 +72,13 @@ Three rules, each one a refusal:
 | renderer | maps | how | status |
 |---|---|---|---|
 | `fhir-ig-pages` | `.fsh`, `.cql`, `input/pagecontent/*.md` | `fsh-cone` forward cone → SUSHI's `fsh-index.json` → AST artefact page + served JSON; a page → itself and every page that includes it | in the FHIR layer, documented with its AST tooling (`skill_fetch ig-ast-delta`) |
-| `document-site`, `public-comment-site`, `library-site` | a block, a document/chapter/section manifest, `media/*`, the public-comment store, a file in a declared library entry or a folio `review-anchors.json` naming one (the entry's Document view and `doc.json`; its `structure.json` also the library index) | loaded from the published `changeset.json` (each changed block's label and file) and `outline.json` (the documents), never from source: a block lands on its document's page, anchored at its label (`anchors`) — on a LAZY page (`outline.json` `lazy`, bean v433) on its `blocks/NNN.json` chunk and `index.hydrated.html` instead, and a block added, removed, renamed or moved reshapes the shell and every chunk from its position on; a file no builder of the site reads is an input with no page: each builder in the folio's build command exports `siteReads` (the folio; the comment store; every directory of a typology holding a kind it renders), and a file outside all of them, the submodules, `.github/` and the root's non-Markdown files reaches nothing — so `beans/` reaches no page, while `todos/`, whose pages are rendered, still may. A step that exports no `siteReads` excludes nothing; never decide it from the instance's declaration, which also declares what no builder reads | in the document layer, with the ChangeSet Tool |
+| `document-site`, `public-comment-site`, `library-site` | a block, a document/chapter/section manifest, `media/*`, the public-comment store, a file in a declared library entry or a folio `review-anchors.json` naming one (the entry's Document view and `doc.json`; its `structure.json` also the library index) | loaded from the published `changeset.json` (each changed block's label and file) and `outline.json` (the documents), never from source: a block lands on its document's page, anchored at its label (`anchors`) — on a LAZY page (`outline.json` `lazy`) on its `blocks/NNN.json` chunk and `index.hydrated.html` instead, and a block added, removed, renamed or moved reshapes the shell and every chunk from its position on; a file no builder of the site reads is an input with no page: each builder in the folio's build command exports `siteReads` (the folio; the comment store; every directory of a typology holding a kind it renders), and a file outside all of them, the submodules, `.github/` and the root's non-Markdown files reaches nothing — so `beans/` reaches no page, while `todos/`, whose pages are rendered, still may. A step that exports no `siteReads` excludes nothing; never decide it from the instance's declaration, which also declares what no builder reads | in the document layer, with the ChangeSet Tool |
 | `docs-site` | any file | a file in the COMPOSED Jekyll tree (`docsLayers`, `composedInstances`) → its page (permalink, or `.md` → `.html`) or asset; an include → the pages that include it, transitively; `_data` → the pages and includes that read it; a layout, a THEME include (read from the installed theme; unreadable means every include) or an include nothing calls → any page; any page change → the search index; a file outside the tree → `undetermined` when the staging cone carries any directory, nothing when it reaches none | `cat-harness-tools/scripts/docs-rendered-impact.ts` |
 | `published-provenance` | a mounted instance's skill, process or schema (anything a generator renders) | the published root's own record of what each page was generated from — the "Generated from `<path>`" note and `data-src` on the edit link — read back as source → pages; a new source has no page yet and an index names no source, so both stay for the QA diff | `cat-harness-tools/scripts/staging-changes.ts` (`predictByProvenance`) |
 
-**Measured on the docs-site renderer** (this repository's site, two local builds, 2026-10-06): a page, a data file read through an include, an include, a stylesheet and a script gave 8 predicted files and 8 measured. 7 were confirmed. The 1 miss differs between two builds of the same commit anyway (where QA data was fetched from), and 1 unconfirmed page includes the changed include behind a Liquid condition. Two builds of one commit first differed in 826 files, every one by a `?v=<build time>` cache-buster. So `diffBuiltSites` blanks `BUILD_STAMPS` before hashing; without that, every page reads as missed.
-
-**Measured on the FHIR renderer** (a real IG, bean `c65n`):
-- An FSH edit to one PlanDefinition gave 4 predicted files and 3 measured: 0 missed, and 1 unconfirmed (the artefact page, rule 3). It took 0.34 s, against 165 s for SUSHI.
-- A page edit gave 2 predicted and 2 measured: an exact match.
+Two builds of one commit differ in every page by a `?v=<build time>`
+cache-buster, so `diffBuiltSites` blanks `BUILD_STAMPS` before hashing;
+without that, every page reads as missed.
 
 A renderer's command line belongs to the layer that owns it; this layer
 names none above it.
@@ -111,9 +103,9 @@ names none above it.
   "nothing missed".
   The review page shows it under the list, as the PR comment does: a run
   started by dispatch finds its PR from the branch, so the comment is not
-  lost when no `pull_request` event started the run (bean `ehh6`).
+  lost when no `pull_request` event started the run.
 - **Show**: every docs-site preview also carries `STAGING/<slug>/changes/`
-  (`cat-harness-tools/scripts/staging-changes.ts`, owner 2026-10-14): the
+  (`cat-harness-tools/scripts/staging-changes.ts`): the
   changed sources, with a re-pinned mount in `index.lock.json` expanded into
   the files its repository changed between the two pins (a re-pin handed to
   a renderer as one JSON line predicts nothing); the cone's files and its

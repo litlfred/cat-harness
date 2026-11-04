@@ -10,16 +10,9 @@ description: >
 
 # KG export — publishing the graph as linked data, not as a page
 
-**`agentic-harness` has no renderer.** `folio` is the only `renderable` graph
-kind and it belongs to the content core, so the harness cannot put its
-knowledge graph on a page the way a folio puts a chapter on one. That boundary
-is deliberate and this does not move it.
-
-**The way out is that the export is data.** One JSON document describing the
-graph; drawing it is somebody else's job, and may be a static viewer, an
-external tool, or nothing at all. Publishing data does not make the harness
-self-documenting — it makes it *inspectable*, which is the thing that was
-missing.
+**The export is data, not a page.** One JSON document describes the graph;
+drawing it is somebody else's job — a static viewer, an external tool, or
+nothing at all. The export makes the harness *inspectable*.
 
 Per [`skills-and-tools`](../../tools/folio-core/skills-and-tools.md):
 
@@ -28,20 +21,19 @@ Per [`skills-and-tools`](../../tools/folio-core/skills-and-tools.md):
 | **this skill** | produce the serialization — generic, no host named |
 | **the Tool** | publish it somewhere — today `pages-publish` (GitHub Pages) |
 
-A GitLab Pages or object-store Tool satisfies the same skill later. Nothing in
-this skill names a host, and nothing in it should.
+A GitLab Pages or object-store Tool would satisfy the same skill. Nothing in
+this skill names a host.
 
 ## It is JSON-LD, and the `@type: @id` coercion is the whole point
 
 Modelled on WHO's SMART Base repository's
-`input/scripts/generate_jsonld_vocabularies.py`. Four things carry the weight,
-and the first is the one that is cheap to lose and invisible when you do:
+`input/scripts/generate_jsonld_vocabularies.py`. Five rules carry the weight;
+the first is cheap to lose and invisible when you do:
 
 **1. Every edge term is declared `{"@type": "@id"}`.** Without that coercion,
 `requires`, `performedBy` and `partOf` are **string literals** to any
 JSON-LD processor, and the document is a list of records that merely *looks*
-linked to a human reading the JSON. Declaring them costs one line each and is
-the difference between 900 records and a traversable graph. A test asserts it.
+linked to a human reading the JSON. A test asserts the coercion.
 
 **2. The document's `@id` is the URL it is served from**, with
 `@type: prov:Entity` and a `generatedAt` typed `xsd:dateTime`. Fetch the `@id`,
@@ -50,10 +42,8 @@ what makes the graph mergeable with anyone else's.
 
 **3. A subject's IRI is a path under its instance, never a `#fragment` of
 the document** — `<doc dir>/<kind>/<id>`, each served as its own file. This is the rule for every
-IRI an agent mints or authors; the reasons, the one exception and the
-migration are in §"Subject IRIs — a path, not a `#fragment`" below. It
-replaces the old point 3 (*"Node IRIs are fragments of that document"*), which
-is what the exporter still does today.
+IRI an agent mints or authors; the reasons and the exceptions are in
+§"Subject IRIs — a path, not a `#fragment`" below.
 
 **4. No `@vocab`, and `id`/`type` are aliased.** Every term carries its full
 namespace IRI, so an undeclared key stays undeclared instead of silently
@@ -62,19 +52,13 @@ ordinary records for someone who does not know JSON-LD.
 
 **5. Every property name in `@graph` is declared in `@context`, and the export
 FAILS if one is not.** A name that is neither declared nor an absolute IRI is
-not a property: a processor drops it. Measured before bean `ovkk`, 19 declared
-terms against 53 used — **34 names, 3583 occurrences**, every one of them
-visible when the file is read as plain JSON, which is why it went unnoticed for
-as long as the document had no consumer.
+not a property: a processor drops it, although it stays visible when the file
+is read as plain JSON.
 
 ## Subject IRIs — a path, not a `#fragment`
 
 **This section owns the rule.** Every other skill that names a subject's IRI
 points here rather than restating it.
-
-Owner, 2026-10-23: *"hashes not so good... why not `<instance doc>/<kind>/<id>`?"*
-— and, confirming the reasons below: *"yes that is correct. please update
-authoring KG skills appropriately so this doesnt happen again"*.
 
 ### The rule
 
@@ -84,19 +68,15 @@ actor, a decision, a directory, a package, a capability, an asset) is named
     <doc dir>/<kind>/<id>
 
 where **`<doc dir>`** is the directory the instance's own document is served
-from. That is the URL-space rule (bean `x0hj`, carried in the tools layer
-as `sthf`): `<baseurl>/<instantiated harness>/<path to rendered content>`.
+from. That is the URL-space rule:
+`<baseurl>/<instantiated harness>/<path to rendered content>`.
 §"Which base an `@id` is minted against" in
 [`instance-publication`](instance-publication.md) says which base applies to
 an instance on this site and to an instance with its own `canonicalUrl`.
-It is the form Tools already use, `<doc dir>/tools/<id>.jsonld` (bean `tdir`).
+It is the form Tools use, `<doc dir>/tools/<id>.jsonld`.
 
-**The host has no special case.** Owner, 2026-10-23 (decision 1b, option
-(i) "move all", on
-[cat-harness-tools#603](https://github.com/litlfred/cat-harness-tools/issues/603)):
-*"the host (cat-harness) is no longer special. Its document, its Tools and its
-subjects all move under `<site>/cat-harness/`"*. The reason: **one rule for
-every layer, with subjects beside their document.** So `<doc dir>` is
+**The host has no special case: one rule for every layer, with subjects
+beside their document.** So `<doc dir>` is
 `<site>/<instance>/` for every instance this site publishes, the host
 included:
 
@@ -105,23 +85,20 @@ included:
 | the host's document | `https://litlfred.github.io/folio-assistant/cat-harness/cat-harness.jsonld` |
 | a host subject | `https://litlfred.github.io/folio-assistant/cat-harness/skill/kg-export` |
 | a host Tool | `https://litlfred.github.io/folio-assistant/cat-harness/tools/beans-cli.jsonld` |
-| ❌ retired | `https://litlfred.github.io/folio-assistant/cat-harness.jsonld`, `…/folio-assistant/tools/<id>.jsonld`: the host at the site root |
+| ❌ never | `https://litlfred.github.io/folio-assistant/cat-harness.jsonld`, `…/folio-assistant/tools/<id>.jsonld`: the host at the site root |
 
-Do not mint, link or write anything at a root-level host path. Nothing answers
-at the old root addresses: a clean break
-([`instance-publication`](instance-publication.md) §"An `@id` that moved is
-not forwarded").
+Do not mint, link or write anything at a root-level host path; nothing answers
+there ([`instance-publication`](instance-publication.md) §"An `@id` that moved
+is not forwarded").
 
 | | IRI |
 |---|---|
-| ✅ ruled | `https://litlfred.github.io/folio-assistant/<instance>/globalTask/GT_SeedWorkPlan` |
-| ❌ replaced | `https://litlfred.github.io/folio-assistant/<instance>/<instance>.jsonld#globalTask/GT_SeedWorkPlan` |
+| ✅ right | `https://litlfred.github.io/folio-assistant/<instance>/globalTask/GT_SeedWorkPlan` |
+| ❌ fragment | `https://litlfred.github.io/folio-assistant/<instance>/<instance>.jsonld#globalTask/GT_SeedWorkPlan` |
 | ❌ unservable | `…/<instance>/<instance>.jsonld/globalTask/GT_SeedWorkPlan`: a static host cannot hold a file and a directory under one name |
 
-**A process's parts** (owner, 2026-10-23T14:56Z, picking one of three options: *"Steps
-and lanes get pages, and flows stay fragments of the process page … Everything
-anyone cites (a step, a role's lane) is a real resource, and the arrows, which
-only matter inside their diagram, stay on the process page."*):
+**A process's parts.** Steps and lanes get pages; flows stay fragments of the
+process page, because only their diagram cites them:
 
 | part | IRI | |
 |---|---|---|
@@ -144,33 +121,28 @@ takes a path.
 - **`#` already means "a place on this HTML page".** Using it for identity
   mixes identity with navigation.
 - **Slash paths nest** (`…/process/P/node/T`); fragments do not.
-- **It is the FHIR convention** the owner already uses: `<base>/<Type>/<id>`.
+- **It is the FHIR convention**: `<base>/<Type>/<id>`.
 
 ### The other exception: vocabulary terms keep `#`
 
 `#` stays right for **vocabulary and namespace terms** (`…/ns#Term`): one
 small document holds every term, and fetching it is what a consumer wants.
 That covers classes, properties, graph-typology individuals, and the SKOS
-glossary's concepts, which bean `xsqm` (*"one SKOS"*) puts in the layer's
-namespace. If a thing has instances, a page or a history of its own, it is a
+glossary's concepts, which live in the layer's namespace. If a thing has instances, a page or a history of its own, it is a
 subject and takes a path.
 
 ### Every `@id` still has to load
 
-The old point 3 had one thing right, and it stays: *"An `@id` that looks
-dereferenceable and is not is worse than one that is obviously local."* GitHub
+*An `@id` that looks dereferenceable and is not is worse than one that is
+obviously local.* GitHub
 Pages has no redirects, no 303 and no content negotiation. So a path IRI is
 served by **a file of its own**: a small page at `<doc dir>/<kind>/<id>`
 carrying the node as JSON-LD, plus `<id>.jsonld` beside it, as Tools are
 served. Whoever mints the path also publishes the file, in the same change.
-A slash IRI with nothing behind it brings back the twenty-three 404s from the
-README generator that `AGENTS.md` records.
 
 **Every rendered link to a subject uses its subject IRI**, meaning its page,
 and never a fragment of the instance document. That covers the ⓘ panel and
-the icons on a rendered BPMN diagram, step tables and role links. Owner,
-2026-10-23T14:57Z: *"and things like the info button/icons in the bpmn
-rendering should point to those new IRIs"*.
+the icons on a rendered BPMN diagram, step tables and role links.
 
 bootstrap states the same rule for its own graph, in its own terms, in
 [`bootstrap-graph-publication`](../../../../bootstrap/skills/bootstrap-graph-publication.md)
@@ -178,9 +150,8 @@ bootstrap states the same rule for its own graph, in its own terms, in
 
 ### Today, and what is still a fragment
 
-**The tools layer mints paths.** Since
-[cat-harness-tools#620](https://github.com/litlfred/cat-harness-tools/pull/620),
-`makeIri` in `scripts/kg-export.ts` calls `subjectIri`
+**The tools layer mints paths.** `makeIri` in `scripts/kg-export.ts` calls
+`subjectIri`
 (`scripts/lib/subject-iri.ts`), which mints `<doc dir>/<kind>/<id>`, and a
 process flow as `<doc dir>/process/P#flow/F`. The glossary export and the
 directory-container `@id` (`subgraphIri`) go through the same function.
@@ -192,28 +163,26 @@ Two things still mint fragments:
   into that document (`FRAGMENT_DOCUMENT_STUBS`). The entry goes in the PR that
   moves that publisher to paths.
 - **own-canonical instances** (the SMART IGs and others), whose subject IRIs do
-  not load yet:
-  [cat-harness-tools#638](https://github.com/litlfred/cat-harness-tools/issues/638).
+  not load yet.
 
 So:
 
 - **mint through `subjectIri`** (or `makeIri`, which calls it), never by hand.
 - **do not add a new hash-IRI minter for subjects**, and do not hand-write a
   `….jsonld#<kind>/<id>` IRI in new content.
-- **remove this subsection** when bootstrap's publisher and #638 land.
+- **remove this subsection** when bootstrap's publisher mints paths and
+  own-canonical subject IRIs load.
 
 ## Declaring a term is a decision, not a line of context
 
 Five questions, in this order. The worked call for each term is in
 `buildContext()`, beside the term it justifies.
 
-1. **Does the fact belong in the graph at all?** Five of the thirty-four were
-   DENORMALISED copies of links already present — `implementsSkillNames`,
-   `satisfiesSkillNames`, `graphTypologies`, `packagePaths`, `laneName`. Removed
-   rather than declared, once every one of those links was shown to resolve for
-   every node. A name beside the link that reaches it is a second answer that
-   can go stale; what a consumer must never have to do is recover a fact by
-   splitting an IRI.
+1. **Does the fact belong in the graph at all?** A denormalised copy of a link
+   already present (a name beside the link that reaches it) is a second answer
+   that can go stale: remove it rather than declare it, once the link resolves
+   for every node. A consumer must never have to recover a fact by splitting
+   an IRI.
 2. **Is it a LINK or a literal?** Wrong here is worse than undeclared —
    confidently wrong rather than absent. Under `{"@type": "@id"}` the value
    must already BE an IRI: a bare `git-push` resolves against the document base
@@ -223,28 +192,25 @@ Five questions, in this order. The worked call for each term is in
    reverse reason.
 3. **Does the referent exist in this graph?** `roleName`, `permissionName` and
    `decisionRef` stayed names: the role registry, the permission vocabulary and
-   the DMN tables are not collected, so 69 coerced IRIs would have resolved to
-   nothing. Each becomes a link the day its referent becomes a node — residue
-   worth recording, not a reason to assert the edge early.
+   the DMN tables are not collected, so coerced IRIs would resolve to nothing.
+   Each becomes a link the day its referent becomes a node.
 4. **Is one name carrying two relations?** Then it is two terms: `source` was a
-   `.bpmn` path on a Process and `bpmn-lane` on a lane-derived Role (a node
-   kind retired in #1168 B9b: a lane is now a `Lane`), so it is
+   `.bpmn` path on a Process and a kind marker elsewhere, so it is
    `sourcePath` and `sourceKind`. Heterogeneous SHAPE under one relation is a
    different case — `install` is a command string from a Capability and a
    dispatch object from a Tool, and stays one term typed `@json`, because
    declaring a container term alone keeps the outer key and drops every inner
    one.
 5. **Does a published standard already say it?** Then the term IS the
-   standard's property, and nothing is minted. Owner, 2026-09-30 (bean
-   `xsqm`): *"emphasize preexisting standards … now align"*. `title` and
+   standard's property, and nothing is minted. `title` and
    `description` are Dublin Core's; `partOf`/`inSubgraph` are
    `dcterms:isPartOf`, `holdsGraph` is `dcterms:type`, `conformsTo` is
    `dcterms:conformsTo`; a sequence flow's `from`/`to` are BPMN's own
    `sourceRef`/`targetRef` and a node's `incoming`/`outgoing` BPMN's
    attributes of those names; a task's skill is `requires`, which is
    `dcterms:requires` (the task, the dependent node, requires the skill), and
-   a lane's role (`bindsRole`) is BPMN's own `partitionElementRef` (owner,
-   2026-10-16). bootstrap's own graph (bootstrap-tools' `export-graph.ts`)
+   a lane's role (`bindsRole`) is BPMN's own `partitionElementRef`.
+   bootstrap's own graph (bootstrap-tools' `export-graph.ts`)
    uses the same IRIs, so the two graphs agree.
 
    **How, so it cannot drift:** a term that restated a standard keeps its
@@ -268,11 +234,9 @@ failure as a fabricated link.
 
 ## Every key is a declared term — in content documents too
 
-Rule 5 above, applied to CONTENT (bean `yh6u`): in every document on the
-published content context, a plain key must be a declared term, or a JSON-LD
-processor drops it without a word. Measured before the check existed: 8
-undeclared keys across 392 committed figure blocks — every agent-drafted figure
-narrative was being dropped. `bun run cat check:content-keys` now fails on one
+Rule 5 above, applied to CONTENT: in every document on the published content
+context, a plain key must be a declared term, or a JSON-LD processor drops it
+without a word. `bun run cat check:content-keys` fails on one
 (it judges documents on the content context and on an instance's own context).
 
 It does **not** descend into a value typed `@json`. Such a value is a JSON
@@ -282,12 +246,11 @@ right home for a nested structure that is ours rather than linked data, and
 
 **A path is a literal, never an `@id`.** A document-relative path coerced to
 `@id` resolves against the context's `@base`, not against the document, and so
-names a location the file is not at. `text` did exactly that on all 1,323
-committed prose blocks — `../sections/x.md` became a well-formed link to
-nowhere — until bean `589f` made it, `leanSource` and `file` literals.
-`check:content-keys` now fails if a file path sits under any `@id` term.
+names a location the file is not at (`../sections/x.md` becomes a well-formed
+link to nowhere). So `text`, `leanSource` and `file` are literals, and
+`check:content-keys` fails if a file path sits under any `@id` term.
 
-**The upgrade rule** (owner, 2026-09-23, chosen for the least drift): a path
+**The upgrade rule:** a path
 term becomes a link — `@type: @id` with ABSOLUTE IRIs minted by the one
 function that mints block IRIs — when, and only when, the files it names are
 SERVED at a URL an instance declares. Until then a link is a promise nothing
@@ -296,8 +259,8 @@ against the file that carries it.
 
 ## A prefix is the stub — and a prefix that is spoken must be bound
 
-Owner, 2026-09-23: *"prefix -> match stub"*. Each of our namespaces is
-`<canonical>/<stub>/ns#`, so the prefix bound to it is **that same word**:
+Each of our namespaces is `<canonical>/<stub>/ns#`, so the prefix bound to it
+is **that same word** as the stub:
 
 | namespace | prefix |
 |---|---|
@@ -307,8 +270,8 @@ Owner, 2026-09-23: *"prefix -> match stub"*. Each of our namespaces is
 
 bootstrap's row is the exception to the `<canonical>/<stub>/` shape, and says
 so: its namespace sits under bootstrap's own `iriBase` and carries the
-release's MAJOR (bean `r3gy` E; owner, 2026-10-23, the major and not the full
-version), because bootstrap is published from its own repository; the exact
+release's MAJOR, because bootstrap is published from its own repository; the
+exact
 release an agent reads is its pin's. The prefix is still the
 stub. The address is written once, in `cat-harness/code-lists/own-namespaces.json` (read as
 `CAT_BOOTSTRAP_NS`), and `iri:sync` keeps every literal copy — this table's
@@ -317,30 +280,28 @@ included — at bootstrap's declared major.
 One word in three places — path segment, stub, prefix — instead of three
 words that must agree.
 
-### Naming a namespace document — `ns`, and why (owner, 2026-09-30)
+### Naming a namespace document — `ns`, and why
 
 **A namespace document is published where its identifiers point**, so its file
 name IS its address: `bootstrap/ns.jsonld` is what makes
 `…/bootstrap/v0/ns#Node` resolve, and `check:node-iris` fails the day they
 differ. Renaming the file renames every term.
 
-The owner asked whether `ns` should be a friendlier name (`vocabulary.jsonld`,
-`schemas/terms.jsonld`) and chose to keep it, on this analysis:
+Keep `ns`; do not rename it to something friendlier (`vocabulary.jsonld`,
+`schemas/terms.jsonld`):
 
-- **It is the house rule and the common practice.** Six of this project's own
-  namespaces end in `/ns#` — each layer's, core's DSpace fields, and both
-  process-extension namespaces — and `<canonical>/<stub>/ns#` is what "the
-  prefix is the stub" rests on. W3C publishes PROV, DCAT, ORG and SHACL under
-  `w3.org/ns/`.
-- **Renaming is not local.** Changing the pattern means renaming cat-harness's
-  and core's namespaces, already published (a MAJOR version each under
-  `instance-versioning`), and 91 BPMN files binding the process namespaces.
+- **It is the house rule and the common practice.** This project's namespaces
+  end in `/ns#`, and `<canonical>/<stub>/ns#` is what "the prefix is the stub"
+  rests on. W3C publishes PROV, DCAT, ORG and SHACL under `w3.org/ns/`.
+- **Renaming is not local.** Changing the pattern means renaming published
+  namespaces (a MAJOR version each under `instance-versioning`) and every BPMN
+  file binding the process namespaces.
 - **`schemas/` would misclassify it.** Here a schema is what a Node is
   *checked against*; a vocabulary *defines words*.
 - **Findability is solved without renaming**: the file's own `label` ("bootstrap
   vocabulary") is what the generated README file table shows beside it.
 
-### One source per layer — and no all-layers union (owner, 2026-09-30)
+### One source per layer — and no all-layers union
 
 Each layer's vocabulary is ONE document, and every term's `rdfs:isDefinedBy`
 names that document. bootstrap's is `bootstrap/ns.jsonld`, written by
@@ -349,40 +310,27 @@ and the harness's full build reads it rather than rebuilding it, so nothing
 can say a thing about a bootstrap term that bootstrap's file does not
 (`ns-export-skos.test.ts` holds them equal, node for node).
 
-The all-layers union at `<site>/ns/vocabulary.jsonld` is **retired**. Asked
-where it should live for findability, the answer came from who reads it: a
-program follows a term's IRI to its layer document; a person looking for terms
-goes to the Glossary, which lists every term and publishes SKOS for every
-scheme. The union served neither, linked from no page, and was a third copy of
-the same terms — so it is gone, rather than moved. `NS_PREFIXES` in `schemas/kg/namespaces.ts` is the one
-list; `stubOfNamespace()` reads the stub back off an IRI. The abbreviations
-`bs`, `cat` and `fac` were retired the same day, for a measured reason
-rather than taste.
+There is no all-layers union document. A program follows a term's IRI to its
+layer document; a person looking for terms goes to the Glossary, which lists
+every term and publishes SKOS for every scheme. `NS_PREFIXES` in
+`schemas/kg/namespaces.ts` is the one list; `stubOfNamespace()` reads the stub
+back off an IRI. Do not bind abbreviated prefixes (`bs`, `cat`, `fac`).
 
-**Why an abbreviation is a defect waiting to happen (bean `zaqn`).** The
-content `@context` renamed its binding from `folio` to `fac` and kept writing
-twenty terms as `folio:…`. **An unbound prefix is not an error to a JSON-LD
-processor**: it reads `folio` as a URI SCHEME, so `folio:Definition` expanded
-to an absolute IRI that is well-formed, means nothing, and joins with nothing
-— in 1,737 committed documents. Every gate was green, for two reasons worth
-remembering:
+**Why an abbreviation is a defect waiting to happen.** **An unbound prefix is
+not an error to a JSON-LD processor**: if a context binds `fac` while terms
+are still written `folio:…`, the processor reads `folio` as a URI SCHEME, and
+`folio:Definition` expands to an absolute IRI that is well-formed, means
+nothing, and joins with nothing. A `--check` drift gate does not catch it,
+because the source is wrong the same way — **a drift gate proves agreement,
+never correctness**.
 
-- a `--check` drift gate compares the generated copy with its SOURCE, and the
-  source was wrong the same way — **a drift gate proves agreement, never
-  correctness**;
-- `check:context-emission` asked only whether each *bound* prefix is spoken.
-  The converse — is each *spoken* prefix bound? — is the direction that
-  corrupts data, and nothing asked it.
-
-**The two rules, and what enforces them.** Since bean `folio-assistant-63q4`
-every emitted document names its own instance's generated context,
-`<iriBase>ns/context/v1.jsonld`, and `check:context-emission` is retired:
+**The two rules, and what enforces them.** Every emitted document names its
+own instance's generated context, `<iriBase>ns/context/v1.jsonld`.
 `jsonld:contexts --check` (cat-harness-tools `scripts/gen-instance-contexts.ts`)
 enforces rule 1 over every `.jsonld` in the checkout, failing on a prefix used
 in an IRI position that nothing binds; a context generated from use binds
-nothing unused, which retired the converse. Rule 2 is upheld by construction —
-own prefixes are spelt from the declarations — and is no longer checked
-separately on a document's own inline bindings:
+nothing unused. Rule 2 is upheld by construction — own prefixes are spelt
+from the declarations:
 
 1. **Spoken ⇒ bound.** A compact IRI used as a KEY or an `@type` value must
    have its prefix bound in that document's context — inline, or the
@@ -404,32 +352,28 @@ document run through a JSON-LD processor, with **zero** expanded IRIs outside
 
 **Where a prefix cannot be bound at all, a different spelling is never the
 answer.** CSVW metadata allows only `@language` and `@base` in its local
-context, so the `fac:` keys in `tabular-metadata`
-dangled under ANY prefix. The two real answers are absolute IRIs, or not being
-JSON-LD at all. Bean `792y` took the second: the record became plain JSON and
-the CSVW document is derived from it. **A file whose extension says `.jsonld`
+context, so prefixed keys there dangle under ANY prefix. The two real answers
+are absolute IRIs, or not being JSON-LD at all; `tabular-metadata` takes the
+second: the record is plain JSON and the CSVW document is derived from it. **A file whose extension says `.jsonld`
 is making a claim** — a processor will read every colon-key in it as an IRI.
 
 ## `fsh-guts` NEVER reaches a published graph
 
-Owner, 2026-09-19: *"NEVER include fsh-guts, references to fsh-guts stripped
-out of KG before sending to publication."*
+`fsh-guts`, and every reference to it, is stripped from the KG before
+publication.
 
 **Keeping the CONTENT out of the render pipeline is a different property from
-keeping the REFERENCE out of the graph**, and shipping the first while
-believing it covered the second is exactly how this was got wrong. An
-instance's declared directories become nodes in `<stub>.jsonld`, so declaring
-`fsh-guts/` — which is required, or no tool can find it and the never-delete
-rule has no destination — put its id, path and description into the published
-document.
+keeping the REFERENCE out of the graph.** An instance's declared directories
+become nodes in `<stub>.jsonld`, and `fsh-guts/` must be declared (or no tool
+can find it and the never-delete rule has no destination), so its id, path and
+description must be stripped from the published document.
 
 `UNPUBLISHED_GRAPH_TYPOLOGIES` in `schemas/kg/cat-harness.ts` is the one list, read by
 every emitter, so two filters cannot disagree about what is excluded.
 
-**Three emitters had to be filtered, and the third was found only because the
-first two were not enough:**
+**Three emitters are filtered:**
 
-| emitter | what leaked |
+| emitter | what would leak |
 |---|---|
 | graph typologies | the `fsh-guts` GraphTypology node |
 | declared directories | the Directory node — id, path, description — and its `holdsGraph` edge |
@@ -459,12 +403,8 @@ clean and is not, and the test must read the built artefact rather than the
 inputs. `scripts/tests/fsh-guts-unpublished.test.ts` serialises the whole
 export and asserts the substring is absent — a structural check would have to
 know every field that could carry it, and the one it forgets is the one that
-leaks.
-
-That test also carries its own cautionary tale: its first version read
-`.graph` where the export uses `@graph`, filtered `undefined`, and passed
-while two nodes were still leaking. It now asserts the node list is non-empty
-before filtering it.
+leaks. It also asserts the node list is non-empty before filtering it, so a
+wrong key cannot make it pass vacuously.
 
 ## Staging must not claim to be canonical
 
@@ -491,13 +431,10 @@ second authority**; the Zod is authoritative, per
 
 ## A preview says what it is, and links back — explicitly
 
-Passing `--base-url` stops the collision: a preview's nodes get preview IRIs,
-so the two graphs cannot contradict each other. That left the opposite problem —
-the graphs became **unrelatable**, and nothing could say "this PR changes skill
-X", which is most of what a preview graph is for.
-
-Three things close it, and all three are stated in the artefact rather than
-left to a convention:
+Passing `--base-url` gives a preview's nodes preview IRIs, so the two graphs
+cannot contradict each other. To keep them **relatable** ("this PR changes
+skill X"), three things are stated in the artefact rather than left to a
+convention:
 
 | | |
 |---|---|
@@ -512,20 +449,16 @@ of one thing. That is exactly the contradiction distinct IRIs were introduced to
 avoid. `alternateOf` says "same underlying thing, different presentation" and
 merges nothing.
 
-**The per-node links are derivable, and are emitted anyway.** `makeIri` produces
-an identical fragment whatever the base, so a consumer *could* swap one base for
-the other. 968 fields instead of one. That is the deliberate trade, on the
-owner's standing rule: **a downstream consumer must never have to
-string-manipulate or infer a rule to follow a link.** A rule a consumer has to
-know is a rule a consumer can get wrong, and the cost is paid by someone who
-cannot see the code that made the assumption look reasonable. See
+**The per-node links are derivable, and are emitted anyway**, because **a
+downstream consumer must never have to string-manipulate or infer a rule to
+follow a link.** See
 [`crdm-requirements-workflow`](../../../sdlc/skills/crdm/crdm-requirements-workflow.md) §"Consumer burden
 is a requirement".
 
 **Vocabulary nodes get no `alternateOf`.** Graph typologies are minted under the
-namespace, not the document, so they are byte-identical in both graphs. A
-blanket loop gave them one pointing at a canonical fragment that does not
-exist — a generated broken link is still a broken link, and a test now pins it.
+namespace, not the document, so they are byte-identical in both graphs; an
+`alternateOf` on them would point at a node that does not exist. A test pins
+it.
 
 ## Naming — artefacts take the repository's name, the config does not
 
@@ -538,39 +471,21 @@ WHO SMART Base does the same and derives its stub by stripping a prefix
 (`smart-<stub>` → `<stub>` → `https://smart.who.int/<stub>`), so stub, directory and
 published path are one word.
 
-**The declaration file is named for the instance's `name`, not its `stub`.**
-It is `<name>.json` — so it is still not stub-named, but it is no longer a
-fixed word either, and the argument that used to stand here was reversed on
-2026-09-21.
-
-That argument ran: a consumer bootstrapping into a repository it knows nothing
-about needs **one fixed filename to open first**, so the declaration stays
-`harness.json` exactly as WHO SMART Base's config stays `dak.json`; renaming it
-per-repo buys consistency and costs discovery.
-
-(The `dak.json` half of that quoted argument has since gone too: the DAK
-marker is ours and became `dak.config.json` on 2026-09-22. The quote is left
-as it stood, because it is a record of what was argued.)
-
-**The discovery half was answered rather than traded away.**
+**The declaration file is named for the instance's `name`, not its `stub`:**
+`<name>.json`. A consumer finds it without being told its filename:
 `findDeclarationFile()` scans a directory for a `*.json` carrying a `name`
-whose stem EQUALS that name, so a consumer still opens a declaration without
-being told its filename — it matches on the file agreeing with **itself**
-instead of on a word agreed in advance, and two such files in one directory
-**throw** rather than one being picked silently. What the old objection
-warned of was a resolver deriving the name from the DIRECTORY, which would
-find nothing in a repository cloned under a different name; that is precisely
-what this does not do.
+whose stem EQUALS that name — the file agrees with **itself** — and two such
+files in one directory **throw** rather than one being picked silently. It
+never derives the name from the DIRECTORY, which would find nothing in a
+repository cloned under a different name.
 
-Everything the declaration *describes* remains free to be named, for the
-reason given before: by the time you fetch those you have read the
-declaration naming them.
+Everything the declaration *describes* is free to be named: by the time you
+fetch those you have read the declaration naming them.
 
 ## The edges are the reason to publish
 
-A list of skills is not a graph, and a JSON array of them would not have been
-worth a pipeline. What makes the export worth having is the relations that
-already exist on disk and that **no tool surfaces**:
+What makes the export worth having is the relations that already exist on
+disk and that **no other tool surfaces**:
 
 - **activity → skill.** Every BPMN activity may carry
   `<bootstrap.processes:skill ref="…"/>`, so the export can say which process step is
@@ -586,25 +501,14 @@ skill, not two kinds of skill.** So the graph is keyed by *name*, which is also
 what a BPMN ref uses. Keying by file instead produces two disconnected node
 sets and loses the relation entirely.
 
-It is also what makes "declared somewhere, written nowhere" visible: measured
-on `main` 2026-09-18, of 135 skills only **11 have both**, 113 are prose with
-no declared I/O, and 11 are an I/O contract with no prose. None of that was
-visible before the export existed.
+It is also what makes "declared somewhere, written nowhere" visible: which
+skills have prose only, an I/O contract only, or both.
 
 ## A partial graph must never pass for a whole one
 
-This is the rule, and it was learned by breaking it in the module that states
-it. The first exporter looked in six instruction-body directories, did not know
-about `schemas/skills/`, and reported **11 BPMN skill refs as dangling** — they
-resolve fine. A partial graph had been produced and would have been published
-as a complete one.
-
-**Why that is worse than an error.** A consumer of the JSON cannot distinguish
-a skill that is absent from one that was never collected: both are simply not
-in `@graph`. Counts look plausible either way and nothing fails. It is the
-`dh4f` shape — a clean run over a corpus the tool could not read.
-
-Three consequences, all of which the implementation carries:
+A consumer of the JSON cannot distinguish a skill that is absent from one that
+was never collected: both are simply not in `@graph`, counts look plausible,
+and nothing fails — a clean run over a corpus the tool could not read. So:
 
 1. **A source that cannot be read goes in `problems[]` and the export exits
    non-zero.** Publishing is blocked, rather than a truncated file being
@@ -615,16 +519,15 @@ Three consequences, all of which the implementation carries:
    view.** `scripts/tests/kg-export.test.ts` requires every skill a *diagram*
    names to appear — and `check:workflow-refs` independently guarantees those
    refs resolve against the real skill locations. So if the exporter's notion
-   of where skills live ever narrows again, the test fails. An invariant
-   checked only against the exporter's own collection would have passed the
-   original bug.
+   of where skills live narrows, the test fails. An invariant checked only
+   against the exporter's own collection would not catch it.
 
 ## Whose nodes — an instance publishes its own
 
 **The policy is [`instance-publication`](instance-publication.md) §"What each
 instance publishes — graph, address, schema, and what is stripped"**: which
-instance publishes which document where, the owner's 2026-10-05 ruling
-(option B; bean `4ak5` item 2). This section is the exporter's side of it.
+instance publishes which document where. This section is the exporter's side
+of it.
 
 `buildExport` takes `scope`, and the CLI `--scope <instance|checkout>`:
 
@@ -635,18 +538,14 @@ instance publishes which document where, the owner's 2026-10-05 ruling
 
 An `@id` the checkout-scope document mints and the instance-scope one does
 not is held by its owner's own document, and this one says nothing about it:
-no forwarding node (clean break, owner 2026-11-02,
-[litlfred/cat-harness-tools#1378](https://github.com/litlfred/cat-harness-tools/issues/1378)).
-A link to a node that left reads as dangling until it is re-homed.
+no forwarding node. A link to a node that left reads as dangling until it is
+re-homed.
 
 ## Named subgraphs — one IRI, two files, framed from one graph
 
-**Contract (bean `c1m4`; owner rulings 2026-10-03).** A *named subgraph* is a
-directory of a declared graph, read as a set of KG nodes: `skills/` is one, and
-so is `sdlc/skills/`. Asking for "every node of `cat-harness/sdlc/skills`" must
-take one fetch. Before this contract it could not be done in one step. Today's
-export is one document per instance, and `sdlc/skills` is not a subgraph
-anywhere (measured 2026-10-03; the evidence is on bean `c1m4`).
+A *named subgraph* is a directory of a declared graph, read as a set of KG
+nodes: `skills/` is one, and so is `sdlc/skills/`. Asking for "every node of
+`cat-harness/sdlc/skills`" takes one fetch.
 
 ### Identity
 
@@ -656,9 +555,9 @@ anywhere (measured 2026-10-03; the evidence is on bean `c1m4`).
 - It is kept apart from content-node IRIs on purpose. A subgraph is a *view* of
   nodes, not one of them, so renaming a file never renames the subgraph, and
   re-homing a node never re-mints the subgraph.
-- `/hydrated-graph/` was rejected. The pointer-only file would then live under
-  a path that says "hydrated".
-- **The repository's level is `<BASE_URL>/subgraph/`** (bean `ax6r`). It has
+- Not `/hydrated-graph/`: the pointer-only file would then live under a path
+  that says "hydrated".
+- **The repository's level is `<BASE_URL>/subgraph/`**. It has
   `index.jsonld` only, and its `hasSubgraph` are the harness roots this build
   frames. It is the one file a consumer needs to find every root. The workflow
   page starts there.
@@ -669,7 +568,7 @@ Both files have root `@id` = the directory IRI.
 
 | file | what is in it | who it is for |
 |---|---|---|
-| `index.jsonld` | **referenced**: each direct member as a pointer (`@id`, `@type`, label), and each child subgraph by its IRI | search, navigation, skeleton loading (`f233`) |
+| `index.jsonld` | **referenced**: each direct member as a pointer (`@id`, `@type`, label), and each child subgraph by its IRI | search, navigation, skeleton loading |
 | `index.hydrated.jsonld` | **dereferenced**: every node in the subgraph's *transitive* membership, inline and fully hydrated | "give me all of `sdlc/skills`" in one fetch |
 
 Rules for the pair:
@@ -679,9 +578,8 @@ Rules for the pair:
   (§"Payloads — heavy content by content address", below).
 - **The root has `index.jsonld` only.** A harness instance is itself a named
   subgraph of the repo KG, and the repo KG is the level above it. A *deep*
-  hydrated file at the root would be the whole graph in one document, which is
-  the monolith `f233` forbids. The owner ruled "deep, but not at root"; the
-  rejected options were shallow everywhere, deep everywhere, and size-capped.
+  hydrated file at the root would be the whole graph in one document — a
+  monolith. Hydration is deep, but not at the root.
 - **The GitHub Pages caveat.** Pages does no content negotiation, so the
   directory IRI is documented as resolving to `index.jsonld` by explicit path.
   A consumer that dereferences the bare IRI gets whatever Pages serves for the
@@ -709,9 +607,8 @@ Rules for the pair:
 
 ### Published per pin, in a package
 
-**Owner, 2026-10-24 (decision card, option A; bean `mo75` G2b).** The files
-are built at publish (`builtAtPublish`: `docs/subgraph/`), so no commit holds
-them. For a consumer that reads them at a PIN rather than from the Pages site,
+The files are built at publish (`builtAtPublish`: `docs/subgraph/`), so no
+commit holds them. For a consumer that reads them at a PIN rather than from the Pages site,
 **each pin's index files are published in a package**: an npm package,
 `<harness>-subgraph-index@0.0.0-pin.<sha>`, holding every `index.jsonld` and
 `index.hydrated.jsonld` under `<docs>/subgraph/<HARNESS>/` at the paths above
@@ -719,10 +616,10 @@ and a `subgraph-index.json` manifest (`folio-subgraph-index/v1`: repository,
 pin, harness, each file's sha256). It is attached, with its
 `folio-binary-release/v1` record, to the GitHub release `subgraph-index-<sha>`.
 
-- **Not committed (B, rejected):** a committed copy of a build over other
-  instances is stale on the next re-pin.
-- **Not generated at mount (C, rejected):** reading one file of metadata must
-  not need the build toolchain, and one pin must have one set of files.
+- **Not committed:** a committed copy of a build over other instances is
+  stale on the next re-pin.
+- **Not generated at mount:** reading one file of metadata must not need the
+  build toolchain, and one pin must have one set of files.
 - **Every name is computed** from repository, pin and harness
   (`subgraphIndexPackage`, `schemas/kg/subgraph-manifest.ts`), so a consumer never
   lists releases.
@@ -739,19 +636,15 @@ pin, harness, each file's sha256). It is attached, with its
 - For a directory of a declared graph, the rule is *containment*: a node is in
   the deepest subgraph directory that contains its source path, and in every
   ancestor of that one, transitively.
-- **An overlaid instance heads its own tree** (bean `ax6r`). kg-export reads
-  the corpus of every instance stacked on this one, so the content core's
-  processes and skills are nodes of this graph. Until then they all fell to
-  the root, which has no hydrated file, so "every process of this graph"
-  could not be fetched at all. A directory belongs to the instance that
-  declares it, so those nodes now sit under `<BASE_URL>/subgraph/<that
+- **An overlaid instance heads its own tree.** kg-export reads the corpus of
+  every instance stacked on this one, so the content core's processes and
+  skills are nodes of this graph. A directory belongs to the instance that
+  declares it, so those nodes sit under `<BASE_URL>/subgraph/<that
   instance>/…`, framed by this build because this graph publishes them. Their
   `@id`s do not change.
 - **Bootstrap gets no tree here.** `bootstrap` and `bootstrap-tools` sit
-  *below* this instance, and `pve3` (#432) keeps their processes out of its
-  graph. They publish through their own graph. Framing a tree for them here
-  would re-carry what that ruling excluded, so a consumer that needs their
-  subgraphs needs bootstrap to publish them.
+  *below* this instance, and their processes are kept out of its graph; they
+  publish their own subgraphs.
 - A harness's own rule, saying which directories are its graph, is its
   `<instance>.json` declaration. `Harness` and `Subgraph` therefore share
   one base, `GraphNodeDirectoryShape`. They do not get two parallel
@@ -767,9 +660,8 @@ pin, harness, each file's sha256). It is attached, with its
   a sparse checkout of the subgraph's directory. The file is validated against
   `SubgraphHydratedSchema`, its root `@id` must be the subgraph asked for, and
   it is held with a sha256 record. A request for the root is refused, with a
-  pointer to `index.jsonld`. This is a metadata mode (owner ruling
-  2026-10-03). The byte copy (`kg:materialize <subscription> <subgraph>`) is
-  unchanged and keeps its five gates. See
+  pointer to `index.jsonld`. This is a metadata mode. The byte copy
+  (`kg:materialize <subscription> <subgraph>`) keeps its five gates. See
   [`kg-subscription`](../../library/large-datasets/kg-subscription.md)
   §"metadata mode".
 - A subgraph manifest that lists a child IRI but whose child file is missing is
@@ -777,8 +669,7 @@ pin, harness, each file's sha256). It is attached, with its
 
 ## Payloads — heavy content by content address
 
-**Contract (bean `f233`; owner ruling 2026-10-03).** The subgraph files are the
-**skeleton**: topology and the metadata a search needs. Heavy content is the
+The subgraph files are the **skeleton**: topology and the metadata a search needs. Heavy content is the
 **muscle**, and it lives outside the graph, one file per distinct body. No
 generator emits a monolithic graph file that inlines bodies.
 
@@ -830,19 +721,16 @@ a guess.
 
 ### What is heavy
 
-Decided from measurement on 2026-10-03, over kg-export's graph for this
-instance. The graph held 3,120 nodes and 2.5 MB of metadata, and no literal
-field was over 4.6 KB. The graph therefore inlined no body already, so "heavy"
-means what its pointers name:
+The graph inlines no body, so "heavy" means what its pointers name:
 
-| node | field | files | bytes | heavy? |
-|---|---|---|---|---|
-| Skill | `instructionsPath` (.md) | 300 | 3.0 MB | **yes** — the instruction body |
-| Asset | `path` (.md; an image would be too) | 3 | 12 KB | **yes** |
-| Process / Decision | `sourcePath` (.bpmn / .dmn) | 78 / 10 | 1.5 MB / 58 KB | not yet — the topology is already graph nodes, and the XML is its own graph's source |
-| Schema | `module` (.ts) | 161 | 2.5 MB | no — code, not content |
+| node | field | heavy? |
+|---|---|---|
+| Skill | `instructionsPath` (.md) | **yes** — the instruction body |
+| Asset | `path` (.md; an image would be too) | **yes** |
+| Process / Decision | `sourcePath` (.bpmn / .dmn) | not yet — the topology is already graph nodes, and the XML is its own graph's source |
+| Schema | `module` (.ts) | no — code, not content |
 
-No deep provenance is in the graph today, so none moves. The table that decides
+The table that decides
 this is `HEAVY_POINTERS` in `schemas/kg/subgraph-manifest.ts`, and adding a row
 there is the whole change to make a field heavy.
 
@@ -864,13 +752,11 @@ there is the whole change to make a field heavy.
 
 ## Per-slice SQLite — a named subgraph as one file a browser mounts
 
-**Contract (bean `q8ar`; owner ruling 2026-10-03: the official SQLite WASM
-build with an OPFS VFS, pilot slice `beans`).** A large graph needs search on
-the client, and a static host cannot run a query. So CI flattens one slice into
+A large graph needs search on the client, and a static host cannot run a query. So CI flattens one slice into
 a relational schema and publishes it as `<slice>.<sha256>.sqlite3`, and the
-browser opens that file as it is. There is nothing to parse, because SQLite reads its
-B-tree pages on demand. This is the **skeleton** of `f233` in a second
-encoding. It never replaces the JSON-LD files above; it sits beside them for
+browser opens it with the official SQLite WASM build and an OPFS VFS. There is
+nothing to parse, because SQLite reads its B-tree pages on demand. This is the
+**skeleton** in a second encoding. It never replaces the JSON-LD files above; it sits beside them for
 the consumer that has to search.
 
 **One builder, one definition per slice.** `scripts/gen-slice-sqlite.ts` is the
@@ -882,29 +768,24 @@ source into rows. The engine (build, `VACUUM INTO`, digest, manifest,
 `--check`) names no slice. Adding a slice is adding a definition, **never a
 copy of the builder**.
 
-### The four pilots, measured
+### The four slices
 
-Measured 2026-10-03 in this checkout (`bun run cat slice:sqlite -- --out <scratch>`;
-browser figures from `slice-sqlite.e2e.ts` in Chromium on loopback, first open
-including download and sha256 verification):
+| slice | source | payloads |
+|---|---|---|
+| `beans` | `beans/defs/` | bean files, at deploy |
+| `todos` | `assets/todos/index.json` | todo files, at deploy |
+| `library` | `assets/library/index.json` + `entries/<id>.json` | entry files, at deploy |
+| `kg` | the whole-repo KG export | already committed |
 
-| slice | source | file | source as published | rows | payloads | build | first open |
-|---|---|---|---|---|---|---|---|
-| `beans` | `beans/defs/` | 2.83 MB | 4.82 MB of bean files | 723 beans, 84 edges | 723 bean files, at deploy | 0.26 s | ~190 ms |
-| `todos` | `assets/todos/index.json` | 0.07 MB | 18 KB of JSON | 3 todos, 12 relations | 3 todo files, at deploy | 0.22 s | ~110 ms |
-| `library` | `assets/library/index.json` + `entries/<id>.json` | 2.48 MB | 3.59 MB of JSON | 64 entries, 3,557 blocks | 64 entry files, at deploy | 0.23 s | ~165 ms |
-| `kg` | the whole-repo KG export | 3.40 MB | 3.03 MB of JSON-LD | 3,121 nodes, 12,835 edges | 303, already committed | 4.8 s | ~180 ms |
-
-**All four are under the ~5 MB budget**, so all four shipped. The whole-repo
-slice is the **no-body variant**: nodes, edges, and an FTS5 over names,
-titles, summaries and descriptions, with bodies as payload pointers. It is the
-one slice larger than its JSON source, because it adds a full-text index the
-JSON does not have; it stays under budget because it stores IRIs as fragments
-of the document (`skill/todo-manager`, with `<doc>#` in `meta.base`). The
-budget is `SIZE_BUDGET_BYTES`, **reported** in the manifest as `overBudget` and
-not gated: the beans slice grows every session, and a gate would turn every
-open PR red on the day it crossed the line, for a change nobody made. Over
-budget means stop and report (the process's budget gateway), not ship.
+Run `bun run cat slice:sqlite -- --out <scratch>` for current sizes. The
+whole-repo slice is the **no-body variant**: nodes, edges, and an FTS5 over
+names, titles, summaries and descriptions, with bodies as payload pointers. It
+stores IRIs relative to the document (`skill/todo-manager`, with the base in
+`meta.base`) to stay small. The ~5 MB budget is `SIZE_BUDGET_BYTES`,
+**reported** in the manifest as `overBudget` and not gated (the beans slice
+grows every session, and a gate would turn every open PR red for a change
+nobody made). Over budget means stop and report (the process's budget
+gateway), not ship.
 
 ### What a slice file holds
 
@@ -925,17 +806,15 @@ budget means stop and report (the process's budget gateway), not ship.
 - **An FTS5 index over the searchable text.** It is CONTENTLESS
   (`content=''`), so it indexes text without storing it. It keeps **full
   detail**, because positions are what make a phrase query work. Both the
-  official WASM build and `bun:sqlite` compile with `ENABLE_FTS5` (measured
-  2026-10-03: 3.53.4 and 3.53.0).
+  official WASM build and `bun:sqlite` compile with `ENABLE_FTS5`.
 - **No heavy content.** A row carries `payload_sha256`, a pointer to the
   payload at `<BASE_URL>/payload/sha256/<hex>` (§"Payloads"). The client fetches
-  the payload when a result is opened. Measured on beans, the same 717 rows
-  take 7.85 MB with the bodies stored and 2.82 MB without them; the bodies were
-  4.58 MB of the larger file. **What the payload is, is a per-slice decision**:
+  the payload when a result is opened. **What the payload is, is a per-slice
+  decision**:
   a bean's or a todo's source file verbatim; for the library, the PUBLISHED
   `entries/<id>.json`, one payload per entry that every one of its blocks
   points at, never the section files under `library/`, because a withheld
-  entry (bean `cw35`) publishes no verbatim text and the published entry is
+  entry publishes no verbatim text and the published entry is
   what already applied that rule; for `kg`, the KG's own committed payloads,
   from the same `planPayloads` call the subgraph files use. A row with nothing
   heavy has a `NULL` pointer, never an invented one.
@@ -973,12 +852,10 @@ file's bytes. The header records the writing library's version at offset 96.
 
 ### Content-addressed file, fixed-name manifest
 
-**Bean `wixl`, 2026-10-03.** The database was published at `<slice>.sqlite3`,
-one path across builds. Behind a CDN with any TTL a client could fetch a fresh
-manifest and a stale database, fail the sha256 check, and fall back: safe for
-correctness, unsafe for availability. So the database is now
-**`assets/slices/<slice>.<sha256>.sqlite3`**, the full lower-case hex of its
-bytes, and the manifest's `file` names it. A fresh manifest names a file no
+The database is published at **`assets/slices/<slice>.<sha256>.sqlite3`**,
+the full lower-case hex of its bytes, and the manifest's `file` names it. At
+one fixed path, a client behind a CDN could fetch a fresh manifest and a stale
+database. A fresh manifest names a file no
 cache has seen. A stale manifest names an older file whose bytes still hash to
 what that manifest promises, so the worst case is an older but
 self-consistent database, or a 404 the page reports.
@@ -1023,9 +900,7 @@ changed bytes.
 
 Rows go in sorted by key, the page size is fixed, and the published file is
 `VACUUM INTO` a fresh path, so no free page or insertion history leaks in. The
-gate builds twice and requires one sha256. Measured 2026-10-03: two separate
-processes gave one sha256 for each of the four slices, and the gate re-proves
-it on every run.
+gate builds twice and requires one sha256 on every run.
 
 ### Built at deploy, not committed — when the source moves on most merges
 
@@ -1080,8 +955,8 @@ therefore checks, for every slice:
    the same answer. The page shows it ("the manifest and the database
    disagree … Refused") and marks `data-slice-error="integrity"`. Import it
    into the pool and unlink older builds of that slice.
-4. Open it. `info.contentAddressed` is false only for a pre-`wixl` manifest
-   that names a fixed path.
+4. Open it. `info.contentAddressed` is false only for a legacy manifest that
+   names a fixed path.
 
 **The VFS is `opfs-sahpool`, in a Worker** (`slice-sqlite-worker.js`), not the
 `opfs` VFS. That one needs SharedArrayBuffer, which needs COOP/COEP headers,
@@ -1092,12 +967,7 @@ never assumed.
 
 The WASM build is **vendored** from the pinned `@sqlite.org/sqlite-wasm`
 devDependency, at 1.51 MB (`bun run cat slice:sqlite:vendor`, gated by
-`:vendor:check`). The reason: jsDelivr is unreachable from some builders, and
-a reader's search should depend on no host but the site's own.
-
-Measured in Chromium against a plain static server with no COOP/COEP: first
-open, including download and verification, 110 to 190 ms per slice on
-loopback (table above); reopen from OPFS about 85 ms, with no download.
+`:vendor:check`), so a reader's search depends on no host but the site's own.
 
 ### The search page — one page, the slice is a parameter
 
@@ -1112,8 +982,7 @@ it is: `markdown` (front matter stripped), or `library-entry` (the block of
 the published entry whose id the row names). The parameter is checked against
 a name pattern before it becomes part of a path.
 
-`beans/search.html`, the pilot's own page, is now a forwarding page to
-`?slice=beans`, so a link to it still lands.
+`beans/search.html` forwards to `?slice=beans`.
 
 ### Adding a slice
 
@@ -1139,24 +1008,20 @@ Follow the `slice-sqlite-publish` process. In short:
 
 1. **Decide it is in this graph.** The `kg` graph holds skills, processes,
    roles, capabilities and the directory declaration. **Beans are not in it** —
-   `beans/` is its own graph typology with its own nodes (`defs`, `workflows`), and
-   folding the work plan into the KG re-merges exactly what was separated.
+   `beans/` is its own graph typology with its own nodes (`defs`, `workflows`).
 2. **Mint its `@id` with `makeIri`, and give it an `@type`.** Both are asserted
    by test. Never hand-build an IRI: `makeIri` is the one place every node's
-   IRI is decided, so the move from `#fragment` to `<doc
-   dir>/<kind>/<id>` (§"Subject IRIs — a path, not a `#fragment`") changes
-   them all at once.
+   IRI is decided (§"Subject IRIs — a path, not a `#fragment`").
 3. **Report what you could not read**, in `problems[]`. Never `continue`
    silently past a parse failure.
 4. **Say which edges it carries, and declare each one in the context** with
    `{"@type": "@id"}`. A node type that relates to nothing is a list and
    belongs in a list; an edge that is not declared is a string and might as
    well be one.
-5. **Emit the nodes your edges point at.** Minting `performedBy` without
-   emitting a Role node left all 328 of them dangling; minting
-   `incoming`/`outgoing` without SequenceFlow nodes left sixty more. The
-   export reports `danglingLinks` for exactly this, and the four that remain
-   are data defects (bean `nup0`), not exporter bugs.
+5. **Emit the nodes your edges point at.** An edge type without its target
+   node type (`performedBy` without Role nodes, `incoming`/`outgoing` without
+   SequenceFlow nodes) leaves every edge dangling. The export reports
+   `danglingLinks` for exactly this.
 
 ## Running it
 
@@ -1172,12 +1037,10 @@ nodes" above); the deploy says `instance` aloud.
 
 The output is a **build artifact**, deliberately not committed: it is a
 snapshot of a tree that changes every commit, so a committed copy is stale by
-construction and invites the drift `5o3a` describes. CI regenerates it on every
-publish.
+construction. CI regenerates it on every publish.
 
 > **Do not read `.claude/skills/registry.json` for this.** It is a runtime
-> manifest, not the graph: measured 2026-09-18 it reported **23** skills
-> against 126 on disk, because it reads only `.claude/skills/local/*.json`.
+> manifest, not the graph: it reads only `.claude/skills/local/*.json`.
 > Package skills appear in it as bare name lists with no instruction body, and
 > processes, the graph-typology registry and the declaration are absent entirely.
 > It is also uncommitted and published nowhere. The two coexist; only one is

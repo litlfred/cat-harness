@@ -21,8 +21,7 @@ graph-typologies:
 
 **A system is tested against a plan, by somebody who is not the system, and
 certified by somebody who did not run the test.** Everything below is that
-sentence made operational. It is arc `3fva` (bean `3o5b`), proposal
-`docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md` §3.
+sentence made operational.
 
 This skill is the PROCESS. How to write a test is
 [`test-engineer`](test-engineer.md); how a folio's content is tested is
@@ -40,14 +39,14 @@ their halves — this one does not restate them.
 | the system under test | the `systemUnderTest` facet on an actor — `schemas/kg/skill-package.ts` | `scenarios/actors/*.json` |
 | the run | `folio-test-run/v1` with `plan` + `sut` — `schemas/sdlc/test-run.ts` | the declared `qa` directory |
 | the report | `test-report/v1` — `schemas/sdlc/test-report.ts` | the `qa-reports` branch, `tests/<plan>/<sut>/<run>/` |
-| the certification | a judgement, `qa-attestations/v1` | the declared `attestations` graph, on main (D2 (a), D5 default) |
+| the certification | a judgement, `qa-attestations/v1` | the declared `attestations` graph, on main |
 
 **The run points at the plan; the plan names no run.** A plan is reused across
 runs and systems, so a back-pointer would turn authored content into live
 state. Same direction for the report → run and the certification → report.
 
 **The platform model is FHIR-free.** FHIR R5 TestPlan *informed* `test-plan/v1`
-and is a DOWNSTREAM export target (bean `18p1`, in the FHIR IG layer). Never read a
+and is a DOWNSTREAM export target, in the FHIR IG layer. Never read a
 FHIR TestPlan as the source of a plan here.
 
 ## The system under test is a facet, not a role
@@ -62,7 +61,7 @@ Being tested is not a lane anybody takes on. An actor that can be executed —
 ```
 
 `kind` is the closed list `SUT_KINDS` (`skill`, `agent`, `tool`, `machine`,
-`ig`, `process`; owner ruling) — the same vocabulary as a plan's
+`ig`, `process`) — the same vocabulary as a plan's
 `scope.kind`, so the two are compared, not translated. **Reach is the actor's
 own `reach`**, read by `sutRefFor`; absent is `unknown`, never `internet`.
 
@@ -84,10 +83,10 @@ verdict about itself — `test-report/v1` refuses a reviewer whose `id` or
 ### Tester
 
 1. **Resolve the plan.** P parses as `test-plan/v1`, names at least one `req:`
-   requirement (owner ruling), its `exitCriteria.decision` resolves to a
+   requirement, its `exitCriteria.decision` resolves to a
    decision in a `.dmn` that exists, and its `scope.kind` matches the SUT
    actor's facet kind. A plan that does not resolve is not run.
-2. **Bind the test data** (bean `vm6m`). A *fixed* set is a committed path and
+2. **Bind the test data** ([`test-data-sets`](test-data-sets.md)). A *fixed* set is a committed path and
    is evidence only once reviewed (`isEvidence`). A *generated* set is a
    template + params + **seed** and is never materialised into the repository.
    Both feed the run's `data` hash; runner, configuration and scenario bank feed
@@ -98,7 +97,7 @@ verdict about itself — `test-report/v1` refuses a reviewer whose `id` or
    not an omission (`checkAgainstPlan`).
 4. **Write the run and the report.** The run records `plan {id, version}` and
    `sut {actor, version, reach}`; the report rolls up per plan, never across
-   plans (`py74`), and `testReportPath` says where it goes.
+   plans, and `testReportPath` says where it goes.
 
 ### Untainted checker
 
@@ -127,7 +126,7 @@ unexecuted case, a checker that disagreed or could not run, or a report in
 which nothing passed. It is never rendered as certified, and it is not a
 refusal either: it says the evidence does not decide, so nothing is signed.
 
-**The certification decision is a judgement** (owner ruling). The table says
+**The certification decision is a judgement.** The table says
 whether the exit criteria are met; the certifier — a person, a specialisation
 of `stakeholder` — records the decision, and it lives with the other
 judgements under the declared `attestations` graph, never on the `qa-reports`

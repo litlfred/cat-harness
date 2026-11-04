@@ -63,7 +63,7 @@ The core value of the cache is that an expensive step's intermediate outputs sur
 | Lean | `.olean` files | `.trace` files | Lake rebuild + eviction |
 | FHIR AST | AST JSON + edges | `txcache/` (tx.fhir.org expansions) | Publisher re-hitting tx.fhir.org for every ValueSet |
 
-Owner decision (2026-10-01): `input-cache/txcache/` goes on the `fhir-ast` branch alongside the AST files.
+`input-cache/txcache/` goes on the `fhir-ast` branch alongside the AST files.
 
 Preserving these intermediates is what makes subsequent incremental builds (such as those in `ig-incremental-build.bpmn`) fast.
 
@@ -76,7 +76,7 @@ Preserving these intermediates is what makes subsequent incremental builds (such
 | Key Inputs | `toolchain` (Lean version), `sourceRevision` | `toolchain` (Publisher version), `sourceRevision`, `inputDigest` |
 | Storage Branch | `lake-cache/<package>-<toolchain>` | `fhir-ast/<ig-package-id>` |
 | Service Script | `lake-cache.sh` (9 verbs) | `ig-cache.sh` (7 verbs) |
-| Refreshed by | an agent's `lake-cache.sh contribute` | a reusable workflow of the IG layer, on a runner (the Publisher needs Java and a 10 GB heap), which each IG repository dispatches; a site build refuses an AST that is not valid (owner, 2026-10-14) |
+| Refreshed by | an agent's `lake-cache.sh contribute` | a reusable workflow of the IG layer, on a runner (the Publisher needs Java and a 10 GB heap), which each IG repository dispatches; a site build refuses an AST that is not valid |
 | Cone Engine | Lake's `.trace`-based dependency graph | SUSHI's `fsh-index.json` (forward: file → resource) + `fsh-cone.ts` (reverse: who uses this file) + `AstPlanCli` |
 | Incremental | `lake build` (only stale modules) | `IncrementalBuildCli` (cone rebuild loop) |
 
@@ -92,20 +92,3 @@ there. No modification to SUSHI is needed.
 half — who depends on a file — so a changed RuleSet- or Alias-only file (which
 produces no resource itself) can be traced to the resources it affects. These two
 maps together give the planner a complete cone.
-
-Measured 2026-10-01 on the trust IG (678 resources):
-
-| plan input | available | result |
-|---|---|---|
-| No `fsh-index.json`, no `fsh-users` | old | `full` build always |
-| `fsh-index.json` only | new | `incremental`, 2 resources for a single-file change (**0.3% cone**) |
-| `fsh-index.json` + `fsh-users` | new | `incremental` with RuleSet/Alias propagation |
-
-### Timing (the trust IG, 678 resources, one CodeSystem changed)
-
-| build type | time | vs cold |
-|---|---|---|
-| Cold full build | 22:28 | 1× |
-| Warm full build (cached pkgs + tx) | 4:39 | 4.8× |
-| Successive warm (everything cached) | 3:16 | 6.9× |
-| **Projected cone rebuild (2 resources)** | **~15s** | **~90×** |

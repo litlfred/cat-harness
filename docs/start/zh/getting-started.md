@@ -20,7 +20,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 ## 1. “创建 folio”是五种不同的请求
 
-把这句话分别说给五个人听，你会得到五份不同的工作。智能体的首要任务不是马上开工，而是弄清楚你指的是哪一种。
+智能体的首要任务是弄清楚你指的是哪一种。
 
 | 你的意思 | 你已有的 | 猜错会让你付出什么 |
 |---|---|---|
@@ -30,7 +30,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 | **在你已有的 folio 中新建一篇文档** | 一个 folio，以及心中的某一章 | 一整个空的 folio，而那一章仍然没写 |
 | **你更愿意用自己的话来描述的某件事** | — | — |
 
-第四行值得停下来想一想。这不是你的错——“folio”是个陌生的词，本想要其中的一章却说成要一个 folio，是最自然不过的误会。据此直接搭脚手架的智能体，交付的是一个空仓库，而不是你要的那一段文字。
+第四行最常见：本想要 folio 中的一章，却说成要一个 folio。
 
 ## 2. 智能体如何决定——以及为什么这是一张表而不是一次判断
 
@@ -74,11 +74,9 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 只有规则 7 能够靠查看来判定。一个已经是 folio 的目录与三种不同的请求都相符，而一个装着某人项目的目录与两种请求相符。这张表不会掩盖这一点——它返回 `ask`。
 
-这比听起来更重要：
-
 > **`ask` 是这张表的一个结果，而不是智能体做出的决定。**
 
-智能体无法路由到表没有返回的分支，所以提问成了必须，而不只是礼貌。一个被留给自己决定*是否*提问的智能体，在任何想显得乐于助人的压力下，都会决定不问——而这三种含糊的情形，恰恰是猜测代价最高的地方。
+智能体无法路由到表没有返回的分支，所以提问是必须的。
 
 你回答之后，你的回答就成为 `statedIntent`，同一张表会被再次求值。这就是为什么图中会回到*读取仓库事实*，而不是直接跳到某个分支：**你的回答是证据，像任何其他事实一样被读取。**
 
@@ -88,7 +86,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 ## 3. 对话是什么样的
 
-**问题的形式先于其内容。** 智能体先确认你希望被如何提问——可选择的选项、普通聊天、朗读、大字号——并把它记录在 `interaction/interaction.json` 中，这样以后的会话不会再问你一次。参见[无障碍](accessibility.html)。
+**问题的形式先于其内容。** 智能体先确认你希望被如何提问——可选择的选项、普通聊天、朗读、大字号——并把它记录在 `memory/interaction.json` 中，这样以后的会话不会再问你一次。参见[无障碍](accessibility.html)。
 
 然后，当答案确实含糊时：
 
@@ -150,7 +148,7 @@ bun run cat scan:repo -- --json  # the same, as facts
 
 它把发现的内容分成**三**类——`library`（别人写的源材料）、`content`（在这里撰写的文字）以及 `unclassified`。
 
-第三类是有意为之的。一个把每个文件都硬塞进两类之一的分类器，其准确度无人能评估，而它的错误会以“被移动的文件”的形式交付给你。这个分类器会告诉你它无法归类的东西，让你来决定。
+`unclassified` 列出它无法归类的东西，由你来决定。
 
 接着是三个问题，都可以通过选择来回答，并且都是**按目录**而不是按文件来问：
 
@@ -200,7 +198,7 @@ bun run cat pages:bootstrap -- --wait  # probe until the site answers (bounded)
 }
 ```
 
-`description` 是 **markdown**，按原样渲染。它就是落地页绘制的那个节点；没有另一个需要与之保持同步的页面，而这正是用意——出现在两个地方的描述，迟早会自相矛盾。
+`description` 是 **markdown**，按原样渲染。它就是落地页绘制的那个节点；没有另一个需要与之保持同步的页面。
 
 ### 你自己的背景图
 
@@ -217,7 +215,7 @@ bun run cat pages:bootstrap -- --wait  # probe until the site answers (bounded)
 }
 ```
 
-`textRegion` 是文字可以安全放置的位置，以图片的比例表示。**它是人工撰写的，而不是计算出来的**，因为它说明的是画面中*安静*的地方——这是关于构图的判断，任何像素分析都无法替代。平台自己的笔记本电脑背景图上有一朵思绪云，下方内部是空白的，一个标志占据它的上三分之一，一只猫耳从它的左下方伸进来；避开这三者的那个框，是通过渲染候选方案并逐一查看找到的。对你自己的图片也这样做。
+`textRegion` 是文字可以安全放置的位置，以图片的比例表示。**它是人工撰写的，而不是计算出来的**，方法是渲染候选框并逐一查看。
 
 每种视口声明一个变体。每个变体都带有它**自己的**区域，因为同一构图在纵向裁切中的位置是不同的。
 
@@ -236,7 +234,7 @@ bun run cat docs:harness -- --check   # ...and fail if stale (for CI)
 | **不带**区域的背景图 | 显示图片，把文字放在它**下方** |
 | **没有**背景图 | 只显示文字 |
 
-中间那一行是有意为之的。凭猜测放置的文字会落在猫身上，所以未声明区域意味着“不要叠加”，绝不是“放哪都行”。而一个没有配图的 folio 是寻常的，而不是坏掉的。
+未声明区域意味着“不要叠加”，绝不是“放哪都行”。
 
 如果你声明了 `mobile` 变体，手机访问时就会得到那个文件——如果你没有声明，它会得到你已有的最宽的那个。这种回退是真正的降级，因为宽幅裁切的区域并不适合窄屏；它会被报告出来而不是被隐藏，这样渲染器就可以选择不叠加文字，而不是把文字放在一个没人选定的位置。
 
@@ -245,14 +243,14 @@ bun run cat docs:harness -- --check   # ...and fail if stale (for CI)
 folio-assistant 使用 [`beans`](https://github.com/hmans/beans) 作为唯一的工作计划机制——跨会话持久、在智能体之间共享、提交到仓库中。
 
 ```sh
-scripts/install-beans.sh          # install the CLI if missing
+cat-harness-tools/scripts/install-beans.sh  # install the CLI if missing
 beans prime                       # emit work-plan priming for agents
 beans list                        # current open items
 beans create "draft chapter 1"    # open an item
-beans <id> --status in-progress   # claim an item
+bun run cat beans:claim <id>      # claim an item
 ```
 
-> **创建之前先检查。** `beans create` 每次调用都会生成一个新的 id，并且不做任何去重。重复进入一个脚本化步骤而不做存在性检查，曾经在一个下午就在一个 folio 中产生了 **14,688** 个重复的 bean。这项检查写在 [`todo-manager`]({{ '/reference/skill-instructions/todo-manager.html' | relative_url }}) 技能中。
+> **创建之前先检查。** `beans create` 每次调用都会生成一个新的 id，并且不做任何去重，所以先检查是否已存在。这项检查写在 [`todo-manager`]({{ '/reference/skill-instructions/todo-manager.html' | relative_url }}) 技能中。
 
 `SessionStart` 钩子会在每次会话开始时呈现计划，而 `work_plan_prime` MCP 工具把同样的内容提供给任何已连接的智能体。
 

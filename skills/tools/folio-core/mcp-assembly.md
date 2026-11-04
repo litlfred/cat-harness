@@ -38,8 +38,8 @@ tools adjacently in a flat list with no grouping mechanism.
 Two Tool nodes projecting to one name is an **error at assembly time**, not
 something to paper over by prefixing the loser.
 
-This is the same rule `ContributionRegistry` and `GraphTypologyRegistry` already
-follow, for the same reason: automatic disambiguation means the name a caller
+`ContributionRegistry` and `GraphTypologyRegistry` follow the same rule:
+automatic disambiguation means the name a caller
 gets depends on load order, and load order is not something anybody reasons
 about. Refuse, name both contributors, and make somebody choose.
 
@@ -88,5 +88,4 @@ truncated or reordered the list is reading descriptions.
 
 Do not attempt to recreate grouping with separators (`bean/claim`,
 `bean.claim`). Clients render names literally and some validate them against a
-restricted character set; a clever separator is a portability bug for a
-cosmetic gain.
+restricted character set, so a separator is a portability bug.

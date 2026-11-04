@@ -16,15 +16,13 @@ This is **one Tool** for the [`work-plan-store`](work-plan-store.md)
 contract, the one every checkout uses today. A process or skill names the
 contract's operation; this page says how this Tool performs it. Another Tool
 (a beans server, an MCP service, a run-scoped store) has its own page and
-keeps the same contract (cat-harness#991).
+keeps the same contract.
 
 ## Where the beans are
 
 The work plan does not live on `main`. It lives on a branch per graph,
 `cat/<harness>/beans` (for this harness `cat/cat-harness/beans`), declared by
-the `beans` entry's `source` in `cat-harness.json`
-([state-branch proposal](../../../docs/proposals/state-branch-2026-10-02.md)).
-It is mounted at `beans/` when a session starts:
+the `beans` entry's `source` in `cat-harness.json`. It is mounted at `beans/` when a session starts:
 
 ```sh
 bun run cat state:mount
@@ -43,7 +41,7 @@ bun run cat state:mount
 | `update(id, change, ifMatch)` | `beans update <id> …` | edit the front matter |
 | `note(id, text)` | `beans update <id> --body-append …`, or a file in `beans/notes/` | append to the body, or add a note file |
 | `update(id, { archived: true }, …)` | `beans archive` (the sweep), or move the file | move `defs/<id>--*.md` into `defs/archive/`; the status is kept |
-| `history(id)` | `git log --follow -- beans/defs/<id>--*.md` on the branch, merged with the `history` of every instance in `beans/workflows/` that names the bean (Q-BSD-4 A) | the same |
+| `history(id)` | `git log --follow -- beans/defs/<id>--*.md` on the branch, merged with the `history` of every instance in `beans/workflows/` that names the bean | the same |
 | `positions(id)`, `beansAt(…)` | read `beans/workflows/*.json`: an instance names its bean in `bean` and `carriedBeans`, its position in `tokens` | the same |
 
 Every write is then **pushed to the branch**, never committed to a code PR on
@@ -66,7 +64,7 @@ change before it writes. The work-plan store's conformance suite holds this Tool
 ## Limits
 
 - The `beans` CLI is third-party and absent on a fresh container until
-  `scripts/install-beans.sh` has run; `beans-manual` writes the same layout.
+  `cat-harness-tools/scripts/install-beans.sh` has run; `beans-manual` writes the same layout.
 - `history` costs one `git log` per bean, and needs the branch's history
   fetched (`--depth` enough to reach the bean's creation).
 - `positions` scans every instance file; a store with many instances should

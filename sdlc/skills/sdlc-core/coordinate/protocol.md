@@ -11,8 +11,8 @@ description: >
 The eleven numbered coordination steps. Read this when you are **doing** the
 coordination; the parent says when to invoke it and what it is for.
 
-**Section numbers are the parent's and do not change here** — other skills cite
-`coordinate §0a` and `coordinate.md §8a`, and those resolve to this file.
+**Section numbers are the parent's** — a citation such as `coordinate.md §8a`
+resolves to this file.
 
 ## Protocol
 
@@ -157,18 +157,15 @@ Thanks @<reviewer> — addressed all <N> threads in [`<sha>`](<commit-url>).
 **Re #2 (note):** <short paragraph explaining the modification>
 ```
 
-This avoids per-thread reply storms while still giving a paper
-trail for every verdict.  Threads marked `accept` /
+Threads marked `accept` /
 `accept-with-modification` should be resolved (the *resolve review thread* [forge-operation Tool](../../../../skills/tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each))
 once the reviewer acknowledges or after a one-day cooling period.
 
 #### 5d.  When the reviewer pushes back
 
-Code-review bots often respond to your reply.  Keep the dialogue
-**short** — re-state the reasoning or the sibling-PR convention once,
-ask for a yes/no on whether the reviewer agrees.  After the
-second exchange, escalate (§6).  Loops with bots burn cycles
-without converging.
+Keep the dialogue **short** — re-state the reasoning or the sibling-PR
+convention once, ask for a yes/no on whether the reviewer agrees.  After
+the second exchange, escalate (§6).
 
 ### 6.  Inconsistent findings → escalate, do not paper over
 
@@ -193,9 +190,7 @@ The author owns the resolution.  Do not "split the difference" or
 guess.  Inconsistent findings — whether between sibling PRs, or
 between a reviewer and a sibling PR — are an audit flag.
 
-**Escalation rate-limit.**  An author who wakes up to fifteen
-`@<author>` pings is a useless arbiter.  Batch-escalate when
-possible: one comment listing every disagreement found in a
+**Escalation rate-limit.**  Batch-escalate when possible: one comment listing every disagreement found in a
 review pass, with a short table.
 
 ### 7.  Periodic sibling-PR triage
@@ -274,7 +269,7 @@ In the same `git fetch origin main` pass, additionally run:
 ```bash
 git diff --name-only --diff-filter=A \
   <last-fetched-main-sha>..origin/main \
-  -- '.claude/skills/local/*.md' '.claude/skills/*/*.md'
+  -- '*skills/*.md'
 ```
 
 For each new skill file:
@@ -286,7 +281,7 @@ For each new skill file:
    - Mention a file kind / domain / pattern you're editing (touched
      in `git diff origin/main..HEAD --name-only`), OR
    - Provide a new integration-watcher child (`inherits:
-     local/integration-watcher`) and your branch is itself an
+     sdlc-core/integration-watcher`) and your branch is itself an
      integration-watcher PR, OR
    - Provide a new QA / sweep / audit skill (one-voice-*, proof-*,
      compute-*, etc.) and your branch touches the corresponding
@@ -301,18 +296,14 @@ For each new skill file:
    new `## New skills detected on main` subsection so future
    sessions don't re-prompt.
 
-This mirrors `watch.md §3.Q3a` and lets every coordinator
-session pick up new infrastructure (audit watchers, scoring
-heuristics, formalisation helpers) as it lands, without the user
-having to manually announce skill additions to every in-flight PR.
+This mirrors `watch.md §3.Q3a`.
 
 #### 8c.  Pre-push stale-state check (MANDATORY)
 
 **Trigger:** before every `git push` (whether new commits or force-
-push). The watcher can lapse during long focused work — Monitor
-timeouts, hooks-busy windows, or background-agent waits all silently
-leave `origin/main` unfetched. Before any push, force a fresh fetch
-and compute the upstream delta:
+push). The watcher can lapse silently (Monitor timeouts, hooks-busy
+windows, background-agent waits), so force a fresh fetch and compute
+the upstream delta:
 
 ```bash
 git fetch origin '+refs/heads/main:refs/remotes/origin/main' 2>/dev/null
@@ -324,19 +315,13 @@ echo "main is ${DELTA} commits ahead since branch base"
 > **Fetch the ref you are about to read, with an explicit refspec.**
 > `git fetch origin main` writes `FETCH_HEAD`; it refreshes
 > `refs/remotes/origin/main` only when the clone's configured
-> `remote.origin.fetch` covers that branch — and it **exits 0 either way**. A
-> clone whose refspec has been narrowed to one branch (this happens: a `qou`
-> clone was found pinned to a single sibling) answers every `origin/main`
-> question from a ref that has not moved for days, and nothing in the output
-> distinguishes that from being up to date. Use
-> `+refs/heads/<b>:refs/remotes/origin/<b>`, which is correct whatever the
-> clone is configured with.
+> `remote.origin.fetch` covers that branch — and it **exits 0 either way**, so
+> a clone whose refspec was narrowed to one branch answers every `origin/main`
+> question from a stale ref. Use `+refs/heads/<b>:refs/remotes/origin/<b>`,
+> which is correct whatever the clone is configured with.
 >
-> Two corollaries, both of which have bitten:
->
-> - **Fetch the same ref you then read.** `watch.md §5b` fetched `main` and
->   measured `origin/<BRANCH>`, so its mandatory missed-commit recovery
->   reported 0 missed by construction.
+> - **Fetch the same ref you then read.** Fetching `main` and then measuring
+>   `origin/<BRANCH>` reports 0 missed commits by construction.
 > - **A per-branch refspec does not repair `for-each-ref`.** Anything walking
 >   `refs/remotes/origin/claude/*` sees only what was fetched by name, so an
 >   empty result means "never fetched", not "no siblings". Check
@@ -355,10 +340,8 @@ Additionally, list PRs with the *list change proposals* [forge-operation Tool](.
 `state:open updated since <session_start>` and check for sibling PRs
 that opened mid-session. Each new sibling enters scope per §3.
 
-This check is the difference between a clean fast-forward push and a
-multi-conflict rebase storm. If you're discharging many small commits
-in a row, invoke this between every ~5 commits OR after every 30 min
-of foreground work.
+When pushing many small commits in a row, run this check every ~5 commits
+or every 30 minutes of foreground work.
 
 #### 8d.  Long-task drift recovery
 
@@ -424,13 +407,7 @@ posting; final state can be merged to main when the goal completes.
 **Cherry-picking is fine — treat it as a low-friction default.**
 When an in-flight sibling has infrastructure (a script, a witness,
 a template, a content block) that you'd otherwise
-duplicate, just cherry-pick it. The cross-PR ceremony in earlier
-revisions of this skill (mandatory "inform the sibling before",
-"byte-for-byte identical or post the adaptation back") was
-over-engineered for a working norm where small structured commits
-exist precisely so they can be picked up by anyone.
-
-The remaining rules are minimal:
+duplicate, just cherry-pick it. The rules:
 
 1. **Cite the source in your commit message.** Either
    `Cherry-pick of #<N>:<sha>` on the trailer line or a
@@ -453,7 +430,7 @@ The remaining rules are minimal:
    are explicitly allowed; you do not need to wait for the source
    to land on `main`. When the source eventually merges, you'll
    either pick up the canonical version on your next rebase
-   (drift handled by the standard §1·a auto-resolve) or
+   (drift handled by the `watch` §2a auto-resolve) or
    keep a slight divergence (also fine).
 
 5. **Pre-flagging is optional.** If you're picking something

@@ -13,6 +13,4 @@ two disagree the skill wins:
   — how a person wants to be asked.
 
 Setting an agent's context deterministically from the knowledge graph at each
-task is not yet built; it is tracked as bean `3q47`. Saying so here is
-deliberate — a page that described it as working would read exactly like one
-that described something real.
+task is not yet built.

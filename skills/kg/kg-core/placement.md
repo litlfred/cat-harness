@@ -18,10 +18,8 @@ allowed-tools: Read Grep Glob Bash
 
 An agent that starts writing and works the answer out afterwards produces a
 node in the wrong repository, under a hardcoded path, named by a composed
-string. All three are silent: the tests pass, the build is green, and the
-damage lands on the next consumer — usually a different folio, usually weeks
-later. The worked failure at the end of this skill is one file that would have
-destroyed the README of every folio except the one it was written for.
+string. All three are silent: the tests pass, and the damage lands on the next
+consumer.
 
 This is a **decision procedure**. Four steps and a stop. Run it in order; the
 later steps are meaningless if an earlier one is a guess.
@@ -55,11 +53,9 @@ common mistake:
 
 A value that varies per folio and is consumed by platform code is a **config
 field** — `<name>.config.json`, `<name>.json`, `lakefile.toml` — never a
-literal in a script and never a file the platform has to go and find. The
-simulator directory was the literal `folio-assistant/simulators` until it
-became a config field; the Lake prefix was `QOU.` until it was read from
-`lakefile.toml`, and is now left **unprefixed** when no lakefile names one,
-because a wrong namespace is worse than none.
+literal in a script and never a file the platform has to go and find. A Lake
+prefix, for example, is read from `lakefile.toml`, and left **unprefixed** when
+no lakefile names one, because a wrong namespace is worse than none.
 
 **Do not infer the instance from the directory you are standing in.** Read the
 declaration at the repository root, carrying `name`, `stub` and
@@ -79,7 +75,7 @@ rest. The vocabulary is open.
   `skill_fetch` to load one, `work_plan_prime` for the work plan. With no MCP,
   resolve the graph from the declaration (`readDeclaration` in
   `schemas/kg/cat-harness.ts`) and read the directory it names.
-- **In *this* repository the `cat-harness` graph's path is `skills/`.** That is
+- **In *this* repository the `skills` graph's path is `skills/`.** That is
   a fact about this instance, not a convention you may carry to another one.
   Ids are stable across a relocation; paths are not.
 - **Overrides match on the entry's `id`, never on its `path`.** An instance
@@ -88,20 +84,15 @@ rest. The vocabulary is open.
   relocation, and every consumer then scans a directory that is not there.
 - **Declare only what exists.** A declared-but-absent directory is worse than
   an undeclared one: every consumer scans nothing and reports a clean run over
-  it (bean `dh4f`, thirty pipeline scripts, three of them passing over a corpus
-  they could not read).
+  it.
 
 Full rules, inheritance order and the three read states:
 [`directory-conventions.md`](directory-conventions.md).
 
 ### The `docs` graph, and the filing question it answers
 
-`docs` is an authorable destination like the others, and it is the one an agent
-most often forgets to consider — measured 2026-09-21, when this agent derived
-the destination list for a CRDM sign-off straight from the declaration and
-still **omitted `docs`**, offering skill / proposal / nothing for a design
-record that belonged in none of them. Deriving the list is not enough if the
-derivation drops a declared graph.
+`docs` is an authorable destination like the others, and the one an agent
+most often forgets to consider when it derives a destination list.
 
 **What goes there:** a **design-memory asset** — something produced while
 BUILDING, rather than the thing built.
@@ -109,14 +100,12 @@ BUILDING, rather than the thing built.
 that identifies the class and why `fsh-guts` is the tempting wrong answer
 (its content may be thrown away; a design record's value is that it survives).
 
-**WHOSE `docs/` comes first, and it is Step 1's question again.** Owner,
-2026-09-21: *"if it is realated to some harness/feature/tool that detailed
-infromation/design/planning/etc go into that harness' docs/"*. `docs` is a
-declared graph, and the instance that owns the feature owns the record of why
-it is shaped that way — measured the same day, `cat-harness/docs/` and
-the IRIS replica's `docs/` both exist and the IRIS replica declares `docs` among its own
-graphs. A feature's reasoning filed in the wrong instance's `docs/` reads fine
-and is unreachable from the place that needs it.
+**WHOSE `docs/` comes first, and it is Step 1's question again.** Detailed
+information, design and planning for a harness, feature or tool go into that
+harness's `docs/`: `docs` is a declared graph, and the instance that owns the
+feature owns the record of why it is shaped that way. A feature's reasoning
+filed in the wrong instance's `docs/` reads fine and is unreachable from the
+place that needs it.
 
 **Then where inside it**, which is this skill's question and not
 `kg-contribution-offer`'s:
@@ -134,8 +123,7 @@ Three rules that catch the usual mistakes:
 
 1. **A design record is dated and says what it was true OF.** It is history, so
    it carries the commit, PR or issue it describes. A record written in the
-   present tense becomes a claim about today, and goes stale invisibly — the
-   `8nzu` failure, where a dated observation read as current guidance.
+   present tense becomes a claim about today, and goes stale invisibly.
 2. **It states what it could NOT establish.** A requirement referenced but never
    defined, a measurement not taken: named as such. A design record that reads
    complete when it is not is worse than a short one.
@@ -143,7 +131,7 @@ Three rules that catch the usual mistakes:
    yourself writing *"the agent SHALL"*, it is a skill and it is in the wrong
    graph.
 
-**The line between the two, stated as a test** — the owner's, 2026-09-21:
+**The line between the two, stated as a test:**
 
 > **A skill carries what a competent practitioner needs IN ORDER TO DO the
 > task. Anything beyond that is documentation.**
@@ -154,27 +142,20 @@ directions fail silently — a skill that swallows them makes every agent read a
 chapter to find a rule, and a rule filed in `docs/` because it arrived with
 context is a rule `skill_fetch` will never serve.
 
-### The inheritance gap — know it before you rely on it
+### Inheritance
 
-An instance is supposed to **inherit its dependencies' directories and skills**,
-deepest dependency first and root last so the root wins. For directories that
-works: `declarationChain` + `resolveDirectories` are wired.
-
-**For skills it does not.** `resolveSkillDirs` in `schemas/kg/harness-config.ts`
-computes the cross-instance skill overlay and **has no caller**, so skill
-discovery is **root-only in practice today** and a dependency's skills are not
-yet reachable. Outstanding Phase 0.1 work.
-
-What that means for placement, concretely: **a skill you put in the platform
-intending a downstream folio to pick it up will not reach that folio yet.** If
-the folio needs it now, that is a reason to say so and ask — not a reason to
-copy the skill into the folio, which mints a second copy free to drift.
+An instance **inherits its dependencies' directories and skills**, deepest
+dependency first and root last so the root wins: `declarationChain` +
+`resolveDirectories` for directories, and `resolveSkillDirs` in
+`schemas/kg/harness-config.ts` for the cross-instance skill overlay. So a
+skill placed in the platform reaches a downstream folio through its
+declaration; never copy a skill into the folio, which mints a second copy free
+to drift.
 
 ## Step 3 — which KIND of node?
 
-The axes below are distinct, and each pair has been conflated at least once at
-real cost. Ask the separating question; do not pattern-match on what the thing
-resembles.
+The axes below are distinct. Ask the separating question; do not
+pattern-match on what the thing resembles.
 
 | you are about to write | ask | the two answers |
 |---|---|---|
@@ -190,14 +171,14 @@ resembles.
 partition block kinds into **disjoint** namespaces, and `adapterForKind` — what
 QA-criterion scoping reads — must stay **total and unambiguous**. Profiles
 (`document`, `paper`) **nest**: every document kind is also a paper kind.
-Making `document` a third adapter would have made `adapterForKind` ambiguous on
-all **eight** shared kinds.
+Making `document` a third adapter would make `adapterForKind` ambiguous on
+every shared kind.
 
-**Actor / role / skill / permission is the one with a measured cost.** One
-sentence carries the model — *an actor performs a task in a process as a role,
-using that role's skills* — and moving permissions onto Role, which looks right,
-produced **36 conflicts** where a permission was held by some but not all actors
-sharing a role. Resolution rules, how to bind a lane, and how to add a role:
+**Actor / role / skill / permission.** One sentence carries the model — *an
+actor performs a task in a process as a role, using that role's skills*.
+Permissions stay on the actor: moving them onto Role, which looks right,
+conflicts wherever a permission is held by some but not all actors sharing a
+role. Resolution rules, how to bind a lane, and how to add a role:
 [`role-model.md`](../../process/process-core/role-model.md). Do not re-derive them here.
 
 **A `.md` under the `cat-harness` path that declares its own `$schema` is not a
@@ -224,8 +205,7 @@ writes all three for a new folio.
   says it: it is a bootstrap pointer, and *the discipline lives in the skills
   graph*. A rule that exists only in `AGENTS.md` is not in the generated
   reference, not in the published skill docs, and not found by an agent that
-  went looking for the skill first. The turn-report discipline lived there
-  alone until it was moved.
+  went looking for the skill first.
 
 So: **new guidance is a skill.** Add a pointer from `AGENTS.md` if it needs
 one, and register the skill in its package manifest.
@@ -243,28 +223,21 @@ derive the published paths from it:
 ```
 
 The graph document is under the instance's own directory, the host's
-included (owner, 2026-10-23: one rule for every layer, with subjects beside
-their document;
-[`instance-publication`](instance-publication.md) §"Which base an `@id` is
+included: one rule for every layer, with subjects beside their document
+([`instance-publication`](instance-publication.md) §"Which base an `@id` is
 minted against").
 
-**Compose nothing; resolve everything.** The knowledge-graph tile in the site
-navbar was hand-written as `/kg/` and **404'd from the day it was added** —
-nothing has ever been published there, because the real path comes out of
-`renderingPath`. It is the same defect as the contents table that built every
-PDF cell by convention: all twenty-three chapter links were 404 and always had
-been, and three of six appendix links happened to resolve, which is why nobody
-noticed.
+**Compose nothing; resolve everything.** A hand-written path such as `/kg/`
+404s, because the real path comes out of `renderingPath`.
 
 **A naive guess is not merely fragile, it is wrong on real instances.** WHO's
 SMART Base IG publishes under a stub shorter than its repository name, so "the stub is the repo name"
 fails on the reference implementation the convention was modelled on.
 
-**The declaration file itself is deliberately NOT stub-named.** A consumer
-bootstrapping into a repository it knows nothing about needs **one fixed
-filename to open first**; everything that file describes is free to be named
-after the instance, because by the time you fetch those you have read the
-declaration that names them.
+**The declaration file itself is NOT stub-named:** it is `<name>.json`, found
+by `findDeclarationFile()` matching a file's stem to its own `name`.
+Everything it describes is named after the stub, because by the time you
+fetch those you have read the declaration that names them.
 
 ## Step 5 — when you cannot tell, stop and ask
 
@@ -302,25 +275,15 @@ A or B?
 
 ## The worked failure this skill exists to prevent
 
-`scripts/generate-readme.sh` lived in the **platform** and ended in
-`cp "$OUT" README.md`. It held one folio's content: the title
-`# Quantum Observable Universe`, three `litlfred/qou` badges, a Knot Registry
-of Alexander-Briggs indices, a Project Structure table naming that folio's Lean
-directory, and a CC BY 4.0 licence block. **Run it in any other folio and the
-author loses their README.** Only five of its sections were derived from the
-tree at all; the rest was prose, and prose about a folio belongs to that folio.
+A platform script that writes a whole README holding one folio's title,
+badges and licence destroys the README of every other folio it runs in. Every
+step above catches it: Step 1, the content names one folio; Step 2, a helper
+path is composed rather than resolved; Step 4, published paths are built by
+convention and checked against nothing.
 
-It also resolved its own helpers against the folio root, so it could only run
-from a platform checkout — which has no papers. Every step above would have
-caught it: Step 1, the title and the badges name one folio; Step 2, the helper
-path was composed rather than resolved; Step 4, the published paths were built
-by convention and checked against nothing.
-
-The replacement inverts the ownership — a registry of sections, each written
-**only** where the README already carries its marker pair, and a section that
-cannot read its source returns `skip` and leaves the region exactly as it was.
-The folio owns the file; the platform owns the markers. `AGENTS.md`
-§"README sections" is the full post-mortem.
+The pattern that replaces it: the folio owns the file; the platform owns the
+markers, and writes a section **only** where the README carries its marker
+pair ([`readme-sections`](../../ui/ui-core/readme-sections.md)).
 
 ## Checklist
 
@@ -336,7 +299,9 @@ content object:
 4. **Stub** — if it is guidance, is it a skill rather than a stub or
    `AGENTS.md`? If it publishes, does every path come from `artefactStub()` /
    `renderingPath()`?
-5. **Registered** — package manifest updated, and `bun run scripts/gen-skill-docs.ts`
-   run, so the published mirror is not stale.
+5. **Registered** — `bun run cat skill:register`
+   ([`skill-registration`](skill-registration.md)), and
+   `bun run cat-harness-tools/scripts/gen-skill-docs.ts` run, so the published
+   mirror is not stale.
 6. **Could not determine?** Stop. Ask in the Step 5 frame. Do not default to
    the repo you are in.

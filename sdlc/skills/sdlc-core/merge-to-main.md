@@ -21,8 +21,7 @@ user_invocable: false
 [`merge-authorisation.dmn`](../../processes/decisions/merge-authorisation.dmn).
 
 **Every process that ends in a write to `main` calls it.** Today that is
-`merge-train.bpmn` (`Call_MergeToMain`, in place of the old `Task_Release` and
-`Task_Land`) and `crdm-close.bpmn` (`Call_MergeToMain`, between the recorded
+`merge-train.bpmn` (`Call_MergeToMain`) and `crdm-close.bpmn` (`Call_MergeToMain`, between the recorded
 sign-off and the issue close). [`prepare-merge`](prepare-merge.md) stops before
 it; [`prepare-merge-auto`](prepare-merge-auto.md) Phase 4 runs it. A process
 that merges without calling it is a process with a hole in it, and the remedy is
@@ -30,18 +29,8 @@ a call activity, not a paragraph.
 
 ## Why this is a process of its own
 
-**2026-10-09:** one session merged seven pull requests into `main` across seven
-repositories (cat-harness, bootstrap-tools, the tools layer above this one, and
-four content instances above that). None of those
-repositories runs CI. The owner's instruction had been *"fix all issues until
-green"*, and the session read it as permission to merge. A safety classifier
-flagged the action as "Merge Without Review". The same instruction then appeared
-as the `evidence` of two `trust.consent` re-pins in `folio-assistant`'s
-`index.config.json`.
-
-Nothing stopped it, because merging was never a step: it was the last line of
-`prepare-merge-auto`, a task in `merge-train`, and a line in CRDM Phase 6.
-None of the three could refuse, and none covered a repository with no CI.
+A merge inlined as the last line of another process cannot refuse, and does not
+cover a repository with no CI. As its own step it can.
 
 ## The steps
 
@@ -55,8 +44,7 @@ repository's site, re-pins downstream mounts and reports. Each step's own text i
 
 The merging session is the `merge-steward` lane. With a Merge Manager active,
 that is the steward. With none active, the PR's own session takes the lane
-(owner ruling 2026-10-06, [`merge-queue`](merge-queue.md) §"When no Merge
-Manager is active"). The gate is the same for both.
+([`merge-queue`](merge-queue.md) §"When no Merge Manager is active"). The gate is the same for both.
 
 ## Evidence — read on the head, live, every time
 
@@ -159,8 +147,8 @@ over `none` when the question carried the no-CI sentence) and for `waiver` over
 **The authorisation is bound to the head it was given against.** A push after it
 re-opens the question. The one exception is a bot merge of `main` into the head
 with no other change. **A batch authorisation covers the PRs listed when it was
-given**, not PRs that arrive later (owner, 2026-10-04, quoted in
-[`merge-queue`](merge-queue.md) §Landing).
+given**, not PRs that arrive later ([`merge-queue`](merge-queue.md)
+§Landing).
 
 ## Asking — evidence before the question
 
@@ -184,8 +172,8 @@ with the PR open. Nothing is closed and nothing is deleted.
 
 **An authorisation nobody wrote down cannot be told from one that was never
 given.** `Task_RecordAuthorisation` writes it before the merge. The shape
-already exists: `ReleaseSchema` in `schemas/sdlc/merge-queue.ts` (bean `ixmq`), and
-this step reuses it rather than inventing a second one.
+already exists: `ReleaseSchema` in `schemas/sdlc/merge-queue.ts`, and this
+step reuses it rather than inventing a second one.
 
 **Where the repository has the merge queue**, record it with the command that
 validates it:
@@ -245,8 +233,7 @@ commit unless told otherwise. **Never delete the branch**
    not report it as green.
 2. **`Task_Republish`: rebuild and republish the repository's site.** A
    merge that changes what a published site shows is not done until the site
-   shows it (owner, 2026-10-30: *"merged PRs by agent should trigger page
-   rebuild in process"*). When the merged repository's `index.config.json`
+   shows it. When the merged repository's `index.config.json`
    declares `site.build`, build from the merge commit and publish:
 
    ```sh

@@ -9,7 +9,7 @@ description: >
 
 # Benchmarking mode — reports across models, deliberately excluded from the KG
 
-> Skill id: `benchmarking-mode` · Package: `sdlc-core` · Issue: [#363](https://github.com/litlfred/folio-assistant/issues/363) · Bean: `folio-assistant-wp49`
+> Skill id: `benchmarking-mode` · Package: `sdlc-core`
 
 **Benchmarking output is a report about model performance across configurations, not an assertion about the subject folio.** Every other verdict this platform produces goes into a declared graph (`test/results/` for the `qa` graph, `test/attestations/` for `attestations`, `test/health/results/` for `health`). Benchmarking output is a deliberate exception: it does not enter any declared graph, has no graph typology, and must never be committed to graph directories.
 
@@ -17,7 +17,7 @@ description: >
 
 Every QA review sidecar, witness file, and `kg-qa` verdict this project produces goes **into** a declared graph (`test/results/`, `qa` graph) precisely so that findings are addressable nodes in the repository's knowledge graph.
 
-Because of that pervasive graph-first pattern, an agent or contributor looking at benchmark runs might reflexively declare a `benchmark-results` or `benchmarks` graph typology in `cat-harness.json`. **Do not do that.**
+**Do not declare a `benchmark-results` or `benchmarks` graph typology** in `cat-harness.json`.
 
 The distinction is an ontological one:
 
@@ -38,7 +38,7 @@ Benchmark outputs land in locations that are **never** declared as `graphTypolog
 1. **`build/benchmarks/` (default for raw outputs and runs)**:
    All runner scripts (such as `scripts/toc-benchmark.py` and `scripts/page-label-benchmark.py`) default their file output to `build/benchmarks/<tool>.json`. Because `build/` is gitignored across all folio and harness layouts, automated runs never dirty git status or pollute repository state.
 2. **`reports/` (synthesized human-readable reports)**:
-   When benchmark runs across multiple models or prompt strategies are synthesized into a publication or requirements analysis, the resulting document lives under `reports/` (or CRDM analysis folders) as a standalone report document, not as a KG database node. As established in issue #363, the shape and contents of synthesized reports answer user needs defined by the CRDM process.
+   When benchmark runs across multiple models or prompt strategies are synthesized into a publication or requirements analysis, the resulting document lives under `reports/` (or CRDM analysis folders) as a standalone report document, not as a KG database node. The shape and contents of synthesized reports answer user needs defined by the CRDM process.
 
 ## Enforcement: path guards against graph pollution
 
@@ -50,6 +50,6 @@ The isolation between benchmark execution and declared graphs is **enforced by c
 
 ## Sibling contrast: translation QA vs benchmarking
 
-The contrast with bean `QA REVIEW MODE: translation QA joins the audited review record under test/results` clarifies the boundary:
+The contrast with translation QA clarifies the boundary:
 - Translation QA evaluates whether a translated document accurately renders the source. It is an assertion about the folio's fidelity, and therefore joins the audited review record under `test/results/`.
 - Model benchmarking tests how well candidate models perform when inferring structures (e.g. table-of-contents extraction or page labeling) across a test bank. It is an evaluation of the models, not of the documents being processed, and therefore produces isolated reports in `build/benchmarks/`.

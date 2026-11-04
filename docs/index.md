@@ -21,12 +21,8 @@ and a typed content-object model.
 {: .fs-6 .fw-300 }
 
 <!--
-  `View on GitHub` STAYS. The site-wide `aux_links` GitHub text was removed from
-  the chrome above every page (bean `udx8`, PR #352), and the obvious follow-up
-  is to delete this button for consistency. Do not. Put to the repo owner on
-  2026-09-19: this button is part of the landing page's own readme/description
-  note — authored content on one page, not chrome — and the forge remains
-  reachable from the navbar's Source tile regardless.
+  `View on GitHub` STAYS: it is authored content on this page, not site chrome,
+  so removing the site-wide GitHub link does not remove it.
 -->
 [Get started]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }}){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [Install]({{ '/docs/cat-harness/start/installation.html' | relative_url }}){: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 }
@@ -48,7 +44,7 @@ does not pick up the same item; a bean that turns out not to be wanted is
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list                          # what is open
 beans create "<title>"              # ...after checking the title does not exist
-beans <id> --status in-progress     # claim it, visibly
+bun run cat beans:claim <id>        # claim it, visibly
 ```
 
 **2. Make your first folio.** This repository is the *platform*; your content
@@ -67,18 +63,14 @@ prose; a *paper* is that plus the block kinds whose assertion is a formal claim,
 backed by Lean and typeset through LaTeX. The choice decides which blocks are
 legal and which gates run: [Content types]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }}).
 
-**4. The documentation you will never read.**
+**4. The rest of the documentation.**
 [All of it]({{ '/docs/cat-harness/guides/index.html' | relative_url }}) — the authoring guides, the architecture, the
-publication workflow, the generated schema and skill reference. It is here, it
-is thorough, and the honest expectation is that you will arrive at it from a
-search engine at the exact moment something breaks. That is a fine way to use
-it. The three steps above are the ones worth reading now.
+publication workflow, the generated schema and skill reference. Read it when you
+need it; the three steps above are the ones worth reading now.
 
 When it is the *machinery* that has you puzzled rather than the authoring —
 who does a thing, under which process, using which skill — start at
-[The platform]({{ '/docs/cat-harness/platform.html' | relative_url }}). One sentence there
-carries the whole model, and every word in it is a separately declared
-object.
+[The platform]({{ '/docs/cat-harness/platform.html' | relative_url }}).
 
 ---
 
@@ -89,10 +81,9 @@ the skills, schemas, tooling, and an MCP (Model Context Protocol) server that an
 LLM-driven agent uses to plan, author, validate, review, test, and publish a
 **folio** of content that lives in a separate repository.
 
-> **Separation of concerns.** This documentation describes the *formalism of the
-> framework* and *how to use folio-assistant* — deliberately kept **separate from
-> any specific content**. Where content appears in these pages, it is purely
-> illustrative (an *example*), never the canonical artifact.
+> **Separation of concerns.** This documentation describes the framework and how
+> to use it. Where content appears in these pages, it is an *example*, never the
+> canonical artifact.
 
 ```mermaid
 flowchart LR

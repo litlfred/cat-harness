@@ -29,7 +29,7 @@ stakeholders interact with the BA.
 
 ## Identifying stakeholders (systematic 4-step approach)
 
-1. **Check `folio.config.json`** roles across active folios — `authors`,
+1. **Check each active folio's `<name>.config.json`** roles — `authors`,
    `editors`, `reviewers`, `contributors`, `affiliations`
 2. **Check `.github/CODEOWNERS`** — subsystem ownership
 3. **Check recent activity** — `gh issue list --search "..."`,

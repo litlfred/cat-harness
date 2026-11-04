@@ -66,78 +66,26 @@ shape; you have a task you have not understood yet.
 
 ## Cost-aware dynamic routing (SWE-Router / 2607.00053v1)
 
-A swarm's token consumption is dominated by model choice. Deploying frontier
-models (e.g. Claude Opus, GPT-4) across every parallel agent creates an
-unfavorable cost–capability trade-off: empirical analysis on SWE benchmarks
-shows that only a minority of software engineering subtasks genuinely demand
-frontier reasoning, while most admit localized, cheap resolution.
+Model choice dominates a swarm's token cost, and only a minority of software
+engineering subtasks need a frontier model. SWE-Router
+([`arxiv-2607.00053v1`](../../../library/sdlc/arxiv-2607.00053v1/)) routes on
+the agent's partial trajectory rather than the task description alone: a
+description cannot tell a one-line fix from a multi-module refactor, but the
+first few exploratory turns (grep, reading the tree, reproducing a failure)
+can.
 
-SWE-Router (*arXiv:2607.00053v1*, `library/arxiv-2607.00053v1`) provides the
-principled framework for cost-aware routing in multi-turn agentic SE tasks,
-demonstrating how to break the information-theoretic Bayes-error floor that
-plagues static, prompt-only routers.
+1. **Explore cheap.** Assign the subtask to a compact model $m_1$ for a small
+   budget of $K$ steps ($K=3$ is the reported sweet spot).
+2. **Judge the trajectory.** A value estimator reads the first $K$ turns and
+   predicts whether $m_1$ has localised the problem and will solve it.
+3. **Continue or escalate.** At or above a cost-adjusted threshold
+   $\lambda''$, let $m_1$ finish; below it, escalate to the frontier model
+   $m_2$.
 
-### The Bayes-error floor of prompt-only routing
-
-Static routers that inspect only the task description $q$ (e.g. issue or
-sub-bean description) inherit a high Bayes error: in software engineering, a
-superficially simple issue description may require a multi-module architectural
-refactoring, while an intimidating, complex stack trace may resolve with a
-one-line typo fix. The prompt alone cannot distinguish between these cases.
-
-In agentic systems, the disambiguating information is generated dynamically
-during the agent's interaction loop (ReAct thoughts $z_t$, actions $a_t$, and
-observations $o_t$). Early turns are predominantly exploratory—running grep,
-inspecting directory structures, reading localized test failures. These
-intermediate observations contain the structural signals of task difficulty
-that no prompt-time classification can see.
-
-### Value-based temporal routing policy
-
-SWE-Router establishes a two-phase temporal routing policy:
-
-1. **Exploration budget ($K$ steps)**:
-   Assign the subtask initially to a lightweight, compact model $m_1$ (e.g.
-   Claude Haiku, GPT-4o-mini, Qwen-Coder-7B). Run $m_1$ for a small exploration
-   budget $K$ (empirically $K=3$ achieves optimal trade-offs).
-2. **Trajectory evaluation via value head**:
-   A value estimator $\hat{r}_1(T_{\le K, 1})$ inspects the partial trajectory
-   $T_{\le K, 1} = [q, (z_1, a_1, o_1), \dots, (z_K, a_K, o_K)]$, evaluating
-   whether $m_1$ has successfully localized the problem and is likely to solve it.
-3. **Routing decision**:
-   - **Continue with $m_1$**: If the predicted resolution probability exceeds a
-     cost-adjusted threshold ($\hat{r}_1 \ge \lambda''$), let the cheap model
-     complete the task.
-   - **Escalate to frontier model $m_2$**: If $\hat{r}_1 < \lambda''$, escalate
-     to the frontier model $m_2$.
-
-### Clean escalation vs context poisoning
-
-A critical structural finding in SWE-Router is the **clean escalation rule**:
-when escalating to the frontier model $m_2$, **restart $m_2$ from the original
-specification $q$** rather than continuing from $m_1$'s partial trajectory.
-Conditioning a strong model on a weak model's flawed reasoning biases $m_2$
-toward $m_1$'s false assumptions and hallucinated bug locations. The $K$ turns
-of $m_1$ are treated as an up-front exploratory cost.
-
-### Pareto frontier and swarm economics
-
-Conditioning on partial trajectories provides a proven Bayes-optimality guarantee
-(Theorem 4.1): partial-trajectory routing never harms expected utility compared
-to prompt-only routing and is strictly superior whenever early exploration yields
-informative observations.
-
-Tuning the escalation threshold $\lambda''$ traces a cost–performance Pareto
-curve:
-- **High-economy regime ($\lambda'' \to 1$)**: High threshold for escalation;
-  maximizes utilization of $m_1$, achieving 60–80% cost savings for tasks with
-  straightforward localization and repetitive mechanics.
-- **Matched-capability regime**: A balanced threshold captures 85–95% of
-  pure-frontier performance while cutting overall token expenditure by 40–50%.
-- **Synergistic resolution**: At specific operating points, routing achieves
-  higher aggregate resolution than pure frontier execution because compact
-  models occasionally explore non-obvious localized paths that large models
-  overlook.
+**Escalate cleanly:** restart $m_2$ from the original specification, never
+from $m_1$'s partial trajectory, which biases $m_2$ toward $m_1$'s false
+assumptions. Raising $\lambda''$ trades capability for cost (the paper
+reports large savings with most of frontier performance retained).
 
 ### When does a swarm need a frontier model?
 
@@ -172,42 +120,52 @@ decomposition that avoids a spurious block is the one a swarm needs.
 
 ## Stopping
 
-Stop early when the first two units disagree about something structural: that
-means the decomposition was wrong and the remaining N−2 will reproduce the
-disagreement N−2 more times, at full price.
+Stop early when the first two units disagree about something structural: the
+decomposition was wrong, and the rest will reproduce the disagreement at full
+price. The Andon-cord conditions below list the other stop signals.
 
 ## Adaptive reasoning routing and Andon-cord stopping (TCAndon-Router / 2601.04544v1)
 
 TCAndon-Router ([`arxiv-2601.04544v1`](../../../library/sdlc/arxiv-2601.04544v1/README.md))
-refines two critical assumptions in swarm execution: **uniform model allocation**
-and **run-to-completion fan-out**.
+refines two assumptions: **uniform model allocation** and **run-to-completion
+fan-out**.
 
 ### 1. Adaptive reasoning routing: difficulty-matched depth
 
-Static model tiering ("all workers run small, one reviewer runs large") wastes tokens
-on trivial slices and starves ambiguous ones. TCAR demonstrates that real tasks
-partition into two distinct regimes:
+| task regime | swarm strategy |
+|---|---|
+| **Consultation / extraction** — direct lookups, syntax transforms, single-file edits; one agent's domain | a single worker on a small tier. Do not swarm. |
+| **Troubleshooting / diagnosis** — cross-cutting bugs, root-cause analysis; several domains | a small parallel subset of domain experts on a heavy tier, plus a **Refining Agent** |
 
-| Query/task regime | Agent conflict ($|A_q|$) | Reasoning & model demand | Swarm strategy |
-|---|---|---|---|
-| **Consultation / extraction** (direct lookups, syntax transforms, single-file edits) | $|A_q| = 1$ | Low reasoning depth; small tier (`flash_lite` / `flash`) | Single worker suffices (win rate parity, 27.0% TCAR win over solo). Do not swarm. |
-| **Troubleshooting / diagnosis** (cross-cutting bugs, multi-subsystem latency, root-cause analysis) | $|A_q| > 1$ (avg 1.37) | High reasoning depth (`<reason>` rationale); heavy tier (`pro` / `opus`) | Parallel subset of domain experts + downstream **Refining Agent** ($63.0\%$ win rate over solo). |
-
-**Rules for adaptive routing in swarms:**
-- **Reason before allocating:** Before spawning workers, evaluate the sub-task's domain boundaries and difficulty. Generate an explicit rationale for why a worker or model tier is needed.
-- **Dynamic reasoning budget:** Do not assign fixed thinking budgets or uniform model tiers across the swarm. Allocate light models with shallow reasoning to deterministic checks and reserve deep reasoning / frontier models for units with genuine ambiguity.
-- **Controlled candidate subset:** When sub-tasks have overlapping responsibilities, dispatch only the small relevant candidate subset (empirically 1 to 3 workers, average ~1.4), never an unconstrained fan-out.
-- **Refining synthesis:** When multiple workers investigate overlapping root causes, route their partial answers to a designated Refining Agent (reviewer) that compares, deduplicates, and resolves contradictions into a single coherent verdict.
+- **Reason before allocating:** before spawning workers, state why each worker
+  and model tier is needed.
+- **No uniform budget:** light models with shallow reasoning for deterministic
+  checks; deep reasoning or frontier models only for units with genuine
+  ambiguity.
+- **Controlled candidate subset:** where sub-tasks overlap, dispatch only the
+  small relevant subset (typically 1 to 3 workers), never an unconstrained
+  fan-out.
+- **Refining synthesis:** route overlapping partial answers to one Refining
+  Agent (reviewer) that compares, deduplicates and resolves contradictions
+  into a single verdict.
 
 ### 2. Andon-cord stopping: early termination on defect signals
 
-In the Toyota Production System and TCAndon, an **Andon cord** allows any participant to halt the line immediately when an abnormality is detected, preventing defects from cascading downstream. In an LLM swarm, running an entire swarm to completion when the foundation is broken burns tokens at $N\times$ the rate of serial work.
+Any participant may halt the swarm when an abnormality is detected, rather
+than run it to completion at $N\times$ the cost of serial work.
 
-**Pull the Andon cord (kill running subagents and halt the swarm) when:**
-- **Structural divergence:** The first two completed units produce incompatible interfaces, conflicting schema assumptions, or contradictory interpretations of the brief.
-- **Out-of-scope / missing prerequisites (TCAR `oos` signal):** An early worker discovers that required context, APIs, or files do not exist or are fundamentally underspecified. Stop the swarm immediately and clarify with the user rather than letting $N-1$ remaining agents hallucinate missing inputs.
-- **Reasoning loop / drift:** An agent's reasoning log exhibits circular deliberation, repeated retries without progress, or mismatch between rationale and tool actions. Terminate that worker early rather than waiting for timeout.
-- **Deadlock or shared state collision:** Multiple workers wait on interdependent outputs or attempt conflicting branch updates.
+**Kill the running subagents and halt the swarm when:**
+- **Structural divergence:** the first two completed units produce
+  incompatible interfaces, conflicting schema assumptions, or contradictory
+  readings of the brief.
+- **Out-of-scope / missing prerequisites:** an early worker finds that
+  required context, APIs or files do not exist or are underspecified. Stop and
+  clarify with the user rather than let the remaining agents invent inputs.
+- **Reasoning loop / drift:** a worker deliberates in circles, retries without
+  progress, or its rationale does not match its tool actions. Terminate it
+  early rather than waiting for a timeout.
+- **Deadlock or shared-state collision:** workers wait on each other's
+  outputs or attempt conflicting branch updates.
 
 ## Agentic SE literature synthesis & cross-paper methodology
 
@@ -216,8 +174,8 @@ For the comprehensive cross-cutting synthesis, epistemic partition (Measured vs.
 
 ## Known gaps
 
-This skill is **written ahead of the tooling**. There is no swarm runner in
-this repo that enforces the sizing above, no per-unit wall-clock bound, and no
-cost estimate to show the author when asking. `dispatch-agent.md` covers the
-mechanics of dispatching background agents; this covers whether and how big.
-Until the gap closes, the numbers here are guidance an agent applies by hand.
+There is no swarm runner in this repo that enforces the sizing above, no
+per-unit wall-clock bound, and no cost estimate to show the author when
+asking, so the numbers here are guidance an agent applies by hand.
+[`dispatch-agent`](dispatch-agent.md) covers the mechanics of dispatching
+background agents; this covers whether and how big.

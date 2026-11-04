@@ -21,14 +21,9 @@ process it executes, called from `Task_PrepareMerge` in
 `cat-harness-tools/scripts/merge-conflict-patterns.ts`. This page says what each one
 is FOR, so a reader can tell a deliberate refusal from a gap.
 
-## Why this exists
-
-Measured 2026-09-30 over 300 `main`-into-branch merges on `origin/claude/*`
-(bean `y7b3`, issue #1707): **235 conflicted, and 147 (63 %) conflicted only on
-generated files.** Every one of those resolves the same way — take the base's
-copy, regenerate — and each cost an agent a round and the PR another CI run.
-Owner, 2026-10-01: *"1 + new skills/tools for each common churn/conflict
-pattern"*, and *"put in merge process bpmn"*.
+Most `main`-into-branch merges that conflict do so only on generated files,
+and every one of those resolves the same way — take the base's copy,
+regenerate.
 
 ## The three rules that make it safe
 
@@ -51,43 +46,21 @@ pattern"*, and *"put in merge process bpmn"*.
 A path that **no** pattern names is refused. Adding automation is adding a
 pattern, deliberately, with its reason — never widening a glob on a hunch.
 
-### Why rule 3 is a rule and not a footnote
+### Applying rule 3
 
-Measured 2026-10-03, within minutes of #1943 declaring `skos-glossary-export`,
-`glossary-generated` and `skill-instructions`. The merge steward classified
-eight open PRs from a working tree that predated that merge:
-
-| PR | authored, stale patterns | authored, `main`'s patterns |
-|---|---|---|
-| #1888 | 9 | **2** |
-| #1892 | 3 | **1** |
-| #1764 | 3 | **2** |
-| #1935 · #1934 · #1816 · #1808 · #1804 | 0 | 0 |
-
-**Fifteen authored conflicts across the queue, against a true six.** Nine
-paths were reported as needing a person when the base already declared them
-mechanical, and the error is one-directional: a stale tree can only ever
-over-report, never under-report, because a pattern is added and an authored
-path is the fallback. A sibling session was about to start on #1888 believing
-its authored conflict was a bean definition; it is not in conflict at all.
-
-So before classifying anything, `git fetch` and read the patterns from the
-BASE — or do what the measurement did and classify against
+A stale tree can only ever over-report authored conflicts, never
+under-report, because a pattern is added and an authored path is the
+fallback — and over-reporting sends work to a person that the base already
+declares mechanical. So before classifying anything, `git fetch` and read the patterns from the
+BASE — or classify against
 `git show origin/<base>:cat-harness-tools/scripts/merge-conflict-patterns.ts`. The
 number that decides whether a human is needed must come from the declaration
 the merge will actually be resolved under.
 
-This is the same shape as `1xhc` one level out: a stale instrument and a
-correct one are indistinguishable from their output, and the stale one here
-reads as *more* work rather than less, so nothing about the result looks
-wrong.
+## A merge round — run each check ONCE
 
-## A merge round — run each check ONCE (owner ruling, 2026-10-05)
-
-**Owner, 2026-10-05, verbatim: *"trim duplicated steps"*.** A round of folding
-`main` into a PR was costing about 45 minutes, and most of it was the same
-question asked twice. Measured 2026-10-04 on PR #1898's merge rounds, bean
-`7xmc`:
+Most of a round of folding `main` into a PR is the same question asked twice.
+What each step costs and adds:
 
 | step | cost | what it adds |
 |---|---|---|
@@ -116,9 +89,7 @@ authored change of yours to reconcile.
    - `subgraph:jsonld:check` — a merge or edit that changes a skill also
      changes its payload hash; `skill:register` does not run
      `subgraph:jsonld`, so run the writer (`bun run cat subgraph:jsonld`) when the
-     check is red. Measured on #2139 itself: CI's `gen-slice-sqlite` test
-     failed on three edited skills whose payloads the published tree did not
-     hold;
+     check is red;
    - `check:declared-paths` (never with `--update` here) and
      `check:process-index`;
    - `bun run typecheck`, and `bun run cat lint` at **0 errors**;
@@ -126,8 +97,8 @@ authored change of yours to reconcile.
      `git diff --name-status --diff-filter=D HEAD^1 HEAD -- '*/test/results/*'`
      must list only files `main` itself deleted. A gitignored-but-tracked file
      is dropped by a merge silently, local checks stay green because the
-     writer recreated it on disk, and CI's fresh checkout fails (bean `8j9e`).
-     `merge:main` now refuses such a drop itself (§"When one side deleted
+     writer recreated it on disk, and CI's fresh checkout fails.
+     `merge:main` refuses such a drop itself (§"When one side deleted
      the file"); after a hand merge, restore each one main still tracks with
      `git checkout HEAD^2 -- <path>`;
    - **submodule pins equal to `main`'s** —
@@ -151,10 +122,10 @@ authored change of yours to reconcile.
 reconciled against yours): run the full local `bun run cat gates` before pushing,
 and read [`prepare-merge`](prepare-merge.md) §"What a green LOCAL run entitles
 you to claim" before quoting it. The targeted list above is chosen for a merge
-that changed only artefacts with one right answer. A semantic conflict — #2043
-importing a module #2112 had moved, in
-[`merge-queue`](merge-queue.md) §"A train admits only members that STACK
-cleanly" — is exactly what that list cannot see.
+that changed only artefacts with one right answer; it cannot see a semantic
+conflict such as an import of a module the other side moved
+([`merge-queue`](merge-queue.md) §"A train admits only members that STACK
+cleanly").
 
 ### Four things a round needs to know
 
@@ -170,9 +141,7 @@ cleanly" — is exactly what that list cannot see.
   add the session's trailers (`git commit --amend`) before pushing — it is
   your unpushed commit, so this is not a rewrite of shared history.
 - **Do not fold `main` in while another big PR is minutes from landing.** Wait
-  for it. Merging now buys a second round the moment it lands — on train
-  `merge-train-2026-10-04a`, #2112 landing mid-round re-conflicted the train
-  and cost another 12-minute regen plus a semantic conflict
+  for it. Merging now buys a second round the moment it lands
   ([`merge-queue`](merge-queue.md)).
 
 ## A pattern is not always the answer — ask what the file's record is
@@ -182,28 +151,14 @@ registry answers *how* a conflict is resolved. It never answers *whether* one
 arises, and reaching for it a second time on the same path is the move to
 stop and check.
 
-Two nearby things are already written down and neither is this one:
-
-- **bean `in5a`** — a declared pattern settles a file whose content is a
-  function of the TREE, and settles nothing about one whose content is a
-  function of the machine that built it. There, take-base is a loop: take
-  either side, regenerate, and the value is whatever this container sees.
-- **this section** — the content *is* tree-determined, the pattern *does*
-  resolve it, and the path still conflicts on every merge.
-
-The worked example is bean `tqjj`, and the measurement is what makes it a rule
-rather than a preference. `**/test/results/lsi/**` and
-`**/test/results/tool-runs/**` have been declared under `derived-results` all
-along, and `cat-harness/docs/lsi/**` under `glossary`. On 2026-10-04 those three
-paths were still blocking **seven open pull requests each**, 317-319 of the last
-400 commits on `main` touching them. Regenerating `skills.lsi.json` on an
-unchanged tree gave a **byte-identical** file, so `in5a` did not apply; but
-appending one sentence to one of 229 skill files rewrote the `fingerprint`,
-**9 of 12** `dimensions` entries and **166 of 229** `neighbours` entries. An
-SVD rotation is globally sensitive, so the convergent resolution is a rewrite
-of 94 % of the file — and nothing on `main` judged those bytes: corrupting the
-sidecar's `fingerprint` left `lsi:skills:check` at exit 0 (`.gitattributes`,
-bean `eqxp`).
+A declared pattern settles a file whose content is a function of the TREE,
+and settles nothing about one whose content is a function of the machine that
+built it — there, take-base is a loop. This section is about a third case: the
+content *is* tree-determined, the pattern *does* resolve it, and the path
+still conflicts on every merge. The LSI indexes are the example: a one-sentence
+edit to one skill rewrites most of `skills.lsi.json` (an SVD rotation is
+globally sensitive), so the file conflicts on nearly every merge, and the
+pattern only makes each conflict cheap.
 
 So the question to ask is not *which strategy*, it is:
 
@@ -226,20 +181,17 @@ So the question to ask is not *which strategy*, it is:
   harness tile, so an uncommitted page is a page with no way in.
 
 **The trap on the way out.** Taking a page off its store and leaving it
-committed can make it *worse*: once `lsi:viz` had no sidecar in the checkout it
-read `qa-reports` at `main`, which resolves to the **latest published entry**,
-so the committed page would have gone stale whenever anyone else pushed — a
-value depending on when the gate ran rather than on the tree. **`in5a`'s loop,
-arriving over the network.** Whatever stays committed must be computed from the
-tree, deliberately and not by luck.
+committed can make it *worse*: a page computed from `qa-reports` at `main`
+reads the **latest published entry**, so the committed copy goes stale whenever
+anyone else pushes. Whatever stays committed must be computed from the tree.
 
 `.gitattributes` reached the same conclusion from the `-merge` side and states
 it plainly: *"Removing these conflicts, rather than tidying them, needs the
 files off `main` altogether."* Two things make that safe rather than merely
 tidy, and both are checks, not care: every reader must already cope with the
-file's absence (bean `oq1j` for the LSI readers), and something must still
-PRODUCE it where its record lives — `qa:refresh` decides that **per writer**,
-so a family can be removed on its own instead of all 1,186 at once.
+file's absence, and something must still PRODUCE it where its record lives —
+`qa:refresh` decides that **per writer**, so a family can be removed on its
+own.
 
 ## When one side deleted the file
 
@@ -247,8 +199,7 @@ A modify/delete conflict has no stage for the side that deleted it, so
 `checkout --theirs` (or `--ours`) has nothing to take. Every resolving
 strategy takes the **base's side of the deletion** instead: its copy when the
 base kept the file, `git rm` when the base removed it — `takeBase` in
-`merge-base.ts`. The retired `qa:resolve-conflicts` did the same for the
-sidecars it was delegated (#1854, bean `7mwa`). Regeneration recreates the file if it is still
+`merge-base.ts`. Regeneration recreates the file if it is still
 produced. Classification is by path, so an authored path in a modify/delete
 conflict is refused exactly like any other conflict on it. The `owned-tree`
 patterns are the exception. They read which **parent commits** hold the path
@@ -256,8 +207,7 @@ rather than which stages exist, because in a rename/rename "no stage 3" does
 not mean the base deleted anything (see `subgraph-payload` below).
 
 **Taking a deletion is the ONLY way a merge may drop a path, and
-`merge-base.ts` checks this before every merge commit** (beans `vsv7`,
-`8j9e`). `droppedInMerge` compares the index with the merge base and both
+`merge-base.ts` checks this before every merge commit.** `droppedInMerge` compares the index with the merge base and both
 parents. A path either parent tracks that the result lacks is a drop, unless
 one side deleted it since the merge base. A path both parents hold, or one a
 side added, must survive. The check runs twice. Right after resolution, before
@@ -269,57 +219,42 @@ the gitignored-but-tracked files under `*/test/results/`. Once one of them
 leaves the index, regen rewrites it on disk and `git add -A` does not stage it
 again, since it is now untracked and ignored. The failure signature is
 **green locally, red in CI**, with the check reporting the file missing ("has
-none"). `git add -A` is not what removes such a file, though. It stages a
-rewrite of a file that is still tracked; it only fails to restore one that
-something has already removed from the index. On #1898 (`edf52fcf6`) that was
-a `git rm` from `takeBase`. `qa:resolve-conflicts`, retired since, claimed
-every conflicted path under a declared `qa` directory, detangle sidecars
-included, and had already resolved three of them. The pre-`vsv7` `takeBase` then read "no
-stages" as "the base deleted it". The refusal line says when the dropped file
+none"). `git add -A` is not what removes such a file: it only fails to
+restore one that something else (such as a `git rm`) already removed from the
+index. The refusal line says when the dropped file
 is still on disk, which is the case that local checks cannot see.
 
 ## The patterns
-
-Counts are conflicted files in the 2026-09-30 measurement.
 
 ### `kg-qa-manifest` — take the base, regenerate
 
 `**/test/results/**/kg-qa.manifest.json`. One per instance (hosted ones one level deeper), holding only the
 auditor's script hash, so any change to `kg-audit.ts` restamps every one at
-once. Not in the first measurement's top list; found when a replay of 40 real
-merges refused one merge on these files alone. It holds no attestation.
+once. It holds no attestation.
 
-### `qa-results` — take the base, regenerate (292)
+### `qa-results` — take the base, regenerate
 
 `**/*.qa-results.json`. Whole-artefact QA results, rewritten whole by their
-producer. They carried `updated_at` until #1714; they still change whenever
-any finding does.
+producer. They change whenever any finding does.
 
-### `derived-results` — take the base, regenerate (142)
+### `derived-results` — take the base, regenerate
 
 kg-qa sidecars, LSI indexes, detangle sidecars, tool-run records and translation-qa sidecars under `test/results/`.
 Recomputed from the whole corpus, so any concurrent skill or schema change
 touches them.
 
-The **kg-qa** sidecars joined in bean `7mwa`. They were the `kg-qa-sidecar`
-pattern (53 conflicts in the measurement), delegated to `qa:resolve-conflicts`
-because a sidecar could carry an attestation no generator reproduces. The
-attestations moved to `test/attestations/` (bean `2gst`), which no pattern
-names and a merge therefore refuses, and cat-harness and the content core
-(https://github.com/litlfred/folio-assistant-core) stopped committing `test/results/`. So the command and the pattern were
-retired, and a branch still carrying a sidecar takes the base's side.
+Attestations live in `test/attestations/`, which no pattern names and a merge
+therefore refuses; `test/results/` is not committed on `main`, and a branch
+still carrying a sidecar takes the base's side. The **LSI** half is untracked
+on `main`; the globs are kept for branches still carrying it (§"A pattern is
+not always the answer").
 
-The **LSI** half is untracked on `main` since bean `tqjj`, and the globs are
-kept for the branches still carrying it. See §"A pattern is not always the
-answer": this family is the measured case where the declaration was correct,
-did what it claimed, and removed no conflicts.
-
-### `auto-docs` — take the base, regenerate (352)
+### `auto-docs` — take the base, regenerate
 
 The generated docs index pages, already `-merge` in `.gitattributes`. One page
 per directory, so a new file anywhere changes one.
 
-### `uml` — take the base, regenerate (201)
+### `uml` — take the base, regenerate
 
 Generated overview diagrams and their SVGs.
 
@@ -330,12 +265,6 @@ The PROV-O QA/QC report (`docs/prov-qaqc/`) and its per-instance logs
 `beans/workflows/`, so any branch that records an instance — which every branch
 doing process work does — rewrites the index page and adds a `.prov.jsonld`.
 
-**Added 2026-10-03, and the occasion is the reason.** The runner refused #1892
-with `docs/prov-qaqc/index.md` as the SINGLE unclassified path among **32**
-resolved by pattern. One file nobody authors, blocking a merge nobody can
-usefully resolve by hand — which is this catalogue's whole purpose, missing one
-entry.
-
 The globs are instance-agnostic (`**/docs/prov-qaqc/**`), like
 `derived-results` and unlike `glossary`: a dependent folio runs `prov:qaqc`
 over its own instances and writes the same two shapes under its own root.
@@ -344,15 +273,13 @@ It names no check of its own, per rule 2: `regen` runs `prov:qaqc` because
 `check:prov-qaqc` is a workflow gate, and a pattern that named its own check
 would be a hand-kept list able to drift from the workflow.
 
-### `glossary` — take the base, regenerate (207)
+### `glossary` — take the base, regenerate
 
 The generated glossary and LSI pages: whole-corpus aggregates where concurrent
 term additions always collide.
 
-The **LSI page** still conflicts, but much less often since bean `tqjj`: its
-per-index detail — the half a one-sentence skill edit moved — is added by the
-docs-site build rather than committed, and what is left is a function of the
-tree. The glossary page has no equivalent split: every number on it is a term
+The **LSI page**'s per-index detail is added by the docs-site build rather than
+committed, and what is left is a function of the tree. The glossary page has no equivalent split: every number on it is a term
 count over the whole corpus, so there is no half that only the tree moves. That
 is the second branch of §"A pattern is not always the answer" — `main` is still
 the glossary page's record, and declaring the strategy is all there is to do.
@@ -361,8 +288,7 @@ the glossary page's record, and declaring the strategy is all there is to do.
 
 `cat-harness/docs/{ar,es,fr,ru,zh}/glossary/index.md`. The per-locale glossary
 pages `glossary-page.ts` writes whole beside the English one (`check:glossary`),
-so they collide exactly when it does. Not in the first measurement; found
-2026-10-01 when a `merge:main` on #1754 refused on all five. Only the glossary
+so they collide exactly when it does. Only the glossary
 page is named: the rest of each locale directory is authored translation, and
 a locale no generator writes (`de/`) is refused.
 
@@ -374,20 +300,17 @@ a locale no generator writes (`de/`) is refused.
 writer's `--check` in the CI workflow (`external-schemas:viz`,
 `methodologies:viz`, `processes:viz`, `state:visualizer`,
 `translation:status`). A new schema, diagram or translation anywhere rewrites
-them. Found the same way, on the same merge.
+them.
 
 It also holds `state:visualizer`'s other pages, `docs/{beans,todos,health,
 issue-marks,swimlane-glossary,uploads}/index.html`, each headed "Generated by
 scripts/state-visualizer.ts". **`docs/uploads/index.html` is the viewer OF
-`uploads/`, not an upload** — before 2026-10-01 the `uploads` refusal's
-`**/uploads/**` caught it, and #1764 refused on it. First match wins, so the
-viewer entries sit above the refusal.
+`uploads/`, not an upload**, and the `uploads` refusal's `**/uploads/**` would
+catch it; first match wins, so the viewer entries sit above the refusal.
 
-`docs/fsh-guts/index.md` USED to be here: any PR that archived an upload
-rewrote it, so two such PRs always collided (#1766, 2026-10-03). It is no
-longer committed at all. It is derived from `fsh-guts/`, which is kept on a
-branch, so it is built at publish by `derive:publish` (bean `0b8c`, #2230),
-and a merge cannot meet it. That is the general answer for any derived page
+`docs/fsh-guts/index.md` is not committed: it is derived from `fsh-guts/`,
+which is kept on a branch, so it is built at publish by `derive:publish` and a
+merge cannot meet it. That is the general answer for any derived page
 whose input lives on a branch — see
 [`directory-conventions`](../../../skills/kg/kg-core/directory-conventions.md)
 §"The storage clock" — and is better than a take-base pattern, which only
@@ -399,8 +322,8 @@ and stays refused.
 `docs/cat-harness/{catalogue,folio,library,schemas,uploads,voices}/**`: the
 pages `gen-library-viz`, `gen-folio-viz` and `gen-schema-viz` place through
 `viewerPlacement`, each rewritten whole from the corpus and checked by its
-`:viz --check`. Same false positive as above: its `uploads/` pages render
-uploads rather than being them (#1775). `auto-docs/` under the same prefix
+`:viz --check`. As above, its `uploads/` pages render uploads rather than
+being them. `auto-docs/` under the same prefix
 keeps its own `auto-docs` entry.
 
 ### `navbar-include` — take the base, regenerate
@@ -419,21 +342,18 @@ carries no reviewer's attestation.
 
 `docs/cat-harness/published-graphs.md`, the handler's index of every published
 graph and declared viewer, written whole by `gen-handler-index.ts`
-(`handler:index:check`). Any new graph or viewer rewrites it. Found on #1754's
-third merge, 2026-10-01.
+(`handler:index:check`). Any new graph or viewer rewrites it.
 
-### `skos-glossary-export` — take the base, regenerate (54)
+### `skos-glossary-export` — take the base, regenerate
 
 `**/docs/assets/glossary/*.skos.jsonld`: the published SKOS export, written
 whole by `glossary:export` (`glossary-export.ts`, gated by `glossary:check`).
-Bean `8rff` measured **54** pair-path hits across 32 open PRs — every
-instance's export restamps whenever any declared role, skill or term moves, so
+Every instance's export restamps whenever any declared role, skill or term moves, so
 two PRs that touch unrelated skills still collide here.
 
 **It is not the ledger, and that distinction is the whole safety argument.**
 `glossary-ledger.json` carries forward: `glossary-export.ts` reads the prior
-ledger and preserves a concept's earlier names as `skos:hiddenLabel` (#1168
-B10b), so taking one side would drop a term's history. The ledger sits one
+ledger and preserves a concept's earlier names as `skos:hiddenLabel`, so taking one side would drop a term's history. The ledger sits one
 level up from `generated/` and matches no glob here — verified, and pinned by
 a test. This is `.gitattributes`'s rule applied to a resolver: the test is not
 *is it generated* but **does its producer carry anything forward**.
@@ -442,18 +362,16 @@ a test. This is `.gitattributes`'s rule applied to a resolver: the test is not
 — `.jsonld` is not `.json` — which is why it needed its own entry rather than
 falling through.
 
-### `glossary-generated` — take the base, regenerate (50)
+### `glossary-generated` — take the base, regenerate
 
 `**/glossary/generated/**`: the per-instance generated glossary JSON, same
-writer and same check as `skos-glossary-export`. **50** pair-path hits
-(`8rff`). The glob stops at `generated/`, so the sibling ledger is untouched.
+writer and same check as `skos-glossary-export`. The glob stops at `generated/`, so the sibling ledger is untouched.
 
-### `skill-instructions` — take the base, regenerate (30)
+### `skill-instructions` — take the base, regenerate
 
 `**/docs/reference/skill-instructions/**`: skill instruction bodies, written
 whole by `skills:docs` (`gen-skill-docs.ts`'s `OUT_DIR`, gated by
-`skills:docs:check`). **30** pair-path hits (`8rff`), and `AGENTS.md` says of
-this directory: *"Never hand-edit either generated dir."*
+`skills:docs:check`). Never hand-edit it.
 
 Safe because `emit()` is compare-or-write with no merge — under `--check` it
 compares and records drift, otherwise it writes the content whole — so nothing
@@ -464,9 +382,9 @@ these pages are generated from and stays `refuse`; a test pins that pair,
 because resolving the generated copy while taking a side on the source is the
 mistake this entry would otherwise invite.
 
-### `docs-pages` — take the base, regenerate (17)
+### `docs-pages` — take the base, regenerate
 
-The 17 `cat-harness/docs/**.md` pages `gen-docs-pages.ts` writes whole from the
+The `cat-harness/docs/**.md` pages `gen-docs-pages.ts` writes whole from the
 authored blocks under `cat-harness/docs/source/<slug>/` (`docs:pages`, gated
 by `docs:pages:check`). Each one says so in its own front matter:
 
@@ -474,21 +392,12 @@ by `docs:pages:check`). Each one says so in its own front matter:
 generated: scripts/gen-docs-pages.ts — do not hand-edit; run `bun run cat docs:pages`
 ```
 
-Bean `8c6v`: **none** of the 17 was named by a pattern, so `classify()`
-returned `refuse / — none —` and the merge handed back for hand-editing the
-files that forbid it. `docs/process/publication-workflow.md` was one of the **2**
-refusals on #1888 after **53** of its 55 conflicts had resolved by pattern —
-one undeclared family holding up a 53-file resolution is the all-or-nothing
-rule working as designed, and the gap it exposed.
-
 **Safe because nothing is carried forward.** `emit()` is compare-or-write: the
 only read of a prior page is inside its `--check` branch, for the comparison,
 and every other read in the script is of an INPUT (`readBlock` over
 `docs/source/`, BPMN XML, manifests). Its one walk of the output directory
-skips files carrying the generated marker. This is bean `8rff`'s discipline —
-**confirm the writer by reading the script, not by how whole-file it looks** —
-applied again, and here it comes out the other way than it did for the
-glossary ledger.
+skips files carrying the generated marker. **Confirm the writer by reading the
+script, not by how whole-file it looks.**
 
 **Gated on EXACT content, which is why `take-base` is verifiable rather than
 merely convenient.** The generator's own docblock says a difference in a `page`
@@ -497,35 +406,27 @@ sidecar, and did not regenerate". So after `take-base`, `docs:pages:check`
 proves the regenerated page is right — the resolution is not trusted, it is
 checked.
 
-**The 17 slugs are ENUMERATED, not globbed, and that is deliberate.**
-`cat-harness/docs/*.md` is a **mix**: measured 2026-10-03, the directory holds
-31 `.md` pages of which 13 are generated, so 18 authored ones sit beside them
-(`architecture.md`, `index.md`, `getting-started.md`, `platform.md`, …), and
-`guides/` holds 9 of which 4 are generated, leaving `agent-onboarding.md`,
-`voices.md` and 3 more. A directory glob would take a side on
-authored prose — the one thing a resolver must never do. The cost is that a
+**The slugs are ENUMERATED, not globbed, and that is deliberate.**
+`cat-harness/docs/*.md` and `guides/` mix generated pages with authored ones
+(`architecture.md`, `index.md`, `agent-onboarding.md`, …). A directory glob
+would take a side on authored prose — the one thing a resolver must never do. The cost is that a
 page added to `docs/source/` is **refused until its slug is declared here**,
 which is the safe direction to be wrong in, and a test reads the pages' own
 front matter from the TREE so the enumeration cannot go quietly stale.
 
-**That test must read the front matter, not the file**, and it earned the
-distinction immediately. Its first cut tested the whole file for the marker
-and the very next merge of `main` turned up an 18th subject: the generated
-body of **this skill**, `docs/reference/skill-instructions/merge-conflict-patterns.md`,
-which quotes the marker in the code fence three paragraphs above. A detector
-that reads a quotation as a declaration finds its own documentation — *"a
-docblock that documents a tag necessarily contains the tag"*, from
-[`audit-coverage`](../../../skills/kg/kg-core/audit-coverage.md). That page's own front
-matter names `gen-skill-docs.ts`, and `skill-instructions` is declared before
-`docs-pages`, so the first match already gives it the right owner. A test pins
-all three facts.
+**That test must read the front matter, not the file**: the generated body of
+this skill, `docs/reference/skill-instructions/merge-conflict-patterns.md`,
+quotes the marker in the code fence above, and a detector that reads a
+quotation as a declaration finds its own documentation
+([`audit-coverage`](../../../skills/kg/kg-core/audit-coverage.md)). That
+page's front matter names `gen-skill-docs.ts`, and `skill-instructions` is
+declared before `docs-pages`, so the first match gives it the right owner.
 
 **The authored neighbour is the source, and it stays refused.**
 `cat-harness/docs/source/process-publication-workflow/every-workflow-in-the-repo.md`
-is the hand-written INPUT for `docs/process/publication-workflow.md`; on #1888 both
-sides had only *added* rows to it, but a union of additions is a property of
-that instance and not of the path, so the next conflict there could be a
-contested edit. A test pins the pair, and pins that nothing under `content/`
+is the hand-written INPUT for `docs/process/publication-workflow.md`. Even
+when both sides only *added* rows, a union of additions is a property of that
+instance and not of the path. A test pins the pair, and pins that nothing under `content/`
 is claimed at any depth.
 
 ### `health-report` — take the base's measurement
@@ -536,23 +437,23 @@ written by `bun run cat health` and refreshed daily on the base by the
 health-check workflow, so the base's copy is simply the newer measurement and
 a branch's older one carries nothing worth keeping. `check:harness-state`
 judges its producer hash; if the merge changed the producer, `bun run cat health`
-rewrites it. Found on the same merge.
+rewrites it.
 
 ### `qa-witnesses` — take the base, regenerate
 
 `test/results/witnesses/**`: witness projections (`qa-witness/v1`) and page
 verdict indexes, written by `gen-docs-pages.ts` from the kg-qa sidecars and the
-live subject. A projection, never an attestation, and the docs-site build regenerates them
-at publish. Found on #1754's eighth merge, 2026-10-01.
+live subject. A projection, never an attestation, and the docs-site build
+regenerates them at publish.
 
 ### `pot-templates` — take the base, regenerate
 
 `translations/**/*.pot`: gettext templates extracted from the English pages by
 `pot-for-pages.ts` (`translation:pot:check`), so every edit to a source page
 rewrites its template in every locale. The `.po` files beside them are
-**authored translations** and stay refused. Found on the same merge.
+**authored translations** and stay refused.
 
-### `site-data` — take the base, regenerate (36)
+### `site-data` — take the base, regenerate
 
 Generated site data indexes under `docs/assets/**/*.json` and `docs/_data/`.
 
@@ -562,9 +463,7 @@ Generated site data indexes under `docs/assets/**/*.json` and `docs/_data/`.
 holds the content-addressed payloads (`<hex>` is the sha256 of its bytes, with
 a `<hex>.json` sidecar beside it). `bun run cat subgraph:jsonld` writes both
 directories **whole**, and it deletes every file in them that it did not write.
-Any skill edit rewrites an index and moves a payload, so until #2176
-(2026-10-05) every merge of `main` into a PR that edited a skill was refused,
-and a person finished it by hand: `checkout --theirs`, then `subgraph:jsonld`.
+Any skill edit rewrites an index and moves a payload.
 
 **Why not `take-base`.** When both sides change one node's payload, git reads
 it as a **rename/rename**. The base's hex goes to the branch's hex on one side
@@ -593,7 +492,7 @@ The writer is named in the pattern as `prunedBy: "subgraph:jsonld"`, a writer
 and not a check: `regen` still derives the check from the CI workflow. When
 `regen` runs that writer, the writer deletes the orphan.
 
-**Both #2145 checkpoints still hold, and they are why this works.** The
+**Both `droppedInMerge` checkpoints still hold, and they are why this works.** The
 `resolved` checkpoint sees no drop. The `staged` checkpoint sees the writer's
 deletion of the superseded payload, a path the branch added, and allows it
 because the disk no longer holds it either. That is the legitimate replacement
@@ -616,40 +515,36 @@ is named `rail-<hash>.js` after the content hash of the rail JSON it carries
 orphaned. `bun run cat navbar:assets` deletes every rail file no committed page
 names, and `navbar:assets:check` fails on one. Both sides of a merge add their
 own hash, which is why this is `owned-tree` and not `take-base`, for the same
-reason as `subgraph-payload` above. Found 2026-10-06 when #2197's merge was
-refused as `no declared pattern`.
+reason as `subgraph-payload` above.
 
 The neighbours `navbar.js` and `navbar.css` are **not** covered: they have
 fixed names and a byte-for-byte check, and stay refused.
 
 `seed:ready` reads the same declaration: deleting or renaming an `owned-tree`
-path is not a move of the layer, because a regen renames it anyway (owner,
-2026-10-06).
+path is not a move of the layer, because a regen renames it anyway.
 
-### `readme-generated-regions` — hunk by hunk (209)
+### `readme-generated-regions` — hunk by hunk
 
 Directory READMEs mix authored prose with generated regions
 (`<!-- kg:subgraph:begin -->` … `:end -->`) whose file counts and listings
 change on every concurrent addition. A hunk **inside** a region takes the
 base's side and the generator rewrites the region; a hunk in authored prose,
-or one that moves a region boundary, **refuses**. The file-count churn
-(`beans/README.md`, 76 alone) is resolved here rather than by changing what
-the README shows — the owner kept the exact counts (#1707).
+or one that moves a region boundary, **refuses**. File-count churn is resolved
+here; the README keeps its exact counts.
 
 ### `standalone-baseline` — take the base, regenerate NOTHING
 
 `cat-harness-tools/scripts/standalone-baseline.json`, `check:standalone`'s list of
-accepted standalone failures (bean `ho66`, #1977). It is the one take-base
+accepted standalone failures. It is the one take-base
 pattern with **no** regeneration, because it is a ratchet. Re-measuring after a
 merge would write any new standalone failure into the list unreviewed, which
 is exactly what the gate exists to stop. Git conflicts on it only when BOTH sides
 changed the list, so taking the base is fail-closed: if this side's change was
 a new failure, its CI goes red until its author runs `bun run
 standalone:baseline` on purpose; if it was a fix, all that is lost is a shorter
-list, and the check reports it. Not measured by replay: the file was new when
-the pattern was added, so there was no merge history to count.
+list, and the check reports it.
 
-### `beans` — refused, by declaration (44)
+### `beans` — refused, by declaration
 
 **Before you go looking for the other session, check whether there is one.**
 A `beans/defs/**` conflict has two causes and they need different handling:
@@ -660,31 +555,24 @@ A `beans/defs/**` conflict has two causes and they need different handling:
 | **one session**: the claim landed on the default branch, the completion stayed on the branch | the note names **your own** branch | no coordination needed; keep the completing value and the note |
 
 The second is `beans:claim`'s **normal path**, not an edge case: it pushes the
-claim to the default branch so a sibling sees it before your PR exists (bean
-`35nj`), and your branch then edits the same bean to finish it. Bean `24fa`
-measured it, and the refusal text used to assert the first cause for both —
-sending an agent to hunt a sibling that does not exist.
+claim to the default branch so a sibling sees it before your PR exists, and
+your branch then edits the same bean to finish it.
 
-`claim-bean.ts` now brings the claim COMMIT into the claiming branch after the
-push (bean `24fa`, owner option 1, #2376): a fast-forward when the branch has
-nothing of its own yet, otherwise a merge commit. The claim is then in the
-branch's merge base, so finishing the bean merges cleanly. Copying only the
-claim's text was not enough. On #2344 the copy was byte-identical and the bean
-still conflicted on `updated_at` and the end of the body, and **a conflicted PR
-gets no CI at all**, so it can never turn green.
+`claim-bean.ts` brings the claim COMMIT into the claiming branch after the
+push: a fast-forward when the branch has nothing of its own yet, otherwise a
+merge commit. The claim is then in the branch's merge base, so finishing the
+bean merges cleanly (copying only the claim's text still conflicts on
+`updated_at`, and **a conflicted PR gets no CI at all**).
 
-The conflict therefore now means the claim could NOT be brought in: a detached
+The conflict therefore means the claim could NOT be brought in: a detached
 checkout, local edits in the way, or a merge that would conflict. `beans:claim`
 says so (`NOT in this branch's history`) and falls back to the text mirror
 (`mirrorClaimNote`). Resolve the remainder by merging the default branch in, or
 by keeping the completing branch's value and the note — and **never by unioning
 the front matter**, since a duplicated `updated_at` is
-`check-bean-front-matter`'s recorded defect.
-
-Bean definitions are authored work-plan state. Two sessions editing one bean
-is a coordination question (`bean-coordination`), and a duplicated
-`updated_at` from a careless resolution is `check-bean-front-matter`'s
-recorded defect.
+`check-bean-front-matter`'s recorded defect. Bean definitions are authored
+work-plan state; two sessions editing one bean is a coordination question
+(`bean-coordination`).
 
 ### `artefact-verification` — refused, by declaration
 
@@ -692,8 +580,7 @@ recorded defect.
 declaration. **This is the entry that exists to stop a sweep, not to resolve
 one** — and the one most likely to be globed by mistake, because it reads like a
 generated sidecar (under `scripts/`, a `.json`, its key set derived from
-`package.json`) and because it is the only path that refused on **two** open PRs
-at once (#1958, #1955, swept 2026-10-03).
+`package.json`).
 
 Two facts, either one sufficient:
 
@@ -708,13 +595,13 @@ So a conflict here is a genuine editorial merge: both reasons are wanted, and
 which survives is a judgement. Human merge is the cost of the file's shape, not
 a hole in this catalogue.
 
-**The falsifier is recorded** (bean `mjl3`): if a `--write` is ever added that
+**The falsifier:** if a `--write` is ever added that
 composes the derived key set and carries existing reasons forward, the file
 becomes regenerable and this entry becomes `take-base`. Nothing today wants such
 a writer, and adding one to make merges cheaper would be building a mechanism to
 serve the merge tool rather than the gate.
 
-### `uploads` — refused, by declaration (30)
+### `uploads` — refused, by declaration
 
 Uploaded source material: provenance-bearing input, never regenerated.
 
@@ -731,7 +618,7 @@ Uploaded source material: provenance-bearing input, never regenerated.
 ## In CI — opt in with the `merge-main` label
 
 `.github/workflows/merge-main.yml` is a second CALLER of the same command,
-never a second resolver (bean `d33q` part B). When `main` moves, it runs
+never a second resolver. When `main` moves, it runs
 `bun run cat merge:main` on every open, same-repository PR labelled `merge-main`
 that is behind `main`, one live run per PR (a newer run cancels an older one).
 
@@ -739,43 +626,31 @@ that is behind `main`, one live run per PR (a newer run cancels an older one).
   out; if the author pushed meanwhile the push is rejected and nothing is
   overwritten.
 - **A refusal pushes nothing** and lists the ✗ paths in its comment. Adding a
-  pattern stays a person's change, made here. It does NOT label the PR: owner
-  ruling 2026-10-03, *"stop using `needs-merge-human`, it's confusing
-  things"*, and the measurement behind it is that **a label asserting "a
-  person is needed" outlives the condition that set it**. Measured the same
-  day: of ten PRs carrying it, **six were stale** — clean against `main` AND
-  pushable by the bot, because the workflow change that had blocked them was
-  already in their merge-base. A stale hold is indistinguishable from a live
-  one without re-deriving why the push failed, which is the
-  `merge-queue` skill's own §"A hold has an EXPIRY and a trigger, or it
-  outlives its reason" at the scale of a whole queue.
-  **The reason lives in the comment, which is dated and names the run; a
-  label is a claim with no timestamp.**
+  pattern stays a person's change, made here. It does NOT label the PR: **a
+  label asserting "a person is needed" outlives the condition that set it**
+  (`merge-queue` §"A hold has an EXPIRY and a trigger, or it outlives its
+  reason"). **The reason lives in the comment, which is dated and names the
+  run.**
 - **A declared resolution that FAILS is a refusal too**, not an unexplained
   red job. If taking the base or resolving a region throws, `merge-base`
   prints `  ✗ <path>  [<pattern>: could not resolve] — <git's first error
   line>` and aborts, so the bot's comment names the path and the error.
-  Measured 2026-10-03 on #1801: the branch ignores `cat-harness/test/results/`
-  while the files stay tracked, git exits 1 when staging an UNMERGED ignored
-  path (it stages it anyway), and merge-main went red on every push to main.
-  Staging a conflicted path uses `git add -f` in both resolvers, safe because
-  the path is one git listed as unmerged. `regen` reporting an unrepaired
+  Staging a conflicted path uses `git add -f` in both resolvers (git exits 1
+  when staging an unmerged ignored path), safe because the path is one git
+  listed as unmerged. `regen` reporting an unrepaired
   check is still a red job: that is a defect for a person to read, not a
   conflict.
 - **One comment per PR, edited in place** on every run — except a run that
   was **cancelled** (a newer push to `main` superseded it) or whose merge step
-  reported no status, which leaves the comment untouched. Before #1854 such a
-  run rewrote it to "**Error** (exit )". The text is composed by
+  reported no status, which leaves the comment untouched. The text is composed by
   `cat-harness-tools/scripts/merge-main-comment.ts`, which is unit-tested.
 - **The merge commit is still judged by CI**: pushed with `MERGE_MAIN_TOKEN`
   when that secret exists, otherwise followed by a dispatch of
   `code-quality-gates.yml` on the branch, because a GITHUB_TOKEN push triggers
   no workflow.
 
-Why it is worth a runner: on #1754 (2026-10-01) one round took 19–46 min in a
-shared agent container while `main` moved every few minutes, and GitHub runs no
-`pull_request` CI on a conflicted PR — a 28-conflict resolution went 'dirty'
-again within a minute of its push. Use the label on a PR that is waiting on
+GitHub runs no `pull_request` CI on a conflicted PR, and `main` can move faster
+than an agent round. Use the label on a PR that is waiting on
 review rather than on its author; leave it off a branch somebody is pushing to.
 
 ## When a merge-train member is refused: bean, hand back, or dispatch
@@ -786,26 +661,12 @@ when its merge hits an authored or undeclared conflict, or when the train's
 combined result fails a gate that the member alone did not fail. The steward
 drops it and the train goes on without it. `sdlc/processes/merge-refusal.bpmn`
 executes what happens to the dropped member. The author's side, the queue
-and the bounce-back are the merge-manager SOP in
-[#1802](https://github.com/litlfred/folio-assistant/pull/1802) (steps 10 and
-12). The hand-back format is the
-[`agent-handoff`](agent-handoff.md) skill.
+and the bounce-back are [`merge-queue`](merge-queue.md); the hand-back format
+is the [`agent-handoff`](agent-handoff.md) skill.
 
-**Why this exists.** Owner, 2026-10-02: *"if a merge in queue cannot be merged
-for some reason, create a new bean (under appropriate epic/story…), hand it
-back to the sibling (use the agent-to-agent handoff process with a fail
-condition) for resolution, or dispatch an agent as appropriate."* Before this,
-each refusal got an ad-hoc PR comment or chat message, and nothing in the work
-plan said it had happened. The refusals on 2026-10-02 alone show the three
-causes this section has to cover:
-
-| PR | refused on | cause |
-|---|---|---|
-| #1808, #1819 | bean `ob3m` | two sibling navbar PRs edited the same bean (`beans`, refused by declaration) |
-| #1804 | `artefact-verification.json` | authored file, no declared pattern |
-| #1822 | `gen-library-jsonld.ts` | authored conflict with #1881, which overlaps it |
-| #1852 | `proposals/index.md` | authored index, no declared pattern |
-| #1764 | glossary page budget | each PR passed alone; the combination exceeded the budget |
+A refusal has one of three causes: a conflict on a path refused by
+declaration (two PRs editing one bean, say), an authored or undeclared path,
+or a gate the combination fails that each member passed alone.
 
 ### 1. Open one bean per refused PR, and check before you create
 
@@ -831,8 +692,8 @@ steward's epic. Find it in this order: the bean the PR's branch adds or claims
 the PR body or commit messages. Parent the refusal under **that bean's parent**
 when the PR's bean is a task, or under the PR's bean itself when it is an epic
 or story. Then mark it `--blocking <the PR's bean>`. Only when the PR names no
-bean at all does it go under the steward's own merge-gate epic (`nok9` here),
-and the bean body says so.
+bean at all does it go under the steward's own merge-gate epic, and the bean
+body says so.
 
 The body records what the owning session needs in order to act without asking:
 
@@ -850,7 +711,7 @@ PR #1822, head <sha> (the sha the train used), dropped from train
 - [ ] the PR re-enters a train with a new `ready: <sha>`, and lands
 ```
 
-For a combined-gate refusal (#1764), list the gate, its first failing line, and
+For a combined-gate refusal, list the gate, its first failing line, and
 **which other members** the train held, because the fix may belong to either
 side.
 
@@ -899,9 +760,9 @@ Its budget is modest: one fix, one push, one report.
 - **It may do** what the patterns would have done had they been declared: bring
   main in with `merge:main`, regenerate, and fix a gate failure that has one
   mechanical answer. It pushes merge commits only, and never force-pushes.
-- **It may not decide an authored conflict.** Two sibling PRs editing one bean
-  (`ob3m`), one script changed differently on both sides (#1822 against
-  #1881), or a page over its budget only in combination (#1764): each of these
+- **It may not decide an authored conflict.** Two sibling PRs editing one
+  bean, one script changed differently on both sides, or a page over its
+  budget only in combination: each of these
   is a choice between authors. The agent writes the question to the owner on
   the PR, with both sides quoted, the options and a default, and stops
   (`interaction-modality` §4.1).
@@ -918,7 +779,7 @@ One comment per refused PR, **edited in place** as the bean moves on, as
 `merge-main.yml` does with its own comment. It names the bean, the head sha,
 the train, the refused paths, and who holds the fix (the owning session, a
 dispatched agent, or the owner). A second refusal of the same PR updates the
-same comment. Remove `ready-to-merge` when #1802's SOP is in force (step 10).
+same comment. Remove `ready-to-merge` ([`merge-queue`](merge-queue.md)).
 
 ### 5. Close the bean when the PR's fate is settled
 
@@ -930,5 +791,4 @@ The steward is the verifier, so the steward closes:
 
 A fix that is pushed but has not landed does not close the bean. The member
 must survive a train first. A refusal bean left open after its PR has gone is
-the stale state that the `needs-merge-human` label already shows (bean `u7be`
-item 4).
+a stale hold.

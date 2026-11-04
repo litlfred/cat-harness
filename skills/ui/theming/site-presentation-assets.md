@@ -11,17 +11,12 @@ description: >
 
 **A visual fact has one home, and it is a node in the knowledge graph.** A
 colour, a glyph, an avatar, a theme's token set: declared once as data, and the
-stylesheet the site serves is **generated** from it.
-
-The owner's requirement, and the whole of it:
-
-> *named css assets in KG rather than hardcoded colors*
+stylesheet the site serves is **generated** from it: named CSS assets in the
+graph, never hard-coded colours.
 
 Authoring the stylesheet by hand beside the nodes gives **two answers to one
-question**, free to disagree — and they do disagree, silently, because nothing
-compares a hex triple in a `.css` file with a hex triple in a `.ts` file. This is
-the same failure as a hand-written `title:` in a Jekyll config next to a declared
-instance name, which diverged the day it was written.
+question**, free to disagree silently, because nothing compares a hex triple in
+a `.css` file with one in a node.
 
 ## The test
 
@@ -38,9 +33,8 @@ to be committed, and it is committed only so it is readable on the forge. An edi
 survives exactly until the next generator run.
 
 **2 — Gate staleness, do not trust it.** The generator takes a `--check` arm that
-compares against the committed copy and fails rather than writing. A generator
-whose `--check` is not in CI is a generator whose output drifts, and the drift is
-invisible because the file looks authored.
+compares against the committed copy and fails rather than writing. Put that
+`--check` in CI.
 
 **3 — A published generated asset needs a Tool that `maintains` it.** Otherwise
 the provenance is unreachable: nothing can answer "which node produced this
@@ -91,20 +85,3 @@ a failure.
 
 This skill is only about the direction of authority: **the graph decides, the
 stylesheet reports.**
-
-## Why this skill exists at all, recorded because the gap was the finding
-
-It was authored 2026-09-20 after two generators — both committed, both published,
-both single-file — could not be given Tool nodes, because `satisfies` requires a
-skill and **no skill stated this capability**. The mechanism had existed for some
-time; the vocabulary had not.
-
-That is the third mismatch in
-[`covered-is-not-reachable`](../../tools/folio-core/covered-is-not-reachable.md), and it is invisible to
-`bun run cat tools:coverage` by construction: that tool enumerates **skills** and asks
-which lack Tools, so a capability nobody stated is absent from the list it walks.
-Bean `yean`.
-
-The skill was written before the nodes, and deliberately names no script. A skill
-written to give a command somewhere to point is **a Tool with front matter**: it
-passes every check and teaches nothing.

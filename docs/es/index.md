@@ -23,12 +23,8 @@ de objetos de contenido tipado.
 {: .fs-6 .fw-300 }
 
 <!--
-  `View on GitHub` STAYS. The site-wide `aux_links` GitHub text was removed from
-  the chrome above every page (bean `udx8`, PR #352), and the obvious follow-up
-  is to delete this button for consistency. Do not. Put to the repo owner on
-  2026-09-19: this button is part of the landing page's own readme/description
-  note — authored content on one page, not chrome — and the forge remains
-  reachable from the navbar's Source tile regardless.
+  `View on GitHub` STAYS: it is authored content on this page, not site chrome,
+  so removing the site-wide GitHub link does not remove it.
 -->
 [Comenzar]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }}){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [Instalar]({{ '/docs/cat-harness/start/installation.html' | relative_url }}){: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 }
@@ -47,7 +43,7 @@ No un mensaje de chat, no un comentario: [beans]({{ '/docs/cat-harness/guides/be
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list                          # lo que está abierto
 beans create "<title>"              # …tras comprobar que el título no existe
-beans <id> --status in-progress     # reclamarlo, de forma visible
+bun run cat beans:claim <id>        # reclamarlo, de forma visible
 ```
 
 **2. Crea tu primer folio.** Este repositorio es la *plataforma*; tu contenido vive en el suyo propio. Un solo comando lo prepara — los manifiestos, la declaración, los archivos del agente y el enlace de vuelta aquí:
@@ -60,10 +56,10 @@ Después, [Primeros pasos]({{ '/docs/cat-harness/start/getting-started.html' | r
 
 **3. Conoce qué tipo de cosa estás escribiendo.** Un *documento* es prosa estructurada; un *artículo* (paper) es eso más los tipos de bloque cuya aserción es una afirmación formal, respaldada por Lean y compuesta con LaTeX. La elección decide qué bloques son válidos y qué controles se ejecutan: [Tipos de contenido]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }}).
 
-**4. La documentación que nunca leerás.**
-[Toda ella]({{ '/docs/cat-harness/guides/index.html' | relative_url }}) — las guías de autoría, la arquitectura, el flujo de publicación, la referencia generada de esquemas y habilidades. Está aquí, es exhaustiva, y lo honesto es esperar que llegues a ella desde un buscador en el momento exacto en que algo se rompa. Es una buena forma de usarla. Los tres pasos de arriba son los que vale la pena leer ahora.
+**4. El resto de la documentación.**
+[Toda ella]({{ '/docs/cat-harness/guides/index.html' | relative_url }}) — las guías de autoría, la arquitectura, el flujo de publicación, la referencia generada de esquemas y habilidades. Léela cuando la necesites; los tres pasos de arriba son los que vale la pena leer ahora.
 
-Cuando lo que te desconcierta es la *maquinaria* y no la autoría — quién hace qué cosa, en qué proceso, con qué habilidad — empieza por [La plataforma]({{ '/docs/cat-harness/platform.html' | relative_url }}). Una sola frase allí sostiene todo el modelo, y cada palabra en ella es un objeto declarado por separado.
+Cuando lo que te desconcierta es la *maquinaria* y no la autoría — quién hace qué cosa, en qué proceso, con qué habilidad — empieza por [La plataforma]({{ '/docs/cat-harness/platform.html' | relative_url }}).
 
 ---
 
@@ -74,10 +70,9 @@ las habilidades, los esquemas, las herramientas y un servidor MCP (Model Context
 Protocol) que un agente impulsado por LLM utiliza para planificar, redactar, validar,
 revisar, probar y publicar un **folio** de contenido que reside en un repositorio independiente.
 
-> **Separación de responsabilidades.** Esta documentación describe el *formalismo del
-> marco de trabajo* y *cómo usar folio-assistant* — mantenido deliberadamente **separado
-> de cualquier contenido específico**. Cuando aparece contenido en estas páginas, es
-> puramente ilustrativo (un *ejemplo*), nunca el artefacto canónico.
+> **Separación de responsabilidades.** Esta documentación describe el marco y cómo
+> usarlo. Cuando aparece contenido en estas páginas, es un *ejemplo*, nunca el
+> artefacto canónico.
 
 ```mermaid
 flowchart LR

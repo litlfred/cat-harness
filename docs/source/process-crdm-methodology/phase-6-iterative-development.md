@@ -94,7 +94,5 @@ Collapsing them into one loop would either:
 - Slow the agent down to the stakeholder cadence (wasting agent time), or
 - Rush stakeholders through testing (producing shallow feedback).
 
-The BA absorbs the impedance mismatch. They keep the agent productive in
-the inner loop while waiting for stakeholder availability in the outer
-loop. Between outer-loop checkpoints, the agent works on other beans or
+The BA absorbs the impedance mismatch. Between outer-loop checkpoints, the agent works on other beans or
 other features.

@@ -111,5 +111,5 @@ rest ([`interaction-modality`](../../../skills/conduct/conduct-core/interaction-
 - **Treating "no report" as "nothing in flight".** It means the opposite.
 - **Restarting every stalled agent at once.** That is a swarm, and it needs
   the owner's yes ([`swarm-management`](swarm-management.md)), plus disk and
-  CPU headroom: four agents regenerating at once filled a 9 GB allowance on
-  2026-10-02.
+  CPU headroom: several agents regenerating at once can fill a container's
+  disk allowance.

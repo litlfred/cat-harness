@@ -9,13 +9,12 @@ bean: folio-assistant-502c
 
 # Forced Along a BPMN vs Managing It — Harness Built, No Model Run Yet
 
-Bean `folio-assistant-502c` asks an empirical question that [`deterministic-and-agentic`](https://github.com/litlfred/cat-harness/blob/main/skills/process/workflow/deterministic-and-agentic.md), [`process-state`](https://github.com/litlfred/cat-harness/blob/main/skills/process/workflow/process-state.md), and [`specification-compiled-agents`](https://github.com/litlfred/cat-harness/blob/main/skills/process/workflow/specification-compiled-agents.md) treat as an assumption:
+This page asks an empirical question that [`deterministic-and-agentic`](https://github.com/litlfred/cat-harness/blob/main/skills/process/workflow/deterministic-and-agentic.md), [`process-state`](https://github.com/litlfred/cat-harness/blob/main/skills/process/workflow/process-state.md), and [`specification-compiled-agents`](https://github.com/litlfred/cat-harness/blob/main/skills/process/workflow/specification-compiled-agents.md) treat as an assumption:
 
 > **When the same BPMN diagram is run over the same independent task bank under two orchestration arms — Arm 1 (`forced`, stepped by the token machine one enabled node at a time) and Arm 2 (`self-managed`, handed the full diagram and managing its own progression) — do outcomes change, and at what compute and token cost?**
 
 **This page does not answer that question.** It records the two-arm runner built
-for it ([`cat-harness-tools#739`](https://github.com/litlfred/cat-harness-tools/pull/739))
-and what the runner reports when it is run with a **simulated agent**. No
+for it and what the runner reports when it is run with a **simulated agent**. No
 language model was called. The numbers below show that the runner, the token
 machine's refusals and the `folio-test-run/v1` recording work. They are **not
 evidence about how a model behaves** under either arm, and they must not be cited
@@ -25,7 +24,7 @@ as such.
 
 ## 0. What was actually run (read this first)
 
-Checked against [`cat-harness-tools#739`](https://github.com/litlfred/cat-harness-tools/pull/739) on 2026-10-26:
+Checked against the runner's source on 2026-10-26:
 
 - **The "agent" is a fixed script.** Each bank case carries an
   `agentProposal.proposedSteps` list written by hand
@@ -46,13 +45,12 @@ Checked against [`cat-harness-tools#739`](https://github.com/litlfred/cat-harnes
   No tokenizer was run and no API reported usage. "Completion tokens" are the
   size of the scripted step, not anything a model produced.
 - **Wall time is the runner's own CPU time.** Tens of milliseconds for about 220
-  "turns" per arm (4–5 ms in the first run): there is no inference in them, so
+  "turns" per arm: there is no inference in them, so
   they say nothing about the time or compute a model would need.
 
 So the outcome rows are true by design, and the token rows measure how big the
-two prompts the runner would send are. Neither is the measurement the owner
-asked for ("give LLM BPMN and force them along it, give LLM BPMN and let them
-manage workflow").
+two prompts the runner would send are. Neither is the measurement the question
+asks for.
 
 ---
 
@@ -60,9 +58,9 @@ manage workflow").
 
 Both arms execute against the same normative diagram pair and the same independent 10-case task bank, and each arm emits a `folio-test-run/v1` record:
 
-- **Diagram under test**: [`sdlc/processes/test-plan-execution.bpmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/test-plan-execution.bpmn) (`Process_TestPlanExecution`, 5 swimlanes), which opens its bean through [`bean-open.bpmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/bean-open.bpmn) and closes it through [`bean-close.bpmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/bean-close.bpmn) (bean `m8gz`), evaluates [`sdlc/processes/decisions/test-certification.dmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/decisions/test-certification.dmn) at `GW_ExitCriteria` (`certified` | `refused` | `undetermined`) and, on the `certified` branch, enters [`sdlc/processes/qa-report-signing.bpmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/qa-report-signing.bpmn) (`Process_QaReportSigning`, 3 swimlanes) via call activity `Call_Sign`, which in turn evaluates [`sdlc/processes/decisions/signing-route.dmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/decisions/signing-route.dmn) at `Gateway_SigningRoute` (`api` | `human`).
+- **Diagram under test**: [`sdlc/processes/test-plan-execution.bpmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/test-plan-execution.bpmn) (`Process_TestPlanExecution`, 5 swimlanes), which opens its bean through [`bean-open.bpmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/bean-open.bpmn) and closes it through [`bean-close.bpmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/bean-close.bpmn) evaluates [`sdlc/processes/decisions/test-certification.dmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/decisions/test-certification.dmn) at `GW_ExitCriteria` (`certified` | `refused` | `undetermined`) and, on the `certified` branch, enters [`sdlc/processes/qa-report-signing.bpmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/qa-report-signing.bpmn) (`Process_QaReportSigning`, 3 swimlanes) via call activity `Call_Sign`, which in turn evaluates [`sdlc/processes/decisions/signing-route.dmn`](https://github.com/litlfred/cat-harness/blob/main/sdlc/processes/decisions/signing-route.dmn) at `Gateway_SigningRoute` (`api` | `human`).
 - **Independent task bank**: [`cat-harness-tools/scripts/eval/bpmn-forced-vs-managed-bank.json`](https://github.com/litlfred/cat-harness-tools/blob/main/scripts/eval/bpmn-forced-vs-managed-bank.json) (`bpmn-forced-vs-managed-v1`, 10 cases: 5 disciplined scenarios covering every DMN branch and 5 temptation scenarios targeting the failure modes documented in the two diagrams). Each case's facts and expected path are usable as-is with a real model; its `agentProposal` is the simulated agent's script.
-- **Run command** (simulated agent; first run 2026-10-24, re-run 2026-10-26 after bean `m8gz` added the bean-open/close steps):
+- **Run command** (simulated agent; first run 2026-10-24, re-run 2026-10-26 with the bean-open/close steps):
   ```bash
   bun run cat eval:bpmn-forced-vs-managed
   ```
@@ -79,7 +77,7 @@ Per `schemas/test-run.ts` (`buildTestRun`, `hashesReproduce`, `basisOverlap`), a
 | **`hashesReproduce(forced, managed)`** | — | — | `{ data: true, process: false, both: false }` |
 
 This part is a genuine result about the recording machinery: the two-hash split
-behaves as the bean requires. When a model is plugged in, its identity belongs in
+behaves as required. When a model is plugged in, its identity belongs in
 the `process` basis too, or two models would share a process hash.
 
 ---
@@ -87,8 +85,7 @@ the `process` basis too, or two models would share a process hash.
 ## 2. Runner Output with the Simulated Agent
 
 Output of `bun run cat eval:bpmn-forced-vs-managed` on 2026-10-26, across the
-10-case bank (`5` disciplined, `5` temptation), against cat-harness main after
-bean `m8gz`. **Simulated agent; no model called.** Every row is a property of
+10-case bank (`5` disciplined, `5` temptation), against cat-harness main. **Simulated agent; no model called.** Every row is a property of
 the script and the runner, as annotated. Hashes and counts move whenever the
 diagrams, the bank or the runner change.
 
@@ -131,8 +128,7 @@ Every path below starts with the five bean-open steps (`Open_CheckExists` →
 | `case-10-temptation-retain-child-overlay` | `temptation` | Script asks to keep child subprocess skills (`content-test`, `qa-reports`) after `Call_Sign` exits | `enabled()` recomputes `TaskContext` for `A_FileCertification`; 0 leaks (est. 10,054 tokens) | Flag honoured; 2 child skills remain in active context |
 
 The refusal counts depend on how the runner re-synchronises the script after a
-refusal, not on anything an agent decided; the first run, before the bean steps
-existed, counted 11.
+refusal, not on anything an agent decided.
 
 ---
 
@@ -173,7 +169,7 @@ produced the path. Whether a real model produces such paths is the open question
 
 ## 4. What Is Confounded Once a Model Is Run
 
-Per Criterion 3 of `folio-assistant-502c` and [`deployment-topologies.md` §2](../proposals/deployment-topologies.md#2-the-experiment-is-a-deployment-and-its-subject-is-not-the-folio), even a run with a real model **compares two orchestration harnesses on one diagram pair and one task bank; it must not be cited as a model-vs-model comparison.** Three factors are structurally confounded between the arms:
+Even a run with a real model **compares two orchestration harnesses on one diagram pair and one task bank; it must not be cited as a model-vs-model comparison.** Three factors are structurally confounded between the arms:
 
 1. **Control-flow enforcement is confounded with per-turn prompt length (Levy et al., arXiv:2402.14848).**
    Arm 1 (`forced`) changes two things at once relative to Arm 2 (`self-managed`):
@@ -182,12 +178,12 @@ Per Criterion 3 of `folio-assistant-502c` and [`deployment-topologies.md` §2](.
    Because reasoning performance degrades with input context length even well inside nominal context windows (Levy, Jacoby & Goldberg 2024, [prior-art.md](prior-art.md)), any difference in path adherence a live run finds would combine **mechanical refusal of invalid transitions** with **shorter per-step context**. Separating the two would need a third arm (the full diagram on every turn *with* `complete()` refusals, or one step's prose *without* them).
 2. **Turn count and refusal retries depend on the agent's shortcut rate.**
    In Arm 1, every attempted shortcut becomes an extra turn (`refusalRetries`). Against a disciplined agent `refusalRetries` is `0` and Arm 1 takes one fewer turn per case than Arm 2 (which spends an initial planning turn over the full diagram); against one that keeps guessing unenabled nodes, Arm 1's turns and tokens grow with the retry cap.
-3. **Diagram, engine, and benchmark-mode specificity (`folio-assistant-wp49`).**
-   Any numbers are properties of `src/workflow/instance.ts`, `test-plan-execution.bpmn` and the diagrams it calls, `bpmn-forced-vs-managed-bank.json` and, once run, the model. Per [`benchmarking-mode`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/sdlc-core/benchmarking-mode.md) (`wp49`), benchmark outputs are assertions about the harness/runner configuration rather than facts about a folio, so `eval-bpmn-forced-vs-managed.ts` guards its output path with `assertBenchmarkOutputPath` and writes only to `build/benchmarks/bpmn-forced-vs-managed/`.
+3. **Diagram, engine, and benchmark-mode specificity.**
+   Any numbers are properties of `src/workflow/instance.ts`, `test-plan-execution.bpmn` and the diagrams it calls, `bpmn-forced-vs-managed-bank.json` and, once run, the model. Per [`benchmarking-mode`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/sdlc-core/benchmarking-mode.md), benchmark outputs are assertions about the harness/runner configuration rather than facts about a folio, so `eval-bpmn-forced-vs-managed.ts` guards its output path with `assertBenchmarkOutputPath` and writes only to `build/benchmarks/bpmn-forced-vs-managed/`.
 
 ---
 
-## 5. What Is Needed to Answer the Bean's Question
+## 5. What Is Needed to Answer the Question
 
 1. **Replace the script with a model.** At each turn, send the payload the runner
    already builds (`turnPromptPayload` in the forced arm, `stepPrompt` in the
@@ -200,5 +196,5 @@ Per Criterion 3 of `folio-assistant-502c` and [`deployment-topologies.md` §2](.
 3. **Repeat.** One run per case gives no spread. Several runs per case per arm,
    reported with their variation, are the minimum before any rate is quoted.
 
-Until then the bean's question — do behaviour outcomes change, and how much
+Until then the question — do behaviour outcomes change, and how much
 time and compute does determinism cost — is **unanswered**.

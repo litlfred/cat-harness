@@ -8,8 +8,7 @@ a different store without rewriting a Skill.
 that kind and a consumer may scan it, and the obligations below are what make
 the promise keepable. They are stated in full by
 [`harness-requirements`]({{ '/reference/skill-instructions/harness-requirements.html' | relative_url }})
-and measured by `check:subgraph-coverage`; this section says what they are and
-why two of them are ranked differently.
+and measured by `check:subgraph-coverage`.
 
 | obligation | declared as | the question it answers |
 |---|---|---|
@@ -19,8 +18,8 @@ why two of them are ranked differently.
 | **skill** | `coverage.skill` | is an agent handed something that GOVERNS this? |
 
 The first four are per declared directory. A fifth, a starting README, is per
-instance and is ranked harder still: an instance without one is not a gap
-somebody has not filled, it is an instance a reader cannot enter.
+instance and is ranked harder still: without one a reader cannot enter the
+instance.
 
 ### `coverage.process` is DECLARED and is not an obligation
 
@@ -37,17 +36,12 @@ absent `coverage.process` means NOT DECLARED and never "no process" — the same
 third state `readOnly` keeps — and a directory declaring none gets no such
 section and is not a finding. What *is* a finding, ranked major, is a declared
 name that resolves to no diagram: somebody said, and what they said points at
-nothing. There is correspondingly no `exempt.process`; declaring nothing
-already is the silence, and a waiver would be a second spelling of it.
+nothing. There is no `exempt.process`: declaring nothing already says it.
 
-**It is declared rather than inferred, and the temptation is the point.**
-`document-ingestion.bpmn` starts on an event named *"A file lands in
-`uploads/`"*, so the directory could be matched out of that prose. An event's
-name is editorial text: rewording it would silently unlink the page, and
-nothing could tell that from a directory that never had a process. A diagram
-also touches several directories while being *about* one — `document-ingestion`
-reads `uploads/` and writes `library/` — which is the direction name-matching
-cannot see at all.
+**It is declared rather than inferred** from a diagram's event names. An
+event's name is editorial text, so rewording it would silently unlink the page,
+and a diagram touches several directories while being *about* one —
+`document-ingestion` reads `uploads/` and writes `library/`.
 
 ### The serialisation is the one obligation a Harness MAY NOT waive
 
@@ -57,10 +51,9 @@ it. `coverage.exempt` carries three keys — `visualiser`, `docs`, `skill` — a
 deliberately not a fourth, and the coverage check ranks a missing serialisation
 as an unmet obligation with no by-kind test at all.
 
-The reason is `bootstrap`. It is excused a visualiser precisely because its
-`json` and `jsonld` *are its existence* — so the thing it is excused **into**
-cannot itself be excusable, or the exemption would excuse everything. **The
-visualiser is the courtesy; the serialisation is the existence claim.**
+`bootstrap` is excused a visualiser because its `json` and `jsonld` *are its
+existence*, so the serialisation cannot itself be excusable. **The visualiser
+is the courtesy; the serialisation is the existence claim.**
 
 A Harness **SHOULD** provide a visualisation, and which kinds owe one is a
 question about the kind rather than a blanket rule: an active state directory
@@ -71,9 +64,7 @@ that was never going to need one is not carrying a debt.
 That difference is why the coverage axis ranks findings **major** and **minor**
 rather than counting them: major is an obligation this kind owes and the
 instance has not met; minor is nobody having said yet, for a kind that never
-owed one. Merging them would rank `beans/` having no viewer alongside a kind
-that never needed one, and an axis that cannot tell those apart is an axis
-whose count means nothing.
+owed one.
 
 A Harness **SHOULD** also carry a `docs/` directory documenting itself, and
 every Harness **SHOULD** have one. `cat-harness` renders its own through the

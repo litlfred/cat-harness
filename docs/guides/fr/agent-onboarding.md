@@ -57,29 +57,25 @@ cat-harness-tools/scripts/session-start-coord-sweep.sh  # équivalent indépenda
 bun run cat check-deps                     # ce que cet environnement peut faire
 ```
 
-`--check-deps` importe plus qu'il n'y paraît. De nombreuses vérifications
-se dégradent en `n/a` au lieu d'échouer lorsqu'un outil est manquant (pas
-de chaîne Lean, pas d'Atlas, pas de LaTeX). **Un `n/a` n'est pas une
-réussite.** Si vous rapportez « tout est propre » sans savoir ce qui a été
-ignoré, vous rapportez l'absence de données comme un résultat.
+De nombreuses vérifications se dégradent en `n/a` au lieu d'échouer lorsqu'un
+outil est manquant (pas de chaîne Lean, pas d'Atlas, pas de LaTeX). **Un `n/a`
+n'est pas une réussite :** dites ce qui a été ignoré et pourquoi.
 
 ## 3. Trouvez la bonne compétence — n'improvisez pas
 
 Les compétences sont l'unité de travail ici. Avant de créer une procédure
-à la main, vérifiez si une existe déjà.
+à la main, vérifiez si une existe déjà. **Demandez-la avec `skill_list` et
+`skill_fetch` ; ne naviguez pas vers un chemin.**
 
 | Où | Ce que ça vous donne |
 |---|---|
-| `skills/folio-core/` | indépendant du contenu : coordination, watchers, QA, rendu, bibliographie |
-| `folio-assistant-sci/skills/content/folio-paper-adapter/` | articles : Lean, LaTeX, preuves, simulateurs |
-| `smart-base/skills/content/authoring-who-smart-guidelines/` | WHO SMART DAK / IG |
 | [Référence du schéma de compétences]({{ site.baseurl }}/reference/skills/) | contrat d'entrée/sortie typé par compétence |
 | [Instructions de compétences]({{ site.baseurl }}/reference/skill-instructions/) | corps d'instructions complets générés |
 | [Compétences & rôles](../../concepts/skills.html) | comment les compétences, rôles et capacités se composent |
 
 Les deux répertoires `reference/` sont **générés** — ne les modifiez jamais
-à la main. Régénérez avec `bun run scripts/gen-schema-docs.ts` et
-`bun run scripts/gen-skill-docs.ts`.
+à la main. Régénérez avec `bun run cat-harness-tools/scripts/gen-schema-docs.ts`
+et `bun run cat-harness-tools/scripts/gen-skill-docs.ts`.
 
 ## 4. Le modèle d'objets de contenu, en bref
 
@@ -98,8 +94,6 @@ dans le manifeste.
 
 ## 5. Deux relations de dépendance — ne les confondez pas
 
-Cela perturbe constamment les agents.
-
 - **`uses[]` est éditorial.** « Qu'est-ce qu'un lecteur doit avoir lu
   pour suivre ce bloc ? » Rédigé — maintenu par l'agent/humain.
 - **Le graphe formel est dérivé automatiquement** de `lean.ref`, jamais
@@ -115,13 +109,14 @@ partir duquel chaque métrique d'ordonnancement est calculée.
 ## 6. Suivez le travail dans beans, pas dans votre tête
 
 `beans` est le **seul** mécanisme de tâches — local à la session *et*
-multi-agents. `beans/` est commité, donc un plan survit à une reprise
-dans un nouveau conteneur.
+multi-agents. `beans/` est conservé sur une branche d'état et monté au début de
+la session (`bun run cat state:mount`), donc un plan survit à une reprise dans un
+nouveau conteneur.
 
 ```sh
 beans list
 beans create "<titre>"
-beans update <id> --status in-progress    # REVENDIQUEZ avant de travailler
+bun run cat beans:claim <id>             # REVENDIQUEZ avant de travailler
 ```
 
 Revendiquez avant de travailler pour que deux sessions ne prennent pas le
@@ -156,8 +151,5 @@ bun run content/pipeline/qa-staleness.ts content/<paper>
 
 ## 10. Habitudes pour éviter les ennuis
 
-- **`n/a` n'est pas une réussite.** Dites ce qui a été ignoré et pourquoi.
-- **Revendiquez un bean avant un travail durable.** D'autres peuvent être en cours.
 - **Ne codez pas en dur un nom de document.** Un folio peut en contenir plusieurs.
-- **N'écrivez pas de contenu dans la plateforme.**
-- **Régénérez, ne modifiez jamais à la main,** tout ce qui est sous `docs/reference/`.
+

@@ -2,25 +2,22 @@
 name: adjudication
 description: >-
   Settle a review that reached no mechanical or consensus agreement. What makes
-  a disagreement adjudicable, the shape seven implementations here already
-  share, why the adjudication LEADS the criterion while the checker's entry is
-  kept beneath it, and the dispensation that records the reason — scoped to a
-  version, never precedent.
+  a disagreement adjudicable, the shape its implementations share, why the
+  adjudication LEADS the criterion while the checker's entry is kept beneath
+  it, and the dispensation that records the reason — scoped to a version,
+  never precedent.
 ---
 
 # Adjudication — judgement, when the mechanism ran out of facts
 
 > Skill id: `adjudication` · Package: `sdlc-core`
 
-## Why this exists
+## What it is
 
-Owner, 2026-09-21: *"during review process a concensus/mechanical agreemenet
-was not reached, in this case Judgment is needed and Adjudication process
-being … it is Judgment of >= 1 Feedback Provider's feedback. still have same
-dispensation process (reason for choice as per contextual requirements)."*
-
-**The shape was already implemented seven times and generalised none.**
-Measured 2026-09-22 over `processes/*.bpmn` and `src/`:
+Adjudication is a judgement of the feedback of one or more feedback providers,
+when a review reached no mechanical or consensus agreement. It carries the same
+dispensation process: the reason for the choice, as per contextual
+requirements. These activities are adjudications:
 
 | where | the decision, in its own words |
 |---|---|
@@ -32,49 +29,14 @@ Measured 2026-09-22 over `processes/*.bpmn` and `src/`:
 | `src/routes/relevance.ts` | *"writing `human_adjudicated` alongside — never overwriting — the agent's `assessed_by`. Both survive."* |
 | `schemas/library/bib-verification.ts` | a discriminated `Verifier` union, agent-only vs human-adjudicated, *"and *also* carry `human_adjudicated` if a human has subsequently"* ruled |
 
-The first two are the same sentence twice, written by different hands about
-different subjects. The last two are an HTTP route and a schema that share no
-code with the diagrams and arrived at the diagrams' rule anyway.
+## The judgement and its outcomes are separate processes
 
-**"Named nowhere" would be the easy summary and it is wrong.** It is named
-once — `translation-workflow.bpmn`'s `Lane_Reviewer` documentation states the
-entry condition, the accountability and the dispensation rule together:
-
-> *"a reviewer reports, an adjudicator settles. The word is used here because
-> the passage reaching this lane is one where a checker and a translator
-> disagree, and somebody has to choose between them WITH a reason. That reason
-> is the record, not the choice."*
-
-Which is the whole skill, in one lane's documentation, in one diagram, reachable
-only by somebody already reading that diagram. **The gap was never vocabulary.
-It was that nothing generalised the one statement of it**, so each new subject
-restated it and the eighth would have restated it again.
-
-## One judgement, six questions — and the split that followed
-
-**Measured 2026-09-23** (bean `bvuk`, [#1073](https://github.com/litlfred/folio-assistant/issues/1073)), and it changes how you call this process.
-
-`adjudication.bpmn` used to hold two things: the judgement, and three outcomes
-done about it — the finding stands, the criterion is scoped, a dispensation is
-granted. Six diagrams called it. **Only two asked a question those three
-answer**: the `review-narrative` and `voice-review` rows above. The other four
-ask whether a drift is real, whether a passage is acceptable, whether two
-entries agree, and *which side wins a conflict*. None of those has a criterion
-to scope or a dispensation to grant — and a `callActivity` runs the whole
-subprocess, so all four ran the outcome half anyway.
-
-**Two things worth carrying, because both were established by checking rather
-than reasoning:**
-
-- **No caller branched on the outcome, and none could.** Every one of the six
-  call activities has exactly one outgoing flow, and the process had one
-  settled end event: all three branches reconverged on `A_RecordEntry`. So the
-  mismatch was invisible in the callers' shape — a diagram asking "which side
-  wins" and one asking "does this finding stand" looked identical.
-- **Passing each caller its own codes could not fix it.** That was the first
-  proposal. The codes selected three different TASKS, so a caller handed
-  `local-wins` would have had it pointing at `A_ScopeCriterion`. **The branches
-  had to move, not the enum.**
+Callers ask different questions: whether a drift is real, whether a passage is
+acceptable, whether two entries agree, which side wins a conflict, whether a
+finding stands. Only the QA-criterion question has a criterion to scope or a
+dispensation to grant, and a `callActivity` runs the whole subprocess, so the
+outcomes cannot live in the shared process. The branches live with the caller,
+not in an enum passed to it.
 
 So the split is **at the judgement**:
 
@@ -82,7 +44,7 @@ So the split is **at the judgement**:
 |---|---|---|
 | entry condition, untainted dispatch, person-or-agent restriction | `adjudication.bpmn` | it must not vary, and restating it per caller is how it drifts |
 | the three QA-criterion outcomes, `A_RecordEntry`, the dispensation | `criterion-adjudication.bpmn` | it depends on what was asked |
-| a requirements document's sign-off: `approve amend reject defer cancel` (code list `adjudication-requirement-set`), `A_RecordSignoff`, `GW_SignoffRecorded` | `crdm-signoff.bpmn` (`BA_Signoff`), `crdm-close.bpmn` (`BA_Confirm`); spec-kit's adjudicated status by the same codes | the answer moves a requirement SET's stage (issue #2405, FR-013) |
+| a requirements document's sign-off: `approve amend reject defer cancel` (code list `adjudication-requirement-set`), `A_RecordSignoff`, `GW_SignoffRecorded` | `crdm-signoff.bpmn` (`BA_Signoff`), `crdm-close.bpmn` (`BA_Confirm`); spec-kit's adjudicated status by the same codes | the answer moves a requirement SET's stage |
 
 **The requirement-set caller records before it branches.** Every answer goes
 to `A_RecordSignoff`, which appends a `requirement-signoff` attestation (the
@@ -92,7 +54,7 @@ what (the set or one member), the outcome, the stage it moves the set to, the
 reason and the permalink to the issue comment. `GW_SignoffRecorded` then reads
 the record BACK through `decisions/requirement-signoff-recorded.dmn`, with facts
 `check:requirements --signoff-facts <reqset:slug>` computes from the store, so a
-sign-off nobody recorded loops back rather than proceeding (SC-008).
+sign-off nobody recorded loops back rather than proceeding.
 
 ### What that means when you call it
 
@@ -108,13 +70,13 @@ not parse the same.
   `<cat-harness.processes:adjudication codes="…"/>` on your own call activity, with your own
   gateway coding the same set. The engine refuses a mismatch between the two,
   and refuses a partly-coded gateway, which reads as complete.
-- **Declaring nothing** is legal and **reported** by `check:workflow-refs` —
-  the four callers above are in that state on purpose. What each should ask is
-  open, and guessing would make an undecided thing look checked.
+- **Declaring nothing** is legal and **reported** by `check:workflow-refs`.
+  Some callers are in that state on purpose: what each should ask is open, and
+  guessing would make an undecided thing look checked.
 
 Whatever you ask, `A_RecordEntry`'s rule follows the outcome: **a judgement
 nobody wrote down is indistinguishable from a checker that was never run.** It
-is `relaxable="false"` wherever it lands, which is now with the caller that
+is `relaxable="false"` wherever it lands, which is with the caller that
 records, because the entry written depends on what was adjudicated.
 
 ## Two senses of the word, and only one is this
@@ -176,12 +138,9 @@ A sidecar showing only the winning answer has lost the fact that a checker read
 it differently — which is exactly what somebody re-running the check next month
 needs to know.
 
-**Two subsystems reached this independently**, which is the strongest evidence
-here that it is the right rule rather than a local convention:
-`/api/relevance/adjudicate` writes `human_adjudicated` *alongside* `assessed_by`
-so the dashboard can distinguish *"an agent thinks this is core"* from *"the
-author agrees"*, and `bib-verification.ts` carries the same pair on a
-discriminated union. Neither imports anything from the diagrams.
+The same rule holds outside the diagrams: `/api/relevance/adjudicate` writes
+`human_adjudicated` *alongside* `assessed_by`, and `bib-verification.ts`
+carries the same pair on a discriminated union.
 
 This is also the answer to *"adjudication if code and narrative disagree"*:
 record the disagreement, lead with the judgement, keep the other entry.
@@ -205,24 +164,22 @@ overturn later — the source moving overturns it.
 
 A dispensation with no `notes` is not a dispensation. It is an override
 somebody applied to get to green, and nobody can review it afterwards. So
-`A_Dispensation` is marked `relaxable="false"` — in
-**`criterion-adjudication.bpmn`**, with `A_RecordEntry`, since the 2026-09-23
-split; this paragraph said `adjudication.bpmn` until 2026-09-24, four sections
-after §"One judgement, six questions" had already recorded the move. **The
-judgement is free and the record is not**, because a judgement nobody wrote
+`A_Dispensation` is marked `relaxable="false"` in
+**`criterion-adjudication.bpmn`**, with `A_RecordEntry`. **The judgement is
+free and the record is not**, because a judgement nobody wrote
 down is indistinguishable from a checker that was never run.
 
 ## Who adjudicates — a skill that spreads, an entitlement that does not
 
 | object | what it is |
 |---|---|
-| `feedback-provider` (role) | offers a finding — a checker, a review agent, a reader, an SME. **Plural by design**: the owner's *"Judgment of >= 1 Feedback Provider's feedback"*. |
+| `feedback-provider` (role) | offers a finding — a checker, a review agent, a reader, an SME. **Plural by design**: one or more feedback providers. |
 | `adjudicator` (role) | settles it, with a reason. Inherits `reviewer`. |
 | `adjudication` (**permission**) | may WRITE the settling entry. |
 
 **Knowing the discipline and being entitled to apply it are different, and the
 repository already separates them.** `permissions.json`: *"a permission
-CROSS-CUTS roles"* — which is exactly what the measurement above shows.
+CROSS-CUTS roles"*.
 Adjudication happens in four lanes bound to four different roles
 (`narrative-reviewer`, `translation-adjudicator`, `reviewer`, `user`), so:
 
@@ -238,8 +195,7 @@ Adjudication happens in four lanes bound to four different roles
 keeps accept-or-send-back in one lane: a process where every reviewer could
 settle has no way to say who decided.
 
-`translation-adjudicator` is the first specialisation and was the only
-adjudicator role before this skill existed.
+`translation-adjudicator` is a specialisation of `adjudicator`.
 
 ## Where it sits against its neighbours
 
@@ -258,11 +214,10 @@ from `todo-manager` and is silent about verdicts — is the seam it fits into.
 
 **The narrative-asserts-code axis.** Whether prose asserts what an artefact
 actually does is a different question, currently answered only for Lean
-(`proof-narrative-lean-equiv`, beans `nrv8` and `qusg`).
+(`proof-narrative-lean-equiv`).
 [`code-node-review`](../../../skills/kg/kg-core/code-node-review.md) asks whether a NODE is correct — that
 it declares what it is, that its references resolve — not whether the prose
-matches. Generalising that is a separate and larger decision, and this skill
-deliberately stops short of it.
+matches. This skill does not generalise it.
 
 ## Related
 

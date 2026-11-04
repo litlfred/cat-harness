@@ -12,7 +12,7 @@ This skill expands the Phase 3 summary in `crdm-requirements-workflow.md`.
 
 ## Requirement format
 
-**One definition, shared with spec-kit** (issue #2405 FR-008): a statement, a
+**One definition, shared with spec-kit**: a statement, a
 conformance level, a source, **at least one success criterion with its
 verification method**, and a sign-off owner —
 the `requirement-definition` skill (`skill_fetch requirement-definition`)
@@ -56,7 +56,7 @@ Use RFC 2119 in formal statements:
 4. **Validate with the BA** — read it back. "Does this capture what you
    need? Anything missing?"
 
-## The document is a requirement set (issue #2405, FR-010)
+## The document is a requirement set
 
 The requirements document as a whole is a **`RequirementSet`**
 (`bootstrap-tools/schemas/requirement-set.ts`, published as
