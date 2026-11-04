@@ -41,7 +41,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "f57b9e72a5a4fd3777aa8c1cee33088ce5899188",
+          "ref": "f22b2490ff8b6930c55d1b6fe9605fc5f9f9a743",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -54,9 +54,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-11-02",
-              "ref": "f57b9e72a5a4fd3777aa8c1cee33088ce5899188",
-              "evidence": "Owner litlfred, 2026-11-01 (20:41Z, MVP thread): 'i want to get all functional stuff done, the full repin on harnesses done and stablized as MVP goal.' and 21:41Z card Q-PIN-4 'B. All, including smart-ra' (re-pin every smart-* site)."
+              "on": "2026-11-04",
+              "ref": "f22b2490ff8b6930c55d1b6fe9605fc5f9f9a743",
+              "evidence": "Owner leitnerc (litlfred), 2026-11-04, Claude session session_01EucfRpzcq3FD3Z9fyShjoj: 'merge repin window open 4 hrs', then Decision card answer 'A. Do it, merge now' — repin cat-harness's bootstrap-tools pin to the merge of bootstrap-tools#77."
             }
           }
         }
