@@ -23,7 +23,9 @@ Between **requirements** (phases 2–4) and **sign-off** (phase 5).
 
 Requirements are statements about things; the model says what the things ARE.
 The entities come from the business-process analysis (phase 2), and phase 5
-must not sign off requirements whose nouns were never pinned.
+must not sign off requirements whose nouns were never pinned. Drafted too
+early, the model is invented from nothing; drafted too late, two stakeholders
+approve the same sentence meaning different things.
 
 `Call_DataModel` in `crdm-requirements.bpmn` is the `callActivity` after
 `Call_Requirements` and before `Call_Signoff`.
@@ -38,7 +40,8 @@ must not sign off requirements whose nouns were never pinned.
 
 **A requirement the model cannot express is a finding, not a modelling
 failure.** It means the requirement is about something nobody has named, and
-the remedy is to name it.
+the remedy is to name it. That is why this phase sits after requirements
+rather than before.
 
 ## The sign-off, and who gives it
 
@@ -52,7 +55,8 @@ questions and are asked of two different lanes on purpose:
   the process know where the exceptions are.
 
 The agent asks both and decides neither: the BA knows the domain, the agent
-does not guess.
+does not guess, because a wrong cardinality is invisible until the data
+arrives.
 
 ## What it hands on
 
@@ -65,7 +69,8 @@ expressible, not only whether it is wanted.
 Like every other CRDM phase this one loops until confirmed, and the gateway
 is the phase. **Leave when the BA recognises the entities and the
 stakeholders have answered every cardinality** — not when the model looks
-complete.
+complete, because an unanswered cardinality is a hole exactly where the
+exceptions live.
 
 ## Not decided by this skill
 

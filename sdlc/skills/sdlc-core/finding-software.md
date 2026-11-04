@@ -13,7 +13,8 @@ profiles: [document, paper]
 
 # Finding software — get it, do not route around it
 
-The container is the agent's to provision.
+The container is the agent's to provision: installing usually takes one
+command, and a workaround produces the wrong output quietly.
 
 ## The rule
 

@@ -19,7 +19,8 @@ They do not differ in this:
 > it, and the checking party is given a controlled context rather than the run
 > of the repository.**
 
-Everything below is that sentence made operational, for any domain;
+Everything below is that sentence made operational, for any domain, because
+taking the translation vocabulary out of it changes nothing structural;
 `translation-manager.md` §"The agentic round trip" is the translation
 instance.
 

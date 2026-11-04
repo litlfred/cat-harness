@@ -17,7 +17,8 @@ history.
 
 ## The Threshold and its Basis
 
-Like the health checks under `test/health/`, the threshold carries its basis:
+Like the health checks under `test/health/`, the threshold carries its basis,
+because a threshold without one cannot be argued with or recalibrated:
 
 | Field | Value |
 |---|---|

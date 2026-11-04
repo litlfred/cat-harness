@@ -86,7 +86,8 @@ Not the site it is on, not the preview's front door — the exact URL of the
 thing you changed.
 
 Linking the root makes the reader reconstruct a route the agent already knew,
-and it hides a real failure: an agent that links the root has not checked that
+and every extra click is a cost passed to a reader who may type with
+difficulty. It also hides a real failure: an agent that links the root has not checked that
 its page is reachable at all.
 
 So:
@@ -120,8 +121,10 @@ decision they have no artefact for.
 **`cmd | tail` makes `$?` the status of `tail`.** Every claim that a command
 PASSED must come from a run without a pipe, or from `${PIPESTATUS[0]}`.
 
-A command whose output *sounds* like a failure, run through a pipe, reads as a
-silent pass, and one whose output sounds like a pass hides a failure.
+This is mechanical rather than a matter of care, because care does not prevent
+it. A command whose output *sounds* like a failure, run through a pipe, reads as
+a silent pass, and one whose output sounds like a pass hides a failure; a
+silent pass is what this repository treats as worse than a loud failure.
 
 **So: when the question is "did this pass", run it bare.** When you want both
 the output and the verdict, run it twice or capture the status first. Reading a
@@ -155,7 +158,9 @@ So the rule is mechanical, not a matter of diligence:
   the two, and the ambiguity is where this hid.
 
 `check:escaped-markup`, run in `docs-site.yml` against the assembled `_site/`,
-covers the escaped-markup case. It does not retire the rule.
+covers the escaped-markup case, because the assembled site is the only place
+the answer exists. It does not retire the rule: the next defect of this shape
+will be in whatever the build does that no source gate can see.
 
 ### The exceptions, and none of them is "I am unsure"
 

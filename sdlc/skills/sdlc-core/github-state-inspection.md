@@ -111,7 +111,8 @@ them means the page is missing:
 
 In a Claude Code container, outbound HTTPS goes through a proxy that **blocks
 `github.io`**. A `curl` against a Pages URL from here returns `000` and a 403
-tunnel error regardless of whether the page exists.
+tunnel error regardless of whether the page exists, so "could not determine"
+from a fetch is no answer when the ref holds one.
 
 **"Could not determine" is a third state and must never be rendered as a
 pass** — but it is also not a place to stop when another source can determine

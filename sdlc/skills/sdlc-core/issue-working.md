@@ -54,7 +54,8 @@ direction get skipped — silently, because nothing distinguishes *read* from
 **Do not fold it into the current run.** Say that this is a good stopping point
 for review, link the artefact, and confirm priorities before continuing.
 
-Absorbing it buries a scope change inside a diff nobody asked for. A large new
+Absorbing it buries a scope change inside a diff nobody asked for, and spends
+the author's next review on work they have not agreed to. A large new
 ask is a decision to hand back, under the usual discipline — context, options with their costs, a marked recommendation,
 then the question.
 

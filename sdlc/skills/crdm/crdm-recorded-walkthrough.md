@@ -21,7 +21,8 @@ The tool is `cat-harness-tools/scripts/meeting-recording.py` (stdlib + ffmpeg;
 
 ## 1. Inventory what was actually uploaded
 
-List the files before promising anything. **A Teams .docx transcript never
+List the files before promising anything, because a request can promise a
+video that was not uploaded. **A Teams .docx transcript never
 contains the shared screen**; its images are speaker avatars. Say what is
 missing, do what can be done, and list what waits for the missing file.
 

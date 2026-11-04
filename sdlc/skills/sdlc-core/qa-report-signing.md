@@ -34,7 +34,8 @@ declared facts, not a preference.
 
 1. **One vocabulary, two levels.** An actor's `reach` uses the same scale as
    the deployment's `network` — `internet`, `egress-restricted`,
-   `air-gapped`. There is no second scale.
+   `air-gapped`. There is no second scale, because two spellings of one fact
+   drift apart.
 2. **Composition is asymmetric.** An air-gapped deployment forces every actor
    air-gapped. A connected one forces nothing — a connected site may hold an
    isolated signing host. So an actor that declares no reach inside a
@@ -49,9 +50,10 @@ declared facts, not a preference.
 There is no `network-egress` capability. A capability is an **environment
 probe** — `detection: { method: "command", … }`, a thing you run to find out.
 Reach is an **architectural fact**, declared by whoever built the site. On an
-air-gapped host a failed probe is indistinguishable from an outage, and a
-capability would carry the same fact as `reach` in a second place, free to
-disagree.
+air-gapped host a failed probe is indistinguishable from an outage, and the
+safe reading of an outage ("retry later") is the unsafe reading of an air gap.
+A capability would also carry the same fact as `reach` in a second place, free
+to disagree.
 
 What *is* a probe is whether an endpoint is configured: `signing-api`, an
 `env-var` detection. The DMN table reads **both**, because they answer

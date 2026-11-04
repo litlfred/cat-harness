@@ -99,8 +99,9 @@ Every identifier is a link:
 | skill or process | its file, or its page under `<site>/reference/` |
 | a measurement | the committed sidecar or the CI run that produced it |
 
-**The dashboard has no per-bean deep link.** A link opens the whole board, so
-link the bean's file for the bean, and the dashboard for the overview.
+**The dashboard has no per-bean deep link**, because its epic scope lives only
+in page memory. A link opens the whole board, so link the bean's file for the
+bean, and the dashboard for the overview.
 
 ## What never goes in it
 

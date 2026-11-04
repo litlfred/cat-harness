@@ -139,6 +139,8 @@ Do bean folio-assistant-<id> on branch <branch-to-create> of repo <owner>/<repo>
      judgement instead of a task.
    - **Order them, and say what is ordered.** If a line must follow another,
      write that above the block — not inside the sentence, which stays fixed.
+     A hidden prerequisite makes a list of dispatchable beans worse than a
+     list of the one that is ready.
 
    `dispatch-agent` governs what happens AFTER the line is sent — the progress
    contract and the heartbeat. This rule is only about writing the line so the

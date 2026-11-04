@@ -146,7 +146,8 @@ already has:
     (`workflow_start`), not from memory.
 
   `merge:steward` prints `✗ handed back with NO open hand-back bean:
-  #…` and carries `handBackBean` per PR in `--json`.
+  #…` and carries `handBackBean` per PR in `--json`, because a procedure
+  that lives in another skill is skipped unless something checks for it.
 - **A direct message as the fast path**, by the recipe below. Use it when the
   PR is next and waiting costs a train.
 - **The queue entry** records the hold or ejection, with its reason and
@@ -264,10 +265,12 @@ bun run cat merge:queue:record --pr <n> --class <c> --rank <r> --rule <id> \
   clean. Exit 1 — declared-but-absent — is a different answer with a different remedy.
 - **The decisions are read back.** `merge:steward` feeds recorded overrides into
   the table's `ownerOverride` input and their positions into the order, treats
-  an un-cleared ejection as refused, and prints a live hold.
+  an un-cleared ejection as refused, and prints a live hold, because a
+  decision nobody reads back is a decision nobody took.
 
 The queue's decisions and a finished train run's evidence (under `workflows/`)
-live in different stores, one `state:mount` apart.
+live in different stores, one `state:mount` apart. The trade is deliberate:
+kept together on `main`, the queue could hold no entry the steward wrote.
 
 ## Placement is computed, not chosen
 
@@ -417,7 +420,8 @@ never the web button, never `merge_pull_request` from an MCP tool, and, while a
 Merge Manager is active, never by marking a PR ready or labelling it yourself
 first (with none active, see §"When no Merge Manager is active"). The script
 (`cat-harness-tools/scripts/merge-guard.ts`) is the merge: it evaluates eight checks over GitHub's live facts, and performs
-the PUT, pinned to the head it evaluated, only when every one passes.
+the PUT, pinned to the head it evaluated, only when every one passes. A direct
+PUT lands a PR whatever its state.
 
 ### When no Merge Manager is active, the owning session merges
 

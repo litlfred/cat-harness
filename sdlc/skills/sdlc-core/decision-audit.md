@@ -79,7 +79,8 @@ and say what each one shows:
 4. Quote at the locator, so a citation that goes stale is visible as stale.
 
 Record yourself in `proposed_by`, never in `author`: the reasoning belongs to
-whoever made the decision.
+whoever made the decision, and a tool recorded as author misattributes a
+judgement it did not make.
 
 ## Citations you could not resolve are not citations you checked
 

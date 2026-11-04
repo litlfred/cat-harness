@@ -94,7 +94,8 @@ review page never disagree:
 staging preview publishes this same ChangeSet as `changeset.json` and renders
 it at `STAGING/<slug>/review/`: before and after for every block, the heat
 map, and the outline. Give that URL next to the table: a reviewer can open
-it without a local server.
+it without a local server, and it uses the same words because it reads the
+same file.
 
 Rendered-asset changes (re-rendered or new SVGs) are not in the ChangeSet.
 Report them separately, from `rendered[]` hashes.

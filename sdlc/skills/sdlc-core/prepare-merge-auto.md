@@ -171,7 +171,8 @@ After merge:
   `head_sha` against the branch's workflow-run list before calling it green,
   and re-run the workflows by dispatch when no run exists for that sha.
   Same rule, with the procedure, in [`prepare-merge.md`](prepare-merge.md)
-  §Guardrails; change one and change the other.
+  §Guardrails; change one and change the other, because a rule kept in only
+  one of the two is missed by agents following the other.
 - Do NOT squash unless the user explicitly says "squash".
 - Do NOT skip sibling coordination — it prevents post-merge conflicts.
 - Do NOT ask trivial questions in Phase 3 — only genuinely ambiguous

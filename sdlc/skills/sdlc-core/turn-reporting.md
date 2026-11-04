@@ -83,7 +83,8 @@ to; when **next** hands over a real decision between costed routes, §"The `next
 line is a question" below is the binding form.
 
 **EVERY MENTION, not every report.** A bean id in an ordinary sentence is
-exactly as opaque as one in a list. So the rule binds a one-line status, a
+exactly as opaque as one in a list, and a reader hunting for its meaning cannot
+see which section of your message it came from. So the rule binds a one-line status, a
 mid-paragraph aside, a commit message, a PR body, an issue comment — anywhere
 the id appears at all. If naming the bean is not worth two sentences, do not
 name it: say "nothing outstanding" or describe the work without the id.
@@ -124,7 +125,8 @@ forge at all. In both cases an agent that guesses hands over a URL that
 **does not resolve**. The staging host is an architectural fact, not an
 inference from a remote name.
 
-A human cannot assess a rendered artefact from a description
+A human cannot assess a rendered artefact from a description, and
+withholding it makes assessment harder rather than safer
 ([`continual-progress`](continual-progress.md)). **A root-only link is a
 partial withholding** — the artefact is technically reachable and practically
 hidden.
@@ -158,7 +160,8 @@ what to **look at**, or what **judgement** is wanted. A reader should be able to
 act on the report without opening the diff, and then open the diff knowing what
 they are looking for.
 
-**4. Length follows content.** There is no word budget. A one-line fix gets a
+**4. Length follows content.** There is no word budget, because a cap reads
+as a budget to spend rather than a floor to clear, and rewards terseness. A one-line fix gets a
 line; a design change that needs a decision gets a paragraph. Err long — the
 cost of a sentence the reader skims is far below the cost of a round-trip
 asking what you meant, especially for an author who types with difficulty.

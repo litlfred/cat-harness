@@ -24,7 +24,7 @@ Each job lives in the object that already owns it:
 | goals, and what serves each | a `milestone` bean per goal, with the epics parented to it — [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"A GOAL is a `milestone` bean"; `beans roadmap` renders it |
 | canonical status of an item | the bean itself. There is no second copy to disagree with it |
 | flip-flop history | a `scrapped` bean keeps the rejected approach *with its reasons*, and a `trap` node under the declared `memory` graph keeps the failure signature — [`agent-memory`](../../../skills/conduct/conduct-core/agent-memory.md) |
-| session log | the bean's body notes, plus the PR. Both are durable and both are read by the next session |
+| session log | the bean's body notes, plus the PR. Both are durable and both are read by the next session; a third place would be a third answer |
 
 | Artifact | Purpose |
 |---|---|
@@ -37,7 +37,8 @@ Each job lives in the object that already owns it:
 
 An instance MAY keep a `STATUS.md`-style dashboard. This one does not, and
 that is a **determined absence** rather than a gap: the milestones and
-`beans roadmap` answer the same question from the store.
+`beans roadmap` answer the same question from the store, so a dashboard here
+would be a second copy free to drift from it.
 
 Three states, and the third is the one that gets collapsed:
 
@@ -165,7 +166,8 @@ For each task you worked, use the `beans` CLI:
 ### 2. Record the results where they will be read
 
 Append them to the **bean**, which is where step 4a put the intent — what was
-confirmed, what remains, and the PR.
+confirmed, what remains, and the PR. One object, opened and closed, rather
+than an intent in one place and a result in another.
 
 If the session **retracted** a prior claim, that is not a body note. Two
 objects carry it, and they answer different questions:

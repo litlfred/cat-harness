@@ -51,7 +51,8 @@ Measure every time:
   error.
 
 **Use a control.** When you suspect a value is invalid, build the minimal
-element in the page and read it back, rather than reasoning from the spec:
+element in the page and read it back, rather than reasoning from the spec: the
+probe is a measurement, and reasoning from the spec is a claim.
 
 ```js
 const probe = document.createElement("div");

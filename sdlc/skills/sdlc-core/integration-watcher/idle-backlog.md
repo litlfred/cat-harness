@@ -99,6 +99,9 @@ For this skill's children specifically:
   Only the explicit "resume" / "continue" restart command lifts the
   pause.
 
+Watcher sessions spend long stretches idle once the in-flight tranche lands,
+and productive idle is working the next queue item, not heartbeats.
+
 ## 5. Idle backlog sweep
 
 When the queue has been quiescent for ≥ 10 minutes (no main commits, no

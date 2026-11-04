@@ -14,7 +14,9 @@ user_invocable: true
 Canonical, repo-agnostic recipe for taking a `claude/*` (or any feature) branch
 to a **clean, conflict-free, green, pushed** state so it can be merged with no
 surprises. Downstream repositories vendor or sync it rather than maintaining
-their own copy.
+their own copy. "Prepare-merge" is a plain-English ask, not a built-in command,
+so without one recipe each agent re-derives the steps, inconsistently or
+unsafely.
 
 **"Prepare-merge" ≠ "merge".** It makes the branch *mergeable* and stops. It
 does **not** push to the default branch and does **not** merge a PR. Both are
@@ -52,7 +54,8 @@ artefact and runs in `bun test`. The mechanism is in
    **Merge with `bun run cat merge:main`, never a plain `git merge` followed by
    regen.** It resolves every conflict a declared pattern covers (glossaries,
    translated glossaries, UML, viewer pages, site data, QA sidecars), refuses
-   the rest with the tree restored, and runs regen on the result.
+   the rest with the tree restored, and runs regen on the result. A plain
+   `git merge` stops on those same generated files, one by one.
 
    **After EVERY base merge, conflicted or not, run `bun run cat regen`** —
    see §"A clean merge can produce a wrong artefact" below. If you merged with
@@ -109,15 +112,19 @@ artefact and runs in `bun test`. The mechanism is in
    runs every security check this repository has (workflow injection, secret
    leaks, lockfile and toolchain pins, QA reviewer permission, materialised
    fixity) plus two advisories, and refuses when a blocking check fails OR
-   could not be run. Its advisories (unpinned third-party actions, dependency
-   advisories) are reported in the PR and are not cleared by a green gate.
+   could not be run. Most of those checks are also inside `bun run cat gates`;
+   naming the command here makes the merge step cover security explicitly,
+   rather than only when the CI run before it happened to include it. Its
+   advisories (unpinned third-party actions, dependency advisories) are
+   reported in the PR and are not cleared by a green gate.
 
    **Check the adversarial review verdict with `bun run cat check:adversarial-review`.**
    On any branch with agent provenance (trailers, `claude/*` branch, bot
    committer), it verifies that an independent adversarial review verdict
    exists, binds to the head SHA, and covers the full diff without silent
    truncation. Findings are warn-only ("would have blocked"): they are
-   recorded and do not hold the merge.
+   recorded, as data for deciding when to promote the check to a gate, and do
+   not hold the merge.
 
    **Know what the target covered.** Green is a claim about the files the build
    compiled, which is usually fewer than the files on disk — build targets
@@ -162,7 +169,8 @@ artefact and runs in `bun test`. The mechanism is in
 
    This REPORTS; it does not merge or refuse. The gate belongs to the review
    process, and the committee decides the outcome. Say so when coverage could
-   not be measured.
+   not be measured, because a branch passed with unmeasured coverage reads as
+   "reviewed".
 6. **Push** the feature branch (retry/backoff as in step 2):
    `git push -u origin <branch>`. Then **ask whether the push produced a run**:
    `bun run cat check:head-has-run`.
@@ -363,7 +371,8 @@ sides' entries unless they are the same judgement; then run
 `bun run cat qa:attestations:migrate:check`, which exits 1 if a judgement is
 still only in a derived file.
 
-There is no `qa:resolve-conflicts` command.
+There is no `qa:resolve-conflicts` command: derived sidecars are not
+committed, so there is nothing for it to resolve.
 
 ## Shipping is not merging — hand over on the PR itself
 
@@ -388,8 +397,8 @@ ToolSearch  "select:mcp__github__create_pull_request"
 ```
 
 Then call `mcp__github__create_pull_request` with `owner`, `repo`, `head`
-(the feature branch), `base`. This "load-then-call" round-trip is needed once
-per deferred tool per session, for every `mcp__github__*` tool (review,
+(the feature branch), `base`. This "load-then-call" round-trip is by design,
+not a failure, and is needed once per deferred tool per session, for every `mcp__github__*` tool (review,
 comment, merge, CI status).
 
 PR body content: [`pr-description`](pr-description.md), written for a first-time reader.
@@ -425,13 +434,17 @@ harness git instructions). Do not include the model identifier in the PR.
   A PR with **zero** check runs renders *identically* to one whose checks have
   not started. Both are "nothing red". A push followed by a PR can produce no
   `pull_request`-event run for that head, the newest run on the branch being
-  for the *previous* head. **Waiting longer is not the remedy.**
+  for the *previous* head. **Waiting longer is not the remedy**, because how
+  long you wait does not predict whether a run appears, and neither is
+  avoiding force-pushes: plain fast-forwards hit it too.
 
   So before calling a branch ready, and **before any merge**:
 
   0. **Read `mergeable_state` FIRST — and believe it only when it says
      `dirty`.** `clean` can be served stale (a merged PR's pre-merge view), and
-     `unknown` means GitHub has not finished computing it. `dirty` means the PR
+     `unknown` means GitHub has not finished computing it. `dirty` is the one
+     value worth acting on unilaterally, because its remedy — merging the base
+     in — costs nothing on a PR that did not need it. `dirty` means the PR
      conflicts with its base, which is very likely why nothing ran: a workflow
      `on: pull_request:` with `actions/checkout@v4` and no `ref:` checks out
      `refs/pull/N/merge`, and **a conflicting PR has no such commit**.
@@ -461,10 +474,12 @@ harness git instructions). Do not include the model identifier in the PR.
   tool that complains about it, and never by passing `--delete-branch` or its API
   equivalent. A merged branch is still the record of how the work was done, the
   base a revert or a follow-up is cut from, and the ref a staging deploy is served
-  under.
+  under. Deleting it is irreversible from the agent's side and buys nothing the
+  owner asked for.
 
   The same rule is in [`prepare-merge-auto.md`](prepare-merge-auto.md) Phase 4
-  and the anti-patterns. If you change one copy, change the other.
+  and the anti-patterns, because an agent following either skill must meet it.
+  If you change one copy, change the other.
 
   **When a tool or hook complains about a branch, fix the tool** — for example
   a reachability check in a stop hook — never delete the branch.

@@ -31,7 +31,8 @@ every reviewer-facing pair follows, see
   `folio-block-screenshots` Tool and in this skill. The staging workflow and
   the review process CALL them; nobody copies them.
 - **No new dependency.** The pictures are taken with Playwright, which the
-  platform already uses, and the comparison runs in Chromium's own canvas.
+  platform already uses, and the comparison runs in Chromium's own canvas, so
+  nothing new needs a licence.
 - **One key or one click; never a drag.** The page offers four views as
   radio buttons, not a slider.
 
