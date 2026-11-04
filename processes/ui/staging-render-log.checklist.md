@@ -59,7 +59,7 @@ Every change to the publish branch appends an entry to `_render-log/<day>.jsonl`
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-logging`.
-- What: Records that a removal was considered and refused, or that a preview still stands because a signal fired.
+- What: Records that a removal was considered and refused, or that a preview still stands because a signal fired; without the entry that leaves no trace, and nobody can tell why a preview is still up.
 - Shared step `GT_LogRetained`.
 - Record it: `workflow_complete` with `node: "A_LogRetained"`.
 - next: → `End_Process_RenderLog` (Entry appended; history intact)

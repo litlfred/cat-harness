@@ -29,10 +29,6 @@ msgstr "智能代理框架"
 msgid "On this page"
 msgstr "本页目录"
 
-#: docs/concepts/agentic-harness.md:29
-msgid "The agentic harness is the interaction model that folio-assistant runs on — the rules, states, and workflows that govern how an agent and a user collaborate inside this platform. Much of this behaviour is already described across individual skills and guidance documents; this page consolidates it into one reference so that an agent entering a session can look up the expected behaviour rather than reconstructing it from scattered rules."
-msgstr "智能代理框架（agentic harness）是 folio-assistant 运行所基于的交互模型——即规范智能体与用户在此平台中如何协作的规则、状态和工作流。此类行为大都已在各个独立技能和指导文档中有所描述；本页面将其整合为一份参考，以便进入会话的智能体能够查阅预期的行为规范，而不必从零散的规则中自行推导重构。"
-
 #: docs/concepts/agentic-harness.md:36
 msgid "This is not about the agent's internal architecture. It is about the observable contract between the agent and the user: what states the interaction can be in, how requests are classified, which workflow the agent enters for each class, and what the user should expect at each stage."
 msgstr "这并不涉及智能体的内部架构，而是关乎智能体与用户之间的可观察契约：交互可能处于哪些状态、如何对请求进行分类、智能体针对每个类别进入哪种工作流，以及用户在各个阶段应抱有何种预期。"
@@ -56,10 +52,6 @@ msgstr "工作流状态"
 #: docs/concepts/agentic-harness.md:58
 msgid "The agent is executing a named workflow — each represented by a BPMN process diagram with the agent and user in separate swim lanes. The active workflow determines what the agent does next and what it expects from the user."
 msgstr "智能体正在执行某个具名工作流——每个工作流均由一个 BPMN 流程图表示，其中智能体与用户位于各自独立的泳道中。活动工作流决定了智能体接下来的操作以及对用户的预期。"
-
-#: docs/concepts/agentic-harness.md:62
-msgid "Active workflows in this platform:"
-msgstr "此平台中的活动工作流："
 
 #: docs/concepts/agentic-harness.md:64
 msgid "Workflow"
@@ -289,10 +281,6 @@ msgstr "当无法确定时，智能体会询问：“这听起来可能需要修
 msgid "Content workflows"
 msgstr "内容工作流"
 
-#: docs/concepts/agentic-harness.md:150
-msgid "When a request is classified as content work (authoring, review, ingestion), the agent follows the corresponding BPMN workflow. The existing documentation pages describe these in detail:"
-msgstr "当请求被归类为内容工作（撰写、评审、摄取）时，智能体将遵循相应的 BPMN 工作流。现有文档页面对此进行了详细阐述："
-
 #: docs/concepts/agentic-harness.md:163
 msgid "Writing guides:"
 msgstr "撰写指南："
@@ -312,10 +300,6 @@ msgstr "这些并非同一维度，将其混为一谈首先就会导致理解偏
 #: docs/concepts/agentic-harness.md:211
 msgid "BPMN execution: one skill, two engines"
 msgstr "BPMN 执行：一项技能，两个引擎"
-
-#: docs/concepts/agentic-harness.md:216
-msgid "The owner, 2026-09-23, naming the skill this spectrum is about:"
-msgstr "所有者于 2026-09-23 给出了该光谱所指的技能定义："
 
 #: docs/concepts/agentic-harness.md:218
 msgid "BPMN Execution Skill: given a Process, Context, State and Role, utilize one or more Skills in order to execute a Task."
@@ -400,10 +384,6 @@ msgstr "机械 + 智能体 QA/QC 报告在事后从记录中发现"
 #: docs/concepts/agentic-harness.md:259
 msgid "Feature-request workflow (CRDM)"
 msgstr "功能需求工作流（CRDM）"
-
-#: docs/concepts/agentic-harness.md:269
-msgid "The feature-request workflow is where this harness document adds the most value, because it describes a behaviour that was previously implicit. The authoring and review workflows have been documented for months; the requirements workflow existed only as ad-hoc conversation."
-msgstr "功能需求工作流是本框架文档价值最显著之处，因为它描述了一种此前一直处于隐性状态的行为。撰写和评审工作流数月前就已形成文档；而需求工作流此前仅存在于零散的对话中。"
 
 #: docs/concepts/agentic-harness.md:274
 msgid "How the agent enters CRDM"
@@ -673,10 +653,6 @@ msgstr "需求可能跨越多个 Issue。 智能体应当链接到所有相关 I
 msgid "Consolidated skill references"
 msgstr "综合技能参考"
 
-#: docs/concepts/agentic-harness.md:393
-msgid "The behaviour described on this page draws from skills and guidance documents scattered across the repository. This section maps the consolidated behaviour back to its authoritative sources."
-msgstr "本页描述的行为提炼自分散在仓库各处的技能和指导文档。本节将整合后的行为映射回其权威源头。"
-
 #: docs/concepts/agentic-harness.md:397
 msgid "Behaviour"
 msgstr "行为"
@@ -744,10 +720,6 @@ msgstr "当某项技能与本页面存在分歧时，以技能为准。 本页�
 #: docs/concepts/agentic-harness.md:415
 msgid "What is not built yet"
 msgstr "尚未构建的内容"
-
-#: docs/concepts/agentic-harness.md:420
-msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
-msgstr "工作流状态持久化 — 本框架描述了工作流的挂起与恢复，但目前尚无跨会话持久化智能体工作流状态的机制。当前这依赖于 beans 和 Issue 评论作为代理。"
 
 #: docs/concepts/agentic-harness.md:425
 msgid "Automated request classification — the classification table is a reference for agents to read; there is no classifier tool that routes automatically."
@@ -897,3 +869,24 @@ msgstr "智能代理框架本身的 BPMN 图 — 展示空闲/工作流状态机
 
 #~ msgid "Tracked in: #203"
 #~ msgstr "跟进于： #203"
+
+#~ msgid "The agentic harness is the interaction model that folio-assistant runs on — the rules, states, and workflows that govern how an agent and a user collaborate inside this platform. Much of this behaviour is already described across individual skills and guidance documents; this page consolidates it into one reference so that an agent entering a session can look up the expected behaviour rather than reconstructing it from scattered rules."
+#~ msgstr "智能代理框架（agentic harness）是 folio-assistant 运行所基于的交互模型——即规范智能体与用户在此平台中如何协作的规则、状态和工作流。此类行为大都已在各个独立技能和指导文档中有所描述；本页面将其整合为一份参考，以便进入会话的智能体能够查阅预期的行为规范，而不必从零散的规则中自行推导重构。"
+
+#~ msgid "Active workflows in this platform:"
+#~ msgstr "此平台中的活动工作流："
+
+#~ msgid "When a request is classified as content work (authoring, review, ingestion), the agent follows the corresponding BPMN workflow. The existing documentation pages describe these in detail:"
+#~ msgstr "当请求被归类为内容工作（撰写、评审、摄取）时，智能体将遵循相应的 BPMN 工作流。现有文档页面对此进行了详细阐述："
+
+#~ msgid "The owner, 2026-09-23, naming the skill this spectrum is about:"
+#~ msgstr "所有者于 2026-09-23 给出了该光谱所指的技能定义："
+
+#~ msgid "The feature-request workflow is where this harness document adds the most value, because it describes a behaviour that was previously implicit. The authoring and review workflows have been documented for months; the requirements workflow existed only as ad-hoc conversation."
+#~ msgstr "功能需求工作流是本框架文档价值最显著之处，因为它描述了一种此前一直处于隐性状态的行为。撰写和评审工作流数月前就已形成文档；而需求工作流此前仅存在于零散的对话中。"
+
+#~ msgid "The behaviour described on this page draws from skills and guidance documents scattered across the repository. This section maps the consolidated behaviour back to its authoritative sources."
+#~ msgstr "本页描述的行为提炼自分散在仓库各处的技能和指导文档。本节将整合后的行为映射回其权威源头。"
+
+#~ msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
+#~ msgstr "工作流状态持久化 — 本框架描述了工作流的挂起与恢复，但目前尚无跨会话持久化智能体工作流状态的机制。当前这依赖于 beans 和 Issue 评论作为代理。"

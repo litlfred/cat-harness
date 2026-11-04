@@ -85,10 +85,6 @@ msgstr "IGs WHO SMART (L3)"
 msgid "conversions, search"
 msgstr "conversions, recherche"
 
-#: docs/start/installation.md:40
-msgid "You do not need all of these — install only what the content types you author require. The built-in capability probe tells you what is missing."
-msgstr "Vous n'avez pas besoin de tout cela — installez uniquement ce qu'exigent les types de contenu que vous rédigez. La sonde de capacités intégrée vous indique ce qui manque."
-
 #: docs/start/installation.md:47
 msgid "Clone and install"
 msgstr "Cloner et installer"
@@ -229,3 +225,6 @@ msgstr "Tout autre client MCP"
 
 #~ msgid "Why this works across harnesses. The discipline lives in  (a Linux Foundation agent standard read natively by Claude Code, Gemini CLI, Antigravity, Cursor, Copilot, and others); the live state is exposed both as a per-harness  hook over one shared script and as the  MCP tool. See the architecture page."
 #~ msgstr "Pourquoi cela fonctionne d'un harnais à l'autre. La discipline réside dans  (un standard pour agents de la Linux Foundation lu nativement par Claude Code, Gemini CLI, Antigravity, Cursor, Copilot et d'autres) ; l'état en direct est exposé à la fois sous la forme d'un hook  propre à chaque harnais via un script partagé et sous la forme de l'outil MCP . Consultez la page architecture."
+
+#~ msgid "You do not need all of these — install only what the content types you author require. The built-in capability probe tells you what is missing."
+#~ msgstr "Vous n'avez pas besoin de tout cela — installez uniquement ce qu'exigent les types de contenu que vous rédigez. La sonde de capacités intégrée vous indique ce qui manque."
