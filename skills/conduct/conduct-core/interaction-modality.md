@@ -462,7 +462,8 @@ This is the largest accessibility win available, and it is invisible.
 
 The asking is half the loop. The answer comes back, and if it settles how a
 *kind* of thing is decided rather than only this one, it is a rule and it is
-written into the skill that governs it **in the same turn**, quoted and dated.
+written into the skill that governs it **in the same turn**: the rule and its
+reason in the narrative, the quote and date in the skill's provenance log.
 Otherwise the next session asks again.
 
 **The rule, the three questions that identify a rule-level answer, and why it

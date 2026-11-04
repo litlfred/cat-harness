@@ -58,8 +58,9 @@ author with limited hand function that cost is keystrokes
 ([`interaction-modality`](interaction-modality.md) §0).
 
 > **A steer that corrects a rule is not applied — it is WRITTEN DOWN: in the
-> skill that governs the thing corrected, in the same turn, with the author's
-> words quoted and dated.**
+> skill that governs the thing corrected, in the same turn. The rule and its
+> reason go in the narrative; the author's words, quoted and dated, go in that
+> document's provenance log.**
 
 ### Is this steer rule-level? Three questions
 
@@ -81,7 +82,7 @@ Any yes makes it rule-level. A **gap** or a **seed** (§1) never is — a flagge
 unknown is not a ruling, and treating one as a rule is §3's first anti-pattern
 with a durable artefact attached.
 
-### Same turn, quoted, dated
+### Same turn, quoted, dated — in the provenance log
 
 - **Same turn.** Not "noted for later" and not a bean saying the skill should be
   updated. A bean that records a rule is a rule in the wrong graph: `beans/` is
@@ -89,10 +90,14 @@ with a durable artefact attached.
   decided reads the skill.
 - **Quoted.** The author's own words, verbatim, typos included — they are the
   primary source, and a paraphrase is the agent's reading of them standing in
-  for the ruling itself. `schema-management` §"Where a viewer publishes — TWO rules, not three"
-  is the shape: the quote, then the table it produced.
+  for the ruling itself.
 - **Dated.** A rule with no date cannot be told from a rule that was
   superseded.
+- **In the log, not the narrative.** The quote and its date go in the
+  document's provenance log, `<document>.prov.jsonld` beside it (PROV-O), which
+  the renderer shows in the page footer. The narrative states the rule and the
+  reason the author gave, in the present tense, so a reader learns what holds
+  without reading who said it when.
 
 ### You do NOT ask permission to fix a rule the author just corrected
 
@@ -119,7 +124,7 @@ except where the author said outright it should be one.
 **A refusal is a ruling.** An answer that declines your recommendation carries
 at least as much rule as one that accepts it — the reason it gives is a
 durable claim about the domain, and it goes into the governing skill or schema
-gloss, quoted and dated, in that turn.
+gloss in that turn, with the quote and date in its provenance log.
 
 ## 3. Measurement spec (new sessions and retroactive)
 
