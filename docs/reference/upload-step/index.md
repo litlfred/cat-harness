@@ -25,9 +25,9 @@ The **first step of document ingestion** — what puts a file into the queue eve
 
 What the diagram says about the step itself:
 
-> THE FIRST LINK: everything downstream of here takes a file that is already in the queue.
+> THE FIRST LINK: everything downstream of here takes a file that is already in the queue, so without this step how the file got there is governed by nothing.
 >
-> WHAT THIS STEP IS. The basic flow's ACCEPT step: choosing an arrival route, writing the bytes into the declared queue of the instance that will own them, and discharging what that route does not discharge for you. The routes, what each writer owes, and the two that are mechanisms against the one that is a persona are in the `upload-routes` skill; `upload-url` composes the forge URL for the web route from the declaration rather than from a literal.
+> WHAT THIS STEP IS. The basic flow's ACCEPT step: choosing an arrival route, writing the bytes into the declared queue of the instance that will own them, and discharging what that route does not discharge for you. The routes, what each writer owes, and the two that are mechanisms against the one that is a persona are in the `upload-routes` skill; `upload-url` composes the forge URL for the web route from the declaration rather than from a literal, because a hand-written one can 404.
 >
 > WHY A PLAIN `bpmn:task` AND NOT A `userTask`. A `userTask` asserts a human performs it, and this lane is "Contributor (human or agent)" because both do; asserting human-only would be an `activity-fulfilment-kind` contradiction. A plain task asserts nothing about the performer.
 >
@@ -79,13 +79,13 @@ Compose the forge URL a person can drop a file at, from the instance's own decla
 
 | name | required | how it is passed | what it is |
 |---|---|---|---|
-| `branch` | no | positional 0 | The branch the upload form targets. Defaults to `main`; pass the working branch to send somebody to a pull request's head instead. |
+| `branch` | no | positional 0 | The branch the upload form targets. Defaults to `main`; pass the working branch to send somebody to a pull request's head instead, so the upload lands on a commit CI judges. |
 
 ### Outputs
 
 | name | what it is |
 |---|---|
-| `url` | The upload URL on stdout, exit 0 — or, on stderr and exit 1, the reason it could not be composed and the remedy for that reason. Never a guessed URL. |
+| `url` | The upload URL on stdout, exit 0 — or, on stderr and exit 1, the reason it could not be composed and the remedy for that reason. Never a guessed URL: a URL is believed, and somebody sent to a wrong one cannot tell it from an empty directory. |
 
 ### Choosing it
 
