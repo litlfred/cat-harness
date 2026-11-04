@@ -16,7 +16,8 @@ nav_order: 1
 ## Why a taxonomy at all
 
 The taxonomy answers, for every change, *which kind of repo is this change
-for?* It is the vocabulary the [future state](future-state.html) and the
+for?* — a question nothing forces otherwise, so a platform grows by accreting
+whatever its first folio needs. It is the vocabulary the [future state](future-state.html) and the
 [migration plan](migration-plan.html) are written in.
 
 A repository is classified by **what it is authoritative for**, not by what
@@ -132,8 +133,8 @@ that operate on them change when the tooling improves. Different cadences,
 different reviewers, so different repos. Whereas splitting a Content repo's
 schemas from its instances would give two repos that always change together.
 
-`smart-kg` is its own repository, and nothing in this checkout is `smart-kg`
-content. `smart-kg-tools` is a proposed split, not yet a repository.
+`smart-kg` is already its own repository, and nothing in this checkout is
+`smart-kg` content. `smart-kg-tools` is a proposed split, not yet a repository.
 
 ---
 

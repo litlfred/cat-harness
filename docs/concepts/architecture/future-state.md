@@ -167,7 +167,7 @@ L2–L3; adaptation skills; OCL skills.
 | `content/pipeline/fsh-cone.ts`, FHIR/FSH tooling | the DAK layer |
 | `l2-dak-authoring.bpmn` (in the DAK layer's `processes/`), `l3-fhir-pipeline.bpmn` | the DAK layer |
 | `docs/guides/who-smart-{dak,ig}.md`, the DAK layer's `skills/content/authoring-who-smart-guidelines/` (L2–L3) | the DAK layer |
-| the DAK translation extractors (PlantUML, ArchiMate, Excel, BPMN) | `smart-base` |
+| the DAK translation extractors (PlantUML, ArchiMate, Excel, BPMN) | the DAK layer's base IG |
 | OCL skills, adaptation skills | the DAK layer (**mostly not yet written**) |
 | DAK QA criteria (the WHO IG starter-kit SOPs) | the DAK layer |
 
@@ -184,14 +184,14 @@ Applying the [taxonomy's splitting rule](repo-taxonomy.html#splitting-a-mixed-re
 | candidate | split? | why |
 |---|---|---|
 | `smart-kg` / `smart-kg-tools` | **likely yes** | L1 guidance changes on WHO's cadence; the tooling changes on the platform's. Different reviewers entirely. |
-| the DAK layer / `smart-base-tools` | **likely yes** | same argument, and L2–L3 tooling (FSH, OCL, ArchiMate) is heavy and independently versioned |
+| the DAK layer / its tools repository | **likely yes** | same argument, and L2–L3 tooling (FSH, OCL, ArchiMate) is heavy and independently versioned |
 | the content core | **no** | its schemas and its pipeline always change together; splitting gives two repos with one changelog |
 | `cat-harness` | **no** | it is already a Tool repo whose content is its own manual |
 | the science layer | **defer** | plausible later (`-sci-tools` for the Lean/LaTeX toolchain) but not before the extraction itself is proven |
 
 **Test repos are additive, not extractions.** No Test repo exists today
 ([current state](current-state.html#what-this-repo-is-authoritative-for-today)),
-so `smart-base-test`, `folio-core-test` and the rest are Phase III work that
+so a Test repository per content layer is Phase III work that
 builds something new, not Phase II work that moves something existing. Their
 defining requirement is the one from the taxonomy: **test data assets must
 themselves be folio content types in the KG**, so SME review of test data is the
