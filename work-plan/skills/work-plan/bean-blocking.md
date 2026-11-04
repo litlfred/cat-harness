@@ -55,7 +55,8 @@ A bare `blocked` tells the next agent nothing except not to bother. Carry:
 The bean's `status` stays `in-progress`. **`status: blocked` does not exist**:
 `beans update --status` accepts only `in-progress`, `todo`, `draft`,
 `completed` and `scrapped` (`schemas/tools/tool-types.ts` lists the same
-five). A block written only in prose has no date that can expire.
+five). A prescribed form the tool refuses can never be followed, and a block
+written only in prose has no date that can expire.
 
 **`expires` is an ABSOLUTE timestamp, not `+48h`.** A relative offset has to be
 read against `since` by whoever finds it, which means a stale block stays
