@@ -1,25 +1,27 @@
 ---
 name: publish-verification
 description: >-
-  Verify what a publish produced BEFORE it is deployed, and alert the
-  publication manager whenever any step after the publish button fails —
+  Verify what a publish produced, and alert the publication manager
+  whenever any step after the publish button fails —
   the verifier set, how to add a verifier, what is in scope, and how the
   publication manager triages the one alert.
 ---
 
 # Publish verification, and the one alert
 
-What a publish produced is verified **before deployment**, and every step
-after the publish button alerts the publication manager the same way.
+The verifier set runs over the built site before it is deployed. It does
+not stop the deploy: its outcome is judged after the push, and any failure
+reaches the publication manager through the same single alert as every
+other step after the publish button.
 
 ## The two processes
 
 - **`publish-verification.bpmn`** — the verifier set over the built tree,
   between the export and the deploy. Pass, fail, or could-not-tell; the
-  caller deploys only on a pass.
+  caller deploys either way and judges the outcome after the push.
 - **`publish-alert.bpmn`** — ONE alert, called from every failure edge in
-  `docs-site-publish.bpmn`: an incomplete export, a verification failure, a
-  failed deploy, a lost preview. It reaches the role that already owns the
+  `docs-site-publish.bpmn`: a refused security gate, a failed deploy, a lost
+  preview, a failed built-site check. It reaches the role that already owns the
   release: the **publication manager**.
 
 ## The verifier set

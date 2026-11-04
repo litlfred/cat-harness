@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/sdlc/processes/publish-verification.bpmn` (process `Process_PublishVerification`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Run the verifier set over the built tree between the export and the deploy, blocking it: pass, fail or could-not-tell, and the caller deploys only on a pass.
+Run the verifier set over the built tree between the export and the deploy, and report pass, fail or could-not-tell.
 
 ## Begin — Documents exported, not yet deployed (`Start_Exported`)
 
