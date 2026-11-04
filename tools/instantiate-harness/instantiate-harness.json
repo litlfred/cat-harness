@@ -120,7 +120,7 @@
       "remote-mount"
     ],
     "selection": {
-      "when": "A repository that mounts no harness yet is to be harnessed: an existing FHIR IG adopting fhir-harness, a repository becoming a folio overlay. Its PR is the setup-only PR repo-conversion §4 asks for before any content PR.",
+      "when": "A repository that mounts no harness yet is to be harnessed: an existing FHIR IG adopting a FHIR harness, a repository becoming a folio overlay. Its PR is the setup-only PR repo-conversion §4 asks for before any content PR.",
       "limits": "The harness's own adoption steps are its checkout scripts instantiate:<harness> and prepare:<harness>; a harness that declares neither is mounted and rendered with what its layers already declare, and a site that needs a build input nobody produced (an IG with no AST) is refused by the render step with its reason. Re-pinning an already harnessed repository is remote-mount --seed, not this.",
       "cost": "The mount: a blobless fetch of each instance of the closure and one install (a few minutes). Then the harness's prepare step (an IG's AST: a full IG Publisher run) and the render."
     },
