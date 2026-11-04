@@ -200,6 +200,25 @@ writes and the pins, merge it, and only then branch for content. Draft-tier
 checks never build the base, so this does not show until the content PR
 leaves draft (litlfred/dth-sc#1, owner 2026-10-31).
 
+**The setup-only PR has a Tool: `instantiate-harness`.** It pins the harness
+and every layer it needs, mounts them, commits the setup on
+`harness/<harness>`, opens that PR, and renders the branch's preview at
+`gh-pages:STAGING/<branch>/`. On a repository with nothing mounted yet, run it
+from a fresh clone of the tools layer:
+
+```sh
+git clone --depth 1 https://github.com/litlfred/cat-harness-tools /tmp/cht
+echo "<where the author consented>" | bun run /tmp/cht/scripts/instantiate-harness.ts \
+  --repo . --harness <owner/repo> --consent-by <who> [--plan | --local]
+```
+
+`--plan` prints the closure and every step and writes nothing; `--local`
+commits on the branch and pushes nothing. The harness's own adoption steps
+are its checkout scripts `instantiate:<harness>` (files it declares, committed
+with the setup) and `prepare:<harness>` (what the site is built from, never
+committed). For an IG on fhir-harness these declare `contentTypes.ig` and build
+the IG's first AST.
+
 A harness built on this platform may add adoption steps of its own for its
 kind of repository, for example about CI that already publishes a site on
 every push. Ask `skill_list` for the skill governing that kind before
