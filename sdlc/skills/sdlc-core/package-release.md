@@ -16,7 +16,7 @@ notes that say what changed, and a record on the host (a GitHub release).
 Anything that depends on the package names that version and gets exactly that
 commit.
 
-This skill is **general** (owner, 2026-09-24, bean `v7bg`): it is for any
+This skill is **general**: it is for any
 repository that publishes packages, including a folio that ships its own. It is
 **not** the skill for publishing a folio's *content* — that is
 `content-publish`, whose version is supplied by a person at
@@ -50,8 +50,7 @@ below.
 - **From the declared surface**: diff what the package exports (for an
   instance, the graph `kg-export` walks: graph typologies, skill ids, tool ids,
   block kinds) between the last tag and `HEAD`. A removal is major; an
-  addition is minor; neither is patch. This is the method
-  `docs/proposals/instance-versioning.md` §4.1 proposes for instances.
+  addition is minor; neither is patch.
 
 **When both are available, the larger bump wins.** You may always release a
 bigger bump than computed; never a smaller one.
@@ -79,10 +78,9 @@ them with `tool_list` rather than relying on this list.
 
 - **`release-please`** — the GitHub Action or CLI. Does steps 1–3 from
   commit messages: it opens a release PR, and merging that PR creates the tag
-  and the release. **In this repository it is declared but not configured**
-  (bean `frq2`): there is no config, no tag, and the package it would release
-  cannot build yet. Before a config is written here, the package must build
-  and `instance-versioning.md` §3.1 must say which instances are publishable.
+  and the release. **In this repository it is declared but not configured**:
+  there is no config. Before one is written, the package must build and the
+  instances to release must declare `publishable: true`.
 - **By hand** — `git tag`, a CHANGELOG entry and the host's release form. The
   same four steps and the same rules; slower, and nothing to misconfigure.
 - **`pack-tarball`** (`bun run cat-harness-tools/scripts/pack-tarball.ts`) — packages an
