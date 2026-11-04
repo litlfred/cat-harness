@@ -104,4 +104,4 @@ One phase and not three, because the loops say so: an increment the BA rejects, 
 
 ## Done — Phase complete (`End_Process_CRDM_Deliver`)
 
-- The instance completes here: THERE IS NO THEME REVIEW HERE ANY MORE, and that is a ruling rather than an omission. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- The instance completes here: THERE IS NO THEME REVIEW HERE, and that is a rule rather than an omission: theme review happens at INGESTION ONLY, called from `ingest-theme.bpmn`, where the graphical assets arrive and are determined, not here, where they have already been built into what shipped. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.

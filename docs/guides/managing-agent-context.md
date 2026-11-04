@@ -40,18 +40,14 @@ rather than to chance.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/guides-managing-agent-context/three-things-one-word.md){: .fa-node-edit title="Edit docs/source/guides-managing-agent-context/three-things-one-word.md" data-fa-link="edit" data-src="docs/source/guides-managing-agent-context/three-things-one-word.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="three-things-one-word.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-managing-agent-context/three-things-one-word.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-managing-agent-context/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="three-things-one-word.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-managing-agent-context/three-things-one-word.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-managing-agent-context/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-**"Overlay" already means three unrelated things in this documentation**, which
-is why the Term on this page is **Context Overlay** and not the bare word.
+**"Overlay" means three unrelated things in this documentation**, so the Term
+on this page is **Context Overlay** and not the bare word.
 
 | where | what it means |
 |---|---|
 | this page | a set of context material applied to a run |
 | [`getting-started`](../start/getting-started.html) §6 | a BRANCH of the folio-intent gateway — converting a repository you already have |
-| [`getting-started`](../start/getting-started.html) §art | positioning text ON cat artwork, where an undeclared region means "do not overlay" |
-
-None is wrong. They are simply different, and a reader who meets the bare word
-in one section and carries its meaning into another will be misled in a way
-that is hard to notice, because every sentence still parses.
+| [`getting-started`](../start/getting-started.html) §8 | positioning text ON cat artwork, where an undeclared region means "do not overlay" |
 
 So: **Context Overlay** when this page's sense is meant. Where the other two
 are meant, name them — the gateway branch, or the art region.
@@ -75,8 +71,7 @@ a running process:
 
 > **Context is READ during a process and never written by one.**
 
-That is the definition the graph layer uses, and it is checkable rather than a
-matter of taste. A step that writes to a Context graph is a defect, not an
+The graph layer checks it. A step that writes to a Context graph is a defect, not an
 update — which is exactly what makes an overlay reproducible: if a run could
 modify its own context, the second run would not be the same experiment.
 
@@ -98,11 +93,11 @@ kind that has not decided does not compile:
 | `fsh-guts` | deprecated and throwaway structured content, kept addressable |
 
 Ask the code rather than this table — `graphTypologiesOfLayer("context")` returns
-the live answer, and a count written into prose is a claim nothing re-derives.
+the live answer.
 The shapes are in
 [`schemas/cat-harness.ts`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/cat-harness.ts).
 
-`fsh-guts` is the entry that reads oddly and is worth the sentence: it holds
+`fsh-guts` holds
 structured material that COULD be rendered, which is what makes it look like
 content. It is context because no running process writes it.
 
@@ -120,9 +115,7 @@ memory entry one session wrote and another did not have?
 
 Overlaying context makes that question answerable. The workflow is held fixed,
 the Context Overlay is stated, and a difference between runs is a difference
-between overlays. It is the same move as pinning a dependency version: not
-because the version is special, but because an unpinned one makes every other
-measurement unreliable.
+between overlays. It is the same move as pinning a dependency version.
 
 This is what lets the repository ask how models compare across sub-workflows
 **under a controlled overlay of context and memories** — a question named as
@@ -149,6 +142,4 @@ two disagree the skill wins:
   — how a person wants to be asked.
 
 Setting an agent's context deterministically from the knowledge graph at each
-task is not yet built; it is tracked as bean `3q47`. Saying so here is
-deliberate — a page that described it as working would read exactly like one
-that described something real.
+task is not yet built.

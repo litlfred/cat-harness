@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: hand-back-to-discussion\n"
-"POT-Creation-Date: 2026-10-31T17:28:28.569Z\n"
+"POT-Creation-Date: 2026-11-04T14:13:17.146Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -86,7 +86,7 @@ msgstr ""
 
 #: processes/process/hand-back-to-discussion.bpmn:17
 #. Diagram element documentation
-msgid "How a sibling agent gets a card, question, result, blocker or context in front of the person: through the discussion agent that is talking with them, never only in its own thread. The person's answer comes back the same way. The owner asked for it on 2026-10-31 after several sibling threads posted cards nobody saw (cat-harness#861). INPUT AND OUTPUT: the `hand-back-to-discussion` skill's schemas, schemas/skills/hand-back-to-discussion/input.schema.json (from, to, kind, summary, ask = the ask-the-person input, context, links, channels, answerRoute, blocking) and output.schema.json (shown, state, chosen, quote, answeredIn, marked, deliveredBack). THE PERSON'S STEP is inside `Process_AskThePerson`, called by the discussion agent, so the asking rule (chat text first, then the card) holds here unchanged. A Blue-column answer in a review sheet is an answer to that same question."
+msgid "How a sibling agent gets a card, question, result, blocker or context in front of the person: through the discussion agent that is talking with them, never only in its own thread. The person's answer comes back the same way. INPUT AND OUTPUT: the `hand-back-to-discussion` skill's schemas, schemas/skills/hand-back-to-discussion/input.schema.json (from, to, kind, summary, ask = the ask-the-person input, context, links, channels, answerRoute, blocking) and output.schema.json (shown, state, chosen, quote, answeredIn, marked, deliveredBack). THE PERSON'S STEP is inside `Process_AskThePerson`, called by the discussion agent, so the asking rule (chat text first, then the card) holds here unchanged. A Blue-column answer in a review sheet is an answer to that same question."
 msgstr ""
 
 #: processes/process/hand-back-to-discussion.bpmn:86

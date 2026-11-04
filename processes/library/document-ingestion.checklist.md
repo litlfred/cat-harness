@@ -8,7 +8,7 @@ Accepts an upload, records its extracted metadata in the knowledge graph, and ca
 
 ## Begin — A contributor has a file for the folio (`StartEvent_Dropped`)
 
-- Begin here: ONE OF TWO ENTRY POINTS, and this said "the only" one until 2026-09-20.
+- Begin here: ONE OF TWO ENTRY POINTS.
 - Call `workflow_start` with `process: "Process_Ingestion"` and the subject this run is about; keep the instance id it returns.
 - next: → `Task_Place` (Place it in uploads/ by a declared route)
 
@@ -16,7 +16,7 @@ Accepts an upload, records its extracted metadata in the knowledge graph, and ca
 
 - Who: the `Contributor (human or agent)` lane (role `user`).
 - Skill: `upload-routes`.
-- What: THE FIRST LINK, and it did not exist until 2026-09-30.
+- What: THE FIRST LINK: everything downstream of here takes a file that is already in the queue.
 - Record it: `workflow_complete` with `node: "Task_Place"`.
 - next: → `Task_ExtractMetadata` (Extract its metadata into the KG)
 

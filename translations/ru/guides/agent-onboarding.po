@@ -74,10 +74,6 @@ msgstr "изменить работу процесса создания конт
 msgid "change what is being authored"
 msgstr "изменить то, какой контент создается"
 
-#: agent-onboarding.md:192
-msgid "Claim a bean before durable work. Others may be running."
-msgstr "Резервируйте bean перед длительной работой. Параллельно могут выполняться другие задачи."
-
 #: agent-onboarding.md:29
 msgid "Contains"
 msgstr "Содержит"
@@ -105,10 +101,6 @@ msgstr "сгенерированный контракт ввода/вывода 
 #: agent-onboarding.md:68
 msgid "how skills, roles, and capabilities compose"
 msgstr "композиция навыков, ролей и возможностей"
-
-#: agent-onboarding.md:187
-msgid "Lean tooling roadmap"
-msgstr "План развития инструментов Lean"
 
 #: agent-onboarding.md:180
 msgid "Project commands, conventions"
@@ -141,10 +133,6 @@ msgstr "Схема файла QA"
 #: agent-onboarding.md:25
 msgid "There are two kinds, and confusing them is the most common early mistake."
 msgstr "Существует два вида репозиториев, и перепутать их — самая частая ошибка на начальном этапе."
-
-#: agent-onboarding.md:90
-msgid "This trips up agents constantly."
-msgstr "Это постоянно сбивает агентов с толку."
 
 # OBSOLETE. `TOC` was never prose: it is the list item kramdown REPLACES with
 # the generated table of contents, so its text reached no reader in any
@@ -306,3 +294,12 @@ msgstr "Вы редактируете здесь, чтобы"
 
 #~ msgid "Watching a sibling PR: ."
 #~ msgstr "Отслеживание связанного PR коллеги: /watch <pr|branch>."
+
+#~ msgid "Claim a bean before durable work. Others may be running."
+#~ msgstr "Резервируйте bean перед длительной работой. Параллельно могут выполняться другие задачи."
+
+#~ msgid "Lean tooling roadmap"
+#~ msgstr "План развития инструментов Lean"
+
+#~ msgid "This trips up agents constantly."
+#~ msgstr "Это постоянно сбивает агентов с толку."

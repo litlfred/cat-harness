@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/library/subscribe-kg.bpmn` (process `Process_SubscribeKg`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Subscribe a folio or harness to an external knowledge graph pinned to a full commit SHA, then take each chosen part from referenced to materialized through `materialize-remote` and instantiate each chosen harness once its needs are held.
+Subscribe a folio or harness to an external knowledge graph pinned to a full commit SHA, then take each chosen part from referenced to materialized through `materialize-remote` and instantiate each chosen harness once its needs are held, so the harness appears in the subscriber's navbar.
 
 ## Begin — A substrate is wanted, or a held pin is due to move (`StartEvent_Wanted`)
 

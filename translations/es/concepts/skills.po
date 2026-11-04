@@ -53,10 +53,6 @@ msgstr "Capa"
 msgid "Location"
 msgstr "Ubicación"
 
-#: docs/concepts/skills.md:70
-msgid "Status"
-msgstr "Estado"
-
 #: docs/concepts/skills.md:72
 msgid "Definition (roles, required capabilities, requirements, routing patterns, lifecycle stages, schema ref)"
 msgstr "Definición (roles, capacidades requeridas, requisitos, patrones de enrutamiento, etapas del ciclo de vida, referencia de esquema)"
@@ -65,17 +61,9 @@ msgstr "Definición (roles, capacidades requeridas, requisitos, patrones de enru
 msgid "Typed contract (input/output JSON Schema)"
 msgstr "Contrato tipado (JSON Schema de entrada/salida)"
 
-#: docs/concepts/skills.md:74
-msgid "✅ lifecycle, agent, platform-bundle and folio-document-adapter skills; ⏳ authoring-math / authoring-who-smart-guidelines bodies are TBD (those packages ship the manifest + JSON definitions)"
-msgstr "✅ habilidades de ciclo de vida, agente, paquete de plataforma y folio-document-adapter; ⏳ los cuerpos de authoring-math / authoring-who-smart-guidelines están pendientes (TBD) (esos paquetes incluyen el manifiesto y las definiciones JSON)"
-
 #: docs/concepts/skills.md:75
 msgid "Package (Docker/runtime deps)"
 msgstr "Paquete (dependencias Docker/tiempo de ejecución)"
-
-#: docs/concepts/skills.md:75
-msgid "✅ all four packages"
-msgstr "✅ los cuatro paquetes"
 
 #: docs/concepts/skills.md:85
 msgid "The lifecycle stages that apply to every content type:"
@@ -244,10 +232,6 @@ msgstr "Paquete"
 #: docs/concepts/skills.md:164
 msgid "Scope"
 msgstr "Alcance"
-
-#: docs/concepts/skills.md:166
-msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
-msgstr "Coordinación de agentes, el marco de trabajo del observador (watcher framework), canalización de QA / renderizado / bibliografía / glosario, documentación, despliegue — se aplica a cualquier tipo de contenido."
 
 #: docs/concepts/skills.md:167
 msgid "Prose folios: block authoring, chapter/section structure, normative statements, and the TeX-free publication path. Applies to papers too."
@@ -515,3 +499,15 @@ msgstr "Véase también"
 
 #~ msgid "Getting started — running your first skill"
 #~ msgstr "Primeros pasos — ejecutar tu primera habilidad"
+
+#~ msgid "Status"
+#~ msgstr "Estado"
+
+#~ msgid "✅ lifecycle, agent, platform-bundle and folio-document-adapter skills; ⏳ authoring-math / authoring-who-smart-guidelines bodies are TBD (those packages ship the manifest + JSON definitions)"
+#~ msgstr "✅ habilidades de ciclo de vida, agente, paquete de plataforma y folio-document-adapter; ⏳ los cuerpos de authoring-math / authoring-who-smart-guidelines están pendientes (TBD) (esos paquetes incluyen el manifiesto y las definiciones JSON)"
+
+#~ msgid "✅ all four packages"
+#~ msgstr "✅ los cuatro paquetes"
+
+#~ msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
+#~ msgstr "Coordinación de agentes, el marco de trabajo del observador (watcher framework), canalización de QA / renderizado / bibliografía / glosario, documentación, despliegue — se aplica a cualquier tipo de contenido."

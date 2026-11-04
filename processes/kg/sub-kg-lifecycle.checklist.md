@@ -25,7 +25,7 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `sub-kg-lifecycle`.
-- What: `<name>/<name>.json` with name, version, `repository` (the planned home), `livesAt` (where it sits today), `needs`, and only the directories that exist, each declared with its files in one commit (bean dh4f).
+- What: `<name>/<name>.json` with name, version, `repository` (the planned home), `livesAt` (where it sits today), `needs`, and only the directories that exist, each declared with its files in one commit.
 - Record it: `workflow_complete` with `node: "Task_Declare"`.
 - next: → `Task_Grow` (2 · Grow it in place)
 

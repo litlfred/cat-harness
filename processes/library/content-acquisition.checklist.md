@@ -54,7 +54,7 @@ How a resource gets into the graph in the first place.
 
 - Who: the `Agent` lane (role `ingestion-agent`).
 - Skill: `content-acquisition`.
-- What: Composed from the declaration, never written by hand.
+- What: Composed from the declaration by the `upload-url` Tool, never written by hand: the queue is declared with INSTANCE scope, and a forge URL needs the path relative to the REPOSITORY.
 - Record it: `workflow_complete` with `node: "A_PointToUpload"`.
 - next: → `P_Upload` (Drop the file in the queue)
 

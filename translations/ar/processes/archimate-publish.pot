@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: archimate-publish\n"
-"POT-Creation-Date: 2026-10-31T11:49:38.114Z\n"
+"POT-Creation-Date: 2026-11-04T14:13:17.153Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: processes/ui/archimate-publish.bpmn:17
 #. Diagram element documentation
-msgid "An ArchiMate model is authored in Archi and committed; everything a reader sees is derived from it by three mechanical Tools, in order, in the pipeline lane: `archimate-check` (it parses and resolves), `archimate-metamodel` (the element types and relationship patterns it uses, each checked against ArchiMate's relationship table), and `archimate-pages` (a page and an IRI for every view, element and relationship, every view drawn, and the \"Metamodel in use\" page). No step draws a diagram by hand, and none runs Archi or a JVM (skill `archimate-models`). Owner, 2026-10-31: \"i dont really like native UML, rather derived\", then \"make mechanical tools as parts of skills/processes\". A metamodel used to be a hand-drawn view of placeholder elements named after their types; here it is the second step's output, so it cannot disagree with the model."
+msgid "An ArchiMate model is authored in Archi and committed; everything a reader sees is derived from it by three mechanical Tools, in order, in the pipeline lane: `archimate-check` (it parses and resolves), `archimate-metamodel` (the element types and relationship patterns it uses, each checked against ArchiMate's relationship table), and `archimate-pages` (a page and an IRI for every view, element and relationship, every view drawn, and the \"Metamodel in use\" page). No step draws a diagram by hand, and none runs Archi or a JVM (skill `archimate-models`). The metamodel is the second step's output, so it cannot disagree with the model."
 msgstr ""
 
 #: processes/ui/archimate-publish.bpmn:56

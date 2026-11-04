@@ -29,10 +29,6 @@ msgstr "البدء"
 msgid "1. \"Create a folio\" is five different requests"
 msgstr "1. \"إنشاء folio\" يعني خمسة طلبات مختلفة"
 
-#: docs/start/getting-started.md:24
-msgid "Say that sentence to five people and you will get five different pieces of work. The agent's first job is not to start; it is to find out which one you meant."
-msgstr "قل هذه الجملة لخمسة أشخاص وستحصل على خمسة أعمال مختلفة. مهمة الوكيل الأولى ليست البدء؛ بل معرفة أيّها عنيت."
-
 #: docs/start/getting-started.md:27
 msgid "you mean"
 msgstr "ما تقصده"
@@ -92,10 +88,6 @@ msgstr "folio كامل فارغ، وفصل ما زال غير مكتوب"
 #: docs/start/getting-started.md:33
 msgid "Something you would rather describe in your own words"
 msgstr "شيء تفضل وصفه بكلماتك الخاصة"
-
-#: docs/start/getting-started.md:35
-msgid "The fourth row is the one worth pausing on. It is not an error on your part — \"folio\" is an unfamiliar word, and asking for one when you meant a chapter in one is the most natural mistake available. An agent that scaffolds on it has produced an empty repository and not the paragraph you asked for."
-msgstr "السطر الرابع هو السطر الذي يستحق التوقف عنده. إنه ليس خطأً من جانبك — فكلمة \"folio\" كلمة غير مألوفة، وطلب واحد منها عندما تكون قصدت فصلاً في واحد منها هو أكثر الأخطاء الطبيعية والمحتملة. والوكيل الذي ينشئ هيكلاً بناءً على ذلك يكون قد أنتج مستودعًا فارغًا بدلاً من الفقرة التي طلبتها."
 
 #: docs/start/getting-started.md:40
 msgid "2. How the agent decides — and why it is a table, not a judgement"
@@ -172,14 +164,6 @@ msgstr "folio جديد هنا"
 #: docs/start/getting-started.md:89
 msgid "Why two rules return \"ask\", and why that is the point"
 msgstr "لماذا تُرجع قاعدتان \"ask\"، ولماذا هذا هو المغزى"
-
-#: docs/start/getting-started.md:96
-msgid "That matters more than it sounds:"
-msgstr "هذا الأمر أهم مما يبدو عليه:"
-
-#: docs/start/getting-started.md:100
-msgid "An agent cannot route to a branch the table did not return, so the question becomes obligatory rather than polite. An agent left to decide whether to ask will, under any pressure to seem helpful, decide not to — and the three ambiguous cases are exactly where guessing is most expensive."
-msgstr "لا يمكن للوكيل التوجيه إلى فرع لم يُرجعه الجدول، وبالتالي يصبح السؤال إلزاميًا وليس من باب المجاملة. والوكيل الذي يُترك ليقرر ما إذا كان سيسأل سيقرر، تحت أي ضغط ليبدو مفيدًا، ألا يسأل — والحالات الثلاث الغامضة هي تحديدًا المواضع التي يكون فيها التخمين أكثر تكلفة."
 
 #: docs/start/getting-started.md:110
 msgid "Changing it"
@@ -301,10 +285,6 @@ msgstr "اكتشاف تعليمات المهارة وتحميلها"
 msgid "6. Converting a repository you already have"
 msgstr "6. تحويل مستودع موجود لديك بالفعل"
 
-#: docs/start/getting-started.md:193
-msgid "The third one is deliberate. A classifier that forces every file into one of two buckets has an accuracy nobody can assess, and delivers its mistakes as moved files. This one tells you what it could not place and lets you decide."
-msgstr "والفئة الثالثة وُضعت عن قصد. فالمصنّف الذي يجبر كل ملف على الدخول في واحدة من فئتين تكون له دقة لا يستطيع أحد تقييمها، ويقدّم أخطاءه في صورة ملفات منقولة. أما هذا المصنف فيخبرك بما لم يتمكن من تصنيفه ويترك لك القرار."
-
 #: docs/start/getting-started.md:197
 msgid "Then three questions, all answerable by picking, all asked per directory rather than per file:"
 msgstr "ثم يطرح ثلاثة أسئلة، جميعها قابلة للإجابة بالاختيار، وكلها تُطرح لكل دليل بدلاً من كل ملف:"
@@ -352,10 +332,6 @@ msgstr "could not check"
 #: docs/start/getting-started.md:230
 msgid "no address could be derived, nothing was probed, or the request failed"
 msgstr "تعذر استخلاص العنوان، أو لم يتم فحص أي شيء، أو فشل الطلب"
-
-#: docs/start/getting-started.md:232
-msgid "The third is not a softer version of the second, and the agent will not tell you \"it should be up shortly\" on the strength of it. A measured 404 is evidence; a failed request is the absence of evidence, and an author who is told the wrong one goes looking for a site that was never going to appear."
-msgstr "الحالة الثالثة ليست نسخة مخففة من الثانية، ولن يخبرك الوكيل \"من المفترض أن يظهر قريبًا\" بالاستناد إليها. فالخطأ 404 المقاس هو دليل؛ أما الطلب الفاشل فهو غياب للدليل، والمؤلف الذي يُبلغ بالحالة الخاطئة يذهب للبحث عن موقع لم يكن ليظهر أبدًا."
 
 #: docs/start/getting-started.md:242
 msgid "8. Make the landing page yours"
@@ -412,10 +388,6 @@ msgstr "بدون خلفية"
 #: docs/start/getting-started.md:307
 msgid "shows the words alone"
 msgstr "تعرض الكلمات وحدها"
-
-#: docs/start/getting-started.md:309
-msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
-msgstr "السطر الأوسط مقصود. فالنص الذي يُوضع عبر التخمين يستقر فوق القط، لذا فإن المنطقة غير المعلنة تعني \"لا تقم بالتراكب فوق الصورة\"، ولا تعني أبدًا \"أي مكان مناسب\". ووجود folio بدون رسوم أمر عادي وليس عطلاً."
 
 #: docs/start/getting-started.md:342
 msgid "Next steps"
@@ -549,3 +521,24 @@ msgstr "الخطوات التالية"
 
 #~ msgid "Architecture — adapters, skills, and the block model"
 #~ msgstr "البنية الهندسية — المحولات، والمهارات، ونموذج الكتل البرمجية"
+
+#~ msgid "Say that sentence to five people and you will get five different pieces of work. The agent's first job is not to start; it is to find out which one you meant."
+#~ msgstr "قل هذه الجملة لخمسة أشخاص وستحصل على خمسة أعمال مختلفة. مهمة الوكيل الأولى ليست البدء؛ بل معرفة أيّها عنيت."
+
+#~ msgid "The fourth row is the one worth pausing on. It is not an error on your part — \"folio\" is an unfamiliar word, and asking for one when you meant a chapter in one is the most natural mistake available. An agent that scaffolds on it has produced an empty repository and not the paragraph you asked for."
+#~ msgstr "السطر الرابع هو السطر الذي يستحق التوقف عنده. إنه ليس خطأً من جانبك — فكلمة \"folio\" كلمة غير مألوفة، وطلب واحد منها عندما تكون قصدت فصلاً في واحد منها هو أكثر الأخطاء الطبيعية والمحتملة. والوكيل الذي ينشئ هيكلاً بناءً على ذلك يكون قد أنتج مستودعًا فارغًا بدلاً من الفقرة التي طلبتها."
+
+#~ msgid "That matters more than it sounds:"
+#~ msgstr "هذا الأمر أهم مما يبدو عليه:"
+
+#~ msgid "An agent cannot route to a branch the table did not return, so the question becomes obligatory rather than polite. An agent left to decide whether to ask will, under any pressure to seem helpful, decide not to — and the three ambiguous cases are exactly where guessing is most expensive."
+#~ msgstr "لا يمكن للوكيل التوجيه إلى فرع لم يُرجعه الجدول، وبالتالي يصبح السؤال إلزاميًا وليس من باب المجاملة. والوكيل الذي يُترك ليقرر ما إذا كان سيسأل سيقرر، تحت أي ضغط ليبدو مفيدًا، ألا يسأل — والحالات الثلاث الغامضة هي تحديدًا المواضع التي يكون فيها التخمين أكثر تكلفة."
+
+#~ msgid "The third one is deliberate. A classifier that forces every file into one of two buckets has an accuracy nobody can assess, and delivers its mistakes as moved files. This one tells you what it could not place and lets you decide."
+#~ msgstr "والفئة الثالثة وُضعت عن قصد. فالمصنّف الذي يجبر كل ملف على الدخول في واحدة من فئتين تكون له دقة لا يستطيع أحد تقييمها، ويقدّم أخطاءه في صورة ملفات منقولة. أما هذا المصنف فيخبرك بما لم يتمكن من تصنيفه ويترك لك القرار."
+
+#~ msgid "The third is not a softer version of the second, and the agent will not tell you \"it should be up shortly\" on the strength of it. A measured 404 is evidence; a failed request is the absence of evidence, and an author who is told the wrong one goes looking for a site that was never going to appear."
+#~ msgstr "الحالة الثالثة ليست نسخة مخففة من الثانية، ولن يخبرك الوكيل \"من المفترض أن يظهر قريبًا\" بالاستناد إليها. فالخطأ 404 المقاس هو دليل؛ أما الطلب الفاشل فهو غياب للدليل، والمؤلف الذي يُبلغ بالحالة الخاطئة يذهب للبحث عن موقع لم يكن ليظهر أبدًا."
+
+#~ msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
+#~ msgstr "السطر الأوسط مقصود. فالنص الذي يُوضع عبر التخمين يستقر فوق القط، لذا فإن المنطقة غير المعلنة تعني \"لا تقم بالتراكب فوق الصورة\"، ولا تعني أبدًا \"أي مكان مناسب\". ووجود folio بدون رسوم أمر عادي وليس عطلاً."

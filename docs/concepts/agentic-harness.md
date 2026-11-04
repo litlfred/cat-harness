@@ -29,10 +29,8 @@ _This page is generated from [`docs/source/concepts-agentic-harness/`](https://g
 
 The **agentic harness** is the interaction model that folio-assistant runs on —
 the rules, states, and workflows that govern how an agent and a user collaborate
-inside this platform. Much of this behaviour is already described across
-individual skills and guidance documents; this page consolidates it into one
-reference so that an agent entering a session can look up the expected behaviour
-rather than reconstructing it from scattered rules.
+inside this platform. This page gathers in one place what individual skills
+describe separately.
 
 This is not about the agent's internal architecture. It is about the
 **observable contract** between the agent and the user: what states the
@@ -60,17 +58,19 @@ The agent is executing a named workflow — each represented by a BPMN process
 diagram with the agent and user in separate swim lanes. The active workflow
 determines what the agent does next and what it expects from the user.
 
-Active workflows in this platform:
+Active workflows in this platform (the authoring, content-lifecycle,
+draft-to-publication and evidence-retrieval diagrams ship with the content
+layer, not this one):
 
 | Workflow | BPMN source | Entered when |
 |---|---|---|
-| **Authoring (paper)** | [`authoring-a-paper.bpmn`](../../processes/content/authoring-a-paper.bpmn) | User requests content authoring in a paper folio |
-| **Authoring (document)** | [`authoring-a-document.bpmn`](../../processes/content/authoring-a-document.bpmn) | User requests content authoring in a document folio |
-| **Content lifecycle** | [`content-lifecycle.bpmn`](../../processes/content/content-lifecycle.bpmn) | Content moves through validate → render → publish |
+| **Authoring (paper)** | `authoring-a-paper.bpmn` | User requests content authoring in a paper folio |
+| **Authoring (document)** | `authoring-a-document.bpmn` | User requests content authoring in a document folio |
+| **Content lifecycle** | `content-lifecycle.bpmn` | Content moves through validate → render → publish |
 | **Document ingestion** | [`document-ingestion.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/library/document-ingestion.bpmn) | User drops a file in `uploads/` |
-| **Draft to publication** | [`draft-to-publication.bpmn`](../../processes/content/draft-to-publication.bpmn) | Content moves from draft to published |
+| **Draft to publication** | `draft-to-publication.bpmn` | Content moves from draft to published |
 | **CRDM requirements** | [`crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn) | Agent detects a feature request |
-| **Evidence retrieval** | [`evidence-retrieval.bpmn`](../../processes/content/evidence-retrieval.bpmn) | Agent searches for evidence to support a claim |
+| **Evidence retrieval** | `evidence-retrieval.bpmn` | Agent searches for evidence to support a claim |
 
 **State transitions:** a workflow can be **suspended** when the user asks to
 switch context. The agent records where it was (the current BPMN activity) and
@@ -90,7 +90,7 @@ Every agent session follows the same lifecycle:
 1. **Start** — run the session-start sweep (`beans prime`, `beans list`,
    `scripts/session-start-coord-sweep.sh`). This surfaces the current
    work-plan, how far the default branch has moved, and recent sibling branch
-   activity. See `AGENTS.md § At session start`.
+   activity. See the `todo-manager` skill.
 
 2. **Classify** — each user request is classified (see next section) and
    routed to the appropriate workflow.
@@ -99,8 +99,8 @@ Every agent session follows the same lifecycle:
    BPMN process. Each turn reports the bean being worked on and what is next.
 
 4. **Commit** — every meaningful unit of work gets its own commit and push.
-   PRs are opened at the first commit, not the end. See
-   `AGENTS.md § Commit early, commit often, always PR`.
+   PRs are opened at the first commit, not the end. See the
+   `continual-progress` skill.
 
 5. **Handoff** — when the session ends (user leaves, context limit, token
    exhaustion), the agent's durable state is:
@@ -149,8 +149,7 @@ content model?"
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-agentic-harness/content-workflows.md){: .fa-node-edit title="Edit docs/source/concepts-agentic-harness/content-workflows.md" data-fa-link="edit" data-src="docs/source/concepts-agentic-harness/content-workflows.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="content-workflows.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/content-workflows.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="content-workflows.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/content-workflows.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
 When a request is classified as content work (authoring, review, ingestion),
-the agent follows the corresponding BPMN workflow. The existing documentation
-pages describe these in detail:
+the agent follows the corresponding BPMN workflow. These pages describe them:
 
 - **[Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** —
   the content lifecycle from draft through validation, rendering, and
@@ -177,8 +176,8 @@ switches context.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-agentic-harness/deterministic-and-agentic.md){: .fa-node-edit title="Edit docs/source/concepts-agentic-harness/deterministic-and-agentic.md" data-fa-link="edit" data-src="docs/source/concepts-agentic-harness/deterministic-and-agentic.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="deterministic-and-agentic.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/deterministic-and-agentic.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="deterministic-and-agentic.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/deterministic-and-agentic.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-Workflow processing here is a **spectrum, not a switch**, and the harness is
-already at four different points on it without ever having named the axis:
+Workflow processing here is a **spectrum, not a switch**, and the harness sits
+at four points on it:
 `cat-harness.processes:policy enforcement` decides whether a step that is not enabled is
 refused or merely noted; `relaxable="false"` decides whether a package may
 negotiate a base step away; `cat-harness.processes:decision` decides whether a branch is
@@ -194,11 +193,9 @@ write regardless.
 
 A gateway now says which it is. `<cat-harness.processes:decision>` means a table computes it
 and a hand-supplied outcome is refused; `<cat-harness.processes:judgement reason="…">` means
-somebody's call, with the reason required. Before that marker, "no table
-because this is a judgement" and "no table because nobody wrote one" were
-indistinguishable — and `bun run cat check:workflow-refs` now prints the three-way
-split, so the question *how much of this is decided by a model?* has an answer
-that is counted rather than asserted.
+somebody's call, with the reason required. `bun run cat check:workflow-refs`
+prints the three-way split (table, judgement, neither), so *how much of this is
+decided by a model?* is counted rather than asserted.
 
 **What that count is for is research, and it is open.** Which judgement points
 are safety risks, how much must be deterministic, and how models compare across
@@ -206,15 +203,13 @@ sub-workflows under a controlled overlay of context and memories are three
 questions this repository can now ask and has not answered. The agenda, with
 each claim marked as measured, decided or hypothesis, is
 [`deterministic-and-agentic`]({{ '/reference/skill-instructions/deterministic-and-agentic.html' | relative_url }}).
-Read it as an agenda: there is more hypothesis in it than measurement, and it
-says so.
 
 ## BPMN execution: one skill, two engines
 {: #bpmn-execution data-fa-label="sec:harness-bpmn_execution" }
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-agentic-harness/bpmn-execution.md){: .fa-node-edit title="Edit docs/source/concepts-agentic-harness/bpmn-execution.md" data-fa-link="edit" data-src="docs/source/concepts-agentic-harness/bpmn-execution.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="bpmn-execution.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/bpmn-execution.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="bpmn-execution.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/bpmn-execution.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-The owner, 2026-09-23, naming the skill this spectrum is about:
+The skill this spectrum is about:
 
 > **BPMN Execution Skill:** given a Process, Context, State and Role, utilize
 > one or more Skills in order to execute a Task.
@@ -237,12 +232,10 @@ behind a skill in the way every other Tool here is.
 **The two ends differ in *when* a rule is checked, not in *which* rule.** The
 same process, the same roles and the same permissions govern both. The engine
 checks them **before** a task starts and refuses; the swarm acts and a QA/QC
-report checks them **after**, from the record of what was done. That only works
-if the rules and the record are data a report can read, which is the case for
-[W3C ODRL 2.2](https://www.w3.org/TR/odrl-model/) as the permission language
-and [W3C PROV-O](https://www.w3.org/TR/prov-o/) as the execution log (owner,
-2026-09-23; the schema this implies is the
-[actors, ODRL and PROV-O proposal]({{ '/proposals/odrl-prov-actor-model.html' | relative_url }})).
+report checks them **after**, from the record of what was done. That needs the
+rules and the record to be data a report can read:
+[W3C ODRL 2.2](https://www.w3.org/TR/odrl-model/) is the permission language
+and [W3C PROV-O](https://www.w3.org/TR/prov-o/) the execution log.
 
 **Most real runs sit between the ends**, and per task rather than per process:
 the [previous section](#deterministic-and-agentic) already counts which
@@ -250,12 +243,10 @@ gateways are computed and which are judgement calls. A signing step can be
 engine-enforced inside an otherwise agentic run, and that is a property of the
 task, not of the whole diagram.
 
-**Partly built.** No BPMN engine is wired in. The mechanical QA/QC report
-now exists: `bun run cat prov:qaqc` writes each workflow instance's history as a
-PROV-O log and re-checks every step against the ODRL policies, advisory
-(issue #1180, step 5; the `task-authorization` skill). The agentic QA/QC
-report does not exist yet. The rest of this section names the target so the
-proposal has something to be measured against.
+**Partly built.** No BPMN engine is wired in. The mechanical QA/QC report is
+`bun run cat prov:qaqc`: it writes each workflow instance's history as a PROV-O
+log and re-checks every step against the ODRL policies, as advice (the
+`task-authorization` skill). The agentic QA/QC report does not exist yet.
 
 ## Feature-request workflow (CRDM)
 {: #feature-request-workflow data-fa-label="sec:harness-feature_request_workflow" }
@@ -266,11 +257,6 @@ When a request is classified as a feature request, the agent enters the
 **CRDM requirements workflow**
 ([full documentation](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/crdm-methodology.html),
 [BPMN](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn)).
-
-The feature-request workflow is where this harness document adds the most
-value, because it describes a behaviour that was previously implicit. The
-authoring and review workflows have been documented for months; the
-requirements workflow existed only as ad-hoc conversation.
 
 ### How the agent enters CRDM
 
@@ -366,8 +352,7 @@ two are related but not synonymous.
    name should reference the issue number (e.g. `feat/197-word-import`).
 
 3. **Always ask before merging to main.** The user must explicitly confirm.
-   This is stricter than the general `AGENTS.md` rule for content work,
-   because feature changes affect the platform.
+   Feature changes affect the platform.
 
 4. **Post round summaries to the issue.** After each round of implementation
    (one or more beans resolved), post a comment on the linked issue containing:
@@ -391,14 +376,12 @@ two are related but not synonymous.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-agentic-harness/consolidated-skill-references.md){: .fa-node-edit title="Edit docs/source/concepts-agentic-harness/consolidated-skill-references.md" data-fa-link="edit" data-src="docs/source/concepts-agentic-harness/consolidated-skill-references.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="consolidated-skill-references.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/consolidated-skill-references.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="consolidated-skill-references.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/consolidated-skill-references.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-The behaviour described on this page draws from skills and guidance documents
-scattered across the repository. This section maps the consolidated behaviour
-back to its authoritative sources.
+The skills and documents each behaviour on this page comes from:
 
 | Behaviour | Source skill / document | Location |
 |---|---|---|
 | Session start sweep | `todo-manager.md § What the session-start sweep emits` | [`work-plan/skills/work-plan/todo-manager.md`](https://github.com/litlfred/cat-harness/blob/main/work-plan/skills/work-plan/todo-manager.md) |
-| Bean protocol | `todo-manager.md`, `bean-coordination.md` | [`sdlc/skills/sdlc-core/`](https://github.com/litlfred/cat-harness/tree/main/sdlc/skills/sdlc-core/) |
+| Bean protocol | `todo-manager.md`, `bean-coordination.md` | [`work-plan/skills/work-plan/`](https://github.com/litlfred/cat-harness/tree/main/work-plan/skills/work-plan/) |
 | Commit and PR discipline | `continual-progress.md` | [`sdlc/skills/sdlc-core/continual-progress.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/sdlc-core/continual-progress.md) |
 | Feature-request detection | `crdm-detect.md` | [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md) |
 | CRDM requirements workflow | `crdm-requirements-workflow.md` | [`sdlc/skills/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-requirements-workflow.md) |
@@ -418,25 +401,22 @@ consolidation, not a new authority. If you find a discrepancy, fix this page.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-agentic-harness/what-is-not-built-yet.md){: .fa-node-edit title="Edit docs/source/concepts-agentic-harness/what-is-not-built-yet.md" data-fa-link="edit" data-src="docs/source/concepts-agentic-harness/what-is-not-built-yet.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="what-is-not-built-yet.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/what-is-not-built-yet.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="what-is-not-built-yet.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/what-is-not-built-yet.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-- **Workflow state persistence** — the harness describes workflow suspension
-  and resumption, but there is no mechanism to persist the agent's workflow
-  state across sessions. Today this relies on beans and issue comments as
-  proxies.
+- **Suspended-workflow stack** — workflow instances are persisted in the
+  `beans/` graph, but the suspend-and-resume stack described above is not;
+  beans and issue comments stand in for it.
 
 - **Automated request classification** — the classification table is a
   reference for agents to read; there is no classifier tool that routes
   automatically.
 
 - **BPMN for beans lifecycle** — the beans work-plan has a lifecycle (create →
-  claim → in-progress → resolve) that is discussed in `AGENTS.md` and the
-  todo-manager skill but has no BPMN diagram.
+  claim → in-progress → resolve) described in the todo-manager skill but has
+  no BPMN diagram.
 
 - **BPMN for the agentic harness itself** — a top-level BPMN diagram showing
   the idle/workflow state machine and the classification routing is not yet
   authored.
 
 - **Session handoff protocol** — the rules for what to commit before a session
-  ends are in `AGENTS.md`, but there is no structured handoff artefact that a
+  ends are in the `continual-progress` skill, but there is no structured handoff artefact that a
   new session can read to resume exactly where the previous one left off.
-
-**Tracked in:** [#203](https://github.com/litlfred/folio-assistant/issues/203)

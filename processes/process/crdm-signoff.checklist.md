@@ -32,7 +32,7 @@ The approved requirements become work-plan items, the BA signs off, and the bran
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `adjudication`.
-- What: THE RECORD, and not relaxable: a judgement nobody wrote down is indistinguishable from one never made (`adjudication`, A_RecordEntry).
+- What: THE RECORD, and not relaxable (`adjudication`, A_RecordEntry).
 - Shared step `GT_RecordSignoff`.
 - Record it: `workflow_complete` with `node: "A_RecordSignoff"`.
 - next: → `GW_SignoffRecorded` (Sign-off on the record?)
@@ -49,7 +49,7 @@ The approved requirements become work-plan items, the BA signs off, and the bran
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `kg-contribution-offer`.
-- What: THE STEP THAT WAS MISSING.
+- What: Without this step, agreed and signed-off requirements exist only as an issue and a conversation, and the knowledge graph never learns them.
 - Record it: `workflow_complete` with `node: "A_OfferKg"`.
 - next: → `BA_ChooseKg` (Choose a destination, or none)
 

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ask-the-person\n"
-"POT-Creation-Date: 2026-11-01T10:34:42.466Z\n"
+"POT-Creation-Date: 2026-11-04T14:13:17.135Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: processes/process/ask-the-person.bpmn:55
 #. Diagram element documentation
-msgid "`yes` when this agent is the one the person is talking with right now. `no` when it is a sibling: a project thread, a subagent, a workflow agent or a session spawned while another agent holds the discussion. A sibling that is not sure takes `no`: one extra copy costs a line, a missed card stalls a decision (owner, 2026-10-31: \"sublings not raising cards to main\", cat-harness#861)."
+msgid "`yes` when this agent is the one the person is talking with right now. `no` when it is a sibling: a project thread, a subagent, a workflow agent or a session spawned while another agent holds the discussion. A sibling that is not sure takes `no`: one extra copy costs a line, a missed card stalls a decision."
 msgstr ""
 
 #: processes/process/ask-the-person.bpmn:42
@@ -86,7 +86,7 @@ msgstr ""
 
 #: processes/process/ask-the-person.bpmn:16
 #. Diagram element documentation
-msgid "The ONE way a question or decision is put to a person. Called as a subprocess from every step that asks; never run on its own. The rule it carries out is the box at the top of `interaction-modality`. WHY A SUBPROCESS. The asking rule lived only in a skill, and every diagram had its own ask step with no link to it. Each enforcement was keyed to one tool name (`AskUserQuestion`), so a host with a different question tool (the Claude projects `request_decision` Decision card) asked without the rule, and the owner got bare cards with no question or options (owner, 2026-10-23: \"this is PROCESS FAILURE ... maybe need better subprocess etc associations\"). One subprocess, called by every asking step, makes the association visible in the diagrams and checkable. THE ORDER IS THE RULE: the full question goes in the chat FIRST, then the card. Once answered, a card shows only the chosen option; the chat text is the only lasting record of what was asked. This holds whatever the host's own tool guidance says. INPUT AND OUTPUT: the `ask-the-person` skill's schemas, schemas/skills/ask-the-person/input.schema.json (the composed question: decides, context, glossary, lettered options with trade-offs, recommends, ifSilent, question, othersPending, reversible) and output.schema.json (asked.chat and asked.card, outcome, chosen, quote, defaultTaken). A calling step supplies the input and receives the output. WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only gets an answer back to it, or the stated default when none comes. WHAT IS BOOTSTRAP'S AND WHAT IS OURS (shared block G8 of the BPMN guidance review, owner Q-BR-6 A, 2026-11-01). The discussion itself (say what is decided and why, lay out the options with their costs, recommend one, ask ONE question, follow up narrower, apply a default only if allowed, record what is still open) is bootstrap's `Process_HumanAgentDiscussion`, which cat-harness reaches through `needs: [\"bootstrap\"]`. Before this, the same steps were drawn here a second time. What this process adds is the harness's own part: the composed question with lettered options and glossed names, the sibling hand-back, and the delivery rule that the full question goes in the chat FIRST and the card second."
+msgid "The ONE way a question or decision is put to a person. Called as a subprocess from every step that asks; never run on its own. The rule it carries out is the box at the top of `interaction-modality`. WHY A SUBPROCESS. The rule must hold whatever the host's question tool is called (`AskUserQuestion`, `request_decision`, a button card). One subprocess, called by every asking step, makes the association visible in the diagrams and checkable. THE ORDER IS THE RULE: the full question goes in the chat FIRST, then the card. Once answered, a card shows only the chosen option; the chat text is the only lasting record of what was asked. This holds whatever the host's own tool guidance says. INPUT AND OUTPUT: the `ask-the-person` skill's schemas, schemas/skills/ask-the-person/input.schema.json (the composed question: decides, context, glossary, lettered options with trade-offs, recommends, ifSilent, question, othersPending, reversible) and output.schema.json (asked.chat and asked.card, outcome, chosen, quote, defaultTaken). A calling step supplies the input and receives the output. WHAT IT DOES NOT DO: decide. The caller owns the decision; this subprocess only gets an answer back to it, or the stated default when none comes. WHAT IS BOOTSTRAP'S AND WHAT IS OURS. The discussion itself (say what is decided and why, lay out the options with their costs, recommend one, ask ONE question, follow up narrower, apply a default only if allowed, record what is still open) is bootstrap's `Process_HumanAgentDiscussion`, which cat-harness reaches through `needs: [\"bootstrap\"]`. What this process adds is the harness's own part: the composed question with lettered options and glossed names, the sibling hand-back, and the delivery rule that the full question goes in the chat FIRST and the card second."
 msgstr ""
 
 #: processes/process/ask-the-person.bpmn:46

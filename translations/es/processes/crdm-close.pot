@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: crdm-close\n"
-"POT-Creation-Date: 2026-11-03T06:57:11.152Z\n"
+"POT-Creation-Date: 2026-11-04T14:13:17.136Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: processes/process/crdm-close.bpmn:48
 #. Diagram element documentation
-msgid "The business analyst confirms every acceptance criterion from the requirements is met. The issue closes only on their authorisation — an agent never closes an issue on its own say-so. Since issue #2405 (FR-013) it IS an adjudication with the requirement-set answers: an approval here moves the set to `accepted`, which `check:requirements` refuses unless it is a human's and every approved member is `in-force`."
+msgid "The business analyst confirms every acceptance criterion from the requirements is met. The issue closes only on their authorisation — an agent never closes an issue on its own say-so. It IS an adjudication with the requirement-set answers: an approval here moves the set to `accepted`, which `check:requirements` refuses unless it is a human's and every approved member is `in-force`."
 msgstr ""
 
 #: processes/process/crdm-close.bpmn:37

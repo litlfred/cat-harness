@@ -63,7 +63,7 @@ How a knowledge graph reaches a public portal this repository does not run: sele
 
 - Who: the `Attestation (GDHCN / WHO SMART Trust)` lane (role `attestation-service`).
 - Skill: `kg-to-portal`.
-- What: THE TRUST ANCHOR IS GDHCN, SPECIFIED BY THE WHO SMART TRUST IG (owner, 2026-09-20, paraphrased: proposal signing is GDHCN, as the WHO SMART Trust IG specifies).
+- What: THE TRUST ANCHOR IS GDHCN, SPECIFIED BY THE WHO SMART TRUST IG.
 - Record it: `workflow_complete` with `node: "S_Sign"`.
 - next: → `E_HumanEyes` (Human eyes on the rendered artefact)
 
@@ -75,13 +75,13 @@ How a knowledge graph reaches a public portal this repository does not run: sele
 
 - Who: the `Editorial` lane (role `editor`).
 - Skill: `continual-progress`.
-- What: Bean xies, gate 3, and the one that is easy to drop because gate 2 (merge to main) looks like an approval.
+- What: Easy to drop because merging to main looks like an approval.
 - Record it: `workflow_complete` with `node: "E_HumanEyes"`.
 - next: → `GW_Transport` (Which transport? (UNDETERMINED))
 
 ### Decide — Which transport? (UNDETERMINED) (`GW_Transport`)
 
-- THIS GATEWAY HAS NO DEFAULT BRANCH, AND THAT IS THE POINT.
+- THIS GATEWAY HAS NO DEFAULT BRANCH: the ingestion method is not determined.
 - Call `workflow_complete` with `node: "GW_Transport"` and `outcome` set to the label that holds:
   - «a transport was chosen» → `A_Distribute` (Publish to the origin (a cache may front it))
   - «still undetermined» → `D_Undetermined` (Record the decision as still open)
