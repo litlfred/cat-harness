@@ -51,6 +51,10 @@
       "operative": "What the term MEANS, taken from the role's authored `description` — one author, one place to fix. Absent by design on a lane whose performer varies, which is honest rather than indistinguishable from a lane nobody bound."
     },
     {
+      "term": "skos:editorialNote",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "skos:exactMatch",
       "operative": "A candidate glossary term matched to a concept by its `prefLabel` — the `exact` half of `check:term-mapping`'s pair. Also what an authored term carries to an external vocabulary (`policy` to ODRL's), which is how a match against a local concept reports the external IRI behind it rather than only an in-repo id."
     },
