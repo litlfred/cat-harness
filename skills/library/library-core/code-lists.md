@@ -11,12 +11,9 @@ graph-typologies:
 
 # Code lists
 
-Owner, 2026-09-23: *"we need an expandable option, not just declared in code.
-list of codes and corresponding narrative desc and source should be part of a
-node/asset."* A value that lived as a bare string in a BPMN attribute or as a
-constant in a `.ts` file said nothing about itself. A code list says what each
-code means and where the decision came from, and extending it means adding an
-entry, not editing code.
+A code list is an expandable set of codes kept as a node, not declared in
+code: it says what each code means and where the decision came from, and
+extending it means adding an entry, not editing code.
 
 ## Where they live
 

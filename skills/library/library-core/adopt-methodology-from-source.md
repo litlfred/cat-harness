@@ -12,16 +12,16 @@ description: >
 
 # Adopt a methodology from a source document
 
-The adoption **rules** are [`methodology-adoption`](../../process/process-core/methodology-adoption.md). This skill is the **operating order** for applying them when somebody shares a document and asks for its method to be used. The owner, 2026-09-23: *"update 'methodology source/paper' process to describe general process of what you are doing"*.
+The adoption **rules** are [`methodology-adoption`](../../process/process-core/methodology-adoption.md). This skill is the **operating order** for applying them when somebody shares a document and asks for its method to be used.
 
-**Worked case:** WireGen (arXiv:2312.07755) became [`methodologies/wiregen`](../../../methodologies/wiregen.md). Issue #1023.
+**Worked case:** WireGen (arXiv:2312.07755) became [`methodologies/wiregen`](../../../methodologies/wiregen.md).
 
 ## Steps (one per process activity)
 
 1. **Origin and licence.** Record the authors, venue, identifier, and the licence the **source itself states**.
    - No stated licence means **reference only**: the library entry holds headings, page ranges and a summary in our own words.
    - A source with no origin is a house process. Write a skill instead of a methodology.
-2. **Ingest** (`Process_Ingestion`, [`library-ingestion`](library-ingestion.md)) — the basic flow: the source is accepted, its metadata goes into the KG, and it is catalogued in `library/`. Reading a document into sections is a content-type refinement above this layer (placement PR6), and it keeps the rules that applied here: choose the rung mechanically, and never accept an inferred chapter tree.
+2. **Ingest** (`Process_Ingestion`, [`library-ingestion`](library-ingestion.md)) — the basic flow: the source is accepted, its metadata goes into the KG, and it is catalogued in `library/`. Reading a document into sections is a content-type refinement above this layer, and it keeps the rules that applied here: choose the rung mechanically, and never accept an inferred chapter tree.
 3. **Related work** (`Process_RelatedWork`, [`related-work-coordination`](../../../sdlc/skills/sdlc-core/related-work-coordination.md)). Search beans (`beans list --json`, `beans query`) and the repository's issues and open PRs for work the method touches.
    - Categorize each hit: *overlaps, coordinate*; *affected by*; *out of scope*; or *unrelated*. Give each a one-line summary.
    - Judgement decides the categories. Present them with context, options and a recommendation (`interaction-modality` §4.1), and **ask whether and how to coordinate**. Do not act before the answer.
