@@ -285,7 +285,7 @@ doing ([`opening-brief`](sdlc/skills/sdlc-core/opening-brief.md)).
   ([`skill-registration`](skills/kg/kg-core/skill-registration.md)).
 - **Shipping a branch** — [`prepare-merge`](sdlc/skills/sdlc-core/prepare-merge.md);
   **watching a sibling PR** — [`watch`](sdlc/skills/sdlc-core/watch.md).
-- **Migration plan and cross-repo coordination** —
+- **How every agent CLI is primed at session start** —
   [`docs/folio-assistant-migration.md`](docs/folio-assistant-migration.md).
 - **The generated references are never hand-edited**: regenerate them with
   `bun run cat-harness-tools/scripts/gen-schema-docs.ts` and

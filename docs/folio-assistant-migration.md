@@ -1,4 +1,4 @@
-# Folio-Assistant Infrastructure Migration (`miga`)
+# Folio-assistant agent infrastructure
 
 folio-assistant owns the generic agent infrastructure: the beans work plan, the
 MCP server and the session-start harness. Content repositories hold only their
