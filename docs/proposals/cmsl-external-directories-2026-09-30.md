@@ -1,6 +1,6 @@
 ---
 title: "cmsl — the 23 directories cat-harness declares but does not hold"
-description: "Why each exists, which way its arrow points, and the options for moving the declaration or reversing the arrow. Measured 2026-09-30 for bean cmsl."
+description: "Why each exists, which way its arrow points, and the options for moving the declaration or reversing the arrow. Measured 2026-09-30 for work item cmsl."
 ---
 
 # The 23 directories cat-harness declares but does not hold
