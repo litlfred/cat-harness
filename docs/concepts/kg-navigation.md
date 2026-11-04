@@ -8,14 +8,23 @@ lang: en
 # kg-navigation
 
 > The skill itself is [`skills/kg/kg-navigation/kg-navigation.md`](../../skills/kg/kg-navigation/kg-navigation.md).
+> This page is the package's README, kept here because a skill package holds
+> skills only.
 
 **How an agent finds the knowledge graph, and the skill that governs its task,
 before it knows the layout.**
 
-A skill package of the cat-harness knowledge graph, under `skills/kg/`. A
-subdirectory of the declared `skills/` graph takes its own basename as its
-package name, as `folio-core` and `crdm` do; `skill_fetch` serves it as
-`kg-navigation`.
+A skill package of the cat-harness knowledge graph, under `skills/kg/`. It is
+not a top-level instance, because an instance that declares no `needs` has no
+layer, and `kg:detangle` can then only report its edges as undetermined.
+
+It sits under the declared `skills/` graph rather than in
+`cat-harness/kg-navigation/skills/` because `skill_fetch` names a
+directly-held `skills` directory after its instance, which would serve this
+package as `cat-harness`. A subdirectory of `skills/` takes its own basename as
+its package name, as `folio-core` and `crdm` do, so `skill_fetch` serves it as
+`kg-navigation`. It is not a declaration inside a declaration: `skills/` owns
+this directory like every other package.
 
 ## If you are cold, read the skill, not the directory
 
@@ -34,7 +43,9 @@ They answer the same question **under different preconditions**, so neither is
 a copy of the other, and merging them would leave one caller unable to run
 what it was given. Bootstrap's **must** stay in bootstrap: it is phase one with
 nothing installed, and a bootstrap that reached into another instance for its
-first skill would fail in the cold-start case it exists for.
+first skill would fail in the cold-start case it exists for. Keeping the two
+as separately named skills lets both be **addressed** without either shadowing
+the other.
 
 If you are about to "consolidate" these, first answer: **which precondition
 does the surviving body assume?** Whichever you pick, the other caller is

@@ -47,5 +47,6 @@ the same conditions would not be a thing you could ask for.
 
 **User Story** works this way too. CRDM produces Workflows, User Stories and
 Roles, and Scenarios is where the User Stories belong. Each story is a node in
-`scenarios/stories.json` that names its role, and the role names none — the
+`scenarios/stories.json` that names its role, so it can be pointed at, counted
+and traced to a Workflow, and the role names none — the
 same direction as a voice, which points at the role it addresses.

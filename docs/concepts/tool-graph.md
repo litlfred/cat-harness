@@ -41,9 +41,16 @@ The arrow runs **from a tool to a skill** and never back:
 tool  --satisfies-->  skill
 ```
 
-Read tool-to-skill it says *"this is one way to do that"*; tools and skills are
-kept separate. A skill does **not** list its tools: "what can exercise this
-skill?" is a query over the tool graph, not a field on the skill.
+Read tool-to-skill it says *"this is one way to do that"*; reversed it would
+say *"this skill is a tool"*, which is false, so tools and skills are kept
+separate. A skill does **not** list its tools: "what can exercise this skill?"
+is a query over the tool graph, not a field on the skill, because the answer
+changes whenever a tool is added and a skill's correctness must not depend on
+the tooling around it.
+
+The tools graph has its own page because an absent `docs` reference is a
+legible gap, while one that resolves to a page about something else reports
+coverage that does not exist.
 
 ## How a Tool node is authored
 
@@ -58,7 +65,8 @@ Beyond the census, two questions it answers rather than assumes:
 
 **Does every `satisfies` name a skill that exists?** A dangling one is a tool
 advertising a capability the graph cannot locate. The page prints "all resolve"
-when none dangles, rather than leaving it implied by an absent warning.
+when none dangles, rather than leaving it implied by an absent warning, because
+*nothing unresolved* and *the check did not run* are different facts.
 
 **Does any tool satisfy nothing?** A separate gap: the tool exists and nothing
 says what capability it is a way of exercising.

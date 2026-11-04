@@ -1,5 +1,7 @@
 The skills and tooling that implement the methodology are in various stages
-of development.
+of development. What follows is checked against the repository, because a gap
+list that goes stale sends a reader looking for something that is already
+there.
 
 **Built:**
 

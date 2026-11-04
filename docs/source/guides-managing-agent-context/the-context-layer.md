@@ -11,7 +11,7 @@ kind that has not decided does not compile:
 | `fsh-guts` | deprecated and throwaway structured content, kept addressable |
 
 Ask the code rather than this table — `graphTypologiesOfLayer("context")` returns
-the live answer.
+the live answer; a count written into prose is not re-derived.
 The shapes are in
 [`schemas/cat-harness.ts`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/cat-harness.ts).
 

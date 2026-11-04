@@ -73,7 +73,7 @@ Different lanes carry different roles with distinct capability demands:
 - A `deep-researcher` or `clinical-sme` requires `reasoning_tier: "high"`, `tool_use: true`, and `context_window: 64000+`.
 - A lightweight formatting or translation pass might require only `reasoning_tier: "low"`.
 
-A model dispatched to a lane whose required capabilities it lacks is refused rather than allowed to degrade silently.
+A model dispatched to a lane whose required capabilities it lacks is refused rather than allowed to degrade silently, because such a model produces malformed outputs or hallucinated tool syntax.
 
 ### The Guard Mechanism
 

@@ -52,12 +52,14 @@ bun run cat check-deps                     # what this environment can do
 
 Many checks degrade to `n/a` rather than failing when a tool is missing (no
 Lean toolchain, no Atlas, no LaTeX). **An `n/a` is not a pass:** say what was
-skipped and why.
+skipped and why, because "all clean" over skipped checks reports the absence of
+data as a result.
 
 ## 3. Find the right skill — don't improvise
 
 Skills are the unit of work here. Before hand-rolling a procedure, check
-whether one exists. **Ask for it; do not navigate to it.**
+whether one exists. **Ask for it; do not navigate to it,** because a hardcoded
+path goes missing the moment the layout moves.
 
 ```
 skill_list                                      # every skill, with its summary

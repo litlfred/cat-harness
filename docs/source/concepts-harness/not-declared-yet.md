@@ -1,5 +1,6 @@
 Two parts of the model above are intended and **not implemented**. Each says
-what a reader will actually hit.
+what a reader will actually hit, because a page that described them as working
+would send somebody to look for code that is not there.
 
 ### 1. There is no `HarnessKind`
 

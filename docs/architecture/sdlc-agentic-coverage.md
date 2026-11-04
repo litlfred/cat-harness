@@ -70,4 +70,4 @@ In Section 4, He et al. conduct case studies with ChatDev generating a Snake gam
 - **Tetris Game (High State Complexity)**: ChatDev failed across the first 9 attempts. On the 10th attempt, it produced playable blocks but **failed to implement line clearing**, a core game requirement.
 
 ### What folio-assistant does instead
-Unconstrained role-playing agents agree on interfaces while omitting state-transition invariants. In folio-assistant, state machines and business rules are captured as **DMN decision tables** (`methodologies/dmn.md`) and verified by deterministic gates or Lean 4 formalization, against edge-case witnesses.
+Unstructured multi-agent chat is weak at complex state machines, because unconstrained role-playing agents agree on interfaces while omitting state-transition invariants. In folio-assistant, rather than relying on an agent pair to implement a rule such as line clearing correctly, state machines and business rules are captured as **DMN decision tables** (`methodologies/dmn.md`) and verified by deterministic gates or Lean 4 formalization, against edge-case witnesses.

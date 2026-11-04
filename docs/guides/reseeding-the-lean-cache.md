@@ -22,7 +22,8 @@ traces, own-package oleans or the toolchain's static libraries.
 > toolchain from GitHub release assets. Step 2 needs Mathlib's cache CDN
 > (`mathlib4.lean-cache.cloud`, `lakecache.blob.core.windows.net`), which is
 > blocked from that container and has no GitHub-hosted mirror, so Step 2
-> onward needs CI or a local machine.
+> onward needs CI or a local machine. The two are independent egress
+> restrictions: a working toolchain does **not** imply a reachable cache.
 
 1. TOC
 {:toc}
@@ -79,7 +80,8 @@ baseline to measure against.
 So a cache seeded from a source build makes *this* package build fast,
 while anything reaching a Mathlib module outside its import closure still
 rebuilds. That is fine for a single package's branch; say so before
-publishing to a **shared** one.
+publishing to a **shared** one, because the branch outlives the session that
+seeded it.
 
 If you have the CDN, prefer it: it is both faster and wider. Use the
 source build when the CDN is unreachable, and say which route produced a

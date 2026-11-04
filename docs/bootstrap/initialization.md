@@ -41,13 +41,15 @@ The order is the load-bearing part, not the individual steps.
 
 1. **Write this repository's declaration** from what the upstream
    declaration said — its `name`, and the directories and graph typologies it
-   implies. Not before reading theirs: until it is right, every consumer that
-   reads it believes something false.
+   implies. Not before reading theirs: a declaration written first leaves a
+   window in which this repository claims to be something it is not, and every
+   consumer that reads a declaration believes it.
 2. **Create the directories the declaration names**, and *only* those. A
    declared-but-absent directory is the defect where a consumer scans nothing
    and reports a clean run over it.
 3. **Write `AGENTS.md`**, with `CLAUDE.md` and `GEMINI.md` as thin stubs
-   pointing at it. Unlike the bootstrap copy, it may rely on the harness.
+   pointing at it. The copy bootstrap brought in could rely on nothing; this
+   one may rely on the harness that now exists.
 4. **Publish the instance's JSON-LD context.** Declare its `iriBase`
    (`https://<owner>.github.io/<repo>/`) and add `.github/workflows/publish-context.yml`,
    the one-line caller of the tools layer's `layer-publish-context.yml`;
@@ -63,7 +65,8 @@ The order is the load-bearing part, not the individual steps.
    instance with no `qa` directory of its own is skipped with a notice, and its
    results are the index's.
 6. **Re-enter through this harness.** Read *its* next steps rather than any
-   list held in bootstrap: the harness is the authority on what they are.
+   list held in bootstrap: the available steps change once the harness is
+   present, and the harness is the authority on what they are.
 
 ## What this instance expects that a bare one does not
 

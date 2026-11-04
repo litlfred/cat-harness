@@ -2,10 +2,12 @@ The rest of this page says what a bean **is**. This section says what the
 store currently **holds** — read live from
 [`/assets/beans/index.json`]({{ '/assets/beans/index.json' | relative_url }}), the projection
 `gen-docs-pages.ts` writes from `beans/defs/` on every build, beside the todo
-index it has published for longer.
+index it has published for longer. It exists because a work plan nobody can
+look at is one nobody checks.
 
-**What the dashboard shows.** The counts, as numbers. The work plan as a tree,
-goal → epic → feature → story; the type filter and the search prune that tree
+**What the dashboard shows.** The counts, as numbers, because they are a
+headline. The work plan as a tree, goal → epic → feature → story, because the
+question a reader brings is "where does this sit"; the type filter and the search prune that tree
 to what matches and open it down to them. The store's `task` type is shown as
 **story**, since a Task here is a BPMN task. The findings, as a list with an
 icon and a label on every row, because a status colour never carries meaning
@@ -31,7 +33,8 @@ because `/` is the documentation site's, so each page lists its siblings.
 **A graph with no projection says so.** `qa`, `health`, `issue-marks` and
 `uploads` are declared state graphs that nothing publishes a projection for
 yet. Their dashboards say exactly that, rather than rendering zeros for a
-store nobody read.
+store nobody read, because a dashboard that opens at zero cannot be told from
+a store with nothing in it.
 
 **Every identifier on those pages is a link.** A bean id resolves to the bean's
 file, an issue or pull-request number to the forge, and each finding carries a

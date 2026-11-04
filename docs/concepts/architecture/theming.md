@@ -34,7 +34,9 @@ stage faces second, per-artefact specialisation last.
 **Stage is primary because that is how the failures arrive**: one failure is
 one stage.
 
-**Artefact-first would duplicate intake and contrast into every surface.**
+**Artefact-first would duplicate intake and contrast into every surface**,
+and leave a rule such as the scrim rule in one surface's prose, where it is
+rediscovered rather than read.
 Stage-first with specialisation last means a new
 artefact inherits the stages and declares only its difference. The avatar crop
 boxes are the worked example: the *rule* that a crop is declared data belongs
@@ -60,6 +62,10 @@ could not reach through `skill_fetch`.
 
 ## What is not here
 
+A skill that moves into this directory keeps its id, because ids are stable
+across a relocation while paths are not, so `skill_fetch` and `roles.json`
+resolve unchanged.
+
 `theme-ui-review` is in `ui-core`. It is a UI review skill covering
 branding, languages and findings discipline, for which theming is one subject
 rather than *the* subject. **A directory that takes every file with `theme` in
@@ -80,7 +86,8 @@ drawn, plus that clip at 46px navbar size.
 **It prints and never gates**, and that is deliberate. The schema proves a
 scrim parses and a crop box is square and inside the frame; it cannot see what
 a picture shows, so a person looks at the render. A check that cannot answer
-the question does not pretend to.
+the question does not pretend to, and one made fatal on a judgement gets
+switched off.
 
 Numbers that *can* be gated are gated elsewhere and not restated: the contrast
 ratios are computed in `schemas/themes.test.ts`, so the sheet shows them

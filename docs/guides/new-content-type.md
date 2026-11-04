@@ -39,7 +39,8 @@ adapter with two *profiles* — nested restrictions of one vocabulary — and th
 The test is whether the new type needs different *code* (a different resolver,
 different tools, a different render path) or only different *rules* about what
 its blocks may be. If it is only rules, add a profile in
-`schemas/block-kinds.ts` and a subclass.
+`schemas/block-kinds.ts` and a subclass, because then there is one
+implementation to keep correct rather than two.
 
 Adapters are for genuinely disjoint namespaces — `paper` and `dak` share no
 block kind at all.

@@ -50,7 +50,7 @@ cat-harness-tools/scripts/session-start-coord-sweep.sh  # CLI-independent equiva
 bun run cat check-deps                     # what this environment can do
 ```
 
-当缺少工具（无 Lean 工具链、无 Atlas、无 LaTeX）时，许多检查项会降级为 `n/a` 而不是直接报错。**`n/a` 并不代表通过：**阐明跳过了什么以及跳过的原因。
+当缺少工具（无 Lean 工具链、无 Atlas、无 LaTeX）时，许多检查项会降级为 `n/a` 而不是直接报错。**`n/a` 并不代表通过：**阐明跳过了什么以及跳过的原因，因为在不清楚跳过内容时报告“一切正常”，就是把数据的缺失当作了结果。
 
 ## 3. 寻找合适的技能 — 切勿即兴发挥
 

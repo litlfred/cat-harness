@@ -18,7 +18,8 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 <!--
   `View on GitHub` STAYS: this button is authored content of the landing page,
-  not chrome, so it is kept although the site-wide chrome has no GitHub link.
+  not chrome, so it is kept although the site-wide chrome has no GitHub link;
+  the forge is also reachable from the navbar's Source tile.
 -->
 [开始使用]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }}){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [安装]({{ '/docs/cat-harness/start/installation.html' | relative_url }}){: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 }

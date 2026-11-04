@@ -97,6 +97,8 @@ La Parte B de ATAG es la parte que una plataforma de contenido puede ofrecer de 
 
 ### 2.7 Qué no está hecho
 
+Declarado explícitamente, porque una característica de accesibilidad anunciada a medias es peor que una ausente:
+
 - **Sin comprobaciones de la Parte B de ATAG en el barrido de QA.** Todavía nada verifica que un folio publicado contenga texto alternativo, un orden correcto de encabezados o encabezados de tabla.
 - **Sin auditoría de los PDF generados.** La ruta de renderizado de documentos pasa por weasyprint/prince/wkhtmltopdf y la salida de PDF etiquetado (tagged PDF) no se ha verificado.
 - **Sin pruebas con lectores de pantalla.** Los controles del sitio están construidos conforme a los criterios, pero no se han probado en la práctica con NVDA, JAWS o VoiceOver. Construir según la especificación no es lo mismo que haber verificado.

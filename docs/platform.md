@@ -10,11 +10,14 @@ nav_exclude: true
   AUTHORED. Two rules for this page:
 
   1. REFERENCE the generated indexes, never restate them. If a sentence here
-     could be produced by reading a generated page, delete it.
+     could be produced by reading a generated page, delete it, because a second
+     copy is free to drift from the first.
   2. NO COUNTS IN PROSE. The indexes carry live counts; link, and let the
-     index say how many.
+     index say how many, because a typed number is wrong the next time a
+     diagram is added and nothing checks it.
 
-  `nav_exclude` is deliberate; the page is reached from the Home page link.
+  `nav_exclude` is deliberate; the page is reached from the Home page link,
+  because a page reachable only by typing its URL is a page nobody reads.
 -->
 
 # The platform
@@ -50,14 +53,15 @@ The full model is the
 The `.bpmn` file **is** the source of truth: `workflow_start`, `workflow_next`,
 `workflow_gate` and `workflow_complete` run it, `workflow_complete` refuses a
 step that holds no token, and the running instance is stored so a sibling
-session sees the same position.
+session sees the same position. A diagram that disagrees with what the tools do
+is therefore a defect in the diagram.
 
 **Entry point or step inside another — the distinction is derived, not
 labelled.** A process that no other diagram *calls* is somewhere work begins:
 you enter it deliberately. A process named by a `callActivity` somewhere else is
 a step inside that larger one, and entering it directly means starting in the
 middle of something. Nothing marks this in the file; it falls out of who calls
-whom.
+whom, which is why it stays true as diagrams are added.
 
 For example, **Content acquisition** is an entry point: nothing calls it.
 **Adjudication** is not — it is called from the **Translation Workflow**, from
@@ -71,15 +75,17 @@ calls it.
 Before you open one:
 
 - **A lane is an accountability boundary.** When a token crosses into another
-  lane, who is answerable for the next step changes.
+  lane, who is answerable for the next step changes, which is why "say which
+  process you are in" is a rule rather than a courtesy.
 - **An activity names the skill that performs it.** A step whose skill is
   missing is a finding rather than a blank.
 - **A gateway may be computed.** Where a branch is backed by a DMN table, the
   agent supplies the *facts* and the table returns the branch. A hand-supplied
-  outcome is refused.
+  outcome is refused, so nobody talks their way past a gate.
 
 **[Every process, with its lanes, its activities and the skills they name →]({{ '/cat-harness/auto-docs/index/processes/' | relative_url }})**
-That index is generated from the diagrams on every build.
+That index is generated from the diagrams on every build, so it is what the
+repository contains rather than what this page remembers.
 
 ## Roles, tasks and skills
 
@@ -94,7 +100,8 @@ Roles are declared in `scenarios/roles.json` and bound to lanes by the
 diagrams; what an actor may do is an ODRL policy in `policies/`, because it
 cross-cuts the lanes the actor acts in. `bun run cat kg:audit` checks one
 criterion per join between them and writes its findings as sidecars rather than
-console output.
+console output, because a printed verdict is gone, and without it "unbound
+since it was drawn" and "broken in the commit under review" look the same.
 
 **[Every role, with the skills its lane carries →]({{ '/cat-harness/auto-docs/index/roles/' | relative_url }})**
 
@@ -103,12 +110,15 @@ console output.
 A role is as likely to be **mechanical** as human. **Adjudicator** and
 **Business analyst** are personas a person or an agent takes on; **Build
 pipeline**, **Attestation service** and **Activity log** are lanes held by
-something that is not a person at all.
+something that is not a person at all, and they share one list because a
+swimlane does not care.
 
 Tasks are the individual steps inside a diagram — **Read the sidecar
 findings**, **Classify what changed**, **Accept, or send back**, **Authorise
-the extraction**. Open the task index when you want to know which diagram a step
-belongs to; the lane it sits in says who is answerable for it.
+the extraction**. There are an order of magnitude more tasks than processes,
+which is why the task index is a reference rather than a reading list. Open it
+when you want to know which diagram a step belongs to; the lane it sits in says
+who is answerable for it.
 
 ## What the handler publishes
 
@@ -125,7 +135,8 @@ at one path, the handler wins.
 | [schemas]({{ '/cat-harness/schemas/' | relative_url }}) | the schema graph — declarations and the edges between them | `gen-schema-viz.ts` |
 | [voices]({{ '/cat-harness/voices/' | relative_url }}) | every voice an instance declares, and the passage each rule was read from | `gen-voices-viz.ts` |
 
-Each is regenerated from the tree it describes. **This page is not**: if you
+Each is regenerated from the tree it describes, so a stale one is a build
+problem rather than an editing problem. **This page is not**: if you
 change how processes, roles or skills relate to each other, change it here too.
 
 ## Where to go next

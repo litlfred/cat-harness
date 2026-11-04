@@ -132,6 +132,9 @@ silencieusement la manière dont l'agent s'adresse à l'auteur.
 
 ### 2.7 Ce qui n'est pas fait
 
+Énoncé explicitement, car une fonctionnalité d'accessibilité proclamée à moitié
+est pire qu'une fonctionnalité absente :
+
 - **Aucun contrôle de la partie B d'ATAG dans le balayage QA.** Rien ne vérifie encore qu'un
   folio publié dispose de textes alternatifs, d'un ordre de titres correct ou d'en-têtes de tableau.
 - **Aucun audit des PDF générés.** Le chemin de rendu des documents passe par

@@ -137,7 +137,7 @@ LLM 在仓库中高效工作所使用的技能（通过 `skill_fetch` 加载）�
 
 每个技能包都附带一份 `package-manifest.json`。
 
-> 技能**模式（schema）**自动生成到[技能模式参考]({{ '/reference/skills/' | relative_url }})中。
+> 技能**模式（schema）**自动生成到[技能模式参考]({{ '/reference/skills/' | relative_url }})中，因此绝不会与框架验证的规则脱节。
 
 ---
 

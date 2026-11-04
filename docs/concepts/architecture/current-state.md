@@ -181,7 +181,9 @@ not require inventing composition; it requires finishing it.
 `LOCAL_PACKAGES` in `scripts/skill-packages.ts` is built from it. The
 translation fallback chain (`content/pipeline/po-resolve.ts`) is the other
 consumer of the module. **Two resolution paths are unbuilt**: content-directory
-overlay, and QA criteria from a dependency.
+overlay, and QA criteria from a dependency. Building them is Phase I work,
+because every later phase assumes a dependency can contribute skills and
+content.
 
 ### What a dependency can contribute
 

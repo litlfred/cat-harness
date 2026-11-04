@@ -16,7 +16,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 1. 此处对于残障支持有哪些选项，最佳实践又是什么？
 2. 有哪些选项可以将智能体的问答强制转化为遵循 DMN 逻辑并能服务于多种交互模态的引导式提问？
 
-这是从两个不同角度提出的同一个问题。具体实现的技能为 [`interaction-modality`]({{ '/reference/skill-instructions/interaction-modality.html' | relative_url }})。
+这是从两个不同角度提出的同一个问题，因此共享同一个页面。具体实现的技能为 [`interaction-modality`]({{ '/reference/skill-instructions/interaction-modality.html' | relative_url }})。
 
 1. TOC
 {:toc}
@@ -96,6 +96,8 @@ ATAG Part B 值得重点关注，因为这是内容平台能够唯独提供的�
 **这两处偏好设置存储是刻意分开的。** `memory/interaction.json` 已提交至版本控制，面向智能体，且关乎对话交互。而站点控制项则是针对每位查看者的 `localStorage`，绝不离开浏览器，且关乎阅读体验。非作者的读者选择大号字体，绝不能悄悄重置或更改智能体与作者沟通交流的方式。
 
 ### 2.7 尚未完成的内容
+
+明确列出，因为半吊子宣称的无障碍功能比根本没有实现还要糟糕：
 
 - **QA 全面检查中尚无 ATAG Part B 检查。** 目前还没有机制验证已发布的 folio 是否具备替代文本、正确的标题顺序或表格表头。
 - **未对生成的 PDF 进行审计。** 文档渲染路径通过 weasyprint/prince/wkhtmltopdf 进行，尚未对带标签的 PDF（tagged-PDF）输出进行检查。

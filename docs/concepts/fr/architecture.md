@@ -66,7 +66,9 @@ pages filles :
 | [`cat-harness` minimal](../architecture/cat-harness-minimum.html) | Ce qui subsiste dans le harnais une fois que le critère « non auto-documenté » est appliqué comme test |
 | [Instances de harnais](../architecture/harness-instances.html) | Ce qu'EST une instance — schémas, visualisations, outils ; les quatre répertoires ; le rendu par défaut |
 
-L'exigence de rendu est un **plancher qui s'élève** : `bootstrap` est exempté
+Le minimum indique qu'un harnais ne produit rien qu'un humain regarde, et la
+page des instances qu'une instance effectue un rendu par défaut ; les deux
+tiennent, car l'exigence de rendu est un **plancher qui s'élève** : `bootstrap` est exempté
 du visualiseur et fournit ses propres `.json`/`.jsonld` à la place, et
 `cat-harness` est la couche où le reste s'applique. Voir
 [Où commence l'exigence](../architecture/harness-instances.html#where-the-requirement-starts--bootstrap-is-the-exception).

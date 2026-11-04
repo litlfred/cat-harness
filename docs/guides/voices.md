@@ -29,8 +29,10 @@ exposition standard by the science layer that holds its exemplar paper. Each of
 those instances documents its own voices beside their `SKILL.md` and
 `voice.json`, and links down to this page for the mechanism.
 
-This page does not list them: every one sits **above** this layer. The
-catalogue is the interactive viewer (`bun run cat voices:viz`, published at
+This page does not list them: every one sits **above** this layer, so a link
+from here would point up the dependency arrow, and a list here would be a
+second catalogue free to drift from the first. The catalogue is the
+interactive viewer (`bun run cat voices:viz`, published at
 `cat-harness/docs/cat-harness/voices/`), which re-reads every instance that
 declares a `voices` graph on each run; `skill_list` answers the same question
 from an agent.
@@ -56,7 +58,7 @@ Platform docs themselves carry no voice, meaning their `voices.active[]` array i
 
 Voices are designed to be part of the entire document lifecycle:
 
-- **Before writing:** Follow the [voice-authoring-guidance](../../skills/authoring/authoring-core/voice-authoring-guidance.md) skill.
+- **Before writing:** Follow the [voice-authoring-guidance](../../skills/authoring/authoring-core/voice-authoring-guidance.md) skill, because honouring terminology and stylistic rules as you type is cheaper than retrofitting them.
 - **After writing:** Use the [voice-overlay-review](../../skills/authoring/authoring-core/voice-overlay-review.md) skill. This reviews your blocks against the rules of your active voices and places findings on the QA sidecar.
 
 ## How voice review works

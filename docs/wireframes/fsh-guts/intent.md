@@ -15,7 +15,7 @@ Three surfaces show the `fsh-guts` graph or lead to it:
 
 ### How this was drawn
 
-The page is drawn from its Markdown and the just-the-docs chrome, not from a built site.
+The page is drawn from its Markdown and the just-the-docs chrome, not from a built site, because the site could not be built where this was drawn (no just-the-docs gem, and the published site unreachable).
 
 The viewer and the glass were rendered with Playwright at 1280×800 and 390×844 on a static page that carries the metas `head_custom.html` emits (`fa-staging` empty, then set) and loads the committed `docs-ui.css`, `themes.css`, `avatars.css` and `docs-ui.js`, fed by `fsh-guts-export.ts --out <scratch>/fsh-guts.json` (9 nodes in `@graph`).
 
@@ -77,7 +77,7 @@ The glass (rendered): pulled down, its bottom strip holds ☑ Todos, ⚙ Setting
 3. **The viewer is three interactions deep, behind an unlabelled glyph, and there is now a second, nearer "Settings" that is the wrong one.** The path is still ▦ → Settings → Discarded. The fish tile has a good accessible name, but nothing on the page says discarded items exist until that Settings is opened, and the count is fetched only then. Every page also has a ⚙ **Settings** tile on the glass's bottom strip, larger and labelled. It does not hold the fish, and it does not point to the Settings that does, so "under Settings" matches one of two Settings.
 4. **The declaration-state tags fail contrast on the default dark scheme.** The inline style sets `.fg-ok #0d6e5e`, `.fg-side #6b5b95` and `.fg-gap #a8430f`. On `#27262b` I computed 2.44, 2.54 and 2.48 to 1, at 12 px. The "undeclared" gap state is the one the page wants noticed, and it has the same weight as the others.
 5. **Every file link leaves the site for github.com, and nothing marks this.** The page states it indexes rather than republishes, but the links are ordinary links. In the viewer, the same item is readable in place, but only through Settings.
-6. **Possible dead link on the canonical site.** This is narrowed, not fixed. The committed `_data/harness.json` gives the fsh-guts folder `path: "/fsh-guts/"` with no "staging only" note. The **tiles**, including the new glass-strip tile, are filtered by `publish: "staging-only"` against `fa-staging`, and the render confirms the glass tile disappears off-staging. The **Folders** list and the C@T Harness divider are not filtered that way. If the deploy does not regenerate that file, they link to a page the canonical deploy withholds. Not checked against the live site.
+6. **Possible dead link on the canonical site.** This is narrowed, not fixed. The committed `_data/harness.json` gives the fsh-guts folder `path: "/fsh-guts/"` with no "staging only" note. The **tiles**, including the new glass-strip tile, are filtered by `publish: "staging-only"` against `fa-staging`, and the render confirms the glass tile disappears off-staging. The **Folders** list and the C@T Harness divider are not filtered that way. If the deploy does not regenerate that file, they link to a page the canonical deploy withholds. Not checked against the live site, which was unreachable from where this was drawn.
 7. **Mobile.** The page's three-column file tables scroll sideways inside the table wrapper at 390 px. The Settings panel stacks vertically and the Discarded list fits at that width (rendered). The detail was read, not rendered. There are still two different back controls in one panel: "‹ All actions" in the head, which from Discarded skips past Settings to the grid, and "‹ All discarded items" in the detail.
 
 

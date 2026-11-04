@@ -15,8 +15,9 @@ write regardless.
 
 A gateway now says which it is. `<cat-harness.processes:decision>` means a table computes it
 and a hand-supplied outcome is refused; `<cat-harness.processes:judgement reason="…">` means
-somebody's call, with the reason required. `bun run cat check:workflow-refs`
-prints the three-way split (table, judgement, neither), so *how much of this is
+somebody's call, with the reason required. The marker exists because "no table
+because this is a judgement" and "no table because nobody wrote one" otherwise
+look the same. `bun run cat check:workflow-refs` prints the three-way split (table, judgement, neither), so *how much of this is
 decided by a model?* is counted rather than asserted.
 
 **What that count is for is research, and it is open.** Which judgement points

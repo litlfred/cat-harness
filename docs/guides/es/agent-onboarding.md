@@ -58,7 +58,8 @@ bun run cat check-deps                     # what this environment can do
 
 Muchas comprobaciones se degradan a `n/a` en lugar de fallar cuando falta una
 herramienta (sin cadena de herramientas de Lean, sin Atlas, sin LaTeX). **Un
-`n/a` no es una aprobación:** indique qué se omitió y por qué.
+`n/a` no es una aprobación:** indique qué se omitió y por qué, porque reportar
+"todo limpio" sin saberlo presenta la ausencia de datos como un resultado.
 
 ## 3. Encuentre la habilidad adecuada — no improvise
 

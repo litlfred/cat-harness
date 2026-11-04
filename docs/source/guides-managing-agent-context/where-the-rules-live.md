@@ -13,4 +13,5 @@ two disagree the skill wins:
   — how a person wants to be asked.
 
 Setting an agent's context deterministically from the knowledge graph at each
-task is not yet built.
+task is not yet built. It is said here because a page that described it as
+working would read exactly like one that described something real.

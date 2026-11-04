@@ -6,7 +6,7 @@
 - Generator: `cat-harness/scripts/gen-tools-viz.ts` (graph typology `tools`, page location read from the `coverage.visualiser` of the `tools` directory in `cat-harness.json`).
 - Rendered by Jekyll with just-the-docs `v0.12.0` (`remote_theme` in `_config.yml`). The page has no `layout:` in its front matter and relies on the github-pages default layout. The chrome comes from `_includes/title.html`, `_includes/nav_footer_custom.html`, `_includes/footer_custom.html`, `assets/js/docs-ui.js` and `assets/css/docs-ui.css`.
 
-The wireframe is drawn from the committed Markdown, the generator and the chrome's templates, JS and CSS, not from a built site.
+The wireframe is drawn from the committed Markdown, the generator and the chrome's templates, JS and CSS, not from a built site, because the site could not be built where this was drawn (no local just-the-docs, and the published site unreachable).
 
 ## Who it is for, and what they need to do
 

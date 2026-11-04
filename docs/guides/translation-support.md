@@ -511,8 +511,9 @@ Everything above extracts from **authored** files. The knowledge-graph viewer
 single-file HTML page, and its interface strings sit inside the code that
 emits it.
 
-The strings are not extracted from the generated page, whose regeneration would
-churn every entry; they are lifted into a declared table in the source,
+The strings are not extracted from the generated page, because its regeneration
+would churn every entry and invalidate every sign-off without a single string
+having changed; they are lifted into a declared table in the source,
 `scripts/kg-viewer-strings.ts`, and extracted from **there**:
 
 ```sh
@@ -543,13 +544,15 @@ property names arrive in the JSON-LD document in whatever language the corpus
 is written in, and no catalogue in the viewer can reach them.
 
 The page says so, in the language the reader chose, whenever that is not
-English.
+English, because otherwise a reader cannot tell a missing translation from a
+corpus that is simply English.
 
 ### The catalogues are stubs, filled by a translator
 
 `translations/<locale>/kg-viewer.po` exists for every locale with every
 `msgid` present and every `msgstr` **empty**. The viewer interface is not
-machine-translated; a translator fills the catalogues. Until one does, the
+machine-translated, because a machine translation into a language nobody here
+reads cannot be checked here; a translator fills the catalogues. Until one does, the
 viewer offers English alone — an empty catalogue is not a
 language the page can show, so it is not listed. Fill a `.po`, run
 `bun run cat kg:viewer`, and that language appears in the switcher.
