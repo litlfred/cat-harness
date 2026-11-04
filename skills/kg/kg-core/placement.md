@@ -75,7 +75,7 @@ rest. The vocabulary is open.
   `skill_fetch` to load one, `work_plan_prime` for the work plan. With no MCP,
   resolve the graph from the declaration (`readDeclaration` in
   `schemas/kg/cat-harness.ts`) and read the directory it names.
-- **In *this* repository the `cat-harness` graph's path is `skills/`.** That is
+- **In *this* repository the `skills` graph's path is `skills/`.** That is
   a fact about this instance, not a convention you may carry to another one.
   Ids are stable across a relocation; paths are not.
 - **Overrides match on the entry's `id`, never on its `path`.** An instance
