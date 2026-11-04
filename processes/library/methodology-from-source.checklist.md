@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/library/methodology-from-source.bpmn` (process `Process_MethodologyFromSource`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Adopt the method of a shared paper, book or standard: origin and licence, ingestion, what is adopted and refused, placement by ownership, integration by calling existing processes, and the owner's review.
+The general process an agent follows when someone shares a paper, book or standard and asks for its method to be used: establish origin and licence, ingest it, render what the method says with what is adopted and refused, place it by ownership, integrate it into the processes that already exist by c
 
 ## Begin — Source shared, with an intent (`Start_MFS`)
 
@@ -62,7 +62,7 @@ Adopt the method of a shared paper, book or standard: origin and licence, ingest
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `adopt-methodology-from-source`.
-- What: Each script, CLI or checker the process relies on gets a Tool node in cat-harness/tools/index.ts that satisfies a named skill, validated by folio-assistant's ToolDefinitionSchema.
+- What: Each script, CLI or checker the process relies on gets a Tool node (`tools/<id>/<id>.json`) that satisfies a named skill, validated by folio-assistant's ToolDefinitionSchema.
 - Record it: `workflow_complete` with `node: "A_Tools"`.
 - next: → `O_Review` (Review the adoption)
 

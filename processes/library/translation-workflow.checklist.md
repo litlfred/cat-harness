@@ -42,7 +42,7 @@ The machine half of translation, end to end: extract the translatable strings, i
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
-- What: Back-translate the target-language .md into the source language and compare the meaning with the original (bean folio-assistant-ktt2).
+- What: Back-translate the target-language .md into the source language and compare the meaning with the original.
 - Shared step `GT_RoundTripQa`.
 - Record it: `workflow_complete` with `node: "Task_RoundTripQA"`.
 - next: → `Gateway_Drift` (Drift or bad terminology?)
