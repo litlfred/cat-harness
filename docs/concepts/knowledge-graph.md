@@ -29,8 +29,7 @@ Everything this harness knows about itself is one graph: the Schemas that
 describe its content, the Skills an agent reads, the Workflows those Skills are
 invoked from, the Roles that own a lane, the Tools and Tests that exercise a
 Skill, and the running record of what is being worked on. That graph is the
-**Knowledge Graph**, bootstrap's own term for it (called the **KGraph**
-until 2026-09-30).
+**Knowledge Graph**, bootstrap's own term for it.
 
 Two sentences fix the whole model, and the rest of this page elaborates them.
 
@@ -70,8 +69,8 @@ and the schema is
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-knowledge-graph/two-axes.md){: .fa-node-edit title="Edit docs/source/concepts-knowledge-graph/two-axes.md" data-fa-link="edit" data-src="docs/source/concepts-knowledge-graph/two-axes.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="two-axes.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-knowledge-graph/two-axes.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-knowledge-graph/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="two-axes.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-knowledge-graph/two-axes.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-knowledge-graph/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-Two independent questions get asked about every subgraph, and reading either
-answer as the other is the mistake this section exists to prevent.
+Two independent questions get asked about every subgraph, and neither answer
+implies the other.
 
 **What is it about?** Schemas, Skills, Workflows, Roles, Tools, Tests, Context,
 running state. This is the *topical* axis, and it is what the next section
@@ -99,8 +98,7 @@ entirely different reasons. Asking "is this a Skill?" tells you nothing about
 whether a Workflow may write to it, and asking "may a Workflow write to it?"
 tells you nothing about what it is for.
 
-**A third meaning of *subgraph* is already in circulation**, and it is worth
-pinning before it spreads. [Subgraph viewers](subgraph-viewers.html) uses it for
+***Subgraph* has a second meaning.** [Subgraph viewers](subgraph-viewers.html) uses it for
 one declared directory — the thing a visualiser draws and a Skill governs. This
 page uses it for a branch of the topical taxonomy. One topical subgraph is
 usually several declared directories across several instances, so the two
@@ -157,8 +155,7 @@ auditing whether a Role's Skills actually cover its lanes.
 #### Workflows
 
 Business process as BPMN, with DMN for the decisions. **Prefer *Workflow* over
-*process*** throughout: they were used interchangeably, and the inconsistency
-cost more than the synonym bought.
+*process*** throughout.
 
 The diagrams are executable rather than illustrative. A lane binds a Role, an
 activity names the Skill to run, and a gateway MAY compute its branch from a
@@ -172,8 +169,8 @@ position rather than inferring one.
 A **Capability with defined inputs and outputs** — the instruction body an
 Actor needs to perform a Task, stated **generically** so that it is portable
 across forges, binaries and machines by construction. A Content repository MUST
-constrain those inputs and outputs with a Schema; the consequence of not doing
-so is in [Repositories](#repositories) below, and it is not a small one.
+constrain those inputs and outputs with a Schema; why is in
+[Repositories](#repositories) below.
 
 A Skill MAY be designated mechanical, human, or either. That is a property of
 the Capability, not of whoever happens to run it today.
@@ -181,10 +178,7 @@ the Capability, not of whoever happens to run it today.
 #### Tools
 
 The concrete mechanisms. A Tool names the Skills it satisfies through its
-`satisfies` field, and **one Skill MAY be satisfied by several Tools** — which
-is the point of the separation rather than an allowance. Several Tools for one
-Skill is what lets the same Capability be exercised at different points on the
-spectrum from fully deterministic to fully agentic, and compared.
+`satisfies` field, and **one Skill MAY be satisfied by several Tools**.
 
 *Used for*: keeping the mechanism out of the instruction. A Skill that names a
 vendor, a CLI or an endpoint has swallowed a Tool, and the swallowing is what
@@ -214,9 +208,9 @@ than to chance.
 ### Harness
 
 The layer that renders the rest: the JSON-LD export, the visualisers, and the
-documentation. Its obligation is stated as three separate requirements because
-they fail differently — nothing draws it, nothing says what it is for, nothing
-an agent can invoke against it.
+documentation. Its obligation is stated as four separate requirements because
+they fail differently — nothing serves it, nothing draws it, nothing says what
+it is for, nothing an agent can invoke against it.
 
 *Used for*: making a declared directory something a person can actually look
 at. A directory nobody can see is one nobody checks.
@@ -271,8 +265,7 @@ be followed mechanically rather than inferred:
 | any content node | `$schema` | Schema |
 | Folio | the board layer | Board, then Position, then Note |
 
-Three properties of that table are worth stating, because each one is a
-decision that could have gone the other way.
+Three properties of that table:
 
 **Skill is a sink.** Roles point at Skills, Workflow activities point at Skills,
 Tools point at Skills, Tests point at Skills — and a Skill points at none of
@@ -298,10 +291,8 @@ graph is a defect, not an update. This is the edge that makes a Context Overlay
 possible at all: if a run could mutate its own conditions, replaying it under
 the same conditions would not be a thing you could ask for.
 
-**User Story** works this way too, as of #1168. CRDM produces Workflows, User
-Stories and Roles, and Scenarios is where the User Stories belong. Until then a
-Role carried its stories as `useCases`, free-text strings that could not be
-pointed at, counted, or traced to a Workflow. Each story is now a node in
+**User Story** works this way too. CRDM produces Workflows, User Stories and
+Roles, and Scenarios is where the User Stories belong. Each story is a node in
 `scenarios/stories.json` that names its role, and the role names none — the
 same direction as a voice, which points at the role it addresses.
 
@@ -327,8 +318,7 @@ Where the Knowledge Graph itself lives. A Content repository:
 - MAY designate a Skill as mechanical, as human, or as either.
 - **MUST constrain a Skill's inputs and outputs with Schemas.**
 
-That last clause is the only absolute requirement in the whole four-class
-model, and it is what makes the rest of it hold together. A Skill is a
+That last clause is the only absolute requirement in the model. A Skill is a
 **Capability with defined inputs and outputs**; a Tool claims to satisfy a
 Skill; a Test claims to exercise one. If the Skill's boundary is not written
 down as a Schema, "does this Tool satisfy that Skill?" has no answer anyone can
@@ -375,20 +365,18 @@ The downstream end. A consumer application:
 
 ### Three relations run between repositories
 
-The edges are not interchangeable, and each already has a carrier in the
-declaration — they had simply never been named as one set of three:
+Each edge has its own carrier in the declaration:
 
 | relation | runs | carried by |
 |---|---|---|
 | **depends** | Content → Content | `needs` in the declaration — the layer stack, foundation first |
 | **references** | Tool → Content, Test → Content | `remoteGraphs` — a graph this instance knows about and does not hold |
 | **utilizes** | Tool → Tool, Test → Tool, App → Content, App → Test | `dependencies` in the config — what this instance USES, overlaid |
-| **associated** | any harness ↔ any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (issue #1146, skill `associate-harness`) |
+| **associated** | any harness ↔ any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (skill `associate-harness`) |
 
 **Associated is a fourth, and it fixes no order**: it is how a folio in another repository, such as `ihris`, is listed without being built here.
 
-**The three answer different questions**, which is why collapsing them loses
-information a consumer needs. *Depends* is about layering: it fixes an order, so
+**The three answer different questions.** *Depends* is about layering: it fixes an order, so
 a cycle in it is a defect. *References* is about knowing a graph exists without
 holding it, so it crosses a repository boundary by definition. *Utilizes* is
 about consumption at run time, and a consumer application may utilize a Content
@@ -399,82 +387,46 @@ repository it has no dependency on whatsoever.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-knowledge-graph/what-is-declared-today.md){: .fa-node-edit title="Edit docs/source/concepts-knowledge-graph/what-is-declared-today.md" data-fa-link="edit" data-src="docs/source/concepts-knowledge-graph/what-is-declared-today.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="what-is-declared-today.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-knowledge-graph/what-is-declared-today.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-knowledge-graph/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="what-is-declared-today.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-knowledge-graph/what-is-declared-today.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-knowledge-graph/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-The taxonomy above is what the Knowledge Graph is *for*. What the registry can actually
-produce is narrower, and the gap is worth stating plainly: a reader who takes
-the taxonomy for an inventory will go looking for directories that are not
-there.
+The taxonomy above is what the Knowledge Graph is *for*. What the registry can
+actually produce is narrower: the taxonomy is not an inventory.
 
-Measured on this instance, 2026-09-21, by reading the registry and every
-instance declaration rather than by counting prose. **Re-derive rather than
-quote**: `bun run cat kg:export` dumps the graph, and `instanceRootsIn` plus
-`readDeclaration` give the directory census directly.
+**Re-derive rather than quote**: `bun run cat kg:export` dumps the graph, and
+`instanceRootsIn` plus `readDeclaration` give the directory census directly.
+Each registered kind is in one layer of `holds` — `content`, `state`, `context`
+or `derived`.
 
-| layer (`holds`) | registered kinds |
-|---|---|
-| `content` | 13 |
-| `state` | 12 |
-| `context` | 5 |
-| `derived` | 1 |
+Two kinds are `renderable`: `docs` and `folio`. Renderability is what wires a
+graph to the site build; every other graph reaches a reader through a
+visualiser the Harness layer builds *over* it, never by being published
+directly.
 
-Thirty-one kinds in total, of which exactly **one** — `docs` — is
-`renderable`. Renderability is what wires a graph to the site build, so the
-number being one is not an oversight: every other graph reaches a reader
-through a visualiser the Harness layer builds *over* it, never by being
-published directly.
+**Skills, Workflows and Scenarios are separate kinds** — `skills`, `processes`
+and `scenarios` — so *"give me the Workflows"* is a query on kind, not a match
+on a path.
 
-**Three of those kinds were one until 2026-09-21.** `cat-harness` was declared
-by 22 directories that between them held Skills, Workflows, Scenarios and
-methodologies — four branches of the taxonomy above, indistinguishable to any
-consumer filtering on kind. *"Give me the Workflows"* was not a query anybody
-could write; it could only be approximated by matching a path, which is the
-fragility the graph exists to remove. `skills`, `workflows` and `scenarios` are
-now their own kinds and the query works.
+**`cat-harness` is still a kind and is not deprecated.** An alias cannot
+express a split: `GRAPH_TYPOLOGY_ALIASES` maps one name to one name. On an
+entry declaring `["schemas", "cat-harness"]` it means *a schema IS a
+knowledge-graph node*, which is why the skill scanner tests for the kind
+**exactly** rather than for its presence. It now means harness knowledge-graph
+content whose directory holds more than one part of it. A downstream
+declaration still saying `["cat-harness"]` keeps parsing and keeps being
+scanned for Skills; it does not get the finer query.
 
-**`cat-harness` survives and is not deprecated**, which surprises people twice
-over. An alias cannot express a split — `GRAPH_TYPOLOGY_ALIASES` maps one name to
-one name, and this would have to become three. And the kind had a fifth job the
-split does not name: on an entry declaring `["schemas", "cat-harness"]` it means
-*a schema IS a knowledge-graph node*, which is why the skill scanner tests for
-the kind **exactly** rather than for its presence. That job is still real, so
-the umbrella stays, now meaning harness knowledge-graph content whose directory
-holds more than one part of it — the eight mixed schema entries. A downstream
-declaration still saying `["cat-harness"]` keeps parsing and keeps being scanned
-for Skills; what it loses is the finer query, which it never had.
+**A directory inside another declared directory is not reached by
+convention.** It declares its own kind, or a consumer filtering on kind never
+finds it. The generated process index reports such a directory as an
+**orphan** rather than quietly indexing fewer diagrams.
 
-**What the split cost, and where it nearly went wrong.** Two directories that
-had been reached by *convention* stopped being reached the moment their parent
-changed kind: `processes/` and `methodologies/crdm/processes/` both sat
-inside a `cat-harness` directory and were found by walking it. Each declared
-`workflows` in its own right. (CRDM's eight diagrams moved into `processes/` on
-2026-09-22 and that second declaration is gone, so only the first survives —
-the episode is recorded here in the past tense because it is what the orphan
-report caught, not a description of today's layout.) The second was caught only because the generated
-process index reported it as an **orphan** rather than quietly indexing eight
-fewer diagrams — which is the whole argument for a generator that names what it
-pruned.
-
-**One gap remains**, already named above:
-
-- **`fsh-guts` is registered `context`**, though it is topically Dynamic State.
-  Both readings are defensible — it is read by processes and not written by
-  them, which is what `context` asserts — but the two axes disagree here, and a
-  disagreement nobody has written down is one that gets rediscovered.
+**One mismatch between the axes:** `fsh-guts` is registered `context`, though
+it is topically Dynamic State. It is read by processes and not written by
+them, which is what `context` asserts.
 
 **How a dependent contributes into a shared body of knowledge.** Through the
-**kind**, and that is the mechanism rather than a stopgap — settled by the
-owner, 2026-09-21. Three instances — `agent-skills`, `cat-harness` and
-`who-style-guide` (since folded into the IRIS replica, bean `qsx4`) — each declared their own `voices/` directory of kind
-`voices`, and the overlay resolves all three together. A fourth instance
-wanting to contribute a Voice declares a directory, names the kind, and is
-done: no nesting, no subgraph declaration, nothing added to the schema.
-
-The alternative considered and set aside was letting a directory entry declare
-nested subgraph directories, so that a shared body would live at a path such as
-`skills/voices/` and dependents would add under the same path. It buys a
-hierarchy that nothing currently needs, at the cost of a schema change, a
-migration of every in-tree declaration, and an alias carried for downstream
-ones. The overlay already delivers the outcome, and it is already proven by
-three instances.
+**kind**. Each instance that contributes a Voice declares its own `voices/`
+directory of kind `voices`, and the overlay resolves them together. A new
+contributor declares a directory, names the kind, and is done: no nesting, no
+subgraph declaration, nothing added to the schema.
 
 ## Where the rules live
 {: #where-the-rules-live data-fa-label="sec:knowledge-graph-where-the-rules-live" }
@@ -498,8 +450,8 @@ page disagree, **the Skill wins and this page is wrong**.
 The schema behind every declaration on this page is
 [`schemas/cat-harness.ts`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/cat-harness.ts);
 the Role and Actor shapes are in
-[`scenarios/roles.json`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/scenarios/roles.json)
-and `cat-harness/scenarios/actors/`; the Tool shape is
+[`scenarios/roles.json`](https://github.com/litlfred/cat-harness/blob/main/scenarios/roles.json)
+and [`scenarios/actors/`](https://github.com/litlfred/cat-harness/tree/main/scenarios/actors/); the Tool shape is
 [`schemas/tool.ts`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/tool.ts).
 
 The audit that checks these joins actually resolve is `bun run cat kg:audit`, one

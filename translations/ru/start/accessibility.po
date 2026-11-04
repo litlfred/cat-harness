@@ -45,10 +45,6 @@ msgstr "Агент, задавший хороший вопрос в неприг
 msgid "The usual shape of it: a long open prompt — \"Tell me about the folio you have in mind, what content types you expect, and how you'd like it organised\" — sent to somebody for whom typing is slow and painful. The reply comes back short. The agent reads shortness as low engagement and asks another open question. Nobody in that exchange has done anything obviously wrong, and the conversation is already failing."
 msgstr "Обычно это выглядит так: длинный открытый запрос — «Расскажите о фолио, которое вы задумали, какие типы контента вы ожидаете и как вы хотели бы его организовать», — отправленный человеку, для которого ввод текста медленный и болезненный. Ответ приходит коротким. Агент воспринимает краткость как слабую вовлеченность и задает еще один открытый вопрос. Никто в этом диалоге не сделал ничего явно предосудительного, но разговор уже терпит крах."
 
-#: docs/start/accessibility.md:40
-msgid "This repository's owner has very limited hand function, so the case is not hypothetical here. But the rule generalises without reference to anybody:"
-msgstr "У владельца этого репозитория сильно ограничена функция рук, поэтому здесь этот случай отнюдь не гипотетический. Но правило применимо ко всем безотносительно конкретных лиц:"
-
 #: docs/start/accessibility.md:43
 msgid "A question's cost is paid by the person answering it. Design the question so that the cheapest possible answer is still a complete one."
 msgstr "Цену вопроса оплачивает тот, кто на него отвечает. Формулируйте вопрос так, чтобы наименее трудоемкий ответ все равно оставался полным."
@@ -261,10 +257,6 @@ msgstr "инструменты, создающие контент"
 msgid "the one usually missed. folio-assistant is an authoring tool: Part A is the tool being usable, Part B is the tool helping the author produce accessible output"
 msgstr "то, что обычно упускают. folio-assistant — это инструмент разработки: Часть A — удобство использования самого инструмента, Часть B — помощь автору в создании доступного контента"
 
-#: docs/start/accessibility.md:114
-msgid "ATAG Part B is worth dwelling on, because it is the part a content platform can uniquely deliver: alt-text presence, heading order, table headers and language tagging in published folios are checks the QA sweep can carry, and no amount of making the editor accessible substitutes for them."
-msgstr "На Части B стандарта ATAG стоит остановиться подробнее, поскольку это именно то, что контентная платформа способна предоставить наилучшим образом: наличие alt-текста, иерархия заголовков, заголовки таблиц и указание языка в опубликованных фолио — это проверки, которые может выполнять QA-контроль (QA sweep), и никакое повышение доступности самого редактора их не заменит."
-
 #: docs/start/accessibility.md:119
 msgid "2.6 What is implemented today"
 msgstr "2.6 Что реализовано на сегодняшний день"
@@ -297,10 +289,6 @@ msgstr "Учет предпочтения об уменьшении анимац
 msgid "2.7 What is not done"
 msgstr "2.7 Что еще не сделано"
 
-#: docs/start/accessibility.md:136
-msgid "Stated rather than implied, because a half-claimed accessibility feature is worse than an absent one:"
-msgstr "Заявлено прямо, а не оставлено в виде догадок, поскольку наполовину заявленная функция доступности хуже ее полного отсутствия:"
-
 #: docs/start/accessibility.md:139
 msgid "No ATAG Part B checks in the QA sweep. Nothing yet verifies that a published folio has alt text, correct heading order or table headers."
 msgstr "В проверках QA отсутствуют проверки ATAG Part B. Пока ничто не проверяет, содержит ли опубликованное фолио alt-текст, правильную иерархию заголовков или заголовки таблиц."
@@ -320,10 +308,6 @@ msgstr "Аудиомодальность только описана, но не 
 #: docs/start/accessibility.md:149
 msgid "3. Forcing agentic Q&A into guided questions"
 msgstr "3. Сведение агентных вопросов и ответов к направляемым вопросам"
-
-#: docs/start/accessibility.md:151
-msgid "The second question. The answer is a separation, and the separation is the whole design."
-msgstr "Второй вопрос. Ответ заключается в разделении, и это разделение лежит в основе всей архитектуры."
 
 #: docs/start/accessibility.md:154
 msgid "3.1 Two things that look like one"
@@ -421,10 +405,6 @@ msgstr "Открытый вопрос — это не решение. Вопро
 msgid "A conversation is not a wizard. A user must always be able to say something the table did not anticipate. That is what the \"tell me more\" option is for, and it is not optional garnish."
 msgstr "Диалог — это не пошаговый мастер (wizard). Пользователь всегда должен иметь возможность сказать то, чего таблица не предусмотрела. Именно для этого существует вариант «расскажите подробнее», и это отнюдь не факультативное украшение."
 
-#: docs/start/accessibility.md:211
-msgid "Guided does not mean interrogating. The largest accessibility win available is the question you did not have to ask — every fact the agent reads from the filesystem is one fewer. That win is invisible, unrewarded, and larger than any stylesheet."
-msgstr "Направляемый диалог — это не допрос. Самый большой выигрыш в доступности — это вопрос, который вам не пришлось задавать: каждый факт, который агент считывает из файловой системы, избавляет от еще одного вопроса. Этот выигрыш невидим, за него никто не похвалит, но он ценнее любых таблиц стилей."
-
 #: docs/start/accessibility.md:216
 msgid "See also"
 msgstr "См. также"
@@ -473,3 +453,18 @@ msgstr "См. также"
 
 #~ msgid "Options for workflow state in beans"
 #~ msgstr "Варианты состояния рабочего процесса в beans"
+
+#~ msgid "This repository's owner has very limited hand function, so the case is not hypothetical here. But the rule generalises without reference to anybody:"
+#~ msgstr "У владельца этого репозитория сильно ограничена функция рук, поэтому здесь этот случай отнюдь не гипотетический. Но правило применимо ко всем безотносительно конкретных лиц:"
+
+#~ msgid "ATAG Part B is worth dwelling on, because it is the part a content platform can uniquely deliver: alt-text presence, heading order, table headers and language tagging in published folios are checks the QA sweep can carry, and no amount of making the editor accessible substitutes for them."
+#~ msgstr "На Части B стандарта ATAG стоит остановиться подробнее, поскольку это именно то, что контентная платформа способна предоставить наилучшим образом: наличие alt-текста, иерархия заголовков, заголовки таблиц и указание языка в опубликованных фолио — это проверки, которые может выполнять QA-контроль (QA sweep), и никакое повышение доступности самого редактора их не заменит."
+
+#~ msgid "Stated rather than implied, because a half-claimed accessibility feature is worse than an absent one:"
+#~ msgstr "Заявлено прямо, а не оставлено в виде догадок, поскольку наполовину заявленная функция доступности хуже ее полного отсутствия:"
+
+#~ msgid "The second question. The answer is a separation, and the separation is the whole design."
+#~ msgstr "Второй вопрос. Ответ заключается в разделении, и это разделение лежит в основе всей архитектуры."
+
+#~ msgid "Guided does not mean interrogating. The largest accessibility win available is the question you did not have to ask — every fact the agent reads from the filesystem is one fewer. That win is invisible, unrewarded, and larger than any stylesheet."
+#~ msgstr "Направляемый диалог — это не допрос. Самый большой выигрыш в доступности — это вопрос, который вам не пришлось задавать: каждый факт, который агент считывает из файловой системы, избавляет от еще одного вопроса. Этот выигрыш невидим, за него никто не похвалит, но он ценнее любых таблиц стилей."

@@ -85,10 +85,6 @@ msgstr "WHO SMART IG（L3）"
 msgid "conversions, search"
 msgstr "转换、搜索"
 
-#: docs/start/installation.md:40
-msgid "You do not need all of these — install only what the content types you author require. The built-in capability probe tells you what is missing."
-msgstr "你不需要安装上述所有工具——只需安装你所创作的内容类型所需要的工具。内置的能力探测工具会告知你缺少什么。"
-
 #: docs/start/installation.md:47
 msgid "Clone and install"
 msgstr "克隆与安装"
@@ -229,3 +225,6 @@ msgstr "任何其他 MCP 客户端"
 
 #~ msgid "Why this works across harnesses. The discipline lives in  (a Linux Foundation agent standard read natively by Claude Code, Gemini CLI, Antigravity, Cursor, Copilot, and others); the live state is exposed both as a per-harness  hook over one shared script and as the  MCP tool. See the architecture page."
 #~ msgstr "为什么这能在不同 harness 之间通用。 规程存在于  中（这是一个由 Linux 基金会制定的智能体标准，可被 Claude Code、Gemini CLI、Antigravity、Cursor、Copilot 等原生读取）；实时状态既通过单个共享脚本作为针对不同 harness 的  钩子暴露，也作为  MCP 工具暴露。参见架构页面。"
+
+#~ msgid "You do not need all of these — install only what the content types you author require. The built-in capability probe tells you what is missing."
+#~ msgstr "你不需要安装上述所有工具——只需安装你所创作的内容类型所需要的工具。内置的能力探测工具会告知你缺少什么。"
