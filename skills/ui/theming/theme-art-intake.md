@@ -98,25 +98,8 @@ Three rules for reading it, the same three `ci-health` states:
    wide because the shipped laptop crops run 1.50–1.78; a tighter band would
    refuse work that is fine.
 
----
-
-## How the theming skills are organised
-
-Three levels, in this order:
-
-1. **Pipeline stage** is the primary division — **intake → declaration →
-   generation → contrast**.
-2. **Producer vs consumer** cross-cuts it, saying which direction a stage
-   faces. It is what makes *"a theme with no CSS rule falls back to an opaque
-   surface and paints over its own art"* a **consumer** fact rather than a
-   generation detail.
-3. **Per artefact** is the specialisation, last and narrowest — sticky, landing
-   board, docs background, navbar avatar. The general rule lives in its stage
-   and the artefact skill carries only what differs.
-
-Artefact-first would duplicate intake and contrast into every artefact. The
-stages share one directory, `skills/ui/theming/`, until a stage has enough
-skills to fill its own: declare only what exists.
+The stages of theming, and which owns which question, are in
+[`theming`](theming.md).
 
 ## What is NOT here
 

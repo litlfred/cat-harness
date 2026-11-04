@@ -147,9 +147,9 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Skill: `sub-kg-lifecycle`.
 - What: `git subtree split --prefix=<name>` in the host, then the split branch added to the new repository on a branch, as a draft pull request, never straight to main.
 - Record it: `workflow_complete` with `node: "Task_Seed"`.
-- next: → `Task_Repoint` (10 · Re-point: livesAt, seam, submodule or subscription)
+- next: → `Task_Repoint` (10 · Re-point: livesAt, seam, mount or subscription)
 
-### 13. 10 · Re-point: livesAt, seam, submodule or subscription (`Task_Repoint`)
+### 13. 10 · Re-point: livesAt, seam, mount or subscription (`Task_Repoint`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `sub-kg-lifecycle`, `upstream-version-adoption`.
@@ -169,7 +169,7 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 
 - Green goes to the owner.
 - Call `workflow_complete` with `node: "GW_Fresh"` and `outcome` set to the label that holds:
-  - «red» → `Task_Repoint` (10 · Re-point: livesAt, seam, submodule or subscription)
+  - «red» → `Task_Repoint` (10 · Re-point: livesAt, seam, mount or subscription)
   - «could not run» → `End_FreshUnknown` (UNKNOWN: stop. Not clean)
   - «green» → `Task_ConfirmCutover` (12 · Owner confirms: freeze the in-repo copy)
 

@@ -10,12 +10,10 @@ allowed-tools: Read Grep Glob AskUserQuestion
 
 # Opening brief — brief the topic before you touch anything
 
-Split out of `todo-manager.md` on 2026-09-19 (bean `tdmg`), which had reached
-396 lines against `skill-not-a-document`'s 400-line threshold while carrying
-three separable disciplines. This is the one that governs what you say
-**before** the work; [`turn-reporting.md`](turn-reporting.md) governs what you
-say during and after it; [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) keeps the bean
-mechanics. Nothing in this file changed in the split.
+This skill governs what you say **before** the work;
+[`turn-reporting.md`](turn-reporting.md) governs what you say during and after
+it; [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md)
+keeps the bean mechanics.
 
 ## Opening brief
 
@@ -55,9 +53,7 @@ a finished diff costs a review cycle and, often, a revert.
 
 It is the same discipline as the question frame in
 [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md) §4.1, applied to work instead
-of decisions. That rule exists because a terse question forces the author to go
-and find context the agent already had; a terse *start* does the same thing one
-step earlier.
+of decisions.
 
 ### The four parts
 
@@ -81,16 +77,9 @@ source, and neither is a source file's `## Status` note; both go stale, and a
 specific, recent, confidently-worded bean is exactly the kind that gets
 believed.
 
-**The second row was added 2026-09-23, because "measured this session" had
-been reading as the safe case.** A measurement is scoped to the TREE it was
-taken on, and `git switch` invalidates every earlier one without saying so.
-That session ran `grep -c "@context"` over a writer, got `0` — correctly, on a
-branch cut before the commit that added one — then branched from fresh `main`,
-carried the `0` across without re-running it, briefed on it as current, and
-put a settled question back to the owner as new. Its next commit would have
-reverted merged work.
-
-Nothing announces this. The number is real, recent, and yours; only the tree
+**"Measured this session" is not the safe case.** A measurement is scoped to
+the TREE it was taken on, and `git switch` invalidates every earlier one
+without saying so. The number is real, recent, and yours; only the tree
 underneath it moved. So say which tree, and re-run anything load-bearing after
 a branch change — the re-run costs one command and it is the same command.
 
@@ -120,58 +109,27 @@ a decision exists.
 > It reopens a decision, spends the owner's attention on it a second time, and
 > the options offered will not be the ones already weighed.
 
-Three places to look, in this order, and none of them is the code:
+Four places to look, in this order:
 
 1. **The proposals — the design corpus.** They live in the `docs/` of the
    instance whose stub needs them; today that is
    [`cat-harness/docs/proposals/`](../../../docs/proposals/index.md), and its
-   `index.md` is where to start.
-
-   They were in `fsh-guts/proposals/` until 2026-09-23, under a kind named for
-   *deprecated and throwaway* content, and the owner moved them rather than
-   re-describing the kind: *"proposals not in fsh-guts but docs/ for needed
-   &lt;stub&gt;"*. **Resolve the directory rather than remembering this
-   sentence** — a stub's `docs/` is where its proposals are, and this path is
-   an example of the rule, not the rule.
+   `index.md` is where to start. **Resolve the directory rather than
+   remembering this sentence** — a stub's `docs/` is where its proposals are,
+   and this path is an example of the rule, not the rule.
 2. **The owner's rulings**, in beans and in the declarations that quote them
    verbatim. A `_comment` field in a `*.json` is frequently where a decision
    was recorded, because that is where it had to be obeyed.
 3. **The skill that owns the area** — and read it, rather than recalling it.
 4. **The commit history** — `git log -S "<symbol>"` over the file you are
    about to change, and a `beans list | grep <topic>` that does **not** filter
-   to open items.
-
-   Added 2026-09-23, when a ruling landed as CODE two hours before a session
-   proposed re-deciding it. It was in none of the three places above: no
-   proposal described it, the bean recording it was already `completed` and so
-   absent from any listing of open work, and the owning skill still described
-   the defect as unfixed. **A decision that shipped is invisible to every
-   instrument that looks for pending ones** — and it is the likeliest kind to
-   have shipped recently, which is exactly when you are most confident your
-   own reading is current. One `git log -S` answers it.
+   to open items. **A decision that shipped is invisible to every instrument
+   that looks for pending ones**, and one `git log -S` answers it.
 
 **Cite what you read, never what you remember.** A half-remembered line used as
 an authority is the fake-reference failure `activity-names-skill` exists to
 prevent, one level up: it is unfalsifiable by the reader, because it sounds
 like something this repository would say.
-
-#### The failure this is written from
-
-2026-09-22, bean `5kn6`. A session found that `needs` and `dependencies` were
-two unreconciled relations, wrote up **three candidate shapes** and declined to
-choose — citing `AGENTS.md`'s warning that *"merging the two compositions gives
-a closure too broad to fail an audit"* as the reason.
-
-Both halves were wrong. The question was **already settled**:
-`cat-harness/docs/proposals/instance-versioning.md` §3.3 and an owner ruling of
-2026-09-20 — *"sha is for staging, regernecing in published SEMVER"* — had
-decided it, with the gate already implemented. And the citation was about
-**Roles** — `inherits` versus the scoped subprocess stack — not about
-dependencies at all.
-
-The cost was not the wasted options. It was that the owner had to answer a
-question twice, and the second answer had to overrule a confident-sounding
-reason that did not exist.
 
 ### Worked example
 
