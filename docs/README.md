@@ -18,7 +18,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `docs`, holding `docs`.
 | [`folio-assistant-migration.md`](folio-assistant-migration.md) | Folio-assistant agent infrastructure |  |
 | [`index.md`](index.md) | "folio-assistant — a content-agnostic agent skills framework." |  |
 | [`platform.md`](platform.md) | "What the platform does, and how its processes, roles, tasks and skills fit together." |  |
-| [`qou-migration-checklist.md`](qou-migration-checklist.md) | qou migration checklist |  |
 | [`sage-mcp.md`](sage-mcp.md) | Sage as an MCP server (lazily loaded) |  |
 | [`_data/`](_data/) | _nothing declares what this holds_ | |
 | [`_includes/`](_includes/) | _nothing declares what this holds_ | |

@@ -85,10 +85,6 @@ msgstr "أدلة تطبيق WHO SMART (المستوى L3)"
 msgid "conversions, search"
 msgstr "التحويلات، والبحث"
 
-#: docs/start/installation.md:40
-msgid "You do not need all of these — install only what the content types you author require. The built-in capability probe tells you what is missing."
-msgstr "لست بحاجة إلى كل هذه المتطلبات — ثبّت فقط ما تتطلبه أنواع المحتوى التي تؤلفها. ويخبرك فاحص القدرات المدمج بما هو مفقود."
-
 #: docs/start/installation.md:47
 msgid "Clone and install"
 msgstr "الاستنساخ والتثبيت"
@@ -229,3 +225,6 @@ msgstr "أي عميل MCP آخر"
 
 #~ msgid "Why this works across harnesses. The discipline lives in  (a Linux Foundation agent standard read natively by Claude Code, Gemini CLI, Antigravity, Cursor, Copilot, and others); the live state is exposed both as a per-harness  hook over one shared script and as the  MCP tool. See the architecture page."
 #~ msgstr "لماذا يعمل هذا عبر الأطر المختلفة. يكمن الانضباط في  (وهو معيار لوكلاء Linux Foundation يُقرأ بشكل أصيل بواسطة Claude Code وGemini CLI وAntigravity وCursor وCopilot وغيرها)؛ ويتم إظهار الحالة المباشرة كخطاف  لكل إطار عبر برنامج نصي مشترك، وكأداة MCP المسماة . راجع صفحة البنية الهندسية."
+
+#~ msgid "You do not need all of these — install only what the content types you author require. The built-in capability probe tells you what is missing."
+#~ msgstr "لست بحاجة إلى كل هذه المتطلبات — ثبّت فقط ما تتطلبه أنواع المحتوى التي تؤلفها. ويخبرك فاحص القدرات المدمج بما هو مفقود."

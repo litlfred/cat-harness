@@ -39,8 +39,7 @@ page, along with the two things a Harness owes anything it takes charge of.
 [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119) defines them**, and only in
 upper case, per [RFC 8174](https://www.rfc-editor.org/rfc/rfc8174). Where a
 requirement below is **not yet enforced by a gate**, this page says so at the
-requirement rather than in a footnote: a conformance statement a reader cannot
-tell from a description of existing behaviour is worse than either.
+requirement.
 
 ## Instantiation — a config file at a root
 {: #instantiation data-fa-label="sec:the-harness-instantiation" }
@@ -55,18 +54,13 @@ that merely sits in the tree — by carrying a config file at its root:
 <stub>.json             what the instance DECLARES — its directories and assets
 ```
 
-Two files, two questions, and since 2026-09-21 two filenames rather than two
-files sharing one shape. Before the split both ended `.config.json` and were
-told apart only by which directory they sat in and whether they carried a
-`name` — two schemas and two readers behind one spelling, which is a
-distinction a reader has to already know to make.
+Two files, two questions.
 
 **The presence of the config is the signal.** It is what the left-hand
 navigation filters on to decide which instances get a tile, so a Harness that
 declares directories but carries no config is a dependency: its content is
 inherited by whoever depends on it, and it has no interface of its own. Nothing
-else is consulted for that question, which is why it could not be derived from
-the declarations alone.
+else is consulted.
 
 A Harness **MUST** own the visualisation published at `<baseurl>/<stub>`. The
 stem every published artefact is named with is computed in exactly one place —
@@ -78,9 +72,8 @@ cannot disagree about what an instance is called.
 > *defined* as `folio-assistant` should be instantiable as
 > `my-folio-assistant.config.json`, with the config pointing at the definition,
 > and `<baseurl>/my-folio-assistant` then live. **That is not what the code
-> does today** — see the last section. It is stated here because it is the
-> model the rest of this page assumes, and because a reader who tries it will
-> be stopped by a gate rather than by a schema.
+> does today** — see the last section. A reader who tries it is stopped by a
+> gate, not a schema.
 
 ## How the dependency tree is walked
 {: #the-dependency-walk data-fa-label="sec:the-harness-the-dependency-walk" }
@@ -101,13 +94,10 @@ The order is **declared, not computed**, in each instance's `needs` array:
 { "name": "<content-core>", "needs": ["bootstrap", "cat-harness"] }
 ```
 
-It is declared for a measured reason. The layering was real before it was
-written down, but it lived only in prose, so every consumer that needed the
-order had to already know it — and the first one that did would have hardcoded
-four names, which is a rule true only for the instances somebody remembered.
+It is declared so that no consumer has to hardcode the instance names.
 
 `needs` is **OPTIONAL**, and an absent value means *undetermined* rather than
-*needs nothing*. The two are genuinely different: `[]` is an instance asserting
+*needs nothing*. `[]` is an instance asserting
 it sits on nothing, which is true of exactly one instance here, while absent is
 nobody having said. A consumer treating absent as `[]` would place every
 unlabelled instance on the floor beside the bootstrap. Names are used rather
@@ -125,7 +115,7 @@ own carrier here:
 | **depends** | Content → Content | `needs` — the layer stack, foundation first |
 | **references** | Tool → Content, Test → Content | `remoteGraphs` — a graph this instance knows about and does not hold |
 | **utilizes** | Tool → Tool, Test → Tool, App → Content | `dependencies` in the config — what this instance USES, overlaid |
-| **associated** | Content ↔ Content, any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (issue #1146, skill `associate-harness`) |
+| **associated** | Content ↔ Content, any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (skill `associate-harness`) |
 
 **Only `depends` fixes an order**, so only `depends` can have a cycle in it,
 and a cycle there is a defect rather than a shape. A Tool repository
@@ -160,8 +150,7 @@ a different store without rewriting a Skill.
 that kind and a consumer may scan it, and the obligations below are what make
 the promise keepable. They are stated in full by
 [`harness-requirements`]({{ '/reference/skill-instructions/harness-requirements.html' | relative_url }})
-and measured by `check:subgraph-coverage`; this section says what they are and
-why two of them are ranked differently.
+and measured by `check:subgraph-coverage`.
 
 | obligation | declared as | the question it answers |
 |---|---|---|
@@ -171,8 +160,8 @@ why two of them are ranked differently.
 | **skill** | `coverage.skill` | is an agent handed something that GOVERNS this? |
 
 The first four are per declared directory. A fifth, a starting README, is per
-instance and is ranked harder still: an instance without one is not a gap
-somebody has not filled, it is an instance a reader cannot enter.
+instance and is ranked harder still: without one a reader cannot enter the
+instance.
 
 ### `coverage.process` is DECLARED and is not an obligation
 
@@ -189,17 +178,12 @@ absent `coverage.process` means NOT DECLARED and never "no process" — the same
 third state `readOnly` keeps — and a directory declaring none gets no such
 section and is not a finding. What *is* a finding, ranked major, is a declared
 name that resolves to no diagram: somebody said, and what they said points at
-nothing. There is correspondingly no `exempt.process`; declaring nothing
-already is the silence, and a waiver would be a second spelling of it.
+nothing. There is no `exempt.process`: declaring nothing already says it.
 
-**It is declared rather than inferred, and the temptation is the point.**
-`document-ingestion.bpmn` starts on an event named *"A file lands in
-`uploads/`"*, so the directory could be matched out of that prose. An event's
-name is editorial text: rewording it would silently unlink the page, and
-nothing could tell that from a directory that never had a process. A diagram
-also touches several directories while being *about* one — `document-ingestion`
-reads `uploads/` and writes `library/` — which is the direction name-matching
-cannot see at all.
+**It is declared rather than inferred** from a diagram's event names. An
+event's name is editorial text, so rewording it would silently unlink the page,
+and a diagram touches several directories while being *about* one —
+`document-ingestion` reads `uploads/` and writes `library/`.
 
 ### The serialisation is the one obligation a Harness MAY NOT waive
 
@@ -209,10 +193,9 @@ it. `coverage.exempt` carries three keys — `visualiser`, `docs`, `skill` — a
 deliberately not a fourth, and the coverage check ranks a missing serialisation
 as an unmet obligation with no by-kind test at all.
 
-The reason is `bootstrap`. It is excused a visualiser precisely because its
-`json` and `jsonld` *are its existence* — so the thing it is excused **into**
-cannot itself be excusable, or the exemption would excuse everything. **The
-visualiser is the courtesy; the serialisation is the existence claim.**
+`bootstrap` is excused a visualiser because its `json` and `jsonld` *are its
+existence*, so the serialisation cannot itself be excusable. **The visualiser
+is the courtesy; the serialisation is the existence claim.**
 
 A Harness **SHOULD** provide a visualisation, and which kinds owe one is a
 question about the kind rather than a blanket rule: an active state directory
@@ -223,9 +206,7 @@ that was never going to need one is not carrying a debt.
 That difference is why the coverage axis ranks findings **major** and **minor**
 rather than counting them: major is an obligation this kind owes and the
 instance has not met; minor is nobody having said yet, for a kind that never
-owed one. Merging them would rank `beans/` having no viewer alongside a kind
-that never needed one, and an axis that cannot tell those apart is an axis
-whose count means nothing.
+owed one.
 
 A Harness **SHOULD** also carry a `docs/` directory documenting itself, and
 every Harness **SHOULD** have one. `cat-harness` renders its own through the
@@ -238,10 +219,8 @@ layer owns the kinds it can render.**
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-harness/not-declared-yet.md){: .fa-node-edit title="Edit docs/source/concepts-harness/not-declared-yet.md" data-fa-link="edit" data-src="docs/source/concepts-harness/not-declared-yet.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="not-declared-yet.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-harness/not-declared-yet.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="not-declared-yet.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-harness/not-declared-yet.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-Two parts of the model above are intended and **not implemented**. They are
-listed together, with what a reader will actually hit, because a page that
-described them as working would send somebody to look for code that is not
-there.
+Two parts of the model above are intended and **not implemented**. Each says
+what a reader will actually hit.
 
 ### 1. There is no `HarnessKind`
 
@@ -251,7 +230,7 @@ instance declares a `name`, directories, assets and `needs`, and what makes it
 a Harness rather than a dependency is the presence of a config file, which is a
 fact about the filesystem rather than a declared type.
 
-The consequence is not cosmetic. Without a kind there is nowhere to say what a
+Without a kind there is nowhere to say what a
 Harness of a given sort **MUST** supply, so every obligation on this page is
 prose rather than something a declaration can be validated against.
 
@@ -273,23 +252,9 @@ And the config carries **no field pointing at a definition**, so even were the
 filename freed there is nothing for it to point with. Freeing the stub means
 adding that pointer first; the filename rule is the symptom.
 
-### A third claim was here, and it was wrong
-
-This section listed the JSON-LD serialisation as a **MUST** carried by nothing.
-It is carried by `coverage.serialisations` and checked by
-`check:subgraph-coverage` — and it is the **strictest** obligation in the set,
-the only one `coverage.exempt` refuses to waive. The claim was made by reading
-`coverage` as three fields when it has four, which is the failure this page
-warns about one section earlier: treating an overlapping set as the same set.
-
-It is corrected rather than quietly deleted because a reader who saw the first
-version would go looking for a gap that is not there, and because *"stated as a
-MUST, carried by nothing"* is the specific kind of error a page written in RFC
-2119 key words is most able to cause.
-
 ---
 
-Neither remaining item blocks the other. Instantiation works, the dependency
+Neither item blocks the other. Instantiation works, the dependency
 walk works, and all four coverage obligations are carried and checked. What is
 missing is the part that would let a Harness be **validated as** a Harness
 rather than recognised as one.

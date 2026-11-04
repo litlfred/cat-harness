@@ -85,10 +85,6 @@ msgstr "WHO SMART IG (L3)"
 msgid "conversions, search"
 msgstr "преобразования, поиск"
 
-#: docs/start/installation.md:40
-msgid "You do not need all of these — install only what the content types you author require. The built-in capability probe tells you what is missing."
-msgstr "Вам не обязательно всё это устанавливать — устанавливайте только то, что требуется создаваемым вами типам контента. Встроенная проверка возможностей сообщит, чего именно не хватает."
-
 #: docs/start/installation.md:47
 msgid "Clone and install"
 msgstr "Клонирование и установка"
@@ -229,3 +225,6 @@ msgstr "Любой другой MCP-клиент"
 
 #~ msgid "Why this works across harnesses. The discipline lives in  (a Linux Foundation agent standard read natively by Claude Code, Gemini CLI, Antigravity, Cursor, Copilot, and others); the live state is exposed both as a per-harness  hook over one shared script and as the  MCP tool. See the architecture page."
 #~ msgstr "Почему это работает во всех харнессах. Регламент зафиксирован в  (стандарт для агентов от Linux Foundation, нативно считываемый Claude Code, Gemini CLI, Antigravity, Cursor, Copilot и другими); актуальное состояние предоставляется как через отдельный для каждого харнесса хук  поверх единого общего скрипта, так и через MCP-инструмент . См. страницу Архитектура."
+
+#~ msgid "You do not need all of these — install only what the content types you author require. The built-in capability probe tells you what is missing."
+#~ msgstr "Вам не обязательно всё это устанавливать — устанавливайте только то, что требуется создаваемым вами типам контента. Встроенная проверка возможностей сообщит, чего именно не хватает."

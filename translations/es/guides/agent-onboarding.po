@@ -96,17 +96,9 @@ msgstr "cambiar cómo funciona la autoría"
 msgid "change what is being authored"
 msgstr "cambiar lo que se está creando"
 
-#: docs/guides/agent-onboarding.md:230
-msgid "Claim a bean before durable work. Others may be running."
-msgstr "Reclame un bean antes de un trabajo duradero. Otros agentes podrían estar ejecutándose."
-
 #: docs/guides/agent-onboarding.md:31
 msgid "Contains"
 msgstr "Contiene"
-
-#: docs/guides/agent-onboarding.md:234
-msgid "Don't write content into the platform. If it names a chapter, a constant, or a vocabulary, it is folio data."
-msgstr "No escriba contenido en la plataforma. Si nombra un capítulo, una constante o un vocabulario, se trata de datos del folio."
 
 #: docs/guides/agent-onboarding.md:29
 msgid "folio-assistant (the platform)"
@@ -131,10 +123,6 @@ msgstr "contrato de entrada/salida generado por habilidad"
 #: docs/guides/agent-onboarding.md:94
 msgid "how skills, roles, and capabilities compose"
 msgstr "cómo se componen las habilidades, los roles y las capacidades"
-
-#: docs/guides/agent-onboarding.md:225
-msgid "Lean tooling roadmap"
-msgstr "Hoja de ruta de herramientas Lean"
 
 #: docs/guides/agent-onboarding.md:218
 msgid "Project commands, conventions"
@@ -176,15 +164,6 @@ msgstr "El esquema del sidecar de QA"
 #: docs/guides/agent-onboarding.md:27
 msgid "There are two kinds, and confusing them is the most common early mistake."
 msgstr "Hay dos tipos, y confundirlos es el error inicial más común."
-
-#: docs/guides/agent-onboarding.md:116
-msgid "This trips up agents constantly."
-msgstr "Esto hace tropezar a los agentes constantemente."
-
-# agent-translated: the published page has no counterpart for this source text
-#: docs/guides/agent-onboarding.md:87
-msgid "Two generated references are worth knowing about, and neither is where you start:"
-msgstr "Vale la pena conocer dos referencias generadas, y ninguna de ellas es el punto de partida:"
 
 #: docs/guides/agent-onboarding.md:221
 msgid "What a QA criterion means"
@@ -316,3 +295,18 @@ msgstr "Se edita aquí para"
 
 #~ msgid "Where a QA result is kept depends on whether it can be regenerated. Derived verdicts, meaning  entries and everything under , are a working copy. CI stores the record on the orphan  branch, keyed by commit, so there is nothing to regenerate and commit. Judgements by an agent or a human stay on  in . Gates over them compute and judge: a finding fails only if it is new against a stored baseline, and a missing baseline is unknown. The skill is ."
 #~ msgstr "Dónde se guarda un resultado de QA depende de si puede regenerarse. Los veredictos derivados, es decir, las entradas  y todo lo que está bajo , son una copia de trabajo. La CI almacena el registro en la rama huérfana , indexado por commit, de modo que no hay nada que regenerar ni que confirmar. Los juicios de un agente o de un humano permanecen en  en . Las puertas de control sobre ellos calculan y juzgan: un hallazgo solo falla si es nuevo respecto a una línea base almacenada, y una línea base ausente es desconocida. La habilidad es ."
+
+#~ msgid "Claim a bean before durable work. Others may be running."
+#~ msgstr "Reclame un bean antes de un trabajo duradero. Otros agentes podrían estar ejecutándose."
+
+#~ msgid "Don't write content into the platform. If it names a chapter, a constant, or a vocabulary, it is folio data."
+#~ msgstr "No escriba contenido en la plataforma. Si nombra un capítulo, una constante o un vocabulario, se trata de datos del folio."
+
+#~ msgid "Lean tooling roadmap"
+#~ msgstr "Hoja de ruta de herramientas Lean"
+
+#~ msgid "This trips up agents constantly."
+#~ msgstr "Esto hace tropezar a los agentes constantemente."
+
+#~ msgid "Two generated references are worth knowing about, and neither is where you start:"
+#~ msgstr "Vale la pena conocer dos referencias generadas, y ninguna de ellas es el punto de partida:"

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: initialize-harness\n"
-"POT-Creation-Date: 2026-11-02T07:59:34.145Z\n"
+"POT-Creation-Date: 2026-11-04T18:01:26.111Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: processes/initialize-harness.bpmn:62
 #. Diagram element documentation
-msgid "Ask the location, not your memory of it: a Knowledge Graph Data Store that carries a declaration at its root is ALREADY an instance, and it says so itself. `<name>.json` present and parsing is the whole test, and `bootstrap-kg-navigation` says what the three answers mean — absent (not an instance yet), present, and present-but-unreadable, which is an instance asserting something broken and is not a green light either. Before reading the chosen harness rather than after, deliberately: if the location is spoken for by another harness there is nothing to learn from the chosen one, and fetching it first only makes the failure more expensive."
+msgid "Ask the location, not your memory of it: a Knowledge Graph Data Store that carries a declaration at its root is ALREADY an instance, and it says so itself. `<name>.json` present and parsing is the whole test, and `bootstrap-kg-navigation` says what the three answers mean — absent (not an instance yet), present, and present-but-unreadable, which is an instance asserting something broken and is not a green light either. Done before reading the chosen harness: a location held by another harness ends the process here."
 msgstr ""
 
 #: processes/initialize-harness.bpmn:52
@@ -56,7 +56,7 @@ msgstr ""
 
 #: processes/initialize-harness.bpmn:34
 #. Diagram element documentation
-msgid "Everything this process performs other than reading the target location. The one judgement — WHICH harness — is not made here: it is the Requestor's, obtained inside `discussion` through `human-agent-discussion`, which is why this diagram has no Requestor lane. It follows the CHOSEN harness's own instructions rather than any bootstrap holds, and logs failure on all three refusal paths rather than retrying — a guessed harness produces a repository set up as the wrong thing, which this process treats as worse than stopping."
+msgid "Everything this process performs other than reading the target location. The one judgement — WHICH harness — is not made here: it is the Requestor's, obtained inside `discussion` through `human-agent-discussion`, which is why this diagram has no Requestor lane. It follows the CHOSEN harness's own instructions rather than any bootstrap holds."
 msgstr ""
 
 #: processes/initialize-harness.bpmn:119
@@ -141,7 +141,7 @@ msgstr ""
 
 #: processes/initialize-harness.bpmn:78
 #. Diagram element documentation
-msgid "Performed against the data store — a git repository, through the git CLI or a forge API. The instructions are at a PREDETERMINED spot on the harness: `<stub>/docs/bootstrap/initialization.md`, the same for every harness, which is what lets a Bootstrapping Agent be pointed at one nobody has written yet."
+msgid "Performed against the data store — a git repository, through the git CLI or a forge API. The instructions are at a PREDETERMINED spot on the harness: `<name>/docs/bootstrap/initialization.md`, the same for every harness, which is what lets a Bootstrapping Agent be pointed at one nobody has written yet."
 msgstr ""
 
 #: processes/initialize-harness.bpmn:77
@@ -171,12 +171,12 @@ msgstr ""
 
 #: processes/initialize-harness.bpmn:17
 #. Diagram element documentation
-msgid "THE ONLY PROCESS IN BOOTSTRAP AN ACTOR STARTS. A Bootstrapping Agent that has read bootstrap's README.md is at its start event and has nowhere else to begin. Every other diagram here is reached from this one by a call activity and is never started: `discussion` determines which harness and where; `human-agent-discussion` is the one reusable way any diagram asks a person anything; `complete-initialization` makes sure every step the declarations name is done; `log-message` records what a step is doing. PRECONDITIONS are DECLARED below as bootstrap.processes:precondition elements rather than asserted here. Three of the four are kind=\"stated\": nothing in this repository can observe whether an actor understands what a role is, and a check claiming to would be a green tick over an unverified claim — so they evaluate to could-not-determine, never to satisfied. The fourth is checkable, and note what it actually checks: that README.md EXISTS, not that the Bootstrapping Agent read it. Reading is not observable from here. NO work-plan element on any activity: a work plan is harness machinery and a Bootstrapping Agent runs before the harness that carries it. isExecutable is false because the engine that runs a diagram is harness machinery too — this is data a Bootstrapping Agent reads, not a process bootstrap can drive."
+msgid "THE ONLY PROCESS IN BOOTSTRAP AN ACTOR STARTS. A Bootstrapping Agent that has read bootstrap's README.md is at its start event and has nowhere else to begin. Every other diagram here is reached from this one by a call activity and is never started: `discussion` determines which harness and where; `human-agent-discussion` is the one reusable way any diagram asks a person anything; `complete-initialization` makes sure every step the declarations name is done; `log-message` records what a step is doing. PRECONDITIONS are DECLARED below as bootstrap.processes:precondition elements rather than asserted here. Three of the four are kind=\"stated\": nothing in this repository can observe whether an actor understands what a role is, so they evaluate to could-not-determine, never to satisfied. The fourth is checkable: README.md EXISTS. That the Bootstrapping Agent read it is not observable. NO work-plan element on any activity: a work plan is harness machinery and a Bootstrapping Agent runs before the harness that carries it. isExecutable is false because the engine that runs a diagram is harness machinery too — this is data a Bootstrapping Agent reads, not a process bootstrap can drive."
 msgstr ""
 
 #: processes/initialize-harness.bpmn:100
 #. Diagram element documentation
-msgid "The repository now IS an instance of something, and nothing at its root says so. It carries a LINK to the harness that was installed and the OVERALL install status across every location — WHEN ABSENT, never replacing: where a README is already there, the link and status go in a marker pair the harness's own README tool maintains. WRITING IT IS NOT A PROCESS WRITE. `instance-readme` declares `layer: context`, and this step writes one. Both hold, because INITIALISATION IS NOT PROCESS RUNTIME: the rule governs a process operating on an instance that exists, and this is the act that brings the instance into being."
+msgid "The repository now IS an instance of something, and nothing at its root says so. It carries a LINK to the harness that was installed and the OVERALL install status across every location — WHEN ABSENT, never replacing: where a README is already there, the link and status go in a marker pair the harness's own README tool maintains. Initialization may create the README: the rule that a running process never writes an `instance-readme` governs an instance that already exists."
 msgstr ""
 
 #: processes/initialize-harness.bpmn:74

@@ -29,10 +29,6 @@ msgstr "入门指南"
 msgid "1. \"Create a folio\" is five different requests"
 msgstr "1. “创建 folio”是五种不同的请求"
 
-#: docs/start/getting-started.md:24
-msgid "Say that sentence to five people and you will get five different pieces of work. The agent's first job is not to start; it is to find out which one you meant."
-msgstr "把这句话分别说给五个人听，你会得到五份不同的工作。智能体的首要任务不是马上开工，而是弄清楚你指的是哪一种。"
-
 #: docs/start/getting-started.md:27
 msgid "you mean"
 msgstr "你的意思"
@@ -92,10 +88,6 @@ msgstr "一整个空的 folio，而那一章仍然没写"
 #: docs/start/getting-started.md:33
 msgid "Something you would rather describe in your own words"
 msgstr "你更愿意用自己的话来描述的某件事"
-
-#: docs/start/getting-started.md:35
-msgid "The fourth row is the one worth pausing on. It is not an error on your part — \"folio\" is an unfamiliar word, and asking for one when you meant a chapter in one is the most natural mistake available. An agent that scaffolds on it has produced an empty repository and not the paragraph you asked for."
-msgstr "第四行值得停下来想一想。这不是你的错——“folio”是个陌生的词，本想要其中的一章却说成要一个 folio，是最自然不过的误会。据此直接搭脚手架的智能体，交付的是一个空仓库，而不是你要的那一段文字。"
 
 #: docs/start/getting-started.md:40
 msgid "2. How the agent decides — and why it is a table, not a judgement"
@@ -176,14 +168,6 @@ msgstr "在此新建 folio"
 #: docs/start/getting-started.md:89
 msgid "Why two rules return \"ask\", and why that is the point"
 msgstr "为什么有两条规则返回 “ask”，以及为什么这正是关键"
-
-#: docs/start/getting-started.md:96
-msgid "That matters more than it sounds:"
-msgstr "这比听起来更重要："
-
-#: docs/start/getting-started.md:100
-msgid "An agent cannot route to a branch the table did not return, so the question becomes obligatory rather than polite. An agent left to decide whether to ask will, under any pressure to seem helpful, decide not to — and the three ambiguous cases are exactly where guessing is most expensive."
-msgstr "智能体无法路由到表没有返回的分支，所以提问成了必须，而不只是礼貌。一个被留给自己决定是否提问的智能体，在任何想显得乐于助人的压力下，都会决定不问——而这三种含糊的情形，恰恰是猜测代价最高的地方。"
 
 #: docs/start/getting-started.md:110
 msgid "Changing it"
@@ -305,10 +289,6 @@ msgstr "发现并加载某个技能的说明"
 msgid "6. Converting a repository you already have"
 msgstr "6. 转换你已有的仓库"
 
-#: docs/start/getting-started.md:193
-msgid "The third one is deliberate. A classifier that forces every file into one of two buckets has an accuracy nobody can assess, and delivers its mistakes as moved files. This one tells you what it could not place and lets you decide."
-msgstr "第三类是有意为之的。一个把每个文件都硬塞进两类之一的分类器，其准确度无人能评估，而它的错误会以“被移动的文件”的形式交付给你。这个分类器会告诉你它无法归类的东西，让你来决定。"
-
 #: docs/start/getting-started.md:197
 msgid "Then three questions, all answerable by picking, all asked per directory rather than per file:"
 msgstr "接着是三个问题，都可以通过选择来回答，并且都是按目录而不是按文件来问："
@@ -356,10 +336,6 @@ msgstr "无法检查"
 #: docs/start/getting-started.md:230
 msgid "no address could be derived, nothing was probed, or the request failed"
 msgstr "无法推导出地址、没有进行探测，或请求失败"
-
-#: docs/start/getting-started.md:232
-msgid "The third is not a softer version of the second, and the agent will not tell you \"it should be up shortly\" on the strength of it. A measured 404 is evidence; a failed request is the absence of evidence, and an author who is told the wrong one goes looking for a site that was never going to appear."
-msgstr "第三种不是第二种的温和版本，智能体也不会凭它告诉你“应该很快就能上线”。实测到的 404 是证据；失败的请求是证据的缺失，而一个被告知了错误状态的作者，会去寻找一个根本不会出现的站点。"
 
 #: docs/start/getting-started.md:242
 msgid "8. Make the landing page yours"
@@ -416,10 +392,6 @@ msgstr "没有背景图"
 #: docs/start/getting-started.md:307
 msgid "shows the words alone"
 msgstr "只显示文字"
-
-#: docs/start/getting-started.md:309
-msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
-msgstr "中间那一行是有意为之的。凭猜测放置的文字会落在猫身上，所以未声明区域意味着“不要叠加”，绝不是“放哪都行”。而一个没有配图的 folio 是寻常的，而不是坏掉的。"
 
 #: docs/start/getting-started.md:342
 msgid "Next steps"
@@ -550,3 +522,24 @@ msgstr "后续步骤"
 
 #~ msgid "Architecture — adapters, skills, and the block model"
 #~ msgstr "架构——适配器、技能与块模型"
+
+#~ msgid "Say that sentence to five people and you will get five different pieces of work. The agent's first job is not to start; it is to find out which one you meant."
+#~ msgstr "把这句话分别说给五个人听，你会得到五份不同的工作。智能体的首要任务不是马上开工，而是弄清楚你指的是哪一种。"
+
+#~ msgid "The fourth row is the one worth pausing on. It is not an error on your part — \"folio\" is an unfamiliar word, and asking for one when you meant a chapter in one is the most natural mistake available. An agent that scaffolds on it has produced an empty repository and not the paragraph you asked for."
+#~ msgstr "第四行值得停下来想一想。这不是你的错——“folio”是个陌生的词，本想要其中的一章却说成要一个 folio，是最自然不过的误会。据此直接搭脚手架的智能体，交付的是一个空仓库，而不是你要的那一段文字。"
+
+#~ msgid "That matters more than it sounds:"
+#~ msgstr "这比听起来更重要："
+
+#~ msgid "An agent cannot route to a branch the table did not return, so the question becomes obligatory rather than polite. An agent left to decide whether to ask will, under any pressure to seem helpful, decide not to — and the three ambiguous cases are exactly where guessing is most expensive."
+#~ msgstr "智能体无法路由到表没有返回的分支，所以提问成了必须，而不只是礼貌。一个被留给自己决定是否提问的智能体，在任何想显得乐于助人的压力下，都会决定不问——而这三种含糊的情形，恰恰是猜测代价最高的地方。"
+
+#~ msgid "The third one is deliberate. A classifier that forces every file into one of two buckets has an accuracy nobody can assess, and delivers its mistakes as moved files. This one tells you what it could not place and lets you decide."
+#~ msgstr "第三类是有意为之的。一个把每个文件都硬塞进两类之一的分类器，其准确度无人能评估，而它的错误会以“被移动的文件”的形式交付给你。这个分类器会告诉你它无法归类的东西，让你来决定。"
+
+#~ msgid "The third is not a softer version of the second, and the agent will not tell you \"it should be up shortly\" on the strength of it. A measured 404 is evidence; a failed request is the absence of evidence, and an author who is told the wrong one goes looking for a site that was never going to appear."
+#~ msgstr "第三种不是第二种的温和版本，智能体也不会凭它告诉你“应该很快就能上线”。实测到的 404 是证据；失败的请求是证据的缺失，而一个被告知了错误状态的作者，会去寻找一个根本不会出现的站点。"
+
+#~ msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
+#~ msgstr "中间那一行是有意为之的。凭猜测放置的文字会落在猫身上，所以未声明区域意味着“不要叠加”，绝不是“放哪都行”。而一个没有配图的 folio 是寻常的，而不是坏掉的。"

@@ -45,10 +45,6 @@ msgstr "إن وكيلاً يطرح سؤالاً جيداً بصيغة غير ق�
 msgid "The usual shape of it: a long open prompt — \"Tell me about the folio you have in mind, what content types you expect, and how you'd like it organised\" — sent to somebody for whom typing is slow and painful. The reply comes back short. The agent reads shortness as low engagement and asks another open question. Nobody in that exchange has done anything obviously wrong, and the conversation is already failing."
 msgstr "شكله المعتاد: مطالبة مفتوحة وطويلة — \"أخبرني عن الـ folio الذي يدور في ذهنك، وما هي أنواع المحتوى التي تتوقعها، وكيف تود تنظيمه\" — تُرسل إلى شخص تكون الكتابة على لوحة المفاتيح بالنسبة له بطيئة ومؤلمة. يأتي الرد مقتضباً. يفسر الوكيل هذا الاقتضاب على أنه قلة تفاعل، فيطرح سؤالاً مفتوحاً آخر. لا أحد في هذا التبادل ارتكب خطأً واضحاً، ومع ذلك تكون المحادثة قد بدأت في الإخفاق بالفعل."
 
-#: docs/start/accessibility.md:40
-msgid "This repository's owner has very limited hand function, so the case is not hypothetical here. But the rule generalises without reference to anybody:"
-msgstr "يمتلك مالك هذا المستودع قدرة محدودة للغاية على استخدام اليدين، لذا فإن الحالة ليست افتراضية هنا. غير أن القاعدة تنطبق بوجه عام دون الإشارة إلى أي شخص:"
-
 #: docs/start/accessibility.md:43
 msgid "A question's cost is paid by the person answering it. Design the question so that the cheapest possible answer is still a complete one."
 msgstr "تكلفة السؤال يدفعها الشخص الذي يجيب عنه. صمّم السؤال بحيث تكون الإجابة الأقل تكلفة ممكنة إجابةً كاملة أيضاً."
@@ -261,10 +257,6 @@ msgstr "الأدوات التي تنتج المحتوى"
 msgid "the one usually missed. folio-assistant is an authoring tool: Part A is the tool being usable, Part B is the tool helping the author produce accessible output"
 msgstr "المعيار الذي يُغفل عنه عادةً. folio-assistant هو أداة تأليف: الجزء A يتعلق بكون الأداة قابلة للاستخدام، والجزء B يتعلق بمساعدة الأداة للمؤلف على إنتاج مخرجات متوافقة مع إمكانية الوصول"
 
-#: docs/start/accessibility.md:114
-msgid "ATAG Part B is worth dwelling on, because it is the part a content platform can uniquely deliver: alt-text presence, heading order, table headers and language tagging in published folios are checks the QA sweep can carry, and no amount of making the editor accessible substitutes for them."
-msgstr "الجزء B من ATAG يستحق التوقف عنده والتأمل فيه، لأنه الجزء الذي يمكن لمنصة المحتوى تقديمه بشكل فريد: وجود النص البديل، وترتيب العناوين، وترويسات الجداول وتحديد اللغة في ملفات الـ folio المنشورة هي فحوص يمكن لعملية مسح ضمان الجودة (QA sweep) إجراؤها، ولا يمكن لأي قدر من جعل المحرر متاحاً لذوي الإعاقة أن يحل محلها."
-
 #: docs/start/accessibility.md:119
 msgid "2.6 What is implemented today"
 msgstr "2.6 ما تم تنفيذه حتى اليوم"
@@ -297,10 +289,6 @@ msgstr "مراعاة تقليل الحركة دون الحاجة لطلب ذلك
 msgid "2.7 What is not done"
 msgstr "2.7 ما لم يُنجز بعد"
 
-#: docs/start/accessibility.md:136
-msgid "Stated rather than implied, because a half-claimed accessibility feature is worse than an absent one:"
-msgstr "مذكور صراحةً بدلاً من الإشارة إليه ضمناً، لأن الادعاء الجزئي لميزة إمكانية وصول أسوأ من غيابها تماماً:"
-
 #: docs/start/accessibility.md:139
 msgid "No ATAG Part B checks in the QA sweep. Nothing yet verifies that a published folio has alt text, correct heading order or table headers."
 msgstr "لا توجد فحوصات للجزء B من ATAG في مسح ضمان الجودة. لا يوجد شيء حتى الآن يتحقق من أن الـ folio المنشور يحتوي على نص بديل، أو ترتيب عناوين صحيح، أو ترويسات للجداول."
@@ -320,10 +308,6 @@ msgstr "النمط الصوتي موصوف، لكنه غير مُنفَّذ. ا�
 #: docs/start/accessibility.md:149
 msgid "3. Forcing agentic Q&A into guided questions"
 msgstr "3. إلزام الأسئلة والأجوبة الخاصة بالوكيل بنمط أسئلة موجّهة"
-
-#: docs/start/accessibility.md:151
-msgid "The second question. The answer is a separation, and the separation is the whole design."
-msgstr "السؤال الثاني. الإجابة تكمن في الفصل، وهذا الفصل هو جوهر التصميم بأكمله."
 
 #: docs/start/accessibility.md:154
 msgid "3.1 Two things that look like one"
@@ -421,10 +405,6 @@ msgstr "السؤال المفتوح ليس قراراً. سؤال مثل \"عم�
 msgid "A conversation is not a wizard. A user must always be able to say something the table did not anticipate. That is what the \"tell me more\" option is for, and it is not optional garnish."
 msgstr "المحادثة ليست معالج خطوات إرشادي (wizard). يجب أن يكون المستخدم قادراً دائماً على قول شيء لم يتوقعه الجدول. وهذا تحديداً هو الغرض من خيار \"أخبرني بالمزيد\"، وهو ليس مجرد زينة اختيارية."
 
-#: docs/start/accessibility.md:211
-msgid "Guided does not mean interrogating. The largest accessibility win available is the question you did not have to ask — every fact the agent reads from the filesystem is one fewer. That win is invisible, unrewarded, and larger than any stylesheet."
-msgstr "الإرشاد لا يعني الاستجواب. أكبر مكسب لإمكانية الوصول متاح هو السؤال الذي لم تضطر إلى طرحه — فكل حقيقة يقرؤها الوكيل من نظام الملفات تعني سؤالاً أقل. وهذا المكسب غير مرئي، ولا يُكافأ عليه، وهو أكبر من أي ورقة أنماط."
-
 #: docs/start/accessibility.md:216
 msgid "See also"
 msgstr "انظر أيضاً"
@@ -473,3 +453,18 @@ msgstr "انظر أيضاً"
 
 #~ msgid "Options for workflow state in beans"
 #~ msgstr "خيارات حالة سير العمل في beans"
+
+#~ msgid "This repository's owner has very limited hand function, so the case is not hypothetical here. But the rule generalises without reference to anybody:"
+#~ msgstr "يمتلك مالك هذا المستودع قدرة محدودة للغاية على استخدام اليدين، لذا فإن الحالة ليست افتراضية هنا. غير أن القاعدة تنطبق بوجه عام دون الإشارة إلى أي شخص:"
+
+#~ msgid "ATAG Part B is worth dwelling on, because it is the part a content platform can uniquely deliver: alt-text presence, heading order, table headers and language tagging in published folios are checks the QA sweep can carry, and no amount of making the editor accessible substitutes for them."
+#~ msgstr "الجزء B من ATAG يستحق التوقف عنده والتأمل فيه، لأنه الجزء الذي يمكن لمنصة المحتوى تقديمه بشكل فريد: وجود النص البديل، وترتيب العناوين، وترويسات الجداول وتحديد اللغة في ملفات الـ folio المنشورة هي فحوص يمكن لعملية مسح ضمان الجودة (QA sweep) إجراؤها، ولا يمكن لأي قدر من جعل المحرر متاحاً لذوي الإعاقة أن يحل محلها."
+
+#~ msgid "Stated rather than implied, because a half-claimed accessibility feature is worse than an absent one:"
+#~ msgstr "مذكور صراحةً بدلاً من الإشارة إليه ضمناً، لأن الادعاء الجزئي لميزة إمكانية وصول أسوأ من غيابها تماماً:"
+
+#~ msgid "The second question. The answer is a separation, and the separation is the whole design."
+#~ msgstr "السؤال الثاني. الإجابة تكمن في الفصل، وهذا الفصل هو جوهر التصميم بأكمله."
+
+#~ msgid "Guided does not mean interrogating. The largest accessibility win available is the question you did not have to ask — every fact the agent reads from the filesystem is one fewer. That win is invisible, unrewarded, and larger than any stylesheet."
+#~ msgstr "الإرشاد لا يعني الاستجواب. أكبر مكسب لإمكانية الوصول متاح هو السؤال الذي لم تضطر إلى طرحه — فكل حقيقة يقرؤها الوكيل من نظام الملفات تعني سؤالاً أقل. وهذا المكسب غير مرئي، ولا يُكافأ عليه، وهو أكبر من أي ورقة أنماط."
