@@ -50,8 +50,8 @@ in the table is treated as "another agent".
 ## Spawning drainers
 
 A queue keeper that starts drain threads seeds each one as
-[`coordinate`](../../../sdlc/skills/sdlc-core/coordinate.md) §"Since 2026-10: a spawned helper is reachable,
-and the owner's authority is not relayed" says: the owner's words verbatim, no
+[`coordinate`](../../../sdlc/skills/sdlc-core/coordinate.md) §"A spawned helper is reachable, and
+the owner's authority is not relayed" says: the owner's words verbatim, no
 relayed rulings (a merge window included), and a finishable list. Give each
 drainer this skill and its list, not a copy of the rules.
 

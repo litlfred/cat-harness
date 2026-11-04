@@ -31,7 +31,7 @@ The adoption **rules** are [`methodology-adoption`](../../process/process-core/m
    - Reported results are not imported as facts.
 5. **Place it by ownership** (`methodology-adoption` §4), and declare the directory.
 6. **Integrate by calling, not copying.** The method's judgement points are call activities into existing processes: `Process_Adjudication`, `Process_OptionsAnalysis`, `Process_Ingestion`. A change an existing process needs is made there, or becomes a bean against it.
-7. **Tools.** Every script, CLI or checker the process relies on gets a Tool node (`cat-harness/tools/index.ts`) satisfying a named skill. `check:tools` gates it.
+7. **Tools.** Every script, CLI or checker the process relies on gets a Tool node (`tools/<id>/<id>.json`) satisfying a named skill. `check:tools` gates it.
 8. **Owner review.** The owner adopts it, sends it back for changes (to step 4), or declines. A decline is recorded with its reason.
 
 ## Refusals

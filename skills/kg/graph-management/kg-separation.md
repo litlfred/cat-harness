@@ -341,7 +341,7 @@ checkout at the matched pins.
 
 | what still names the old home | the gate that catches it | the fix |
 |---|---|---|
-| A Tool node's `invoke.shell` | `kg:audit` criterion `tool-invoke-path-resolves` (CRITICAL) | rewrite the invokes in `tools/index.ts` |
+| A Tool node's `invoke.shell` | `kg:audit` criterion `tool-invoke-path-resolves` (CRITICAL) | rewrite the invokes in each `tools/<id>/<id>.json` |
 | Prose and commands in skills, guides, READMEs, BPMN documentation, workflows | `check:command-paths` | the rewrite rule below |
 | A script's own usage string | `check:usage-paths` | rewrite it in the receiving layer |
 | Printed and RUN commands: "Run: …" remedies, generated banners, shell hooks, an e2e global setup | `check:published-instance-exports`, `check:invocation-parity`, `security:gate` (all three match paths by text), and the unit tests | rewrite the strings in the receiving layer |

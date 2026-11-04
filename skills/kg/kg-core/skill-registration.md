@@ -87,27 +87,25 @@ the folder sits decides which:
    declared**. It sits inside the declared graph that owns the node and is
    found through that graph's reader, as each voice folder is found by its
    `voice.json`. Never declare one Tool's folder as a `tools` directory:
-   discovery loads ONE `tools/index.ts` per harness and refuses a harness
-   that declares two `tools` directories. The Tool's folder is found by
-   that `index.ts` (`toolsFromFolders`), as each voice is by its `voice.json`.
+   discovery refuses a harness that declares two `tools` directories. The
+   Tool's folder is found by the loader (`toolsFromFolders`, in the tools
+   layer), as each voice is by its `voice.json`.
 
 Both declared forms say what a folder holds the same way, by its
 `graphTypologies`: a from-within entry names its own kind (`voices.json`
 declares `vendors` as `voice-vendors`), it does not inherit its parent's.
 
-**One folder per Tool, always.** A Tool is declared in `tools/<id>/<id>.ts` inside the harness's declared
-`tools` directory: the folder, the file stem and the Tool's `id` are one
-string, the file default-exports `toolFactory((t) => defineTool({ … }))`, and
+**One folder per Tool, always.** A Tool is declared in `tools/<id>/<id>.json`
+(`"$schema": "tool-definition/v1"`) inside the harness's declared `tools`
+directory: the folder, the file stem and the Tool's `id` are one string, and
 the folder also holds whatever is that Tool's alone (its script, fixtures,
-tests). `tools/index.ts` only calls `toolsFromFolders`
-(`schemas/tools/tool-folders.ts`), which refuses a folder that breaks the
-convention, so discovery is unchanged. Helpers several Tools share go in
-`tools/lib.ts`, which declares no Tool. A `defineTool(` anywhere else in the
-directory is an inline declaration, and `check:tools` reports it.
+tests). `toolsFromFolders` refuses a folder that breaks the convention. The
+`tools/` directory is data only; the loader and shared helpers live in the
+tools layer.
 
-The source stays TypeScript on the default branch; the JSON-LD of each Tool
-(`<doc dir>/tools/<id>.jsonld`, its own IRI) and the JSON Schema of each I/O type
-are written when the site is published, never committed.
+The JSON-LD of each Tool (`<doc dir>/tools/<id>.jsonld`, its own IRI) and the
+JSON Schema of each I/O type are written when the site is published, never
+committed.
 
 Why declaring is part of the process, not tidying:
 

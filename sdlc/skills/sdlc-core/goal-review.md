@@ -101,7 +101,7 @@ measurements the store's own status field cannot give you:
 - **Claims without activity** — items `in-progress` with no change in the
   window. `in-progress` records a claim; it
   does not record that anyone is working ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)
-  §"A claim is branch-local").
+  §"A quiet claim").
 - **Items that exist only on a branch.** The store is committed per branch,
   so a long-running proposal can carry an entire epic the default branch has
   never seen. Sweep the open
