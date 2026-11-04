@@ -1,0 +1,47 @@
+{
+  "@context": {
+    "@base": "https://litlfred.github.io/cat-harness/v0/",
+    "prov": "http://www.w3.org/ns/prov#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "cat-harness": "https://litlfred.github.io/cat-harness/v0/ns/"
+  },
+  "dcterms:description": "Provenance moved out of the narrative of package-release.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
+  "@graph": [
+    {
+      "@id": "sdlc/skills/sdlc-core/package-release.md",
+      "@type": "prov:Entity",
+      "prov:wasInfluencedBy": [
+        {
+          "@id": "sdlc/skills/sdlc-core/package-release.md#provenance-1"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/package-release.md#provenance-2"
+        }
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/package-release.md#provenance-1",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Cutting a package release",
+      "prov:value": "This skill is **general** (owner, 2026-09-24, bean `v7bg`): it is for any\nrepository that publishes packages, including a folio that ships its own.",
+      "cat-harness:refs": [
+        "bean v7bg",
+        "2026-09-24"
+      ],
+      "dcterms:date": [
+        "2026-09-24"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/package-release.md#provenance-2",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "proposal",
+      "cat-harness:section": "Step 1 — where the version comes from",
+      "prov:value": "This is the method\n  `docs/proposals/instance-versioning.md` §4.1 proposes for instances.",
+      "cat-harness:refs": [
+        "docs/proposals/instance-versioning.md"
+      ]
+    }
+  ]
+}
