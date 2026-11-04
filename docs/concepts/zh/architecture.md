@@ -49,8 +49,7 @@ flowchart TD
 
 ## 关注点分离 —— 现状与未来规划
 
-当前该仓库是**同一检出（checkout）中的工具仓库兼内容仓库**。Issue
-[#223](https://github.com/litlfred/folio-assistant/issues/223) 规划将其拆分为五个可组合的 folio-assistant 实例。各子页面分别阐述了相关内容：
+当前该仓库是**同一检出（checkout）中的工具仓库兼内容仓库**；目标状态是五个可组合的 folio-assistant 实例。各子页面分别阐述了相关内容：
 
 | 页面 | 说明的内容 |
 |---|---|
@@ -61,7 +60,7 @@ flowchart TD
 | [最小化 `cat-harness`](../architecture/cat-harness-minimum.html) | 将“非自说明性”作为检验标准时，harness 中保留下来的内容 |
 | [Harness 实例](../architecture/harness-instances.html) | 实例的本质是什么 —— 原理图、可视化、工具；四个目录；默认渲染 |
 
-最后两项看似相互矛盾 —— 最小化页面指出 harness 不产出供人类查看的任何内容，而实例页面指出实例默认会进行渲染。但它们并无矛盾：这项要求是一个**不断上升的基线**，其中
+渲染要求是一个**不断上升的基线**：
 `bootstrap` 免于可视化器约束，并改由其自身提供 `.json`/`.jsonld`，而 `cat-harness` 则是其余要求开始适用的层级。参见
 [要求从何处开始](../architecture/harness-instances.html#where-the-requirement-starts--bootstrap-is-the-exception)。
 
@@ -106,12 +105,12 @@ flowchart TD
 
 ## 访问控制 —— ODRL，在每项任务前执行检查
 
-系统中存在统一的权限体系，即 W3C ODRL 2.2（issue #1180）：操作定义在 `skills/permissions/permissions.json` 中，授权定义在 `policies/*.jsonld` 中，由 `schemas/odrl.ts` 中的 `permits()` / `decide()` 进行评估。有两个调用方会对其进行查询：
+系统中存在统一的权限体系，即 W3C ODRL 2.2：操作定义在 `skills/permissions/permissions.json` 中，授权定义在 `policies/*.jsonld` 中，由 `schemas/odrl.ts` 中的 `permits()` / `decide()` 进行评估。有两个调用方会对其进行查询：
 
 - **BPMN 执行器**，在每项任务和决策前调用（`src/workflow/authorize.ts`）：参与者是否已认证、是否具备泳道角色的资质、是否被允许在此处执行 `perform-task`，以及是否被允许触碰该内容？目前属于建议性质：若结果为 `deny` 或角色不匹配则拒绝，若为 `unknown` 则予以记录。
 - **HTTP 路由**，通过 `src/core/rbac.ts` 调用：每个路由指明其执行的操作（`content-authoring`、`review-comments`、`adjudication`），且认证网关的会话被声明为参与者，其授权规则来自 `policies/http-gateway.jsonld`。在此处，`unknown` 会被拒绝。
 
-在 issue #1207（2026-09-23）之前，`rbac.ts` 是一套独立的 viewer < collaborator < owner 阶梯式权限，而执行器不做任何检查。现在的规范原则见 [`task-authorization`]({{ '/reference/skill-instructions/task-authorization.html' | relative_url }}) 技能。
+规范原则见 [`task-authorization`]({{ '/reference/skill-instructions/task-authorization.html' | relative_url }}) 技能。
 
 ## 工作计划引导（跨 harness）
 

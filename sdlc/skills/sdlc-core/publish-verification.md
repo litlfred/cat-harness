@@ -37,9 +37,7 @@ test that builds a document to break it, as `publish-verify.test.ts` does.
 
 **`jsonld-expand`** is the first: every JSON-LD document of ours is expanded
 by a real processor (`jsonld.js`, network refused). A key the `@context` does
-not declare is DROPPED by a processor, silently — the first run found the
-vocabulary losing `layer` on all 159 terms and the fsh-guts export losing
-`skipped`.
+not declare is DROPPED by a processor, silently.
 
 ## A verifier the preview cannot ask is a release failure waiting (STRICT)
 
@@ -47,9 +45,8 @@ The staging preview runs the same verifier set, so a preview is never greener
 than the release it previews. **That promise breaks wherever the preview
 answers a different question.** It serves the PUBLISHED search index
 (`--search-index borrowed`), so `search-index` there asks only "present and
-parsing", never "does it cover the pages". #2194 was green in its preview, and
-its production publish was refused (#2233): *"indexes 1003 page(s) while 4189
-offer a search box"*. Nothing was deployed.
+parsing", never "does it cover the pages" — so a preview can be green while
+the release refuses it.
 
 So the preview asks the coverage question of the index **it built**, before
 swapping in the published one:
@@ -69,8 +66,8 @@ index, and the release check will refuse it, correctly.
 
 A document is ours when its `@context` names our content context or binds a
 namespace in the `own-namespaces` code list. Everything else in the tree —
-a WHO IG's ingested artefact index — is counted as out of scope, reported,
-and never able to block the release. The same scoping as bean `2j09`.
+an ingested IG's artefact index, for example — is counted as out of scope,
+reported, and never able to block the release.
 
 ## Triage, for the publication manager
 

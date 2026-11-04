@@ -68,13 +68,12 @@ that exists can still have been built for an EARLIER head (GitHub leaves the
 old one in place when a new head conflicts), so the ref must have been built
 from the current head.
 
-Owner ruling 2026-09-30, bean `52cz`: this is written here so that an agent
-reading PR events **without** the tool knows it too. The tool enforces it
-(`verdictForCommit`, `mergeStateForHead`); this paragraph is for the reader.
+The tool enforces this (`verdictForCommit`, `mergeStateForHead`); an agent
+reading PR events **without** the tool applies it too.
 
 ### `qa-publish` is a job in the gate workflow, and it is not a gate
 
-Since arc `3fva`, `Code quality gates` carries one job that judges nothing:
+`Code quality gates` carries one job that judges nothing:
 `qa-publish`, which runs after `gates` **whatever they concluded** and stores
 the run's QA results on the orphan `qa-reports` branch (`main/<sha>/` on a
 push, `pr/<n>/<sha>/` on a same-repository PR). Read its outcome as a
@@ -89,7 +88,7 @@ statement about the **evidence**, not about the commit:
 - **green** with the gates red — the red commit's evidence was stored. That is
   the point of `always()`, not a contradiction.
 
-The owner's merge policy counts it like any job: a PR is handed to the Merge
+The merge policy counts it like any job: a PR is handed to the Merge
 Steward only when CI is green on **every** job
 ([`continual-progress`](continual-progress.md) §"Green means handed to the
 Merge Steward").
@@ -98,10 +97,9 @@ Merge Steward").
 
 **A Pages build outcome is not repository state.** It is a fact GitHub holds
 *about* the repository, and it changes the repository's status without changing
-a single byte of it. That is the owner's framing, 2026-09-20, and it settles
-how the tool must behave: **look external, cache nothing.** A committed answer
-would be right when it was written and silently wrong from then on, which is
-the original defect rebuilt in a new place.
+a single byte of it. So the tool must **look external, cache nothing**: a
+committed answer would be right when it was written and silently wrong from
+then on.
 
 The default-branch query cannot see it, for three reasons at once, and all
 three have to be answered together:
@@ -130,7 +128,7 @@ rule about never letting a count in prose go stale.
   merely superseded. Both readings are wrong in a way the reader cannot detect
   — which is rule 1 again, wearing different clothes.
 
-  **Crucial exception (bean `folio-assistant-oz5w`)**: staleness is benign
+  **Crucial exception**: staleness is benign
   only when falling back to an existing live preview,
   **never when the previous state is a deletion** (where "stale" manifests as a
   404). When PR N's merge cleanup removed `STAGING/<slug>/` and PR N+1's
@@ -184,8 +182,7 @@ Two properties of that scheduled run are load-bearing rather than incidental:
 
 ### The second instance: merge-main's in-place comment
 
-The same edited-in-place doctrine governs `merge-main.yml` (bean `03nl`,
-implemented by `cat-harness-tools/scripts/merge-main-comment.ts`). The workflow fires on every
+The same edited-in-place doctrine governs `merge-main.yml` (implemented by `cat-harness-tools/scripts/merge-main-comment.ts`). The workflow fires on every
 push to `main` and runs across open PRs; one failing PR must not email the
 maintainer on every push across the day.
 
@@ -217,10 +214,8 @@ applies.
 ## A superseded PR run is cancelled — and only a PR's
 
 A run on a PR head that a newer push replaced judges a commit nobody will
-merge, and it still waits for and holds a runner. On 2026-10-05, 16 of the 53
-runs queued in this repository were such runs, and the queue they lengthened
-held back the fix main's publish was blocked on (#2233). So a workflow that
-runs on `pull_request` declares
+merge, and it still waits for and holds a runner. So a workflow that runs on
+`pull_request` declares
 
 ```yaml
 concurrency:
@@ -241,15 +236,15 @@ one cancelled.
 
 ## A green step can be a SKIPPED one: the CI cone
 
-`cat-harness-tools/scripts/ci-cone.ts` (bean `4rbc`, issue #2456) lets a pull request skip a `bun run cat <check>` gate step whose inputs are unchanged since main's last green run. Such a step prints `SKIPPED — inputs unchanged since <sha>`, and the job summary lists it under **CI cone**. **Read it as "not asked here", never as "passed here".**
+`cat-harness-tools/scripts/ci-cone.ts` lets a pull request skip a `bun run cat <check>` gate step whose inputs are unchanged since main's last green run. Such a step prints `SKIPPED — inputs unchanged since <sha>`, and the job summary lists it under **CI cone**. **Read it as "not asked here", never as "passed here".**
 
 **It is built but NOT wired into the workflow.** Measured 2026-10-07 on the 53 candidate steps of `gates-kg` and `gates-docs`:
 - **It saves almost nothing.** The 36 checks it could record skip on a beans-only or one-script PR, but they are the cheap ones: about 30 runner-seconds a run. Deciding costs about 0.5 s a step, roughly 22 s for those steps.
 - **Recording would slow main a lot.** The expensive checks cannot be recorded: `kg:audit:check` and `kg:audit:all:check` read the `qa-reports` store, and `skill:register:check` has an unannotated site. Tracing them anyway would add minutes to every main run (`kg:audit:all:check`: 74 s untraced, 782 s traced).
 
-Wire it in when those checks become recordable. Bean `4rbc` records what that takes.
+Wire it in when those checks become recordable.
 
-**The rule it follows: an input set is declared or derived, never inferred.** Owner, 2026-10-07: *"derived is BEST"*, then *"DERIVED = no drift, no extra data fields"*.
+**The rule it follows: an input set is declared or derived, never inferred, and derived is preferred** (no drift, no extra data fields).
 - **Declared** is a `task-io` row. It is checked by the input-site audit.
 - **Derived** is computed from the run itself and never stored as authored data. A green run on main traces the check under `strace` and records what that run read: the files, the directory listings, the absent paths it probed, and the read-only git commands it ran, with their answers. A PR skips the check only when every recorded path and every git answer is the same, and so is the script fingerprint (import closure, audited environment, tools and `--against` baseline).
 - **Inferred** is a guess about what a check reads. It is never used.
@@ -269,7 +264,7 @@ A failed traced run is asked again untraced, so the verdict is always the check'
 ## Step names describe what the check does, not merely its passing invariant
 
 A CI step named solely after its passing invariant misdescribes any failure
-where the check could not run or the baseline was absent (bean `68op`).
+where the check could not run or the baseline was absent.
 A step named `viewer pages keep the navbar they had` that goes red when its audit
 sidecar is absent misleads a reader to investigate page layouts when zero pages
 regressed. Where a check has both a subject-invariant branch and an
@@ -280,16 +275,12 @@ audit/baseline-reachability branch, the step name in the workflow must cover bot
 
 A green outcome on a derived gate (such as `readme:subgraphs:check`,
 `docs:harness:check`, or other verify/write pairs) must **never be read as
-"was never broken"** (bean `folio-assistant-ey1c`).
+"was never broken"**.
 
 Because PR branches run `merge:main` which regenerates derived files, an
 unrelated PR branch may happen to carry a freshly generated artefact. When that PR
 merges into `main`, it incidentally repairs `main`, creating an illusion in CI
 history that the commit before it was clean.
-
-Observed on 2026-10-03 (three times in two hours on `main`): PR #1938 broke `uploads/README.md`;
-PR #1940 carried a regenerated file and incidentally made `main` green again; then
-a direct web-UI upload broke it once more.
 
 **The guard:** The post-merge regeneration pipeline
 (`.github/workflows/post-merge-regen.yml`, `scripts/post-merge-regen.ts`) audits

@@ -148,7 +148,7 @@ git diff --name-only --cached | grep -qE '\.witness\.json$' && \
 git rebase --abort
 git rebase origin/<BRANCH>   # re-rebase, skipping bad commits as above
 # regenerate the affected artifacts via the project's generator(s), e.g.
-bun run validate <paper>
+bun run cat regen
 git add <regenerated-artifact-paths>
 git commit -m "Regen generated artifacts post-rebase against latest main"
 git push --force-with-lease
@@ -173,7 +173,7 @@ hand-merging.  Drift is structural; merging is fragile.
 
 ### Q3 — Can we reuse?
 
-Apply the four reuse questions from `prepare-merge.md §2a`:
+Apply four reuse questions:
 
 1. **Definitions / lemmas / helpers / witnesses** — does the new
    commit add something our branch is duplicating, paraphrasing, or
@@ -197,13 +197,12 @@ Apply the four reuse questions from `prepare-merge.md §2a`:
 
 ### Q3a — Did upstream land a new skill file?
 
-For each main-refresh, check whether `.claude/skills/local/*.md` (or
-`.claude/skills/<pkg>/*.md`) gained a new file between this branch's
-prior baseline and the new `origin/main`:
+For each main-refresh, check whether a skill directory the instance declares
+in its `kg` graph (`skill_list` names them) gained a new file between this
+branch's prior baseline and the new `origin/main`:
 
 ```bash
-git diff --name-only --diff-filter=A "$LAST_BASE..origin/main" \
-  -- '.claude/skills/local/*.md' '.claude/skills/*/*.md'
+git diff --name-only --diff-filter=A "$LAST_BASE..origin/main" -- <skill-dirs>
 ```
 
 For each new skill file:
@@ -237,13 +236,11 @@ For each new skill file:
    > 3) **Not relevant** — record so the watcher doesn't re-prompt
    >    on future main-refreshes.
 
-4. **Record the decision** in the watcher's ledger
-   (`beans/<watcher-name>-ledger.md` for integration-watcher
-   children, or chat-only for the bare `/watch` flow) so subsequent
-   main-refreshes don't re-prompt for the same skill.
+4. **Record the decision** as a note on the watcher's bean (or in chat for
+   the bare `/watch` flow) so subsequent main-refreshes don't re-prompt for
+   the same skill.
 
-This rule applies to **skill files only** (`.claude/skills/local/*.md`
-and `.claude/skills/<pkg>/*.md`). Skills landing on sibling PRs that
+This rule applies to **skill files only**. Skills landing on sibling PRs that
 haven't merged yet do NOT trigger this check — only `main` commits
 count, mirroring the §2 "watch origin/main" scope.
 
@@ -268,9 +265,8 @@ Stop when the branch ships (PR merged, or you switch branches):
   rebase-and-regenerate, never hand-merge.
 - **Toolchain version bumps**: a dependency/toolchain hash changed →
   check our branch's toolchain pin aligns before continuing a build.
-- **Schema migrations**: if `content/schema/` changed, run
-  `cd content && bun run migrate-lean-refs` and `bun run validate`
-  before continuing.
+- **Schema or generator changes**: run `bun run cat regen` before
+  continuing.
 - **Routine review-cycle commits** (Gemini/Copilot fixes on unrelated
   PRs):  almost always Q1 = no overlap = skip with one-liner.
 
@@ -307,14 +303,12 @@ If `MISSED >= 5` OR any missed commit touches a file in your branch's
 diff, run the §3 integration checklist on the missed range BEFORE
 arming a fresh monitor.
 
-This catches the failure mode where a focused work session (axiom
-discharge sweep, content authoring marathon, witness regeneration
-loop) silently lets main move 10+ commits ahead while the watcher
-is timed out.
+This catches main moving many commits ahead during a long focused session
+while the watcher is timed out.
 
 ## 6.  Output style
 
-Match user-accessibility note in AGENTS.md:
+Follow [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md):
 
 - One sentence per commit / event by default
 - Numbered choices when integration is non-obvious

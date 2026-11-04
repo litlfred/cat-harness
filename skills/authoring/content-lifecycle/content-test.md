@@ -21,22 +21,19 @@ End-to-end testing of content artifacts in realistic scenarios.
 
 ## Running CI, not just assuming it
 
-A local build runs on a warm cache, your toolchain, and whatever build flags
-you set. CI runs cold, on its own toolchain, with none of that. They fail
-differently, so a local green is evidence about your machine, not about the
+A local build runs on a warm cache, your toolchain and your flags; CI runs
+cold on its own. A local green is evidence about your machine, not about the
 branch.
 
-So: push, then dispatch the workflow against your branch
+Push, then dispatch the workflow against your branch
 (`gh workflow run <workflow>.yml --ref <branch>`, or the `actions_run_trigger`
 MCP tool), wait for it, and record **run URL + conclusion** in the PR body.
 Red → fix and re-dispatch. If dispatch is refused for lack of `actions: write`,
-say so in the PR and give the command a maintainer should run — never leave it
-silently unmentioned.
+say so in the PR and give the command a maintainer should run.
 
-Also check **when CI last ran** (`actions_list` → `list_workflow_runs`). The
-existence of a workflow is not evidence that anything is being checked: a
-workflow nothing dispatches can sit red on `main` for months while the content
-it was meant to check stops building.
+Also check **when CI last ran** (`actions_list` → `list_workflow_runs`): a
+workflow nothing dispatches can sit red on `main` while the content it checks
+stops building.
 
 ## A green build only covers what the target reaches
 
@@ -71,13 +68,11 @@ that it passed.
 ## Where the results go — not into a commit
 
 A test run's results are **derived**: re-running the plan over the same tree
-and data reproduces them. So they are kept where every derived QA result is
-kept since arc `3fva` — the orphan **`qa-reports`** branch, keyed by the
+and data reproduces them. They are kept where every derived QA result is
+kept — the orphan **`qa-reports`** branch, keyed by the
 commit they were computed on (`main/<sha>/`, `pr/<n>/<sha>/`), written by
 `bun run cat qa:publish` (the CI job `qa-publish`) and read back with `bun run
-qa:fetch`. **Do not regenerate a results file in order to commit it**; the
-checkout's `test/results/` is a working copy, still on `main` only until bean
-`5hox` removes it.
+qa:fetch`. **Do not regenerate a results file in order to commit it.**
 
 Two things a test run produces are not derived, and they stay on `main`:
 
@@ -85,8 +80,7 @@ Two things a test run produces are not derived, and they stay on `main`:
   agent's adjudication — goes to `test/attestations/` (`qa-attestations/v1`),
   because no re-run can reproduce it.
 - **A certification** — an accountable decision taken on a plan's rollup —
-  also stays on `main`, beside the attestations (owner decision D5, default
-  (a)), and is then signed through
+  also stays on `main`, beside the attestations, and is then signed through
   [`qa-report-signing`](../../../sdlc/skills/sdlc-core/qa-report-signing.md).
 
 "Regression comparison" against a previous version is a comparison against

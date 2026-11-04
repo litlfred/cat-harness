@@ -57,28 +57,25 @@ cat-harness-tools/scripts/session-start-coord-sweep.sh  # CLI-independent equiva
 bun run cat check-deps                     # what this environment can do
 ```
 
-الخيار `--check-deps` أكثر أهمية مما يبدو عليه. إذ تتحول العديد من الفحوصات
-إلى `n/a` بدلاً من الفشل عند غياب أداة معينة (عدم وجود سلسلة أدوات Lean، أو
-عدم وجود Atlas، أو غياب LaTeX). **إن نتيجة `n/a` لا تعني النجاح.** إذا أبلغت بأن
-"كل شيء نظيف" دون معرفة ما تم تخطيه، فأنت تبلغ عن غياب البيانات كنتيجة.
+تتحول العديد من الفحوصات إلى `n/a` بدلاً من الفشل عند غياب أداة معينة (عدم
+وجود سلسلة أدوات Lean، أو عدم وجود Atlas، أو غياب LaTeX). **إن نتيجة `n/a` لا
+تعني النجاح:** اذكر ما تم تخطيه ولماذا.
 
 ## 3. ابحث عن المهارة المناسبة — لا ترتجل
 
 المهارات هي وحدة العمل هنا. قبل أن تبني إجراءً يدويًا، تحقق مما إذا
-كان هناك إجراء موجود بالفعل.
+كان هناك إجراء موجود بالفعل. **اطلب المهارة عبر `skill_list` و`skill_fetch`؛ لا
+تنتقل إليها عبر مسار.**
 
 | الموقع | ما يقدمه لك |
 |---|---|
-| `skills/folio-core/` | مهارات غير مرتبطة بمحتوى معين: التنسيق، المراقبون (watchers)، ضمان الجودة (QA)، التصيير، المراجع |
-| `folio-assistant-sci/skills/content/folio-paper-adapter/` | الأوراق البحثية: Lean، وLaTeX، والبراهين، والمحاكيات |
-| `smart-base/skills/content/authoring-who-smart-guidelines/` | حزم DAK / أدلة IG لإرشادات منظمة الصحة العالمية SMART |
 | [مرجع مخطط المهارات]({{ site.baseurl }}/reference/skills/) | عقد الإدخال/الإخراج المصنف للأنواع والمولّد آليًا لكل مهارة |
 | [تعليمات المهارات]({{ site.baseurl }}/reference/skill-instructions/) | نصوص التعليمات الكاملة المولّدة آليًا |
 | [المهارات والأدوار](../../concepts/skills.html) | كيفية تكوين المهارات والأدوار والقدرات معًا |
 
 كلا الدليلين في `reference/` **مولّدان آليًا** — إياك وتعديلهما يدويًا.
-أعد التوليد باستخدام `bun run scripts/gen-schema-docs.ts` و
-`bun run scripts/gen-skill-docs.ts`.
+أعد التوليد باستخدام `bun run cat-harness-tools/scripts/gen-schema-docs.ts` و
+`bun run cat-harness-tools/scripts/gen-skill-docs.ts`.
 
 ## 4. نموذج كائن المحتوى باختصار
 
@@ -95,8 +92,6 @@ bun run cat check-deps                     # what this environment can do
 أثناء وقت البناء، ولا تُخزَّن أبدًا في البيان.
 
 ## 5. علاقتان من علاقات التبعية — لا تخلط بينهما
-
-هذا الأمر يُربك الوكلاء باستمرار.
 
 - **`uses[]` هي علاقة تحريرية.** "ما الذي يجب أن يكون القارئ قد قرأه
   ليتابع هذه الكتلة؟" مؤلفة — يتولى صيانتها الوكيل/الإنسان.
@@ -121,13 +116,13 @@ bun run content/pipeline/content-graph.ts content/<paper>
 ## 6. تتبع العمل في beans، وليس في رأسك
 
 إن `beans` هي آلية المهام (todo) **الوحيدة** — محلية للجلسة *وعبر*
-الوكلاء. دليل `beans/` يتم تثبيته في المستودع (committed)، لذا فإن
-الخطة تبقى وتستمر عند الاستئناف في حاوية جديدة.
+الوكلاء. يُحفظ دليل `beans/` في فرع حالة ويُركَّب عند بدء الجلسة
+(`bun run cat state:mount`)، لذا فإن الخطة تبقى وتستمر عند الاستئناف في حاوية جديدة.
 
 ```sh
 beans list
 beans create "<title>"
-beans update <id> --status in-progress    # CLAIM before you work
+bun run cat beans:claim <id>             # CLAIM before you work
 ```
 
 احجز المهمة (claim) قبل البدء بالعمل حتى لا تلتقط جلستان العنصر نفسه،
@@ -192,18 +187,12 @@ lean_build)، ثم يدفع التغييرات. **إنه لا يقوم بالد�
 | ما يعنيه معيار ضمان الجودة (QA) | `content/pipeline/qa-criteria-registry.ts` — الأوصاف هي المواصفة القياسية |
 | مخطط الكتلة (block schema) | `schemas/types.ts` |
 | مخطط ملف QA الجانبي | `schemas/block-qa.ts` |
-| ما يمكن لهذه البيئة فعله | `.claude/skills/capabilities/*.json`، و`--check-deps` |
-| خطة طريق أدوات Lean | [مقترح أدوات Lean](https://github.com/litlfred/folio-assistant/issues/198) |
+| ما يمكن لهذه البيئة فعله | `cat-harness/scenarios/capabilities/*.json`، و`check-deps` |
 
 ## 10. عادات تبعدك عن المشاكل
 
-- **`n/a` لا تعني النجاح.** اذكر ما تم تخطيه ولماذا.
-- **احجز الـ bean قبل البدء بعمل دائم.** قد تكون هناك مهام أخرى قيد التشغيل.
 - **لا تضع اسم الورقة البحثية بشكل ثابت (hardcode).** قد يحتوي الـ folio على عدة أوراق؛ قم بحل الاسم
   باستخدام `findPapers()` / `soleFolioPaper()` من
   `content/pipeline/repo-root.ts`.
-- **لا تكتب محتوى داخل المنصة.** إذا كان يحدد فصلاً، أو
-  ثابتًا، أو مفردات، فهو من بيانات الـ folio.
-- **أعد التوليد ولا تعدل يدويًا أبدًا** أي شيء تحت `docs/reference/`.
 - **اقرأ وصف المعيار قبل التصرف بناءً على نتيجة الفحص.** فالأوصاف
   توضح مستوى الخطورة، والقصد، وما هو مستبعد صراحةً.

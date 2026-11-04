@@ -141,6 +141,6 @@ The hierarchy and readiness tracking are identical.
 
 - [`release-lifecycle`](release-lifecycle.md) — semver, release types, changelog
 - [`code-review-process`](code-review-process.md) — review within release context
-- [`../../sdlc/skills/crdm/crdm-requirements-workflow.md`](../crdm/crdm-requirements-workflow.md) — Phase 4b ordering
-- [`../../work-plan/skills/work-plan/todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — bean creation protocol
-- [`../../work-plan/skills/work-plan/bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) — cross-session coordination
+- [`crdm-requirements-workflow`](../crdm/crdm-requirements-workflow.md) — Phase 4b ordering
+- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) — bean creation protocol
+- [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) — cross-session coordination

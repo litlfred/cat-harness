@@ -17,5 +17,3 @@ a skill, a test run tests a skill, and a QA report audits any kind of subject.
 
 > **Misaligned — the snapshot is older:** today's diagram has a **Voice
 > Profile** class that slide 8 does not. The picture above is the current one.
-> The owner's copy now shows it too: slide 8 carries a fresh render, cropped
-> to the same four packages.

@@ -18,28 +18,25 @@ graph-typologies:
 **A QA result is either reproducible or it is not, and that decides where it
 lives.** A script verdict is a pure function of the tree: run the producer
 again and you get it back. A reviewer's judgement is not, because no re-run can
-reproduce what an agent or a person decided. Arc `3fva` (issue #1763) split the
-two on that line, by the owner's rulings of 2026-10-01:
+reproduce what an agent or a person decided. The two are split on that line:
 
 | | derived | judgement |
 |---|---|---|
-| what | every `reviewer.kind: script` entry: `kg-qa/**`, `*.qa-results.json`, witnesses, `lsi/`, `tool-runs/`, the health report | agent, human and **baseline-pair** attestations (the owner ruled a baseline is a judgement) |
+| what | every `reviewer.kind: script` entry: `kg-qa/**`, `*.qa-results.json`, witnesses, `lsi/`, `tool-runs/`, the health report | agent, human and **baseline-pair** attestations (a baseline is a judgement) |
 | graph typology | `qa` (and `health`) | `attestations` |
 | written to | `<instance>/test/results/**`, the **working copy** | `<instance>/test/attestations/<family>/<mirrored subject path>.attestations.json` |
-| record | the orphan **`qa-reports`** branch, `main/<sha>/` or `pr/<n>/<sha>/` | **`main`** (ruling D2 (a)) |
+| record | the orphan **`qa-reports`** branch, `main/<sha>/` or `pr/<n>/<sha>/` | **`main`** |
 | schema | the family's own | `qa-attestations/v1`, `schemas/sdlc/qa-attestations.ts` |
 | on a merge conflict | take the base's side (`merge:main`), then regenerate | a person reads both sides |
 
-**cat-harness and the content core no longer commit the derived files**
-(bean `5hox`, ruling D4; cat-harness#857, https://github.com/litlfred/folio-assistant-core/pull/482). Where an
-instance still does, they are a copy on its way out, not the
-record. Do not regenerate one in order to commit it, and do not hand-resolve
-one. Every `qa` directory already declares `storage` and is ignored by version
-control, so a new file there is not committed. Before the removal is pushed,
-`bun run cat qa:verify-moved --key main/<head>` must answer IDENTICAL. It compares
-every moved path's blob id with the entry, and an entry it cannot read is
-UNKNOWN (exit 2), never a pass. The inventory is
-`docs/proposals/5hox-removal-inventory.md`.
+**cat-harness and the content core do not commit the derived files.** Where
+an instance still does, they are a copy on its way out, not the record. Do not
+regenerate one in order to commit it, and do not hand-resolve one. Every `qa`
+directory declares `storage` and is ignored by version control, so a new file
+there is not committed. Before an instance's removal of its committed copy is
+pushed, `bun run cat qa:verify-moved --key main/<head>` must answer IDENTICAL.
+It compares every moved path's blob id with the entry, and an entry it cannot
+read is UNKNOWN (exit 2), never a pass.
 
 ## The branch
 
@@ -49,7 +46,7 @@ qa-reports  (orphan; never merged; author folio-qa-bot)
 ├── main/<commit-sha>/           one tree per main commit that published
 │   ├── manifest.json            inputs, producers, the gates' result
 │   └── <instance>/test/results/**   byte-identical to the checkout's layout
-└── pr/<number>/<head-sha>/…     same shape (ruling D3), pruned 7 days after close
+└── pr/<number>/<head-sha>/…     same shape, pruned 7 days after close
 ```
 
 Everything goes through **`cat-harness-tools/scripts/qa-store.ts`**, and nothing
@@ -66,18 +63,15 @@ else writes the branch. `check:workflows` fails a raw push
 
 **A read answers one of five states.** `hit` exits 0, `miss` 1, `usage` 2,
 `corrupt` 3, `unknown` 4. **A miss is never read as "no findings".** A reader
-that turns an absent entry into an empty, clean directory is the `dh4f`
-defect, and the readers audit
-(`docs/proposals/qa-readers-audit-2026-10-01.md`) is a catalogue of exactly
-that.
+must not turn an absent entry into an empty, clean directory.
 
 **What `qa-publish` stores is produced in that job, not handed over by the
-gates** (bean `3hk4`). The gates are in judge mode and write nothing, so their
-checkout holds only what is committed, which after `5hox` is one file. So
-`qa:refresh` runs first. While the checkout still tracks `test/results/`, it
-runs nothing, because the commit's own copy is the record and `5hox` needs
-`main/<sha>` byte-identical to it. Once nothing is tracked there, it runs every
-writer declared in `QA_WRITERS` (`scripts/qa-refresh.ts`) into the empty tree.
+gates.** The gates are in judge mode and write nothing, so their checkout
+holds only what is committed. So `qa:refresh` runs first. While the checkout
+still tracks `test/results/`, it runs nothing, because the commit's own copy
+is the record and `main/<sha>` must be byte-identical to it. Once nothing is
+tracked there, it runs every writer declared in `QA_WRITERS`
+(`scripts/qa-refresh.ts`) into the empty tree.
 Then it checks three things. A file no writer claims, a writer that produced
 nothing, or a writer that exited outside its declared exits makes the run
 INCOMPLETE: the job fails, and `qa:publish --completeness` refuses to store
@@ -97,8 +91,7 @@ from `Task_QaPublish` in `code-quality-gates.bpmn`.
 **The branch is the store of the repository that declares it.** A layer
 repository that declares a `qa` directory with `storage` (`test/results/`,
 keyed by commit) keeps its results on `cat/cat-harness/qa-reports` of **its
-own** repository, keyed by **its own** commits (owner, 2026-11-03, "2. Each
-layer publishes"; bean `folio-assistant-7mwa`). Its
+own** repository, keyed by **its own** commits. Its
 `.github/workflows/publish-qa.yml` calls the tools layer's reusable
 `layer-qa-publish.yml`, which audits that one instance with the layer at the
 pushed commit and publishes `main/<sha>` or `pr/<n>/<sha>`.
@@ -109,19 +102,14 @@ from its own store. A pin the layer has not published is a `miss` naming the
 commit. cat-harness, and the instances it hosts (`kgQaHomeFor` "hosted"), are
 still written by the index's `qa-publish`.
 
-Before this, no layer had a publisher. The declarations dated from the
-monorepo, where "the same repository" was folio-assistant, and neither layer
-initialisation nor the separation cutover had a step for it. So when a layer
-stopped committing `test/results/`, its verdicts were nowhere. Setting a
-layer up now includes the caller ([`initialization`](../../../docs/bootstrap/initialization.md)
+Setting a layer up includes the caller ([`initialization`](../../../docs/bootstrap/initialization.md)
 step 5, [`sub-kg-lifecycle`](../../../skills/kg/graph-management/sub-kg-lifecycle.md)
 stage 10 "its QA record"), and `init-folio --instance` writes it.
 
 ## Gates compute and judge
 
-A gate over the `qa` graph cannot compare a fresh run against a committed file
-for long, because the committed file is leaving. So its `--check` form
-**computes and judges, and writes nothing** (beans `bo44`, `id4s`, `0dav`):
+A gate over the `qa` graph does not compare a fresh run against a committed
+file. Its `--check` form **computes and judges, and writes nothing**:
 
 - **A finding fails only if it is NEW against a baseline.** The baseline is
   the committed working copy for now, and `--against <ref>` reads it from
@@ -134,15 +122,14 @@ for long, because the committed file is leaving. So its `--check` form
   `unknown` from a source that would not read outranks a finding, because a
   sweep that was blind on one part has not cleared the others.
 
-Not every gate has moved yet. Each script's docblock says which form it is in,
-so read that rather than this list.
+Each script's docblock says which form it is in.
 
 ## Attestations
 
 - **A writer moves judgements as it saves.** If a writer finds judgements in a
   prior derived file and the store holds no entry for them, it moves them into
-  the store as it saves (owner ruling 2, 2026-10-01). `bun run
-  qa:attestations:migrate` does a whole instance at once, and `:check` exits 1
+  the store as it saves. `bun run cat qa:attestations:migrate` does a whole
+  instance at once, and `:check` exits 1
   while any judgement is still only in a derived file.
 - **A corrupt store reads UNKNOWN and is refused.** No writer overwrites it,
   and no writer regenerates past it.
@@ -166,12 +153,9 @@ so read that rather than this list.
 
 - [`directory-conventions`](../../../skills/kg/kg-core/directory-conventions.md)
   §"`storage`" covers the declaration field that marks a directory as
-  stored. Every `qa` directory sets it since bean `5hox`, and each working
-  copy is ignored by version control.
+  stored. Every `qa` directory sets it, and each working copy is ignored by
+  version control.
 - [`content-context-and-state-graphs`](../../../skills/kg/kg-core/content-context-and-state-graphs.md)
   explains why both halves are `state`, and why only one of them can be
   rebuilt.
 - [`qa-witness`](qa-witness.md) covers the published projection of a verdict.
-- The proposal is
-  `docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md`, with
-  rulings D1 to D5.

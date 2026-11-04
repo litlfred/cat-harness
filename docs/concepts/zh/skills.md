@@ -49,14 +49,12 @@ flowchart TD
 
 技能并不是定义在单一文件中的，而是跨越若干层次进行定义。对于任何一项技能：
 
-| 层次 | 位置 | 状态 |
-|-------|----------|--------|
-| **定义**（角色、所需能力、门禁要求、路由模式、生命周期阶段、模式引用） | `.claude/skills/local/<skill>.json` | ✅ 全部 22 项创作技能 — 由 `scripts/validate-skills.ts` 在 CI 中验证 |
-| **类型化契约**（输入/输出 JSON Schema） | `schemas/skills/<skill>/` | ✅ 全部 22 项 — 参见[参考]({{ site.baseurl }}/reference/skills/) |
-| **指令正文**（LLM 加载的文字操作指南） — 可在[技能指令]({{ site.baseurl }}/reference/skill-instructions/)参考中查阅 | `skills/authoring/content-lifecycle/*.md`、`skills/folio-*-adapter/*.md`、`src/skills/*.md` | ✅ lifecycle、agent、platform-bundle 以及 **folio-document-adapter** 技能；⏳ **authoring-math / authoring-who-smart-guidelines 正文待补充**（这些技能包已提供清单 + JSON 定义） |
-| **技能包**（Docker/运行时依赖项） | `skills/<package>/package-manifest.json` | ✅ 全部四个技能包 |
-
-所以，*是的，这些技能确实存在* — 表现为结构化定义与类型化模式，且生命周期和智能体技能已随附详细的文本指南。`skill_fetch` MCP 工具当前提供 `src/skills/*.md` 指令正文；创作技能的文本正文是后续待补充的内容（它们所属的定义和契约均已就绪）。
+| 层次 | 位置 |
+|-------|----------|
+| **定义**（角色、所需能力、门禁要求、路由模式、生命周期阶段、模式引用） | `skills/skill-definitions/<skill>.json` |
+| **类型化契约**（输入/输出 JSON Schema） | `schemas/skills/<skill>/` — 参见[参考]({{ site.baseurl }}/reference/skills/) |
+| **指令正文**（LLM 通过 `skill_fetch` 加载的文字操作指南） — 可在[技能指令]({{ site.baseurl }}/reference/skill-instructions/)参考中查阅 | `skills/<topic>/<package>/*.md`、`sdlc/skills/<package>/*.md`、`work-plan/skills/work-plan/*.md` |
+| **技能包**（Docker/运行时依赖项） | 与技能包指令正文同目录的 `package-manifest.json` |
 
 ### 跨领域通用：`content-lifecycle`
 
@@ -106,39 +104,40 @@ flowchart TD
 | [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | 构建并发布 IG（实施指南） |
 | [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | 质量保证（QA）门禁 |
 
-### 智能体／平台技能（`src/skills`）
+### 智能体／平台技能
 
-LLM 在仓库中高效工作所使用的技能（通过 `skill_fetch` 加载，包名为 `folio-assistant`）：
+LLM 在仓库中高效工作所使用的技能（通过 `skill_fetch` 加载）：
 
-| 技能 | 用途 |
-|-------|---------|
-| `corpus-grep` | 在整个内容语料库中检索 |
-
-> `editor`、`readability-editing`、`todo-review`、`symbiotic-interaction` 和 `deployment-auth` 现已（通用化后）移至下方的 **`folio-core`** 捆绑包中 — 请使用 `package_name="folio-core"` 获取它们。
+| 技能 | 技能包 | 用途 |
+|-------|-------|---------|
+| `corpus-grep` | `kg-core` | 在整个内容语料库中检索 |
+| `editor`、`readability-editing`、`todo-review` | `authoring-core` | 文本编辑与审阅 |
+| `symbiotic-interaction` | `conduct-core` | 识别作者输入的语域 |
+| `deployment-auth` | `folio-core` | 部署认证 |
 
 论文 folio 同样需要 `folio-document-adapter` 技能：论文*本质上是*包含了 Lean 块的文档，因此 `document-structure` 与 `document-publishing` 适用于两者。这两个技能包是一个完整内容模型的两半，而不是二选一的替代关系。
 
-### 本地协调技能（`.claude/skills/local`）
+### 协调技能（`sdlc-core`、`work-plan`）
 
 | 技能 | 用途 |
 |-------|---------|
-| `prepare-merge` | 将分支带入干净、绿灯、可合并的状态（另请参阅 `/watch`） |
+| `prepare-merge` | 将分支带入干净、绿灯、可合并的状态（另请参阅 `watch`） |
 | `bean-coordination` | 多智能体认领与协作规范 |
 | `todo-manager` | 以 bean 作为待办事项（todo）的管理规范 |
 
 ### 平台技能包（`skills/tools/folio-core`、`folio-assistant-core/skills/content/folio-document-adapter`、`folio-assistant-sci/skills/content/folio-paper-adapter`）
 
-更大型的**平台技能包**（platform bundles），其中两个从 qou 内容仓库迁移而来（参见[迁移记录](https://github.com/litlfred/folio-assistant/issues/202)以及 issue [#27](https://github.com/litlfred/folio-assistant/issues/27)）。它们与具体内容无关，旨在同步到任何 folio 中：
+更大型的**平台技能包**（platform bundles）与具体内容无关，旨在同步到任何 folio 中：
 
 | 技能包 | 技能数 | 范围 |
 |--------|-------:|-------|
-| **`folio-core`** | 43 | 智能体协作、watcher 框架、QA／渲染／参考文献／词汇表流水线、文档、部署 — 适用于*任何*内容类型。 |
+| **`folio-core`** | 7 | 工具层：MCP 组装、契约与投影、技能与工具、工具编写、工具覆盖、部署认证 — 适用于*任何*内容类型。 |
 | **`folio-document-adapter`** | 4 | 纯文本（prose）folio：块创作、章/节结构、规范性陈述，以及无 TeX 发布路径。同样适用于论文。 |
 | **`folio-paper-adapter`** | 40 | 形式化数学论文适配器（任何 Lean 4 + LaTeX 论文）：Lean 工作流、证明工具链、内容对象验证、LaTeX、论文结构、导入、模拟器。 |
 
-不可削减的 QOU 物理专用技能已被跳过；其余技能中特定于 QOU 的示例均已完成通用化。每个技能包都附带一份 `package-manifest.json`。
+每个技能包都附带一份 `package-manifest.json`。
 
-> 技能**模式（schema）**（创作技能的类型化输入/输出）自动生成到[技能模式参考]({{ '/reference/skills/' | relative_url }})中 — 绝不会与框架验证的规则脱节。
+> 技能**模式（schema）**自动生成到[技能模式参考]({{ '/reference/skills/' | relative_url }})中。
 
 ---
 

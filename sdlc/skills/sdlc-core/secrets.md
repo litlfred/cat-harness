@@ -5,17 +5,15 @@ description: >
   one mechanism at a time, with the exact GitHub UI path for each step. Every
   step that touches a value is a person's; an agent drafts the steps, checks
   names and expiry dates, and records what was done. Leads with the GitHub App
-  on a personal account, the recommended mechanism (owner ruling D1=A).
+  on a personal account, the recommended mechanism.
 adapters: [document, paper, dak]
 profiles: [document, paper]
 ---
 
 # Secrets — the person handles the value, the agent handles everything else
 
-The design is [`docs/proposals/credentials-needs-and-supply.md`](../../../docs/proposals/credentials-needs-and-supply.md).
-This skill is its §6.3 made usable: the human steps per mechanism. The owner
-chose **one owner-owned GitHub App** for GitHub automation (D1=A) and the
-**capability naming rule** for secret names (D2=A, §4).
+The human steps per mechanism. GitHub automation uses **one owner-owned GitHub
+App**, and secret names follow the **capability naming rule** below.
 
 ## The boundary, first
 
@@ -42,7 +40,7 @@ belongs to the device holder or the institution's custodian.
 
 A secret is named for what it lets the workflow do, so the name survives a
 change of mechanism: `PUBLISH_SITE_BOOTSTRAP`, not `BOOTSTRAP_PAGES_TOKEN`;
-`PUSH_BRANCH_TRIGGERING_CI`, not `MERGE_MAIN_TOKEN` (§4.3). With the App, the
+`PUSH_BRANCH_TRIGGERING_CI`, not `MERGE_MAIN_TOKEN`. With the App, the
 stored pair is `HARNESS_BOT_ID` (a **variable**) and `HARNESS_BOT_PRIVATE_KEY`
 (a **secret**); a workflow mints a short-lived token from them and exposes it
 to its job under the capability name.
@@ -199,7 +197,7 @@ The agent, not the person:
 
 1. records the mechanism, the secret **name**, and the expiry or `rotateBy`
    date — never the value;
-2. runs `secrets:check` once it exists (bean `jzba`; until then, says that no
-   checker covers it rather than reporting clean);
+2. runs `secrets:check` where it exists; where it does not, says that no
+   checker covers it rather than reporting clean;
 3. dispatches one workflow that uses the credential, if a rule grants it
    `dispatch-workflow`, and reports green or red.

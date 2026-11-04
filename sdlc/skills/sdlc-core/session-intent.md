@@ -1,17 +1,15 @@
 ---
 name: session-intent
-description: Session-start intent declaration + session-end results recording, against the goal-scoped master ledger and queue file. Enforces the durable-handoff discipline so any agent can pick up another's thread.
+description: Session-start intent declaration + session-end results recording, against the work plan's goals (milestone beans) and their open beans. Enforces the durable-handoff discipline so any agent can pick up another's thread.
 user_invocable: true
 ---
 
 # /session-intent — durable session intent + results
 
-A coordination failure mode recurs whenever agents have no durable
-record of which tasks are in flight, what each one has already
-learned, or why a previous result was retracted: each new session
-re-discovers the same near-result and re-commits it, only to retract
-it again later. (A flip-flop episode — the same claim asserted and
-withdrawn repeatedly across sessions — is the classic symptom.)
+Without a durable record of which tasks are in flight, what each has already
+learned, and why a previous result was retracted, each new session
+re-discovers the same near-result and re-commits it, only to retract it again
+later (a flip-flop).
 
 This skill enforces the **read → declare → work → record** loop so
 the next session — possibly a different agent — picks up exactly
@@ -19,22 +17,14 @@ where the previous one left off.
 
 ## Where state lives
 
-**The ledger half of this skill named two paths that do not exist here**, and
-an agent following it stopped at step 1. Bean `z9eb`, measured 2026-09-20:
-`ls STATUS.md` and `ls docs/coordination/` both fail. The model came from
-another folio and was never re-homed when this instance moved its work plan
-into `beans/`. The queue half was right all along; only the ledger half
-pointed at nothing.
+Each job lives in the object that already owns it:
 
-**Where the ledger's four jobs actually live now**, each in the object that
-already owns it:
-
-| the ledger's job | here |
+| job | here |
 |---|---|
 | goals, and what serves each | a `milestone` bean per goal, with the epics parented to it — [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"A GOAL is a `milestone` bean"; `beans roadmap` renders it |
-| canonical status of an item | the bean itself. There is no second copy to disagree with it, which is what the "trust the ledger" rule existed to arbitrate |
+| canonical status of an item | the bean itself. There is no second copy to disagree with it |
 | flip-flop history | a `scrapped` bean keeps the rejected approach *with its reasons*, and a `trap` node under the declared `memory` graph keeps the failure signature — [`agent-memory`](../../../skills/conduct/conduct-core/agent-memory.md) |
-| session log | the bean's body notes, plus the PR. Both are durable and both are read by the next session; a third place would be a third answer |
+| session log | the bean's body notes, plus the PR. Both are durable and both are read by the next session |
 
 | Artifact | Purpose |
 |---|---|
@@ -45,10 +35,9 @@ already owns it:
 
 ### The dashboard is optional, and absent is not undetermined
 
-An instance MAY keep a `STATUS.md`-style dashboard, and some folios do. This
-one does not, and that is a **determined absence** rather than a gap: the
-milestones and `beans roadmap` answer the same question from the store, so a
-dashboard here would be a second copy free to drift from it.
+An instance MAY keep a `STATUS.md`-style dashboard. This one does not, and
+that is a **determined absence** rather than a gap: the milestones and
+`beans roadmap` answer the same question from the store.
 
 Three states, and the third is the one that gets collapsed:
 
@@ -72,20 +61,18 @@ illegitimate — it is a finding worth one line in the turn report, and possibly
 a new milestone.
 
 Then find your siblings: the open PRs, and the `Claude-Session:` trailer on
-recent commits. **The session API cannot see sibling sessions** — bean `ab3n` —
-so a branch and its PR are the only durable evidence that another session is
-working.
+recent commits. **The session API cannot see sibling sessions**, so a branch
+and its PR are the only durable evidence that another session is working.
 
 ### 2. Read the goal's epics and their open children
 
 Walk down from the milestone: `beans list` and read the epics parented to it,
 then their open children.
 
-- **Status** — the bean's own `status` is canonical. There is no second copy,
-  so there is nothing to arbitrate against it.
+- **Status** — the bean's own `status` is canonical.
 - **What was rejected** — read the `scrapped` beans in the archive before
   proposing an approach. That is what stops you re-entering a dead end, and it
-  is why `AGENTS.md` forbids deleting one.
+  is why a bean is never deleted.
 - **Traps** — the `memory` graph's `trap` nodes carry failure signatures.
   **Do not repeat any pattern recorded there.**
 - **What is in flight** — an `in-progress` bean, with the caveat that a claim
@@ -94,18 +81,19 @@ then their open children.
 
 ### 3. Read the queue
 
-Use the `beans` CLI to list current tasks. Run `beans list` to find:
+Run `beans list` to find:
 
 - **`todo` or `draft`** beans not yet picked up.
 - **`blocked`** beans waiting on dependencies.
-- Assignee: Check the bean body/comments to see if another agent is working on it. Multiple agents MAY pick the same item; coordinate with the user if you see this happen.
+- Who is working an item: check the bean body and its holder note. Multiple
+  agents MAY pick the same item; coordinate with the user if you see this
+  happen.
 
 ### 4. Declare intent (write)
 
 Three places, all required:
 
-**a. The bean, not a ledger** — append your intent to the bean you are working,
-naming your branch:
+**a. The bean** — claim the bean you are working, naming your branch:
 
 ```sh
 bun run cat beans:claim <id>
@@ -113,10 +101,9 @@ bun run cat beans:claim <id>
 
 A claim goes through `beans:claim`, not `beans update`: it reads the default
 branch first, refuses a bean somebody else holds, and records a holder note the
-next session's check can read. `beans update` writes no such note, which is why
-97 of 100 current claims are invisible to that check (bean `c3d7`).
+next session's check can read. `beans update` writes no such note.
 
-then append a note to its body saying what you intend and where you got to.
+Then append a note to its body saying what you intend and where you got to.
 The bean is the durable record a sibling reads; there is no separate session
 log to keep in step with it.
 
@@ -126,20 +113,16 @@ log to keep in step with it.
 > mints a fresh ID every call and dedupes on nothing, so re-entering this step
 > duplicates the whole plan rather than no-op'ing. Run the existence check in
 > [`todo-manager.md` §Check before you create](../../../work-plan/skills/work-plan/todo-manager.md) before **every**
-> `beans create` below. An unguarded re-run of exactly this step produced
-> 14,688 duplicate beans in one folio on 2026-08-04.
+> `beans create` below.
 
-- **Do not create a `Session: …` milestone or epic.** This step used to say
-  to, and in the `qou` folio 292 of 353 epics were the result (bean `8unf`):
-  a session is a LOG, and its log is the PR body (part c) plus a bean note on
-  each bean worked (`bun run cat beans:note <id>`, keyed by branch). Full
-  reasoning: [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"A session is a log, not a
-  parent".
+- **Do not create a `Session: …` milestone or epic.** A session is a LOG, and
+  its log is the PR body (part c) plus a bean note on each bean worked
+  (`bun run cat beans:note <id>`, keyed by branch).
+  [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"A session is a log, not a
+  parent" has the reasoning.
 - For each NEW task you pick up, create it under the epic whose subject it is:
   `beans create "<Task>" --type task --parent <subject-epic-id>`, then claim
   it.
-If working on an existing bean, run `bun run cat beans:claim <id>` — not
-`beans update`, per the note above.
 
 **c. PR body** — at branch-open, the PR body must include:
 
@@ -171,16 +154,18 @@ your workplan bean. A pickup (§"Hand-off pickup protocol") runs its own.
 
 For each task you worked, use the `beans` CLI:
 
-- If completed: `beans update <id> --status completed`. You should also add a summary comment using `beans update <id> --body-append "Completed with finding: ..."`.
-- If partial: leave `status: in-progress`, but append a comment: `beans update <id> --body-append "Partial result: ..."`.
-- If you discovered a NEW task: create a new bean via `beans create`.
-- If you retract a previous claim: append the retraction to the ledger's flip-flop history (Stop Repeating Yourself).
+- If completed: `beans update <id> --status completed`, with a summary:
+  `beans update <id> --body-append "Completed with finding: ..."`.
+- If partial: leave `status: in-progress`, and append
+  `beans update <id> --body-append "Partial result: ..."`.
+- If you discovered a NEW task: create a new bean via `beans create` (after the
+  existence check).
+- If you retract a previous claim: see step 2.
 
 ### 2. Record the results where they will be read
 
 Append them to the **bean**, which is where step 4a put the intent — what was
-confirmed, what remains, and the PR. One object, opened and closed, rather than
-an intent in one place and a result in another.
+confirmed, what remains, and the PR.
 
 If the session **retracted** a prior claim, that is not a body note. Two
 objects carry it, and they answer different questions:
@@ -188,8 +173,7 @@ objects carry it, and they answer different questions:
 - the approach that was rejected becomes a `scrapped` bean **with its
   reasons**, so the next agent does not re-enter it;
 - the failure *signature* — what made the wrong answer look right — becomes a
-  `trap` node in the `memory` graph ([`agent-memory`](../../../skills/conduct/conduct-core/agent-memory.md)), which
-  is what a flip-flop history was for.
+  `trap` node in the `memory` graph ([`agent-memory`](../../../skills/conduct/conduct-core/agent-memory.md)).
 
 ### 3. Update the PR body
 
@@ -207,8 +191,7 @@ Replace the placeholder `## Session results` section with:
 
 ## Multi-agent same-goal coordination
 
-Per author directive: **multiple agents MAY attack
-the same goal simultaneously**. The model is:
+**Multiple agents MAY attack the same goal simultaneously.** The model is:
 
 - **Goal** = product (user's directive).
 - **Queue** = per-goal item list, all agents read + write.
@@ -217,56 +200,52 @@ the same goal simultaneously**. The model is:
 - **Coordination is with the USER on goal-level decisions**, not
   agent-to-agent on task-level locks.
 
-When you discover a task you're working has been picked up by
-another agent (`co_assignees` populated, or you see a sibling PR
-commit touching the same scope):
+When you discover a task you're working has been picked up by another agent
+(another holder note on the bean, or a sibling PR commit touching the same
+scope):
 
 1. **Do not silently abandon** — your independent attack is
    valuable (different methods may surface different findings).
 2. **Post intent** on the sibling PR via `/coordinate` so the
    sibling agent sees you're also working it.
-3. **Ask the user** if they want both threads or want one to
-   stand down. Use `AskUserQuestion` with rich context (AGENTS.md
-   §User accessibility). Sample:
+3. **Ask the user** if they want both threads or want one to stand down,
+   with context, options and a recommendation first
+   ([`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)).
+   Sample:
 
    > 🟡 Two agents attacking task-foo-stability — sibling PR
    > #XXXX is at 50% with method A; I'd attack
    > with method B. Keep both threads?
 
-4. **If user says one stands down**, the standing-down agent
-   appends partial results to the ledger and updates queue
-   `status: "open"` (releasing it).
+4. **If the user says one stands down**, the standing-down agent appends its
+   partial results to the bean and releases its claim.
 
 ## Hand-off pickup protocol
 
 If you're the picking-up agent (someone else's `in-progress` task
 or partial result):
 
-1. Read the previous session log row in the ledger — that's the
-   handoff letter.
-2. Read the bean discussion/comments (`beans show <id>`) — that's the technical state.
-3. Read the partial PR (if open) — that's the code state.
-4. Declare your intent normally (claim the bean and add a note to it — `bun run cat beans:note <id>` — saying you picked it up and where you will start; no session bean).
-5. Re-run the collision review in `coordinate` §"Starting new work" before
+1. Read the bean's notes (`beans show <id>`) — that's the handoff letter and
+   the technical state.
+2. Read the partial PR (if open) — that's the code state.
+3. Declare your intent normally (claim the bean and add a note to it — `bun run cat beans:note <id>` — saying you picked it up and where you will start; no session bean).
+4. Re-run the collision review in `coordinate` §"Starting new work" before
    your first edit, and add the result to the bean.
 
 ## Anti-patterns
 
-- ❌ Starting work without reading the ledger first ("just-the-prompt"
-  agents miss retraction history and re-commit flipped claims).
+- ❌ Starting work without reading the goal's beans, `scrapped` beans and
+  traps first ("just-the-prompt" agents re-commit flipped claims).
 - ❌ Claiming a task but not writing the EOS results ("silent abandon").
-- ❌ Editing the queue file without also editing the ledger ("queue
-  drift").
-- ❌ Retracting a previous claim by quietly removing it from the queue
-  without updating the flip-flop history ("erasure" — guaranteed to
-  re-flip next session).
+- ❌ Retracting a previous claim quietly, without a `scrapped` bean or a trap
+  ("erasure" — guaranteed to re-flip next session).
 - ❌ Asking the user "should I pick this task?" — the queue is the
   authoritative list; just pick and declare.
 
 ## See also
 
-- AGENTS.md §Agent work-plan policy (the work-plan source rule)
-- AGENTS.md §Branch + PR workflow (the ALWAYS-PR rule)
-- `coordinate.md` (sibling-PR coordination)
-- `watch.md` (main-watching)
-- `pending-show.md` (showing current pending)
+- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) (the work-plan rules)
+- [`continual-progress`](continual-progress.md) (the ALWAYS-PR rule)
+- [`coordinate`](coordinate.md) (sibling-PR coordination)
+- [`watch`](watch.md) (main-watching)
+- [`pending-show`](pending-show.md) (showing current pending)

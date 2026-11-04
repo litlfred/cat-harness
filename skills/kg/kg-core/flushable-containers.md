@@ -17,8 +17,7 @@ things.** A trash you can recover from, a review preview somebody has not looked
 at yet, a console log you read back after a failure. The accumulation is the
 feature, which is why none of them can be solved by simply not writing.
 
-Three exist or are being built, and they are the reason this skill is general
-rather than three copies of one rule:
+Three containers share the rule:
 
 | container | what it holds | "flush" means |
 |---|---|---|
@@ -66,10 +65,9 @@ about, so `fsh-guts` is the one that most needs the badge rather than the one
 that needs it least: nothing else in the interface says it has grown, and the
 whole premise of keeping deleted things is that nobody is watching them.
 
-So does under. And so does **could not determine** — a container whose size could not be read is not under
-its limit, it is unmeasured, and rendering that as under is the defect this
-repository has paid for repeatedly (`check-ci-health`, `readme-sections`, the
-staging size check: *"'Could not read gh-pages' is never '0 MB of previews'"*).
+So does under. And so does **could not determine** — a container whose size
+could not be read is not under its limit, it is unmeasured: *"'Could not read
+gh-pages' is never '0 MB of previews'"*.
 
 A badge that shows a number it could not obtain is worse than no badge, because
 a reader acts on it.
@@ -97,11 +95,9 @@ Two container-specific sharpenings:
 
 ## Liveness gates the prune, and "cannot tell" spares the item
 
-An item can look dead and be live. Measured 2026-09-19 (bean `w2g5`): the
-staging orphan check called a preview abandoned because its branch had no open
-PR, when the branch had been committed to **two minutes earlier** by a session
-that reuses one branch across a run of PRs. "No open PR" was read as a synonym
-for "abandoned" and it is not.
+An item can look dead and be live. A branch with no open PR may have been
+committed to minutes ago by a session that reuses one branch across a run of
+PRs: "no open PR" is not a synonym for "abandoned".
 
 So a container declares its liveness signals, a prune candidate must fail
 **every** one, and a signal that could not be evaluated **spares** the item
@@ -110,49 +106,27 @@ rather than condemning it. For previews those signals are `open-pr`,
 
 ## A limit below the floor is not a limit, it is a permanent alarm
 
-**Measured 2026-09-19, and this is the finding that motivated the skill.**
-`STAGING_WARN_BYTES` is 100 MB, on the owner's instruction and a tenth of
-GitHub's 1 GB Pages budget. A single preview is **~38 MB**, so the limit holds
-**2.6 previews**. On that day the publish branch carried **9** previews totalling
-**346 MB**, of which — by the liveness rule above — exactly **2** were prunable,
-freeing 76.7 MB and leaving **269 MB**, still 2.7× the limit.
+A limit must sit above its **floor** — concurrent users × item size. A limit
+beneath its own floor cannot be satisfied, so it fires constantly, and a signal
+that always fires becomes invisible. When the floor exceeds the limit, the
+finding is about **item size or the limit**, never about pruning more
+aggressively.
 
-Seven live previews × 38 MB is a **266 MB floor** that no amount of pruning can
-go under while those sessions are working. A limit beneath its own floor cannot
-be satisfied, so it fires constantly — and a signal that always fires is the
-`xom7` defect, where a workflow failed 30 times and the failure became invisible
-*because* it was constant.
+**When you look at item size, look for duplication before content.** Staging
+previews built with an absolute `baseurl` of `/…/STAGING/<slug>` carry the slug
+on every page, so git's content-hash deduplication shares nothing between them:
+N previews store N copies of a site identical apart from its own address. **A
+container over its limit is a question about the container, and "prune more"
+is the one answer that never asks it.**
 
-**So the lever is the wrong one.** Pruning harder cannot fix a 266 MB floor; a
-38 MB preview can. A per-container limit needs a basis that states its floor —
-concurrent users × item size — and when the floor exceeds the limit, the finding
-is about **item size or the limit**, never about pruning more aggressively.
-
-**And when you look at item size, look for duplication before you look at
-content.** In this case 27.5 MB of each 37.5 MB preview was HTML, and **zero**
-HTML blobs were shared between two previews — because each is built with an
-absolute `baseurl` of `/…/STAGING/<slug>`, so the slug appears on 75 lines of
-every page and git's content-hash deduplication has nothing to hold on to. Nine
-previews stored nine copies of a site identical apart from its own address. The
-9× was in the addressing, not the docs, and no pruning policy could have found
-it — which is the general point: **a container that is over its limit is a
-question about the container, and "prune more" is the one answer that never
-asks it.**
-
-**But "make the references relative" is not the fix, and the owner caught this.**
-A reference is either an **address** or a **name**, and only addresses may be
-relativized. A stylesheet href is an address; a JSON-LD `@id` or a JSON Schema
-`$ref` is a name, and a relative one resolves against the *retrieval* URL — so
-the graph's identities become a function of how the file was fetched, and an
-out-of-band validator has no base at all. Deduplication is worth having; it is
-not worth buying with identity. The 5205 identity references in that corpus were
-left byte-for-byte alone, which is why the projection landed at ~77 MB rather
-than one copy: **the exports are a real floor, not a duplication artefact.**
-
-That is the rule's second application in one investigation. The first "prune
-more" was hiding a 9× duplication; a second one would hide a genuine floor —
-and a genuine floor is answered by a limit whose **basis states it**, never by a
-policy. Worked out in bean `xxku`.
+**But "make the references relative" is not the fix.** A reference is either
+an **address** or a **name**, and only addresses may be relativized. A
+stylesheet href is an address; a JSON-LD `@id` or a JSON Schema `$ref` is a
+name, and a relative one resolves against the *retrieval* URL — so the graph's
+identities become a function of how the file was fetched, and an out-of-band
+validator has no base at all. Deduplication is not worth buying with identity;
+identity references are left byte-for-byte alone, and what remains is a real
+floor, answered by a limit whose **basis states it**.
 
 ## Adding a container
 
@@ -166,10 +140,7 @@ Declare, do not infer:
 
 ## Not built yet
 
-The **viewer** — a counter, an over-full badge and a select dialog — is bean
-`7vhe`, deliberately separate: it is UI with different constraints, and `gjli`
-makes accessibility a standing rule, which a select dialog is the control most
-often shipped without. The **staging** mechanism is its own work (`w2g5`): a
-preflight plus a dispatchable cleanup path, because the label-based remedy was
-unreachable for exactly the previews the check can find. This skill is the
-concept those two implement, not a third implementation of it.
+The **viewer** — a counter, an over-full badge and a select dialog — is separate
+work: it is UI, and a select dialog must meet the accessibility rules. The
+**staging** mechanism is a preflight plus a dispatchable cleanup path. This
+skill is the concept those two implement, not a third implementation of it.

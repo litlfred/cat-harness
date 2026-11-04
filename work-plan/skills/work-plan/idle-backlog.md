@@ -3,16 +3,14 @@ name: idle-backlog
 description: >-
   While idle or waiting on a long-running async task (a build, a long compute
   script, a CI run, a background agent), pull the applicable backlog in priority
-  order and work non-conflicting items instead of stalling. Generalises AGENTS.md's
-  5-minute idle trigger into a reusable skill. Use whenever blocked on an async
+  order and work non-conflicting items instead of stalling. Use whenever blocked on an async
   wait with no substantive output to produce.
 ---
 
 # idle-backlog
 
-Generalises a 5-minute idle-trigger / work-the-queue-while-idle policy that
-used to live in `AGENTS.md` and now lives here: an agent waiting on an async result should **not** sleep or poll — it
-should pull the next applicable backlog item and advance it.
+An agent waiting on an async result should **not** sleep or poll — it should
+pull the next applicable backlog item and advance it.
 
 ## When to fire
 
@@ -47,7 +45,7 @@ Walk the queue top-down; take the first item that is **applicable** (see below):
 
 ## Always
 
-- **Narrate** in chat as tasks are taken up and completed (owner directive).
+- **Narrate** in chat as tasks are taken up and completed.
 - Microcommit + push each completed item.
 - When the async task finishes, return to it (report green/red), then resume the
   backlog.

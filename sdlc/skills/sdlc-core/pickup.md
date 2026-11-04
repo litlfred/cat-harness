@@ -17,16 +17,14 @@ The cure is: resolve ground truth first, in one batch, then dispatch.
 > content validation discipline, and CI-billing-failure rules. It does
 > not override them.
 
-## Hard rules (learned the expensive way)
+## Hard rules
 
 1. **NEVER trust a remembered branch name or PR title.** A PR number is
    the only stable handle. `git ls-remote` / a branch you "recall" is
    not — branch names drift and a PR number you were given may map to a
    *different* PR than its scope suggests. Always resolve `head.ref`,
    `title`, and body checklist by reading the PR (the *read change proposal*
-   [forge-operation Tool](../../../skills/tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)) for the literal number before doing anything. (Observed: PRs briefed
-   with invented branch names cause sub-agents to burn ~10 min each
-   discovering the mismatch and stopping.)
+   [forge-operation Tool](../../../skills/tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each)) for the literal number before doing anything.
 
 2. **A review targets a commit SHA — re-verify the nit is still live.**
    Gemini/Copilot review the commit at review time. Later commits on the
@@ -45,9 +43,9 @@ The cure is: resolve ground truth first, in one batch, then dispatch.
    without committing loses everything. Brief sub-agents to commit after
    the first substantive edit and push after each commit.
 
-5. **Classify CI before diagnosing it.** Per AGENTS.md: multiple jobs
-   failing in ≤5 s with identical `started_at` is the GitHub Actions
-   **billing** signature, not a code failure. Do not push retrigger
+5. **Classify CI before diagnosing it.** Multiple jobs failing in ≤5 s with
+   identical `started_at` is the GitHub Actions **billing** signature, not a
+   code failure ([`integration-watcher`](integration-watcher.md) §5f). Do not push retrigger
    commits; note it and move on. Real failures take ≥30 s.
 
 6. **Never merge.** Merge needs explicit user permission via
@@ -84,11 +82,10 @@ For each PR number, in a single message issue parallel calls:
 
 - *read change proposal* → `head.ref` (the REAL branch), `title`,
   `body` (checklist), `base.ref`, `mergeable_state`, `state`.
-  **Act on `mergeable_state` only when it reads `dirty`.** Bean `fx5r`
-  measured this endpoint serving a merged PR's PRE-MERGE view for 45
-  minutes, so `clean` and `unknown` can both be describing a PR that is
-  already gone; `unknown` additionally means *not computed yet* rather
-  than *cannot be determined* (`h2s9`). For "has this landed?", ask git:
+  **Act on `mergeable_state` only when it reads `dirty`.** This endpoint can
+  serve a merged PR's PRE-MERGE view for a long time, so `clean` and
+  `unknown` can both be describing a PR that is already gone; `unknown`
+  additionally means *not computed yet* rather than *cannot be determined*. For "has this landed?", ask git:
   `git merge-base --is-ancestor origin/<head> origin/<base>`.
 - its check runs → CI state.
 - its reviews and review comments → review
@@ -157,7 +154,7 @@ git worktree remove --force /tmp/pick-wt
 ```
 
 Commit message: `style(<area>): <fix> — address <reviewer> review`.
-Commit body ends with the session URL line (AGENTS.md).
+Commit body ends with the session's attribution lines.
 
 ### Step 5 — Reply frugally + report
 

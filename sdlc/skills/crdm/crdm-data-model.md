@@ -15,22 +15,18 @@ allowed-tools: Read Grep Glob Bash
 a folio modelling data outside a requirements process can read it without
 inheriting a methodology it is not running.
 
-Where the two disagree, **the technique wins and this page is wrong** — the
-same rule `AGENTS.md` states for a skill and its pointer.
+Where the two disagree, **the technique wins and this page is wrong**.
 
 ## Where it sits, and why there
 
 Between **requirements** (phases 2–4) and **sign-off** (phase 5).
 
-The reason is the direction of dependency. Requirements are statements about
-things; the model says what the things ARE. Draft the model too early and it
-is invented from nothing — the entities come from the business-process
-analysis, which is phase 2. Draft it too late and phase 5 signs off
-requirements whose nouns were never pinned, which is how two stakeholders
-approve the same sentence meaning different things.
+Requirements are statements about things; the model says what the things ARE.
+The entities come from the business-process analysis (phase 2), and phase 5
+must not sign off requirements whose nouns were never pinned.
 
-`Call_DataModel` in `crdm-requirements.bpmn` is the fifth `callActivity`,
-after `Call_Requirements` and before `Call_Signoff`.
+`Call_DataModel` in `crdm-requirements.bpmn` is the `callActivity` after
+`Call_Requirements` and before `Call_Signoff`.
 
 ## What it consumes
 
@@ -42,8 +38,7 @@ after `Call_Requirements` and before `Call_Signoff`.
 
 **A requirement the model cannot express is a finding, not a modelling
 failure.** It means the requirement is about something nobody has named, and
-the remedy is to name it — that is this phase's most valuable output and the
-reason it sits after requirements rather than before.
+the remedy is to name it.
 
 ## The sign-off, and who gives it
 
@@ -56,24 +51,21 @@ questions and are asked of two different lanes on purpose:
 - *Is it really one per?* — an operational question, and the people who run
   the process know where the exceptions are.
 
-The agent asks both and decides neither. CRDM's own rule for phase 1 —
-*"the BA knows the domain, the agent does not guess"* — applies here with
-more force, because a wrong cardinality is invisible until the data arrives.
+The agent asks both and decides neither: the BA knows the domain, the agent
+does not guess.
 
 ## What it hands on
 
 A declared model, readable by a tool, per step 6 of the technique. Phase 5
-signs off requirements **against** it, which is the whole point of ordering
-them this way: sign-off can now ask whether each requirement is expressible,
-not only whether it is wanted.
+signs off requirements **against** it: whether each requirement is
+expressible, not only whether it is wanted.
 
 ## The loop, and when to leave it
 
 Like every other CRDM phase this one loops until confirmed, and the gateway
 is the phase. **Leave when the BA recognises the entities and the
 stakeholders have answered every cardinality** — not when the model looks
-complete. A model with one unanswered cardinality is not 95 % done; it is a
-model with a hole exactly where the exceptions live.
+complete.
 
 ## Not decided by this skill
 

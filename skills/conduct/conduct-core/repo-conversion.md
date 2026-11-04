@@ -13,13 +13,12 @@ Scanner: `bun run cat-harness-tools/scripts/scan-repo-content.ts`.
 ## 0. The one rule
 
 **Scan, show, ask, then move — and never in any other order.** The author's
-repository is the thing of value in this operation; the scaffolding is
-replaceable and takes ninety seconds to regenerate. An import that guessed wrong
-about which of their files were sources and which were drafts is not fixed by a
-`git checkout`, because the author now has to work out what the agent did.
+repository is the thing of value; the scaffolding is replaceable. A wrong
+import is not fixed by a `git checkout`, because the author has to work out
+what the agent did.
 
-`Task_ConfirmImport` is marked `relaxable="false"` in the BPMN for this reason,
-and a content package may not declare it away.
+`Task_ConfirmImport` is marked `relaxable="false"` in the BPMN, and a content
+package may not declare it away.
 
 ## 1. Scan — read-only, and honest about its limits
 
@@ -37,23 +36,20 @@ It walks the working tree (respecting `.gitignore`) and sorts what it finds into
 | `content` | material authored here, that could become folio blocks | Markdown prose, `docs/`, `notes/`, `drafts/`, `.tex` |
 | `unclassified` | it could not tell | everything else, and it is reported, not hidden |
 
-**`unclassified` is the point.** A scanner that forces every file into one of
-two buckets has an accuracy that cannot be assessed, and its mistakes arrive as
-moved files. This one reports what it could not place, and the author disposes
-of it. The same third-state discipline as `readme-sections.ts` ("could not
-determine" is never rendered as "empty") and `pages-live-gate.dmn`.
+**`unclassified` is reported, never forced.** A two-bucket scanner's mistakes
+arrive as moved files; this one reports what it could not place, and the
+author disposes of it.
 
 The classification is by **path convention and extension only**. It does not
-read file contents, does not call a model, and is not trying to be clever —
-it is trying to be *fast, explicable and reversible*, so the author can
-disagree with any row of it in one word.
+read file contents or call a model, so the author can disagree with any row of
+it in one word.
 
 ### Outside-content candidate scanning — preserving evidence and refutations
 
 In repositories with formal, analytical, or domain-specific content, crucial
 verification scripts, macros, and counterexamples often live **outside** the
-primary content tree (`content/` or `folio/`). A conversion that carries only
-the primary content tree drops the evidence that some claims are false.
+primary content tree (`content/` or `folio/`); a conversion that carries only
+that tree drops the evidence that some claims are false.
 
 `scan-repo-content.ts` scans outside the content tree and classifies these
 artifacts into read-only candidate classifications (defined by the content-type
@@ -77,9 +73,8 @@ Present the scan as counts and a handful of examples per bucket, never as a
 
 **Q2 — where does each group go?** Only for groups the scan was not confident
 about, and only when Q1 was not "nothing". Offer `library/` vs `content/` per
-*directory*, not per file — a per-file interrogation of 400 PDFs is the
-accessibility failure in [`interaction-modality`](interaction-modality.md) §0
-with extra steps.
+*directory*, not per file (a per-file interrogation is the accessibility
+failure in [`interaction-modality`](interaction-modality.md) §0).
 
 **Q3 — leave in place, or reorganise?**
 1. **Leave everything where it is** *(recommended)* — the folio references the
@@ -89,14 +84,13 @@ with extra steps.
    Offer this only on a clean working tree, do it in its own commit, and use
    `git mv` so history follows.
 
-Recommend **leave in place** by default and mean it. Decluttering is a
-preference; a broken relative link in somebody's README is a defect.
+Recommend **leave in place** by default: a broken relative link in somebody's
+README is a defect.
 
 ## 2a. Markers — choose what the harness reads (declare, don't slurp)
 
-Owner, 2026-10-30T12:41Z: *"a harness can point to a repo, but doesnt want to
-automatically slurpo up all content in a repo. harness desclares what it it
-pays attention to in the repo."* The principle is
+A harness declares what it reads in a repository; it does not take all of
+its content. The principle is
 [directory-conventions](../../kg/kg-core/directory-conventions.md) §"A marker
 declares what is read, and nothing else is".
 
@@ -164,7 +158,7 @@ tokens:
 | **small swarm** | hundreds, or several distinct kinds | [`dispatch-agent`](../../../sdlc/skills/sdlc-core/dispatch-agent.md) — 2–4 agents partitioned **by directory**, never by file count |
 
 Partition by directory because a per-file partition puts two agents in the same
-manifest, and the resulting conflicts cost more than the parallelism saved.
+manifest.
 
 Open one bean per ingestion front before dispatching — running the existence
 check in [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) §"Check before you create" first —
@@ -179,8 +173,7 @@ the common case (`README.md`, `.gitignore`, a `docs/`). Read its report rather
 than assuming; the files it declined to write are the ones you now merge by
 hand:
 
-- **`AGENTS.md`** — if one exists, merge; do not replace. An existing `AGENTS.md`
-  is the most valuable file in the repository for the next agent.
+- **`AGENTS.md`** — if one exists, merge; do not replace.
 - **`README.md`** — never replaced. `readme-sections.ts` only writes inside
   marker pairs the author has opted into, so offer to add markers rather than
   content.
@@ -189,16 +182,15 @@ hand:
 **If the remote is empty, push `main` first.** A repository with work
 locally can still have an empty remote, and GitHub makes the first branch
 pushed to an empty repository its default. Run `init-folio` or push `main`
-before any feature branch (litlfred/dth-hrh, owner 2026-10-14).
+before any feature branch.
 
 **If `main` has no harness yet, land a setup-only PR first.** A fork or an
 existing repository whose `main` has no `index.config.json` and
 `index.lock.json` gives the full PR checks nothing to compare against: the
-base side fails before any test runs, and the PR's own gates are skipped
-(https://github.com/litlfred/cat-harness-tools/issues/1139). So open one small PR with only what `folio_init`
-writes and the pins, merge it, and only then branch for content. Draft-tier
-checks never build the base, so this does not show until the content PR
-leaves draft (litlfred/dth-sc#1, owner 2026-10-31).
+base side fails before any test runs, and the PR's own gates are skipped. So
+open one small PR with only what `folio_init` writes and the pins, merge it,
+and only then branch for content. Draft-tier checks never build the base, so
+this does not show until the content PR leaves draft.
 
 A harness built on this platform may add adoption steps of its own for its
 kind of repository, for example about CI that already publishes a site on
@@ -209,9 +201,7 @@ calling the conversion done.
 
 An overlay never reaches [`getting-started`](getting-started.md) §5 by
 itself, so this section repeats the one step a publishing route cannot skip:
-**provision `gh-pages` before GitHub Pages is switched on.** Owner,
-2026-10-01: *"need to create gh-pages branch before can turn on"*; repeated
-2026-10-07: *"need to create gh-pages before can deploy"* (issue #2417).
+**provision `gh-pages` before GitHub Pages is switched on.**
 
 The step is `Task_ProvisionGhPages` ("Provision gh-pages") in
 `getting-started.bpmn`,
@@ -235,27 +225,9 @@ wrong source: the workflow would push a branch Pages was never told to serve.
 [remote-mounts](../../kg/kg-core/remote-mount.md) its dependencies.** A mount
 brings layers in; it does not provision anything on the downstream's remote.
 
-### Worked example — litlfred/test
-
-litlfred/test is an overlay that remote-mounts its harness layers
-(its lock is the legacy `test.mount-lock.json` until it converts to `index.config.json` and `index.lock.json`: [`index-config`](../../kg/kg-core/index-config.md)) and publishes its L1 site from `main` through a
-workflow that pushes `gh-pages` (`.github/workflows/l1-kg.yml`). Its first
-plan, in litlfred/test#3, said "Pages source: GitHub Actions" and had no
-provisioning step. The owner caught it. In
-[litlfred/test#5](https://github.com/litlfred/test/pull/5) the branch was
-provisioned as `860f9c2` — an orphan commit holding exactly `index.html` and
-`.nojekyll`, which is what `--provision` writes.
-
-Run against that repository today, `pages-bootstrap.ts` reports `gh-pages
-branch: present on origin` and `Pages source expected: Deploy from a branch:
-gh-pages, / (root)`. Run against a copy whose remote has no `gh-pages`, it
-stops at `UNPROVISIONED` and exits 3, naming `--provision` — the step the
-original plan skipped.
-
 ## 6. Anti-patterns
 
-1. **Moving a file before Q3 is answered.** The non-relaxable step exists
-   because this is the tempting one.
+1. **Moving a file before Q3 is answered.**
 2. **Reporting a two-bucket classification.** If `unclassified` is empty on a
    real repository, suspect the scanner rather than celebrate it.
 3. **A per-file confirmation loop.** See §2.

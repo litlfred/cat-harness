@@ -45,11 +45,11 @@ on issue">
       <bpmn:documentation>Stakeholders sign off on the delivered feature on the issue, having tested the built artefact rather than a description of it.</bpmn:documentation>
     </bpmn:task>
     <bpmn:callActivity id="BA_Confirm" name="Confirm all criteria&#10;met" calledElement="Process_Adjudication">
-      <bpmn:documentation>The business analyst confirms every acceptance criterion from the requirements is met. The issue closes only on their authorisation — an agent never closes an issue on its own say-so. Since issue #2405 (FR-013) it IS an adjudication with the requirement-set answers: an approval here moves the set to `accepted`, which `check:requirements` refuses unless it is a human's and every approved member is `in-force`.</bpmn:documentation>
+      <bpmn:documentation>The business analyst confirms every acceptance criterion from the requirements is met. The issue closes only on their authorisation — an agent never closes an issue on its own say-so. It IS an adjudication with the requirement-set answers: an approval here moves the set to `accepted`, which `check:requirements` refuses unless it is a human's and every approved member is `in-force`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="adjudication"/>
         <cat-harness.processes:adjudication codes="approve amend reject defer cancel" list="adjudication-requirement-set"/>
-        <cat-harness.processes:fulfilment kinds="person" reason="A sign-off on a requirements document is the requester's decision about their own requirements (issue #2405 FR-011): `approved` and `accepted` need a HUMAN sign-off, which `check:requirements` refuses without, so an agent may not take this step on their behalf. An agent records the decision in A_RecordSignoff; it does not make it."/>
+        <cat-harness.processes:fulfilment kinds="person" reason="A sign-off on a requirements document is the requester's decision about their own requirements: `approved` and `accepted` need a HUMAN sign-off, which `check:requirements` refuses without, so an agent may not take this step on their behalf. An agent records the decision in A_RecordSignoff; it does not make it."/>
       </bpmn:extensionElements>
     </bpmn:callActivity>
     <bpmn:callActivity id="A_RecordSignoff" name="Record the sign-off attestation" calledElement="GT_RecordSignoff">

@@ -11,11 +11,9 @@ description: >
 
 # Subscribing to a knowledge graph
 
-Owner, 2026-09-30 (issue #1719): *"a way for a folio instance (or cat-harness
-in general) to "subscribe" to external KGs … they can choose to materialize
-some or all subgraphs … an asset reference … they can choose to materialize
-locally … instantiate one or more harnesses … so then harness appears in their
-navbar."*
+A folio instance, or any harness, can **subscribe** to an external knowledge
+graph: choose to materialize some or all of its subgraphs and assets locally,
+and instantiate one or more of its harnesses so they appear in the navbar.
 
 **A subscription is not a new mechanism.** It is the relation that joins pieces
 this repository already has: the materialisation record, the shared
@@ -29,7 +27,6 @@ one of them disagree, that one wins.
 | the entry | `SubscriptionSchema` in `cat-harness/schemas/kg/cat-harness.ts` |
 | the held-bytes record | the `folio-materialization/v1` record (`MaterializationSchema`, owned by the content layer) |
 | the gates | [`materialize-remote`](materialize-remote.md) and its process |
-| the design | `cat-harness/docs/proposals/kg-subscriptions.md` (epic bean `fnx4`) |
 
 ## When to subscribe — and when not to
 
@@ -63,17 +60,15 @@ subscribed; record the reason and the pin you asked at, and write no entry.
 Known substrates are derived from each staged instance's `repository` and
 each associated harness, with hand rows (`knownSubstrates`, schema
 `KnownSubstrateSchema`) only where no declaration names one. Start from that
-registry before asking the person for a repository name; where it is not built
-yet in your checkout (epic `fnx4` slice 2), the two derived sources are the
-list.
+registry before asking the person for a repository name.
 
 ## Pin, always
 
 `ref` is a **full 40-character commit SHA**. Never a branch, never an
 abbreviated SHA, never "latest". An unpinned subscription is how two
 subscribers see two different graphs under one name, and the schema refuses
-anything else — the same rule `sync-remote-skills.ts` already enforces for
-remote skills. A tag replaces the SHA only once the substrate publishes
+anything else — the same rule `sync-remote-skills.ts` enforces for remote
+skills. A tag replaces the SHA only once the substrate publishes
 releases.
 
 ## The entry holds the choice, never the state
@@ -148,8 +143,7 @@ choose its parent's id in `subgraphs` and ask for the part by path:
 bun run cat kg:materialize <subscription> skills/voices   # `skills` is chosen
 ```
 
-Owner, 2026-10-24 ([cat-harness-tools#744](https://github.com/litlfred/cat-harness-tools/issues/744), ruling 4). The snapshot is not
-changed and nobody re-subscribes. The snapshot holds the root declaration
+The snapshot is not changed and nobody re-subscribes. The snapshot holds the root declaration
 only, so a nested **id** cannot be checked against it offline. The parent's
 id can be, and the path is checked against the parent's declared path. The
 part goes through the same five gates and its record names the parent's `id`
@@ -193,13 +187,11 @@ config. The state directories go under the subscriber's own
 `holds: state`), at `<state dir>/<subscription>/<harness>/`; a subscriber that
 declares none is refused, with what to declare. They never go at the
 repository root, where a harness named after a staged instance would write
-into that instance's directory (gap G11, settled by the owner on 2026-10-30),
-and never under the snapshot directory, which holds upstream's bytes and is
-declared `readOnly` (owner, 2026-10-30, bean `w1gy` finding 1, option C:
-"split the directory"). **Where the checkout has a root `index.config.json`, the config goes
-INLINE in a new `instances[]` entry** and no `<harness>.config.json` is
-written (bean `ymvt`: the index is the one config, and it is then what reads
-as **instantiated**). Only a checkout with no index gets a root
+into that instance's directory, and never under the snapshot directory, which
+holds upstream's bytes and is declared `readOnly`. **Where the checkout has a
+root `index.config.json`, the config goes INLINE in a new `instances[]`
+entry** and no `<harness>.config.json` is written: the index is the one
+config, and it is then what reads as **instantiated**. Only a checkout with no index gets a root
 `<harness>.config.json`. The rule is
 [`index-config`](../../kg/kg-core/index-config.md)'s. Instantiation is what [`harness-tiles`](../../ui/ui-core/harness-tiles.md)
 reads, and what puts the harness in the navbar's bottom region. `check:instance-render` must be green afterwards; a config that renders
@@ -235,10 +227,5 @@ the old one did not.
 - **Delete** a materialised part to "unsubscribe" it on your own initiative. It
   is a durable artefact; report what would go and wait
   ([`deletion-requires-confirmation`](../../conduct/conduct-core/deletion-requires-confirmation.md)).
-
-## What exists and what does not yet
-
-The entry schema and the known-substrates list exist. The subscribe, subgraph,
-asset and instantiate **tools** are epic `fnx4`'s slices 4–7; until each lands,
-perform its step by hand following the process, and never skip a step because
-its tool is missing — least of all the gates.
+- **Skip a step because its tool is missing.** Perform it by hand following
+  the process — least of all the gates.

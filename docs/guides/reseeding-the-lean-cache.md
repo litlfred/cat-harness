@@ -8,49 +8,36 @@ nav_order: 5
 # Reseeding the Lean cache
 {: .no_toc }
 
-The cache branches are currently unusable for builds. This is the exact
-procedure to rebuild them.
+This is the procedure to rebuild the Lean cache branches when they lack
+traces, own-package oleans or the toolchain's static libraries.
 
-> **Branch names are changing.** The family is moving from `lake-cache/` to
-> `cat-lake-cache/` (bean `folio-assistant-32f6`). Until each repository's
-> branches are renamed, the scripts resolve a key to `cat-lake-cache/<key>`
-> if it exists, otherwise to `lake-cache/<key>` if that exists — for a
-> seed as well as a restore. The commands below name the legacy branches
-> explicitly; drop `--branch` and the script resolves the right one.
+> **Branch names.** The scripts resolve a key to `cat-lake-cache/<key>` if it
+> exists, otherwise to `lake-cache/<key>` if that exists — for a seed as well
+> as a restore. The commands below name the `lake-cache/` branches explicitly;
+> drop `--branch` and the script resolves the right one.
 
-> **Step 1 no longer needs elan, or unrestricted network.** elan's hosts
-> (`elan.lean-lang.org`, `release.lean-lang.org`) are unreachable from
-> the cloud authoring container, but elan is only a fetcher and the same
-> toolchain is a GitHub release asset, which *is* reachable.
-> `lake-cache.sh install-toolchain` fetches it directly — verified
-> in-container, static libs and all, with `lake exe` linking and running
-> (mathlib's `cache:exe` builds and links there).
->
-> **Step 2 still does.** Mathlib's cache CDN
-> (`mathlib4.lean-cache.cloud`, `lakecache.blob.core.windows.net`) is
-> blocked from that same container, and there is no GitHub-hosted mirror
-> of Mathlib's oleans to fall back on. These are two independent egress
-> restrictions — a working toolchain does **not** imply a reachable
-> cache. Step 2 onward still needs CI or a local machine.
+> **Network.** Step 1 needs neither elan nor elan's hosts
+> (`elan.lean-lang.org`, `release.lean-lang.org`), which are unreachable from
+> the cloud authoring container: `lake-cache.sh install-toolchain` fetches the
+> toolchain from GitHub release assets. Step 2 needs Mathlib's cache CDN
+> (`mathlib4.lean-cache.cloud`, `lakecache.blob.core.windows.net`), which is
+> blocked from that container and has no GitHub-hosted mirror, so Step 2
+> onward needs CI or a local machine.
 
 1. TOC
 {:toc}
 
 ---
 
-## What is wrong today
+## What a broken cache looks like
 
-`lake-cache/qou-v4-24-0` carries **7268 oleans, 0 traces, 0 own-package
-modules**. Three independent defects:
+Three independent defects:
 
 | Defect | Effect |
 |---|---|
-| No `.trace` files | Lake reads `.trace`, not `.olean`, to decide staleness. Untraced modules are "out of date", so a build rebuilds them — and **evicts** them. Measured: building one module ran 823 targets and cut 7268 oleans to 772. |
+| No `.trace` files | Lake reads `.trace`, not `.olean`, to decide staleness. Untraced modules are "out of date", so a build rebuilds them — and **evicts** them. |
 | No own-package oleans | Every build recompiles the paper; sibling `.lean` files cannot elaborate standalone. |
 | Toolchain branch has no `.a` files | `lean` elaborates but nothing **links**, so `lake exe …` fails — including `lake exe cache get`. |
-
-The cache has only ever worked for direct `lean` + `LEAN_PATH`. That is
-the whole "olean cache restore doesn't help" complaint.
 
 ## Just run the script
 
@@ -91,9 +78,8 @@ baseline to measure against.
 
 So a cache seeded from a source build makes *this* package build fast,
 while anything reaching a Mathlib module outside its import closure still
-rebuilds. That is fine for a single package's branch and is worth saying
-out loud before publishing to a **shared** one, since the branch outlives
-the session that seeded it.
+rebuilds. That is fine for a single package's branch; say so before
+publishing to a **shared** one.
 
 If you have the CDN, prefer it: it is both faster and wider. Use the
 source build when the CDN is unreachable, and say which route produced a
@@ -172,9 +158,8 @@ cd content/quantum-observable-universe/lean
 lake exe cache get
 ```
 
-This is the step the broken toolchain made impossible. Mathlib's upstream
-cache ships oleans **with** their traces, which is exactly what is
-missing. It takes minutes, versus hours to build Mathlib from source.
+Mathlib's upstream cache ships oleans **with** their traces. It takes
+minutes, versus hours to build Mathlib from source.
 
 Check it landed traced:
 
@@ -274,7 +259,7 @@ tar czf - "leanprover--lean4---$(cat ~/src/qou/lean-toolchain | cut -d: -f2 | tr
 ```
 
 Then push those parts to the branch the same way `seed --push` does.
-Verify with `restore-toolchain`, which now exits 3 if the `.a` files are
+Verify with `restore-toolchain`, which exits 3 if the `.a` files are
 absent.
 
 ## Afterwards
@@ -282,14 +267,3 @@ absent.
 Once a good branch exists, CI can keep it fresh: `lake-cache-refresh.yml`
 (in the content repo) delegates to this same script, so the format cannot
 drift and the guards apply there too.
-
-Then the blocked work becomes possible:
-
-- re-run `content/pipeline/lean-triviality-probe.ts` over the whole
-  corpus rather than the 43% that currently elaborate standalone;
-- `lake build` in CI stops being a from-scratch Mathlib compile.
-
-## Related beans
-
-`02kc` (missing traces), `ga7e` (toolchain static libs), `5d7z` (own
-oleans), `nimj` (blocked on all three).

@@ -19,8 +19,8 @@
       <cat-harness.processes:policy enforcement="strict"/>
       <!-- Capture ON: this process is where a feature request becomes a
            commitment, so the record of which phase ran and when is what a
-           stakeholder asks for afterwards. Explicit opt-in per the owner;
-           an unmarked process leaves capture undetermined and reaches no
+           stakeholder asks for afterwards. Explicit opt-in; an unmarked
+           process leaves capture undetermined and reaches no
            data store either way. -->
       <cat-harness.processes:log capture="on" />
     </bpmn:extensionElements>
@@ -74,7 +74,7 @@ They do not need to know it is called CRDM.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/></bpmn:extensionElements>
     </bpmn:callActivity>
     <bpmn:callActivity id="Call_DataModel" name="Data model&#10;Entities + cardinalities" calledElement="Process_CRDM_DataModel">
-      <bpmn:documentation>Between requirements and sign-off, and the order is the argument: requirements are statements about things, and the model says what the things ARE. Drafted earlier it is invented from nothing, since the entities come from the phase-2 BPA; drafted later, sign-off approves requirements whose nouns were never pinned — which is how two stakeholders approve one sentence meaning different things. Owner, 2026-09-20.</bpmn:documentation>
+      <bpmn:documentation>Between requirements and sign-off, and the order is the argument: requirements are statements about things, and the model says what the things ARE. Drafted earlier it is invented from nothing, since the entities come from the phase-2 BPA; drafted later, sign-off approves requirements whose nouns were never pinned — which is how two stakeholders approve one sentence meaning different things.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/></bpmn:extensionElements>
     </bpmn:callActivity>
     <bpmn:callActivity id="Call_Signoff" name="Phase 5&#10;Plan + sign-off" calledElement="Process_CRDM_Signoff">

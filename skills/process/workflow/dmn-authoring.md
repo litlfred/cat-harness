@@ -41,19 +41,16 @@ load error rather than a surprise at the moment of decision.
 literals, comparisons, and one-of. It **refuses** ranges, `not()` and function
 calls rather than mis-evaluating them.
 
-Write within that subset. A table using a construct the interpreter rejects
-fails at load — which is the right failure, but it is a failure you can avoid
-by knowing the boundary before you author.
+Write within that subset: a table using a construct the interpreter rejects
+fails at load.
 
 ## Three states belong in the table
 
-The tables here that work well encode "could not determine" as an outcome in
-its own right — `pages-live-gate.dmn` returns `live`, `not-yet` **and**
+Encode "could not determine" as an outcome in its own right — `pages-live-gate.dmn` returns `live`, `not-yet` **and**
 `unknown`; `folio-intent.dmn` returns `ask` when the filesystem cannot decide.
 
-That is not decoration. A gate whose only outcomes are pass and fail forces an
-unmeasured input to be rendered as one of them, and it is always rendered as
-pass. If your decision has an input that may be unavailable, give it a branch.
+A gate whose only outcomes are pass and fail forces an unmeasured input to be
+rendered as one of them. If your decision has an input that may be unavailable, give it a branch.
 
 ## Hit policy
 

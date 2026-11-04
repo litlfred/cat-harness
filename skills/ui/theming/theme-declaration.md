@@ -30,14 +30,12 @@ because a gradient with a single stop is a flat fill claiming otherwise.
 
 **Surfaces must be OPAQUE.** `ThemePaletteSchema.surface` is `z.string()`, so
 `rgba(…, 0.4)` parses — and `themes.test.ts` refuses it anyway, because the
-floating-sticky rule depends on it (see `theme-artefacts`, and bean `ivfw`).
+floating-sticky rule depends on it (see `theme-artefacts`).
 A premise a schema cannot hold is a premise that needs a test.
 
 ## All three layouts, or the theme is invalid
 
-`laptop`, `mobile`, `card`. The owner: *"themes need all three layouts to be
-defined to be considered valid."* Not a new vocabulary — exactly the set
-`<name>.json`'s `images[].layout` already uses.
+`laptop`, `mobile`, `card` — the set `<name>.json`'s `images[].layout` uses.
 
 **Missing a layout is invalid, never degraded.** There is deliberately no
 fallback to another layout's geometry: a theme that renders wrong on a phone
@@ -47,7 +45,7 @@ fallback to another layout's geometry: a theme that renders wrong on a phone
 
 `ThemedTodoFields.theme` and the landing sticky's required `theme` are the
 whole selection surface: an id, set by an author. **This is a rule, not a
-gap**, and it has read as a gap to two agents already.
+gap.**
 
 - **A role is a swimlane, not a property of a thing.** Nothing *is* a reviewer;
   somebody *acts as* one for a lane. A theme keyed on role would make a note's
@@ -70,10 +68,8 @@ survives a re-export at another size.
 | `textRegion` | where the picture is **quiet** — where words may be drawn | per LAYOUT, because the same cloud sits elsewhere in a portrait crop. Absent means **do not overlay text**, never "anywhere is fine" |
 | `avatarRegion` | where the **subject** is — the box a square frame clips to | per IMAGE and **square in pixels**. Absent means **no avatar can be cut from this image**, never "use the whole frame" |
 
-**Both are judgements about a composition, and that is why they are authored.**
-The laptop backdrop has a thought-cloud whose lower interior is clear, an `@`
-mark in its top third, and a cat's ear rising into its lower left — a box
-avoiding all three was found by rendering candidates and looking at them.
+**Both are judgements about a composition, and that is why they are authored**
+— found by rendering candidate boxes and looking at them.
 
 **`avatarRegion` is square in PIXELS, checked against `width` and `height`.**
 Equal fractions are square only on a square image: on a 1671x941 landscape crop
@@ -88,8 +84,7 @@ ones reads as verified and is not.
 ## What the declaration cannot tell you, ever
 
 **Whether the box is on the right thing.** Square, in bounds, and framing a
-patch of sky are compatible — two of the first seven avatar crops were exactly
-that, and only a render caught them. So:
+patch of sky are compatible. So:
 
 > Whatever declares a region is **looked at**, not diffed.
 

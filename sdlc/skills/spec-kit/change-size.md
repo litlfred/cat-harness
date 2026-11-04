@@ -10,16 +10,14 @@ consulted: true
 
 # Change Size Rule — Threshold, Basis, and Complexity Weighting
 
-## Origin & Decision
-
-Originates from **github/spec-kit** and GitHub issue #754 (child 4 of 5 under #730).
-
-**Owner ruling, 2026-10-07 (FR-009)**:
-> *"The change-size rule should be a report-only advisory limit initially at ~400 lines of non-generated/non-lockfile code, weighting prose and KG documentation lower, transitioning to a blocking CI gate once calibrated against PR history."*
+The rule comes from **github/spec-kit**: a report-only advisory limit of ~400
+lines of non-generated, non-lockfile code, with prose and KG documentation
+weighted lower, to become a blocking CI gate once calibrated against PR
+history.
 
 ## The Threshold and its Basis
 
-A threshold without a basis is received wisdom wearing a decimal point. Like the health checks under `test/health/`, this rule structurally requires its basis:
+Like the health checks under `test/health/`, the threshold carries its basis:
 
 | Field | Value |
 |---|---|
@@ -62,7 +60,7 @@ A change can be large in lines while being trivial to adjudicate, or small in li
 2. **Generated Artefacts**: `*.jsonld`, `*.doc.json`, `*.qa.json`, `*.script-qa.json`, `_site/`, `dist/`. Build and pipeline products whose source is audited elsewhere.
 3. **Uniform Mechanical Changes**: Automated renames, bulk import path migrations, or file relocations that preserve logic, provided they carry a **recorded justification** in the PR description.
 
-## Splitting Strategy — GitHub Sub-Issues (Child 5 / issue #755)
+## Splitting Strategy — GitHub Sub-Issues
 
 When a proposed change exceeds 400 effective lines, or when a feature represents
 a multi-increment delivery:
@@ -85,8 +83,8 @@ a multi-increment delivery:
 5. If a PR cannot be split below 400 effective lines, it MUST record its justification
    in the PR description.
 
-## Reporting Format (SC-005)
+## Reporting Format
 
-Per **SC-005**, compliance metrics must always be reported as a **count with its denominator**, never as a bare percentage:
+Compliance metrics must always be reported as a **count with its denominator**, never as a bare percentage:
 - Correct: *"4 of 32 PRs (12.5%) exceeded the advisory threshold."*
 - Incorrect: *"12.5% of PRs exceeded the threshold."*

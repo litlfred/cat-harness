@@ -4,26 +4,10 @@ consulted: true
 
 # Where a proposal goes — the issue, not the documentation
 
-**A design proposal is a comment on the issue it is for.** Not a page in
-`docs/`. Owner, 2026-09-19:
-
-> bad habit, do not do... put feature developemnt/etc proposals in the
-> doucmentaiton. the should be attached as comment to appporiate issues (for
-> now tooling is github) or in discussion chat. do not pollute the KG with
-> SDLC churn.
-
-## The habit this corrects, with the evidence
-
-Measured 2026-09-19: `docs/folio-assistant/proposals/` held **four** files.
-One of them, `deployment-topologies.md`, was written and merged that same day
-by the session that then added a further section to it an hour later — so
-this was a live habit producing new churn, not old debt being tidied.
-
-All four moved to `fsh-guts/`. That broke their published URLs, including
-links in issues #363 and #223 and a comment posted an hour earlier pointing at
-`deployment-topologies.html`. **The breakage is the cost of the habit, paid
-once**; it is written here so the next agent does not have to pay it again to
-learn the rule.
+**A design proposal is a comment on the issue it is for** (the forge is
+GitHub for now), or in the discussion chat. Not a page in `docs/`: do not
+pollute the knowledge graph with SDLC churn. A proposal published as a page
+that later moves breaks every link to it.
 
 ## Why it is wrong beyond taste
 
@@ -59,18 +43,11 @@ options the platform chose for its work-plan store.
 | how an agent should behave | a **skill**, per `AGENTS.md`'s own banner |
 | what a reader of the folio needs | **`docs/`** |
 
-## The exception, stated so the rule survives contact
+## The exception
 
-**Not everything in a proposal is churn.** The reasoning that survives a
-decision is often the most valuable thing written that week, and pretending
-otherwise gets the rule ignored the first time it is inconvenient.
-
-The line: the **argument** is churn and belongs on the issue; the **rule that
-came out of it** is durable and belongs in the skill it governs, in a
-paragraph, with the evidence that established it. This repository already
-does that well — `AGENTS.md` and the `folio-core` skills are full of "this was
-measured on this date and here is what it cost", and none of that is a
-proposal document.
+**Not everything in a proposal is churn.** The **argument** is churn and
+belongs on the issue; the **rule that came out of it** is durable and belongs
+in the skill it governs, in a paragraph.
 
 So the move is not "delete the thinking". It is: put the conclusion where it
 is enforced, put the argument where it is discussed, and keep the long form in

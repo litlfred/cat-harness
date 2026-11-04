@@ -12,13 +12,10 @@ The order is **declared, not computed**, in each instance's `needs` array:
 { "name": "<content-core>", "needs": ["bootstrap", "cat-harness"] }
 ```
 
-It is declared for a measured reason. The layering was real before it was
-written down, but it lived only in prose, so every consumer that needed the
-order had to already know it — and the first one that did would have hardcoded
-four names, which is a rule true only for the instances somebody remembered.
+It is declared so that no consumer has to hardcode the instance names.
 
 `needs` is **OPTIONAL**, and an absent value means *undetermined* rather than
-*needs nothing*. The two are genuinely different: `[]` is an instance asserting
+*needs nothing*. `[]` is an instance asserting
 it sits on nothing, which is true of exactly one instance here, while absent is
 nobody having said. A consumer treating absent as `[]` would place every
 unlabelled instance on the floor beside the bootstrap. Names are used rather
@@ -36,7 +33,7 @@ own carrier here:
 | **depends** | Content → Content | `needs` — the layer stack, foundation first |
 | **references** | Tool → Content, Test → Content | `remoteGraphs` — a graph this instance knows about and does not hold |
 | **utilizes** | Tool → Tool, Test → Tool, App → Content | `dependencies` in the config — what this instance USES, overlaid |
-| **associated** | Content ↔ Content, any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (issue #1146, skill `associate-harness`) |
+| **associated** | Content ↔ Content, any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (skill `associate-harness`) |
 
 **Only `depends` fixes an order**, so only `depends` can have a cycle in it,
 and a cycle there is a defect rather than a shape. A Tool repository

@@ -19,15 +19,9 @@ a QA report, a mounted declaration, a materialised source, a data sharing
 grant. [`qa-report-signing`](qa-report-signing.md) is this skill applied to one
 subject, and keeps only what is particular to QA reports.
 
-From the owner, 2026-10-30 14:37Z:
-
-> "JsonWebSignature2020 is kept for now, 2025 is also supported. up to
-> jurisdiction. there is the skill of 'signing' and the tool we need to
-> differentiate."
-
-And at 15:45Z, on the tool: **verify only**, wrapping an existing open-source
-library, plus key lookup. There is no `sign` tool unless the harness itself
-must issue grants or sign its own logs.
+The skill (this file) and the tool are different things. The tool is **verify
+only**, wrapping an existing open-source library, plus key lookup. There is no
+`sign` tool unless the harness itself must issue grants or sign its own logs.
 
 ## The split: this skill, and the tools
 
@@ -103,7 +97,7 @@ No new code list. Store each suite under the name its own standard gives it:
 | VC-JOSE-COSE | the media type: `application/vc+jwt`, `application/vc+sd-jwt`, `application/vc+cose` (and the `vp+` forms) | W3C Securing Verifiable Credentials using JOSE and COSE (Recommendation, 15 May 2025) |
 | plain JOSE / COSE | the `alg`, e.g. `ES256`, `EdDSA` | IANA JOSE and COSE algorithm registries |
 
-**`JsonWebSignature2020` is kept for now** (owner, 2026-10-30). W3C
+**`JsonWebSignature2020` is accepted.** W3C
 discontinued it, but WHO GDHCN signs its trust list with it, so a verifier
 that trusts GDHCN must accept it for that list. When it is dropped, that is a
 policy edit to an anchor's list. It is not a code change.

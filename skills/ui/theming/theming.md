@@ -9,37 +9,24 @@ description: >
 
 # Theming, split on the stage it fails at
 
-**Every file here is named for the skill it declares, and that is load-bearing
-rather than tidy.** `servableSkills()` in `scripts/kg-audit.ts` derives a
-skill's id from its FILENAME, while `package-manifest.json` lists its `name:` —
-so a file whose basename differs from its `name:` is declared, present, and
-reported as `manifest-skill-exists` because the two sides never meet. Measured
-here on the first pass: six criticals, from six files named for their stage
-instead of for their skill.
+**Every file here is named for the skill it declares.** `servableSkills()` in
+`scripts/kg-audit.ts` derives a skill's id from its FILENAME, while
+`package-manifest.json` lists its `name:`, so a file whose basename differs
+from its `name:` is reported as `manifest-skill-exists`.
 
-**Authored as a skill rather than as a `README.md`, and that is not a
-formality.** `isSkillMd` is declaration-over-location: a markdown file in a
-`cat-harness` directory that does not declare `$schema:` **is** a skill, so a
-README here would enter the graph as one with no `name` to be fetched by. It
-would also be the one orientation file an agent could not reach through
-`skill_fetch`, which is the route `AGENTS.md` tells it to use.
+**This map is a skill, not a `README.md`.** `isSkillMd` is
+declaration-over-location: a markdown file in a `cat-harness` directory that
+does not declare `$schema:` **is** a skill, so a README here would enter the
+graph as one with no `name`, unreachable through `skill_fetch`.
 
-**This is a PACKAGE under `skills/`, not a top-level declared directory**, and
-the difference was paid for. Two sessions built this package independently on
-2026-09-20: one relocated `theme-art-intake`, `create-sticky-note` and
-`site-presentation-assets` out of folio-core into `skills/ui/theming/`; the other
-wrote the stage split, the visualiser and the documentation entry into a
-top-level `cat-harness/theming/`. The merge kept both halves and took THIS
-location on evidence — bean `lps0` measured that `kg-audit`'s `skillFiles()`
-walks a hardcoded `skills/`, so a top-level topical directory silently drops
-its skills out of skill QA, and `theme-art-intake` would have lost the sidecar
-it has here.
+**This is a PACKAGE under `skills/`, not a top-level declared directory**:
+`kg-audit`'s `skillFiles()` walks `skills/`, so a top-level topical directory
+would drop its skills out of skill QA.
 
 ## The axis, and the ordering matters more than the names
 
-The owner, 2026-09-20, asked for theming skills *"broken up thematically"* and
-then chose the axis: **"1 + 2, then specialized to 3"** — three levels, not a
-choice between three options.
+Three levels: pipeline stage first, producer/consumer as the direction each
+stage faces, and per-artefact specialisation last.
 
 | | stage | faces | what it owns |
 |---|---|---|---|
@@ -49,12 +36,9 @@ choice between three options.
 | 4 | [`theme-contrast`](theme-contrast.md) | **consumer** | scrims, WCAG, and why the measurement is over pure black |
 | — | [`theme-artefacts`](theme-artefacts.md) | specialisation | sticky, landing board, docs background, navbar avatar — only what DIFFERS |
 
-**Stage is primary because that is how the failures actually arrive.** Four
-rounds of *"still not image"* were one cause, and each round was one stage.
-
-**Going artefact-first would duplicate intake and contrast into every
-artefact** — the shape that put the scrim rule in one skill's prose and let it
-be rediscovered rather than read. Stage-first with specialisation last means a
+**Stage is primary because that is how failures arrive**: each one is at one
+stage. **Going artefact-first would duplicate intake and contrast into every
+artefact.** Stage-first with specialisation last means a
 new artefact inherits the stages and declares only its difference. The avatar
 crop boxes are the worked example: the *rule* that a crop is declared data
 belongs to `declaration`, and the *boxes themselves* are navbar-avatar
@@ -77,24 +61,18 @@ missing rule is where it goes wrong.
 | it is right everywhere except on one surface | `theme-artefacts` |
 | a page flashes white (or light) before going dark on load | `theme-artefacts` §"The page ground: the first paint is DARK" |
 
-## Why this directory exists at all
+## What else is theming, outside this directory
 
-Theming was spread across places that do not name themselves as theming:
-`schemas/ui/themes.ts`, `schemas/ui/theme.ts`, `schemas/content/landing-sticky.ts`, the
-generated `docs-ui.css`, `themes:css`, `check:theme-art`, the scrim measurement
-rules and the avatar crop boxes — with the discipline recorded in one skill's
-prose and nowhere else. Bean `1hvo`.
-
-**`skills/ui/ui-core/theme-ui-review.md` deliberately did NOT move here.** It
-is a UI review skill covering branding, languages and findings discipline;
-theming is one of its subjects rather than its subject. A directory that takes
-every file with `theme` in the name is a directory nobody can describe.
+The code: `schemas/ui/themes.ts`, `schemas/ui/theme.ts`,
+`schemas/content/landing-sticky.ts`, the generated `docs-ui.css`, `themes:css`
+and `check:theme-art`. `skills/ui/ui-core/theme-ui-review.md` stays in
+`ui-core`: it is a UI review skill, and theming is one of its subjects rather
+than its subject.
 
 ## Looking at it
 
 `bun run cat theme:sheet` renders every theme — palette, measured contrast, and
 each layout's art with its `textRegion` and `avatarRegion` drawn. It PRINTS and
 never gates, because the question it answers is one no assertion can carry: the
-schema can prove a box is square and inside the frame, and a box that is both
-and still frames a patch of sky is exactly how two of the first seven avatar
-crops shipped.
+schema can prove a box is square and inside the frame, not that it frames the
+subject.

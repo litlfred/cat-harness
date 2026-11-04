@@ -2,7 +2,7 @@
 
 ## Covers
 
-- Declared visualiser `cat-harness/site` (cat-harness `visualisers`, `renderedBy: site-viewer`, `coversKinds: ["basic-cdn-site"]`; bean `folio-assistant-6gme`, owner 2026-10-20: "Build route listing").
+- Declared visualiser `cat-harness/site` (cat-harness `visualisers`, `renderedBy: site-viewer`, `coversKinds: ["basic-cdn-site"]`).
 - Generator: `cat-harness-tools/scripts/gen-site-viz.ts` (`bun run cat site:viz`), one page at `<base>/en/cat-harness/site/`, built at publish (`builtAtPublish`, cause `state`, from `site`).
 - Drawn from the generated page against the `gh-pages` tip of 2026-10-20; the route table is cut to six rows of the 58, and the two other states are drawn below it, although a real page shows exactly one state per site.
 

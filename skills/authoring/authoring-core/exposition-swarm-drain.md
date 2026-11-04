@@ -50,7 +50,7 @@ autonomously, without hand-editing block by block.
    the swarm, then **auto prepare-merge** each swarm PR (via
    `/prepare-merge-auto`). Runs the drain loop until every batch is
    merged or explicitly parked. Does **not** stop for check-ins — go
-   until completely drained (owner directive 2026-07-04).
+   until completely drained.
 2. **Swarm agent (grouped batch)** — each agent owns **one branch** and
    **one grouped batch** of blocks (not one block per agent — that
    over-creates PRs; see §3). It audits and resolves its whole batch,
@@ -58,15 +58,14 @@ autonomously, without hand-editing block by block.
 3. **Auto-merge** — the foreground runs `/prepare-merge-auto` on each
    returned PR: rebase, one-voice + lean checks, request reviews,
    resolve mechanical comments, merge (rebase-merge default). Merge is
-   pre-authorized for this drain (owner directive); architectural review
-   comments still escalate via `AskUserQuestion`.
+   pre-authorized for this drain; architectural review comments still
+   escalate via `AskUserQuestion`.
 
 ## 2. The audit rubric (what each agent scores)
 
-Score each block on the eight Milnor hallmarks, 0–2 each
-(authoritative: `expo-milnor-clarity` spec,
-`docs/requirements/2026-07-04-folio-assistant-proof-narrative-checkers.md` §5A (no longer in this repository);
-author-facing: the active author-voice exposition standard skill):
+Score each block on the eight Milnor hallmarks, 0–2 each (authoritative: the
+`expo-milnor-clarity` criterion; author-facing: the active author-voice
+exposition standard skill):
 
 | | Hallmark |
 |---|---|
@@ -79,7 +78,7 @@ author-facing: the active author-voice exposition standard skill):
 | H7 | Surgical cleanliness / right-tool framing |
 | H8 | Respect for the reader's time and intelligence |
 
-**Gate (owner ruling 2026-07-04, STRICT):** `T = ΣHi`. `T = 16` → **pass**;
+**Gate (STRICT):** `T = ΣHi`. `T = 16` → **pass**;
 `12 ≤ T ≤ 15` → **warn**; `T ≤ 11` → **fail**. Perfection is the bar.
 
 Also flag the deterministic narrative defects (independent of the score):
@@ -94,12 +93,11 @@ Also flag the deterministic narrative defects (independent of the score):
 
 - **One agent per grouped batch**, batch = a **chapter** (or a
   sub-cluster of a large chapter). Never one-block-per-agent — that
-  fragments into hundreds of PRs and violates the "minimize PR creation"
-  rule (AGENTS.md).
+  fragments into hundreds of PRs.
 - **Size cap:** ≤ ~40 blocks per batch AND ≤ 49 files per resulting PR
   (the Gemini review limit). Split big chapters into coherent
-  sub-clusters by section or topic stem. Get the actual per-chapter
-  counts from the folio rather than a remembered table — they drift:
+  sub-clusters by section or topic stem. Get the per-chapter counts from
+  the folio:
 
   ```sh
   for d in content/*/*/; do
@@ -120,15 +118,10 @@ Resolve agents edit `.md` prose only. They **must not**:
 - convert a "Proof (sketch)" to "Proof" unless the complete argument is
   **already present** (else leave it and set `needs_owner`).
 
-**DO-NOT-TOUCH-DERIVATIONS rule (STRICT, added 2026-07-04 after a live
-incident).** A resolve agent must **not edit the prose of a derivation,
-computation, or proof body at all** — not even to "tighten" or "clarify"
-it. Polishing a derivation can make a *wrong* one read more cleanly and
-authoritative, which is worse than leaving it rough. (Incident: the swarm
-reworded a `frobenius-relation-su2` derivation that was mathematically
-false — it conflated the Hopf comultiplication with the Frobenius
-comultiplication — and the cleaner prose lent the error false authority;
-Gemini caught it, PR #3301.) Therefore:
+**DO-NOT-TOUCH-DERIVATIONS rule (STRICT).** A resolve agent must **not edit
+the prose of a derivation, computation, or proof body at all** — not even to
+"tighten" or "clarify" it. Polishing a *wrong* derivation lends it false
+authority. Therefore:
 - **Only edit the *surrounding exposition*** — the intro/motivation
   sentence, the notation-introduction, a redundant restatement *outside*
   the derivation, the closing interpretation. Leave every derivation /
@@ -147,9 +140,8 @@ or any edit that would touch a derivation body — is returned as
 `needs_owner` with a reason, **never** auto-faked or auto-polished.
 
 **The review layer is the backstop, not the gate.** Every swarm PR still
-goes through `/prepare-merge-auto` (Gemini + Copilot) before merge; that
-layer caught the incident above. Do not merge a content batch on the
-swarm's self-check alone.
+goes through `/prepare-merge-auto` (Gemini + Copilot) before merge. Do not
+merge a content batch on the swarm's self-check alone.
 
 Every resolve agent runs the render sanity battery before committing
 (balanced `$`/`$$`/`{}`, no `\operatorname` → `\mathrm`, no list-hijack
@@ -202,7 +194,7 @@ return results.filter(Boolean)
 ## 7. Interaction with the flag-preservation guard
 
 The Milnor gate can `fail`, so its verdicts are real blocking flags. Per
-`qa-flag-preservation-audit.ts` (PR #3289), a distrusted `expo-milnor-clarity`
+`qa-flag-preservation-audit.ts`, a distrusted `expo-milnor-clarity`
 verdict must be **re-audited**, never `n/a`-cleared. Keep the per-block score
 vector in the sidecar so a re-review re-scores rather than re-guesses.
 
@@ -215,8 +207,8 @@ of `needs_owner` blocks for the author.
 
 ## Cross-references
 
-- Rubric spec: `docs/requirements/2026-07-04-folio-assistant-proof-narrative-checkers.md` §5A
+- Rubric: the `expo-milnor-clarity` criterion
 - Author voice: the active content layer's exposition-standard skill
 - Merge pipeline: `sdlc/skills/sdlc-core/prepare-merge-auto.md`
-- Sister drain: `.claude/skills/local/integration-backlog.md`
-- Flag guard: `pipeline/qa-flag-preservation-audit.ts`
+- Sister drain: [`integration-backlog`](../../../sdlc/skills/sdlc-core/integration-backlog.md)
+- Flag guard: `qa-flag-preservation-audit.ts` (the folio's pipeline)

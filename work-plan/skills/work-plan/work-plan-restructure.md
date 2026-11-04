@@ -16,27 +16,13 @@ graph-typologies:
 # Restructuring a work plan — a reviewed plan, not a bulk edit
 
 [`lsi-indexing`](../../../skills/kg/graph-management/lsi-indexing.md) §"Epic filing"
-ends with **"never apply the proposal in bulk"**, and for a proposal nobody has
-read that is right. It leaves a gap, though. A store that needs thousands of
-moves cannot be repaired one bean at a time, and nothing said what lies
-between those two. **This skill is the middle path: a plan file a person reads,
-approves, and can undo.**
-
-**Why it exists, measured.** The `qou` folio's store on 2026-10-04 (issue
-#2106, bean `ffu4`):
-
-| finding | count |
-|---|---|
-| beans | 5,371 |
-| epic-typed beans that were session logs | 292 of 353 |
-| in-progress beans untouched > 14 days | 567 of 584 |
-| duplicate groups, mostly generator re-runs filing one Lean declaration twice | 141 |
-| open beans from machine-generated template families | ~307 |
-
-Every one of those is fixable by a rule. Applying any rule across 5,000 beans
-unread is exactly what `deletion-requires-confirmation` and the `lsi` method's
-refusal 3 forbid. The plan is how the rule gets read without each bean being
-read alone.
+ends with **"never apply the proposal in bulk"**. A store that needs thousands
+of moves — session logs typed as epics, stale claims, duplicate groups,
+generated template families — cannot be repaired one bean at a time either.
+**This skill is the middle path: a plan file a person reads, approves, and can
+undo.** Applying a rule across thousands of beans unread is what
+`deletion-requires-confirmation` and the `lsi` method's refusal 3 forbid; the
+plan is how the rule gets read without each bean being read alone.
 
 ## 1. State the taxonomy as data, first
 
@@ -93,10 +79,9 @@ it:
 | stale claim | `bean-stale-in-progress` / `bean-quiet-claims` in `bun run cat health`, network-checked by `check:quiet-claims` | `rule:stale-claim` |
 | unparented | `check:bean-parents` | `rule:orphan` |
 
-**`lsi:epics` prints a calibration line, and the plan carries it.** On this
-store it measured 59 % agreement (2026-09-29). A latent row is therefore a
-proposal that is wrong about two times in five. It is never presented as a
-finding.
+**`lsi:epics` prints a calibration line, and the plan carries it.** Its
+agreement rate is well short of certain, so a latent row is a proposal, never
+presented as a finding.
 
 Write the plan as a **bean note** on the bean that owns the restructure
 (`bun run cat beans:note <id>`), with the summary first and the rows as a table.
@@ -171,5 +156,4 @@ has since moved is skipped rather than clobbered.
 - **Run unattended.** No step from 3 onward happens without the owner's
   approval for that plan.
 - **Fix the cause.** If a generator or a skill is minting the beans being
-  scrapped, fix that first, the way bean `8unf` fixed `todo-manager` before
-  any session log was touched. Otherwise the plan is repaired again next week.
+  scrapped, fix that first. Otherwise the plan is repaired again next week.

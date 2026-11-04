@@ -16,10 +16,9 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 ---
 
-> L'installation est la partie facile. Ce qu'il faut exécuter **avant de pousser** (push), c'est
-> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }}) —
-> la réussite de `bun test` ne garantit pas le passage des « gates », et la liste est dérivée du
-> workflow de CI plutôt qu'écrite noir sur blanc. Si vous intégrez folio-assistant sur
+> Ce qu'il faut exécuter **avant de pousser** (push), c'est
+> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }}) ;
+> la réussite de `bun test` ne garantit pas le passage des « gates ». Si vous intégrez folio-assistant sur
 > un dépôt déjà existant, lisez d'abord
 > [`repo-conversion`]({{ '/reference/skill-instructions/repo-conversion.html' | relative_url }}).
 
@@ -39,11 +38,8 @@ moment de l'exécution et peuvent être installées à la demande.
 | Java 21 + IG Publisher + SUSHI | IGs WHO SMART (L3) | voir le [guide WHO SMART IG](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`, puis le guide |
 | `pandoc`, `ripgrep` | conversions, recherche | `apt install pandoc ripgrep` | `winget install JohnMacFarlane.Pandoc BurntSushi.ripgrep.MSVC` |
 
-Vous n'avez pas besoin de tout cela — installez uniquement ce qu'exigent les types de contenu que vous
-rédigez. La sonde de capacités intégrée vous indique ce qui manque.
-
-> **Seul Bun est requis.** Chaque autre ligne est spécifique au type de contenu et fait l'objet d'une sonde au
-> moment de l'exécution ; n'installez donc rien d'autre tant que `check-deps` ne le demande pas.
+Seul Bun est requis. Chaque autre ligne est spécifique au type de contenu et fait l'objet d'une sonde au
+moment de l'exécution ; n'installez donc rien d'autre tant que `check-deps` ne le demande pas.
 
 ## Cloner et installer
 
@@ -96,9 +92,7 @@ et `bun run cat bat:sync:check` fait échouer la CI si l'un d'eux est manquant o
 `cat-harness-tools/scripts/start-folio-assistant.sh` installe Bun s'il est manquant et
 démarre ensuite le serveur, et
 `cat-harness-tools/adapters/mcp-server/install.sh` est un installateur plus complet couvrant également TeX
-Live. Tous deux n'étaient pas documentés jusqu'au 2026-09-21
-([#740](https://github.com/litlfred/folio-assistant/issues/740)) — c'est pourquoi
-cette section existe.
+Live.
 
 ## Vérifier votre environnement
 

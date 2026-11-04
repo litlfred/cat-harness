@@ -14,9 +14,9 @@ consulted: true
 
 # Never encode a constraint you have not verified
 
-Owner, 2026-09-19: **"dont encode rules against a working setup."**
+**Do not encode rules against a working setup.**
 
-## The asymmetry, which is the whole argument
+## The asymmetry
 
 A constraint in a schema, validator or gate is a **refusal**, and the two ways
 it can be wrong are not symmetric:
@@ -26,10 +26,8 @@ it can be wrong are not symmetric:
 | a **missing** constraint | a bad setup gets through | it fails at the point of use, with the real error |
 | a **wrong** constraint | a good setup is refused at the gate | **nobody** — the message asserts the thing is impossible, and nobody investigates a settled question |
 
-The second is the expensive one precisely because it looks like the system
-working. Same asymmetry as rendering "could not check" as green
-([`ci-health`](../../../sdlc/skills/sdlc-core/ci-health.md)): a confident wrong answer costs more than a
-visible absence.
+The second is the expensive one because it looks like the system working: a
+confident wrong answer costs more than a visible absence.
 
 So an **asserted but unverified** constraint is left OUT of the gate and
 written down as an open question. Not encoded "provisionally" — a provisional
@@ -47,16 +45,13 @@ Encode either of these and nothing else:
 
 If you cannot produce one of those, you have a question, not a constraint.
 
-## The worked case
+## A worked case
 
-`docs/proposals/deployment-topologies.md` §3 leaves `private repo` ×
-`github-pages` **out** of its incompatibility table. Issue #363 states it as
-flatly unavailable — but GitHub has offered Pages on private repositories on
-paid plans, and the account's entitlement was never checked. Encoding #363's
-claim would have refused a topology that may well work, with a message saying
-it cannot.
-
-The absence in that table is the rule being followed, not an oversight.
+Whether GitHub Pages works on a **private** repository depends on the
+account's plan. Unless the account's entitlement has been checked, `private
+repo` × `github-pages` stays **out** of an incompatibility table: encoding
+"unavailable" would refuse a topology that may well work, with a message
+saying it cannot.
 
 ## It reads the same in both lanes
 

@@ -3,7 +3,7 @@
   "tool": {
     "id": "content-graph-build",
     "title": "Content graph",
-    "description": "Build the content graph under a path and report its edges, separated into the EDITORIAL relation an author maintains and the FORMAL one derived from Lean. Reading the two as one number is how the editorial signal gets overwritten.",
+    "description": "Build the content graph under a path and report its edges, separated into the EDITORIAL relation an author maintains and the FORMAL one derived from Lean.",
     "install": {
       "none": true
     },

@@ -25,9 +25,9 @@ each extending the base. A voice counts
 only once the harness config **activates** it (`voice.active` in
 its `index.config.json` entry) — the same switch every other voice uses.
 
-The owner's ruling on bean `rkqp` sets the boundary: **an agentic review, with no
-formal gate on rule content.** "Best practice" drifts, and a vendor describing
-its own product is an assertion, not evidence. So:
+The boundary: **an agentic review, with no formal gate on rule content.**
+"Best practice" drifts, and a vendor describing its own product is an
+assertion, not evidence. So:
 
 - the criterion `skill-voice-review-current` (`minor`, gated by nothing) asks
   only whether a review exists for the skill and voice **as they are now**;
@@ -78,7 +78,7 @@ its own product is an assertion, not evidence. So:
    review is a judgement, so it is kept as `voice_reviews` in the skill's
    attestation file, `<instance>/test/attestations/kg-qa/<skill path>.attestations.json`
    (`qa-attestations/v1`), on `main` — not in the derived kg-qa sidecar, whose
-   record moves to the `qa-reports` branch (bean `2gst`, arc `3fva`). Commit
+   record is on the `qa-reports` branch. Commit
    the attestation file. A store that cannot be read is UNKNOWN and the writer
    refuses rather than overwriting it.
 

@@ -12,7 +12,6 @@ a running process:
 
 > **Context is READ during a process and never written by one.**
 
-That is the definition the graph layer uses, and it is checkable rather than a
-matter of taste. A step that writes to a Context graph is a defect, not an
+The graph layer checks it. A step that writes to a Context graph is a defect, not an
 update — which is exactly what makes an overlay reproducible: if a run could
 modify its own context, the second run would not be the same experiment.

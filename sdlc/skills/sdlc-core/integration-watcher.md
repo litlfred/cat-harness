@@ -78,8 +78,7 @@ watcher and its one-line QA axis, then surface the structured chip set.
 
 Per [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md) the repo owner types with
 difficulty and prefers a small set of binding behavioural defaults.
-These override the historical watcher defaults — every child inherits
-them.
+Every child inherits them.
 
 1. **One branch / one PR for related things.** Group many related
    fixes (especially backlog items) into a single branch + single PR.
@@ -96,9 +95,8 @@ them.
    all in one branch, stacked as multiple commits if they need
    different commit messages. Don't split into N small branches.
 
-These rules supersede any "default to parallel" / "one PR per item"
-framing earlier in this document. When in doubt: cluster more,
-dispatch fewer agents, ask before parallelising.
+When in doubt: cluster more, dispatch fewer agents, ask before
+parallelising.
 
 ## 0c. Sibling coordination
 
@@ -123,10 +121,6 @@ branches:
   sibling; new comments addressed to "all watchers" or referencing
   your branch's keywords are actionable backlog items.
 
-This rule supersedes the historical "post on the PR only when asked"
-framing — proactive coordination on workplan start + during idle is
-now the default.
-
 ## 0d. AskUserQuestion accessibility
 
 Per [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md) and its `low-dexterity`
@@ -147,11 +141,9 @@ owner types with difficulty.
 
 ## Where each section lives
 
-This skill was 1281 lines. An agent reads it before acting, every time, and at
-that length it skims — so the parts that apply to one phase are beside it
-rather than in here. **Nothing was deleted and no section was renumbered**,
-because children cite the parent by number (`parent §4b`, `parent §5m`) and
-those citations have to keep resolving.
+The parts that apply to one phase are in files beside this one. Section
+numbers are shared across them, because children cite the parent by number
+(`parent §4b`, `parent §5m`).
 
 | § | what | where |
 |---|---|---|
@@ -187,8 +179,8 @@ own-branch commit; failure blocks the commit, queues the violation as
 
 ## 8. Integration
 
-- **Built on**: `local/watch` (Monitor scaffolding), `local/coordinate`
-  (PR triage helpers).
+- **Built on**: `watch` (Monitor scaffolding), `coordinate` (PR triage
+  helpers).
 - **Dispatches**: see each child's Slot C.
 - **Produces**: `beans/${NAME}-queue.json` (live state) +
   `beans/${NAME}-ledger.md` (event log).

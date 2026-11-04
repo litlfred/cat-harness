@@ -73,8 +73,8 @@ the AGENTS.md user-accessibility convention.
 
 ## Workflow (per axis)
 
-For each resolved axis, run §1 → §6 in order. The loop body in §2-§5
-repeats until the axis is exhausted or the author types "stop".
+For each resolved axis, run §1 → §4 and then §6 in order. The loop body in
+§2–§4 repeats until the axis is exhausted or the author types "stop".
 
 ### §1. Audit — count + cluster open findings
 
@@ -181,10 +181,9 @@ the FULL autonomous merge pipeline:
 See [`sdlc/skills/sdlc-core/prepare-merge-auto.md`](prepare-merge-auto.md)
 for the full workflow specification.
 
-**Note**: the previous §4 + §5 logic (manual review-comment triage +
-separate pre-merge confirmation) is now subsumed by
-`/prepare-merge-auto` phases 2–4. The merge-method default (rebase) and
-the owner-confirmation requirement are preserved in the skill's Phase 4.
+Review-comment triage and the pre-merge owner confirmation are
+`/prepare-merge-auto` phases 2–4; the merge-method default (rebase) and the
+owner-confirmation requirement are in its Phase 4.
 
 ### §6. Loop control
 
@@ -219,8 +218,7 @@ When multiple axes are requested:
 
 ## Persistence — `beans/integration-backlog-ledger.md`
 
-Per `integration-watcher §0a` (work-plan policy) and `coordinate §0a`
-(ledger discipline), every batch decision and merge outcome is appended
+Per the coordination ledger rule (`coordinate` §9), every batch decision and merge outcome is appended
 to:
 
 ```
@@ -246,16 +244,17 @@ This is the resume target for sessions that drop the loop mid-campaign.
 ## Integration
 
 - **Built on**: `integration-watcher` (audit identification),
-  `integration-watch` (dispatcher pattern), `local/prepare-merge` (merge
-  workflow), `local/coordinate` (ledger / sibling-PR coordination)
+  `integration-watch` (dispatcher pattern), `prepare-merge-auto` (merge
+  workflow), `coordinate` (ledger / sibling-PR coordination)
 - **Dispatches to**: per-axis `Agent` calls for mechanical batches,
   direct edits for trivial ones, AskUserQuestion for judgement
 - **AGENTS.md links**:
   - work-plan policy (beans queue + idle-trigger)
   - User-accessibility (🟡, multi-select default, structured branch
     names)
-  - `litlfred/qou` `AGENTS.md` "Combine related work into one branch / one PR" — interpreted here
-    as "combine related batches when ≤ 49 files; otherwise split"
+- **One branch / one PR for related things** (`integration-watcher` §0a,
+  rule 1) — interpreted here as "combine related batches when ≤ 49 files;
+  otherwise split"
 
 ## Examples
 
@@ -268,9 +267,8 @@ User: /integration-backlog one-voice
   §2: AskUserQuestion for batch 1 (emoji tables, 17 blocks, 23 files)
   user answers `apply mechanically`
   §3: branch + commit + push + PR #952
-  §4: /prepare-merge; reviewer posts 2 comments; both mechanical → fixed
-  §5: AskUserQuestion "merge?" — user says merge
-  merged
+  §4: /prepare-merge-auto; reviewer posts 2 comments; both mechanical → fixed;
+      AskUserQuestion "merge?" — user says merge; merged
   → §6: loop to batch 2 …
 
 User: /integration-backlog all
@@ -300,9 +298,6 @@ User: /integration-backlog all
   (monitor, no commits)
 - [`integration-watcher`](integration-watcher.md) — abstract parent for
   the concrete watchers
-- [`local/prepare-merge`](prepare-merge.md) — the merge workflow each
+- [`prepare-merge-auto`](prepare-merge-auto.md) — the merge workflow each
   batch runs through
-- [`local/coordinate`](coordinate.md) — sibling-PR coordination
-- `litlfred/qou` `AGENTS.md` "Combine related work into one branch / one PR"
-  and its structured-branch-name rule
-```
+- [`coordinate`](coordinate.md) — sibling-PR coordination

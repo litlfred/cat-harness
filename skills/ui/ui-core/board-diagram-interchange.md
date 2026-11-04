@@ -8,12 +8,8 @@ description: >
 
 # Relationship first, visualisation later
 
-**One sentence, and it is the owner's:**
-
-> treat it like OMG specs and BPMN layout. **relationship first, visualiztion
-> alter.**
-
-BPMN separates the semantic model — `bpmn:process`, its tasks and its flows —
+Treat a board like the OMG specifications treat BPMN layout: **relationship
+first, visualisation later.** BPMN separates the semantic model — `bpmn:process`, its tasks and its flows —
 from **Diagram Interchange**: `BPMNDiagram`, `BPMNShape`, `BPMNEdge`, which say
 where each of those was drawn. They are two documents about one subject, and
 the layout one points **at** the semantic one, never the other way.
@@ -25,7 +21,7 @@ semantic model        notes, anchors, content nodes     what is true
 diagram interchange   board-positions.json              where it was drawn
 ```
 
-## What follows, and it is four things rather than a preference
+## What follows
 
 **A folio is complete with no board.** Deleting every board loses layout and
 no content. That is the test to apply when you are unsure whether something
@@ -33,9 +29,8 @@ belongs on the board or in the folio: if losing it would lose a fact, it is not
 layout.
 
 **A note carries no `x`, no `y`, no `board`, no `position`** — for the same
-reason a BPMN task carries no coordinates. The owner said it directly: *"it
-lives on top of notes, not data within notes"*, and *"notes exist lower down
-than folio. make sure arrows correct."*
+reason a BPMN task carries no coordinates: layout lives on top of notes, not
+as data within them.
 
 **One note may sit on several boards**, at different places, without the note
 arbitrating between them. A coordinate on the note could not express that; a
@@ -86,10 +81,9 @@ folio** — a query rather than a stored list, because a list of content nodes
 needs something to notice that a listed node was renamed and that a new one was
 never added, and a query has nothing to fall behind.
 
-That decision also answered a question nobody asked it. The owner later said
-every harness above the floor *"has a board filled with all contents"*, and
-**"filled with all contents" turns out to be the absent filter** — so the
-minimal board and the total board are the same document.
+Every harness above the floor has a board filled with all contents, which is
+the absent filter — so the minimal board and the total board are the same
+document.
 
 ## Mergeability is the reason for the shape, and its limit is stated
 
@@ -100,8 +94,7 @@ reshuffled on save would conflict with every other save.
 
 **It is a partial fix.** Two notes that sort *adjacent* still conflict, because
 the inserted lines overlap. This removes the guaranteed conflict, not every
-conflict, and saying so is what stops the next person trusting it further than
-it goes.
+conflict.
 
 ## What this skill is NOT
 

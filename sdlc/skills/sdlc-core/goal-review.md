@@ -15,24 +15,6 @@ allowed-tools: Read Grep Glob Bash Agent AskUserQuestion
 
 # Goal review — cold start, sweep a window, prioritise against stated goals
 
-Authored 2026-09-20 from a live session (bean `mgta`, issue #578): the owner
-asked for "a synopsis of all that was active in the last 4 hrs — what is
-closed, what is open, what needs to be done (work effort)", classified
-against three goals, then asked that the interaction become this skill. The
-numbers in this file are that session's measurements, kept as provenance for
-the rules; they are not a description of the repository today.
-
-**And a number is not the only thing that goes stale.** A sentence like *"the
-API may not be able to see them: on DATE eight lookups returned not found"*
-welds a **present-tense capability claim** to its dated evidence, and a
-disclaimer about numbers does not reach the claim — a reader takes the first
-clause as guidance and never re-tests it. So in this file every dated
-observation is **labelled as one**, and every instruction is written in the
-present tense as something to DO. Where the two have since disagreed, both are
-kept: the observation with its date, and what re-measurement found. Bean
-`8nzu`, opened after this skill's own axis 1 sent its first reader the wrong
-way.
-
 **This is a review, not a plan.** It reads everything and writes only work
 items for the gaps it finds. Picking up the queue it produces is
 [`pickup`](pickup.md); declaring intent is [`session-intent`](session-intent.md);
@@ -51,12 +33,8 @@ Keep the owner's wording for a goal verbatim through the whole report. A goal
 paraphrased by the agent is a different goal, and the reader cannot tell
 which one the queue was built for.
 
-**No goals given — but the store may already hold them.** Bean `tjj6`,
-measured 2026-09-24: the owner ran `/goal-review 1d` with no goals while the
-store carried three goal milestones (`vuip`, `p5wm`, `yg29`) — exactly the
-objects §"Goals that are not in the store are a gap" exists to create — and the
-review built no queue, dropping the one input the store could supply. So with
-no goals given, list the open milestones (`beans list -t milestone`), each
+**No goals given — but the store may already hold them.** With no goals
+given, list the open milestones (`beans list -t milestone`), each
 title **verbatim**, and offer them as the queue basis in the closing question.
 Say which milestones **quote the owner** (their body carries the owner's own
 words) and which are a milestone's wording only — a title is the owner's words
@@ -66,10 +44,9 @@ section forbids, one level up.
 ## Cold start — before any durable read
 
 Run the instance's cold-start line (the top of `AGENTS.md`), so the work-plan
-Tool is in hand and primed. Two things learned the hard way:
+Tool is in hand and primed.
 
-- **The line can be wrong.** On 2026-09-20 it named a path that had moved in
-  the repository split, in both `AGENTS.md` and the README. If it fails, the
+- **The line can be wrong.** If it fails, the
   fallback Tool for the work plan still exists — find it through the tools
   graph, do not stop — and the failure is the first instruction gap to record.
 - **Fetch every branch, not just the default.** Most of a window's activity
@@ -87,27 +64,15 @@ and a `task_summary` that carries a held question in plain text. **Fall back to
 commit trailers when it does not answer, and report "could not determine" when
 neither does.** Never present the fallback as the method.
 
-**Reading the listing — measured, bean `4dxv` (2026-09-24).** It is ordered by
-**creation, not activity**: a 40-row page held 22 sessions updated in a 1-day
-window interleaved with ones last active weeks earlier, and page 2 held none.
+**Reading the listing.** It is ordered by **creation, not activity**, so
+in-window sessions are interleaved with ones last active weeks earlier.
 **Page until a whole page was created before the window opened, then stop** —
 a session cannot be updated before it exists, so no later page can hold an
-in-window row. Stopping at the first page with no *in-window* row is right for
-that reason and no other; a reader who does not know the order either stops at
-page 1 or pages forever. The listing is large (~75 KB per 40 sessions): parse
+in-window row. The listing is large (~75 KB per 40 sessions): parse
 it, do not read it, and note the JSON sits inside an untrusted wrapper line.
 Read `status_bucket` / `session_status` and `task_summary`; a summary on a
 session that requires action is a **held question — quote it**, it is the
 sweep's most valuable line.
-
-*Dated observation, 2026-09-20, kept as provenance and NOT as a capability
-claim:* eight lookups by id returned *not found* and the listing showed only
-the asking session. **Contradicted 2026-09-21**, when the same listing returned
-seven siblings with their statuses — and with four sessions' pending questions,
-which the trailer route cannot reach at all. The earlier sentence here asserted
-that the API "may not be able to see them", welding a present-tense claim to
-its dated evidence, and a reader who followed it skipped the query and missed
-the sweep's headline. Bean `8nzu`.
 
 The trailer route, for when it is needed: the durable identity of a session is
 the trailer it leaves on its commits. Sweep the window's commits across all
@@ -126,7 +91,7 @@ with merged distinguished from abandoned; and open, sorted by last update.
 For each open one, read the merge state, the CI outcome on the current head,
 the last comment, the reviews, and whether the body or last comment carries
 a question to the owner — quote the question. "Green" means every check on
-the head passed; a head with no checks is not green (bean `3pqn`).
+the head passed; a head with no checks is not green.
 
 **4. The work plan.** Diff the store between the window's two edges: items
 added, and every status transition (`todo → completed`, `in-progress →
@@ -134,37 +99,29 @@ completed`, `todo → in-progress`, anything → `scrapped`). Then two
 measurements the store's own status field cannot give you:
 
 - **Claims without activity** — items `in-progress` with no change in the
-  window. On 2026-09-20 that was 43 of 60, and 38 of the 43 had last been
-  touched by one bulk move hours earlier. `in-progress` records a claim; it
+  window. `in-progress` records a claim; it
   does not record that anyone is working ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)
-  §"A claim is branch-local").
+  §"A quiet claim").
 - **Items that exist only on a branch.** The store is committed per branch,
   so a long-running proposal can carry an entire epic the default branch has
-  never seen (13 of 14 items for one goal, that day). Sweep the open
+  never seen. Sweep the open
   branches' stores too, or the review is blind to the largest workstream.
 
   **Compare against `origin/main`, never a bare `main`** — the local ref is
   whatever this container last checked out, and nothing moves it. A session
   fetches `origin/main` and fast-forwards its own branch; the local `main`
-  just sits there. Bean `065p`: written as `git diff main..origin/<branch>`,
-  with local `main` **2655** commits stale, every branch appeared to carry
-  **566-573** unmerged beans where the true count against `origin/main` was
-  **1**. Off by ~570x, and in the direction that manufactures a crisis — an
-  agent reading that concludes the work plan has fractured across branches and
-  starts reconciling something intact. Re-measured in a different container
-  2026-09-27: **3277** commits stale, so the trap grows rather than ages out.
-  Both spellings are grammatical and one is silently wrong by two orders of
-  magnitude, which is why the ref is named here rather than left to the reader.
+  just sits there, often thousands of commits stale, and a count against it
+  can be wrong by two orders of magnitude in the direction that manufactures a
+  crisis.
 
   **And if you cannot confirm the baseline is fresh, report `could not
   determine` rather than a count.** An unverifiable baseline is not a
-  measurement — the same rule as rule 1 above, applied to the ref rather than
-  to the corpus. Confirming it is cheap:
+  measurement — §Rules, rule 1, applied to the ref. Confirming it is cheap:
 
   ```sh
   # Resolve the default branch, then FALL BACK — `origin/HEAD` is unset in some
-  # clones, measured 2026-09-27: without the fallback this exits 128 in exactly
-  # the container the check is for. `session-start-coord-sweep.sh` does the same.
+  # clones, and without the fallback this exits 128.
+  # `session-start-coord-sweep.sh` does the same.
   DB="$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's@^origin/@@')"
   [ -n "$DB" ] || DB=main
   git fetch origin "+refs/heads/$DB:refs/remotes/origin/$DB"
@@ -173,22 +130,14 @@ measurements the store's own status field cannot give you:
 
   An explicit refspec, not a bare `git fetch origin $DB`: the bare form updates
   `refs/remotes/origin/$DB` only when `remote.origin.fetch` happens to cover it,
-  and exits 0 when it does not (bean `9giz`).
+  and exits 0 when it does not.
 
-  A count derived from a ref you did not check is the `dh4f` shape inverted:
-  rather than scanning nothing and reporting clean, it scans the wrong
-  baseline and reports a catastrophe.
-
-  **Then compare by bean ID, never by file diff against a merge base.** Bean
-  `x6lu`, measured 2026-09-24, and NOT the same trap as `065p` above: with a
-  fresh `origin/main`, `git diff --diff-filter=A origin/main...origin/<branch>
-  -- beans/defs` listed **131** added beans for a branch 822 commits behind;
-  by id, **1** was absent from main. `A...B` diffs against the **merge
-  base**, which predates everything main gained since — so the count
-  inflates with how far behind the branch is, the same symptom as a stale
-  ref from a different cause. Across that day's 19 unmerged branches: 152 by
-  file diff, 20 unique by id. The check, ids on the branch minus ids
-  anywhere on main (archive included):
+  **Then compare by bean ID, never by file diff against a merge base.** Even
+  with a fresh `origin/main`, `git diff --diff-filter=A
+  origin/main...origin/<branch> -- beans/defs` diffs against the **merge
+  base**, which predates everything main gained since — so the count of
+  "added" beans inflates with how far behind the branch is. The check, ids on
+  the branch minus ids anywhere on main (archive included):
 
   ```sh
   ids() { git ls-tree -r --name-only "$1" beans/defs | sed -n 's#.*/folio-assistant-\([a-z0-9]\{4\}\)--.*#\1#p' | sort -u; }
@@ -199,31 +148,23 @@ measurements the store's own status field cannot give you:
   signature, not a hidden epic** — measure by id before reporting either.
 
 **5. Issues.** Updated in the window, and the full open set for
-classification. **Measure it; do not expect a size.** *Dated observation,
-2026-09-20:* 54 proposals merged and 2 issues changed — which this file
-previously turned into "expect this axis to be thin where work is bean-driven",
-an instruction to under-read it. **Measured 2026-09-21: 30 issues touched, 23
-newly opened.** The inversion was not an accident — the repository adopted a
-round summary per bean and an issue per piece of work, so the skill's own
-subject changed underneath the number. Bean `8nzu`.
+classification. **Measure it; do not expect a size.**
 
 **6. CI on the default branch.** Runs in the window by workflow and outcome.
 A red default branch reclassifies every "stalled" proposal, so read this
 before judging any of them.
 
-**Compare the tool's span with the window.** Bean `52rd`, measured
-2026-09-24: `check:ci-health` reads the last 100 runs and says so — "100
-recent run(s) spanning 13.4h" — against a 24h window, leaving the first ~10.6h
-with no CI verdict at all. The tool is honest; the easy reading, "main is
-green", is not. The uncovered part is **could not determine** (rule 1),
+**Compare the tool's span with the window.** `check:ci-health` reads the last
+100 runs and says what span they cover ("100 recent run(s) spanning 13.4h"),
+which can be shorter than the window. The uncovered part is **could not
+determine** (rule 1),
 reported as such with its extent. To cover it, page the forge's workflow-run
 listing for the default branch by `created` back to the window's start (the
 `actions_list` tool, or `GET /repos/{owner}/{repo}/actions/runs?branch=<default>&created=>=<start>`);
 `check:ci-health` takes no `--since`.
 
-**Where a check fails, sidecars and generated files are the first suspect**:
-one proposal that day was red only because a QA sidecar had not been
-regenerated after its skill was edited.
+**Where a check fails, sidecars and generated files are the first suspect**
+— for instance a QA sidecar not regenerated after its skill was edited.
 
 ## Classify against the goals — judgement, marked as judgement
 
@@ -234,8 +175,7 @@ For each goal, in this order:
    disagree. An item can serve two goals; a goal can have none.
 2. **Critical path** — the items in dependency order, from what the goal
    waits on first. Read dependencies from item bodies, not from the
-   `blocked_by` field alone: on 2026-09-20 no item on one goal's path carried
-   the field, and every dependency was prose.
+   `blocked_by` field alone: dependencies are often only prose.
 3. **Blocked on the owner** — items whose next step is a decision. Quote the
    question verbatim from the item; a paraphrase is a second question.
 4. **Done in all but name** — items whose body says everything is finished
@@ -273,8 +213,7 @@ and *close or scrap* (done in all but name, superseded, expired notices).
 **3. The instruction gaps**, each as a work item. A gap is anything the
 instructions said that the sweep could not do as written, said two ways, or
 did not say at all. Create the item with the measurement in its body and
-the rule it concerns named; parent it to the process epic; that is the
-"bean up" the owner asked for. Do not create one per stale item — that is a
+the rule it concerns named; parent it to the process epic. Do not create one per stale item — that is a
 queue entry, not a gap.
 
 **Then one question, selectable.** The queue will surface several owner
@@ -293,40 +232,23 @@ low-dexterity profile (`interaction/`) answers by choosing a number.
    remember from an earlier turn is neither.
 
    **But a COMMITTED CHECK'S OUTPUT is not prose, and re-deriving it is
-   strictly worse than quoting it.** The sentence above is right about
-   remembered numbers, and it does not license re-computing what an instrument
-   has already computed. A check's finding was produced by code with a test behind it; your
-   inline version of the same question has neither, and once you publish it the
-   report's authority rests on whichever spelling you happened to write. So
-   **quote the finding and name the check that produced it** — `bun run cat health`,
-   `check:anchor-names`, whatever it was — and re-derive only what no committed
-   check answers.
-
-   **The asymmetry is why this is a rule and not a preference.** A re-derivation
-   that finds FEWER items is a harmless miss. One that finds MORE hands the
-   owner a larger permission than any instrument justified, and
-   `deletion-requires-confirmation` assumes the list put to a person is true.
-
-   Bean `pesg`, and it is measured twice over. `bun run cat health` reported **one**
-   orphaned staging preview; a review re-implemented the slug rule inline
-   (`[^a-zA-Z0-9]+` where `feature-staging.yml` preserves `.`, `_` and `-`),
-   reported **three**, and the owner authorised deleting "the 3 orphans". Two of
-   the three were LIVE previews for open PRs #1337 and #914 — caught only
-   because directory sizes were measured before deleting. `stagingSlug` was
-   already exported from `schemas/sdlc/staging.ts` and already differentially tested
-   against the real `sed`, one import away. Independently, 2026-09-27: an agent
-   extending `check:anchor-names` probed its own narrower file set instead of
-   quoting the check's own count, wrote **25** invisible ascents into a docblock
-   where the check said **75**, and had to retract it in the same change. Two
-   agents, two subjects, one move.
+   strictly worse than quoting it.** A check's finding was produced by code
+   with a test behind it; your inline version of the same question has
+   neither. So **quote the finding and name the check that produced it** —
+   `bun run cat health`, `check:anchor-names`, whatever it was — and re-derive
+   only what no committed check answers. A re-derivation that finds MORE items
+   than the instrument hands the owner a larger permission than any instrument
+   justified, and `deletion-requires-confirmation` assumes the list put to a
+   person is true. Where the rule exists as code (`stagingSlug` in
+   `schemas/sdlc/staging.ts`, for a staging slug), import it.
 
    **Not the same as "read the published survey" below.** That is about a
    SIBLING'S sweep and the reason is duplicated effort. This is about an
    instrument's computed finding and the reason is correctness — a wrong number
    reaching a person who acts on it.
 3. **Read the owner's rulings out of the items and carry them forward.**
-   Several items that day were blocked only in name — the ruling was already
-   in a sibling's body. Quote it and move the item to *do now*.
+   An item can be blocked only in name — the ruling already in a sibling's
+   body. Quote it and move the item to *do now*.
 4. **A window boundary is an artefact.** A bulk edit just before the window
    makes everything look untouched; a bulk edit inside it makes everything
    look active. Say when a count is dominated by one commit.
@@ -347,15 +269,12 @@ low-dexterity profile (`interaction/`) answers by choosing a number.
 - An item the review placed on a goal's critical path that the owner says
   serves a different goal: the assignment was a paraphrase.
 - A "stalled" session that was in fact mid-turn: the inference from its
-  branch was stated as fact. Re-read §Sibling sessions; the word is *inferred*.
+  branch was stated as fact. Re-read axis 1; the word is *inferred*.
 
 ## Read the published survey before deriving one
 
-**`bun run cat survey:owed` first.** Bean `6ptx`: eight sessions ran in the same
-minute and seven were doing this same sweep, over the same ~2435-commit window.
-Authored commits on `main` that day: **one**. Throughput did not fall because
-the work ran out — 243 beans were open — it fell because everybody was reading,
-and none of them could see the other seven.
+**`bun run cat survey:owed` first**, so that parallel sessions do not each
+re-derive the same sweep.
 
 The command answers in four states, and each says what you owe:
 
@@ -374,18 +293,15 @@ bun run cat survey:publish --from <sha> --by <session> --axis beans="…" --axis
 
 An axis written `name=!reason` records one you did **not** cover. That is a
 first-class answer: a survey of four of six axes is useful, and a reader must
-be able to tell which two it says nothing about. Recording only what you did
-lets a partial survey read as a complete one, which is `1xhc` — absence taken
-for a clean result.
+be able to tell which two it says nothing about; recording only what you did
+lets a partial survey read as a complete one.
 
-**What makes this safe is that the window's two edge commits are recorded**, so
-staleness is decidable rather than guessed. A survey whose window cannot be
-pinned is `fx5r` with a wider blast radius: siblings would trust it *instead of*
-looking. An unreachable upper edge is therefore reported as unusable and never
-as covered.
+**The window's two edge commits are recorded**, so staleness is decidable
+rather than guessed. An unreachable upper edge is reported as unusable and
+never as covered.
 
-This does not claim the window and does not divide the axes between sessions —
-those were considered and not chosen. It is an artefact: one session writes what
+This does not claim the window and does not divide the axes between sessions.
+It is an artefact: one session writes what
 it found, and a later one decides for itself whether that still covers its
 question.
 

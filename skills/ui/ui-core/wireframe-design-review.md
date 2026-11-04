@@ -18,7 +18,7 @@ uses-methodology:
 
 # Wireframe design review
 
-Method: [`wiregen`](../../../methodologies/wiregen.md). Process: [`processes/ui/wireframe-design-review.bpmn`](../../../processes/ui/wireframe-design-review.bpmn). Owner, 2026-09-23: *"need both web and mobile layouts in usability reviews. wireframe is part of design process for adjudication"*.
+Method: [`wiregen`](../../../methodologies/wiregen.md). Process: [`processes/ui/wireframe-design-review.bpmn`](../../../processes/ui/wireframe-design-review.bpmn).
 
 ## Where wireframes live
 
@@ -34,7 +34,7 @@ Either directory holds:
 - `checks/`: screenshots and the checker's report
 - `reviews/`: one file per reviewer
 
-Each instance's `docs/wireframes/index.json` maps the visualiser refs that instance declares to the wireframe that covers each. `bun run cat check:wireframes` reads every such index in the checkout, writes the QA sidecar (`test/results/wireframes.qa-results.json`) and fails on any gap. A wireframe sits with its page because an index naming another layer's page reads as an undeclared ref wherever that layer is not mounted (cat-harness-tools#281); another instance's wireframes are reported as `<instance>/<topic>`.
+Each instance's `docs/wireframes/index.json` maps the visualiser refs that instance declares to the wireframe that covers each. `bun run cat check:wireframes` reads every such index in the checkout, writes the QA sidecar (`test/results/wireframes.qa-results.json`) and fails on any gap. A wireframe sits with its page because an index naming another layer's page reads as an undeclared ref wherever that layer is not mounted; another instance's wireframes are reported as `<instance>/<topic>`.
 
 ## Input and output
 
@@ -111,6 +111,6 @@ Design use from CRDM ends in a person's choice, so the candidates must be in fro
 
 ## Related
 
-- [`theme-ui-review`](theme-ui-review.md): reviews the **ingested graphical assets** in their design, also at both viewports. At ingestion only (bean `9fdi`) — it no longer reviews the built result.
+- [`theme-ui-review`](theme-ui-review.md): reviews the **ingested graphical assets** in their design, also at both viewports. At ingestion only; it does not review the built result.
 - [`adjudication`](../../../sdlc/skills/sdlc-core/adjudication.md)
 - [`methodology-adoption`](../../process/process-core/methodology-adoption.md)

@@ -50,22 +50,19 @@ cat-harness-tools/scripts/session-start-coord-sweep.sh  # CLI-independent equiva
 bun run cat check-deps                     # what this environment can do
 ```
 
-`--check-deps` 的重要性远超表面。当缺少工具（无 Lean 工具链、无 Atlas、无 LaTeX）时，许多检查项会降级为 `n/a` 而不是直接报错。**`n/a` 并不代表通过。** 如果你在不清楚哪些检查被跳过的情况下报告“一切正常”，你实际上是将数据的缺失作为了测试结果。
+当缺少工具（无 Lean 工具链、无 Atlas、无 LaTeX）时，许多检查项会降级为 `n/a` 而不是直接报错。**`n/a` 并不代表通过：**阐明跳过了什么以及跳过的原因。
 
 ## 3. 寻找合适的技能 — 切勿即兴发挥
 
-技能是这里的工作单元。在手动编写流程之前，先检查是否已存在现成的技能。
+技能是这里的工作单元。在手动编写流程之前，先检查是否已存在现成的技能。**通过 `skill_list` 和 `skill_fetch` 获取技能；不要按路径查找。**
 
 | 位置 | 它为你提供的内容 |
 |---|---|
-| `skills/folio-core/` | 内容无关：协调、监视器（watchers）、QA、渲染、参考书目 |
-| `folio-assistant-sci/skills/content/folio-paper-adapter/` | 论文：Lean、LaTeX、证明、模拟器 |
-| `smart-base/skills/content/authoring-who-smart-guidelines/` | WHO SMART DAK / IG |
 | [技能模式参考]({{ site.baseurl }}/reference/skills/) | 每项技能生成的输入/输出契约 |
 | [技能指令]({{ site.baseurl }}/reference/skill-instructions/) | 生成的完整指令主体 |
 | [技能与角色](../../concepts/skills.html) | 技能、角色与能力如何组合 |
 
-两个 `reference/` 目录都是**自动生成的** — 绝不要手动编辑它们。请使用 `bun run scripts/gen-schema-docs.ts` 和 `bun run scripts/gen-skill-docs.ts` 重新生成。
+两个 `reference/` 目录都是**自动生成的** — 绝不要手动编辑它们。请使用 `bun run cat-harness-tools/scripts/gen-schema-docs.ts` 和 `bun run cat-harness-tools/scripts/gen-skill-docs.ts` 重新生成。
 
 ## 4. 内容对象模型简述
 
@@ -82,8 +79,6 @@ bun run cat check-deps                     # what this environment can do
 
 ## 5. 两种依赖关系 — 切勿混为一谈
 
-这经常让代理们陷入困境。
-
 - **`uses[]` 属于编辑层面的依赖。**“读者必须先阅读什么才能理解这个内容块？” 由人工/代理撰写并维护。
 - **形式化图是机器派生的**，派生自 `lean.ref`，绝非手动编写。
 
@@ -99,12 +94,12 @@ bun run content/pipeline/content-graph.ts content/<paper>
 
 ## 6. 在 beans 中跟踪工作，不要凭记忆跟踪
 
-`beans` 是**唯一**的待办事项机制 — 既作用于会话本地，*也*跨代理共享。`beans/` 目录已纳入提交，因此工作计划可以在全新容器中恢复会话时留存下来。
+`beans` 是**唯一**的待办事项机制 — 既作用于会话本地，*也*跨代理共享。`beans/` 保存在状态分支上，并在会话开始时挂载（`bun run cat state:mount`），因此工作计划可以在全新容器中恢复会话时留存下来。
 
 ```sh
 beans list
 beans create "<title>"
-beans update <id> --status in-progress    # CLAIM before you work
+bun run cat beans:claim <id>             # CLAIM before you work
 ```
 
 在开始工作前先进行申领，以免两个会话认领同一项任务；并且绝不要解决或删除同伴的 bean。不要建立平行的待办事项存储。不要用 `beans create` 来批量创建机器生成的队列（`*.qa.json`、证据文件等）— 这些应保留为批量 JSON。
@@ -153,14 +148,9 @@ bun run content/pipeline/qa-staleness.ts content/<paper>
 | QA 判据的含义 | `content/pipeline/qa-criteria-registry.ts` — 其中的描述即为规范 |
 | 内容块模式 | `schemas/types.ts` |
 | QA 附属文件模式 | `schemas/block-qa.ts` |
-| 当前环境能够执行的操作 | `.claude/skills/capabilities/*.json`、`--check-deps` |
-| Lean 工具链路线图 | [Lean 工具集成提案](https://github.com/litlfred/folio-assistant/issues/198) |
+| 当前环境能够执行的操作 | `cat-harness/scenarios/capabilities/*.json`、`check-deps` |
 
 ## 10. 让你避免陷入麻烦的良好习惯
 
-- **`n/a` 并不代表通过。** 阐明跳过了什么以及跳过的原因。
-- **在开展持久工作前申领 bean。** 其他会话可能正在运行。
 - **不要硬编码论文名称。** 一个作品集可能包含多篇论文；使用 `content/pipeline/repo-root.ts` 中的 `findPapers()` / `soleFolioPaper()` 解析。
-- **不要将具体内容写入平台中。** 如果它涉及章节名称、常量或词汇表，则属于 folio 数据。
-- **对于 `docs/reference/` 下的任何内容，重新生成，切勿手动编辑。**
 - **在对检查发现采取行动前，先阅读判据描述。** 它们陈述了严重程度、意图以及明确*不*算作违规的情况。

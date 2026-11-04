@@ -18,9 +18,7 @@ graph-typologies:
 regenerate after editing one, and the staleness check fails the build if you
 forget. Never hand-edit a rendered diagram.
 
-**Do not quote a count of diagrams from prose.** This repository's own
-`AGENTS.md` said "six `.bpmn` files" long after there were far more, in a file
-that elsewhere warns against exactly that. Count the directory.
+**Do not quote a count of diagrams from prose.** Count the directory.
 
 ## Authoring: if it has actors, activities and a control flow, it is a process
 
@@ -47,40 +45,20 @@ answering the same question, free to disagree with the first.
 It would also put the edge on the wrong side. `satisfies` is owned by the Tool,
 which knows what it implements and is versioned with it; a `tool` ref would be
 owned by the diagram author, who would have to track Tools across every
-instance — measured 2026-09-26, **116** Tools are discovered from four
-`tools/` graphs (`cat-harness`, the DAK layer, the content core,
-the FHIR IG layer), so a diagram in one instance would be asserting facts about
-three others.
+instance: Tools are discovered from the `tools/` graphs of several instances,
+so a diagram in one instance would be asserting facts about others.
 
-**What is NOT being claimed** is that the join is well populated. Measured the
-same day over the authoritative registry (`tools/discover.ts`, never a grep):
-
-| | |
-|---|---|
-| distinct skills named by an activity, across all 74 `.bpmn` | **99** |
-| …of those, some Tool satisfies | **32** |
-| …of those, no Tool satisfies | **67** |
-| distinct skills some Tool satisfies, corpus-wide | 69 |
-
-The gap is real and is reported rather than gated —
-`activity-skill-has-tool` (`minor`) locates it per activity, and
-`check:tools` carries the corpus-wide count with the ruling that a skill with
-no Tool is **not** an error, since plenty of skills are pure judgement. Those
-two are a location and a count, not two answers: a corpus total cannot say
-*which* activity hands a performer a skill whose mechanism is still inlined in
-its prose.
-
-One number here disagrees with `check:tools`, which reports "64 skill(s) have a
-Tool" against the 69 above, and the disagreement is recorded rather than
-reconciled away: the two count different sets (a `satisfies` naming a skill
-that does not resolve is in one and not the other), and neither is wrong for
-its own question.
+**The join is not fully populated**, and that is reported rather than gated:
+`activity-skill-has-tool` (`minor`) locates each activity whose skill no Tool
+satisfies, and `check:tools` carries the corpus-wide count. A skill with no
+Tool is **not** an error, since plenty of skills are pure judgement. Read
+counts from a run of `tools/discover.ts` (never a grep); `check:tools` and the
+per-activity criterion count different sets, so their totals differ.
 
 ### A Tool's OWN procedure is the Tool's subprocess, not the skill's prose
 
-Owner, 2026-09-30 (placement ruling 6): *"in general tools can describe
-their own specific subprocesses if needed to not bog down general skills"*.
-The direction of the edge stays the one above — the Tool owns it. A Tool
+A Tool may describe its own specific subprocess, so the general skill and
+process stay general. The direction of the edge stays the one above — the Tool owns it. A Tool
 whose way of exercising a skill has steps of its own (a retry loop, a staging
 directory, a two-pass mode) names that diagram in **`subprocesses`**, a list
 of process ids on its Tool node; `check:tools` refuses one no `.bpmn` in the
@@ -103,25 +81,19 @@ groups", checked by `check:concern-groups`.
 
 ### A process binds only skills its instance can reach (STRICT)
 
-Owner, 2026-10-03: a process may bind only skills (and, through them, Tools)
-from **its own instance or one it `needs`**, transitively, *"general rule, not
-just fhir-harness"*. A `<bootstrap.processes:skill ref>` to a skill that only
+A process may bind only skills (and, through them, Tools) from **its own
+instance or one it `needs`**, transitively. A `<bootstrap.processes:skill ref>` to a skill that only
 a HIGHER instance holds is a wrong-direction edge, the same as an upward
 import: the diagram cannot be lifted into its own repository without the layer
 above it.
 
 `bun run cat check:process-bindings` gates it, with the same `allowedFromNeeds`
 direction as `check:import-direction` and `check:reference-direction`.
-**`skill-ref-resolves` does not catch this, and that is why the gate exists:**
-it resolves against `knownSkills(root)`, which in a pre-split checkout is
-checkout-scoped, so "resolves" means "exists somewhere". On 2026-10-03 that
-hid 33 wrong-direction bindings in 9 diagrams behind a green audit. They are
-in a ratchet baseline, cleared under bean `mlux`.
-
-**The two say so about each other** (owner, 2026-10-04, option 1 of 3):
-`skill-ref-resolves` is existence only, and its own summary names this gate
-as the answer on direction. That leaves one implementation of "may this process
-bind this skill", not two free to disagree.
+**`skill-ref-resolves` does not catch this:** it resolves against
+`knownSkills(root)`, which in a multi-instance checkout is checkout-scoped, so
+"resolves" means "exists somewhere". `skill-ref-resolves` is existence only,
+and its own summary names this gate as the answer on direction. Existing
+wrong-direction bindings are held in a ratchet baseline.
 
 When it fires there are two fixes, and choosing between them is a placement
 decision, not a mechanical one:
@@ -135,8 +107,7 @@ Never widen the baseline to admit a new binding.
 
 ### Binding the extension namespaces
 
-**An element's prefix names the Subgraph that declares it** (owner, 2026-09-24,
-bean `12s9`). A diagram binds one address per vocabulary it uses:
+**An element's prefix names the Subgraph that declares it.** A diagram binds one address per vocabulary it uses:
 
 ```xml
 xmlns:bootstrap.processes="https://litlfred.github.io/bootstrap/v0/processes/ns/"
@@ -150,28 +121,17 @@ xmlns:cat-harness.processes="https://litlfred.github.io/cat-harness/v0/processes
 
 Readers match **the address, never the prefix text**, so a diagram that binds a
 different prefix to the same address reads identically, and `folio:` bound to
-anyone else's address is not ours. The older single address,
-`…/folio-assistant/bpmn`, is **retired** (2026-09-24). An element under it is
-no longer read, and `external-schemas` reports a diagram that still binds it
-as drift. A test fails if an element is written under an address whose
+anyone else's address is not ours. The address `…/folio-assistant/bpmn` is
+**retired**: an element under it is not read, and `external-schemas` reports a
+diagram that still binds it as drift. A test fails if an element is written under an address whose
 vocabulary does not define it.
 
 ## Edge routing: rectilinear, and never over a task
 
-Owner, 2026-09-23, on `document-ingestion`'s rendered diagram: **"keep
-rectilinear if possible, no overlapping."** Two rules, and the second is the
-one that actually bites.
-
 **Rectilinear.** A sequence flow turns at right angles. A diagonal reads as a
-different kind of edge to anybody who has seen a BPMN diagram before, and the
-notation has no such kind — so the reader spends attention deciding whether
-the difference means something. It does not.
+different kind of edge, and the notation has no such kind.
 
-**Never over a task, a lane label or another edge.** The case that prompted
-this: the `gap` flow from *Record the gap as a bean* back to *Derive content
-from the assets* was drawn as one long diagonal crossing the full width of the
-process, passing under every task in the lane. It is a perfectly ordinary
-loop-back and it was the hardest edge on the page to follow.
+**Never over a task, a lane label or another edge.**
 
 A loop-back belongs in the **channel below the lane's tasks** — out of the row,
 back along it, and up into its target. That is where a reader already looks for
@@ -180,20 +140,15 @@ one, and it crosses nothing.
 **This is about the DIAGRAM, not the process.** `BPMNDiagram` carries where a
 thing was drawn and the process carries what is true, so a routing fix changes
 no semantics and needs no re-validation of the flow — the same split
-`board-diagram-interchange` draws one level up. What it changes is whether
-somebody can read the thing.
+`board-diagram-interchange` draws one level up.
 
 **Check it by looking at the rendered SVG, not the XML.** Waypoints that look
 orderly in source can still emit a diagonal, and `render:bpmn` is what a reader
-sees. The rendered page is the artefact under review — `preview:site` exists
-for exactly this reason, after a generator shipped 22 headings with one anchor
-and every gate was green across it.
+sees; `preview:site` shows the rendered page.
 
 ## Rendering: what a reader can click, and what must not collide
 
-Owner, 2026-11-03 (cat-harness#991), on the published diagrams: *"linked
-tasks should be on the task title only, not the whole box. the subprocess
-should be opened by the [+] not the whole box."* `render:bpmn`
+`render:bpmn`
 (`cat-harness-tools/src/workflow/diagram-links.ts`) draws the links; the
 layout rules are checked by `bpmn:detangle`
 ([`bpmn-detangle`](bpmn-detangle.md)).
@@ -248,8 +203,7 @@ What a diagram owes the check is a lane bound to a declared role. See
 [`task-authorization`](../process-core/task-authorization.md).
 
 **Instance state is committed**, alongside the work plan, so a sibling session
-sees the same position. That is the whole reason not to hand-roll a second
-tracker: a second answer to *where are we* is free to disagree with the first.
+sees the same position. Do not hand-roll a second tracker.
 
 ## Strict by default, and what a package may never relax
 
@@ -302,14 +256,13 @@ An activity carrying a bean operation **does it** when you complete the step:
 | `resolve` | completes the bean **only once the instance itself has completed** (or has nothing left but archive steps) |
 | `archive` | moves a completed or scrapped bean into the archive, **only once the instance has completed** |
 
-**That `resolve` row is a judgement guard, not a sequencing detail.** A still-running
+**The `resolve` row is a judgement guard.** A still-running
 process gets a note instead, because whether work is done is a judgement and a
 bean is never closed on someone else's say-so — the same rule that stops you
 resolving a sibling's.
 
 **You do not draw `claim`, `resolve` or `archive` yourself.** They live in two
-called processes and nowhere else (bean `folio-assistant-m8gz`, owner
-2026-10-24): `Process_BeanOpen` (`sdlc/processes/bean-open.bpmn`: check,
+called processes and nowhere else: `Process_BeanOpen` (`sdlc/processes/bean-open.bpmn`: check,
 create, whose bean, claim or leave alone) and `Process_BeanClose`
 (`sdlc/processes/bean-close.bpmn`: complete or scrap, then one shared archive
 step; or record the blocker and hand back). A process that works on a bean
@@ -317,8 +270,7 @@ calls OPEN where the bean becomes its own, follows it with a `claimed` /
 `not yours` gateway, and calls CLOSE straight before each end it reaches from
 there. `note` stays on the steps where the work happens. `check:bean-calls`
 (run inside `check:workflow-refs`) refuses the three ops anywhere else, and a
-process that calls one of the pair without the other. Why: 219 beans resolved
-and never archived, and 7 processes that claimed and never closed —
+process that calls one of the pair without the other. See
 [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"Archiving — two dispositions".
 
 Work-plan priming reports every instance's position next to its bean, so the

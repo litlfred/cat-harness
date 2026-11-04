@@ -21,9 +21,9 @@ lifecycle-stages:
 
 # Test Data Sets & SME Case/Verdict Review
 
-Governs how test data sets are authored, discriminated, specialized per content type, and reviewed by a subject-matter expert (SME) before a `test-plan/v1` binds them into [`test-plan-execution`](test-plan-execution.md) (beans `folio-assistant-vm6m` and `folio-assistant-vljz`, proposal [`qa-reports-branch-and-test-process-2026-10-01.md`](../../../docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md) §3.2).
+Governs how test data sets are authored, discriminated, specialized per content type, and reviewed by a subject-matter expert (SME) before a `test-plan/v1` binds them into [`test-plan-execution`](test-plan-execution.md).
 
-## Two kinds of test data, two declared graph directories (`vm6m`)
+## Two kinds of test data, two declared graph directories
 
 Fixed and generated test data sets do not have the same provenance or audit standing, so they live in **separately declared graph directories** (`test-data-fixed` vs `test-data-generated` in [`schemas/kg/graph-typology-registry.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/kg/graph-typology-registry.ts)) and carry self-identifying `$schema` and `kind` tags in [`schemas/sdlc/test-data.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/sdlc/test-data.ts):
 
@@ -39,7 +39,7 @@ A consumer reading a test data node must call `discriminateTestDataSet(doc)` in 
 - `FixedTestDataSetSchema` is `.strict()` and refuses recipe fields (`template`, `params`, `seed`, `sha256`).
 - `GeneratedTestDataSetSchema` is `.strict()` and refuses materialised payload fields (`records`, `cases`, `path`, `review`), and verifies that `sha256` equals `computeGeneratedSetDigest({ contentType, specialisation, template, params, seed })`.
 
-## General curation process and per-content-type specialisation (`vm6m`)
+## General curation process and per-content-type specialisation
 
 The general curation process is [`sdlc/processes/test-data-curation.bpmn`](../../processes/test-data-curation.bpmn) (`Process_TestDataCuration`):
 
@@ -56,7 +56,7 @@ The general curation process is [`sdlc/processes/test-data-curation.bpmn`](../..
 - Other content types supply their own specialisations — such as `markdown-fixture` for document folios, `lean-counterexample` for formal-proof folios, or `tabular-cohort` for aggregate indicator tables.
 - Platform schemas and processes never hardcode FHIR resources or DAK structures as the general test-data model.
 
-## SME review of decision support and indicator definitions (`vljz`)
+## SME review of decision support and indicator definitions
 
 When a fixed test data set tests clinical or scientific **decision support** or **indicator definitions**, passing is a domain judgement: a subject-matter expert must confirm that the logic produces the right guidance on a worked case or the right value on a cohort.
 

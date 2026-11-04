@@ -22,9 +22,8 @@
       <bpmn:lane id="Lane_Person" name="Contributor" partitionElementRef="user">
         <bpmn:documentation>Both of this lane's tasks are optional by design, not merely possible: P_Respond's 'or neither' is a real, accepted outcome rather than a stall, and A_Ask already states what happens if nothing comes back — so this lane can contribute nothing at all and the process still proceeds, which is not true of the sign-off lanes elsewhere in this corpus.</bpmn:documentation>
         <!-- Bound EXPLICITLY rather than by lane name. `roles.json` matches a
-             lane to a role by name, and that indirection is how one role ended
-             up carrying five aliases because five diagrams each named the same
-             lane differently. "Contributor" is what this lane IS in this
+             lane to a role by name, and name matching invites aliases.
+             "Contributor" is what this lane IS in this
              process; `user` is the declared role performing it. -->
         <bpmn:flowNodeRef>P_Respond</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>P_Upload</bpmn:flowNodeRef>
@@ -55,7 +54,7 @@
       </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="A_PointToUpload" name="Point at the upload target">
-      <bpmn:documentation>Composed from the declaration, never written by hand. The queue is declared with INSTANCE scope, so its declared path is missing the segment a repository-relative forge URL needs: /upload/main/uploads is a 404 and /upload/main/cat-harness/uploads is not, verified against GitHub 2026-09-20. Every failure is named — no origin remote, a non-GitHub forge, a declared-but-absent queue — because a URL is believed, and somebody sent to a wrong one cannot tell it from an empty directory. On failure, fall back to the conversation. Uses `scripts/upload-url.ts`.</bpmn:documentation>
+      <bpmn:documentation>Composed from the declaration by the `upload-url` Tool, never written by hand: the queue is declared with INSTANCE scope, and a forge URL needs the path relative to the REPOSITORY. Every failure is named — no origin remote, a non-GitHub forge, a declared-but-absent queue. On failure, fall back to the conversation.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="content-acquisition"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="P_Upload" name="Drop the file&#10;in the queue">

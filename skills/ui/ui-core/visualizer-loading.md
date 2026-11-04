@@ -12,13 +12,7 @@ description: >
 
 # Visualizer loading — the page is layout, the graph is fetched
 
-> Skill id: `visualizer-loading` · Package: `ui-core` · Beans `680p`, `s32v`,
-> `jut3`
-
-Owner, 2026-10-01, on the just-the-docs IG render: *"other goals of
-justthedocs rendering is to reduce the .html bloat.... lots of it can be loaded
-client side from the KG"*, and then: *"should be general strategy for complex
-visualizers"*.
+> Skill id: `visualizer-loading` · Package: `ui-core`
 
 ## The rule
 
@@ -34,13 +28,10 @@ The **content** (a sidecar file, a node's properties at length, a table derived
 from the graph) is fetched by the browser from the committed KG artefact. It is
 never copied into the page.
 
-Each copy is a second answer, free to drift from the first. Copied into a
-thousand pages, it is also most of the site's bytes and most of every staging
-preview's size (bean `g196`).
-
-[`kg-viewer`](kg-viewer.md) was the first instance: one page that fetches its
-sibling graph document and computes back-links at load. This skill is that
-pattern made general.
+Each copy is a second answer, free to drift from the first, and copied into a
+thousand pages it is most of the site's bytes. [`kg-viewer`](kg-viewer.md) is
+an instance of the pattern: one page that fetches its sibling graph document
+and computes back-links at load.
 
 ## What stays server-side
 
@@ -65,14 +56,11 @@ The fetched file is the KG's own, published verbatim. A directory declares
 `served: true` in its instance's `<instance>.json`, and `mount-instance-docs`
 copies its bytes to `/<instance>/<path>` after Jekyll: no Liquid, no layout, no
 index page. Pages under the instance's composed docs then reach it with a
-relative path; the DAK view pages fetch
-`../fhir-artifact-index/dak/<file>`.
+relative path.
 
-**Never copy the file into `docs/` beside the page instead.** That was the
-first version: 19 schema files duplicated under the trust IG's `docs/artifact/`,
-which a gate flagged as an unknown file family in a docs directory. The owner
-chose serving the graph (2026-10-01, bean `680p`). A generator whose data is
-not served writes no page that would fetch it, and says why.
+**Never copy the file into `docs/` beside the page instead** — a gate flags it
+as an unknown file family in a docs directory. A generator whose data is not
+served writes no page that would fetch it, and says why.
 
 ## How to fetch
 
@@ -80,8 +68,7 @@ not served writes no page that would fetch it, and says why.
   the same bytes work in production and in a staging preview ([`kg-viewer`](kg-viewer.md)
   §"The page is generated, not committed").
 - **One shared loader per visualizer kind**, published once and referenced by
-  every page, never inlined in each page. The IG API view pages share
-  `assets/ig-api-view.js` (source: the FHIR IG layer's `scripts/templates/ig-pages/`).
+  every page, never inlined in each page.
 - **No dependencies:** no CDN or framework. Same reason as `kg-viewer`: the
   data is this repository's, and a third party in its trust boundary is at
   odds with that.
@@ -91,23 +78,18 @@ not served writes no page that would fetch it, and says why.
 
 ## Stay equivalent to the render you replace
 
-When the page replaces another renderer's page (the IG Publisher's, under the
-owner's invariant that every phase renders equivalent to the standard IG
-render, bean `jut3`), compute the display **the same way that renderer does**,
-and then check it.
-
-The worked case: the Publisher's DAK view page shows its file as
-`JSON.stringify(parsed, null, 2)`, not as the file's own bytes. JavaScript
-orders integer-like keys first, so for 3 of the trust IG's 33 files the two
-differ. Showing the raw bytes would have looked right and been wrong. The
-loader now does what the Publisher's page does.
+When the page replaces another renderer's page (for example the IG
+Publisher's, which every phase must render equivalent to), compute the display
+**the same way that renderer does**, and then check it. For example, a page
+that shows a file as `JSON.stringify(parsed, null, 2)` differs from the file's
+own bytes whenever the file has integer-like keys, which JavaScript orders
+first; showing the raw bytes would look right and be wrong.
 
 ## Printing and PDFs
 
 A browser prints the page **as it is at that moment**, so fetched content prints
-once it has loaded and not before. Measured 2026-10-01 on a JSON view page in
-Chromium: a PDF taken at `domcontentloaded` holds "Loading JSON source…", and
-one taken after the load holds the resource.
+once it has loaded and not before: a PDF taken at `domcontentloaded` holds
+"Loading…".
 
 - **Every loader signals completion.** Each counts itself in and out of
   `window.__kgLoads`, and the last one to finish sets `<html data-kg-loaded>`,
@@ -129,12 +111,9 @@ A static check cannot see fetched content: the built HTML holds only
 **displays** against the reference, as [`rendered-verification`](../../../sdlc/skills/sdlc-core/rendered-verification.md)
 requires of any rendered artefact.
 
-Measured 2026-10-01: all 33 DAK view pages, served from a local Jekyll build,
-displayed text identical to the Publisher's pages for the same fork build.
-
 ## Finding what to move
 
-That is bean `s32v`: a QA review over a built site.
+A QA review over a built site:
 
 - **The mechanical half** measures per-page bytes, blocks repeated across
   pages, and blocks matching a committed KG file, and writes a QA sidecar.

@@ -10,13 +10,6 @@ knowledge graph. This skill turns a moment in a conversation into one — drafti
 the words, choosing the theme, deciding where it goes — and **shows it before it
 is attached to anything**.
 
-> it will use input from use in drafting message of sticky note (either by
-> interpretation of that context, or direct quotation). it will then determine
-> where to place it … it should also preview sticky note … before confriming it
-> and assigning to node
->
-> — owner, 2026-09-20
-
 ## The one rule that makes this safe
 
 **Preview, confirm, then attach — in that order, always.**
@@ -47,31 +40,23 @@ Two modes, and the choice is reported rather than silent:
 | **direct quotation** | the words carry information their paraphrase loses — a joke, a term of art, a ruling's exact scope | verbatim, down to the spelling. |
 | **interpretation** | the point is clear but scattered across several turns, or the original was a fragment | write it plainly, and keep any phrase that was doing work. |
 
-**Prefer quotation when in doubt.** This repository has paid for the opposite:
-*"please be introduced to a cat who acquires things, for whatever purpose, maybe
-somebody knows"* is a joke that carries a real gloss, and *"the documentation you
-will never read"* is honestly true of every thorough docs site. Sanding either
-into a product sentence would have lost the only part that told a reader
-anything.
+**Prefer quotation when in doubt.** A joke or an odd phrase often carries the
+only part that tells a reader anything; sanding it into a product sentence
+loses that.
 
 A `summary` is derived from the body's first line unless the note needs its own.
 Two fields the author must keep in step is one field that drifts.
 
 ### 3. Choose the theme — a judgement, not a lookup
 
-> no formal role/theme mapping per se. that is authoring (human/agentic)
-> decision/judgement
->
-> — owner, 2026-09-20
-
-So there is no table to consult here, and adding one would contradict a ruling.
-Choose from what the note is *doing*: the shipped themes are `grumpy-cat`,
+There is no role-to-theme mapping, and none should be added: the theme is an
+authoring judgement. Choose from what the note is *doing*: the shipped themes are `grumpy-cat`,
 `engineer`, `library`, `analyst`, plus the palette-only `pale-sage`,
 `dusty-carolina`, their `-fade` variants, and the two high-contrast themes.
 `schemas/ui/themes.ts` is the list; **state the reason for the one you picked**, in
 a clause.
 
-Two mechanical facts worth knowing before choosing:
+Two mechanical facts:
 
 - A theme whose art the instance does not declare resolves to **palette only**,
   not to a broken image — `resolveThemeBackdrop` reports that third state rather
@@ -86,11 +71,10 @@ Two mechanical facts worth knowing before choosing:
 |---|---|---|
 | **`todos/items/`** — the default | somebody has an outstanding item | a `todo/1.0.0` node: `status`, `priority`, `origin`, plus the tags below |
 | **`todos/feedback/`** | it is about a specific block, with the submitter's identity | the content-review feedback workflow the `todo-review` skill reads |
-| **`folio/`** | it belongs on a rendered page | a landing sticky — but a *page's* sticky is a layer's **contribution**, so it is declared in that layer's `<name>.json`, not written here. A landing sticky lives in the `folio/` of **the instance it describes**, never in another instance's (bean `1yd7`), so a mounted instance's sticky arrives with the mount. `cat-harness/folio/` still holds other instances' stickies until `1yd7` moves them — do not add one there |
+| **`folio/`** | it belongs on a rendered page | a landing sticky — but a *page's* sticky is a layer's **contribution**, so it is declared in that layer's `<name>.json`, not written here. A landing sticky lives in the `folio/` of **the instance it describes**, never in another instance's, so a mounted instance's sticky arrives with the mount |
 | **nowhere** | it was worth showing and not worth keeping | previewed in the conversation and left there |
 
-**`todos/` is not `beans/`, and this is the line the repository keeps paying to
-redraw.** A todo is a *person's* outstanding item; a bean is the *agent* work
+**`todos/` is not `beans/`.** A todo is a *person's* outstanding item; a bean is the *agent* work
 plan. `AGENTS.md` forbids standing a second work plan beside `beans/`, so a
 sticky that is really agent work is a bean — use `todo-manager`, not this.
 
@@ -118,9 +102,7 @@ assignment as a header, then the body as a reader sees it.
 
 **On the knowledge graph** when the note is one of many, or when its look
 matters — build the page and screenshot it. A rendered artefact cannot be
-assessed from a description of it, and this repository has the measurement:
-three defects in the sticky board were invisible to a green suite and visible
-the moment somebody looked.
+assessed from a description of it.
 
 Then **ask**, and attach only on a yes.
 

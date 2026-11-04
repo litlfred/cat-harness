@@ -11,9 +11,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 # Accessibilité
 {: .no_toc }
 
-Deux questions ont été posées sur
-l'[issue #232](https://github.com/litlfred/folio-assistant/issues/232), et cette
-page y répond :
+Cette page répond à deux questions :
 
 1. Quelles sont les options pour la prise en charge du handicap ici, et quelles sont les bonnes pratiques ?
 2. Quelles sont les options pour contraindre les questions-réponses agentiques sous forme de questions guidées qui
@@ -39,8 +37,7 @@ interprète cette brièveté comme un faible engagement et pose une autre questi
 dans cet échange n'a fait quoi que ce soit de manifestement répréhensible, et pourtant la conversation
 échoue déjà.
 
-Le propriétaire de ce dépôt a un usage très limité de ses mains, le cas n'est donc pas
-hypothétique ici. Mais la règle se généralise sans référence à quiconque :
+La règle :
 
 > **Le coût d'une question est payé par la personne qui y répond.** Concevez la question
 > de manière à ce que la réponse la moins coûteuse possible soit malgré tout une réponse complète.
@@ -113,7 +110,7 @@ puisse être vérifiée plutôt que simplement crue sur parole :
 | **Section 508** | marchés publics fédéraux aux États-Unis | la même chose, aux États-Unis |
 | **ATAG 2.0** | outils qui *produisent* du contenu | **celle que l'on oublie d'habitude.** folio-assistant est un outil de création de contenu : la partie A concerne l'utilisabilité de l'outil, la partie B concerne l'aide apportée à l'auteur pour produire un rendu accessible |
 
-La partie B d'ATAG mérite que l'on s'y arrête, car c'est la dimension qu'une plateforme de contenu peut
+La partie B d'ATAG est la dimension qu'une plateforme de contenu peut
 assurer de manière unique : la présence de textes alternatifs, l'ordre des titres, les en-têtes de tableau et le
 balisage de la langue dans les folios *publiés* sont des contrôles que le balayage QA peut exécuter, et aucun
 effort pour rendre l'éditeur accessible ne peut s'y substituer.
@@ -122,21 +119,18 @@ effort pour rendre l'éditeur accessible ne peut s'y substituer.
 
 | | où |
 |---|---|
-| Préférences destinées à l'agent, commitées, lues au démarrage de la session | `interaction/interaction.json`, exposé par `scripts/session-start-coord-sweep.sh` |
+| Préférences destinées à l'agent, commitées, lues au démarrage de la session | `memory/interaction.json`, exposé par `scripts/session-start-coord-sweep.sh` |
 | Les règles suivies par un agent lorsqu'il pose des questions | [`interaction-modality`]({{ site.baseurl }}/reference/skill-instructions/interaction-modality.html) |
 | Contrôles destinés aux lecteurs sur ce site | la roue dentée dans l'en-tête de la barre latérale — texte plus grand, contraste plus élevé, liens soulignés, animations réduites |
 | Prise en compte de la réduction des animations sans qu'on le demande | requête média `prefers-reduced-motion`, qui initialise la valeur par défaut du panneau |
 
-**Les deux dépôts de préférences sont délibérément distincts.** `interaction/interaction.json`
+**Les deux dépôts de préférences sont délibérément distincts.** `memory/interaction.json`
 est commité, destiné à l'agent, et concerne la conversation. Le réglage du site est enregistré dans le
 `localStorage` de chaque visionneur, ne quitte jamais le navigateur, et concerne la lecture. Un
 lecteur qui n'est pas l'auteur et qui choisit une taille de police plus grande ne doit pas reconfigurer
 silencieusement la manière dont l'agent s'adresse à l'auteur.
 
 ### 2.7 Ce qui n'est pas fait
-
-Énoncé explicitement plutôt qu'implicitement, car une fonctionnalité d'accessibilité proclamée à moitié
-est pire qu'une fonctionnalité absente :
 
 - **Aucun contrôle de la partie B d'ATAG dans le balayage QA.** Rien ne vérifie encore qu'un
   folio publié dispose de textes alternatifs, d'un ordre de titres correct ou d'en-têtes de tableau.
@@ -150,8 +144,7 @@ est pire qu'une fonctionnalité absente :
 
 ## 3. Contraindre les Q/R agentiques sous forme de questions guidées
 
-La seconde question. La réponse réside dans une séparation, et cette séparation constitue l'ensemble
-de la conception.
+La réponse réside dans une séparation.
 
 ### 3.1 Deux choses qui se ressemblent
 
@@ -212,12 +205,10 @@ Quatre façons de procéder, par ordre d'ambition croissante. Seule la première
   et ce n'est pas une fioriture facultative.
 - **Guidé ne veut pas dire interrogatoire.** Le plus grand gain d'accessibilité
   possible est la question que vous n'avez pas eu à poser — chaque fait que l'agent lit
-  depuis le système de fichiers est une question de moins. Ce gain est invisible, non récompensé, et
-  pourtant supérieur à n'importe quelle feuille de style.
+  depuis le système de fichiers est une question de moins.
 
 ## Voir aussi
 
 - [Premiers pas](getting-started.html) — la table de décision d'intention en pratique
 - [Compétence `interaction-modality`]({{ '/reference/skill-instructions/interaction-modality.html' | relative_url }})
 - [Flux de publication](../../process/fr/publication-workflow.html) — chaque processus au sein du dépôt
-- [Options pour l'état du flux de travail dans beans]({{ '/proposals/workflow-state-in-beans.html' | relative_url }})

@@ -14,7 +14,7 @@ phase. Some exist today; others are proposed.
 | **Schema types** (`schemas/*.ts`) | Phase 3 | Define new types, constraints, and builders |
 | **Document ingestion** (`uploads/` → `library/` pipeline) | Phase 2 | Ingest source documents for review |
 
-### Skills that now exist
+### CRDM skills
 
 | Skill | Phase | Purpose |
 |---|---|---|
@@ -22,8 +22,7 @@ phase. Some exist today; others are proposed.
 | **`crdm-requirements-workflow`** | All phases | The six-phase process, the actors table, and the issue-association rules |
 
 Both are guidance, not instrumentation: they tell an agent what to do, and
-nothing checks that it did. See "What is not built yet" for why that
-distinction is kept explicit.
+nothing checks that it did.
 
 ### Proposed skills
 
@@ -34,10 +33,10 @@ distinction is kept explicit.
 | **`crdm-requirements-template`** | Phase 3 | Generate structured requirements from conversation |
 | **`review-triage`** | Phase 6 | Triage review comments from ingested documents (e.g. public consultation feedback) |
 
-### Running the process — it is already executable
+### Running the process
 
-**`crdm_start` and `crdm_status` were proposed here and should not be built.**
-The generic workflow tools already run this process, because
+**Do not build `crdm_start` or `crdm_status`.** The generic workflow tools run
+this process, because
 `processes/process/crdm-requirements.bpmn` is a loadable BPMN process like every
 other diagram in this repository:
 
@@ -50,7 +49,7 @@ other diagram in this repository:
 A second set of tools over the same diagram would be a second answer to
 "where are we", free to disagree with the first. State lives under
 `beans/workflows/` and is committed, so a sibling session sees the same
-position — which is the property a chat-local phase tracker could never have.
+position.
 
 Every activity in the agent's lane carries the skill that implements it, so
 `workflow_next` returns something actionable rather than a step name:
@@ -72,15 +71,11 @@ claims the bean, creating beans notes it, and closing resolves it — and
 resolve only lands once the instance itself has completed, because whether
 work is done is a judgement.
 
-### `stakeholder_map` — built, but not from the sources proposed
+### `stakeholder_map`
 
-It was specified here as reading "affected roles from `harness.config.json` and
-CODEOWNERS". **Neither exists.** This repository has no CODEOWNERS file, and
-`schemas/harness-config.ts` declares no role, owner, maintainer or contact
-field. Built as written, the tool would have reported no stakeholders for
-every change, forever, and looked like it worked.
-
-It reads what the repository actually has:
+This repository has no CODEOWNERS file, and `schemas/harness-config.ts`
+declares no role, owner, maintainer or contact field, so `stakeholder_map`
+reads what the repository has:
 
 1. **Skills declare `roles:`** in their front matter — reader, collaborator,
    owner, auditor. Change a skill and you affect whoever holds its roles.
@@ -88,8 +83,7 @@ It reads what the repository actually has:
    skill that implements it. So a changed skill reaches a set of lanes across
    the whole process corpus — editors, the publication manager, clinical SMEs.
 
-That second hop is the one CODEOWNERS could never have given: changing
-`todo-manager.md` reaches the work-plan lane in six separate processes,
+For example, changing `todo-manager.md` reaches the work-plan lane in six separate processes,
 which is a far better prompt for "who should hear about this?" than a list
 of file owners.
 

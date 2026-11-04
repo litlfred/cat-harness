@@ -5,8 +5,6 @@
   Source of truth: this file. The SVG under docs/assets/img/workflows/ is
   generated from it by `bun run cat render:bpmn` — never hand-edit the SVG.
 
-  Bean: folio-assistant-10s1.
-
   THE POINT OF DRAWING THIS is that a copy-out is TWO WRITES AND A REFUSAL, and
   the common bug is to make it one write. The bytes go into the copier's own
   `folio/`; `provenance.local` records which original they came out of; and the
@@ -35,9 +33,9 @@
     <bpmn:participant id="Participant_CopyOutMaterialized" name="Copy out materialized content — to work on somebody else's bytes" processRef="Process_CopyOutMaterialized" />
   </bpmn:collaboration>
   <bpmn:process id="Process_CopyOutMaterialized" name="Copy out materialized content — to work on somebody else's bytes" isExecutable="false">
-    <bpmn:documentation>Somebody wants to change content this repository holds a read-only materialized copy of: copy it into their own `folio/`, recording which original it came out of. Materialized content is read-only. The owner, 2026-09-21: &quot;if we have a materialized &lt;stub&gt;/&lt;sub-graph&gt;, the contents of it should be immutable ... you would need to copy/mateiralize it to your own folio/ in order to mess around with it.&quot; And 2026-09-22, choosing between advising and enforcing: enforce from the start.
+    <bpmn:documentation>Somebody wants to change content this repository holds a read-only materialized copy of: copy it into their own `folio/`, recording which original it came out of. Materialized content is read-only, and that is enforced, not advised.
 
-STRICT, and the reason is narrow. Only one step here is a gate, and it is Gateway_Frozen: whether the target is read-only at all. Everything after it is mechanical. What makes the process strict is that skipping it does not fail loudly — an edit in place succeeds, and is only caught later by check:materialized-fixity hashing bytes against the digest their record carries. A process whose omission looks exactly like compliance is the vlhk shape, and advisory would not hold it.
+STRICT, and the reason is narrow. Only one step here is a gate, and it is Gateway_Frozen: whether the target is read-only at all. Everything after it is mechanical. What makes the process strict is that skipping it does not fail loudly — an edit in place succeeds, and is only caught later by check:materialized-fixity hashing bytes against the digest their record carries. A process whose omission looks exactly like compliance cannot be advisory.
 
 The copy-out re-opens NONE of the five materialisation gates. Those were answered when this repository decided it may hold these bytes at all (materialize-remote.bpmn); copying something already held is not a second acquisition. What the copy does inherit is the restrictions and copyright verdicts — the copy is a new artefact in the copier's folio, and publishing it is that folio's decision.
 
@@ -47,18 +45,18 @@ The three states, the five gates and the provenance pair are folio-assistant-cor
     </bpmn:extensionElements>
     <bpmn:laneSet id="Process_CopyOutMaterialized_LaneSet">
       <bpmn:lane id="Lane_Reader" name="Reader (any actor)" partitionElementRef="user">
-        <bpmn:documentation>ANY reader, and that is a ruling rather than an oversight — the owner, 2026-09-22, chose it over restricting the copy-out to an editor. Refusing a copy would not protect the original, because the original is protected by being read-only; a permission here would only stop people working. So this lane has no entry condition, and the one decision in it is about the TARGET rather than about the actor.</bpmn:documentation>
+        <bpmn:documentation>ANY reader, not only an editor. Refusing a copy would not protect the original, because the original is protected by being read-only; a permission here would only stop people working. So this lane has no entry condition, and the one decision in it is about the TARGET rather than about the actor.</bpmn:documentation>
         <bpmn:flowNodeRef>StartEvent_WantToEdit</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Frozen</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_EditDirectly</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>EndEvent_NotFrozen</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Source" name="Source graph — read-only" partitionElementRef="corpus">
-        <bpmn:documentation>This lane holds exactly one task and it WRITES NOTHING, which is the point of drawing it at all. A lane that is only ever read from is the visible form of the rule: the arrow runs out of here and never back. Task_ReadSource is where the process would go wrong if anybody added a step, so its emptiness is load-bearing rather than incidental.</bpmn:documentation>
+        <bpmn:documentation>This lane holds exactly one task and it WRITES NOTHING, which is the point of drawing it at all. A lane that is only ever read from is the visible form of the rule: the arrow runs out of here and never back.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_ReadSource</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Folio" name="Copier's own folio/" partitionElementRef="author">
-        <bpmn:documentation>Where the copy lands, chosen by the owner 2026-09-22 over a scratch area. A scratch area lost because it makes the copy publishable by accident: a directory nobody declared is a directory nobody gates. The two writes here are ordered and both required — Task_Land puts the bytes somewhere, Task_RecordProvenance says what they are a copy OF, and a process that stopped after the first would produce a file indistinguishable from original work one rename later.</bpmn:documentation>
+        <bpmn:documentation>Where the copy lands: the copier's own folio, never a scratch area, because a directory nobody declared is a directory nobody gates. The two writes here are ordered and both required — Task_Land puts the bytes somewhere, Task_RecordProvenance says what they are a copy OF, and a process that stopped after the first would produce a file indistinguishable from original work one rename later.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_Land</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RecordProvenance</bpmn:flowNodeRef>
       </bpmn:lane>
@@ -113,7 +111,7 @@ the copier's own folio/">
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_RecordProvenance" name="Record what this is a copy of">
-      <bpmn:documentation>The step that is easy to omit and impossible to reconstruct afterwards. `provenance` is a PAIR: `upstream` is the remote thing, `local` is the original in this repository. A copy-out writes `local`; it does not overwrite `upstream`, and it does not reuse `upstream` for a local value — that was one field until 2026-09-22, and by then 5 of the 9 who-iris item records were using it for a local one in violation of its own documentation. Without `local`, one rename later the copy is indistinguishable from original work and nothing downstream can repair it, because the information was never written down.</bpmn:documentation>
+      <bpmn:documentation>The step that is easy to omit and impossible to reconstruct afterwards. `provenance` is a PAIR: `upstream` is the remote thing, `local` is the original in this repository. A copy-out writes `local`; it does not overwrite `upstream`, and it does not reuse `upstream` for a local value. Without `local`, one rename later the copy is indistinguishable from original work and nothing downstream can repair it, because the information was never written down.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="copy-out-materialized" />
       </bpmn:extensionElements>

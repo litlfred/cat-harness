@@ -48,8 +48,6 @@
     <bpmn:callActivity id="Call_OptionsAnalysis" name="Options analysis&#10;how to implement" calledElement="Process_OptionsAnalysis">
       <bpmn:documentation>On the single edge from `Start_Process_CRDM_Deliver` into `A_Implement`, so the approach is chosen before any code exists. By Phase 6 the needs, requirements and data model are signed off, which is exactly the evidence an options analysis needs and the reason it belongs here rather than earlier: at `Call_Needs` there is nothing to weigh, and after `A_Implement` the choice has been made in code.
 
-Note where this is NOT. The work-plan named `crdm-requirements-workflow`, and `A_Implement` is not in that diagram — `crdm-requirements.bpmn` is the orchestrator, seven call activities and a gateway, and Phase 6 lives here in `crdm-deliver.bpmn`. The call goes where the step is, not where the plan said to look.
-
 The three loop-backs into `A_Implement` — `_5` (increment rejected), `_7` (MVP not ready), `_13` (feedback translated) — deliberately BYPASS this call. Routing them through it would run the subprocess on every iteration of the inner loop, which is the ceremony this design refuses: a gate invoked on every pass stops being read. An iteration reworks an approach already chosen; if the APPROACH is what is wrong, that is not a loop iteration and it belongs to the calling step in `crdm-requirements.bpmn`.
 
 Contrast `upstream-version-adoption`, where the loop DOES re-enter the analysis. There the loop-back returns to `A_Impact`, which re-gathers the evidence, so the second pass weighs genuinely different inputs. Here the loop returns to implementation with the evidence unchanged.
@@ -87,10 +85,7 @@ Called, not inherited: the agent keeps its implementing role and takes on the
 description of one. `feature-staging.yml` publishes the branch under
 `STAGING/&lt;branch-slug&gt;/` on gh-pages and comments the URL on the PR, so the
 stakeholder who tests it is looking at the built artefact rather than at a
-screenshot — the same argument the merge discipline makes about rendered work.
-
-Measured in this repo on 2026-09-16: holding a rendered change back for
-assessment made assessment harder, not safer.</bpmn:documentation>
+screenshot — the same argument the merge discipline makes about rendered work.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="feature-staging"/><cat-harness.processes:no-call reason="Pushing the branch is the step; feature-staging.yml then runs on the pull_request event, not because this diagram called it. A call activity would claim the engine drives CI."/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="A_Summary" name="Post summary
@@ -133,7 +128,7 @@ actionable direction: new beans or bean updates for the agent.</bpmn:documentati
       <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:endEvent id="End_Process_CRDM_Deliver" name="Phase complete">
-      <bpmn:documentation>THERE IS NO THEME REVIEW HERE ANY MORE, and that is a ruling rather than an omission. Until 2026-09-24 the `accepted` branch ran `Call_ThemeUIReview`, a post-MVP theme and UI review, before the phase closed. The owner moved it: theme review happens at INGESTION ONLY — "theme review to ingestion of graphical assets in context of website or app design and determining graphical assets/UI", confirmed "Yes only at ingestion" (bean `9fdi`). It is now called from `ingest-theme.bpmn`, where the graphical assets arrive and are determined, rather than here, where they have already been built into what shipped. A reader looking for the review should go there.</bpmn:documentation>
+      <bpmn:documentation>THERE IS NO THEME REVIEW HERE, and that is a rule rather than an omission: theme review happens at INGESTION ONLY, called from `ingest-theme.bpmn`, where the graphical assets arrive and are determined, not here, where they have already been built into what shipped.</bpmn:documentation>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Deliver_1" sourceRef="Start_Process_CRDM_Deliver" targetRef="Call_OptionsAnalysis"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_Deliver_1b" sourceRef="Call_OptionsAnalysis" targetRef="A_Implement"/>

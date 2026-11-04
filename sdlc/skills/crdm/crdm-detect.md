@@ -24,9 +24,9 @@ building the tooling with a content-agnostic answer — that is `spec-kit`.
 
 ## Which requirements methodology — the fork this detection now carries
 
-**Detecting a feature request no longer selects CRDM by itself.** Since
-2026-09-21 (issue #730, the owner's option A) there are **two** parallel
-requirements methodologies, and `methodology-adoption` forbids blending them.
+**Detecting a feature request does not select CRDM by itself.** There are
+**two** parallel requirements methodologies, and `methodology-adoption` forbids
+blending them.
 The signals below tell you a request needs requirements; this fork tells you
 whose.
 
@@ -35,12 +35,7 @@ whose.
 | **`crdm`** — this methodology | stakeholder-facing WHO/IG work: needs assessment, BPA, stakeholder sign-off | content developers, via a BA | a folio's subject matter |
 | **[`spec-kit`](../spec-kit/spec-kit.md)** | folio-assistant feature development; software-development best practice, closer to a scrum process | **tool developers** | nothing a folio says — **content-agnostic** |
 
-The owner's words, 2026-09-21: *"CRDM stays for stkaeholder facing WHO/IG
-work…..spec-kit is specific to folio assistant feature development requests by
-tool developers not content developers (content agnostic, more scrum methodology
-process) for best practives of software development"*.
-
-**Most of the signals listed below are now spec-kit's**, not CRDM's — the
+**Most of the signals listed below are spec-kit's**, not CRDM's — the
 "Platform-level change requests" and "Direct capability requests" categories
 especially, since both describe somebody building the tooling. Read the
 categories as *this needs requirements*, then apply the fork.
@@ -110,9 +105,8 @@ Phrases that emerge during content review:
 
 ### A request for a plan
 
-Owner, 2026-10-07 (issue #2405): *"if we make a request for a plan you should
-ALWAYS have created a requirements document and work plan for us to review
-before implementation."*
+A request for a plan ALWAYS produces a requirements document and a work plan
+for review before implementation.
 
 - "plan", "make a plan", "plan the …"
 - "approach", "what approach would you take"
@@ -121,14 +115,11 @@ before implementation."*
 - "come up with …"
 
 **A plan request needs requirements under either methodology, and content
-requests are not exempt** (decision 2 of 2026-10-07): "plan the edits to
-chapter 3" triggers it as surely as "plan the new validator". The fork above
-still decides WHOSE requirements — this signal never selects a methodology
-and never blends them. What happens on a plan request is the same operation
-for both, and it lives in the content layer above this one, which is why it is
-named here rather than linked —
-the `plan-request-gate` skill (`skill_fetch plan-request-gate`)
-— produce a requirements document and a work plan, put them where this
+requests are not exempt**: "plan the edits to chapter 3" triggers it as
+surely as "plan the new validator". The fork above still decides WHOSE
+requirements — this signal never selects a methodology and never blends them.
+The operation is the same for both and lives in the content layer, in the
+`plan-request-gate` skill (`skill_fetch plan-request-gate`): produce a requirements document and a work plan, put them where this
 methodology says (CRDM: committed under `docs/proposals/`), hand both over as
 absolute GitHub permalinks, and **stop until sign-off is recorded on the
 issue**. The definition of a requirement both methodologies share is
@@ -144,15 +135,11 @@ its sentences fall into.
 - "Proposal: …" as a document's OPENING line
 - "design document for …"
 
-Anchored to the opening line, and the reason has CHANGED. The anchor was
-chosen because an unanchored `proposal` also caught #187, a request to write
-up a merged proposal's changes, which was labelled *not* a feature request. On
-2026-09-24 the owner relabelled #187 a feature request, after a blind second
-annotation (bean `vjbl`): it is the change register for pipeline changes not
-yet built. Measured on the adjudicated corpus, the unanchored pattern now adds
-no false alarm and catches #187, which the anchor misses (recall 95.5% →
-100%). The anchor is kept until the owner decides, because changing a detector
-to fit its own 27-item eval set is tuning to the test.
+Anchored to the opening line. On the adjudicated corpus an unanchored
+`proposal` adds no false alarm and catches one more item (a change register
+for pipeline changes not yet built). The anchor stays until an owner decides,
+because changing a detector to fit its own 27-item eval set is tuning to the
+test.
 
 ## What is NOT a feature request
 
@@ -221,25 +208,17 @@ When a PR is merged that addresses a feature from this process:
 
 ## A feature is a COLLABORATION you are joining, not a fix you are making
 
-Owner, 2026-09-21, and this is the framing the rest of this file sits inside:
-
-> when agent in discussion with human and a feature comes up, it starts or
-> engages w/ existing collaborative design requiremnts between this user,
-> other users/authors/etc. other agents. treat the design/feature process as
-> such. it's not a one off fix... put it into epcis/stories.etc.
-> update/create needed artefacts and link to them under the appropriate
-> harnesse's docs/ page.
+When a feature comes up in conversation, it starts or joins a collaborative
+design between this user, other users and authors, and other agents. It is
+not a one-off fix: put it into epics and stories, create or update the
+artefacts it needs, and link them from the owning harness's `docs/` page.
 
 ### The default that is wrong
 
 A feature surfaces mid-conversation, the agent understands it, and the agent
-builds it. The conversation felt like the requirements gathering, so it stands
-in for them. Everything needed to review the decision — the alternatives, the
-reason, who else it affects — stays in a chat log that nobody else will read
-and that is gone tomorrow.
-
-**That is the failure this section exists to name.** It does not look like a
-mistake at the time; it looks like being responsive.
+builds it, with the conversation standing in for requirements. Everything
+needed to review the decision — the alternatives, the reason, who else it
+affects — stays in a chat log nobody else will read.
 
 ### What to do instead
 
@@ -262,20 +241,14 @@ authors, other users, other agents working other branches. Two consequences:
 doing is worth a place in the roadmap. This store's hierarchy is
 `milestone → epic → feature → task`, and `check-bean-parents` enforces that
 every open bean has a home. A feature filed as a bare task with no parent
-lands in the roadmap's Miscellaneous section, which is where work goes to stop
-being planned.
+lands in the roadmap's Miscellaneous section.
 
 **An epic cannot parent an epic here.** When the subject already has an epic,
 the new work is a FEATURE under it — a second epic beside it splits one
 subject across two roots, which is how a roadmap becomes unreadable.
 
-**4. Write the artefacts, and LINK them from `docs/`.** The owner's
-instruction is specific and it is the part most often skipped: *"update/create
-needed artefacts and link to them under the appropriate harnesse's docs/
-page."*
-
-An artefact nobody can navigate to is an artefact nobody will read. The
-harness that owns the capability owns the link — so a change to cat-harness's
+**4. Write the artefacts, and LINK them from `docs/`.** The harness that owns
+the capability owns the link — so a change to cat-harness's
 pipeline is linked from cat-harness's `docs/`, not from wherever the agent
 happened to be working. Which harness owns it is usually answered by which
 instance declares the directory the change lands in.
@@ -303,4 +276,4 @@ that the *record* is collaborative, not that the *work* pauses.
 
 ## Related work first
 
-When a requirement is **initiated or updated** in chat, find the related work before anything else. That means beans, issues and open PRs, each categorized and summarized, followed by one question to the user about whether and how to coordinate. The procedure is [`related-work-coordination`](../sdlc-core/related-work-coordination.md), and `crdm-issue-linking.bpmn` calls it as `Process_RelatedWork` (issue #1023).
+When a requirement is **initiated or updated** in chat, find the related work before anything else. That means beans, issues and open PRs, each categorized and summarized, followed by one question to the user about whether and how to coordinate. The procedure is [`related-work-coordination`](../sdlc-core/related-work-coordination.md), and `crdm-issue-linking.bpmn` calls it as `Process_RelatedWork`.

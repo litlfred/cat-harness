@@ -35,23 +35,9 @@ folio-assistant follows [Semantic Versioning 2.0.0](https://semver.org/):
 
 ## Release planning with epics
 
-A **release epic** groups all work for a specific release:
-
-```bash
-beans create "Release v0.5.0" --type epic
-beans create "Add release lifecycle skill" --type story
-beans update <story-id> --parent <epic-id>
-```
-
-### Release readiness checklist
-
-A release is ready when:
-- [ ] All must-have beans in the epic are resolved
-- [ ] CI is green on main
-- [ ] All changed docs pages regenerated and verified
-- [ ] All changed BPMNs re-rendered
-- [ ] Changelog is complete
-- [ ] BA has reviewed and approved
+A **release epic** groups all work for a specific release. Its structure, the
+commands that build it, and the readiness checklist are in
+[`release-epic-planning`](release-epic-planning.md).
 
 ## Where code review sits
 
@@ -72,13 +58,13 @@ See [`code-review-process`](code-review-process.md) for the review detail.
 ## [X.Y.Z] — YYYY-MM-DD
 
 ### Added
-- New `release-lifecycle` skill (#1340)
+- New `release-lifecycle` skill
 
 ### Changed
-- Updated CRDM workflow with Phase 4b prioritization (#1340)
+- Updated CRDM workflow with Phase 4b prioritization
 
 ### Fixed
-- Added `isMarkerVisible` to BPMN gateways (#1340)
+- Added `isMarkerVisible` to BPMN gateways
 ```
 
 Derived from conventional commits:
@@ -109,6 +95,7 @@ The process is identical; the artefacts differ.
 
 - [`package-release.md`](package-release.md) — release mechanics
 - [`code-review-process.md`](code-review-process.md) — review in release context
-- [`../../sdlc/skills/crdm/crdm-requirements-workflow.md`](../crdm/crdm-requirements-workflow.md) — Phase 6 feeds into release
+- [`crdm-requirements-workflow.md`](../crdm/crdm-requirements-workflow.md) — Phase 6 feeds into release
 - [`staging-review.md`](staging-review.md) — staging previews for RCs
-- [`../../../work-plan/skills/work-plan/todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — bean management within epics
+- [`release-epic-planning.md`](release-epic-planning.md) — epic structure and readiness checklist
+- [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — bean management within epics

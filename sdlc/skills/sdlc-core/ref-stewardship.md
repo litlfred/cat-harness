@@ -21,9 +21,8 @@ one writer and no downstream serialisation, and giving it a steward buys
 nothing and adds a single point of failure.
 
 A watched ref is `main`, `gh-pages`, or a branch a declaring directory's
-`storage` (or `source`) names. There is no central table: `special-branches.json`
-was removed on 2026-10-05 (owner). A ref nothing declares is not a watched
-ref, and this skill does not apply to it.
+`storage` (or `source`) names. There is no central table. A ref nothing
+declares is not a watched ref, and this skill does not apply to it.
 
 ## What a steward is FOR, and what it must not become
 
@@ -34,8 +33,7 @@ property of the persona — which is why `merge-steward` names no ref in its own
 description and why a second contended ref can acquire a steward without a
 schema change.
 
-The rule it inherits from [`merge-queue`](merge-queue.md) is the one that keeps
-it honest:
+The rule it inherits from [`merge-queue`](merge-queue.md):
 
 > **A steward stores DECISIONS. It never stores a fact the host already
 > knows.**
@@ -45,15 +43,13 @@ who takes over*. It must never record the ref's tip SHA, a deployment's
 conclusion, or whether the site is live. Those move, and a stored copy is a
 second answer that goes stale on the next push.
 `MergeQueueEntrySchema.FORBIDDEN_FACT_KEYS` refuses the tempting ones by name;
-a ref window is a sibling object under the same rule, and inherits the
-temptation along with it.
+a ref window is a sibling object under the same rule.
 
 ## A window is NOT a hold, and the difference is what ends it
 
-[`merge-queue` §"A hold has an EXPIRY and a trigger"](merge-queue.md) is
-emphatic, and right: a hold ends on **the observation that lifts it, not a
-time**. A hold whose reason you cannot restate from current facts is a habit,
-and the measured case cost four clean PRs roughly forty minutes.
+Per [`merge-queue` §"A hold has an EXPIRY and a trigger"](merge-queue.md), a
+hold ends on **the observation that lifts it, not a time**. A hold whose reason
+you cannot restate from current facts is a habit.
 
 A coalescing window looks like a hold and is a different object:
 
@@ -63,13 +59,11 @@ A coalescing window looks like a hold and is a different object:
 | what ends it | the observation that lifts it | the clock, *and* a bound |
 | why not the other way | a time cannot know the condition cleared | *"no more arrivals"* is only ever observable by waiting |
 
-**That is the whole justification for a window being timed, and it is narrow.**
-A window batches writes that are arriving *now* into one write, so the thing it
-waits on is the absence of a future event — and absence of a future event has no
-observation. A hold waits on a present condition, which does.
+A window is timed because it waits on the absence of a future event, which has
+no observation; a hold waits on a present condition, which does.
 
-Both fail the same way, and the symmetry is the thing to remember: **a hold
-that never ends starves, and a window that never closes starves identically.**
+**A hold that never ends starves, and a window that never closes starves
+identically.**
 So a window carries a hard maximum and closes at it even while pushes keep
 arriving. A window that extends on every arrival is not a window, it is an
 outage with a timer.
@@ -87,7 +81,7 @@ The shape, for a ref with *n* writers arriving in bursts:
 **Composition is only sound when the writes do not contend**, and for a
 route-keyed store they do not: `branch-store`'s `keyedBy: "route"` gives each
 route one owning generator, so *"nobody authored either side, so the newer
-generation wins"* (bean `1j3q`). Two requests for **different** routes compose
+generation wins"*. Two requests for **different** routes compose
 by union. Two for the **same** route compose by taking the newer.
 
 **The case that must still be reported:** two same-route requests where
@@ -98,34 +92,24 @@ writers disagree. Report it; do not resolve it.
 
 ### Why a GitHub concurrency group is not a window
 
-**Measured here, 2026-09-19** (the comment lives in
-`.github/workflows/feature-staging.yml`): `cancel-in-progress: false` governs
-the RUNNING job, not the pending one, and **GitHub cancels a PENDING job when a
-newer one queues for the same group.** Three staging runs from three different
-branches inside 17 seconds gave two cancelled and one run.
-
-So a concurrency group keeps at most one pending run. It is not a queue, and
+`cancel-in-progress: false` governs the RUNNING job, not the pending one, and
+**GitHub cancels a PENDING job when a newer one queues for the same group.** So
+a concurrency group keeps at most one pending run. It is not a queue, and
 `cancel-in-progress: false` is not coalescing — it protects the job in flight
-and silently drops the intermediate ones. It is worth having for the first
-reason and must not be described as the second.
-
-This is the measurement that moved the `gh-pages` fix from a workflow policy to
-a steward (bean `xp5j`): the published site was up to **396.2 minutes** behind
-`main` across a streak of **24** consecutive cancellations, and no concurrency
-setting can coalesce the bursts that caused it.
+and silently drops the intermediate ones. No concurrency setting can coalesce
+bursts of writes to a ref like `gh-pages`; that needs a steward.
 
 ## The window's four durable fields — because of HANDOVER
 
-A window that lives in one agent's head is lost the moment that agent hands
-over, and the next steward then either waits for a window that will never close
-or opens a second one and double-pushes. **So the window is committed state, in
-the `workflow-state` graph under `beans/workflows/`, not a variable.**
+A window that lives in one agent's head is lost at handover, and the next
+steward then either waits for a window that will never close or opens a second
+one and double-pushes. **So the window is committed state, in the
+`workflow-state` graph under `beans/workflows/`, not a variable.**
 
-The four fields are `HoldSchema`'s, deliberately — `schemas/sdlc/merge-queue.ts`
-already derived them for the hold case, from the same reasoning
-([`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md)'s `## Blocked on`): *"a hold with no expiry
-cannot be told from an abandoned one."* Read that sentence with "window" in it
-and nothing needs re-deriving.
+The four fields are `HoldSchema`'s (`schemas/sdlc/merge-queue.ts`), for the
+same reason
+([`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md)'s `## Blocked on`):
+a window with no expiry cannot be told from an abandoned one.
 
 `schemas/sdlc/ref-window.ts` is the type. Three fields are `HoldSchema`'s verbatim
 and the fourth is narrowed:
@@ -142,14 +126,10 @@ is, and `closedAt` says whether the single write happened — **absent means ope
 OR abandoned, and `expires` is the only thing that tells those apart**, so a
 reader must never take an absent `closedAt` for "still collecting".
 
-There is **no `extend`**, and the object is strict, so the field a well-meaning
-writer reaches for is refused rather than ignored. That makes "set once, at
-open" a property of the type instead of a promise in this paragraph.
-
-**`expires` does the work here that it does for a hold, for the same reason and
-with the opposite polarity.** A hold's expiry stops it outliving its
-justification; a window's expiry *is* its justification, and also stops it
-outliving its burst.
+There is **no `extend`**, and the object is strict, so an extra field is
+refused rather than ignored: `expires` is set once, at open. A hold's expiry
+stops it outliving its justification; a window's expiry *is* its
+justification, and also stops it outliving its burst.
 
 ## The two gaps a steward reports rather than fixes
 
@@ -161,34 +141,28 @@ that checks one direction reads as clean while the other is broken:
   incomplete, and this is the one a grep over the declaration cannot find,
   because it is looking in the wrong file.
 
-Measured on `gh-pages`, 2026-10-04: its `writers` list held **4**, and parsing
-all 35 workflows found **5** — `publish.yml` defaults `publish_branch:
-gh-pages` and was unlisted. Adding the line is the symptom; the fix is a gate
+For example, an action that defaults `publish_branch: gh-pages` writes the ref
+without naming it. Adding the missing line is the symptom; the fix is a gate
 comparing declared against measured and failing either way.
 
 And a sweep **prints its denominator**
-([`generalise-the-fix`](generalise-the-fix.md) §1.2a): the first pass over
-those workflows reported 6 producers because `'gh-pages' in text` matched a
-comment in `merge-main.yml`. `parsed 35 of 35` beside the verdict is what makes
-the number readable at all.
+([`generalise-the-fix`](generalise-the-fix.md) §1.2a) — `parsed 35 of 35`
+beside the verdict — and parses rather than matching text, since a plain string
+match also counts comments.
 
 ## What this does not do yet
 
-- **No steward runs over `gh-pages`.** The ref is declared, and bean `xp5j`
-  carries the migration; until the five producers write through
-  `branch-store`'s route keying there is no window to hold.
+- **No steward runs over `gh-pages`.** The ref is declared; until its
+  producers write through `branch-store`'s route keying there is no window to
+  hold.
 - **No steward runs over the `cat/cat-harness/*` refs.** They are seeded and
-  declared and, per their declarations, *"not authoritative"* until arc
-  `fs43`'s flip. A steward over a ref nobody reads from would be ceremony.
+  declared and, per their declarations, *"not authoritative"*. A steward over a
+  ref nobody reads from would be ceremony.
 - **Nothing writes a window yet.** `schemas/sdlc/ref-window.ts` types one and
   `ref-window.test.ts` holds it to the handover rules, but no steward opens one,
   because there is nothing to coalesce until the producers stop pushing
-  directly. The type lands first on purpose: a steward written before the state
-  it hands over is a steward whose handover is untested.
+  directly.
 - **The parity between the window and the hold is behavioural, not structural.**
   `SHARED_LEASE_FIELDS` is the declared list and the test removes each field
-  from both schemas and requires both to refuse. An earlier version compared key
-  lists through `HoldSchema.def.innerType.shape`; it threw, because a
-  `.refine()` does not expose its inner object there — and a parity check that
-  silently compared two empty lists would have passed forever (the `dh4f`
-  shape).
+  from both schemas and requires both to refuse. A key-list comparison would
+  not work: a `.refine()` does not expose its inner object.

@@ -13,21 +13,16 @@ graph-typologies:
 **A methodology is somebody else's work, adopted whole.** It is not a house
 process with a citation bolted on. The graph carries them as a distinct kind so
 that adopting one, replacing one and removing one are all ordinary operations.
-
-The owner's framing, 2026-09-20, and it is the whole design:
-
-> these are all judgement methodologies. parallel tracks/ways of achieving same
-> process. use of which is contextual dependent. so need to formalize each but
-> keep independent so can be incorporated into other skills as sub KGs.
+Methodologies are parallel ways of achieving the same process, chosen by
+context; each is formalised on its own and kept independent, so that other
+skills can incorporate it as a sub-graph.
 
 ## Parallel, not composable
 
 Two or more methodologies may answer the same question. **Do not blend them.** A
 composite — this one's vocabulary, that one's record, a third one's filter — is a
 house method that cites nobody, and it inherits none of their authority while
-claiming all of it. This exact mistake was made and corrected on 2026-09-20: an
-analysis proposed "adopt A's vocabulary + B's record + C's filter", and the answer
-was that they are parallel tracks selected by context.
+claiming all of it.
 
 So: **pick one per decision, name it, and follow it.**
 
@@ -35,11 +30,9 @@ So: **pick one per decision, name it, and follow it.**
 
 ### First: is this a judgement, or a process?
 
-**Ask before the ladder**, because the ladder below is about how to *decide*
-something, and a request for a change is not yet a decision — it is work needing
-agreed requirements before anything is built. Sending it down the ladder lands it
-on the catch-all rung and produces an options analysis for a question nobody has
-framed yet.
+**Ask before the ladder.** The ladder below is about how to *decide* something;
+a request for a change is not yet a decision but work needing agreed
+requirements before anything is built.
 
 > **Is somebody asking for a change, such that requirements have to be agreed
 > before it is built?**
@@ -84,21 +77,16 @@ not stretch the nearest fit: either is how a house method gets in.
 
 ### Why this skill does not name them
 
-**Deliberately.** Naming each methodology here would couple this skill to the set,
-and the set is meant to be extractable — the requirement is that a methodology can
-be lifted out when the field moves on or an instance needs a different one. A skill
-that enumerated them could not be satisfied by a different set without a prose
-edit, which would make the independence fake.
+Naming each methodology here would couple this skill to the set, and the set is
+meant to be extractable: a methodology can be lifted out, or replaced, without a
+prose edit here.
 
 So the declared set is **the contents of the `methodology` graph**, read from the
 instance's declaration. Ask for it; do not remember it.
 
-## Node, skill, or both? — the question RACI made somebody ask
+## Node, skill, or both?
 
-An adopted methodology can produce up to two artefacts, and which ones is not
-obvious. Settled by the owner 2026-09-22 (bean `2xfl`), after `raci` spent
-months as a skill with no node and the methodology graph could not see the one
-methodology this repository uses on every diagram.
+An adopted methodology can produce up to two artefacts:
 
 | you are writing | it is a **node** in the `methodology` graph | it is a **skill** |
 |---|---|---|
@@ -119,12 +107,11 @@ Three worked cases, each a different answer:
 - **`crdm`** — skill only, and correctly so. It is a house method with no
   external origin, and §"Adopting a new one" step 1 says such a thing is a
   skill. A node for it would be the dressing that rule forbids.
-- **`swot`** — both, written that way from the start.
+- **`swot`** — both.
 
-**A methodology in use with no node is invisible to the graph**, which is what
-`2xfl` recorded: `check:methodology-evidence` counted the nodes and RACI was
-not among them, so a reader asking "what methodologies does this repository
-adopt?" got an answer that omitted one they had just used.
+**A methodology in use with no node is invisible to the graph**:
+`check:methodology-evidence` and every other reader of the `methodology` graph
+count nodes, not skills.
 
 ## Adopting a new one — the ingestion process
 
@@ -157,16 +144,10 @@ adopt?" got an answer that omitted one they had just used.
 ## Extract the PROCESS, not the paper's tools
 
 **A source that presents a method through an implementation is presenting two
-things, and only one of them is the methodology.** The owner, 2026-09-23, on
-ingesting a tool paper:
-
-> do not need to match tools in paper, start with process, determine most
-> appropriate tools (known or which can be added)
-
-So the order is: render the method, *then* ask what this platform should use to
-perform it. A node that adopted the source's tool stack would be adopting an
-implementation and calling it a method — and it would be unfalsifiable in the
-worst way, because the tools would work and the method would never be examined.
+things, and only one of them is the methodology.** Render the method first,
+*then* decide which tools — existing or to be added — this platform should use
+to perform it. A node that adopted the source's tool stack would be adopting an
+implementation and calling it a method.
 
 `hybrid-llm-deterministic` is the worked case. Its source demonstrates the
 method in one tool with one model and one expression language; the node renders
@@ -188,20 +169,15 @@ citation instead.
 
 ## An origin nobody can open is not evidence
 
-**Measured 2026-09-22: six methodologies cited an origin and not one of those
-sources was in any declared library.** Every citation resolved against nothing
-— the shape the retired skill `roles:` field cost 260 dangling values (`qif9`),
-on the one kind whose entire justification is being somebody else's named,
-external work.
+A methodology's justification is being somebody else's named, external work,
+so its `origin` must resolve to a source a reader can open.
 
 `bun run cat check:methodology-evidence` is the axis that makes this visible, and
 `test/results/methodology-evidence.qa-results.json` is where it is recorded. It
-**reports and does not gate**: whether a methodology whose source nobody can
-open may still be used is the owner's call, and a gate failing on the whole
-corpus at once is one somebody switches off. Two things it does fail on — front
-matter that does not validate, and an `evidence` pointing at a bib-slug no
-library holds, because a citation that claims to resolve and does not is worse
-than none.
+**reports and does not gate** on a missing source: whether a methodology whose
+source nobody can open may still be used is the owner's call. It does fail on
+front matter that does not validate, and on an `evidence` pointing at a
+bib-slug no library holds.
 
 **The evidence is an input to SELECTION, not only to adoption.**
 `options-analysis.bpmn`'s `A_CheckEvidence` reads it before the chosen
@@ -211,8 +187,7 @@ decision, and a source can stop being reachable in between.
 **A contested origin is recorded as contested.** `methodologies/swot.md` is the
 worked example: the usual attribution is repeated everywhere and its own source
 says no academic reference supports it, so the node declines to name an
-inventor. Flattening that into a fact would carry the authority of a citation
-while resting on nothing, which is the failure this whole section is about.
+inventor.
 
 ## Refusals
 

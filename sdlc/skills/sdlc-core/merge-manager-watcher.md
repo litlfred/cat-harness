@@ -67,7 +67,7 @@ it.
 | A ready PR that stacks, with green owed CI | `merge-train` (Process_MergeTrain) |
 | Queued runs 60+ minutes old with nothing landed, or the owner says runners are full | `saturation-meta-merge`: offer the card, never run without the owner's tap |
 | A PR whose owner has not pushed or answered for 2+ hours | `stalled-agent-triage`: tell the owner and take it over |
-| main red | The fix goes to main as its own PR first. Trains wait for main to be green, except where `merge-queue` admits "only main's own reds" |
+| main red | The fix goes to main as its own PR first; an automated `post-merge-regen` repair PR, when one is open, lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green |
 | Nothing to do | End the turn with no message |
 
 ## Keeping the swarm in step
@@ -86,8 +86,7 @@ it.
 
 ## Safety rules (STRICT)
 
-These come from the role and from the owner's standing rules. The watcher
-restates them because it is the step that acts on them:
+These come from the role; the watcher is the step that acts on them:
 
 - Merges happen only on the owner's explicit OK. A card tap counts, and it
   names each PR. A sibling's or coordinator's request does not count.

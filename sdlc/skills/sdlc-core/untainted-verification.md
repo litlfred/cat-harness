@@ -19,10 +19,9 @@ They do not differ in this:
 > it, and the checking party is given a controlled context rather than the run
 > of the repository.**
 
-Everything below is that sentence made operational. It is generic on purpose —
-`translation-manager.md` §"The agentic round trip" is where it was first
-written down, in translation vocabulary, and taking the translation out changed
-nothing structural.
+Everything below is that sentence made operational, for any domain;
+`translation-manager.md` §"The agentic round trip" is the translation
+instance.
 
 ## The parties
 
@@ -87,12 +86,10 @@ this skill exists to stop.
    reason. **The producer may write this one, and only this one.**
 3. **not attempted** — no entry at all.
 
-State 2 is the owner's ruling of 2026-09-21, and without it the discipline
-cannot gate anywhere. A producer forbidden from writing a verdict has *nothing*
-to write in an environment with no subagents, so the gate reads an absence it
-cannot tell from negligence. Recording it keeps "could not dispatch"
-distinguishable from "nobody tried" — the same three-state rule `ci-health` and
-`readme-sections` already apply, reached here from the opposite direction.
+Without state 2 the discipline cannot gate anywhere: a producer forbidden from
+writing a verdict has *nothing* to write in an environment with no subagents,
+so the gate reads an absence it cannot tell from negligence. Recording it keeps
+"could not dispatch" distinguishable from "nobody tried".
 
 **It is never a pass.** `isVerified()` is the predicate a gate asks, and it is
 false for state 2 and for state 3 alike. A consumer that reads `n/a` as
@@ -113,10 +110,8 @@ served the turn. A bare model string is an inference printed as a fact. Absent
 both, a reader gets "not recorded", which is true and acceptable.
 
 **A sweep replaces only entries whose reviewer is itself.** `mergeUntainted`
-carries everything else through. This rule exists because
-`translation-block-qa` once deleted a round trip a pair of agents had produced,
-on an unrelated re-run, silently, with nothing in the output to say so. A human
-ruling is never superseded here.
+carries everything else through, so an unrelated re-run never silently deletes
+another party's verdict. A human ruling is never superseded here.
 
 **A verdict is hashed to what it was about.** Edit the subject and the verdict
 goes stale. This matters more for an agent ruling than a script one, because
@@ -129,37 +124,32 @@ so their durable home is the `attestations` graph,
 `test/attestations/<family>/<mirrored subject path>.attestations.json`
 (`qa-attestations/v1`), on `main`. The derived `test/results/` file beside
 them is a working copy whose record lives on the `qa-reports` branch, and a
-regeneration cannot reproduce an agent ruling (arc `3fva`, owner ruling D2
-(a)).
+regeneration cannot reproduce an agent ruling.
 
 `recordUntainted` writes the store **first**, through the same
-`resolvePrior` / `finalizeCriteria` API as every other attesting writer (bean
-`8iqt`), and refreshes the derived report only if one already exists — it
+`resolvePrior` / `finalizeCriteria` API as every other attesting writer, and
+refreshes the derived report only if one already exists — it
 never invents one. So the verdict lands whether or not the derived file is on
 the branch, and the store file it returns is the one to commit. What puts a
 subject in scope is the subject existing (`<subject>.md` or `.ts`), not its
-derived report, which no longer lives beside it. A corrupt or unreadable store
+derived report, which does not live beside it. A corrupt or unreadable store
 reads UNKNOWN and is refused, with nothing written, rather than overwritten.
 
 ## Why the instrument is the thing to watch
 
-A measurement shipped with a `description` explaining its own failures away as
-expected *"with limited vocabulary back-translator"*. The back-translation map
-it scored against held six entries for thirty-six strings, so the failure count
-was a count of absences.
-
 **A measurement whose author has to explain it away is about the instrument,
-not the subject.** All of it was removed — the numbers, the field, the badge
-and both scripts. The incident in full, with its numbers, is in
-[`translation-manager`](../../../skills/library/library-core/translation-manager.md) §"The instrument, not the
-translation", where it happened.
+not the subject** — for example a failure count that is really a count of
+entries missing from the checker's reference map. Remove such a measurement
+rather than publish it.
+[`translation-manager`](../../../skills/library/library-core/translation-manager.md)
+§"The instrument, not the translation" has the worked case.
 
 ## This is one rule with two homes
 
 It is not a platform invention. Guideline methodology separates the systematic
-review team from the guideline development group for the same reason, and
-`8rwa` carries the identical rule into evidence-based literature review for
-living guidelines. When adding a domain's rules here, run them through
+review team from the guideline development group for the same reason, and the
+identical rule applies to evidence-based literature review for living
+guidelines. When adding a domain's rules here, run them through
 [`domain-fencing`](../../../skills/kg/graph-management/domain-fencing.md)'s three questions
 first: a rule that fails all three is a folio's rule, correctly located, and
 fencing it and saying so is the honest move.
@@ -168,8 +158,7 @@ fencing it and saying so is the honest move.
 
 - `translation-manager.md` §"The agentic round trip" — the first instance, and
   the translation-specific drift definition that does *not* generalise.
-- `permissions.json` `qa-reporting` — who may emit a verdict at all. Bean
-  `a58y` gives it its first consumer.
+- `permissions.json` `qa-reporting` — who may emit a verdict at all.
 - `pipeline/untainted-verification.ts` — the recorder. It deliberately
   does **not** call a model: the payload is written by whatever ran the
   parties, so recording works the same for two subagents, two API calls, or two

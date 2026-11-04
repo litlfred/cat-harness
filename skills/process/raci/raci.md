@@ -17,14 +17,8 @@ uses-methodology:
 **The method is not in this file.** It is the `raci` node in the `methodology`
 graph — [`methodologies/raci.md`](../../../methodologies/raci.md) — which carries
 the four letters, the exactly-one-Accountable constraint, and what RACI is not
-for. This file carries how *this platform* applies it. That split is
-`methodology-adoption`'s: a skill names the methodology it follows, and the
-method's own text lives once, so two skills quoting it cannot drift apart.
-
-The node arrived on the owner's ruling of 2026-09-22 (bean `2xfl`). Until then
-the definitions below lived here, which made RACI the one methodology in use
-that the methodology graph could not see. **Read the node first**; everything
-here assumes it.
+for. This file carries how *this platform* applies it (`methodology-adoption`'s
+split). **Read the node first**; everything here assumes it.
 
 **R is already declared, and that is this platform's contribution.** A BPMN
 lane says who performs an activity; that IS Responsible, so the overlay does
@@ -54,14 +48,10 @@ not restate it and declares only the other three:
 
 RACI needs tasks and parties. **This repository already declares both** —
 BPMN activities under the declared workflow directories, and roles in
-`scenarios/roles.json`. What was missing is only the relation between
-them, and only three quarters of it.
-
-A RACI implemented as its own table of names would be a **second answer to
-"who is the reviewer"**, free to disagree with `roles.json` — the drift
-this repository keeps paying for, most recently in the retired skill
-`roles:` field whose 260 dangling values resolved against nothing
-(`qif9`).
+`scenarios/roles.json`. RACI adds only the relation between them, and only
+three quarters of it. A RACI implemented as its own table of names would be a
+**second answer to "who is the reviewer"**, free to disagree with
+`roles.json`.
 
 **Every letter names a ROLE, not an actor.** `role-model.md`'s rule is that
 nothing IS a reviewer — somebody acts as one for the duration of a lane —
@@ -75,10 +65,8 @@ The constraint itself is the node's; what this section adds is that
 `check:raci` fails on a breach rather than advising against one.
 
 **Zero is also a breach**, once an activity declares any RACI at all. An
-activity declaring nothing is `n/a` — annotation is incremental by design, and
-the gate is on what a diagram CLAIMS, never on how much it has claimed so far.
-That incrementality is the platform's choice, not the method's: RACI says
-nothing about partially annotated corpora.
+activity declaring nothing is `n/a`: the gate is on what a diagram CLAIMS,
+never on how much it has claimed so far.
 
 **A role cannot be both accountable and consulted on one activity**, and the
 gate enforces that too.
@@ -118,8 +106,8 @@ the `fulfilmentKindsForBpmnType` rule that a system actor cannot fill one.
 **Not permissions.** What an actor may DO is an ODRL rule in `policies/`
 (actions in `skills/permissions/permissions.json`), and cross-cuts roles.
 Being R for a task says who is expected to do it; performing it also needs a
-rule that permits `perform-task` there (issue #1180).
+rule that permits `perform-task` there.
 
 **Not a substitute for the lane.** If the chart and the lane disagree about who
 performs something, the lane is right and the chart is stale — which is why R
-is read rather than declared, and the sharpest reason this is an overlay.
+is read rather than declared.

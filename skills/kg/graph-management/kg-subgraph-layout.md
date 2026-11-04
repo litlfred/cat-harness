@@ -14,14 +14,6 @@ description: >-
 
 > Skill id: `kg-subgraph-layout` · Package: `graph-management`
 
-Owner, 2026-10-09, in order:
-
-- *"giant diagram --> this is skill to generalize for layout of KG subgraphs visualizer"*
-- *"i think there is webasm graphviz?"*
-- *"also could use the wasm-graphviz to make the graph visualizers overview more dynamic. also allow users to drag nodes around for better visualization."*
-- *"in cat-harness visualizer, use existing themes for coloring."*
-- and earlier, *"add that as a general skill to show KG declaration schema (one each for bootstrap, bootstrap-tools, etc... with or w/o their dependent subgraphs)"*.
-
 This is the general part. [`graph-rendering`](graph-rendering.md) says what
 any drawing of a graph owes its reader, and [`uml-overview`](../kg-core/uml-overview.md)
 says how the schema diagrams are generated. This skill says how a declared
@@ -29,13 +21,11 @@ sub-graph becomes ONE Graphviz diagram a person can rearrange.
 
 ## Where the convention comes from
 
-The "giant diagram" is the **i2ce Form Documentor**:
+The convention is the **i2ce Form Documentor**:
 `I2CE_Page_FormDocumentor::dot()` in i2ce 4.3.3
 (`i2ce/modules/Forms/modules/FormDocumentor`). It wrote every form of an iHRIS
-site as Graphviz DOT and piped it through `unflatten -f -l 2 -c 2 | dot`. A
-folio that holds the iHRIS forms restated it over a projection so any subgraph
-could be drawn with it, and this platform skill generalizes that again: the
-projection here is the UML overview's own model, so the drawing is of a
+site as Graphviz DOT and piped it through `unflatten -f -l 2 -c 2 | dot`. Here
+the projection is the UML overview's own model, so the drawing is of a
 harness's KG declaration schema rather than of forms.
 
 What is kept from the Form Documentor:
@@ -43,13 +33,12 @@ What is kept from the Form Documentor:
 - **A node is a rounded box whose label is a table**: a header, then one row
   per property. The Form Documentor declared `shape="Mrecord"`; here the shape
   is `box` with `style="rounded,filled"`, the same look, because a record
-  shape makes Graphviz split the label at every `|` and a union type
-  (`unverified | self-reported`) came out as one field of three (measured
-  2026-10-09, caught by a browser test).
+  shape makes Graphviz split the label at every `|`, so a union type
+  (`unverified | self-reported`) would come out as three fields.
 - **A node is filled by its family.** The Form Documentor read colour schemes
   from configuration; here the colour is the kind's family in `uml.css`, read
-  by `scripts/uml-palette.ts`, the one place a kind gets its colour. Owner:
-  *"use existing themes for coloring"*. No second palette.
+  by `scripts/uml-palette.ts`, the one place a kind gets its colour. No second
+  palette.
 - **The layout is `unflatten`, then `dot`**, run by the viewer, not at build
   time.
 
@@ -117,9 +106,9 @@ write a second one. It:
 
 It carries `fa-figure-scope`, so the site figure viewer (`mountFigure` in
 `docs-ui.js`, `graph-rendering` rule 9) leaves it alone: this element has its
-own pan and zoom. That is the one exception to "one viewer", and it is
-deliberate: the figure viewer zooms a picture, this one re-lays and moves a
-graph. It owes the same keyboard floor.
+own pan and zoom. That is the one exception to "one viewer": the figure viewer
+zooms a picture, this one re-lays and moves a graph. It owes the same keyboard
+floor.
 
 Colours: none are written in the script. The fills come from the DOT, the
 chrome from `uml.css` (`.kg-graph`). Like every diagram on the site the card is

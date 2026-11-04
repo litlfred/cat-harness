@@ -13,11 +13,7 @@ profiles: [document, paper]
 
 # Finding software — get it, do not route around it
 
-Owner, 2026-10-09, after an ingest stopped at a missing `tesseract` and the
-agent fed the OCR step a cached copy instead: *"why no tesseract?"*, then
-*"update skills and tools on finding software"*, *"github egress"*, *"also add
-apt"*. The container is the agent's to provision. Installing took one command
-and twenty seconds; the workaround was the wrong output, quietly.
+The container is the agent's to provision.
 
 ## The rule
 
@@ -64,7 +60,7 @@ means everything asked for is present.
 
 That is [`blocked-build-dependencies`](blocked-build-dependencies.md): read the
 refusal (`curl -sS "$HTTPS_PROXY/__agentproxy/status"`) before working around
-it. Measured from an agent container on 2026-10-09:
+it. What an agent container typically reaches:
 
 | route | result |
 |---|---|
@@ -73,7 +69,7 @@ it. Measured from an agent container on 2026-10-09:
 | `raw.githubusercontent.com` | 200 |
 | `git clone https://github.com/...` | works |
 | `codeload.github.com` archives, `github.com/<o>/<r>/raw/...` | 403 |
-| `api.github.com` | 403 at the time measured (it answered earlier the same day; treat as unreliable — find a tag with `git ls-remote --tags` instead) |
+| `api.github.com` | unreliable — find a tag with `git ls-remote --tags` instead |
 
 ## A missing tool for the WHOLE environment
 

@@ -3,7 +3,7 @@
   "tool": {
     "id": "kg-audit",
     "title": "Knowledge-graph audit",
-    "description": "Audit every join in the actor→role→skill→task sentence and write a committed QA sidecar per node. A printed verdict is gone; a sidecar is what makes \"unbound since it was drawn\" distinguishable from \"broken in the commit under review\".",
+    "description": "Audit every join in the actor→role→skill→task sentence and write a committed QA sidecar per node. The sidecar distinguishes \"unbound since it was drawn\" from \"broken in the commit under review\".",
     "install": {
       "none": true
     },
@@ -41,7 +41,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "The QA tree, mirroring each subject's own path — flat would collide, since several basenames already occur twice."
+          "description": "The QA tree, mirroring each subject's own path (several basenames occur twice)."
         },
         {
           "name": "worstSeverity",

@@ -16,10 +16,9 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 ---
 
-> التثبيت هو النصف الأسهل. ما يجب تشغيله **قبل أن تدفع (push)** هو
-> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }}) —
-> فاجتياز `bun test` ليس هو اجتياز البوابات، وتُستمد القائمة من
-> سير عمل CI بدلاً من أن تكون مكتوبة نصيًا. وإذا كنت تضع folio-assistant
+> ما يجب تشغيله **قبل أن تدفع (push)** هو
+> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }})؛
+> فاجتياز `bun test` ليس هو اجتياز البوابات. وإذا كنت تضع folio-assistant
 > فوق مستودع موجود بالفعل، فاقرأ
 > [`repo-conversion`]({{ '/reference/skill-instructions/repo-conversion.html' | relative_url }}) أولاً.
 
@@ -39,11 +38,8 @@ MCP. والمنصة نفسها لا تحتاج إلا إلى Bun؛ أما أنو
 | Java 21 + IG Publisher + SUSHI | أدلة تطبيق WHO SMART (المستوى L3) | راجع [دليل WHO SMART IG](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`، ثم الدليل |
 | `pandoc`، و`ripgrep` | التحويلات، والبحث | `apt install pandoc ripgrep` | `winget install JohnMacFarlane.Pandoc BurntSushi.ripgrep.MSVC` |
 
-لست بحاجة إلى كل هذه المتطلبات — ثبّت فقط ما تتطلبه أنواع المحتوى التي تؤلفها.
-ويخبرك فاحص القدرات المدمج بما هو مفقود.
-
-> **Bun هو المطلوب فقط.** كل صف آخر يخص نوع محتوى معين ويتم فحصه في
-> وقت التشغيل، لذا لا تثبّت أي شيء آخر حتى يطلبه `check-deps`.
+Bun هو المطلوب فقط. كل صف آخر يخص نوع محتوى معين ويتم فحصه في
+وقت التشغيل، لذا لا تثبّت أي شيء آخر حتى يطلبه `check-deps`.
 
 
 ## الاستنساخ والتثبيت
@@ -97,9 +93,7 @@ cat-harness-tools\scripts\upload-to-uploads.bat https://example.org/guideline.pd
 يقوم `cat-harness-tools/scripts/start-folio-assistant.sh` بتثبيت Bun إذا كان مفقودًا ثم
 يبدأ تشغيل الخادم، كما أن
 `cat-harness-tools/adapters/mcp-server/install.sh` هو برنامج تثبيت أكثر شمولاً يغطي TeX
-Live أيضًا. كلاهما لم يكن موثقًا حتى 2026-09-21
-([#740](https://github.com/litlfred/folio-assistant/issues/740)) — ولهذا السبب
-يوجد هذا القسم.
+Live أيضًا.
 
 ## فحص بيئتك
 
@@ -243,8 +237,8 @@ claude mcp add folio-assistant -- bun run /path/to/folio-assistant/cat-harness-t
 `work_plan_prime` التي يمكن لأي وكيل متصل بـ MCP استدعاؤها للحصول على تمهيد
 مباشر ومتطابق لخطة العمل، بغض النظر عن إطار العمل المستخدم.
 
-> **لماذا يعمل هذا عبر الأطر المختلفة.** يكمن الانضباط في `AGENTS.md` (وهو
+> **لماذا يعمل هذا عبر الأطر المختلفة.** نقطة الدخول هي `AGENTS.md` (وهو
 > معيار لوكلاء Linux Foundation يُقرأ بشكل أصيل بواسطة Claude Code وGemini CLI
-> وAntigravity وCursor وCopilot وغيرها)؛ ويتم إظهار الحالة المباشرة كخطاف
+> وAntigravity وCursor وCopilot وغيرها)، ويحيل إلى المهارات حيث يكمن الانضباط؛ ويتم إظهار الحالة المباشرة كخطاف
 > `SessionStart` لكل إطار عبر برنامج نصي مشترك، وكأداة MCP المسماة
 > `work_plan_prime`. راجع صفحة [البنية الهندسية](../../concepts/ar/architecture.html).
