@@ -12,6 +12,18 @@
     "title": {
       "type": "string"
     },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "created_at": {
+      "type": "string"
+    },
+    "updated_at": {
+      "type": "string"
+    },
     "status": {
       "type": "string"
     },
@@ -31,18 +43,6 @@
       }
     },
     "blocked_by": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
-    },
-    "created_at": {
-      "type": "string"
-    },
-    "updated_at": {
-      "type": "string"
-    },
-    "tags": {
       "type": "array",
       "items": {
         "type": "string"
