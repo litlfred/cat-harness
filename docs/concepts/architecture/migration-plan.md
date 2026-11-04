@@ -31,8 +31,8 @@ corpus and found this) rather than a negative one (nothing went red).
 
 ## Phase 0 — unblock, before anything moves
 
-Phase I moves code around to prepare for change. Three things have to be true first, and none of them is a move. Skipping them
-means discovering in Phase II that the target shape is unreachable.
+Phase I moves code around to prepare for change. Three things have to be true
+first, and none of them is a move. Skipping them means discovering in Phase II that the target shape is unreachable.
 
 ### 0.1 — Make the dependency model able to carry the split · **decided and built**
 
@@ -171,7 +171,11 @@ instances side by side; `kg:detangle:direction` owns that axis. The two are not
 each other's second opinion: `check:partition` partitions a **future** layout by
 path rule, `kg:detangle:direction` checks the **present** layout against
 declared `needs`. Either can be green while the other is red, and a survivor
-recorded against one says nothing about the other.
+recorded against one says nothing about the other. `kg:detangle` owns the
+cross-instance axis because it already sees it; widening `check:partition`'s
+root to the checkout would mean reclassifying every instance's modules, since
+its path rules are written against instance-relative paths. Read
+`check:partition`'s count with the scope it prints beside it.
 
 **I.8 is what keeps five repos from becoming five vocabularies.** Each split
 repo publishes its own knowledge graph, and the graphs are only mergeable if
@@ -182,8 +186,11 @@ assert the same node IRI, because the document IRI is part of every node's.
 
 The rule the skill states and a test enforces: **artefacts are stub-named, the
 declaration file is not** — the declaration is `<name>.json`, named for the
-instance's `name`. A consumer opening a repository it has never seen finds it
-with `findDeclarationFile()`, which never computes the name from the directory:
+instance's `name` rather than its `stub`, which keeps it out of the stub-named
+set. A consumer must be able to open a repository it has never seen without
+knowing what it is called, and a resolver that computes the filename from the
+directory finds nothing when a repo is cloned under a different name. So
+`findDeclarationFile()` never computes the name from the directory:
 it scans for a `*.json` whose stem equals the `name` **inside** it, and throws
 when a directory holds two rather than picking one.
 See [`directory-conventions`](../../../skills/kg/kg-core/directory-conventions.md)

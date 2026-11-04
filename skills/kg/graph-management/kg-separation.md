@@ -211,9 +211,10 @@ optional root parameter defaulting to today's. A check that THIS repository is
 configured right — its own Pages address, its committed pages' banners — keeps
 its assertion verbatim and moves to the top-level test home above.
 
-**`upward paths` counts what breaks, not what is out of sight.** Discovery is
-checkout-local, so it counts declared paths that resolve above the layer, not
-dependents discovery cannot find.
+**`upward paths` counts what breaks, not what is out of sight.** It counts
+declared paths that resolve above the layer, not dependents discovery cannot
+find: discovery is checkout-local on purpose, so a count of what it cannot see
+never reaches zero, and the risk is paths, not instances.
 
 **A seeding pair is not upward.** A higher instance's Tool nodes may resolve
 into their implementer below through `needs`; the two are seeded in the same
@@ -278,7 +279,8 @@ path (`check:node-iris`).
 
 ## Versions of the pair — same scheme, same start, then independent
 
-- **At the split, both start at the content's current version** — bootstrap
+- **At the split, both start at the content's current version**, for
+  simplicity — bootstrap
   was `0.1.0`, so bootstrap-tools starts at `0.1.0`.
 - **After that each is versioned on its own**, by the same rules: semver, the
   bump computed from the exported surface (`check:version-bump`).
@@ -329,7 +331,8 @@ path (`check:node-iris`).
 16. **The replayer must never live inside a layer it replays**: if every workflow (and every downstream folio's staging build, through a reusable workflow) bootstraps by running a script inside the directory being retired, the cutover breaks the first step of every job. **Before stage 13**, grep every workflow the parent ships for paths into the directory being retired, and give the parent a bootstrap entry point that lives in the parent and needs nothing mounted (a dependency-free `.github/mount-from-lock.sh` that fetches the pinned replayer).
 17. **A downstream's CI is part of "green" for a cutover**: a reusable workflow called `@main` (`uses: litlfred/folio-assistant/.github/workflows/folio-staging.yml@main`) runs the PARENT's current workflow in the DOWNSTREAM's repository. A cutover that is green in the parent can therefore be red in every folio at once, and the red lands on whatever pull request the folio author opens next — it reads as their failure. Stage 12's "green" includes one dispatched staging run of at least one downstream folio after the cutover commit.
 18. **A separated checkout must run its own tests and type-check its own subgraphs**: run them in a fresh standalone clone. A test that reads `<checkout>/../package.json` fails with `ENOENT` outside the composed tree (lesson 6 by another route), and a `tsconfig.json` whose `include` omits named subgraphs (`openapi/`, `archimate/`) is green while never reading them. A test or type-check that silently depends on the composition, or silently skips part of the repository, is not evidence the separated repository works.
-19. **The kinds a declaration is judged against come from the checkout being read, not from where the harness module sits**: the graph-typology registry reads the checkout under inspection first (`defaultTypologyRoots`; `$REPO_ROOT` still overrides), then its own; a kind both declare is shadowed and reported, never merged. Every path a declaration names is resolved in one run by `check:declaration-resolution`, and `separation:cutover:check` uses it as its `declarations` condition.
+19. **The kinds a declaration is judged against come from the checkout being read, not from where the harness module sits**: the graph-typology registry reads the checkout under inspection first (`defaultTypologyRoots`; `$REPO_ROOT` still overrides), then its own; a kind both declare is shadowed and reported, never merged.
+Otherwise two layouts give two answers about one correct declaration. Every path a declaration names is resolved in one run by `check:declaration-resolution`, and `separation:cutover:check` uses it as its `declarations` condition.
 
 ## After a move lands — the post-move sweep
 

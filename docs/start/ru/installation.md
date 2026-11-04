@@ -18,7 +18,8 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 > То, что нужно запустить **перед push**, — это
 > [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }});
-> успешное прохождение `bun test` не означает прохождение гейтов платформы. Если вы разворачиваете folio-assistant
+> успешное прохождение `bun test` не означает прохождение гейтов платформы, поскольку их список выводится из
+> рабочего процесса CI. Если вы разворачиваете folio-assistant
 > поверх уже существующего репозитория, сначала прочитайте
 > [`repo-conversion`]({{ '/reference/skill-instructions/repo-conversion.html' | relative_url }}).
 

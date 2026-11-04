@@ -79,7 +79,8 @@ reach one. Both break — the coupling is **symmetric** and merely written down
 once, on one side.
 
 So `role` is read off **enforced edges alone**, and a boundary made only of
-recorded ones is `undetermined`. Before you treat a direction as a fact, check
+recorded ones is `undetermined`, because where a fact is recorded determines what
+a metric over it means. Before you treat a direction as a fact, check
 whether it is a filing decision.
 
 ## Reach is counted in groups, not references
@@ -97,7 +98,9 @@ one dependency stated 36 times, not 36 problems.
   in prose is not depending on it. Under-counting makes a group look cleaner
   than it is, so the extractor list is printed with the results.
 - **Dangling references** — to a node outside the scanned set — are reported
-  separately and are *not* counted as outbound edges.
+  separately and are *not* counted as outbound edges, because counting one
+  would make a group with a broken link look entangled, which is a different
+  finding calling for a different fix.
 - **Only `wrong-direction` is classified mechanically**, by the same function
   `repo-partition.ts` uses on the module graph
   (`cat-harness/schemas/layer-direction.ts`). Here a node's layer is its

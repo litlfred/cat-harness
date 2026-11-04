@@ -106,7 +106,7 @@ trigger is starting work, not claiming ([`bean-coordination`](bean-coordination.
    a duplicate that exists only on an open PR's head, which step 2 cannot see.
 4. **Claim**: set `status: in-progress`, append a dated note naming you and your
    session, and make a **plain commit on every copy**. Push it before any other
-   commit of yours.
+   commit of yours, so the next agent's step 2 sees it.
 5. **A rejected push** means somebody wrote first: fetch, rebase, re-read the
    bean, and go back to step 2. **Never force-push** a bean branch.
 

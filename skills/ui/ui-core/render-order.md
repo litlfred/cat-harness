@@ -7,7 +7,8 @@ consulted: true
 Two things live here: **the general subprocess** (flatten a hierarchy into one
 order) and **the one pipeline this repository runs with it**. **A repeatable
 subprocess has one implementation** — every caller that needs "run these in
-dependency order" uses this one.
+dependency order" uses this one, because separate copies become several
+topological sorts, subtly different and untested.
 
 | | |
 |---|---|
@@ -59,6 +60,7 @@ names the step that **broke**, not the nearest blocked neighbour.
 `ran`, `failed`, `skipped` — plus a step that is **declared but not yet
 performable**, which the report marks `◻` and never a tick — so a step that
 cannot yet do its job never reports success while doing something else.
+Naming the gap costs a line; finding it from a wrong artefact costs a release.
 
 ## The three stages
 

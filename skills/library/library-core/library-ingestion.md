@@ -103,8 +103,8 @@ its hierarchy without materialising anything — navigable without being held.
 ## A held PDF gets its page-1 cover BEFORE the upload is retired
 
 The picture of a PDF entry is `library/<slug>/cover.png`, page 1 rendered by
-`pdf-cover.py` — never its first figure. With no cover, the entry shows the
-book glyph.
+`pdf-cover.py` — never its first figure, which can be any picture from deep in
+the document. With no cover, the entry shows the book glyph.
 
 - A new ingest writes it: `ingest-document`'s cover arm runs last.
 - An entry without one gets it from `bun run cat library:covers`.

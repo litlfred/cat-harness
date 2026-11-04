@@ -6,7 +6,7 @@
 - Generator: `cat-harness/scripts/gen-methodologies-viz.ts` (graph typology `methodology`; page location read from the `coverage.visualiser` of the directory declaring that kind in `cat-harness.json`). It does not read the graph itself: the rows come from `check-methodology-evidence.ts` (`methodologyNodes`, `checkMethodologyEvidence`).
 - Rendered by Jekyll with just-the-docs `v0.12.0` (`remote_theme` in `_config.yml`, `color_scheme: dark`). The page has no `layout:` in its front matter. The chrome comes from `_includes/title.html`, `_includes/nav_footer_custom.html`, `_includes/footer_custom.html`, `assets/js/docs-ui.js` and `assets/css/docs-ui.css`.
 
-The wireframe is drawn from the Markdown, the generator and the chrome's templates, JS and CSS, not measured on a rendered page; the mobile behaviour is the theme's (tables scroll sideways inside its table wrapper).
+The wireframe is drawn from the Markdown, the generator and the chrome's templates, JS and CSS, not measured on a rendered page, because the site could not be built where this was drawn (no local just-the-docs, and the published site unreachable); the mobile behaviour is the theme's (tables scroll sideways inside its table wrapper).
 
 ## Who it is for, and what they need to do
 

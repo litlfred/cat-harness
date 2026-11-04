@@ -70,7 +70,8 @@ durable artifact (sidecar `verdict`, audit doc, ledger, PR):
    rebutted` with the closing artifact cited.
 
 The adjudicator (Slot C) enforces both before a finding is written
-`surviving`.
+`surviving`, so the watcher finds the real objection early instead of crying
+wolf on settled items.
 
 ## Slot A — Goal statement
 
@@ -167,7 +168,8 @@ Dispatch rules (inherit parent §4b sidecar-aware dispatch):
   cap applies; default 4 in flight). The four lenses on one block are
   independent → batch them in a single response.
 - **Lens independence.** Agreement among lenses of the same model family is
-  not independent corroboration: a consensus needs independent evaluators, and
+  not independent corroboration, because models of one lineage share blind
+  spots, training biases and failure modes: a consensus needs independent evaluators, and
   disagreement is retained rather than smoothed over
   ([`consensus-grounded-subject-evaluation`](../../../methodologies/consensus-grounded-subject-evaluation.md)).
   Every lens and referee entry records `reviewer.agent_model`.
@@ -208,7 +210,7 @@ Dispatch rules (inherit parent §4b sidecar-aware dispatch):
 The single-pass fan-out (L1–L4, then the adjudicator) is the default. Isolated
 lenses tend to attack a downstream symptom instead of its upstream source, or
 to accept a locally consistent argument that smuggles in a circular dependency
-across files. The watcher elevates a block to a **3-round competitive debate**
+across files, and purely collaborative consensus converges prematurely. The watcher elevates a block to a **3-round competitive debate**
 when any of these holds:
 
 1. **High blast radius** (Slot H items 1 and 2): the block is on the central
@@ -220,14 +222,16 @@ when any of these holds:
    transitive `uses[]` dependency within depth $L \le 5$.
 
 Objection traces follow the dependency graph (`uses[]`, definition
-references, lemma calls), bounded at **depth $L \le 5$**. The rounds, recorded
+references, lemma calls), bounded at **depth $L \le 5$**, because deeper
+chains add noise that distracts the agents and blurs the adjudication. The rounds, recorded
 as `AdjudicationDebateSchema` (owned by the content core):
 
 - **Round 1 — proposal and ranking.** Lenses propose candidate objection
   chains along the dependency graph; the pool is ranked by relevance and
   distinctness and duplicates are pruned.
 - **Round 2 — cross-critique.** Each lens defends its objection and critiques
-  rival ones, recording each critique (`targetAgent`, `point`, `severity`).
+  rival ones, recording each critique (`targetAgent`, `point`, `severity`); the
+pressure exposes vacuous objections and sharpens the surviving ones.
 - **Round 3 — adjudication.** The adjudicator weighs technical merit (no
   unweighted vote, no averaged confidence), records `resolved_conflicts`, and
   assigns the `da-referee-verdict`.
@@ -283,7 +287,8 @@ producing types are owned by the folio-assistant platform's
 **Critical do-not.** This watcher **never edits the claim to make an
 objection go away.** Auto-discharge is limited to scope/notation/
 citation/witness *hygiene*; any change to a statement, a proof, or a
-number is Author-assist.
+number is Author-assist, because a claim edited to defeat an objection
+destroys the evidence for it.
 
 ## Slot F — §4e author-ask templates
 
@@ -429,7 +434,7 @@ serial walk:
 ## Relationship to the existing watchers
 
 This watcher is orthogonal to its siblings and overlaps them at the edges on
-purpose:
+purpose, because a referee does not respect axis boundaries:
 
 | Sibling | They check | The adversary additionally asks |
 |---------|-----------|----------------------------------|
@@ -447,7 +452,8 @@ The adjudicator decides what counts as a rebuttal.
 ## Anti-patterns (devil's-advocate-specific)
 
 - **Manufacturing objections.** An empty objection list from a lens is
-  an honest result; a weak invented objection pollutes the sidecar.
+  an honest result; a weak invented objection pollutes the sidecar and trains
+  the next reader to ignore it.
 - **Crying wolf on settled items.** Recording `surviving` on an item the
   corpus already records as a documented gap, or on a `conj:` that
   openly admits it is unproved, without checking the coordination

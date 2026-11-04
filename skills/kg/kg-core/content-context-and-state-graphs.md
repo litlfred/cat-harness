@@ -29,7 +29,8 @@ may not.
 It is `holds` on `GraphTypologyDef` in `schemas/kg/cat-harness.ts`, and it is
 **required**: `tsc` refuses a kind that has not said.
 
-**A step that writes to a `context` graph is a defect, not an update.**
+**A step that writes to a `context` graph is a defect, not an update.** That
+is the reason the layer exists.
 
 ## Two supporting questions, for a hard case
 
@@ -200,7 +201,7 @@ A branch-tip read is **hit / miss / corrupt / unknown**, and a branch without a
 `state-manifest/v1` root manifest is `corrupt`, not a hit — for a route-keyed
 branch too. The `$schema` string says `state-manifest` on both: the format is
 identical in every field, and `keyedBy` **inside** the manifest is the
-discriminator. A write is spliced onto the tip and pushed **without `-f`**,
+discriminator, because the file declares what it is. A write is spliced onto the tip and pushed **without `-f`**,
 retrying when the tip moves. To edit a file somebody else may be editing, pass
 the blob you read as `expect`. A tip that disagrees then answers `conflict` and
 pushes nothing, so the edit is not silently lost.
@@ -247,7 +248,8 @@ Neither existing answer fits, and each is ruled out by a rule:
 
 `walkBlocks` skips a directory whose declared graphs are all non-`content`, so
 `library/` leaves the sweep **with no directory name written down anywhere** —
-the same way `fsh-guts/` does.
+the same way `fsh-guts/` does — because a hardcoded skip is the kind of
+hardcoded path the declaration exists to remove.
 
 **What it does NOT mean.** `derived` is not "unimportant" and not "not
 committed". `library/` is L1 corpus, committed and greppable, and every

@@ -97,7 +97,7 @@ Also flag the deterministic narrative defects (independent of the score):
 - **Size cap:** ≤ ~40 blocks per batch AND ≤ 49 files per resulting PR
   (the Gemini review limit). Split big chapters into coherent
   sub-clusters by section or topic stem. Get the per-chapter counts from
-  the folio:
+  the folio rather than a remembered table, because they drift:
 
   ```sh
   for d in content/*/*/; do
@@ -121,7 +121,7 @@ Resolve agents edit `.md` prose only. They **must not**:
 **DO-NOT-TOUCH-DERIVATIONS rule (STRICT).** A resolve agent must **not edit
 the prose of a derivation, computation, or proof body at all** — not even to
 "tighten" or "clarify" it. Polishing a *wrong* derivation lends it false
-authority. Therefore:
+authority, which is worse than leaving it rough. Therefore:
 - **Only edit the *surrounding exposition*** — the intro/motivation
   sentence, the notation-introduction, a redundant restatement *outside*
   the derivation, the closing interpretation. Leave every derivation /

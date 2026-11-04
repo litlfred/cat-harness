@@ -40,7 +40,8 @@ original, so the source lives elsewhere.
 
 [`fsh-guts`](../../../kg/kg-core/fsh-guts.md) is *"the trashcan that is kept"*: addressable,
 exported, greppable, and deliberately absent from the canonical render.
-**Delete means relocate.**
+**Delete means relocate.** `fsh-guts/uploads/` is its own sub-directory beside
+`retired/` and `scripts/`, because an ingested source is neither.
 
 A PDF cannot carry front matter, so an archived upload keeps its bytes beside
 a same-basename `.md` sidecar that declares them, as other `fsh-guts/` files

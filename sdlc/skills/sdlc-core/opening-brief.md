@@ -53,7 +53,8 @@ a finished diff costs a review cycle and, often, a revert.
 
 It is the same discipline as the question frame in
 [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md) §4.1, applied to work instead
-of decisions.
+of decisions: a terse start, like a terse question, makes the author go and
+find context the agent already had.
 
 ### The four parts
 
@@ -124,7 +125,8 @@ Four places to look, in this order:
 4. **The commit history** — `git log -S "<symbol>"` over the file you are
    about to change, and a `beans list | grep <topic>` that does **not** filter
    to open items. **A decision that shipped is invisible to every instrument
-   that looks for pending ones**, and one `git log -S` answers it.
+   that looks for pending ones** — and a recent one is exactly when you are
+   most confident your own reading is current. One `git log -S` answers it.
 
 **Cite what you read, never what you remember.** A half-remembered line used as
 an authority is the fake-reference failure `activity-names-skill` exists to

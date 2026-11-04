@@ -66,7 +66,9 @@ pages:
 | [Minimum `cat-harness`](architecture/cat-harness-minimum.html) | What survives in the harness once "not self-documenting" is applied as a test |
 | [Harness instances](architecture/harness-instances.html) | What an instance IS — schematics, visualisations, tools; the four directories; the default rendering |
 
-The rendering requirement is a **floor that rises**: `bootstrap` is exempt
+The minimum says a harness produces nothing a human looks at, and the instance
+page says an instance renders by default; both hold because the rendering
+requirement is a **floor that rises**: `bootstrap` is exempt
 from the visualiser and owes its own `.json`/`.jsonld` instead, and
 `cat-harness` is the layer where the rest applies — see
 [Where the requirement starts](architecture/harness-instances.html#where-the-requirement-starts--bootstrap-is-the-exception).

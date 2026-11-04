@@ -46,11 +46,14 @@ the author meant.
 documentation gap. A gateway with no table is a point where an LLM decides the
 branch — and *how many of those there are, and which*, is exactly the question
 the deterministic-to-agentic spectrum is about
-([`deterministic-and-agentic`](deterministic-and-agentic.md)).
+([`deterministic-and-agentic`](deterministic-and-agentic.md)), and a mechanism
+that cannot enumerate its own judgement points cannot answer it.
 
 `check:workflow-refs` prints the three-way split (computed, declared judgement,
 undeclared) from the models. **Ask the checker, not this page.** An undeclared
-gateway is a backlog entry rather than a defect.
+gateway is a backlog entry rather than a defect: every gateway that predates the
+marker lands there, and a gate that failed on an un-annotated corpus would be
+turned off.
 
 ## What the machine must never do
 

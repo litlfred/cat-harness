@@ -436,7 +436,8 @@ needed: a navbar session (four PRs on `docs-ui.css`, `docs-ui.js`, the navbar
 include, `harness_details.html`, `head_custom.html`), and two IG sessions on
 `gen-ig-pages.ts`. The review went into the bean, the three owning sessions
 were asked for an order, and the only work that started touched none of their
-files.
+files. Without the review, five PRs would have been rebased into a refactor of
+the files they were editing.
 
 ## Related skills
 

@@ -85,10 +85,12 @@ agent-permission:
 ```
 
 Post it on the PR that carries the config change, and in its commit message.
-A refusal is recorded too.
+A refusal is recorded too, so the next session does not ask the same question
+blind.
 
 **A config rule with no grant on the record is reported as unrecorded**
-(`Task_ReadGrants`). It is not treated as granted.
+(`Task_ReadGrants`). It is not treated as granted, because a rule nobody can
+account for cannot be told from one an agent wrote for itself.
 
 ## Rules no grant relaxes
 

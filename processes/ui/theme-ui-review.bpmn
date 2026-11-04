@@ -30,7 +30,7 @@ There is no role-to-theme mapping — theme choice remains an authoring judgemen
         <bpmn:flowNodeRef>R_Judge</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Agent" name="Agent" partitionElementRef="ingestion-agent">
-        <bpmn:documentation>Four measured passes into R_Judge — inventory, accessibility, branding, locales — each one required to MEASURE rather than assert. If GW_Findings comes back yes, this lane still does not fix anything: A_RaiseFindings sends the finding back to whoever authored the theme choice, since picking it was a judgement call this lane does not get to override.</bpmn:documentation>
+        <bpmn:documentation>Four measured passes into R_Judge — inventory, accessibility, branding, locales — each one required to MEASURE rather than assert, because an automated pass alone misses defects a rendered look catches. If GW_Findings comes back yes, this lane still does not fix anything: A_RaiseFindings sends the finding back to whoever authored the theme choice, since picking it was a judgement call this lane does not get to override.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_TUR</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Inventory</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Accessibility</bpmn:flowNodeRef>
@@ -59,7 +59,7 @@ There is no role-to-theme mapping — theme choice remains an authoring judgemen
       <bpmn:extensionElements><bootstrap.processes:skill ref="theme-ui-review"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="R_Judge" name="Judge the assets&#10;in their design">
-      <bpmn:documentation>A person looks at the ingested assets laid out in the design they are for, at BOTH a web and a mobile width. THIS IS A HUMAN STEP INSIDE INGESTION, stated rather than hidden: ingestion of a THEME SOURCE is attended at this step, while ingestion of everything else never reaches it. A judgement made at one viewport is incomplete, not passed, and the wireframe of the surface (wireframe-design-review) says what each layout was meant to be.</bpmn:documentation>
+      <bpmn:documentation>A person looks at the ingested assets laid out in the design they are for, at BOTH a web and a mobile width. THIS IS A HUMAN STEP INSIDE INGESTION, stated rather than hidden: ingestion of a THEME SOURCE is attended at this step, while ingestion of everything else never reaches it. A judgement made at one viewport is incomplete, not passed, and the wireframe of the surface (wireframe-design-review) says what each layout was meant to be. A clean build, a passing suite and every gate can all miss what only rendering the page and looking finds.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:no-skill reason="A person exercising judgement over a rendered artefact. The skill governs what the agent PREPARES and measures for them, which is the four steps before this one."/>
       </bpmn:extensionElements>

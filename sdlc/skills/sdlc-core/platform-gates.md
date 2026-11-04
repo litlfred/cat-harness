@@ -24,9 +24,10 @@ Run it **before you push**, not after CI tells you.
 
 ## The CI workflow is the list
 
-This skill does not list the gates. `bun run cat gates` derives the set from
-`.github/workflows/code-quality-gates.yml` at the moment you run it, so a gate
-added to CI is in your next local sweep.
+This skill does not list the gates, because a written list drifts from CI and
+a stale list reads as authoritative, so nobody checks it. `bun run cat gates`
+derives the set from `.github/workflows/code-quality-gates.yml` at the moment
+you run it, so a gate added to CI is in your next local sweep.
 
 `package.json` is not the authority: many of its `check:` scripts appear in no
 workflow, and running all of them would fail you on things CI does not gate.
@@ -113,7 +114,8 @@ takes minutes; a red CI run costs a push cycle.
 
 **`bun run cat gates` reads the WORKING TREE, not the commit.** An edit made
 while it runs leaves the change unverified, and can make the run report
-failures that were never in any commit. **Run the gates after the last edit,
+failures that were never in any commit. Nothing looks wrong when this happens:
+the run really passed, about a different tree from the one pushed. **Run the gates after the last edit,
 not alongside it** — if you edit while they run, the run is spent and needs
 doing again.
 
@@ -152,7 +154,8 @@ Most of these gates compare a **committed artefact** against what its
 wrong". It means **you changed an input and did not regenerate**.
 
 So the fix is to run the generator and commit its output — never to hand-edit
-the artefact into agreement, which detaches it from its source.
+the artefact into agreement, which makes the next regeneration noisy and
+detaches the artefact from its source.
 
 **QA gates have a different shape.** A gate over the `qa` graph **computes and
 judges**: `--check` writes nothing, and fails only on a finding that is **NEW**
@@ -195,7 +198,8 @@ command and the CI step it belongs to, so a local failure and a red PR are
 findable by the same string. Read what the gate printed.
 
 **It does not tell you a gate is wrong.** A gate whose purpose you cannot state
-gets "fixed" by being made to pass. Every gate in that workflow carries a
+gets "fixed" by being made to pass, which turns the check into decoration.
+Every gate in that workflow carries a
 comment saying what it catches; if you think one is wrong, that comment is what
 you are arguing with.
 

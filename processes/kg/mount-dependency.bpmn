@@ -113,7 +113,8 @@ Every instance reached ends in one of three states — mounted, missing, could-n
         and `agent-memory` (`.claude/agent-memory/` and the `.agents/` copies)
         — from the checkout root, and a generator that fails fails the run.
         A re-pin commit therefore carries the new layers AND the surface
-        rendered from them.
+        rendered from them, because new layers shipped without their
+        rendered surface fail the agent-memory tests.
       </bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="remote-mount"/><bootstrap.processes:skill ref="agent-memory"/></bpmn:extensionElements>
     </bpmn:task>

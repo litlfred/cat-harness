@@ -28,7 +28,8 @@ A removal is a **new entry**, not the erasure of an old one. The pair — the
 `rendered` and the `removed` that follows it — IS the history.
 
 `scripts/render-log.ts` offers no verb that could lose an entry: no
-`--remove`, no `--edit`, no id to overwrite.
+`--remove`, no `--edit`, no id to overwrite. The never-delete property is a
+shape of the tool, so a caller cannot be written wrongly.
 
 **Emptying a log is a person's decision**, taken deliberately, with the
 confirmation every durable artefact here requires
@@ -54,7 +55,8 @@ liveness signal fired leaves no trace otherwise.
 **Outside `STAGING/`, deliberately.** The cleanup runs
 `rm -rf "STAGING/$SLUG"`, and a branch named to collide with a directory under
 `STAGING/` slugifies to exactly that name. A store outside `STAGING/` is
-unreachable by that command whatever the slug says.
+unreachable by that command whatever the slug says; a guard you have to
+remember is weaker than a location that cannot be reached.
 
 **One file per UTC day**, not one growing file and not one per entry. Six
 workflows publish to this branch; a read-modify-write of a single file loses
@@ -71,12 +73,16 @@ the one that fires on every push to `main`.
 So **the log is carried across that deploy by `restore-staging.ts`**,
 unconditionally — not gated on open pull requests the way previews are. A
 preview belongs to an open PR; a log entry about a *closed* one is exactly
-what nothing would carry, and exactly what a reader needs most.
+what nothing would carry, and exactly what a reader needs most. A log a
+deploy truncates is worse than no log, because a reader will believe its
+entries persisted.
 
 `docs-site.yml` runs `restore-staging.ts` **from `main`**, so a change to what
 the restore carries is not in force until it merges.
 
-**`--verify` checks the carried prefixes as well as `STAGING/`**, and a lost
+**`--verify` checks the carried prefixes as well as `STAGING/`**, because a
+verifier blind to half of what the restore carried reports a clean run over
+the loss it exists to catch. A lost
 prefix is reported as **not recoverable by re-running anything**: a preview can
 be rebuilt from its workflow, and a record of what was already removed
 cannot.

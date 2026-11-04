@@ -14,7 +14,8 @@ is its **contract** — the shape of an entry and where it goes.
 ## The entry
 
 `schemas/sdlc/log-entry.ts`. Every entry carries `$schema: folio-log/v1`: a
-directory says what to EXPECT and the file says what it IS.
+directory says what to EXPECT and the file says what it IS. Without it, a log
+entry is told apart from a discarded proposal by its folder alone.
 
 | field | why it is there |
 |---|---|
@@ -34,7 +35,8 @@ be the fake-reference failure `activity-names-skill` exists to prevent.
 ## What an entry points at — `references[]` is OPEN
 
 An entry references whatever the work touched — discussions, chats, command
-executions and more — and nobody enumerates that in advance. So `kind` is an
+executions and more — and nobody enumerates that in advance, so a closed list
+is wrong within a week. So `kind` is an
 open string with a KNOWN SET, and an unrecognised kind is **accepted and flagged**, never
 refused:
 
@@ -66,8 +68,8 @@ the third state again.
 **There is deliberately no field to inline output into.** `outputRef` points
 at where stdout and stderr went. Command output is the likeliest place for a
 token or a connection string to appear, and `capture: "on"` puts an entry in
-git in a repository that may be public, and **an absent field is stronger than
-a warning.** The same caution applies to `command` itself: a
+git in a repository that may be public. An `output` field would invite that
+leak, and **an absent field is stronger than a warning.** The same caution applies to `command` itself: a
 command line carries its own arguments, and `--token=…` is a command line.
 
 ## Turning it on — `<cat-harness.processes:log capture="on"/>` on the process
@@ -75,7 +77,7 @@ command line carries its own arguments, and `--token=…` is a command line.
 Capture is a declaration on the **process**, parsed at load and **throwing on a
 value the engine cannot honour**, exactly as `<cat-harness.processes:bean op>`
 does. A diagram asking for a mode that does not exist must not load and quietly
-log nothing.
+log nothing, because the missing artefact *is* the record.
 
 `workflow_start` writes `task-start`; `workflow_complete` writes `task-end`
 for the step just recorded, with the instance's status in the detail. The step
@@ -87,11 +89,12 @@ Marked in this layer: `crdm-requirements` and `actor-role-administration`.
 **Not a call activity.** A call activity is a **node in the control flow**,
 so the log would become a step to complete in sequence, and in a
 `enforcement="strict"` process `workflow_gate` refuses a step that is not
-enabled. An extension element adds no node and no flow; a test asserts the
+enabled, so a call activity would need policy relaxations for a concern that is
+not a phase of anything. An extension element adds no node and no flow; a test asserts the
 strict processes enforce exactly what their diagrams say.
 
 **`unknown` is not writable as a declared value.** It is what the *absence* of
-a declaration resolves to.
+a declaration resolves to, and a diagram cannot assert that nobody could tell.
 
 ## Capture is off by default, and `unknown` is a real answer
 
@@ -136,7 +139,8 @@ would drown the directory that exists to make discarded *decisions*
 findable.
 
 So: logs may be emptied without confirmation; **everything else in
-`fsh-guts/` may not.**
+`fsh-guts/` may not.** Without this exception an agent would either never empty
+the log or start deleting proposals.
 
 ### The exception was granted to a KIND OF FILE, not to a path
 
@@ -147,7 +151,8 @@ when the caller passed nothing is the wrong way round.
 
 **A file is removed only if it declares itself a `folio-log/v1` entry**, never
 by path. A stray proposal dropped in the log directory keeps every protection
-it would have had one folder up.
+it would have had one folder up, because the exception was granted to a kind
+of file, not to a path, and a declaration inside the file is the contract.
 
 Three consequences worth knowing before you call it:
 

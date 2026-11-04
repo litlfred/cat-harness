@@ -60,7 +60,9 @@ edit in GitHub" — all are **things a reader sees**, so all belong to the conte
 core or `folio-assistant-core-tools`.
 
 What survives in the harness is the part with no pixels: **schemas, process
-definitions, and skills that tell an agent how to behave.**
+definitions, and skills that tell an agent how to behave.** The test is
+falsifiable: if `cat-harness` ends up with dozens of skills and no crisp line
+against core, "not self-documenting" has not constrained anything.
 
 ## `cat-harness` — the minimum
 
@@ -171,8 +173,8 @@ that has not been declared — a QA audit criterion, not a style note.
 
 ## The Tools schema — built, and where the strawperson bent
 
-The shipped schema is `schemas/tools/harness-tools.ts` in the tools layer
-(`cat-harness-tools`), the Tool nodes are `tools/<id>/<id>.json`, and
+The shipped schema is `schemas/tools/harness-tools.ts` in the tools layer,
+the Tool nodes are `tools/<id>/<id>.json`, and
 `bun run cat check:tools` gates them in CI. It differs from the strawperson
 below in five ways:
 
@@ -182,9 +184,16 @@ below in five ways:
 - **`install.none`** exists for the same reason: "nothing to install" and "not
   filled in" must not render identically.
 - **`invoke` must carry an arm the harness can run.** A Tool whose only
-  invocation is `invoke.mcp` is rejected at parse time.
-- **`io.*.schema`** is an absolute IRI into a published `$defs` document.
-- **`satisfies`** must be non-empty, and `check:tools` resolves the names.
+  invocation is `invoke.mcp` is rejected at parse time, because it is unusable
+  by the layer that defines it and would make a projector emit a server that
+  proxies itself.
+- **`io.*.schema`** is an absolute IRI into a published `$defs` document,
+  because an unresolvable reference is the failure the `io` block exists to
+  prevent.
+- **`satisfies`** must be non-empty, and `check:tools` resolves the names — a
+  schema cannot, because it does not read the tree, and an unchecked list is a
+  declared-but-absent edge that lets a consumer scan nothing and report a clean
+  run.
 
 ## Strawperson: the Tools-repo schema
 
@@ -267,7 +276,8 @@ Both renderings are derived artefacts: regenerate, never hand-edit, as
 
 - **A hand-authored JSON-LD node is unchecked until CI runs.** With Zod as the
   type, a malformed tool definition fails at `tsc`, in the editor, before it is
-  committed.
+  committed; validation after the fact catches the same error later, and only
+  if CI runs.
 - **Authoring the rendering and validating backwards would be a fourth
   pattern.** Zod → JSON Schema, Zod → docs and Zod → JSON-LD all run the other
   way.
@@ -282,7 +292,8 @@ Both renderings are derived artefacts: regenerate, never hand-edit, as
 A rendering earns its place when a real consumer cannot read the ones that
 exist: JSON Schema because editors and validators speak it, JSON-LD because the
 KG query path does. A third — SHACL, an OpenAPI fragment, Turtle — is added when
-something needs it, not in anticipation.
+something needs it, not in anticipation, because each one is another file to
+regenerate and another chance for a stale artefact to be read as current.
 
 **A rendering is never the place a fix lands.** If a generated
 `Tool.schema.json` is wrong, the Zod schema is wrong; edit that and regenerate.
@@ -309,6 +320,8 @@ A `--check` mode in CI (as `gen-skill-docs.ts --check` uses) enforces it.
 `coordinate` — stay in `cat-harness`. There is no `cat-harness-github`
 repository.** The skills are forge-neutral prose; only their invocations
 (`mcp__github__*`, `gh pr`, `gh api`) are not, and those are a few dozen lines.
+A repository boundary is the most expensive cut available, and it would
+separate things that are not separable at that grain.
 
 **Isolate at the Tool layer instead.** A skill states the capability
 generically; Tool nodes, one per forge operation, carry the invocations and name

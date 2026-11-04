@@ -4,7 +4,8 @@ description: >-
   The trashcan that is kept — where work that is not wanted goes instead of
   being deleted, what declares itself there, and what does NOT belong.
 # published: false — this skill DOCUMENTS the trashcan, and fsh-guts and
-# references to it are stripped from every published graph.
+# references to it are stripped from every published graph. Declared here
+# rather than inferred from this skill's name matching a graph typology's.
 published: false
 graph-typologies:
   - fsh-guts
@@ -37,7 +38,8 @@ The rule against deleting a bean was never about beans:
 > a sibling unable to tell abandonment from accident.
 
 Every word of that is true of a page, a diagram, a script or a workflow. `fsh-guts/`
-is the third option beside fixing and `rm`. **The rule, for everything:**
+is the third option beside fixing and `rm`, which turns an unenforceable
+principle into a move. **The rule, for everything:**
 
 1. Work that is wanted but wrong → fix it.
 2. Work that is not wanted → **move it to `fsh-guts/`**, with a note saying
@@ -84,7 +86,8 @@ the branch. A relocation is both halves.
   written before the first mount do not block the mount.
 - **There is no viewer page to commit after a relocation.** The viewer page is
   derived from this branch, so it is built at publish by `derive:publish` and
-  gitignored. `fsh-guts:viz:check` judges that the mounted graph renders. The
+  gitignored; a committed copy would go stale on main and every open PR at
+  each relocation. `fsh-guts:viz:check` judges that the mounted graph renders. The
   rule is general:
   [`directory-conventions`](directory-conventions.md) §"The storage clock".
 

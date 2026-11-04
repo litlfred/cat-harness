@@ -12,8 +12,9 @@ graph-typologies:
 # Code lists
 
 A code list is an expandable set of codes kept as a node, not declared in
-code: it says what each code means and where the decision came from, and
-extending it means adding an entry, not editing code.
+code, because a bare string in a BPMN attribute or a `.ts` constant says
+nothing about itself. A code list says what each code means and where the
+decision came from, and extending it means adding an entry, not editing code.
 
 ## Where they live
 

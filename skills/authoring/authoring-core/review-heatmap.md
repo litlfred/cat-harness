@@ -40,7 +40,8 @@ data" when a build lacks the file). It is never 0 and never blank: zero
 reads as "measured, and nothing there".
 
 Orphaned comments (their block is gone) have no section. They are counted
-in a last row, "(listed in no section)".
+in a last row, "(listed in no section)", because an open comment is still
+open.
 
 ## Where the QA column's data comes from
 
@@ -70,10 +71,12 @@ whether agent-judged criteria were run)", never "all judged": a verdict never
 given is not a pass.
 
 Freshness is the QA sweep's own rule, including the `uses`-graph hash that
-graph-scoped criteria depend on.
+graph-scoped criteria depend on; without it every graph-scoped criterion
+reads stale straight after a sweep.
 
 The QA sweep writes verdicts under the instance root; the summary also reads,
-second, under the directory the sweep was run on.
+second, under the directory the sweep was run on, so verdicts an older sweep
+wrote there are still found.
 
 ## How the colour was chosen
 

@@ -241,13 +241,14 @@ authors, other users, other agents working other branches. Two consequences:
 doing is worth a place in the roadmap. This store's hierarchy is
 `milestone → epic → feature → task`, and `check-bean-parents` enforces that
 every open bean has a home. A feature filed as a bare task with no parent
-lands in the roadmap's Miscellaneous section.
+lands in the roadmap's Miscellaneous section, where it stops being planned.
 
 **An epic cannot parent an epic here.** When the subject already has an epic,
 the new work is a FEATURE under it — a second epic beside it splits one
 subject across two roots, which is how a roadmap becomes unreadable.
 
-**4. Write the artefacts, and LINK them from `docs/`.** The harness that owns
+**4. Write the artefacts, and LINK them from `docs/`**, because an artefact
+nobody can navigate to is one nobody reads. The harness that owns
 the capability owns the link — so a change to cat-harness's
 pipeline is linked from cat-harness's `docs/`, not from wherever the agent
 happened to be working. Which harness owns it is usually answered by which

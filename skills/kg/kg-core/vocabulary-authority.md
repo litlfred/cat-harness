@@ -113,7 +113,8 @@ prose definitions, no reasoner in the pipeline. **DCAT** — held, for the
 
 They collide only where a node is genuinely both — such as the glossary
 document, which is a *file* and a `skos:ConceptScheme`, carrying both
-`skos:prefLabel` and `dcterms:title`. The node is a concept scheme, so
+`skos:prefLabel` and `dcterms:title`. Two predicates for one fact, with nothing
+declaring which is authoritative, drift apart. The node is a concept scheme, so
 `skos:prefLabel` is the source and `dcterms:title` is the derived copy for
 resource-metadata consumers.
 

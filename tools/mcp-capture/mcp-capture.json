@@ -39,7 +39,7 @@
     ],
     "selection": {
       "when": "Before trusting any claim that a Tool node's `io` matches what the server serves — and as the input to that comparison. Also the source data for authoring Tool nodes from `src/tools/`.",
-      "limits": "INTROSPECTION, not source parsing: a regex over `server.tool(...)` reads words followed by a colon inside a description as parameter names.",
+      "limits": "INTROSPECTION, not source parsing: a regex over `server.tool(...)` reads words followed by a colon inside a description as parameter names, and an `io` authored from that would be a contract agreeing with nothing that the next check still trusts.",
       "cost": "Mounts every registrar in-process. No network, no server needs to be running."
     },
     "requires": {

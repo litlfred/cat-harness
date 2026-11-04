@@ -18,7 +18,8 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 > Ce qu'il faut exécuter **avant de pousser** (push), c'est
 > [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }}) ;
-> la réussite de `bun test` ne garantit pas le passage des « gates ». Si vous intégrez folio-assistant sur
+> la réussite de `bun test` ne garantit pas le passage des « gates », car leur liste est dérivée du
+> workflow de CI. Si vous intégrez folio-assistant sur
 > un dépôt déjà existant, lisez d'abord
 > [`repo-conversion`]({{ '/reference/skill-instructions/repo-conversion.html' | relative_url }}).
 

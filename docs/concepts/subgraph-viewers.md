@@ -15,7 +15,8 @@ documents:
 
 A harness instance declares the directories it holds and the **kind of graph**
 in each. Some of those graphs have a page you can open; the sections below are
-the list.
+the list, and they are not counted here, because a typed count goes stale the
+moment a viewer is added.
 
 1. TOC
 {:toc}
@@ -25,7 +26,10 @@ the list.
 ## What a declared subgraph is owed
 
 **Every directory an instance names as a subgraph needs a visualiser, a
-documentation entry, and a governing skill.** This page is the documentation
+documentation entry, and a governing skill,** because a directory nobody can see
+is one nobody checks. They are three requirements because they fail
+differently: nothing renders it, nothing says what it is for, or nothing an
+agent can invoke against it. This page is the documentation
 entry for the graphs below; for `schemas/` and `library/` the governing skills
 are [`schema-management`]({{ '/reference/skill-instructions/schema-management.html' | relative_url }})
 and the library-ingestion skills.
@@ -46,7 +50,8 @@ every declared `schemas` directory, with the edges between them.
   the field it goes through.
 - A **relationship diagram** at the top, collapsible and closed by default.
 
-There is **no whole-corpus class diagram.**
+There is **no whole-corpus class diagram,** because hundreds of labelled boxes
+render as a wall that looks like a data model and answers no question about one.
 
 ### The relationship diagram
 
@@ -62,7 +67,7 @@ pick a module.
 **One hop of context is drawn, faded.** A strict module filter cuts the edge
 most worth seeing — `RoleDefSchema --skills--> SkillDefinitionSchema` spans two
 files — so a declaration just outside the filter that a drawn one touches is
-drawn too, dashed and dimmed.
+drawn too, dashed and dimmed, because counting a cut edge is not showing it.
 
 Three edge kinds:
 
@@ -74,7 +79,8 @@ Three edge kinds:
 
 A field reference is something the reader *found*; an id reference is something
 an author *asserted*, because the target is a string id no syntactic reader can
-see.
+see. Id references are dashed because drawing them alike would claim the reader
+saw something it did not.
 
 Clicking a box opens that declaration's definition.
 
@@ -126,7 +132,7 @@ one is.
 ### It is read-only
 
 Nothing on this page edits an asset: it does not start an ingest or materialise
-an entry into a folio.
+an entry into a folio, because the write path is not yet decided.
 
 ## The voices — what each rule cites
 
@@ -136,7 +142,8 @@ its instance declares, every rule, and **the passage the rule was read from**.
 A voice is an editorial register asserted by an instance. Every rule carries
 the page and the quote it was read from, and `check-voices.ts` checks that it
 does. The rule row leads with the quote, and the citation is the one column
-that cannot be filtered away.
+that cannot be filtered away, because a citation that is only machine-checked
+is one the reader takes on trust.
 
 ### A rule citing nothing is drawn as a finding, not as a blank
 
@@ -144,12 +151,15 @@ that cannot be filtered away.
 (`libraryId` + `sectionId`) or a node of the instance's own knowledge graph
 (`kgRef`), so a rule with neither cannot load. The viewer renders that state
 anyway, in red, saying that something is loading voices without validating
-them.
+them, because a reader cannot tell "no citation" from "citation not rendered"
+in an empty cell.
 
 ### A declared directory that is not there gets a row
 
 `agent-skills` declares a `voices` graph and ships none. It appears in the
-directories table as **declared, not present**, rather than being omitted.
+directories table as **declared, not present**, rather than being omitted,
+because those are different facts and a consumer that scans nothing must not
+report a clean run.
 
 `owesVisualiser` returns false for a `content` kind such as `voices` or
 `library`, so `check:subgraph-coverage` does not require these viewers.
@@ -179,7 +189,9 @@ namespace, and a viewer there would squat on the instance's own site.
 | `/cat-harness/schemas/` | every declared `schemas/` |
 | `/cat-harness/schemas/<instance>/` | that instance's modules and declarations |
 
-One projection serves all of them — a scoped page filters client-side.
+One projection serves all of them — a scoped page filters client-side, because a
+file per subject would repeat the same facts, free to disagree the moment one
+is regenerated.
 **Counts are scoped too**: a page reports only the edges among the declarations
 it shows.
 

@@ -19,7 +19,7 @@ consulted: true
 have something to put somewhere, and it tells you which of this repository's
 filing rules you are actually standing in front of. The rule itself lives in
 its skill: every row below is a **question and a pointer**, never a summary of
-the answer.
+the answer, because a summary would be free to disagree with its skill.
 
 ## Why a router at all
 
@@ -76,6 +76,8 @@ the evidence, and the person decides.
 
 ## What this skill is NOT
 
-It is not a decision procedure you run every turn. Reach for it when you
+It is not a decision procedure you run every turn: a router consulted for
+every obvious filing gets skipped, taking the non-obvious cases with it. Reach
+for it when you
 notice yourself **about to guess** — the same trigger
 [`opening-brief`](../../../sdlc/skills/sdlc-core/opening-brief.md) uses.

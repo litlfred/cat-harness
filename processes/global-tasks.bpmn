@@ -68,7 +68,7 @@
 
   <!-- crdm-signoff and crdm-close. -->
   <bpmn:globalScriptTask id="GT_RecordSignoff" name="Record the sign-off as a&#10;requirement-signoff attestation">
-    <bpmn:documentation>THE RECORD, and not relaxable (`adjudication`, A_RecordEntry). Append one `requirement-signoff` record to `test/attestations/requirement-signoff/&lt;set slug&gt;.attestations.json` — who (kind, id, actor), at, scope (the set or one member), the outcome from the requirement-set code list, the stage it moves the set to, the reason, and the permalink to the issue comment where it was decided — and set the set's `stage` to match.
+    <bpmn:documentation>THE RECORD, and not relaxable, because a judgement nobody wrote down is indistinguishable from one never made (`adjudication`, A_RecordEntry). Append one `requirement-signoff` record to `test/attestations/requirement-signoff/&lt;set slug&gt;.attestations.json` — who (kind, id, actor), at, scope (the set or one member), the outcome from the requirement-set code list, the stage it moves the set to, the reason, and the permalink to the issue comment where it was decided — and set the set's `stage` to match.
 
 GW_SignoffRecorded after this reads the record back, so this step cannot be skipped by completing it: a sign-off that left no attestation loops here again.</bpmn:documentation>
     <bpmn:extensionElements>
@@ -100,7 +100,7 @@ GW_SignoffRecorded after this reads the record back, so this step cannot be skip
   </bpmn:globalTask>
   <!-- feature-staging and staging-render-log. -->
   <bpmn:globalScriptTask id="GT_LogRetained" name="Append `retained`&#10;with the reason">
-    <bpmn:documentation>Records that a removal was considered and refused, or that a preview still stands because a signal fired. A reason is REQUIRED — the tool refuses without one.</bpmn:documentation>
+    <bpmn:documentation>Records that a removal was considered and refused, or that a preview still stands because a signal fired; without the entry that leaves no trace, and nobody can tell why a preview is still up. A reason is REQUIRED — the tool refuses without one.</bpmn:documentation>
     <bpmn:extensionElements>
       <bootstrap.processes:skill ref="render-logging"/>
     </bpmn:extensionElements>

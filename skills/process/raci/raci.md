@@ -18,7 +18,8 @@ uses-methodology:
 graph — [`methodologies/raci.md`](../../../methodologies/raci.md) — which carries
 the four letters, the exactly-one-Accountable constraint, and what RACI is not
 for. This file carries how *this platform* applies it (`methodology-adoption`'s
-split). **Read the node first**; everything here assumes it.
+split): the method's text lives once, so two skills quoting it cannot drift
+apart. **Read the node first**; everything here assumes it.
 
 **R is already declared, and that is this platform's contribution.** A BPMN
 lane says who performs an activity; that IS Responsible, so the overlay does
@@ -65,8 +66,9 @@ The constraint itself is the node's; what this section adds is that
 `check:raci` fails on a breach rather than advising against one.
 
 **Zero is also a breach**, once an activity declares any RACI at all. An
-activity declaring nothing is `n/a`: the gate is on what a diagram CLAIMS,
-never on how much it has claimed so far.
+activity declaring nothing is `n/a`, because annotation is incremental: the gate
+is on what a diagram CLAIMS, never on how much it has claimed so far. That is
+the platform's choice; RACI says nothing about partially annotated corpora.
 
 **A role cannot be both accountable and consulted on one activity**, and the
 gate enforces that too.

@@ -71,7 +71,8 @@ travel with the request rather than being rebuilt.
 ## Signature — one optional string in, a reviewable list out
 
 Other processes invoke this skill, and so does a person typing
-`/staging-review`.
+`/staging-review`, so the contract is stated formally: one left in prose is
+one each caller re-derives.
 
 ### Input
 
@@ -84,7 +85,8 @@ Other processes invoke this skill, and so does a person typing
 
 Keep the wording **verbatim** wherever the output echoes it — the same rule
 [`goal-review`](goal-review.md) applies to a goal: a request the agent
-paraphrased is a different request.
+paraphrased is a different request, and the reader cannot tell which one the
+list was built for.
 
 It **narrows**; it never adds. *"The navbar"* gets the pages carrying it, not a
 page that mentions it. **An ask matching nothing that changed is said, not
@@ -149,7 +151,9 @@ usually cannot open them. From inside a session container:
 | Playwright / Chromium | `net::ERR_TUNNEL_CONNECTION_FAILED` |
 
 **A browser is not a way around it** — Chromium is proxy-configured too, so
-"use Playwright" fails identically.
+"use Playwright" fails identically. Without another route, nothing in the
+repository can look at what deployed, and a defect only a click reveals ships
+past every green gate.
 
 **But the site is published to the `gh-pages` BRANCH, and git works.** So the
 deployed bytes are readable with `git show`, and a Playwright route handler can
@@ -503,7 +507,8 @@ anyone is:
 | **closed, unmerged** | the ONLY rendering of that work | the last copy, and retained unless a person says otherwise |
 
 The store therefore drains: what remains is bounded by **concurrent reviews**,
-not by cumulative history.
+not by cumulative history, so a size warning stays a signal rather than
+becoming a permanent verdict.
 
 **This applies
 [`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md);
@@ -539,7 +544,7 @@ stop, and option 2 exists so you do not have to.
 ### The cap — 3 GB of previews in total, the oldest rotated off
 
 Previews are capped by total size, not count, because preview sizes vary
-widely. GitHub Pages deploys `gh-pages` as-is, and past its 10 GB artifact
+widely and a count bounds the total only while preview size holds still. GitHub Pages deploys `gh-pages` as-is, and past its 10 GB artifact
 limit the **live** site stops deploying. Every removal path above is
 per-preview and event-driven; none bounds the total.
 

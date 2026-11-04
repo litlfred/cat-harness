@@ -158,7 +158,7 @@ tokens:
 | **small swarm** | hundreds, or several distinct kinds | [`dispatch-agent`](../../../sdlc/skills/sdlc-core/dispatch-agent.md) — 2–4 agents partitioned **by directory**, never by file count |
 
 Partition by directory because a per-file partition puts two agents in the same
-manifest.
+manifest, and the conflicts cost more than the parallelism saves.
 
 Open one bean per ingestion front before dispatching — running the existence
 check in [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) §"Check before you create" first —
@@ -173,7 +173,8 @@ the common case (`README.md`, `.gitignore`, a `docs/`). Read its report rather
 than assuming; the files it declined to write are the ones you now merge by
 hand:
 
-- **`AGENTS.md`** — if one exists, merge; do not replace.
+- **`AGENTS.md`** — if one exists, merge; do not replace. It is the most
+  valuable file in the repository for the next agent.
 - **`README.md`** — never replaced. `readme-sections.ts` only writes inside
   marker pairs the author has opted into, so offer to add markers rather than
   content.

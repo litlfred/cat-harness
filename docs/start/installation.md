@@ -16,7 +16,8 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 > What to run **before you push** is
 > [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }});
-> `bun test` passing is not the gates passing. If you are laying folio-assistant over
+> `bun test` passing is not the gates passing, because the list is derived from
+> the CI workflow. If you are laying folio-assistant over
 > a repository that already exists, read
 > [`repo-conversion`]({{ '/reference/skill-instructions/repo-conversion.html' | relative_url }}) first.
 

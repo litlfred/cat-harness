@@ -46,11 +46,13 @@ instance publishes".
 Pages resolves `<base>/<stub>` only to a directory index, so the viewer is what
 makes the bare stub openable. It climbs to the site root and reads the
 document's own path, `<name>/<stub>.jsonld` (`exportIdentity`'s `docPath`).
-It never composes a neighbour's name.
+It never composes a neighbour's name, because that relation is not stable
+across layouts.
 
 **One function computes all of this**, `renderingPath()` in
 `schemas/kg/cat-harness.ts`. A path a consumer dereferences — or mints as an
-`$id` — is never written out as a template literal elsewhere.
+`$id` — is never written out as a template literal elsewhere, so moving the
+renderings is one edit rather than a hunt for copies.
 
 ## Every endpoint declares its media type
 
@@ -104,7 +106,8 @@ accepted cost of publishing there, and the remedy is the local deployment.
 **`<stub>.json` is an alias, not a rename.** The same bytes are served at BOTH
 extensions: `.jsonld` stays canonical and is what every `@id` in the document
 names, while `.json` is the one path by which a correct `Content-Type` can come
-out of a static host.
+out of a static host. Renaming the artefact to `.json` instead would trade a
+wrong type for a wrong *name*, and the name is the part a reader uses.
 
 What that does **not** license is a `.json` whose bytes differ, or an `@id`
 pointing at it. Two documents asserting the same IRIs is the defect
@@ -159,7 +162,9 @@ main site lists its previews. `--site <repo>=<dir>` serves a site you built
 yourself, for changes not yet published. `--offline` uses the cache as it is.
 
 `RENDERING_MEDIA_TYPES` and `renderingMediaType()` in `schemas/kg/cat-harness.ts`
-are the table, beside `renderingPath()`.
+are the table, beside `renderingPath()`, because where a rendering LIVES and
+what it IS are the same kind of fact, and a table in code is one no consumer
+has to re-derive from prose.
 
 Obligations are `skills/requirements/serving-a-rendering.json`, so a second
 implementation is checkable against the requirement rather than against this
@@ -167,8 +172,9 @@ one's source.
 
 ### What a general-purpose static server actually gets wrong
 
-Python's `mimetypes` and `Bun.file().type` both resolve `.jsonld` to
-`application/ld+json`.
+Less than is often assumed, and overstating it is how a working setup gets
+ruled out: Python's `mimetypes` and `Bun.file().type` both resolve `.jsonld`
+to `application/ld+json`.
 
 The gap is **one row**: `.schema.json` resolves to `application/json` in every
 OS table, because `.json` is the suffix that matches and nothing knows the

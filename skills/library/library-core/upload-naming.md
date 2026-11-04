@@ -7,7 +7,9 @@ description: What an ingested file may be CALLED. Read before adding anything to
 
 **A file in an `uploads` or `library` graph is named by whoever uploaded it, and
 that name reaches a generated Markdown link.** So the name is an interface, not
-a label.
+a label. It is a `library-core` skill, beside `uploads-watch` and
+`library-ingestion`, because what an ingested file may be called is a question
+about acquiring and ingesting sources.
 
 `bun run cat check:upload-names` reports; `check:upload-names:check` gates;
 `check:upload-names:fix` renames with `git mv`.
@@ -27,7 +29,10 @@ suffix.
 **A name with no unsafe character is returned untouched.** Collapsing and
 trimming happen only to names that were going to change anyway; a double dash,
 a leading dash or a trailing dash is not this check's business. Case is not a
-defect either: `README.md` stays `README.md`. Both are pinned by tests.
+defect either: `README.md` stays `README.md`, because renaming it breaks every
+link to it and every generator that writes one. Rewriting a name that was
+already safe breaks whatever looks it up by that name, such as a generator that
+lists a section file. Both are pinned by tests.
 
 ## What each character breaks
 
@@ -47,19 +52,21 @@ defect either: `README.md` stays `README.md`. Both are pinned by tests.
 
 | layer | reaches | fails when |
 |---|---|---|
-| `linkTarget` (in `subgraph-readmes.ts`) / `decodeLinkTarget` (in `check-subgraphs.ts`) | **every** generated README link, in every graph typology, including directory names | never — it percent-encodes every segment of what the generator writes, and the check decodes before asking the filesystem |
+| `linkTarget` (in `subgraph-readmes.ts`) / `decodeLinkTarget` (in `check-subgraphs.ts`) | **every** generated README link, in every graph typology, including directory names | never — it percent-encodes every segment of what the generator writes (parentheses included, because an unbalanced one ends a CommonMark destination as surely as a space), and the check decodes before asking the filesystem |
 | this check | `uploads` and `library` **names**, before anything links them | a name reaches something that is not that generator |
 
 The encoder keeps generated READMEs valid. This check keeps a filename usable in
 a shell, an `href`, a CI log line, a `curl`, and any later generator. Escaping
-is per-generator; a name is per-file.
+is per-generator; a name is per-file, so a name that is safe everywhere is safe
+once.
 
 A rename churns downstream references, and that is accepted: they are
 **repaired**, not abandoned. After a rename, repoint the hand-maintained path
 fields (`files[].path` in `intake.json`; `container` and `assets[].path` in
 `*.extraction.json`; `provenance.source` in catalogue records; `file` and
 `source_file` in `structure.json` and `manifest.jsonld`; hardcoded paths in
-tests and scripts), then regenerate **in dependency order**: `library:graph` →
+tests and scripts). Leave a hand-authored wireframe alone: what it depicts is a
+design decision, not a consequence of the rename. Then regenerate **in dependency order**: `library:graph` →
 `library:viz` → `library:readmes` → `readme:subgraphs`, then `skill:register`.
 Out of order, a later writer stales an earlier one's output, which reads exactly
 like a real failure.

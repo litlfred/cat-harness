@@ -28,7 +28,8 @@ SHOULD NOT, RECOMMENDED, MAY and OPTIONAL.
 
 **RFC 8174 is the constraint that makes them usable**: only all-capitals usage
 carries the defined meaning. So `the parser must handle this` is narration and
-`the parser MUST handle this` is a conformance requirement. A writer who meant a requirement MUST
+`the parser MUST handle this` is a conformance requirement, and a reader can
+tell which is which without asking. A writer who meant a requirement MUST
 capitalise it; a reviewer reads lowercase `must` as prose.
 
 **Use them sparingly.** RFC 2119 constrains its own key words to what is
@@ -39,7 +40,8 @@ makes the real requirements unfindable.
 **State what departing costs.** RFC 2119 asks authors to elaborate the
 implications of not following a requirement, because most implementers lack
 the experience that produced it. A SHOULD whose cost is unstated is an
-instruction the reader cannot weigh.
+instruction the reader cannot weigh, and the commonest reason a correct
+instruction is ignored.
 
 Both RFCs are ingested — `library/content/rfc2119-key-words-requirement-levels/`
 and `library/content/rfc8174-uppercase-vs-lowercase-2119-key-words/`.
@@ -51,7 +53,9 @@ Quote them from there, not from memory.
 it, and ASK the owner whether they want it.**
 
 RFC 2119's own first page says *"This RFC was updated, see RFC 8174"*, and
-that update is the UPPERCASE rule above.
+that update is the UPPERCASE rule above. A voice built from RFC 2119 alone
+would be internally consistent and superseded, which is the error hardest to
+notice.
 
 Read the front matter for `Updated by`, `Obsoleted by`, `Superseded`, an
 errata note or a later edition. Where one exists, say so and ask; do not
@@ -59,10 +63,12 @@ silently cite the older document, and do not fetch the newer one uninvited.
 
 ## Three questions for a first draft
 
-Run these on your own draft, before review.
+Run these on your own draft, before review: each is cheapest while the draft
+is still yours.
 
 1. **Have I repeated anything?** If so, consolidate: the same fact in two
-   places is free to drift.
+   places is free to drift, and the copy a reader finds first is usually the
+   one with no test behind it.
 2. **Does the content flow in logical order?** If not, apply the detangler
    ([`graph-detanglement`](../../kg/graph-management/graph-detanglement.md))
    rather than reordering by taste — a candidate ordering is MEASURED, not
@@ -75,7 +81,9 @@ Run these on your own draft, before review.
 ## Reference a schema by linking to it
 
 When the prose names a schema, link to the **schema source** and to its **UML
-documentation** where one exists. Resolve the reference, do not compose it:
+documentation** where one exists, because a reader left to guess the file
+guesses wrong exactly when the schema has moved. Resolve the reference, do not
+compose it:
 writing `schemas/foo.ts` in prose composes a path, while a link resolves one,
 and a broken link is a finding a checker can raise.
 

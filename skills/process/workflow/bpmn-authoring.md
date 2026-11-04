@@ -139,8 +139,9 @@ methodology.
 
 ### Split by phase: how
 
-When `process-size` fires, or
-a diagram has a start event per lane, split it like this:
+A diagram can be right in every step and still unreadable on its page. When
+`process-size` fires, or a diagram has a start event per lane, split it like
+this:
 
 - **The top-level process shows the phases.** Each phase is a
   `<bpmn:callActivity calledElement="…">` to its own process. Keep at the top
@@ -209,7 +210,12 @@ page, which the content core authors.
 
 It covers *both* a DAK's L2 business processes **and this repository's own
 `processes/**/*.bpmn`**, and platform processes such as
-`crdm-requirements.bpmn` name it, so it cannot live in a content-type package.
+`crdm-requirements.bpmn` name it, so it cannot live in a content-type package:
+a platform process depending on a content-type package crosses the boundary
+the `platform-boundary-guard` subagent keeps. Its DAK material stays here
+rather than in a second skill, because a generic skill naming a domain worked
+example is ordinary, and two skills that must be read together to author one
+diagram are not.
 
 ## When a layer above transforms it
 

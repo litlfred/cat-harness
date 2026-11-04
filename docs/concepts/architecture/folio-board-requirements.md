@@ -200,7 +200,9 @@ defect no reader can see.
 CSS px, not an inch of glass. A 16" MacBook Pro presents 1728 CSS px across
 about 13.6" of width, so one physical inch is roughly **127 CSS px** and 2.5"
 is about 318px: `20rem`. `2.5in` would render about 1.9". The device is named
-in the code comment because the conversion is device-dependent.
+in the code comment because the conversion is device-dependent: the same
+`20rem` is about 3.7 physical inches on a 27" 1440p display, which is correct,
+since the size is chosen for the screen the requester uses.
 
 **R21 and R32 are a pair.** "Small" without R32 shrinks the card until its text
 is unreadable; R32 without "small" leaves the dead space R18 was about.
@@ -211,6 +213,11 @@ is unreadable; R32 without "small" leaves the dead space R18 was about.
 |---|---|
 | **R19b** | a thing renders as a **tile** iff the **harness** declares it; as an **avatar** iff the **folio** holds it (a note, a document, a materialised asset in `library/` or `uploads/`). A **theme** is how either one looks, never a third kind |
 | **R19c** | a tile is one of **two kinds**. A **functional** tile (a directory or sub-graph) is the visual interface to a **skill**, implemented by a **tool** chosen from potentially several — so it names the skill, never the tool. A **content** tile stands for a set of **schema instances** |
+
+R19c is a separate requirement because R19b stays true but is insufficient:
+*who declared it* answers **tile or avatar** and stops, and the two kinds of
+tile bind to different things, resolve different things when opened, and mean
+opposite things when empty:
 
 | | **functional** | **content** |
 |---|---|---|
@@ -226,10 +233,13 @@ skill may be implemented more than one way.
 
 R30 puts *avatars of materialised assets, including whole knowledge graphs* on
 the glass, so size does not decide tile or avatar; declaration ownership does.
+The rule is preferred because it is already in the corpus: `harness-tiles`
+says a tile is the harness's, not the node's.
 The rule lives in
 [`harness-tiles`](https://litlfred.github.io/folio-assistant/reference/skill-instructions/harness-tiles.html),
 with a pointer from `board-windows`. There is no check: nothing classifies a
-folio item yet.
+folio item yet, so a gate would be a declared property whose check cannot
+answer its own claim.
 
 ### R27 — where materialised assets live
 
@@ -272,10 +282,16 @@ there is safe (every mount guards itself), and nothing mounts:
 | board | `#main-content` / `.main-content` / `<main>`, inserted at the **top** | absent, and the top is the IRIS content |
 | language bar | `.main-content` | absent |
 
+Every visible folio surface is bound to just-the-docs page furniture, and
+giving a library page that furniture would make it look like folio-assistant —
+the one thing a replica exists not to do.
+
 The delivery mechanism is an exported mount fragment plus a gate, as
 `staging-banner.ts` does, reusing `bodyInsertionPoint()`. A pull-down glass
 comes down over what is being browsed, so it is the only folio surface that
-does not need the host page to look like the harness; it comes first.
+does not need the host page to look like the harness; it comes first, because
+shipping the mount fragment before it would create a gate for a thing with no
+consumer.
 
 ## What the set produced
 

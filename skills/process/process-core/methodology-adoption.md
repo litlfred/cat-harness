@@ -32,7 +32,9 @@ So: **pick one per decision, name it, and follow it.**
 
 **Ask before the ladder.** The ladder below is about how to *decide* something;
 a request for a change is not yet a decision but work needing agreed
-requirements before anything is built.
+requirements before anything is built. Sent down the ladder, it lands on the
+catch-all rung and produces an options analysis for a question nobody has
+framed yet.
 
 > **Is somebody asking for a change, such that requirements have to be agreed
 > before it is built?**
@@ -147,7 +149,8 @@ count nodes, not skills.
 things, and only one of them is the methodology.** Render the method first,
 *then* decide which tools — existing or to be added — this platform should use
 to perform it. A node that adopted the source's tool stack would be adopting an
-implementation and calling it a method.
+implementation and calling it a method, and it could never be falsified: the
+tools would work and the method would never be examined.
 
 `hybrid-llm-deterministic` is the worked case. Its source demonstrates the
 method in one tool with one model and one expression language; the node renders
@@ -175,9 +178,11 @@ so its `origin` must resolve to a source a reader can open.
 `bun run cat check:methodology-evidence` is the axis that makes this visible, and
 `test/results/methodology-evidence.qa-results.json` is where it is recorded. It
 **reports and does not gate** on a missing source: whether a methodology whose
-source nobody can open may still be used is the owner's call. It does fail on
+source nobody can open may still be used is the owner's call, and a gate
+failing on the whole corpus at once would be switched off. It does fail on
 front matter that does not validate, and on an `evidence` pointing at a
-bib-slug no library holds.
+bib-slug no library holds, because a citation that claims to resolve and does
+not is worse than none.
 
 **The evidence is an input to SELECTION, not only to adoption.**
 `options-analysis.bpmn`'s `A_CheckEvidence` reads it before the chosen
@@ -187,7 +192,8 @@ decision, and a source can stop being reachable in between.
 **A contested origin is recorded as contested.** `methodologies/swot.md` is the
 worked example: the usual attribution is repeated everywhere and its own source
 says no academic reference supports it, so the node declines to name an
-inventor.
+inventor: flattening that into a fact would carry the authority of a citation
+while resting on nothing.
 
 ## Refusals
 

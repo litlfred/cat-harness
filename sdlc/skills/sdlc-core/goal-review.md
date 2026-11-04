@@ -68,7 +68,8 @@ neither does.** Never present the fallback as the method.
 in-window sessions are interleaved with ones last active weeks earlier.
 **Page until a whole page was created before the window opened, then stop** —
 a session cannot be updated before it exists, so no later page can hold an
-in-window row. The listing is large (~75 KB per 40 sessions): parse
+in-window row. A reader who does not know the order either stops at page 1 or
+pages forever. The listing is large (~75 KB per 40 sessions): parse
 it, do not read it, and note the JSON sits inside an untrusted wrapper line.
 Read `status_bucket` / `session_status` and `task_summary`; a summary on a
 session that requires action is a **held question — quote it**, it is the
@@ -298,7 +299,8 @@ lets a partial survey read as a complete one.
 
 **The window's two edge commits are recorded**, so staleness is decidable
 rather than guessed. An unreachable upper edge is reported as unusable and
-never as covered.
+never as covered, because siblings trust a covered survey *instead of*
+looking.
 
 This does not claim the window and does not divide the axes between sessions.
 It is an artefact: one session writes what

@@ -94,7 +94,8 @@ triage that reads it.
 **And write a DISPATCH LINE for every unstarted item** — the fixed one-sentence
 form in [`handover-report`](handover-report.md) rule 7, one line per bean,
 naming a branch that does not exist yet. The report is not finished without
-them.
+them, because a handover that hands nobody a way to pick the work up makes the
+next reader re-derive the dispatch.
 
 ## 5. Tell whoever coordinates
 

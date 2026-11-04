@@ -105,7 +105,8 @@ Three rules for it:
    flag on reports a live term as gone for ever.
 
 **Usages are not ledgered**: a usage is an occurrence, regenerated
-wholesale, while a concept is a term somebody may have cited.
+wholesale, while a concept is a term somebody may have cited; ledgering every
+occurrence would bury the records that matter.
 
 ## Run it once per instance — never widen the scan
 
@@ -121,7 +122,9 @@ use. Widening cat-harness's scan to reach bootstrap's diagrams is the leak
   nothing ("no swimlane in `<instance>/` draws") and splits the list:
   a role a lane in ANOTHER instance binds (`partitionElementRef`) is named
   with that diagram (`drawnElsewhere`), apart from roles no diagram in the
-  repository draws. Reporting it is not widening the scan: nothing outside
+  repository draws, because unsplit, a role drawn in another instance reads
+  like one drawn nowhere: a fact about the walk phrased as a fact about the
+  corpus. Reporting it is not widening the scan: nothing outside
   the instance is bound or emitted.
 - **A lane binding naming a lane no diagram contains.** Distinct
   from a role whose lane exists but holds no task, which is not a defect.

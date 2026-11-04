@@ -160,7 +160,8 @@ folio:
 Each bundle ships a `package-manifest.json`.
 
 > Skill **schemas** are generated into the
-> [Skill schema reference]({{ '/reference/skills/' | relative_url }}).
+> [Skill schema reference]({{ '/reference/skills/' | relative_url }}), so they
+> never drift from what the framework validates.
 
 ---
 

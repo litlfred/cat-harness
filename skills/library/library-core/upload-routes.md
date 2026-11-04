@@ -25,13 +25,15 @@ Two mechanisms write bytes: a git commit, and the forge's web UI. A file handed
 to an agent in a conversation is route 1 performed by a different actor. A
 persona inherits every obligation of the mechanism it performs, so the question
 about an agent is *"did the agent discharge the git route's obligations, and
-what does it owe on top?"*
+what does it owe on top?"* Treating it as a third route would invite a third,
+shorter list of obligations.
 
 What it owes on top is provenance. A commit records its own author and message;
 a web upload records the account that made it. Neither records *"this arrived
 in a conversation, from this person, for this reason"* — that fact exists only
 in the session, which is ephemeral. If the agent does not write it down when it
-places the file, it is gone.
+places the file, it is gone: for the other two routes a commit exists to go
+back to, and for a conversation nothing does.
 
 ## Route 1 — a git commit from a working tree
 
@@ -97,7 +99,8 @@ queue under a name that will still mean something — not
 
 **Write down what the conversation knows and the commit does not** — who
 provided it, when, what they said it was, and why it was wanted. Put it in the
-commit message at minimum.
+commit message at minimum. This is the obligation the other two routes do not
+have, and the reason the persona is named although it is not a mechanism.
 
 **Do not ingest on your own say-so, and do not delete.** Both are other
 skills' decisions — [`library-ingestion`](library-ingestion.md) and
@@ -106,7 +109,8 @@ processed upload still looks spent and still is not.
 
 ## What the routes are NOT responsible for
 
-The same three for every route:
+The same three for every route, stated once so no route's section can shorten
+the list:
 
 - **deciding the file belongs in the corpus.** That is acquisition's question,
   answered before this step.

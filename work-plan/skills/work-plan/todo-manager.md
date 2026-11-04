@@ -59,7 +59,8 @@ CLI when it is genuinely missing** — bounded and quiet, falling through to the
 degraded reader rather than failing the hook — and prepends the install
 directory when the binary is already there, so a second session does not
 reinstall. If the sweep still reports the CLI missing, it could not be installed
-there.
+there. The sweep installs rather than recommends, because an instruction
+somebody has to act on is weaker than the act itself.
 
 The order is not arbitrary:
 
@@ -367,7 +368,9 @@ bun run cat readme:subgraphs:check    # must exit 0
 bun cat-harness-tools/scripts/branch-store.ts push --id beans  # or: bun run cat state:push
 ```
 
-The check's name gives no hint that adding a bean dirtied it. Read the failing
+The check's name gives no hint that adding a bean dirtied it, so a session that
+reads only the name looks at directories and never at the bean it just
+created. Read the failing
 STEP, and remember that `beans/` is a declared directory like any other.
 
 The same shape applies one door along: **editing a skill owes
@@ -404,6 +407,8 @@ guard. This is its twin at the other end: **a bean's stated state is a claim
 somebody wrote down once, and the code has moved since.**
 
 > **Re-measure a bean's open items against the code before you act on them.**
+
+The cost of skipping this is not wasted effort; it is acting on a stale claim.
 
 ### The two failures this prevents, and they are different
 
@@ -498,7 +503,9 @@ process author needs to know which one they are reaching for.**
 ### Why neither replaces the other
 
 **The op cannot cover the store.** A bean resolved by a process with no
-archive step, by hand, or by a sibling session, is never reached.
+archive step, by hand, or by a sibling session, is never reached; coverage
+would depend on every path having been drawn, and paths are added faster than
+they are wired.
 
 **The sweep cannot carry authority.** It knows only status. It cannot say
 that a requirement was archived *because the stakeholder signed off*, which

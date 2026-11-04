@@ -241,7 +241,8 @@ Six parts, in order:
    depending on the answer, not as the name of the decision.
 2. **Every identifier expanded on first use.** A bean id, an option name you
    coined, a field, a Lean declaration, a file path: all opaque without their
-   gloss, above all an option name you coined yourself.
+   gloss, above all an option name you coined yourself, because it *feels*
+   defined to you.
 3. **The options, compared** — what each does, its pro, its con, what it
    changes **downstream**, and how reversible it is. Laid out here, in the
    prose, where the rows can be read against each other; a selection tool shows
@@ -255,7 +256,8 @@ Six parts, in order:
 
 **This binds every place a decision is handed to the person**, not only an
 explicit question tool: the end-of-turn "next" line, a bean's `## Done when`, a
-PR body asking the author to choose, a comment on an issue.
+PR body asking the author to choose, a comment on an issue. Those are where it
+is most often broken, because they feel like reporting rather than asking.
 A PR body as a whole, not only its question, is governed by
 [`pr-description`](../../../sdlc/skills/sdlc-core/pr-description.md).
 
@@ -268,7 +270,8 @@ person through a channel that carries **only the structured fields** — the
 question text, the option labels, the option descriptions. Everything written
 around the call stays in a transcript the person would have to go and open.
 
-So the test grows one clause:
+The asker's analysis stays in its own transcript, and a relay has to
+reconstruct it. So the test grows one clause:
 
 > **Can the reader answer without opening anything — including the session that
 > asked?**
@@ -420,15 +423,22 @@ one channel they use to correct an agent. So:
 > through {@link renderDecision}, detected from the five-row table it emits. At
 > twelve, a person can read them and judge whether the schema fits the
 > decisions this repository actually has. An `## Options` heading is NOT a
-> rendered decision.
+> rendered decision, because beans carry considered-options sections as
+> ordinary practice, so their count grows without anyone using the schema.
 
-The counter is a **health metric over `beans/`**, not a second store. The
+The counter is a **health metric over `beans/`**, not a second store, because
+a parallel store of decision objects would be a count free to disagree with the
+bean store's. The
 record goes in the **bean it belongs to**, under `## Options`, where `madr.md`'s
 two-option floor and `bean-thin-decision-records` govern it; `renderDecision`
 composes the chat message.
 
 **The unit is BEANS, not decisions**: `hasRenderedDecision` is a per-bean
-boolean, so twelve means twelve different beans.
+boolean, so twelve means twelve different beans. The unit is not changed,
+because moving it without moving the number is a silent re-calibration.
+
+**A deferral with no trigger is not a deferral**: it is indistinguishable a
+month later from a decision nobody made.
 
 ### 4.2 Form — the checklist
 
@@ -452,7 +462,8 @@ This is the largest accessibility win available, and it is invisible.
 
 The asking is half the loop. The answer comes back, and if it settles how a
 *kind* of thing is decided rather than only this one, it is a rule and it is
-written into the skill that governs it **in the same turn**, quoted and dated.
+written into the skill that governs it **in the same turn**: the rule and its
+reason in the narrative, the quote and date in the skill's provenance log.
 Otherwise the next session asks again.
 
 **The rule, the three questions that identify a rule-level answer, and why it
@@ -488,7 +499,8 @@ Four properties over an agent improvising the interview:
    condition; an improvising agent does not.
 3. **Asking becomes obligatory rather than optional.** This is the trick
    `folio-intent.dmn` already uses: `ask` is an *outcome of the table*, so the
-   agent cannot route past it.
+   agent cannot route past it; an agent that decides for itself whether to ask
+   will, under pressure to be helpful, decide not to.
 4. **A question skipped is auditable.** The facts are recorded; you can replay
    the table and see which rule fired.
 

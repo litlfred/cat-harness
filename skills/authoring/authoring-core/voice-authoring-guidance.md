@@ -52,7 +52,8 @@ verification; do not write around it to appease the checker.
 
 This skill restates no voice's rules: each rule belongs to the instance that
 derived it, with the publication, page and verbatim quote it was read from,
-and a copy here would lose that citation. To learn which of your voices' rules
+and a copy here would lose that citation — and the uncited copy is the one a
+reader meets first and nothing can check. To learn which of your voices' rules
 are counterintuitive, open the voices.
 
 ## When two active voices disagree
@@ -60,11 +61,13 @@ are counterintuitive, open the voices.
 Rules are **unioned**, not merged, and both stand. If honouring one would break
 the other, that is a finding for the author and not something to resolve
 silently in the prose — say which two rules and which voices, and let the editor
-decide.
+decide. A silent choice hides a genuine conflict between two documents the
+folio has adopted.
 
 ## Do not
 
-- **Do not apply a voice the folio has not activated.**
+- **Do not apply a voice the folio has not activated.** An unasked-for
+  register produces confident findings against prose never written to it.
 - **Do not treat a voice as a substitute for the base house voice.** Voices
   overlay `one-voice-style-guide.md`; they do not replace it.
 - **Do not add a rule to a voice while drafting.** A voice rule needs a citation

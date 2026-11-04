@@ -154,7 +154,8 @@ it on the dark ground.
 
 Both variants are emitted from **one trace**, differing in a single `fill`
 attribute, so they cannot drift: re-run the generator and both change
-together. Never hand-draw a second dark mark.
+together. Never hand-draw a second dark mark: it would be a second answer free to
+drift, the same failure as a hand-written stylesheet beside the theme node.
 
 ### Not a CSS filter
 

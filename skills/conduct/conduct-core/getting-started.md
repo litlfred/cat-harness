@@ -18,7 +18,7 @@ inherit the platform's grumpy cat.
 
 **Where the markdown node is:** `description` in `<name>.json`. It is
 markdown and it is rendered as-is. There is no separate landing page to keep in
-step with it.
+step with it, because a description in two places will disagree with itself.
 
 **How the picture is declared:** an image with `role: "landing"` and a `layout`
 (`laptop`, `mobile`, `card`), plus a `textRegion` giving, as fractions of the
@@ -38,8 +38,9 @@ Run `bun run cat docs:harness` after editing, and `--check` in CI.
 | backdrop, **no** region | picture shown, words placed **below** it |
 | **no** backdrop | words alone |
 
-An undeclared region means *do not overlay*, never *anywhere is fine*. A folio
-with no art is ordinary.
+An undeclared region means *do not overlay*, never *anywhere is fine*, because
+text positioned by guesswork lands on the picture. A folio with no art is
+ordinary.
 
 A viewport with no variant falls back to the widest available, and the fallback
 is **reported** — that crop's region is wrong for a narrow screen, so a consumer
@@ -274,7 +275,8 @@ the owner's confirmation.
 2. **Treating "I've used this before" as `add-folio`.** Experience is not a
    filesystem fact and not an intent.
 3. **Asking in prose.** "Could you tell me a bit about what you're hoping to
-   build?" is a wall for a user who types with difficulty.
+   build?" is a wall for a user who types with difficulty, and it produces a worse
+   answer than the numbered list.
 4. **Announcing a Pages URL you have not probed.** See step 5.
 5. **Going straight to `folio_init` because the request seemed obvious.** Every
    one of the five requests seems obvious to the person making it.

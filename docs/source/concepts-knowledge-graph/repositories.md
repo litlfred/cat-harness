@@ -73,7 +73,7 @@ Each edge has its own carrier in the declaration:
 
 **Associated is a fourth, and it fixes no order**: it is how a folio in another repository, such as `ihris`, is listed without being built here.
 
-**The three answer different questions.** *Depends* is about layering: it fixes an order, so
+**The three answer different questions**, so collapsing them loses information a consumer needs. *Depends* is about layering: it fixes an order, so
 a cycle in it is a defect. *References* is about knowing a graph exists without
 holding it, so it crosses a repository boundary by definition. *Utilizes* is
 about consumption at run time, and a consumer application may utilize a Content

@@ -27,6 +27,8 @@ workflows copy the directory into `_site/assets/qa/` after Jekyll runs.
 
 ## It is a projection, not the verdict
 
+Getting this backwards puts a fix in the wrong place.
+
 The **verdict** is produced by a sweep and lives beside its subject —
 `*.qa.json` beside a content block, `test/results/kg-qa/**/*.kg-qa.json` for a skill or a
 diagram. The **witness** is the same verdict rendered for the web, flattened

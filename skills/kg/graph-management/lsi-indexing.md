@@ -156,9 +156,13 @@ rebuilds the index in memory and judges that run, writing nothing, and
 in `cat-harness.json` (`docs/en/cat-harness/lsi/`), because what it shows is a
 function of the checkout and the indexes' pins, not of one commit.
 `bun run cat lsi:viz -- --detail` adds the per-index sections; the docs-site
-build runs it after `qa:fetch` pins the entry to the build's own sha.
+build runs it after `qa:fetch` pins the entry to the build's own sha. Any
+committed page taken off a store must stay a function of the tree: read from a
+stored index, the same commit would say `fresh` in one place and `stale` in
+another, depending on when the gate ran.
 
-**A merge strategy does not stop a generated file conflicting.** An SVD
+**A merge strategy does not stop a generated file conflicting**, even when the
+file is reproducible and take-base plus a regeneration converges. An SVD
 rotation is globally sensitive: one sentence added to one skill rewrites most
 of a sidecar's `dimensions` and `neighbours`, so there is no small diff to
 merge. A declared strategy (`derived-results`/take-base) settles **how** a

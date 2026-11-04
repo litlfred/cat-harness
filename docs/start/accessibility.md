@@ -129,6 +129,9 @@ how an agent talks to the author.
 
 ### 2.7 What is not done
 
+Stated rather than implied, because a half-claimed accessibility feature is
+worse than an absent one:
+
 - **No ATAG Part B checks in the QA sweep.** Nothing yet verifies that a
   published folio has alt text, correct heading order or table headers.
 - **No audit of generated PDFs.** The document render path goes through

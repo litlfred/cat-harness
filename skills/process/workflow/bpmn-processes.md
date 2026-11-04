@@ -53,7 +53,9 @@ so a diagram in one instance would be asserting facts about others.
 satisfies, and `check:tools` carries the corpus-wide count. A skill with no
 Tool is **not** an error, since plenty of skills are pure judgement. Read
 counts from a run of `tools/discover.ts` (never a grep); `check:tools` and the
-per-activity criterion count different sets, so their totals differ.
+per-activity criterion count different sets, so their totals differ. Both are
+needed: a corpus total cannot say *which* activity hands a performer a skill
+whose mechanism is still inlined in its prose.
 
 ### A Tool's OWN procedure is the Tool's subprocess, not the skill's prose
 
@@ -92,7 +94,9 @@ direction as `check:import-direction` and `check:reference-direction`.
 **`skill-ref-resolves` does not catch this:** it resolves against
 `knownSkills(root)`, which in a multi-instance checkout is checkout-scoped, so
 "resolves" means "exists somewhere". `skill-ref-resolves` is existence only,
-and its own summary names this gate as the answer on direction. Existing
+and its own summary names this gate as the answer on direction, so there is
+one implementation of "may this process bind this skill", not two free to
+disagree. Existing
 wrong-direction bindings are held in a ratchet baseline.
 
 When it fires there are two fixes, and choosing between them is a placement
@@ -129,7 +133,8 @@ vocabulary does not define it.
 ## Edge routing: rectilinear, and never over a task
 
 **Rectilinear.** A sequence flow turns at right angles. A diagonal reads as a
-different kind of edge, and the notation has no such kind.
+different kind of edge, and the notation has no such kind, so a reader spends
+attention deciding whether the difference means something.
 
 **Never over a task, a lane label or another edge.**
 
@@ -140,11 +145,13 @@ one, and it crosses nothing.
 **This is about the DIAGRAM, not the process.** `BPMNDiagram` carries where a
 thing was drawn and the process carries what is true, so a routing fix changes
 no semantics and needs no re-validation of the flow — the same split
-`board-diagram-interchange` draws one level up.
+`board-diagram-interchange` draws one level up. What it changes is whether
+somebody can read the diagram.
 
 **Check it by looking at the rendered SVG, not the XML.** Waypoints that look
 orderly in source can still emit a diagonal, and `render:bpmn` is what a reader
-sees; `preview:site` shows the rendered page.
+sees; `preview:site` shows the rendered page, which is the artefact under
+review, and a green gate set does not show it.
 
 ## Rendering: what a reader can click, and what must not collide
 
@@ -203,7 +210,8 @@ What a diagram owes the check is a lane bound to a declared role. See
 [`task-authorization`](../process-core/task-authorization.md).
 
 **Instance state is committed**, alongside the work plan, so a sibling session
-sees the same position. Do not hand-roll a second tracker.
+sees the same position. Do not hand-roll a second tracker: a second answer to
+*where are we* is free to disagree with the first.
 
 ## Strict by default, and what a package may never relax
 
@@ -270,7 +278,9 @@ calls OPEN where the bean becomes its own, follows it with a `claimed` /
 `not yours` gateway, and calls CLOSE straight before each end it reaches from
 there. `note` stays on the steps where the work happens. `check:bean-calls`
 (run inside `check:workflow-refs`) refuses the three ops anywhere else, and a
-process that calls one of the pair without the other. See
+process that calls one of the pair without the other, because claim and close
+drawn ad hoc leave beans resolved and never archived, and processes that claim
+and never close. See
 [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"Archiving — two dispositions".
 
 Work-plan priming reports every instance's position next to its bean, so the

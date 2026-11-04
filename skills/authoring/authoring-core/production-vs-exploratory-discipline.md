@@ -195,13 +195,14 @@ dashboard, run this BEFORE the commit:
 5. **Naming discipline** — production constants are named so the status
    is visible (`*_CANONICAL`/unsuffixed = proved; `*_FITTED_FROM_DATA` =
    empirical fit, never imported as a derived value; `*_VALIDATION` =
-   external anchor; `*_EXPLORATORY` = shape-probe).
+   external anchor; `*_EXPLORATORY` = shape-probe). Mislabeling is the most
+   common cause of review threads.
 6. **Witness assertion** — falsification probes assert the *refutation*
    so the witness reports passing on the expected-negative outcome.
 7. **Banner** — every exploratory probe carries a header banner stating
    it is exploratory hypothesis generation and NOT for production
    without (locality gate + derivation-menu trace + owner authorisation
-   if off-menu).
+   if off-menu). The banner is what a post-hoc audit looks for.
 
 ```
 production change? → 1 yes → 2 locality smooth → 3 menu cite → 4 every term → 5 naming → 6 witness → 7 banner

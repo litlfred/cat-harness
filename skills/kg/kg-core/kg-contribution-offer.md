@@ -31,7 +31,8 @@ restate it — it obeys it, and supplies what the options are here.
 It is **not** what to do when the author CORRECTS a rule. That is
 [`symbiotic-interaction`](../../conduct/conduct-core/symbiotic-interaction.md) §2, and it runs the other
 way: the node already exists, the author has just said it is wrong, and the
-correction is written into it **in the same turn without an offer**.
+correction is written into it **in the same turn without an offer**, because
+offering there asks the author to repeat a correction already made.
 
 The line between the two is one question: **does the rule already have a home?**
 A ruling on something already in the graph is an edit and needs no offer; a

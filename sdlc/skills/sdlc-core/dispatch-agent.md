@@ -20,7 +20,8 @@ MUST be used together:
    block from each running agent every ~120 s and posts ONE consolidated
    synthesis table to the user.
 
-Do not dispatch without both.
+Do not dispatch without both: an agent that skips the contract cannot be
+synthesized, and a parent that skips the heartbeat leaves the user blind.
 
 ---
 
@@ -105,8 +106,8 @@ Do bean folio-assistant-<id> on branch <branch-to-create> of repo <owner>/<repo>
 ```
 
 Take the front from that line rather than inventing a scope: the bean carries
-its own Done-when. If you are dispatching work that has no bean, bean it
-first.
+its own Done-when, so the agent's result can be judged, which a theme does not
+allow. If you are dispatching work that has no bean, bean it first.
 
 1. **Scope each front** to one independent agent (no shared files between
    agents — worktree isolation makes parallel file writes safe; use

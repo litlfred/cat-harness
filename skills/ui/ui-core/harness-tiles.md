@@ -18,7 +18,8 @@ title.
 **The tile set is not a new registry — it is the visualiser obligation made
 reachable.** A harness declares its visualisers in its `<instance>.json`
 `visualisers` (`HarnessVisualiserSchema`), and `kg:audit` reports which
-directories owe one. A graph that owes a visualiser owes a tile.
+directories owe one. A graph that owes a visualiser owes a tile, so the audit
+needs no second list free to disagree with it.
 
 ## Where a tile goes — the declared route, and nothing else
 
@@ -71,7 +72,10 @@ Which instances are instantiated **here** is answered by the root
 `index.config.json` (`instances[]`), or without an index by each root
 `<name>.config.json`. That rule is
 [`index-config`](../../kg/kg-core/index-config.md)'s; the tiles only consume
-it. Dependencies keep a group of their own rather than disappearing.
+it, because the navbar cannot be derived from the declarations alone and a
+directory listing is not the question a reader is asking. Dependencies keep a
+group of their own rather than disappearing, so a reader looking for one is
+not answered with silence.
 
 **A harness a KG subscription chose is instantiated by the same file**, with
 no local declaration: its declaration is the substrate snapshot `kg:subscribe`
@@ -107,7 +111,8 @@ panel, not a second board.
 The rules on this page are about **sense 1**. Sense 2 is correct usage too: a
 layer can be declared, not instantiated, and declare no visualiser — so it
 owes no tile — while being exactly what a downstream repository instantiates.
-No count is given for either sense; ask the filesystem.
+No count is given for either sense, because a count in prose is a claim
+nothing checks; ask the filesystem.
 
 **Do not write a checker for this.** A predicate on the word cannot separate
 its two senses, so it is an **adjudication**, not a check
@@ -136,7 +141,8 @@ pages are generated at build time has none until its generator runs.
 
 ## Order is the declared dependency stack, reversed
 
-Bottom to top, computed from the declared `needs`, never written out as names.
+Bottom to top, computed from the declared `needs`, never written out as names:
+a name list is a rule true only for the instances somebody remembered.
 The spine's head keeps the top and its floor keeps the bottom.
 
 **An instance whose layer nobody declared is undetermined** — placed below the
@@ -145,8 +151,9 @@ Absent is not `[]`: one is nobody having said, the other is an instance
 asserting it sits on nothing.
 
 **A broken graph does not blank the navbar.** `flattenDependencies` returns an
-empty order on a cycle; the problems are reported and the list falls back to
-alphabetical.
+empty order on a cycle, which is right for a pipeline and wrong for a sidebar,
+where showing nothing hides every instance over one typo. The problems are
+reported and the list falls back to alphabetical.
 
 ## Two gaps, reported rather than hidden
 
@@ -157,8 +164,8 @@ Both are the third state, and they are DIFFERENT findings:
   and reported.
 - **rendered and not declared** — a page published under a kind the instance
   does not declare. Also not linked, because the declaration decides what a
-  tile may claim to show — and reported, because the remedy is one line in a
-  declaration.
+  tile may claim to show — and reported, because staying silent would hide a
+  working viewer behind a rule, and the remedy is one line in a declaration.
 
 ## An inert row SAYS why, and "no viewer" is four answers
 
@@ -184,7 +191,11 @@ second signal. Do not use `aria-disabled` — nothing is a control, and marking 
 | a viewer exists off the conventional path | viewer not published | yes, and a different one |
 | nothing declares a viewer | no viewer yet | yes |
 
-**Neither navbar picks the words.** They render what the generator gave them.
+One wording for all four would label an intended state a gap, which is as
+wrong as hiding a real gap.
+
+**Neither navbar picks the words.** They render what the generator gave them,
+which keeps them one navbar rather than two that agree by maintenance.
 A kind the generator said nothing about renders with no claim about why.
 
 ## A tile, or an avatar? WHO DECLARED IT
@@ -242,7 +253,8 @@ the SCHEMA and the avatar is one INSTANCE of it.
 ### What is checkable here, and what is not
 
 **Tile-vs-avatar is not.** Nothing classifies a folio item; the rule governs
-authoring, and the renderer reads the graph an item came from.
+authoring, and the renderer reads the graph an item came from, so a gate would
+be a declared property whose check cannot answer its own claim.
 
 **"A functional tile names the skill, never the tool" IS**: a declared
 visualisation naming a tool id where a skill name belongs is decidable against
@@ -270,20 +282,23 @@ otherwise (`board-windows` §"Send to fsh-guts asks first").
 | a list | this instance's own answer |
 
 Absent and `[]` must not collapse. The guard is `!== undefined`, never a
-truthiness test. The distinction is kept at every layer: `resolveNavbarIcons`
+truthiness test: a truthiness test turns "nobody has said" into "nothing to
+show", and makes an instance that has not declared the field indistinguishable
+from one that wants a bare navbar. The distinction is kept at every layer: `resolveNavbarIcons`
 returns `undefined` for undetermined, `harness-tiles.ts` **omits** the field
 rather than writing `[]`, `sync-docs-harness.ts` emits `null`, and the client
 draws no row and says so once.
 
 **The walk is `needs`**, not a second traversal. Nearest declaration wins,
 breadth-first toward the foundation — the direction `resolveSkillDirs` already
-composes.
+composes. A new walk would be a second answer to "what is this instance built
+on", free to disagree with the first.
 
 **Destinations are looked up, never written down.** They come from the
 instance's own declared visualisations plus `siteLinks`, so an icon whose
 graph this instance does not publish gets no href and renders as a
 **non-link**. `close` and `launcher` carry no href on purpose: they drive
-controls on the page.
+controls on the page, and an href would make them look like navigation.
 
 ## The theme avatar: the assignment is theme-mediated
 
@@ -300,10 +315,12 @@ concluding no assignment exists.
 
 **Take the `card` layout, not laptop or mobile.** `KgImageSchema` refuses a
 non-square `avatarRegion` in **pixels**, and only the square crop can satisfy
-that.
+that: equal fractions on a landscape image give a box wider than tall, and the
+clip scales width and height separately.
 
-**A card with no declared crop is a finding, not an avatar.** Report it and
-fall back to the mark.
+**A card with no declared crop is a finding, not an avatar**: the whole
+composition squeezed into a small frame is unreadable. Report it and fall back
+to the mark.
 
 ## Where a tile lives, and what it must not eat
 
@@ -312,7 +329,8 @@ visibility, never two registries.
 
 **The sticky board carries NO tiles.**
 
-- Every tile this repository declares names `navbar` and `glass`, so each stays
+- Removing a surface loses nothing only if the others still carry it. Every
+  tile this repository declares names `navbar` and `glass`, so each stays
   reachable. A tile that named ONLY a surface that is not mounted would vanish
   silently — report it, do not re-route it on the author's behalf.
 - **`board` stays a legal value in `TILE_SURFACES`, and nothing mounts it**, so
@@ -352,16 +370,20 @@ data, once, for both passes (`compose-docs --shell --instance`, and
 
 **The state row is unlinked rather than shown at zero or re-based.** Per
 `schemas/ui/tile-count.ts`, absent is a third state, never `0`: a folio that
-declares no `beans` graph has said nothing about beans. The icon keeps its
+declares no `beans` graph has said nothing about beans. Showing `0` would be a
+claim, and showing the platform's number answers the folio's question with
+somebody else's. The icon keeps its
 place and its accessible name says, for example, *"<folio> declares no beans
 graph"* (§"An inert row SAYS why").
 
 **Ownership is decided by where the link points, never by a kind of the same
 name.** A folio that declares a `qa` directory does not borrow the platform's
-QA tile and its count.
+QA tile and its count; borrowing it because the word matched would put the
+platform's number back on the folio's page.
 
-**A count beside a borrowed link is dropped too.** The qualifier is shown
-instead, so the tile reads as the platform's.
+**A count beside a borrowed link is dropped too**: the link is accurate, but
+the number would still sit on the folio's page next to the folio's own. The
+qualifier is shown instead, so the tile reads as the platform's.
 
 **The host's count projections are not chrome.** `compose-docs --shell` leaves
 out every `assets/**.json` that declares a headline `tile` count, as it does
@@ -410,7 +432,8 @@ own path, (c) the platform's translation sweep and index are not shipped and
 the rendered `head_custom.html` hands the badge its words, and (d) the fish
 fetches no count from a site that has no fsh-guts. The client halves are in
 `translation-badges.e2e.ts` and `navbar-row.e2e.ts`. **A check of a page's
-chrome has to run on a site that is not the platform's.**
+chrome has to run on a site that is not the platform's**, because on the
+platform's own site the platform's tiles are right by construction.
 
 ## The glass strip — pinned first, and "+N more" counts the rest
 
@@ -452,7 +475,9 @@ out of view from a tile that does not exist.
 
 A harness section on the landing page shows the declaration's `summary`, a
 one-line gloss, and lists `alsoWritten`, the other spellings of the name.
-Authoring notes belong in `description` or a `_comment`. The reader-facing
+A `description` made to carry them shows the reader a naming rationale or
+spellings that render as one line. Authoring notes belong in `description` or
+a `_comment`. The reader-facing
 line goes in `summary`, and alternative spellings go in `alsoWritten` as a
 list, never inline.
 
@@ -461,7 +486,7 @@ contribution declares `bodyFrom: "summary"`, and the card's words are
 `readerText` in `schemas/content/sticky-contribution.ts`: the `summary` (else
 the description), then the `alsoWritten` spellings after "Also written:". That
 is the rule `docs/_includes/harness_details.html` applies, read from the same
-two declaration fields. `bodyFrom: "description"` still parses, because the
+two declaration fields, so there is no copy of the text to keep in step. `bodyFrom: "description"` still parses, because the
 pinned `bootstrap/bootstrap.json` declares it. `bun run cat landing:sticky:check`
 fails when a card built from its declaration does not open with that text. A
 `bodyAppend` may follow the reader's text, and a card with a literal `body` is

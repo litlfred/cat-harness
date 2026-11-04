@@ -96,8 +96,9 @@ writers disagree. Report it; do not resolve it.
 **GitHub cancels a PENDING job when a newer one queues for the same group.** So
 a concurrency group keeps at most one pending run. It is not a queue, and
 `cancel-in-progress: false` is not coalescing — it protects the job in flight
-and silently drops the intermediate ones. No concurrency setting can coalesce
-bursts of writes to a ref like `gh-pages`; that needs a steward.
+and silently drops the intermediate ones. It is worth having to protect the
+job in flight, and must not be described as coalescing. No concurrency setting
+can coalesce bursts of writes to a ref like `gh-pages`; that needs a steward.
 
 ## The window's four durable fields — because of HANDOVER
 
@@ -127,7 +128,8 @@ OR abandoned, and `expires` is the only thing that tells those apart**, so a
 reader must never take an absent `closedAt` for "still collecting".
 
 There is **no `extend`**, and the object is strict, so an extra field is
-refused rather than ignored: `expires` is set once, at open. A hold's expiry
+refused rather than ignored: `expires` is set once, at open, as a property of
+the type rather than a promise in prose. A hold's expiry
 stops it outliving its justification; a window's expiry *is* its
 justification, and also stops it outliving its burst.
 
@@ -161,8 +163,10 @@ match also counts comments.
 - **Nothing writes a window yet.** `schemas/sdlc/ref-window.ts` types one and
   `ref-window.test.ts` holds it to the handover rules, but no steward opens one,
   because there is nothing to coalesce until the producers stop pushing
-  directly.
+  directly. The type comes first so that a steward's handover is tested
+  before the steward exists.
 - **The parity between the window and the hold is behavioural, not structural.**
   `SHARED_LEASE_FIELDS` is the declared list and the test removes each field
   from both schemas and requires both to refuse. A key-list comparison would
-  not work: a `.refine()` does not expose its inner object.
+  not work: a `.refine()` does not expose its inner object, and a parity check
+  that silently compared two empty lists would pass forever.

@@ -13,7 +13,8 @@ A knowledge graph is in a repository. A portal — a Moodle site, a ministry's
 intranet, a department page — needs to show what is in it, to readers the
 repository never hears about, through a data-ingestion pipeline subject to
 operational and deployment constraints (for example, a CDN behind Moodle).
-**This is the shape of that path.**
+**This is the shape of that path**, written as a pattern so the next instance
+does not rebuild it unnamed.
 
 ## A CDN is a layer, not a publication host
 
@@ -147,7 +148,8 @@ Still open:
 | how the gateway relates to the CDN, and who publishes to it | `trust_network_gateway_architecture.md` |
 
 Read those before designing stage 4. **Write nothing about GDHCN from general
-knowledge** — read it off the IG.
+knowledge** — read it off the IG, because a plausible account from memory gets
+wrong exactly the part (envelope versus key distribution) that decides stage 4.
 
 ## Package or per-asset: still a choice, and the trustlist does not make it
 
@@ -159,7 +161,8 @@ knowledge** — read it off the IG.
 A package signature is cheaper to produce and verifies the *set*: a reader
 learns that no file was added, removed or altered. A per-asset signature
 verifies each file on its own, which is what an edge cache serving one asset to
-one reader can check — but it cannot detect a file that was *removed*.
+one reader can check — but it cannot detect a file that was *removed*, because
+there is nothing left to verify.
 
 **They compose**: per-asset signatures with a signed manifest over them gives
 both properties. That is the safer default and the more expensive one, and it

@@ -92,7 +92,8 @@ Full rules, inheritance order and the three read states:
 ### The `docs` graph, and the filing question it answers
 
 `docs` is an authorable destination like the others, and the one an agent
-most often forgets to consider when it derives a destination list.
+most often forgets to consider when it derives a destination list: deriving
+the list is not enough if the derivation drops a declared graph.
 
 **What goes there:** a **design-memory asset** — something produced while
 BUILDING, rather than the thing built.
@@ -276,7 +277,8 @@ A or B?
 ## The worked failure this skill exists to prevent
 
 A platform script that writes a whole README holding one folio's title,
-badges and licence destroys the README of every other folio it runs in. Every
+badges and licence destroys the README of every other folio it runs in,
+because prose about a folio belongs to that folio. Every
 step above catches it: Step 1, the content names one folio; Step 2, a helper
 path is composed rather than resolved; Step 4, published paths are built by
 convention and checked against nothing.

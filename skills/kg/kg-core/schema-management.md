@@ -16,7 +16,8 @@ graph-typologies:
 **This skill does not restate where schemas live or how they are laid out.**
 [`directory-conventions`](directory-conventions.md) §"What lives in the
 `schemas` graph" owns that — the Zod `.ts` is authoritative, every other form
-is generated, and a rendering is never where a fix lands.
+is generated, and a rendering is never where a fix lands. A rule stated twice
+is free to drift, so it is not restated here.
 
 Nor does it restate how to *model*. [`data-modelling`](data-modelling.md) owns
 the question that matters before any of this — **what are the things, and what
@@ -172,8 +173,9 @@ The projection is committed. **A staleness gate is only worth having if its
 red means an omission.** A red meaning "somebody added a blank line" teaches
 contributors to regenerate reflexively rather than to read the finding.
 
-**A line number is an editor coordinate, not a property of a declaration.** It
-is kept on the reader and dropped from the projection. The general rule, for
+**A line number is an editor coordinate, not a property of a declaration**:
+carried in the projection, it makes any edit above a declaration read as
+stale. It is kept on the reader and dropped from the projection. The general rule, for
 any generated artefact you gate:
 
 > If a red can be caused by a change that alters nothing the artefact

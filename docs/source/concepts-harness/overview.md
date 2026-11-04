@@ -12,4 +12,5 @@ page, along with the two things a Harness owes anything it takes charge of.
 [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119) defines them**, and only in
 upper case, per [RFC 8174](https://www.rfc-editor.org/rfc/rfc8174). Where a
 requirement below is **not yet enforced by a gate**, this page says so at the
-requirement.
+requirement, because a conformance statement a reader cannot tell from a
+description of existing behaviour misleads either way.

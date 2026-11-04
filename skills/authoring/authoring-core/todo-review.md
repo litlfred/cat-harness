@@ -36,7 +36,8 @@ annotations arrive here. While triaging:
   `check:materialized-fixity` fails if somebody annotated held content in
   place.
 - **`provenance.local` makes a resolved item traceable** to the thing it was
-  about.
+  about; without it the copy is indistinguishable from original work one
+  rename later.
 
 ## Role
 

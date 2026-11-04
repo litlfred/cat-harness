@@ -21,7 +21,8 @@ prompt at start, and it reads and writes the directory as it works.
 
 **Maintaining it is part of the work.** A session that establishes a durable
 fact in an agent's area adds it in the same change; a session that re-measures
-a number updates the entry with the fresh value and date.
+a number updates the entry with the fresh value and date, because a memory
+file that only accretes becomes the thing it exists to prevent.
 
 ## Every entry carries exactly one of three labels
 
@@ -31,7 +32,9 @@ a number updates the entry with the fresh value and date.
 | **TRAP** | a specific way the task goes wrong, **with the evidence that established it**. |
 | **BASELINE** | a measured number, stored with the command that produced it and the date, **and never quoted as a current answer**. |
 
-An entry that merely restates a rule is STABLE — a TRAP needs the incident.
+A TRAP is what stops a failure the project has paid for once being paid for
+twice. An entry that merely restates a rule is STABLE — a TRAP needs the
+incident.
 
 **A `baseline` with no measurement is refused by the schema.** A table of how
 to measure is a STABLE fact, not a measurement. A watcher whose subject is a
@@ -45,7 +48,8 @@ projection that CI writes and commits, never an agent
 its check form to see what it would change.
 
 One entry per file, each declaring its own `$schema`, a label, a summary, and
-the agents it reaches — **one entry can reach several agents**. The assembly
+the agents it reaches — **one entry can reach several agents**, so a fact two
+agents need is not written into two files. The assembly
 check gates it, so **an entry edited and never assembled fails the build**.
 
 **The generated file is written only between its markers**, as the README sync
@@ -107,8 +111,8 @@ supported.
 
 Retiring an agent **archives its memory; it does not delete it.** An archived
 entry is a node of the graph that reaches no agent's prompt — the state between
-*untagged, so reaches everybody* and *gone*. Same discipline as a scrapped work
-item.
+*untagged, so reaches everybody* and *gone*. Deleting an entry throws away work
+somebody else paid for; same discipline as a scrapped work item.
 
 **Archived must be checked BEFORE the untagged rule.** An archived entry has no
 agent tag once its agent is gone, so checking it second hands it to *every*
@@ -149,7 +153,9 @@ and their upkeep belongs to this skill.
 
 **This table is DECLARED, not described.** All three columns are `ASSET_ROLES`
 in `schemas/kg/cat-harness.ts` — one record of objects per ROLE, never per
-asset. `layer` and `delivery` are **required** on `AssetRoleDef`.
+asset, because per-asset copies of a role's purpose drift apart. `layer` and
+`delivery` are **required** on `AssetRoleDef`, so a new role decides them at
+the keyboard rather than at CI.
 
 **The layer column makes a process step that writes one of these a defect.**
 `processMayWriteAsset(role)` answers it through the same `layerIsWritable`
@@ -171,7 +177,9 @@ that establishes a durable fact about an instance updates the one whose
 question it answers — and if it answers neither, it is a memory entry.
 
 `bun run cat check:subgraph-coverage` reports any instance missing either
-asset; both are required of every instance. `bun run cat check:asset-roles`
+asset; both are required of every instance, because one with a README and no
+`AGENTS.md` is mute to an agent, and the reverse leaves a reader with nothing
+saying what the instance is. `bun run cat check:asset-roles`
 keeps the declaration single: it reports a required role `ASSET_ROLES` does
 not govern, a role a running process would be allowed to write, or an asset
 restating `purpose`, `layer` or `delivery` on itself. That last check reads the

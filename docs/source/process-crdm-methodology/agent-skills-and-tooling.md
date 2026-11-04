@@ -74,8 +74,9 @@ work is done is a judgement.
 ### `stakeholder_map`
 
 This repository has no CODEOWNERS file, and `schemas/harness-config.ts`
-declares no role, owner, maintainer or contact field, so `stakeholder_map`
-reads what the repository has:
+declares no role, owner, maintainer or contact field. A tool reading those would
+report no stakeholders for every change and look like it worked, so
+`stakeholder_map` reads what the repository has:
 
 1. **Skills declare `roles:`** in their front matter — reader, collaborator,
    owner, auditor. Change a skill and you affect whoever holds its roles.

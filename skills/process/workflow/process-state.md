@@ -80,6 +80,9 @@ hold.**
 > `workflow-state` graph. Naming the process in prose is the report; the
 > recorded instance in the state graph on the branch store is the evidence.**
 
+Without recorded instances, a reviewer sweeping a window of merged work cannot
+classify a single session by lane.
+
 `workflow_start` creates it, `workflow_next` and `workflow_complete` advance
 it, and the state lives on the branch store precisely so a sibling session
 reads the same position — [`workflow-state.md`](workflow-state.md) §"Where running instances live".
@@ -90,9 +93,12 @@ of turns are legitimately outside any process — it is the prompt to say which.
 
 **This rule is ADVISORY: nothing gates on it.** Record the instance when the
 turn is in a process, but no check refuses a merge without one, and none
-should be added without a new ruling from the owner.
+should be added without a new ruling from the owner. It is labelled advisory
+because a rule called STRICT that nothing enforces teaches readers that the
+word is decoration, including where it is enforced.
 
-**The gap is computed, never quoted.** `bun run cat workflow:instances` prints
+**The gap is computed, never quoted**, because a count written down goes stale
+with nothing to say so. `bun run cat workflow:instances` prints
 today's count: instances recorded, instances started since the rule, first-parent
 merges in the same window, and the CI workflows that read the graph. Merges
 are an upper bound on the instances owed, since a steward's train, a docs-only
@@ -230,7 +236,8 @@ trail has to be.
 A bean is a usable trail when **a wrong claim is left in place**, with the
 correction appended beside it rather than replacing it. Read back, the bean
 shows the premise, the disproof, and the re-scoped work in order, so an agent
-resuming can see that the original framing was abandoned *and why*.
+resuming can see that the original framing was abandoned *and why*, which is
+what it needs to avoid re-deriving the same mistake.
 
 A bean tidied to show only the correct conclusion reads as though the work had
 always been aimed there. That is why

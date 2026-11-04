@@ -36,8 +36,10 @@ Archiving is a file move, not a status change, so it records no reason and is
 not a way to make unwanted work go quiet.
 
 **`bun run cat check:bean-archive`** holds the rule: the `archive` node must be
-declared in `beans/beans.json`, and every bean in it must be `completed` or
-`scrapped`. If you want a bean out of the way, scrap it *with its reasons*
+declared in `beans/beans.json` — `check:declared-dirs` and
+`check:harness-dirs` compare declarations against disk, not the reverse, so
+they cannot see an undeclared directory — and every bean in it must be
+`completed` or `scrapped`. If you want a bean out of the way, scrap it *with its reasons*
 first, then archive if you like.
 
 `readBeans` reads the **active** store and `readArchivedBeans` the archive.
@@ -52,6 +54,7 @@ whose work has already landed" before you close anything — it carries the thre
 obligations, and the `ready-to-close` tag for the case where you cannot
 re-derive the measurement yourself. What stays off limits is a bean a sibling
 is **mid-flight** on: a claim naming a branch, a recent note, an open PR.
+Closing that loses work the sibling had not finished reporting.
 
 Full cycle, as a diagram: [Beans and todos](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/beans-and-todos.html).
 
@@ -108,7 +111,9 @@ refs. To link them:
 ### A DECISION bean you will not land soon — put the question where a person reads
 
 A **decision** bean exists to get a ruling, and its value is that somebody
-with the authority to rule sees it.
+with the authority to rule sees it. A work item left on a branch merely gets
+duplicated; a decision left there sits unanswered while every branch
+downstream of it waits.
 
 **If you open a decision bean on a branch you will not land soon: set `status:
 draft` in front matter (or `beans create "<title>" --status draft`), post the
@@ -116,8 +121,9 @@ question where the owner already reads — the issue — and say ON THE BEAN whe
 you posted it.** All three parts. The comment is what reaches a person; the
 line on the bean stops the next session re-asking and tells them where the
 answer will appear; and `status: draft` lets automated checks find an
-unanswered ruling request. A decision bean stays `status: draft` until ruled on
-or landed.
+unanswered ruling request. `draft` is already in the status enum and otherwise
+unused, so it needs no new vocabulary. A decision bean stays `status: draft`
+until ruled on or landed.
 
 ```yaml
 ---
@@ -168,7 +174,8 @@ replace the second check:
 | a `describes:` edge between beans | the second session to arrive cannot know it is second, so nobody is in a position to write the edge |
 | a label or line on the PR carrying bean ids | only helps once a PR exists, which is exactly the window these collisions open in |
 
-Same commands, same widened search terms — the subject as well as the id.
+Same commands, same widened search terms — the subject as well as the id. The
+cost is one call at a moment you are already stopping to write a PR body.
 
 > **Two independent implementations of one fix produce two sets of observations,
 > and the weaker implementation's observations look like findings about the
@@ -274,7 +281,8 @@ abandoned, the bean reads done only on a branch that never lands.
   the criteria, and closing the last bean of a set is what moves the set
   toward `delivered`.
 - A bean whose Done-when is not yet all met **stays open** in that commit, with
-  a note saying what is left.
+  a note saying what is left; completing it to avoid an orphan would be the
+  opposite error.
 
 `bun run cat beans:landed` reports what slipped through: open, non-epic beans named
 in a merged PR's title on `main`, those with every Done-when item ticked listed
@@ -295,13 +303,17 @@ That writes `<bean-id>--<YYYY-MM-DD>--<branch>.md` in the declared `notes`
 directory of `beans/beans.json`, and rewrites the generated index beside it
 (`README.md`). The bean itself is not touched. Appending from several PRs puts
 every other open PR in conflict on that one file, and the merge-main bot
-refuses a bean conflict on purpose.
+refuses a bean conflict on purpose: two sessions editing one bean is a
+coordination question, not a regeneration, so the shared write is what has to
+go.
 
 **The branch is the key, and that is the rule that must not drift.** Two open
 pull requests never share a branch, and the branch is known at the first
 commit, which a pull request number is not. A second note from the same branch
 is a new `##` section in that branch's own file — found by its front matter,
-not by today's date — so only that branch ever writes it. Reasoning in full:
+not by today's date — so only that branch ever writes it. A date-plus-finding
+name would collide when two sessions work the same finding on the same day.
+Reasoning in full:
 `cat-harness/schemas/sdlc/bean-note.ts`.
 
 **What still conflicts, and why that is acceptable.** The index is rewritten
@@ -314,12 +326,14 @@ show both halves, and fails when the branch is dropped from the name.
 
 **What `beans:notes:check` judges** (in CI): every file in the directory is a
 `folio-bean-note/v1` note naming a bean that exists, under exactly the name its
-own front matter derives, and the index is current.
+own front matter derives (a hand-named note is the first step back to two
+pull requests writing one path), and the index is current.
 
 - **The bean's own body stays the owner's.** Re-scoping it, ticking its
   `## Done when`, or closing it are still edits to the bean, made by whoever
   holds it.
-- **A note does not move the bean's `updated_at`.** A reader asking "is anyone
+- **A note does not move the bean's `updated_at`**, because bumping it from
+  every pull request is the one-line conflict notes remove. A reader asking "is anyone
   working on this?" reads the index's dates as well as the bean's.
 - **Sections appended before the convention stay where they are.** Moving them
   would rewrite the region every still-open pull request is appending to.
@@ -327,8 +341,9 @@ own front matter derives, and the index is current.
 ## Closing a bean whose work has already landed (STRICT)
 
 A bean verified done and left open is as misleading as one abandoned silently:
-an agent that picks it up re-derives work already on `main`. **So: a bean
-closes on EVIDENCE, not on authorship.**
+an agent that picks it up re-derives work already on `main`. A rule that says
+only who may **not** close a bean leaves nobody able to discharge it. **So: a
+bean closes on EVIDENCE, not on authorship.**
 
 > **You may close any bean — whoever opened it — when you have re-run the
 > measurement yourself and it passes.** You may not close one because a note in
@@ -338,8 +353,9 @@ Three obligations come with that:
 
 1. **Re-derive, never quote.** The note claiming resolution is the thing under
    suspicion; reading it is not verification. Run the check, then record the
-   command and its result in the bean. Where a note gives a line number or a
-   count, verify the *fact* — line numbers rot.
+   command and its result in the bean, because notes claiming resolution do
+   fail re-verification. Where a note gives a line number or a count, verify
+   the *fact* — line numbers rot.
 2. **A Done-when only a person can satisfy is not yours to discharge** — for
    example "the issue can be closed by its author"; an agent never closes an
    issue on its own say-so.
@@ -428,7 +444,8 @@ Updated <id>
 ```
 
 and `BeanStatusSchema` in `schemas/tools/tool-types.ts` is defined as *"exactly what
-`beans update --status` accepts"*.
+`beans update --status` accepts"*, so a sixth status here would desync the
+schema from the tool it documents.
 
 `bun run cat check:ready-to-close` lists every tagged bean with its evidence, so the
 confirmation is one read. **It reports and never acts** —
@@ -484,7 +501,8 @@ anything.
   and everything merged since is invisible until it fetches again.
 - **`beans create` is not idempotent and dedupes on nothing.** The existence
   check in [`todo-manager`](todo-manager.md) §"Check before you create" reads
-  the LOCAL store, so it cannot catch a duplicate a sibling created since.
+  the LOCAL store, so it cannot catch a duplicate a sibling created since, and
+  the cost of not looking is duplicates somebody scraps one at a time.
 
 **So before creating a bean for a decision, or claiming one, do both:**
 
@@ -530,6 +548,9 @@ Read it as "check these", never as "take these".
 
 ### A stale claim is reset to `todo`, and the reset keeps the record
 
+A claim untouched for weeks is not one anybody is honouring, but it still
+tells every sibling "taken".
+
 > **A claim with no liveness signal (§"The signal is liveness") AND no commit
 > naming the bean or touching its branch in 14 days may be reset to `todo` by
 > a sweep, provided the sweep appends a note recording what it reset.**
@@ -568,7 +589,8 @@ store sees none of them.
 
 ## Each bean has one home (STRICT)
 
-Each bean lives in exactly one store:
+Each bean lives in exactly one store, because copies of one bean written
+separately drift apart:
 
 | Bean | Its one home |
 |---|---|

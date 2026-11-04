@@ -11,7 +11,8 @@ Before writing or auditing a block, resolve its audience: the role, its
 the user stories told as it.
 
 **A block sits in a lane; the lane is a role; the role is who the prose is
-for.** The audience is not restated per block.
+for.** The audience is not restated per block, because a per-block copy can
+contradict its lane and still look authoritative.
 
 ```ts
 import { readRoleGraph, roleForLane } from "./schemas/role-graph";
@@ -29,8 +30,10 @@ the guidance here applies when no role has been resolved.
 Voice does not follow from persona — the same reader is addressed differently
 in a normative standard and in a tutorial — so it is declared as a voice
 profile bound to the role (`activeIn.roles`), and the authoring agent and the
-QA agent judge against that same rule. The role names no voice and no story:
-each points at the role.
+QA agent judge against that same rule; otherwise a voice finding is one
+agent's taste against another's, which is unreviewable. The role names no
+voice and no story: each points at the role, so one is added without editing
+the role.
 
 `bun run cat kg:audit` reports a reader role with no persona (`role-has-persona`)
 or no story told as it (`role-has-story`); `bun run cat check:voices` lists the

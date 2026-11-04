@@ -66,7 +66,9 @@ páginas secundarias:
 | [`cat-harness` mínimo](../architecture/cat-harness-minimum.html) | Qué sobrevive en el arnés una vez que se aplica «no autodocumentado» como prueba |
 | [Instancias de arnés](../architecture/harness-instances.html) | Qué ES una instancia — esquemas, visualizaciones, herramientas; los cuatro directorios; el renderizado por defecto |
 
-El requisito de renderizado es un **suelo que se eleva**: `bootstrap` está exento
+La versión mínima dice que un arnés no produce nada que un humano mire, y la
+página de instancias dice que una instancia renderiza por defecto; ambas se
+cumplen porque el requisito de renderizado es un **suelo que se eleva**: `bootstrap` está exento
 del visualizador y proporciona en su lugar su propio `.json`/`.jsonld`, y
 `cat-harness` es la capa donde se aplica el resto. Consulta
 [Dónde comienza el requisito](../architecture/harness-instances.html#where-the-requirement-starts--bootstrap-is-the-exception).

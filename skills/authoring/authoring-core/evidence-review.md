@@ -14,7 +14,8 @@ description: >-
 [`untainted-verification`](../../../sdlc/skills/sdlc-core/untainted-verification.md)
 states a generic discipline. Evidence review — the appraisal of the evidence
 behind a recommendation — is one instance of it; the translation round trip is
-another.
+another. Two unrelated instances are evidence that the discipline is generic,
+where one would only be an example.
 
 ## The rule
 
@@ -44,10 +45,11 @@ base changes**, even though the subject did not.
 
 The `field_hash` covers only inputs in the repository; an external corpus is
 not covered. Either way, *"verified on DATE against THESE inputs"* is a
-different claim from *"verified"*. A folio implementing surveillance gives each
+different claim from *"verified"*, because a reader given the second cannot
+tell a current verdict from a lapsed one. A folio implementing surveillance gives each
 verdict an explicit expiry, as
 [`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md) does for
-a block.
+a block: a verdict with no expiry cannot be told from an abandoned one.
 
 ## The fencing analysis — which rules are the platform's, and which are not
 
@@ -73,7 +75,8 @@ them declares them in its own repository.
 
 **It asserts no clinical or empirical claim, and the platform must not.** The
 mechanism carries *process* — who may rule on what, given what. The evidence
-is the folio's and the judgement is the guideline group's.
+is the folio's and the judgement is the guideline group's; a platform that
+shipped a default answer to either would be asserting on their behalf.
 
 ## Related
 

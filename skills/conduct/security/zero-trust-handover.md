@@ -17,7 +17,9 @@ uses-methodology:
 The method is the adopted methodology
 [`zero-trust-architecture`](../../../methodologies/zero-trust-architecture.md)
 (NIST SP 800-207, held in full). Read that node for what zero trust *is*;
-this skill does not restate it.
+this skill does not restate it. It is a skill rather than an adopted method
+because it is a house process that blends several sources into one
+procedure.
 
 The premise: **all data in the pipeline is suspect, and every tool guards
 against code injection, prompt injection and variable tampering.** This skill
@@ -181,7 +183,8 @@ repository can tell a routine's stored prompt or a relayed message from the
 principal's own words, because the turn metadata that says where a user turn
 came from belongs to the harness and never reaches the code here. So the
 list above is applied by the agent, from what the harness tells it about the
-turn, and this section is guidance rather than a check.
+turn, and this section is guidance rather than a check; calling it a check
+would be a false assurance.
 
 **No code here takes text from a routine, a relay or a webhook and puts it in
 front of a model.** The nearest in-code
@@ -217,10 +220,12 @@ should not, so `{ nextTool: "merge_pull_request" }` screened `clean`. A
 schema field may be declared `{ role, pattern?, oneOf? }` instead of the bare
 role, and a value outside the constraint is refused on a control field
 (quarantined on a data one). The CLI prints `clean` with the meaning *"no
-pattern fired (not a clearance)"*.
+pattern fired (not a clearance)"*; the state keeps its name because renaming
+it would break every caller that branches on it.
 
 **Review comments and `/api/feedback` are guarded where a model reads them,
-not where they are ingested.** Ingestion stores the text verbatim, as
+not where they are ingested**, because the hazard is at the model boundary.
+Ingestion stores the text verbatim, as
 refuse-never-repair requires.
 
 **Not wired, each for a stated reason:**
@@ -314,7 +319,8 @@ trusted interaction by position.
 
 ## Per-tool risk is assessed from the tool's SINKS
 
-Not every tool needs every guard, and every tool needs an assessment. A
+Not every tool needs every guard, a uniform checklist gets ignored, and every
+tool needs an assessment. A
 tool's risk follows from what it can **do** with an input. These are its sinks:
 
 | sink | example tools | guard it owes |
@@ -343,10 +349,12 @@ has its guard. A tool that reaches no sink with external input is
 A release (a merge to the default branch, a published site, a tagged
 package) is the last point where a defect is cheap. The gate runs the
 security checks that already exist, as a named step (`bun run
-security:gate`, Tool node `security-gate`), and the release refuses on a
+security:gate`, Tool node `security-gate`), because a check that only runs in
+CI is named by no merge, publish or release step. The release refuses on a
 blocking finding. "Could not check" is reported as its own state and never
 as clean. The pinning state is whatever `bun run cat security:gate` reports
-now; no count is written here.
+now; no count is written here, because it would be stale by the next workflow
+edit.
 
 ## Not yet: signed knowledge graphs
 

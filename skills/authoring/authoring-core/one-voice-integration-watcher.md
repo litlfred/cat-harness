@@ -38,7 +38,8 @@ parent's §1 references `${NAME}`. Files land at
 **Persistent operation (binding).** This watcher **never stops** in
 foreground sessions. When no main commits or PR events arrive in a TICK
 window, it pulls the next staleness-backlog block (§5 inherited from the
-parent, §5d auto-pull policy).
+parent, §5d auto-pull policy), because the QA reports it writes while idle are
+the staleness map that future content reviews read.
 
 ## Slot A — Goal statement
 

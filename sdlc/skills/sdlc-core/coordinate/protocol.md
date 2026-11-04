@@ -157,6 +157,7 @@ Thanks @<reviewer> — addressed all <N> threads in [`<sha>`](<commit-url>).
 **Re #2 (note):** <short paragraph explaining the modification>
 ```
 
+One summary avoids a reply per thread while still recording every verdict.
 Threads marked `accept` /
 `accept-with-modification` should be resolved (the *resolve review thread* [forge-operation Tool](../../../../skills/tools/folio-core/skills-and-tools.md#the-forge-operations-one-tool-node-each))
 once the reviewer acknowledges or after a one-day cooling period.
@@ -165,7 +166,7 @@ once the reviewer acknowledges or after a one-day cooling period.
 
 Keep the dialogue **short** — re-state the reasoning or the sibling-PR
 convention once, ask for a yes/no on whether the reviewer agrees.  After
-the second exchange, escalate (§6).
+the second exchange, escalate (§6), because loops with bots do not converge.
 
 ### 6.  Inconsistent findings → escalate, do not paper over
 
@@ -190,7 +191,8 @@ The author owns the resolution.  Do not "split the difference" or
 guess.  Inconsistent findings — whether between sibling PRs, or
 between a reviewer and a sibling PR — are an audit flag.
 
-**Escalation rate-limit.**  Batch-escalate when possible: one comment listing every disagreement found in a
+**Escalation rate-limit.**  An author flooded with pings cannot arbitrate, so
+batch-escalate when possible: one comment listing every disagreement found in a
 review pass, with a short table.
 
 ### 7.  Periodic sibling-PR triage
@@ -296,7 +298,8 @@ For each new skill file:
    new `## New skills detected on main` subsection so future
    sessions don't re-prompt.
 
-This mirrors `watch.md §3.Q3a`.
+This mirrors `watch.md §3.Q3a`, so every coordinator session picks up new
+infrastructure as it lands, without the user announcing it to each PR.
 
 #### 8c.  Pre-push stale-state check (MANDATORY)
 
@@ -340,8 +343,9 @@ Additionally, list PRs with the *list change proposals* [forge-operation Tool](.
 `state:open updated since <session_start>` and check for sibling PRs
 that opened mid-session. Each new sibling enters scope per §3.
 
-When pushing many small commits in a row, run this check every ~5 commits
-or every 30 minutes of foreground work.
+A stale base turns a clean fast-forward push into a multi-conflict rebase, so
+when pushing many small commits in a row, run this check every ~5 commits or
+every 30 minutes of foreground work.
 
 #### 8d.  Long-task drift recovery
 
@@ -407,7 +411,8 @@ posting; final state can be merged to main when the goal completes.
 **Cherry-picking is fine — treat it as a low-friction default.**
 When an in-flight sibling has infrastructure (a script, a witness,
 a template, a content block) that you'd otherwise
-duplicate, just cherry-pick it. The rules:
+duplicate, just cherry-pick it: small structured commits exist so that anyone
+can pick them up. The rules:
 
 1. **Cite the source in your commit message.** Either
    `Cherry-pick of #<N>:<sha>` on the trailer line or a

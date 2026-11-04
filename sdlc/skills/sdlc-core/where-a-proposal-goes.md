@@ -47,7 +47,8 @@ options the platform chose for its work-plan store.
 
 **Not everything in a proposal is churn.** The **argument** is churn and
 belongs on the issue; the **rule that came out of it** is durable and belongs
-in the skill it governs, in a paragraph.
+in the skill it governs, in a paragraph. Treating all of a proposal as churn
+gets this rule ignored the first time it is inconvenient.
 
 So the move is not "delete the thinking". It is: put the conclusion where it
 is enforced, put the argument where it is discussed, and keep the long form in

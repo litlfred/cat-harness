@@ -27,7 +27,8 @@ round-trip QA.
 > this yet; it has to be measured by hand.
 
 **A skill showing as covered is not evidence that its code is reachable.** Do not
-use the first question to answer the second.
+use the first question to answer the second: the cause of an invisible
+mechanism is structural, because nobody asks the second question.
 
 ## What to do when you meet one
 
@@ -50,14 +51,16 @@ absent: **it looks like a complete provenance record.**
 **A `maintains` claim asserts the artefact is published.** Verify that by reading
 the build, not by assuming: `cat-harness/ns.jsonld` is a real claim because
 `.github/workflows/docs-site.yml` writes it. Remove a claim in the same change
-that retires its artefact. An artefact nobody publishes is exactly the 404 the
+that retires its artefact: a claim outliving its artefact is the same 404 from
+the other side. An artefact nobody publishes is exactly the 404 the
 drift check exists to prevent.
 
 ### And the drift check only covers its own producer
 
 `kg:schema:check` reconciles `maintains` both ways, but its `unproduced`
 direction runs **only over artefacts whose declaring Tool invokes
-`bun run cat kg:schema`**. So **a `maintains` claim on any other producer's
+`bun run cat kg:schema`**, because a maintained artefact is not necessarily
+produced by the schema exporter. So **a `maintains` claim on any other producer's
 artefact is unchecked**: it can rot to a 404 and nothing notices. The fix — not
 yet built — is to assert every declared artefact is present after `_site/` is
 assembled, with could-not-determine kept distinct from present.
@@ -112,15 +115,20 @@ the skill that now states that one.)
 
 Authoring the skill is a **design act** — a claim about the platform's capability
 vocabulary, inherited by every dependent instance — so it goes to the owner rather
-than being decided in passing. Write the skill before the nodes.
+than being decided in passing. Write the skill before the nodes. Once the gap
+is closed, remove any note announcing it: an agent that believes a stale gap
+either avoids the capability or rebuilds it.
 
 ## The fourth case: a mechanism with no command, reachable in-process only
 
 Cases 1–3 are about a missing *node* or a missing *skill*. This one has both, and
 is still unaskable: **the mechanism has no command, so no CI job and no person can
-run it.** For example, `checkFolioProfile` in `pipeline/profile-check.ts`, whose
-only caller is the MCP tool registration, is reachable by an MCP-connected agent
-and by nothing else: not a gate, not a sweep, not a person at a shell. Every
+run it.** For example, `checkFolioProfile` in `pipeline/profile-check.ts` catches
+what schema validation structurally cannot — a block valid against its own
+schema but wrong for the folio's content profile, because adapters partition
+disjointly while profiles nest. Its only caller is the MCP tool registration,
+so it is reachable by an MCP-connected agent and by nothing else: not a gate,
+not a sweep, not a person at a shell. Every
 instrument that asks "can this be reached" answers yes.
 
 > **Ask which callers, not whether.** "Reachable from MCP" and "reachable from CI"
@@ -168,7 +176,8 @@ same work gets started.
 candidate, check whether it exists (an activity may already carry the skill, so
 `workflow_next` already hands it to an agent), whether it is possible (a sweep
 cannot run a check whose verdict originates outside it), and only then what is
-missing.
+missing. Presented as a choice, the options waste proposals; enumerated as
+dispatch points, they are a short audit with one action.
 
 **Read the mechanism's entry point before proposing dispatch points.** A name
 and a position in a diagram say what something is for; an argument list says

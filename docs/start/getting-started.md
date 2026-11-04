@@ -32,7 +32,8 @@ The agent's first job is to find out which one you meant.
 | **Something you would rather describe in your own words** | — | — |
 
 The fourth row is the commonest: asking for a folio when you meant a chapter in
-one.
+one. An agent that scaffolds on it produces an empty repository, not the
+chapter you asked for.
 
 ## 2. How the agent decides — and why it is a table, not a judgement
 
@@ -63,7 +64,8 @@ rather than asking:
 | `statedIntent` | what you actually **said** — one of the five, or `unstated` |
 
 `statedIntent` is a fact about the *conversation*. It stays `unstated` until you
-have said which; it is never inferred from tone or convenience.
+have said which; it is never inferred from tone or convenience, because that
+inference is the failure the table exists to prevent.
 
 > `isFolio` is about the directory, not about you. Somebody who has used
 > folio-assistant for years is still in an `isFolio=false` directory when they
@@ -91,11 +93,13 @@ project in it is consistent with two, so the table returns `ask`.
 > **`ask` is an outcome of the table, not a decision the agent reaches.**
 
 An agent cannot route to a branch the table did not return, so the question is
-obligatory.
+obligatory: an agent left to decide *whether* to ask will, under pressure to
+seem helpful, decide not to.
 
 When you answer, your answer becomes `statedIntent` and the same table is
 evaluated again, which is why the diagram loops back to *Read the repository
-facts* rather than jumping straight to a branch.
+facts* rather than jumping straight to a branch: your answer is evidence, read
+like any other fact.
 
 ### Changing it
 
@@ -180,7 +184,9 @@ bun run cat scan:repo -- --json  # the same, as facts
 It sorts what it finds into **three** buckets — `library` (source material
 somebody else wrote), `content` (prose authored here), and `unclassified`.
 
-`unclassified` lists what it could not place, for you to decide.
+`unclassified` lists what it could not place, for you to decide, because a
+classifier forced into two buckets has an accuracy nobody can assess and
+delivers its mistakes as moved files.
 
 Then three questions, all answerable by picking, all asked **per directory**
 rather than per file:
@@ -218,7 +224,8 @@ one of three things:
 | **could not check** | no address could be derived, nothing was probed, or the request failed |
 
 The third is not a softer version of the second: the agent will not tell you
-"it should be up shortly" on the strength of it.
+"it should be up shortly" on the strength of it, because a measured 404 is
+evidence and a failed request is the absence of evidence.
 
 The same three states are a decision table —
 [`decisions/pages-live-gate.dmn`](https://github.com/litlfred/folio-assistant/blob/main/processes/decisions/pages-live-gate.dmn) —
@@ -246,7 +253,8 @@ into the template. Change the file; the page follows.
 ```
 
 `description` is **markdown**, rendered as-is. It is the node the landing page
-draws; there is no separate page to keep in step with it.
+draws; there is no separate page to keep in step with it, because a
+description that appears in two places will disagree with itself.
 
 ### Your own backdrop
 
@@ -265,7 +273,9 @@ viewport it is cut for:
 ```
 
 `textRegion` is where the words may safely go, as fractions of the image. **It
-is authored, not computed**: render candidate boxes and look at them.
+is authored, not computed**, because it states where the picture is quiet, a
+judgement about composition that no pixel analysis substitutes for. Render
+candidate boxes and look at them.
 
 Declare one variant per viewport. Each carries its **own** region, because the
 same composition sits differently in a portrait crop.
@@ -285,7 +295,9 @@ bun run cat docs:harness -- --check   # ...and fail if stale (for CI)
 | a backdrop with **no** region | shows the picture, puts the words **below** it |
 | **no** backdrop | shows the words alone |
 
-An undeclared region means "do not overlay", never "anywhere is fine".
+An undeclared region means "do not overlay", never "anywhere is fine", because
+text positioned by guesswork lands on the subject. A folio with no art is
+ordinary, not broken.
 
 If you declare a `mobile` variant, a phone gets that file; otherwise it gets the
 widest one you have. That fallback is reported, because the wide crop's region
@@ -306,7 +318,8 @@ bun run cat beans:claim <id>      # claim an item
 ```
 
 > **Check before you create.** `beans create` mints a fresh id on every call and
-> dedupes on nothing, so check for an existing item first. The check is in the
+> dedupes on nothing, so check for an existing item first: re-entering a scripted
+> step without the check floods the store with duplicates. The check is in the
 > [`todo-manager`]({{ '/reference/skill-instructions/todo-manager.html' | relative_url }}) skill.
 
 The `SessionStart` hook surfaces the plan at the start of every session, and the

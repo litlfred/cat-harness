@@ -29,7 +29,8 @@ the others is incomplete rather than minimal:
 
 **Every time an instance names a directory as a subgraph, it needs a
 visualiser and a documentation entry**, and it is a finding if there is no
-skill and no tool for it.
+skill and no tool for it. The declaration is cheap to write; the other two
+are what make it real.
 
 ## The four directories every instance has
 
@@ -97,17 +98,21 @@ It trades the visualiser for a criterion it cannot fail quietly.
 
 `bootstrap/bootstrap.json` carries a `renderExemption` — `of`, `reason` and
 `owes` — and the render check reads it through `isExemptFrom` rather than
-testing an instance name, so a vendored or renamed bootstrap keeps its
-exemption.
+testing an instance name: a name literal states a rule true only for the
+instance somebody remembered, and a vendored or renamed bootstrap would
+silently reacquire the obligation it was excused from.
 
 **`owes` is required by the schema**: an exemption with no substitute is a
-hole. bootstrap's names the two skills that govern its emission, and
+hole, and a list of holes is a silence list. bootstrap's names the two skills that govern its emission, and
 a test asserts the files it names exist.
 
-**The guard against spreading is global.** `renderExemptionProblems` takes
-every instance in the repository, because only the bottom layer may claim the
-exemption. A second claimant fails `check:instance-render`. At most one, not
-exactly one: a repository that vendors no bootstrap has nothing to exempt.
+**The guard against spreading is global.** The declaration is local because
+only the instance knows why; `renderExemptionProblems` takes every instance in
+the repository, because "only the bottom layer may claim this" is a fact about
+the stack that a per-instance check cannot see. A second claimant fails
+`check:instance-render`. At most one, not exactly one: a repository that
+vendors no bootstrap has nothing to exempt, and failing it would make it
+declare something just to stay green.
 
 What it owes lives in **`bootstrap/skills/`**, bootstrap's declared skills
 subgraph, as
@@ -115,7 +120,8 @@ subgraph, as
 and
 [`bootstrap-graph-publication`](https://github.com/litlfred/folio-assistant/blob/main/bootstrap/skills/bootstrap-graph-publication.md)
 — performed by bootstrap-tools' `export-graph.ts` and typed by its
-`GraphExportSchema`.
+`GraphExportSchema`. The discipline is a declared skills subgraph rather than
+code comments, so it is read rather than rediscovered.
 
 **`cat-harness` is where the rest begins to apply**, because cat-harness
 supplies the layers above with `folio/`, and a layer that hands its dependents
@@ -126,7 +132,9 @@ bare minimum, cat-harness elaborates.
 
 ## Open, and named rather than guessed
 
-Three questions are open. The first two are expensive to get wrong:
+Three questions are open, and are not written as if decided, because a
+guessed answer in a published document is how a wrong one becomes canon. The
+first two are expensive to get wrong:
 
 1. **Where does the background live?** A theme's `backdrop` is a
    *sticky-scoped* concept today. Making it the page ground is a different CSS

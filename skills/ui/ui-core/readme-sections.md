@@ -73,7 +73,7 @@ table saying who can follow its links.
 
 **Prose about a folio belongs to that folio.** A platform generator that
 writes a whole README carries one folio's title, badges and structure into
-every other folio. Do not hardcode in a section renderer: a namespace prefix
+every other folio, and the author there loses their README. Do not hardcode in a section renderer: a namespace prefix
 (read it from the build file, and leave it **unprefixed** when none names one —
 a wrong namespace is what a reader pastes into an import); a map of one folio's
 filenames consulted before the artefact's own declared name; or a fixed
@@ -98,7 +98,8 @@ the repository root. **A dead link in a generated table is worse than a
 missing row — the row asserts the entry exists.**
 
 **A gap is rendered AS a gap**: an em dash plus a counted note under the table,
-naming the check that lists them. Never a blank cell, never a guessed path.
+naming the check that lists them. Never a blank cell, never a guessed path: a
+table that quietly omitted the gaps would read as though the work were done.
 
 ### Which README, and the `--dir` flag
 
@@ -160,7 +161,8 @@ and a README with nothing to outline is better without the marker. A renderer ca
 is **undetermined** and leaves the region alone.
 
 **Gated by `readme:sync:all:check`**, over every declared instance; the
-single-README checks above name one file each.
+single-README checks above name one file each, and a generated region nothing
+checks is a hand-kept list, wrong the first time somebody adds a heading.
 
 ## `kg:processes` and `kg:files` — an instance's diagrams and files, from its declaration
 
@@ -188,7 +190,8 @@ instance's README, and the floor instance must not name the layer above it
 — its leak test fails on the word. `kg` is vocabulary every instance has.
 
 **A blank "used by" is a finding, not decoration** — for example a file a
-diagram names that has no front matter, and so is not a Skill.
+diagram names that has no front matter, and so is not a Skill. A hand-kept
+table would hide that.
 
 ## `subgraph-readmes` — one README per declared directory
 

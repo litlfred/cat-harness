@@ -23,7 +23,8 @@ is FOR, so a reader can tell a deliberate refusal from a gap.
 
 Most `main`-into-branch merges that conflict do so only on generated files,
 and every one of those resolves the same way — take the base's copy,
-regenerate.
+regenerate — so resolving them by hand costs an agent a round and the PR
+another CI run for nothing.
 
 ## The three rules that make it safe
 
@@ -158,7 +159,8 @@ content *is* tree-determined, the pattern *does* resolve it, and the path
 still conflicts on every merge. The LSI indexes are the example: a one-sentence
 edit to one skill rewrites most of `skills.lsi.json` (an SVD rotation is
 globally sensitive), so the file conflicts on nearly every merge, and the
-pattern only makes each conflict cheap.
+pattern only makes each conflict cheap — and no check on `main` judges those
+bytes.
 
 So the question to ask is not *which strategy*, it is:
 
@@ -666,7 +668,9 @@ is the [`agent-handoff`](agent-handoff.md) skill.
 
 A refusal has one of three causes: a conflict on a path refused by
 declaration (two PRs editing one bean, say), an authored or undeclared path,
-or a gate the combination fails that each member passed alone.
+or a gate the combination fails that each member passed alone. Each refusal
+becomes a bean, because a PR comment or a chat message leaves nothing in the
+work plan to say it happened.
 
 ### 1. Open one bean per refused PR, and check before you create
 

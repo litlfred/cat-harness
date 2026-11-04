@@ -34,7 +34,8 @@ survives exactly until the next generator run.
 
 **2 — Gate staleness, do not trust it.** The generator takes a `--check` arm that
 compares against the committed copy and fails rather than writing. Put that
-`--check` in CI.
+`--check` in CI: without it the output drifts, and the drift is invisible
+because the file looks authored.
 
 **3 — A published generated asset needs a Tool that `maintains` it.** Otherwise
 the provenance is unreachable: nothing can answer "which node produced this
@@ -84,4 +85,5 @@ a failure.
   `link-style-raw-is-not-the-private-repo-answer`).
 
 This skill is only about the direction of authority: **the graph decides, the
-stylesheet reports.**
+stylesheet reports.** It names no script, because a skill written to give a
+command somewhere to point passes every check and teaches nothing.

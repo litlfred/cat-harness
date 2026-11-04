@@ -24,7 +24,9 @@ instance. Three rules follow.
 
 `version` is **universal**. Not only the publishable ones.
 
-**It is enforced by `check:publishable`, not by the schema**: a new instance
+**It is enforced by `check:publishable`, not by the schema**: requiring it in
+the type would break every test fixture that builds a declaration without it,
+and a sweep that size hides real regressions in the noise. A new instance
 without a version fails the gate **by name**, rather than as a parse error in
 a test fixture.
 
@@ -53,8 +55,9 @@ testable rather than merely intended.
 ## 3. `published` is REFUSED by the schema, not merely reported
 
 Because the process does not exist, a flag nothing can verify is refused
-rather than reported: a declaration setting `publication: "published"`
-**fails to parse**, with the error naming what is missing.
+rather than reported — a gate that only grumbles is a gate somebody switches
+off: a declaration setting `publication: "published"` **fails to parse**, with
+the error naming what is missing.
 
 > **Falsifier for this whole skill:** if `published` becomes settable by hand
 > before any tool backs it, this is wrong and should be read again.
@@ -75,7 +78,8 @@ rule underneath it is mechanical: **reverse the host, append the path.**
 | `smart.who.int/base` | `smart.who.int.base` |
 
 The second row is FHIR's actual published package id for that IG, produced by
-the same rule.
+the same rule: a convention that already yields the right answer for a case
+we can check is worth more than a scheme chosen for elegance.
 
 An id is **stable forever and never reused**.
 
@@ -132,7 +136,8 @@ all take the one form:
 
 **The exact release comes from the pin, not the address.** A reader is handed
 a commit by `index.lock.json` and the `needs` pins, which already name it
-exactly. Within one major a minor or patch adds and never breaks — the promise a
+exactly; an address that also named the patch would make every patch release
+rewrite every literal copy of the instance's addresses. Within one major a minor or patch adds and never breaks — the promise a
 `$schema` tag already makes, where a reader accepts any tag of the same major
 (`tagCompatible`, below) — so **only a breaking change, a new major, changes an
 address.**

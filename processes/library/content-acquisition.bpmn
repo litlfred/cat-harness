@@ -54,7 +54,7 @@
       </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="A_PointToUpload" name="Point at the upload target">
-      <bpmn:documentation>Composed from the declaration by the `upload-url` Tool, never written by hand: the queue is declared with INSTANCE scope, and a forge URL needs the path relative to the REPOSITORY. Every failure is named — no origin remote, a non-GitHub forge, a declared-but-absent queue. On failure, fall back to the conversation.</bpmn:documentation>
+      <bpmn:documentation>Composed from the declaration by the `upload-url` Tool, never written by hand: the queue is declared with INSTANCE scope, and a forge URL needs the path relative to the REPOSITORY. Every failure is named — no origin remote, a non-GitHub forge, a declared-but-absent queue — because a URL is believed, and somebody sent to a wrong one cannot tell it from an empty directory. On failure, fall back to the conversation.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="content-acquisition"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="P_Upload" name="Drop the file&#10;in the queue">

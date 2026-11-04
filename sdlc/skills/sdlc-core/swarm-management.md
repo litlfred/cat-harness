@@ -132,6 +132,8 @@ fan-out**.
 
 ### 1. Adaptive reasoning routing: difficulty-matched depth
 
+Uniform model tiers waste tokens on trivial slices and starve ambiguous ones.
+
 | task regime | swarm strategy |
 |---|---|
 | **Consultation / extraction** — direct lookups, syntax transforms, single-file edits; one agent's domain | a single worker on a small tier. Do not swarm. |

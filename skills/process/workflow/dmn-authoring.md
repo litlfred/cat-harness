@@ -42,7 +42,7 @@ literals, comparisons, and one-of. It **refuses** ranges, `not()` and function
 calls rather than mis-evaluating them.
 
 Write within that subset: a table using a construct the interpreter rejects
-fails at load.
+fails at load, rather than being mis-evaluated at the moment of decision.
 
 ## Three states belong in the table
 
@@ -50,7 +50,7 @@ Encode "could not determine" as an outcome in its own right — `pages-live-gate
 `unknown`; `folio-intent.dmn` returns `ask` when the filesystem cannot decide.
 
 A gate whose only outcomes are pass and fail forces an unmeasured input to be
-rendered as one of them. If your decision has an input that may be unavailable, give it a branch.
+rendered as one of them, and it is always rendered as pass. If your decision has an input that may be unavailable, give it a branch.
 
 ## Hit policy
 

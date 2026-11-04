@@ -110,7 +110,8 @@ expensive to keep.
 
 **Not in `description`.** It is projected verbatim as the MCP tool
 description and into the exported graph, and answers "what does this do";
-comparative prose about cost does not belong there.
+comparative prose about cost does not belong there, because it would degrade
+the surface an agent reads when choosing among tools.
 
 ### Sharing a skill does NOT make two Tools alternatives
 
@@ -119,7 +120,9 @@ Most skills with several Tools have complementary ones: `workflow-list`,
 not five ways to perform it. Only Tools that also share an I/O signature are
 alternatives, and `scripts/check-tools.ts` checks that the relation is
 **mutual**, because a one-sided one means an agent arriving at the silent end
-never learns a choice exists.
+never learns a choice exists. Keying substitutability on a shared skill alone
+would demand comparative prose where there is nothing to compare, and an author
+obliged to write it writes noise.
 
 ### The worked pair: stdlib vs extensions
 
@@ -284,7 +287,8 @@ the nodes, and `bun run cat check:tools` fails when a `satisfies` names a skill
 that does not exist.
 
 `ToolInput.repeated` marks a list input (rather than a list type per scalar
-type, which would multiply the shared `$defs`). `invoke.inProcess` names a
+type, which would multiply the shared `$defs` and break the identity property
+the shared vocabulary exists for). `invoke.inProcess` names a
 TypeScript function for a Tool with no shell equivalent; it is runnable by the
 harness directly, and is the projection *source* rather than something to
 proxy, so the refusal of an mcp-only Tool does not reach it.
@@ -342,7 +346,8 @@ the diagrams already say which. Triaged on that, plus an I/O contract under
 (userTask-only), **C** (ambiguous) and **D** (nothing), and only C needs a human
 read.
 
-**Run it for the numbers; do not quote them from prose.**
+**Run it for the numbers; do not quote them from prose**: a count in prose is a
+claim that nothing re-checks, and it drifts unnoticed.
 
 Many skills are both: two activities name `interaction-modality`, a
 `serviceTask` that reads the preferences file — a mechanism — and a `userTask`

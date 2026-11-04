@@ -62,7 +62,8 @@ precisely so a monochrome reader still sees it.
   green.
 
 So a person looks at the assets laid out in their design (`R_Judge`). That is a
-step in the diagram, not an optional extra.
+step in the diagram, not an optional extra, because no automated check catches
+either case above.
 
 ## Branding is a question about the INSTANCE, not about taste
 

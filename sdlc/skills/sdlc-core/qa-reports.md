@@ -102,14 +102,15 @@ from its own store. A pin the layer has not published is a `miss` naming the
 commit. cat-harness, and the instances it hosts (`kgQaHomeFor` "hosted"), are
 still written by the index's `qa-publish`.
 
-Setting a layer up includes the caller ([`initialization`](../../../docs/bootstrap/initialization.md)
+A layer that stops committing `test/results/` without a publisher keeps its
+verdicts nowhere, so setting a layer up includes the caller ([`initialization`](../../../docs/bootstrap/initialization.md)
 step 5, [`sub-kg-lifecycle`](../../../skills/kg/graph-management/sub-kg-lifecycle.md)
 stage 10 "its QA record"), and `init-folio --instance` writes it.
 
 ## Gates compute and judge
 
 A gate over the `qa` graph does not compare a fresh run against a committed
-file. Its `--check` form **computes and judges, and writes nothing**:
+file, because the committed file is not the record. Its `--check` form **computes and judges, and writes nothing**:
 
 - **A finding fails only if it is NEW against a baseline.** The baseline is
   the committed working copy for now, and `--against <ref>` reads it from

@@ -42,7 +42,8 @@ auditing whether a Role's Skills actually cover its lanes.
 #### Workflows
 
 Business process as BPMN, with DMN for the decisions. **Prefer *Workflow* over
-*process*** throughout.
+*process*** throughout, because using both interchangeably costs more than the
+synonym buys.
 
 The diagrams are executable rather than illustrative. A lane binds a Role, an
 activity names the Skill to run, and a gateway MAY compute its branch from a

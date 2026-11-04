@@ -17,7 +17,8 @@ things.** A trash you can recover from, a review preview somebody has not looked
 at yet, a console log you read back after a failure. The accumulation is the
 feature, which is why none of them can be solved by simply not writing.
 
-Three containers share the rule:
+Three containers share the rule, which is why it is general rather than three
+copies of one rule:
 
 | container | what it holds | "flush" means |
 |---|---|---|
@@ -142,5 +143,6 @@ Declare, do not infer:
 
 The **viewer** — a counter, an over-full badge and a select dialog — is separate
 work: it is UI, and a select dialog must meet the accessibility rules. The
-**staging** mechanism is a preflight plus a dispatchable cleanup path. This
+**staging** mechanism is a preflight plus a dispatchable cleanup path, because
+a label-based remedy cannot reach the previews the check finds. This
 skill is the concept those two implement, not a third implementation of it.

@@ -141,7 +141,8 @@ owner types with difficulty.
 
 ## Where each section lives
 
-The parts that apply to one phase are in files beside this one. Section
+The parts that apply to one phase are in files beside this one, so an agent
+reading this file before acting reads all of it. Section
 numbers are shared across them, because children cite the parent by number
 (`parent §4b`, `parent §5m`).
 

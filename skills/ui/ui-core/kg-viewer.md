@@ -23,7 +23,8 @@ have to either:
 - **Hardcode one instance's stub**, so a platform script works in exactly one
   repository; or
 - **Compose the name at runtime** from the URL or a convention, which breaks
-  the "resolve, do not compose" rule.
+  the "resolve, do not compose" rule: a consumer should never have to
+  manipulate a string to find a document.
 
 So the exporter, which already knows the stub, writes it into the page. The
 page resolves nothing.
@@ -32,15 +33,17 @@ page resolves nothing.
 `<site>/<stub>/index.html` and reads `../<name>/<stub>.jsonld` (the document's
 own path, under its instance's directory, the host's included), so the same
 bytes work on the canonical site and under `STAGING/<slug>/` with no
-configuration, no `--base-url`, and no build-time branch. Which documents the site publishes, and where:
+configuration, no `--base-url`, and no build-time branch. A staging build that
+needed a different page would test something other than what ships. Which
+documents the site publishes, and where:
 [`instance-publication`](../../kg/kg-core/instance-publication.md) §"What each
 instance publishes".
 
 ## No dependencies, and that is a requirement rather than a preference
 
 No CDN, no framework, no build step — one HTML file. A page that needs a
-third-party fetch to render cannot be reviewed offline or from a restricted
-network, and adds a third party to the trust boundary of a page that displays
+third-party fetch to render cannot be opened from a file or reviewed offline
+or from a restricted network, and adds a third party to the trust boundary of a page that displays
 this repository's own data.
 
 "No CDN" means no THIRD party's. A script or stylesheet this site publishes
@@ -135,8 +138,9 @@ though it were all part of the graph. Two things the export reports and the view
   is *dropped* when the document is processed as the JSON-LD it claims to be,
   and `kg-export` exits non-zero rather than publishing a new one. Mark them in
   the detail panel; do not silently show them as ordinary properties. **Keep
-  the marking even while the list is empty** — a viewer for this instance is a
-  viewer for any instance, including one whose export is older or whose
+  the marking even while the list is empty** — it is the guard that makes the
+  next one visible, and a viewer for this instance is a viewer for any
+  instance, including one whose export is older or whose
   context is thinner.
 - **`danglingLinks`** and **`problems`** — a link with no target node, and a
   source that could not be read.
@@ -189,7 +193,9 @@ arrive in the graph document in whatever language the corpus is written in; no
 catalogue in the viewer can reach them.
 
 Draw that boundary **on the page**, in the language the reader chose, so the
-reader can tell a missing translation from a corpus that is simply English.
+reader can tell a missing translation from a corpus that is simply English;
+silent about it, the reader reads the gap as a defect or as a claim. Three
+states, never two, as for an unreadable document.
 
 ## A language switcher is a UI control
 
@@ -219,8 +225,9 @@ translation the reader would not get.
 
 ## Verifying it
 
-**A rendered artefact is not verified by reading its source.** "The HTML looks
-right" is not evidence
+**A rendered artefact is not verified by reading its source**: nobody can
+assess a rendering from a description of it, including the agent that wrote
+it. "The HTML looks right" is not evidence
 that the document loads, that an edge is clickable, or that a failed fetch says
 so.
 
@@ -231,4 +238,5 @@ generates them if absent, so the suite runs from a clean checkout.
 
 **Look at it, too.** Take a screenshot: layout problems such as a long nested
 property (a Tool's `io`) pushing the rest of a node off screen are caught only
-by looking. Nested objects are collapsed behind a disclosure for that reason.
+by looking, because no test reports that a property makes a node unreadable.
+Nested objects are collapsed behind a disclosure for that reason.

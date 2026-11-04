@@ -61,7 +61,8 @@ everybody else. Three traps:
   Describe what each one *does* instead, and put the coined name in parentheses
   if it earns its place at all.
 - **A question that resolves to "go read the issue".** The issue is where the
-  BA goes for depth. It is never where the question's terms are defined.
+  BA goes for depth. It is never where the question's terms are defined, and a
+  question that needs it read turns a quick decision into a long one.
 - **Options without their costs.** "A or B" is not a choice; "A, which changes
   nothing here, or B, which rewrites every `bootstrap.processes:skill` ref in the diagrams"
   is. The BA is deciding on the consequences, so the consequences are the
@@ -158,7 +159,10 @@ Ask it in this form, because the failure is always phrased as a saving:
 > *"We don't need to emit X — it can be derived from Y."*
 
 That sentence is the smell. **A rule a consumer has to know is a rule a
-consumer can get wrong**; emit the derivable field. For example, a preview
+consumer can get wrong**, and the cost is paid by someone who cannot see the
+code that made the assumption reasonable. Emitting the derivable field costs
+bytes in a regenerated artefact; the derivation rule costs correctness in every
+consumer. So emit the derivable field. For example, a preview
 knowledge graph's nodes each carry an explicit `prov:alternateOf` link to
 their canonical counterpart, rather than relying on a documented base-URL
 substitution: a consumer should follow a link, not implement a substitution.
@@ -211,7 +215,8 @@ what it changes **downstream** and how reversible it is, laid out where the rows
 can be read against each other, then one recommendation and a stated default.
 
 Items 1–6 above enumerate the downstream question for the change as a whole;
-the comparison asks it once per option.
+the comparison asks it once per option, so an empty downstream column discards
+work already done.
 ## Phase 4b — Prioritization and dependency ordering
 
 **Input:** impact analysis complete, possibly multiple capability areas identified
@@ -219,7 +224,8 @@ the comparison asks it once per option.
 When a feature request decomposes into **more than one capability area** (as
 most non-trivial requests do), the agent must explicitly order them before
 creating beans. This is not optional: a flat bean list has no implementation
-sequence.
+sequence, so the next session either guesses the order or asks the BA a
+question the analysis already answered.
 
 ### The prioritization protocol
 
@@ -303,7 +309,8 @@ content (prose), which must precede its presentation (PDF layout).
 The agreed set is a design-memory asset, so it goes into `docs/`; when it
 relates to a harness, feature or tool, its detailed design and planning go
 into that harness's `docs/`. Without this step requirements end as an issue
-and a conversation.
+and a conversation: requirements are produced while building, and they are not
+the thing built.
 
 Three rules, and the first is the one a run skips:
 
@@ -344,7 +351,7 @@ requirements document is a `RequirementSet` whose `stage` (`draft` …
 `accepted`, or `rejected`, `cancelled`, `superseded`) is recorded in the set
 and moved only by a recorded sign-off. The directory follows the stage — a set
 reaching `accepted` is when its proposal is filed — but does not stand in for
-it.
+it, because a file's location records neither the decision nor who made it.
 
 Both kinds, `proposals` and `requirements`, declare `within: "docs"`. Every
 list of kinds (the navbar's Folders among them) therefore draws them inside
@@ -457,7 +464,9 @@ For each bean:
 ingestion of graphical assets for a website or app design, from
 `ingest-theme.bpmn`. `GW_StakeholderOK`'s `accepted` branch in
 `crdm-deliver.bpmn` closes the phase directly. Accessibility, branding and
-locales for a UI are checked there, not here.
+locales for a UI are checked there, not here, because at ingestion a finding is
+a decision about what the assets will be rather than a defect in something
+that shipped.
 
 When a round of implementation is complete (one or more beans resolved):
 1. **Post a round summary comment on the issue** — addressed to the BA and

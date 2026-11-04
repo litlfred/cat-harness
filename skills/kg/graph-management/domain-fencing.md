@@ -39,7 +39,8 @@ pass one while failing the other. Do not conflate them.
 
 `detangler-archimedean-wall` and the four `wall` criteria (`wall-side-correct`,
 `wall-base-ring-minimal`, `wall-side-statement`, `wall-side-proof`) are fenced
-behind `qaAxes: ["archimedean-wall"]`.
+behind `qaAxes: ["archimedean-wall"]`, because they read a `.lean` file and
+name one folio's chapters — one folio's mathematics, not a platform concern.
 
 **`profiles: ["paper"]` is not a fence.** A profile says what KIND of folio can
 answer the question. It does not say WHOSE question it is. Every paper folio has

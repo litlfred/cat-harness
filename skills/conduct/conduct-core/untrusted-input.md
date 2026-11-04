@@ -44,7 +44,8 @@ value as *data* and never parses it as program.
 
 ### What counts as attacker-controlled
 
-Not everything in `github.*`; most interpolations are fine.
+Not everything in `github.*`; most interpolations are fine, and a blanket rule
+would be ignored.
 
 - **Attacker-controlled:** `head.ref` (a fork's branch name), PR/issue **title**
   and **body**, comment bodies, label names, and **anything derived from them** —
@@ -103,7 +104,9 @@ qualify.
 No pattern admits real markdown and excludes a payload. Rather than pretend,
 `Markdown` is **not admissible as an argument** — a Tool that needs free text
 declares `arg: { stdin: true }` and receives it on stdin, where it is data
-rather than a command-line word.
+rather than a command-line word. A type that claimed to be safe and was not
+would be worse than one that says it isn't, because the claim is what makes the
+next person skip the check.
 
 ## A workflow GitHub cannot parse does not fail loudly
 

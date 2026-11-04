@@ -139,7 +139,8 @@ identical."*
 
 **Adding a per-build field back to the staging stamp will not fail a test.**
 `staging-banner-constant.test.ts` compares the banner **fragment**, which is
-genuinely constant; the footer is not in it. Check the deploy commits on
+genuinely constant; the footer is not in it, because it lives in a Jekyll
+include rather than in the workflow's injection step. Check the deploy commits on
 `gh-pages`, not the code, to confirm pages do not differ across rebuilds.
 
 A Jekyll layout can read `site.data.build.sha` to display the deployed
@@ -166,7 +167,8 @@ are in [`staging-review`](staging-review.md) §"Staging retention".
 ### 6. The cap — 3 GB of previews in total, the oldest rotated off
 
 Previews are capped **by size, at 3 GB in total**, and the oldest are rotated
-off. Per-PR cleanup bounds nothing in total, every preview is a full copy of
+off. The cap is by size rather than count because one preview can run to
+hundreds of megabytes. Per-PR cleanup bounds nothing in total, every preview is a full copy of
 the site, and a `gh-pages` branch past GitHub's 10 GB Pages limit freezes the
 live site.
 
@@ -209,7 +211,8 @@ A rendered directory is **in the cone** when a changed file is
 
 - **Any doubt carries.** No file list, a writer that does not exist, or an
   import that does not resolve carries the directory, with the reason in the
-  build log.
+  build log. A preview missing the pages under review misleads a reviewer,
+  while an oversized one only costs bytes.
 - **A computed `import()` is bounded, not ignored.** It can load only a
   module, so it carries on a changed module file and never on a page. The two
   such sites a generator reaches today (`harness-config.ts`'s `contributes`
@@ -277,7 +280,11 @@ Three things to know when editing it:
   the tip, and why it does not wait for `docs-site` runs that have not pushed
   yet.
 
-The cost is latency under load: with K previews waiting, the last one pushes
+A rate limit is used rather than a batching flush job because the gate is one
+script and one loop whose correctness rests on git, while a flush job needs a
+second workflow, an artifact round trip per preview, a record of what is
+deployed, a best-effort schedule and a write token over content built from a
+pull request. The cost is latency under load: with K previews waiting, the last one pushes
 about 5 × K minutes later, and the PR comment gives its own estimate.
 
 The `cleanup` and `cleanup-dispatch` jobs do NOT pass through the gate. They
@@ -297,7 +304,8 @@ An **index** is computed over the whole corpus: the search index, the LSI
 viewer, the SQLite slices, the handler index, the glossary pages, the
 translation status pages and the node-kind pages. A `builtAtPublish` entry
 says so with `index: true`; a writer is borrowed only when every entry it
-writes says so. In a preview `derive:publish` puts back main's copy from main's
+writes says so. Rebuilding an index in a preview shows the reviewer almost
+nothing and costs minutes, so in a preview `derive:publish` puts back main's copy from main's
 writer-cone recording and logs `borrowed <writer>`; the search index is served
 from main the same way (§"Serve the published search index" in the preview
 workflow). So a preview of a glossary, translation or node-kind change shows
@@ -443,8 +451,9 @@ match it. It is not a fallback for an agent to take.
 | an IG's main site at the Pages root | `stage-local.ts` from the default branch | the IG publisher's `ghbuild.yml`, "Deploy main" |
 | QA sweep, screenshots, review comments, PR comments | not run (the plan says so) | jobs in the workflows above |
 
-**Never dispatch the workflow, to cover a gap or for any other reason.** When
-the agent path cannot do a step, say which step it is and ask.
+**Never dispatch the workflow, to cover a gap or for any other reason**: a
+dispatched run contradicts the repository's agent-run setting. When the agent
+path cannot do a step, say which step it is and ask.
 
 **Skills that drive GitHub Actions are not to be implemented.** Document what the workflows do, here and in the workflow
 files, so that an agent-run step can be checked against them —

@@ -11,7 +11,8 @@ description: >-
 
 > Skill id: `graph-rendering` · Package: `graph-management`
 
-This skill is the general part. It says what any drawing of a graph owes its
+One set of rules applies to every drawn graph, so that each drawing does not
+follow conventions of its own. This skill is the general part. It says what any drawing of a graph owes its
 reader. The per-graph skills say how one generator meets it:
 [`uml-overview`](../kg-core/uml-overview.md) for schemas,
 [`bpmn-authoring`](../../process/workflow/bpmn-authoring.md) for processes, and
@@ -22,6 +23,8 @@ is how the graph is RESTRUCTURED, and it needs the drawing: a partition you
 cannot see is a partition you argue about from numbers alone.
 
 ## The ten rules
+
+The failure each rule prevents is stated beside it.
 
 1. **Draw from a declared graph, never by hand.** Every node and edge in the
    picture is read from a source: a schema, a declaration, a BPMN file, a

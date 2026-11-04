@@ -17,7 +17,7 @@
           "schema": {
             "$type": "Branch"
           },
-          "description": "The branch the upload form targets. Defaults to `main`; pass the working branch to send somebody to a pull request's head instead.",
+          "description": "The branch the upload form targets. Defaults to `main`; pass the working branch to send somebody to a pull request's head instead, so the upload lands on a commit CI judges.",
           "required": false,
           "arg": {
             "positional": 0
@@ -30,7 +30,7 @@
           "schema": {
             "$type": "Text"
           },
-          "description": "The upload URL on stdout, exit 0 — or, on stderr and exit 1, the reason it could not be composed and the remedy for that reason. Never a guessed URL."
+          "description": "The upload URL on stdout, exit 0 — or, on stderr and exit 1, the reason it could not be composed and the remedy for that reason. Never a guessed URL: a URL is believed, and somebody sent to a wrong one cannot tell it from an empty directory."
         }
       ]
     },

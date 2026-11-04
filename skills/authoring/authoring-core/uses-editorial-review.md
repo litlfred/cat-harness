@@ -38,7 +38,8 @@ for a remark or example *about one specific block*, and the content graph counts
 
 Each editorial edge carries `editorialField` so a tool proposing an **edit** can
 still tell which field an author wrote: **they are interchangeable to a reader
-and not to a writer**.
+and not to a writer**, and collapsing them would make an automated edit
+rewrite the wrong field.
 
 **Two caveats, both of which change what a number means:**
 
@@ -49,7 +50,7 @@ and not to a writer**.
   editorial cycles. Do not "fix" one without reading whether it is real.
 
 **Do not quote a count from prose — run the check against the corpus in front of
-you.**
+you.** A number in a document is a claim; only a run is evidence.
 
 For impact questions — *what breaks if this changes?* — use the union, via the
 content graph's accessors, which default to it.
@@ -110,8 +111,9 @@ A `uses[]` entry pointing at a block that appears *later* in the chapter
 is a `detangler-no-forward-ref` finding. Sometimes that is right — the
 exposition really does defer — and `foreshadows[]` records it.
 
-**`foreshadows[]` is independent of `uses[]`**, and it covers two cases you
-must keep apart:
+**`foreshadows[]` is independent of `uses[]`**, so a chapter overview can name
+results it previews without asserting a dependency that is not real. It covers
+two cases you must keep apart:
 
 | case | in `uses[]`? | who records it | cost |
 |---|---|---|---|
@@ -132,7 +134,8 @@ comparison).
 ## Declaring the second case
 
 Only a deferred prerequisite needs your judgement: it exempts a real `uses[]`
-edge from the ordering metrics, and nothing downstream re-opens it. The
+edge from the ordering metrics, hiding a genuine defect behind an authored
+claim that the disorder was intended, and nothing downstream re-opens it. The
 contract in `BlockBase.foreshadows` is strict — the prose must **frame
 the reference as deferred** ("we will need X, proved in chapter 9").
 
@@ -180,7 +183,8 @@ on the parent.
 - **Proof children.** A proof cites what the statement assumes. The parent's
   prose may never name a target its **proof child cites by label**; if the
   proof declares no `uses[]` of its own, the parent's entry is the **sole
-  record** of the dependency.
+  record** of the dependency, and deleting it as "unsupported by the prose"
+  erases the edge entirely.
 
 So before removing an entry, check whether any child leans on the target, and
 whether that child declares anything itself. An entry that looks like dead

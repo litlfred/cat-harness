@@ -160,7 +160,9 @@ subscribe to any new ones. Subscription is idempotent.
 Every new commit landing on `origin/main` (detected via the §2a Monitor
 poll) **must** trigger an own-PR rebase walk via §5g step 7
 **unconditionally** — independent of whether the §3 trigger filter
-matches the commit's scope or §4 dispatch runs any specialists.
+matches the commit's scope or §4 dispatch runs any specialists. An own PR
+left behind `origin/main` reaches reviewers stale and can silently enter
+GitHub's "needs rebase" state.
 
 **Fire rule** (every Monitor commit line):
 
@@ -256,6 +258,9 @@ hit:
    queued-for-removal` (see §3b below).
 3. **Update the ledger** with a `derivation-completion` row citing both
    the new commit SHA and the queue item id.
+
+This keeps the watcher from carrying stale "open problem" framings after the
+closure lands.
 
 ### 3b. Removal-over-banner policy (MANDATORY for legacy / superseded)
 

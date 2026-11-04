@@ -59,7 +59,9 @@ bun run cat check-deps                     # ce que cet environnement peut faire
 
 De nombreuses vérifications se dégradent en `n/a` au lieu d'échouer lorsqu'un
 outil est manquant (pas de chaîne Lean, pas d'Atlas, pas de LaTeX). **Un `n/a`
-n'est pas une réussite :** dites ce qui a été ignoré et pourquoi.
+n'est pas une réussite :** dites ce qui a été ignoré et pourquoi, car rapporter
+« tout est propre » sans le savoir présente l'absence de données comme un
+résultat.
 
 ## 3. Trouvez la bonne compétence — n'improvisez pas
 

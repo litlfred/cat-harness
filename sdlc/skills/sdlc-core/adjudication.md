@@ -29,6 +29,9 @@ requirements. These activities are adjudications:
 | `src/routes/relevance.ts` | *"writing `human_adjudicated` alongside — never overwriting — the agent's `assessed_by`. Both survive."* |
 | `schemas/library/bib-verification.ts` | a discriminated `Verifier` union, agent-only vs human-adjudicated, *"and *also* carry `human_adjudicated` if a human has subsequently"* ruled |
 
+Each restated the same rule because nothing generalised it; this skill is that
+generalisation.
+
 ## The judgement and its outcomes are separate processes
 
 Callers ask different questions: whether a drift is real, whether a passage is
@@ -36,7 +39,8 @@ acceptable, whether two entries agree, which side wins a conflict, whether a
 finding stands. Only the QA-criterion question has a criterion to scope or a
 dispensation to grant, and a `callActivity` runs the whole subprocess, so the
 outcomes cannot live in the shared process. The branches live with the caller,
-not in an enum passed to it.
+not in an enum passed to it, because the codes select different tasks: a
+caller's `local-wins` would point at `A_ScopeCriterion`.
 
 So the split is **at the judgement**:
 
@@ -140,7 +144,9 @@ needs to know.
 
 The same rule holds outside the diagrams: `/api/relevance/adjudicate` writes
 `human_adjudicated` *alongside* `assessed_by`, and `bib-verification.ts`
-carries the same pair on a discriminated union.
+carries the same pair on a discriminated union. Neither shares code with the
+diagrams, which is evidence that it is the right rule rather than a local
+convention.
 
 This is also the answer to *"adjudication if code and narrative disagree"*:
 record the disagreement, lead with the judgement, keep the other entry.

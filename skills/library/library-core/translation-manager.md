@@ -120,8 +120,8 @@ data* rather than inferable from a coverage number.
 **4. A catalogue is scoped to the asset it was extracted from.** Merging every
 `.po` under a locale lets a docs page's `"yes"` → `"oui"` translate every BPMN
 gateway branch label — output that looks right while no diagram catalogue
-exists. So a `.po` is read only when its stem names an asset the graph
-projects. A
+exists, so it can only be caught by provenance, not by reading the output. So
+a `.po` is read only when its stem names an asset the graph projects. A
 residual is accepted and named: a msgid from diagram A applies to an identical
 string on a node from diagram B — not a new assumption, since `kg-export`
 already dedupes lane-derived `Role` nodes by lane name across every diagram.
@@ -416,7 +416,9 @@ Both halves of the corpus — generated and hand-authored translated pages —
 must stamp the same meaning, or a badge reads a numerator larger than its
 denominator.
 
-**Do not stamp `qa_translation_*` keys.** Per-block QA is the record: the `TR`
+**Do not stamp `qa_translation_*` keys**: stamped from a node-level round
+trip, they publish every string nobody back-translated as semantic drift.
+Per-block QA is the record: the `TR`
 icon beside each block opens `<stem>.<locale>.translation-qa.json`, where a
 verdict names the witness that reached it.
 
@@ -431,8 +433,8 @@ the six UN languages and greys out the ones not yet translated. Do not add a
 
 Translated pages are labelled as translated content in the graph and are not
 shown in the navbar unless their locale is selected; with no translation, the
-navbar falls back to the source language. Three rules, and each is enforced somewhere different because each can break
-somewhere different.
+navbar falls back to the source language. Three rules, and each is enforced
+somewhere different because each can break somewhere different.
 
 ### 1. A page is a translation because the PAGE says so
 
