@@ -33,7 +33,7 @@ d'objets de contenu typé.
 ## Quatre choses, dans l'ordre
 
 **1. Le plan de travail est l'endroit où vous dites ce que vous faites.**
-Pas un message de discussion, pas un commentaire — des [beans]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}), un dépôt versionné que toute session ou tout agent peut lire. Réservez avant de travailler, pour qu'une session voisine ne prenne pas le même élément ; un bean qui s'avère inutile est marqué `scrapped`, avec ses raisons, jamais supprimé.
+Pas un message de discussion, pas un commentaire — des [work items]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}), un dépôt versionné que toute session ou tout agent peut lire. Réservez avant de travailler, pour qu'une session voisine ne prenne pas le même élément ; un work item qui s'avère inutile est marqué `scrapped`, avec ses raisons, jamais supprimé.
 
 ```sh
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"

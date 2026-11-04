@@ -122,7 +122,7 @@ bun run cat beans:claim <id>             # REVENDIQUEZ avant de travailler
 ```
 
 Revendiquez avant de travailler pour que deux sessions ne prennent pas le
-même élément, et ne résolvez ou supprimez jamais le bean d'un pair.
+même élément, et ne résolvez ou supprimez jamais le work item d'un pair.
 
 ## 7. Fichiers QA et axes
 

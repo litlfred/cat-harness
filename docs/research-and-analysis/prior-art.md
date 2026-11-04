@@ -40,7 +40,7 @@ No single project found does what folio-assistant does. Most overlap on
 | [AGENTS.md](#agentsmd) | cross-tool instruction file | MIT |
 | [Agent Skills](#agent-skills-skillmd) | skills loaded on demand | Apache-2.0 / CC-BY-4.0 |
 | [Superpowers](#superpowers) | skill-carried discipline | MIT |
-| [beans](#beans-and-beads) | git-committed work plan | Apache-2.0 |
+| [work items](#beans-and-beads) | git-committed work plan | Apache-2.0 |
 | [Beads](#beans-and-beads) | dependency-aware work plan for agents | MIT |
 | [BMAD-METHOD](#bmad-method) | agent roles + workflows | MIT |
 | [Spec Kit](#spec-kit) | phased, spec-driven process | MIT |
@@ -111,13 +111,13 @@ step that is not enabled.
 **Difference.** Both are the store. What folio-assistant adds on top is the
 coordination discipline ([bean-coordination]({{ '/reference/skill-instructions/bean-coordination.html' | relative_url }}):
 claim before you work, a claim announces rather than reserves, never delete a
-bean) and the link between a bean and a running process instance.
+work item) and the link between a work item and a running process instance.
 Beads' atomic claim (and, from v1.3, leases) is the stronger primitive where
 it is available.
 
 **Health, as observed 2026-09-23 and re-measured 2026-10-24.**
 
-| | beans (2026-09-23) | beans (2026-10-24) | Beads (2026-09-23) | Beads (2026-10-24) |
+| | work items (2026-09-23) | work items (2026-10-24) | Beads (2026-09-23) | Beads (2026-10-24) |
 |---|---|---|---|---|
 | last commit | 2026-04-06 — none in the three months since | 2026-04-06 (`99260bf`) — zero commits since | ~16 commits a day over the last three months | 2026-10-24 — 592 commits since 2026-09-23 (~19/day) |
 | version | v0.4.2, pre-1.0 | v0.4.2 (2026-03-10), pre-1.0; no new releases | v1.3.0 (1.0 on 2026-04-03) | v1.3.2 (2026-10-24), via v1.3.1 (2026-09-30) and 5 RCs |
@@ -126,10 +126,10 @@ it is available.
 | issues (open / closed) | — | 39 open / 21 closed | — | 1,071 open / 1,807 closed |
 | recorded instability | none found | none found | a retracted release (v1.2.1, untested schema migration); issues on data loss across clones after the SQLite → Dolt migration and on `dolt pull` failing after migrations | no new `go.mod` retractions beyond `v1.1.1` / `v1.2.0` / `v1.2.1`; `#2251` and `#4259` closed, `#4356` still open; `v1.3.2` (fix-only) patched two `v1.3.1` data-loss regressions (`#7031`/`#7041` purge deleting closed root above live work; `#7032`/`#7044` auto-backup watermark skipping mid-sync commits) and a `v1.3.1` fan-in fix that reverted concurrent writes (`#7030`/`#7146`); new open multi-clone migration and `dolt pull`/`bd sync` data-loss issues (`#6727`, `#7037`, `#7039`, `#7073`, `#7294`, `#7757`, `#7781`, `#7783`, `#7795`, `#7811`) |
 
-Beans is **quiet**; Beads is **active but churning** in exactly the layer —
+Work items is **quiet**; Beads is **active but churning** in exactly the layer —
 storage and merge — this repository leans on hardest. Plain files that
-`git diff` and review read directly are also part of why beans fits here: the
-bean store is committed and reviewed like any other content.
+`git diff` and review read directly are also part of why work items fits here: the
+work item store is committed and reviewed like any other content.
 
 No storage or corruption defect has surfaced in this repository's use of
 `beans`, and `scripts/beans-fallback.ts` covers environments without the Go

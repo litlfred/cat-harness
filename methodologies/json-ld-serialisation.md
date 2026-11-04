@@ -103,7 +103,7 @@ JSON parser reads records; a consumer with a JSON-LD processor reads a graph.
    and §4.3.2 *"Specifying that a collection is unordered in the context"*
    (`sec-061`). Companion-file paths are deliberately **not** coerced to
    `@id`: `jsonld.ts` records that coercion resolved `../sections/x.md`
-   against `@base` into a link to nowhere (bean `589f`).
+   against `@base` into a link to nowhere (work item `589f`).
 7. **Keyword aliasing.** §4.1.6: *"Each of the JSON-LD keywords, except for
    @context, may be aliased to application-specific keywords. This feature
    allows legacy JSON content to be utilized by JSON-LD"* (`sec-036-note.md`).
@@ -116,7 +116,7 @@ JSON parser reads records; a consumer with a JSON-LD processor reads a graph.
    GENERATED from the prefixes and content-context terms its documents use
    (`jsonld:contexts`, cat-harness-tools `scripts/gen-instance-contexts.ts`),
    so a bound prefix nothing speaks cannot exist. It replaced
-   `check:context-emission` and its `FORWARD_DECLARED` reasons (bean
+   `check:context-emission` and its `FORWARD_DECLARED` reasons (work item
    `folio-assistant-63q4`).
 
 ## The voice that holds code to this node

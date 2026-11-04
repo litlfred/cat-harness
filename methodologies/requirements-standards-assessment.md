@@ -72,7 +72,7 @@ essential parts (formalized in Issue #2405, FR-007/FR-008, and documented in
 A requirement document is authored in Markdown with YAML front matter or stored
 as JSON, and grouped into a **`RequirementSet`** (`reqset:<slug>`) tracking stages
 (`draft → proposed → approved → planned → in-progress → delivered → accepted`),
-member decisions, work plans (beans), and recorded human sign-off attestations.
+member decisions, work plans (work items), and recorded human sign-off attestations.
 
 ---
 

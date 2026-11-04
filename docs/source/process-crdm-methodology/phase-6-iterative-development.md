@@ -1,4 +1,4 @@
-Once requirements are signed off and beans are created, the agent and BA
+Once requirements are signed off and work items are created, the agent and BA
 enter the **iterative MVP development cycle**. This is where the feature
 gets built, tested, and refined until stakeholders accept it.
 
@@ -20,16 +20,16 @@ The BA and agent work together in tight iterations:
                 └──────────────────────────────────────────┘
 ```
 
-1. **Agent claims a bean** — implements the requirement on a feature
+1. **Agent claims a work item** — implements the requirement on a feature
    branch, opens a PR, posts a summary to the issue.
 2. **BA reviews** — tests the feature, compares it against the requirement
    and acceptance criteria from Phase 3. The BA does not need to read code;
    they test the *behaviour*.
 3. **Feedback or accept** — the BA either requests changes (the agent
    iterates) or accepts the increment.
-4. **Repeat** until the bean is resolved.
+4. **Repeat** until the work item is resolved.
 
-Each bean produces a **minimum viable increment** — not the whole feature,
+Each work item produces a **minimum viable increment** — not the whole feature,
 but one requirement satisfied. The BA decides when enough increments have
 accumulated to show stakeholders.
 
@@ -68,13 +68,13 @@ testing**, they bring stakeholders in:
    ("the table doesn't show the right columns"). The BA translates it
    into actionable direction for the agent ("the `review-triage` view
    needs columns X, Y, Z from the feedback spreadsheet").
-4. **Agent iterates** — new beans or updates to existing beans. The inner
+4. **Agent iterates** — new work items or updates to existing work items. The inner
    loop resumes.
 5. **Repeat** until stakeholders are satisfied.
 
 ### The exit: feature sign-off
 
-When all beans for the feature are resolved and stakeholders confirm the
+When all work items for the feature are resolved and stakeholders confirm the
 MVP meets their needs:
 
 1. **BA confirms** — all acceptance criteria from Phase 3 are met.
@@ -94,5 +94,5 @@ Collapsing them into one loop would either:
 - Slow the agent down to the stakeholder cadence (wasting agent time), or
 - Rush stakeholders through testing (producing shallow feedback).
 
-The BA absorbs the impedance mismatch. Between outer-loop checkpoints, the agent works on other beans or
+The BA absorbs the impedance mismatch. Between outer-loop checkpoints, the agent works on other work items or
 other features.

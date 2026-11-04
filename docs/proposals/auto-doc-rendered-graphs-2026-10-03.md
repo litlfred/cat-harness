@@ -103,7 +103,7 @@ scans. Nothing above needs changing — it becomes the spec.
 
 **2. The layer is the EXISTING `derived`, and no new kind is needed.** `holds`
 already has **four** values, not three: `content`, `context`, `state` and
-`derived`, the last added 2026-09-20 for `library/` (bean `hqku`), and
+`derived`, the last added 2026-09-20 for `library/` (work item `hqku`), and
 `isDerived` is already in `schemas/cat-harness.ts`. So `derived-content` names
 a layer that exists — which saves adding one.
 
@@ -281,7 +281,7 @@ Where the 42 are: `docs/reference/skills/` (24), `docs/` top level (13),
 
 ## The shape of the problem is not "a missing pattern"
 
-Filing the 17 as a gap (bean `8c6v`, PR #1965) is correct and small. But the
+Filing the 17 as a gap (work item `8c6v`, PR #1965) is correct and small. But the
 same measurement shows three further facts that a fourth pattern does not
 touch.
 
@@ -503,11 +503,11 @@ grep -rh '^generated:' cat-harness/docs/ | sort | uniq -c | sort -rn
 
 ## Related
 
-- bean `8c6v`, PR #1965 — the 17 `gen-docs-pages.ts` pages as a pattern gap.
+- work item `8c6v`, PR #1965 — the 17 `gen-docs-pages.ts` pages as a pattern gap.
   This proposal is why a fourth pattern is a patch rather than the fix.
-- bean `8rff`, merged in #1943 — the three families before these, and the
+- work item `8rff`, merged in #1943 — the three families before these, and the
   carry-forward discipline every row above is held to.
-- bean `ba9e` — generated README counts, the other chronically-conflicting
+- work item `ba9e` — generated README counts, the other chronically-conflicting
   generated family.
 - `skills/kg/kg-core/audit-coverage.md` — the per-kind coverage this would let
   distinguish generated projections from authored pages.

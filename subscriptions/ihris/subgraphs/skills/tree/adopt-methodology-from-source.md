@@ -3,7 +3,7 @@ name: adopt-methodology-from-source
 description: >
   The general process for turning a shared paper, book or standard into an
   adopted methodology in this folio: origin and licence, ingestion, related
-  beans and issues, a faithful rendering with adopted and refused parts,
+  work items and issues, a faithful rendering with adopted and refused parts,
   placement, integration into existing processes, Tool nodes, and owner review.
   Process: processes/methodology-from-source.bpmn.
 input: src/schemas/skills/adopt-methodology-from-source/input.schema.json
@@ -20,15 +20,15 @@ output: src/schemas/skills/adopt-methodology-from-source/output.schema.json
    - No stated licence means **reference only**: the file goes in `uploads/<slug>/` (git-ignored) with a `manifest.json` pinning `md5` and `sha256`, and `library/<slug>/` holds headings, page ranges and a summary in our own words.
    - A source with no origin is a house process. Write a skill instead of a methodology.
 2. **Ingest** with folio-assistant's rungs (Tool `ihris-ingest-pdf`). An embedded outline gives real sections. Without one, use page granularity; an inferred chapter tree is never accepted.
-3. **Related work** (folio-assistant `Process_RelatedWork`, skill `related-work-coordination`). Search beans (`beans list`, `beans query`) and GitHub issues for anything the method touches.
+3. **Related work** (folio-assistant `Process_RelatedWork`, skill `related-work-coordination`). Search work items (`beans list`, `beans query`) and GitHub issues for anything the method touches.
    - Categorize each hit: *duplicates*, *depends on*, *affected by*, *unrelated*. Add a one-line summary.
    - Judgement decides the categories. Show the list to the owner, and **ask whether to coordinate** (link, block, merge, note only) as a structured question. Do not act before the answer.
 4. **Render the method faithfully.** What the source says, cited by section. Then a table of **adopted** and **refused** parts, each with a reason.
    - An extension beyond the source is marked as ours.
    - Reported results are not imported as facts.
    - Scores are refused and averages never taken (`methodology-adoption`).
-5. **Place by ownership.** A domain-neutral method belongs to the harness, and a domain method to the folio. If the session cannot write where the method belongs, draft it where it can, say so in the file, and open a bean to move it.
-6. **Integrate by calling, not copying.** Write the method's process as a spec in `processes/specs/` and generate the BPMN (Tool `ihris-gen-bpmn`). Its judgement points are `callActivity` into existing processes: `Process_Adjudication`, `Process_OptionsAnalysis`, `Process_Ingestion`. A change an existing process needs becomes a bean against its owner.
+5. **Place by ownership.** A domain-neutral method belongs to the harness, and a domain method to the folio. If the session cannot write where the method belongs, draft it where it can, say so in the file, and open a work item to move it.
+6. **Integrate by calling, not copying.** Write the method's process as a spec in `processes/specs/` and generate the BPMN (Tool `ihris-gen-bpmn`). Its judgement points are `callActivity` into existing processes: `Process_Adjudication`, `Process_OptionsAnalysis`, `Process_Ingestion`. A change an existing process needs becomes a work item against its owner.
 7. **Tools.** Every script, CLI or checker the process uses gets a `src/tools/<id>.tool.json` that satisfies a named skill. `validate.py` checks them with folio-assistant's `ToolDefinitionSchema`.
 8. **Owner review.** The owner adopts it, asks for changes (back to step 4), or declines. A decline is recorded with its reason, not deleted.
 

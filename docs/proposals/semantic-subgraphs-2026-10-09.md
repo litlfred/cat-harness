@@ -9,7 +9,7 @@ summary: >-
 
 **Status: proposal, ruled 2026-10-09.** Slices 1 and 2 (chrome and themes),
 Option A + C for slice 3, the concern names, and D1–D4 are all decided (the
-two answer tables below). The `nn8e` follow-up is filed as bean `mo75` (G1–G3 and the concern names). Building
+two answer tables below). The `nn8e` follow-up is filed as work item `mo75` (G1–G3 and the concern names). Building
 starts with stage 1.
 
 > ## Rulings, owner, 2026-10-09
@@ -260,12 +260,12 @@ already is:
    already does for directories. `concerns: ["ui"]` is shorthand for "every
    member of that group", for a downstream that does not need to read first.
 
-**What already exists, measured 2026-10-09** (beans `c1m4`, `fnx4`, `whlc`,
+**What already exists, measured 2026-10-09** (work items `c1m4`, `fnx4`, `whlc`,
 `nn8e` on `cat/cat-harness/beans`):
 
 | step | for a SUBSCRIPTION (you read their content) | for a MOUNT (your code imports theirs) |
 |---|---|---|
-| 1 hydrated, nested subgraph | **exists** — `kg:materialize --nodes <sub> <path>` fetches `<docs>/subgraph/<HARNESS>/<path>/index.hydrated.jsonld`, validated against `SubgraphHydratedSchema` (`c1m4`, completed) | **missing** — named in `nn8e`'s done-when as a follow-up ("remote BRANCH mount of other repos' named subgraphs, hydrated vs not") and **never filed as a bean** |
+| 1 hydrated, nested subgraph | **exists** — `kg:materialize --nodes <sub> <path>` fetches `<docs>/subgraph/<HARNESS>/<path>/index.hydrated.jsonld`, validated against `SubgraphHydratedSchema` (`c1m4`, completed) | **missing** — named in `nn8e`'s done-when as a follow-up ("remote BRANCH mount of other repos' named subgraphs, hydrated vs not") and **never filed as a work item** |
 | …for Tools | **missing** — `gen-subgraph-jsonld` publishes subgraphs for `kgDirectories(instance)`: `skills/`, `scenarios/`, `processes/` (170 hydrated files across instances today). `tools/` is not among them, so there is no Tools metadata to load | missing, as above |
 | 3 materialize a chosen set | **partly** — `kg:materialize <sub> <subgraph>` copies a whole TOP-LEVEL declared directory through the five gates (`declaredDirectories` reads the raw top level); not a node set, not a nested subgraph | **missing** — `remote-mount.ts` takes top-level ids only (wall 2) |
 
@@ -275,7 +275,7 @@ So the owner's workflow is three gaps, not a new mechanism:
   what `gen-subgraph-jsonld` exports).
 - **G2** — remote mount, phase 1: `hydrated: true` on a mount entry or
   override fetches a named subgraph's `index.hydrated.jsonld` at the pin
-  instead of files (the `nn8e` follow-up, filed as bean `mo75`).
+  instead of files (the `nn8e` follow-up, filed as work item `mo75`).
 - **G3** — materialize a chosen set: nested subgraph ids and node ids resolve
   through `resolveDirectories`/the hydrated index rather than the raw top
   level, in both `remote-mount` and `kg:materialize`, with the code closure
@@ -372,7 +372,7 @@ hides it inside the directory.
 | 3 | G3 for top-level and nested subgraph ids in `remote-mount` | a downstream naming `site-chrome` + `themes` + code mounts and builds |
 | 4 | who-iris publishes its own site from `site-chrome` + its own `themes/` (kg-separation stages 7 and 12 for who-iris) | the site at `litlfred.github.io/who-iris/` builds and every replica link resolves |
 | 5 | G1: `tools/` exported as a named subgraph with `index.hydrated.jsonld` | `subgraph:jsonld:check`; the Tools' descriptions appear in the hydrated file |
-| 6 | G2: hydrated mounts (bean `mo75`) | a downstream reads `tools/` metadata at a pin with no code mounted |
+| 6 | G2: hydrated mounts (work item `mo75`) | a downstream reads `tools/` metadata at a pin with no code mounted |
 | 7 | G3 for node sets, with the code closure; then `concerns:` shorthand | "load tools metadata, review, materialize three Tools" runs end to end; `check:tools-closure` |
 | 8+ | docs and scripts into their concern groups, one group per PR | `check:concern-groups` |
 

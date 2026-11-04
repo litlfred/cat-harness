@@ -4,10 +4,10 @@ title: Separation arc — consolidated workplan, gaps and migration checklist (2
 
 # Separation arc — one workplan for GOAL 1
 
-**Epic bean:** `folio-assistant-7x5n` (under milestone `vuip`). **Issue:** [#1770](https://github.com/litlfred/folio-assistant/issues/1770). See the
-epic bean. This page consolidates **five stalled sessions'** handovers into one
+**Epic work item:** `folio-assistant-7x5n` (under milestone `vuip`). **Issue:** [#1770](https://github.com/litlfred/folio-assistant/issues/1770). See the
+epic work item. This page consolidates **five stalled sessions'** handovers into one
 arc with nine stories. The stories own no new code. Each one **points at the
-beans that already exist**. Where two of those beans describe the same work, the
+work items that already exist**. Where two of those work items describe the same work, the
 story names which one survives.
 
 > Why one arc: five sessions each left a handover that said "pick up next: …".
@@ -47,10 +47,10 @@ main CI                                GREEN
 
 ## Stories
 
-| # | story | absorbs (existing beans / PRs) | blocks | delegable? |
+| # | story | absorbs (existing work items / PRs) | blocks | delegable? |
 |---|---|---|---|---|
 | **S0** `hx65` | **Main green.** Fix the five red jobs on `cdb0a018`. Bump the submodule pins (bootstrap `ebfa406`, bootstrap-tools `03832a8`). | handover fix-ups; `14ve` | everything | yes, one agent |
-| **S1** `a4of` | **Bookkeeping truth.** Close beans whose work is merged, and reconcile `fnx4`'s boxes with #1721. | `y5si`, `ybp4`, `ejye`, `ybwt`, `7dek`, `xsqm` (already done) | S4, S5 | yes, here |
+| **S1** `a4of` | **Bookkeeping truth.** Close work items whose work is merged, and reconcile `fnx4`'s boxes with #1721. | `y5si`, `ybp4`, `ejye`, `ybwt`, `7dek`, `xsqm` (already done) | S4, S5 | yes, here |
 | **S2** `0mf0` | **Merge-treadmill fix.** Land `merge:main` (#1754), then run regen in CI on the merge result (`d33q` part B). | #1754, `d33q`, `oz5w` | S3–S8 throughput | yes, one agent |
 | **S3** `ga6u` | **Drain in-flight PRs.** #1756 (fnx4 5+6), #1747 (cmsl 3), #1735 (qsx4, **owner judgement**), #1753, #1581 (stale plan; close or rebase). | those PRs | S5 | yes, one agent per PR |
 | **S4** `rfuq` | **Direction and placement.** No upward imports, and content goes to its owner. | `zlmp`, `yj6r`, `zhg2`, `r3gy`, `2j2r`, iirv `pzwb` `63wl` `tlat` `4fv8` `apcg` `8fq9` `f8wp` `p9bu`, 9umr finale | S5 | yes, one agent per placement PR, **serialised** |
@@ -77,15 +77,15 @@ gate.
 
 ## Gap analysis
 
-Each gap is something that **no existing bean or PR covers**, or a place where
+Each gap is something that **no existing work item or PR covers**, or a place where
 two of them disagree. Gaps are ordered by what they block.
 
 | # | gap | evidence | consequence if left | goes to |
 |---|---|---|---|---|
 | G1 | **Main is red, and every handover deferred it.** | `Code-quality gates` at `cdb0a018`: failing steps are *workflow skill refs* (Repository gates #13), *bun test*, *playwright test*, *registration chain current*. `Docs site`: *Regenerate skill instruction pages*. Four successive merges went in without CI finishing. | Every delegated agent inherits red, can't tell its own breakage from the baseline, and stalls. | S0 |
-| G2 | **Two beans, one move.** `w2gr` 3b ("move the cat-harness/src server modules into cat-harness-tools") and iirv `70lx` ("git mv the unambiguous code") are the same `git mv`, planned by two sessions. The iirv handover already saw `cat-harness-tools/` appear on main from the other session. | Handovers 2 and 4. | Two agents do the move twice, and the merge conflict is the whole tree. | S5: `70lx` survives, `w2gr` closes into it |
-| G3 | **Merged work still reads as open.** `y5si` has every box ticked. `ybp4` lacks only "CI green", which it got (#1687). `ejye`, `ybwt` and `7dek` are merged (#1758, #1760). `xsqm` is closed but the handover lists it as blocking. `fnx4`'s boxes don't reflect #1721. | Bean files on main. | A new agent claims done work, as happened with #1690. | S1 |
-| G4 | **The treadmill is unaddressed by any bean that has an owner.** `d33q` part B (regen in CI on the merge result) is the systemic fix. #1754 holds part A and is unmerged. | Three handovers measure the cost: 8+ rounds; "a `dirty` PR cannot be merged at all". | Every story below S2 pays about 22 minutes per main movement. | S2 |
+| G2 | **Two work items, one move.** `w2gr` 3b ("move the cat-harness/src server modules into cat-harness-tools") and iirv `70lx` ("git mv the unambiguous code") are the same `git mv`, planned by two sessions. The iirv handover already saw `cat-harness-tools/` appear on main from the other session. | Handovers 2 and 4. | Two agents do the move twice, and the merge conflict is the whole tree. | S5: `70lx` survives, `w2gr` closes into it |
+| G3 | **Merged work still reads as open.** `y5si` has every box ticked. `ybp4` lacks only "CI green", which it got (#1687). `ejye`, `ybwt` and `7dek` are merged (#1758, #1760). `xsqm` is closed but the handover lists it as blocking. `fnx4`'s boxes don't reflect #1721. | Work item files on main. | A new agent claims done work, as happened with #1690. | S1 |
+| G4 | **The treadmill is unaddressed by any work item that has an owner.** `d33q` part B (regen in CI on the merge result) is the systemic fix. #1754 holds part A and is unmerged. | Three handovers measure the cost: 8+ rounds; "a `dirty` PR cannot be merged at all". | Every story below S2 pays about 22 minutes per main movement. | S2 |
 | G5 | **Two cutover mechanisms, no rule for which applies.** iirv's plan ends in **submodules** (stage 6). `fnx4` and the sibling's `n3ni` end in **subscriptions**. | The plans side by side. | The two staging repos get cut over two different ways for no stated reason. | S7/S8: the rule above (import → submodule, read → subscription) |
 | G6 | ~~Some target repos don't exist~~ **Resolved 2026-10-01:** the owner created `litlfred/{folio-assistant-core, folio-assistant-sci, fhir-harness}`, all three verified empty. `large-datasets` and `agent-skills` fold into cat-harness. | `git ls-remote`, 2026-10-01. | — | S7 |
 | G7 | ~~`litlfred/cat-harness` and `-tools` already hold commits~~ **Resolved 2026-10-01:** both are **empty** (fresh clone, 0 commits on `main`), so a seed is the first commit and no read-first is needed. | Clone of each. | — | S7 |
@@ -93,14 +93,14 @@ two of them disagree. Gaps are ordered by what they block.
 | G9 | **The submodule pins regress on merge.** Main twice put bootstrap and bootstrap-tools back to older commits, and README writers are duplicated here. | iirv handover. | bootstrap's "generated by" notices get dropped, and a merge silently de-inits submodules. | S0 (bump) + S4 (delegate README writers) |
 | G10 | **`readme:subgraphs:check` red on `02f16ae98bb` is unexplained.** The log redirects to Azure blob, which this proxy denies. | Handover 3. | The gate may recur with no diagnosis. | S0. `gh api …/jobs` works from here, so retry the read |
 | G11 | **`fnx4` slice 7 layout collides with staged instances** (`<root>/<harness>/` vs `who-iris/`). | Handover 5. | The first real subscription (`litlfred/ihris`) writes over a staged directory. | S8 prerequisite |
-| G12 | **GOAL 1's own falsifier has no definition.** `zmdo` waits on `tndo` (MVP undefined), which waits on `mer2` (split `folio_init`). You ruled "split the operation"; it is not built. | Beans. | Nobody can say whether GOAL 1 is done. | S6 |
+| G12 | **GOAL 1's own falsifier has no definition.** `zmdo` waits on `tndo` (MVP undefined), which waits on `mer2` (split `folio_init`). You ruled "split the operation"; it is not built. | Work items. | Nobody can say whether GOAL 1 is done. | S6 |
 | G13 | **The specialised agent types can't reach GitHub.** `ci-health-watcher` spawned in this session had no GitHub MCP tools and an invalid `GH_TOKEN`. | This session, 2026-10-01. | Delegated diagnosis comes back "could not check". | Delegation rule below |
 | G14 | ~~IRIS-specific code has no home~~ **Ruled 2026-10-01:** the 5 files stay in `who-iris`, and the finding becomes a QA **warning**, not a failure ("ok b/c small # tools"). No `who-iris-tools` repo. | `eayu`. | — | S0 (severity change) |
 
 ## Migration plan — checklist for status-bar monitoring
 
 Each line is one observable fact. Tick it **only on evidence**: a merged PR sha,
-a green run id, or a bean id moved to `completed`. The status bars above count
+a green run id, or a work item id moved to `completed`. The status bars above count
 these ticks.
 
 ### S0 `hx65` — main green
@@ -108,7 +108,7 @@ these ticks.
 - [ ] fix PR merged on **per-job verified green** (not "merged before CI")
 - [ ] submodule pins: bootstrap `ebfa406`, bootstrap-tools `03832a8`, translation templates re-extracted
 - [ ] `readme:subgraphs` cause read from the job log (G10)
-- [x] your ruling on the 8 + 1 orphan sidecars recorded on the bean (G8): widen the scan, keep the files
+- [x] your ruling on the 8 + 1 orphan sidecars recorded on the work item (G8): widen the scan, keep the files
 
 ### S1 `a4of` — bookkeeping truth
 - [ ] `y5si`, `ybp4` completed with PR evidence
@@ -177,7 +177,7 @@ stalling the way the last five did.
    0, `bun run cat gates`, push. Run `state:visualizer` last.
 6. **Merging:** owner ruling 2026-10-01: "yes you may merge green PRs". An agent merges once **every job** on its current head is green and the PR is mergeable. Not before. Merging before CI finishes is **not** authorised; earlier sessions did that on an instruction specific to them.
 7. **Report shape:** the agent ends with a table of the checklist lines it
-   ticked, each with its evidence (sha, run id, bean id), and the lines it
+   ticked, each with its evidence (sha, run id, work item id), and the lines it
    could not tick, each with the reason.
 
 ## Seed readiness — cat-harness and cat-harness-tools (measured 2026-10-01, main `cdb0a018`)
@@ -268,7 +268,7 @@ PLACEMENT    ████████░░░░░░░░░░░░  945 O
 | 7 | core's `catalogue`, `dublin-core`, `fhir-artifact-index` schemas | **split**: the generic shape stays in core; IRIS/FHIR specifics go to who-iris / fhir-harness and register on load |
 
 Other audit findings, now on the checklist:
-- [x] `cat-harness-tools.json` `needs` → `["cat-harness","bootstrap-tools"]`, and core adds `cat-harness-tools` (C1, bean `rmi6`). 0 of tools' 27 files import core.
+- [x] `cat-harness-tools.json` `needs` → `["cat-harness","bootstrap-tools"]`, and core adds `cat-harness-tools` (C1, work item `rmi6`). 0 of tools' 27 files import core.
 - [ ] 34 cat-harness skills that point at sci and are in no PR yet (mostly authoring-core, sdlc-core)
 - [ ] 90 code files that name higher instances by literal path → resolve through the checkout overlay (PR0a)
 
@@ -280,9 +280,9 @@ Other audit findings, now on the checklist:
 
 ## Rulings 2026-10-01 late
 
-Owner, about 17:30. Each ruling is recorded in full on the bean it settles.
+Owner, about 17:30. Each ruling is recorded in full on the work item it settles.
 
-| question | ruling | bean |
+| question | ruling | work item |
 |---|---|---|
 | **Q-A** generator retargeting | Split bootstrap outputs by kind. kg-qa verdicts, glossary ledgers and detangle stay in cat-harness as the auditor's output ("a harness may discuss its dependencies"). bootstrap-tools renders the UML of bootstrap and bootstrap-tools at build time. bootstrap's process translations move into bootstrap. Committed renderings become deploy-time output and keep their URLs. Delete the 37 duplicate sidecars. A `tools/index.ts` name collision throws. SKOS URLs (X2) are not ruled yet. | `cmsl`, `wggr` |
 | **Q-B** reference direction | Q1 is **reword**: files stay put and their prose stops naming higher layers. X3 exempts the 3 layering specifications. The ratchet also covers single-name files (A.10). Translation mirrors are exempt (X1). | `zhg2` (implementation: `1bvx`, `vzo5`) |

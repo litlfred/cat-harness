@@ -32,7 +32,7 @@ not record the reviewer's session and model.
 it claims.* It is the stance of [`generalise-the-fix`](generalise-the-fix.md)
 and [`devils-advocate-watcher`](../../../skills/authoring/authoring-core/devils-advocate-watcher.md),
 applied to a diff. The claim under test is the
-pull request's description and the `## Done when` of the bean it names.
+pull request's description and the `## Done when` of the work item it names.
 
 ## Scope: the whole diff, or `unknown`
 
@@ -51,9 +51,9 @@ The RED FLAG categories are closed and live in `schemas/sdlc/red-flag.ts`:
 there rather than from a copy. Beyond the categories, ask:
 
 - can a new or changed check report green without evaluating its subject?
-- does prose (a skill, the PR body, the bean) assert something the code does
+- does prose (a skill, the PR body, the work item) assert something the code does
   not do? That is [`narrative-asserts-code`](narrative-asserts-code.md);
-- does the change reach outside its bean, or hand-edit a generated file?
+- does the change reach outside its work item, or hand-edit a generated file?
 
 **A finding is blocking only with evidence**: a reproducible observation, such
 as an input and its wrong output, or a command and what it printed. Without

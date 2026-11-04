@@ -42,7 +42,7 @@ applies-when: >
 
 # Latent Semantic Indexing: the vocabulary problem, answered with a truncated SVD
 
-**Adopted 2026-09-29** (bean `ansc`, issue #1482). **Checked against its
+**Adopted 2026-09-29** (work item `ansc`, issue #1482). **Checked against its
 primary source the same day**, after the owner supplied the PDFs.
 
 ## Its sources: what is held, what is not
@@ -118,7 +118,7 @@ orientation"* (§4.1).
 ### Adopted
 
 - Steps 1–7. Units are the graph's own nodes — a library **section**, a skill
-  file, a bean — because the KG already chunks semantically (bean `p2en`).
+  file, a work item — because the KG already chunks semantically (work item `p2en`).
 - **Log-entropy weighting by default, which the 1990 paper does not use.** The
   paper asks for weighting to be added (*"refinements such as stemming,
   phrases, term-weighting ... generally result in performance improvements"*,
@@ -149,7 +149,7 @@ orientation"* (§4.1).
 2. **A dimension is not a topic until a person names it.** The paper makes
    *"no attempt to interpret the underlying factors"*; dimension summaries are
    published for review, not as labels.
-3. **LSI output never writes a relation.** It proposes a parent for a bean, a
+3. **LSI output never writes a relation.** It proposes a parent for a work item, a
    `uses[]` candidate, a duplicate pair; it writes none. `uses[]` is the
    editorial relation and a score would destroy its signal.
 4. **LSI similarity is never evidence for a claim in content.** It is a
@@ -191,7 +191,7 @@ orientation"* (§4.1).
 | track | answers | why it is separate |
 |---|---|---|
 | lexical search (`graph-search`) | which nodes contain these words, and what is adjacent | exact, explainable, no score; LSI sits beside it |
-| **correspondence analysis** (Qi et al. 2023) | the same retrieval question, by an SVD of the **standardised residuals** from the independence model rather than of the weighted counts | its own node, [`correspondence-analysis`](correspondence-analysis.md) (adopted 2026-09-29): margins removed, χ² structure. Measured here against this node on bean filing: no significant difference (McNemar p = 0.17–0.71) — **not blended into this one** |
+| **correspondence analysis** (Qi et al. 2023) | the same retrieval question, by an SVD of the **standardised residuals** from the independence model rather than of the weighted counts | its own node, [`correspondence-analysis`](correspondence-analysis.md) (adopted 2026-09-29): margins removed, χ² structure. Measured here against this node on work item filing: no significant difference (McNemar p = 0.17–0.71) — **not blended into this one** |
 | incremental compositional embeddings (Hang et al. 2022) | how to place newly arriving nodes without retraining: explicit vectors for the stable node type, the rest *"represent[ed] implicitly, through a composition function based on their interactions"* | the same shape as folding-in (a new document = centroid of its terms), but a learned model evaluated on recommendation; not adopted |
 | dense neural embeddings (`docs/proposals/rag-document-ingestion.md`) | the same question, from a model pre-trained elsewhere | needs a model download (403 in the sandbox), not reproducible from the corpus alone |
 | `skill-pipeline-subject-indexing` | which controlled-vocabulary terms a work should carry | closed vocabulary, policy-governed; LSI has no vocabulary to validate against |

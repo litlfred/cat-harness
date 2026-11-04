@@ -98,7 +98,7 @@ Per the architectural assessment in `requirements-standards-assessment`:
 
 A requirements document is governed as a **`RequirementSet`** (`reqset:<slug>`):
 - **Stages**: `draft → proposed → approved → planned → in-progress → delivered → accepted`.
-- **Work Plan**: Requirements connect to execution via `beans/`. A bean delivering
+- **Work Plan**: Requirements connect to execution via `beans/`. A work item delivering
   a requirement copies its `## Done when` checkboxes from the requirement's
   success criteria.
 - **Sign-offs**: Recorded via `adjudication` as `requirement-signoff` attestations
@@ -115,4 +115,4 @@ A requirements document is governed as a **`RequirementSet`** (`reqset:<slug>`):
   template and elicitation guide.
 - [`spec-kit`](../spec-kit/spec-kit.md) — Platform feature spec-driven development.
 - [`adjudication`](adjudication.md) — Settle review disagreements and record human sign-offs.
-- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) — Bean work-plan management and claim discipline.
+- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) — Work item work-plan management and claim discipline.

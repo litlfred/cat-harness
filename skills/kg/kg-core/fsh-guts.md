@@ -31,9 +31,9 @@ not.** It exists so that something can be kept without being published.
 
 ## Why the never-delete rule needs a destination
 
-The rule against deleting a bean was never about beans:
+The rule against deleting a work item was never about work items:
 
-> a scrapped bean records that something was considered and rejected, which is
+> a scrapped work item records that something was considered and rejected, which is
 > what stops the next agent re-entering the same dead end; a deleted one leaves
 > a sibling unable to tell abandonment from accident.
 
@@ -93,7 +93,7 @@ the branch. A relocation is both halves.
 
 ## Files declare themselves
 
-Same contract as the bean and workflow stores: a directory is a place to look,
+Same contract as the work item and workflow stores: a directory is a place to look,
 and the file says what it is. Every node carries front matter:
 
 ```yaml
@@ -183,9 +183,9 @@ it is ingested", and that skill is the one to change if the rule moves.
 
 - **Anything a reader of the folio needs.** That is `docs/`, and moving it
   here to tidy up is the opposite mistake.
-- **A bean.** Beans have their own lifecycle — `scrapped`, with reasons — and
+- **A work item.** Work items have their own lifecycle — `scrapped`, with reasons — and
   a second disposal mechanism for them would be two answers to one question.
-  A cutover's snapshot of a whole `beans/` directory is not that: the beans
+  A cutover's snapshot of a whole `beans/` directory is not that: the work items
   stay live on their branch, and the archive is the copy `main` last held.
   The rule and its format are in
   [`directory-conventions`](directory-conventions.md) §"Cutting an EXISTING

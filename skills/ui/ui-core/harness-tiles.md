@@ -364,13 +364,13 @@ data, once, for both passes (`compose-docs --shell --instance`, and
 |---|---|---|
 | the folio's own root (`/<instance>/…`) | resolves inside the folio's baseurl | kept |
 | a page the folio's declaration publishes at its site's root (`/beans/`), when the folio IS the checkout's root (`rootOwnPages`) | stays root-relative, on the folio's own site | kept |
-| another instance's **`state`** graph (beans, todos, QA, health, uploads …) | **is not linked**; the icon says why in words | **none** |
+| another instance's **`state`** graph (work items, todos, QA, health, uploads …) | **is not linked**; the icon says why in words | **none** |
 | a platform content, context or derived graph (skills, processes, tools, schemas, docs …) | is re-based, absolute, onto `DOCS_SITE_BASE`, with its qualifier shown | **none** |
 | a kind nothing classifies | is treated as state | none |
 
 **The state row is unlinked rather than shown at zero or re-based.** Per
 `schemas/ui/tile-count.ts`, absent is a third state, never `0`: a folio that
-declares no `beans` graph has said nothing about beans. Showing `0` would be a
+declares no `beans` graph has said nothing about work items. Showing `0` would be a
 claim, and showing the platform's number answers the folio's question with
 somebody else's. The icon keeps its
 place and its accessible name says, for example, *"<folio> declares no beans

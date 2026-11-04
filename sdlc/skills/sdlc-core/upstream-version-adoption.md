@@ -94,7 +94,7 @@ structure the theme emits. An upstream rename of any of those is not a build
 failure — it is a shipped feature that quietly stops working, which is the
 failure mode a pin exists to convert into a decision.
 
-Write the analysis down as the bean's note before building anything. A candidate
+Write the analysis down as the work item's note before building anything. A candidate
 that touches nothing we bind to is a different conversation from one that
 renames a selector we depend on, and the reviewer needs to know which they are
 looking at before they look.
@@ -158,11 +158,11 @@ Three outcomes:
   ([`bean-blocking.md`](../../../work-plan/skills/work-plan/bean-blocking.md)). A hold with no expiry cannot be told
   from abandoned work, and the next watcher run will re-raise the same pin with
   no memory of why it was left.
-- **Decline** — record the reasons on the bean and scrap it. A scrapped bean is
+- **Decline** — record the reasons on the work item and scrap it. A scrapped work item is
   what stops the next agent re-entering the same dead end; a deleted one leaves
   them unable to tell a decision from an accident.
 
-In every case the decision is written down before the process ends. The bean is
+In every case the decision is written down before the process ends. The work item is
 `resolve`d from the terminal step, so a run that stops at "we looked and said
 no" is as finished as one that moved the pin.
 

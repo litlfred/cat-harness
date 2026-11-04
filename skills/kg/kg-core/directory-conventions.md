@@ -206,7 +206,7 @@ graph with named nodes, declared by `beans/beans.json` (schema:
 running-instance state. Two sibling directory entries for a parent and its
 child would misrepresent a containment relation and tell the two apart only by
 file extension. So the harness says which directories exist and what kind of
-graph each holds, and the bean graph says what its own nodes are. **One fact,
+graph each holds, and the work item graph says what its own nodes are. **One fact,
 one place, at each level** — and a consumer asks for a node by name instead of
 inferring it from a file extension.
 
@@ -644,7 +644,7 @@ plan lives, so the scaffold asks the `source` resolver.
   `cat/dpi-h-ra/todos` (the `cat/<harness>/<name>` convention applied to a
   folio). One name does three jobs:
   - it names the declaration (`<instance>.json`);
-  - it prefixes the bean ids (`.beans.yml` → `<instance>-`);
+  - it prefixes the work item ids (`.beans.yml` → `<instance>-`);
   - it names the state branches.
 
   The last segment is the directory **id**, the key that `branch-store
@@ -707,7 +707,7 @@ plan lives, so the scaffold asks the `source` resolver.
   the tip, and only if both blobs are there does it make the removal
   commit. No trashcan declared, a trashcan not on a tip, a branch that is
   not there, or a push that did not land: **refused, `main` untouched**,
-  with the fix named. This is not a second disposal of beans — the branch
+  with the fix named. This is not a second disposal of work items — the branch
   is still the live store; the deposit is the copy `main` last held.
   `deletion-requires-confirmation` still governs: the dry run is the
   report, and `--commit` is only run on the owner's explicit go.
@@ -783,7 +783,7 @@ What is declared:
   refused (`publish-without-writer`): nothing would build it;
 - nothing else. Which artefacts are built at publish is DERIVED from the edges
   and the inputs' storage, never listed — not in a workflow, not here. The
-  next graph moved onto a branch (beans, todos) carries its viewers with it
+  next graph moved onto a branch (work items, todos) carries its viewers with it
   by declaring their writers.
 
 What is checked, by `check:derived-from`:
@@ -808,7 +808,7 @@ removes it.
 ### Publishing a subgraph's contents — the declared Subgraph node is the container (STRICT)
 
 A declared subgraph is a Subgraph node plus its content nodes. A generator
-that publishes the contents of a declared subgraph (a `todos.jsonld`, a beans
+that publishes the contents of a declared subgraph (a `todos.jsonld`, a work items
 graph, a library index) does NOT mint its own collection node for them. It:
 
 1. uses the **declared Subgraph node's IRI** as the container `@id` —
@@ -916,7 +916,7 @@ mounted by `state:mount` at session start) or an in-memory branch store.
   path, and `bun run cat qa:publish` carries it to the branch under
   `main/<sha>/` or `pr/<n>/<sha>/`. Readers go through `qa-store` (`readQa`,
   `bun run cat qa:fetch`), which answers hit / miss / corrupt / unknown.
-- **`keyedBy: "tip"` (state graphs: beans, workflow instances, todos)**:
+- **`keyedBy: "tip"` (state graphs: work items, workflow instances, todos)**:
   Represents a single living tree where the branch tip IS the state. Writers
   write to the mounted path and push via `BranchStore` (`branch-store.ts push`
   or `bun run cat state:push`), which splices changes onto the remote tip and

@@ -23,7 +23,7 @@ sorted nothing would pass.
 
 <!-- detail -->
 
-Measured 2026-09-19 (bean `tywj`): `test/qa-panel.e2e.ts` pinned the first row
+Measured 2026-09-19 (work item `tywj`): `test/qa-panel.e2e.ts` pinned the first row
 to `voice-status-leak`/`fail`/`critical`, the fold count to `47` and the checker
 hash to `5af6856733f3`. An adjudication in `c8fbad385` turned that criterion
 `pass`; four assertions went red for reasons unrelated to the panel.
@@ -36,4 +36,4 @@ frozen document makes the assertion self-consistent, not correct — the same
 defect one field down.
 
 `severity`, `evidence` and `changed` exist only in states the corpus is not in,
-so no live sidecar vouches for them. Beans `tywj`, `qjyi`, `iumj`.
+so no live sidecar vouches for them. Work items `tywj`, `qjyi`, `iumj`.

@@ -59,7 +59,7 @@ SMART base: no, so there is no record. "Immunization" against WHO SMART base:
 yes. A miss there is a disagreement worth a decision.
 
 **Never generate records in bulk.** One record is one decision somebody
-took. The rule is the same as for beans, which are not sidecars: a
+took. The rule is the same as for work items, which are not sidecars: a
 machine-written queue of thousands of "undecided" rows would bury the few
 decisions that matter. Rows with no decision simply have no record.
 

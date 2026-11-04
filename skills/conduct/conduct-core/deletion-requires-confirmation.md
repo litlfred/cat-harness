@@ -27,7 +27,7 @@ waiver carries the grantor, their **verbatim words**, one gate class, a scope
 and an expiry; one missing field means there is no waiver
 ([`confirmation-waiver`](confirmation-waiver.md)). A `deletion` waiver **is
 never blanket** — a grant over build artefacts is not a grant over content —
-and **it never reaches a bean**: *never delete a bean* is a prohibition, and
+and **it never reaches a work item**: *never delete a work item* is a prohibition, and
 `scrapped`, with reasons, is always available.
 
 ## Why removing something is not the inverse of creating it
@@ -38,7 +38,7 @@ here".
 
 **The person who pays is not the person who acted.** A sibling session, a
 reviewer following a link, the next agent — none can tell a deliberate removal
-from an accident. A scrapped bean records that something was considered and
+from an accident. A scrapped work item records that something was considered and
 rejected; a deleted one leaves a sibling unable to tell abandonment from
 accident. The same holds for a staging preview, a witness or a library source.
 
@@ -46,7 +46,7 @@ accident. The same holds for a staging preview, a witness or a library source.
 in a report and one word back; a wrong deletion costs whatever it took to
 produce the thing, and may never be discovered.
 
-This skill is the general rule; the bean rule in
+This skill is the general rule; the work item rule in
 [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) is one
 instance of it.
 
@@ -63,7 +63,7 @@ If the answer to the first is yes and to the second is no, it is durable.
 
 | artefact | why | the non-destructive move |
 |---|---|---|
-| a **bean** (`beans/defs/*.md`) | records that something was considered; ids are referenced from commits, issues and other beans | set `status: scrapped` with the reasons; `beans archive` MOVES resolved ones |
+| a **work item** (`beans/defs/*.md`) | records that something was considered; ids are referenced from commits, issues and other work items | set `status: scrapped` with the reasons; `beans archive` MOVES resolved ones |
 | a **todo** (`todos/items/*.md`) | it is a *person's* outstanding work, not an agent's | ask the person; an agent may neither close nor remove one |
 | a **staging preview** (`STAGING/<slug>/` on the publish branch) | it is the artefact a human assesses a rendered change from — **unless the PR merged**, when the main site now shows the same thing | **merged → removed automatically; the merge IS the confirmation.** Otherwise: while the PR is open, the `staging:cleanup` label applied by a person; once closed unmerged, a `feature-staging.yml` dispatch with `cleanup_slug` + a matching `cleanup_confirm`, since the label cannot reach a closed PR |
 | a **published page** on the site | a URL somebody has linked or bookmarked | say what would 404 and let the owner decide; a redirect is often the answer |

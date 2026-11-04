@@ -116,7 +116,7 @@ software and knowledge engineering. Below is the mapping against the repository'
 
 ### F. Software Management & Collaboration: Industrial-Grade Governance
 - **Git-Backed Work-Plan Coordination (`sdlc/processes/bean-lifecycle.bpmn`, `work-plan/skills/work-plan/bean-coordination.md`)**:
-  - Branch-local claims, no duplicate bean creation, explicit holder notes, and scrap-over-delete discipline.
+  - Branch-local claims, no duplicate work item creation, explicit holder notes, and scrap-over-delete discipline.
 - **Serialized Merge Train & Merge Steward (`sdlc/processes/merge-train.bpmn`, `decisions/merge-priority.dmn`)**:
   - Avoids multi-agent git race conditions and conflicting concurrent pushes to main.
 
@@ -154,7 +154,7 @@ The survey identifies emerging operational paradigms where folio-assistant does 
 2. **Runtime APM & Telemetry Closed-Loop Ingestion**:
    - *Current state*: Audit failures in CI create local and branch-level reports. Production telemetry does not feed back into the `beans` graph.
    - *Survey benchmark*: Automated incident-to-bug-report translation with automated regression test generation.
-   - *Recommendation*: Connect external issue alerts and crash-reporters into automated triage beans (`stalled-agent-triage` / `issue-working`).
+   - *Recommendation*: Connect external issue alerts and crash-reporters into automated triage work items (`stalled-agent-triage` / `issue-working`).
 
 3. **Legacy Software Reverse Engineering**:
    - *Current state*: Folio-assistant excels in forward-engineering from formal specifications, guidelines, and schemas.
@@ -170,4 +170,4 @@ The survey identifies emerging operational paradigms where folio-assistant does 
 2. **Hybrid Deterministic/LLM Architecture is Essential**:
    Pure generative coding degrades with complexity. Inverting the model's responsibility from generating whole output to generating validated rules (`methodologies/hybrid-llm-deterministic.md`) matches the survey's research agenda for Phase 1 (specialized agent capability enhancement).
 3. **Multi-Agent Coordination Requires Serialized Governance**:
-   Uncoordinated agent swarms produce merge chaos and duplicated work. Folio-assistant's bean claims and merge steward fulfill the survey's Phase 2 vision for optimizing agent synergy and leveraging industry software engineering principles.
+   Uncoordinated agent swarms produce merge chaos and duplicated work. Folio-assistant's work item claims and merge steward fulfill the survey's Phase 2 vision for optimizing agent synergy and leveraging industry software engineering principles.

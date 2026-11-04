@@ -144,5 +144,5 @@ change how processes, roles or skills relate to each other, change it here too.
 - [Getting started]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }}) — the first five minutes
 - [Agentic harness]({{ '/docs/cat-harness/concepts/agentic-harness.html' | relative_url }}) — the agent–user interaction model, idle and workflow states
 - [Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) — the normative picture of the review and publish path
-- [Beans and todos]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}) — the work plan
+- [Work items and todos]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}) — the work plan
 - [CRDM]({{ '/docs/cat-harness/process/crdm-methodology.html' | relative_url }}) — what happens when a request is a feature request rather than content work

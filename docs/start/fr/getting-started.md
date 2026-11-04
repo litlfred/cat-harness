@@ -175,7 +175,7 @@ Les outils les plus pertinents pour cette page :
 |------|---------|
 | `folio_init` | Échafauder un folio. Enregistré comme un outil **générique**, car il s'exécute avant que le folio n'ait un type de contenu |
 | `workflow_start` / `workflow_next` / `workflow_complete` | Exécuter `getting-started.bpmn` comme un vrai processus ; `workflow_next` indique ce qui est activé actuellement et quelle compétence l'implémente |
-| `work_plan_prime` | Présenter le plan de travail (beans) |
+| `work_plan_prime` | Présenter le plan de travail (work items) |
 | `check_dependencies` | Détecter les chaînes d'outils installées |
 | `skill_list` / `skill_fetch` | Découvrir et charger les instructions d'une compétence |
 

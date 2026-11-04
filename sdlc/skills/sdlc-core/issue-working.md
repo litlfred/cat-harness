@@ -143,15 +143,15 @@ only on an open PR's head, ask the
 ## When the work has a BEAN and no issue (STRICT)
 
 > **A round summary is owed either way. With no issue, it goes on the change
-> proposal AND into the bean — the bean is the durable artefact a sibling
+> proposal AND into the work item — the work item is the durable artefact a sibling
 > reads, and a summary that exists only in a PR thread is invisible to the work
 > plan on `main`.**
 
-**And a bean that has an issue carries the link BOTH ways**: a reader arriving
+**And a work item that has an issue carries the link BOTH ways**: a reader arriving
 at either object has to be able to reach the other, and a check reports the
 ones that cannot.
 
 When to open an issue at all is [`crdm-detect`](../crdm/crdm-detect.md)
 §"Issue association" — **scan before creating one, and never create one without
 permission**. This section is about what is owed once the work exists, not
-about manufacturing an issue for every bean.
+about manufacturing an issue for every work item.

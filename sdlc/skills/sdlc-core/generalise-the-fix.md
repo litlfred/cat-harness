@@ -32,14 +32,14 @@ Three questions, in order. The first is the one that is usually skipped.
 The symptom is where you noticed it. The defect is the rule that was wrong.
 They are rarely the same, and the fix belongs at the defect.
 
-> **Symptom:** two beans reported as having no options.
+> **Symptom:** two work items reported as having no options.
 > **Defect:** the counter recognised one markdown form — top-level list items —
 > while MADR, the authority, is format-agnostic. The corpus was fine; the
-> detector had invented a requirement. Fixing the two beans would have left the
+> detector had invented a requirement. Fixing the two work items would have left the
 > rule free to misjudge the next one.
 
 **The tell that you are fixing a symptom:** the fix names a specific instance
-— two bean ids in a rule, `document-ingestion.html` in a selector, one
+— two work item ids in a rule, `document-ingestion.html` in a selector, one
 filename in a condition.
 
 ### 1.2 What else has this shape?
@@ -127,11 +127,11 @@ at once.
 2. **The fix is unconditional and the conflict is not.** Ask when the defect can
    occur. If the fix is broader than that window, narrow it or say why not.
 3. **You summed where you should have chosen.** Recognising three forms is
-   right; adding their counts gave one bean **14 options where it has 4**. When
+   right; adding their counts gave one work item **14 options where it has 4**. When
    alternatives are alternatives, take the most specific present — do not add.
 4. **The label is doing work the relation should do.** A stale-claim check
-   keys on `parent` rather than `type: epic`, because `type` is a label a bean sets about
-   *itself* while `parent` is a fact another bean asserts about it. Keying on
+   keys on `parent` rather than `type: epic`, because `type` is a label a work item sets about
+   *itself* while `parent` is a fact another work item asserts about it. Keying on
    the label would also have forced a ruling on what `feature` means.
 
 ### Keep the discrimination the check exists for

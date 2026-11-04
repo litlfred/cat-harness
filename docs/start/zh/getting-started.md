@@ -131,7 +131,7 @@ bun run cat check-deps
 |------|---------|
 | `folio_init` | 为一个 folio 搭建脚手架。注册为**通用**工具，因为它在 folio 拥有内容类型之前就要运行 |
 | `workflow_start` / `workflow_next` / `workflow_complete` | 把 `getting-started.bpmn` 当作真正的流程来运行；`workflow_next` 说明此刻可以做什么，以及由哪个技能实现 |
-| `work_plan_prime` | 呈现工作计划（beans） |
+| `work_plan_prime` | 呈现工作计划（work items） |
 | `check_dependencies` | 探测已安装了哪些工具链 |
 | `skill_list` / `skill_fetch` | 发现并加载某个技能的说明 |
 

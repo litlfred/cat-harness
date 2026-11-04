@@ -21,7 +21,7 @@ App**, and secret names follow the **capability naming rule** below.
 |---|---|
 | read secret **names** and their `updated_at`, where it has permission | sees, asks for, accepts, echoes, stores or forwards a secret **value** |
 | compare declared needs, workflow usage and the names present, and report | runs `gh secret set`, `gh secret delete` or a forge equivalent |
-| remind the holder before an expiry (session-start sweep, health issue, a bean) | creates a PAT, an App key, a deploy key or a forge token |
+| remind the holder before an expiry (session-start sweep, health issue, a work item) | creates a PAT, an App key, a deploy key or a forge token |
 | draft the exact steps below for the person to carry out | rotates or revokes on its own initiative — it reports what would go and waits |
 | record what the person did (mechanism, name, expiry) — never the value | writes anything derived from a value: a hash, a prefix, a length |
 
@@ -73,7 +73,7 @@ minutes of UI, once, and a long-lived private key to store and rotate.
    secret.
 3. **Generate a private key.** Same page → **Private keys** →
    **Generate a private key**. A `.pem` file downloads. This file is the
-   secret: do not paste it into a chat, a bean, an issue or a commit.
+   secret: do not paste it into a chat, a work item, an issue or a commit.
 4. **Install it on selected repositories.** Left menu → **Install App** →
    your account → **Only select repositories** → pick the repositories the
    needs name (e.g. `bootstrap`, `folio-assistant`) → **Install**.

@@ -7,7 +7,7 @@ with three swim lanes:
   feedback into agent-actionable direction, and confirms final delivery.
 
 - **Agent** — detects the feature request, scans for matching issues, runs
-  through the six CRDM phases, creates beans, implements on feature
+  through the six CRDM phases, creates work items, implements on feature
   branches, posts summaries to the issue.
 
 - **Stakeholders** — confirm needs, approve requirements, test the MVP in

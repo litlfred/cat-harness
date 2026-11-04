@@ -10,7 +10,7 @@ summary: >-
 # Deployment descriptions: placing actors, matching Tools
 
 **Status: proposal (owner chose "proposal first", 2026-10-24).** No code is
-written against it. Bean `folio-assistant-o1by`, under epic `5a3l`.
+written against it. Work item `folio-assistant-o1by`, under epic `5a3l`.
 
 > sovergign cloud is one of several potential deployment scenarios for agents
 > and Tools. we need a comprehensive way to descirbe this.
@@ -35,17 +35,17 @@ the **placement** of a declared actor, and one reader of it, the
 | layer | what it says | where |
 |---|---|---|
 | Topology | ten axes, an **aggregate** over the deployment | [deployment-topologies](deployment-topologies.md) §1; `Topology` in `schemas/cat-harness.ts` |
-| Named profiles | a point in the topology product; only `developer` exists | `DEPLOYMENT_PROFILES` (bean `2ngl`) |
+| Named profiles | a point in the topology product; only `developer` exists | `DEPLOYMENT_PROFILES` (work item `2ngl`) |
 | Refused pairs | combinations the mechanism forbids | `topologyConflicts()` |
 | Operating modes | author, ingest, develop, test, qa-review, publish | deployment-topologies §2 |
 | Actors | 34 declared participants: `kind` (person, agent, system), `roles`, `capabilities`, sometimes `reach` | `scenarios/actors/` |
-| Per-actor reach | reach is a property of each actor; the deployment value describes the population | `schemas/actor-reach.ts`, [actor facts](actor-facts-and-their-processes.md) (beans `r0rq`, `bkje`) |
+| Per-actor reach | reach is a property of each actor; the deployment value describes the population | `schemas/actor-reach.ts`, [actor facts](actor-facts-and-their-processes.md) (work items `r0rq`, `bkje`) |
 | Tool requirements | `requires` {os, runtime, network}, `remedies`, `install`, `selection` | `schemas/tool.ts`, gated by `check:tools` |
-| Forge twins | GitHub and GitLab Tools as alternatives under one skill | bean `4dbr` |
-| Agent host and identity | which agent host runs a session; who is typing | cat-harness-tools `src/core/agent-host.ts`, `identity.ts` (bean `f1e1`) |
-| Credentials | a consumer declares a need from a closed action list; a deployment profile supplies a mechanism | [credentials](credentials-needs-and-supply.md) (bean `vobp`; declaration `9hxd`, parked) |
-| UI surface | gh-pages, local server, with or without MCP, chat only | `skills/ui/ui-core/deployment-awareness.md` (bean `81vy`) |
-| Live data | sovereign cloud: artefacts only; self-sovereign: may hold wallet credentials | beans `4y2i`, `61tg`; [wallet custody](wallet-custody.md) |
+| Forge twins | GitHub and GitLab Tools as alternatives under one skill | work item `4dbr` |
+| Agent host and identity | which agent host runs a session; who is typing | cat-harness-tools `src/core/agent-host.ts`, `identity.ts` (work item `f1e1`) |
+| Credentials | a consumer declares a need from a closed action list; a deployment profile supplies a mechanism | [credentials](credentials-needs-and-supply.md) (work item `vobp`; declaration `9hxd`, parked) |
+| UI surface | gh-pages, local server, with or without MCP, chat only | `skills/ui/ui-core/deployment-awareness.md` (work item `81vy`) |
+| Live data | sovereign cloud: artefacts only; self-sovereign: may hold wallet credentials | work items `4y2i`, `61tg`; [wallet custody](wallet-custody.md) |
 
 ## 2. The gap: an actor is not a placement
 
@@ -70,7 +70,7 @@ So four questions are answered today by an agent reading prose:
    actor fact.
 3. **The #363 scenarios.** Only `developer` is a declared profile. Sovereign
    cloud, self-sovereign, private GitHub, test/swarm and QA review are tables
-   in beans.
+   in work items.
 4. **Jurisdiction and live data.** Sovereign cloud's real requirement (where an
    artefact may be served, who may reach it, how long it is kept) has a value,
    `jurisdiction-endpoint`, and no fields. "Artefacts only" is a ruling in
@@ -148,7 +148,7 @@ first is the deployment this project runs now, because it is real:
 | private GitHub | github, private | local server | as today | artefacts only |
 | sovereign cloud | jurisdiction-hosted | jurisdiction endpoint | agents and runners inside the jurisdiction | artefacts only |
 | self-sovereign | own or none | local server | an air-gapped agent, a signing host, a person | may hold credentials |
-| test / swarm | any | none | a stack of agents (bean `amom`) | artefacts only |
+| test / swarm | any | none | a stack of agents (work item `amom`) | artefacts only |
 
 ## 4. What it deliberately does not do
 
@@ -170,7 +170,7 @@ first is the deployment this project runs now, because it is real:
    or both.
    The folder sits in the declared `scenarios` graph, beside `actors/`, because
    every placement names an actor there (`DEPLOYMENTS_DIRNAME` in
-   `schemas/deployment-description.ts`, bean `23a3`).
+   `schemas/deployment-description.ts`, work item `23a3`).
 2. **Jurisdiction now or later.** **Decided 2026-10-24 (owner, option A): now,
    as four optional fields** (§3.1), so the sovereign-cloud example can be
    written in full. The alternatives were to wait until a jurisdiction asks, or
@@ -182,7 +182,7 @@ first is the deployment this project runs now, because it is real:
 
 ## 6. Work items
 
-| bean | what |
+| work item | what |
 |---|---|
 | `o1by` | this proposal (feature) |
 | `23a3` | schema: `DeploymentDescription`, `Placement`, `Jurisdiction`, and the placement-contradicts-actor check |

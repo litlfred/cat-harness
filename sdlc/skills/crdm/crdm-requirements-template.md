@@ -33,7 +33,7 @@ Each requirement has:
 | **Priority** | Must-have / Should-have / Nice-to-have | Must-have |
 | **Source** | Phase 1 needs statement ref | "Needs statement §2 — BA cannot see work grouped by release" |
 | **Impact** | Phase 4 footprint | "Schema: new `type` field on bean. Pipeline: none" |
-| **Estimated scope** | Bean count / PR sizing | "2 beans, 1 PR" |
+| **Estimated scope** | Work item count / PR sizing | "2 beans, 1 PR" |
 
 ### Conformance keywords
 
@@ -64,7 +64,7 @@ The requirements document as a whole is a **`RequirementSet`**
 methodology, the issue, a **stage** — `draft → proposed → approved → planned →
 in-progress → delivered → accepted`, or `rejected`, `cancelled`, `superseded` —
 its members (`req:` references, each with its own decision), its work plan
-(bean ids) and its sign-offs. Commit it beside the proposal as
+(work item ids) and its sign-offs. Commit it beside the proposal as
 `<slug>.requirement-set.json`, or as a `requirementSet:` key in the proposal's
 front matter; `check:requirements` judges it.
 
@@ -73,7 +73,7 @@ outlives the document that proposed it — with one link enforced: a set is
 `accepted` only when every member it approved is `in-force`. The stage moves
 only through a sign-off (Phase 5's `BA_Signoff`, close-out's `BA_Confirm`),
 and `check:requirements` refuses `approved`/`accepted` without a human
-sign-off, `planned` without beans, and `cancelled` without a reason.
+sign-off, `planned` without work items, and `cancelled` without a reason.
 
 ## Grouping requirements
 
@@ -179,7 +179,7 @@ PR (Phase 6)
 - [`crdm-requirements-workflow`](crdm-requirements-workflow.md) — Phase 3
 - [`crdm-impact-analysis`](crdm-impact-analysis.md) — Phase 4 follows this
 - [`crdm-detect`](crdm-detect.md) — detection
-- [`../../work-plan/skills/work-plan/todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — bean creation
+- [`../../work-plan/skills/work-plan/todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — work item creation
 - [`../../sdlc/skills/sdlc-core/specification-management.md`](../sdlc-core/specification-management.md) — governance and EARS/ISO statement quality
 - [`../../../methodologies/requirements-standards-assessment.md`](../../../methodologies/requirements-standards-assessment.md) — open standards (ReqIF, OSLC-RM, EARS, ISO 29148) assessment
 

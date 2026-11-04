@@ -45,7 +45,7 @@ same bytes.
 
 **Stage 1 is not "export everything".** `kg-export` produces the whole graph
 for inspection; a portal wants what its readers may see. Running one as the
-other is how a `qa-review` verdict, a bean's blocking note or an unpublished
+other is how a `qa-review` verdict, a work item's blocking note or an unpublished
 draft reaches a public cache. Content that must be stripped before
 publication is stripped at stage 1, once, rather than at each consumer.
 

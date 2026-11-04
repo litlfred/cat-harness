@@ -170,10 +170,10 @@ check:
 When one of the five fires, **stop making changes** and recover in this order:
 
 1. **Re-read the instance.** `work_plan_prime` reports every instance's
-   position next to its bean. State is committed, so a sibling session's
+   position next to its work item. State is committed, so a sibling session's
    progress is visible too.
 2. **Reconstruct from context what you were doing** and which task it belongs
-   to. You usually can: the branch name, the claimed bean, and the opening
+   to. You usually can: the branch name, the claimed work item, and the opening
    brief together pin it.
 3. **Say what you concluded, and confirm it with the user** before resuming:
 
@@ -208,15 +208,15 @@ artefact**. There is no field to read back, no diff that distinguishes "moved
 deliberately" from "moved by an agent that had lost the thread", and — because
 a move keeps the id — nothing that even looks unusual.
 
-**The only possible record is what was written to a bean at the time.** Beans
-carry **no anchor**: a bean is not a thing pinned to a block, it is the record
+**The only possible record is what was written to a work item at the time.** Work items
+carry **no anchor**: a work item is not a thing pinned to a block, it is the record
 that a pinning *changed*. `workflow/bean-link.ts` has the `note` op that writes
 it.
 
 So, as part of recovery, before step 3's confirmation:
 
 - **Name every note or sticky you re-anchored during the detour**, with its
-  anchor before and after. Read them off the bean's note trail — not off the
+  anchor before and after. Read them off the work item's note trail — not off the
   notes, which no longer know.
 - **If the trail is silent and you moved things, say that.** A gap is a
   finding. "I moved stickies and did not record where from" is recoverable by
@@ -228,18 +228,18 @@ So, as part of recovery, before step 3's confirmation:
 
 **A note carries no `movedFrom` history.** History kept in the artefact being
 moved is lost when the note is deleted, or moved by a tool that does not
-maintain the field. The bean is a *separate* record, which is what an audit
+maintain the field. The work item is a *separate* record, which is what an audit
 trail has to be.
 
 ### Reading a bean back as the trail
 
-A bean is a usable trail when **a wrong claim is left in place**, with the
-correction appended beside it rather than replacing it. Read back, the bean
+A work item is a usable trail when **a wrong claim is left in place**, with the
+correction appended beside it rather than replacing it. Read back, the work item
 shows the premise, the disproof, and the re-scoped work in order, so an agent
 resuming can see that the original framing was abandoned *and why*, which is
 what it needs to avoid re-deriving the same mistake.
 
-A bean tidied to show only the correct conclusion reads as though the work had
+A work item tidied to show only the correct conclusion reads as though the work had
 always been aimed there. That is why
 [`bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) has unwanted work
 `scrapped` **with its reasons** rather than deleted: a record that shows only

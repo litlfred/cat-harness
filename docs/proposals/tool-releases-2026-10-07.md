@@ -5,7 +5,7 @@ parent: Proposals
 
 # Tool releases and profiles
 
-Issue #2481, bean `3sbm`. **A proposal for owner sign-off; nothing here is built.**
+Issue #2481, work item `3sbm`. **A proposal for owner sign-off; nothing here is built.**
 
 ## What the owner asked
 
@@ -144,7 +144,7 @@ families:
 - **PROV:** no record links to a PROV activity.
 - **`folio-security-gate/v1`:** records no versioning at all.
 - **The ITB:** nothing is implemented. The only ITB material is the GITB
-  README held in `fhir-harness/library/`, prose mentions, and beans `y4uj`
+  README held in `fhir-harness/library/`, prose mentions, and work items `y4uj`
   and `18p1`.
 
 ### The proposal: three schemas, not one per report

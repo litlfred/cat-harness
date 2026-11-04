@@ -776,7 +776,7 @@ copy of the builder**.
 
 | slice | source | payloads |
 |---|---|---|
-| `beans` | `beans/defs/` | bean files, at deploy |
+| `beans` | `beans/defs/` | work item files, at deploy |
 | `todos` | `assets/todos/index.json` | todo files, at deploy |
 | `library` | `assets/library/index.json` + `entries/<id>.json` | entry files, at deploy |
 | `kg` | the whole-repo KG export | already committed |
@@ -786,7 +786,7 @@ whole-repo slice is the **no-body variant**: nodes, edges, and an FTS5 over
 names, titles, summaries and descriptions, with bodies as payload pointers. It
 stores IRIs relative to the document (`skill/todo-manager`, with the base in
 `meta.base`) to stay small. The ~5 MB budget is `SIZE_BUDGET_BYTES`,
-**reported** in the manifest as `overBudget` and not gated (the beans slice
+**reported** in the manifest as `overBudget` and not gated (the work items slice
 grows every session, and a gate would turn every open PR red for a change
 nobody made). Over budget means stop and report (the process's budget
 gateway), not ship.
@@ -798,7 +798,7 @@ gateway), not ship.
   A JSON-valued field stays a JSON column and is read through JSON1
   (`json_each`), rather than becoming another stored table.
 - **One stored table per relation, never two.** When a relation can be
-  declared from either side, as a bean's `blocking:` and `blocked_by:` can, the
+  declared from either side, as a work item's `blocking:` and `blocked_by:` can, the
   table has a `declared_on` column saying which side declared each edge, and
   the two directions are **views** over it. Two tables for one relation are two
   answers that can disagree. When a relation is declared on one side only, a
@@ -815,7 +815,7 @@ gateway), not ship.
   payload at `<BASE_URL>/payload/sha256/<hex>` (§"Payloads"). The client fetches
   the payload when a result is opened. **What the payload is, is a per-slice
   decision**:
-  a bean's or a todo's source file verbatim; for the library, the PUBLISHED
+  a work item's or a todo's source file verbatim; for the library, the PUBLISHED
   `entries/<id>.json`, one payload per entry that every one of its blocks
   points at, never the section files under `library/`, because a withheld
   entry publishes no verbatim text and the published entry is
@@ -928,7 +928,7 @@ truly does not move may still be committed and gated like any generated file;
 none of the four pilots is that slice.
 
 Deploy payloads never go into the committed `docs/payload/`. Its orphan audit
-admits KG nodes only, and beans, todos and library entries are not KG nodes
+admits KG nodes only, and work items, todos and library entries are not KG nodes
 (§"Adding a node type").
 
 The gate (`bun run cat slice:sqlite:check`, or `--check --slice <name>` for one)
@@ -1013,7 +1013,7 @@ Follow the `slice-sqlite-publish` process. In short:
 ## Adding a node type
 
 1. **Decide it is in this graph.** The `kg` graph holds skills, processes,
-   roles, capabilities and the directory declaration. **Beans are not in it** —
+   roles, capabilities and the directory declaration. **Work items are not in it** —
    `beans/` is its own graph typology with its own nodes (`defs`, `workflows`),
    and folding the work plan into the KG re-merges what was separated.
 2. **Mint its `@id` with `makeIri`, and give it an `@type`.** Both are asserted

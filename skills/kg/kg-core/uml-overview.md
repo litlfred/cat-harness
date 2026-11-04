@@ -22,8 +22,8 @@ while it is stale.
 | Diagram | Written by | Tool |
 |---|---|---|
 | one per harness, and one per **named sub-graph** it declares | `scripts/gen-uml-overview.ts` | `uml-overview` |
-| the harness **object model** (Actor, Role, Skill, Process, Task, Todo, Bean, Test, …) | `scripts/gen-object-model-uml.ts` | `uml-object-model` |
-| the harness **schemas**: the object model without Bean and Todo, shown at the top of the UML overview page | `scripts/gen-uml-overview.ts`, from `schemasViewPuml` in `gen-object-model-uml.ts` | `uml-overview` |
+| the harness **object model** (Actor, Role, Skill, Process, Task, Todo, Work item, Test, …) | `scripts/gen-object-model-uml.ts` | `uml-object-model` |
+| the harness **schemas**: the object model without Work item and Todo, shown at the top of the UML overview page | `scripts/gen-uml-overview.ts`, from `schemasViewPuml` in `gen-object-model-uml.ts` | `uml-overview` |
 
 **Content models get their class diagrams the same way.** A diagram of the
 types a CONTENT model uses is derived from that model by its own Tool, never
@@ -98,10 +98,10 @@ empty shape. Close it by registering a node schema, not by editing the diagram.
   `docs/assets/img/uml/harness-object-model.svg`, shown second on the UML
   overview page. `gen-object-model-uml.ts` writes the `.puml` only where the
   `beans` CLI is installed, so `gen-uml-overview.ts` renders the committed
-  file and never rewrites it. Its stamp check needs neither Java nor beans.
+  file and never rewrites it. Its stamp check needs neither Java nor work items.
 - `uml/harness-schemas.puml` and `docs/assets/img/uml/harness-schemas.svg`:
   the schemas view: Schema, Role, Actor, Skill, User Story, Process, Task
-  and Test. It leaves out Bean, the one class read from the `beans` CLI, so
+  and Test. It leaves out Work item, the one class read from the `beans` CLI, so
   unlike the full model it is checked in CI.
 
 **Colours are declared once, in `site-chrome/assets/css/uml.css`**, one CSS class per
@@ -154,7 +154,7 @@ runner whose fonts measure text a pixel differently.
 Run `uml:overview` after changing a declaration's `directories[]`, a graph
 kind's `nodeSchemas`, `validator` or `schema`, or any schema those point at.
 
-**The object model's `--check` needs the `beans` CLI**, because the Bean class is
+**The object model's `--check` needs the `beans` CLI**, because the Work item class is
 read from `beans graphql --schema`. Without it the check exits 2, "could not
 check", and never passes. That is why it is not a CI gate.
 

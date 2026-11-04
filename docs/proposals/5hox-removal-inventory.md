@@ -11,7 +11,7 @@ summary: >-
 # 5hox: the QA files that leave `main`
 {: .no_toc }
 
-Bean `5hox`, arc `3fva`,
+Work item `5hox`, arc `3fva`,
 [proposal](qa-reports-branch-and-test-process-2026-10-01.md) §4 item 3.7.
 Owner ruling D4 (b), 2026-10-01, "right away": the moved files are removed from
 `main` as soon as every reader is migrated and the `qa-reports` branch holds a
@@ -113,19 +113,19 @@ with it.
 | what | files | why it stays on `main` |
 |---|---|---|
 | `cat-harness/test/attestations/` | 48 | The `attestations` kind: agent, human and baseline-pair judgements. Ruling D2 (a). It is not a `qa` directory, so the derivation never reaches it. |
-| `cat-harness/test/health/results/` | 2 | The `health` kind. The proposal's §2.1 table says "move", but no declaration marks it moved and `qa:publish` does not carry it. A file the branch does not hold cannot be hash-verified, so it is not removed here. `check:harness-state` already reads it as a stored record (bean `0dav`). Moving it is a separate change: give it a publish path first. |
+| `cat-harness/test/health/results/` | 2 | The `health` kind. The proposal's §2.1 table says "move", but no declaration marks it moved and `qa:publish` does not carry it. A file the branch does not hold cannot be hash-verified, so it is not removed here. `check:harness-state` already reads it as a stored record (work item `0dav`). Moving it is a separate change: give it a publish path first. |
 | block verdicts beside their blocks (`*.qa.json` outside `test/results/`) | 0 | None remain. All 123 `*.qa.json` files are under `cat-harness/test/results/` (122 in `block-qa/`, 1 in `viewer-nav/`). |
-| QA fixtures (`cat-harness/test/support/`, `scripts/tests/fixtures`, and similar) | — | They are outside every `qa` directory, so they are not in the set. Tests build their own trees (bean `cxcn`). |
+| QA fixtures (`cat-harness/test/support/`, `scripts/tests/fixtures`, and similar) | — | They are outside every `qa` directory, so they are not in the set. Tests build their own trees (work item `cxcn`). |
 | the `bootstrap` and `bootstrap-tools` submodules | — | Separate repositories. Their hosted verdicts live in cat-harness's own `test/results/bootstrap*/`, which IS in the set. |
 | criterion definitions and schemas (`schemas/kg-qa.ts` and similar) | — | Code, not results. |
 
 ## Readers
 
-The callers report that every reader bean has landed on this branch: `2gst`,
+The callers report that every reader work item has landed on this branch: `2gst`,
 `8wj1`, `cxcn`, `8iqt`, `c8uq`, `tfqf`, `oq1j`, `id4s` and `0dav`. Some of
-those beans still read `todo` or `in-progress` in the bean store on this
+those work items still read `todo` or `in-progress` in the work item store on this
 branch. Their merges are in the history (for example `523456048`, "Merge
-id4s+0dav"). Bean `7mwa` (retire `qa:resolve-conflicts` and the `test/results`
+id4s+0dav"). Work item `7mwa` (retire `qa:resolve-conflicts` and the `test/results`
 entries in the repository attributes file, and declare `storage`) is still
 `todo`. Its `storage` half is done here.
 
@@ -186,7 +186,7 @@ The removal is its own commit. **`bun run cat gates` with the files absent: 16 o
 
 | group | gates | why | what clears it |
 |---|---|---|---|
-| A. stale-compare gates not migrated | `kg:audit:check`, `kg:audit:all:check`, `translation:block-qa:check`, and `skill:register:check` (twice) through its chain | They still compare a fresh run with the committed sidecar. With nothing committed, all 505 kg-qa sidecars and every translation-qa file read "stale". | Bean `oqe3` (still `todo`): compute and judge, with `--against`. |
+| A. stale-compare gates not migrated | `kg:audit:check`, `kg:audit:all:check`, `translation:block-qa:check`, and `skill:register:check` (twice) through its chain | They still compare a fresh run with the committed sidecar. With nothing committed, all 505 kg-qa sidecars and every translation-qa file read "stale". | Work item `oqe3` (still `todo`): compute and judge, with `--against`. |
 | B. UNKNOWN because no `main/` entry exists | `lsi:viz:check`, `uml:overview:check`, `check:qa-reviewer-permission`, `check:orphan-verdicts`, `check:kind-validators:require-all`, `check:declared-paths` | Each reads the corpus through qa-store or reports it absent. The branch has no `main/<sha>`, so each answers UNKNOWN, which is never a pass. | A `main/` entry from the arc merge, plus a `qa:fetch --ref main` step (or `--against main`) before these run in CI. |
 | C. committed pages that embed QA | `docs:pages:check`, `check:ci-invocations` (it runs `gen-docs-pages --check`) | The committed docs pages carry QA badges. Without the corpus the generator would write "not available", so every page reads stale. | `gen-docs-pages` reads the corpus through qa-store, or the badges leave the committed pages. This reader is not migrated yet. |
 | D. fixed in the removal | `readme:subgraphs:check` (`cat-harness/test/README.md` listed `results/`), `bun test` (`ingest-and-l1`) | | Done. |
@@ -228,7 +228,7 @@ witnesses for docs blocks no hand sweep had reached.
 
 **`bun run cat gates` with the files absent: 11 of 206 red, down from 16.** Group
 A is cleared: `kg:audit:check`, `kg:audit:all:check` and
-`translation:block-qa:check` now compute and judge (bean `oqe3`). `readme:subgraphs:check`
+`translation:block-qa:check` now compute and judge (work item `oqe3`). `readme:subgraphs:check`
 and `bun test` are green too. `skill:register:check` (×2) is still red, but
 only through the group B gates `lsi:viz:check` and `uml:overview:check`. The
 rest is groups B, C and E as above.

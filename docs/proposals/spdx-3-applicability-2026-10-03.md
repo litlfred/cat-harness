@@ -9,7 +9,7 @@ summary: >-
 # SPDX 3: where it should, could and should not be used
 {: .no_toc }
 
-**Status:** analysis for review. Bean `sd5v`. **Nothing is built.** The
+**Status:** analysis for review. Work item `sd5v`. **Nothing is built.** The
 specification is now held: the owner uploaded SPDX 3.0 (OMG formal/24-11-01)
 mid-analysis, and it is ingested as
 [`library/omg-2024-spdx-3-0`](../../library/conduct/omg-2024-spdx-3-0/), with the
@@ -51,7 +51,7 @@ short:
 - SPDX 3.0 has no verdict class. 3.1-RC1 adds one, but in a
   functional-safety profile, and 3.1 is not final.
 - An SPDX store would be committed derived state with a date on every
-  element: the churn class beans `mcdj`, `oq57` and `3ozg` record.
+  element: the churn class work items `mcdj`, `oq57` and `3ozg` record.
 - Its elements are immutable, while a QA sidecar holds many reviewers' verdicts
   over time.
 - "What ran and who answered for it" already has an owner-chosen standard:
@@ -250,10 +250,10 @@ otherwise surface as a malformed SPDX document.
 | G2 | **Three sha256 vocabularies** for one fact: `source_sha256`, `fixity{algorithm,digest}`, `binary-release` `sha256` | `gen-library-jsonld.ts`, `materialization.ts`, `binary-release.ts` | One `Hash`-shaped type would serve all three, and SPDX later. |
 | G3 | **Licence `id` is unvalidated.** NOTICE and THIRD-PARTY-NOTICES are hand-written duplicates. | `schemas/source-licence.ts`, root files | Rows 3–4 |
 | G4 | **A Tool has no `version`, no content hash and no licence.** Skill `package-manifest.json` has no licence. | `schemas/tool.ts`, `schemas/skill-package.ts` | Rows 7–8. It also matters for `tool-downstream-fresh`. |
-| G5 | **Python requirements are unpinned** (no `==`), while `bun.lock` is exact | `requirements*.txt`, generated from `schemas/python-deps.ts` | Row 1. A build SBOM cannot name an exact version that was never fixed. Related to the supply-chain bean `j41m`. |
+| G5 | **Python requirements are unpinned** (no `==`), while `bun.lock` is exact | `requirements*.txt`, generated from `schemas/python-deps.ts` | Row 1. A build SBOM cannot name an exact version that was never fixed. Related to the supply-chain work item `j41m`. |
 | G6 | **Reviewer actors do not resolve**: 0 of 5,896 `block-qa` reviewer entries name a declared actor (recount: the actor-resolution report in `qa-readers-audit`) | `schemas/block-qa.ts` `QaReviewer.actor` | Any export naming who judged anything, in SPDX or PROV |
 | G7 | **No QA artefact links to PROV.** `grep -l 'prov' cat-harness/scripts/qa-*.ts cat-harness/schemas/*qa*.ts` finds none. No Activity `generated` a sidecar. | QA writers | §4.2: the PROV record is what a release SBOM would point at for "how" |
-| G8 | **Bean `mcdj` is marked done, but regressed.** It says *"no kg witness carries `scriptHash` at all now"*. `content/pipeline/qa-witness.ts:597` still writes `scriptHash: auditor?.script_hash`, and 21 `*.kg.json` witnesses carry it (`grep -l '"scriptHash"' cat-harness/test/results/witnesses/**/*.kg.json`). | | Not SPDX. Found in passing, and reported because a completed bean is now false. |
+| G8 | **Work item `mcdj` is marked done, but regressed.** It says *"no kg witness carries `scriptHash` at all now"*. `content/pipeline/qa-witness.ts:597` still writes `scriptHash: auditor?.script_hash`, and 21 `*.kg.json` witnesses carry it (`grep -l '"scriptHash"' cat-harness/test/results/witnesses/**/*.kg.json`). | | Not SPDX. Found in passing, and reported because a completed work item is now false. |
 | G9 | ~~**The SPDX spec is not held**~~ **Closed 2026-10-03**: 3.0 ingested. 3.1 is held only as a deck and a queued RC schema. | `library/omg-2024-spdx-3-0` | §2 |
 | G11 | **Licence ids written during this analysis are unvalidated**: `Community-Spec-1.0 AND CC-BY-3.0`, `CC-BY-SA-3.0`. The first is an *expression*, which `source-licence.ts` neither parses nor rejects. | the two new `licence.json` files | M4 must accept expressions, not only ids |
 | G12 | **Share-alike enters the corpus.** The NIST deck is CC-BY-SA-3.0, so its library entry is an adaptation under CC-BY-SA-3.0, not under `LICENSE-CONTENT.md`'s CC-BY-3.0. Nothing generates THIRD-PARTY-NOTICES to say so. | `library/strauch-carbno-2025-spdx-3-1-supply-chain` | M5 |
@@ -263,7 +263,7 @@ otherwise surface as a malformed SPDX document.
 
 | | missing | shape | modelled on |
 |---|---|---|---|
-| M1 | ~~Ingest SPDX 3.0.1 and write a `spdx-3` methodology node~~ **Done in this change** (3.0, OMG edition). Remaining: ingest 3.1 final when published, compare the OMG edition with the LF 3.0.1 web edition, and pin the context file beside the entry, as `w3c-2024-prov-jsonld` pins PROV's | `library/methodology-from-source.bpmn` | beans `f1qz` → `6306` |
+| M1 | ~~Ingest SPDX 3.0.1 and write a `spdx-3` methodology node~~ **Done in this change** (3.0, OMG edition). Remaining: ingest 3.1 final when published, compare the OMG edition with the LF 3.0.1 web edition, and pin the context file beside the entry, as `w3c-2024-prov-jsonld` pins PROV's | `library/methodology-from-source.bpmn` | work items `f1qz` → `6306` |
 | M2 | **A release process.** `release-folio-assistant.yml` runs today with **no BPMN**. Tasks: resolve the version (`check:version-bump`), build, **generate the SBOM**, **validate it**, attach both, record digests, sign (optional, D3) | new `sdlc/release.bpmn`, lanes CI/CD, Publication manager | `docs-site-publish.bpmn` and `qa-report-signing.bpmn` (as a call activity) |
 | M3 | **An `sbom_export` Tool plus a `sbom-generation` skill.** One generator serves rows 1, 2 and 6. Validation uses the SPDX JSON-LD shape with the vendored context (G10). | `defineTool()` in `cat-harness/tools/`. The skill registers through `skill:register`. | `kg-export` (already emits `prov:wasDerivedFrom` and `dependsOn`) |
 | M4 | **Licence-id validation.** Pin the SPDX License List (`upstream-pins.json` entry: repo `spdx/license-list-data`, `pinnedIn` a vendored JSON), and make `check:source-licence` refuse an id that is neither on the list nor `LicenseRef-`. | a task inside the existing ingest processes, plus a pin watched by `upstream-pin-watch.bpmn` | `check:source-licence` three-state discipline |
@@ -306,7 +306,7 @@ all? just export? what consumes?"*: nothing does today, which left the
 build items (rows 1–2, 6, M2, M3, M7) justified by no reader. Then:
 
 - **D1: waiting on a consumer.** *"Ask a consumer first"*. The question is
-  drafted and tracked as bean `ffv7`. No SPDX document is built until a
+  drafted and tracked as work item `ffv7`. No SPDX document is built until a
   downstream party answers.
 - **D4: validation only, done.** *"go ahead with licence-id validation,
   that's it for now"*. `check:source-licence` now refuses a `stated` id that

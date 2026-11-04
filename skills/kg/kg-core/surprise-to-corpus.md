@@ -112,9 +112,9 @@ opening anything?**
    [`where-does-this-go`](../../conduct/conduct-core/where-does-this-go.md) is how you answer that.
 5. **Your recommendation**, marked as such.
 6. **What happens if they say nothing**: nothing gets written, and the
-   candidate is filed as a bean so it is not lost.
+   candidate is filed as a work item so it is not lost.
 
-**A bean is the third state** — recorded, unactioned, findable — so silence
+**A work item is the third state** — recorded, unactioned, findable — so silence
 is not expensive and an unanswered prompt is something the next session can
 pick up rather than rediscover.
 
@@ -131,7 +131,7 @@ of the report you were already writing.
 
 - **No severity scale.** Ranking surprises would invite filing the low ones,
   which is the noise the recurrence filter exists to prevent. A candidate
-  either passes the filter or is worth a bean at most.
+  either passes the filter or is worth a work item at most.
 - **No automated corpus change.** A mechanism that could write guidance would
   be used to write guidance.
 - **No timeline reconstruction.** The agent was present for the whole turn,

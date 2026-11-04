@@ -56,8 +56,8 @@ When an MCP server is attached, two calls answer the whole question.
 2. **`skill_fetch skill="<id>" package_name="<package>"`** — the instruction
    body, to follow.
 
-For the work plan rather than a skill, **`work_plan_prime`** returns the beans
-and each running process's position beside its bean.
+For the work plan rather than a skill, **`work_plan_prime`** returns the work items
+and each running process's position beside its work item.
 
 **What `skill_list` serves is the package registry.** `LOCAL_PACKAGES` in
 `scripts/skill-packages.ts` is built from `resolveSkillDirs`
@@ -116,7 +116,7 @@ a gap is information: `skill-in-role-or-process` reports how many skills no role
 carries and no activity names, and that number is **not** a defect list — a
 skill invoked directly by name is doing its job without appearing in any
 diagram. The same applies in reverse. A procedure you had to invent is worth one
-sentence in your turn report and, if it will be needed again, a bean.
+sentence in your turn report and, if it will be needed again, a work item.
 
 ## How you know you did this right
 

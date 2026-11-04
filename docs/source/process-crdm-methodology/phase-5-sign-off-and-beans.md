@@ -20,8 +20,8 @@ requirements and implementation.
    or concerns about the impact, cycle back to the relevant phase. The issue
    thread records each iteration.
 
-4. **Create beans** — once the requirements are agreed, the agent creates
-   `beans` for each unit of implementation work. Each bean:
+4. **Create work items** — once the requirements are agreed, the agent creates
+   `beans` for each unit of implementation work. Each work item:
    - References the parent issue
    - Has a clear title describing the deliverable
    - Is scoped to a single PR-sized unit of work
@@ -31,6 +31,6 @@ requirements and implementation.
 
 5. **Record the decision** — the sign-off comment on the issue serves as the
    decision record. It states what was agreed, what was deferred, and links to
-   the beans that will implement it.
+   the work items that will implement it.
 
-**Deliverable:** a sign-off comment on the issue, plus beans for each work item.
+**Deliverable:** a sign-off comment on the issue, plus work items for each work item.

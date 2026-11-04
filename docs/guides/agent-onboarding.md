@@ -139,7 +139,7 @@ bun run cat beans:claim <id>             # CLAIM before you work
 ```
 
 Claim before working so two sessions don't pick the same item, and never
-close a bean a sibling is mid-flight on (a finished one closes on evidence, not on authorship), and never delete ANY bean — scrap it with reasons instead. Do not stand up a parallel todo
+close a work item a sibling is mid-flight on (a finished one closes on evidence, not on authorship), and never delete ANY work item — scrap it with reasons instead. Do not stand up a parallel todo
 store. Do not `beans create` bulk machine-generated queues (`*.qa.json`,
 witness files) — those stay as bulk JSON.
 

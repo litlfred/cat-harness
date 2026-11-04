@@ -50,7 +50,7 @@ The contract is [`input.schema.json`](../../../schemas/skills/wireframe-design-r
 | use | candidates | review |
 |---|---|---|
 | **Design**: a new or changed UI | at least two, compared blind | per-criterion, then adjudication, then options analysis |
-| **As-is**: an existing visualiser, drawn as it renders on `main` | exactly one, marked `as-is` | the same criteria. A finding becomes a bean against the visualiser, not a redesign |
+| **As-is**: an existing visualiser, drawn as it renders on `main` | exactly one, marked `as-is` | the same criteria. A finding becomes a work item against the visualiser, not a redesign |
 
 ## 1. Intent
 

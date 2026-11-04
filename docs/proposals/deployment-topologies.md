@@ -119,7 +119,7 @@ falsification check in §4: #363's developer mode says "run CLI version of tools
 and that is not a fact about *where* anything lives — it survives every value of
 every other axis. Every capability here nominally exists twice, as an MCP tool
 and as a `bun run` script, but the parity between the two is **unmeasured**. If
-a capability is MCP-only, a `cli` deployment silently cannot do it. That is bean
+a capability is MCP-only, a `cli` deployment silently cannot do it. That is work item
 `folio-assistant-2ngl`, and it is measurement work before it is design work.
 
 **Axes 7 and 8 are split deliberately.** "How many models" and "whose models"
@@ -128,7 +128,7 @@ hosted one are both real configurations. Collapsing them into one
 "model supply" axis was the first draft's error and it is what made the
 air-gapped contradiction in §3 invisible.
 
-**Owner, 2026-09-24 (beans `4y2i`, `61tg`): a data store is something the
+**Owner, 2026-09-24 (work items `4y2i`, `61tg`): a data store is something the
 harness sits BESIDE, never something it connects to** — in sovereign cloud
 it produces artefacts a deployment pulls ("artefacts only"). The one
 exception under discussion is custody of wallet credentials in
@@ -145,15 +145,15 @@ separately — a second declaration is a second thing to disagree with.
 | derived fact | from | why it matters |
 |---|---|---|
 | can `Content-Type` be enforced? | axis 3 | `github-pages` **cannot** serve `application/ld+json`; `local-server` can. Settled in [`serving-renderings`](../reference/skill-instructions/serving-renderings.html) |
-| where did this render, and what URL do I tell the author? | axis 3 | bean `folio-assistant-1lfx` — today this is composed on the assumption of Pages |
+| where did this render, and what URL do I tell the author? | axis 3 | work item `folio-assistant-1lfx` — today this is composed on the assumption of Pages |
 | may a capability probe install a missing tool? | axis 5 | `--check-deps` assumes it may. On `air-gapped` it may not |
-| is a pull request the term of art? | axis 1 | GitHub says pull request, GitLab says merge request. Bean `folio-assistant-4dbr` |
+| is a pull request the term of art? | axis 1 | GitHub says pull request, GitLab says merge request. Work item `folio-assistant-4dbr` |
 
 ### Axis 3 is declared — `publication.host`
 
 The first of these axes to exist in code rather than only in this table.
 `publication.host` in `<name>.json`, values exactly the four above, and
-`publicationHost()` in `schemas/cat-harness.ts` reads it. Bean
+`publicationHost()` in `schemas/cat-harness.ts` reads it. Work item
 `folio-assistant-1lfx`.
 
 **Absent is a third state and callers must keep it one.** It means the
@@ -219,7 +219,7 @@ property of a **run**:
   and wasteful for anything else.
 
 These are not a setting to tune, they are different activities, and conflating
-them produces a benchmark that means nothing. Bean `folio-assistant-amom`.
+them produces a benchmark that means nothing. Work item `folio-assistant-amom`.
 
 ### Where a mode's output goes — provenance, not file family
 
@@ -236,7 +236,7 @@ That second row is a deliberate exception to "everything is a graph node", so it
 needs its reason written down or the next agent will helpfully declare a graph
 for it. The reason: admitting benchmark numbers would make the graph's contents
 depend on which model happened to run it, and two instances of the same folio
-would then hold different graphs. Beans `folio-assistant-wp49` (the report) and
+would then hold different graphs. Work items `folio-assistant-wp49` (the report) and
 `folio-assistant-6qk5` (the verdicts).
 
 ---
@@ -263,7 +263,7 @@ than quietly accepted.
 > `publication.host` that already existed. **Every axis is optional and absent
 > means "has not said"**, so no existing deployment is refused; the first test
 > in the suite is that this repository's own declaration still reads.
-> Bean `folio-assistant-g7vb`.
+> Work item `folio-assistant-g7vb`.
 >
 > **`air-gapped` × `mixed` settled 2026-09-20, and not by the reason I gave.**
 > Owner: *"no air-gapped-mixed. that is mixed already. its a spectrum, based
@@ -390,11 +390,11 @@ as a Mermaid fence.
 
 **"Formal formal" has to mean executable, not longer.** A process here is formal
 when its lanes bind to declared roles, every activity carries
-`<bootstrap.processes:skill ref>`, bean operations are declared with `<cat-harness.processes:bean op>`, and
+`<bootstrap.processes:skill ref>`, work item operations are declared with `<cat-harness.processes:bean op>`, and
 `bun run cat kg:audit` is green on its joins. `crdm-requirements.bpmn` already meets
 that bar and is the model to copy.
 
-Two cautions for whoever takes bean `folio-assistant-haya`:
+Two cautions for whoever takes work item `folio-assistant-haya`:
 
 - **MVP may already be a subprocess.** `crdm-deliver.bpmn` contains "share MVP"
   and loops back into implementation. Check before drawing a second one.
@@ -406,7 +406,7 @@ Two cautions for whoever takes bean `folio-assistant-haya`:
   an exact template in `content-change-review.bpmn`.
 
 **Where this proposal touches the SDLC**: it adds a deployment phase whose
-activities differ per topology. That is why the SDLC bean depends on the axes
+activities differ per topology. That is why the SDLC work item depends on the axes
 being agreed — a lane whose steps change with the deployment target cannot be
 drawn before the targets are named.
 
@@ -437,8 +437,8 @@ evidence would move it, it is an opinion wearing a heading.
 | item | what it holds |
 |---|---|
 | [#363](https://github.com/litlfred/folio-assistant/issues/363) | the request |
-| `folio-assistant-5a3l` | the epic, and the fourteen beans under it |
+| `folio-assistant-5a3l` | the epic, and the fourteen work items under it |
 | `folio-assistant-4dbr` | forge portability as Tool nodes, not a sixth repo. Its §"Sovereign compute" already separates *which service hosts change proposals* from *running with no external service at all*, and records that the portability claim is asserted and never exercised |
-| [`serving-renderings`](../reference/skill-instructions/serving-renderings.html) | per-host media types, and the three enforcement states. Explicitly leaves "how to run a server" uncovered — the hole bean `folio-assistant-0hi8` fills |
+| [`serving-renderings`](../reference/skill-instructions/serving-renderings.html) | per-host media types, and the three enforcement states. Explicitly leaves "how to run a server" uncovered — the hole work item `folio-assistant-0hi8` fills |
 | [`cat-harness-minimum`](../architecture/cat-harness-minimum.html) | the written claim that the harness runs with no forge and no MCP. 614 lines, and untested |
 | [`swarm-management`]({{ site.baseurl }}/docs/cat-harness/guides/swarm-management.html) | a swarm is asked for every time, per swarm, with agent count, model level and rough cost. Unchanged by this proposal |

@@ -17,7 +17,7 @@ summary: >-
 The owner, 2026-10-07: *"migration to index.config.json
 importing `<harness>.config.json` information as needed"*. Later that evening: *"go
 ahead and start the migration NOW to index.config.json, /coordinate as
-needed"*. Issue #2483, bean `ymvt` under the separation epic `7x5n`. The
+needed"*. Issue #2483, work item `ymvt` under the separation epic `7x5n`. The
 governing skill is
 [`index-config`]({{ '/reference/skill-instructions/index-config.html' | relative_url }}).
 
@@ -274,11 +274,11 @@ index.
 
 ## 9. Out of scope
 
-- **Moving the landing stickies** (bean `1yd7`). `gen-landing-data.ts` now
+- **Moving the landing stickies** (work item `1yd7`). `gen-landing-data.ts` now
   asks the resolver which instance lands, instead of using its own location.
   It falls back to its own instance for a hub, and throws when the landing is
   undecided. That makes `1yd7` a data move with no wiring left to do.
-- **Route namespacing and mount-path collisions** (bean `t4xb`). The index is
+- **Route namespacing and mount-path collisions** (work item `t4xb`). The index is
   where a per-instance path would be declared (`overrides.<name>.path`), and
   the ignore block follows it. The URL scheme itself is `t4xb`'s.
 - **A gate that no tracked file sits under a mount path.** That belongs to

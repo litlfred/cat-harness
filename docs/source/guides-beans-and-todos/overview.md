@@ -1,8 +1,8 @@
-**Beans are for agents. Todos are for humans.** They share a word in ordinary
+**Work items are for agents. Todos are for humans.** They share a word in ordinary
 speech and nothing else, and conflating them is how a work plan comes to hold
 two kinds of thing that need different handling.
 
-A **bean** is process state an agent keeps while doing work: claimed before
+A **work item** is process state an agent keeps while doing work: claimed before
 starting so a sibling session avoids it, kept current as the work proceeds,
 and closed with a record of what changed. The store is `beans/`, committed,
 so it survives a reclaimed container and is visible to every other session.

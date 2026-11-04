@@ -8,7 +8,7 @@ description: >-
   measured count and its method, the viewports and colour schemes to shoot,
   an honest status line, publishing with alt text, a section per content type
   naming this repository's own build and render tools, and how reviewer
-  feedback on the preview becomes beans. Use before asking anyone to review a
+  feedback on the preview becomes work items. Use before asking anyone to review a
   rendered change, at the HCI validation gate, and whenever a reviewer asks
   "what did it look like before".
 user_invocable: true
@@ -374,7 +374,7 @@ merges. Merging still needs the explicit confirmation the processes require.
 
 **How feedback becomes work.**
 
-- A choice of 2 or 3, or a comment on the preview, becomes a **bean** with
+- A choice of 2 or 3, or a comment on the preview, becomes a **work item** with
   the pair's label, the status line's SHA and the position
   ([`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md); check before you create).
 - On a folio, a comment tagged `block: <label>` on the PR becomes a

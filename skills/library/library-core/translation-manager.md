@@ -398,7 +398,7 @@ says nothing about Arabic. Every one of those is a test in
 `translation-block-qa.test.ts`.
 
 The file is hand-authored and has no POT — `schemas/content/translation.ts` declares
-that slot, and `TranslationNode.potFile` is optional for exactly this. Bean
+that slot, and `TranslationNode.potFile` is optional for exactly this. Work item
 `he0e`.
 
 **`available_locales` includes the SOURCE language, and that is not a

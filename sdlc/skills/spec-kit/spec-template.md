@@ -24,7 +24,7 @@ metadata_fields:
 **Created**: YYYY-MM-DD
 **Status**: Draft | Adjudicated
 **Issue**: #[IssueNumber]
-**Bean**: `folio-assistant-[bean-id]`
+**Work item**: `folio-assistant-[bean-id]`
 **Template**: `cat-harness/sdlc/skills/spec-kit/spec-template.md` (github/spec-kit)
 
 ## Context & Request

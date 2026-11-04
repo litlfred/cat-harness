@@ -175,7 +175,7 @@ Claude Code وAntigravity وGemini CLI وعملاء MCP العامين.
 |------|---------|
 | `folio_init` | إنشاء هيكل folio. مسجلة كأداة **عامة**، لأنها تعمل قبل أن يكون للـ folio نوع محتوى |
 | `workflow_start` / `workflow_next` / `workflow_complete` | تشغيل `getting-started.bpmn` كعملية حقيقية؛ يحدد `workflow_next` ما هو مفعّل الآن وأي مهارة تنفذه |
-| `work_plan_prime` | إظهار خطة العمل (beans) |
+| `work_plan_prime` | إظهار خطة العمل (work items) |
 | `check_dependencies` | فحص مجموعات الأدوات المثبتة |
 | `skill_list` / `skill_fetch` | اكتشاف تعليمات المهارة وتحميلها |
 

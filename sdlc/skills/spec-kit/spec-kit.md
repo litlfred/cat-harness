@@ -152,7 +152,7 @@ specification before implementation code is written.
     *Requirements*, *Success Criteria*).
   - `exit 1` (`finding`): A spec comment is missing, missing mandatory sections,
     carries unresolved `[NEEDS CLARIFICATION]` markers when adjudicated, or a
-    feature bean lacks an issue reference. **Breach is a finding, NOT silence.**
+    feature work item lacks an issue reference. **Breach is a finding, NOT silence.**
   - `exit 2` (`could not determine`): The issue cannot be fetched or reached (e.g.
     network error or GitHub API outage).
 
@@ -175,7 +175,7 @@ spans multiple increments:
    - *Revertible*: Can be merged or rolled back independently without corrupting trunk invariants.
 4. **Spec-before-code gate applies before any child begins**: Implementation of child
    sub-issues cannot start until the parent issue's specification has been accepted
-   and posted. Feature beans and child PRs must reference the parent or sub-issue
+   and posted. Feature work items and child PRs must reference the parent or sub-issue
    hierarchy verified by `check-spec.ts --spec-before-code`.
 
 ### An increment, not a slice
@@ -217,7 +217,7 @@ increments can be reviewed and merged while it waits for its ruling.
 "approach", "proposal", "how would you", "come up with". It ALWAYS gets a
 requirements document and a work plan for review before implementation. Under
 spec-kit the requirements document IS the spec,
-posted as a comment on the governing issue, and the work plan is the beans
+posted as a comment on the governing issue, and the work plan is the work items
 `tasks` produces. The operation — what to produce, permalinks for every link
 handed over, and **stop until sign-off is recorded on the issue** — is
 the content layer's

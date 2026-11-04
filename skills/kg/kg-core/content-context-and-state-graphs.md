@@ -23,7 +23,7 @@ may not.
 |---|---|---|
 | **`content`** | produces it — that is usually the point | a skill, a schema, a folio chapter |
 | **`context`** | **reads it and never writes it**. Static for the duration of an instance; it changes only when a human directs an authoring act, outside any process | an agent-memory entry |
-| **`state`** | **writes it as it runs** — a bean's status changes because a step completed | a bean, a workflow instance, a QA verdict |
+| **`state`** | **writes it as it runs** — a work item's status changes because a step completed | a work item, a workflow instance, a QA verdict |
 | **`derived`** | produces it **from a source**, and would regenerate it rather than re-author it. Not the working corpus | a `library/` section |
 
 It is `holds` on `GraphTypologyDef` in `schemas/kg/cat-harness.ts`, and it is
@@ -38,7 +38,7 @@ The one above decides almost everything. When it does not, these two do, and
 they have agreed with each other in every case here.
 
 **Does it stand on its own?** Detach a node from everything else. A skill still
-instructs, a schema still constrains, a library section still reads. A bean
+instructs, a schema still constrains, a library section still reads. A work item
 names work on something that is no longer there; a QA verdict judges an absent
 subject. **If detaching it empties it, it is not content.**
 
@@ -64,7 +64,7 @@ obvious from their name**.
 
 **`memory` is `context`.** It is static during a process: a process
 **reads** memory and no step writes it. It changes only when a human directs an
-authoring agent, which is an act **outside** any instance. Todos and beans are
+authoring agent, which is an act **outside** any instance. Todos and work items are
 not static.
 
 **`todos` is `state`, and that is the pair worth understanding.**
@@ -134,14 +134,14 @@ default. The declaration makes it explicit and checkable.
 |---|---|---|---|---|
 | `content` | chapters, skills, processes | `main` | — | PR |
 | `context` | interaction prefs, roles | `main` | — | PR |
-| `state` | beans, workflow instances, todos | dedicated branch-store branches (e.g. `cat/cat-harness/beans`, `cat/cat-harness/todos`) | **tip** — one living tree | fetch → splice → push, never `-f` |
+| `state` | work items, workflow instances, todos | dedicated branch-store branches (e.g. `cat/cat-harness/beans`, `cat/cat-harness/todos`) | **tip** — one living tree | fetch → splice → push, never `-f` |
 | `derived` (verdicts) | QA sidecars | `cat/cat-harness/qa-reports` | commit | append under `main/<sha>/`, `pr/<n>/<sha>/` |
 | rendered | the docs site | `gh-pages` | commit (the build stamp) | replace, previews kept |
 | cache | Lake builds | `lake-cache/*` | toolchain + inputs | one key per branch, pruned |
 
 The distinction that matters between `state` and `derived`: **state is not
 regenerable**. A QA verdict can be recomputed from the tree, so a commit-keyed
-snapshot per run is right and losing one costs a rerun. A bean is somebody's
+snapshot per run is right and losing one costs a rerun. A work item is somebody's
 decision; it must be a single living tree whose history is the audit trail, and
 a lost write is lost work. So `state` is tip-keyed (`storage.keyedBy: tip`),
 stored on dedicated branch-store branches like `cat/cat-harness/beans`, `todos`,
@@ -156,7 +156,7 @@ only process-written graphs are candidates for `storage`:
 | `keyedBy` | what the branch holds | for | API |
 |---|---|---|---|
 | `commit` | one entry per commit (`main/<sha>/`, `pr/<n>/<sha>/`) | `qa` — derived verdicts read against a baseline | `scripts/qa-store.ts` |
-| `tip` | ONE live copy; the tip IS the current state | beans, todos — `state` with one truth at a time | `scripts/branch-store.ts` |
+| `tip` | ONE live copy; the tip IS the current state | work items, todos — `state` with one truth at a time | `scripts/branch-store.ts` |
 | `route` | one entry per published site route | the auto-doc page families — `derived`, regenerable | `scripts/branch-store.ts` |
 
 ### `route` is not a synonym for `tip`, and the difference is REGENERABILITY
@@ -164,7 +164,7 @@ only process-written graphs are candidates for `storage`:
 Both live at a branch tip. The question that separates them: **can this be
 recomputed from the tree?**
 
-- A bean cannot. It is somebody's decision, a lost write is lost work, so a
+- A work item cannot. It is somebody's decision, a lost write is lost work, so a
   tip-keyed change carries `expect` (the blob its author read) and two sessions
   editing one file is a **`conflict` the caller settles**.
 - A rendered page can. Nobody authored either side, the newer generation is
@@ -181,7 +181,7 @@ does have two writers, `route` is the wrong keying for it and `tip` is right.**
 
 Four rules:
 
-- **One ref per state subgraph.** Beans are on `cat/cat-harness/beans` and
+- **One ref per state subgraph.** Work items are on `cat/cat-harness/beans` and
   todos on `cat/cat-harness/todos`, not on one shared `state` branch.
 - **Not every named subgraph gets a branch.** Skills, schemas, processes, roles
   and the declarations themselves are `content` or `context`. They change by PR
@@ -312,7 +312,7 @@ authored content, and the link and install status go in a marker pair that
 
 **A process may CREATE or REPAIR the declaration (`<name>.json`) or config
 (`<name>.config.json`). It never maintains it.** Every `state` graph is one a
-running process keeps current (beans, QA witnesses, workflow tokens). Neither
+running process keeps current (work items, QA witnesses, workflow tokens). Neither
 `<name>.json` nor `<name>.config.json` is that: `init-folio` writes them once
 when there is no folio yet, and `ensure-landing-sticky` inserts one missing
 `folio` directory entry on `!already` and returns on `already` thereafter — a
@@ -331,7 +331,7 @@ copy that drifted — it says so itself.
   the largest writer of a live-state graph: a workflow instance is a token's
   position in a diagram that lives in a content graph.
 - [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)
-  — the work plan, and why a bean is never deleted. A state record that
+  — the work plan, and why a work item is never deleted. A state record that
   vanishes leaves a sibling unable to tell abandonment from accident.
 - [`instance-publication`](instance-publication.md#what-each-instance-publishes--graph-address-schema-and-what-is-stripped)
   — a `state` graph's nodes are never published. That rule, and every other

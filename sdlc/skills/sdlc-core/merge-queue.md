@@ -130,15 +130,15 @@ already has:
   what is missing, and by when. Its shape is the one in
   [`merge-conflict-patterns`](merge-conflict-patterns.md) §"When a merge-train
   member is refused".
-- **A hand-back bean** when the PR is ejected or handed back (same section).
+- **A hand-back work item** when the PR is ejected or handed back (same section).
   The submitting role picks it up even if the original session is gone.
   **Every hand-back gets one, not only a train ejection.** That covers
   `Rule_Refused`, `Rule_HeadNotGreen`, `Rule_NotReady`, and a `merge:guard`
   refusal on a PR the owner asked to land. A PR comment and a queue entry
   are not a hand-back on their own: the work plan cannot see them.
   - **Shape:** titled `Merge refused: #<n> <cause>`, `type: bug`, parented
-    under the PR's bean's parent (or under the PR's bean when it is an epic
-    or feature), marked `--blocking` that bean.
+    under the PR's work item's parent (or under the PR's work item when it is an epic
+    or feature), marked `--blocking` that work item.
   - **Body:** the refused checks, roles, the brief (link the takeover plan if
     there is one), where to report, Done when, and Fails if.
   - **Dedupe:** check first, because `beans create` dedupes on nothing.
@@ -194,9 +194,9 @@ measurements of which tool reaches which kind of session.
 
 Once the steward has decided something about your PR (a placement, a hold,
 an ejection), that decision is an entry under `beans/queue/<pr>.json`. The
-entry carries `pr` and **`beans`**, the beans and epics the PR serves; name
+entry carries `pr` and **`beans`**, the work items and epics the PR serves; name
 them in your PR body so the steward can copy them. That list is the
-association between a PR and its beans.
+association between a PR and its work items.
 
 **Where to read it depends on the state-branch cutover.** The queue is moving
 to its OWN branch, `cat/cat-harness/merge-queue` — §"Where the queue is GOING"
@@ -214,11 +214,11 @@ below — and where the two disagree, that section governs:
 The branch's `manifest.json` says which state it is in (`"authoritative"`).
 Read that rather than this paragraph.
 
-**The cutover also changes what a bean can do here.** A bean created on a
-code branch is invisible until the PR lands; a bean written through
-`state:push` is visible at once. A submitter can then note on the PR's bean that it is submitted, and the
-steward can answer on the same bean. The PR state above stays the intake
-signal either way: the bean is where the conversation is kept.
+**The cutover also changes what a work item can do here.** A work item created on a
+code branch is invisible until the PR lands; a work item written through
+`state:push` is visible at once. A submitter can then note on the PR's work item that it is submitted, and the
+steward can answer on the same work item. The PR state above stays the intake
+signal either way: the work item is where the conversation is kept.
 
 **Not GitHub's merge queue.** It is not offered on a personal-account
 repository. The merge guard (`bun run cat merge:guard <pr>`) checks the six submission points mechanically; run it against
@@ -609,7 +609,7 @@ steward does something else:
    accepts a `ready:` marker only from the session the PR body names, and
    check 2 keeps the merging session from vouching for its own landing.
    So the takeover agent edits the body's session line to its own session,
-   records "taken over from <old> (stalled)", claims the beans, and then
+   records "taken over from <old> (stalled)", claims the work items, and then
    signs. The steward never signs for it, and there is no one-time bypass.
 
 A PR that is green but refused by checks 3 and 4 (no marker, no label) is
@@ -699,7 +699,7 @@ push to `main` and runs `bun run cat post-merge:regen --create-pr`.
 ## ACK every PR that enters the queue, on its bean (STRICT)
 
 A submitter who hears nothing cannot tell "queued"
-from "lost", and the bean is where the next session looks.
+from "lost", and the work item is where the next session looks.
 
 When a PR enters the queue (first seen on a sweep, or approved by the
 owner), the steward writes three things in the same change:
@@ -708,17 +708,17 @@ owner), the steward writes three things in the same change:
    table's placement, a `reason` that begins `ACK:` and says what the PR waits
    on, and **`beans`**, copied from the PR body. Validate it against
    `MergeQueueEntrySchema`.
-2. **A note on each bean the PR serves**, one file per bean per branch:
+2. **A note on each work item the PR serves**, one file per work item per branch:
    `beans/notes/<bean>--<date>--<branch>.md`. A note, never an append to the
-   bean def; [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) says why. Then run
+   work item def; [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) says why. Then run
    `bun run cat beans:notes`, or CI's `beans:notes:check` goes red.
-3. **One comment on the PR** naming the entry and the beans. Before the beans
+3. **One comment on the PR** naming the entry and the work items. Before the work items
    cutover, items 1 and 2 reach `main` only through the steward's own PR, a
    cycle late, so the comment is the ACK the author sees now. After the
    cutover, write 1 and 2 with `state:push`; the comment then just points at
    them.
 
-A PR whose body names no bean gets the entry with `beans: []` and a comment
+A PR whose body names no work item gets the entry with `beans: []` and a comment
 asking the author to name one. The steward does not invent the association.
 
 ## Every open PR has an entry: review the whole list, then triage it
@@ -742,7 +742,7 @@ On a review, and at least once per working session:
    |---|---|
    | `active` | its author pushed or commented within 24 hours |
    | `waiting-on-author` | handed back with a named ask, and the author is not back yet |
-   | `blocked` | waits on another PR, bean or ruling, named in `reason` |
+   | `blocked` | waits on another PR, work item or ruling, named in `reason` |
    | `stale` | no push **and** no human comment for more than 24 hours. Bot pushes from `merge-main` do not count as activity |
    | `approval-void` | the owner approved it, and then its scope changed |
    | `landed` | merged. The entry stays as history; it is never deleted |

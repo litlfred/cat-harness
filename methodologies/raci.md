@@ -26,7 +26,7 @@ applies-when: >
 
 # RACI — involvement, in four kinds
 
-**Adopted on the owner's ruling, 2026-09-22** (bean `2xfl`): RACI is a
+**Adopted on the owner's ruling, 2026-09-22** (work item `2xfl`): RACI is a
 methodology, not a house practice, so it has a node here. Until that ruling it
 existed only as a skill, and the methodology graph reported five nodes where a
 reader might reasonably expect it to report this one too.
@@ -48,7 +48,7 @@ reader might reasonably expect it to report this one too.
 > `t(1245)=47.3, p<.001`; its abstract's headline 92.4 % detection rate appears
 > nowhere in its findings, which say 78.4 %; and its running head claims
 > *Journal of International Business Studies* "Vol. 1, 2026" while its own
-> reference list cites that journal at vol. 53 in 2022. Bean `thb1` holds the
+> reference list cites that journal at vol. 53 in 2022. Work item `thb1` holds the
 > full assessment with every item checkable against the ingested pages.
 >
 > So: **cite this source for the four letters. Never cite it for a claim about

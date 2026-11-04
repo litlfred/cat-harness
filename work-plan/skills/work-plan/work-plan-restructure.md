@@ -2,13 +2,13 @@
 name: work-plan-restructure
 description: >
   Reorganise a work plan that has outgrown one-bean-at-a-time repair — session
-  logs typed as epics, duplicate families, generated template beans, stale
+  logs typed as epics, duplicate families, generated template work items, stale
   claims, unparented work — through a reviewed PLAN rather than in bulk. The
-  taxonomy is stated as data, a dry-run plan lists one row per bean (action,
+  taxonomy is stated as data, a dry-run plan lists one row per work item (action,
   new parent, new status, evidence, note) with its before-state so the plan is
   its own inverse, the owner approves it by class or by row, and the apply is
   batched and reversible. Scrap, never delete. Read before changing the parent,
-  type or status of more than a handful of beans at once.
+  type or status of more than a handful of work items at once.
 graph-typologies:
   - beans
 ---
@@ -18,11 +18,11 @@ graph-typologies:
 [`lsi-indexing`](../../../skills/kg/graph-management/lsi-indexing.md) §"Epic filing"
 ends with **"never apply the proposal in bulk"**. A store that needs thousands
 of moves — session logs typed as epics, stale claims, duplicate groups,
-generated template families — cannot be repaired one bean at a time either.
+generated template families — cannot be repaired one work item at a time either.
 **This skill is the middle path: a plan file a person reads, approves, and can
-undo.** Applying a rule across thousands of beans unread is what
+undo.** Applying a rule across thousands of work items unread is what
 `deletion-requires-confirmation` and the `lsi` method's refusal 3 forbid; the
-plan is how the rule gets read without each bean being read alone.
+plan is how the rule gets read without each work item being read alone.
 
 ## 1. State the taxonomy as data, first
 
@@ -72,7 +72,7 @@ it:
 
 | row source | tool | evidence class |
 |---|---|---|
-| reparent an open bean | `lsi:epics`: a `parent:` chain or a bean id in commits first, cosine second | `explicit`, else `latent` |
+| reparent an open work item | `lsi:epics`: a `parent:` chain or a work item id in commits first, cosine second | `explicit`, else `latent` |
 | session log typed as epic or milestone | `sessionLogRootBeans` in `test/health/checks.ts` (the `bean-session-log-roots` finding) | `rule:session-log` |
 | duplicate | the `bean-store` duplicate groups; the target-object key in [`todo-manager`](todo-manager.md) §"Check before you create" | `rule:same-title`, `rule:same-target` |
 | landed work still open | [`branch-archaeology`](../../../sdlc/skills/sdlc-core/branch-archaeology.md): patch-id equivalence on main | `explicit` |
@@ -83,7 +83,7 @@ it:
 agreement rate is well short of certain, so a latent row is a proposal, never
 presented as a finding.
 
-Write the plan as a **bean note** on the bean that owns the restructure
+Write the plan as a **work item note** on the work item that owns the restructure
 (`bun run cat beans:note <id>`), with the summary first and the rows as a table.
 The `notes` directory is declared and keyed by branch, so the plan is committed
 and reviewed in the PR diff without inventing a new directory. A plan too large
@@ -118,21 +118,21 @@ Then ask:
 
 1. **One action class per commit, at most ~100 rows.** The commit message names
    the plan note and the class. A bad batch is then one `git revert`.
-2. **Re-read each bean before you write it**
+2. **Re-read each work item before you write it**
    ([`todo-manager`](todo-manager.md) §"Check before you WORK"). If its current
    parent, type or status differs from the row's `from-*`, a sibling moved it
    after the plan was made. **Skip the row and report it**; do not overwrite.
-3. **Respect live claims.** Leave alone any bean that is mid-flight under
+3. **Respect live claims.** Leave alone any work item that is mid-flight under
    [`bean-coordination`](bean-coordination.md): touched within 72 h, or named
-   by an open PR. The exception is the owner naming that bean.
+   by an open PR. The exception is the owner naming that work item.
 4. **One flag per `beans update`, then read the front matter back.** A
    multi-flag update can apply only some of its flags and still report success
    ([`todo-manager`](todo-manager.md) §"After you create").
 5. **Notes go in by note or `--body-append`, never `--body-file`.**
    `--body-file` replaces the body silently.
 6. **Scrap, never delete.** `scrap-duplicate` names the survivor in the
-   scrapped bean. `scrap-generated` names the generator and the sidecar or
-   queue that should have held the item instead (beans are not sidecars). A
+   scrapped work item. `scrap-generated` names the generator and the sidecar or
+   queue that should have held the item instead (work items are not sidecars). A
    session log is closed or scrapped with a pointer to where its children
    went. Archiving is a view, not an exit
    ([`bean-coordination`](bean-coordination.md) §"Archiving is a VIEW").
@@ -155,5 +155,5 @@ has since moved is skipped rather than clobbered.
   owner's call, not the score's.
 - **Run unattended.** No step from 3 onward happens without the owner's
   approval for that plan.
-- **Fix the cause.** If a generator or a skill is minting the beans being
+- **Fix the cause.** If a generator or a skill is minting the work items being
   scrapped, fix that first. Otherwise the plan is repaired again next week.

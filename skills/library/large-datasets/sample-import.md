@@ -50,7 +50,7 @@ A sample that is not intended to be permanent is materialized to `fsh-guts/`.
 | destination | `library/` | `fsh-guts/` |
 | published | yes, with the library | **no** — kept, addressable, exported, never rendered |
 | refreshed | yes, by `refresh-materialized` | **no** — it records what the source looked like when tried |
-| provenance | the materialization record | `$schema: folio-fsh-guts/v1`, plus the bean or issue it was written under. Never a `movedFrom`: it was not moved from anywhere, and inventing one is false provenance. |
+| provenance | the materialization record | `$schema: folio-fsh-guts/v1`, plus the work item or issue it was written under. Never a `movedFrom`: it was not moved from anywhere, and inventing one is false provenance. |
 
 **Promoting a trial** means running the process again with *permanent*. The
 gates are asked afresh; a trial's answers were given for a trial.
