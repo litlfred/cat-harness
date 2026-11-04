@@ -314,7 +314,7 @@ The `po-inject` tool takes a completed `.po` file and produces a translated
 
 Semantic verification is per BLOCK, not per page, and it is not a script's to assert: `content/pipeline/translation-block-qa.ts` writes what a script can establish (coverage, preserved terms, untranslated echoes) and leaves
 `translation-semantic-roundtrip` with no verdict. A real round trip needs a back-translator that has not seen the original — a pair of agents, recorded by `content/pipeline/translation-roundtrip.ts`. See
-`skills/library/library-core/translation-manager.md`.
+`library/skills/library-core/translation-manager.md`.
 
 ---
 
@@ -322,7 +322,7 @@ Semantic verification is per BLOCK, not per page, and it is not a script's to as
 
 The human translator workflow is a dedicated path for professional translation,
 distinct from the agentic/machine path. See BPMN:
-`processes/library/human-translation-workflow.bpmn`.
+`library/processes/human-translation-workflow.bpmn`.
 
 ### Steps
 
@@ -622,7 +622,7 @@ all content types — documents, papers, and DAK folios alike.
 The translation workflow integrates with the existing content lifecycle:
 
 ```
-See: processes/library/translation-workflow.bpmn
+See: library/processes/translation-workflow.bpmn
 ```
 
 ### Stages

@@ -314,14 +314,14 @@ _255 skills in 19 directories. The full list, with what each skill is for, is in
 | [`skills/kg/graph-management/`](skills/kg/graph-management/) | 10 |
 | [`skills/kg/kg-core/`](skills/kg/kg-core/) | 29 |
 | [`skills/kg/kg-navigation/`](skills/kg/kg-navigation/) | 1 |
-| [`skills/library/large-datasets/`](skills/library/large-datasets/) | 5 |
-| [`skills/library/library-core/`](skills/library/library-core/) | 11 |
 | [`skills/process/process-core/`](skills/process/process-core/) | 7 |
 | [`skills/process/raci/`](skills/process/raci/) | 1 |
 | [`skills/process/workflow/`](skills/process/workflow/) | 11 |
 | [`skills/tools/folio-core/`](skills/tools/folio-core/) | 7 |
 | [`skills/ui/theming/`](skills/ui/theming/) | 8 |
 | [`skills/ui/ui-core/`](skills/ui/ui-core/) | 22 |
+| [`library/skills/large-datasets/`](library/skills/large-datasets/) | 5 |
+| [`library/skills/library-core/`](library/skills/library-core/) | 11 |
 | [`sdlc/skills/crdm/`](sdlc/skills/crdm/) | 7 |
 | [`sdlc/skills/sdlc-core/`](sdlc/skills/sdlc-core/) | 71 |
 | [`sdlc/skills/spec-kit/`](sdlc/skills/spec-kit/) | 3 |

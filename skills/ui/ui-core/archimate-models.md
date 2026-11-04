@@ -219,7 +219,7 @@ page links to the definition.
   and let the renderer wrap it; a short form goes in `skos:altLabel`, never
   in place of the name.
 - Our term and the source's disagree: that is a content decision
-  ([`term-disagreement`](../../library/library-core/term-disagreement.md)),
+  ([`term-disagreement`](../../../library/skills/library-core/term-disagreement.md)),
   not something to settle by renaming in Archi.
 
 ## The model is never a source of the glossary

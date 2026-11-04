@@ -25,8 +25,8 @@ allowed-tools: Read Edit Bash Grep Glob WebFetch AskUserQuestion Agent
 
 Materialized content (held by reference or materialized from elsewhere) is
 **read-only**; a reviewer cannot annotate it in place. The first step of review
-is [`copy-out-materialized`](../../library/large-datasets/copy-out-materialized.md)
-(diagram: `processes/library/copy-out-materialized.bpmn`): the reviewer copies
+is [`copy-out-materialized`](../../../library/skills/large-datasets/copy-out-materialized.md)
+(diagram: `library/processes/copy-out-materialized.bpmn`): the reviewer copies
 the materialized sub-graph into their **own** `folio/`, carrying
 `provenance.local` back to the original, annotates **the copy**, and those
 annotations arrive here. While triaging:

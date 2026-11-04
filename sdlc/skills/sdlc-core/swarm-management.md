@@ -68,7 +68,7 @@ shape; you have a task you have not understood yet.
 
 Model choice dominates a swarm's token cost, and only a minority of software
 engineering subtasks need a frontier model. SWE-Router
-([`arxiv-2607.00053v1`](../../../library/sdlc/arxiv-2607.00053v1/)) routes on
+([`arxiv-2607.00053v1`](../../../library/corpus/sdlc/arxiv-2607.00053v1/)) routes on
 the agent's partial trajectory rather than the task description alone: a
 description cannot tell a one-line fix from a multi-module refactor, but the
 first few exploratory turns (grep, reading the tree, reproducing a failure)
@@ -126,7 +126,7 @@ price. The Andon-cord conditions below list the other stop signals.
 
 ## Adaptive reasoning routing and Andon-cord stopping (TCAndon-Router / 2601.04544v1)
 
-TCAndon-Router ([`arxiv-2601.04544v1`](../../../library/sdlc/arxiv-2601.04544v1/README.md))
+TCAndon-Router ([`arxiv-2601.04544v1`](../../../library/corpus/sdlc/arxiv-2601.04544v1/README.md))
 refines two assumptions: **uniform model allocation** and **run-to-completion
 fan-out**.
 

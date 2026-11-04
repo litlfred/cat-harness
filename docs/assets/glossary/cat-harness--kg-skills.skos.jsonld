@@ -61,11 +61,11 @@
       ],
       "skos:definition": [
         {
-          "@value": "The general process for turning a shared paper, book or standard into an adopted methodology: establish origin and licence, ingest the source, find and summarize related beans and issues and ask whether to coordinate, render the method with its adopted and refused parts, place it by ownership, integrate it by calling existing processes, give every tool it uses a Tool node, and put it to the owner. Process: processes/library/methodology-from-source.bpmn."
+          "@value": "The general process for turning a shared paper, book or standard into an adopted methodology: establish origin and licence, ingest the source, find and summarize related beans and issues and ask whether to coordinate, render the method with its adopted and refused parts, place it by ownership, integrate it by calling existing processes, give every tool it uses a Tool node, and put it to the owner. Process: library/processes/methodology-from-source.bpmn."
         }
       ],
       "skos:notation": "adopt-methodology-from-source",
-      "dcterms:source": "cat-harness/skills/library/library-core/adopt-methodology-from-source.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/adopt-methodology-from-source.md",
       "skos:note": "candidate"
     },
     {
@@ -225,7 +225,7 @@
         }
       ],
       "skos:notation": "asset-extraction",
-      "dcterms:source": "cat-harness/skills/library/library-core/asset-extraction.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/asset-extraction.md",
       "skos:note": "candidate"
     },
     {
@@ -680,7 +680,7 @@
         }
       ],
       "skos:notation": "code-lists",
-      "dcterms:source": "cat-harness/skills/library/library-core/code-lists.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/code-lists.md",
       "skos:note": "candidate"
     },
     {
@@ -800,7 +800,7 @@
         }
       ],
       "skos:notation": "content-acquisition",
-      "dcterms:source": "cat-harness/skills/library/library-core/content-acquisition.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/content-acquisition.md",
       "skos:note": "candidate"
     },
     {
@@ -1040,7 +1040,7 @@
         }
       ],
       "skos:notation": "copy-out-materialized",
-      "dcterms:source": "cat-harness/skills/library/large-datasets/copy-out-materialized.md",
+      "dcterms:source": "cat-harness/library/skills/large-datasets/copy-out-materialized.md",
       "skos:note": "candidate"
     },
     {
@@ -2365,7 +2365,7 @@
         }
       ],
       "skos:notation": "kg-subscription",
-      "dcterms:source": "cat-harness/skills/library/large-datasets/kg-subscription.md",
+      "dcterms:source": "cat-harness/library/skills/large-datasets/kg-subscription.md",
       "skos:note": "candidate"
     },
     {
@@ -2425,7 +2425,7 @@
         }
       ],
       "skos:notation": "library-ingestion",
-      "dcterms:source": "cat-harness/skills/library/library-core/library-ingestion.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/library-ingestion.md",
       "skos:note": "candidate"
     },
     {
@@ -2465,7 +2465,7 @@
         }
       ],
       "skos:notation": "literature-search",
-      "dcterms:source": "cat-harness/skills/library/library-core/literature-search.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/literature-search.md",
       "skos:note": "candidate"
     },
     {
@@ -2520,7 +2520,7 @@
         }
       ],
       "skos:notation": "materialize-on-demand",
-      "dcterms:source": "cat-harness/skills/library/large-datasets/materialize-on-demand.md",
+      "dcterms:source": "cat-harness/library/skills/large-datasets/materialize-on-demand.md",
       "skos:note": "candidate"
     },
     {
@@ -2540,7 +2540,7 @@
         }
       ],
       "skos:notation": "materialize-remote",
-      "dcterms:source": "cat-harness/skills/library/large-datasets/materialize-remote.md",
+      "dcterms:source": "cat-harness/library/skills/large-datasets/materialize-remote.md",
       "skos:note": "candidate"
     },
     {
@@ -3575,7 +3575,7 @@
         }
       ],
       "skos:notation": "sample-import",
-      "dcterms:source": "cat-harness/skills/library/large-datasets/sample-import.md",
+      "dcterms:source": "cat-harness/library/skills/large-datasets/sample-import.md",
       "skos:note": "candidate"
     },
     {
@@ -4140,7 +4140,7 @@
         }
       ],
       "skos:notation": "term-disagreement",
-      "dcterms:source": "cat-harness/skills/library/library-core/term-disagreement.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/term-disagreement.md",
       "skos:note": "candidate"
     },
     {
@@ -4415,7 +4415,7 @@
         }
       ],
       "skos:notation": "translation-manager",
-      "dcterms:source": "cat-harness/skills/library/library-core/translation-manager.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/translation-manager.md",
       "skos:note": "candidate"
     },
     {
@@ -4555,7 +4555,7 @@
         }
       ],
       "skos:notation": "upload-naming",
-      "dcterms:source": "cat-harness/skills/library/library-core/upload-naming.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/upload-naming.md",
       "skos:note": "candidate"
     },
     {
@@ -4575,7 +4575,7 @@
         }
       ],
       "skos:notation": "upload-routes",
-      "dcterms:source": "cat-harness/skills/library/library-core/upload-routes.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/upload-routes.md",
       "skos:note": "candidate"
     },
     {
@@ -4595,7 +4595,7 @@
         }
       ],
       "skos:notation": "uploads-watch",
-      "dcterms:source": "cat-harness/skills/library/library-core/uploads-watch.md",
+      "dcterms:source": "cat-harness/library/skills/library-core/uploads-watch.md",
       "skos:note": "candidate"
     },
     {

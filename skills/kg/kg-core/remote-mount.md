@@ -39,7 +39,7 @@ How a downstream folio gets the layers it is built on:
 | you want | relation | what arrives |
 |---|---|---|
 | to **build on** a harness: run its scripts, import its schemas, read its skills as your own | **remote mount** (`source.remote` in `index.config.json`) | the harness's declared directories and those of everything it needs, at one pin |
-| to **read** another graph and hold chosen parts of it | **subscription** (`subscriptions`): the [`kg-subscription`](../../library/large-datasets/kg-subscription.md) skill | a snapshot of its declaration, then parts you materialise one at a time through the five gates |
+| to **read** another graph and hold chosen parts of it | **subscription** (`subscriptions`): the [`kg-subscription`](../../../library/skills/large-datasets/kg-subscription.md) skill | a snapshot of its declaration, then parts you materialise one at a time through the five gates |
 | to **know of** a harness and link to it | **association** (`associatedHarnesses`): the [`associate-harness`](associate-harness.md) skill | nothing |
 | to **retrieve or distribute as a package** | **npm distribution** (`kg-retrieve-npm`, `source.npm`): the [`npm-kg-distribution`](npm-kg-distribution.md) skill | an npm `.tgz` tarball (unhydrated source or hydrated view) |
 

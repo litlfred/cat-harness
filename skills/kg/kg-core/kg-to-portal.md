@@ -177,6 +177,6 @@ its keys; any constraint comes from the envelope a GDHCN-aware verifier reads
 - The **publication** gates — (chief) editor signoff → merge → human eyes on
   the rendered artefact → publish — say who may publish; this skill is what
   is published.
-- [`asset-extraction`](../../library/library-core/asset-extraction.md) §"Derived renderings" — what a
+- [`asset-extraction`](../../../library/skills/library-core/asset-extraction.md) §"Derived renderings" — what a
   package may contain that the source never supplied, and how it must say so.
 - The IRIS replica — the worked example, with its own page under the IRIS replica's `docs/`.

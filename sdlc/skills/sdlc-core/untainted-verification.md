@@ -142,7 +142,7 @@ reads UNKNOWN and is refused, with nothing written, rather than overwritten.
 not the subject** — for example a failure count that is really a count of
 entries missing from the checker's reference map. Remove such a measurement
 rather than publish it.
-[`translation-manager`](../../../skills/library/library-core/translation-manager.md)
+[`translation-manager`](../../../library/skills/library-core/translation-manager.md)
 §"The instrument, not the translation" has the worked case.
 
 ## This is one rule with two homes
