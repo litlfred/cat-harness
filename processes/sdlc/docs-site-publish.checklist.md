@@ -32,7 +32,7 @@ Builds the docs site from this checkout's sources and publishes it to `gh-pages`
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - What: Regenerates every derived reference from its source, so the site is never built from committed copies that may be stale: the derived artefacts kept off the commit (`bun run cat derive:publish`), the skill schema and instruction pages (`gen-schema-docs.ts`, `gen-skill-docs.ts`), the content-backed do
 - Record it: `workflow_complete` with `node: "Task_Regenerate"`.
-- next: → `Call_InstanceSites` (Compose each instance's own site into the docs source [its Tool])
+- next: → `Call_InstanceSites` (Compose each instance's site [its Tool])
 
 ### 3. Alert the publication manager (`Call_Alert`)
 
@@ -42,7 +42,7 @@ Builds the docs site from this checkout's sources and publishes it to `gh-pages`
 - A subprocess (`Process_PublishAlert`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Failed` (Job RED — publication manager alerted)
 
-### 4. Compose each instance's own site into the docs source [its Tool] (`Call_InstanceSites`)
+### 4. Compose each instance's site [its Tool] (`Call_InstanceSites`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `docs-generation`.
@@ -64,31 +64,17 @@ Builds the docs site from this checkout's sources and publishes it to `gh-pages`
 ### 6. Export the knowledge graph and its schema (`Task_Export`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
-- What: Exports the knowledge graph and its schema into the published tree (`kg-export.ts`, `harness-schema-export.ts`, `kg-viewer.ts`), stripping the unpublished graph typologies, then checks that every maintained artefact is present (`bun run cat check:maintained-artefacts`) and that no block-level markup
+- What: Exports the knowledge graph and its schema into the published tree (`kg-export.ts`, `harness-schema-export.ts`, `kg-viewer.ts`), stripping the unpublished graph typologies, then runs the built-site checks: every maintained artefact is present (`bun run cat check:maintained-artefacts`), no block-leve
 - Record it: `workflow_complete` with `node: "Task_Export"`.
-- next: → `GW_Complete` (Is every maintained artefact present?)
-
-### Decide — Is every maintained artefact present? (`GW_Complete`)
-
-- Answered by the export: is every maintained artefact present?
-- Call `workflow_complete` with `node: "GW_Complete"` and `outcome` set to the label that holds:
-  - «something is missing» → `Call_Alert` (Alert the publication manager)
-  - «complete» → `Call_Verify` (Verify the export)
+- next: → `Call_Verify` (Verify the export)
 
 ### 7. Verify the export (`Call_Verify`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `publish-verification`.
-- What: Process_PublishVerification: the verifier set over the built tree (`publish-verify.ts`).
+- What: Process_PublishVerification: the verifier set over the built tree (`publish-verify.ts`), before the deploy.
 - A subprocess (`Process_PublishVerification`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `GW_Verified` (Verified?)
-
-### Decide — Verified? (`GW_Verified`)
-
-- Answered by the verification sub-process's end: `yes` only when every in-scope document passed.
-- Call `workflow_complete` with `node: "GW_Verified"` and `outcome` set to the label that holds:
-  - «yes» → `Task_Restore` (Restore the OPEN PRs' staging previews)
-  - «no, or could not tell» → `Call_Alert` (Alert the publication manager)
+- next: → `Task_Restore` (Restore the OPEN PRs' staging previews)
 
 ### 8. Restore the OPEN PRs' staging previews (`Task_Restore`)
 
@@ -102,7 +88,7 @@ Builds the docs site from this checkout's sources and publishes it to `gh-pages`
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-kg-to-cdn`.
-- What: Calls Process_RenderKgToCdn with the verified tree, the site root as publication root URL, and GitHub Pages as target, so its `gh-pages` Tool (`publish-gh-pages.sh`) replaces the branch and returns the push's status and message.
+- What: Calls Process_RenderKgToCdn with the built tree, the site root as publication root URL, and GitHub Pages as target, so its `gh-pages` Tool (`publish-gh-pages.sh`) replaces the branch and returns the push's status and message.
 - A subprocess (`Process_RenderKgToCdn`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `GW_Deployed` (Did the deploy succeed?)
 
@@ -117,10 +103,24 @@ Builds the docs site from this checkout's sources and publishes it to `gh-pages`
 
 - Asked after the full-replace publish (`restore-staging.ts --verify`): are the open PRs' previews still there?
 - Call `workflow_complete` with `node: "GW_Survived"` and `outcome` set to the label that holds:
-  - «yes» → `Task_CloseAlert` (Close the publication manager's alert, if open)
+  - «yes» → `Task_Judge` (Judge the built-site checks)
   - «no, or could not tell» → `Call_Alert` (Alert the publication manager)
 
-### 10. Close the publication manager's alert, if open (`Task_CloseAlert`)
+### 10. Judge the built-site checks (`Task_Judge`)
+
+- Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
+- What: Reads the outcomes `Task_Export` and `Call_Verify` recorded (maintained artefacts, escaped markup, QA witnesses and results, navbar tiles, the export verification) and fails the run if any failed.
+- Record it: `workflow_complete` with `node: "Task_Judge"`.
+- next: → `GW_Judged` (Did every built-site check pass?)
+
+### Decide — Did every built-site check pass? (`GW_Judged`)
+
+- Answered by `Task_Judge`.
+- Call `workflow_complete` with `node: "GW_Judged"` and `outcome` set to the label that holds:
+  - «yes» → `Task_CloseAlert` (Close the publication manager's alert, if open)
+  - «no — the site is live» → `Call_Alert` (Alert the publication manager)
+
+### 11. Close the publication manager's alert, if open (`Task_CloseAlert`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - What: A clean publish resolves whatever the last failure raised: close the open publication-manager tracking issue with a comment naming this run.
