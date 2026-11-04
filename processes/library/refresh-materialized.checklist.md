@@ -72,7 +72,7 @@ Keep a materialized copy of remote content current: what changed upstream, what 
 
 ### Decide — Which side, and on what terms? (`GW_Outcome`)
 
-- Four answers, and they do four different things — which is the whole reason this gateway now exists.
+- Four answers, and they do four different things.
 - Call `workflow_complete` with `node: "GW_Outcome"` and `outcome` set to the label that holds:
   - «the remote wins» → `Task_Apply` (Re-materialize and record new fixity)
   - «the local edit wins» → `Task_KeepLocal` (Keep the edit, re-pin)

@@ -84,7 +84,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 
 | Skill | What it is for |
 |---|---|
-| [`domain-fencing`](skills/kg/graph-management/domain-fencing.md) | How a domain-specific rule is kept out of the platform without being lost — the opt-in axis mechanism, the one criterion that should use it and does not, and the test for whether a rule generalizes… |
+| [`domain-fencing`](skills/kg/graph-management/domain-fencing.md) | How a domain-specific rule is kept out of the platform without being lost — the opt-in axis mechanism, why a profile is not a fence, and the test for whether a rule generalizes at all. |
 | [`edge-kinds-and-blast-radius`](skills/kg/graph-management/edge-kinds-and-blast-radius.md) | A graph has more than one kind of edge, and conflating them corrupts both the ordering and the impact answer. |
 | [`graph-detanglement`](skills/kg/graph-management/graph-detanglement.md) | Drive a tangled graph toward a clean partition, so a sub-graph can be split off when it grows too large or when a business reason separates it. |
 | [`graph-rendering`](skills/kg/graph-management/graph-rendering.md) | Draw any graph in a harness (schemas, processes, a folio's block graph and any formal relation its content type adds, a detangle partition) so the picture is derived, checkable and readable. |
@@ -170,7 +170,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`methodology-adoption`](skills/process/process-core/methodology-adoption.md) | How a named external methodology enters the knowledge graph, and how an agent picks which one applies. |
 | [`role-model`](skills/process/process-core/role-model.md) | Actors, roles and skills — who performs a BPMN task, under which swimlane, with which skills. |
 | [`swimlane-glossary`](skills/process/process-core/swimlane-glossary.md) | Swimlane Glossary Skill |
-| [`swot-analysis`](skills/process/process-core/swot-analysis.md) | Running a SWOT situation analysis — the four activities of `swot-analysis.bpmn`, what each step must produce, and the one thing the technique must never be used for. |
+| [`swot-analysis`](skills/process/process-core/swot-analysis.md) | Running a SWOT situation analysis — the activities of `swot-analysis.bpmn`, what each step must produce, and the one thing the technique must never be used for. |
 | [`task-authorization`](skills/process/process-core/task-authorization.md) | The check every BPMN task execution runs before anything is recorded: is the actor authenticated, assigned to the role the lane binds, authorized by an ODRL policy to perform the task, and allowed… |
 
 **`skills/process/raci/`** (1)
@@ -239,7 +239,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`pdf-inline-viewer`](skills/ui/ui-core/pdf-inline-viewer.md) | Show a published PDF inside a generated page — search, scroll, jump to page, print and download — with the pinned pdf.js viewer the site build installs. |
 | [`readme-sections`](skills/ui/ui-core/readme-sections.md) | A folio's README is the author's file; the platform owns only the marked regions it generates. |
 | [`render-logging`](skills/ui/ui-core/render-logging.md) | Log every render to the publish branch — what was published, removed, restored or deliberately retained — to an append-only log that lives beside what it describes. |
-| [`render-order`](skills/ui/ui-core/render-order.md) | Render order — flattening a dependency hierarchy, and the two stages |
+| [`render-order`](skills/ui/ui-core/render-order.md) | Render order — flattening a dependency hierarchy, and the three stages |
 | [`serving-renderings`](skills/ui/ui-core/serving-renderings.md) | Serving a rendering — endpoints, MIME types, and what each host can enforce |
 | [`theme-ui-review`](skills/ui/ui-core/theme-ui-review.md) | Review graphical assets AS THEY ARE INGESTED, in the context of the website or app design they are for — accessibility, branding, languages — to determine what the assets and the UI will be. |
 | [`ui-accessibility`](skills/ui/ui-core/ui-accessibility.md) | Every user interface this project produces must be operable by keyboard, legible at measured contrast, and comfortable to hit. |
@@ -319,7 +319,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`rendered-verification`](sdlc/skills/sdlc-core/rendered-verification.md) | Confirm a UI change by LOOKING at it in a browser and sending the screenshots to the author, rather than describing it. |
 | [`saturation-meta-merge`](sdlc/skills/sdlc-core/saturation-meta-merge.md) | When the CI runners have been full for a long time, drain a repository's ready PRs in one step: hold the swarm, cancel the queued PR runs, stack every admitted PR onto one meta-merge branch with… |
 | [`secrets`](sdlc/skills/sdlc-core/secrets.md) | Adding, rotating and revoking the credentials the harness's automation needs, one mechanism at a time, with the exact GitHub UI path for each step. |
-| [`session-intent`](sdlc/skills/sdlc-core/session-intent.md) | Session-start intent declaration + session-end results recording, against the goal-scoped master ledger and queue file. |
+| [`session-intent`](sdlc/skills/sdlc-core/session-intent.md) | Session-start intent declaration + session-end results recording, against the work plan's goals (milestone beans) and their open beans. |
 | [`signing`](sdlc/skills/sdlc-core/signing.md) | What any signature in the harness must answer, whatever it covers: who signs, what bytes are signed, which signature suites are accepted and who decides that, where the key is kept, which route… |
 | [`specification-management`](sdlc/skills/sdlc-core/specification-management.md) | Governs the lifecycle, syntax, and traceability of specifications and requirements across the harness. |
 | [`staging-review`](sdlc/skills/sdlc-core/staging-review.md) | Staging preview and before/after comparison for content review. |

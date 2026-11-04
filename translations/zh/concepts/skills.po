@@ -33,14 +33,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Folio-Official: no\n"
 
-#: docs/concepts/skills.md:75
-msgid "✅ all four packages"
-msgstr "✅ 全部四个技能包"
-
-#: docs/concepts/skills.md:74
-msgid "✅ lifecycle, agent, platform-bundle and folio-document-adapter skills; ⏳ authoring-math / authoring-who-smart-guidelines bodies are TBD (those packages ship the manifest + JSON definitions)"
-msgstr "✅ lifecycle、agent、platform-bundle 以及 folio-document-adapter 技能；⏳ authoring-math / authoring-who-smart-guidelines 正文待补充（这些技能包已提供清单 + JSON 定义）"
-
 #: docs/concepts/skills.md:68
 msgid "A skill is defined across a few layers — not a single file. For any skill:"
 msgstr "技能并不是定义在单一文件中的，而是跨越若干层次进行定义。对于任何一项技能："
@@ -52,10 +44,6 @@ msgstr "参与者"
 #: docs/concepts/skills.md:116
 msgid "Adversarial review of arguments"
 msgstr "对论证进行对抗性审阅（adversarial review）"
-
-#: docs/concepts/skills.md:166
-msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
-msgstr "智能体协作、watcher 框架、QA／渲染／参考文献／词汇表流水线、文档、部署 — 适用于任何内容类型。"
 
 #: docs/concepts/skills.md:218
 msgid "Approve — it reports findings only"
@@ -387,10 +375,6 @@ msgstr "来源"
 msgid "Stage"
 msgstr "阶段"
 
-#: docs/concepts/skills.md:70
-msgid "Status"
-msgstr "状态"
-
 #: docs/concepts/skills.md:213
 msgid "System actors"
 msgstr "系统参与者"
@@ -541,3 +525,15 @@ msgstr "技能存放位置（及其当前状态）"
 
 #~ msgid "WHO SMART Guidelines:"
 #~ msgstr "WHO SMART 指南："
+
+#~ msgid "✅ all four packages"
+#~ msgstr "✅ 全部四个技能包"
+
+#~ msgid "✅ lifecycle, agent, platform-bundle and folio-document-adapter skills; ⏳ authoring-math / authoring-who-smart-guidelines bodies are TBD (those packages ship the manifest + JSON definitions)"
+#~ msgstr "✅ lifecycle、agent、platform-bundle 以及 folio-document-adapter 技能；⏳ authoring-math / authoring-who-smart-guidelines 正文待补充（这些技能包已提供清单 + JSON 定义）"
+
+#~ msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
+#~ msgstr "智能体协作、watcher 框架、QA／渲染／参考文献／词汇表流水线、文档、部署 — 适用于任何内容类型。"
+
+#~ msgid "Status"
+#~ msgstr "状态"
