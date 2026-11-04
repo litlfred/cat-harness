@@ -14,5 +14,4 @@
 > `system` (human, agentic and mechanical), and adds a fourth, `external`: a
 > participant outside this instance, which is never given a task. The
 > `role-model` skill and the schema's own documentation state the same
-> mapping. An earlier version of this note called the four values a
-> contradiction. That read the enum without its documentation.
+> mapping.

@@ -45,20 +45,12 @@ own build cannot run yet (its publisher refuses for a missing cache or an
 undeclared input), say what is missing and ask. Never fall back to the
 index's site in silence.
 
-Learned 2026-10-15: an adaptation repository that declared `site.agentRun`
-was previewed only on the platform index's site, because the authoring skill
-it followed named the index route alone. Its own site was never built, and
-building it then found two files missing that a copied scaffold would have
-had ([`sub-kg-lifecycle`](../../../skills/kg/graph-management/sub-kg-lifecycle.md),
-stage 10).
-
 ## How it works
 
 ### 1. Feature branch → staging deployment
 
 When an agent pushes to a feature branch with an open pull request, drafts
-included (owner, 2026-10-31, "drafts get previews"),
-`feature-staging.yml` automatically:
+included, `feature-staging.yml` automatically:
 
 1. Builds the docs site (Jekyll + TypeDoc + BPMN diagrams)
 2. Writes the build's facts — commit SHA, timestamp, branch, PR, issue, build
@@ -67,9 +59,9 @@ included (owner, 2026-10-31, "drafts get previews"),
    reads those facts in the browser
 4. Comments on the PR that the preview is **staged and queued**, with the
    earliest push time and when it should be live
-5. Waits for the rate-limit window (§7), then deploys to
+5. Waits for the rate-limit window (§8), then deploys to
    `gh-pages/STAGING/<branch-slug>/` **only the files that differ from the
-   live site** (`staging-share.ts apply`, owner 2026-10-31). The preview's
+   live site** (`staging-share.ts apply`). The preview's
    `staging-sw.js` serves the rest from the live site in the browser and puts
    the banner back on its pages; the live site's root `404.html`
    (`staging-share.ts write-404`, written by `docs-site.yml`) installs that
@@ -77,9 +69,8 @@ included (owner, 2026-10-31, "drafts get previews"),
    it matches the live one once the per-preview edits are set aside (banner,
    SEO strip, `fa-staging` and `fa-search-index`, TypeDoc's title suffix);
    anything else keeps the preview's own copy. The footer build stamp is
-   filled in the browser on every build, the live site's from `build.json`
-   (folio-assistant#2837), so an unchanged page is byte-identical across
-   deploys
+   filled in the browser on every build, the live site's from `build.json`,
+   so an unchanged page is byte-identical across deploys
 6. Rewrites the same comment: **pushed** at a time, live by about five
    minutes later
 
@@ -89,13 +80,9 @@ Every staged page carries a muted-sage banner:
 
 > 🔀 **FEATURE BRANCH** — `claude/update-schedule` · commit `a1b2c3d` · built 2026-09-18T00:30:00Z · PR #42 · issue #215 · compare with main ↗ · build log
 
-This makes it impossible to mistake staged content for the published site.
-
-**Do not describe it as yellow.** It was `#d946ef`, which measured **3.46:1**
-against its own white text and so FAILED the 4.5:1 WCAG AA threshold — the
-banner was not merely glaring, it was the least readable element on every
-staged page. `#4F6F52` measures 5.63:1. Any replacement gets checked the same
-way; the pale decorator sages (`#9CAF88`, `#87A96B`) all land near 2.5:1.
+Its colour, `#4F6F52`, measures 5.63:1 against its white text, above the
+4.5:1 WCAG AA threshold. Check any replacement the same way; the pale
+decorator sages (`#9CAF88`, `#87A96B`) land near 2.5:1.
 
 #### The facts are fetched, not baked — and that is a storage decision
 
@@ -104,15 +91,8 @@ way; the pale decorator sages (`#9CAF88`, `#87A96B`) all land near 2.5:1.
 derives its preview root from `location.pathname`, fetches `staging.json` and
 fills the banner in.
 
-The banner used to be a bash string in `feature-staging.yml` with the SHA and
-a `date -u` timestamp interpolated into all ~530 pages. Because the timestamp
-changes every run, **every page was unique even across two builds of one
-branch**: each re-push added ~27.5 MB of permanently new objects to
-`gh-pages`, and the history grew even when the preview count did not. Measured
-2026-09-19 (bean `g196`): 9 previews, **346.1 MB**, and **zero HTML blobs
-shared between any two previews**.
-
-Three consequences for anyone editing this:
+A per-build value in the fragment makes every page unique on every build, so
+each re-push adds the whole site to `gh-pages` as new objects. Three rules:
 
 - **Nothing per-build may go back into the fragment.**
   `staging-banner-constant.test.ts` runs two builds with different facts and
@@ -126,20 +106,19 @@ Three consequences for anyone editing this:
 - **Every value from the JSON goes in as `textContent`, never as markup.**
   Git ref names may contain `<`, `>` and `"` — they are not in git's forbidden
   set, which stops at space, `~`, `^`, `:`, `?`, `*`, `[`, `\` and the control
-  characters. The bash version interpolated the branch name into a string;
-  the client builds nodes. `staging-banner.e2e.ts` pins this with a branch
-  name carrying an `onerror` payload.
+  characters. `staging-banner.e2e.ts` pins this with a branch name carrying
+  an `onerror` payload.
 
 Pages still differ **between** previews, because Jekyll's `relative_url`
 prepends the `baseurl` to ~235 hrefs per page and the `fa-translation-index`
-island publishes `site.baseurl` to JavaScript. Those are coupled to the
-language switcher and are `g196`'s remaining half — not fixed here.
+island publishes `site.baseurl` to JavaScript. Both are coupled to the
+language switcher.
 
 ### 3. Commit SHA stamping — and the four fields staging must NOT write
 
 Both builds write `docs/_data/build.yml`, and **they do not write the same
-fields.** The difference is not an oversight to tidy up; it is the second half
-of the deduplication above, and restoring it undoes that work silently.
+fields.** The difference is deliberate: it is the second half of the
+deduplication above.
 
 | | `docs-site.yml` (main) | `feature-staging.yml` (a preview) |
 |---|---|---|
@@ -147,14 +126,8 @@ of the deduplication above, and restoring it undoes that work silently.
 | `branch`, `staging`, `staging_slug`, `pr_number`, `search_index` | — | written |
 
 **Why staging omits them.** `site-chrome/_includes/footer_custom.html` renders
-`short_sha`, `built_at` and `run_url` into the footer of **every** page. A
-fresh `date -u` per run therefore changed every page on every deploy — the
-same defect as the old bash banner, one include along, and it **survived the
-banner fix** because it lives in a Jekyll include rather than in the
-workflow's injection step. Measured on two deploys of one branch three
-minutes apart, both already shipping the constant banner: 613 files,
-1466 insertions, 1465 deletions, **one insertion and one deletion on every
-HTML page**.
+`short_sha`, `built_at` and `run_url` into the footer of **every** page, so
+writing them per build changes every page on every deploy.
 
 The client fills those three in from the **same `staging.json`** the banner
 already fetches — one request, two consumers — and a failed fetch leaves
@@ -166,10 +139,8 @@ identical."*
 
 **Adding a per-build field back to the staging stamp will not fail a test.**
 `staging-banner-constant.test.ts` compares the banner **fragment**, which is
-genuinely constant; the footer is not in it. This is the paragraph that guards
-the gap, and bean `g196` records the session that shipped the banner fix, said
-the pages no longer differed across rebuilds, and was proved wrong by reading
-the deploy commits on `gh-pages` rather than the code.
+genuinely constant; the footer is not in it. Check the deploy commits on
+`gh-pages`, not the code, to confirm pages do not differ across rebuilds.
 
 A Jekyll layout can read `site.data.build.sha` to display the deployed
 version — on main. Under a preview, read it from `staging.json`.
@@ -194,12 +165,10 @@ are in [`staging-review`](staging-review.md) §"Staging retention".
 
 ### 6. The cap — 3 GB of previews in total, the oldest rotated off
 
-**Owner ruling, 2026-10-02 (issue #1868):** *"cap the maximum number of
-previews (<= 10) and rotate old ones off."* **Amended 2026-10-04: by size, not
-count, with a budget of 3 GB** — previews had grown to 200–780 MB each, so ten
-of them rotated off within an hour or two. Per-PR cleanup bounds nothing in
-total, every preview is a full copy of the site, and `gh-pages` passed GitHub's
-10 GB Pages limit — freezing the live site on 2026-10-01.
+Previews are capped **by size, at 3 GB in total**, and the oldest are rotated
+off. Per-PR cleanup bounds nothing in total, every preview is a full copy of
+the site, and a `gh-pages` branch past GitHub's 10 GB Pages limit freezes the
+live site.
 
 So every `stage` run, inside its push loop, runs
 `cat-harness-tools/scripts/staging-rotate.ts`: it stamps the preview it is staging
@@ -216,16 +185,15 @@ Two things to know when editing it:
   replayed removal is a stale one — it could delete a preview another run has
   just refreshed. Same shape as `publish-gh-pages.sh`.
 - **A rotated-off preview is regenerated by the next push to its PR branch.**
-  It can reach an OPEN PR's preview; that is the ruling, and why the cost is a
-  404 until the author pushes rather than lost work. Detail and the reviewer's
+  It can reach an OPEN PR's preview; the cost is a 404 until the author
+  pushes, not lost work. Detail and the reviewer's
   remedy: [`staging-review`](staging-review.md) §"The cap".
 
 ### 7. The cone — a preview rebuilds only what a changed file can reach
 
-**Owner ruling, 2026-10-04 (bean `4j86`):** *"staging rebuild only what is
-dependency cone of changes (general rule)"*, at FILE level, with each derived
-directory's generator declared as `writer`. A general rule across rendered
-kinds, not a fact about IGs.
+A preview rebuilds only the dependency cone of the changed files, at FILE
+level, with each derived directory's generator declared as `writer`. The rule
+is general across rendered kinds.
 
 A rendered directory is **in the cone** when a changed file is
 
@@ -237,26 +205,23 @@ A rendered directory is **in the cone** when a changed file is
    --downstream <instance/id>` prints that half on its own).
 
 `cat-harness-tools/scripts/staging-cone.ts` computes it; `compose-docs.ts`
-`carriedInstances` applies it to the composed instances. Three rules hold it
-honest:
+`carriedInstances` applies it to the composed instances. Three rules:
 
 - **Any doubt carries.** No file list, a writer that does not exist, or an
   import that does not resolve carries the directory, with the reason in the
-  build log. A preview missing the pages under review misleads a reviewer; an
-  oversized one costs bytes. Those are not symmetric.
+  build log.
 - **A computed `import()` is bounded, not ignored.** It can load only a
   module, so it carries on a changed module file and never on a page. The two
   such sites a generator reaches today (`harness-config.ts`'s `contributes`
   loader and `block-module.ts`'s block loader) have DECLARED targets and are
   walked exactly; `DECLARED_COMPUTED_IMPORTS` lists them.
-- **The old instance-prefix match is a floor.** The cone can only add to it.
+- **The instance-prefix match is a floor.** The cone can only add to it.
   Narrowing below it is a separate decision, made once the cone has been
   measured in previews.
 
-Measured on 2026-10-04: a skill-only change carries no IG; a change to
-`gen-ig-pages.ts` or to the DAK layer's `themes/chrome.json` carries all three.
-Before the cone, those last two changes dropped every IG from the preview that
-existed to review them. `staging-cone.test.ts` holds all three as tests.
+A skill-only change carries no IG; a change to `gen-ig-pages.ts` or to the
+DAK layer's `themes/chrome.json` carries all three. `staging-cone.test.ts`
+holds these cases as tests.
 
 **Built sites follow the same rule.** An IG's own Jekyll site and its AST
 site are BUILT in the preview from an upstream repository pinned in the
@@ -274,13 +239,10 @@ and the prefix floor is all it gets.
 
 ### 8. The rate limit — a preview never cancels the main site's Pages build
 
-**Owner ruling, 2026-10-03 (issues #1868, #1956, bean `j27s`), option 1:**
-push staging previews to `gh-pages` less often. GitHub's `pages build and
-deployment` keeps only the NEWEST run, so every push cancels the build in
-flight. A build takes about three minutes (2m20s–3m40s, measured 2026-10-03),
-and in busy stretches previews were pushed every one to two minutes — ten
-builds cancelled in a row between 07:50Z and 08:00Z that day, the main site's
-among them.
+Staging previews are pushed to `gh-pages` at a limited rate. GitHub's `pages
+build and deployment` keeps only the NEWEST run, so every push cancels the
+build in flight, the main site's included; a build takes about three
+minutes.
 
 So before each push attempt the `stage` job re-reads `gh-pages` and runs
 `cat-harness-tools/scripts/staging-push-gate.ts gate`, which holds the push until the
@@ -305,8 +267,8 @@ Three things to know when editing it:
   race, sent back to the gate without spending one of the three attempts; only
   a rejection with the tip unmoved counts as a failure.
 - **No concurrency group, and none should be added.** Every waiting preview
-  would pend in one group and each arrival would cancel the last — the
-  2026-09-19 measurement on the `stage` job. The per-branch group at the
+  would pend in one group and each arrival would cancel the last. The
+  per-branch group at the
   workflow level stays: a newer push to the same PR cancels a preview still
   waiting at the gate, so a superseded preview is never pushed at all.
 - **A staging push BEFORE a main-site push is harmless; only one AFTER it
@@ -315,24 +277,16 @@ Three things to know when editing it:
   the tip, and why it does not wait for `docs-site` runs that have not pushed
   yet.
 
-**Why a rate limit rather than a batching "flush" job.** A flush job — previews
-uploaded as artifacts, one scheduled job pushing every pending one in one
-commit — batches harder, but costs a second workflow, an artifact round trip of
-200–500 MB per preview, a record of which artifact is already deployed, a
-schedule GitHub runs best-effort, and a write token over content built from a
-pull request. The gate is one script and one loop, and its correctness rests on
-git rather than on bookkeeping. The cost is latency under load: with K
-previews waiting, the last one pushes about 5 × K minutes later, and the PR
-comment says so with its own estimate.
+The cost is latency under load: with K previews waiting, the last one pushes
+about 5 × K minutes later, and the PR comment gives its own estimate.
 
-The `cleanup` and `cleanup-dispatch` jobs do NOT pass through the gate yet.
-They push once per closed PR rather than once per push, so they are far rarer;
-gating them is the next step if cancellations by cleanup are ever measured.
+The `cleanup` and `cleanup-dispatch` jobs do NOT pass through the gate. They
+push once per closed PR rather than once per push.
 
 ### 9. Build types — `preview` and `full`
 
-**Owner ruling, 2026-11-01:** *"preview" = no reindex, only changes, and
-"full".* A public comment (PC) build is a full build, and so is a release.
+There are two build types. A public comment (PC) build is a full build, and
+so is a release.
 
 | build type | used for | builds |
 |---|---|---|
@@ -340,17 +294,15 @@ gating them is the next step if cancellations by cleanup are ever measured.
 | `full` | the main site deploy, a public comment release, a release | everything; every index rebuilt from the tree being published |
 
 An **index** is computed over the whole corpus: the search index, the LSI
-viewer, the SQLite slices, the handler index, and (owner, Q-CI5-1 "B",
-2026-11-01) the glossary pages, the translation status pages and the node-kind
-pages. A `builtAtPublish` entry says so with `index: true`; a writer is
-borrowed only when every entry it writes says so. **The cost the owner
-accepted:** a preview of a glossary, translation or node-kind change shows
-main's copy of those pages, so review such a change on a `full` build
-(dispatch with `build_type: full`) or in its source. Rebuilding an
-index in a preview shows the reviewer almost nothing and costs minutes, so
-`derive:publish` puts back main's copy from main's writer-cone recording and
-logs `borrowed <writer>`. The search index was already served from main in a
-preview (§"Serve the published search index" in the preview workflow).
+viewer, the SQLite slices, the handler index, the glossary pages, the
+translation status pages and the node-kind pages. A `builtAtPublish` entry
+says so with `index: true`; a writer is borrowed only when every entry it
+writes says so. In a preview `derive:publish` puts back main's copy from main's
+writer-cone recording and logs `borrowed <writer>`; the search index is served
+from main the same way (§"Serve the published search index" in the preview
+workflow). So a preview of a glossary, translation or node-kind change shows
+main's copy of those pages: review such a change on a `full` build (dispatch
+with `build_type: full`) or in its source.
 
 The switch is `CAT_BUILD_TYPE` (`cat-harness-tools/scripts/lib/build-type.ts`).
 **Any doubt builds full**: unset means `full`, and a value that is neither word
@@ -380,12 +332,10 @@ When an author requests a content change:
 
 The BPMN for this workflow is the content core's `processes/content/content-change-review.bpmn`.
 
-### Publishing without a runner — `stage-local.ts`, one command (#2410)
+### Publishing without a runner — `stage-local.ts`, one command
 
 When the Actions queue is backed up, the agent can build and publish itself:
-it already has the checkout, the platform and bun. Measured 2026-10-07 on
-smart-ra: the staging workflow waited **33 min** for a runner to do 45 s of
-work, and GitHub's Pages deploy then waited **47 min** for about one.
+it already has the checkout, the platform and bun.
 
 On an **agent-run** repository (below) this is not a shortcut. It is the only
 publish path. It is one command for a preview and for the main site, for a
@@ -436,7 +386,7 @@ default branch.
 | preview | `STAGING/<slug>/`, replaced wholesale; held by the rate-limit gate (§8); commit `staging(<slug>): from <sha>`; render log `staging-preview` | `branches/<last path component>/`, nothing deleted; commit `Deploy candidate branch` |
 | main site | the root, through `publish-main-site.ts`: only the files the last publish's `_main-site.json` lists are replaced, and `STAGING/`, `_render-log/` and anything a person put at the root are kept; commit `main-site: from <sha>`; render log `main-site` for `/` | the root, cleaned except for the deploy step's `clean-exclude` (`branches`, `sitepreview`) and the action's own exclusions; commit `Deploy main branch` |
 
-Every path refuses an empty build before it deletes anything (bean `oisv`).
+Every path refuses an empty build before it deletes anything.
 
 - **Pushing removes the first wait and not the second.** Pages deploys on a
   runner, so say the page is live once that deploy has run, never sooner.
@@ -464,9 +414,9 @@ Every path refuses an empty build before it deletes anything (bean `oisv`).
   plan from `--dry-run`, and a real run stops naming the missing
   prerequisite.
 - **An IG repository's own site is built from its AST, not from the
-  Publisher's HTML** (owner, 2026-10-14). The repository declares
-  `site.build` in its `index.config.json` entry (inline — never a
-  `<instance>.config.json`, bean `ymvt`), and that recipe's first step
+  Publisher's HTML**. The repository declares `site.build` in its
+  `index.config.json` entry (inline — never a `<instance>.config.json`), and
+  that recipe's first step
   restores the AST from its cache branch and refuses one that is not valid for
   the commit. The cache is refreshed by a Publisher run on a runner, through
   the IG layer's reusable refresh workflow. It is the one workflow an
@@ -474,13 +424,12 @@ Every path refuses an empty build before it deletes anything (bean `oisv`).
   owner names for that run, dispatches it. The layer that owns IG builds owns
   the rule and the workflow; this skill names no IG step.
 
-### Agent-run repositories — the GitHub Actions path is documented, not run (owner, 2026-10-10)
+### Agent-run repositories — the GitHub Actions path is documented, not run
 
 A repository is **agent-run** when it says so in its own `index.config.json`:
-`"site": { "agentRun": true }` (owner, 2026-10-14). An agent builds and
-publishes its site, and its publish workflow keeps only `workflow_dispatch`.
-The first repositories became agent-run on 2026-10-10 (bean `n3h9`). This
-skill keeps no list of them: the declaration is the list, and
+`"site": { "agentRun": true }`. An agent builds and publishes its site, and
+its publish workflow keeps only `workflow_dispatch`. This skill keeps no list
+of them: the declaration is the list, and
 `stage-local.ts` says in every plan whether the repository declares it. For
 these repositories the GitHub Actions path is
 **documentation**. It says what the workflow does, so that the agent path can
@@ -494,15 +443,10 @@ match it. It is not a fallback for an agent to take.
 | an IG's main site at the Pages root | `stage-local.ts` from the default branch | the IG publisher's `ghbuild.yml`, "Deploy main" |
 | QA sweep, screenshots, review comments, PR comments | not run (the plan says so) | jobs in the workflows above |
 
-**Never dispatch the workflow, to cover a gap or for any other reason.** On
-2026-10-10 an agent dispatched an agent-run repository's `staging.yml` on `main` to
-republish the root after a re-pin. The site was published, but the run
-contradicted the repository's agent-run setting, and the owner asked *"why
-github action and not agentic?"*. When the agent path cannot do a step, say
-which step it is and ask. Do not reach for the workflow because it is there.
+**Never dispatch the workflow, to cover a gap or for any other reason.** When
+the agent path cannot do a step, say which step it is and ask.
 
-The owner's ruling for now: **skills that drive GitHub Actions are not to be
-implemented**. Document what the workflows do, here and in the workflow
+**Skills that drive GitHub Actions are not to be implemented.** Document what the workflows do, here and in the workflow
 files, so that an agent-run step can be checked against them —
 `stage-local.ts` reads the workflow files rather than restating them, so a
 change to a workflow's build or layout is a change to the agent path too.
@@ -516,7 +460,7 @@ The SHA stamp means staleness is always detectable:
 - **Main site SHA = merge commit** → the publication is current
 - **Main site SHA ≠ latest main** → docs-site.yml needs to run
 
-## SMART Guidelines example (from issue #215)
+## Example — a change that spans several blocks
 
 An author needs to change the immunization schedule:
 
@@ -538,14 +482,9 @@ An author needs to change the immunization schedule:
 served page, and the bot's *"Staging preview"* comment reports at most the
 first, not the second — and while it says **queued**, not even that. List
 `STAGING/<slug>/` on `refs/heads/gh-pages` before relaying the URL; quote the
-comment's own push and live-by times (the rate limit in §7 can hold a push for
-several windows), or say the `stage` job takes about 22 minutes plus the wait and
-Pages adds 3 to 4 on top (measured 2026-10-31); schedule the re-check rather than promising it.
-
-The reason it is a rule: an agent relayed one preview URL to the owner **five
-times in a session** without checking anything, each time straight off the
-bot's comment. Whether the site served it was never established in either
-direction.
+comment's own push and live-by times (the rate limit in §8 can hold a push for
+several windows), or say the `stage` job takes about 22 minutes plus the wait
+and Pages adds 3 to 4 on top; schedule the re-check rather than promising it.
 
 The three states, and why the third is not yours to assert, are in
 [`staging-review`](staging-review.md) §"Before you hand a staging URL to a
@@ -555,12 +494,13 @@ person (STRICT)". It is the same rule and it is written once, there.
 
 **Look at the publish ref, not the site.** A staging URL is LOOKED UP in
 `gh-pages` under `STAGING/<branch-slug>/`, never composed from the source
-path — `docs/<stub>/proposals/x.md` publishes to `/proposals/x.html`, and
-composing it from the source path yields a 404 for a page that is there. From
+path — `cat-harness/docs/guides/x.md` publishes to
+`/docs/cat-harness/guides/x.html`, and composing it from the source path
+yields a 404 for a page that is there. From
 an agent container a `curl` against a Pages URL fails on the proxy regardless,
 so a failed fetch is not evidence either way.
 
-Full rule and the measured failure:
+Full rule:
 [`github-state-inspection`](github-state-inspection.md).
 
 ## Staging links

@@ -62,7 +62,7 @@
     "selection": {
       "when": "A folio's staging or publish build should show its ArchiMate models: run after the document site is built and before the navbar pass.",
       "limits": "Draws the notation, not Archi's icons, custom images or fonts; sketch and canvas views are skipped. Never replaced by Archi's CLI report (skill `archimate-models`).",
-      "cost": "Milliseconds per view; smart-ra's four models are 5,809 pages and 131 drawings (~24 MB) in about 1.5 s. No network, no JVM."
+      "cost": "Milliseconds per view; four models of 5,809 pages and 131 drawings (~24 MB) take about 1.5 s. No network, no JVM."
     },
     "requires": {
       "runtime": [

@@ -19,8 +19,7 @@ be followed mechanically rather than inferred:
 | any content node | `$schema` | Schema |
 | Folio | the board layer | Board, then Position, then Note |
 
-Three properties of that table are worth stating, because each one is a
-decision that could have gone the other way.
+Three properties of that table:
 
 **Skill is a sink.** Roles point at Skills, Workflow activities point at Skills,
 Tools point at Skills, Tests point at Skills — and a Skill points at none of
@@ -46,9 +45,7 @@ graph is a defect, not an update. This is the edge that makes a Context Overlay
 possible at all: if a run could mutate its own conditions, replaying it under
 the same conditions would not be a thing you could ask for.
 
-**User Story** works this way too, as of #1168. CRDM produces Workflows, User
-Stories and Roles, and Scenarios is where the User Stories belong. Until then a
-Role carried its stories as `useCases`, free-text strings that could not be
-pointed at, counted, or traced to a Workflow. Each story is now a node in
+**User Story** works this way too. CRDM produces Workflows, User Stories and
+Roles, and Scenarios is where the User Stories belong. Each story is a node in
 `scenarios/stories.json` that names its role, and the role names none — the
 same direction as a voice, which points at the role it addresses.

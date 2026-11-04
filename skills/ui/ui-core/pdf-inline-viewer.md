@@ -12,15 +12,13 @@ description: >
 
 # Inline PDF viewer — a pinned pdf.js, installed at build time
 
-> Skill id: `pdf-inline-viewer` · Package: `ui-core` · Bean
-> `folio-assistant-5ea6` · Issue #2119 · Tools `pdf-viewer-install`,
-> `pdf-viewer-embed` · Code `cat-harness-tools/scripts/pdf-viewer.ts`
+> Skill id: `pdf-inline-viewer` · Package: `ui-core` · Tools
+> `pdf-viewer-install`, `pdf-viewer-embed` · Code
+> `cat-harness-tools/scripts/pdf-viewer.ts`
 
-Owner, 2026-10-04: *"is there a lightweight inline viewer that could be used for
-viewing PDF on CDN … basic functionality (search, scroll, jump to page, print,
-d/l)"*. Of four options — the browser's own viewer, pdf.js copied onto the site,
-pdf.js from a CDN with a hand-built toolbar, EmbedPDF — the owner chose the
-second, then asked for it *"as skill and tool"*, then *"lazyload"*.
+A lightweight inline viewer for PDFs on a CDN: search, scroll, jump to page,
+print and download. pdf.js is copied onto the built site (not loaded from a
+CDN) and loaded lazily.
 
 ## The two acts, and which Tool does each
 
@@ -39,10 +37,9 @@ in the built site only.
 
 **An embed is a link that also renders.** So it follows the same rule as the
 download link: if the bitstream's publication gates (`copyright`,
-`restrictions`) are not `permitted`, the page gets no viewer. On the IRIS replica that
-is `readHere()` in `gen-iris-pages.ts`, which returns nothing whenever
-`linkOrWithheld` would refuse the link. The page then says only what it already
-says: "held here, not published". Never embed a document to "just preview" it.
+`restrictions`) are not `permitted`, the page gets no viewer: the embed returns
+nothing whenever the download link would be withheld, and the page says only
+"held here, not published". Never embed a document to "just preview" it.
 A preview is publication.
 
 ## Why the viewer opens only allowlisted hosts
@@ -64,7 +61,7 @@ Anything else is refused on screen and never fetched.
 
 ## Three things measured rather than assumed (pdf.js 6.4.299)
 
-Each of these cost a debugging round. All three are listed under `binds` in the
+All three are listed under `binds` in the
 `pdfjs` entry of `upstream-pins.json`, so a version bump re-checks them.
 
 1. **The modern build needs a very new browser.** It calls
@@ -83,8 +80,8 @@ Each of these cost a debugging round. All three are listed under `binds` in the
 ## The embed, and what it does when it cannot work
 
 - **Site root from the browser.** One generated page is served at several
-  depths (`/<iris-replica>/`, `/folio-assistant/<iris-replica>/`,
-  `/STAGING/<branch>/<iris-replica>/`). The caller passes the route pattern, using
+  depths (`/<folio>/`, `/folio-assistant/<folio>/`,
+  `/STAGING/<branch>/<folio>/`). The caller passes the route pattern, using
   the `folio-mount.ts` convention (group 1 is the root), and the inlined client
   applies it. A page off the route gets a frame saying so, never a 404 inside
   the frame.
@@ -99,10 +96,7 @@ Each of these cost a debugging round. All three are listed under `binds` in the
 ## Caching: why the frame's address carries a version tag
 
 GitHub Pages serves every file with `max-age=600` through a CDN, so a hard
-reload can still be answered from a copy up to ten minutes old. On the first
-staging preview that hid a fix. The owner hard-reloaded and still saw the old
-frame, because the old `viewer.html` was what came back. Owner, 2026-10-04:
-*"add the version tag so cache doesn't bite"*.
+reload can still be answered from a copy up to ten minutes old.
 
 - **The frame's address ends `&v=<rev>.<deploy>`.** `<rev>` is `VIEWER_REV`, a
   hash of the pinned release, the shim and the patch. `<deploy>` comes from the
@@ -129,10 +123,8 @@ can fix it without forking pdf.js. They ask `isVendoredViewer()`, so there is
 one answer to "is this ours".
 
 **The two passes that INJECT into every page skip it too.** These are the
-staging banner and the standalone navigation rail. On the first staging
-preview, both drew inside the PDF frame, so the frame opened on unstyled site
-navigation and a second banner. Bean `folio-assistant-5ea6` has the
-screenshots. Any new pass that writes into every `*.html` in `_site` owes the
+staging banner and the standalone navigation rail; otherwise both draw inside
+the PDF frame. Any new pass that writes into every `*.html` in `_site` owes the
 same exclusion. `standalone-rail.test.ts` and `pdf-viewer.test.ts` each assert
 it for the existing two.
 

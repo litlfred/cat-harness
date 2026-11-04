@@ -2,8 +2,7 @@ Everything this harness knows about itself is one graph: the Schemas that
 describe its content, the Skills an agent reads, the Workflows those Skills are
 invoked from, the Roles that own a lane, the Tools and Tests that exercise a
 Skill, and the running record of what is being worked on. That graph is the
-**Knowledge Graph**, bootstrap's own term for it (called the **KGraph**
-until 2026-09-30).
+**Knowledge Graph**, bootstrap's own term for it.
 
 Two sentences fix the whole model, and the rest of this page elaborates them.
 

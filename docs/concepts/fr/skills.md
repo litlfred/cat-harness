@@ -67,18 +67,12 @@ la bonne compétence (`skill_list` → `skill_fetch`), effectue le travail sous 
 
 Une compétence est définie à travers plusieurs couches — et non dans un seul fichier. Pour toute compétence :
 
-| Couche | Emplacement | État |
-|--------|-------------|------|
-| **Définition** (rôles, capacités requises, exigences, modèles de routage, étapes du cycle de vie, réf. de schéma) | `.claude/skills/local/<skill>.json` | ✅ les 22 compétences de rédaction — validées en CI par `scripts/validate-skills.ts` |
-| **Contrat typé** (JSON Schema d'entrée/sortie) | `schemas/skills/<skill>/` | ✅ les 22 — voir la [référence]({{ site.baseurl }}/reference/skills/) |
-| **Corps d'instructions** (guide textuel que le LLM charge) — parcourez-les dans la référence des [instructions de compétences]({{ site.baseurl }}/reference/skill-instructions/) | `skills/authoring/content-lifecycle/*.md`, `skills/folio-*-adapter/*.md`, `src/skills/*.md` | ✅ compétences de cycle de vie, d'agent, du lot de plateforme et de **folio-document-adapter** ; ⏳ **les corps pour authoring-math / authoring-who-smart-guidelines sont à venir** (ces paquets fournissent le manifeste + les définitions JSON) |
-| **Paquet** (dépendances Docker / exécution) | `skills/<package>/package-manifest.json` | ✅ les quatre paquets |
-
-Ainsi, *oui, les compétences existent* — sous forme de définitions structurées et de schémas typés, avec des corps
-textuels inclus pour les compétences de cycle de vie et d'agent. L'outil MCP `skill_fetch`
-dessert actuellement les corps `src/skills/*.md` ; les corps textuels des compétences de rédaction
-constituent le prochain élément à compléter (les définitions et les contrats auxquels ils se rattacheraient
-sont déjà en place).
+| Couche | Emplacement |
+|--------|-------------|
+| **Définition** (rôles, capacités requises, exigences, modèles de routage, étapes du cycle de vie, réf. de schéma) | `skills/skill-definitions/<skill>.json` |
+| **Contrat typé** (JSON Schema d'entrée/sortie) | `schemas/skills/<skill>/` — voir la [référence]({{ site.baseurl }}/reference/skills/) |
+| **Corps d'instructions** (guide textuel que le LLM charge, servi par `skill_fetch`) — parcourez-les dans la référence des [instructions de compétences]({{ site.baseurl }}/reference/skill-instructions/) | `skills/<thème>/<paquet>/*.md`, `sdlc/skills/<paquet>/*.md`, `work-plan/skills/work-plan/*.md` |
+| **Paquet** (dépendances Docker / exécution) | `package-manifest.json` à côté des corps d'instructions du paquet |
 
 ### Transversal : `content-lifecycle`
 
@@ -128,47 +122,42 @@ Les étapes du cycle de vie qui s'appliquent à **chaque** type de contenu :
 | [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | Compiler et publier l'IG |
 | [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | Points de contrôle QA (QA gates) |
 
-### Compétences d'agent/de plateforme (`src/skills`)
+### Compétences d'agent/de plateforme
 
-Compétences que le LLM utilise pour travailler efficacement dans le dépôt (chargées via `skill_fetch`,
-paquet `folio-assistant`) :
+Compétences que le LLM utilise pour travailler efficacement dans le dépôt (chargées via `skill_fetch`) :
 
-| Compétence | Objectif |
-|------------|----------|
-| `corpus-grep` | Rechercher dans l'ensemble du corpus de contenu |
-
-> `editor`, `readability-editing`, `todo-review`, `symbiotic-interaction` et
-> `deployment-auth` résident désormais (généralisées) dans le lot **`folio-core`** ci-dessous —
-> chargez-les avec `package_name="folio-core"`.
+| Compétence | Paquet | Objectif |
+|------------|--------|----------|
+| `corpus-grep` | `kg-core` | Rechercher dans l'ensemble du corpus de contenu |
+| `editor`, `readability-editing`, `todo-review` | `authoring-core` | Édition et relecture de la prose |
+| `symbiotic-interaction` | `conduct-core` | Lire le registre de l'apport de l'auteur |
+| `deployment-auth` | `folio-core` | Authentification de déploiement |
 
 Un folio d'article scientifique nécessite également les compétences de `folio-document-adapter` : un article *est* un
 document auquel s'ajoutent des blocs s'appuyant sur Lean, de sorte que `document-structure` et
 `document-publishing` s'appliquent aux deux. Les deux lots constituent les deux moitiés d'un même modèle
 de contenu, et non des alternatives entre lesquelles choisir.
 
-### Compétences locales de coordination (`.claude/skills/local`)
+### Compétences de coordination (`sdlc-core`, `work-plan`)
 
 | Compétence | Objectif |
 |------------|----------|
-| `prepare-merge` | Amener une branche à un état propre/au vert/fusionnable (voir aussi `/watch`) |
+| `prepare-merge` | Amener une branche à un état propre/au vert/fusionnable (voir aussi `watch`) |
 | `bean-coordination` | Discipline d'appropriation et de coordination multi-agents |
 | `todo-manager` | Discipline des tâches basées sur les beans (beans-as-todos) |
 
 ### Lots de compétences de plateforme (`skills/tools/folio-core`, `folio-assistant-core/skills/content/folio-document-adapter`, `folio-assistant-sci/skills/content/folio-paper-adapter`)
 
-Des **lots de plateforme** plus importants, dont deux ont été migrés depuis le dépôt de contenu qou (voir le
-[registre de migration](https://github.com/litlfred/folio-assistant/issues/202) et
-le ticket [#27](https://github.com/litlfred/folio-assistant/issues/27)). Ils sont
-indépendants du contenu et conçus pour être synchronisés dans n'importe quel folio :
+Des **lots de plateforme** plus importants, indépendants du contenu et conçus
+pour être synchronisés dans n'importe quel folio :
 
 | Lot | Compétences | Portée |
 |-----|------------:|--------|
-| **`folio-core`** | 43 | Coordination d'agents, cadre watcher, pipeline QA / rendu / bibliographie / glossaire, documentation, déploiement — s'applique à *tout* type de contenu. |
+| **`folio-core`** | 7 | La surface d'outils : assemblage, contrat et projection MCP, compétences et outils, rédaction d'outils, couverture des outils, authentification de déploiement — s'applique à *tout* type de contenu. |
 | **`folio-document-adapter`** | 4 | Folios de prose : rédaction de blocs, structure en chapitres/sections, énoncés normatifs et chaîne de publication sans TeX. S'applique également aux articles scientifiques. |
 | **`folio-paper-adapter`** | 40 | Adaptateur d'articles de mathématiques formelles (tout article Lean 4 + LaTeX) : flux de travail Lean, outillage de preuve, validation d'objets de contenu, LaTeX, structure d'article, importation, simulateurs. |
 
-Les compétences physiques irréductibles de QOU ont été ignorées ; les exemples spécifiques à QOU dans le reste
-ont été généralisés. Chaque lot inclut un fichier `package-manifest.json`.
+Chaque lot inclut un fichier `package-manifest.json`.
 
 > Les **schémas** de compétences (entrée/sortie typée pour les compétences de rédaction) sont générés
 > dans la [référence des schémas de compétences]({{ '/reference/skills/' | relative_url }}) — ne déviez jamais de ce que

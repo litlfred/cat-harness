@@ -9,13 +9,11 @@ description: >
 # integration-watcher — §0b and §5, the idle backlog
 
 What a watcher does when nothing is arriving: the 5-minute idle trigger (§0b)
-and the backlog sweep it runs (§5), including the handover issue template.
+and the backlog sweep it runs (§5), including the handover issue template. A
+watcher processing events never reaches it.
 
-Split from the parent because it is 40 % of the file and applies only in the
-idle branch — a watcher processing events never reaches it.
-
-**Section numbers are the parent's and do not change here** — children cite
-`parent §5a` and `parent §5m`, and those references resolve to this file.
+**Section numbers are the parent's** — `parent §5a` and `parent §5m` resolve
+to this file.
 
 ## 0b. Idle-time backlog policy (5-minute trigger)
 
@@ -93,19 +91,13 @@ For this skill's children specifically:
   When triggered, read the queue, pull the highest-priority
   `needs-author` or unresolved `triage` item, and apply the §4 → §5 →
   §6 child-specific procedure on it.
-- If the queue is empty/all-terminal, fall through to item 4
-  (cross-cutting cleanups). Don't sit idle if there's reachable
+- If the queue is empty/all-terminal, fall through to items 4–5 (stale
+  sidecars and witnesses, cross-cutting cleanups). Don't sit idle if there's reachable
   cleanup work.
 - The "pause" command from the user IS a terminal state — do not
   pursue backlog after the user says "pause" or "stop until I'm back".
   Only the explicit "resume" / "continue" restart command lifts the
   pause.
-
-This rule exists because integration-watcher sessions often spend long
-stretches in idle monitor-TICK mode after the in-flight tranche lands.
-Productive idle is "work the next queue item", not "TICK heartbeats
-forever".
-
 
 ## 5. Idle backlog sweep
 
@@ -231,10 +223,6 @@ Validate runs many scripts; one regenerates a witness that has drifted
 on main since the last refresh (e.g. a `files_scanned` count moved when
 a new probe landed without a witness refresh). The drift check fires.
 
-**The pattern is endemic.** Main's own commit log shows repeated
-`post-rebase drift refresh` / `post-push drift refresh` entries — author
-+ sibling agents do this routinely.
-
 **Sub-case: quick-fail = billing.** If a CI job fails in **under ~60
 seconds**, the runner almost never reached the validators. This is a
 billing / queue / quota condition on the CI account, **not** a content
@@ -265,9 +253,9 @@ local diagnosis.
 
 When a watcher (or any skill it dispatches) **prepares a PR**, the
 watcher **must** add the new PR to its subscription set immediately and
-follow up on review activity. Author oversight expectation: *"watch PRs
-you prepare for review comments and respond if you can. if not ask
-author. once done, ask author if they want to merge and provide link"*.
+follow up on review activity: respond to review comments where you can,
+ask the author where you cannot, and once done ask the author whether to
+merge, with the link.
 
 Per prepared PR:
 
@@ -491,7 +479,7 @@ items `wontfix-sibling-unresponsive` and surface to the author per §5e.
 ### 5h. Post-completion voice review on prepared PRs
 
 When a prepared PR (per §5g) lands its **last substantive fix**, run
-`local/one-voice-audit` on the **diff scope** before the merge prompt:
+`one-voice-audit` on the **diff scope** before the merge prompt:
 
 - **PR touches `.md` content** → run the §1 greps (status leaks, emoji,
   work-tracker words, first-person tone, unicode crashes) on the diff.
@@ -587,9 +575,7 @@ audited[block].{sha,criteria}` makes the audit ledger fully replayable.
 
 ### 5m. Sequential-by-default; parallel agents require explicit consent
 
-Repo-owner preference: **don't spawn more than one agent at a time
-unless explicit consent.** This overrides the historical
-"parallel-by-default" model.
+**Don't spawn more than one agent at a time without explicit consent.**
 
 **Default rule:** while idle, the watcher does its own work
 **sequentially in the foreground** — one backlog item / one PR triage /

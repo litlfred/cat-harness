@@ -28,33 +28,28 @@ formal layer also derives a formal relation, from what its proofs actually
 invoke, and the two relations answer different questions and diverge in both
 directions, correctly. The layer that ships such a content type holds that
 comparison and names this skill from its side (for a paper folio, the science
-layer; bean `syiq`).
+layer).
 
 ## `interprets` is the same relation under a second field name
 
 `uses[]` is the curated list. **`interprets` states the same reader-facing fact**
 for a remark or example *about one specific block*, and the content graph counts
-**both** — since 2026-08-15, bean `i8ad`.
+**both**.
 
 Each editorial edge carries `editorialField` so a tool proposing an **edit** can
-still tell which field an author wrote. **They are interchangeable to a reader
-and not to a writer**, and collapsing that distinction would make an automated
-edit rewrite the wrong field.
+still tell which field an author wrote: **they are interchangeable to a reader
+and not to a writer**.
 
 **Two caveats, both of which change what a number means:**
 
 - **`detangler-no-forward-ref` builds its own `uses`-only adjacency** and does
-  not consume the shared graph, so it is unaffected by `interprets` — and the
-  forward-pointing `interprets` edges are outside what it counts. Ten were, when
-  this was measured.
-- **The editorial graph is no longer acyclic.** Genuine editorial cycles are
-  *revealed* by counting both fields, not introduced by it. Do not "fix" one
-  without reading whether it is real.
+  not consume the shared graph, so forward-pointing `interprets` edges are
+  outside what it counts.
+- **The editorial graph is not acyclic.** Counting both fields reveals genuine
+  editorial cycles. Do not "fix" one without reading whether it is real.
 
 **Do not quote a count from prose — run the check against the corpus in front of
-you.** The forward-reference count was 1 when `i8ad` was measured and 4 a few
-hours later on merged content, none of it caused by the change. A number in a
-document is a claim; only a run is evidence.
+you.**
 
 For impact questions — *what breaks if this changes?* — use the union, via the
 content graph's accessors, which default to it.
@@ -64,8 +59,7 @@ content graph's accessors, which default to it.
 **Never populate `uses[]` from a machine-derived dependency graph.**
 Copying derived dependencies in destroys the editorial signal and inflates
 every ordering metric computed from it (graph energy, forward refs, cone
-size, PageRank). If you are tempted to "sync" the two, stop — that is the
-failure mode this axis exists to prevent.
+size, PageRank). Never "sync" the two.
 
 When reviewing, do not open a block's formal or generated sibling to decide
 what belongs in `uses[]`. The question is about the reader.
@@ -116,51 +110,35 @@ A `uses[]` entry pointing at a block that appears *later* in the chapter
 is a `detangler-no-forward-ref` finding. Sometimes that is right — the
 exposition really does defer — and `foreshadows[]` records it.
 
-**`foreshadows[]` is independent of `uses[]`** (owner ruling, 2026-08-10;
-the old `foreshadows-subset-of-uses` rule is gone). That independence is
-the whole point, and it splits the field into two cases you must keep
-apart:
+**`foreshadows[]` is independent of `uses[]`**, and it covers two cases you
+must keep apart:
 
 | case | in `uses[]`? | who records it | cost |
 |---|---|---|---|
 | **Pure forward pointer** — the prose names something coming later and does not depend on it | no | **derived** from the `.md`, not authored | zero by construction: it never enters the dependency graph |
 | **Deferred prerequisite** — a real dependency the paper states later on purpose | yes | **declared** by the author, and only the author | exempt from ordering *cost*; still counted for cycles, cones and depth |
 
-The earlier subset rule required every foreshadow to sit in `uses[]`,
-which made the field an annotation on an edge and nothing more. It could
-not express the case it was most wanted for — a chapter overview naming
-results it previews but does not depend on — because recording such a
-pointer meant first asserting a dependency that is not real.
-
 **Do not hand-author the first case.** `deriveForeshadows` reads the
 block's own markdown links and backticked labels, keeps those that
 resolve to a real block sitting later in reading order and are not
 already in `uses[]`, and `loadChapterGraph` re-derives on every load.
-Writing them into the manifest duplicates authored content into metadata,
-where it goes stale the moment the prose changes.
+Writing them into the manifest duplicates the prose into metadata, where it
+goes stale.
 
-Note what the derivation does **not** do: it never reads deferral
-*language*. It matches links and labels. An attempt to detect phrasing
-instead classified "**Below** $n^*$" — a numeric comparison — as a
-deferral, which is why the mechanical half stays mechanical.
+The derivation never reads deferral *language*; it matches links and labels
+only (phrasing detection misreads e.g. "**Below** $n^*$", a numeric
+comparison).
 
 ## Declaring the second case
 
-Only a deferred prerequisite needs your judgement, and it is the
-expensive one to get wrong: it exempts a real `uses[]` edge from the
-ordering metrics, hiding a genuine defect behind an authored claim that
-the disorder was intended, and nothing downstream re-opens it. The
+Only a deferred prerequisite needs your judgement: it exempts a real `uses[]`
+edge from the ordering metrics, and nothing downstream re-opens it. The
 contract in `BlockBase.foreshadows` is strict — the prose must **frame
 the reference as deferred** ("we will need X, proved in chapter 9").
 
 The bar is a first-person authorial hand-off that says the treatment
 happens *elsewhere*: "we establish this in X", "we work this out
-separately", "the derivation is recorded in X". In a review of 274
-forward edges, every declaration that survived adversarial re-review had
-that shape, and **17 of 23** first-pass declarations did not and were
-withdrawn. Read that number in context: it was measured under the subset
-rule, when *every* forward pointer had to be declared. Most of the
-withdrawn ones were pure pointers, which now derive themselves.
+separately", "the derivation is recorded in X".
 
 | Looks like a deferral | Actually |
 |---|---|
@@ -184,10 +162,8 @@ Both are about the *declared* case only. A derived pointer is aimed by
 the link itself, so it cannot be mis-aimed, and it carries no exemption
 to abuse.
 
-Two rules police the field now that the subset requirement is gone:
-`foreshadows-resolve` (every target must exist — the referential
-integrity `uses[]` validation used to provide incidentally) and
-`foreshadows-not-self`. The `foreshadows-point-forward` criterion catches
+Two rules police the field: `foreshadows-resolve` (every target must exist)
+and `foreshadows-not-self`. The `foreshadows-point-forward` criterion catches
 a target the reader has already passed, which is either a prerequisite
 filed in the wrong field or an inert back-reference.
 
@@ -201,12 +177,10 @@ on the parent.
 - **Table children.** Pointer-style blocks ("See Table 3") keep their substance
   in `tbl:…-data`. A name-and-notation search of the parent's `.md` reports an
   absence that is not real.
-- **Proof children.** A proof cites what the statement assumes. In one case the
-  parent's prose genuinely never named the target, its **proof child cited the
-  target by label** for the exact identity the parent's boxed formula is built
-  from — and that proof declared no `uses[]` of its own. The parent's entry was
-  the **sole record** of the dependency, so deleting it as "unsupported by the
-  prose" would have erased the edge entirely.
+- **Proof children.** A proof cites what the statement assumes. The parent's
+  prose may never name a target its **proof child cites by label**; if the
+  proof declares no `uses[]` of its own, the parent's entry is the **sole
+  record** of the dependency.
 
 So before removing an entry, check whether any child leans on the target, and
 whether that child declares anything itself. An entry that looks like dead
@@ -218,17 +192,10 @@ defines the undeformed $w_\lambda$, whether or not it ever says so.
 
 ## Sibling parity is evidence only until a bulk edit touched the family
 
-"All five siblings declare nothing, so declaring it here would be the anomaly"
-is a good argument, and it is exactly the argument to distrust when a bulk
-operation has run over the corpus.
-
-Two independent readers used it to judge a five-member family of millennium-
-problem bounds *deliberately* empty — each names the same six blocks in prose
-and each declares nothing. The uniformity was real. It was also **uniform
-damage**: every member lost 8-10 edges to a single "transitive-prune" commit
-whose rule (*if A→B and B→C, drop A→C*) fired where B→C was being dropped in the
-same pass. A bulk edit produces parity **by construction**, so parity cannot
-distinguish a shared convention from a shared wound.
+"All the siblings declare nothing, so declaring it here would be the anomaly"
+is evidence only if no bulk operation has run over the family: a bulk edit (for
+example a transitive-prune pass) produces parity **by construction**, so
+parity cannot distinguish a shared convention from shared damage.
 
 Before resting on it, check the **family's history**, not just the block's:
 
@@ -245,28 +212,18 @@ a corpus that has been swept is a record of the sweep as much as of the authors.
 
 ## One reading is not the standard
 
-Adjudicating `uses[]` is not a task where a careful pass suffices, and the
-numbers say so rather than intuition:
-
-- A pass over 274 forward edges had its **destructive verdicts re-reviewed**:
-  3 of 35 deletions and **17 of 23** foreshadow declarations were overturned.
-- A later slice of 8 edges — 6 of them reported by a single earlier reader, 2
-  of those "verified directly against the text" — went to **two independent
-  readers**. Both returned *keep* on **all eight**, agreeing row for row. Every
-  refutation rested on positive evidence, not on a tie-break. Both "verified"
-  ones had been checked by keyword search over the `.md` alone.
+A single careful pass is not enough: on re-review, destructive `uses[]`
+verdicts and foreshadow declarations are overturned often, and keyword search
+over the `.md` alone misses real dependencies.
 
 Use **two readers who cannot see each other's verdicts** for anything that
 edits the graph, and treat agreement as the signal. Where they disagree, or
 where either is unsure, leave the edge alone: a wrongly deleted editorial edge
-silently corrupts every ordering metric computed from the graph, and nothing
-downstream catches it.
+silently corrupts every ordering metric computed from the graph.
 
 **A retarget carries both burdens.** It asserts this edge is wrong *and* that
-one is right, so it needs evidence for each half separately. In the slice above
-one retarget's second half was true — the proposed target really was leaned on
-and really was missing — while its first half was false. Split, it was not a
-swap but an **addition**, and both edges survived.
+one is right, so it needs evidence for each half separately. When only the
+second half holds, it is an **addition**, not a swap.
 
 ## Reading the mechanical findings first
 

@@ -13,10 +13,9 @@ nav_order: 3
 
 ---
 
-> **This page is a proposal, not a description.** The five repositories below
-> come from [issue #223](https://github.com/litlfred/folio-assistant/issues/223);
-> the mapping of today's directories onto them is this document's work, and
-> every judgement call is marked as one. Nothing here has been built.
+> **This page is a proposal, not a description.** It maps the directories of the
+> single pre-split checkout onto five instances, and every judgement call is
+> marked as one.
 
 ## The shape
 
@@ -114,8 +113,7 @@ registers into it. That mechanism does not exist today.
 ### The science layer
 
 **Authoritative for:** the Lean, LaTeX and simulator content types, and the
-scientific-authoring skills. Per the issue, it depends **only** on
-the content core.
+scientific-authoring skills. It depends **only** on the content core.
 
 | today | lands in |
 |---|---|
@@ -130,14 +128,12 @@ the content core.
 
 **This repo is the acid test for the dependency model**, because it needs to
 contribute all three of: a **block kind** (a schema), an **adapter** (code), and
-**MCP tools** (`lean_build`). Until 2026-09-18 the dependency model resolved
-[none of the three](current-state.html#what-the-model-used-to-rule-out--resolved-2026-09-18),
-which made the science layer unbuildable outright.
-[Phase 0.1](migration-plan.html#01--make-the-dependency-model-able-to-carry-the-split--decided-and-built)
-has since been decided and built — load-time registration, with collisions
-refused rather than resolved by order — so the blocker is cleared. The acid
-test still stands: if a future change makes any of the three unreachable from a
-dependency again, this repo is the one that stops being buildable first.
+**MCP tools** (`lean_build`), all of which
+[a dependency can contribute](current-state.html#what-a-dependency-can-contribute)
+through [Phase 0.1](migration-plan.html#01--make-the-dependency-model-able-to-carry-the-split--decided-and-built)'s
+load-time registration, with collisions refused rather than resolved by order.
+If a change makes any of the three unreachable from a dependency, this repo is
+the one that stops being buildable first.
 
 ### `smart-kg`
 
@@ -169,21 +165,19 @@ L2–L3; adaptation skills; OCL skills.
 |---|---|
 | `schemas/dak-blocks.ts`, the `dak` adapter's kinds | the DAK layer |
 | `content/pipeline/fsh-cone.ts`, FHIR/FSH tooling | the DAK layer |
-| `processes/l2-dak-authoring.bpmn` (**moved** 2026-10-01 to the DAK layer's `processes/`, issue #1772), `l3-fhir-pipeline.bpmn` | the DAK layer |
+| `l2-dak-authoring.bpmn` (in the DAK layer's `processes/`), `l3-fhir-pipeline.bpmn` | the DAK layer |
 | `docs/guides/who-smart-{dak,ig}.md`, the DAK layer's `skills/content/authoring-who-smart-guidelines/` (L2–L3) | the DAK layer |
-| the DAK translation extractors (PlantUML, ArchiMate, Excel, BPMN) from [PR #237](https://github.com/litlfred/folio-assistant/pull/237) | `smart-base` |
+| the DAK translation extractors (PlantUML, ArchiMate, Excel, BPMN) | `smart-base` |
 | OCL skills, adaptation skills | the DAK layer (**mostly not yet written**) |
-| DAK QA criteria (bean `sopq`, the WHO IG starter-kit SOPs) | the DAK layer |
+| DAK QA criteria (the WHO IG starter-kit SOPs) | the DAK layer |
 
 The DAK layer depends on `smart-kg` because an L2 DAK is an operationalisation of
 an L1 guideline: the DAK's business processes cite L1 recommendations, so the L2
 tooling needs L1's schema to resolve them.
 
-## The kind-splits the issue anticipates
+## Kind-splits
 
-> *"some of these may need be split into their respective Tool, Test, etc repos
-> to avoid mixing of concerns. e.g. `smart-kg-tools`"*
-
+Some of the five may need splitting into their own Tool, Test, etc. repos.
 Applying the [taxonomy's splitting rule](repo-taxonomy.html#splitting-a-mixed-repo)
 — split when consumers or cadences differ — gives:
 
@@ -208,8 +202,7 @@ same workflow as SME review of anything else.
 The five repos are not the goal. The goal is that L4 (Consumer apps) and L5
 content can be built off `cat-harness` without inheriting a scientific
 paper's LaTeX toolchain or a WHO guideline's FHIR profile — so that a
-healthworker- or individual-facing workflow (immunizations is the issue's
-example) composes exactly the three or four instances it needs.
+healthworker- or individual-facing workflow (immunizations, for example) composes exactly the three or four instances it needs.
 
 That is the test to hold the boundary against. If a new consumer-facing folio
 has to depend on the science layer to get a working install, the split has not

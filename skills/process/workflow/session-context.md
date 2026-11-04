@@ -31,16 +31,9 @@ means by live state.
 
 ## The fields — read them off the schema, never off this page
 
-`SessionContextSchema` in `schemas/sdlc/session-context.ts` is authoritative. This
-description said *"the six fields"* until 2026-09-24, by which point there were
-**eight** — `waitingOn` and `$schema` had joined `id`, `actor`, `startedAt`,
-`updatedAt`, `open`, `claimed`. Bean `s8mo` carried the same "six" and drifted
-with it, so the bean and this skill agreed with each other and both disagreed
-with the code, which is the one shape comparing them cannot catch.
-
-No count is given here on purpose. A field list in prose beside a Zod object is
-a second answer to a question the schema already answers, and it is wrong the
-first time somebody adds a field.
+`SessionContextSchema` in `schemas/sdlc/session-context.ts` is authoritative.
+This page gives no field count; the sections below say what the main fields
+are for.
 
 ## `actor` is required, and it is the point of the record
 
@@ -49,12 +42,10 @@ instances are in the bean graph; claimed beans carry their own status;
 timestamps can be reconstructed from commits. **WHO is acting cannot be
 derived from anything.**
 
-The machine keeping the session cannot infer it — the same reason the Logger
-cannot infer who wrote a log line, which is why
-[`log-message`](../../../../bootstrap/skills/log-message.md) takes `actor` too. A
-session record that cannot name its actor records that something is happening
-and nothing about **who is answerable for it**, which is the first question a
-sibling session needs answered before it touches the same bean.
+The machine keeping the session cannot infer it, which is also why
+[`log-message`](../../../../bootstrap/skills/log-message.md) takes `actor`. A
+sibling session needs to know **who is answerable** before it touches the same
+bean.
 
 **It is a reference with a `declared` flag, not an `ActorDefinition`.** An
 agent may act without a node under the actors graph, and requiring one would
@@ -79,9 +70,7 @@ removed in between, and the record says what was true when the session acted.
 
 **`open` empty is the normal state.** An agent answering a question, reading, or
 deciding what to do next is in no process at all, and
-[`process-state`](process-state.md) calls that idle rather than broken. A
-record that treated empty as a defect would report every reading session as
-one.
+[`process-state`](process-state.md) calls that idle rather than broken.
 
 **`claimed` is by reference because a claim announces rather than reserves.**
 The bean is the authority on its own status
@@ -114,12 +103,11 @@ claimed by someone who stopped. **A person**, asking what is in flight.
 **The session itself** on resume, in a fresh container, where the alternative
 is starting a second session beside the one that already exists.
 
-The writer may be an LLM playing the part of a state machine (bean `3nfv`), so
-the shape cannot be assumed from the writer's care. `parseSessionContext()`
-parses at the boundary, which is what makes a **non-deterministic writer safe
-to read from** — and that is the general rule this record is the first case of:
-where a machine may be played rather than executed, the schema is the contract
-and the parse is where it is enforced.
+The writer may be an LLM playing the part of a state machine, so the shape
+cannot be assumed from the writer's care. `parseSessionContext()` parses at the
+boundary, which is what makes a **non-deterministic writer safe to read from**.
+The general rule: where a machine may be played rather than executed, the
+schema is the contract and the parse is where it is enforced.
 
 ## What this is NOT
 
@@ -138,6 +126,5 @@ That is `context`, and this is `state`: the two are on opposite sides of the
 layer line and must not be merged, however adjacent they look.
 
 **Not a store yet.** The kind is registered and the shape is defined; nothing
-writes one. The state machine is bean `3nfv`, and declaring a directory before
-anything fills it is the defect where a consumer scans nothing and reports a
-clean run.
+writes one, so no directory is declared for it: a declared-but-empty directory
+makes a consumer scan nothing and report a clean run.

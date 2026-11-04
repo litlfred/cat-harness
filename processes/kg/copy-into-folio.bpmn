@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  cat-harness — Copy a knowledge-graph asset into a folio (bean dp1j)
+  cat-harness — Copy a knowledge-graph asset into a folio
 
   Source of truth: this file. The SVG under docs/assets/img/workflows/ is
   generated from it by `bun run cat render:bpmn` — never hand-edit the SVG.

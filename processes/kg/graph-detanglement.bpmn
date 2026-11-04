@@ -14,15 +14,15 @@
     <bpmn:participant id="Participant_Process_GraphDetanglement" name="A sub-graph wants to leave" processRef="Process_GraphDetanglement"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_GraphDetanglement" name="A sub-graph wants to leave" isExecutable="false">
-    <bpmn:documentation>Part of a repository wants to leave, for size or a semantic reason: four gated stages measure it out of the graph before anything moves, and an administrator authorises the extraction. THE FOUR STAGES ARE GATES, NOT ADVICE, AND THAT IS THE WHOLE REASON THIS IS A DIAGRAM. `graph-detanglement.md` says "nothing moves until the stage before it measures zero" in prose, and prose is what an agent under pressure talks itself past. Each gate here is a DECISION TABLE: `workflow_complete` refuses a hand-supplied outcome at a `cat-harness.processes:decision` gateway, so the branch is computed from the counts a tool already produced rather than asserted.
+    <bpmn:documentation>Part of a repository wants to leave, for size or a semantic reason: four gated stages measure it out of the graph before anything moves, and an administrator authorises the extraction. THE FOUR STAGES ARE GATES, NOT ADVICE: nothing moves until the stage before it measures zero. Each gate here is a DECISION TABLE: `workflow_complete` refuses a hand-supplied outcome at a `cat-harness.processes:decision` gateway, so the branch is computed from the counts a tool already produced rather than asserted.
 
-THE SHARPEST GATE IS `Detangled?`, AND IT IS SHARP BECAUSE OF ITS RULE ORDER. `unassignedEdges &amp;gt; 0` returns `unknown` BEFORE the cross-edge rule is reached, so a zero cross-edge count over an unjudged corpus cannot be read as a pass. `repo-partition.ts` states it in its own voice — "these are not cross-edges, they are edges this tool declined to judge. Do not read them as clean" — and move 1 of the practice is exactly that sentence. A person can skip it. A table cannot.
+THE SHARPEST GATE IS `Detangled?`, AND IT IS SHARP BECAUSE OF ITS RULE ORDER. `unassignedEdges &amp;gt; 0` returns `unknown` BEFORE the cross-edge rule is reached, so a zero cross-edge count over an unjudged corpus cannot be read as a pass: unassigned edges are edges the tool declined to judge, not clean ones.
 
 EVERY GATE HAS A THIRD STATE AND NONE OF THEM RENDERS IT AS CLEAN. `Declared in place?` answers `unknown` on a declaration that did not parse rather than "not yet", because one says the work has not started and the other says nobody can tell. `Detangled?` answers `unknown` on an incomplete measurement. Both route to `End_Unknown`, which is a REFUSAL to advance — the process stops rather than proceeding on a guess.
 
 DECLARING IS CHEAP AND EXTRACTING IS EXPENSIVE, WHICH IS THE POINT. Stage 1 moves nothing: the sub-graph is declared where it already sits, still inside the repository, still connected. The worked example was the WHO base harness's `methodologies/`, declared in place and lifted out whole when that harness became its own repository.
 
-STAGE 2 IS A LOOP, AND THE LOOP IS LOAD-BEARING. `Prune, merge, factor, or reclassify` returns to `Measure` rather than to the gate, because an assignment is verified by RE-RUNNING and never by being locally reasonable — the obvious move, the one the tool's own message asks for, once took the count from 5 to 15. The four moves are the only four: the first three are the block-scale rule, and "the classification is wrong" is the fourth the repository scale adds because a module's layer is in doubt the way a block's chapter is not.
+STAGE 2 IS A LOOP, AND THE LOOP IS LOAD-BEARING. `Prune, merge, factor, or reclassify` returns to `Measure` rather than to the gate, because an assignment is verified by RE-RUNNING and never by being locally reasonable. The four moves are the only four: the first three are the block-scale rule, and "the classification is wrong" is the fourth the repository scale adds because a module's layer is in doubt the way a block's chapter is not.
 
 ISOLATION IS NOT ZERO EDGES. A sub-graph with no inbound edges can still carry no declaration, no namespace and no published artefact, and lifting that directory produces a repository that cannot say what it is. `bootstrap/` is the demonstrated case and the shape to match.
 
@@ -33,12 +33,9 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
     <bpmn:laneSet id="LaneSet_Process_GraphDetanglement">
       <bpmn:lane id="Lane_Agent" name="Authoring agent" partitionElementRef="authoring-agent">
         <bpmn:documentation>Runs every stage up to the edge of authorisation — brief, declare, measure, move-and-remeasure, isolate — and Task_Propose is the last thing it does off its own judgement: reporting sizes and what would break, then waiting. Verification here is always by RE-RUNNING the measurement rather than by an assignment being locally reasonable, which is why Task_Move loops back to Task_Measure and not to the gate — a move that looks right is not yet a move that measured right.</bpmn:documentation>
-        <!-- Bound EXPLICITLY rather than by name. "Authoring agent" is not in
-             the role's `lanes` aliases, and the audit caught that on the first
-             run — which is the cheap version of the near-miss
-             `code-change-review` records, where "CI/CD pipeline" differed from
-             the declared name by one capital letter. A ref cannot near-miss.
-             And the role is REUSED rather than minted: `role-model` says a role
+        <!-- Bound EXPLICITLY rather than by name: "Authoring agent" is not in
+             the role's `lanes` aliases, and a ref cannot near-miss. The role is
+             REUSED rather than minted: `role-model` says a role
              is never invented to make a diagram drawable, so there is no
              "graph steward" here. -->
         <bpmn:flowNodeRef>Start_Wants</bpmn:flowNodeRef>
@@ -66,7 +63,7 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
       <bpmn:outgoing>G0</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:task id="Task_Brief" name="Brief the topic before&#10;touching anything">
-      <bpmn:documentation>What am I doing and why is it worth doing; what do I already know, with each measurement's provenance; how do I plan to do it and WHAT WOULD FALSIFY THE APPROACH. A falsifier that never fires is decoration — this practice's own fired, took edges 5 to 12, and rewrote the plan.</bpmn:documentation>
+      <bpmn:documentation>What am I doing and why is it worth doing; what do I already know, with each measurement's provenance; how do I plan to do it and WHAT WOULD FALSIFY THE APPROACH. A falsifier that never fires is decoration.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="opening-brief"/>
       </bpmn:extensionElements>
@@ -83,7 +80,7 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
       <bpmn:outgoing>G2</bpmn:outgoing>
     </bpmn:task>
     <bpmn:exclusiveGateway id="GW_Declared" name="Declared&#10;in place?">
-      <bpmn:documentation>Computed, not chosen: decisions/subgraph-declared-gate.dmn (hit policy FIRST) over three inputs — the declaration parsed (`readable`), an entry present for the sub-graph, and every declared path exists. Unparseable goes to `unknown`, a fault rather than 'not yet', and stops the process. No entry, or a declared path that does not exist (bean `dh4f`), goes to `not yet`, back to Declare. Otherwise `declared`, on to Measure.</bpmn:documentation>
+      <bpmn:documentation>Computed, not chosen: decisions/subgraph-declared-gate.dmn (hit policy FIRST) over three inputs — the declaration parsed (`readable`), an entry present for the sub-graph, and every declared path exists. Unparseable goes to `unknown`, a fault rather than 'not yet', and stops the process. No entry, or a declared path that does not exist, goes to `not yet`, back to Declare. Otherwise `declared`, on to Measure.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:decision ref="decisions/subgraph-declared-gate.dmn#Decision_SubgraphDeclaredGate"/>
       </bpmn:extensionElements>
@@ -94,7 +91,7 @@ THE EXTRACTION IS A PERSON'S DECISION, AND THE LANE SAYS SO. `Authorise the extr
     </bpmn:exclusiveGateway>
 
     <bpmn:task id="Task_Measure" name="2a · Measure — unassigned&#10;column FIRST">
-      <bpmn:documentation>`bun run cat check:partition`. Read the unassigned column before the edge count, and quote BOTH numbers rather than only the one that improved. The count rising when the measurement improves is correct: 43 to 49 when thirteen previously-unjudged edges were folded in.</bpmn:documentation>
+      <bpmn:documentation>`bun run cat check:partition`. Read the unassigned column before the edge count, and quote BOTH numbers rather than only the one that improved. The edge count can rise when the measurement improves (previously unjudged edges are folded in); that is correct.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="graph-detanglement"/>
       </bpmn:extensionElements>

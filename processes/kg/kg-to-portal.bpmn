@@ -14,9 +14,9 @@
   reader's browser has the bytes". Two things about the shape are deliberate
   and are the reason the diagram exists rather than a paragraph:
 
-  GW_Transport IS A REAL GATEWAY WITH NO DEFAULT BRANCH. The owner stated the
-  ingestion method as undetermined — "ingestion method not determined" — so the
-  diagram reaches a decision and stops there rather than naming a transport.
+  GW_Transport IS A REAL GATEWAY WITH NO DEFAULT BRANCH. The ingestion method
+  is undetermined, so the diagram reaches a decision and stops there rather
+  than naming a transport.
   A branch drawn as the obvious one is a decision nobody made, recorded as
   though somebody had.
 
@@ -30,8 +30,7 @@
   THE CDN IS NOT A LANE. It is what `A_Distribute` may put in front of the
   origin, which is why the publish-target lane holds one activity and not two:
   modelling the cache as a participant makes its URL look like the published
-  one, and the published URL is a promise — bean xies calls the consequence
-  "EXTREME care in URL handling".
+  one, and the published URL is a promise.
 -->
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
                   xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
@@ -111,7 +110,7 @@
     </bpmn:startEvent>
 
     <bpmn:task id="D_Constraints" name="State the constraints,&#10;with denominators">
-      <bpmn:documentation>Money, network traffic, graph size, latency. Each needs a NUMBER and each number needs a denominator, because a constraint with no denominator is a preference: "the graph is too big" is not a finding, "6.2 MB per publication against a 100 GB free tier" is. Say which figures were measured, which were quoted from a vendor, and which could not be obtained — a figure from a chat message is none of the three, and the who-iris catalogue carries the worked example where "0.7 TB" propagated through ten files and the measured figure was about half.</bpmn:documentation>
+      <bpmn:documentation>Money, network traffic, graph size, latency. Each needs a NUMBER and each number needs a denominator, because a constraint with no denominator is a preference: "the graph is too big" is not a finding, "6.2 MB per publication against a 100 GB free tier" is. Say which figures were measured, which were quoted from a vendor, and which could not be obtained; a figure from a chat message is none of the three.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="kg-to-portal"/></bpmn:extensionElements>
       <bpmn:incoming>F1</bpmn:incoming>
       <bpmn:outgoing>F2</bpmn:outgoing>
@@ -158,14 +157,14 @@
     </bpmn:endEvent>
 
     <bpmn:serviceTask id="S_Sign" name="Sign the package&#10;and/or each asset">
-      <bpmn:documentation>THE TRUST ANCHOR IS GDHCN, SPECIFIED BY THE WHO SMART TRUST IG (owner, 2026-09-20, paraphrased: proposal signing is GDHCN, as the WHO SMART Trust IG specifies). READ OFF THAT IG rather than from general knowledge: a GDHCN trustlist distributes KEY MATERIAL as W3C DID documents, and says nothing about what you wrap your bytes in — the health-certificate envelope is a separate specification in the same IG, and a document package is not a health certificate. So what is settled is where a verifier GETS THE KEY, not what it verifies. A portal that can fetch the bytes but not reach the trustlist cannot verify, which is `unknown` and not a failure — air-gapped is a declared deployment value, so that case is answered rather than assumed away. Still OPEN and unread: the rotation and revocation model, and whether a document-package signature can be expressed for a GDHCN-aware verifier at all. Two schemes with different properties remain to choose between, and the trustlist does not choose between them. A PACKAGE signature over the manifest verifies the SET — nothing added, removed or altered — and must be reissued whenever any file changes. A PER-ASSET signature verifies one file independently, which is what an edge cache serving one asset can actually check, and it cannot detect a removal because there is nothing left to verify. They compose; composing them is the safer and more expensive default, and it is the deployment's choice rather than the pipeline's.</bpmn:documentation>
+      <bpmn:documentation>THE TRUST ANCHOR IS GDHCN, SPECIFIED BY THE WHO SMART TRUST IG. READ OFF THAT IG rather than from general knowledge: a GDHCN trustlist distributes KEY MATERIAL as W3C DID documents, and says nothing about what you wrap your bytes in — the health-certificate envelope is a separate specification in the same IG, and a document package is not a health certificate. So what is settled is where a verifier GETS THE KEY, not what it verifies. A portal that can fetch the bytes but not reach the trustlist cannot verify, which is `unknown` and not a failure — air-gapped is a declared deployment value, so that case is answered rather than assumed away. Still OPEN and unread: the rotation and revocation model, and whether a document-package signature can be expressed for a GDHCN-aware verifier at all. Two schemes with different properties remain to choose between, and the trustlist does not choose between them. A PACKAGE signature over the manifest verifies the SET — nothing added, removed or altered — and must be reissued whenever any file changes. A PER-ASSET signature verifies one file independently, which is what an edge cache serving one asset can actually check, and it cannot detect a removal because there is nothing left to verify. They compose; composing them is the safer and more expensive default, and it is the deployment's choice rather than the pipeline's.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="kg-to-portal"/></bpmn:extensionElements>
       <bpmn:incoming>F7</bpmn:incoming>
       <bpmn:outgoing>F9</bpmn:outgoing>
     </bpmn:serviceTask>
 
     <bpmn:task id="E_HumanEyes" name="Human eyes on the&#10;rendered artefact">
-      <bpmn:documentation>Bean xies, gate 3, and the one that is easy to drop because gate 2 (merge to main) looks like an approval. It is not: merging approves the CHANGE, and this approves what a reader will actually see. continual-progress measured why a description cannot stand in for it (PR #178, 2026-09-16).</bpmn:documentation>
+      <bpmn:documentation>Easy to drop because merging to main looks like an approval. It is not: merging approves the CHANGE, and this approves what a reader will actually see. A description cannot stand in for it (`continual-progress`).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="continual-progress"/>
       </bpmn:extensionElements>
@@ -174,7 +173,7 @@
     </bpmn:task>
 
     <bpmn:exclusiveGateway id="GW_Transport" name="Which transport?&#10;(UNDETERMINED)">
-      <bpmn:documentation>THIS GATEWAY HAS NO DEFAULT BRANCH, AND THAT IS THE POINT. Owner, 2026-09-20: "ingestion method not determined." Pull from the portal, push to an object store, a git fetch, a signed tarball on a schedule — they differ in cost, in who initiates, in what must be reachable from where, and in what happens when a publication is missed. The deployment answers using D_Constraints' numbers; until it does, the diagram reaches here and stops. Drawing one branch as the obvious one would record a decision nobody made.</bpmn:documentation>
+      <bpmn:documentation>THIS GATEWAY HAS NO DEFAULT BRANCH: the ingestion method is not determined. Pull from the portal, push to an object store, a git fetch, a signed tarball on a schedule — they differ in cost, in who initiates, in what must be reachable from where, and in what happens when a publication is missed. The deployment answers using D_Constraints' numbers; until it does, the diagram reaches here and stops. Drawing one branch as the obvious one would record a decision nobody made.</bpmn:documentation>
       <bpmn:incoming>F10</bpmn:incoming>
       <bpmn:outgoing>F11</bpmn:outgoing>
       <bpmn:outgoing>F12</bpmn:outgoing>
@@ -194,14 +193,14 @@
     </bpmn:endEvent>
 
     <bpmn:serviceTask id="A_Distribute" name="Publish to the origin&#10;(a cache may front it)">
-      <bpmn:documentation>Reach host behaviour through publication.host, never by assuming GitHub Pages' behaviour — Pages CANNOT serve application/ld+json and a local server can. A CDN in front is a layer, not the host: the canonical URL stays the origin's, and the cache is an accelerated route to the same bytes. Uploading and exposing are separable steps on purpose (xies, gate 4), because collapsing them removes the last moment at which a bad URL layout can still be caught.</bpmn:documentation>
+      <bpmn:documentation>Reach host behaviour through publication.host, never by assuming GitHub Pages' behaviour — Pages CANNOT serve application/ld+json and a local server can. A CDN in front is a layer, not the host: the canonical URL stays the origin's, and the cache is an accelerated route to the same bytes. Uploading and exposing are separable steps on purpose, because collapsing them removes the last moment at which a bad URL layout can still be caught.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="kg-to-portal"/></bpmn:extensionElements>
       <bpmn:incoming>F11</bpmn:incoming>
       <bpmn:outgoing>F14</bpmn:outgoing>
     </bpmn:serviceTask>
 
     <bpmn:task id="P_Verify" name="Verify what arrived&#10;against what was signed">
-      <bpmn:documentation>Against a GDHCN DID trustlist, which means the verifier needs THE NETWORK and not only the bytes — the key is resolved from the trustlist rather than read out of the package. The trustlist is itself static JSON served from a CDN (`tng-cdn.who.int`), and its path is a hierarchical filter — domain, participant, key usage, with `-` as a wildcard — so a verifier fetches the slice it needs rather than the whole list. WHO's own trust network is therefore the same shape as this diagram one layer down, which is the strongest argument the design has. The stage that gets dropped, because every other stage produces something visible and this one produces nothing when it passes. A package that is signed and never verified is a package whose signature is decoration. A portal that CANNOT verify reports `unknown` — a portal nobody asked is not a portal that checked.</bpmn:documentation>
+      <bpmn:documentation>Against a GDHCN DID trustlist, which means the verifier needs THE NETWORK and not only the bytes — the key is resolved from the trustlist rather than read out of the package. The trustlist is itself static JSON served from a CDN (`tng-cdn.who.int`), and its path is a hierarchical filter — domain, participant, key usage, with `-` as a wildcard — so a verifier fetches the slice it needs rather than the whole list. The stage that gets dropped, because every other stage produces something visible and this one produces nothing when it passes. A package that is signed and never verified is a package whose signature is decoration. A portal that CANNOT verify reports `unknown` — a portal nobody asked is not a portal that checked.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="kg-to-portal"/></bpmn:extensionElements>
       <bpmn:incoming>F14</bpmn:incoming>
       <bpmn:outgoing>F15</bpmn:outgoing>

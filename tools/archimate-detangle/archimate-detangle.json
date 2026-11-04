@@ -84,7 +84,7 @@
     "selection": {
       "when": "After drawing or changing an ArchiMate view, before committing it: run it, look at the drawing, keep what reads better (skill `archimate-models`).",
       "limits": "A greedy search, one line or one swap at a time: it lowers tangles but does not find the best layout, never adds, resizes or regroups boxes, and leaves lines that end on lines, or share both ends with another line, as they are. The author still looks at the result.",
-      "cost": "Seconds for a large view (smart-ra 0.2.0's 20 views: about 8 s). No network, no JVM."
+      "cost": "Seconds for a large view (about 8 s for 20 views). No network, no JVM."
     },
     "requires": {
       "runtime": [

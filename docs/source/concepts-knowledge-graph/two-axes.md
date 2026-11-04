@@ -1,5 +1,5 @@
-Two independent questions get asked about every subgraph, and reading either
-answer as the other is the mistake this section exists to prevent.
+Two independent questions get asked about every subgraph, and neither answer
+implies the other.
 
 **What is it about?** Schemas, Skills, Workflows, Roles, Tools, Tests, Context,
 running state. This is the *topical* axis, and it is what the next section
@@ -27,8 +27,7 @@ entirely different reasons. Asking "is this a Skill?" tells you nothing about
 whether a Workflow may write to it, and asking "may a Workflow write to it?"
 tells you nothing about what it is for.
 
-**A third meaning of *subgraph* is already in circulation**, and it is worth
-pinning before it spreads. [Subgraph viewers](subgraph-viewers.html) uses it for
+***Subgraph* has a second meaning.** [Subgraph viewers](subgraph-viewers.html) uses it for
 one declared directory — the thing a visualiser draws and a Skill governs. This
 page uses it for a branch of the topical taxonomy. One topical subgraph is
 usually several declared directories across several instances, so the two

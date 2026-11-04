@@ -31,25 +31,24 @@
        reading a schema — a closure so broad that `role-carries-activity-skill`
        could never fail, which is the audit going quiet rather than passing.
 
-       So: this lane classifies WHAT CHANGED and descends. A change that is
-       both prose and code visits both subprocesses; the actor is a narrative
-       reviewer for one call and a code reviewer for the other, and neither
-       role widens the other.
+       So: this lane classifies WHAT CHANGED and descends into one
+       subprocess; a change that is both prose and the code it describes goes
+       to the pair review. Neither role widens the other.
        ═══════════════════════════════════════════════════════════ -->
 
   <bpmn:process id="Process_Review" name="Review task" isExecutable="false">
     <bpmn:documentation>The generic review position: classify what changed, descend into the review that fits it, consolidate what comes back, and accept or send back.
 
-You are in this process for any change under review. It is a DISPATCHER — the actor takes on the inner lane's role for the call path only — which is why prose and code can both be reviewed without either reviewer having to know the other's criteria. A change that is both — prose and the code it describes — takes a branch of its own, which reviews the two against each other; the gateway is exclusive and takes exactly one branch, so the earlier wording, that such a change goes through both, described a route the diagram could not take (issue #1042).
+You are in this process for any change under review. It is a DISPATCHER — the actor takes on the inner lane's role for the call path only — which is why prose and code can both be reviewed without either reviewer having to know the other's criteria. A change that is both — prose and the code it describes — takes a branch of its own, which reviews the two against each other; the gateway is exclusive and takes exactly one branch.
 
-The accept-or-send-back decision lives here and nowhere beneath it. The subprocesses produce findings; this is the only lane entitled to turn findings into an outcome, and keeping that single makes "who decided" answerable.</bpmn:documentation>
+The accept-or-send-back decision lives here and nowhere beneath it. The subprocesses produce findings; this is the only lane entitled to turn findings into an outcome.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="advisory"/>
     </bpmn:extensionElements>
 
     <bpmn:laneSet id="LaneSet_Review">
       <bpmn:lane id="Lane_Reviewer" name="Reviewer / SME" partitionElementRef="reviewer">
-        <bpmn:documentation>Makes exactly one decision on its own — what changed, at Task_ClassifyChange — and for everything after that descends into a subprocess, taking on the narrative- or code-reviewer role for that call path only rather than carrying both statically. A change that is both visits both subprocesses in turn, and neither role widens the other.</bpmn:documentation>
+        <bpmn:documentation>Makes exactly one decision on its own — what changed, at Task_ClassifyChange — and for everything after that descends into a subprocess, taking on the narrative- or code-reviewer role for that call path only rather than carrying both statically. A change that is both prose and code goes to the pair review; neither role widens the other.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_ChangeToReview</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ClassifyChange</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Kind</bpmn:flowNodeRef>
@@ -74,10 +73,8 @@ The accept-or-send-back decision lives here and nowhere beneath it. The subproce
         makes on its own: everything after it is made inside a subprocess by
         the role that lane binds.
 
-        Binds `content-review`, the same skill as Task_Consolidate in this lane,
-        since placement PR3 (bean `63wl`): it named a paper skill the science
-        layer owns, which this harness diagram
-        cannot reach. A paper process that wants semantic scoping adds it by
+        Binds `content-review`, the same skill as Task_Consolidate in this lane.
+        A paper process that wants semantic scoping adds it by
         calling this process.
       </bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="content-review"/><bootstrap.processes:skill ref="staging-review"/></bpmn:extensionElements>
@@ -104,8 +101,8 @@ The accept-or-send-back decision lives here and nowhere beneath it. The subproce
     <bpmn:callActivity id="Call_NarrativeCodeReview" name="Prose and the code&#10;it describes" calledElement="Process_NarrativeCodeReview">
       <bpmn:documentation>
         Descend into Process_NarrativeCodeReview: judge what the pair checks
-        could not settle (a stale pair, a false or undetermined claim), and
-        send a disagreement with a checker to adjudication. Issue #1042, stage C.
+        could not settle (a stale pair, a false or undetermined claim), and send
+        a disagreement with a checker to adjudication.
       </bpmn:documentation>
     </bpmn:callActivity>
 

@@ -58,14 +58,13 @@ A **unit** is the graph's own chunk: a library **section** (what ingestion
 already produced), otherwise one markdown file. Units under 20 tokens are
 skipped — too little vocabulary to place.
 
-## Beyond the beans: other graphs in `lsi:near` (bean `ec2a`)
+## Beyond the beans: other graphs in `lsi:near`
 
 `lsi:near` also searches every graph an instance declares under
 `lsiUnitProviders` in its `<instance>.json`: content **blocks** (core) and
 **Lean declarations** (sci). It prints **one list per graph**. Scores from two
 separately built indexes are not comparable, so the lists are never merged
-into one ranking (owner decision A, 2026-10-24; proposal
-`docs/proposals/lsi-cross-graph-near-2026-10-24.md`).
+into one ranking.
 
 Each list starts with **explicit** references: a block `@id` or a Lean name
 written in the query text. These are deterministic and unscored. The latent
@@ -81,29 +80,27 @@ bun run cat lsi:near "<planned bean title>" --graphs blocks,lean-decl --root lea
 `bun run cat lsi links --instance <i> --graph <g>` proposes links between units of
 DIFFERENT documents in one graph: each unit's best other-document match, only
 at cosine ≥ 0.5 (`LINK_FLOOR`), with the units that are "nearest" to many
-others listed as **hubs** to discount. On the IRIS replica it proposes 12 links and
-leaves 326 of 342 sections with none — the honest answer when the median best
-match is ~0.2.
+others listed as **hubs** to discount. Most units get no link when the median
+best match is low, and that is the honest answer.
 
-**Why there is no hub PENALTY (bean `9udd`).** A CSLS-style penalty
-(`2·cos − r(a) − r(b)`) was measured on the 15 strongest the IRIS replica pairs a
-reader labelled, and made ranking worse: real-vs-spurious AUC 0.96 with plain
-cosine, 0.75–0.79 with the penalty at K = 5, 10, 20. The page it demoted most
-(HQ p36, mark-up) is central because it is genuinely on-topic. The floor alone
-is what the data supports; it is a house number fitted to 15 examples.
+**There is no hub PENALTY.** A CSLS-style penalty (`2·cos − r(a) − r(b)`) made
+ranking worse on reader-labelled pairs (real-vs-spurious AUC 0.96 with plain
+cosine, 0.75–0.79 with the penalty): a hub is often central because it is
+genuinely on-topic. The floor is a house number fitted to 15 labelled
+examples.
 
-## Keywords — the per-unit view the index used to discard (issue #2302)
+## Keywords — the per-unit view
 
-The weighted matrix already says which terms characterise each unit; the index
-then reduces it to k dimensions and the per-unit view was gone.
-`keywordsOf(matrix, cols, texts, top, headings)` keeps it: a unit's (or a
+The weighted matrix says which terms characterise each unit before the index
+reduces it to k dimensions. `keywordsOf(matrix, cols, texts, top, headings)`
+keeps that view: a unit's (or a
 pooled set of units') top terms and two-word phrases, from the same weights.
 Its first consumer is `bun run cat library:keywords` (per library section and per
 document, written as `keywords.json` and shown in the library viewer). The
 scoring rules are documented with `keywordsOf` in `pipeline/lsi.ts`,
 and the ingestion skill that runs it says when (`skill_fetch
-l1-document-ingestion`, §"Keywords"). Reuse it for any unit set the index covers — beans, chapters —
-rather than writing a second term weighting.
+l1-document-ingestion`, §"Keywords"). Reuse it for any unit set the index
+covers — beans, chapters — rather than writing a second term weighting.
 
 ## Correspondence analysis — the parallel track
 
@@ -111,8 +108,8 @@ rather than writing a second term weighting.
 is a separate method over the same term matrix (`pipeline/ca.ts`):
 the SVD of the χ² residuals, so no dimension carries document length or term
 frequency. `bun run cat lsi:epics --method ca` runs it on the bean store.
-**Measured 2026-09-29: not significantly better or worse than LSI at filing
-beans** (exact McNemar p = 0.17–0.71), so LSI stays the default. Reach for CA
+**It is not significantly better or worse than LSI at filing beans** (exact
+McNemar p = 0.17–0.71), so LSI stays the default. Reach for CA
 when an LSI dimension 1 has no negative pole, or when the question is which
 units are UNUSUAL — CA's leading dimensions go to the most distinctive
 profiles. Pick one per question; never average the two scores.
@@ -133,90 +130,45 @@ mis-extracted page, and it is cheapest to mark now.
 indexes"; `/lsi/` is its declared alias): every stored index with its
 dimensions as two poles, its findings, and the need-an-index verdicts.
 cat-harness DECLARES it — `visualisers` entry `lsi`, `covers: ["qa"]`,
-`renderedBy: lsi-viewer` — which since 2026-10-09 is how a directory's viewer
-is found; the page carries only `rendered-by: lsi-viewer` as provenance. So it appears on the navbar, the
-board and the central **Published graphs** page (`/cat-harness/`, §"Every
-declared viewer") with no further wiring. `lsi:viz:check` fails in CI when the page is stale — so after
-`lsi index`, run `lsi:viz` too. The page is excluded from every index's units:
-indexing a page that reports on the indexes would never reach a fixed point.
+`renderedBy: lsi-viewer` — which is how a directory's viewer is found; the page
+carries only `rendered-by: lsi-viewer` as provenance. So it appears on the
+navbar, the board and the central **Published graphs** page (`/cat-harness/`,
+§"Every declared viewer") with no further wiring. The page is excluded from
+every index's units: indexing a page that reports on the indexes would never
+reach a fixed point.
 
 ## Where the index lives, and what is stored
 
-`cat-harness/test/results/lsi/<instance>/<graph>.lsi.json` — the fingerprint,
+`test/results/lsi/<instance>/<graph>.lsi.json` — the fingerprint,
 parameters, retained variance, per-dimension pole terms, each unit's three
 nearest neighbours, and the findings. **Not the vectors**: a rebuild is about a
 second per few hundred units, and a float dump is not reviewable.
 
-That path is the **working copy, and nothing under it is committed** (bean
-`tqjj`, 2026-10-04 — the LSI subset of `5hox`). The record is the commit-keyed
-entry the CI job `qa-publish` stores on the orphan `qa-reports` branch
-(`main/<sha>/`, `pr/<n>/<sha>/`; arc `3fva`). The readers cope with its
-absence (bean `oq1j`): with no `test/results/lsi/` in the checkout, the verdict
+That path is the **working copy, and nothing under it is committed**. The
+record is the commit-keyed entry the CI job `qa-publish` stores on the orphan
+`qa-reports` branch (`main/<sha>/`, `pr/<n>/<sha>/`). The readers cope with its
+absence: with no `test/results/lsi/` in the checkout, the verdict
 rebuilds the index in memory and judges that run, writing nothing, and
 `lsi:viz` reads the indexes by ref through `qa-store` (`--ref`, default `main`)
 — anything but a hit exits 2 and writes no page about zero indexes.
 
-**The viewer page is SPLIT, and the cut is by what each value is a function
-of.** A sidecar comes off `main` because its record is on the branch. The page
-cannot come off whole — its front matter is what declares the harness tile for
-`/lsi/`, so a page that is not committed is a page with no way in. So:
+**The viewer page is never committed.** It is declared under `builtAtPublish`
+in `cat-harness.json` (`docs/en/cat-harness/lsi/`), because what it shows is a
+function of the checkout and the indexes' pins, not of one commit.
+`bun run cat lsi:viz -- --detail` adds the per-index sections; the docs-site
+build runs it after `qa:fetch` pins the entry to the build's own sha.
 
-| part of `docs/lsi/index.md` | a function of | committed |
-|---|---|---|
-| front matter, prose, method links | the generator | **yes** |
-| which graphs need an index, and each verdict | the **tree** | **yes** |
-| units, terms, retained, σ, pole terms, cosines | an index's **content** | no |
-
-The committed half reads **no index at all**: the verdict table is computed
-with a source that holds nothing, so `graphVerdict` takes its compute-and-judge
-branch over the current tree. That is not a detail. Were the table read from a
-stored index, the same commit would say `fresh` on a container holding a
-working copy and `stale` in CI reading `qa-reports` at `main` — which resolves
-to the LATEST published entry, so the value would depend on when the gate ran
-rather than on the tree. **That is bean `in5a`'s loop arriving over the
-network**, and it is the trap to avoid when taking any committed page off a
-store: the page stops being a function of the tree.
-
-`bun run cat lsi:viz -- --detail` adds the per-index sections and is run by the
-docs-site build, after that workflow's `qa:fetch` pins the entry to the
-build's own sha. So the published page carries everything a reader wants and
-`main` carries nothing a one-sentence skill edit moves. `lsi:viz:check` keeps
-its ordinary meaning against the committed half, so it is still a gate that
-fails.
-
-### Why a declared merge pattern was not enough, measured
-
-This is the worked example for a question that comes up every time a generated
-file conflicts. Three facts, in order, and the third is the one that is easy to
-get wrong:
-
-1. **The content is reproducible.** Regenerated on an unchanged tree in a cloud
-   container, `skills.lsi.json` came back byte-identical to the committed file.
-   So this is *not* bean `in5a`, where a container-dependent value makes
-   take-base a loop. Take-base plus a regeneration pass converges here.
-2. **It converges on a rewrite of the whole file.** Appending one sentence to
-   one of 229 skills changed the `fingerprint`, **9 of 12** `dimensions`
-   entries and **166 of 229** `neighbours` entries, and left `findings` and
-   every other field byte-identical. `neighbours` is **94 %** of the file;
-   `findings`, the only judgement in it, is **0.3 %**. An SVD rotation is
-   globally sensitive: there is no small diff to merge.
-3. **The pattern was already declared, and the files still conflicted.**
-   `derived-results`/take-base has covered `**/test/results/lsi/**` and
-   `**/test/results/tool-runs/**` all along, and those paths were still
-   blocking seven open pull requests each. A strategy settles **how** a
-   conflict is resolved, never **whether** one arises — which is what
-   `.gitattributes` means by *"Removing these conflicts, rather than tidying
-   them, needs the files off `main` altogether."*
-
-So the question to ask of a conflicting generated file is not "which strategy"
-but **"what is this file's record, and is `main` it?"** Where the answer is no,
-declare the strategy for the branches in flight and take the file off `main`.
+**A merge strategy does not stop a generated file conflicting.** An SVD
+rotation is globally sensitive: one sentence added to one skill rewrites most
+of a sidecar's `dimensions` and `neighbours`, so there is no small diff to
+merge. A declared strategy (`derived-results`/take-base) settles **how** a
+conflict is resolved, never **whether** one arises. Ask of a conflicting
+generated file **"what is this file's record, and is `main` it?"** Where the
+answer is no, take the file off `main`.
 
 **State graphs are indexed on demand, never stored.** The `beans` graph
-changes on nearly every commit; a stored index would be stale on every PR
-and a merge-conflict magnet. `lsi:epics` rebuilds it each run. That reasoning
-is now the general case rather than the exception: `skills` reached the same
-verdict for the same reason, three days later.
+changes on nearly every commit; a stored index would be stale on every PR and a
+merge-conflict magnet. `lsi:epics` rebuilds it each run.
 
 ## Reading a sidecar
 
@@ -231,18 +183,17 @@ verdict for the same reason, three days later.
   negative poles together. Refusal 2: it is not a topic until a person names
   it.
 - **`narrowDimensions`** — a dimension ≥ 80 % of whose mass sits on ≤ 3 units
-  (or 1 %). Almost always non-prose: in the IRIS replica it found two different
-  kinds of placeholder text in the WPRO style guide on the first run —
-  Lorem-ipsum layout filler (pp. 21, 29–31) and pseudo-Latin font specimens
-  (pp. 14–15, 28). Treat as an ingestion finding.
-- **`nearDuplicates`** — cosine ≥ 0.95. In the bean store it found pairs such
-  as `3ozg`/`rmcf` (the same 72-sidecar churn, filed twice). A duplicate bean
+  (or 1 %). Almost always non-prose: Lorem-ipsum layout filler, font
+  specimens, a mis-extracted page. Treat as an ingestion finding.
+- **`nearDuplicates`** — cosine ≥ 0.95. In the bean store these are beans
+  filed twice. A duplicate bean
   is **scrapped with a pointer**, never deleted (`bean-coordination`).
 
 ## The need-an-index audit
 
 `bun run cat lsi:audit` walks every declared graph of a prose kind across every
-instance and writes `cat-harness/test/results/lsi-need-an-index.qa-results.json` (`qa-results/v1`).
+instance and writes `test/results/lsi-need-an-index.qa-results.json`
+(`qa-results/v1`).
 
 | result | means |
 |---|---|
@@ -257,7 +208,7 @@ reports and does not gate (exit 0), like `check:methodology-evidence`;
 
 ### The same verdict in the audited record — `kg:audit`'s `tool-downstream-fresh`
 
-LSI is the first member of the **downstream-tool family** (bean `fq5u`). The
+LSI is the first member of the **downstream-tool family**. The
 `lsi-index` Tool node declares `downstream`, and every `bun run cat lsi index`
 writes a `folio-tool-run/v1` record — outcome and input fingerprint, on
 success AND on failure — under `test/results/tool-runs/lsi-index/`. The
@@ -272,8 +223,7 @@ verdict reads three states:
 A sidecar on disk with no run record is `not-run`: a file is not evidence the
 run that should keep it current succeeded. `kg:audit` carries this as
 `tool-downstream-fresh` on the `lsi-index` Tool (`minor`), one finding per
-graph, using the same verdict function as `lsi:audit`. It generalises the
-graph-level `lsi-index-fresh` it replaced. Its finding text carries **no
+graph, using the same verdict function as `lsi:audit`. Its finding text carries **no
 counts**, so the kg-qa sidecar moves only when a verdict flips.
 
 Two chains keep the indexes fresh, so the criterion stays quiet in
@@ -283,9 +233,8 @@ ordinary work:
   CI checks it with `lsi:skills:check`;
 - **an ingest** — `--promote` re-indexes the library (§"On ingestion").
 
-A graph nobody has indexed yet (today: `cat-harness/docs`) is a standing
-`minor` finding on the `lsi-index` Tool. That is the point of recording it: "needs one and has none"
-is now a fact in the audited record instead of a line in a report.
+A graph that needs an index and has none is a standing `minor` finding on the
+`lsi-index` Tool, so "needs one and has none" is a fact in the audited record.
 
 ## Epic filing — the qou hierarchy, proposed by evidence
 
@@ -301,14 +250,13 @@ parent for each open bean with no epic, each unmerged branch and each open PR:
    being scored). A branch or PR is folded in from its name and commits.
 
 It prints a **calibration line**: of the beans already under an epic, how
-often LSI's best guess is the current epic. Measured 2026-09-29: 145 / 247
-(59 %) against 21 classes, flat across k = 50–250, and log-entropy beat tf-idf
-(59 % vs 52 %). Read every proposal in that light.
+often LSI's best guess is the current epic (about 59 % against 21 classes,
+flat across k = 50–250; log-entropy beats tf-idf). Read every proposal in that
+light.
 
-**A disputed filing is not a misfiling.** The largest disputes on the first
-run were beans filed by *symptom* (translation catalogues under CI
-RELIABILITY because they turned `main` red) that LSI files by *subject*
-(TRANSLATION). Both are defensible; which axis an epic means is a decision for
+**A disputed filing is not a misfiling.** A bean filed by *symptom*
+(translation catalogues under CI RELIABILITY because they turned `main` red)
+may be filed by LSI by *subject* (TRANSLATION). Both are defensible; which axis an epic means is a decision for
 the owner, not for the score.
 
 **Never apply the proposal in bulk.** `beans update <id> --parent <epic>` is

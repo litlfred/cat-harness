@@ -7,9 +7,7 @@ memory entry one session wrote and another did not have?
 
 Overlaying context makes that question answerable. The workflow is held fixed,
 the Context Overlay is stated, and a difference between runs is a difference
-between overlays. It is the same move as pinning a dependency version: not
-because the version is special, but because an unpinned one makes every other
-measurement unreliable.
+between overlays. It is the same move as pinning a dependency version.
 
 This is what lets the repository ask how models compare across sub-workflows
 **under a controlled overlay of context and memories** — a question named as

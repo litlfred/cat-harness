@@ -28,9 +28,7 @@ geometry, not its text:
 </tbody>
 </table>
 
-So content is authored across L1 to L3, and L3 is where content and tooling
-meet. Test data starts at the DAK and runs through executable software, and
-apps are L4 alone. **No bar reaches L5.**
+**No bar reaches L5.**
 
 Two questions sit at the two ends of the band. **How can I reliably author,
 review and adjudicate faster?** is drawn on the left, over L1, beside the human
@@ -42,13 +40,3 @@ with an actor by position only; it states no pairing in words.
 the DAK layer's `library/mehl-2021-who-smart-guidelines` (the primary source, Lancet
 Digital Health 2021); the DAK layer's `library/9789240093362-eng` §1.2 (WHO's handbook
 restating them).
-
-> **Misaligned (fixed on this branch):** the docs said SMART Guidelines "names
-> three layers". It names five. The page now lists all five and says why
-> FHIR content stops at L3.
->
-> **Misread, and corrected here:** an earlier version of this page flattened
-> the bars into one "who asks" label per level (content for L1 and L2, tooling
-> for L3, apps for L4 and L5) and said test data "sits beside every level". The
-> slide's geometry says otherwise: the table above is measured from the deck's
-> shape positions.

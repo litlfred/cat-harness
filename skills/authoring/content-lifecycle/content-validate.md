@@ -7,7 +7,7 @@ output: schemas/skills/content-validate/output.schema.json
 
 # Content Validation
 
-Validate authored content against schemas, standards, and clinical accuracy.
+Validate authored content against schemas, standards, and domain accuracy.
 
 ## Responsibilities
 - Run schema validation against defined constraints

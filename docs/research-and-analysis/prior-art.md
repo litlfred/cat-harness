@@ -20,8 +20,7 @@ summary: >-
 > repository has adopted; that is [Methodologies]({{ '/methodologies/' | relative_url }}), and a
 > project moves there only when something from it is actually taken on.
 > Each entry was checked against the project's own repository on
-> **2026-09-23** (bean `vq8o`), with `beans` and `Beads` re-measured on
-> **2026-10-24** (bean `q2aj`). Licences and star counts move; re-check before
+> **2026-09-23**, with `beans` and `Beads` re-measured on **2026-10-24**. Licences and star counts move; re-check before
 > relying on one.
 
 ## Summary
@@ -116,9 +115,7 @@ bean) and the link between a bean and a running process instance.
 Beads' atomic claim (and, from v1.3, leases) is the stronger primitive where
 it is available.
 
-**Health, as observed 2026-09-23 (`vq8o`) and re-measured 2026-10-24 (`q2aj`).**
-The two differ sharply, and the difference matters to anyone choosing between
-them:
+**Health, as observed 2026-09-23 and re-measured 2026-10-24.**
 
 | | beans (2026-09-23) | beans (2026-10-24) | Beads (2026-09-23) | Beads (2026-10-24) |
 |---|---|---|---|---|
@@ -134,39 +131,9 @@ storage and merge — this repository leans on hardest. Plain files that
 `git diff` and review read directly are also part of why beans fits here: the
 bean store is committed and reviewed like any other content.
 
-**2026-10-24 recheck (`q2aj`) and owner decision question.** One month after
-the 2026-09-23 baseline (`b91x`), the contrast is unchanged in direction:
-
-- **`hmans/beans` remains dormant upstream** — zero commits since 2026-04-06
-  (`99260bf`) and no release since `v0.4.2` (2026-03-10), with 39 open and 21
-  closed issues. No storage or corruption defect has surfaced in our usage, and
-  `scripts/beans-fallback.ts` covers environments without the Go binary.
-- **`gastownhall/beads` continues high-velocity development (592 commits since
-  2026-09-23, `v1.3.1` on 2026-09-30, `v1.3.2` on 2026-10-24) with no new
-  `go.mod` retractions**, and closed earlier migration-gate issues (`#6547`,
-  `#6575`). However, `v1.3.1` introduced a concurrent-write reversion bug in
-  its blocked-state recheck (`#7030`) and two data-loss bugs in retention and
-  auto-backup (`#7031`, `#7032`) that required `v1.3.2` to fix; migration
-  `0059` (`v1.3.0`) over-set stored `is_blocked` flags on embedded Dolt 2.2.0
-  (`#7037`, requiring a manual `bd recompute-blocked` per workspace); `#4356`
-  (dirty working set blocking `bd dolt pull` without manual `DOLT_ADD -f`)
-  remains open; and new multi-clone migration, `bd dolt pull` and `bd sync`
-  conflict/data-loss issues continue to open (`#6727` unmergeable stores after
-  migration 0062, `#7039` empty `events` history on pull-adopting clones,
-  `#7073` fresh-clone pull wedge, `#7294` `bd compact` re-dating commits so
-  tracker pulls overwrite unpushed edits, `#7757` `bd sync` dropping a clone's
-  comment on concurrent edits, `#7783` `bd sync` silently reopening a closed
-  bead on status conflict, `#7811` `bd dolt pull --strategy ours` reverting
-  remote labels, and `#7781`/`#7795` GitHub/GitLab pulls overwriting beads by
-  issue number across projects).
-- **Question for the owner (`b91x` / `q2aj`):** given that `beans` is
-  dormant-but-stable on plain Markdown files while `Beads` (`v1.3.2`) is still
-  working through multi-clone Dolt sync, merge and migration edge cases, should
-  we **(a) keep `beans`** (and either close the watch or recheck again after
-  2026-12-23 as originally scheduled in `b91x`), **(b) trial `Beads` alongside
-  `beans`** in a single isolated workspace, **(c) fork/maintain `beans`** (or
-  lean on our in-tree TypeScript tooling), or **(d) plan a migration to
-  `Beads`**?
+No storage or corruption defect has surfaced in this repository's use of
+`beans`, and `scripts/beans-fallback.ts` covers environments without the Go
+binary.
 
 ## Roles and processes
 
@@ -269,8 +236,7 @@ produces, reads or writes it
 
 ## General agent frameworks
 
-Added 2026-09-23, same session, on the owner's request. These overlap more
-loosely: each is an agent **runtime** you build on, where folio-assistant is a
+These overlap more loosely: each is an agent **runtime** you build on, where folio-assistant is a
 harness around coding agents that already exist.
 
 ### LangGraph

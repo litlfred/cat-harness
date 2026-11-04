@@ -4,8 +4,8 @@ needs that are not content — they are **capability gaps** in the platform itse
 a missing block kind, a QA criterion that does not exist, a rendering mode that
 does not handle their document structure, a workflow step that has no tooling.
 
-Without a methodology, agents improvise. The history of this repository shows
-what that looks like: a feature request arrives as a chat message, the agent
+Without a methodology, agents improvise: a feature request arrives as a chat
+message, the agent
 builds something that addresses the immediate symptom, and the result does not
 compose with the rest of the platform — because nobody mapped the current
 workflow, identified who else is affected, or wrote the requirements down before

@@ -67,7 +67,7 @@
     ],
     "selection": {
       "when": "The CDN target is GitHub Pages: this repository's docs site and its review previews, and every instance whose declaration names a GitHub `repository`.",
-      "limits": "GitHub only. Pages cannot serve server-side redirects or custom headers, and a full-replace push to the `gh-pages` branch deletes what the build did not produce unless the caller restores it first (`docs-site-publish`, bean plj1). Another CDN is another Tool satisfying `render-kg-to-cdn`.",
+      "limits": "GitHub only. Pages cannot serve server-side redirects or custom headers, and a full-replace push to the `gh-pages` branch deletes what the build did not produce unless the caller restores it first (`docs-site-publish`). Another CDN is another Tool satisfying `render-kg-to-cdn`.",
       "cost": "Free for a public repository: Pages and the Actions minutes its workflow uses. A deploy takes a minute or two to be served."
     },
     "requires": {

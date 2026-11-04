@@ -76,7 +76,7 @@ To prevent browser V8 heap exhaustion on edge devices, datasets are never delive
 
 ### Implementation B: Folio Assistant Beans Work Plan
 * **Compiler**: `cat-harness-tools/scripts/beans-query.ts`
-* **Spine Graph**: `<https://folio-assistant.org/graph/beans>` $\to$ `beans-spine.nq.gz` (all 1,600+ beans with IDs, status, parents, and dependency edges).
+* **Spine Graph**: `<https://folio-assistant.org/graph/beans>` $\to$ `beans-spine.nq.gz` (every bean with its ID, status, parents, and dependency edges).
 * **Subgraph Partitions**: `<https://folio-assistant.org/graph/beans/claims>` $\to$ `claims.nq.gz` (session claims, burndown history, and audit records).
 * **Queries**: `safe_drain_candidates`, `actionable_leaves`, `critical_path_blockers`, `rollup_invariant_violations`, `circular_blockers`.
 * **Declared Served Directory**: `beans/dist/` with `"served": true` in `beans.json`.

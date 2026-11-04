@@ -8,7 +8,7 @@
   defined here once and each process calls it with a callActivity whose
   calledElement is the global task's bare id (b1). The calling lane names the
   Role; the global task names the Skill. A global task may take inputs, which
-  each call gives a value (c1), and is shared within this layer only. Every
+  each call gives a value, and is shared within this layer only. Every
   layer names its file plainly processes/global-tasks.bpmn: a diagram's identity
   is its instance plus its path, and its IRIs carry the instance.
 -->
@@ -19,8 +19,8 @@
                   exporter="folio-assistant" exporterVersion="1">
   <bpmn:import namespace="https://litlfred.github.io/bootstrap/v0/processes/ns/" location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld" importType="http://www.w3.org/ns/json-ld"/>
 
-  <!-- The stores this layer's processes read and write (owner, 2026-11-01,
-       Q-BR-3 A and Q-DS-3 A). A store is not a lane: a process draws a
+  <!-- The stores this layer's processes read and write. A store is not a
+       lane: a process draws a
        dataStoreReference whose dataStoreRef is one of these ids, and the
        tasks that read or write it say so with data associations. Each id is
        the store's Role id in scenarios/roles.json, where its store block says
@@ -68,7 +68,7 @@
 
   <!-- crdm-signoff and crdm-close. -->
   <bpmn:globalScriptTask id="GT_RecordSignoff" name="Record the sign-off as a&#10;requirement-signoff attestation">
-    <bpmn:documentation>THE RECORD, and not relaxable: a judgement nobody wrote down is indistinguishable from one never made (`adjudication`, A_RecordEntry). Append one `requirement-signoff` record to `test/attestations/requirement-signoff/&lt;set slug&gt;.attestations.json` — who (kind, id, actor), at, scope (the set or one member), the outcome from the requirement-set code list, the stage it moves the set to, the reason, and the permalink to the issue comment where it was decided — and set the set's `stage` to match. Issue #2405 FR-011 / FR-012.
+    <bpmn:documentation>THE RECORD, and not relaxable (`adjudication`, A_RecordEntry). Append one `requirement-signoff` record to `test/attestations/requirement-signoff/&lt;set slug&gt;.attestations.json` — who (kind, id, actor), at, scope (the set or one member), the outcome from the requirement-set code list, the stage it moves the set to, the reason, and the permalink to the issue comment where it was decided — and set the set's `stage` to match. Issue #2405 FR-011 / FR-012.
 
 GW_SignoffRecorded after this reads the record back, so this step cannot be skipped by completing it: a sign-off that left no attestation loops here again.</bpmn:documentation>
     <bpmn:extensionElements>
@@ -100,27 +100,27 @@ GW_SignoffRecorded after this reads the record back, so this step cannot be skip
   </bpmn:globalTask>
   <!-- feature-staging and staging-render-log. -->
   <bpmn:globalScriptTask id="GT_LogRetained" name="Append `retained`&#10;with the reason">
-    <bpmn:documentation>The entry that makes the log worth reading. A removal was considered and refused, or a preview still stands because a signal fired; without an entry that leaves no trace, and the next person asking "why is this preview still up" has nothing to consult. A reason is REQUIRED — the tool refuses without one.</bpmn:documentation>
+    <bpmn:documentation>Records that a removal was considered and refused, or that a preview still stands because a signal fired. A reason is REQUIRED — the tool refuses without one.</bpmn:documentation>
     <bpmn:extensionElements>
       <bootstrap.processes:skill ref="render-logging"/>
     </bpmn:extensionElements>
   </bpmn:globalScriptTask>
 
-  <!-- translation-workflow and human-translation-workflow (shared block G7). -->
+  <!-- translation-workflow and human-translation-workflow. -->
   <bpmn:globalTask id="GT_ExtractPot" name="Extract translatable strings (POT)">
-    <bpmn:documentation>Scan the source content and write the translatable strings to .pot files at the configured granularity: segment prose by paragraph, shield what must not be translated (math, code, labels, Lean companions) as placeholders, normalise whitespace, and extract metadata such as titles, alt text and captions. Tool: the translation_extract MCP tool, or bun run content/pipeline/pot-extract.ts.</bpmn:documentation>
+    <bpmn:documentation>Scan the source content and write the translatable strings to .pot files at the configured granularity: segment prose by paragraph, shield what must not be translated (math, code, labels, Lean companions) as placeholders, normalise whitespace, and extract metadata such as titles, alt text and captions. Tool: the translation_extract MCP tool.</bpmn:documentation>
     <bpmn:extensionElements>
       <bootstrap.processes:skill ref="translation-manager"/>
     </bpmn:extensionElements>
   </bpmn:globalTask>
   <bpmn:globalTask id="GT_InjectPo" name="Inject the PO into translated Markdown">
-    <bpmn:documentation>Read the .po file and the source .md, substitute msgstr for msgid, unshield the placeholders, and write the translated .md to translations/&lt;locale&gt;/. Check structure (paragraph count, heading levels) and completeness (no empty msgstr), and lint (doubled punctuation, orphaned placeholders). Tool: the translation_inject MCP tool, or bun run content/pipeline/po-inject.ts.</bpmn:documentation>
+    <bpmn:documentation>Read the .po file and the source .md, substitute msgstr for msgid, unshield the placeholders, and write the translated .md to translations/&lt;locale&gt;/. Check structure (paragraph count, heading levels) and completeness (no empty msgstr), and lint (doubled punctuation, orphaned placeholders). Tool: the translation_inject MCP tool.</bpmn:documentation>
     <bpmn:extensionElements>
       <bootstrap.processes:skill ref="translation-manager"/>
     </bpmn:extensionElements>
   </bpmn:globalTask>
   <bpmn:globalTask id="GT_RoundTripQa" name="Round-trip translation QA">
-    <bpmn:documentation>Back-translate the target-language .md into the source language and compare the meaning with the original (bean folio-assistant-ktt2). It catches semantic drift and terminology misses that a forward-only fluency check cannot see, and tells the two apart. Tool: the translation_validate MCP tool.</bpmn:documentation>
+    <bpmn:documentation>Back-translate the target-language .md into the source language and compare the meaning with the original. It catches semantic drift and terminology misses that a forward-only fluency check cannot see, and tells the two apart. Tool: the translation_validate MCP tool.</bpmn:documentation>
     <bpmn:extensionElements>
       <bootstrap.processes:skill ref="translation-manager"/>
     </bpmn:extensionElements>

@@ -24,9 +24,6 @@ names every PR. The process is
 (`Process_SaturationMetaMerge`), called from the merge manager's watch loop
 ([`merge-manager-watcher`](merge-manager-watcher.md)).
 
-First run: 2026-11-02 07:03Z, on this layer (#956, 7 PRs) and on two
-layers that build on it (4 PRs and 1 PR).
-
 ## Trigger
 
 Offer the meta-merge, but do not run it, when either of these holds on a
@@ -69,11 +66,11 @@ the owner's tap.
    run only, D cancel. Recommend A. A PR the card does not name gets no merge
    from this card. The safety check refuses it, and the owner must tap again.
    The owner taps the card in the thread that merges. An answer relayed
-   from the project chat or another thread is refused by the safety check
-   (round 2, 2026-11-02), so post the merge card in this thread.
+   from the project chat or another thread is refused by the safety check,
+   so post the merge card in this thread.
 4. **Cancel the queued PR runs** on the repositories in scope, and log each
    one to a TSV file. Do NOT cancel a `main` push run that has already
-   started (Q-CIS-1). It is cancelled by the next push anyway, and cancelling
+   started. It is cancelled by the next push anyway, and cancelling
    it by hand loses the record of `main`.
 5. **Build and push** with `PUSH=1`, against fresh `origin/main`. `main`
    moves while the card waits, so check the script's output again. A PR that
@@ -86,7 +83,7 @@ the owner's tap.
    with a link to the meta-merge PR and the session. Post `meta-merge done`
    to every sibling you held, with what landed and what is still open.
 8. **Watch `main`.** Re-run any `main` run that a closing PR's run cancelled
-   (until tools#1384, a closed PR's run joins `main`'s concurrency group).
+   (a closed PR's run can join `main`'s concurrency group).
    Report green or red to the owner. On red, open the fix as a normal PR
    against `main`, and never revert the whole meta-merge without the owner.
 

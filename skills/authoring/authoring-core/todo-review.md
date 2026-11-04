@@ -23,37 +23,20 @@ allowed-tools: Read Edit Bash Grep Glob WebFetch AskUserQuestion Agent
 
 ## Where the feedback came FROM — this skill starts mid-air without it
 
-Triage assumes somebody already had an editable copy to leave feedback **on**,
-and until 2026-09-22 nothing said how they got one. For content this repository
-holds by reference or has materialized from somewhere else, the answer is not
-"they opened it": materialized content is **read-only**, and browsing to it
-gives a reader nothing to annotate.
-
-The missing first step is
-[`copy-out-materialized`](../../library/large-datasets/copy-out-materialized.md)
-(diagram:
-`cat-harness/processes/library/copy-out-materialized.bpmn`).
-The owner's framing, 2026-09-21:
-
-> *"this is first/early step of review process, checking out local copy to edit,
-> make comments/todos/stickies, etc on it. these feed into the comment review
-> pipeline."*
-
-So the sequence is: a reviewer browses a materialized sub-graph (read-only) →
-copies it into their **own** `folio/`, carrying `provenance.local` back to the
-original → annotates **the copy** → and those annotations arrive here.
-
-**This is not a second pipeline, and nothing below changes.** It is why the one
-below has somewhere to start. Two consequences worth holding on to while
-triaging:
+Materialized content (held by reference or materialized from elsewhere) is
+**read-only**; a reviewer cannot annotate it in place. The first step of review
+is [`copy-out-materialized`](../../library/large-datasets/copy-out-materialized.md)
+(diagram: `processes/library/copy-out-materialized.bpmn`): the reviewer copies
+the materialized sub-graph into their **own** `folio/`, carrying
+`provenance.local` back to the original, annotates **the copy**, and those
+annotations arrive here. While triaging:
 
 - **Feedback is on the COPY, not on the original.** Resolving an item edits the
   copy. The original still hashes to its recorded digest, and
-  `check:materialized-fixity` says so — if it does not, somebody annotated held
-  content in place, which is the defect the copy-out exists to prevent.
-- **`provenance.local` is what makes a resolved item traceable** to the thing it
-  was really about. Without it the copy is indistinguishable from original work
-  one rename later, and a reviewer's comment loses its subject.
+  `check:materialized-fixity` fails if somebody annotated held content in
+  place.
+- **`provenance.local` makes a resolved item traceable** to the thing it was
+  about.
 
 ## Role
 
@@ -200,8 +183,7 @@ When the author says "done" or all items in scope are addressed:
 
 ## Resolving Feedback
 
-**Only the human author** may resolve or remove a FeedbackItem
-(see AGENTS.md feedback-resolution rule). Agents must never set status
+**Only the human author** may resolve or remove a FeedbackItem. Agents must never set status
 to `resolved` or `wontfix`, and must never delete items. Agents *may*
 set status to `in_progress` after making edits.
 

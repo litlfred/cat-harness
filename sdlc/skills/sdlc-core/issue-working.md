@@ -49,20 +49,13 @@ nothing, and defaulting the other way is exactly how the comments that change
 direction get skipped — silently, because nothing distinguishes *read* from
 *never looked*.
 
-Measured here: a session missed **five** owner comments across eighty-four
-minutes while working — including the one asking for this rule — and found them
-only when the author typed *"new comments"*. Every one of the five changed
-direction or added scope.
-
 ## When the new material is a large chunk of work, stop
 
 **Do not fold it into the current run.** Say that this is a good stopping point
 for review, link the artefact, and confirm priorities before continuing.
 
-The instinct to absorb it is the wrong one twice over: it buries a scope change
-inside a diff nobody asked for, and it spends the author's next review on work
-they have not agreed to. A large new ask is a decision to hand back, under the
-usual discipline — context, options with their costs, a marked recommendation,
+Absorbing it buries a scope change inside a diff nobody asked for. A large new
+ask is a decision to hand back, under the usual discipline — context, options with their costs, a marked recommendation,
 then the question.
 
 ## What an issue is *for*, against its neighbours
@@ -111,14 +104,11 @@ stakeholder would act on.
 Each update must be **readable on its own**, because it is read days later
 without the session: status, approach in a line, findings with their numbers
 and provenance, what landed, and next steps — and a link to the previous
-update rather than a restatement of it. Measured on issue #2302 (2026-10-06):
-the owner asked for an issue update three times in one session — after the
-method comparison, after the figures work, and again for overall status —
-each time because the last one was hours and several milestones old.
+update rather than a restatement of it.
 
 ## A sign-off on the issue becomes a record
 
-Issue #2405 (FR-011). When a requirements document is signed off on its issue
+When a requirements document is signed off on its issue
 — approved, amended, rejected, deferred or cancelled — the comment is the
 **evidence**, not the record. The record is a `requirement-signoff`
 attestation in the `attestations` graph
@@ -143,31 +133,22 @@ the open branches when the claim is *nobody has built this*.
 
 Grepping your checkout answers *"is this in my base"*, not *"does this exist"*,
 and a `git fetch` earlier in the same compound command is not a barrier when
-siblings merge every few minutes. Both failures happened in one session on
-2026-09-21, one of them in a comment accusing a bean of exactly this error:
+siblings merge every few minutes.
 [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"Re-derive from the REMOTE" has
-the measurements and the two guards. For the third case, a path that exists
+the two guards. For the third case, a path that exists
 only on an open PR's head, ask the
 [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.json) Tool.
 
 ## When the work has a BEAN and no issue (STRICT)
-
-**Measured 2026-09-20, bean `oh78`.** 54 proposals merged in one four-hour
-window and **2 issues changed**, both newly opened. Most of that day's work was
-bean-driven with no issue at all, so the rule above was not broken — it was
-*silently inapplicable*, which is worse, because a rule that quietly does not
-apply reads from the outside exactly like a rule being followed.
 
 > **A round summary is owed either way. With no issue, it goes on the change
 > proposal AND into the bean — the bean is the durable artefact a sibling
 > reads, and a summary that exists only in a PR thread is invisible to the work
 > plan on `main`.**
 
-**And a bean that has an issue carries the link BOTH ways.** Issue #558
-(*"Sticky pin: unpinning loses the theme"*) has no bean link although bean
-`ivfw` is its subject verbatim; issue #464 is open on a completed bean
-(`mggs`). One direction is not enough: a reader arriving at either object has
-to be able to reach the other, and a check reports the ones that cannot.
+**And a bean that has an issue carries the link BOTH ways**: a reader arriving
+at either object has to be able to reach the other, and a check reports the
+ones that cannot.
 
 When to open an issue at all is [`crdm-detect`](../crdm/crdm-detect.md)
 §"Issue association" — **scan before creating one, and never create one without

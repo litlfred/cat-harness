@@ -8,14 +8,13 @@
 > [`repo-conversion`](reference/skill-instructions/repo-conversion.html).
 
 Cross-repo TODO list for the **qou** side of the folio-assistant infrastructure
-migration (`miga`). Compiled from the handoff + the folio-assistant work landed in
-PR #14. Companion to `docs/folio-assistant-migration.md` (§6 has exact, copy-paste
-instructions for A/B/C; §8 has the cross-agent session-start design).
+migration (`miga`). The cross-agent session-start design is
+`docs/folio-assistant-migration.md` §3.
 
 > Convention: agents may create / `in-progress` items but should not resolve a
 > sibling's. Tick a box only when its *Done when* holds.
 
-## A/B/C — session-setup cleanup (handoff §6)
+## A/B/C — session-setup cleanup
 
 - [ ] **A. Strip 4 dangling hook refs from qou `.claude/settings.json`** — the
   scripts deleted by `39fc90f6`: `open-folio-assistant.sh`, `watch-main-prompt.sh`
@@ -38,13 +37,13 @@ instructions for A/B/C; §8 has the cross-agent session-start design).
   folio's canonical `work-plan/skills/work-plan/bean-coordination.md`.
 - [ ] **`todo-manager.md`** — sync from folio's `work-plan/skills/work-plan/todo-manager.md`
   (includes the "Using beans for todos" guidance).
-- [ ] **`install-beans.sh`** — vendor/mirror folio's `scripts/install-beans.sh` as
-  the single source of truth.
+- [ ] **`install-beans.sh`** — vendor/mirror folio's
+  `cat-harness-tools/scripts/install-beans.sh` as the single source of truth.
 - [ ] **Adopt the `AGENTS.md` pattern** — make qou's `AGENTS.md` the agent-generic
   source of truth; reduce `CLAUDE.md` / `GEMINI.md` to thin stubs (`@AGENTS.md` /
   "See AGENTS.md").
 
-## Session-start harness (port folio's resolved Q2 design, §8)
+## Session-start harness (port folio's design, `folio-assistant-migration.md` §3)
 
 - [ ] **Adopt the shared primer** — replace qou's `session-start-coord-sweep.sh`
   with (or rebase onto) folio's generalized primer (beans priming + default-branch
@@ -54,10 +53,10 @@ instructions for A/B/C; §8 has the cross-agent session-start design).
 - [ ] **(Optional, cross-agent)** add Gemini CLI / Antigravity `hooks.json`
   SessionStart entries invoking the same primer.
 - [ ] **(Optional)** expose `beans prime` as an MCP tool in qou's server
-  (folio's `work_plan_prime` in `src/tools/beans-prime.ts` is the reference) if
+  (folio's `work_plan_prime` tool is the reference) if
   qou runs its own MCP.
 
-## todos → beans (Q1 decided: no separate todos platform)
+## todos → beans (no separate todos platform)
 
 - [ ] **3 goal queues** (`todos/1ppq-qbeta-queue.json`, `lean-discharge-queue.json`,
   `research-queue.json`) — convert to beans **or** relocate as bulk JSON; repoint
@@ -68,10 +67,10 @@ instructions for A/B/C; §8 has the cross-agent session-start design).
   if relocating, repoint readers first.
 - [ ] **Do NOT delete** any `todos/` file until its readers / links are repointed.
 
-## Cross-repo bookkeeping (§7)
+## Cross-repo bookkeeping
 
 - [ ] Update qou's `bean-coordination.md` ownership note to point at
   folio-assistant as canonical.
-- [ ] Close tracking beans: `j8el`, `bmwh`, `17ht`, `kpzd`, `d9nu`.
+- [ ] Close the qou-side tracking beans.
 - [ ] Replace any remaining scattered handoff notes with a link to folio's
   `docs/folio-assistant-migration.md`.

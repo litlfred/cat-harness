@@ -1,7 +1,7 @@
 ---
 name: swot-analysis
 description: >
-  Running a SWOT situation analysis — the four activities of
+  Running a SWOT situation analysis — the activities of
   `swot-analysis.bpmn`, what each step must produce, and the one thing the
   technique must never be used for. The method itself lives in the
   `methodology` graph and is not repeated here.
@@ -13,9 +13,7 @@ uses-methodology:
 
 **The method is not in this file.** It is the `swot` node in the `methodology`
 graph, rendered from an ingested source, and this skill is the instruction for
-performing it. That split is `methodology-adoption`'s: a skill names the
-methodology it follows, and the method's own text lives once, so two skills
-quoting it cannot drift apart.
+performing it (`methodology-adoption`'s split).
 
 Read [`methodologies/swot.md`](../../../methodologies/swot.md) first — in
 particular §"What this platform adopts, and what it refuses". Ask the
@@ -28,9 +26,8 @@ If you find yourself choosing between options inside a SWOT, you have left the
 methodology: stop, and go to `options-analysis`, which selects a decision
 methodology by context.
 
-The diagram enforces this — `swot-analysis.bpmn` has no path that decides. If a
-scan you are running seems to need one, that is a signal you are in the wrong
-process, not a gap in this one.
+`swot-analysis.bpmn` has no path that decides. If a scan seems to need one, you
+are in the wrong process.
 
 ## What each step must produce
 
@@ -46,7 +43,7 @@ process, not a gap in this one.
 **External is scanned before internal.** That is Weihrich's argument as the
 source reports it — opportunities and threats are outside the subject and
 largely beyond its control, and must be managed using its strengths and
-weaknesses — not a house preference.
+weaknesses.
 
 ## Two things you will want to do, and must not
 
@@ -57,17 +54,15 @@ methodology adopted for ranking — not a weighting invented here.
 
 **Do not blend in another method to patch the gap.** The source surveys a long
 line of quantitative extensions (AHP, ANP, fuzzy variants, SMART, SMAA-O, MADM,
-TRIZ). None is adopted. Reaching for one produces the composite
-`methodology-adoption` forbids: a house method that cites nobody while claiming
-everybody's authority.
+TRIZ). None is adopted; blending one in is the composite
+`methodology-adoption` forbids.
 
 ## When SWOT is the wrong tool entirely
 
 Ask `methodology-adoption`'s selection question. SWOT is **situation analysis**,
 and it is the answer to none of those four questions — it is what you do *before*
 them. If the task is choosing among options, grading evidence, recording a
-decision, or computing a recurring branch, you want a different methodology and
-a SWOT would be ceremony in front of it.
+decision, or computing a recurring branch, you want a different methodology.
 
 ## Related
 

@@ -1,5 +1,4 @@
-**Not built yet**, and stated here rather than left as an absence somebody has
-to notice.
+**Not built yet.**
 
 A person's todos need a cycle of their own, and none of it exists:
 

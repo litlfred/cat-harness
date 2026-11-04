@@ -29,13 +29,10 @@ which one you are writing for before you write a line:
 **Beside the writer that renders it, in the tools repository.** The README
 templates are part of bootstrap-tools' `scripts/` subgraph, at
 `bootstrap-tools/scripts/templates/readme/`, and the writer finds them with
-`TEMPLATES`, a path relative to its own file. They moved there with the
-writer (bean `xsqm`, owner 2026-09-29: one copy of the README writers, in the
-tools repository): a template is part of the toolset, and somebody who wants
-different READMEs uses a different toolset over the same content. Until then
-they sat in cat-harness's `tools/` directory, found through its `id`, and a
-harness that wants its own layout still passes its own templates directory to
-`plan()`. They are files OF the `scripts/` subgraph, not a directory of their
+`TEMPLATES`, a path relative to its own file. A template is part of the
+toolset: somebody who wants different READMEs uses a different toolset over
+the same content, and a harness that wants its own layout passes its own
+templates directory to `plan()`. They are files OF the `scripts/` subgraph, not a directory of their
 own: a declared directory nested inside another is refused by
 `check:layout-norms`. Never an inline template string in a `.ts` file and
 never a `.liquid` file outside a declared directory: a template nobody
@@ -69,8 +66,7 @@ A version typed into a template is stale on the next bump. Read it:
 
 - **README templates** get `release`: `version` (every instance declares one),
   and — for an instance declaring an `iriBase` — `major`, `agent` (for
-  identifiers) and `human` (for pages), both `<iriBase>v<major>/` since the
-  owner's 2026-10-23 ruling. Empty strings where not declared: test with
+  identifiers) and `human` (for pages), both `<iriBase>v<major>/`. Empty strings where not declared: test with
   `!= ""`, and show nothing rather than a guess.
 - **Site templates** read `site.data.harness.releases.<instance>` — the same
   four fields for every instance, written by `sync-docs-harness` into
@@ -103,10 +99,10 @@ a reader would want its own row for it — not to hide logic.
 
 `{%-` and `-%}` strip the whitespace on that side of the tag, and that is how a
 template emits clean Markdown. It is also how a separator the output needs
-disappears: one `{% endif -%}` in `_includes/landing.html` glued two HTML
-attributes together and the live landing page printed its own markup as text,
-past every gate ([`continual-progress`](../../../sdlc/skills/sdlc-core/continual-progress.md) §"A template is
-not a page"). Strip freely inside a tag's own lines; think before stripping
+disappears — a stripped space between two HTML attributes makes the page print
+its own markup as text, past every gate
+([`continual-progress`](../../../sdlc/skills/sdlc-core/continual-progress.md)
+§"A template is not a page"). Strip freely inside a tag's own lines; think before stripping
 next to a table row's newline, the blank line before a heading or table, or
 an attribute boundary. `subgraph-readmes` also collapses three or more
 newlines to two, so do not fight blank lines with stripping.
@@ -134,15 +130,13 @@ Jekyll renders an undefined variable as the empty string and says nothing;
 renders (the exception aborts the whole tag, `else` branch included).
 `docs/_plugins/liquid-undefined-warn.rb` does neither: every lookup runs as
 Liquid runs it, and at the end of the build each path that was ABSENT is
-printed as a warning with its count and pages, `site.data.*` first (owner,
-2026-10-09, bean `8pyz`: *"jekyll strict (if not error out, just message)"*).
+printed as a warning with its count and pages, `site.data.*` first.
 A lookup inside a condition or under `| default` is not reported — there the
 template asked — nor an include's own parameter (`include.x`, optional by
 convention), a field of a variable that is there and nil (its cause is reported
 once, where it went undefined), or a path `liquid_undefined_ignore` in
 `_config.yml` lists: a THEME's optional settings, which `site-chrome/_config.yml`
-names for just-the-docs. On the immunizations IG those rules took 399 reports
-to the 2 real gaps. `FOLIO_LIQUID_UNDEFINED_REPORT=<file>` writes the same record
+names for just-the-docs. `FOLIO_LIQUID_UNDEFINED_REPORT=<file>` writes the same record
 as JSON; `liquid_undefined: off` in `_config.yml` turns it off. It runs only
 where plugins do (`bundle exec jekyll`, as an IG repository's own site and
 `preview:site` build); the github-pages build is safe mode and loads none.
@@ -151,9 +145,8 @@ where plugins do (`bundle exec jekyll`, as an IG repository's own site and
 
 `subgraph-readmes` writes only between `<!-- kg:subgraph:begin -->` and
 `<!-- kg:subgraph:end -->`, creates a README holding just that region when
-there is none, and leaves an unmarked README alone and reported. The rules,
-and why the whole-file generator they replaced was wrong, are in
-[`readme-sections`](readme-sections.md); do not restate them in a template.
+there is none, and leaves an unmarked README alone and reported. The rules are
+in [`readme-sections`](readme-sections.md); do not restate them in a template.
 
 ## Regenerate, commit, and the gate
 

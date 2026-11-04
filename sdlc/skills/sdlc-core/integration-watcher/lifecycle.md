@@ -23,7 +23,7 @@ binds you before you start.
 OWNER=<repo-owner>
 REPO=<repo-name>
 
-# CatBootstrap the queue + ledger under beans/ (queue tracked as a bulk-JSON
+# Bootstrap the queue + ledger under beans/ (queue tracked as a bulk-JSON
 # coordination queue; ledger gitignored — both survive branch switches)
 mkdir -p beans
 NAME="<your-watcher-name>"
@@ -36,7 +36,7 @@ NAME="<your-watcher-name>"
 |----------|-------|-------|----------|--------|
 EOF
 
-# Stash main baseline so §5f timeout-recovery can diff cleanly.
+# Stash main baseline so timeout recovery (watch.md §5b) can diff cleanly.
 # Explicit refspec — see coordinate.md §8a: a bare fetch may not write
 # refs/remotes/origin/main, and a baseline read from an unwritten ref is not one.
 git fetch origin '+refs/heads/main:refs/remotes/origin/main' 2>/dev/null
@@ -162,11 +162,6 @@ poll) **must** trigger an own-PR rebase walk via §5g step 7
 **unconditionally** — independent of whether the §3 trigger filter
 matches the commit's scope or §4 dispatch runs any specialists.
 
-The rationale: a watcher session that lets its own PRs accumulate
-"behind by N commits" against `origin/main` ships dirty work to
-reviewers and risks GitHub's "needs rebase" state silently when the
-user comes back to merge.
-
 **Fire rule** (every Monitor commit line):
 
 ```
@@ -262,9 +257,6 @@ hit:
 3. **Update the ledger** with a `derivation-completion` row citing both
    the new commit SHA and the queue item id.
 
-This prevents the watcher from carrying stale "open problem" framings
-after the actual closure lands.
-
 ### 3b. Removal-over-banner policy (MANDATORY for legacy / superseded)
 
 When a canonical derivation lands and supersedes a legacy / deprecated /
@@ -297,12 +289,12 @@ When a child watcher detects a queued-for-removal item, it should:
 In addition to the domain trigger filter (Slot B) and the §3a
 derivation-completion check, every watcher must check whether the
 incoming commit (or batch in the unreviewed range) **added a new skill
-file** under `.claude/skills/`:
+file** under a `skills/` directory:
 
 ```bash
 SHA_RANGE="<LAST_REVIEWED>..<NEW_SHA>"
 git diff --name-only --diff-filter=A "$SHA_RANGE" \
-  -- '.claude/skills/local/*.md' '.claude/skills/*/*.md'
+  -- '*skills/*.md'
 ```
 
 For each new skill file:
@@ -312,7 +304,7 @@ For each new skill file:
 2. **Decide relevance** to this watcher's domain (Slot A goal). A new
    skill is relevant when its `description` mentions a file kind /
    pattern this watcher audits, OR it is a sibling integration-watcher
-   child (`inherits: local/integration-watcher`), OR it provides a new
+   child (`inherits: sdlc-core/integration-watcher`), OR it provides a new
    specialist this watcher could dispatch via Slot C.
 3. **Surface to the user via `AskUserQuestion`** with 3 chips: `Adopt
    now` / `Defer to follow-up branch` / `Not relevant`.
@@ -459,11 +451,11 @@ echo "| $ts | <event> | <scope> | <N critical / N major / N minor> | <N auto / N
 Update `beans/${NAME}-queue.json` with new items + status changes via
 `Edit`.
 
-### 4g. Refresh spawned PRs against main *(superseded by §2c)*
+### 4g. Refresh spawned PRs against main — fallback for §2c
 
-The continuous main-following rule is now §2c (mandatory, unconditional
-on every main commit, **before** §3 / §4 dispatch). §4g remains as a
-redundant safety net: if §2c somehow didn't fire (e.g. the Monitor
+The continuous main-following rule is §2c (mandatory, unconditional on every
+main commit, **before** §3 / §4 dispatch). This is the safety net: if §2c
+didn't fire (e.g. the Monitor
 crashed between detection and rebase walk), the §4 pipeline completion
 can also trigger §5g step 7 as a fallback. The rebase runs in a
 worktree; witness-drift conflicts auto-resolve via §5f; substantive

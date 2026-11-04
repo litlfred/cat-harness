@@ -10,12 +10,10 @@ description: >
 
 # Render a Knowledge Graph to a CDN
 
-Owner, 2026-09-30: *"render content of a KG (or list of subgraphs within) for
-publication to a CDN at a given publication root URL … independent of staging
-vs publication … just rendering … output is status of push to CDN +
-message"*, and *"gh-pages is one specific tool of general 'publish to CDN'"*.
-
-Drawn as [`render-kg-to-cdn.bpmn`](../../../processes/process/render-kg-to-cdn.bpmn).
+Render the content of a Knowledge Graph, or a list of its Subgraphs, for
+publication to a CDN at a given publication root URL, independent of staging
+or release, and report the status of the push with a message. GitHub Pages is
+one Tool for this general step. Drawn as [`render-kg-to-cdn.bpmn`](../../../processes/process/render-kg-to-cdn.bpmn).
 
 ## Inputs and output
 
@@ -55,7 +53,7 @@ the Tool lists its own `subprocesses` — the diagram of *its* steps
 
 **A target may need provisioning before it accepts a push; the Tool's
 subprocess owns that.** For GitHub Pages a `gh-pages` branch has to exist
-before Pages can be switched on to serve it (owner, 2026-10-01), so the
+before Pages can be switched on to serve it, so the
 `gh-pages` subprocess creates it first — the general step does not.
 
 Another CDN is another Tool with its own subprocess, and nothing here changes.

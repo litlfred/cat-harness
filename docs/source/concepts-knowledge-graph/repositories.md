@@ -15,8 +15,7 @@ Where the Knowledge Graph itself lives. A Content repository:
 - MAY designate a Skill as mechanical, as human, or as either.
 - **MUST constrain a Skill's inputs and outputs with Schemas.**
 
-That last clause is the only absolute requirement in the whole four-class
-model, and it is what makes the rest of it hold together. A Skill is a
+That last clause is the only absolute requirement in the model. A Skill is a
 **Capability with defined inputs and outputs**; a Tool claims to satisfy a
 Skill; a Test claims to exercise one. If the Skill's boundary is not written
 down as a Schema, "does this Tool satisfy that Skill?" has no answer anyone can
@@ -63,20 +62,18 @@ The downstream end. A consumer application:
 
 ### Three relations run between repositories
 
-The edges are not interchangeable, and each already has a carrier in the
-declaration — they had simply never been named as one set of three:
+Each edge has its own carrier in the declaration:
 
 | relation | runs | carried by |
 |---|---|---|
 | **depends** | Content → Content | `needs` in the declaration — the layer stack, foundation first |
 | **references** | Tool → Content, Test → Content | `remoteGraphs` — a graph this instance knows about and does not hold |
 | **utilizes** | Tool → Tool, Test → Tool, App → Content, App → Test | `dependencies` in the config — what this instance USES, overlaid |
-| **associated** | any harness ↔ any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (issue #1146, skill `associate-harness`) |
+| **associated** | any harness ↔ any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (skill `associate-harness`) |
 
 **Associated is a fourth, and it fixes no order**: it is how a folio in another repository, such as `ihris`, is listed without being built here.
 
-**The three answer different questions**, which is why collapsing them loses
-information a consumer needs. *Depends* is about layering: it fixes an order, so
+**The three answer different questions.** *Depends* is about layering: it fixes an order, so
 a cycle in it is a defect. *References* is about knowing a graph exists without
 holding it, so it crosses a repository boundary by definition. *Utilizes* is
 about consumption at run time, and a consumer application may utilize a Content
