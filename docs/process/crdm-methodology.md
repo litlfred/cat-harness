@@ -68,7 +68,6 @@ a feature request at the surface level.
 > **References:**
 > - [PHII — CRDM](https://phii.org/crdm/) — the canonical description
 > - [PATH — Collaborative Requirements Development Methodology](https://www.path.org/our-impact/resources/collaborative-requirements-development-methodology-participatory-process-end-users-define-software-requirements-improves-system-design-implementation/) — the PATH adaptation for global health informatics
-> - Issue [#203](https://github.com/litlfred/folio-assistant/issues/203) — the request that initiated this integration
 
 ## Roles — who does what
 {: #roles data-fa-label="sec:crdm-roles" }
@@ -161,8 +160,8 @@ needs that are not content — they are **capability gaps** in the platform itse
 a missing block kind, a QA criterion that does not exist, a rendering mode that
 does not handle their document structure, a workflow step that has no tooling.
 
-Without a methodology, agents improvise. The history of this repository shows
-what that looks like: a feature request arrives as a chat message, the agent
+Without a methodology, agents improvise: a feature request arrives as a chat
+message, the agent
 builds something that addresses the immediate symptom, and the result does not
 compose with the rest of the platform — because nobody mapped the current
 workflow, identified who else is affected, or wrote the requirements down before
@@ -288,7 +287,7 @@ solution is specified before the problem is understood.
 **What the agent does in this phase:**
 
 1. **Identify the requester and stakeholders** — who is asking, who else is
-   affected? The word-document-import request ([#197](https://github.com/litlfred/folio-assistant/issues/197))
+   affected? A Word-document import request
    came from one person but affects anyone doing public consultation review,
    HRH handbook adaptation, or PCMT traceability. The agent should surface
    those connections.
@@ -571,9 +570,7 @@ Collapsing them into one loop would either:
 - Slow the agent down to the stakeholder cadence (wasting agent time), or
 - Rush stakeholders through testing (producing shallow feedback).
 
-The BA absorbs the impedance mismatch. They keep the agent productive in
-the inner loop while waiting for stakeholder availability in the outer
-loop. Between outer-loop checkpoints, the agent works on other beans or
+The BA absorbs the impedance mismatch. Between outer-loop checkpoints, the agent works on other beans or
 other features.
 
 ## Agent skills and tooling
@@ -597,7 +594,7 @@ phase. Some exist today; others are proposed.
 | **Schema types** (`schemas/*.ts`) | Phase 3 | Define new types, constraints, and builders |
 | **Document ingestion** (`uploads/` → `library/` pipeline) | Phase 2 | Ingest source documents for review |
 
-### Skills that now exist
+### CRDM skills
 
 | Skill | Phase | Purpose |
 |---|---|---|
@@ -605,8 +602,7 @@ phase. Some exist today; others are proposed.
 | **`crdm-requirements-workflow`** | All phases | The six-phase process, the actors table, and the issue-association rules |
 
 Both are guidance, not instrumentation: they tell an agent what to do, and
-nothing checks that it did. See "What is not built yet" for why that
-distinction is kept explicit.
+nothing checks that it did.
 
 ### Proposed skills
 
@@ -617,10 +613,10 @@ distinction is kept explicit.
 | **`crdm-requirements-template`** | Phase 3 | Generate structured requirements from conversation |
 | **`review-triage`** | Phase 6 | Triage review comments from ingested documents (e.g. public consultation feedback) |
 
-### Running the process — it is already executable
+### Running the process
 
-**`crdm_start` and `crdm_status` were proposed here and should not be built.**
-The generic workflow tools already run this process, because
+**Do not build `crdm_start` or `crdm_status`.** The generic workflow tools run
+this process, because
 `processes/process/crdm-requirements.bpmn` is a loadable BPMN process like every
 other diagram in this repository:
 
@@ -633,7 +629,7 @@ other diagram in this repository:
 A second set of tools over the same diagram would be a second answer to
 "where are we", free to disagree with the first. State lives under
 `beans/workflows/` and is committed, so a sibling session sees the same
-position — which is the property a chat-local phase tracker could never have.
+position.
 
 Every activity in the agent's lane carries the skill that implements it, so
 `workflow_next` returns something actionable rather than a step name:
@@ -655,15 +651,12 @@ claims the bean, creating beans notes it, and closing resolves it — and
 resolve only lands once the instance itself has completed, because whether
 work is done is a judgement.
 
-### `stakeholder_map` — built, but not from the sources proposed
+### `stakeholder_map`
 
-It was specified here as reading "affected roles from `harness.config.json` and
-CODEOWNERS". **Neither exists.** This repository has no CODEOWNERS file, and
-`schemas/harness-config.ts` declares no role, owner, maintainer or contact
-field. Built as written, the tool would have reported no stakeholders for
-every change, forever, and looked like it worked.
-
-It reads what the repository actually has:
+This repository has no CODEOWNERS file, and `schemas/harness-config.ts`
+declares no role, owner, maintainer or contact field. A tool reading those would
+report no stakeholders for every change and look like it worked, so
+`stakeholder_map` reads what the repository has:
 
 1. **Skills declare `roles:`** in their front matter — reader, collaborator,
    owner, auditor. Change a skill and you affect whoever holds its roles.
@@ -671,8 +664,7 @@ It reads what the repository actually has:
    skill that implements it. So a changed skill reaches a set of lanes across
    the whole process corpus — editors, the publication manager, clinical SMEs.
 
-That second hop is the one CODEOWNERS could never have given: changing
-`todo-manager.md` reaches the work-plan lane in six separate processes,
+For example, changing `todo-manager.md` reaches the work-plan lane in six separate processes,
 which is a far better prompt for "who should hear about this?" than a list
 of file owners.
 
@@ -693,15 +685,14 @@ an MCP tool.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/process-crdm-methodology/what-is-not-built-yet.md){: .fa-node-edit title="Edit docs/source/process-crdm-methodology/what-is-not-built-yet.md" data-fa-link="edit" data-src="docs/source/process-crdm-methodology/what-is-not-built-yet.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="what-is-not-built-yet.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/process-crdm-methodology/what-is-not-built-yet.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/process-crdm-methodology/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="what-is-not-built-yet.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/process-crdm-methodology/what-is-not-built-yet.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/process-crdm-methodology/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-This page documents the methodology; the skills and tooling that implement it
-are in various stages of development. What follows is checked against the
-repository rather than against intent — a gap list that goes stale is worse
-than none, because it sends a reader looking for something that is already
-there, or lets them assume something exists because nobody updated the list.
+The skills and tooling that implement the methodology are in various stages
+of development. What follows is checked against the repository, because a gap
+list that goes stale sends a reader looking for something that is already
+there.
 
-**Built since this page was first written:**
+**Built:**
 
-- **CRDM detection skill** — [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/sdlc/skills/crdm/crdm-detect.md)
+- **CRDM detection skill** — [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md)
   gives the agent five categories of detection phrasing, an explicit "what is
   *not* a feature request" list, and the session-state rules (new session,
   existing session already in the process, existing session doing content
@@ -709,23 +700,18 @@ there, or lets them assume something exists because nobody updated the list.
   caveat below.
 - **`stakeholder_map`** — reports which skills a change touches, the roles
   they declare, and the process lanes accountable for work that uses them.
-  Built against skills and BPMN lanes rather than the CODEOWNERS and
-  `harness.config.json` fields it was specified from, because neither exists
-  here. It does not name people, because the process says the agent does not
+  It does not name people, because the process says the agent does not
   guess.
 - **The process is executable** — `crdm-requirements.bpmn` loads like every
   other diagram here, so `workflow_start` / `workflow_next` /
   `workflow_complete` run it today, and `workflow_complete` refuses a step
   that is not enabled. Every activity in the agent's lane names the skill
   that implements it, and three carry the bean operation the engine performs.
-  **This is why `crdm_start` and `crdm_status` are not on the list below** —
-  they would be a second answer to "where are we", free to disagree with the
-  first.
 - **BPMN diagram of the process itself** —
-  [`processes/process/crdm-requirements.bpmn`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/processes/process/crdm-requirements.bpmn),
+  [`processes/process/crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn),
   with lanes for the BA / feature requestor, the agent, and stakeholders.
 - **The six-phase workflow as a skill** —
-  [`sdlc/skills/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/sdlc/skills/crdm/crdm-requirements-workflow.md),
+  [`sdlc/skills/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-requirements-workflow.md),
   including the actors table and the issue-association rules.
 
 **Not yet implemented:**
@@ -737,12 +723,10 @@ there, or lets them assume something exists because nobody updated the list.
   the schema files, but no dedicated tool produces an impact report for a
   proposed change.
 - **Review triage tooling** — ingesting a Word document with comments and
-  presenting them for structured triage is tracked in
-  [#197](https://github.com/litlfred/folio-assistant/issues/197).
+  presenting them for structured triage is not built.
 
-**Built and now measured, with a known weakness.** The detection skill used
-to sit in a third state — "built but unverified", which is not a milder form
-of built. It has since been run against every issue in this repository (27,
+**Measured, with a known weakness.** The detection skill has been run against
+every issue in this repository (27,
 the whole population, not a sample) via `bun run cat eval:crdm-detect`:
 
 | | fired | did not |
@@ -758,11 +742,8 @@ truth is **one annotator's, unblinded** — the same agent wrote the labels and
 the scorer. Fix that before quoting these as a property of the skill rather
 than of this corpus.
 
-The failure *pattern* is more useful than the score. The seven misses include
-[#203](https://github.com/litlfred/folio-assistant/issues/203) itself — the
-issue that asked for this capability — and
-[#1](https://github.com/litlfred/folio-assistant/issues/1), the framework
-design. The five false alarms are two migration **records** of work already
+The failure *pattern* is more useful than the score. The seven misses include the
+issue that asked for this capability and the framework-design issue. The five false alarms are two migration **records** of work already
 done, two asks to **document** an existing pipeline, and one bug report.
 
 That points at a specific gap: the skill's "what is NOT a feature request"
@@ -770,5 +751,3 @@ list excludes *content* tasks — writing a section, fixing a typo, reviewing a
 chapter — but says nothing about **records of completed work** or
 **documentation about a feature**, which are what it actually confuses here.
 Those two exclusions are the cheapest available improvement.
-
-**Tracked in:** [#203](https://github.com/litlfred/folio-assistant/issues/203)

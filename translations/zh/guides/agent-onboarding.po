@@ -96,17 +96,9 @@ msgstr "修改创作的工作机制"
 msgid "change what is being authored"
 msgstr "修改正在创作的内容"
 
-#: docs/guides/agent-onboarding.md:230
-msgid "Claim a bean before durable work. Others may be running."
-msgstr "在开展持久工作前申领 bean。 其他会话可能正在运行。"
-
 #: docs/guides/agent-onboarding.md:31
 msgid "Contains"
 msgstr "包含内容"
-
-#: docs/guides/agent-onboarding.md:234
-msgid "Don't write content into the platform. If it names a chapter, a constant, or a vocabulary, it is folio data."
-msgstr "不要将具体内容写入平台中。 如果它涉及章节名称、常量或词汇表，则属于 folio 数据。"
 
 #: docs/guides/agent-onboarding.md:29
 msgid "folio-assistant (the platform)"
@@ -132,10 +124,6 @@ msgstr "每项技能生成的输入/输出契约"
 msgid "how skills, roles, and capabilities compose"
 msgstr "技能、角色与能力如何组合"
 
-#: docs/guides/agent-onboarding.md:225
-msgid "Lean tooling roadmap"
-msgstr "Lean 工具链路线图"
-
 #: docs/guides/agent-onboarding.md:218
 msgid "Project commands, conventions"
 msgstr "项目命令、约定"
@@ -151,11 +139,6 @@ msgstr "在对检查发现采取行动前，先阅读判据描述。 它们陈�
 #: docs/guides/agent-onboarding.md:208
 msgid "Runs the generic recipe plus content-type-specific gates (paper → content_validate / qa_sweep / proof_status / latex_preflight / lean_build), then pushes. It does not merge."
 msgstr "运行通用配方以及特定内容类型的关卡（论文 → content_validate / qa_sweep / proof_status / latex_preflight / lean_build），然后执行推送。它不会执行合并。"
-
-# agent-translated: the published page has no counterpart for this source text
-#: docs/guides/agent-onboarding.md:61
-msgid "Skills are the unit of work here. Before hand-rolling a procedure, check whether one exists. Ask for it; do not navigate to it."
-msgstr "技能是这里的工作单元。在手动编写流程之前，先检查是否已存在现成的技能。去请求它；不要按路径导航去找它。"
 
 #: docs/guides/agent-onboarding.md:31
 msgid "skills, schemas, pipeline, MCP server"
@@ -176,15 +159,6 @@ msgstr "QA 附属文件模式"
 #: docs/guides/agent-onboarding.md:27
 msgid "There are two kinds, and confusing them is the most common early mistake."
 msgstr "仓库有两种类型，在早期将它们混淆是最常见的错误。"
-
-#: docs/guides/agent-onboarding.md:116
-msgid "This trips up agents constantly."
-msgstr "这经常让代理们陷入困境。"
-
-# agent-translated: the published page has no counterpart for this source text
-#: docs/guides/agent-onboarding.md:87
-msgid "Two generated references are worth knowing about, and neither is where you start:"
-msgstr "有两份生成的参考资料值得了解，但它们都不是你的起点："
 
 #: docs/guides/agent-onboarding.md:221
 msgid "What a QA criterion means"
@@ -316,3 +290,21 @@ msgstr "你在此编辑以"
 
 #~ msgid "Where a QA result is kept depends on whether it can be regenerated. Derived verdicts, meaning  entries and everything under , are a working copy. CI stores the record on the orphan  branch, keyed by commit, so there is nothing to regenerate and commit. Judgements by an agent or a human stay on  in . Gates over them compute and judge: a finding fails only if it is new against a stored baseline, and a missing baseline is unknown. The skill is ."
 #~ msgstr "QA 结果保存在哪里，取决于它能否重新生成。派生的判定结果——即  条目以及  下的所有内容——是工作副本。CI 将记录存放在孤立的  分支上，按提交索引，因此没有需要重新生成并提交的内容。代理或人工做出的判定保留在  的  中。基于它们的门禁会计算并判定：只有当某项发现相对于已存储的基线是新出现的时才判为失败，而缺失的基线视为未知。对应的技能是 。"
+
+#~ msgid "Claim a bean before durable work. Others may be running."
+#~ msgstr "在开展持久工作前申领 bean。 其他会话可能正在运行。"
+
+#~ msgid "Don't write content into the platform. If it names a chapter, a constant, or a vocabulary, it is folio data."
+#~ msgstr "不要将具体内容写入平台中。 如果它涉及章节名称、常量或词汇表，则属于 folio 数据。"
+
+#~ msgid "Lean tooling roadmap"
+#~ msgstr "Lean 工具链路线图"
+
+#~ msgid "Skills are the unit of work here. Before hand-rolling a procedure, check whether one exists. Ask for it; do not navigate to it."
+#~ msgstr "技能是这里的工作单元。在手动编写流程之前，先检查是否已存在现成的技能。去请求它；不要按路径导航去找它。"
+
+#~ msgid "This trips up agents constantly."
+#~ msgstr "这经常让代理们陷入困境。"
+
+#~ msgid "Two generated references are worth knowing about, and neither is where you start:"
+#~ msgstr "有两份生成的参考资料值得了解，但它们都不是你的起点："

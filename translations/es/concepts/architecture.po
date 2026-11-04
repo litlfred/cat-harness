@@ -61,10 +61,6 @@ msgstr "Los cinco repositorios de destino y qué directorio va a parar a cuál"
 msgid "Phase 0/I/II/III, the gates, and what is still undecided"
 msgstr "Fases 0/I/II/III, las puertas de validación y lo que aún no se ha decidido"
 
-#: docs/concepts/architecture.md:67
-msgid "What survives in the harness once \"not self-documenting\" is applied as a test"
-msgstr "Qué sobrevive en el arnés una vez que se aplica «no autodocumentado» como prueba"
-
 #: docs/concepts/architecture.md:68
 msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
 msgstr "Qué ES una instancia — esquemas, visualizaciones, herramientas; los cuatro directorios; el renderizado por defecto"
@@ -85,29 +81,9 @@ msgstr "Ruta"
 msgid "What lives here"
 msgstr "Qué reside aquí"
 
-#: docs/concepts/architecture.md:87
-msgid "Content pipeline tooling (validators, QA, render helpers) — not content itself"
-msgstr "Herramientas de la canalización de contenido (validadores, QA, asistentes de renderizado) — no el contenido en sí"
-
-#: docs/concepts/architecture.md:88
-msgid "Web UI, interactive viewer, and the example Pages site"
-msgstr "Interfaz web, visor interactivo y el sitio de ejemplo de Pages"
-
-#: docs/concepts/architecture.md:89
-msgid "Deployment (Caddy, docker-compose, provisioning, OAuth)"
-msgstr "Despliegue (Caddy, docker-compose, aprovisionamiento, OAuth)"
-
 #: docs/concepts/architecture.md:90
 msgid "This documentation site"
 msgstr "Este sitio de documentación"
-
-#: docs/concepts/architecture.md:91
-msgid "CI workflows and scripts (build, publish, QA, docs)"
-msgstr "Flujos de trabajo y scripts de CI (compilación, publicación, QA, docs)"
-
-#: docs/concepts/architecture.md:92
-msgid "Local agent skills + capability hooks"
-msgstr "Habilidades del agente local + hooks de capacidades"
 
 #: docs/concepts/architecture.md:94
 msgid "The MCP server"
@@ -230,3 +206,21 @@ msgstr "Despliegue"
 
 #~ msgid "contains a Caddy reverse-proxy template, , a provisioning script, Google OAuth setup, and a self-update script for running a shared HTTP instance. The skill-package Docker manifests aggregate apt/pip/npm dependencies into a single image per active package set."
 #~ msgstr "contiene una plantilla de proxy inverso de Caddy, , un script de aprovisionamiento, configuración de Google OAuth y un script de actualización automática para ejecutar una instancia HTTP compartida. Los manifiestos de Docker de los paquetes de habilidades agregan las dependencias de apt/pip/npm en una sola imagen por cada conjunto de paquetes activo."
+
+#~ msgid "What survives in the harness once \"not self-documenting\" is applied as a test"
+#~ msgstr "Qué sobrevive en el arnés una vez que se aplica «no autodocumentado» como prueba"
+
+#~ msgid "Content pipeline tooling (validators, QA, render helpers) — not content itself"
+#~ msgstr "Herramientas de la canalización de contenido (validadores, QA, asistentes de renderizado) — no el contenido en sí"
+
+#~ msgid "Web UI, interactive viewer, and the example Pages site"
+#~ msgstr "Interfaz web, visor interactivo y el sitio de ejemplo de Pages"
+
+#~ msgid "Deployment (Caddy, docker-compose, provisioning, OAuth)"
+#~ msgstr "Despliegue (Caddy, docker-compose, aprovisionamiento, OAuth)"
+
+#~ msgid "CI workflows and scripts (build, publish, QA, docs)"
+#~ msgstr "Flujos de trabajo y scripts de CI (compilación, publicación, QA, docs)"
+
+#~ msgid "Local agent skills + capability hooks"
+#~ msgstr "Habilidades del agente local + hooks de capacidades"

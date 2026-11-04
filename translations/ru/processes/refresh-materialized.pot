@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: refresh-materialized\n"
-"POT-Creation-Date: 2026-11-03T06:57:11.139Z\n"
+"POT-Creation-Date: 2026-11-04T20:47:21.122Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: processes/library/refresh-materialized.bpmn:84
 #. Diagram element documentation
-msgid "Compare the recorded upstreamVersion against the source. `could not reach the source` is a THIRD answer and is never reported as `unchanged` — an unreachable source is the sourceLoss gate firing late. Reachability is asked by `bun run cat sources:liveness <instance>` against the node's resolvable IRI, its Handle first: live, gone, or could not determine, never live on an error (bean 08u4)."
+msgid "Compare the recorded upstreamVersion against the source. `could not reach the source` is a THIRD answer and is never reported as `unchanged` — an unreachable source is the sourceLoss gate firing late. Reachability is asked by `bun run cat sources:liveness <instance>` against the node's resolvable IRI, its Handle first: live, gone, or could not determine, never live on an error."
 msgstr ""
 
 #: processes/library/refresh-materialized.bpmn:40
@@ -76,7 +76,7 @@ msgstr ""
 
 #: processes/library/refresh-materialized.bpmn:121
 #. Diagram element documentation
-msgid "Four answers, and they do four different things — which is the whole reason this gateway now exists. Until 2026-09-23 the adjudication flowed straight to Task_Apply, so the process ASKED which side wins and then always applied the remote. The judgement was made and discarded. Bean `bvuk`. `defer` is not `local` wearing a different hat: `local` decides and re-pins, so the same conflict stops being raised; `defer` deliberately does not decide and does not re-pin, so it is raised again next cycle. A process that could only decide would force a contributor with no answer today to invent one."
+msgid "Four answers, and they do four different things; without this gateway the process would ask which side wins and then discard the answer. `defer` is not `local` wearing a different hat: `local` decides and re-pins, so the same conflict stops being raised; `defer` deliberately does not decide and does not re-pin, so it is raised again next cycle. A process that could only decide would force a contributor with no answer today to invent one."
 msgstr ""
 
 #: processes/library/refresh-materialized.bpmn:185
@@ -96,7 +96,7 @@ msgstr ""
 
 #: processes/library/refresh-materialized.bpmn:31
 #. Diagram element documentation
-msgid "Keep a materialized copy of remote content current: what changed upstream, what changed locally, and what to do when both did — an archival copy is never re-fetched and gets a fixity check instead. Owner, 2026-09-20: \"also need to know about refreshing amterialed remote content. general process used everywhere.\" REFRESH IS NOT RE-IMPORT, and the difference is the whole diagram. It needs three answers, not one: what changed upstream, what changed locally since, and what to do when BOTH did. upstream-pins.json answers the first for one caller and nothing answers the other two anywhere. An ARCHIVAL copy is not refreshed. Re-fetching it would defeat it: the copy exists to survive the source, so replacing it with whatever the source says today discards exactly the state it was keeping. What an archive gets instead is a FIXITY CHECK — has our copy rotted — which is a different question with a different remedy."
+msgid "Keep a materialized copy of remote content current: what changed upstream, what changed locally, and what to do when both did — an archival copy is never re-fetched and gets a fixity check instead. One general process, used everywhere. REFRESH IS NOT RE-IMPORT: it needs three answers, not one: what changed upstream, what changed locally since, and what to do when BOTH did. upstream-pins.json answers the first for one caller and nothing answers the other two anywhere. An ARCHIVAL copy is not refreshed. Re-fetching it would defeat it: the copy exists to survive the source, so replacing it with whatever the source says today discards exactly the state it was keeping. What an archive gets instead is a FIXITY CHECK — has our copy rotted — which is a different question with a different remedy."
 msgstr ""
 
 #: processes/library/refresh-materialized.bpmn:155
@@ -166,7 +166,7 @@ msgstr ""
 
 #: processes/library/refresh-materialized.bpmn:139
 #. Diagram element documentation
-msgid "The gates are re-asked, not inherited: a licence can change, and a collection can grow past the size a caller agreed to. AND THE NEW FIXITY IS RECORDED IN THE SAME CHANGE. This step rewrites bytes that a materialization record describes, so leaving the old digest behind would make a CORRECT run of this process fail check:materialized-fixity as a mismatch — the gate reading \"somebody edited held content without saying so\" about the one process whose job is to replace it. Measured 2026-09-22 (bean 10s1): this task named no fixity write at all. This is the owner's publication exception, stated as a rule rather than as a carve-out. The exception is NOT \"these actors may skip the rule\"; it is \"say what you did\". A writer that updates the digest alongside the bytes passes, and the record then describes what is actually there. A writer that does not fails, correctly, because it has forked upstream silently. A list of permitted writers would go stale the first time somebody added a sixth one; this does not."
+msgid "The gates are re-asked, not inherited: a licence can change, and a collection can grow past the size a caller agreed to. AND THE NEW FIXITY IS RECORDED IN THE SAME CHANGE. This step rewrites bytes that a materialization record describes, so leaving the old digest behind would make a CORRECT run of this process fail check:materialized-fixity as a mismatch — the gate reading \"somebody edited held content without saying so\" about the one process whose job is to replace it. This is the publication exception, stated as a rule rather than as a carve-out, because a list of permitted writers goes stale when a writer is added. The exception is NOT \"these actors may skip the rule\"; it is \"say what you did\". A writer that updates the digest alongside the bytes passes, and the record then describes what is actually there. A writer that does not fails, correctly, because it has forked upstream silently."
 msgstr ""
 
 #: processes/library/refresh-materialized.bpmn:93

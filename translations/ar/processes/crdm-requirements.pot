@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: crdm-requirements\n"
-"POT-Creation-Date: 2026-11-03T06:57:11.160Z\n"
+"POT-Creation-Date: 2026-11-04T20:47:21.142Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: processes/process/crdm-requirements.bpmn:77
 #. Diagram element documentation
-msgid "Between requirements and sign-off, and the order is the argument: requirements are statements about things, and the model says what the things ARE. Drafted earlier it is invented from nothing, since the entities come from the phase-2 BPA; drafted later, sign-off approves requirements whose nouns were never pinned — which is how two stakeholders approve one sentence meaning different things. Owner, 2026-09-20."
+msgid "Between requirements and sign-off, and the order is the argument: requirements are statements about things, and the model says what the things ARE. Drafted earlier it is invented from nothing, since the entities come from the phase-2 BPA; drafted later, sign-off approves requirements whose nouns were never pinned — which is how two stakeholders approve one sentence meaning different things."
 msgstr ""
 
 #: processes/process/crdm-requirements.bpmn:88

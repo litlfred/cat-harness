@@ -85,10 +85,6 @@ msgstr "IGs SMART de la OMS (L3)"
 msgid "conversions, search"
 msgstr "conversiones, búsqueda"
 
-#: docs/start/installation.md:40
-msgid "You do not need all of these — install only what the content types you author require. The built-in capability probe tells you what is missing."
-msgstr "No necesitas todos estos requisitos — instala solo lo que requieran los tipos de contenido que redactas. La comprobación integrada de capacidades te indica qué falta."
-
 #: docs/start/installation.md:47
 msgid "Clone and install"
 msgstr "Clonar e instalar"
@@ -229,3 +225,6 @@ msgstr "Cualquier otro cliente MCP"
 
 #~ msgid "Why this works across harnesses. The discipline lives in  (a Linux Foundation agent standard read natively by Claude Code, Gemini CLI, Antigravity, Cursor, Copilot, and others); the live state is exposed both as a per-harness  hook over one shared script and as the  MCP tool. See the architecture page."
 #~ msgstr "Por qué funciona en diferentes arneses. La disciplina reside en  (un estándar de agentes de la Linux Foundation leído de forma nativa por Claude Code, Gemini CLI, Antigravity, Cursor, Copilot y otros); el estado en tiempo real se expone tanto como un hook  específico de cada arnés a través de un script compartido, como mediante la herramienta MCP . Consulta la página de arquitectura."
+
+#~ msgid "You do not need all of these — install only what the content types you author require. The built-in capability probe tells you what is missing."
+#~ msgstr "No necesitas todos estos requisitos — instala solo lo que requieran los tipos de contenido que redactas. La comprobación integrada de capacidades te indica qué falta."

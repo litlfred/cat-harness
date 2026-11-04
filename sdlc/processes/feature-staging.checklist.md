@@ -92,7 +92,7 @@ no label» → `Task_LogRetained` (Append `retained`, with why it stays)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-logging`.
-- What: Records that a removal was considered and refused, or that a preview still stands because a signal fired.
+- What: Records that a removal was considered and refused, or that a preview still stands because a signal fired; without the entry that leaves no trace, and nobody can tell why a preview is still up.
 - Shared step `GT_LogRetained`.
 - Record it: `workflow_complete` with `node: "Task_LogRetained"`.
 - next: → `Task_Notice` (Post the retention notice on the PR)
