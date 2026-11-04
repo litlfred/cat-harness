@@ -19,6 +19,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `proposals`, holding `
 | [`assured-ai-test-harness-2026-11-03.md`](assured-ai-test-harness-2026-11-03.md) | Testing AI agents fairly: the WHO Assured AI test harness |  |
 | [`auto-doc-rendered-graphs-2026-10-03.md`](auto-doc-rendered-graphs-2026-10-03.md) | Auto-docs as rendered sub-graphs |  |
 | [`bean-archiving-in-bpmn.md`](bean-archiving-in-bpmn.md) | Bean archiving in BPMN — the terminal state nothing draws |  |
+| [`bean-store-and-process-driver-2026-11-02.md`](bean-store-and-process-driver-2026-11-02.md) | The Beans store behind any Tool, and a state machine that starts any model's agent |  |
 | [`bootstrap.md`](bootstrap.md) | bootstrap/ — the graph an agent can read before it knows anything |  |
 | [`cat-harness-tools-split-2026-10-01.md`](cat-harness-tools-split-2026-10-01.md) | Split plan: cat-harness/ → litlfred/cat-harness (content) + litlfred/cat-harness-tools (code) |  |
 | [`checkout-layout-2026-10-12.md`](checkout-layout-2026-10-12.md) | Checkout layout: which of the three standalone layouts is canonical |  |

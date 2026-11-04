@@ -15,6 +15,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `library`, holding `libra
 |---|---|---|
 | [`figure-descriptions.json`](figure-descriptions.json) | data |  |
 | [`image-verdicts.json`](image-verdicts.json) | data |  |
+| [`library.json`](library.json) | data |  |
 | [`conduct/`](conduct/) | _nothing declares what this holds_ | |
 | [`content/`](content/) | _nothing declares what this holds_ | |
 | [`kg/`](kg/) | _nothing declares what this holds_ | |

@@ -15,18 +15,14 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 |---|---|---|
 | [`agent-memory/`](agent-memory/) | _nothing declares what this holds_ | |
 | [`archimate-actors/`](archimate-actors/) | _nothing declares what this holds_ | |
+| [`archimate-blocks/`](archimate-blocks/) | _nothing declares what this holds_ | |
 | [`archimate-check/`](archimate-check/) | _nothing declares what this holds_ | |
 | [`archimate-crossings/`](archimate-crossings/) | _nothing declares what this holds_ | |
 | [`archimate-detangle/`](archimate-detangle/) | _nothing declares what this holds_ | |
-| [`archimate-blocks/`](archimate-blocks/) | _nothing declares what this holds_ | |
 | [`archimate-metamodel/`](archimate-metamodel/) | _nothing declares what this holds_ | |
 | [`archimate-pages/`](archimate-pages/) | _nothing declares what this holds_ | |
 | [`auto-docs-viewer/`](auto-docs-viewer/) | _nothing declares what this holds_ | |
 | [`avatars-css/`](avatars-css/) | _nothing declares what this holds_ | |
-| [`bean-claim-check/`](../work-plan/tools/bean-claim-check/) | _nothing declares what this holds_ | |
-| [`bean-query/`](../work-plan/tools/bean-query/) | _nothing declares what this holds_ | |
-| [`beans-cli/`](../work-plan/tools/beans-cli/) | _nothing declares what this holds_ | |
-| [`beans-manual/`](../work-plan/tools/beans-manual/) | _nothing declares what this holds_ | |
 | [`bpmn-checklist/`](bpmn-checklist/) | _nothing declares what this holds_ | |
 | [`bpmn-render/`](bpmn-render/) | _nothing declares what this holds_ | |
 | [`build-instance-site/`](build-instance-site/) | _nothing declares what this holds_ | |
@@ -43,7 +39,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`declaration-resolution/`](declaration-resolution/) | _nothing declares what this holds_ | |
 | [`discuss/`](discuss/) | _nothing declares what this holds_ | |
 | [`document-kinds-viewer/`](document-kinds-viewer/) | _nothing declares what this holds_ | |
-| [`drain-queue/`](../work-plan/tools/drain-queue/) | _nothing declares what this holds_ | |
 | [`external-schemas-viewer/`](external-schemas-viewer/) | _nothing declares what this holds_ | |
 | [`feature-staging/`](feature-staging/) | _nothing declares what this holds_ | |
 | [`folio-init/`](folio-init/) | _nothing declares what this holds_ | |
@@ -176,11 +171,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`wireframe-check/`](wireframe-check/) | _nothing declares what this holds_ | |
 | [`witness-conformance/`](witness-conformance/) | _nothing declares what this holds_ | |
 | [`witness-parity/`](witness-parity/) | _nothing declares what this holds_ | |
-| [`work-plan-prime/`](../work-plan/tools/work-plan-prime/) | _nothing declares what this holds_ | |
-| [`workflow-complete/`](../work-plan/tools/workflow-complete/) | _nothing declares what this holds_ | |
-| [`workflow-gate/`](../work-plan/tools/workflow-gate/) | _nothing declares what this holds_ | |
-| [`workflow-list/`](../work-plan/tools/workflow-list/) | _nothing declares what this holds_ | |
-| [`workflow-next/`](../work-plan/tools/workflow-next/) | _nothing declares what this holds_ | |
-| [`workflow-start/`](../work-plan/tools/workflow-start/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->
