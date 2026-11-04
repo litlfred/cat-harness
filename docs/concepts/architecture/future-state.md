@@ -60,7 +60,7 @@ self-sovereign compute). QA sidecar infrastructure.
 **The defining constraint: it does not "do" anything.** It defines what a Skill
 *is*, what a Tool definition looks like as a KG node, how a Role scopes
 permissions, and how a workflow advances — and it ships no content type, no
-validator for any particular document, and no renderer. If a change to
+validator for any particular document, and no content type's renderer. If a change to
 `cat-harness` would break only one content type, it belongs downstream.
 
 Its own content is **self-documentation**: what installs, how to add a new

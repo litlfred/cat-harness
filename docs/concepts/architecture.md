@@ -63,7 +63,7 @@ pages:
 | [Current state](architecture/current-state.html) | What is actually in this repo today, measured, and where the mixture is |
 | [Future state](architecture/future-state.html) | The five target repos and which directory lands in which |
 | [Migration plan](architecture/migration-plan.html) | Phase 0/I/II/III, the gates, and what is still undecided |
-| [Minimum `cat-harness`](architecture/cat-harness-minimum.html) | What survives in the harness once "not self-documenting" is applied as a test |
+| [Minimum `cat-harness`](architecture/cat-harness-minimum.html) | What survives in the harness once "renders no content type" is applied as a test |
 | [Harness instances](architecture/harness-instances.html) | What an instance IS — schematics, visualisations, tools; the four directories; the default rendering |
 
 The minimum says a harness produces nothing a human looks at, and the instance
