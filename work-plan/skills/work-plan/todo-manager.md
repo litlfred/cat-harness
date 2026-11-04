@@ -28,6 +28,18 @@ graph-typologies:
 
 Instead of an in-memory list or markdown checklists, we manage session work and cross-agent coordination using the `beans` CLI issue tracker.
 
+**A work item is a memory record with more structure** (owner, 2026-11-03,
+ruling Q17; the schemas are `memory-record-core` and `bean/1.0.0` in
+cat-harness-tools `schemas/kg/memory-record.ts` and `schemas/sdlc/bean-graph.ts`).
+It carries what every kept memory carries (an id, a title, tags, when it was
+made and changed) and adds a status, a type, a priority, a parent and what it
+blocks. So the memory Tools work on it as on any memory record:
+`memory_note` and `memory_checkpoint` add a dated entry, `memory_recall` reads
+them back, and the work-plan store adds what only a work item needs (`get`,
+`list`, `create`, claiming). The glossary defines the term: **Work item**,
+narrower than **Memory record**. The program and its files keep the name
+`beans`; in prose, say *work item*.
+
 This skill holds the **work item mechanics**: installing the CLI, the STRICT check
 before `beans create`, the fallback when the CLI is absent, the status
 vocabulary, and the coordination rules below. Report formats are elsewhere:
