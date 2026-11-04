@@ -44,21 +44,21 @@ summary: >-
 - Each work item's full history.
 - A memory store for agents, with the engine keeping notes at every step.
 - Pages that show which work is at which step of which process.
-- A switch that keeps the development machinery out of the content an agent under test reads. Part of it is still in review.
+- A switch that keeps the development machinery out of the content an agent under test reads. The layers above cat-harness do not use it yet (step 23.4).
 
 **What is next.** Starting agents from the process, private stores for test runs, run profiles, and the ITB services. §9 gives the full order.
 
 ### See it working
 
-These pages are drawn from the real work plan of this project. They are on the **staging site**, built 2026-11-03 15:04Z from folio-assistant's main branch. They are not on the main site yet, because the main site's publishing job is failing (see §9.3).
+These pages are drawn from the real work plan of this project, on the main site (published 2026-11-04).
 
 | Page | What it shows |
 |---|---|
-| [Work by process, every store](https://litlfred.github.io/folio-assistant/STAGING/repin-train-20261103-1504/beans/beans-processed/) | Every tracked work item, grouped by the process it is in and the step it has reached, across all the project's stores |
-| [Work by process, one store](https://litlfred.github.io/folio-assistant/STAGING/repin-train-20261103-1504/beans/cat-harness/beans-processed/) | The same for one store, with an open and closed filter |
-| [One process: code change review](https://litlfred.github.io/folio-assistant/STAGING/repin-train-20261103-1504/beans/cat-harness/beans-processed/Process_CodeChangeReview/) | The items in one process, drawn on its diagram |
-| [One work item's history](https://litlfred.github.io/folio-assistant/STAGING/repin-train-20261103-1504/beans/cat-harness/bean-processed/folio-assistant-1j3q/) | A step-by-step player of everything that happened to one item, drawn on the process it was in at each moment |
-| [A process diagram](https://litlfred.github.io/folio-assistant/cat-harness/process/Process_CodeChangeReview/) | An executable process: steps, roles and decisions. This one is on the main site |
+| [Work by process, every store](https://litlfred.github.io/folio-assistant/beans/beans-processed/) | Every tracked work item, grouped by the process it is in and the step it has reached, across all the project's stores |
+| [Work by process, one store](https://litlfred.github.io/folio-assistant/beans/cat-harness/beans-processed/) | The same for one store, with an open and closed filter |
+| [One process: code change review](https://litlfred.github.io/folio-assistant/beans/cat-harness/beans-processed/Process_CodeChangeReview/) | The items in one process, drawn on its diagram |
+| [One work item's history](https://litlfred.github.io/folio-assistant/beans/cat-harness/bean-processed/folio-assistant-1j3q/) | A step-by-step player of everything that happened to one item, drawn on the process it was in at each moment |
+| [A process diagram](https://litlfred.github.io/folio-assistant/cat-harness/process/Process_CodeChangeReview/) | An executable process: steps, roles and decisions |
 
 On your own machine, the "work by process" page can also refresh every 5 seconds from a running harness, to watch a test as it happens (§8.9).
 
@@ -566,7 +566,7 @@ A work item's position is only as good as the habit of recording it, and anyone 
 | 19–20 | The engine binds a drawn memory store; the neutral memory tools | #1438 |
 | 21 | A second memory Tool, plain files, passes the same conformance tests | #1439 |
 | 22 | The leak check, in report mode | #1440 |
-| 23.1, 23.3 | The on/off switch for sub-graphs; the tools layer's new paths | #1445, #1446 |
+| 23.1–23.3 | The on/off switch for sub-graphs; `sdlc/` and `work-plan/` moved into their own sub-graph folders; the tools layer's new paths | #1445, cat-harness#1014, #1446 |
 
 (Pull requests without a repository name are in cat-harness-tools.)
 
@@ -574,18 +574,18 @@ A work item's position is only as good as the habit of recording it, and anyone 
 
 | Step | What | Where |
 |---|---|---|
-| 23.2 | Move `sdlc/` and `work-plan/` into their own sub-graph folders | cat-harness#1014: its re-run is in progress |
+| 23.4 | folio-assistant switches both sub-graphs on, the layers above stop naming the old paths, and folio-assistant re-pins cat-harness past the move | folio-assistant#2926, a draft |
 | 16 (Tool nodes) | The memory tools' definitions and their skill | cat-harness#1010, a draft |
 
 ### 9.3 Publishing the visual pages
 
-The "work by process" and history pages are merged and appear on the staging site. The main site has not been updated since at least 1 November, because folio-assistant's publishing job (`docs-site.yml`) has failed on every push to main. Once it is fixed, the next push publishes these pages at the main site's address. Fixing it comes first, so the pages land as soon as possible.
+The "work by process" and history pages are on the main site since 2026-11-04. The main site's publishing job (`docs-site.yml`) had failed on every push to main from 2026-11-02, so nothing new was published until cat-harness-tools#1455 fixed it and folio-assistant#2928 brought the fix in.
 
 ### 9.4 Next, in order
 
 | Step | Work |
 |---|---|
-| 23.4 | folio-assistant switches both sub-graphs on; development sessions set `CAT_SUBGRAPHS` |
+| 23.4 (rest) | Development sessions set `CAT_SUBGRAPHS` |
 | 23.5 | The leak check over a smart-base untold context |
 | 6 | Skills say the operation, not the git command; a check keeps it so |
 | 7 | The *Dispatch agent* step and the first launch Tool, `launch-beans-serve` |
