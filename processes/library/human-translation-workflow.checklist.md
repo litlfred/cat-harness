@@ -105,7 +105,7 @@ The human half of translation: a coordinator assigns a locale to a qualified tra
 
 - Who: the `Automated Pipeline` lane (role `build-pipeline`).
 - Skill: `translation-manager`.
-- What: Back-translate the target-language .md into the source language and compare the meaning with the original (bean folio-assistant-ktt2).
+- What: Back-translate the target-language .md into the source language and compare the meaning with the original.
 - Shared step `GT_RoundTripQa`.
 - Record it: `workflow_complete` with `node: "Task_RoundTripQA"`.
 - next: → `Task_SMEReview` (Review translation for accuracy)

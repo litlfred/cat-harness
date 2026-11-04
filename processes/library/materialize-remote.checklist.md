@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/library/materialize-remote.bpmn` (process `Process_MaterializeRemote`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-One process, called wherever remote content is landed locally.
+One process, called wherever remote content is landed locally: a large remote collection with no restrictions known in context may be materialized locally, size permitting, and bootstrapping a harness is the same shape.
 
 ## Begin — Remote content wanted (`StartEvent_Asked`)
 

@@ -58,7 +58,7 @@ Making a declared subgraph's content available at its declared path, whatever it
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `remote-mount`.
-- What: A `remote` source (bean `0mpw`): another repository's tree at a full 40-character commit.
+- What: A `remote` source: another repository's tree at a full 40-character commit.
 - Record it: `workflow_complete` with `node: "Task_MountRemotePin"`.
 - next: → `GW_Join`
 

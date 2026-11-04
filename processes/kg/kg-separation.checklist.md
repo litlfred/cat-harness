@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/kg/kg-separation.bpmn` (process `Process_KgSeparation`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Move part of a knowledge graph into repositories of its own: the content and the tools that write and check it separate as a pair, into two repositories, not one.
+Move part of a knowledge graph into repositories of its own: the content (files to read, no code) and its tools (the code that writes and checks it) separate as a pair, into two repositories, not one.
 
 ## Begin — Too large, or readers and cadence differ (`Start_Trigger`)
 
@@ -75,7 +75,7 @@ Move part of a knowledge graph into repositories of its own: the content and the
 
 ### Decide — Tools closed, content code-free? (`GW_Closed`)
 
-- Decided by commands, not judgement: `check:tools-closure` (no import leaves the tools directory or names an undeclared package), the content's no-code test (FR-7), and generated files byte-identical before and after the move.
+- Decided by commands, not judgement: `check:tools-closure` (no import leaves the tools directory or names an undeclared package), the content's no-code test, and generated files byte-identical before and after the move.
 - Call `workflow_complete` with `node: "GW_Closed"` and `outcome` set to the label that holds:
   - «leaks or stale» → `Task_Split` (6 · Split content from tools)
   - «closed» → `Task_Plan` (7 · Plan publication)
