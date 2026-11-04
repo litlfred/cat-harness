@@ -84,12 +84,11 @@ The four `paper only` rows are `MATH_BLOCK_KINDS` in
 the `shared` rows are `DOCUMENT_BLOCK_KINDS`, derived as the complement so a
 kind added later cannot go unclassified.
 
-Two of those rows are worth a second look. `definition` is the sharpest point
-of the whole split — it is the one kind whose `lean` field is *required* rather
-than optional, so a document folio could not hold one even if the profile
-allowed it. And the `shared` kinds still *declare* an optional `lean`: the type
-permits what the profile forbids, which is why `content_profile_check` has a
-second rule beyond "is this kind allowed".
+`definition` is the one kind whose `lean` field is *required* rather than
+optional, so a document folio could not hold one even if the profile allowed
+it. The `shared` kinds still *declare* an optional `lean`: the type permits what
+the profile forbids, so `content_profile_check` has a second rule beyond "is
+this kind allowed".
 
 Relevant skill schemas:
 [`latex-authoring`]({{ '/reference/skills/latex-authoring.html' | relative_url }}),

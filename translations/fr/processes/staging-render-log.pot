@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: staging-render-log\n"
-"POT-Creation-Date: 2026-10-22T17:11:43.352Z\n"
+"POT-Creation-Date: 2026-11-04T21:09:58.289Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: processes/ui/staging-render-log.bpmn:53
 #. Diagram element documentation
-msgid "`previewLiveness` — a disjunction over open-pr, unmerged-branch and recent-commit, shared with the health sweep so the two cannot disagree. Bean `w2g5`: a preview whose pull request is closed is NOT an abandoned one."
+msgid "`previewLiveness` — a disjunction over open-pr, unmerged-branch and recent-commit, shared with the health sweep so the two cannot disagree. A preview whose pull request is closed is NOT necessarily an abandoned one."
 msgstr ""
 
 #: processes/ui/staging-render-log.bpmn:72
@@ -26,7 +26,7 @@ msgstr ""
 
 #: processes/ui/staging-render-log.bpmn:77
 #. Diagram element documentation
-msgid "A full-replace deploy (`docs-site.yml`, the only publisher without keep_files) wipes the branch; `restore-staging` carries the previews AND this log back in. Its own event rather than a second `rendered`, because \"somebody pushed this branch\" and \"an unrelated merge nearly deleted it\" are different facts — and bean `plj1` is what happens when the second is invisible."
+msgid "A full-replace deploy (`docs-site.yml`, the only publisher without keep_files) wipes the branch; `restore-staging` carries the previews AND this log back in. Its own event rather than a second `rendered`, because \"somebody pushed this branch\" and \"an unrelated merge nearly deleted it\" are different facts."
 msgstr ""
 
 #: processes/ui/staging-render-log.bpmn:47
@@ -91,7 +91,7 @@ msgstr ""
 
 #: processes/ui/staging-render-log.bpmn:16
 #. Diagram element documentation
-msgid "Every change to the publish branch appends an entry to `_render-log/<day>.jsonl`. A removal is a NEW entry, never the erasure of the `rendered` one before it — the pair is the history. The lane is the build pipeline because every writer is a workflow job; no agent decides what goes in this log. A system lane runs a fixed program and exercises no judgement, which is exactly what an append-only log wants. The question it exists to answer: what happened to STAGING/<slug>, and why. Bean `plj1` is why it is needed — a full-replace deploy silently deleted every open PR's preview, for months, and the publish branch kept no record of its own changes. The publish branch has several publishers and one of them replaces the whole branch, which is why a removed preview needs a record of its own."
+msgid "Every change to the publish branch appends an entry to `_render-log/<day>.jsonl`. A removal is a NEW entry, never the erasure of the `rendered` one before it — the pair is the history. The lane is the build pipeline because every writer is a workflow job; no agent decides what goes in this log. A system lane runs a fixed program and exercises no judgement, which is exactly what an append-only log wants. The question it exists to answer: what happened to STAGING/<slug>, and why. The publish branch has several publishers and one of them replaces the whole branch, which is why a removed preview needs a record of its own."
 msgstr ""
 
 #: processes/ui/staging-render-log.bpmn:87

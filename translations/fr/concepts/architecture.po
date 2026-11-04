@@ -85,29 +85,9 @@ msgstr "Chemin"
 msgid "What lives here"
 msgstr "Ce qui s'y trouve"
 
-#: docs/concepts/architecture.md:87
-msgid "Content pipeline tooling (validators, QA, render helpers) — not content itself"
-msgstr "Outillage du pipeline de contenu (validateurs, QA, assistants de rendu) — pas le contenu lui-même"
-
-#: docs/concepts/architecture.md:88
-msgid "Web UI, interactive viewer, and the example Pages site"
-msgstr "Interface utilisateur Web, visualiseur interactif et site d'exemple Pages"
-
-#: docs/concepts/architecture.md:89
-msgid "Deployment (Caddy, docker-compose, provisioning, OAuth)"
-msgstr "Déploiement (Caddy, docker-compose, provisionnement, OAuth)"
-
 #: docs/concepts/architecture.md:90
 msgid "This documentation site"
 msgstr "Ce site de documentation"
-
-#: docs/concepts/architecture.md:91
-msgid "CI workflows and scripts (build, publish, QA, docs)"
-msgstr "Workflows et scripts CI (compilation, publication, QA, documentation)"
-
-#: docs/concepts/architecture.md:92
-msgid "Local agent skills + capability hooks"
-msgstr "Compétences d'agent locales + points d'ancrage de capacités"
 
 #: docs/concepts/architecture.md:94
 msgid "The MCP server"
@@ -230,3 +210,18 @@ msgstr "Déploiement"
 
 #~ msgid "contains a Caddy reverse-proxy template, , a provisioning script, Google OAuth setup, and a self-update script for running a shared HTTP instance. The skill-package Docker manifests aggregate apt/pip/npm dependencies into a single image per active package set."
 #~ msgstr "contient un modèle de proxy inverse Caddy, , un script de provisionnement, la configuration de Google OAuth et un script de mise à jour automatique pour exécuter une instance HTTP partagée. Les manifestes Docker des paquets de compétences regroupent les dépendances apt/pip/npm dans une image unique par ensemble de paquets actif."
+
+#~ msgid "Content pipeline tooling (validators, QA, render helpers) — not content itself"
+#~ msgstr "Outillage du pipeline de contenu (validateurs, QA, assistants de rendu) — pas le contenu lui-même"
+
+#~ msgid "Web UI, interactive viewer, and the example Pages site"
+#~ msgstr "Interface utilisateur Web, visualiseur interactif et site d'exemple Pages"
+
+#~ msgid "Deployment (Caddy, docker-compose, provisioning, OAuth)"
+#~ msgstr "Déploiement (Caddy, docker-compose, provisionnement, OAuth)"
+
+#~ msgid "CI workflows and scripts (build, publish, QA, docs)"
+#~ msgstr "Workflows et scripts CI (compilation, publication, QA, documentation)"
+
+#~ msgid "Local agent skills + capability hooks"
+#~ msgstr "Compétences d'agent locales + points d'ancrage de capacités"

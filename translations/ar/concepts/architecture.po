@@ -36,25 +36,13 @@ msgstr "التحكم في الوصول — ODRL، يتم التحقق منه ق�
 msgid "Architecture"
 msgstr "الهندسة المعمارية"
 
-#: docs/concepts/architecture.md:91
-msgid "CI workflows and scripts (build, publish, QA, docs)"
-msgstr "مهام سير عمل CI وبرامجها النصية (البناء، والنشر، وضمان الجودة QA، والتوثيق)"
-
 #: docs/concepts/architecture.md:101
 msgid "Content adapters"
 msgstr "محولات المحتوى"
 
-#: docs/concepts/architecture.md:87
-msgid "Content pipeline tooling (validators, QA, render helpers) — not content itself"
-msgstr "أدوات خط أنابيب المحتوى (أدوات التحقق، وضمان الجودة QA، ومساعدات التصيير) — وليس المحتوى نفسه"
-
 #: docs/concepts/architecture.md:165
 msgid "Deployment"
 msgstr "النشر"
-
-#: docs/concepts/architecture.md:89
-msgid "Deployment (Caddy, docker-compose, provisioning, OAuth)"
-msgstr "النشر (Caddy، وdocker-compose، والإعداد والتهيئة، وOAuth)"
 
 #: docs/concepts/architecture.md:33
 msgid "folio-assistant is an MCP server with a pluggable content adapter layer, a skill system, a typed content-object model, RBAC, and a deploy story. The content it operates on lives in a separate repository — the platform is content-agnostic."
@@ -63,10 +51,6 @@ msgstr "إن folio-assistant هو خادم MCP يضم طبقة محولات مح
 #: docs/concepts/architecture.md:124
 msgid "For papers, content is a tree of typed blocks validated at runtime with Zod:"
 msgstr "بالنسبة للأوراق العلمية، فإن المحتوى هو شجرة من الكتل (blocks) محددة الأنواع يتم التحقق منها أثناء التشغيل عبر Zod:"
-
-#: docs/concepts/architecture.md:92
-msgid "Local agent skills + capability hooks"
-msgstr "مهارات الوكيل المحلية + خطافات القدرات (capability hooks)"
 
 #: docs/concepts/architecture.md:19
 msgid "Overview"
@@ -115,10 +99,6 @@ msgstr "يصف باقي هذه الصفحة الهندسة المعمارية ك
 #: docs/concepts/architecture.md:90
 msgid "This documentation site"
 msgstr "موقع التوثيق هذا"
-
-#: docs/concepts/architecture.md:88
-msgid "Web UI, interactive viewer, and the example Pages site"
-msgstr "واجهة مستخدم الويب، والعارض التفاعلي، وموقع Pages النموذجي"
 
 #: docs/concepts/architecture.md:68
 msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
@@ -237,3 +217,18 @@ msgstr "تهيئة خطة العمل (عبر أطر العمل المختلفة)
 
 #~ msgid "Until issue #1207 (2026-09-23),  was a separate viewer < collaborator < owner ladder and the executor checked nothing. The discipline is the  skill."
 #~ msgstr "حتى المسألة #1207 (2026-09-23)، كان  سلمًا منفصلاً من viewer < collaborator < owner، ولم يكن المنفذ يتحقق من أي شيء. والانضباط المتبع هو مهارة ."
+
+#~ msgid "CI workflows and scripts (build, publish, QA, docs)"
+#~ msgstr "مهام سير عمل CI وبرامجها النصية (البناء، والنشر، وضمان الجودة QA، والتوثيق)"
+
+#~ msgid "Content pipeline tooling (validators, QA, render helpers) — not content itself"
+#~ msgstr "أدوات خط أنابيب المحتوى (أدوات التحقق، وضمان الجودة QA، ومساعدات التصيير) — وليس المحتوى نفسه"
+
+#~ msgid "Deployment (Caddy, docker-compose, provisioning, OAuth)"
+#~ msgstr "النشر (Caddy، وdocker-compose، والإعداد والتهيئة، وOAuth)"
+
+#~ msgid "Local agent skills + capability hooks"
+#~ msgstr "مهارات الوكيل المحلية + خطافات القدرات (capability hooks)"
+
+#~ msgid "Web UI, interactive viewer, and the example Pages site"
+#~ msgstr "واجهة مستخدم الويب، والعارض التفاعلي، وموقع Pages النموذجي"

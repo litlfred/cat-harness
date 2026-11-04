@@ -78,14 +78,6 @@ msgstr "2. Vos cinq premières minutes"
 msgid "3. Find the right skill — don't improvise"
 msgstr "3. Trouvez la bonne compétence — n'improvisez pas"
 
-#: agent-onboarding.md:60
-msgid "Skills are the unit of work here. Before hand-rolling a procedure, check whether one exists. Ask for it; do not navigate to it."
-msgstr ""
-
-#: agent-onboarding.md:86
-msgid "Two generated references are worth knowing about, and neither is where you start:"
-msgstr ""
-
 #: agent-onboarding.md:89
 msgid "Where"
 msgstr ""
@@ -116,10 +108,6 @@ msgstr ""
 
 #: agent-onboarding.md:113
 msgid "5. Two dependency relations — do not conflate them"
-msgstr ""
-
-#: agent-onboarding.md:115
-msgid "This trips up agents constantly."
 msgstr ""
 
 #: agent-onboarding.md:137
@@ -182,16 +170,8 @@ msgstr ""
 msgid "What this environment can do"
 msgstr ""
 
-#: agent-onboarding.md:212
-msgid "Lean tooling roadmap"
-msgstr ""
-
 #: agent-onboarding.md:214
 msgid "10. Habits that keep you out of trouble"
-msgstr ""
-
-#: agent-onboarding.md:217
-msgid "Claim a bean before durable work. Others may be running."
 msgstr ""
 
 #~ msgid "is editorial. \"What must a reader have read to follow"
@@ -312,4 +292,19 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "Regenerate, never hand-edit, anything under ."
+#~ msgstr ""
+
+#~ msgid "Skills are the unit of work here. Before hand-rolling a procedure, check whether one exists. Ask for it; do not navigate to it."
+#~ msgstr ""
+
+#~ msgid "Two generated references are worth knowing about, and neither is where you start:"
+#~ msgstr ""
+
+#~ msgid "This trips up agents constantly."
+#~ msgstr ""
+
+#~ msgid "Lean tooling roadmap"
+#~ msgstr ""
+
+#~ msgid "Claim a bean before durable work. Others may be running."
 #~ msgstr ""

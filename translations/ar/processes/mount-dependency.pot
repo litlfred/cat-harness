@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mount-dependency\n"
-"POT-Creation-Date: 2026-10-16T13:11:41.218Z\n"
+"POT-Creation-Date: 2026-11-04T21:09:58.231Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -19,7 +19,7 @@ msgstr ""
 msgid "`index.lock.json` beside the downstream's `index.config.json` (the legacy `<instance>.mount-lock.json` is still read, and is renamed onto the new name when rewritten; both present is an error): the pins it was written for, each instance's repository, SHA and how the pin was found, each directory's tree digest — and what was NOT mounted, with why, so an offline check cannot read a gap as clean."
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:125
+#: processes/kg/mount-dependency.bpmn:123
 #. Diagram element documentation
 msgid "`mount:remote:check`, with no network: the lock's pins are the declaration's, and every locked directory is on disk and hashes to its digest. Could-not-determine outranks missing, which outranks mounted."
 msgstr ""
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Build pipeline"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:124
+#: processes/kg/mount-dependency.bpmn:122
 #. Diagram label
 msgid "Check disk against lock against declaration"
 msgstr ""
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Downstream author"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:133
+#: processes/kg/mount-dependency.bpmn:131
 #. Diagram label
 msgid "Every instance mounted or local?"
 msgstr ""
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Mount each instance at its declared path"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:148
+#: processes/kg/mount-dependency.bpmn:146
 #. Diagram label
 msgid "no"
 msgstr ""
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Re-render the agent surface"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:134
+#: processes/kg/mount-dependency.bpmn:132
 #. Diagram element documentation
 msgid "Read off the check's aggregate state. `skipped` and `local` are answers; `missing` and `could-not-determine` are not."
 msgstr ""
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Remote-mount a dependency"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:138
+#: processes/kg/mount-dependency.bpmn:136
 #. Diagram label
 msgid "Reported loudly: missing / could not determine"
 msgstr ""
@@ -119,14 +119,14 @@ msgstr ""
 msgid "Sparse checkout of the declaration and the chosen directories, copied to the mount path (by default the instance's home path, so relative imports and sibling discovery hold). Never onto tracked bytes; never onto a directory no lock says this mount made; never over edits to a previous mount — those are left untouched and reported."
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:137
+#: processes/kg/mount-dependency.bpmn:135
 #. Diagram label
 msgid "The closure is on disk, pinned and locked"
 msgstr ""
 
 #: processes/kg/mount-dependency.bpmn:109
 #. Diagram element documentation
-msgid "When the lock changed, the layers an agent's skills and memory are generated from changed with it. `mount:remote` re-runs the generators of what an agent actually reads — `skill:commands` (`.claude/commands/`) and `agent-memory` (`.claude/agent-memory/` and the `.agents/` copies) — from the checkout root, and a generator that fails fails the run. A re-pin commit therefore carries the new layers AND the surface rendered from them; shipping the first without the second is how folio-assistant#2526 went red on three agent-memory tests. Owner, 2026-10-10: \"it may have new agentic skills to re-render and add. same for memory.\""
+msgid "When the lock changed, the layers an agent's skills and memory are generated from changed with it. `mount:remote` re-runs the generators of what an agent actually reads — `skill:commands` (`.claude/commands/`) and `agent-memory` (`.claude/agent-memory/` and the `.agents/` copies) — from the checkout root, and a generator that fails fails the run. A re-pin commit therefore carries the new layers AND the surface rendered from them, because new layers shipped without their rendered surface fail the agent-memory tests."
 msgstr ""
 
 #: processes/kg/mount-dependency.bpmn:96
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Write the lock"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:147
+#: processes/kg/mount-dependency.bpmn:145
 #. Diagram label
 msgid "yes"
 msgstr ""

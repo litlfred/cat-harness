@@ -16,7 +16,7 @@ Accepts an upload, records its extracted metadata in the knowledge graph, and ca
 
 - Who: the `Contributor (human or agent)` lane (role `user`).
 - Skill: `upload-routes`.
-- What: THE FIRST LINK: everything downstream of here takes a file that is already in the queue.
+- What: THE FIRST LINK: everything downstream of here takes a file that is already in the queue, so without this step how the file got there is governed by nothing.
 - Record it: `workflow_complete` with `node: "Task_Place"`.
 - next: → `Task_ExtractMetadata` (Extract its metadata into the KG)
 
