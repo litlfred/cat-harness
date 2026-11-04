@@ -86,7 +86,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 ## 3. 对话是什么样的
 
-**问题的形式先于其内容。** 智能体先确认你希望被如何提问——可选择的选项、普通聊天、朗读、大字号——并把它记录在 `interaction/interaction.json` 中，这样以后的会话不会再问你一次。参见[无障碍](accessibility.html)。
+**问题的形式先于其内容。** 智能体先确认你希望被如何提问——可选择的选项、普通聊天、朗读、大字号——并把它记录在 `memory/interaction.json` 中，这样以后的会话不会再问你一次。参见[无障碍](accessibility.html)。
 
 然后，当答案确实含糊时：
 

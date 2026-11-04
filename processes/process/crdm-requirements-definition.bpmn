@@ -53,7 +53,7 @@ requirements + impact">
       <bpmn:documentation>Two skills, because this step is two things: the
 requirements come from the CRDM process, the impact half is a question about
 the entities and relations the change touches, which is what data modelling
-answers. </bpmn:documentation>
+answers.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="crdm-requirements-workflow"/>
         <bootstrap.processes:skill ref="data-modelling"/>

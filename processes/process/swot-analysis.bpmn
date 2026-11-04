@@ -42,9 +42,7 @@ WHAT IT DOES NOT DO: it does not rank the factors it finds. The source is explic
         <!-- Bound EXPLICITLY even though the lane name matches the role id.
              `code-change-review.bpmn` states the reason on its own reviewer
              lane: "a binding that works by coincidence of wording is one
-             rename from silently unbinding." This lane proved it — the
-             glossary check reported it unbound while the sibling lane, whose
-             wording happened to match, passed. -->
+             rename from silently unbinding." -->
         <bpmn:documentation>Consulted, in a lane of their own because the source names group discussion as a property of the method rather than as good practice around it: SWOT "promotes group discussion about strategic issues" and pools knowledge through participatory techniques. It is also the mitigation for the limitation the source states most sharply — that a list of strengths is "bound up with aspirations, biases, and hope of the individuals involved". A single analyst producing four lists alone has performed the technique's shape without the part that checks it.</bpmn:documentation>
         <bpmn:flowNodeRef>A_GroupReview</bpmn:flowNodeRef>
       </bpmn:lane>

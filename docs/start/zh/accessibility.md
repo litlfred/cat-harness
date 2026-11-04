@@ -88,12 +88,12 @@ ATAG Part B 值得重点关注，因为这是内容平台能够唯独提供的�
 
 | | 位置 |
 |---|---|
-| 面向智能体的偏好设置，已提交，在会话启动时读取 | `interaction/interaction.json`，由 `scripts/session-start-coord-sweep.sh` 呈现 |
+| 面向智能体的偏好设置，已提交，在会话启动时读取 | `memory/interaction.json`，由 `scripts/session-start-coord-sweep.sh` 呈现 |
 | 智能体在提问时遵循的规则 | [`interaction-modality`]({{ site.baseurl }}/reference/skill-instructions/interaction-modality.html) |
 | 本站点上面向读者的控制项 | 侧边栏标头中的齿轮图标——更大字号、更高对比度、带下划线的链接、减少动效 |
 | 无需询问即可遵循减少动效偏好 | `prefers-reduced-motion` 媒体查询，并作为面板默认值的种子 |
 
-**这两处偏好设置存储是刻意分开的。** `interaction/interaction.json` 已提交至版本控制，面向智能体，且关乎对话交互。而站点控制项则是针对每位查看者的 `localStorage`，绝不离开浏览器，且关乎阅读体验。非作者的读者选择大号字体，绝不能悄悄重置或更改智能体与作者沟通交流的方式。
+**这两处偏好设置存储是刻意分开的。** `memory/interaction.json` 已提交至版本控制，面向智能体，且关乎对话交互。而站点控制项则是针对每位查看者的 `localStorage`，绝不离开浏览器，且关乎阅读体验。非作者的读者选择大号字体，绝不能悄悄重置或更改智能体与作者沟通交流的方式。
 
 ### 2.7 尚未完成的内容
 
