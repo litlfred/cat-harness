@@ -18,7 +18,7 @@ uses-methodology:
 `sdlc/processes/merge-train.bpmn` is the process. The ORDER is computed by
 `sdlc/processes/decisions/merge-priority.dmn`; the facts it reads are derived
 by `scripts/merge-queue.ts`; what the steward decided is recorded against
-`schemas/sdlc/merge-queue.ts`. This page says what each piece is FOR. Bean `hfag`.
+`schemas/sdlc/merge-queue.ts`. This page says what each piece is FOR.
 
 ## The rule everything else follows from
 
@@ -37,18 +37,14 @@ carries a fact.
   queue and fixes it when it is handed back.
 - **`merge-steward`** ("Merge steward"): whoever orders and lands the queue.
 
-Both are ROLES, not sessions. Owner, 2026-10-04: *"Merge Manager may
-change"*. So nothing in this section depends on which session holds either
-lane.
+Both are ROLES, not sessions, so nothing in this section depends on which
+session holds either lane.
 
 ### The PR is the message
 
 The steward reads open PRs labelled `ready-to-merge`, and nothing else. A
 comment posted anywhere else reaches nobody: not on a PR you believe is the
-steward's, and not on an issue such as #1800. Measured 2026-10-03/04 (bean
-`j5iq`): a merge-order change was posted to #1959 three hours after it
-merged, and the pokes on #1800 changed none of the three facts that kept
-#1968 out of the queue.
+steward's, and not on an issue.
 
 ### Ask the user before submitting
 
@@ -89,8 +85,8 @@ To submit, do all of these on YOUR PR:
 
 ### After submitting: do not spend CI you do not need yet
 
-Owner, 2026-10-04: once CI has confirmed the PR, a submitter far back in the
-queue should not burn CI cycles keeping up with a churning `main`. Every
+Once CI has confirmed the PR, a submitter far back in the queue should not
+burn CI cycles keeping up with a churning `main`. Every
 merge of `main` into your PR re-runs the whole suite. While other PRs are
 landing, each of those runs is obsolete before the steward reaches you.
 
@@ -149,15 +145,8 @@ already has:
   - **Process:** run it through `sdlc/processes/merge-refusal.bpmn`
     (`workflow_start`), not from memory.
 
-  `merge:steward` now prints `✗ handed back with NO open hand-back bean:
+  `merge:steward` prints `✗ handed back with NO open hand-back bean:
   #…` and carries `handBackBean` per PR in `--json`.
-
-  Measured 2026-10-04: a steward handed back a dozen PRs in one session with
-  comments and queue entries only. The owner asked *"why did you have a
-  process failure here?"*. The procedure lived in another skill
-  (`merge-conflict-patterns`) that the steward never loaded, and nothing
-  checked for it. Owner: "Backfill + enforce". The 13 beans were backfilled
-  (`mfhc` and twelve more).
 - **A direct message as the fast path**, by the recipe below. Use it when the
   PR is next and waiting costs a train.
 - **The queue entry** records the hold or ejection, with its reason and
@@ -178,9 +167,8 @@ depend on who that is:
 Whoever takes the lane next reads the same open PRs and the same queue
 entries.
 
-**A direct message is a fast path on top of that, never a replacement.** Owner,
-2026-10-04: use one when it is the more efficient tool, and say how you used
-it. It saves the receiver a polling cycle, but it never counts as handing
+**A direct message is a fast path on top of that, never a replacement.** Use
+one when it is the more efficient tool, and say how you used it. It saves the receiver a polling cycle, but it never counts as handing
 over: the PR's own state still has to say `ready`. The same recipe works in
 both directions:
 
@@ -209,10 +197,9 @@ entry carries `pr` and **`beans`**, the beans and epics the PR serves; name
 them in your PR body so the steward can copy them. That list is the
 association between a PR and its beans.
 
-**Where to read it depends on the state-branch cutover** (arc `fs43`, bean
-`9ofm`). Bean `ugxd` moves the queue to its OWN branch,
-`cat/cat-harness/merge-queue`, ahead of `fs43` — §"Where the queue is GOING"
-below — and where the two disagree, that section is the newer plan:
+**Where to read it depends on the state-branch cutover.** The queue is moving
+to its OWN branch, `cat/cat-harness/merge-queue` — §"Where the queue is GOING"
+below — and where the two disagree, that section governs:
 - **Before the cutover**, `main` is authoritative. Entries reach it only through
   the steward's own PRs, a PR cycle late, so the edited-in-place status comment
   on your PR is the live answer.
@@ -226,25 +213,22 @@ below — and where the two disagree, that section is the newer plan:
 The branch's `manifest.json` says which state it is in (`"authoritative"`).
 Read that rather than this paragraph.
 
-**The cutover also changes what a bean can do here.** Today a bean created on
-your branch is invisible until your PR lands, so it cannot carry a merge
-request. After the cutover, a bean written through `state:push` is visible at
-once. A submitter can then note on the PR's bean that it is submitted, and the
+**The cutover also changes what a bean can do here.** A bean created on a
+code branch is invisible until the PR lands; a bean written through
+`state:push` is visible at once. A submitter can then note on the PR's bean that it is submitted, and the
 steward can answer on the same bean. The PR state above stays the intake
 signal either way: the bean is where the conversation is kept.
 
 **Not GitHub's merge queue.** It is not offered on a personal-account
-repository (bean `1hjm`). The merge guard (`bun run cat merge:guard <pr>`,
-bean `uoob`) checks the six submission points mechanically; run it against
+repository. The merge guard (`bun run cat merge:guard <pr>`) checks the six submission points mechanically; run it against
 your own PR before you announce.
 
-## Where the queue is GOING, and the tool that will write it (bean `najo`)
+## Where the queue is GOING, and the tool that will write it
 
-**Not cut over yet.** The queue is still on `main` under `beans/queue/`
-(owner, 2026-10-05: *"Land code now, switch later"*). The store and CLI below
-landed first; the cutover to its own branch, `cat/cat-harness/merge-queue`, is
-bean `ugxd`, a separate small PR during which the steward pauses queue writes.
-Until it lands, `merge:queue:read` reads the checkout and `merge:queue:record`
+**Not cut over yet.** The queue is still on `main` under `beans/queue/`. The
+store and CLI below exist; the cutover to its own branch,
+`cat/cat-harness/merge-queue`, is a separate small change during which the
+steward pauses queue writes. Until it lands, `merge:queue:read` reads the checkout and `merge:queue:record`
 **refuses** — keep committing entries to `main` as §"The steward answers in the
 queue" describes. The branch's `manifest.json` says which state it is in.
 
@@ -252,9 +236,8 @@ Why the queue comes off `main` at all is structural: an entry on `main` arrives
 only through a pull request, and **the steward does no development work** — it
 must not open PRs of its own, which would have it setting its own priority in
 the queue it manages, spending the CI the queue is starved of, and judging its
-own head. For the two days after the graph was declared it therefore held **no
-entry at all**: the one actor whose decisions it records was the one actor that
-could not write to it.
+own head. On `main`, the one actor whose decisions the queue records is the
+one actor that cannot write to it.
 
 After the cutover:
 
@@ -277,18 +260,14 @@ bun run cat merge:queue:record --pr <n> --class <c> --rank <r> --rule <id> \
   steward decided.
 - **An unreachable queue is not an empty one.** `merge:queue:read` exits 4 and
   `readQueueEntries` THROWS when the branch is not mounted, because "no
-  decisions recorded, all clear" printed over a graph nobody read is `dh4f`.
-  Exit 1 — declared-but-absent — is a different answer with a different remedy.
+  decisions recorded, all clear" printed over a graph nobody read is a false
+  clean. Exit 1 — declared-but-absent — is a different answer with a different remedy.
 - **The decisions are read back.** `merge:steward` feeds recorded overrides into
   the table's `ownerOverride` input and their positions into the order, treats
-  an un-cleared ejection as refused, and prints a live hold. Until 2026-10-04 it
-  passed none of them: a decision nobody reads back is a decision nobody took.
+  an un-cleared ejection as refused, and prints a live hold.
 
-**The pairing with `workflows/` is what this cost.** The queue held the
-decisions and a finished train run next door held the evidence they met, in one
-store. `beans/` is still on `main` until arc `fs43` lands (beans `9ofm`,
-`p3ny`), so for now the two are one `state:mount` apart. That trade was made
-knowingly: the pairing was costing the graph every one of its nodes.
+The queue's decisions and a finished train run's evidence (under `workflows/`)
+live in different stores, one `state:mount` apart.
 
 ## Placement is computed, not chosen
 

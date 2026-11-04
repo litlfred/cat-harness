@@ -13,9 +13,6 @@ output: schemas/skills/bean-drain/output.schema.json
 
 # Bean drain
 
-Owner, 2026-10-24: *"update Skills so on draining beans/stories as part of SDLC
-and describe Tools for coordination on spawned bean drains"*. Bean `n7x7`.
-
 A drain is the delivery loop run over a queue instead of over one item. Each
 bean in it still goes through the ordinary lifecycle
 ([`bean-coordination`](bean-coordination.md), [`todo-manager`](todo-manager.md),
@@ -24,8 +21,8 @@ wrong only when **several agents drain the same store at once**: two of them
 starting the same bean.
 
 The drain is drawn as a process: `Process_BeanDrain`
-([`sdlc/processes/bean-drain.bpmn`](../../../sdlc/processes/bean-drain.bpmn),
-bean `bssi`). It builds the queue (the `drain-queue` Tool), then for each bean
+([`sdlc/processes/bean-drain.bpmn`](../../../sdlc/processes/bean-drain.bpmn)).
+It builds the queue (the `drain-queue` Tool), then for each bean
 calls OPEN (`Process_BeanOpen`, whose check is the `bean-claim-check` Tool),
 works it, calls CLOSE (`Process_BeanClose`), and refills. The steps below are
 the same loop in prose.
@@ -58,19 +55,17 @@ and the owner's authority is not relayed" says: the owner's words verbatim, no
 relayed rulings (a merge window included), and a finishable list. Give each
 drainer this skill and its list, not a copy of the rules.
 
-The first multi-lane drain was epic `ml9h` (2026-10-10, three lanes over three
-stores). Its rules hold here too: work leaves up (a parent closes when its
-last child does), one PR per bean or tight cluster, and scrap obsolete beans
-with reasons. Its lane B stalled on relayed authority, which is bean `yex5`
-and the `coordinate` section above.
+Three further rules: work leaves up (a parent closes when its last child
+does), one PR per bean or tight cluster, and scrap obsolete beans with
+reasons.
 
 ## 1. Build the queue — the `drain-queue` Tool
 
-Read **every** bean store, not the one this checkout mounts. Since 2026-10-30
-each bean has one home ([`bean-coordination`](bean-coordination.md), "Each bean
-has one home"): the `cat/cat-harness/beans` branch on folio-assistant, plus the
-tools and core layers' beans on their `main`. The cat-harness copy of that
-branch keeps no beans any more. If two stores ever hold the same id again,
+Read **every** bean store, not the one this checkout mounts. Each bean has one
+home ([`bean-coordination`](bean-coordination.md) §"Each bean has one home"):
+the `cat/cat-harness/beans` branch on folio-assistant, plus the tools and core
+layers' beans on their `main`. The cat-harness copy of that branch keeps no
+beans. If two stores ever hold the same id again,
 `bun run cat check:bean-one-home` names it; the newest `updated_at` wins here
 and the disagreement is listed, so somebody can fix it.
 
@@ -99,15 +94,16 @@ trigger is starting work, not claiming ([`bean-coordination`](bean-coordination.
 
 1. **Fetch every copy**, in its own command:
    `git fetch origin cat/cat-harness/beans`. A fetch in the same compound command
-   as the read is not a barrier (bean `pomp`, case 2).
+   as the read is not a barrier ([`bean-coordination`](bean-coordination.md)
+   §"Re-derive from the REMOTE").
 2. **Read the last commits on the bean's file**, per copy:
    `git log -3 --format='%an %cI %s' FETCH_HEAD -- 'beans/defs/*<id>--*'`.
    **Skip** the bean if another agent committed to it in the past 24 hours, or
    its last note says it is claimed.
 3. **Look for open work naming the bean**: an open PR whose title, body or
    branch names the id, in every repository the drain touches — the
-   `open-work-lookup` Tool. **Skip** if one exists and is not yours. This is the
-   step that catches the f1e1 case below.
+   `open-work-lookup` Tool. **Skip** if one exists and is not yours. This catches
+   a duplicate that exists only on an open PR's head, which step 2 cannot see.
 4. **Claim**: set `status: in-progress`, append a dated note naming you and your
    session, and make a **plain commit on every copy**. Push it before any other
    commit of yours.
@@ -120,11 +116,9 @@ status.
 
 **Why plain commits, and why on every copy.** `bun run cat state:push` and
 `bun run cat beans:claim` write the one copy the checkout points at. With more
-than one copy, the others go on saying `todo`, and that drift is what the
-2026-10-16 store reconciliation had to repair by hand. So while there is more
-than one copy, a drainer edits beans with plain git commits on each, and never
-with `state:push`. When the copies become one, `beans:claim` is the claim again
-and this paragraph goes.
+than one copy, the others go on saying `todo`. So while there is more than one
+copy, a drainer edits beans with plain git commits on each, and never with
+`state:push`. Where a bean has one copy, `beans:claim` is the claim.
 
 ## 3. Work it
 
@@ -155,35 +149,13 @@ whose work has already landed"), on every copy. Then tell the queue keeper, or
 take the next bean on your list. A drainer whose list is empty asks for a refill
 instead of picking from another owner's list.
 
-## The measured case: f1e1, 2026-10-24
-
-Two agents started the same bean minutes apart, and both opened PRs in two
-repositories. Times from `gh api` on the four PRs and `git log` on both bean
-copies:
-
-| UTC | what |
-|---|---|
-| 07:46:28 | agy's first commit for f1e1 |
-| 07:47:35 | agy opens [cat-harness-tools#686](https://github.com/litlfred/cat-harness-tools/pull/686) |
-| 07:49:20 | agy opens cat-harness#502 |
-| 07:50:08 | a cloud thread's first commit for f1e1 |
-| 07:50:22 | the cloud thread opens [cat-harness-tools#688](https://github.com/litlfred/cat-harness-tools/pull/688), merged 08:04 |
-| 07:50:29 | the cloud thread opens cat-harness#503 |
-| 07:52:57 | agy's first commit to f1e1 on a bean branch |
-
-Neither agent claimed before working. And step 2 alone would not have helped:
-both copies said `in-progress` since 2026-10-16 and showed no new commit until
-07:52:57. The duplicate existed only on an open PR's head, two and a half
-minutes before the second start. Step 3 would have caught it. Step 4, done by
-the first agent, would have made step 2 catch it too.
-
 ## Tools
 
 | Tool | answers | contract |
 |---|---|---|
 | [`drain-queue`](../../tools/drain-queue/drain-queue.json) | which open beans, grouped by owner, with what was left out and why | `definitions.queue` in the output schema |
 | [`bean-claim-check`](../../tools/bean-claim-check/bean-claim-check.json) | may I take this bean; if so, claim it on every copy | `definitions.claimCheck` |
-| [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.json) | does a path, a path prefix or a bean id appear on `main` or any open PR head, and where (bean `pomp`) | `definitions.lookup` |
+| [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.json) | does a path, a path prefix or a bean id appear on `main` or any open PR head, and where | `definitions.lookup` |
 
 Run from an index checkout, with one `--copy` per bean copy checkout:
 
@@ -194,7 +166,7 @@ bun run cat beans:claim-check <id> --copy folio-assistant --copy cat-harness \
 bun run cat lookup:open-work --bean <id> --repo litlfred/cat-harness   # or --path / --prefix
 ```
 
-Pass one `--repo` per repository the bean's work can land in: for f1e1, the
+Pass one `--repo` per repository the bean's work can land in — for example the
 harness and its tools layer.
 
 `--dry-run` on the claim check says what it would do and writes nothing.
@@ -203,12 +175,6 @@ when claimed, 1 on a skip and 2 when it could not tell; 2 is never "free".
 
 The Tools satisfy `bean-coordination` rather than this skill: this skill's
 contract is the whole drain, and each Tool takes one step of it.
-
-## As a process
-
-The drain will be drawn as a BPMN process that calls the shared bean OPEN and
-CLOSE subprocesses (owner choice A on bean `m8gz`, 2026-10-24): OPEN's check is
-step 2, CLOSE is step 5. Bean `bssi` builds it once m8gz lands.
 
 ## Input and output
 

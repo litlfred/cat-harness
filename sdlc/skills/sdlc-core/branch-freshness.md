@@ -50,7 +50,7 @@ git log --oneline HEAD..origin/main
 - Pipeline changes (`pipeline/*.ts`) → **behaviour may differ**
 - Skill changes (`cat-harness/skills/**`) → **guidance may be out of date**
 - BPMN changes (`cat-harness/processes/**/*.bpmn`) → **diagrams may conflict**
-- Bean changes (`.beans/`) → **beans may have been created/resolved by sibling**
+- Bean changes (`beans/`, on its state branch: `bun run cat state:mount`) → **beans may have been created/resolved by sibling**
 - `AGENTS.md` changes → **rules may have changed**
 - **Directory restructuring** → paths you're writing to may have moved
 

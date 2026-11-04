@@ -12,10 +12,7 @@
   <bpmn:resource id="business-analyst" name="Business analyst"/>
   <bpmn:resource id="stakeholder" name="Stakeholder"/>
   <!-- ═══════════════════════════════════════════════════════════════
-       CRDM data-modelling phase. Owner, 2026-09-20: "and to data
-       modeling guidance in skills for CRDM when data modelling comes
-       in (does subprocess exist yet?)" — it did, and CRDM was already
-       built on it, so this is a fifth callActivity rather than new
+       CRDM data-modelling phase: a callActivity of CRDM, not new
        machinery.
 
        WHY BETWEEN REQUIREMENTS AND SIGN-OFF. Requirements are
@@ -33,7 +30,7 @@
        into one review is how a wrong cardinality ships — it is
        invisible until the data arrives.
 
-       TWO SKILLS, NOT ONE, per the owner's "twoskills". Every
+       TWO SKILLS, NOT ONE. Every
        activity here names `crdm-data-model`, the PHASE skill. The
        technique it invokes, `data-modelling`, carries no CRDM at all
        so a folio modelling data outside a requirements process can
@@ -92,7 +89,7 @@
       <bpmn:documentation>Answered by the BA after confirming cardinalities: are the entities recognised and every cardinality answered? `revise` returns to identifying entities; `yes` declares the model where a tool can read it.</bpmn:documentation>
     </bpmn:exclusiveGateway>
     <bpmn:task id="A_Declare" name="Declare the model&#10;where a tool can read it">
-      <bpmn:documentation>A model in prose is a proposal; a model in the declaration is a model. Ship a reader in the same change — everything here that was only documentation went inert within weeks.</bpmn:documentation>
+      <bpmn:documentation>A model in prose is a proposal; a model in the declaration is a model. Ship a reader in the same change: a model that is only documentation goes inert.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-data-model"/><cat-harness.processes:raci ref="business-analyst" involvement="accountable"/><cat-harness.processes:raci ref="publication-manager" involvement="informed"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:endEvent id="End_Process_CRDM_DataModel" name="Model declared"/>

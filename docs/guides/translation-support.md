@@ -15,10 +15,6 @@ the official/unofficial distinction, staleness tracking, the viewer language
 switcher, and the integration with WHO SMART Base's existing translation
 subsystem.
 
-> **Status:** Architecture and work plan. No operational translation pipeline
-> exists today. This document defines the target and tracks what has been built
-> toward it.
-
 1. TOC
 {:toc}
 
@@ -45,8 +41,7 @@ subsystem.
 ### Principle: translations are content nodes
 
 An official translation of a content node is persisted **as its own translated
-content node within the source content node's directory**. This follows the
-FRBR pattern already argued for in bean `p2en`: a block varies along two axes —
+content node**. This follows the FRBR pattern: a block varies along two axes —
 **format** (`.md`, `.lean`, `.tex`) and **language** — and the translation is an
 Expression of the same Work.
 
@@ -68,13 +63,14 @@ translations/
 ```
 
 The `translations/` directory contains **only** `.pot` templates, `.po`
-translated files, and their `.ts` manifests (`TranslationNode`). Rendered
+translated files, and their JSON manifests (`"$schema": "translation-node/v1"`),
+in subdirectories that mirror the source path. Rendered
 output (`.md`) lives in `docs/<locale>/`; QA results and status metadata
 are properties of the `TranslationNode` manifest, not separate files.
 
-### TranslationNode — .ts manifests as KG nodes
+### TranslationNode — manifests as KG nodes
 
-Each `.po`/`.pot` pair is wrapped by a `.ts` manifest that makes it a
+Each `.po`/`.pot` pair is wrapped by a JSON manifest that makes it a
 **first-class node in the knowledge graph**:
 
 ```typescript
@@ -198,39 +194,6 @@ Gettext is the WHO SMART Base standard for translations. It provides:
 3. Fuzzy matching for partial translations after source changes.
 4. Context and plural support.
 
-### Organizational scope
-
-PO/POT files are organized at two levels:
-
-1. **Content-block level** — `content/<chapter>/<section>/<block>/translations/<locale>/block.po`.
-   This is the default working unit. Each block's translatable content has its
-   own PO file.
-2. **Top-level global scope** — `translations/<locale>/messages.po`.
-   Shared translations (kind headings, UI strings, common terms) that apply
-   across the entire folio.
-
-All `.pot` and `.po` files are stored under either the content node's own
-`translations/` subdirectory or the top-level `translations/` directory. They
-are **not** scattered through the source tree.
-
-### PO resolution chain
-
-When resolving a translation for a content node, the tooling searches in this
-order:
-
-1. **Content-block scope** — the block's own `translations/<locale>/block.po`.
-2. **Global scope** — `translations/<locale>/messages.po` at the folio root.
-3. **Folio-assistant dependencies** — walk the folio-assistant instance's
-   declared content dependencies (see [Dependency walking](#dependency-walking))
-   and look for matching translations in each dependency's `translations/`.
-4. **Agent fallback** — if no translation is found in any of the above, the
-   agent may attempt its own translation of missing terms. These are always
-   tagged as unofficial.
-
-This chain ensures that shared vocabulary (e.g., WHO standard terminology)
-translates consistently across a folio and its dependencies without
-duplicating PO files.
-
 ### Pipeline overview
 
 ```
@@ -347,7 +310,7 @@ The `po-inject` tool takes a completed `.po` file and produces a translated
 4. Preserves non-translatable elements (math, labels, code) in place.
 5. Writes the result to `translations/<locale>/block.md`.
 
-### Round-trip QA (bean `ktt2`)
+### Round-trip QA
 
 Semantic verification is per BLOCK, not per page, and it is not a script's to assert: `content/pipeline/translation-block-qa.ts` writes what a script can establish (coverage, preserved terms, untranslated echoes) and leaves
 `translation-semantic-roundtrip` with no verdict. A real round trip needs a back-translator that has not seen the original — a pair of agents, recorded by `content/pipeline/translation-roundtrip.ts`. See
@@ -381,7 +344,7 @@ distinct from the agentic/machine path. See BPMN:
    different domain expert) reviews the translation for clinical/technical
    accuracy. This is especially critical for WHO content where terminology
    precision has policy implications.
-8. **Round-trip QA** — automated back-translation comparison (bean `ktt2`).
+8. **Round-trip QA** — back-translation comparison (see Round-trip QA above).
 9. **Sign-off** — the reviewer signs off, making the translation official.
 
 ### WHO disclaimer
@@ -526,8 +489,7 @@ and before the bibliography. On mobile, it appears in the sidebar overlay.
 
 ### Kind heading translations
 
-The hardcoded `KIND_HEADING` map in `render-markdown.ts` is replaced by a
-translatable catalogue:
+Kind headings come from a translatable catalogue:
 
 ```typescript
 const KIND_HEADINGS: Record<string, Record<string, string>> = {
@@ -549,12 +511,8 @@ Everything above extracts from **authored** files. The knowledge-graph viewer
 single-file HTML page, and its interface strings sit inside the code that
 emits it.
 
-**Extracting from the generated page would be the obvious move and is the
-wrong one.** The `.pot` would fill with the generator's *output*, so any
-regeneration — a new node kind, a changed commit line — churns every entry and
-invalidates every sign-off, without a single string having changed.
-
-So the strings are lifted into a declared table in the source,
+The strings are not extracted from the generated page, whose regeneration would
+churn every entry; they are lifted into a declared table in the source,
 `scripts/kg-viewer-strings.ts`, and extracted from **there**:
 
 ```sh
@@ -585,20 +543,14 @@ property names arrive in the JSON-LD document in whatever language the corpus
 is written in, and no catalogue in the viewer can reach them.
 
 The page says so, in the language the reader chose, whenever that is not
-English. A screen that is two-thirds translated and silent about it is worse
-than one that states its edge — a reader cannot otherwise tell a missing
-translation from a corpus that is simply English.
+English.
 
-### What ships today: the stubs, and deliberately nothing in them
+### The catalogues are stubs, filled by a translator
 
 `translations/<locale>/kg-viewer.po` exists for every locale with every
-`msgid` present and every `msgstr` **empty**. That is the decision, not an
-omission: machine-translating a user interface into languages nobody here
-reads produces an artefact whose correctness cannot be checked here, and a
-`X-Folio-Official: no` header does not change what a reader sees. A translator
-fills them.
-
-Until one does, the viewer offers English alone — an empty catalogue is not a
+`msgid` present and every `msgstr` **empty**. The viewer interface is not
+machine-translated; a translator fills the catalogues. Until one does, the
+viewer offers English alone — an empty catalogue is not a
 language the page can show, so it is not listed. Fill a `.po`, run
 `bun run cat kg:viewer`, and that language appears in the switcher.
 
@@ -640,15 +592,14 @@ separate pipeline from prose translation:
 - ValueSet translations use FHIR's native `designation` system.
 - IG Publisher's translation framework is documented in the FHIR spec.
 
-The IG publication pipeline migration to just-the-docs is tracked separately.
-For now, the prose translation pipeline and the FHIR translation pipeline are
+The prose translation pipeline and the FHIR translation pipeline are
 independent.
 
 ---
 
 ## MCP tools
 
-The following MCP tools will be registered:
+The following MCP tools are registered:
 
 | Tool | Adapter | Description |
 |---|---|---|
@@ -676,7 +627,7 @@ See: processes/library/translation-workflow.bpmn
 1. **Content authored** — source content exists in the default locale.
 2. **POT extracted** — translatable strings are extracted.
 3. **Translation produced** — agent or human creates PO file + translated `.md`.
-4. **Round-trip QA** — back-translation detects semantic drift (bean `ktt2`).
+4. **Round-trip QA** — back-translation detects semantic drift.
 5. **Human review gateway** — drift or bad terminology routes to reviewer.
 6. **Sign-off** — human adjudicator marks translation as official.
 7. **Staleness watch** — source changes trigger re-extraction + stale marking.
@@ -709,38 +660,6 @@ Every block kind must support translation. The audit:
 **Finding:** All block kinds support translation through their title and `.md`
 body. The extraction pipeline handles the non-translatable exclusions (math,
 code, labels) uniformly.
-
----
-
-## Work plan
-
-See the beans created for this work and the
-[BPMN workflow diagram](https://github.com/litlfred/folio-assistant/blob/main/processes/translation-workflow.bpmn).
-
-| Phase | Bean | Description | Status |
-|---|---|---|---|
-| 1. Documentation | (this document) | Consolidated translation reference | ✅ Done |
-| 2. Schema changes | — | Add `lang` to `BlockBase`, `TranslationStatus` schema | Todo |
-| 3. Config support | — | Add `translation` section to `<name>.config.json` | Todo |
-| 4. POT extraction | — | `content/pipeline/pot-extract.ts` | Todo |
-| 5. PO injection | — | `content/pipeline/po-inject.ts` | Todo |
-| 6. MCP tools | — | Register 5 translation tools | Todo |
-| 7. Viewer language switcher | — | Globe icon + locale dropdown | Todo |
-| 8. Kind heading catalogue | — | Replace hardcoded `KIND_HEADING` with i18n map | Todo |
-| 9. Staleness tracking | — | Hash-based change detection | Todo |
-| 10. Sign-off workflow | — | Multi-level sign-off UI + persistence | Todo |
-| 11. Round-trip QA | `ktt2` | Back-translation drift detection | Todo (existing bean) |
-| 12. SMART Base integration | — | Wrap extraction/injection scripts | Todo |
-| 13. BPMN diagram | — | Translation workflow BPMN | Todo |
-
----
-
-## Related beans
-
-- [`folio-assistant-ktt2`](https://github.com/litlfred/folio-assistant/blob/main/beans/defs/folio-assistant-ktt2--ingest-round-trip-translation-qa-back-translate-to.md) — Round-trip translation QA
-- [`folio-assistant-1r0p`](https://github.com/litlfred/folio-assistant/blob/main/beans/defs/folio-assistant-1r0p--ingest-audio-transcription-and-translation.md) — Audio transcription + translation
-- [`folio-assistant-d5f1`](https://github.com/litlfred/folio-assistant/blob/main/beans/defs/folio-assistant-d5f1--ingest-narrative-description-per-image-localized-i.md) — Localized image descriptions
-- [`folio-assistant-p2en`](https://github.com/litlfred/folio-assistant/blob/main/beans/defs/archive/folio-assistant-p2en--formal-rag-document-ingestion-layer-options-assess.md) — FRBR model for multilingual content
 
 ---
 

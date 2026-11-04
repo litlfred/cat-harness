@@ -5,8 +5,6 @@
   Source of truth: this file. The SVG under docs/assets/img/workflows/ is
   generated from it by `bun run cat render:bpmn` — never hand-edit the SVG.
 
-
-
   THE POINT OF DRAWING THIS is that a copy-out is TWO WRITES AND A REFUSAL, and
   the common bug is to make it one write. The bytes go into the copier's own
   `folio/`; `provenance.local` records which original they came out of; and the
