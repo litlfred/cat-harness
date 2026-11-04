@@ -16,10 +16,9 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 ---
 
-> Instalar es la parte fácil. Lo que debes ejecutar **antes de hacer push** es
-> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }}) —
-> que `bun test` pase no significa que los gates hayan pasado, y la lista se deriva del
-> flujo de trabajo de CI en lugar de estar fijada por escrito. Si estás incorporando folio-assistant sobre
+> Lo que debes ejecutar **antes de hacer push** es
+> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }});
+> que `bun test` pase no significa que los gates hayan pasado. Si estás incorporando folio-assistant sobre
 > un repositorio que ya existe, lee primero
 > [`repo-conversion`]({{ '/reference/skill-instructions/repo-conversion.html' | relative_url }}).
 
@@ -39,11 +38,8 @@ tiempo de ejecución y se pueden instalar bajo demanda.
 | Java 21 + IG Publisher + SUSHI | IGs SMART de la OMS (L3) | consulta la [guía de IG SMART de la OMS](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`, luego la guía |
 | `pandoc`, `ripgrep` | conversiones, búsqueda | `apt install pandoc ripgrep` | `winget install JohnMacFarlane.Pandoc BurntSushi.ripgrep.MSVC` |
 
-No necesitas todos estos requisitos — instala solo lo que requieran los tipos de contenido
-que redactas. La comprobación integrada de capacidades te indica qué falta.
-
-> **Solo se requiere Bun.** Cada una de las demás filas depende del tipo de contenido y se comprueba en
-> tiempo de ejecución, por lo que no instales nada más hasta que `check-deps` lo solicite.
+Solo se requiere Bun. Cada una de las demás filas depende del tipo de contenido y se comprueba en
+tiempo de ejecución, por lo que no instales nada más hasta que `check-deps` lo solicite.
 
 
 ## Clonar e instalar
@@ -97,9 +93,7 @@ y `bun run cat bat:sync:check` hace fallar la CI si falta alguno o está desactu
 `cat-harness-tools/scripts/start-folio-assistant.sh` instala Bun si no está presente y
 luego inicia el servidor, y
 `cat-harness-tools/adapters/mcp-server/install.sh` es un instalador más completo que cubre
-también TeX Live. Ambos estuvieron indocumentados hasta el 2026-09-21
-([#740](https://github.com/litlfred/folio-assistant/issues/740)) — motivo por el cual
-existe esta sección.
+también TeX Live.
 
 ## Verifica tu entorno
 
@@ -244,8 +238,8 @@ Apunta tu cliente al comando stdio anterior, o ejecuta el transporte HTTP
 herramienta `work_plan_prime` que cualquier agente conectado por MCP puede invocar para obtener
 una preparación idéntica del plan de trabajo en tiempo real, independientemente del arnés.
 
-> **Por qué funciona en diferentes arneses.** La disciplina reside en `AGENTS.md` (un
+> **Por qué funciona en diferentes arneses.** El punto de entrada es `AGENTS.md` (un
 > estándar de agentes de la Linux Foundation leído de forma nativa por Claude Code, Gemini CLI,
-> Antigravity, Cursor, Copilot y otros); el estado en tiempo real se expone tanto como un
+> Antigravity, Cursor, Copilot y otros), que remite a los skills donde reside la disciplina; el estado en tiempo real se expone tanto como un
 > hook `SessionStart` específico de cada arnés a través de un script compartido, como mediante la
 > herramienta MCP `work_plan_prime`. Consulta la página de [arquitectura](../../concepts/es/architecture.html).

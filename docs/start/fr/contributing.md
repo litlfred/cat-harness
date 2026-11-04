@@ -30,14 +30,14 @@ bun run cat test:e2e      # e2e (test:e2e)
 ## Plan de travail avec `beans`
 
 Ce projet utilise [`beans`](https://github.com/hmans/beans) comme unique
-mécanisme de tâches et de plan de travail (voir `AGENTS.md`). Ne mettez **pas** en
+mécanisme de tâches et de plan de travail (le skill `todo-manager`). Ne mettez **pas** en
 place de système de tâches séparé.
 
 ```sh
-scripts/install-beans.sh
+cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list
 beans create "<title>"
-beans <id> --status in-progress   # prendre en charge avant de commencer
+bun run cat beans:claim <id>      # prendre en charge avant de commencer
 ```
 
 `beans ≠ sidecars` : ne faites jamais `beans create` pour des files générées automatiquement en masse
@@ -45,10 +45,10 @@ beans <id> --status in-progress   # prendre en charge avant de commencer
 
 ## Directives pour les agents
 
-`AGENTS.md` est la source de vérité générique pour les agents (lue nativement par Claude Code,
-Gemini CLI, Antigravity, Cursor, Copilot). `CLAUDE.md` / `GEMINI.md` sont de légers stubs
-qui pointent vers lui. Modifiez `AGENTS.md` plutôt qu'un fichier spécifique à un outil lors
-de la mise à jour des directives pour les agents.
+`AGENTS.md` est le point d'entrée générique pour les agents (lu nativement par Claude Code,
+Gemini CLI, Antigravity, Cursor, Copilot) ; `CLAUDE.md` / `GEMINI.md` sont de légers stubs
+qui pointent vers lui. Les règles vivent dans les skills : pour changer le comportement des
+agents, modifiez le skill, pas `AGENTS.md`.
 
 ## Documentation
 
@@ -58,15 +58,15 @@ de la mise à jour des directives pour les agents.
   `schemas/skills/<skill>/` et régénérez :
 
   ```sh
-  bun run scripts/gen-schema-docs.ts
+  bun run cat-harness-tools/scripts/gen-schema-docs.ts
   ```
 
 - Les **instructions de compétences** (`docs/reference/skill-instructions/*.md`) sont également
   générées — ne les modifiez jamais manuellement. Modifiez le corps des compétences sous
-  `skills/authoring/content-lifecycle/*.md` ou `src/skills/*.md` et régénérez :
+  `skills/`, `sdlc/skills/` ou `work-plan/skills/` et régénérez :
 
   ```sh
-  bun run scripts/gen-skill-docs.ts
+  bun run cat-harness-tools/scripts/gen-skill-docs.ts
   ```
 
 - La **référence de l'API TypeScript** (`/api/`) est générée par TypeDoc dans la CI.
@@ -84,7 +84,8 @@ bundle exec jekyll serve
 
 ## Livrer une modification
 
-Vérifier → confirmer l'aptitude à la fusion → pousser (push) → (uniquement sur demande) ouvrir une PR. Voir
-`sdlc/skills/sdlc-core/prepare-merge.md`. Maintenez le **formalisme du framework
+Ouvrez la PR dès le premier commit et poussez de petits incréments
+(`sdlc/skills/sdlc-core/continual-progress.md`) ; amenez la branche à un état propre, vert
+et poussé avec `sdlc/skills/sdlc-core/prepare-merge.md`. Maintenez le **formalisme du framework
 séparé du contenu** — le contenu a sa place dans son propre dépôt, et tout contenu
 dans cette documentation n'est fourni qu'à titre d'illustration.

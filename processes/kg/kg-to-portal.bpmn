@@ -10,7 +10,7 @@
   that implements it.
   The engine keeps the work context; no step carries work-plan markup.
 
-  Bean xies. Six stages between "the graph is in the repository" and "a
+  Six stages between "the graph is in the repository" and "a
   reader's browser has the bytes". Two things about the shape are deliberate
   and are the reason the diagram exists rather than a paragraph:
 
@@ -52,10 +52,10 @@
     <bpmn:participant id="Participant_KgToPortal" name="KG to public portal" processRef="Process_KgToPortal" />
   </bpmn:collaboration>
   <bpmn:process id="Process_KgToPortal" name="KG to public portal" isExecutable="false">
-    <bpmn:documentation>How a knowledge graph reaches a public portal this repository does not run: select, serialize, package, sign, distribute, and verify on the portal's side. folio-assistant — KG to public portal.
+    <bpmn:documentation>How a knowledge graph reaches a public portal this repository does not run: select, serialize, package, sign, distribute, and verify on the portal's side.
 
-  Six stages: select, serialize, package, sign, distribute, verify. Three
-  decisions belong to the DEPLOYMENT and are drawn as gateways rather than
+  Three decisions belong to the DEPLOYMENT and are drawn as gateways
+  rather than
   as steps — the ingestion transport, the versioned store, and the signing
   scheme. A pipeline that picks one of those is asserting a decision nobody
   made.

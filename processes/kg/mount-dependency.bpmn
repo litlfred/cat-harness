@@ -12,9 +12,9 @@
   <bpmn:resource id="build-pipeline" name="Build pipeline"/>
 
   <!-- ═══════════════════════════════════════════════════════════
-       Remote-mount a harness and its dependency closure — bean 0mpw.
+       Remote-mount a harness and its dependency closure.
 
-       Owner, 2026-10-06: no git submodules, ever; no `.deps/`. A remote
+       No git submodules, ever; no `.deps/`. A remote
        mount is a DECLARED DIRECTORY with a remote source pinned to a
        40-character SHA. The defaults (which directories, where) live in the
        harness's own declaration; a downstream may override them by id,

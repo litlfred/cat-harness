@@ -4,14 +4,12 @@ description: >
   Generate an MCP server from Tool nodes — the mapping from this harness's
   skill/Tool vocabulary onto the current MCP standard. Read before exposing a
   CLI tool over MCP, or when asked how an agent stands a service up.
-# consulted: reference material nobody performs — EXPLAINS a mapping — Tool node to MCP service — and instructs nobody. Classified the same way in the y1w9 sample of 15, by reading it, before this pass.
 consulted: true
 ---
 
 # MCP projection — turning a Tool node into an MCP service
 
-**The harness does not require MCP. It knows how to emit it.** That distinction
-is the whole design: `agentic-harness` runs on a filesystem alone (see
+**The harness does not require MCP. It knows how to emit it.** `agentic-harness` runs on a filesystem alone (see
 [`skills-and-tools`](skills-and-tools.md) §"The harness assumes no MCP"), and
 MCP is something an instance *produces* from its Tool nodes when it wants
 agents to reach them over a protocol rather than by reading files.
@@ -22,8 +20,7 @@ server without inventing the mapping each time.
 
 ## Why the projection is nearly free
 
-Because the pieces already line up, and that is not a coincidence — it is what
-the carrier decision bought:
+Because the pieces already line up:
 
 ```
 schemas/tools/tool.ts  (Zod, authoritative)
@@ -38,8 +35,7 @@ ToolDefinition.invoke.shell           ← already the mechanism
 An MCP tool declaration is a name, a description and a JSON Schema for its
 input (plus an output schema in recent spec revisions). A `ToolDefinition`
 carries all four in `id`, `summary` and `io`. **The projection is a rename, not
-a translation** — which is the sign the Tool schema was shaped correctly rather
-than a sign that MCP is trivial.
+a translation.**
 
 ## The mapping
 
@@ -68,13 +64,11 @@ arm uniformly will emit a server that proxies itself.
 **`invoke.inProcess` is the opposite case, and looks deceptively similar.** It
 is a function in the instance's own code, so the server calls it directly rather
 than spawning anything — there is no argv, and asking for one is an error rather
-than a gap in the node. It is what most of a mature instance's Tools turn out to
-be: of the twenty-four `folio-assistant` declares, twenty are in-process and
-only seven have a shell equivalent at all. A projector that handles `shell`
-alone will find nothing to project.
+than a gap in the node. Most of a mature instance's Tools are in-process, and
+few have a shell equivalent, so a projector that handles `shell` alone finds
+little to project.
 
-**A repeated input's elements are parsed individually, and that is the whole
-safety story.** A list of an injection-safe type cannot contain an element that
+**A repeated input's elements are parsed individually.** A list of an injection-safe type cannot contain an element that
 is a payload, because the element type already made one unrepresentable — so
 cardinality needs no new check. What it does need is the projection rule: emit
 the flag once per element, **never comma-joined**. Joining invents a separator
@@ -89,7 +83,7 @@ cannot run makes every plan containing it wrong.
 
 ## Three states, at the boundary
 
-Same rule as everywhere here, and it is easy to lose in a generator:
+Easy to lose in a generator:
 
 - **Projected** — the Tool has a `shell`, `container` or `inProcess` arm and a
   complete `io` block. It is listed.
@@ -141,9 +135,9 @@ swallowed a Tool.
 declared type first, and `recordInvocation()` writes the audit record.
 
 **It is deliberately not registered on a running server.** The harness is meant
-to carry no tools of its own, and the twelve hand-written MCP tools in
-`src/tools/` are content to be migrated OUT — wiring this to them would build on
-the thing being removed. Turning it on is one call, once that migration lands.
+to carry no tools of its own, and the hand-written MCP tools in `src/tools/`
+are content to be migrated out. Turning it on is one call, once that migration
+lands.
 
 Three of the rules above are enforced rather than remembered:
 `ToolDefinitionSchema` refuses a Tool whose only invocation is `invoke.mcp`;

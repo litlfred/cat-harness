@@ -34,7 +34,7 @@ Guidelines и руководств по реализации FHIR — на ба�
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list                          # что открыто
 beans create "<title>"              # …проверив, что такого заголовка ещё нет
-beans <id> --status in-progress     # занять задачу, у всех на виду
+bun run cat beans:claim <id>        # занять задачу, у всех на виду
 ```
 
 **2. Создайте свой первый folio.** Этот репозиторий — *платформа*; ваш контент живёт в собственном репозитории. Одна команда создаёт его каркас — манифесты, декларацию, файлы агента и ссылку обратно сюда:

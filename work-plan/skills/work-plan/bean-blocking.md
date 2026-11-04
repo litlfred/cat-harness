@@ -45,28 +45,17 @@ A bare `blocked` tells the next agent nothing except not to bother. Carry:
 ```markdown
 ## Blocked on
 
-- **waits on:** the Tools-schema carrier decision (#223)
+- **waits on:** the Tools-schema carrier decision
 - **since:** 2026-09-18T17:20Z
 - **expires:** 2026-09-20T17:20Z
 - **handoff:** if no answer by then, proceed with the JSON-LD carrier as
   recommended and note the assumption in the PR body.
 ```
 
-The bean's `status` stays `in-progress`. **`status: blocked` does not exist**,
-and this skill told agents to write it until 2026-09-22 — which is why the
-record below was never created even once.
-
-> | source | accepts |
-> |---|---|
-> | `beans update --help` | *"in-progress, todo, draft, completed, scrapped"* |
-> | `schemas/tools/tool-types.ts` | the same five — *"Exactly what `beans update --status` accepts"* |
->
-> Measured across the 99 in-progress beans on `main` that day: **0** carried
-> `expires`, **0** carried `status: blocked` (it does not parse), 4 asserted a
-> block in a structured way and 26 more only in prose. A prescribed form the
-> tool refuses is not a strict rule — it is a rule with a **0 % compliance
-> ceiling**, and every one of those 26 blocks fell back to prose that no date
-> can expire. Bean `zldg`.
+The bean's `status` stays `in-progress`. **`status: blocked` does not exist**:
+`beans update --status` accepts only `in-progress`, `todo`, `draft`,
+`completed` and `scrapped` (`schemas/tools/tool-types.ts` lists the same
+five). A block written only in prose has no date that can expire.
 
 **`expires` is an ABSOLUTE timestamp, not `+48h`.** A relative offset has to be
 read against `since` by whoever finds it, which means a stale block stays
@@ -75,12 +64,9 @@ enforces the four fields on any bean carrying this heading.
 
 ### An external block's expiry is a RE-ASK date, not a takeover date
 
-The corpus forced this the day the gate was written. `cz17` waits on **WHO's
-DAK Logical Model being final in FHIR**. There is no honest date on which an
-agent should "take that over" — inventing one would be fabricating a schedule
-for a standards body, which is worse than no expiry at all.
-
-So an expiry answers *"when should somebody look at this again"*, and the
+A bean waiting on an external party (a standards body finalising a model, for
+example) has no honest date on which an agent should "take that over" —
+inventing one would fabricate someone else's schedule. So an expiry answers *"when should somebody look at this again"*, and the
 **handoff says which kind it is**:
 
 - a block on work inside this repository → on expiry, take it over;
@@ -92,9 +78,9 @@ gate refuses is an expiry that is *absent*, not one that gets extended with a
 reason.
 
 **The expiry is the part that matters.** A block with no expiry is
-indistinguishable from abandoned work, and the agent that finds it has no way
-to tell whether to wait or take over. An expired block is a *signal* — it means
-"take this over" — rather than a bean quietly sitting forever.
+indistinguishable from abandoned work. An expired block is a *signal* to act on
+its handoff — take it over, or re-raise it — rather than a bean quietly sitting
+forever.
 
 ## Prefer sub-beans to blocking
 

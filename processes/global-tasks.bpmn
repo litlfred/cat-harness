@@ -2,11 +2,11 @@
 <!--
   cat-harness's shared steps: BPMN 2.0 global tasks, each one step that two or
   more of this layer's processes perform with the same Skill, in a lane naming
-  the same Role, for the same purpose (spec §7 of the lane / role / skill model).
+  the same Role, for the same purpose.
 
-  This file holds NO process, on purpose (owner, 2026-10-20, "a1"): a step is
-  defined here once and each process calls it with a callActivity whose
-  calledElement is the global task's bare id (b1). The calling lane names the
+  This file holds NO process: a step is defined here once and each process
+  calls it with a callActivity whose calledElement is the global task's bare
+  id. The calling lane names the
   Role; the global task names the Skill. A global task may take inputs, which
   each call gives a value, and is shared within this layer only. Every
   layer names its file plainly processes/global-tasks.bpmn: a diagram's identity
@@ -68,7 +68,7 @@
 
   <!-- crdm-signoff and crdm-close. -->
   <bpmn:globalScriptTask id="GT_RecordSignoff" name="Record the sign-off as a&#10;requirement-signoff attestation">
-    <bpmn:documentation>THE RECORD, and not relaxable (`adjudication`, A_RecordEntry). Append one `requirement-signoff` record to `test/attestations/requirement-signoff/&lt;set slug&gt;.attestations.json` — who (kind, id, actor), at, scope (the set or one member), the outcome from the requirement-set code list, the stage it moves the set to, the reason, and the permalink to the issue comment where it was decided — and set the set's `stage` to match. Issue #2405 FR-011 / FR-012.
+    <bpmn:documentation>THE RECORD, and not relaxable (`adjudication`, A_RecordEntry). Append one `requirement-signoff` record to `test/attestations/requirement-signoff/&lt;set slug&gt;.attestations.json` — who (kind, id, actor), at, scope (the set or one member), the outcome from the requirement-set code list, the stage it moves the set to, the reason, and the permalink to the issue comment where it was decided — and set the set's `stage` to match.
 
 GW_SignoffRecorded after this reads the record back, so this step cannot be skipped by completing it: a sign-off that left no attestation loops here again.</bpmn:documentation>
     <bpmn:extensionElements>

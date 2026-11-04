@@ -13,10 +13,9 @@
   <!-- ═══════════════════════════════════════════════════════════
        Mount a declared subgraph — ONE process for every content source.
 
-       The owner, 2026-10-03: "It's the same pattern. One of them is mounting
-       the directory while one of them is mounting a branch. Another mount
-       type could come in the future. A sub graph declares where it's getting
-       its content." Bean l4ay.
+       A subgraph declares where it gets its content; mounting a directory
+       and mounting a branch are the same pattern, and other kinds may
+       follow.
 
        So there is no "mount a branch" process beside a "read a directory"
        one. Every step that reads or writes a declared subgraph starts here:

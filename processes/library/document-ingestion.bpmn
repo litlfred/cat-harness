@@ -26,17 +26,9 @@
     <bpmn:participant id="Participant_Ingestion" name="Basic ingestion — an upload to an asset catalogued in library/" processRef="Process_Ingestion" />
   </bpmn:collaboration>
   <bpmn:process id="Process_Ingestion" name="Basic ingestion — an upload to an asset catalogued in library/" isExecutable="false">
-    <bpmn:documentation>Accepts an upload, records its extracted metadata in the knowledge graph, and catalogues the asset in `library/` — held if materialized, referenced if not. folio-assistant — Basic ingestion — an upload to an asset catalogued in library/.
+    <bpmn:documentation>Accepts an upload, records its extracted metadata in the knowledge graph, and catalogues the asset in `library/` — held if materialized, referenced if not.
 
-  Source of truth: this file. Open it in bpmn.io, Camunda Modeler, or any other
-  BPMN 2.0 tool. The SVG under docs/assets/img/workflows/ is generated from it
-  by `bun run cat render:bpmn` — never hand-edit the SVG.
-
-  The &lt;bootstrap.processes:skill&gt; extension on an activity names the folio-assistant skill
-  that implements it.
-  The engine keeps the work context; no step carries work-plan markup.
-
-REWRITTEN AS THE BASIC FLOW in placement PR6 (bean `apcg`; owner ruling 3, 2026-09-30): "only basic doc ingestion high level workflow in cat-harness. very little process context assumed. just that the uploaded asset has extracted metadata inserted into KG and asset in library/ (if materialized)." Accept, extract the metadata into the KG, ask whether the asset is materialized, place it in library/&lt;slug&gt;/. It calls NO subprocess and makes no content-type decision.
+THE BASIC FLOW, with very little process context assumed. Accept, extract the metadata into the KG, ask whether the asset is materialized, place it in library/&lt;slug&gt;/. It calls NO subprocess and makes no content-type decision.
 
 THE ID `Process_Ingestion` IS KEPT ON PURPOSE: `methodology-from-source.bpmn`'s Call_Ingest names it, and so does every higher-layer process that refines this flow. Refinement is by INVERSION — a refining process calls this one as its first step and continues with its own work; nothing here names a refinement, because the corpus has no BPMN extension point and a harness diagram naming a higher one would be an upward edge. The document pipeline (rungs, the four ingest phases, the L1 completeness gate, promotion, the summary queue) is such a refinement, in the layer above.</bpmn:documentation>
     <bpmn:extensionElements>
@@ -44,9 +36,9 @@ THE ID `Process_Ingestion` IS KEPT ON PURPOSE: `methodology-from-source.bpmn`'s 
     </bpmn:extensionElements>
     <bpmn:laneSet id="Process_Ingestion_LaneSet">
       <bpmn:lane id="Lane_0" name="Contributor (human or agent)" partitionElementRef="user">
-        <bpmn:documentation>Whoever puts the file in the queue. UNDOCUMENTED UNTIL 2026-09-30, and legitimately so until then: the lane held nothing but a start event, and a lane with no activity has no performer to describe. Task_Place gave it one.
+        <bpmn:documentation>Whoever puts the file in the queue.
 
-"HUMAN OR AGENT" IS A MEASUREMENT, NOT A HEDGE. Over this repository's own history both have stood here: files have reached a queue in commits authored by `Carl Leitner` (including 16 made through the forge's web form, committer `GitHub`) and in commits authored by `Claude`. That is why Task_Place is a plain `bpmn:task` rather than a `userTask` — asserting a human performs it would contradict the lane's own role graph, which is what `activity-fulfilment-kind` exists to catch.
+"HUMAN OR AGENT" IS A MEASUREMENT, NOT A HEDGE: both place files here. That is why Task_Place is a plain `bpmn:task` rather than a `userTask` — asserting a human performs it would contradict the lane's own role graph, which is what `activity-fulfilment-kind` exists to catch.
 
 WHAT THE LANE IS ACCOUNTABLE FOR, and where it ends. Choosing a route, writing the bytes into the DECLARED queue of the instance that will own them, and discharging afterwards whatever that route could not — the web form has no working tree, so no pre-commit hook and no generator runs on it. The lane does NOT ingest and does not clean the queue: it hands over, and Lane_1 takes it from there. `upload-routes` carries the routes and their obligations.</bpmn:documentation>
         <bpmn:flowNodeRef>StartEvent_Dropped</bpmn:flowNodeRef>
@@ -67,7 +59,7 @@ THE FLOW ENDS IN THIS LANE. The asset catalogued in library/ — held, or record
 file for the folio">
       <bpmn:documentation>ONE OF TWO ENTRY POINTS. A drop during an editing session triggers ingestion in the background; the contributor does not wait for it.
 
-THE OTHER is materialization: an asset listed in a remote graph that this instance, or one of its dependencies, declares in `remoteGraphs`. Owner, 2026-09-20: "things can enter library through uploads/ -&gt; library/ document ingestion or through retrieval / materialization of asset known through listed external KG in one of the dependent harnesses."
+THE OTHER is materialization: an asset listed in a remote graph that this instance, or one of its dependencies, declares in `remoteGraphs`.
 
 That path runs materialize-remote.bpmn FIRST -- purpose, then the five gates -- and re-enters at the metadata step with a file that already carries its provenance and its fixity. It does NOT pass through uploads/, and that is deliberate: uploads/ is a queue for things somebody dropped, and a materialized asset was never dropped. Recording it as an upload would lose the one fact that distinguishes the two, which is that somebody decided it could be held.
 
@@ -76,7 +68,7 @@ The event is named for the intent, not the arrival, because Task_Place follows i
     </bpmn:startEvent>
     <bpmn:task id="Task_Place" name="Place it in uploads/
 by a declared route">
-      <bpmn:documentation>THE FIRST LINK, and it did not exist until 2026-09-30. Everything downstream of here takes a file that is already in the queue, and both ingest Tools type their first input as "The upload to ingest, under the declared `uploads` graph". So the act of PUTTING it there was performed by three different mechanisms and governed by none of them.
+      <bpmn:documentation>THE FIRST LINK: everything downstream of here takes a file that is already in the queue.
 
 WHAT THIS STEP IS. The basic flow's ACCEPT step: choosing an arrival route, writing the bytes into the declared queue of the instance that will own them, and discharging what that route does not discharge for you. The routes, what each writer owes, and the two that are mechanisms against the one that is a persona are in the `upload-routes` skill; `upload-url` composes the forge URL for the web route from the declaration rather than from a literal.
 

@@ -34,22 +34,6 @@ only things you will ever see are what it pushes and what it posts.
 and `bun run cat beans:claim`. An executor without them reports that it is
 blocked; it does not edit bean files by hand.
 
-## Why this exists: bean `mac1`, 2026-10-02
-
-The cloud session could restore and verify an FHIR AST cache, but it could not
-build one, because `packages.fhir.org` was blocked. It wrote bean `mac1` for a
-local agent on the owner's Mac: re-seed two caches, done when `verify` passes
-on a fresh clone. The handoff went wrong in five ways, and all five were
-visible only from outside:
-
-| what happened | the rule it breaks |
-|---|---|
-| the executor worked in another checkout (`folio-assistant-backup`) and created **its own** bean, so two files on one branch now carry the id `mac1` | §1, claim the handed bean and never create one |
-| the bean said "STOP and report the counts" without saying where, so the coordinator had to add a channel mid-flight, and the owner asked *"hopefully your bean told where to coordinate"* | §2, the report channel is in the bean from the start |
-| one cache was seeded from `5891a22` while the IG's `main` was `e151a4d`, because the executor's checkout was behind | §4, pin the inputs and check them first |
-| the executor closed `mac1` on its own build log, and `verify` on a fresh clone failed for **both** caches | §5, the verifier closes |
-| the coordinator "approved" a `--force` in a PR comment that the bean itself forbade | §6, only the owner grants an exception |
-
 ## 1. One bean, one writer, and the receiver claims it
 
 Before you hand off, write down who may write what. Put it in the bean as a
@@ -66,8 +50,8 @@ from a person:
 **The executor claims the handed bean and never runs `beans create` for the
 handed work.** If `beans show <id>` finds nothing, it is in the wrong branch
 or the wrong checkout. That is a **stop-and-report**, not a cue to recreate
-the bean: a fresh `beans create` mints a new id, or, as with `mac1`, a second
-file under an id someone typed by hand, and now two beans answer one question.
+the bean: a fresh `beans create` mints a new id, or a second file under an id
+typed by hand, and then two beans answer one question.
 
 **After the claim, the coordinator never edits the bean.** The claim writes to
 the bean file, so a concurrent edit is a merge conflict on exactly the file
@@ -108,8 +92,7 @@ Do bean <id> on branch <branch> of repo <owner>/<repo>.
 That is all an agent with a checkout needs to find everything else. The
 person should not have to edit, shorten or explain it. A paste that carries
 the instructions is long, unversioned and impossible to correct. A paste that
-carries less ("do bean `mac1`, report on #1816") leaves the executor asking
-which branch, as the owner had to ask on 2026-10-02.
+carries less leaves the executor asking which branch.
 
 **What the bean opens with: a `## Brief` addressed to the executor.** It is
 the first section after the front matter, so `beans show` prints it first.
@@ -127,7 +110,7 @@ the executor guess who is speaking.
 |---|---|
 | who you are and why this came to you | executor; the coordinator lacks `packages.fhir.org` |
 | WHERE: repository, canonical checkout path (and which one NOT to use), branch and its PR, this bean's id and file path | `~/space_cats/folio-assistant`, not `-backup` |
-| START: the exact commands, with a test that FAILS in the wrong checkout, ending in `beans:claim` | naming the checkout is not enough: `mac1`'s executor ran from `-backup` in all three attempts |
+| START: the exact commands, with a test that FAILS in the wrong checkout, ending in `beans:claim` | naming the checkout is not enough; the test makes the wrong checkout fail |
 | the task in two or three sentences, and why the last attempt failed | so the executor knows what the pins guard against |
 | REPORT: where, and the line formats | §2 |
 | STOP AND REPORT IF | the bean's `## Fails if` |
@@ -202,9 +185,7 @@ expected  <dak-layer> main = e151a4d   have 5891a22   → STOP, report, do not b
 Where the claim is reproducibility (a cache, a digest, a release), do the
 step **from a fresh clone**. A long-lived checkout carries untracked files,
 local edits and line-ending conversions that a clean clone does not, and the
-consumer will have a clean clone. In `mac1`, the trust IG's recorded digest
-(`e9eb867e…`) matched nothing a clean clone of the same commit computes
-(`c1023d82…`).
+consumer will have a clean clone.
 
 ## 5. The executor's measurement is evidence, not the close
 
@@ -219,15 +200,12 @@ clone, another environment, CI), the executor cannot close the bean:
 - the **verifier** runs the named check and closes the bean, or records the
   failure and reopens the work.
 
-A build log saying "678 resources, 671 edges" is the executor's view of its
-own tree. `mac1`'s criterion was `verify` on a fresh clone, and it failed
-while the log read clean.
+A build log is the executor's view of its own tree, and a fresh-clone check
+can fail while the log reads clean.
 
 **The executor's own check runs on an untouched copy, not on the tree it
 built in.** A build leaves its own files behind, so a check run where the
-work happened agrees with itself whether or not the work is right. In `mac1`
-attempt 2 the executor's `verify` read `valid` in its build clone, and the
-verifier's read `stale-inputs` on untouched clones for both caches. So the
+work happened agrees with itself whether or not the work is right. So the
 bean's local-check step names a **second** copy: a new clone, a clean
 container, the published artefact. Never the working directory the step ran
 in. If the step can only be checked in place, say so in `## Evidence`, and
@@ -267,14 +245,13 @@ same way every time:
 | **silent**: no `started` line by the expiry | no line in the report channel; no liveness signal ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"A quiet claim") | ask the person **once**, in the channel, re-posting the one sentence (§3); set the next expiry. Never re-hand to a second executor while the first claim may be live |
 | **stopped**: `refused` or `blocked` | its report line | the coordinator settles the cause if it is in this repository; a boundary or an exception goes to the **owner** (§6) with the numbers. The executor waits |
 | **wrong result**: the step ran, `## Done when` fails | the verifier's check | record the failure under `## Attempts` (attempt *n*: inputs, what was measured, the cause); the bean goes back to `todo` with a holder note, never `completed` or `scrapped`; fix what the cause names (usually the bean) and re-hand |
-| **out of protocol**: created a bean, wrote another bean, pushed outside the boundaries | an unexpected file or ref | a duplicate bean is re-identified and `scrapped` with a pointer, never deleted (`mac1` → `8ao5`); a stray push is **reported to the owner**, never reverted by the coordinator ([`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)) |
+| **out of protocol**: created a bean, wrote another bean, pushed outside the boundaries | an unexpected file or ref | a duplicate bean is re-identified and `scrapped` with a pointer, never deleted; a stray push is **reported to the owner**, never reverted by the coordinator ([`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)) |
 | **partial**: some items done | per-item lines | per-item evidence; the bean stays open until every item verifies |
 
 **Two failed attempts with the same cause go to the owner, not round again.**
 A third hand-off of the same bean with the same cause shows that the bean
 cannot express what the step needs. The owner decides whether to change the
-step, the environment, or the executor. This is the rule an agent tends to
-break by re-handing with more emphasis.
+step, the environment, or the executor.
 
 ## Checklist: the bean you hand over
 

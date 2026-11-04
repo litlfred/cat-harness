@@ -44,20 +44,18 @@ CLI/API clients can skip OAuth entirely:
 curl -H 'Authorization: Bearer <FOLIO_API_TOKEN>' https://<folio-domain>/mcp
 ```
 
-## The API decides with ODRL (issues #1180, #1207)
+## The API decides with ODRL
 
-**Half built, 2026-09-23 (#1207).** The API server no longer compares a
-viewer < collaborator < owner ladder. `src/core/rbac.ts` treats the gateway's
-tier as a declared actor (`viewer`, `collaborator`, `owner` in
-`cat-harness/scenarios/actors/`), each route names the ODRL **action** it performs,
-and `policies/http-gateway.jsonld` says which tier holds which action. It
-reproduces what the ladder allowed. An explicit `X-User-Actor` header, once the
+`src/core/rbac.ts` treats the gateway's tier as a declared actor (`viewer`,
+`collaborator`, `owner` in `scenarios/actors/`), each route names the ODRL
+**action** it performs, and `policies/http-gateway.jsonld` says which tier
+holds which action. An explicit `X-User-Actor` header, once the
 gateway sends one, takes precedence over the tier. What is still to build is
 steps 1 and 4 below: the gateway mapping a login to a finer-grained actor, and
 a relationship engine. The same policies govern BPMN task execution
 ([`task-authorization`](../../process/process-core/task-authorization.md)).
 
-The target, per the owner's 2026-09-23 decisions:
+The target:
 
 1. **The data store authenticates** (the auth-gateway here) and maps the login
    to an **actor id**. That mapping lives in the data store only; no actor file
@@ -70,7 +68,7 @@ The target, per the owner's 2026-09-23 decisions:
 4. **A relationship engine (OpenFGA) is later**, and the policies do not change
    when it arrives: the data store would compile them.
 
-Until then the whitelists stay authoritative, and the table below still
+Until then the whitelists stay authoritative, and the providers table above
 describes the running gateway.
 
 ## Asking GitHub directly: `auth_whoami`

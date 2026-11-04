@@ -15,11 +15,11 @@
     <bpmn:participant id="Participant_Process_MaterializeRemote" name="Materialize remote content: the shared subprocess" processRef="Process_MaterializeRemote"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_MaterializeRemote" name="Materialize remote content: the shared subprocess" isExecutable="false">
-    <bpmn:documentation>One process, called wherever remote content is landed locally. The owner, 2026-09-20: "so if large remote collection, and no restrictions known in context, user can import/maertialize locally. size considerations apply. similar concept in bootstrapping harness... it is remtoe. content. bootstrape materelaiz cat-harness locally (or other harness)... similar, should share common subprocess."
+    <bpmn:documentation>One process, called wherever remote content is landed locally: a large remote collection with no restrictions known in context may be materialized locally, size permitting, and bootstrapping a harness is the same shape.
 
 Two callers today and they are genuinely the same shape: sample-import.bpmn landing three items out of an ~0.7 TB catalogue, and bootstrap fetching a harness. upstream-pins.json is half of the second one's refresh and names itself neither.
 
-STRICT, and the five gates are why. Each is a decision a person makes and none is answerable from a file, so a gate that only warned would be a gate nobody fails — the xom7 shape, a workflow that failed all thirty times it ran with nothing in the repository saying so.
+STRICT, and the five gates are why. Each is a decision a person makes and none is answerable from a file, so a gate that only warned would be a gate nobody fails.
 
 The three states (referenced / materialized / unknown) and the five gates are schemas/materialization.ts in folio-assistant-core. Nothing here restates them.</bpmn:documentation>
     <bpmn:extensionElements>
@@ -27,7 +27,7 @@ The three states (referenced / materialized / unknown) and the five gates are sc
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_MaterializeRemote">
       <bpmn:lane id="Lane_0" name="Contributor (human or agent)" partitionElementRef="user">
-        <bpmn:documentation>One task, asked first for a reason: working vs. archival is not just an input to the five gates that follow, it changes what three of them MEAN — an archival copy is the only one that can discharge source loss, and a process that gated before asking this would be judging a copy against obligations it did not yet know applied. </bpmn:documentation>
+        <bpmn:documentation>One task, asked first for a reason: working vs. archival is not just an input to the five gates that follow, it changes what three of them MEAN — an archival copy is the only one that can discharge source loss, and a process that gated before asking this would be judging a copy against obligations it did not yet know applied.</bpmn:documentation>
         <bpmn:flowNodeRef>StartEvent_Asked</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Purpose</bpmn:flowNodeRef>
       </bpmn:lane>
