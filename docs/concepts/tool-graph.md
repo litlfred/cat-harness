@@ -55,7 +55,9 @@ coverage that does not exist.
 ## How a Tool node is authored
 
 A Tool node is a JSON file, `tools/<id>/<id>.json`, declaring
-`"$schema": "tool-definition/v1"`, one folder per Tool. The JSON-LD and JSON
+`"$schema": "tool-definition/v1"`, one folder per Tool. The tools layer's
+`defineTool` (`schemas/tools/tool.ts`) validates a definition against the same
+schema, so a malformed node is refused when it is loaded. The JSON-LD and JSON
 Schema renderings and the [generated view]({{ '/tools/' | relative_url }}) are
 generated from them.
 
