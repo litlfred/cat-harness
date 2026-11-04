@@ -39,7 +39,7 @@
           "schema": {
             "$type": "Slug"
           },
-          "description": "The slug again, exactly. Anything else refuses, so a confirmation cannot carry over to a DIFFERENT preview.",
+          "description": "The slug again, exactly. Anything else refuses, so a confirmation cannot carry over to a DIFFERENT preview, which a boolean would allow.",
           "required": false,
           "arg": {
             "flag": "--cleanup-confirm"
@@ -65,7 +65,7 @@
     ],
     "selection": {
       "when": "On a pull request touching the docs, schemas, content or skills it fires on its own — reach for the dispatch arm only to stage a branch that has no open pull request, or to remove a preview the close event could not reach.",
-      "limits": "The removal arm is guarded THREE ways: `workflow_dispatch` is available only to an actor with write access; `cleanup_confirm` must repeat the slug exactly; and the removal is preflighted at removal time against the same liveness signals the health sweep uses (`deletion-requires-confirmation`).",
+      "limits": "The removal arm is guarded THREE ways: `workflow_dispatch` is available only to an actor with write access; `cleanup_confirm` must repeat the slug exactly; and the removal is preflighted at removal time against the same liveness signals the health sweep uses: `deletion-requires-confirmation` applied to the tool most able to break it. This node does not claim that skill, because implementing the discipline once is not the same as stating it.",
       "cost": "A full site build plus a push to the publish branch. Concurrency is keyed on the branch or the cleanup slug, NOT the shared ref, so two cleanups of different previews do not cancel each other."
     },
     "requires": {

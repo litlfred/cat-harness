@@ -41,7 +41,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "The QA tree, mirroring each subject's own path (several basenames occur twice)."
+          "description": "The QA tree, mirroring each subject's own path, because a flat tree would collide: several basenames occur twice."
         },
         {
           "name": "worstSeverity",

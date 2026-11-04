@@ -3,7 +3,7 @@
   "tool": {
     "id": "ci-health",
     "title": "Is CI passing on the default branch?",
-    "description": "Report each workflow's state on the default branch, which a checkout cannot see: a red workflow looks exactly like a green one from in here. One API call over the recent run history, not one request per workflow, so it stays inside the unauthenticated 60/hr limit.",
+    "description": "Report each workflow's state on the default branch, which a checkout cannot see: a red workflow looks exactly like a green one from in here. One API call over the recent run history, not one request per workflow, so it stays inside the unauthenticated 60/hr limit and stays usable at session start.",
     "install": {
       "none": true
     },
@@ -17,7 +17,7 @@
           "schema": {
             "$type": "Flag"
           },
-          "description": "Emit the block the session-start sweep prints. ALWAYS exits 0: the sweep runs it as `if ! …; then`.",
+          "description": "Emit the block the session-start sweep prints. ALWAYS exits 0: the sweep runs it as `if ! …; then`, and a non-zero exit would print the report AND declare it unchecked every time CI is red.",
           "required": false,
           "arg": {
             "flag": "--markdown"
@@ -39,7 +39,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "Write the markdown report to a file AND keep the exit code — which `--markdown` cannot do, since it always exits 0.",
+          "description": "Write the markdown report to a file AND keep the exit code — which `--markdown` cannot do, since it always exits 0. Its own flag, so one API call is not spent twice.",
           "required": false,
           "arg": {
             "flag": "--out"
@@ -66,7 +66,7 @@
     "selection": {
       "when": "Before trusting ANY workflow's outcome, and at session start: a workflow's result is invisible from a checkout.",
       "limits": "It reads the DEFAULT BRANCH, so on a PR it describes `main` and not the diff — which is why it is deliberately not one of the `gates`. `GITHUB_TOKEN`/`GH_TOKEN` is used when present; without one a public repo still works and a private one fails. A REFUSED OR FAILING API CALL EXITS 2 AND IS NEVER GREEN: could-not-look must stay distinguishable from looked-and-it-was-fine.",
-      "cost": "One HTTP request; fast enough for the session-start sweep."
+      "cost": "One HTTP request; fast enough for the session-start sweep, which is why it makes a single call."
     },
     "requires": {
       "runtime": [

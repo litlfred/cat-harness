@@ -18,7 +18,7 @@
           "schema": {
             "$type": "Text"
           },
-          "description": "The satisfies map, the count of skills with and without a Tool, then the verdict. Exit 0 every join holds, 1 at least one does not. A skill with NO Tool is reported and is NOT a failure: many skills are pure judgement."
+          "description": "The satisfies map, the count of skills with and without a Tool, then the verdict. Exit 0 every join holds, 1 at least one does not. A skill with NO Tool is reported and is NOT a failure: many skills are pure judgement, and failing on them would make the report unusable."
         }
       ]
     },
@@ -27,7 +27,7 @@
     ],
     "selection": {
       "when": "Before pushing any change to `tools/`, and as the first of the three audits `code-node-review` lists. It is the check that refuses a contract nobody could satisfy.",
-      "limits": "It checks the JOINS, not the truth: a node can pass while its `invoke` names a command that does something else entirely. That is a reviewer's to catch.",
+      "limits": "It checks the JOINS, not the truth: a node can pass while its `invoke` names a command that does something else entirely. That is a reviewer's to catch, which is why the skill exists and not a check script alone.",
       "cost": "Seconds. Loads the Tool graph and the skill corpus in-process."
     },
     "requires": {
