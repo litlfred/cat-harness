@@ -39,6 +39,9 @@ entered.
   target declared and not resolving.
 - **minor** — nobody has said yet, for a kind that never owed one.
 
+They are ranked apart because an axis that cannot tell a broken promise from
+an open question has a count that means nothing.
+
 ### Which kinds owe a visualiser
 
 **Every kind that is not part of the static knowledge graph** — active
@@ -50,18 +53,21 @@ The rule is `holds !== "content"` (`owesVisualiser()` in
 `schemas/kg/cat-harness.ts`). `content` is *"authored nodes a reader or a tool
 consumes as the subject matter… It stands on its own"*, so it needs no viewer.
 
-Do not key the rule on `holds === "state"`: `state` and `context` are both
-non-content, and a kind moving between them must not change what it owes.
+Do not key the rule on `holds === "state"`: `fsh-guts` is `context` (no
+running step writes it) and still owes a visualiser, and a kind moving between
+`state` and `context` must not change what it owes.
 **Any rule over this axis must pass that test.**
 
 ### Exemptions
 
 - **`renderable` kinds are exempt by construction.** `docs` and `folio`
-  render to pages, so the pages ARE the view.
+  render to pages, so the pages ARE the view and a separate viewer would be a
+  second rendering of the same thing.
 - **Bootstrap is exempt by INSTANCE, not by kind.** `bootstrap` has no
   visualiser, but it must have its json/jsonld. The exemption is keyed on the
   instance name, so every other instance declaring the same kind keeps the
-  obligation.
+  obligation, and an exemption by kind would stop checking the one thing
+  bootstrap must have.
 - **An unknown kind owes one.** A kind nobody has classified must not escape
   an obligation by being unmentioned. (This is the opposite of `graphLayer()`,
   whose `undefined` callers must *not* read as `content`; both fail safe.)
@@ -136,14 +142,16 @@ consumer scanning nothing and reporting a clean run. Even `bootstrap`, exempt
 from a visualiser, keeps this obligation.
 
 `SubgraphCoverageSchema.exempt` therefore carries three keys, not four, and
-`tsc` enforces it.
+`tsc` enforces it, so a waiver for serialisations is a type error rather than
+a silent `undefined` that reads as "not exempted".
 
 ### How it fits the render pipeline
 
 Each graph's render pipeline is **reader → projection → viewer → gate**. The
 serialisation obligation is a constraint on the **projection**, not a fifth
 part: the projection must be reachable as the three content types at the
-directory's URL and per node beneath it. Do not compose these URLs by hand:
+directory's URL and per node beneath it, so a graph that has done the pipeline
+work has mostly done this. Do not compose these URLs by hand:
 the directory's declaration answers which directory holds the nodes; the
 published-URL resolver answers where they are served.
 
@@ -169,8 +177,9 @@ be.
 
 ## Reading the axis
 
-It is **advisory** — it reports, ranks and exits 0. It becomes fatal once the
-count of unmet obligations is low enough to mean something.
+It is **advisory** — it reports, ranks and exits 0, because a hard gate over a
+large backlog is a wall somebody switches off. It becomes fatal once the count
+of unmet obligations is low enough to mean something.
 
 - **`undetermined` is never a clean run.** An unreadable declaration is
   reported as such; a sweep blind on one instance has not cleared the others.

@@ -22,7 +22,9 @@ your own.
 `audit:reachability:check` is a step in `code-quality-gates.yml`, so
 `gates.ts` derives it and `bun run cat gates` runs it. `--strict` is not wired:
 the self-declared entry points nothing runs are a backlog, and `failOnNew` is
-what makes a new one fail meanwhile.
+what makes a new one fail meanwhile. A `check:` alias never arrives ahead of
+its workflow step — `gates.ts`'s `unrunScripts` ratchet refuses one that no
+workflow runs — because an unwired gate must never read as a passing one.
 
 ---
 
@@ -66,8 +68,9 @@ Three things the walk had to get right, each of them a way to miss a finding:
 
 **Keep `unaryTest` throwing.** Its own comment says why — *"so an expression
 this evaluator does not implement can never be mistaken for a rule that simply
-did not match"*. An evaluator that returned `false` for what it cannot read
-would make a table route confidently and wrongly.
+did not match"*. That property is what makes an unevaluable table findable; an
+evaluator that returned `false` for what it cannot read would make a table
+route confidently and wrongly.
 
 **An unevaluable table is a hard failure, not a finding.** It fails
 `--check`, which runs on every push. That is a deliberate divergence from
@@ -117,7 +120,8 @@ the measurement is visible without a second verdict being minted.
 Two approaches fail. **Asking the broad question** (*is any module reached by
 nothing?*) returns hundreds of findings, mostly corpora discovered by directory
 walk — content blocks, schema modules a registry names, the tests `bun test`
-globs — which no inference can tell from a module nobody can run. **Narrowing
+globs — which no inference can tell from a module nobody can run, and a gate
+with hundreds of findings is switched off within a week. **Narrowing
 the signals** (require an invocation verb beside the mention) still leaves
 dozens, mostly schema modules a declaration points at.
 
@@ -260,4 +264,5 @@ repository.
 ## Related
 
 [`audit-coverage`](audit-coverage.md) is the sibling: its subject is a **kind
-of node**, this one's is a **kind of artefact**.
+of node**, this one's is a **kind of artefact**. They are separate skills
+because a skill that grows a second subject is split, not extended.

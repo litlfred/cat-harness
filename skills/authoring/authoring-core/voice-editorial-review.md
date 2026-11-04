@@ -98,7 +98,7 @@ the criterion opens the witness that ruled on it — which checker, at which
 ## Do not
 
 - **Do not edit prose to silence a criterion you believe is out of scope.**
-  That hides the scoping defect.
+  That hides the scoping defect and costs the next folio the same argument.
 - **Do not mass-apply one finding's resolution across its siblings** without
   reading them; one criterion can fire for different causes.
 - **Do not treat `critical` as "fix first".** Severity ranks the criterion's

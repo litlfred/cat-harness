@@ -130,7 +130,8 @@ leaves, re-pointing the platform is a one-file edit instead of a sweep.
 
 `cat-harness-tools/scripts/tests/instance-separation-imports.test.ts` is the
 guard. It covers **every** instance whose `repository` differs from its
-`livesAt.repository`, not only those that opted in. Layers other instances
+`livesAt.repository`, not only those that opted in, because an opt-in guard
+is silent for exactly the instance that has no seam. Layers other instances
 build on are an explicit, checked exemption, and an instance that still climbs
 has a ceiling that may only fall.
 

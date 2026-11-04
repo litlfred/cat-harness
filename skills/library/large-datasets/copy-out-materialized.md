@@ -93,12 +93,14 @@ who wrote them, so it needs no attribution of a commit to a process step.
 
 **`refresh-materialized.bpmn`'s `Task_Apply`** is the one step in the declared
 corpus that rewrites bytes a materialization record describes, so it writes
-the new fixity in the same change.
+the new fixity in the same change; otherwise a correct run of it would fail
+the gate as an unannounced edit.
 
 **No publication process writes to materialized content.**
 `kg-to-portal.bpmn`'s `S_Sign` signs a subgraph cut from the KG — derived
 content, not held upstream bytes. So the publication case is a rule with no
-instance yet, stated here rather than drawn as a step no diagram does.
+instance yet, stated here rather than drawn as a step no diagram does, because
+a declared-but-absent step makes a consumer report a clean run over nothing.
 
 ## What to check afterwards
 

@@ -71,7 +71,7 @@ artefact.*
 **Ask the repository's own function; do not re-derive its rule.** Supporting
 pages *inside* a skill (`skills/<package>/<skill>/<page>.md`) carry the same
 front matter and are not skills; `skillMdDirs()` already encodes that, so the
-generator calls it.
+generator calls it: two answers to "what is a skill" is one answer too many.
 
 ## The sub-graph segment is the declared `id`, not its path
 

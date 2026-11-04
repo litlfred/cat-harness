@@ -102,7 +102,8 @@ assignment as a header, then the body as a reader sees it.
 
 **On the knowledge graph** when the note is one of many, or when its look
 matters — build the page and screenshot it. A rendered artefact cannot be
-assessed from a description of it.
+assessed from a description of it, and defects that a green test suite misses
+show the moment somebody looks.
 
 Then **ask**, and attach only on a yes.
 

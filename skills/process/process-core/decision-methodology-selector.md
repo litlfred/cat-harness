@@ -151,7 +151,8 @@ see §"What this does NOT cover".
 | §5 distance-based / outranking | 4 | no |
 | **total** | **23** | **11** |
 
-**An unsourced row is not thereby wrong.** It means nobody here has read a
+**An unsourced row is not thereby wrong**: these are standard methods and their
+guidance may be good. It means nobody here has read a
 source for it, no methodology node renders it, and `methodology-adoption`'s
 *"never adopt a method by naming it"* applies.
 
@@ -167,7 +168,9 @@ The 23 rows are material for that prose, not a menu of returnable answers, and
 no individual method gets a node.
 
 1. **`methodologyId` is always resolvable.** Every value the selector can emit
-   is a node in the graph. Never invent an id for a method.
+   is a node in the graph, so a consumer that follows the id finds a document.
+   Never invent an id for a method: an id that names no node sends a consumer
+   to a methodology that does not exist.
 2. **An unsourced row may still be named in prose**, and must be named as what
    it is. "Of the distance-based family, TOPSIS is the usual first reach —
    note that nothing in this repository's library covers it" is honest; "use

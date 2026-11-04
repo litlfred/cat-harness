@@ -99,6 +99,8 @@ it is neither, by the owner's decision.
 > changes what every artefact written into it inherits, which cannot be fixed
 > later (`bootstrap/README.md`, §2).
 
+The prefix convention is a default with a documented override, not a rule.
+
 ---
 
 ## What a new graph typology must declare
@@ -130,8 +132,10 @@ for the authoritative field list. What an author has to *decide*:
 `document-ingestion.bpmn` writes it; and not `content`, because a QA finding
 against a derived section is a finding against its **generator**.
 
-**There is no "could not determine" on this axis.** Whoever adds a kind knows
-what a process does with it. The classification of every existing kind, with
+**There is no "could not determine" on this axis.** A third state is right
+when a check looked and could not tell, and wrong when an author is
+registering a kind they are defining: whoever adds a kind knows what a process
+does with it. The classification of every existing kind, with
 its reason, and the two supporting questions for a hard case, are in
 [`content-context-and-state-graphs`](content-context-and-state-graphs.md).
 
@@ -159,8 +163,9 @@ The rule is **a layer owns the kinds it can render**.
 
 **Registration on import is for a kind that may legitimately be ABSENT.**
 `folio` is contributed by a dependency and may not be there; `docs` ships with
-the harness and can never be absent. Ask of your own new kind: *can this kind
-be absent?* If no, it belongs in the table.
+the harness and can never be absent, so registering it on import would make
+every consumer import a kind that is always present. Ask of your own new kind:
+*can this kind be absent?* If no, it belongs in the table.
 
 **The boundary `docs` must not cross** is the SUBJECT, not the feature list.
 The moment a `docs` page needs a block viewer, a LaTeX pass, a QA badge or a
@@ -214,7 +219,9 @@ only where the terms resolve.
    exemption with a **reason** (`covered-by`, `ci-only`, `no-folio`). *"It is
    slow"* and *"it usually passes"* are not reasons.
 
-A hand-picked subset of the gate set is not the gate set.
+The second half is what makes the first safe to rely on: a gate the local
+runner passes can still go red in CI. A hand-picked subset of the gate set is
+not the gate set.
 
 ## Related
 

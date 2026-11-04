@@ -16,7 +16,8 @@ it has to live.
 
 **Not to be merged with [`decision-audit`](../../../sdlc/skills/sdlc-core/decision-audit.md).** That records
 why a decision *was* made, after the fact, and governs overruling a QA finding.
-This is about what a person is shown *before* they decide.
+This is about what a person is shown *before* they decide; a skill that tried
+to be both would be read at the wrong moment.
 
 ## Why not in the option descriptions
 
@@ -71,11 +72,13 @@ rows against each other.
 **The options in the selection tool are then LABELS for choices already
 explained.** A label names the option and, at most, restates its headline. A
 reader who has read the preamble should be able to choose from the labels alone;
-a reader who has not should find nothing new hiding in them.
+a reader who has not should find nothing new hiding in them. If the labels are
+where the information is, the comparison was never made.
 
 ## When this does not apply
 
-**A small, reversible choice does not earn a table.** The trigger is the same as `opening-brief`'s: would getting this wrong be
+**A small, reversible choice does not earn a table**: the reader would pay
+attention for something that did not need it. The trigger is the same as `opening-brief`'s: would getting this wrong be
 expensive or surprising? If no, recommend and proceed.
 
 **One-option "decisions" are not decisions.** If the honest comparison has one

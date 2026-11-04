@@ -203,7 +203,9 @@ ends by restating the weakness.
 `policies/http-gateway.jsonld` grants `perform-task` to `owner` and
 `collaborator` in every lane; `viewer` gets nothing beyond the anyone floor.
 The principal is the one **GitHub** vouches for (`githubPrincipalFor`), not an
-actor name the caller types.
+actor name the caller types. Together these are what make strict mode workable:
+without a permit in every lane and an authenticated principal, strict would
+stop every process.
 
 `workflow_gate` and `workflow_complete` run in **strict** mode
 (`ENGINE_MODE` in `src/tools/workflow.ts`). Strict refuses `deny`, a role
@@ -216,7 +218,8 @@ is allowed for `owner` and `collaborator` and refused for `viewer` (`unknown`)
 and for nobody. `scripts/tests/task-authorization-strict.test.ts` pins this.
 
 **What strict costs:** if GitHub cannot be asked (no token, no network, rate
-limit), no step can be recorded. `authorizeTask` itself still defaults to advisory, so
+limit), no step can be recorded; that is the price of authentication being
+real rather than typed. `authorizeTask` itself still defaults to advisory, so
 a reader that re-checks history (the PROV-O report below) is not strict by
 accident.
 

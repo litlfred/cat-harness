@@ -67,7 +67,9 @@ chapter):
 
 The eight exposition hallmarks, their 0/1/2 rubric, and the places where the
 measured standard refines the profile above live in the science layer's
-exposition-standard skill, which names this skill from its side.
+exposition-standard skill, which names this skill from its side, because a
+standard with its own voice profile and strict QA gate belongs to the content
+type that uses it.
 
 **Two of its findings override rules stated above when writing mathematical
 prose**, so consult the content type's exposition standard before applying

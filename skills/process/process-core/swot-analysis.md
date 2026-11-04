@@ -13,7 +13,8 @@ uses-methodology:
 
 **The method is not in this file.** It is the `swot` node in the `methodology`
 graph, rendered from an ingested source, and this skill is the instruction for
-performing it (`methodology-adoption`'s split).
+performing it (`methodology-adoption`'s split). The method's text lives once, so
+two skills quoting it cannot drift apart.
 
 Read [`methodologies/swot.md`](../../../methodologies/swot.md) first — in
 particular §"What this platform adopts, and what it refuses". Ask the
@@ -55,7 +56,8 @@ methodology adopted for ranking — not a weighting invented here.
 **Do not blend in another method to patch the gap.** The source surveys a long
 line of quantitative extensions (AHP, ANP, fuzzy variants, SMART, SMAA-O, MADM,
 TRIZ). None is adopted; blending one in is the composite
-`methodology-adoption` forbids.
+`methodology-adoption` forbids, a house method that cites nobody while claiming
+everybody's authority.
 
 ## When SWOT is the wrong tool entirely
 

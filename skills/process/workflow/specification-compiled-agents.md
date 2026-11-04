@@ -29,7 +29,8 @@ are on. This says how to behave once you are standing in one.
 When `workflow_next` hands you a step, that step's place in the process is
 settled: what precedes it, what may follow, which gateway decides. Re-deriving
 any of that from the diagram's prose — "I think after this we should…" — is
-rediscovering a plan that was compiled for you. Reason **inside** the step, not about the
+rediscovering a plan that was compiled for you, the failure this method exists
+to remove. Reason **inside** the step, not about the
 sequence of steps.
 
 Concretely, three things are not yours while you are in a process:

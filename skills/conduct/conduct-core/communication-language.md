@@ -40,7 +40,8 @@ preferences **first**, before the work plan.
 
 **A stated preference wins outright.** It is the only input that is a
 *decision* rather than a signal, and a person who has said it once must not be
-asked again (WCAG 2.2 SC 3.3.7, Redundant Entry).
+asked again (WCAG 2.2 SC 3.3.7, Redundant Entry); for a user who types with
+difficulty, asking again is not a small cost.
 
 **Their own turns rank above the model's languages.** The model's languages
 are an INPUT, never the determination: a model strong in a language the person
@@ -67,7 +68,8 @@ what you write into the repository.
 | folio CONTENT | [`translation-manager`](../../library/library-core/translation-manager.md), not this skill |
 
 The reason is the reader: a commit message or issue comment is read by
-reviewers and later agents, not only by the person in this session.
+reviewers and later agents, not only by the person in this session, and one
+person's preferred language would narrow who can read the record.
 
 ## Record it where a sibling session reads it
 
@@ -104,7 +106,8 @@ will not re-ask.
 ## What "could not determine" looks like
 
 `defaultLocale`, said out loud. An agent that falls through to rank 4 says so
-once rather than presenting the fallback as a choice.
+once rather than presenting the fallback as a choice, because an unknown
+rendered as a determination is indistinguishable from a real one.
 
 ## Related
 

@@ -94,7 +94,7 @@ reshuffled on save would conflict with every other save.
 
 **It is a partial fix.** Two notes that sort *adjacent* still conflict, because
 the inserted lines overlap. This removes the guaranteed conflict, not every
-conflict.
+conflict, and it should not be trusted further than that.
 
 ## What this skill is NOT
 

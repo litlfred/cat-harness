@@ -19,7 +19,8 @@ across sub-workflows under a controlled overlay of context and memories.
 
 **This page is an agenda, not a result.** Everything below is marked
 **measured**, **decided** or **hypothesis**, and there is more of the third
-than of the first. Do not read it as settled.
+than of the first. Do not read it as settled: a research note that reads as
+settled makes the next agent stop looking.
 
 ## The spectrum is already being navigated, unnamed
 

@@ -20,7 +20,8 @@ server without inventing the mapping each time.
 
 ## Why the projection is nearly free
 
-Because the pieces already line up:
+Because the pieces already line up, as a result of the Tool schema's carrier
+convention (Zod authoritative, JSON Schema generated):
 
 ```
 schemas/tools/tool.ts  (Zod, authoritative)
@@ -35,7 +36,8 @@ ToolDefinition.invoke.shell           ← already the mechanism
 An MCP tool declaration is a name, a description and a JSON Schema for its
 input (plus an output schema in recent spec revisions). A `ToolDefinition`
 carries all four in `id`, `summary` and `io`. **The projection is a rename, not
-a translation.**
+a translation**, which shows the Tool schema was shaped correctly, not that MCP
+is trivial.
 
 ## The mapping
 
@@ -136,7 +138,8 @@ declared type first, and `recordInvocation()` writes the audit record.
 
 **It is deliberately not registered on a running server.** The harness is meant
 to carry no tools of its own, and the hand-written MCP tools in `src/tools/`
-are content to be migrated out. Turning it on is one call, once that migration
+are content to be migrated out, so wiring this to them would build on the thing
+being removed. Turning it on is one call, once that migration
 lands.
 
 Three of the rules above are enforced rather than remembered:

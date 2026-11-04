@@ -16,7 +16,8 @@ consulted: true
 These rules were first written for a formal-mathematics corpus — Lean
 declarations, propositions, proof terms. Each one below is the domain-free form,
 with the domain version it came from named. The rules that did NOT generalize
-are in `domain-fencing.md`.
+are in `domain-fencing.md`, kept apart because collapsing the two is how a
+platform acquires somebody else's mathematics.
 
 ## Not every edge is a dependency
 
@@ -81,7 +82,7 @@ From `detangler-block-tanglement`:
 > pruning."
 
 Domain-free as written. The three remedies are the same three the cycle rule
-gives.
+gives, which is the sign that this is one practice rather than two.
 
 ## Common-subgraph extraction
 
@@ -93,7 +94,8 @@ From `proof-gap-audit` §J:
 > major-severity abstraction gap."
 
 Domain-free: **when k dependents share an identical sub-path, extract it as a
-node.** The stated rationale generalizes verbatim:
+node.** The stated rationale generalizes verbatim, which is the test that it is
+not a domain rule:
 
 > "(a) increase the chance of inconsistent edits later (one copy gets fixed,
 > others drift), (b) inflate the dependency graph energy unnecessarily, (c) hide

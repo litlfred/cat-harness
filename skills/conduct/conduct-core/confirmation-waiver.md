@@ -68,7 +68,9 @@ agent's durable memory lives in.
 
 **Not `beans/`.** The work plan is `state`: it records what is being worked on
 and where it got to. A waiver is not work, has no Done-when, and must be
-readable by a gate that fires before any bean is opened.
+readable by a gate that fires before any bean is opened. The work plan is also
+branch-local, so a session-scoped waiver filed there could be invisible to the
+session it was granted for.
 
 **Not the interaction node (`memory/interaction.json`) either**: that is read
 at session start and *never written by a process*, and a waiver is granted
@@ -115,4 +117,4 @@ non-existent session or instance, and a waiver over a non-waivable rule. It
 reports expired waivers as **inert**, never as findings — they are history.
 
 The check reads the same table this skill publishes, so a gate class without
-a row is refused.
+a row is refused and the vocabulary cannot drift into "everything".

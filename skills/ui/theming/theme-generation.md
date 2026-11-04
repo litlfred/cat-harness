@@ -28,7 +28,8 @@ stylesheet has no block for a theme, the sticky does not render unthemed — it
 renders with the FALLBACK surface, opaque, over the art.**
 
 So the symptom is *"the art is not showing"* and the cause is *"the stylesheet
-was not regenerated"*. Those look nothing alike.
+was not regenerated"*. Those look nothing alike, which is why the cause gets
+rediscovered rather than read.
 
 **This is a CONSUMER fact, and the producer/consumer axis is what makes it
 one.** The generator did its job — it was not run. The reader of a missing rule
@@ -36,7 +37,8 @@ is where it goes wrong, and a reader that falls back to something opaque hides
 the very thing whose absence it is reporting.
 
 **A fallback that is INVISIBLE is the design error**, not the missing run —
-the same reason a theme missing a layout is invalid rather than degraded.
+the same reason a theme missing a layout is invalid rather than degraded: the
+degraded one ships and the invalid one is noticed.
 
 ## The default block is for "nothing has selected a theme"
 

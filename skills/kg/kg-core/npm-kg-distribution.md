@@ -29,7 +29,8 @@ source graphs, pre-compiled hydrated graph views, or both.
 
 ## 1. `package.json` as an authored pre-packaging asset in the KG
 
-`package.json` is an **authored Knowledge Graph asset**
+A file that is not declared in `<instance>.json` is a file no check verifies,
+so `package.json` is declared as an **authored Knowledge Graph asset**
 that defines package identity, exports, dependencies, scripts, and the tarball
 inclusion whitelist (`files` array).
 

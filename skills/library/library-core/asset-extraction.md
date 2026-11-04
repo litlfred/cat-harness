@@ -133,7 +133,7 @@ derived artefact needs the backend that produced it, and the CI job that runs
 this repository's gates installs `ruff` and nothing else (stated on
 `ingest-stdlib`'s Tool node). Do not install a backend in the gate job, and do
 **not** degrade to could-not-determine — that would report `unknown` on every
-CI run. Split the claim instead. Of the five things a node
+CI run, which is a check nobody can read. Split the claim instead. Of the five things a node
 asserts about a derived image, four need no decoder at all:
 
 | claim | needs the backend? |

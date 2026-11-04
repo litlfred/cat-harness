@@ -16,7 +16,7 @@ description: >
 `.claude/` is what the Claude Code harness reads before any skill is loaded:
 the slash commands a person can type, the memory injected into a subagent, and
 the hooks and permissions every session runs under. An edit there changes how
-every later session behaves.
+every later session behaves, including sessions that never see the commit.
 
 **`.claude/` is one instance of a general rule.** Every coding-agent Tool has
 config files, and some of them are projections of the graph: CI writes the
@@ -46,7 +46,8 @@ a composed checkout. Commit what it writes everywhere else, and leave
 `.claude/` to CI.
 
 **Why CI and not the agent.** A projection is correct only if it was generated
-from the tree that lands. An agent's local run reflects the tree it had; the CI
+from the tree that lands. An agent's local run reflects the tree it had, and a
+hand-merged projection drifts from its source; the CI
 step runs on the PR head, so the projection on the branch is the one the merge
 will carry, from one writer.
 

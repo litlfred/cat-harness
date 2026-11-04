@@ -49,7 +49,9 @@ Schema: [`schemas/process/role-graph.ts`](https://github.com/litlfred/cat-harnes
 kinds are skills; only the first can sit in a swimlane.
 
 A skill that is reference material declares `consulted: true` in its front
-matter. Absent means performed. No mechanical signal (a sibling
+matter. Absent means performed: the exception is annotated, not the rule,
+because an axis whose default costs an edit in every skill file does not get
+adopted. No mechanical signal (a sibling
 `SkillDefinition`, an `allowed-tools:` line) tells the two kinds apart, so it
 must be declared.
 
@@ -63,14 +65,16 @@ so the criterion reports both rather than choosing.
 ### A skill does not carry `roles:` front matter
 
 Do not write `roles:` in a skill's front matter.
-`bun run cat check:retired-front-matter` fails if it appears. To learn who
+`bun run cat check:retired-front-matter` fails if it appears, because copying an
+adjacent skill's front matter brings the field back. To learn who
 performs a skill, read `scenarios/roles.json`; the registry is the only answer
 that resolves. A role→skill edge for a skill above the harness is an
 `extensions` entry in that instance's role graph (§"A higher instance EXTENDS
 a role by id").
 
 **`roles:` in a `folio-memory/v1` entry is a DIFFERENT field and stays.**
-`memoryForRoles` filters on `tags.roles`. Sharing a key name across graph
+`memoryForRoles` filters on `tags.roles`, and an untagged entry would be seen
+by every lane. Sharing a key name across graph
 typologies is not sharing a field, and `check:retired-front-matter` keys its
 exemption on `$schema`, never on the directory.
 
@@ -100,9 +104,11 @@ for the duration of a lane.
 > actor takes on no role, which is the honest value for a read-only identity
 > that never appears in a swimlane; absent says nothing has been asserted.
 >
-> The `actor-is-not-a-role` criterion reports an actor that carries `inherits`.
+> The `actor-is-not-a-role` criterion reports an actor that carries `inherits`,
+> because a registry written by hand reaches for `inherits` again.
 
-> **Roles played by mechanical actors are real roles.**
+> **Roles played by mechanical actors are real roles**, because the diagrams
+> hand them tasks.
 > `Work plan (beans)`, `Corpus`, `Publish target`, a build pipeline and the
 > external registries are roles a machine or an outside party plays. Their
 > skills are their **contract**: the responsibilities they must perform, which
@@ -137,8 +143,10 @@ for the duration of a lane.
 > judgement to exercise and whose skills are a contract it can be tested
 > against.
 >
-> Do not give such a role a skill. `activity-names-skill` records **n/a** for
-> activities in its lane.
+> Do not give such a role a skill. The flag exists because a decision recorded
+> only in a role's summary is one the next agent re-litigates.
+> `activity-names-skill` records **n/a** for activities in its lane, which lets
+> that criterion gate on the undeclared ones.
 
 ## An actor is one of three kinds — human, agentic, mechanical
 
@@ -160,7 +168,8 @@ not ours to task at all.
 **The line is judgement.** An agent and a person can both be handed an
 instruction body and asked to decide something; a mechanical system executes a
 procedure and decides nothing. That says whether a given step may be given to a
-given participant.
+given participant, so one value covering an LLM agent and a CI runner alike
+would leave "which tasks can this actor perform" unanswerable.
 
 The vocabulary is declared once, in `schemas/kg/skill-package.ts` (the
 zod-only base both the registry schema and the role graph import), and
@@ -214,7 +223,8 @@ silencing it has to cost a sentence somebody reads in the diff.
 
 **Read a failure as a question with three answers, not one.** The task type may
 be wrong, the lane may be wrong, or the step may really admit that kind — and
-only the third is a `<cat-harness.processes:fulfilment/>`.
+only the third is a `<cat-harness.processes:fulfilment/>`. Reaching for the
+exemption first turns it into a rubber stamp.
 
 ## Three questions about an actor, and only two are answered on the actor
 
@@ -260,7 +270,7 @@ the **actor**, never the login: the repository owner's steps are recorded as
 or decision is recorded, `authorizeTask` asks whether the actor is
 authenticated, eligible for the lane's role (`roles`), and permitted by policy
 to `perform-task` here and on this content. A role mismatch or a `deny`
-refuses; `unknown` is recorded while the rollout is advisory. The HTTP routes
+refuses, and so does `unknown`, because the engine runs strict. The HTTP routes
 ask the same policies through `src/core/rbac.ts`. See
 [`task-authorization`](task-authorization.md).
 
@@ -284,7 +294,8 @@ or `cat-harness:anyone`) and `actor-capabilities-resolve`.
 
 ## Requirements are the fifth node kind, and they only point
 
-A requirement is not a skill and not a role. It is an obligation *about* them:
+A requirement is not a skill and not a role. It is an obligation *about* them,
+kept in the `kg` graph so that every agent reads it and its joins are audited:
 
 ```jsonc
 { "id": "req:commit-hygiene",
@@ -388,7 +399,9 @@ skill — never in skill front matter.
 
 ## A lane binds its role with `partitionElementRef`
 
-Lane names are free text, and several spellings name one position. So **a lane
+Lane names are free text, and several spellings name one position, so a name
+alone joins a lane to nothing and an undefined lane is a silence rather than a
+finding. So **a lane
 binds its role itself, with BPMN's own `partitionElementRef`**: the role is
 declared once per diagram as a top-level `<bpmn:resource>` whose `id` is the
 role id verbatim and whose `name` is its title, before the collaboration and
@@ -479,7 +492,8 @@ its criterion's own severity.
 
 It is not *promoted* to `major` either: a diagram that will not load records
 `unknown` against its `critical` criteria too, so it still fails the gate,
-while an unevaluable `minor` criterion does not gate the build.
+while an unevaluable `minor` criterion does not gate the build: a gate that
+fires on something nobody agreed was blocking gets switched off.
 
 ### Severity, and why coverage is only `minor`
 

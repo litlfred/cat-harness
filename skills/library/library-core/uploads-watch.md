@@ -21,7 +21,8 @@ place that arithmetic lives.
 
 A file sitting in the queue says nothing on its own: it may have landed a minute
 ago or been waiting since before this session. Do not report a queue's
-*contents* as news.
+*contents* as news: a watcher that does becomes noise that gets ignored, and an
+ignored watcher reads as coverage.
 
 So report against a **mark**: what was there when this session began, or when
 the watch last ran. What is new since the mark is an arrival. Everything else is
@@ -53,4 +54,5 @@ without a next step hands the reader a fact and a chore.
 
 ## What to say when nothing did
 
-Nothing, unless you were asked.
+Nothing, unless you were asked. A watch that reports every quiet interval trains
+its reader to skip it, including the round that matters.

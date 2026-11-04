@@ -13,6 +13,10 @@ graph-typologies:
 
 # bpmn-detangle
 
+A diagram must read at 100% without zooming: a page shrinks a wide pool's text
+until it cannot be read, and a label drawn over a flow or another label hides
+what it names.
+
 This is the ArchiMate rule ([`archimate-models`](../../ui/ui-core/archimate-models.md)
 §"Untangle every view you touch") for BPMN: **a change never adds a tangle,
 and the diagram you touch leaves cleaner than it came.**

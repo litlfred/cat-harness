@@ -71,11 +71,13 @@ bun run pipeline/qa-merge-findings.ts --file findings.json
 
 `insertAdjudication` places your entry ahead of the script entry, because
 `list[0]` is a criterion's effective verdict. The script's entry is kept
-beneath yours.
+beneath yours, because the disagreement between a checker and a reviewer is
+information.
 
 ## Do not
 
-- **Do not uphold a finding you have not traced to its quote.**
+- **Do not uphold a finding you have not traced to its quote.** A rule that
+  misreads its source is the failure this design exists to prevent.
 - **Do not review against a voice the folio has not activated.**
 - **Do not delete a script finding from a sidecar.** The sweep rewrites its own
   entries; a hand-removed one returns with no record that anyone looked.

@@ -29,7 +29,8 @@ bun run cat-harness-tools/scripts/backoff-sleep.ts --attempt "$attempt"
 
 It calls `waitFor` directly, so a workflow and `withBackoff` compute the same
 number from the same code. Do **not** write a shell function instead: copied
-into several `run:` bodies it is several implementations again.
+into several `run:` bodies it is several implementations again, and copies
+drift apart with nothing saying so.
 
 `retry-backoff-in-workflows.test.ts` is the enforcement, and it pins the
 *property* — a loop that retries does not compute its own wait — rather than

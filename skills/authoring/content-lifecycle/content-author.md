@@ -29,7 +29,8 @@ re-dispatch. If you lack `actions: write`, state that in the PR along with the
 command a maintainer should run.
 
 Check when that workflow **last ran**, too: a CI file that nothing dispatches
-can sit red on `main` while the content it checks stops compiling.
+can sit red on `main` while the content it checks stops compiling, and nothing
+catches it because nothing runs.
 
 ## Actors
 - Author / Content Developer (authoring lead)

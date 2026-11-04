@@ -33,7 +33,8 @@ the first is cheap to lose and invisible when you do:
 **1. Every edge term is declared `{"@type": "@id"}`.** Without that coercion,
 `requires`, `performedBy` and `partOf` are **string literals** to any
 JSON-LD processor, and the document is a list of records that merely *looks*
-linked to a human reading the JSON. A test asserts the coercion.
+linked to a human reading the JSON. The coercion is the difference between a
+list of records and a traversable graph, and a test asserts it.
 
 **2. The document's `@id` is the URL it is served from**, with
 `@type: prov:Entity` and a `generatedAt` typed `xsd:dateTime`. Fetch the `@id`,
@@ -53,7 +54,8 @@ ordinary records for someone who does not know JSON-LD.
 **5. Every property name in `@graph` is declared in `@context`, and the export
 FAILS if one is not.** A name that is neither declared nor an absolute IRI is
 not a property: a processor drops it, although it stays visible when the file
-is read as plain JSON.
+is read as plain JSON — which is why it goes unnoticed until the document has
+a consumer.
 
 ## Subject IRIs — a path, not a `#fragment`
 
@@ -451,7 +453,8 @@ merges nothing.
 
 **The per-node links are derivable, and are emitted anyway**, because **a
 downstream consumer must never have to string-manipulate or infer a rule to
-follow a link.** See
+follow a link**: a rule a consumer has to know is a rule a consumer can get
+wrong. See
 [`crdm-requirements-workflow`](../../../sdlc/skills/crdm/crdm-requirements-workflow.md) §"Consumer burden
 is a requirement".
 
@@ -644,7 +647,8 @@ pin, harness, each file's sha256). It is attached, with its
   `@id`s do not change.
 - **Bootstrap gets no tree here.** `bootstrap` and `bootstrap-tools` sit
   *below* this instance, and their processes are kept out of its graph; they
-  publish their own subgraphs.
+  publish their own subgraphs, and a tree framed for them here would re-carry
+  what was excluded.
 - A harness's own rule, saying which directories are its graph, is its
   `<instance>.json` declaration. `Harness` and `Subgraph` therefore share
   one base, `GraphNodeDirectoryShape`. They do not get two parallel
@@ -855,7 +859,8 @@ file's bytes. The header records the writing library's version at offset 96.
 The database is published at **`assets/slices/<slice>.<sha256>.sqlite3`**,
 the full lower-case hex of its bytes, and the manifest's `file` names it. At
 one fixed path, a client behind a CDN could fetch a fresh manifest and a stale
-database. A fresh manifest names a file no
+database, fail the sha256 check and fall back: safe for correctness, unsafe
+for availability. A fresh manifest names a file no
 cache has seen. A stale manifest names an older file whose bytes still hash to
 what that manifest promises, so the worst case is an older but
 self-consistent database, or a 404 the page reports.
@@ -967,7 +972,8 @@ never assumed.
 
 The WASM build is **vendored** from the pinned `@sqlite.org/sqlite-wasm`
 devDependency, at 1.51 MB (`bun run cat slice:sqlite:vendor`, gated by
-`:vendor:check`), so a reader's search depends on no host but the site's own.
+`:vendor:check`), because jsDelivr is unreachable from some builders and a
+reader's search should depend on no host but the site's own.
 
 ### The search page — one page, the slice is a parameter
 
@@ -1008,10 +1014,12 @@ Follow the `slice-sqlite-publish` process. In short:
 
 1. **Decide it is in this graph.** The `kg` graph holds skills, processes,
    roles, capabilities and the directory declaration. **Beans are not in it** —
-   `beans/` is its own graph typology with its own nodes (`defs`, `workflows`).
+   `beans/` is its own graph typology with its own nodes (`defs`, `workflows`),
+   and folding the work plan into the KG re-merges what was separated.
 2. **Mint its `@id` with `makeIri`, and give it an `@type`.** Both are asserted
    by test. Never hand-build an IRI: `makeIri` is the one place every node's
-   IRI is decided (§"Subject IRIs — a path, not a `#fragment`").
+   IRI is decided (§"Subject IRIs — a path, not a `#fragment`"), so a change
+   to the IRI scheme changes them all at once.
 3. **Report what you could not read**, in `problems[]`. Never `continue`
    silently past a parse failure.
 4. **Say which edges it carries, and declare each one in the context** with

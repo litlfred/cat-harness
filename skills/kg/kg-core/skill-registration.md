@@ -133,8 +133,9 @@ detangle and `kg-audit` writers, so by the time those checks execute the
 artefacts are already repaired. A chain measured through `gates` comes out
 two steps short, and both omissions look correct.
 
-**Do not recall the list from memory.** Each step in the command was measured
-red-then-green in isolation. Add one only with the same experiment, and put
+**Do not recall the list from memory**: recall goes wrong in both directions,
+naming steps that adding a skill does not stale and omitting ones it does.
+Each step in the command was measured red-then-green in isolation. Add one only with the same experiment, and put
 the measurement in the docblock.
 
 One pairing is worth knowing because it reads like a typo and is not:

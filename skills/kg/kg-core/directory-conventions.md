@@ -75,7 +75,9 @@ not decided does not compile.
 > written.
 >
 > `kg:audit`, `kg-export`, `kg-qa` sidecars and the `kg` QA family keep their
-> names: those are command and file-format names, not the graph typology.
+> names: those are command and file-format names, not the graph typology, and
+> renaming them would touch hundreds of references for no change in what a
+> declaration means.
 
 **The layer is not a column here.** `holds` is the FIELD on
 `GraphTypologyDef` that carries the content/context/state layer; the live
@@ -87,7 +89,9 @@ hand-maintained copy would drift from the registry.
 kind's `description`, and the rows span every instance in the checkout. The
 table is built at publish, by `bun run cat kind:table`, at
 `<base>/cat-harness/kind-table/` (`docs/cat-harness/kind-table.md`, declared in
-cat-harness's `builtAtPublish`). To change a row, edit the kind.
+cat-harness's `builtAtPublish`), because a table kept in this skill goes stale
+at every re-pin that brings a layer's new kind. To change a row, edit the
+kind.
 
 > ### `test/` is the one test tree
 >
@@ -100,7 +104,9 @@ cat-harness's `builtAtPublish`). To change a row, edit the kind.
 > the expensive thing to move; a path reached by one line of one config file is
 > cheap. Change a directory's `path` and keep its **`id`**, so an inheriting
 > instance's override still matches: `resolveDirectories` matches on id, never
-> on path.
+> on path. Move a declared directory in a change of its own: relocating one as
+> a side effect of adding a graph typology is how a directory quietly goes
+> missing.
 >
 > **Verify a move like this positively, never on a green test run.** A consumer
 > that now scans nothing reports clean, which looks identical to success.
@@ -231,7 +237,8 @@ as the stores this convention exists to surface — so checking only the head
 would have made the guard unfireable.
 
 **Why invisibility is worth a guard at all:** a dot-prefixed directory is absent
-from a plain `ls`, from most file browsers, and from a forge's web tree.
+from a plain `ls`, from most file browsers, and from a forge's web tree, which
+hides the artefacts a person looks for first.
 
 ## The conventional layout
 
@@ -258,8 +265,9 @@ table.)
 graph of its own kind, and adding `code` to it would give one directory two
 kinds; `pipeline/` is core's subject, not the harness's; and `scripts/` hold
 entry points named **by path** from `package.json` and the CI workflows, which
-`check:ci-invocations` and `check:command-paths` guard. They are declared
-**where they are**. `<stub>/src` binds what has no history yet.
+`check:ci-invocations` and `check:command-paths` guard, so moving them is a
+large invocation surface for nothing the declaration does not already buy.
+They are declared **where they are**. `<stub>/src` binds what has no history yet.
 
 **Being declared is not being reached.** Those are two questions and
 `bun run cat check:code-accounting` reports them apart — never averaged,
@@ -310,7 +318,8 @@ What is forbidden either way — and what `check:layout-norms` measures — is a
 ROOT DECLARATION enumerating a path it cannot verify. When a from-within node
 describes a nesting, `check:layout-norms` must not report it.
 
-**Depth is not the test.** A library two segments from the repository root is
+**Depth is not the test, and reaching for it produces false findings.** A
+library two segments from the repository root is
 right, and `test/results/` is right because `test/` is not a graph. What is
 wrong is *containment*: a declared directory inside another declared
 directory, which forces a consumer scanning the outer one to decide whether
@@ -384,8 +393,9 @@ definition and gets no members.
   `code`, `processes`, `methodology`. A dependent that HAS one is a member of
   the subgraph; one that does not gets nothing created.
 
-**An instance always materialises what it declared itself**, whatever its
-kind. A legacy `dependents` key still parses and is dropped. A nested entry
+Creation is a property of the kind, stated once, because a per-entry field
+disagrees with itself across entries. **An instance always materialises what
+it declared itself**, whatever its kind. A legacy `dependents` key still parses and is dropped. A nested entry
 that is a subgraph of the INSTANCE (`skills.json`'s `voices`, as opposed to
 `beans.json`'s `defs`, which is part of its parent's graph) says so with
 `"subgraph": true`.
@@ -853,7 +863,8 @@ enforce this, and neither fails just because a count goes down:
 - **A file that exists today is not a stable path.** The move is the expected
   case, so literals naming an existing file are a one-way baseline: a NEW
   literal naming an existing file fails the gate, and `--update` may drop a
-  witness but refuses to add one, so the list only shrinks.
+  witness but refuses to add one, so the list only shrinks. Accepting a
+  literal because its file exists would fire only once the file moves.
 - **The known blind spot:** only the first literal of a path call is read, so
   `resolve(opt("todos") ?? "todos")` hides its default. Review such a default
   by hand.
@@ -1127,7 +1138,8 @@ owns.
 `findInstanceRoot` calls it rather than testing a word agreed in advance. So
 `beans/beans.json`, which shares the `{name, directories}` shape but declares
 `"name": "folio-assistant"` against the stem `beans`, is not an instance root
-— refused by what the file says it is, not by a path exception.
+— refused by what the file says it is, not by a path exception. Discovery
+still works, because a consumer matches on the file agreeing with itself.
 
 **At the graph-typology level this is `GraphTypologyDef.declarationFile`.** A
 nested declaration's filename is named by its kind, not computed as
@@ -1241,7 +1253,8 @@ The declaration schema needs the platform's IRI namespace to mint `@type`
 values. It lives in `schemas/kg/namespaces.ts`, a leaf that imports nothing,
 classified to the harness — not in `schemas/kg/jsonld.ts`, which is the content
 core's **content** vocabulary (block kinds, DoCO structural types, SPAR
-citation terms). The direction only works one way round — **core may import
+citation terms), because importing that would make the harness depend on the
+content model for its own type IRIs: a `harness → core` edge. The direction only works one way round — **core may import
 the harness; the harness may not import core** — so a constant both layers
 need lives at or below the harness.
 
@@ -1291,7 +1304,8 @@ checkable:**
 
 **One is a HOUSE RULE, and is labelled as one.** In trials, agents
 hallucinated less authoring schemas in `.ts` than in the alternatives tried.
-That is an observation, **not a measurement**, and it must not be quoted as
+A guess is that `.ts` is easier to digest, or costs fewer tokens. That is an
+observation, **not a measurement**, and it must not be quoted as
 evidence that `.ts` is better. It is a tie-breaker between options that pass
 the three functional grounds, never a reason on its own.
 
@@ -1388,7 +1402,8 @@ is how a harness kind whose node shapes live in core (`catalogue`, `uploads`,
 **Top-level `_` keys are annotations** (`_comment`, `_note`). The sweep drops
 them before parsing, as every loader here already does.
 
-**The kinds without a node schema, and why**:
+**The kinds without a node schema, and why** — recorded so they are not
+re-opened:
 
 - `code`: its nodes are TypeScript source, so the language is the schema.
 - `methodology`: its nodes are Markdown prose.

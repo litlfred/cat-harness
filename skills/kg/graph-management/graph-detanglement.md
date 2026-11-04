@@ -230,7 +230,8 @@ merge commit, not flakiness.
 State in advance the result that would show the classification wrong (for
 example, *"if classifying these RAISES the cross-edge count, the classification
 is wrong rather than the tool"*). When it fires, read the new edges rather than
-arguing them away, and change the plan.
+arguing them away, and change the plan. A falsifier that never fires is
+decoration.
 
 ## Measurements that are not measurements
 
@@ -243,7 +244,8 @@ arguing them away, and change the plan.
   like `from "\.\./*skills/` cannot match `../../skills/`, and an
   `export {}` block can hide consumers that `tsc` finds.
 - **Enumerate dispatch points before proposing a mechanism.** It is how you
-  find the ones already built.
+  find the ones already built, and as an audit it survives a bad hit rate
+  where a choice between guesses does not.
 
 ## What the metric will not tell you
 

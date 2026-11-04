@@ -39,7 +39,7 @@ On a static host like GitHub Pages, files are served directly from storage:
    Content authored in files or graphs (such as todos, notes, or `fsh-guts/`
    items) reaches the client directly via JSON, so the client-side render must
    insert it as **text** (`textContent`, `createTextNode`), never through
-   `innerHTML`.
+   `innerHTML`, or the page is open to cross-site scripting.
 2. **No custom header enforcement:**
    As detailed in [`serving-renderings`](serving-renderings.md), GitHub Pages
    serves files according to its own extension table. It cannot set
@@ -131,7 +131,8 @@ A deployment surface is a **declared architectural fact**, not a
    the committed HTML in `docs/` will be pushed to GitHub Pages, synced to a
    bucket, or viewed via a file URI; and probing topology (checking for a
    `gh-pages` branch, pinging `github.io`) gives false negatives offline, in
-   sparse checkouts, or before deployment.
+   sparse checkouts, or before deployment. Whether a site renders to a static
+   host is a fact declared by whoever configured it.
 2. **Where the declaration lives:**
    Deployment surfaces and topologies are declared in instance configurations
    (`<instance>.json`, `<name>.config.json`), role graphs, or workflow

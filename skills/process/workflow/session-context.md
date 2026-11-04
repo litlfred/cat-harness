@@ -32,7 +32,8 @@ means by live state.
 ## The fields — read them off the schema, never off this page
 
 `SessionContextSchema` in `schemas/sdlc/session-context.ts` is authoritative.
-This page gives no field count; the sections below say what the main fields
+A field list in prose beside a Zod object is a second answer, wrong the first
+time somebody adds a field, so this page gives no field count; the sections below say what the main fields
 are for.
 
 ## `actor` is required, and it is the point of the record
@@ -70,7 +71,8 @@ removed in between, and the record says what was true when the session acted.
 
 **`open` empty is the normal state.** An agent answering a question, reading, or
 deciding what to do next is in no process at all, and
-[`process-state`](process-state.md) calls that idle rather than broken.
+[`process-state`](process-state.md) calls that idle rather than broken. A
+record that treated empty as a defect would report every reading session as one.
 
 **`claimed` is by reference because a claim announces rather than reserves.**
 The bean is the authority on its own status

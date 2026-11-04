@@ -62,12 +62,14 @@ Do not read either gate as wider than it is written, in either direction.
 
 **The docs site's own navbar requires JavaScript**: `mountNavIconRow`,
 `mountDocumentIndex` and `mountInstanceGraphs` build three of its regions in
-the DOM at load (`test/navbar-row.e2e.ts`).
+the DOM at load (`test/navbar-row.e2e.ts`), so an argument that the docs site
+owes a no-JavaScript rendering has to explain that first.
 
 ## A rendering built client-side owes two things the static one gave for free
 
 These are **requirements**, and they apply to every surface — the board, the
-docs site, a viewer, a dashboard.
+docs site, a viewer, a dashboard. They are stated in this skill because a
+design record is not instruction and nobody looks for a rule there.
 
 - **Print and PDF SHALL wait for load and render before printing** (assuming
   the assets can load). A `window.print()` that fires before the fetch
@@ -83,7 +85,8 @@ docs site, a viewer, a dashboard.
   saying so**: it reaches a developer with the console open and no reader ever.
 
 Client-side rendering does **not** relax the rest: movement stays
-keyboard-operable, and drag stays an accelerator rather than the only way in.
+keyboard-operable, and drag stays an accelerator rather than the only way in,
+because the declared interaction profile is low-dexterity.
 
 ## An automated pass is not the standard
 
@@ -97,7 +100,8 @@ small.**
 
 axe cannot see a shape with a click handler (a bare `<circle>`, no role, no
 `tabindex`): there is no *control* for it to find a fault with. A diagram
-stops being a picture the moment it becomes a set of controls. Neither half
+stops being a picture the moment it becomes a set of controls, and turning one
+into controls is exactly where reading misses what axe catches. Neither half
 replaces the other. Run both.
 
 ## Traps

@@ -37,13 +37,15 @@ the content core, the math kinds in the science layer. Adding a kind is adding a
 
 Adapters must not overlap; profiles must. Making `document` a third *adapter*
 would make `adapterForKind` **ambiguous on every kind the two share**, and a
-scoping function that returns two answers cannot fail an audit.
+scoping function that returns two answers cannot fail an audit, because nothing
+can say which answer was meant.
 
 **The question to ask when you add a content type:**
 
 > Does it need different **code**, or only different **rules**?
 
-If only rules, it is **a profile plus a subclass**, not an adapter.
+If only rules, it is **a profile plus a subclass**, not an adapter, because a
+new adapter is the expensive answer and usually the wrong one.
 
 **The instance that ships a content adapter declares it; the harness never
 names it.** `contentAdapters` in that instance's `<instance>.json` —
@@ -51,8 +53,9 @@ names it.** `contentAdapters` in that instance's `<instance>.json` —
 type it specialises — is what `src/builtin-adapters.ts` discovers. `extends`
 orders the fallback: the specialisation leads, because falling back *to* a
 superset loses nothing and falling back *from* it loses its tools. The harness
-holds no `../<instance>/adapters/…` path; `check:import-direction` fails on that
-shape.
+holds no `../<instance>/adapters/…` path, because such a variable import is
+invisible to static gates and ties the harness to the instance's repository;
+`check:import-direction` fails on that shape.
 
 ## What profile enforcement catches that schema validation cannot
 

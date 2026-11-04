@@ -27,7 +27,8 @@ roughly 14:1 on pure white — the dark end is the binding one, by a wide margin
 below it is not a slightly worse theme, it is a theme that fails.
 
 **Re-measure, never nudge.** When a scrim changes, recompute the ratio and
-write it down beside the value.
+write it down beside the value: a scrim whose ratio nobody recomputed does less
+work than it appears to.
 
 ## Why a comment carries the number
 

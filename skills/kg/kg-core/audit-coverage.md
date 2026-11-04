@@ -78,7 +78,7 @@ All gates declare, so `audit:coverage:require-all` is wired in CI and the
 findings are verdicts rather than bounds. The flag is what keeps it closed: a
 new gate arriving undeclared turns them back into an upper bound, silently,
 unless something fails. The output still states the caveat whenever the count
-is non-zero.
+is non-zero, because the day it reopens is the day a reader needs to be told.
 
 ### When you cannot tell, do not annotate — and then go and read it
 
@@ -163,7 +163,8 @@ reading.
 What belongs in the sidecar is what defines coverage: declared directories,
 criteria reaching the kind, gates declaring it, the state. Those move when
 coverage moves, which is when a reviewer needs the diff. One bit of the census —
-`hasFiles` — is all the states need.
+`hasFiles` — is all the states need. Recording a count would make the report
+depend on the signal it exists to replace.
 
 ### A docblock that documents a tag necessarily contains the tag
 
@@ -216,6 +217,7 @@ is a gate that gets switched off within a week.
 ## Related
 
 [`covered-is-not-reachable`](../../tools/folio-core/covered-is-not-reachable.md)
-is about a mechanism; this skill's subject is a **kind of node**.
+is about a mechanism; this skill's subject is a **kind of node**, kept separate
+because a skill that grows a second subject is split, not quieted.
 [`artefact-reachability`](artefact-reachability.md) is about a kind of
 artefact.

@@ -31,11 +31,12 @@ stop reading them.
 This makes the surprise articulable BEFORE you know whether it matters.
 "Something felt off" is not reviewable; "I expected the tracer to read the
 mask as ink and it read the ground" is. The filter in §2 then operates on a
-statement rather than on a feeling.
+statement rather than on a feeling, so it can be applied consistently.
 
 **Only LOGICAL surprise is detectable.** Statistical surprise implies a base
 rate, and the corpus carries none — nothing records how often a gate fires, a
-merge conflicts, or a selector breaks. Do not claim a statistical surprise.
+merge conflicts, or a selector breaks. Do not claim a statistical surprise:
+it would assert a distribution nobody measured.
 
 Logical surprise needs no baseline. It is any of:
 
@@ -62,7 +63,8 @@ Logical surprise needs no baseline. It is any of:
 > **A surprise inside a one-off is an anecdote. The same surprise inside a
 > process that runs often is a defect in the process.**
 
-Without this filter the rule fires every turn. With it, the question is narrow
+Without this filter the rule fires every turn, because every non-trivial turn
+contains something somebody did not expect. With it, the question is narrow
 and answerable:
 
 > **Did this happen inside a defined process that runs often — and would the
@@ -135,4 +137,5 @@ of the report you were already writing.
 - **No timeline reconstruction.** The agent was present for the whole turn,
   and the transcript is the timeline.
 - **No routing method.** Where a surprise goes is
-  [`where-does-this-go`](../../conduct/conduct-core/where-does-this-go.md).
+  [`where-does-this-go`](../../conduct/conduct-core/where-does-this-go.md),
+  which needs an index rather than a taxonomy at its size.

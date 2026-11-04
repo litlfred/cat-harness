@@ -65,7 +65,7 @@ The core value of the cache is that an expensive step's intermediate outputs sur
 
 `input-cache/txcache/` goes on the `fhir-ast` branch alongside the AST files.
 
-Preserving these intermediates is what makes subsequent incremental builds (such as those in `ig-incremental-build.bpmn`) fast.
+Preserving these intermediates is what makes subsequent incremental builds (such as those in `ig-incremental-build.bpmn`) fast: a warm build with cached packages and terminology runs several times faster than a cold one.
 
 ## Instantiations
 
@@ -91,4 +91,6 @@ there. No modification to SUSHI is needed.
 `fsh-cone` (a Tool node, declared by the FHIR IG layer) provides the **reverse**
 half — who depends on a file — so a changed RuleSet- or Alias-only file (which
 produces no resource itself) can be traced to the resources it affects. These two
-maps together give the planner a complete cone.
+maps together give the planner a complete cone. Without `fsh-index.json` the
+planner can only plan a full build; with it, a single-file change rebuilds only
+the resources in its cone, which is a small fraction of an IG.

@@ -30,7 +30,8 @@ spellings of one constraint, and a generator may legitimately change spelling
 between versions. Compare *accepted instance sets*, not serialised text — at
 minimum: same required keys, same types per key, same enum members, same
 nullability. A test asserting the JSON blob is byte-identical fails on a
-harmless `zod-to-json-schema` upgrade.
+harmless `zod-to-json-schema` upgrade and teaches everyone to re-baseline it
+without reading, which is worse than having no test.
 
 **Coverage is the direction that goes quiet.** A tool dropped from `tools/list`
 does not error — the model simply never calls it, and the capability silently
@@ -42,7 +43,8 @@ something is being served that nothing declares.
 **Satisfaction is the KG edge, and it is the one nobody checks.** A skill says
 "claim the item before you work". `satisfies` is what says which Tools can do
 that. If no served tool satisfies a skill the instance ships, an agent will read
-the skill, find no mechanism, and improvise. Report it; do not fail on it by
+the skill, find no mechanism, and improvise, which is the failure the
+skill/Tool separation exists to prevent. Report it; do not fail on it by
 default, because a skill may legitimately be satisfied by a manual Tool with
 nothing served.
 
@@ -53,7 +55,8 @@ nothing served.
   and must be reported as *why*, not merely as absent.
 - **Could not check** — the server would not start, `tools/list` errored, or an
   `io.*.schema` reference does not resolve. **Never rendered as agreement.**
-  This is the same rule `check:ci-health` follows.
+  This is the same rule `check:ci-health` follows: a checker that cannot see
+  has not found that nothing is wrong.
 
 ## When a call fails but the schema said it was fine
 

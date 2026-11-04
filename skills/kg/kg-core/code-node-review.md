@@ -83,7 +83,8 @@ are distinguishable. Read the sidecar, not just the summary.
 
 What no audit can tell you: whether the mechanism a Tool describes is the one
 that runs, and whether a schema field means what its name suggests. Those are
-the two things a human or agent reviewer is for.
+the two things a human or agent reviewer is for, and why this is a skill rather
+than a check script alone.
 
 ## Where this runs in a process
 

@@ -38,7 +38,8 @@ stage faces, and per-artefact specialisation last.
 
 **Stage is primary because that is how failures arrive**: each one is at one
 stage. **Going artefact-first would duplicate intake and contrast into every
-artefact.** Stage-first with specialisation last means a
+artefact**, and a rule kept in one artefact's prose gets rediscovered rather
+than read. Stage-first with specialisation last means a
 new artefact inherits the stages and declares only its difference. The avatar
 crop boxes are the worked example: the *rule* that a crop is declared data
 belongs to `declaration`, and the *boxes themselves* are navbar-avatar
@@ -67,7 +68,10 @@ The code: `schemas/ui/themes.ts`, `schemas/ui/theme.ts`,
 `schemas/content/landing-sticky.ts`, the generated `docs-ui.css`, `themes:css`
 and `check:theme-art`. `skills/ui/ui-core/theme-ui-review.md` stays in
 `ui-core`: it is a UI review skill, and theming is one of its subjects rather
-than its subject.
+than its subject, and a directory that takes every file with `theme` in its name
+is a directory nobody can describe. The stages share this one directory until a
+stage has enough skills to fill its own, because a declared directory with
+nothing in it makes a consumer scan an empty tree and report a clean run.
 
 ## Looking at it
 

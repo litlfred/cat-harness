@@ -20,7 +20,8 @@ to one thing is written on another. Typical shapes: a fact about a capability
 diagram already states executably (*which role takes over*) repeated on a
 skill; a field naming performers in a vocabulary that resolves against
 nothing. Each is a field on the wrong entity, or a second copy of a fact that
-already has a home.
+already has a home. Modelling first catches them, and costs far less than
+unwinding them later.
 
 ## The procedure
 
@@ -73,8 +74,9 @@ repository that means a graph typology in `<name>.json`, a Zod schema under the
 declared `schemas` directory, and a node kind that `kg-export` knows —
 `placement` is the skill that decides which.
 
-**And ship a reader in the same change.** A field with no consumer is not a
-model, it is a comment with punctuation.
+**And ship a reader in the same change**, because a field that is only
+documentation goes inert. A field with no consumer is not a model, it is a
+comment with punctuation.
 
 ### 7. Model VARIATION as inheritance, and earn a new kind with BEHAVIOUR
 

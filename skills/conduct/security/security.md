@@ -14,7 +14,9 @@ consulted: true
 
 Everything in this package is that question at a different boundary. The split
 is **not** by attack name: the same untrusted string is command injection at a
-shell, path traversal at a `join`, and XSS at a template.
+shell, path traversal at a `join`, and XSS at a template, and filing the rule
+under each name is how a correct guard ends up in one file while other call
+sites hand-roll it.
 
 ## The rule that unifies them: refuse, never repair
 

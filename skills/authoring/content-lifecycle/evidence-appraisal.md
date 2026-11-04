@@ -6,7 +6,9 @@ declares. This skill supplies the *procedure*; it does not supply the *system*.
 ## Why this skill names no grading system
 
 **Which** grading system applies is a methodological commitment of the folio
-and the body that publishes it; the platform holds no subject matter.
+and the body that publishes it; the platform holds no subject matter, and a
+hardcoded system would leave every folio that uses another one working around
+the platform.
 `Task_AppraiseGrade` in the `evidence-retrieval.bpmn` process judges certainty
 "per the grading system the folio declares". This skill covers what appraisal
 *is*, what it attaches to, and what has to survive as a record afterwards.
@@ -29,7 +31,8 @@ refused.
 The grade attaches to the body of evidence for **one PICO question**. This is
 why `Task_AppraiseGrade` sits after the parallel join in the diagram and not
 inside the fan-out: the three retrieval classes (trusted L1 sources, trusted
-L2/L3 content, data repositories) contribute to one judgement. A single
+L2/L3 content, data repositories) contribute to one judgement; grading each
+branch separately would produce three numbers that answer no question. A single
 citation does not carry a certainty grade.
 
 ## "Cannot appraise" is a third state
@@ -58,7 +61,8 @@ the first is weak; one resting on the second is unsupported.
 
 - A certainty judgement for the body, in the declared system's own vocabulary
 - **The reasons**, in enough detail that a later reader can tell whether they
-  would still hold (`decision-audit`)
+  would still hold (`decision-audit`); a grade without them cannot be
+  reviewed, only re-litigated
 - Any gap, recorded as a gap rather than as a low grade
 
 ## This has nothing to do with formal content

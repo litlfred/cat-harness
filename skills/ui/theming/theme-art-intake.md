@@ -14,7 +14,8 @@ Document ingestion already answers the question art arrival poses — *something
 unstructured has arrived; is it acceptable, and if not, why not* — with a
 pipeline and a completeness gate. Theme art is the same event with a different
 payload, so what exists is a **check keyed on the payload**, not a second
-pipeline.
+pipeline: a parallel "avatar ingestion" would be a second answer to one
+question, free to disagree with the first.
 
 | | where |
 |---|---|
@@ -24,7 +25,9 @@ pipeline.
 
 ## The constraints
 
-Each constraint answers a failure that has happened. Do not add one that has not.
+Each constraint answers a failure that has happened. Do not add one that has not:
+a rule with no failure behind it is one whose next maintainer cannot tell
+whether it still matters.
 
 | constraint | verdict | why |
 |---|---|---|
@@ -46,7 +49,8 @@ Each constraint answers a failure that has happened. Do not add one that has not
 
 `remedy` is a required field on every failure: a refusal that says *invalid*
 teaches nobody what to fix. All failures are collected rather than thrown one at
-a time, because art arrives as a batch.
+a time, because art arrives as a batch, and reporting the first problem of three
+means three round trips to learn three things.
 
 ## Do not repair somebody's art
 
@@ -76,14 +80,15 @@ Three rules for reading it, the same three `ci-health` states:
 1. **`declared-but-absent` is not a refusal and not a pass.** The declaration
    names a file that is not on disk. It is reported on its own line because
    *"the file is not there"* and *"the file is the wrong shape"* are different
-   facts.
+   facts, and a reader who cannot tell them apart fixes the wrong one.
 2. **A check that fires on every subject is wrong.** `docs/` is not a declared
    directory, and should not be — a declared entry names a *graph*, and the site
    is the render *target* — so art under it is not `undeclared-destination`.
    When a new check's first run lights up broadly, ask *which of these are
    correct?* before *how do I fix the repository?*, and test any exclusion in
    **both** directions: a test of the excluded case alone passes equally for a
-   check that never fires.
+   check that never fires. A check that fires on legitimate subjects gets
+   switched off, and a switched-off check still reads as coverage.
 3. **Warnings do not accumulate into a refusal.** Twelve heavy files are twelve
    reports, not a failure.
 
@@ -106,4 +111,6 @@ The stages of theming, and which owns which question, are in
 The theming **code** — `schemas/ui/themes.ts`, `schemas/library/theme-art-intake.ts`,
 `scripts/check-theme-art.ts`, `scripts/gen-themes-css.ts`,
 `scripts/gen-avatars-css.ts` — stays where it is. This is the `kg` graph: the
-instructions an agent follows, not the implementation.
+instructions an agent follows, not the implementation. A skill and the code it
+describes are different node kinds, and moving code beside its documentation
+would make the partition meaningless.

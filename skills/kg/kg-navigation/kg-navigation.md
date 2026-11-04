@@ -98,7 +98,8 @@ so they cannot disagree.
   probe.
 - **A `.md` under the skills path that declares its own `$schema` is not a
   skill.** The agent-memory nodes under `memory/` declare
-  `folio-memory/v1`. Declaration over location.
+  `folio-memory/v1`; read as skills, they would get bogus QA sidecars.
+  Declaration over location.
 - **Some skills exist in three copies and only two are checked.**
   `skills/tools/folio-core/<name>.md` is hand-authored;
   `docs/reference/skill-instructions/<name>.md` is **generated** from it and

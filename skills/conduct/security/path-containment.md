@@ -19,7 +19,8 @@ interchangeable:
 | a path you are about to **write** that does not exist yet | containment despite an absent leaf | `writableWithin` |
 
 **Why not one function.** `resolveWithin` relies on a URL pathname beginning
-with `/`, so `normalize` absorbs leading `..` against the root. An identifier
+with `/`, so `normalize` absorbs leading `..` against the root and traversal by
+spelling cannot escape it. An identifier
 has no leading slash, so `a/b` passed to it resolves to a *contained nested*
 path. When the caller meant one directory, contained is not the question, and a
 collapsed check would accept it.

@@ -38,7 +38,8 @@ an issue) is used as well.
 
 You are a **sibling** when your brief names a discussion agent, or when you
 were started by another agent while a person was talking with it. A sibling
-that is not sure hands back anyway.
+that is not sure hands back anyway: one extra copy costs a line, and a missed
+card costs a stalled decision.
 
 ## The brief names the discussion (spawning agent)
 

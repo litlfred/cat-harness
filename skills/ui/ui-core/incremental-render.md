@@ -72,7 +72,8 @@ skill turns on. The pipeline reports it:
 > graphs re-rendered: <reason>`
 
 and every graph-declared step becomes undeclared, which always re-renders. Safe
-direction, **said out loud**.
+direction, **said out loud**: a silent fall-back to a full render leaves the
+cache inert with nothing in the output saying why.
 
 ### The cost: a graph is coarser than a file list
 
@@ -138,7 +139,8 @@ caching it correct).
 **Report the cached steps as cached, never as a pass.** In this pipeline a
 "skip" already means *its input never rendered*, so a served-from-seed step
 gets its own mark (`=`). The counts must add up: a cached step returns no
-error, so it must not also be counted as having run.
+error, so it must not also be counted as having run. A build report that sums
+to more than its own steps is one nobody trusts the rest of.
 
 ## Usage
 

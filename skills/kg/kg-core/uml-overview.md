@@ -160,9 +160,9 @@ check", and never passes. That is why it is not a CI gate.
 
 ## Invariants the generators keep
 
-- **No silently empty box.** The overview throws on a resolved schema with no
-  properties, and the object model refuses to write if a relationship's field
-  is missing.
+- **No silently empty box.** A converter change can return empty schemas for
+  every box, so the overview throws on a resolved schema with no properties,
+  and the object model refuses to write if a relationship's field is missing.
 - **A family is drawn only where it lives.** Each sub-graph draws only the
   `$schema` tags found in its own directory, not the kind-wide `nodeSchemas`
   map.
@@ -173,7 +173,8 @@ check", and never passes. That is why it is not a CI gate.
   readable shape carries one italic line saying why. No generated class is
   empty, and a new empty one is a regression.
 - **Importing a generator writes nothing.** Each main block is guarded by
-  `import.meta.main`. A new generator needs the same guard.
+  `import.meta.main`, because a write on import dirties the tree in CI. A new
+  generator needs the same guard.
 
 ## Related
 
