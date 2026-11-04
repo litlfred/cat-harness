@@ -49,8 +49,7 @@ while you work.
 
 ### Bean edits are pushed to the state branch, not the PR
 
-Under the state branch architecture (proposal `cat-harness/docs/proposals/state-branch-2026-10-02.md`),
-bean edits (`beans/defs/*.md`, `beans/workflows/*.json`) do not belong in the
+Under the state branch architecture, bean edits (`beans/defs/*.md`, `beans/workflows/*.json`) do not belong in the
 PR's commit set. The code PR contains code, test, and documentation changes
 destined for `main`.
 
@@ -69,10 +68,9 @@ from triggering code CI workflows.
    it.** This is the rule that gets inverted in the name of care, and inverting
    it is not caution — it is a blocked reviewer.
 
-An agent that has just built something it cannot fully verify — a rendered page,
-a diagram, a UI — reaches for the responsible-sounding move: leave it open,
-attach a preview, ask the human to confirm first. That feels safer. It is worse,
-for a reason worth internalising:
+An agent that has built something it cannot fully verify — a rendered page, a
+diagram, a UI — must not leave it open and ask the human to confirm from a
+preview first:
 
 > **A human cannot assess a rendered artefact from a description of it, and a
 > preview pasted into chat is a strictly worse proxy than the deployed thing.**
@@ -81,33 +79,15 @@ Holding the merge does not transfer the verification to them — it *withholds t
 only form in which they could do it*, and asks them to adjudicate from a
 screenshot.
 
-Measured, 2026-09-16. A documentation change with five generated diagrams was
-green, unreviewed and unmerged, held back with three SVGs attached in chat and a
-note that the layout was machine-accepted but not confirmed legible. The
-author's reply was *"jsut merge so i can help assess"*. The hold made assessment
-harder, not safer, and cost a round-trip to someone who types with difficulty.
-
 ### Link the PAGE, never the site root
 
 **When you ask somebody to look at a rendered artefact, link the artefact.**
 Not the site it is on, not the preview's front door — the exact URL of the
 thing you changed.
 
-Owner, 2026-09-21, after a session that had pointed three times at
-`…/STAGING/<branch>/` while asking about the navbar on the IRIS replica:
-
-> *"next time give appropraite link
-> https://litlfred.github.io/folio-assistant/STAGING/claude-determined-euler-gqhkk0/who-iris/"*
-
-The root is not a shortcut, it is a handoff of the last step. It makes the
-reader reconstruct a route the agent already knew, and it does it to the person
-this repository's interaction profile exists for — one who types with
-difficulty. Every extra click is a cost the agent chose not to pay and passed
-on.
-
-It also hides a real failure mode. An agent that links the root has not checked
-that its page is reachable at all: `/<iris-replica>/` 404ed for an hour in that same
-session, under a root that loaded perfectly.
+Linking the root makes the reader reconstruct a route the agent already knew,
+and it hides a real failure: an agent that links the root has not checked that
+its page is reachable at all.
 
 So:
 
@@ -140,21 +120,8 @@ decision they have no artefact for.
 **`cmd | tail` makes `$?` the status of `tail`.** Every claim that a command
 PASSED must come from a run without a pipe, or from `${PIPESTATUS[0]}`.
 
-This is mechanical rather than a matter of care, and it is written down because
-care did not prevent it. Twice in one session, 2026-09-20:
-
-- `gen-site-jsonld --check` on a genuinely stale tree. `… | tail -8; echo $?`
-  printed **0**. Caught within the minute — and the commit message that fixed
-  it said "worth checking rather than assuming".
-- `site:links` from the repository root, two hours later. Read the message,
-  never checked `$?`, and **opened a bean** asserting a defect that does not
-  exist: the script exits 2 and always has. Scrapped as `ipth`.
-
-The second is the expensive shape. A command whose output *sounds* like a
-failure, run through a pipe, reads as a silent pass — and a silent pass is
-precisely what this repository treats as worse than a loud failure. The first
-cost a minute; the second cost a bean, a wrong diagnosis, and very nearly a
-"fix" to working code.
+A command whose output *sounds* like a failure, run through a pipe, reads as a
+silent pass, and one whose output sounds like a pass hides a failure.
 
 **So: when the question is "did this pass", run it bare.** When you want both
 the output and the verdict, run it twice or capture the status first. Reading a
@@ -169,27 +136,11 @@ description of it. This is its twin, and it is the one an agent breaks:
 > it.** A correct template and a correct page are different claims, and only the
 > second is what a reader loads.
 
-Measured, 2026-09-20, and it is worth the detail because every safeguard fired
-green. `docs/_includes/landing.html` builds a sticky's `<article>` opening tag
-across many lines. One Liquid `{% endif -%}` right-stripped the newline before
-the next attribute, so the tag emitted as
-
-```
-…--fa-text-scale:0.74;"aria-labelledby="fa-sticky-cat-harness-summary"
-```
-
-Two attributes with no separator is an unparseable tag. `index.md` is
-**markdown**, so Kramdown stopped recognising the block as HTML and escaped all
-of it. The published landing page — the live site and every staging preview —
-carried `&lt;article class="fa-sticky …"` as **visible words**, with
-`&lt;/article&gt;` to match: 3 escaped, 0 real. Every `.fa-landing-sticky--fixed`
-rule was dead, which was the whole feature.
-
-What passed over it: 3517 unit tests, `eslint`, `tsc`, twelve gates, the e2e
-suite **and** the accessibility suite. Not one of them was wrong. Every one reads
-a **source**, and the source was valid HTML — the defect exists only in the
-output of the markdown converter. The agent had rendered and screenshotted the
-template through a scratch harness and called the round verified.
+Every source gate can pass over a defect that exists only in the build's
+output. For example, a Liquid `-%}` that strips the space between two attributes
+makes Kramdown stop treating a block as HTML and escape it into visible text,
+while unit tests, lint, type checks, gates, e2e and accessibility suites all
+read valid sources and pass.
 
 So the rule is mechanical, not a matter of diligence:
 
@@ -203,11 +154,8 @@ So the rule is mechanical, not a matter of diligence:
 - **State which one you looked at.** "Rendered and checked" is ambiguous between
   the two, and the ambiguity is where this hid.
 
-The general form of the gap now has a check — `check:escaped-markup`, run in
-`docs-site.yml` against the assembled `_site/`, because that is the only place
-the answer exists. But a check written after the fact does not retire the rule:
-the next defect of this shape will be in whatever the build does that no source
-gate can see.
+`check:escaped-markup`, run in `docs-site.yml` against the assembled `_site/`,
+covers the escaped-markup case. It does not retire the rule.
 
 ### The exceptions, and none of them is "I am unsure"
 
@@ -222,8 +170,8 @@ gate can see.
 
 ### Green means handed to the Merge Steward — an agent never merges to `main` here
 
-**The owner's merge policy for folio-assistant, 2026-10-01 (arc `3fva`).** It
-is the "explicit merge permission" case above, made into a hand-off rather
+**The merge policy for folio-assistant.** It is the "explicit merge permission"
+case above, made into a hand-off rather
 than a question:
 
 1. **Never merge to `main` yourself** — not with `gh pr merge`, not with the
@@ -251,9 +199,9 @@ The point of both is unchanged: a green PR is not held back.
 
 ### Pace the ready marking — the runner pool is shared
 
-**The owner's ruling, 2026-10-24 ("C. Pace agents").** The Actions runner pool
-is shared across the owner's repositories. A draft PR runs only the fast tier,
-and marking it ready starts the full tier, about 10 jobs (bean `dft1`). So the
+The Actions runner pool is shared across the owner's repositories. A draft PR
+runs only the fast tier, and marking it ready starts the full tier, about 10
+jobs. So the
 number of PRs marked ready at once is what fills the queue:
 
 1. **Open every PR as a draft.**
@@ -268,21 +216,16 @@ number of PRs marked ready at once is what fills the queue:
    chain, or a fix for a red `main`.
 
 Holding a PR as a draft for pacing is not holding back a green PR: the fast
-tier is green, and the hand-off above waits for the full tier. Measured on
-2026-10-24: 28 queued PR runs against 5 runners, from 28 different PRs opened
-within an hour, mostly agent branches. A fix PR waited hours behind them.
+tier is green, and the hand-off above waits for the full tier.
 
 ### Two green PRs can merge into a red main, and the answer is to fix forward
 
 A PR is tested against the main it last merged, not the main it lands on.
 Two PRs that are each green can still combine into a failure that neither
-branch contained. On 2026-09-24 that happened: #1245 added a generated
-report, and main had just gained a workflow instance the report did not
-cover. Main went red at #1245's merge, and no `regen` on either branch could
-have seen it (bean `391j`).
+branch contained, and no `regen` on either branch can see it.
 
-**The owner's policy is to fix forward, not to add a merge queue or an
-"up to date" requirement** (2026-09-24). So:
+**The policy is to fix forward, not to add a merge queue or an "up to date"
+requirement.** So:
 
 - **Watch main's CI after every merge of yours**, not only your PR's —
   whoever pressed the button.
@@ -290,11 +233,9 @@ have seen it (bean `391j`).
 - **A red main whose failure your diff did not cause is still yours to fix
   when you find it.** Establish the cause from the failing run and each
   parent's history first, then regenerate or repair in a small PR of its own,
-  and merge it as soon as it is green. #1249 and #1257 each did this within
-  minutes.
+  and merge it as soon as it is green.
 - **Do not blame the last merge because it is the last merge.** Check whether
-  the parent was already red. In `391j` it was, and the first diagnosis ("a
-  blind spot in `regen`") was wrong for exactly that reason.
+  the parent was already red.
 
 ## Why — the failure modes this prevents
 

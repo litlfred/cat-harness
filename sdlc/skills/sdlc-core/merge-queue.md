@@ -290,25 +290,12 @@ rides alone.
 
 **A member is admitted on `ownCi == "green"` and `green` means every workflow
 owed for the head's event ran and succeeded.** It does not mean "nothing is
-failing". The two readings come apart, and the gap is the whole reason this
-section exists.
-
-Measured 2026-10-02 on #1889's head `7ab6119405`:
-
-| | |
-|---|---|
-| check runs on the head | 9 |
-| gating job NAMES present, of 9 expected | 9 — a complete name set |
-| runs `in_progress` with `conclusion: null` | 3 |
-| check SUITES `completed` with `conclusion: action_required` and `latest_check_runs_count: 0` | 3 |
-| runs whose conclusion is `failure` | **0** |
-
-So a filter for `conclusion == "failure"` returns nothing, and three suites
-completed having executed nothing at all. **Counting the runs does not catch
-it either** — nine were present and every expected name matched. Only asking
-*which runs are owed for this event* catches it, and
-`check-head-has-run` is the one
-thing here that asks (bean `3pqn`). Do not write a second checker: it already
+failing". A head can have every expected job name present, no `failure`
+anywhere, and still have runs `in_progress` and suites `completed` with
+`conclusion: action_required` that executed nothing. **Counting the runs does
+not catch it.** Only asking *which runs are owed for this event* catches it,
+and `check-head-has-run` is the one thing here that asks. Do not write a
+second checker: it already
 keeps the states apart, has a test, and is already wired into
 `pr-checks-present.bpmn`.
 
@@ -323,8 +310,7 @@ defect:
 | `none` | GitHub answered and nothing names this head |
 | `unknown` | could not ask: no network, rate limit, HTTP error |
 
-`unknown` is handed back, never admitted and **never reported as red** (bean
-`0qjq`): telling somebody their head is unverified when you merely could not
+`unknown` is handed back, never admitted and **never reported as red**: telling somebody their head is unverified when you merely could not
 look trains them to ignore the signal, which costs more than the gap.
 
 **This is a gate, not advice.** `Rule_HeadNotGreen` in
@@ -334,13 +320,10 @@ but `green` routes to hand-back before any admitting rule can fire, and
 `workflow_gate` refuses a hand-supplied outcome.
 
 **A dispatch is not an owed run.** `workflow_dispatch` is the designed
-workaround for the bot-actor push condition (bean `0qjq`, and `merge-main.yml`
-dispatches the gating workflows for exactly that reason), but a dispatched run
-is evidence about the TREE, not evidence that the owed `pull_request` run
-exists. The session that wrote this section made that error on #1888 — read
-eight dispatched jobs as "green" because the names matched — and
-`check:head-has-run` caught it. Report the two facts separately or the
-distinction is lost.
+workaround for the bot-actor push condition (`merge-main.yml` dispatches the
+gating workflows for exactly that reason), but a dispatched run is evidence
+about the TREE, not evidence that the owed `pull_request` run exists. Report
+the two facts separately.
 
 ## Overlap has a KIND, and a train is the right answer to one of the four
 
@@ -354,18 +337,11 @@ a train is for*, which is `overlapKind`:
 | `shared-declaration` | the only authored paths shared are shared declarations | **ordering** |
 | `authored` | shares an authored path that is not a declaration | **a train** |
 
-Four values rather than three, and the reason is measured rather than tidy. A
-shared declaration is a **subset** of an authored path, not a sibling:
-`classify("package.json").strategy` is `refuse`, so it is authored, *and*
-`isSharedDeclaration("package.json")` is true (both measured 2026-10-02). A
-three-value partition therefore files a declaration-only collision under
-`authored`.
-
-That is not hypothetical. `merge:overlap` over all 36 open PRs on 2026-10-02
-(459 pairs) found **#1907 × #1909 `independent: false` with
-`authored_overlap = 0`** — colliding on `package.json` and generated regions
-only. **A pipeline that treats that like a content collision builds trains
-nobody needed.**
+Four values rather than three because a shared declaration is a **subset** of
+an authored path, not a sibling: `classify("package.json").strategy` is
+`refuse`, so it is authored, *and* `isSharedDeclaration("package.json")` is
+true. A three-value partition would file a declaration-only collision under
+`authored` and build trains nobody needed.
 
 `authored` outranks `shared-declaration`, which outranks `generated-only`,
 because at each step the earlier kind is the one the later kind's remedy
@@ -375,10 +351,6 @@ cannot resolve. The partition is tested in
 since it never enters a train.
 
 ## A train admits only members that STACK cleanly (STRICT)
-
-**Owner ruling, 2026-10-04 ~17:40Z:** *"require that a merge train has PRs
-that are stacked one on top of another. You're wasting too much time resolving
-conflicts in the train and blocking other stuff from happening."*
 
 A train is a **stack**: member *n+1* merges onto `main` + members *1…n* with
 **no conflict at all**, generated paths included, and with no semantic break
@@ -399,20 +371,9 @@ which merges `main` on its own branch, gets CI green, and re-signals. Conflict
 resolution belongs on the member's branch, never in the train, and never in the
 steward's time.
 
-**Why, measured on train `merge-train-2026-10-04a` (#2113):** two members with
-`declared` conflicts took **about an hour and five pushes** to reach green:
-1. The train tool dropped the gitignored-but-tracked LSI files (bean `u4up`).
-2. That drop staled the auto-docs pages.
-3. Another session landed #2112, and the train conflicted again.
-4. Re-merging `main` took a 12-minute regen.
-5. A semantic conflict surfaced: #2043 imported a module that #2112 had moved.
-
-While the steward resolved conflicts, nothing else landed. Landing the
-cleanly stacking PRs one at a time, as #2109, #2078 and #2102 did in the same
-window, took one guard run each.
-
-The `overlapKind` table below still says what a collision NEEDS. The steward
-now provides only the `none` row. Every other kind goes back to its owner.
+Resolving conflicts inside a train blocks everything else from landing. The
+`overlapKind` table above still says what a collision NEEDS; the steward
+provides only the `none` row. Every other kind goes back to its owner.
 
 ## Regenerate on a clean tree, and check it
 
@@ -426,24 +387,14 @@ writer counts the files git would commit —
 *ignored* junk out, which is the `__pycache__` case that drove that line, but
 `--others` still counts an untracked file nobody has ignored. So a transient
 written by an earlier train step moves a committed count,
-`readme:subgraphs:check` goes red, and **the red belongs to nobody**. Train 6
-hit this.
+`readme:subgraphs:check` goes red, and **the red belongs to nobody**.
 
-The precondition does not make the count stable, and saying so is the point: two
-members each adding a file still write different integers to one line. Bean
-`y7b3` measured 76 of 300 replayed merges conflicting on `beans/README.md`,
-every one on the `| defs/ | N files |` line — and the class is wider than that
-bean states: **54 generated READMEs across 14 instances carry 207 such rows**
-(measured 2026-10-02). `merge:main` already resolves them under
-`readme-generated-regions`, so the residual cost falls on merges made by plain
-git rather than by the pipeline.
-
-The fix is bean `ba9e`: take the integer off `main` into the KG's `_data`
-layer, which classifies `take-base` and is therefore already auto-resolved by
-`merge-conflict-patterns.ts:171`. Not `-merge` and not a merge driver — both
-are refused in `.gitattributes` on measured grounds, the first because it
-tidies conflicts without removing them and the second because it needs
-per-checkout `git config`.
+The precondition does not make the count stable: two members each adding a
+file still write different integers to one line. `merge:main` resolves them
+under `readme-generated-regions`; a merge made by plain git does not. Not
+`-merge` and not a merge driver — both are refused in `.gitattributes`, the
+first because it tidies conflicts without removing them and the second because
+it needs per-checkout `git config`.
 
 ## A red train ejects one member, not the train
 
@@ -465,16 +416,13 @@ per-checkout `git config`.
 never the web button, never `merge_pull_request` from an MCP tool, and, while a
 Merge Manager is active, never by marking a PR ready or labelling it yourself
 first (with none active, see §"When no Merge Manager is active"). The script
-(`cat-harness-tools/scripts/merge-guard.ts`, bean `uoob`, child (f) of `nok9`) is
-the merge: it evaluates eight checks over GitHub's live facts, and performs
+(`cat-harness-tools/scripts/merge-guard.ts`) is the merge: it evaluates eight checks over GitHub's live facts, and performs
 the PUT, pinned to the head it evaluated, only when every one passes.
 
-### When no Merge Manager is active, the owning session merges (owner ruling 2026-10-06)
+### When no Merge Manager is active, the owning session merges
 
 The separation between the session that marks a PR ready and the session that
-merges it exists **only while a Merge Manager is active**. Owner, 2026-10-06:
-*"that only applies if there is an active Merge Manager. there isnt one right
-now"*, and "not just for this session".
+merges it exists **only while a Merge Manager is active**.
 
 With no Merge Manager active, the PR's own session lands it once the owner has
 said to merge. It still goes through the guard:
@@ -492,27 +440,15 @@ separation was lifted, so the landing is auditable.
 
 **Where the guard cannot run** (for example a cloud sandbox whose `gh` has
 no usable token), do not merge: hand the landing to a session that can run
-it, or ask the owner. No workflow posts a `merge-guard` commit status any
-more (owner, 2026-10-23: "i dont want the merge guard check";
-folio-assistant#2662 removed `.github/workflows/merge-guard.yml`), so there
-is no posted verdict to read in its place.
+it, or ask the owner. No workflow posts a `merge-guard` commit status, so
+there is no posted verdict to read in its place.
 
 How to tell whether a Merge Manager is active: the owner says so, or a live
 session holds the `merge-steward` lane (§"Address the ROLE, never a session",
 step 1). If you cannot tell, ask the owner. Do not assume none. A stale
 memory of "there was one yesterday" is not an answer in either direction.
 "The owner said merge" is still required. Submitting to `main` is the owner's
-call (§"Ask the user before submitting"), and this ruling does not change
-that.
-
-Owner ruling 2026-10-03, after three PRs were landed unfinished by a steward
-calling the PUT directly on the same day:
-
-| PR | landed with | check that refuses it |
-|---|---|---|
-| #1937 | base = #1764's head branch, after #1764 had merged; head newer than its `ready:` (a hand merge and two claim commits since); an unsigned `ready:`; `needs-merge-human` on; its own `pull_request` runs failed, only a dispatch green | 1, 2, 3, 4, 5 |
-| #1960 | no `ready-to-merge`, no `ready:` comment, `- [ ] CI green` in the body | 3, 4, 6 |
-| #1957 | the steward itself called `ready_for_review` and added `ready-to-merge` 75 s before merging; no `ready:` comment | 2, 3 |
+call (§"Ask the user before submitting"), and this does not change that.
 
 The eight checks, each named in a refusal by number and id:
 
@@ -529,7 +465,7 @@ The eight checks, each named in a refusal by number and id:
 5. **`ci`** — every `pull_request` run on the head is `success` or `skipped`,
    and every workflow owed for that event ran. A `workflow_dispatch` run
    counts **only** as the stand-in for a `pull_request` run GitHub held for
-   approval (`action_required`, bean `0qjq`) on a head that is a merge-main
+   approval (`action_required`) on a head that is a merge-main
    bot merge: merge-main has already merged main into that head, so the head
    IS the merge, and a dispatch on it judges the tree that would land. The
    latest dispatch of the same workflow on the head decides — green counts,
@@ -538,16 +474,14 @@ The eight checks, each named in a refusal by number and id:
    workflow's file (the dispatch is still owed), reported **not judged** if
    it does not (Feature Staging, preview-only), and `unknown` if that line
    cannot be parsed. A green dispatch never rescues a `pull_request` run that
-   executed and went red (#1937), and anywhere else it is reported and **not**
-   counted. **Feature Staging is judged, never waited for** (owner ruling
-   2026-10-05, bean `gnnj`): a staging run still in flight, or not started,
-   is not a refusal — its deploy is held by the #1956 `gh-pages` rate limit,
-   measured at up to 41 min with eight previews queued — and the verdict
+   executed and went red, and anywhere else it is reported and **not**
+   counted. **Feature Staging is judged, never waited for**: a staging run
+   still in flight, or not started, is not a refusal — its deploy is held by
+   the `gh-pages` rate limit — and the verdict
    says so as **not waited for**. Once it finishes, red still refuses, since
    `stage` runs real checks before it deploys — **unless the only failed
    step is the deploy itself** (`DEPLOY_ONLY_STEP`): a push window that
-   never opened, or three rejected pushes, is not a verdict on the tree
-   (owner ruling 2026-10-05). The guard reads the run's failed steps to
+   never opened, or three rejected pushes, is not a verdict on the tree. The guard reads the run's failed steps to
    tell; if it cannot read them, red refuses as before. The list is
    `NOT_WAITED_FOR_WORKFLOW_FILES` in `merge-guard.ts`.
 6. **`checklist`** — no unticked `- [ ]` in the body.
@@ -555,10 +489,9 @@ The eight checks, each named in a refusal by number and id:
    Merge Manager a question (a heuristic; its limits are on `openQuestions`
    in the script — a fresh `ready:` after the answer moves the window).
 8. **`mergeable`** — GitHub says the head still merges cleanly into `main`
-   (bean `vihx`). Check 5's runs tested the head merged with `main` **as
-   `main` was when the head was pushed**; once `main` moves, a stale green
-   head with a valid marker passed checks 1-7 while it conflicted (#1898,
-   and two HTTP 405 "merge conflicts" refusals on 2026-10-05). The PR API's
+   Check 5's runs tested the head merged with `main` **as `main` was when
+   the head was pushed**; once `main` moves, a stale green head with a valid
+   marker can pass checks 1-7 while it conflicts. The PR API's
    `mergeable: false` (`mergeable_state: dirty`) refuses **not-ready** —
    merge `main` into the head and re-sign `ready:`. `mergeable: null` means
    GitHub has not computed it yet: the guard re-asks for up to 14 s, then
@@ -570,15 +503,15 @@ The eight checks, each named in a refusal by number and id:
 Exit 0 is pass (or merged), 1 refused, **2 could not determine — never a
 pass.** A refusal is handed back to the owning session through
 `merge-refusal.bpmn` with the check's text; the steward does not fix the PR
-to make it pass, which is the move all three incidents made.
+to make it pass.
 
 **What the OWNING session does, so a finished PR passes:** mark it ready,
 then post `ready: <head sha>` signed with its session link —
 `https://claude.ai/code/session_…` in the footer — within ten minutes of
 each other, and apply `ready-to-merge`. Every session acts with the owner's
 token, so the timeline's actor is always the owner and cannot tell sessions
-apart; **the signature is the only thing that can**. An unsigned marker,
-like #1937's, is refused.
+apart; **the signature is the only thing that can**. An unsigned marker is
+refused.
 
 **A verdict has four states, and red means wrong, not unfinished.** A PR
 that is merely not ready yet (a draft, no marker, no label, an unticked box,
@@ -588,11 +521,8 @@ on the head, or a marker or ready-flip by a session other than the PR's own.
 `success` is pass and `error` is could-not-determine. Red on every draft
 would teach readers to ignore red. Only `success` lands.
 
-**No workflow runs it.** `.github/workflows/merge-guard.yml` once ran the
-evaluate mode on PR events and posted the verdict as a `merge-guard` commit
-status. The owner removed it on 2026-10-23 ("i dont want the merge guard
-check"; folio-assistant#2662), so the guard is the script alone, and
-`--merge` evaluates live at the moment it lands.
+**No workflow runs it.** The guard is the script alone, and `--merge`
+evaluates live at the moment it lands.
 
 `Rule_NotReady` in
 [`merge-priority.dmn`](../../processes/decisions/merge-priority.dmn)
@@ -602,11 +532,10 @@ handed back before it is put in a train rather than at the PUT.
 
 ## When the authors stall: the steward dispatches unblockers
 
-Owner, 2026-10-04, verbatim: *"dispatch agent to handle where CI isnt green.
-make sure you dont use up all github workspace"* and *"if there is something
-small an agent can handle that unblocks, then do so"*. Authors' sessions hit
-usage limits together, so the whole hand-back column can go quiet for an hour
-while every member in it is one small fix away from admission.
+Authors' sessions can hit usage limits together, so the whole hand-back
+column can go quiet while every member in it is one small fix away from
+admission. The steward may dispatch agents for small unblocking fixes,
+without using up the CI budget.
 
 **This adds a second actor to step 4 above. It changes nothing else.** An
 unblocker fixes the head. It **never merges, never adds `ready-to-merge`, and
@@ -630,7 +559,7 @@ them:**
 | no `workflow_dispatch`, re-run, empty commit or close/reopen | the same budget, and a dispatched run is not an owed run (above) |
 | merge commits only: no rebase, amend or force-push | it is somebody else's branch |
 | authored conflict → resolve only dead code, or a pure addition carried over verbatim; otherwise quote both sides and stand down | choosing between two behaviours is the author's call |
-| `git submodule update --init` and `bun run cat state:mount` before `regen` | without the submodules `merge:steward` cannot load. Without the mount, `fsh-guts:viz:check` exits non-zero (it judges that the mounted graph renders; the page itself is built at publish, bean `0b8c`) and `audit:coverage:strict` goes red |
+| `git submodule update --init` and `bun run cat state:mount` before `regen` | without the submodules `merge:steward` cannot load. Without the mount, `fsh-guts:viz:check` exits non-zero (it judges that the mounted graph renders; the page itself is built at publish) and `audit:coverage:strict` goes red |
 | delete the worktree's `node_modules` at the end | four parallel installs run out of the container's disk |
 | one comment per PR: root cause, the commit it pushed or the reason it stood down | the author comes back to an explanation, not a mystery commit |
 
@@ -649,18 +578,13 @@ under `*/test/results/` (LSI indexes, QA and detangle sidecars) are gitignored
 but still tracked. Once a resolution step removes one from the index, regen
 rewrites it on disk and `git add -A` does not stage it again. Local checks
 still pass, but CI's fresh checkout fails. `merge:main` and the merge-main bot
-now refuse such a merge and name the paths (`droppedInMerge` in
+refuse such a merge and name the paths (`droppedInMerge` in
 `merge-base.ts`, see `merge-conflict-patterns` §"When one side deleted the
 file"). A hand `git merge` gets no such check. After one, run
 `git diff --diff-filter=D HEAD^1 HEAD -- '*/test/results/*'`, and restore
-anything that main still tracks with `git checkout HEAD^2 -- <path>` (bean
-`8j9e`).
+anything that main still tracks with `git checkout HEAD^2 -- <path>`.
 
 ### Stalled for days, with no handover report: write it, then hand it to a takeover agent
-
-Owner, 2026-10-04, verbatim: *"several agents (~8) just stalled for week.
-they didnt generate handover reports. disaptach agent to review PRs and
-generate plan ... to takeover work by anotther agent"*.
 
 An unblocker suits a short pause. When the authors are gone for days, the
 steward does something else:
@@ -682,8 +606,7 @@ steward does something else:
    check 2 keeps the merging session from vouching for its own landing.
    So the takeover agent edits the body's session line to its own session,
    records "taken over from <old> (stalled)", claims the beans, and then
-   signs. Owner, 2026-10-04, chose this over the steward signing or a
-   one-time bypass: *"Wait for takeover agent"*.
+   signs. The steward never signs for it, and there is no one-time bypass.
 
 A PR that is green but refused by checks 3 and 4 (no marker, no label) is
 `waiting-on-author` in the queue, not `active`, until the takeover session
@@ -693,14 +616,13 @@ signs it.
 
 **Re-run `merge:steward` after every merge, before the next one.** Each merge
 moves `main`. A member admitted against the old `main` can turn `dirty` and
-then cannot land at all. Measured 2026-10-04: #2059 was admitted at
-`f8e1006d`, then reported `dirty` once #2069 landed. Its tested head is still
-green, but GitHub refuses to merge a conflicted PR, so it waits for its
-`merge:main` round and fresh CI on the new head.
+then cannot land at all: its tested head is still green, but GitHub refuses
+to merge a conflicted PR, so it waits for its `merge:main` round and fresh CI
+on the new head.
 
-Only with the owner's release, which is now the authorisation half of
-[`merge-to-main`](merge-to-main.md) (`Call_MergeToMain` in `merge-train.bpmn`;
-it was `Task_Release` until 2026-10-09): explicit, or a standing ruling
+Only with the owner's release, which is the authorisation half of
+[`merge-to-main`](merge-to-main.md) (`Call_MergeToMain` in `merge-train.bpmn`):
+explicit, or a standing ruling
 quoted verbatim with its date, and **only through `bun run cat merge:guard <pr>
 --merge --session <id>`** (section above). What lands is exactly the SHA CI
 tested — the guard pins the PUT to the head it evaluated, so GitHub refuses it
@@ -708,13 +630,11 @@ if the head moved; if `main` moved after the train's CI started, re-run
 rather than land.
 
 **A standing release covers the queue AS IT STOOD, not every PR that arrives
-later.** Owner, 2026-10-04, verbatim: *"my approcal - that counts for the PRs
-that are in queue. new PRs need my approval exp-licity (through you or
-siblign)"*. So on every sweep the steward lists the PRs opened since the
+later.** New PRs need the owner's explicit approval. So on every sweep the steward lists the PRs opened since the
 release, and puts them to the owner in one question, with the table's verdict
 on each. One answer ("approve all 6") may cover the whole batch.
 
-## Post-merge asymmetry: why main needs its own regeneration pipeline (bean ey1c)
+## Post-merge asymmetry: why main needs its own regeneration pipeline
 
 `.github/workflows/merge-main.yml` runs `bun run cat merge:main` on an opted-in
 **PR branch** when `main` moves, resolving declared conflicts and regenerating.
@@ -727,21 +647,11 @@ it usually does not is an accident: the PR branch happened to regenerate against
 base that had not moved yet. When that accident does not hold, `main` goes red and
 stays red until somebody notices.
 
-### The accidental-repair pattern (observed 3 times in 2 hours)
+### The accidental-repair pattern
 
-On 2026-10-03 on `main`'s own runs, step 65 ("Every declared directory's README is
-current", `readme:subgraphs:check`) demonstrated this pattern:
-
-    5187a4df361  after #1936                               green
-    8688288494a  after #1938 (arXiv licences → uploads/)   RED
-    268c0911a06                                            RED
-    ea1d8b10593  after #1940                               green
-    70882785607  "Add files via upload" (web UI)           RED
-
-PR #1938 added PDFs to `uploads/` without updating the generated table in
-`uploads/README.md`. It broke `main`. Then PR #1940's branch happened to carry a
-regenerated README, which repaired `main` **incidentally**; then a web-UI upload
-broke it again with no generator run at all.
+A PR that adds files without regenerating a counted README breaks `main`; a
+later, unrelated PR whose branch carries a regenerated README repairs it
+**incidentally**; a web-UI upload breaks it again with no generator run at all.
 
 **The trap:** A green on a derived gate must NOT be read as "was never broken" or
 "the commit before it was clean". Unrelated PR branches that happen to carry
@@ -765,7 +675,7 @@ push to `main` and runs `bun run cat post-merge:regen --create-pr`.
    `main`. This ensures the repair cannot bypass gates, full PR CI runs on it, and
    it remains auditable and reviewable.
 3. **NEGATIVE CONTROL:** A merge that changes nothing counted triggers 0 repairs
-   and opens NO PR (`status: "clean"`, exit 0), preventing churn (bean `do70`).
+   and opens NO PR (`status: "clean"`, exit 0), preventing churn.
 
 ### Merge steward procedure: post-merge verification
 
@@ -784,8 +694,7 @@ push to `main` and runs `bun run cat post-merge:regen --create-pr`.
 
 ## ACK every PR that enters the queue, on its bean (STRICT)
 
-Owner, 2026-10-04: *"as part of merge manager skill you need to ACK a new PR
-in queue on its bean"*. A submitter who hears nothing cannot tell "queued"
+A submitter who hears nothing cannot tell "queued"
 from "lost", and the bean is where the next session looks.
 
 When a PR enters the queue (first seen on a sweep, or approved by the
@@ -810,13 +719,8 @@ asking the author to name one. The steward does not invent the association.
 
 ## Every open PR has an entry: review the whole list, then triage it
 
-Owner, 2026-10-04, verbatim: *"review all open PRs.... anything not in merge
-queue? put in as status unknown any found. then try to figure out where they
-are, what's stale, etc."* and *"add to merge manager skills."*
-
 `merge:steward` skips drafts, and a PR that nobody ACKed has no entry, so the
-queue silently shrinks to the PRs someone happened to look at. Measured on
-the first review: **18 of 26** open PRs had no entry, 9 of them drafts.
+queue silently shrinks to the PRs someone happened to look at.
 
 On a review, and at least once per working session:
 
