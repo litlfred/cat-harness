@@ -2957,6 +2957,102 @@
         "saw": "Vector-drawn Figure 1 on page 2 showing four decision table stimuli: (a) Monochromatic Expanded, (b) Colored Highlighted Expanded, (c) Monochromatic Frugal, and (d) Colored Highlighted Frugal.",
         "draft": "Figure 1: Examples of Decision Tables stimuli used in the comprehension experiment: (a) Monochromatic Expanded, (b) Colored Highlighted Expanded, (c) Monochromatic Frugal, and (d) Colored Highlighted Frugal."
       }
+    },
+    "phii-2023-crdm": {
+      "img-p009-1": {
+        "role": "logo",
+        "saw": "Footer banner on page 9 displaying the Public Health Informatics Institute logo ('i | PUBLIC HEALTH INFORMATICS INSTITUTE') on the left and The Task Force for Global Health logo ('THE TASK FORCE FOR GLOBAL HEALTH') on the right above 'The Public Health Informatics Institute is a program of The Task Force for Global Health.'",
+        "draft": "Dual organizational logo banner in the page 9 footer showing the Public Health Informatics Institute emblem ('i | PUBLIC HEALTH INFORMATICS INSTITUTE') and The Task Force for Global Health emblem ('THE TASK FORCE FOR GLOBAL HEALTH'), with the caption 'The Public Health Informatics Institute is a program of The Task Force for Global Health.'"
+      }
+    },
+    "phii-2021-defining-and-validating-requirements-guide": {
+      "img-p001-1": {
+        "role": "logo",
+        "saw": "Footer logo on pages 1, 2, 4, 5, and 6 reading 'i Public Health Informatics Institute' with a circular orange-and-blue 'i' emblem.",
+        "draft": "Public Health Informatics Institute organizational footer logo featuring a stylized circular 'i' icon in orange and blue beside the wordmark 'Public Health Informatics Institute'."
+      },
+      "img-p001-2": {
+        "role": "logo",
+        "saw": "Header emblem at the top left of pages 1 through 6 showing a teal tablet, green folder, and two gears connected by circular arrows above the caption 'EHR TOOLKIT'.",
+        "draft": "PHII EHR Toolkit series header emblem depicting a teal tablet computer, a green file folder, and two blue-and-green gears linked by orange circular arrows above the label 'EHR TOOLKIT'."
+      },
+      "img-p003-1": {
+        "role": "logo",
+        "saw": "Footer logo on page 3 reading 'i Public Health Informatics Institute' with a circular orange-and-blue 'i' emblem.",
+        "draft": "Public Health Informatics Institute organizational footer logo on page 3 featuring a stylized circular 'i' icon in orange and blue beside the wordmark 'Public Health Informatics Institute'."
+      }
+    },
+    "path-2012-common-requirements-mhis-crdm": {
+      "img-p001-1": {
+        "role": "decorative",
+        "saw": "Solid black rectangular cover graphic on page 1.",
+        "draft": "Solid black rectangular background block from the cover layout on page 1."
+      },
+      "img-p001-2": {
+        "role": "decorative",
+        "saw": "Solid black horizontal rule/bar on the cover page (page 1).",
+        "draft": "Solid black horizontal decorative bar from the cover page layout on page 1."
+      },
+      "img-p001-3": {
+        "role": "logo",
+        "saw": "White outline PATH organizational emblem and wordmark 'PATH' on the cover page (page 1).",
+        "draft": "PATH organizational logo and wordmark in white outline on a dark background from the document cover page."
+      },
+      "img-p001-4": {
+        "role": "decorative",
+        "saw": "Solid black vertical sidebar rectangle on the cover page (page 1).",
+        "draft": "Solid black vertical decorative sidebar block from the cover page layout on page 1."
+      },
+      "img-p008-1": {
+        "role": "figure",
+        "saw": "Table 1 on page 8 (printed page 7), 'Process framework for maternal health services', arranged in four columns ('Patient Administration', 'Patient Care', 'Patient Fees and Accounting', 'Planning, Management & Surveillance') with the ten priority processes highlighted in green and ten non-priority processes in grey.",
+        "draft": "Table 1 (page 8 / printed page 7): Process framework for maternal health services across four functional columns — Patient Administration (Registration [green], Scheduling [grey], Admission [grey], Discharge [grey], Referral [green]), Patient Care (Routine Antenatal Care [green], Routine Delivery Community [green], Routine Delivery Facility [green], Routine Post-natal [green], Emergency Care [green], Community Health Support [green], Community Follow up [green], Diagnostic Services Support [grey]), Patient Fees and Accounting (Assess Charges [grey], Billing [grey]), and Planning, Management & Surveillance (Determine target client population [green], Reporting [grey], Monitor Performance & Quality [grey], Manage Staff [grey], Manage Inventory [grey]) — where green cells denote the ten priority maternal health business processes selected for task-flow diagrams and detailed requirements."
+      },
+      "img-p011-1": {
+        "role": "figure",
+        "saw": "Appendix 1 diagram on page 11 (printed page 10), 'Diagram Descriptions — Task Flow Diagrams', listing ten numbered shape definitions (Pools, Swim Lanes, Start Event, End Event, Sequence Flow, Activity, Subprocess, Decision, Multi-Page Connector, Annotation) alongside a visual LEGEND box.",
+        "draft": "Appendix 1 Diagram Descriptions — Task Flow Diagrams (page 11 / printed page 10): Reference key defining the ten notation elements used in the CRDM maternal health task-flow diagrams — (1) Pools (Facility, Community), (2) Swim Lanes (Actor/Role), (3) Start Event (circle), (4) End Event (bold circle), (5) Sequence Flow (arrow), (6) Activity (rounded rectangle), (7) Subprocess (rounded rectangle with '+' marker), (8) Decision (diamond with Yes/No branches), (9) Multi-Page Connector (numbered circle), and (10) Annotation (open bracket) — accompanied by a visual Legend panel."
+      },
+      "img-p013-1": {
+        "role": "figure",
+        "saw": "Appendix 1 task-flow diagram on page 13 (printed page 12), '2 Routine Antenatal Care Process — Maternal Health Information System (MHIS)', showing swimlanes across Facility (Nurse/Midwife) and Community (Woman) with numbered activities/decisions 1-13 and an Activity Details / Narrative table on the right.",
+        "draft": "Appendix 1 Process 2 — Routine Antenatal Care Process (page 13 / printed page 12): Swimlane task-flow diagram across pools Facility (Nurse/Midwife) and Community (Woman) tracing steps 1 to 13 — from Woman presents at clinic for ANC visit and 1. Register Woman (subprocess), 2. Take patient history, 3. Perform physical exam, 4. Perform tests and procedures, 5. High risk? decision (branching to 6. Refer to higher level of care), 7. Provide preventative care, 8. Provide case management, 9. Counsel and educate woman, 10. Develop or review birth and emergency plan, 11. Complete maternal child health records, and 12. Schedule next ANC visit, to 13. Remind woman of ANC visits — paired with an Activity Details / Narrative panel."
+      },
+      "img-p015-1": {
+        "role": "figure",
+        "saw": "Appendix 1 task-flow diagram on page 15 (printed page 14), '4 Routine Delivery in the Community Process — Maternal Health Information System (MHIS)', showing three swimlanes in the Community pool (Family member, Woman, Skilled Birth Attendant) with steps 1-20 and an Activity Details / Narrative panel.",
+        "draft": "Appendix 1 Process 4 — Routine Delivery in the Community Process (page 15 / printed page 14): Swimlane task-flow diagram in the Community pool across three actor lanes (Family member, Woman, Skilled Birth Attendant) covering steps 1 to 20 — from onset of labor, notifying the Skilled Birth Attendant (SBA), initial assessment and complication checks (referring via Process 6 if needed), monitoring labor progress (partograph), normal delivery, active management of third stage of labor (AMTSL), immediate newborn care, APGAR scoring, birth weight, postpartum monitoring, and birth registration/record completion — alongside an Activity Details / Narrative panel."
+      },
+      "img-p016-1": {
+        "role": "figure",
+        "saw": "Appendix 1 task-flow diagram on page 16 (printed page 15), '5. Routine Delivery in a Health Facility Process — Maternal Health Information System (MHIS)', showing the Health Facility pool (Nurse, Midwife, or Physician lane) with steps 1-16 and an Activity Details / Narrative panel.",
+        "draft": "Appendix 1 Process 5 — Routine Delivery in a Health Facility Process (page 16 / printed page 15): Swimlane task-flow diagram in the Health Facility pool (Nurse, Midwife, or Physician) tracing steps 1 to 16 — from 1. Register Woman (subprocess), 2. Take history and review ANC record, 3. Perform physical exam, 4. Complications? decision (routing to 7. Obstetric Emergency Management or 6. Referral), 5. Admit to maternity ward, 6. Monitor labor (partograph), 7. Assist in delivery and perform AMTSL, 8. Provide immediate newborn care, 9. Complications? check, 10. Monitor mother and newborn postpartum, 11. Counsel on postpartum/newborn care, 12. Immunize newborn, 13. Complete delivery and birth records, 14. Schedule PNC visit, and 15-16. Discharge — paired with an Activity Details / Narrative panel."
+      },
+      "img-p017-1": {
+        "role": "figure",
+        "saw": "Appendix 1 task-flow diagram on page 17 (printed page 16), '6. Referral Process - from primary to secondary facility — Maternal Health Information System (MHIS)', showing pools Primary Facility (Health Care Worker) and Secondary Facility (Nurse/Midwife/Physician) with steps 1-16 and an Activity Details / Narrative panel.",
+        "draft": "Appendix 1 Process 6 — Referral Process from Primary to Secondary Facility (page 17 / printed page 16): Swimlane task-flow diagram across Primary Facility (Health Care Worker) and Secondary Facility (Nurse/Midwife/Physician) tracing steps 1 to 16 — stabilizing the patient, preparing referral documentation, arranging transport, notifying the receiving facility, receiving and assessing the patient at the secondary facility, providing care, recording outcomes, and sending counter-referral feedback back to the primary facility — alongside an Activity Details / Narrative panel."
+      },
+      "img-p018-1": {
+        "role": "figure",
+        "saw": "Appendix 1 task-flow diagram on page 18 (printed page 17), '7. Obstetric Emergency Management Process — Maternal Health Information System (MHIS)', showing pool Service Delivery / Health Care Facility (Midwife or Physician) with steps 1-16 and an Activity Details / Narrative panel.",
+        "draft": "Appendix 1 Process 7 — Obstetric Emergency Management Process (page 18 / printed page 17): Swimlane task-flow diagram in the Service Delivery / Health Care Facility pool (Midwife or Physician) tracing steps 1 to 16 — rapid assessment and stabilization, identifying the obstetric emergency (hemorrhage, eclampsia, obstructed labor, sepsis), deciding whether the facility can manage the emergency or must refer (Process 6), administering emergency obstetric interventions, monitoring response, updating clinical records, and post-emergency follow-up — alongside an Activity Details / Narrative panel."
+      },
+      "img-p019-1": {
+        "role": "figure",
+        "saw": "Top task-flow diagram on page 19 (printed page 18), '8. Routine Postnatal Care Process — Maternal Health Information System (MHIS)', showing pools Facility (Health Care Worker) and Community (TBA/Family/CHW) with steps 1-10 and an Activity Details / Narrative panel.",
+        "draft": "Appendix 1 Process 8 — Routine Postnatal Care Process (page 19, top / printed page 18): Swimlane task-flow diagram across Facility (Health Care Worker) and Community (TBA/Family/CHW) tracing steps 1 to 10 — postnatal checkups for mother and newborn, danger-sign screening and referral if complications arise, family planning counseling, newborn immunization and growth monitoring, record updates, and scheduling follow-up visits — paired with an Activity Details / Narrative panel."
+      },
+      "img-p019-2": {
+        "role": "figure",
+        "saw": "Bottom task-flow diagram on page 19 (printed page 18), '9. Community Health Support — Maternal Health Information System (MHIS)', showing pool Community across lanes Mom or baby and Community Health Worker with steps 1-8 and an Activity Details / Narrative panel.",
+        "draft": "Appendix 1 Process 9 — Community Health Support (page 19, bottom / printed page 18): Swimlane task-flow diagram in the Community pool across lanes Mom or baby and Community Health Worker tracing steps 1 to 8 — identifying pregnant women and newborns in the community, conducting home visits, health education and birth preparedness counseling, screening for danger signs, referring to the health facility when needed, and logging community health activities — alongside an Activity Details / Narrative panel."
+      },
+      "img-p020-1": {
+        "role": "figure",
+        "saw": "Appendix 1 task-flow diagram on page 20 (printed page 19), '10 Community Follow-up — Maternal Health Information System (MHIS)', showing pools Health Center (Health Care Worker) and Community (Community Health Worker, Community Agent) with steps 1-11 and an Activity Details / Narrative panel.",
+        "draft": "Appendix 1 Process 10 — Community Follow-up (page 20 / printed page 19): Swimlane task-flow diagram across Health Center (Health Care Worker) and Community (Community Health Worker, Community Agent) tracing steps 1 to 11 — identifying patients overdue for scheduled ANC/PNC/immunization visits or requiring post-referral follow-up, generating follow-up lists for community workers, locating the woman in the community, determining status and barriers to care, rescheduling or referring to the facility, and reporting follow-up outcomes back to the health center — alongside an Activity Details / Narrative panel."
+      }
     }
   },
   "attribution": {
@@ -3091,6 +3187,30 @@
         "model": "gemini-2.5-pro"
       },
       "inspected_at": "2026-10-31"
+    },
+    "phii-2023-crdm": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "inspected_at": "2026-11-05"
+    },
+    "phii-2021-defining-and-validating-requirements-guide": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "inspected_at": "2026-11-05"
+    },
+    "path-2012-common-requirements-mhis-crdm": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "antigravity",
+        "model": "gemini-2.5-pro"
+      },
+      "inspected_at": "2026-11-05"
     }
   }
 }
