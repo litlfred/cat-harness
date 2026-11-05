@@ -66,8 +66,9 @@ be intentionally aligned with achieving specific outcomes rather than reacting t
 a feature request at the surface level.
 
 > **References:**
-> - [PHII — CRDM](https://phii.org/crdm/) — the canonical description
-> - [PATH — Collaborative Requirements Development Methodology](https://www.path.org/our-impact/resources/collaborative-requirements-development-methodology-participatory-process-end-users-define-software-requirements-improves-system-design-implementation/) — the PATH adaptation for global health informatics
+> - [`methodologies/crdm.md`](../../../methodologies/crdm.md) — the harness's adopted CRDM methodology node (and canonical SKOS concept `https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/collaborative-requirements-development-methodology`)
+> - [PHII — CRDM](https://phii.org/crdm/) ([`library/phii-2023-crdm`](../../../library/process/phii-2023-crdm/README.md)) and [Defining and Validating System Requirements Guide](https://phii.org/wp-content/uploads/2021/07/Defining-and-Validating-Requirements-Guide_0.pdf) ([`library/phii-2021-defining-and-validating-requirements-guide`](../../../library/process/phii-2021-defining-and-validating-requirements-guide/README.md)) — the canonical PHII methodology and requirements validation guide
+> - [PATH & PHII (2012) — Common Requirements for Maternal Health Information Systems](https://media.path.org/documents/MCHN_mhis_crdm.pdf) ([`library/path-2012-common-requirements-mhis-crdm`](../../../library/process/path-2012-common-requirements-mhis-crdm/README.md)) — the PATH application of CRDM to global health informatics
 
 ## Roles — who does what
 {: #roles data-fa-label="sec:crdm-roles" }
@@ -125,7 +126,7 @@ Stakeholders participate at defined checkpoints, not continuously:
 | **Feature sign-off** (Phase 6) | Confirm the feature meets their needs; close the issue |
 
 The BA **bridges** the gap: stakeholders should never need to read a PR,
-understand a bean, or interact with the agent directly.
+understand a work item, or interact with the agent directly.
 
 ### Agent
 
@@ -246,7 +247,7 @@ with three swim lanes:
   feedback into agent-actionable direction, and confirms final delivery.
 
 - **Agent** — detects the feature request, scans for matching issues, runs
-  through the six CRDM phases, creates beans, implements on feature
+  through the six CRDM phases, creates work items, implements on feature
   branches, posts summaries to the issue.
 
 - **Stakeholders** — confirm needs, approve requirements, test the MVP in
@@ -454,8 +455,8 @@ requirements and implementation.
    or concerns about the impact, cycle back to the relevant phase. The issue
    thread records each iteration.
 
-4. **Create beans** — once the requirements are agreed, the agent creates
-   `beans` for each unit of implementation work. Each bean:
+4. **Create work items** — once the requirements are agreed, the agent creates
+   `beans` for each unit of implementation work. Each work item:
    - References the parent issue
    - Has a clear title describing the deliverable
    - Is scoped to a single PR-sized unit of work
@@ -465,16 +466,16 @@ requirements and implementation.
 
 5. **Record the decision** — the sign-off comment on the issue serves as the
    decision record. It states what was agreed, what was deferred, and links to
-   the beans that will implement it.
+   the work items that will implement it.
 
-**Deliverable:** a sign-off comment on the issue, plus beans for each work item.
+**Deliverable:** a sign-off comment on the issue, plus work items for each work item.
 
 ## Phase 6 — Iterative MVP development and stakeholder review
 {: #phase-6-iterative-development data-fa-label="sec:crdm-phase_6_iterative_development" }
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/process-crdm-methodology/phase-6-iterative-development.md){: .fa-node-edit title="Edit docs/source/process-crdm-methodology/phase-6-iterative-development.md" data-fa-link="edit" data-src="docs/source/process-crdm-methodology/phase-6-iterative-development.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="phase-6-iterative-development.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/process-crdm-methodology/phase-6-iterative-development.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/process-crdm-methodology/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="phase-6-iterative-development.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/process-crdm-methodology/phase-6-iterative-development.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/process-crdm-methodology/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-Once requirements are signed off and beans are created, the agent and BA
+Once requirements are signed off and work items are created, the agent and BA
 enter the **iterative MVP development cycle**. This is where the feature
 gets built, tested, and refined until stakeholders accept it.
 
@@ -496,16 +497,16 @@ The BA and agent work together in tight iterations:
                 └──────────────────────────────────────────┘
 ```
 
-1. **Agent claims a bean** — implements the requirement on a feature
+1. **Agent claims a work item** — implements the requirement on a feature
    branch, opens a PR, posts a summary to the issue.
 2. **BA reviews** — tests the feature, compares it against the requirement
    and acceptance criteria from Phase 3. The BA does not need to read code;
    they test the *behaviour*.
 3. **Feedback or accept** — the BA either requests changes (the agent
    iterates) or accepts the increment.
-4. **Repeat** until the bean is resolved.
+4. **Repeat** until the work item is resolved.
 
-Each bean produces a **minimum viable increment** — not the whole feature,
+Each work item produces a **minimum viable increment** — not the whole feature,
 but one requirement satisfied. The BA decides when enough increments have
 accumulated to show stakeholders.
 
@@ -544,13 +545,13 @@ testing**, they bring stakeholders in:
    ("the table doesn't show the right columns"). The BA translates it
    into actionable direction for the agent ("the `review-triage` view
    needs columns X, Y, Z from the feedback spreadsheet").
-4. **Agent iterates** — new beans or updates to existing beans. The inner
+4. **Agent iterates** — new work items or updates to existing work items. The inner
    loop resumes.
 5. **Repeat** until stakeholders are satisfied.
 
 ### The exit: feature sign-off
 
-When all beans for the feature are resolved and stakeholders confirm the
+When all work items for the feature are resolved and stakeholders confirm the
 MVP meets their needs:
 
 1. **BA confirms** — all acceptance criteria from Phase 3 are met.
@@ -570,7 +571,7 @@ Collapsing them into one loop would either:
 - Slow the agent down to the stakeholder cadence (wasting agent time), or
 - Rush stakeholders through testing (producing shallow feedback).
 
-The BA absorbs the impedance mismatch. Between outer-loop checkpoints, the agent works on other beans or
+The BA absorbs the impedance mismatch. Between outer-loop checkpoints, the agent works on other work items or
 other features.
 
 ## Agent skills and tooling
@@ -589,7 +590,7 @@ phase. Some exist today; others are proposed.
 | **BPMN workflow authoring** (skill: `bpmn-authoring`) | Phase 2 | Agent can create and modify BPMN 2.0 process diagrams |
 | **Content graph** (`content-graph.ts`) | Phase 4 | Dependency analysis across blocks and chapters |
 | **QA criteria registry** (`qa-criteria-registry.ts`) | Phase 3, 4 | Register and scope new QA checks |
-| **Beans** (`beans` CLI) | Phase 5, 6 | Work-plan creation and tracking |
+| **Work items** (`beans` CLI) | Phase 5, 6 | Work-plan creation and tracking |
 | **Content validation** (`content_validate` MCP tool) | Phase 6 | Verify changes against schema and constraints |
 | **Schema types** (`schemas/*.ts`) | Phase 3 | Define new types, constraints, and builders |
 | **Document ingestion** (`uploads/` → `library/` pipeline) | Phase 2 | Ingest source documents for review |
@@ -622,7 +623,7 @@ other diagram in this repository:
 
 | Instead of | Use |
 |---|---|
-| `crdm_start` | `workflow_start` with `crdm-requirements` and the bean the work hangs on |
+| `crdm_start` | `workflow_start` with `crdm-requirements` and the work item the work hangs on |
 | `crdm_status` | `workflow_next` — what is enabled now, which lane owns it, which skill implements it |
 | a phase checklist | `workflow_complete`, which **refuses a step that is not enabled**, so phases cannot be claimed out of order |
 
@@ -641,13 +642,13 @@ Every activity in the agent's lane carries the skill that implements it, so
 | Phase 1 — stakeholders, synthesise needs | `crdm-requirements-workflow` |
 | Phase 2 — map the current workflow | `bpmn-authoring` |
 | Phases 3–4 — requirements and impact | `crdm-requirements-workflow` + `content-graph` |
-| Phase 5 — create beans | `todo-manager` |
+| Phase 5 — create work items | `todo-manager` |
 | Phase 6 — implement | `prepare-merge` |
 | Post the round summary | `delivery-summary` |
 | Close the issue | `crdm-requirements-workflow` |
 
 Three steps also carry a work-plan effect the engine performs: implementing
-claims the bean, creating beans notes it, and closing resolves it — and
+claims the work item, creating work items notes it, and closing resolves it — and
 resolve only lands once the instance itself has completed, because whether
 work is done is a judgement.
 
@@ -706,7 +707,7 @@ there.
   other diagram here, so `workflow_start` / `workflow_next` /
   `workflow_complete` run it today, and `workflow_complete` refuses a step
   that is not enabled. Every activity in the agent's lane names the skill
-  that implements it, and three carry the bean operation the engine performs.
+  that implements it, and three carry the work item operation the engine performs.
 - **BPMN diagram of the process itself** —
   [`processes/process/crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn),
   with lanes for the BA / feature requestor, the agent, and stakeholders.

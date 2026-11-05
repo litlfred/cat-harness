@@ -137,10 +137,6 @@ msgstr "每个智能体会话都遵循相同的生命周期："
 msgid "Classify — each user request is classified (see next section) and routed to the appropriate workflow."
 msgstr "分类 — 对每个用户请求进行分类（参见下一节），并路由到相应的工作流。"
 
-#: docs/concepts/agentic-harness.md:97
-msgid "Execute — the agent works within the active workflow, following its BPMN process. Each turn reports the bean being worked on and what is next."
-msgstr "执行 — 智能体在活动工作流中开展工作，并遵循其 BPMN 流程。每个轮次都会报告正在处理的 bean 以及下一步计划。"
-
 #: docs/concepts/agentic-harness.md:104
 msgid "Handoff — when the session ends (user leaves, context limit, token exhaustion), the agent's durable state is:"
 msgstr "交接 — 当会话结束时（用户离开、上下文达到上限、Token 耗尽），智能体的持久化状态包括："
@@ -148,10 +144,6 @@ msgstr "交接 — 当会话结束时（用户离开、上下文达到上限、T
 #: docs/concepts/agentic-harness.md:106
 msgid "Committed and pushed code"
 msgstr "已提交并推送的代码"
-
-#: docs/concepts/agentic-harness.md:107
-msgid "Beans updated with status and notes"
-msgstr "更新了状态和备注的 beans"
 
 #: docs/concepts/agentic-harness.md:108
 msgid "Issue comments with summaries of what was accomplished"
@@ -249,10 +241,6 @@ msgstr "无工作流 — 执行并报告"
 msgid "Work-plan management"
 msgstr "工作计划管理"
 
-#: docs/concepts/agentic-harness.md:127
-msgid "Create, update, or query beans"
-msgstr "创建、更新或查询 beans"
-
 #: docs/concepts/agentic-harness.md:128
 msgid "Bug report"
 msgstr "缺陷报告"
@@ -304,10 +292,6 @@ msgstr "BPMN 执行：一项技能，两个引擎"
 #: docs/concepts/agentic-harness.md:218
 msgid "BPMN Execution Skill: given a Process, Context, State and Role, utilize one or more Skills in order to execute a Task."
 msgstr "BPMN 执行技能： 给定流程、上下文、状态和角色，运用一项或多项技能以执行任务。"
-
-#: docs/concepts/agentic-harness.md:221
-msgid "BPMN execution, from deterministic to agentic. A colour bar runs from \"deterministic\" (blue, left: managed agent execution of a single task) to \"agentic\" (green, right: agents across most or all tasks). Left, under a gear-and-engine icon: \"BPMN Execution Tool: one of any open-source BPMN engines, state and swimlanes strictly enforced\", over a flat swimlane diagram of the folio lifecycle with one sticky note, one bean cluster, a person and a cat-robot beside the lanes. Right, under a cat-robot icon: \"BPMN Execution Tool: agentic swarm with ungoverned state. Agents 'relax' swimlanes, mitigated by mechanical + agentic QA/QC reports\", over the same diagram tilted in perspective, beans scattered across every lane and many cat-robots beneath it."
-msgstr "BPMN 执行，从确定性到智能体化。一条色带从“确定性”（蓝色，左侧：托管智能体执行单一任务）延伸至“智能体化”（绿色，右侧：智能体跨越大部分或所有任务）。左侧，在齿轮与引擎图标下方：“BPMN 执行工具：任何开源 BPMN 引擎，严格强制执行状态和泳道”，下方是带有便签、bean 集群、泳道旁的真人及猫机器人的 folio 生命周期平视泳道图。右侧，在猫机器人图标下方：“BPMN 执行工具：状态非托管的智能体集群。智能体‘放宽’泳道限制，由机械 + 智能体 QA/QC 报告进行缓解”，下方是相同的图表（以透视倾斜呈现），beans 分散在每个泳道中，其下方有许多猫机器人。"
 
 #: docs/concepts/agentic-harness.md:223
 msgid "One skill, two kinds of Tool. The skill is the same at both ends: take the process, the context, the current state and the role, pick the skills, and do the task. What changes is the Tool that runs it, and a Tool is swappable behind a skill in the way every other Tool here is."
@@ -397,10 +381,6 @@ msgstr "新会话，首个请求即为功能需求： → 确认请求，说明�
 msgid "Existing session, already in CRDM: → Incorporate the new request into the current requirements document, continue."
 msgstr "现有会话，已处于 CRDM 中： → 将新请求纳入当前的需求文档中，继续推进。"
 
-#: docs/concepts/agentic-harness.md:286
-msgid "Existing session, doing content work: → Synthesise the feature need, ask user whether to pause content work and address it now or bean it for later."
-msgstr "现有会话，正在进行内容工作： → 综合归纳功能需求，询问用户是暂停内容工作并立即处理该功能，还是先记录 bean 留待后续处理。"
-
 #: docs/concepts/agentic-harness.md:290
 msgid "What the user sees"
 msgstr "用户所看到的内容"
@@ -420,10 +400,6 @@ msgstr "智能体如何退出 CRDM"
 #: docs/concepts/agentic-harness.md:302
 msgid "The CRDM workflow exits when:"
 msgstr "CRDM 工作流在满足以下条件时退出："
-
-#: docs/concepts/agentic-harness.md:303
-msgid "All beans from the signed-off requirements are resolved, OR"
-msgstr "经签发的需求所对应的所有 bean 均已解决，或者"
 
 #: docs/concepts/agentic-harness.md:304
 msgid "The user explicitly defers the remaining work"
@@ -537,10 +513,6 @@ msgstr "示例：用户上传了一份公众咨询反馈的 Excel 表格。智�
 msgid "Issue and bean discipline"
 msgstr "Issue 与 Bean 纪律"
 
-#: docs/concepts/agentic-harness.md:344
-msgid "Feature work must be linked to a GitHub issue. Content work uses beans. The two are related but not synonymous."
-msgstr "功能开发必须关联到 GitHub Issue。内容工作使用 beans。两者互相关联但非同义词。"
-
 #: docs/concepts/agentic-harness.md:347
 msgid "Issues vs beans"
 msgstr "Issue 与 Bean 的对比"
@@ -548,10 +520,6 @@ msgstr "Issue 与 Bean 的对比"
 #: docs/concepts/agentic-harness.md:349
 msgid "GitHub issue"
 msgstr "GitHub Issue"
-
-#: docs/concepts/agentic-harness.md:349
-msgid "Bean"
-msgstr "Bean"
 
 #: docs/concepts/agentic-harness.md:351
 msgid "Scope"
@@ -593,14 +561,6 @@ msgstr "已创建（Created）→ 进行中（in-progress）→ 已解决（reso
 msgid "Relation"
 msgstr "关系"
 
-#: docs/concepts/agentic-harness.md:354
-msgid "One issue has many beans"
-msgstr "一个 Issue 包含多个 beans"
-
-#: docs/concepts/agentic-harness.md:354
-msgid "Each bean references its parent issue"
-msgstr "每个 bean 引用其所属的父 Issue"
-
 #: docs/concepts/agentic-harness.md:356
 msgid "Rules for agents"
 msgstr "智能体守则"
@@ -621,17 +581,9 @@ msgstr "若无开启的匹配项，检查近期关闭的 Issue。"
 msgid "If no match at all, ask the user to create one. Do not create an issue without user permission."
 msgstr "若完全没有匹配项，请用户创建一个。未经用户许可，切勿创建 Issue。"
 
-#: docs/concepts/agentic-harness.md:371
-msgid "Post round summaries to the issue. After each round of implementation (one or more beans resolved), post a comment on the linked issue containing:"
-msgstr "在 Issue 上发布轮次摘要。 每轮实现完成后（解决了一个或多个 bean），在关联的 Issue 上发布一条评论，包含："
-
 #: docs/concepts/agentic-harness.md:373
 msgid "What was accomplished in this round"
 msgstr "本轮已完成的内容"
-
-#: docs/concepts/agentic-harness.md:374
-msgid "What remains to be accomplished (open beans)"
-msgstr "尚待完成的内容（未解决的 beans）"
 
 #: docs/concepts/agentic-harness.md:375
 msgid "Links to updated content for review (staging URLs, docs pages)"
@@ -668,10 +620,6 @@ msgstr "位置"
 #: docs/concepts/agentic-harness.md:399
 msgid "Session start sweep"
 msgstr "会话启动巡检"
-
-#: docs/concepts/agentic-harness.md:400
-msgid "Bean protocol"
-msgstr "Bean 协议"
 
 #: docs/concepts/agentic-harness.md:401
 msgid "Commit and PR discipline"
@@ -890,3 +838,42 @@ msgstr "智能代理框架本身的 BPMN 图 — 展示空闲/工作流状态机
 
 #~ msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
 #~ msgstr "工作流状态持久化 — 本框架描述了工作流的挂起与恢复，但目前尚无跨会话持久化智能体工作流状态的机制。当前这依赖于 beans 和 Issue 评论作为代理。"
+
+#~ msgid "Execute — the agent works within the active workflow, following its BPMN process. Each turn reports the bean being worked on and what is next."
+#~ msgstr "执行 — 智能体在活动工作流中开展工作，并遵循其 BPMN 流程。每个轮次都会报告正在处理的 bean 以及下一步计划。"
+
+#~ msgid "Beans updated with status and notes"
+#~ msgstr "更新了状态和备注的 beans"
+
+#~ msgid "Create, update, or query beans"
+#~ msgstr "创建、更新或查询 beans"
+
+#~ msgid "BPMN execution, from deterministic to agentic. A colour bar runs from \"deterministic\" (blue, left: managed agent execution of a single task) to \"agentic\" (green, right: agents across most or all tasks). Left, under a gear-and-engine icon: \"BPMN Execution Tool: one of any open-source BPMN engines, state and swimlanes strictly enforced\", over a flat swimlane diagram of the folio lifecycle with one sticky note, one bean cluster, a person and a cat-robot beside the lanes. Right, under a cat-robot icon: \"BPMN Execution Tool: agentic swarm with ungoverned state. Agents 'relax' swimlanes, mitigated by mechanical + agentic QA/QC reports\", over the same diagram tilted in perspective, beans scattered across every lane and many cat-robots beneath it."
+#~ msgstr "BPMN 执行，从确定性到智能体化。一条色带从“确定性”（蓝色，左侧：托管智能体执行单一任务）延伸至“智能体化”（绿色，右侧：智能体跨越大部分或所有任务）。左侧，在齿轮与引擎图标下方：“BPMN 执行工具：任何开源 BPMN 引擎，严格强制执行状态和泳道”，下方是带有便签、bean 集群、泳道旁的真人及猫机器人的 folio 生命周期平视泳道图。右侧，在猫机器人图标下方：“BPMN 执行工具：状态非托管的智能体集群。智能体‘放宽’泳道限制，由机械 + 智能体 QA/QC 报告进行缓解”，下方是相同的图表（以透视倾斜呈现），beans 分散在每个泳道中，其下方有许多猫机器人。"
+
+#~ msgid "Existing session, doing content work: → Synthesise the feature need, ask user whether to pause content work and address it now or bean it for later."
+#~ msgstr "现有会话，正在进行内容工作： → 综合归纳功能需求，询问用户是暂停内容工作并立即处理该功能，还是先记录 bean 留待后续处理。"
+
+#~ msgid "All beans from the signed-off requirements are resolved, OR"
+#~ msgstr "经签发的需求所对应的所有 bean 均已解决，或者"
+
+#~ msgid "Feature work must be linked to a GitHub issue. Content work uses beans. The two are related but not synonymous."
+#~ msgstr "功能开发必须关联到 GitHub Issue。内容工作使用 beans。两者互相关联但非同义词。"
+
+#~ msgid "Bean"
+#~ msgstr "Bean"
+
+#~ msgid "One issue has many beans"
+#~ msgstr "一个 Issue 包含多个 beans"
+
+#~ msgid "Each bean references its parent issue"
+#~ msgstr "每个 bean 引用其所属的父 Issue"
+
+#~ msgid "Post round summaries to the issue. After each round of implementation (one or more beans resolved), post a comment on the linked issue containing:"
+#~ msgstr "在 Issue 上发布轮次摘要。 每轮实现完成后（解决了一个或多个 bean），在关联的 Issue 上发布一条评论，包含："
+
+#~ msgid "What remains to be accomplished (open beans)"
+#~ msgstr "尚待完成的内容（未解决的 beans）"
+
+#~ msgid "Bean protocol"
+#~ msgstr "Bean 协议"
