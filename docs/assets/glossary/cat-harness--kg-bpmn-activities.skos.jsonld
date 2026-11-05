@@ -1650,7 +1650,7 @@
         }
       ],
       "skos:notation": "A_Accept",
-      "dcterms:source": "cat-harness/processes/library/content-acquisition.bpmn#A_Accept",
+      "dcterms:source": "cat-harness/library/processes/content-acquisition.bpmn#A_Accept",
       "skos:note": "candidate"
     },
     {
@@ -1670,7 +1670,7 @@
         }
       ],
       "skos:notation": "A_Ask",
-      "dcterms:source": "cat-harness/processes/library/content-acquisition.bpmn#A_Ask",
+      "dcterms:source": "cat-harness/library/processes/content-acquisition.bpmn#A_Ask",
       "skos:note": "candidate"
     },
     {
@@ -1690,7 +1690,7 @@
         }
       ],
       "skos:notation": "A_PointToUpload",
-      "dcterms:source": "cat-harness/processes/library/content-acquisition.bpmn#A_PointToUpload",
+      "dcterms:source": "cat-harness/library/processes/content-acquisition.bpmn#A_PointToUpload",
       "skos:note": "candidate"
     },
     {
@@ -1710,7 +1710,7 @@
         }
       ],
       "skos:notation": "A_Route",
-      "dcterms:source": "cat-harness/processes/library/content-acquisition.bpmn#A_Route",
+      "dcterms:source": "cat-harness/library/processes/content-acquisition.bpmn#A_Route",
       "skos:note": "candidate"
     },
     {
@@ -1730,7 +1730,7 @@
         }
       ],
       "skos:notation": "P_Respond",
-      "dcterms:source": "cat-harness/processes/library/content-acquisition.bpmn#P_Respond",
+      "dcterms:source": "cat-harness/library/processes/content-acquisition.bpmn#P_Respond",
       "skos:note": "candidate"
     },
     {
@@ -1750,7 +1750,7 @@
         }
       ],
       "skos:notation": "P_Upload",
-      "dcterms:source": "cat-harness/processes/library/content-acquisition.bpmn#P_Upload",
+      "dcterms:source": "cat-harness/library/processes/content-acquisition.bpmn#P_Upload",
       "skos:note": "candidate"
     },
     {
@@ -1930,7 +1930,7 @@
         }
       ],
       "skos:notation": "Task_EditDirectly",
-      "dcterms:source": "cat-harness/processes/library/copy-out-materialized.bpmn#Task_EditDirectly",
+      "dcterms:source": "cat-harness/library/processes/copy-out-materialized.bpmn#Task_EditDirectly",
       "skos:note": "candidate"
     },
     {
@@ -1950,7 +1950,7 @@
         }
       ],
       "skos:notation": "Task_Land",
-      "dcterms:source": "cat-harness/processes/library/copy-out-materialized.bpmn#Task_Land",
+      "dcterms:source": "cat-harness/library/processes/copy-out-materialized.bpmn#Task_Land",
       "skos:note": "candidate"
     },
     {
@@ -1970,7 +1970,7 @@
         }
       ],
       "skos:notation": "Task_ReadSource",
-      "dcterms:source": "cat-harness/processes/library/copy-out-materialized.bpmn#Task_ReadSource",
+      "dcterms:source": "cat-harness/library/processes/copy-out-materialized.bpmn#Task_ReadSource",
       "skos:note": "candidate"
     },
     {
@@ -1990,7 +1990,7 @@
         }
       ],
       "skos:notation": "Task_RecordProvenance",
-      "dcterms:source": "cat-harness/processes/library/copy-out-materialized.bpmn#Task_RecordProvenance",
+      "dcterms:source": "cat-harness/library/processes/copy-out-materialized.bpmn#Task_RecordProvenance",
       "skos:note": "candidate"
     },
     {
@@ -2010,7 +2010,7 @@
         }
       ],
       "skos:notation": "Task_VerifySourceUntouched",
-      "dcterms:source": "cat-harness/processes/library/copy-out-materialized.bpmn#Task_VerifySourceUntouched",
+      "dcterms:source": "cat-harness/library/processes/copy-out-materialized.bpmn#Task_VerifySourceUntouched",
       "skos:note": "candidate"
     },
     {
@@ -4025,7 +4025,7 @@
         }
       ],
       "skos:notation": "Task_AppendDisclaimer",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_AppendDisclaimer",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_AppendDisclaimer",
       "skos:note": "candidate"
     },
     {
@@ -4045,7 +4045,7 @@
         }
       ],
       "skos:notation": "Task_AssignTranslator",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_AssignTranslator",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_AssignTranslator",
       "skos:note": "candidate"
     },
     {
@@ -4065,7 +4065,7 @@
         }
       ],
       "skos:notation": "Task_CheckCompleteness",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_CheckCompleteness",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_CheckCompleteness",
       "skos:note": "candidate"
     },
     {
@@ -4085,7 +4085,7 @@
         }
       ],
       "skos:notation": "Task_ExtractPOT",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_ExtractPOT",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_ExtractPOT",
       "skos:note": "candidate"
     },
     {
@@ -4105,7 +4105,7 @@
         }
       ],
       "skos:notation": "Task_IdentifyContent",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_IdentifyContent",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_IdentifyContent",
       "skos:note": "candidate"
     },
     {
@@ -4125,7 +4125,7 @@
         }
       ],
       "skos:notation": "Task_InjectPO",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_InjectPO",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_InjectPO",
       "skos:note": "candidate"
     },
     {
@@ -4145,7 +4145,7 @@
         }
       ],
       "skos:notation": "Task_PrepareGlossary",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_PrepareGlossary",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_PrepareGlossary",
       "skos:note": "candidate"
     },
     {
@@ -4165,7 +4165,7 @@
         }
       ],
       "skos:notation": "Task_ReceiveAssignment",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_ReceiveAssignment",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_ReceiveAssignment",
       "skos:note": "candidate"
     },
     {
@@ -4185,7 +4185,7 @@
         }
       ],
       "skos:notation": "Task_RequestMoreWork",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_RequestMoreWork",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_RequestMoreWork",
       "skos:note": "candidate"
     },
     {
@@ -4205,7 +4205,7 @@
         }
       ],
       "skos:notation": "Task_ReturnForCorrection",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_ReturnForCorrection",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_ReturnForCorrection",
       "skos:note": "candidate"
     },
     {
@@ -4225,7 +4225,7 @@
         }
       ],
       "skos:notation": "Task_RoundTripQA",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_RoundTripQA",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_RoundTripQA",
       "skos:note": "candidate"
     },
     {
@@ -4245,7 +4245,7 @@
         }
       ],
       "skos:notation": "Task_Signoff",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_Signoff",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_Signoff",
       "skos:note": "candidate"
     },
     {
@@ -4265,7 +4265,7 @@
         }
       ],
       "skos:notation": "Task_SMEReview",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_SMEReview",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_SMEReview",
       "skos:note": "candidate"
     },
     {
@@ -4285,7 +4285,7 @@
         }
       ],
       "skos:notation": "Task_SubmitPO",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_SubmitPO",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_SubmitPO",
       "skos:note": "candidate"
     },
     {
@@ -4305,7 +4305,7 @@
         }
       ],
       "skos:notation": "Task_TranslateInTool",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_TranslateInTool",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_TranslateInTool",
       "skos:note": "candidate"
     },
     {
@@ -4325,7 +4325,7 @@
         }
       ],
       "skos:notation": "Task_WriteStatus",
-      "dcterms:source": "cat-harness/processes/library/human-translation-workflow.bpmn#Task_WriteStatus",
+      "dcterms:source": "cat-harness/library/processes/human-translation-workflow.bpmn#Task_WriteStatus",
       "skos:note": "candidate"
     },
     {
@@ -4345,7 +4345,7 @@
         }
       ],
       "skos:notation": "Task_CatalogueReference",
-      "dcterms:source": "cat-harness/processes/library/document-ingestion.bpmn#Task_CatalogueReference",
+      "dcterms:source": "cat-harness/library/processes/document-ingestion.bpmn#Task_CatalogueReference",
       "skos:note": "candidate"
     },
     {
@@ -4365,7 +4365,7 @@
         }
       ],
       "skos:notation": "Task_ExtractMetadata",
-      "dcterms:source": "cat-harness/processes/library/document-ingestion.bpmn#Task_ExtractMetadata",
+      "dcterms:source": "cat-harness/library/processes/document-ingestion.bpmn#Task_ExtractMetadata",
       "skos:note": "candidate"
     },
     {
@@ -4385,7 +4385,7 @@
         }
       ],
       "skos:notation": "Task_Place",
-      "dcterms:source": "cat-harness/processes/library/document-ingestion.bpmn#Task_Place",
+      "dcterms:source": "cat-harness/library/processes/document-ingestion.bpmn#Task_Place",
       "skos:note": "candidate"
     },
     {
@@ -4405,7 +4405,7 @@
         }
       ],
       "skos:notation": "Task_PlaceInLibrary",
-      "dcterms:source": "cat-harness/processes/library/document-ingestion.bpmn#Task_PlaceInLibrary",
+      "dcterms:source": "cat-harness/library/processes/document-ingestion.bpmn#Task_PlaceInLibrary",
       "skos:note": "candidate"
     },
     {
@@ -5125,7 +5125,7 @@
         }
       ],
       "skos:notation": "Task_AnswerGates",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_AnswerGates",
+      "dcterms:source": "cat-harness/library/processes/materialize-remote.bpmn#Task_AnswerGates",
       "skos:note": "candidate"
     },
     {
@@ -5145,7 +5145,7 @@
         }
       ],
       "skos:notation": "Task_Declare",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_Declare",
+      "dcterms:source": "cat-harness/library/processes/materialize-remote.bpmn#Task_Declare",
       "skos:note": "candidate"
     },
     {
@@ -5165,7 +5165,7 @@
         }
       ],
       "skos:notation": "Task_Enumerate",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_Enumerate",
+      "dcterms:source": "cat-harness/library/processes/materialize-remote.bpmn#Task_Enumerate",
       "skos:note": "candidate"
     },
     {
@@ -5185,7 +5185,7 @@
         }
       ],
       "skos:notation": "Task_Fetch",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_Fetch",
+      "dcterms:source": "cat-harness/library/processes/materialize-remote.bpmn#Task_Fetch",
       "skos:note": "candidate"
     },
     {
@@ -5205,7 +5205,7 @@
         }
       ],
       "skos:notation": "Task_Purpose",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_Purpose",
+      "dcterms:source": "cat-harness/library/processes/materialize-remote.bpmn#Task_Purpose",
       "skos:note": "candidate"
     },
     {
@@ -5225,7 +5225,7 @@
         }
       ],
       "skos:notation": "Task_Size",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_Size",
+      "dcterms:source": "cat-harness/library/processes/materialize-remote.bpmn#Task_Size",
       "skos:note": "candidate"
     },
     {
@@ -5245,7 +5245,7 @@
         }
       ],
       "skos:notation": "Task_StayRef",
-      "dcterms:source": "cat-harness/processes/library/materialize-remote.bpmn#Task_StayRef",
+      "dcterms:source": "cat-harness/library/processes/materialize-remote.bpmn#Task_StayRef",
       "skos:note": "candidate"
     },
     {
@@ -6285,7 +6285,7 @@
         }
       ],
       "skos:notation": "A_Integrate",
-      "dcterms:source": "cat-harness/processes/library/methodology-from-source.bpmn#A_Integrate",
+      "dcterms:source": "cat-harness/library/processes/methodology-from-source.bpmn#A_Integrate",
       "skos:note": "candidate"
     },
     {
@@ -6305,7 +6305,7 @@
         }
       ],
       "skos:notation": "A_Origin",
-      "dcterms:source": "cat-harness/processes/library/methodology-from-source.bpmn#A_Origin",
+      "dcterms:source": "cat-harness/library/processes/methodology-from-source.bpmn#A_Origin",
       "skos:note": "candidate"
     },
     {
@@ -6325,7 +6325,7 @@
         }
       ],
       "skos:notation": "A_Place",
-      "dcterms:source": "cat-harness/processes/library/methodology-from-source.bpmn#A_Place",
+      "dcterms:source": "cat-harness/library/processes/methodology-from-source.bpmn#A_Place",
       "skos:note": "candidate"
     },
     {
@@ -6345,7 +6345,7 @@
         }
       ],
       "skos:notation": "A_Render",
-      "dcterms:source": "cat-harness/processes/library/methodology-from-source.bpmn#A_Render",
+      "dcterms:source": "cat-harness/library/processes/methodology-from-source.bpmn#A_Render",
       "skos:note": "candidate"
     },
     {
@@ -6365,7 +6365,7 @@
         }
       ],
       "skos:notation": "A_Tools",
-      "dcterms:source": "cat-harness/processes/library/methodology-from-source.bpmn#A_Tools",
+      "dcterms:source": "cat-harness/library/processes/methodology-from-source.bpmn#A_Tools",
       "skos:note": "candidate"
     },
     {
@@ -6385,7 +6385,7 @@
         }
       ],
       "skos:notation": "Call_Ingest",
-      "dcterms:source": "cat-harness/processes/library/methodology-from-source.bpmn#Call_Ingest",
+      "dcterms:source": "cat-harness/library/processes/methodology-from-source.bpmn#Call_Ingest",
       "skos:note": "candidate"
     },
     {
@@ -6405,7 +6405,7 @@
         }
       ],
       "skos:notation": "Call_RelatedWork",
-      "dcterms:source": "cat-harness/processes/library/methodology-from-source.bpmn#Call_RelatedWork",
+      "dcterms:source": "cat-harness/library/processes/methodology-from-source.bpmn#Call_RelatedWork",
       "skos:note": "candidate"
     },
     {
@@ -6420,7 +6420,7 @@
         }
       ],
       "skos:notation": "O_Review",
-      "dcterms:source": "cat-harness/processes/library/methodology-from-source.bpmn#O_Review",
+      "dcterms:source": "cat-harness/library/processes/methodology-from-source.bpmn#O_Review",
       "skos:note": "candidate"
     },
     {
@@ -7680,7 +7680,7 @@
         }
       ],
       "skos:notation": "Task_Adjudicate",
-      "dcterms:source": "cat-harness/processes/library/refresh-materialized.bpmn#Task_Adjudicate",
+      "dcterms:source": "cat-harness/library/processes/refresh-materialized.bpmn#Task_Adjudicate",
       "skos:note": "candidate"
     },
     {
@@ -7700,7 +7700,7 @@
         }
       ],
       "skos:notation": "Task_Apply",
-      "dcterms:source": "cat-harness/processes/library/refresh-materialized.bpmn#Task_Apply",
+      "dcterms:source": "cat-harness/library/processes/refresh-materialized.bpmn#Task_Apply",
       "skos:note": "candidate"
     },
     {
@@ -7720,7 +7720,7 @@
         }
       ],
       "skos:notation": "Task_Fixity",
-      "dcterms:source": "cat-harness/processes/library/refresh-materialized.bpmn#Task_Fixity",
+      "dcterms:source": "cat-harness/library/processes/refresh-materialized.bpmn#Task_Fixity",
       "skos:note": "candidate"
     },
     {
@@ -7740,7 +7740,7 @@
         }
       ],
       "skos:notation": "Task_KeepLocal",
-      "dcterms:source": "cat-harness/processes/library/refresh-materialized.bpmn#Task_KeepLocal",
+      "dcterms:source": "cat-harness/library/processes/refresh-materialized.bpmn#Task_KeepLocal",
       "skos:note": "candidate"
     },
     {
@@ -7760,7 +7760,7 @@
         }
       ],
       "skos:notation": "Task_Local",
-      "dcterms:source": "cat-harness/processes/library/refresh-materialized.bpmn#Task_Local",
+      "dcterms:source": "cat-harness/library/processes/refresh-materialized.bpmn#Task_Local",
       "skos:note": "candidate"
     },
     {
@@ -7780,7 +7780,7 @@
         }
       ],
       "skos:notation": "Task_Reconcile",
-      "dcterms:source": "cat-harness/processes/library/refresh-materialized.bpmn#Task_Reconcile",
+      "dcterms:source": "cat-harness/library/processes/refresh-materialized.bpmn#Task_Reconcile",
       "skos:note": "candidate"
     },
     {
@@ -7800,7 +7800,7 @@
         }
       ],
       "skos:notation": "Task_RecordConflict",
-      "dcterms:source": "cat-harness/processes/library/refresh-materialized.bpmn#Task_RecordConflict",
+      "dcterms:source": "cat-harness/library/processes/refresh-materialized.bpmn#Task_RecordConflict",
       "skos:note": "candidate"
     },
     {
@@ -7820,7 +7820,7 @@
         }
       ],
       "skos:notation": "Task_Upstream",
-      "dcterms:source": "cat-harness/processes/library/refresh-materialized.bpmn#Task_Upstream",
+      "dcterms:source": "cat-harness/library/processes/refresh-materialized.bpmn#Task_Upstream",
       "skos:note": "candidate"
     },
     {
@@ -8455,7 +8455,7 @@
         }
       ],
       "skos:notation": "Call_Materialize",
-      "dcterms:source": "cat-harness/processes/library/sample-import.bpmn#Call_Materialize",
+      "dcterms:source": "cat-harness/library/processes/sample-import.bpmn#Call_Materialize",
       "skos:note": "candidate"
     },
     {
@@ -8475,7 +8475,7 @@
         }
       ],
       "skos:notation": "Call_Refresh",
-      "dcterms:source": "cat-harness/processes/library/sample-import.bpmn#Call_Refresh",
+      "dcterms:source": "cat-harness/library/processes/sample-import.bpmn#Call_Refresh",
       "skos:note": "candidate"
     },
     {
@@ -8495,7 +8495,7 @@
         }
       ],
       "skos:notation": "Task_ImportTest",
-      "dcterms:source": "cat-harness/processes/library/sample-import.bpmn#Task_ImportTest",
+      "dcterms:source": "cat-harness/library/processes/sample-import.bpmn#Task_ImportTest",
       "skos:note": "candidate"
     },
     {
@@ -8515,7 +8515,7 @@
         }
       ],
       "skos:notation": "Task_Library",
-      "dcterms:source": "cat-harness/processes/library/sample-import.bpmn#Task_Library",
+      "dcterms:source": "cat-harness/library/processes/sample-import.bpmn#Task_Library",
       "skos:note": "candidate"
     },
     {
@@ -8535,7 +8535,7 @@
         }
       ],
       "skos:notation": "Task_RecordFindings",
-      "dcterms:source": "cat-harness/processes/library/sample-import.bpmn#Task_RecordFindings",
+      "dcterms:source": "cat-harness/library/processes/sample-import.bpmn#Task_RecordFindings",
       "skos:note": "candidate"
     },
     {
@@ -8555,7 +8555,7 @@
         }
       ],
       "skos:notation": "Task_Scope",
-      "dcterms:source": "cat-harness/processes/library/sample-import.bpmn#Task_Scope",
+      "dcterms:source": "cat-harness/library/processes/sample-import.bpmn#Task_Scope",
       "skos:note": "candidate"
     },
     {
@@ -8575,7 +8575,7 @@
         }
       ],
       "skos:notation": "Task_Trial",
-      "dcterms:source": "cat-harness/processes/library/sample-import.bpmn#Task_Trial",
+      "dcterms:source": "cat-harness/library/processes/sample-import.bpmn#Task_Trial",
       "skos:note": "candidate"
     },
     {
@@ -9690,7 +9690,7 @@
         }
       ],
       "skos:notation": "Call_Materialize",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Call_Materialize",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Call_Materialize",
       "skos:note": "candidate"
     },
     {
@@ -9710,7 +9710,7 @@
         }
       ],
       "skos:notation": "Call_Refresh",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Call_Refresh",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Call_Refresh",
       "skos:note": "candidate"
     },
     {
@@ -9730,7 +9730,7 @@
         }
       ],
       "skos:notation": "Task_Choose",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Task_Choose",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Task_Choose",
       "skos:note": "candidate"
     },
     {
@@ -9750,7 +9750,7 @@
         }
       ],
       "skos:notation": "Task_Instantiate",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Task_Instantiate",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Task_Instantiate",
       "skos:note": "candidate"
     },
     {
@@ -9770,7 +9770,7 @@
         }
       ],
       "skos:notation": "Task_Pin",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Task_Pin",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Task_Pin",
       "skos:note": "candidate"
     },
     {
@@ -9790,7 +9790,7 @@
         }
       ],
       "skos:notation": "Task_Record",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Task_Record",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Task_Record",
       "skos:note": "candidate"
     },
     {
@@ -9810,7 +9810,7 @@
         }
       ],
       "skos:notation": "Task_Refuse",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Task_Refuse",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Task_Refuse",
       "skos:note": "candidate"
     },
     {
@@ -9830,7 +9830,7 @@
         }
       ],
       "skos:notation": "Task_RePin",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Task_RePin",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Task_RePin",
       "skos:note": "candidate"
     },
     {
@@ -9850,7 +9850,7 @@
         }
       ],
       "skos:notation": "Task_Review",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Task_Review",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Task_Review",
       "skos:note": "candidate"
     },
     {
@@ -9870,7 +9870,7 @@
         }
       ],
       "skos:notation": "Task_Summarise",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Task_Summarise",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Task_Summarise",
       "skos:note": "candidate"
     },
     {
@@ -9890,7 +9890,7 @@
         }
       ],
       "skos:notation": "Task_Validate",
-      "dcterms:source": "cat-harness/processes/library/subscribe-kg.bpmn#Task_Validate",
+      "dcterms:source": "cat-harness/library/processes/subscribe-kg.bpmn#Task_Validate",
       "skos:note": "candidate"
     },
     {
@@ -10655,7 +10655,7 @@
         }
       ],
       "skos:notation": "Task_Adjudicate",
-      "dcterms:source": "cat-harness/processes/library/translation-workflow.bpmn#Task_Adjudicate",
+      "dcterms:source": "cat-harness/library/processes/translation-workflow.bpmn#Task_Adjudicate",
       "skos:note": "candidate"
     },
     {
@@ -10675,7 +10675,7 @@
         }
       ],
       "skos:notation": "Task_EditTranslation",
-      "dcterms:source": "cat-harness/processes/library/translation-workflow.bpmn#Task_EditTranslation",
+      "dcterms:source": "cat-harness/library/processes/translation-workflow.bpmn#Task_EditTranslation",
       "skos:note": "candidate"
     },
     {
@@ -10695,7 +10695,7 @@
         }
       ],
       "skos:notation": "Task_PoInject",
-      "dcterms:source": "cat-harness/processes/library/translation-workflow.bpmn#Task_PoInject",
+      "dcterms:source": "cat-harness/library/processes/translation-workflow.bpmn#Task_PoInject",
       "skos:note": "candidate"
     },
     {
@@ -10715,7 +10715,7 @@
         }
       ],
       "skos:notation": "Task_PotExtract",
-      "dcterms:source": "cat-harness/processes/library/translation-workflow.bpmn#Task_PotExtract",
+      "dcterms:source": "cat-harness/library/processes/translation-workflow.bpmn#Task_PotExtract",
       "skos:note": "candidate"
     },
     {
@@ -10735,7 +10735,7 @@
         }
       ],
       "skos:notation": "Task_RoundTripQA",
-      "dcterms:source": "cat-harness/processes/library/translation-workflow.bpmn#Task_RoundTripQA",
+      "dcterms:source": "cat-harness/library/processes/translation-workflow.bpmn#Task_RoundTripQA",
       "skos:note": "candidate"
     },
     {
@@ -10755,7 +10755,7 @@
         }
       ],
       "skos:notation": "Task_Signoff",
-      "dcterms:source": "cat-harness/processes/library/translation-workflow.bpmn#Task_Signoff",
+      "dcterms:source": "cat-harness/library/processes/translation-workflow.bpmn#Task_Signoff",
       "skos:note": "candidate"
     },
     {
@@ -10775,7 +10775,7 @@
         }
       ],
       "skos:notation": "Task_StalenessCheck",
-      "dcterms:source": "cat-harness/processes/library/translation-workflow.bpmn#Task_StalenessCheck",
+      "dcterms:source": "cat-harness/library/processes/translation-workflow.bpmn#Task_StalenessCheck",
       "skos:note": "candidate"
     },
     {
@@ -10795,7 +10795,7 @@
         }
       ],
       "skos:notation": "Task_Translate",
-      "dcterms:source": "cat-harness/processes/library/translation-workflow.bpmn#Task_Translate",
+      "dcterms:source": "cat-harness/library/processes/translation-workflow.bpmn#Task_Translate",
       "skos:note": "candidate"
     },
     {
@@ -10815,7 +10815,7 @@
         }
       ],
       "skos:notation": "Task_WriteOfficial",
-      "dcterms:source": "cat-harness/processes/library/translation-workflow.bpmn#Task_WriteOfficial",
+      "dcterms:source": "cat-harness/library/processes/translation-workflow.bpmn#Task_WriteOfficial",
       "skos:note": "candidate"
     },
     {
@@ -10835,7 +10835,7 @@
         }
       ],
       "skos:notation": "Task_WriteUnofficial",
-      "dcterms:source": "cat-harness/processes/library/translation-workflow.bpmn#Task_WriteUnofficial",
+      "dcterms:source": "cat-harness/library/processes/translation-workflow.bpmn#Task_WriteUnofficial",
       "skos:note": "candidate"
     },
     {
