@@ -5,7 +5,7 @@
 #
 # WHY. Jekyll's `relative_url` and `{{ site.baseurl }}` prepend the deploy's
 # base, `/folio-assistant` on the live site and
-# `/folio-assistant/STAGING/<branch>` on a preview. So a page carried its
+# `/folio-assistant/branches/<branch>` on a preview. So a page carried its
 # preview's name in every link (~200 on a content page), no two previews
 # shared a single HTML file, and each preview stored a whole copy of the site
 # on the publish branch (bean `g196`; owner, 2026-10-23: change it at the

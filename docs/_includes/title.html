@@ -12,7 +12,6 @@
   not decorative elsewhere, which is why the emptiness lives in this template
   rather than in the node.
 {%- endcomment -%}
-{%- assign h = site.data.harness -%}
 {%- comment -%}
   The FULL mark here — whiskers and all — because it is the mark, and the
   owner asked for this one in this place, twice.
@@ -26,8 +25,8 @@
   Reverted. The lever for legibility is the RENDER SIZE below, which leaves
   the artwork alone.
 
-  `h.icon` is the instance's declared mark, so an instance that declares a
-  different one gets its own here with no template change.
+  `site.data.harness.icon` is the instance's declared mark, so an instance
+  that declares a different one gets its own here with no template change.
 {%- endcomment -%}
 {%- comment -%}
   TWO MARKS WHEN THE INSTANCE DECLARES ONE, and the stylesheet shows whichever
@@ -97,24 +96,30 @@
   `603s`'s "grey mush", which is why the fallback is the mark rather than the
   uncropped card.
 {%- endcomment -%}
-{%- assign card = h.landing.card -%}
+{%- comment -%}
+  NO `assign` OF `site.data.harness`. Liquid 4's `assign` walks the value it binds, element
+  by element, to score it against the render's resource limits, so binding a
+  whole data file costs its full size on every page (~3 ms for a 180 KB
+  `harness.json`, measured). The fields are read where they are used.
+{%- endcomment -%}
+{%- assign card = site.data.harness.landing.card -%}
 {%- if card.avatar -%}
   <span class="fa-site-mark fa-site-mark--avatar" aria-hidden="true">
     <img src="{{ card.src | relative_url }}" alt=""
          style="width: {{ card.avatar.width }}%; height: {{ card.avatar.height }}%;
                 left: {{ card.avatar.left }}%; top: {{ card.avatar.top }}%">
   </span>
-{%- elsif h.icon.src -%}
-  {%- if h.iconMask.src -%}
+{%- elsif site.data.harness.icon.src -%}
+  {%- if site.data.harness.iconMask.src -%}
   <span class="fa-site-mark fa-site-mark--masked" aria-hidden="true"
-        style="--fa-site-mark-src: url('{{ h.iconMask.src | relative_url }}')"></span>
-  {%- elsif h.iconDark.src -%}
-  <img src="{{ h.icon.src | relative_url }}" alt="" aria-hidden="true"
+        style="--fa-site-mark-src: url('{{ site.data.harness.iconMask.src | relative_url }}')"></span>
+  {%- elsif site.data.harness.iconDark.src -%}
+  <img src="{{ site.data.harness.icon.src | relative_url }}" alt="" aria-hidden="true"
        class="fa-site-mark fa-site-mark--light" width="32" height="32" />
-  <img src="{{ h.iconDark.src | relative_url }}" alt="" aria-hidden="true"
+  <img src="{{ site.data.harness.iconDark.src | relative_url }}" alt="" aria-hidden="true"
        class="fa-site-mark fa-site-mark--dark" width="32" height="32" />
   {%- else -%}
-  <img src="{{ h.icon.src | relative_url }}" alt="" aria-hidden="true"
+  <img src="{{ site.data.harness.icon.src | relative_url }}" alt="" aria-hidden="true"
        class="fa-site-mark" width="32" height="32" />
   {%- endif -%}
 {%- else -%}
@@ -143,4 +148,4 @@
 {%- assign title_lang = site.data.translations.sourceLocale | default: "en" -%}
 {%- assign title_dir = "ltr" -%}
 {%- if title_lang == "ar" or title_lang == "he" or title_lang == "fa" or title_lang == "ur" -%}{%- assign title_dir = "rtl" -%}{%- endif -%}
-<span class="fa-site-title" lang="{{ title_lang }}" dir="{{ title_dir }}">{{ h.title | default: site.title }}</span>
+<span class="fa-site-title" lang="{{ title_lang }}" dir="{{ title_dir }}">{{ site.data.harness.title | default: site.title }}</span>

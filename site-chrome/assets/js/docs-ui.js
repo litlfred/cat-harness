@@ -3155,7 +3155,7 @@
    *
    * Since bean `g196` (2026-10-23) a Jekyll page writes its same-site links
    * relative to itself, so a page that did not change is byte-identical in
-   * every STAGING preview and on the live site; `fa-baseurl` and
+   * every branches/ preview and on the live site; `fa-baseurl` and
    * `fa-todo-src` are relative too. Resolving here, once, keeps every
    * consumer's arithmetic as it was (`withBase`, `baseurlResolved`'s
    * prefix guard, `navKey`'s strip).
@@ -3178,9 +3178,9 @@
     }
   }
 
-  /* ── Is this a STAGING preview? ──────────────────────────────────────
+  /* ── Is this a branches/ preview? ──────────────────────────────────────
    *
-   * Non-empty `fa-staging` means a `STAGING/<slug>/` preview; empty means the
+   * Non-empty `fa-staging` means a `branches/<slug>/` preview; empty means the
    * canonical deploy, a local build, or a page whose `_data/build.yml` was
    * never written. All three of those are treated as canonical, which is the
    * SAFE direction: a build that cannot say it is a preview hides the tile
@@ -4047,7 +4047,7 @@
    * Every backdrop in the todo index was arriving as `/assets/img/...` —
    * site-ROOT-absolute with no baseurl — and this site is served from
    * `/folio-assistant/` on the canonical deploy and
-   * `/folio-assistant/STAGING/<branch>/` on a preview. So every one of them
+   * `/folio-assistant/branches/<branch>/` on a preview. So every one of them
    * 404'd, and the owner saw todo cards with a broken-image placeholder
    * beside landing stickies that had their art: *"i want the theme on the
    * lower ones too. why are they dispalyed differently."*
@@ -5481,6 +5481,79 @@
   function kindWord(v) {
     var w = String(v || "").trim().toLowerCase();
     return /^[a-z0-9][a-z0-9:_-]{0,63}$/.test(w) ? w : "";
+  }
+
+  /**
+   * LIVE WINDOWS FOR PINNED BLOCKS, ONE LAZY VIEWER PER GRAPH KIND (#985).
+   *
+   * Owner, 2026-11-02 (bean `fbmk`): *"lazy load all visualizers ... can be a
+   * lot if lots of different item types"*.
+   *
+   * Each graph kind registers `{ load, render }` with
+   * `window.faFolio.viewer(kind, { load: () => import(url), render(node, el) })`.
+   * Registering NEVER calls `load()`. When the reader opens a pinned block's
+   * window on the glass (and only while that card is not zoomed to its avatar),
+   * `load()` runs at most once for that kind and its promise is shared across
+   * every open card of the same kind. Closed link cards and avatar-zoomed cards
+   * load nothing.
+   */
+  var folioViewers = {};
+  var folioViewerLoads = {};
+
+  function defaultFolioRender(node, host) {
+    var dl = el("dl", { class: "fa-glass-window-meta" });
+    function row(k, v) {
+      if (!v) return;
+      dl.appendChild(el("dt", null, k));
+      dl.appendChild(el("dd", null, v));
+    }
+    row("Title", node.title);
+    row("Kind", node.nodeKind || node.kind);
+    row("Source", node.source);
+    row("ID", node.id);
+    host.appendChild(dl);
+    if (node.href) {
+      host.appendChild(el("p", { class: "fa-glass-window-link" },
+        el("a", { href: safeHref(node.href) }, "Open on page \u2192")));
+    }
+  }
+  folioViewers["*"] = { load: null, render: defaultFolioRender };
+
+  function registerFolioViewer(kind, spec) {
+    var k = kind === "*" ? "*" : kindWord(kind);
+    if (!k || !spec || typeof spec.render !== "function") return;
+    folioViewers[k] = {
+      load: typeof spec.load === "function" ? spec.load : null,
+      render: spec.render,
+    };
+    delete folioViewerLoads[k];
+    if (glassLayer && glassLayer.isConnected) {
+      Array.prototype.forEach.call(
+        glassLayer.querySelectorAll('.fa-glass-asset[data-fa-window="open"]'),
+        function (card) {
+          var ck = card.getAttribute("data-fa-node-kind") || card.getAttribute("data-fa-asset-kind") || "";
+          if ((k === "*" || ck === k) && typeof card.__faOpenWindow === "function") {
+            card.__faOpenWindow();
+          }
+        }
+      );
+    }
+  }
+
+  function loadFolioViewer(kind) {
+    var k = kindWord(kind);
+    var cacheKey = k && folioViewers[k] ? k : "*";
+    var v = folioViewers[cacheKey];
+    if (!v) return Promise.resolve(null);
+    if (!folioViewerLoads[cacheKey]) {
+      folioViewerLoads[cacheKey] = Promise.resolve()
+        .then(function () { return v.load ? v.load() : null; })
+        .then(
+          function (mod) { return { viewer: v, mod: mod }; },
+          function (err) { delete folioViewerLoads[cacheKey]; throw err; }
+        );
+    }
+    return folioViewerLoads[cacheKey];
   }
 
   /**
@@ -7148,10 +7221,86 @@
       close.addEventListener("click", function () {
         confirmShelve(key, a, label, close);
       });
+      var winBtn = null;
+      var winBox = null;
+      if (isPin) {
+        winBtn = el("button", {
+          type: "button",
+          class: "fa-glass-asset-tool",
+          "data-fa-control": "window",
+          "aria-expanded": "false",
+          "aria-label": "Open " + label + " in a window on the glass",
+          title: "Open live window",
+        }, "\u29c9");
+        winBox = el("div", {
+          class: "fa-glass-window",
+          "data-fa-window-body": "",
+          hidden: "",
+        });
+        function closeCardWindow() {
+          card.removeAttribute("data-fa-window");
+          winBtn.setAttribute("aria-expanded", "false");
+          winBtn.setAttribute("aria-label", "Open " + label + " in a window on the glass");
+          winBtn.title = "Open live window";
+          winBox.setAttribute("hidden", "");
+          live.textContent = "Closed live window of " + label + ".";
+        }
+        function openCardWindow() {
+          if (card.getAttribute("data-fa-zoom") === "avatar") return Promise.resolve(false);
+          card.setAttribute("data-fa-window", "open");
+          winBtn.setAttribute("aria-expanded", "true");
+          winBtn.setAttribute("aria-label", "Close live window of " + label);
+          winBtn.title = "Close live window";
+          winBox.removeAttribute("hidden");
+          var g = geometryOf(card);
+          if (g.height <= GLASS_CARD_H) {
+            g.width = Math.max(g.width, 340);
+            g.height = Math.max(g.height, 240);
+            applyGeometry(card, g);
+            fitShelf();
+          }
+          var nk = kindWord(a.nodeKind) || a.kind || "*";
+          var rawId = key.replace(/^(bookmark|pin):/, "");
+          var node = {
+            "@id": rawId,
+            id: rawId,
+            key: key,
+            title: a.title || rawId,
+            href: href || "",
+            kind: nk,
+            nodeKind: kindWord(a.nodeKind) || "",
+            source: a.source || "",
+          };
+          return loadFolioViewer(nk).then(function (loaded) {
+            if (!loaded || card.getAttribute("data-fa-window") !== "open" || card.getAttribute("data-fa-zoom") === "avatar") {
+              return false;
+            }
+            while (winBox.firstChild) winBox.removeChild(winBox.firstChild);
+            loaded.viewer.render(node, winBox, loaded.mod);
+            live.textContent = "Opened live window of " + label + ".";
+            return true;
+          }).catch(function (err) {
+            while (winBox.firstChild) winBox.removeChild(winBox.firstChild);
+            winBox.appendChild(el("p", { class: "fa-glass-window-error" },
+              "Viewer failed to load: " + (err && err.message ? err.message : String(err))));
+            return false;
+          });
+        }
+        card.__faOpenWindow = openCardWindow;
+        card.__faCloseWindow = closeCardWindow;
+        winBtn.addEventListener("click", function (ev) {
+          ev.preventDefault();
+          ev.stopPropagation();
+          if (card.getAttribute("data-fa-window") === "open") closeCardWindow();
+          else openCardWindow();
+        });
+        tools.appendChild(winBtn);
+      }
       tools.appendChild(moveBtn);
       tools.appendChild(smaller);
       tools.appendChild(larger);
       tools.appendChild(close);
+      if (winBox) card.appendChild(winBox);
       card.appendChild(tools);
       card.appendChild(live);
       wireCardMeta(card);
@@ -7165,8 +7314,9 @@
       card.addEventListener("pointerdown", function (e) { pressAt = { x: e.clientX, y: e.clientY }; });
       card.addEventListener("click", function (e) {
         if (!opens) return;
+        if (card.getAttribute("data-fa-window") === "open") return;
         if (e.button !== 0 || e.defaultPrevented) return;
-        if (e.target.closest && e.target.closest("button, a, [data-fa-control], input, select, textarea")) return;
+        if (e.target.closest && e.target.closest("button, a, [data-fa-control], [data-fa-window-body], input, select, textarea")) return;
         if (card.getAttribute("data-fa-moving") === "true") return;
         var p = pressAt;
         pressAt = null;
@@ -13268,10 +13418,29 @@
     });
     document.addEventListener("fa:folio-changed", function () { paintBlockPins(); });
     paintBlockPins();
+    function findPinCard(kindOrKey, maybeKey) {
+      if (!glassLayer || !glassLayer.isConnected) return null;
+      var k = maybeKey !== undefined ? pinKeyOf(kindOrKey, maybeKey) : String(kindOrKey || "");
+      var cards = glassLayer.querySelectorAll(".fa-glass-asset");
+      for (var i = 0; i < cards.length; i++) {
+        var ak = cards[i].getAttribute("data-fa-asset") || "";
+        if (ak === k || ak === "pin:" + k || ak === "bookmark:" + k) return cards[i];
+      }
+      return null;
+    }
     window.faFolio = {
       pin: togglePin,
       stateOf: function (kind, key) { return folioStateOf(pinKeyOf(kind, key)); },
       paint: paintBlockPins,
+      viewer: registerFolioViewer,
+      openWindow: function (kindOrKey, maybeKey) {
+        var c = findPinCard(kindOrKey, maybeKey);
+        return c && typeof c.__faOpenWindow === "function" ? c.__faOpenWindow() : Promise.resolve(false);
+      },
+      closeWindow: function (kindOrKey, maybeKey) {
+        var c = findPinCard(kindOrKey, maybeKey);
+        if (c && typeof c.__faCloseWindow === "function") c.__faCloseWindow();
+      },
     };
   }
 

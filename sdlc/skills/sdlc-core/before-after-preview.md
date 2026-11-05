@@ -43,7 +43,7 @@ link to those. Use this skill for everything the job cannot make: page chrome,
 behaviour on scroll, a PDF page, an IG page, a slide.
 
 **A staging "after" is not permanent.** `gh-pages` keeps at most ten
-`STAGING/<slug>/` previews and rotates the least recently updated off, so a link in a preview can 404 days later
+`branches/<slug>/` previews and rotates the least recently updated off, so a link in a preview can 404 days later
 while the PR is still open. The next push to the branch re-stages it. Where the
 comparison must outlive that, publish the captures themselves (§6) rather than
 only the staging URL. Detail: [`staging-review`](staging-review.md) §"The cap".

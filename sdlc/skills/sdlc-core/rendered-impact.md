@@ -104,7 +104,7 @@ names none above it.
   The review page shows it under the list, as the PR comment does: a run
   started by dispatch finds its PR from the branch, so the comment is not
   lost when no `pull_request` event started the run.
-- **Show**: every docs-site preview also carries `STAGING/<slug>/changes/`
+- **Show**: every docs-site preview also carries `branches/<slug>/changes/`
   (`cat-harness-tools/scripts/staging-changes.ts`): the
   changed sources, with a re-pinned mount in `index.lock.json` expanded into
   the files its repository changed between the two pins (a re-pin handed to

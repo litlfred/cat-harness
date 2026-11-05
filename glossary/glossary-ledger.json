@@ -38,7 +38,10 @@
       "retiredOn": null
     },
     "kind/beans": {
-      "prefLabel": "Work plan",
+      "prefLabel": "Plans and work",
+      "formerLabels": [
+        "Work plan"
+      ],
       "firstSeen": "2026-11-04",
       "retiredOn": null
     },
@@ -441,6 +444,11 @@
     "node-kind/todo": {
       "prefLabel": "Todo",
       "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/work-plan": {
+      "prefLabel": "Work plan",
+      "firstSeen": "2026-11-05",
       "retiredOn": null
     },
     "role/adjudicator": {

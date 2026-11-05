@@ -5,7 +5,7 @@ description: >-
   Takes one optional string — what the reader wants to look at, in their own
   words — and returns a list of URLs, each looked up in the publish ref, with
   what is published at it and what to review there. Provides before (MAIN) and
-  after (STAGING) pairs so reviewers can compare rather than guess. Used by the
+  after (branches/) pairs so reviewers can compare rather than guess. Used by the
   CRDM feature development workflow, content authoring review sessions, and
   whenever a staging preview deploys or someone asks to see it.
 user_invocable: true
@@ -36,11 +36,11 @@ guideline) points here rather than restating it.
    feedback with a PR link and no staging link asks the person to read source
    in place of the thing they are judging.
 2. **One deep link per changed thing**: the page, and the anchor on it where
-   the change sits (`…/STAGING/<slug>/<path>#<anchor>`), each with the same
+   the change sits (`…/branches/<slug>/<path>#<anchor>`), each with the same
    page on main as **before** (or "new page"). The site root is the right link
    only for a change to the landing page itself.
 3. **The pages come from the change, not from judgement.** Start from the
-   preview's changes page, `…/STAGING/<slug>/changes/`, when the build wrote
+   preview's changes page, `…/branches/<slug>/changes/`, when the build wrote
    one: the changed sources, the rendered files in their dependency cone, and
    the files that differ from the published root but were NOT in the cone
    (each of those is a page to list, and a cone defect to report). Otherwise read
@@ -179,7 +179,7 @@ await page.route(`${ORIGIN}/**`, (route) => {
 **A preview that shares with the live site falls back to it.** A preview
 (`cat-harness-tools/scripts/staging-share.ts`) stores only the files that
 differ from the live site, and its `staging-sw.js` serves the
-rest from the live root in the browser. So when `STAGING/<slug>/staging-sw.js`
+rest from the live root in the browser. So when `branches/<slug>/staging-sw.js`
 is in the ref, a file absent from the preview is the live site's file at the
 same path, and `shared(p)` must read it from the root (`blob` with `ROOT` set
 to `""`). Without that, every shared file reads as missing. Where there is no
@@ -187,7 +187,7 @@ to `""`). Without that, every shared file reads as missing. Where there is no
 page it serves, which the route handler does not, so judge banner presence on
 the preview's own pages.
 
-`ROOT` is `""` for the canonical deploy and `STAGING/<slug>` for a preview, so
+`ROOT` is `""` for the canonical deploy and `branches/<slug>` for a preview, so
 the same handler gives you the **before/after pair this skill is about** — and
 a count, not an impression. Fetch the ref first (`git fetch --depth=1
 --filter=blob:none origin gh-pages`); blobs are then fetched on demand.
@@ -198,16 +198,16 @@ composed at all"* are the same string there, so an e2e at the root stays
 green over a missing `baseurl`.
 
 **And `BASE` is NOT the site's base when you are reading a preview.** A
-preview is published at `<origin>/folio-assistant/STAGING/<slug>/`, so that
+preview is published at `<origin>/folio-assistant/branches/<slug>/`, so that
 whole prefix is what its pages compose hrefs against — `BASE` and `ROOT` carry
 the same staging segment, one in the URL and one in the ref:
 
 | reading | `ROOT` (in the ref) | `BASE` (in the URL) |
 |---|---|---|
 | the canonical deploy | `""` | `/folio-assistant` |
-| a STAGING preview | `STAGING/<slug>` | `/folio-assistant/STAGING/<slug>` |
+| a branches/ preview | `branches/<slug>` | `/folio-assistant/branches/<slug>` |
 
-Getting that wrong doubles the segment — `STAGING/<slug>/STAGING/<slug>/...` —
+Getting that wrong doubles the segment — `branches/<slug>/branches/<slug>/...` —
 and every asset 404s.
 
 #### Report the absent count, and read it before anything else
@@ -346,9 +346,9 @@ When reporting changes to the user:
 
 | Page | Before (main) | After (staging) | What changed |
 |---|---|---|---|
-| Landing page | [main](https://litlfred.github.io/folio-assistant/#languages) | [staging](https://litlfred.github.io/folio-assistant/STAGING/claude-206-staging-preview/#languages) | Added French translation badge (the landing page itself changed, so its root is the page; the anchor is where the badge sits) |
-| French landing | — | [staging](https://litlfred.github.io/folio-assistant/STAGING/claude-206-staging-preview/fr/index.html) | New page |
-| Agent onboarding | [main](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/agent-onboarding.html) | [staging](https://litlfred.github.io/folio-assistant/STAGING/claude-206-staging-preview/docs/cat-harness/guides/agent-onboarding.html) | Language switcher added |
+| Landing page | [main](https://litlfred.github.io/folio-assistant/#languages) | [staging](https://litlfred.github.io/folio-assistant/branches/claude-206-staging-preview/#languages) | Added French translation badge (the landing page itself changed, so its root is the page; the anchor is where the badge sits) |
+| French landing | — | [staging](https://litlfred.github.io/folio-assistant/branches/claude-206-staging-preview/fr/index.html) | New page |
+| Agent onboarding | [main](https://litlfred.github.io/folio-assistant/docs/cat-harness/guides/agent-onboarding.html) | [staging](https://litlfred.github.io/folio-assistant/branches/claude-206-staging-preview/docs/cat-harness/guides/agent-onboarding.html) | Language switcher added |
 ```
 
 ## URL construction
@@ -365,7 +365,7 @@ the repo's GitHub Pages URL.
 ### Staging (after)
 
 ```
-https://<owner>.github.io/<repo>/STAGING/<branch-slug>/<path>
+https://<owner>.github.io/<repo>/branches/<branch-slug>/<path>
 ```
 
 The `<branch-slug>` is the branch name with non-alphanumeric characters
@@ -388,7 +388,7 @@ In the CRDM requirements workflow (Phase 5: implementation), once a staging
 preview is deployed:
 
 1. **Post the staging URL** on the GitHub issue as a comment. For a folio,
-   post the **review page** too, `STAGING/<slug>/review/`, and name it as the
+   post the **review page** too, `branches/<slug>/review/`, and name it as the
    page a reviewer opens first. The `folio-staging` workflow's PR comment
    carries both links. The page lists every changed block, not only every
    changed page. Posting the site root alone sends a reviewer hunting through
@@ -550,17 +550,17 @@ per-preview and event-driven; none bounds the total.
 
 What the `stage` job does, on every deploy, before its one push:
 
-- **Sums the size of the previews under `STAGING/`, including the one it is
+- **Sums the size of the previews under `branches/`, including the one it is
   staging, and keeps them within 3 GB.** The number lives once, as
   `MAX_PREVIEW_BYTES` in `cat-harness-tools/scripts/staging-rotate.ts`.
 - **Keeps the newest that fit and removes the rest, oldest first — strictly by
   recency.** An older small preview never outlives a newer one that did not
   fit, so a preview's age alone says whether it is still there. One 780 MB
   preview displaces several small ones; that is what a size budget means. "Last updated" is the
-  `STAGING/<slug>/.staged-at` stamp the job writes on every stage, falling back
+  `branches/<slug>/.staged-at` stamp the job writes on every stage, falling back
   to the latest `rendered` render-log entry, then the record's `builtAt`, then
   git. The preview being staged is never removed.
-- **Never touches `STAGING/_retired/`** or anything that is not a preview
+- **Never touches `branches/_retired/`** or anything that is not a preview
   directory.
 - **Leaves a record for each removal** — a `removed` render-log entry with the
   reason, the preview's `staging-preview.json` retired into `_retired/`, and a
@@ -598,7 +598,7 @@ Three states, and conflating any two of them is the defect:
 | | observable from a container? | how |
 |---|---|---|
 | the `stage` job succeeded | **yes** | the check run on the PR's head |
-| the files are in `gh-pages` | **yes** | read `STAGING/<slug>/` on `refs/heads/gh-pages` |
+| the files are in `gh-pages` | **yes** | read `branches/<slug>/` on `refs/heads/gh-pages` |
 | the URL serves them | **NO** | see below |
 
 **The third is not available to you, and `curl` will not make it available.**
@@ -609,7 +609,7 @@ its builds produce **no workflow runs at all** (`event: page_build` returns
 So there is no API answer either.
 
 So: **verify the ref, and report the third state as unverified rather than
-inferring it.** Listing `STAGING/<slug>/` on `gh-pages` and finding
+inferring it.** Listing `branches/<slug>/` on `gh-pages` and finding
 `index.html` proves the build ran and what it published; it does not prove
 Pages has rebuilt. Those are different claims and only one of them is yours to
 make.
@@ -651,7 +651,7 @@ Before declaring a preview good, check the `gh-pages` commit log for any
 `staging(...)` publish:
 
 ```sh
-git log -n 5 --oneline origin/gh-pages -- "STAGING/<slug>"
+git log -n 5 --oneline origin/gh-pages -- "branches/<slug>"
 ```
 
 If a `staging(cleanup)` commit appears newer than the last `staging(...)`
@@ -676,12 +676,12 @@ gh workflow run feature-staging.yml -f branch=<branch>
 ```
 
 This triggers `feature-staging.yml` via `workflow_dispatch` for that branch,
-building and deploying a fresh preview to `STAGING/<slug>/` on `gh-pages` and
+building and deploying a fresh preview to `branches/<slug>/` on `gh-pages` and
 queueing a new Pages build.
 
 ## Do not
 
-- **Do not hand over a staging URL without listing `STAGING/<slug>/` on
+- **Do not hand over a staging URL without listing `branches/<slug>/` on
   `gh-pages` first.** The bot's comment says a workflow pushed, not that a
   site serves.
 - **Do not declare a preview good without checking the `gh-pages` commit log for
@@ -705,7 +705,7 @@ queueing a new Pages build.
 ## Before you report a staging URL as broken
 
 **Look at the publish ref, not the site.** A staging URL is LOOKED UP in
-`gh-pages` under `STAGING/<branch-slug>/`, never composed from the source
+`gh-pages` under `branches/<branch-slug>/`, never composed from the source
 path — `docs/<stub>/proposals/x.md` publishes to `/proposals/x.html`, and
 composing it from the source path yields a 404 for a page that is there. From
 an agent container a `curl` against a Pages URL fails on the proxy regardless,
