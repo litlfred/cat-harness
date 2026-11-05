@@ -139,6 +139,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/merge-conflict-patterns.md#provenance-43"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/merge-conflict-patterns.md#provenance-44"
         }
       ]
     },
@@ -623,6 +626,20 @@
       "prov:value": "A refusal bean left open after its PR has gone is\nthe stale state that the `needs-merge-human` label already shows (bean `u7be`\nitem 4).",
       "cat-harness:refs": [
         "bean u7be"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/merge-conflict-patterns.md#provenance-44",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "A merge round — run each check ONCE (owner ruling, 2026-10-05)",
+      "prov:value": "**Owner, 2026-10-05, verbatim: *\"trim duplicated steps\"*.** A round of folding\n`main` into a PR was costing about 45 minutes, and most of it was the same\nquestion asked twice. Measured 2026-10-04 on PR #1898's merge rounds, bean\n`7xmc`:",
+      "cat-harness:refs": [
+        "bean 7xmc"
+      ],
+      "dcterms:date": [
+        "2026-10-04",
+        "2026-10-05"
       ]
     }
   ]

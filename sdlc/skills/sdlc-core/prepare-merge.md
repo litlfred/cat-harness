@@ -175,6 +175,35 @@ artefact and runs in `bun test`. The mechanism is in
    `git push -u origin <branch>`. Then **ask whether the push produced a run**:
    `bun run cat check:head-has-run`.
 
+   **The push runs the fast gates first, where the pre-push hook is on.** Git's
+   `pre-push` hook (installed by `cat-harness-tools/scripts/git-hooks/install.sh`)
+   and, for agents, a Claude Code `PreToolUse` hook on `git push` both run
+   `cat-harness-tools/scripts/pre-push-gates.ts` on the checked-out tree, before
+   anything leaves the container (bean `cat-tools-pp9g`, work item
+   `folio-assistant-fn8q`). It runs the fast gates **minus the whole-suite
+   `bun test`**, plus only the test files whose import closure holds a file the
+   push changed (owner, 2026-11-05: "Affected tests only"). CI still runs the
+   whole suite. What it says:
+   - **refused**: a gate or an affected test that is green on the push's base
+     *in this same environment* is red now. Fix it, as you would a red CI job.
+     It quotes the gates or tests and the log path;
+   - **`? gates not judged`**: a red it cannot attribute to this push (red on
+     the base too, or no base outcomes recorded here), tracked files that
+     differ from HEAD, exit 2, or no `cat` runner. The push goes and CI decides.
+     A fresh container reddens some tests CI passes (no publish-time pages, a
+     slower machine), so this is **not** a local green: report it as not
+     determined, never as pass;
+   - **`✓`**: the fast gates passed on this tree and the affected tests with
+     them. A record keyed by the tree is written; it names `bun test` as held
+     out, so it never claims the suite. Pushing the same tree again re-runs
+     nothing.
+
+   A push the hook refused is never forced through with a bare `--no-verify`.
+   If you must push anyway, name the reason, which is logged to
+   `.git/cat-gates/push.log`: `CAT_GATES_BYPASS='<reason>' git push ...`, and
+   put the same reason in the PR body. A local pass does not replace step 7:
+   CI still runs every gate.
+
    This does not change what you do next — step 7 dispatches either way. It
    changes what you can honestly SAY. A push can silently produce no run, and
    a pull request showing zero checks is indistinguishable from one whose

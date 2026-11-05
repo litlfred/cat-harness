@@ -34,6 +34,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/turn-reporting.md#provenance-8"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/turn-reporting.md#provenance-9"
         }
       ]
     },
@@ -133,6 +136,16 @@
       ],
       "dcterms:date": [
         "2026-09-18"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/turn-reporting.md#provenance-9",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Closing a turn",
+      "prov:value": "> **Beans**\n> - **worked** `fwr8` — Re-baseline the forward-ref arc endpoints. Re-ran both with the fixed parser: the arc is 274 → 195, not 274 → 192. This corrects my own earlier claim that the start figure was understated — only the post-mid-arc figures are short, and only by 3.\n> - **next** `fwr7` — Retarget seven `uses[]` edges that point at the wrong block. Two of the seven are now confirmed detangler findings rather than reader reports, which raises their priority above the remaining five.",
+      "cat-harness:refs": [
+        "bean fwr8"
       ]
     }
   ]

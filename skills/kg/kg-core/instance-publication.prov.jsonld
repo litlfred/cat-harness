@@ -148,6 +148,9 @@
         },
         {
           "@id": "skills/kg/kg-core/instance-publication.md#provenance-46"
+        },
+        {
+          "@id": "skills/kg/kg-core/instance-publication.md#provenance-47"
         }
       ]
     },
@@ -667,6 +670,19 @@
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Do not",
       "prov:value": "- **Do not restate this skill in a bean, a proposal or `AGENTS.md`.** `kn0t`\n  restated `ig-publisher-reduction` and drifted from it in four places within a\n  day, one of which would have let a phase be approved on an impression."
+    },
+    {
+      "@id": "skills/kg/kg-core/instance-publication.md#provenance-47",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Named subgraphs, and the root index above them",
+      "prov:value": "- **Named subgraphs** (bean `c1m4`): `<site>/subgraph/<HARNESS>/<PATH>/`, with\n  `index.jsonld` (direct members as pointers) and `index.hydrated.jsonld`\n  (every member inline, deep). **The harness root has `index.jsonld` only**,\n  because a deep hydrated file there is the monolith `f233` forbids.\n  `gen-subgraph-jsonld.ts` frames each instance from its OWN export, so no\n  subgraph names a `cat-harness.jsonld#<foreign>` fragment. The tree is\n  committed under `cat-harness/docs/subgraph/`, its `@context` is\n  `<site>/ns/subgraph/v1.jsonld`, and heavy bodies are content-addressed\n  payloads under `cat-harness/docs/payload/sha256/`, copied verbatim to\n  `<site>/payload/`. `bootstrap` and `bootstrap-tools` publish their own\n  subgraphs, and the repository index links them with `rdfs:seeAlso`\n  (bean `t8c4`). The contract: [`kg-export`](kg-export.md) §\"Named\n  subgraphs\" and §\"Payloads\".\n- **The root index** (item 3): `<site>/index.jsonld` and `index.json`, built\n  at publish time by `root-index.ts` and never committed (owner,\n  2026-10-04): a committed copy conflicts whenever two PRs change the set of\n  harnesses. It names every declared instance at depth 1, with no node of\n  any graph inlined. It exits 1, having written nothing, when an instance's\n  export is not where its identity says, rather than publish a shorter map.",
+      "cat-harness:refs": [
+        "bean t8c4"
+      ],
+      "dcterms:date": [
+        "2026-10-04"
+      ]
     }
   ]
 }

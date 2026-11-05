@@ -34,6 +34,9 @@
         },
         {
           "@id": "skills/kg/kg-core/vocabulary-authority.md#provenance-8"
+        },
+        {
+          "@id": "skills/kg/kg-core/vocabulary-authority.md#provenance-9"
         }
       ]
     },
@@ -115,6 +118,16 @@
       ],
       "dcterms:date": [
         "2026-09-22"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/vocabulary-authority.md#provenance-9",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "DC ↔ SKOS: the overlap, and what stops the drift",
+      "prov:value": "Two predicates, one fact, nothing declaring which is authoritative. **That is\nthe drift, already live.** The rule above resolves it: the node is a concept\nscheme, so `skos:prefLabel` is the source and `dcterms:title` is the derived\ncopy for resource-metadata consumers. Bean `sl9u`.",
+      "cat-harness:refs": [
+        "bean sl9u"
       ]
     }
   ]

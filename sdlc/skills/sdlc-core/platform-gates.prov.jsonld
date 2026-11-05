@@ -61,6 +61,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/platform-gates.md#provenance-17"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/platform-gates.md#provenance-18"
         }
       ]
     },
@@ -230,6 +233,16 @@
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "If `bun run cat gates` reports no gates",
       "prov:value": "An empty sweep\nthat exits 0 is indistinguishable from a passing one — the defect this\nrepository has paid for three separate times: a `grep` over zero Lean files\nprinting OK, a `ruff` scan of missing paths reporting a clean baseline it had\nnever computed, and `readme:sync:check` passing over a README with no markers."
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/platform-gates.md#provenance-18",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "...and a green gate is not a VERIFIED FACT",
+      "prov:value": "| claim | carried the stale content | `check:stale-paths` |\n|---|---|---|\n| `10uc` | yes, as a numbered path | **✗ failed the push** |\n| `w0cr` | yes, as prose | **✓ passed** |",
+      "cat-harness:refs": [
+        "bean w0cr"
+      ]
     }
   ]
 }
