@@ -16,7 +16,7 @@ Owner, 2026-09-23: *"make sure all node types/schemas have QA. it is a QA in and
 
 ## The rule
 
-- Every schema this folio **defines** (`src/schemas/*.schema.json`) and every schema it **reuses** (folio-assistant's zod: declarations, config, work item graph, skill package, Tool, catalogue, `pdf-structure/v1`; FHIR R4) has at least one check in the `QA` registry of `src/tools/qa.py` (Tool `ihris-qa`).
+- Every schema this folio **defines** (`src/schemas/*.schema.json`) and every schema it **reuses** (folio-assistant's zod: declarations, config, bean graph, skill package, Tool, catalogue, `pdf-structure/v1`; FHIR R4) has at least one check in the `QA` registry of `src/tools/qa.py` (Tool `ihris-qa`).
 - A schema with none → finding `qa-missing`. A registry entry for a schema that no longer exists → `qa-orphan`.
 - Every JSON file is covered by some schema (`validate.py`), so every document is under QA.
 
