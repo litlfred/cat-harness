@@ -22,6 +22,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/where-a-proposal-goes.md#provenance-4"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/where-a-proposal-goes.md#provenance-5"
         }
       ]
     },
@@ -68,6 +71,19 @@
       "cat-harness:provenanceKind": "proposal",
       "cat-harness:section": "The exception, stated so the rule survives contact",
       "prov:value": "This repository already\ndoes that well — `AGENTS.md` and the `folio-core` skills are full of \"this was\nmeasured on this date and here is what it cost\", and none of that is a\nproposal document."
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/where-a-proposal-goes.md#provenance-5",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Where a proposal goes — `docs/proposals/`",
+      "prov:value": "Proposals go in docs/proposals",
+      "cat-harness:refs": [
+        "owner, 2026-11-04"
+      ],
+      "dcterms:date": [
+        "2026-11-04"
+      ]
     }
   ]
 }

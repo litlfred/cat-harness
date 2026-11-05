@@ -53,10 +53,6 @@ msgstr "Couche"
 msgid "Location"
 msgstr "Emplacement"
 
-#: docs/concepts/skills.md:70
-msgid "Status"
-msgstr "État"
-
 #: docs/concepts/skills.md:72
 msgid "Definition (roles, required capabilities, requirements, routing patterns, lifecycle stages, schema ref)"
 msgstr "Définition (rôles, capacités requises, exigences, modèles de routage, étapes du cycle de vie, réf. de schéma)"
@@ -65,17 +61,9 @@ msgstr "Définition (rôles, capacités requises, exigences, modèles de routage
 msgid "Typed contract (input/output JSON Schema)"
 msgstr "Contrat typé (JSON Schema d'entrée/sortie)"
 
-#: docs/concepts/skills.md:74
-msgid "✅ lifecycle, agent, platform-bundle and folio-document-adapter skills; ⏳ authoring-math / authoring-who-smart-guidelines bodies are TBD (those packages ship the manifest + JSON definitions)"
-msgstr "✅ compétences de cycle de vie, d'agent, du lot de plateforme et de folio-document-adapter ; ⏳ les corps pour authoring-math / authoring-who-smart-guidelines sont à venir (ces paquets fournissent le manifeste + les définitions JSON)"
-
 #: docs/concepts/skills.md:75
 msgid "Package (Docker/runtime deps)"
 msgstr "Paquet (dépendances Docker / exécution)"
-
-#: docs/concepts/skills.md:75
-msgid "✅ all four packages"
-msgstr "✅ les quatre paquets"
 
 #: docs/concepts/skills.md:85
 msgid "The lifecycle stages that apply to every content type:"
@@ -244,10 +232,6 @@ msgstr "Lot"
 #: docs/concepts/skills.md:164
 msgid "Scope"
 msgstr "Portée"
-
-#: docs/concepts/skills.md:166
-msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
-msgstr "Coordination d'agents, cadre watcher, pipeline QA / rendu / bibliographie / glossaire, documentation, déploiement — s'applique à tout type de contenu."
 
 #: docs/concepts/skills.md:167
 msgid "Prose folios: block authoring, chapter/section structure, normative statements, and the TeX-free publication path. Applies to papers too."
@@ -515,3 +499,15 @@ msgstr "Voir aussi"
 
 #~ msgid "Getting started — running your first skill"
 #~ msgstr "Premiers pas — exécuter votre première compétence"
+
+#~ msgid "Status"
+#~ msgstr "État"
+
+#~ msgid "✅ lifecycle, agent, platform-bundle and folio-document-adapter skills; ⏳ authoring-math / authoring-who-smart-guidelines bodies are TBD (those packages ship the manifest + JSON definitions)"
+#~ msgstr "✅ compétences de cycle de vie, d'agent, du lot de plateforme et de folio-document-adapter ; ⏳ les corps pour authoring-math / authoring-who-smart-guidelines sont à venir (ces paquets fournissent le manifeste + les définitions JSON)"
+
+#~ msgid "✅ all four packages"
+#~ msgstr "✅ les quatre paquets"
+
+#~ msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
+#~ msgstr "Coordination d'agents, cadre watcher, pipeline QA / rendu / bibliographie / glossaire, documentation, déploiement — s'applique à tout type de contenu."

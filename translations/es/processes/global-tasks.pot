@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: global-tasks\n"
-"POT-Creation-Date: 2026-11-03T06:57:11.093Z\n"
+"POT-Creation-Date: 2026-11-04T20:47:21.070Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -26,7 +26,7 @@ msgstr ""
 
 #: processes/global-tasks.bpmn:123
 #. Diagram element documentation
-msgid "Back-translate the target-language .md into the source language and compare the meaning with the original (bean folio-assistant-ktt2). It catches semantic drift and terminology misses that a forward-only fluency check cannot see, and tells the two apart. Tool: the translation_validate MCP tool."
+msgid "Back-translate the target-language .md into the source language and compare the meaning with the original. It catches semantic drift and terminology misses that a forward-only fluency check cannot see, and tells the two apart. Tool: the translation_validate MCP tool."
 msgstr ""
 
 #: processes/global-tasks.bpmn:81
@@ -86,7 +86,7 @@ msgstr ""
 
 #: processes/global-tasks.bpmn:117
 #. Diagram element documentation
-msgid "Read the .po file and the source .md, substitute msgstr for msgid, unshield the placeholders, and write the translated .md to translations/<locale>/. Check structure (paragraph count, heading levels) and completeness (no empty msgstr), and lint (doubled punctuation, orphaned placeholders). Tool: the translation_inject MCP tool, or bun run content/pipeline/po-inject.ts."
+msgid "Read the .po file and the source .md, substitute msgstr for msgid, unshield the placeholders, and write the translated .md to translations/<locale>/. Check structure (paragraph count, heading levels) and completeness (no empty msgstr), and lint (doubled punctuation, orphaned placeholders). Tool: the translation_inject MCP tool."
 msgstr ""
 
 #: processes/global-tasks.bpmn:70
@@ -97,6 +97,11 @@ msgstr ""
 #: processes/global-tasks.bpmn:129
 #. Diagram element documentation
 msgid "Record the translation's standing in translations/<locale>/status.json. The `official` input says which: `false` records it as unofficial ({ official: false, generatedBy, generatedAt }), usable but shown with a warning badge; `true` records the human sign-off with the SHA-256 of the source .md, so a later change to the source marks it stale."
+msgstr ""
+
+#: processes/global-tasks.bpmn:103
+#. Diagram element documentation
+msgid "Records that a removal was considered and refused, or that a preview still stands because a signal fired; without the entry that leaves no trace, and nobody can tell why a preview is still up. A reason is REQUIRED — the tool refuses without one."
 msgstr ""
 
 #: processes/global-tasks.bpmn:95
@@ -111,7 +116,7 @@ msgstr ""
 
 #: processes/global-tasks.bpmn:111
 #. Diagram element documentation
-msgid "Scan the source content and write the translatable strings to .pot files at the configured granularity: segment prose by paragraph, shield what must not be translated (math, code, labels, Lean companions) as placeholders, normalise whitespace, and extract metadata such as titles, alt text and captions. Tool: the translation_extract MCP tool, or bun run content/pipeline/pot-extract.ts."
+msgid "Scan the source content and write the translatable strings to .pot files at the configured granularity: segment prose by paragraph, shield what must not be translated (math, code, labels, Lean companions) as placeholders, normalise whitespace, and extract metadata such as titles, alt text and captions. Tool: the translation_extract MCP tool."
 msgstr ""
 
 #: processes/global-tasks.bpmn:31
@@ -124,14 +129,9 @@ msgstr ""
 msgid "The agent reports and waits: what would move, how large, what in the parent breaks, and the rollback. `deletion-requires-confirmation` is not a courtesy to waive: an agent never removes or relocates a durable artefact on its own initiative."
 msgstr ""
 
-#: processes/global-tasks.bpmn:103
-#. Diagram element documentation
-msgid "The entry that makes the log worth reading. A removal was considered and refused, or a preview still stands because a signal fired; without an entry that leaves no trace, and the next person asking \"why is this preview still up\" has nothing to consult. A reason is REQUIRED — the tool refuses without one."
-msgstr ""
-
 #: processes/global-tasks.bpmn:71
 #. Diagram element documentation
-msgid "THE RECORD, and not relaxable: a judgement nobody wrote down is indistinguishable from one never made (`adjudication`, A_RecordEntry). Append one `requirement-signoff` record to `test/attestations/requirement-signoff/<set slug>.attestations.json` — who (kind, id, actor), at, scope (the set or one member), the outcome from the requirement-set code list, the stage it moves the set to, the reason, and the permalink to the issue comment where it was decided — and set the set's `stage` to match. Issue #2405 FR-011 / FR-012. GW_SignoffRecorded after this reads the record back, so this step cannot be skipped by completing it: a sign-off that left no attestation loops here again."
+msgid "THE RECORD, and not relaxable, because a judgement nobody wrote down is indistinguishable from one never made (`adjudication`, A_RecordEntry). Append one `requirement-signoff` record to `test/attestations/requirement-signoff/<set slug>.attestations.json` — who (kind, id, actor), at, scope (the set or one member), the outcome from the requirement-set code list, the stage it moves the set to, the reason, and the permalink to the issue comment where it was decided — and set the set's `stage` to match. GW_SignoffRecorded after this reads the record back, so this step cannot be skipped by completing it: a sign-off that left no attestation loops here again."
 msgstr ""
 
 #: processes/global-tasks.bpmn:82

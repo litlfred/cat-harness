@@ -13,16 +13,16 @@ nav_order: 5
 
 ---
 
-> What survives in `cat-harness` once *"not self-documenting"* is applied as a
-> test, and how the Tools schema that the harness owns is carried.
+> What survives in `cat-harness` once *"renders no content type"* is applied as
+> a test, and how the Tools schema that the harness owns is carried.
 
 ## The repo set
 
-Rendering lives outside the harness, and each layer has a Tools sibling:
+Content rendering lives outside the harness, and each layer has a Tools sibling:
 
 ```mermaid
 flowchart TD
-    AH["<b>cat-harness</b><br/>workflow state · guardrails<br/><i>not self-documenting</i><br/>one tool: beans"]
+    AH["<b>cat-harness</b><br/>workflow state · guardrails<br/><i>documents itself · renders no content type</i><br/>one tool: beans"]
     AHT["<b>tools layer</b><br/>beans CLI Tool node"]
     C["<b>content core</b><br/>justthedocs pipeline · webpage<br/><i>self-documenting</i>"]
     CT["<b>folio-assistant-core-tools</b><br/>BPMN/DMN/Todo renderers"]
@@ -43,26 +43,25 @@ flowchart TD
 ```
 
 
-## What "not self-documenting" actually constrains
+## What "renders no content type" constrains
 
-**The harness cannot render a website.** The just-the-docs pipeline, the
-`webpage` content type, and every renderer belong to the content core. The
-harness's documentation is prose files an agent reads, not pages a reader
-browses.
+**The harness documents itself, but it renders no content type.** Its own
+`docs/` is published as its site, so a reader can learn how the harness works.
+The `webpage` content type and every renderer of a content type belong to the
+content core.
 
 That yields a one-line admission test for every candidate:
 
-> **If it produces something a human looks at, it is not the harness.**
+> **If it renders a content type, it is not the harness.**
 
-The webpage content type, the sticky-note Todo rendering, the QR code,
-dark/light mode, the six UN languages, the audit-sidecar iconography, "links to
-edit in GitHub" — all are **things a reader sees**, so all belong to the content
-core or `folio-assistant-core-tools`.
+The webpage content type, the sticky-note Todo rendering, the QR code, the
+audit-sidecar iconography — all present a folio's content to a reader, so all
+belong to the content core or `folio-assistant-core-tools`.
 
 What survives in the harness is the part with no pixels: **schemas, process
 definitions, and skills that tell an agent how to behave.** The test is
 falsifiable: if `cat-harness` ends up with dozens of skills and no crisp line
-against core, "not self-documenting" has not constrained anything.
+against core, the test has not constrained anything.
 
 ## `cat-harness` — the minimum
 
@@ -148,16 +147,16 @@ agent that knows only the CLI reads the plan and touches nothing. The fallback
 is a Tool of equal standing, which forces the skill to say *when* to reach for
 it.
 
-**`pages-publish` makes the harness inspectable without making it
-self-documenting.** The harness has no renderer — `folio` is the only
-`renderable` kind and it belongs to core — so its knowledge graph is published
-as **data**: `kg-export` serializes it to one JSON document and this Tool puts
-the document somewhere. A GitLab Pages or object-store node can satisfy the same
+**The harness documents itself, and `pages-publish` also publishes its graph
+as data.** Its `docs/` is rendered as its own site; no content type's renderer
+is in the harness. Its knowledge graph is published as **data** as well:
+`kg-export` serializes it to one JSON document and this Tool puts the document
+somewhere. A GitLab Pages or object-store node can satisfy the same
 skill.
 
 **The Tool KG stays in the harness**: that is what makes the harness
-bootstrappable — it describes its own tools in its own vocabulary, with no
-renderer and no server.
+bootstrappable — it describes its own tools in its own vocabulary, without a
+content layer's renderer or a server.
 
 ## The tools layer — the minimum
 

@@ -93,13 +93,12 @@ the agent works from that spec rather than creating a duplicate.
 
 ## Spec lifecycle & graduation — the durable trace
 
-Specs live in GitHub issue comments; accepted requirements graduate into
-`req:*` statements and automated tests, keeping SDLC churn off the knowledge
-graph.
+A spec is a proposal: it lives in `docs/proposals/<slug>.md` and is discussed
+on its governing issue; accepted requirements graduate into `req:*` statements
+and automated tests.
 
-1. **Drafting & Discussion**: Specs exist strictly as comments on their governing
-   GitHub issue. They are NOT committed to the repository, preserving the rule
-   in `where-a-proposal-goes` that design arguments are transient SDLC churn.
+1. **Drafting & Discussion**: A spec is committed as `docs/proposals/<slug>.md`
+   and discussed on its governing GitHub issue, per `where-a-proposal-goes`.
 2. **Adjudication**: When all `[NEEDS CLARIFICATION]` markers are settled by
    human decision (never by agent judgement), the status moves from `Draft` to
    `Adjudicated`.
@@ -237,11 +236,9 @@ misrepresents the standard.
 
 - **The on-disk layout.** Upstream keeps a spec at `specs/NNN-feature/spec.md`
   and its own state under `.specify/`. **Not adopted.** A spec instance here is a
-  comment on its governing issue and goes nowhere near the knowledge graph, per
-  `where-a-proposal-goes`. A spec is an argument about what to build,
-  superseded the moment it is decided; it has the wrong lifetime for a permanent
-  URL and needs none of translation, QA sidecars or link auditing. The
-  **template** is durable and belongs in the graph; an **instance** is not.
+  proposal, `docs/proposals/<slug>.md`, per `where-a-proposal-goes`: proposals
+  have one home, so a spec is found where every other proposal is. The
+  **template** is a skill; an **instance** is a proposal.
   `.specify/` is refused on a second ground as well: this repository's
   dot-prefix guard rejects a dot-prefixed segment.
 - **The `/speckit-*` command surface, as a surface.** The *method* is adopted;

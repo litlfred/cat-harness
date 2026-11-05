@@ -58,6 +58,9 @@
         },
         {
           "@id": "docs/concepts/architecture/cat-harness-minimum.md#provenance-16"
+        },
+        {
+          "@id": "docs/concepts/architecture/cat-harness-minimum.md#provenance-17"
         }
       ]
     },
@@ -247,6 +250,19 @@
       "cat-harness:refs": [
         "schemas/cat-harness.ts",
         "16:28"
+      ]
+    },
+    {
+      "@id": "docs/concepts/architecture/cat-harness-minimum.md#provenance-17",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "What \"renders no content type\" constrains",
+      "prov:value": "Cat harness document itself is ok",
+      "cat-harness:refs": [
+        "owner, 2026-11-04"
+      ],
+      "dcterms:date": [
+        "2026-11-04"
       ]
     }
   ]

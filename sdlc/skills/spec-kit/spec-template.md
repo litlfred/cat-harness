@@ -106,6 +106,6 @@ metadata_fields:
 
 ## Lifecycle & Durable Trace (FR-013)
 
-- **Drafting & Review**: Specs live strictly as comments on their governing GitHub issue. They are NOT committed as churn into the knowledge graph (`where-a-proposal-goes`).
+- **Drafting & Review**: A spec is committed as `docs/proposals/<slug>.md` and discussed on its governing GitHub issue (`where-a-proposal-goes`).
 - **Filing at adjudication**: When every `[NEEDS CLARIFICATION]` is settled, the accepted requirements are filed as a `req:*` file in `skills/requirements/` with `status: proposed` and `proposedIn` naming this issue; each `SC-NNN` becomes a success criterion keyed `SC-NNN`, so tests can cite `req:<slug>#<statement>/SC-NNN` at once.
-- **Graduation**: Upon completion of the feature, that requirement's `status` becomes `in-force`, backed by automated tests. This preserves durable traceability without polluting the knowledge graph with transient SDLC discussions.
+- **Graduation**: Upon completion of the feature, that requirement's `status` becomes `in-force`, backed by automated tests. This keeps the trace from proposal to requirement to test.

@@ -61,10 +61,6 @@ msgstr "五个目标仓库以及各目录分别落入哪个仓库"
 msgid "Phase 0/I/II/III, the gates, and what is still undecided"
 msgstr "Phase 0/I/II/III、各项关卡以及尚未决定的事项"
 
-#: docs/concepts/architecture.md:67
-msgid "What survives in the harness once \"not self-documenting\" is applied as a test"
-msgstr "将“非自说明性”作为检验标准时，harness 中保留下来的内容"
-
 #: docs/concepts/architecture.md:68
 msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
 msgstr "实例的本质是什么 —— 原理图、可视化、工具；四个目录；默认渲染"
@@ -85,29 +81,9 @@ msgstr "路径"
 msgid "What lives here"
 msgstr "包含内容"
 
-#: docs/concepts/architecture.md:87
-msgid "Content pipeline tooling (validators, QA, render helpers) — not content itself"
-msgstr "内容流水线工具（验证器、QA、渲染辅助工具）—— 而非内容本身"
-
-#: docs/concepts/architecture.md:88
-msgid "Web UI, interactive viewer, and the example Pages site"
-msgstr "Web UI、交互式查看器以及示例 Pages 站点"
-
-#: docs/concepts/architecture.md:89
-msgid "Deployment (Caddy, docker-compose, provisioning, OAuth)"
-msgstr "部署（Caddy、docker-compose、置备、OAuth）"
-
 #: docs/concepts/architecture.md:90
 msgid "This documentation site"
 msgstr "本文档站点"
-
-#: docs/concepts/architecture.md:91
-msgid "CI workflows and scripts (build, publish, QA, docs)"
-msgstr "CI 工作流与脚本（构建、发布、QA、文档）"
-
-#: docs/concepts/architecture.md:92
-msgid "Local agent skills + capability hooks"
-msgstr "本地智能体技能 + 能力钩子"
 
 #: docs/concepts/architecture.md:94
 msgid "The MCP server"
@@ -230,3 +206,21 @@ msgstr "部署"
 
 #~ msgid "contains a Caddy reverse-proxy template, , a provisioning script, Google OAuth setup, and a self-update script for running a shared HTTP instance. The skill-package Docker manifests aggregate apt/pip/npm dependencies into a single image per active package set."
 #~ msgstr "包含 Caddy 反向代理模板、、置备脚本、Google OAuth 配置，以及用于运行共享 HTTP 实例的自动更新脚本。技能包的 Docker 清单文件会将 apt/pip/npm 依赖聚合到每个活动包集对应的单一镜像中。"
+
+#~ msgid "What survives in the harness once \"not self-documenting\" is applied as a test"
+#~ msgstr "将“非自说明性”作为检验标准时，harness 中保留下来的内容"
+
+#~ msgid "Content pipeline tooling (validators, QA, render helpers) — not content itself"
+#~ msgstr "内容流水线工具（验证器、QA、渲染辅助工具）—— 而非内容本身"
+
+#~ msgid "Web UI, interactive viewer, and the example Pages site"
+#~ msgstr "Web UI、交互式查看器以及示例 Pages 站点"
+
+#~ msgid "Deployment (Caddy, docker-compose, provisioning, OAuth)"
+#~ msgstr "部署（Caddy、docker-compose、置备、OAuth）"
+
+#~ msgid "CI workflows and scripts (build, publish, QA, docs)"
+#~ msgstr "CI 工作流与脚本（构建、发布、QA、文档）"
+
+#~ msgid "Local agent skills + capability hooks"
+#~ msgstr "本地智能体技能 + 能力钩子"

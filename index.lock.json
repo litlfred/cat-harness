@@ -9,7 +9,7 @@
     {
       "harness": "bootstrap-tools",
       "repository": "litlfred/bootstrap-tools",
-      "ref": "f57b9e72a5a4fd3777aa8c1cee33088ce5899188"
+      "ref": "f22b2490ff8b6930c55d1b6fe9605fc5f9f9a743"
     }
   ],
   "instances": [
@@ -45,29 +45,29 @@
     {
       "instance": "bootstrap-tools",
       "repository": "litlfred/bootstrap-tools",
-      "sha": "f57b9e72a5a4fd3777aa8c1cee33088ce5899188",
+      "sha": "f22b2490ff8b6930c55d1b6fe9605fc5f9f9a743",
       "upstreamRoot": "",
       "path": "bootstrap-tools",
       "via": "bootstrap-tools",
       "pinnedBy": "declared",
       "declaration": {
         "file": "bootstrap-tools.json",
-        "sha256": "775ba5102e9df50d840bb74ce15d941d9d38b5348781bf156c970310d278f861"
+        "sha256": "bb9f223b87a13659fa38e53faba86f71168e839d705e9ee801019199d7023a46"
       },
       "directories": [
         {
           "id": "*",
           "path": "bootstrap-tools",
           "upstreamPath": ".",
-          "treeDigest": "bf957a3b6f8cffadffca3a5346346398c4c080d05b1fdb81cbd3bb65080e4fc1",
-          "files": 95
+          "treeDigest": "f95d6e5d332e8609ba5b0a0e1c92b6d29fc0a6e6fe03e2aede41ffd08990952a",
+          "files": 97
         }
       ],
       "trust": {
         "basis": "consent",
         "by": "litlfred",
-        "on": "2026-11-02",
-        "ref": "f57b9e72a5a4fd3777aa8c1cee33088ce5899188",
+        "on": "2026-11-04",
+        "ref": "f22b2490ff8b6930c55d1b6fe9605fc5f9f9a743",
         "approver": "declared"
       }
     }

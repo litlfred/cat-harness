@@ -28,6 +28,9 @@
         },
         {
           "@id": "docs/concepts/architecture/future-state.md#provenance-6"
+        },
+        {
+          "@id": "docs/concepts/architecture/future-state.md#provenance-7"
         }
       ]
     },
@@ -96,6 +99,19 @@
       "prov:value": "> *\"some of these may need be split into their respective Tool, Test, etc repos\n> to avoid mixing of concerns. e.g. `smart-kg-tools`\"*",
       "cat-harness:refs": [
         "#223"
+      ]
+    },
+    {
+      "@id": "docs/concepts/architecture/future-state.md#provenance-7",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "(cat-harness)",
+      "prov:value": "Cat harness document itself is ok",
+      "cat-harness:refs": [
+        "owner, 2026-11-04"
+      ],
+      "dcterms:date": [
+        "2026-11-04"
       ]
     }
   ]
