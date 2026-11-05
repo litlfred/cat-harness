@@ -21,10 +21,12 @@
         <bpmn:flowNodeRef>Task_Read</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gw_Route</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Meta</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_Green</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Train</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Stalled</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Done</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Idle</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_NotGreen</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="Start_Wake" name="Timer, PR event, main run done, or sibling message">
@@ -51,9 +53,16 @@
       <bpmn:incoming>Flow_3</bpmn:incoming>
       <bpmn:outgoing>Flow_7</bpmn:outgoing>
     </bpmn:callActivity>
+    <bpmn:exclusiveGateway id="Gw_Green" name="All green per rule 1?">
+      <bpmn:documentation>Every check run on the head SHA has finished, and anything pending blocks; wait for every tier, e2e included. The full tier ran (the No new failures judge, or every full test shard); a draft or fast-tier-only pass never counts. Each check is green as judged: where the No new failures judge exists its success is the verdict, otherwise each check concluded success, skipped or neutral. A cancelled job counts only when a later run of the same workflow on the same head passed that job. merge:watch prints this verdict per PR.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Flow_10</bpmn:outgoing>
+      <bpmn:outgoing>Flow_11</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
     <bpmn:callActivity id="Call_Train" name="Merge train" calledElement="Process_MergeTrain">
       <bpmn:documentation>Ready PRs that stack land as a train through merge:guard.</bpmn:documentation>
-      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:incoming>Flow_10</bpmn:incoming>
       <bpmn:outgoing>Flow_8</bpmn:outgoing>
     </bpmn:callActivity>
     <bpmn:callActivity id="Call_Stalled" name="Stalled-agent triage" calledElement="Process_StalledAgentTriage">
@@ -69,15 +78,21 @@
     <bpmn:endEvent id="End_Idle" name="Nothing to do">
       <bpmn:incoming>Flow_6</bpmn:incoming>
     </bpmn:endEvent>
+    <bpmn:endEvent id="End_NotGreen" name="Not green yet">
+      <bpmn:documentation>Do not merge. The next wake reads the checks again.</bpmn:documentation>
+      <bpmn:incoming>Flow_11</bpmn:incoming>
+    </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1" sourceRef="Start_Wake" targetRef="Task_Read"/>
     <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_Read" targetRef="Gw_Route"/>
     <bpmn:sequenceFlow id="Flow_3" name="Saturated" sourceRef="Gw_Route" targetRef="Call_Meta"/>
-    <bpmn:sequenceFlow id="Flow_4" name="Ready" sourceRef="Gw_Route" targetRef="Call_Train"/>
+    <bpmn:sequenceFlow id="Flow_4" name="Ready" sourceRef="Gw_Route" targetRef="Gw_Green"/>
     <bpmn:sequenceFlow id="Flow_5" name="Stalled" sourceRef="Gw_Route" targetRef="Call_Stalled"/>
     <bpmn:sequenceFlow id="Flow_6" name="Nothing" sourceRef="Gw_Route" targetRef="End_Idle"/>
     <bpmn:sequenceFlow id="Flow_7" sourceRef="Call_Meta" targetRef="End_Done"/>
     <bpmn:sequenceFlow id="Flow_8" sourceRef="Call_Train" targetRef="End_Done"/>
     <bpmn:sequenceFlow id="Flow_9" sourceRef="Call_Stalled" targetRef="End_Done"/>
+    <bpmn:sequenceFlow id="Flow_10" name="Yes" sourceRef="Gw_Green" targetRef="Call_Train"/>
+    <bpmn:sequenceFlow id="Flow_11" name="No" sourceRef="Gw_Green" targetRef="End_NotGreen"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_MergeManagerWatch">
     <bpmndi:BPMNPlane id="Plane_Process_MergeManagerWatch" bpmnElement="Collaboration_Process_MergeManagerWatch">
@@ -101,8 +116,12 @@
       <bpmndi:BPMNShape id="Shape_Call_Meta" bpmnElement="Call_Meta">
         <dc:Bounds x="770" y="95" width="120" height="120"/>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Gw_Green" bpmnElement="Gw_Green" isMarkerVisible="true">
+        <dc:Bounds x="680" y="280" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="662.47" y="334" width="85.06" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Train" bpmnElement="Call_Train">
-        <dc:Bounds x="770" y="245" width="120" height="120"/>
+        <dc:Bounds x="810" y="245" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Stalled" bpmnElement="Call_Stalled">
         <dc:Bounds x="770" y="395" width="120" height="120"/>
@@ -114,6 +133,10 @@
       <bpmndi:BPMNShape id="Shape_End_Idle" bpmnElement="End_Idle">
         <dc:Bounds x="812" y="587" width="36" height="36"/>
         <bpmndi:BPMNLabel><dc:Bounds x="770" y="627" width="120" height="40"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_NotGreen" bpmnElement="End_NotGreen">
+        <dc:Bounds x="687" y="200" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="672.06" y="160" width="65.88" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_1" bpmnElement="Flow_1">
         <di:waypoint x="248" y="380"/>
@@ -132,8 +155,8 @@
       <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
         <di:waypoint x="630" y="355"/>
         <di:waypoint x="630" y="305"/>
-        <di:waypoint x="770" y="305"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="640" y="281" width="70" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="680" y="305"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="636" y="310" width="44" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
         <di:waypoint x="630" y="405"/>
@@ -153,7 +176,7 @@
         <di:waypoint x="1030" y="362"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_8" bpmnElement="Flow_8">
-        <di:waypoint x="890" y="305"/>
+        <di:waypoint x="930" y="305"/>
         <di:waypoint x="1030" y="305"/>
         <di:waypoint x="1030" y="362"/>
       </bpmndi:BPMNEdge>
@@ -161,6 +184,16 @@
         <di:waypoint x="890" y="455"/>
         <di:waypoint x="1030" y="455"/>
         <di:waypoint x="1030" y="398"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_10" bpmnElement="Flow_10">
+        <di:waypoint x="730" y="305"/>
+        <di:waypoint x="810" y="305"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="745" y="285" width="30" height="20"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_11" bpmnElement="Flow_11">
+        <di:waypoint x="705" y="280"/>
+        <di:waypoint x="705" y="236"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="710" y="250" width="30" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

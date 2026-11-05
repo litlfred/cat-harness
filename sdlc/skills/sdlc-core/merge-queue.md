@@ -821,6 +821,11 @@ name exactly as a red one. A steward that cannot say why it is not merging a PR
 which is green **on the owed set** is holding it by accident; one that merges on
 `bad=0 wait=0` alone is merging unverified.
 
+The exact meaning of "all green" for a merge, including the full tier and
+superseded cancelled jobs, is rule 1 of
+[`merge-manager-watcher`](merge-manager-watcher.md) §"Merge-sweep rules".
+`bun run cat merge:watch` prints that verdict for every open PR.
+
 ## Read `base.ref` BEFORE anything else: a stacked PR is not a main-queue member
 
 **`merge-tree origin/main <head>` answers a question nobody asked when the

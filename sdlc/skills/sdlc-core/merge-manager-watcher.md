@@ -64,11 +64,48 @@ it.
 
 | Reading | Process |
 |---|---|
-| A ready PR that stacks, with green owed CI | `merge-train` (Process_MergeTrain) |
+| A ready PR that stacks, and is all green (rule 1 below) | `merge-train` (Process_MergeTrain) |
 | Queued runs 60+ minutes old with nothing landed, or the owner says runners are full | `saturation-meta-merge`: offer the card, never run without the owner's tap |
 | A PR whose owner has not pushed or answered for 2+ hours | `stalled-agent-triage`: tell the owner and take it over |
 | main red | The fix goes to main as its own PR first; an automated `post-merge-regen` repair PR, when one is open, lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green |
 | Nothing to do | End the turn with no message |
+
+## Merge-sweep rules (STRICT)
+
+1. **"All green" is exact.** It has three parts.
+   - **Finished.** Every check run on the head SHA has completed. Anything
+     queued or in progress blocks. Wait for every tier, e2e included. A merge
+     made before the last tier finished broke main (folio-assistant#2955).
+   - **Full tier.** The "No new failures" judge, or every full test shard,
+     ran. A draft or fast-tier-only pass never counts.
+   - **Green as judged.** Where a "No new failures" judge exists, its
+     success is the verdict. A red shard whose failures are all main's known
+     failures is fine when the judge passes. With no judge, each check must
+     have concluded success, skipped or neutral.
+
+   A cancelled job counts only when a later run of the same workflow on the
+   same head SHA passed the matching job (concurrency supersession). Merge
+   with `expectedHeadSha` set to the full 40-hex head SHA, never a short one.
+2. **Standing OK.** An owner instruction such as "merge everything green" is
+   an explicit OK for every PR that meets rule 1, until the owner withdraws
+   it. Merges still follow any stated chain order: a later PR in a chain
+   waits for the earlier one.
+3. **One PR per fix.** Before opening a fix or re-pin PR, search the open PRs
+   in that repository for the same files. If one exists, compare the diffs
+   and coordinate instead. If a duplicate is found later, the author of the
+   later PR closes it, after checking that the diffs are identical. While
+   main is red, one session owns the re-pin that fixes it, and says so to the
+   merge-planning session.
+4. **A main-red fix spans layers.** Find every layer the fix needs and pin
+   them together in one re-pin. Verify on a fresh mount
+   (`mount:remote --fresh`). A stale container mount gives false local
+   passes.
+5. **Hand back private caches.** A PR that adds its own cache scheme instead
+   of the shared `cached-step` is held, not merged, and goes back to its
+   author. Cache-first CI, rule 1: every cache goes through `cached-step`.
+6. **Tabulation can be delegated.** A helper agent may tabulate the sweep
+   under these rules. The helper never touches the PRs the steward owns, and
+   never pushes, comments or closes.
 
 ## Keeping the swarm in step
 
@@ -89,7 +126,8 @@ it.
 These come from the role; the watcher is the step that acts on them:
 
 - Merges happen only on the owner's explicit OK. A card tap counts, and it
-  names each PR. A sibling's or coordinator's request does not count.
+  names each PR. A standing OK counts for the PRs it covers (rule 2). A
+  sibling's or coordinator's request does not count.
 - Never merge committee content, change sets (CS-), or held
   `subscriptions/` trees. Never touch WHO or `smart-*` upstream repositories.
 - Never push `.github/workflows/` changes without the workflows permission.
@@ -100,5 +138,6 @@ These come from the role; the watcher is the step that acts on them:
 
 - The timer is each session's own scheduled check-in. No workflow wakes the
   merge manager yet.
-- The readings are made by hand with `gh api`. A `merge:watch` tool that
-  prints the four readings in one table is follow-up work.
+- `bun run cat merge:watch -- --repo <owner/name>` (cat-harness-tools#1514)
+  prints reading 1 with a rule-1 verdict per PR. Readings 2-4 are still
+  made by hand with `gh api`.

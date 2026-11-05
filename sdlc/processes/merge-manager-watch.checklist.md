@@ -25,7 +25,7 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 - Saturated: queued runs are 60+ minutes old and nothing has landed, or the owner says the runners are full.
 - Call `workflow_complete` with `node: "Gw_Route"` and `outcome` set to the label that holds:
   - «Saturated» → `Call_Meta` (Saturation meta-merge)
-  - «Ready» → `Call_Train` (Merge train)
+  - «Ready» → `Gw_Green` (All green per rule 1?)
   - «Stalled» → `Call_Stalled` (Stalled-agent triage)
   - «Nothing» → `End_Idle` (Nothing to do)
 
@@ -36,14 +36,14 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 - A subprocess (`Process_SaturationMetaMerge`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Done` (Wake handled)
 
-### 3. Merge train (`Call_Train`)
+### Decide — All green per rule 1? (`Gw_Green`)
 
-- Who: the `Merge steward` lane (role `merge-steward`).
-- What: Ready PRs that stack land as a train through merge:guard.
-- A subprocess (`Process_MergeTrain`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Done` (Wake handled)
+- Every check run on the head SHA has finished, and anything pending blocks; wait for every tier, e2e included.
+- Call `workflow_complete` with `node: "Gw_Green"` and `outcome` set to the label that holds:
+  - «Yes» → `Call_Train` (Merge train)
+  - «No» → `End_NotGreen` (Not green yet)
 
-### 4. Stalled-agent triage (`Call_Stalled`)
+### 3. Stalled-agent triage (`Call_Stalled`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - What: Tell the owner, then take the stalled PR over.
@@ -57,3 +57,14 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 ## Done — Wake handled (`End_Done`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 4. Merge train (`Call_Train`)
+
+- Who: the `Merge steward` lane (role `merge-steward`).
+- What: Ready PRs that stack land as a train through merge:guard.
+- A subprocess (`Process_MergeTrain`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `End_Done` (Wake handled)
+
+## Done — Not green yet (`End_NotGreen`)
+
+- The instance completes here: Do not merge. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
