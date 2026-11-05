@@ -71,7 +71,7 @@
   var WORKPLAN_FINDING = {
     "blocker-closed": { role: "serious", label: "Block never lifted" },
     "blocked-without-expiry": { role: "warning", label: "No expiry" },
-    "blocking-unknown": { role: "critical", label: "Unknown bean" },
+    "blocking-unknown": { role: "critical", label: "Unknown work item" },
     "stale-in-progress": { role: "warning", label: "Untouched" }
   };
 
@@ -383,6 +383,45 @@
     return true;
   }
 
+  /**
+   * A work plan's marker: the process it runs, the proposal it came from, and
+   * how many instances are running under it (work item folio-assistant-exrp,
+   * owner 2026-11-05: "Epic is the plan"). Read off the projection's `plan`,
+   * which only a plan carries. `runs: null` means the instance store could not
+   * be read, which is said rather than shown as "0 running".
+   */
+  function planMarker(plan) {
+    var box = el("span", { class: "fa-workplan-plan" });
+    box.appendChild(el("span", { class: "fa-workplan-plan-label" }, "work plan"));
+    box.appendChild(document.createTextNode(" runs "));
+    for (var i = 0; i < plan.processes.length; i++) {
+      if (i > 0) box.appendChild(document.createTextNode(", "));
+      box.appendChild(el("code", { class: "fa-workplan-plan-process" }, plan.processes[i]));
+    }
+    if (plan.proposal) {
+      box.appendChild(document.createTextNode(" · from "));
+      box.appendChild(el("code", { class: "fa-workplan-plan-proposal" }, plan.proposal));
+    }
+    var runs = plan.runs;
+    var running = 0;
+    var where = [];
+    if (runs) {
+      for (var r = 0; r < runs.length; r++) {
+        if (runs[r].status === "running") {
+          running++;
+          where.push(runs[r].id + (runs[r].at && runs[r].at.length ? " at " + runs[r].at.join(", ") : ""));
+        }
+      }
+    }
+    var text = runs === null || runs === undefined
+      ? " · runs not read in this build"
+      : " · " + running + " running" + (runs.length > running ? ", " + (runs.length - running) + " finished" : "");
+    var count = el("span", { class: "fa-workplan-plan-runs" }, text);
+    if (where.length) count.setAttribute("title", where.join("\n"));
+    box.appendChild(count);
+    return box;
+  }
+
   /** One bean, as a row inside an expanded epic — or a search result, with its id. */
   function beanRow(b, withId) {
     var li = el("li", { class: "fa-workplan-bean-row" });
@@ -423,7 +462,7 @@
     }
     var href = blocker ? viewHref(blocker.file) : null;
     if (!blocker) {
-      return el("span", { class: "fa-workplan-block-edge is-dangling", title: id + " — not a bean in this store" },
+      return el("span", { class: "fa-workplan-block-edge is-dangling", title: id + " — not a work item in this store" },
                 short + " (unknown)");
     }
     return href
@@ -524,6 +563,7 @@
       if (filtering && matched[b.id]) row.className += " is-match";
       var type = el("span", { class: "fa-workplan-tree-type is-" + b.type }, typeLabel(b.type));
       row.insertBefore(type, row.firstChild);
+      if (b.plan) row.appendChild(planMarker(b.plan));
       while (row.firstChild) target.appendChild(row.firstChild);
       if (filtering && matched[b.id]) target.className += " is-match";
     }
@@ -583,7 +623,7 @@
     var box = el("input", { type: "checkbox", "data-fa-workplan-closed": "" });
     box.checked = SHOW_CLOSED;
     lab.appendChild(box);
-    lab.appendChild(document.createTextNode(" Show closed beans"));
+    lab.appendChild(document.createTextNode(" Show closed work items"));
     head.appendChild(lab);
     sec.appendChild(head);
 
@@ -611,7 +651,7 @@
       var li = el("li", { class: "fa-workplan-tree-item" });
       var det = el("details", { class: "fa-workplan-tree-branch is-loose" });
       det.appendChild(el("summary", { class: "fa-workplan-tree-row" },
-                         "Under no goal — " + loose.length + (loose.length === 1 ? " bean" : " beans")));
+                         "Under no goal — " + loose.length + (loose.length === 1 ? " work item" : " work items")));
       var ul = el("ul", { class: "fa-workplan-tree" });
       for (i = 0; i < loose.length; i++) ul.appendChild(node(loose[i], 1));
       det.appendChild(ul);
@@ -621,7 +661,7 @@
     }
     if (!list.childNodes.length) {
       sec.appendChild(el("p", { class: "fa-workplan-empty" },
-                         filtering ? "No bean matches this filter." : "No open beans."));
+                         filtering ? "No work item matches this filter." : "No open work items."));
     } else {
       sec.appendChild(list);
     }
@@ -748,7 +788,7 @@
 
     var section = el("section", { class: "fa-workplan-panel" });
     section.appendChild(el("h2", { class: "fa-workplan-panel-title" },
-                            "Beans — the agent work plan"));
+                            "Work items — the agent work plan"));
     var row = el("dl", { class: "fa-workplan-counts" });
     row.appendChild(countItem("open", open, true));
     row.appendChild(countItem("draft", status["draft"] || 0));
@@ -961,7 +1001,7 @@
     var n = Math.max(1, open.length - 1);
     var x = function (j) { return PAD + (W - 2 * PAD) * (open.length === 1 ? 1 : j / n); };
     var y = function (v) { return H - PAD - (H - 2 * PAD) * (max === 0 ? 0 : v / max); };
-    var label = "Open beans under " + series.title + ": " + first + " on " + firstDay
+    var label = "Open work items under " + series.title + ": " + first + " on " + firstDay
       + ", " + last + " on " + lastDay + " (peak " + max + ").";
     var svg = svgEl("svg", { class: "fa-workplan-burndown", viewBox: "0 0 " + W + " " + H,
                              width: W, height: H, role: "img", "aria-label": label, focusable: "false" });
@@ -991,7 +1031,7 @@
     if (BURNDOWN === undefined) return null;
     if (BURNDOWN === null) {
       return el("p", { class: "fa-workplan-chart-note" },
-                "No burn-down history in this build: only a publish build reads the bean store's past.");
+                "No burn-down history in this build: only a publish build reads the work plan's past.");
     }
     if (BURNDOWN.available !== true) {
       return el("p", { class: "fa-workplan-chart-note" },
@@ -999,10 +1039,10 @@
     }
     var days = BURNDOWN.days || [];
     return el("p", { class: "fa-workplan-chart-note" },
-              "Each line is the count of open beans beneath that goal, on each of the "
+              "Each line is the count of open work items beneath that goal, on each of the "
               + days.length + " day(s) the store changed"
               + (days.length ? " from " + days[0] + " to " + days[days.length - 1] : "")
-              + ", read from " + (BURNDOWN.branch || "the bean branch") + ". Each line has its own scale.");
+              + ", read from " + (BURNDOWN.branch || "the work plan's branch") + ". Each line has its own scale.");
   }
 
   /**
@@ -1023,7 +1063,7 @@
     sec.setAttribute("data-fa-milestones", "");
     var fig = el("figure", { class: "fa-workplan-chart" });
     fig.appendChild(el("figcaption", { class: "fa-workplan-chart-title" },
-                       "Declared milestones — share of the beans beneath each that are closed"));
+                       "Declared milestones — share of the work items beneath each that are closed"));
     if (!plan || !plan.milestones) {
       // Never zero bars: "this projection carries no plan" and "no milestone
       // has progress" are different answers.
@@ -1034,7 +1074,7 @@
     }
     if (plan.milestones.length === 0) {
       fig.appendChild(el("p", { class: "fa-workplan-empty" },
-                          "No bean in this store is typed milestone."));
+                          "No work item in this store is typed milestone."));
       sec.appendChild(fig);
       return sec;
     }
@@ -1100,14 +1140,14 @@
       // board showed both numbers before the rollup reconciled them.
       fig.appendChild(el("p", { class: "fa-workplan-chart-note" },
                           "These bars cover " + plan.coveredOpen + " of " + plan.openTotal
-                          + " open beans. The other " + plan.orphanOpen
+                          + " open work items. The other " + plan.orphanOpen
                           + " sit under no milestone, so the shares above are not a figure for the whole work plan."));
     }
     var bnote = burndownNote();
     if (bnote) fig.appendChild(bnote);
     if (plan.duplicateIds > 0) {
       fig.appendChild(el("p", { class: "fa-workplan-chart-note" },
-                          plan.duplicateIds + " bean id(s) are held by more than one file, and are counted once each here."));
+                          plan.duplicateIds + " work item id(s) are held by more than one file, and are counted once each here."));
     }
     sec.appendChild(fig);
     return sec;
@@ -1119,7 +1159,7 @@
    */
   function searchBar() {
     var wrap = el("div", { class: "fa-workplan-search", role: "search" });
-    wrap.appendChild(el("label", { for: "fa-workplan-q" }, "Search beans"));
+    wrap.appendChild(el("label", { for: "fa-workplan-q" }, "Search work items"));
     var input = el("input", {
       type: "search",
       id: "fa-workplan-q",
@@ -1143,8 +1183,8 @@
     var sec = el("section", { class: "fa-workplan-panel fa-workplan-panel--wide fa-workplan-results" });
     var n = found.length;
     sec.appendChild(el("h2", { class: "fa-workplan-chart-title", id: "fa-workplan-results-title" },
-      n === 0 ? "No bean matches “" + QUERY + "”"
-        : n + (n === 1 ? " bean matches" : " beans match") + " “" + QUERY + "”"
+      n === 0 ? "No work item matches “" + QUERY + "”"
+        : n + (n === 1 ? " work item matches" : " work items match") + " “" + QUERY + "”"
           + (n > RESULT_CAP ? " — the first " + RESULT_CAP + " are listed" : "")));
     if (n === 0) return sec;
     var list = el("ul", { class: "fa-workplan-bean-list", "aria-labelledby": "fa-workplan-results-title" });
