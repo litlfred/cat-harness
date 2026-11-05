@@ -154,7 +154,86 @@
           "status": "open"
         }
       ]
+    },
+    {
+      "reviewer": {
+        "by": "agent",
+        "session": "session_01VQDpPffYARDQ8juksAZScf",
+        "model": "not-disclosed"
+      },
+      "author_sessions": [],
+      "skill_hash": "hash:adversarial-checklist:v1",
+      "at": "2026-11-05T17:29:09.280Z",
+      "coverage": {
+        "files_total": 1,
+        "files_reviewed": 1,
+        "skipped": []
+      },
+      "result": "pass",
+      "flags": [],
+      "findings": [
+        {
+          "id": "adv-merge-conflict-patterns-r2-boundary-hunk",
+          "category": "correctness",
+          "severity": "minor",
+          "weight": "suggestion",
+          "where": "sdlc/skills/sdlc-core/merge-conflict-patterns.md:hand recipe, readme bullet",
+          "evidence": "The per-hunk rule named only hunks inside or outside a region; a hunk that moves a region boundary is neither, and the pattern section refuses it. Now named as authored.",
+          "detail": "Raised against the fixed text and corrected in the same commit before this review was recorded; the recorded text answers it.",
+          "status": "resolved"
+        },
+        {
+          "id": "adv-merge-conflict-patterns-r2-dispatch-events",
+          "category": "correctness",
+          "severity": "minor",
+          "weight": "suggestion",
+          "where": "sdlc/skills/sdlc-core/merge-conflict-patterns.md:In CI, third bullet",
+          "evidence": "The concurrency bullet omitted workflow_dispatch runs, which merge-main.yml cancels per event (cancel-in-progress is true for every event but push), and said 'one of each kind' for three event kinds. Now: any non-push event cancels an earlier run of the same event.",
+          "detail": "Raised against the fixed text and corrected in the same commit before this review was recorded; the recorded text answers it.",
+          "status": "resolved"
+        },
+        {
+          "id": "adv-merge-conflict-patterns-r2-unmerged-workflow",
+          "category": "correctness",
+          "severity": "minor",
+          "weight": "suggestion",
+          "where": "sdlc/skills/sdlc-core/merge-conflict-patterns.md:train paragraph",
+          "evidence": "Said the automated train is 'run by merge-train.yml in folio-assistant' and the ruling's section was 'added by cat-harness#1053'; neither is on main (folio-assistant#2960 and cat-harness#1053 are open). Now 'proposed in'.",
+          "detail": "Raised against the fixed text and corrected in the same commit before this review was recorded; the recorded text answers it.",
+          "status": "resolved"
+        },
+        {
+          "id": "adv-merge-conflict-patterns-r2-takeover-owner",
+          "category": "correctness",
+          "severity": "minor",
+          "weight": "suggestion",
+          "where": "sdlc/skills/sdlc-core/merge-conflict-patterns.md:§3 signing bullet",
+          "evidence": "merge-queue §'Stalled for days' has the owner start the takeover agent; the new bullet let a steward-dispatched agent rewrite the PR body's session line with no owner involvement. Now 'with the owner's go-ahead as there'.",
+          "detail": "Raised against the fixed text and corrected in the same commit before this review was recorded; the recorded text answers it.",
+          "status": "resolved"
+        },
+        {
+          "id": "adv-merge-conflict-patterns-r2-container-claim",
+          "category": "correctness",
+          "severity": "minor",
+          "weight": "suggestion",
+          "where": "sdlc/skills/sdlc-core/merge-conflict-patterns.md:timings note",
+          "evidence": "'recorded ... in one container' was not shown by any source. Removed; only the date bound (cat-harness seed 6e8a3f85, 2026-10-08) and the re-measure command remain.",
+          "detail": "Raised against the fixed text and corrected in the same commit before this review was recorded; the recorded text answers it.",
+          "status": "resolved"
+        },
+        {
+          "id": "adv-merge-conflict-patterns-r2-base-tools",
+          "category": "correctness",
+          "severity": "minor",
+          "weight": "suggestion",
+          "where": "sdlc/skills/sdlc-core/merge-conflict-patterns.md:Applying rule 3",
+          "evidence": "'classify with the BASE's own merge-base.ts' did not say where that file comes from. Now: a worktree of the tools at the base.",
+          "detail": "Raised against the fixed text and corrected in the same commit before this review was recorded; the recorded text answers it.",
+          "status": "resolved"
+        }
+      ]
     }
   ],
-  "source_hash": "65c2b87e11a2"
+  "source_hash": "46b7b22cb70c"
 }
