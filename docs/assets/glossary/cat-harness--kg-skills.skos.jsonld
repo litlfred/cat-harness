@@ -61,7 +61,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The general process for turning a shared paper, book or standard into an adopted methodology: establish origin and licence, ingest the source, find and summarize related beans and issues and ask whether to coordinate, render the method with its adopted and refused parts, place it by ownership, integrate it by calling existing processes, give every tool it uses a Tool node, and put it to the owner. Process: processes/library/methodology-from-source.bpmn."
+          "@value": "The general process for turning a shared paper, book or standard into an adopted methodology: establish origin and licence, ingest the source, find and summarize related work items and issues and ask whether to coordinate, render the method with its adopted and refused parts, place it by ownership, integrate it by calling existing processes, give every tool it uses a Tool node, and put it to the owner. Process: processes/library/methodology-from-source.bpmn."
         }
       ],
       "skos:notation": "adopt-methodology-from-source",
@@ -101,7 +101,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Governs handing ONE task to an agent in another environment — a local agent with network the cloud session lacks, a sibling on a different machine, anything that cannot read the coordinator's context and that a person may relay to. States who writes which bean, where the receiver reports, what the person pastes (one sentence: bean, branch, repository) and the brief the bean opens with (second person, to the executor), what the receiver checks before acting, who closes, who may grant an exception, and how to recognise and answer the five ways an executor fails. Use when writing a bean for another agent to execute, and as the receiver before acting on one. Triggers on: hand off, handoff, local agent, agy, mac agent, needs network, executor failed, agent went silent, re-hand, \"give me a branch and bean for them\", relay, the other agent."
+          "@value": "Governs handing ONE task to an agent in another environment — a local agent with network the cloud session lacks, a sibling on a different machine, anything that cannot read the coordinator's context and that a person may relay to. States who writes which work item, where the receiver reports, what the person pastes (one sentence: work item, branch, repository) and the brief the work item opens with (second person, to the executor), what the receiver checks before acting, who closes, who may grant an exception, and how to recognise and answer the five ways an executor fails. Use when writing a work item for another agent to execute, and as the receiver before acting on one. Triggers on: hand off, handoff, local agent, agy, mac agent, needs network, executor failed, agent went silent, re-hand, \"give me a branch and bean for them\", relay, the other agent."
         }
       ],
       "skos:notation": "agent-handoff",
@@ -301,7 +301,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Default to non-blocking when updating a bean's status. Mark blocked only when the work genuinely cannot proceed, and then always with what it waits on, when the wait expires, and what the next agent should do."
+          "@value": "Default to non-blocking when updating a work item's status. Mark blocked only when the work genuinely cannot proceed, and then always with what it waits on, when the wait expires, and what the next agent should do."
         }
       ],
       "skos:notation": "bean-blocking",
@@ -341,7 +341,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Drain open beans (stories, bugs, features) with several agents at once, as part of the SDLC: build the queue, group it by owner, check and claim each bean on every bean copy before any work, open the PR at the first commit, ask the owner through ask-the-person, close, and refill. Use when a thread or agent is asked to drain beans, when a coordinator spawns drain threads, or when an idle agent pulls from a shared queue next to other agents."
+          "@value": "Drain open work items (stories, bugs, features) with several agents at once, as part of the SDLC: build the queue, group it by owner, check and claim each work item on every work item copy before any work, open the PR at the first commit, ask the owner through ask-the-person, close, and refill. Use when a thread or agent is asked to drain work items, when a coordinator spawns drain threads, or when an idle agent pulls from a shared queue next to other agents."
         }
       ],
       "skos:notation": "bean-drain",
@@ -361,7 +361,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Make a reviewer-facing BEFORE/AFTER preview of a change to anything that is rendered — a docs site, a paper's PDF, a FHIR IG, a slide deck, a website — and put it where the review and feedback processes expect it. Covers one build with one variable, stable capture, pairing every picture with a measured count and its method, the viewports and colour schemes to shoot, an honest status line, publishing with alt text, a section per content type naming this repository's own build and render tools, and how reviewer feedback on the preview becomes beans. Use before asking anyone to review a rendered change, at the HCI validation gate, and whenever a reviewer asks \"what did it look like before\"."
+          "@value": "Make a reviewer-facing BEFORE/AFTER preview of a change to anything that is rendered — a docs site, a paper's PDF, a FHIR IG, a slide deck, a website — and put it where the review and feedback processes expect it. Covers one build with one variable, stable capture, pairing every picture with a measured count and its method, the viewports and colour schemes to shoot, an honest status line, publishing with alt text, a section per content type naming this repository's own build and render tools, and how reviewer feedback on the preview becomes work items. Use before asking anyone to review a rendered change, at the HCI validation gate, and whenever a reviewer asks \"what did it look like before\"."
         }
       ],
       "skos:notation": "before-after-preview",
@@ -556,7 +556,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Periodically rebase or merge main into the feature branch, detect what changed upstream, and re-analyse the session workplan. Prevents stale assumptions, merge conflicts, and duplicated work — especially after session restarts, long idle periods, or heavy sibling activity on main."
+          "@value": "Read what changed on main often, and re-analyse the session workplan. Put main INTO the branch rarely: freely before a PR exists, and on a branch with a PR only when it conflicts, when the work needs something that just landed, or once just before it merges, because each such push re-runs the PR's whole CI. Prevents stale assumptions, merge conflicts, and duplicated work without spending CI on churn."
         }
       ],
       "skos:notation": "branch-freshness",
@@ -716,7 +716,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Where code review sits in the release lifecycle. Review types, who reviews what, how feedback maps to beans, and the path from review to approval to release. Works with prepare-merge-auto for mechanics and release-lifecycle for the broader flow."
+          "@value": "Where code review sits in the release lifecycle. Review types, who reviews what, how feedback maps to work items, and the path from review to approval to release. Works with prepare-merge-auto for mechanics and release-lifecycle for the broader flow."
         }
       ],
       "skos:notation": "code-review-process",
@@ -1906,7 +1906,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Write a handover report: a templated snapshot of an agent's current state, committed as a bean note, so that a session or subagent that stalls, runs out of context, or loses its container can be picked up by another agent without re-deriving anything. Use it when you are told a stall is likely, at the end of every long arc, before a risky or long-running step, and whenever a steward asks for one. Its reader is `stalled-agent-triage`."
+          "@value": "Write a handover report: a templated snapshot of an agent's current state, committed as a work item note, so that a session or subagent that stalls, runs out of context, or loses its container can be picked up by another agent without re-deriving anything. Use it when you are told a stall is likely, at the end of every long arc, before a risky or long-running step, and whenever a steward asks for one. Its reader is `stalled-agent-triage`."
         }
       ],
       "skos:notation": "handover-report",
@@ -2261,7 +2261,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Ask whether agreed requirements should become knowledge-graph content, and as what — in a form the person can answer by selecting. Use at the end of CRDM sign-off, or whenever a body of agreed work could become a skill, a process, a schema or a bean and nobody has been asked. Offers \"none\" as a first-class answer."
+          "@value": "Ask whether agreed requirements should become knowledge-graph content, and as what — in a form the person can answer by selecting. Use at the end of CRDM sign-off, or whenever a body of agreed work could become a skill, a process, a schema or a work item and nobody has been asked. Offers \"none\" as a first-class answer."
         }
       ],
       "skos:notation": "kg-contribution-offer",
@@ -2481,7 +2481,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Build, read and audit a Latent Semantic Indexing index over a declared prose graph — a library, the skills, the beans, docs — to find units that discuss the same thing in different words, near-duplicates, outlier clusters, and a proposed home for unfiled work. Every output is a proposal; LSI never writes a relation."
+          "@value": "Build, read and audit a Latent Semantic Indexing index over a declared prose graph — a library, the skills, the work items, docs — to find units that discuss the same thing in different words, near-duplicates, outlier clusters, and a proposed home for unfiled work. Every output is a proposal; LSI never writes a relation."
         }
       ],
       "skos:notation": "lsi-indexing",
@@ -2631,7 +2631,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Merge the base branch in and resolve, without a person, only the conflicts a DECLARED pattern covers — generated files, generated README regions, QA sidecars — then prove the result with the gate set. Refuses the whole merge when any conflict is authored or undeclared. Use for \"merge main\", \"resolve the conflicts\", \"the PR is conflicted again\", \"auto-resolve\", and when adding a pattern for a new kind of churn. Also governs what a merge steward does with a merge-train member it had to refuse: one deduplicated bean under the PR's own epic, a hand-back to the owning session with a fail condition, one dispatched agent when nobody owns it, one PR comment, and the close."
+          "@value": "Merge the base branch in and resolve, without a person, only the conflicts a DECLARED pattern covers — generated files, generated README regions, QA sidecars — then prove the result with the gate set. Refuses the whole merge when any conflict is authored or undeclared. Use for \"merge main\", \"resolve the conflicts\", \"the PR is conflicted again\", \"auto-resolve\", and when adding a pattern for a new kind of churn. Also governs what a merge steward does with a merge-train member it had to refuse: one deduplicated work item under the PR's own epic, a hand-back to the owning session with a fail condition, one dispatched agent when nobody owns it, one PR comment, and the close."
         }
       ],
       "skos:notation": "merge-conflict-patterns",
@@ -2691,7 +2691,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Merging to `main` is its own step with its own gate: the `merge-to-main` sub-process, which every process that lands work CALLS rather than inlines. Covers the evidence read live on the head (CI per owed job, mergeability, review state, Claude Approvals where the repository runs it), why a repository with no CI is never green, who may authorise a merge and what does NOT count as authorisation (\"fix all issues until green\" does not), how the authorisation is recorded, and the post-merge steps: base green, site republished, downstream re-pins, bean and issue. Use for \"merge it\", \"land this PR\", \"merge the green PRs\", and before any write to a default branch in any repository."
+          "@value": "Merging to `main` is its own step with its own gate: the `merge-to-main` sub-process, which every process that lands work CALLS rather than inlines. Covers the evidence read live on the head (CI per owed job, mergeability, review state, Claude Approvals where the repository runs it), why a repository with no CI is never green, who may authorise a merge and what does NOT count as authorisation (\"fix all issues until green\" does not), how the authorisation is recorded, and the post-merge steps: base green, site republished, downstream re-pins, work item and issue. Use for \"merge it\", \"land this PR\", \"merge the green PRs\", and before any write to a default branch in any repository."
         }
       ],
       "skos:notation": "merge-to-main",
@@ -2886,7 +2886,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Brief a bean or a topic BEFORE touching anything: what you are doing and why it is worth doing, what you already know and with what provenance, how you plan to do it and what would falsify the approach. Scales with irreversibility, not line count."
+          "@value": "Brief a work item or a topic BEFORE touching anything: what you are doing and why it is worth doing, what you already know and with what provenance, how you plan to do it and what would falsify the approach. Scales with irreversibility, not line count."
         }
       ],
       "skos:notation": "opening-brief",
@@ -2966,7 +2966,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Show the current session's pending work — beans list + ledger intent. Read-only."
+          "@value": "Show the current session's pending work — work items list + ledger intent. Read-only."
         }
       ],
       "skos:notation": "pending-show",
@@ -3316,7 +3316,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Before new work takes shape, find the work it touches. Search beans, issues and open PRs for relevance; categorize and summarize every hit; then ask the user whether and how to coordinate. Judgement decides the categories and the recommendation, and the user decides the coordination. Called by CRDM when a requirement is initiated or updated in chat, and by methodology adoption. Process: sdlc/processes/related-work.bpmn."
+          "@value": "Before new work takes shape, find the work it touches. Search work items, issues and open PRs for relevance; categorize and summarize every hit; then ask the user whether and how to coordinate. Judgement decides the categories and the recommendation, and the user decides the coordination. Called by CRDM when a requirement is initiated or updated in chat, and by methodology adoption. Process: sdlc/processes/related-work.bpmn."
         }
       ],
       "skos:notation": "related-work-coordination",
@@ -3336,7 +3336,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Plan and track releases using bean epics. Covers epic creation, story/task decomposition, release readiness tracking, and the relationship between epics and GitHub milestones. Applies to code releases, paper publications, and project milestones."
+          "@value": "Plan and track releases using work item epics. Covers epic creation, story/task decomposition, release readiness tracking, and the relationship between epics and GitHub milestones. Applies to code releases, paper publications, and project milestones."
         }
       ],
       "skos:notation": "release-epic-planning",
@@ -3356,7 +3356,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Governs the release lifecycle: semver policy, draft/named releases, changelogs, release gating, and the relationship between feature branches, PRs, beans, and releases. Applies to code releases, paper publications, and project milestones. Complements package-release (which handles the mechanics of cutting a release) with the process and policy layer."
+          "@value": "Governs the release lifecycle: semver policy, draft/named releases, changelogs, release gating, and the relationship between feature branches, PRs, work items, and releases. Applies to code releases, paper publications, and project milestones. Complements package-release (which handles the mechanics of cutting a release) with the process and policy layer."
         }
       ],
       "skos:notation": "release-lifecycle",
@@ -3491,7 +3491,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Lay folio-assistant over a repository that already exists, without losing or silently moving what is in it. Scans the tree read-only, classifies candidate files into library (external source) and content (authored here) with an explicit third bucket for what it cannot classify, scans outside the content tree for mathematical evidence and refutations, lists the content markers (an IG, a DAK, processes, beans, library, Lean, folio manifests) the harness could declare and declares only the ones the person picks, puts the three questions the scan cannot answer to the author as selections, and hands ingestion to one agent or a small swarm. Use when a user wants an existing repo converted to a folio, asks to import what is already there, asks whether their PDFs/notes/drafts can come along, or asks what else in a repository an existing harness could declare."
+          "@value": "Lay folio-assistant over a repository that already exists, without losing or silently moving what is in it. Scans the tree read-only, classifies candidate files into library (external source) and content (authored here) with an explicit third bucket for what it cannot classify, scans outside the content tree for mathematical evidence and refutations, lists the content markers (an IG, a DAK, processes, work items, library, Lean, folio manifests) the harness could declare and declares only the ones the person picks, puts the three questions the scan cannot answer to the author as selections, and hands ingestion to one agent or a small swarm. Use when a user wants an existing repo converted to a folio, asks to import what is already there, asks whether their PDFs/notes/drafts can come along, or asks what else in a repository an existing harness could declare."
         }
       ],
       "skos:notation": "repo-conversion",
@@ -3721,7 +3721,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Session-start intent declaration + session-end results recording, against the work plan's goals (milestone beans) and their open beans. Enforces the durable-handoff discipline so any agent can pick up another's thread."
+          "@value": "Session-start intent declaration + session-end results recording, against the work plan's goals (milestone work items) and their open work items. Enforces the durable-handoff discipline so any agent can pick up another's thread."
         }
       ],
       "skos:notation": "session-intent",
@@ -3961,7 +3961,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Triage incoming work from stalled agents. Given named agents or sessions, or a time window, find what they left (handover reports, open PRs, branches, beans, issue and PR discussions, workflow instances), collect as many handover reports as exist, reconstruct the rest, consolidate the workstreams into 2–4 themes, recommend how to fold them into the current or a new work plan, and coordinate open PRs with their owners (the merge steward above all). Use when a session or a swarm has stalled, timed out or lost its container, or when the owner says \"pick up what X was doing\"."
+          "@value": "Triage incoming work from stalled agents. Given named agents or sessions, or a time window, find what they left (handover reports, open PRs, branches, work items, issue and PR discussions, workflow instances), collect as many handover reports as exist, reconstruct the rest, consolidate the workstreams into 2–4 themes, recommend how to fold them into the current or a new work plan, and coordinate open PRs with their owners (the merge steward above all). Use when a session or a swarm has stalled, timed out or lost its container, or when the owner says \"pick up what X was doing\"."
         }
       ],
       "skos:notation": "stalled-agent-triage",
@@ -4431,11 +4431,31 @@
       ],
       "skos:definition": [
         {
-          "@value": "Say which bean you are on, every turn — the opening and closing report formats, the rules that make a report worth reading (two sentences and a link per bean, every mention), and the STRICT rule that the \"next\" line is a question and must carry its own context."
+          "@value": "Say which work item you are on, every turn — the opening and closing report formats, the rules that make a report worth reading (two sentences and a link per work item, every mention), and the STRICT rule that the \"next\" line is a question and must carry its own context."
         }
       ],
       "skos:notation": "turn-reporting",
       "dcterms:source": "cat-harness/sdlc/skills/sdlc-core/turn-reporting.md",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills/two-phase-move",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "two-phase-move"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Move a path that other layers link to without making the order of their re-pins matter: the moving layer declares the move and keeps answering at the old path for a window, the dependent layers switch in any order, and the old path goes once nothing links to it. Use before moving or renaming a directory another layer links into."
+        }
+      ],
+      "skos:notation": "two-phase-move",
+      "dcterms:source": "cat-harness/sdlc/skills/sdlc-core/two-phase-move.md",
       "skos:note": "candidate"
     },
     {
@@ -4866,7 +4886,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Reorganise a work plan that has outgrown one-bean-at-a-time repair — session logs typed as epics, duplicate families, generated template beans, stale claims, unparented work — through a reviewed PLAN rather than in bulk. The taxonomy is stated as data, a dry-run plan lists one row per bean (action, new parent, new status, evidence, note) with its before-state so the plan is its own inverse, the owner approves it by class or by row, and the apply is batched and reversible. Scrap, never delete. Read before changing the parent, type or status of more than a handful of beans at once."
+          "@value": "Reorganise a work plan that has outgrown one-bean-at-a-time repair — session logs typed as epics, duplicate families, generated template work items, stale claims, unparented work — through a reviewed PLAN rather than in bulk. The taxonomy is stated as data, a dry-run plan lists one row per work item (action, new parent, new status, evidence, note) with its before-state so the plan is its own inverse, the owner approves it by class or by row, and the apply is batched and reversible. Scrap, never delete. Read before changing the parent, type or status of more than a handful of work items at once."
         }
       ],
       "skos:notation": "work-plan-restructure",
@@ -4886,7 +4906,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "The contract the work plan (beans) keeps as a data store, as operations any Tool must provide: get, list, create, update with ifMatch, note, history, and where a bean is in its processes. Give back a bean exactly as written, keep ids unique and links whole, keep status and type to their closed lists, lose nothing to concurrent writers, and answer a bean's history. A mechanical Actor plays this Role through whichever Tool the deployment names."
+          "@value": "The contract the work plan (work items) keeps as a data store, as operations any Tool must provide: get, list, create, update with ifMatch, note, history, and where a work item is in its processes. Give back a work item exactly as written, keep ids unique and links whole, keep status and type to their closed lists, lose nothing to concurrent writers, and answer a work item's history. A mechanical Actor plays this Role through whichever Tool the deployment names."
         }
       ],
       "skos:notation": "work-plan-store",
@@ -4926,7 +4946,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Where a running process keeps what it knows, and which store answers which question. The three records a step may touch, the one it may not, what `<cat-harness.processes:bean op>` actually performs, and why an instance and a bean must be one answer rather than two."
+          "@value": "Where a running process keeps what it knows, and which store answers which question. The three records a step may touch, the one it may not, what `<cat-harness.processes:bean op>` actually performs, and why an instance and a work item must be one answer rather than two."
         }
       ],
       "skos:notation": "workflow-state",

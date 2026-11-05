@@ -255,14 +255,21 @@ Work items are the shared substrate.
    Know what is open and what siblings are touching.
 2. **Declare intent + claim** — before starting, claim the work item via
    `bun run cat beans:claim <id>`, which records your holder note and pushes
-   immediately to the branch store so siblings see it globally.
-3. **Work** — keep the work item current; append status notes as you go **to a work item
+   immediately to the branch store so siblings see it globally. When the work item
+   is for a process step (`code-change-review`, `merge-train`, `crdm-requirements`,
+   etc.), start or resume its workflow instance with `workflow_start` (`--bean <id>`)
+   so the work item is placed on its current BPMN step
+   ([`process-state.md`](../../../skills/process/workflow/process-state.md)).
+3. **Work** — keep the work item current; advance the workflow instance with
+   `workflow_complete` as each step finishes; append status notes as you go **to a work item
    only your branch is changing**. When other open pull requests are adding
    to the same work item, write a note instead — §"Adding to a bean — a note, not
    an append" below. Do not fork it into a parallel `todos/*.json` queue —
    link to any bulk queue from the work item instead.
-4. **Hand off or finish** — on landing, close the work item and update any cross-repo
-   ownership note. **If you stop mid-flight, leave the work item `in-progress` with a
+4. **Hand off or finish** — on landing, close the work item, complete its workflow
+   instance (or run `bun run cat workflow:instances --sweep` to close stale
+   instances on closed work items), and update any cross-repo ownership note.
+   **If you stop mid-flight, leave the work item `in-progress` with a
    note saying where you got to**, so the next session resumes instead of
    re-deriving. A work item abandoned silently is indistinguishable from one nobody
    started.

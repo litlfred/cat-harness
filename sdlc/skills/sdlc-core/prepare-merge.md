@@ -179,7 +179,7 @@ artefact and runs in `bun test`. The mechanism is in
    `pre-push` hook (installed by `cat-harness-tools/scripts/git-hooks/install.sh`)
    and, for agents, a Claude Code `PreToolUse` hook on `git push` both run
    `cat-harness-tools/scripts/pre-push-gates.ts` on the checked-out tree, before
-   anything leaves the container (bean `cat-tools-pp9g`, work item
+   anything leaves the container (work items `cat-tools-pp9g` and
    `folio-assistant-fn8q`). It runs the fast gates **minus the whole-suite
    `bun test`**, plus only the test files whose import closure holds a file the
    push changed (owner, 2026-11-05: "Affected tests only"). CI still runs the

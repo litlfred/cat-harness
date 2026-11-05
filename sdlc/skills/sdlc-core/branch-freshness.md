@@ -30,7 +30,7 @@ proves little, because a PR's `pull_request` runs already test
 `refs/pull/N/merge`, the head merged with main as it was when the run started.
 While main moves every few minutes, a branch kept "current" this way restarts
 its CI over and over and queues every other PR behind it (owner ruling
-2026-11-05, CI speed II, bean `folio-assistant-6h4p`).
+2026-11-05, CI speed II, work item `folio-assistant-6h4p`).
 
 So, on a branch that **has a PR**, merge main only when:
 
