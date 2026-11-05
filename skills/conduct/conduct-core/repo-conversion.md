@@ -209,7 +209,7 @@ echo "<where the author consented>" | bun run /tmp/cht/scripts/instantiate-harne
 commits on the branch and pushes nothing. The harness's own adoption steps
 are its checkout scripts `instantiate:<harness>` (files it declares, committed
 with the setup) and `prepare:<harness>` (what the site is built from, never
-committed). For an IG on fhir-harness these declare `contentTypes.ig` and build
+committed). For an IG on a FHIR harness these declare `contentTypes.ig` and build
 the IG's first AST.
 
 A harness built on this platform may add adoption steps of its own for its

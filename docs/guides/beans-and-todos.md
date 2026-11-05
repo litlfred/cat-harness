@@ -49,8 +49,7 @@ says so.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/guides-beans-and-todos/two-things-one-word.md){: .fa-node-edit title="Edit docs/source/guides-beans-and-todos/two-things-one-word.md" data-fa-link="edit" data-src="docs/source/guides-beans-and-todos/two-things-one-word.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="two-things-one-word.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-beans-and-todos/two-things-one-word.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-beans-and-todos/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="two-things-one-word.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-beans-and-todos/two-things-one-word.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-beans-and-todos/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-The distinction is not terminology. The two have different owners, different
-lifecycles and different failure modes.
+The two have different owners, lifecycles and failure modes.
 
 | | **Bean** | **Todo** |
 |---|---|---|
@@ -63,8 +62,8 @@ lifecycles and different failure modes.
 | Failure mode | Duplicated, or closed by the wrong session | Forgotten |
 
 **The failure modes are what make the split worth keeping.** A duplicated bean
-starves the work plan of signal — in one folio an unguarded re-run produced
-14,688 duplicates, 92 % of every open bean in the repository. A forgotten todo
+starves the work plan of signal, and an unguarded re-run can duplicate most of
+it. A forgotten todo
 inconveniences one person. Machinery sized for the first is ceremony on the
 second, and machinery sized for the second is nowhere near enough for the
 first.
@@ -81,8 +80,7 @@ first.
 
 [Open the BPMN source](https://github.com/litlfred/folio-assistant/blob/main/processes/bean-lifecycle.bpmn){: .btn .btn-outline }
 
-The diagram above is the whole cycle, and three of its edges are the ones
-worth reading twice.
+The diagram above is the whole cycle. Three of its edges matter most.
 
 **The first step is a search, not a creation.** `beans create` is not
 idempotent: it mints a fresh identifier on every call and de-duplicates on
@@ -112,16 +110,13 @@ with a section saying why. That is what "disable" means here; the CLI has no
 disabled state, and its vocabulary is `draft`, `todo`, `in-progress`,
 `completed`, `scrapped`.
 
-The reason is not tidiness. A scrapped bean records that something was
-considered and rejected, and on what grounds — which is worth as much to the
-next agent as the record of work that was done, because it is what stops the
-same dead end being re-entered. A deleted bean leaves a sibling session unable
+A scrapped bean records that something was considered and rejected, and on
+what grounds, which stops the next agent re-entering the same dead end. A deleted bean leaves a sibling session unable
 to tell abandonment from accident, and leaves the next agent free to start
 over on the thing you already ruled out.
 
-The prohibition is written here, and in the diagram's own documentation,
-precisely because the tool offers the operation. A rule that depends on nobody
-noticing a command is not a rule.
+The rule is stated here, and in the diagram's own documentation, because the
+CLI offers the operation.
 
 ## Engine operations are not CLI calls
 {: #two-layers data-fa-label="sec:beans-and-todos-two-layers" }
@@ -141,12 +136,6 @@ say-so.
 **The agent** does everything else with the `beans` CLI: creating, scrapping,
 retitling, setting a blocker. The engine has no operation for any of these.
 
-This is not a hypothetical distinction. An activity in the CRDM diagram
-carried `<cat-harness.processes:bean action="create"/>` — `action`, where the engine reads
-`op` — so it parsed as no operation at all. The step advertised that sign-off
-produced beans, performed nothing, and did so silently until somebody read the
-parser.
-
 **When you add a bean-marked step,** use one of the three operations the
 engine implements, and say in the step's documentation which parts are the
 agent's own CLI calls. `bun run cat check:workflow-refs` will catch a skill
@@ -158,8 +147,7 @@ engine never reads.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/guides-beans-and-todos/human-todos.md){: .fa-node-edit title="Edit docs/source/guides-beans-and-todos/human-todos.md" data-fa-link="edit" data-src="docs/source/guides-beans-and-todos/human-todos.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="human-todos.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-beans-and-todos/human-todos.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-beans-and-todos/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="human-todos.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-beans-and-todos/human-todos.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-beans-and-todos/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-**Not built yet**, and stated here rather than left as an absence somebody has
-to notice.
+**Not built yet.**
 
 A person's todos need a cycle of their own, and none of it exists:
 
@@ -186,23 +174,16 @@ The rest of this page says what a bean **is**. This section says what the
 store currently **holds** — read live from
 [`/assets/beans/index.json`]({{ '/assets/beans/index.json' | relative_url }}), the projection
 `gen-docs-pages.ts` writes from `beans/defs/` on every build, beside the todo
-index it has published for longer.
+index it has published for longer. It exists because a work plan nobody can
+look at is one nobody checks.
 
-Until 2026-09-20 there was nothing to put here. `todos/` had a reader, a
-published index and a board over it; `beans/` had none of the three, though it
-is the larger store by two orders of magnitude. A work plan nobody can look at
-is one nobody checks.
-
-**What the dashboard shows, and why each panel is the shape it is.** The
-counts are a headline, so they are numbers rather than a chart of four bars
-saying the same thing. The work plan itself is a tree, goal → epic →
-feature → story, because the question a reader brings is "where does this sit",
-and a bar per epic answered "how many" and listed one level. The type filter
-and the search prune that tree to what matches and open it down to them. The
-store's `task` type is shown as **story**, since a Task here is a BPMN task.
-The findings are three or four
-rows, so they are a list — with an icon and a label on every row, because a
-status colour never carries meaning alone.
+**What the dashboard shows.** The counts, as numbers, because they are a
+headline. The work plan as a tree, goal → epic → feature → story, because the
+question a reader brings is "where does this sit"; the type filter and the search prune that tree
+to what matches and open it down to them. The store's `task` type is shown as
+**story**, since a Task here is a BPMN task. The findings, as a list with an
+icon and a label on every row, because a status colour never carries meaning
+alone.
 
 **The findings are computed from committed data only, and one of them is
 missing on purpose.** A stale `in-progress` detector would have to read the
@@ -214,21 +195,18 @@ file moving, which is the right way round.
 
 **There is a fuller view, and it is browsable.** Every declared state graph
 gets its own visualiser at the path this instance already uses for that graph —
-`/beans/`, `/todos/`, and one for each of the others. The
-route is not this page's invention: bean `o7eq` carries the owner's ruling that
-a rendered asset is addressed by its instance's **name** with the **declared
-graph as a path segment**, and that this instance elides its own name because
-its `docs/` is what the site serves, and the `harness-requirements` skill
-names that exact URL as the obligation — *"a requirement of them is to provide
-visualisers accessible at `<base-url>/beans`"*. There is no index above them,
+`/beans/`, `/todos/`, and one for each of the others. A rendered asset is
+addressed by its instance's **name** with the **declared graph as a path
+segment**; this instance elides its own name because its `docs/` is what the
+site serves. The `harness-requirements` skill names that URL as the
+obligation. There is no index above them,
 because `/` is the documentation site's, so each page lists its siblings.
 
 **A graph with no projection says so.** `qa`, `health`, `issue-marks` and
 `uploads` are declared state graphs that nothing publishes a projection for
-yet. Their dashboards say exactly that and name bean `2krx`, rather than
-rendering zeros for a store nobody read — a dashboard that opens at zero is
-indistinguishable from a store with nothing in it, and those are opposite
-facts.
+yet. Their dashboards say exactly that, rather than rendering zeros for a
+store nobody read, because a dashboard that opens at zero cannot be told from
+a store with nothing in it.
 
 **Every identifier on those pages is a link.** A bean id resolves to the bean's
 file, an issue or pull-request number to the forge, and each finding carries a
@@ -236,8 +214,7 @@ pencil to where writing actually happens. A reference that cannot be resolved
 stays as plain text, which is the visible difference between *"follow this"*
 and *"this points somewhere I could not reach"*.
 
-**What is not here.** Where a bean sits in a BPMN process, which is the other
-half of bean `v49e`. That join needs `beans/workflows/`, the declared
+**What is not here.** Where a bean sits in a BPMN process. That join needs `beans/workflows/`, the declared
 `workflow-state` graph, and it is empty — so a position view would report
 "nowhere" for every bean in the store. It waits for instance state to exist.
 

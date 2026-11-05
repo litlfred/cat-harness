@@ -333,7 +333,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`upstream-version-adoption`](sdlc/skills/sdlc-core/upstream-version-adoption.md) | Watch a pinned upstream dependency for a new release, and take a candidate version through impact analysis, an MVP build, review and a person's adopt/hold/decline decision. |
 | [`visual-diff`](sdlc/skills/sdlc-core/visual-diff.md) | Pictures of a changed figure, diagram or table, before and after, and how much of it changed. |
 | [`watch`](sdlc/skills/sdlc-core/watch.md) | Background-watch a branch (default origin/main) or a GitHub PR for new activity while you work, and on every event report whether to integrate / whether it conflicts with the current branch /… |
-| [`where-a-proposal-goes`](sdlc/skills/sdlc-core/where-a-proposal-goes.md) | Where a proposal goes — the issue, not the documentation |
+| [`where-a-proposal-goes`](sdlc/skills/sdlc-core/where-a-proposal-goes.md) | Where a proposal goes — `docs/proposals/` |
 
 **`sdlc/skills/spec-kit/`** (3)
 

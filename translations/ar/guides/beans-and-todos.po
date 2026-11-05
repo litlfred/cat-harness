@@ -45,10 +45,6 @@ msgstr "تصف هذه الصفحة الأول بالتفصيل. أما الثا�
 msgid "Two things that share a word"
 msgstr "أمران يشتركان في كلمة واحدة"
 
-#: docs/guides/beans-and-todos.md:51
-msgid "The distinction is not terminology. The two have different owners, different lifecycles and different failure modes."
-msgstr "التمييز هنا ليس مجرد مسألة مصطلحات. فلكل منهما مالكون مختلفون، ودورات حياة مختلفة، وأنماط إخفاق مختلفة."
-
 #: docs/guides/beans-and-todos.md:54
 msgid "Bean"
 msgstr "Bean"
@@ -137,17 +133,9 @@ msgstr "مكرر، أو مغلق بواسطة الجلسة الخاطئة"
 msgid "Forgotten"
 msgstr "منسي"
 
-#: docs/guides/beans-and-todos.md:64
-msgid "The failure modes are what make the split worth keeping. A duplicated bean starves the work plan of signal — in one folio an unguarded re-run produced 14,688 duplicates, 92 % of every open bean in the repository. A forgotten todo inconveniences one person. Machinery sized for the first is ceremony on the second, and machinery sized for the second is nowhere near enough for the first."
-msgstr "أنماط الإخفاق هي ما يجعل الحفاظ على هذا الفصل أمرًا يستحق العناء. فالـ bean المكرر يحرم خطة العمل من الإشارة والتوجيه — ففي أحد الـ folios، أنتجت إعادة تشغيل غير محمية 14,688 تكرارًا، أي 92 % من كل bean مفتوح في المستودع. بينما المهمة المنسية تسبب إزعاجًا لشخص واحد فقط. والآليات المصممة للأول تُعد تعقيدًا وإجراءات شكلية زائدة على الثاني، والآليات المصممة للثاني ليست كافية على الإطلاق للأول."
-
 #: docs/guides/beans-and-todos.md:71
 msgid "The agent bean lifecycle"
 msgstr "دورة حياة bean الوكيل"
-
-#: docs/guides/beans-and-todos.md:83
-msgid "The diagram above is the whole cycle, and three of its edges are the ones worth reading twice."
-msgstr "المخطط أعلاه يوضح الدورة بأكملها، وثلاث من حوافه هي التي تستحق القراءة مرتين."
 
 #: docs/guides/beans-and-todos.md:92
 msgid "Ownership is a gateway, not a courtesy. A bean another session claimed is not yours to resolve, scrap or delete. Claiming is how two sessions avoid picking up the same item; closing someone else's is how one of them loses work it had not finished reporting."
@@ -156,14 +144,6 @@ msgstr "الملكية هي بوابة، وليست مجاملة. إن الـ be
 #: docs/guides/beans-and-todos.md:102
 msgid "A bean is never deleted"
 msgstr "لا يُحذف الـ bean أبدًا"
-
-#: docs/guides/beans-and-todos.md:114
-msgid "The reason is not tidiness. A scrapped bean records that something was considered and rejected, and on what grounds — which is worth as much to the next agent as the record of work that was done, because it is what stops the same dead end being re-entered. A deleted bean leaves a sibling session unable to tell abandonment from accident, and leaves the next agent free to start over on the thing you already ruled out."
-msgstr "والسبب ليس الترتيب والنظافة. فالـ bean الملغى (scrapped) يسجل أن أمرًا ما قد نوقش ورُفض، وعلى أي أساس تم ذلك — وهو أمر له نفس قيمة سجل العمل الذي تم إنجازه بالنسبة للوكيل التالي، لأنه ما يمنع الدخول في الطريق المسدود نفسه مرة أخرى. أما الـ bean المحذوف فيترك الجلسة الموازية عاجزة عن التمييز بين التخلي المتعمد والخطأ العرضي، ويترك الوكيل التالي حراً في البدء من جديد في الأمر الذي استبعدته بالفعل."
-
-#: docs/guides/beans-and-todos.md:121
-msgid "The prohibition is written here, and in the diagram's own documentation, precisely because the tool offers the operation. A rule that depends on nobody noticing a command is not a rule."
-msgstr "لقد كُتب هذا الحظر هنا، وفي وثائق المخطط نفسها، على وجه التحديد لأن الأداة توفر هذه العملية. فالقاعدة التي تعتمد على ألا يلاحظ أحدٌ أمرًا ما ليست قاعدة."
 
 #: docs/guides/beans-and-todos.md:125
 msgid "Engine operations are not CLI calls"
@@ -176,10 +156,6 @@ msgstr "هناك أمران مختلفان يمكنهما تعديل الـ bean
 #: docs/guides/beans-and-todos.md:155
 msgid "Human todos — not built yet"
 msgstr "مهام البشر (Todos) — لم تُبنَ بعد"
-
-#: docs/guides/beans-and-todos.md:160
-msgid "Not built yet, and stated here rather than left as an absence somebody has to notice."
-msgstr "لم تُبنَ بعد، وقد ذُكر ذلك صراحة هنا بدلاً من تركه كغياب يتعين على شخص ما ملاحظته."
 
 #: docs/guides/beans-and-todos.md:163
 msgid "A person's todos need a cycle of their own, and none of it exists:"
@@ -293,3 +269,21 @@ msgstr "تتطلب لوحة معلومات خطة العمل المباشرة ت
 
 #~ msgid "What is not here. Where a bean sits in a BPMN process, which is the other half of bean . That join needs , the declared  graph, and it is empty — so a position view would report \"nowhere\" for every bean in the store. It waits for instance state to exist."
 #~ msgstr "ما ليس موجودًا هنا. موضع الـ bean داخل عملية BPMN، وهو النصف الآخر من الـ bean . يحتاج هذا الربط إلى ، وهو رسم  البياني المُعلَن، وهو فارغ حاليًا — لذا فإن عرض الموضع سيُبلغ عن \"لا مكان\" لكل bean في المخزن. وهو بانتظار وجود حالة للنسخة."
+
+#~ msgid "The distinction is not terminology. The two have different owners, different lifecycles and different failure modes."
+#~ msgstr "التمييز هنا ليس مجرد مسألة مصطلحات. فلكل منهما مالكون مختلفون، ودورات حياة مختلفة، وأنماط إخفاق مختلفة."
+
+#~ msgid "The failure modes are what make the split worth keeping. A duplicated bean starves the work plan of signal — in one folio an unguarded re-run produced 14,688 duplicates, 92 % of every open bean in the repository. A forgotten todo inconveniences one person. Machinery sized for the first is ceremony on the second, and machinery sized for the second is nowhere near enough for the first."
+#~ msgstr "أنماط الإخفاق هي ما يجعل الحفاظ على هذا الفصل أمرًا يستحق العناء. فالـ bean المكرر يحرم خطة العمل من الإشارة والتوجيه — ففي أحد الـ folios، أنتجت إعادة تشغيل غير محمية 14,688 تكرارًا، أي 92 % من كل bean مفتوح في المستودع. بينما المهمة المنسية تسبب إزعاجًا لشخص واحد فقط. والآليات المصممة للأول تُعد تعقيدًا وإجراءات شكلية زائدة على الثاني، والآليات المصممة للثاني ليست كافية على الإطلاق للأول."
+
+#~ msgid "The diagram above is the whole cycle, and three of its edges are the ones worth reading twice."
+#~ msgstr "المخطط أعلاه يوضح الدورة بأكملها، وثلاث من حوافه هي التي تستحق القراءة مرتين."
+
+#~ msgid "The reason is not tidiness. A scrapped bean records that something was considered and rejected, and on what grounds — which is worth as much to the next agent as the record of work that was done, because it is what stops the same dead end being re-entered. A deleted bean leaves a sibling session unable to tell abandonment from accident, and leaves the next agent free to start over on the thing you already ruled out."
+#~ msgstr "والسبب ليس الترتيب والنظافة. فالـ bean الملغى (scrapped) يسجل أن أمرًا ما قد نوقش ورُفض، وعلى أي أساس تم ذلك — وهو أمر له نفس قيمة سجل العمل الذي تم إنجازه بالنسبة للوكيل التالي، لأنه ما يمنع الدخول في الطريق المسدود نفسه مرة أخرى. أما الـ bean المحذوف فيترك الجلسة الموازية عاجزة عن التمييز بين التخلي المتعمد والخطأ العرضي، ويترك الوكيل التالي حراً في البدء من جديد في الأمر الذي استبعدته بالفعل."
+
+#~ msgid "The prohibition is written here, and in the diagram's own documentation, precisely because the tool offers the operation. A rule that depends on nobody noticing a command is not a rule."
+#~ msgstr "لقد كُتب هذا الحظر هنا، وفي وثائق المخطط نفسها، على وجه التحديد لأن الأداة توفر هذه العملية. فالقاعدة التي تعتمد على ألا يلاحظ أحدٌ أمرًا ما ليست قاعدة."
+
+#~ msgid "Not built yet, and stated here rather than left as an absence somebody has to notice."
+#~ msgstr "لم تُبنَ بعد، وقد ذُكر ذلك صراحة هنا بدلاً من تركه كغياب يتعين على شخص ما ملاحظته."

@@ -74,10 +74,6 @@ msgstr "تغيير كيفية عمل التأليف"
 msgid "change what is being authored"
 msgstr "تغيير ما يتم تأليفه"
 
-#: agent-onboarding.md:192
-msgid "Claim a bean before durable work. Others may be running."
-msgstr "احجز الـ bean قبل البدء بعمل دائم. قد تكون هناك مهام أخرى قيد التشغيل."
-
 #: agent-onboarding.md:29
 msgid "Contains"
 msgstr "يحتوي على"
@@ -105,10 +101,6 @@ msgstr "عقد الإدخال/الإخراج المصنف للأنواع وال�
 #: agent-onboarding.md:68
 msgid "how skills, roles, and capabilities compose"
 msgstr "كيفية تكوين المهارات والأدوار والقدرات معًا"
-
-#: agent-onboarding.md:187
-msgid "Lean tooling roadmap"
-msgstr "خطة طريق أدوات Lean"
 
 #: agent-onboarding.md:180
 msgid "Project commands, conventions"
@@ -141,10 +133,6 @@ msgstr "مخطط ملف QA الجانبي"
 #: agent-onboarding.md:25
 msgid "There are two kinds, and confusing them is the most common early mistake."
 msgstr "هناك نوعان، والخلط بينهما هو الخطأ الأكثر شيوعًا في البداية."
-
-#: agent-onboarding.md:90
-msgid "This trips up agents constantly."
-msgstr "هذا الأمر يُربك الوكلاء باستمرار."
 
 # OBSOLETE. `TOC` was never prose: it is the list item kramdown REPLACES with
 # the generated table of contents, so its text reached no reader in any
@@ -306,3 +294,12 @@ msgstr "تعدل هنا من أجل"
 
 #~ msgid "Watching a sibling PR: ."
 #~ msgstr "لمراقبة طلب سحب (PR) زميل: /watch <pr|branch>."
+
+#~ msgid "Claim a bean before durable work. Others may be running."
+#~ msgstr "احجز الـ bean قبل البدء بعمل دائم. قد تكون هناك مهام أخرى قيد التشغيل."
+
+#~ msgid "Lean tooling roadmap"
+#~ msgstr "خطة طريق أدوات Lean"
+
+#~ msgid "This trips up agents constantly."
+#~ msgstr "هذا الأمر يُربك الوكلاء باستمرار."
