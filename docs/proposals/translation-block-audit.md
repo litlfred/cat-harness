@@ -10,7 +10,7 @@ summary: >-
 # Translation support by block kind
 {: .no_toc }
 
-Bean `folio-assistant-t8g3`, under
+Work item `folio-assistant-t8g3`, under
 [#206](https://github.com/litlfred/folio-assistant/issues/206). The owner asked
 for an **audit** of which content block kinds support translation. This page is
 that audit. **Nothing here changes code.** Each gap names the fix it would need.

@@ -1,6 +1,6 @@
 ---
 name: repo-conversion
-description: Lay folio-assistant over a repository that already exists, without losing or silently moving what is in it. Scans the tree read-only, classifies candidate files into library (external source) and content (authored here) with an explicit third bucket for what it cannot classify, scans outside the content tree for mathematical evidence and refutations, lists the content markers (an IG, a DAK, processes, beans, library, Lean, folio manifests) the harness could declare and declares only the ones the person picks, puts the three questions the scan cannot answer to the author as selections, and hands ingestion to one agent or a small swarm. Use when a user wants an existing repo converted to a folio, asks to import what is already there, asks whether their PDFs/notes/drafts can come along, or asks what else in a repository an existing harness could declare.
+description: Lay folio-assistant over a repository that already exists, without losing or silently moving what is in it. Scans the tree read-only, classifies candidate files into library (external source) and content (authored here) with an explicit third bucket for what it cannot classify, scans outside the content tree for mathematical evidence and refutations, lists the content markers (an IG, a DAK, processes, work items, library, Lean, folio manifests) the harness could declare and declares only the ones the person picks, puts the three questions the scan cannot answer to the author as selections, and hands ingestion to one agent or a small swarm. Use when a user wants an existing repo converted to a folio, asks to import what is already there, asks whether their PDFs/notes/drafts can come along, or asks what else in a repository an existing harness could declare.
 user_invocable: true
 ---
 
@@ -96,7 +96,7 @@ declares what is read, and nothing else is".
 
 The scan's fourth section, `markers`, lists the content a harness COULD be
 told to read: a `sushi-config.yaml` (an IG: `contentTypes.ig`), a legacy
-`dak.json` (`contentTypes.dak`), `.bpmn` processes, a beans store, `library/`,
+`dak.json` (`contentTypes.dak`), `.bpmn` processes, a work items store, `library/`,
 `uploads/`, Lean (`contentType: paper`) and folio manifests
 (`contentType: document`). For each it gives the paths, whether it is already
 declared — `declared`, `not-declared`, or `unknown` when there is no readable
@@ -160,7 +160,7 @@ tokens:
 Partition by directory because a per-file partition puts two agents in the same
 manifest, and the conflicts cost more than the parallelism saves.
 
-Open one bean per ingestion front before dispatching — running the existence
+Open one work item per ingestion front before dispatching — running the existence
 check in [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) §"Check before you create" first —
 so a session that dies mid-import leaves a plan behind rather than a half-full
 `library/`.

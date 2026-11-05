@@ -32,7 +32,7 @@ applies-when: >
 
 # Consensus-grounded subject evaluation: score against where experts agree, and read the panel
 
-**Adopted 2026-09-26** (bean `0js9`). Both sources were ingested through the
+**Adopted 2026-09-26** (work item `0js9`). Both sources were ingested through the
 library pipeline and read before this node was written.
 
 ## The load-bearing idea, in one sentence

@@ -30,7 +30,7 @@ a real subprocess in its own file:
 | Phase 1 — needs | `crdm-needs.bpmn` | stakeholders, needs statement, loop until recognised |
 | Phases 2–4 — BPA + requirements | `crdm-requirements-definition.bpmn` | current workflow, requirements, impact, loop until approved |
 | Phase 4b — prioritization | *(inline in Phase 4 exit)* | dependency-order capability areas, formalize-first rule, BA confirms |
-| Phase 5 — beans + sign-off | `crdm-signoff.bpmn` | requirements become beans, BA signs off, branch announced |
+| Phase 5 — work items + sign-off | `crdm-signoff.bpmn` | requirements become work items, BA signs off, branch announced |
 | Phase 6 — implement + acceptance | `crdm-deliver.bpmn` | implement, review increment, share MVP, take findings |
 | Close-out | `crdm-close.bpmn` | stakeholder sign-off, BA confirmation (an adjudication, recorded as a `requirement-signoff` attestation that moves the set to `accepted`), then the close |
 
@@ -69,7 +69,7 @@ everybody else. Three traps:
   question.
 
 This applies to **every** surface this workflow uses: the chat, the summary
-comment posted to the issue after each round, the PR body, and a bean's
+comment posted to the issue after each round, the PR body, and a work item's
 `## Done when`.
 
 ## Phase 1 — Needs assessment
@@ -223,7 +223,7 @@ work already done.
 
 When a feature request decomposes into **more than one capability area** (as
 most non-trivial requests do), the agent must explicitly order them before
-creating beans. This is not optional: a flat bean list has no implementation
+creating work items. This is not optional: a flat work item list has no implementation
 sequence, so the next session either guesses the order or asks the BA a
 question the analysis already answered.
 
@@ -267,11 +267,11 @@ question the analysis already answered.
 
 - A numbered list of capability areas in implementation order
 - A dependency rationale for each ordering decision
-- An estimate of scope per area (bean count)
+- An estimate of scope per area (work item count)
 - A recommendation for which areas constitute the MVP release
 
 **Post to the issue** alongside the impact analysis. This becomes the
-input to Phase 5's bean creation — beans are created in dependency order,
+input to Phase 5's work item creation — work items are created in dependency order,
 not in the order the BA mentioned them.
 
 ### Cross-domain applicability
@@ -293,13 +293,13 @@ content (prose), which must precede its presentation (PDF layout).
    the reason, and the permalink to the issue comment). `GW_SignoffRecorded`
    reads it back, so the phase cannot continue on a sign-off nobody recorded.
    An agent records the BA's decision; it never makes it.
-2. **Create beans** for each implementation unit — each naming the `req:`
+2. **Create work items** for each implementation unit — each naming the `req:`
    statements it delivers, with `## Done when` copied from their success
    criteria, and listed in the set's `workPlan` (a set at `planned` with no
-   beans is refused):
+   work items is refused):
    - Follow the check-before-create protocol (see `todo-manager.md`)
    - Scope to a single PR-sized unit
-   - Reference the parent issue in each bean
+   - Reference the parent issue in each work item
 3. **Offer the knowledge-graph destinations** for the agreed set — `A_OfferKg`,
    `BA_ChooseKg`, `A_RecordKg` in `crdm-signoff.bpmn`. **This step is not
    optional and its default creates nothing.** See below.
@@ -402,9 +402,9 @@ says.
 
 ## Phase 6 — Iterative development
 
-**Input:** beans
+**Input:** work items
 
-For each bean:
+For each work item:
 
 1. **Create feature branch** — always, no exceptions. Before the first edit,
    run the collision review in [`coordinate`](../sdlc-core/coordinate.md)
@@ -413,7 +413,7 @@ For each bean:
    requirement changes a rendered surface, **against the wireframe candidate
    the requester or BA chose** in Phases 3–4. The delivery summary links the
    chosen candidate beside the after-screenshot.
-3. **Open PR** — link to the bean and the parent issue
+3. **Open PR** — link to the work item and the parent issue
 4. **Deploy staging preview** — the `feature-staging.yml` workflow
    auto-deploys to `STAGING/<branch-slug>/` on `gh-pages`. The magenta
    "FEATURE BRANCH" banner at the top of every page links to the source
@@ -468,11 +468,11 @@ locales for a UI are checked there, not here, because at ingestion a finding is
 a decision about what the assets will be rather than a defect in something
 that shipped.
 
-When a round of implementation is complete (one or more beans resolved):
+When a round of implementation is complete (one or more work items resolved):
 1. **Post a round summary comment on the issue** — addressed to the BA and
    stakeholders, containing:
    - What was accomplished in this round
-   - What remains to be accomplished (open beans)
+   - What remains to be accomplished (open work items)
    - Links to updated content for review (staging URLs, docs pages)
    - Before/after comparison table for changed pages
 2. **Never close the issue without explicit authorization** — the BA or
@@ -485,8 +485,8 @@ When a round of implementation is complete (one or more beans resolved):
 - [`interaction-modality.md`](../../../skills/conduct/conduct-core/interaction-modality.md) §4.1 — context before the question; the ordering rule this workflow runs on
 - [`crdm-detect.md`](crdm-detect.md) — feature-request detection skill
 - [`staging-review.md`](../sdlc-core/staging-review.md) — before/after staging comparison skill
-- [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — bean creation protocol
-- [`bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) — cross-session bean coordination
+- [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — work item creation protocol
+- [`bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) — cross-session work item coordination
 - [`coordinate.md`](../sdlc-core/coordinate.md) — session coordination
 - [Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) — the content lifecycle this fits within
 

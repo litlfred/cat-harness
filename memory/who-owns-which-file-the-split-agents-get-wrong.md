@@ -8,7 +8,7 @@ archived: true
 ---
 > **Archived 2026-09-19.** Its only reader, the `content-pipeline-navigator`
 > subagent, was retired. Kept rather than deleted: the record of what was
-> learned outlives the mechanism that carried it, which is why a bean is
+> learned outlives the mechanism that carried it, which is why a work item is
 > `scrapped` and not removed. Not injected into any agent's prompt —
 > `platform-boundary-guard` was already at 189 of its 200 lines, so there
 > was nowhere to put it without pushing an entry past the line the harness
@@ -23,7 +23,7 @@ schema under `schemas/` (`types.ts`, `constraints.ts`, `builders.ts`,
 
 **The CONTENT layer (the harness above this one)** holds the pipeline scripts whose
 subject is a folio's content rather than the harness. `build-glossary.ts` and
-`codemod-refterm.ts` moved there on 2026-09-30 (bean `yj6r`) and are named here
+`codemod-refterm.ts` moved there on 2026-09-30 (work item `yj6r`) and are named here
 because this list carried `build-glossary.ts` on the platform side until then.
 `cat-harness` declares `needs: ["bootstrap"]` and core sits ABOVE it, so a
 harness module importing core's `schemas/glossary.ts` was an import against the

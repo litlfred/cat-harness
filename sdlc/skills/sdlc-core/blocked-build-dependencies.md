@@ -73,7 +73,7 @@ it, because the policy is the environment's and can change:
 
 A change to the environment's network settings may not reach a container that
 is already running. When it does not, **hand the step to an agent that has the
-access** rather than stall: open a bean whose steps run end to end without this
+access** rather than stall: open a work item whose steps run end to end without this
 session (install, run, the exact scoring command, where the result goes), and
 give the person a one-line instruction of the form *"do bean X on branch Y of
 repo Z"* ([`agent-handoff`](agent-handoff.md)). Code the step needs, such as a

@@ -165,7 +165,7 @@ Claude Code, Antigravity, Gemini CLI и универсальных MCP-клие�
 |------|---------|
 | `folio_init` | Развернуть каркас фолио. Зарегистрирован как **универсальный** инструмент, поскольку запускается до того, как у фолио появится тип контента |
 | `workflow_start` / `workflow_next` / `workflow_complete` | Запустить `getting-started.bpmn` как реальный процесс; `workflow_next` сообщает, что доступно сейчас и какой навык это реализует |
-| `work_plan_prime` | Отобразить план работы (beans) |
+| `work_plan_prime` | Отобразить план работы (work items) |
 | `check_dependencies` | Проверить, какие инструментарии установлены |
 | `skill_list` / `skill_fetch` | Найти и загрузить инструкции навыка |
 

@@ -70,19 +70,19 @@ commit.
   sibling's landed work is not merely a thing to resolve; it is the
   signal that two sessions are editing one subject. Resolve it AND
   coordinate.
-- **A POTENTIAL collision, seen in the beans — coordinate.** Before
+- **A POTENTIAL collision, seen in the work items — coordinate.** Before
   you start a topic, and at each triage, scan for an `in-progress`
-  bean whose scope overlaps yours. That is the cheapest collision to
+  work item whose scope overlaps yours. That is the cheapest collision to
   find, because it is the one found BEFORE either of you has written
   anything. How to read a sibling's state out of the
   store, and the boundary of that inference, is
   [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"Where a sibling
   session is visible from" — not restated here.
 - **When you START any new unit of work — before the first edit.** A
-  new story, epic, feature or task bean, an issue, CRDM Phase 6, a
+  new story, epic, feature or task work item, an issue, CRDM Phase 6, a
   workplan tranche, or a handover pickup runs the collision review in
   §"Starting new work" below, scaled to its blast radius, and records
-  it in the workplan bean.
+  it in the workplan work item.
 
 ## Inputs
 
@@ -242,7 +242,7 @@ cloud session with eleven siblings live on one repository:
 | `list_sessions` | **sees** them — id, title, branch, task summary |
 | `ListAgents` | **no** — "no other Claude session is running on this machine" |
 | `SendMessage` | **no** — the send is refused, target not reachable |
-| a committed **bean** | yes — every session reads the store at session start |
+| a committed **work item** | yes — every session reads the store at session start |
 | a **PR or issue** comment | yes — to whoever looks, and it is durable |
 
 So `list_sessions` tells you WHO is working and on WHAT, and then the
@@ -250,9 +250,9 @@ message has to travel through something committed.
 
 The practical order:
 
-1. `list_sessions` (or the beans) to find WHO overlaps and how.
+1. `list_sessions` (or the work items) to find WHO overlaps and how.
 2. Write the coordination INTO the artefacts they will read — the
-   bean, the PR body, the issue. A bean is the strongest, because
+   work item, the PR body, the issue. A work item is the strongest, because
    `bean-coordination` §"The store on `main` is the one every sibling
    reads" makes it the one surface every session opens.
 3. Only then consider a direct message, and only for a sibling
@@ -282,7 +282,7 @@ So, when you seed a helper session:
    confirmation in its own session**, and name the sessions. That is the
    only way the owner's authority reaches it. A helper that stops to ask
    is working as designed. The ask is not a failure to route around.
-4. **Give the helper a lane it can finish without the owner**: a bean store or a
+4. **Give the helper a lane it can finish without the owner**: a work item store or a
    set of repositories, the lanes of its siblings, and the report-back channel
    (`send_message` to the coordinator).
 
@@ -301,9 +301,9 @@ A branch migrated every voice from `<instance>/voices/` to
 detection then placed the new file inside another voice's folder.
 
 Nothing was wrong with either piece of work. What was missing was that
-neither session knew about the other, and the beans said so the whole
-time: the migration's bean was `in-progress` and names the directory.
-**A bean scan by either session would have caught it before a line was
+neither session knew about the other, and the work items said so the whole
+time: the migration's work item was `in-progress` and names the directory.
+**A work item scan by either session would have caught it before a line was
 written**, which is exactly why the trigger above is worth having.
 
 ## Crossing into a sibling's subject — permitted, and what it costs
@@ -324,17 +324,17 @@ crossing is what triggers this skill rather than what excuses skipping it.
 
 ### The collision surface is FILES, and it is predictable before you touch one
 
-A bean scan finds sessions working the same *subject*. It does not find two
+A work item scan finds sessions working the same *subject*. It does not find two
 sessions about to edit the same *file* from different subjects:
 
 | file | why two sessions want it |
 |---|---|
 | `scripts/stale-paths-baseline.json` | **two lines long.** Every milestone repair removes its own entry. Two repairs in flight = a conflict whose wrong resolution silently empties a file whose stated property is that it *shrinks rather than fossilises* — and an empty baseline fails every finding, "which is the safe direction" only if somebody notices. |
-| a shared bean | every stream appends its own outcome. **"An append cannot collide" is false when two sessions append**, because both land at EOF. |
+| a shared work item | every stream appends its own outcome. **"An append cannot collide" is false when two sessions append**, because both land at EOF. |
 | generated dirs (`auto-docs/`, `skill-instructions/`, kg-qa sidecars) | nobody edits them, everybody regenerates them. Take `main`'s copy and re-run the generator — never hand-merge. For `test/results/**`, `bun run cat qa:resolve-conflicts`: those are derived QA results whose record is on the `qa-reports` branch. |
 | `test/attestations/**` | judgements, not generated — no generator can reproduce one. Read both sides and keep both unless they are the same judgement; see [`prepare-merge`](prepare-merge.md) §"Conflicts in `test/results/` and `test/attestations/`". |
 
-**Name the files you will touch, not just the beans**, when you post intent.
+**Name the files you will touch, not just the work items**, when you post intent.
 A sibling can dodge a file; it cannot dodge a subject it cannot see.
 
 ### Duplicated work is measured in what was already pushed, not in what is open
@@ -353,7 +353,7 @@ worth of re-measurement.
 
 Run the review once, before the first edit, whenever you start:
 
-- a new story, epic, feature or task bean;
+- a new story, epic, feature or task work item;
 - work on an issue, before you announce the branch;
 - CRDM Phase 6, implementation;
 - a new tranche of a workplan;
@@ -380,9 +380,9 @@ can collide with, not how big your diff is.
   A ten-line change to a shared include collides with every PR that
   regenerates it.
 - **A small, local story still runs steps 1 and 2, quickly.** When they find
-  nothing, record "no overlap found" in the bean, together with what you
-  checked: the PR search, the bean search, and the terms you used. That takes
-  about two minutes and one bean note.
+  nothing, record "no overlap found" in the work item, together with what you
+  checked: the PR search, the work item search, and the terms you used. That takes
+  about two minutes and one work item note.
 - **Only an overlap triggers steps 3 and 4.** If steps 1 and 2 find a
   sibling on your files or your subject, name its owner and message it,
   whatever the size of your change.
@@ -390,7 +390,7 @@ can collide with, not how big your diff is.
 "No overlap found" with no record of what was checked is not a review. The
 next session cannot tell it from a review that was skipped.
 
-The bean trigger above catches a sibling working on the same **subject**.
+The work item trigger above catches a sibling working on the same **subject**.
 §"The collision surface is FILES" catches two sessions editing the same
 **file** from different subjects. A refactor causes both kinds at once, which
 is why it gets the full review and does not rely on either trigger.
@@ -402,10 +402,10 @@ is why it gets the full review and does not rely on either trigger.
    result with the files your work will touch. A PR that changes only
    **generated** files you will also regenerate is not a collision; say so
    and move on.
-2. **Scan the `in-progress` beans for overlapping scope.** Use
+2. **Scan the `in-progress` work items for overlapping scope.** Use
    `beans list --status in-progress --search <term>`, and search the subject
-   as well as the ids: the file names, the generator, the page type. A bean id finds nothing
-   when the overlapping work has no bean of its own; see
+   as well as the ids: the file names, the generator, the page type. A work item id finds nothing
+   when the overlapping work has no work item of its own; see
    [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"The trigger is STARTING WORK".
 3. **Name the owning sessions.** Use `list_sessions`, the `Claude-Session:`
    trailers on each PR's commits, and `bun run cat sessions --since <window>`.
@@ -417,8 +417,8 @@ is why it gets the full review and does not rely on either trigger.
    Send it through a channel that actually reaches them; §"What actually
    reaches a sibling" says which ones do. A PR comment also leaves a durable
    copy.
-5. **Record the review in the workplan bean before editing.** Write down each
-   overlapping session, its PRs and beans, the files you share, and the phases
+5. **Record the review in the workplan work item before editing.** Write down each
+   overlapping session, its PRs and work items, the files you share, and the phases
    affected; or "no overlap found" and what you checked. A review that exists
    only in the chat is gone when the container goes, and the next session has
    to run it again.
@@ -434,7 +434,7 @@ chrome CSS into shared cached assets touches the layout of every page. Before
 any edit, the review found active sibling work on every layout file the plan
 needed: a navbar session (four PRs on `docs-ui.css`, `docs-ui.js`, the navbar
 include, `harness_details.html`, `head_custom.html`), and two IG sessions on
-`gen-ig-pages.ts`. The review went into the bean, the three owning sessions
+`gen-ig-pages.ts`. The review went into the work item, the three owning sessions
 were asked for an order, and the only work that started touched none of their
 files. Without the review, five PRs would have been rebased into a refactor of
 the files they were editing.
@@ -443,7 +443,7 @@ the files they were editing.
 
 - `bean-coordination` — the committed store siblings read, how to
   claim, and how far a sibling's state can be inferred from it. The
-  DETECTION half of this skill's bean trigger lives there.
+  DETECTION half of this skill's work item trigger lives there.
 - `delivery-summary` — what to post **after** a feature lands
   (one PR scope).
 - `watch` — passive monitoring of upstream branches.

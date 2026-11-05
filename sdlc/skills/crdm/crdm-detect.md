@@ -176,7 +176,7 @@ Do NOT use the term "CRDM" with the user. It is internal methodology jargon.
      like to pause and work through the requirements now, or should I note it
      for later?"
    - If **pause**: enter CRDM Phase 1, return to content work when done
-   - If **later**: create a bean with as much context as possible, linking to
+   - If **later**: create a work item with as much context as possible, linking to
      any relevant GitHub issue
 
 ## Issue association
@@ -204,7 +204,7 @@ When a PR is merged that addresses a feature from this process:
 2. **PRs are for code review** (agent and human coders, code reviewers)
 3. **Issues are for CRDM stakeholders** — the requestor, the BA, and updates
    from the coding team for feature sign-off
-4. Many beans per issue — they are not synonymous
+4. Many work items per issue — they are not synonymous
 
 ## A feature is a COLLABORATION you are joining, not a fix you are making
 
@@ -223,7 +223,7 @@ affects — stays in a chat log nobody else will read.
 ### What to do instead
 
 **1. Assume the conversation is not the first.** Before treating a feature as
-new, look for the collaboration it belongs to: an open issue, an epic, a bean,
+new, look for the collaboration it belongs to: an open issue, an epic, a work item,
 a sibling session's branch, a spec. This repository has many of each and they
 are cheap to search. A feature that arrives without a home usually has one.
 
@@ -232,7 +232,7 @@ authors, other users, other agents working other branches. Two consequences:
 
 - the record has to be legible to somebody who was not in the conversation —
   which is what the issue is FOR, as against the PR (code review) and the
-  bean (work plan);
+  work item (work plan);
 - a sibling session may already be solving it. Check before you build, and if
   their answer differs from yours, that is a design discussion to have on the
   issue rather than a merge conflict to win.
@@ -240,7 +240,7 @@ authors, other users, other agents working other branches. Two consequences:
 **3. Structure it: epics and stories, not a task.** A feature that is worth
 doing is worth a place in the roadmap. This store's hierarchy is
 `milestone → epic → feature → task`, and `check-bean-parents` enforces that
-every open bean has a home. A feature filed as a bare task with no parent
+every open work item has a home. A feature filed as a bare task with no parent
 lands in the roadmap's Miscellaneous section, where it stops being planned.
 
 **An epic cannot parent an epic here.** When the subject already has an epic,
@@ -277,4 +277,4 @@ that the *record* is collaborative, not that the *work* pauses.
 
 ## Related work first
 
-When a requirement is **initiated or updated** in chat, find the related work before anything else. That means beans, issues and open PRs, each categorized and summarized, followed by one question to the user about whether and how to coordinate. The procedure is [`related-work-coordination`](../sdlc-core/related-work-coordination.md), and `crdm-issue-linking.bpmn` calls it as `Process_RelatedWork`.
+When a requirement is **initiated or updated** in chat, find the related work before anything else. That means work items, issues and open PRs, each categorized and summarized, followed by one question to the user about whether and how to coordinate. The procedure is [`related-work-coordination`](../sdlc-core/related-work-coordination.md), and `crdm-issue-linking.bpmn` calls it as `Process_RelatedWork`.

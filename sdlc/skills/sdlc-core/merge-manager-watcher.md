@@ -79,7 +79,7 @@ it.
   open. Post it even when the owner chose not to go ahead. A hold with no
   "done" is an outage.
 - **Hand back.** A PR that cannot land (conflict, protected path, red) goes
-  back to its owner with the reason, on the PR's own thread or bean. It is
+  back to its owner with the reason, on the PR's own thread or work item. It is
   never fixed inside the train.
 - **Report.** After every landing, report to the owner: what merged, the main
   verdict on each repository, and any open decision. Keep it to one message.

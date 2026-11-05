@@ -127,7 +127,7 @@ bun run cat beans:claim <id>             # CLAIM before you work
 ```
 
 Reclame antes de trabajar para que dos sesiones no elijan el mismo elemento, y nunca
-resuelva ni elimine el bean de un homólogo. No cree un almacén de tareas
+resuelva ni elimine el work item de un homólogo. No cree un almacén de tareas
 paralelo. No ejecute `beans create` para colas masivas generadas por máquinas (`*.qa.json`,
 archivos de testigos) — esas permanecen como JSON masivo.
 

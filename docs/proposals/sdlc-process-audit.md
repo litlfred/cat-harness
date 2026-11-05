@@ -12,8 +12,8 @@ summary: >-
 # SDLC process audit — which diagram owns which phase
 {: .no_toc }
 
-Bean `folio-assistant-haya`, step 1, under
-[#363](https://github.com/litlfred/folio-assistant/issues/363). The bean's
+Work item `folio-assistant-haya`, step 1, under
+[#363](https://github.com/litlfred/folio-assistant/issues/363). The work item's
 instruction is explicit: *"Audit which of the existing diagrams already cover a
 phase of the SDLC, and where the seams are. **Do not draw over them.**"* This is
 that audit. **Nothing is drawn here.**
@@ -33,13 +33,13 @@ next step is.
 two diagrams landed after it. A count in prose is a claim; this one had already
 decayed within the day. Re-measured with `ls processes/*.bpmn | wc -l`.
 
-**MVP is already a subprocess, and it is `crdm-deliver.bpmn`.** The bean flagged
+**MVP is already a subprocess, and it is `crdm-deliver.bpmn`.** The work item flagged
 this as *probable* and said to check first. Checked: `crdm-deliver.bpmn`
 carries activities bound to `prepare-merge`, `feature-staging` and
 `delivery-summary`, an activity named *"Deploy the MVP to staging"*, and the
 two acceptance gateways *"Meets criteria?"* and *"Accepted?"*. So the MVP
 subprocess #363 asks for **exists**. Drawing a second one would have been the
-exact failure the bean warned about, and the deliverable for that part of #363
+exact failure the work item warned about, and the deliverable for that part of #363
 is a *reference*, not a diagram.
 
 ---
@@ -173,7 +173,7 @@ somebody wants one of them advisory: there is no way to tell, from the file,
 whether strictness was chosen.
 
 Whatever `haya` draws should declare its own enforcement explicitly, and this
-is a candidate bean of its own rather than scope for `haya`.
+is a candidate work item of its own rather than scope for `haya`.
 
 | declared | count |
 |---|---|
@@ -223,7 +223,7 @@ is a candidate bean of its own rather than scope for `haya`.
 | item | what it holds |
 |---|---|
 | [#363](https://github.com/litlfred/folio-assistant/issues/363) | the request |
-| `folio-assistant-haya` | this bean — step 1 of 4 |
+| `folio-assistant-haya` | this work item — step 1 of 4 |
 | `folio-assistant-g7vb` | the axes row 7 waits on |
 | [Deployment topologies](deployment-topologies.html) | §5 frames this audit; its count of 31 is superseded by 33 |
 | [`AGENTS.md` migration](agents-md-migration.html) | which prose rules have a skill to move into |

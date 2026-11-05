@@ -7,13 +7,13 @@ execution anywhere on the deterministic-to-agentic spectrum.
 - **Task:** a step in a process; a node in BPMN.
 - <img src="{{ '/assets/img/kg-deck/img-p006-4.webp' | relative_url }}" alt="" height="24" style="height:24px;width:auto;display:inline-block;vertical-align:middle" loading="lazy"> **Skill:** a gated capability with schema-defined inputs and outputs.
 - **Test:** used to compare models, or for author review.
-- <img src="{{ '/assets/img/kg-deck/img-p006-2.webp' | relative_url }}" alt="" height="24" style="height:24px;width:auto;display:inline-block;vertical-align:middle" loading="lazy"> **Agentic state:** *beans*, which agents use to coordinate and track their
+- <img src="{{ '/assets/img/kg-deck/img-p006-2.webp' | relative_url }}" alt="" height="24" style="height:24px;width:auto;display:inline-block;vertical-align:middle" loading="lazy"> **Agentic state:** *work items*, which agents use to coordinate and track their
   state within a process ("changes to the vaccination schedule ready for review in
   staging").
 - <img src="{{ '/assets/img/kg-deck/img-p006-3.webp' | relative_url }}" alt="" height="24" style="height:24px;width:auto;display:inline-block;vertical-align:middle" loading="lazy"> **Human state:** *todos*, attached to process steps or knowledge assets
   ("please review this change in medication").
 
-![Folio lifecycle — one cycle, plan to retire. A BPMN collaboration of five lanes: programme manager, editors and authoring agents, validation and QA, review team and SMEs, publication manager, with the work plan (beans shared by humans and agents) drawn as a data store that the seeding and feedback tasks write to. Tasks in order: plan scope, team and artefacts; seed the work plan; editing and HCI validation; integration test and QA sweep; draft, review and publish; triage published feedback; file feedback as beans; then a gateway, more content, which loops back to editing or ends in retire or archive.]({{ '/assets/img/workflows/content-lifecycle.svg' | relative_url }})
+![Folio lifecycle — one cycle, plan to retire. A BPMN collaboration of five lanes: programme manager, editors and authoring agents, validation and QA, review team and SMEs, publication manager, with the work plan (work items shared by humans and agents) drawn as a data store that the seeding and feedback tasks write to. Tasks in order: plan scope, team and artefacts; seed the work plan; editing and HCI validation; integration test and QA sweep; draft, review and publish; triage published feedback; file feedback as work items; then a gateway, more content, which loops back to editing or ends in retire or archive.]({{ '/assets/img/workflows/content-lifecycle.svg' | relative_url }})
 
 <details markdown="1"><summary>The diagram as it appeared on the slide (2026-09-30)</summary>
 
@@ -31,13 +31,13 @@ BPMN picture and lines tie each one to a part of it:
 - **Task** points at one node in that lane, *Edit Doc* (today: editing and HCI
   validation).
 - **Skill** hangs off that task, and **Test** hangs off the skill.
-- The beans icon sits by agentic state and the sticky note by human state.
+- The work items icon sits by agentic state and the sticky note by human state.
 
 So the slide says a user story names a role, a role is a lane, a task is a node
 in it, a skill belongs to a task, and a test belongs to a skill.
 
 **Sources:** the content core's `processes/content/content-lifecycle.bpmn` (the picture above is generated
-from it); [beans and todos](../guides/beans-and-todos.html).
+from it); [work items and todos](../guides/beans-and-todos.html).
 
 > **Aligned:** the snapshot's diagram and today's process have the same six
 > lanes and the same eight tasks.

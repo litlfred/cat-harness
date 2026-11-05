@@ -59,20 +59,20 @@ looks finished.
 
 | # | stage | lane | done when |
 |---|---|---|---|
-| 0 | Brief, claim the bean ([`opening-brief`](../../../sdlc/skills/sdlc-core/opening-brief.md)) | `authoring-agent` | bean claimed with `bun run cat beans:claim` |
+| 0 | Brief, claim the work item ([`opening-brief`](../../../sdlc/skills/sdlc-core/opening-brief.md)) | `authoring-agent` | work item claimed with `bun run cat beans:claim` |
 | 1 | **Declare it in place** | `authoring-agent` | the declaration parses; `instance-repositories.test.ts` green |
 | 2 | **Grow it in place** | `authoring-agent` | the content type's own gates |
 | 3 | **Push generic down** | `platform-authoring-agent` | `check:import-direction`, `check:reference-direction`, `check:process-bindings` add nothing |
 | 4 | **One import seam** | `platform-authoring-agent` | every climb out of the directory goes through `<name>/platform.ts` |
 | 5 | **Rehearse self-contained** | `build-pipeline` | `bun run cat seed:ready --layer <name> --rehearse` |
-| 6 | **Report what would move** | `authoring-agent` | the report is in the bean (as `kg-separation` stage 9) |
-| 7 | **Owner confirms: create the repository** | `administrator` | an answer, recorded in the bean |
+| 6 | **Report what would move** | `authoring-agent` | the report is in the work item (as `kg-separation` stage 9) |
+| 7 | **Owner confirms: create the repository** | `administrator` | an answer, recorded in the work item |
 | 8 | Create the repository | `administrator` | it exists, empty, and was read before writing |
 | — | `Ready to seed?` | `build-pipeline` | `seed-readiness-gate.dmn` answers `settled` |
 | 9 | **Copy the staged contents in, with history** | `authoring-agent` | a reviewed PR on a branch of the new repository |
 | 10 | **Re-point the declaration** | `platform-authoring-agent` | the host is green consuming the new repository |
 | 11 | **Verify on a fresh clone** | `build-pipeline` | the new repository's gates green from `git clone` in an empty directory |
-| 12 | **Owner confirms: delete the in-repo copy** | `administrator` | an answer, recorded in the bean |
+| 12 | **Owner confirms: delete the in-repo copy** | `administrator` | an answer, recorded in the work item |
 | 13 | Cutover commit | `administrator` | one commit, revertable (as `kg-separation` stage 13) |
 
 ### 1 · Declare it in place
@@ -106,7 +106,7 @@ A directory `<name>/` at the host's root, with `<name>/<name>.json`:
   `<path>/platform.ts`, and nothing at the host's root;
   `init-folio-staged.test.ts` snapshots the whole host tree to hold that.
   **Never `--instance` inside a host**: it writes a repository's worth of
-  scaffolding (`AGENTS.md`, `.mcp.json`, a beans store, a session hook; 15
+  scaffolding (`AGENTS.md`, `.mcp.json`, a work items store, a session hook; 15
   files, measured with `--dry-run`). `--instance` is for stage 8's repository.
 - **Declare a directory with its files, in one commit**: a declared-but-absent
   directory is scanned as empty and reported clean.
@@ -190,7 +190,7 @@ options at most, the recommended one first, with a stated default:
 
 When the repository must be created by someone with credentials this session
 lacks, the hand-over is [`agent-handoff`](../../../sdlc/skills/sdlc-core/agent-handoff.md):
-one bean, one sentence for the person to relay.
+one work item, one sentence for the person to relay.
 
 ### 9 · Copy the staged contents in, with history
 
@@ -286,7 +286,7 @@ directory. The page shows it as one row in the `via sidecar` state.
   carry.
 - **The note's `bean:` resolves against main's work plan, with no pending
   escape.** So the deposit lands on the fsh-guts branch in the same step that
-  merges the PR carrying that bean, never before it; a deposit pushed ahead of
+  merges the PR carrying that work item, never before it; a deposit pushed ahead of
   its PR turns every PR's CI red.
 
 ## Anti-patterns

@@ -34,7 +34,7 @@ Regions in reading order, web (≥ 800 px, drawn at 1280):
 1. **Sidebar strip, 56 px at rest.** It shows marks only:
    - the site mark
    - the action launcher ▦ and the ☰ "Keep navigation open" toggle
-   - the icon row: Todos, Beans, Processes, Knowledge graph, More
+   - the icon row: Todos, Work items, Processes, Knowledge graph, More
    - The five instantiated harness dividers as initials: the trust IG, WHO IRIS, Folio Assistant, C@T Harness, Bootstrap
    - ⌂ home, at the bottom
 

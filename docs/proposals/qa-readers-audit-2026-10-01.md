@@ -14,7 +14,7 @@ summary: >-
 # QA readers audit: who reads `test/results/`, and what happens when it is gone
 {: .no_toc }
 
-**Status:** audit for arc `3fva`, bean `gxvk`. Companion to
+**Status:** audit for arc `3fva`, work item `gxvk`. Companion to
 [`qa-reports-branch-and-test-process-2026-10-01.md`](qa-reports-branch-and-test-process-2026-10-01.md),
 §4 Phase 3. The owner asked for it on 2026-10-01: *"do an audit report/analysis
 on readers and queue up fix them."*
@@ -87,7 +87,7 @@ the same kind of judgement: 6 agent attestations and 26 first-seen baselines.
 (§4.1, R22). And all 12 + 32 of these files are **mixed**: each one also holds
 script verdicts. So D2 needs a **split** (attestations out to
 `test/attestations/`, script verdicts to the branch), not a file move. That
-split is an input to `16ei` and to fix beans `F1` and `F4`.
+split is an input to `16ei` and to fix work items `F1` and `F4`.
 
 ## 3. Summary by class
 
@@ -172,7 +172,7 @@ Failure mode if the file were absent **today**: **crash**, **loud** (exits
 non-zero or prints a finding that names the missing file), **unknown** (a
 correct third state), **FALSE-CLEAN** (also: false n/a, false empty, false
 count), or **LOSS** (silent data loss on write). *Verified*: **run** = observed
-in the absent run; **read** = from the code. *Family*: the fix bean in §7.
+in the absent run; **read** = from the code. *Family*: the fix work item in §7.
 
 ### 5.1 Gates (A, B)
 
@@ -260,7 +260,7 @@ migrating them would be wasted work:
 |---|---|
 | `cat-harness/tools/index.ts:1846,1852` (lsi) | a Tool *declaration*: it names `output: "cat-harness/test/results/lsi/"`. Nothing reads through it |
 | `cat-harness/src/tools/lsi-query.ts:31` (`lsi_query`) | builds the index in memory from the graph on every call (`buildLsi(units, …)`). It never opens `test/results/lsi/` |
-| `cat-harness/src/tools/degradation.ts:244-262` | since bean `ymsu` it reads the source **before** importing, so it no longer runs `kg-detangle.ts` and no longer touches `test/results/detangle/` |
+| `cat-harness/src/tools/degradation.ts:244-262` | since work item `ymsu` it reads the source **before** importing, so it no longer runs `kg-detangle.ts` and no longer touches `test/results/detangle/` |
 
 The real D-class readers are R43, R45–R48 and R50 above. R30 (`content_validate`) is also reachable as an MCP tool, and is counted under B.
 
@@ -367,7 +367,7 @@ per-file counts are `rg -c` on the same pattern.
 
 ### 7.1 Families → beans
 
-| family | readers | bean |
+| family | readers | work item |
 |---|---|---|
 | **F1** kg-audit and its carried state | R01–R03, R22–R24, R27, R33 | new; see §7.4 |
 | **F2a** the `qa-results.ts` core and the export comparison | R17, R18, R34, R35 | new |
@@ -410,9 +410,9 @@ per-file counts are `rg -c` on the same pattern.
 
 ### 7.4 Bean ids
 
-The bean ids are recorded in bean `gxvk`'s `## Summary of Changes` and appended
+The work item ids are recorded in work item `gxvk`'s `## Summary of Changes` and appended
 to `oqe3`, `2ae2`, `d6bw` and `7mwa`. They are left out of this page so that
-the page holds no fact that a bean store holds better.
+the page holds no fact that a work item store holds better.
 
 ## 8. What this audit did not do
 

@@ -109,4 +109,4 @@ stakeholders directly.
 
 - [`crdm-requirements-workflow`](crdm-requirements-workflow.md) — the parent workflow
 - [`crdm-detect`](crdm-detect.md) — what triggers this phase
-- [`../../work-plan/skills/work-plan/todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — bean management
+- [`../../work-plan/skills/work-plan/todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — work item management

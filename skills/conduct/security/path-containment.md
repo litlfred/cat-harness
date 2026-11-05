@@ -15,7 +15,7 @@ interchangeable:
 | you have | you want | use |
 |---|---|---|
 | a **URL path** (`/a/b.html`), possibly percent-encoded | the file it names inside a root | `resolveWithin`, then `realPathWithin` |
-| a **single identifier** (`paperId`, a slug, a bean id) | one path segment, or a refusal | `safeSegment` / `joinSegments` |
+| a **single identifier** (`paperId`, a slug, a work item id) | one path segment, or a refusal | `safeSegment` / `joinSegments` |
 | a path you are about to **write** that does not exist yet | containment despite an absent leaf | `writableWithin` |
 
 **Why not one function.** `resolveWithin` relies on a URL pathname beginning

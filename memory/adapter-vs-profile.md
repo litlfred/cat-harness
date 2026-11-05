@@ -22,7 +22,7 @@ on all **eight** shared kinds. When adding a content type, ask whether it
 needs different **code** (adapter) or only different **rules** (profile plus
 a subclass).
 
-**Archived 2026-09-19** (bean `folio-assistant-4kiw`). Superseded by
+**Archived 2026-09-19** (work item `folio-assistant-4kiw`). Superseded by
 `skills/kg/kg-core/placement.md` Step 3, which carries every operative
 claim here — disjoint vs nesting, `adapterForKind` staying *total and
 unambiguous*, the **eight** shared kinds, and the separating question

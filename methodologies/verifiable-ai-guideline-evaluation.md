@@ -64,7 +64,7 @@ applies-when: >
 
 # Verifiable AI Guideline Evaluation: Multi-Measurement Debiased Inference, Peer Councils, and Hybrid Bounds
 
-**Adopted 2026-10-08** (bean `folio-assistant-tn3d`, issue [#2513](https://github.com/litlfred/folio-assistant/issues/2513)).
+**Adopted 2026-10-08** (work item `folio-assistant-tn3d`, issue [#2513](https://github.com/litlfred/folio-assistant/issues/2513)).
 Expanded with UK Health Security Agency (UKHSA) public health benchmark evidence and recommendation discrepancy analysis.
 All eight foundational sources were ingested into `library/` and verified before this methodology was adopted.
 

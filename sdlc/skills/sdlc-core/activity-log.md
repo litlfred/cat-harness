@@ -183,7 +183,7 @@ them.
 - **Secrets, tokens, credentials or personal data.** Not-published is not
   the same as not-committed and not the same as private: capture `on` puts
   entries in git, and the repository may be public.
-- **A substitute for a bean.** A log says what happened; a bean says what is
+- **A substitute for a work item.** A log says what happened; a work item says what is
   being worked on and what it waits on. Log in addition to claiming, never
   instead.
 - **A substitute for the turn report.** The log is for a later reader; the

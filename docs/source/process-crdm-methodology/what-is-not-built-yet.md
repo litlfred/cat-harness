@@ -19,7 +19,7 @@ there.
   other diagram here, so `workflow_start` / `workflow_next` /
   `workflow_complete` run it today, and `workflow_complete` refuses a step
   that is not enabled. Every activity in the agent's lane names the skill
-  that implements it, and three carry the bean operation the engine performs.
+  that implements it, and three carry the work item operation the engine performs.
 - **BPMN diagram of the process itself** —
   [`processes/process/crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn),
   with lanes for the BA / feature requestor, the agent, and stakeholders.

@@ -45,7 +45,7 @@ lists** that answer three questions:
 
 `permissions` draws on 14 flat ids in `skills/permissions/permissions.json`.
 They have no hierarchy, no scope and no standard behind them, and nothing
-enforces them (bean `bkje`). Identity exists only as prose in
+enforces them (work item `bkje`). Identity exists only as prose in
 `skills/sdlc/sdlc-core/deployment-auth.md`, as a gateway role (viewer,
 collaborator, owner) that joins to nothing here.
 
@@ -238,7 +238,7 @@ Each step is its own PR with its own QA, and missing QA is a failure:
    it.*
    *2026-09-24, owner: "Declare both". `claude` is now declared (an agent,
    roles `authoring-agent` and `code-reviewer`). `litlfred` is not: it is a
-   GitHub login, and an actor file never carries one. Bean `jwoc` records why
+   GitHub login, and an actor file never carries one. Work item `jwoc` records why
    and what the owner can choose; `prov:hadRole` stays required.*
 6. **ihris**:
    - the 2009 use-case actors (A-PT1 HR Manager, …) become Roles;

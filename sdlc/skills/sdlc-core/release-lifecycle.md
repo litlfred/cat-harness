@@ -3,7 +3,7 @@ name: release-lifecycle
 description: >
   Governs the release lifecycle: semver policy, draft/named releases,
   changelogs, release gating, and the relationship between feature
-  branches, PRs, beans, and releases. Applies to code releases,
+  branches, PRs, work items, and releases. Applies to code releases,
   paper publications, and project milestones. Complements package-release
   (which handles the mechanics of cutting a release) with the process
   and policy layer.
@@ -30,7 +30,7 @@ folio-assistant follows [Semantic Versioning 2.0.0](https://semver.org/):
 | Type | Gate | Who decides |
 |---|---|---|
 | **Draft** | First PR for a planned release merges | Agent creates, BA approves |
-| **Pre-release (RC)** | All must-have beans resolved, CI green | BA decides when to test |
+| **Pre-release (RC)** | All must-have work items resolved, CI green | BA decides when to test |
 | **Named release** | Stakeholder sign-off on the RC | BA + stakeholders |
 
 ## Release planning with epics
@@ -87,7 +87,7 @@ The process is identical; the artefacts differ.
 
 - **Never create a release without BA approval**
 - **Never skip the pre-release step** — even for patches
-- **The changelog is written for humans** — no commit hashes or bean IDs
+- **The changelog is written for humans** — no commit hashes or work item IDs
 - **One release per epic** — if scope creeps, split the epic
 - **Draft releases are mutable; named releases are immutable**
 
@@ -98,4 +98,4 @@ The process is identical; the artefacts differ.
 - [`crdm-requirements-workflow.md`](../crdm/crdm-requirements-workflow.md) — Phase 6 feeds into release
 - [`staging-review.md`](staging-review.md) — staging previews for RCs
 - [`release-epic-planning.md`](release-epic-planning.md) — epic structure and readiness checklist
-- [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — bean management within epics
+- [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — work item management within epics

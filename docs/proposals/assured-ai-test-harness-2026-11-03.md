@@ -14,7 +14,7 @@ summary: >-
 # Testing AI agents fairly: the WHO Assured AI test harness
 {: .no_toc }
 
-**Status, 2026-11-03.** This document combines two earlier proposals: [the beans store and process driver](bean-store-and-process-driver-2026-11-02.md) and [test plans, FHIR TestPlan and the ITB](test-interop-itb-fhir-testplan-2026-10-24.md). Both stay unchanged as the record of how each decision was reached. The foundations are built: the work-plan store, the process engine's use of it, history, memory, and the visual pages. The test-running parts are designed but not built. §9 lists what is done and what is next. The tracking issue is [#991](https://github.com/litlfred/cat-harness/issues/991).
+**Status, 2026-11-03.** This document combines two earlier proposals: [the work items store and process driver](bean-store-and-process-driver-2026-11-02.md) and [test plans, FHIR TestPlan and the ITB](test-interop-itb-fhir-testplan-2026-10-24.md). Both stay unchanged as the record of how each decision was reached. The foundations are built: the work-plan store, the process engine's use of it, history, memory, and the visual pages. The test-running parts are designed but not built. §9 lists what is done and what is next. The tracking issue is [#991](https://github.com/litlfred/cat-harness/issues/991).
 
 1. TOC
 {:toc}
@@ -99,9 +99,9 @@ Read this section first if a word later on is unfamiliar. The terms are grouped 
 
 | Term | Meaning |
 |---|---|
-| **work item**, **bean** | One unit of tracked work: a title, a status (*todo*, *in progress*, *completed*…), a description and links to other items. *Bean* is the name the project uses, after the `beans` program that manages them |
+| **work item**, **work item** | One unit of tracked work: a title, a status (*todo*, *in progress*, *completed*…), a description and links to other items. *Work item* is the name the project uses, after the `beans` program that manages them |
 | **work plan** | All the work items, and the process instances that track them |
-| **memory store** | Where agents keep notes as they work: what was decided, where the work stands before stopping, what a group of agents shares. A bean is one way to keep memory; a plain file is another |
+| **memory store** | Where agents keep notes as they work: what was decided, where the work stands before stopping, what a group of agents shares. A work item is one way to keep memory; a plain file is another |
 | **work order** | What an agent is handed when its step is ready: the work item, the step, the role's skills, and how to report back |
 | **history**, **trace** | The ordered record of everything that happened to a work item, or in a test run: every step reached or refused, every change, and what the agent did. A test is scored on its trace |
 
@@ -366,7 +366,7 @@ Archiving is a field set through `update`, allowed only for completed or scrappe
 |---|---|---|
 | git branch | a git branch per work plan | built; today's default |
 | run-scoped store | a private store for one test run | to build (step 9) |
-| beans server | `beans-serve`, which already offers versioned updates | proposed |
+| work items server | `beans-serve`, which already offers versioned updates | proposed |
 | MCP service | an MCP server offering the operations as tools | proposed |
 
 **One conformance test suite** checks every Tool against these promises. The deployment description names the Tool (`"stores": { "work-plan": "beans-git-branch" }`). A description that names a Tool the toolset does not have is refused; it is never silently replaced by the real work plan.
@@ -398,7 +398,7 @@ It is never drawn as routine bookkeeping.
 | Layer | Schema | Store interface | Adds |
 |---|---|---|---|
 | memory record | `memory-record` | `MemoryStore`: keep, recall, open | id, title, scope, what it is about, tags, timestamps, and structured entries (text, when, who, kind, and when known the process, step, instance and role) |
-| work item (bean) | `bean`, which shares the memory record's core | `WorkPlanStore` extends `MemoryStore`: create, update, relations, positions | status, type, priority, parent, blocking |
+| work item (work item) | `bean`, which shares the memory record's core | `WorkPlanStore` extends `MemoryStore`: create, update, relations, positions | status, type, priority, parent, blocking |
 
 So memory and the work plan are one service: a memory note is a work-item note without the work-item fields. The project's long-lived, curated agent memory (`MEMORY.md`, "never written by a process") is a different thing and stays separate.
 
@@ -418,7 +418,7 @@ The work order is **the same for every model**. How a particular model is best t
 
 | Launch Tool | Model | Today |
 |---|---|---|
-| `launch-beans-serve` | Claude, through the beans server | the server exists; this Tool is first |
+| `launch-beans-serve` | Claude, through the work items server | the server exists; this Tool is first |
 | `launch-claude-session` | Claude, cloud session | API exists, no Tool yet |
 | `launch-antigravity` | Gemini, through Antigravity | prompts written by hand today |
 | `launch-copilot` | GitHub Copilot | API exists, no Tool yet |
@@ -488,7 +488,7 @@ Both are **off** in every layer unless that layer switches them on for itself (`
 
 **No work-item markup in diagrams outside `sdlc`.** Diagrams elsewhere no longer call the open and close sub-processes, and no longer carry per-task work-item steps; the engine does that work (§8.3). Provenance ids (such as "bean `kg83`") move out of text agents read, into the provenance fields and changelogs.
 
-**The leak check, `check:context-leak`.** It scans what an agent would read: every file of a built context, the live MCP tool list, the generated instruction files and the fixed prompt. It looks for the work-item vocabulary: *bean*, provenance ids, `beans/` paths, the work-plan branch, *work plan*, *work order*, the `workflow_*` and work-plan tool names, and the open and close sub-process names. It does not flag *process*, *BPMN* or *business process*, because DAKs hold business processes as content. An input it could not read is never reported as clean. It runs in report mode now, and becomes a gate in each guideline layer's CI once the clean-up lands.
+**The leak check, `check:context-leak`.** It scans what an agent would read: every file of a built context, the live MCP tool list, the generated instruction files and the fixed prompt. It looks for the work-item vocabulary: *work item*, provenance ids, `beans/` paths, the work-plan branch, *work plan*, *work order*, the `workflow_*` and work-plan tool names, and the open and close sub-process names. It does not flag *process*, *BPMN* or *business process*, because DAKs hold business processes as content. An input it could not read is never reported as clean. It runs in report mode now, and becomes a gate in each guideline layer's CI once the clean-up lands.
 
 Measured on smart-base's default view of the harness: 12,762 findings with both sub-graphs on, 9,610 with both off. Most of what remains is prose in documentation and skills, which is steps 24 and 25.
 
@@ -662,7 +662,7 @@ Each has a recommended answer that stands as the default until it is ruled.
 
 ## Sources
 
-- [The beans store and process driver](bean-store-and-process-driver-2026-11-02.md), 2026-11-02: the owner's requests in full, and the detailed findings.
+- [The work items store and process driver](bean-store-and-process-driver-2026-11-02.md), 2026-11-02: the owner's requests in full, and the detailed findings.
 - [Test plans, FHIR TestPlan and the ITB](test-interop-itb-fhir-testplan-2026-10-24.md), 2026-10-24: what existed in the platform, smart-trust-tools and OpenTestBed, and the options weighed.
 - *Gemini Integration and Benchmarking Methodology for WHO Assured AI*, concept note, 2026-11-02.
 - Issue [#991](https://github.com/litlfred/cat-harness/issues/991), which lists every pull request.

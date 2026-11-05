@@ -1,7 +1,7 @@
 ---
 name: release-epic-planning
 description: >
-  Plan and track releases using bean epics. Covers epic creation,
+  Plan and track releases using work item epics. Covers epic creation,
   story/task decomposition, release readiness tracking, and the
   relationship between epics and GitHub milestones. Applies to code
   releases, paper publications, and project milestones.
@@ -14,7 +14,7 @@ This skill governs how to create, structure, and track them.
 
 ## Epic structure
 
-The beans hierarchy for a release:
+The work items hierarchy for a release:
 
 ```
 epic: "Release v0.2.0"
@@ -73,14 +73,14 @@ completed should not depend on any later feature.
 
 ### Tracking readiness
 
-The beans visualizer (`<base>/beans/`) shows open beans grouped by epic.
-A release is ready when its epic shows **0 open beans**.
+The work items visualizer (`<base>/beans/`) shows open work items grouped by epic.
+A release is ready when its epic shows **0 open work items**.
 
 ### Readiness checklist
 
 Before moving from draft to pre-release:
 
-- [ ] All must-have features resolved (all child beans completed)
+- [ ] All must-have features resolved (all child work items completed)
 - [ ] All should-have features either resolved or deferred to next release
 - [ ] CI green on main (`bun run cat gates`)
 - [ ] All changed BPMN diagrams re-rendered
@@ -97,7 +97,7 @@ If a should-have or nice-to-have feature won't make the release:
 beans update <feature-id> --parent <next-epic-id>
 ```
 
-Record the deferral reason in the bean body:
+Record the deferral reason in the work item body:
 
 ```bash
 beans update <feature-id> --body-append "Deferred to v0.3.0: not blocking v0.2.0"
@@ -117,7 +117,7 @@ gh pr edit <number> --milestone "v0.2.0"
 ```
 
 The milestone's completion percentage gives stakeholders a progress view
-without needing access to the beans store.
+without needing access to the work items store.
 
 ## Cross-domain applicability
 
@@ -142,5 +142,5 @@ The hierarchy and readiness tracking are identical.
 - [`release-lifecycle`](release-lifecycle.md) — semver, release types, changelog
 - [`code-review-process`](code-review-process.md) — review within release context
 - [`crdm-requirements-workflow`](../crdm/crdm-requirements-workflow.md) — Phase 4b ordering
-- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) — bean creation protocol
+- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) — work item creation protocol
 - [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) — cross-session coordination

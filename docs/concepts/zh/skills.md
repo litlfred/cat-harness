@@ -123,7 +123,7 @@ LLM 在仓库中高效工作所使用的技能（通过 `skill_fetch` 加载）�
 |-------|---------|
 | `prepare-merge` | 将分支带入干净、绿灯、可合并的状态（另请参阅 `watch`） |
 | `bean-coordination` | 多智能体认领与协作规范 |
-| `todo-manager` | 以 bean 作为待办事项（todo）的管理规范 |
+| `todo-manager` | 以 work item 作为待办事项（todo）的管理规范 |
 
 ### 平台技能包（`skills/tools/folio-core`、`folio-assistant-core/skills/content/folio-document-adapter`、`folio-assistant-sci/skills/content/folio-paper-adapter`）
 

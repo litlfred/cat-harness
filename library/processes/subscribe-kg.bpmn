@@ -34,7 +34,7 @@ A SUBSCRIPTION IS NOT A NEW MECHANISM, and this diagram is where that claim is k
 
 A SUBSTRATE is a repository whose root declaration meets bootstrap's schema requirements and declares at least one harness. Both are answerable from the declaration file alone, so validating one never needs the whole repository.
 
-WHERE IT LIVES: processes/library/, beside Process_MaterializeRemote and Process_RefreshMaterialized, which it calls, naming the kg-subscription and materialize-remote skills in library/skills/large-datasets/; every ref stays inside the harness.
+WHERE IT LIVES: library/processes/, beside Process_MaterializeRemote and Process_RefreshMaterialized, which it calls, naming the kg-subscription and materialize-remote skills in library/skills/large-datasets/; every ref stays inside the harness.
 
 STRICT. The pin and the five gates are the reason: an unpinned subscription is how two subscribers see two graphs under one name, and a gate that only warned is a gate nobody fails.</bpmn:documentation>
     <bpmn:extensionElements>

@@ -15,7 +15,7 @@ graph-typologies:
 This is **one Tool** for the [`work-plan-store`](work-plan-store.md)
 contract, the one every checkout uses today. A process or skill names the
 contract's operation; this page says how this Tool performs it. Another Tool
-(a beans server, an MCP service, a run-scoped store) has its own page and
+(a work items server, an MCP service, a run-scoped store) has its own page and
 keeps the same contract.
 
 ## Where the beans are
@@ -28,7 +28,7 @@ the `beans` entry's `source` in `cat-harness.json`. It is mounted at `beans/` wh
 bun run cat state:mount
 ```
 
-`beans/beans.json` declares the parts: `defs/` (beans), `defs/archive/`,
+`beans/beans.json` declares the parts: `defs/` (work items), `defs/archive/`,
 `notes/`, `workflows/` (instances), `queue/`, `surveys/`, `marks/`.
 
 ## The operations, by this Tool
@@ -41,8 +41,8 @@ bun run cat state:mount
 | `update(id, change, ifMatch)` | `beans update <id> …` | edit the front matter |
 | `note(id, text)` | `beans update <id> --body-append …`, or a file in `beans/notes/` | append to the body, or add a note file |
 | `update(id, { archived: true }, …)` | `beans archive` (the sweep), or move the file | move `defs/<id>--*.md` into `defs/archive/`; the status is kept |
-| `history(id)` | `git log --follow -- beans/defs/<id>--*.md` on the branch, merged with the `history` of every instance in `beans/workflows/` that names the bean | the same |
-| `positions(id)`, `beansAt(…)` | read `beans/workflows/*.json`: an instance names its bean in `bean` and `carriedBeans`, its position in `tokens` | the same |
+| `history(id)` | `git log --follow -- beans/defs/<id>--*.md` on the branch, merged with the `history` of every instance in `beans/workflows/` that names the work item | the same |
+| `positions(id)`, `beansAt(…)` | read `beans/workflows/*.json`: an instance names its work item in `bean` and `carriedBeans`, its position in `tokens` | the same |
 
 Every write is then **pushed to the branch**, never committed to a code PR on
 `main`:
@@ -53,19 +53,19 @@ bun run cat state:push
 
 ## How it keeps the race guarantee
 
-The contract's `ifMatch` is the blob id of the bean file the writer read
+The contract's `ifMatch` is the blob id of the work item file the writer read
 (`BranchStore`'s `expect`). A write whose file has changed at the tip since
 that read is refused as a conflict, so the caller re-reads and retries. A push
 refused only because the tip moved for another file fetches, rebuilds the
 change on the new tip and pushes again. It is never forced. Two sessions
-writing the same bean both land, and the later one sees the earlier one's
+writing the same work item both land, and the later one sees the earlier one's
 change before it writes. The work-plan store's conformance suite holds this Tool to it.
 
 ## Limits
 
 - The `beans` CLI is third-party and absent on a fresh container until
   `cat-harness-tools/scripts/install-beans.sh` has run; `beans-manual` writes the same layout.
-- `history` costs one `git log` per bean, and needs the branch's history
-  fetched (`--depth` enough to reach the bean's creation).
+- `history` costs one `git log` per work item, and needs the branch's history
+  fetched (`--depth` enough to reach the work item's creation).
 - `positions` scans every instance file; a store with many instances should
   use a Tool that indexes them.

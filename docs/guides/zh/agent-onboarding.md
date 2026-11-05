@@ -102,7 +102,7 @@ beans create "<title>"
 bun run cat beans:claim <id>             # CLAIM before you work
 ```
 
-在开始工作前先进行申领，以免两个会话认领同一项任务；并且绝不要解决或删除同伴的 bean。不要建立平行的待办事项存储。不要用 `beans create` 来批量创建机器生成的队列（`*.qa.json`、证据文件等）— 这些应保留为批量 JSON。
+在开始工作前先进行申领，以免两个会话认领同一项任务；并且绝不要解决或删除同伴的 work item。不要建立平行的待办事项存储。不要用 `beans create` 来批量创建机器生成的队列（`*.qa.json`、证据文件等）— 这些应保留为批量 JSON。
 
 完整规范：`work-plan/skills/work-plan/todo-manager.md`、`work-plan/skills/work-plan/bean-coordination.md`。
 

@@ -4,12 +4,12 @@ description: >
   Governs handing ONE task to an agent in another environment — a local
   agent with network the cloud session lacks, a sibling on a different
   machine, anything that cannot read the coordinator's context and that a
-  person may relay to. States who writes which bean, where the receiver
-  reports, what the person pastes (one sentence: bean, branch,
-  repository) and the brief the bean opens with (second person, to the
+  person may relay to. States who writes which work item, where the receiver
+  reports, what the person pastes (one sentence: work item, branch,
+  repository) and the brief the work item opens with (second person, to the
   executor), what the receiver checks before acting, who closes, who may grant an
   exception, and how to recognise and answer the five ways an executor
-  fails. Use when writing a bean for another agent to execute, and as the
+  fails. Use when writing a work item for another agent to execute, and as the
   receiver before acting on one.
   Triggers on: hand off, handoff, local agent, agy, mac agent, needs network,
   executor failed, agent went silent, re-hand,
@@ -32,35 +32,35 @@ only things you will ever see are what it pushes and what it posts.
 
 **Needs** the `beans` CLI on both sides (`cat-harness-tools/scripts/install-beans.sh`)
 and `bun run cat beans:claim`. An executor without them reports that it is
-blocked; it does not edit bean files by hand.
+blocked; it does not edit work item files by hand.
 
 ## 1. One bean, one writer, and the receiver claims it
 
-Before you hand off, write down who may write what. Put it in the bean as a
-`## Roles` table, so the executor reads it in the bean rather than hearing it
+Before you hand off, write down who may write what. Put it in the work item as a
+`## Roles` table, so the executor reads it in the work item rather than hearing it
 from a person:
 
 | role | who | writes |
 |---|---|---|
-| coordinator | the session that opened the bean | the bean's **instructions**, written before the claim; the parent and related beans; the verification record |
-| executor | the agent named in the bean | **only** the handed bean, from the claim onward: its holder note, `## Progress`, `## Evidence`, the `ready-to-close` tag |
+| coordinator | the session that opened the work item | the work item's **instructions**, written before the claim; the parent and related work items; the verification record |
+| executor | the agent named in the work item | **only** the handed work item, from the claim onward: its holder note, `## Progress`, `## Evidence`, the `ready-to-close` tag |
 | verifier | whoever can run the check in `## Done when`, usually the coordinator | the verification result and the close |
 | owner | the person | any exception to a boundary (§6) |
 
-**The executor claims the handed bean and never runs `beans create` for the
+**The executor claims the handed work item and never runs `beans create` for the
 handed work.** If `beans show <id>` finds nothing, it is in the wrong branch
 or the wrong checkout. That is a **stop-and-report**, not a cue to recreate
-the bean: a fresh `beans create` mints a new id, or a second file under an id
-typed by hand, and then two beans answer one question.
+the work item: a fresh `beans create` mints a new id, or a second file under an id
+typed by hand, and then two work items answer one question.
 
-**After the claim, the coordinator never edits the bean.** The claim writes to
-the bean file, so a concurrent edit is a merge conflict on exactly the file
+**After the claim, the coordinator never edits the work item.** The claim writes to
+the work item file, so a concurrent edit is a merge conflict on exactly the file
 both agents care about. Anything the coordinator learns after the claim goes
 to the report channel (§2).
 
 ## 2. The report channel is in the bean, from the start
 
-Give the bean a `## Report to` section that names ONE place: a PR or issue
+Give the work item a `## Report to` section that names ONE place: a PR or issue
 both agents can reach. Then give the exact one-line formats, so the
 coordinator can act on a report without having to interpret it:
 
@@ -82,7 +82,7 @@ a seed, a release). That is how a correction posted after the claim reaches it.
 
 Two texts reach the executor, and they do different jobs.
 
-**What the person pastes: one sentence naming the bean, the branch and the
+**What the person pastes: one sentence naming the work item, the branch and the
 repository.**
 
 ```
@@ -94,7 +94,7 @@ person should not have to edit, shorten or explain it. A paste that carries
 the instructions is long, unversioned and impossible to correct. A paste that
 carries less leaves the executor asking which branch.
 
-**What the bean opens with: a `## Brief` addressed to the executor.** It is
+**What the work item opens with: a `## Brief` addressed to the executor.** It is
 the first section after the front matter, so `beans show` prints it first.
 It is written to an agent that has seen only that one sentence.
 
@@ -109,16 +109,16 @@ the executor guess who is speaking.
 | part | example |
 |---|---|
 | who you are and why this came to you | executor; the coordinator lacks `packages.fhir.org` |
-| WHERE: repository, canonical checkout path (and which one NOT to use), branch and its PR, this bean's id and file path | `~/space_cats/folio-assistant`, not `-backup` |
+| WHERE: repository, canonical checkout path (and which one NOT to use), branch and its PR, this work item's id and file path | `~/space_cats/folio-assistant`, not `-backup` |
 | START: the exact commands, with a test that FAILS in the wrong checkout, ending in `beans:claim` | naming the checkout is not enough; the test makes the wrong checkout fail |
 | the task in two or three sentences, and why the last attempt failed | so the executor knows what the pins guard against |
 | REPORT: where, and the line formats | §2 |
-| STOP AND REPORT IF | the bean's `## Fails if` |
+| STOP AND REPORT IF | the work item's `## Fails if` |
 | LIMITS | §6, plus "never create or edit any other bean" |
-| FINISH: evidence, `ready-to-close`, commit only this bean, final report line | §5 |
+| FINISH: evidence, `ready-to-close`, commit only this work item, final report line | §5 |
 
 The brief summarises and points. The exact commands, pins and history are in
-the sections below it in the same bean. Corrections after the claim go in the
+the sections below it in the same work item. Corrections after the claim go in the
 report channel (§2), never into the brief.
 
 **Template for `## Brief`:**
@@ -174,7 +174,7 @@ mean the executor? Is there no "I" left?
 
 ## 4. Pin the inputs, and check them before acting
 
-Name the expected revision of every input in the bean: each repository the
+Name the expected revision of every input in the work item: each repository the
 step reads, the toolchain branch, and the base it builds from. The executor
 prints what it actually has and **stops on a mismatch**:
 
@@ -189,15 +189,15 @@ consumer will have a clean clone.
 
 ## 5. The executor's measurement is evidence, not the close
 
-`## Done when` names the check that decides the bean, and **where** it runs.
+`## Done when` names the check that decides the work item, and **where** it runs.
 If that check runs anywhere other than the executor's own tree (a fresh
-clone, another environment, CI), the executor cannot close the bean:
+clone, another environment, CI), the executor cannot close the work item:
 
 - the executor tags it `ready-to-close` and quotes under `## Evidence` what it
   measured. This is the third state of
   [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"When you cannot re-derive it
   yourself";
-- the **verifier** runs the named check and closes the bean, or records the
+- the **verifier** runs the named check and closes the work item, or records the
   failure and reopens the work.
 
 A build log is the executor's view of its own tree, and a fresh-clone check
@@ -206,14 +206,14 @@ can fail while the log reads clean.
 **The executor's own check runs on an untouched copy, not on the tree it
 built in.** A build leaves its own files behind, so a check run where the
 work happened agrees with itself whether or not the work is right. So the
-bean's local-check step names a **second** copy: a new clone, a clean
+work item's local-check step names a **second** copy: a new clone, a clean
 container, the published artefact. Never the working directory the step ran
 in. If the step can only be checked in place, say so in `## Evidence`, and
 expect the verifier to disagree.
 
 ## 6. Only the owner grants an exception
 
-A boundary in the bean ("never `--force`", "push only to `fhir-ast/*`", "never
+A boundary in the work item ("never `--force`", "push only to `fhir-ast/*`", "never
 `main`") is the owner's. A coordinating agent **cannot waive it**, even when
 the waiver looks safe, and even in a PR comment the executor will read as
 authoritative. Put the question to the owner with the numbers, and let the
@@ -223,7 +223,7 @@ apart.
 
 ## 7. When the executor fails
 
-Failure is part of the handoff, so the bean states it in advance as a
+Failure is part of the handoff, so the work item states it in advance as a
 `## Fails if` section: the conditions under which the executor **stops and
 reports** instead of carrying on. At minimum:
 - an input mismatch (§4);
@@ -231,7 +231,7 @@ reports** instead of carrying on. At minimum:
 - its own local check disagrees with what it expected;
 - it cannot reach the report channel.
 
-The bean also carries an **expiry**: the time by which the first `started`
+The work item also carries an **expiry**: the time by which the first `started`
 line is due. As [`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md) §"An external block's
 expiry" says, an executor in another environment is an external party, so the
 expiry is a date to **ask again, not a takeover**. The coordinator cannot do
@@ -244,12 +244,12 @@ same way every time:
 |---|---|---|
 | **silent**: no `started` line by the expiry | no line in the report channel; no liveness signal ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"A quiet claim") | ask the person **once**, in the channel, re-posting the one sentence (§3); set the next expiry. Never re-hand to a second executor while the first claim may be live |
 | **stopped**: `refused` or `blocked` | its report line | the coordinator settles the cause if it is in this repository; a boundary or an exception goes to the **owner** (§6) with the numbers. The executor waits |
-| **wrong result**: the step ran, `## Done when` fails | the verifier's check | record the failure under `## Attempts` (attempt *n*: inputs, what was measured, the cause); the bean goes back to `todo` with a holder note, never `completed` or `scrapped`; fix what the cause names (usually the bean) and re-hand |
-| **out of protocol**: created a bean, wrote another bean, pushed outside the boundaries | an unexpected file or ref | a duplicate bean is re-identified and `scrapped` with a pointer, never deleted; a stray push is **reported to the owner**, never reverted by the coordinator ([`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)) |
-| **partial**: some items done | per-item lines | per-item evidence; the bean stays open until every item verifies |
+| **wrong result**: the step ran, `## Done when` fails | the verifier's check | record the failure under `## Attempts` (attempt *n*: inputs, what was measured, the cause); the work item goes back to `todo` with a holder note, never `completed` or `scrapped`; fix what the cause names (usually the work item) and re-hand |
+| **out of protocol**: created a work item, wrote another work item, pushed outside the boundaries | an unexpected file or ref | a duplicate work item is re-identified and `scrapped` with a pointer, never deleted; a stray push is **reported to the owner**, never reverted by the coordinator ([`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)) |
+| **partial**: some items done | per-item lines | per-item evidence; the work item stays open until every item verifies |
 
 **Two failed attempts with the same cause go to the owner, not round again.**
-A third hand-off of the same bean with the same cause shows that the bean
+A third hand-off of the same work item with the same cause shows that the work item
 cannot express what the step needs. The owner decides whether to change the
 step, the environment, or the executor.
 
@@ -257,7 +257,7 @@ step, the environment, or the executor.
 
 - [ ] `## Roles`: coordinator, executor, verifier, owner (§1)
 - [ ] the one sentence to paste: `Do bean <id> on branch <branch> of repo <owner>/<repo>.` (§3)
-- [ ] `## Brief` as the bean's first section, second person, to the executor (§3)
+- [ ] `## Brief` as the work item's first section, second person, to the executor (§3)
 - [ ] `## Report to`: one PR or issue, with the line formats (§2)
 - [ ] `## Inputs`: every expected revision, and "stop on mismatch" (§4)
 - [ ] fresh clone, where reproducibility is the claim (§4)
@@ -268,7 +268,7 @@ step, the environment, or the executor.
 
 ## Checklist: the executor, before the first irreversible step
 
-- [ ] `beans show <id>` finds the handed bean on this branch; if not, stop
+- [ ] `beans show <id>` finds the handed work item on this branch; if not, stop
 - [ ] claimed with `bun run cat beans:claim <id>`, with no `beans create`
 - [ ] inputs printed and matched against `## Inputs`
 - [ ] report channel re-read for corrections

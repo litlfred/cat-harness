@@ -13,7 +13,7 @@ summary: >-
 
 **Status:** proposal; D1–D4 ruled 2026-10-02, all defaults (§6), **and D4 amended
 2026-10-03 to option (b), a branch per graph** — see the amendment under the D4
-row. **Nothing has moved yet.** Epic bean
+row. **Nothing has moved yet.** Epic work item
 `folio-assistant-fs43`. Generalises arc `3fva` (issue
 [#1763](https://github.com/litlfred/folio-assistant/issues/1763), PRs
 [#1764](https://github.com/litlfred/folio-assistant/pull/1764) and
@@ -31,7 +31,7 @@ Owner, 2026-10-02:
 
 > just like there are special branches (gh-pages, qa-reports, lean and fhir-ast
 > caches) we should have a special branch for state based KG content (e.g.
-> todos and beans). and that this branch would be a declared sub-graph. what
+> todos and work items). and that this branch would be a declared sub-graph. what
 > would need to change? develop workplan. this should be a general practice to
 > manage a KG and generated content (and that rendered content is
 > sub-graph/linking to primary semi-static content graph). review processes
@@ -68,7 +68,7 @@ directories declaring them live:
 
 | graph | path | declared in |
 |---|---|---|
-| bean defs (+ archive) | `beans/defs/` | `beans/beans.json`, `folio-assistant.json` |
+| work item defs (+ archive) | `beans/defs/` | `beans/beans.json`, `folio-assistant.json` |
 | workflow instances | `beans/workflows/` | `beans/beans.json` |
 | session surveys | `beans/surveys/` | `beans/beans.json` |
 | todos | `todos/` | `folio-assistant.json` |
@@ -79,17 +79,17 @@ directories declaring them live:
 
 ### 2.3 What it costs
 
-- **Merge friction.** Bean `y7b3` replayed 300 main-into-branch merges: 235
+- **Merge friction.** Work item `y7b3` replayed 300 main-into-branch merges: 235
   conflicted, 147 (63 %) *only* on generated files, and `beans/README.md` alone
-  accounted for 76 — every one on its file-count line. Bean `cflw`: one auditor
+  accounted for 76 — every one on its file-count line. Work item `cflw`: one auditor
   edit rewrote 218 sidecars.
 - **Claims are branch-local.** `bean-coordination` §"A claim is branch-local":
   a claim announces rather than reserves until the PR exists, and 97 of 100
-  `in-progress` beans on `main` recorded no holder (bean `c3d7`).
+  `in-progress` work items on `main` recorded no holder (work item `c3d7`).
   `beans:claim` works around this by **pushing a claim commit straight to
   `main`** from a detached worktree — the one script that treats `main` as a
   shared database.
-- **Every bean edit is a `main` commit**, so it re-triggers the docs site, the
+- **Every work item edit is a `main` commit**, so it re-triggers the docs site, the
   gate set and every PR's "behind main" count for a change to no code.
 
 ## 3. Design
@@ -103,14 +103,14 @@ default. The declaration makes it explicit and checkable.
 |---|---|---|---|---|
 | `content` | chapters, skills, processes | `main` | — | PR |
 | `context` | interaction prefs, roles | `main` | — | PR |
-| `state` | beans, workflow instances, todos | **`state`** | **tip** — one living tree | fetch → splice → push, never `-f` |
+| `state` | work items, workflow instances, todos | **`state`** | **tip** — one living tree | fetch → splice → push, never `-f` |
 | `derived` (verdicts) | QA sidecars | `qa-reports` (3fva) | commit | append under `main/<sha>/`, `pr/<n>/<sha>/` |
 | rendered | the docs site | `gh-pages` | commit (the build stamp) | replace, previews kept |
 | cache | Lake builds | `lake-cache/*` | toolchain + inputs | one key per branch, pruned |
 
 The distinction that matters between `state` and `derived`: **state is not
 regenerable**. A QA verdict can be recomputed from the tree, so a
-commit-keyed snapshot per run is right and losing one costs a rerun. A bean is
+commit-keyed snapshot per run is right and losing one costs a rerun. A work item is
 somebody's decision; it must be a single living tree whose history is the
 audit trail, and a lost write is lost work. So `state` is tip-keyed and its
 write loop must splice, never replace.
@@ -131,7 +131,7 @@ field** rather than adding a second one, and widens its key.
 >
 > "keep workong. fix gaps"
 
-So the intended declarations (bean `2h76`) are:
+So the intended declarations (work item `2h76`) are:
 
 ```jsonc
 // folio-assistant.json (the root instance declares both) — beans, one live copy at the tip of its own branch
@@ -149,7 +149,7 @@ So the intended declarations (bean `2h76`) are:
 
 **Not declared yet, on purpose.** `DirectoryStorageSchema.keyedBy` accepts
 `"tip"` as of the `claude/state-branch-store` PR (stacked on #1764), and `branch-store.ts` exists, but no
-declaration sets `storage` on beans or todos and no reader or writer changed.
+declaration sets `storage` on work items or todos and no reader or writer changed.
 **`main` stays authoritative** until the steward-run flip on #1850, which is
 then a one-line change per directory: add the `storage` member shown above.
 
@@ -165,7 +165,7 @@ then a one-line change per directory: add the `storage` member shown above.
   `{ "source": { "ref": "main", "sha": "<commit>" } }` in the branch's manifest
   — to the content commit it describes. That is the owner's "rendered content
   is a sub-graph linking to the primary content graph", made a field. The
-  deploy's `build.json` (bean `r6es`, this PR) is the first instance: the docs
+  deploy's `build.json` (work item `r6es`, this PR) is the first instance: the docs
   site now says which `main` commit it is a rendering of, and how far behind.
 - `within` (already on `GraphTypologyDef`) names the primary graph a sub-graph
   belongs to. `gh-pages` gets a declaration for the first time, `within` the
@@ -191,7 +191,7 @@ The mechanism is 3fva's, proven by its spike `3ds9` (CI push, fresh container
 push, two concurrent disjoint writers both surviving, cold read latency).
 
 - **One tip-keyed library; qa-store keeps its own for now.**
-  `cat-harness/scripts/branch-store.ts` (bean `2h76`) is generic over any
+  `cat-harness/scripts/branch-store.ts` (work item `2h76`) is generic over any
   declared directory whose `storage.keyedBy` is `"tip"`:
   `BranchStore.open(branch | candidates[])`, then `readFile` / `readJson` /
   `listDir` / `readTree` and `write(changes, message)`. Reads answer
@@ -206,7 +206,7 @@ push, two concurrent disjoint writers both surviving, cold read latency).
   same bean" detectable rather than last-writer-wins. The library never
   creates a branch: seeding one carries the manifest and is a steward act.
   `qa-store.ts` has the same loop for commit-keyed entries. Whether it adopts
-  `branch-store.ts` is arc 3fva's call, and a later bean.
+  `branch-store.ts` is arc 3fva's call, and a later work item.
 - **Layout: paths mirror the checkout.** The seeds `cat/cat-harness/beans` @
   `b3709ad` and `cat/cat-harness/todos` @ `7ad5854` are orphans. Each holds
   `README.md`, `manifest.json` (`state-manifest/v1`, `keyedBy: "tip"`,
@@ -221,16 +221,16 @@ push, two concurrent disjoint writers both surviving, cold read latency).
 - **A claim becomes global the moment it is written.** `beans:claim` already
   pushes to `main`; it pushes to `state` instead. §"A claim is branch-local" in
   `bean-coordination` stops being true — the largest single gain.
-- **Pinning to a code commit.** A PR that closes a bean says so in its body
-  (`Closes-bean: <id>`); `merge-main.yml`'s post-merge job transitions the bean
-  on `state` with `source.sha` = the merge commit. Code and bean are no longer
+- **Pinning to a code commit.** A PR that closes a work item says so in its body
+  (`Closes-bean: <id>`); `merge-main.yml`'s post-merge job transitions the work item
+  on `state` with `source.sha` = the merge commit. Code and work item are no longer
   one commit, so the link is a field rather than co-location.
 
 ### 3.5 What a gate becomes
 
-The nine bean gates (`check:bean-parents`, `bean-blocks`, `bean-rollup`,
+The nine work item gates (`check:bean-parents`, `bean-blocks`, `bean-rollup`,
 `bean-bodies`, `bean-front-matter`, `bean-issue-links`, …) stop running on code
-PRs that touch no bean and run **on push to `state`** instead, as a required
+PRs that touch no work item and run **on push to `state`** instead, as a required
 check on that branch's own workflow. A gate that cannot fetch the branch
 reports `unknown`, never a pass — the same rule as 3fva §2.3.
 
@@ -242,7 +242,7 @@ Inventory, every reader and writer found (Explore sweep, 2026-10-02).
 > text and is NOT.** Two rows' `change` has since been measured wrong, and a
 > worklist carrying a wrong instruction is worse than one carrying none — so
 > each is struck where it is dead rather than quietly rewritten, with the
-> measurement named beside it. The bean notes are
+> measurement named beside it. The work item notes are
 > `beans/notes/folio-assistant-9ofm--2026-10-03--claude-9ofm-cutover-prereqs.md`
 > (the ordering A–D) and `…--2026-10-04--claude-beans-off-main-9ofm.md` (the
 > two open measurements and the exact cutover commit).
@@ -251,19 +251,19 @@ Inventory, every reader and writer found (Explore sweep, 2026-10-02).
 |---|---|---|---|
 | schema | `schemas/cat-harness.ts` (`DirectoryStorageSchema`, from #1764), `schemas/bean-graph.ts` | widen `keyedBy` to `commit \| tip` — **shared with 3fva**; no new field | **done** #1937; `source: { kind: "branch" }` superseded `storage` in #1987 |
 | schema | `graph-typology-registry.ts` | `holds: state` ⇒ default `storage.keyedBy: tip`; a check that a declared `state` dir on `main` is a finding once migrated | **done** as `tipPresence` + `check:declared-dirs` (row B) |
-| beans CLI | `.beans.yml` | `path: state/beans/defs` | ~~as written~~ — **no change needed**, measured: under D4 (b) a mount lands at the DECLARED path, so `beans/defs` still resolves, and the CLI read and wrote a store in a directory under no version control at all |
+| `beans` CLI | `.beans.yml` | `path: state/beans/defs` | ~~as written~~ — **no change needed**, measured: under D4 (b) a mount lands at the DECLARED path, so `beans/defs` still resolves, and the CLI read and wrote a store in a directory under no version control at all |
 | engine | `cat-harness/src/workflow/store.ts` `WORKFLOW_DIR` | resolve from the declaration, not a constant | **done** #2052 — and the constant stays as the checked default |
 | claim | `cat-harness/scripts/claim-bean.ts` | push to `state`, not `main` | #2042 — a **hard prerequisite** of the cutover |
 | fallback | `cat-harness/scripts/beans-fallback.ts` | read the mount; fix its stale `beans/*.md` header | **done** #2036 |
 | landed | `cat-harness/scripts/beans-landed.ts` | read `Closes-bean:` from merges | **done** by inheritance — it reads through `beans-fallback`'s `listBeans` |
 | session start | `.claude/settings.json` hook, `session-start-coord-sweep.sh` | fetch + mount `state/`; report "could not mount" as a finding | **done** #2001, and §3.5/3.6 of the sweep |
-| site | `gen-docs-pages.ts` (`assets/beans/index.json`), `state-visualizer.ts` | read from the branch at build; `docs-site.yml` also triggers on push to `state` | readers **done** #2036; the build-time mount **done** #2052; the trigger is bean `fwtz` and needs an explicit `ref: main` |
-| gates | `code-quality-gates.yml` (9 bean gates, `check:harness-dirs`, `check:harness-state`, `kg:audit`, `audit:coverage`) | read `storage`; bean gates move to a `state`-branch workflow | the mount and a `check:workflows` rule holding it **done** #2052; moving them to a branch workflow is `0tg5` |
+| site | `gen-docs-pages.ts` (`assets/beans/index.json`), `state-visualizer.ts` | read from the branch at build; `docs-site.yml` also triggers on push to `state` | readers **done** #2036; the build-time mount **done** #2052; the trigger is work item `fwtz` and needs an explicit `ref: main` |
+| gates | `code-quality-gates.yml` (9 work item gates, `check:harness-dirs`, `check:harness-state`, `kg:audit`, `audit:coverage`) | read `storage`; work item gates move to a `state`-branch workflow | the mount and a `check:workflows` rule holding it **done** #2052; moving them to a branch workflow is `0tg5` |
 | health | `test/health/run.ts` | write results through the library | open; its branch is not seeded |
 | todos | `scripts/todos.ts`, `render-pipeline.ts` | write through the library | #2042 |
 | issue marks | `scan-repo-content.ts`, `merge-conflict-patterns.ts`, `harness-tiles.ts` | read through the library | #2042 |
 | scaffold | `folio_init` templates | write the declarations and the hook | ~~the declarations~~ — a fresh folio has no seeded branch, so a branch declaration would make its first `state:mount` fail loudly; it wants `kind: "directory"` and a cutover of its own |
-| docs | `AGENTS.md` (beans section), onboarding guide | pointers only | P5, bean `89cl` |
+| docs | `AGENTS.md` (work items section), onboarding guide | pointers only | P5, work item `89cl` |
 
 ### 4.1 Skills and processes to adjust
 
@@ -276,9 +276,9 @@ a branch that does not exist yet is a rule nobody can follow.
 | `kg-core/directory-conventions` | the `storage` field; "a graph on another ref is still a declared directory" |
 | `sdlc-core/todo-manager` | the mount; `state:push`; "WHEN COMMITTING include bean files" becomes "push the state worktree" |
 | `sdlc-core/bean-coordination` | retire §"A claim is branch-local"; `Closes-bean:` replaces co-located commits |
-| `sdlc-core/continual-progress` | a bean edit is no longer part of the PR's commit set |
+| `sdlc-core/continual-progress` | a work item edit is no longer part of the PR's commit set |
 | `process/workflow/workflow-state`, `process-state` | instances live on `state`; "no instance recorded" reads the branch |
-| `processes/*.bpmn` with `<cat-harness.processes:bean op>` | the engine's bean op writes through the library — diagrams unchanged |
+| `processes/*.bpmn` with `<cat-harness.processes:bean op>` | the engine's work item op writes through the library — diagrams unchanged |
 | `proposals/workflow-state-in-beans.md` | §0 addendum: Option A's co-location is kept; only the ref moves |
 
 ## 5. Workplan
@@ -310,9 +310,9 @@ declared `path` already says where a file lives on either side.
 `state:push`.
 
 **Phase 3 — migrate readers and writers (⇉ per row of §4).** Each row is one
-bean, each green against the branch before the next phase.
+work item, each green against the branch before the next phase.
 
-**Phase 4 — gates (⇉).** The bean gates move to a `state`-branch workflow;
+**Phase 4 — gates (⇉).** The work item gates move to a `state`-branch workflow;
 `check:harness-dirs`, `audit:coverage`, `kg:audit` read `storage`.
 
 **Phase 5 — skills, processes, docs (⇉ after Phase 3).** §4.1.
@@ -334,8 +334,8 @@ and `audit:coverage` can see all of them.
 Recommended option first. **The default applies if no answer comes, and the
 work proceeds on it.**
 
-- **D1. What moves.** (a) **beans (defs, archive, workflows, surveys), todos,
-  issue-marks, health results (recommended)**; (b) beans only, as a pilot;
+- **D1. What moves.** (a) **work items (defs, archive, workflows, surveys), todos,
+  issue-marks, health results (recommended)**; (b) work items only, as a pilot;
   (c) (a) plus `uploads/`. *Default: (a).*
 - **D2. How an agent session writes to `state`.** Cloud sessions are told to
   push only to their own branch. (a) **direct push to `state` through the
@@ -358,19 +358,19 @@ work proceeds on it.**
   > part of state"*.
   >
   > This reverses the 2026-10-02 ruling on **D4 only**. D1, D2 and D3 are
-  > unchanged — beans, workflow instances, todos, issue-marks and health
+  > unchanged — work items, workflow instances, todos, issue-marks and health
   > results all still move; only their DESTINATION changed, from directories
   > inside one `state` branch to a `cat/<harness>/<name>` branch each. The
-  > "more mounts" cost named in option (b) is what bean `2h76`'s fan-out pays:
+  > "more mounts" cost named in option (b) is what work item `2h76`'s fan-out pays:
   > `state:mount` and `state:push` iterate the declared tip-keyed directories
   > and mount or splice each from the branch its own declaration names, so
   > "one mount" was never load-bearing — "one fetch" is still true per graph.
   >
   > `cat/cat-harness/state`, seeded under option (a), is **superseded rather
-  > than deleted**: retiring that name is bean `oycs`, and nothing here
+  > than deleted**: retiring that name is work item `oycs`, and nothing here
   > removes it (`deletion-requires-confirmation`).
   >
-  > The ruling, with its measurements, is the bean note
+  > The ruling, with its measurements, is the work item note
   > `beans/notes/folio-assistant-2h76--2026-10-03--claude-festive-galileo-s7ibx0.md`.
   > The options above are kept as the record of what was weighed.
 
@@ -380,16 +380,16 @@ work proceeds on it.**
   hook's fetch fails silently and `beans list` returns empty, the agent reads
   "no work" — the third state collapsing into zero. The hook must fail loudly,
   and `beans-fallback` must refuse rather than read an empty directory.
-- **Concurrent writers lose a bean edit.** 3fva's spike showed disjoint paths
-  survive; two sessions editing the **same** bean is the new case and must be
+- **Concurrent writers lose a work item edit.** 3fva's spike showed disjoint paths
+  survive; two sessions editing the **same** work item is the new case and must be
   measured before Phase 6. A lost edit is a falsifier, not a tuning issue.
-- **A reader is found that needs the bean beside the code in one commit** —
-  e.g. a review that must see the bean transition in the PR diff. Then D2 (b)
+- **A reader is found that needs the work item beside the code in one commit** —
+  e.g. a review that must see the work item transition in the PR diff. Then D2 (b)
   for that case, and §3.4's `Closes-bean:` gains a rendered view on the PR.
 
 ## 8. Not in scope
 
-- Changing what a bean or a workflow instance *contains*.
+- Changing what a work item or a workflow instance *contains*.
 - The QA move itself — that is arc 3fva; this proposal only shares its field
   and library.
 - Merge queue / require-up-to-date (`1hjm`, `kgho`).

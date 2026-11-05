@@ -13,7 +13,7 @@ summary: >-
 
 **Status:** proposal for review. Issue [#1763](https://github.com/litlfred/folio-assistant/issues/1763).
 The owner raised it twice, and both times it was recorded only as a pointer.
-Bean `eqxp` says *"the owner's proposal of moving QA reports off `main` to a
+Work item `eqxp` says *"the owner's proposal of moving QA reports off `main` to a
 content-addressed orphan branch … is written up separately"*. It never was.
 `interaction-modality` lists "the orphan branch" among the owner decisions
 left open. This document is that write-up, and it adds the test-process half
@@ -60,7 +60,7 @@ and the rest have 3 to 15 each.
 ### 1.2 What it costs
 
 - **Merge friction.** PR #1633 went through 22 merge cycles. Over the last three, 24
-  of 25 conflicts were in generated files (bean `eqxp`). Bean `520m` counted six
+  of 25 conflicts were in generated files (work item `eqxp`). Work item `520m` counted six
   merges, six conflict sets, all generated and none in authored code. The
   mechanical conflicts *crowd out attention* from the one that needed judgement.
 - **`.gitattributes` cannot remove them.** `eqxp` correction 1 showed that `-merge`
@@ -76,7 +76,7 @@ and the rest have 3 to 15 each.
 
 ### 1.3 Why the files were committed in the first place, and why that still matters
 
-Bean `520m` recorded the reason: *"a printed verdict is
+Work item `520m` recorded the reason: *"a printed verdict is
 gone, and this repository wants 'unaudited since it was drawn' distinguishable
 from 'broken in the commit under review'."* That requirement **stands**. The
 proposal keeps the property and changes only *where* the durable copy lives.
@@ -161,7 +161,7 @@ optional `storage` field:
 - `audit:coverage` and `check:harness-dirs` read `storage` and stop expecting
   the files in the checkout.
 - `folio_init` writes the same declaration, so a folio inherits the behaviour.
-  `qou`'s 3,653 sibling verdicts (bean `s3p2`) become the first downstream
+  `qou`'s 3,653 sibling verdicts (work item `s3p2`) become the first downstream
   consumer.
 
 ## 3. Design — part B: a strawperson test process
@@ -231,13 +231,13 @@ criteria (a registry or a plan) and whether a decision is taken on the rollup.
 
 ## 4. Workplan
 
-Each item is a bean under the arc epic **`3fva`**. The beans are: `gurh` (0.1), `bo44` (0.3), `yhjr` (0.4), `3ds9` (1.2), `16ei` (Phase 2), `oqe3` (3.1, 3.2), `2ae2` (3.3, 3.4), `7mwa` (3.5, 3.6), `5hox` (3.7), `d6bw` (Phase 4), `ygzh` (5.1, 5.2), `3o5b` (5.4, 5.5) and `ff09` (5.6). **⇉** marks an item an agent can run in
+Each item is a work item under the arc epic **`3fva`**. The work items are: `gurh` (0.1), `bo44` (0.3), `yhjr` (0.4), `3ds9` (1.2), `16ei` (Phase 2), `oqe3` (3.1, 3.2), `2ae2` (3.3, 3.4), `7mwa` (3.5, 3.6), `5hox` (3.7), `d6bw` (Phase 4), `ygzh` (5.1, 5.2), `3o5b` (5.4, 5.5) and `ff09` (5.6). **⇉** marks an item an agent can run in
 parallel, in its own worktree, with no shared files. **→** marks an item that must
 wait for the one named.
 
 ### Phase 0: pick up the stalled handover (now, ⇉ all)
 
-| # | item | bean |
+| # | item | work item |
 |---|---|---|
 | 0.1 | `main` is red: 12 consecutive Code-quality failures, Docs site red, watchdog issue #1755. Fallout from the placement moves, by inference. **First: check whether a sibling session already owns it.** | new |
 | 0.2 | `check:source-licence` cannot fail on its own content (#1751, draft #1753, 2 checks red) | `i2kp` |
@@ -286,7 +286,7 @@ Processes: `code-quality-gates.bpmn` (a publish step), a new `qa-publish.bpmn`, 
 
 ### Phase 5: the test process (⇉ with Phase 2; registry edits serialised)
 
-| # | item | bean |
+| # | item | work item |
 |---|---|---|
 | 5.1 | `test-plan/v1` schema and kind | new |
 | 5.2 | `folio-test-run/v1` gains `plan` and `sut`; add `test-report/v1` | new |
@@ -328,7 +328,7 @@ medium size guideline. A larger swarm would be asked for separately
 > - **D2 (a):** attestations stay on `main` in `test/attestations/`.
 > - **D4 (b) "right away":** the moved files are removed from `main` as soon as
 >   every reader is migrated and the branch holds a hash-verified copy. No
->   7-day soak. This is the owner's explicit go for bean `5hox`.
+>   7-day soak. This is the owner's explicit go for work item `5hox`.
 > - **D3 and D5 were not asked.** They proceed on their defaults: (a) and (a).
 >
 > The options below are kept as the record of what was weighed.

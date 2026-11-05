@@ -144,7 +144,7 @@ de contenido, no alternativas entre las que elegir.
 |-----------|-----------|
 | `prepare-merge` | Llevar una rama a un estado limpio/en verde/fusionable (consulta también `watch`) |
 | `bean-coordination` | Disciplina de reclamación/coordinación multiagente |
-| `todo-manager` | Disciplina de beans como tareas pendientes (*beans-as-todos*) |
+| `todo-manager` | Disciplina de work items como tareas pendientes (*beans-as-todos*) |
 
 ### Paquetes de habilidades de plataforma (`skills/tools/folio-core`, `folio-assistant-core/skills/content/folio-document-adapter`, `folio-assistant-sci/skills/content/folio-paper-adapter`)
 

@@ -15,7 +15,7 @@ else computes it).
 | | `holds` | examples |
 |---|---|---|
 | **Static Context** | `content`, `context`, `derived` | Skills, User Stories, Schemas, Workflows, methodologies, memories |
-| **Dynamic Context** | `state` | beans, todos, Workflow instances, QA sidecars |
+| **Dynamic Context** | `state` | work items, todos, Workflow instances, QA sidecars |
 
 A step that writes to a `context` graph is a defect rather than an update,
 which is the whole reason the field is REQUIRED — a kind that has not decided

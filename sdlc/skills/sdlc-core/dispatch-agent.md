@@ -98,16 +98,16 @@ guessing. Deviating from the marker or the four keys breaks the monitor.
 ## 2. Dispatch procedure
 
 **Where the work comes from.** A handover report hands its unstarted items over
-as DISPATCH LINES — one fixed sentence per bean, per
+as DISPATCH LINES — one fixed sentence per work item, per
 [`handover-report`](handover-report.md) rule 7:
 
 ```
 Do bean folio-assistant-<id> on branch <branch-to-create> of repo <owner>/<repo>.
 ```
 
-Take the front from that line rather than inventing a scope: the bean carries
+Take the front from that line rather than inventing a scope: the work item carries
 its own Done-when, so the agent's result can be judged, which a theme does not
-allow. If you are dispatching work that has no bean, bean it first.
+allow. If you are dispatching work that has no work item, work item it first.
 
 1. **Scope each front** to one independent agent (no shared files between
    agents — worktree isolation makes parallel file writes safe; use

@@ -1,7 +1,7 @@
 ---
 name: related-work-coordination
 description: >
-  Before new work takes shape, find the work it touches. Search beans, issues
+  Before new work takes shape, find the work it touches. Search work items, issues
   and open PRs for relevance; categorize and summarize every hit; then ask the
   user whether and how to coordinate. Judgement decides the categories and the
   recommendation, and the user decides the coordination. Called by CRDM when a
@@ -21,7 +21,7 @@ description: >
 
 | where | how | why |
 |---|---|---|
-| beans | `beans list --json`, then match on titles **and bodies**; include recently completed beans | a completed bean is a decision already made |
+| work items | `beans list --json`, then match on titles **and bodies**; include recently completed work items | a completed work item is a decision already made |
 | issues | the repository's issues, open and closed | an open issue may already own the requirement |
 | open PRs | the repository's open pull requests | a PR touching the same files is the collision worth finding first |
 
@@ -51,5 +51,5 @@ Recommend one of them. **Do not link, block, merge or comment on another item be
 
 ## Record
 
-- Write the choice where it will be found: bean links (`--blocked-by`, `--parent`), a section in the issue or PR body, or "note only".
+- Write the choice where it will be found: work item links (`--blocked-by`, `--parent`), a section in the issue or PR body, or "note only".
 - A declined coordination is recorded too.

@@ -81,7 +81,7 @@ is not enabled**. That has consequences for how you author:
   location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld"
   importType="http://www.w3.org/ns/json-ld"/>`.
 - **A store is not a lane.** Lanes are for people and agents, the roles that
-  act. A place where things are kept, such as the work plan (beans), a corpus,
+  act. A place where things are kept, such as the work plan (work items), a corpus,
   a session record, an activity log or a published bucket, is a
   `<bpmn:dataStoreReference>`. The tasks that read or write it point at it
   with data associations, and each task sits in the lane of whoever does it.
@@ -93,8 +93,8 @@ is not enabled**. That has consequences for how you author:
   `description`), the page reads it from the published named-subgraph JSON-LD
   (`bun run cat subgraph:jsonld`) rather than from anything written by hand, and
   `check:process-index` fails when a declared diagram's node has none. So that sentence says what the process does or answers
-  — not who asked for it, which bean or issue it came from, or where the work
-  got to. Those belong later in the documentation, or in the bean.
+  — not who asked for it, which work item or issue it came from, or where the work
+  got to. Those belong later in the documentation, or in the work item.
 - **A gateway may be computed rather than chosen** — see `dmn-authoring`.
 - **Policy is declared on the process.** `<cat-harness.processes:policy enforcement="strict"/>`
   means `workflow_gate` refuses a step that is not enabled; absent policy means
@@ -122,7 +122,7 @@ methodology.
   7PMG's 50 (`process-decompose`, major), and it predicts modelling errors
   such as deadlocks, not reading speed.
 - **One start event per process level** (`process-single-start`). Several
-  named end events are fine, and the bean CLOSE pattern needs them.
+  named end events are fine, and the work item CLOSE pattern needs them.
 - **A decision is a question, its branches are the answers**
   (`decision-label-question`).
 - **Label activities verb-object**: imperative verb, then its object (*Review
@@ -158,12 +158,12 @@ this:
 - **Keep the node ids when you move nodes into a phase.** A test, a schema or
   a skill that points at `Task_X` then changes only its file and process, not
   its id.
-- **Open and close the bean at the top, once.** A process that is only ever
-  called runs on its caller's bean, so a phase calls neither
+- **Open and close the work item at the top, once.** A process that is only ever
+  called runs on its caller's work item, so a phase calls neither
   `Process_BeanOpen` nor `Process_BeanClose` (`check:bean-calls`).
   "Once" holds for the top as well: a process with several outcomes routes
   them all into **one** `Process_BeanClose` call, which decides itself whether
-  the bean is completed, scrapped or blocked, and only then branches to its
+  the work item is completed, scrapped or blocked, and only then branches to its
   named end events. One close per outcome repeats the same box and makes the
   diagram wide.
 - **A caller's `adjudication accepts` looks one level down.** If the judgement

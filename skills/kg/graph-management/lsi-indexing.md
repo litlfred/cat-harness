@@ -2,7 +2,7 @@
 name: lsi-indexing
 description: >-
   Build, read and audit a Latent Semantic Indexing index over a declared prose
-  graph — a library, the skills, the beans, docs — to find units that discuss
+  graph — a library, the skills, the work items, docs — to find units that discuss
   the same thing in different words, near-duplicates, outlier clusters, and a
   proposed home for unfiled work. Every output is a proposal; LSI never writes
   a relation.
@@ -100,15 +100,15 @@ document, written as `keywords.json` and shown in the library viewer). The
 scoring rules are documented with `keywordsOf` in `pipeline/lsi.ts`,
 and the ingestion skill that runs it says when (`skill_fetch
 l1-document-ingestion`, §"Keywords"). Reuse it for any unit set the index
-covers — beans, chapters — rather than writing a second term weighting.
+covers — work items, chapters — rather than writing a second term weighting.
 
 ## Correspondence analysis — the parallel track
 
 [`correspondence-analysis`](../../../methodologies/correspondence-analysis.md)
 is a separate method over the same term matrix (`pipeline/ca.ts`):
 the SVD of the χ² residuals, so no dimension carries document length or term
-frequency. `bun run cat lsi:epics --method ca` runs it on the bean store.
-**It is not significantly better or worse than LSI at filing beans** (exact
+frequency. `bun run cat lsi:epics --method ca` runs it on the work item store.
+**It is not significantly better or worse than LSI at filing work items** (exact
 McNemar p = 0.17–0.71), so LSI stays the default. Reach for CA
 when an LSI dimension 1 has no negative pole, or when the question is which
 units are UNUSUAL — CA's leading dimensions go to the most distinctive
@@ -177,7 +177,7 @@ merge-conflict magnet. `lsi:epics` rebuilds it each run.
 ## Reading a sidecar
 
 - **`retained`** — share of ‖A‖²_F the rank-`k` approximation keeps. It is not
-  a quality score; a low value on a large heterogeneous graph (beans: ~45 %)
+  a quality score; a low value on a large heterogeneous graph (work items: ~45 %)
   is expected.
 - **Dimension 1 is usually a margin.** Qi et al. (2023): LSA's first
   dimensions mainly carry document length and overall term frequency. A
@@ -189,8 +189,8 @@ merge-conflict magnet. `lsi:epics` rebuilds it each run.
 - **`narrowDimensions`** — a dimension ≥ 80 % of whose mass sits on ≤ 3 units
   (or 1 %). Almost always non-prose: Lorem-ipsum layout filler, font
   specimens, a mis-extracted page. Treat as an ingestion finding.
-- **`nearDuplicates`** — cosine ≥ 0.95. In the bean store these are beans
-  filed twice. A duplicate bean
+- **`nearDuplicates`** — cosine ≥ 0.95. In the work item store these are work items
+  filed twice. A duplicate work item
   is **scrapped with a pointer**, never deleted (`bean-coordination`).
 
 ## The need-an-index audit
@@ -243,25 +243,25 @@ A graph that needs an index and has none is a standing `minor` finding on the
 ## Epic filing — the qou hierarchy, proposed by evidence
 
 The qou project-management skills (`todo-manager`, `session-intent`) require
-every piece of work to sit under a parent bean. `lsi:epics` proposes that
-parent for each open bean with no epic, each unmerged branch and each open PR:
+every piece of work to sit under a parent work item. `lsi:epics` proposes that
+parent for each open work item with no epic, each unmerged branch and each open PR:
 
-1. **explicit first** — a `parent:` chain that reaches an epic, or a bean id
+1. **explicit first** — a `parent:` chain that reaches an epic, or a work item id
    named in a branch's commit messages (case-insensitive, merge commits
    excluded);
 2. **latent second** — cosine to each open epic's centroid (the epic plus all
-   descendants of every status, each normalised; leave-one-out for the bean
+   descendants of every status, each normalised; leave-one-out for the work item
    being scored). A branch or PR is folded in from its name and commits.
 
-It prints a **calibration line**: of the beans already under an epic, how
+It prints a **calibration line**: of the work items already under an epic, how
 often LSI's best guess is the current epic (about 59 % against 21 classes,
 flat across k = 50–250; log-entropy beats tf-idf). Read every proposal in that
 light.
 
-**A disputed filing is not a misfiling.** A bean filed by *symptom*
+**A disputed filing is not a misfiling.** A work item filed by *symptom*
 (translation catalogues under CI RELIABILITY because they turned `main` red)
 may be filed by LSI by *subject* (TRANSLATION). Both are defensible; which axis an epic means is a decision for
 the owner, not for the score.
 
 **Never apply the proposal in bulk.** `beans update <id> --parent <epic>` is
-done one bean at a time by somebody who read both the bean and the epic.
+done one work item at a time by somebody who read both the work item and the epic.

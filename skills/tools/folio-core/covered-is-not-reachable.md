@@ -187,7 +187,7 @@ verdict somebody else produced.
 ## The same failure one level out: a KIND, not a mechanism
 
 Ask what is missing of a **kind of node** and the same mistake appears: counting
-`kg-qa` sidecars over the bean store, finding zero, and calling beans unaudited
+`kg-qa` sidecars over the work item store, finding zero, and calling work items unaudited
 when several gates audit them. **Coverage is a relation between an instrument and
 the question it was built for** — see
 [`audit-coverage`](../../kg/kg-core/audit-coverage.md), with
