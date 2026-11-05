@@ -680,6 +680,9 @@ summary.fa-workplan-tree-row:focus-visible,
   padding-left: 1.6rem;
   font-size: 0.72rem;
   color: var(--fa-wp-muted);
+  min-width: 0;
+  box-sizing: border-box;
+  overflow-wrap: anywhere;
 }
 .fa-workplan-plan-label {
   text-transform: uppercase;
@@ -687,5 +690,12 @@ summary.fa-workplan-tree-row:focus-visible,
   font-weight: 600;
 }
 .fa-workplan-plan code {
+  font-size: inherit;
+}
+.fa-workplan-plan-proposal-link {
+  color: inherit;
+}
+.fa-workplan-plan-items {
+  margin-left: 0.5rem;
   font-size: inherit;
 }

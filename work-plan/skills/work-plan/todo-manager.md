@@ -362,8 +362,8 @@ beans list --tag process:<bpmn:process id>                    # every plan that 
   key it does not know on its next write (measured 2026-11-05), and keeps tags.
 - **A `process:` tag is what makes it a plan.** A `proposal:` tag alone does
   not: a proposal with no process to run is not a plan yet. A plan filed as a
-  feature or a story is reported, not refused (`schemas/sdlc/work-plan.ts` in
-  cat-harness-tools).
+  feature or a story is reported, not refused (the work-plan schema in the
+  tools layer reports it).
 - **Start the process under the plan**: `workflow_start` with `plan: <epic-id>`
   (`bun run cat workflow:start <process> <subject> --plan <epic-id>`). The
   instance names its plan, as it names its work item; the plan does not list

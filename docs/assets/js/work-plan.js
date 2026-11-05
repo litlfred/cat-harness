@@ -113,7 +113,7 @@
    * reading "task" beside a process diagram reads as one (owner, 2026-10-16).
    * Display only — the front matter keeps `type: task`.
    */
-  var TYPE_LABEL = { task: "story" };
+  var TYPE_LABEL = { task: "story", plan: "work plan" };
   function typeLabel(t) { return TYPE_LABEL[t] || t; }
 
   /**
@@ -350,7 +350,7 @@
       var b = beans[i];
       if (under && !under[b.id]) continue;
       // Type scope: only beans of the selected type
-      if (TYPE_SCOPE && b.type !== TYPE_SCOPE) continue;
+      if (!typeOk(b)) continue;
       if (QUERY && !matchesQuery(b)) continue;
       out.push(b);
     }
@@ -374,7 +374,7 @@
    */
   function matchesQuery(b) {
     if (b._hay === undefined) {
-      b._hay = [b.id, b.title, b.status, b.type, b.preview || ""].join(" ").toLowerCase();
+      b._hay = [b.id, b.title, b.status, b.type, b.preview || "", planHay(b)].join(" ").toLowerCase();
     }
     var terms = getQueryTerms();
     for (var i = 0; i < terms.length; i++) {
@@ -384,13 +384,44 @@
   }
 
   /**
+   * The plan a work item sits under: itself if it is one, else its nearest
+   * ancestor that is. Searching for a proposal therefore finds the plan it
+   * seeded AND every work item under that plan (owner, 2026-11-05: epics are
+   * tied to proposals, so a proposal finds the work done for it).
+   */
+  var BY_ID = null;
+  function planOf(b) {
+    if (!BY_ID) {
+      BY_ID = Object.create(null);
+      for (var i = 0; i < ALL_BEANS.length; i++) BY_ID[ALL_BEANS[i].id] = ALL_BEANS[i];
+    }
+    for (var c = b, guard = 0; c && guard < 64; c = BY_ID[c.parent], guard++) {
+      if (c.plan) return c;
+    }
+    return null;
+  }
+
+  /** The words of a work item's plan a search may match: proposal and processes. */
+  function planHay(b) {
+    var p = planOf(b);
+    if (!p) return "";
+    return [p.plan.proposal || ""].concat(p.plan.processes || []).join(" ");
+  }
+
+  /** Does `b` pass the type filter? "plan" is the work-plan filter, not a type. */
+  function typeOk(b) {
+    if (!TYPE_SCOPE) return true;
+    return TYPE_SCOPE === "plan" ? !!b.plan : b.type === TYPE_SCOPE;
+  }
+
+  /**
    * A work plan's marker: the process it runs, the proposal it came from, and
    * how many instances are running under it (work item folio-assistant-exrp,
    * owner 2026-11-05: "Epic is the plan"). Read off the projection's `plan`,
    * which only a plan carries. `runs: null` means the instance store could not
    * be read, which is said rather than shown as "0 running".
    */
-  function planMarker(plan) {
+  function planMarker(plan, id, hasItems) {
     var box = el("span", { class: "fa-workplan-plan" });
     box.appendChild(el("span", { class: "fa-workplan-plan-label" }, "work plan"));
     box.appendChild(document.createTextNode(" runs "));
@@ -400,7 +431,16 @@
     }
     if (plan.proposal) {
       box.appendChild(document.createTextNode(" · from "));
-      box.appendChild(el("code", { class: "fa-workplan-plan-proposal" }, plan.proposal));
+      var prop = el("code", { class: "fa-workplan-plan-proposal" }, plan.proposal);
+      var propHref = viewHref(plan.proposal);
+      if (propHref) {
+        var a = el("a", { href: propHref, class: "fa-workplan-plan-proposal-link",
+                          title: "Open the proposal this plan came from" });
+        a.appendChild(prop);
+        box.appendChild(a);
+      } else {
+        box.appendChild(prop);
+      }
     }
     var runs = plan.runs;
     var running = 0;
@@ -419,6 +459,12 @@
     var count = el("span", { class: "fa-workplan-plan-runs" }, text);
     if (where.length) count.setAttribute("title", where.join("\n"));
     box.appendChild(count);
+    if (hasItems && SCOPE !== id) {
+      var items = el("button", { type: "button", class: "fa-workplan-action fa-workplan-plan-items",
+                                 title: "Show only the work items of this plan" }, "Its work items");
+      items.setAttribute("data-scope", id);
+      box.appendChild(items);
+    }
     return box;
   }
 
@@ -510,7 +556,7 @@
   /** Does `b` pass the type filter, the search, and the open/closed switch? */
   function treeMatch(b) {
     if (!SHOW_CLOSED && !WORKPLAN_OPEN[b.status]) return false;
-    if (TYPE_SCOPE && b.type !== TYPE_SCOPE) return false;
+    if (!typeOk(b)) return false;
     if (QUERY && !matchesQuery(b)) return false;
     return true;
   }
@@ -563,7 +609,7 @@
       if (filtering && matched[b.id]) row.className += " is-match";
       var type = el("span", { class: "fa-workplan-tree-type is-" + b.type }, typeLabel(b.type));
       row.insertBefore(type, row.firstChild);
-      if (b.plan) row.appendChild(planMarker(b.plan));
+      if (b.plan) row.appendChild(planMarker(b.plan, b.id, (kids[b.id] || []).length > 0));
       while (row.firstChild) target.appendChild(row.firstChild);
       if (filtering && matched[b.id]) target.className += " is-match";
     }
@@ -587,7 +633,7 @@
       var t = total(b.id, 0);
       row.appendChild(el("span", { class: "fa-workplan-tree-count" },
                          t.open + " open · " + t.closed + " closed"));
-      if (SCOPE !== b.id) {
+      if (SCOPE !== b.id && !b.plan) {
         var focus = el("button", { type: "button", class: "fa-workplan-action fa-workplan-tree-focus",
                                    title: "Show only this branch" }, "Only this");
         focus.setAttribute("data-scope", b.id);
@@ -618,7 +664,7 @@
     var sec = el("section", { class: "fa-workplan-panel fa-workplan-panel--wide" });
     var head = el("div", { class: "fa-workplan-tree-head" });
     head.appendChild(el("h2", { class: "fa-workplan-chart-title", id: "fa-workplan-tree-title" },
-                        "Work plan — goal → epic → feature → story"));
+                        "Plans and work — goal → epic → feature → story"));
     var lab = el("label", { class: "fa-workplan-tree-closed" });
     var box = el("input", { type: "checkbox", "data-fa-workplan-closed": "" });
     box.checked = SHOW_CLOSED;
@@ -896,6 +942,7 @@
     // Collect the types that actually appear in the (possibly epic-scoped) set
     var typeCounts = {};
     var totalOpen = 0;
+    var plans = 0;
     var under = SCOPE ? subtreeIds(beans, SCOPE) : null;
     for (var i = 0; i < beans.length; i++) {
       var b = beans[i];
@@ -904,6 +951,7 @@
       if (under && !under[b.id]) continue;
       var t = b.type || "other";
       typeCounts[t] = (typeCounts[t] || 0) + 1;
+      if (b.plan) plans++;
       totalOpen++;
     }
     // Stable order: the types we know, then anything else
@@ -941,6 +989,17 @@
       btn.setAttribute("data-type-scope", t);
       btn.textContent = typeLabel(t) + " (" + typeCounts[t] + ")";
       bar.appendChild(btn);
+    }
+    // Work plans: not a type but a role an epic or milestone takes on by
+    // naming its process. Shown only when some open item is one.
+    if (plans) {
+      var planBtn = el("button", {
+        type: "button",
+        class: "fa-workplan-type-btn" + (TYPE_SCOPE === "plan" ? " is-active" : "")
+      });
+      planBtn.setAttribute("data-type-scope", "plan");
+      planBtn.textContent = "Work plans (" + plans + ")";
+      bar.appendChild(planBtn);
     }
     return bar;
   }
@@ -1164,7 +1223,7 @@
       type: "search",
       id: "fa-workplan-q",
       class: "fa-workplan-search-input",
-      placeholder: "id, title, status, type or text",
+      placeholder: "id, title, status, type, text or proposal",
       autocomplete: "off",
       "data-fa-workplan-q": "",
     });
@@ -1521,6 +1580,7 @@
         // todo panel alone. The bean panels are NOT stubbed out with zeros:
         // this page was never asked about beans, and a zero is an answer.
         ALL_BEANS = beanDoc ? beanDoc.items : [];
+        BY_ID = null;
         BOARD = {
           beans: beanDoc ? beanDoc.items : null,
           todos: todoItems,
