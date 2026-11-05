@@ -378,6 +378,19 @@ Resolving conflicts inside a train blocks everything else from landing. The
 `overlapKind` table above still says what a collision NEEDS; the steward
 provides only the `none` row. Every other kind goes back to its owner.
 
+## The automated merge train (folio-assistant, work item `folio-assistant-hd58`)
+
+Where a repository runs `merge-train.yml`, as it does in folio-assistant, the steward's hand train is a workflow. A person opts a PR in by adding the `merge-train` label (a bot's label does not count) or by approving it. Every 15 minutes, when there is work, the train:
+1. judges the open train PR (`merge-train-batch`) as the re-pin train is judged: every check finished, the full tier ran, and no check fails that passes on main, check by check. When green, it merges the train PR with a merge commit, and every member is then on main;
+2. on red, ejects a batch of one (label removed, failures listed), or splits a larger batch in halves and tests the first half next (about log₂ k extra runs for one culprit);
+3. otherwise stacks the ready opted-in PRs on main with `merge:train` (in folio-assistant) and opens ONE train PR, which CI judges once.
+
+**Owner ruling, 2026-11-05 ("Resolve generated only").** For the automated train this supersedes §"A train admits only members that STACK cleanly" for GENERATED paths only. A conflict that a declared generated-path pattern covers is resolved mechanically at train time and proved by the candidate's CI. A conflict in any hand-written file ejects that PR with a comment, and it waits for its author. No person resolves conflicts in the train.
+
+**Owner ruling, 2026-11-05 (off switch).** A PR that changes `.github/workflows/` rides the train only when the repository variable `MERGE_TRAIN_CARRIES_WORKFLOWS` is `true` and a bot token with the workflows permission is present. Until then, workflow PRs are merged one at a time when green (owner, 2026-11-05, option 1). `subscriptions/` never rides.
+
+`merge-main.yml` skips PRs labelled `merge-train`: they are integrated once, at train time, never on each push to main.
+
 ## Regenerate on a clean tree, and check it
 
 **`git status --porcelain` is empty before a member is merged and the tree
