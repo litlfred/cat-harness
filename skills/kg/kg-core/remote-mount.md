@@ -317,6 +317,42 @@ old layer. `--seed` refuses while a mount it moves has such edits, and
 `mount:check` reports an instance entry behind its pin as `missing`. After the re-pin, check that
 the moved instance's `sha` in `index.lock.json` is the new pin.
 
+Whoever changes the lock also writes its **layers cache ref** (below): in a
+checkout the re-pin just mounted, `bun run cat layers:publish`. On main, the
+index's own workflow does this for every push that changes `index.lock.json`.
+
+### The layers cache: one fetch, every byte still verified
+
+Replaying a lock fetches each pinned instance from its own repository. The
+**layers cache** is one git commit in the INDEX repository whose tree is the
+composed overlay a replay lays down: each locked directory at its mount path,
+each declaration and asset, and nothing an install, a state mount or a
+publish build wrote.
+
+- **Ref:** `refs/cat/layers/<key>`, where the key is the sha256 of the lock's
+  `instances`. `refs/cat/layers/main` moves with main's lock.
+- **Reader:** `mount:lock`, and through it `.github/mount-from-lock.sh`, the
+  session-start hook and every CI job, first tries ONE shallow fetch of the
+  key's ref, then of `main`. A layer whose copy verifies is laid down from
+  it. A layer that does not verify, or a ref that is missing, is fetched from
+  its own repository as before. `--no-layers-cache` (or `CAT_LAYERS_CACHE=0`)
+  skips it, and `CAT_LAYERS_URL` points it at another remote.
+- **Writer:** `layers:publish` refuses unless every mount reads `current`,
+  then pushes the overlay. `--main` also moves `main`. `--prune <n>` keeps the
+  newest n lock refs, `main`, and each `--keep <key>`, for example the lock
+  of every open PR.
+
+**The lock stays the sole authority.** The cache is untrusted. Every byte
+taken from it is checked against the lock: the declaration's and each
+asset's sha256, and each directory's `treeDigest`. These are the same checks
+a fetched byte passes. So a stale `main` still serves every layer that did
+not move, and a tampered ref costs time, never correctness. Trust is
+unchanged: consent was checked when the lock was written, and the cache
+cannot add an instance the lock does not name.
+
+A replay that fails is reported loudly, not swallowed: a stale mount makes
+local checks pass falsely.
+
 ## A changed lock re-renders the agent surface
 
 **A mount is not done when the bytes are on disk.** A newly pinned layer can
