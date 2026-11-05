@@ -103,6 +103,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-31"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-32"
         }
       ]
     },
@@ -433,6 +436,16 @@
       "prov:value": "Since\n  #1956 the job then waits until `gh-pages` has gone 5 minutes without a\n  staging push and 10 without a main-site one\n  ([`feature-staging`](feature-staging.md) §7), and its PR comment says\n  **queued** with an earliest push time and a live-by time while it waits.",
       "cat-harness:refs": [
         "#1956"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-32",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Check for newer cleanup commits on gh-pages",
+      "prov:value": "### Check for newer cleanup commits on gh-pages (bean oz5w)",
+      "cat-harness:refs": [
+        "bean oz5w"
       ]
     }
   ]

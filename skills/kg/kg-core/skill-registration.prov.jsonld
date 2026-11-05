@@ -52,6 +52,15 @@
         },
         {
           "@id": "skills/kg/kg-core/skill-registration.md#provenance-14"
+        },
+        {
+          "@id": "skills/kg/kg-core/skill-registration.md#provenance-15"
+        },
+        {
+          "@id": "skills/kg/kg-core/skill-registration.md#provenance-16"
+        },
+        {
+          "@id": "skills/kg/kg-core/skill-registration.md#provenance-17"
         }
       ]
     },
@@ -197,6 +206,42 @@
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Removing or renaming a skill: two orphans, and they are yours",
       "prov:value": "Both were found by breaking the tool rather than by designing it — registering a\nprobe skill and then deleting it produced one of each."
+    },
+    {
+      "@id": "skills/kg/kg-core/skill-registration.md#provenance-15",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "A new folder is a named subgraph of its harness — declare it",
+      "prov:value": "- **A folder nothing declares is a folder nothing reasons about.** No check\n  catches it for you: `check:undeclared-files` sweeps the repository root\n  only, so a new undeclared folder inside a harness passes it.\n- **Declared directories are what can be mounted and exported.** A remote\n  mount lays down declared directories only, so an undeclared code folder is\n  missing downstream (the tools layer's `tools/` was, until 2026-10-14). A\n  harness's package `exports` are derived from its declared, shipped `code`\n  directories (`check:package-exports`, bean `7pvn`), so an undeclared one\n  cannot be imported by package name either. A from-within id cannot yet be\n  mounted on its own: `remote-mount` reads top-level entries only (bean\n  `2j2r`, needed by `mo75`).\n- `bun run cat harness:dirs` then materialises every declared directory, so\n  the folder exists in every checkout rather than only in yours.",
+      "cat-harness:refs": [
+        "bean 2j2r"
+      ],
+      "dcterms:date": [
+        "2026-10-14"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/skill-registration.md#provenance-16",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "What a skill file owes, and why you cannot see it",
+      "prov:value": "**The `kg-qa` sidecar is a derived QA result, and its record is no longer the\ncommitted file.** The CI job `qa-publish` stores every run's `test/results/`\non the orphan `qa-reports` branch under `main/<sha>/` or `pr/<n>/<sha>/` (arc\n`3fva`). The file is still committed on `main` until bean `5hox` removes it,\nand `kg:audit:check` still reads it, so `skill:register` still writes it —\nbut a judgement about your skill (an agent's voice review, a pair\nattestation) does not go in it: that is `test/attestations/kg-qa/…`, on `main`,\nbecause no writer can regenerate it.",
+      "cat-harness:refs": [
+        "bean 5hox"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/skill-registration.md#provenance-17",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "A new folder is a named subgraph of its harness — declare it",
+      "prov:value": "- **A folder nothing declares is a folder nothing reasons about.** No check\n  catches it for you: `check:undeclared-files` sweeps the repository root\n  only, so a new undeclared folder inside a harness passes it.\n- **Declared directories are what can be mounted and exported.** A remote\n  mount lays down declared directories only, so an undeclared code folder is\n  missing downstream (the tools layer's `tools/` was, until 2026-10-14). A\n  harness's package `exports` are derived from its declared, shipped `code`\n  directories (`check:package-exports`, bean `7pvn`), so an undeclared one\n  cannot be imported by package name either. A from-within id cannot yet be\n  mounted on its own: `remote-mount` reads top-level entries only (bean\n  `2j2r`, needed by `mo75`).\n- `bun run cat harness:dirs` then materialises every declared directory, so\n  the folder exists in every checkout rather than only in yours.",
+      "cat-harness:refs": [
+        "bean mo75"
+      ],
+      "dcterms:date": [
+        "2026-10-14"
+      ]
     }
   ]
 }

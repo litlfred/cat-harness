@@ -88,6 +88,12 @@ Always claim with `bun run cat beans:claim <id>`. Do not use `beans update
 --status in-progress`, which writes no holder note and does not push to the
 branch store.
 
+A claim's push is not gated. The pre-push gate hook (`prepare-merge` step 6)
+judges only the checked-out commit, and the branch store pushes its own
+commit to `refs/heads/cat/...`. So `beans:claim` and `state:push` stay fast
+with the hook installed. If one is ever refused as a gate failure, that is a
+bug in the hook. Report it, and do not bypass the claim.
+
 **When several agents drain at once, or the store has more than one copy**, the
 claim is [`bean-drain`](bean-drain.md) step 2 instead: check recent commits and
 open PRs first, then a plain commit on every copy (the `bean-claim-check`

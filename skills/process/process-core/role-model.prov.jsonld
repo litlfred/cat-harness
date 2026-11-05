@@ -109,6 +109,9 @@
         },
         {
           "@id": "skills/process/process-core/role-model.md#provenance-33"
+        },
+        {
+          "@id": "skills/process/process-core/role-model.md#provenance-34"
         }
       ]
     },
@@ -475,6 +478,16 @@
       ],
       "dcterms:date": [
         "2026-09-30"
+      ]
+    },
+    {
+      "@id": "skills/process/process-core/role-model.md#provenance-34",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "A skill's `roles:` front matter is GONE — do not bring it back",
+      "prov:value": "**What the removal did not decide.** Whether a skill *should* declare its\nperformer (bean `y1w9`), and what the tier words mean — if\n`reader`/`collaborator`/`owner` are forge permission tiers, that is a\ndeployment fact belonging to the topology axes rather than to a skill. Either\nway the field gets **declared before it is written**, which is the step the\noriginal skipped.\n`qif9` carries the four options; `folio-assistant-y1w9` (110 skills bound\nto no role or process) is blocked on the answer, because the obvious\nevidence for that triage is exactly this field.",
+      "cat-harness:refs": [
+        "folio-assistant-y1w9"
       ]
     }
   ]
