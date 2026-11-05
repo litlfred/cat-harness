@@ -175,6 +175,29 @@ artefact and runs in `bun test`. The mechanism is in
    `git push -u origin <branch>`. Then **ask whether the push produced a run**:
    `bun run cat check:head-has-run`.
 
+   **The push runs the fast gates first, where the pre-push hook is on.** Git's
+   `pre-push` hook (installed by `cat-harness-tools/scripts/git-hooks/install.sh`)
+   and, for agents, a Claude Code `PreToolUse` hook on `git push` both run
+   `cat-harness-tools/scripts/pre-push-gates.ts`: `bun run cat gates` on the
+   checked-out tree, before anything leaves the container (bean
+   `cat-tools-pp9g`, work item `folio-assistant-fn8q`). What it says:
+   - **refused**: a gate that was green on the push's base *in this same
+     environment* is red now, or tracked files differ from HEAD. Fix it, as
+     you would a red CI job. It quotes the gates and the log path;
+   - **`? gates not judged`**: a red it cannot attribute to this push (red on
+     the base too, or no base outcomes recorded here), exit 2, or no `cat`
+     runner. The push goes and CI decides. A fresh container reddens some
+     `bun test` cases CI passes (no publish-time pages, a slower machine), so
+     this is **not** a local green: report it as not determined, never as pass;
+   - **`✓`**: the fast set passed on this tree. A record keyed by the tree is
+     written, so pushing the same tree again does not re-run it.
+
+   A push the hook refused is never forced through with a bare `--no-verify`.
+   If you must push anyway, name the reason, which is logged to
+   `.git/cat-gates/push.log`: `CAT_GATES_BYPASS='<reason>' git push ...`, and
+   put the same reason in the PR body. A local pass does not replace step 7:
+   CI still runs every gate.
+
    This does not change what you do next — step 7 dispatches either way. It
    changes what you can honestly SAY. A push can silently produce no run, and
    a pull request showing zero checks is indistinguishable from one whose
