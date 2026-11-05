@@ -12,6 +12,7 @@
     "harness-tiles",
     "html-rendering-qc",
     "incremental-render",
+    "journey-maps",
     "kg-viewer",
     "liquid-templates",
     "markdown-render-check",
