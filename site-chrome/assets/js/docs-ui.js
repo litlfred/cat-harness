@@ -12327,6 +12327,39 @@
     return row;
   }
 
+  /**
+   * The tree-to-commit index, fetched once per page and only when a witness
+   * card with a tree is built (bean 69lr; owner card Q5, 2026-11-05). `null`
+   * when it is absent or unreadable: the tree then stays plain text.
+   */
+  var treeCommitsPromise = null;
+  function treeCommits() {
+    if (!treeCommitsPromise) {
+      treeCommitsPromise = fetch(siteBaseurl() + "/assets/qa/tree-commits.json")
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (j) {
+          return j && j.$schema === "folio-qa-tree-commits/v1" && j.commits ? j : null;
+        })
+        .catch(function () { return null; });
+    }
+    return treeCommitsPromise;
+  }
+
+  /** Turn a "repo tree at review" value into a link to main's commit with that tree, when the index has one. */
+  function linkTreeToCommit(row, tree) {
+    treeCommits().then(function (idx) {
+      var commit = idx && idx.commits[tree];
+      if (!commit || !/^[0-9a-f]{40}$/.test(commit) || typeof idx.repo !== "string") return;
+      var href = safeHref(idx.repo + "/commit/" + commit);
+      var v = row.querySelector(".fa-qa-field-value");
+      if (!href || !v || !/^https:\/\/github\.com\//.test(href)) return;
+      var a = el("a", { href: href, class: "fa-qa-mono", title: "The commit on main where tree " + tree +
+        " first landed: " + commit }, shortSha(tree) + " (commit " + shortSha(commit) + ")");
+      v.textContent = "";
+      v.appendChild(a);
+    });
+  }
+
   function qaWitnessCard(w) {
     var card = el("div", { class: "fa-qa-witness fa-qa-kind-" + (w.kind || "script") });
 
@@ -12372,8 +12405,28 @@
     var when = qaWhen(w.at);
     var grid = el("div", { class: "fa-qa-field-grid" });
     grid.appendChild(qaField("when", when && when.text, { title: when && when.title }));
-    grid.appendChild(qaField("repo SHA at review", shortSha(w.sha),
-      { mono: true, title: w.sha || undefined }));
+    // A verdict records the TREE it reviewed, not HEAD's commit (folio-assistant
+    // bean 69lr; owner card Q4, 2026-11-05: "the tree is the identity"). On a
+    // pull_request run HEAD is the synthetic refs/pull/<n>/merge commit, which
+    // can vanish; the commit that lands on main has the same tree. Sidecars
+    // written before that still carry only `sha`, so it is shown when there is
+    // no tree. GitHub has no tree-to-commit lookup, so the link comes from
+    // `assets/qa/tree-commits.json`, which the deploy writes from main's
+    // first-parent history beside the evidence (owner card Q5, 2026-11-05,
+    // option 1: a separate index, so the cached pages stay a function of the
+    // tree). A tree the index does not hold, an index that is absent, or a
+    // non-GitHub origin (`repo: null`) leaves the tree as plain text: absent,
+    // never a dead link.
+    if (w.tree) {
+      var treeRow = qaField("repo tree at review", shortSha(w.tree),
+        { mono: true, title: "Git tree id of the reviewed checkout: " + w.tree +
+          ". Every commit with this tree has exactly these inputs." });
+      grid.appendChild(treeRow);
+      linkTreeToCommit(treeRow, w.tree);
+    } else {
+      grid.appendChild(qaField("repo SHA at review", shortSha(w.sha),
+        { mono: true, title: w.sha || undefined }));
+    }
     if (w.kind === "script" || w.scriptHash) {
       grid.appendChild(qaField("checker source hash", shortSha(w.scriptHash),
         { mono: true, title: w.scriptHash || undefined }));
