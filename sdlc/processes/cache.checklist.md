@@ -10,14 +10,14 @@ One optional process for every cache in the harness: the owner's ruling of 2026-
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_Cache"` and the subject this run is about; keep the instance id it returns.
-- next: → `GW_Enabled` (Cache enabled?)
+- next: → `GW_Enabled` (cache:plan: anything needed?)
 
-### Decide — Cache enabled? (`GW_Enabled`)
+### Decide — cache:plan: anything needed? (`GW_Enabled`)
 
-- `no` whenever the consumer does not call this process, cannot reach a store, or is told not to (a forced cold run).
+- Run `bun run cat cache:plan <target>`.
 - Call `workflow_complete` with `node: "GW_Enabled"` and `outcome` set to the label that holds:
-  - «yes» → `Task_Layers` (Layers ref: restore / save)
-  - «no» → `End_Skipped` (Skipped: the consumer builds)
+  - «needed» → `Task_Layers` (Layers ref: restore / save)
+  - «nothing needed» → `End_Skipped` (Skipped: the consumer builds)
 
 ### 1. Layers ref: restore / save (`Task_Layers`)
 
