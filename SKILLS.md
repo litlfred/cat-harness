@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_255 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_256 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -259,7 +259,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`crdm-requirements-template`](sdlc/skills/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
 | [`crdm-requirements-workflow`](sdlc/skills/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
 
-**`sdlc/skills/sdlc-core/`** (71)
+**`sdlc/skills/sdlc-core/`** (72)
 
 | Skill | What it is for |
 |---|---|
@@ -329,6 +329,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`test-engineer`](sdlc/skills/sdlc-core/test-engineer.md) | Test Engineer Skill |
 | [`test-plan-execution`](sdlc/skills/sdlc-core/test-plan-execution.md) | Run a `test-plan/v1` against a system under test and take it to a certification decision — the five lanes of `test-plan-execution.bpmn` (requester, tester, untainted checker, certifier, attestation… |
 | [`turn-reporting`](sdlc/skills/sdlc-core/turn-reporting.md) | Say which work item you are on, every turn — the opening and closing report formats, the rules that make a report worth reading (two sentences and a link per work item, every mention), and the… |
+| [`two-phase-move`](sdlc/skills/sdlc-core/two-phase-move.md) | Move a path that other layers link to without making the order of their re-pins matter: the moving layer declares the move and keeps answering at the old path for a window, the dependent layers… |
 | [`untainted-verification`](sdlc/skills/sdlc-core/untainted-verification.md) | The party that produced an artefact does not write the verdict on it. |
 | [`upstream-version-adoption`](sdlc/skills/sdlc-core/upstream-version-adoption.md) | Watch a pinned upstream dependency for a new release, and take a candidate version through impact analysis, an MVP build, review and a person's adopt/hold/decline decision. |
 | [`visual-diff`](sdlc/skills/sdlc-core/visual-diff.md) | Pictures of a changed figure, diagram or table, before and after, and how much of it changed. |
