@@ -403,6 +403,15 @@ still only in a derived file.
 There is no `qa:resolve-conflicts` command: derived sidecars are not
 committed, so there is nothing for it to resolve.
 
+## A change that moves a cached step's key — publish what CI can verify
+
+If the change moves the key of an `exact` cached step whose producer the
+determinism audit lists as DETERMINISTIC, run `bun run cat cache:publish <step>`
+before pushing, so CI only verifies the entry instead of rebuilding it. Today
+that is `cat-mount` when `index.lock.json` changes. Verdicts are never
+published this way. The rule, the trust classes and the budget are in
+[`cache-first-ci`](cache-first-ci.md).
+
 ## Shipping is not merging — hand over on the PR itself
 
 What happens after the handover is [`merge-to-main`](merge-to-main.md), called
