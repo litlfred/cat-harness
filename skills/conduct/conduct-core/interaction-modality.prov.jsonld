@@ -94,7 +94,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "4.1 Context before the question (STRICT)",
-      "prov:value": "**And when a link IS the right thing — a rendered page the reader has to see\nfor themselves — it points at the page, not at the site it is on.** Owner,\n2026-09-21, after three turns of being handed a staging root while being asked\nabout one page on it: *\"next time give appropraite link\n…/STAGING/<branch>/<iris-replica>/\"*. Linking the root hands the reader a route the\nagent already knew, and hands it to somebody who types with difficulty. The rule\nand where the page list comes from:\n[`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §\"The deep-link rule\"; the failure it also\nhides: [`continual-progress`](../../../sdlc/skills/sdlc-core/continual-progress.md) §\"Link the PAGE, never the\nsite root\".",
+      "prov:value": "**And when a link IS the right thing — a rendered page the reader has to see\nfor themselves — it points at the page, not at the site it is on.** Owner,\n2026-09-21, after three turns of being handed a staging root while being asked\nabout one page on it: *\"next time give appropraite link\n…/branches/<branch>/<iris-replica>/\"*. Linking the root hands the reader a route the\nagent already knew, and hands it to somebody who types with difficulty. The rule\nand where the page list comes from:\n[`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §\"The deep-link rule\"; the failure it also\nhides: [`continual-progress`](../../../sdlc/skills/sdlc-core/continual-progress.md) §\"Link the PAGE, never the\nsite root\".",
       "cat-harness:refs": [
         "2026-09-21",
         "owner"

@@ -274,7 +274,7 @@ and in route space:
 
 1. **Reserved names:** `RESERVED_ROOT_AND_ROUTE_NAMES` in `schemas/kg/remote-mount.ts` declares
    the one authoritative list of reserved root directories and site route names:
-   `["skills", "tools", "docs", "assets", "glossary", "api", "payload", "STAGING", "beans", "todos", "fsh-guts", "uploads", "test", "build", "_site", "_docs", "_kg"]`.
+   `["skills", "tools", "docs", "assets", "glossary", "api", "payload", "branches/", "beans", "todos", "fsh-guts", "uploads", "test", "build", "_site", "_docs", "_kg"]`.
 2. **Mount path check:** `checkMountPathCollisions` (run during planning in `mount:remote`
    and by `bun run cat check:mount-collisions`) rejects any remote mount whose effective path
    (`path` or `<name>/`) collides with:

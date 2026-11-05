@@ -31,7 +31,7 @@ msgstr ""
 
 #: processes/process/crdm-deliver.bpmn:84
 #. Diagram element documentation
-msgid "An MVP is shared AS A STAGING DEPLOY, not as a description of one. `feature-staging.yml` publishes the branch under `STAGING/<branch-slug>/` on gh-pages and comments the URL on the PR, so the stakeholder who tests it is looking at the built artefact rather than at a screenshot — the same argument the merge discipline makes about rendered work: holding a rendered change back for assessment makes assessment harder, not safer."
+msgid "An MVP is shared AS A branches/ DEPLOY, not as a description of one. `feature-staging.yml` publishes the branch under `branches/<branch-slug>/` on gh-pages and comments the URL on the PR, so the stakeholder who tests it is looking at the built artefact rather than at a screenshot — the same argument the merge discipline makes about rendered work: holding a rendered change back for assessment makes assessment harder, not safer."
 msgstr ""
 
 #: processes/process/crdm-deliver.bpmn:108

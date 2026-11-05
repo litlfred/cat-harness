@@ -36,7 +36,7 @@ Always provide:
   viewer configuration)
 - **Remote/deployed links** (when applicable):
   - **GitHub Pages**: `https://<owner>.github.io/<repo>/`
-  - **Staging preview** (feature branches): `https://<owner>.github.io/<repo>/STAGING/<branch-slug>/`
+  - **Staging preview** (feature branches): `https://<owner>.github.io/<repo>/branches/<branch-slug>/`
     ([`feature-staging`](feature-staging.md))
 
 When delivering in a content layer that refines this skill with a content-block

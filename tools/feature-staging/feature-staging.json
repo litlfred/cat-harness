@@ -3,7 +3,7 @@
   "tool": {
     "id": "feature-staging",
     "title": "Stage a branch's preview",
-    "description": "Publish a branch's built site to `STAGING/<slug>/` on the publish branch, so a reviewer compares a rendered before and after rather than a description of one. Stamps the commit SHA, and removes the preview when its pull request closes.",
+    "description": "Publish a branch's built site to `branches/<slug>/` on the publish branch, so a reviewer compares a rendered before and after rather than a description of one. Stamps the commit SHA, and removes the preview when its pull request closes.",
     "install": {
       "none": true
     },
@@ -28,7 +28,7 @@
           "schema": {
             "$type": "Slug"
           },
-          "description": "DELETION: the `STAGING/<slug>` to remove, instead of staging anything. For an orphan preview the health sweep reports: its pull request is already closed, so the close event cannot remove it.",
+          "description": "DELETION: the `branches/<slug>` to remove, instead of staging anything. For an orphan preview the health sweep reports: its pull request is already closed, so the close event cannot remove it.",
           "required": false,
           "arg": {
             "flag": "--cleanup-slug"
@@ -85,7 +85,7 @@
     },
     {
       "at": "",
-      "comment": "── The preview host: one STAGING/<slug> per open pull request ─────────\n\nTier A of `tools:coverage` on the strength of a `serviceTask` naming the\nskill, and the workflow IS the whole of what `feature-staging.md` claims —\n\"branch creation, staging deployment, commit SHA stamping, and cleanup\".\nSo `satisfies` is one skill and nothing is stretched to fit.\n\nA node over a workflow rather than a script, on the `pages-publish`\nprecedent: the mechanism genuinely is the workflow. It holds the gh-pages\ncheckout, the retry and the concurrency group, and a second pusher racing\nthose is how a deploy gets lost."
+      "comment": "── The preview host: one branches/<slug> per open pull request ─────────\n\nTier A of `tools:coverage` on the strength of a `serviceTask` naming the\nskill, and the workflow IS the whole of what `feature-staging.md` claims —\n\"branch creation, staging deployment, commit SHA stamping, and cleanup\".\nSo `satisfies` is one skill and nothing is stretched to fit.\n\nA node over a workflow rather than a script, on the `pages-publish`\nprecedent: the mechanism genuinely is the workflow. It holds the gh-pages\ncheckout, the retry and the concurrency group, and a second pusher racing\nthose is how a deploy gets lost."
     }
   ]
 }

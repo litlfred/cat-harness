@@ -108,7 +108,7 @@
     <bpmn:task id="Task_Restore" name="Restore the OPEN PRs'&#10;staging previews">
 
 
-      <bpmn:documentation>Copies every open pull request's `STAGING/&lt;slug&gt;/` preview from `gh-pages` into the publish directory before the replace, once per publish attempt (`restore-staging.ts`, run inside `publish-gh-pages.sh`). Only open PRs' previews are carried; a branch that cannot be read refuses the publish.</bpmn:documentation>
+      <bpmn:documentation>Copies every open pull request's `branches/&lt;slug&gt;/` preview from `gh-pages` into the publish directory before the replace, once per publish attempt (`restore-staging.ts`, run inside `publish-gh-pages.sh`). Only open PRs' previews are carried; a branch that cannot be read refuses the publish.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="feature-staging"/>
       <cat-harness.processes:no-call reason="Copies every open PR's preview before the replace, a loop; a call would run feature-staging once, for one PR."/></bpmn:extensionElements>

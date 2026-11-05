@@ -131,7 +131,7 @@ rule about never letting a count in prose go stale.
   **Crucial exception**: staleness is benign
   only when falling back to an existing live preview,
   **never when the previous state is a deletion** (where "stale" manifests as a
-  404). When PR N's merge cleanup removed `STAGING/<slug>/` and PR N+1's
+  404). When PR N's merge cleanup removed `branches/<slug>/` and PR N+1's
   staging deploy was cancelled, the live site serves the deletion rather than
   a previous preview. Staleness is safe only when what you fall back to
   actually exists.

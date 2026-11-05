@@ -61,8 +61,8 @@ The relation to PHII and PATH CRDM is **adapts**:
   - **Phase 5 (Work-plan decomposition & specification filing):** Creating agent
     work items (`beans/`) and human todos (`todos/`), and filing proposals from
     `docs/proposals/<slug>.md` to `docs/requirements/<slug>.md`.
-  - **Phase 6 (Implementation, `STAGING/` preview & merge sign-off):** Feature-branch
-    delivery, automated verification gates, `STAGING/<branch-slug>/` review, and
+  - **Phase 6 (Implementation, `branches/` preview & merge sign-off):** Feature-branch
+    delivery, automated verification gates, `branches/<branch-slug>/` review, and
     explicit human owner confirmation before merging (`merge-to-main.md`).
 
 ## Actors
@@ -190,7 +190,7 @@ For each requirement:
    assets of the proposal under `docs/proposals/<slug>/wireframes/` on the
    feature branch, and shown where the requester will look, chosen from
    context — the conversation, the issue the request came from, the PR, or
-   several — each place carrying the same STAGING deep links and screenshots
+   several — each place carrying the same branches/ deep links and screenshots
    ([`staging-review`](../sdlc-core/staging-review.md), the deep-link rule,
    point 5). The
    candidates are the options Phase 4's comparison lays out; the requester or
@@ -470,7 +470,7 @@ For each work item:
    chosen candidate beside the after-screenshot.
 3. **Open PR** — link to the work item and the parent issue
 4. **Deploy staging preview** — the `feature-staging.yml` workflow
-   auto-deploys to `STAGING/<branch-slug>/` on `gh-pages`. The magenta
+   auto-deploys to `branches/<branch-slug>/` on `gh-pages`. The magenta
    "FEATURE BRANCH" banner at the top of every page links to the source
    branch and provides a "compare with main" link.
 5. **Post before/after comparison to issue** — use the `staging-review`
@@ -485,7 +485,7 @@ For each work item:
 6. **Iterate on PR feedback** — code review is on the PR; visual review
    uses the staging preview URLs. When the change touches a **folio's
    blocks**, the page a reviewer opens is the preview's **review page**,
-   `STAGING/<slug>/review/`: every changed block before and after, with the
+   `branches/<slug>/review/`: every changed block before and after, with the
    heat map and outline. The review itself runs through
    `content-change-review.bpmn`. The review coordinator slices the change and
    assigns the slices, reviewers work them in `review-task`, disagreements go

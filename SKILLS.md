@@ -281,7 +281,7 @@ _256 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`delivery-summary`](sdlc/skills/sdlc-core/delivery-summary.md) | Post-delivery summary with server restart command and viewer links |
 | [`diff`](sdlc/skills/sdlc-core/diff.md) | Show per-block content changes with viewer links, changelog, and undo impact analysis |
 | [`dispatch-agent`](sdlc/skills/sdlc-core/dispatch-agent.md) | Dispatch one or more background sub-agents against parallel research/build fronts with a STANDARDIZED live progress contract, and monitor them on a 2-minute heartbeat. |
-| [`feature-staging`](sdlc/skills/sdlc-core/feature-staging.md) | Manages feature-branch staging deployments under gh-pages/STAGING/<branch-slug>/ for before/after publication review comparison. |
+| [`feature-staging`](sdlc/skills/sdlc-core/feature-staging.md) | Manages feature-branch staging deployments under gh-pages/branches/<branch-slug>/ for before/after publication review comparison. |
 | [`finding-software`](sdlc/skills/sdlc-core/finding-software.md) | A script needs a program or module the container does not have (tesseract, pdftoppm, PyMuPDF, a CLI from a GitHub release). |
 | [`gate-tree-mutation`](sdlc/skills/sdlc-core/gate-tree-mutation.md) | Reading `bun run cat gates`' "NOT clean" verdict. |
 | [`generalise-the-fix`](sdlc/skills/sdlc-core/generalise-the-fix.md) | You have a fix. |
