@@ -220,6 +220,21 @@
         },
         {
           "@id": "skills/kg/kg-core/directory-conventions.md#provenance-70"
+        },
+        {
+          "@id": "skills/kg/kg-core/directory-conventions.md#provenance-71"
+        },
+        {
+          "@id": "skills/kg/kg-core/directory-conventions.md#provenance-72"
+        },
+        {
+          "@id": "skills/kg/kg-core/directory-conventions.md#provenance-73"
+        },
+        {
+          "@id": "skills/kg/kg-core/directory-conventions.md#provenance-74"
+        },
+        {
+          "@id": "skills/kg/kg-core/directory-conventions.md#provenance-75"
         }
       ]
     },
@@ -1026,6 +1041,56 @@
       "prov:value": "Full scheme, including what an instance's version means and what makes it go\nup: [`cat-harness/docs/proposals/instance-versioning.md`](../../../docs/proposals/instance-versioning.md).",
       "cat-harness:refs": [
         "docs/proposals/instance-versioning.md"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/directory-conventions.md#provenance-71",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "`storage` — a directory kept on a branch",
+      "prov:value": "Two facts to hold while the arc is in flight. **Every `qa` directory declares\n`storage` since bean `5hox`**, and only after every reader had migrated —\nflipping one earlier would have told the presence checks to stop looking while\nreaders still read the checkout. Each stored working copy is ignored by\nversion control, one line per declared directory, kept equal to the\ndeclarations by `directory-storage.test.ts`. And the derived files are\n**committed on `main`** until bean `5hox`'s removal lands; until then, and\nafter, a directory whose every kind is one the arc moves off `main`\n(`qa`, `health` — `mayLeaveMain` in `scripts/qa-results.ts`) may be absent\nfrom a checkout without that being a finding. **Judgements never move**: they\nare the `attestations` kind at `test/attestations/`, on `main`, because a\nregenerated file cannot reproduce them (owner ruling D2 (a)).",
+      "cat-harness:refs": [
+        "bean 5hox"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/directory-conventions.md#provenance-72",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Where a NEW instance puts its code: `<stub>/src` (bean `ylj7`)",
+      "prov:value": "**Being declared is not being reached.** Those are two questions and\n`bun run cat check:code-accounting` reports them apart — never averaged, because a\nrise in one can hide a fall in the other. Beans `d308` and `ce65` own the\nsecond.",
+      "cat-harness:refs": [
+        "bean ce65"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/directory-conventions.md#provenance-73",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Where a NEW instance puts its code: `<stub>/src` (bean `ylj7`)",
+      "prov:value": "**Being declared is not being reached.** Those are two questions and\n`bun run cat check:code-accounting` reports them apart — never averaged, because a\nrise in one can hide a fall in the other. Beans `d308` and `ce65` own the\nsecond.",
+      "cat-harness:refs": [
+        "bean d308"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/directory-conventions.md#provenance-74",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "The live case this ruling settles",
+      "prov:value": "Bean `hs08` had recorded the absent `content` entry as the rename having\n*landed*. It is the opposite: the declaration was emptied of `content/` **before**\nthe directory holding the content moved, leaving 14 live subgraphs invisible to\nany consumer that scans the declaration. That is `dh4f` pointed the other way —\n**present-but-undeclared** rather than declared-but-absent, and the worse of the\ntwo, because the clean run is over content that is really there.",
+      "cat-harness:refs": [
+        "bean hs08"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/directory-conventions.md#provenance-75",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Where a subgraph gets its content — `source` (owner, 2026-10-03)",
+      "prov:value": "A \"directory subgraph\" and a \"branch subgraph\" are **one thing with two\nsources**, so there is one field and one resolver, never a branch concept\nbeside a directory concept. Bean `l4ay`; schema `schemas/kg/subgraph-source.ts`.",
+      "cat-harness:refs": [
+        "bean l4ay"
       ]
     }
   ]

@@ -58,6 +58,9 @@
         },
         {
           "@id": "skills/kg/graph-management/lsi-indexing.md#provenance-16"
+        },
+        {
+          "@id": "skills/kg/graph-management/lsi-indexing.md#provenance-17"
         }
       ]
     },
@@ -220,6 +223,16 @@
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Epic filing — the qou hierarchy, proposed by evidence",
       "prov:value": "**A disputed filing is not a misfiling.** The largest disputes on the first\nrun were beans filed by *symptom* (translation catalogues under CI\nRELIABILITY because they turned `main` red) that LSI files by *subject*\n(TRANSLATION). Both are defensible; which axis an epic means is a decision for\nthe owner, not for the score."
+    },
+    {
+      "@id": "skills/kg/graph-management/lsi-indexing.md#provenance-17",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Reading a sidecar",
+      "prov:value": "- **`retained`** — share of ‖A‖²_F the rank-`k` approximation keeps. It is not\n  a quality score; a low value on a large heterogeneous graph (beans: ~45 %)\n  is expected.\n- **Dimension 1 is usually a margin.** Qi et al. (2023): LSA's first\n  dimensions mainly carry document length and overall term frequency. A\n  dimension with no negative pole is that signature — skip it when reading\n  themes.\n- **`dimensions`** — a dimension is a *contrast*, so read the positive and\n  negative poles together. Refusal 2: it is not a topic until a person names\n  it.\n- **`narrowDimensions`** — a dimension ≥ 80 % of whose mass sits on ≤ 3 units\n  (or 1 %). Almost always non-prose: in the IRIS replica it found two different\n  kinds of placeholder text in the WPRO style guide on the first run —\n  Lorem-ipsum layout filler (pp. 21, 29–31) and pseudo-Latin font specimens\n  (pp. 14–15, 28). Treat as an ingestion finding.\n- **`nearDuplicates`** — cosine ≥ 0.95. In the bean store it found pairs such\n  as `3ozg`/`rmcf` (the same 72-sidecar churn, filed twice). A duplicate bean\n  is **scrapped with a pointer**, never deleted (`bean-coordination`).",
+      "cat-harness:refs": [
+        "bean 3ozg"
+      ]
     }
   ]
 }

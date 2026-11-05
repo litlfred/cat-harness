@@ -91,6 +91,9 @@
         },
         {
           "@id": "skills/kg/kg-core/schema-management.md#provenance-27"
+        },
+        {
+          "@id": "skills/kg/kg-core/schema-management.md#provenance-28"
         }
       ]
     },
@@ -344,6 +347,20 @@
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Where the boundaries are",
       "prov:value": "- **An unwired generator is worse than none.** Three schema generators were\n  written here before the current one and all three rotted, because nothing\n  ever asked whether their output still matched their input."
+    },
+    {
+      "@id": "skills/kg/kg-core/schema-management.md#provenance-28",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "`docs/` is the same shape, and its subject means something specific",
+      "prov:value": "**Measured 2026-09-20 and not yet true:** only `cat-harness` has a `docs/`\ndirectory and only it declares one, with `dependents: \"skip\"` — which was\nprecisely what stopped a dependent from getting its own. **Superseded\n2026-09-30** (option A): `docs` is a `perInstance` kind, so every instance\ninheriting it gets its own, and each existing `<instance>/docs/` is a member\nof the one declared subgraph. Nothing was declared\nagainst an absent directory here, because a declared-but-absent directory is\nthe `dh4f` defect. Bean `n0nf` carries the same `skip` finding from the root's\nside.",
+      "cat-harness:refs": [
+        "bean n0nf"
+      ],
+      "dcterms:date": [
+        "2026-09-20",
+        "2026-09-30"
+      ]
     }
   ]
 }

@@ -154,6 +154,18 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-48"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-49"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-50"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-51"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-52"
         }
       ]
     },
@@ -755,6 +767,46 @@
       ],
       "dcterms:date": [
         "2026-10-02"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-49",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "When the authors stall: the steward dispatches unblockers",
+      "prov:value": "| rule | why |\n|---|---|\n| **at most ONE push per PR**, after `bun run cat gates` locally — or, when every conflict was generated, after the targeted checks of [`merge-conflict-patterns`](merge-conflict-patterns.md) §\"A merge round — run each check ONCE\" | each push runs full CI **and** deploys a staging preview into `gh-pages`, which has a size budget. Pushing speculatively spends both |\n| no `workflow_dispatch`, re-run, empty commit or close/reopen | the same budget, and a dispatched run is not an owed run (above) |\n| merge commits only: no rebase, amend or force-push | it is somebody else's branch |\n| authored conflict → resolve only dead code, or a pure addition carried over verbatim; otherwise quote both sides and stand down | choosing between two behaviours is the author's call |\n| `git submodule update --init` and `bun run cat state:mount` before `regen` | without the submodules `merge:steward` cannot load. Without the mount, `fsh-guts:viz:check` exits non-zero (it judges that the mounted graph renders; the page itself is built at publish, bean `0b8c`) and `audit:coverage:strict` goes red |\n| delete the worktree's `node_modules` at the end | four parallel installs run out of the container's disk |\n| one comment per PR: root cause, the commit it pushed or the reason it stood down | the author comes back to an explanation, not a mystery commit |",
+      "cat-harness:refs": [
+        "bean 0b8c"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-50",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "When the authors stall: the steward dispatches unblockers",
+      "prov:value": "**After any merge of `main`, check for silently dropped files.** Some files\nunder `*/test/results/` (LSI indexes, QA and detangle sidecars) are gitignored\nbut still tracked. Once a resolution step removes one from the index, regen\nrewrites it on disk and `git add -A` does not stage it again. Local checks\nstill pass, but CI's fresh checkout fails. `merge:main` and the merge-main bot\nnow refuse such a merge and name the paths (`droppedInMerge` in\n`merge-base.ts`, see `merge-conflict-patterns` §\"When one side deleted the\nfile\"). A hand `git merge` gets no such check. After one, run\n`git diff --diff-filter=D HEAD^1 HEAD -- '*/test/results/*'`, and restore\nanything that main still tracks with `git checkout HEAD^2 -- <path>` (bean\n`8j9e`).",
+      "cat-harness:refs": [
+        "bean 8j9e"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-51",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Regenerate on a clean tree, and check it",
+      "prov:value": "The fix is bean `ba9e`: take the integer off `main` into the KG's `_data`\nlayer, which classifies `take-base` and is therefore already auto-resolved by\n`merge-conflict-patterns.ts:171`. Not `-merge` and not a merge driver — both\nare refused in `.gitattributes` on measured grounds, the first because it\ntidies conflicts without removing them and the second because it needs\nper-checkout `git config`.",
+      "cat-harness:refs": [
+        "bean ba9e"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-52",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Where the queue is GOING, and the tool that will write it (bean `najo`)",
+      "prov:value": "**The pairing with `workflows/` is what this cost.** The queue held the\ndecisions and a finished train run next door held the evidence they met, in one\nstore. `beans/` is still on `main` until arc `fs43` lands (beans `9ofm`,\n`p3ny`), so for now the two are one `state:mount` apart. That trade was made\nknowingly: the pairing was costing the graph every one of its nodes.",
+      "cat-harness:refs": [
+        "bean p3ny"
       ]
     }
   ]

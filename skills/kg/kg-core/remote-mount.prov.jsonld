@@ -73,6 +73,9 @@
         },
         {
           "@id": "skills/kg/kg-core/remote-mount.md#provenance-21"
+        },
+        {
+          "@id": "skills/kg/kg-core/remote-mount.md#provenance-22"
         }
       ]
     },
@@ -305,6 +308,16 @@
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Not yet",
       "prov:value": "## Not yet"
+    },
+    {
+      "@id": "skills/kg/kg-core/remote-mount.md#provenance-22",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Not yet",
+      "prov:value": "- the pilot (smart-ra drops its submodule);\n- the first real consumer, the cutover tracked by bean `g8jp`.",
+      "cat-harness:refs": [
+        "bean g8jp"
+      ]
     }
   ]
 }

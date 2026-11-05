@@ -64,6 +64,12 @@
         },
         {
           "@id": "skills/kg/kg-core/content-context-and-state-graphs.md#provenance-18"
+        },
+        {
+          "@id": "skills/kg/kg-core/content-context-and-state-graphs.md#provenance-19"
+        },
+        {
+          "@id": "skills/kg/kg-core/content-context-and-state-graphs.md#provenance-20"
         }
       ]
     },
@@ -251,6 +257,26 @@
       "prov:value": "- [`directory-conventions`](directory-conventions.md) — what a declaration is\n  and how a path resolves. This page is the axis; that one is the mechanism.\n- [`agent-memory`](../../conduct/conduct-core/agent-memory.md) — what a memory entry promises, and the\n  injection budget. This page says what layer it is on.\n- [`process-state`](../../process/workflow/process-state.md), [`bpmn-processes`](../../process/workflow/bpmn-processes.md) —\n  the largest writer of a live-state graph: a workflow instance is a token's\n  position in a diagram that lives in a content graph.\n- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)\n  — the work plan, and why a bean is never deleted. A state record that\n  vanishes leaves a sibling unable to tell abandonment from accident.\n- [`instance-publication`](instance-publication.md#what-each-instance-publishes--graph-address-schema-and-what-is-stripped)\n  — a `state` graph's nodes are never published. That rule, and every other\n  rule about what reaches the site, lives there (bean `4ak5` item 4).",
       "cat-harness:refs": [
         "bean 4ak5"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/content-context-and-state-graphs.md#provenance-19",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Classifying a kind is not a ruling on a directory's contents",
+      "prov:value": "The nodes have since moved to their own declared `memory/` graph (bean\n`07xs`), as their own change — relocating a directory as a side effect of\nadding a classification is the shape #395 refused and bean `auap` did\nseparately. So the example is now history rather than a live gap, and it is\nkept because the rule it illustrates is not: **a directory of one kind may\ncontain a node of another, and the containing declaration is not a claim about\nits contents.**",
+      "cat-harness:refs": [
+        "bean 07xs"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/content-context-and-state-graphs.md#provenance-20",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "A declared ASSET carries a layer too",
+      "prov:value": "**A process may CREATE or REPAIR the declaration (`<name>.json`) or config\n(`<name>.config.json`). It never maintains it.** Every `state` graph is one a\nrunning process keeps current (beans, QA witnesses, workflow tokens). Neither\n`<name>.json` nor `<name>.config.json` is that: `init-folio` writes them once\nwhen there is no folio yet, and `ensure-landing-sticky` inserts one missing\n`folio` directory entry on `!already` and returns on `already` thereafter — a\none-time repair, never ongoing state maintenance (bean `b5f0`).",
+      "cat-harness:refs": [
+        "bean b5f0"
       ]
     }
   ]

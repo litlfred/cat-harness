@@ -28,6 +28,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/untainted-verification.md#provenance-6"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/untainted-verification.md#provenance-7"
         }
       ]
     },
@@ -82,6 +85,16 @@
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "This is one rule with two homes",
       "prov:value": "Guideline methodology separates the systematic\nreview team from the guideline development group for the same reason, and\n`8rwa` carries the identical rule into evidence-based literature review for\nliving guidelines."
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/untainted-verification.md#provenance-7",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Related",
+      "prov:value": "- `translation-manager.md` §\"The agentic round trip\" — the first instance, and\n  the translation-specific drift definition that does *not* generalise.\n- `permissions.json` `qa-reporting` — who may emit a verdict at all. Bean\n  `a58y` gives it its first consumer.\n- `pipeline/untainted-verification.ts` — the recorder. It deliberately\n  does **not** call a model: the payload is written by whatever ran the\n  parties, so recording works the same for two subagents, two API calls, or two\n  people.",
+      "cat-harness:refs": [
+        "bean a58y"
+      ]
     }
   ]
 }
