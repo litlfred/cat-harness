@@ -87,6 +87,25 @@ classify a single session by lane.
 it, and the state lives on the branch store precisely so a sibling session
 reads the same position — [`workflow-state.md`](workflow-state.md) §"Where running instances live".
 
+**Opening or claiming a work item for a process step means starting or resuming its
+workflow instance:**
+
+1. **Claiming or starting work in a process** (`code-change-review`,
+   `merge-train`, `crdm-requirements`, etc.): start an instance with
+   `workflow_start` passing `bean: "<id>"` (CLI: `bun run cat workflow:start
+   --process <process> --subject <subject> --bean <id>`), or resume the running
+   instance that already names that work item. `workflow_start` writes the
+   `process:<Process_Id>` tag and `Workflow:` backlink onto the work item so the
+   visualiser can place the work item on its current BPMN step.
+2. **Advancing through tasks**: call `workflow_complete` (`bun run cat
+   workflow:complete --id <instance> --task <node> --actor <actor>`) as each step
+   finishes so the token moves with the work.
+3. **Closing the work item**: complete the final step so the workflow instance
+   reaches `status: "completed"`. If a work item is closed (`completed` or
+   `scrapped`) while its workflow instance still sits `running`, run `bun run cat
+   workflow:instances --sweep` to close stale instances while preserving their
+   `history` and PROV-O trail (`cat-harness#988`).
+
 **The session-start sweep reads the branch store and reports "no instance recorded" as a FINDING, not as
 silence**, when the directory holds none. A finding is not a failure — plenty
 of turns are legitimately outside any process — it is the prompt to say which.
@@ -100,10 +119,14 @@ word is decoration, including where it is enforced.
 **The gap is computed, never quoted**, because a count written down goes stale
 with nothing to say so. `bun run cat workflow:instances` prints
 today's count: instances recorded, instances started since the rule, first-parent
-merges in the same window, and the CI workflows that read the graph. Merges
-are an upper bound on the instances owed, since a steward's train, a docs-only
-fix or a revert may have none. The command reports the gap and exits 0; only
-a count it cannot make (store unmounted, shallow clone, an undatable
+merges in the same window, running instances whose work item is closed or missing
+from the store (`staleInstances`), `in-progress` work items carrying a `process:<id>`
+tag with no running instance (`untrackedProcessBeans`), and the CI workflows that
+read the graph. Merges are an upper bound on the instances owed, since a steward's
+train, a docs-only fix or a revert may have none. The command reports the gap and
+exits 0 by default (`--strict` exits 1 on stale or untracked process work items;
+`--sweep` closes running instances whose work item is `completed`, `scrapped`, or
+missing); only a count it cannot make (store unmounted, shallow clone, an undatable
 instance) exits 2.
 
 ### Arriving without the sweep — a mid-session clone, a project thread
