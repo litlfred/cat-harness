@@ -6872,6 +6872,19 @@ a.fa-harness-tab__body:focus-visible {
   font-weight: 600;
 }
 
+/* One row of a page that lists several logs (the tools page): no rule, no
+ * lead, so 35 tools read as one list rather than 35 boxes. */
+.fa-provenance.fa-provenance-item {
+  margin: 0;
+  padding: 0.375rem 0;
+  border-top: 0;
+}
+
+.fa-provenance-items {
+  border-top: 1px solid var(--fa-rule, rgba(128, 128, 128, 0.35));
+  padding-top: 0.5rem;
+}
+
 .fa-provenance-lead {
   opacity: 0.8;
   margin: 0.5rem 0 1rem;
