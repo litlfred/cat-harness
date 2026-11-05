@@ -196,7 +196,7 @@ this does not show until the content PR leaves draft.
 **The setup-only PR has a Tool: `instantiate-harness`.** It pins the harness
 and every layer it needs, mounts them, commits the setup on
 `harness/<harness>`, opens that PR, and renders the branch's preview at
-`gh-pages:STAGING/<branch>/`. On a repository with nothing mounted yet, run it
+`gh-pages:branches/<branch>/`. On a repository with nothing mounted yet, run it
 from a fresh clone of the tools layer:
 
 ```sh

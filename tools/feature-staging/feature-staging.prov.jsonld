@@ -27,7 +27,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "tool.io.inputs[1].description",
-      "prov:value": "DELETION: the `STAGING/<slug>` to remove, instead of staging anything. It exists because the label path cannot reach the previews the health sweep reports — being findable as an orphan REQUIRES the pull request to be closed, so the close event has already fired with no label (bean `w2g5`).",
+      "prov:value": "DELETION: the `branches/<slug>` to remove, instead of staging anything. It exists because the label path cannot reach the previews the health sweep reports — being findable as an orphan REQUIRES the pull request to be closed, so the close event has already fired with no label (bean `w2g5`).",
       "cat-harness:refs": [
         "bean w2g5"
       ]

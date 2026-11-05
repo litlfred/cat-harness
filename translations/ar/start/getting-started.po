@@ -269,10 +269,6 @@ msgstr "الغرض"
 msgid "Scaffold a folio. Registered as a generic tool, because it runs before the folio has a content type"
 msgstr "إنشاء هيكل folio. مسجلة كأداة عامة، لأنها تعمل قبل أن يكون للـ folio نوع محتوى"
 
-#: docs/start/getting-started.md:174
-msgid "Surface the work plan (beans)"
-msgstr "إظهار خطة العمل (beans)"
-
 #: docs/start/getting-started.md:175
 msgid "Probe which toolchains are installed"
 msgstr "فحص مجموعات الأدوات المثبتة"
@@ -542,3 +538,6 @@ msgstr "الخطوات التالية"
 
 #~ msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
 #~ msgstr "السطر الأوسط مقصود. فالنص الذي يُوضع عبر التخمين يستقر فوق القط، لذا فإن المنطقة غير المعلنة تعني \"لا تقم بالتراكب فوق الصورة\"، ولا تعني أبدًا \"أي مكان مناسب\". ووجود folio بدون رسوم أمر عادي وليس عطلاً."
+
+#~ msgid "Surface the work plan (beans)"
+#~ msgstr "إظهار خطة العمل (beans)"

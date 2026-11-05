@@ -107,14 +107,14 @@ next to the site. The review page reads `../visual-diff.json`.
   tables". It runs after the step "Choose the before side", which picks:
   - **main's site**, at the publish branch's root, published by the same
     workflow's `publish-main` job on every push to main;
-  - **for a stacked PR**, its base branch's preview, `STAGING/<base-slug>/`,
+  - **for a stacked PR**, its base branch's preview, `branches/<base-slug>/`,
     so the pictures and the ChangeSet compare with the same branch. When the
     base has no preview, main's site is used and the
     banner, the review page and the PR comment all say so.
 
   It installs Chromium only when `--count` is above zero.
 - **`publish-main`** (same workflow) deletes only files its own manifest,
-  `_main-site.json`, lists. `STAGING/`, `_render-log/` and anything a person
+  `_main-site.json`, lists. `branches/`, `_render-log/` and anything a person
   put at the root are never touched, and the first publish removes nothing.
 - **`content-change-review.bpmn`**, task *Compare main vs staging*. The
   reviewer's comparison names this skill beside `staging-review`, so a

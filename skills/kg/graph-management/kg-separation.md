@@ -342,6 +342,10 @@ Run the sweep after a move lands and before the parent re-pins (stage 11), and
 do not call the move done until every gate in this table is green in a composed
 checkout at the matched pins.
 
+When another layer links into the moved path, declare the move first, so the
+layers can re-pin in any order:
+[`two-phase-move`](../../../sdlc/skills/sdlc-core/two-phase-move.md).
+
 | what still names the old home | the gate that catches it | the fix |
 |---|---|---|
 | A Tool node's `invoke.shell` | `kg:audit` criterion `tool-invoke-path-resolves` (CRITICAL) | rewrite the invokes in each `tools/<id>/<id>.json` |

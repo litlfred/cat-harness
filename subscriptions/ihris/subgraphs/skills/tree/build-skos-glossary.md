@@ -66,4 +66,4 @@ Owner, 2026-09-24: *"What does folio-assistant do? B should follow. Update skill
 
 ## QA
 
-`src/tools/qa.py`, schema `folio-glossary/v1`: `glossary-schemes`, `glossary-ids`, `glossary-namespaces`, `glossary-matches` (recomputed from the ConceptMaps and the ISCO-08 ValueSets), `glossary-counts`, `glossary-verbatim` (the source JSON, and the captured toolkit page), `glossary-page` (every term once). Each was shown to fail on a mutation (work item `ihris-glsk`).
+`src/tools/qa.py`, schema `folio-glossary/v1`: `glossary-schemes`, `glossary-ids`, `glossary-namespaces`, `glossary-matches` (recomputed from the ConceptMaps and the ISCO-08 ValueSets), `glossary-counts`, `glossary-verbatim` (the source JSON, and the captured toolkit page), `glossary-page` (every term once). Each was shown to fail on a mutation (bean `ihris-glsk`).

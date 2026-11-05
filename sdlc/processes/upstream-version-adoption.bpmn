@@ -72,7 +72,7 @@ For the theme: `site-chrome/assets/js/docs-ui.js` MOVES the theme's own search m
       <bpmn:extensionElements><bootstrap.processes:skill ref="upstream-version-adoption"/></bpmn:extensionElements>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_Mvp" name="MVP: build the candidate&#10;on a staging branch">
-      <bpmn:documentation>An MVP is a DEPLOYED BUILD, not a description of one. The pin is moved on a branch and `feature-staging.yml` publishes it under `STAGING/&lt;branch-slug&gt;/`, so the reviewer looks at the artefact rather than at a screenshot — the same argument the merge discipline makes about rendered work.</bpmn:documentation>
+      <bpmn:documentation>An MVP is a DEPLOYED BUILD, not a description of one. The pin is moved on a branch and `feature-staging.yml` publishes it under `branches/&lt;branch-slug&gt;/`, so the reviewer looks at the artefact rather than at a screenshot — the same argument the merge discipline makes about rendered work.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="feature-staging"/><cat-harness.processes:no-call reason="Moving the pin on a branch is the step; CI stages it on the pull_request event. A call activity would claim the engine drives CI."/></bpmn:extensionElements>
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_Gates" name="Run the row's gates&#10;tests · e2e · site-links">
