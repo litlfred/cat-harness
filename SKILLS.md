@@ -271,7 +271,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`benchmarking-mode`](sdlc/skills/sdlc-core/benchmarking-mode.md) | Benchmarking output is a synthesized report across models and configurations, deliberately excluded from declared knowledge-graph typologies. |
 | [`blocked-build-dependencies`](sdlc/skills/sdlc-core/blocked-build-dependencies.md) | A build or a model download fails from an agent container. |
 | [`branch-archaeology`](sdlc/skills/sdlc-core/branch-archaeology.md) | Classify every remote branch against the default branch (merged, landed by squash or cherry-pick, partially landed, unlanded, undetermined) by commit ancestry, patch-id and merge-tree, not by… |
-| [`branch-freshness`](sdlc/skills/sdlc-core/branch-freshness.md) | Periodically rebase or merge main into the feature branch, detect what changed upstream, and re-analyse the session workplan. |
+| [`branch-freshness`](sdlc/skills/sdlc-core/branch-freshness.md) | Read what changed on main often, and re-analyse the session workplan. |
 | [`bun-use`](sdlc/skills/sdlc-core/bun-use.md) | How Bun is used as the JavaScript/TypeScript execution runtime, test runner, package manager, and tarball packager across separated repositories: standalone subgraph configuration (bunfig.toml,… |
 | [`ci-health`](sdlc/skills/sdlc-core/ci-health.md) | A red workflow looks exactly like a green one from inside a checkout. |
 | [`code-review-process`](sdlc/skills/sdlc-core/code-review-process.md) | Where code review sits in the release lifecycle. |
