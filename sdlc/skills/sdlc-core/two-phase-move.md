@@ -27,7 +27,7 @@ This happened when cat-harness moved `skills/sdlc` to `sdlc/skills`. The fixes
 in three content layers above it were red only because the index checkout
 still pinned the old cat-harness. Main was red for about 250
 commits, and 14 re-pin trains failed on the same links, about 17 % of runner
-time (folio-assistant#2781, #2946, bean `folio-assistant-tsh9`).
+time (folio-assistant#2781, #2946, work item `folio-assistant-tsh9`).
 
 ## The rule
 
