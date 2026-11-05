@@ -14,14 +14,19 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `guides`, holding `doc
 | file | what it is | used by |
 |---|---|---|
 | [`agent-onboarding.md`](agent-onboarding.md) | Agent onboarding |  |
+| [`agent-onboarding.prov.jsonld`](agent-onboarding.prov.jsonld) | data |  |
 | [`beans-and-todos.md`](beans-and-todos.md) | Beans and todos |  |
 | [`detangle.md`](detangle.md) | detangle |  |
+| [`detangle.prov.jsonld`](detangle.prov.jsonld) | data |  |
 | [`index.md`](index.md) | Authoring guides |  |
 | [`managing-agent-context.md`](managing-agent-context.md) | Managing agent context |  |
 | [`new-content-type.md`](new-content-type.md) | Adding a new content type |  |
 | [`reseeding-the-lean-cache.md`](reseeding-the-lean-cache.md) | Reseeding the Lean cache |  |
+| [`reseeding-the-lean-cache.prov.jsonld`](reseeding-the-lean-cache.prov.jsonld) | data |  |
 | [`swarm-management.md`](swarm-management.md) | Swarm management |  |
+| [`swarm-management.prov.jsonld`](swarm-management.prov.jsonld) | data |  |
 | [`translation-support.md`](translation-support.md) | Translation support |  |
+| [`translation-support.prov.jsonld`](translation-support.prov.jsonld) | data |  |
 | [`voices.md`](voices.md) | Voices — editorial overlays |  |
 | [`ar/`](ar/) | _nothing declares what this holds_ | |
 | [`es/`](es/) | _nothing declares what this holds_ | |
