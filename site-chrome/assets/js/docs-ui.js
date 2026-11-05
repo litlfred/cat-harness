@@ -12222,8 +12222,21 @@
     var when = qaWhen(w.at);
     var grid = el("div", { class: "fa-qa-field-grid" });
     grid.appendChild(qaField("when", when && when.text, { title: when && when.title }));
-    grid.appendChild(qaField("repo SHA at review", shortSha(w.sha),
-      { mono: true, title: w.sha || undefined }));
+    // A verdict records the TREE it reviewed, not HEAD's commit (folio-assistant
+    // bean 69lr; owner card Q4, 2026-11-05: "the tree is the identity"). On a
+    // pull_request run HEAD is the synthetic refs/pull/<n>/merge commit, which
+    // can vanish; the commit that lands on main has the same tree. Sidecars
+    // written before that still carry only `sha`, so it is shown when there is
+    // no tree. No link: GitHub has no tree-to-commit lookup, so naming the
+    // commit on main must be resolved when the site is built, not here.
+    if (w.tree) {
+      grid.appendChild(qaField("repo tree at review", shortSha(w.tree),
+        { mono: true, title: "Git tree id of the reviewed checkout: " + w.tree +
+          ". Every commit with this tree has exactly these inputs." }));
+    } else {
+      grid.appendChild(qaField("repo SHA at review", shortSha(w.sha),
+        { mono: true, title: w.sha || undefined }));
+    }
     if (w.kind === "script" || w.scriptHash) {
       grid.appendChild(qaField("checker source hash", shortSha(w.scriptHash),
         { mono: true, title: w.scriptHash || undefined }));
