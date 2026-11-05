@@ -95,7 +95,7 @@ tools layer), and each workflow instance page reads it when it loads.
 It is a different document from the stage-1 graph export, and a reader can
 tell them apart without the path: it is typed `cat-harness:DynamicState`, its
 `$schema` is `cat-harness-dynamic-state/v1`, and it holds only the running
-instances, the steps their tokens sit on, and their stuck states. A bean store
+instances, the steps their tokens sit on, and their stuck states. A work item store
 that could not be read is named in `unreadStores`, so its instances read as
 unknown, never as none. **Do not mint a published artefact name to close a gap
 the author left open**; wait for the reader that names it.

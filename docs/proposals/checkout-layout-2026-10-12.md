@@ -8,7 +8,7 @@ summary: >-
 # Checkout layout: which of the three standalone layouts is canonical
 
 **Status: proposal, not decided.** The owner's ruling is asked for in
-[§5](#5-the-decision). Bean `f6gq` records the question as open: *"The
+[§5](#5-the-decision). Work item `f6gq` records the question as open: *"The
 platform has three definitions of a standalone checkout in force … The ruling
 settling which layout is canonical is still the owner's."* Nothing below has
 been changed on the strength of this proposal; the one fix that landed with it
@@ -19,8 +19,8 @@ been changed on the strength of this proposal; the one fix that landed with it
 | | layout | who uses it, measured 2026-10-12 | how a layer finds another |
 |---|---|---|---|
 | **A** | **Aggregate index** — the `litlfred/folio-assistant` checkout, every layer a directory in it, laid down from `index.lock.json` | cat-harness-tools' own PR CI (`pr-tests.yml`: check out folio-assistant as `fa/`, `mount-from-lock.sh`, swap the PR in at `fa/cat-harness-tools`); the parent's own workflows | by directory name, one level below the index |
-| **B** | **Sibling clones** — each repository cloned beside the others under one parent directory | this container (`/home/user/*`); `seed:ready --rehearse` and `check:standalone` (bean `ho66`), which lay a layer and its `needs` out as siblings; `scripts/lib/roots.ts`'s fallback `../cat-harness` | by the sibling's declared `name` |
-| **C** | **Remote mounts inside the checkout** — the downstream's own repository, with each layer it needs mounted at a pinned SHA under its root (`index.config.json` + `index.lock.json`, verified by tree digest) | `litlfred/smart-ra`, `litlfred/who-iris`, the `smart-*` IG repositories (bean `n3h9`), the publish Routine | by declared `name` inside the checkout; the lock pins the bytes |
+| **B** | **Sibling clones** — each repository cloned beside the others under one parent directory | this container (`/home/user/*`); `seed:ready --rehearse` and `check:standalone` (work item `ho66`), which lay a layer and its `needs` out as siblings; `scripts/lib/roots.ts`'s fallback `../cat-harness` | by the sibling's declared `name` |
+| **C** | **Remote mounts inside the checkout** — the downstream's own repository, with each layer it needs mounted at a pinned SHA under its root (`index.config.json` + `index.lock.json`, verified by tree digest) | `litlfred/smart-ra`, `litlfred/who-iris`, the `smart-*` IG repositories (work item `n3h9`), the publish Routine | by declared `name` inside the checkout; the lock pins the bytes |
 
 Layout C is the only one a downstream folio uses, and the only one the
 separation's own end state (kg-separation stage 11: *"a code dependency as a
@@ -90,7 +90,7 @@ Every repository, the harness's own tool layers included, is a checkout that
 mounts what it `needs` under its own root from `index.config.json`, pinned and
 digest-verified. cat-harness-tools declares `cat-harness` and `bootstrap-tools`
 as `source.remote` instances; its CI mounts them from its own lock instead of
-checking out folio-assistant. Code across layers is imported as packages (bean
+checking out folio-assistant. Code across layers is imported as packages (work item
 `f6gq` option 2, already the target), so no import climbs a directory.
 Sibling clones survive only as an explicit development override
 (`--harness` / `$CAT_HARNESS_ROOT`), never as a fallback a tool guesses.
@@ -165,7 +165,7 @@ they hold under every layout.
 
 ## Related
 
-- Bean `f6gq` — package imports across layers; where this question was recorded as open.
+- Work item `f6gq` — package imports across layers; where this question was recorded as open.
 - kg-separation lessons 5, 6, 18 and 19 (`skills/kg/graph-management/kg-separation.md`).
 - `check:declaration-resolution` and `separation:cutover:check` (cat-harness-tools) — the measurements in §2.
 - [Semantic subgraphs](semantic-subgraphs-2026-10-09.html) — the mount mechanics option 1 depends on.

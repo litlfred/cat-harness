@@ -1,6 +1,6 @@
 ---
 name: pending-show
-description: Show the current session's pending work — beans list + ledger intent. Read-only.
+description: Show the current session's pending work — work items list + ledger intent. Read-only.
 user_invocable: true
 ---
 
@@ -14,7 +14,7 @@ or "what did I say I was going to do?".
 In order:
 
 1. **Current branch + PR.** Branch name, PR number (if open), PR title.
-2. **Beans list.** Current in-progress or todo beans for this session (via `beans list`).
+2. **Work items list.** Current in-progress or todo work items for this session (via `beans list`).
 3. **Goal scope.** From `STATUS.md`: which goal(s) the current PR touches.
 4. **Master ledger intent.** The "INTENT" cell of the current session-log row in `docs/coordination/<goal>.md`.
 
@@ -50,5 +50,5 @@ This is a thin reader. No writes. Sources (read order):
 ## When to invoke
 
 - User asks "what are you working on?" / "what's left?" / "status?".
-- Mid-session checkpoint — ensure ledger is consistent with Beans state.
+- Mid-session checkpoint — ensure ledger is consistent with Work items state.
 - Before a context handoff (compaction event, end of session).

@@ -2,6 +2,447 @@
   "$schema": "glossary-ledger/1.0.0",
   "instance": "cat-harness",
   "concepts": {
+    "harness/cat-harness": {
+      "prefLabel": "C@T Harness",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/archimate": {
+      "prefLabel": "Archimate",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/attestations": {
+      "prefLabel": "Attestations",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/auto-docs": {
+      "prefLabel": "Auto docs",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/basic-cdn-site": {
+      "prefLabel": "Basic CDN site",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/bean-defs": {
+      "prefLabel": "Work items",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/bean-notes": {
+      "prefLabel": "Bean notes",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/beans": {
+      "prefLabel": "Work plan",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/binary-release": {
+      "prefLabel": "Binary releases",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/block-kinds": {
+      "prefLabel": "Block kinds",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/board-positions": {
+      "prefLabel": "Board positions",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/boards": {
+      "prefLabel": "Boards",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/business-processes": {
+      "prefLabel": "Business processes",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/cat-harness": {
+      "prefLabel": "Harness graph",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/cdn-site": {
+      "prefLabel": "CDN site",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/code": {
+      "prefLabel": "Code",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/code-list": {
+      "prefLabel": "Code lists",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/content-adapters": {
+      "prefLabel": "Content adapters",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/doc-group": {
+      "prefLabel": "Doc group",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/docs": {
+      "prefLabel": "Docs",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/document-kinds": {
+      "prefLabel": "Document kinds",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/external-schema": {
+      "prefLabel": "External schemas",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/folio": {
+      "prefLabel": "Folio",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/fsh-guts": {
+      "prefLabel": "FSH guts",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/health": {
+      "prefLabel": "Health",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/interaction": {
+      "prefLabel": "Interaction",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/issue-marks": {
+      "prefLabel": "Issue marks",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/library": {
+      "prefLabel": "Library",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/memory": {
+      "prefLabel": "Memory",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/merge-queue": {
+      "prefLabel": "Merge queue",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/merge-reviews": {
+      "prefLabel": "Merge reviews",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/methodology": {
+      "prefLabel": "Methodologies",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/notes": {
+      "prefLabel": "Notes",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/openapi": {
+      "prefLabel": "Openapi",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/pipeline-plugins": {
+      "prefLabel": "Pipeline plugins",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/policies": {
+      "prefLabel": "Policies",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/proposals": {
+      "prefLabel": "Proposals",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/qa": {
+      "prefLabel": "QA",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/qa-checkers": {
+      "prefLabel": "QA checkers",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/qa-report": {
+      "prefLabel": "QA reports",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/requirements": {
+      "prefLabel": "Requirements",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/session-state": {
+      "prefLabel": "Session state",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/session-survey": {
+      "prefLabel": "Session surveys",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/sme-case-verdict": {
+      "prefLabel": "SME case/verdict pairs",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/software-library": {
+      "prefLabel": "Software libraries",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/subscribed-harnesses": {
+      "prefLabel": "Subscribed harness state",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/substrate-snapshot": {
+      "prefLabel": "Substrate snapshots",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/sweep-marks": {
+      "prefLabel": "Sweep marks",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/swimlane-glossary": {
+      "prefLabel": "Swimlane glossary",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/test-data-fixed": {
+      "prefLabel": "Fixed test data sets",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/test-data-generated": {
+      "prefLabel": "Generated test data recipes",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/test-plan": {
+      "prefLabel": "Test plan",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/test-report": {
+      "prefLabel": "Test report",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/themes": {
+      "prefLabel": "Themes",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/todo-feedback": {
+      "prefLabel": "Todo feedback",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/todo-items": {
+      "prefLabel": "Todo items",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/todos": {
+      "prefLabel": "Todos",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/tool-release": {
+      "prefLabel": "Tool releases",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/tools": {
+      "prefLabel": "Tools",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/translation-sources": {
+      "prefLabel": "Translation sources",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/typologies": {
+      "prefLabel": "Graph typologies",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/uml": {
+      "prefLabel": "UML",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/uploads": {
+      "prefLabel": "Uploads",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/validators": {
+      "prefLabel": "Validators",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/vocab-mapping": {
+      "prefLabel": "Vocab mapping",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/voice-vendors": {
+      "prefLabel": "Voice vendors",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/voices": {
+      "prefLabel": "Voices",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/waiver": {
+      "prefLabel": "Waivers",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/workflow-state": {
+      "prefLabel": "Workflow state",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/basic-cdn-site": {
+      "prefLabel": "Basic cdn site (node kind)",
+      "formerLabels": [
+        "Basic cdn site"
+      ],
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/bean": {
+      "prefLabel": "Work item",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/carried-note": {
+      "prefLabel": "Carried note",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/cat-harness-declaration": {
+      "prefLabel": "Cat harness declaration",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/cdn-site": {
+      "prefLabel": "Cdn site (node kind)",
+      "formerLabels": [
+        "Cdn site"
+      ],
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/document-kind": {
+      "prefLabel": "Document kind",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/document-kind-coverage": {
+      "prefLabel": "Document kind coverage",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/memory-record-core": {
+      "prefLabel": "Memory record",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/node-kind-index": {
+      "prefLabel": "Node kind index",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/outside-software": {
+      "prefLabel": "Outside software",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/qa-script": {
+      "prefLabel": "Qa script",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/sme-case-verdict": {
+      "prefLabel": "Sme case verdict",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/software-library": {
+      "prefLabel": "Software library",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/test-data-fixed": {
+      "prefLabel": "Test data fixed",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/test-data-generated": {
+      "prefLabel": "Test data generated",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/test-data-set": {
+      "prefLabel": "Test data set",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/themed": {
+      "prefLabel": "Themed",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/todo": {
+      "prefLabel": "Todo",
+      "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
     "role/adjudicator": {
       "prefLabel": "Adjudicator",
       "firstSeen": "2026-09-22",

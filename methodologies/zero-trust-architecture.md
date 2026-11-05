@@ -28,8 +28,8 @@ applies-when: >
 
 # Zero trust architecture
 
-**Adopted on the owner's ruling, 2026-10-07** (issue #2389, bean `pk0z`).
-The adversarial pass over the earlier draft (bean `1ygp`, finding L3.1) showed
+**Adopted on the owner's ruling, 2026-10-07** (issue #2389, work item `pk0z`).
+The adversarial pass over the earlier draft (work item `1ygp`, finding L3.1) showed
 that the draft was mostly this platform's own rules presented as a method. The
 owner chose to split it, and asked to *"make it a proper methodology"* and to
 *"ingest completely"*. So this node holds **only the method, as SP 800-207

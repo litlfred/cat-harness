@@ -64,7 +64,7 @@ what you write into the repository.
 |---|---|
 | chat replies, questions, status reports | **the determination** |
 | commit messages, PR bodies, issue comments | the instance's source language |
-| code comments, skills, beans, schemas | the instance's source language |
+| code comments, skills, work items, schemas | the instance's source language |
 | folio CONTENT | [`translation-manager`](../../../library/skills/library-core/translation-manager.md), not this skill |
 
 The reason is the reader: a commit message or issue comment is read by

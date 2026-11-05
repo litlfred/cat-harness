@@ -130,7 +130,7 @@ the editor; only an accepted change is written to the corpus.
 <img src="https://litlfred.github.io/folio-assistant/assets/img/workflows/draft-to-publication.svg" alt="BPMN swimlane diagram: corpus to draft publication, review team and SME sign-off, programme-manager authorisation, publication" width="100%">
 
 **One cycle of a folio, plan → retire.** Both diagrams above appear here as call
-activities, and the **work plan (beans)** lane runs through all three —
+activities, and the **work plan (work items)** lane runs through all three —
 claimed before work starts, updated with findings, resolved on commit — so a
 human and an agent read the same answer to *what is done, and what is next*.
 
@@ -202,7 +202,7 @@ instructions: [installation](docs/start/installation.md).
 | Tool | Purpose |
 |------|---------|
 | `folio_init` | Scaffold a new folio (runs before a folio has a content type) |
-| `work_plan_prime` | Surface the work-plan (beans) |
+| `work_plan_prime` | Surface the work-plan (work items) |
 | `check_dependencies` | Probe installed toolchains |
 | `skill_list` / `skill_fetch` | Discover + load skills |
 | `content_list` / `content_validate` / `content_build` | Lifecycle over the folio |

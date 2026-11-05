@@ -8,7 +8,7 @@ description: >
   repository with no CI is never green, who may authorise a merge and what does
   NOT count as authorisation ("fix all issues until green" does not), how the
   authorisation is recorded, and the post-merge steps: base green, site
-  republished, downstream re-pins, bean and issue. Use for "merge it", "land this PR", "merge the
+  republished, downstream re-pins, work item and issue. Use for "merge it", "land this PR", "merge the
   green PRs", and before any write to a default branch in any repository.
 user_invocable: false
 ---
@@ -192,7 +192,7 @@ agent that wrote it down), a missing quote or source, and a missing SHA.
 `none` reading `Task_ReadAuthorisation` needs.
 
 **Elsewhere** (a repository with no queue), post the same fields as a comment
-on the PR, signed with the session link, and append it to the bean:
+on the PR, signed with the session link, and append it to the work item:
 
 ```
 merge-authorised:
@@ -257,7 +257,7 @@ commit unless told otherwise. **Never delete the branch**
    The merge authorisation covers the re-pin only if the owner's words named the
    re-pin. When no instance mounts the repository, record "no downstream mounts
    found" and say where you looked.
-4. **`Task_Report`: a note on the bean** with the merge SHA and the
+4. **`Task_Report`: a note on the work item** with the merge SHA and the
    authorisation block, and a round summary on the issue
    ([`issue-working`](issue-working.md)). **Do not close the issue.** In CRDM,
    `crdm-close.bpmn` closes it after this sub-process returns, and only on the

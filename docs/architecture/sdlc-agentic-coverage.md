@@ -26,7 +26,7 @@ He, Treude, and Lo categorize multi-agent software engineering into six core lif
 Folio-assistant implements its processes as executable BPMN 2.0.2 diagrams and DMN 1.5 decision tables, in `processes/` (`content/`, `kg/`, `library/`, `process/`, `ui/`) and `sdlc/processes/`.
 
 ### Core Architectural Alignment
-- **Strengths**: Folio-assistant formalizes **Requirements Engineering (CRDM suite)**, **Software Design (BPMN/DMN models and MADR ADRs)**, **Gated Quality Assurance (automated CI health, multi-voice adversarial reviews, signed QA attestations)**, and **Management Coordination (git-backed bean claims and serialized merge queue)**.
+- **Strengths**: Folio-assistant formalizes **Requirements Engineering (CRDM suite)**, **Software Design (BPMN/DMN models and MADR ADRs)**, **Gated Quality Assurance (automated CI health, multi-voice adversarial reviews, signed QA attestations)**, and **Management Coordination (git-backed work item claims and serialized merge queue)**.
 - **Identified Gaps**: As a document, guideline, and platform engineering harness, folio-assistant currently has gaps in **post-deployment runtime monitoring (live APM/log diagnosis)**, **continuous runtime telemetry feedback**, and **reverse-engineering of legacy codebases**.
 
 ---

@@ -74,9 +74,9 @@ Two mechanical facts:
 | **`folio/`** | it belongs on a rendered page | a landing sticky — but a *page's* sticky is a layer's **contribution**, so it is declared in that layer's `<name>.json`, not written here. A landing sticky lives in the `folio/` of **the instance it describes**, never in another instance's, so a mounted instance's sticky arrives with the mount |
 | **nowhere** | it was worth showing and not worth keeping | previewed in the conversation and left there |
 
-**`todos/` is not `beans/`.** A todo is a *person's* outstanding item; a bean is the *agent* work
+**`todos/` is not `beans/`.** A todo is a *person's* outstanding item; a work item is the *agent* work
 plan. `AGENTS.md` forbids standing a second work plan beside `beans/`, so a
-sticky that is really agent work is a bean — use `todo-manager`, not this.
+sticky that is really agent work is a work item — use `todo-manager`, not this.
 
 ### 5. Bind it to the graph
 
@@ -88,7 +88,7 @@ A `CarriedNote` carries its attachments, and each is optional:
 - `identities` — who it is assigned to, as `provider:id` (`github:litlfred`).
   **Assignment is a tag, not a transfer**: it says who should see it, and the
   person has not agreed to anything by being named.
-- `references` — KG corpus nodes by `{kind, id}`: a bean, a block, a skill.
+- `references` — KG corpus nodes by `{kind, id}`: a work item, a block, a skill.
 - `artefacts` — files and external things.
 
 Leave out what you do not know. An empty `identities` is *unassigned*, which is
@@ -131,6 +131,6 @@ Asked for a sticky about reading the documentation, explicitly **not** in
 
 - **It does not write a landing-page sticky.** Those are a layer's contribution,
   declared in its declaration — see `sticky-contribution.ts`.
-- **It does not create beans.** Agent work is `todo-manager`'s.
+- **It does not create work items.** Agent work is `todo-manager`'s.
 - **It does not delete or overwrite a sticky it did not make.** Editing somebody
   else's note is the `deletion-requires-confirmation` case.

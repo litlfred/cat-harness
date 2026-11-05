@@ -9,7 +9,7 @@ summary: >-
 
 # Which top-level directories are not declared subgraphs?
 
-Issue [#1223](https://github.com/litlfred/folio-assistant/issues/1223) · feature bean `0uu2` · parent epic `zzmr`.
+Issue [#1223](https://github.com/litlfred/folio-assistant/issues/1223) · feature work item `0uu2` · parent epic `zzmr`.
 
 The owner, 2026-09-23:
 
@@ -157,7 +157,7 @@ instances would answer identically. It is listed separately for that reason.
 
 ### not mine — 1 directory, 718 files
 
-**`cat-harness/content/`.** Bean `ylj7` found 304 `.ts` there accounted for by
+**`cat-harness/content/`.** Work item `ylj7` found 304 `.ts` there accounted for by
 nothing and deferred it explicitly, with the reason recorded: the directory
 holds `content/pipeline/` (core's subject) beside `content/docs/` (folio
 content), so declaring it needs the repo-partition split settled first.
@@ -180,7 +180,7 @@ Real content, actively referenced, belongs in the graph.
 
 `cat-harness/ns/` is the one that needs thought rather than a row. It holds the
 JSON-LD `@context` the whole graph is published against — which is not code,
-not a folio, and not a skill. Issue #1078 and bean `ovkk` are both about that
+not a folio, and not a skill. Issue #1078 and work item `ovkk` are both about that
 file's contents disagreeing with the graph. Whatever kind it gets must decide
 `renderable` and `holds`, and both are required, so a kind that has not decided
 does not compile. Registering a kind for a single file is exactly the ceremony
@@ -238,7 +238,7 @@ proposal most wants a person for.
 - `index.html` is 7,973 lines and hardcodes `'quantum-observable-universe'` as
   the fallback paper id in four places, and downloads `qou-latex-source.sh`.
 - **And it is live**: `test-server.e2e.ts` asserts `/cat-harness/viewer/` serves,
-  and bean `1dfh` cites it as the implementation of *"a viewer over it"*.
+  and work item `1dfh` cites it as the implementation of *"a viewer over it"*.
 
 So it is simultaneously folio-specific content in the platform repo *and* a
 tested platform artefact. It is the largest single directory in the gap by bytes

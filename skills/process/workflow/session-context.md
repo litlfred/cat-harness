@@ -39,14 +39,14 @@ are for.
 ## `actor` is required, and it is the point of the record
 
 Every other field can be recovered by looking at the repository. Open
-instances are in the bean graph; claimed beans carry their own status;
+instances are in the work item graph; claimed work items carry their own status;
 timestamps can be reconstructed from commits. **WHO is acting cannot be
 derived from anything.**
 
 The machine keeping the session cannot infer it, which is also why
 [`log-message`](../../../../bootstrap/skills/log-message.md) takes `actor`. A
 sibling session needs to know **who is answerable** before it touches the same
-bean.
+work item.
 
 **It is a reference with a `declared` flag, not an `ActorDefinition`.** An
 agent may act without a node under the actors graph, and requiring one would
@@ -66,7 +66,7 @@ removed in between, and the record says what was true when the session acted.
 | `id` | naming this session | stable for its life |
 | `startedAt` / `updatedAt` | telling a live session from an abandoned one | ISO-8601 UTC |
 | `open[]` | which instances this session is inside | **empty is normal**, not a gap |
-| `claimed[]` | which beans this session announced | by reference, never copied |
+| `claimed[]` | which work items this session announced | by reference, never copied |
 | `waitingOn` | why nothing is moving | `what` + `since`, together |
 
 **`open` empty is the normal state.** An agent answering a question, reading, or
@@ -75,7 +75,7 @@ deciding what to do next is in no process at all, and
 record that treated empty as a defect would report every reading session as one.
 
 **`claimed` is by reference because a claim announces rather than reserves.**
-The bean is the authority on its own status
+The work item is the authority on its own status
 ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)); a status copied
 here would be free to contradict it, and a sibling reading the copy would act
 on a claim that had already been released.
@@ -100,7 +100,7 @@ the instance is a session that lost track, which is one of the detectors
 
 ## Who reads it, and why it is parsed rather than trusted
 
-**A sibling session**, deciding whether a bean is genuinely being worked or was
+**A sibling session**, deciding whether a work item is genuinely being worked or was
 claimed by someone who stopped. **A person**, asking what is in flight.
 **The session itself** on resume, in a fresh container, where the alternative
 is starting a second session beside the one that already exists.
@@ -113,7 +113,7 @@ schema is the contract and the parse is where it is enforced.
 
 ## What this is NOT
 
-**Not the work plan.** A bean says what is being worked on and survives the
+**Not the work plan.** A work item says what is being worked on and survives the
 session; this says who is working and where they are right now. Delete every
 session record and the plan is intact.
 

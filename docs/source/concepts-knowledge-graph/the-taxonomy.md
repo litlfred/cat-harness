@@ -109,7 +109,7 @@ What is being worked on and how far it got. Written by processes as they run,
 committed so it survives a fresh container. It splits by **who the state is
 for**, which is a sharper line than what the state holds:
 
-- **beans — agentic state management.** Used by Agents to coordinate and track
+- **work items — agentic state management.** Used by Agents to coordinate and track
   internal state within a Workflow. *"Changes to the vaccination schedule are
   ready for review at staging."*
 - **todos — human state management.** Attached to a step in a Workflow **or to
@@ -118,7 +118,7 @@ for**, which is a sharper line than what the state holds:
 
 A todo attaching to a knowledge asset and not only to a step is what makes the
 two stores genuinely different rather than one store with an audience field: a
-bean without a Workflow position is incomplete, and a todo on a chapter has no
+work item without a Workflow position is incomplete, and a todo on a chapter has no
 Workflow position to be missing.
 
 Workflow instances, QA sidecars and health results are Dynamic Context too,

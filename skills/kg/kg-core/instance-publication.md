@@ -165,7 +165,7 @@ whatever the semver, and every `<iriBase>v<N>/` of another major, to
 or patch release therefore leaves every copy as it is, and the sync has work to
 do only on a new major or a move. Moving the base itself (a fork, or a move
 to a new host) is `bun run iri:sync -- --from <old base>`, once. `beans/` is
-never rewritten: a bean records what was true when it was written.
+never rewritten: a work item records what was true when it was written.
 
 **Transition tolerance — remove when every layer has migrated.** Until every
 layer carries `<iriBase>v<major>/`, the CHECKS — `check:node-iris`,
@@ -542,5 +542,5 @@ way there. It waits for the process, which is somebody's work and not a field.
   difference between "decided" and "nobody looked".
 - **Do not mint an id for something that already has one upstream.** Record
   theirs as data, mint ours under the namespace above, and keep them apart.
-- **Do not restate this skill in a bean, a proposal or `AGENTS.md`.** A
+- **Do not restate this skill in a work item, a proposal or `AGENTS.md`.** A
   restatement drifts from its source. Point here instead.

@@ -1,6 +1,6 @@
 ---
 name: session-intent
-description: Session-start intent declaration + session-end results recording, against the work plan's goals (milestone beans) and their open beans. Enforces the durable-handoff discipline so any agent can pick up another's thread.
+description: Session-start intent declaration + session-end results recording, against the work plan's goals (milestone work items) and their open work items. Enforces the durable-handoff discipline so any agent can pick up another's thread.
 user_invocable: true
 ---
 
@@ -21,10 +21,10 @@ Each job lives in the object that already owns it:
 
 | job | here |
 |---|---|
-| goals, and what serves each | a `milestone` bean per goal, with the epics parented to it — [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"A GOAL is a `milestone` bean"; `beans roadmap` renders it |
-| canonical status of an item | the bean itself. There is no second copy to disagree with it |
-| flip-flop history | a `scrapped` bean keeps the rejected approach *with its reasons*, and a `trap` node under the declared `memory` graph keeps the failure signature — [`agent-memory`](../../../skills/conduct/conduct-core/agent-memory.md) |
-| session log | the bean's body notes, plus the PR. Both are durable and both are read by the next session; a third place would be a third answer |
+| goals, and what serves each | a `milestone` work item per goal, with the epics parented to it — [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"A GOAL is a `milestone` bean"; `beans roadmap` renders it |
+| canonical status of an item | the work item itself. There is no second copy to disagree with it |
+| flip-flop history | a `scrapped` work item keeps the rejected approach *with its reasons*, and a `trap` node under the declared `memory` graph keeps the failure signature — [`agent-memory`](../../../skills/conduct/conduct-core/agent-memory.md) |
+| session log | the work item's body notes, plus the PR. Both are durable and both are read by the next session; a third place would be a third answer |
 
 | Artifact | Purpose |
 |---|---|
@@ -70,13 +70,13 @@ and its PR are the only durable evidence that another session is working.
 Walk down from the milestone: `beans list` and read the epics parented to it,
 then their open children.
 
-- **Status** — the bean's own `status` is canonical.
-- **What was rejected** — read the `scrapped` beans in the archive before
+- **Status** — the work item's own `status` is canonical.
+- **What was rejected** — read the `scrapped` work items in the archive before
   proposing an approach. That is what stops you re-entering a dead end, and it
-  is why a bean is never deleted.
+  is why a work item is never deleted.
 - **Traps** — the `memory` graph's `trap` nodes carry failure signatures.
   **Do not repeat any pattern recorded there.**
-- **What is in flight** — an `in-progress` bean, with the caveat that a claim
+- **What is in flight** — an `in-progress` work item, with the caveat that a claim
   is branch-local and announces rather than reserves
   ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)).
 
@@ -84,9 +84,9 @@ then their open children.
 
 Run `beans list` to find:
 
-- **`todo` or `draft`** beans not yet picked up.
-- **`blocked`** beans waiting on dependencies.
-- Who is working an item: check the bean body and its holder note. Multiple
+- **`todo` or `draft`** work items not yet picked up.
+- **`blocked`** work items waiting on dependencies.
+- Who is working an item: check the work item body and its holder note. Multiple
   agents MAY pick the same item; coordinate with the user if you see this
   happen.
 
@@ -94,21 +94,21 @@ Run `beans list` to find:
 
 Three places, all required:
 
-**a. The bean** — claim the bean you are working, naming your branch:
+**a. The work item** — claim the work item you are working, naming your branch:
 
 ```sh
 bun run cat beans:claim <id>
 ```
 
 A claim goes through `beans:claim`, not `beans update`: it reads the default
-branch first, refuses a bean somebody else holds, and records a holder note the
+branch first, refuses a work item somebody else holds, and records a holder note the
 next session's check can read. `beans update` writes no such note.
 
 Then append a note to its body saying what you intend and where you got to.
-The bean is the durable record a sibling reads; there is no separate session
+The work item is the durable record a sibling reads; there is no separate session
 log to keep in step with it.
 
-**b. Beans CLI** — new tasks, parented by SUBJECT. **No session bean.**
+**b. `beans` CLI** — new tasks, parented by SUBJECT. **No session work item.**
 
 > **Check before you create (STRICT).** `beans create` is not idempotent — it
 > mints a fresh ID every call and dedupes on nothing, so re-entering this step
@@ -117,7 +117,7 @@ log to keep in step with it.
 > `beans create` below.
 
 - **Do not create a `Session: …` milestone or epic.** A session is a LOG, and
-  its log is the PR body (part c) plus a bean note on each bean worked
+  its log is the PR body (part c) plus a work item note on each work item worked
   (`bun run cat beans:note <id>`, keyed by branch).
   [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"A session is a log, not a
   parent" has the reasoning.
@@ -143,7 +143,7 @@ After step 4, run `/coordinate` to post intent on relevant sibling PRs
 
 Before the first edit of any new unit of work, run the collision review in
 `coordinate` §"Starting new work", scaled to the blast radius and recorded in
-your workplan bean. A pickup (§"Hand-off pickup protocol") runs its own.
+your workplan work item. A pickup (§"Hand-off pickup protocol") runs its own.
 
 ## Session-end protocol (3 steps)
 
@@ -159,20 +159,20 @@ For each task you worked, use the `beans` CLI:
   `beans update <id> --body-append "Completed with finding: ..."`.
 - If partial: leave `status: in-progress`, and append
   `beans update <id> --body-append "Partial result: ..."`.
-- If you discovered a NEW task: create a new bean via `beans create` (after the
+- If you discovered a NEW task: create a new work item via `beans create` (after the
   existence check).
 - If you retract a previous claim: see step 2.
 
 ### 2. Record the results where they will be read
 
-Append them to the **bean**, which is where step 4a put the intent — what was
+Append them to the **work item**, which is where step 4a put the intent — what was
 confirmed, what remains, and the PR. One object, opened and closed, rather
 than an intent in one place and a result in another.
 
 If the session **retracted** a prior claim, that is not a body note. Two
 objects carry it, and they answer different questions:
 
-- the approach that was rejected becomes a `scrapped` bean **with its
+- the approach that was rejected becomes a `scrapped` work item **with its
   reasons**, so the next agent does not re-enter it;
 - the failure *signature* — what made the wrong answer look right — becomes a
   `trap` node in the `memory` graph ([`agent-memory`](../../../skills/conduct/conduct-core/agent-memory.md)).
@@ -203,7 +203,7 @@ Replace the placeholder `## Session results` section with:
   agent-to-agent on task-level locks.
 
 When you discover a task you're working has been picked up by another agent
-(another holder note on the bean, or a sibling PR commit touching the same
+(another holder note on the work item, or a sibling PR commit touching the same
 scope):
 
 1. **Do not silently abandon** — your independent attack is
@@ -220,26 +220,26 @@ scope):
    > with method B. Keep both threads?
 
 4. **If the user says one stands down**, the standing-down agent appends its
-   partial results to the bean and releases its claim.
+   partial results to the work item and releases its claim.
 
 ## Hand-off pickup protocol
 
 If you're the picking-up agent (someone else's `in-progress` task
 or partial result):
 
-1. Read the bean's notes (`beans show <id>`) — that's the handoff letter and
+1. Read the work item's notes (`beans show <id>`) — that's the handoff letter and
    the technical state.
 2. Read the partial PR (if open) — that's the code state.
-3. Declare your intent normally (claim the bean and add a note to it — `bun run cat beans:note <id>` — saying you picked it up and where you will start; no session bean).
+3. Declare your intent normally (claim the work item and add a note to it — `bun run cat beans:note <id>` — saying you picked it up and where you will start; no session work item).
 4. Re-run the collision review in `coordinate` §"Starting new work" before
-   your first edit, and add the result to the bean.
+   your first edit, and add the result to the work item.
 
 ## Anti-patterns
 
-- ❌ Starting work without reading the goal's beans, `scrapped` beans and
+- ❌ Starting work without reading the goal's work items, `scrapped` work items and
   traps first ("just-the-prompt" agents re-commit flipped claims).
 - ❌ Claiming a task but not writing the EOS results ("silent abandon").
-- ❌ Retracting a previous claim quietly, without a `scrapped` bean or a trap
+- ❌ Retracting a previous claim quietly, without a `scrapped` work item or a trap
   ("erasure" — guaranteed to re-flip next session).
 - ❌ Asking the user "should I pick this task?" — the queue is the
   authoritative list; just pick and declare.

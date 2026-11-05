@@ -12,7 +12,7 @@ description: >
 # Prepare for a handover
 
 When a session stalls, what survives is what is **on the remote**: commits on
-pushed branches, PRs and their comments, and bean notes. Everything else is
+pushed branches, PRs and their comments, and work item notes. Everything else is
 lost, including uncommitted edits, local-only commits, scratchpad plans,
 running jobs and the chat. This skill moves the parts that matter onto the
 remote, in an order where each step is worth something on its own if the
@@ -71,14 +71,14 @@ can be rebuilt:
   whether a re-run reproduces them;
 - scratchpad files: plans, logs, measurements. Copy anything worth keeping
   into the report or into a committed file;
-- local tools state: the beans fallback, caches.
+- local tools state: the work items fallback, caches.
 
 Secrets are never copied anywhere. Name them only.
 
 ## 4. Write the handover report, citing the commits
 
-Use the [`handover-report`](handover-report.md) template, written as a bean
-note on your bean or its epic, then commit and push it:
+Use the [`handover-report`](handover-report.md) template, written as a work item
+note on your work item or its epic, then commit and push it:
 
 ```sh
 bun run cat beans:note <bean> --title "handover: <role> <date>" \
@@ -92,7 +92,7 @@ says "the branch" without a SHA cannot be checked against reality by the
 triage that reads it.
 
 **And write a DISPATCH LINE for every unstarted item** — the fixed one-sentence
-form in [`handover-report`](handover-report.md) rule 7, one line per bean,
+form in [`handover-report`](handover-report.md) rule 7, one line per work item,
 naming a branch that does not exist yet. The report is not finished without
 them, because a handover that hands nobody a way to pick the work up makes the
 next reader re-derive the dispatch.

@@ -45,21 +45,21 @@ while you work.
    finding). Defer to [`/coordinate`](coordinate.md) for the full
    cross-PR triage protocol. New work posts its intent only after the
    collision review in `coordinate` §"Starting new work" has been run
-   and recorded in the workplan bean.
+   and recorded in the workplan work item.
 
 ### Bean edits are pushed to the state branch, not the PR
 
-Under the state branch architecture, bean edits (`beans/defs/*.md`, `beans/workflows/*.json`) do not belong in the
+Under the state branch architecture, work item edits (`beans/defs/*.md`, `beans/workflows/*.json`) do not belong in the
 PR's commit set. The code PR contains code, test, and documentation changes
 destined for `main`.
 
-Work-plan progress, bean claims, status updates, and notes are pushed directly
+Work-plan progress, work item claims, status updates, and notes are pushed directly
 to the branch store (`bun cat-harness-tools/scripts/branch-store.ts push --id beans` or
 `bun run cat state:push`).
 
-The PR description references the bean via `Closes-bean: <id>` (or in the
-status checklist), but git commits on the PR branch must not bundle bean file
-edits. This avoids merge conflicts on bean files and prevents work-plan edits
+The PR description references the work item via `Closes-bean: <id>` (or in the
+status checklist), but git commits on the PR branch must not bundle work item file
+edits. This avoids merge conflicts on work item files and prevents work-plan edits
 from triggering code CI workflows.
 
 ## The fifth invariant, and the one agents get wrong
@@ -279,4 +279,4 @@ requirement.** So:
   the folio wins.
 - [`/todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) — the session work-plan; the
   PR-body status checklist (invariant 3) is its externally-visible
-  projection, so a watcher needs no access to the session's bean queue.
+  projection, so a watcher needs no access to the session's work item queue.

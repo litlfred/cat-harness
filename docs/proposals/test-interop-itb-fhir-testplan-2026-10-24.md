@@ -63,14 +63,14 @@ The short answers:
 
 | Piece | Where | What it holds |
 |---|---|---|
-| `test-plan/v1` | `schemas/test-plan.ts` (bean `ygzh`) | Shaped after FHIR R5 TestPlan: `scope` (`kind` ∈ skill, agent, tool, machine, ig, process; `target`; `versionRange`), `requirements[]` (`req:` refs, at least one), `testCases[]` with `assertions[]` (required or informative), `testData[]` (fixed with a reviewer, or generated with a seed), `dependsOn`, `dependencies[]` with a `predecessor` plan, and `exitCriteria` as a DMN reference. |
+| `test-plan/v1` | `schemas/test-plan.ts` (work item `ygzh`) | Shaped after FHIR R5 TestPlan: `scope` (`kind` ∈ skill, agent, tool, machine, ig, process; `target`; `versionRange`), `requirements[]` (`req:` refs, at least one), `testCases[]` with `assertions[]` (required or informative), `testData[]` (fixed with a reviewer, or generated with a seed), `dependsOn`, `dependencies[]` with a `predecessor` plan, and `exitCriteria` as a DMN reference. |
 | `folio-test-run/v1` | `schemas/test-run.ts` | A run of a skill or plan: data and process hashes, `plan` (id and version), `sut`. `sut` is `{actor, version, reach}` today, and a run that names a plan must name it. |
 | `test-report/v1` | `qa-reports` branch, `tests/<plan>/<sut>/<run>/` | The certifier's report. |
-| Test process | `processes/sdlc/test-plan-execution.bpmn`, `decisions/test-certification.dmn` (beans `3o5b`, `4iey`) | Tester and certifier roles, the execution loop, the exit rule. |
-| Certification attestations | `qa-attestations/v1`, family `certification` (bean `zaui`) | What a certified run attests to. |
-| The first plan | `test/plans/crdm-detect-evaluation.test-plan.json` (bean `ff09`) | Certifies the `crdm-detect` skill. |
+| Test process | `processes/sdlc/test-plan-execution.bpmn`, `decisions/test-certification.dmn` (work items `3o5b`, `4iey`) | Tester and certifier roles, the execution loop, the exit rule. |
+| Certification attestations | `qa-attestations/v1`, family `certification` (work item `zaui`) | What a certified run attests to. |
+| The first plan | `test/plans/crdm-detect-evaluation.test-plan.json` (work item `ff09`) | Certifies the `crdm-detect` skill. |
 
-Open beans on this side:
+Open work items on this side:
 
 - `18p1` (draft): export `test-plan/v1` to FHIR R5 TestPlan, in fhir-harness.
   The owner's ruling there is that FHIR TestPlan is a **downstream target**,
@@ -118,7 +118,7 @@ What is still prose, in `test/plans/README.md` and in the assertions'
    `api/wit/`). The plan does not say which interface it tests, so it cannot
    say that an MCP server exposing the same operations can run it.
 5. **Release-review criteria** (verification `inspection` or `review`) are
-   left out of the plan "to be judged at release" (bean `oi32`). Nothing
+   left out of the plan "to be judged at release" (work item `oi32`). Nothing
    records the judgement yet.
 
 ### In OpenTestBed (read only; an outside organisation)
@@ -146,7 +146,7 @@ config). It does not derive one from the other.
 
 | | Source of truth | FHIR TestPlan | GITB TDL | Fits the platform rules? |
 |---|---|---|---|---|
-| **H1** | `test-plan/v1` | generated (bean `18p1`) | generated | Yes. The platform stays FHIR-free and ITB-free, and both exports live outside the core. |
+| **H1** | `test-plan/v1` | generated (work item `18p1`) | generated | Yes. The platform stays FHIR-free and ITB-free, and both exports live outside the core. |
 | **H2** | OTB Gherkin plus plan config | compiled by OTB | compiled by OTB | Partly. Gherkin has no `req:` links, success criteria, DMN exit rule or data hashes, so `test-plan/v1` would still be needed beside it and the two would drift. |
 | **H3** | FHIR TestPlan | the store | generated from it | No. It breaks the FHIR-free rule (`18p1`). |
 | **H4** | GITB TDL | derived from TDL | the store | No. TDL is an executable step language. Requirements, assertions as criteria and exit rules do not survive into it, so nothing can be derived back. |
@@ -232,7 +232,7 @@ PR #500).
 | **S1** | Widen `SutRefSchema` in place: optional `implementation`, `target`, `surface`, `model`, `configuration` (a hash plus a short map). | Smallest change, and backward compatible. | Every run repeats the system's description. Nothing says which systems exist, so "certified on every target" cannot be checked. |
 | **S2** | **A `system/v1` node**, plus a run reference to it. The node declares the system's versions, the actors it can play, its surfaces and its targets. The run says which of each it used. | This is the ITB's model (system, actor, conformance statement), so the export maps one to one. It also lets a check say that a plan has a run for every declared target, which is the claim the smart-trust-tools README makes in prose. | One more node kind, and every SUT needs a declaration before it can be certified. |
 | **S3** | Reuse FHIR `Device` or `TestReport.participant`. | Nothing to design. | Breaks the FHIR-free rule. It stays an export target only. |
-| **S4** | Reuse the deployment description's placements ([deployment descriptions](deployment-descriptions.md), bean `o1by`). | One registry for "what runs where". | A placement says where something runs, not what it is, so it answers a different question. A `system/v1` should *reference* a placement, not replace one. |
+| **S4** | Reuse the deployment description's placements ([deployment descriptions](deployment-descriptions.md), work item `o1by`). | One registry for "what runs where". | A placement says where something runs, not what it is, so it answers a different question. A `system/v1` should *reference* a placement, not replace one. |
 
 **Recommended: S2, with S1's fields as the run's reference to it.**
 
@@ -323,7 +323,7 @@ What becomes checkable that is prose today:
 
 - Every required assertion has a binding in every system that claims the
   plan's interface, or an `unbound` entry with a reason. (Today: "87 of 94"
-  is counted by hand in bean `oi32`.)
+  is counted by hand in work item `oi32`.)
 - Every selector exists in that system's suite. A Tool lists the test names
   (`cargo test -- --list`, the JUnit report, the TypeScript suite's
   manifest) and compares.
@@ -359,13 +359,13 @@ also where the benchmark of PR #500 gets its first smart-* task (section 5).
 Criteria verified by `inspection` or `review` become cases of `level:
 review`, in a separate plan run at release, whose witness kind is `human`.
 The certifier's DMN treats a missing review verdict as undetermined, which
-is the existing rule. This closes the last part of bean `oi32`.
+is the existing rule. This closes the last part of work item `oi32`.
 
 ### The WHO-ITB agreement plan
 
 `who-itb-agreement` is the first plan that would use the ITB route (I1):
 its three tracks are already ITB test cases (`tc-vhl-001`, `tc-icvp-001`,
-`tc-ph4h-qr-001`). Once the data is usable (bean OI-33: no licence file yet,
+`tc-ph4h-qr-001`). Once the data is usable (work item OI-33: no licence file yet,
 no pinned QR reader, the DEV trust list not reachable from CI), a tester
 runs the ITB and the TAR import records the result against the plan.
 Nothing in WHO-ITB or any WHO repository is changed.
@@ -375,7 +375,7 @@ Nothing in WHO-ITB or any WHO repository is changed.
 | Thing | Becomes |
 |---|---|
 | A machine QA criterion (a `QaWitness` of kind `script`) | An assertion id, so a QA verdict and a test verdict are the same kind of record. |
-| A fixed machine finding | A regression case, generated with the finding's input as fixed test data (benchmark gap 4; it overlaps bean `vm6m`). |
+| A fixed machine finding | A regression case, generated with the finding's input as fixed test data (benchmark gap 4; it overlaps work item `vm6m`). |
 | A spec-kit success criterion | An assertion id of the form `req:<id>#<statement>/<key>`, exactly as smart-trust-tools already does (benchmark gap 5). |
 | A benchmark | One plan, several runs, each with a different `system/v1` reference (model, configuration). The side-by-side view groups runs by plan version and data hash (benchmark gaps 1 and 2). |
 | Cost and tokens | Optional fields on the run (benchmark gap 3). |
@@ -393,12 +393,12 @@ no WHO repository to change.
 | P2 | `skill`, `level` and `scope.interface` on `test-plan/v1`; `test-binding/v1` | cat-harness | D2 |
 | P3 | smart-trust-tools adopts: systems `hcert-kotlin` and `hcert-rust`, generated bindings, `check:req-nodes` checks them | smart-trust-tools | P1, P2 |
 | P4 | The MCP surface: a server over the Rust library and a third adapter in `tools/conformance-ts` | smart-trust-tools | P3 |
-| P5 | FHIR TestPlan export, with `testRun.script` pointing at the ITB case where there is one (bean `18p1`) | fhir-harness | P2 |
+| P5 | FHIR TestPlan export, with `testRun.script` pointing at the ITB case where there is one (work item `18p1`) | fhir-harness | P2 |
 | P6 | ITB route I1 (Gherkin plus OTB config) and TAR import | D3 | P1, P2 |
 | P7 | The agent plan for "Verify HCERT", and the first benchmark runs | smart-trust-tools, cat-harness | P4, PR #500 |
 
 Each step is a draft PR with its own issue, and is useful on its own. P3 and
-P4 alone close what bean `oi32` counts by hand.
+P4 alone close what work item `oi32` counts by hand.
 
 ## 7. Decisions for the owner
 
@@ -416,12 +416,12 @@ proposal only adds the TAR import beside it.
 ## Sources
 
 - cat-harness `schemas/test-plan.ts`, `schemas/test-run.ts`,
-  `processes/sdlc/test-plan-execution.bpmn`; beans `ygzh`, `3o5b`, `4iey`,
+  `processes/sdlc/test-plan-execution.bpmn`; work items `ygzh`, `3o5b`, `4iey`,
   `ff09`, `zaui`, `18p1`, `y4uj`, `3fva`.
 - litlfred/smart-trust-tools at `ae4eb269`: `test/plans/`,
   `tools/test-plan/`, `skills/hcert/hcert-verify.md`,
   `skills/hcert-library/hcert-conformance-testing.md`,
-  `skills/requirements/stt-*.json`, bean `oi32`.
+  `skills/requirements/stt-*.json`, work item `oi32`.
 - github.com/OpenTestBed: `itb-cli` (`otb-gherkin`, `build-test-ig.mjs`),
   `itb-manager`, `itb-plugin-authoring`, `itb-plugin-fhir-validator`,
   `itb-plugin-jwt`, `itb-plugin-oauth`, `itb-plugin-hcert-decoder` (READMEs,

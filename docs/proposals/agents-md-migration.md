@@ -10,7 +10,7 @@ summary: >-
 
 # Migrating `AGENTS.md` into skills — the classification
 
-Bean [`1hsf`](https://github.com/litlfred/folio-assistant/blob/main/beans/defs/folio-assistant-1hsf--migrate-agentsmd-migration-debt-into-skills-and-te.md).
+Work item [`1hsf`](https://github.com/litlfred/folio-assistant/blob/main/beans/defs/folio-assistant-1hsf--migrate-agentsmd-migration-debt-into-skills-and-te.md).
 This is the **survey**, not the migration: it classifies every section and names
 its destination, so the moves that follow can be reviewed one at a time against
 a stated plan rather than judged after the fact.
@@ -40,7 +40,7 @@ the gap is measurable in lines:
 | Agentic harness — interaction model | yes | **8** |
 | Context before the question (STRICT) | yes | 39 |
 | Work-plan & todos — use `beans` | yes | 73 |
-| Opening a bean or a topic (STRICT) | yes | 112 |
+| Opening a work item or a topic (STRICT) | yes | 112 |
 | More | yes (per bullet) | 134 |
 | Actors, roles and skills | yes, twice | 152 |
 
@@ -72,7 +72,7 @@ owns it; a skill has to be written. Nothing here is asserted from a filename.
 | 15 | Working an issue — announce, then re-check | 31 | **DEBT** | **none found** |
 | 16 | Commit early, commit often, always PR (STRICT) | 64 | **DEBT** | `continual-progress` — *verified*, it already carries rules 1–3 and says so |
 | 17 | Context before the question (STRICT) | 39 | **DEBT** | `interaction-modality` §4.1 — *verified* |
-| 18 | Opening a bean or a topic (STRICT) | 112 | **DEBT** | `opening-brief` — *verified* |
+| 18 | Opening a work item or a topic (STRICT) | 112 | **DEBT** | `opening-brief` — *verified* |
 | 19 | More | 134 | **MIXED** | mostly pointers already; the `uses[]`/`interprets` bullet is DEBT → `uses-editorial-review` |
 
 **Four subjects have no owning skill**: README sections, CI health, subagent
@@ -82,7 +82,7 @@ are skills to write, and they should not be smuggled in as part of a move.
 ## Correcting two claims carried into this bean
 
 Both were asserted by an earlier survey and are wrong. They are recorded because
-the bean's own warning is that `AGENTS.md`'s counts go stale and must be
+the work item's own warning is that `AGENTS.md`'s counts go stale and must be
 re-measured rather than quoted.
 
 **"The ALWAYS-PR rule is an orphan."** It is not. `continual-progress.md` carries
@@ -129,7 +129,7 @@ So the rule for this migration was: **when a destination skill has a local copy,
 write the same addition to both.** Sections 16, 17 and 18 all landed in skills
 with one, and §18's addition went to both.
 
-**A sibling then removed the hazard rather than working around it** (bean
+**A sibling then removed the hazard rather than working around it** (work item
 `tdmg`, PR #392). The local copies are now ~29-line stubs pointing at the
 servable skill, and the divergence is gone. The finding that decided it is worth
 keeping: the local copy was **never servable** — `LOCAL_PACKAGES` in

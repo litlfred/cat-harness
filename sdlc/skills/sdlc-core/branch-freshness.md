@@ -13,7 +13,7 @@ A feature branch that drifts from `main` accumulates three kinds of debt:
 
 1. **Merge conflict debt** — the longer the branch lives, the harder to merge
 2. **Assumption debt** — siblings may have renamed, moved, or restructured
-3. **Workplan debt** — siblings may have completed overlapping beans
+3. **Workplan debt** — siblings may have completed overlapping work items
 
 ## When to check
 
@@ -50,7 +50,7 @@ git log --oneline HEAD..origin/main
 - Pipeline changes (`pipeline/*.ts`) → **behaviour may differ**
 - Skill changes (`cat-harness/skills/**`) → **guidance may be out of date**
 - BPMN changes (`cat-harness/processes/**/*.bpmn`) → **diagrams may conflict**
-- Bean changes (`beans/`, on its state branch: `bun run cat state:mount`) → **beans may have been created/resolved by sibling**
+- Work item changes (`beans/`, on its state branch: `bun run cat state:mount`) → **work items may have been created/resolved by sibling**
 - `AGENTS.md` changes → **rules may have changed**
 - **Directory restructuring** → paths you're writing to may have moved
 
@@ -77,12 +77,12 @@ beans list
 ```
 
 Ask:
-- Are any open beans **redundant** (sibling completed equivalent work)?
+- Are any open work items **redundant** (sibling completed equivalent work)?
 - Did upstream introduce **new defects or requirements**?
 - Did a schema/pipeline change **invalidate** implementation assumptions?
 - Do I need to re-run tests?
 
-If yes: update beans, re-run tests, note in turn summary.
+If yes: update work items, re-run tests, note in turn summary.
 
 ### Step 5 — Report
 
@@ -102,10 +102,10 @@ Or:
 - **Never rebase over review comments** — merge instead (`git merge origin/main`)
 - **Never rebase someone else's branch**
 - **Re-run BPMN render after rebasing BPMN files**
-- **Re-check beans before creating** — a rebase may pull in sibling beans
+- **Re-check work items before creating** — a rebase may pull in sibling work items
 
 ## Cross-references
 
 - [`../../sdlc/skills/sdlc-core/coordinate.md`](coordinate.md) — multi-agent coordination
-- [`../../work-plan/skills/work-plan/todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — bean management
-- [`../../work-plan/skills/work-plan/bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) — cross-session beans
+- [`../../work-plan/skills/work-plan/todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — work item management
+- [`../../work-plan/skills/work-plan/bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) — cross-session work items

@@ -30,7 +30,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 ## 按顺序的四件事
 
 **1. 工作计划是你说明自己在做什么的地方。**
-不是聊天消息，也不是评论——而是 [beans]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})，一个纳入版本管理、任何会话或智能体都能读取的存储。开始工作前先认领，以免并行会话领取同一项；最终不需要的 bean 标记为 `scrapped` 并写明原因，绝不删除。
+不是聊天消息，也不是评论——而是 [work items]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})，一个纳入版本管理、任何会话或智能体都能读取的存储。开始工作前先认领，以免并行会话领取同一项；最终不需要的 work item 标记为 `scrapped` 并写明原因，绝不删除。
 
 ```sh
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
@@ -97,7 +97,7 @@ folio-assistant 是**可插拔的**——每种内容类型都由一个内容*�
 - **[发布工作流 (Publication workflow)](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — 编辑与发布流程的 BPMN 泳道图：HCI 验证关卡、人员分工审阅以及共享工作计划。
 - **[智能体引导 (Agent onboarding)]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — 针对接入 folio 的 LLM 智能体指引：入门步骤、查找技能、内容对象模型、QA 伴随文件。
 - **[技能与角色 (Skills & roles)]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — 详述各项技能与角色，以及它们如何与 LLM 协同工作。
-- **[工作计划与待办事项 (Beans and todos)]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})** — 共享工作计划，以及为何将其纳入版本控制。
+- **[工作计划与待办事项 (Work items and todos)]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})** — 共享工作计划，以及为何将其纳入版本控制。
 - **[文档摄取 (Document ingestion)](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/document-ingestion.html)** — 上传文件如何转化为 L1 源：提取结构、衍生内容、构建 L1 知识图谱与完整性关卡。
 - **[证据评估 (Evidence)](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/evidence.html)** — 证据检索、提取与审阅流程。
 - **[技能模式参考 (Skill schema reference)](../reference/skills/)** — 为每项技能生成的输入/输出契约。

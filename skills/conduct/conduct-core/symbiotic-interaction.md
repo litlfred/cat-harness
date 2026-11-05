@@ -84,8 +84,8 @@ with a durable artefact attached.
 
 ### Same turn, quoted, dated — in the provenance log
 
-- **Same turn.** Not "noted for later" and not a bean saying the skill should be
-  updated. A bean that records a rule is a rule in the wrong graph: `beans/` is
+- **Same turn.** Not "noted for later" and not a work item saying the skill should be
+  updated. A work item that records a rule is a rule in the wrong graph: `beans/` is
   `state`, the skills are `context`, and a reader looking up how something is
   decided reads the skill.
 - **Quoted.** The author's own words, verbatim, typos included — they are the
@@ -156,8 +156,8 @@ mapping; no extra ceremony in-session.
    evidence threshold.
 5. **Applying a rule-level steer to the artefact and not to the rule**
    (§2) — the cross-session form of anti-pattern 2.
-6. **Filing a rule-level steer as a bean** instead of editing the
-   skill. A bean says work is outstanding; the work here is the edit.
+6. **Filing a rule-level steer as a work item** instead of editing the
+   skill. A work item says work is outstanding; the work here is the edit.
 
 ## 5. Lexicon maintenance
 

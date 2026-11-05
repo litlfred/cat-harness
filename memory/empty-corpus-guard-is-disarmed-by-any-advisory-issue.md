@@ -10,8 +10,8 @@ references:
 archived: true
 ---
 > **Archived 2026-09-19, on arrival.** Written for
-> `content-pipeline-navigator`, which was retired the same day (bean `n98f`).
-> Kept rather than deleted, per that bean's reasoning: the record of what was
+> `content-pipeline-navigator`, which was retired the same day (work item `n98f`).
+> Kept rather than deleted, per that work item's reasoning: the record of what was
 > learned outlives the mechanism that carried it.
 >
 > **Not re-homed to `platform-boundary-guard`, and the reason is not budget.**

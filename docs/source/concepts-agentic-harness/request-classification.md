@@ -9,7 +9,7 @@ classification determines which workflow the agent enters.
 | **Feature request** | Request new platform capability (see [crdm-detect](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md)) | CRDM requirements workflow |
 | **Information request** | Ask about the platform, content, or process | No workflow — answer directly |
 | **Tool invocation** | Run a specific tool (`content_validate`, `qa_sweep`, etc.) | No workflow — execute and report |
-| **Work-plan management** | Create, update, or query beans | No workflow — execute and report |
+| **Work-plan management** | Create, update, or query work items | No workflow — execute and report |
 | **Bug report** | Report broken behaviour in existing features | Triage: fix directly if small, CRDM if redesign needed |
 
 ### The feature-request detection rule

@@ -249,7 +249,7 @@ This is the resume target for sessions that drop the loop mid-campaign.
 - **Dispatches to**: per-axis `Agent` calls for mechanical batches,
   direct edits for trivial ones, AskUserQuestion for judgement
 - **AGENTS.md links**:
-  - work-plan policy (beans queue + idle-trigger)
+  - work-plan policy (work items queue + idle-trigger)
   - User-accessibility (🟡, multi-select default, structured branch
     names)
 - **One branch / one PR for related things** (`integration-watcher` §0a,

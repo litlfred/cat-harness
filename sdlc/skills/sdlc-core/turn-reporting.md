@@ -1,9 +1,9 @@
 ---
 name: turn-reporting
 description: >
-  Say which bean you are on, every turn — the opening and closing report
+  Say which work item you are on, every turn — the opening and closing report
   formats, the rules that make a report worth reading (two sentences and a link
-  per bean, every mention), and the STRICT rule that the "next" line is a
+  per work item, every mention), and the STRICT rule that the "next" line is a
   question and must carry its own context.
 allowed-tools: Read Grep Glob AskUserQuestion
 consulted: true
@@ -14,16 +14,16 @@ consulted: true
 This skill governs what you say **during and after** the work;
 [`opening-brief.md`](opening-brief.md) governs what you say before starting
 it; [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md)
-keeps the bean mechanics.
+keeps the work item mechanics.
 
 ## Say which bean you are on — every turn
 
-Claiming a bean records the work; **reporting** it is what lets a human steer
+Claiming a work item records the work; **reporting** it is what lets a human steer
 and a sibling session avoid you. Both are required.
 
 ### Opening a turn
 
-**When you begin work on a bean**, open that turn by naming it and what you are
+**When you begin work on a work item**, open that turn by naming it and what you are
 attempting — before the first tool call, not after the work lands:
 
 > **Starting `fwr7`** — retargeting the seven edges the forward-ref arc left
@@ -31,9 +31,9 @@ attempting — before the first tool call, not after the work lands:
 
 ### Closing a turn
 
-**End every turn** with the beans you touched and what is next.
+**End every turn** with the work items you touched and what is next.
 
-> **Beans**
+> **Work items**
 > - **worked** `fwr8` — Re-baseline the forward-ref arc endpoints. Re-ran both with the fixed parser: the arc is 274 → 195, not 274 → 192. This corrects my own earlier claim that the start figure was understated — only the post-mid-arc figures are short, and only by 3.
 > - **next** `fwr7` — Retarget seven `uses[]` edges that point at the wrong block. Two of the seven are now confirmed detangler findings rather than reader reports, which raises their priority above the remaining five.
 
@@ -42,7 +42,7 @@ attempting — before the first tool call, not after the work lands:
 Knowing the §"next" rule below does not stop a closing report from handing
 over a teaser — "two decisions still yours: `35nj` (three options) and `wlqd`
 (pinned-commit vs `ref: main`)" names choices whose options and costs live
-elsewhere. **So do a write-time pass.** Before sending a closing report, scan your own text for anything that hands over a choice — a bean id, an
+elsewhere. **So do a write-time pass.** Before sending a closing report, scan your own text for anything that hands over a choice — a work item id, an
 option name, a "your call", a "needing X vs Y" — and for each one:
 
 - **carries its options with their costs, a recommendation and a default** → send it;
@@ -58,14 +58,14 @@ planned to ask.
 
 ### The rules that make a report worth reading
 
-**1. Every bean reference carries TWO sentences and a link — what it is, then
+**1. Every work item reference carries TWO sentences and a link — what it is, then
 what you would do.**
 `fa/nvbr` is an opaque four-character string. A reader cannot tell whether it
 is urgent, adjacent, or already obsolete without opening the store — and asking
 someone to go look things up is the cost this report exists to remove. Link to
-the bean file so one click gets the full body.
+the work item file so one click gets the full body.
 
-A gloss says what the bean IS; the second sentence says what you would DO, which
+A gloss says what the work item IS; the second sentence says what you would DO, which
 is what somebody deciding whether to let you do it needs. **Titles alone are a
 menu with no prices** — a reader can see that `rlp5` is two scripts disagreeing
 about a flag and still not know whether your answer is a one-line fix or a
@@ -78,15 +78,15 @@ question back to them.
 First person and a proposal — *"I would …"* — because rule 5 already says expect
 to be overruled; the passive hides whose call it is. Applies to **worked** too
 (what you did, and whether it is finished) and to anything you are declining, or
-a reader assumes it is queued. Two sentences settle a bean somebody can say yes
+a reader assumes it is queued. Two sentences settle a work item somebody can say yes
 to; when **next** hands over a real decision between costed routes, §"The `next`
 line is a question" below is the binding form.
 
-**EVERY MENTION, not every report.** A bean id in an ordinary sentence is
+**EVERY MENTION, not every report.** A work item id in an ordinary sentence is
 exactly as opaque as one in a list, and a reader hunting for its meaning cannot
 see which section of your message it came from. So the rule binds a one-line status, a
 mid-paragraph aside, a commit message, a PR body, an issue comment — anywhere
-the id appears at all. If naming the bean is not worth two sentences, do not
+the id appears at all. If naming the work item is not worth two sentences, do not
 name it: say "nothing outstanding" or describe the work without the id.
 
 **2. Asking for review means linking the artefact — deep, not the root, and naming the host.** If a
@@ -166,14 +166,14 @@ line; a design change that needs a decision gets a paragraph. Err long — the
 cost of a sentence the reader skims is far below the cost of a round-trip
 asking what you meant, especially for an author who types with difficulty.
 
-**5. "Next" is your judgement, not a fact.** Beans carry no priority order
+**5. "Next" is your judgement, not a fact.** Work items carry no priority order
 beyond what an agent asserts — so say *why* it is next, and expect to be
 overruled.
 
 **6. Prefix across repos** (`qou/fwr7`, `fa/fsl7`) when a turn spans both.
 
 **7. Report unclaimed work as unclaimed.** If you did durable work without a
-bean, say so and open one; that omission is the failure this exists to catch.
+work item, say so and open one; that omission is the failure this exists to catch.
 
 **8. A link to a file is an absolute GitHub permalink** —
 `https://github.com/<owner>/<repo>/blob/<sha>/<path>`, pinned to a commit sha,
@@ -202,7 +202,7 @@ stronger form for the case where **next** also hands over a *decision*:
 governs it — context → options → recommendation → question — and the test is
 whether the author can answer **without opening anything**.
 
-A bean id plus a term you coined is the specific failure:
+A work item id plus a term you coined is the specific failure:
 
 > **next** `x4mt` — Cross-agent skill install + `fa-` prefix (#247). Unstarted,
 > and I'd want your call on prefix-at-rest vs prefix-at-install before writing

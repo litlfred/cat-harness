@@ -223,7 +223,7 @@ the owner's confirmation.
 
 ## 5. After scaffolding — seed the plan, then publish
 
-1. **Seed the work plan.** One bean per top-level thing the author named in
+1. **Seed the work plan.** One work item per top-level thing the author named in
    step 3. Run the exact-title existence check in
    [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) §"Check before you create" first —
    `beans create` is not idempotent.

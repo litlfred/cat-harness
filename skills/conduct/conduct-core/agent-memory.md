@@ -24,6 +24,15 @@ fact in an agent's area adds it in the same change; a session that re-measures
 a number updates the entry with the fresh value and date, because a memory
 file that only accretes becomes the thing it exists to prevent.
 
+**This curated memory is not a memory record, and a work item is.** The
+entries here are read during a process and never written by one. A *memory
+record* is what a process keeps as it runs (`memory-record-core` in
+cat-harness-tools `schemas/kg/memory-record.ts`, owner ruling Q17 of
+2026-11-03), and a *work item* is a memory record with more structure: a
+status, a type, a priority, a parent and what it blocks. Both are worked with
+the same memory Tools (`memory_note`, `memory_checkpoint`, `memory_recall`);
+see [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md).
+
 ## Every entry carries exactly one of three labels
 
 | label | what it promises |

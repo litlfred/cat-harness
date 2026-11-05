@@ -22,10 +22,10 @@ a criterion for a kind, and before building any coverage report of your own.
 ## A zero sidecar count is not "unaudited"
 
 `kg-qa` sidecars measure `kg-audit`'s criteria exactly, and `KG_SUBJECT_KINDS`
-has no `bean` — so zero sidecars over the bean store is the right answer to
+has no `bean` — so zero sidecars over the work item store is the right answer to
 *"how many criteria reach this kind"* and no answer at all to *"is this kind
 audited"*: the `check:bean-*` gates, `check:ready-to-close`,
-`check:stale-paths` and `check:harness-dirs` audit beans. This is
+`check:stale-paths` and `check:harness-dirs` audit work items. This is
 [`covered-is-not-reachable`](../../tools/folio-core/covered-is-not-reachable.md)
 one level out: **coverage is a relation between an instrument and the question
 it was built for**, and the signal in reach is rarely the signal you need.
@@ -49,7 +49,7 @@ A gate names the kinds it covers in its own module docblock:
 
 The tempting alternative is to infer it: grep each gate's source for a kind's
 name or its declared directory. **It fails in both directions at once.** A gate
-that mentions `beans/defs/` in passing scores as auditing beans; a gate that
+that mentions `beans/defs/` in passing scores as auditing work items; a gate that
 resolves its directory through `directoriesForGraph` names no path and scores as
 auditing nothing. Both answers wrong, neither *looking* wrong:
 could-not-determine rendered as clean
@@ -169,7 +169,7 @@ depend on the signal it exists to replace.
 ### A docblock that documents a tag necessarily contains the tag
 
 `coversIn` read `audit-coverage.ts`' own worked examples of `@covers` as
-declarations, crediting the coverage report with auditing the bean store. Any
+declarations, crediting the coverage report with auditing the work item store. Any
 parser over docblocks has to tell a **use** from a **mention**, and indentation is
 the distinction JSDoc already provides: `^ \* @covers `, exactly one space either
 side of the star.

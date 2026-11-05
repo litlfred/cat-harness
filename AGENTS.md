@@ -6,7 +6,7 @@ written twice is a description one copy gets wrong. This says what to **do**,
 and it augments rather than replaces the `AGENTS.md` at the root of whatever
 checkout includes this layer. The rules that bind everywhere are skills of
 this layer, so they are linked here rather than there:
-[beans](work-plan/skills/work-plan/todo-manager.md),
+[work items](work-plan/skills/work-plan/todo-manager.md),
 [the opening brief](sdlc/skills/sdlc-core/opening-brief.md),
 [process state](skills/process/workflow/process-state.md),
 [continual progress](sdlc/skills/sdlc-core/continual-progress.md),
@@ -18,8 +18,8 @@ this layer, so they are linked here rather than there:
 2. **Claim before you work.** `bun run cat beans:claim <id>` — not
    `beans update --status in-progress`, which writes no holder note. A claim
    announces rather than reserves until your PR exists — see
-   `bean-coordination`. When other agents drain the same beans, or there is
-   more than one bean copy, follow `bean-drain` step 2 instead.
+   `bean-coordination`. When other agents drain the same work items, or there is
+   more than one work item copy, follow `bean-drain` step 2 instead.
 3. **Ask for the skill that governs the task** — `skill_list`, then
    `skill_fetch`. Do not open a path under `skills/` from memory: the graph an
    instance declares is what resolves, and a hardcoded path is how a skill
@@ -127,7 +127,7 @@ is not the gate set** ([`platform-gates`](sdlc/skills/sdlc-core/platform-gates.m
 ### Where the harness keeps its state — `beans/` is a graph
 
 `beans/` is a graph with named nodes, declared by `beans/beans.json` (schema
-`schemas/sdlc/bean-graph.ts`), and a file declares what it is: a bean by its front
+`schemas/sdlc/bean-graph.ts`), and a file declares what it is: a work item by its front
 matter, a workflow instance by `"$schema": "folio-workflow-instance/v1"`.
 **Extension is a coincidence; a declaration inside the file is the contract.**
 The two duplicates of the layout that cannot be removed are both checked by
@@ -148,13 +148,13 @@ One todo mechanism for agent work, session-local and cross-session alike
 spellings to avoid: `beans <id> --status in-progress` **exits 1 with `unknown
 command`**, and `beans update <id> --status in-progress` is not a claim (it
 writes no holder note — use `bun run cat beans:claim <id>`). `beans update` stays
-right for closing your own bean, `--body-append` and `--blocked-by`. Never
-delete a bean — `scrapped`, with reasons — which is one instance of
+right for closing your own work item, `--body-append` and `--blocked-by`. Never
+delete a work item — `scrapped`, with reasons — which is one instance of
 [`deletion-requires-confirmation`](skills/conduct/conduct-core/deletion-requires-confirmation.md).
-Bean updates are pushed directly to the branch store
+Work item updates are pushed directly to the branch store
 (`bun cat-harness-tools/scripts/branch-store.ts push --id beans` or `bun run cat state:push`)
 rather than committed to code PRs on `main`.
-Beans are not sidecars, and this is not the content-review feedback workflow
+Work items are not sidecars, and this is not the content-review feedback workflow
 ([`todo-review`](skills/authoring/authoring-core/todo-review.md)).
 
 ### At session start

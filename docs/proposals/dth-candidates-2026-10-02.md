@@ -13,8 +13,8 @@ summary: >-
 
 # DTH candidates: methodologies, processes and glossary
 
-Bean `5blc`, owner 2026-10-01: the handbooks are *"also source of methodologies
-/ processes / glossary"*. The bean's rule is that the **owner reviews this list
+Work item `5blc`, owner 2026-10-01: the handbooks are *"also source of methodologies
+/ processes / glossary"*. The work item's rule is that the **owner reviews this list
 before anything is authored**, so this page proposes and authors nothing.
 
 Every row cites its handbook. The full record, with each verbatim quote,

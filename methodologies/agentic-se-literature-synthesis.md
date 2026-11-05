@@ -34,7 +34,7 @@ applies-when: >
 
 # Agentic Software Engineering Literature Synthesis — Cross-Paper Synthesis and Bidirectional Adversarial Analysis
 
-**Ingested & Synthesized under Epic `folio-assistant-0ipy` (Leaf Bean `folio-assistant-9k2i`).**
+**Ingested & Synthesized under Epic `folio-assistant-0ipy` (Leaf Work item `folio-assistant-9k2i`).**
 This node synthesizes the empirical evidence, architectural patterns, and failure modes across five
 landmark papers in agentic software engineering (SE), spanning multi-agent SDLC taxonomies, competitive
 debate adjudication, cost-aware temporal routing, adaptive swarm selection with early termination, and
@@ -313,7 +313,7 @@ operational vulnerabilities across its 69 BPMN/DMN processes and SDLC skills:
 
 ### 3. Merge Queue Fragility: The Deterministic vs. Agentic Boundary
 - **Vulnerability**:
-  Prior to bean `nok9` and proposal `merge-gate-2026-10-02.md`, there was strong pressure to establish a
+  Prior to work item `nok9` and proposal `merge-gate-2026-10-02.md`, there was strong pressure to establish a
   "blocking red flag" gate where multi-agent code reviews could unilaterally reject pull requests on the merge train.
 - **Risk**:
   As CodeAgent proved (Table 2), LLM vulnerability reviewers exhibit an uncalibrated false-positive rate of
@@ -336,7 +336,7 @@ operational vulnerabilities across its 69 BPMN/DMN processes and SDLC skills:
 - **Risk**:
   An agent trapped in an infinite search loop, circular git merge conflict, or hallucinated dependency chain
   continues to burn tokens until hitting wall-clock timeouts, draining API budgets and creating zombie lockouts
-  in the bean store.
+  in the work item store.
 - **Remediation**:
   Implement explicit **programmatic Andon-cord stopping predicates**:
   ```typescript
@@ -410,7 +410,7 @@ operational vulnerabilities across its 69 BPMN/DMN processes and SDLC skills:
 
 ## 6. Implementation Checklist for Agents and Swarm Stewards
 
-When coordinating multi-agent work, opening beans, or stewarding merge trains, verify these six invariants:
+When coordinating multi-agent work, opening work items, or stewarding merge trains, verify these six invariants:
 
 1. **Before dispatching a swarm**:
    - Check if the task is consultation/extraction ($|A_q|=1$). If so, **do not spawn a swarm**; dispatch a single compact worker.

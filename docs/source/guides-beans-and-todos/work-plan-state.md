@@ -1,4 +1,4 @@
-The rest of this page says what a bean **is**. This section says what the
+The rest of this page says what a work item **is**. This section says what the
 store currently **holds** — read live from
 [`/assets/beans/index.json`]({{ '/assets/beans/index.json' | relative_url }}), the projection
 `gen-docs-pages.ts` writes from `beans/defs/` on every build, beside the todo
@@ -17,7 +17,7 @@ alone.
 missing on purpose.** A stale `in-progress` detector would have to read the
 clock, and the projection is gated on exact content — anything computed
 against the clock changes the file on every build and the staleness gate then
-fires forever. So the projection publishes each bean's `updated_at` as a fact
+fires forever. So the projection publishes each work item's `updated_at` as a fact
 and the page computes age when you open it. Age therefore moves without the
 file moving, which is the right way round.
 
@@ -36,15 +36,15 @@ yet. Their dashboards say exactly that, rather than rendering zeros for a
 store nobody read, because a dashboard that opens at zero cannot be told from
 a store with nothing in it.
 
-**Every identifier on those pages is a link.** A bean id resolves to the bean's
+**Every identifier on those pages is a link.** A work item id resolves to the work item's
 file, an issue or pull-request number to the forge, and each finding carries a
 pencil to where writing actually happens. A reference that cannot be resolved
 stays as plain text, which is the visible difference between *"follow this"*
 and *"this points somewhere I could not reach"*.
 
-**What is not here.** Where a bean sits in a BPMN process. That join needs `beans/workflows/`, the declared
+**What is not here.** Where a work item sits in a BPMN process. That join needs `beans/workflows/`, the declared
 `workflow-state` graph, and it is empty — so a position view would report
-"nowhere" for every bean in the store. It waits for instance state to exist.
+"nowhere" for every work item in the store. It waits for instance state to exist.
 
 <div class="fa-workplan" data-fa-workplan>
   <p class="fa-workplan-fallback">

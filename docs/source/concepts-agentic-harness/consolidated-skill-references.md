@@ -3,7 +3,7 @@ The skills and documents each behaviour on this page comes from:
 | Behaviour | Source skill / document | Location |
 |---|---|---|
 | Session start sweep | `todo-manager.md § What the session-start sweep emits` | [`work-plan/skills/work-plan/todo-manager.md`](https://github.com/litlfred/cat-harness/blob/main/work-plan/skills/work-plan/todo-manager.md) |
-| Bean protocol | `todo-manager.md`, `bean-coordination.md` | [`work-plan/skills/work-plan/`](https://github.com/litlfred/cat-harness/tree/main/work-plan/skills/work-plan/) |
+| Work item protocol | `todo-manager.md`, `bean-coordination.md` | [`work-plan/skills/work-plan/`](https://github.com/litlfred/cat-harness/tree/main/work-plan/skills/work-plan/) |
 | Commit and PR discipline | `continual-progress.md` | [`sdlc/skills/sdlc-core/continual-progress.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/sdlc-core/continual-progress.md) |
 | Feature-request detection | `crdm-detect.md` | [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md) |
 | CRDM requirements workflow | `crdm-requirements-workflow.md` | [`sdlc/skills/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-requirements-workflow.md) |

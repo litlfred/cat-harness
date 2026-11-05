@@ -14,7 +14,7 @@ allowed-tools: Read Edit Bash Grep Glob WebFetch AskUserQuestion Agent
 > - `todo-review` (this file) = triage of **content feedback** stored
 >   under `feedback/<paper>/` (paper-scope; persistent across
 >   sessions; surfaced via `/todos` dashboard).
-> - `todo-manager` = the agent's **session work-plan** via beans
+> - `todo-manager` = the agent's **session work-plan** via work items
 >   (durable, committed under `beans/`).
 >
 > Both can be active in one session: the agent's work-plan

@@ -58,13 +58,13 @@ turned off.
 ## What the machine must never do
 
 **It claims nothing.** No `cat-harness.processes:bean` appears anywhere in the diagram. The
-process RECORDS that an actor claimed a bean; it does not claim one. A machine
+process RECORDS that an actor claimed a work item; it does not claim one. A machine
 that claimed on the actor's behalf would make the claim's owner unrecoverable
 — and a claim *announces rather than reserves* precisely so a reader can tell
 who announced it.
 
 **It closes nothing but itself.** `A_CloseSession` records that the actor
-stopped. It does not resolve beans or complete instances: those outlive the
+stopped. It does not resolve work items or complete instances: those outlive the
 session by design, and a machine that tidied them away on exit would be
 asserting that work finished because somebody went away.
 
@@ -108,7 +108,7 @@ crosses in.
 - [`session-context`](session-context.md) — the record this machine keeps, and
   why `actor` is its required field.
 - [`workflow-state`](workflow-state.md) — which store answers which question,
-  and why an instance and a bean must be one answer.
+  and why an instance and a work item must be one answer.
 - [`bpmn-processes`](bpmn-processes.md) — authoring an activity, strict vs
   advisory, and DMN-backed gateways.
 - [`process-state`](process-state.md) — the five detectors for being out of

@@ -16,7 +16,7 @@ summary: >-
 {: .no_toc }
 
 **Status:** proposal, **amended 2026-10-03: the adversarial review is
-WARN-ONLY.** **Nothing is built and no workflow is changed.** Epic bean
+WARN-ONLY.** **Nothing is built and no workflow is changed.** Epic work item
 `folio-assistant-nok9`, with children `w8jq` (the review gate), `xqdi`
 (compile gates), `abmq` (RED FLAG taxonomy and verdict shape), `lvlv`
 (per-block backfill) and `u7be` (merge-steward gaps measured today). Reading
@@ -26,7 +26,7 @@ square brackets below, such as [R5], refer to its items.
 > **Read §1.1 before §4 or §5.** This document was written to the ask quoted
 > in §1 and the owner then ruled differently, so its first draft specified a
 > blocking review throughout. §1.1 carries the ruling, and §4.2 and §5.1 have
-> been changed to match. Bean `5ge1`.
+> been changed to match. Work item `5ge1`.
 
 1. TOC
 {:toc}
@@ -107,14 +107,14 @@ it as already reversed once.
 | piece | what it does | what it does NOT do |
 |---|---|---|
 | `code-quality-gates.yml` | the CI gate set; `gates.ts` derives its list from it | no review verdict is read; no path-scoped compile gate for Lean or SUSHI in this repo (the platform holds zero `.lean` and zero `.fsh` files, so `lean-bare-import` skips) |
-| `merge_group:` trigger | tests exactly the commit that will land | **cannot fire.** Bean `1hjm`: GitHub merge queues need an organization-owned repository, and `litlfred/folio-assistant` is user-owned. This is why the merge steward builds merge trains by hand |
-| `merge-base.ts` / `merge-base.bpmn` (bean `d33q`) | resolves only DECLARED conflict patterns, then `regen` must report nothing unrepaired | the "resolve by hand" branch (`Task_ByHand`) produces an authored resolution that nothing reviews |
-| `regen-after-merge.ts` | one regenerate-and-check pass for a train | has no writer for `check:l1-complete` or `smart-base:smart-kg-l1` (bean `u7be`) |
+| `merge_group:` trigger | tests exactly the commit that will land | **cannot fire.** Work item `1hjm`: GitHub merge queues need an organization-owned repository, and `litlfred/folio-assistant` is user-owned. This is why the merge steward builds merge trains by hand |
+| `merge-base.ts` / `merge-base.bpmn` (work item `d33q`) | resolves only DECLARED conflict patterns, then `regen` must report nothing unrepaired | the "resolve by hand" branch (`Task_ByHand`) produces an authored resolution that nothing reviews |
+| `regen-after-merge.ts` | one regenerate-and-check pass for a train | has no writer for `check:l1-complete` or `smart-base:smart-kg-l1` (work item `u7be`) |
 | `code-change-review.bpmn` `Task_Review` | "a human or an agent acting AS reviewer", skill `code-node-review` | records no verdict, so "reviewed" and "skipped" look the same afterwards |
 | `.github/workflows/agent-review.yml` | an LLM review of one commit | `workflow_dispatch` only, runs **after** merge, truncates the diff to 50,000 characters, files issues rather than blocking, and still derives the QOU PDF URL. It is inherited, not designed |
 | `kg-qa/v1` sidecars (`schemas/kg-qa.ts`) | committed verdicts per KG node; `unknown` is never a pass; severity decides the gate | has an agent-review precedent (`voice_reviews[]`, keyed by `skill_hash` and `voice_hash`), but no adversarial review |
 | `qa-review.ts` | separates a FINDING (severity: critical, major or minor) from a DECISION (weight: blocking, suggestion or praise) | not wired to the merge |
-| ROAST and generalise beans (`v048`, `osyc`, `vkm0`, `w4tq`), skills `generalise-the-fix` and `devils-advocate-watcher` | adversarial passes, each written up | **ad hoc and session-scoped.** None blocks a merge, and `v048` records that the first roast's findings were lost because they lived in a chat |
+| ROAST and generalise work items (`v048`, `osyc`, `vkm0`, `w4tq`), skills `generalise-the-fix` and `devils-advocate-watcher` | adversarial passes, each written up | **ad hoc and session-scoped.** None blocks a merge, and `v048` records that the first roast's findings were lost because they lived in a chat |
 
 Agent provenance is already in the history. Of the last 200 commits on this
 branch's base, 109 carry both a `Co-Authored-By: Claude …` trailer and a
@@ -238,8 +238,8 @@ separate check from well-formedness.
    blocks**", which the ruling changed; what it must NOT change is the third
    state. A warn-only gate that collapses *could-not-determine* into
    *found-nothing* is the defect this repository keeps paying for — measured
-   twice more on 2026-10-02 alone, in a vacuous CI pass (bean `0qjq`, answered
-   by `Rule_HeadNotGreen`) and a vacuous `clean` verdict (bean `zjm1`). Exit 0
+   twice more on 2026-10-02 alone, in a vacuous CI pass (work item `0qjq`, answered
+   by `Rule_HeadNotGreen`) and a vacuous `clean` verdict (work item `zjm1`). Exit 0
    with `unknown` on the record; never exit 0 with silence.
 3. **Independence is recorded, not assumed.** The reviewer is not the author's
    session. It is a different model where one is available ([R16], [R21], [R22]),
@@ -321,13 +321,13 @@ G8 instead.
   with a debate-style rebuttal round where the author may answer each flag once
   before the verdict is final ([R19]).
 - **Scope.** The whole diff `merge-base..head`, chunked by file with the PR
-  description and the bean's `## Done when` as the claim under test. If the
+  description and the work item's `## Done when` as the claim under test. If the
   diff does not fit, the result is `unknown` (blocks), never a truncated pass.
   Generated files that a G1 check reproduces are listed and skipped **by name**.
 - **What it checks.** Correctness against the claim; the RED FLAG categories
   (§6); whether a new check can report green without evaluating anything;
-  whether prose (skills, PR body, bean) asserts something the code does not
-  do (the `narrative-asserts-code` axis); scope against the bean.
+  whether prose (skills, PR body, work item) asserts something the code does not
+  do (the `narrative-asserts-code` axis); scope against the work item.
 - **Binding.** The verdict names `base_sha`, `head_sha` and the reviewed tree.
   A push after the review stales it.
 
@@ -363,9 +363,9 @@ without a reproducible observation cannot be blocking. It is recorded as a
 | `irreversible` | deletes or overwrites a durable artefact without confirmation | `plj1` (a workflow deleted every open PR's preview) |
 | `security` | secret exposure, injection, an escalated workflow permission, untrusted input reaching a shell | an `agent-review.yml`-style job holding API keys on PR code |
 | `correctness` | a concrete input gives a wrong result | none recorded; it must name the input |
-| `contract` | breaks a declared schema, API or cross-instance reference | the `kgQaSidecarPath` `..` escape (bean `7u3g`) |
-| `provenance` | a claim in a PR, bean, commit or skill that the evidence does not support | `w4tq` (numeric claims re-run, one wrong) |
-| `scope` | changes outside the bean or issue, or hand-edits a generated directory | |
+| `contract` | breaks a declared schema, API or cross-instance reference | the `kgQaSidecarPath` `..` escape (work item `7u3g`) |
+| `provenance` | a claim in a PR, work item, commit or skill that the evidence does not support | `w4tq` (numeric claims re-run, one wrong) |
+| `scope` | changes outside the work item or issue, or hand-edits a generated directory | |
 | `process` | skips a strict step: merging without the required confirmation, or closing an issue on an agent's own say-so | |
 | `licence` | imports content whose licence forbids it | |
 
@@ -427,7 +427,7 @@ can be audited by criteria and never adversarially read.
 
 **Cost:** measure it on the first batch, then ask for the swarm per
 `swarm-management` with the measured per-node cost. Findings stay in sidecars.
-**No bean per finding** (beans are not sidecars).
+**No work item per finding** (work items are not sidecars).
 
 **Schema gap found while designing:** `KG_SUBJECT_KINDS` has no `schema`
 kind. Schema modules are reviewed today only through `code-node-review`.
@@ -482,7 +482,7 @@ closed, an absent steward cannot make the gate pass.
 *If you say nothing:* B is assumed when child `w8jq` starts. No code is
 written before then.
 
-**Six more questions**, to be asked one at a time, and recorded in bean `nok9`, once Q1 is
+**Six more questions**, to be asked one at a time, and recorded in work item `nok9`, once Q1 is
 settled: reviewer independence (same model in a fresh session, or a different
 family required?); default-on vs signal-only provenance (§5.2); who has standing
 to override a RED FLAG; whether G5 (Lean) belongs in the platform's CI or only
@@ -533,7 +533,7 @@ to be confirmed at upload. **U** means unverified. Totals: 29 S, 1 U, none paywa
 ## 11. What this proposal does not do
 
 - It changes no workflow, script, schema or BPMN. Every change named here is a
-  child bean's work.
+  child work item's work.
 - It does not retire `agent-review.yml`. That falls to `w8jq`, once its replacement
   exists.
 - It does not decide Q1–Q7. **Q1 is now partly settled by §1.1**: a warn-only
@@ -543,4 +543,4 @@ to be confirmed at upload. **U** means unverified. Totals: 29 S, 1 U, none paywa
   secrets — is what warn-only implies. Recorded as an implication, not as the
   owner's answer; Q1 stays open.
 - It does not change `nok9`, `w8jq` or `abmq`. Their bodies still describe a
-  blocking G3/G4 and are reconciled under bean `5ge1`.
+  blocking G3/G4 and are reconciled under work item `5ge1`.

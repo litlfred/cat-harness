@@ -30,7 +30,7 @@ applies-when: >
 
 # Correspondence analysis: the SVD of the standardised residuals
 
-**Adopted 2026-09-29** (bean `ansc`, issue #1482), as option G of the LSI
+**Adopted 2026-09-29** (work item `ansc`, issue #1482), as option G of the LSI
 work, and measured against LSI on this repository's one ground truth before
 being adopted.
 
@@ -73,8 +73,8 @@ distance and dot similarity"* (§6).
 
 ## Measured here, 2026-09-29
 
-On the one ground truth this repository has — the epics 250 open beans were
-already filed under, leave-one-out over 21 epics, on the bean store as it
+On the one ground truth this repository has — the epics 250 open work items were
+already filed under, leave-one-out over 21 epics, on the work item store as it
 stood **before** the LSI-driven re-filing (after it, LSI would be scored
 against its own proposals):
 
@@ -86,7 +86,7 @@ against its own proposals):
 
 **The direction agrees with Qi et al. on the same feature extraction (CA over
 raw-count LSA); the size is not significant at n = 250; and weighted LSI
-closes the gap.** Neither method is shown better at filing beans, so the
+closes the gap.** Neither method is shown better at filing work items, so the
 filing default stays `lsi` and this node is a parallel track, not a
 replacement.
 
@@ -129,5 +129,5 @@ it against the paper's Table 1: the first two principal inertias (0.475,
 93.2 %; 0.017, 3.4 %), their sum equal to χ²/N, jaguar between the cat and car
 terms, every dimension centred on the masses, and the transition formula
 returning each document to its own coordinates. `bun run cat lsi:epics --method ca`
-runs it on the bean store; the skill is
+runs it on the work item store; the skill is
 [`lsi-indexing`](../skills/kg/graph-management/lsi-indexing.md).

@@ -17,7 +17,7 @@ Phase 1.
 
 **Existing session, doing content work:**
 → Synthesise the feature need, ask user whether to pause content work and
-address it now or bean it for later.
+address it now or work item it for later.
 
 ### What the user sees
 
@@ -32,7 +32,7 @@ Instead:
 ### How the agent exits CRDM
 
 The CRDM workflow exits when:
-- All beans from the signed-off requirements are resolved, OR
+- All work items from the signed-off requirements are resolved, OR
 - The user explicitly defers the remaining work
 
 On exit, if a content workflow was suspended, the agent resumes it.

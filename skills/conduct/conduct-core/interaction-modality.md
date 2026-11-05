@@ -24,7 +24,7 @@ disagrees, this box wins.
 **Every question goes out TWICE, in this order:**
 
 1. **A chat message that states the whole question on its own.** What is being
-   decided and why, every PR / bean / link it touches (each id glossed), what
+   decided and why, every PR / work item / link it touches (each id glossed), what
    happens next, and **every option** with its letter, a one-line explanation,
    its trade-off, and which one you recommend. Say what you will do if no
    answer comes.
@@ -239,7 +239,7 @@ Six parts, in order:
 
 1. **What is being decided**, in plain words — stated as what will *differ*
    depending on the answer, not as the name of the decision.
-2. **Every identifier expanded on first use.** A bean id, an option name you
+2. **Every identifier expanded on first use.** A work item id, an option name you
    coined, a field, a Lean declaration, a file path: all opaque without their
    gloss, above all an option name you coined yourself, because it *feels*
    defined to you.
@@ -255,7 +255,7 @@ Six parts, in order:
 6. **The question itself**, last.
 
 **This binds every place a decision is handed to the person**, not only an
-explicit question tool: the end-of-turn "next" line, a bean's `## Done when`, a
+explicit question tool: the end-of-turn "next" line, a work item's `## Done when`, a
 PR body asking the author to choose, a comment on an issue. Those are where it
 is most often broken, because they feel like reporting rather than asking.
 A PR body as a whole, not only its question, is governed by
@@ -419,22 +419,22 @@ one channel they use to correct an agent. So:
 3. **Gating is revisited on EVIDENCE, not on a date.**
 
 > **The condition: twelve RENDERED decision records.** `bun run cat health` reports
-> **`bean-rendered-decision-records`** — beans whose decision actually went
+> **`bean-rendered-decision-records`** — work items whose decision actually went
 > through {@link renderDecision}, detected from the five-row table it emits. At
 > twelve, a person can read them and judge whether the schema fits the
 > decisions this repository actually has. An `## Options` heading is NOT a
-> rendered decision, because beans carry considered-options sections as
+> rendered decision, because work items carry considered-options sections as
 > ordinary practice, so their count grows without anyone using the schema.
 
 The counter is a **health metric over `beans/`**, not a second store, because
 a parallel store of decision objects would be a count free to disagree with the
-bean store's. The
-record goes in the **bean it belongs to**, under `## Options`, where `madr.md`'s
+work item store's. The
+record goes in the **work item it belongs to**, under `## Options`, where `madr.md`'s
 two-option floor and `bean-thin-decision-records` govern it; `renderDecision`
 composes the chat message.
 
-**The unit is BEANS, not decisions**: `hasRenderedDecision` is a per-bean
-boolean, so twelve means twelve different beans. The unit is not changed,
+**The unit is WORK ITEMS, not decisions**: `hasRenderedDecision` is a per-bean
+boolean, so twelve means twelve different work items. The unit is not changed,
 because moving it without moving the number is a silent re-calibration.
 
 **A deferral with no trigger is not a deferral**: it is indistinguishable a

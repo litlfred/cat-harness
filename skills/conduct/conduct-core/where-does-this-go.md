@@ -39,8 +39,8 @@ placement.
 |---|---|---|
 | 1 | Is this a work item, a sign-off, or a code review? | [`issue-working`](../../../sdlc/skills/sdlc-core/issue-working.md) §"What an issue is *for*, against its neighbours" |
 | 2 | Is this feature work that needs a GitHub issue first? | [`crdm-detect`](../../../sdlc/skills/crdm/crdm-detect.md) §"Issue association" |
-| 3 | What TYPE of bean is it, and under which parent? | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), and `check:bean-parents` enforces it |
-| 4 | Does a bean for this already exist? | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"Check before you create" |
+| 3 | What TYPE of work item is it, and under which parent? | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), and `check:bean-parents` enforces it |
+| 4 | Does a work item for this already exist? | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"Check before you create" |
 | 5 | May I claim it — is a sibling already on it? | [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"Claims are global via the branch store" |
 | 6 | Which directory, and what KIND of graph does it hold? | [`content-context-and-state-graphs`](../../kg/kg-core/content-context-and-state-graphs.md) and [`directory-conventions`](../../kg/kg-core/directory-conventions.md) |
 | 7 | Is this an adapter, a profile, or a visualiser? | [`content-profiles`](../../authoring/authoring-core/content-profiles.md) |
@@ -54,7 +54,7 @@ added, update it.
 ## Two rows that are easy to confuse, and the discriminator for each
 
 **Rows 1 and 3.** "Bean or issue?" and "what type of bean?" feel like one
-question and are not. The first asks what KIND OF OBJECT this is — a bean is
+question and are not. The first asks what KIND OF OBJECT this is — a work item is
 the work plan, an issue is where a human signs off, a PR is where code is
 reviewed. The second only arises once row 1 has answered "bean".
 

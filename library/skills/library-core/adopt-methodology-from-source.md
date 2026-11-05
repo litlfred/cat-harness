@@ -3,7 +3,7 @@ name: adopt-methodology-from-source
 description: >
   The general process for turning a shared paper, book or standard into an
   adopted methodology: establish origin and licence, ingest the source, find
-  and summarize related beans and issues and ask whether to coordinate,
+  and summarize related work items and issues and ask whether to coordinate,
   render the method with its adopted and refused parts, place it by
   ownership, integrate it by calling existing processes, give every tool it
   uses a Tool node, and put it to the owner. Process:
@@ -22,7 +22,7 @@ The adoption **rules** are [`methodology-adoption`](../../../skills/process/proc
    - No stated licence means **reference only**: the library entry holds headings, page ranges and a summary in our own words.
    - A source with no origin is a house process. Write a skill instead of a methodology.
 2. **Ingest** (`Process_Ingestion`, [`library-ingestion`](library-ingestion.md)) — the basic flow: the source is accepted, its metadata goes into the KG, and it is catalogued in `library/`. Reading a document into sections is a content-type refinement above this layer, and it keeps the rules that applied here: choose the rung mechanically, and never accept an inferred chapter tree.
-3. **Related work** (`Process_RelatedWork`, [`related-work-coordination`](../../../sdlc/skills/sdlc-core/related-work-coordination.md)). Search beans (`beans list --json`, `beans query`) and the repository's issues and open PRs for work the method touches.
+3. **Related work** (`Process_RelatedWork`, [`related-work-coordination`](../../../sdlc/skills/sdlc-core/related-work-coordination.md)). Search work items (`beans list --json`, `beans query`) and the repository's issues and open PRs for work the method touches.
    - Categorize each hit: *overlaps, coordinate*; *affected by*; *out of scope*; or *unrelated*. Give each a one-line summary.
    - Judgement decides the categories. Present them with context, options and a recommendation (`interaction-modality` §4.1), and **ask whether and how to coordinate**. Do not act before the answer.
    - This is the same step CRDM runs when a requirement starts or changes in chat.
@@ -30,7 +30,7 @@ The adoption **rules** are [`methodology-adoption`](../../../skills/process/proc
    - Extensions beyond the source are marked as ours.
    - Reported results are not imported as facts.
 5. **Place it by ownership** (`methodology-adoption` §4), and declare the directory.
-6. **Integrate by calling, not copying.** The method's judgement points are call activities into existing processes: `Process_Adjudication`, `Process_OptionsAnalysis`, `Process_Ingestion`. A change an existing process needs is made there, or becomes a bean against it.
+6. **Integrate by calling, not copying.** The method's judgement points are call activities into existing processes: `Process_Adjudication`, `Process_OptionsAnalysis`, `Process_Ingestion`. A change an existing process needs is made there, or becomes a work item against it.
 7. **Tools.** Every script, CLI or checker the process relies on gets a Tool node (`tools/<id>/<id>.json`) satisfying a named skill. `check:tools` gates it.
 8. **Owner review.** The owner adopts it, sends it back for changes (to step 4), or declines. A decline is recorded with its reason.
 

@@ -89,8 +89,8 @@ Classified by reading each skill's description, not its filename.
 |---|---|
 | `bean-coordination` | cross-session claim discipline |
 | `todo-manager` | work-plan maintenance: the CLI, the STRICT create-check, coordination |
-| `opening-brief` | brief a bean or topic before touching anything |
-| `turn-reporting` | say which bean you are on, every turn |
+| `opening-brief` | brief a work item or topic before touching anything |
+| `turn-reporting` | say which work item you are on, every turn |
 | `pending-show` | read-only view of session pending work |
 | `session-intent` | session-start intent, session-end results |
 | `continual-progress` | PR from the first commit; visibility of in-flight work |
@@ -124,14 +124,14 @@ Prose an agent reads, not pages a reader browses:
 
 - the data models above, described as *one deterministic workflow*: Actors with
   Skills work Tasks in a Business Process, assigned by swimlane role;
-- context-handling expectations, and bean info/workflow/management;
+- context-handling expectations, and work item info/workflow/management;
 - a minimal coding policy;
 - how Tools are made available in shell/CLI and optionally as MCP, and how a
   Task's I/O corresponds to a Tool's inputs and outputs.
 
 ### Tools — what the harness itself depends on
 
-The harness holds **beans and nothing else** as a *dependency* — a statement
+The harness holds **work items and nothing else** as a *dependency* — a statement
 about what must be installed, not about how many Tool nodes exist. Its own work
 needs these nodes:
 
@@ -142,7 +142,7 @@ needs these nodes:
 | `github` | the four PR-choreography skills | `shell` — `gh`, or the REST call it wraps |
 | `pages-publish` | `kg-export` | `shell` — push a directory to the `gh-pages` branch |
 
-**Two beans nodes, not one.** The CLI is absent from a fresh container, and an
+**Two work items nodes, not one.** The CLI is absent from a fresh container, and an
 agent that knows only the CLI reads the plan and touches nothing. The fallback
 is a Tool of equal standing, which forces the skill to say *when* to reach for
 it.
@@ -164,7 +164,7 @@ Almost empty by construction:
 
 | item | note |
 |---|---|
-| beans CLI Tool node | install, invoke, I/O contract |
+| `beans` CLI Tool node | install, invoke, I/O contract |
 | `install-beans.sh` | the one script |
 
 **All code snippets live here, not in skills.** A snippet in a skill is a Tool
@@ -177,7 +177,7 @@ the Tool nodes are `tools/<id>/<id>.json`, and
 `bun run cat check:tools` gates them in CI. It differs from the strawperson
 below in five ways:
 
-- **`invoke.manual`** exists: editing a bean's front matter by hand is a real
+- **`invoke.manual`** exists: editing a work item's front matter by hand is a real
   mechanism with equal standing to the CLI, and must not look like an
   unfinished record.
 - **`install.none`** exists for the same reason: "nothing to install" and "not
@@ -300,9 +300,9 @@ A `--check` mode in CI (as `gen-skill-docs.ts --check` uses) enforces it.
 
 ## User todo management — proposals
 
-1. **Todo and Bean are the same object at different audiences.** A bean is agent
+1. **Todo and Work item are the same object at different audiences.** A work item is agent
    work-plan state; a Todo note is a user-authored sticky. Proposal: one schema
-   with an `audience` discriminator (`agent` | `human`), and the bean store a
+   with an `audience` discriminator (`agent` | `human`), and the work item store a
    serialisation of it — two schemas give two answers to "what is outstanding".
 2. **Hierarchy**: child Todos and sub-beans for parallel work need
    `parent?: string` plus an ordering key.

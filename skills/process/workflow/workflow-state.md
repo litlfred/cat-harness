@@ -3,7 +3,7 @@ name: workflow-state
 description: >
   Where a running process keeps what it knows, and which store answers which
   question. The three records a step may touch, the one it may not, what
-  `<cat-harness.processes:bean op>` actually performs, and why an instance and a bean must be
+  `<cat-harness.processes:bean op>` actually performs, and why an instance and a work item must be
   one answer rather than two.
 graph-typologies:
   - workflow-state
@@ -21,8 +21,8 @@ comes to disagree with itself.**
 | question | store | graph typology | layer |
 |---|---|---|---|
 | what does this process DO? | `processes/**/*.bpmn` | `cat-harness` | **content** |
-| where did this instance GET TO? | the workflow-state node of the bean graph | `workflow-state` | **state** |
-| what is being worked on? | the bean-defs node of the bean graph | `bean-defs` | **state** |
+| where did this instance GET TO? | the workflow-state node of the work item graph | `workflow-state` | **state** |
+| what is being worked on? | the bean-defs node of the work item graph | `bean-defs` | **state** |
 | what does a PERSON still owe? | `todos/` | `todo-items` | **state** |
 | what do I already know? | agent memory | `memory` | **context** |
 
@@ -68,20 +68,20 @@ completing the step performs it:
 | `claim` | status → `in-progress`, idempotent |
 | `note` | append the caller's note to the body |
 | `resolve` | status → `completed`, **only if the instance itself finished** (or only archive steps are left) |
-| `archive` | move a completed or scrapped bean into the archive, **only once the instance finished** |
+| `archive` | move a completed or scrapped work item into the archive, **only once the instance finished** |
 
 `claim` is drawn only in `Process_BeanOpen`, and `resolve` and `archive` only
-in `Process_BeanClose`; every process that works on a bean calls both
+in `Process_BeanClose`; every process that works on a work item calls both
 (`check:bean-calls`). `note` is drawn where the work happens.
 
-**`resolve` is the careful one.** A bean is never
+**`resolve` is the careful one.** A work item is never
 closed on somebody else's judgement, so it does not fire on the caller's
-say-so: the bean completes only when the instance tracking it has completed,
+say-so: the work item completes only when the instance tracking it has completed,
 which is a fact *derived from the process* rather than asserted by the agent
 calling it. A still-running instance gets a note.
 
 An `op` the build does not implement **fails at process load**. A step that
-says it resolves a bean and quietly does nothing is exactly the divergence the
+says it resolves a work item and quietly does nothing is exactly the divergence the
 extension exists to close.
 
 ## What state does NOT buy you
@@ -97,12 +97,12 @@ arrived, not that the commit is good.
 ## Where running instances live — the state graph on the branch store
 
 Running instances are part of the `beans` graph (`workflow-state` graph typology).
-The bean graph is mounted from the tip-keyed branch store
+The work item graph is mounted from the tip-keyed branch store
 (`cat/cat-harness/beans`).
 
 The container is ephemeral and **a work plan only one agent can see is not a
 work plan**. Instance state lives on the branch store for the same reason
-bean definitions do: a sibling session, or the same session resumed in a fresh
+work item definitions do: a sibling session, or the same session resumed in a fresh
 container, reads the branch store to find the position that exists rather than
 starting a second one beside it.
 
@@ -118,7 +118,7 @@ duplicates.
 ## Reading the state you did not write
 
 Before acting on an instance you did not start, ask what it is waiting on. A
-bean's status defaults to **non-blocking**; a real block carries what it waits
+work item's status defaults to **non-blocking**; a real block carries what it waits
 on, since when, an **expiry** and a handoff — because a block with no expiry
 cannot be told from abandoned work.
 [`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md) carries that, and
