@@ -6877,9 +6877,10 @@ a.fa-harness-tab__body:focus-visible {
   margin: 0.5rem 0 1rem;
 }
 
-/* Qualified by the container, so the theme's own `h3` size does not win. */
+/* `!important` because just-the-docs sets `h3` with `!important` at every
+ * breakpoint, which no selector can outrank otherwise. */
 .fa-provenance .fa-provenance-section {
-  font-size: 0.875rem;
+  font-size: 0.875rem !important;
   font-weight: 600;
   margin: 1rem 0 0.25rem;
 }
