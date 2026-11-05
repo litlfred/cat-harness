@@ -28,11 +28,11 @@ _This page is generated from [`docs/source/guides-beans-and-todos/`](https://git
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/guides-beans-and-todos/overview.md){: .fa-node-edit title="Edit docs/source/guides-beans-and-todos/overview.md" data-fa-link="edit" data-src="docs/source/guides-beans-and-todos/overview.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="overview.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-beans-and-todos/overview.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-beans-and-todos/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="overview.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-beans-and-todos/overview.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-beans-and-todos/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-**Beans are for agents. Todos are for humans.** They share a word in ordinary
+**Work items are for agents. Todos are for humans.** They share a word in ordinary
 speech and nothing else, and conflating them is how a work plan comes to hold
 two kinds of thing that need different handling.
 
-A **bean** is process state an agent keeps while doing work: claimed before
+A **work item** is process state an agent keeps while doing work: claimed before
 starting so a sibling session avoids it, kept current as the work proceeds,
 and closed with a record of what changed. The store is `beans/`, committed,
 so it survives a reclaimed container and is visible to every other session.
@@ -51,7 +51,7 @@ says so.
 
 The two have different owners, lifecycles and failure modes.
 
-| | **Bean** | **Todo** |
+| | **Work item** | **Todo** |
 |---|---|---|
 | Owner | An agent session | A person |
 | Purpose | Process state for work in flight | A reminder of intent |
@@ -61,7 +61,7 @@ The two have different owners, lifecycles and failure modes.
 | Visible to | Every sibling session | The person, primarily |
 | Failure mode | Duplicated, or closed by the wrong session | Forgotten |
 
-**The failure modes are what make the split worth keeping.** A duplicated bean
+**The failure modes are what make the split worth keeping.** A duplicated work item
 starves the work plan of signal, and an unguarded re-run can duplicate most of
 it. A forgotten todo
 inconveniences one person. Machinery sized for the first is ceremony on the
@@ -86,14 +86,14 @@ The diagram above is the whole cycle. Three of its edges matter most.
 idempotent: it mints a fresh identifier on every call and de-duplicates on
 nothing, so re-entering a step duplicates the plan rather than doing nothing.
 The exact-title check is what stands between a repeated workflow step and a
-corpus of near-identical beans.
+corpus of near-identical work items.
 
-**Ownership is a gateway, not a courtesy.** A bean another session claimed is
+**Ownership is a gateway, not a courtesy.** A work item another session claimed is
 not yours to resolve, scrap or delete. Claiming is how two sessions avoid
 picking up the same item; closing someone else's is how one of them loses work
 it had not finished reporting.
 
-**"Blocked" is not "not wanted".** A blocked bean returns to `todo` with its
+**"Blocked" is not "not wanted".** A blocked work item returns to `todo` with its
 blocker recorded and something said about what would clear it. Leaving it
 `in-progress` is worse than either: an item nobody is progressing reads, to
 every other session, as active work.
@@ -110,8 +110,8 @@ with a section saying why. That is what "disable" means here; the CLI has no
 disabled state, and its vocabulary is `draft`, `todo`, `in-progress`,
 `completed`, `scrapped`.
 
-A scrapped bean records that something was considered and rejected, and on
-what grounds, which stops the next agent re-entering the same dead end. A deleted bean leaves a sibling session unable
+A scrapped work item records that something was considered and rejected, and on
+what grounds, which stops the next agent re-entering the same dead end. A deleted work item leaves a sibling session unable
 to tell abandonment from accident, and leaves the next agent free to start
 over on the thing you already ruled out.
 
@@ -123,14 +123,14 @@ CLI offers the operation.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/guides-beans-and-todos/two-layers.md){: .fa-node-edit title="Edit docs/source/guides-beans-and-todos/two-layers.md" data-fa-link="edit" data-src="docs/source/guides-beans-and-todos/two-layers.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="two-layers.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-beans-and-todos/two-layers.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-beans-and-todos/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="two-layers.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-beans-and-todos/two-layers.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-beans-and-todos/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-Two different things can change a bean, and a step that confuses them will
+Two different things can change a work item, and a step that confuses them will
 announce an effect it does not have.
 
 **The workflow engine** performs `claim`, `note` and `resolve` on a process
-instance's own bean when a step marked `<cat-harness.processes:bean op="…"/>` completes.
+instance's own work item when a step marked `<cat-harness.processes:bean op="…"/>` completes.
 `claim` sets `in-progress` and is idempotent; `note` appends; `resolve`
-completes the bean **only once the instance itself has completed**, because
-whether work is done is a judgement and a bean is not closed on someone else's
+completes the work item **only once the instance itself has completed**, because
+whether work is done is a judgement and a work item is not closed on someone else's
 say-so.
 
 **The agent** does everything else with the `beans` CLI: creating, scrapping,
@@ -157,9 +157,9 @@ A person's todos need a cycle of their own, and none of it exists:
 - **When a person may create one**, and through what — chat, a command, the
   session-start surface.
 - **How one is retired.** A person abandoning a reminder is ordinary and needs
-  no "reasons for scrapping" section; the bean rules do not transfer.
+  no "reasons for scrapping" section; the work item rules do not transfer.
 
-Until that is designed, **do not repurpose beans for it.** A store whose
+Until that is designed, **do not repurpose work items for it.** A store whose
 entries are claimed by sessions, closed with change summaries and never
 deleted is the wrong shape for a reminder somebody wants to drop without
 ceremony — and mixing the two would put items in the agent work plan that no
@@ -170,7 +170,7 @@ agent should be acting on.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/guides-beans-and-todos/work-plan-state.md){: .fa-node-edit title="Edit docs/source/guides-beans-and-todos/work-plan-state.md" data-fa-link="edit" data-src="docs/source/guides-beans-and-todos/work-plan-state.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="work-plan-state.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-beans-and-todos/work-plan-state.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-beans-and-todos/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="work-plan-state.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/guides-beans-and-todos/work-plan-state.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/guides-beans-and-todos/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-The rest of this page says what a bean **is**. This section says what the
+The rest of this page says what a work item **is**. This section says what the
 store currently **holds** — read live from
 [`/assets/beans/index.json`]({{ '/assets/beans/index.json' | relative_url }}), the projection
 `gen-docs-pages.ts` writes from `beans/defs/` on every build, beside the todo
@@ -189,7 +189,7 @@ alone.
 missing on purpose.** A stale `in-progress` detector would have to read the
 clock, and the projection is gated on exact content — anything computed
 against the clock changes the file on every build and the staleness gate then
-fires forever. So the projection publishes each bean's `updated_at` as a fact
+fires forever. So the projection publishes each work item's `updated_at` as a fact
 and the page computes age when you open it. Age therefore moves without the
 file moving, which is the right way round.
 
@@ -208,15 +208,15 @@ yet. Their dashboards say exactly that, rather than rendering zeros for a
 store nobody read, because a dashboard that opens at zero cannot be told from
 a store with nothing in it.
 
-**Every identifier on those pages is a link.** A bean id resolves to the bean's
+**Every identifier on those pages is a link.** A work item id resolves to the work item's
 file, an issue or pull-request number to the forge, and each finding carries a
 pencil to where writing actually happens. A reference that cannot be resolved
 stays as plain text, which is the visible difference between *"follow this"*
 and *"this points somewhere I could not reach"*.
 
-**What is not here.** Where a bean sits in a BPMN process. That join needs `beans/workflows/`, the declared
+**What is not here.** Where a work item sits in a BPMN process. That join needs `beans/workflows/`, the declared
 `workflow-state` graph, and it is empty — so a position view would report
-"nowhere" for every bean in the store. It waits for instance state to exist.
+"nowhere" for every work item in the store. It waits for instance state to exist.
 
 <div class="fa-workplan" data-fa-workplan>
   <p class="fa-workplan-fallback">
