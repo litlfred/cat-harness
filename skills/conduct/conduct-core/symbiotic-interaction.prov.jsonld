@@ -25,6 +25,9 @@
         },
         {
           "@id": "skills/conduct/conduct-core/symbiotic-interaction.md#provenance-5"
+        },
+        {
+          "@id": "skills/conduct/conduct-core/symbiotic-interaction.md#provenance-6"
         }
       ]
     },
@@ -95,6 +98,20 @@
       ],
       "dcterms:date": [
         "2026-11-04"
+      ]
+    },
+    {
+      "@id": "skills/conduct/conduct-core/symbiotic-interaction.md#provenance-6",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Same turn, quoted, dated — in the provenance log",
+      "prov:value": "Nine provenance logs fail check:reference-direction because their verbatim quotes name higher layers. Owner's choice on a decision card: \"A. Exempt logs\" — exempt *.prov.jsonld in the check, like uploads/; quotes stay verbatim.",
+      "cat-harness:refs": [
+        "owner decision card, 2026-11-05",
+        "folio-assistant#2926"
+      ],
+      "dcterms:date": [
+        "2026-11-05"
       ]
     }
   ]
