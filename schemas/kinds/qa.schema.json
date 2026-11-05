@@ -778,6 +778,9 @@
                 "reviewed_at": {
                   "type": "string"
                 },
+                "reviewed_tree": {
+                  "type": "string"
+                },
                 "reviewed_sha": {
                   "type": "string"
                 },
