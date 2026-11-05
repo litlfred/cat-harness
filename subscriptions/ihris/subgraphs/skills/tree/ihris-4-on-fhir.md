@@ -20,7 +20,7 @@ Design and owner decisions: [`docs/design/fhir-strategy.md`](../../docs/design/f
 - **SUSHI must run clean** (Tool `ihris-sushi`, version pinned at F1) before any commit that contains FSH.
 - **Derived never invents.** An element carries only what the data dictionary states. Definitions, conditionality and linkages stay empty until authored in `src/ihris-data-dictionary/authored/`.
 - **Built on fhir-harness, independent of smart-base** (owner, 2026-10-09). The pipeline is fhir-harness's (skills `ig-build-pipeline`, `ig-publication`, `fhir-validation`); nothing here takes a smart-base type or dependency, and the IG depends on `hl7.fhir.r4.core#4.0.1` only.
-- **No IG Publisher and no HTML** until folio-assistant's lightweight IG render pipeline is done (work item `ihris-bwls`).
+- **No IG Publisher and no HTML** until folio-assistant's lightweight IG render pipeline is done (bean `ihris-bwls`).
 
 ## Steps, and where each one stands
 
@@ -29,7 +29,7 @@ Design and owner decisions: [`docs/design/fhir-strategy.md`](../../docs/design/f
 | F1: pin SUSHI; create `sushi-config.yaml` (canonical, FHIR 4.0.1, `hl7.fhir.r4.core` only) | `ihris-gen-fsh`, `ihris-sushi` | done |
 | F2: terminology as FSH; content-equal to today's JSON; then retire the JSON | `ihris-build-dak`, `ihris-gen-fsh` | done: the JSON is SUSHI's build |
 | F3: logical models | `ihris-gen-fsh` | done: 51, SUSHI clean |
-| F4: StructureMaps to `ig/`, `ihris-backend-site/ig` and `qualify-ig` | `ihris-map-ihris5`, `ihris-sushi` | in progress: matcher, crosswalk, gap report and StructureMaps for the exact matches are generated; ambiguous matches wait on the owner as proposals (work item `ihris-7gl8`) |
+| F4: StructureMaps to `ig/`, `ihris-backend-site/ig` and `qualify-ig` | `ihris-map-ihris5`, `ihris-sushi` | in progress: matcher, crosswalk, gap report and StructureMaps for the exact matches are generated; ambiguous matches wait on the owner as proposals (bean `ihris-7gl8`) |
 | F5: render and publication | the platform pipeline | blocked on `ihris-bwls` |
 
 ## F4: the mapping to iHRIS 5
@@ -43,5 +43,5 @@ python3 src/tools/map_ihris5.py --check   # what validate.py and CI run: no iHRI
 
 - **Evidence, not judgement.** A candidate is an equality of names or labels, after the normalisation `crosswalk.json` `method` states. There is no synonym table, and nobody adds candidates by hand.
 - **Tiers.** `exact` is one type-compatible candidate. `ambiguous` is several candidates, a wrong type, or two fields on one element. `none` is no candidate. `accepted` is the owner's choice.
-- **Proposals.** `map_ihris5.py --propose` *adds* items for the ambiguous matches, and for the work item's examples where the matcher did not reach them, to `src/ihris-data-dictionary/authored/ihris5-mapping.json`. It never changes an existing item. Only the owner moves a status. An accepted item with `selected` decides the match on the next run, and a rejected item's candidates are dropped.
+- **Proposals.** `map_ihris5.py --propose` *adds* items for the ambiguous matches, and for the bean's examples where the matcher did not reach them, to `src/ihris-data-dictionary/authored/ihris5-mapping.json`. It never changes an existing item. Only the owner moves a status. An accepted item with `selected` decides the match on the next run, and a rejected item's candidates are dropped.
 - **iHRIS 5 stays outside.** It is compiled in `.build/ihris5-sd/`, and only its names, paths and labels are committed (`mapping/ihris5-index.json`, LGPL-3.0, attributed). Its canonicals appear in the StructureMaps as URLs only. A SUSHI error in an iHRIS 5 IG is recorded in the index as an upstream defect. It is worked around only by a declared workspace patch (`src/ihris5/ig-build-patches.json`, applied to the copy, recorded in the index), never by editing the source.
