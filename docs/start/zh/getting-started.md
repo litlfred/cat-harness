@@ -109,7 +109,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 | **WHO SMART DAK** | 一个数字化适配工具包（L2）——人物角色、流程、数据元素、决策表 | — |
 | **WHO SMART IG** | 一份 FHIR 实施指南（L3），基于 L2 DAK 构建 | Java、SUSHI、IG Publisher |
 
-关于每种形式化方法能带给你什么，参见[内容类型](../concepts/content-types.html)。
+关于每种形式化方法能带给你什么，参见[内容类型](../../concepts/zh/content-types.html)。
 
 ## 4. 安装与验证
 
@@ -135,7 +135,7 @@ bun run cat check-deps
 | `check_dependencies` | 探测已安装了哪些工具链 |
 | `skill_list` / `skill_fetch` | 发现并加载某个技能的说明 |
 
-完整的工具列表在[技能与角色](../concepts/skills.html)页面上；内容类型专属的工具只在相应适配器启用时才会出现。
+完整的工具列表在[技能与角色](../../concepts/zh/skills.html)页面上；内容类型专属的工具只在相应适配器启用时才会出现。
 
 ## 6. 转换你已有的仓库
 
@@ -257,8 +257,8 @@ bun run cat beans:claim <id>      # claim an item
 ## 后续步骤
 
 - **[无障碍](accessibility.html)**——智能体如何提问，以及本站点上的设置控件
-- **[教程——撰写论文](../guides/writing-a-paper.html)**
-- **[撰写文档](../guides/writing-a-document.html)**
-- **[内容类型](../concepts/content-types.html)**——每个领域的形式化方法
-- **[发布工作流](../process/publication-workflow.html)**——仓库中的每一个流程
-- **[架构](../concepts/architecture.html)**——适配器、技能与块模型
+- **[教程——撰写论文](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)**
+- **[撰写文档](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)**
+- **[内容类型](../../concepts/zh/content-types.html)**——每个领域的形式化方法
+- **[发布工作流](../../process/zh/publication-workflow.html)**——仓库中的每一个流程
+- **[架构](../../concepts/zh/architecture.html)**——适配器、技能与块模型

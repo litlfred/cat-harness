@@ -76,7 +76,7 @@ branch ROOT, outside `STAGING/` so `rm -rf "STAGING/$SLUG"` cannot reach it.
 A full replace does NOT preserve it: `CARRIED_PREFIXES` in
 `restore-staging.ts` carries it across, and `--verify` checks the carry as well
 as the previews. Add a prefix there, never a third code path. Skill:
-[`ui-core/render-logging.md`](../skills/ui/ui-core/render-logging.md).
+[`ui-core/render-logging.md`](../../../skills/ui/ui-core/render-logging.md).
 
 ## STABLE — top level = bootstrap/ + one dir per repo + beans/ todos/ fsh-guts/, which stay because they ARE the instance's memory
 
@@ -126,7 +126,7 @@ Encode an entailment of the mechanism, or something measured here with the
 command shown. Never "someone said so".
 
 Full rule, the worked case and both lanes:
-[`conduct-core/unverified-constraints.md`](../skills/conduct/conduct-core/unverified-constraints.md).
+[`conduct-core/unverified-constraints.md`](../../../skills/conduct/conduct-core/unverified-constraints.md).
 
 ## TRAP — the schema cannot catch a profile violation
 
