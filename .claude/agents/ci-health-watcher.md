@@ -12,7 +12,7 @@ is to make the difference visible and to not manufacture false fires.
 
 `docs-site.yml` fired on every push to `main` and **failed all 30 times over
 two months**. The trigger was fine; the *outcome* was invisible, so the
-published site sat stale and nothing in the repo said so. Bean `xom7`.
+published site sat stale and nothing in the repo said so. Work item `xom7`.
 
 ## What you do
 

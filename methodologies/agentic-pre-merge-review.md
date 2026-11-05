@@ -27,8 +27,8 @@ applies-when: >
 
 **Adopted 2026-10-09.** Ingested under `library/arxiv-2402.02172v5` (35pp, outline read
 via `pdf-structure` with 32 greppable sections, 135 raster inspection verdicts, and 19
-rendered vector figures). Synthesized with epic bean `folio-assistant-nok9`, formal
-split bean `folio-assistant-h1uq`, the owner's 2026-10-02/10-03 rulings, and proposal
+rendered vector figures). Synthesized with epic work item `folio-assistant-nok9`, formal
+split work item `folio-assistant-h1uq`, the owner's 2026-10-02/10-03 rulings, and proposal
 `cat-harness/docs/proposals/merge-gate-2026-10-02.md`.
 
 ---

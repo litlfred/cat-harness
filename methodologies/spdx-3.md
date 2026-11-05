@@ -34,7 +34,7 @@ applies-when: >
 analysis on 2026-10-03 and supplied the source the same day with *"ingest as
 part of methodologies"*. Which parts are adopted is open as five decisions in
 [the applicability proposal](../docs/proposals/spdx-3-applicability-2026-10-03.md)
-§9, bean `sd5v`. This node records what the source says and where it would and
+§9, work item `sd5v`. This node records what the source says and where it would and
 would not fit. It does not adopt anything.
 
 ## Its sources: what is held, what is not

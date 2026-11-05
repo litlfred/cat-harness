@@ -13,14 +13,13 @@
 
   <!-- ═══════════════════════════════════════════════════════════
        Translation Workflow — folio-assistant
-       Issue: https://github.com/litlfred/folio-assistant/issues/206
 
        Stages:
          1. Content authored (source locale)
          2. POT extracted (translatable strings)
          3. Translation produced (agent / human / SMART Base PO)
          4. PO injected → translated .md
-         5. Round-trip QA (bean ktt2)
+         5. Round-trip QA
          6. Drift gateway → human adjudication if needed
          7. Official sign-off (human)
          8. Staleness watch (source changes trigger re-extraction)

@@ -11,9 +11,9 @@ consulted: true
 # Content, context and state graphs
 
 An instance declares directories, and each says what **kind** of graph it
-holds. Until 2026-09-20 a kind answered one question — does this render as a
-website — and a consumer had no way to tell the subject matter from a record
-about it, or a record it may write from one it may not.
+holds. Each kind also says which layer it is on, so a consumer can tell the
+subject matter from a record about it, and a record it may write from one it
+may not.
 
 ## One question settles every kind
 
@@ -23,18 +23,14 @@ about it, or a record it may write from one it may not.
 |---|---|---|
 | **`content`** | produces it — that is usually the point | a skill, a schema, a folio chapter |
 | **`context`** | **reads it and never writes it**. Static for the duration of an instance; it changes only when a human directs an authoring act, outside any process | an agent-memory entry |
-| **`state`** | **writes it as it runs** — a bean's status changes because a step completed | a bean, a workflow instance, a QA verdict |
+| **`state`** | **writes it as it runs** — a work item's status changes because a step completed | a work item, a workflow instance, a QA verdict |
 | **`derived`** | produces it **from a source**, and would regenerate it rather than re-author it. Not the working corpus | a `library/` section |
-
-**`content`'s example used to be "a library section" and that was wrong** —
-see §"The case that added `derived`" below. It is a folio chapter now.
 
 It is `holds` on `GraphTypologyDef` in `schemas/kg/cat-harness.ts`, and it is
 **required**: `tsc` refuses a kind that has not said.
 
-**A step that writes to a `context` graph is a defect, not an update.** That is
-the whole reason the layer exists, and it is what a consumer could not
-previously ask.
+**A step that writes to a `context` graph is a defect, not an update.** That
+is the reason the layer exists.
 
 ## Two supporting questions, for a hard case
 
@@ -42,12 +38,12 @@ The one above decides almost everything. When it does not, these two do, and
 they have agreed with each other in every case here.
 
 **Does it stand on its own?** Detach a node from everything else. A skill still
-instructs, a schema still constrains, a library section still reads. A bean
+instructs, a schema still constrains, a library section still reads. A work item
 names work on something that is no longer there; a QA verdict judges an absent
 subject. **If detaching it empties it, it is not content.**
 
 (A library section passes this and is still not `content` — standing on its own
-rules out `state`, not `derived`. The section below is that case.)
+rules out `state`, not `derived`; see §"`derived`" below.)
 
 **Would you regenerate it or re-author it?** Content and context are *written*
 by somebody with an intention. Live state is *arrived at* — re-running is how
@@ -59,23 +55,17 @@ this axis has not met is how a vocabulary acquires a category nobody can use.
 
 ## The classification
 
-Ask the code, not this page — `graphTypologiesOfLayer("context")` returns the live
-answer. **No count appears here on purpose**: a count in prose is a claim
-nothing checks, and this repository has corrected two of them.
+Ask the code, not this page — `graphTypologiesOfLayer("context")` returns the
+live answer. No count appears here: a count in prose is a claim nothing
+checks.
 
 What is worth writing down is the reasoning for the kinds that are **not
 obvious from their name**.
 
-**`memory` is `context`, and it is the kind the third layer was added for.**
-The owner, settling bean `mhh9`, 2026-09-20:
-
-> *put memory under state/context as static, during a process. it does not
-> change. agents dont work on it (except when an authoring agent is directed by
-> human). todos, beans are not static*
-
-Every clause of that is the definition. A process **reads** memory; no step
-writes it. It changes when a human directs an authoring agent, which is an act
-**outside** any instance.
+**`memory` is `context`.** It is static during a process: a process
+**reads** memory and no step writes it. It changes only when a human directs an
+authoring agent, which is an act **outside** any instance. Todos and work items are
+not static.
 
 **`todos` is `state`, and that is the pair worth understanding.**
 `todos/todos.json` states a 2×2 — memory vs workflow management, human vs agent
@@ -87,14 +77,10 @@ different questions, and a reader who assumes they align will expect memory to
 behave like a todo.
 
 **`fsh-guts` is `context`, and it is the one that reads like content.** It
-holds structured material that *could* be rendered — which is what makes it
-hard — and the fact it carries is *where something got to*: abandoned,
-superseded, decided against. But **no running step writes it**. Relocating
-something there is a human-directed act, and
-[`deletion-requires-confirmation`](../../conduct/conduct-core/deletion-requires-confirmation.md) is the
-skill that says so in as many words. Read, never written by a process. It was
-`state` for the few hours between the axis landing and `mhh9` being settled,
-and the refinement moved it by the same criterion that moved memory.
+holds structured material that *could* be rendered, and the fact it carries is
+*where something got to*: abandoned, superseded, decided against. But **no
+running step writes it**. Relocating something there is a human-directed act
+([`deletion-requires-confirmation`](../../conduct/conduct-core/deletion-requires-confirmation.md)).
 
 **`qa` and `health` are `state`.** A verdict is where a *review* got to, and
 the sweep that produced it writes it. `health` is the same shape one level
@@ -104,18 +90,16 @@ nothing. This is also why the `kg-qa/` tree **mirrors** each subject's path
 rather than being flat — a verdict's identity is partly the thing it is about.
 
 **`attestations` is `state` too, and it is the half of `qa` that stays on
-`main`.** Arc `3fva` split every QA verdict by whether it can be regenerated.
-The DERIVED half (`qa`, and `health` with it) is state a CI run writes, and
-its record now lives on the orphan `qa-reports` branch keyed by commit — the
-checkout's `test/results/` is a working copy, still committed until bean
-`5hox` removes it. The JUDGEMENT half — agent, human and baseline-pair
-attestations, `qa-attestations/v1` under `test/attestations/` — is written by
-a review step too, so it is `state` by the same question, but it is the one
-state graph here that **cannot be rebuilt by re-running its writer**. That is
-why it stays on `main` (owner ruling D2 (a)) and why a merge conflict in it
-is a person's to read rather than a generator's to repeat. The layer answers
-*who writes it*; where it is kept answers *can it be reproduced* — two
-questions, and the arc is what made the second one visible.
+`main`.** Every QA verdict is split by whether it can be regenerated. The
+DERIVED half (`qa`, and `health` with it) is state a CI run writes, and its
+record lives on the orphan `qa-reports` branch keyed by commit — the
+checkout's `test/results/` is a working copy. The JUDGEMENT half — agent, human
+and baseline-pair attestations, `qa-attestations/v1` under `test/attestations/`
+— is written by a review step too, so it is `state` by the same question, but
+it is the one state graph here that **cannot be rebuilt by re-running its
+writer**. That is why it stays on `main`, and why a merge conflict in it is a
+person's to read rather than a generator's to repeat. The layer answers *who
+writes it*; where it is kept answers *can it be reproduced*.
 
 **`uploads` is `state` and `library` is `content`.** The clearest proof the
 axis is not about file type: the same PDF is state in one directory and content
@@ -150,14 +134,14 @@ default. The declaration makes it explicit and checkable.
 |---|---|---|---|---|
 | `content` | chapters, skills, processes | `main` | — | PR |
 | `context` | interaction prefs, roles | `main` | — | PR |
-| `state` | beans, workflow instances, todos | dedicated branch-store branches (e.g. `cat/cat-harness/beans`, `cat/cat-harness/todos`) | **tip** — one living tree | fetch → splice → push, never `-f` |
-| `derived` (verdicts) | QA sidecars | `cat/cat-harness/qa-reports` (arc 3fva) | commit | append under `main/<sha>/`, `pr/<n>/<sha>/` |
+| `state` | work items, workflow instances, todos | dedicated branch-store branches (e.g. `cat/cat-harness/beans`, `cat/cat-harness/todos`) | **tip** — one living tree | fetch → splice → push, never `-f` |
+| `derived` (verdicts) | QA sidecars | `cat/cat-harness/qa-reports` | commit | append under `main/<sha>/`, `pr/<n>/<sha>/` |
 | rendered | the docs site | `gh-pages` | commit (the build stamp) | replace, previews kept |
 | cache | Lake builds | `lake-cache/*` | toolchain + inputs | one key per branch, pruned |
 
 The distinction that matters between `state` and `derived`: **state is not
 regenerable**. A QA verdict can be recomputed from the tree, so a commit-keyed
-snapshot per run is right and losing one costs a rerun. A bean is somebody's
+snapshot per run is right and losing one costs a rerun. A work item is somebody's
 decision; it must be a single living tree whose history is the audit trail, and
 a lost write is lost work. So `state` is tip-keyed (`storage.keyedBy: tip`),
 stored on dedicated branch-store branches like `cat/cat-harness/beans`, `todos`,
@@ -172,16 +156,15 @@ only process-written graphs are candidates for `storage`:
 | `keyedBy` | what the branch holds | for | API |
 |---|---|---|---|
 | `commit` | one entry per commit (`main/<sha>/`, `pr/<n>/<sha>/`) | `qa` — derived verdicts read against a baseline | `scripts/qa-store.ts` |
-| `tip` | ONE live copy; the tip IS the current state | beans, todos — `state` with one truth at a time | `scripts/branch-store.ts` |
+| `tip` | ONE live copy; the tip IS the current state | work items, todos — `state` with one truth at a time | `scripts/branch-store.ts` |
 | `route` | one entry per published site route | the auto-doc page families — `derived`, regenerable | `scripts/branch-store.ts` |
 
 ### `route` is not a synonym for `tip`, and the difference is REGENERABILITY
 
-Both live at a branch tip, so the temptation is to read them as one keying with
-two names. The question that separates them is the one §3.1 of the state-branch
-proposal already asks: **can this be recomputed from the tree?**
+Both live at a branch tip. The question that separates them: **can this be
+recomputed from the tree?**
 
-- A bean cannot. It is somebody's decision, a lost write is lost work, so a
+- A work item cannot. It is somebody's decision, a lost write is lost work, so a
   tip-keyed change carries `expect` (the blob its author read) and two sessions
   editing one file is a **`conflict` the caller settles**.
 - A rendered page can. Nobody authored either side, the newer generation is
@@ -196,17 +179,13 @@ write means the caller thinks the page has two writers — the premise of
 route-keying failing, which is worth a loud stop. **If a generated page really
 does have two writers, `route` is the wrong keying for it and `tip` is right.**
 
-Four rules (bean `2h76`, owner rulings 2026-10-02; `route` from bean `1j3q`,
-owner 2026-10-03 — *"Add route-keyed storage, then move it off main"*):
+Four rules:
 
-- **One ref per state subgraph.** Beans are on `cat/cat-harness/beans` and
-  todos on `cat/cat-harness/todos`, not on one shared `state` branch. The owner:
-  *"go with cat/cat-harness/todos and cat/cat-harness/beans as their own named
-  sub-graph branches"*.
-- **Not every named subgraph gets a branch.** The owner: *"(not all named
-  subgraphs get own branch, especially not semi-static KG content)"*. Skills,
-  schemas, processes, roles and the declarations themselves are `content` or
-  `context`. They change by PR and stay on `main`.
+- **One ref per state subgraph.** Work items are on `cat/cat-harness/beans` and
+  todos on `cat/cat-harness/todos`, not on one shared `state` branch.
+- **Not every named subgraph gets a branch.** Skills, schemas, processes, roles
+  and the declarations themselves are `content` or `context`. They change by PR
+  and stay on `main`.
 - **A `qa` directory is commit-keyed.** The schema refuses `keyedBy: "tip"`
   **and `"route"`** on one, because either would be read as if it were keyed by
   commit, and a verdict is addressed by the commit it judges — there is no route
@@ -220,35 +199,26 @@ owner 2026-10-03 — *"Add route-keyed storage, then move it off main"*):
 
 A branch-tip read is **hit / miss / corrupt / unknown**, and a branch without a
 `state-manifest/v1` root manifest is `corrupt`, not a hit — for a route-keyed
-branch too. The `$schema` string says `state-manifest` on both, and that is a
-choice: the two seeded branches already carry it, the format is identical in
-every field, and `keyedBy` **inside** the manifest is the discriminator, which
-is this repository's own rule that the file declares what it is. The name is
-historical; bean `1j3q` records it as such. A write is spliced
-onto the tip and pushed **without `-f`**, retrying when the tip moves. To edit
-a file somebody else may be editing, pass the blob you read as `expect`. A tip
-that disagrees then answers `conflict` and pushes nothing, so the edit is not
-silently lost.
+branch too. The `$schema` string says `state-manifest` on both: the format is
+identical in every field, and `keyedBy` **inside** the manifest is the
+discriminator, because the file declares what it is. A write is spliced onto the tip and pushed **without `-f`**,
+retrying when the tip moves. To edit a file somebody else may be editing, pass
+the blob you read as `expect`. A tip that disagrees then answers `conflict` and
+pushes nothing, so the edit is not silently lost.
 
-**Until a declaration sets `storage`, `main` is authoritative.** That holds for
-`route` too: no generator writes a route-keyed branch yet, and the first family
-(`docs/uml/`) is a follow-on bean to `1j3q` — deliberately separate, because 49
-of 94 gated checks write page files and a flip of all of them cannot be
-bisected. A directory
-with no `storage` field lives in the checkout, whatever branches exist. The
-seeded `cat/cat-harness/beans` and `cat/cat-harness/todos` say
-`authoritative: false` in their manifests until the steward-run flip on #1850.
+**Until a declaration sets `storage`, `main` is authoritative.** A directory
+with no `storage` field lives in the checkout, whatever branches exist; that
+holds for `route` too.
 
 ## Adding a kind
 
 Answer the question and write the answer in `holds`, with the reason beside it
 as a comment. Three rules about how:
 
-**Do not add a value without a case that needs it.** `context` arrived because
-`content` and `state` alone forced two unlike things together — a bean, which a
-step rewrites, and a memory entry, which no step may touch — and a consumer
-told only "this is state" could not tell whether writing to it was normal or a
-bug. That is the bar: a real consumer that cannot answer a real question.
+**Do not add a value without a case that needs it**: a real consumer that
+cannot answer a real question. `context` exists because a consumer told only
+"this is state" could not tell whether writing to a memory entry was normal or
+a bug.
 
 **There is no "could not determine".** A third state is right when a *check*
 looked and could not tell, and wrong when an *author* is registering a kind
@@ -260,14 +230,7 @@ is the position this axis exists to end.
 layers is a conflict that throws rather than a diamond where the first silently
 wins. `summary`, `skill` and `schema` are descriptive and are not compared.
 
-## The case that added `derived` — `library/`, 2026-09-20
-
-The fourth layer exists because the two supporting questions **disagreed**, and
-the instruction above is to say so rather than pick. This is what saying so
-looked like.
-
-Owner, 2026-09-20: *"library is static (only if we materialize assets or
-not)"* and *"can duplicate asset into a folio and work there."* Bean `hqku`.
+## `derived`: when the supporting questions disagree — `library/`
 
 | question | answer for a `library/` section |
 |---|---|
@@ -275,22 +238,18 @@ not)"* and *"can duplicate asset into a folio and work there."* Bean `hqku`.
 | does it stand on its own? | **yes** — a section still reads. Says `content` |
 | regenerate, or re-author? | **regenerate**, from the ingested source. Says not-content |
 
-Both candidate answers were wrong, and each was ruled out by a rule rather
-than by taste:
+Neither existing answer fits, and each is ruled out by a rule:
 
-- **`context` is ruled out** because it carries *"a step that writes to it is a
-  defect, not an update"* — and a declared process writes `library/`. Choosing
-  it would have made `document-ingestion` a defect by this axis's own rule.
-- **`content` is ruled out** by the sweep rule, *"qa-sweep is only on
-  active/working content"* (owner, same day). A QA finding against a derived
-  section is a finding against its **generator**, so a sweep that judges
-  `library/` sends a reviewer to fix the wrong file.
+- **`context` is ruled out** because a step that writes to it is a defect, and
+  a declared process writes `library/`.
+- **`content` is ruled out** because QA sweeps only active/working content. A
+  QA finding against a derived section is a finding against its **generator**,
+  so a sweep that judges `library/` sends a reviewer to fix the wrong file.
 
-What `derived` buys, concretely: `walkBlocks` skips a directory whose declared
-graphs are all non-`content`, so `library/` leaves the sweep **with no
-directory name written down anywhere** — the same way `fsh-guts/` did. A
-hardcoded skip would have been the alternative, and a hardcoded path is what
-this declaration exists to remove.
+`walkBlocks` skips a directory whose declared graphs are all non-`content`, so
+`library/` leaves the sweep **with no directory name written down anywhere** —
+the same way `fsh-guts/` does — because a hardcoded skip is the kind of
+hardcoded path the declaration exists to remove.
 
 **What it does NOT mean.** `derived` is not "unimportant" and not "not
 committed". `library/` is L1 corpus, committed and greppable, and every
@@ -299,35 +258,24 @@ where a *finding* belongs, not what the material is worth.
 
 ## Classifying a kind is not a ruling on a directory's contents
 
-`cat-harness` is correctly `content`. For a few hours on 2026-09-20,
-`skills/memory/` sat inside a `cat-harness` directory and held `context`.
-**Both were true at once**, and that is the case that shows why the two
-questions are separate: classifying a kind says what that KIND holds, not what
-every node beneath a directory of that kind is.
-
-The nodes have since moved to their own declared `memory/` graph (bean
-`07xs`), as their own change — relocating a directory as a side effect of
-adding a classification is the shape #395 refused and bean `auap` did
-separately. So the example is now history rather than a live gap, and it is
-kept because the rule it illustrates is not: **a directory of one kind may
-contain a node of another, and the containing declaration is not a claim about
-its contents.**
+Classifying a kind says what that KIND holds, not what every node beneath a
+directory of that kind is: **a directory of one kind may contain a node of
+another, and the containing declaration is not a claim about its contents.**
 
 ## The layer is not the source — a branch is not "where state lives"
 
 A declared subgraph also says where its content COMES FROM — the checkout's
 directory or a declared repository branch, overridable by the instance config
 (`source`, [`directory-conventions`](directory-conventions.md) §"Where a
-subgraph gets its content"; bean `l4ay`). **That is a different axis from this
-one, and neither is derived from the other.**
+subgraph gets its content"). **That is a different axis from this one, and
+neither is derived from the other.**
 
-The temptation runs one way: beans and todos are `state` and are moving to
-their own branches, so "state lives on a branch" reads like a rule. It is not.
-`todos` is `state` while its source is `directory` on `main`, and stays `state`
-when the config mounts it from `cat/cat-harness/todos`. `qa` is `state` and is
-keyed by commit on its branch, never by tip. A `context` graph mounted from a
-branch is still read-only to every process, because what a step may do is
-`processMayWrite(kind)` — asked of the KIND, never of where the bytes came from.
+"State lives on a branch" is not a rule. `todos` is `state` while its source is
+`directory` on `main`, and stays `state` when the config mounts it from
+`cat/cat-harness/todos`. `qa` is `state` and is keyed by commit on its branch,
+never by tip. A `context` graph mounted from a branch is still read-only to
+every process, because what a step may do is `processMayWrite(kind)` — asked of
+the KIND, never of where the bytes came from.
 
 So: **ask `processMayWrite` for whether to write, and the resolved source for
 HOW to write** — a commit for `directory`, a spliced push for `branch`
@@ -337,18 +285,15 @@ the other has merged two questions this repository keeps apart.
 ## A declared ASSET carries a layer too
 
 The axis is not only about directories. `instance-readme` and
-`agent-instructions` are declared assets, and both hold **`context`** — the
-owner's own words on issue #592: *"its static content at process runtime and
-treated as an asset like memories"*. `README.md` and `AGENTS.md` are read at
-session start and authored by a human, so a step that rewrites one is a defect
-by the same rule a step writing to `memory/` is.
+`agent-instructions` are declared assets, and both hold **`context`**: static
+at process runtime and treated as an asset like memories. `README.md` and
+`AGENTS.md` are read at session start and authored by a human, so a step that
+rewrites one is a defect by the same rule a step writing to `memory/` is.
 
 **One rule, not two spellings.** `layerIsWritable(layer)` is the whole of it;
-`processMayWrite(kind)` and `processMayWriteAsset(role)` both call it. They
-were nearly written as two `=== "state"` comparisons, which is how a `context`
-directory and a `context` asset come to mean different things the day a fourth
-layer is added — and the word stops carrying a rule the moment that is
-possible.
+`processMayWrite(kind)` and `processMayWriteAsset(role)` both call it, so a
+`context` directory and a `context` asset cannot come to mean different
+things.
 
 **Where an asset's layer is declared is the one difference.** A directory's
 layer is a property of its graph TYPOLOGY; an asset's is a property of its ROLE,
@@ -358,21 +303,20 @@ asked of the raw declaration, since `KgAssetSchema` strips an unknown key
 without a word.
 
 **Creation at INITIALISATION is not a process write.** A `context` asset that
-does not exist yet has to come from somewhere, and bootstrap writing one when
-it is absent is not the write this rule forbids: **initialisation is not
-process runtime.** `initialize-harness.bpmn` ends with `A_WriteRootReadme`
+does not exist yet has to come from somewhere: **initialisation is not process
+runtime.** `initialize-harness.bpmn` ends with `A_WriteRootReadme`
 (`bootstrap/skills/root-readme.md`), which writes the root `README.md` when
 there is none and **never replaces** one that exists — an existing README is
 authored content, and the link and install status go in a marker pair that
-`readme_sync` owns from then on (bean `7sfm`).
+`readme_sync` owns from then on.
 
 **A process may CREATE or REPAIR the declaration (`<name>.json`) or config
 (`<name>.config.json`). It never maintains it.** Every `state` graph is one a
-running process keeps current (beans, QA witnesses, workflow tokens). Neither
+running process keeps current (work items, QA witnesses, workflow tokens). Neither
 `<name>.json` nor `<name>.config.json` is that: `init-folio` writes them once
 when there is no folio yet, and `ensure-landing-sticky` inserts one missing
 `folio` directory entry on `!already` and returns on `already` thereafter — a
-one-time repair, never ongoing state maintenance (bean `b5f0`).
+one-time repair, never ongoing state maintenance.
 
 Where this page and a skill disagree, **this page wins** and the skill is the
 copy that drifted — it says so itself.
@@ -386,9 +330,9 @@ copy that drifted — it says so itself.
 - [`process-state`](../../process/workflow/process-state.md), [`bpmn-processes`](../../process/workflow/bpmn-processes.md) —
   the largest writer of a live-state graph: a workflow instance is a token's
   position in a diagram that lives in a content graph.
-- [`todo-manager`](../../sdlc/sdlc-core/todo-manager.md), [`bean-coordination`](../../sdlc/sdlc-core/bean-coordination.md)
-  — the work plan, and why a bean is never deleted. A state record that
+- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)
+  — the work plan, and why a work item is never deleted. A state record that
   vanishes leaves a sibling unable to tell abandonment from accident.
 - [`instance-publication`](instance-publication.md#what-each-instance-publishes--graph-address-schema-and-what-is-stripped)
   — a `state` graph's nodes are never published. That rule, and every other
-  rule about what reaches the site, lives there (bean `4ak5` item 4).
+  rule about what reaches the site, lives there.

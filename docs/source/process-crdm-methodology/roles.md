@@ -49,7 +49,7 @@ Stakeholders participate at defined checkpoints, not continuously:
 | **Feature sign-off** (Phase 6) | Confirm the feature meets their needs; close the issue |
 
 The BA **bridges** the gap: stakeholders should never need to read a PR,
-understand a bean, or interact with the agent directly.
+understand a work item, or interact with the agent directly.
 
 ### Agent
 

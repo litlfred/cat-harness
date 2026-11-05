@@ -61,10 +61,6 @@ msgstr "Пять целевых репозиториев и то, какой к�
 msgid "Phase 0/I/II/III, the gates, and what is still undecided"
 msgstr "Фазы 0/I/II/III, контрольные точки (gates) и то, что пока остается нерешенным"
 
-#: docs/concepts/architecture.md:67
-msgid "What survives in the harness once \"not self-documenting\" is applied as a test"
-msgstr "Что сохраняется в харнессе, если применить тест на «несамодокументируемость»"
-
 #: docs/concepts/architecture.md:68
 msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
 msgstr "Чем ЯВЛЯЕТСЯ инстанс — схемы, визуализации, инструменты; четыре каталога; рендеринг по умолчанию"
@@ -85,29 +81,9 @@ msgstr "Путь"
 msgid "What lives here"
 msgstr "Что здесь находится"
 
-#: docs/concepts/architecture.md:87
-msgid "Content pipeline tooling (validators, QA, render helpers) — not content itself"
-msgstr "Инструменты пайплайна контента (валидаторы, QA, вспомогательные скрипты рендеринга) — но не сам контент"
-
-#: docs/concepts/architecture.md:88
-msgid "Web UI, interactive viewer, and the example Pages site"
-msgstr "Веб-интерфейс, интерактивный просмотрщик и пример сайта Pages"
-
-#: docs/concepts/architecture.md:89
-msgid "Deployment (Caddy, docker-compose, provisioning, OAuth)"
-msgstr "Развертывание (Caddy, docker-compose, провижининг, OAuth)"
-
 #: docs/concepts/architecture.md:90
 msgid "This documentation site"
 msgstr "Этот сайт документации"
-
-#: docs/concepts/architecture.md:91
-msgid "CI workflows and scripts (build, publish, QA, docs)"
-msgstr "CI-воркфлоу и скрипты (сборка, публикация, QA, документация)"
-
-#: docs/concepts/architecture.md:92
-msgid "Local agent skills + capability hooks"
-msgstr "Локальные навыки агента + хуки возможностей"
 
 #: docs/concepts/architecture.md:94
 msgid "The MCP server"
@@ -230,3 +206,21 @@ msgstr "Развертывание"
 
 #~ msgid "contains a Caddy reverse-proxy template, , a provisioning script, Google OAuth setup, and a self-update script for running a shared HTTP instance. The skill-package Docker manifests aggregate apt/pip/npm dependencies into a single image per active package set."
 #~ msgstr "содержит шаблон обратного прокси Caddy, , скрипт провижининга, настройку Google OAuth и скрипт самообновления для запуска общего HTTP-инстанса. Docker-манифесты пакетов навыков объединяют зависимости apt/pip/npm в единый образ для каждого активного набора пакетов."
+
+#~ msgid "What survives in the harness once \"not self-documenting\" is applied as a test"
+#~ msgstr "Что сохраняется в харнессе, если применить тест на «несамодокументируемость»"
+
+#~ msgid "Content pipeline tooling (validators, QA, render helpers) — not content itself"
+#~ msgstr "Инструменты пайплайна контента (валидаторы, QA, вспомогательные скрипты рендеринга) — но не сам контент"
+
+#~ msgid "Web UI, interactive viewer, and the example Pages site"
+#~ msgstr "Веб-интерфейс, интерактивный просмотрщик и пример сайта Pages"
+
+#~ msgid "Deployment (Caddy, docker-compose, provisioning, OAuth)"
+#~ msgstr "Развертывание (Caddy, docker-compose, провижининг, OAuth)"
+
+#~ msgid "CI workflows and scripts (build, publish, QA, docs)"
+#~ msgstr "CI-воркфлоу и скрипты (сборка, публикация, QA, документация)"
+
+#~ msgid "Local agent skills + capability hooks"
+#~ msgstr "Локальные навыки агента + хуки возможностей"

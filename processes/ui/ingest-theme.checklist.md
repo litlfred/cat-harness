@@ -47,7 +47,7 @@ Decide whether an ingested artefact is a theme source and, when it is, extract i
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `theme-art-intake`.
-- What: A step because it happened twice on the first real ingestion: the WHO guide states its black logo as both K:100 and R:100 G:100 B:100, and gives the logo blue as C:95 on page 6 and C:90 on page 12.
+- What: A step because sources do contradict themselves (one colour given two values on different pages).
 - Record it: `workflow_complete` with `node: "Task_Contradictions"`.
 - next: → `Gateway_Layouts` (Every layout present?)
 
@@ -62,13 +62,13 @@ Decide whether an ingested artefact is a theme source and, when it is, extract i
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `theme-ui-review`.
-- What: THEME REVIEW HAPPENS HERE AND NOWHERE ELSE.
+- What: THEME REVIEW HAPPENS HERE AND NOWHERE ELSE: graphical assets are reviewed at ingestion, in the context of the website or app design they are for.
 - A subprocess (`Process_ThemeUIReview`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `EndEvent_Theme` (Theme node)
 
 ## Done — Refused — incomplete (`EndEvent_Refused`)
 
-- The instance completes here: j66n's fourth clause: every layout still required, and a missing one stays INVALID rather than degraded. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- The instance completes here: Every layout still required, and a missing one stays INVALID rather than degraded. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
 ## Done — Theme node (`EndEvent_Theme`)
 

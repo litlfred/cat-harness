@@ -11,10 +11,10 @@ kind that has not decided does not compile:
 | `fsh-guts` | deprecated and throwaway structured content, kept addressable |
 
 Ask the code rather than this table — `graphTypologiesOfLayer("context")` returns
-the live answer, and a count written into prose is a claim nothing re-derives.
+the live answer; a count written into prose is not re-derived.
 The shapes are in
 [`schemas/cat-harness.ts`](https://github.com/litlfred/folio-assistant/blob/main/cat-harness/schemas/cat-harness.ts).
 
-`fsh-guts` is the entry that reads oddly and is worth the sentence: it holds
+`fsh-guts` holds
 structured material that COULD be rendered, which is what makes it look like
 content. It is context because no running process writes it.

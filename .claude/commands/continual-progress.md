@@ -6,7 +6,7 @@ generated: cat-harness-tools/scripts/gen-skill-commands.ts
 
 # /continual-progress
 
-Run the `continual-progress` skill. Read [`skills/sdlc/sdlc-core/continual-progress.md`](../../skills/sdlc/sdlc-core/continual-progress.md) and follow it.
+Run the `continual-progress` skill. Read [`sdlc/skills/sdlc-core/continual-progress.md`](../../sdlc/skills/sdlc-core/continual-progress.md) and follow it.
 
 This command is a pointer, generated from that skill's `user_invocable: true`; the
 instructions live in the skill and nowhere else. The same skill is also served as the

@@ -16,10 +16,10 @@ which is why GitHub ran them on `push` despite both being
 `workflow_dispatch`-only, and why their runs are named by path rather than by
 `name:`. They were fixed the next day. They only run on dispatch and the
 report only reads the default branch, so nothing will ever run them here
-again. Bean `lq7e`.
+again. Work item `lq7e`.
 
 The platform carries no folio: `witness-refresh` needs `computations/`, and
-`qa-sweep` is no longer a workflow here — since bean `52dz` it is a
+`qa-sweep` is no longer a workflow here — since work item `52dz` it is a
 `folio_init` template (`cat-harness/templates/`), so its red runs predate that.
 
 Without rule 3 these two would be red forever. That is what rule 3 is for.

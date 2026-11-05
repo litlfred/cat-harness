@@ -17,12 +17,9 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 {: .fs-6 .fw-300 }
 
 <!--
-  `View on GitHub` STAYS. The site-wide `aux_links` GitHub text was removed from
-  the chrome above every page (bean `udx8`, PR #352), and the obvious follow-up
-  is to delete this button for consistency. Do not. Put to the repo owner on
-  2026-09-19: this button is part of the landing page's own readme/description
-  note — authored content on one page, not chrome — and the forge remains
-  reachable from the navbar's Source tile regardless.
+  `View on GitHub` STAYS: this button is authored content of the landing page,
+  not chrome, so it is kept although the site-wide chrome has no GitHub link;
+  the forge is also reachable from the navbar's Source tile.
 -->
 [开始使用]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }}){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [安装]({{ '/docs/cat-harness/start/installation.html' | relative_url }}){: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 }
@@ -33,13 +30,13 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 ## 按顺序的四件事
 
 **1. 工作计划是你说明自己在做什么的地方。**
-不是聊天消息，也不是评论——而是 [beans]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})，一个纳入版本管理、任何会话或智能体都能读取的存储。开始工作前先认领，以免并行会话领取同一项；最终不需要的 bean 标记为 `scrapped` 并写明原因，绝不删除。
+不是聊天消息，也不是评论——而是 [work items]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})，一个纳入版本管理、任何会话或智能体都能读取的存储。开始工作前先认领，以免并行会话领取同一项；最终不需要的 work item 标记为 `scrapped` 并写明原因，绝不删除。
 
 ```sh
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list                          # 有哪些待办
 beans create "<title>"              # ……先确认该标题尚不存在
-beans <id> --status in-progress     # 认领它，让大家可见
+bun run cat beans:claim <id>        # 认领它，让大家可见
 ```
 
 **2. 创建你的第一个 folio。** 本仓库是*平台*；你的内容存放在它自己的仓库中。一条命令即可搭好框架——清单、声明、智能体文件以及指回这里的链接：
@@ -53,7 +50,7 @@ bun run cat init-folio --help
 **3. 弄清你在写哪一类东西。** *文档*是结构化的散文；*论文*（paper）在此之上还包含那些断言为形式化命题的块类型，由 Lean 支撑并通过 LaTeX 排版。这一选择决定了哪些块合法、哪些检查会运行：[内容类型]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }})。
 
 **4. 你永远不会读的文档。**
-[全部文档]({{ '/docs/cat-harness/guides/index.html' | relative_url }})——写作指南、架构、发布流程、自动生成的模式与技能参考。它就在这里，内容详尽，而实话实说，你多半会在某样东西出问题的那一刻从搜索引擎来到这里。这样用它完全没问题。上面三步才是现在值得读的。
+[全部文档]({{ '/docs/cat-harness/guides/index.html' | relative_url }})——写作指南、架构、发布流程、自动生成的模式与技能参考。上面三步才是现在值得读的。
 
 如果让你困惑的是*机制*而不是写作——谁做某件事、在哪个流程中、用哪项技能——请从 [平台]({{ '/docs/cat-harness/platform.html' | relative_url }}) 开始。那里的一句话承载了整个模型，其中每个词都是一个单独声明的对象。
 
@@ -100,7 +97,7 @@ folio-assistant 是**可插拔的**——每种内容类型都由一个内容*�
 - **[发布工作流 (Publication workflow)](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — 编辑与发布流程的 BPMN 泳道图：HCI 验证关卡、人员分工审阅以及共享工作计划。
 - **[智能体引导 (Agent onboarding)]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — 针对接入 folio 的 LLM 智能体指引：入门步骤、查找技能、内容对象模型、QA 伴随文件。
 - **[技能与角色 (Skills & roles)]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — 详述各项技能与角色，以及它们如何与 LLM 协同工作。
-- **[工作计划与待办事项 (Beans and todos)]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})** — 共享工作计划，以及为何将其纳入版本控制。
+- **[工作计划与待办事项 (Work items and todos)]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})** — 共享工作计划，以及为何将其纳入版本控制。
 - **[文档摄取 (Document ingestion)](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/document-ingestion.html)** — 上传文件如何转化为 L1 源：提取结构、衍生内容、构建 L1 知识图谱与完整性关卡。
 - **[证据评估 (Evidence)](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/evidence.html)** — 证据检索、提取与审阅流程。
 - **[技能模式参考 (Skill schema reference)](../reference/skills/)** — 为每项技能生成的输入/输出契约。

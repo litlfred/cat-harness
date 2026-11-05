@@ -10,20 +10,20 @@ graph-typologies:
 
 Extract the personas an instance's BPMN diagrams put in swimlanes as a
 SKOS concept scheme, and keep the retirement ledger that lets a dropped
-term be told from an accident. Issue #596, bean `lqo9` slice 2.
+term be told from an accident.
 
 **Not the paper glossary.** `glossary-build` walks a
 paper's blocks and writes a LaTeX chapter from `defines[]`. This walks a
 knowledge graph and writes JSON-LD. Different corpus, different output,
-different consumer — and there is a live ruling on whether they ever
-converge, so do not merge them on your own initiative.
+different consumer. Whether they ever converge is undecided, so do not merge
+them on your own initiative.
 
 ## When to invoke
 
 - A user mentions: swimlane glossary, defined-terms index, SKOS concepts,
   `glossary-export`, the glossary ledger, retiring a term.
 - After adding, renaming or removing a role in an instance's
-  `skills/roles/roles.json`, or a lane in any `.bpmn` under it.
+  `scenarios/roles.json`, or a lane in any `.bpmn` under it.
 - Before believing any count of "how many terms does this repository
   define" — the generator's report is the answer, never a number in prose.
 
@@ -38,39 +38,16 @@ converge, so do not merge them on your own initiative.
 
 ## A concept is a ROLE, not a lane name
 
-This is the rule most likely to be got wrong, because the issue's own
-wording (*"a bpmn diagram swimlane has title/description"*) points the
-other way.
+There are far more lane names than roles, so a concept per lane name would
+duplicate `roles.json`. Re-derive any count before quoting it:
+`bun run cat check:lane-documentation` for the lane count,
+`bun run cat glossary:export` for the rest.
 
-**Re-derive these before quoting them** — `bun run cat check:lane-documentation`
-for the lane count, `bun run cat glossary:export` for the rest. They are a
-*dated observation*, not a property of the corpus, and this table has already
-gone stale twice: it read **157 task-containing lanes** measured 2026-09-21,
-and the check reported **182** on 2026-09-23 and **186** on 2026-09-24. Bean
-`lqo9` carries the same 157 and drifted with it, which is a bean and a skill
-agreeing and both being wrong — the case neither one can catch by being
-compared with the other.
+`build-pipeline` is named many ways — *"CI/CD Pipeline"*, *"Scheduled log
+sweep"*, *"Graph audit (system)"*, and more. A concept per lane name
+would copy one authored definition onto each of them.
 
-*Dated observation, 2026-09-21, kept as provenance and not as a current
-figure:*
-
-| | |
-|---|---|
-| task-containing lanes | 157 *(186 on 2026-09-24)* |
-| distinct lane names | 85 |
-| distinct roles those names resolve to | **36** |
-
-**The ARGUMENT is what survives, and it does not depend on the numbers:** far
-more lane names than roles, so a concept per lane name duplicates
-`roles.json`. That holds at any scale the corpus reaches.
-
-`build-pipeline` is named ten ways — *"CI/CD Pipeline"*, *"Scheduled log
-sweep"*, *"Graph audit (system)"*, six more. A concept per lane name
-mints 85 terms for 36 meanings and copies one authored definition onto
-ten of them, which is `roles.json` duplicated with a QA gate holding it
-in place.
-
-The ten names are `skos:altLabel`. That is what `altLabel` is for, and it
+Those names are `skos:altLabel`. That is what `altLabel` is for, and it
 is what makes *"Reviewer / SME"* findable as the same term as
 *"Reviewer"* rather than a rival entry.
 
@@ -85,15 +62,14 @@ is what makes *"Reviewer / SME"* findable as the same term as
 
 ## `scopeNote` goes on the USAGE, never on the concept
 
-Of the 26 lane names appearing in more than one diagram, **26 of 26**
-carry different documentation per occurrence — zero counter-examples.
-That is the text doing its job. Hanging ten unattributed notes off one
-concept asserts ten apparent contradictions about one word.
+A lane name that appears in several diagrams carries different
+documentation in each, and should. Hanging those notes, unattributed, off one
+concept asserts apparent contradictions about one word.
 
 So each appearance is a `LaneUsage` node carrying the process, the label
 that process gave the lane, and the note.
 
-**The note is stored VERBATIM, and that is not a style preference.** Lane
+**The note is stored VERBATIM.** Lane
 documentation is extracted to `.pot` as its own msgid, so a note stored
 exactly as the diagram wrote it already has a translation slot in every
 locale. Wrapping it — `In "<process>": <note>` — reads well in English
@@ -115,9 +91,8 @@ delete a role and its concept simply stops appearing, which is what
 alike ([`deletion-requires-confirmation`](../../conduct/conduct-core/deletion-requires-confirmation.md)),
 so the one non-derivable fact — **this term was once minted** — is
 committed at `<instance>/glossary/glossary-ledger.json`, declared as
-graph typology `swimlane-glossary` (`holds: "state"`; renamed from `glossary` on
-2026-09-23, when that name went to core's glossary kind; see
-`glossary-terms`, whose `glossary/` page reads this ledger as one source).
+graph typology `swimlane-glossary` (`holds: "state"`; `glossary-terms`'
+`glossary/` page reads this ledger as one source).
 
 Three rules for it:
 
@@ -129,37 +104,35 @@ Three rules for it:
 3. **A term that comes back is un-retired**, and reported. Leaving the
    flag on reports a live term as gone for ever.
 
-**Usages are not ledgered**, deliberately: a usage is an occurrence,
-regenerated wholesale, while a concept is a term somebody may have cited.
-Ledgering every occurrence — 157 when this was written, 186 today — buries
-the records that matter.
+**Usages are not ledgered**: a usage is an occurrence, regenerated
+wholesale, while a concept is a term somebody may have cited; ledgering every
+occurrence would bury the records that matter.
 
 ## Run it once per instance — never widen the scan
 
 `--instance <root>`, the shape `kg-export` and `translate-bpmn` already
-use. Widening cat-harness's scan to reach bootstrap's diagrams
-re-introduces the leak `instance-graph-isolation.test.ts` exists to stop
-(`7u3g`), which two earlier sessions walked into.
+use. Widening cat-harness's scan to reach bootstrap's diagrams is the leak
+`instance-graph-isolation.test.ts` exists to stop.
 
 ## What it reports and never acts on
 
 - **Declared roles no swimlane draws.** They are still concepts —
-  omitting them would be `dh4f`, a glossary silently short of the
+  omitting them would leave the glossary silently short of the
   vocabulary it claims to index. The report says **which walk** found
   nothing ("no swimlane in `<instance>/` draws") and splits the list:
   a role a lane in ANOTHER instance binds (`partitionElementRef`) is named
   with that diagram (`drawnElsewhere`), apart from roles no diagram in the
-  repository draws. Bean `nafz`: unsplit, a role drawn in
-  the content core read exactly like eleven drawn nowhere — a fact
-  about the walk phrased as a fact about the corpus. Reporting it is not
-  widening the scan: nothing outside the instance is bound or emitted.
-- **A lane binding naming a lane no diagram contains** (`fd6i`). Distinct
+  repository draws, because unsplit, a role drawn in another instance reads
+  like one drawn nowhere: a fact about the walk phrased as a fact about the
+  corpus. Reporting it is not widening the scan: nothing outside
+  the instance is bound or emitted.
+- **A lane binding naming a lane no diagram contains.** Distinct
   from a role whose lane exists but holds no task, which is not a defect.
 - **A lane whose binding is dangling, contradictory or unbound.**
 
 A lane declaring `<bootstrap.processes:role variable="true"/>` is none of these. It
 emits a concept with a scope note and **no definition**, which is true —
-see [`role-model`](role-model.md) and bean `ug4r`. `laneBinding()` is the
+see [`role-model`](role-model.md). `laneBinding()` is the
 only route from a lane to a concept for exactly this reason: `variable`
 must never be reachable as `unbound`.
 

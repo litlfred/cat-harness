@@ -27,8 +27,8 @@ kind, or what it is for.
 
 This sets out what bootstrap is, what it deliberately excludes, and the two
 questions it has not answered. It is a proposal: **nothing here is built.** The
-design was accumulated on bean `x3bd` over 2026-09-19 and is written down here
-because a design that lives only in bean notes is a design the next session
+design was accumulated on work item `x3bd` over 2026-09-19 and is written down here
+because a design that lives only in work item notes is a design the next session
 reconstructs rather than reads.
 
 1. TOC
@@ -265,7 +265,7 @@ copied:
 > records the source ref and compares against it, reporting could not
 > determine when the upstream is unreachable."*
 
-This is not hypothetical for this file. Bean `v8gh` measured seven dead links
+This is not hypothetical for this file. Work item `v8gh` measured seven dead links
 in the root `AGENTS.md`, five of which broke in a single directory move —
 including the one its own banner calls the place to start, so a cold agent
 following the banner hit a 404. Nothing caught them, because `readme:audit`
@@ -286,7 +286,7 @@ That is sharper than it looks, because **the root `AGENTS.md` we ship today
 would fail as `bootstrap/AGENTS.md`.** Its cold-start line is
 `scripts/install-beans.sh && … && beans prime`; its "Getting skills" box says
 to use `skill_list` and `skill_fetch`. A repository mid-bootstrap has no
-`scripts/`, no `skills/`, no beans and no MCP server — and §4 forbids a tool
+`scripts/`, no `skills/`, no work items and no MCP server — and §4 forbids a tool
 call anywhere in bootstrap precisely because an agent here may have none.
 Every one of those instructions is post-harness.
 

@@ -38,8 +38,8 @@
       "mcp-contract"
     ],
     "selection": {
-      "when": "Before trusting any claim that a Tool node's `io` matches what the server serves — and as the input to that comparison. Also the source data for migrating `src/tools/` into Tool nodes (bean `ce65`).",
-      "limits": "INTROSPECTION, deliberately, not source parsing. The first attempt read `server.tool(...)` with a regex and produced wrong input lists — words followed by a colon inside a DESCRIPTION came back as parameter names, so `skill_fetch` appeared to take `Examples` and `Local`. Authoring a node's `io` from that would ship a contract agreeing with nothing, which is worse than no contract because a contract is what the next check trusts.",
+      "when": "Before trusting any claim that a Tool node's `io` matches what the server serves — and as the input to that comparison. Also the source data for authoring Tool nodes from `src/tools/`.",
+      "limits": "INTROSPECTION, not source parsing: a regex over `server.tool(...)` reads words followed by a colon inside a description as parameter names, and an `io` authored from that would be a contract agreeing with nothing that the next check still trusts.",
       "cost": "Mounts every registrar in-process. No network, no server needs to be running."
     },
     "requires": {

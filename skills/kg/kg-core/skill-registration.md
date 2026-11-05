@@ -20,11 +20,8 @@ It generates everything derived from the skill and verifies each artefact
 landed. `bun run cat skill:register:check` is the same question without writing, and
 it is a gate — a skill that arrives undeclared fails CI.
 
-**`skill:register`, singular.** Two commands one letter apart existed between
-2026-09-24 and 2026-09-26 — `skill:register` and `skills:register`, built by two
-sessions that each looked for a command and did not find the other's. The owner
-consolidated them onto this name because it was already on `main`. If you find
-the other spelling in older text, it is this.
+**`skill:register`, singular.** If you find `skills:register` in older text,
+it means this.
 
 ## What a skill file owes, and why you cannot see it
 
@@ -37,12 +34,11 @@ wrote:
 | a published reference page | the site's `reference/skill-instructions/<name>` | `skills:docs` |
 | a `kg-qa` sidecar | `test/results/kg-qa/skills/<pkg>/<name>.kg-qa.json` — the working copy | `kg:audit` |
 
-**The `kg-qa` sidecar is a derived QA result, and its record is no longer the
+**The `kg-qa` sidecar is a derived QA result, and its record is not the
 committed file.** The CI job `qa-publish` stores every run's `test/results/`
-on the orphan `qa-reports` branch under `main/<sha>/` or `pr/<n>/<sha>/` (arc
-`3fva`). The file is still committed on `main` until bean `5hox` removes it,
-and `kg:audit:check` still reads it, so `skill:register` still writes it —
-but a judgement about your skill (an agent's voice review, a pair
+on the orphan `qa-reports` branch under `main/<sha>/` or `pr/<n>/<sha>/`. The
+file is also committed on `main` and `kg:audit:check` reads it, so
+`skill:register` writes it — but a judgement about your skill (an agent's voice review, a pair
 attestation) does not go in it: that is `test/attestations/kg-qa/…`, on `main`,
 because no writer can regenerate it.
 
@@ -53,15 +49,11 @@ changed.
 **The reason this needs a skill at all is that the feedback arrives somewhere
 else.** CI judges the *merge* of each pull request's head into the base, so an
 undeclared skill on `main` fails the gate set on **every open pull request** — and
-the author who sees the failure is whoever opens the next one. Between 2026-09-24
-and 2026-09-26 that happened **seven times**, and seven different sessions each
-diagnosed it from scratch.
+the author who sees the failure is whoever opens the next one.
 
 ## The manifest entry is yours, on purpose
 
-`skill:register` will not add it, and that refusal is the one place the
-consolidation kept the older design over the newer one. Which package a file
-belongs to is *your assertion*, not a derivable fact, and a command that guessed
+`skill:register` will not add it. Which package a file belongs to is *your assertion*, not a derivable fact, and a command that guessed
 it would register files somebody was still drafting. The command names the file
 and the remedy; you add the slug, sorted.
 
@@ -77,7 +69,7 @@ so leave its changes unstaged and let the workflow commit them.
 
 If what you are adding needs a **new folder**, decide first which of three
 kinds of folder it is. Each has exactly one way to be declared, and the place
-the folder sits decides which (owner, 2026-10-14):
+the folder sits decides which:
 
 1. **A folder directly under the harness root** (a new code area, a new
    graph): an entry in the harness's own declaration (`<harness>.json`, e.g.
@@ -87,36 +79,33 @@ the folder sits decides which (owner, 2026-10-14):
    **from within**, in that directory's own `<dir>.json` (as
    `skills/skills.json` declares `voices`). This is not a matter of taste:
    `check:layout-norms` fails a new top-level entry whose path lies inside
-   another declared directory (the pairs it only lists are a baseline). Add `subgraph: true` when the new folder is a subgraph
-   of the INSTANCE rather than a part of its parent's graph (bean `cmsl`:
-   `voices` is the first kind, `beans.json`'s `defs` the second).
+   another declared directory (the pairs it only lists are a baseline). Add
+   `subgraph: true` when the new folder is a subgraph of the INSTANCE rather
+   than a part of its parent's graph (`voices` is the first kind,
+   `beans.json`'s `defs` the second).
 3. **A folder that holds ONE node** — one Tool, one voice: it is **not
    declared**. It sits inside the declared graph that owns the node and is
    found through that graph's reader, as each voice folder is found by its
    `voice.json`. Never declare one Tool's folder as a `tools` directory:
-   discovery loads ONE `tools/index.ts` per harness and refuses a harness
-   that declares two `tools` directories. The Tool's folder is found by
-   that `index.ts` (`toolsFromFolders`), as each voice is by its `voice.json`.
+   discovery refuses a harness that declares two `tools` directories. The
+   Tool's folder is found by the loader (`toolsFromFolders`, in the tools
+   layer), as each voice is by its `voice.json`.
 
 Both declared forms say what a folder holds the same way, by its
 `graphTypologies`: a from-within entry names its own kind (`voices.json`
 declares `vendors` as `voice-vendors`), it does not inherit its parent's.
 
-**One folder per Tool, always** (bean `tdir`, owner 2026-10-15: *"migrate
-all impacted repos … to sub-folders as is strongly recommended behaviour"*).
-A Tool is declared in `tools/<id>/<id>.ts` inside the harness's declared
-`tools` directory: the folder, the file stem and the Tool's `id` are one
-string, the file default-exports `toolFactory((t) => defineTool({ … }))`, and
+**One folder per Tool, always.** A Tool is declared in `tools/<id>/<id>.json`
+(`"$schema": "tool-definition/v1"`) inside the harness's declared `tools`
+directory: the folder, the file stem and the Tool's `id` are one string, and
 the folder also holds whatever is that Tool's alone (its script, fixtures,
-tests). `tools/index.ts` only calls `toolsFromFolders`
-(`schemas/tools/tool-folders.ts`), which refuses a folder that breaks the
-convention, so discovery is unchanged. Helpers several Tools share go in
-`tools/lib.ts`, which declares no Tool. A `defineTool(` anywhere else in the
-directory is an inline declaration, and `check:tools` reports it.
+tests). `toolsFromFolders` refuses a folder that breaks the convention. The
+`tools/` directory is data only; the loader and shared helpers live in the
+tools layer.
 
-The source stays TypeScript on the default branch; the JSON-LD of each Tool
-(`<base>/tools/<id>.jsonld`, its own IRI) and the JSON Schema of each I/O type
-are written when the site is published, never committed.
+The JSON-LD of each Tool (`<doc dir>/tools/<id>.jsonld`, its own IRI) and the
+JSON Schema of each I/O type are written when the site is published, never
+committed.
 
 Why declaring is part of the process, not tidying:
 
@@ -125,12 +114,11 @@ Why declaring is part of the process, not tidying:
   only, so a new undeclared folder inside a harness passes it.
 - **Declared directories are what can be mounted and exported.** A remote
   mount lays down declared directories only, so an undeclared code folder is
-  missing downstream (the tools layer's `tools/` was, until 2026-10-14). A
-  harness's package `exports` are derived from its declared, shipped `code`
-  directories (`check:package-exports`, bean `7pvn`), so an undeclared one
-  cannot be imported by package name either. A from-within id cannot yet be
-  mounted on its own: `remote-mount` reads top-level entries only (bean
-  `2j2r`, needed by `mo75`).
+  missing downstream. A harness's package `exports` are derived from its
+  declared, shipped `code` directories (`check:package-exports`), so an
+  undeclared one cannot be imported by package name either. A from-within id
+  can be mounted on its own ([`remote-mount`](remote-mount.md) resolves it
+  through `instanceDirectories`).
 - `bun run cat harness:dirs` then materialises every declared directory, so
   the folder exists in every checkout rather than only in yours.
 
@@ -142,37 +130,27 @@ over an artefact it failed to update, and only the `:check` form catches it.
 
 **Do not re-derive the chain through `bun run cat gates`.** `bun test` runs the
 detangle and `kg-audit` writers, so by the time those checks execute the
-artefacts are already repaired — bean `ymsu`'s blind spot. A chain measured
-through `gates` comes out two steps short, and both omissions look correct.
+artefacts are already repaired. A chain measured through `gates` comes out
+two steps short, and both omissions look correct.
 
-**Four separate attempts to recall this list produced four wrong answers**, in
-both directions: steps named that adding a skill does not stale (they had gone
-red in the same sessions for unrelated reasons), and steps omitted that it does.
-The five in the command were each measured red-then-green in isolation. Add one
-only with the same experiment, and put the measurement in the docblock.
+**Do not recall the list from memory**: recall goes wrong in both directions,
+naming steps that adding a skill does not stale and omitting ones it does.
+Each step in the command was measured red-then-green in isolation. Add one only with the same experiment, and put
+the measurement in the docblock.
 
 One pairing is worth knowing because it reads like a typo and is not:
 `glossary:page` is verified by **`check:glossary`**, which is that same script
 with `--check`. `glossary:check` is a *different program* over the SKOS
-projection. A test asserting "every check ends in `:check`" once drove out the
-correct pairing and installed the wrong one — and passed.
+projection. Do not "fix" the pairing to make every check end in `:check`.
 
 ## Do not re-add `roles:`
 
-`roles:` is **retired**. It carried 325 annotations across 140 files, was read by
-nothing, and pointed at actor ids — `reader`, `collaborator`, `owner` — that have
-never existed in any commit.
-
-It keeps coming back, and `check-retired-front-matter.ts` says why in its own
-docblock: *"the corpus that taught every agent here to write it is the corpus in
-front of them: copy an adjacent skill's front matter and the field is back."*
-Three of the seven merges above reintroduced it exactly that way.
-`skill:register` strips it and tells you it did — safe to perform automatically
-for the same reason the manifest entry is not, since a retired key carries no
-author intent to guess at.
-
-If a skill *should* declare who performs it, that is bean `y1w9`, and the field
-has to be declared before it is written.
+`roles:` is **retired** front matter: nothing reads it, and the actor ids it
+named do not exist. Copying an adjacent skill's front matter brings it back,
+so `skill:register` strips it and tells you it did — safe to perform
+automatically, since a retired key carries no author intent to guess at. A
+field saying who performs a skill must be declared in the schema before it is
+written.
 
 ## Removing or renaming a skill: two orphans, and they are yours
 
@@ -191,9 +169,6 @@ not an omission.
   an agent never removes a durable artefact on its own initiative. No amount of
   regenerating settles it, which is why the command reports the check as still
   red rather than looping.
-
-Both were found by breaking the tool rather than by designing it — registering a
-probe skill and then deleting it produced one of each.
 
 ## What this does not decide
 

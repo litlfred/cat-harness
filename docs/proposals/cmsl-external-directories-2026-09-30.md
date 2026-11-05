@@ -1,11 +1,11 @@
 ---
 title: "cmsl — the 23 directories cat-harness declares but does not hold"
-description: "Why each exists, which way its arrow points, and the options for moving the declaration or reversing the arrow. Measured 2026-09-30 for bean cmsl."
+description: "Why each exists, which way its arrow points, and the options for moving the declaration or reversing the arrow. Measured 2026-09-30 for work item cmsl."
 ---
 
 # The 23 directories cat-harness declares but does not hold
 
-> **Status, 2026-10-01: option A is built** (placement PR0, bean `ejye`).
+> **Status, 2026-10-01: option A is built** (placement PR0, work item `ejye`).
 > Steps 1–3 landed together: folio-assistant-sci declares `skills/lean/` and
 > `skills/data/` from within its own `skills/skills.json`; the root instance
 > declares Group 1 and `needs` every staged instance; cat-harness declares no
@@ -16,16 +16,16 @@ description: "Why each exists, which way its arrow points, and the options for m
 > (`scripts/tests/placement-pr0-mechanisms.test.ts`). The rest of this page
 > is the analysis as it stood when the option was chosen.
 
-Owner, 2026-09-30, on bean `cmsl`: *"analyze and characterize the 23 externals.
+Owner, 2026-09-30, on work item `cmsl`: *"analyze and characterize the 23 externals.
 why? options for relocation/changing arrow directions? schema issues/location
 issues?"* Every number below was measured on this branch after merging `main`
-at `164bb7f93d`; the commands are in bean `cmsl`.
+at `164bb7f93d`; the commands are in work item `cmsl`.
 
 ## What an "external" is
 
 An entry in `cat-harness/cat-harness.json` with `scope: "repository"`: its
 `path` resolves against the **repository root**, not against `cat-harness/`.
-There are **24** such entries today (the bean's "23" plus `fsh-guts`, which
+There are **24** such entries today (the work item's "23" plus `fsh-guts`, which
 predates it). They fall into three groups that have nothing in common but the
 flag.
 
@@ -33,7 +33,7 @@ flag.
 
 | id | path | kinds | other declarer | id refs in code |
 |---|---|---|---|---|
-| `beans` | `beans/` | beans | none | 72 |
+| `beans` | `beans/` | work items | none | 72 |
 | `todos` | `todos/` | todos | none | 32 |
 | `fsh-guts` | `fsh-guts/` | fsh-guts | none | 30 |
 | `memory` | `memory/` | memory, waiver | none | 10 |
@@ -113,7 +113,7 @@ dependents, which is not depending on them.
 | **A. The checkout aggregates** | The root instance (`folio-assistant.json`) takes the aggregator role: it `needs` every instance it stages, and declares Group 1 as its own (they are at its root). Corpus-wide tools resolve a kind over the **root's dependency overlay** (`orderedDependencies` + each dependency's own directories), the mechanism `resolveSkillDirs` already uses for skills. cat-harness keeps only `cat-harness/…`. Group 3 moves into folio-assistant-sci's declaration. | **correct**: the checkout depends on what it contains; nobody depends on the checkout; the platform names no folio | one helper (`checkoutDirectoriesForGraph(kind)`), then the ~25 corpus-wide call sites switch to it; the 24 mirrors are deleted; Group-1 id references are unchanged (same ids, new declarer) | the largest change; a consumer that SHOULD be instance-scoped but was silently aggregating shows up as a behaviour change — which is the point, and each one is a finding |
 | **B. `reads` list on cat-harness** | `reads: ["who-iris#library", …]` replaces the 16 mirrors; resolved through each owner's declaration, so ids and kinds cannot drift | still upward, but explicit | small: one field, one resolver | the platform still names every folio; a new folio must edit the platform to be seen |
 | **C. Pointer entries** | each mirror becomes `ownedBy: "<instance>#<id>"`, no path/kind restated | still upward | smallest | same as B, plus one entry per directory remains |
-| **D. Physical relocation** | move Group 1 into `cat-harness/` | n/a | beans CLI config, every state path, 72+ references | churn with no arrow benefit; Group 2 unaffected |
+| **D. Physical relocation** | move Group 1 into `cat-harness/` | n/a | `beans` CLI config, every state path, 72+ references | churn with no arrow benefit; Group 2 unaffected |
 
 **Recommendation: A**, in three separately reviewable steps: (1) Group 3 —
 folio-assistant-sci declares its own `skills/lean/` (tiny, independent); (2)

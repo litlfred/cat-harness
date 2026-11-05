@@ -3,14 +3,9 @@ When a request is classified as a feature request, the agent enters the
 ([full documentation](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/crdm-methodology.html),
 [BPMN](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn)).
 
-The feature-request workflow is where this harness document adds the most
-value, because it describes a behaviour that was previously implicit. The
-authoring and review workflows have been documented for months; the
-requirements workflow existed only as ad-hoc conversation.
-
 ### How the agent enters CRDM
 
-The detection logic is in [`skills/sdlc/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/sdlc/crdm/crdm-detect.md).
+The detection logic is in [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md).
 Three scenarios:
 
 **New session, first request is a feature:**
@@ -22,7 +17,7 @@ Phase 1.
 
 **Existing session, doing content work:**
 → Synthesise the feature need, ask user whether to pause content work and
-address it now or bean it for later.
+address it now or work item it for later.
 
 ### What the user sees
 
@@ -37,7 +32,7 @@ Instead:
 ### How the agent exits CRDM
 
 The CRDM workflow exits when:
-- All beans from the signed-off requirements are resolved, OR
+- All work items from the signed-off requirements are resolved, OR
 - The user explicitly defers the remaining work
 
 On exit, if a content workflow was suspended, the agent resumes it.

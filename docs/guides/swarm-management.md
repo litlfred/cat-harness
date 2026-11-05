@@ -12,17 +12,14 @@ nav_order: 13
 
 ---
 
-> **Started, not finished.** [#223 comment 14:48](https://github.com/litlfred/folio-assistant/issues/223#issuecomment-5731729871)
-> asks for a whole skill set covering model levels, swarm size and CPU, and for
-> this page to exist. The skill is
+> The skill is
 > [`swarm-management`]({{ '/reference/skill-instructions/swarm-management.html' | relative_url }});
-> this page is the reader-facing summary and the record of what is **not** yet
-> built.
+> this page is the reader-facing summary.
 
 ## What a swarm is here
 
 Several agents working one goal in parallel, each against a disjoint slice of
-the corpus, rolling up into one parent bean. It is the most expensive tool the
+the corpus, rolling up into one parent work item. It is the most expensive tool the
 harness offers.
 
 ## The rule that matters most
@@ -64,19 +61,16 @@ disagreement at full price.
 
 ## What is not built
 
-This page and its skill are **written ahead of the tooling**, and that is worth
-stating plainly rather than leaving a reader to discover it:
+This page and its skill are **written ahead of the tooling**:
 
 - **No swarm runner enforces the sizing above.** `dispatch-agent` covers the
   mechanics of dispatching background agents; nothing checks the count, the
   model level, or the slice disjointness.
 - **No per-unit wall-clock bound** exists, so "bound every unit" is currently a
   discipline rather than a mechanism.
-- **No cost estimate** can be shown to the author at the moment of asking,
-  which is exactly when they need it — so the ask is qualitative today.
+- **No cost estimate** can be shown to the author at the moment of asking, so
+  the ask is qualitative.
 - **No sub-bean hierarchy.** `TodoItem` has `related[]` but no `parent`, so the
   roll-up this page assumes is done by convention. See the
   [minimum cat-harness analysis](../concepts/architecture/cat-harness-minimum.html)
   §"User todo management".
-
-Closing those is what would turn this from guidance into a guardrail.

@@ -15,34 +15,27 @@ documents:
 
 A harness instance declares the directories it holds and the **kind of graph**
 in each. Some of those graphs have a page you can open; the sections below are
-the list, and **counting them here would be a number that goes stale by
-lying** — a section is added when a viewer is, and a reader wanting the total
-counts the sections.
+the list, and they are not counted here, because a typed count goes stale the
+moment a viewer is added.
 
 1. TOC
 {:toc}
 
 ---
 
-## Why these pages exist
+## What a declared subgraph is owed
 
-A directory nobody can see is one nobody checks. Measured on this instance,
-2026-09-20: **19 declared subgraphs had no way to look at them**, and the two
-most depended on were among them — `schemas/`, whose shapes everything else is
-validated against, and `library/`, which every knowledge-graph reference to a
-source resolves *through*.
-
-Bean `2krx` states the rule this is the first half of: **every directory an
-instance names as a subgraph needs a visualiser, a documentation entry, and a
-governing skill.** Three separate requirements, because they fail differently
-— nothing renders it, nothing says what it is for, and nothing an agent can
-invoke against it. This page is the second of the three for these two graphs;
-[`schema-management`]({{ '/reference/skill-instructions/schema-management.html' | relative_url }}) and
-the library-ingestion skills are the third.
+**Every directory an instance names as a subgraph needs a visualiser, a
+documentation entry, and a governing skill,** because a directory nobody can see
+is one nobody checks. They are three requirements because they fail
+differently: nothing renders it, nothing says what it is for, or nothing an
+agent can invoke against it. This page is the documentation
+entry for the graphs below; for `schemas/` and `library/` the governing skills
+are [`schema-management`]({{ '/reference/skill-instructions/schema-management.html' | relative_url }})
+and the library-ingestion skills.
 
 `bootstrap` is exempt from the visualiser requirement and not from the others:
-it is the navbar footer, and what it owes instead is its own `.json`/`.jsonld`
-— *"that is its existence"*.
+it is the navbar footer, and what it owes instead is its own `.json`/`.jsonld`.
 
 ## The schema graph
 
@@ -55,16 +48,10 @@ every declared `schemas` directory, with the edges between them.
 - A **per-type UML neighbourhood**, drawn as a class box with its
   generalisations above it and its field references below, each labelled with
   the field it goes through.
+- A **relationship diagram** at the top, collapsible and closed by default.
 
-- A **relationship diagram** at the top, collapsible and closed by default:
-  the declarations this page is scoped to, as UML boxes wired by labelled
-  edges — *what is defined here, and how it is linked?*
-
-There is still **no whole-corpus class diagram.** Hundreds of labelled
-declaration boxes render as a wall that looks like a data model and answers no
-question about one — the same argument the knowledge-graph viewer made and won.
-The diagram obeys it by staying **scoped**, and by declining when the scope is
-too big rather than drawing it anyway.
+There is **no whole-corpus class diagram,** because hundreds of labelled boxes
+render as a wall that looks like a data model and answers no question about one.
 
 ### The relationship diagram
 
@@ -75,15 +62,14 @@ that it goes through `skills`, and that it is a list.
 
 **It is scoped, and refusing is an answer.** The diagram draws the page's scope
 narrowed by the module filter; above 40 declarations it declines and says to
-pick a module. Drawing 812 labelled boxes is the hairball the knowledge-graph
-viewer measured at 1111 nodes.
+pick a module.
 
 **One hop of context is drawn, faded.** A strict module filter cuts the edge
 most worth seeing — `RoleDefSchema --skills--> SkillDefinitionSchema` spans two
 files — so a declaration just outside the filter that a drawn one touches is
-drawn too, dashed and dimmed. Counting a cut edge is not showing it.
+drawn too, dashed and dimmed, because counting a cut edge is not showing it.
 
-Three edge kinds, and the third is drawn differently on purpose:
+Three edge kinds:
 
 | kind | drawn | means |
 |---|---|---|
@@ -93,13 +79,13 @@ Three edge kinds, and the third is drawn differently on purpose:
 
 A field reference is something the reader *found*; an id reference is something
 an author *asserted*, because the target is a string id no syntactic reader can
-see. Drawing them alike would claim the reader saw something it did not.
+see. Id references are dashed because drawing them alike would claim the reader
+saw something it did not.
 
-Clicking a box opens that declaration's definition, which is what makes the
-panel navigation rather than a poster.
+Clicking a box opens that declaration's definition.
 
-The layout is **static**: computed once, deterministically, no simulation.
-Dragging and alternate arrangements are tracked separately.
+The layout is **static**: computed once, deterministically, no simulation, and
+boxes cannot be dragged.
 
 ## The library — the L1 corpus
 
@@ -145,27 +131,19 @@ one is.
 
 ### It is read-only
 
-Nothing on this page edits an asset. The actions that would write — starting an
-ingest from the corpus view, and materialising an entry into a folio of choice
-— are open work, because the write path is a decision the repository owner has
-not yet made.
+Nothing on this page edits an asset: it does not start an ingest or materialise
+an entry into a folio, because the write path is not yet decided.
 
 ## The voices — what each rule cites
 
 **[`/cat-harness/voices/`]({{ '/cat-harness/voices/' | relative_url }})** — every voice
 its instance declares, every rule, and **the passage the rule was read from**.
 
-A voice is an editorial register asserted by an instance, and this subsystem's
-whole claim is that it is **auditable rather than asserted**. `check-voices.ts`
-exists because PR #210 shipped three WHO profiles carrying ten plausible rules
-each with `source: null` — and one of those plausible rules asserted the
-opposite of what the WHO Editorial Style Manual says on p14. Every rule now
-carries the page and the quote.
-
-**Until this page, none of it was readable without opening JSON.** A citation
-that is only machine-checked is one the reader takes on trust, which is the
-state the citations were added to end. So the rule row leads with the quote,
-and the citation is the one column that cannot be filtered away. Bean `bu2q`.
+A voice is an editorial register asserted by an instance. Every rule carries
+the page and the quote it was read from, and `check-voices.ts` checks that it
+does. The rule row leads with the quote, and the citation is the one column
+that cannot be filtered away, because a citation that is only machine-checked
+is one the reader takes on trust.
 
 ### A rule citing nothing is drawn as a finding, not as a blank
 
@@ -173,23 +151,18 @@ and the citation is the one column that cannot be filtered away. Bean `bu2q`.
 (`libraryId` + `sectionId`) or a node of the instance's own knowledge graph
 (`kgRef`), so a rule with neither cannot load. The viewer renders that state
 anyway, in red, saying that something is loading voices without validating
-them — because a reader who cannot tell "no citation" from "citation not
-rendered" learns nothing from an empty cell.
+them, because a reader cannot tell "no citation" from "citation not rendered"
+in an empty cell.
 
 ### A declared directory that is not there gets a row
 
 `agent-skills` declares a `voices` graph and ships none. It appears in the
-directories table as **declared, not present**, rather than being omitted:
-those are different facts, and a consumer that scans nothing and reports a
-clean run is the `dh4f` defect.
+directories table as **declared, not present**, rather than being omitted,
+because those are different facts and a consumer that scans nothing must not
+report a clean run.
 
-### The visualiser rule did not ask for this page
-
-`owesVisualiser` returns false for a `content` kind and `voices` is `content`,
-so `check:subgraph-coverage` never raised a finding for it — exactly as it
-never raised one for the library. What this page answers is `2krx`'s own
-sentence, *"a directory nobody can see is one nobody checks"*, which is a
-reason to build a viewer and not a row in a report.
+`owesVisualiser` returns false for a `content` kind such as `voices` or
+`library`, so `check:subgraph-coverage` does not require these viewers.
 
 ## Where they are published — two rules, not three
 
@@ -216,11 +189,11 @@ namespace, and a viewer there would squat on the instance's own site.
 | `/cat-harness/schemas/` | every declared `schemas/` |
 | `/cat-harness/schemas/<instance>/` | that instance's modules and declarations |
 
-One projection serves all of them — a scoped page filters client-side.
-A second file per subject would be the same facts written N+1 times, free to
-disagree the moment one is regenerated. **Counts are scoped too**: reporting
-the graph-wide edge total on a page showing nine declarations would claim 512
-edges among those nine.
+One projection serves all of them — a scoped page filters client-side, because a
+file per subject would repeat the same facts, free to disagree the moment one
+is regenerated.
+**Counts are scoped too**: a page reports only the edges among the declarations
+it shows.
 
 ### `docs/` is the same shape, and its subject means something specific
 
@@ -230,10 +203,7 @@ ingested, what the handler does with it — and **not IRIS content relocated**.
 The content stays in that instance's own `docs/`, and part of the handler's
 job is to look for those directories.
 
-Measured 2026-09-20: only `cat-harness` has a `docs/` directory today, and its
-declaration carried `dependents: "skip"` — which was exactly what prevented a
-dependent from getting one. Since 2026-09-30 (option A) the field is retired:
-every instance's existing `docs/` is a **member** of the one declared `docs`
+Every instance's existing `docs/` is a **member** of the one declared `docs`
 subgraph, and `docs` is a `perInstance` kind, so a dependent gets its own.
 
 ### Nothing composes a path

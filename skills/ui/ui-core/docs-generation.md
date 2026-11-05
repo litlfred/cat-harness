@@ -1,192 +1,107 @@
 ---
 name: docs-generation
 description: >
-  Generate and deploy documentation artifacts: schema docs (TypeDoc),
-  formal-layer API docs, dependency graphs, schema manifests, and
-  per-paper HTML/PDF/Markdown outputs.
+  How a checkout of this harness generates and publishes its docs site:
+  regenerating derived references, composing the docs layers and each
+  instance's site into one Jekyll source, building it with just-the-docs,
+  the post-build passes, the TypeDoc API reference, the knowledge-graph
+  export, and the full-replace publish to gh-pages and its STAGING previews.
 ---
 
-# Documentation Generation Skill
+# Docs generation
 
-## Role
+The docs site is one Jekyll site built from the checkout's sources and
+published to `gh-pages`. The host checkout's `.github/workflows/docs-site.yml`
+runs it on a push to the default branch that touches its inputs, or on
+dispatch. Its steps, gateways and alerts are drawn in
+[`docs-site-publish.bpmn`](../../../sdlc/processes/docs-site-publish.bpmn).
 
-Coordinate all documentation generation pipelines. This covers the
-full set of rendered artifacts published to the docs site, from the
-content-object schemas through to per-paper PDF/HTML viewers.
+## Regenerate derived references
 
-## Documentation artifacts
+Nothing derived is published from a committed copy. Before the build, each
+generator rewrites its pages from source, among them:
 
-| Artifact | Generator | Output path (docs site) | Trigger |
-|----------|-----------|----------------------|---------|
-| **Paper PDF** | `pipeline/build.ts` + PDF engine | `papers/<dir>/<dir>.pdf` | publish workflow |
-| **Paper HTML** | `generate-html.py` (Pandoc + enhance) | `papers/<dir>/paper.html` | publish workflow |
-| **Paper Markdown** | Pandoc (`gfm`) | `papers/<dir>/<dir>.md` | publish workflow |
-| **Paper viewer** | `generate-index.py` | `papers/<dir>/index.html` | publish workflow |
-| **Folio landing** | `generate-folio-index.py` | `index.html` | publish workflow |
-| **Schema docs** | TypeDoc (`npm run build:docs`) | `schema-docs/` | publish workflow |
-| **Schema manifest** | `cat-harness-tools/scripts/generate-schema-manifest.ts` | `/api/schema-manifest` | MCP server |
-| **Formal API docs** | doc generator | `docs/` | formal-layer workflow |
-| **Dependency graph** | `generate_dependency_graph.py` | `dependency-graph.svg` | publish / formal workflow |
-| **Proof/object report** | `extract_proof_objects.py` | `proof-objects.json` | all workflows |
-
-## Paper document generation
-
-### Pipeline: content objects → PDF
-
-```
-content/<paper>/<paper>.ts          paper manifest (metadata, sections)
-     ↓
-pipeline/build.ts           validates + renders sections → output
-     ↓
-preamble template + manifest        generate-main.ts → main document
-     ↓
-PDF engine                          main → PDF
-     ↓
-pandoc                              → .md → paper-raw.html
-     ↓
-generate-html.py                    → paper.html (enhanced)
-     ↓
-generate-index.py                   → per-paper index.html (viewer)
-```
-
-### Running locally
-
-```bash
-# Build sections + generate the main document from the manifest
-cd content && bun run pipeline/build.ts \
-  <paper>/<paper>.ts \
-  --out-dir ../sections/ \
-  --generate-main \
-  --main-out ../main.tex \
-  --preamble ../latex/preamble.tex
-
-# Compile PDF (requires the PDF engine). No engine in the sandbox? Run
-# scripts/install-tex.sh first, or fall back to the Docker image.
-cd .. && <pdf-engine> main.tex
-```
-
-### Key files
-
-| File | Purpose |
+| What | Command |
 |------|---------|
-| `latex/preamble.tex` | Shared rendering preamble template (paper-agnostic) |
-| `pipeline/build.ts` | Content → output section build |
-| `pipeline/generate-main.ts` | Manifest + preamble → main document |
-| `pipeline/render.ts` | Block-level markdown → output conversion |
-| `.github/scripts/generate-html.py` | Pandoc HTML → enhanced paper.html |
-| `.github/scripts/generate-index.py` | Per-paper viewer (paper/visualizer toggle) |
-| `.github/scripts/generate-folio-index.py` | Root folio landing page |
+| Pages derived from branch-kept graphs | `bun run cat derive:publish` |
+| Skill contract reference | `bun run cat schema:docs` |
+| Skill instruction pages | `bun run cat skills:docs` |
+| Content-backed docs pages | `bun run cat docs:pages` |
+| Graph projections and viewers | `schema:viz`, `library:viz`, … |
+| Handler and translation indexes | `handler:index`, `translation:index` |
+| BPMN drawings and process pages | `render:bpmn`, `processes:viz` |
 
-## Schema documentation (TypeDoc)
+Several are Tools in `tools/` that satisfy this skill (`schema-docs`,
+`skill-docs`, `bpmn-render`); a Tool's declaration says what it reads and
+writes.
 
-Pretty-printed HTML reference for the content-object type system.
+## Compose one source
 
-### Configuration
+`cat-harness-tools/scripts/compose-docs.ts --out ./_docs` lays the checkout
+root's `docs/` over `cat-harness/docs/`, the base. An instance that builds a
+site of its own then has its Tool compose that site into the host source at
+`<instance>/`. For example, the FHIR IG layer's `stage-ig-sites.ts
+--compose-into ./_docs` stages each IG whose instance records its source.
+Which instances compose is data in their declarations. The result is one site
+with one sidebar, one search and one language selector.
 
-| File | Purpose |
-|------|---------|
-| `typedoc.json` | TypeDoc config (entry points, output dir, theme) |
-| `schemas/types.ts` | Core types: `Block`, `Section`, `Paper` |
-| `schemas/constraints.ts` | Zod runtime validation schemas |
-| `schemas/builders.ts` | Constructor functions (`definition()`, `theorem()`, etc.) |
-| `schemas/output-types.ts` | CI/output types (objects, glossary, coverage) |
-| `schemas/README.md` | TypeDoc landing page content |
-| `package.json` | `build:docs` script |
+## Build
 
-### Running locally
+`bundle exec jekyll build --source ./_docs --destination ./_site` runs Jekyll
+4 with the just-the-docs remote theme and the gems in
+`.github/pages-jekyll/Gemfile`. Post-build passes then run over `_site`:
 
-```bash
-# Install TypeDoc (if not already)
-npm install
+- each composing Tool's own pass (for IGs, `build-ig-site.ts --dedupe-ids`);
+- `mount-instance-docs.ts`, which mounts every other instance's rendered
+  pages under its kind;
+- the inline PDF viewer, `set-html-lang.ts`, `search-split.ts` and
+  `minify-site.ts`;
+- the TypeScript API reference, built into `_site/api` by TypeDoc through
+  `.github/actions/typedoc-api`.
 
-# Generate schema docs
-npm run build:docs
-# Output: build/schema-docs/
-```
+## Export the knowledge graph
 
-### Schema manifest (lightweight JSON)
+`kg-export.ts` writes the instance's graph to `<stub>/<stub>.jsonld`, with a
+`.json` copy so that Pages serves a JSON media type.
+`harness-schema-export.ts` writes its schema, and `kg-viewer.ts` writes the
+viewer. Where each endpoint lives and which media type it carries:
+[`serving-renderings`](serving-renderings.md) and
+[`instance-publication`](../../kg/kg-core/instance-publication.md). The
+instance that owns the site root is `site.landing` in `index.config.json`
+([`index-config`](../../kg/kg-core/index-config.md)).
 
-For programmatic access (viewer, MCP server):
+## Check and publish
 
-```bash
-bun run cat-harness-tools/scripts/generate-schema-manifest.ts
-# Output: build/schema-manifest.json
-```
+`check:maintained-artefacts`, `check:escaped-markup` and `publish-verify.ts`
+check the built tree. `publish-gh-pages.sh` then replaces `gh-pages`
+wholesale. Before each push attempt it copies in every open pull request's
+`STAGING/<slug>/` preview (`restore-staging.ts`). After the push,
+`restore-staging.ts --verify` confirms that the previews survived. Any failure
+opens or comments on one publication-manager alert, and the next clean publish
+closes it.
 
-## Formal-layer documentation
+## Previews
 
-When a paper carries a formal layer (e.g. a proof assistant), its API
-documentation is generated by the formal-layer CI workflow after the
-formal build succeeds. If the primary doc generator fails, the workflow
-falls back to a static HTML source browser.
+`.github/workflows/feature-staging.yml` builds the same site for a pull
+request and publishes it under `STAGING/<slug>/`, replacing only that
+directory. It removes the preview when the pull request closes.
 
-A gap/axiom report lists unproved-gap declarations and dependency
-transparency; it is produced by the same workflow.
+## Locally
 
-## Folio landing page
+`bun run cat preview:site` builds the site in a sandbox.
+`bun run cat-harness-tools/scripts/generate-schema-manifest.ts` writes
+`build/schema-manifest.json` for the viewer and the MCP server. Paper PDFs
+and Lean API docs belong to the paper layer: see `build-pdf` and
+`lean-html-docs` where that layer is mounted.
 
-The root `index.html` on the docs site is a folio page listing all
-papers with viewer links. Generated from `content/folio.ts`.
+## Read next
 
-This is the paper pipeline's own page. In a checkout that instantiates several
-harnesses, **which instance owns `<base>/index.html`** is `site.landing` in the
-root `index.config.json` — an instance name, or `"hub"`. That is
-[`index-config`](../../kg/kg-core/index-config.md)'s rule. For where every other
-page is published, canonical and alias, see
-[`schema-management`](../../kg/kg-core/schema-management.md) §"Where a viewer
-publishes".
-
-### Adding a new paper to the folio
-
-1. Create `content/<paper-dir>/<paper-dir>.ts` (paper manifest with
-   title, authors, abstract, macros, sections)
-2. Create section directories with content objects
-3. Add `paperRef({ dir: "<paper-dir>", title: "...", ... })` to
-   `content/folio.ts`
-4. The pipeline discovers it automatically via `extract-folio.py`
-
-### Key scripts
-
-| Script | Purpose |
-|--------|---------|
-| `.github/scripts/extract-folio.py` | Parse `folio.ts` → JSON paper list |
-| `.github/scripts/generate-folio-index.py` | Generate root `index.html` |
-
-## Dependency graph
-
-Visual SVG showing dependencies between content blocks.
-
-```bash
-python3 .github/scripts/generate_dependency_graph.py \
-  --manifest proof-objects.json \
-  --output dependency-graph.svg
-```
-
-## Unified Docker image
-
-All CI/CD workflows use the same **paper-assistant** Docker image
-(`adapters/mcp-server/Dockerfile`), which is also the folio MCP server.
-This eliminates per-workflow tool installation and ensures consistent
-build environments. The image bundles the PDF engine, the content
-pipeline runtime (Bun), pandoc, graph tooling, and CI scripts.
-
-### Using locally (Docker fallback)
-
-When the PDF engine isn't installed locally, the render hooks
-automatically fall back to the Docker image. The `scripts/lib/docker-tex.sh`
-helper automates this fallback for the render hooks.
-
-## CI workflows
-
-| Workflow | Container | Docs generated |
-|----------|-----------|---------------|
-| `publish.yml` | paper-assistant | Paper PDF/HTML/MD, folio index, schema docs, dep graph |
-| formal-layer workflow | paper-assistant | Formal API docs, gap report, manifests |
-
-## When to use this skill
-
-- "generate docs" / "build docs" / "rebuild documentation"
-- "schema docs" / "type docs" / "TypeDoc"
-- "build paper" / "compile PDF" / "render HTML"
-- "update folio page" / "add paper to landing page"
-- "dependency graph" / "gap report"
+- [`feature-staging`](../../../sdlc/skills/sdlc-core/feature-staging.md): previews and
+  build types.
+- [`publish-verification`](../../../sdlc/skills/sdlc-core/publish-verification.md): the
+  verifier set and the alert.
+- [`render-kg-to-cdn`](../../process/workflow/render-kg-to-cdn.md): the
+  general publish step that `gh-pages` instantiates.
+- [`before-after-preview`](../../../sdlc/skills/sdlc-core/before-after-preview.md) and
+  [`rendered-impact`](../../../sdlc/skills/sdlc-core/rendered-impact.md): reviewing a
+  rendered change.

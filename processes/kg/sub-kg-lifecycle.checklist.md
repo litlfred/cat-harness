@@ -10,24 +10,9 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 
 - Begin here: A content type's creation skill asked whether the new graph goes in a new repository or inside this one, and the answer was inside this one.
 - Call `workflow_start` with `process: "Process_SubKgLifecycle"` and the subject this run is about; keep the instance id it returns.
-- next: → `Call_BeanOpen` (Open the bean)
+- next: → `Task_Brief` (Brief the work)
 
-### 1. Open the bean (`Call_BeanOpen`)
-
-- Who: the `Authoring agent` lane (role `authoring-agent`).
-- Skill: `bean-coordination`.
-- What: Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's.
-- A subprocess (`Process_BeanOpen`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `GW_BeanYours` (Bean claimed?)
-
-### Decide — Bean claimed? (`GW_BeanYours`)
-
-- Reads which end Process_BeanOpen reached.
-- Call `workflow_complete` with `node: "GW_BeanYours"` and `outcome` set to the label that holds:
-  - «claimed» → `Task_Brief` (Brief the work)
-  - «not yours» → `End_BeanNotYours` (Not yours — left alone)
-
-### 2. Brief the work (`Task_Brief`)
+### 1. Brief the work (`Task_Brief`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `opening-brief`.
@@ -36,19 +21,15 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Record it: `workflow_complete` with `node: "Task_Brief"`.
 - next: → `Task_Declare` (1 · Declare it in place, with its seam)
 
-## Done — Not yours — left alone (`End_BeanNotYours`)
-
-- The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 3. 1 · Declare it in place, with its seam (`Task_Declare`)
+### 2. 1 · Declare it in place, with its seam (`Task_Declare`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `sub-kg-lifecycle`.
-- What: `<name>/<name>.json` with name, version, `repository` (the planned home), `livesAt` (where it sits today), `needs`, and only the directories that exist, each declared with its files in one commit (bean dh4f).
+- What: `<name>/<name>.json` with name, version, `repository` (the planned home), `livesAt` (where it sits today), `needs`, and only the directories that exist, each declared with its files in one commit.
 - Record it: `workflow_complete` with `node: "Task_Declare"`.
 - next: → `Task_Grow` (2 · Grow it in place)
 
-### 4. 2 · Grow it in place (`Task_Grow`)
+### 3. 2 · Grow it in place (`Task_Grow`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `sub-kg-lifecycle`.
@@ -56,23 +37,19 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Record it: `workflow_complete` with `node: "Task_Grow"`.
 - next: → `Task_DecideLeave` (Should it leave now?)
 
-### 5. Should it leave now? (`Task_DecideLeave`)
+### 4. Should it leave now? (`Task_DecideLeave`)
 
 - Who: the `Administrator (owner)` lane (role `administrator`).
 - Skill: `sub-kg-lifecycle`.
 - What: The owner decides, from what is measured, whether the sub-KG starts staging for separation now.
 - A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Call_BeanClose_6` (Close the bean), → `Task_PushDown` (3 · Push generic down first)
+- next: → `End_Stays` (Stays in place), → `Task_PushDown` (3 · Push generic down first)
 
-### 6. Close the bean (`Call_BeanClose_6`)
+## Done — Stays in place (`End_Stays`)
 
-- Who: the `Administrator (owner)` lane (role `administrator`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Stays` (Stays in place)
+- The instance completes here: The sub-KG stays staged in the host. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 7. 3 · Push generic down first (`Task_PushDown`)
+### 5. 3 · Push generic down first (`Task_PushDown`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `graph-detanglement`.
@@ -80,11 +57,7 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Record it: `workflow_complete` with `node: "Task_PushDown"`.
 - next: → `Task_Seam` (4 · Route every climb through platform.ts)
 
-## Done — Stays in place (`End_Stays`)
-
-- The instance completes here: The sub-KG stays staged in the host. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 8. 4 · Route every climb through platform.ts (`Task_Seam`)
+### 6. 4 · Route every climb through platform.ts (`Task_Seam`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `sub-kg-lifecycle`.
@@ -99,7 +72,7 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
   - «red» → `Task_Seam` (4 · Route every climb through platform.ts)
   - «green» → `Task_Rehearse` (5 · Rehearse self-contained)
 
-### 9. 5 · Rehearse self-contained (`Task_Rehearse`)
+### 7. 5 · Rehearse self-contained (`Task_Rehearse`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `sub-kg-lifecycle`.
@@ -112,18 +85,14 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Green with only the layer and what it needs present goes on.
 - Call `workflow_complete` with `node: "GW_Alone"` and `outcome` set to the label that holds:
   - «red: an unseen climb» → `Task_Seam` (4 · Route every climb through platform.ts)
-  - «could not run» → `Call_BeanClose_7` (Close the bean)
+  - «could not run» → `End_Unknown` (UNKNOWN: stop. Not clean)
   - «green» → `Task_Report` (6 · Report what would move, and how it undoes)
 
-### 10. Close the bean (`Call_BeanClose_7`)
+## Done — UNKNOWN: stop. Not clean (`End_Unknown`)
 
-- Who: the `Build pipeline` lane (role `build-pipeline`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Unknown` (UNKNOWN: stop. Not clean)
+- The instance completes here: The rehearsal could not run. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 11. 6 · Report what would move, and how it undoes (`Task_Report`)
+### 8. 6 · Report what would move, and how it undoes (`Task_Report`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `deletion-requires-confirmation`.
@@ -131,47 +100,35 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Record it: `workflow_complete` with `node: "Task_Report"`.
 - next: → `Task_ConfirmCreate` (7 · Owner confirms: create the repository)
 
-## Done — UNKNOWN: stop. Not clean (`End_Unknown`)
-
-- The instance completes here: The rehearsal could not run. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 12. 7 · Owner confirms: create the repository (`Task_ConfirmCreate`)
+### 9. 7 · Owner confirms: create the repository (`Task_ConfirmCreate`)
 
 - Who: the `Administrator (owner)` lane (role `administrator`).
 - Skill: `deletion-requires-confirmation`.
 - What: Creating a repository is visible outside this one and is not undone by a revert.
 - A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Call_BeanClose` (Close the bean), → `Task_CreateRepo` (8 · Create the repository)
-
-### 13. Close the bean (`Call_BeanClose`)
-
-- Who: the `Administrator (owner)` lane (role `administrator`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Declined` (Staged, ready to leave)
-
-### 14. 8 · Create the repository (`Task_CreateRepo`)
-
-- Who: the `Administrator (owner)` lane (role `administrator`).
-- Skill: `sub-kg-lifecycle`.
-- What: The owner creates the repository, or authorises the agent that has the permission to; when that agent is in another environment, the hand-over is one bean and one sentence (agent-handoff).
-- Record it: `workflow_complete` with `node: "Task_CreateRepo"`.
-- next: → `GW_SeedReady` (Ready to seed?)
+- next: → `End_Declined` (Staged, ready to leave), → `Task_CreateRepo` (8 · Create the repository)
 
 ## Done — Staged, ready to leave (`End_Declined`)
 
 - The instance completes here: Not yet. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 10. 8 · Create the repository (`Task_CreateRepo`)
+
+- Who: the `Administrator (owner)` lane (role `administrator`).
+- Skill: `sub-kg-lifecycle`.
+- What: The owner creates the repository, or authorises the agent that has the permission to; when that agent is in another environment, the hand-over is one work item and one sentence (agent-handoff).
+- Record it: `workflow_complete` with `node: "Task_CreateRepo"`.
+- next: → `GW_SeedReady` (Ready to seed?)
 
 ### Decide — Ready to seed? (`GW_SeedReady`)
 
 - Asked at seed time, because the tree has moved since the rehearsal: every open pull request over the layer when the copy is taken is orphaned.
 - Computed by the DMN table `decisions/seed-readiness-gate.dmn#Decision_SeedReadiness`: call `workflow_complete` with `node: "GW_SeedReady"` and the `facts` it reads — the table returns the branch; pass no `outcome`.
   - «not yet» → `Task_Drain` (Drain: land, close or re-target the open PRs)
-  - «unknown» → `Call_BeanClose_4` (Close the bean)
+  - «unknown» → `End_SeedUnknown` (UNKNOWN: do not seed. Not clean)
   - «settled» → `Task_Seed` (9 · Copy the staged contents in, with history)
 
-### 15. Drain: land, close or re-target the open PRs (`Task_Drain`)
+### 11. Drain: land, close or re-target the open PRs (`Task_Drain`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `kg-separation`.
@@ -180,27 +137,19 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Record it: `workflow_complete` with `node: "Task_Drain"`.
 - next: → `GW_SeedReady` (Ready to seed?)
 
-### 16. Close the bean (`Call_BeanClose_4`)
+## Done — UNKNOWN: do not seed. Not clean (`End_SeedUnknown`)
 
-- Who: the `Build pipeline` lane (role `build-pipeline`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_SeedUnknown` (UNKNOWN: do not seed. Not clean)
+- The instance completes here: A readiness criterion could not be decided. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 17. 9 · Copy the staged contents in, with history (`Task_Seed`)
+### 12. 9 · Copy the staged contents in, with history (`Task_Seed`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `sub-kg-lifecycle`.
 - What: `git subtree split --prefix=<name>` in the host, then the split branch added to the new repository on a branch, as a draft pull request, never straight to main.
 - Record it: `workflow_complete` with `node: "Task_Seed"`.
-- next: → `Task_Repoint` (10 · Re-point: livesAt, seam, submodule or subscription)
+- next: → `Task_Repoint` (10 · Re-point: livesAt, seam, mount or subscription)
 
-## Done — UNKNOWN: do not seed. Not clean (`End_SeedUnknown`)
-
-- The instance completes here: A readiness criterion could not be decided. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 18. 10 · Re-point: livesAt, seam, submodule or subscription (`Task_Repoint`)
+### 13. 10 · Re-point: livesAt, seam, mount or subscription (`Task_Repoint`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `sub-kg-lifecycle`, `upstream-version-adoption`.
@@ -208,7 +157,7 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 - Record it: `workflow_complete` with `node: "Task_Repoint"`.
 - next: → `Task_FreshClone` (11 · Verify on a fresh clone)
 
-### 19. 11 · Verify on a fresh clone (`Task_FreshClone`)
+### 14. 11 · Verify on a fresh clone (`Task_FreshClone`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `sub-kg-lifecycle`.
@@ -220,56 +169,32 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 
 - Green goes to the owner.
 - Call `workflow_complete` with `node: "GW_Fresh"` and `outcome` set to the label that holds:
-  - «red» → `Task_Repoint` (10 · Re-point: livesAt, seam, submodule or subscription)
-  - «could not run» → `Call_BeanClose_2` (Close the bean)
+  - «red» → `Task_Repoint` (10 · Re-point: livesAt, seam, mount or subscription)
+  - «could not run» → `End_FreshUnknown` (UNKNOWN: stop. Not clean)
   - «green» → `Task_ConfirmCutover` (12 · Owner confirms: freeze the in-repo copy)
-
-### 20. Close the bean (`Call_BeanClose_2`)
-
-- Who: the `Build pipeline` lane (role `build-pipeline`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_FreshUnknown` (UNKNOWN: stop. Not clean)
-
-### 21. 12 · Owner confirms: freeze the in-repo copy (`Task_ConfirmCutover`)
-
-- Who: the `Administrator (owner)` lane (role `administrator`).
-- Skill: `deletion-requires-confirmation`.
-- What: The agent reports the files that would move, their size, the new repository and the commit the copy matches, then asks: (1) freeze it in the kept trashcan now, (2) keep in place until the first release, (3) show the file list first.
-- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Call_BeanClose_3` (Close the bean), → `Task_Cutover` (13 · Cutover: freeze the copy in the kept trashcan)
 
 ## Done — UNKNOWN: stop. Not clean (`End_FreshUnknown`)
 
 - The instance completes here: The fresh clone could not be verified. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 22. Close the bean (`Call_BeanClose_3`)
-
-- Who: the `Administrator (owner)` lane (role `administrator`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Kept` (Consumed; in-repo copy kept)
-
-### 23. 13 · Cutover: freeze the copy in the kept trashcan (`Task_Cutover`)
+### 15. 12 · Owner confirms: freeze the in-repo copy (`Task_ConfirmCutover`)
 
 - Who: the `Administrator (owner)` lane (role `administrator`).
 - Skill: `deletion-requires-confirmation`.
-- What: Only on the owner's answer (1) at step 12.
-- Record it: `workflow_complete` with `node: "Task_Cutover"`.
-- next: → `Call_BeanClose_5` (Close the bean)
+- What: The agent reports the files that would move, their size, the new repository and the commit the copy matches, then asks: (1) freeze it in the kept trashcan now, (2) keep in place until the first release, (3) show the file list first.
+- A subprocess (`Process_AskThePerson`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `End_Kept` (Consumed; in-repo copy kept), → `Task_Cutover` (13 · Cutover: freeze the copy in the kept trashcan)
 
 ## Done — Consumed; in-repo copy kept (`End_Kept`)
 
 - The instance completes here: The host consumes the new repository and keeps its own copy, as the owner chose. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 24. Close the bean (`Call_BeanClose_5`)
+### 16. 13 · Cutover: freeze the copy in the kept trashcan (`Task_Cutover`)
 
 - Who: the `Administrator (owner)` lane (role `administrator`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- Skill: `deletion-requires-confirmation`.
+- What: Only on the owner's answer (1) at step 12.
+- Record it: `workflow_complete` with `node: "Task_Cutover"`.
 - next: → `End_Separated` (Separated)
 
 ## Done — Separated (`End_Separated`)

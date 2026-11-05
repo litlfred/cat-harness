@@ -24,18 +24,10 @@ puts the question, and **how the answer gets back**.
 
 ## Why
 
-Owner, 2026-10-31: *"sublings not raising cards to main. update process/skills
-when agent spawn is run in interactive agent-human discussion that that sibling
-of discussion agent will make sure to pass card/structured Q&A/context/.. back
-to the dsicussion agent with the human. if other fedbcak mechanism in play like
-tools such as google sheets that can enage as well then should also be avialbe
-to use"* (cat-harness#861).
-
-That day several sibling threads posted decision cards only in their own
-thread. The person was in the project chat, talking with the coordinator, and
-saw none of them until the coordinator found each one and relayed it by hand.
-A card nobody sees is a decision that stalls, and one relayed by
-reconstruction is the 2026-09-22 failure in `interaction-modality` again.
+A card posted only in a sibling's own thread is not seen by the person, who is
+talking with the discussion agent elsewhere; the decision stalls, or reaches
+the person only by reconstruction. A feedback channel in play (a review sheet,
+an issue) is used as well.
 
 ## The two roles
 
@@ -130,7 +122,7 @@ and [`output.schema.json`](../../../schemas/skills/hand-back-to-discussion/outpu
 
 ## Anti-patterns
 
-- **A card only in the sibling's thread.** The failure this skill exists for.
+- **A card only in the sibling's thread.**
 - **A hand-back that says "see my thread".** A pointer is not the question.
 - **The discussion agent rewriting the options.** The sibling did the
   analysis; reword for the person if needed, but keep the letters and the

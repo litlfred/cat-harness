@@ -89,14 +89,11 @@ fallback). Later entries override earlier for the same msgid.
 
 ## The exported GRAPH per locale
 
-The pipeline used to end at the rendered page: a `.po` was injected into a
-diagram and an SVG rendered per locale, while the graph a machine consumes was
-produced once, in the source language. `bun run cat kg:locale` closes that
-(`kg:locale:bootstrap` for the nested instance, `kg:locale:check` in the gate
-set). Bean `jmpb`.
+The graph a machine consumes is translated per locale, not only the rendered
+page: `bun run cat kg:locale` writes it (`kg:locale:bootstrap` for the nested
+instance, `kg:locale:check` in the gate set).
 
-Four rules, and the first is the owner's and is the one an implementation
-breaks by default.
+Four rules; an implementation breaks the first by default.
 
 **1. The core graph must not reference its translations.** No
 `hasTranslation`, no `availableLocales`, no `translationOf`, no per-locale
@@ -120,25 +117,18 @@ and fall-through is the normal case, because `parsePo` takes only non-empty
 document's declared `sourceLanguage`. Fall-through is then visible *in the
 data* rather than inferable from a coverage number.
 
-**4. A catalogue is scoped to the asset it was extracted from.** This one was
-learned the expensive way. The first implementation merged every `.po` under a
-locale and reported *"1 applicable msgid, 40 substitutions"* in three
-locales — the msgid was **`"yes"` → `"oui"`, from `index.po`, a docs page**,
-matching 40 BPMN gateway branch labels. `oui` is the right French for that
-label, which is exactly why it had to be caught by provenance rather than by
-reading the output: the result looked right while the report claimed diagram
-translation was under way in three locales and **no diagram catalogue existed
-in any of them**.
-
-So a `.po` is read only when its stem names an asset the graph projects. A
+**4. A catalogue is scoped to the asset it was extracted from.** Merging every
+`.po` under a locale lets a docs page's `"yes"` → `"oui"` translate every BPMN
+gateway branch label — output that looks right while no diagram catalogue
+exists, so it can only be caught by provenance, not by reading the output. So
+a `.po` is read only when its stem names an asset the graph projects. A
 residual is accepted and named: a msgid from diagram A applies to an identical
 string on a node from diagram B — not a new assumption, since `kg-export`
 already dedupes lane-derived `Role` nodes by lane name across every diagram.
 
 **What the gate is not.** `kg:locale:check` says nothing about how much is
-translated. Measured 2026-09-22: 58 of this instance's 62 `.pot` templates are
-diagrams and **none has a `.po` in any locale**, so the exporter writes nothing
-and reports every locale saying so. A locale with nothing to say is
+translated. Where a diagram template has no `.po` in a locale, the exporter
+writes nothing and reports the locale saying so. A locale with nothing to say is
 **reported**, never a missing file a reader cannot tell from a broken build;
 `--all-locales` emits a source-language copy per locale for the other reading.
 
@@ -269,7 +259,7 @@ gap that says it is a gap — a reader who sees the tick stops asking.
 ### The agentic round trip — an INSTANCE of untainted verification
 
 **The discipline is generic and lives in
-[`untainted-verification`](../../sdlc/sdlc-core/untainted-verification.md)**: the two parties, why
+[`untainted-verification`](../../../sdlc/skills/sdlc-core/untainted-verification.md)**: the two parties, why
 neither may see what would let it shortcut, the `TOOLS_USED` declaration that
 is recorded rather than assumed, which party rules, how both are written as
 witnesses, the `model` / `model_source` rule, and the two traps — a sweep
@@ -408,7 +398,7 @@ says nothing about Arabic. Every one of those is a test in
 `translation-block-qa.test.ts`.
 
 The file is hand-authored and has no POT — `schemas/content/translation.ts` declares
-that slot, and `TranslationNode.potFile` is optional for exactly this. Bean
+that slot, and `TranslationNode.potFile` is optional for exactly this. Work item
 `he0e`.
 
 **`available_locales` includes the SOURCE language, and that is not a
@@ -422,40 +412,29 @@ language, because there is no `translations/en/` and there never will be. Use
 `localesAvailableFor()` in `pipeline/translation-index.ts` to go from
 one to the other.
 
-Both halves of the corpus must stamp the same meaning. They did not until issue
-#687: the generator stamped the PO-derived list while the hand-authored
-translated pages stamped the full set, so `docs/fr/index.md` rendered a badge
-reading `6/5 languages` — a numerator larger than its denominator, which is the
-shape a disagreement about what a field means takes when it finally surfaces.
+Both halves of the corpus — generated and hand-authored translated pages —
+must stamp the same meaning, or a badge reads a numerator larger than its
+denominator.
 
-The `qa_translation_*` keys are **gone**, along with the badge that read them.
-They were stamped from a node-level round trip whose back-translation map held
-6 entries for 36 strings, so every string nobody had back-translated was
-published as semantic drift. Per-block QA replaces them: the `TR` icon beside
-each block opens `<stem>.<locale>.translation-qa.json`, where a verdict names
-the witness that reached it.
+**Do not stamp `qa_translation_*` keys**: stamped from a node-level round
+trip, they publish every string nobody back-translated as semantic drift.
+Per-block QA is the record: the `TR`
+icon beside each block opens `<stem>.<locale>.translation-qa.json`, where a
+verdict names the witness that reached it.
 
 `docs-ui.js` injects the unverified-translation warning itself, from the page's
-own front matter. **There is no include to add**:
-`_includes/translation-warning.html` is deleted, not deprecated, as is
-`_includes/language-selector.html` — `buildLanguageBar` renders the six UN
-languages and greys out the ones not yet translated, which the include only
-promised in a comment. (`qa-translation-badge.html` went the same way: it
-rendered the removed numbers.)
+own front matter. **There is no include to add**: `buildLanguageBar` renders
+the six UN languages and greys out the ones not yet translated. Do not add a
+`translation-warning.html`, `language-selector.html` or
+`qa-translation-badge.html` include.
 
 ## The navbar filters by locale
 {: #the-navbar-filters-by-locale }
 
-Reported by the owner, 2026-09-19:
-
-> translations are still not handled right. i have english selected, but i see
-> the translated pages in LHS navbar. the `fr/` `ru/` etc. sub-dirs need to be
-> explicitly labeled as translated content in the graph and not shown in navbar
-> unless that locale is selected. (if not present, fall back to source
-> language)
-
-Three rules, and each is enforced somewhere different because each can break
-somewhere different.
+Translated pages are labelled as translated content in the graph and are not
+shown in the navbar unless their locale is selected; with no translation, the
+navbar falls back to the source language. Three rules, and each is enforced
+somewhere different because each can break somewhere different.
 
 ### 1. A page is a translation because the PAGE says so
 
@@ -471,32 +450,22 @@ translation_source: index.md          # which page it expresses
 with no `lang` is the instance's **source language** — absent means the
 default, not unknown.
 
-**Never match a directory name against a list of language subtags.** That is
-the *"distinguishable by extension … a coincidence of the current layout, not a
-contract"* defect #263 named, moved to directory names, and it is wrong in both
-directions: a folio with a `no/` chapter (Norwegian, or the English word) is
+**Never match a directory name against a list of language subtags.** A
+layout coincidence is not a contract, and it is wrong in both directions: a folio with a `no/` chapter (Norwegian, or the English word) is
 silently hidden from its own navbar, and a `pt-BR/` or `translated-fr/`
 directory is silently shown as source. Neither announces itself — the navbar
 simply has the wrong entries in it. Put the French page at `accueil-fr.md`
 beside its source and it is indexed correctly; put an English page in a folder
 called `fr/` and it is left alone.
 
-**There is deliberately no `translated-content` graph typology.** A first draft of
-PR #351 added one, with a `locale` field on `ContentDirectory` and one
-`cat-harness.json` entry per locale subtree — ten entries for five locales
-across two subtrees. It worked and it was the wrong axis: it restated what all
-ten files already said, and it grew as O(locales × subtrees). The owner's
-framing is what settles it:
-
-> narrative/audio/visual content with text should be translatable. its not so
-> much the node schema itself but its content (e.g. markdown, bpmn) should be
-> translatable.
-
-Translatability is a property of a **format within a content type**, and that
-model already exists: each instance that owns a content type declares, under
-`contentTranslations` in its own `<instance>.json`, which formats have an
-extract/inject pair, and `schemas/library/translation-tools.ts` collects them (bean
-`0r7u`) — Markdown, LaTeX, PlantUML,
+**There is deliberately no `translated-content` graph typology.** A
+declaration per locale subtree restates what every page already says and
+grows as O(locales × subtrees). What is translatable is a node's content
+(Markdown, BPMN, …), not its schema: translatability is a property of a
+**format within a content type**. Each instance that owns a content type
+declares, under `contentTranslations` in its own `<instance>.json`, which
+formats have an extract/inject pair, and
+`schemas/library/translation-tools.ts` collects them — Markdown, LaTeX, PlantUML,
 SVG, ArchiMate, Excel, BPMN, FSH, FHIR JSON — and `isTranslatable(contentType,
 extension)` is the predicate. The index asks it rather than inventing a second
 answer, so a `.json` beside a page is data and never a language.
@@ -514,8 +483,8 @@ the check refuses it.
 
 just-the-docs builds the navbar **at build time**, from front matter, on a
 static site serving the same HTML to every reader. It cannot know which locale
-anybody chose, so a translated page left in the nav is in it **for everybody** —
-which is the reported bug exactly. A script can swap a nav item; it cannot
+anybody chose, so a translated page left in the nav is in it **for
+everybody**. A script can swap a nav item; it cannot
 un-render one without a flash of the wrong nav first.
 
 So the translations leave the static nav entirely, and a reader with no
@@ -679,9 +648,8 @@ handle each format. The declaration belongs to the instance that OWNS the
 content type, under `contentTranslations` in its `<instance>.json`;
 `schemas/library/translation-tools.ts` collects every present instance's profiles and
 refuses a content type declared twice. A module or diagram path in a profile
-resolves from the declaring instance, then down its `needs` chain. Until
-2026-10-06 this was a literal table in cat-harness, naming four content types
-owned by layers above it (bean `0r7u`). Today's profiles:
+resolves from the declaring instance, then down its `needs` chain. The
+profiles:
 
 | Content type | Formats | RTL |
 |---|---|---|
@@ -719,4 +687,4 @@ review or sign-off carries it: one deep link per changed page, to the anchor
 where the change sits, with the same page on main as *before*. Where the skill
 declares an output contract, they go in its `stagingLinks` field. The rule, and
 where the page list comes from:
-[`staging-review`](../../sdlc/sdlc-core/staging-review.md) §"The deep-link rule".
+[`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §"The deep-link rule".

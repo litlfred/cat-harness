@@ -34,10 +34,10 @@ bun run cat test:e2e      # e2e (test:e2e)
 задач.
 
 ```sh
-scripts/install-beans.sh
+cat-harness-tools/scripts/install-beans.sh
 beans list
 beans create "<title>"
-beans <id> --status in-progress   # зарезервируйте задачу перед началом работы
+bun run cat beans:claim <id>   # зарезервируйте задачу перед началом работы
 ```
 
 `beans ≠ sidecars`: никогда не выполняйте `beans create` для массовых автоматически
@@ -58,15 +58,15 @@ Gemini CLI, Antigravity, Cursor, Copilot). `CLAUDE.md` / `GEMINI.md` — тон�
   `schemas/skills/<skill>/` и запускайте повторную генерацию:
 
   ```sh
-  bun run scripts/gen-schema-docs.ts
+  bun run cat-harness-tools/scripts/gen-schema-docs.ts
   ```
 
 - **Инструкции навыков** (`docs/reference/skill-instructions/*.md`) также
   генерируются автоматически — никогда не редактируйте их вручную. Редактируйте тела навыков в
-  `skills/authoring/content-lifecycle/*.md` или `src/skills/*.md` и запускайте повторную генерацию:
+  `skills/`, `sdlc/skills/` и `work-plan/skills/` и запускайте повторную генерацию:
 
   ```sh
-  bun run scripts/gen-skill-docs.ts
+  bun run cat-harness-tools/scripts/gen-skill-docs.ts
   ```
 
 - **Справочник по TypeScript API** (`/api/`) генерируется с помощью TypeDoc в CI.
@@ -84,7 +84,7 @@ bundle exec jekyll serve
 
 ## Отправка изменений
 
-Проверка → подтверждение возможности слияния → push → (только если попросят) открытие PR. См.
-`skills/sdlc/sdlc-core/prepare-merge.md`. Держите **формализм фреймворка отдельно
+Откройте PR с первого коммита; перед слиянием: проверка → подтверждение возможности слияния → push. См.
+`sdlc/skills/sdlc-core/prepare-merge.md`. Держите **формализм фреймворка отдельно
 от контента** — контент должен находиться в собственном репозитории, а любой контент
 в этой документации носит чисто иллюстративный характер.

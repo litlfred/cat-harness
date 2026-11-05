@@ -29,10 +29,6 @@ msgstr "Начало работы"
 msgid "1. \"Create a folio\" is five different requests"
 msgstr "1. «Создать фолио» — это пять разных запросов"
 
-#: docs/start/getting-started.md:24
-msgid "Say that sentence to five people and you will get five different pieces of work. The agent's first job is not to start; it is to find out which one you meant."
-msgstr "Скажите эту фразу пяти людям, и вы получите пять разных задач. Первая задача агента — не начать работу, а выяснить, какую именно вы имели в виду."
-
 #: docs/start/getting-started.md:27
 msgid "you mean"
 msgstr "вы имеете в виду"
@@ -92,10 +88,6 @@ msgstr "целое пустое фолио, а глава так и остала
 #: docs/start/getting-started.md:33
 msgid "Something you would rather describe in your own words"
 msgstr "Что-то, что вы предпочли бы описать своими словами"
-
-#: docs/start/getting-started.md:35
-msgid "The fourth row is the one worth pausing on. It is not an error on your part — \"folio\" is an unfamiliar word, and asking for one when you meant a chapter in one is the most natural mistake available. An agent that scaffolds on it has produced an empty repository and not the paragraph you asked for."
-msgstr "Четвертая строка — та, на которой стоит задержаться. Это не ошибка с вашей стороны — «фолио» — непривычное слово, и запросить его, имея в виду главу внутри него, — самая естественная оговорка. Агент, развернувший каркас на основе этого запроса, создаст пустой репозиторий, а не абзац текста, который вы просили."
 
 #: docs/start/getting-started.md:40
 msgid "2. How the agent decides — and why it is a table, not a judgement"
@@ -172,14 +164,6 @@ msgstr "новое фолио здесь"
 #: docs/start/getting-started.md:89
 msgid "Why two rules return \"ask\", and why that is the point"
 msgstr "Почему два правила возвращают «ask», и почему именно в этом вся суть"
-
-#: docs/start/getting-started.md:96
-msgid "That matters more than it sounds:"
-msgstr "Это значит гораздо больше, чем может показаться:"
-
-#: docs/start/getting-started.md:100
-msgid "An agent cannot route to a branch the table did not return, so the question becomes obligatory rather than polite. An agent left to decide whether to ask will, under any pressure to seem helpful, decide not to — and the three ambiguous cases are exactly where guessing is most expensive."
-msgstr "Агент не может перейти к ветке, которую таблица не вернула, поэтому вопрос становится обязательным, а не просто вопросом вежливости. Агент, которому предоставлено решать, спрашивать ли, под любым давлением желания казаться полезным решит этого не делать — а три неоднозначных случая — это как раз те ситуации, где догадки обходятся дороже всего."
 
 #: docs/start/getting-started.md:110
 msgid "Changing it"
@@ -301,10 +285,6 @@ msgstr "Найти и загрузить инструкции навыка"
 msgid "6. Converting a repository you already have"
 msgstr "6. Преобразование уже имеющегося у вас репозитория"
 
-#: docs/start/getting-started.md:193
-msgid "The third one is deliberate. A classifier that forces every file into one of two buckets has an accuracy nobody can assess, and delivers its mistakes as moved files. This one tells you what it could not place and lets you decide."
-msgstr "Третья категория выделена намеренно. Классификатор, принудительно распределяющий каждый файл по одной из двух категорий, обладает точностью, которую никто не может оценить, и выдает свои ошибки в виде перемещенных файлов. Этот классификатор сообщает вам, что он не смог определить, и дает вам возможность решить."
-
 #: docs/start/getting-started.md:197
 msgid "Then three questions, all answerable by picking, all asked per directory rather than per file:"
 msgstr "Затем задаются три вопроса, на каждый из которых можно ответить выбором варианта, и все они задаются для каждого каталога, а не для каждого файла:"
@@ -352,10 +332,6 @@ msgstr "could not check"
 #: docs/start/getting-started.md:230
 msgid "no address could be derived, nothing was probed, or the request failed"
 msgstr "адрес не удалось определить, опрос не проводился или запрос завершился ошибкой"
-
-#: docs/start/getting-started.md:232
-msgid "The third is not a softer version of the second, and the agent will not tell you \"it should be up shortly\" on the strength of it. A measured 404 is evidence; a failed request is the absence of evidence, and an author who is told the wrong one goes looking for a site that was never going to appear."
-msgstr "Третье состояние не является смягченной версией второго, и агент не станет говорить вам «сайт скоро появится» на его основании. Зафиксированная ошибка 404 — это свидетельство; неудавшийся запрос — это отсутствие свидетельств, а автор, которому сообщили неверный статус, отправится искать сайт, который и не должен был появиться."
 
 #: docs/start/getting-started.md:242
 msgid "8. Make the landing page yours"
@@ -412,10 +388,6 @@ msgstr "нет фона"
 #: docs/start/getting-started.md:307
 msgid "shows the words alone"
 msgstr "показывает только текст"
-
-#: docs/start/getting-started.md:309
-msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
-msgstr "Средняя строка сделана намеренно. Текст, размещенный наугад, попадет прямо на кота, поэтому необъявленная область означает «не накладывать текст поверх», а не «сойдет в любом месте». А фолио вовсе без графики — это нормальное явление, а не поломка."
 
 #: docs/start/getting-started.md:342
 msgid "Next steps"
@@ -549,3 +521,24 @@ msgstr "Следующие шаги"
 
 #~ msgid "Architecture — adapters, skills, and the block model"
 #~ msgstr "Архитектура — адаптеры, навыки и блочная модель"
+
+#~ msgid "Say that sentence to five people and you will get five different pieces of work. The agent's first job is not to start; it is to find out which one you meant."
+#~ msgstr "Скажите эту фразу пяти людям, и вы получите пять разных задач. Первая задача агента — не начать работу, а выяснить, какую именно вы имели в виду."
+
+#~ msgid "The fourth row is the one worth pausing on. It is not an error on your part — \"folio\" is an unfamiliar word, and asking for one when you meant a chapter in one is the most natural mistake available. An agent that scaffolds on it has produced an empty repository and not the paragraph you asked for."
+#~ msgstr "Четвертая строка — та, на которой стоит задержаться. Это не ошибка с вашей стороны — «фолио» — непривычное слово, и запросить его, имея в виду главу внутри него, — самая естественная оговорка. Агент, развернувший каркас на основе этого запроса, создаст пустой репозиторий, а не абзац текста, который вы просили."
+
+#~ msgid "That matters more than it sounds:"
+#~ msgstr "Это значит гораздо больше, чем может показаться:"
+
+#~ msgid "An agent cannot route to a branch the table did not return, so the question becomes obligatory rather than polite. An agent left to decide whether to ask will, under any pressure to seem helpful, decide not to — and the three ambiguous cases are exactly where guessing is most expensive."
+#~ msgstr "Агент не может перейти к ветке, которую таблица не вернула, поэтому вопрос становится обязательным, а не просто вопросом вежливости. Агент, которому предоставлено решать, спрашивать ли, под любым давлением желания казаться полезным решит этого не делать — а три неоднозначных случая — это как раз те ситуации, где догадки обходятся дороже всего."
+
+#~ msgid "The third one is deliberate. A classifier that forces every file into one of two buckets has an accuracy nobody can assess, and delivers its mistakes as moved files. This one tells you what it could not place and lets you decide."
+#~ msgstr "Третья категория выделена намеренно. Классификатор, принудительно распределяющий каждый файл по одной из двух категорий, обладает точностью, которую никто не может оценить, и выдает свои ошибки в виде перемещенных файлов. Этот классификатор сообщает вам, что он не смог определить, и дает вам возможность решить."
+
+#~ msgid "The third is not a softer version of the second, and the agent will not tell you \"it should be up shortly\" on the strength of it. A measured 404 is evidence; a failed request is the absence of evidence, and an author who is told the wrong one goes looking for a site that was never going to appear."
+#~ msgstr "Третье состояние не является смягченной версией второго, и агент не станет говорить вам «сайт скоро появится» на его основании. Зафиксированная ошибка 404 — это свидетельство; неудавшийся запрос — это отсутствие свидетельств, а автор, которому сообщили неверный статус, отправится искать сайт, который и не должен был появиться."
+
+#~ msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
+#~ msgstr "Средняя строка сделана намеренно. Текст, размещенный наугад, попадет прямо на кота, поэтому необъявленная область означает «не накладывать текст поверх», а не «сойдет в любом месте». А фолио вовсе без графики — это нормальное явление, а не поломка."

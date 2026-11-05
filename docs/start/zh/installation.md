@@ -16,10 +16,9 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 ---
 
-> 安装只是相对容易的一半。在**推送之前**需要运行的是
-> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }}) ——
-> `bun test` 通过并不代表关卡通过，而且关卡列表是从 CI
-> 工作流中派生出来的，而非写死的规程。如果你是在已有仓库之上搭建
+> 在**推送之前**需要运行的是
+> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }})；
+> `bun test` 通过并不代表关卡通过，因为关卡列表是从 CI 工作流中派生出来的。如果你是在已有仓库之上搭建
 > folio-assistant，请先阅读
 > [`repo-conversion`]({{ '/reference/skill-instructions/repo-conversion.html' | relative_url }})。
 
@@ -73,7 +72,7 @@ cat-harness-tools\scripts\upload-to-uploads.bat https://example.org/guideline.pd
 
 ### 在 Linux/macOS 上，也有一个脚本
 
-`cat-harness-tools/scripts/start-folio-assistant.sh` 会在 Bun 缺失时自动安装，然后启动服务器；`cat-harness-tools/adapters/mcp-server/install.sh` 是一个更完整的安装程序，同时也涵盖了 TeX Live。两者在 2026-09-21 之前都未曾记录在文档中（[#740](https://github.com/litlfred/folio-assistant/issues/740)）——这也正是本节存在的原因。
+`cat-harness-tools/scripts/start-folio-assistant.sh` 会在 Bun 缺失时自动安装，然后启动服务器；`cat-harness-tools/adapters/mcp-server/install.sh` 是一个更完整的安装程序，同时也涵盖了 TeX Live。
 
 ## 检查你的环境
 

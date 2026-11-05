@@ -29,10 +29,9 @@ the dependency arrow to what includes it.
 ## What is in here
 
 The authoritative list is [`cat-harness.json`](cat-harness.json) — every directory this
-instance declares, and the kind of graph each one holds. Read it rather than a
-list in this file: a list here would be a second answer, free to disagree with
-the first the day a directory moves. Four entries are worth naming because a
-reader looks for them by name:
+instance declares, and the kind of graph each one holds; a second list here
+could disagree with it when a directory moves. Four entries a reader looks for
+by name:
 
 | | |
 |---|---|
@@ -43,7 +42,7 @@ reader looks for them by name:
 
 ## Reading it as a person, or as an agent
 
-Both entries exist and they are different files on purpose:
+There are two entry points:
 
 - **A person** starts here, then the
   [documentation site](https://litlfred.github.io/folio-assistant/) —
@@ -107,9 +106,7 @@ setup file, so there is nothing else to ask.
 
 An agent pointed at a repository that is not set up yet starts at
 [bootstrap's README](https://github.com/litlfred/bootstrap#readme), written for
-someone who knows none of the above. Why it is built this way, and the
-questions still open: [`docs/proposals/bootstrap.md`](docs/proposals/bootstrap.md)
-— kept and addressable, deliberately not published as a page.
+someone who knows none of the above.
 
 ## How a change gets published
 
@@ -117,8 +114,7 @@ The editing and publication processes are **BPMN 2.0 swimlane diagrams**, and
 they are executable rather than illustrations; the pictures are generated from
 them by `bun run cat render:bpmn`. The full walk-through, with the roles and the
 skill each activity uses, is the
-**[publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)**
-([published](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)).
+**[publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)**.
 
 **One proposed change to one content block — the HCI validation gate.** An
 authoring agent produces a **proposed** change, never a commit. It fans out
@@ -134,7 +130,7 @@ the editor; only an accepted change is written to the corpus.
 <img src="https://litlfred.github.io/folio-assistant/assets/img/workflows/draft-to-publication.svg" alt="BPMN swimlane diagram: corpus to draft publication, review team and SME sign-off, programme-manager authorisation, publication" width="100%">
 
 **One cycle of a folio, plan → retire.** Both diagrams above appear here as call
-activities, and the **work plan (beans)** lane runs through all three —
+activities, and the **work plan (work items)** lane runs through all three —
 claimed before work starts, updated with findings, resolved on commit — so a
 human and an agent read the same answer to *what is done, and what is next*.
 
@@ -206,7 +202,7 @@ instructions: [installation](docs/start/installation.md).
 | Tool | Purpose |
 |------|---------|
 | `folio_init` | Scaffold a new folio (runs before a folio has a content type) |
-| `work_plan_prime` | Surface the work-plan (beans) |
+| `work_plan_prime` | Surface the work-plan (work items) |
 | `check_dependencies` | Probe installed toolchains |
 | `skill_list` / `skill_fetch` | Discover + load skills |
 | `content_list` / `content_validate` / `content_build` | Lifecycle over the folio |
@@ -233,15 +229,6 @@ instructions: [installation](docs/start/installation.md).
 
 ---
 
-*Most of what this README says from "What it does" onwards was the checkout
-root's README until 2026-10-09, when that file became a rendered index of the
-instances (`bun run cat index:render`); the original is kept verbatim on the
-`fsh-guts` state branch (`separated/root-README.md`).*
-
 *`README.md` and [`AGENTS.md`](AGENTS.md) are declared assets of this instance
 ([`cat-harness.json`](cat-harness.json), roles `instance-readme` and
-`agent-instructions`). Until 2026-09-20 this instance declared the
-**repository's** two files as its own, so the file a reader opened first
-answered "what is this repository" and "what is this layer" at once, and
-`check:subgraph-coverage` reported nothing because the asset did resolve — to
-the wrong file's job. Issue #592.*
+`agent-instructions`).*

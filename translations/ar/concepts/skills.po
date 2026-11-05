@@ -28,14 +28,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Folio-Official: no\n"
 
-#: docs/concepts/skills.md:75
-msgid "✅ all four packages"
-msgstr "✅ جميع الحزم الأربع"
-
-#: docs/concepts/skills.md:74
-msgid "✅ lifecycle, agent, platform-bundle and folio-document-adapter skills; ⏳ authoring-math / authoring-who-smart-guidelines bodies are TBD (those packages ship the manifest + JSON definitions)"
-msgstr "✅ مهارات دورة الحياة، والوكيل، وحزمة المنصة، وfolio-document-adapter؛ ⏳ نصوص authoring-math / authoring-who-smart-guidelines قيد التحديد (TBD) (توفر تلك الحزم البيان الرسمي + تعريفات JSON)"
-
 #: docs/concepts/skills.md:68
 msgid "A skill is defined across a few layers — not a single file. For any skill:"
 msgstr "تُعرَّف المهارة عبر عدة طبقات — وليس في ملف واحد. وبالنسبة لأي مهارة:"
@@ -47,10 +39,6 @@ msgstr "الفاعل"
 #: docs/concepts/skills.md:116
 msgid "Adversarial review of arguments"
 msgstr "المراجعة النقدية والجدلية للحجج"
-
-#: docs/concepts/skills.md:166
-msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
-msgstr "تنسيق الوكلاء، وإطار عمل المراقب (watcher)، ومسار ضمان الجودة / التصيير / المراجع / المسرد، والتوثيق، والنشر — ينطبق على أي نوع محتوى."
 
 #: docs/concepts/skills.md:218
 msgid "Approve — it reports findings only"
@@ -381,10 +369,6 @@ msgstr "المصدر"
 msgid "Stage"
 msgstr "المرحلة"
 
-#: docs/concepts/skills.md:70
-msgid "Status"
-msgstr "الحالة"
-
 #: docs/concepts/skills.md:213
 msgid "System actors"
 msgstr "الفاعلون في النظام"
@@ -535,3 +519,15 @@ msgstr "أين توجد المهارات (وحالتها)"
 
 #~ msgid "WHO SMART Guidelines:"
 #~ msgstr "إرشادات WHO SMART:"
+
+#~ msgid "✅ all four packages"
+#~ msgstr "✅ جميع الحزم الأربع"
+
+#~ msgid "✅ lifecycle, agent, platform-bundle and folio-document-adapter skills; ⏳ authoring-math / authoring-who-smart-guidelines bodies are TBD (those packages ship the manifest + JSON definitions)"
+#~ msgstr "✅ مهارات دورة الحياة، والوكيل، وحزمة المنصة، وfolio-document-adapter؛ ⏳ نصوص authoring-math / authoring-who-smart-guidelines قيد التحديد (TBD) (توفر تلك الحزم البيان الرسمي + تعريفات JSON)"
+
+#~ msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
+#~ msgstr "تنسيق الوكلاء، وإطار عمل المراقب (watcher)، ومسار ضمان الجودة / التصيير / المراجع / المسرد، والتوثيق، والنشر — ينطبق على أي نوع محتوى."
+
+#~ msgid "Status"
+#~ msgstr "الحالة"

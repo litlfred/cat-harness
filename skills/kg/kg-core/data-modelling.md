@@ -15,21 +15,13 @@ allowed-tools: Read Grep Glob Bash
 > **What are the things, and what is true of each of them exactly once?**
 
 A model is wrong in a way no schema check can catch when a fact that belongs
-to one thing is written on another. That is not a style complaint. This
-repository has paid for it repeatedly and the shape is always the same:
-
-- `fallbackCapabilityId` said *what substitutes for `lean-toolchain`* on five
-  SKILLS. It is a fact about `lean-toolchain`. Five copies, and a change of
-  substitute could be made four times (bean `sym3`).
-- `fallbackRole` said *which role takes over* on a skill, when the BPMN
-  already said it executably. One fact, two places, nothing asserting they
-  agreed (bean `85e8`).
-- `roles:` said *who performs this skill* in 114 files, in a vocabulary that
-  resolved against nothing, for three months (bean `qif9`).
-
-Each was a field on the wrong entity, or a second copy of a fact that already
-had a home. **Modelling is the step that would have caught all three**, and
-it costs an afternoon against the weeks those took to unwind.
+to one thing is written on another. Typical shapes: a fact about a capability
+(*what substitutes for it*) copied onto every skill that uses it; a fact a BPMN
+diagram already states executably (*which role takes over*) repeated on a
+skill; a field naming performers in a vocabulary that resolves against
+nothing. Each is a field on the wrong entity, or a second copy of a fact that
+already has a home. Modelling first catches them, and costs far less than
+unwinding them later.
 
 ## The procedure
 
@@ -72,8 +64,8 @@ re-signature is an update or a second row. Write both. Where the answer is
 
 A derived fact stored is a cache, and an unvalidated cache is worse than no
 cache. If a value can be computed from the model, computing it is the
-declaration — see `85e8`, where the role a process falls back to was
-recoverable from the diagram that executes it.
+declaration — the role a process falls back to, for example, is recoverable
+from the diagram that executes it.
 
 ### 6. Declare it where a tool can read it
 
@@ -82,9 +74,8 @@ repository that means a graph typology in `<name>.json`, a Zod schema under the
 declared `schemas` directory, and a node kind that `kg-export` knows —
 `placement` is the skill that decides which.
 
-**And ship a reader in the same change.** Everything here that was only
-documentation went inert within weeks; the three examples at the top of this
-page are all of that kind. A field with no consumer is not a model, it is a
+**And ship a reader in the same change**, because a field that is only
+documentation goes inert. A field with no consumer is not a model, it is a
 comment with punctuation.
 
 ### 7. Model VARIATION as inheritance, and earn a new kind with BEHAVIOUR
@@ -96,10 +87,6 @@ types, or one type and an override?
 > something different. Everything else is an OVERRIDE on an inherited
 > default.**
 
-Owner's ruling, 2026-09-20: *"WHO should be able to override all theme
-properties, just defaults to inherited. if it needs to name a new kind it
-should if behaviour change."*
-
 So the default posture is **inherit everything, override anything**. A variant
 declares what it CHANGES; every unstated field comes from its parent. A variant
 that states no new behaviour is not a new kind, however different it looks.
@@ -110,7 +97,7 @@ thresholds are the same behaviour with different inputs — one kind. Different
 FIELDS, different units, or a field whose meaning changes — the reader must
 branch, and that is a kind.
 
-#### Worked, and it is worked because I got it wrong first
+#### Worked example: `Theme`
 
 `Theme` dresses three surfaces: sticky notes, a website, a print publication.
 
@@ -119,16 +106,13 @@ branch, and that is a kind.
 | `iris-web` vs the default web theme | **no** | different hex values, same fields. Nothing branches. An override. |
 | `publication` vs `sticky` | **yes** | a sticky theme's geometry is `{minWidth, padding, fontScale}` across `laptop \| mobile \| card`; the WHO style guide states `A4 \| A5 \| A5 landscape` with trim size and margin, and no column width anywhere in 66 sections. `minWidth` means "before the grid reflows" — a fixed page does not reflow. A renderer MUST branch. |
 
-The first draft reused `{minWidth, padding, fontScale}` for print, reading
-`minWidth` as trim width. It would have typechecked and meant nothing: a
-reader following the field name would have been told the wrong thing about a
-real publication. **A shape that typechecks is not a shape that models.**
+Reusing `{minWidth, padding, fontScale}` for print, reading `minWidth` as trim
+width, would typecheck and mean nothing. **A shape that typechecks is not a
+shape that models.**
 
 And the palette stays SHARED across all three kinds, which is the other half
-of the rule. `theme.ts` exists because 106 hardcoded hex colours became 22
-named properties; three kinds each with their own palette vocabulary would
-reintroduce that one level up — three spellings of "accent colour", free to
-disagree about what an accent is.
+of the rule: three kinds each with their own palette vocabulary would be three
+spellings of "accent colour", free to disagree about what an accent is.
 
 #### What inheritance costs, and what it must not hide
 
@@ -147,10 +131,6 @@ from, which is the failure the `uses[]` rule exists to prevent elsewhere.
 A relation between two entities is written on ONE of them. Write it on the
 entity that DEPENDS, pointing at the one it depends on. **A general, reused
 node never holds a field naming the things that use it.**
-
-Owner, 2026-09-23 (#1168): *"tasks are used to implement skills, skills
-should not know about tasks"* and *"voice external to a role. should not be in
-data model... need to flip arrows."*
 
 The test is the step-3 question applied to the relation: **if every user of
 this node disappeared, would the node still be complete?** A skill with no
@@ -182,8 +162,8 @@ is how a general node stays complete without naming its users.
 
 **Declare which nodes are general, and let the audit hold the line.** Which
 nodes are general is a modelling decision, so it is written down: the schema
-declaration's doc comment carries `@general`. Today that is Role, Skill,
-Requirement statement, Graph typology, Capability, Actor and Process (#1168, B5).
+declaration's doc comment carries `@general`. The general nodes are Role,
+Skill, Requirement statement, Graph typology, Capability, Actor and Process.
 `kg:audit`'s `arrow-direction` criterion then reports two things: a `@general`
 schema whose `@ref` names a declaration that is not general, and a BPMN
 `<folio:…>` element pointing from a process at anything but a skill, role,
@@ -195,8 +175,8 @@ is a claim about declared pointers only.
 the things a tool follows. A general node's prose can still name a
 dependent to explain itself. For example, a process's documentation may say
 "`feature-staging.yml` publishes the branch" so the reader knows why a step
-exists. The owner kept those explanations on 2026-09-24, since deleting them
-loses the reason a step exists (bean `epbt`). If the relation matters to a
+exists; deleting such an explanation loses the reason a step exists. If the
+relation matters to a
 tool, it must also exist as data held by the dependent, like a workflow's
 `# bpmn:` line. The prose then explains that data and does not replace it.
 What prose cannot do is notice a rename, so `kg:audit`'s advisory
@@ -209,8 +189,7 @@ an example.
 
 A reference is a claim that another node exists. A bare string makes that
 claim in a vocabulary nothing resolves: a typo, a rename or a deleted node
-reads exactly like a valid name. Owner, 2026-09-23: *"Things like skills
-should be KG reference."*
+reads exactly like a valid name.
 
 So a field that names another node holds a **KG reference**: the target's
 kind and id, resolvable in the knowledge graph, and projected by `kg-export`
@@ -233,9 +212,8 @@ reference is **resolved by a check**, not trusted: the audit that reads the
 field fails on one that points at nothing.
 
 **Free text stays free text** only when it is not a claim about another node:
-a description, a note, a persona. `useCases` was free text that named things
-the graph could not point at; that is the case this rule exists for, and the
-stories are now nodes that point at their role.
+a description, a note, a persona. Free text that names things the graph cannot
+point at is a reference that should be a node.
 
 ## What falsifies a model
 

@@ -14,7 +14,7 @@ summary: >-
 
 # Contributions and validators as KG nodes
 
-Owner, 2026-10-04, on the audit's open question (bean `sod4`): **every contribution is a node, and "validators need to be in KG too"** (option 2 of 3). The audit ranked one finding first, *"block kinds first"*: the `paper` adapter's 16 block kinds are spread across about seven parallel tables. That finding lands here.
+Owner, 2026-10-04, on the audit's open question (work item `sod4`): **every contribution is a node, and "validators need to be in KG too"** (option 2 of 3). The audit ranked one finding first, *"block kinds first"*: the `paper` adapter's 16 block kinds are spread across about seven parallel tables. That finding lands here.
 
 ## What exists, measured 2026-10-04
 
@@ -28,7 +28,7 @@ Owner, 2026-10-04, on the audit's open question (bean `sod4`): **every contribut
 
   smart-base and folio-assistant-sci contribute this way. The `paper` adapter's kinds do not: they are tables in cat-harness, which is sod4 #1.
 - **Validators** are strings. A kind carries `validator: "fhir-harness:schemas/ig-ast.ts#AstManifestSchema"` or `nodeSchemas: { "<tag>": { validator: "…" } }`, which `schemas/kind-validator.ts` resolves through `parseValidatorRef`. Nothing declares a validator: a kind points at code.
-- **The precedent is already built** (bean dmx1, the same day). Graph typologies became `kinds/` nodes (`folio-graph-typology/v1`), loaded lazily on first use across every instance's declared graph, with a name claimed by two files refused. The kind TABLE is now generated from them.
+- **The precedent is already built** (work item dmx1, the same day). Graph typologies became `kinds/` nodes (`folio-graph-typology/v1`), loaded lazily on first use across every instance's declared graph, with a name claimed by two files refused. The kind TABLE is now generated from them.
 
 ## Proposal
 

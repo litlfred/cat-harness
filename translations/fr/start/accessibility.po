@@ -45,10 +45,6 @@ msgstr "Un agent qui pose une bonne question sous une forme inutilisable n'a rie
 msgid "The usual shape of it: a long open prompt — \"Tell me about the folio you have in mind, what content types you expect, and how you'd like it organised\" — sent to somebody for whom typing is slow and painful. The reply comes back short. The agent reads shortness as low engagement and asks another open question. Nobody in that exchange has done anything obviously wrong, and the conversation is already failing."
 msgstr "La forme habituelle : une longue invite ouverte — « Parlez-moi du folio que vous avez en tête, des types de contenu que vous attendez et de la façon dont vous souhaitez l'organiser » — envoyée à quelqu'un pour qui taper au clavier est lent et douloureux. La réponse revient brève. L'agent interprète cette brièveté comme un faible engagement et pose une autre question ouverte. Personne dans cet échange n'a fait quoi que ce soit de manifestement répréhensible, et pourtant la conversation échoue déjà."
 
-#: docs/start/accessibility.md:40
-msgid "This repository's owner has very limited hand function, so the case is not hypothetical here. But the rule generalises without reference to anybody:"
-msgstr "Le propriétaire de ce dépôt a un usage très limité de ses mains, le cas n'est donc pas hypothétique ici. Mais la règle se généralise sans référence à quiconque :"
-
 #: docs/start/accessibility.md:43
 msgid "A question's cost is paid by the person answering it. Design the question so that the cheapest possible answer is still a complete one."
 msgstr "Le coût d'une question est payé par la personne qui y répond. Concevez la question de manière à ce que la réponse la moins coûteuse possible soit malgré tout une réponse complète."
@@ -261,10 +257,6 @@ msgstr "outils qui produisent du contenu"
 msgid "the one usually missed. folio-assistant is an authoring tool: Part A is the tool being usable, Part B is the tool helping the author produce accessible output"
 msgstr "celle que l'on oublie d'habitude. folio-assistant est un outil de création de contenu : la partie A concerne l'utilisabilité de l'outil, la partie B concerne l'aide apportée à l'auteur pour produire un rendu accessible"
 
-#: docs/start/accessibility.md:114
-msgid "ATAG Part B is worth dwelling on, because it is the part a content platform can uniquely deliver: alt-text presence, heading order, table headers and language tagging in published folios are checks the QA sweep can carry, and no amount of making the editor accessible substitutes for them."
-msgstr "La partie B d'ATAG mérite que l'on s'y arrête, car c'est la dimension qu'une plateforme de contenu peut assurer de manière unique : la présence de textes alternatifs, l'ordre des titres, les en-têtes de tableau et le balisage de la langue dans les folios publiés sont des contrôles que le balayage QA peut exécuter, et aucun effort pour rendre l'éditeur accessible ne peut s'y substituer."
-
 #: docs/start/accessibility.md:119
 msgid "2.6 What is implemented today"
 msgstr "2.6 Ce qui est implémenté aujourd'hui"
@@ -320,10 +312,6 @@ msgstr "La modalité audio est décrite, mais non implémentée. Les règles son
 #: docs/start/accessibility.md:149
 msgid "3. Forcing agentic Q&A into guided questions"
 msgstr "3. Contraindre les Q/R agentiques sous forme de questions guidées"
-
-#: docs/start/accessibility.md:151
-msgid "The second question. The answer is a separation, and the separation is the whole design."
-msgstr "La seconde question. La réponse réside dans une séparation, et cette séparation constitue l'ensemble de la conception."
 
 #: docs/start/accessibility.md:154
 msgid "3.1 Two things that look like one"
@@ -421,10 +409,6 @@ msgstr "Une question ouverte n'est pas une décision. « De quoi traite cet arti
 msgid "A conversation is not a wizard. A user must always be able to say something the table did not anticipate. That is what the \"tell me more\" option is for, and it is not optional garnish."
 msgstr "Une conversation n'est pas un assistant guidé (wizard). Un utilisateur doit toujours pouvoir dire quelque chose que la table n'avait pas anticipé. C'est la raison d'être de l'option « en savoir plus », et ce n'est pas une fioriture facultative."
 
-#: docs/start/accessibility.md:211
-msgid "Guided does not mean interrogating. The largest accessibility win available is the question you did not have to ask — every fact the agent reads from the filesystem is one fewer. That win is invisible, unrewarded, and larger than any stylesheet."
-msgstr "Guidé ne veut pas dire interrogatoire. Le plus grand gain d'accessibilité possible est la question que vous n'avez pas eu à poser — chaque fait que l'agent lit depuis le système de fichiers est une question de moins. Ce gain est invisible, non récompensé, et pourtant supérieur à n'importe quelle feuille de style."
-
 #: docs/start/accessibility.md:216
 msgid "See also"
 msgstr "Voir aussi"
@@ -473,3 +457,15 @@ msgstr "Voir aussi"
 
 #~ msgid "Options for workflow state in beans"
 #~ msgstr "Options pour l'état du flux de travail dans beans"
+
+#~ msgid "This repository's owner has very limited hand function, so the case is not hypothetical here. But the rule generalises without reference to anybody:"
+#~ msgstr "Le propriétaire de ce dépôt a un usage très limité de ses mains, le cas n'est donc pas hypothétique ici. Mais la règle se généralise sans référence à quiconque :"
+
+#~ msgid "ATAG Part B is worth dwelling on, because it is the part a content platform can uniquely deliver: alt-text presence, heading order, table headers and language tagging in published folios are checks the QA sweep can carry, and no amount of making the editor accessible substitutes for them."
+#~ msgstr "La partie B d'ATAG mérite que l'on s'y arrête, car c'est la dimension qu'une plateforme de contenu peut assurer de manière unique : la présence de textes alternatifs, l'ordre des titres, les en-têtes de tableau et le balisage de la langue dans les folios publiés sont des contrôles que le balayage QA peut exécuter, et aucun effort pour rendre l'éditeur accessible ne peut s'y substituer."
+
+#~ msgid "The second question. The answer is a separation, and the separation is the whole design."
+#~ msgstr "La seconde question. La réponse réside dans une séparation, et cette séparation constitue l'ensemble de la conception."
+
+#~ msgid "Guided does not mean interrogating. The largest accessibility win available is the question you did not have to ask — every fact the agent reads from the filesystem is one fewer. That win is invisible, unrewarded, and larger than any stylesheet."
+#~ msgstr "Guidé ne veut pas dire interrogatoire. Le plus grand gain d'accessibilité possible est la question que vous n'avez pas eu à poser — chaque fait que l'agent lit depuis le système de fichiers est une question de moins. Ce gain est invisible, non récompensé, et pourtant supérieur à n'importe quelle feuille de style."

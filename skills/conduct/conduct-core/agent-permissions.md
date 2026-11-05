@@ -22,8 +22,7 @@ demand when an agent hits a denied action**. A denial is a reason to ask. It is
 never a reason for the agent to edit its own configuration.
 
 A run that finds every needed permission granted and recorded ends at
-`End_Current` without asking anything. The cost of calling it every session is
-one comparison.
+`End_Current` without asking anything.
 
 ## Three layers, three questions, and this skill answers the third
 
@@ -50,7 +49,7 @@ that does the job.
 | open and update a PR | create a PR, comment, label it | `continual-progress`, `issue-working`, `merge-queue` handover | never merge |
 | edit agent hooks and settings | change the Tool's hand-edited config | only when a hook or setting is itself the defect | **per change, never standing**: the exact diff, the reason, then the owner's yes ([`harness-projections`](harness-projections.md)) |
 | write generated projections | regenerate the Tool's projections of the graph | none: CI regenerates them on the PR head | **not granted to an agent at all** ([`harness-projections`](harness-projections.md)) |
-| merge to `main` | — | — | **never a Tool permission.** Every merge is its own owner-authorised run of [`merge-to-main`](../../sdlc/sdlc-core/merge-to-main.md). No allow-rule for a merge command is ever written. |
+| merge to `main` | — | — | **never a Tool permission.** Every merge is its own owner-authorised run of [`merge-to-main`](../../../sdlc/skills/sdlc-core/merge-to-main.md). No allow-rule for a merge command is ever written. |
 
 ## Explaining one before it is granted
 
@@ -90,44 +89,35 @@ A refusal is recorded too, so the next session does not ask the same question
 blind.
 
 **A config rule with no grant on the record is reported as unrecorded**
-(`Task_ReadGrants`). It is not treated as granted. A rule nobody can account for
-cannot be told from one an agent wrote for itself.
+(`Task_ReadGrants`). It is not treated as granted, because a rule nobody can
+account for cannot be told from one an agent wrote for itself.
 
 ## Rules no grant relaxes
 
 - **Never self-granted.** The grant is a person's (`Task_OwnerGrants` is
   fulfilled by a person only). The config write is done by the person, or by the
   agent writing exactly the diff the person consented to. If you are composing
-  the consent, you are the grantor, and you may not be. This is the rule
-  [`confirmation-waiver`](confirmation-waiver.md) states for waivers, applied to
-  the agent host.
+  the consent, you are the grantor, and you may not be (the
+  [`confirmation-waiver`](confirmation-waiver.md) rule, applied to the agent
+  host).
 - **Generated projections are CI's.** No permission lets an agent write them
   ([`harness-projections`](harness-projections.md)).
 - **Hand-edited agent config changes per change, with consent.** A standing
   grant to edit settings does not exist. Each edit is its own diff, reason and
   yes.
 - **Merging to `main` is never granted here.** See
-  [`merge-to-main`](../../sdlc/sdlc-core/merge-to-main.md).
+  [`merge-to-main`](../../../sdlc/skills/sdlc-core/merge-to-main.md).
 - **A broad instruction is not a grant.** "Fix all issues until green", "get
   the session start working" and "stop the prompts" authorise investigation.
   They do not authorise widening what the agent may do. Bring the diff back.
 
-**2026-10-09, the measured reason for all of this.** On one day, an auto-mode
-safety classifier blocked an agent that was editing `.claude/settings.json`,
-which is the agent modifying its own permissions. It also flagged the merge of
-seven PRs across seven repositories that run no CI as "Merge Without Review".
-Both actions were taken under the same broad instruction. Both are now steps
-with an owner's gate: this process for the first, `merge-to-main` for the second.
-
 ## Per-Tool specifics belong to the Tool, not here
 
-This skill names no vendor's file, on purpose. Where a Tool keeps its
-permissions, how a rule is spelled, and which of its files are generated are
-properties of that Tool. They belong on its Tool node or adapter, which is the
-same direction [`bpmn-processes`](../../process/workflow/bpmn-processes.md)
-§"A Tool's OWN procedure is the Tool's subprocess" sets. For example, Claude
-Code keeps permission allow-rules in `.claude/settings*.json`. That sentence is
-an example, not a rule, and its home is the Claude Code adapter.
+Where a Tool keeps its permissions, how a rule is spelled, and which of its
+files are generated are properties of that Tool, and belong on its Tool node or
+adapter ([`bpmn-processes`](../../process/workflow/bpmn-processes.md) §"A Tool's
+OWN procedure is the Tool's subprocess, not the skill's prose"). For example, Claude Code keeps
+permission allow-rules in `.claude/settings*.json`.
 
 ## What this does not do yet
 
@@ -141,5 +131,5 @@ an example, not a rule, and its home is the Claude Code adapter.
   adapter). No tool produces both yet.
 - **The permission rows are not yet ODRL actions.** They map onto existing
   actions (`admin-settings`, `content-authoring`) in the table above, but are
-  not declared in `permissions.json`. Declaring them is a change to the
-  permission vocabulary, and it should come with the adapters that read them.
+  not declared in `permissions.json`; declaring them belongs with the adapters
+  that read them.

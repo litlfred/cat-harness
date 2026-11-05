@@ -21,5 +21,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `code-lists`, holding `co
 | [`adjudication-translation-passage.json`](adjudication-translation-passage.json) | Flagged translation passage outcomes |  |
 | [`concern-group.json`](concern-group.json) | Concern groups |  |
 | [`own-namespaces.json`](own-namespaces.json) | Namespaces this project mints |  |
+| [`retired-prose-words.json`](retired-prose-words.json) | Words prose no longer uses |  |
 
 <!-- kg:subgraph:end -->

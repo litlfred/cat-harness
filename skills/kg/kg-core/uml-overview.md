@@ -22,30 +22,28 @@ while it is stale.
 | Diagram | Written by | Tool |
 |---|---|---|
 | one per harness, and one per **named sub-graph** it declares | `scripts/gen-uml-overview.ts` | `uml-overview` |
-| the harness **object model** (Actor, Role, Skill, Process, Task, Todo, Bean, Test, …) | `scripts/gen-object-model-uml.ts` | `uml-object-model` |
-| the harness **schemas**: the object model without Bean and Todo, shown at the top of the UML overview page | `scripts/gen-uml-overview.ts`, from `schemasViewPuml` in `gen-object-model-uml.ts` | `uml-overview` |
+| the harness **object model** (Actor, Role, Skill, Process, Task, Todo, Work item, Test, …) | `scripts/gen-object-model-uml.ts` | `uml-object-model` |
+| the harness **schemas**: the object model without Work item and Todo, shown at the top of the UML overview page | `scripts/gen-uml-overview.ts`, from `schemasViewPuml` in `gen-object-model-uml.ts` | `uml-overview` |
 
 **Content models get their class diagrams the same way.** A diagram of the
 types a CONTENT model uses is derived from that model by its own Tool, never
 drawn: an ArchiMate model's "Metamodel in use" page is written by
 `archimate-metamodel` and `archimate-pages` (skill
-[`archimate-models`](../../ui/ui-core/archimate-models.md)). Owner,
-2026-10-31: *"i dont really like native UML, rather derived"*.
+[`archimate-models`](../../ui/ui-core/archimate-models.md)).
 
 **A family no file carries can still be drawn: mark it `derived`.** The
 overview draws only the `$schema` families a directory's files carry, so a
 kind whose source files are read into a shape in memory (an `.archimate` file
-read into Model, Element, Relationship and View) drew nothing of that shape.
-Register the shape as a family with `derived: true` in the kind's
+read into Model, Element, Relationship and View) draws nothing of that shape
+by default. Register the shape as a family with `derived: true` in the kind's
 `nodeSchemas`, give it a validator node naming its Zod schema, and the
 overview draws it wherever the kind is: the `archimate` kind's
-`archimate-model/v1` (`ArchimateModelSchema`, smart-ra#166 D2). Never invent a
+`archimate-model/v1` (`ArchimateModelSchema`). Never invent a
 `$schema` tag on files to get a box drawn.
 
 **A group is a named sub-graph,** meaning one entry of a harness's declaration
 (`<instance>.json` `directories[]`), drawn as `<instance>/<entry id>`, for
-example `bootstrap/processes`. The generator never invents a grouping. Owner,
-2026-09-23: *"sections are sub-graphs in a harness"*.
+example `bootstrap/processes`. The generator never invents a grouping.
 
 **A class comes from a node schema,** resolved in this order:
 
@@ -70,19 +68,16 @@ empty shape. Close it by registering a node schema, not by editing the diagram.
 - `docs/assets/img/uml/overview/…svg`: the PlantUML rendering of each
   `.puml`, laid out by ELK. This is the figure each page shows, in the same
   `bpmn-figure` markup as the BPMN diagrams, so it gets the same zoom,
-  full-width and export controls (download SVG, download PNG, copy; #1270). An overview with more than three sub-graphs is folded
-  into a near-square grid by hidden links between packages, because ELK
-  otherwise lays unconnected packages in one row. Owner, 2026-09-23: "make the
-  UML more condensed, more like the original one … need controls like in bpmn
-  diagrams".
+  full-width and export controls (download SVG, download PNG, copy). An
+  overview with more than three sub-graphs is folded into a near-square grid
+  by hidden links between packages, because ELK otherwise lays unconnected
+  packages in one row.
 - `docs/assets/img/uml/overview/…dot`: the same model as Graphviz DOT,
   written by `dot()` from the same sections as the `.puml` and `.mmd`, and
   published beside the SVG because the reader's browser fetches it. Each page
   offers it as a third view, **Interactive**, beside Portrait and Landscape:
   `assets/js/kg-graph.js` lays it out with the site's vendored Graphviz WASM,
-  and the reader can pan, zoom, find and drag nodes. Owner, 2026-10-09:
-  *"could use the wasm-graphviz to make the graph visualizers overview more
-  dynamic. also allow users to drag nodes around"*. The convention and the
+  and the reader can pan, zoom, find and drag nodes. The convention and the
   viewer are [`kg-subgraph-layout`](../graph-management/kg-subgraph-layout.md).
 - `docs/uml/overview/…`: the pages. Each shows the SVG, then a table of its
   sub-graphs, then the same model drawn by Mermaid, and links both source
@@ -91,8 +86,9 @@ empty shape. Close it by registering a node schema, not by editing the diagram.
   `schemas/kg/detangle-sidecar.ts`, the same function the detangler writes
   through, or *not measured* where the detangler does not
   scan. So a change to `detangle/results/` makes these pages stale, and
-  `uml:overview` must be re-run with `kg:detangle`. Every page carries `layout: default`: without it the local build
-  rendered the page bare, with no site script and so no zoom controls. Published at
+  `uml:overview` must be re-run with `kg:detangle`. Every page carries
+  `layout: default`, or it renders bare, with no site script and so no zoom
+  controls. Published at
   `<site>/uml/overview/<instance>.html`; the index is
   `<site>/uml/overview/index.html`. The site menu has a **UML overview** entry
   with one child per harness. The sub-graph pages stay out of the menu and are
@@ -102,13 +98,11 @@ empty shape. Close it by registering a node schema, not by editing the diagram.
   `docs/assets/img/uml/harness-object-model.svg`, shown second on the UML
   overview page. `gen-object-model-uml.ts` writes the `.puml` only where the
   `beans` CLI is installed, so `gen-uml-overview.ts` renders the committed
-  file and never rewrites it. Its stamp check needs neither Java nor beans.
+  file and never rewrites it. Its stamp check needs neither Java nor work items.
 - `uml/harness-schemas.puml` and `docs/assets/img/uml/harness-schemas.svg`:
   the schemas view: Schema, Role, Actor, Skill, User Story, Process, Task
-  and Test. It leaves out Bean, the one class read from the `beans` CLI, so
-  unlike the full model it is checked in CI. Owner, 2026-09-23: "i just want
-  UML (with themes) showing schemas of schema, task, role, user scenario,
-  process, skill, task, test", plus Actor.
+  and Test. It leaves out Work item, the one class read from the `beans` CLI, so
+  unlike the full model it is checked in CI.
 
 **Colours are declared once, in `site-chrome/assets/css/uml.css`**, one CSS class per
 graph typology in five families: schema, scenario, process, state and test. The
@@ -121,8 +115,7 @@ recolour a kind, edit `uml.css`, never a diagram.
 
 Every figure is rendered twice, and the page has a **Portrait / Landscape**
 switch above it: radio buttons and CSS in `uml.css`, no script, with portrait
-as the default. Owner, 2026-09-23: "can we have portrait and landscape
-views?". A third choice, **Interactive**, shows the DOT laid out in the
+as the default. A third choice, **Interactive**, shows the DOT laid out in the
 browser ([`kg-subgraph-layout`](../graph-management/kg-subgraph-layout.md));
 without script it says so and links the DOT, and the portrait SVG is still
 the default.
@@ -138,10 +131,9 @@ the default.
     columns. The `' grid:` comment line in the `.puml` names the packages;
   - a diagram with edges between classes switches to Graphviz, left to
     right, with straight-segment (polyline) edges, `nodesep 70` and
-    `ranksep 160`. Orthogonal edges were tried first: Graphviz placed their
-    labels away from the lines and ran lines through boxes (owner: "make
-    wider, its messy"). Graphviz can route an edge across a box,
-    which is why ELK stays the portrait default.
+    `ranksep 160` — not orthogonal edges, whose labels Graphviz places away
+    from the lines. Graphviz can route an edge across a box, which is why ELK
+    stays the portrait default.
 
 ## Regenerating
 
@@ -162,31 +154,27 @@ runner whose fonts measure text a pixel differently.
 Run `uml:overview` after changing a declaration's `directories[]`, a graph
 kind's `nodeSchemas`, `validator` or `schema`, or any schema those point at.
 
-**The object model's `--check` needs the `beans` CLI**, because the Bean class is
+**The object model's `--check` needs the `beans` CLI**, because the Work item class is
 read from `beans graphql --schema`. Without it the check exits 2, "could not
 check", and never passes. That is why it is not a CI gate.
 
-## Four things that have already gone wrong
+## Invariants the generators keep
 
-- **A converter change emptied every box silently.** When the repo moved to
-  Zod 4, `zod-to-json-schema` returned empty schemas and the overview drew boxes
-  with no fields. The overview now throws on a resolved schema with no
-  properties, and the object model refuses to write if a relationship's field
-  is missing.
-- **A family was drawn where it does not live.** The kind-wide `nodeSchemas` map
-  put cat-harness's voice schemas inside `bootstrap/skills`. Each sub-graph now
-  draws only the `$schema` tags found in its own directory.
-- **Boxes came out empty with no reason given.** A sub-graph of JSON Schema
-  files carries `$schema: …draft-07…`, and the generator drew that
-  metaschema: one box, no fields. Owner, 2026-09-23: "why empty?". Now each
-  schema document is its own class. The ones with no properties (value sets,
-  `$ref` compositions) are listed one line each in a single summary class. A
-  field that is composed stays a line in its parent. A kind with no readable
-  shape carries one italic line saying why. No generated class is empty, and
-  a new empty one is a regression.
-- **Importing a generator wrote files.** Both scripts ran their main block on
-  import, which dirtied the tree in CI (no `beans` CLI, so different output).
-  Both are guarded by `import.meta.main`. A new generator needs the same guard.
+- **No silently empty box.** A converter change can return empty schemas for
+  every box, so the overview throws on a resolved schema with no properties,
+  and the object model refuses to write if a relationship's field is missing.
+- **A family is drawn only where it lives.** Each sub-graph draws only the
+  `$schema` tags found in its own directory, not the kind-wide `nodeSchemas`
+  map.
+- **A JSON Schema document is its own class.** A sub-graph of JSON Schema
+  files is not drawn as its draft-07 metaschema. Documents with no properties
+  (value sets, `$ref` compositions) are listed one line each in a single
+  summary class; a composed field stays a line in its parent; a kind with no
+  readable shape carries one italic line saying why. No generated class is
+  empty, and a new empty one is a regression.
+- **Importing a generator writes nothing.** Each main block is guarded by
+  `import.meta.main`, because a write on import dirties the tree in CI. A new
+  generator needs the same guard.
 
 ## Related
 
@@ -203,4 +191,4 @@ branch **separately**, and every staging-preview push cancels the deploy before
 it. Before calling a page missing, look for the file on `gh-pages`
 (`git ls-tree -r origin/gh-pages | grep uml/`). If it is there, wait for a
 "pages build and deployment" run that is not cancelled.
-[`ci-health`](../../sdlc/sdlc-core/ci-health.md) treats `cancelled` as a third state for this reason.
+[`ci-health`](../../../sdlc/skills/sdlc-core/ci-health.md) treats `cancelled` as a third state for this reason.

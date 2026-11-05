@@ -16,31 +16,23 @@ consulted: true
 
 # `index.config.json`: what this checkout instantiates
 
-The owner, 2026-10-07: *"migration to index.config.json
-importing `<harness>.config.json` information as needed"*, and later that day *"go ahead
-and start the migration NOW"*. The schema is `folio-index-config/v1` in
-`cat-harness/schemas/kg/index-config.ts`, and the proposal with the full
-argument is `cat-harness/docs/proposals/index-config.md`.
+The schema is `folio-index-config/v1` in
+`cat-harness/schemas/kg/index-config.ts`.
 
-**The index is the ONE config.** Owner, bean `ymvt`, restated 2026-10-14:
-*"i thought ONLY index.config.json"*. Each instance's config is written inline
-in its `instances[]` entry. A `<name>.config.json` is a legacy file: imported
+**The index is the ONE config.** Each instance's config is written inline in
+its `instances[]` entry. A `<name>.config.json` is a legacy file: imported
 only as a migration step, then retired with `index-config:migrate --inline
 --write`. **Never create one** — not to make a tool find a recipe, not for a
 new instance. If a reader only finds config in the file, that reader is the
 bug; fix it to read the index entry first.
 
-A checkout has one `<base>/index.html`. Before this file, three facts about
-how a checkout is instantiated sat in N+1 places:
-
-- which harnesses are instantiated: every root `*.config.json`, re-scanned by
-  five scripts;
-- which one is `/`: a `site.landing` flag that could be in any of those files;
-- where each one comes from: `remoteMounts` on the root declaration.
-
-`index.config.json` holds all three. **When it exists at the root it is
-authoritative.** When it is absent, every reader falls back to the old
-behaviour, unchanged.
+`index.config.json` holds three facts about how a checkout is instantiated:
+which harnesses are instantiated, which one is `/` (a checkout has one
+`<base>/index.html`), and where each one comes from, so each is stated once
+rather than spread across every root config. **When it exists at the root it
+is authoritative.** When it is absent, readers fall back to the root
+`*.config.json` files, their `site.landing` flags, and `remoteMounts` on the
+root declaration.
 
 ```json
 {
@@ -58,8 +50,6 @@ behaviour, unchanged.
 
 ## Instantiated is a different fact from declared
 
-> only the instiatiated harnesses (not all dependent ones) in teh folio
-
 A declaration (`<name>.json`) says what an instance **declares**. It travels
 with the harness into every checkout that uses the harness. An
 `index.config.json` entry says the instance is instantiated **in this
@@ -75,7 +65,6 @@ rather than disappearing.
 A harness that a KG subscription chose is instantiated the same way:
 `kg:instantiate` adds its entry, with its config inline, when the checkout
 has an index (and only without one writes a root `<name>.config.json`).
-Issue #1719.
 
 ## Inline, over a legacy import while one remains
 
@@ -92,7 +81,7 @@ Each entry's effective config is built like this:
 returns it for any instance that an index lists, walking outward from the
 instance root and stopping at the first directory that holds either the index
 or the instance's own config. An instance the index does not list is read
-exactly as before. Readers that are handed a root and a name (the site
+from its own config file. Readers that are handed a root and a name (the site
 recipe in `build-instance-site.ts`) use `readInstanceConfig` in
 `cat-harness-tools/scripts/instance-config.ts`, which reads the same way and
 REPORTS every legacy file it reads.
@@ -110,8 +99,8 @@ effective config changes, and the file is deleted.
 - `source.remote`: a remote mount. It is a `remoteMounts` entry minus
   `harness`, which is the entry's `name`. It **reuses** `RemoteMountSchema`
   instead of restating it, so it has `ref` (not `pin`), `overrides.<name>.whole`
-  and `.path`, `note` and `trust.consent`, and every field a later change adds
-  there (such as `track`) arrives with no edit here.
+  and `.path`, `note`, `trust.consent` and `track`, and every field added to
+  `RemoteMountSchema` arrives with no edit here.
 
 There is **one read path and one write path** for remote mounts:
 
@@ -121,7 +110,7 @@ There is **one read path and one write path** for remote mounts:
 - **Write:** `writeDeclaredMounts(instanceRoot, mounts)` always writes
   `index.config.json`, seeding the index from the checkout first if there is
   none. It refuses while the declaration still carries `remoteMounts`. Nothing
-  writes `remoteMounts` on a declaration any more.
+  writes `remoteMounts` on a declaration.
 
 ## Which harness `/` is
 
@@ -140,19 +129,15 @@ order:
 | none flagged | `ambiguous`: `check:landing-instance` fails, because the answer is never guessed |
 | nothing instantiated | `none`: a state of its own, not a default |
 
-The owner's 2026-10-02 ruling still holds where no index exists: *"If exactly
-one harness is instantiated, it is the landing page and no flag is needed …
-If there are several and none is flagged, a gate fails. If more than one is
-flagged, then neutral hub."* The index makes the choice explicit, in one
-place. `gen-landing-data.ts` and `sync-docs-harness.ts` ask this resolver.
-They do not use their own location.
+`gen-landing-data.ts` and `sync-docs-harness.ts` ask this resolver. They do
+not use their own location.
 
 `check:landing-instance` also checks that the index and the root
 `*.config.json` files **agree**:
 
-- A root config that the index does not import **fails the check**. Under the
-  old rule that config instantiates a harness and under the index it does not,
-  and nothing should pick between them silently.
+- A root config that the index does not import **fails the check**: without
+  the index it would instantiate a harness, with it it does not, and nothing
+  picks between them silently.
 - An `import` that names a missing file also fails the check.
 - An entry with no config file at all is the target state, and passes.
 - A legacy file an entry still imports is reported every time. It passes
@@ -163,13 +148,11 @@ They do not use their own location.
 
 ## A harnessed repository runs its checks on its own pull requests
 
-Instantiating a harness in a repository includes turning its checks on there.
-**Owner, 2026-10-14:** "There should be CI running", through **one** reusable
-workflow the harness owns, never a copy per repository. Before this ruling,
-seven layers were judged by nothing until an index re-pinned them: the
-2026-10-06 "defined, not run on events" ruling for the WHO forks switched off
-their harness gates along with their IG builds, and no initialization step
-turned the gates back on.
+Instantiating a harness in a repository includes turning its checks on there,
+through **one** reusable workflow the harness owns, never a copy per
+repository, so a layer is judged on its own pull requests and not only when an
+index re-pins it. Switching off a repository's builds must not switch off its
+gates.
 
 The workflow is the tools layer's `.github/workflows/layer-pr-checks.yml`. A
 repository calls it from a workflow of about fifteen lines that runs on
@@ -194,8 +177,7 @@ jobs:
 - **The gates** are the harness's graph checks over the repository's own
   instance, plus every `check:*` / `*:check` script of that instance **and
   its whole dependency harness** (its transitive `needs`). Each is named
-  `<owning-instance>:<script>`. **Owner, 2026-10-14:** "A harnessed repo should
-  run not just core but all of the checks in the dependency harness."
+  `<owning-instance>:<script>`.
 - **A PR fails only on what it newly breaks.** Each gate and test runs on main
   and on the PR. Anything already red on main is listed, never hidden, and
   never counted against the PR.
@@ -205,7 +187,7 @@ cannot clear.** The index README lists every declared directory, so the PR
 leaves `index:render:check` and `readme:sync:root:check` stale, and only the
 index re-pin that takes the PR regenerates the README. Read those two as
 expected when they are the only new failures, and run them green in the
-index re-pin instead (2026-10-23, a layer PR that added an IG AST viewer).
+index re-pin instead.
 
 **Disabling a repository's automatic builds is not disabling its checks.**
 When an IG repository's automatic gh-pages or IG Publisher triggers are
@@ -218,10 +200,9 @@ the harness caller stays on.
 local gate set does not are exempted HERE, under `gateExemptions.steps`, each
 with a `kind` and a `reason` (`GateExemptionsSchema`, the same shape an
 instance declaration carries). They land in the same change as the workflow
-step, never ahead of it in a layer: an exemption a layer declared for a step
-still on an unmerged branch matched nothing CI ran on the next re-pin
-(`qa:publish --add`, 2026-10-14), and `gates-workflows.test.ts` refuses a stale
-exemption as it refuses an unclassified step.
+step, never ahead of it in a layer: an exemption for a step CI does not yet
+run matches nothing, and `gates-workflows.test.ts` refuses a stale exemption
+as it refuses an unclassified step.
 
 ```jsonc
 "gateExemptions": {
@@ -236,15 +217,14 @@ An instance still exempts its OWN scripts and steps in its own declaration.
 ## `index.lock.json`, and the legacy name
 
 The lock records what the declared mounts resolved to. It is generated by
-`mount:remote` and kept as a **separate file**. It was
-`<root-instance>.mount-lock.json` until 2026-10-07. The rules for each reader
-and writer:
+`mount:remote` and kept as a **separate file**. The legacy name is
+`<root-instance>.mount-lock.json`. The rules for each reader and writer:
 
 - **Writers** write `index.lock.json`. `mount:remote` first renames a legacy
   lock onto the new name, so the old file is moved, never dropped.
 - **Readers** take `index.lock.json` first, then fall back to the legacy
-  `*.mount-lock.json`. Downstream folios and old branches keep replaying
-  through that fallback. The readers are:
+  `*.mount-lock.json`, so downstream folios and old branches still replay.
+  The readers are:
   - `mount-from-lock.ts`
   - `mountedInstanceRoots`
   - `mountedUnder` in `git-corpus.ts`
@@ -261,14 +241,13 @@ and its test holds it to `lockFilesIn`.
 `*.config.json` is a harness" would find a harness called `index`. The
 `index` stem is therefore reserved across the board:
 
-- `rootConfigStems` skips every `index.*` file. It is the one root scan, and
-  the five scripts that re-implemented it now call it or
-  `instantiatedHarnessNames`.
+- `rootConfigStems` skips every `index.*` file. It is the one root scan;
+  every other reader calls it or `instantiatedHarnessNames`.
 - `findDeclarationFile` skips every `index.*` file too.
 - The index schema refuses an instance named `index`, and `hub`, because that
   is the landing keyword.
 
-Do not add a sixth copy of the scan. A new copy is how the reserved name
+Do not add another copy of the scan: a new copy is how the reserved name
 leaks back in.
 
 ## The generated `.gitignore` block
@@ -289,10 +268,10 @@ land instances that the index never names. Three things write the block:
 - `index-config:migrate --write`
 
 `check:index-ignores` fails when the block is missing or disagrees with the
-index. When an index exists, `mount:remote` **no longer appends to
-`.git/info/exclude`**. A local exclude rule is invisible to every other clone,
-so a path the committed block does not cover is reported as not ignored.
-Checkouts without an index keep the old behaviour.
+index. When an index exists, `mount:remote` **does not append to
+`.git/info/exclude`**: a local exclude rule is invisible to every other
+clone, so a path the committed block does not cover is reported as not
+ignored. Without an index, it still appends there.
 
 ## Converting a checkout: `index-config:migrate`
 
@@ -312,9 +291,8 @@ standalone clone of any separated repository.
   only when `name` is an instance the checkout declares (at the root or one
   level down) or mounts. Anything else becomes an **`unmatched-config`
   finding** and is not imported. A repository cut from a fork, for example,
-  can carry the fork's own `<fork>.config.json`. Importing that file would
-  instantiate a harness the
-  repository does not hold.
+  can carry the fork's own `<fork>.config.json`; importing it would
+  instantiate a harness the repository does not hold.
 - **Re-runs:** it is idempotent. A re-run moves only the `remoteMounts`
   entries that the declaration has gained since the last run. An entry the
   index already holds identically is dropped from the declaration. An entry

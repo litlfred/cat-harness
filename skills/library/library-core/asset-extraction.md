@@ -12,12 +12,8 @@ description: >
 A container arrives in `uploads/`: a zip of a saved web page, a PDF, a
 tarball. Something inside it is wanted. **What enters the knowledge graph is
 the INDEX** — what is in there, how big, what type, when it says it was
-written — and not the files.
-
-Owner, 2026-09-20:
-
-> *"make sure you have zip ingestion skills to extract metadata of assets into
-> KG. don't extract contents unless explict ask by user."*
+written — and not the files. Contents are extracted only when a person
+explicitly asks.
 
 ```sh
 bun run cat-harness-tools/scripts/extract-assets.ts <container>
@@ -51,8 +47,8 @@ depends on remembering.
 | `materializedAt` | when WE brought the bytes local |
 | `capturedAt` | when a TOOL produced this file out of something else |
 
-**An extraction timestamp is never a publication date.** Measured on the WHO
-IRIS capture, which is why this is a schema field rather than a note:
+**An extraction timestamp is never a publication date.** For example, a WHO
+IRIS capture:
 
 ```
 zip entries      2026-09-20 07:42   (all 11 of them)
@@ -89,8 +85,7 @@ not what it appears to be"* is a different fact from *"nobody looked"*.
 A zip written on macOS carries a `__MACOSX/` shadow per entry. Skipping them
 quietly makes the asset count disagree with the container's own, and a reader
 reconciling the two finds nothing to explain the gap. They go in `omitted[]`
-with a pattern, a reason and a count — measured on the IRIS zip: 11 real
-entries, 12 shadows.
+with a pattern, a reason and a count.
 
 ## Derived renderings — the artefact we MADE, out of bytes we hold
 
@@ -125,26 +120,20 @@ Three rules, in the order they bite:
 
 **Take the determined division, not the clever one.** `pdf-cover.py` renders
 page 1 and calls it the cover, for the same reason `pdf-pages.py` sections by
-page: page 1 is a determined answer and "the cover" is not. Measured across
-the three items, page 1 is the cover in all three and looks different in each
-— a portrait designed cover (2:3), a landscape one (0.705:1), and a scanned
-title page. A heuristic would have had to beat that on all three, with no way
-to say when it was unsure.
+page: page 1 is a determined answer and "the cover" is not. Covers differ in
+shape (portrait, landscape, a scanned title page), and a heuristic has no way
+to say when it is unsure.
 
 **Record the geometry.** `Bitstream.pixelWidth`/`pixelHeight` exist so a
 listing reserves the box before the bytes arrive. Absent is *unmeasured*, not
-square: any default would be wrong about two of those three.
+square.
 
 **Check the claim where the check can actually run.** A gate that re-renders a
-derived artefact needs the backend that produced it — and the CI job that runs
-this repository's gates installs `ruff` and nothing else, which is stated on
-`ingest-stdlib`'s own Tool node and was walked into anyway: `iris:covers:check`
-threw `pymupdf is not installed` on every run and turned a branch red three
-times.
-
-The fix is not to install a backend in the gate job, and **not** to degrade to
-could-not-determine — that would report `unknown` on every CI run, which is a
-check nobody can read. Split the claim instead. Of the five things a node
+derived artefact needs the backend that produced it, and the CI job that runs
+this repository's gates installs `ruff` and nothing else (stated on
+`ingest-stdlib`'s Tool node). Do not install a backend in the gate job, and do
+**not** degrade to could-not-determine — that would report `unknown` on every
+CI run, which is a check nobody can read. Split the claim instead. Of the five things a node
 asserts about a derived image, four need no decoder at all:
 
 | claim | needs the backend? |
@@ -172,9 +161,7 @@ file's `localPath`, which exists only once somebody asked for it.
 - [`library-ingestion`](library-ingestion.md) — the other way in. A container
   read this way has not been ingested; it has been *described*.
 - `schemas/content/extraction.ts` in this harness — the record, and why each
-  field is optional or not. It moved down from the content core with the
-  script that writes it (bean `tlat`, placement PR5), because this skill is
-  the harness's own.
+  field is optional or not.
 - `schemas/materialization.ts` in the content core — `materializedAt`, the
   timestamp this one is most often confused with; its state vocabulary is
   `schemas/kg/materialization-state.ts` here.

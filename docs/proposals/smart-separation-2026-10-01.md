@@ -141,7 +141,7 @@ is both the harness and an IG that instantiates it?
 
 **Q7. Graph-typology registration** for `fhir-artifact-index`: keep the entries in
 core, with validator pointers repointed into fhir-harness (**default**). A way
-for a harness to contribute kinds is a separate bean.
+for a harness to contribute kinds is a separate work item.
 
 ## Decided
 
@@ -157,12 +157,12 @@ Owner, 2026-10-01:
   | L1 | semi-fixed | smart-base assets (`library/`), plus external evidence such as PICO and Cochrane |
   | DAK | fixed: the ten components | L1 content and authored L2 |
 
-  The DAK half has a head start: `cat-harness/schemas/dak.ts`, `dak-blocks.ts` and `dak-content-type.ts` already exist and, by this plan, are S-destined. `smart-ig` has no counterpart in the owner's reframe; it is treated as the IG publication the DAK feeds (fhir-harness's concern) until told otherwise. The L1 library is to grow PCMT and the other WHO digital-transformation handbooks; that has its own bean. Stage D therefore stops **retiring** the three directories and **re-homes** them as kinds; the `needs: smart-ig` edges are repointed to `smart-base` either way.
+  The DAK half has a head start: `cat-harness/schemas/dak.ts`, `dak-blocks.ts` and `dak-content-type.ts` already exist and, by this plan, are S-destined. `smart-ig` has no counterpart in the owner's reframe; it is treated as the IG publication the DAK feeds (fhir-harness's concern) until told otherwise. The L1 library is to grow PCMT and the other WHO digital-transformation handbooks; that has its own work item. Stage D therefore stops **retiring** the three directories and **re-homes** them as kinds; the `needs: smart-ig` edges are repointed to `smart-base` either way.
 
 - **Q4, Q6 and Q7** proceed on their defaults.
 - **The `l3-fhir-authoring` → `l2-dak-authoring` edge** (raised in stage B): owner chose option 1. It stays for now. In stage D the generic skill's input becomes a source model, and smart-base supplies the L2 → L3 specialisation.
 
-- **Stage D decisions** (owner, 2026-10-01, before stage D started; bean `kg83`):
+- **Stage D decisions** (owner, 2026-10-01, before stage D started; work item `kg83`):
   - **Old layers:** `smart-l1/` and `smart-dak/` are retired; their content becomes the L1 and DAK kinds above. **`smart-ig/` stays**, as the IG-publication layer the DAK feeds, so smart-trust and smart-immunizations keep `needs: smart-ig`.
   - **Q4 → (a):** `chrome.json` is re-keyed to the template (`who.template.root`) and ships with the smart-base harness.
   - **DAK code:** `dak.ts`, `dak-blocks.ts` and `dak-content-type.ts` all move into smart-base, and the partition rule that filed `dak-blocks.ts` as core follows.

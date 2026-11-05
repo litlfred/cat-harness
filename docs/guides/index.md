@@ -15,9 +15,8 @@ specific content, and any content shown is illustrative only.
 - **[Agent onboarding](agent-onboarding.html)** — start here if you are an LLM
   agent: which repo you are in, first steps, finding skills, the content-object
   model, QA sidecars and axes, and where to look things up.
-- **[Reseeding the Lean cache](reseeding-the-lean-cache.html)** — exact
-  local procedure to rebuild the olean cache branches, which are
-  currently unusable for builds.
+- **[Reseeding the Lean cache](reseeding-the-lean-cache.html)** — the local
+  procedure to rebuild the olean cache branches.
 - **[Writing a document](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/writing-a-document.html)** — structured prose: policy
   guidance, standards, reports, handbooks. No Lean, no TeX. Start here if your
   folio is not mathematics.

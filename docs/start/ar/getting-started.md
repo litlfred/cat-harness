@@ -121,7 +121,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 **شكل السؤال يأتي قبل محتواه.** يحدد الوكيل الطريقة التي
 تفضل أن تُسأل بها — خيارات قابلة للتحديد، دردشة عادية، قراءة صوتية،
-خط كبير — ويسجل ذلك في `interaction/interaction.json` حتى لا تسألك
+خط كبير — ويسجل ذلك في `memory/interaction.json` حتى لا تسألك
 أي جلسة مستقبلية مرة أخرى. راجع [إمكانية الوصول](accessibility.html).
 
 بعد ذلك، عندما تكون الإجابة غامضة بحق:
@@ -175,7 +175,7 @@ Claude Code وAntigravity وGemini CLI وعملاء MCP العامين.
 |------|---------|
 | `folio_init` | إنشاء هيكل folio. مسجلة كأداة **عامة**، لأنها تعمل قبل أن يكون للـ folio نوع محتوى |
 | `workflow_start` / `workflow_next` / `workflow_complete` | تشغيل `getting-started.bpmn` كعملية حقيقية؛ يحدد `workflow_next` ما هو مفعّل الآن وأي مهارة تنفذه |
-| `work_plan_prime` | إظهار خطة العمل (beans) |
+| `work_plan_prime` | إظهار خطة العمل (work items) |
 | `check_dependencies` | فحص مجموعات الأدوات المثبتة |
 | `skill_list` / `skill_fetch` | اكتشاف تعليمات المهارة وتحميلها |
 
@@ -327,16 +327,15 @@ folio بدون رسوم أمر عادي وليس عطلاً.
 في المستودع.
 
 ```sh
-scripts/install-beans.sh          # install the CLI if missing
+cat-harness-tools/scripts/install-beans.sh # install the CLI if missing
 beans prime                       # emit work-plan priming for agents
 beans list                        # current open items
 beans create "draft chapter 1"    # open an item
-beans <id> --status in-progress   # claim an item
+bun run cat beans:claim <id>      # claim an item
 ```
 
 > **تحقق قبل أن تنشئ.** يُصدر الأمر `beans create` معرفًا جديدًا في كل استدعاء ولا
-> يزيل التكرار أبدًا. وإعادة تنفيذ خطوة برمجية دون التحقق من الوجود المسبق
-> أنتج **14,688** عنصر bean مكرر في folio واحد خلال ظهيرة يوم واحد. ويوجد
+> يزيل التكرار أبدًا. لذا تحقق أولاً من عدم وجود عنصر مماثل. ويوجد
 > التحقق في مهارة
 > [`todo-manager`]({{ '/reference/skill-instructions/todo-manager.html' | relative_url }}).
 

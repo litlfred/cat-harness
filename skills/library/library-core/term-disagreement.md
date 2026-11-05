@@ -17,9 +17,7 @@ graph-typologies:
 
 > Skill id: `term-disagreement` · Package: `library-core`
 
-Bean `2i5f`, leg 1, under `5yhm`. The owner ruled on 2026-10-02 (issue
-#1836): *"split: build leg 1 now as a skill + an outcome schema."* The outcome
-schema is
+The outcome schema is
 [`schemas/content/term-adjudication.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/content/term-adjudication.ts)
 (`folio-term-adjudications/v1`). That file holds the table of what each
 outcome writes, as data. This skill says when to use it and how to choose.
@@ -30,10 +28,10 @@ outcome writes, as data. This skill says when to use it and how to choose.
    CONTENT decision: what the corpus should say.
 2. **Two judges disagree about a mapping.** That includes a person who
    thinks an automated match is wrong. It is
-   [`adjudication`](../../sdlc/sdlc-core/adjudication.md) plus
-   [`untainted-verification`](../../sdlc/sdlc-core/untainted-verification.md),
-   and it is **not built**. The owner's ruling keeps it waiting until
-   something maps. Do not answer it with an outcome from this skill:
+   [`adjudication`](../../../sdlc/skills/sdlc-core/adjudication.md) plus
+   [`untainted-verification`](../../../sdlc/skills/sdlc-core/untainted-verification.md),
+   and it is **not built**; it waits until something maps. Do not answer it
+   with an outcome from this skill:
    `vocabulary-wrong` says a vocabulary does not serve a domain, not that
    one match is mistaken.
 
@@ -47,13 +45,13 @@ outcome writes, as data. This skill says when to use it and how to choose.
 | mapped | mapped | the label IS the authorised one | no: agreement |
 | unmapped | mapped | the right concept, under a label that is not its authorised one | **yes, always** |
 | unmapped | unmapped | the authority carries no such label | **only if the authority is MEANT to cover this** |
-| undetermined | — | nobody answered | **no.** Fix the reachability; the schema refuses it (bean `dh4f`) |
+| undetermined | — | nobody answered | **no.** Fix the reachability; the schema refuses it |
 
-**The third row is the one to be careful with.** On 2026-10-02 every one of
-the 2 861 candidates was `unmapped` on both targets. Almost all of them are
-names for this repository's own assets: skills, Tool nodes, BPMN activities,
-schema fields. No authority is expected to carry them, so they are not
-disagreements. They are terms this corpus is right to coin (`m4xy`).
+**The third row is the one to be careful with.** Almost every candidate is
+`unmapped` on both targets, because most are names for this repository's own
+assets: skills, Tool nodes, BPMN activities, schema fields. No authority is
+expected to carry them, so they are not disagreements. They are terms this
+corpus is right to coin.
 
 The test for the third row: **would a reader in this domain expect the
 consulted vocabulary to have a word for this?** "Wombat sorter" against WHO
@@ -61,8 +59,8 @@ SMART base: no, so there is no record. "Immunization" against WHO SMART base:
 yes. A miss there is a disagreement worth a decision.
 
 **Never generate records in bulk.** One record is one decision somebody
-took. The rule is the same as for beans, which are not sidecars: a
-machine-written queue of 2 861 "undecided" rows would bury the few
+took. The rule is the same as for work items, which are not sidecars: a
+machine-written queue of thousands of "undecided" rows would bury the few
 decisions that matter. Rows with no decision simply have no record.
 
 ## Choosing the outcome
@@ -113,7 +111,7 @@ outcomes, and the one you recommend.
 
 ## Automated matches and confirmed ones
 
-Since 2026-10-02 each scheme's SKOS JSON-LD publishes what the check found:
+Each scheme's SKOS JSON-LD publishes what the check found:
 `skos:exactMatch` for an exact match and `skos:closeMatch` for a
 concept-only one. They sit in a **named graph** (`<scheme>/_automated-matches`)
 whose PROV says a program produced it (see `toSkos` in
@@ -143,8 +141,8 @@ moved is still a decision, and it has become a question to look at again.
 
 ## Not here
 
-- **Two judges, one mapping** (leg 2): `adjudication` and
-  `untainted-verification`, when the owner lifts the wait.
+- **Two judges, one mapping**: `adjudication` and `untainted-verification`,
+  once something maps.
 - **Which vocabulary is authoritative for which fact**:
   [`vocabulary-authority`](../../kg/kg-core/vocabulary-authority.md).
 - **How a term is authored**: `glossary-terms`.

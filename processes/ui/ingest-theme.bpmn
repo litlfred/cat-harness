@@ -7,10 +7,10 @@
   by `bun run cat render:bpmn` — never hand-edit the SVG.
 
   The <bootstrap.processes:skill> extension on an activity names the folio-assistant skill
-  that implements it; <cat-harness.processes:bean> marks a step that reads or writes the shared
-  work plan in beans/.
+  that implements it.
+  The engine keeps the work context; no step carries work-plan markup.
 
-  Bean j66n. A theme is ingested from a SOURCE the same way a document is, and
+  A theme is ingested from a SOURCE the same way a document is, and
   the two sources are genuinely different kinds of thing: a deployed site SERVES
   its theme as a stylesheet, while a style guide STATES its rules as prose. The
   gateway is that difference and nothing else — everything after it is shared,
@@ -31,17 +31,9 @@
     <bpmn:participant id="Participant_IngestTheme" name="Ingestion subprocess — ingest a theme" processRef="Process_IngestTheme" />
   </bpmn:collaboration>
   <bpmn:process id="Process_IngestTheme" name="Ingestion subprocess — ingest a theme" isExecutable="false">
-    <bpmn:documentation>Decide whether an ingested artefact is a theme source and, when it is, extract its palette roles and layouts and send them to theme and UI review. folio-assistant — Ingestion subprocess — ingest a theme.
+    <bpmn:documentation>Decide whether an ingested artefact is a theme source and, when it is, extract its palette roles and layouts and send them to theme and UI review.
 
-  Source of truth: this file. Open it in bpmn.io, Camunda Modeler, or any other
-  BPMN 2.0 tool. The SVG under docs/assets/img/workflows/ is generated from it
-  by `bun run cat render:bpmn` — never hand-edit the SVG.
-
-  The &lt;bootstrap.processes:skill&gt; extension on an activity names the folio-assistant skill
-  that implements it; &lt;cat-harness.processes:bean&gt; marks a step that reads or writes the shared
-  work plan in beans/.
-
-  Bean j66n. One Theme node with kind sticky | webpage | publication, not three
+  One Theme node with kind sticky | webpage | publication, not three
   node kinds: the palette vocabulary is shared and only the GEOMETRY varies.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="advisory" />
@@ -100,7 +92,7 @@ own stated rules">
     </bpmn:serviceTask>
     <bpmn:serviceTask id="Task_Contradictions" name="Record contradictions
 IN the source">
-      <bpmn:documentation>A step because it happened twice on the first real ingestion: the WHO guide states its black logo as both K:100 and R:100 G:100 B:100, and gives the logo blue as C:95 on page 6 and C:90 on page 12. A contradiction silently resolved is indistinguishable from one nobody noticed, so it is kept as data and the reading taken is stated as a choice.</bpmn:documentation>
+      <bpmn:documentation>A step because sources do contradict themselves (one colour given two values on different pages). A contradiction silently resolved is indistinguishable from one nobody noticed, so it is kept as data and the reading taken is stated as a choice.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="theme-art-intake" />
       </bpmn:extensionElements>
@@ -115,17 +107,17 @@ present?">
       <bpmn:outgoing>Flow_t9</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:endEvent id="EndEvent_Refused" name="Refused — incomplete">
-      <bpmn:documentation>j66n's fourth clause: every layout still required, and a missing one stays INVALID rather than degraded. Three viewports for a screen theme, three print formats for a publication one. A theme that quietly dropped a layout would render correctly everywhere the missing one is not used, which is the state this refusal exists to prevent.</bpmn:documentation>
+      <bpmn:documentation>Every layout still required, and a missing one stays INVALID rather than degraded. Three viewports for a screen theme, three print formats for a publication one. A theme that quietly dropped a layout would render correctly everywhere the missing one is not used, which is the state this refusal exists to prevent.</bpmn:documentation>
       <bpmn:incoming>Flow_t9</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:callActivity id="Task_Review" name="Theme and UI review" calledElement="Process_ThemeUIReview">
-      <bpmn:documentation>THEME REVIEW HAPPENS HERE AND NOWHERE ELSE. Owner, 2026-09-23: "theme review to ingestion of graphical assets in context of website or app design and determining graphical assets/UI"; asked directly on 2026-09-24 whether that meant ONLY at ingestion: "Yes only at ingestion". Bean `9fdi`.
+      <bpmn:documentation>THEME REVIEW HAPPENS HERE AND NOWHERE ELSE: graphical assets are reviewed at ingestion, in the context of the website or app design they are for.
 
-So this step now CALLS `theme-ui-review.bpmn` rather than performing one automated check out of it. Until 2026-09-24 it carried a `folio:no-call` reason — "calling it would put a human gate into an automated ingest" — and the review ran post-MVP from `crdm-deliver.bpmn` instead. That call is gone, and the reason for not calling is withdrawn rather than left standing beside a call it contradicts.
+So this step CALLS `theme-ui-review.bpmn`.
 
-WHAT THE CALL COSTS, stated rather than hidden. The subprocess has a human step, `R_Judge`: a person looks at the ingested assets laid out in their design at a web and a mobile width. So ingesting a THEME SOURCE is attended at that step. Ingesting anything else stays unattended — `Gateway_ThemeSource` in `document-ingestion.bpmn` routes non-theme documents past this subprocess entirely.
+WHAT THE CALL COSTS, stated rather than hidden. The subprocess has a human step, `R_Judge`: a person looks at the ingested assets laid out in their design at a web and a mobile width. So ingesting a THEME SOURCE is attended at that step. Ingesting anything else stays unattended: it never reaches this subprocess.
 
-THE OLD AUTOMATED CHECK IS INSIDE THE CALL, NOT DROPPED. "A theme sets the stripe's hue; it never sets its width to zero" — colour alone carrying a whole signal fails WCAG SC 1.4.1, and the WHO guide agrees ("Never red with green, never blue with yellow"). That check is `A_Accessibility` in the called process, which measures contrast against the real ground and requires a non-colour channel wherever colour carries meaning.</bpmn:documentation>
+THE AUTOMATED CHECK IS INSIDE THE CALL. "A theme sets the stripe's hue; it never sets its width to zero" — colour alone carrying a whole signal fails WCAG SC 1.4.1, and the WHO guide agrees ("Never red with green, never blue with yellow"). That check is `A_Accessibility` in the called process, which measures contrast against the real ground and requires a non-colour channel wherever colour carries meaning.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="theme-ui-review" />
       </bpmn:extensionElements>

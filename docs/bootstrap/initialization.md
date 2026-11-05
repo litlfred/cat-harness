@@ -43,14 +43,13 @@ The order is the load-bearing part, not the individual steps.
    declaration said — its `name`, and the directories and graph typologies it
    implies. Not before reading theirs: a declaration written first leaves a
    window in which this repository claims to be something it is not, and every
-   consumer that reads a declaration would believe it.
+   consumer that reads a declaration believes it.
 2. **Create the directories the declaration names**, and *only* those. A
    declared-but-absent directory is the defect where a consumer scans nothing
    and reports a clean run over it.
 3. **Write `AGENTS.md`**, with `CLAUDE.md` and `GEMINI.md` as thin stubs
-   pointing at it. This is the phase-two file bootstrap's own `AGENTS.md`
-   promises: the one you copied in could rely on nothing, and this one may
-   rely on the harness that now exists.
+   pointing at it. The copy bootstrap brought in could rely on nothing; this
+   one may rely on the harness that now exists.
 4. **Publish the instance's JSON-LD context.** Declare its `iriBase`
    (`https://<owner>.github.io/<repo>/`) and add `.github/workflows/publish-context.yml`,
    the one-line caller of the tools layer's `layer-publish-context.yml`;
@@ -64,12 +63,10 @@ The order is the load-bearing part, not the individual steps.
    layer's `layer-qa-publish.yml`, and ignore `test/results/`. `init-folio
    --instance` writes the caller. The branch is created by its first run; an
    instance with no `qa` directory of its own is skipped with a notice, and its
-   results are the index's. Before 2026-11-03 this step did not exist, so no
-   layer's declared store was ever written (bean folio-assistant-7mwa).
+   results are the index's.
 6. **Re-enter through this harness.** Read *its* next steps rather than any
-   list held in bootstrap — the set of available steps changed the moment the
-   harness arrived, and the authority on what they are is the harness, not the
-   bootstrap that predates it.
+   list held in bootstrap: the available steps change once the harness is
+   present, and the harness is the authority on what they are.
 
 ## What this instance expects that a bare one does not
 
@@ -80,8 +77,9 @@ you want a folio instance, and `bun run cat init-folio` is the tool for it.
 
 Two consequences worth knowing before you write the declaration:
 
-- **The work plan is `beans/`**, committed, so it survives a resume in a fresh
-  container. Install it before any durable work.
+- **The work plan is `beans/`**, kept on a state branch and mounted at session
+  start (`bun run cat state:mount`), so it survives a resume in a fresh
+  container. Install `beans` before any durable work.
 - **Skills are knowledge-graph content**, resolved through the declaration
   rather than from a memorised path — which is why step 1 is the declaration
   and not a directory listing.
@@ -96,10 +94,9 @@ are yours.
 **The files you inherit that are POINTERS belong to you.** The first one is
 [`bootstrap/README.md`](https://github.com/litlfred/folio-assistant/blob/main/bootstrap/README.md)
 — the page a Bootstrapping Agent reads before it knows anything about the repository.
-It is written for *this* repository: it resolves 13 links into
-`../cat-harness/`, across 6 files, and every one of them is a **term
-definition** — what a role is, what a DAK block is, what a harness declaration
-is.
+It is written for *this* repository: every link it resolves into
+`../cat-harness/` is a **term definition** — what a role is, what a DAK block
+is, what a harness declaration is.
 
 Bootstrap a new instance kind that is not built on `cat-harness`, and your
 first reader gets a page whose every definition points into a harness they are

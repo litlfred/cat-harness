@@ -38,7 +38,7 @@ applies-when: >
 
 # Skill-pipeline subject indexing: decompose the cataloguer's stages and validate each
 
-**Adopted 2026-09-26** (bean `0js9`). All three sources were ingested through
+**Adopted 2026-09-26** (work item `0js9`). All three sources were ingested through
 the library pipeline, and the primary was read whole before this node was
 written.
 

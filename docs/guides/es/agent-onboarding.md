@@ -56,29 +56,26 @@ cat-harness-tools/scripts/session-start-coord-sweep.sh  # CLI-independent equiva
 bun run cat check-deps                     # what this environment can do
 ```
 
-`--check-deps` importa más de lo que parece. Muchas comprobaciones se degradan a `n/a`
-en lugar de fallar cuando falta una herramienta (sin cadena de herramientas de Lean, sin Atlas,
-sin LaTeX). **Un `n/a` no es una aprobación.** Si reporta "todo limpio" sin
-saber qué se omitió, está reportando la ausencia de datos como un
-resultado.
+Muchas comprobaciones se degradan a `n/a` en lugar de fallar cuando falta una
+herramienta (sin cadena de herramientas de Lean, sin Atlas, sin LaTeX). **Un
+`n/a` no es una aprobación:** indique qué se omitió y por qué, porque reportar
+"todo limpio" sin saberlo presenta la ausencia de datos como un resultado.
 
 ## 3. Encuentre la habilidad adecuada — no improvise
 
 Las habilidades son la unidad de trabajo aquí. Antes de crear un procedimiento
-a mano, compruebe si ya existe uno.
+a mano, compruebe si ya existe uno. **Pídala con `skill_list` y `skill_fetch`; no
+navegue a una ruta.**
 
 | Dónde | Qué le proporciona |
 |---|---|
-| `skills/folio-core/` | independiente del contenido: coordinación, observadores (watchers), QA, renderizado, bibliografía |
-| `folio-assistant-sci/skills/content/folio-paper-adapter/` | artículos: Lean, LaTeX, demostraciones, simuladores |
-| `smart-base/skills/content/authoring-who-smart-guidelines/` | WHO SMART DAK / IG |
 | [Referencia de esquemas de habilidades]({{ site.baseurl }}/reference/skills/) | contrato de entrada/salida generado por habilidad |
 | [Instrucciones de habilidades]({{ site.baseurl }}/reference/skill-instructions/) | cuerpos de instrucciones completos generados |
 | [Habilidades y roles](../../concepts/skills.html) | cómo se componen las habilidades, los roles y las capacidades |
 
 Ambos directorios `reference/` son **generados** — nunca los edite a mano.
-Regenere con `bun run scripts/gen-schema-docs.ts` y
-`bun run scripts/gen-skill-docs.ts`.
+Regenere con `bun run cat-harness-tools/scripts/gen-schema-docs.ts` y
+`bun run cat-harness-tools/scripts/gen-skill-docs.ts`.
 
 ## 4. El modelo de objetos de contenido, en resumen
 
@@ -95,8 +92,6 @@ El manifiesto `.ts` es la fuente de verdad para la estructura. El *estado*
 de la formalización se deriva en el momento de compilación, nunca se almacena en el manifiesto.
 
 ## 5. Dos relaciones de dependencia — no las confunda
-
-Esto hace tropezar a los agentes constantemente.
 
 - **`uses[]` es editorial.** "¿Qué debe haber leído un lector para comprender
   este bloque?" Redactado — mantenido por el agente o el humano.
@@ -121,22 +116,23 @@ Auditar si `uses[]` está bien utilizado es una habilidad en sí misma:
 ## 6. Realice un seguimiento del trabajo en beans, no en su cabeza
 
 `beans` es el **único** mecanismo de tareas pendientes — local de la sesión *y*
-entre agentes. `beans/` está en el repositorio (committed), por lo que un plan sobrevive a la reanudación en un
+entre agentes. `beans/` se guarda en una rama de estado y se monta al iniciar la sesión
+(`bun run cat state:mount`), por lo que un plan sobrevive a la reanudación en un
 contenedor nuevo.
 
 ```sh
 beans list
 beans create "<title>"
-beans update <id> --status in-progress    # CLAIM before you work
+bun run cat beans:claim <id>             # CLAIM before you work
 ```
 
 Reclame antes de trabajar para que dos sesiones no elijan el mismo elemento, y nunca
-resuelva ni elimine el bean de un homólogo. No cree un almacén de tareas
+resuelva ni elimine el work item de un homólogo. No cree un almacén de tareas
 paralelo. No ejecute `beans create` para colas masivas generadas por máquinas (`*.qa.json`,
 archivos de testigos) — esas permanecen como JSON masivo.
 
-Disciplina completa: `skills/sdlc/sdlc-core/todo-manager.md`,
-`skills/sdlc/sdlc-core/bean-coordination.md`.
+Disciplina completa: `work-plan/skills/work-plan/todo-manager.md`,
+`work-plan/skills/work-plan/bean-coordination.md`.
 
 ## 7. Sidecars y ejes de QA
 
@@ -192,18 +188,12 @@ Monitorear un PR hermano: `/watch <pr|branch>`.
 | Qué significa un criterio de QA | `content/pipeline/qa-criteria-registry.ts` — las descripciones son la especificación |
 | El esquema de bloques | `schemas/types.ts` |
 | El esquema del sidecar de QA | `schemas/block-qa.ts` |
-| Qué puede hacer este entorno | `.claude/skills/capabilities/*.json`, `--check-deps` |
-| Hoja de ruta de herramientas Lean | [Propuesta de herramientas Lean](https://github.com/litlfred/folio-assistant/issues/198) |
+| Qué puede hacer este entorno | `cat-harness/scenarios/capabilities/*.json`, `check-deps` |
 
 ## 10. Hábitos para evitar problemas
 
-- **`n/a` no es una aprobación.** Indique qué se omitió y por qué.
-- **Reclame un bean antes de un trabajo duradero.** Otros agentes podrían estar ejecutándose.
 - **No codifique en duro el nombre de un artículo.** Un folio puede contener varios; resuélvalo
   con `findPapers()` / `soleFolioPaper()` de
   `content/pipeline/repo-root.ts`.
-- **No escriba contenido en la plataforma.** Si nombra un capítulo, una
-  constante o un vocabulario, se trata de datos del folio.
-- **Regenere, nunca edite a mano,** nada que esté bajo `docs/reference/`.
 - **Lea la descripción del criterio antes de actuar sobre un hallazgo.** Estas
   indican la severidad, la intención y lo que explícitamente *no* cuenta.

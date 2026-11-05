@@ -13,10 +13,9 @@
   <!-- ═══════════════════════════════════════════════════════════
        Mount a declared subgraph — ONE process for every content source.
 
-       The owner, 2026-10-03: "It's the same pattern. One of them is mounting
-       the directory while one of them is mounting a branch. Another mount
-       type could come in the future. A sub graph declares where it's getting
-       its content." Bean l4ay.
+       A subgraph declares where it gets its content; mounting a directory
+       and mounting a branch are the same pattern, and other kinds may
+       follow.
 
        So there is no "mount a branch" process beside a "read a directory"
        one. Every step that reads or writes a declared subgraph starts here:
@@ -94,7 +93,7 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
 
     <bpmn:task id="Task_MountRemotePin" name="Mount the remote tree&#10;at its pin">
       <bpmn:documentation>
-        A `remote` source (bean `0mpw`): another repository's tree at a full
+        A `remote` source: another repository's tree at a full
         40-character commit. `bun run cat mount:remote` lays it down at the declared
         path and locks its tree digest; it is never written back, because the
         bytes are somebody else's at somebody else's pin. Usually reached
@@ -118,8 +117,7 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
       <bpmn:documentation>
         A kind added to the union (a graph database, say) before this diagram
         and the mount tool learn it. Refused with its own exit code — reading it
-        as a directory would scan an empty path and report it clean, the `dh4f`
-        defect.
+        as a directory would scan an empty path and report it clean.
       </bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="sub-kg-lifecycle"/></bpmn:extensionElements>
     </bpmn:task>

@@ -3,7 +3,7 @@ name: associate-harness
 description: >
   Declare a harness this one knows about and does not hold (`associatedHarnesses`):
   a folio in another repository, published at its own site. Referenced, never
-  loaded, never materialized. Issue #1146.
+  loaded, never materialized.
 adapters: [document, paper, dak]
 profiles: [document, paper]
 consulted: true
@@ -11,12 +11,9 @@ consulted: true
 
 # Associate a harness
 
-The owner, 2026-09-23, on the ihris folio:
-
-> i dont want to publish at /folio-assistant/ihris/; that's a platform change,
-> certainly not a materialized publish, but we need a good mechanism for
-> "assocaiated" harnesssed KGs. it should be an optional list proroperty of any
-> harness inheriting cat-harness (including itself).
+`associatedHarnesses` is an optional list on any harness that inherits
+cat-harness, including cat-harness itself. It names a harness published from
+its own repository, without publishing or materializing it here.
 
 ## What an association is, and what it is not
 
@@ -30,9 +27,7 @@ A harness has four ways to relate to another:
 | **associated** | `associatedHarnesses` | knows another **harness**, and where it lives |
 
 **`needs` is required of every instance in this repository, and so is a harness
-IRI.** Owner, 2026-09-30 (issue #1548): *"QA gates on harness declaration of
-dependences. harness instancess need IRI for harness."* `check:instance-graph`
-fails on:
+IRI.** `check:instance-graph` fails on:
 
 - an instance with no `needs` (write `[]` for the floor; absent stays a legal
   runtime state and reports `unknown`, but a repository does not ship it);
@@ -85,5 +80,6 @@ Add an entry to `associatedHarnesses` in the declaring instance's `<name>.json`:
 
 ## Then
 
-Run `bun run cat docs:harness` and commit `docs/_data/harness.json`. The Harnesses
+Run `bun run cat docs:harness` to write `docs/_data/harness.json` (built at
+publish, never committed: it is declared under `builtAtPublish`). The Harnesses
 panel (the ⚙ on a sidebar divider, or the glass tile) reads it from there.

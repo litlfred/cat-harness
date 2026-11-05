@@ -11,7 +11,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 # Accesibilidad
 {: .no_toc }
 
-En el [issue #232](https://github.com/litlfred/folio-assistant/issues/232) se plantearon dos preguntas, y esta página las responde:
+Esta página responde a dos preguntas:
 
 1. ¿Cuáles son las opciones de soporte para discapacidades aquí y cuál es la mejor práctica?
 2. ¿Cuáles son las opciones para forzar las preguntas y respuestas agénticas (Q&A) hacia preguntas guiadas que sigan la lógica DMN y puedan servir a diversas modalidades de interacción?
@@ -29,7 +29,7 @@ Un agente que formula una buena pregunta de manera inutilizable no ha preguntado
 
 La forma habitual: un prompt largo y abierto —*«Cuéntame sobre el folio que tienes en mente, qué tipos de contenido esperas y cómo te gustaría que estuviera organizado»*— enviado a alguien para quien escribir en el teclado es lento y doloroso. La respuesta es breve. El agente interpreta la brevedad como falta de compromiso y formula otra pregunta abierta. Nadie en ese intercambio ha hecho nada evidentemente incorrecto, y la conversación ya está fracasando.
 
-El propietario de este repositorio tiene una función manual muy limitada, por lo que el caso aquí no es hipotético. Pero la regla se generaliza sin alusión a nadie en particular:
+La regla:
 
 > **El costo de una pregunta lo paga quien la responde.** Diseña la pregunta para que la respuesta más económica posible siga siendo una respuesta completa.
 
@@ -82,22 +82,22 @@ No un vago «sigue las pautas de accesibilidad», sino documentos específicos, 
 | **Section 508** | contratación federal de EE. UU. | lo mismo, en los EE. UU. |
 | **ATAG 2.0** | herramientas que *producen* contenido | **la que suele pasarse por alto.** folio-assistant es una herramienta de autoría: la Parte A exige que la herramienta sea utilizable; la Parte B, que la herramienta ayude al autor a producir contenido accesible |
 
-Vale la pena detenerse en la Parte B de ATAG, porque es la parte que una plataforma de contenido puede ofrecer de manera única: la presencia de texto alternativo, el orden de los encabezados, los encabezados de tabla y el etiquetado de idioma en los folios *publicados* son comprobaciones que el barrido de QA puede realizar, y ninguna mejora de accesibilidad en el editor puede sustituirlas.
+La Parte B de ATAG es la parte que una plataforma de contenido puede ofrecer de manera única: la presencia de texto alternativo, el orden de los encabezados, los encabezados de tabla y el etiquetado de idioma en los folios *publicados* son comprobaciones que el barrido de QA puede realizar, y ninguna mejora de accesibilidad en el editor puede sustituirlas.
 
 ### 2.6 Qué está implementado hoy
 
 | | dónde |
 |---|---|
-| Preferencias orientadas al agente, guardadas en el repositorio (committed), leídas al inicio de la sesión | `interaction/interaction.json`, expuestas por `scripts/session-start-coord-sweep.sh` |
+| Preferencias orientadas al agente, guardadas en el repositorio (committed), leídas al inicio de la sesión | `memory/interaction.json`, expuestas por `scripts/session-start-coord-sweep.sh` |
 | Las reglas que sigue un agente al preguntar | [`interaction-modality`]({{ site.baseurl }}/reference/skill-instructions/interaction-modality.html) |
 | Controles para el lector en este sitio | el engranaje en el encabezado de la barra lateral —texto más grande, mayor contraste, enlaces subrayados, movimiento reducido |
 | Movimiento reducido respetado sin tener que solicitarlo | media query `prefers-reduced-motion`, que inicializa el valor predeterminado del panel |
 
-**Los dos almacenes de preferencias están separados deliberadamente.** `interaction/interaction.json` está en el repositorio, está orientado al agente y atañe a la conversación. El control del sitio reside en el `localStorage` de cada visor, nunca sale del navegador y atañe a la lectura. Un lector que no sea el autor y que elija texto grande no debe reconfigurar de manera silenciosa cómo le habla el agente al autor.
+**Los dos almacenes de preferencias están separados deliberadamente.** `memory/interaction.json` está en el repositorio, está orientado al agente y atañe a la conversación. El control del sitio reside en el `localStorage` de cada visor, nunca sale del navegador y atañe a la lectura. Un lector que no sea el autor y que elija texto grande no debe reconfigurar de manera silenciosa cómo le habla el agente al autor.
 
 ### 2.7 Qué no está hecho
 
-Declarado explícitamente en lugar de sobreentendido, porque una característica de accesibilidad anunciada a medias es peor que una ausente:
+Declarado explícitamente, porque una característica de accesibilidad anunciada a medias es peor que una ausente:
 
 - **Sin comprobaciones de la Parte B de ATAG en el barrido de QA.** Todavía nada verifica que un folio publicado contenga texto alternativo, un orden correcto de encabezados o encabezados de tabla.
 - **Sin auditoría de los PDF generados.** La ruta de renderizado de documentos pasa por weasyprint/prince/wkhtmltopdf y la salida de PDF etiquetado (tagged PDF) no se ha verificado.
@@ -106,7 +106,7 @@ Declarado explícitamente en lugar de sobreentendido, porque una característica
 
 ## 3. Forzar preguntas y respuestas agénticas hacia preguntas guiadas
 
-La segunda pregunta. La respuesta es una separación, y esa separación constituye todo el diseño.
+La respuesta es una separación.
 
 ### 3.1 Dos cosas que parecen una sola
 
@@ -145,11 +145,10 @@ Cuatro formas de hacer esto, en orden creciente de ambición. Solo la primera es
 - **El subconjunto de FEEL es pequeño.** `src/workflow/decision-table.ts` implementa igualdad, comparación y pertenencia (one-of). Los rangos, `not()` y las llamadas a funciones son *rechazados* en lugar de evaluarse incorrectamente de forma silenciosa: una tabla que devuelve una respuesta distinta a la esperada en la página es peor que una que lanza una excepción.
 - **Una pregunta abierta no es una decisión.** «¿De qué trata este artículo?» no pertenece a una tabla, y forzarla allí produce una entrevista peor.
 - **Una conversación no es un asistente paso a paso (wizard).** El usuario siempre debe poder decir algo que la tabla no anticipó. Para eso está la opción «cuéntame más», y no es un adorno opcional.
-- **Guiado no significa interrogar.** La mayor victoria en accesibilidad disponible es la pregunta que no tuviste que hacer: cada hecho que el agente lee del sistema de archivos es una pregunta menos. Esa victoria es invisible, no recibe reconocimiento, y es mayor que cualquier hoja de estilo.
+- **Guiado no significa interrogar.** La mayor victoria en accesibilidad disponible es la pregunta que no tuviste que hacer: cada hecho que el agente lee del sistema de archivos es una pregunta menos.
 
 ## Véase también
 
 - [Primeros pasos](getting-started.html) — la tabla de decisiones de intención en uso
 - [Habilidad `interaction-modality`]({{ '/reference/skill-instructions/interaction-modality.html' | relative_url }})
 - [Flujo de publicación](../../process/es/publication-workflow.html) — cada proceso en el repositorio
-- [Opciones para el estado del flujo de trabajo en beans]({{ '/proposals/workflow-state-in-beans.html' | relative_url }})

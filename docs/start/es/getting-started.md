@@ -120,7 +120,7 @@ ambos no puedan desincronizarse. Nada en `src/` necesita cambiar.
 
 **La forma de la pregunta va antes que su contenido.** El agente establece cómo
 te gustaría que te pregunten — opciones seleccionables, chat ordinario, lectura en voz alta,
-tipografía grande — y lo registra en `interaction/interaction.json` para que ninguna sesión futura
+tipografía grande — y lo registra en `memory/interaction.json` para que ninguna sesión futura
 te lo vuelva a preguntar. Consulta [Accesibilidad](accessibility.html).
 
 Luego, cuando la respuesta es genuinamente ambigua:
@@ -174,7 +174,7 @@ Las herramientas más relevantes para esta página:
 |------|---------|
 | `folio_init` | Genera la estructura inicial de un folio. Registrada como una herramienta **genérica**, porque se ejecuta antes de que el folio tenga un tipo de contenido |
 | `workflow_start` / `workflow_next` / `workflow_complete` | Ejecuta `getting-started.bpmn` como un proceso real; `workflow_next` indica qué está habilitado en este momento y qué habilidad lo implementa |
-| `work_plan_prime` | Muestra el plan de trabajo (beans) |
+| `work_plan_prime` | Muestra el plan de trabajo (work items) |
 | `check_dependencies` | Verifica cuáles cadenas de herramientas están instaladas |
 | `skill_list` / `skill_fetch` | Descubre y carga las instrucciones de una habilidad |
 
@@ -326,16 +326,15 @@ de plan de trabajo: persistente entre sesiones, compartido entre agentes y confi
 en el repositorio.
 
 ```sh
-scripts/install-beans.sh          # instala la CLI si no está presente
+cat-harness-tools/scripts/install-beans.sh # instala la CLI si no está presente
 beans prime                       # emite la preparación del plan de trabajo para los agentes
 beans list                        # elementos abiertos actualmente
 beans create "draft chapter 1"    # abre un elemento
-beans <id> --status in-progress   # reclama un elemento
+bun run cat beans:claim <id>      # reclama un elemento
 ```
 
 > **Verifica antes de crear.** `beans create` genera un ID nuevo en cada llamada y
-> no elimina duplicados bajo ningún criterio. Volver a ejecutar un paso automatizado sin una comprobación
-> de existencia produjo **14,688** beans duplicados en un folio durante una sola tarde. La
+> no elimina duplicados bajo ningún criterio. Comprueba primero si ya existe. La
 > verificación se encuentra en la habilidad
 > [`todo-manager`]({{ '/reference/skill-instructions/todo-manager.html' | relative_url }}).
 

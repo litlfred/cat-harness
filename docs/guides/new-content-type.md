@@ -39,9 +39,8 @@ adapter with two *profiles* — nested restrictions of one vocabulary — and th
 The test is whether the new type needs different *code* (a different resolver,
 different tools, a different render path) or only different *rules* about what
 its blocks may be. If it is only rules, add a profile in
-`schemas/block-kinds.ts` and a subclass; you get the whole platform for a
-fraction of the work, and there is one implementation to keep correct rather
-than two.
+`schemas/block-kinds.ts` and a subclass, because then there is one
+implementation to keep correct rather than two.
 
 Adapters are for genuinely disjoint namespaces — `paper` and `dak` share no
 block kind at all.
@@ -70,7 +69,7 @@ Wire it up by selecting it through the folio config:
 
 ## 2. The skill package
 
-Create `skills/authoring-your-type/package-manifest.json` declaring the skills
+Create `skills/<topic>/authoring-your-type/package-manifest.json` declaring the skills
 and the Docker/runtime dependencies (apt/pip/npm, setup commands, env). Follow
 the existing manifests (`authoring-math`, `authoring-who-smart-guidelines`):
 
@@ -95,7 +94,7 @@ These are the typed contract the LLM works against; a contract no skill names is
 reported as unclaimed. Then regenerate the reference:
 
 ```sh
-bun run scripts/gen-schema-docs.ts
+bun run cat-harness-tools/scripts/gen-schema-docs.ts
 ```
 
 Your skill pages appear automatically in the
@@ -114,6 +113,6 @@ package only adds the *authoring* skills unique to the type.
 - [ ] `<name>.config.json` points at the adapter
 - [ ] Skill package + `package-manifest.json` with Docker deps
 - [ ] JSON Schemas under `schemas/skills/<skill>/`
-- [ ] `bun run scripts/gen-schema-docs.ts` regenerated
+- [ ] `bun run cat-harness-tools/scripts/gen-schema-docs.ts` regenerated
 - [ ] Capabilities probed by `check_dependencies`
 - [ ] Tests (`bun test`) and lint (`bun run cat lint`) green

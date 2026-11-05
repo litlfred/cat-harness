@@ -79,7 +79,7 @@ software and knowledge engineering. Below is the mapping against the repository'
 ### B. Software Design: Full Coverage
 - **Executable Process & Decision Modeling (`processes/`)**:
   - System architecture is modeled in OMG standard BPMN 2.0.2 and DMN 1.5, serving as the machine-verifiable source of truth rather than informal diagrams.
-- **Architecture Decision Records (`methodologies/madr.md`, `processes/sdlc/options-analysis.bpmn`)**:
+- **Architecture Decision Records (`methodologies/madr.md`, `sdlc/processes/options-analysis.bpmn`)**:
   - Structured decision logging capturing context, options, decision drivers, and trade-offs.
 - **Role & Swimlane Topology (`processes/process/actor-role-administration.bpmn`, `methodologies/raci.md`)**:
   - Strict separation between persistent actors, process roles, and skill bundles.
@@ -93,31 +93,31 @@ software and knowledge engineering. Below is the mapping against the repository'
   - Translating natural language assertions into formal mathematical proofs and verified Lean siblings.
 - **Hybrid LLM/Deterministic Execution (`methodologies/hybrid-llm-deterministic.md`)**:
   - The model emits a verifiable rule or program (e.g. JSONata, Lean, AST transform), which deterministic machinery compiles and runs.
-- **Parallel Dispatch & Heartbeat Contracts (`skills/sdlc/sdlc-core/dispatch-agent.md`)**:
+- **Parallel Dispatch & Heartbeat Contracts (`sdlc/skills/sdlc-core/dispatch-agent.md`)**:
   - Live 2-minute status heartbeats and progress monitoring contracts preventing agent dark runs.
 
 ### D. Software Quality Assurance & Testing: Rigorous Evidence-Based Coverage
-- **Code Quality Gates (`processes/sdlc/code-quality-gates.bpmn`, `bun run cat gates`)**:
+- **Code Quality Gates (`sdlc/processes/code-quality-gates.bpmn`, `bun run cat gates`)**:
   - Derived dynamically from CI workflows; gates run both static lints, typechecks, schema checks, and browser suites.
 - **Verifiable AI Guideline Evaluation (`methodologies/verifiable-ai-guideline-evaluation.md`)**:
   - Multi-agent cross-examination with statistical consensus (e.g., Fleiss' kappa, Gwet's AC1).
-- **QA Reports & Attestations (`processes/sdlc/qa-report-signing.bpmn`, `processes/sdlc/decisions/signing-route.dmn`)**:
+- **QA Reports & Attestations (`sdlc/processes/qa-report-signing.bpmn`, `sdlc/processes/decisions/signing-route.dmn`)**:
   - Commit-keyed QA verdicts stored on orphan branches (`qa-reports`) and signed attestations.
 - **L1 Ingest & Completeness Audits (`scripts/check-l1-complete.ts`)**:
   - Exhaustive multi-arm verification of documents, blocks, images, and figures.
 
 ### E. Software Maintenance & Review: High Coverage
 - **Adversarial & Multi-Perspective Reviews**:
-  - `processes/sdlc/code-change-review.bpmn`, `narrative-code-review.bpmn`, and `processes/content/voice-review.bpmn` evaluate changes across competing perspectives (pedantry, security, architecture, user experience).
+  - `sdlc/processes/code-change-review.bpmn`, `narrative-code-review.bpmn`, and `processes/content/voice-review.bpmn` evaluate changes across competing perspectives (pedantry, security, architecture, user experience).
 - **Upstream Version & Pin Management**:
-  - `processes/sdlc/upstream-pin-watch.bpmn` and `upstream-version-adoption.bpmn` guard against dependency drift.
-- **Criterion Adjudication (`processes/sdlc/adjudication.bpmn`, `criterion-adjudication.bpmn`)**:
+  - `sdlc/processes/upstream-pin-watch.bpmn` and `upstream-version-adoption.bpmn` guard against dependency drift.
+- **Criterion Adjudication (`sdlc/processes/adjudication.bpmn`, `criterion-adjudication.bpmn`)**:
   - Evidence-backed resolution of audit findings and defects.
 
 ### F. Software Management & Collaboration: Industrial-Grade Governance
-- **Git-Backed Work-Plan Coordination (`processes/sdlc/bean-lifecycle.bpmn`, `skills/sdlc/sdlc-core/bean-coordination.md`)**:
-  - Branch-local claims, no duplicate bean creation, explicit holder notes, and scrap-over-delete discipline.
-- **Serialized Merge Train & Merge Steward (`processes/sdlc/merge-train.bpmn`, `decisions/merge-priority.dmn`)**:
+- **Git-Backed Work-Plan Coordination (`sdlc/processes/bean-lifecycle.bpmn`, `work-plan/skills/work-plan/bean-coordination.md`)**:
+  - Branch-local claims, no duplicate work item creation, explicit holder notes, and scrap-over-delete discipline.
+- **Serialized Merge Train & Merge Steward (`sdlc/processes/merge-train.bpmn`, `decisions/merge-priority.dmn`)**:
   - Avoids multi-agent git race conditions and conflicting concurrent pushes to main.
 
 ---
@@ -154,7 +154,7 @@ The survey identifies emerging operational paradigms where folio-assistant does 
 2. **Runtime APM & Telemetry Closed-Loop Ingestion**:
    - *Current state*: Audit failures in CI create local and branch-level reports. Production telemetry does not feed back into the `beans` graph.
    - *Survey benchmark*: Automated incident-to-bug-report translation with automated regression test generation.
-   - *Recommendation*: Connect external issue alerts and crash-reporters into automated triage beans (`stalled-agent-triage` / `issue-working`).
+   - *Recommendation*: Connect external issue alerts and crash-reporters into automated triage work items (`stalled-agent-triage` / `issue-working`).
 
 3. **Legacy Software Reverse Engineering**:
    - *Current state*: Folio-assistant excels in forward-engineering from formal specifications, guidelines, and schemas.
@@ -170,4 +170,4 @@ The survey identifies emerging operational paradigms where folio-assistant does 
 2. **Hybrid Deterministic/LLM Architecture is Essential**:
    Pure generative coding degrades with complexity. Inverting the model's responsibility from generating whole output to generating validated rules (`methodologies/hybrid-llm-deterministic.md`) matches the survey's research agenda for Phase 1 (specialized agent capability enhancement).
 3. **Multi-Agent Coordination Requires Serialized Governance**:
-   Uncoordinated agent swarms produce merge chaos and duplicated work. Folio-assistant's bean claims and merge steward fulfill the survey's Phase 2 vision for optimizing agent synergy and leveraging industry software engineering principles.
+   Uncoordinated agent swarms produce merge chaos and duplicated work. Folio-assistant's work item claims and merge steward fulfill the survey's Phase 2 vision for optimizing agent synergy and leveraging industry software engineering principles.

@@ -14,16 +14,15 @@ between: seeing that something arrived.
 
 **The queue path is read from the declaration, never written down.** It is
 `uploads/` relative to the *instance*, which is not where a repository-relative
-consumer would look — the segment that caused a live 404, recorded in
-`content-acquisition`. `queueRepoRelative` in `scripts/upload-url.ts` is the one
+consumer would look. `queueRepoRelative` in `scripts/upload-url.ts` is the one
 place that arithmetic lives.
 
-## An arrival is not a backlog, and the difference is the whole point
+## An arrival is not a backlog
 
 A file sitting in the queue says nothing on its own: it may have landed a minute
-ago or been waiting since before this session. Reporting a queue's *contents* as
-news is how a watcher becomes noise that gets ignored, and an ignored watcher is
-worse than none — it reads as coverage.
+ago or been waiting since before this session. Do not report a queue's
+*contents* as news: a watcher that does becomes noise that gets ignored, and an
+ignored watcher reads as coverage.
 
 So report against a **mark**: what was there when this session began, or when
 the watch last ran. What is new since the mark is an arrival. Everything else is
@@ -56,4 +55,4 @@ without a next step hands the reader a fact and a chore.
 ## What to say when nothing did
 
 Nothing, unless you were asked. A watch that reports every quiet interval trains
-its reader to skip it, and the one round that mattered goes with the rest.
+its reader to skip it, including the round that matters.

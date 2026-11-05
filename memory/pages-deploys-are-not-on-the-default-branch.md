@@ -24,7 +24,7 @@ counts, grade no share — only the floor *"deployments happened, none succeeded
 repository state.
 
 <!-- detail -->
-Bean `3yi4`, from the owner's correction: *"they are not. changes status of
+Work item `3yi4`, from the owner's correction: *"they are not. changes status of
 repo. tools need to look external."*
 
 ## Why the query was too narrow rather than missing

@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_254 skills in 18 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_255 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -84,13 +84,13 @@ _254 skills in 18 directories, generated from each skill's front matter. `bun ru
 
 | Skill | What it is for |
 |---|---|
-| [`domain-fencing`](skills/kg/graph-management/domain-fencing.md) | How a domain-specific rule is kept out of the platform without being lost — the opt-in axis mechanism, the one criterion that should use it and does not, and the test for whether a rule generalizes… |
+| [`domain-fencing`](skills/kg/graph-management/domain-fencing.md) | How a domain-specific rule is kept out of the platform without being lost — the opt-in axis mechanism, why a profile is not a fence, and the test for whether a rule generalizes at all. |
 | [`edge-kinds-and-blast-radius`](skills/kg/graph-management/edge-kinds-and-blast-radius.md) | A graph has more than one kind of edge, and conflating them corrupts both the ordering and the impact answer. |
 | [`graph-detanglement`](skills/kg/graph-management/graph-detanglement.md) | Drive a tangled graph toward a clean partition, so a sub-graph can be split off when it grows too large or when a business reason separates it. |
 | [`graph-rendering`](skills/kg/graph-management/graph-rendering.md) | Draw any graph in a harness (schemas, processes, a folio's block graph and any formal relation its content type adds, a detangle partition) so the picture is derived, checkable and readable. |
 | [`kg-separation`](skills/kg/graph-management/kg-separation.md) | Separate a Knowledge Graph into its own repository — as a CONTENT repository (files to read, no code) and a TOOLS repository (the code that writes and checks it) — once it is too large, or its… |
 | [`kg-subgraph-layout`](skills/kg/graph-management/kg-subgraph-layout.md) | Lay out one declared sub-graph of a knowledge graph (a harness's schema overview, one named sub-graph, a declaration's kinds) as a single Graphviz diagram in the i2ce Form Documentor's convention,… |
-| [`lsi-indexing`](skills/kg/graph-management/lsi-indexing.md) | Build, read and audit a Latent Semantic Indexing index over a declared prose graph — a library, the skills, the beans, docs — to find units that discuss the same thing in different words,… |
+| [`lsi-indexing`](skills/kg/graph-management/lsi-indexing.md) | Build, read and audit a Latent Semantic Indexing index over a declared prose graph — a library, the skills, the work items, docs — to find units that discuss the same thing in different words,… |
 | [`named-query-execution`](skills/kg/graph-management/named-query-execution.md) | How to execute audited SPARQL 1.1 named queries over partitioned W3C N-Quads dataset distributions across CLI, MCP tools, and WebAssembly browser clients. |
 | [`nquads-distribution`](skills/kg/graph-management/nquads-distribution.md) | How to compile, partition by named subgraphs, and distribute W3C N-Quads datasets beside pre-compiled SPARQL 1.1 named queries for static edge and client-side querying. |
 | [`sub-kg-lifecycle`](skills/kg/graph-management/sub-kg-lifecycle.md) | A sub-KG is a knowledge graph staged as a directory inside a harnessed repository, declared as its own instance, that may later leave for a repository of its own. |
@@ -149,7 +149,7 @@ _254 skills in 18 directories, generated from each skill's front matter. `bun ru
 
 | Skill | What it is for |
 |---|---|
-| [`adopt-methodology-from-source`](skills/library/library-core/adopt-methodology-from-source.md) | The general process for turning a shared paper, book or standard into an adopted methodology: establish origin and licence, ingest the source, find and summarize related beans and issues and ask… |
+| [`adopt-methodology-from-source`](skills/library/library-core/adopt-methodology-from-source.md) | The general process for turning a shared paper, book or standard into an adopted methodology: establish origin and licence, ingest the source, find and summarize related work items and issues and… |
 | [`asset-extraction`](skills/library/library-core/asset-extraction.md) | Reading a container — a zip, a PDF, a saved web page — into the knowledge graph. |
 | [`code-lists`](skills/library/library-core/code-lists.md) | Author, extend or consume a code list: a closed set of codes, each with a label, a definition and a source, kept as a node and published as SKOS. |
 | [`content-acquisition`](skills/library/library-core/content-acquisition.md) | Getting a resource INTO the graph in the first place — accepting one offered unprompted, or asking for one and then asking for it to be uploaded. |
@@ -170,7 +170,7 @@ _254 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`methodology-adoption`](skills/process/process-core/methodology-adoption.md) | How a named external methodology enters the knowledge graph, and how an agent picks which one applies. |
 | [`role-model`](skills/process/process-core/role-model.md) | Actors, roles and skills — who performs a BPMN task, under which swimlane, with which skills. |
 | [`swimlane-glossary`](skills/process/process-core/swimlane-glossary.md) | Swimlane Glossary Skill |
-| [`swot-analysis`](skills/process/process-core/swot-analysis.md) | Running a SWOT situation analysis — the four activities of `swot-analysis.bpmn`, what each step must produce, and the one thing the technique must never be used for. |
+| [`swot-analysis`](skills/process/process-core/swot-analysis.md) | Running a SWOT situation analysis — the activities of `swot-analysis.bpmn`, what each step must produce, and the one thing the technique must never be used for. |
 | [`task-authorization`](skills/process/process-core/task-authorization.md) | The check every BPMN task execution runs before anything is recorded: is the actor authenticated, assigned to the role the lane binds, authorized by an ODRL policy to perform the task, and allowed… |
 
 **`skills/process/raci/`** (1)
@@ -194,110 +194,6 @@ _254 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`session-state-machine`](skills/process/workflow/session-state-machine.md) | An agent PLAYING a state machine rather than an engine executing one. |
 | [`specification-compiled-agents`](skills/process/workflow/specification-compiled-agents.md) | When a diagram already says what the process is, the model should not be planning it. |
 | [`workflow-state`](skills/process/workflow/workflow-state.md) | Where a running process keeps what it knows, and which store answers which question. |
-
-**`skills/sdlc/crdm/`** (7)
-
-| Skill | What it is for |
-|---|---|
-| [`crdm-data-model`](skills/sdlc/crdm/crdm-data-model.md) | The CRDM data-modelling phase — when in the requirements process a model is built, what it is built from, who confirms it, and what it hands to the phases either side. |
-| [`crdm-detect`](skills/sdlc/crdm/crdm-detect.md) | Detect when a request needs requirements agreed before anything is built, and which of the two parallel requirements methodologies governs it. |
-| [`crdm-impact-analysis`](skills/sdlc/crdm/crdm-impact-analysis.md) | Guide for CRDM Phase 4 — Impact Analysis and Migration Planning. |
-| [`crdm-needs-assessment`](skills/sdlc/crdm/crdm-needs-assessment.md) | Facilitate Phase 1 (Needs Assessment) of the CRDM requirements workflow. |
-| [`crdm-recorded-walkthrough`](skills/sdlc/crdm/crdm-recorded-walkthrough.md) | Turn a recorded requirements walkthrough (a video call where a business analyst demonstrates a feature and a stakeholder asks for changes) into CRDM Phase 3 requirements with evidence: transcripts… |
-| [`crdm-requirements-template`](skills/sdlc/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
-| [`crdm-requirements-workflow`](skills/sdlc/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
-
-**`skills/sdlc/sdlc-core/`** (78)
-
-| Skill | What it is for |
-|---|---|
-| [`activity-log`](skills/sdlc/sdlc-core/activity-log.md) | Activity log — what an agent did, kept out of the graph |
-| [`adjudication`](skills/sdlc/sdlc-core/adjudication.md) | Settle a review that reached no mechanical or consensus agreement. |
-| [`adversarial-code-review`](skills/sdlc/sdlc-core/adversarial-code-review.md) | Review a pull request an agent touched by building the strongest case that it is wrong, unsafe, or not what it claims, and record the verdict where the merge gate reads it: one `merge-review/v1`… |
-| [`agent-handoff`](skills/sdlc/sdlc-core/agent-handoff.md) | Governs handing ONE task to an agent in another environment — a local agent with network the cloud session lacks, a sibling on a different machine, anything that cannot read the coordinator's… |
-| [`bean-blocking`](skills/sdlc/sdlc-core/bean-blocking.md) | Default to non-blocking when updating a bean's status. |
-| [`bean-coordination`](skills/sdlc/sdlc-core/bean-coordination.md) | Pointer to the bean-based session work-plan system (the `beans` CLI flat-file issue tracker, data under `beans/`). |
-| [`bean-drain`](skills/sdlc/sdlc-core/bean-drain.md) | Drain open beans (stories, bugs, features) with several agents at once, as part of the SDLC: build the queue, group it by owner, check and claim each bean on every bean copy before any work, open… |
-| [`before-after-preview`](skills/sdlc/sdlc-core/before-after-preview.md) | Make a reviewer-facing BEFORE/AFTER preview of a change to anything that is rendered — a docs site, a paper's PDF, a FHIR IG, a slide deck, a website — and put it where the review and feedback… |
-| [`benchmarking-mode`](skills/sdlc/sdlc-core/benchmarking-mode.md) | Benchmarking output is a synthesized report across models and configurations, deliberately excluded from declared knowledge-graph typologies. |
-| [`blocked-build-dependencies`](skills/sdlc/sdlc-core/blocked-build-dependencies.md) | A build or a model download fails from an agent container. |
-| [`branch-archaeology`](skills/sdlc/sdlc-core/branch-archaeology.md) | Classify every remote branch against the default branch (merged, landed by squash or cherry-pick, partially landed, unlanded, undetermined) by commit ancestry, patch-id and merge-tree, not by… |
-| [`branch-freshness`](skills/sdlc/sdlc-core/branch-freshness.md) | Periodically rebase or merge main into the feature branch, detect what changed upstream, and re-analyse the session workplan. |
-| [`bun-use`](skills/sdlc/sdlc-core/bun-use.md) | How Bun is used as the JavaScript/TypeScript execution runtime, test runner, package manager, and tarball packager across separated repositories: standalone subgraph configuration (bunfig.toml,… |
-| [`ci-health`](skills/sdlc/sdlc-core/ci-health.md) | A red workflow looks exactly like a green one from inside a checkout. |
-| [`code-review-process`](skills/sdlc/sdlc-core/code-review-process.md) | Where code review sits in the release lifecycle. |
-| [`continual-progress`](skills/sdlc/sdlc-core/continual-progress.md) | Make in-flight work trackable by others in real time — open a PR from the first commit, push small coherent increments continuously (never hoard uncommitted work), keep a live status checklist in… |
-| [`coordinate`](skills/sdlc/sdlc-core/coordinate.md) | Coordinate work across multiple in-flight Claude PRs working toward a shared goal. |
-| [`decision-audit`](skills/sdlc/sdlc-core/decision-audit.md) | Record why a decision was made, or why a finding in it was left. |
-| [`delivery-summary`](skills/sdlc/sdlc-core/delivery-summary.md) | Post-delivery summary with server restart command and viewer links |
-| [`diff`](skills/sdlc/sdlc-core/diff.md) | Show per-block content changes with viewer links, changelog, and undo impact analysis |
-| [`dispatch-agent`](skills/sdlc/sdlc-core/dispatch-agent.md) | Dispatch one or more background sub-agents against parallel research/build fronts with a STANDARDIZED live progress contract, and monitor them on a 2-minute heartbeat. |
-| [`feature-staging`](skills/sdlc/sdlc-core/feature-staging.md) | Manages feature-branch staging deployments under gh-pages/STAGING/<branch-slug>/ for before/after publication review comparison. |
-| [`finding-software`](skills/sdlc/sdlc-core/finding-software.md) | A script needs a program or module the container does not have (tesseract, pdftoppm, PyMuPDF, a CLI from a GitHub release). |
-| [`gate-tree-mutation`](skills/sdlc/sdlc-core/gate-tree-mutation.md) | Reading `bun run cat gates`' "NOT clean" verdict. |
-| [`generalise-the-fix`](skills/sdlc/sdlc-core/generalise-the-fix.md) | You have a fix. |
-| [`github-state-inspection`](skills/sdlc/sdlc-core/github-state-inspection.md) | Answer questions about GitHub-hosted state — is a page published, where does it live, did CI pass, does a branch exist — by reading the ref or the API, never by composing a URL or fetching one. |
-| [`goal-review`](skills/sdlc/sdlc-core/goal-review.md) | Cold start, then review a time window of activity — sibling sessions, the work plan, issues, change proposals, branches, CI — and prioritise what it finds against goals stated in the owner's words. |
-| [`handover-report`](skills/sdlc/sdlc-core/handover-report.md) | Write a handover report: a templated snapshot of an agent's current state, committed as a bean note, so that a session or subagent that stalls, runs out of context, or loses its container can be… |
-| [`idle-backlog`](skills/sdlc/sdlc-core/idle-backlog.md) | While idle or waiting on a long-running async task (a build, a long compute script, a CI run, a background agent), pull the applicable backlog in priority order and work non-conflicting items… |
-| [`integration-backlog`](skills/sdlc/sdlc-core/integration-backlog.md) | Dispatcher for the `/integration-backlog <axes>` slash command. |
-| [`integration-watch`](skills/sdlc/sdlc-core/integration-watch.md) | Dispatcher for the `/integration-watch` slash command. |
-| [`integration-watcher`](skills/sdlc/sdlc-core/integration-watcher.md) | Abstract parent skill for domain-specific **integration watchers**. |
-| [`issue-working`](skills/sdlc/sdlc-core/issue-working.md) | Working a tracked issue — announce the branch when you create it rather than when you finish, and re-check the issue for new AND edited comments while you work. |
-| [`merge-conflict-patterns`](skills/sdlc/sdlc-core/merge-conflict-patterns.md) | Merge the base branch in and resolve, without a person, only the conflicts a DECLARED pattern covers — generated files, generated README regions, QA sidecars — then prove the result with the gate set. |
-| [`merge-manager-watcher`](skills/sdlc/sdlc-core/merge-manager-watcher.md) | The merge manager agent's watch loop: what wakes it, how often it looks, how it tells whether it is the active merge manager, what it reads each time, which process each reading sends it to (merge… |
-| [`merge-queue`](skills/sdlc/sdlc-core/merge-queue.md) | Order the ready PRs and land them as a train: read each PR's live facts, let the reprioritisation table place it, merge the members together, run the gate set on the combination, and on red… |
-| [`merge-to-main`](skills/sdlc/sdlc-core/merge-to-main.md) | Merging to `main` is its own step with its own gate: the `merge-to-main` sub-process, which every process that lands work CALLS rather than inlines. |
-| [`minimal-change`](skills/sdlc/sdlc-core/minimal-change.md) | Three rules for any edit to a repository: make the smallest change that does the job and keep the diff minimal; read the repository's code-style files before writing code; and write Markdown without… |
-| [`narrative-asserts-code`](skills/sdlc/sdlc-core/narrative-asserts-code.md) | Judge whether the prose side of a declared prose ↔ code pair still says what the code does, when the machine could not settle it. |
-| [`opening-brief`](skills/sdlc/sdlc-core/opening-brief.md) | Brief a bean or a topic BEFORE touching anything: what you are doing and why it is worth doing, what you already know and with what provenance, how you plan to do it and what would falsify the… |
-| [`package-release`](skills/sdlc/sdlc-core/package-release.md) | Cut a release of a repository's packages: decide the next version, write the release notes, tag, and create the release — for any repository, the platform or a folio. |
-| [`pending-show`](skills/sdlc/sdlc-core/pending-show.md) | Show the current session's pending work — beans list + ledger intent. |
-| [`pickup`](skills/sdlc/sdlc-core/pickup.md) | Pick up / continue work on one or more existing open PRs efficiently. |
-| [`platform-gates`](skills/sdlc/sdlc-core/platform-gates.md) | `bun test` passing is not the gates passing. |
-| [`pr-description`](skills/sdlc/sdlc-core/pr-description.md) | Write or update a pull request's description so that someone who has never seen the work can follow it: the problem, why it matters, how it was approached, what constrained it, the solution, how to… |
-| [`prepare-for-handover`](skills/sdlc/sdlc-core/prepare-for-handover.md) | Prepare for a handover: commit and push everything you hold, then write a handover report that cites the commits. |
-| [`prepare-merge-auto`](skills/sdlc/sdlc-core/prepare-merge-auto.md) | Full prepare-merge → resolve → merge pipeline. |
-| [`prepare-merge`](skills/sdlc/sdlc-core/prepare-merge.md) | Take a feature branch to a clean, conflict-free, green, pushed state so it can be merged with no surprises: base merged in, generated files regenerated, the folio's content-type gates run, then… |
-| [`publish-verification`](skills/sdlc/sdlc-core/publish-verification.md) | Verify what a publish produced BEFORE it is deployed, and alert the publication manager whenever any step after the publish button fails — the verifier set, how to add a verifier, what is in scope,… |
-| [`qa-report-signing`](skills/sdlc/sdlc-core/qa-report-signing.md) | QA report signing — two routes, chosen by the performer's reach |
-| [`qa-reports`](skills/sdlc/sdlc-core/qa-reports.md) | Where a QA result lives now. |
-| [`qa-witness`](skills/sdlc/sdlc-core/qa-witness.md) | The QA projections written to `test/results/witnesses/` and stored on the `qa-reports` branch — what a `qa-witness/v1` document says, which three families produce one, how to read a verdict and the… |
-| [`ref-stewardship`](skills/sdlc/sdlc-core/ref-stewardship.md) | Steward a WATCHED REF — a long-lived branch many processes write and one consumer serialises. |
-| [`related-work-coordination`](skills/sdlc/sdlc-core/related-work-coordination.md) | Before new work takes shape, find the work it touches. |
-| [`release-epic-planning`](skills/sdlc/sdlc-core/release-epic-planning.md) | Plan and track releases using bean epics. |
-| [`release-lifecycle`](skills/sdlc/sdlc-core/release-lifecycle.md) | Governs the release lifecycle: semver policy, draft/named releases, changelogs, release gating, and the relationship between feature branches, PRs, beans, and releases. |
-| [`rendered-impact`](skills/sdlc/sdlc-core/rendered-impact.md) | The list of rendered files a Change Set alters, and how a reviewer approves against it. |
-| [`rendered-verification`](skills/sdlc/sdlc-core/rendered-verification.md) | Confirm a UI change by LOOKING at it in a browser and sending the screenshots to the author, rather than describing it. |
-| [`saturation-meta-merge`](skills/sdlc/sdlc-core/saturation-meta-merge.md) | When the CI runners have been full for a long time, drain a repository's ready PRs in one step: hold the swarm, cancel the queued PR runs, stack every admitted PR onto one meta-merge branch with… |
-| [`secrets`](skills/sdlc/sdlc-core/secrets.md) | Adding, rotating and revoking the credentials the harness's automation needs, one mechanism at a time, with the exact GitHub UI path for each step. |
-| [`session-intent`](skills/sdlc/sdlc-core/session-intent.md) | Session-start intent declaration + session-end results recording, against the goal-scoped master ledger and queue file. |
-| [`signing`](skills/sdlc/sdlc-core/signing.md) | What any signature in the harness must answer, whatever it covers: who signs, what bytes are signed, which signature suites are accepted and who decides that, where the key is kept, which route… |
-| [`specification-management`](skills/sdlc/sdlc-core/specification-management.md) | Governs the lifecycle, syntax, and traceability of specifications and requirements across the harness. |
-| [`staging-review`](skills/sdlc/sdlc-core/staging-review.md) | Staging preview and before/after comparison for content review. |
-| [`stalled-agent-triage`](skills/sdlc/sdlc-core/stalled-agent-triage.md) | Triage incoming work from stalled agents. |
-| [`swarm-management`](skills/sdlc/sdlc-core/swarm-management.md) | Decide whether to run parallel agents at all, and if so how many, at which model level, against which decomposition. |
-| [`test-data-sets`](skills/sdlc/sdlc-core/test-data-sets.md) | Curating fixed (committed, cited, SME-reviewed) and generated (template + params + seed recipe, never stored materialised) test data sets in separately declared graph directories, with… |
-| [`test-engineer`](skills/sdlc/sdlc-core/test-engineer.md) | Test Engineer Skill |
-| [`test-plan-execution`](skills/sdlc/sdlc-core/test-plan-execution.md) | Run a `test-plan/v1` against a system under test and take it to a certification decision — the five lanes of `test-plan-execution.bpmn` (requester, tester, untainted checker, certifier, attestation… |
-| [`todo-manager`](skills/sdlc/sdlc-core/todo-manager.md) | Maintain and display work-in-progress task lists using the `beans` CLI issue tracker. |
-| [`turn-reporting`](skills/sdlc/sdlc-core/turn-reporting.md) | Say which bean you are on, every turn — the opening and closing report formats, the rules that make a report worth reading (two sentences and a link per bean, every mention), and the STRICT rule… |
-| [`untainted-verification`](skills/sdlc/sdlc-core/untainted-verification.md) | The party that produced an artefact does not write the verdict on it. |
-| [`upstream-version-adoption`](skills/sdlc/sdlc-core/upstream-version-adoption.md) | Watch a pinned upstream dependency for a new release, and take a candidate version through impact analysis, an MVP build, review and a person's adopt/hold/decline decision. |
-| [`visual-diff`](skills/sdlc/sdlc-core/visual-diff.md) | Pictures of a changed figure, diagram or table, before and after, and how much of it changed. |
-| [`watch`](skills/sdlc/sdlc-core/watch.md) | Background-watch a branch (default origin/main) or a GitHub PR for new activity while you work, and on every event report whether to integrate / whether it conflicts with the current branch /… |
-| [`where-a-proposal-goes`](skills/sdlc/sdlc-core/where-a-proposal-goes.md) | Where a proposal goes — the issue, not the documentation |
-| [`work-plan-restructure`](skills/sdlc/sdlc-core/work-plan-restructure.md) | Reorganise a work plan that has outgrown one-bean-at-a-time repair — session logs typed as epics, duplicate families, generated template beans, stale claims, unparented work — through a reviewed… |
-| [`work-plan-store`](skills/sdlc/sdlc-core/work-plan-store.md) | The contract the work plan (beans) keeps as a data store, as operations any Tool must provide: get, list, create, update with ifMatch, note, history, and where a bean is in its… |
-| [`work-plan-store-git-branch`](skills/sdlc/sdlc-core/work-plan-store-git-branch.md) | How the git state branch Tool performs the work-plan store's operations: the branch per graph, the mount at beans/, which command does get, list, create, update, note… |
-
-**`skills/sdlc/spec-kit/`** (3)
-
-| Skill | What it is for |
-|---|---|
-| [`change-size`](skills/sdlc/spec-kit/change-size.md) | The change-size rule: keeps review increments adjudicable by establishing a line-count threshold (~400 effective lines), recording its empirical basis, weighting prose/KG lower than code, and… |
-| [`spec-kit`](skills/sdlc/spec-kit/spec-kit.md) | Spec-driven development, adopted whole: define what and why before deciding how, and do not develop before a spec exists. |
-| [`spec-template`](skills/sdlc/spec-kit/spec-template.md) | The single declared template artefact for platform feature specifications, adopted from github/spec-kit. |
 
 **`skills/tools/folio-core/`** (7)
 
@@ -333,7 +229,7 @@ _254 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`board-diagram-interchange`](skills/ui/ui-core/board-diagram-interchange.md) | A board is a DIAGRAM OF a folio, not a container of one. |
 | [`board-windows`](skills/ui/ui-core/board-windows.md) | Everything starts as its avatar; opening projects a window onto the board. |
 | [`deployment-awareness`](skills/ui/ui-core/deployment-awareness.md) | The agent must know its UI surface — gh-pages, local server, with/without MCP, or chat discussion only — because deployment surfaces are declared architectural facts that decide which tools apply,… |
-| [`docs-generation`](skills/ui/ui-core/docs-generation.md) | Generate and deploy documentation artifacts: schema docs (TypeDoc), formal-layer API docs, dependency graphs, schema manifests, and per-paper HTML/PDF/Markdown outputs. |
+| [`docs-generation`](skills/ui/ui-core/docs-generation.md) | How a checkout of this harness generates and publishes its docs site: regenerating derived references, composing the docs layers and each instance's site into one Jekyll source, building it with… |
 | [`harness-tiles`](skills/ui/ui-core/harness-tiles.md) | A tile is a function of the harness watching a directory, not of nodes. |
 | [`html-rendering-qc`](skills/ui/ui-core/html-rendering-qc.md) | HTML Rendering QC |
 | [`incremental-render`](skills/ui/ui-core/incremental-render.md) | Rendering only what changed — seeding a build from a previous render, the two edges that decide what must re-run, why a step declares GRAPH TYPOLOGIES rather than paths, and the rule that… |
@@ -343,12 +239,121 @@ _254 skills in 18 directories, generated from each skill's front matter. `bun ru
 | [`pdf-inline-viewer`](skills/ui/ui-core/pdf-inline-viewer.md) | Show a published PDF inside a generated page — search, scroll, jump to page, print and download — with the pinned pdf.js viewer the site build installs. |
 | [`readme-sections`](skills/ui/ui-core/readme-sections.md) | A folio's README is the author's file; the platform owns only the marked regions it generates. |
 | [`render-logging`](skills/ui/ui-core/render-logging.md) | Log every render to the publish branch — what was published, removed, restored or deliberately retained — to an append-only log that lives beside what it describes. |
-| [`render-order`](skills/ui/ui-core/render-order.md) | Render order — flattening a dependency hierarchy, and the two stages |
+| [`render-order`](skills/ui/ui-core/render-order.md) | Render order — flattening a dependency hierarchy, and the three stages |
 | [`serving-renderings`](skills/ui/ui-core/serving-renderings.md) | Serving a rendering — endpoints, MIME types, and what each host can enforce |
 | [`theme-ui-review`](skills/ui/ui-core/theme-ui-review.md) | Review graphical assets AS THEY ARE INGESTED, in the context of the website or app design they are for — accessibility, branding, languages — to determine what the assets and the UI will be. |
 | [`ui-accessibility`](skills/ui/ui-core/ui-accessibility.md) | Every user interface this project produces must be operable by keyboard, legible at measured contrast, and comfortable to hit. |
 | [`visualizer-loading`](skills/ui/ui-core/visualizer-loading.md) | The general strategy for a complex visualizer: the generated page carries identity, layout and a pointer, and its bulky or repeated content is fetched from the Knowledge Graph in the browser rather… |
 | [`wireframe-design-review`](skills/ui/ui-core/wireframe-design-review.md) | Design a user interface (a page, a visualiser, a navbar) by the WireGen methodology: a written design intent, at least two mid-fidelity HTML candidates, each with a web AND a mobile layout,… |
 | [`wireframe-viewport-check`](skills/ui/ui-core/wireframe-viewport-check.md) | Render wireframe candidates at a web viewport (1280x800) and a mobile viewport (390x844), and record, per candidate and viewport, a pass or fail entry with a note for each mechanical criterion:… |
+
+**`sdlc/skills/crdm/`** (7)
+
+| Skill | What it is for |
+|---|---|
+| [`crdm-data-model`](sdlc/skills/crdm/crdm-data-model.md) | The CRDM data-modelling phase — when in the requirements process a model is built, what it is built from, who confirms it, and what it hands to the phases either side. |
+| [`crdm-detect`](sdlc/skills/crdm/crdm-detect.md) | Detect when a request needs requirements agreed before anything is built, and which of the two parallel requirements methodologies governs it. |
+| [`crdm-impact-analysis`](sdlc/skills/crdm/crdm-impact-analysis.md) | Guide for CRDM Phase 4 — Impact Analysis and Migration Planning. |
+| [`crdm-needs-assessment`](sdlc/skills/crdm/crdm-needs-assessment.md) | Facilitate Phase 1 (Needs Assessment) of the CRDM requirements workflow. |
+| [`crdm-recorded-walkthrough`](sdlc/skills/crdm/crdm-recorded-walkthrough.md) | Turn a recorded requirements walkthrough (a video call where a business analyst demonstrates a feature and a stakeholder asks for changes) into CRDM Phase 3 requirements with evidence: transcripts… |
+| [`crdm-requirements-template`](sdlc/skills/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
+| [`crdm-requirements-workflow`](sdlc/skills/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
+
+**`sdlc/skills/sdlc-core/`** (71)
+
+| Skill | What it is for |
+|---|---|
+| [`activity-log`](sdlc/skills/sdlc-core/activity-log.md) | Activity log — what an agent did, kept out of the graph |
+| [`adjudication`](sdlc/skills/sdlc-core/adjudication.md) | Settle a review that reached no mechanical or consensus agreement. |
+| [`adversarial-code-review`](sdlc/skills/sdlc-core/adversarial-code-review.md) | Review a pull request an agent touched by building the strongest case that it is wrong, unsafe, or not what it claims, and record the verdict where the merge gate reads it: one `merge-review/v1`… |
+| [`agent-handoff`](sdlc/skills/sdlc-core/agent-handoff.md) | Governs handing ONE task to an agent in another environment — a local agent with network the cloud session lacks, a sibling on a different machine, anything that cannot read the coordinator's… |
+| [`before-after-preview`](sdlc/skills/sdlc-core/before-after-preview.md) | Make a reviewer-facing BEFORE/AFTER preview of a change to anything that is rendered — a docs site, a paper's PDF, a FHIR IG, a slide deck, a website — and put it where the review and feedback… |
+| [`benchmarking-mode`](sdlc/skills/sdlc-core/benchmarking-mode.md) | Benchmarking output is a synthesized report across models and configurations, deliberately excluded from declared knowledge-graph typologies. |
+| [`blocked-build-dependencies`](sdlc/skills/sdlc-core/blocked-build-dependencies.md) | A build or a model download fails from an agent container. |
+| [`branch-archaeology`](sdlc/skills/sdlc-core/branch-archaeology.md) | Classify every remote branch against the default branch (merged, landed by squash or cherry-pick, partially landed, unlanded, undetermined) by commit ancestry, patch-id and merge-tree, not by… |
+| [`branch-freshness`](sdlc/skills/sdlc-core/branch-freshness.md) | Read what changed on main often, and re-analyse the session workplan. |
+| [`bun-use`](sdlc/skills/sdlc-core/bun-use.md) | How Bun is used as the JavaScript/TypeScript execution runtime, test runner, package manager, and tarball packager across separated repositories: standalone subgraph configuration (bunfig.toml,… |
+| [`ci-health`](sdlc/skills/sdlc-core/ci-health.md) | A red workflow looks exactly like a green one from inside a checkout. |
+| [`code-review-process`](sdlc/skills/sdlc-core/code-review-process.md) | Where code review sits in the release lifecycle. |
+| [`continual-progress`](sdlc/skills/sdlc-core/continual-progress.md) | Make in-flight work trackable by others in real time — open a PR from the first commit, push small coherent increments continuously (never hoard uncommitted work), keep a live status checklist in… |
+| [`coordinate`](sdlc/skills/sdlc-core/coordinate.md) | Coordinate work across multiple in-flight Claude PRs working toward a shared goal. |
+| [`decision-audit`](sdlc/skills/sdlc-core/decision-audit.md) | Record why a decision was made, or why a finding in it was left. |
+| [`delivery-summary`](sdlc/skills/sdlc-core/delivery-summary.md) | Post-delivery summary with server restart command and viewer links |
+| [`diff`](sdlc/skills/sdlc-core/diff.md) | Show per-block content changes with viewer links, changelog, and undo impact analysis |
+| [`dispatch-agent`](sdlc/skills/sdlc-core/dispatch-agent.md) | Dispatch one or more background sub-agents against parallel research/build fronts with a STANDARDIZED live progress contract, and monitor them on a 2-minute heartbeat. |
+| [`feature-staging`](sdlc/skills/sdlc-core/feature-staging.md) | Manages feature-branch staging deployments under gh-pages/STAGING/<branch-slug>/ for before/after publication review comparison. |
+| [`finding-software`](sdlc/skills/sdlc-core/finding-software.md) | A script needs a program or module the container does not have (tesseract, pdftoppm, PyMuPDF, a CLI from a GitHub release). |
+| [`gate-tree-mutation`](sdlc/skills/sdlc-core/gate-tree-mutation.md) | Reading `bun run cat gates`' "NOT clean" verdict. |
+| [`generalise-the-fix`](sdlc/skills/sdlc-core/generalise-the-fix.md) | You have a fix. |
+| [`github-state-inspection`](sdlc/skills/sdlc-core/github-state-inspection.md) | Answer questions about GitHub-hosted state — is a page published, where does it live, did CI pass, does a branch exist — by reading the ref or the API, never by composing a URL or fetching one. |
+| [`goal-review`](sdlc/skills/sdlc-core/goal-review.md) | Cold start, then review a time window of activity — sibling sessions, the work plan, issues, change proposals, branches, CI — and prioritise what it finds against goals stated in the owner's words. |
+| [`handover-report`](sdlc/skills/sdlc-core/handover-report.md) | Write a handover report: a templated snapshot of an agent's current state, committed as a work item note, so that a session or subagent that stalls, runs out of context, or loses its container can… |
+| [`integration-backlog`](sdlc/skills/sdlc-core/integration-backlog.md) | Dispatcher for the `/integration-backlog <axes>` slash command. |
+| [`integration-watch`](sdlc/skills/sdlc-core/integration-watch.md) | Dispatcher for the `/integration-watch` slash command. |
+| [`integration-watcher`](sdlc/skills/sdlc-core/integration-watcher.md) | Abstract parent skill for domain-specific **integration watchers**. |
+| [`issue-working`](sdlc/skills/sdlc-core/issue-working.md) | Working a tracked issue — announce the branch when you create it rather than when you finish, and re-check the issue for new AND edited comments while you work. |
+| [`merge-conflict-patterns`](sdlc/skills/sdlc-core/merge-conflict-patterns.md) | Merge the base branch in and resolve, without a person, only the conflicts a DECLARED pattern covers — generated files, generated README regions, QA sidecars — then prove the result with the gate set. |
+| [`merge-manager-watcher`](sdlc/skills/sdlc-core/merge-manager-watcher.md) | The merge manager agent's watch loop: what wakes it, how often it looks, how it tells whether it is the active merge manager, what it reads each time, which process each reading sends it to (merge… |
+| [`merge-queue`](sdlc/skills/sdlc-core/merge-queue.md) | Order the ready PRs and land them as a train: read each PR's live facts, let the reprioritisation table place it, merge the members together, run the gate set on the combination, and on red… |
+| [`merge-to-main`](sdlc/skills/sdlc-core/merge-to-main.md) | Merging to `main` is its own step with its own gate: the `merge-to-main` sub-process, which every process that lands work CALLS rather than inlines. |
+| [`minimal-change`](sdlc/skills/sdlc-core/minimal-change.md) | Three rules for any edit to a repository: make the smallest change that does the job and keep the diff minimal; read the repository's code-style files before writing code; and write Markdown without… |
+| [`narrative-asserts-code`](sdlc/skills/sdlc-core/narrative-asserts-code.md) | Judge whether the prose side of a declared prose ↔ code pair still says what the code does, when the machine could not settle it. |
+| [`opening-brief`](sdlc/skills/sdlc-core/opening-brief.md) | Brief a work item or a topic BEFORE touching anything: what you are doing and why it is worth doing, what you already know and with what provenance, how you plan to do it and what would falsify the… |
+| [`package-release`](sdlc/skills/sdlc-core/package-release.md) | Cut a release of a repository's packages: decide the next version, write the release notes, tag, and create the release — for any repository, the platform or a folio. |
+| [`pending-show`](sdlc/skills/sdlc-core/pending-show.md) | Show the current session's pending work — work items list + ledger intent. |
+| [`pickup`](sdlc/skills/sdlc-core/pickup.md) | Pick up / continue work on one or more existing open PRs efficiently. |
+| [`platform-gates`](sdlc/skills/sdlc-core/platform-gates.md) | `bun test` passing is not the gates passing. |
+| [`pr-description`](sdlc/skills/sdlc-core/pr-description.md) | Write or update a pull request's description so that someone who has never seen the work can follow it: the problem, why it matters, how it was approached, what constrained it, the solution, how to… |
+| [`prepare-for-handover`](sdlc/skills/sdlc-core/prepare-for-handover.md) | Prepare for a handover: commit and push everything you hold, then write a handover report that cites the commits. |
+| [`prepare-merge-auto`](sdlc/skills/sdlc-core/prepare-merge-auto.md) | Full prepare-merge → resolve → merge pipeline. |
+| [`prepare-merge`](sdlc/skills/sdlc-core/prepare-merge.md) | Take a feature branch to a clean, conflict-free, green, pushed state so it can be merged with no surprises: base merged in, generated files regenerated, the folio's content-type gates run, then… |
+| [`publish-verification`](sdlc/skills/sdlc-core/publish-verification.md) | Verify what a publish produced, and alert the publication manager whenever any step after the publish button fails — the verifier set, how to add a verifier, what is in scope, and how the… |
+| [`qa-report-signing`](sdlc/skills/sdlc-core/qa-report-signing.md) | QA report signing — two routes, chosen by the performer's reach |
+| [`qa-reports`](sdlc/skills/sdlc-core/qa-reports.md) | Where a QA result lives now. |
+| [`qa-witness`](sdlc/skills/sdlc-core/qa-witness.md) | The QA projections written to `test/results/witnesses/` and stored on the `qa-reports` branch — what a `qa-witness/v1` document says, which three families produce one, how to read a verdict and the… |
+| [`ref-stewardship`](sdlc/skills/sdlc-core/ref-stewardship.md) | Steward a WATCHED REF — a long-lived branch many processes write and one consumer serialises. |
+| [`related-work-coordination`](sdlc/skills/sdlc-core/related-work-coordination.md) | Before new work takes shape, find the work it touches. |
+| [`release-epic-planning`](sdlc/skills/sdlc-core/release-epic-planning.md) | Plan and track releases using work item epics. |
+| [`release-lifecycle`](sdlc/skills/sdlc-core/release-lifecycle.md) | Governs the release lifecycle: semver policy, draft/named releases, changelogs, release gating, and the relationship between feature branches, PRs, work items, and releases. |
+| [`rendered-impact`](sdlc/skills/sdlc-core/rendered-impact.md) | The list of rendered files a Change Set alters, and how a reviewer approves against it. |
+| [`rendered-verification`](sdlc/skills/sdlc-core/rendered-verification.md) | Confirm a UI change by LOOKING at it in a browser and sending the screenshots to the author, rather than describing it. |
+| [`saturation-meta-merge`](sdlc/skills/sdlc-core/saturation-meta-merge.md) | When the CI runners have been full for a long time, drain a repository's ready PRs in one step: hold the swarm, cancel the queued PR runs, stack every admitted PR onto one meta-merge branch with… |
+| [`secrets`](sdlc/skills/sdlc-core/secrets.md) | Adding, rotating and revoking the credentials the harness's automation needs, one mechanism at a time, with the exact GitHub UI path for each step. |
+| [`session-intent`](sdlc/skills/sdlc-core/session-intent.md) | Session-start intent declaration + session-end results recording, against the work plan's goals (milestone work items) and their open work items. |
+| [`signing`](sdlc/skills/sdlc-core/signing.md) | What any signature in the harness must answer, whatever it covers: who signs, what bytes are signed, which signature suites are accepted and who decides that, where the key is kept, which route… |
+| [`specification-management`](sdlc/skills/sdlc-core/specification-management.md) | Governs the lifecycle, syntax, and traceability of specifications and requirements across the harness. |
+| [`staging-review`](sdlc/skills/sdlc-core/staging-review.md) | Staging preview and before/after comparison for content review. |
+| [`stalled-agent-triage`](sdlc/skills/sdlc-core/stalled-agent-triage.md) | Triage incoming work from stalled agents. |
+| [`swarm-management`](sdlc/skills/sdlc-core/swarm-management.md) | Decide whether to run parallel agents at all, and if so how many, at which model level, against which decomposition. |
+| [`test-data-sets`](sdlc/skills/sdlc-core/test-data-sets.md) | Curating fixed (committed, cited, SME-reviewed) and generated (template + params + seed recipe, never stored materialised) test data sets in separately declared graph directories, with… |
+| [`test-engineer`](sdlc/skills/sdlc-core/test-engineer.md) | Test Engineer Skill |
+| [`test-plan-execution`](sdlc/skills/sdlc-core/test-plan-execution.md) | Run a `test-plan/v1` against a system under test and take it to a certification decision — the five lanes of `test-plan-execution.bpmn` (requester, tester, untainted checker, certifier, attestation… |
+| [`turn-reporting`](sdlc/skills/sdlc-core/turn-reporting.md) | Say which work item you are on, every turn — the opening and closing report formats, the rules that make a report worth reading (two sentences and a link per work item, every mention), and the… |
+| [`untainted-verification`](sdlc/skills/sdlc-core/untainted-verification.md) | The party that produced an artefact does not write the verdict on it. |
+| [`upstream-version-adoption`](sdlc/skills/sdlc-core/upstream-version-adoption.md) | Watch a pinned upstream dependency for a new release, and take a candidate version through impact analysis, an MVP build, review and a person's adopt/hold/decline decision. |
+| [`visual-diff`](sdlc/skills/sdlc-core/visual-diff.md) | Pictures of a changed figure, diagram or table, before and after, and how much of it changed. |
+| [`watch`](sdlc/skills/sdlc-core/watch.md) | Background-watch a branch (default origin/main) or a GitHub PR for new activity while you work, and on every event report whether to integrate / whether it conflicts with the current branch /… |
+| [`where-a-proposal-goes`](sdlc/skills/sdlc-core/where-a-proposal-goes.md) | Where a proposal goes — `docs/proposals/` |
+
+**`sdlc/skills/spec-kit/`** (3)
+
+| Skill | What it is for |
+|---|---|
+| [`change-size`](sdlc/skills/spec-kit/change-size.md) | The change-size rule: keeps review increments adjudicable by establishing a line-count threshold (~400 effective lines), recording its empirical basis, weighting prose/KG lower than code, and… |
+| [`spec-kit`](sdlc/skills/spec-kit/spec-kit.md) | Spec-driven development, adopted whole: define what and why before deciding how, and do not develop before a spec exists. |
+| [`spec-template`](sdlc/skills/spec-kit/spec-template.md) | The single declared template artefact for platform feature specifications, adopted from github/spec-kit. |
+
+**`work-plan/skills/work-plan/`** (8)
+
+| Skill | What it is for |
+|---|---|
+| [`bean-blocking`](work-plan/skills/work-plan/bean-blocking.md) | Default to non-blocking when updating a work item's status. |
+| [`bean-coordination`](work-plan/skills/work-plan/bean-coordination.md) | Pointer to the bean-based session work-plan system (the `beans` CLI flat-file issue tracker, data under `beans/`). |
+| [`bean-drain`](work-plan/skills/work-plan/bean-drain.md) | Drain open work items (stories, bugs, features) with several agents at once, as part of the SDLC: build the queue, group it by owner, check and claim each work item on every work item copy before… |
+| [`idle-backlog`](work-plan/skills/work-plan/idle-backlog.md) | While idle or waiting on a long-running async task (a build, a long compute script, a CI run, a background agent), pull the applicable backlog in priority order and work non-conflicting items… |
+| [`todo-manager`](work-plan/skills/work-plan/todo-manager.md) | Maintain and display work-in-progress task lists using the `beans` CLI issue tracker. |
+| [`work-plan-restructure`](work-plan/skills/work-plan/work-plan-restructure.md) | Reorganise a work plan that has outgrown one-bean-at-a-time repair — session logs typed as epics, duplicate families, generated template work items, stale claims, unparented work — through a… |
+| [`work-plan-store-git-branch`](work-plan/skills/work-plan/work-plan-store-git-branch.md) | How the git state branch Tool performs the work-plan store's operations: the branch per graph, the mount at beans/, which command does get, list, create, update, note, history and positions, and how… |
+| [`work-plan-store`](work-plan/skills/work-plan/work-plan-store.md) | The contract the work plan (work items) keeps as a data store, as operations any Tool must provide: get, list, create, update with ifMatch, note, history, and where a work item is in its processes. |
 
 <!-- skills:index:end -->

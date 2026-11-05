@@ -13,7 +13,7 @@ allowed-tools: Read Grep Glob
 
 # Review heat map — where to look first
 
-> Skill id: `review-heatmap` · Package: `folio-core` · Bean: `qbfi` · Epic: `q4jm`
+> Skill id: `review-heatmap` · Package: `folio-core`
 
 The review page (`review/` in a folio's staging preview) opens with a table.
 It has **one row per section**, in reading order, and **one column per
@@ -32,13 +32,12 @@ about a REVIEW.
 | **Changed blocks** | blocks in the section that the ChangeSet lists: added, removed or changed | `changeset.json` | how much text changed. A one-word edit and a rewrite each count 1. |
 | **Open comments** | review comments still `open` or `addressed`, with defects counted in brackets | `review-comments.json` | how bad the section is. One comment may be about the whole section, and a question is not a defect. |
 | **Stale comments** | open comments whose block changed AFTER the comment was made (its recorded hash differs from the block's current one) | `review-comments.json` + `blocks.json` | wrong or obsolete. It means **re-read the block before replying**, because the reviewer saw an earlier version. |
-| **Review coverage** | "3 of 5 reviewed": the section's added or changed blocks, and how many have a reviewer VERDICT on their **current** version. Shaded by what is still unreviewed. | `review-comments.json`'s `verdicts` + `blocks.json` (bean `px0t`) | "every comment is resolved". **Resolved comments are not a verdict**: a question answered is not a block judged. A verdict on an earlier version is shown on the block and does NOT count, so an edit after review reopens exactly the blocks it touched. A file written before verdicts existed has no `verdicts` field and reads "no data", never "0 reviewed". |
+| **Review coverage** | "3 of 5 reviewed": the section's added or changed blocks, and how many have a reviewer VERDICT on their **current** version. Shaded by what is still unreviewed. | `review-comments.json`'s `verdicts` + `blocks.json` | "every comment is resolved". **Resolved comments are not a verdict**: a question answered is not a block judged. A verdict on an earlier version is shown on the block and does NOT count, so an edit after review reopens exactly the blocks it touched. A file with no `verdicts` field reads "no data", never "0 reviewed". |
 | **QA** | the section's blocks whose latest QA verdicts FAIL (with the worst severity), and those whose verdicts are STALE or that were never audited | `block-qa.json`, published by the `folio-block-qa-summary` Tool after the staging job sweeps the build | a pass. A block counts as failing only on a verdict NEWER than the block; an older verdict makes it stale, and stale outranks passing. A section gets a row for QA alone only if something there fails or is stale. |
 
 **A column with no data says so in every row** ("not published", or "no
-data" when a build lacks the file). It is never 0 and
-never blank: zero reads as "measured, and nothing there", which is exactly
-what is not known.
+data" when a build lacks the file). It is never 0 and never blank: zero
+reads as "measured, and nothing there".
 
 Orphaned comments (their block is gone) have no section. They are counted
 in a last row, "(listed in no section)", because an open comment is still
@@ -47,7 +46,7 @@ open.
 ## Where the QA column's data comes from
 
 The staging workflow first sweeps the build (its `qa_sweep` input, on by
-default, bean `tw61`), then runs the `folio-block-qa-summary` Tool
+default), then runs the `folio-block-qa-summary` Tool
 (`cat-harness-tools/scripts/publish-block-qa.ts`). The Tool reads each block's
 `block-qa/v1` verdicts, runs no checker itself, and writes `block-qa.json`.
 So the column reports THIS build's script-checkable criteria. Criteria that
@@ -59,7 +58,7 @@ need an agent's judgement are not run by the sweep. Each block is one of:
 - **passing**: every latest verdict is fresh and none failed;
 - **unaudited**: no verdict at all.
 
-**"Passing" says what was judged** (bean `9791`). Each block also carries
+**"Passing" says what was judged.** Each block also carries
 `needsAgent`: its applicable criteria declared `automated: false` that have
 no fresh verdict. Which criteria count comes from each criterion's own
 declaration, gated as the sweep gates it (`applies_to`, the folio's active
@@ -67,19 +66,17 @@ voices). The column then reads either:
 - **"N passing on scripts only (M criteria need an agent)"**; or
 - **"passing, every applicable criterion judged"**.
 
-A summary published before this field existed reads "passing (this build does
-not say whether agent-judged criteria were run)", never "all judged". A
-verdict never given is not a pass, the same rule as stale-versus-passing one
-level up.
+A summary without `needsAgent` reads "passing (this build does not say
+whether agent-judged criteria were run)", never "all judged": a verdict never
+given is not a pass.
 
 Freshness is the QA sweep's own rule, including the `uses`-graph hash that
-graph-scoped criteria depend on. Leaving that hash out made every
-detangler criterion read stale straight after a sweep.
+graph-scoped criteria depend on; without it every graph-scoped criterion
+reads stale straight after a sweep.
 
-The QA sweep writes verdicts under the instance root (fixed by bean `s3p2`,
-2026-09-23). Before that fix, it wrote them under the directory it was run
-on, so the summary still reads there second, for folios swept before the
-fix.
+The QA sweep writes verdicts under the instance root; the summary also reads,
+second, under the directory the sweep was run on, so verdicts an older sweep
+wrote there are still found.
 
 ## How the colour was chosen
 

@@ -10,49 +10,18 @@ triggers:
 consulted: true
 ---
 
+# One-Voice Style Guide — Author Voice Profile
+
+> **See also:** `one-voice-audit` is the mechanical sweep that runs *after*
+> writing; this file is the style profile agents follow when *writing*.
 
 ## The voice is addressed TO the role, not carried by it
 
-Before writing or auditing a block, resolve its audience: the role, its
-`persona` in `scenarios/roles.json`, the voice profiles that address it, and
-the user stories told as it.
-
-**A block sits in a lane; the lane is a role; the role is who the prose is
-for.** The audience is not restated per block — copying it onto every block
-invites the two to disagree, and a per-block audience contradicting its lane
-is worse than none because it looks authoritative.
-
-```ts
-import { readRoleGraph, roleForLane } from "./schemas/role-graph";
-import { loadVoices, voiceActiveIn } from "./schemas/voices";
-import { readUserStories } from "./schemas/user-story";
-const role = roleForLane(readRoleGraph("scenarios")!, laneName, explicitRef);
-role?.persona                                             // who this reader is
-loadVoices(core).filter((v) => voiceActiveIn(v, { role: role?.id })) // how to address them
-readUserStories("scenarios")?.stories.filter((s) => s.role.role === role?.id) // what they came to do
-```
-
-**This file is the default, not the answer.** Where a voice addresses the
-role, that wins. The guidance here applies when no role has been resolved.
-
-**Why a voice points at the role rather than this file inferring it.** Voice
-does not follow from persona: the same reader is addressed differently in a
-normative standard and in a tutorial. Declaring it as a voice profile bound to
-the role (`activeIn.roles`) is what lets the authoring agent and the QA agent
-judge against the *same* rule — otherwise a voice finding is one agent's taste
-against another's, which is unreviewable. The role names no voice and no story
-(#1168): each points at the role, so one is added without editing the role.
-
-`bun run cat kg:audit` reports a reader role with no persona (`role-has-persona`)
-or no story told as it (`role-has-story`); `bun run cat check:voices` lists the
-roles with a persona that no voice addresses. System, external and acted-upon
-roles are `n/a`: nothing in them reads prose.
-# One-Voice Style Guide — Author Voice Profile
-
-> **See also:** `one-voice-audit` is the mechanical sweep (greps for
-> status markers / TODOs / first-person work tone). This file is the
-> *style profile* agents follow when *writing* prose; the audit is what
-> runs *after*.
+Resolve the block's audience first — its lane's role, the role's `persona`,
+the voice profiles that address it and the user stories told as it — as
+[`one-voice-audit`](one-voice-audit.md) §"The voice is addressed TO the role,
+not carried by it" describes. Where a voice addresses the role, that wins; this file is the
+default when no role has been resolved.
 
 Reference this skill when authoring or editing narrative content (`.md`
 files). It ensures the project speaks with a single, consistent voice
@@ -98,10 +67,9 @@ chapter):
 
 The eight exposition hallmarks, their 0/1/2 rubric, and the places where the
 measured standard refines the profile above live in the science layer's
-exposition-standard skill (moved there on 2026-10-24, bean `syiq`; the science
-layer names this skill from its side), because a standard with its own voice
-profile, its own strict QA gate and three inbound references is a skill of the
-content type that uses it, not a section of this generic guide.
+exposition-standard skill, which names this skill from its side, because a
+standard with its own voice profile and strict QA gate belongs to the content
+type that uses it.
 
 **Two of its findings override rules stated above when writing mathematical
 prose**, so consult the content type's exposition standard before applying
@@ -196,8 +164,6 @@ The following phrases and patterns must never appear:
 - "one might expect" (state what happens, not what was expected)
 - "a beautiful result" / "an elegant proof"
 - Any commentary on the importance or surprise value of results
-
-Results speak for themselves.
 
 ## Pre-Commit Checklist
 

@@ -15,18 +15,14 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 |---|---|---|
 | [`agent-memory/`](agent-memory/) | _nothing declares what this holds_ | |
 | [`archimate-actors/`](archimate-actors/) | _nothing declares what this holds_ | |
+| [`archimate-blocks/`](archimate-blocks/) | _nothing declares what this holds_ | |
 | [`archimate-check/`](archimate-check/) | _nothing declares what this holds_ | |
 | [`archimate-crossings/`](archimate-crossings/) | _nothing declares what this holds_ | |
 | [`archimate-detangle/`](archimate-detangle/) | _nothing declares what this holds_ | |
-| [`archimate-blocks/`](archimate-blocks/) | _nothing declares what this holds_ | |
 | [`archimate-metamodel/`](archimate-metamodel/) | _nothing declares what this holds_ | |
 | [`archimate-pages/`](archimate-pages/) | _nothing declares what this holds_ | |
 | [`auto-docs-viewer/`](auto-docs-viewer/) | _nothing declares what this holds_ | |
 | [`avatars-css/`](avatars-css/) | _nothing declares what this holds_ | |
-| [`bean-claim-check/`](bean-claim-check/) | _nothing declares what this holds_ | |
-| [`bean-query/`](bean-query/) | _nothing declares what this holds_ | |
-| [`beans-cli/`](beans-cli/) | _nothing declares what this holds_ | |
-| [`beans-manual/`](beans-manual/) | _nothing declares what this holds_ | |
 | [`bpmn-checklist/`](bpmn-checklist/) | _nothing declares what this holds_ | |
 | [`bpmn-render/`](bpmn-render/) | _nothing declares what this holds_ | |
 | [`build-instance-site/`](build-instance-site/) | _nothing declares what this holds_ | |
@@ -43,7 +39,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`declaration-resolution/`](declaration-resolution/) | _nothing declares what this holds_ | |
 | [`discuss/`](discuss/) | _nothing declares what this holds_ | |
 | [`document-kinds-viewer/`](document-kinds-viewer/) | _nothing declares what this holds_ | |
-| [`drain-queue/`](drain-queue/) | _nothing declares what this holds_ | |
 | [`external-schemas-viewer/`](external-schemas-viewer/) | _nothing declares what this holds_ | |
 | [`feature-staging/`](feature-staging/) | _nothing declares what this holds_ | |
 | [`folio-init/`](folio-init/) | _nothing declares what this holds_ | |
@@ -70,6 +65,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`gitlab-mr-view/`](gitlab-mr-view/) | _nothing declares what this holds_ | |
 | [`handover-screen/`](handover-screen/) | _nothing declares what this holds_ | |
 | [`harness-state/`](harness-state/) | _nothing declares what this holds_ | |
+| [`instantiate-harness/`](instantiate-harness/) | _nothing declares what this holds_ | |
 | [`ig-folio-site-workflow/`](ig-folio-site-workflow/) | _nothing declares what this holds_ | |
 | [`index-config-migrate/`](index-config-migrate/) | _nothing declares what this holds_ | |
 | [`ingest-extended/`](ingest-extended/) | _nothing declares what this holds_ | |
@@ -176,11 +172,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`wireframe-check/`](wireframe-check/) | _nothing declares what this holds_ | |
 | [`witness-conformance/`](witness-conformance/) | _nothing declares what this holds_ | |
 | [`witness-parity/`](witness-parity/) | _nothing declares what this holds_ | |
-| [`work-plan-prime/`](work-plan-prime/) | _nothing declares what this holds_ | |
-| [`workflow-complete/`](workflow-complete/) | _nothing declares what this holds_ | |
-| [`workflow-gate/`](workflow-gate/) | _nothing declares what this holds_ | |
-| [`workflow-list/`](workflow-list/) | _nothing declares what this holds_ | |
-| [`workflow-next/`](workflow-next/) | _nothing declares what this holds_ | |
-| [`workflow-start/`](workflow-start/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->

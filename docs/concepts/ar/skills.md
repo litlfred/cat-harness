@@ -66,17 +66,12 @@ flowchart TD
 
 تُعرَّف المهارة عبر عدة طبقات — وليس في ملف واحد. وبالنسبة لأي مهارة:
 
-| الطبقة | الموقع | الحالة |
-|-------|----------|--------|
-| **التعريف** (الأدوار، القدرات المطلوبة، المتطلبات، أنماط التوجيه، مراحل دورة الحياة، مرجع المخطط) | `.claude/skills/local/<skill>.json` | ✅ جميع مهارات التأليف الـ 22 — تم التحقق منها في التكامل المستمر (CI) عبر `scripts/validate-skills.ts` |
-| **العقد محدد الأنواع** (JSON Schema للمدخلات/المخرجات) | `schemas/skills/<skill>/` | ✅ جميع الـ 22 — راجع [المرجع]({{ site.baseurl }}/reference/skills/) |
-| **متن التعليمات** (الدليل النثري الإرشادي الذي يحمّله النموذج اللغوي) — تصفحها في مرجع [تعليمات المهارات]({{ site.baseurl }}/reference/skill-instructions/) | `skills/authoring/content-lifecycle/*.md`، و`skills/folio-*-adapter/*.md`، و`src/skills/*.md` | ✅ مهارات دورة الحياة، والوكيل، وحزمة المنصة، و**folio-document-adapter**؛ ⏳ **نصوص authoring-math / authoring-who-smart-guidelines قيد التحديد (TBD)** (توفر تلك الحزم البيان الرسمي + تعريفات JSON) |
-| **الحزمة** (تبعات Docker/بيئة التشغيل) | `skills/<package>/package-manifest.json` | ✅ جميع الحزم الأربع |
-
-إذن، *نعم، المهارات موجودة بالفعل* — كتعريفات مهيكلة + مخططات محددة الأنواع، مع توفير
-النصوص النثرية لمهارات دورة الحياة والوكيل. وتخدم أداة MCP المسماة `skill_fetch`
-حاليًا النصوص الموجودة في `src/skills/*.md`؛ بينما تمثل النصوص النثرية لمهارات التأليف
-الخطوة التالية التي سيتم استكمالها (مع وجود التعريفات والعقود التي ترتبط بها بالفعل).
+| الطبقة | الموقع |
+|-------|----------|
+| **التعريف** (الأدوار، القدرات المطلوبة، المتطلبات، أنماط التوجيه، مراحل دورة الحياة، مرجع المخطط) | `skills/skill-definitions/<skill>.json` |
+| **العقد محدد الأنواع** (JSON Schema للمدخلات/المخرجات) | `schemas/skills/<skill>/` — راجع [المرجع]({{ site.baseurl }}/reference/skills/) |
+| **متن التعليمات** (الدليل النثري الإرشادي الذي يحمّله النموذج اللغوي، وتخدمه `skill_fetch`) — تصفحها في مرجع [تعليمات المهارات]({{ site.baseurl }}/reference/skill-instructions/) | `skills/<topic>/<package>/*.md`، و`sdlc/skills/<package>/*.md`، و`work-plan/skills/work-plan/*.md` |
+| **الحزمة** (تبعات Docker/بيئة التشغيل) | `package-manifest.json` بجانب متون تعليمات الحزمة |
 
 ### شاملة لعدة مجالات: `content-lifecycle`
 
@@ -126,46 +121,41 @@ flowchart TD
 | [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | بناء دليل التطبيق (IG) ونشره |
 | [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | بوابات ضمان الجودة (QA gates) |
 
-### مهارات الوكيل/المنصة (`src/skills`)
+### مهارات الوكيل/المنصة
 
-المهارات التي يستخدمها النموذج اللغوي للعمل بفعالية في المستودع (تُحمَّل عبر `skill_fetch`،
-ضمن حزمة `folio-assistant`):
+المهارات التي يستخدمها النموذج اللغوي للعمل بفعالية في المستودع (تُحمَّل عبر `skill_fetch`):
 
-| المهارة | الغرض |
-|-------|---------|
-| `corpus-grep` | البحث عبر مجموعة المحتوى (corpus) |
-
-> توجد مهارات `editor`، و`readability-editing`، و`todo-review`، و`symbiotic-interaction`،
-> و`deployment-auth` الآن (بصورة عامة) في حزمة **`folio-core`** أدناه —
-> ويمكن جلبها باستخدام `package_name="folio-core"`.
+| المهارة | الحزمة | الغرض |
+|-------|--------|---------|
+| `corpus-grep` | `kg-core` | البحث عبر مجموعة المحتوى (corpus) |
+| `editor`، و`readability-editing`، و`todo-review` | `authoring-core` | تحرير النثر ومراجعته |
+| `symbiotic-interaction` | `conduct-core` | قراءة سجلّ مدخلات المؤلف |
+| `deployment-auth` | `folio-core` | مصادقة النشر |
 
 يحتاج folio الورقة البحثية إلى مهارات `folio-document-adapter` أيضًا: فالورقة البحثية *هي*
 مستند بالإضافة إلى كتل تحتوي على كود Lean، ولذلك ينطبق `document-structure` و
 `document-publishing` على كليهما. وتُعد الحزمتان نصفين لنموذج محتوى واحد، وليستا بديلين
 للاختيار بينهما.
 
-### مهارات التنسيق المحلي (`.claude/skills/local`)
+### مهارات التنسيق (`sdlc-core`، و`work-plan`)
 
 | المهارة | الغرض |
 |-------|---------|
-| `prepare-merge` | إيصال الفرع إلى حالة نظيفة/سليمة (green)/قابلة للدمج (راجع أيضًا `/watch`) |
+| `prepare-merge` | إيصال الفرع إلى حالة نظيفة/سليمة (green)/قابلة للدمج (راجع أيضًا `watch`) |
 | `bean-coordination` | انضباط الحجز والتنسيق بين الوكلاء المتعددين |
-| `todo-manager` | انضباط إدارة المهام عبر beans |
+| `todo-manager` | انضباط إدارة المهام عبر work items |
 
 ### حزم مهارات المنصة (`skills/tools/folio-core`، و`folio-assistant-core/skills/content/folio-document-adapter`، و`folio-assistant-sci/skills/content/folio-paper-adapter`)
 
-**حزم المنصة** الأكبر، اثنتان منها تم ترحيلهما من مستودع محتوى qou (راجع
-[سجل الترحيل](https://github.com/litlfred/folio-assistant/issues/202)
-والمسألة [#27](https://github.com/litlfred/folio-assistant/issues/27)). وتتميز بأنها
-مستقلة عن المحتوى ومصممة لتتم مزامنتها مع أي folio:
+**حزم المنصة** الأكبر، مستقلة عن المحتوى ومصممة لتتم مزامنتها مع أي folio:
 
 | الحزمة | المهارات | النطاق |
 |--------|-------:|-------|
-| **`folio-core`** | 43 | تنسيق الوكلاء، وإطار عمل المراقب (watcher)، ومسار ضمان الجودة / التصيير / المراجع / المسرد، والتوثيق، والنشر — ينطبق على *أي* نوع محتوى. |
+| **`folio-core`** | 7 | واجهة الأدوات: تجميع MCP وعقده وإسقاطه، والمهارات والأدوات، وتأليف الأدوات، وتغطية الأدوات، ومصادقة النشر — ينطبق على *أي* نوع محتوى. |
 | **`folio-document-adapter`** | 4 | الـ folios النثرية: تأليف الكتل، وهيكل الفصول/الأقسام، والبيانات المعيارية، ومسار النشر الخالي من TeX. ينطبق على الأوراق البحثية أيضًا. |
 | **`folio-paper-adapter`** | 40 | محول الأوراق للرياضيات الرسمية (أي ورقة Lean 4 + LaTeX): سير عمل Lean، وأدوات البراهين، والتحقق من كائنات المحتوى، وLaTeX، وهيكل الورقة، والاستيراد، والمحاكيات. |
 
-تم تجاوز مهارات فيزياء QOU غير القابلة للاختزال؛ وتم تعميم الأمثلة الخاصة بـ QOU في البقية. وتشحن كل حزمة ملف `package-manifest.json`.
+وتشحن كل حزمة ملف `package-manifest.json`.
 
 > يتم توليد **مخططات** المهارات (المدخلات/المخرجات محددة الأنواع لمهارات التأليف)
 > في [مرجع مخططات المهارات]({{ '/reference/skills/' | relative_url }}) — ولا تحيد أبدًا عما

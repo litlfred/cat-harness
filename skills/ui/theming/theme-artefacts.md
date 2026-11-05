@@ -10,9 +10,7 @@ description: >
 
 **This is level 3 of the axis, and it is deliberately the narrowest.** The
 general rule lives in its stage — `intake`, `declaration`, `generation`,
-`contrast` — and an artefact carries only its difference. Going artefact-first
-would duplicate intake and contrast into every surface, which is the shape that
-let the scrim rule be rediscovered rather than read.
+`contrast` — and an artefact carries only its difference.
 
 The avatar crop boxes are the worked example: the **rule** that a crop is
 declared data belongs to `theme-declaration`; the **boxes themselves** are
@@ -24,7 +22,7 @@ navbar-avatar specialisation, and they are below.
 |---|---|---|
 | **sticky** | the container sizes to its CONTENT, so a text region would reimpose the geometry the sticky removes | `schemas/content/landing-sticky.ts`, `.fa-sticky` |
 | **landing board** | text is composited INTO the art, so it needs `textRegion` per layout and a crop chosen by content shape | `docs/_includes/landing.html` |
-| **docs background** | the page ground, not a card — a different CSS surface and probably a different crop set | not built; bean `yj32` |
+| **docs background** | the page ground, not a card — a different CSS surface and probably a different crop set | not built |
 | **navbar avatar** | the art CLIPPED to the subject in a square frame — `avatarRegion` | `<name>.json`, `bun run cat avatar:crops` |
 | **the mark** | ONE geometry, TWO inks — a scheme pair, because one ink cannot clear 3:1 on both grounds | `<name>.json` `mark` + `mark-dark`, `docs/assets/img/icons/` |
 
@@ -38,7 +36,7 @@ uses them.
 
 **A floating sticky keeps its theme.** `.fa-sticky-floating`'s opaque override
 is scoped to `:not([data-fa-sticky-theme])`, because the theme is a property of
-the sticky and not of the pinned state — bean `ivfw`. That scoping is sound
+the sticky and not of the pinned state. That scoping is sound
 only while every theme surface is opaque, which is why `theme-declaration`
 carries the rule and `themes.test.ts` gates it.
 
@@ -78,21 +76,13 @@ the laptop or mobile art would be measured against a composition the frame
 never shows — and it would validate, because squareness is checkable and
 relevance is not.
 
-**Two of these were wrong twice, and both times only a render caught it.** The
-first pass put the library and analyst boxes on scenery. The operations box was
-square, in bounds, and clipped the crown off the hard hat; the owner saw it and
-said so. **The schema cannot see a hat.** So:
+**The schema cannot see whether a box frames the subject** — a box can be
+square, in bounds, and still clip the head or sit on scenery. Render and look:
 
     bun run cat avatar:crops     # every declared box, drawn on the card and clipped
     bun run cat theme:sheet      # every theme: palette, contrast, art, both regions
 
 ## The page ground: the first paint is DARK
-
-The owner, 2026-09-24, verbatim:
-
-> *"when any page/foio-asst/cat-harness first loads if flashes white before
-> goignt o dark mode. instead it should deafult dark mode then turn to light
-> mode to prevent light flash in dark. update skils"*
 
 **The rule: the first frame of every published page is dark. A light page
 becomes light AFTER that, never the other way round, and a reader in dark
@@ -114,11 +104,9 @@ What that takes, on any page that picks its scheme on the client:
    WHITE canvas whenever the theme's sheet is missing — a slow CDN, or a swap.
 3. **Never swap a stylesheet the page is already painting with.**
    `jtd.setTheme(name)` swaps just-the-docs' first stylesheet, and a swap
-   UNLOADS the sheet until the new file arrives. Applying a stored "dark" on
-   this dark-configured site swapped `-default.css` for `-dark.css` — the same
-   colours — on every load: that was the white flash, for every reader who had
-   ever pressed the toggle. `applyScheme` in `docs-ui.js` now asks
-   `jtdShows(name)` first.
+   UNLOADS the sheet until the new file arrives, which flashes white.
+   `applyScheme` in `docs-ui.js` asks `jtdShows(name)` first, so a stored
+   choice that the page already shows swaps nothing.
 
 **How it is held:** the tools layer's `test/first-paint-scheme.e2e.ts` lifts the
 shipped snippet out of `head_custom.html`, holds the deferred bundle, and reads
@@ -132,8 +120,7 @@ snippet: the generated dashboards (`state-visualizer.ts`,
 `gen-translation-status.ts`) paint dark from their first CSS, and the viewers
 that follow `@media (prefers-color-scheme)` are decided by the browser before
 first paint. Do not give a dashboard the snippet as a tidy-up: it would switch
-ON `data-fa-scheme="light"` rules that were never finished (measured
-2026-09-24: 3–6 axe contrast failures per dashboard in light).
+ON `data-fa-scheme="light"` rules that are unfinished and fail axe contrast.
 
 ## Adding a surface
 
@@ -141,14 +128,7 @@ ON `data-fa-scheme="light"` rules that were never finished (measured
 2. Add **only the difference** here.
 3. If the surface renders art behind text, it inherits `theme-contrast`
    unchanged — a measured scrim, AAA over pure black.
-4. If it renders art at all, render it and LOOK. Nothing in this section was
-   found by reading a diff.
-
-## Related
-
-- [`theming`](theming.md) — which stage owns your question
-- [`theme-declaration`](theme-declaration.md) — the rule these specialise
-
+4. If it renders art at all, render it and LOOK.
 
 ## The mark: one geometry, two inks, and the pair is a MEASUREMENT
 
@@ -160,7 +140,7 @@ different from every other artefact above:
 > second file exists because of a number rather than because somebody wanted
 > a darker one.**
 
-Worked, from `cat-harness` on 2026-09-21 (bean `5r57`):
+Worked, from `cat-harness`:
 
 | ink | on white | on the light sidebar `#f5f6fa` | on the dark sidebar `#27262b` |
 |---|---|---|---|
@@ -168,14 +148,14 @@ Worked, from `cat-harness` on 2026-09-21 (bean `5r57`):
 | `#9db89f` (same hue, lifted) | — | — | 7.00:1 |
 
 3:1 is the bar for **meaningful non-text content**, and the light ink is under
-it on the dark ground. That is the whole argument for the second file.
+it on the dark ground.
 
 ### Two inks, never two drawings
 
 Both variants are emitted from **one trace**, differing in a single `fill`
-attribute. They cannot drift, because there is nothing to drift: re-run the
-generator and both change together. A second hand-drawn dark mark is the
-`themes.css`-beside-`theme.ts` failure in a new place.
+attribute, so they cannot drift: re-run the generator and both change
+together. Never hand-draw a second dark mark: it would be a second answer free to
+drift, the same failure as a hand-written stylesheet beside the theme node.
 
 ### Not a CSS filter
 
@@ -201,17 +181,15 @@ its own background, which is the only rule satisfiable everywhere at once.
 ### Absent is a real state
 
 An instance that declares no `mark-dark` renders its one mark in both
-schemes — what every instance did before the role existed. `imageForRole`
+schemes. `imageForRole`
 returns undefined and both templates fall back; nothing downstream
 special-cases a folio that never opted in.
 
 ### Tracing supplied art
 
-When the owner hands over a raster mark, trace it rather than approximating
-it by hand — the mark this replaced was a hand-drawn approximation that
-differed in kind from the original (a solid silhouette where the art was line
-work). Three things that cost a cycle each here, worth knowing before the next
-one:
+When somebody hands over a raster mark, trace it rather than approximating it
+by hand: a hand-drawn approximation can differ in kind from the original (a
+solid silhouette where the art was line work). Three things to know:
 
 - **`potracer` treats ZERO as foreground**, the inverse of what the name
   suggests. Passing the ink mask directly traces the *background*.
@@ -219,9 +197,13 @@ one:
   PIL pads with black, and the tracer reads that as ink.
 - **Measure the result.** Rasterise the traced path and compare it to the
   source bitmap — IoU against the original is a fact, "it looks right" over a
-  2 KB path is not. The mark here shipped at **0.981**.
+  2 KB path is not.
 
-Check the reduction too, rather than assuming a small variant is needed: the
-old mark needed one because its whiskers were `stroke-width="2.4"` on a 120
-viewBox, 0.32px at tab size. Fill-only art has no such floor, and the holes
-here still survive at 16px (measured ink fraction 0.36, flat from 16 to 32).
+Check the reduction too, rather than assuming a small variant is needed: thin
+strokes vanish at tab size, but fill-only art has no such floor. Measure the
+ink fraction from 16px to 32px.
+
+## Related
+
+- [`theming`](theming.md) — which stage owns your question
+- [`theme-declaration`](theme-declaration.md) — the rule these specialise

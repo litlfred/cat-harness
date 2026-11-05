@@ -45,11 +45,11 @@ on issue">
       <bpmn:documentation>Stakeholders sign off on the delivered feature on the issue, having tested the built artefact rather than a description of it.</bpmn:documentation>
     </bpmn:task>
     <bpmn:callActivity id="BA_Confirm" name="Confirm all criteria&#10;met" calledElement="Process_Adjudication">
-      <bpmn:documentation>The business analyst confirms every acceptance criterion from the requirements is met. The issue closes only on their authorisation — an agent never closes an issue on its own say-so. Since issue #2405 (FR-013) it IS an adjudication with the requirement-set answers: an approval here moves the set to `accepted`, which `check:requirements` refuses unless it is a human's and every approved member is `in-force`.</bpmn:documentation>
+      <bpmn:documentation>The business analyst confirms every acceptance criterion from the requirements is met. The issue closes only on their authorisation — an agent never closes an issue on its own say-so. It IS an adjudication with the requirement-set answers: an approval here moves the set to `accepted`, which `check:requirements` refuses unless it is a human's and every approved member is `in-force`.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="adjudication"/>
         <cat-harness.processes:adjudication codes="approve amend reject defer cancel" list="adjudication-requirement-set"/>
-        <cat-harness.processes:fulfilment kinds="person" reason="A sign-off on a requirements document is the requester's decision about their own requirements (issue #2405 FR-011): `approved` and `accepted` need a HUMAN sign-off, which `check:requirements` refuses without, so an agent may not take this step on their behalf. An agent records the decision in A_RecordSignoff; it does not make it."/>
+        <cat-harness.processes:fulfilment kinds="person" reason="A sign-off on a requirements document is the requester's decision about their own requirements: `approved` and `accepted` need a HUMAN sign-off, which `check:requirements` refuses without, so an agent may not take this step on their behalf. An agent records the decision in A_RecordSignoff; it does not make it."/>
       </bpmn:extensionElements>
     </bpmn:callActivity>
     <bpmn:callActivity id="A_RecordSignoff" name="Record the sign-off attestation" calledElement="GT_RecordSignoff">
@@ -65,7 +65,6 @@ on issue">
       <bpmn:documentation>Phase 6's "explicit confirmation before merging to main", made a step that can refuse. Once per pull request the feature still has open, after the sign-off is recorded and before the issue is closed: an issue is not closed on a feature that is not on `main`. `merge-to-main.bpmn` reads each head's evidence live, establishes that the owner authorised THAT merge (a stakeholder sign-off or the BA's confirmation is acceptance of the feature, not authorisation to merge it, unless the owner's own words say so), records the authorisation, merges, and confirms the base. A PR the owner holds or refuses stays open, and A_Close then waits: the BA's authorisation to close does not cover a feature that did not land. An increment the owner asked to land earlier in Phase 6 went through the same sub-process at that time.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="merge-to-main"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
     </bpmn:callActivity>
     <bpmn:task id="A_Close" name="Close issue ONLY on
@@ -76,7 +75,6 @@ that explicit authorisation — the gate is the preceding task, and this name
 says so rather than leaving a reader to trace the flow for it.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="crdm-requirements-workflow"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:endEvent id="End_Process_CRDM_Close" name="Phase complete"/>

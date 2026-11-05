@@ -17,29 +17,20 @@ Knowledge Graphs in the folio ecosystem can be distributed and consumed as
 **npm packages** — packaged tarballs (`.tgz`) containing either the authored
 source graphs, pre-compiled hydrated graph views, or both.
 
-This skill governs the end-to-end lifecycle of npm-based Knowledge Graph
-packaging and retrieval:
-1. Declaring `package.json` as an authored asset in the Knowledge Graph.
-2. Packaging an instance into an npm `.tgz` tarball using `bun pm pack`.
-3. Recording the published tarball as a `folio-binary-release/v1` state document.
-4. Hosting and resolving `.tgz` tarballs via GitHub binary releases.
-5. Retrieving remote Knowledge Graphs via `npm install` (`kg-retrieve-npm`) for
-   both unhydrated source graph and hydrated materialized graph views.
-
 | | where |
 |---|---|
 | the packaging tool | `pack-tarball` (`bun run cat-harness-tools/scripts/pack-tarball.ts`) |
 | the retrieval tool | `kg-retrieve-npm` (`bun run cat-harness-tools/scripts/kg-retrieve-npm.ts`) |
 | the release schema | `schemas/sdlc/binary-release.ts` (`folio-binary-release/v1`) |
 | asset verification | `cat-harness-tools/scripts/check-declared-assets.ts` |
-| related skills | [`remote-mount`](remote-mount.md), [`kg-export`](kg-export.md), [`package-release`](../../sdlc/sdlc-core/package-release.md), [`kg-subscription`](../../library/large-datasets/kg-subscription.md) |
+| related skills | [`remote-mount`](remote-mount.md), [`kg-export`](kg-export.md), [`package-release`](../../../sdlc/skills/sdlc-core/package-release.md), [`kg-subscription`](../../library/large-datasets/kg-subscription.md) |
 
 ---
 
 ## 1. `package.json` as an authored pre-packaging asset in the KG
 
-A file that is not declared in `<instance>.json` is a file no check verifies.
-`package.json` is not merely metadata for npm: it is an **authored Knowledge Graph asset**
+A file that is not declared in `<instance>.json` is a file no check verifies,
+so `package.json` is declared as an **authored Knowledge Graph asset**
 that defines package identity, exports, dependencies, scripts, and the tarball
 inclusion whitelist (`files` array).
 
@@ -189,8 +180,8 @@ The complete, materialized Knowledge Graph artifacts and binary assets:
 A third, narrow package carries a pin's subgraph index files and nothing
 else: `<harness>-subgraph-index@0.0.0-pin.<sha>`, built by the
 `subgraph-index-package` Tool through `pack-tarball` and released as
-`subgraph-index-<sha>` on every push to `main` (owner, 2026-10-24, bean
-`mo75`). A hydrated remote mount reads it; see
+`subgraph-index-<sha>` on every push to `main`. A hydrated remote mount reads
+it; see
 [`remote-mount`](remote-mount.md) §"Hydrated: the index files are published
 per pin, in a package".
 

@@ -24,7 +24,7 @@ Map the current workflow, then define the requirements and the impact they carry
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `crdm-requirements-workflow`, `data-modelling`.
-- What: Two skills, because this step is two things: the requirements come from the CRDM process, the impact half is a question about the entities and relations the change touches, which is what data modelling answers.
+- What: Two skills, because this step is two things: the requirements come from the CRDM process, the impact half is a question about the entities and relations the change touches, which is what data modelling answers; a folio-content skill such as `content-graph` is not one this harness diagram can bind.
 - Record it: `workflow_complete` with `node: "A_DefineReqs"`.
 - next: → `GW_RenderedSurface` (Does a requirement change a rendered surface (page, visualiser, navbar, form, app screen)?)
 

@@ -67,8 +67,8 @@ first.
 | # | Path | What it catches |
 |---|------|-----------------|
 | 1 | `grep -rln <topic> docs/audits/` | Owner-authorised resolutions land as audit docs ahead of the source file's status note being updated. |
-| 2 | `grep -rln <topic> content/` (full tree) | Related conjectures / propositions cross-cut chapters (e.g. `brings-surface/inter-nucleon-channel-color-tube` answers a `mass-theory/` p/n question). |
-| 3 | `grep -rln <topic> folio-assistant/computations/` | Implemented Python may already discharge the categorical content (e.g. `pn_convention="bring_color_weighted"` in `closed_form_tau_M.py`). |
+| 2 | `grep -rln <topic> content/` (full tree) | Related conjectures / propositions cross-cut chapters: a block in one chapter may answer a question raised in another. |
+| 3 | `grep -rln <topic> folio-assistant/computations/` | Implemented code may already discharge the content. |
 | 4 | `docs/coordination/<theme>.md` | The coordination ledger — a prior agent may have already closed the item. |
 
 **Search the full `content/` tree, not just the chapter you started
@@ -129,11 +129,3 @@ by, and consistent with, these codified instances:
   `proof-gap-audit` §K (proof-gap declarations), `compute-author` and
   `compute-audit` (before declaring a statement "not wired into compute")
   and `lean-environment-setup` (before declaring a capability unavailable).
-
-## History — why this exists
-
-In May 2026, three consecutive items in a mathematics folio were declared open
-against a source file's status note, and each was found on reanalysis to be
-**already implemented**. Source-file status notes lag the corpus by weeks; the
-corpus is the source of truth. The cases are recorded with the science layer's
-`proof-gap-audit` §K.

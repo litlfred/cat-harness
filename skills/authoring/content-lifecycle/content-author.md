@@ -28,11 +28,9 @@ for it, and put the **run URL and conclusion** in the PR body. Red → fix and
 re-dispatch. If you lack `actions: write`, state that in the PR along with the
 command a maintainer should run.
 
-Check when that workflow **last ran**, too. A repo can carry a CI file that
-has not executed in months: when a verification workflow sits red and
-undispatched on `main`, dozens of modules can stop compiling — some with parse
-errors, meaning they never compiled at all — and nothing catches it because
-nothing runs.
+Check when that workflow **last ran**, too: a CI file that nothing dispatches
+can sit red on `main` while the content it checks stops compiling, and nothing
+catches it because nothing runs.
 
 ## Actors
 - Author / Content Developer (authoring lead)

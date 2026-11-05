@@ -30,7 +30,7 @@ Formal review and approval of validated content before publication.
 
 ## Outputs
 Findings and a decision — two things, not one. See
-[`decision-audit`](../../sdlc/sdlc-core/decision-audit.md) and
+[`decision-audit`](../../../sdlc/skills/sdlc-core/decision-audit.md) and
 [`schemas/sdlc/qa-review.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/sdlc/qa-review.ts).
 
 - **Findings** — one per observation, each carrying the axis this reviewer can
@@ -50,4 +50,4 @@ review or sign-off carries it: one deep link per changed page, to the anchor
 where the change sits, with the same page on main as *before*. Where the skill
 declares an output contract, they go in its `stagingLinks` field. The rule, and
 where the page list comes from:
-[`staging-review`](../../sdlc/sdlc-core/staging-review.md) §"The deep-link rule".
+[`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §"The deep-link rule".

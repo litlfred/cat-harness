@@ -36,7 +36,7 @@ analysis honest: most options die on a MUST, and an analysis that scores every
 option on every axis hides that.
 
 The adverse-consequence pass is the same act as
-[`opening-brief`](../skills/sdlc/sdlc-core/opening-brief.md)'s *"what would falsify
+[`opening-brief`](../sdlc/skills/sdlc-core/opening-brief.md)'s *"what would falsify
 the approach"*, arrived at independently. Asking it of the **leader** specifically
 is KT's contribution: the option you are about to take is the one whose failure
 mode you have thought about least.
@@ -60,7 +60,7 @@ something else, rather than manufacturing a tiebreak.
 
 MUSTs, the options each one eliminated, the surviving options with their WANTs
 argued rather than scored, the leader's adverse consequences, and the decision.
-Recorded per [`madr`](madr.md) when the context is a bean.
+Recorded per [`madr`](madr.md) when the context is a work item.
 
 ## Refusals
 
@@ -68,5 +68,5 @@ Recorded per [`madr`](madr.md) when the context is a bean.
 - **No option added to make a set look considered.** A straw option is worse than
   two real ones: it makes the analysis look thorough while narrowing it.
 - **An option eliminated on a MUST is recorded, not dropped.** The next agent
-  needs to know the dead end was entered deliberately — the same reason a bean is
+  needs to know the dead end was entered deliberately — the same reason a work item is
   `scrapped` rather than deleted.

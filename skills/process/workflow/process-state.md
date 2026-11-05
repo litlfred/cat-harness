@@ -15,9 +15,8 @@ satisfies:
 
 An agent working a BPMN process holds **nested state**: a *task*, inside a
 *process instance*, under a *role* that owns a *swimlane*. Losing track of the
-outer level while still acting on the inner one is the failure this skill
-exists to prevent — it looks like ordinary work and produces changes nobody
-authorised.
+outer level while still acting on the inner one looks like ordinary work and
+produces changes nobody authorised.
 
 ## The three levels, and what each one answers
 
@@ -58,14 +57,11 @@ id.
 > **Process:** `crdm-requirements`, Agent lane · **Phase 6 — implement**.
 > Completed `A_Implement`; next is `A_Summary`.
 
-**The machinery already answers this**, and the habit is what was missing rather
-than the capability: the engine's "what is enabled now" call reports the enabled
-step, the lane that owns it, and the skill that implements it — so the answer is
-something to act on rather than a bare step name.
+The engine's "what is enabled now" call (`workflow_next`) reports the enabled
+step, the lane that owns it, and the skill that implements it.
 
 **Say which permission you are acting under.** Entering a task in a lane
-means performing it as that lane's role, and since issue #1180 that needs an
-ODRL rule that permits it there (`permits()` in `schemas/content/odrl.ts`: the actor,
+means performing it as that lane's role, and that needs an ODRL rule that permits it there (`permits()` in `schemas/content/odrl.ts`: the actor,
 the action, and the process, task and role as scope). If the answer is
 `unknown` or `deny`, you are out of process for that task: route it to a lane
 whose actor holds the permission, or stop and ask. The engine enforces this
@@ -80,22 +76,12 @@ hold.**
 
 ### Naming it is not the same as recording it (advisory)
 
-**Measured 2026-09-20, bean `vlhk`.** 54 proposals merged in one four-hour
-window, and `beans/workflows/` — the declared `workflow-state` graph — held
-only `.gitkeep`. **Not one session recorded a running instance.** A reviewer
-sweeping that window could not classify a single session by lane, which is the
-one thing this section exists to make possible. `supn` and `v49e` measured the
-same empty directory from other angles.
-
-There were two readings — the processes are not being run, or they are run and
-the state is not committed — and they call for opposite remedies. The owner
-settled it, 2026-09-20: **the processes are real, and the instance is
-recorded.** So:
-
 > **A turn that is in a process has an INSTANCE under the declared
 > `workflow-state` graph. Naming the process in prose is the report; the
-> recorded instance in the state graph on the branch store is the evidence, and
-> a report with no evidence behind it is what produced 54 merges and an empty directory.**
+> recorded instance in the state graph on the branch store is the evidence.**
+
+Without recorded instances, a reviewer sweeping a window of merged work cannot
+classify a single session by lane.
 
 `workflow_start` creates it, `workflow_next` and `workflow_complete` advance
 it, and the state lives on the branch store precisely so a sibling session
@@ -105,19 +91,15 @@ reads the same position — [`workflow-state.md`](workflow-state.md) §"Where ru
 silence**, when the directory holds none. A finding is not a failure — plenty
 of turns are legitimately outside any process — it is the prompt to say which.
 
-**This rule is ADVISORY: nothing gates on it.** Bean `5ulq` measured the
-remedy above on 2026-10-02: 9 instances against 755 merges since the ruling,
-and no CI workflow reading the graph. That is the `xom7` shape, a STRICT rule
-whose breach looks exactly like compliance. Calling it STRICT taught readers
-that the word is decoration, including where it is enforced. Offered the
-choice between gating it, making it advisory, or scrapping it, the owner ruled
-on 2026-10-10: **make it advisory.** So record the instance when the turn is
-in a process, but no check refuses a merge without one, and none should be
-added without a new ruling.
+**This rule is ADVISORY: nothing gates on it.** Record the instance when the
+turn is in a process, but no check refuses a merge without one, and none
+should be added without a new ruling from the owner. It is labelled advisory
+because a rule called STRICT that nothing enforces teaches readers that the
+word is decoration, including where it is enforced.
 
-**The gap is computed, never quoted.** `vlhk`'s 54 went stale by ~14× in two
-weeks with nothing to say so. `bun run cat workflow:instances` prints today's
-count: instances recorded, instances started since the ruling, first-parent
+**The gap is computed, never quoted**, because a count written down goes stale
+with nothing to say so. `bun run cat workflow:instances` prints
+today's count: instances recorded, instances started since the rule, first-parent
 merges in the same window, and the CI workflows that read the graph. Merges
 are an upper bound on the instances owed, since a steward's train, a docs-only
 fix or a revert may have none. The command reports the gap and exits 0; only
@@ -126,24 +108,16 @@ instance) exits 2.
 
 ### Arriving without the sweep — a mid-session clone, a project thread
 
-**Measured 2026-10-30, the "Fix wonky minimap" thread.** A project thread
-started with no repository. It cloned smart-ra, the tools layer and the
-content core mid-session, fixed and merged
-https://github.com/litlfred/cat-harness-tools/pull/1025,
-and repinned smart-ra. It never named a process, never loaded
-`delivery-summary` or `staging-review`, and gave its first result with no
-staging link. Every route to this skill was closed:
+A session that clones a harness repository after it started has no route to
+this skill:
 
 - the **sweep** above runs from `.claude/hooks/session-start.sh`, and a hook
   runs only when the repository is there **at session start**;
 - the `workflow_*` and `skill_fetch` tools come from the folio-assistant MCP
   server (`.mcp.json`), which starts with the session, so a mid-session clone
   has neither;
-- the repository's `CLAUDE.md` reached the agent only after the work was done.
-  The platform asked it to register the clone (`register_repo_root`), and it
-  did not;
-- the coordinator's brief named the card, merge and repository rules, and no
-  process.
+- the repository's `CLAUDE.md` reaches the agent only once the clone is
+  registered.
 
 So, **when you clone a harness repository after the session started**:
 
@@ -172,12 +146,10 @@ standing card rules, and any feedback channel in play (a review sheet's id and
 tab, an issue). That is `definitions.discussion` of the
 [`hand-back-to-discussion`](../../conduct/conduct-core/hand-back-to-discussion.md)
 input schema, and it is what lets the thread hand its cards, questions and
-results back instead of leaving them in its own channel (owner, 2026-10-31,
-cat-harness#861).
+results back instead of leaving them in its own channel.
 
 ## How to tell you are out of process
 
-This is the part that makes the skill a procedure rather than an exhortation.
 **You are outside the process if any of these is true**, and each is cheap to
 check:
 
@@ -198,10 +170,10 @@ check:
 When one of the five fires, **stop making changes** and recover in this order:
 
 1. **Re-read the instance.** `work_plan_prime` reports every instance's
-   position next to its bean. State is committed, so a sibling session's
+   position next to its work item. State is committed, so a sibling session's
    progress is visible too.
 2. **Reconstruct from context what you were doing** and which task it belongs
-   to. You usually can: the branch name, the claimed bean, and the opening
+   to. You usually can: the branch name, the claimed work item, and the opening
    brief together pin it.
 3. **Say what you concluded, and confirm it with the user** before resuming:
 
@@ -236,16 +208,15 @@ artefact**. There is no field to read back, no diff that distinguishes "moved
 deliberately" from "moved by an agent that had lost the thread", and — because
 a move keeps the id — nothing that even looks unusual.
 
-**The only possible record is what was written to a bean at the time.** That is
-not a convention this skill is adding; it is the consequence of two decisions
-taken elsewhere. Beans carry **no anchor** (owner's rule, 2026-09-19): a bean
-is not a thing pinned to a block, it is the record that a pinning *changed*.
-And `workflow/bean-link.ts` already has the `note` op that writes it.
+**The only possible record is what was written to a work item at the time.** Work items
+carry **no anchor**: a work item is not a thing pinned to a block, it is the record
+that a pinning *changed*. `workflow/bean-link.ts` has the `note` op that writes
+it.
 
 So, as part of recovery, before step 3's confirmation:
 
 - **Name every note or sticky you re-anchored during the detour**, with its
-  anchor before and after. Read them off the bean's note trail — not off the
+  anchor before and after. Read them off the work item's note trail — not off the
   notes, which no longer know.
 - **If the trail is silent and you moved things, say that.** A gap is a
   finding. "I moved stickies and did not record where from" is recoverable by
@@ -255,35 +226,23 @@ So, as part of recovery, before step 3's confirmation:
   [`deletion-requires-confirmation.md`](../../conduct/conduct-core/deletion-requires-confirmation.md),
   which is the same rule about a different verb.
 
-**Considered and rejected: giving the note its own history.** A `movedFrom`
-field would make a move self-documenting and remove the need for any of this.
-It was not taken, because the history then lives in the artefact being moved —
-so a note deleted, or moved by a tool that does not maintain the field, takes
-its own audit trail with it. The bean is a *separate* record, which is what an
-audit trail has to be.
+**A note carries no `movedFrom` history.** History kept in the artefact being
+moved is lost when the note is deleted, or moved by a tool that does not
+maintain the field. The work item is a *separate* record, which is what an audit
+trail has to be.
 
-### Worked example — reading a bean back as the trail
+### Reading a bean back as the trail
 
-Bean `5oai`, 2026-09-19, is one, and the episode is an agent's rather than a
-sticky's — which is the point: the mechanism does not care what moved.
-
-The bean opened by asserting *"`schemas/sdlc/todo.ts` carries no block field at
-all"*. That was wrong: `TodoNodeSchema` extends `CarriedNoteSchema`, which
-declares `targetLabel`, and `test/sticky-todos.e2e.ts` exercises it across two
-pages and an orphan label. The agent had grepped the file and not the base it
-extends — the second time in that session it asserted an absence without
-checking composition.
-
-What makes it a usable trail is that **the wrong claim was left in place**, with
-the correction appended beside it rather than replacing it. Read back, the bean
-shows the premise, the disproof, and the re-scoped work in order. An agent
+A work item is a usable trail when **a wrong claim is left in place**, with the
+correction appended beside it rather than replacing it. Read back, the work item
+shows the premise, the disproof, and the re-scoped work in order, so an agent
 resuming can see that the original framing was abandoned *and why*, which is
-exactly what it needs to avoid re-deriving the same mistake.
+what it needs to avoid re-deriving the same mistake.
 
-A bean that had been tidied to show only the correct conclusion would read as
-though the work had always been aimed there. That is the failure mode
-[`bean-coordination.md`](../../sdlc/sdlc-core/bean-coordination.md) names when it says unwanted work
-is `scrapped` **with its reasons** rather than deleted: a record that shows only
+A work item tidied to show only the correct conclusion reads as though the work had
+always been aimed there. That is why
+[`bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) has unwanted work
+`scrapped` **with its reasons** rather than deleted: a record that shows only
 outcomes cannot distinguish a dead end somebody ruled out from one nobody tried.
 
 ## What not to do
@@ -300,7 +259,7 @@ outcomes cannot distinguish a dead end somebody ruled out from one nobody tried.
 
 ## Relationship to the opening brief
 
-The brief you open a turn with ([`turn-reporting.md`](../../sdlc/sdlc-core/turn-reporting.md))
+The brief you open a turn with ([`turn-reporting.md`](../../../sdlc/skills/sdlc-core/turn-reporting.md))
 is what makes detector 5 usable: without a stated plan there is nothing for the
 current work to have diverged *from*. The two skills are one loop — brief the
 route, notice the divergence, confirm the recovery.

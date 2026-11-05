@@ -21,12 +21,8 @@ d'objets de contenu typé.
 {: .fs-6 .fw-300 }
 
 <!--
-  `View on GitHub` STAYS. The site-wide `aux_links` GitHub text was removed from
-  the chrome above every page (bean `udx8`, PR #352), and the obvious follow-up
-  is to delete this button for consistency. Do not. Put to the repo owner on
-  2026-09-19: this button is part of the landing page's own readme/description
-  note — authored content on one page, not chrome — and the forge remains
-  reachable from the navbar's Source tile regardless.
+  `View on GitHub` STAYS: it is authored content on this page, not site chrome,
+  so removing the site-wide GitHub link does not remove it.
 -->
 [Démarrer]({{ '/docs/cat-harness/start/getting-started.html' | relative_url }}){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 }
 [Installer]({{ '/docs/cat-harness/start/installation.html' | relative_url }}){: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 }
@@ -37,13 +33,13 @@ d'objets de contenu typé.
 ## Quatre choses, dans l'ordre
 
 **1. Le plan de travail est l'endroit où vous dites ce que vous faites.**
-Pas un message de discussion, pas un commentaire — des [beans]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}), un dépôt versionné que toute session ou tout agent peut lire. Réservez avant de travailler, pour qu'une session voisine ne prenne pas le même élément ; un bean qui s'avère inutile est marqué `scrapped`, avec ses raisons, jamais supprimé.
+Pas un message de discussion, pas un commentaire — des [work items]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}), un dépôt versionné que toute session ou tout agent peut lire. Réservez avant de travailler, pour qu'une session voisine ne prenne pas le même élément ; un work item qui s'avère inutile est marqué `scrapped`, avec ses raisons, jamais supprimé.
 
 ```sh
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
 beans list                          # ce qui est ouvert
 beans create "<title>"              # …après avoir vérifié que le titre n'existe pas
-beans <id> --status in-progress     # le réserver, visiblement
+bun run cat beans:claim <id>        # le réserver, visiblement
 ```
 
 **2. Créez votre premier folio.** Ce dépôt est la *plateforme* ; votre contenu vit dans le sien. Une seule commande le prépare — les manifestes, la déclaration, les fichiers d'agent et le lien vers ici :
@@ -56,10 +52,10 @@ Ensuite, [Démarrer]({{ '/docs/cat-harness/start/getting-started.html' | relativ
 
 **3. Sachez quel genre de chose vous écrivez.** Un *document* est de la prose structurée ; un *article* (paper) est cela, plus les types de blocs dont l'assertion est une affirmation formelle, appuyée par Lean et composée avec LaTeX. Ce choix décide quels blocs sont permis et quels contrôles s'exécutent : [Types de contenu]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }}).
 
-**4. La documentation que vous ne lirez jamais.**
-[Toute la documentation]({{ '/docs/cat-harness/guides/index.html' | relative_url }}) — les guides de rédaction, l'architecture, le flux de publication, la référence générée des schémas et des compétences. Elle est là, elle est complète, et l'attente honnête est que vous y arriverez depuis un moteur de recherche au moment exact où quelque chose casse. C'est une bonne façon de s'en servir. Les trois étapes ci-dessus sont celles qui valent d'être lues maintenant.
+**4. Le reste de la documentation.**
+[Toute la documentation]({{ '/docs/cat-harness/guides/index.html' | relative_url }}) — les guides de rédaction, l'architecture, le flux de publication, la référence générée des schémas et des compétences. Lisez-la quand vous en avez besoin ; les trois étapes ci-dessus sont celles qui valent d'être lues maintenant.
 
-Quand c'est la *machinerie* qui vous déroute plutôt que la rédaction — qui fait quoi, dans quel processus, avec quelle compétence — commencez par [La plateforme]({{ '/docs/cat-harness/platform.html' | relative_url }}). Une seule phrase y porte tout le modèle, et chacun de ses mots est un objet déclaré séparément.
+Quand c'est la *machinerie* qui vous déroute plutôt que la rédaction — qui fait quoi, dans quel processus, avec quelle compétence — commencez par [La plateforme]({{ '/docs/cat-harness/platform.html' | relative_url }}).
 
 ---
 
@@ -70,10 +66,9 @@ fournit les compétences, les schémas, les outils et un serveur MCP (Model Cont
 Protocol) qu'un agent piloté par un LLM utilise pour planifier, rédiger, valider,
 réviser, tester et publier un **folio** de contenu qui réside dans un dépôt séparé.
 
-> **Séparation des préoccupations.** Cette documentation décrit le *formalisme du
-> cadre* et *comment utiliser folio-assistant* — délibérément maintenue **séparée
-> de tout contenu spécifique**. Lorsque du contenu apparaît dans ces pages, il est
-> purement illustratif (un *exemple*), jamais l'artefact canonique.
+> **Séparation des préoccupations.** Cette documentation décrit le cadre et comment
+> l'utiliser. Lorsque du contenu apparaît dans ces pages, c'est un *exemple*, jamais
+> l'artefact canonique.
 
 ```mermaid
 flowchart LR

@@ -15,7 +15,7 @@ summary: >-
 
 Issue #363 described self-sovereign mode as *"hosted on own infrastructure …
 not designed for external facing services. more for managing wallets. have
-incoming DAK content."* The strawperson in bean `61tg` read "managing wallets"
+incoming DAK content."* The strawperson in work item `61tg` read "managing wallets"
 narrowly: **the harness produces artefacts that wallets consume, and holds
 nobody's credentials.** [Deployment topologies](deployment-topologies.md)
 records it the same way, with `wallet` as a *data store* beside the harness

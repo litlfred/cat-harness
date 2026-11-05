@@ -67,18 +67,12 @@ la habilidad adecuada (`skill_list` → `skill_fetch`), realiza el trabajo bajo 
 
 Una habilidad se define a lo largo de varias capas — no en un único archivo. Para cualquier habilidad:
 
-| Capa | Ubicación | Estado |
-|------|-----------|--------|
-| **Definición** (roles, capacidades requeridas, requisitos, patrones de enrutamiento, etapas del ciclo de vida, referencia de esquema) | `.claude/skills/local/<skill>.json` | ✅ las 22 habilidades de autoría — validadas en CI mediante `scripts/validate-skills.ts` |
-| **Contrato tipado** (JSON Schema de entrada/salida) | `schemas/skills/<skill>/` | ✅ las 22 — consulta la [referencia]({{ site.baseurl }}/reference/skills/) |
-| **Cuerpo de instrucciones** (guía práctica en prosa que carga el LLM) — consúltalas en la referencia de [Instrucciones de habilidades]({{ site.baseurl }}/reference/skill-instructions/) | `skills/authoring/content-lifecycle/*.md`, `skills/folio-*-adapter/*.md`, `src/skills/*.md` | ✅ habilidades de ciclo de vida, agente, paquete de plataforma y **folio-document-adapter**; ⏳ **los cuerpos de authoring-math / authoring-who-smart-guidelines están pendientes (TBD)** (esos paquetes incluyen el manifiesto y las definiciones JSON) |
-| **Paquete** (dependencias Docker/tiempo de ejecución) | `skills/<package>/package-manifest.json` | ✅ los cuatro paquetes |
-
-Así que *sí, las habilidades existen* — como definiciones estructuradas + esquemas tipados, con cuerpos
-en prosa incluidos para las habilidades del ciclo de vida y del agente. La herramienta MCP `skill_fetch`
-actualmente sirve los cuerpos de `src/skills/*.md`; los cuerpos en prosa de las habilidades de autoría
-son lo siguiente por completar (las definiciones y los contratos a los que se vincularían
-ya están en su lugar).
+| Capa | Ubicación |
+|------|-----------|
+| **Definición** (roles, capacidades requeridas, requisitos, patrones de enrutamiento, etapas del ciclo de vida, referencia de esquema) | `skills/skill-definitions/<skill>.json` |
+| **Contrato tipado** (JSON Schema de entrada/salida) | `schemas/skills/<skill>/` — consulta la [referencia]({{ site.baseurl }}/reference/skills/) |
+| **Cuerpo de instrucciones** (guía práctica en prosa que carga el LLM, servida por `skill_fetch`) — consúltalas en la referencia de [Instrucciones de habilidades]({{ site.baseurl }}/reference/skill-instructions/) | `skills/<tema>/<paquete>/*.md`, `sdlc/skills/<paquete>/*.md`, `work-plan/skills/work-plan/*.md` |
+| **Paquete** (dependencias Docker/tiempo de ejecución) | `package-manifest.json` junto a los cuerpos de instrucciones del paquete |
 
 ### Transversal: `content-lifecycle`
 
@@ -128,47 +122,42 @@ Las etapas del ciclo de vida que se aplican a **cada** tipo de contenido:
 | [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | Compilar y publicar la IG |
 | [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | Compuertas de control de calidad (*QA gates*) |
 
-### Habilidades de agente/plataforma (`src/skills`)
+### Habilidades de agente/plataforma
 
-Habilidades que el LLM utiliza para trabajar de manera efectiva en el repositorio (cargadas mediante `skill_fetch`,
-paquete `folio-assistant`):
+Habilidades que el LLM utiliza para trabajar de manera efectiva en el repositorio (cargadas mediante `skill_fetch`):
 
-| Habilidad | Propósito |
-|-----------|-----------|
-| `corpus-grep` | Buscar en todo el corpus de contenido |
-
-> `editor`, `readability-editing`, `todo-review`, `symbiotic-interaction` y
-> `deployment-auth` ahora residen (generalizadas) en el paquete **`folio-core`** a continuación —
-> cárgalas con `package_name="folio-core"`.
+| Habilidad | Paquete | Propósito |
+|-----------|---------|-----------|
+| `corpus-grep` | `kg-core` | Buscar en todo el corpus de contenido |
+| `editor`, `readability-editing`, `todo-review` | `authoring-core` | Edición y revisión de prosa |
+| `symbiotic-interaction` | `conduct-core` | Leer el registro de la aportación del autor |
+| `deployment-auth` | `folio-core` | Autenticación de despliegue |
 
 Un folio de artículo (*paper folio*) también requiere las habilidades de `folio-document-adapter`: un artículo *es* un
 documento con bloques que contienen Lean, por lo que `document-structure` y
 `document-publishing` se aplican a ambos. Los dos paquetes son mitades de un único modelo
 de contenido, no alternativas entre las que elegir.
 
-### Habilidades locales de coordinación (`.claude/skills/local`)
+### Habilidades de coordinación (`sdlc-core`, `work-plan`)
 
 | Habilidad | Propósito |
 |-----------|-----------|
-| `prepare-merge` | Llevar una rama a un estado limpio/en verde/fusionable (consulta también `/watch`) |
+| `prepare-merge` | Llevar una rama a un estado limpio/en verde/fusionable (consulta también `watch`) |
 | `bean-coordination` | Disciplina de reclamación/coordinación multiagente |
-| `todo-manager` | Disciplina de beans como tareas pendientes (*beans-as-todos*) |
+| `todo-manager` | Disciplina de work items como tareas pendientes (*beans-as-todos*) |
 
 ### Paquetes de habilidades de plataforma (`skills/tools/folio-core`, `folio-assistant-core/skills/content/folio-document-adapter`, `folio-assistant-sci/skills/content/folio-paper-adapter`)
 
-**Paquetes de plataforma** más amplios, dos de ellos migrados desde el repositorio de contenido qou (consulta el
-[registro de migración](https://github.com/litlfred/folio-assistant/issues/202) y el
-*issue* [#27](https://github.com/litlfred/folio-assistant/issues/27)). Son
-independientes del contenido y están diseñados para sincronizarse en cualquier folio:
+**Paquetes de plataforma** más amplios, independientes del contenido y diseñados
+para sincronizarse en cualquier folio:
 
 | Paquete | Habilidades | Alcance |
 |---------|------------:|---------|
-| **`folio-core`** | 43 | Coordinación de agentes, el marco de trabajo del observador (*watcher framework*), canalización de QA / renderizado / bibliografía / glosario, documentación, despliegue — se aplica a *cualquier* tipo de contenido. |
+| **`folio-core`** | 7 | La superficie de herramientas: ensamblaje, contrato y proyección MCP, habilidades y herramientas, autoría de herramientas, cobertura de herramientas, autenticación de despliegue — se aplica a *cualquier* tipo de contenido. |
 | **`folio-document-adapter`** | 4 | Folios en prosa: autoría de bloques, estructura de capítulos/secciones, declaraciones normativas y la vía de publicación sin TeX. Se aplica también a artículos. |
 | **`folio-paper-adapter`** | 40 | Adaptador para artículos de matemáticas formales (cualquier artículo con Lean 4 + LaTeX): flujo de trabajo de Lean, herramientas de demostración, validación de objetos de contenido, LaTeX, estructura de artículos, importación, simuladores. |
 
-Se omitieron las habilidades de física irreductibles de QOU; los ejemplos específicos de QOU en el resto
-se generalizaron. Cada paquete incluye un `package-manifest.json`.
+Cada paquete incluye un `package-manifest.json`.
 
 > Los **esquemas** de habilidades (entrada/salida tipada para las habilidades de autoría) se generan
 > en la [Referencia de esquemas de habilidades]({{ '/reference/skills/' | relative_url }}) — nunca se desvíen de lo que

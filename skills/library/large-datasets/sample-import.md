@@ -18,9 +18,8 @@ instance (the IRIS replica); nothing here is WHO-specific.
 
 Size, restrictions, copyright, retention and source loss are asked **once**,
 by [`materialize-remote`](materialize-remote.md),
-and this process only reads the outcome. Bean `hpax`: *"neither has its own
-copy of the four gates."* A second copy would be a second answer free to
-disagree with the first.
+and this process only reads the outcome. A second copy would be a second
+answer free to disagree with the first.
 
 What each gate refuses on is in that skill. What this skill adds is what
 happens **around** it.
@@ -29,7 +28,7 @@ happens **around** it.
 
 | question | why it is asked first |
 |---|---|
-| **Which items?** By the source's identifiers, or a subset strategy its descriptor (in the owning instance's declared `sources/`, e.g. The IRIS replica's `sources/`) supports. | the size gate needs a request to measure |
+| **Which items?** By the source's identifiers, or a subset strategy its descriptor (in the owning instance's declared `sources/`, e.g. the IRIS replica's `sources/`) supports. | the size gate needs a request to measure |
 | **Which store?** The graph or database the import is tested against. | the test in step 4 is against *this* store's schema |
 | **Permanent or trial?** | it decides where the copy lands, and moving a landed copy later means moving it under the wrong obligations |
 
@@ -44,15 +43,14 @@ recorded so the next attempt does not re-litigate it.
 
 ## 3. Land it where its permanence says
 
-Owner, 2026-09-23: *"if sample-import is not intended to be permanent,
-materialise to fsh-guts"*.
+A sample that is not intended to be permanent is materialized to `fsh-guts/`.
 
 | | permanent | trial |
 |---|---|---|
 | destination | `library/` | `fsh-guts/` |
 | published | yes, with the library | **no** — kept, addressable, exported, never rendered |
 | refreshed | yes, by `refresh-materialized` | **no** — it records what the source looked like when tried |
-| provenance | the materialization record | `$schema: folio-fsh-guts/v1`, plus the bean or issue it was written under. Never a `movedFrom`: it was not moved from anywhere, and inventing one is false provenance. |
+| provenance | the materialization record | `$schema: folio-fsh-guts/v1`, plus the work item or issue it was written under. Never a `movedFrom`: it was not moved from anywhere, and inventing one is false provenance. |
 
 **Promoting a trial** means running the process again with *permanent*. The
 gates are asked afresh; a trial's answers were given for a trial.
@@ -78,9 +76,6 @@ reason the gateway is labelled *"no, or could not run"*.
 
 ## Why bootstrap does not call this
 
-Bean `hpax` asked that bootstrap's initialisation call the shared
-subprocesses, *"or a bean records exactly why it cannot yet."* It cannot:
 `bootstrap` is the floor (`needs: []`) and these processes live in
 cat-harness, which needs bootstrap. A call from bootstrap up to cat-harness
-is an edge `layer-direction.ts` reports as **wrong-direction**. The reason is
-now a checkable fact, not an argument.
+is an edge `layer-direction.ts` reports as **wrong-direction**.

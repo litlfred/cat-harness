@@ -29,10 +29,6 @@ msgstr "Агентная оснастка"
 msgid "On this page"
 msgstr "На этой странице"
 
-#: docs/concepts/agentic-harness.md:29
-msgid "The agentic harness is the interaction model that folio-assistant runs on — the rules, states, and workflows that govern how an agent and a user collaborate inside this platform. Much of this behaviour is already described across individual skills and guidance documents; this page consolidates it into one reference so that an agent entering a session can look up the expected behaviour rather than reconstructing it from scattered rules."
-msgstr "Агентная оснастка (agentic harness) — это модель взаимодействия, на которой работает folio-assistant: правила, состояния и рабочие процессы, определяющие совместную работу агента и пользователя внутри этой платформы. Значительная часть этого поведения уже описана в отдельных навыках и методических документах; эта страница объединяет его в единый справочник, чтобы агент, входя в сессию, мог обратиться к ожидаемому поведению, а не восстанавливать его по разрозненным правилам."
-
 #: docs/concepts/agentic-harness.md:36
 msgid "This is not about the agent's internal architecture. It is about the observable contract between the agent and the user: what states the interaction can be in, how requests are classified, which workflow the agent enters for each class, and what the user should expect at each stage."
 msgstr "Речь идет не о внутренней архитектуре агента. Речь идет о наблюдаемом контракте между агентом и пользователем: в каких состояниях может находиться взаимодействие, как классифицируются запросы, в какой рабочий процесс агент входит для каждого класса и чего пользователю следует ожидать на каждом этапе."
@@ -56,10 +52,6 @@ msgstr "Состояние рабочего процесса (Workflow state)"
 #: docs/concepts/agentic-harness.md:58
 msgid "The agent is executing a named workflow — each represented by a BPMN process diagram with the agent and user in separate swim lanes. The active workflow determines what the agent does next and what it expects from the user."
 msgstr "Агент выполняет именованный рабочий процесс, каждый из которых представлен BPMN-диаграммой процесса с отдельными дорожками (swimlanes) для агента и пользователя. Активный рабочий процесс определяет, что агент делает дальше и чего он ожидает от пользователя."
-
-#: docs/concepts/agentic-harness.md:62
-msgid "Active workflows in this platform:"
-msgstr "Активные рабочие процессы на этой платформе:"
 
 #: docs/concepts/agentic-harness.md:64
 msgid "Workflow"
@@ -289,10 +281,6 @@ msgstr "При возникновении сомнений агент уточн
 msgid "Content workflows"
 msgstr "Рабочие процессы контента"
 
-#: docs/concepts/agentic-harness.md:150
-msgid "When a request is classified as content work (authoring, review, ingestion), the agent follows the corresponding BPMN workflow. The existing documentation pages describe these in detail:"
-msgstr "Когда запрос классифицируется как работа с контентом (создание, рецензирование, импорт), агент следует соответствующему рабочему процессу BPMN. Существующие страницы документации описывают их подробно:"
-
 #: docs/concepts/agentic-harness.md:163
 msgid "Writing guides:"
 msgstr "Руководства по написанию:"
@@ -312,10 +300,6 @@ msgstr "Это не одна ось, и трактовать их как еди�
 #: docs/concepts/agentic-harness.md:211
 msgid "BPMN execution: one skill, two engines"
 msgstr "Выполнение BPMN: один навык, два движка"
-
-#: docs/concepts/agentic-harness.md:216
-msgid "The owner, 2026-09-23, naming the skill this spectrum is about:"
-msgstr "Владелец, 2026-09-23, дает определение навыку, к которому относится этот спектр:"
 
 #: docs/concepts/agentic-harness.md:218
 msgid "BPMN Execution Skill: given a Process, Context, State and Role, utilize one or more Skills in order to execute a Task."
@@ -400,10 +384,6 @@ msgstr "Механические + агентные отчеты QA/QC обна�
 #: docs/concepts/agentic-harness.md:259
 msgid "Feature-request workflow (CRDM)"
 msgstr "Рабочий процесс запросов функциональности (CRDM)"
-
-#: docs/concepts/agentic-harness.md:269
-msgid "The feature-request workflow is where this harness document adds the most value, because it describes a behaviour that was previously implicit. The authoring and review workflows have been documented for months; the requirements workflow existed only as ad-hoc conversation."
-msgstr "Рабочий процесс запросов функциональности — это область, где данный документ об оснастке приносит больше всего пользы, поскольку он описывает поведение, которое ранее существовало лишь неявно. Процессы создания и рецензирования документировались на протяжении месяцев; рабочий же процесс требований существовал исключительно в форме ситуативных диалогов."
 
 #: docs/concepts/agentic-harness.md:274
 msgid "How the agent enters CRDM"
@@ -673,10 +653,6 @@ msgstr "Требования могут охватывать несколько 
 msgid "Consolidated skill references"
 msgstr "Сводные ссылки на навыки"
 
-#: docs/concepts/agentic-harness.md:393
-msgid "The behaviour described on this page draws from skills and guidance documents scattered across the repository. This section maps the consolidated behaviour back to its authoritative sources."
-msgstr "Поведение, описанное на этой странице, опирается на навыки и руководства, рассредоточенные по всему репозиторию. В этом разделе сводное поведение сопоставляется с его первоисточниками."
-
 #: docs/concepts/agentic-harness.md:397
 msgid "Behaviour"
 msgstr "Поведение"
@@ -744,10 +720,6 @@ msgstr "При расхождении между навыком и этой ст
 #: docs/concepts/agentic-harness.md:415
 msgid "What is not built yet"
 msgstr "Что еще не реализовано"
-
-#: docs/concepts/agentic-harness.md:420
-msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
-msgstr "Сохранение состояния рабочего процесса — оснастка описывает приостановку и возобновление рабочего процесса, однако механизма сохранения состояния рабочего процесса агента между сессиями нет. На сегодняшний день для этой цели используются beans и комментарии к задачам."
 
 #: docs/concepts/agentic-harness.md:425
 msgid "Automated request classification — the classification table is a reference for agents to read; there is no classifier tool that routes automatically."
@@ -897,3 +869,24 @@ msgstr "BPMN для самой агентной оснастки — высок�
 
 #~ msgid "Tracked in: #203"
 #~ msgstr "Отслеживается в: #203"
+
+#~ msgid "The agentic harness is the interaction model that folio-assistant runs on — the rules, states, and workflows that govern how an agent and a user collaborate inside this platform. Much of this behaviour is already described across individual skills and guidance documents; this page consolidates it into one reference so that an agent entering a session can look up the expected behaviour rather than reconstructing it from scattered rules."
+#~ msgstr "Агентная оснастка (agentic harness) — это модель взаимодействия, на которой работает folio-assistant: правила, состояния и рабочие процессы, определяющие совместную работу агента и пользователя внутри этой платформы. Значительная часть этого поведения уже описана в отдельных навыках и методических документах; эта страница объединяет его в единый справочник, чтобы агент, входя в сессию, мог обратиться к ожидаемому поведению, а не восстанавливать его по разрозненным правилам."
+
+#~ msgid "Active workflows in this platform:"
+#~ msgstr "Активные рабочие процессы на этой платформе:"
+
+#~ msgid "When a request is classified as content work (authoring, review, ingestion), the agent follows the corresponding BPMN workflow. The existing documentation pages describe these in detail:"
+#~ msgstr "Когда запрос классифицируется как работа с контентом (создание, рецензирование, импорт), агент следует соответствующему рабочему процессу BPMN. Существующие страницы документации описывают их подробно:"
+
+#~ msgid "The owner, 2026-09-23, naming the skill this spectrum is about:"
+#~ msgstr "Владелец, 2026-09-23, дает определение навыку, к которому относится этот спектр:"
+
+#~ msgid "The feature-request workflow is where this harness document adds the most value, because it describes a behaviour that was previously implicit. The authoring and review workflows have been documented for months; the requirements workflow existed only as ad-hoc conversation."
+#~ msgstr "Рабочий процесс запросов функциональности — это область, где данный документ об оснастке приносит больше всего пользы, поскольку он описывает поведение, которое ранее существовало лишь неявно. Процессы создания и рецензирования документировались на протяжении месяцев; рабочий же процесс требований существовал исключительно в форме ситуативных диалогов."
+
+#~ msgid "The behaviour described on this page draws from skills and guidance documents scattered across the repository. This section maps the consolidated behaviour back to its authoritative sources."
+#~ msgstr "Поведение, описанное на этой странице, опирается на навыки и руководства, рассредоточенные по всему репозиторию. В этом разделе сводное поведение сопоставляется с его первоисточниками."
+
+#~ msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
+#~ msgstr "Сохранение состояния рабочего процесса — оснастка описывает приостановку и возобновление рабочего процесса, однако механизма сохранения состояния рабочего процесса агента между сессиями нет. На сегодняшний день для этой цели используются beans и комментарии к задачам."

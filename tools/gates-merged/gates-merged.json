@@ -39,7 +39,7 @@
     ],
     "selection": {
       "when": "Immediately before asking for a merge, and again if the base has moved since. Not on every push: it is the full gate set, on a second tree.",
-      "limits": "It tests the base as fetched NOW; the base can still move before the merge lands. The merge queue (`merge_group:` on the gating workflows, switched on by the owner) is what closes that last gap.",
+      "limits": "It tests the base as fetched NOW; the base can still move before the merge lands. The merge queue (`merge_group:` on the gating workflows) closes that last gap.",
       "cost": "One full `bun run cat gates`, plus a worktree; a `bun install` only when the merge changes the lockfile."
     },
     "requires": {

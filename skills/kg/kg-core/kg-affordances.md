@@ -4,7 +4,7 @@ description: >
   The four affordances of a conformant knowledge graph — browse, materialise,
   instantiate and copy-into-folio — which capabilities each requires, how each
   writing verb degrades cleanly when no write capability is available, and how
-  copying an asset stamps KgAsset.source provenance. Bean dp1j.
+  copying an asset stamps KgAsset.source provenance.
 adapters: [document, paper, dak]
 profiles: [document, paper]
 tested-by:
@@ -13,9 +13,8 @@ tested-by:
 
 # Knowledge graph affordances — browse, materialise, instantiate, copy-into-folio
 
-A conformant knowledge graph is not a dead catalogue. A person or an agent
-arriving at any conformant instance has **four verbs** available on what they
-find:
+A person or an agent arriving at any conformant instance has **four verbs**
+available on what they find:
 
 1. **`browse`** — explore the graph, its subgraphs, its skills, its processes,
    its schemas and its assets without mutating anything.
@@ -120,11 +119,11 @@ from original work:
 | `source` state | meaning |
 |---|---|
 | **present, and `ref` matches upstream** | copied from `instance` at `path` and current with that upstream commit |
-| **present, and `ref` differs or is omitted** | copied from `instance` at `path`, Either adapted locally since `ref` or taken without a commit pin (staleness is checkable only when `ref` is recorded) |
+| **present, and `ref` differs or is omitted** | copied from `instance` at `path`, either adapted locally since `ref` or taken without a commit pin (staleness is checkable only when `ref` is recorded) |
 | **absent (`undefined`)** | **authored in this instance** — a third state, never "copied from an unknown place" |
 
-Omitting `source` on a copied asset makes it indistinguishable from locally
-authored work one commit later, and nothing downstream can reconstruct which
+A copied asset MUST carry `source`: without it the copy is indistinguishable
+from locally authored work, and nothing downstream can reconstruct which
 instance it came from.
 
 ### Working on the copy in the target folio

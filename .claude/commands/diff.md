@@ -6,7 +6,7 @@ generated: cat-harness-tools/scripts/gen-skill-commands.ts
 
 # /diff
 
-Run the `diff` skill. Read [`skills/sdlc/sdlc-core/diff.md`](../../skills/sdlc/sdlc-core/diff.md) and follow it.
+Run the `diff` skill. Read [`sdlc/skills/sdlc-core/diff.md`](../../sdlc/skills/sdlc-core/diff.md) and follow it.
 
 This command is a pointer, generated from that skill's `user_invocable: true`; the
 instructions live in the skill and nowhere else. The same skill is also served as the

@@ -187,7 +187,7 @@ These are asked, not settled; each has a default the work proceeds on.
    `Process_MaterializeRemote`. A `subscribe-kg` process that calls it belongs
    either there (the default) or in cat-harness, which would then need
    large-datasets. The direction rules make that a real question, not a
-   preference (bean `cjvs`).
+   preference (work item `cjvs`).
 
 ## What would change this proposal
 

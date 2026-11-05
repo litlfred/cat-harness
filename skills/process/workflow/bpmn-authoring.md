@@ -28,8 +28,7 @@ degrades, authoring does not stop.
 ## Diagram Interchange is not optional
 
 A `.bpmn` with no DI section — no explicit `x`/`y` on its shapes — parses and
-renders **blank**. This is the single most common way a new diagram here
-arrives broken, and it survives review because the XML looks complete.
+renders **blank**, although the XML looks complete.
 
 `bun run cat render:bpmn` renders every diagram to `docs/assets/img/workflows/`
 with bpmn-js in headless Chromium; `bun run cat render:bpmn:check` fails when an
@@ -38,17 +37,14 @@ done.
 
 ## Readable at 100%: check it before and after (author check)
 
-Owner, 2026-10-31: *"make the font a bit bigger, the spacing a bit more
-compact so dont need to zoom as much"*, *"add as QA and author check"*.
 Every diagram you write or touch must, when you are done:
 
 - **fit 1400 × 900** in diagram units, so its 16px text reads at about
   14px in a 1200px band without zooming; **every task a fixed 120 × 120
-  square** (owner, 2026-11-01: boxes never grow to fit their names; a name
-  that does not fit is shortened, `TASK_SIZE` in the tools layer);
+  square**: boxes never grow to fit their names, and a name that does not
+  fit is shortened (`TASK_SIZE` in the tools layer);
 - have **no label on another label, on a flow (its own included), on a box
-  or across a lane line** (owner, 2026-10-31: *"need to check for text on
-  arrows"*): a gateway's question above the diamond, its answers beside
+  or across a lane line**: a gateway's question above the diamond, its answers beside
   their flows, every label inside one lane;
 - have **right-angled flows** and **every name inside its box**, pool and
   lane names inside their strips;
@@ -77,20 +73,19 @@ is not enabled**. That has consequences for how you author:
   `<bpmn:resource id="<role id>" name="<title>"/>` (before the collaboration
   and the process), and set `partitionElementRef="<role id>"` on the lane; the
   id is the role's in `scenarios/roles.json`, verbatim. Lane names are free
-  text and sixty of them once spelled two dozen positions; an explicit ref is
-  the join that does not depend on spelling. `<bootstrap.processes:role ref>`
-  is the deprecated form (owner, 2026-10-16). A diagram using any
+  text; an explicit ref is the join that does not depend on spelling.
+  `<bootstrap.processes:role ref>` is the deprecated form. A diagram using any
   `bootstrap.processes:` element declares the namespace as the first child of
   `<bpmn:definitions>`: `<bpmn:import
   namespace="https://litlfred.github.io/bootstrap/v0/processes/ns/"
   location="https://litlfred.github.io/bootstrap/v0/processes/ns.jsonld"
   importType="http://www.w3.org/ns/json-ld"/>`.
 - **A store is not a lane.** Lanes are for people and agents, the roles that
-  act. A place where things are kept, such as the work plan (beans), a corpus,
+  act. A place where things are kept, such as the work plan (work items), a corpus,
   a session record, an activity log or a published bucket, is a
   `<bpmn:dataStoreReference>`. The tasks that read or write it point at it
-  with data associations, and each task sits in the lane of whoever does it
-  (owner, 2026-11-01, Q-BR-3 A). A "Work plan — beans" lane holding "Open the
+  with data associations, and each task sits in the lane of whoever does it.
+  A "Work plan — beans" lane holding "Open the
   bean" says the store does the work, when the agent does.
 - **The process's own `bpmn:documentation` opens with what it is for.** Its
   first sentence is the diagram's row on the publication-workflow page.
@@ -98,8 +93,8 @@ is not enabled**. That has consequences for how you author:
   `description`), the page reads it from the published named-subgraph JSON-LD
   (`bun run cat subgraph:jsonld`) rather than from anything written by hand, and
   `check:process-index` fails when a declared diagram's node has none. So that sentence says what the process does or answers
-  — not who asked for it, which bean or issue it came from, or where the work
-  got to. Those belong later in the documentation, or in the bean.
+  — not who asked for it, which work item or issue it came from, or where the work
+  got to. Those belong later in the documentation, or in the work item.
 - **A gateway may be computed rather than chosen** — see `dmn-authoring`.
 - **Policy is declared on the process.** `<cat-harness.processes:policy enforcement="strict"/>`
   means `workflow_gate` refuses a step that is not enabled; absent policy means
@@ -107,8 +102,8 @@ is not enabled**. That has consequences for how you author:
 
 ## Readable diagrams: what the research supports
 
-Owner, 2026-10-31: take what holds up from the BPMN comprehension research and
-check it mechanically. `kg:audit` reports each rule below per process
+These rules are what holds up from the BPMN comprehension research, checked
+mechanically. `kg:audit` reports each rule below per process
 (`src/workflow/diagram-quality.ts` in the tools layer). The
 sources, and how strong each rule's evidence is, are in the
 [`process-model-quality`](../../../methodologies/process-model-quality.md)
@@ -127,7 +122,7 @@ methodology.
   7PMG's 50 (`process-decompose`, major), and it predicts modelling errors
   such as deadlocks, not reading speed.
 - **One start event per process level** (`process-single-start`). Several
-  named end events are fine, and the bean CLOSE pattern needs them.
+  named end events are fine, and the work item CLOSE pattern needs them.
 - **A decision is a question, its branches are the answers**
   (`decision-label-question`).
 - **Label activities verb-object**: imperative verb, then its object (*Review
@@ -136,7 +131,7 @@ methodology.
   never gated.
 - **A name says the step, nothing else.** No trailing `[skill]` slug: the
   skill is in `<bootstrap.processes:skill ref>`, and the page links it from
-  there (owner, 2026-11-01, Q-RED-3 B). No step numbers ("1 ·", "Phase 2:",
+  there. No step numbers ("1 ·", "Phase 2:",
   "P1.1"): the flows already give the order, and a number in front breaks
   verb-first. A number that cites a section of a source document goes in the
   task's documentation. A list of numbered steps is a sign the diagram copies
@@ -144,11 +139,9 @@ methodology.
 
 ### Split by phase: how
 
-Owner, 2026-10-31, on the rendered `content-change-review` page: *"long and
-hard to read. can we improve make use of subprocess or something?"* That
-diagram had grown to 43 flow nodes in five lanes, with a start event per lane.
-Every step was right; the page was unreadable. When `process-size` fires, or
-a diagram has a start event per lane, split it like this:
+A diagram can be right in every step and still unreadable on its page. When
+`process-size` fires, or a diagram has a start event per lane, split it like
+this:
 
 - **The top-level process shows the phases.** Each phase is a
   `<bpmn:callActivity calledElement="…">` to its own process. Keep at the top
@@ -165,14 +158,14 @@ a diagram has a start event per lane, split it like this:
 - **Keep the node ids when you move nodes into a phase.** A test, a schema or
   a skill that points at `Task_X` then changes only its file and process, not
   its id.
-- **Open and close the bean at the top, once.** A process that is only ever
-  called runs on its caller's bean, so a phase calls neither
+- **Open and close the work item at the top, once.** A process that is only ever
+  called runs on its caller's work item, so a phase calls neither
   `Process_BeanOpen` nor `Process_BeanClose` (`check:bean-calls`).
   "Once" holds for the top as well: a process with several outcomes routes
   them all into **one** `Process_BeanClose` call, which decides itself whether
-  the bean is completed, scrapped or blocked, and only then branches to its
-  named end events. One close per outcome (seven in one diagram, before
-  2026-11-01) repeats the same box and makes the diagram wide for no reason.
+  the work item is completed, scrapped or blocked, and only then branches to its
+  named end events. One close per outcome repeats the same box and makes the
+  diagram wide.
 - **A caller's `adjudication accepts` looks one level down.** If the judgement
   moves into a phase, put `accepts` on the call to that phase, and take it off
   any caller further up.
@@ -213,21 +206,16 @@ component maps, lattices, navigation graphs. The audit of which is which is on
 the [publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html#which-diagrams-are-bpmn-and-which-are-not)
 page, which the content core authors.
 
-## Why a DAK section sits in a platform package
+## Why this skill is in a platform package
 
-This skill lived in `authoring-who-smart-guidelines` until 2026-09-20, and it
-never belonged there: its own first line says it covers *both* a DAK's L2
-business processes **and this repository's own `processes/**/*.bpmn`*, five
-of its six sections are content-agnostic, and `crdm-requirements.bpmn` — a
-PLATFORM process — names it from the `Agent` lane. A platform process
-depending on a content-type package is the boundary
-the `platform-boundary-guard` subagent exists to keep — measured under bean
-`ugid`, moved under `3g13`.
-
-The section below stayed with it rather than being split out. A generic skill
-naming a domain worked example is ordinary; two skills that must be read
-together to author one diagram are not. If a second content type ever needs
-its own section here, that is the moment to reconsider — not before.
+It covers *both* a DAK's L2 business processes **and this repository's own
+`processes/**/*.bpmn`**, and platform processes such as
+`crdm-requirements.bpmn` name it, so it cannot live in a content-type package:
+a platform process depending on a content-type package crosses the boundary
+the `platform-boundary-guard` subagent keeps. Its DAK material stays here
+rather than in a second skill, because a generic skill naming a domain worked
+example is ordinary, and two skills that must be read together to author one
+diagram are not.
 
 ## When a layer above transforms it
 
