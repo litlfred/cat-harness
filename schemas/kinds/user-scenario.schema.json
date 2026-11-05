@@ -10,9 +10,6 @@
     },
     {
       "$ref": "#/$defs/user-scenario~10.2.0"
-    },
-    {
-      "$ref": "#/$defs/building-blocks~10.1.0"
     }
   ],
   "$defs": {
@@ -113,6 +110,47 @@
             ],
             "additionalProperties": false
           }
+        },
+        "illustrationStyle": {
+          "type": "object",
+          "properties": {
+            "prompt": {
+              "type": "string",
+              "minLength": 1
+            },
+            "cast": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "actor": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9-]*$"
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "actor",
+                  "description"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "notes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "prompt"
+          ],
+          "additionalProperties": false
         },
         "steps": {
           "type": "array",
@@ -403,6 +441,31 @@
                   ],
                   "additionalProperties": false
                 }
+              },
+              "illustration": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "description": "The image, relative to the instance root. It carries NO text: the step title and any caption are translatable page text, rendered from the step's `title` and `alt`.",
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "alt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "What the picture shows: translatable page text, rendered beside the image as its caption, never baked into it."
+                  },
+                  "prompt": {
+                    "description": "The scene, as a prompt for an image generator, for when no picture exists yet. It asks for no readable text, signs or logos.",
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "alt"
+                ],
+                "additionalProperties": false,
+                "description": "A step's picture, or the brief for drawing it. A picture carries no text; the title and caption are page text."
               }
             },
             "required": [
@@ -526,6 +589,47 @@
             "additionalProperties": false
           }
         },
+        "illustrationStyle": {
+          "type": "object",
+          "properties": {
+            "prompt": {
+              "type": "string",
+              "minLength": 1
+            },
+            "cast": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "actor": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9][a-z0-9-]*$"
+                  },
+                  "description": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "actor",
+                  "description"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "notes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
+          "required": [
+            "prompt"
+          ],
+          "additionalProperties": false
+        },
         "steps": {
           "type": "array",
           "items": {
@@ -815,6 +919,31 @@
                   ],
                   "additionalProperties": false
                 }
+              },
+              "illustration": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "description": "The image, relative to the instance root. It carries NO text: the step title and any caption are translatable page text, rendered from the step's `title` and `alt`.",
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "alt": {
+                    "type": "string",
+                    "minLength": 1,
+                    "description": "What the picture shows: translatable page text, rendered beside the image as its caption, never baked into it."
+                  },
+                  "prompt": {
+                    "description": "The scene, as a prompt for an image generator, for when no picture exists yet. It asks for no readable text, signs or logos.",
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "alt"
+                ],
+                "additionalProperties": false,
+                "description": "A step's picture, or the brief for drawing it. A picture carries no text; the title and caption are page text."
               }
             },
             "required": [
@@ -836,134 +965,6 @@
         "description",
         "personas",
         "steps",
-        "$schema"
-      ],
-      "additionalProperties": false
-    },
-    "building-blocks/0.1.0": {
-      "title": "building-blocks/0.1.0",
-      "type": "object",
-      "properties": {
-        "layers": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "pattern": "^[a-z0-9][a-z0-9-]*$"
-              },
-              "label": {
-                "type": "string",
-                "minLength": 1
-              },
-              "question": {
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "required": [
-              "id",
-              "label"
-            ],
-            "additionalProperties": false
-          }
-        },
-        "blocks": {
-          "minItems": 1,
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "id": {
-                "type": "string",
-                "pattern": "^[a-z0-9][a-z0-9-]*$"
-              },
-              "name": {
-                "type": "string",
-                "minLength": 1
-              },
-              "short": {
-                "type": "string",
-                "minLength": 1
-              },
-              "kind": {
-                "type": "string",
-                "enum": [
-                  "tool",
-                  "system",
-                  "standard",
-                  "network"
-                ]
-              },
-              "layer": {
-                "type": "string",
-                "pattern": "^[a-z0-9][a-z0-9-]*$"
-              },
-              "jurisdiction": {
-                "type": "string",
-                "minLength": 1
-              },
-              "owner": {
-                "type": "string",
-                "minLength": 1
-              },
-              "what": {
-                "type": "string",
-                "minLength": 1
-              },
-              "soWhat": {
-                "type": "string",
-                "minLength": 1
-              },
-              "components": {
-                "type": "array",
-                "items": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "links": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "label": {
-                      "type": "string",
-                      "minLength": 1
-                    },
-                    "url": {
-                      "type": "string",
-                      "format": "uri"
-                    }
-                  },
-                  "required": [
-                    "label",
-                    "url"
-                  ],
-                  "additionalProperties": false
-                }
-              }
-            },
-            "required": [
-              "id",
-              "name",
-              "kind",
-              "layer",
-              "jurisdiction",
-              "what"
-            ],
-            "additionalProperties": false
-          }
-        },
-        "$schema": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "layers",
-        "blocks",
         "$schema"
       ],
       "additionalProperties": false

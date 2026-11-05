@@ -4,19 +4,21 @@ description: >
   Journeys and workshops as knowledge-graph content: a DAK user scenario told
   as a journey map (`user-scenario` kind: ordered steps, per person what they
   do and feel, pain points, enablers, the record's trust state, and edges to
-  stories, BPMN tasks, requirements, FHIR examples and building blocks), a
-  workshop that teaches from it (`workshop` kind: modules, objectives,
-  questions for the room on each step, reference tables, sheets, job aids),
-  and the `journeys-viewer` visualiser that draws both for an instance and the
-  layers it mounts. Read before writing a journey or a workshop, before
-  declaring the viewer, and before building a journey walkthrough app of your
-  own.
+  stories, BPMN tasks, requirements, FHIR examples and building blocks), the
+  `building-blocks` catalogue its steps use, a workshop that teaches from it
+  (`workshop` kind: modules, objectives, questions for the room on each step,
+  reference tables, sheets, job aids), the `journeys-viewer` visualiser that
+  draws them for an instance and the layers it mounts, and the
+  `check:journey-refs` gate that every reference they name resolves. Read
+  before writing a journey or a workshop, before declaring the viewer, and
+  before building a journey walkthrough app of your own.
 ---
 
 # Journey maps — journeys and workshops as nodes
 
 > Skill id: `journey-maps` · Package: `ui-core` · Kinds: `user-scenario`,
-> `workshop` · Tool: `journeys-viewer` (`bun run cat journeys:viz`)
+> `building-blocks`, `workshop` · Tools: `journeys-viewer` (`bun run cat
+> journeys:viz`), `journey-refs` (`bun run cat check:journey-refs`)
 
 ## The rule
 
@@ -46,15 +48,60 @@ ids) — and adds the ordered `steps`:
 | `realisedBy` | a BPMN file and the flow-node ids that carry the step out |
 | `requirements`, `examples` | `req:` node ids; FHIR examples as `Type/id` |
 | `uses[]` | a block of a `building-blocks/0.1.0` catalogue, and the ROLE it plays in this step |
+| `illustration` | the step's picture (`src`, instance-relative), its `alt`, and the `prompt` to draw it when there is none yet (0.2.0) |
 
+`user-scenario/0.2.0` accepts every `0.1.0` file as it is; only 0.2.0 adds
+`partOf`, `views`, `references`, `illustrationStyle` and, on a step, `gaps`,
+`references` and `illustration`.
+
+**A picture carries no text.** The step's title and its caption are
+translatable page text: the viewer renders the step's `title` above the image
+and the illustration's `alt` below it, and neither is ever baked into the
+image. A prompt asks for no readable text, signs or logos. The scenario's
+`illustrationStyle` holds what every step's picture shares — the style
+`prompt`, the `cast` (per actor, how they are drawn, so they stay the same
+across steps) and `notes` (cultural notes, what never to draw) — so a step's
+`prompt` says only its scene. Without a picture, the journey page shows a
+collapsible *Illustration brief* (title, caption, scene, style, cast, notes)
+for whoever draws it.
 Two relations arrange journeys, and they are not the same: **`follows`
 chains** one story told as several journeys (J2 follows J1); **`partOf`
 groups** sub-journeys under a parent, which may have no steps of its own. One
 journey is one BPMN process, usually.
 
-Every person is fictional. A persona's name, role, goal, needs and the
-colour and initials the viewer draws them with live on the actor
-(`meta.persona`), never on the journey.
+Every person is fictional. A persona's name, role, goal, needs and
+frustrations live on the actor (`meta.persona`), never on the journey. Two
+presentation fields are **optional** there too: `initials` (up to three
+letters for the avatar) and `color` (`#rrggbb` for the persona's lane and
+feeling curve). Kept on the actor when a demonstrator wants a fixed avatar;
+absent, the viewer derives the initials from `name` and assigns colours in
+order. Nothing else reads them.
+
+## The `building-blocks` kind
+
+One `building-blocks/0.1.0` file per catalogue: its `layers` (each with the
+question it answers) and `blocks` (a `tool`, `system`, `standard` or
+`network`, its layer, jurisdiction, owner, what it is, why it matters, the
+ArchiMate element keys that deploy it, links). A step's `uses[].block` names
+a block by id, looked up in the journey's own instance first, then in every
+instance the checkout mounts.
+
+It is a kind of its own, not a family of `user-scenario`, because the
+catalogue describes the architecture: it lives beside the instance's
+ArchiMate model, where the overlay that draws those blocks reads it. Readers
+find it **by declared kind, never by folder**, so declare the directory that
+holds it:
+
+```json
+{ "id": "archimate", "path": "archimate/", "graphTypologies": ["archimate"] },
+{ "id": "building-blocks", "path": "archimate/building-blocks/", "graphTypologies": ["building-blocks"] }
+```
+
+Declare it nested, not as a second kind of `archimate/` itself: every kind of
+a directory claims every typed node in it, so `check:kind-validators` would
+report the catalogue unmapped under `archimate` and the ArchiMate config
+unmapped under `building-blocks`. A catalogue in an undeclared folder, or in
+a journeys directory, is not read.
 
 ## The `workshop` kind
 
@@ -92,9 +139,29 @@ dropped.
 
 ## Checks
 
-`check:kind-validators` parses every node of both kinds against their Zod
-(`cat-harness-tools/schemas/process/user-scenario.ts`, `workshop.ts`): step
-ids unique, every actor a step names among the personas, every module, table,
-row and sheet a workshop names declared in it. References that cross files —
-an actor, a story, a BPMN task id, a block — are the instance's own check
-until the harness has one.
+`check:kind-validators` parses every node of the three kinds against their
+Zod (`cat-harness-tools/schemas/process/user-scenario.ts`, `workshop.ts`):
+step ids unique, every actor a step names among the personas, every module,
+table, row and sheet a workshop names declared in it.
+
+`check:journey-refs` (Tool `journey-refs`) checks what crosses files, with
+the viewer's own resolver, so a reference the page draws as resolved is
+exactly one that passes:
+
+| a journey names | it must resolve to |
+|---|---|
+| `personas`, `lead`, `experiences[].actor`, `handoff.from`/`to`, `illustrationStyle.cast[].actor` | an actor in a `scenarios` directory |
+| `stories` | a story in a `scenarios` directory's `stories.json` |
+| `realisedBy[].process`, `.tasks` | a BPMN file relative to the instance root, and element ids in it |
+| `uses[].block` | a block of a catalogue in a `building-blocks` directory |
+| `requirements`, `preconditions[].requirements` | a `req:` node |
+| `examples` | an entry of a `fhir-artifact-index` |
+| `illustration.src` | a file relative to the instance root |
+| `follows`, `partOf`, `trustLadder`, `record.state`, `views` | a journey; a code list and a code of it; an ArchiMate view the instance's config names |
+
+and every workshop's `scenarios`, `steps[]` `{scenario, step}`,
+`discussion[].steps` and `resources[].steps` (`<scenario>#<step>`) name a
+journey and a step of it. A file that does not parse is a finding too. It
+runs over the whole checkout, so a workshop teaching from another instance's
+journeys is checked whole; the layer pull-request checks run it with every
+other `check:` script.
