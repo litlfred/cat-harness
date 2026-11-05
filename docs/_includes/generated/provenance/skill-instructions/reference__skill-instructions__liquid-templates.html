@@ -1,0 +1,18 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="3">
+  <summary class="fa-provenance-summary">Provenance (3)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Where a template lives</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean xsqm</code> <code>owner</code> <code>2026-09-29</code></span><div class="fa-provenance-text">They moved there with the writer (bean <code>xsqm</code>, owner 2026-09-29: one copy of the README writers, in the tools repository): a template is part of the toolset, and somebody who wants different READMEs uses a different toolset over the same content.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Versions are variables, never numbers</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>owner&#39;s</code> <code>2026-10-23</code></span><div class="fa-provenance-text">- <strong>README templates</strong> get <code>release</code>: <code>version</code> (every instance declares one), and — for an instance declaring an <code>iriBase</code> — <code>major</code>, <code>agent</code> (for identifiers) and <code>human</code> (for pages), both <code>&lt;iriBase&gt;v&lt;major&gt;/</code> since the owner&#39;s 2026-10-23 ruling.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">An undefined variable is a message, not silence</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 8pyz</code> <code>owner</code> <code>2026-10-09</code></span><div class="fa-provenance-text"><code>docs/_plugins/liquid-undefined-warn.rb</code> does neither: every lookup runs as Liquid runs it, and at the end of the build each path that was ABSENT is printed as a warning with its count and pages, <code>site.data.*</code> first (owner, 2026-10-09, bean <code>8pyz</code>: <em>&quot;jekyll strict (if not error out, just message)&quot;</em>).</div></li>
+  </ul>
+</details>
+{% endraw %}

@@ -1,0 +1,18 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="3">
+  <summary class="fa-provenance-summary">Provenance (3)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">RACI — involvement, over the graph that already exists</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>bean 2xfl</code> <code>2026-09-22</code></span><div class="fa-provenance-text">The node arrived on the owner&#39;s ruling of 2026-09-22 (bean <code>2xfl</code>). Until then the definitions below lived here, which made RACI the one methodology in use that the methodology graph could not see. <strong>Read the node first</strong>; everything here assumes it.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Why an overlay and not a registry</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean qif9</code></span><div class="fa-provenance-text">A RACI implemented as its own table of names would be a <strong>second answer to &quot;who is the reviewer&quot;</strong>, free to disagree with <code>roles.json</code> — the drift this repository keeps paying for, most recently in the retired skill <code>roles:</code> field whose 260 dangling values resolved against nothing (<code>qif9</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What this is NOT — the platform&#39;s half</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#1180</code></span><div class="fa-provenance-text"><strong>Not permissions.</strong> What an actor may DO is an ODRL rule in <code>policies/</code> (actions in <code>skills/permissions/permissions.json</code>), and cross-cuts roles. Being R for a task says who is expected to do it; performing it also needs a rule that permits <code>perform-task</code> there (issue #1180).</div></li>
+  </ul>
+</details>
+{% endraw %}

@@ -1,0 +1,40 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="13">
+  <summary class="fa-provenance-summary">Provenance (13)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">The exported GRAPH per locale</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">The pipeline used to end at the rendered page: a <code>.po</code> was injected into a diagram and an SVG rendered per locale, while the graph a machine consumes was produced once, in the source language.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">Four rules, and the first is the owner&#39;s and is the one an implementation breaks by default.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>4. A catalogue is scoped to the asset it was extracted from.</strong> This one was learned the expensive way.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-09-22</code></span><div class="fa-provenance-text"><code>kg:locale:check</code> says nothing about how much is translated. Measured 2026-09-22: 58 of this instance&#39;s 62 <code>.pot</code> templates are diagrams and **none has a <code>.po</code> in any locale**, so the exporter writes nothing and reports every locale saying so.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The terminology glossary — <code>translations/&lt;locale&gt;/glossary.po</code></h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span><div class="fa-provenance-text">Both halves of the corpus must stamp the same meaning. They did not until issue</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean he0e</code></span><div class="fa-provenance-text">The file is hand-authored and has no POT — <code>schemas/content/translation.ts</code> declares that slot, and <code>TranslationNode.potFile</code> is optional for exactly this. Bean <code>he0e</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">687: the generator stamped the PO-derived list while the hand-authored</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">The <code>qa_translation_*</code> keys are <strong>gone</strong>, along with the badge that read them.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>There is no include to add</strong>: <code>_includes/translation-warning.html</code> is deleted, not deprecated, as is <code>_includes/language-selector.html</code> — <code>buildLanguageBar</code> renders the six UN languages and greys out the ones not yet translated, which the include only promised in a comment.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The navbar filters by locale</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-19</code></span><div class="fa-provenance-text">Reported by the owner, 2026-09-19:<br><br>&gt; translations are still not handled right. i have english selected, but i see &gt; the translated pages in LHS navbar. the <code>fr/</code> <code>ru/</code> etc. sub-dirs need to be &gt; explicitly labeled as translated content in the graph and not shown in navbar &gt; unless that locale is selected. (if not present, fall back to source &gt; language)</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">1. A page is a translation because the PAGE says so</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>#263</code></span><div class="fa-provenance-text">That is the <em>&quot;distinguishable by extension … a coincidence of the current layout, not a contract&quot;</em> defect #263 named, moved to directory names, and it is wrong in both directions: a folio with a <code>no/</code> chapter (Norwegian, or the English word) is silently hidden from its own navbar, and a <code>pt-BR/</code> or <code>translated-fr/</code> directory is silently shown as source.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>#351</code> <code>PR 351</code></span><div class="fa-provenance-text">A first draft of PR #351 added one, with a <code>locale</code> field on <code>ContentDirectory</code> and one <code>cat-harness.json</code> entry per locale subtree — ten entries for five locales across two subtrees.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">2. <code>nav_exclude</code> is the half that JavaScript cannot do</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">It cannot know which locale anybody chose, so a translated page left in the nav is in it <strong>for everybody</strong> — which is the reported bug exactly. A script can swap a nav item; it cannot un-render one without a flash of the wrong nav first.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Content-type-specific translation tools</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 0r7u</code> <code>2026-10-06</code></span><div class="fa-provenance-text">Until 2026-10-06 this was a literal table in cat-harness, naming four content types owned by layers above it (bean <code>0r7u</code>).</div></li>
+  </ul>
+</details>
+{% endraw %}

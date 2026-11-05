@@ -1,0 +1,15 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="3">
+  <summary class="fa-provenance-summary">Provenance (3)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Bearer token bypass</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#1180</code> <code>#1207</code></span><div class="fa-provenance-text">## The API decides with ODRL (issues #1180, #1207)</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The API decides with ODRL (issues #1180, #1207)</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#1207</code> <code>2026-09-23</code></span><div class="fa-provenance-text"><strong>Half built, 2026-09-23 (#1207).</strong> The API server no longer compares a viewer &lt; collaborator &lt; owner ladder. <code>src/core/rbac.ts</code> treats the gateway&#39;s tier as a declared actor (<code>viewer</code>, <code>collaborator</code>, <code>owner</code> in <code>cat-harness/scenarios/actors/</code>), each route names the ODRL <strong>action</strong> it performs, and <code>policies/http-gateway.jsonld</code> says which tier holds which action. It reproduces what the ladder allowed. An explicit <code>X-User-Actor</code> header, once the gateway sends one, takes precedence over the tier. What is still to build is steps 1 and 4 below: the gateway mapping a login to a finer-grained actor, and a relationship engine. The same policies govern BPMN task execution ([<code>task-authorization</code>](../../process/process-core/task-authorization.md)).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-23</code></span><div class="fa-provenance-text">The target, per the owner&#39;s 2026-09-23 decisions:</div></li>
+  </ul>
+</details>
+{% endraw %}

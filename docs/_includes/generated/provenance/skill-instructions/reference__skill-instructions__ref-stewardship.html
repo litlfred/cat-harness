@@ -1,0 +1,33 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="9">
+  <summary class="fa-provenance-summary">Provenance (9)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Ref stewardship — one ref, many writers, one steward</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-05</code></span><div class="fa-provenance-text">There is no central table: <code>special-branches.json</code> was removed on 2026-10-05 (owner).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A window is NOT a hold, and the difference is what ends it</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">A hold whose reason you cannot restate from current facts is a habit, and the measured case cost four clean PRs roughly forty minutes.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Coalesce into one write per window</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 1j3q</code></span><div class="fa-provenance-text"><strong>Composition is only sound when the writes do not contend</strong>, and for a route-keyed store they do not: <code>branch-store</code>&#39;s <code>keyedBy: &quot;route&quot;</code> gives each route one owning generator, so <em>&quot;nobody authored either side, so the newer generation wins&quot;</em> (bean <code>1j3q</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Why a GitHub concurrency group is not a window</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-09-19</code></span><div class="fa-provenance-text"><strong>Measured here, 2026-09-19</strong> (the comment lives in <code>.github/workflows/feature-staging.yml</code>): <code>cancel-in-progress: false</code> governs the RUNNING job, not the pending one, and <strong>GitHub cancels a PENDING job when a newer one queues for the same group.</strong> Three staging runs from three different branches inside 17 seconds gave two cancelled and one run.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean xp5j</code></span><div class="fa-provenance-text">This is the measurement that moved the <code>gh-pages</code> fix from a workflow policy to a steward (bean <code>xp5j</code>): the published site was up to <strong>396.2 minutes</strong> behind <code>main</code> across a streak of <strong>24</strong> consecutive cancellations, and no concurrency setting can coalesce the bursts that caused it.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The two gaps a steward reports rather than fixes</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-10-04</code></span><div class="fa-provenance-text">Measured on <code>gh-pages</code>, 2026-10-04: its <code>writers</code> list held <strong>4</strong>, and parsing all 35 workflows found <strong>5</strong> — <code>publish.yml</code> defaults <code>publish_branch: gh-pages</code> and was unlisted.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">And a sweep <strong>prints its denominator</strong> ([<code>generalise-the-fix</code>](generalise-the-fix.md) §1.2a): the first pass over those workflows reported 6 producers because <code>&#39;gh-pages&#39; in text</code> matched a comment in <code>merge-main.yml</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What this does not do yet</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean xp5j</code></span><div class="fa-provenance-text">- **No steward runs over <code>gh-pages</code>.** The ref is declared, and bean <code>xp5j</code> carries the migration; until the five producers write through <code>branch-store</code>&#39;s route keying there is no window to hold.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text">- **No steward runs over the <code>cat/cat-harness/*</code> refs.** They are seeded and declared and, per their declarations, <em>&quot;not authoritative&quot;</em> until arc <code>fs43</code>&#39;s flip.</div></li>
+  </ul>
+</details>
+{% endraw %}

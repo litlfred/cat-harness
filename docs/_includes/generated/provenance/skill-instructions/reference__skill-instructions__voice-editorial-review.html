@@ -1,0 +1,22 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="4">
+  <summary class="fa-provenance-summary">Provenance (4)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">The scoping question comes first, and it is usually the answer</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">None of them carries <code>profiles</code> scoping today. So they also run over <code>docs/source/</code> — documentation, where the genre&#39;s whole register is to address the reader: *&quot;you need <code>bun</code>, <code>latexmk</code> and Lean&quot;* is a correct sentence in a prerequisites page and a <code>voice-scholarly-default</code> match at the same time.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What the criterion cannot know</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">The checkers match text. They do not know what the page is <em>about</em>, and the three highest-severity false positives in this repo all come from that:<br><br>- <code>voice-status-leak</code> on <code>what-is-not-built-yet.md:36</code> — <code>**Not yet implemented:**</code>. The page is a deliberate inventory of gaps; the phrase is its subject, not a leak. - <code>voice-status-leak</code> on <code>how-to-read-them.md</code> and <code>the-work-plan-tasks-as-beans.md</code> — both describe the <em>work-plan lane of a BPMN diagram</em>. Prose about a to-do store contains the words of a to-do store. - <code>voice-emoji-content</code> in <code>a-mock-session.md</code> and <code>step-4-formalize-in-lean.md</code> — the emoji sit inside a transcript of an agent session, quoted as data.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Where the open findings are</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text">Tracked in the work plan, one bean per criterion, each carrying its blocks with file, line and the matched text:<br><br>``<code>sh beans list | grep &quot;Voice axis&quot; </code>``</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Do not</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">- <strong>Do not mass-apply one finding&#39;s resolution across its siblings</strong> without reading them. <code>voice-scholarly-default</code> fires ten times here on at least two different causes. - **Do not treat <code>critical</code> as &quot;fix first&quot;.** Severity ranks the criterion&#39;s authors&#39; concern, not the confidence of this match; three of the four criticals in <code>docs/source/</code> are quotations.</div></li>
+  </ul>
+</details>
+{% endraw %}

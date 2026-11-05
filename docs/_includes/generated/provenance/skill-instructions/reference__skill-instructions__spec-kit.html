@@ -1,0 +1,61 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="19">
+  <summary class="fa-provenance-summary">Provenance (19)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Applies when</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-21</code></span><div class="fa-provenance-text">Owner, 2026-09-21: <em>&quot;spec-kit is specific to folio assistant feature development requests by tool developers not content developers (content agnostic, more scrum methodology process) for best practives of software development&quot;</em>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>#730</code> <code>2026-09-21</code></span><div class="fa-provenance-text"><strong>Adopted whole, 2026-09-21</strong>, on the owner&#39;s decision (issue #730, option A): spec-kit sits <strong>beside</strong> <code>crdm</code> as a parallel track, not blended with it.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The spec template</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>SC-004</code></span><div class="fa-provenance-text">An unresolved clarification marker <strong>blocks</strong> a spec from reaching Adjudicated status (SC-004).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Spec lifecycle &amp; graduation — the durable trace (FR-013)</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-07</code></span><div class="fa-provenance-text">Owner ruling, 2026-10-07: &gt; <em>&quot;Specs live in GitHub issue comments; upon completion, accepted requirements &gt; graduate directly into governing skills (as req:</em> statements) and automated &gt; tests, keeping SDLC churn off the knowledge graph.&quot;*</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>cat-harness#686</code> <code>2026-10-30</code></span><div class="fa-provenance-text"><strong>Filing at adjudication</strong> (owner, 2026-10-30, option E on cat-harness#686): when the spec reaches <code>Adjudicated</code>, its accepted <code>FR-NNN</code> are filed as a <code>req:*</code> file under <code>cat-harness/skills/requirements/</code> with <code>status: proposed</code> and <code>proposedIn</code> naming the governing issue.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The change-size rule (FR-009)</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-07</code></span><div class="fa-provenance-text">Owner ruling, 2026-10-07: &gt; <em>&quot;The change-size rule should be a report-only advisory limit initially at &gt; ~400 lines of non-generated/non-lockfile code, weighting prose and KG &gt; documentation lower, transitioning to a blocking CI gate once calibrated &gt; against PR history.&quot;</em></div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>SC-005</code></span><div class="fa-provenance-text">- <strong>Reporting</strong>: Reported as a count with its denominator (SC-005).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What this platform adds, and why it is an addition rather than a reading</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-21</code></span><div class="fa-provenance-text">Owner, 2026-09-21: <em>&quot;ensure that the spec exists before anything is developed&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Every PR names its increment (SC-006)</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#730</code></span><div class="fa-provenance-text">For example: *&quot;Increment 4/5 of #730&#39;s spec.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#754</code> <code>FR-009</code> <code>SC-005</code> <code>SC-008</code></span><div class="fa-provenance-text">Discharges FR-009, SC-005, SC-008 (#754).&quot;* The rest of the body follows the <code>pr-description</code> skill (<code>skill_fetch pr-description</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Worked example: the #730 split</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#730</code> <code>#751</code> <code>#752</code> <code>#753</code> <code>#754</code> <code>#755</code></span><div class="fa-provenance-text">#730 (adopt spec-kit) was split into five sub-issues: - #751: methodology node and ladder rung; - #752: spec template and its check; - #753: spec-before-code gate; - #754: change-size rule; - #755: these splitting mechanics.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#754</code></span><div class="fa-provenance-text">The reason to split was not size. #754 carried an open <code>[NEEDS CLARIFICATION]</code> about the threshold value and whether the gate blocks or reports.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>#751</code> <code>#753</code> <code>#754</code></span><div class="fa-provenance-text">Split, #751 to #753 could be reviewed and merged while #754 waited for the owner&#39;s ruling.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#752</code> <code>#753</code></span><div class="fa-provenance-text">Each child passed both questions above: #752&#39;s template check can be approved and reverted without #753&#39;s gate, and the other children are equally independent.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A request for a plan reaches the gate (issue #2405)</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-07</code></span><div class="fa-provenance-text">**A request for a plan is a detection signal here as in <code>crdm</code>** — &quot;plan&quot;, &quot;approach&quot;, &quot;proposal&quot;, &quot;how would you&quot;, &quot;come up with&quot; (owner, 2026-10-07: <em>&quot;if we make a request for a plan you should ALWAYS have created a requirements document and work plan for us to review before implementation&quot;</em>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What this platform refuses, with reasons</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-19</code></span><div class="fa-provenance-text"><strong>Not adopted.</strong> A spec instance here is a comment on its governing issue and goes nowhere near the knowledge graph, per <code>where-a-proposal-goes</code> — the owner&#39;s standing rule of 2026-09-19, <em>&quot;do not pollute the KG with SDLC churn&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Against <code>crdm</code> — parallel, never blended</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">The short form, in the owner&#39;s terms: <strong>who is asking, and does the answer depend on what a folio says?</strong> Tool developer, content-agnostic → here.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Refusals</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#2405</code> <code>FR-011</code> <code>FR-013</code></span><div class="fa-provenance-text">- <strong>Adjudicated status IS a sign-off, and it is recorded.</strong> A spec reaches it through the same adjudication the CRDM sign-off steps call — answers <code>approve amend reject defer cancel</code> (code list <code>adjudication-requirement-set</code>) — and the answer is written as a <code>requirement-signoff</code> attestation for the spec&#39;s requirement set (issue #2405, FR-011/FR-013), never only stated in a comment.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Lifecycle</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>owner, 2026-11-04</code></span><div class="fa-provenance-text">Proposals go in docs/proposals</div></li>
+  </ul>
+</details>
+{% endraw %}

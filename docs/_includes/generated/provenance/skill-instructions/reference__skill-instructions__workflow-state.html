@@ -1,0 +1,15 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="3">
+  <summary class="fa-provenance-summary">Provenance (3)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Beans and instances are ONE answer, not two</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text"><code>claim</code> is drawn only in <code>Process_BeanOpen</code>, and <code>resolve</code> and <code>archive</code> only in <code>Process_BeanClose</code>; every process that works on a bean calls both (bean <code>m8gz</code>, <code>check:bean-calls</code>). <code>note</code> is drawn where the work happens.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Where running instances live — the state graph on the branch store</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>2026-10-02</code> <code>docs/proposals/state-branch-2026-10-02.md</code></span><div class="fa-provenance-text">Running instances are part of the <code>beans</code> graph (<code>workflow-state</code> graph typology). Under the state branch architecture (proposal <code>cat-harness/docs/proposals/state-branch-2026-10-02.md</code>), the bean graph is mounted from the tip-keyed branch store (<code>cat/cat-harness/beans</code>).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">Instance ids are <strong>derived from the subject rather than random</strong>, so re-entering a step finds the instance that is already there. That is not a stylistic preference: <code>beans create</code> is not idempotent and dedupes on nothing, which produced 14,688 duplicates in one afternoon — 92 % of every open bean in that repo. An id you can recompute is the fix, and it is cheap.</div></li>
+  </ul>
+</details>
+{% endraw %}

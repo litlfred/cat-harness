@@ -1,0 +1,35 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="8">
+  <summary class="fa-provenance-summary">Provenance (8)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Visualizer loading — the page is layout, the graph is fetched</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>Beans 680p</code> <code>s32v</code></span><div class="fa-provenance-text">&gt; Skill id: <code>visualizer-loading</code> · Package: <code>ui-core</code> · Beans <code>680p</code>, <code>s32v</code>, &gt; <code>jut3</code></div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>Owner</code> <code>2026-10-01</code></span><div class="fa-provenance-text">Owner, 2026-10-01, on the just-the-docs IG render: <em>&quot;other goals of justthedocs rendering is to reduce the .html bloat.... lots of it can be loaded client side from the KG&quot;</em>, and then: <em>&quot;should be general strategy for complex visualizers&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The rule</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean g196</code></span><div class="fa-provenance-text">Copied into a thousand pages, it is also most of the site&#39;s bytes and most of every staging preview&#39;s size (bean <code>g196</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Where the data is served from — <code>served: true</code></h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 680p</code> <code>owner</code> <code>2026-10-01</code></span><div class="fa-provenance-text">The owner chose serving the graph (2026-10-01, bean <code>680p</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Stay equivalent to the render you replace</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean jut3</code> <code>owner&#39;s</code></span><div class="fa-provenance-text">When the page replaces another renderer&#39;s page (the IG Publisher&#39;s, under the owner&#39;s invariant that every phase renders equivalent to the standard IG render, bean <code>jut3</code>), compute the display <strong>the same way that renderer does</strong>, and then check it.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Printing and PDFs</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-10-01</code></span><div class="fa-provenance-text">Measured 2026-10-01 on a JSON view page in Chromium: a PDF taken at <code>domcontentloaded</code> holds &quot;Loading JSON source…&quot;, and one taken after the load holds the resource.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Verify in a browser, not in the HTML</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-10-01</code></span><div class="fa-provenance-text">Measured 2026-10-01: all 33 DAK view pages, served from a local Jekyll build, displayed text identical to the Publisher&#39;s pages for the same fork build.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Finding what to move</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean s32v</code></span><div class="fa-provenance-text">That is bean <code>s32v</code>: a QA review over a built site.</div></li>
+  </ul>
+</details>
+{% endraw %}

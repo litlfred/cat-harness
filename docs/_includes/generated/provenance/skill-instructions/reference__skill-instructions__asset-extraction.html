@@ -1,0 +1,23 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="5">
+  <summary class="fa-provenance-summary">Provenance (5)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Asset extraction — the index goes in, the contents do not</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-20</code></span><div class="fa-provenance-text">Owner, 2026-09-20:<br><br>&gt; <em>&quot;make sure you have zip ingestion skills to extract metadata of assets into &gt; KG. don&#39;t extract contents unless explict ask by user.&quot;</em></div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What is NOT dropped silently</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">They go in <code>omitted[]</code> with a pattern, a reason and a count — measured on the IRIS zip: 11 real entries, 12 shadows.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Derived renderings — the artefact we MADE, out of bytes we hold</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><code>pdf-cover.py</code> renders page 1 and calls it the cover, for the same reason <code>pdf-pages.py</code> sections by page: page 1 is a determined answer and &quot;the cover&quot; is not. Measured across the three items, page 1 is the cover in all three and looks different in each — a portrait designed cover (2:3), a landscape one (0.705:1), and a scanned title page.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">A gate that re-renders a derived artefact needs the backend that produced it — and the CI job that runs this repository&#39;s gates installs <code>ruff</code> and nothing else, which is stated on <code>ingest-stdlib</code>&#39;s own Tool node and was walked into anyway: <code>iris:covers:check</code> threw <code>pymupdf is not installed</code> on every run and turned a branch red three times.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Related</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean tlat</code></span><div class="fa-provenance-text">It moved down from the content core with the script that writes it (bean <code>tlat</code>, placement PR5), because this skill is the harness&#39;s own.</div></li>
+  </ul>
+</details>
+{% endraw %}

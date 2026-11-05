@@ -1,0 +1,46 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="13">
+  <summary class="fa-provenance-summary">Provenance (13)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">For ONE commit, zero checks is not a pass</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>bean 52cz</code> <code>2026-09-30</code></span><div class="fa-provenance-text">Owner ruling 2026-09-30, bean <code>52cz</code>: this is written here so that an agent reading PR events <strong>without</strong> the tool knows it too. The tool enforces it (<code>verdictForCommit</code>, <code>mergeStateForHead</code>); this paragraph is for the reader.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section"><code>qa-publish</code> is a job in the gate workflow, and it is not a gate</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 3fva</code></span><div class="fa-provenance-text">Since arc <code>3fva</code>, <code>Code quality gates</code> carries one job that judges nothing: <code>qa-publish</code>, which runs after <code>gates</code> <strong>whatever they concluded</strong> and stores the run&#39;s QA results on the orphan <code>qa-reports</code> branch (<code>main/&lt;sha&gt;/</code> on a push, <code>pr/&lt;n&gt;/&lt;sha&gt;/</code> on a same-repository PR).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">The owner&#39;s merge policy counts it like any job: a PR is handed to the Merge Steward only when CI is green on <strong>every</strong> job ([<code>continual-progress</code>](continual-progress.md) §&quot;Green means handed to the Merge Steward&quot;).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The report answers about the default branch — and Pages is not on it</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-20</code></span><div class="fa-provenance-text"><strong>A Pages build outcome is not repository state.</strong> It is a fact GitHub holds <em>about</em> the repository, and it changes the repository&#39;s status without changing a single byte of it. That is the owner&#39;s framing, 2026-09-20, and it settles how the tool must behave: <strong>look external, cache nothing.</strong> A committed answer would be right when it was written and silently wrong from then on, which is the original defect rebuilt in a new place.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Two more, for the question the three above do not cover</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean folio-assistant-oz5w</code></span><div class="fa-provenance-text">**Crucial exception (bean <code>folio-assistant-oz5w</code>)<strong>: staleness is benign only when falling back to an existing live preview, **never when the previous state is a deletion</strong> (where &quot;stale&quot; manifests as a 404).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The second instance: merge-main&#39;s in-place comment</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 03nl</code></span><div class="fa-provenance-text">The same edited-in-place doctrine governs <code>merge-main.yml</code> (bean <code>03nl</code>, implemented by <code>cat-harness-tools/scripts/merge-main-comment.ts</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A superseded PR run is cancelled — and only a PR&#39;s</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#2233</code> <code>2026-10-05</code></span><div class="fa-provenance-text">A run on a PR head that a newer push replaced judges a commit nobody will merge, and it still waits for and holds a runner. On 2026-10-05, 16 of the 53 runs queued in this repository were such runs, and the queue they lengthened held back the fix main&#39;s publish was blocked on (#2233). So a workflow that runs on <code>pull_request</code> declares</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A green step can be a SKIPPED one: the CI cone</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 4rbc</code> <code>#2456</code></span><div class="fa-provenance-text"><code>cat-harness-tools/scripts/ci-cone.ts</code> (bean <code>4rbc</code>, issue #2456) lets a pull request skip a <code>bun run cat &lt;check&gt;</code> gate step whose inputs are unchanged since main&#39;s last green run.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 4rbc</code></span><div class="fa-provenance-text">Wire it in when those checks become recordable. Bean <code>4rbc</code> records what that takes.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-07</code></span><div class="fa-provenance-text"><strong>The rule it follows: an input set is declared or derived, never inferred.</strong> Owner, 2026-10-07: <em>&quot;derived is BEST&quot;</em>, then <em>&quot;DERIVED = no drift, no extra data fields&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Step names describe what the check does, not merely its passing invariant</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 68op</code></span><div class="fa-provenance-text">A CI step named solely after its passing invariant misdescribes any failure where the check could not run or the baseline was absent (bean <code>68op</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The accidental-repair trap on derived gates</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean folio-assistant-ey1c</code></span><div class="fa-provenance-text">A green outcome on a derived gate (such as <code>readme:subgraphs:check</code>, <code>docs:harness:check</code>, or other verify/write pairs) must <strong>never be read as &quot;was never broken&quot;</strong> (bean <code>folio-assistant-ey1c</code>).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="pr"><span class="fa-provenance-kind">pr</span> <span class="fa-provenance-refs"><code>PR #1938</code> <code>PR #1940</code> <code>2026-10-03</code></span><div class="fa-provenance-text">Observed on 2026-10-03 (three times in two hours on <code>main</code>): PR #1938 broke <code>uploads/README.md</code>; PR #1940 carried a regenerated file and incidentally made <code>main</code> green again; then a direct web-UI upload broke it once more.<br><br><strong>The guard:</strong> The post-merge regeneration pipeline (<code>.github/workflows/post-merge-regen.yml</code>, <code>scripts/post-merge-regen.ts</code>) audits derived artefacts after merges to <code>main</code> and opens a reviewable repair PR if stale.</div></li>
+  </ul>
+</details>
+{% endraw %}

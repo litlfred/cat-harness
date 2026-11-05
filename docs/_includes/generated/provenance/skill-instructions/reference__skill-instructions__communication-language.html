@@ -1,0 +1,15 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="3">
+  <summary class="fa-provenance-summary">Provenance (3)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Why this exists</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-21</code> <code>owner</code></span><div class="fa-provenance-text">The owner, 2026-09-21: <em>&quot;part of agent first task is to determine appropriate language when speaking/communicating regardless of context&quot;</em>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">Searched before this skill was written: this repository had a great deal about the language its <strong>content</strong> is in — [<code>translation-manager</code>](../../library/library-core/translation-manager.md), <code>defaultLocale</code>, per-locale <code>.po</code> resolution, coverage badges — and <strong>nothing at all</strong> about the language an agent SPEAKS IN.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Four inputs, and the order is not negotiable</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>owner</code></span><div class="fa-provenance-text"><strong>Their own turns rank above the model&#39;s languages</strong>, and this is the rule an implementation gets backwards. The owner was explicit: <em>&quot;the model&#39;s languages are an INPUT, never the determination&quot;</em>. A model strong in a language the person cannot read is <strong>worse</strong> than the fallback, not better. Rank 3 exists to say <em>&quot;this pairing may be better served by something other than the corpus&#39;s language&quot;</em> — it never selects one on its own.</div></li>
+  </ul>
+</details>
+{% endraw %}

@@ -1,0 +1,54 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="18">
+  <summary class="fa-provenance-summary">Provenance (18)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Why this skill does not contain a list of gates</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>This is not a hypothetical drift.</strong> The agent who wrote this skill had spent that session running <strong>17</strong> gates by hand, repeatedly, and reporting them as &quot;the gate sweep&quot; in commit messages and PR bodies.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Why the CI workflow is the authority, and <code>package.json</code> is not</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-09-19</code></span><div class="fa-provenance-text">Measured 2026-09-19: of 33 <code>check:</code> / <code>:check</code> scripts, <strong>21 appeared in no workflow at all</strong>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section"><code>bun test</code> green is not the gates green</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-09-19</code></span><div class="fa-provenance-text">Measured 2026-09-19 on one change:</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">...and the gates green is not the PUBLISHED PAGE green</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-09-20</code></span><div class="fa-provenance-text">Measured 2026-09-20 on a single change:</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">...and a green gate is not a VERIFIED FACT</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#956</code> <code>2026-09-22</code></span><div class="fa-provenance-text">Measured 2026-09-22 on the work-plan consolidation&#39;s own first commit (issue #956).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean k59d</code></span><div class="fa-provenance-text">A session wrote three delegated claims, each citing bean <code>k59d</code> — <em>milestone critical paths go stale here</em> — and each instructing its reader to <strong>re-verify the path before acting on it</strong>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text">It then copied <code>p5wm</code>&#39;s critical path into one of them verbatim, through four <code>completed</code> beans.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text">A rule that lives only in prose has a compliance ceiling nobody measures.** Knowing about <code>k59d</code> — citing it, quoting it, instructing three other agents about it — did not prevent reproducing <code>k59d</code> in the same commit.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text">This is <code>1xhc</code>&#39;s <em>&quot;a gate that does not fire is indistinguishable from one that passed&quot;</em>, and it is the same shape as <code>check:ci-health</code> reporting eight workflows green beside <strong>31 further workflow files that produced no run at all</strong> — which it labels <em>unjudged, not green</em>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean w0cr</code></span><div class="fa-provenance-text">| claim | carried the stale content | <code>check:stale-paths</code> | |---|---|---| | <code>10uc</code> | yes, as a numbered path | <strong>✗ failed the push</strong> | | <code>w0cr</code> | yes, as prose | <strong>✓ passed</strong> |</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Running &quot;the gates that relate to my change&quot; is not running the gates</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="pr"><span class="fa-provenance-kind">pr</span> <span class="fa-provenance-refs"><code>#526</code> <code>2026-09-20</code></span><div class="fa-provenance-text"><strong>Measured 2026-09-20, PR #526.</strong> A change added two collectors to <code>kg-export.ts</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">And the follow-up push failed too, for the adjacent reason</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">The fix for the above ran <code>gates --all</code> and reported <strong>60 of 60</strong>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-09-20</code></span><div class="fa-provenance-text">A third instance, 2026-09-20: a splice script corrupted <code>&lt;name&gt;.json</code> while a run was in flight, and <strong>40 of 61 gates failed reading a file that was invalid for about a minute</strong>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 5hox</code> <code>bean 3fva</code></span><div class="fa-provenance-text">The <code>kg-qa</code> row is a derived QA result: its record is the commit-keyed entry the CI job <code>qa-publish</code> stores on the orphan <code>qa-reports</code> branch (arc <code>3fva</code>), and the committed copy goes when bean <code>5hox</code> removes it.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>This paragraph said &quot;at least two files&quot; and was wrong on its first commit</strong> — it named the sidecar and missed the generated docs, and <code>gen-skill-docs --check</code> duly failed, 1 of 60.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What a <code>*:check</code> failure is telling you</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text"><strong>QA gates are moving to a different shape, and their failure means something else.</strong> Arc <code>3fva</code> takes derived QA results off <code>main</code>, so a gate over the <code>qa</code> graph cannot compare against a committed file for long.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">...and a green gate set is not a CLEAN RUN</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 3ozg</code></span><div class="fa-provenance-text">Bean <code>3ozg</code> is its worked example — an <code>engine_version</code> counted as substantive rewrote 72 committed sidecars on every branch — and the skill also carries why discarding such a churn is a workaround whose habit is the defect.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">If <code>bun run cat gates</code> reports no gates</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text">An empty sweep that exits 0 is indistinguishable from a passing one — the defect this repository has paid for three separate times: a <code>grep</code> over zero Lean files printing OK, a <code>ruff</code> scan of missing paths reporting a clean baseline it had never computed, and <code>readme:sync:check</code> passing over a README with no markers.</div></li>
+  </ul>
+</details>
+{% endraw %}

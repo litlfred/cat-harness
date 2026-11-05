@@ -1,0 +1,15 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="3">
+  <summary class="fa-provenance-summary">Provenance (3)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Finding software — get it, do not route around it</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-09</code></span><div class="fa-provenance-text">Owner, 2026-10-09, after an ingest stopped at a missing <code>tesseract</code> and the agent fed the OCR step a cached copy instead: <em>&quot;why no tesseract?&quot;</em>, then <em>&quot;update skills and tools on finding software&quot;</em>, <em>&quot;github egress&quot;</em>, <em>&quot;also add apt&quot;</em>. The container is the agent&#39;s to provision. Installing took one command and twenty seconds; the workaround was the wrong output, quietly.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">When a rung is blocked by the network</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-10-09</code></span><div class="fa-provenance-text">Measured from an agent container on 2026-10-09:</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">| route | result | |---|---| | apt (Ubuntu archive), PyPI, npm | open | | <code>github.com/&lt;o&gt;/&lt;r&gt;/releases/download/&lt;tag&gt;/&lt;asset&gt;</code> | <strong>200</strong> — the GitHub rung works | | <code>raw.githubusercontent.com</code> | 200 | | <code>git clone https://github.com/...</code> | works | | <code>codeload.github.com</code> archives, <code>github.com/&lt;o&gt;/&lt;r&gt;/raw/...</code> | 403 | | <code>api.github.com</code> | 403 at the time measured (it answered earlier the same day; treat as unreliable — find a tag with <code>git ls-remote --tags</code> instead) |</div></li>
+  </ul>
+</details>
+{% endraw %}

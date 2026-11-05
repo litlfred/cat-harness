@@ -1,0 +1,31 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="7">
+  <summary class="fa-provenance-summary">Provenance (7)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Rendering the knowledge graph</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 1dfh</code></span><div class="fa-provenance-text">This skill is the other half of bean <code>1dfh</code>: <strong>making that document legible to a person.</strong></div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The page is generated, not committed</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-10-23</code></span><div class="fa-provenance-text">The page is <code>&lt;site&gt;/&lt;stub&gt;/index.html</code> and reads <code>../&lt;name&gt;/&lt;stub&gt;.jsonld</code> (the document&#39;s own path, under its instance&#39;s directory, the host&#39;s included, since 2026-10-23), so the same bytes work on the canonical site and under <code>STAGING/&lt;slug&gt;/</code> with no configuration, no <code>--base-url</code>, and no build-time branch.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Every asset has its own IRI — a materialized path, loading published JSON-LD</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>Owner</code> <code>#1881</code> <code>2026-10-02</code></span><div class="fa-provenance-text">Owner, 2026-10-02 (#1881), in order: <em>&quot;404 githubpages is a hack. does not work according to stanrds&quot;</em>; <em>&quot;each link/page needs to be materialized on the CDN (gh-pagees), just load the content from the KG json(ld) assets already published&quot;</em>; <em>&quot;no query strings... each asset gets its own IRI&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The asset and its rendering are two resources with two IRIs</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>Owner</code> <code>#1881</code> <code>2026-10-02</code></span><div class="fa-provenance-text">Owner, 2026-10-02 (#1881): <em>&quot;each asset should have one IRI, but the view page is a rendering of that asset, a different page. fix IRIs&quot;</em>; and, against putting <code>schema:subjectOf</code> on the asset, <em>&quot;hard to maintain? asset doesnt know about its renderings&quot;</em>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>Owner</code> <code>2026-10-02</code></span><div class="fa-provenance-text">Owner, 2026-10-02, paraphrased: clicking a library entry&#39;s slug should open its visualiser.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Do not draw the whole graph</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">Measured on this instance: 1111 nodes and roughly 2000 edges.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Render what the document is missing, in the document&#39;s own terms</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean ovkk</code></span><div class="fa-provenance-text">It was 34 names and 3583 occurrences on this instance when the viewer was written, which is how the gap was found; bean <code>ovkk</code> took it to <strong>zero</strong> and <code>kg-export</code> now exits non-zero rather than publishing a new one.</div></li>
+  </ul>
+</details>
+{% endraw %}

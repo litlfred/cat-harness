@@ -1,0 +1,24 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="6">
+  <summary class="fa-provenance-summary">Provenance (6)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">1. The pattern (three roles)</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-07-04</code> <code>owner</code></span><div class="fa-provenance-text">1. <strong>Foreground (this session)</strong> — enumerate + batch the blocks, launch the swarm, then <strong>auto prepare-merge</strong> each swarm PR (via <code>/prepare-merge-auto</code>). Runs the drain loop until every batch is merged or explicitly parked. Does <strong>not</strong> stop for check-ins — go until completely drained (owner directive 2026-07-04).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>owner</code></span><div class="fa-provenance-text">3. <strong>Auto-merge</strong> — the foreground runs <code>/prepare-merge-auto</code> on each returned PR: rebase, one-voice + lean checks, request reviews, resolve mechanical comments, merge (rebase-merge default). Merge is pre-authorized for this drain (owner directive); architectural review comments still escalate via <code>AskUserQuestion</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">2. The audit rubric (what each agent scores)</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-07-04</code> <code>owner</code></span><div class="fa-provenance-text"><strong>Gate (owner ruling 2026-07-04, STRICT):</strong> <code>T = ΣHi</code>. <code>T = 16</code> → <strong>pass</strong>; <code>12 ≤ T ≤ 15</code> → <strong>warn</strong>; <code>T ≤ 11</code> → <strong>fail</strong>. Perfection is the bar.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">4. Conservative-edit discipline (STRICT — the resolve half)</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="pr"><span class="fa-provenance-kind">pr</span> <span class="fa-provenance-refs"><code>#3301</code> <code>2026-07-04</code></span><div class="fa-provenance-text"><strong>DO-NOT-TOUCH-DERIVATIONS rule (STRICT, added 2026-07-04 after a live incident).</strong> A resolve agent must <strong>not edit the prose of a derivation, computation, or proof body at all</strong> — not even to &quot;tighten&quot; or &quot;clarify&quot; it. Polishing a derivation can make a <em>wrong</em> one read more cleanly and authoritative, which is worse than leaving it rough. (Incident: the swarm reworded a <code>frobenius-relation-su2</code> derivation that was mathematically false — it conflated the Hopf comultiplication with the Frobenius comultiplication — and the cleaner prose lent the error false authority; Gemini caught it, PR #3301.) Therefore: - <strong>Only edit the <em>surrounding exposition</strong></em> — the intro/motivation sentence, the notation-introduction, a redundant restatement <em>outside</em> the derivation, the closing interpretation. Leave every derivation / computation / proof step <strong>verbatim</strong>. - If a derivation itself reads poorly, <strong>do not fix it</strong> — set <code>needs_owner</code> with a note. A resolve agent is not authorized to verify or repair mathematics. - The audit stage <strong>may</strong> score H5/H6/H7 low on a muddy derivation and <strong>flag</strong> it, but the flag routes to <code>needs_owner</code>, not to an autonomous prose rewrite of the derivation.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>The review layer is the backstop, not the gate.</strong> Every swarm PR still goes through <code>/prepare-merge-auto</code> (Gemini + Copilot) before merge; that layer caught the incident above. Do not merge a content batch on the swarm&#39;s self-check alone.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">7. Interaction with the flag-preservation guard</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="pr"><span class="fa-provenance-kind">pr</span> <span class="fa-provenance-refs"><code>#3289</code></span><div class="fa-provenance-text">Per <code>qa-flag-preservation-audit.ts</code> (PR #3289), a distrusted <code>expo-milnor-clarity</code> verdict must be <strong>re-audited</strong>, never <code>n/a</code>-cleared.</div></li>
+  </ul>
+</details>
+{% endraw %}

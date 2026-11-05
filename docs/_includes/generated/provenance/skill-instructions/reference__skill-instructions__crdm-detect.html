@@ -1,0 +1,33 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="9">
+  <summary class="fa-provenance-summary">Provenance (9)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Which requirements methodology — the fork this detection now carries</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>#730</code> <code>2026-09-21</code></span><div class="fa-provenance-text"><strong>Detecting a feature request no longer selects CRDM by itself.</strong> Since 2026-09-21 (issue #730, the owner&#39;s option A) there are <strong>two</strong> parallel requirements methodologies, and <code>methodology-adoption</code> forbids blending them.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-21</code></span><div class="fa-provenance-text">The owner&#39;s words, 2026-09-21: <em>&quot;CRDM stays for stkaeholder facing WHO/IG work…..spec-kit is specific to folio assistant feature development requests by tool developers not content developers (content agnostic, more scrum methodology process) for best practives of software development&quot;</em>.<br><br><strong>Most of the signals listed below are now spec-kit&#39;s</strong>, not CRDM&#39;s — the &quot;Platform-level change requests&quot; and &quot;Direct capability requests&quot; categories especially, since both describe somebody building the tooling.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>Most of the signals listed below are now spec-kit&#39;s</strong>, not CRDM&#39;s — the &quot;Platform-level change requests&quot; and &quot;Direct capability requests&quot; categories especially, since both describe somebody building the tooling.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A request for a plan</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>#2405</code> <code>2026-10-07</code></span><div class="fa-provenance-text">Owner, 2026-10-07 (issue #2405): <em>&quot;if we make a request for a plan you should ALWAYS have created a requirements document and work plan for us to review before implementation.&quot;</em></div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-07</code></span><div class="fa-provenance-text">requests are not exempt** (decision 2 of 2026-10-07): &quot;plan the edits to chapter 3&quot; triggers it as surely as &quot;plan the new validator&quot;. The fork above still decides WHOSE requirements — this signal never selects a methodology and never blends them. What happens on a plan request is the same operation for both, and it lives in the content layer above this one, which is why it is named here rather than linked — the <code>plan-request-gate</code> skill (<code>skill_fetch plan-request-gate</code>) — produce a requirements document</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Self-declared genre</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>bean vjbl</code> <code>#187</code> <code>2026-09-24</code></span><div class="fa-provenance-text">Anchored to the opening line, and the reason has CHANGED. The anchor was chosen because an unanchored <code>proposal</code> also caught #187, a request to write up a merged proposal&#39;s changes, which was labelled <em>not</em> a feature request. On 2026-09-24 the owner relabelled #187 a feature request, after a blind second annotation (bean <code>vjbl</code>): it is the change register for pipeline changes not yet built. Measured on the adjudicated corpus, the unanchored pattern now adds no false alarm and catches #187, which the anchor misses (recall 95.5% → 100%). The anchor is kept until the owner decides, because changing a detector to fit its own 27-item eval set is tuning to the test.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A feature is a COLLABORATION you are joining, not a fix you are making</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-21</code></span><div class="fa-provenance-text">Owner, 2026-09-21, and this is the framing the rest of this file sits inside:<br><br>&gt; when agent in discussion with human and a feature comes up, it starts or &gt; engages w/ existing collaborative design requiremnts between this user, &gt; other users/authors/etc. other agents. treat the design/feature process as &gt; such. it&#39;s not a one off fix... put it into epcis/stories.etc. &gt; update/create needed artefacts and link to them under the appropriate &gt; harnesse&#39;s docs/ page.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What to do instead</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">**4. Write the artefacts, and LINK them from <code>docs/</code>.** The owner&#39;s instruction is specific and it is the part most often skipped: <em>&quot;update/create needed artefacts and link to them under the appropriate harnesse&#39;s docs/ page.&quot;</em><br><br>An artefact nobody can navigate to is an artefact nobody will read. The harness that owns the capability owns the link</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Related work first</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#1023</code></span><div class="fa-provenance-text">The procedure is [<code>related-work-coordination</code>](../sdlc-core/related-work-coordination.md), and <code>crdm-issue-linking.bpmn</code> calls it as <code>Process_RelatedWork</code> (issue #1023).</div></li>
+  </ul>
+</details>
+{% endraw %}

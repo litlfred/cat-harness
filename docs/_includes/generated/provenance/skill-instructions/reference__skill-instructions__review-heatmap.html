@@ -1,0 +1,22 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="7">
+  <summary class="fa-provenance-summary">Provenance (7)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Review heat map — where to look first</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean qbfi</code> <code>bean q4jm</code></span><div class="fa-provenance-text">&gt; Skill id: <code>review-heatmap</code> · Package: <code>folio-core</code> · Bean: <code>qbfi</code> · Epic: <code>q4jm</code></div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What each column means, and must not be read as</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean px0t</code></span><div class="fa-provenance-text">| <strong>Review coverage</strong> | &quot;3 of 5 reviewed&quot;: the section&#39;s added or changed blocks, and how many have a reviewer VERDICT on their <strong>current</strong> version. Shaded by what is still unreviewed. | <code>review-comments.json</code>&#39;s <code>verdicts</code> + <code>blocks.json</code> (bean <code>px0t</code>) | &quot;every comment is resolved&quot;. <strong>Resolved comments are not a verdict</strong>: a question answered is not a block judged. A verdict on an earlier version is shown on the block and does NOT count, so an edit after review reopens exactly the blocks it touched. A file written before verdicts existed has no <code>verdicts</code> field and reads &quot;no data&quot;, never &quot;0 reviewed&quot;. |</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Where the QA column&#39;s data comes from</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean tw61</code></span><div class="fa-provenance-text">The staging workflow first sweeps the build (its <code>qa_sweep</code> input, on by default, bean <code>tw61</code>), then runs the <code>folio-block-qa-summary</code> Tool (<code>cat-harness-tools/scripts/publish-block-qa.ts</code>).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 9791</code></span><div class="fa-provenance-text"><strong>&quot;Passing&quot; says what was judged</strong> (bean <code>9791</code>).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">A summary published before this field existed reads &quot;passing (this build does not say whether agent-judged criteria were run)&quot;, never &quot;all judged&quot;. A verdict never given is not a pass, the same rule as stale-versus-passing one level up.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">Freshness is the QA sweep&#39;s own rule, including the <code>uses</code>-graph hash that graph-scoped criteria depend on. Leaving that hash out made every detangler criterion read stale straight after a sweep.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean s3p2</code> <code>2026-09-23</code></span><div class="fa-provenance-text">The QA sweep writes verdicts under the instance root (fixed by bean <code>s3p2</code>, 2026-09-23). Before that fix, it wrote them under the directory it was run on, so the summary still reads there second, for folios swept before the fix.</div></li>
+  </ul>
+</details>
+{% endraw %}

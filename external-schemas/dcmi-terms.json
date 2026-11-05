@@ -13,6 +13,30 @@
   "use": "reads",
   "terms": [
     {
+      "term": "dc.citation.epage",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.citation.issue",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.citation.spage",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.citation.status",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.citation.version",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.citation.volume",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "dc.contributor.author",
       "operative": "Primary author or creator of the catalogue record or ingested document."
     },
@@ -23,6 +47,10 @@
     {
       "term": "dc.coverage.spatial",
       "operative": "Spatial or geographic coverage of the publication or resource."
+    },
+    {
+      "term": "dc.date.accessed",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "dc.date.accessioned",
@@ -61,7 +89,15 @@
       "operative": "Table of contents or section outline of the document."
     },
     {
+      "term": "dc.description.version",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "dc.format.mimetype",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.identifier.doi",
       "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
@@ -89,6 +125,10 @@
       "operative": "Organization or publisher responsible for distributing the resource."
     },
     {
+      "term": "dc.publisher.place",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "dc.relation",
       "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
@@ -98,6 +138,10 @@
     },
     {
       "term": "dc.relation.hasversion",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.relation.ispartof",
       "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {

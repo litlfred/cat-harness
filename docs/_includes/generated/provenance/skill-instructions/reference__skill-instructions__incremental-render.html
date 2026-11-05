@@ -1,0 +1,36 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="9">
+  <summary class="fa-provenance-summary">Provenance (9)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Incremental render — the cache is easy, the cascade is the work</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 9c34</code> <code>Owner</code> <code>2026-09-20</code></span><div class="fa-provenance-text">Owner, 2026-09-20, bean <code>9c34</code>:</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Why step 3 is the bean</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>xom7</code></span><div class="fa-provenance-text">That is the <code>xom7</code> shape — <em>a red workflow looks exactly like a green one from in here</em> — moved into the render.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A step declares GRAPH TYPOLOGIES, not paths</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">The first draft used <code>inputs</code> throughout and <code>check:declared-paths</code> rejected nine literals.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The subprocess, and why there is one</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">An earlier version of this was correct and silent — it degraded to a full render without a word, so the feature was inert (0 steps cached) and nothing in the output said why.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Hash content, never mtime</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><code>byCodepoint</code> in <code>render-selection.ts</code> is the comparator, and it exists because the first draft used <code>localeCompare</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Measured, on this repository</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-09-21</code></span><div class="fa-provenance-text"><code>bun run cat render</code> over ten steps, 2026-09-21, after the move to <code>inputGraphs</code>:</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">The last row is the coarseness above, measured rather than asserted: a skill edit moves the <code>cat-harness</code> graph, <code>kg-current</code> reads that graph, and everything <code>needs</code> its way back to <code>kg-current</code>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">And the counts must add up: the first draft reported <em>&quot;10 ran … 8 served from the seed&quot;</em>, double-counting eight of them, because the runner records a step as having run whenever the callback returned no error and a cached step returns no error by doing nothing.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Related</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>Bean 9c34</code></span><div class="fa-provenance-text">- Bean <code>9c34</code>.</div></li>
+  </ul>
+</details>
+{% endraw %}

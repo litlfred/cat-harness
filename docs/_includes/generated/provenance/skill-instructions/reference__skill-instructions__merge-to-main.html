@@ -1,0 +1,30 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="6">
+  <summary class="fa-provenance-summary">Provenance (6)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Merge to <code>main</code> — a sub-process with its own gate</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">Today that is <code>merge-train.bpmn</code> (<code>Call_MergeToMain</code>, in place of the old <code>Task_Release</code> and <code>Task_Land</code>) and <code>crdm-close.bpmn</code> (<code>Call_MergeToMain</code>, between the recorded sign-off and the issue close).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Why this is a process of its own</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-10-09</code></span><div class="fa-provenance-text"><strong>2026-10-09:</strong> one session merged seven pull requests into <code>main</code> across seven repositories (cat-harness, bootstrap-tools, the tools layer above this one, and four content instances above that). None of those repositories runs CI. The owner&#39;s instruction had been <em>&quot;fix all issues until green&quot;</em>, and the session read it as permission to merge. A safety classifier flagged the action as &quot;Merge Without Review&quot;. The same instruction then appeared as the <code>evidence</code> of two <code>trust.consent</code> re-pins in <code>folio-assistant</code>&#39;s <code>index.config.json</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The steps</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-06</code></span><div class="fa-provenance-text">With none active, the PR&#39;s own session takes the lane (owner ruling 2026-10-06, [<code>merge-queue</code>](merge-queue.md) §&quot;When no Merge Manager is active&quot;).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Authorisation — who, and what counts</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-04</code></span><div class="fa-provenance-text"><strong>A batch authorisation covers the PRs listed when it was given</strong>, not PRs that arrive later (owner, 2026-10-04, quoted in [<code>merge-queue</code>](merge-queue.md) §Landing).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Recording the authorisation (not relaxable)</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean ixmq</code></span><div class="fa-provenance-text">The shape already exists: <code>ReleaseSchema</code> in <code>schemas/sdlc/merge-queue.ts</code> (bean <code>ixmq</code>), and this step reuses it rather than inventing a second one.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">After the merge</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-30</code></span><div class="fa-provenance-text">A merge that changes what a published site shows is not done until the site shows it (owner, 2026-10-30: <em>&quot;merged PRs by agent should trigger page rebuild in process&quot;</em>).</div></li>
+  </ul>
+</details>
+{% endraw %}

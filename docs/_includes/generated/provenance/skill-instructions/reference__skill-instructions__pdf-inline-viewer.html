@@ -1,0 +1,19 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="4">
+  <summary class="fa-provenance-summary">Provenance (4)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Inline PDF viewer — a pinned pdf.js, installed at build time</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>folio-assistant-5ea6</code> <code>#2119</code></span><div class="fa-provenance-text">&gt; Skill id: <code>pdf-inline-viewer</code> · Package: <code>ui-core</code> · Bean &gt; <code>folio-assistant-5ea6</code> · Issue #2119 · Tools <code>pdf-viewer-install</code>, &gt; <code>pdf-viewer-embed</code> · Code <code>cat-harness-tools/scripts/pdf-viewer.ts</code></div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>Owner</code> <code>owner</code> <code>2026-10-04</code></span><div class="fa-provenance-text">Owner, 2026-10-04: <em>&quot;is there a lightweight inline viewer that could be used for viewing PDF on CDN … basic functionality (search, scroll, jump to page, print, d/l)&quot;</em>. Of four options — the browser&#39;s own viewer, pdf.js copied onto the site, pdf.js from a CDN with a hand-built toolbar, EmbedPDF — the owner chose the second, then asked for it <em>&quot;as skill and tool&quot;</em>, then <em>&quot;lazyload&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Caching: why the frame&#39;s address carries a version tag</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>owner</code> <code>Owner</code> <code>2026-10-04</code></span><div class="fa-provenance-text">The owner hard-reloaded and still saw the old frame, because the old <code>viewer.html</code> was what came back. Owner, 2026-10-04: <em>&quot;add the version tag so cache doesn&#39;t bite&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The site&#39;s own post-build passes leave the viewer alone</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>Bean folio-assistant-5ea6</code></span><div class="fa-provenance-text">Bean <code>folio-assistant-5ea6</code> has the screenshots.</div></li>
+  </ul>
+</details>
+{% endraw %}

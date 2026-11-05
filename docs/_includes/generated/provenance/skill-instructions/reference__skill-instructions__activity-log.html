@@ -1,0 +1,31 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="7">
+  <summary class="fa-provenance-summary">Provenance (7)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Activity log — what an agent did, kept out of the graph</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-19</code></span><div class="fa-provenance-text">Owner, 2026-09-19:<br><br>&gt; an agent whenever it starts or ends a task or has a log message, they &gt; should add an entry to a log entry in the trash. […] by default commit &gt; audit log to git data store is turned off - need explict like (cpature log &gt; when agent runs this workflow).<br><br>## The role is mechanical</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The role is mechanical</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-16</code></span><div class="fa-provenance-text"><code>work-plan</code> and <code>corpus</code>, and this is deliberately the same shape rather than a new one. A mechanical role is still a real role (owner, 2026-10-16): this skill is its <strong>contract</strong> — the shape of an entry and where it goes — and the <code>actedUpon</code> flag that once exempted it from <code>role-has-actor</code> is retired.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What an entry points at — <code>references[]</code> is OPEN</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-19</code></span><div class="fa-provenance-text">Owner, 2026-09-19:<br><br>&gt; log should be rich schema including references to discussion/chats, cmn &gt; execution logs, etc.<br><br>**The <code>etc.</code> is the specification, not a trailing-off.** A closed list is wrong within a week — the interesting thing to reference is whatever the work touched, and nobody enumerates that in advance. So <code>kind</code> is an open string with a KNOWN SET</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">&gt; <code>cmn</code> was read as <strong>command</strong>. There is no CMMN in this codebase — the &gt; process standards here are BPMN and DMN — and &quot;execution logs&quot; pairs with a &gt; command. If CMMN was meant, it arrives as <code>kind: &quot;case&quot;</code> with <strong>no schema &gt; change</strong>, which is exactly what an open list buys.<br><br>### Command execution has its own shape, and no output field</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Turning it on — <code>&lt;cat-harness.processes:log capture=&quot;on&quot;/&gt;</code> on the process</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">Owner: <em>&quot;need explicit like (capture log when agent runs this workflow).&quot;</em> That is a declaration on the <strong>process</strong>, parsed at load and <strong>throwing on a value the engine cannot honour</strong>, exactly as <code>&lt;cat-harness.processes:bean op&gt;</code> does. A diagram asking for a mode that does not exist must not load and quietly log nothing — worse here than elsewhere, because the missing artefact <em>is</em> the record.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">It is never published</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean folio-assistant-uv09</code></span><div class="fa-provenance-text"><code>fsh-guts/logs/</code> is inside <code>fsh-guts/</code>, which <code>UNPUBLISHED_GRAPH_TYPOLOGIES</code> strips from every published graph — the kind, the directory, the skill and every edge naming them (bean <code>folio-assistant-uv09</code>, [<code>kg-export</code>](../../../skills/kg/kg-core/kg-export.md)).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What not to log</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-09-18</code></span><div class="fa-provenance-text">a bean says what is being worked on and what it waits on. An agent that logs instead of claiming is the 2026-09-18 unclaimed-work failure wearing a new hat.</div></li>
+  </ul>
+</details>
+{% endraw %}

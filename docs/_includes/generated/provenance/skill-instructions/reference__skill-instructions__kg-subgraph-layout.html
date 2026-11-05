@@ -1,0 +1,15 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="3">
+  <summary class="fa-provenance-summary">Provenance (3)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">KG subgraph layout: one diagram per declared sub-graph, laid out in the browser</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-09</code></span><div class="fa-provenance-text">Owner, 2026-10-09, in order:</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Where the convention comes from</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">The &quot;giant diagram&quot; is the <strong>i2ce Form Documentor</strong>: <code>I2CE_Page_FormDocumentor::dot()</code> in i2ce 4.3.3 (<code>i2ce/modules/Forms/modules/FormDocumentor</code>). It wrote every form of an iHRIS site as Graphviz DOT and piped it through <code>unflatten -f -l 2 -c 2 | dot</code>. A folio that holds the iHRIS forms restated it over a projection so any subgraph could be drawn with it, and this platform skill generalizes that again: the projection here is the UML overview&#39;s own model, so the drawing is of a harness&#39;s KG declaration schema rather than of forms.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-10-09</code></span><div class="fa-provenance-text">- <strong>A node is a rounded box whose label is a table</strong>: a header, then one row per property. The Form Documentor declared <code>shape=&quot;Mrecord&quot;</code>; here the shape is <code>box</code> with <code>style=&quot;rounded,filled&quot;</code>, the same look, because a record shape makes Graphviz split the label at every <code>|</code> and a union type (<code>unverified | self-reported</code>) came out as one field of three (measured 2026-10-09, caught by a browser test). - <strong>A node is filled by its family.</strong> The Form Documentor read colour schemes from configuration; here the colour is the kind&#39;s family in <code>uml.css</code>, read by <code>scripts/uml-palette.ts</code>, the one place a kind gets its colour. Owner: <em>&quot;use existing themes for coloring&quot;</em>. No second palette. - **The layout is <code>unflatten</code>, then <code>dot</code>**, run by the viewer, not at build time.</div></li>
+  </ul>
+</details>
+{% endraw %}

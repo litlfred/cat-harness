@@ -1,0 +1,29 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="8">
+  <summary class="fa-provenance-summary">Provenance (8)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Running a test plan — from a request to a signed certification</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>bean 3o5b</code> <code>bean 3fva</code> <code>2026-10-01</code> <code>docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md</code></span><div class="fa-provenance-text">It is arc <code>3fva</code> (bean <code>3o5b</code>), proposal <code>docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md</code> §3.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The nodes, and who points at whom</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>D2</code> <code>D5</code></span><div class="fa-provenance-text">| node | schema | where it lives | |---|---|---| | the plan | <code>test-plan/v1</code> — <code>schemas/sdlc/test-plan.ts</code> | authored content (<code>test-plan</code> kind) | | the system under test | the <code>systemUnderTest</code> facet on an actor — <code>schemas/kg/skill-package.ts</code> | <code>scenarios/actors/*.json</code> | | the run | <code>folio-test-run/v1</code> with <code>plan</code> + <code>sut</code> — <code>schemas/sdlc/test-run.ts</code> | the declared <code>qa</code> directory | | the report | <code>test-report/v1</code> — <code>schemas/sdlc/test-report.ts</code> | the <code>qa-reports</code> branch, <code>tests/&lt;plan&gt;/&lt;sut&gt;/&lt;run&gt;/</code> | | the certification | a judgement, <code>qa-attestations/v1</code> | the declared <code>attestations</code> graph, on main (D2 (a), D5 default) |</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 18p1</code></span><div class="fa-provenance-text"><strong>The platform model is FHIR-free.</strong> FHIR R5 TestPlan <em>informed</em> <code>test-plan/v1</code> and is a DOWNSTREAM export target (bean <code>18p1</code>, in the FHIR IG layer).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The system under test is a facet, not a role</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text"><code>kind</code> is the closed list <code>SUT_KINDS</code> (<code>skill</code>, <code>agent</code>, <code>tool</code>, <code>machine</code>, <code>ig</code>, <code>process</code>; owner ruling) — the same vocabulary as a plan&#39;s <code>scope.kind</code>, so the two are compared, not translated.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Tester</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text"><strong>Resolve the plan.</strong> P parses as <code>test-plan/v1</code>, names at least one <code>req:</code> requirement (owner ruling), its <code>exitCriteria.decision</code> resolves to a decision in a <code>.dmn</code> that exists, and its <code>scope.kind</code> matches the SUT actor&#39;s facet kind.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean vm6m</code></span><div class="fa-provenance-text"><strong>Bind the test data</strong> (bean <code>vm6m</code>).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text"><strong>Write the run and the report.</strong> The run records <code>plan {id, version}</code> and <code>sut {actor, version, reach}</code>; the report rolls up per plan, never across plans (<code>py74</code>), and <code>testReportPath</code> says where it goes.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Certifier</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text"><strong>The certification decision is a judgement</strong> (owner ruling).</div></li>
+  </ul>
+</details>
+{% endraw %}

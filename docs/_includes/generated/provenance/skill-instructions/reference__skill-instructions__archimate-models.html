@@ -1,0 +1,58 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="16">
+  <summary class="fa-provenance-summary">Provenance (16)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">ArchiMate models — every view, element and relationship a node</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-09</code></span><div class="fa-provenance-text">Owner, 2026-10-09: <em>&quot;need new specialixed harness (like openapi) for archimate content in the KG&quot;</em>, and then, of the Archi CLI report: <em>&quot;do not do java 200mb... that&#39;s not usable for webclients and is too heavy.&quot;</em></div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Readable page paths: slugs, worked out each build</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>issues/1054</code> <code>2026-10-30</code></span><div class="fa-provenance-text">Owner, 2026-10-30, of <code>…/views/id-007936f8c2424b96ad1893ef0ff66059/</code>: <em>&quot;do we need to use such ugly IDs … why not nicer slug IRIs?&quot;</em>; then, of the designs offered ([issue 1054](https://github.com/litlfred/cat-harness-tools/issues/1054)): <em>&quot;B. clean break ok&quot;</em>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>The IRI stays the id; only the page is at a slug.</strong> A view&#39;s or element&#39;s page is at <code>&lt;m&gt;/views/1-central-health-workforce-registry/</code>, while its node keeps <code>&lt;m&gt;/views/&lt;id&gt;.jsonld</code>. Cite the IRI when a link must last: the page path is for reading. Relationships keep id paths, since almost none are named (smart-ra 0.2.0: 6 of 284).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">- a rename moves the page, and the old path is gone (a clean break, as the owner chose; old <code>&lt;m&gt;/views/&lt;id&gt;/</code> page paths are gone too); - on a clash the object first in the model keeps the plain slug and a later one gets <code>-&lt;first hex of its id&gt;</code>; - an author can choose a slug in Archi with a <code>slug</code> property (lower-case words joined by <code>-</code>); a malformed one, or two objects choosing the same one, is refused rather than rewritten; - an object with no readable name keeps its id as its path.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The metamodel is derived, never drawn</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-31</code></span><div class="fa-provenance-text">Owner, 2026-10-31: <em>&quot;i dont really like native UML, rather derived&quot;</em>, then <em>&quot;make mechanical tools as parts of skills/processes&quot;</em>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><code>archimate-metamodel --check</code> fails when a relationship follows a pattern ArchiMate does not allow. Placeholders are reported, never fatal: a model is its authors&#39;, so removing a hand-drawn metamodel view (smart-ra 0.2.0&#39;s &quot;Metamodel&quot;, &quot;Metamodel vs EIRA&quot; and &quot;Testing&quot;, 34 placeholders) is their call. Cite the derived page instead of the view in the meantime.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Actors come first; the model points at them</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>smart-ra#166</code> <code>2026-11-01</code></span><div class="fa-provenance-text">smart-ra#166 D4, owner&#39;s choice of 2026-11-01. The SMART Guidelines order is fixed: a DAK&#39;s L2 generic personas become the IG&#39;s L3 FHIR ActorDefinitions, and the architecture realizes them (DPI-H RA §4.3.2). So <strong>the ActorDefinitions are written in the IG, from the DAK personas, and the model only points at them.</strong> A model author tags the box that realizes an actor in Archi with the property <code>fhir-actor</code>, whose value is the actor&#39;s canonical URL (<code>fhir-actor = http://smart.who.int/ra/ActorDefinition/FacilityRegistry</code>), the same way an element carries <code>skosConcept</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A document&#39;s tables and figures are drawn, not typed</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-11-01</code></span><div class="fa-provenance-text">Owner, 2026-11-01 (smart-ra, cards Q-RAC-1 B and Q-RAC-2 A, &quot;the rules stay in charge&quot;): a table or figure in the document that restates the model is generated from data by the Tool <code>archimate-blocks</code>, and <code>--check</code> keeps it from drifting.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Untangle every view you touch</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-31</code></span><div class="fa-provenance-text">Owner, 2026-10-31, of a view with lines drawn across each other and through boxes: <em>&quot;lots crossed lines. detangle. (skill/process always check and try minimize when authoring archimate)&quot;</em>, then <em>&quot;improve skills / make mechanical tools where you can&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Every view carries a key for readers who do not know ArchiMate</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-31</code></span><div class="fa-provenance-text">Owner, 2026-10-31: <em>&quot;what do arrows/colors/shapes mean, need legend&quot;</em>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="pr"><span class="fa-provenance-kind">pr</span> <span class="fa-provenance-refs"><code>pull/1059</code></span><div class="fa-provenance-text">Readers of a view are mostly not architects. <strong>Every rendered view carries a plain-language key</strong> below it, saying what each colour, shape, line and end used ON THAT VIEW means, in words a reader without ArchiMate understands (&quot;Realization: makes real, or achieves&quot;), not the specification&#39;s terms alone. <code>render-view.ts</code> draws it by default ([pull 1059](https://github.com/litlfred/cat-harness-tools/pull/1059)), keyed only to what the view uses. Do not turn it off for a published view, and do not export a view without it. When the renderer gains a new mark, the key gains its line in the same change.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Names are the source&#39;s own terms, linked to their concept</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>smart-ra#163</code> <code>2026-10-31</code></span><div class="fa-provenance-text">Owner, 2026-10-31, after an NHWA element was named in our words rather than the handbook&#39;s (smart-ra#163).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The model is never a source of the glossary</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-11-02</code></span><div class="fa-provenance-text">Owner, 2026-11-02: <em>&quot;i dont want ArchiMate to be source of SKOS (unless it was ingested)&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Versions — one folder per SemVer version</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">A model is named for the version of the thing it describes. In a WHO IG repository that is the <code>version:</code> in <code>sushi-config.yaml</code>: <code>archimate/0.2.0/</code>, with earlier drafts as SemVer pre-releases (<code>0.2.0-draft.1</code>, …). The model id in the config is that version, so <code>…/archimate/0.2.0/elements/&lt;id&gt;.jsonld</code> is both versioned and stable. Never name a folder <code>v2</code>, <code>prev1</code> or <code>current</code>: a label that says nothing about what it is a version of is how smart-ra came to hold two byte-identical models under two names.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">In a folio&#39;s build</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">Run both in the staging build, after the document site is built and before the navbar pass, so the pages are railed like every other page. <code>--out</code> is the normal mode: smart-ra&#39;s four models are 5,809 pages and 131 drawings (~24 MB, 1.5 s), which belong in a build, not a commit. <code>gen-archimate-pages.ts</code> without <code>--out</code> writes into the graph and <code>--check</code> gates it, as the <code>openapi</code> subgraph does, for an instance small enough to commit its pages.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Citing the model from prose</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-10-09</code></span><div class="fa-provenance-text">Link the element&#39;s or the view&#39;s page, never a copy of a picture. A view&#39;s SVG links relative to its own address, so it can also be embedded in a document as a figure (<code>&lt;m&gt;/views/&lt;id&gt;.svg</code>) and stay current with the model. Where the document and the model disagree — a figure in the text that is not a view in the model — that is a finding for the model&#39;s authors, not something to paper over with an exported image. (smart-ra, 2026-10-09: Figures 3.7.1 and 3.7.2 of the DPI-H review draft were in no committed model; the 0.2.0 model now draws them as views &quot;B&quot; and &quot;D&quot;, so cite those.)</div></li>
+  </ul>
+</details>
+{% endraw %}

@@ -1,0 +1,33 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="12">
+  <summary class="fa-provenance-summary">Provenance (12)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">QA report signing — two routes, chosen by the performer&#39;s reach</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#1168</code></span><div class="fa-provenance-text"><code>folio-test-run/v1</code> (<code>schemas/sdlc/test-run.ts</code>) answers the first: a data hash and a process hash, each all-or-nothing, plus the <code>skill</code> it tests, whose contract its recorded <code>cases</code> are checked against (<code>test-run-conforms</code>, #1168).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>#363</code> <code>2026-09-20</code></span><div class="fa-provenance-text">From the owner, 2026-09-20 on [#363](https://github.com/litlfred/folio-assistant/issues/363):<br><br>&gt; some of the machine actors may be air-gapped, it is a property of an actor. &gt; depending on the propeorty, different tools might not work. in this case an &gt; API wouldnt wokr and a human actor is needed. so process for signing needs &gt; two parallel routes/processes, air gapped vs not, the first needed a human &gt; actor</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">The subject is the <strong>QA report</strong> — owner, same day, answering what gets signed.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-30</code></span><div class="fa-provenance-text">**This skill builds on [<code>signing</code>](signing.md)** (owner, option B, 2026-10-30).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Reach is a property of the ACTOR, and <code>unknown</code> is a third state</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>One vocabulary, two levels.</strong> An actor&#39;s <code>reach</code> uses the same scale as the deployment&#39;s <code>network</code> (<code>folio-assistant-g7vb</code>) — <code>internet</code>, <code>egress-restricted</code>, <code>air-gapped</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Why there is no <code>network-egress</code> capability</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text">The bean (<code>folio-assistant-r0rq</code>) proposed one, reasoning that <code>CapabilityDefinition.requires</code> already propagates dependencies and an air-gapped actor would simply not carry it.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean ind9</code></span><div class="fa-provenance-text">Worse, the capability would have carried the same fact as <code>reach</code>, in a second place, free to disagree — bean <code>ind9</code> is the fixed instance of putting non-probeable things in <code>capabilities[]</code>, and this would have reopened it.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Declaration and execution are different mechanisms</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean folio-assistant-85e8</code></span><div class="fa-provenance-text"><code>fallbackRole</code> (bean <code>folio-assistant-85e8</code>) says <strong>which lane takes over</strong> when no capability can do it.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-09-20</code></span><div class="fa-provenance-text">Re-measured 2026-09-20 — <strong>nothing invokes that script</strong>, it is in no <code>package.json</code> entry and no workflow, and its output directory <code>schemas/generated/</code> does not exist.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>docs/proposals/zod-schemas-as-tools.md</code></span><div class="fa-provenance-text">(<code>folio-assistant-3lbz</code>, and <code>cat-harness/docs/proposals/zod-schemas-as-tools.md</code>.)</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Where the signed report goes: the <code>qa-reports</code> branch, next to its run</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 3fva</code></span><div class="fa-provenance-text">A QA report is a <strong>derived</strong> record — it can be rebuilt from the tree and the data it hashed — so since arc <code>3fva</code> it is kept where every derived QA result is kept: the orphan **<code>qa-reports</code>** branch, in the entry keyed by the commit it judged (<code>main/&lt;sha&gt;/</code> or <code>pr/&lt;n&gt;/&lt;sha&gt;/</code>), written through <code>scripts/qa-store.ts</code> and never by a hand <code>git push</code>.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>D5</code></span><div class="fa-provenance-text"><strong>What does not go there.</strong> A <strong>certification</strong> — an accountable role&#39;s Decision taken on a test report&#39;s rollup — is a separate node, and it stays on <code>main</code> beside the attestations (owner decision D5, default (a)): it is a judgement, the same class as <code>test/attestations/</code>, and no regeneration can reproduce it.</div></li>
+  </ul>
+</details>
+{% endraw %}

@@ -1,0 +1,35 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="8">
+  <summary class="fa-provenance-summary">Provenance (8)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Working on materialized content — copy it out</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-21</code></span><div class="fa-provenance-text"><strong>Materialized content is a copy of somebody else&#39;s bytes, and this repository does not edit it in place.</strong> The owner, 2026-09-21:<br><br>&gt; *&quot;if we have a materialized <code>&lt;stub&gt;/&lt;sub-graph&gt;</code>, the contents of it should be &gt; immutable … you would need to copy/materialize it to your own <code>folio/</code> in &gt; order to mess around with it.&quot;*</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-22</code></span><div class="fa-provenance-text">And 2026-09-22, choosing between advising and enforcing: <strong>enforce from the start.</strong></div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Who may copy out</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-22</code></span><div class="fa-provenance-text"><strong>Any reader</strong> — the owner&#39;s ruling, 2026-09-22. This is deliberately not a permission: refusing a copy would not protect the original, because the original is protected by being read-only.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Where the copy goes</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-22</code></span><div class="fa-provenance-text">**Into the copier&#39;s own <code>folio/</code>, with provenance** — owner&#39;s ruling, 2026-09-22, chosen over a scratch area.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The copy records what it is a copy of</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-09-22</code></span><div class="fa-provenance-text">It does not overwrite <code>upstream</code>, and it does not reuse <code>upstream</code> for the local original — that was one field until 2026-09-22, and by then 5 of the 9 the IRIS replica item records were using it for a local value in violation of its own documentation.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The exception is &quot;say what you did&quot;, not a list of who may skip</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">The owner&#39;s exception is <em>&quot;expect for publication worfklow purposes or so&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Where this bites, measured</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">### Where this bites, measured</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">And where it does NOT bite, also measured</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text">A declared-but-absent step is the <code>dh4f</code> defect: a consumer scans it and reports a clean run over nothing.</div></li>
+  </ul>
+</details>
+{% endraw %}

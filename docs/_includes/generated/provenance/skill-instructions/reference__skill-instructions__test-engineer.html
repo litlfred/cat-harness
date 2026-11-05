@@ -1,0 +1,11 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="2">
+  <summary class="fa-provenance-summary">Provenance (2)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">A test never reads <code>test/results/</code> as a fixture</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 5hox</code> <code>bean 3fva</code></span><div class="fa-provenance-text">Derived QA results are leaving <code>main</code> for the orphan <code>qa-reports</code> branch (arc <code>3fva</code>): the checkout&#39;s <code>&lt;instance&gt;/test/results/**</code> is a working copy, still committed until bean <code>5hox</code> removes it, and the record is the commit-keyed entry <code>qa-publish</code> stores.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>2026-10-01</code> <code>docs/proposals/qa-readers-audit-2026-10-01.md</code></span><div class="fa-provenance-text">A test that reads that tree is reading a file that will not be there — and the readers audit (<code>docs/proposals/qa-readers-audit-2026-10-01.md</code> §5.5) measured what that costs: 15 tests in 6 files fail only when the corpus is absent, and one, <em>&quot;no critical criterion is failing&quot;</em>, <strong>passes</strong> when it is absent because it iterates over zero files.</div></li>
+  </ul>
+</details>
+{% endraw %}

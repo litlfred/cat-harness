@@ -1,0 +1,24 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="6">
+  <summary class="fa-provenance-summary">Provenance (6)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Playing a state machine</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-20</code></span><div class="fa-provenance-text">&gt; <strong>An agent could also play a (non-deterministic) state machine as a tool. &gt; Managing state (kinda) during human/agentic discussion.</strong> — the owner, &gt; 2026-09-20</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The non-determinism is in the TRANSITIONS, not the shape</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>That needed no change to the engine.</strong> An exclusive gateway carrying <code>&lt;cat-harness.processes:decision&gt;</code> is computed and <code>workflow_complete</code> <em>refuses</em> a hand-supplied outcome; one without it already meant the caller supplies the answer. The mechanism for a non-deterministic transition was there before anybody asked for one.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What did need adding: saying that a judgement is deliberate</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">Indistinguishable from the outside — the gap <code>cat-harness.processes:no-skill</code> closed for activities, one element type along. So <code>&lt;cat-harness.processes:judgement reason=&quot;…&quot;/&gt;</code>, with the same three rules: the reason is <strong>required</strong> and a declaration without one does not load; it is refused on anything but an exclusive gateway; and it is refused <strong>alongside</strong> <code>cat-harness.processes:decision</code>, because a gateway claiming both that a table decides it and that a person does leaves a reader unable to tell which the author meant.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean q0tc</code></span><div class="fa-provenance-text"><strong>Why this matters more than the activity case.</strong> A step with no skill is a documentation gap. A gateway with no table is a point where an LLM decides the branch — and <em>how many of those there are, and which</em>, is exactly the question the deterministic-to-agentic spectrum is about (bean <code>q0tc</code>). <strong>A mechanism that cannot enumerate its own judgement points cannot answer it.</strong></div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#200</code></span><div class="fa-provenance-text"><code>check:workflow-refs</code> now prints the three-way split. Issue #200 §6 classified this repository&#39;s decision points in prose, in an issue, where nothing reads it; the count is now printed from the models. <strong>Ask the checker, not this page</strong> — and note that an undeclared gateway is a backlog entry rather than a defect: every one that predates the marker lands there, and a gate that failed on an un-annotated corpus is a gate somebody turns off.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The two judgement points, and why each is safe to be one</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span><div class="fa-provenance-text">**That contrast is the shape of the answer <code>q0tc</code> is looking for**, and this skill deliberately does not pre-empt it: <em>recoverability</em> is one candidate criterion for where judgement is admissible, tested on two gateways. Whether it is the right one, and what else belongs beside it, is research rather than assertion.</div></li>
+  </ul>
+</details>
+{% endraw %}

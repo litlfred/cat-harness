@@ -1,0 +1,18 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="3">
+  <summary class="fa-provenance-summary">Provenance (3)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Adversarial code review</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>bean w8jq</code> <code>docs/proposals/merge-gate-2026-10-02.md</code> <code>2026-10-02</code> <code>2026-10-03</code></span><div class="fa-provenance-text">Its verdict is what <code>check:adversarial-review</code> reads (bean <code>w8jq</code>, proposal <code>docs/proposals/merge-gate-2026-10-02.md</code> §5–§6). It is warn-only by the owner&#39;s ruling of 2026-10-03: a missing, stale or failing verdict is reported, not blocking, until the owner promotes the gate.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What you look for</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span><div class="fa-provenance-text">Read the definitions there rather than from a copy: the proposal&#39;s own table already differs from the schema.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Recording the verdict</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-20</code></span><div class="fa-provenance-text">The verdict lives on its own state branch, <strong>never in the pull request</strong>. Committing it into the pull request moves the head it names, which makes it stale at once (owner, 2026-10-20, &quot;State branch&quot;).</div></li>
+  </ul>
+</details>
+{% endraw %}

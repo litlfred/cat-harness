@@ -1,0 +1,18 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="3">
+  <summary class="fa-provenance-summary">Provenance (3)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">The fields — read them off the schema, never off this page</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean s8mo</code> <code>2026-09-24</code></span><div class="fa-provenance-text"><code>SessionContextSchema</code> in <code>schemas/sdlc/session-context.ts</code> is authoritative. This description said <em>&quot;the six fields&quot;</em> until 2026-09-24, by which point there were <strong>eight</strong> — <code>waitingOn</code> and <code>$schema</code> had joined <code>id</code>, <code>actor</code>, <code>startedAt</code>, <code>updatedAt</code>, <code>open</code>, <code>claimed</code>. Bean <code>s8mo</code> carried the same &quot;six&quot; and drifted with it, so the bean and this skill agreed with each other and both disagreed with the code, which is the one shape comparing them cannot catch.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Who reads it, and why it is parsed rather than trusted</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 3nfv</code></span><div class="fa-provenance-text">The writer may be an LLM playing the part of a state machine (bean <code>3nfv</code>), so the shape cannot be assumed from the writer&#39;s care. <code>parseSessionContext()</code> parses at the boundary, which is what makes a <strong>non-deterministic writer safe to read from</strong> — and that is the general rule this record is the first case of: where a machine may be played rather than executed, the schema is the contract and the parse is where it is enforced.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">What this is NOT</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 3nfv</code></span><div class="fa-provenance-text"><strong>Not a store yet.</strong> The kind is registered and the shape is defined; nothing writes one. The state machine is bean <code>3nfv</code>, and declaring a directory before anything fills it is the defect where a consumer scans nothing and reports a clean run.</div></li>
+  </ul>
+</details>
+{% endraw %}

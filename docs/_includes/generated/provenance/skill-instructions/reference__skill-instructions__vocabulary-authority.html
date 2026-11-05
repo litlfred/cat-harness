@@ -1,0 +1,39 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="9">
+  <summary class="fa-provenance-summary">Provenance (9)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">The rule</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-22</code></span><div class="fa-provenance-text">Owner, 2026-09-22: *&quot;need to identify one authoritative scheme to map against.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Pros and cons, as ruled</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">Each ruling is the owner&#39;s. The reasons are measured against this corpus, not read off the specs.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">SKOS — **adopted, authoritative for meaning**</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">| <strong>Pro</strong> | Native JSON-LD. Multilingual labels first-class. <code>notation</code> <strong>is</strong> the code — the &quot;coded glossary&quot; requirement was already satisfied by <code>TermGloss</code>&#39;s prefixed names. Mapping properties with stated equivalence. Carries 135 vocabulary terms + 44 swimlane roles here |</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">schema.org — **kept at 3 predicates; never a source of truth**</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text">Owner: <em>&quot;i find it hard to find actual definitions/glossary … not sure of utility.&quot;</em></div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Rejected outright</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span><div class="fa-provenance-text"><strong>SKOS-XL</strong> — owner: <em>&quot;nah&quot;</em>. It reifies labels to fix part of the designation gap and nothing else; the gap it does not fix is the one that matters.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">DC ↔ SKOS: the overlap, and what stops the drift</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-09-22</code></span><div class="fa-provenance-text">They collide only where a node is genuinely both — and one node here is: the glossary document is a <em>file</em> and a <code>skos:ConceptScheme</code>. Measured 2026-09-22, on output shipped that morning:</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean sl9u</code></span><div class="fa-provenance-text">Two predicates, one fact, nothing declaring which is authoritative. <strong>That is the drift, already live.</strong> The rule above resolves it: the node is a concept scheme, so <code>skos:prefLabel</code> is the source and <code>dcterms:title</code> is the derived copy for resource-metadata consumers. Bean <code>sl9u</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Guidance for schema and data modelling</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-22</code></span><div class="fa-provenance-text">Owner, 2026-09-22: *&quot;use open standards for modeling. tools can be used to map non-standard/proprietary to standards. first step is data normalization in any schema data model mapping exercise.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Where the pins live</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-09-22</code></span><div class="fa-provenance-text">It was <strong>undeclared</strong> in <code>cat-harness.json</code> until 2026-09-22 — the <code>dh4f</code> shape inverted, a held directory nothing declares, so every consumer that fans out over declared directories skipped it.</div></li>
+  </ul>
+</details>
+{% endraw %}

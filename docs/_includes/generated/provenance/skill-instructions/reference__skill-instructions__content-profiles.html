@@ -1,0 +1,19 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="4">
+  <summary class="fa-provenance-summary">Provenance (4)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Content types — <code>document</code> is the base, a paper extends it</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-04</code> <code>owner</code></span><div class="fa-provenance-text"><strong>No module lists the kinds.</strong> They are DISCOVERED from the <code>block-kinds/</code> graphs their owning harnesses declare — the document kinds in the content core, the math kinds in the science layer (owner, 2026-10-04: <em>&quot;kinds need to be discoverable … not centrally managed&quot;</em>; bean riit). Adding a kind is adding a node to the harness that owns it; the <code>BLOCK_KINDS</code>, <code>MATH_BLOCK_KINDS</code> and <code>DOCUMENT_BLOCK_KINDS</code> values in <code>schemas/content/block-kinds.ts</code> are computed from the nodes.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Two axes, and conflating them is the costly mistake</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>They pull in opposite directions, which is why the distinction is load-bearing rather than tidy.</strong> Adapters must not overlap; profiles must. Making <code>document</code> a third <em>adapter</em> would have made <code>adapterForKind</code> <strong>ambiguous on every kind the two share</strong> — eight of them, measured when the question was live — and a scoping function that returns two answers cannot fail an audit, because nothing can say which answer was meant.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean p11x</code> <code>2026-09-30</code></span><div class="fa-provenance-text"><strong>The instance that ships a content adapter declares it; the harness never names it.</strong> <code>contentAdapters</code> in that instance&#39;s <code>&lt;instance&gt;.json</code> — <code>contentType</code>, instance-relative <code>module</code>, <code>className</code>, and <code>extends</code> for the type it specialises — is what <code>src/builtin-adapters.ts</code> discovers. <code>extends</code> orders the fallback: the specialisation leads, because falling back <em>to</em> a superset loses nothing and falling back <em>from</em> it loses its tools. The harness held <code>../&lt;instance&gt;/adapters/…</code> paths until 2026-09-30, a variable import no static gate could see and the edge that kept it from lifting into its own repository; <code>check:import-direction</code> now fails on that shape (bean <code>p11x</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A normative statement is not a block kind</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>Known wrong, and left visible rather than quietly patched:</strong> intake guidance that maps guideline recommendations onto <code>definition</code> predates the document profile and is wrong for a document folio, where <code>definition</code>&#39;s formal field is required.</div></li>
+  </ul>
+</details>
+{% endraw %}

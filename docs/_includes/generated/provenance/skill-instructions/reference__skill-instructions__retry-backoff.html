@@ -1,0 +1,24 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="6">
+  <summary class="fa-provenance-summary">Provenance (6)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">A falling-off retry rate, on every error</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-09-20</code> <code>owner</code></span><div class="fa-provenance-text">Owner, 2026-09-20: <strong>&quot;as rule, use logarithmic fall-off on all errors. core best practice.&quot;</strong></div></li>
+  </ul>
+  <h3 class="fa-provenance-section">From a shell script or a workflow, call <code>backoff-sleep.ts</code></h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">**&quot;Use <code>retry.ts</code>&quot; does not cover a <code>run:</code> body**, which cannot import TypeScript — and reading it as though it did is how this rule was broken everywhere it applied while its test suite stayed green.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 06kg</code> <code>2026-09-20</code></span><div class="fa-provenance-text">Measured 2026-09-20, bean <code>06kg</code>: <strong>all four</strong> retry loops in <code>.github/workflows/feature-staging.yml</code> slept <code>$((attempt * 5))</code> — 5 s then 10 s, linear and unjittered. That is the schedule §&quot;Jitter is not decoration here&quot; below names as the thundering herd, on <code>gh-pages</code>, the ref it cites as the contended one, written by the same concurrent sessions it says contend on it. Nothing noticed, because the rule had an implementation and a test <strong>in TypeScript</strong> and four call sites <strong>in bash that no check read</strong>. It was found by somebody reading a sibling&#39;s open PR, which is not a mechanism.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean bqrg</code></span><div class="fa-provenance-text">It calls <code>waitFor</code> directly, so a workflow and <code>withBackoff</code> compute the same number from the same code. Do <strong>not</strong> write a shell function instead: copied into four <code>run:</code> bodies it is four implementations again, which is how six copies of <code>stripLeanComments</code> ended up with three broken and nothing saying so (bean <code>bqrg</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Jitter is not decoration here</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean bm6d</code> <code>2026-09-20</code></span><div class="fa-provenance-text">Several agent sessions run against this repository at once — four were pushing to <code>gh-pages</code> inside ninety minutes on 2026-09-20 (bean <code>bm6d</code>). Sessions that fail together and retry on the same doubling schedule retry <strong>together</strong>, which is the thundering herd that keeps the far side down. Each wait is multiplied by a random factor in <code>[0.5, 1.5)</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Inject the clock, or the code is untestable</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">A retry loop with real sleeps takes 1 + 2 + 4 + 8 s, and any suite with a sane timeout fails on it. Measured: the first draft of <code>runsForHead</code> made <code>a thrown fetch is cannot-ask</code> take fifteen seconds and fail at bun&#39;s five.</div></li>
+  </ul>
+</details>
+{% endraw %}

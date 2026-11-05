@@ -1,0 +1,42 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="12">
+  <summary class="fa-provenance-summary">Provenance (12)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Render logging — the publish branch keeps its own history</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>Owner</code> <code>2026-09-20</code></span><div class="fa-provenance-text">Owner, 2026-09-20: <em>&quot;a specialised Logger skill for the gh-pages rendering context … log all staging rendering (when added, when deleted) to a logging directory/file on gh-pages.&quot;</em></div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The question it exists to answer</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean plj1</code></span><div class="fa-provenance-text">Whether it was cleaned up because its pull request closed, removed by a dispatch somebody confirmed, or **deleted by an unrelated merge to <code>main</code>** is not recoverable — and the third really happened, on every deploy, for months, measured on the real branch: bean <code>plj1</code>, three <code>docs(gh-pages)</code> commits, 1/3/1 previews on their parents and zero after.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The four events, and why <code>retained</code> earns its place</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean w2g5</code></span><div class="fa-provenance-text">A preview still standing because a liveness signal fired leaves no trace otherwise, and the next person asking <em>&quot;why is this still up&quot;</em> has nothing to consult — which is how bean <code>w2g5</code>&#39;s branch-reuse case became invisible in the first place.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">It does NOT survive a deploy on its own — this is the part to get right</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-09-20</code></span><div class="fa-provenance-text"><strong>This is measured, not predicted.</strong> On 2026-09-20 this log lost its first three entries to exactly that mechanism: <code>gh-pages</code> commit <code>96926833b5</code>, a <code>docs(gh-pages)</code> full replace, shows <code>D _render-log/2026-09-20.jsonl</code> — present at its parent, absent at the commit. So the protection is real and it is not in force until it merges.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean plj1</code></span><div class="fa-provenance-text">A verifier blind to half of what the restore carried reports a clean run over precisely the loss it exists to catch — bean <code>plj1</code>&#39;s shape, one level out.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 6pfo</code></span><div class="fa-provenance-text"><code>CARRIED_PREFIXES</code> is where that is declared, and it is a <strong>list</strong> because this is the second tenant of one rule rather than a special case: bean <code>6pfo</code>&#39;s retired-record store is the next, and adding it should be a row rather than a third code path free to disagree with the other two. The carry runs <strong>before</strong> the preview check, deliberately — the early <code>empty</code> return used to leave that function the moment there were no previews, which would have kept the record of the branch only on the days the branch happened to still hold previews.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Who writes an entry</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean bm6d</code> <code>owner</code> <code>#1868</code> <code>2026-10-02</code> <code>2026-10-04</code></span><div class="fa-provenance-text">(bean <code>bm6d</code>). The entry goes to the root <code>_render-log/</code>, never into <code>_site</code>, which would land it at <code>STAGING/&lt;slug&gt;/_render-log/</code> — inside the directory a cleanup removes | | <code>feature-staging.yml</code> → <code>stage</code>, preview cap | <code>removed</code>, one per rotated preview | the <strong>same commit as the deploy</strong>, written by <code>staging-rotate.ts</code>; the reason names the size budget, the owner ruling of 2026-10-02 (amended 2026-10-04) and issue #1868, and the summary gives slug, age and size | | <code>feature-staging.yml</code> → <code>cleanup</code>, confirmed | <code>removed</code> | the <strong>same commit as the removal</strong></div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>Bean 1feu</code></span><div class="fa-provenance-text">Bean <code>1feu</code> gave the merge the standing a label used to have; a record hardcoding *&quot;carried the <code>staging:cleanup</code> label&quot;* would name the wrong rule on every merged PR — which is worse than no reason at all, because a wrong reason reads as evidence.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean plj1</code></span><div class="fa-provenance-text">A separate log push can fail on its own and leave a preview that vanished with nothing saying why, which is precisely the state bean <code>plj1</code> left the branch in.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A path is checked by VALUE, never trusted by provenance</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>Bean fuzm</code></span><div class="fa-provenance-text">Bean <code>fuzm</code>: the staging slug sanitiser <strong>can</strong> emit <code>..</code> (input <code>..</code> gives output <code>..</code>), and is safe only because git rejects every ref name containing it.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">It is a specialisation of <code>folio-log/v1</code>, not a rival</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>owner</code></span><div class="fa-provenance-text">| | store | <code>fsh-guts/logs/</code>, in the repo | the publish branch | | published | <strong>no</strong>, by owner decision | <strong>yes</strong>, deliberately |</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Related</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean plj1</code> <code>bean w2g5</code> <code>bean fuzm</code></span><div class="fa-provenance-text">| | the entry shape it specialises | <code>schemas/sdlc/log-entry.ts</code>, <code>sdlc/skills/sdlc-core/activity-log.md</code> | | why the publish branch loses things | bean <code>plj1</code>, <code>scripts/restore-staging.ts</code> | | why a closed PR is not an abandoned branch | bean <code>w2g5</code> | | the path hazard | bean <code>fuzm</code> |</div></li>
+  </ul>
+</details>
+{% endraw %}

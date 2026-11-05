@@ -1,0 +1,19 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="4">
+  <summary class="fa-provenance-summary">Provenance (4)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">Harness projections: CI writes them, the owner consents to every hand edit</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-09</code> <code>owner</code></span><div class="fa-provenance-text"><strong>Owner, 2026-10-09:</strong> generated <code>.claude/</code> projections of the knowledge graph are written by CI, never by an agent. A workflow step regenerates them and commits them to the PR branch. A hand-edited <code>.claude/</code> file needs the owner&#39;s explicit consent for each change: the agent shows the exact diff and the reason, asks first, and records the consent.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">**<code>.claude/</code> is today&#39;s instance of a general rule.** Every coding-agent Tool has config files, and some of them are projections of the graph. The rule is the same for each: CI writes the projections, and a person consents to each hand edit. <code>.claude/</code> is named here because it is the only agent-host directory the generators write today. Which files a Tool reads, and which of them are generated, belongs to that Tool&#39;s adapter. Securing what the agent may do at all is [<code>agent-permissions</code>](agent-permissions.md).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Two kinds of file, two writers</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>Why CI and not the agent.</strong> A projection is correct only if it was generated from the tree that lands. An agent&#39;s local run reflects the tree it had, which can be stale by the time of the merge, and a hand-merged projection is how <code>.claude/commands/</code> drifted both ways before <code>skill:commands</code> existed. The CI step runs on the PR head, so the projection on the branch is the one the merge will carry. It is also one writer instead of every session that touched a skill.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Hand-edited files: consent per change</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>owner</code></span><div class="fa-provenance-text"><strong>A standing waiver does not reach this.</strong> The owner asked for consent per change, so there is no gate class for it in [<code>confirmation-waiver</code>](confirmation-waiver.md)&#39;s table, and a waiver that claims one is not a waiver. A broad instruction such as &quot;fix the hooks&quot; or &quot;make the session start work&quot; authorises the investigation. It does not authorise the edit. Bring the diff back.</div></li>
+  </ul>
+</details>
+{% endraw %}

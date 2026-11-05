@@ -1,0 +1,24 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="6">
+  <summary class="fa-provenance-summary">Provenance (6)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section"></h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">--- name: path-containment description: &gt; Turning a value from outside into a path. The two different questions — a URL path versus a single identifier — why collapsing them is a defect, and the three sinks in this repository that had neither check. consulted: true ---</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Path containment — two questions that look like one</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><strong>The lexical check is the weaker half.</strong> <code>resolve</code> is string arithmetic and never touches the filesystem, so a symlink inside the root pointing out of it passes. Recorded in <code>serve-rendering.ts</code>: the first version of its resolver returned <strong>200</strong> for exactly that, found by its own test rather than by review. <code>realPathWithin</code> is the half that catches it, and <code>writableWithin</code> walks up to the nearest existing ancestor because a target that does not exist yet has no realpath to compare.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 6bhf</code> <code>2026-09-25</code></span><div class="fa-provenance-text">## Measured, 2026-09-25 — the three sinks that had nothing (bean <code>6bhf</code>)</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Measured, 2026-09-25 — the three sinks that had nothing (bean <code>6bhf</code>)</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">| route | sink | primitive | |---|---|---| | <code>POST /api/import/arxiv</code> | <code>join(UPLOADS_DIR(), id)</code> → <code>mkdirSync(recursive)</code> + <code>writeFileSync</code> | arbitrary directory creation and file write | | <code>GET /api/feedback?paperId=</code> | <code>feedbackPath</code> → <code>join(base, paperId, rootName + &quot;.ts&quot;)</code> | read outside the store | | <code>POST /api/feedback</code> | <code>writeFeedback</code> → <code>mkdirSync</code> + <code>writeFileSync</code> | write outside the store |</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span> <span class="fa-provenance-refs"><code>2026-09-26</code></span><div class="fa-provenance-text">## Then two MORE sinks, 2026-09-26 — and this is the lesson, not the list</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The gate, and what it cannot do</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text"><code>scripts/tests/server-path-sinks.test.ts</code> — 8 of its 13 tests fail against the pre-fix server and all 13 pass after, verified by reverting the file. It is a <strong>source ratchet</strong> and says so: it proves the guard has not been deleted, never that a value is checked on every path to a sink. It asserts its own non-vacuity, because a renamed server would otherwise make every <code>not.toContain</code> pass.</div></li>
+  </ul>
+</details>
+{% endraw %}

@@ -1,0 +1,36 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="12">
+  <summary class="fa-provenance-summary">Provenance (12)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">QA reports — derived results on a branch, judgements on <code>main</code></h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>#1763</code> <code>2026-10-01</code></span><div class="fa-provenance-text">Arc <code>3fva</code> (issue #1763) split the two on that line, by the owner&#39;s rulings of 2026-10-01:</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>D2</code></span><div class="fa-provenance-text">| | derived | judgement | |---|---|---| | what | every <code>reviewer.kind: script</code> entry: <code>kg-qa/**</code>, <code>*.qa-results.json</code>, witnesses, <code>lsi/</code>, <code>tool-runs/</code>, the health report | agent, human and <strong>baseline-pair</strong> attestations (the owner ruled a baseline is a judgement) | | graph typology | <code>qa</code> (and <code>health</code>) | <code>attestations</code> | | written to | <code>&lt;instance&gt;/test/results/**</code>, the <strong>working copy</strong> | <code>&lt;instance&gt;/test/attestations/&lt;family&gt;/&lt;mirrored subject path&gt;.attestations.json</code> | | record | the orphan **<code>qa-reports</code>** branch, <code>main/&lt;sha&gt;/</code> or <code>pr/&lt;n&gt;/&lt;sha&gt;/</code> | **<code>main</code>** (ruling D2 (a)) | | schema | the family&#39;s own | <code>qa-attestations/v1</code>, <code>schemas/sdlc/qa-attestations.ts</code> | | on a merge conflict | take the base&#39;s side (<code>merge:main</code>), then regenerate | a person reads both sides |</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>bean 5hox</code> <code>cat-harness#857</code> <code>https://github.com/litlfred/folio-assistant-core/pull/482</code> <code>D4</code></span><div class="fa-provenance-text"><strong>cat-harness and the content core no longer commit the derived files</strong> (bean <code>5hox</code>, ruling D4; cat-harness#857, https://github.com/litlfred/folio-assistant-core/pull/482).</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>docs/proposals/5hox-removal-inventory.md</code></span><div class="fa-provenance-text">The inventory is <code>docs/proposals/5hox-removal-inventory.md</code>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The branch</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>2026-10-01</code> <code>docs/proposals/qa-readers-audit-2026-10-01.md</code></span><div class="fa-provenance-text"><strong>A miss is never read as &quot;no findings&quot;.</strong> A reader that turns an absent entry into an empty, clean directory is the <code>dh4f</code> defect, and the readers audit (<code>docs/proposals/qa-readers-audit-2026-10-01.md</code>) is a catalogue of exactly that.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 3hk4</code></span><div class="fa-provenance-text">**What <code>qa-publish</code> stores is produced in that job, not handed over by the gates** (bean <code>3hk4</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Whose branch: each layer publishes its own</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-11-03</code></span><div class="fa-provenance-text"><strong>The branch is the store of the repository that declares it.</strong> A layer repository that declares a <code>qa</code> directory with <code>storage</code> (<code>test/results/</code>, keyed by commit) keeps its results on <code>cat/cat-harness/qa-reports</code> of <strong>its own</strong> repository, keyed by <strong>its own</strong> commits (owner, 2026-11-03, &quot;2.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean folio-assistant-7mwa</code></span><div class="fa-provenance-text">Each layer publishes&quot;; bean <code>folio-assistant-7mwa</code>).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Gates compute and judge</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean bo44</code></span><div class="fa-provenance-text">So its <code>--check</code> form <strong>computes and judges, and writes nothing</strong> (beans <code>bo44</code>, <code>id4s</code>, <code>0dav</code>):</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Attestations</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-01</code></span><div class="fa-provenance-text">- <strong>A writer moves judgements as it saves.</strong> If a writer finds judgements in a prior derived file and the store holds no entry for them, it moves them into the store as it saves (owner ruling 2, 2026-10-01).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Related</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="bean"><span class="fa-provenance-kind">bean</span> <span class="fa-provenance-refs"><code>bean 5hox</code></span><div class="fa-provenance-text">Every <code>qa</code> directory sets it since bean <code>5hox</code>, and each working copy is ignored by version control.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-01</code> <code>docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md</code> <code>D1</code> <code>D5</code></span><div class="fa-provenance-text">- The proposal is <code>docs/proposals/qa-reports-branch-and-test-process-2026-10-01.md</code>, with rulings D1 to D5.</div></li>
+  </ul>
+</details>
+{% endraw %}

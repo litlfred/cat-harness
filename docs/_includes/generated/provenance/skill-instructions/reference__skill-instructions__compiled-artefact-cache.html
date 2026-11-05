@@ -1,0 +1,19 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="4">
+  <summary class="fa-provenance-summary">Provenance (4)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">The warm-start principle: Cache the intermediates, not just the output</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-01</code></span><div class="fa-provenance-text">Owner decision (2026-10-01): <code>input-cache/txcache/</code> goes on the <code>fhir-ast</code> branch alongside the AST files.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Instantiations</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>2026-10-14</code></span><div class="fa-provenance-text">| Aspect | Lean Cache (<code>lean-cache-restore</code>) | FHIR AST (<code>ig-ast-delta</code>) | |---|---|---| | Artefacts | <code>.olean</code> files, <code>.trace</code> files | Per-resource AST JSON, <code>dependencies.json</code>, <code>txcache/</code> | | Inputs Schema | <code>CompiledInputsSchema</code> | <code>CompiledInputsSchema</code> | | Key Inputs | <code>toolchain</code> (Lean version), <code>sourceRevision</code> | <code>toolchain</code> (Publisher version), <code>sourceRevision</code>, <code>inputDigest</code> | | Storage Branch | <code>lake-cache/&lt;package&gt;-&lt;toolchain&gt;</code> | <code>fhir-ast/&lt;ig-package-id&gt;</code> | | Service Script | <code>lake-cache.sh</code> (9 verbs) | <code>ig-cache.sh</code> (7 verbs) | | Refreshed by | an agent&#39;s <code>lake-cache.sh contribute</code> | a reusable workflow of the IG layer, on a runner (the Publisher needs Java and a 10 GB heap), which each IG repository dispatches; a site build refuses an AST that is not valid (owner, 2026-10-14) | | Cone Engine | Lake&#39;s <code>.trace</code>-based dependency graph | SUSHI&#39;s <code>fsh-index.json</code> (forward: file → resource) + <code>fsh-cone.ts</code> (reverse: who uses this file) + <code>AstPlanCli</code> | | Incremental | <code>lake build</code> (only stale modules) | <code>IncrementalBuildCli</code> (cone rebuild loop) |</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The file-to-resource mapping comes from the toolchain, not from us</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-10-01</code></span><div class="fa-provenance-text">Measured 2026-10-01 on the trust IG (678 resources):</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">### Timing (the trust IG, 678 resources, one CodeSystem changed)</div></li>
+  </ul>
+</details>
+{% endraw %}

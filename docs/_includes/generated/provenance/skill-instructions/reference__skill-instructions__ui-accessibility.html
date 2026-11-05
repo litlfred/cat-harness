@@ -1,0 +1,30 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="9">
+  <summary class="fa-provenance-summary">Provenance (9)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">All UI must follow accessibility guidelines</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>owner</code></span><div class="fa-provenance-text">This is a <strong>rule</strong>, stated as one by the owner, and it binds every surface this project produces: the knowledge-graph viewer, the docs site, the action-icon tiles, anything future.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">There is no no-JavaScript floor here — and exactly two gates that look like one</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-10-02</code></span><div class="fa-provenance-text">Measured 2026-10-02: these are the only two <code>javaScriptEnabled: false</code> contexts in the repository.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>R4</code></span><div class="fa-provenance-text">The first is the <strong>board&#39;s</strong> linear floor and nothing wider: it is R4 of [<code>folio-board-requirements</code>](../../../docs/concepts/architecture/folio-board-requirements.md), whose subject is the board.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>#959</code></span><div class="fa-provenance-text"><code>mountNavIconRow</code>, <code>mountDocumentIndex</code> and <code>mountInstanceGraphs</code> build three of its regions in the DOM at load — shipped in #959, documented in <code>test/navbar-row.e2e.ts</code> as &quot;the three JS-mounted navbar regions&quot;, and no gate in this repository objects.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>R4</code> <code>2026-10-02</code></span><div class="fa-provenance-text">On 2026-10-02 an agent relaxed R4 — a <em>board</em> requirement, in a document whose own first section says it is &quot;history, not instruction&quot; — and cited a measurement of the <strong>docs nav</strong> as the reason.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">A rendering built client-side owes two things the static one gave for free</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>owner</code> <code>2026-10-02</code></span><div class="fa-provenance-text">These are <strong>requirements</strong>, stated by the owner on 2026-10-02, and they apply to every surface — the board, the docs site, a viewer, a dashboard.</div></li>
+    <li class="fa-provenance-entry" data-fa-provenance-kind="owner-decision"><span class="fa-provenance-kind">owner-decision</span> <span class="fa-provenance-refs"><code>Owner</code></span><div class="fa-provenance-text">Owner, verbatim: <em>&quot;print/pdf needs to wait until loaded/rendered before printing (assuming can load assets)&quot;</em>.</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">An automated pass is not the standard, and this is measured</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="date"><span class="fa-provenance-kind">date</span> <span class="fa-provenance-refs"><code>2026-09-19</code></span><div class="fa-provenance-text">Baselined against the knowledge-graph viewer on 2026-09-19:</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">How to check it</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="history"><span class="fa-provenance-kind">history</span><div class="fa-provenance-text">**Before this, <code>bunx playwright test</code> ran in no workflow at all.**</div></li>
+  </ul>
+</details>
+{% endraw %}

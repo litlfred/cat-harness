@@ -1,0 +1,18 @@
+{% raw %}
+<details class="fa-provenance" id="fa-provenance" data-fa-provenance-count="3">
+  <summary class="fa-provenance-summary">Provenance (3)</summary>
+  <p class="fa-provenance-lead">Who decided, when, and under which work item. This record was moved out of the text of the page.</p>
+  <h3 class="fa-provenance-section">The work plan on a git state branch</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="issue"><span class="fa-provenance-kind">issue</span> <span class="fa-provenance-refs"><code>cat-harness#991</code></span><div class="fa-provenance-text">Another Tool (a beans server, an MCP service, a run-scoped store) has its own page and keeps the same contract (cat-harness#991).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">Where the beans are</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>docs/proposals/</code> <code>2026-10-02</code></span><div class="fa-provenance-text">It lives on a branch per graph, <code>cat/&lt;harness&gt;/beans</code> (for this harness <code>cat/cat-harness/beans</code>), declared by the <code>beans</code> entry&#39;s <code>source</code> in <code>cat-harness.json</code> ([state-branch proposal](../../../docs/proposals/state-branch-2026-10-02.md)).</div></li>
+  </ul>
+  <h3 class="fa-provenance-section">The operations, by this Tool</h3>
+  <ul class="fa-provenance-list">
+    <li class="fa-provenance-entry" data-fa-provenance-kind="proposal"><span class="fa-provenance-kind">proposal</span> <span class="fa-provenance-refs"><code>Q-BSD-4</code></span><div class="fa-provenance-text">| write the file with its front matter | | <code>update(id, change, ifMatch)</code> | <code>beans update &lt;id&gt; …</code> | edit the front matter | | <code>note(id, text)</code> | <code>beans update &lt;id&gt; --body-append …</code>, or a file in <code>beans/notes/</code> | append to the body, or add a note file | | <code>update(id, { archived: true }, …)</code> | <code>beans archive</code> (the sweep), or move the file | move <code>defs/&lt;id&gt;--*.md</code> into <code>defs/archive/</code>; the status is kept | | <code>history(id)</code> | <code>git log --follow -- beans/defs/&lt;id&gt;--*.md</code> on the branch, merged with the <code>history</code> of every instance in <code>beans/workflows/</code> that names the bean (Q-BSD-4 A)</div></li>
+  </ul>
+</details>
+{% endraw %}
