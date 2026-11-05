@@ -317,9 +317,20 @@ old layer. `--seed` refuses while a mount it moves has such edits, and
 `mount:check` reports an instance entry behind its pin as `missing`. After the re-pin, check that
 the moved instance's `sha` in `index.lock.json` is the new pin.
 
-Whoever changes the lock also writes its **layers cache ref** (below): in a
-checkout the re-pin just mounted, `bun run cat layers:publish`. On main, the
-index's own workflow does this for every push that changes `index.lock.json`.
+**The committer re-pins, locally, and CI only verifies.** The person or agent
+who moves a pin does the whole re-pin in their own checkout: `--seed`, a
+fresh `mount:remote`, the regenerated agent surface (`skill:commands`,
+`agent-memory`, `index:render`), and the local checks. That same
+`mount:remote` then publishes the new lock's **layers cache ref** (below)
+alongside the branch, with whatever credential pushes the branch.
+`bun run cat layers:publish` retries it, and `--no-layers-publish` skips it.
+
+CI never builds the ref when it exists: it fetches it and verifies it against
+the lock. Two writers are only fallbacks:
+
+- the re-pin train, for layers nobody re-pinned;
+- main's post-merge workflow, which rebuilds the ref for every push that
+  changes `index.lock.json`.
 
 ### The layers cache: one fetch, every byte still verified
 
@@ -337,10 +348,10 @@ publish build wrote.
   it. A layer that does not verify, or a ref that is missing, is fetched from
   its own repository as before. `--no-layers-cache` (or `CAT_LAYERS_CACHE=0`)
   skips it, and `CAT_LAYERS_URL` points it at another remote.
-- **Writer:** `layers:publish` refuses unless every mount reads `current`,
-  then pushes the overlay. `--main` also moves `main`. `--prune <n>` keeps the
-  newest n lock refs, `main`, and each `--keep <key>`, for example the lock
-  of every open PR.
+- **Writer:** the committer, through `mount:remote` or `layers:publish`.
+  It refuses unless every mount reads `current`, then pushes the overlay.
+  `--main` also moves `main`. `--prune <n>` keeps the newest n lock refs,
+  `main`, and each `--keep <key>`, for example the lock of every open PR.
 
 **The lock stays the sole authority.** The cache is untrusted. Every byte
 taken from it is checked against the lock: the declaration's and each
