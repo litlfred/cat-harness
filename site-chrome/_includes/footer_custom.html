@@ -57,6 +57,23 @@
   {%- assign fa_todo_include = fa_todo_index.pages[fa_todo_key] -%}
   {%- if fa_todo_include -%}{%- include {{ fa_todo_include }} -%}{%- endif -%}
 {%- endif -%}
+{%- comment -%}
+  THE PROVENANCE FOOTER (owner, 2026-11-05, "2B"). The docs QA moved who
+  decided, when, and under which work item out of each document into a
+  `<document>.prov.jsonld` log. This shows that log, collapsed, on the page
+  it belongs to.
+
+  Each generator that writes pages adds a SLICE of site data,
+  `_data/provenance/<producer>.json`, mapping a page key to a fragment it
+  wrote (`cat-harness-tools/scripts/provenance-footer.ts`). The key is the
+  todo index's: `page.path` without its extension. A page with no log entry
+  is in no slice, so it gets nothing, not an empty section.
+{%- endcomment -%}
+{%- assign fa_prov_key = page.path | remove_first: ".md" | remove_first: ".html" -%}
+{%- for fa_prov_slice in site.data.provenance -%}
+  {%- assign fa_prov_include = fa_prov_slice[1].pages[fa_prov_key] -%}
+  {%- if fa_prov_include -%}{%- include {{ fa_prov_include }} -%}{%- break -%}{%- endif -%}
+{%- endfor -%}
 {%- if site.footer_content -%}
   <p class="text-small mb-0">{{ site.footer_content }}</p>
 {%- endif -%}

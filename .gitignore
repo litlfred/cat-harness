@@ -200,6 +200,8 @@ node_modules/
 /docs/_data/todo_listing.json
 /docs/_includes/generated/todo-listing.html
 /docs/_includes/generated/todo-listing/
+/docs/_data/provenance/
+/docs/_includes/generated/provenance/
 /docs/assets/slices/
 /docs/assets/img/workflows/atomic-mass-drift-check.svg
 /docs/assets/img/workflows/authoring-a-document.svg

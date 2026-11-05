@@ -6855,6 +6855,63 @@ a.fa-harness-tab__body:focus-visible {
   border-color: currentColor;
 }
 
+/* ═══ The provenance footer — `_includes/generated/provenance/` ═══════════
+ *
+ * A collapsed record of who decided what, moved out of the page's text. It is
+ * read rarely, so it starts closed and stays quiet: small type, one rule.
+ */
+.fa-provenance {
+  margin: 2rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--fa-rule, rgba(128, 128, 128, 0.35));
+  font-size: 0.8125rem;
+}
+
+.fa-provenance-summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.fa-provenance-lead {
+  opacity: 0.8;
+  margin: 0.5rem 0 1rem;
+}
+
+/* Qualified by the container, so the theme's own `h3` size does not win. */
+.fa-provenance .fa-provenance-section {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 1rem 0 0.25rem;
+}
+
+.fa-provenance-list {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.fa-provenance-entry {
+  margin: 0 0 0.5rem;
+}
+
+.fa-provenance-kind {
+  display: inline-block;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.75;
+  margin-right: 0.375rem;
+}
+
+.fa-provenance-refs code {
+  font-size: 0.75rem;
+  margin-right: 0.25rem;
+}
+
+.fa-provenance-text {
+  margin-top: 0.125rem;
+  overflow-wrap: anywhere;
+}
+
 /* ═══ The linear floor — `_includes/generated/todo-listing.html` ═══════════
  *
  * The tile listing is the artefact and the board is the overlay, so this is
