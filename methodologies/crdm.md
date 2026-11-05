@@ -65,7 +65,7 @@ process management that brings multi-disciplinary subject matter experts (SMEs)
 together to document how work is performed, redesign how it should be
 performed, and derive what an information system must do to support that work
 ([`phii-2023-crdm`, pp. 1–3](../library/process/phii-2023-crdm/sections/page-001.md);
-[`path-2012-common-requirements-mhis-crdm`, pp. 4–7](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-003-methodology.md)).
+[`path-2012-common-requirements-mhis-crdm`, pp. 4–7](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-007-collaborative-requirements-development-methodolo.md)).
 
 ### 1.1 The three concentration areas
 
@@ -87,20 +87,20 @@ health domain ([`path-2012-common-requirements-mhis-crdm`](../library/process/pa
    processes across functional columns (*Patient Administration*, *Patient
    Care*, *Patient Fees and Accounting*, *Planning, Management & Surveillance*)
    and selects priority processes for deep modeling
-   ([`sec-004-process-framework-for-maternal-health.md`](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-004-process-framework-for-maternal-health.md)).
+   ([`sec-009-outputs-of-the-crdm-process.md`](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-009-outputs-of-the-crdm-process.md)).
 2. **Task Flow Diagrams with Activity Narratives (Appendix 1, PDF pp. 11–20):**
    Draws each priority process using a ten-element notation (*Pools*, *Swim
    Lanes*, *Start Event*, *End Event*, *Sequence Flow*, *Activity*,
    *Subprocess*, *Decision*, *Multi-Page Connector*, *Annotation*) paired with
    numbered activity details and narratives
-   ([`sec-012-appendix-1-task-flow-diagrams.md`](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-012-appendix-1-task-flow-diagrams.md)).
+   ([`sec-013-appendix-1-business-process-flows.md`](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-013-appendix-1-business-process-flows.md)).
 3. **Activity-Linked Functional User Requirements vs. General System Requirements
    (Appendices 2–3, PDF pp. 21–36):** Groups functional requirements by process
    and numbered activity ID, and separates cross-cutting system requirements
    (security, audit logging, reporting, interoperability, offline operation)
    into a dedicated general system requirements catalogue
-   ([`sec-013-appendix-2-functional-user-requirements.md`](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-013-appendix-2-functional-user-requirements.md),
-   [`sec-014-appendix-3-general-system-requirements.md`](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-014-appendix-3-general-system-requirements.md)).
+   ([`sec-014-appendix-2-requirements.md`](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-014-appendix-2-requirements.md),
+   which also holds the general and nonfunctional requirements).
 
 ### 1.3 Quality criteria and validation techniques
 
