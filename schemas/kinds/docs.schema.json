@@ -1107,7 +1107,8 @@
               "foundBy": {
                 "type": "string",
                 "enum": [
-                  "instance-declaration"
+                  "instance-declaration",
+                  "process-tag"
                 ]
               }
             },
