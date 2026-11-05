@@ -59,7 +59,8 @@ verify them cheaply, so CI only verifies.
 
 | class | what | who produces it | how CI accepts it |
 |---|---|---|---|
-| **(a) exactly verifiable** (`trust: exact`) | output that can be checked against its inputs without re-running the producer: the mounts and the layers ref against the lock's digests; a bundle against its manifest **when its producer is deterministic** | main, a PR into its own scope, **or a committer** with `cache:publish` | a hit only after `verify` passes; a prefix restore is a warm start, never a hit |
+| **(a) exactly verifiable** (`trust: exact`) | `verify` checks the output against a reference derived from THIS tree — the mounts and the layers ref against the lock's digests — so a bad entry is only a miss | main, a PR into its own scope, **or a committer** with `cache:publish` (never consumed on main) | a hit only after `verify` passes; a prefix restore is a warm start, never a hit |
+| **(a′) verifiable with provenance** (`trust: exact` + a source rule) | a bundle checked only against the manifest it carries, from a deterministic producer | main, or a run whose head is this head, a parent, or a commit with this tree | the manifest check AND the source rule; never from a committer |
 | **(b) verdicts** (`trust: verdict`) | "this gate passed on these inputs" | CI (main, or a PR into its own scope); a committer's local gate record goes through #2957/#2958 | exact key only; reported **SKIPPED, not passed**, naming the run that recorded it; committers' records are re-verified deferred or sampled |
 | **(c) everything else** (`trust: main-only`) | outputs neither checkable nor deterministic | main only | exact key only |
 
@@ -67,16 +68,19 @@ The Actions cache scopes an entry by ref. A PR's save is readable only by
 that PR's own runs, so a PR cannot poison what main or another PR reads.
 `pull_request_target` never saves.
 
-A manifest proves the bytes are the ones the committer built. It does not
-prove the build was right. What closes that gap is the determinism of the
-producer, measured by the determinism audit (`determinism-audit.sh`: build
-twice in one tree, diff the bytes), together with the full run on main and
-nightly. A producer the audit has not cleared stays in class (c).
+**A manifest the entry carries proves it intact, not built from these
+inputs**: a poisoner ships a matching manifest. That is why (a′) needs a
+source rule, and why only (a) is safe to take from anyone. A producer the
+determinism audit (`determinism-audit.sh`: build twice in one tree, diff the
+bytes) has not cleared cannot hit across commits at all.
+
+**A private cache scheme is held.** A pull request that adds a cache outside
+the primitive is held and returned to its author with a pointer here, the
+same rule the merge manager applies.
 
 ## What a committer runs before pushing
 
-For each `exact` step that the change moves the key of, and that the
-determinism audit lists as DETERMINISTIC, run:
+For each class-(a) step that the change moves the key of, run:
 
 ```
 bun run cat cache:publish <step>
