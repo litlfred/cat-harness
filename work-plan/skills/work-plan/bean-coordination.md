@@ -74,45 +74,46 @@ Full cycle, as a diagram: [Work items and todos](https://litlfred.github.io/foli
 
 ## Claims are global via the branch store
 
-**Claims are pushed immediately to the branch store** (`cat/cat-harness/beans`)
-by `bun run cat beans:claim <id>` (`claimOnBranchStore`). The claim and its
-holder note are written directly to the store, so:
+**Claims are written immediately to the work-plan store** ([`work-plan-store`](work-plan-store.md))
+by `bun run cat beans:claim <id>`. The claim (`update(id, { status: "in-progress" })`) and its
+holder note (`note(id, ...)`) are persisted directly to the shared store, so:
 
 - **Immediate global visibility**: sibling sessions see your claim as soon as
   `beans:claim` finishes.
-- **Atomic push with collision detection**: if two sessions race to claim the
-  same work item, `BranchStore` detects the conflict via blob expectations and
-  rejects the second claim (`state: "conflict"`).
+- **Atomic write with collision detection**: if two sessions race to claim the
+  same work item, the store Tool detects the conflict and rejects the second
+  claim (`state: "conflict"`).
 
 Always claim with `bun run cat beans:claim <id>`. Do not use `beans update
---status in-progress`, which writes no holder note and does not push to the
-branch store.
+--status in-progress`, which writes no holder note and does not persist to the
+shared store.
 
-A claim's push is not gated. The pre-push gate hook (`prepare-merge` step 6)
-judges only the checked-out commit, and the branch store pushes its own
-commit to `refs/heads/cat/...`. So `beans:claim` and `state:push` stay fast
-with the hook installed. If one is ever refused as a gate failure, that is a
-bug in the hook. Report it, and do not bypass the claim.
+A claim is not gated by the code pre-push hook (`prepare-merge` step 6), which
+judges only the checked-out code commit. How the git state-branch Tool pushes
+claims and state commits to `refs/heads/cat/...` is in
+[`work-plan-store-git-branch`](work-plan-store-git-branch.md). If a claim is ever
+refused as a gate failure, that is a bug in the hook — report it, and do not
+bypass the claim.
 
 **When several agents drain at once, or the store has more than one copy**, the
-claim is [`bean-drain`](bean-drain.md) step 2 instead: check recent commits and
-open PRs first, then a plain commit on every copy (the `bean-claim-check`
+claim is [`bean-drain`](bean-drain.md) step 2 instead: check recent history and
+open PRs first, then claim across every store copy (the `bean-claim-check`
 Tool). `beans:claim` writes one copy and reads status only.
 
 ### Linking PRs to beans with `Closes-bean:` and recording closure evidence
 
-Code changes on `main` and work-plan state on the state branch are separate git
-refs. To link them:
+Code changes on `main` and work-plan state in the work-plan store
+([`work-plan-store`](work-plan-store.md)) are separate. To link them:
 
 1. **In your PR body**, include:
    ```markdown
    Closes-bean: <bean-id>
    ```
 2. **On closure**, record the landed merge commit SHA from `main`, the branch,
-   and verifiable evidence in the work item body before pushing to the branch store:
-   ```bash
-   bun cat-harness-tools/scripts/branch-store.ts push --id beans
-   ```
+   and verifiable evidence in the work item body (`update` / `note` in
+   [`work-plan-store`](work-plan-store.md); when the store is on a git state
+   branch, push with `bun run cat state:push` per
+   [`work-plan-store-git-branch`](work-plan-store-git-branch.md)).
 
 ### A DECISION bean you will not land soon — put the question where a person reads
 
@@ -254,8 +255,9 @@ Work items are the shared substrate.
    `beans list`, or the CLI-independent fallback that parses `beans/` directly).
    Know what is open and what siblings are touching.
 2. **Declare intent + claim** — before starting, claim the work item via
-   `bun run cat beans:claim <id>`, which records your holder note and pushes
-   immediately to the branch store so siblings see it globally.
+   `bun run cat beans:claim <id>`, which records your holder note and updates
+   the work-plan store ([`work-plan-store`](work-plan-store.md)) immediately so
+   siblings see it globally.
 3. **Work** — keep the work item current; append status notes as you go **to a work item
    only your branch is changing**. When other open pull requests are adding
    to the same work item, write a note instead — §"Adding to a bean — a note, not
@@ -387,7 +389,9 @@ of its own: the owner may have moved work items from `completed` back to `todo` 
 can still carry a `close(<id>)` commit on main.
 
 > **Before closing, read the work item's own status history**
-> (`git log -p --follow -- beans/defs/<file>`, plus the archive). **If it was
+> (`history(id)` in [`work-plan-store`](work-plan-store.md), plus the archive;
+> see [`work-plan-store-git-branch`](work-plan-store-git-branch.md) for the git
+> state-branch form). **If it was
 > closed and later reopened, it is not closable on any evidence that predates
 > the reopen.** Read the reopen note. Close it only with evidence that answers
 > that note's reason and is newer than it. If there is no such evidence, list
@@ -581,16 +585,17 @@ handful.
 
 ## The branch store is the one every sibling reads (STRICT)
 
-Work items live on the dedicated branch store (`cat/cat-harness/beans`), not
+Work items live in the shared work-plan store ([`work-plan-store`](work-plan-store.md);
+on git, the dedicated state branch in [`work-plan-store-git-branch`](work-plan-store-git-branch.md)), not
 committed to `main` or held on unmerged feature branches, where a review of the
 store sees none of them.
 
-1. **Push work items directly to the branch store.** Newly created work items, epics and
-   Done-whens are pushed (`bun cat-harness-tools/scripts/branch-store.ts push
-   --id beans`) as soon as the plan exists, so the work plan is immediately
+1. **Write work items directly to the work-plan store.** Newly created work items, epics and
+   Done-whens are written (`create` / `update` in [`work-plan-store`](work-plan-store.md);
+   `bun run cat state:push` on the git state-branch Tool) as soon as the plan exists, so the work plan is immediately
    visible to all agents.
-2. **A sweep reads the branch store**, and also sweeps open branches that still
-   carry work item files from before the branch store, so no session is blind to
+2. **A sweep reads the work-plan store**, and also sweeps open branches that still
+   carry work item files from before the shared store, so no session is blind to
    current goals and claims.
 
 ## Each bean has one home (STRICT)

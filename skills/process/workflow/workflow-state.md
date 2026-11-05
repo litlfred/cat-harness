@@ -96,18 +96,20 @@ arrived, not that the commit is good.
 
 ## Where running instances live — the state graph on the branch store
 
-Running instances are part of the `beans` graph (`workflow-state` graph typology).
-The work item graph is mounted from the tip-keyed branch store
-(`cat/cat-harness/beans`).
+Running instances are part of the work-plan store (`workflow-state` graph typology;
+`positions` in [`work-plan-store`](../../../work-plan/skills/work-plan/work-plan-store.md)).
+Where the deployment uses the git state-branch Tool, the store is mounted and
+pushed as described in
+[`work-plan-store-git-branch`](../../../work-plan/skills/work-plan/work-plan-store-git-branch.md).
 
 The container is ephemeral and **a work plan only one agent can see is not a
-work plan**. Instance state lives on the branch store for the same reason
+work plan**. Instance state lives in the shared work-plan store for the same reason
 work item definitions do: a sibling session, or the same session resumed in a fresh
-container, reads the branch store to find the position that exists rather than
+container, reads the store to find the position that exists rather than
 starting a second one beside it.
 
-When an instance advances, its state is written to the mounted store and pushed
-via the branch store (`bun cat-harness-tools/scripts/branch-store.ts push --id beans` or `state:push`).
+When an instance advances, its state is written through the store's Tool
+(`bun run cat state:push` when backed by the git state branch).
 This keeps instance state globally visible without cluttering code PR diffs on `main`.
 
 Instance ids are **derived from the subject rather than random**, so re-entering

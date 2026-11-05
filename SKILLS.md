@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_255 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_256 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -49,7 +49,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`content-validate`](skills/authoring/content-lifecycle/content-validate.md) | Content Validation |
 | [`evidence-appraisal`](skills/authoring/content-lifecycle/evidence-appraisal.md) | Evidence Appraisal |
 
-**`skills/conduct/conduct-core/`** (17)
+**`skills/conduct/conduct-core/`** (18)
 
 | Skill | What it is for |
 |---|---|
@@ -70,6 +70,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`untrusted-input`](skills/conduct/conduct-core/untrusted-input.md) | Keep attacker-controlled values out of program text — in GitHub Actions, in command lines, in anything that is parsed before it runs. |
 | [`unverified-constraints`](skills/conduct/conduct-core/unverified-constraints.md) | Never encode a constraint you have not verified — a rule that refuses a working setup is worse than no rule. |
 | [`where-does-this-go`](skills/conduct/conduct-core/where-does-this-go.md) | The router for filing decisions. |
+| [`work-context`](skills/conduct/conduct-core/work-context.md) | Keep a short note on the work you are doing — what you did, what you decided and why, what is left open — with the memory tools, so the next person or agent to pick the work up starts where you… |
 
 **`skills/conduct/security/`** (4)
 

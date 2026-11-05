@@ -53,6 +53,11 @@
     "satisfies": [
       "work-context"
     ],
+    "selection": {
+      "when": "While you are working — to keep a decision, why you made it, or what you tried while it is fresh.",
+      "limits": "Leaves a running note, not a hand-over summary; before you stop or hand over, use memory-checkpoint.",
+      "cost": "In-process call; no install or network."
+    },
     "requires": {
       "network": false
     }
@@ -60,7 +65,7 @@
   "$comment": [
     {
       "at": "/tool",
-      "comment": "Its own Tool group, apart from the process tools, so a run can offer memory to an agent that is told nothing about how the harness tracks work (owner, 2026-11-03, cat-harness#991 Q11/Q14/Q17, proposal §4.13-4.14: \"in that case it needs to be own tool\"). Everything an agent reads here is neutral on purpose, and check:context-leak scans it. Which store keeps the entries, and what the server adds to each, is the deployment's choice (stores[\"work-context\"]); the launcher binds the session with CAT_WORK_INSTANCE, CAT_MEMORY_SHARED and CAT_AGENT_ID (cat-harness-tools#1438)."
+      "comment": "Its own Tool group, apart from the process tools, so a run can offer memory to an agent that is told nothing about how the harness tracks work (owner, 2026-11-03, cat-harness#991 Q11/Q14/Q17, proposal §4.13-4.14: \"in that case it needs to be own tool\"). Everything an agent reads here is neutral on purpose, and check:context-leak scans it. Which store keeps the entries, and what the server adds to each, is the deployment's choice (stores[\"work-context\"]); the launcher binds the session with CAT_WORK_INSTANCE, CAT_MEMORY_SHARED and CAT_AGENT_ID (cat-harness-tools src/tools/memory.ts)."
     }
   ]
 }
