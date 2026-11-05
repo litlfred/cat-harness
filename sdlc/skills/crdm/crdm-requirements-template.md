@@ -43,7 +43,7 @@ CRDM separates **implementation priority** (how essential a requirement is when 
 
 #### 1. Priority scale (`High / Medium / Low` = `Must-have / Should-have / Nice-to-have`)
 
-Aligned with PHII's *Defining and Validating System Requirements Guide* ([`library/phii-2021-defining-and-validating-requirements-guide`, p. 2](../../../library/process/phii-2021-defining-and-validating-requirements-guide/sections/page-002.md)) and PATH & PHII (2012) ([`library/path-2012-common-requirements-mhis-crdm`, p. 1](../../../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-000-front-matter.md)):
+Aligned with PHII's *Defining and Validating System Requirements Guide* ([`library/phii-2021-defining-and-validating-requirements-guide`, p. 2](../../../library/process/phii-2021-defining-and-validating-requirements-guide/sections/page-002.md)) and PATH & PHII (2012) ([`library/path-2012-common-requirements-mhis-crdm`, p. 1](../../../library/process/path-2012-common-requirements-mhis-crdm/README.md)):
 
 | Priority label | PHII / PATH CRDM scale | Meaning |
 |---|---|---|
