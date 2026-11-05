@@ -149,13 +149,13 @@
   <bpmndi:BPMNDiagram id="Diagram_Process_RequirementsFiling">
     <bpmndi:BPMNPlane id="Plane_Process_RequirementsFiling" bpmnElement="Collaboration_Process_RequirementsFiling">
       <bpmndi:BPMNShape id="Shape_Participant_Process_RequirementsFiling" bpmnElement="Participant_Process_RequirementsFiling" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="2146" height="440" />
+        <dc:Bounds x="160" y="80" width="2226" height="440" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BA_Process_RequirementsFiling" bpmnElement="Lane_BA" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="2116" height="170" />
+        <dc:Bounds x="190" y="80" width="2196" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent_Process_RequirementsFiling" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="250" width="2116" height="270" />
+        <dc:Bounds x="190" y="250" width="2196" height="270" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_Process_RequirementsFiling" bpmnElement="Start_Process_RequirementsFiling">
@@ -200,9 +200,11 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_RequirementFiled" bpmnElement="End_RequirementFiled">
         <dc:Bounds x="2216" y="317" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2260" y="305" width="115" height="60" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_FilingHeld" bpmnElement="End_FilingHeld">
         <dc:Bounds x="2216" y="407" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2260" y="395" width="115" height="60" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNEdge id="Edge_SF_RF_1" bpmnElement="SF_RF_1">
@@ -226,9 +228,10 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_RF_Retire" bpmnElement="SF_RF_Retire">
         <di:waypoint x="551" y="390" />
-        <di:waypoint x="551" y="445" />
-        <di:waypoint x="1146" y="445" />
-        <di:waypoint x="1146" y="405" />
+        <di:waypoint x="551" y="455" />
+        <di:waypoint x="1146" y="455" />
+        <di:waypoint x="1146" y="425" />
+        <bpmndi:BPMNLabel><dc:Bounds x="560" y="432" width="50" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_RF_3" bpmnElement="SF_RF_3">
         <di:waypoint x="796" y="315" />
@@ -253,14 +256,16 @@
         <di:waypoint x="1736" y="365" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_RF_CheckFail" bpmnElement="SF_RF_CheckFail">
-        <di:waypoint x="1761" y="390" />
-        <di:waypoint x="1761" y="475" />
-        <di:waypoint x="926" y="475" />
-        <di:waypoint x="926" y="405" />
+        <di:waypoint x="1748" y="340" />
+        <di:waypoint x="1748" y="262" />
+        <di:waypoint x="926" y="262" />
+        <di:waypoint x="926" y="305" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1705" y="280" width="35" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_RF_CheckPass" bpmnElement="SF_RF_CheckPass">
-        <di:waypoint x="1761" y="340" />
-        <di:waypoint x="1761" y="221" />
+        <di:waypoint x="1772" y="340" />
+        <di:waypoint x="1772" y="225" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1778" y="280" width="40" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_RF_8" bpmnElement="SF_RF_8">
         <di:waypoint x="1841" y="165" />

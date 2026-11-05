@@ -325,14 +325,14 @@ records against what">
         <bpmndi:BPMNLabel><dc:Bounds x="935" y="280" width="110" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Local_di" bpmnElement="Flow_Local">
-        <di:waypoint x="886.5" y="312.5" />
+        <di:waypoint x="886.5" y="325" />
         <di:waypoint x="886.5" y="395" />
         <di:waypoint x="814" y="395" />
         <di:waypoint x="814" y="450" />
         <bpmndi:BPMNLabel><dc:Bounds x="765" y="325" width="115" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Defer_di" bpmnElement="Flow_Defer">
-        <di:waypoint x="911.5" y="312.5" />
+        <di:waypoint x="911.5" y="325" />
         <di:waypoint x="911.5" y="395" />
         <di:waypoint x="984" y="395" />
         <di:waypoint x="984" y="450" />

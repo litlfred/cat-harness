@@ -154,19 +154,19 @@ this process (`check:bean-calls`).</bpmn:documentation>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BO_4_di" bpmnElement="BO_4"><di:waypoint x="515" y="233"/><di:waypoint x="515" y="278"/><di:waypoint x="620" y="278"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BO_5_di" bpmnElement="BO_5">
-        <di:waypoint x="645" y="303" />
-        <di:waypoint x="645" y="420" />
-        <bpmndi:BPMNLabel><dc:Bounds x="649" y="344" width="90" height="35" /></bpmndi:BPMNLabel>
+                <di:waypoint x="645" y="303" />
+        <di:waypoint x="645" y="395" />
+      <bpmndi:BPMNLabel><dc:Bounds x="649" y="344" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BO_6_di" bpmnElement="BO_6">
         <di:waypoint x="760" y="455" />
         <di:waypoint x="840" y="455" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BO_7_di" bpmnElement="BO_7">
-        <di:waypoint x="670" y="278" />
+                <di:waypoint x="670" y="278" />
         <di:waypoint x="855" y="278" />
-        <di:waypoint x="855" y="248" />
-        <bpmndi:BPMNLabel><dc:Bounds x="671.25" y="240" width="90" height="35" /></bpmndi:BPMNLabel>
+        <di:waypoint x="855" y="268" />
+      <bpmndi:BPMNLabel><dc:Bounds x="671.25" y="240" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="BO_8_di" bpmnElement="BO_8">
         <di:waypoint x="715" y="152" />
