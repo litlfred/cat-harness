@@ -104,7 +104,6 @@
   `/assets/...` 404s on the same baseurl this file's landing-panel fix exists
   for.
 -->
-{%- assign h = site.data.harness -%}
 {%- comment -%}
   TWO links, so the browser picks by size rather than us picking for it.
 
@@ -139,16 +138,22 @@
   and a browser with no `prefers-color-scheme` support takes the unmedia'd
   light one.
 {%- endcomment -%}
-{%- if h.icon.src -%}
-{%- if h.iconDark.src -%}
-<link rel="icon" type="image/svg+xml" href="{{ h.icon.src | relative_url }}" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/svg+xml" href="{{ h.iconDark.src | relative_url }}" media="(prefers-color-scheme: dark)">
+{%- comment -%}
+  NO `assign` OF `site.data.harness`. Liquid 4's `assign` walks the value it binds, element
+  by element, to score it against the render's resource limits, so binding a
+  whole data file costs its full size on every page (~3 ms for a 180 KB
+  `harness.json`, measured). The fields are read where they are used.
+{%- endcomment -%}
+{%- if site.data.harness.icon.src -%}
+{%- if site.data.harness.iconDark.src -%}
+<link rel="icon" type="image/svg+xml" href="{{ site.data.harness.icon.src | relative_url }}" media="(prefers-color-scheme: light)">
+<link rel="icon" type="image/svg+xml" href="{{ site.data.harness.iconDark.src | relative_url }}" media="(prefers-color-scheme: dark)">
 {%- else -%}
-<link rel="icon" type="image/svg+xml" href="{{ h.icon.src | relative_url }}">
+<link rel="icon" type="image/svg+xml" href="{{ site.data.harness.icon.src | relative_url }}">
 {%- endif -%}
 {%- endif -%}
-{%- if h.smallIcon.src -%}
-<link rel="icon" type="image/svg+xml" sizes="16x16" href="{{ h.smallIcon.src | relative_url }}">
+{%- if site.data.harness.smallIcon.src -%}
+<link rel="icon" type="image/svg+xml" sizes="16x16" href="{{ site.data.harness.smallIcon.src | relative_url }}">
 {%- endif -%}
 
 <!--
@@ -833,17 +838,24 @@
   A single 92% layer was measured first and dropped: it took dark-scheme
   links from 4.14:1 to 3.35:1.
 -->
-{%- assign fa_ground = nil -%}
-{%- assign fa_ground_default = nil -%}
+{%- comment -%}
+  The harness is chosen by its INDEX, and bound by a one-item `for`, not by
+  `assign`: Liquid 4's `assign` walks the value it binds to score it, so
+  binding a harness entry costs its whole size, on every page.
+{%- endcomment -%}
+{%- assign fa_ground_i = nil -%}
+{%- assign fa_ground_default_i = nil -%}
 {%- for fa_t in site.data.harness.harnesses -%}
-  {%- if fa_t.pageGround.siteDefault -%}{%- assign fa_ground_default = fa_t -%}{%- endif -%}
-  {%- if fa_ground == nil -%}
+  {%- if fa_t.pageGround.siteDefault -%}{%- assign fa_ground_default_i = forloop.index0 -%}{%- endif -%}
+  {%- if fa_ground_i == nil -%}
     {%- for fa_sc in fa_t.pageGround.scopes -%}
-      {%- if fa_page_url contains fa_sc -%}{%- assign fa_ground = fa_t -%}{%- break -%}{%- endif -%}
+      {%- if fa_page_url contains fa_sc -%}{%- assign fa_ground_i = forloop.parentloop.index0 -%}{%- break -%}{%- endif -%}
     {%- endfor -%}
   {%- endif -%}
 {%- endfor -%}
-{%- if fa_ground == nil -%}{%- assign fa_ground = fa_ground_default -%}{%- endif -%}
+{%- if fa_ground_i == nil -%}{%- assign fa_ground_i = fa_ground_default_i -%}{%- endif -%}
+{%- if fa_ground_i != nil -%}
+{%- for fa_ground in site.data.harness.harnesses offset: fa_ground_i limit: 1 -%}
 {%- assign fa_art = fa_ground.pageGround.art -%}
 {%- if fa_art.laptop and fa_art.mobile and fa_art.card -%}
 <style id="fa-page-ground" data-instance="{{ fa_ground.name }}">
@@ -882,4 +894,6 @@
     html:root { background-image: none; }
   }
 </style>
+{%- endif -%}
+{%- endfor -%}
 {%- endif -%}

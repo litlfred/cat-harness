@@ -49,12 +49,17 @@
   does any site whose generator predates the index, so this cannot drop the
   floor on a site that has not regenerated.
 {%- endcomment -%}
-{%- assign fa_todo_index = site.data.todo_listing -%}
-{%- if page.fa_todo_listing == "all" or fa_todo_index == nil -%}
+{%- comment -%}
+  NO `assign` OF `site.data.todo_listing`. Liquid 4's `assign` walks the value it binds, element
+  by element, to score it against the render's resource limits, so binding a
+  whole data file costs its full size on every page (~3 ms for a 180 KB
+  `harness.json`, measured). The fields are read where they are used.
+{%- endcomment -%}
+{%- if page.fa_todo_listing == "all" or site.data.todo_listing == nil -%}
   {%- include generated/todo-listing.html -%}
 {%- else -%}
   {%- assign fa_todo_key = page.path | remove_first: ".md" | remove_first: ".html" -%}
-  {%- assign fa_todo_include = fa_todo_index.pages[fa_todo_key] -%}
+  {%- assign fa_todo_include = site.data.todo_listing.pages[fa_todo_key] -%}
   {%- if fa_todo_include -%}{%- include {{ fa_todo_include }} -%}{%- endif -%}
 {%- endif -%}
 {%- if site.footer_content -%}
