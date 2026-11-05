@@ -68,7 +68,7 @@ One phase and not three, because the loops say so: an increment the BA rejects, 
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `feature-staging`.
-- What: An MVP is shared AS A STAGING DEPLOY, not as a description of one.
+- What: An MVP is shared AS A branches/ DEPLOY, not as a description of one.
 - Record it: `workflow_complete` with `node: "A_DeployStaging"`.
 - next: → `BA_ShareMVP` (Share MVP with stakeholders)
 

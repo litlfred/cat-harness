@@ -56,7 +56,7 @@ msgstr ""
 
 #: sdlc/processes/upstream-version-adoption.bpmn:75
 #. Diagram element documentation
-msgid "An MVP is a DEPLOYED BUILD, not a description of one. The pin is moved on a branch and `feature-staging.yml` publishes it under `STAGING/<branch-slug>/`, so the reviewer looks at the artefact rather than at a screenshot — the same argument the merge discipline makes about rendered work."
+msgid "An MVP is a DEPLOYED BUILD, not a description of one. The pin is moved on a branch and `feature-staging.yml` publishes it under `branches/<branch-slug>/`, so the reviewer looks at the artefact rather than at a screenshot — the same argument the merge discipline makes about rendered work."
 msgstr ""
 
 #: sdlc/processes/upstream-version-adoption.bpmn:140

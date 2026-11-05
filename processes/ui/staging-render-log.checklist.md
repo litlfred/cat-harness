@@ -76,6 +76,6 @@ Every change to the publish branch appends an entry to `_render-log/<day>.jsonl`
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-logging`.
-- What: `rm -rf STAGING/<slug>`.
+- What: `rm -rf branches/<slug>`.
 - Record it: `workflow_complete` with `node: "A_Remove"`.
 - next: → `End_Process_RenderLog` (Entry appended; history intact)

@@ -144,7 +144,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "In the review process",
-      "prov:value": "- **Show**: every docs-site preview also carries `STAGING/<slug>/changes/`\n  (`cat-harness-tools/scripts/staging-changes.ts`, owner 2026-10-14): the\n  changed sources, with a re-pinned mount in `index.lock.json` expanded into\n  the files its repository changed between the two pins (a re-pin handed to\n  a renderer as one JSON line predicts nothing); the cone's files and its\n  `undetermined` inputs; and the build diffed against the site at the\n  `gh-pages` root, its `missed` files listed as **changed, not in the cone**.",
+      "prov:value": "- **Show**: every docs-site preview also carries `branches/<slug>/changes/`\n  (`cat-harness-tools/scripts/staging-changes.ts`, owner 2026-10-14): the\n  changed sources, with a re-pinned mount in `index.lock.json` expanded into\n  the files its repository changed between the two pins (a re-pin handed to\n  a renderer as one JSON line predicts nothing); the cone's files and its\n  `undetermined` inputs; and the build diffed against the site at the\n  `gh-pages` root, its `missed` files listed as **changed, not in the cone**.",
       "cat-harness:refs": [
         "2026-10-14"
       ],

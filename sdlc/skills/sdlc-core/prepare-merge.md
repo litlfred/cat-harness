@@ -498,7 +498,7 @@ harness git instructions). Do not include the model identifier in the PR.
   merge decision as everywhere else.
 - **One branch.** Develop on the assigned `claude/*` branch; moving work to a
   different branch needs explicit permission.
-- **NEVER DELETE A FEATURE OR STAGING BRANCH** without explicit assent from the
+- **NEVER DELETE A FEATURE OR branches/ BRANCH** without explicit assent from the
   user or the repository owner. Not after a merge, not as cleanup, not to quiet a
   tool that complains about it, and never by passing `--delete-branch` or its API
   equivalent. A merged branch is still the record of how the work was done, the

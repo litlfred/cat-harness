@@ -30,7 +30,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The rule that unifies them: refuse, never repair",
-      "prov:value": "**A check returns a refusal, not a cleaned-up value.** This is measured, not\nstylistic. `fuzm`: the staging slug pipeline REPLACED disallowed characters,\nso input `..` survived as output `..`, and a branch of `---` collapsed to the\nempty string — which made `rm -rf \"pages/STAGING/$SLUG\"` name every preview.\nA repair silently changes which artefact is named. A refusal makes the caller\ndecide, and only the caller knows whether that is a 400, an `exit 1`, or a skip."
+      "prov:value": "**A check returns a refusal, not a cleaned-up value.** This is measured, not\nstylistic. `fuzm`: the staging slug pipeline REPLACED disallowed characters,\nso input `..` survived as output `..`, and a branch of `---` collapsed to the\nempty string — which made `rm -rf \"pages/branches/$SLUG\"` name every preview.\nA repair silently changes which artefact is named. A refusal makes the caller\ndecide, and only the caller knows whether that is a 400, an `exit 1`, or a skip."
     },
     {
       "@id": "skills/conduct/security/security.md#provenance-2",

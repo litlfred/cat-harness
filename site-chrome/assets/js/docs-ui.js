@@ -3155,7 +3155,7 @@
    *
    * Since bean `g196` (2026-10-23) a Jekyll page writes its same-site links
    * relative to itself, so a page that did not change is byte-identical in
-   * every STAGING preview and on the live site; `fa-baseurl` and
+   * every branches/ preview and on the live site; `fa-baseurl` and
    * `fa-todo-src` are relative too. Resolving here, once, keeps every
    * consumer's arithmetic as it was (`withBase`, `baseurlResolved`'s
    * prefix guard, `navKey`'s strip).
@@ -3178,9 +3178,9 @@
     }
   }
 
-  /* ── Is this a STAGING preview? ──────────────────────────────────────
+  /* ── Is this a branches/ preview? ──────────────────────────────────────
    *
-   * Non-empty `fa-staging` means a `STAGING/<slug>/` preview; empty means the
+   * Non-empty `fa-staging` means a `branches/<slug>/` preview; empty means the
    * canonical deploy, a local build, or a page whose `_data/build.yml` was
    * never written. All three of those are treated as canonical, which is the
    * SAFE direction: a build that cannot say it is a preview hides the tile
@@ -4047,7 +4047,7 @@
    * Every backdrop in the todo index was arriving as `/assets/img/...` —
    * site-ROOT-absolute with no baseurl — and this site is served from
    * `/folio-assistant/` on the canonical deploy and
-   * `/folio-assistant/STAGING/<branch>/` on a preview. So every one of them
+   * `/folio-assistant/branches/<branch>/` on a preview. So every one of them
    * 404'd, and the owner saw todo cards with a broken-image placeholder
    * beside landing stickies that had their art: *"i want the theme on the
    * lower ones too. why are they dispalyed differently."*
