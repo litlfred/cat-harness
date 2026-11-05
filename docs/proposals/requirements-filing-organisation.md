@@ -8,7 +8,7 @@ summary: >-
 
 # Requirements filing and organisation: literature search, adopted methodologies, and filing process
 
-- **Bean**: `folio-assistant-qh1s`
+- **Work item**: `folio-assistant-qh1s`
 - **Issue**: [#1164](https://github.com/litlfred/folio-assistant/issues/1164)
 - **Methodology node**: [`methodologies/requirements-filing-and-organisation.md`](../../methodologies/requirements-filing-and-organisation.md)
 - **Proposed BPMN diagram**: [`processes/sdlc/requirements-filing.bpmn`](../../sdlc/processes/requirements-filing.bpmn) ([checklist](../../sdlc/processes/requirements-filing.checklist.md))
@@ -18,7 +18,7 @@ summary: >-
 
 ## 1. Question and scope
 
-[`docs/requirements/index.md`](../requirements/index.md) currently holds only its index, and [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../sdlc/skills/crdm/crdm-requirements-workflow.md) explicitly deferred the corpus-level organisation and lifecycle rules to bean `folio-assistant-qh1s`:
+[`docs/requirements/index.md`](../requirements/index.md) currently holds only its index, and [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../sdlc/skills/crdm/crdm-requirements-workflow.md) explicitly deferred the corpus-level organisation and lifecycle rules to work item `folio-assistant-qh1s`:
 
 > *"Today the directory is empty and a flat list in `index.md` is enough. Once it is not, how requirements are grouped, cross-referenced, superseded and retired needs a method rather than an ad-hoc table — tracked as `folio-assistant-qh1s`, which begins with a literature search over requirements-management practice and proposes the filing process as BPMN before anything is built."*
 

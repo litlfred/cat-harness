@@ -10,7 +10,7 @@ allowed-tools: Read Bash
 
 # Folio file list: the harness's minimal folio rendering
 
-Bean `ohx6`, owner ruling 2026-10-10: cat-harness carries its own minimal
+Work item `ohx6`, owner ruling 2026-10-10: cat-harness carries its own minimal
 renderer, and what it renders is a list of files.
 
 ## Run it

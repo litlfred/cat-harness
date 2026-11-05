@@ -38,7 +38,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 ## أربعة أمور، بالترتيب
 
 **1. خطة العمل هي المكان الذي تقول فيه ما تفعله.**
-ليست رسالة دردشة ولا تعليقًا، بل [beans]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})، وهو مخزن خاضع لإدارة الإصدارات تستطيع أي جلسة أو أي وكيل قراءته. احجز العنصر قبل أن تعمل عليه كي لا تأخذه جلسة موازية؛ والـ bean الذي يتبيّن أنه غير مطلوب يُعلَّم `scrapped` مع أسبابه، ولا يُحذف أبدًا.
+ليست رسالة دردشة ولا تعليقًا، بل [work items]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})، وهو مخزن خاضع لإدارة الإصدارات تستطيع أي جلسة أو أي وكيل قراءته. احجز العنصر قبل أن تعمل عليه كي لا تأخذه جلسة موازية؛ والـ work item الذي يتبيّن أنه غير مطلوب يُعلَّم `scrapped` مع أسبابه، ولا يُحذف أبدًا.
 
 ```sh
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
@@ -114,7 +114,7 @@ flowchart LR
 - **[مسار عمل النشر](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — مخططات مسارات BPMN لعمليات التحرير والنشر: بوابة التحقق من التفاعل البشري الحاسوبي (HCI)، وتوزيع مهام المراجعة، وخطة العمل المشتركة.
 - **[توجيه الوكيل]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — تدريب تمهيدي لوكيل الذكاء الاصطناعي عند دمجه في ملف المحتوى: الخطوات الأولى، واكتشاف المهارات، ونموذج كائنات المحتوى، وملفات ضمان الجودة المرافقة (QA sidecars).
 - **[المهارات والأدوار]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — جميع المهارات والأدوار، وكيفية عملها مع النموذج اللغوي الكبير.
-- **[Beans والمهام (Beans and todos)]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})** — خطة العمل المشتركة، ولماذا هي خاضعة لإدارة الإصدارات ومحفوظة في المستودع.
+- **[Work items والمهام (Work items and todos)]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }})** — خطة العمل المشتركة، ولماذا هي خاضعة لإدارة الإصدارات ومحفوظة في المستودع.
 - **[استيعاب الوثائق (Document ingestion)](https://litlfred.github.io/folio-assistant/folio-assistant-core/guides/document-ingestion.html)** — مسار تحويل uploads/ إلى المصادر الأولية L1: استخراج البنية، وتوليد المحتوى المشتق، وبناء رسم المعرفة البياني L1، وبوابة الاكتمال.
 - **[الأدلة (Evidence)](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/evidence.html)** — استرجاع الأدلة واستخراجها ومراجعتها من المصادر إلى الادعاءات.
 - **[مرجع مخططات المهارات](../reference/skills/)** — عقود المدخلات والمخرجات المُنشأة لكل مهارة.

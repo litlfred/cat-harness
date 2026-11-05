@@ -1,12 +1,12 @@
 - **Suspended-workflow stack** — workflow instances are persisted in the
   `beans/` graph, but the suspend-and-resume stack described above is not;
-  beans and issue comments stand in for it.
+  work items and issue comments stand in for it.
 
 - **Automated request classification** — the classification table is a
   reference for agents to read; there is no classifier tool that routes
   automatically.
 
-- **BPMN for beans lifecycle** — the beans work-plan has a lifecycle (create →
+- **BPMN for work items lifecycle** — the work items work-plan has a lifecycle (create →
   claim → in-progress → resolve) described in the todo-manager skill but has
   no BPMN diagram.
 

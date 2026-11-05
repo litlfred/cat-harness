@@ -211,7 +211,7 @@ pattern fires) or `screenHandover` (a declared structure):
 | document adapter system prompt (the content core's `adapters/document/index.ts`) | selection and block markdown | `guardUntrusted` |
 | feedback triage, both copies | the commenter's summary and detail, block markdown, assignee | `guardUntrusted`, `oneLineLabel` |
 | branch characterization, both copies | changed-block titles, branch and document ids | `guardUntrusted`, `oneLineLabel` |
-| `workflow_complete` (MCP) | the calling agent's arguments, later read from the bean body by the next agent | `screenHandover`: control fields refuse, and `instance`, `node`, `target` and `outcome` must also match an id, path or label pattern; the note quarantines and is folded to one line |
+| `workflow_complete` (MCP) | the calling agent's arguments, later read from the work item body by the next agent | `screenHandover`: control fields refuse, and `instance`, `node`, `target` and `outcome` must also match an id, path or label pattern; the note quarantines and is folded to one line |
 
 **A control field's VALUE can be constrained, and an id-shaped one should
 be.** The patterns catch text shaped like an
@@ -330,7 +330,7 @@ tool's risk follows from what it can **do** with an input. These are its sinks:
 | network fetch | materialise-remote, IRIS/DSpace clients, link audits | H7 |
 | rendered HTML/JS | site generators, viewers | escaping at the sink, `safeHref` |
 | model prompt | dispatch, QA agents, summarisers | H1, H5 |
-| git write / PR / merge | merge-train, bean writers, publishers | least privilege; automation never approves itself |
+| git write / PR / merge | merge-train, work item writers, publishers | least privilege; automation never approves itself |
 | secret / credential | signing, publishing | never logged, never in argv, never in a structured blob |
 | mounted symlinks copied verbatim | `remote-mount.ts`, `mount-from-lock.ts`, `remote-tree.ts` (`cpSync` with `verbatimSymlinks`) | every link target resolved and checked to stay inside the mount before anything reads through it ([`path-containment`](path-containment.md)); H8 for the tree itself |
 | `GITHUB_ENV` / `GITHUB_OUTPUT` writes, and the Actions cache | workflow steps, `lake-cache-restore` | no free text written to `GITHUB_ENV` (it sets the next step's environment), outputs consumed through `env:` and never `${{ }}` in `run:` (`check:workflow-injection`); a cache key no untrusted ref can write and a trusted run then restores |

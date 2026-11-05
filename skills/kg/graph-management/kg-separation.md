@@ -33,7 +33,7 @@ Separate when the graph is **too large to handle**, or when a **business
 reason** separates it: *"split only where consumers or cadences differ"*. Size
 is often not the reason — bootstrap is 33 files and left because its readers
 and its release cadence differ from cat-harness's. Record the signals in the
-bean before deciding:
+work item before deciding:
 
 | signal | how it is measured |
 |---|---|
@@ -83,7 +83,7 @@ copies of one key break the bibliography build, so:
    violation, see it red, remove it. A boundary gate can pass while guarding
    nothing: unable to fail, blind to side-effect imports, or blind across
    instances.
-4. **The owner's decisions are recorded in the bean** (the list below).
+4. **The owner's decisions are recorded in the work item** (the list below).
 5. **"Generated output is the contract" is written down**: what crosses the
    boundary is the generated file, and any tool may produce it.
 
@@ -137,7 +137,7 @@ the work looks finished.
 
 | # | stage | lane | gate |
 |---|---|---|---|
-| 0 | Brief, measure the signals, claim | `authoring-agent` | signals in the bean; `bun run cat beans:claim <id>` |
+| 0 | Brief, measure the signals, claim | `authoring-agent` | signals in the work item; `bun run cat beans:claim <id>` |
 | 1–3 | Declare in place, detangle, isolate | `authoring-agent` | [`graph-detanglement`](graph-detanglement.md) — all its gates |
 | 4 | **Identity**: `name`, `version`, `iriBase`, `needs`, `nodeSchemas` in the declaration; move the base once | `platform-authoring-agent` | `iri:sync -- --from <old base>` then `iri:sync:check`; `check:node-iris` |
 | 5 | **Hosted outputs out** of the content | `platform-authoring-agent` | the content leak test's pending list is empty |
@@ -365,7 +365,7 @@ source**, and **never in a record**. The first half keeps a placeholder or a
 typo from turning into a different wrong path; the second keeps a file that
 moved and was later re-created from being redirected. Records say what was true
 when they were written, so they stay as written: proposals, todos, agent
-memory, beans, provenance (library figures, terminologies), upstream pins,
+memory, work items, provenance (library figures, terminologies), upstream pins,
 vocab mappings, QA results and test fixtures. Generated files are rewritten by
 re-running their generators, never by hand.
 

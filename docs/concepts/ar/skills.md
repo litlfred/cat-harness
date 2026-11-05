@@ -143,7 +143,7 @@ flowchart TD
 |-------|---------|
 | `prepare-merge` | إيصال الفرع إلى حالة نظيفة/سليمة (green)/قابلة للدمج (راجع أيضًا `watch`) |
 | `bean-coordination` | انضباط الحجز والتنسيق بين الوكلاء المتعددين |
-| `todo-manager` | انضباط إدارة المهام عبر beans |
+| `todo-manager` | انضباط إدارة المهام عبر work items |
 
 ### حزم مهارات المنصة (`skills/tools/folio-core`، و`folio-assistant-core/skills/content/folio-document-adapter`، و`folio-assistant-sci/skills/content/folio-paper-adapter`)
 

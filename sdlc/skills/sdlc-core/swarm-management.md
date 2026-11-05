@@ -105,14 +105,14 @@ One unit, one sub-bean, with:
 - a **disjoint input slice** stated explicitly — which files, which blocks;
 - a **separate output** — its own file, its own findings list, its own branch
   if it writes;
-- the **parent bean** recorded, so the work rolls up.
+- the **parent work item** recorded, so the work rolls up.
 
 This is what `bean-blocking.md` means by preferring sub-beans: the same
 decomposition that avoids a spurious block is the one a swarm needs.
 
 ## While it runs
 
-- **Do not block on the swarm.** The parent bean stays in progress; you report
+- **Do not block on the swarm.** The parent work item stays in progress; you report
   partial results as they land.
 - **One writer per file.** Two agents editing one file is not parallelism.
 - **Report the fan-out in the turn report** — how many, at what level, against

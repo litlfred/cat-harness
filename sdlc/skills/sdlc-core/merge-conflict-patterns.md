@@ -7,7 +7,7 @@ description: >
   when any conflict is authored or undeclared. Use for "merge main", "resolve
   the conflicts", "the PR is conflicted again", "auto-resolve", and when adding
   a pattern for a new kind of churn. Also governs what a merge steward does
-  with a merge-train member it had to refuse: one deduplicated bean under the
+  with a merge-train member it had to refuse: one deduplicated work item under the
   PR's own epic, a hand-back to the owning session with a fail condition, one
   dispatched agent when nobody owns it, one PR comment, and the close.
 user_invocable: false
@@ -553,17 +553,17 @@ A `beans/defs/**` conflict has two causes and they need different handling:
 
 | cause | how to tell | what to do |
 |---|---|---|
-| two sessions edited one bean | the default branch's claim note names a branch that is not yours | a coordination question — talk to them |
+| two sessions edited one work item | the default branch's claim note names a branch that is not yours | a coordination question — talk to them |
 | **one session**: the claim landed on the default branch, the completion stayed on the branch | the note names **your own** branch | no coordination needed; keep the completing value and the note |
 
 The second is `beans:claim`'s **normal path**, not an edge case: it pushes the
 claim to the default branch so a sibling sees it before your PR exists, and
-your branch then edits the same bean to finish it.
+your branch then edits the same work item to finish it.
 
 `claim-bean.ts` brings the claim COMMIT into the claiming branch after the
 push: a fast-forward when the branch has nothing of its own yet, otherwise a
 merge commit. The claim is then in the branch's merge base, so finishing the
-bean merges cleanly (copying only the claim's text still conflicts on
+work item merges cleanly (copying only the claim's text still conflicts on
 `updated_at`, and **a conflicted PR gets no CI at all**).
 
 The conflict therefore means the claim could NOT be brought in: a detached
@@ -572,8 +572,8 @@ says so (`NOT in this branch's history`) and falls back to the text mirror
 (`mirrorClaimNote`). Resolve the remainder by merging the default branch in, or
 by keeping the completing branch's value and the note — and **never by unioning
 the front matter**, since a duplicated `updated_at` is
-`check-bean-front-matter`'s recorded defect. Bean definitions are authored
-work-plan state; two sessions editing one bean is a coordination question
+`check-bean-front-matter`'s recorded defect. Work item definitions are authored
+work-plan state; two sessions editing one work item is a coordination question
 (`bean-coordination`).
 
 ### `artefact-verification` — refused, by declaration
@@ -667,9 +667,9 @@ and the bounce-back are [`merge-queue`](merge-queue.md); the hand-back format
 is the [`agent-handoff`](agent-handoff.md) skill.
 
 A refusal has one of three causes: a conflict on a path refused by
-declaration (two PRs editing one bean, say), an authored or undeclared path,
+declaration (two PRs editing one work item, say), an authored or undeclared path,
 or a gate the combination fails that each member passed alone. Each refusal
-becomes a bean, because a PR comment or a chat message leaves nothing in the
+becomes a work item, because a PR comment or a chat message leaves nothing in the
 work plan to say it happened.
 
 ### 1. Open one bean per refused PR, and check before you create
@@ -683,7 +683,7 @@ beans list --json --search 'title:"Merge refused: #1822"' \
                 | select(.status != "completed" and .status != "scrapped") | .id'
 ```
 
-- **An open bean already exists** for this PR: do not create a second one.
+- **An open work item already exists** for this PR: do not create a second one.
   Add the new refusal to it under `## Attempts` with `--body-append` (never
   `--body-file`, which replaces the body).
 - **Otherwise create one**: `type: bug`, titled
@@ -691,12 +691,12 @@ beans list --json --search 'title:"Merge refused: #1822"' \
   create are one action (`todo-manager` §"After you create").
 
 **The parent is the epic or story the PR's own work belongs to,** not the
-steward's epic. Find it in this order: the bean the PR's branch adds or claims
-(`git diff --name-only origin/main...<head> -- beans/defs/`), then a bean id in
-the PR body or commit messages. Parent the refusal under **that bean's parent**
-when the PR's bean is a task, or under the PR's bean itself when it is an epic
+steward's epic. Find it in this order: the work item the PR's branch adds or claims
+(`git diff --name-only origin/main...<head> -- beans/defs/`), then a work item id in
+the PR body or commit messages. Parent the refusal under **that work item's parent**
+when the PR's work item is a task, or under the PR's work item itself when it is an epic
 or story. Then mark it `--blocking <the PR's bean>`. Only when the PR names no
-bean at all does it go under the steward's own merge-gate epic, and the bean
+work item at all does it go under the steward's own merge-gate epic, and the work item
 body says so.
 
 The body records what the owning session needs in order to act without asking:
@@ -722,9 +722,9 @@ side.
 ### 2. Hand it back to the owning session, with a fail condition
 
 The owning session is the one in the PR's `Claude-Session:` trailer, or in its
-body. Hand the bean back to it in `agent-handoff` form: the steward is the
+body. Hand the work item back to it in `agent-handoff` form: the steward is the
 **coordinator and verifier**, the owning session is the **executor**, and the
-owner rules on anything authored. The bean carries:
+owner rules on anything authored. The work item carries:
 
 - `## Roles`: steward (coordinator, verifier, closes), owning session
   (executor), owner (authored conflicts, any exception).
@@ -733,7 +733,7 @@ owner rules on anything authored. The bean carries:
 - `## Done when`: as above. The verifier is the next train, not the executor's
   own log.
 - `## Fails if`, the **fail condition**, which is when the steward takes the
-  bean back:
+  work item back:
   - no `started` line on the PR **within 4 hours**;
   - or no push to the PR branch **within 24 hours**;
   - or the owning session is **gone**: archived, failed, or unknown to
@@ -741,9 +741,9 @@ owner rules on anything authored. The bean carries:
   - or the executor reports `blocked` on something it cannot settle.
 
 Send the hand-back to the session itself (`send_message`), as **one line**
-that names the bean and the branch, never the instructions. The instructions
-are in the bean, on the branch. After that, the steward does not edit the
-bean: anything it learns goes to the PR (`agent-handoff` §1).
+that names the work item and the branch, never the instructions. The instructions
+are in the work item, on the branch. After that, the steward does not edit the
+work item: anything it learns goes to the PR (`agent-handoff` §1).
 
 **The fail condition is a takeover, not a reminder, and that differs from
 `agent-handoff` §7 on purpose.** There, the executor is in another environment
@@ -751,7 +751,7 @@ and the coordinator *cannot* do the step, so an expiry only means asking
 again. Here, the work is in this repository and an agent can do it, so a
 missed deadline moves to §3. The one thing that is never done is putting a
 second writer on a branch whose first writer may still be live: before taking
-over, read the bean's holder note and the PR's last push (`bean-coordination`
+over, read the work item's holder note and the PR's last push (`bean-coordination`
 §"A quiet claim").
 
 ### 3. When no live owner can be reached, dispatch one agent
@@ -765,12 +765,12 @@ Its budget is modest: one fix, one push, one report.
   main in with `merge:main`, regenerate, and fix a gate failure that has one
   mechanical answer. It pushes merge commits only, and never force-pushes.
 - **It may not decide an authored conflict.** Two sibling PRs editing one
-  bean, one script changed differently on both sides, or a page over its
+  work item, one script changed differently on both sides, or a page over its
   budget only in combination: each of these
   is a choice between authors. The agent writes the question to the owner on
   the PR, with both sides quoted, the options and a default, and stops
   (`interaction-modality` §4.1).
-- **The dispatch is recorded on the bean** by the steward, before the agent
+- **The dispatch is recorded on the work item** by the steward, before the agent
   starts: `## Attempts`, with the date, the reason the fail condition fired,
   the agent's session or task id, and the budget.
 
@@ -779,8 +779,8 @@ dispatch (`agent-handoff` §7).
 
 ### 4. Comment on the PR once, and edit that comment
 
-One comment per refused PR, **edited in place** as the bean moves on, as
-`merge-main.yml` does with its own comment. It names the bean, the head sha,
+One comment per refused PR, **edited in place** as the work item moves on, as
+`merge-main.yml` does with its own comment. It names the work item, the head sha,
 the train, the refused paths, and who holds the fix (the owning session, a
 dispatched agent, or the owner). A second refusal of the same PR updates the
 same comment. Remove `ready-to-merge` ([`merge-queue`](merge-queue.md)).
@@ -791,8 +791,8 @@ The steward is the verifier, so the steward closes:
 
 - **the PR lands**: `completed`, with the merge commit as evidence;
 - **the PR is closed unmerged**: `scrapped`, with the reason and a link. The
-  bean is never deleted (`bean-coordination`).
+  work item is never deleted (`bean-coordination`).
 
-A fix that is pushed but has not landed does not close the bean. The member
-must survive a train first. A refusal bean left open after its PR has gone is
+A fix that is pushed but has not landed does not close the work item. The member
+must survive a train first. A refusal work item left open after its PR has gone is
 a stale hold.

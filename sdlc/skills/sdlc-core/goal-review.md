@@ -133,11 +133,11 @@ measurements the store's own status field cannot give you:
   `refs/remotes/origin/$DB` only when `remote.origin.fetch` happens to cover it,
   and exits 0 when it does not.
 
-  **Then compare by bean ID, never by file diff against a merge base.** Even
+  **Then compare by work item ID, never by file diff against a merge base.** Even
   with a fresh `origin/main`, `git diff --diff-filter=A
   origin/main...origin/<branch> -- beans/defs` diffs against the **merge
   base**, which predates everything main gained since — so the count of
-  "added" beans inflates with how far behind the branch is. The check, ids on
+  "added" work items inflates with how far behind the branch is. The check, ids on
   the branch minus ids anywhere on main (archive included):
 
   ```sh

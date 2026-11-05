@@ -67,7 +67,7 @@ Ask in this order. The first yes decides.
 2. **Is the question the certainty of a body of evidence behind a
    recommendation?** → the evidence-grading methodology. Note this is about
    *evidence*, not about a design choice that happens to be uncertain.
-3. **Is the context a bean recording a decision?** → the decision-record
+3. **Is the context a work item recording a decision?** → the decision-record
    methodology. It constrains the record, not the method, so it composes with (1)
    or (4) rather than competing.
 4. **Otherwise — a one-off choice among candidate options** → the

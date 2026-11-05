@@ -22,7 +22,7 @@ both layers above it, loaded by a VARIABLE
 cat-harness from lifting into its own repository — and `check:partition`,
 `kg:detangle:direction` and `check:reference-direction` were all green over it.
 
-**Fix shape (bean `p11x`)**: the higher instance DECLARES what it ships
+**Fix shape (work item `p11x`)**: the higher instance DECLARES what it ships
 (`contentAdapters` in its `<instance>.json`), the lower one DISCOVERS it
 (`instanceRootsIn`), and any ordering the table encoded by row position becomes
 a declared fact (`extends`). No instance name remains in the harness.

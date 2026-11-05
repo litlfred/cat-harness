@@ -174,7 +174,7 @@ Las herramientas más relevantes para esta página:
 |------|---------|
 | `folio_init` | Genera la estructura inicial de un folio. Registrada como una herramienta **genérica**, porque se ejecuta antes de que el folio tenga un tipo de contenido |
 | `workflow_start` / `workflow_next` / `workflow_complete` | Ejecuta `getting-started.bpmn` como un proceso real; `workflow_next` indica qué está habilitado en este momento y qué habilidad lo implementa |
-| `work_plan_prime` | Muestra el plan de trabajo (beans) |
+| `work_plan_prime` | Muestra el plan de trabajo (work items) |
 | `check_dependencies` | Verifica cuáles cadenas de herramientas están instaladas |
 | `skill_list` / `skill_fetch` | Descubre y carga las instrucciones de una habilidad |
 

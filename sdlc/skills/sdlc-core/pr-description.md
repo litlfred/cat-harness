@@ -15,7 +15,7 @@ allowed-tools: Read Grep Glob
 
 **The reader has not been here.** A reviewer, the owner coming back a week
 later, or the next agent opens the PR cold. The description is the one place
-they can learn what the change is *for*, without the chat, the bean or the
+they can learn what the change is *for*, without the chat, the work item or the
 commit log. If they need any of those to follow it, it has failed.
 
 It is not a **change log** of commit titles turned into bullets ("fix
@@ -74,7 +74,7 @@ review answered, a decision taken.
 1. **Status is updated in place.** It has two parts, and both stay current:
    - **structured:** the status checklist
      ([`continual-progress`](continual-progress.md) invariant 3), with the
-     bean and its epic, each linked, and the CI state on the current head;
+     work item and its epic, each linked, and the CI state on the current head;
    - **narrative:** two or three sentences on where the work stands and what
      it waits on.
 2. **Scope changes are recorded, never overwritten.** Keep the original
@@ -93,15 +93,15 @@ Every identifier is a link:
 
 | thing | link to |
 |---|---|
-| bean | its file, `beans/defs/<id>--<slug>.md`, on the PR's head branch |
-| epic or milestone | the same, plus the beans dashboard at `<site>/beans/` (for this repository, <https://litlfred.github.io/folio-assistant/beans/>) |
+| work item | its file, `beans/defs/<id>--<slug>.md`, on the PR's head branch |
+| epic or milestone | the same, plus the work items dashboard at `<site>/beans/` (for this repository, <https://litlfred.github.io/folio-assistant/beans/>) |
 | issue or PR | a full `owner/repo#N` link, never a bare `#N` across repositories |
 | skill or process | its file, or its page under `<site>/reference/` |
 | a measurement | the committed sidecar or the CI run that produced it |
 
 **The dashboard has no per-bean deep link**, because its epic scope lives only
-in page memory. A link opens the whole board, so link the bean's file for the
-bean, and the dashboard for the overview.
+in page memory. A link opens the whole board, so link the work item's file for the
+work item, and the dashboard for the overview.
 
 ## What never goes in it
 

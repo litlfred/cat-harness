@@ -2,7 +2,7 @@
 name: code-review-process
 description: >
   Where code review sits in the release lifecycle. Review types, who reviews
-  what, how feedback maps to beans, and the path from review to approval to
+  what, how feedback maps to work items, and the path from review to approval to
   release. Works with prepare-merge-auto for mechanics and release-lifecycle
   for the broader flow.
 ---
@@ -29,7 +29,7 @@ happens on the pre-release (RC).
 |---|---|
 | **Nit** (typo, style) | Fix in same PR, same commit batch |
 | **Defect** (wrong behaviour) | Fix in same PR, new commit |
-| **Scope expansion** (new requirement) | New bean. Do NOT fix in current PR. |
+| **Scope expansion** (new requirement) | New work item. Do NOT fix in current PR. |
 | **Design disagreement** | Escalate to BA. Agent does not overrule reviewer. |
 
 The acceptance criteria from Phase 3 (`crdm-requirements-template`) are

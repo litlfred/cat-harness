@@ -1,6 +1,6 @@
 # Folio-assistant agent infrastructure
 
-folio-assistant owns the generic agent infrastructure: the beans work plan, the
+folio-assistant owns the generic agent infrastructure: the work items work plan, the
 MCP server and the session-start harness. Content repositories hold only their
 content and the tooling specific to it.
 
@@ -31,7 +31,7 @@ script — is the bug.
 ## §3 Cross-agent session-start design
 
 An **agent-generic** startup surface primes any CLI — Claude Code, Gemini CLI,
-Antigravity — with the beans work plan, without duplicating logic. All three
+Antigravity — with the work items work plan, without duplicating logic. All three
 expose a `SessionStart` command hook whose stdout reaches the model (Gemini:
 `hookSpecificOutput.additionalContext`), all three read `AGENTS.md` natively,
 and all three support MCP servers.
@@ -43,7 +43,7 @@ and all three support MCP servers.
    `@AGENTS.md`; `GEMINI.md` → "See AGENTS.md").
 2. **Live state (per-CLI hook over one shared script):**
    `scripts/session-start-coord-sweep.sh` is the single primer (emits
-   `beans prime`, a CLI-independent bean list and the main-branch delta as
+   `beans prime`, a CLI-independent work item list and the main-branch delta as
    markdown on stdout). Each CLI's `SessionStart` hook config differs
    (`.claude/settings.json` vs Gemini/Antigravity `hooks.json`) but invokes the
    **same** script.

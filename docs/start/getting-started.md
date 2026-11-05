@@ -165,7 +165,7 @@ The tools most relevant to this page:
 |------|---------|
 | `folio_init` | Scaffold a folio. Registered as a **generic** tool, because it runs before the folio has a content type |
 | `workflow_start` / `workflow_next` / `workflow_complete` | Run `getting-started.bpmn` as a real process; `workflow_next` says what is enabled now and which skill implements it |
-| `work_plan_prime` | Surface the work plan (beans) |
+| `work_plan_prime` | Surface the work plan (work items) |
 | `check_dependencies` | Probe which toolchains are installed |
 | `skill_list` / `skill_fetch` | Discover and load a skill's instructions |
 

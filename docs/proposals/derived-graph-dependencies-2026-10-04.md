@@ -34,7 +34,7 @@ Owner, 2026-10-04:
   directory, or a branch keyed by commit, tip or route). Neither says what the
   content is *derived from*.
 - **Only at a finer grain.** A document kind's section has `computedFrom`, a
-  list of declared graph ids (bean `qvxh`). `check:document-kind-sources`
+  list of declared graph ids (work item `qvxh`). `check:document-kind-sources`
   resolves each id across `needs`. That is the right shape, one level down:
   per section, not per directory.
 - **Proposed, never built.** Proposal #1966 (merged) recommended "A. `rendersTo`
@@ -48,13 +48,13 @@ smart-trust's `openapi/`. Missing from it:
 
 | what | where it is today | why it is derived |
 |---|---|---|
-| the IG pages (`<ig>/docs/`) | graph typology `docs` (layer `content`) | written wholly by `gen-ig-pages` from the artefact index; seeded to `cat/fhir-harness/ig-docs` (bean `lbz8`) |
+| the IG pages (`<ig>/docs/`) | graph typology `docs` (layer `content`) | written wholly by `gen-ig-pages` from the artefact index; seeded to `cat/fhir-harness/ig-docs` (work item `lbz8`) |
 | the artefact index (`<ig>/fhir-artifact-index/`) | kind `fhir-artifact-index` (layer `content`) | ingested from the IG's *published* output (`ingest:ig`, re-derived by `ingest:ig:check`) |
-| the IG AST cache ("fhir-ast") | **not declared as a graph**. Its SCHEMA exists (`fhir-harness/schemas/ig-ast.ts` plus generated JSON Schemas, bean `l0lq`), and its branch family `cat/fhir-harness/fhir-ast/` is registered in `special-branches.json` | computed by the Publisher fork from the IG source |
+| the IG AST cache ("fhir-ast") | **not declared as a graph**. Its SCHEMA exists (`fhir-harness/schemas/ig-ast.ts` plus generated JSON Schemas, work item `l0lq`), and its branch family `cat/fhir-harness/fhir-ast/` is registered in `special-branches.json` | computed by the Publisher fork from the IG source |
 | the Lean build cache ("lean-cache") | **not declared as a graph**. An orphan-branch family `cat/folio-assistant-sci/lake-cache/<package>-<toolchain>`, refreshed by `lake-cache-refresh.yml`, registered in `special-branches.json`; no schema for its contents | computed by `lake build` from the Lean sources |
 | the published site (`gh-pages`) | **not declared as a graph**. A registered special branch, built by `docs-site.yml` and `feature-staging.yml`; no layout schema | composed from every renderable graph |
 
-So in the chain the owner named, **fhir-ast → ig-docs → gh-pages**, every member exists as a branch, and one (fhir-ast) already has a schema. **None is declared as a graph, and there is no edge anywhere.** The node schemas are bean `folio-assistant-lehh` (owner: *"was an AST schema somewhere. pickup. add schemas for lean-cache … and gh-pages too"*). The two route branches `cat/fhir-harness/ig-docs` and `cat/cat-harness/uml-overview` are not yet registered in `special-branches.json`.
+So in the chain the owner named, **fhir-ast → ig-docs → gh-pages**, every member exists as a branch, and one (fhir-ast) already has a schema. **None is declared as a graph, and there is no edge anywhere.** The node schemas are work item `folio-assistant-lehh` (owner: *"was an AST schema somewhere. pickup. add schemas for lean-cache … and gh-pages too"*). The two route branches `cat/fhir-harness/ig-docs` and `cat/cat-harness/uml-overview` are not yet registered in `special-branches.json`.
 
 **Who would read it.** All three of these walk dependencies today by
 convention or by hand:
@@ -63,8 +63,8 @@ convention or by hand:
   declared *per gate* (15 of 114 declare inputs), not per graph.
 - **The staging cut** (`feature-staging.yml`, `compose-docs.ts`
   `carriedInstances()`) is a path-prefix match. It drops smart-trust from a
-  preview when `gen-ig-pages.ts` changes (bean `4j86`).
-- **The main publish job** for route branches (bean `lbz8`) does not exist yet,
+  preview when `gen-ig-pages.ts` changes (work item `4j86`).
+- **The main publish job** for route branches (work item `lbz8`) does not exist yet,
   and will need to know what to republish after a merge.
 
 ## Proposal
@@ -89,7 +89,7 @@ convention or by hand:
   have to name fhir-harness's pages, which is the wrong direction for the
   layering gates.
 - **Directory granularity, deliberately.** File-level reachability inside a
-  graph belongs to the staging cone (bean `4j86`), which combines these edges
+  graph belongs to the staging cone (work item `4j86`), which combines these edges
   with the generators' import closures. This edge answers only "which graphs
   can invalidate this one".
 - **Generators are code, not graphs.** The staging cone reaches a generator by
@@ -150,7 +150,7 @@ convention or by hand:
    stack.
 2. **Re-layer both the IG pages and the artefact index as `derived`**
    (option 1 of 3). They leave the content sweep, and findings go to their
-   generators, as `library/` did (bean `hqku`).
+   generators, as `library/` did (work item `hqku`).
 3. **An edge across a missing `needs` path is a RATCHET** (option 1 of 3). The
    gate reports it as a layering gap in a baseline with a reason; a new gap
    fails, and a cleared one shrinks the baseline. The chrome dependency is
@@ -160,5 +160,5 @@ convention or by hand:
 
 - Building any of it in this note. The schema change follows, now that the
   owner has answered.
-- File-level reachability (bean `4j86`) and the main publish workflow (bean
+- File-level reachability (work item `4j86`) and the main publish workflow (work item
   `lbz8`). Both consume this edge, and neither is designed here.

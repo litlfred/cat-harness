@@ -75,7 +75,7 @@ orchestrator) must say **how** it knows who the actor is. A `Principal` carries
 | `none` | nobody named | a step recorded with no `actor` |
 
 The second half of GitHub as access control needs no code: the KG data store
-is a git repository on GitHub. An instance file, a bean or a content change
+is a git repository on GitHub. An instance file, a work item or a content change
 becomes durable **only through a push GitHub has authorised**. The in-process
 check decides whether the step may be recorded; branch protection and push
 rights decide whether the record lands.

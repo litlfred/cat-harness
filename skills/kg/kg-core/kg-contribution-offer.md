@@ -4,7 +4,7 @@ description: >-
   Ask whether agreed requirements should become knowledge-graph content, and as
   what — in a form the person can answer by selecting. Use at the end of CRDM
   sign-off, or whenever a body of agreed work could become a skill, a process,
-  a schema or a bean and nobody has been asked. Offers "none" as a first-class
+  a schema or a work item and nobody has been asked. Offers "none" as a first-class
   answer.
 agents:
   - platform-boundary-guard
@@ -87,7 +87,7 @@ writes:
 | a **schema** (`schemas`) | it constrains the shape of data |
 | a **Tool** (`tools`) | it is a capability with declared io |
 | **documentation** (`docs`) | it is a **design-memory asset** — see below |
-| a **bean** (`beans`) | it is work to be done, not knowledge to be kept |
+| a **work item** (`beans`) | it is work to be done, not knowledge to be kept |
 | an **`fsh-guts` proposal** | it is a design not yet agreed — and see the warning below |
 | **folio content** (`folio`) | it is subject matter, not platform |
 | **none** | it is already captured by the issue and the code |
@@ -107,7 +107,7 @@ behind a schema: each is an artefact of the work rather than its output. It is
 not subject matter, so it is not `folio`. It is not a rule an agent follows,
 so it is not a skill (a skill is read by an agent about to act; a design
 record by a person asking *why is it like this*). It is not work outstanding,
-so it is not a bean. **It is memory**, and `docs/` is where an instance keeps
+so it is not a work item. **It is memory**, and `docs/` is where an instance keeps
 memory a person reads.
 
 ### Not `fsh-guts`
@@ -151,9 +151,9 @@ should be blue"* becomes a commit and nothing else.
 1. Run [`placement`](placement.md) for the chosen kind — it decides instance,
    graph and node kind, and catches a hardcoded path or a literal naming one
    folio.
-2. Create a **bean** for the authoring work, parented to the feature's epic.
+2. Create a **work item** for the authoring work, parented to the feature's epic.
    The offer produces a decision, not a node; writing it is work, and work is
-   a bean before it is a file.
+   a work item before it is a file.
 3. Record the answer where the next agent will see it — on the issue, with the
    round summary [`issue-working`](../../../sdlc/skills/sdlc-core/issue-working.md) already requires.
 
@@ -170,4 +170,4 @@ asked.
 | where the answer lands | [`placement`](placement.md) |
 | the process step | [`crdm-signoff.bpmn`](../../../processes/process/crdm-signoff.bpmn) |
 | the round summary that records it | [`issue-working`](../../../sdlc/skills/sdlc-core/issue-working.md) |
-| why work becomes a bean first | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) |
+| why work becomes a work item first | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) |

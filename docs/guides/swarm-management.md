@@ -19,7 +19,7 @@ nav_order: 13
 ## What a swarm is here
 
 Several agents working one goal in parallel, each against a disjoint slice of
-the corpus, rolling up into one parent bean. It is the most expensive tool the
+the corpus, rolling up into one parent work item. It is the most expensive tool the
 harness offers.
 
 ## The rule that matters most

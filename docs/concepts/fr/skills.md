@@ -144,7 +144,7 @@ de contenu, et non des alternatives entre lesquelles choisir.
 |------------|----------|
 | `prepare-merge` | Amener une branche à un état propre/au vert/fusionnable (voir aussi `watch`) |
 | `bean-coordination` | Discipline d'appropriation et de coordination multi-agents |
-| `todo-manager` | Discipline des tâches basées sur les beans (beans-as-todos) |
+| `todo-manager` | Discipline des tâches basées sur les work items (beans-as-todos) |
 
 ### Lots de compétences de plateforme (`skills/tools/folio-core`, `folio-assistant-core/skills/content/folio-document-adapter`, `folio-assistant-sci/skills/content/folio-paper-adapter`)
 

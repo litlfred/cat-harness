@@ -236,7 +236,7 @@ For each new skill file:
    > 3) **Not relevant** — record so the watcher doesn't re-prompt
    >    on future main-refreshes.
 
-4. **Record the decision** as a note on the watcher's bean (or in chat for
+4. **Record the decision** as a note on the watcher's work item (or in chat for
    the bare `/watch` flow) so subsequent main-refreshes don't re-prompt for
    the same skill.
 

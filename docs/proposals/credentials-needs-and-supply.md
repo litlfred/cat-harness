@@ -23,7 +23,7 @@ change.
 > | **D3** placement | **A: a `credentials/` directory per instance** | **default applied.** The owner did not answer, so this can be reopened |
 > | **D4** signing | **A: declare `sign-artefact` now, and build it after wallet-custody Q1 and Q7** | **ruled by the owner** |
 >
-> Four follow-up beans under epic `5a3l` carry the work. None of them is built
+> Four follow-up work items under epic `5a3l` carry the work. None of them is built
 > yet:
 >
 > - `k3ml`: the `secrets` skill, with the App setup walkthrough for a
@@ -117,7 +117,7 @@ right, and §10 lists it as a falsifier.
 
 ### 1.3 Where these proposals already left the question
 
-- [Wallet custody](wallet-custody.html) (#370, bean `61tg`): the owner ruled
+- [Wallet custody](wallet-custody.html) (#370, work item `61tg`): the owner ruled
   that a self-sovereign harness **may** hold credentials, and set one rule:
   **no secret is ever in the repository.** It then asks seven questions. §8
   maps this proposal onto them.
@@ -129,10 +129,10 @@ right, and §10 lists it as a falsifier.
 - [Actors, ODRL and PROV-O](odrl-prov-actor-model.html): permissions are W3C
   ODRL 2.2 rules, and every task run is a `prov:Activity`. A credential need
   is ODRL-shaped (an action on a target), and §2.3 makes use of that.
-- Bean `r0rq` (completed): signing has **two routes**, an API signer and a
+- Work item `r0rq` (completed): signing has **two routes**, an API signer and a
   human signer, and an actor's network reach chooses between them. §5 places
   it.
-- Bean `zakj` (archived): `check-secret-leaks.ts` catches leaked tokens by
+- Work item `zakj` (archived): `check-secret-leaks.ts` catches leaked tokens by
   their prefix. It answers "did a value reach a file?", which is the opposite
   question to this one.
 
@@ -333,7 +333,7 @@ axis.
 | publish a package | **OIDC trusted publishing** (npm, PyPI). Delete the stored token | the same | OIDC if the registry supports it; otherwise a registry token in a protected variable | a local registry, or none |
 | call a hosted model | a repository secret, in an environment | an organization secret plus an environment | a protected CI variable or the vault | keystore; or none (`open-weight-local`) |
 | provision or deploy a host | a secret in an environment with a **required reviewer** | the same, with org-level reviewers | the vault over OIDC | not applicable: own hardware |
-| **sign an artefact** | Sigstore keyless over OIDC (public repositories) | the same, or an org key in a KMS | an institution key in an HSM or KMS | **an institution key in the wallet / HSM**, through the human route of bean `r0rq` when air-gapped |
+| **sign an artefact** | Sigstore keyless over OIDC (public repositories) | the same, or an org key in a KMS | an institution key in an HSM or KMS | **an institution key in the wallet / HSM**, through the human route of work item `r0rq` when air-gapped |
 
 **Why the App is the P1 recommendation even though the account is
 personal.** An App can be installed on a personal account. One App covers (a),
@@ -448,7 +448,7 @@ the branch can read it.
 | PyPI wheels (`pyhecke`) | OIDC trusted publishing | the workflow | attestations not measured here |
 | the JSON-LD graph export (`export-graph.ts --provenance`) | — | `prov:wasDerivedFrom` and `prov:generatedAtTime` **inside** the file | **no.** These are PROV *claims*, and anyone who can write the file can write them |
 | session cookies on the folio host | — | — | MAC'd with `COOKIE_SECRET`. That is a symmetric key, so only the gateway itself can check it. It authenticates sessions **to the gateway** and is not an attestation anybody else can verify |
-| the published docs site, QA sidecars, beans, releases | — | — | **no** |
+| the published docs site, QA sidecars, work items, releases | — | — | **no** |
 
 **So, plainly: the harness signs nothing it publishes.** The only signatures
 on the published path are made by third parties: GitHub's web-flow key on UI
@@ -473,7 +473,7 @@ The mechanism depends on the profile (§3.2):
   institution.
 - **P3 / P4:** an **institution key**. This is wallet-custody Q1's
   "institution's signing keys". It sits in an HSM, a KMS or the wallet, and
-  bean `r0rq` gives it two routes: the API signer when the signing actor has
+  work item `r0rq` gives it two routes: the API signer when the signing actor has
   network reach, and a **human signer** when it does not.
 
 The difference between the two bullets is **who vouches**. "This CI run
@@ -491,14 +491,14 @@ deployment's profile says which one it makes.
 | read `needs.json`, `profile.json` and `registry.json` | sees, asks for, accepts, echoes, stores or forwards a secret **value** |
 | read secret **names** and their `updated_at`, when it is permitted to (§1.2: from this session it is not) | runs `gh secret set`, `gh secret delete` or their forge equivalents |
 | compare needs, workflow usage, names present and the registry, and report the result | creates a PAT, an App key, a deploy key or a forge token |
-| remind the holder before something expires: in the session-start sweep, on the health issue, in a bean | rotates or revokes on its own initiative (**deletion-requires-confirmation**: it reports what would go and waits) |
+| remind the holder before something expires: in the session-start sweep, on the health issue, in a work item | rotates or revokes on its own initiative (**deletion-requires-confirmation**: it reports what would go and waits) |
 | draft the exact human steps (§6.3) for the person to carry out | writes anything derived from a value (a hash, a prefix, a length) |
 | dispatch a workflow that *uses* a secret, **if** an ODRL rule grants it `dispatch-workflow` on that consumer | treats "the person pasted it into the chat" as permission to use it |
 
 **If a value is pasted into a chat,** the agent says that the value is now
 exposed: it sits in a transcript, and possibly in a provider's logs. It
 recommends rotation using the steps in §6.3, and it does not use the value.
-The leak scanner from bean `zakj` covers the case where the value reaches a
+The leak scanner from work item `zakj` covers the case where the value reaches a
 file. This rule covers the case where it reaches a conversation.
 
 **Who holds each mechanism.** Add, rotate and revoke belong to the holder,
@@ -604,8 +604,8 @@ Its sections, with the GitHub UI paths the skill would carry:
 - No credential for a *person's* health data. That stays wallet custody's
   subject.
 - No live-store connection in sovereign cloud. That is still "artefacts only"
-  (owner, 2026-09-24, bean `4y2i`).
-- No historical secret sweep. Bean `zakj` ruled it out of scope with its
+  (owner, 2026-09-24, work item `4y2i`).
+- No historical secret sweep. Work item `zakj` ruled it out of scope with its
   reason.
 
 ---
@@ -676,8 +676,8 @@ repository needs, and what the checker validates.
 | B. Comments inside each workflow's YAML | — | nothing new to declare | no schema, nothing to check against, no ODRL rendering | yes |
 | C. One central registry in cat-harness for every repository | — | one file | cat-harness would describe repositories above and beside it, which reverses the dependency direction | costly to undo |
 
-**Recommendation: A.** **If you say nothing:** A, as the follow-up bean's
-design, with the kinds proposed and not registered until that bean is built.
+**Recommendation: A.** **If you say nothing:** A, as the follow-up work item's
+design, with the kinds proposed and not registered until that work item is built.
 
 **Question:** should each instance declare its credential needs, profile and
 expiry registry in its own `credentials/` directory?
@@ -742,6 +742,6 @@ The CRDM process continues from Phase 1. The needs statement and the current
 process with its gap (§1, §2.1) go on issue #363, because epic `5a3l` lives
 there. A separate issue is opened only if the owner wants one, since an agent
 does not create issues unasked. After D1–D4 are decided, Phase 3 writes the
-requirements, and the follow-up beans (skill, checker, three graph kinds, two
+requirements, and the follow-up work items (skill, checker, three graph kinds, two
 workflow renames) are opened then and not before. When the feature ships,
 this page moves to `docs/requirements/`.

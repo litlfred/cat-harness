@@ -25,7 +25,7 @@ directory, title, badges and a `PAGES` constant as literals) in a repo whose
 (`bun run scripts/readme-metadata.ts`) where the platform's scripts are not —
 so it could only run from a platform checkout, which has no papers.
 
-**Archived 2026-09-19** (bean `folio-assistant-4kiw`). Superseded by
+**Archived 2026-09-19** (work item `folio-assistant-4kiw`). Superseded by
 `skills/kg/kg-core/placement.md` Step 4, which states the rule under this
 entry's own name — *"Compose nothing; resolve everything"* — with this
 entry's evidence intact (all twenty-three chapter links 404 and always had

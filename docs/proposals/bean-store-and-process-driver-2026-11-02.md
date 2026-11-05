@@ -39,7 +39,7 @@ The software that enforces this is the **harness**.
 This proposal does four things:
 
 1. **One work plan, any storage.** The list of work items (each one a
-   **bean**) is kept by a store that offers a fixed set of operations (read,
+   **work item**) is kept by a store that offers a fixed set of operations (read,
    update, note, history, "where is this item in its process?"). Today the
    store is a git branch; tomorrow it can be a server or an MCP service.
    Nothing that uses the work plan needs to change when the storage does.
@@ -78,10 +78,10 @@ This proposal does four things:
 | **Tool** (capital T) | A concrete way of doing something the harness needs, for example "keep the work plan on a git branch" or "start a Claude agent". Several Tools can do the same job; a deployment picks one |
 | **MCP** | Model Context Protocol: a standard way for an AI agent to call tools and fetch data from a server |
 | **knowledge graph** | The authored content and its links (L1, L2, L3 and the harness's own definitions), which agents read from instead of guessing |
-| **bean** | One work item: a title, a status (`todo`, `in-progress`, `completed`…), a description and links to other items. Named after the `beans` tool that manages them |
-| **work plan**, **Beans store** | All the beans, plus the process instances that track them |
+| **work item** | One work item: a title, a status (`todo`, `in-progress`, `completed`…), a description and links to other items. Named after the `beans` tool that manages them |
+| **work plan**, **Work items store** | All the work items, plus the process instances that track them |
 | **deployment description** | A file saying how one installation is set up: where each actor runs, which Tools it uses, which credentials it is allowed (by name only) |
-| **work order** | What an agent is handed when a step is ready: the bean, the step, the role's skills, how to report back |
+| **work order** | What an agent is handed when a step is ready: the work item, the step, the role's skills, how to report back |
 | **launch Tool** | A Tool that starts an agent of one model, for example Claude through `beans-serve` or Gemini through Antigravity |
 | **Route 0 / A / B** | The concept note's evaluation routes: **0** the bare model; **A** the model with skills; **B** the model with skills and the knowledge graph |
 | **bean-aware / bean-blind** | Whether the agent is told it is working a tracked item (§4.9) |
@@ -90,7 +90,7 @@ This proposal does four things:
 | **DAK** | Digital Adaptation Kit: WHO's published L2 package for a guideline (documents, spreadsheets of data elements and decision logic), usually as PDF and Excel files |
 | **FHIR implementation guide (IG)** | A published, versioned set of FHIR resources (the L3 computable form of a guideline), identified by its canonical URL and version |
 | **run profile** | A named, saved set of test options (models, knowledge sources, tool access, tools on or off, route, context mode) that a test run uses, so every run with the same profile is set up the same way (§4.12) |
-| **trace** | The ordered record of a run: every step reached or refused, every change to a bean, what the agent did |
+| **trace** | The ordered record of a run: every step reached or refused, every change to a work item, what the agent did |
 | **Antigravity** (`agy`) | Google's agent environment through which Gemini is run |
 | **`AGENTS.md`, `CLAUDE.md`, `GEMINI.md`, `MEMORY.md`** | The instruction files an agent reads first. `CLAUDE.md` and `GEMINI.md` point at the shared `AGENTS.md`; `MEMORY.md` holds what a role should remember between sessions |
 
@@ -163,21 +163,21 @@ work plan**, so a run needs a store of its own (§4.7).
 
 Owner, 2026-11-02:
 
-> we have a bean data store as part of our processes/skills/tools. i want to
+> we have a work item data store as part of our processes/skills/tools. i want to
 > make sure documentation is complete. currently we are using github repo
 > branch as one Tool. another Tool could be using the server (there is an mcp
-> service for example) to manage bean state. can we make sure that process
+> service for example) to manage work item state. can we make sure that process
 > documentation is independent of Tool.
 >
-> we also have a bpmn state machine. i think that can use beans already as
+> we also have a bpmn state machine. i think that can use work items already as
 > part of context for agents (if not it should be). the state machine should
-> be able to start a agent (e.g. via API) and give a bean (which is tagged
+> be able to start a agent (e.g. via API) and give a work item (which is tagged
 > hopefully with process + task + etc.) that the agent is supposed to work on
 > and also track process with (as they go through processes and tasks). we
-> should be able to track the evolution of the bean over time.
+> should be able to track the evolution of the work item over time.
 
 > also in proposal doc, i want to integrate ITB as the testing tool for this.
-> so it needs to spin up a bpmn state machine, a bean data store as part of
+> so it needs to spin up a bpmn state machine, a work item data store as part of
 > test harness. then a testplan would be to start "agents A, B, C,... each
 > with their bean sets S_A, S_B, ..." and see what end state is/monitor
 > behaviour.
@@ -191,12 +191,12 @@ Owner, 2026-11-02:
 Owner, 2026-11-03:
 
 > One of the ways that we want to be able to run an agent on a process is to
-> use the bean context. However, as part of the testing scenarios, we should
-> also include divorcing the content of the bean from the fact that it is a
-> bean. In particular, we want to have test scenarios in which the agent is
-> running without any knowledge of beans, as in a real world situation, but
-> the prompting is fixed from the active bean being tested. In other words,
-> the bean is the test context.
+> use the work item context. However, as part of the testing scenarios, we should
+> also include divorcing the content of the work item from the fact that it is a
+> work item. In particular, we want to have test scenarios in which the agent is
+> running without any knowledge of work items, as in a real world situation, but
+> the prompting is fixed from the active work item being tested. In other words,
+> the work item is the test context.
 
 Owner, 2026-11-03, on the test configuration:
 
@@ -216,12 +216,12 @@ The goals that follow:
 | Goal | In plain words |
 |---|---|
 | **G1** | Process and skill text says *what* happens to the work plan, never *how one storage does it* |
-| **G2** | An agent working a step is given its bean as context |
-| **G3** | The harness can start an agent on a step and hand it the bean, tagged with its process and step |
-| **G4** | A bean's history can be read whatever storage backs it |
+| **G2** | An agent working a step is given its work item as context |
+| **G3** | The harness can start an agent on a step and hand it the work item, tagged with its process and step |
+| **G4** | A work item's history can be read whatever storage backs it |
 | **G5** | The same process can be run by any model, under Route 0, A or B, leaving a trace that can be scored and compared |
-| **G6** | The ITB runs these tests: a private harness per run, several agents with their own beans, the end state and behaviour checked, and agents unable to tell a test from real work |
-| **G7** | A test can give the agent its task without the bean: a fixed prompt written from the bean, the agent unaware of beans, the bean still the test's context |
+| **G6** | The ITB runs these tests: a private harness per run, several agents with their own work items, the end state and behaviour checked, and agents unable to tell a test from real work |
+| **G7** | A test can give the agent its task without the work item: a fixed prompt written from the work item, the agent unaware of work items, the work item still the test's context |
 | **G8** | Every run is set up from a standing configuration: which model, which knowledge sources (the full knowledge graph, published DAK files, GitHub repositories, published FHIR implementation guides, any combination or none), MCP services or local command line only, and which tools (and so which skills) are on, with the same infrastructure and prompting whatever is chosen |
 
 ---
@@ -232,15 +232,15 @@ The goals that follow:
   was written, but it was phrased in terms of git, and **nothing tested it**.
 - **The process diagrams were already storage-neutral.** The skills were
   not: about 57 lines in 7 skills told agents to run git commands to change
-  a bean.
-- **The engine wrote beans one way only**: by running the `beans` command or
+  a work item.
+- **The engine wrote work items one way only**: by running the `beans` command or
   editing the file directly. A server-backed store could not be used without
   changing the engine.
-- **Agents got bean ids, not beans.** A step's context named its beans but
-  did not carry their content, and nothing on a bean said which process or
-  step it was at; the only way to place a bean was to read every instance.
+- **Agents got work item ids, not work items.** A step's context named its work items but
+  did not carry their content, and nothing on a work item said which process or
+  step it was at; the only way to place a work item was to read every instance.
 - **Nothing in the harness started an agent.** `beans-serve` (a separate
-  beans server) can already start a Claude agent per bean. Gemini through
+  work items server) can already start a Claude agent per work item. Gemini through
   Antigravity, GitHub Copilot and local agents were all started by hand, with
   a prompt written for each model.
 - **History lived only in git**, with no way to ask for it, and recording
@@ -259,17 +259,17 @@ guarantee a test can check:
 
 | Operation | What a caller can rely on |
 |---|---|
-| `get(id)` | the bean as last written, or "none" |
-| `list(filter)` | beans by status, type, tag or parent |
+| `get(id)` | the work item as last written, or "none" |
+| `list(filter)` | work items by status, type, tag or parent |
 | `create(bean)` | the id is unique |
-| `update(id, change, ifMatch)` | refused if someone else changed the bean since you read it (`ifMatch` is the version you read); a retry on the fresh version lands, so **no concurrent change is ever lost** |
-| `note(id, text, by)` | added to the bean's notes, never rewriting earlier ones |
+| `update(id, change, ifMatch)` | refused if someone else changed the work item since you read it (`ifMatch` is the version you read); a retry on the fresh version lands, so **no concurrent change is ever lost** |
+| `note(id, text, by)` | added to the work item's notes, never rewriting earlier ones |
 | `history(id)` | every change, oldest first: when, by whom, what, and from which process step |
-| `positions(id)`, `beansAt(process, step)` | where a bean is in its processes, and which beans are at a step (§4.4) |
+| `positions(id)`, `beansAt(process, step)` | where a work item is in its processes, and which work items are at a step (§4.4) |
 
 **Archiving** is a field set through `update`, not a separate operation
-(ruled, Q7): it is refused unless the bean is completed or scrapped, and an
-archived bean can still be read.
+(ruled, Q7): it is refused unless the work item is completed or scrapped, and an
+archived work item can still be read.
 
 **One conformance test suite** checks every Tool against these guarantees.
 *Built: the contract (cat-harness#993), the tests (cat-harness-tools#1418).*
@@ -279,7 +279,7 @@ archived bean can still be read.
 | Tool | Kept where | Status |
 |---|---|---|
 | git state branch | a git branch per work plan, read and written with the `beans` command or by editing files | today's storage; has its own page |
-| beans server | `beans-serve`, which already offers versioned updates | proposed |
+| work items server | `beans-serve`, which already offers versioned updates | proposed |
 | MCP service | an MCP server offering the operations as tools to any agent | proposed (§4.10) |
 | run-scoped store | a private store for one test run (§4.7) | proposed |
 
@@ -289,7 +289,7 @@ in work-plan skills outside a Tool page.
 
 ### 4.3 The engine uses the operations
 
-The engine reads and writes beans only through the operations, so the Tool
+The engine reads and writes work items only through the operations, so the Tool
 can change without touching it. **Which Tool** is named in the deployment
 description (ruled, Q2), for example `"stores": { "work-plan":
 "beans-git-branch" }`; a checkout says which description is its own with the
@@ -300,13 +300,13 @@ never silently replaced by the real work plan. *Built (cat-harness-tools#1420,
 
 ### 4.4 Where a bean is, and what the agent is given
 
-A bean's position lives **only in the process instances** that name it
+A work item's position lives **only in the process instances** that name it
 (ruled, Q1): there is one source of truth and nothing to keep in step.
 `positions(id)` and `beansAt(process, step)` read the instances, including
 the sub-processes an instance calls. *Built (cat-harness-tools#1421).*
 
 When the engine reports what step is ready, each step's context now carries
-its beans themselves (title, status, description, links, position), not only
+its work items themselves (title, status, description, links, position), not only
 their ids. *Built (cat-harness-tools#1423).*
 
 ### 4.5 The process starts the agent
@@ -317,7 +317,7 @@ launch Tool:
 
 | Work order field | From |
 |---|---|
-| the bean | `get` and `positions` |
+| the work item | `get` and `positions` |
 | the instance and step | the token |
 | role, skills, conventions | the step's context |
 | the store | which Tool to use and how to reach it |
@@ -331,14 +331,14 @@ is checked by a test instead of depending on someone copying a prompt into
 
 | Launch Tool | Model | Today |
 |---|---|---|
-| `launch-beans-serve` | Claude, through the beans server | exists; **first** (ruled, Q3) |
+| `launch-beans-serve` | Claude, through the work items server | exists; **first** (ruled, Q3) |
 | `launch-claude-session` | Claude, cloud session or routine | API exists, no Tool yet |
 | `launch-antigravity` | Gemini through Antigravity, on the project the concept note requests | prompts written by hand today |
 | `launch-copilot` | GitHub Copilot | API exists, no Tool yet |
 | `launch-local` | any command-line agent | no |
 
 The agent reports by completing its step; that moves the token, writes the
-instance history and notes the bean, so the position and history stay current
+instance history and notes the work item, so the position and history stay current
 without anyone remembering to update them.
 
 ### 4.6 History: one event log
@@ -346,12 +346,12 @@ without anyone remembering to update them.
 Every change is an **event**: created, status changed, claimed, noted,
 changed, archived, step reached, each with when, who and what, and for a
 process step the instance and step. `history(id)` returns them in order. For
-the git Tool the events are derived from the git history of the bean plus the
+the git Tool the events are derived from the git history of the work item plus the
 instances' own histories, so nothing is migrated (ruled, Q4); a server Tool
 would keep them as rows. *Built (cat-harness-tools#1425).*
 
-Each bean's page shows this history with a stepper (buttons and keyboard),
-drawing the process the bean was in at each moment. *In review
+Each work item's page shows this history with a stepper (buttons and keyboard),
+drawing the process the work item was in at each moment. *In review
 (cat-harness-tools#1426).*
 
 ### 4.7 Benchmark runs: route, private store, trace
@@ -366,7 +366,7 @@ A benchmark run is the same dispatch with a few settings, not a new runner:
 | sources and tools | the run profile (§4.12): knowledge sources, MCP or command line, which Tools are on |
 | store | a **run-scoped store**: private to the run, seeded from the test case, thrown away after (ruled, Q5) |
 
-- **A test case** becomes seeded beans and started instances in the run's
+- **A test case** becomes seeded work items and started instances in the run's
   store: *Given* seeds, *When* dispatches, *Then* checks the store and the
   instances afterwards.
 - **The trace** is the run's history, its instance histories and every step
@@ -385,8 +385,8 @@ The harness offers it a few services, so a test step is a call, not a script:
 | Service | Does |
 |---|---|
 | `harness-up` | creates one private harness: a state machine, a run-scoped store and the run's context (below) |
-| `seed` | writes beans and started instances into it |
-| `start-agents` | starts each agent through its launch Tool, with its model, route, context mode and beans |
+| `seed` | writes work items and started instances into it |
+| `start-agents` | starts each agent through its launch Tool, with its model, route, context mode and work items |
 | `observe` | streams events while the run goes on |
 | `state` | the store and instances at a moment, for *Then* to check |
 | `harness-down` | exports the trace and removes the private store |
@@ -411,7 +411,7 @@ The ITB keeps its role of running the plan and judging the result; the
 result comes back in the ITB's own report format.
 
 **Agents should not know they are in a test.** What an agent sees is what it
-would see in real work: the same work order, operations and skills; beans
+would see in real work: the same work order, operations and skills; work items
 written as real work, never labelled as tests; the run's identity (plan,
 route, model) kept in the harness, never shown to the agent. What cannot be
 hidden (a fresh store, a short repository history) is listed on the test plan
@@ -437,28 +437,28 @@ knowledge graph; Route B all of it.
 Owner, 2026-11-03: *"the bean is the test context."*
 
 A run hands an agent its task in one of two ways. Both are measured against
-the same bean.
+the same work item.
 
 | | **Bean-aware** | **Bean-blind** |
 |---|---|---|
-| What the agent receives | the work order (§4.5): the bean, its step, the store, how to report | **one fixed prompt**, written from the bean |
+| What the agent receives | the work order (§4.5): the work item, its step, the store, how to report | **one fixed prompt**, written from the work item |
 | What the agent knows | that it is working a tracked item in a process | only the task, as a person would phrase it in real work |
 | Who records progress | the agent, by completing its step | the harness, observing what the agent produced |
 | What it measures | how well a model works *inside* the harness | how a model behaves on the same task *without* the harness telling it anything: the real-world case |
 
-**The fixed prompt.** For a bean-blind run, the bean under test is turned
+**The fixed prompt.** For a bean-blind run, the work item under test is turned
 into a prompt by a fixed, reviewed template: the task (from the title and
 description), the acceptance criteria, the material to work on. It contains
-no bean id, no store, no process or step names and no harness vocabulary; a
+no work item id, no store, no process or step names and no harness vocabulary; a
 check refuses a prompt that leaks any of them. The prompt is generated once,
 stored with the test case and identified by its hash, so **every model gets
 exactly the same words**, and a re-run is reproducible.
 
-**The bean is the test context.** The bean still exists, in the run's private
+**The work item is the test context.** The work item still exists, in the run's private
 store, and is what the test is scored against: its acceptance criteria are
 the *Then*. The harness plays the agent's part in the process: it watches what
 the agent produces (files, answers, a change), moves the instance and notes
-the bean on the agent's behalf, so the run leaves the same trace as a
+the work item on the agent's behalf, so the run leaves the same trace as a
 bean-aware run. The agent's own transcript is kept as its reasoning trace.
 
 **With the routes**, this gives a small grid to compare models in:
@@ -522,7 +522,7 @@ Each setting has one home:
 | which actors exist and where they run | the deployment's `placements` | `{ "actor": "agent-gemini", "compute": "vendor-cloud" }` |
 | which model an agent is, and how it is started | the placement's **`launch`** (proposed, Q8) | `{ "tool": "launch-antigravity", "model": "gemini-<version>" }` |
 | credentials | the placement's `credentials`, by the secret's **name** only, never its value | `{ "model-api": "GCP_WIF_ASSURED_AI" }` |
-| what is tested, with which beans per agent | the ITB test plan | `Given agent A (gemini, route B, bean-blind) …` |
+| what is tested, with which work items per agent | the ITB test plan | `Given agent A (gemini, route B, bean-blind) …` |
 | the agents' world | the context hash in the plan's *Background* | `Given the context "folio-assistant@<hash>"` |
 | knowledge sources, tool access, Tools on, route and context mode | the **run profile** the plan names (§4.12) | `Given the run profile "route-B-dak"` |
 
@@ -684,7 +684,7 @@ completes a task it should preserve memory/context. one Tool is a bean"*; *"so
 we remove beans from explicit in most diagrams, make sdlc a subgraph and clean
 up it and dependent harness use of beans"*.
 
-**Where beans reach a content layer today** (review of 2026-11-03):
+**Where work items reach a content layer today** (review of 2026-11-03):
 
 - Through the dependency chain: smart-base → fhir-harness →
   folio-assistant-core → cat-harness. smart-base mounts cat-harness whole, and
@@ -701,12 +701,12 @@ up it and dependent harness use of beans"*.
 - Through prose: about 200 of 265 cat-harness skill files say "bean", many
   only as a provenance id ("bean `kg83`").
 
-The bean **data** does not leak: it is on its own branch. The **words** do.
+The work item **data** does not leak: it is on its own branch. The **words** do.
 
-**A bean is tied to a process instance, not to a task.** An instance names
-its bean (`bean`, `carriedBeans`), and every sub-process it calls inherits it.
-Tasks only act on it: the `op` steps, a data output to the Beans store
-(Q-BR-8 F), and a call activity naming extra beans.
+**A work item is tied to a process instance, not to a task.** An instance names
+its work item (`bean`, `carriedBeans`), and every sub-process it calls inherits it.
+Tasks only act on it: the `op` steps, a data output to the Work items store
+(Q-BR-8 F), and a call activity naming extra work items.
 
 **Work context: what replaces the markup** (ruled, Q11: all three):
 
@@ -728,7 +728,7 @@ All three write to one **work-context store**, a role like the work plan
 
 | `stores["work-context"]` | Used by |
 |---|---|
-| `work-plan` (default): a bean in the work-plan store, with each line's metadata wrapped by the server | folio-assistant development and bean-aware runs (the real store); bean-blind test runs (the run-scoped store, Q5): the context is kept and measured, and the agent never learns it is a bean |
+| `work-plan` (default): a work item in the work-plan store, with each line's metadata wrapped by the server | folio-assistant development and bean-aware runs (the real store); bean-blind test runs (the run-scoped store, Q5): the context is kept and measured, and the agent never learns it is a work item |
 | `none` | a run that tests a cold start |
 
 Owner, 2026-11-03: *"the neutral work_context_note is in reality a bean with
@@ -744,7 +744,7 @@ This is separate from `agent-memory`, which assembles each agent's long-lived
 memory file; work context belongs to one item and one run.
 
 **Two switches, not one.** The harness's own machinery (store, engine,
-trace) stays on in a test run, because the bean is the test's context. What
+trace) stays on in a test run, because the work item is the test's context. What
 the **agent** is given (skills, knowledge graph, Tool list, instruction files,
 prompt) follows the run profile. A sub-graph that is switched off removes the
 material from the agent's context; it does not stop the harness using it.
@@ -752,14 +752,14 @@ material from the agent's context; it does not stop the harness using it.
 **`sdlc` becomes a named sub-graph of cat-harness** (ruled, Q12), on the
 pattern of `openapi/` and `archimate/`: one folder whose `graph.json` declares
 what it holds — the `sdlc` skills, the `sdlc` processes, the work-plan and
-work-context typologies, and the bean and workflow Tool definitions. It is
+work-context typologies, and the work item and workflow Tool definitions. It is
 off by default in every layer above cat-harness; folio-assistant switches it
 on. The MCP registrar and the skill scan honour the switch, and a whole-mount
 does not override it.
 
 **Clean-up** (ruled, Q13):
 
-- No bean markup in diagrams outside the `sdlc` sub-graph: no calls to
+- No work item markup in diagrams outside the `sdlc` sub-graph: no calls to
   `Process_BeanOpen`/`Process_BeanClose`, no `op` steps, no Beans-store data
   outputs. The engine does that work (above). This covers cat-harness,
   fhir-harness and smart-base.
@@ -767,15 +767,15 @@ does not override it.
   fields or the changelog).
 - Generic skills say *work context* and the operation, never "bean".
 - The instruction files are generated from the run profile.
-- Development checkouts keep beans on; every content layer's knowledge graph
+- Development checkouts keep work items on; every content layer's knowledge graph
   and every agent test context has them off.
 
 **The leak check, `check:context-leak`.** The runner is generic, in
 cat-harness-tools; the vocabulary is a code list the `sdlc` sub-graph
 declares. It scans a built context — every file, the live MCP tool list, the
 generated instruction files and the fixed prompt — and, in each content
-layer's CI, that layer's bean-blind context. It matches *bean*, the
-provenance-id pattern, `beans/`, the beans branch name, *work plan*,
+layer's CI, that layer's bean-blind context. It matches *work item*, the
+provenance-id pattern, `beans/`, the work items branch name, *work plan*,
 *work order*, the `workflow_*` and work-plan tool ids, `Process_Bean*` and
 `cat-harness.processes:bean`. It does **not** match *process*, *BPMN* or
 *business process*: DAKs hold business processes as content. "Could not
@@ -799,7 +799,7 @@ store**:
 - **A Role, not a Tool.** Like the work plan (§4.1), it is a set of
   operations — *keep* an entry, *recall* entries, *checkpoint* where the work
   stands — over a **scope**: one item, one run, or one shared space a group
-  of agents opens together. Beans are one Tool for it; a run-scoped store, a
+  of agents opens together. Work items are one Tool for it; a run-scoped store, a
   plain file store or a server are others. The deployment or run profile
   picks the Tool (`stores["memory"]`).
 - **Drawn only where a process needs it.** A diagram draws a standard BPMN
@@ -820,15 +820,15 @@ store**:
   `memory_recall`, `memory_checkpoint`) and their skill name no Tool. The
   backend wraps each entry with its metadata (process, step, instance, agent,
   time). It is its own Tool group, so a bean-blind agent can be offered it.
-- **Two kinds of work use beans for it today**, and both keep them:
+- **Two kinds of work use work items for it today**, and both keep them:
   software development (`sdlc`) and collaborative, agent-assisted content
-  development (folio-assistant). So the bean Tool is **not** inside `sdlc`:
+  development (folio-assistant). So the work item Tool is **not** inside `sdlc`:
   it is its own sub-graph, `beans`, which `sdlc` and folio-assistant both
   switch on. The memory store Role, its data store, its tools and its skill
   sit in cat-harness itself, outside both, so a content layer's diagram (a
-  DAK authoring process, say) can draw a memory store without naming beans.
+  DAK authoring process, say) can draw a memory store without naming work items.
 
-**A bean is a memory record with more structure** (owner, 2026-11-03:
+**A work item is a memory record with more structure** (owner, 2026-11-03:
 *"bean is a memory note w/ additional structure for process/role/ etc... can
 we formalize this a bit more in schema to show this and align a bit the
 services"*; ruled Q17, layered):
@@ -836,13 +836,13 @@ services"*; ruled Q17, layered):
 | Layer | Schema | Store interface | What it adds |
 |---|---|---|---|
 | memory record | `memory-record` (new base) | `MemoryStore`: keep, recall, checkpoint, list by scope | id, title, scope (item, run, shared), `about`, tags, timestamps, and **structured entries**: each with text, when, who, kind (note, step done, checkpoint, taken up, closed) and, when the engine knows them, process, step, instance and role |
-| bean | `bean-defs` extends `memory-record` | `WorkPlanStore` extends `MemoryStore`: create, update with `ifMatch`, relations, positions, beansAt | status lifecycle, type, priority, parent and blocking |
+| work item | `bean-defs` extends `memory-record` | `WorkPlanStore` extends `MemoryStore`: create, update with `ifMatch`, relations, positions, beansAt | status lifecycle, type, priority, parent and blocking |
 
-So the memory service and the bean service are **one service**: a memory
-note is a bean note without the work-item fields, and the process and role
-are entry metadata the backend fills in. The beans Tool implements both
-layers and keeps entries in the bean body as lines it can parse back (the
-conformance tests check the round trip, so existing beans stay valid); a
+So the memory service and the work item service are **one service**: a memory
+note is a work item note without the work-item fields, and the process and role
+are entry metadata the backend fills in. The work items Tool implements both
+layers and keeps entries in the work item body as lines it can parse back (the
+conformance tests check the round trip, so existing work items stay valid); a
 file store implements only `MemoryStore`. The curated agent memory (the
 `memory` kind, "never written by a process") stays separate.
 
@@ -854,8 +854,8 @@ processes"*):
 | Scenario | The agent is offered | Behind it |
 |---|---|---|
 | no memory | no memory tools | nothing kept for the agent; the harness still records the run |
-| memory, neutral | `memory_note`, `memory_recall`, `memory_checkpoint` | beans (run-scoped) or the file store, chosen by the run profile |
-| beans and SDLC | the bean Tools and the `sdlc` processes and skills | the run-scoped beans store, bean-aware (§4.9) |
+| memory, neutral | `memory_note`, `memory_recall`, `memory_checkpoint` | work items (run-scoped) or the file store, chosen by the run profile |
+| work items and SDLC | the work item Tools and the `sdlc` processes and skills | the run-scoped work items store, bean-aware (§4.9) |
 
 Each is a run profile (§4.12), so the same case runs under all three and the
 ITB compares them.
@@ -867,14 +867,14 @@ ITB compares them.
 | 1 | The contract as operations; the git Tool's own page (§4.1, §4.2) | merged (cat-harness#993) |
 | 2 | Conformance tests, run against the git Tool | merged (cat-harness-tools#1418) |
 | 3 | The engine uses the operations (§4.3) | merged (#1420) |
-| 4 | Where a bean is; the bean in each step's context (§4.4) | merged (#1421, #1423) |
+| 4 | Where a work item is; the work item in each step's context (§4.4) | merged (#1421, #1423) |
 | 4c | The deployment names the store (§4.3) | merged (#1424); deployments updated in cat-harness#1005 |
 | 5 | History and its event model (§4.6) | merged (#1425) |
-| 5b | The history stepper on each bean's page; open/closed filter; all stores on one page | in review (#1426, #1428, #1432) |
+| 5b | The history stepper on each work item's page; open/closed filter; all stores on one page | in review (#1426, #1428, #1432) |
 | 6 | Skills say the operation, not the git command; a check keeps it so | next |
 | 7 | *Dispatch agent* and the first launch Tool, `launch-beans-serve` (§4.5) | |
 | 8 | A server Tool passes the same conformance tests | |
-| 9 | Run-scoped store; route and context-mode settings; a test case becomes seeded beans and instances (§4.7) | |
+| 9 | Run-scoped store; route and context-mode settings; a test case becomes seeded work items and instances (§4.7) | |
 | 9b | Bean-blind runs: the fixed-prompt template, the leak check, the harness recording on the agent's behalf (§4.9) | |
 | 10 | `launch-antigravity`; the same cases under Routes 0, A, B for Claude and Gemini; traces exported for the ITB | |
 | 11 | The context builder: one pinned repository per run (§4.8) | |
@@ -883,17 +883,17 @@ ITB compares them.
 | 14 | `launch` on a placement (§4.11), once Q8 is ruled; the `itb-benchmark` deployment | |
 | 15 | Run profiles (§4.12): the file format and the standard profiles (`route-0`, `route-A`, `route-B`); the context builder reads knowledge sources from a profile (DAK files, GitHub repositories, FHIR implementation guides pinned); MCP or command-line Tools started with only the Tools that are on; skills and instruction files filtered to match; the prompt-equality check | |
 | 16 | The engine keeps work context at every task boundary; open and close done by the engine; `work_context_note` as its own Tool (§4.13) | merged (cat-harness-tools#1435; Tool nodes cat-harness#1010 in review) |
-| 17 | Bean markup out of the cat-harness diagrams outside `sdlc` (§4.13) | merged (cat-harness#1011, cat-harness-tools#1436) |
-| 18 | The `memory-record` base schema with structured entries, `bean-defs` extending it; `MemoryStore` (keep, recall, checkpoint over item, run and shared scopes) with `WorkPlanStore` extending it; the bean Tool for both; conformance tests for both layers; `stores["memory"]` (§4.14, Q17) | merged (cat-harness-tools#1437) |
+| 17 | Work item markup out of the cat-harness diagrams outside `sdlc` (§4.13) | merged (cat-harness#1011, cat-harness-tools#1436) |
+| 18 | The `memory-record` base schema with structured entries, `bean-defs` extending it; `MemoryStore` (keep, recall, checkpoint over item, run and shared scopes) with `WorkPlanStore` extending it; the work item Tool for both; conformance tests for both layers; `stores["memory"]` (§4.14, Q17) | merged (cat-harness-tools#1437) |
 | 19 | The engine binds a drawn `memory` data store: a task that reads it is handed the recalled entries, a task that writes it keeps its output; shared scopes for a swarm with `ifMatch` | merged (cat-harness-tools#1438) |
 | 20 | Neutral tools `memory_note`, `memory_recall`, `memory_checkpoint`, and their skill; `work_context_note` folded in | merged (cat-harness-tools#1438) |
 | 21 | A second memory Tool (a run-scoped file store) passes the same conformance tests, so the Role is proven Tool-neutral | merged (cat-harness-tools#1439) |
-| 22 | `check:context-leak` in report mode; `check:bean-calls` retired; `bpmn-authoring` teaches the memory store patterns instead of bean open and close | in review (cat-harness-tools#1440) |
-| 23 | Two named sub-graph folders of cat-harness, on the pattern of `openapi/` (Q18): `sdlc/` (the development processes and skills) and `work-plan/` (the bean Tool, its skills, the bean and workflow Tool definitions, the work-plan store skills). 23.1 the opt-in switch: a sub-graph marked `optIn`, a layer's `enableSubgraphs`, the development override; honoured by the directory resolver, the skill scan, the tool server and the mount plan. 23.2 the move, a clean break (no redirects). 23.3 the tools layer's paths and tests. 23.4 folio-assistant enables both; development-session hooks. 23.5 the leak check over a smart-base bean-blind context | in progress |
-| 24 | fhir-harness and smart-base: bean markup out of their diagrams; their instruction files generated; the leak check a gate in their CI | |
+| 22 | `check:context-leak` in report mode; `check:bean-calls` retired; `bpmn-authoring` teaches the memory store patterns instead of work item open and close | in review (cat-harness-tools#1440) |
+| 23 | Two named sub-graph folders of cat-harness, on the pattern of `openapi/` (Q18): `sdlc/` (the development processes and skills) and `work-plan/` (the work item Tool, its skills, the work item and workflow Tool definitions, the work-plan store skills). 23.1 the opt-in switch: a sub-graph marked `optIn`, a layer's `enableSubgraphs`, the development override; honoured by the directory resolver, the skill scan, the tool server and the mount plan. 23.2 the move, a clean break (no redirects). 23.3 the tools layer's paths and tests. 23.4 folio-assistant enables both; development-session hooks. 23.5 the leak check over a smart-base bean-blind context | in progress |
+| 24 | fhir-harness and smart-base: work item markup out of their diagrams; their instruction files generated; the leak check a gate in their CI | |
 | 25 | Provenance ids out of agent-facing skill text across the layers | |
 | 26 | folio-assistant's content-development processes draw the memory store where they need it (checkpoint, shared space) | |
-| 27 | Run profiles for the three memory scenarios (none, neutral memory, beans and SDLC), the memory Tool chosen per run, so the ITB compares them on the same cases | |
+| 27 | Run profiles for the three memory scenarios (none, neutral memory, work items and SDLC), the memory Tool chosen per run, so the ITB compares them on the same cases | |
 
 Steps 1 to 6 change nothing for anyone using the git branch today. Steps 9,
 10 and 12 are what the concept note's cloud credits and model access would
@@ -903,26 +903,26 @@ pay for; steps 1 to 8 come first and need neither.
 
 ## 6. Keeping the process recorded
 
-A bean's place in its process is only as good as the habit of recording it,
+A work item's place in its process is only as good as the habit of recording it,
 and nothing can force that: anyone can edit the work-plan branch directly.
 So (owner, 2026-11-03) the recorded path is made the easy one, and drift is
 reported, never blocked:
 
-- **Claiming or creating a bean starts its process.** The claim command
-  starts or advances the bean's process instance.
-- **Agents get the bean with its step** (§4.4), and completing the step
+- **Claiming or creating a work item starts its process.** The claim command
+  starts or advances the work item's process instance.
+- **Agents get the work item with its step** (§4.4), and completing the step
   records the move (§4.5).
-- **Drift is reported**: an in-progress bean that no running instance names
+- **Drift is reported**: an in-progress work item that no running instance names
   is flagged on the beans-by-process pages, in the repository health report
   and when a session starts.
-- **The skills say so**: working a bean means starting or advancing its
+- **The skills say so**: working a work item means starting or advancing its
   instance.
 
 ---
 
 ## 7. What this does not do
 
-- It does not move beans off the git branch; the git Tool stays the default.
+- It does not move work items off the git branch; the git Tool stays the default.
 - It does not change what the diagrams mean.
 - It does not decide what an agent works on: dispatch starts an agent only on
   a step the process has already made ready.
@@ -935,22 +935,22 @@ reported, never blocked:
 
 | | Question | Decision |
 |---|---|---|
-| Q1 | Where does a bean's position live? | **Only in the process instances**, read through store operations (2026-11-02) |
+| Q1 | Where does a work item's position live? | **Only in the process instances**, read through store operations (2026-11-02) |
 | Q2 | How is the store Tool chosen? | **By the deployment description** (2026-11-02); a checkout names its own with `CAT_DEPLOYMENT` |
 | Q3 | First launch Tool? | **`launch-beans-serve`** (2026-11-02) |
 | Q4 | Where does the git Tool's history come from? | **Derived from git history plus instance histories**, nothing migrated (2026-11-02) |
-| Q5 | Where does a benchmark run keep its beans? | **A run-scoped store** (2026-11-02) |
+| Q5 | Where does a benchmark run keep its work items? | **A run-scoped store** (2026-11-02) |
 | Q6 | Who drives a test run? | **The ITB**, calling the harness services (2026-11-02) |
 | Q7 | How is archiving expressed? | **A field set through `update`** (2026-11-02) |
 | Q8 | How does a deployment say which model runs each agent? | **Open.** Recommended: `launch: { tool, model }` on the agent's placement (§4.11). Default if unruled: that |
 | Q9 | Who records progress in a bean-blind run? | **Open.** Recommended: the harness, observing the agent's output (§4.9). Default if unruled: that |
 | Q10 | Where do run profiles live? | **Open.** Recommended: one file per profile, in a declared `test-run-profiles/` directory of cat-harness, beside the deployment descriptions, with a schema; a test plan names a profile by its id (§4.12). Default if unruled: that |
-| Q11 | How is an agent's context kept as it takes up, works and completes a task? | **All three** (2026-11-03): the engine at every task boundary; an optional neutral *Work context* data store in a diagram; the agent's own `work_context_note`. One work-context store, its Tool chosen by the deployment or run profile: beans, the run trace, or none (§4.13) |
+| Q11 | How is an agent's context kept as it takes up, works and completes a task? | **All three** (2026-11-03): the engine at every task boundary; an optional neutral *Work context* data store in a diagram; the agent's own `work_context_note`. One work-context store, its Tool chosen by the deployment or run profile: work items, the run trace, or none (§4.13) |
 | Q12 | Where does the development material sit? | **`sdlc` becomes a named sub-graph of cat-harness**, off in the layers above, switched on by folio-assistant (2026-11-03, §4.13) |
-| Q13 | Do diagrams carry bean markup? | **No, outside `sdlc`** (2026-11-03): the engine does open, close and the per-task record; cat-harness, fhir-harness and smart-base are cleaned up (§4.13) |
-| Q14 | When does a diagram draw the memory store? | **Only where the process needs memory** (2026-11-03): a checkpoint before stopping, a shared space for a swarm, a hand-over; never as bookkeeping. Beans are one Tool for it; there may be others (§4.14) |
-| Q17 | How are beans and the memory store formalised? | **Layered, one service** (2026-11-03): `memory-record` base schema with structured entries; `bean-defs` extends it; `WorkPlanStore` extends `MemoryStore` (§4.14) |
-| Q15 | Where does the bean Tool sit? | **Its own sub-graph** (2026-11-03, the default): `work-plan`, used by `sdlc` and by folio-assistant's content development; the memory store Role stays in cat-harness itself (§4.14) |
+| Q13 | Do diagrams carry work item markup? | **No, outside `sdlc`** (2026-11-03): the engine does open, close and the per-task record; cat-harness, fhir-harness and smart-base are cleaned up (§4.13) |
+| Q14 | When does a diagram draw the memory store? | **Only where the process needs memory** (2026-11-03): a checkpoint before stopping, a shared space for a swarm, a hand-over; never as bookkeeping. Work items are one Tool for it; there may be others (§4.14) |
+| Q17 | How are work items and the memory store formalised? | **Layered, one service** (2026-11-03): `memory-record` base schema with structured entries; `bean-defs` extends it; `WorkPlanStore` extends `MemoryStore` (§4.14) |
+| Q15 | Where does the work item Tool sit? | **Its own sub-graph** (2026-11-03, the default): `work-plan`, used by `sdlc` and by folio-assistant's content development; the memory store Role stays in cat-harness itself (§4.14) |
 | Q16 | Does the engine keep the basics when no memory store is drawn? | **Yes, whenever the deployment names a memory Tool** (2026-11-03, the default): taken up, each step done, closed; not drawn, not seen by the agent |
 | Q18 | How are `sdlc` and `work-plan` carved out? | **Named sub-graph folders**, `sdlc/` and `work-plan/`, like `openapi/` (owner, 2026-11-03: option 2), **a clean break**: *"dont worry old IRIs"* — no redirects. Off in every layer unless that layer enables it for itself; a development override turns them on in a working checkout |
 
@@ -964,7 +964,7 @@ Measured on cat-harness `f06cff0` and cat-harness-tools `main`.
 mechanical role with a `store` block; `skills/sdlc/sdlc-core/work-plan-store.md`
 was its contract; `processes/global-tasks.bpmn` declared one shared data store;
 the Tools `beans-cli`, `beans-manual`, `bean-query`, `bean-claim-check` and
-`work-plan-prime` satisfied the bean skills; the bean schema is
+`work-plan-prime` satisfied the work item skills; the work item schema is
 `schemas/kinds/bean-defs.schema.json`.
 
 **Git in the skills.** Lines naming git or the branch store: `todo-manager` 14,
@@ -978,25 +978,25 @@ called `applyWorkPlanOp` (`src/workflow/bean-link.ts`), which ran the `beans`
 command and fell back to editing the Markdown file.
 
 **Agent context.** `TaskContext` (`src/workflow/instance.ts`) carried
-`carriedBeans` (ids), role, skills and conventions; an instance named its bean
-but a bean named no instance.
+`carriedBeans` (ids), role, skills and conventions; an instance named its work item
+but a work item named no instance.
 
 **Starting agents.** No harness step started an agent. `beans-serve`
 (`litlfred/beans`) offers `sendAgentMessage`, `stopAgent` and session
-subscriptions, with a worktree per bean, running the `claude` command; a
-draft bean there wraps it in one MCP tool. The two experiment arms in
+subscriptions, with a worktree per work item, running the `claude` command; a
+draft work item there wraps it in one MCP tool. The two experiment arms in
 cat-harness-tools (`arm-forced.ts`, one step at a time with refusals;
 `arm-self-managed.ts`, the whole diagram) already measure the guardrail the
 concept note describes, for one case in-process.
 
-**History.** Git history of the beans branch and the instances' own
+**History.** Git history of the work items branch and the instances' own
 `history`; the 12 instances on the branch had last moved 28 to 42 days
 earlier (#988).
 
 **Gaps, as numbered in the first draft:** N1 contract names git behaviour;
 N2 skills give git commands; N3 engine writes through one Tool; N4 no history
-operation; N5 a bean does not record its position; N6 context carries ids not
-beans; N7 nothing starts an agent; N8 positions go stale; N9 no conformance
+operation; N5 a work item does not record its position; N6 context carries ids not
+work items; N7 nothing starts an agent; N8 positions go stale; N9 no conformance
 tests; N10 guardrails depend on how and which model is started; N11 no
 private store for benchmarks; N12 routes are no runner's setting and traces
 are scattered; N13 the ITB plan has no steps to stand up a harness or start

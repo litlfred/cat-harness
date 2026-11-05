@@ -13,7 +13,7 @@ This is the chrome every just-the-docs visualiser sits inside, the landing page 
 - `cat-harness/docs/index.md`: the landing page.
 - `cat-harness/docs/assets/js/docs-ui.js`:
   - `mountActionTiles`: the header controls and the launcher, whose settings view is **Page settings**
-  - the icon row: Todos, Beans, fsh-guts, More actions, scheme, each with a tooltip (`data-fa-tip`)
+  - the icon row: Todos, Work items, fsh-guts, More actions, scheme, each with a tooltip (`data-fa-tip`)
   - `mountSidebarRail`: On this page, Pages, Folders and Harnesses in one scroller
   - `mountGlass`: the "▾ Folio" handle, the sheet, the zoom control, the tile dock, and the Todos, **Glass settings** and More panels
 - `cat-harness/docs/assets/css/docs-ui.css`: the 56 px strip at rest and the 264 px open state at 800 px and wider, the tooltips, and the glass (`.fa-glass-*`).
@@ -44,7 +44,7 @@ The declared interaction profile is low-dexterity. That is why the tab bodies ar
 - **Tasks:**
   - know which instance they are in
   - jump to a harness and to its graphs (library, docs, processes …)
-  - reach the harness actions (todos, beans, fsh-guts, launcher, scheme)
+  - reach the harness actions (todos, work items, fsh-guts, launcher, scheme)
   - see the current page's sections
   - get home
   - reach page settings, language, QR and search
@@ -69,7 +69,7 @@ The declared interaction profile is low-dexterity. That is why the tab bodies ar
 ## Observed (built page: gh-pages from main 7ef9d3a, 2026-10-06)
 
 Web, at 1280×800:
-1. **At rest the sidebar is a 56 px strip.** From the top: the avatar, then Todos with a badge **3**, Beans **541**, fsh-guts **82**, More actions, and the scheme switch. Lower down are **▦** (Harnesses) and ⌂. Hovering a mark shows its name as a tooltip at x = 64 px ("Todos — 3 outstanding"), and the strip stays 56 px. No ☰ or × is drawn anywhere in the sidebar (0 by class, 0 by glyph).
+1. **At rest the sidebar is a 56 px strip.** From the top: the avatar, then Todos with a badge **3**, Work items **541**, fsh-guts **82**, More actions, and the scheme switch. Lower down are **▦** (Harnesses) and ⌂. Hovering a mark shows its name as a tooltip at x = 64 px ("Todos — 3 outstanding"), and the strip stays 56 px. No ☰ or × is drawn anywhere in the sidebar (0 by class, 0 by glyph).
 2. **Pinned open** by the avatar (264 px), from the top:
    - avatar and "C@T Harness"
    - the icon row
@@ -80,7 +80,7 @@ Web, at 1280×800:
    - ⌂ C@T Harness, pinned at the foot
 
    There is **one** scroll region, `.fa-nav-middle` (627 of 1,902 px on arrival). With every group unfolded it is still one region (627 of 6,297 px, 695 links), and nothing is clipped.
-3. **▦ Harnesses, one click from rest:** seven dividers. Folio Assistant lists Bean definitions, Beans, Docs, FSH guts (staging only), Issue marks, Todos, Uploads, and 12 kinds marked "no viewer yet". Each divider has a ⚙ for its properties. Folio Assistant → `/#harness-folio-assistant`; C@T Harness → `/#harness-cat-harness`; the trust IG, SMART Base, WHO IRIS and Folio Assistant Core → their own pages.
+3. **▦ Harnesses, one click from rest:** seven dividers. Folio Assistant lists Work item definitions, Work items, Docs, FSH guts (staging only), Issue marks, Todos, Uploads, and 12 kinds marked "no viewer yet". Each divider has a ⚙ for its properties. Folio Assistant → `/#harness-folio-assistant`; C@T Harness → `/#harness-cat-harness`; the trust IG, SMART Base, WHO IRIS and Folio Assistant Core → their own pages.
 4. **Main:**
    - the "▾ Folio" handle, fixed at top centre, 86×28, z-index 91
    - ⊕ language at the top left of the content, ⌕ search at the right
@@ -94,7 +94,7 @@ Web, at 1280×800:
    - The sheet tints and blurs the page. It holds the note "Nothing on your folio glass yet. To add something: …" and a zoom control.
    - **The dock arrives hidden.** Its tab reads "▴ Show tiles (18)", with `aria-expanded="false"`.
    - Shown, the dock holds **Todos, Glass settings, Library 42, Processes, Tools, Skills, +12 more**. scrollWidth is 1280 of 1280, and the 7 tiles draw 7 different glyphs.
-   - **+12 more** opens "More — every visualisation this folio declares, and where each tile lives". It holds 12 tiles, each with a "↓ Strip" action: Filter, Beans 943, Docs (C@T Harness), External schemas, Folio 5, Methodologies, Latent semantic indexes 1107, Docs (Folio Assistant), Schemas 235, Swimlane glossary, Translation sources 5, Uploads 30. They use **8 distinct drawings**. Folio, Docs (Folio Assistant), Swimlane glossary and Translation sources share one; External schemas and Schemas share another.
+   - **+12 more** opens "More — every visualisation this folio declares, and where each tile lives". It holds 12 tiles, each with a "↓ Strip" action: Filter, Work items 943, Docs (C@T Harness), External schemas, Folio 5, Methodologies, Latent semantic indexes 1107, Docs (Folio Assistant), Schemas 235, Swimlane glossary, Translation sources 5, Uploads 30. They use **8 distinct drawings**. Folio, Docs (Folio Assistant), Swimlane glossary and Translation sources share one; External schemas and Schemas share another.
    - **☑ Todos** opens "Todos — pull one onto your glass": 3 todos, each with "Pull out to folio", then "Open the full todo board".
    - **⚙ Glass settings** opens "Glass settings — theme, avatars, opacity, blur". Its first control is "**Page settings (scheme, reading, Discarded) →**". Then come:
      - Theme: Glass, High contrast, Paper, Night, Rose window, Leaded grid
@@ -135,4 +135,4 @@ Twelve findings. Each verdict comes from the built page above. **Fixed**: what t
 ### Seen on the build, not one of the twelve
 
 - At 1280×800 the Glass settings panel opens at y = 591, and its body sits under the dock until the glass is scrolled. **Fixed.** It opens fixed in the visible glass, below the zoom bar and above the dock's visible top, with the dock shown or hidden. On a `preview:site` build at 1280×800 with the dock shown, it runs from y = 116 to 637 against the dock at 656, and every control shows at once (body 455 of 455 px). At 390×844 its frame, title and × stay above the dock, and its body scrolls inside the frame (823 of 610 px), because the content is taller than the room. Every strip panel (Todos, More, Filter) opens the same way. Gated by `glass-panel-in-view.e2e.ts`.
-- Beans carries two counts: **541** on the icon row ("Beans — 541 open") and **943** on the glass and launcher tile. The icon row's name says "open". The tile's caption does not say what it counts. **Fixed.** The two numbers counted different things (open beans against every bean ever filed), so every Beans badge now counts open beans (`openBeanCount`), and its name and tooltip say "open beans". On the build, the icon row, the glass tile and the launcher tile all read 540. Gated by `beans-count-agrees.e2e.ts`. The as-is drawing above keeps the 943 it was drawn with.
+- Work items carries two counts: **541** on the icon row ("Beans — 541 open") and **943** on the glass and launcher tile. The icon row's name says "open". The tile's caption does not say what it counts. **Fixed.** The two numbers counted different things (open work items against every work item ever filed), so every Work items badge now counts open work items (`openBeanCount`), and its name and tooltip say "open beans". On the build, the icon row, the glass tile and the launcher tile all read 540. Gated by `beans-count-agrees.e2e.ts`. The as-is drawing above keeps the 943 it was drawn with.

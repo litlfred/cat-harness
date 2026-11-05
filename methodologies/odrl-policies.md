@@ -118,7 +118,7 @@ stated so nobody reads `@conformsTo w3c-odrl` as full conformance.**
    will be used."* The code names this as *"OUR rule rather than claimed as
    ODRL's"*; both live policies set `odrl:prohibit` explicitly, so the
    difference does not fire today. **Kept by owner ruling, 2026-10-01**
-   (bean `jcet`): an unstated clash denies rather than voiding the policy —
+   (work item `jcet`): an unstated clash denies rather than voiding the policy —
    a deliberate profile departure, not an oversight; `odrl.test.ts` pins it.
 5. **Across policies, any `deny` wins.** `decide()` evaluates each policy and
    lets a prohibition in one beat a permission in another. ODRL's merge rule

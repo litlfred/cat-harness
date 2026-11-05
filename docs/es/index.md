@@ -37,7 +37,7 @@ de objetos de contenido tipado.
 ## Cuatro cosas, en orden
 
 **1. El plan de trabajo es donde dices lo que estás haciendo.**
-No un mensaje de chat, no un comentario: [beans]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}), un almacén versionado que cualquier sesión o agente puede leer. Reclama antes de trabajar para que una sesión hermana no tome el mismo elemento; un bean que resulta no ser necesario se marca `scrapped`, con sus razones, y nunca se elimina.
+No un mensaje de chat, no un comentario: [work items]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}), un almacén versionado que cualquier sesión o agente puede leer. Reclama antes de trabajar para que una sesión hermana no tome el mismo elemento; un work item que resulta no ser necesario se marca `scrapped`, con sus razones, y nunca se elimina.
 
 ```sh
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"

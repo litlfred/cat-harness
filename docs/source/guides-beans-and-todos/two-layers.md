@@ -1,11 +1,11 @@
-Two different things can change a bean, and a step that confuses them will
+Two different things can change a work item, and a step that confuses them will
 announce an effect it does not have.
 
 **The workflow engine** performs `claim`, `note` and `resolve` on a process
-instance's own bean when a step marked `<cat-harness.processes:bean op="…"/>` completes.
+instance's own work item when a step marked `<cat-harness.processes:bean op="…"/>` completes.
 `claim` sets `in-progress` and is idempotent; `note` appends; `resolve`
-completes the bean **only once the instance itself has completed**, because
-whether work is done is a judgement and a bean is not closed on someone else's
+completes the work item **only once the instance itself has completed**, because
+whether work is done is a judgement and a work item is not closed on someone else's
 say-so.
 
 **The agent** does everything else with the `beans` CLI: creating, scrapping,

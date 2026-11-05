@@ -9,7 +9,7 @@ Every agent session follows the same lifecycle:
    routed to the appropriate workflow.
 
 3. **Execute** — the agent works within the active workflow, following its
-   BPMN process. Each turn reports the bean being worked on and what is next.
+   BPMN process. Each turn reports the work item being worked on and what is next.
 
 4. **Commit** — every meaningful unit of work gets its own commit and push.
    PRs are opened at the first commit, not the end. See the
@@ -18,6 +18,6 @@ Every agent session follows the same lifecycle:
 5. **Handoff** — when the session ends (user leaves, context limit, token
    exhaustion), the agent's durable state is:
    - Committed and pushed code
-   - Beans updated with status and notes
+   - Work items updated with status and notes
    - Issue comments with summaries of what was accomplished
    - The chat is ephemeral; everything else survives

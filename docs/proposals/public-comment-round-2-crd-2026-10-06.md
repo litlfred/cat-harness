@@ -21,7 +21,7 @@ nothing will be until each requirement below is approved, amended or rejected.
 2026-10-06 that nothing here merges or is built without it (CRDM Phase 3, [`crdm-requirements-template`](../../sdlc/skills/crdm/crdm-requirements-template.md)).
 
 Issue [#197](https://github.com/litlfred/folio-assistant/issues/197) ·
-bean `uphx` (parent `q4jm`; round 1 was `v26p`) · first customer
+work item `uphx` (parent `q4jm`; round 1 was `v26p`) · first customer
 `litlfred/smart-ra` (DPI-H Reference Architecture, about 2,630 comments).
 
 ## Source

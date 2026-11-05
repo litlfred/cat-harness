@@ -23,7 +23,7 @@ Owner, 2026-10-01 (#1767), reframing `smart-l1` and `smart-dak`:
 Then: retire `smart-l1/` and `smart-dak/`, keep `smart-ig/` (stage D3), and
 D5 as its own PR. Later the same day, the owner added the Digital
 Transformation Handbook as a specific kind of L1 document *"that uses the
-Reference Architecture and DIIG concepts"* (bean `5blc`).
+Reference Architecture and DIIG concepts"* (work item `5blc`).
 
 ## What was measured before designing
 
@@ -32,11 +32,11 @@ Reference Architecture and DIIG concepts"* (bean `5blc`).
   (`cat-harness/schemas/block-kinds.ts`), and profiles say which BLOCK KINDS a
   folio may contain. A DAK is not "a folio that may contain kinds X"; it is a
   publication whose STRUCTURE is fixed. And a `dak` profile would be core naming
-  DAK again — the coupling bean `1335` exists to remove.
+  DAK again — the coupling work item `1335` exists to remove.
 - **The chapter-profile registry is not it either**: it is the paper's q-regime
   policy, specific to one folio.
 - **The ten components exist once already**: `DAK_COMPONENTS` in core's
-  `block-kinds.ts` (moving with bean `1335`), and `dak.ts` (now smart-base)
+  `block-kinds.ts` (moving with work item `1335`), and `dak.ts` (now smart-base)
   reads a `dak.config.json` by them.
 - **Nothing exists for L1.** smart-base's `library/` holds 8 WHO publications
   (DIIG 9789240010567, the primary-health-care DTH 9789240093362, Mehl 2021 on
@@ -71,8 +71,8 @@ Tool. **Core knows that document kinds exist; it never knows which.**
 - **`l1.json`** — `structure: semi-fixed`. Its required sections are **the open
   question below**; they are read from a source, not assumed.
 - **`dth.json`** — `extends: l1`, adding the Reference Architecture and DIIG
-  sections the handbooks use. Bean `5blc`, after the handbooks are ingested
-  (bean `tyo0`).
+  sections the handbooks use. Work item `5blc`, after the handbooks are ingested
+  (work item `tyo0`).
 
 ### 3. The viewers
 
@@ -109,7 +109,7 @@ Owner, 2026-10-01:
 - **Q1 → all three sources.** L1's required sections are drawn from the SMART
   Guidelines paper (Mehl 2021), the WHO guideline-development handbook, and the
   DTHs' shared structure, and **each section records which of them it comes
-  from** in `sources[]`. The handbook and the DTHs are ingested first (bean
+  from** in `sources[]`. The handbook and the DTHs are ingested first (work item
   `tyo0`), so `l1.json` lands in D5d.
 - **Q2 → computed from resource type**, with every artefact no rule places shown
   as unplaced.
@@ -126,14 +126,14 @@ Owner, 2026-10-01:
   has.
 - **smart-kg is pinned, not copied** (owner: *"utilize
   https://github.com/litlfred/smart-kg for L1 related stuff"*, *"perhaps
-  subgraph in smart-base"*; and 2026-09-23, bean `wg7r`, *"that is its own repo
+  subgraph in smart-base"*; and 2026-09-23, work item `wg7r`, *"that is its own repo
   already"*). `smart-base/external-schemas/who-smart-kg.json` pins a commit;
   `who-smart-kg.terms.json` holds its L1 and L2 class ids, derived by
   `smart-base/scripts/pin-smart-kg.ts`. A section names what it instantiates
   with `modelledBy` (`sgkg-l1#recommendation`), and
   `smart-base:document-kinds:check` fails on a term not in the pin, an
   `extends` that names no kind, a loop, or a child redeclaring its parent's
-  section. Bean `pebe`; feeding smart-kg instance documents is bean `8pzh`.
+  section. Work item `pebe`; feeding smart-kg instance documents is work item `8pzh`.
 - **A finding the mapping surfaced:** guideline sections map onto smart-kg
   **L1** classes, DTH sections onto **L2** (DAK) classes — persona, user
   scenario, business process, data element, requirements. A DTH states for a
@@ -153,4 +153,4 @@ Owner, 2026-10-01:
 | D5a | this note; the `document-kind` schema + graph typology + registry entry in core |
 | D5b | `smart-base/document-kinds/dak.json` generated from `DAK_COMPONENTS` + its gate; the per-kind viewer |
 | D5c | the DAK view of each ingested IG (smart-trust, smart-base, smart-immunizations) |
-| D5d | `l1.json`, `l1-guideline.json`, `dth.json`, authored from the sources; the smart-kg pin (bean `pebe`) |
+| D5d | `l1.json`, `l1-guideline.json`, `dth.json`, authored from the sources; the smart-kg pin (work item `pebe`) |

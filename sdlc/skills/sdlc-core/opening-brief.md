@@ -1,7 +1,7 @@
 ---
 name: opening-brief
 description: >
-  Brief a bean or a topic BEFORE touching anything: what you are doing and why
+  Brief a work item or a topic BEFORE touching anything: what you are doing and why
   it is worth doing, what you already know and with what provenance, how you
   plan to do it and what would falsify the approach. Scales with
   irreversibility, not line count.
@@ -13,11 +13,11 @@ allowed-tools: Read Grep Glob AskUserQuestion
 This skill governs what you say **before** the work;
 [`turn-reporting.md`](turn-reporting.md) governs what you say during and after
 it; [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md)
-keeps the bean mechanics.
+keeps the work item mechanics.
 
 ## Opening brief
 
-**Claiming a bean records the work. Briefing it is what makes the work
+**Claiming a work item records the work. Briefing it is what makes the work
 resumable.** Both are required, and the brief comes first — before the first
 tool call, in the chat, not in the commit.
 
@@ -42,7 +42,7 @@ This is the shape.
 
 **Sessions end mid-thread.** Containers are reclaimed, context windows fill, a
 branch is picked up days later by an agent with none of the reasoning that
-produced it. The bean body and the commit are durable; the chain of inference
+produced it. The work item body and the commit are durable; the chain of inference
 that made them sensible is not, unless it is written down at the point where it
 was still obvious. An agent resuming cold should be able to read the brief and
 continue — not reconstruct its predecessor's rabbit hole first.
@@ -71,11 +71,11 @@ nothing."
 | measured this session, on this tree | "measured just now: 22 of 22 seeded, 0 missed" |
 | measured this session, on a DIFFERENT tree | "grepped 0 on `claude/x` before branching — **not re-run here**" |
 | carried from a prior session | "recorded 2026-08-24 as 43 drifted; not re-measured" |
-| asserted by a bean or a doc | "bean `qou-q7lf` says X — **unverified**" |
+| asserted by a work item or a doc | "bean `qou-q7lf` says X — **unverified**" |
 
-The last row is the one that bites hardest. A sibling's bean is not a primary
+The last row is the one that bites hardest. A sibling's work item is not a primary
 source, and neither is a source file's `## Status` note; both go stale, and a
-specific, recent, confidently-worded bean is exactly the kind that gets
+specific, recent, confidently-worded work item is exactly the kind that gets
 believed.
 
 **"Measured this session" is not the safe case.** A measurement is scoped to
@@ -118,7 +118,7 @@ Four places to look, in this order:
    `index.md` is where to start. **Resolve the directory rather than
    remembering this sentence** — a stub's `docs/` is where its proposals are,
    and this path is an example of the rule, not the rule.
-2. **The owner's rulings**, in beans and in the declarations that quote them
+2. **The owner's rulings**, in work items and in the declarations that quote them
    verbatim. A `_comment` field in a `*.json` is frequently where a decision
    was recorded, because that is where it had to be obeyed.
 3. **The skill that owns the area** — and read it, rather than recalling it.
@@ -170,7 +170,7 @@ it up cold.
 
 > Starting `qou-93hu` — fixing CriticalExponent.
 
-Names the bean and nothing else. It does not say the field is a closed numeral
+Names the work item and nothing else. It does not say the field is a closed numeral
 identity with no exponent variable in it, so a reader cannot tell whether this
 is cosmetic or load-bearing; it does not say the class signature changes, so
 nobody can warn that every binder in two consumer modules moves with it; and it

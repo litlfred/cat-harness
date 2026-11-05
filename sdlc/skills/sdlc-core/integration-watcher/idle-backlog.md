@@ -23,7 +23,7 @@ substantive output beyond TICK heartbeats or empty acks),
 automatically start processing backlog without waiting for the user
 to prompt. Walk the priority order:
 
-1. **Session todos** (beans work-plan).
+1. **Session todos** (work items work-plan).
 2. **Current-PR todos** — open-PR body checklist + unresolved
    review-comment threads on the branch's PR (via
    `mcp__github__pull_request_read get_review_comments` and `get` for

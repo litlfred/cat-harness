@@ -64,9 +64,9 @@ Some notes on the tests:
 Two flags sit beside the class rather than inside it:
 
 - **`open-pr: #n`** — any branch backing an open PR is live, whatever its class.
-- **`beans: […]`** — bean ids named in its commit messages, the same
+- **`beans: […]`** — work item ids named in its commit messages, the same
   extraction `lsi:epics` performs. This is the link that lets
-  [`work-plan-restructure`](../../../work-plan/skills/work-plan/work-plan-restructure.md) close a bean whose work
+  [`work-plan-restructure`](../../../work-plan/skills/work-plan/work-plan-restructure.md) close a work item whose work
   this census shows `landed`.
 
 ## 2. Content protection: a content branch is salvage-review, never delete-candidate
@@ -87,7 +87,7 @@ its scrollback with it. So:
 |---|---|
 | `merged` / `landed`, no open PR | **delete-candidate** list, with size, age, last author and the evidence that it landed |
 | `partial` / `unlanded`, no content touched | **review** list, with unique commits, size and age |
-| `partial` / `unlanded`, content touched | **salvage-review** list, with the unique paths and hunks, and bean ids |
+| `partial` / `unlanded`, content touched | **salvage-review** list, with the unique paths and hunks, and work item ids |
 | `undetermined` | **unknown** list, with the test that failed |
 | any class with an open PR | not listed for disposal at all |
 
@@ -119,10 +119,10 @@ For a branch on the salvage list, the question is which of its content is
    comparison against the merge-base says whose change a hunk is.
 
 **Salvage is filed per CLUSTER, not per branch.** 461 branches are not 461
-beans. Beans are not sidecars, and one bean per branch is the generated-template
+work items. Work items are not sidecars, and one work item per branch is the generated-template
 flood [`work-plan-restructure`](../../../work-plan/skills/work-plan/work-plan-restructure.md) exists to clean up.
 Group the salvage list by the subject its unique paths touch (a chapter, a Lean
-namespace), and propose one bean per group to the owner.
+namespace), and propose one work item per group to the owner.
 
 ## 3. Making 6,000 branches cheap: a treeless fetch
 
@@ -132,7 +132,7 @@ git fetch --filter=tree:0 origin '+refs/heads/*:refs/remotes/origin/*'
 
 This fetches every head's **commits** without their trees or blobs: **15 s for
 ~6.5k branches** in qou. That is enough for the ancestry test and for the
-commit-message bean extraction. The merge-tree and patch-id tests need trees
+commit-message work item extraction. The merge-tree and patch-id tests need trees
 and blobs, which the partial clone then fetches **on demand**, per branch. So
 order the work to fetch as little as possible:
 
@@ -167,7 +167,7 @@ size of the unique diff, last commit date, and the last author or
 `Claude-Session:` trailer. Then the four lists in §2, each with counts, and
 the `undetermined` count stated beside the others, never dropped.
 
-Where it goes: summarised on the issue or in a bean note
+Where it goes: summarised on the issue or in a work item note
 (`bun run cat beans:note`) for the owner, and the per-branch rows as a file
 attached to that review. A committed, declared home for a recurring census
 (a `qa-reports` sidecar) is not built yet. Do not invent an undeclared
@@ -175,7 +175,7 @@ directory for it. Name the gap instead.
 
 ## What this skill does not do
 
-- **Delete, prune or close anything.** Not branches, not PRs, not beans.
+- **Delete, prune or close anything.** Not branches, not PRs, not work items.
 - **Judge whether unique work is wanted.** `unlanded` means "not on main", not
   "should be on main". That call belongs to the owner, through salvage review.
 - **Replace [`branch-freshness`](branch-freshness.md)**

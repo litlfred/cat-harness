@@ -5,7 +5,7 @@ parent: Proposals
 
 # Cross-graph `lsi:near`: design draft
 
-This is step 3 of bean `ec2a`, under epic `zzmr`. Steps 1 and 2 are merged:
+This is step 3 of work item `ec2a`, under epic `zzmr`. Steps 1 and 2 are merged:
 folio-assistant-core#66 (`scripts/lsi-blocks.ts`) and folio-assistant-sci#18
 (`scripts/lsi-lean-decls.ts`).
 
@@ -18,17 +18,17 @@ yet.
 
 The owner's ruling of 2026-10-10 was *blocks first*: the block indexer in
 core, then a `lean-decl` kind in sci, then a cross-graph `lsi:near`. The need
-behind it is qou's 141 duplicate bean groups. Most of them are one Lean
+behind it is qou's 141 duplicate work item groups. Most of them are one Lean
 declaration filed twice. Before `beans create`, `lsi:near "<title>"` should be
 able to say *this is about block Y* or *this is about declaration Z*. Today it
-can say only *this is near bean B*.
+can say only *this is near work item B*.
 
 ## What exists
 
 | piece | where | what it gives step 3 |
 |---|---|---|
 | engine | cat-harness-tools `pipeline/lsi.ts` | `buildLsi`, `foldIn`, `rank`, `crossGroupLinks`, `LINK_FLOOR = 0.5` |
-| `lsi:near` today | cat-harness-tools `scripts/lsi-epics.ts --near` | beans only; `NEAR_READ = 0.7` |
+| `lsi:near` today | cat-harness-tools `scripts/lsi-epics.ts --near` | work items only; `NEAR_READ = 0.7` |
 | block units | core `scripts/lsi-blocks.ts` | 4,549 blocks from 6 libraries, keyed by `@id`, built in about 8 s |
 | declaration units | sci `scripts/lsi-lean-decls.ts` | 45,092 qou declarations, keyed `<name>@<module>`, built in 189 s |
 | method refusals | cat-harness `methodologies/lsi.md` | 1: never merge latent with lexical; 3: never write a relation |
@@ -45,14 +45,14 @@ That leaves three options.
 
 | | A. one list per graph *(recommended first)* | B. one joint index | C. align separate spaces |
 |---|---|---|---|
-| how | fold the query into each graph's own index (`foldIn`) and rank within it | build one index over beans, blocks and declarations together, with group = graph kind (`crossGroupLinks`) | map one space onto another (Procrustes) through anchor pairs |
+| how | fold the query into each graph's own index (`foldIn`) and rank within it | build one index over work items, blocks and declarations together, with group = graph kind (`crossGroupLinks`) | map one space onto another (Procrustes) through anchor pairs |
 | ranked across graphs? | no; one list per graph, side by side | yes; one space, so cosines compare | yes, in principle |
 | reuses | the per-graph indexes as they are | the engine; the unit providers | nothing that exists |
-| risk | none new | 45k declarations against 4.5k blocks and a few thousand beans: declaration vocabulary dominates the global weights | needs anchor pairs nobody has labelled; refused for now |
+| risk | none new | 45k declarations against 4.5k blocks and a few thousand work items: declaration vocabulary dominates the global weights | needs anchor pairs nobody has labelled; refused for now |
 | cost | per-graph build (the 189 s case is open question 3) | one larger SVD, about 52k units at k = 100; to be measured | — |
 
 **Recommendation: A first, then B as a measured experiment.** A answers the
-question the bean asks ("is this about block Y or declaration Z?") and keeps
+question the work item asks ("is this about block Y or declaration Z?") and keeps
 each graph's score in its own space, which is refusal 1's spirit. B is only
 worth having if it finds pairs that A misses, and that can be measured (next
 section) before anyone relies on it.
@@ -63,14 +63,14 @@ section) before anyone relies on it.
 merges them: **explicit** wins and **latent** is the fallback. Step 3 does the
 same.
 
-1. **Explicit.** A bean whose text names a block `@id` or a Lean name that
+1. **Explicit.** A work item whose text names a block `@id` or a Lean name that
    resolves to a declaration id is linked deterministically. This is reported
    first and is never scored.
 2. **Latent.** Each graph's top hits, labelled `lexical+latent` or
    `latent only`, as `lsi_query` already does.
 
 The explicit links are also the labelled set for measuring A against B. For
-each bean with an explicit link, hide the reference text, run the latent
+each work item with an explicit link, hide the reference text, run the latent
 search, and record whether the referenced unit is in the top 5 (recall@5).
 This is measured, not assumed. A house floor for the new graphs comes from
 that measurement, as `LINK_FLOOR` came from 15 labelled pairs.
@@ -96,7 +96,7 @@ point upward (ruling C1, `check:import-direction`).
 - **core** declares `blocks`. `lsi-blocks.ts` already exports `blockUnits`.
 - **sci** declares `lean-decl`. `lsi-lean-decls.ts` already exports `declUnits`.
 - `lsi:near` gains `--graphs beans,blocks,lean-decl`. With no flag, it runs on
-  every declared provider. A folio with no Lean gets beans and blocks only,
+  every declared provider. A folio with no Lean gets work items and blocks only,
   with no change to its code.
 
 ## Requirements (draft)
@@ -107,13 +107,13 @@ point upward (ruling C1, `check:import-direction`).
     option A.
 - [ ] **REQ-002** (SHALL): Explicit references are reported before latent
   hits, and are never scored.
-  - _Acceptance:_ test: a bean naming `QOU.Mass.foo` lists that declaration
+  - _Acceptance:_ test: a work item naming `QOU.Mass.foo` lists that declaration
     under `explicit` whatever its cosine is.
 - [ ] **REQ-003** (SHALL NOT): The tools layer imports neither core nor sci.
   - _Acceptance:_ `check:import-direction` stays green; providers are found
     by declaration only.
 - [ ] **REQ-004** (SHALL): `lsi:near` still writes nothing (refusal 3).
-  - _Acceptance:_ test: the bean store is byte-identical after a run.
+  - _Acceptance:_ test: the work item store is byte-identical after a run.
 - [ ] **REQ-005** (SHALL): A graph that could not be indexed is reported as
   not searched, never as "no hits" ("no data is not zero").
   - _Acceptance:_ test: a missing Lean root yields `lean-decl: not searched`.
@@ -137,9 +137,9 @@ point upward (ruling C1, `check:import-direction`).
    index already computes. Recommended: measure first, since it is not yet
    known how much of the 189 s is reading files and how much is the SVD.
    Choose (c) if a warm call still takes more than about 10 s.
-4. **Which repos are the ground truth?** qou is the case the bean names.
+4. **Which repos are the ground truth?** qou is the case the work item names.
    It is a math repo, so it is read and never written; the measurement only
-   reads its beans and Lean sources.
+   reads its work items and Lean sources.
 
 ## What happens after sign-off
 

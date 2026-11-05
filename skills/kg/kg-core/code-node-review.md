@@ -50,7 +50,7 @@ A skill states a capability generically; a Tool carries the concrete mechanism
 Reviewed as nodes, the recurring defect is a file that does not say what it is:
 
 1. **The node declares its own kind.** `kg` (skill front matter), `bean-defs`
-   (bean front matter) and `workflow-state` (`$schema`) declare themselves.
+   (work item front matter) and `workflow-state` (`$schema`) declare themselves.
    `schemas/*.ts` largely does not — `@module` names the path rather than the
    node type, some files carry none, and `*.test.ts` files sit in the declared
    directory without being schema nodes at all. A consumer then

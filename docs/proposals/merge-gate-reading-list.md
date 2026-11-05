@@ -13,7 +13,7 @@ summary: >-
 {: .no_toc }
 
 Companion to [Merge gate: adversarial review and compile gates](merge-gate-2026-10-02.html)
-(epic bean `folio-assistant-nok9`). The `R` numbers are the ones the proposal
+(epic work item `folio-assistant-nok9`). The `R` numbers are the ones the proposal
 cites. Compiled 2026-10-02 for the owner to upload to the library.
 
 ## How each URL was checked, and what that does and does not prove
@@ -53,7 +53,7 @@ publisher's copy is paywalled, the author copy is the one listed.
 |---|---|---|---|---|
 | R4 | Hoare, G. (2014). *Technicalities: "not rocket science" (the story of monotone and bors).* Blog post | <https://graydon2.dreamwidth.org/1597.html> | U | the founding rule: test the merge result before it lands |
 | R5 | Ananthanarayanan, S., Ardekani, M. S., Haenikel, D., Varadarajan, B., Soriano, S., Patel, D. & Adl-Tabatabai, A.-R. (2019). *Keeping Master Green at Scale.* EuroSys 2019 (author copy) | <https://www.masoud.io/docs/eurosys19.pdf> | S | SubmitQueue: speculative merge queues and their cost model, which is the industrial form of a merge train |
-| R6 | GitHub (current). *Managing a merge queue.* GitHub Docs | <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue> | S | `merge_group` must trigger required checks; also why this user-owned repo has no queue (bean `1hjm`) |
+| R6 | GitHub (current). *Managing a merge queue.* GitHub Docs | <https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue> | S | `merge_group` must trigger required checks; also why this user-owned repo has no queue (work item `1hjm`) |
 | R7 | Xiong, Z., Zhao, Q., Zhang, J., et al. (2026). *BulkPR-Bench: Benchmarking Queue-Level Governance of Interacting Pull Requests.* arXiv:2608.02685 | <https://arxiv.org/pdf/2608.02685> | S | measures agents ordering a queue of interacting PRs; low critical-relation recall is direct evidence for gating the train RESULT |
 
 ## Two-person review and the supply chain

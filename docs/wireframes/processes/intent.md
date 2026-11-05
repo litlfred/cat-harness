@@ -28,7 +28,7 @@ Index page:
 - one row per process: steps, and undocumented steps
 - the skill → processes reverse join
 - lane names
-- bean ops
+- work item ops
 - declared versus defaulted enforcement
 - findings
 

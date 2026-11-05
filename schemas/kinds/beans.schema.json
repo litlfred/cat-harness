@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://litlfred.github.io/cat-harness/v0/schemas/kinds/beans.schema.json",
   "_generated": "scripts/gen-kind-json-schemas.ts of cat-harness-tools — do not hand-edit; change the Zod and run `bun run cat kind:json-schemas`",
-  "title": "Beans",
+  "title": "Work plan",
   "description": "The work plan — what is being worked on, and where each running BPMN instance got to. Its inner directories are declared by `beans/beans.json`.",
   "$comment": "Not constrained here — typed only as TypeScript shapes: folio-workflow-instance/v1 (src/workflow/instance.ts#InstanceState).",
   "anyOf": [

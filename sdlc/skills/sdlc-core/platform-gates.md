@@ -74,7 +74,7 @@ check, a schema field, or a test.
 **A gate's silence is bounded by its stated scope.** `check:stale-paths`, for
 example, judges two shapes — an id adjacent to an arrow, and a numbered step
 under a path heading — and declines everything else. Prose that merely mentions
-a closed bean passes it while carrying the same defect. Likewise
+a closed work item passes it while carrying the same defect. Likewise
 `check:ci-health` labels workflow files that produced no run *unjudged, not
 green*. **Green over a narrow rule is worse than red**, because red is examined;
 a gate that does not fire is indistinguishable from one that passed.

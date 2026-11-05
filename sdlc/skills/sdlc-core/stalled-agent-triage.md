@@ -3,7 +3,7 @@ name: stalled-agent-triage
 description: >
   Triage incoming work from stalled agents. Given named agents or sessions, or
   a time window, find what they left (handover reports, open PRs, branches,
-  beans, issue and PR discussions, workflow instances), collect as many
+  work items, issue and PR discussions, workflow instances), collect as many
   handover reports as exist, reconstruct the rest, consolidate the
   workstreams into 2–4 themes, recommend how to fold them into the current
   or a new work plan, and coordinate open PRs with their owners (the merge
@@ -14,7 +14,7 @@ description: >
 # Stalled-agent triage
 
 A stall is not an event anyone records. The agent simply stops, and what it
-was holding is spread across a dozen PRs, branches and beans, half of them
+was holding is spread across a dozen PRs, branches and work items, half of them
 mid-merge. This skill turns that scatter into a short list of themes, a
 recommendation, and a coordinated restart.
 
@@ -26,7 +26,7 @@ work ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordinatio
 
 One of:
 
-- **Named:** session URLs, agent ids, branch names, PR numbers or bean ids.
+- **Named:** session URLs, agent ids, branch names, PR numbers or work item ids.
 - **A time window:** for example "everything touched in the last 6 hours", or
   "since the 14:00 safety check".
 
@@ -42,7 +42,7 @@ returns 403 in agent sessions):
 | handover reports | `beans/notes/*` whose title starts `handover:`, on `main` and on every open PR branch | the agent's own account; **read these first** |
 | open PRs | `repos/…/pulls?state=open`, filtered by author session (`Claude-Session:` in bodies and commits) or by `updated_at` in the window | PR, branch, head, CI, mergeability |
 | branches | `git ls-remote --heads origin` and commit dates | work with no PR yet |
-| beans | `beans list` with `in-progress`, plus holder notes ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)) | claims, blocks, `## Done when` |
+| work items | `beans list` with `in-progress`, plus holder notes ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)) | claims, blocks, `## Done when` |
 | workflow instances | `beans/workflows/*.json` updated in the window | where in which process each one stopped |
 | discussions | the last comments on each PR and issue | owner rulings and open questions |
 
@@ -65,8 +65,8 @@ returns 403 in agent sessions):
 Group the workstreams by **what they deliver**, not by which agent held them.
 For each theme:
 
-- **Goal and epic:** the bean it serves; a theme with no epic is a finding.
-- **Members:** PRs, branches and beans, each with its state, using the
+- **Goal and epic:** the work item it serves; a theme with no epic is a finding.
+- **Members:** PRs, branches and work items, each with its state, using the
   `merge:overlap` columns once that tool exists.
 - **Dependencies:** what waits on what, and which member unblocks the most.
 - **Risk:** a red head, a conflict, unpushed work, or a decision only the
@@ -80,13 +80,13 @@ stalls were one piece of work, which is fine; say so.
 For each theme, say one of:
 
 - **Continue as is:** re-dispatch to one agent from its handover, under its
-  existing bean.
+  existing work item.
 - **Fold into the current work plan:** name the epic and the position.
-- **New epic or bean:** with a title, a `## Done when`, and the members it
+- **New epic or work item:** with a title, a `## Done when`, and the members it
   takes over.
 - **Park:** status `todo` with a block that has an expiry
   ([`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md)).
-- **Scrap:** only with the owner's say. Never delete a bean, a branch or a PR
+- **Scrap:** only with the owner's say. Never delete a work item, a branch or a PR
   ([`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)).
 
 Present this to the owner as **one decision in full**, with a count of the
@@ -101,7 +101,7 @@ rest ([`interaction-modality`](../../../skills/conduct/conduct-core/interaction-
   lost, and it is better re-done from the PR head than guessed at.
 - **Notify the owning sessions** that are still alive before anyone touches
   their branches ([`coordinate`](coordinate.md)).
-- **Record the triage** as a bean note on each theme's epic, titled
+- **Record the triage** as a work item note on each theme's epic, titled
   `triage: <date>`, so the next triage starts from this one.
 
 ## Anti-patterns

@@ -9,7 +9,7 @@ phase. Some exist today; others are proposed.
 | **BPMN workflow authoring** (skill: `bpmn-authoring`) | Phase 2 | Agent can create and modify BPMN 2.0 process diagrams |
 | **Content graph** (`content-graph.ts`) | Phase 4 | Dependency analysis across blocks and chapters |
 | **QA criteria registry** (`qa-criteria-registry.ts`) | Phase 3, 4 | Register and scope new QA checks |
-| **Beans** (`beans` CLI) | Phase 5, 6 | Work-plan creation and tracking |
+| **Work items** (`beans` CLI) | Phase 5, 6 | Work-plan creation and tracking |
 | **Content validation** (`content_validate` MCP tool) | Phase 6 | Verify changes against schema and constraints |
 | **Schema types** (`schemas/*.ts`) | Phase 3 | Define new types, constraints, and builders |
 | **Document ingestion** (`uploads/` → `library/` pipeline) | Phase 2 | Ingest source documents for review |
@@ -42,7 +42,7 @@ other diagram in this repository:
 
 | Instead of | Use |
 |---|---|
-| `crdm_start` | `workflow_start` with `crdm-requirements` and the bean the work hangs on |
+| `crdm_start` | `workflow_start` with `crdm-requirements` and the work item the work hangs on |
 | `crdm_status` | `workflow_next` — what is enabled now, which lane owns it, which skill implements it |
 | a phase checklist | `workflow_complete`, which **refuses a step that is not enabled**, so phases cannot be claimed out of order |
 
@@ -61,13 +61,13 @@ Every activity in the agent's lane carries the skill that implements it, so
 | Phase 1 — stakeholders, synthesise needs | `crdm-requirements-workflow` |
 | Phase 2 — map the current workflow | `bpmn-authoring` |
 | Phases 3–4 — requirements and impact | `crdm-requirements-workflow` + `content-graph` |
-| Phase 5 — create beans | `todo-manager` |
+| Phase 5 — create work items | `todo-manager` |
 | Phase 6 — implement | `prepare-merge` |
 | Post the round summary | `delivery-summary` |
 | Close the issue | `crdm-requirements-workflow` |
 
 Three steps also carry a work-plan effect the engine performs: implementing
-claims the bean, creating beans notes it, and closing resolves it — and
+claims the work item, creating work items notes it, and closing resolves it — and
 resolve only lands once the instance itself has completed, because whether
 work is done is a judgement.
 

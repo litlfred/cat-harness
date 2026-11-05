@@ -90,7 +90,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`graph-rendering`](skills/kg/graph-management/graph-rendering.md) | Draw any graph in a harness (schemas, processes, a folio's block graph and any formal relation its content type adds, a detangle partition) so the picture is derived, checkable and readable. |
 | [`kg-separation`](skills/kg/graph-management/kg-separation.md) | Separate a Knowledge Graph into its own repository — as a CONTENT repository (files to read, no code) and a TOOLS repository (the code that writes and checks it) — once it is too large, or its… |
 | [`kg-subgraph-layout`](skills/kg/graph-management/kg-subgraph-layout.md) | Lay out one declared sub-graph of a knowledge graph (a harness's schema overview, one named sub-graph, a declaration's kinds) as a single Graphviz diagram in the i2ce Form Documentor's convention,… |
-| [`lsi-indexing`](skills/kg/graph-management/lsi-indexing.md) | Build, read and audit a Latent Semantic Indexing index over a declared prose graph — a library, the skills, the beans, docs — to find units that discuss the same thing in different words,… |
+| [`lsi-indexing`](skills/kg/graph-management/lsi-indexing.md) | Build, read and audit a Latent Semantic Indexing index over a declared prose graph — a library, the skills, the work items, docs — to find units that discuss the same thing in different words,… |
 | [`named-query-execution`](skills/kg/graph-management/named-query-execution.md) | How to execute audited SPARQL 1.1 named queries over partitioned W3C N-Quads dataset distributions across CLI, MCP tools, and WebAssembly browser clients. |
 | [`nquads-distribution`](skills/kg/graph-management/nquads-distribution.md) | How to compile, partition by named subgraphs, and distribute W3C N-Quads datasets beside pre-compiled SPARQL 1.1 named queries for static edge and client-side querying. |
 | [`sub-kg-lifecycle`](skills/kg/graph-management/sub-kg-lifecycle.md) | A sub-KG is a knowledge graph staged as a directory inside a harnessed repository, declared as its own instance, that may later leave for a repository of its own. |
@@ -149,7 +149,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 
 | Skill | What it is for |
 |---|---|
-| [`adopt-methodology-from-source`](skills/library/library-core/adopt-methodology-from-source.md) | The general process for turning a shared paper, book or standard into an adopted methodology: establish origin and licence, ingest the source, find and summarize related beans and issues and ask… |
+| [`adopt-methodology-from-source`](skills/library/library-core/adopt-methodology-from-source.md) | The general process for turning a shared paper, book or standard into an adopted methodology: establish origin and licence, ingest the source, find and summarize related work items and issues and… |
 | [`asset-extraction`](skills/library/library-core/asset-extraction.md) | Reading a container — a zip, a PDF, a saved web page — into the knowledge graph. |
 | [`code-lists`](skills/library/library-core/code-lists.md) | Author, extend or consume a code list: a closed set of codes, each with a label, a definition and a source, kept as a node and published as SKOS. |
 | [`content-acquisition`](skills/library/library-core/content-acquisition.md) | Getting a resource INTO the graph in the first place — accepting one offered unprompted, or asking for one and then asking for it to be uploaded. |
@@ -287,7 +287,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`generalise-the-fix`](sdlc/skills/sdlc-core/generalise-the-fix.md) | You have a fix. |
 | [`github-state-inspection`](sdlc/skills/sdlc-core/github-state-inspection.md) | Answer questions about GitHub-hosted state — is a page published, where does it live, did CI pass, does a branch exist — by reading the ref or the API, never by composing a URL or fetching one. |
 | [`goal-review`](sdlc/skills/sdlc-core/goal-review.md) | Cold start, then review a time window of activity — sibling sessions, the work plan, issues, change proposals, branches, CI — and prioritise what it finds against goals stated in the owner's words. |
-| [`handover-report`](sdlc/skills/sdlc-core/handover-report.md) | Write a handover report: a templated snapshot of an agent's current state, committed as a bean note, so that a session or subagent that stalls, runs out of context, or loses its container can be… |
+| [`handover-report`](sdlc/skills/sdlc-core/handover-report.md) | Write a handover report: a templated snapshot of an agent's current state, committed as a work item note, so that a session or subagent that stalls, runs out of context, or loses its container can… |
 | [`integration-backlog`](sdlc/skills/sdlc-core/integration-backlog.md) | Dispatcher for the `/integration-backlog <axes>` slash command. |
 | [`integration-watch`](sdlc/skills/sdlc-core/integration-watch.md) | Dispatcher for the `/integration-watch` slash command. |
 | [`integration-watcher`](sdlc/skills/sdlc-core/integration-watcher.md) | Abstract parent skill for domain-specific **integration watchers**. |
@@ -298,9 +298,9 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`merge-to-main`](sdlc/skills/sdlc-core/merge-to-main.md) | Merging to `main` is its own step with its own gate: the `merge-to-main` sub-process, which every process that lands work CALLS rather than inlines. |
 | [`minimal-change`](sdlc/skills/sdlc-core/minimal-change.md) | Three rules for any edit to a repository: make the smallest change that does the job and keep the diff minimal; read the repository's code-style files before writing code; and write Markdown without… |
 | [`narrative-asserts-code`](sdlc/skills/sdlc-core/narrative-asserts-code.md) | Judge whether the prose side of a declared prose ↔ code pair still says what the code does, when the machine could not settle it. |
-| [`opening-brief`](sdlc/skills/sdlc-core/opening-brief.md) | Brief a bean or a topic BEFORE touching anything: what you are doing and why it is worth doing, what you already know and with what provenance, how you plan to do it and what would falsify the… |
+| [`opening-brief`](sdlc/skills/sdlc-core/opening-brief.md) | Brief a work item or a topic BEFORE touching anything: what you are doing and why it is worth doing, what you already know and with what provenance, how you plan to do it and what would falsify the… |
 | [`package-release`](sdlc/skills/sdlc-core/package-release.md) | Cut a release of a repository's packages: decide the next version, write the release notes, tag, and create the release — for any repository, the platform or a folio. |
-| [`pending-show`](sdlc/skills/sdlc-core/pending-show.md) | Show the current session's pending work — beans list + ledger intent. |
+| [`pending-show`](sdlc/skills/sdlc-core/pending-show.md) | Show the current session's pending work — work items list + ledger intent. |
 | [`pickup`](sdlc/skills/sdlc-core/pickup.md) | Pick up / continue work on one or more existing open PRs efficiently. |
 | [`platform-gates`](sdlc/skills/sdlc-core/platform-gates.md) | `bun test` passing is not the gates passing. |
 | [`pr-description`](sdlc/skills/sdlc-core/pr-description.md) | Write or update a pull request's description so that someone who has never seen the work can follow it: the problem, why it matters, how it was approached, what constrained it, the solution, how to… |
@@ -313,13 +313,13 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`qa-witness`](sdlc/skills/sdlc-core/qa-witness.md) | The QA projections written to `test/results/witnesses/` and stored on the `qa-reports` branch — what a `qa-witness/v1` document says, which three families produce one, how to read a verdict and the… |
 | [`ref-stewardship`](sdlc/skills/sdlc-core/ref-stewardship.md) | Steward a WATCHED REF — a long-lived branch many processes write and one consumer serialises. |
 | [`related-work-coordination`](sdlc/skills/sdlc-core/related-work-coordination.md) | Before new work takes shape, find the work it touches. |
-| [`release-epic-planning`](sdlc/skills/sdlc-core/release-epic-planning.md) | Plan and track releases using bean epics. |
-| [`release-lifecycle`](sdlc/skills/sdlc-core/release-lifecycle.md) | Governs the release lifecycle: semver policy, draft/named releases, changelogs, release gating, and the relationship between feature branches, PRs, beans, and releases. |
+| [`release-epic-planning`](sdlc/skills/sdlc-core/release-epic-planning.md) | Plan and track releases using work item epics. |
+| [`release-lifecycle`](sdlc/skills/sdlc-core/release-lifecycle.md) | Governs the release lifecycle: semver policy, draft/named releases, changelogs, release gating, and the relationship between feature branches, PRs, work items, and releases. |
 | [`rendered-impact`](sdlc/skills/sdlc-core/rendered-impact.md) | The list of rendered files a Change Set alters, and how a reviewer approves against it. |
 | [`rendered-verification`](sdlc/skills/sdlc-core/rendered-verification.md) | Confirm a UI change by LOOKING at it in a browser and sending the screenshots to the author, rather than describing it. |
 | [`saturation-meta-merge`](sdlc/skills/sdlc-core/saturation-meta-merge.md) | When the CI runners have been full for a long time, drain a repository's ready PRs in one step: hold the swarm, cancel the queued PR runs, stack every admitted PR onto one meta-merge branch with… |
 | [`secrets`](sdlc/skills/sdlc-core/secrets.md) | Adding, rotating and revoking the credentials the harness's automation needs, one mechanism at a time, with the exact GitHub UI path for each step. |
-| [`session-intent`](sdlc/skills/sdlc-core/session-intent.md) | Session-start intent declaration + session-end results recording, against the work plan's goals (milestone beans) and their open beans. |
+| [`session-intent`](sdlc/skills/sdlc-core/session-intent.md) | Session-start intent declaration + session-end results recording, against the work plan's goals (milestone work items) and their open work items. |
 | [`signing`](sdlc/skills/sdlc-core/signing.md) | What any signature in the harness must answer, whatever it covers: who signs, what bytes are signed, which signature suites are accepted and who decides that, where the key is kept, which route… |
 | [`specification-management`](sdlc/skills/sdlc-core/specification-management.md) | Governs the lifecycle, syntax, and traceability of specifications and requirements across the harness. |
 | [`staging-review`](sdlc/skills/sdlc-core/staging-review.md) | Staging preview and before/after comparison for content review. |
@@ -328,7 +328,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`test-data-sets`](sdlc/skills/sdlc-core/test-data-sets.md) | Curating fixed (committed, cited, SME-reviewed) and generated (template + params + seed recipe, never stored materialised) test data sets in separately declared graph directories, with… |
 | [`test-engineer`](sdlc/skills/sdlc-core/test-engineer.md) | Test Engineer Skill |
 | [`test-plan-execution`](sdlc/skills/sdlc-core/test-plan-execution.md) | Run a `test-plan/v1` against a system under test and take it to a certification decision — the five lanes of `test-plan-execution.bpmn` (requester, tester, untainted checker, certifier, attestation… |
-| [`turn-reporting`](sdlc/skills/sdlc-core/turn-reporting.md) | Say which bean you are on, every turn — the opening and closing report formats, the rules that make a report worth reading (two sentences and a link per bean, every mention), and the STRICT rule… |
+| [`turn-reporting`](sdlc/skills/sdlc-core/turn-reporting.md) | Say which work item you are on, every turn — the opening and closing report formats, the rules that make a report worth reading (two sentences and a link per work item, every mention), and the… |
 | [`untainted-verification`](sdlc/skills/sdlc-core/untainted-verification.md) | The party that produced an artefact does not write the verdict on it. |
 | [`upstream-version-adoption`](sdlc/skills/sdlc-core/upstream-version-adoption.md) | Watch a pinned upstream dependency for a new release, and take a candidate version through impact analysis, an MVP build, review and a person's adopt/hold/decline decision. |
 | [`visual-diff`](sdlc/skills/sdlc-core/visual-diff.md) | Pictures of a changed figure, diagram or table, before and after, and how much of it changed. |
@@ -347,13 +347,13 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 
 | Skill | What it is for |
 |---|---|
-| [`bean-blocking`](work-plan/skills/work-plan/bean-blocking.md) | Default to non-blocking when updating a bean's status. |
+| [`bean-blocking`](work-plan/skills/work-plan/bean-blocking.md) | Default to non-blocking when updating a work item's status. |
 | [`bean-coordination`](work-plan/skills/work-plan/bean-coordination.md) | Pointer to the bean-based session work-plan system (the `beans` CLI flat-file issue tracker, data under `beans/`). |
-| [`bean-drain`](work-plan/skills/work-plan/bean-drain.md) | Drain open beans (stories, bugs, features) with several agents at once, as part of the SDLC: build the queue, group it by owner, check and claim each bean on every bean copy before any work, open… |
+| [`bean-drain`](work-plan/skills/work-plan/bean-drain.md) | Drain open work items (stories, bugs, features) with several agents at once, as part of the SDLC: build the queue, group it by owner, check and claim each work item on every work item copy before… |
 | [`idle-backlog`](work-plan/skills/work-plan/idle-backlog.md) | While idle or waiting on a long-running async task (a build, a long compute script, a CI run, a background agent), pull the applicable backlog in priority order and work non-conflicting items… |
 | [`todo-manager`](work-plan/skills/work-plan/todo-manager.md) | Maintain and display work-in-progress task lists using the `beans` CLI issue tracker. |
-| [`work-plan-restructure`](work-plan/skills/work-plan/work-plan-restructure.md) | Reorganise a work plan that has outgrown one-bean-at-a-time repair — session logs typed as epics, duplicate families, generated template beans, stale claims, unparented work — through a reviewed… |
+| [`work-plan-restructure`](work-plan/skills/work-plan/work-plan-restructure.md) | Reorganise a work plan that has outgrown one-bean-at-a-time repair — session logs typed as epics, duplicate families, generated template work items, stale claims, unparented work — through a… |
 | [`work-plan-store-git-branch`](work-plan/skills/work-plan/work-plan-store-git-branch.md) | How the git state branch Tool performs the work-plan store's operations: the branch per graph, the mount at beans/, which command does get, list, create, update, note, history and positions, and how… |
-| [`work-plan-store`](work-plan/skills/work-plan/work-plan-store.md) | The contract the work plan (beans) keeps as a data store, as operations any Tool must provide: get, list, create, update with ifMatch, note, history, and where a bean is in its processes. |
+| [`work-plan-store`](work-plan/skills/work-plan/work-plan-store.md) | The contract the work plan (work items) keeps as a data store, as operations any Tool must provide: get, list, create, update with ifMatch, note, history, and where a work item is in its processes. |
 
 <!-- skills:index:end -->

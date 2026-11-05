@@ -14,7 +14,7 @@ graph-typologies:
 # A confirmation can be waived — by the person who is owed it
 
 Several rules here stop an agent and hand a decision back: merging to `main`,
-removing a durable artefact, spawning a swarm, closing a bean whose evidence
+removing a durable artefact, spawning a swarm, closing a work item whose evidence
 the session could not re-derive, re-entering a process it fell out of.
 
 **The person who is owed a confirmation may give it in advance, for a stated
@@ -39,7 +39,7 @@ that finds a malformed one asks, exactly as if none existed.
 > **A waiver relaxes a rule whose text is *ask first*. It can never relax a
 > rule whose text is *never*.**
 
-**Never delete a bean** is such a prohibition: no waiver reaches it, and the
+**Never delete a work item** is such a prohibition: no waiver reaches it, and the
 non-destructive move (`scrapped`, with reasons) is always available.
 
 | gate class | the rule it relaxes | waivable |
@@ -52,7 +52,7 @@ non-destructive move (`scrapped`, with reasons) is always available.
 | `issue-close` | [`issue-working`](../../../sdlc/skills/sdlc-core/issue-working.md) — an agent never closes an issue on its own say-so | yes; the waiver names the issues |
 | *agent permission grants* | [`agent-permissions`](agent-permissions.md) — a person grants what a coding agent may do | **no — never self-granted, and granted per permission** |
 | *hand-edited agent config* | [`harness-projections`](harness-projections.md) — consent per change to `.claude/settings.json` and the like | **no — consent is per change** |
-| *bean deletion* | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), never delete a bean | **no — a prohibition, not a gate** |
+| *work item deletion* | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), never delete a work item | **no — a prohibition, not a gate** |
 | *fabricating evidence* | anywhere a rule says re-derive rather than quote | **no** |
 
 A *never* that somebody wants waived is a change to the skill that owns it —
@@ -68,7 +68,7 @@ agent's durable memory lives in.
 
 **Not `beans/`.** The work plan is `state`: it records what is being worked on
 and where it got to. A waiver is not work, has no Done-when, and must be
-readable by a gate that fires before any bean is opened. The work plan is also
+readable by a gate that fires before any work item is opened. The work plan is also
 branch-local, so a session-scoped waiver filed there could be invisible to the
 session it was granted for.
 
@@ -88,7 +88,7 @@ Before a gate fires, look for a waiver in scope. There are **three** answers:
    clock you cannot trust → **ask**. A gate that cannot read its waivers has
    not been waived.
 
-An expired waiver is **kept, never deleted**, as a `scrapped` bean is: the
+An expired waiver is **kept, never deleted**, as a `scrapped` work item is: the
 record of what was permitted, to whom and when, makes the next grant
 reviewable.
 
@@ -107,7 +107,7 @@ reviewable.
   when the owner says something that plainly is one.
 - **Treat a waiver as a reason to skip the work.** `merge-to-main` waived still
   means green CI and no conflict; `bean-close` waived still means the evidence
-  is quoted in the bean. A waiver removes the *asking*, never the *doing*.
+  is quoted in the work item. A waiver removes the *asking*, never the *doing*.
 
 ## Checked, not trusted
 
