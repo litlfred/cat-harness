@@ -137,10 +137,6 @@ msgstr "Chaque session d'agent suit le même cycle de vie :"
 msgid "Classify — each user request is classified (see next section) and routed to the appropriate workflow."
 msgstr "Classification (Classify) — chaque requête utilisateur est classée (voir la section suivante) et acheminée vers le flux de travail approprié."
 
-#: docs/concepts/agentic-harness.md:97
-msgid "Execute — the agent works within the active workflow, following its BPMN process. Each turn reports the bean being worked on and what is next."
-msgstr "Exécution (Execute) — l'agent travaille au sein du flux de travail actif, en suivant son processus BPMN. Chaque tour signale le bean en cours de traitement et l'étape suivante."
-
 #: docs/concepts/agentic-harness.md:104
 msgid "Handoff — when the session ends (user leaves, context limit, token exhaustion), the agent's durable state is:"
 msgstr "Passation (Handoff) — lorsque la session se termine (l'utilisateur quitte, limite de contexte atteinte, épuisement des jetons), l'état persistant de l'agent est constitué de :"
@@ -148,10 +144,6 @@ msgstr "Passation (Handoff) — lorsque la session se termine (l'utilisateur qui
 #: docs/concepts/agentic-harness.md:106
 msgid "Committed and pushed code"
 msgstr "Code commité et poussé"
-
-#: docs/concepts/agentic-harness.md:107
-msgid "Beans updated with status and notes"
-msgstr "Beans mis à jour avec leur statut et leurs notes"
 
 #: docs/concepts/agentic-harness.md:108
 msgid "Issue comments with summaries of what was accomplished"
@@ -249,10 +241,6 @@ msgstr "Aucun flux de travail — exécuter et rendre compte"
 msgid "Work-plan management"
 msgstr "Gestion du plan de travail"
 
-#: docs/concepts/agentic-harness.md:127
-msgid "Create, update, or query beans"
-msgstr "Créer, mettre à jour ou interroger des beans"
-
 #: docs/concepts/agentic-harness.md:128
 msgid "Bug report"
 msgstr "Rapport de bogue"
@@ -304,10 +292,6 @@ msgstr "Exécution BPMN : une compétence, deux moteurs"
 #: docs/concepts/agentic-harness.md:218
 msgid "BPMN Execution Skill: given a Process, Context, State and Role, utilize one or more Skills in order to execute a Task."
 msgstr "Compétence d'exécution BPMN (BPMN Execution Skill) : étant donné un Processus, un Contexte, un État et un Rôle, utiliser une ou plusieurs Compétences afin d'exécuter une Tâche."
-
-#: docs/concepts/agentic-harness.md:221
-msgid "BPMN execution, from deterministic to agentic. A colour bar runs from \"deterministic\" (blue, left: managed agent execution of a single task) to \"agentic\" (green, right: agents across most or all tasks). Left, under a gear-and-engine icon: \"BPMN Execution Tool: one of any open-source BPMN engines, state and swimlanes strictly enforced\", over a flat swimlane diagram of the folio lifecycle with one sticky note, one bean cluster, a person and a cat-robot beside the lanes. Right, under a cat-robot icon: \"BPMN Execution Tool: agentic swarm with ungoverned state. Agents 'relax' swimlanes, mitigated by mechanical + agentic QA/QC reports\", over the same diagram tilted in perspective, beans scattered across every lane and many cat-robots beneath it."
-msgstr "Exécution BPMN, du déterministe à l'agentique. Une barre de couleur va de « déterministe » (bleu, à gauche : exécution gérée par agent d'une tâche unique) à « agentique » (vert, à droite : des agents sur la plupart ou la totalité des tâches). À gauche, sous une icône d'engrenage et de moteur : « Outil d'exécution BPMN : n'importe quel moteur BPMN open source, état et couloirs strictement appliqués », sur un diagramme plat de couloirs du cycle de vie du folio avec un pense-bête, un groupe de beans, une personne et un robot-chat à côté des couloirs. À droite, sous une icône de robot-chat : « Outil d'exécution BPMN : essaim agentique à l'état non gouverné. Les agents assouplissent les couloirs, compensé par des rapports QA/QC mécaniques et agentiques », sur le même diagramme incliné en perspective, des beans dispersés sur chaque couloir et de nombreux robots-chats en dessous."
 
 #: docs/concepts/agentic-harness.md:223
 msgid "One skill, two kinds of Tool. The skill is the same at both ends: take the process, the context, the current state and the role, pick the skills, and do the task. What changes is the Tool that runs it, and a Tool is swappable behind a skill in the way every other Tool here is."
@@ -397,10 +381,6 @@ msgstr "Nouvelle session, la première requête est une fonctionnalité : → Pr
 msgid "Existing session, already in CRDM: → Incorporate the new request into the current requirements document, continue."
 msgstr "Session existante, déjà dans CRDM : → Intégrer la nouvelle requête dans le document d'exigences en cours, continuer."
 
-#: docs/concepts/agentic-harness.md:286
-msgid "Existing session, doing content work: → Synthesise the feature need, ask user whether to pause content work and address it now or bean it for later."
-msgstr "Session existante, en cours de rédaction de contenu : → Synthétiser le besoin de fonctionnalité, demander à l'utilisateur s'il souhaite suspendre le travail sur le contenu pour le traiter immédiatement ou créer un bean pour plus tard."
-
 #: docs/concepts/agentic-harness.md:290
 msgid "What the user sees"
 msgstr "Ce que l'utilisateur voit"
@@ -420,10 +400,6 @@ msgstr "Comment l'agent quitte CRDM"
 #: docs/concepts/agentic-harness.md:302
 msgid "The CRDM workflow exits when:"
 msgstr "Le flux de travail CRDM se termine lorsque :"
-
-#: docs/concepts/agentic-harness.md:303
-msgid "All beans from the signed-off requirements are resolved, OR"
-msgstr "Tous les beans issus des exigences validées sont résolus, OU"
 
 #: docs/concepts/agentic-harness.md:304
 msgid "The user explicitly defers the remaining work"
@@ -537,10 +513,6 @@ msgstr "Exemple : un utilisateur téléverse une feuille de calcul Excel contena
 msgid "Issue and bean discipline"
 msgstr "Discipline des tickets et des beans"
 
-#: docs/concepts/agentic-harness.md:344
-msgid "Feature work must be linked to a GitHub issue. Content work uses beans. The two are related but not synonymous."
-msgstr "Le travail sur les fonctionnalités doit être lié à un ticket GitHub (issue). Le travail sur le contenu utilise des beans. Les deux sont liés mais non synonymes."
-
 #: docs/concepts/agentic-harness.md:347
 msgid "Issues vs beans"
 msgstr "Tickets vs beans"
@@ -548,10 +520,6 @@ msgstr "Tickets vs beans"
 #: docs/concepts/agentic-harness.md:349
 msgid "GitHub issue"
 msgstr "Ticket GitHub (issue)"
-
-#: docs/concepts/agentic-harness.md:349
-msgid "Bean"
-msgstr "Bean"
 
 #: docs/concepts/agentic-harness.md:351
 msgid "Scope"
@@ -593,14 +561,6 @@ msgstr "Créé → en cours → résolu"
 msgid "Relation"
 msgstr "Relation"
 
-#: docs/concepts/agentic-harness.md:354
-msgid "One issue has many beans"
-msgstr "Un ticket comporte plusieurs beans"
-
-#: docs/concepts/agentic-harness.md:354
-msgid "Each bean references its parent issue"
-msgstr "Chaque bean référence son ticket parent"
-
 #: docs/concepts/agentic-harness.md:356
 msgid "Rules for agents"
 msgstr "Règles pour les agents"
@@ -621,17 +581,9 @@ msgstr "En l'absence de correspondance ouverte, vérifiez les tickets récemment
 msgid "If no match at all, ask the user to create one. Do not create an issue without user permission."
 msgstr "Si aucune correspondance n'existe, demandez à l'utilisateur d'en créer un. Ne créez pas de ticket sans l'autorisation de l'utilisateur."
 
-#: docs/concepts/agentic-harness.md:371
-msgid "Post round summaries to the issue. After each round of implementation (one or more beans resolved), post a comment on the linked issue containing:"
-msgstr "Publier des résumés de cycle sur le ticket. Après chaque cycle d'implémentation (un ou plusieurs beans résolus), publiez un commentaire sur le ticket associé contenant :"
-
 #: docs/concepts/agentic-harness.md:373
 msgid "What was accomplished in this round"
 msgstr "Ce qui a été accompli durant ce cycle"
-
-#: docs/concepts/agentic-harness.md:374
-msgid "What remains to be accomplished (open beans)"
-msgstr "Ce qui reste à accomplir (beans ouverts)"
 
 #: docs/concepts/agentic-harness.md:375
 msgid "Links to updated content for review (staging URLs, docs pages)"
@@ -668,10 +620,6 @@ msgstr "Emplacement"
 #: docs/concepts/agentic-harness.md:399
 msgid "Session start sweep"
 msgstr "Balayage au début de session"
-
-#: docs/concepts/agentic-harness.md:400
-msgid "Bean protocol"
-msgstr "Protocole des beans"
 
 #: docs/concepts/agentic-harness.md:401
 msgid "Commit and PR discipline"
@@ -890,3 +838,42 @@ msgstr "BPMN pour le harnais agentique lui-même — un diagramme BPMN de haut n
 
 #~ msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
 #~ msgstr "Persistance de l'état du flux de travail — le harnais décrit la suspension et la reprise des flux de travail, mais il n'existe aucun mécanisme pour faire persister l'état du flux de travail de l'agent d'une session à l'autre. Aujourd'hui, cela repose sur les beans et les commentaires de tickets comme intermédiaires."
+
+#~ msgid "Execute — the agent works within the active workflow, following its BPMN process. Each turn reports the bean being worked on and what is next."
+#~ msgstr "Exécution (Execute) — l'agent travaille au sein du flux de travail actif, en suivant son processus BPMN. Chaque tour signale le bean en cours de traitement et l'étape suivante."
+
+#~ msgid "Beans updated with status and notes"
+#~ msgstr "Beans mis à jour avec leur statut et leurs notes"
+
+#~ msgid "Create, update, or query beans"
+#~ msgstr "Créer, mettre à jour ou interroger des beans"
+
+#~ msgid "BPMN execution, from deterministic to agentic. A colour bar runs from \"deterministic\" (blue, left: managed agent execution of a single task) to \"agentic\" (green, right: agents across most or all tasks). Left, under a gear-and-engine icon: \"BPMN Execution Tool: one of any open-source BPMN engines, state and swimlanes strictly enforced\", over a flat swimlane diagram of the folio lifecycle with one sticky note, one bean cluster, a person and a cat-robot beside the lanes. Right, under a cat-robot icon: \"BPMN Execution Tool: agentic swarm with ungoverned state. Agents 'relax' swimlanes, mitigated by mechanical + agentic QA/QC reports\", over the same diagram tilted in perspective, beans scattered across every lane and many cat-robots beneath it."
+#~ msgstr "Exécution BPMN, du déterministe à l'agentique. Une barre de couleur va de « déterministe » (bleu, à gauche : exécution gérée par agent d'une tâche unique) à « agentique » (vert, à droite : des agents sur la plupart ou la totalité des tâches). À gauche, sous une icône d'engrenage et de moteur : « Outil d'exécution BPMN : n'importe quel moteur BPMN open source, état et couloirs strictement appliqués », sur un diagramme plat de couloirs du cycle de vie du folio avec un pense-bête, un groupe de beans, une personne et un robot-chat à côté des couloirs. À droite, sous une icône de robot-chat : « Outil d'exécution BPMN : essaim agentique à l'état non gouverné. Les agents assouplissent les couloirs, compensé par des rapports QA/QC mécaniques et agentiques », sur le même diagramme incliné en perspective, des beans dispersés sur chaque couloir et de nombreux robots-chats en dessous."
+
+#~ msgid "Existing session, doing content work: → Synthesise the feature need, ask user whether to pause content work and address it now or bean it for later."
+#~ msgstr "Session existante, en cours de rédaction de contenu : → Synthétiser le besoin de fonctionnalité, demander à l'utilisateur s'il souhaite suspendre le travail sur le contenu pour le traiter immédiatement ou créer un bean pour plus tard."
+
+#~ msgid "All beans from the signed-off requirements are resolved, OR"
+#~ msgstr "Tous les beans issus des exigences validées sont résolus, OU"
+
+#~ msgid "Feature work must be linked to a GitHub issue. Content work uses beans. The two are related but not synonymous."
+#~ msgstr "Le travail sur les fonctionnalités doit être lié à un ticket GitHub (issue). Le travail sur le contenu utilise des beans. Les deux sont liés mais non synonymes."
+
+#~ msgid "Bean"
+#~ msgstr "Bean"
+
+#~ msgid "One issue has many beans"
+#~ msgstr "Un ticket comporte plusieurs beans"
+
+#~ msgid "Each bean references its parent issue"
+#~ msgstr "Chaque bean référence son ticket parent"
+
+#~ msgid "Post round summaries to the issue. After each round of implementation (one or more beans resolved), post a comment on the linked issue containing:"
+#~ msgstr "Publier des résumés de cycle sur le ticket. Après chaque cycle d'implémentation (un ou plusieurs beans résolus), publiez un commentaire sur le ticket associé contenant :"
+
+#~ msgid "What remains to be accomplished (open beans)"
+#~ msgstr "Ce qui reste à accomplir (beans ouverts)"
+
+#~ msgid "Bean protocol"
+#~ msgstr "Protocole des beans"

@@ -269,10 +269,6 @@ msgstr "Rôle"
 msgid "Scaffold a folio. Registered as a generic tool, because it runs before the folio has a content type"
 msgstr "Échafauder un folio. Enregistré comme un outil générique, car il s'exécute avant que le folio n'ait un type de contenu"
 
-#: docs/start/getting-started.md:174
-msgid "Surface the work plan (beans)"
-msgstr "Présenter le plan de travail (beans)"
-
 #: docs/start/getting-started.md:175
 msgid "Probe which toolchains are installed"
 msgstr "Détecter les chaînes d'outils installées"
@@ -542,3 +538,6 @@ msgstr "Prochaines étapes"
 
 #~ msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
 #~ msgstr "La ligne intermédiaire est délibérée. Un texte positionné au hasard finit par atterrir sur le chat, si bien qu'une zone non déclarée signifie « ne pas superposer », et jamais « n'importe où fera l'affaire ». Et un folio sans illustration graphique est tout à fait ordinaire, pas défectueux."
+
+#~ msgid "Surface the work plan (beans)"
+#~ msgstr "Présenter le plan de travail (beans)"

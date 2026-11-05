@@ -29,10 +29,6 @@ msgstr "Beans и задачи"
 msgid "On this page"
 msgstr "На этой странице"
 
-#: docs/guides/beans-and-todos.md:30
-msgid "Beans are for agents. Todos are for humans. They share a word in ordinary speech and nothing else, and conflating them is how a work plan comes to hold two kinds of thing that need different handling."
-msgstr "Beans предназначены для агентов. Задачи (todos) — для людей. В обычной речи они обозначаются одним и тем же словом, но больше ничего общего между ними нет, и их смешение приводит к тому, что в плане работы оказываются две разные категории вещей, требующие совершенно разного обращения."
-
 #: docs/guides/beans-and-todos.md:39
 msgid "A todo is a person's own reminder — what they mean to look at next. It is theirs to create, reorder and discard on no schedule but their own, and nothing about an agent's process should be deciding when it is done."
 msgstr "Todo (задача человека) — это личное напоминание: то, на что человек собирается обратить внимание в следующий раз. Только он сам решает, когда её создать, переставить или удалить, исключительно по собственному графику, и никакой процесс агента не должен определять, когда она выполнена."
@@ -44,10 +40,6 @@ msgstr "На этой странице подробно описано перв�
 #: docs/guides/beans-and-todos.md:46
 msgid "Two things that share a word"
 msgstr "Две вещи с одним названием"
-
-#: docs/guides/beans-and-todos.md:54
-msgid "Bean"
-msgstr "Bean"
 
 #: docs/guides/beans-and-todos.md:54
 msgid "Todo"
@@ -137,10 +129,6 @@ msgstr "Забывание"
 msgid "The agent bean lifecycle"
 msgstr "Жизненный цикл агентского bean"
 
-#: docs/guides/beans-and-todos.md:92
-msgid "Ownership is a gateway, not a courtesy. A bean another session claimed is not yours to resolve, scrap or delete. Claiming is how two sessions avoid picking up the same item; closing someone else's is how one of them loses work it had not finished reporting."
-msgstr "Владение — это шлюз, а не вежливость. Bean, зарезервированный другой сессией, не вам разрешать, списывать или удалять. Резервирование позволяет двум сессиям не брать одну и ту же задачу; закрытие чужого bean приводит к тому, что сессия теряет результаты работы, о которых еще не успела сообщить."
-
 #: docs/guides/beans-and-todos.md:102
 msgid "A bean is never deleted"
 msgstr "Bean никогда не удаляется"
@@ -148,10 +136,6 @@ msgstr "Bean никогда не удаляется"
 #: docs/guides/beans-and-todos.md:125
 msgid "Engine operations are not CLI calls"
 msgstr "Операции движка — это не вызовы CLI"
-
-#: docs/guides/beans-and-todos.md:130
-msgid "Two different things can change a bean, and a step that confuses them will announce an effect it does not have."
-msgstr "Изменять bean могут две разные сущности, и шаг, путающий их между собой, будет декларировать действие, которого он на самом деле не оказывает."
 
 #: docs/guides/beans-and-todos.md:155
 msgid "Human todos — not built yet"
@@ -169,21 +153,9 @@ msgstr "Когда показывать задачу. Показ каждого 
 msgid "When a person may create one, and through what — chat, a command, the session-start surface."
 msgstr "Когда человек может создать задачу и через что — чат, команду или стартовый интерфейс сессии."
 
-#: docs/guides/beans-and-todos.md:170
-msgid "How one is retired. A person abandoning a reminder is ordinary and needs no \"reasons for scrapping\" section; the bean rules do not transfer."
-msgstr "Как задача снимается. Отказ человека от напоминания — обычное дело, не требующее раздела «причины списания»; правила для beans здесь неприменимы."
-
-#: docs/guides/beans-and-todos.md:173
-msgid "Until that is designed, do not repurpose beans for it. A store whose entries are claimed by sessions, closed with change summaries and never deleted is the wrong shape for a reminder somebody wants to drop without ceremony — and mixing the two would put items in the agent work plan that no agent should be acting on."
-msgstr "Пока это не спроектировано, не пытайтесь приспособить beans для этих целей. Хранилище, записи в котором резервируются сессиями, закрываются со сводкой изменений и никогда не удаляются, не подходит по своей структуре для напоминания, которое человек хочет отбросить без лишних церемоний — а их смешение приведет к тому, что в плане работы агентов окажутся пункты, с которыми ни один агент не должен работать."
-
 #: docs/guides/beans-and-todos.md:179
 msgid "What the work plan holds right now"
 msgstr "Текущее состояние плана работы"
-
-#: docs/guides/beans-and-todos.md:228
-msgid "Every identifier on those pages is a link. A bean id resolves to the bean's file, an issue or pull-request number to the forge, and each finding carries a pencil to where writing actually happens. A reference that cannot be resolved stays as plain text, which is the visible difference between \"follow this\" and \"this points somewhere I could not reach\"."
-msgstr "Каждый идентификатор на этих страницах — это ссылка. Идентификатор bean ведет на файл bean, номер issue или pull request — в репозиторий на forge, а каждое замечание снабжено карандашом, ведущим к месту, где фактически происходит редактирование. Ссылка, которую невозможно разрешить, остается обычным текстом, что наглядно показывает разницу между «перейдите сюда» и «это указывает туда, куда не удалось перейти»."
 
 #: docs/guides/beans-and-todos.md:239
 msgid "The live work-plan dashboard needs JavaScript. The projection it reads is a plain JSON file and can be read directly."
@@ -287,3 +259,24 @@ msgstr "Интерактивный дашборд плана работы тре
 
 #~ msgid "Not built yet, and stated here rather than left as an absence somebody has to notice."
 #~ msgstr "Еще не реализованы, и об этом сказано здесь прямо, а не оставлено как пробел, на который кто-то должен натолкнуться сам."
+
+#~ msgid "Beans are for agents. Todos are for humans. They share a word in ordinary speech and nothing else, and conflating them is how a work plan comes to hold two kinds of thing that need different handling."
+#~ msgstr "Beans предназначены для агентов. Задачи (todos) — для людей. В обычной речи они обозначаются одним и тем же словом, но больше ничего общего между ними нет, и их смешение приводит к тому, что в плане работы оказываются две разные категории вещей, требующие совершенно разного обращения."
+
+#~ msgid "Bean"
+#~ msgstr "Bean"
+
+#~ msgid "Ownership is a gateway, not a courtesy. A bean another session claimed is not yours to resolve, scrap or delete. Claiming is how two sessions avoid picking up the same item; closing someone else's is how one of them loses work it had not finished reporting."
+#~ msgstr "Владение — это шлюз, а не вежливость. Bean, зарезервированный другой сессией, не вам разрешать, списывать или удалять. Резервирование позволяет двум сессиям не брать одну и ту же задачу; закрытие чужого bean приводит к тому, что сессия теряет результаты работы, о которых еще не успела сообщить."
+
+#~ msgid "Two different things can change a bean, and a step that confuses them will announce an effect it does not have."
+#~ msgstr "Изменять bean могут две разные сущности, и шаг, путающий их между собой, будет декларировать действие, которого он на самом деле не оказывает."
+
+#~ msgid "How one is retired. A person abandoning a reminder is ordinary and needs no \"reasons for scrapping\" section; the bean rules do not transfer."
+#~ msgstr "Как задача снимается. Отказ человека от напоминания — обычное дело, не требующее раздела «причины списания»; правила для beans здесь неприменимы."
+
+#~ msgid "Until that is designed, do not repurpose beans for it. A store whose entries are claimed by sessions, closed with change summaries and never deleted is the wrong shape for a reminder somebody wants to drop without ceremony — and mixing the two would put items in the agent work plan that no agent should be acting on."
+#~ msgstr "Пока это не спроектировано, не пытайтесь приспособить beans для этих целей. Хранилище, записи в котором резервируются сессиями, закрываются со сводкой изменений и никогда не удаляются, не подходит по своей структуре для напоминания, которое человек хочет отбросить без лишних церемоний — а их смешение приведет к тому, что в плане работы агентов окажутся пункты, с которыми ни один агент не должен работать."
+
+#~ msgid "Every identifier on those pages is a link. A bean id resolves to the bean's file, an issue or pull-request number to the forge, and each finding carries a pencil to where writing actually happens. A reference that cannot be resolved stays as plain text, which is the visible difference between \"follow this\" and \"this points somewhere I could not reach\"."
+#~ msgstr "Каждый идентификатор на этих страницах — это ссылка. Идентификатор bean ведет на файл bean, номер issue или pull request — в репозиторий на forge, а каждое замечание снабжено карандашом, ведущим к месту, где фактически происходит редактирование. Ссылка, которую невозможно разрешить, остается обычным текстом, что наглядно показывает разницу между «перейдите сюда» и «это указывает туда, куда не удалось перейти»."

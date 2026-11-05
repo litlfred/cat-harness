@@ -15,15 +15,20 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `concepts`, holding `d
 |---|---|---|
 | [`agentic-harness.md`](agentic-harness.md) | Agentic harness |  |
 | [`architecture.md`](architecture.md) | Architecture |  |
+| [`architecture.prov.jsonld`](architecture.prov.jsonld) | data |  |
 | [`content-types.md`](content-types.md) | [Content](https://litlfred.github.io/bootstrap/schemas/#content) types |  |
 | [`harness.md`](harness.md) | The [Harness](https://litlfred.github.io/bootstrap/schemas/#harness) |  |
 | [`harnessed-kg-overview.md`](harnessed-kg-overview.md) | Harnessed [Knowledge Graph](https://litlfred.github.io/bootstrap/schemas/#knowledge-graph) Overview |  |
 | [`index.md`](index.md) | Concepts |  |
 | [`kg-navigation.md`](kg-navigation.md) | kg-navigation |  |
+| [`kg-navigation.prov.jsonld`](kg-navigation.prov.jsonld) | data |  |
 | [`knowledge-graph.md`](knowledge-graph.md) | The [Knowledge Graph](https://litlfred.github.io/bootstrap/schemas/#knowledge-graph) |  |
 | [`skills.md`](skills.md) | [Skills](https://litlfred.github.io/bootstrap/schemas/#skill) & roles |  |
+| [`skills.prov.jsonld`](skills.prov.jsonld) | data |  |
 | [`subgraph-viewers.md`](subgraph-viewers.md) | [Subgraph](https://litlfred.github.io/bootstrap/schemas/#subgraph) viewers |  |
+| [`subgraph-viewers.prov.jsonld`](subgraph-viewers.prov.jsonld) | data |  |
 | [`tool-graph.md`](tool-graph.md) | "What a Tool is, how it differs from a skill, and how the two are joined without being conflated." |  |
+| [`tool-graph.prov.jsonld`](tool-graph.prov.jsonld) | data |  |
 | [`ar/`](ar/) | _nothing declares what this holds_ | |
 | [`architecture/`](architecture/) | _nothing declares what this holds_ | |
 | [`es/`](es/) | _nothing declares what this holds_ | |
