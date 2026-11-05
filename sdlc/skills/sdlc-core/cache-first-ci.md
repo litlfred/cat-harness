@@ -87,8 +87,14 @@ bun run cat cache:publish <step>
 ```
 
 This builds nothing. It publishes what you already built to
-`refs/cache/cs1-<step>-<key>`. Today that is `cat-mount` when the change edits
-`index.lock.json`. More steps join as the audit clears their producers.
+`refs/cache/cs1-<step>-<key>`.
+
+**The mounts have their own committer path**, the layers ref
+(`refs/cat/layers/<key>`; `bun run cat layers:publish`, which `mount:remote`
+runs after it changes the lock). Its replayer verifies each layer against the
+lock and serves every layer that did not move, which is finer than a single
+all-or-nothing hit. So it is declared as a cache node and is not wrapped in
+`cached-step`. One committer path per cache.
 
 ## The budget
 
