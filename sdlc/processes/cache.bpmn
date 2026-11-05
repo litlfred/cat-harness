@@ -20,6 +20,8 @@ OPTIONAL, AND SKIPPING IS ALWAYS CORRECT. Every consumer — the render pipeline
 
 PARALLEL WHERE INDEPENDENT, IN ORDER WHERE NOT. The layers come first, because every other component reads mounted content. Then the prepared image and node_modules, the bun/pip downloads, the gate results and the generated sets restore side by side. Then the compiled Lean artefacts. Then the render seed (derive:publish's writer records) and the FHIR IG ASTs side by side; the IG ASTs in their own lane, as fhir-harness's `Process_IgAstCache`, whose "valid for this commit?" is the component's verify and whose AST refresh is its save. The Jekyll cache is last, because it caches the rendering of what the rest produce.
 
+ONLY WHAT THE TARGET NEEDS, ONLY WHAT IS STALE (owner, 2026-11-05: "not all rendering/CI/merge processes need all caches. be optimal in what needs caching" and "... be optimal in which caches need to be updated to perform a specific render"). A component runs only when the plan (`cache:plan`, the first gateway) marks it needed for this target; a component the target does not read is passed through untouched, neither restored nor refreshed. A needed component that is fresh is RESTORED, never rebuilt. A needed component that is stale, or whose staleness cannot be determined, is REFRESHED, incrementally where its node says so (the changed writers, the changed Lean modules over the restored .oleans, the IG AST delta, the moved layers), never wholesale when a delta is valid. A stale component no target here needs is left for the next target that needs it, or for main's run. The plan and what actually happened are both reported (`cached-step` phase `report`), and the daily report flags a component restored and never read.
+
 EACH COMPONENT, BOTH PHASES. Restore: look up the derived key, verify the entry by its trust class — (a) against a reference derived from THIS tree, so a bad entry is only a miss; (a′) a bundle's own manifest plus a source rule; (b) a committer's verdict, honoured then re-verified off the critical path; (c) main-only entries, by exact key — and report hit, warm or miss with why. Save: only after the consumer's work is green, only from main or into the run's own ref scope, never from `pull_request_target`. Each component is a `cache` node in the knowledge graph (key recipe, derived inputs, producer, consumers, trust class, location, budget), and the cache viewer compares its current key with the key today's pins imply, so staleness is computed, never claimed.</bpmn:documentation>
     <bpmn:extensionElements>
       <!-- ADVISORY: the process is optional by the owner's ruling; skipping it is always correct. -->
@@ -53,8 +55,8 @@ EACH COMPONENT, BOTH PHASES. Restore: look up the derived key, verify the entry 
     <bpmn:startEvent id="Start_Cache" name="A consumer asks for its caches">
       <bpmn:outgoing>f1</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:exclusiveGateway id="GW_Enabled" name="Cache&#10;enabled?">
-      <bpmn:documentation>`no` whenever the consumer does not call this process, cannot reach a store, or is told not to (a forced cold run). Skipping is ALWAYS correct: every component's miss path is the consumer building what it needs, so a skip costs time and never correctness.</bpmn:documentation>
+    <bpmn:exclusiveGateway id="GW_Enabled" name="cache:plan:&#10;anything needed?">
+      <bpmn:documentation>Run `bun run cat cache:plan &lt;target&gt;`. For each `cache` node it decides NEEDED (derived: the target's recorded read set, from the CI cone and the writer cone, touches what the node `materializes`, plus the `needs` closure), FRESH or STALE (the node's key against the key today's inputs imply; undetermined counts as stale), and so restore, refresh or skip. `nothing needed` when the plan needs no node, when the target has no recorded read set (it could not be derived: the safe direction is to build), when the consumer does not call this process, cannot reach a store, or is told not to (a forced cold run). Skipping is ALWAYS correct: every component's miss path is the consumer building what it needs, so a skip costs time and never correctness.</bpmn:documentation>
       <bpmn:incoming>f1</bpmn:incoming>
       <bpmn:outgoing>f2</bpmn:outgoing>
       <bpmn:outgoing>f3</bpmn:outgoing>
@@ -140,8 +142,8 @@ EACH COMPONENT, BOTH PHASES. Restore: look up the derived key, verify the entry 
       <bpmn:incoming>f3</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="f1" sourceRef="Start_Cache" targetRef="GW_Enabled"/>
-    <bpmn:sequenceFlow id="f2" name="yes" sourceRef="GW_Enabled" targetRef="Task_Layers"/>
-    <bpmn:sequenceFlow id="f3" name="no" sourceRef="GW_Enabled" targetRef="End_Skipped"/>
+    <bpmn:sequenceFlow id="f2" name="needed" sourceRef="GW_Enabled" targetRef="Task_Layers"/>
+    <bpmn:sequenceFlow id="f3" name="nothing needed" sourceRef="GW_Enabled" targetRef="End_Skipped"/>
     <bpmn:sequenceFlow id="f4" sourceRef="Task_Layers" targetRef="PG_After_Layers"/>
     <bpmn:sequenceFlow id="f50" sourceRef="PG_After_Layers" targetRef="Task_Image"/>
     <bpmn:sequenceFlow id="f60" sourceRef="Task_Image" targetRef="PG_Join_Independent"/>
