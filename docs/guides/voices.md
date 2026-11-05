@@ -29,10 +29,10 @@ exposition standard by the science layer that holds its exemplar paper. Each of
 those instances documents its own voices beside their `SKILL.md` and
 `voice.json`, and links down to this page for the mechanism.
 
-This page does not list them, because every one of them sits **above** this
-layer: a link from here to one would point up the dependency arrow, and a list
-here would be a second catalogue free to drift from the first. The one
-catalogue is the interactive viewer (`bun run cat voices:viz`, published at
+This page does not list them: every one sits **above** this layer, so a link
+from here would point up the dependency arrow, and a list here would be a
+second catalogue free to drift from the first. The catalogue is the
+interactive viewer (`bun run cat voices:viz`, published at
 `cat-harness/docs/cat-harness/voices/`), which re-reads every instance that
 declares a `voices` graph on each run; `skill_list` answers the same question
 from an agent.
@@ -58,7 +58,7 @@ Platform docs themselves carry no voice, meaning their `voices.active[]` array i
 
 Voices are designed to be part of the entire document lifecycle:
 
-- **Before writing:** Follow the [voice-authoring-guidance](../../skills/authoring/authoring-core/voice-authoring-guidance.md) skill. It is much cheaper to honor terminology and stylistic rules as you type than to retrofit them later.
+- **Before writing:** Follow the [voice-authoring-guidance](../../skills/authoring/authoring-core/voice-authoring-guidance.md) skill, because honouring terminology and stylistic rules as you type is cheaper than retrofitting them.
 - **After writing:** Use the [voice-overlay-review](../../skills/authoring/authoring-core/voice-overlay-review.md) skill. This reviews your blocks against the rules of your active voices and places findings on the QA sidecar.
 
 ## How voice review works
@@ -66,5 +66,3 @@ Voices are designed to be part of the entire document lifecycle:
 You can read about the formal review process in the [Voice overlay review BPMN process]({{ '/processes/voice-review.html' | relative_url }}) page.
 
 Every rule inside a voice carries a `source` citation that resolves to a real document or reference. When reviewing, you must open the cited page. The mechanical half of a rule (its patterns or terminology) acts as a question. The reviewer must check the context to decide if the rule truly applies or if it's an exception (the judgement half). If a rule's own citation does not support it, the defect is in the rule itself, not the prose.
-
-You can explore all the active rules and their citations in the interactive viewer at `cat-harness/docs/cat-harness/voices/`.

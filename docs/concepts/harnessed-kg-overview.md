@@ -25,13 +25,13 @@ _This page is generated from [`docs/source/concepts-harnessed-kg-overview/`](htt
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-harnessed-kg-overview/overview.md){: .fa-node-edit title="Edit docs/source/concepts-harnessed-kg-overview/overview.md" data-fa-link="edit" data-src="docs/source/concepts-harnessed-kg-overview/overview.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="overview.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-harnessed-kg-overview/overview.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-harnessed-kg-overview/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="overview.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-harnessed-kg-overview/overview.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-harnessed-kg-overview/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-The owner's deck *KG / folio-asst* (2026-09-30), rebuilt as a page. The page
+The deck *KG / folio-asst* (2026-09-30), rebuilt as a page. The page
 is generated from the content and assets it describes, so it moves when they
 move. The original is kept, frozen and dated, as the L1 source
 `cat-harness/library/kg-folio-asst-2026-09-30`: thirteen slides, their speaker notes and all 33 images with
 descriptions.
 
-**Two differences from the original, both deliberate:**
+**Two differences from the original:**
 
 - **The words are text.** Most of the original's content was baked into
   pictures, which search, translation and screen readers cannot reach. Every
@@ -85,9 +85,7 @@ geometry, not its text:
 </tbody>
 </table>
 
-So content is authored across L1 to L3, and L3 is where content and tooling
-meet. Test data starts at the DAK and runs through executable software, and
-apps are L4 alone. **No bar reaches L5.**
+**No bar reaches L5.**
 
 Two questions sit at the two ends of the band. **How can I reliably author,
 review and adjudicate faster?** is drawn on the left, over L1, beside the human
@@ -99,16 +97,6 @@ with an actor by position only; it states no pairing in words.
 the DAK layer's `library/mehl-2021-who-smart-guidelines` (the primary source, Lancet
 Digital Health 2021); the DAK layer's `library/9789240093362-eng` §1.2 (WHO's handbook
 restating them).
-
-> **Misaligned (fixed on this branch):** the docs said SMART Guidelines "names
-> three layers". It names five. The page now lists all five and says why
-> FHIR content stops at L3.
->
-> **Misread, and corrected here:** an earlier version of this page flattened
-> the bars into one "who asks" label per level (content for L1 and L2, tooling
-> for L3, apps for L4 and L5) and said test data "sits beside every level". The
-> slide's geometry says otherwise: the table above is measured from the deck's
-> shape positions.
 
 ## 2 — Accessing the WHO L1 corpus
 {: #slide-02 data-fa-label="sec:harnessed-kg-overview-slide-02" }
@@ -140,12 +128,12 @@ the slide as Cloudflare R2 storage and the Cloudflare edge network.
 > **Misaligned — proposal, not decision:** the repository treats the CDN as a
 > swappable layer. `kg-to-portal` and `large-datasets`' artifact store name
 > Cloudflare and R2 only as examples beside GitHub Pages, jsDelivr and S3. The
-> slide names Cloudflare as *the* choice. Before this deck, the 10 TB figure,
-> the World Health Data Hub and "Swiss Observatory schemas" appeared nowhere in
-> the repository. The decision is now recorded, as **proposed, with no outcome yet**, in bean
-> `l9v6` (MADR form). It holds the drivers, three real options (Cloudflare R2 +
-> CDN, GitHub Pages alone, another object store + CDN) and what has to be
-> measured before one is chosen. Read this slide as that proposal.
+> slide names Cloudflare as *the* choice. The 10 TB figure, the World Health
+> Data Hub and "Swiss Observatory schemas" appear nowhere else in the
+> repository. The choice is **proposed, with no outcome yet**, between three
+> options (Cloudflare R2 + CDN, GitHub Pages alone, another object store + CDN),
+> and what has to be measured comes before one is chosen. Read this slide as
+> that proposal.
 
 ## 3 — The ten components of an L2 DAK
 {: #slide-03 data-fa-label="sec:harnessed-kg-overview-slide-03" }
@@ -175,20 +163,20 @@ The slide drew nine cards and put the tenth, **testing: test data and test harne
 
 </details>
 
-**Sources:** the owner, 2026-09-30 (ten: the original eight plus scheduling
-logic and test scenarios); the SMART Base 1.0.0 `DAK` logical model;
+**Sources:** `DAK_COMPONENTS` (ten: the original eight plus scheduling logic
+and test scenarios); the SMART Base 1.0.0 `DAK` logical model;
 [the L2 artefacts and their skills](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-dak.html).
 
 > **Misaligned, in three directions:** the speaker notes said 8. The figure
 > shows 9 cards, with testing beside them. The SMART Base `DAK` logical model
 > (`DAK.fsh`) declares 9 fields: test scenarios **in**,
-> scheduling logic carried **inside** decision-support logic. The owner's
-> count is 10. WHO's IG starter kit disagrees with itself the same way: its
+> scheduling logic carried **inside** decision-support logic. This
+> repository's `DAK_COMPONENTS` counts 10 and marks scheduling logic as not yet
+> formalized. WHO's IG starter kit disagrees with itself the same way: its
 > introduction counts 9 with scheduling and no testing, and its table counts 9
 > with test scenarios and scheduling inside decision support. Scheduling logic is authored as DMN decision tables but may not
 > yet be formalized as its own L2 component or L3 artefact, and that is the
-> gap the logical model shows. This repository's `DAK_COMPONENTS` lists all
-> ten and marks scheduling logic as not yet formalized. The notes are
+> gap the logical model shows. The notes are
 > corrected in the owner's copy.
 
 ## 4 — Existing L1/L2/L3 schemas
@@ -230,7 +218,7 @@ source.
 
 The DAK logical model (SMART Base 1.0.0) is a complete kit with its metadata
 (id, name, title, description, version, status, publication, preview and
-canonical URLs, licence, copyright year, publisher) and its components: nine in this model, ten by the owner's count (see slide 3). Each
+canonical URLs, licence, copyright year, publisher) and its components: nine in this model, ten in this repository's count (see slide 3). Each
 component is held as a **source reference**, not inline: by URL, by canonical or
 as an instance. That indirection is what lets the kit's parts be nodes of a
 larger graph.
@@ -262,7 +250,7 @@ execution anywhere on the deterministic-to-agentic spectrum.
 - <img src="{{ '/assets/img/kg-deck/img-p006-3.webp' | relative_url }}" alt="" height="24" style="height:24px;width:auto;display:inline-block;vertical-align:middle" loading="lazy"> **Human state:** *todos*, attached to process steps or knowledge assets
   ("please review this change in medication").
 
-![Folio lifecycle — one cycle, plan to retire. A BPMN collaboration of six lanes: programme manager, work plan (beans shared by humans and agents), editors and authoring agents, validation and QA, review team and SMEs, publication manager. Tasks in order: plan scope, team and artefacts; seed the work plan; editing and HCI validation; integration test and QA sweep; draft, review and publish; triage published feedback; file feedback as beans; then a gateway, more content, which loops back to editing or ends in retire or archive.]({{ '/assets/img/workflows/content-lifecycle.svg' | relative_url }})
+![Folio lifecycle — one cycle, plan to retire. A BPMN collaboration of five lanes: programme manager, editors and authoring agents, validation and QA, review team and SMEs, publication manager, with the work plan (beans shared by humans and agents) drawn as a data store that the seeding and feedback tasks write to. Tasks in order: plan scope, team and artefacts; seed the work plan; editing and HCI validation; integration test and QA sweep; draft, review and publish; triage published feedback; file feedback as beans; then a gateway, more content, which loops back to editing or ends in retire or archive.]({{ '/assets/img/workflows/content-lifecycle.svg' | relative_url }})
 
 <details markdown="1"><summary>The diagram as it appeared on the slide (2026-09-30)</summary>
 
@@ -314,7 +302,7 @@ state marker where its task is. On the agentic side the human rides *above* the
 board, a row of agents hangs *beneath* it, and beans lie in every lane.
 
 **Sources:** [BPMN execution](agentic-harness.html);
-[`specification-compiled-agents`]({{ '/methodologies/index.html' | relative_url }}) (which now cites this deck).
+[`specification-compiled-agents`]({{ '/methodologies/index.html' | relative_url }}) (which cites this deck).
 
 > **Partly built:** no BPMN engine is wired in, and the agentic QA/QC report
 > does not exist yet. The mechanical one does: `bun run cat prov:qaqc`.
@@ -343,8 +331,6 @@ a skill, a test run tests a skill, and a QA report audits any kind of subject.
 
 > **Misaligned — the snapshot is older:** today's diagram has a **Voice
 > Profile** class that slide 8 does not. The picture above is the current one.
-> The owner's copy now shows it too: slide 8 carries a fresh render, cropped
-> to the same four packages.
 
 ## 9 — Knowledge graphs in git, and the questions each repository kind answers
 {: #slide-09 data-fa-label="sec:harnessed-kg-overview-slide-09" }
@@ -419,10 +405,7 @@ an app to what it uses.
 **Source:** [Repo taxonomy](architecture/repo-taxonomy.html).
 
 > **Aligned:** slide 10's `who/smart-kg` is a real, separate repository, which
-> is the repo taxonomy's worked example of splitting content from tools. Its
-> stub directory in this checkout was removed because the repository already
-> exists elsewhere (bean `wg7r`), and the taxonomy now says so. An earlier
-> version of this note read that removal as the example going stale.
+> is the repo taxonomy's worked example of splitting content from tools.
 
 ## 11 — C@T: the computable asset acquisition, adjudication and agentic test tool harness
 {: #slide-11 data-fa-label="sec:harnessed-kg-overview-slide-11" }
@@ -475,8 +458,7 @@ repository: <https://github.com/litlfred/folio-assistant>
 > `system` (human, agentic and mechanical), and adds a fourth, `external`: a
 > participant outside this instance, which is never given a task. The
 > `role-model` skill and the schema's own documentation state the same
-> mapping. An earlier version of this note called the four values a
-> contradiction. That read the enum without its documentation.
+> mapping.
 
 ## Misalignments at a glance
 {: #misalignments data-fa-label="sec:harnessed-kg-overview-misalignments" }
@@ -485,14 +467,10 @@ repository: <https://github.com/litlfred/folio-assistant>
 
 | slide | what disagrees | which is right | state |
 |---|---|---|---|
-| 1 | docs said SMART has three layers | five (Mehl et al. 2021, the primary source) | fixed on this branch |
-| 1 | this page flattened the bars under the levels | the slide's geometry: content L1–L3, test data L2–L4, tooling L3–L4, apps L4, none at L5 | corrected on this page |
-| 2 | Cloudflare named as *the* CDN; 10 TB, Data Hub, "Swiss Observatory" appear nowhere else | undecided — the repo keeps the CDN swappable | recorded as proposed: bean `l9v6` |
-| 3 | notes 8; figure 9; logical model 9, scheduling not its own field | 10: the original 8 + scheduling logic + test scenarios (owner) | code lists 10, scheduling marked unformalized; WHO model lags |
-| 8 | UML lacks Voice Profile | the generated diagram | page shows current; owner's copy re-rendered |
+| 2 | Cloudflare named as *the* CDN; 10 TB, Data Hub, "Swiss Observatory" appear nowhere else | undecided — the repo keeps the CDN swappable | proposed, no outcome yet |
+| 3 | notes 8; figure 9; logical model 9, scheduling not its own field | 10: the original 8 + scheduling logic + test scenarios | code lists 10, scheduling marked unformalized; WHO model lags |
+| 8 | UML lacks Voice Profile | the generated diagram | page shows current |
 | 9 | target repository names | the monorepo today | target vs current |
-| 9 | this page listed `ohs/harness` as a tool repo | the slide places it with the content repos | corrected on this page |
-| 10 | this page summarised the relations in one line, wrongly | the eight labelled lines on the slide | corrected on this page |
 | 11 | "not yet live" links | published under folio-assistant | snapshot only |
 | 12 | `folio-assitant` link | `folio-assistant` | corrected in the owner's copy |
 

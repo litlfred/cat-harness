@@ -15,7 +15,10 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `vocab-mappings`, holding
 |---|---|---|
 | [`concept-scheme-naming.json`](concept-scheme-naming.json) | Concept scheme → its name, and when that name is also a document title |  |
 | [`glossary-concept-scheme.json`](glossary-concept-scheme.json) | Swimlane glossary → SKOS concept scheme |  |
+| [`glossary-harness-concept.json`](glossary-harness-concept.json) | Harness → SKOS concept (glossary) |  |
+| [`glossary-kind-concept.json`](glossary-kind-concept.json) | Graph kind → SKOS concept (glossary) |  |
 | [`glossary-lane-usage.json`](glossary-lane-usage.json) | Lane occurrence → lane usage node (swimlane glossary) |  |
+| [`glossary-node-kind-concept.json`](glossary-node-kind-concept.json) | Node kind → SKOS concept (glossary) |  |
 | [`glossary-retired-concept.json`](glossary-retired-concept.json) | Retired glossary term → deprecated SKOS concept (swimlane glossary) |  |
 | [`glossary-role-concept.json`](glossary-role-concept.json) | [Role](https://litlfred.github.io/bootstrap/schemas/#role) → SKOS concept (swimlane glossary) |  |
 | [`glossary-variable-lane-concept.json`](glossary-variable-lane-concept.json) | Lane whose performer varies → SKOS concept (swimlane glossary) |  |

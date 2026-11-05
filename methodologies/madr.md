@@ -15,7 +15,7 @@ applies-when: >
 # MADR — the record, not the method
 
 **Adopted whole, 2026-09-20.** The owner's binding: *"MADR is guidance in bean
-context."* So a bean that records a decision carries these sections; a bean that
+context."* So a work item that records a decision carries these sections; a work item that
 records work does not need them.
 
 ## Its sources: what is held, what is unreachable, and why `evidence` is absent
@@ -38,7 +38,7 @@ Nygard's shape.
 The ingest pipeline has no rung that reads markdown, and the archive rung
 stages but cannot be promoted — `l1-blocks` derives a manifest from a
 `structure.json` that only the PDF rungs write. So there is nothing to cite.
-Bean `ke1w` (filed as `t3n8`, re-id'd by `4vg7`) carries the measurement and the per-file hashes.
+Work item `ke1w` (filed as `t3n8`, re-id'd by `4vg7`) carries the measurement and the per-file hashes.
 
 **`evidence` is therefore absent rather than pointing at the queued archive.**
 A `library/` reference means a source a reader can open from this checkout;
@@ -59,7 +59,7 @@ of it a month later. They are independent: a decision reached by any method can 
 recorded in this form, and this form constrains no method.
 
 **The gap this closes:** before this,
-[`decision-audit`](../skills/sdlc/sdlc-core/decision-audit.md) recorded *why this* —
+[`decision-audit`](../sdlc/skills/sdlc-core/decision-audit.md) recorded *why this* —
 and nothing recorded *what else, and why not*. A rejected option with no record is
 a dead end nobody marked, and the next agent walks into it. That is exactly the
 argument `bean-coordination` makes for `scrapped` over deleted.
@@ -94,10 +94,10 @@ things a bare "we decided X" loses.
 - **Never fewer than two considered options.** If there genuinely was only one,
   the record says *why no alternative existed* — that is a finding about the
   constraint, not a decision. **This one is checked**: `bun run cat health` reports
-  `bean-thin-decision-records` over the bean store, at `minor`, because it maps
+  `bean-thin-decision-records` over the work item store, at `minor`, because it maps
   analytical debt rather than breaking a consumer. It reports the SUBJECT COUNT
   beside it (`bean-decision-records`) on purpose — the finding can only fire on a
-  bean that count includes, so a detector that stops matching shows as zero
+  work item that count includes, so a detector that stops matching shows as zero
   subjects instead of as a clean run. Measured when it landed, 2026-09-20: two
   records in the store, both with three options, so it locks in a property the
   store has rather than demanding work.

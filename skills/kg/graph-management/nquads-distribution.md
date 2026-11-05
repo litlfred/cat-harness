@@ -28,7 +28,7 @@ It provides a single source of truth across CLI, MCP tools, and static client-si
 
 ### 1.2 Upstream Skolemization (Zero Blank Nodes)
 * Blank nodes (`_:b0`) clobber each other across distributed documents and cannot be referenced across partitions.
-* **Rule**: Every compound node (e.g. Dublin Core qualified statements, MeSH authorities, bean notes) must be deterministically skolemized at intake into a stable URI: `https://<domain>/entity/<id>#<property>_<index>`.
+* **Rule**: Every compound node (e.g. Dublin Core qualified statements, MeSH authorities, work item notes) must be deterministically skolemized at intake into a stable URI: `https://<domain>/entity/<id>#<property>_<index>`.
 * **Invariant**: The dataset contains zero blank nodes (`_:`).
 
 ### 1.3 2-Tier Subgraph Partitioning
@@ -76,7 +76,7 @@ To prevent browser V8 heap exhaustion on edge devices, datasets are never delive
 
 ### Implementation B: Folio Assistant Beans Work Plan
 * **Compiler**: `cat-harness-tools/scripts/beans-query.ts`
-* **Spine Graph**: `<https://folio-assistant.org/graph/beans>` $\to$ `beans-spine.nq.gz` (all 1,600+ beans with IDs, status, parents, and dependency edges).
+* **Spine Graph**: `<https://folio-assistant.org/graph/beans>` $\to$ `beans-spine.nq.gz` (every work item with its ID, status, parents, and dependency edges).
 * **Subgraph Partitions**: `<https://folio-assistant.org/graph/beans/claims>` $\to$ `claims.nq.gz` (session claims, burndown history, and audit records).
 * **Queries**: `safe_drain_candidates`, `actionable_leaves`, `critical_path_blockers`, `rollup_invariant_violations`, `circular_blockers`.
 * **Declared Served Directory**: `beans/dist/` with `"served": true` in `beans.json`.

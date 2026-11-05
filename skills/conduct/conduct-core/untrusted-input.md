@@ -22,7 +22,7 @@ becomes code.
 
 ## GitHub Actions — `${{ }}` is not interpolation, it is templating
 
-This is the one people get wrong because the syntax looks like a variable.
+The syntax looks like a variable, but
 `${{ github.event.pull_request.head.ref }}` is **substituted into the script's
 text** before bash parses it. A branch named
 
@@ -42,15 +42,10 @@ value as *data* and never parses it as program.
         BRANCH="$HEAD_REF"          # data, always
 ```
 
-WHO's SMART Base repository does exactly this across its
-slash-command workflows, with the comment *"Pass the branch name via env to
-avoid script injection from untrusted data"* — worth reading, since a DAK
-repository has the same fork-PR exposure this one does.
-
 ### What counts as attacker-controlled
 
-Not everything in `github.*`. The audit is worth doing precisely because most
-interpolations are fine and a blanket rule would be ignored.
+Not everything in `github.*`; most interpolations are fine, and a blanket rule
+would be ignored.
 
 - **Attacker-controlled:** `head.ref` (a fork's branch name), PR/issue **title**
   and **body**, comment bodies, label names, and **anything derived from them** —
@@ -58,33 +53,25 @@ interpolations are fine and a blanket rule would be ignored.
 - **Trusted:** `github.workspace`, `github.repository_owner`, `github.sha`,
   `github.event_name`, `matrix.*`, and an output your own workflow **sanitised**.
 
-**The derived case is the one that hides.** Measured here 2026-09-18: this
-repo's staging workflow bound `head.ref` to `env` in one step, then wrote the
-**raw** branch to `$GITHUB_OUTPUT` and interpolated `steps.slug.outputs.branch`
-two steps later. The sanitised `slug` output beside it was safe; the `branch`
-output was the original value under a new name. **Sanitise at the boundary or
-carry it in `env` the whole way — never both, half each.**
+**The derived case is the one that hides:** a step that binds `head.ref` to
+`env`, then writes the **raw** value to `$GITHUB_OUTPUT`, hands a later step
+the original value under a new name. **Sanitise at the boundary or carry it in
+`env` the whole way — never both, half each.**
 
-**And this paragraph went unchecked for four days while a gate was written
-against the opposite premise.** `check-workflow-injection.ts`, 2026-09-22,
-classified `steps.*.outputs` as safe *unconditionally*; a dispatch input reached
-a `mv` through a step output and the gate reported nothing, found 2026-09-26
-(bean `6bhf`). The gate now resolves the producing step, and it grades a
-sanitised output free text anyway — **narrower than the "Trusted" row above, on
-purpose**: a person may judge a `sed` sufficient, a gate cannot, and the remedy
-is one `env:` line either way. See
-[`injection-boundaries`](../security/injection-boundaries.md)
-§"`steps.*.outputs` is not a class".
+`check-workflow-injection.ts` resolves the step that produced a
+`steps.*.outputs` value, and grades even a sanitised output as free text —
+**narrower than the "Trusted" row above, on purpose**: a person may judge a
+`sed` sufficient, a gate cannot, and the remedy is one `env:` line either way.
+See [`injection-boundaries`](../security/injection-boundaries.md)
+§"`steps.*.outputs` is not a class — it is a PIPE".
 
-### `pull_request_target` is where this stops being theoretical
+### `pull_request_target` runs with the base repository's secrets
 
 On `pull_request`, a fork PR gets a read-only token and no secrets, so an
 injection runs on the runner and little else. **`pull_request_target` runs with
-the base repository's token and secrets.** This repo's staging-cleanup job ran
-on `pull_request_target: [closed]` with `contents: write` and interpolated a
-fork branch name — so closing a PR from a branch with a crafted name was
-arbitrary code execution with write access. Fixed the same day it was looked
-for; it had been there for as long as the workflow had.
+the base repository's token and secrets.** A `pull_request_target` job with
+`contents: write` that interpolates a fork branch name gives a crafted branch
+name arbitrary code execution with write access.
 
 If a job runs on `pull_request_target`, treat every `github.event.*` field as
 hostile and check the whole job, not the line you came to change.
@@ -123,32 +110,22 @@ next person skip the check.
 
 ## A workflow GitHub cannot parse does not fail loudly
 
-Worth knowing before you edit any workflow, and it is how the fix above nearly
-went wrong.
-
 **A run whose name is a FILE PATH rather than the workflow's `name:` is a parse
-failure.** GitHub had no `name:` to read. `AGENTS.md` records two workflows that
-sat red for a day in 2026-08 this way; adding the `env:` bindings above
-reproduced it, by putting a second `env:` on a step that already had one.
+failure**: GitHub had no `name:` to read. A common cause is a duplicate key,
+such as a second `env:` on a step that already has one.
 
-**`yaml.safe_load` accepted the file.** Duplicate keys are invalid YAML, but
+**`yaml.safe_load` accepts such a file.** Duplicate keys are invalid YAML, but
 most loaders silently keep the last — so "it parses locally" is not evidence
-that GitHub will take it. `bun run cat check:workflows` uses a parser that reports
-duplicates (`yaml`'s `parseDocument` with `uniqueKeys`), and is gated in CI.
-
-Two hand-rolled attempts at that duplicate check reported false findings before
-the real parser went in — `types:` under two different triggers, then `run:` in
-two different steps. Both would have produced a wall of noise in a repository
-with no duplicates at all, which is exactly how a check gets switched off. YAML
-scoping is a parser's job.
+that GitHub will take it. `bun run cat check:workflows` uses a parser that
+reports duplicates (`yaml`'s `parseDocument` with `uniqueKeys`), and is gated
+in CI. Do not hand-roll a duplicate check: YAML scoping is a parser's job.
 
 ## The test to apply
 
 > **Is this value being placed into something that will be parsed?**
 
 If yes, it must arrive as data — `env`, argv, stdin — or be of a type that
-cannot express the parse. Quoting and escaping are what you reach for when
-neither is available, and they are the option that keeps failing.
+cannot express the parse. Quoting and escaping are the last resort.
 
 ## A hand-over is untrusted input too: screen it before a model reads it
 
@@ -156,7 +133,7 @@ The same defect has a fourth substrate: **a prompt.** What one agent, tool or
 person hands another is data. A sub-agent's report, a delegated prompt, a tool
 result, a PR or issue comment from someone who is not the session's principal,
 an uploaded document: none of these carries the authority of whoever handed it
-over (`skills/conduct/security/zero-trust-handover.md`, H1 and H2).
+over ([`zero-trust-handover`](../security/zero-trust-handover.md), H1 and H2).
 
 **Before a model reads one, run `bun run cat handover:screen`** (Tool
 `handover-screen`, logic in the tools layer's `src/core/handover-screen.ts`):

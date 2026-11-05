@@ -36,11 +36,9 @@ set** (MDS).
 
 ### 2. `\cite{key}` renders as `[key]` in HTML
 
-The HTML viewer converts `\cite{key}` to a bracketed reference
-`[key]`. A TeX pipeline, where the content type has one, handles it
-natively. Both work, but
-be aware the HTML rendering is simple — no bibliography lookup,
-no hyperlinks, just `[key]`.
+The HTML viewer converts `\cite{key}` to a plain bracketed `[key]`, with no
+bibliography lookup and no hyperlink. A TeX pipeline, where the content type
+has one, handles it natively.
 
 ### 3. Use `--` for en-dash, `---` for em-dash
 

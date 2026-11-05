@@ -45,10 +45,6 @@ msgstr "Esta página describe lo primero en su totalidad. Lo segundo aún no est
 msgid "Two things that share a word"
 msgstr "Dos cosas que comparten una palabra"
 
-#: docs/guides/beans-and-todos.md:51
-msgid "The distinction is not terminology. The two have different owners, different lifecycles and different failure modes."
-msgstr "La distinción no es una cuestión terminológica. Los dos tienen diferentes propietarios, diferentes ciclos de vida y diferentes modos de fallo."
-
 #: docs/guides/beans-and-todos.md:54
 msgid "Bean"
 msgstr "Bean"
@@ -137,17 +133,9 @@ msgstr "Duplicado, o cerrado por la sesión equivocada"
 msgid "Forgotten"
 msgstr "Olvidado"
 
-#: docs/guides/beans-and-todos.md:64
-msgid "The failure modes are what make the split worth keeping. A duplicated bean starves the work plan of signal — in one folio an unguarded re-run produced 14,688 duplicates, 92 % of every open bean in the repository. A forgotten todo inconveniences one person. Machinery sized for the first is ceremony on the second, and machinery sized for the second is nowhere near enough for the first."
-msgstr "Los modos de fallo son los que hacen que valga la pena mantener la separación. Un bean duplicado priva de señal al plan de trabajo —en un folio, una reejecución sin protecciones produjo 14.688 duplicados, el 92 % de cada bean abierto en el repositorio. Un todo olvidado incomoda a una persona. La maquinaria dimensionada para lo primero resulta excesivamente ceremoniosa en lo segundo, y la maquinaria dimensionada para lo segundo se queda lejísimos de ser suficiente para lo primero."
-
 #: docs/guides/beans-and-todos.md:71
 msgid "The agent bean lifecycle"
 msgstr "El ciclo de vida del bean de agente"
-
-#: docs/guides/beans-and-todos.md:83
-msgid "The diagram above is the whole cycle, and three of its edges are the ones worth reading twice."
-msgstr "El diagrama anterior muestra el ciclo completo, y tres de sus aristas son las que vale la pena leer dos veces."
 
 #: docs/guides/beans-and-todos.md:92
 msgid "Ownership is a gateway, not a courtesy. A bean another session claimed is not yours to resolve, scrap or delete. Claiming is how two sessions avoid picking up the same item; closing someone else's is how one of them loses work it had not finished reporting."
@@ -156,14 +144,6 @@ msgstr "La propiedad es una compuerta, no una cortesía. Un bean que otra sesió
 #: docs/guides/beans-and-todos.md:102
 msgid "A bean is never deleted"
 msgstr "Un bean nunca se elimina"
-
-#: docs/guides/beans-and-todos.md:114
-msgid "The reason is not tidiness. A scrapped bean records that something was considered and rejected, and on what grounds — which is worth as much to the next agent as the record of work that was done, because it is what stops the same dead end being re-entered. A deleted bean leaves a sibling session unable to tell abandonment from accident, and leaves the next agent free to start over on the thing you already ruled out."
-msgstr "El motivo no es el orden. Un bean descartado registra que algo fue considerado y rechazado, y sobre qué bases —lo cual vale tanto para el siguiente agente como el registro del trabajo que sí se hizo, porque es lo que evita que se vuelva a entrar en el mismo callejón sin salida. Un bean eliminado deja a una sesión hermana sin posibilidad de distinguir el abandono intencional de un accidente, y deja al siguiente agente en libertad de volver a empezar en lo que tú ya habías descartado."
-
-#: docs/guides/beans-and-todos.md:121
-msgid "The prohibition is written here, and in the diagram's own documentation, precisely because the tool offers the operation. A rule that depends on nobody noticing a command is not a rule."
-msgstr "La prohibición está escrita aquí, y en la propia documentación del diagrama, precisamente porque la herramienta ofrece la operación. Una regla que depende de que nadie se percate de un comando no es una regla."
 
 #: docs/guides/beans-and-todos.md:125
 msgid "Engine operations are not CLI calls"
@@ -176,10 +156,6 @@ msgstr "Dos entidades diferentes pueden modificar un bean, y un paso que las con
 #: docs/guides/beans-and-todos.md:155
 msgid "Human todos — not built yet"
 msgstr "Tareas humanas (todos) — aún no construido"
-
-#: docs/guides/beans-and-todos.md:160
-msgid "Not built yet, and stated here rather than left as an absence somebody has to notice."
-msgstr "Aún no construido, y expresado aquí en lugar de dejarlo como una ausencia que alguien tenga que advertir."
 
 #: docs/guides/beans-and-todos.md:163
 msgid "A person's todos need a cycle of their own, and none of it exists:"
@@ -293,3 +269,21 @@ msgstr "El panel en vivo del plan de trabajo requiere JavaScript. La proyección
 
 #~ msgid "What is not here. Where a bean sits in a BPMN process, which is the other half of bean . That join needs , the declared  graph, and it is empty — so a position view would report \"nowhere\" for every bean in the store. It waits for instance state to exist."
 #~ msgstr "Lo que no está aquí. En qué punto de un proceso BPMN se sitúa un bean, lo cual es la otra mitad del bean . Dicha unión necesita , el grafo declarado , y se encuentra vacío —por lo que una vista de posición reportaría «en ningún lugar» para cada bean del almacén. Espera a que el estado de instancias exista."
+
+#~ msgid "The distinction is not terminology. The two have different owners, different lifecycles and different failure modes."
+#~ msgstr "La distinción no es una cuestión terminológica. Los dos tienen diferentes propietarios, diferentes ciclos de vida y diferentes modos de fallo."
+
+#~ msgid "The failure modes are what make the split worth keeping. A duplicated bean starves the work plan of signal — in one folio an unguarded re-run produced 14,688 duplicates, 92 % of every open bean in the repository. A forgotten todo inconveniences one person. Machinery sized for the first is ceremony on the second, and machinery sized for the second is nowhere near enough for the first."
+#~ msgstr "Los modos de fallo son los que hacen que valga la pena mantener la separación. Un bean duplicado priva de señal al plan de trabajo —en un folio, una reejecución sin protecciones produjo 14.688 duplicados, el 92 % de cada bean abierto en el repositorio. Un todo olvidado incomoda a una persona. La maquinaria dimensionada para lo primero resulta excesivamente ceremoniosa en lo segundo, y la maquinaria dimensionada para lo segundo se queda lejísimos de ser suficiente para lo primero."
+
+#~ msgid "The diagram above is the whole cycle, and three of its edges are the ones worth reading twice."
+#~ msgstr "El diagrama anterior muestra el ciclo completo, y tres de sus aristas son las que vale la pena leer dos veces."
+
+#~ msgid "The reason is not tidiness. A scrapped bean records that something was considered and rejected, and on what grounds — which is worth as much to the next agent as the record of work that was done, because it is what stops the same dead end being re-entered. A deleted bean leaves a sibling session unable to tell abandonment from accident, and leaves the next agent free to start over on the thing you already ruled out."
+#~ msgstr "El motivo no es el orden. Un bean descartado registra que algo fue considerado y rechazado, y sobre qué bases —lo cual vale tanto para el siguiente agente como el registro del trabajo que sí se hizo, porque es lo que evita que se vuelva a entrar en el mismo callejón sin salida. Un bean eliminado deja a una sesión hermana sin posibilidad de distinguir el abandono intencional de un accidente, y deja al siguiente agente en libertad de volver a empezar en lo que tú ya habías descartado."
+
+#~ msgid "The prohibition is written here, and in the diagram's own documentation, precisely because the tool offers the operation. A rule that depends on nobody noticing a command is not a rule."
+#~ msgstr "La prohibición está escrita aquí, y en la propia documentación del diagrama, precisamente porque la herramienta ofrece la operación. Una regla que depende de que nadie se percate de un comando no es una regla."
+
+#~ msgid "Not built yet, and stated here rather than left as an absence somebody has to notice."
+#~ msgstr "Aún no construido, y expresado aquí en lugar de dejarlo como una ausencia que alguien tenga que advertir."

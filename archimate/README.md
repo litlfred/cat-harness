@@ -32,7 +32,7 @@ TypeScript. The discipline is the skill
 |---|---|---|
 | `archimate-validators` | [`validators/`](validators/) | `validators` |
 | `archimate-typologies` | [`typologies/`](typologies/) | `typologies` — the `archimate` kind |
-| `cat-harness-tools-archimate-schemas` | `archimate/schemas/` in [cat-harness-tools](https://github.com/litlfred/cat-harness-tools/tree/main/archimate/schemas) | `schemas`, `code` — the Zod schema, moved by bean `8lcl` |
+| `cat-harness-tools-archimate-schemas` | `archimate/schemas/` in [cat-harness-tools](https://github.com/litlfred/cat-harness-tools/tree/main/archimate/schemas) | `schemas`, `code` — the Zod schema, moved by work item `8lcl` |
 
 ## The one rule
 

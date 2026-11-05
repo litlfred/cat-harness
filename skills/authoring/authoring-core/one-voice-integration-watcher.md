@@ -17,13 +17,13 @@ description: >
   (Monitor, subscriptions, queue, ledger, idle sweep, author-ask,
   watch-prepared-PRs, witness-drift recovery, billing-quick-fail
   flake, sibling-PR comment protocol) from
-  `local/integration-watcher`.
+  `integration-watcher`.
 allowed-tools: Read Edit Write Bash Grep Glob Agent Monitor Skill
 ---
 
 # /one-voice-integration-watcher
 
-A concrete instance of [`local/integration-watcher`](../../sdlc/sdlc-core/integration-watcher.md).
+A concrete instance of [`integration-watcher`](../../../sdlc/skills/sdlc-core/integration-watcher.md).
 The parent encodes the shared mechanics (Monitor, subscriptions,
 queue, ledger, idle sweep, author-ask, watch-PRs-you-prepare,
 sibling-PR comment protocol, witness-drift recovery, billing
@@ -35,14 +35,11 @@ parent's §1 references `${NAME}`. Files land at
 `beans/one-voice-integration-watcher-queue.json` and
 `beans/one-voice-integration-watcher-ledger.md`.
 
-**Persistent operation (binding).** Per the repo owner's standing
-preference, this watcher **never stops** in foreground sessions.
-When no main commits or PR events arrive in a TICK window, the
-watcher pulls the next staleness-backlog block (§5 inherited
-from the parent, §5d auto-pull policy). The QA reports it writes
-during these idle windows ARE the knowledge base that informs
-future content reviews — the staleness map of which criteria are
-fresh, stale, or never-audited per block.
+**Persistent operation (binding).** This watcher **never stops** in
+foreground sessions. When no main commits or PR events arrive in a TICK
+window, it pulls the next staleness-backlog block (§5 inherited from the
+parent, §5d auto-pull policy), because the QA reports it writes while idle are
+the staleness map that future content reviews read.
 
 ## Slot A — Goal statement
 
@@ -68,9 +65,7 @@ QA report. Specifically:
    (If the project has no such partition, this criterion is inert.)
 
 Findings are persisted as **multi-reviewer** entries in
-`<block>.qa.json`, so script, agent, and human adjudications
-co-exist per criterion. The most-recent entry whose `field_hash`
-matches the present source files is the "current verdict".
+`<block>.qa.json` (see §Multi-reviewer protocol).
 
 ## Slot B — §3 trigger filter
 
@@ -231,17 +226,13 @@ Per criterion, the QA report stores an **array** of reviewer
 entries. The watcher's update rule:
 
 1. **Compute current source hashes** (`md`, `ts`, proof).
-2. **Find the most-recent fresh entry** (matching `field_hash`).
-3. If a fresh entry already exists from a higher-authority
-   reviewer (human > agent > script), preserve it and skip.
-4. Otherwise append a new entry; do **not** delete prior entries.
-5. The current-verdict resolution is: most recent entry where
-   `field_hash` matches present source files. Ties broken by
-   reviewer kind ranking (`human` > `agent` > `script`).
-
-This way, a script run that finds "pass" is overruled by a later
-agent or human entry that finds "fail" (on the same source), and
-vice versa, but the audit trail is preserved.
+2. If a fresh entry (matching `field_hash`) already exists from a
+   higher-authority reviewer (human > agent > script), preserve it and
+   skip.
+3. Otherwise append a new entry; do **not** delete prior entries.
+4. The current verdict is the most recent entry whose `field_hash`
+   matches the present source files; ties are broken by reviewer kind
+   (`human` > `agent` > `script`).
 
 ## Quick-start
 
@@ -290,4 +281,3 @@ bun run pipeline/qa-sweep.ts <folio-dir> --ci
       was either auto-mechanically reduced OR escalated via
       §4e author-ask (never silently passed)
 - [ ] Slot I invariants check pass before any own-branch commit
-```

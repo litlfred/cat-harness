@@ -45,10 +45,6 @@ msgstr "如果智能体以无法使用的方式提出了一个好问题，那就
 msgid "The usual shape of it: a long open prompt — \"Tell me about the folio you have in mind, what content types you expect, and how you'd like it organised\" — sent to somebody for whom typing is slow and painful. The reply comes back short. The agent reads shortness as low engagement and asks another open question. Nobody in that exchange has done anything obviously wrong, and the conversation is already failing."
 msgstr "其常见的表现形式为：一段冗长而开放的提示——“请向我描述您心中的 folio、您期望的内容类型以及您希望如何组织它”——发送给了一位打字缓慢且痛苦的用户。收到的回复非常简短。智能体将简短的回复理解为参与度不高，于是又抛出了另一个开放式问题。在这次交互中，没有人做错任何明显的事情，但对话已经在走向失败。"
 
-#: docs/start/accessibility.md:40
-msgid "This repository's owner has very limited hand function, so the case is not hypothetical here. But the rule generalises without reference to anybody:"
-msgstr "本仓库的拥有者手部功能极其有限，因此这种情况在这里并非假设。但无论对任何人而言，这一规则都具有普遍意义："
-
 #: docs/start/accessibility.md:43
 msgid "A question's cost is paid by the person answering it. Design the question so that the cheapest possible answer is still a complete one."
 msgstr "问题的代价是由回答者承担的。 在设计问题时，应当让成本最低的回答依然是一个完整的回答。"
@@ -261,10 +257,6 @@ msgstr "制作内容的工具"
 msgid "the one usually missed. folio-assistant is an authoring tool: Part A is the tool being usable, Part B is the tool helping the author produce accessible output"
 msgstr "通常被忽略的一项。 folio-assistant 是一种创作工具：Part A 是工具本身具备可用性，Part B 是工具协助作者产出具备无障碍特性的输出物"
 
-#: docs/start/accessibility.md:114
-msgid "ATAG Part B is worth dwelling on, because it is the part a content platform can uniquely deliver: alt-text presence, heading order, table headers and language tagging in published folios are checks the QA sweep can carry, and no amount of making the editor accessible substitutes for them."
-msgstr "ATAG Part B 值得重点关注，因为这是内容平台能够唯独提供的部分：在已发布的 folio 中检查替代文本的存在性、标题层级顺序、表格表头和语言标记，这些是 QA 全面检查（QA sweep）可以承担的，而无论怎样让编辑器本身无障碍都无法替代它们。"
-
 #: docs/start/accessibility.md:119
 msgid "2.6 What is implemented today"
 msgstr "2.6 当前已实现的内容"
@@ -320,10 +312,6 @@ msgstr "音频模态仅作了描述，尚未实现。 规则已被记录；但�
 #: docs/start/accessibility.md:149
 msgid "3. Forcing agentic Q&A into guided questions"
 msgstr "3. 将智能体问答强制转化为引导式提问"
-
-#: docs/start/accessibility.md:151
-msgid "The second question. The answer is a separation, and the separation is the whole design."
-msgstr "第二个问题。其答案在于关注点分离，而这种分离正是整个设计的核心。"
 
 #: docs/start/accessibility.md:154
 msgid "3.1 Two things that look like one"
@@ -421,10 +409,6 @@ msgstr "开放式问题不是决策。 “这篇论文是关于什么的？”�
 msgid "A conversation is not a wizard. A user must always be able to say something the table did not anticipate. That is what the \"tell me more\" option is for, and it is not optional garnish."
 msgstr "对话不是向导（wizard）。 用户必须始终能够说出表格未曾预料的内容。这正是“详细告诉我（tell me more）”选项的作用所在，它绝非可有可无的装饰。"
 
-#: docs/start/accessibility.md:211
-msgid "Guided does not mean interrogating. The largest accessibility win available is the question you did not have to ask — every fact the agent reads from the filesystem is one fewer. That win is invisible, unrewarded, and larger than any stylesheet."
-msgstr "引导并不意味着审讯。 能够获得的最大无障碍收益，恰恰是那个你无需提出的问题——智能体从文件系统中读取的每一个事实，都让提问减少了一个。这种收益是隐形的、默默无闻的，但却比任何样式表都更为巨大。"
-
 #: docs/start/accessibility.md:216
 msgid "See also"
 msgstr "另请参阅"
@@ -473,3 +457,15 @@ msgstr "另请参阅"
 
 #~ msgid "Options for workflow state in beans"
 #~ msgstr "在 beans 中管理工作流状态的选项"
+
+#~ msgid "This repository's owner has very limited hand function, so the case is not hypothetical here. But the rule generalises without reference to anybody:"
+#~ msgstr "本仓库的拥有者手部功能极其有限，因此这种情况在这里并非假设。但无论对任何人而言，这一规则都具有普遍意义："
+
+#~ msgid "ATAG Part B is worth dwelling on, because it is the part a content platform can uniquely deliver: alt-text presence, heading order, table headers and language tagging in published folios are checks the QA sweep can carry, and no amount of making the editor accessible substitutes for them."
+#~ msgstr "ATAG Part B 值得重点关注，因为这是内容平台能够唯独提供的部分：在已发布的 folio 中检查替代文本的存在性、标题层级顺序、表格表头和语言标记，这些是 QA 全面检查（QA sweep）可以承担的，而无论怎样让编辑器本身无障碍都无法替代它们。"
+
+#~ msgid "The second question. The answer is a separation, and the separation is the whole design."
+#~ msgstr "第二个问题。其答案在于关注点分离，而这种分离正是整个设计的核心。"
+
+#~ msgid "Guided does not mean interrogating. The largest accessibility win available is the question you did not have to ask — every fact the agent reads from the filesystem is one fewer. That win is invisible, unrewarded, and larger than any stylesheet."
+#~ msgstr "引导并不意味着审讯。 能够获得的最大无障碍收益，恰恰是那个你无需提出的问题——智能体从文件系统中读取的每一个事实，都让提问减少了一个。这种收益是隐形的、默默无闻的，但却比任何样式表都更为巨大。"

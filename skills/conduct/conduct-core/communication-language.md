@@ -12,33 +12,22 @@ description: >-
 
 ## Why this exists
 
-The owner, 2026-09-21: *"part of agent first task is to determine appropriate
-language when speaking/communicating regardless of context"*.
+The language of a turn is a determination to make, not a default. The skills
+and the corpus are in English; an agent that answers in English without asking
+has let a default stand in for a decision. Content language is a separate
+question, owned by
+[`translation-manager`](../../library/library-core/translation-manager.md).
 
-Searched before this skill was written: this repository had a great deal about
-the language its **content** is in — [`translation-manager`](../../library/library-core/translation-manager.md),
-`defaultLocale`, per-locale `.po` resolution, coverage badges — and **nothing
-at all** about the language an agent SPEAKS IN.
-
-So the language of every turn was decided by accident. The skills are written
-in English, the corpus is English, and an agent therefore answered in English
-without ever having asked whether that was right for the person in front of
-it. **A default masquerading as a decision** — the same shape as every other
-defect this repository names, where the absence of a determination is
-indistinguishable from a determination that happened to agree.
-
-**"Regardless of context" is load-bearing.** This is not "detect the language
-of the request and mirror it". That answers the easy case and fails silently
-for the person who writes a terse instruction in one language while wanting
+**Determine it regardless of context.** Mirroring the language of the request
+fails for the person who writes a terse instruction in one language and wants
 the report in another, or who can type a language more easily than they can
 read a wall of it.
 
 ## Make the determination before the first substantive turn
 
 Beside the other opening steps — the session-start sweep and
-[`opening-brief`](../../sdlc/sdlc-core/opening-brief.md). The sweep prints the interaction
-preferences **first**, before the work plan, because they change the form of
-every question that follows; this is the same argument one step further.
+[`opening-brief`](../../../sdlc/skills/sdlc-core/opening-brief.md). The sweep prints the interaction
+preferences **first**, before the work plan.
 
 ## Four inputs, and the order is not negotiable
 
@@ -47,19 +36,18 @@ every question that follows; this is the same argument one step further.
 | 1 | the person's **stated preference** | `cat-harness/memory/interaction.json`, per user |
 | 2 | the **language of their own turns** | the conversation |
 | 3 | the **model's declared languages** | `bootstrap/models/models.json` |
-| 4 | the instance's **`defaultLocale`** | `harness.config.json` → `translation.defaultLocale` |
+| 4 | the instance's **`defaultLocale`** | its `translation-sources` declaration (`defaultLocale`, default `en`) |
 
 **A stated preference wins outright.** It is the only input that is a
 *decision* rather than a signal, and a person who has said it once must not be
-asked again — that is WCAG 2.2 SC 3.3.7 (Redundant Entry), and for a user who
-types with difficulty "just ask again" is not a small cost.
+asked again (WCAG 2.2 SC 3.3.7, Redundant Entry); for a user who types with
+difficulty, asking again is not a small cost.
 
-**Their own turns rank above the model's languages**, and this is the rule an
-implementation gets backwards. The owner was explicit: *"the model's languages
-are an INPUT, never the determination"*. A model strong in a language the
-person cannot read is **worse** than the fallback, not better. Rank 3 exists
-to say *"this pairing may be better served by something other than the
-corpus's language"* — it never selects one on its own.
+**Their own turns rank above the model's languages.** The model's languages
+are an INPUT, never the determination: a model strong in a language the person
+cannot read is worse than the fallback. Rank 3 can only suggest that a pairing
+may be better served by something other than the corpus's language; it never
+selects one on its own.
 
 **Only `human-validated` entries are read at all.** `validatedLanguages()` in
 `bootstrap-tools/schemas/model-registry.ts` returns nothing for `self-reported` or
@@ -76,17 +64,12 @@ what you write into the repository.
 |---|---|
 | chat replies, questions, status reports | **the determination** |
 | commit messages, PR bodies, issue comments | the instance's source language |
-| code comments, skills, beans, schemas | the instance's source language |
+| code comments, skills, work items, schemas | the instance's source language |
 | folio CONTENT | [`translation-manager`](../../library/library-core/translation-manager.md), not this skill |
 
-The reason is the reader, not the author. A commit message has reviewers, a
-future bisector and an agent six months from now; an issue comment has
-everyone subscribed. Writing those in one person's preferred language narrows
-who can read the record to the person who least needed it written down.
-
-**This boundary is stated because it will otherwise be read as covering
-everything**, and an agent that translated its commit messages would be
-obeying the letter of a rule that never meant it.
+The reason is the reader: a commit message or issue comment is read by
+reviewers and later agents, not only by the person in this session, and one
+person's preferred language would narrow who can read the record.
 
 ## Record it where a sibling session reads it
 
@@ -108,8 +91,8 @@ rather than re-deriving it.
 
 **Never write a preference the person did not state.** The file is `context`
 — read at session start, never written by a process. An inferred language
-recorded as though stated is worse than no record: it is a wrong answer
-wearing the authority of a right one, and the next session will not re-ask.
+recorded as though stated is worse than no record, because the next session
+will not re-ask.
 
 ## When to re-ask
 
@@ -123,9 +106,8 @@ wearing the authority of a right one, and the next session will not re-ask.
 ## What "could not determine" looks like
 
 `defaultLocale`, said out loud. An agent that falls through to rank 4 says so
-once rather than presenting the fallback as a choice — the third-state rule
-this repository applies everywhere: an unknown rendered as a determination is
-indistinguishable from a real one.
+once rather than presenting the fallback as a choice, because an unknown
+rendered as a determination is indistinguishable from a real one.
 
 ## Related
 

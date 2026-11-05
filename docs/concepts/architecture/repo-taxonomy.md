@@ -15,14 +15,9 @@ nav_order: 1
 
 ## Why a taxonomy at all
 
-folio-assistant is a **self-documenting set of skills** that is today a mixture
-of two things: a *Content* repo and a *Tool* repo. That mixture is not a defect
-so much as an unexamined default — the platform grew by accreting whatever the
-first folio needed, and nothing forced the question *which kind of repo is this
-change for?*
-
-The taxonomy below exists to make that question askable on every change. It is
-the vocabulary the [future state](future-state.html) and the
+The taxonomy answers, for every change, *which kind of repo is this change
+for?* — a question nothing forces otherwise, so a platform grows by accreting
+whatever its first folio needs. It is the vocabulary the [future state](future-state.html) and the
 [migration plan](migration-plan.html) are written in.
 
 A repository is classified by **what it is authoritative for**, not by what
@@ -118,12 +113,10 @@ flowchart LR
     Consumer --> Tool
 ```
 
-**A Tool repo must not depend on a Content repo.** This is the rule the current
-repo breaks most often, and the one the migration exists to enforce. Every
-genericity failure recorded in `AGENTS.md` — a platform script naming
-`quantum-observable-universe`, a README generator carrying one folio's badges,
-a module namespace hardcoded to `QOU.` — is the same violation: Tool code that
-cannot run without a particular Content repo.
+**A Tool repo must not depend on a Content repo.** A platform script naming one
+folio, a README generator carrying one folio's badges, a module namespace
+hardcoded to one folio — each is Tool code that cannot run without a particular
+Content repo.
 
 The inverse is fine and expected. A Content repo names the Tools its Skills
 need, because that is what declaring a Skill *is*.
@@ -134,18 +127,14 @@ When a repo is more than one kind, the split is worth doing when the kinds have
 **different consumers** or **different release cadences** — not merely when they
 are conceptually distinct.
 
-`smart-kg` and `smart-kg-tools` is the worked example from the issue: the WHO L1
+`smart-kg` and `smart-kg-tools` is the worked example: the WHO L1
 document and KG schemas change when the guidance changes; the skills and services
 that operate on them change when the tooling improves. Different cadences,
 different reviewers, so different repos. Whereas splitting a Content repo's
 schemas from its instances would give two repos that always change together.
 
-**Where that example stands.** `smart-kg` is already its own repository. The
-owner, 2026-09-23: *"that is its own repo already"*. The stub `smart-kg/`
-directory that sat here was removed for that reason (bean `wg7r`), so nothing in
-this checkout is `smart-kg` content. `smart-kg-tools` is still the proposed
-split, not yet a repository. The example is about two repositories, and that is
-the case it describes.
+`smart-kg` is already its own repository, and nothing in this checkout is
+`smart-kg` content. `smart-kg-tools` is a proposed split, not yet a repository.
 
 ---
 

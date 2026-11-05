@@ -11,25 +11,24 @@ description: >
 **Consumer stage.** `generation` emits the ink; this says what the ink has to
 clear, and against what.
 
-## The measurement is over PURE BLACK, and that is the whole idea
+## The measurement is over PURE BLACK
 
 > Ink over this scrim laid on **pure black** — the darkest art any instance
 > could declare, and the binding case.
 
 Arbitrary art sits behind that text. An instance can declare its own art for a
 role, so the art a value was tuned against is **not** the art it will meet.
-Measuring against today's storm-grey cloud produces a number that is true of
-one picture; measuring against pure black produces one that is true of any.
+A ratio measured over one picture is true of that picture; one measured over
+pure black is true of any.
 
 The shipped scrims measure **9.25:1 to 9.36:1** over pure black, against
 roughly 14:1 on pure white — the dark end is the binding one, by a wide margin.
 **The floor is AAA, 7:1**, and it is a floor rather than a target: a value
 below it is not a slightly worse theme, it is a theme that fails.
 
-**Every value here was re-measured rather than nudged.** When a scrim changed,
-the ratio was recomputed and written down beside it. A scrim whose ratio nobody
-recomputed is a scrim doing less work than it appears to — which had already
-happened once.
+**Re-measure, never nudge.** When a scrim changes, recompute the ratio and
+write it down beside the value: a scrim whose ratio nobody recomputed does less
+work than it appears to.
 
 ## Why a comment carries the number
 
@@ -62,8 +61,8 @@ channel.
 
 ## A new surface inherits this, it does not renegotiate it
 
-A todo sticky gaining backdrop art (bean `5y4b`) inherits the requirement
-exactly: **it must not reach the board by skipping the measurement the landing
+A todo sticky gaining backdrop art inherits the requirement exactly: **it must
+not reach the board by skipping the measurement the landing
 stickies pay.** A surface that renders art behind text and has no measured
 scrim is a contrast finding whatever it looks like on the reviewer's monitor.
 

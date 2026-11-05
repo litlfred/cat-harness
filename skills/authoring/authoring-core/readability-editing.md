@@ -94,23 +94,17 @@ rule should state it clearly. Respect these expectations when restructuring cont
 ## Glossary terms (`:defterm` / `:refterm`)
 
 When polishing prose, do **not** convert `:refterm[…]` directives to
-plain text or `\emph{}`. The directives are the canonical link from
-every mention of a defined term back to its `defines: [...]` block;
-the viewer renders them as a subtle dotted underline, the PDF renders
-them as plain text with an invisible hyperlink, and the validator
-enforces resolution. Plain rephrasing is fine — just keep the wrapper
-intact, e.g. `:refterm[care plan]` may move within the
-sentence but should not be unwrapped. New term mentions in edited
-prose should be wrapped via `bun run pipeline/codemod-refterm.ts`
-after editing. See `glossary-build` skill.
+plain text or `\emph{}` (rendering and validation: `md-authoring` §9).
+Rephrasing is fine as long as the wrapper stays intact: `:refterm[care plan]`
+may move within the sentence but is not unwrapped. Wrap new term mentions
+with `bun run pipeline/codemod-refterm.ts` after editing (the content layer's
+`glossary-build` skill).
 
 ## Mandatory fallback participation
 
-This skill is invoked automatically by the editor's **content-change fallback**.
-Whenever any content is modified during a session — `.md`, `.ts`,
-the content type's sibling files, or supporting files — the editor triggers a
-readability pass before the task is considered complete. When invoked
-as a fallback, focus on the changed blocks: prose quality, notation
+This skill is invoked automatically by the editor's **content-change
+fallback** whenever content is modified. When invoked as a fallback, focus on
+the changed blocks: prose quality, notation
 consistency, and forward-reference hygiene.
 
 ## Output Format

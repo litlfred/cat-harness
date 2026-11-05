@@ -121,7 +121,7 @@ garantissant ainsi qu'aucun décalage n'apparaisse entre les deux. Rien dans `sr
 
 **La forme de la question précède son contenu.** L'agent détermine la façon dont
 vous préférez être interrogé — options sélectionnables, discussion classique, lecture à voix haute,
-grands caractères — et l'enregistre dans `interaction/interaction.json` afin qu'aucune session ultérieure
+grands caractères — et l'enregistre dans `memory/interaction.json` afin qu'aucune session ultérieure
 ne vous le redemande. Voir [Accessibilité](accessibility.html).
 
 Ensuite, lorsque la réponse est véritablement ambiguë :
@@ -175,7 +175,7 @@ Les outils les plus pertinents pour cette page :
 |------|---------|
 | `folio_init` | Échafauder un folio. Enregistré comme un outil **générique**, car il s'exécute avant que le folio n'ait un type de contenu |
 | `workflow_start` / `workflow_next` / `workflow_complete` | Exécuter `getting-started.bpmn` comme un vrai processus ; `workflow_next` indique ce qui est activé actuellement et quelle compétence l'implémente |
-| `work_plan_prime` | Présenter le plan de travail (beans) |
+| `work_plan_prime` | Présenter le plan de travail (work items) |
 | `check_dependencies` | Détecter les chaînes d'outils installées |
 | `skill_list` / `skill_fetch` | Découvrir et charger les instructions d'une compétence |
 
@@ -327,16 +327,15 @@ mécanisme de plan de travail — durable d'une session à l'autre, partagé ent
 dans le dépôt.
 
 ```sh
-scripts/install-beans.sh          # install the CLI if missing
+cat-harness-tools/scripts/install-beans.sh # install the CLI if missing
 beans prime                       # emit work-plan priming for agents
 beans list                        # current open items
 beans create "draft chapter 1"    # open an item
-beans <id> --status in-progress   # claim an item
+bun run cat beans:claim <id>      # claim an item
 ```
 
 > **Vérifiez avant de créer.** `beans create` génère un nouvel identifiant à chaque appel et
-> n'effectue aucune déduplication. La réexécution d'une étape scriptée sans contrôle d'existence
-> a produit **14 688** beans en double dans un folio en un seul après-midi. Cette
+> n'effectue aucune déduplication. Vérifiez d'abord qu'un élément n'existe pas déjà. Cette
 > vérification figure dans la compétence
 > [`todo-manager`]({{ '/reference/skill-instructions/todo-manager.html' | relative_url }}).
 

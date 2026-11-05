@@ -18,10 +18,10 @@ summary: >-
 **Status: DRAFT, for review before approval.** Nothing here is built, and
 nothing will be until each requirement below is approved, amended or rejected.
 **Sign-off is the chief editor's** (Chinemerem Eyetan): the owner ruled
-2026-10-06 that nothing here merges or is built without it (CRDM Phase 3, [`crdm-requirements-template`](../../skills/sdlc/crdm/crdm-requirements-template.md)).
+2026-10-06 that nothing here merges or is built without it (CRDM Phase 3, [`crdm-requirements-template`](../../sdlc/skills/crdm/crdm-requirements-template.md)).
 
 Issue [#197](https://github.com/litlfred/folio-assistant/issues/197) ·
-bean `uphx` (parent `q4jm`; round 1 was `v26p`) · first customer
+work item `uphx` (parent `q4jm`; round 1 was `v26p`) · first customer
 `litlfred/smart-ra` (DPI-H Reference Architecture, about 2,630 comments).
 
 ## Source

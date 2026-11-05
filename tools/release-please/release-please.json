@@ -3,7 +3,7 @@
   "tool": {
     "id": "release-please",
     "title": "release-please (declared, not configured here)",
-    "description": "Propose the next version of each package from conventional-commit messages, open a release PR with the CHANGELOG and version bump, and — when that PR is merged — create the tag and GitHub release. Does not publish to a registry. Declared here, not configured: no config file and no tag exist in this repository (bean `frq2`).",
+    "description": "Propose the next version of each package from conventional-commit messages, open a release PR with the CHANGELOG and version bump, and — when that PR is merged — create the tag and GitHub release. Does not publish to a registry. Declared here, not configured: no config file and no tag exist in this repository.",
     "install": {
       "cli": "npm install -g release-please (or the GitHub Action googleapis/release-please-action@v4)"
     },
@@ -47,7 +47,7 @@
     ],
     "selection": {
       "when": "A repository whose commits follow conventional-commit messages and that releases often enough that doing it by hand is the bottleneck. Several packages in one repository, each with its own tag, is its strength.",
-      "limits": "The bump comes from commit MESSAGES, not from what changed: a `feat:` that removed something gives a minor bump. Check it against the surface diff (skill step 1). With the default token it cannot open PRs unless the repository allows Actions to (bean `frq2`). It needs a config file (`--config-file`); a missing one falls back to defaults that find nothing. The tag appears only when its release PR is merged.",
+      "limits": "The bump comes from commit MESSAGES, not from what changed: a `feat:` that removed something gives a minor bump. Check it against the surface diff (skill step 1). With the default token it cannot open PRs unless the repository allows Actions to. It needs a config file (`--config-file`); a missing one falls back to defaults that find nothing. The tag appears only when its release PR is merged.",
       "cost": "Not configured here. One config file and one manifest per repository; each run is a few seconds of API calls."
     },
     "requires": {

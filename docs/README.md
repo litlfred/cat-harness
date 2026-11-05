@@ -15,7 +15,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `docs`, holding `docs`.
 |---|---|---|
 | [`_config.yml`](_config.yml) | a file |  |
 | [`docs.json`](docs.json) | data |  |
-| [`folio-assistant-migration.md`](folio-assistant-migration.md) | Folio-Assistant Infrastructure Migration (miga) |  |
+| [`folio-assistant-migration.md`](folio-assistant-migration.md) | Folio-assistant agent infrastructure |  |
 | [`index.md`](index.md) | "folio-assistant — a content-agnostic agent skills framework." |  |
 | [`platform.md`](platform.md) | "What the platform does, and how its processes, roles, tasks and skills fit together." |  |
 | [`qou-migration-checklist.md`](qou-migration-checklist.md) | qou migration checklist |  |

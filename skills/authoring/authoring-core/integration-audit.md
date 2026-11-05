@@ -22,10 +22,8 @@ sidecars. This skill **maintains** them.
 
 ## When to invoke
 
-- **After a checker bug fix.** Example: a regex was missing the `u`
-  flag. Once fixed, every block previously audited under the buggy
-  checker has the wrong `result` cached in its sidecar. Re-audit by
-  invalidating the affected criterion's entries.
+- **After a checker bug fix.** Every block audited under the buggy
+  checker has the wrong `result` cached in its sidecar.
 - **After a registry update.** A new criterion lands in
   `qa-criteria-registry.ts`. Existing sidecars don't include it.
   Invalidate forces the sweep to write fresh entries.
@@ -57,11 +55,8 @@ For each resolved criterion:
 
 1. **Scan** every `.qa.json` sidecar in `content/<paper>/*/*.qa.json`
    for entries matching the criterion ID.
-2. **Mark stale** by deleting the entry's `field_hash` (or by appending
-   a sentinel `result: "n/a"` script entry that supersedes the
-   historical entries). The `qa-utils.entryIsFresh` check will then
-   return `false`, and `qa-sweep` will re-evaluate the criterion on next
-   run.
+2. **Mark stale** by deleting entries per the strategy below, so
+   `qa-utils.entryIsFresh` returns `false`.
 3. **Run `qa-sweep --only <criterion-list>`** to repopulate the sidecars
    with fresh entries.
 4. **Diff** the before/after counts — surface the delta to the user
@@ -121,17 +116,16 @@ invalidate.
 | `bibliography` | Re-audit block-level bib criteria. Risk: low — reads `bib-qa.json`. |
 | `all` | Full re-audit across all axes. Risk: medium — sweep takes longer. |
 
-Multi-select, default `multiSelect: true` per AGENTS.md accessibility
-convention.
+Multi-select (`multiSelect: true`).
 
 ## Integration
 
 - **Built on**: `integration-watcher` (the audit pipeline this skill
   maintains)
 - **Sibling commands**:
-  - [`/integration-watch`](../../sdlc/sdlc-core/integration-watch.md) — read-only monitor
+  - [`/integration-watch`](../../../sdlc/skills/sdlc-core/integration-watch.md) — read-only monitor
     over the sidecars
-  - [`/integration-backlog`](../../sdlc/sdlc-core/integration-backlog.md) — write-side drain
+  - [`/integration-backlog`](../../../sdlc/skills/sdlc-core/integration-backlog.md) — write-side drain
     of the open findings
 - **CLI**: `pipeline/integration-audit.ts`
 

@@ -10,8 +10,8 @@ references:
 archived: true
 ---
 > **Archived 2026-09-19, on arrival.** Written for
-> `content-pipeline-navigator`, which was retired the same day (bean `n98f`).
-> Kept rather than deleted, per that bean's reasoning: the record of what was
+> `content-pipeline-navigator`, which was retired the same day (work item `n98f`).
+> Kept rather than deleted, per that work item's reasoning: the record of what was
 > learned outlives the mechanism that carried it.
 >
 > **Not re-homed to `platform-boundary-guard`, and the reason is not budget.**
@@ -21,7 +21,7 @@ archived: true
 > absorb a tool" failure `skill-in-role-or-process` exists not to force.
 > Un-archive them the day something owns this area again.
 
-`${block.root}.qa.json` has found nothing since bean `2634`, and finding
+`${block.root}.qa.json` has found nothing since work item `2634`, and finding
 nothing reads as "never audited" rather than as an error — a false pass.
 
 Never compose the path; the helpers in `pipeline/qa-paths.ts` are the
@@ -47,4 +47,4 @@ committed beside its blocks; a reader that consults only the results tree
 reports every block in that folio as unaudited the day it upgrades.
 
 `saveQaReport` mkdirs, because the mirrored directory is not guaranteed to
-exist — the legacy sibling's always did, being the block's own. Bean `2634`.
+exist — the legacy sibling's always did, being the block's own. Work item `2634`.

@@ -33,28 +33,13 @@ A feature request turned into agreed, signed-off requirements and delivered, wit
 - Answered by crdm-detect: is this request a feature request, a change to the platform, rather than content work?
 - Call `workflow_complete` with `node: "GW_Feature"` and `outcome` set to the label that holds:
   - «no» → `End_Content` (Continue authoring)
-  - «yes» → `Call_BeanOpen` (Open the bean)
+  - «yes» → `Call_Issue` (Link the work to an issue)
 
 ## Done — Continue authoring (`End_Content`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 3. Open the bean (`Call_BeanOpen`)
-
-- Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `bean-coordination`.
-- What: Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's.
-- A subprocess (`Process_BeanOpen`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `GW_BeanYours` (Bean claimed?)
-
-### Decide — Bean claimed? (`GW_BeanYours`)
-
-- Reads which end Process_BeanOpen reached.
-- Call `workflow_complete` with `node: "GW_BeanYours"` and `outcome` set to the label that holds:
-  - «claimed» → `Call_Issue` (Link the work to an issue)
-  - «not yours» → `End_BeanNotYours` (Not yours — left alone)
-
-### 4. Link the work to an issue (`Call_Issue`)
+### 3. Link the work to an issue (`Call_Issue`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `crdm-requirements-workflow`.
@@ -62,11 +47,7 @@ A feature request turned into agreed, signed-off requirements and delivered, wit
 - A subprocess (`Process_CRDM_Issue`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Call_Needs` (Phase 1 Needs)
 
-## Done — Not yours — left alone (`End_BeanNotYours`)
-
-- The instance completes here: Someone else holds the bean; this run stops without touching it. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 5. Phase 1 Needs (`Call_Needs`)
+### 4. Phase 1 Needs (`Call_Needs`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `crdm-requirements-workflow`.
@@ -74,7 +55,7 @@ A feature request turned into agreed, signed-off requirements and delivered, wit
 - A subprocess (`Process_CRDM_Needs`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Call_Requirements` (Phases 2–4 BPA + requirements)
 
-### 6. Phases 2–4 BPA + requirements (`Call_Requirements`)
+### 5. Phases 2–4 BPA + requirements (`Call_Requirements`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `crdm-requirements-workflow`.
@@ -82,15 +63,15 @@ A feature request turned into agreed, signed-off requirements and delivered, wit
 - A subprocess (`Process_CRDM_Requirements`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Call_DataModel` (Data model Entities + cardinalities)
 
-### 7. Data model Entities + cardinalities (`Call_DataModel`)
+### 6. Data model Entities + cardinalities (`Call_DataModel`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `crdm-requirements-workflow`.
 - What: Between requirements and sign-off, and the order is the argument: requirements are statements about things, and the model says what the things ARE.
 - A subprocess (`Process_CRDM_DataModel`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Call_Signoff` (Phase 5 Beans + sign-off)
+- next: → `Call_Signoff` (Phase 5 Plan + sign-off)
 
-### 8. Phase 5 Beans + sign-off (`Call_Signoff`)
+### 7. Phase 5 Plan + sign-off (`Call_Signoff`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `crdm-requirements-workflow`.
@@ -98,7 +79,7 @@ A feature request turned into agreed, signed-off requirements and delivered, wit
 - A subprocess (`Process_CRDM_Signoff`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Call_Deliver` (Phase 6 Implement + acceptance)
 
-### 9. Phase 6 Implement + acceptance (`Call_Deliver`)
+### 8. Phase 6 Implement + acceptance (`Call_Deliver`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `crdm-requirements-workflow`.
@@ -106,20 +87,12 @@ A feature request turned into agreed, signed-off requirements and delivered, wit
 - A subprocess (`Process_CRDM_Deliver`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Call_Close` (Close-out)
 
-### 10. Close-out (`Call_Close`)
+### 9. Close-out (`Call_Close`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `crdm-requirements-workflow`.
 - What: The stakeholders sign off, the BA confirms every criterion is met, and only then does the agent close the issue.
 - A subprocess (`Process_CRDM_Close`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Call_BeanClose` (Close the bean)
-
-### 11. Close the bean (`Call_BeanClose`)
-
-- Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `todo-manager`.
-- What: Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back.
-- A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_CRDM` (Feature delivered)
 
 ## Done — Feature delivered (`End_CRDM`)

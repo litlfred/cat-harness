@@ -3,8 +3,7 @@ name: theme-generation
 description: >
   Turning a declared theme into CSS — `bun run cat themes:css` — and the single
   consumer-side failure this stage exists to stop: a theme with no CSS rule
-  falls back to an opaque surface and paints over its own art. Four rounds of
-  "still not image" had that one cause.
+  falls back to an opaque surface and paints over its own art.
 ---
 
 # Generating a theme's CSS
@@ -12,7 +11,7 @@ description: >
 **Consumer stage.** `declaration` says what a theme is; this says what a
 stylesheet gets told about it, and what happens to a reader when it is not told.
 
-## One command, and forgetting it is the recurring defect
+## One command — run it
 
     bun run cat themes:css          # regenerate site-chrome/assets/css/themes.css
     bun run cat themes:css:check    # fail the build when it is stale
@@ -29,18 +28,17 @@ stylesheet has no block for a theme, the sticky does not render unthemed — it
 renders with the FALLBACK surface, opaque, over the art.**
 
 So the symptom is *"the art is not showing"* and the cause is *"the stylesheet
-was not regenerated"*. Those look nothing alike, which is why this was
-rediscovered four times rather than read once.
+was not regenerated"*. Those look nothing alike, which is why the cause gets
+rediscovered rather than read.
 
 **This is a CONSUMER fact, and the producer/consumer axis is what makes it
 one.** The generator did its job — it was not run. The reader of a missing rule
 is where it goes wrong, and a reader that falls back to something opaque hides
 the very thing whose absence it is reporting.
 
-**A fallback that is INVISIBLE is the design error**, not the missing run. The
-same shape appears wherever this repository refuses a silent default: a theme
-missing a layout is invalid rather than degraded, because the degraded one
-ships and the invalid one is noticed.
+**A fallback that is INVISIBLE is the design error**, not the missing run —
+the same reason a theme missing a layout is invalid rather than degraded: the
+degraded one ships and the invalid one is noticed.
 
 ## The default block is for "nothing has selected a theme"
 

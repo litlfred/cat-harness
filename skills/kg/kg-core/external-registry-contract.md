@@ -15,9 +15,8 @@ tested-by:
 `external-registry` in `scenarios/roles.json` is played by an **external**
 actor: trusted registries and observatories outside this instance's control.
 A role played by something we do not run is still a role, and its skills are
-its **contract**: what we rely on it to do (owner, 2026-10-16). It used to say
-it carried no skills "because nothing here instructs it"; a contract is not an
-instruction, it is what the diagrams assume.
+its **contract**: what we rely on it to do. A contract is not an instruction;
+it is what the diagrams assume.
 
 ## Where the diagrams lean on it
 

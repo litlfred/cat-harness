@@ -17,15 +17,12 @@ uses-methodology:
 The method is the adopted methodology
 [`zero-trust-architecture`](../../../methodologies/zero-trust-architecture.md)
 (NIST SP 800-207, held in full). Read that node for what zero trust *is*;
-this skill does not restate it. Until 2026-10-07 this file was a draft
-methodology node. The adversarial pass (bean `1ygp`, L3.1 and L3.3) showed
-it was a house process presented as an adoption, and that it blended
-several sources into one procedure. The owner chose to split it (bean
-`pk0z`).
+this skill does not restate it. It is a skill rather than an adopted method
+because it is a house process that blends several sources into one
+procedure.
 
-The owner's premise, 2026-10-07 (issue #2389, bean `ieum`): *"ALL DATA IN
-PIPELINE MUST BE TREATED AS SUSPECT. ALL TOOLS ARE RESPONSIBLE TO GUARD
-AGAINST CODE INJECTION, PROMPT ENGINEERING, VARIABLE TAMPERING"*. This skill
+The premise: **all data in the pipeline is suspect, and every tool guards
+against code injection, prompt injection and variable tampering.** This skill
 is the reasoning behind the
 [`secure-code-authoring`](../../voices/secure-code-authoring/voice.json)
 voice.
@@ -125,7 +122,7 @@ table says which rule below answers each:
 - **H5. Mark the boundary where data enters a prompt.** When a tool puts
   foreign text in front of a model, it delimits it as quoted data and labels
   its origin. That is a mitigation, not a guarantee, so it never replaces H1
-  and H2. This is the surface bean `1wef` found and fixed once.
+  and H2.
 - **H6. Every tool validates its own inputs.** A tool's arguments are refused
   (never repaired) against a declared type at the handler, whoever the caller
   is. A tool never assumes its caller validated anything, and never assumes
@@ -137,9 +134,7 @@ table says which rule below answers each:
   BadHost class).
 - **H8. A graph you depend on is a supply-chain input, and mounting one needs
   trust or consent.** Skills, voices, processes and tools resolved from a
-  dependency instance are pinned to a commit like any other dependency. The
-  owner, 2026-10-07: *"mounting remote KG needs trusted provenance sources
-  (digitally signed e.g. verifiable via GDHCN), or explicit user consent"*.
+  dependency instance are pinned to a commit like any other dependency.
   A remote graph is mounted (as a dependency, a `remoteGraphs` entry, or a
   materialised asset) only when ONE of these holds: its provenance is
   signed by a key verifiable through a trust network the instance declares
@@ -159,7 +154,7 @@ table says which rule below answers each:
   not CaMeL's quarantined LLM. CaMeL is the prior work for typing hand-overs
   (§"Prior work"), but nothing here is a model reader. A `clean` verdict means
   no pattern fired. **It is never a clearance**: paraphrase, confusables and
-  splitting across fields all pass it (roast `1ygp` L1.6). H1 and H2, not the
+  splitting across fields all pass it. H1 and H2, not the
   screen, are what the boundary rests on. A finding in a field
   that steers control (a tool name, a path, a URL, a command, a next step)
   is REFUSED. A finding in a free-text data field is quarantined: the
@@ -169,7 +164,7 @@ table says which rule below answers each:
   it reaches (H6), and screening it as an injection would be screening the
   person the session works for.
 
-**Who the principal is** (roast `1ygp` L4.4). H9 exempts the principal's
+**Who the principal is.** H9 exempts the principal's
 own input, so the word has to mean one thing. **The principal is the
 authenticated person whose own message opened the turn.** These are NOT the
 principal, even when the harness delivers them as a user turn:
@@ -188,12 +183,11 @@ repository can tell a routine's stored prompt or a relayed message from the
 principal's own words, because the turn metadata that says where a user turn
 came from belongs to the harness and never reaches the code here. So the
 list above is applied by the agent, from what the harness tells it about the
-turn, and this section is guidance rather than a check. Saying otherwise
-would be the false assurance roast `1ygp` L4.3 found in the word `clean`.
+turn, and this section is guidance rather than a check; calling it a check
+would be a false assurance.
 
-Measured 2026-10-07 by searching the TypeScript tree for `send_message`,
-`webhook`, `trigger` and `routine`: **no code here takes text from a routine,
-a relay or a webhook and puts it in front of a model.** The nearest in-code
+**No code here takes text from a routine, a relay or a webhook and puts it in
+front of a model.** The nearest in-code
 sites are third-party comments, and those are treated as data:
 - The content core's `scripts/review-comments.ts` ingests tagged PR
   comments verbatim into todos, run by the `issue_comment` job of
@@ -202,13 +196,11 @@ sites are third-party comments, and those are treated as data:
   todos; §"Where the screen is wired").
 - The merge guard (`cat-harness-tools/scripts/merge-guard.ts`) reads PR
   comments, but only as a deterministic checker: it reads a `ready:` marker
-  and never puts the text in front of a model. (Its `issue_comment` workflow,
-  `merge-guard.yml`, was removed on 2026-10-23, folio-assistant#2662.)
+  and never puts the text in front of a model.
 
-## Where the screen is wired (bean `cztn`)
+## Where the screen is wired
 
-Measured from the code on 2026-10-07, not guessed. Every in-code call that
-puts foreign text in front of a model now goes through
+Every in-code call that puts foreign text in front of a model goes through
 `guardUntrusted` (free text: screen, fence, and a quarantine notice when a
 pattern fires) or `screenHandover` (a declared structure):
 
@@ -219,10 +211,10 @@ pattern fires) or `screenHandover` (a declared structure):
 | document adapter system prompt (the content core's `adapters/document/index.ts`) | selection and block markdown | `guardUntrusted` |
 | feedback triage, both copies | the commenter's summary and detail, block markdown, assignee | `guardUntrusted`, `oneLineLabel` |
 | branch characterization, both copies | changed-block titles, branch and document ids | `guardUntrusted`, `oneLineLabel` |
-| `workflow_complete` (MCP) | the calling agent's arguments, later read from the bean body by the next agent | `screenHandover`: control fields refuse, and `instance`, `node`, `target` and `outcome` must also match an id, path or label pattern; the note quarantines and is folded to one line |
+| `workflow_complete` (MCP) | the calling agent's arguments, later read from the work item body by the next agent | `screenHandover`: control fields refuse, and `instance`, `node`, `target` and `outcome` must also match an id, path or label pattern; the note quarantines and is folded to one line |
 
 **A control field's VALUE can be constrained, and an id-shaped one should
-be** (roast `1ygp` L4.3). The patterns catch text shaped like an
+be.** The patterns catch text shaped like an
 instruction. They cannot tell a tool name the receiver should run from one it
 should not, so `{ nextTool: "merge_pull_request" }` screened `clean`. A
 schema field may be declared `{ role, pattern?, oneOf? }` instead of the bare
@@ -232,11 +224,11 @@ pattern fired (not a clearance)"*; the state keeps its name because renaming
 it would break every caller that branches on it.
 
 **Review comments and `/api/feedback` are guarded where a model reads them,
-not where they are ingested.** The defect was at the model boundary, so that
-is where the guard sits (`generalise-the-fix`). Ingestion stores the text
-verbatim, which refuse-never-repair requires anyway.
+not where they are ingested**, because the hazard is at the model boundary.
+Ingestion stores the text verbatim, as
+refuse-never-repair requires.
 
-**Not wired, each for a stated reason.** These stay open on bean `cztn`:
+**Not wired, each for a stated reason:**
 - `.github/scripts/agent_review.py`: a coordinator LLM reads sub-LLM reviews.
   It is Python, outside the TypeScript screen. Open.
 - the `public-comment-changesets` seed, QA agent `--evidence`/`--notes`, and
@@ -261,8 +253,8 @@ has four parts, and each maps onto a rule here:
   with a predefined schema"* (`sec-007`, pp. 7–9). H3 takes the SCHEMA half:
   a hand-over is typed. **The reader half is NOT built here.** H9's screen is
   a deterministic pattern tripwire, not a tool-less model, so nothing in this
-  platform yet does what CaMeL's quarantined LLM does (adjudication of
-  `1ygp`, L3.4). Building one is a candidate, not a fact.
+  platform yet does what CaMeL's quarantined LLM does. Building one is a
+  candidate, not a fact.
 - **The plan never sees the data.** *"the P-LLM only interacts with the user
   query and not the data returned by tools or with the Q-LLM output"*
   (`sec-007`). The control flow is fixed from the principal's request, and
@@ -289,10 +281,7 @@ screen and the origin label (H5) are kept alongside it. **Not adopted
 wholesale:** CaMeL's custom interpreter is a large build and is recorded as
 a candidate design, not a decision.
 
-The owner supplied the other two on 2026-10-07 with *"ingest and review for relevance
-to increase guards, also as prior work evidence (we try to keep I/O skill
-schema tightly controlled)"*. Results reported in them aren't imported as
-facts here.
+Results reported in the other two aren't imported as facts here.
 
 **DataFilter (arXiv:2510.19207v2) is the relevant one.** It is a test-time,
 model-agnostic filter that *"removes malicious instructions from the data
@@ -330,19 +319,18 @@ trusted interaction by position.
 
 ## Per-tool risk is assessed from the tool's SINKS
 
-Not every tool needs every guard, and a uniform checklist gets ignored. The
-owner, 2026-10-07: *"different tools will have different security risk
-assessments and best practices. all tools needed assessment QA."* A tool's
-risk follows from what it can **do** with an input. These are its sinks:
+Not every tool needs every guard, a uniform checklist gets ignored, and every
+tool needs an assessment. A
+tool's risk follows from what it can **do** with an input. These are its sinks:
 
 | sink | example tools | guard it owes |
 |---|---|---|
 | shell / subprocess | build, render, lake, sushi wrappers | argv arrays, never strings ([`injection-boundaries`](injection-boundaries.md)) |
 | filesystem write | ingest, generators, state writers | containment ([`path-containment`](path-containment.md)) |
 | network fetch | materialise-remote, IRIS/DSpace clients, link audits | H7 |
-| rendered HTML/JS | site generators, viewers | escaping at the sink, `safeHref` (bean `q2wm`) |
+| rendered HTML/JS | site generators, viewers | escaping at the sink, `safeHref` |
 | model prompt | dispatch, QA agents, summarisers | H1, H5 |
-| git write / PR / merge | merge-train, bean writers, publishers | least privilege; automation never approves itself |
+| git write / PR / merge | merge-train, work item writers, publishers | least privilege; automation never approves itself |
 | secret / credential | signing, publishing | never logged, never in argv, never in a structured blob |
 | mounted symlinks copied verbatim | `remote-mount.ts`, `mount-from-lock.ts`, `remote-tree.ts` (`cpSync` with `verbatimSymlinks`) | every link target resolved and checked to stay inside the mount before anything reads through it ([`path-containment`](path-containment.md)); H8 for the tree itself |
 | `GITHUB_ENV` / `GITHUB_OUTPUT` writes, and the Actions cache | workflow steps, `lake-cache-restore` | no free text written to `GITHUB_ENV` (it sets the next step's environment), outputs consumed through `env:` and never `${{ }}` in `run:` (`check:workflow-injection`); a cache key no untrusted ref can write and a trusted run then restores |
@@ -354,39 +342,33 @@ risk follows from what it can **do** with an input. These are its sinks:
 reaches, and from which inputs), and the QA criterion asks whether each sink
 has its guard. A tool that reaches no sink with external input is
 **low risk, declared as such**, which is a different fact from *unassessed*.
-Bean `sj6m` made `tool` a QA subject kind, and this is the criterion it was
-missing.
+`tool` is a QA subject kind, and this is its security criterion.
 
 ## Release carries a security gate
 
 A release (a merge to the default branch, a published site, a tagged
 package) is the last point where a defect is cheap. The gate runs the
 security checks that already exist, as a named step (`bun run
-security:gate`, Tool node `security-gate`), and the release refuses on a
+security:gate`, Tool node `security-gate`), because a check that only runs in
+CI is named by no merge, publish or release step. The release refuses on a
 blocking finding. "Could not check" is reported as its own state and never
-as clean. The utilisation audit on bean `ieum` (2026-10-07) found that the
-checks did run in CI, but **no merge, publish or release process step named
-any of them**. The pinning state is whatever `bun run cat security:gate` reports
-now. A count written here would be stale by the next workflow edit (roast
-L3.6).
+as clean. The pinning state is whatever `bun run cat security:gate` reports
+now; no count is written here, because it would be stale by the next workflow
+edit.
 
 ## Not yet: signed knowledge graphs
 
-The owner, 2026-10-07: *"will need in future notion of trusted (w/ digital
-signed provenance as in swiss Trusted Data Observatory) KGs, checking digital
-signatures on the KG json(ld) itself or its assets."* This is **recorded, not
-designed**. The related pieces already here: [`spdx-3`](../../../methodologies/spdx-3.md) (integrity
-of what leaves), [`prov-o-provenance`](../../../methodologies/prov-o-provenance.md) (who did what),
-`qa-report-signing.bpmn` and bean `r0rq` (API vs human signer), bean `mwzd`
-(C2PA and WHO SMART Trust sources, queued), and bean `zz0a` (hashable,
-signable test runs). The Swiss Trusted Data Observatory has not been
-researched or held. Nothing in this skill describes it.
+A trusted KG would carry digitally signed provenance, checked on the KG
+JSON(-LD) itself or its assets. This is **recorded, not designed**. The related
+pieces already here: [`spdx-3`](../../../methodologies/spdx-3.md) (integrity
+of what leaves), [`prov-o-provenance`](../../../methodologies/prov-o-provenance.md)
+(who did what), and `qa-report-signing.bpmn` (API vs human signer).
 
 ## What each source contributes: adopted, applied, refused
 
 | | from | status |
 |---|---|---|
-| no implicit trust by position; authorise each access | NIST SP 800-207, via the adopted node `zero-trust-architecture` | **adopted** (2026-10-07) |
+| no implicit trust by position; authorise each access | NIST SP 800-207, via the adopted node `zero-trust-architecture` | **adopted** |
 | job-to-job compromise as the model for agent-to-agent | GitHub Secure use reference | applied here; the reference is an ASSERTION source, not an adopted method |
 | SHA pinning, least-privilege tokens, privileged-trigger rules, dependency review | GitHub Secure use reference | applied here as `secure-code-authoring` rules, informed by the source as prior work; not an adopted method |
 | "protocol pivoting" as a separate attack class | Ars Technica, 2026-10-06 | **refused as a class name**: the same report carries a dissent calling it indirect prompt injection, and the boundary split here doesn't need the name |
@@ -400,5 +382,5 @@ researched or held. Nothing in this skill describes it.
 | silent stripping of injected spans | DataFilter | **refused**: refuse-never-repair; quarantine with the original kept instead |
 | provider-released defensive tokens | DefensiveTokens | **refused**: needs access to model embeddings this instance does not have |
 | "strip the defence in trusted interactions" | DefensiveTokens (`sec-005`) | **refused**: no interaction is trusted by position |
-| mount a remote KG only on signed provenance (e.g. GDHCN) or explicit consent | the owner, 2026-10-07 | **the owner's ruling**, applied as H8 and built in `schemas/kg/mount-trust.ts` |
+| mount a remote KG only on signed provenance (e.g. GDHCN) or explicit consent | this platform's policy | applied as H8, built in `schemas/kg/mount-trust.ts` |
 | H1–H9, the sink-based risk table, the release gate | ours | **this skill**: a house application, not part of any adopted method |

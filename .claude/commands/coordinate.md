@@ -6,7 +6,7 @@ generated: cat-harness-tools/scripts/gen-skill-commands.ts
 
 # /coordinate
 
-Run the `coordinate` skill. Read [`skills/sdlc/sdlc-core/coordinate.md`](../../skills/sdlc/sdlc-core/coordinate.md) and follow it.
+Run the `coordinate` skill. Read [`sdlc/skills/sdlc-core/coordinate.md`](../../sdlc/skills/sdlc-core/coordinate.md) and follow it.
 
 This command is a pointer, generated from that skill's `user_invocable: true`; the
 instructions live in the skill and nowhere else. The same skill is also served as the

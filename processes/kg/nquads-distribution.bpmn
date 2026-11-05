@@ -80,7 +80,6 @@ CRITICAL INVARIANTS:
       <bpmn:documentation>Record the oversized partition on the coordinating bean. Refine subgraph partitioning boundary or split into finer subgraphs. Do not ship oversized partition.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="nquads-distribution"/>
-        <cat-harness.processes:bean op="note"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_BudgetFail</bpmn:incoming>
       <bpmn:outgoing>Flow_StopBudget</bpmn:outgoing>

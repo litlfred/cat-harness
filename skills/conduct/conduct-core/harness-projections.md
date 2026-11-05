@@ -13,23 +13,15 @@ description: >
 
 # Harness projections: CI writes them, the owner consents to every hand edit
 
-**Owner, 2026-10-09:** generated `.claude/` projections of the knowledge graph
-are written by CI, never by an agent. A workflow step regenerates them and
-commits them to the PR branch. A hand-edited `.claude/` file needs the owner's
-explicit consent for each change: the agent shows the exact diff and the
-reason, asks first, and records the consent.
-
 `.claude/` is what the Claude Code harness reads before any skill is loaded:
 the slash commands a person can type, the memory injected into a subagent, and
 the hooks and permissions every session runs under. An edit there changes how
-every later session behaves, including sessions that never see the commit. That
-is why it has its own rule.
+every later session behaves, including sessions that never see the commit.
 
-**`.claude/` is today's instance of a general rule.** Every coding-agent Tool
-has config files, and some of them are projections of the graph. The rule is
-the same for each: CI writes the projections, and a person consents to each
-hand edit. `.claude/` is named here because it is the only agent-host directory
-the generators write today. Which files a Tool reads, and which of them are
+**`.claude/` is one instance of a general rule.** Every coding-agent Tool has
+config files, and some of them are projections of the graph: CI writes the
+projections, and a person consents to each hand edit. `.claude/` is named here
+because it is the agent-host directory the generators write. Which files a Tool reads, and which of them are
 generated, belongs to that Tool's adapter. Securing what the agent may do at
 all is [`agent-permissions`](agent-permissions.md).
 
@@ -54,12 +46,10 @@ a composed checkout. Commit what it writes everywhere else, and leave
 `.claude/` to CI.
 
 **Why CI and not the agent.** A projection is correct only if it was generated
-from the tree that lands. An agent's local run reflects the tree it had, which
-can be stale by the time of the merge, and a hand-merged projection is how
-`.claude/commands/` drifted both ways before `skill:commands` existed. The CI
+from the tree that lands. An agent's local run reflects the tree it had, and a
+hand-merged projection drifts from its source; the CI
 step runs on the PR head, so the projection on the branch is the one the merge
-will carry. It is also one writer instead of every session that touched a
-skill.
+will carry, from one writer.
 
 ## Hand-edited files: consent per change
 
@@ -85,8 +75,8 @@ Before you write a hand-edited `.claude/` file:
      evidence: "<the owner's words, verbatim>" (<session link or comment permalink>)
    ```
 
-**A standing waiver does not reach this.** The owner asked for consent per
-change, so there is no gate class for it in
+**A standing waiver does not reach this.** Consent is per change, so there is
+no gate class for it in
 [`confirmation-waiver`](confirmation-waiver.md)'s table, and a waiver that
 claims one is not a waiver. A broad instruction such as "fix the hooks" or "make
 the session start work" authorises the investigation. It does not authorise the
@@ -103,11 +93,11 @@ needs consent.
 before it reads any evidence. CI regenerates the projections on the head and
 commits them to the PR branch, and the evidence is then read on that new head.
 A PR whose projections are stale therefore cannot reach the merge gate looking
-green ([`merge-to-main`](../../sdlc/sdlc-core/merge-to-main.md)).
+green ([`merge-to-main`](../../../sdlc/skills/sdlc-core/merge-to-main.md)).
 
 ## What this does not do yet
 
-- **The CI step is declared here, not built.** In `folio-assistant`,
+- **The CI step is declared here, not built.** In the platform repository,
   `merge-main.yml` runs `regen` (which includes `skill:commands` and
   `agent-memory`) and pushes to the PR branch, but only for PRs labelled
   `merge-main` when `main` moves. `code-quality-gates.yml` runs

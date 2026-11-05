@@ -9,9 +9,7 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 # Accessibility
 {: .no_toc }
 
-Two questions were asked on
-[issue #232](https://github.com/litlfred/folio-assistant/issues/232), and this
-page answers them:
+This page answers two questions:
 
 1. What are the options for disability support here, and what is best practice?
 2. What are the options for forcing agentic Q&A into guided questions that
@@ -37,8 +35,7 @@ agent reads shortness as low engagement and asks another open question. Nobody
 in that exchange has done anything obviously wrong, and the conversation is
 already failing.
 
-This repository's owner has very limited hand function, so the case is not
-hypothetical here. But the rule generalises without reference to anybody:
+The rule:
 
 > **A question's cost is paid by the person answering it.** Design the question
 > so that the cheapest possible answer is still a complete one.
@@ -111,8 +108,7 @@ can be verified rather than trusted:
 | **Section 508** | US federal procurement | the same, in the US |
 | **ATAG 2.0** | tools that *produce* content | **the one usually missed.** folio-assistant is an authoring tool: Part A is the tool being usable, Part B is the tool helping the author produce accessible output |
 
-ATAG Part B is worth dwelling on, because it is the part a content platform can
-uniquely deliver: alt-text presence, heading order, table headers and language
+ATAG Part B is the part a content platform can uniquely deliver: alt-text presence, heading order, table headers and language
 tagging in *published* folios are checks the QA sweep can carry, and no amount
 of making the editor accessible substitutes for them.
 
@@ -120,12 +116,12 @@ of making the editor accessible substitutes for them.
 
 | | where |
 |---|---|
-| Agent-facing preferences, committed, read at session start | `interaction/interaction.json`, surfaced by `scripts/session-start-coord-sweep.sh` |
+| Agent-facing preferences, committed, read at session start | `memory/interaction.json`, surfaced by `scripts/session-start-coord-sweep.sh` |
 | The rules an agent follows when asking | [`interaction-modality`]({{ site.baseurl }}/reference/skill-instructions/interaction-modality.html) |
 | Reader-facing controls on this site | the gear in the sidebar header — larger text, higher contrast, underlined links, reduced motion |
 | Reduced motion honoured without being asked | `prefers-reduced-motion` media query, and it seeds the panel's default |
 
-**The two preference stores are deliberately separate.** `interaction/interaction.json`
+**The two preference stores are deliberately separate.** `memory/interaction.json`
 is committed, agent-facing, and about the conversation. The site control is
 per-viewer `localStorage`, never leaves the browser, and is about reading. A
 reader who is not the author choosing large type must not silently reconfigure
@@ -148,8 +144,7 @@ worse than an absent one:
 
 ## 3. Forcing agentic Q&A into guided questions
 
-The second question. The answer is a separation, and the separation is the whole
-design.
+The answer is a separation.
 
 ### 3.1 Two things that look like one
 
@@ -210,12 +205,10 @@ Four ways to do this, in increasing order of ambition. Only the first is built.
   is for, and it is not optional garnish.
 - **Guided does not mean interrogating.** The largest accessibility win
   available is the question you did not have to ask — every fact the agent reads
-  from the filesystem is one fewer. That win is invisible, unrewarded, and
-  larger than any stylesheet.
+  from the filesystem is one fewer.
 
 ## See also
 
 - [Getting started](getting-started.html) — the intent decision table in use
 - [`interaction-modality` skill]({{ '/reference/skill-instructions/interaction-modality.html' | relative_url }})
 - [Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) — every process in the repo
-- [Options for workflow state in beans]({{ '/proposals/workflow-state-in-beans.html' | relative_url }})

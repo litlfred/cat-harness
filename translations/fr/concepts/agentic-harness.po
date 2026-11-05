@@ -29,10 +29,6 @@ msgstr "Harnais agentique"
 msgid "On this page"
 msgstr "Sur cette page"
 
-#: docs/concepts/agentic-harness.md:29
-msgid "The agentic harness is the interaction model that folio-assistant runs on — the rules, states, and workflows that govern how an agent and a user collaborate inside this platform. Much of this behaviour is already described across individual skills and guidance documents; this page consolidates it into one reference so that an agent entering a session can look up the expected behaviour rather than reconstructing it from scattered rules."
-msgstr "Le harnais agentique est le modèle d'interaction sur lequel fonctionne folio-assistant — les règles, les états et les flux de travail qui régissent la manière dont un agent et un utilisateur collaborent au sein de cette plateforme. Une grande partie de ce comportement est déjà décrite à travers les compétences individuelles et les documents d'orientation ; cette page le consolide dans une référence unique afin qu'un agent débutant une session puisse consulter le comportement attendu plutôt que de le reconstituer à partir de règles dispersées."
-
 #: docs/concepts/agentic-harness.md:36
 msgid "This is not about the agent's internal architecture. It is about the observable contract between the agent and the user: what states the interaction can be in, how requests are classified, which workflow the agent enters for each class, and what the user should expect at each stage."
 msgstr "Il ne s'agit pas de l'architecture interne de l'agent. Il s'agit du contrat observable entre l'agent et l'utilisateur : dans quels états l'interaction peut se trouver, comment les requêtes sont classées, quel flux de travail l'agent intègre pour chaque catégorie, et ce à quoi l'utilisateur doit s'attendre à chaque étape."
@@ -56,10 +52,6 @@ msgstr "État de flux de travail (Workflow)"
 #: docs/concepts/agentic-harness.md:58
 msgid "The agent is executing a named workflow — each represented by a BPMN process diagram with the agent and user in separate swim lanes. The active workflow determines what the agent does next and what it expects from the user."
 msgstr "L'agent exécute un flux de travail nommé — chacun étant représenté par un diagramme de processus BPMN où l'agent et l'utilisateur se trouvent dans des couloirs distincts. Le flux de travail actif détermine ce que l'agent fait ensuite et ce qu'il attend de l'utilisateur."
-
-#: docs/concepts/agentic-harness.md:62
-msgid "Active workflows in this platform:"
-msgstr "Flux de travail actifs sur cette plateforme :"
 
 #: docs/concepts/agentic-harness.md:64
 msgid "Workflow"
@@ -289,10 +281,6 @@ msgstr "En cas de doute, l'agent demande : « Cela semble nécessiter une modifi
 msgid "Content workflows"
 msgstr "Flux de travail de contenu"
 
-#: docs/concepts/agentic-harness.md:150
-msgid "When a request is classified as content work (authoring, review, ingestion), the agent follows the corresponding BPMN workflow. The existing documentation pages describe these in detail:"
-msgstr "Lorsqu'une requête est classée comme travail de contenu (rédaction, relecture, ingestion), l'agent suit le flux de travail BPMN correspondant. Les pages de documentation existantes décrivent ces flux en détail :"
-
 #: docs/concepts/agentic-harness.md:163
 msgid "Writing guides:"
 msgstr "Guides de rédaction :"
@@ -312,10 +300,6 @@ msgstr "Ceux-ci ne forment pas un seul axe, et les traiter comme tel est la prem
 #: docs/concepts/agentic-harness.md:211
 msgid "BPMN execution: one skill, two engines"
 msgstr "Exécution BPMN : une compétence, deux moteurs"
-
-#: docs/concepts/agentic-harness.md:216
-msgid "The owner, 2026-09-23, naming the skill this spectrum is about:"
-msgstr "Le propriétaire, 2026-09-23, nommant la compétence dont traite ce spectre :"
 
 #: docs/concepts/agentic-harness.md:218
 msgid "BPMN Execution Skill: given a Process, Context, State and Role, utilize one or more Skills in order to execute a Task."
@@ -400,10 +384,6 @@ msgstr "des rapports QA/QC mécaniques + agentiques la détectent après coup"
 #: docs/concepts/agentic-harness.md:259
 msgid "Feature-request workflow (CRDM)"
 msgstr "Flux de travail des demandes de fonctionnalités (CRDM)"
-
-#: docs/concepts/agentic-harness.md:269
-msgid "The feature-request workflow is where this harness document adds the most value, because it describes a behaviour that was previously implicit. The authoring and review workflows have been documented for months; the requirements workflow existed only as ad-hoc conversation."
-msgstr "Le flux de travail des demandes de fonctionnalités est le domaine où ce document sur le harnais apporte le plus de valeur, car il décrit un comportement qui était auparavant implicite. Les flux de rédaction et de révision sont documentés depuis des mois ; le flux de travail des exigences n'existait que sous la forme de discussions ponctuelles."
 
 #: docs/concepts/agentic-harness.md:274
 msgid "How the agent enters CRDM"
@@ -673,10 +653,6 @@ msgstr "Les exigences peuvent s'étendre sur plusieurs tickets. L'agent doit lie
 msgid "Consolidated skill references"
 msgstr "Références consolidées des compétences"
 
-#: docs/concepts/agentic-harness.md:393
-msgid "The behaviour described on this page draws from skills and guidance documents scattered across the repository. This section maps the consolidated behaviour back to its authoritative sources."
-msgstr "Le comportement décrit sur cette page s'inspire de compétences et de documents d'orientation dispersés à travers le dépôt. Cette section rattache le comportement consolidé à ses sources faisant autorité."
-
 #: docs/concepts/agentic-harness.md:397
 msgid "Behaviour"
 msgstr "Comportement"
@@ -744,10 +720,6 @@ msgstr "En cas de désaccord entre une compétence et cette page, la compétence
 #: docs/concepts/agentic-harness.md:415
 msgid "What is not built yet"
 msgstr "Ce qui n'est pas encore construit"
-
-#: docs/concepts/agentic-harness.md:420
-msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
-msgstr "Persistance de l'état du flux de travail — le harnais décrit la suspension et la reprise des flux de travail, mais il n'existe aucun mécanisme pour faire persister l'état du flux de travail de l'agent d'une session à l'autre. Aujourd'hui, cela repose sur les beans et les commentaires de tickets comme intermédiaires."
 
 #: docs/concepts/agentic-harness.md:425
 msgid "Automated request classification — the classification table is a reference for agents to read; there is no classifier tool that routes automatically."
@@ -897,3 +869,24 @@ msgstr "BPMN pour le harnais agentique lui-même — un diagramme BPMN de haut n
 
 #~ msgid "Tracked in: #203"
 #~ msgstr "Suivi dans : #203"
+
+#~ msgid "The agentic harness is the interaction model that folio-assistant runs on — the rules, states, and workflows that govern how an agent and a user collaborate inside this platform. Much of this behaviour is already described across individual skills and guidance documents; this page consolidates it into one reference so that an agent entering a session can look up the expected behaviour rather than reconstructing it from scattered rules."
+#~ msgstr "Le harnais agentique est le modèle d'interaction sur lequel fonctionne folio-assistant — les règles, les états et les flux de travail qui régissent la manière dont un agent et un utilisateur collaborent au sein de cette plateforme. Une grande partie de ce comportement est déjà décrite à travers les compétences individuelles et les documents d'orientation ; cette page le consolide dans une référence unique afin qu'un agent débutant une session puisse consulter le comportement attendu plutôt que de le reconstituer à partir de règles dispersées."
+
+#~ msgid "Active workflows in this platform:"
+#~ msgstr "Flux de travail actifs sur cette plateforme :"
+
+#~ msgid "When a request is classified as content work (authoring, review, ingestion), the agent follows the corresponding BPMN workflow. The existing documentation pages describe these in detail:"
+#~ msgstr "Lorsqu'une requête est classée comme travail de contenu (rédaction, relecture, ingestion), l'agent suit le flux de travail BPMN correspondant. Les pages de documentation existantes décrivent ces flux en détail :"
+
+#~ msgid "The owner, 2026-09-23, naming the skill this spectrum is about:"
+#~ msgstr "Le propriétaire, 2026-09-23, nommant la compétence dont traite ce spectre :"
+
+#~ msgid "The feature-request workflow is where this harness document adds the most value, because it describes a behaviour that was previously implicit. The authoring and review workflows have been documented for months; the requirements workflow existed only as ad-hoc conversation."
+#~ msgstr "Le flux de travail des demandes de fonctionnalités est le domaine où ce document sur le harnais apporte le plus de valeur, car il décrit un comportement qui était auparavant implicite. Les flux de rédaction et de révision sont documentés depuis des mois ; le flux de travail des exigences n'existait que sous la forme de discussions ponctuelles."
+
+#~ msgid "The behaviour described on this page draws from skills and guidance documents scattered across the repository. This section maps the consolidated behaviour back to its authoritative sources."
+#~ msgstr "Le comportement décrit sur cette page s'inspire de compétences et de documents d'orientation dispersés à travers le dépôt. Cette section rattache le comportement consolidé à ses sources faisant autorité."
+
+#~ msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
+#~ msgstr "Persistance de l'état du flux de travail — le harnais décrit la suspension et la reprise des flux de travail, mais il n'existe aucun mécanisme pour faire persister l'état du flux de travail de l'agent d'une session à l'autre. Aujourd'hui, cela repose sur les beans et les commentaires de tickets comme intermédiaires."

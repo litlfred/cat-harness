@@ -9,9 +9,8 @@ A **rendering** is what an instance publishes about itself. Running it produces
 **one or more endpoints under that instance's stub**, and every endpoint has a
 media type that says what it is.
 
-This skill is about the second half. The rendering already knows what it
-produced; what keeps going wrong is that the *serving* forgets to say so, and a
-`.jsonld` arrives at a client as `text/plain`.
+This skill is about serving: the rendering already knows what it produced, and
+the server must say so, or a `.jsonld` arrives at a client as `text/plain`.
 
 ## One stub, several endpoints, per instance in the tree
 
@@ -20,9 +19,8 @@ otherwise `name`. Every artefact an instance publishes is named with it, so a
 reader who knows the repository knows the filename.
 
 The dependency tree is **a set of overlaying instances**, and each renders under
-its own stub. That is the point of the stub being per-instance rather than
-per-repository: after the split, an overlying instance depending on
-`cat-harness` means both are present, and both publish.
+its own stub, so an overlying instance depending on `cat-harness` means both are
+present, and both publish.
 
 ```
 <base>/<name>/<stub>.jsonld      the knowledge graph        application/ld+json
@@ -38,15 +36,9 @@ consumer asking for one instance's graph must not be handed another's because
 the paths collided.
 
 **The graph sits under the instance's own directory, the host's included.**
-The renderings lived under `kg/` until 2026-09-19. After that the host's
-graph sat at the base, as `<base>/<stub>.jsonld`, while every other instance's
-sat under `<base>/<name>/`. That changed with the owner's ruling of
-2026-10-23 (decision 1b on
-[cat-harness-tools#603](https://github.com/litlfred/cat-harness-tools/issues/603)):
-*the host is no longer special*. There is one rule for every layer, with
-subjects beside their document, so a subject's page `<base>/<name>/<kind>/<id>`
-sits next to the document that names it. The old root `<base>/<stub>.jsonld`
-is a one-release tombstone. Where each document goes:
+There is one rule for every layer, with subjects beside their document, so a
+subject's page `<base>/<name>/<kind>/<id>` sits next to the document that names
+it. Where each document goes:
 [`instance-publication`](../../kg/kg-core/instance-publication.md) §"What each
 instance publishes".
 
@@ -54,16 +46,13 @@ instance publishes".
 Pages resolves `<base>/<stub>` only to a directory index, so the viewer is what
 makes the bare stub openable. It climbs to the site root and reads the
 document's own path, `<name>/<stub>.jsonld` (`exportIdentity`'s `docPath`).
-It never composes a neighbour's name, because that relation has changed
-with each layout.
+It never composes a neighbour's name, because that relation is not stable
+across layouts.
 
 **One function computes all of this**, `renderingPath()` in
-`schemas/kg/cat-harness.ts`. The path was written out in six template literals
-across two exporters, a type vocabulary and two workflows — five of them
-minting an `$id`, which is an identity rather than a link. Moving the
-renderings meant editing all six, and the sixth was found only because 95
-published `schema` refs pointed at a URL that 404s. A path a consumer
-dereferences is not a string to type twice.
+`schemas/kg/cat-harness.ts`. A path a consumer dereferences — or mints as an
+`$id` — is never written out as a template literal elsewhere, so moving the
+renderings is one edit rather than a hunt for copies.
 
 ## Every endpoint declares its media type
 
@@ -101,13 +90,12 @@ the honest handling is the one this repository applies everywhere else:
   `application/json`" is worse than "this host does not declare one", because
   the first is quoted and the second is investigated.
 - **Report "could not enforce" as its own state**, distinct from "enforced" and
-  from "enforced wrongly". Same rule as `readme-sections`' third state,
-  `ci-health`'s "could not check" and `resolveTodoTags`' `not-checked`.
+  from "enforced wrongly".
 
 The architectural boundary between what a static host and a local dynamic server
 can enforce is part of deployment awareness — see [`deployment-awareness`](deployment-awareness.md)
 for the four deployment surfaces, their constraints on tool usage, and why render-time
-escaping is the required line of defence on static hosts (bean `81vy`).
+escaping is the required line of defence on static hosts.
 
 ## Consequences a consumer must expect
 
@@ -115,14 +103,11 @@ A client fetching `<stub>.jsonld` from Pages **will** receive the wrong
 `Content-Type`. A strict JSON-LD processor may refuse it. That is a known and
 accepted cost of publishing there, and the remedy is the local deployment.
 
-**`<stub>.json` is an alias, and the distinction from a rename is the whole
-point.** Renaming the artefact to `.json` would trade a wrong type for a wrong
-*name*, and the name is the part a reader uses — that argument stands. Serving
-the same bytes at BOTH extensions costs nothing and concedes nothing: `.jsonld`
-stays canonical and is what every `@id` in the document names, while `.json` is
-the one path by which a correct `Content-Type` can come out of this host at all.
-A consumer that needs the media type more than the identity has somewhere to
-go, and neither document claims to be the other.
+**`<stub>.json` is an alias, not a rename.** The same bytes are served at BOTH
+extensions: `.jsonld` stays canonical and is what every `@id` in the document
+names, while `.json` is the one path by which a correct `Content-Type` can come
+out of a static host. Renaming the artefact to `.json` instead would trade a
+wrong type for a wrong *name*, and the name is the part a reader uses.
 
 What that does **not** license is a `.json` whose bytes differ, or an `@id`
 pointing at it. Two documents asserting the same IRIs is the defect
@@ -132,19 +117,16 @@ so the two cannot disagree about which build they came from.
 
 ## Running one — `serve-rendering`
 
-The hole this section used to declare is filled. The reasoning for leaving it
-open stands and is why the split looks as it does: the media types and the
-per-host story are the durable part, and a server is an implementation of
-this rather than a prerequisite for it. So the contract moved into code and
-the server reads it, instead of the server becoming the contract.
+The media types and the per-host rules are the contract, in code; the server
+is one implementation that reads it.
 
 ```sh
 bun run cat serve:rendering --dir docs/_site            # one site at /
 bun run cat serve:local --repos <repo-a>,<repo-b>       # several, fetched from gh-pages
 ```
 
-The default address is **`http://127.0.0.1:4007`** (owner, 2026-10-31: a prime
-near 4000, which `jekyll serve` already uses). Use `127.0.0.1`, not
+The default address is **`http://127.0.0.1:4007`** (port 4000 is `jekyll
+serve`'s). Use `127.0.0.1`, not
 `localhost`: the two are different origins, so cookies, storage and service
 workers split between them, and `localhost` may resolve to IPv6 `::1` first.
 The server sends `localhost` and `[::1]` requests to `127.0.0.1`.
@@ -180,21 +162,19 @@ main site lists its previews. `--site <repo>=<dir>` serves a site you built
 yourself, for changes not yet published. `--offline` uses the cache as it is.
 
 `RENDERING_MEDIA_TYPES` and `renderingMediaType()` in `schemas/kg/cat-harness.ts`
-are the table, beside `renderingPath()` — where a rendering LIVES and what it
-IS are the same kind of fact. Before this, the table existed only as prose on
-this page: `grep` for `ld+json` across the repository's TypeScript returned
-nothing (measured 2026-09-19), so every consumer had to re-derive it.
+are the table, beside `renderingPath()`, because where a rendering LIVES and
+what it IS are the same kind of fact, and a table in code is one no consumer
+has to re-derive from prose.
 
 Obligations are `skills/requirements/serving-a-rendering.json`, so a second
 implementation is checkable against the requirement rather than against this
-one's source. Bean `folio-assistant-0hi8`, issue #363.
+one's source.
 
 ### What a general-purpose static server actually gets wrong
 
-Less than this page used to imply, and the difference is worth carrying
-because overstating it is how a working setup gets ruled out. **Measured
-2026-09-19:** Python's `mimetypes` and `Bun.file().type` both already resolve
-`.jsonld` to `application/ld+json`.
+Less than is often assumed, and overstating it is how a working setup gets
+ruled out: Python's `mimetypes` and `Bun.file().type` both resolve `.jsonld`
+to `application/ld+json`.
 
 The gap is **one row**: `.schema.json` resolves to `application/json` in every
 OS table, because `.json` is the suffix that matches and nothing knows the
@@ -203,11 +183,10 @@ declared table rather than the filesystem's.
 
 ### Containment is part of the contract
 
-Added because the reference implementation failed it. Its own test pointed a
-symlink inside the served root at a file outside and got **200**: the URL is
-clean so a lexical path check passes, and `resolve()` never touches the
+A symlink inside the served root can point at a file outside it: the URL is
+clean, so a lexical path check passes, and `resolve()` never touches the
 filesystem. Real paths must be compared. This matters most for the
-`self-sovereign` topology, which is outward-facing: no, and whose published
-directory sits beside data nobody intends to publish.
+`self-sovereign` topology, whose published directory sits beside data nobody
+intends to publish.
 
 The server binds **loopback** unless told otherwise, for the same reason.

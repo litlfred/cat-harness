@@ -1,6 +1,5 @@
 When a request is classified as content work (authoring, review, ingestion),
-the agent follows the corresponding BPMN workflow. The existing documentation
-pages describe these in detail:
+the agent follows the corresponding BPMN workflow. These pages describe them:
 
 - **[Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** —
   the content lifecycle from draft through validation, rendering, and

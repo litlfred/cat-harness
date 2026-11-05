@@ -107,7 +107,7 @@ So `SkillDefinition.schemas` has **zero** effective readers. So does
 **This corrects the record.** PRs
 [#450](https://github.com/litlfred/folio-assistant/pull/450) and
 [#452](https://github.com/litlfred/folio-assistant/pull/452), the
-`qa-report-signing` skill, and beans `85e8`, `wlqd`, `nup0` all say the field's
+`qa-report-signing` skill, and work items `85e8`, `wlqd`, `nup0` all say the field's
 "only reader is `generate-docs.ts`, which **renders** it". That is too
 generous, and it is the more comfortable error: a field with one renderer
 sounds maintained, a field with none is inert. `generate-docs.ts` is not a
@@ -130,7 +130,7 @@ What makes it possible is that two of the three declarations already exist:
 | a module declaring itself a schema node | ✅ the `@graphNode schema` tag, checked by `check:schema-nodes` |
 | **graph typology → the schema that validates its nodes** | ⚠️ **this row was wrong — see below** |
 
-> **Corrected 2026-09-20 while implementing this (bean `folio-assistant-i31r`).**
+> **Corrected 2026-09-20 while implementing this (work item `folio-assistant-i31r`).**
 > The row above said the reference was missing. It is not:
 > **`GraphTypologyDef.schema` has existed all along.** Three of sixteen kinds
 > declare one, **nothing reads it**, and since `#437` all three resolve only
@@ -199,7 +199,7 @@ declaration better done once the pattern from A exists to model it on.
 `generate-docs.ts`. Three fields' entire claim to being "consumed" rests on a
 script that is not wired to anything. Either wire it — in which case the
 `[object Object]` bug is live and the `--check` gate that every other generator
-here has is missing — or retire it, and stop four beans and one skill from
+here has is missing — or retire it, and stop four work items and one skill from
 citing it as a consumer. Not a deletion to take unilaterally
 ([`deletion-requires-confirmation`](https://litlfred.github.io/folio-assistant/reference/skill-instructions/deletion-requires-confirmation.html)),
 which is why it is named here rather than done.

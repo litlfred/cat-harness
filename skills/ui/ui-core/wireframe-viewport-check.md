@@ -38,4 +38,4 @@ Any `fail` sends the candidate back to drawing. A candidate with only one layout
 
 ## Tool
 
-`wireframe-check` is the Tool for this skill. Its install, invocation and ports are in `cat-harness/tools/index.ts`; ask the tools graph rather than copying a command from here.
+`wireframe-check` is the Tool for this skill. Its install, invocation and ports are in its Tool node, `tools/wireframe-check/wireframe-check.json`; ask the tools graph rather than copying a command from here.

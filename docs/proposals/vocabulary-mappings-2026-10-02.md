@@ -17,13 +17,13 @@ summary: >-
 # Vocabulary mappings as declared ETL
 
 **Status:** decided 2026-10-02 (option 1) and built. See
-[Decision](#decision). Bean `folio-assistant-k74z`, issue #1872. The inventory
+[Decision](#decision). Work item `folio-assistant-k74z`, issue #1872. The inventory
 was measured on `origin/main` at `13620da` (2026-10-02).
 
 ## The ask
 
 Owner, 2026-09-23, on deciding to keep a glossary scheme's name in **both**
-`skos:prefLabel` and `dcterms:title` from one source (bean `sl9u`):
+`skos:prefLabel` and `dcterms:title` from one source (work item `sl9u`):
 
 > this is going to be common pattern... need Tools for this type of ETL
 > procedure depending on source / target content type and other metadata
@@ -110,7 +110,7 @@ which predicate.
 | 30 | glossary (`folio-glossary/v1`) | `title` | `skos:prefLabel` (no `dcterms:title`) | copy | `schemas/glossary.ts:202` |
 | 31 | glossary | `description` | `skos:definition` | copy | `:203` |
 | 32 | glossary | `hasVersion`, `modified`, `source`, `license` | `dcterms:hasVersion`, `dcterms:modified`, `dcterms:source`, `dcterms:license` | copy | `:204-207` |
-| 33 | glossary term | `prefLabel`, `definition` | `skos:prefLabel`, `skos:definition` | transform (language-tagged per locale, bean `c592`) | `:215`, `:218` |
+| 33 | glossary term | `prefLabel`, `definition` | `skos:prefLabel`, `skos:definition` | transform (language-tagged per locale, work item `c592`) | `:215`, `:218` |
 | 34 | glossary term | `altLabel`, `notation`, `scopeNote` | the SKOS properties of the same name | copy | `:217`, `:219-220` |
 | 35 | glossary term | `exactMatch` / `closeMatch` / `broadMatch` / `narrowMatch` | `skos:*Match` | copy | `:223` |
 | 36 | glossary term | `requires`, `isDefinedBy`, `source` | `dcterms:requires`, `rdfs:isDefinedBy`, `dcterms:source` | copy | `:227-229` |
@@ -180,14 +180,14 @@ These are reported, not fixed: fixing them is what the chosen shape is for.
 | | finding | rows |
 |---|---|---|
 | **D1** | The `sl9u` rule is *"a concept scheme that is also a document carries a derived `dcterms:title`"*. Two emitters apply it (15, 22). Two do not (24, 30), and that is **correct**: their scheme IRIs (`<doc>#<list>`, `<ns>glossary/<id>`) are not documents. But the condition that decides it is written down nowhere, so each new emitter has to rediscover it. | 15, 22, 24, 30 |
-| **D2** | `fsh-guts-export.ts:226` says it maps `name` and `description` *"exactly as the main export maps them"*. It does not. kg-export moved `description` to `dcterms:description` (bean `xsqm`), while fsh-guts still writes `rdfs:comment`. The comment went stale when kg-export changed. | 48, 53 |
+| **D2** | `fsh-guts-export.ts:226` says it maps `name` and `description` *"exactly as the main export maps them"*. It does not. kg-export moved `description` to `dcterms:description` (work item `xsqm`), while fsh-guts still writes `rdfs:comment`. The comment went stale when kg-export changed. | 48, 53 |
 | **D3** | **The same IRI gets two naming predicates from two generators.** kg-export and glossary-export both mint a role as `makeIri(doc, "role", id)`. kg-export names it `dcterms:title` with `rdfs:label` = the id. glossary-export names it `skos:prefLabel` with `skos:notation` = the id. In a merged graph one node has `rdfs:label "reviewer"` and `skos:prefLabel "Reviewer"`, and `skos:prefLabel` is a sub-property of `rdfs:label`. That is the `sl9u` overlap again, on every role node rather than one, with nothing saying which is authoritative. | 1, 5, 49 |
-| **D4** | A licence is `dcterms:license` on a glossary (32) but an opaque `@json` literal on a library item (47), so an RDF reader can see one and not the other. Licence is one of the "other metadata" the owner named. **Ruled 2026-10-03 (owner): move it. Done** (bean `gzkt`): one table, `vocab-mappings/licence-naming.json`, drives both. A library item's manifest now carries the licence as `license` → `dcterms:license`, outside `meta`, written only for a `stated` record. An `unknown` record names no licence. An absent one writes nothing. The authored record stays whole as `licenceRecord` (`@json`), which is what `check:source-licence` reads. | 32, 47 |
-| **D5** | A schema module's `summary` goes to `dcterms:title` (51), while every other node type sends `summary` to `rdfs:comment` (48). This may be deliberate, but no comment says so. **Ruled 2026-10-02 (owner): "Make it like the others"** — `summary` → `rdfs:comment`, title = module stem (bean `lodp`). | 48, 51 |
+| **D4** | A licence is `dcterms:license` on a glossary (32) but an opaque `@json` literal on a library item (47), so an RDF reader can see one and not the other. Licence is one of the "other metadata" the owner named. **Ruled 2026-10-03 (owner): move it. Done** (work item `gzkt`): one table, `vocab-mappings/licence-naming.json`, drives both. A library item's manifest now carries the licence as `license` → `dcterms:license`, outside `meta`, written only for a `stated` record. An `unknown` record names no licence. An absent one writes nothing. The authored record stays whole as `licenceRecord` (`@json`), which is what `check:source-licence` reads. | 32, 47 |
+| **D5** | A schema module's `summary` goes to `dcterms:title` (51), while every other node type sends `summary` to `rdfs:comment` (48). This may be deliberate, but no comment says so. **Ruled 2026-10-02 (owner): "Make it like the others"** — `summary` → `rdfs:comment`, title = module stem (work item `lodp`). | 48, 51 |
 
 ## 2. What to reuse, and what not to
 
-**smart-base crosswalks (bean `cpmo`).** Four FHIR ConceptMaps, held by
+**smart-base crosswalks (work item `cpmo`).** Four FHIR ConceptMaps, held by
 reference. Four lessons carry over; the vocabulary does not:
 
 1. **A mapping has a status.** Both crosswalks are `draft` and one is
@@ -202,7 +202,7 @@ reference. Four lessons carry over; the vocabulary does not:
 4. **Hold by reference.** No FHIR, ConceptMap or smart-base term enters the
    harness. A domain instance's own mappings stay in that instance.
 
-**Tool nodes (bean `d308`, `cat-harness/schemas/tool.ts:414`).** An ETL
+**Tool nodes (work item `d308`, `cat-harness/schemas/tool.ts:414`).** An ETL
 mapping is reached through a Tool declared as a KG node. A Tool can run
 `inProcess`, and it can declare `maintains` and `downstream`, so "this Tool
 keeps `_kg/<stub>-glossary.jsonld` current" is already expressible.
@@ -308,7 +308,7 @@ shared module, and add a lint that flags a node carrying both members of a
 
 - **For:** near-zero cost. It fixes D2 outright and makes D3 visible.
 - **Against:** a context cannot express fan-out, conditions or fallbacks (§2),
-  so the 59 hand-written lines all stay. The bean asks for Tools for exactly
+  so the 59 hand-written lines all stay. The work item asks for Tools for exactly
   that ETL, and this option does not provide them.
 
 **Default if no answer: Option 1.**
@@ -479,4 +479,4 @@ authoritative across both generators), whether D4's licence moves out of
 separate decision once the shape exists.
 
 **Since decided.** D4 was ruled 2026-10-03 by the owner ("move it") and is
-done (bean `gzkt`). See the D4 row in §1.
+done (work item `gzkt`). See the D4 row in §1.

@@ -16,7 +16,7 @@ Reviewing GRAPHICAL ASSETS AS THEY ARE INGESTED — accessibility, branding, lan
 
 - Who: the `Agent` lane (role `ingestion-agent`).
 - Skill: `theme-ui-review`.
-- What: Which graphical assets arrived, for which surfaces of the website or app design, in which locales, and at which VIEWPORTS: every surface at a web width and at a mobile width (owner, 2026-09-23, issue #1023).
+- What: Which graphical assets arrived, for which surfaces of the website or app design, in which locales, and at which VIEWPORTS: every surface at a web width and at a mobile width.
 - Record it: `workflow_complete` with `node: "A_Inventory"`.
 - next: → `A_Accessibility` (Accessibility: measure, do not assert)
 

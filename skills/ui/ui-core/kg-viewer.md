@@ -9,8 +9,8 @@ description: >
 # Rendering the knowledge graph
 
 `kg-export` serialises the instance's graph to one JSON-LD document. This skill
-is the other half of bean `1dfh`: **making that document legible to a person.**
-The two are deliberately separate capabilities — serialising is mechanical and
+is **making that document legible to a person.** The two are separate
+capabilities — serialising is mechanical and
 host-agnostic, rendering is a design problem, and posting the result to a host
 is a third thing that belongs to the `pages-publish` Tool.
 
@@ -18,51 +18,39 @@ is a third thing that belongs to the `pages-publish` Tool.
 
 The viewer must fetch the graph document, and that document is named after the
 repository — `<stub>.jsonld`, never a generic `kg.json`. A committed page would
-have to do one of two things, and both are defects this project has already
-paid for:
+have to either:
 
-- **Hardcode one instance's stub**, which is the genericity failure `AGENTS.md`
-  catalogues — a platform script carrying `quantum-observable-universe` and
-  working in exactly one repository.
-- **Compose the name at runtime** from the URL or a convention, which is the
-  "resolve, do not compose" rule. A consumer should never have to manipulate a
-  string to find a document.
+- **Hardcode one instance's stub**, so a platform script works in exactly one
+  repository; or
+- **Compose the name at runtime** from the URL or a convention, which breaks
+  the "resolve, do not compose" rule: a consumer should never have to
+  manipulate a string to find a document.
 
 So the exporter, which already knows the stub, writes it into the page. The
 page resolves nothing.
 
 **It fetches the document relative to its own location.** The page is
 `<site>/<stub>/index.html` and reads `../<name>/<stub>.jsonld` (the document's
-own path, under its instance's directory, the host's included, since
-2026-10-23), so the same bytes
-work on the canonical site and under `STAGING/<slug>/` with no configuration,
-no `--base-url`, and no build-time branch. A staging build that needed a
-different page would be a staging build testing something other than what
-ships. Which documents the site publishes, and where:
+own path, under its instance's directory, the host's included), so the same
+bytes work on the canonical site and under `STAGING/<slug>/` with no
+configuration, no `--base-url`, and no build-time branch. A staging build that
+needed a different page would test something other than what ships. Which
+documents the site publishes, and where:
 [`instance-publication`](../../kg/kg-core/instance-publication.md) §"What each
 instance publishes".
 
 ## No dependencies, and that is a requirement rather than a preference
 
-No CDN, no framework, no build step — one HTML file.
-
-A page that needs a network fetch to render cannot be opened from a file,
-cannot be reviewed offline or from a restricted network, and adds a third party
-to the trust boundary of a page whose entire job is to display *this
-repository's own data*. The graph is the thing being made trustworthy; loading
-it through someone else's script tag is at odds with that.
+No CDN, no framework, no build step — one HTML file. A page that needs a
+third-party fetch to render cannot be opened from a file or reviewed offline
+or from a restricted network, and adds a third party to the trust boundary of a page that displays
+this repository's own data.
 
 "No CDN" means no THIRD party's. A script or stylesheet this site publishes
 itself, shared by many of its own pages, is the opposite case and is what the
 next section requires.
 
 ## Every asset has its own IRI — a materialized path, loading published JSON-LD
-
-Owner, 2026-10-02 (#1881), in order: *"404 githubpages is a hack. does not work
-according to stanrds"*; *"each link/page needs to be materialized on the CDN
-(gh-pagees), just load the content from the KG json(ld) assets already
-published"*; *"no query strings... each asset gets its own IRI"*. It started
-with `/cat-harness/library/<dak-layer>/<trust-ig>` returning 404.
 
 Four rules, for every viewer that shows addressable things:
 
@@ -82,19 +70,14 @@ Four rules, for every viewer that shows addressable things:
    asset is written into it; the script loads it from the KG JSON / JSON-LD
    the site already publishes. If the asset's own serialisation is not yet
    published, publish the KG's existing one — do not invent a format. A shell
-   is a few KB; inlining chrome into each one is how an IG mirror reached
-   ~230 KB a page.
+   is a few KB; never inline shared chrome into each one.
 4. **An old `#<id>` link is legacy**: the shell normalises it ONCE to the path
    IRI with `history.replaceState` (or navigates, when the asset belongs to
    another page), and nothing new emits it.
 
 ### The asset and its rendering are two resources with two IRIs
 
-Owner, 2026-10-02 (#1881): *"each asset should have one IRI, but the view page
-is a rendering of that asset, a different page. fix IRIs"*; and, against
-putting `schema:subjectOf` on the asset, *"hard to maintain? asset doesnt know
-about its renderings"*. **This is the one place the rule is stated**; other
-skills point here.
+**This is the one place the rule is stated**; other skills point here.
 
 - **The asset's IRI is the address of its published JSON-LD**, and its `@id`
   says so: absolute, instance-qualified, under the site root the docs are
@@ -114,9 +97,8 @@ skills point here.
   the asset. The library does exactly this: each entry in the GENERATED
   projection (`assets/library/index.json`) carries `view` — the site-root path
   of the page that renders it (another instance's declared root route for an
-  entry that instance renders, e.g. the trust IG's `/<trust-ig>/`; else the
-  entry's own library page) — and the row's slug links there. Owner,
-  2026-10-02, paraphrased: clicking a library entry's slug should open its visualiser.
+  entry that instance renders; else the entry's own library page) — and the
+  row's slug links there, so clicking it opens the entry's visualiser.
 
 Reference implementation: `gen-library-viz.ts` (`viewerHtml`, `VIEWER_JS`,
 `VIEWER_CSS`) and `scripts/lib/library-address.ts`; browser check
@@ -129,9 +111,9 @@ module so a test runs the same text the page runs.
 ## Do not draw the whole graph
 
 **The instinct is a force-directed node-link diagram of everything. Resist it.**
-Measured on this instance: 1111 nodes and roughly 2000 edges. That renders as a
-hairball — it looks like a knowledge graph and answers no question about one,
-while costing a layout library and a frame budget.
+At the size of a real instance (on the order of a thousand nodes) it renders
+as a hairball that answers no question, while costing a layout library and a
+frame budget.
 
 The questions people actually arrive with are local:
 
@@ -149,21 +131,17 @@ neighbours is a list, not a diagram.
 
 ## Render what the document is missing, in the document's own terms
 
-**The first real consumer of a graph is the right place to surface what the
-graph lacks**, and a viewer that quietly displayed everything as though it were
-all part of the graph would be hiding exactly what it exists to reveal.
-
-Two things the export reports and the viewer must not swallow:
+A viewer must surface what the graph lacks rather than display everything as
+though it were all part of the graph. Two things the export reports and the viewer must not swallow:
 
 - **`undeclaredTerms`** — property names absent from the `@context`. Every one
-  is *dropped* when the document is processed as the JSON-LD it claims to be.
-  It was 34 names and 3583 occurrences on this instance when the viewer was
-  written, which is how the gap was found; bean `ovkk` took it to **zero** and
-  `kg-export` now exits non-zero rather than publishing a new one. Mark them in
+  is *dropped* when the document is processed as the JSON-LD it claims to be,
+  and `kg-export` exits non-zero rather than publishing a new one. Mark them in
   the detail panel; do not silently show them as ordinary properties. **Keep
   the marking even while the list is empty** — it is the guard that makes the
   next one visible, and a viewer for this instance is a viewer for any
-  instance, including one whose export is older or whose context is thinner.
+  instance, including one whose export is older or whose
+  context is thinner.
 - **`danglingLinks`** and **`problems`** — a link with no target node, and a
   source that could not be read.
 
@@ -214,14 +192,10 @@ is the half the reader came for.** Node titles, descriptions and property names
 arrive in the graph document in whatever language the corpus is written in; no
 catalogue in the viewer can reach them.
 
-Draw that boundary **on the page**, in the language the reader chose. A screen
-that is two-thirds translated and silent about it is worse than one that states
-its edge: the reader cannot tell a missing translation from a corpus that is
-simply English, and will read the gap as a defect or as a claim, depending on
-which way they guess.
-
-The same rule that governs an unreadable document governs this: three states,
-never two.
+Draw that boundary **on the page**, in the language the reader chose, so the
+reader can tell a missing translation from a corpus that is simply English;
+silent about it, the reader reads the gap as a defect or as a claim. Three
+states, never two, as for an unreadable document.
 
 ## A language switcher is a UI control
 
@@ -251,9 +225,9 @@ translation the reader would not get.
 
 ## Verifying it
 
-**A rendered artefact is not verified by reading its source.** `AGENTS.md` is
-explicit that a human cannot assess a rendering from a description of it; the
-same holds for the agent that wrote it. "The HTML looks right" is not evidence
+**A rendered artefact is not verified by reading its source**: nobody can
+assess a rendering from a description of it, including the agent that wrote
+it. "The HTML looks right" is not evidence
 that the document loads, that an edge is clickable, or that a failed fetch says
 so.
 
@@ -262,9 +236,7 @@ example, and it asserts against the *generated* artefacts rather than a fixture,
 so a test cannot agree with a stand-in while disagreeing with what ships. It
 generates them if absent, so the suite runs from a clean checkout.
 
-**Look at it, too.** Collapsing nested objects behind a disclosure was not a
-design decision made in advance — it came from taking a screenshot and seeing
-that a Tool's `io`, ~900 characters of JSON rendered inline, pushed `satisfies`
-and the neighbourhood diagram off the bottom of the screen. The most
-interesting property on the node was the one making the node unreadable, and no
-test would have said so.
+**Look at it, too.** Take a screenshot: layout problems such as a long nested
+property (a Tool's `io`) pushing the rest of a node off screen are caught only
+by looking, because no test reports that a property makes a node unreadable.
+Nested objects are collapsed behind a disclosure for that reason.

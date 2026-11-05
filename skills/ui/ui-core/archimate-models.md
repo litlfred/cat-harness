@@ -22,10 +22,6 @@ description: >
 > `archimate-check`, `archimate-metamodel`, `archimate-blocks`, `archimate-pages`, `archimate-crossings`, `archimate-detangle`, `archimate-actors` · Process:
 > `archimate-publish` (`processes/ui/archimate-publish.bpmn`)
 
-Owner, 2026-10-09: *"need new specialixed harness (like openapi) for archimate
-content in the KG"*, and then, of the Archi CLI report: *"do not do java
-200mb... that's not usable for webclients and is too heavy."*
-
 ## The rule
 
 **An ArchiMate model is content, and every view, element and relationship in
@@ -47,24 +43,18 @@ id that is not filename-safe rather than minting one nobody chose.
 
 ## Readable page paths: slugs, worked out each build
 
-Owner, 2026-10-30, of `…/views/id-007936f8c2424b96ad1893ef0ff66059/`: *"do
-we need to use such ugly IDs … why not nicer slug IRIs?"*; then, of the
-designs offered
-([issue 1054](https://github.com/litlfred/cat-harness-tools/issues/1054)):
-*"B. clean break ok"*.
-
 **The IRI stays the id; only the page is at a slug.** A view's or element's
 page is at `<m>/views/1-central-health-workforce-registry/`, while its node
 keeps `<m>/views/<id>.jsonld`. Cite the IRI when a link must last: the page
 path is for reading. Relationships keep id paths, since almost none are
-named (smart-ra 0.2.0: 6 of 284).
+named.
 
 Slugs are worked out from the names on every build
 (`cat-harness-tools/archimate/schemas/slugs.ts`). Nothing is committed and
 nothing redirects, so:
 
-- a rename moves the page, and the old path is gone (a clean break, as the
-  owner chose; old `<m>/views/<id>/` page paths are gone too);
+- a rename moves the page, and the old path is gone (a clean break; there
+  are no `<m>/views/<id>/` page paths);
 - on a clash the object first in the model keeps the plain slug and a later
   one gets `-<first hex of its id>`;
 - an author can choose a slug in Archi with a `slug` property (lower-case
@@ -76,9 +66,6 @@ Do not put slugs in the IRIs: the mapper keys on the ids, and a rename would
 move an IRI.
 
 ## The metamodel is derived, never drawn
-
-Owner, 2026-10-31: *"i dont really like native UML, rather derived"*, then
-*"make mechanical tools as parts of skills/processes"*.
 
 **Do not draw a metamodel view.** Which element types a model uses, and which
 relationships it draws between them, is computed from the model by the Tool
@@ -105,9 +92,7 @@ each pattern linking its relationships.
 
 `archimate-metamodel --check` fails when a relationship follows a pattern
 ArchiMate does not allow. Placeholders are reported, never fatal: a model is
-its authors', so removing a hand-drawn metamodel view (smart-ra 0.2.0's
-"Metamodel", "Metamodel vs EIRA" and "Testing", 34 placeholders) is their
-call. Cite the derived page instead of the view in the meantime.
+its authors', so removing a hand-drawn metamodel view is their call. Cite the derived page instead of the view in the meantime.
 
 The steps run in this order, all in the pipeline lane of process
 `archimate-publish`: `archimate-check`, then `archimate-metamodel --check`,
@@ -115,8 +100,7 @@ then `archimate-pages`. A refused relationship goes back to the model's author.
 
 ## Actors come first; the model points at them
 
-smart-ra#166 D4, owner's choice of 2026-11-01. The SMART Guidelines order is
-fixed: a DAK's L2 generic personas become the IG's L3 FHIR ActorDefinitions,
+The SMART Guidelines order is fixed: a DAK's L2 generic personas become the IG's L3 FHIR ActorDefinitions,
 and the architecture realizes them (DPI-H RA §4.3.2). So **the ActorDefinitions
 are written in the IG, from the DAK personas, and the model only points at
 them.** A model author tags the box that realizes an actor in Archi with the
@@ -142,7 +126,7 @@ same way an element carries `skosConcept`.
   a failure. `--json` gives element → actors and actor → elements, for the
   pages' back-links.
 
-**Data objects follow the same rule (D5).** A data object points at an existing
+**Data objects follow the same rule.** A data object points at an existing
 logical model with `logical-model = <canonical>`. Write the logical model in the
 IG first. Never derive a logical model from the model's boxes. The data
 object's class diagram will be generated from that logical model once the IG
@@ -150,8 +134,7 @@ holds one, so tag the data object now and do not draw the diagram.
 
 ## A document's tables and figures are drawn, not typed
 
-Owner, 2026-11-01 (smart-ra, cards Q-RAC-1 B and Q-RAC-2 A, "the rules stay
-in charge"): a table or figure in the document that restates the model is
+A table or figure in the document that restates the model is
 generated from data by the Tool `archimate-blocks`, and `--check` keeps it
 from drifting.
 
@@ -173,11 +156,6 @@ from drifting.
   document's.
 
 ## Untangle every view you touch
-
-Owner, 2026-10-31, of a view with lines drawn across each other and through
-boxes: *"lots crossed lines. detangle. (skill/process always check and try
-minimize when authoring archimate)"*, then *"improve skills / make mechanical
-tools where you can"*.
 
 **A change to a view never adds tangles, and every view you touch leaves with
 no more than it came with.** A tangle is a line crossing another line, or a
@@ -217,28 +195,21 @@ Ways to untangle by hand, in the order to try them:
 
 ## Every view carries a key for readers who do not know ArchiMate
 
-Owner, 2026-10-31: *"what do arrows/colors/shapes mean, need legend"*.
-
 Readers of a view are mostly not architects. **Every rendered view carries a
 plain-language key** below it, saying what each colour, shape, line and end
 used ON THAT VIEW means, in words a reader without ArchiMate understands
 ("Realization: makes real, or achieves"), not the specification's terms
-alone. `render-view.ts` draws it by default
-([pull 1059](https://github.com/litlfred/cat-harness-tools/pull/1059)), keyed
-only to what the view uses. Do not turn it off for a published view, and do
+alone. `render-view.ts` draws it by default, keyed only to what the view
+uses. Do not turn it off for a published view, and do
 not export a view without it. When the renderer gains a new mark, the key
 gains its line in the same change.
 
 ## Names are the source's own terms, linked to their concept
 
-Owner, 2026-10-31, after an NHWA element was named in our words rather than
-the handbook's (smart-ra#163).
-
 **An element or view named from a source uses the source's own term, and
 links to that term's SKOS concept.** Not our paraphrase, shortening or
-merger of two terms. When smart-ra models a module of *National health
-workforce accounts: a handbook*, the box is named as the handbook names it,
-and the element carries the concept's IRI (a property, e.g.
+merger of two terms. When a model depicts a module of a handbook, the box is
+named as the handbook names it, and the element carries the concept's IRI (a property, e.g.
 `concept` = the `skos:Concept` IRI in the source's glossary scheme) so its
 page links to the definition.
 
@@ -250,6 +221,25 @@ page links to the definition.
 - Our term and the source's disagree: that is a content decision
   ([`term-disagreement`](../../library/library-core/term-disagreement.md)),
   not something to settle by renaming in Archi.
+
+## The model is never a source of the glossary
+
+**An authored model depicts concepts; it never defines them.** Meaning lives
+in the SKOS glossary, read from the source documents. So:
+
+- Never write a term, label, definition, `focus` or relationship into a
+  glossary from a model someone authored in Archi. An element with no term
+  is a term to add from the source's own words, not from the box.
+- The glossary may drive the model (`archimate-from-glossary`, a content
+  layer's Tool): names, documentation and relationships flow from
+  the terms into the model, and Archi keeps the layout.
+- The term pages' "depicted by" links read `skosConcept` on each build and
+  write nothing into the glossary, so they are allowed.
+- The one exception is an **ingested** model, received from elsewhere and
+  held as a source under the instance's `library/`. It may seed the glossary
+  once (`archimate-from-glossary --seed --from library/…`), like any other
+  ingested source. The Tool refuses `--seed` on any model outside
+  `library/`.
 
 ## No Java, no Archi CLI, no Archi report — ever
 
@@ -296,8 +286,8 @@ repository that is the `version:` in `sushi-config.yaml`: `archimate/0.2.0/`,
 with earlier drafts as SemVer pre-releases (`0.2.0-draft.1`, …). The model id
 in the config is that version, so `…/archimate/0.2.0/elements/<id>.jsonld` is
 both versioned and stable. Never name a folder `v2`, `prev1` or `current`: a
-label that says nothing about what it is a version of is how smart-ra came to
-hold two byte-identical models under two names.
+label that says nothing about what it is a version of invites two identical
+models under two names.
 
 ## In a folio's build
 
@@ -308,8 +298,8 @@ bun run <platform>/cat-harness-tools/archimate/scripts/gen-archimate-pages.ts --
 
 Run both in the staging build, after the document site is built and before
 the navbar pass, so the pages are railed like every other page. `--out` is
-the normal mode: smart-ra's four models are 5,809 pages and 131 drawings
-(~24 MB, 1.5 s), which belong in a build, not a commit.
+the normal mode: a few models yield thousands of pages, which belong in a
+build, not a commit.
 `gen-archimate-pages.ts` without `--out` writes into the graph and `--check`
 gates it, as the `openapi` subgraph does, for an instance small enough to
 commit its pages.
@@ -321,9 +311,7 @@ SVG links relative to its own address, so it can also be embedded in a
 document as a figure (`<m>/views/<id>.svg`) and stay current with the model.
 Where the document and the model disagree — a figure in the text that is not
 a view in the model — that is a finding for the model's authors, not
-something to paper over with an exported image. (smart-ra, 2026-10-09:
-Figures 3.7.1 and 3.7.2 of the DPI-H review draft were in no committed model;
-the 0.2.0 model now draws them as views "B" and "D", so cite those.)
+something to paper over with an exported image.
 
 ## What is not read yet
 

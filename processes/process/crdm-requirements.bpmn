@@ -19,8 +19,8 @@
       <cat-harness.processes:policy enforcement="strict"/>
       <!-- Capture ON: this process is where a feature request becomes a
            commitment, so the record of which phase ran and when is what a
-           stakeholder asks for afterwards. Explicit opt-in per the owner;
-           an unmarked process leaves capture undetermined and reaches no
+           stakeholder asks for afterwards. Explicit opt-in; an unmarked
+           process leaves capture undetermined and reaches no
            data store either way. -->
       <cat-harness.processes:log capture="on" />
     </bpmn:extensionElements>
@@ -36,9 +36,6 @@
         <bpmn:flowNodeRef>GW_Feature</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Content</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Issue</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Call_BeanOpen</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>GW_BeanYours</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>End_BeanNotYours</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Needs</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Requirements</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_DataModel</bpmn:flowNodeRef>
@@ -46,7 +43,6 @@
         <bpmn:flowNodeRef>Call_Deliver</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Close</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_CRDM</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Call_BeanClose</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:startEvent id="Start_BA" name="Need identified"/>
@@ -58,7 +54,7 @@ They do not need to know it is called CRDM.</bpmn:documentation>
     </bpmn:task>
     <bpmn:task id="A_Detect" name="Detect feature request
 (crdm-detect skill)">
-      <bpmn:documentation>Recognise the request as a platform capability change rather than content work, from crdm-detect's signals. Never call it "CRDM" to the person. Mid-content-work, ask whether to pause for requirements now or record a bean for later — do not switch on your own.</bpmn:documentation>
+      <bpmn:documentation>Recognise the request as a platform capability change rather than content work, from crdm-detect's signals. Never call it "CRDM" to the person. Mid-content-work, ask whether to pause for requirements now or record a work item for later — do not switch on your own.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-detect"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:exclusiveGateway id="GW_Feature" name="Feature?">
@@ -78,10 +74,10 @@ They do not need to know it is called CRDM.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/></bpmn:extensionElements>
     </bpmn:callActivity>
     <bpmn:callActivity id="Call_DataModel" name="Data model&#10;Entities + cardinalities" calledElement="Process_CRDM_DataModel">
-      <bpmn:documentation>Between requirements and sign-off, and the order is the argument: requirements are statements about things, and the model says what the things ARE. Drafted earlier it is invented from nothing, since the entities come from the phase-2 BPA; drafted later, sign-off approves requirements whose nouns were never pinned — which is how two stakeholders approve one sentence meaning different things. Owner, 2026-09-20.</bpmn:documentation>
+      <bpmn:documentation>Between requirements and sign-off, and the order is the argument: requirements are statements about things, and the model says what the things ARE. Drafted earlier it is invented from nothing, since the entities come from the phase-2 BPA; drafted later, sign-off approves requirements whose nouns were never pinned — which is how two stakeholders approve one sentence meaning different things.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/></bpmn:extensionElements>
     </bpmn:callActivity>
-    <bpmn:callActivity id="Call_Signoff" name="Phase 5&#10;Beans + sign-off" calledElement="Process_CRDM_Signoff">
+    <bpmn:callActivity id="Call_Signoff" name="Phase 5&#10;Plan + sign-off" calledElement="Process_CRDM_Signoff">
       <bpmn:documentation>The approved requirements become work-plan items, the BA signs off, and the branch is announced on the issue. The announcement is on the single edge into delivery, so the three loops back into implementation do not re-announce.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/></bpmn:extensionElements>
     </bpmn:callActivity>
@@ -94,47 +90,29 @@ They do not need to know it is called CRDM.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="crdm-requirements-workflow"/></bpmn:extensionElements>
     </bpmn:callActivity>
     <bpmn:endEvent id="End_CRDM" name="Feature delivered"/>
-    <bpmn:callActivity id="Call_BeanOpen" name="Open the bean" calledElement="Process_BeanOpen">
-      <bpmn:documentation>Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="bean-coordination"/></bpmn:extensionElements>
-    </bpmn:callActivity>
-    <bpmn:exclusiveGateway id="GW_BeanYours" name="Bean claimed?">
-      <bpmn:documentation>Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination).</bpmn:documentation>
-    </bpmn:exclusiveGateway>
-    <bpmn:endEvent id="End_BeanNotYours" name="Not yours —&#10;left alone">
-      <bpmn:documentation>Someone else holds the bean; this run stops without touching it.</bpmn:documentation>
-    </bpmn:endEvent>
-    <bpmn:callActivity id="Call_BeanClose" name="Close the bean" calledElement="Process_BeanClose">
-      <bpmn:documentation>Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="todo-manager"/></bpmn:extensionElements>
-    </bpmn:callActivity>
     <bpmn:sequenceFlow id="SF_Process_CRDM_1" sourceRef="Start_BA" targetRef="BA_Submit"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_2" sourceRef="BA_Submit" targetRef="A_Detect"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_3" sourceRef="A_Detect" targetRef="GW_Feature"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_4" name="no" sourceRef="GW_Feature" targetRef="End_Content"/>
-    <bpmn:sequenceFlow id="SF_Process_CRDM_5" name="yes" sourceRef="GW_Feature" targetRef="Call_BeanOpen"/>
+    <bpmn:sequenceFlow id="SF_Process_CRDM_5" name="yes" sourceRef="GW_Feature" targetRef="Call_Issue"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_6" sourceRef="Call_Issue" targetRef="Call_Needs"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_7" sourceRef="Call_Needs" targetRef="Call_Requirements"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_8" sourceRef="Call_Requirements" targetRef="Call_DataModel"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_12" sourceRef="Call_DataModel" targetRef="Call_Signoff"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_9" sourceRef="Call_Signoff" targetRef="Call_Deliver"/>
     <bpmn:sequenceFlow id="SF_Process_CRDM_10" sourceRef="Call_Deliver" targetRef="Call_Close"/>
-    <bpmn:sequenceFlow id="SF_Process_CRDM_11" sourceRef="Call_Close" targetRef="Call_BeanClose"/>
-    <bpmn:sequenceFlow id="SF_Bean_1" name="claimed" sourceRef="GW_BeanYours" targetRef="Call_Issue"/>
-    <bpmn:sequenceFlow id="SF_Bean_2" sourceRef="Call_BeanOpen" targetRef="GW_BeanYours"/>
-    <bpmn:sequenceFlow id="SF_Bean_3" name="not yours" sourceRef="GW_BeanYours" targetRef="End_BeanNotYours"/>
-    <bpmn:sequenceFlow id="SF_Bean_4" sourceRef="Call_BeanClose" targetRef="End_CRDM"/>
+    <bpmn:sequenceFlow id="SF_Process_CRDM_11" sourceRef="Call_Close" targetRef="End_CRDM"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_CRDM">
     <bpmndi:BPMNPlane id="Plane_Process_CRDM" bpmnElement="Collaboration_Process_CRDM">
       <bpmndi:BPMNShape id="Shape_Participant_Process_CRDM" bpmnElement="Participant_Process_CRDM" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1142" height="625" />
+        <dc:Bounds x="160" y="80" width="872" height="625" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BA_Process_CRDM" bpmnElement="Lane_BA" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1112" height="150" />
+        <dc:Bounds x="190" y="80" width="842" height="150" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent_Process_CRDM" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="230" width="1112" height="475" />
+        <dc:Bounds x="190" y="230" width="842" height="475" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_BA" bpmnElement="Start_BA">
         <dc:Bounds x="236" y="137" width="36" height="36" />
@@ -154,25 +132,14 @@ They do not need to know it is called CRDM.</bpmn:documentation>
         <dc:Bounds x="469" y="422" width="36" height="36" />
         <bpmndi:BPMNLabel><dc:Bounds x="437" y="462" width="100" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Call_BeanOpen_di" bpmnElement="Call_BeanOpen">
+      <bpmndi:BPMNShape id="Shape_Call_Issue" bpmnElement="Call_Issue">
         <dc:Bounds x="582" y="270" width="120" height="120" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="GW_BeanYours_di" bpmnElement="GW_BeanYours" isMarkerVisible="true">
-        <dc:Bounds x="732" y="305" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="712" y="266" width="90" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="End_BeanNotYours_di" bpmnElement="End_BeanNotYours">
-        <dc:Bounds x="739" y="422" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="717" y="462" width="80" height="36" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Call_Issue" bpmnElement="Call_Issue">
-        <dc:Bounds x="852" y="270" width="120" height="120" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Needs" bpmnElement="Call_Needs">
-        <dc:Bounds x="1002" y="270" width="120" height="120" />
+        <dc:Bounds x="732" y="270" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Requirements" bpmnElement="Call_Requirements">
-        <dc:Bounds x="1152" y="270" width="120" height="120" />
+        <dc:Bounds x="882" y="270" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_DataModel" bpmnElement="Call_DataModel">
         <dc:Bounds x="240" y="555" width="120" height="120" />
@@ -186,12 +153,9 @@ They do not need to know it is called CRDM.</bpmn:documentation>
       <bpmndi:BPMNShape id="Shape_Call_Close" bpmnElement="Call_Close">
         <dc:Bounds x="690" y="555" width="120" height="120" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Call_BeanClose_di" bpmnElement="Call_BeanClose">
-        <dc:Bounds x="840" y="555" width="120" height="120" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_CRDM" bpmnElement="End_CRDM">
-        <dc:Bounds x="990" y="597" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="970" y="637" width="80" height="36" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="840" y="597" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="820" y="637" width="80" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_1" bpmnElement="SF_Process_CRDM_1">
         <di:waypoint x="272" y="155" />
@@ -215,31 +179,17 @@ They do not need to know it is called CRDM.</bpmn:documentation>
         <di:waypoint x="582" y="330" />
         <bpmndi:BPMNLabel><dc:Bounds x="530" y="307" width="30" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SF_Bean_2_di" bpmnElement="SF_Bean_2">
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_6" bpmnElement="SF_Process_CRDM_6">
         <di:waypoint x="702" y="330" />
         <di:waypoint x="732" y="330" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SF_Bean_1_di" bpmnElement="SF_Bean_1">
-        <di:waypoint x="782" y="330" />
-        <di:waypoint x="852" y="330" />
-        <bpmndi:BPMNLabel><dc:Bounds x="790" y="307" width="60" height="18" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SF_Bean_3_di" bpmnElement="SF_Bean_3">
-        <di:waypoint x="757" y="355" />
-        <di:waypoint x="757" y="422" />
-        <bpmndi:BPMNLabel><dc:Bounds x="763" y="372" width="70" height="18" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_6" bpmnElement="SF_Process_CRDM_6">
-        <di:waypoint x="972" y="330" />
-        <di:waypoint x="1002" y="330" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_7" bpmnElement="SF_Process_CRDM_7">
-        <di:waypoint x="1122" y="330" />
-        <di:waypoint x="1152" y="330" />
+        <di:waypoint x="852" y="330" />
+        <di:waypoint x="882" y="330" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_8" bpmnElement="SF_Process_CRDM_8">
-        <di:waypoint x="1212" y="390" />
-        <di:waypoint x="1212" y="525" />
+        <di:waypoint x="942" y="390" />
+        <di:waypoint x="942" y="525" />
         <di:waypoint x="300" y="525" />
         <di:waypoint x="300" y="555" />
       </bpmndi:BPMNEdge>
@@ -258,10 +208,6 @@ They do not need to know it is called CRDM.</bpmn:documentation>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_11" bpmnElement="SF_Process_CRDM_11">
         <di:waypoint x="810" y="615" />
         <di:waypoint x="840" y="615" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SF_Bean_4_di" bpmnElement="SF_Bean_4">
-        <di:waypoint x="960" y="615" />
-        <di:waypoint x="990" y="615" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

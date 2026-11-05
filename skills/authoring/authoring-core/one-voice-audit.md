@@ -2,6 +2,7 @@
 name: one-voice-audit
 ---
 
+# One-Voice Audit
 
 ## The voice is addressed TO the role, not carried by it
 
@@ -10,9 +11,8 @@ Before writing or auditing a block, resolve its audience: the role, its
 the user stories told as it.
 
 **A block sits in a lane; the lane is a role; the role is who the prose is
-for.** The audience is not restated per block — copying it onto every block
-invites the two to disagree, and a per-block audience contradicting its lane
-is worse than none because it looks authoritative.
+for.** The audience is not restated per block, because a per-block copy can
+contradict its lane and still look authoritative.
 
 ```ts
 import { readRoleGraph, roleForLane } from "./schemas/role-graph";
@@ -24,22 +24,21 @@ loadVoices(core).filter((v) => voiceActiveIn(v, { role: role?.id })) // how to a
 readUserStories("scenarios")?.stories.filter((s) => s.role.role === role?.id) // what they came to do
 ```
 
-**This file is the default, not the answer.** Where a voice addresses the
-role, that wins. The guidance here applies when no role has been resolved.
+**This file is the default.** Where a voice addresses the role, that wins;
+the guidance here applies when no role has been resolved.
 
-**Why a voice points at the role rather than this file inferring it.** Voice
-does not follow from persona: the same reader is addressed differently in a
-normative standard and in a tutorial. Declaring it as a voice profile bound to
-the role (`activeIn.roles`) is what lets the authoring agent and the QA agent
-judge against the *same* rule — otherwise a voice finding is one agent's taste
-against another's, which is unreviewable. The role names no voice and no story
-(#1168): each points at the role, so one is added without editing the role.
+Voice does not follow from persona — the same reader is addressed differently
+in a normative standard and in a tutorial — so it is declared as a voice
+profile bound to the role (`activeIn.roles`), and the authoring agent and the
+QA agent judge against that same rule; otherwise a voice finding is one
+agent's taste against another's, which is unreviewable. The role names no
+voice and no story: each points at the role, so one is added without editing
+the role.
 
 `bun run cat kg:audit` reports a reader role with no persona (`role-has-persona`)
 or no story told as it (`role-has-story`); `bun run cat check:voices` lists the
 roles with a persona that no voice addresses. System, external and acted-upon
 roles are `n/a`: nothing in them reads prose.
-# One-Voice Audit
 
 ## Role
 

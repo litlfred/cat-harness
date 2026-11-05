@@ -26,4 +26,3 @@ a feature request at the surface level.
 > **References:**
 > - [PHII — CRDM](https://phii.org/crdm/) — the canonical description
 > - [PATH — Collaborative Requirements Development Methodology](https://www.path.org/our-impact/resources/collaborative-requirements-development-methodology-participatory-process-end-users-define-software-requirements-improves-system-design-implementation/) — the PATH adaptation for global health informatics
-> - Issue [#203](https://github.com/litlfred/folio-assistant/issues/203) — the request that initiated this integration

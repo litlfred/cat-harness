@@ -3,27 +3,22 @@ name: production-vs-exploratory-discipline
 description: >
   Distinguish PRODUCTION (derived-only, no fits) from EXPLORATORY
   (empirical-fit probes OK as shape-hints) from NUMEROLOGY (post-hoc
-  fits to known constants). The hidden-extra-input / empirical-fit
-  antipattern is a common review-churn source: agents promote empirical
-  fits into production scripts, "closed" status, dashboards, and named
-  constants without a derivation. This skill is the bright-line guide
-  for which output goes where, the derivation-menu check, and the
-  escalation path for off-menu coefficients.
+  fits to known constants). The bright-line guide for which output goes
+  where, the derivation-menu check, and the escalation path for off-menu
+  coefficients, so empirical fits are not promoted into production
+  scripts, "closed" status, dashboards or named constants.
 allowed-tools: Read Bash Grep Glob Edit Write AskUserQuestion Skill
 consulted: true
 ---
 
 # Production vs exploratory vs numerology — the bright-line guide
 
-## Why this skill exists
+## The rule
 
-The single most common churn-inducing antipattern in a results-driven
-project: **an agent probes empirically, finds a numerical near-match,
-and promotes it to production** before the near-match has any
-derivation. A "5.6 ppm match" found by a search at one parameter value
-is, much more often than not, a coincidence — not structure. This skill
-codifies the discipline that short-circuits the propose → flag → restore
-cycle: escalate *up front* rather than after review catches it.
+**A numerical near-match is not promoted to production before it has a
+derivation.** A match found by a search at one parameter value is usually a
+coincidence, not structure. Escalate *before* promotion, not after review
+catches it.
 
 ## Three categories of output
 
@@ -105,7 +100,7 @@ specifically anchors to a named constant.
    appear in any derivation naturally?
 4. **SHOULD be retired explicitly** if a falsification lands.
 
-**Disallowed.** Numerology MUST NEVER enter production. Period.
+**Disallowed.** Numerology MUST NEVER enter production.
 
 ## The derivation menu
 
@@ -200,15 +195,14 @@ dashboard, run this BEFORE the commit:
 5. **Naming discipline** — production constants are named so the status
    is visible (`*_CANONICAL`/unsuffixed = proved; `*_FITTED_FROM_DATA` =
    empirical fit, never imported as a derived value; `*_VALIDATION` =
-   external anchor; `*_EXPLORATORY` = shape-probe). Mislabeling is the
-   most common review-thread cause.
+   external anchor; `*_EXPLORATORY` = shape-probe). Mislabeling is the most
+   common cause of review threads.
 6. **Witness assertion** — falsification probes assert the *refutation*
    so the witness reports passing on the expected-negative outcome.
 7. **Banner** — every exploratory probe carries a header banner stating
    it is exploratory hypothesis generation and NOT for production
    without (locality gate + derivation-menu trace + owner authorisation
-   if off-menu). The banner is the bright line a post-hoc audit looks
-   for.
+   if off-menu). The banner is what a post-hoc audit looks for.
 
 ```
 production change? → 1 yes → 2 locality smooth → 3 menu cite → 4 every term → 5 naming → 6 witness → 7 banner
@@ -237,10 +231,9 @@ rationale still holds; tuning a value **outside** any fence is forbidden
 (it is derived); a new `kind=production` fenced knob off the derivation
 menu requires escalation; a witnessed (derived) value inside an
 exploratory fence is a contradiction (derived *or* tunable, never both).
-The fence makes "what may be searched" auditable: a post-hoc audit can
-grep `kind=production` and check each rationale against the menu, and
-grep `kind=exploratory` to confirm those values never leak into a
-production script.
+An audit greps `kind=production` to check each rationale against the menu,
+and `kind=exploratory` to confirm those values never reach a production
+script.
 
 ## How to recognize what category an EXISTING script is in
 
@@ -259,10 +252,10 @@ docstring banner should agree; a mismatch is a review red flag.
 - **The content type's compute audit** — post-hoc audit; uses the
   3-category classification here to flag empirical fits that ended up in
   production.
-
-Both are shipped by the layer that defines a computational content type
-(for a paper folio, the science layer), which names this skill from its
-side.
 - **`canonical-watcher`** — the integration watcher that catches
   hidden-input promotions; this skill is the rule it enforces.
 - **`prepare-merge`** — the standardized rebase / witness-drift pattern.
+
+The first two are shipped by the layer that defines a computational content
+type (for a paper folio, the science layer), which names this skill from its
+side.

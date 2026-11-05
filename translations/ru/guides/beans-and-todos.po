@@ -45,10 +45,6 @@ msgstr "На этой странице подробно описано перв�
 msgid "Two things that share a word"
 msgstr "Две вещи с одним названием"
 
-#: docs/guides/beans-and-todos.md:51
-msgid "The distinction is not terminology. The two have different owners, different lifecycles and different failure modes."
-msgstr "Различие здесь не терминологическое. У них разные владельцы, разные жизненные циклы и разные сценарии сбоев."
-
 #: docs/guides/beans-and-todos.md:54
 msgid "Bean"
 msgstr "Bean"
@@ -137,17 +133,9 @@ msgstr "Дублирование или закрытие не той сесси�
 msgid "Forgotten"
 msgstr "Забывание"
 
-#: docs/guides/beans-and-todos.md:64
-msgid "The failure modes are what make the split worth keeping. A duplicated bean starves the work plan of signal — in one folio an unguarded re-run produced 14,688 duplicates, 92 % of every open bean in the repository. A forgotten todo inconveniences one person. Machinery sized for the first is ceremony on the second, and machinery sized for the second is nowhere near enough for the first."
-msgstr "Именно сценарии сбоев делают это разделение принципиально важным. Дублирование bean лишает план работы полезного сигнала — в одном фолио неосторожный повторный запуск породил 14 688 дубликатов, то есть 92 % всех открытых beans в репозитории. Забытая задача todo доставляет неудобство только одному человеку. Механизмы, спроектированные для первого случая, оказываются излишней бюрократией для второго, а механизмов, рассчитанных на второй случай, катастрофически недостаточно для первого."
-
 #: docs/guides/beans-and-todos.md:71
 msgid "The agent bean lifecycle"
 msgstr "Жизненный цикл агентского bean"
-
-#: docs/guides/beans-and-todos.md:83
-msgid "The diagram above is the whole cycle, and three of its edges are the ones worth reading twice."
-msgstr "Приведенная выше диаграмма описывает весь цикл, и три ее перехода заслуживают того, чтобы перечитать их дважды."
 
 #: docs/guides/beans-and-todos.md:92
 msgid "Ownership is a gateway, not a courtesy. A bean another session claimed is not yours to resolve, scrap or delete. Claiming is how two sessions avoid picking up the same item; closing someone else's is how one of them loses work it had not finished reporting."
@@ -156,14 +144,6 @@ msgstr "Владение — это шлюз, а не вежливость. Bean
 #: docs/guides/beans-and-todos.md:102
 msgid "A bean is never deleted"
 msgstr "Bean никогда не удаляется"
-
-#: docs/guides/beans-and-todos.md:114
-msgid "The reason is not tidiness. A scrapped bean records that something was considered and rejected, and on what grounds — which is worth as much to the next agent as the record of work that was done, because it is what stops the same dead end being re-entered. A deleted bean leaves a sibling session unable to tell abandonment from accident, and leaves the next agent free to start over on the thing you already ruled out."
-msgstr "Причина не в педантичности. Списанный bean фиксирует, что нечто было рассмотрено и отклонено, и на каких именно основаниях — что столь же ценно для следующего агента, как и запись о выполненной работе, потому что именно это не позволяет снова зайти в тот же тупик. Удаленный bean оставляет соседнюю сессию в неведении, был ли отказ осознанным или случайным, и дает следующему агенту повод начать заново то, что вы уже исключили."
-
-#: docs/guides/beans-and-todos.md:121
-msgid "The prohibition is written here, and in the diagram's own documentation, precisely because the tool offers the operation. A rule that depends on nobody noticing a command is not a rule."
-msgstr "Этот запрет сформулирован здесь и в документации к самой диаграмме ровно потому, что инструмент предоставляет такую операцию. Правило, рассчитанное на то, что команду просто никто не заметит, — это не правило."
 
 #: docs/guides/beans-and-todos.md:125
 msgid "Engine operations are not CLI calls"
@@ -176,10 +156,6 @@ msgstr "Изменять bean могут две разные сущности, �
 #: docs/guides/beans-and-todos.md:155
 msgid "Human todos — not built yet"
 msgstr "Задачи для людей (todos) — еще не реализованы"
-
-#: docs/guides/beans-and-todos.md:160
-msgid "Not built yet, and stated here rather than left as an absence somebody has to notice."
-msgstr "Еще не реализованы, и об этом сказано здесь прямо, а не оставлено как пробел, на который кто-то должен натолкнуться сам."
 
 #: docs/guides/beans-and-todos.md:163
 msgid "A person's todos need a cycle of their own, and none of it exists:"
@@ -293,3 +269,21 @@ msgstr "Интерактивный дашборд плана работы тре
 
 #~ msgid "What is not here. Where a bean sits in a BPMN process, which is the other half of bean . That join needs , the declared  graph, and it is empty — so a position view would report \"nowhere\" for every bean in the store. It waits for instance state to exist."
 #~ msgstr "Чего здесь нет. Того, где именно bean находится в процессе BPMN, что составляет вторую половину bean . Для этого объединения необходим каталог , объявленный граф , а он пуст — поэтому отображение позиции сообщало бы «нигде» для каждого bean в хранилище. Это ожидает появления состояния экземпляров."
+
+#~ msgid "The distinction is not terminology. The two have different owners, different lifecycles and different failure modes."
+#~ msgstr "Различие здесь не терминологическое. У них разные владельцы, разные жизненные циклы и разные сценарии сбоев."
+
+#~ msgid "The failure modes are what make the split worth keeping. A duplicated bean starves the work plan of signal — in one folio an unguarded re-run produced 14,688 duplicates, 92 % of every open bean in the repository. A forgotten todo inconveniences one person. Machinery sized for the first is ceremony on the second, and machinery sized for the second is nowhere near enough for the first."
+#~ msgstr "Именно сценарии сбоев делают это разделение принципиально важным. Дублирование bean лишает план работы полезного сигнала — в одном фолио неосторожный повторный запуск породил 14 688 дубликатов, то есть 92 % всех открытых beans в репозитории. Забытая задача todo доставляет неудобство только одному человеку. Механизмы, спроектированные для первого случая, оказываются излишней бюрократией для второго, а механизмов, рассчитанных на второй случай, катастрофически недостаточно для первого."
+
+#~ msgid "The diagram above is the whole cycle, and three of its edges are the ones worth reading twice."
+#~ msgstr "Приведенная выше диаграмма описывает весь цикл, и три ее перехода заслуживают того, чтобы перечитать их дважды."
+
+#~ msgid "The reason is not tidiness. A scrapped bean records that something was considered and rejected, and on what grounds — which is worth as much to the next agent as the record of work that was done, because it is what stops the same dead end being re-entered. A deleted bean leaves a sibling session unable to tell abandonment from accident, and leaves the next agent free to start over on the thing you already ruled out."
+#~ msgstr "Причина не в педантичности. Списанный bean фиксирует, что нечто было рассмотрено и отклонено, и на каких именно основаниях — что столь же ценно для следующего агента, как и запись о выполненной работе, потому что именно это не позволяет снова зайти в тот же тупик. Удаленный bean оставляет соседнюю сессию в неведении, был ли отказ осознанным или случайным, и дает следующему агенту повод начать заново то, что вы уже исключили."
+
+#~ msgid "The prohibition is written here, and in the diagram's own documentation, precisely because the tool offers the operation. A rule that depends on nobody noticing a command is not a rule."
+#~ msgstr "Этот запрет сформулирован здесь и в документации к самой диаграмме ровно потому, что инструмент предоставляет такую операцию. Правило, рассчитанное на то, что команду просто никто не заметит, — это не правило."
+
+#~ msgid "Not built yet, and stated here rather than left as an absence somebody has to notice."
+#~ msgstr "Еще не реализованы, и об этом сказано здесь прямо, а не оставлено как пробел, на который кто-то должен натолкнуться сам."

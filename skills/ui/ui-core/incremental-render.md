@@ -9,48 +9,31 @@ description: >
 
 # Incremental render — the cache is easy, the cascade is the work
 
-Owner, 2026-09-20, bean `9c34`:
-
-> *"new skill for staging rendernig.... dont rerender the whole thing... if
-> main render is not stale, copy that to staging render pipleine as cahche.
-> trigger rerender only on assets that have changed and downstream depndent
-> index."*
-
 Three steps. **Only the third is hard**, and it is the one that fails quietly:
 
 1. **Seed** — start from a previous render rather than from nothing.
 2. **Re-render what changed** — the steps whose inputs moved.
-3. **Re-render what DEPENDS on them** — and this is the whole bean.
+3. **Re-render what DEPENDS on them.**
 
-## Why step 3 is the bean
-
-A page that was not re-rendered **looks exactly like a page that was.** There
-is no visible difference between a correct cache hit and a stale one, so an
+A page that was not re-rendered **looks exactly like a page that was**, so an
 incremental render that gets the dependency graph wrong ships wrong pages and
-reports a clean build. That is the `xom7` shape — *a red workflow looks exactly
-like a green one from in here* — moved into the render.
-
-Everything below follows from taking that seriously.
+reports a clean build.
 
 ## The two edges, one mechanism
 
 | edge | example | one change means |
 |---|---|---|
-| **projection** | `ingestion-notes.html` ← `iris-dspace.md` | one source file → one page |
+| **projection** | `<page>.html` ← `<source>.md` | one source file → one page |
 | **index** | `community-list.html` ← every catalogue node | one **member** → the whole index |
 
 The index edge is the one people forget: **an index is derived from a SET, so
 it goes stale when a member changes even though the index file itself did
 not.**
 
-They differ in what a reader should expect and **not** in what the runner must
-do — if any declared input changed, the step re-runs, and the step's own
-`--check` decides which outputs actually differ. So one declaration expresses
-both, and the distinction lives in what a human reads there.
-
-**The downstream half needs no new mechanism.** `needs` already orders the
-pipeline, and a step whose dependency re-ran must re-run too. One edge, two
-uses.
+The runner treats both alike: if any declared input changed, the step
+re-runs, and the step's own `--check` decides which outputs actually differ.
+The downstream half uses `needs`, which already orders the pipeline: a step
+whose dependency re-ran re-runs too.
 
 ## A step declares GRAPH TYPOLOGIES, not paths
 
@@ -62,12 +45,10 @@ to use:
 | `inputs` | repository-relative files or directories | a path that is not a declared graph — a config file, a script's own fixtures |
 | `inputGraphs` | graph **kinds** from `<name>.json` — `cat-harness`, `beans`, `schemas`, … | anything the declaration already locates |
 
-The first draft used `inputs` throughout and `check:declared-paths` rejected
-nine literals. **It was right.** A second answer to *where do the skills live*
-goes stale the moment a directory moves, and the failure is silent in the
-worst direction: the render goes on hashing a path that is not there, finds
-nothing, and reports the step unchanged. Under-declaration does not look like
-under-declaration.
+`check:declared-paths` rejects a literal path to a declared graph. A second
+answer to *where do the skills live* goes stale the moment a directory moves,
+and the render then hashes a path that is not there, finds nothing, and
+reports the step unchanged.
 
 ### The subprocess, and why there is one
 
@@ -79,11 +60,9 @@ cannot render must not own the renderable kind. So the harness layer cannot
 resolve *any* kind in-process without importing core, which `check:partition`
 rejects.
 
-The three options were: spell the paths as literals (rejected, and rightly);
-import core (rejected, and rightly); or **ask across the boundary the way the
-pipeline already asks every renderer it runs** — by spawning one.
-`cat-harness-tools/scripts/declared-dirs.ts` is that third option: core-layer, one
-line of JSON on stdout, `{graph: [dirs]}`.
+So it **asks across the boundary the way the pipeline asks every renderer it
+runs** — by spawning one. `cat-harness-tools/scripts/declared-dirs.ts` is
+core-layer and prints one line of JSON on stdout, `{graph: [dirs]}`.
 
 **A failure prints nothing to stdout and exits non-zero**, so the caller cannot
 read *could not resolve* as *declares nothing* — the distinction this whole
@@ -93,18 +72,16 @@ skill turns on. The pipeline reports it:
 > graphs re-rendered: <reason>`
 
 and every graph-declared step becomes undeclared, which always re-renders. Safe
-direction, **said out loud**. An earlier version of this was correct and
-silent — it degraded to a full render without a word, so the feature was inert
-(0 steps cached) and nothing in the output said why.
+direction, **said out loud**: a silent fall-back to a full render leaves the
+cache inert with nothing in the output saying why.
 
 ### The cost: a graph is coarser than a file list
 
-`kg-current` declares the whole `cat-harness` graph, so **editing one skill
-re-renders all ten steps** — where a literal file list would have re-rendered
-four. That is a real loss and it is the right trade: over-declaring costs
-needless runs, under-declaring ships stale pages that look fresh. A finer
-declaration is available whenever a step's reads can be expressed without
-spelling a declared path.
+`kg-current` declares the whole `cat-harness` graph, and everything `needs` its
+way back to `kg-current`, so **editing one skill re-renders every step**. That
+is the right trade: over-declaring costs needless runs, under-declaring ships
+stale pages that look fresh. A finer declaration is available whenever a
+step's reads can be expressed without spelling a declared path.
 
 ## Hash content, never mtime
 
@@ -116,9 +93,8 @@ notices.
 
 Sort before hashing, **by codepoint**. `readdirSync` order is not stable across
 machines, and `localeCompare` is ICU-dependent — a seed written on one machine
-would mismatch on another for no reason anybody could see. `byCodepoint` in
-`render-selection.ts` is the comparator, and it exists because the first draft
-used `localeCompare`.
+would mismatch on another. `byCodepoint` in `render-selection.ts` is the
+comparator.
 
 ## Could-not-determine always re-renders
 
@@ -152,35 +128,19 @@ are the ceiling on how incremental a build can be — and a step that always
 re-renders should be a decision (`alwaysRun`, with a reason) rather than an
 omission nobody noticed.
 
-## Measured, on this repository
+## Steps that always run
 
-`bun run cat render` over ten steps, 2026-09-21, after the move to `inputGraphs`:
-
-| build | wall | steps |
-|---|---|---|
-| full, writing a seed | **3.9 s** | 10 ran |
-| seeded, nothing changed | **0.9 s** | 2 ran, **8 served from the seed** |
-| seeded, one bean touched | **1.1 s** | 4 ran, 6 served |
-| seeded, one skill file touched | **3.8 s** | 10 ran, **0 served** |
-
-The last row is the coarseness above, measured rather than asserted: a skill
-edit moves the `cat-harness` graph, `kg-current` reads that graph, and
-everything `needs` its way back to `kg-current`. The bean row is what a
-narrower graph buys — `beans` reaches only `docs-pages` and `state-dashboards`.
-
-The two that always run are `bootstrap` (pending — nothing to cache yet) and
+A narrower graph buys more caching: `beans` reaches only `docs-pages` and
+`state-dashboards`. The two that always run are `bootstrap` (pending — nothing to cache yet) and
 `kg-dynamic` (`alwaysRun`: it exports the running workflows' state, whose
 stuck states are measured against the clock, so no source hash could make
 caching it correct).
 
 **Report the cached steps as cached, never as a pass.** In this pipeline a
-"skip" already means *its input never rendered*, which is a much worse fact —
-so a served-from-seed step gets its own mark (`=`). And the counts must add
-up: the first draft reported *"10 ran … 8 served from the seed"*,
-double-counting eight of them, because the runner records a step as having run
-whenever the callback returned no error and a cached step returns no error by
-doing nothing. A build report that sums to more than its own steps is one
-nobody trusts the rest of.
+"skip" already means *its input never rendered*, so a served-from-seed step
+gets its own mark (`=`). The counts must add up: a cached step returns no
+error, so it must not also be counted as having run. A build report that sums
+to more than its own steps is one nobody trusts the rest of.
 
 ## Usage
 
@@ -206,5 +166,4 @@ so use `--seed` only where the previous output is already in place.
 - `scripts/declared-dirs.ts` — the graph-typology resolver, and why it is a process.
 - [`directory-conventions`](../../kg/kg-core/directory-conventions.md) — what a graph typology is
   and where `<name>.json` declares it.
-- [`ci-health`](../../sdlc/sdlc-core/ci-health.md) — the same third-state discipline one level out.
-- Bean `9c34`.
+- [`ci-health`](../../../sdlc/skills/sdlc-core/ci-health.md) — the same third-state discipline one level out.

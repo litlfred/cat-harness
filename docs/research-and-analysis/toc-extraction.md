@@ -15,8 +15,7 @@ summary: >-
 ---
 
 > **What this page is.** It records what was measured on **2026-10-06**, on
-> this repository's PDFs, for [issue #2302](https://github.com/litlfred/folio-assistant/issues/2302)
-> ("Need better TOC extractor"). The rule an agent follows lives in the
+> this repository's PDFs. The rule an agent follows lives in the
 > `document-intake` skill; this page keeps the evidence. Read the
 > [limits](#what-this-could-not-establish) before the conclusions.
 
@@ -66,7 +65,7 @@ distance is too slow at 2,500 nodes) and is averaged over the other 12.
 
 | method | what it does | where |
 |---|---|---|
-| `regex` | the previous fallback: text patterns over plain page text, with the bean `6xaz` concentration verdict | `pdf-structure.py` `infer_headings` |
+| `regex` | the previous fallback: text patterns over plain page text, with the concentration verdict | `pdf-structure.py` `infer_headings` |
 | `size` | the construction step of Wang et al. (2023) alone: any line set larger than the body is a heading, larger means shallower | `toc-benchmark.py` `m_size` |
 | `font` | lines in a heading **style** — size, bold, capitals, italic — with running heads, captions, contents pages, cover pages and sentence-shaped lines removed; levels from section numbering where present, else style rank, repaired into a tree (Bentabet et al. 2019) | `_pdf_headings.py` `font_headings` |
 | `contents` | parse a printed contents page (dotted leaders or a trailing page number), levels from numbering or indentation, then move printed page labels to physical pages by finding the titles in the body (Wu et al. 2013) | `_pdf_headings.py` `contents_headings` |
@@ -190,7 +189,7 @@ they need a GPU-scale Python stack and might narrow the precision gap.
 
 ### Nougat, measured
 
-Run 2026-10-12 (bean `e8vg`): `nougat-ocr` 0.1.17, model **`0.1.0-small`**,
+Run 2026-10-12: `nougat-ocr` 0.1.17, model **`0.1.0-small`**,
 **CPU only** (4 cores, no GPU), `--no-skipping`, torch 2.14, transformers
 4.38.2, pypdfium2 4.20.0 (5.x removed the `render` API nougat calls). The
 weights came from nougat's own GitHub release assets, which its
@@ -237,8 +236,7 @@ bounds.
 ### The consensus TOC — cross-checking the methods
 
 The methods are not independent guesses at one list; they are different
-**evidence** for each entry, and the strongest rule is the one the owner put
-as a question: *a contents entry should be findable later as a heading.*
+**evidence** for each entry, and the strongest rule is: *a contents entry should be findable later as a heading.*
 `consensus_headings` turns that and its converse into confidence:
 
 | evidence | where it comes from |

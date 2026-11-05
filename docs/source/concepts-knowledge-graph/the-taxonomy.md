@@ -42,8 +42,8 @@ auditing whether a Role's Skills actually cover its lanes.
 #### Workflows
 
 Business process as BPMN, with DMN for the decisions. **Prefer *Workflow* over
-*process*** throughout: they were used interchangeably, and the inconsistency
-cost more than the synonym bought.
+*process*** throughout, because using both interchangeably costs more than the
+synonym buys.
 
 The diagrams are executable rather than illustrative. A lane binds a Role, an
 activity names the Skill to run, and a gateway MAY compute its branch from a
@@ -57,8 +57,8 @@ position rather than inferring one.
 A **Capability with defined inputs and outputs** — the instruction body an
 Actor needs to perform a Task, stated **generically** so that it is portable
 across forges, binaries and machines by construction. A Content repository MUST
-constrain those inputs and outputs with a Schema; the consequence of not doing
-so is in [Repositories](#repositories) below, and it is not a small one.
+constrain those inputs and outputs with a Schema; why is in
+[Repositories](#repositories) below.
 
 A Skill MAY be designated mechanical, human, or either. That is a property of
 the Capability, not of whoever happens to run it today.
@@ -66,10 +66,7 @@ the Capability, not of whoever happens to run it today.
 #### Tools
 
 The concrete mechanisms. A Tool names the Skills it satisfies through its
-`satisfies` field, and **one Skill MAY be satisfied by several Tools** — which
-is the point of the separation rather than an allowance. Several Tools for one
-Skill is what lets the same Capability be exercised at different points on the
-spectrum from fully deterministic to fully agentic, and compared.
+`satisfies` field, and **one Skill MAY be satisfied by several Tools**.
 
 *Used for*: keeping the mechanism out of the instruction. A Skill that names a
 vendor, a CLI or an endpoint has swallowed a Tool, and the swallowing is what
@@ -99,9 +96,9 @@ than to chance.
 ### Harness
 
 The layer that renders the rest: the JSON-LD export, the visualisers, and the
-documentation. Its obligation is stated as three separate requirements because
-they fail differently — nothing draws it, nothing says what it is for, nothing
-an agent can invoke against it.
+documentation. Its obligation is stated as four separate requirements because
+they fail differently — nothing serves it, nothing draws it, nothing says what
+it is for, nothing an agent can invoke against it.
 
 *Used for*: making a declared directory something a person can actually look
 at. A directory nobody can see is one nobody checks.
@@ -112,7 +109,7 @@ What is being worked on and how far it got. Written by processes as they run,
 committed so it survives a fresh container. It splits by **who the state is
 for**, which is a sharper line than what the state holds:
 
-- **beans — agentic state management.** Used by Agents to coordinate and track
+- **work items — agentic state management.** Used by Agents to coordinate and track
   internal state within a Workflow. *"Changes to the vaccination schedule are
   ready for review at staging."*
 - **todos — human state management.** Attached to a step in a Workflow **or to
@@ -121,7 +118,7 @@ for**, which is a sharper line than what the state holds:
 
 A todo attaching to a knowledge asset and not only to a step is what makes the
 two stores genuinely different rather than one store with an audience field: a
-bean without a Workflow position is incomplete, and a todo on a chapter has no
+work item without a Workflow position is incomplete, and a todo on a chapter has no
 Workflow position to be missing.
 
 Workflow instances, QA sidecars and health results are Dynamic Context too,

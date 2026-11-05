@@ -21,8 +21,7 @@ have a folio and want the toolchain set up, skip to
 
 ## 1. "Create a folio" is five different requests
 
-Say that sentence to five people and you will get five different pieces of work.
-The agent's first job is not to start; it is to find out which one you meant.
+The agent's first job is to find out which one you meant.
 
 | you mean | you have | what the wrong guess costs you |
 |---|---|---|
@@ -32,10 +31,9 @@ The agent's first job is not to start; it is to find out which one you meant.
 | **A new document inside the folio you already have** | a folio, and a chapter in mind | an entire empty folio, and the chapter still unwritten |
 | **Something you would rather describe in your own words** | — | — |
 
-The fourth row is the one worth pausing on. It is not an error on your part —
-"folio" is an unfamiliar word, and asking for one when you meant a chapter in
-one is the most natural mistake available. An agent that scaffolds on it has
-produced an empty repository and not the paragraph you asked for.
+The fourth row is the commonest: asking for a folio when you meant a chapter in
+one. An agent that scaffolds on it produces an empty repository, not the
+chapter you asked for.
 
 ## 2. How the agent decides — and why it is a table, not a judgement
 
@@ -66,8 +64,8 @@ rather than asking:
 | `statedIntent` | what you actually **said** — one of the five, or `unstated` |
 
 `statedIntent` is a fact about the *conversation*. It stays `unstated` until you
-have said which, and inferring it from tone or from what would be convenient is
-precisely the failure the table exists to prevent.
+have said which; it is never inferred from tone or convenience, because that
+inference is the failure the table exists to prevent.
 
 > `isFolio` is about the directory, not about you. Somebody who has used
 > folio-assistant for years is still in an `isFolio=false` directory when they
@@ -90,22 +88,18 @@ says what they want is never overruled by a heuristic about their filesystem.**
 
 Only rule 7 is decidable by looking. A directory that is already a folio is
 consistent with three different requests, and a directory with somebody's
-project in it is consistent with two. The table does not paper over that — it
-returns `ask`.
-
-That matters more than it sounds:
+project in it is consistent with two, so the table returns `ask`.
 
 > **`ask` is an outcome of the table, not a decision the agent reaches.**
 
-An agent cannot route to a branch the table did not return, so the question
-becomes obligatory rather than polite. An agent left to decide *whether* to ask
-will, under any pressure to seem helpful, decide not to — and the three
-ambiguous cases are exactly where guessing is most expensive.
+An agent cannot route to a branch the table did not return, so the question is
+obligatory: an agent left to decide *whether* to ask will, under pressure to
+seem helpful, decide not to.
 
 When you answer, your answer becomes `statedIntent` and the same table is
-evaluated again. That is why the diagram loops back to *Read the repository
-facts* rather than jumping straight to a branch: **your answer is evidence, read
-like any other fact.**
+evaluated again, which is why the diagram loops back to *Read the repository
+facts* rather than jumping straight to a branch: your answer is evidence, read
+like any other fact.
 
 ### Changing it
 
@@ -118,7 +112,7 @@ two cannot drift apart. Nothing in `src/` needs to change.
 
 **The form of the question comes before its content.** The agent establishes how
 you would like to be asked — selectable options, ordinary chat, read aloud,
-large type — and records it in `interaction/interaction.json` so no future session
+large type — and records it in `memory/interaction.json` so no future session
 asks you again. See [Accessibility](accessibility.html).
 
 Then, when the answer is genuinely ambiguous:
@@ -171,7 +165,7 @@ The tools most relevant to this page:
 |------|---------|
 | `folio_init` | Scaffold a folio. Registered as a **generic** tool, because it runs before the folio has a content type |
 | `workflow_start` / `workflow_next` / `workflow_complete` | Run `getting-started.bpmn` as a real process; `workflow_next` says what is enabled now and which skill implements it |
-| `work_plan_prime` | Surface the work plan (beans) |
+| `work_plan_prime` | Surface the work plan (work items) |
 | `check_dependencies` | Probe which toolchains are installed |
 | `skill_list` / `skill_fetch` | Discover and load a skill's instructions |
 
@@ -190,9 +184,9 @@ bun run cat scan:repo -- --json  # the same, as facts
 It sorts what it finds into **three** buckets — `library` (source material
 somebody else wrote), `content` (prose authored here), and `unclassified`.
 
-The third one is deliberate. A classifier that forces every file into one of two
-buckets has an accuracy nobody can assess, and delivers its mistakes as moved
-files. This one tells you what it could not place and lets you decide.
+`unclassified` lists what it could not place, for you to decide, because a
+classifier forced into two buckets has an accuracy nobody can assess and
+delivers its mistakes as moved files.
 
 Then three questions, all answerable by picking, all asked **per directory**
 rather than per file:
@@ -229,10 +223,9 @@ one of three things:
 | **not yet** | a **measured** 404 — the address is right and the first build has not landed there yet |
 | **could not check** | no address could be derived, nothing was probed, or the request failed |
 
-The third is not a softer version of the second, and the agent will not tell you
-"it should be up shortly" on the strength of it. A measured 404 is evidence; a
-failed request is the absence of evidence, and an author who is told the wrong
-one goes looking for a site that was never going to appear.
+The third is not a softer version of the second: the agent will not tell you
+"it should be up shortly" on the strength of it, because a measured 404 is
+evidence and a failed request is the absence of evidence.
 
 The same three states are a decision table —
 [`decisions/pages-live-gate.dmn`](https://github.com/litlfred/folio-assistant/blob/main/processes/decisions/pages-live-gate.dmn) —
@@ -260,9 +253,8 @@ into the template. Change the file; the page follows.
 ```
 
 `description` is **markdown**, rendered as-is. It is the node the landing page
-draws; there is no separate page to keep in step with it, which is the point —
-a description that appears in two places is a description that will disagree
-with itself.
+draws; there is no separate page to keep in step with it, because a
+description that appears in two places will disagree with itself.
 
 ### Your own backdrop
 
@@ -281,12 +273,9 @@ viewport it is cut for:
 ```
 
 `textRegion` is where the words may safely go, as fractions of the image. **It
-is authored, not computed**, because it states where the picture is *quiet* —
-a judgement about composition that no pixel analysis substitutes for. The
-platform's own laptop backdrop has a thought-cloud with a clear lower interior,
-a mark occupying its top third and a cat's ear rising into its lower left; the
-box that avoids all three was found by rendering candidates and looking at them.
-Do the same for yours.
+is authored, not computed**, because it states where the picture is quiet, a
+judgement about composition that no pixel analysis substitutes for. Render
+candidate boxes and look at them.
 
 Declare one variant per viewport. Each carries its **own** region, because the
 same composition sits differently in a portrait crop.
@@ -306,15 +295,13 @@ bun run cat docs:harness -- --check   # ...and fail if stale (for CI)
 | a backdrop with **no** region | shows the picture, puts the words **below** it |
 | **no** backdrop | shows the words alone |
 
-The middle row is deliberate. Text positioned by guesswork lands on the cat, so
-an undeclared region means "do not overlay", never "anywhere is fine". And a
-folio with no art is ordinary, not broken.
+An undeclared region means "do not overlay", never "anywhere is fine", because
+text positioned by guesswork lands on the subject. A folio with no art is
+ordinary, not broken.
 
-If you declare a `mobile` variant and a phone arrives, it gets that file — and
-if you have not, it gets the widest one you do have. That fallback is a real
-degradation, because the wide crop's region is wrong for a narrow screen; it is
-reported rather than hidden, so a renderer can decline to overlay instead of
-placing text somewhere nobody chose.
+If you declare a `mobile` variant, a phone gets that file; otherwise it gets the
+widest one you have. That fallback is reported, because the wide crop's region
+is wrong for a narrow screen, so a renderer can decline to overlay.
 
 ## 9. Track the work with `beans`
 
@@ -323,17 +310,16 @@ work-plan mechanism — durable across sessions, shared between agents, committe
 to the repository.
 
 ```sh
-scripts/install-beans.sh          # install the CLI if missing
+cat-harness-tools/scripts/install-beans.sh  # install the CLI if missing
 beans prime                       # emit work-plan priming for agents
 beans list                        # current open items
 beans create "draft chapter 1"    # open an item
-beans <id> --status in-progress   # claim an item
+bun run cat beans:claim <id>      # claim an item
 ```
 
 > **Check before you create.** `beans create` mints a fresh id on every call and
-> dedupes on nothing. Re-entering a scripted step without an existence check
-> produced **14,688** duplicate beans in one folio on a single afternoon. The
-> check is in the
+> dedupes on nothing, so check for an existing item first: re-entering a scripted
+> step without the check floods the store with duplicates. The check is in the
 > [`todo-manager`]({{ '/reference/skill-instructions/todo-manager.html' | relative_url }}) skill.
 
 The `SessionStart` hook surfaces the plan at the start of every session, and the

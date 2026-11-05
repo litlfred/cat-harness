@@ -15,11 +15,9 @@ consulted: true
 
 These rules were first written for a formal-mathematics corpus — Lean
 declarations, propositions, proof terms. Each one below is the domain-free form,
-with the domain version named so the lineage is traceable rather than erased.
-
-**Which rules did NOT generalize is in `domain-fencing.md`.** A rule that
-survives translation and a rule that does not are different findings, and
-collapsing them is how a platform acquires somebody else's mathematics.
+with the domain version it came from named. The rules that did NOT generalize
+are in `domain-fencing.md`, kept apart because collapsing the two is how a
+platform acquires somebody else's mathematics.
 
 ## Not every edge is a dependency
 
@@ -39,8 +37,6 @@ to; that is what a test is for."* Test edges are exempt from the DAG.
 
 ## Ordering uses ONE kind; impact uses the UNION
 
-Stated three times, in three files, before anyone noticed it was one rule:
-
 > "Impact questions ('what breaks if this changes?') want the **union** of both.
 > … The reorganisation heuristics in this skill are **editorial-only** by
 > design: reading order is a question about readers, so mixing formal edges in
@@ -58,7 +54,6 @@ about reading order, and the blast radius misses edges it needed.
 
 ## Interface edges versus implementation edges
 
-The sharpest of the lifted rules, and it exists today only in Lean vocabulary.
 From `lean-formal-graph`:
 
 > "**type** — the declaration's signature mentions the target. Changing the
@@ -86,9 +81,8 @@ From `detangler-block-tanglement`:
 > signals a node that may warrant a **split**, relocation, or dependency-edge
 > pruning."
 
-Domain-free as written — the only domain word is a parenthetical gloss on
-`depth`. Note the three remedies are the same three the cycle rule gives, which
-is the sign that this is one practice rather than two.
+Domain-free as written. The three remedies are the same three the cycle rule
+gives, which is the sign that this is one practice rather than two.
 
 ## Common-subgraph extraction
 
@@ -100,8 +94,8 @@ From `proof-gap-audit` §J:
 > major-severity abstraction gap."
 
 Domain-free: **when k dependents share an identical sub-path, extract it as a
-node.** And the stated rationale generalizes verbatim, which is the test that it
-is not a domain rule wearing a general coat:
+node.** The stated rationale generalizes verbatim, which is the test that it is
+not a domain rule:
 
 > "(a) increase the chance of inconsistent edits later (one copy gets fixed,
 > others drift), (b) inflate the dependency graph energy unnecessarily, (c) hide
@@ -142,8 +136,7 @@ and its header gives the reason: *"'could not determine' is a distinct answer
 from 'determined to be core', and collapsing the two is how a wrong partition
 looks like a clean one."*
 
-**This discipline appears independently in at least six places in this
-repository.** It is stated here once, and the others should point at it rather
+This discipline is stated here once; other places should point at it rather
 than restate it.
 
 ## Taint propagates down the dependency graph

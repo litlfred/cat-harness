@@ -14,68 +14,39 @@ profiles: [document, paper]
 # instance-publication — draft is a state, not an absence of one
 
 > Skill id: `instance-publication` · Package: `folio-core` · Instance:
-> `cat-harness` · Bean `9wb0`
+> `cat-harness`
 
-The owner, 2026-09-23:
-
-> all assets get a version and are in "draft" publication. formal publication
-> process needs to be deinfed/neeeds tools/depends on instance
-
-Three rules, and the third is what makes the first two safe.
+All assets get a version and are in `draft` publication; the formal
+publication process is not yet defined, needs tools, and depends on the
+instance. Three rules follow.
 
 ## 1. Every asset carries a `version` — and the `id` is HELD
 
 `version` is **universal**. Not only the publishable ones.
 
-**It is enforced by `check:publishable`, not by the schema**, and that is a
-measured decision rather than a weaker one: requiring it in the type breaks
-**376 tests across 20+ files**, every fixture that builds a declaration
-without it. A sweep that size hides a real regression among the noise, and the
-property is delivered either way — all instances carry one, and a new instance
-without a version fails the gate, **by name**, rather than as a parse error
-somewhere in a fixture.
+**It is enforced by `check:publishable`, not by the schema**: requiring it in
+the type would break every test fixture that builds a declaration without it,
+and a sweep that size hides real regressions in the noise. A new instance
+without a version fails the gate **by name**, rather than as a parse error in
+a test fixture.
 
-**`id` is a different story, and it is not shipped.** The owner ruled the
-namespace `io.github.litlfred.folio-assistant.<name>`; it was minted into all
-17 declarations and then **removed**, because the next ruling contradicts
-writing it there at all:
+A version is not a *publication* claim. It distinguishes snapshots of a
+thing; whether anyone outside may depend on those snapshots is the separate
+question below.
 
-> i want simplest so if someone wants to bootstrap a different harness, there
-> is only one place to change. **ONE PLACE.**
->
-> fork would only edit `bootstrap/README.md` and change ONE reference there.
-
-A namespace written into 17 files is 17 places. So an id must be **derived**
-from that single reference — and the reference does not exist yet.
-`bootstrap/README.md` today carries **zero** outward references and its own
-tests enforce that. Bean `iwtn` owns creating it.
-
-Minting ids before then bakes the wrong scheme into something this schema
-itself calls *stable forever, never reused*. The namespace rule below stands;
-only its application waits.
-
-This reverses what `instance-versioning.md` §3.1 originally shipped, which
-**refused** them unless an instance declared `publishable: true`:
-
-> refused while `publishable` is undeclared — a declared `version` reads as a
-> published identity, and nobody has said this instance is published
-
-That refusal rested on a premise the owner's ruling denies: that a version is
-a *publication* claim. It is not. A version distinguishes snapshots of a thing;
-whether anyone outside may depend on those snapshots is the separate question
-below.
+**`id` is not written into declarations.** Bootstrapping a different harness
+must change ONE place — one reference in `bootstrap/README.md` — and a
+namespace written into every declaration is many places. So an id must be
+**derived** from that single reference, which does not exist yet
+(`bootstrap/README.md` carries no outward references, and its tests enforce
+that). Do not mint ids before then: an id is *stable forever, never reused*.
+The namespace rule below stands; only its application waits.
 
 ## 2. Publication is a STATE, and the state is `draft`
 
-`publication` is not a boolean and never was one honestly. `draft` is the state
-**everything is already in** — not an undecided-ness, not an absence.
-
-**This is why the old model reported a fully-decided corpus as a worklist.**
-`check:publishable` printed all 17 instances as `undecided`, correctly by its
-own rules, because the model had no way to express the true thing. Seventeen
-"nobody has looked" entries described a situation where the answer was known
-for every one of them. A third state that cannot say what is true is not a
-third state, it is a missing value.
+`publication` is not a boolean. `draft` is the state **everything is already
+in** — not an undecided-ness, not an absence. `check:publishable` does not
+report a draft instance as undecided.
 
 Absence still means `draft`. Declaring `publication: "draft"` is legal and
 says nothing extra; the field exists to reserve the axis and to make rule 3
@@ -83,14 +54,10 @@ testable rather than merely intended.
 
 ## 3. `published` is REFUSED by the schema, not merely reported
 
-Because the process does not exist: *"needs to be deinfed/neeeds tools/depends
-on instance."*
-
-A flag nothing can verify is precisely the ceremony §3.1 was written against.
-Accepting `published` today — even with a gate grumbling about it — would
-rebuild that defect one name over, and a grumbling gate is a gate somebody
-switches off. So a declaration setting `publication: "published"` **fails to
-parse**, with the error naming what is missing.
+Because the process does not exist, a flag nothing can verify is refused
+rather than reported — a gate that only grumbles is a gate somebody switches
+off: a declaration setting `publication: "published"` **fails to parse**, with
+the error naming what is missing.
 
 > **Falsifier for this whole skill:** if `published` becomes settable by hand
 > before any tool backs it, this is wrong and should be read again.
@@ -102,28 +69,21 @@ naming that process, rather than to become a second boolean.
 
 ## The id namespace — one rule, no per-instance invention
 
-Owner's ruling, 2026-09-23: **`io.github.litlfred.folio-assistant.<name>` for
-all 17.**
-
-The rule underneath it is mechanical: **reverse the host, append the path.**
+Every instance's id is **`io.github.litlfred.folio-assistant.<name>`**. The
+rule underneath it is mechanical: **reverse the host, append the path.**
 
 | host + path | id |
 |---|---|
 | `litlfred.github.io/folio-assistant` | `io.github.litlfred.folio-assistant` |
 | `smart.who.int/base` | `smart.who.int.base` |
 
-The second row is not an example invented here — it is FHIR's actual published
-package id for that IG, produced by the same rule. Following a convention that
-already yields the right answer for a case we can check is worth more than a
-scheme chosen for elegance.
+The second row is FHIR's actual published package id for that IG, produced by
+the same rule: a convention that already yields the right answer for a case
+we can check is worth more than a scheme chosen for elegance.
 
-An id is **stable forever and never reused**. That is the whole reason it was
-ruled rather than derived quietly.
+An id is **stable forever and never reused**.
 
 ## A MIRROR NEVER TAKES ITS SUBJECT'S IDENTITY
-
-The hardest question in the ruling, and the one most likely to be re-opened by
-somebody who notices the ids "should" match.
 
 The trust-IG mirror here is **not** the WHO SMART Trust IG. It is this repository's
 reconstructed index *about* that IG. The two are different objects, and the
@@ -138,18 +98,14 @@ Giving our instance `smart.who.int.trust` would claim our mirror **is** the
 thing it mirrors. Anything resolving that id would then find two different
 artefacts answering to it.
 
-**The same reading governs `canonicalUrl`,** and the DAK layer's own declaration
-already said so before this skill existed. It says, in substance, that the URL is READ from upstream rather than chosen
-there, so it is a fact about the upstream IG and not a decision about where
-that staging directory publishes.
-
-So, for a **true mirror**, `canonicalUrl` records the **subject**. It must not
+**The same reading governs `canonicalUrl`.** In a mirror's declaration the URL
+is READ from upstream, so it is a fact about the upstream IG and not a
+decision about where that staging directory publishes. For a **true mirror**, `canonicalUrl` records the **subject**. It must not
 drive **our** identity. A mirror's declaration that carries an upstream
 canonical is describing what it mirrors, not asserting where it lives.
 
 ### Three questions that must not be merged — publication, staging, mirroring
 
-Owner, 2026-10-05: *"there is staging vs publication being conflated here."*
 Three different questions answer to "what is this instance's address", and
 each has its own field:
 
@@ -162,16 +118,14 @@ each has its own field:
 **An instance staged here for publication at its `canonicalUrl` is not a
 mirror.** It IS the thing that will be published there, so its `@id` is the
 publication identity and this site is only where it is staged. The mirror rule
-above applies to the third row and to nothing else. Reading this site's address
-as an instance's identity is the conflation the owner named: it would mint ids
-that change the day the artefact is published, which is exactly what a
-publication identity exists to prevent.
+above applies to the third row and to nothing else. Never read this site's
+address as an instance's identity: it would mint ids that change the day the
+artefact is published.
 
 ## Release IRIs — one address, the major, derived from the version
 
-**Owner, 2026-10-23 (option "B. Major in address"):** every address an
-instance mints carries its **major version only** — `<iriBase>v<major>/…` —
-whoever reads it. A namespace, a schema `$id`, a BPMN `xmlns` and
+Every address an instance mints carries its **major version only** —
+`<iriBase>v<major>/…` — whoever reads it. A namespace, a schema `$id`, a BPMN `xmlns` and
 `bpmn:import`, a JSON-LD `@id`, a code-list value, and a page a person reads
 all take the one form:
 
@@ -182,23 +136,14 @@ all take the one form:
 
 **The exact release comes from the pin, not the address.** A reader is handed
 a commit by `index.lock.json` and the `needs` pins, which already name it
-exactly; an address that also named the patch said the same thing a second
-time. Within one major a minor or patch adds and never breaks — the promise a
+exactly; an address that also named the patch would make every patch release
+rewrite every literal copy of the instance's addresses. Within one major a minor or patch adds and never breaks — the promise a
 `$schema` tag already makes, where a reader accepts any tag of the same major
 (`tagCompatible`, below) — so **only a breaking change, a new major, changes an
 address.**
 
-Why it changed: until this ruling (owner, 2026-09-29) a program-read address
-carried the full semver, `…/bootstrap/0.1.0/ns#`, on the reasoning that a
-program pins exactly. The pin already pinned it, and the cost was every patch
-release rewriting every literal copy of the instance's addresses — for one
-bootstrap patch about a thousand across eight repositories, 877 in this one
-alone, two thirds of them in generated glossaries and translations and a
-hundred and forty in BPMN headers. The person-facing form,
-`v<major>`, had the property wanted all along, and it is now the only form.
-
-**`iriBase` and `version` are written ONCE, in the declaration** — the owner's
-"ONE PLACE" rule above, which a fork edits and nothing else. `iriBase` is not
+**`iriBase` and `version` are written ONCE, in the declaration** — the one
+place a fork edits. `iriBase` is not
 `canonicalUrl`: `canonicalUrl` says where documents are *published* and
 `kg-export` mints a document `@id` from it; `iriBase` says what the
 *identifiers* are, and those carry the release's major.
@@ -213,28 +158,24 @@ hundred and forty in BPMN headers. The person-facing form,
 
 **The copies that cannot ask are synced, and the sync is a gate.** An `xmlns`
 attribute, a code-list value and a fixture string are literal by nature.
-`bun run iri:sync` rewrites every `<iriBase><semver>/` — the full-version form
-every program-read address carried before 2026-10-23, whatever the semver — and
-every `<iriBase>v<N>/` of another major, to `<iriBase>v<major>/`;
+`bun run iri:sync` rewrites every legacy full-version `<iriBase><semver>/`,
+whatever the semver, and every `<iriBase>v<N>/` of another major, to
+`<iriBase>v<major>/`;
 `iri:sync:check` fails CI and the pre-commit hook on any that is not. A minor
 or patch release therefore leaves every copy as it is, and the sync has work to
-do only on a new major or a move. Moving the base itself — a fork, or
-bootstrap's move off `litlfred.github.io/folio-assistant/bootstrap/` (bean
-`r3gy`, group E) — is `bun run iri:sync -- --from <old base>`, once. `beans/`
-is never rewritten: a bean records what was true when it was written.
+do only on a new major or a move. Moving the base itself (a fork, or a move
+to a new host) is `bun run iri:sync -- --from <old base>`, once. `beans/` is
+never rewritten: a work item records what was true when it was written.
 
-**Transition, one release — remove when every layer has migrated.** Until
-every litlfred layer carries `<iriBase>v<major>/` (bootstrap-tools#39 lists
-those that do not, with counts; added 2026-10-23), the CHECKS —
-`check:node-iris`, `iri:sync:check`, `vocabulary:check` — accept a legacy
-`<iriBase><semver>/` copy whose MAJOR is the declared major as
-**deprecated**: a warning naming the file, not a failure. Without it a
-layer's CI, which composes the others at `main`, could not go green before
-they move, and they cannot move before it merges. The WRITER, `iri:sync`,
-still moves every such copy to `v<major>/`; a full version of another major,
-or an id at the wrong path, still fails. The tolerance lives in
-`legacyExactSemver` / `withLegacyMoved` in `bootstrap-tools/schemas/release-iri.ts`;
-removing it and this paragraph is one commit, done when #39 closes.
+**Transition tolerance — remove when every layer has migrated.** Until every
+layer carries `<iriBase>v<major>/`, the CHECKS — `check:node-iris`,
+`iri:sync:check`, `vocabulary:check` — accept a legacy `<iriBase><semver>/`
+copy whose MAJOR is the declared major as **deprecated**: a warning naming the
+file, not a failure, so a layer's CI, which composes the others at `main`, can
+go green before they move. The WRITER, `iri:sync`, still moves every such copy
+to `v<major>/`; a full version of another major, or an id at the wrong path,
+still fails. The tolerance lives in `legacyExactSemver` / `withLegacyMoved` in
+`bootstrap-tools/schemas/release-iri.ts`.
 
 **A `$schema` tag carries its SCHEMA's semver**, not the instance's:
 `model-registry/1.0.0`. A reader accepts any tag of the same major
@@ -245,42 +186,35 @@ names it.
 **Not yet moved, on purpose:** the exported document's own `@id`
 (`bootstrap.jsonld`). `kg-export` mints it from where the document is actually
 served, and today that is this site; pointing it at a base that serves nothing
-is the failure `40fl` / #718 recorded. It moves when the bootstrap repository
-publishes.
+would make it dangle. It moves when the bootstrap repository publishes.
 
 ## The release site — what is served where
 
 The IRI rule above says what an identifier IS; this says what the instance's
-own site must serve so that every identifier dereferences. Written 2026-09-29
-for the bootstrap split, after the separation analysis found every bootstrap
-identifier pointing at an address nothing yet served.
+own site must serve so that every identifier dereferences.
 
 | path | holds | changes |
 |---|---|---|
 | `<iriBase>v<major>/` | every file of the latest release of that major exactly where it sits in the repository — schemas, JSON-LD, BPMN, the declaration — plus an extension-less alias for a vocabulary document (`processes/ns` beside `processes/ns.jsonld`), and the person-facing pages beside them: READMEs rendered as HTML, the drawn schema page, the diagrams | moves forward with each minor or patch release of that major; a release of a NEW major is a new directory beside it, and the old major's stays |
 | `<iriBase>` | an index naming the current release of each major, and the versions available | with every release |
 
-Since the 2026-10-23 ruling one directory serves both audiences, as one
-address does. A reader that needs the exact bytes of an older patch reads
-them from the commit its pin names, never from the site. The old full-version
-directories (`<iriBase>0.1.0/`) are not republished: a site staged by a full
-replace drops them at its next publish, and any copy still served under
-`0.1.0/` is a leftover, not a release.
+One directory serves both audiences, as one address does. A reader that needs
+the exact bytes of an older patch reads them from the commit its pin names,
+never from the site. Full-version directories (`<iriBase>0.1.0/`) are not
+published; any copy still served there is a leftover, not a release.
 
 Three rules follow from the table:
 
 - **Publish files where they sit.** A published node's own identifier must be
   its file's path under the release address, so copying the release's tree is
-  enough to serve every identifier. `check:node-iris` enforces it; the two
-  discussion schemas failed it until 2026-09-29.
+  enough to serve every identifier. `check:node-iris` enforces it.
 - **No two artefacts may publish to one path.** A generated alias that lands on
   an authored file's path hides the authored file — the exported graph's
   `.json` copy at `bootstrap/bootstrap.json` does exactly that to bootstrap's
   own declaration on this site today (the workflow keeps the graph at that
   address and says so). On bootstrap's own site the collision cannot occur,
   because the exported graph is not published there (next rule).
-- **An instance's own site serves only what its tools generate** (owner,
-  2026-09-30, Q3 of bean `xsqm`). For bootstrap that is bootstrap's files as
+- **An instance's own site serves only what its tools generate.** For bootstrap that is bootstrap's files as
   they sit, the schemas and diagram vocabulary among them, the `bs:` term
   vocabulary, and the person-facing pages — all produced by bootstrap-tools.
   **Output a harness computes ABOUT the instance stays on the harness's site,
@@ -296,12 +230,11 @@ Three rules follow from the table:
 One path sits outside the versioned tree: the instance's `@context`, generated
 from the prefixes its own documents use (`gen-instance-contexts.ts`). It is
 `@protected`, so a change that rebinds a term is a new `v2` beside it, never an
-edit under a cached URL. **Owner, 2026-10-15** (bean `folio-assistant-63q4`):
-each repository publishes its own context, through ONE reusable workflow, and
-**the initiation process sets that up**.
+edit under a cached URL. Each repository publishes its own context, through
+ONE reusable workflow, and **the initiation process sets that up**.
 
-**Where its `ns` is a document, the context goes beside it.** Owner,
-2026-10-15 ("D1"): an instance holding its vocabulary as `ns.jsonld` at its
+**Where its `ns` is a document, the context goes beside it.** An instance
+holding its vocabulary as `ns.jsonld` at its
 root (bootstrap) has `ns` staged as a FILE (the extensionless `ns`, and
 `v<major>/ns`), so `ns/` cannot also be the directory `ns/context/v1.jsonld`
 needs, and a static host cannot serve both. Its context is
@@ -340,70 +273,55 @@ repository publishes itself, at which point the job is bootstrap-tools'.
 A standalone repository — one instance, declared at its root — tags a release
 plainly, `v<major>.<minor>.<patch>`; a repository of several instances tags
 `<name>-v<major>.<minor>.<patch>`, because a plain tag could not say which
-instance it released (owner, 2026-09-30). `check:version-bump` reads both
+instance it released. `check:version-bump` reads both
 accordingly. The tag is what a site deploy writes `/v<major>/` from, so an
 untagged commit is never an agent-facing release; the tag, like the pin, names
 the exact version that the address no longer does.
 
 ## What each instance publishes — graph, address, schema, and what is stripped
 
-Owner, 2026-10-02, opening bean `4ak5`: *"there are some rules in the KG
-corpsu but scattered."* They were spread over an exporter's docblock, the
-deploy workflow's comments, four skills and two beans (item 4). **This section
-is where they are stated.** The files that carry the mechanics keep them and
-point here for the policy.
+**This section is where the publication policy is stated.** The files that
+carry the mechanics point here for the policy.
 
 ### One document per declared instance, of its own directories
 
 **Every directory carrying a declaration publishes ONE JSON-LD document, and
 it holds only the directories that declaration names.** A dependency is
 referenced by IRI, never inlined. The set is read from the declarations
-(`instanceRootsIn`), never listed in a workflow: a list went stale the way
-such lists do, missing every instance added since `l4ay`.
+(`instanceRootsIn`), never listed in a workflow, where it would go stale.
 
 | instance | document on this site | built by |
 |---|---|---|
 | the host, `cat-harness` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --scope instance`, its own line in `docs-site.yml` |
-| the checkout root, `folio-assistant` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --instance .` (bean `l4ay`) |
-| `bootstrap` | `<site>/bootstrap/bootstrap.jsonld` | `bootstrap-tools/scripts/export-graph.ts` (owner, 2026-09-30, bean `xsqm`) |
+| the checkout root, `folio-assistant` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --instance .` |
+| `bootstrap` | `<site>/bootstrap/bootstrap.jsonld` | `bootstrap-tools/scripts/export-graph.ts` |
 | every other declared instance | `<site>/<stub>/<stub>.jsonld` | [`cat-harness-tools/scripts/instance-exports.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/scripts/instance-exports.ts) |
 
 - **Each document has a `.json` copy beside it**, the same bytes. Pages serves
   `.jsonld` as octet-stream, and `.json` is the only way to get a correct
   `Content-Type` out of it. The `.jsonld` stays canonical, since it is what
   every `@id` names.
-- **The host is in the same place as every other layer.** Its document sat
-  at the site root, `<site>/<stub>.jsonld`, until the owner's ruling of
-  2026-10-23 (decision 1b on
-  [cat-harness-tools#603](https://github.com/litlfred/cat-harness-tools/issues/603)):
-  *the host is no longer special*. Its document, its Tools, its subjects and
-  its glossary moved under `<site>/<name>/`, because there should be **one
-  rule for every layer, with subjects beside their document**. A separate
-  line in the deploy is the only thing still different about it.
+- **The host is in the same place as every other layer.** Its document, its
+  Tools, its subjects and its glossary are under `<site>/<name>/`: **one rule
+  for every layer, with subjects beside their document**. A separate line in
+  the deploy is the only thing different about it.
 - **The first three rows are the only exemptions**, and they are
   `PUBLISHED_ELSEWHERE` in `instance-exports.ts`, each with its reason. No
   other list exists.
-- **The host is built in instance scope** since #2135 (owner ruling
-  2026-10-05, option B; bean `4ak5` item 2). Before that one document carried
-  every stacked instance's nodes under `cat-harness.jsonld#…`: 825 of 3369,
-  measured the day it landed. `--scope checkout` remains for a corpus-wide
-  consumer that says so (the `kg` search slice). It is never published under
-  the host's name: `PUBLISHED_ELSEWHERE`'s pattern for the host refuses it.
+- **The host is built in instance scope**, so its document carries only its
+  own nodes. `--scope checkout` remains for a corpus-wide consumer that says
+  so (the `kg` search slice). It is never published under the host's name:
+  `PUBLISHED_ELSEWHERE`'s pattern for the host refuses it.
 
 The exporter's contract (the two scopes, what each collector reads) is
 [`kg-export`](kg-export.md) §"Whose nodes — an instance publishes its own".
 
 ### An `@id` that moved is not forwarded
 
-A clean break (owner, 2026-11-02,
-[litlfred/cat-harness-tools#1378](https://github.com/litlfred/cat-harness-tools/issues/1378);
-it closed #962). An `@id` that moved to its owner's document, a subject whose
-IRI went from `….jsonld#<kind>/<id>` to `<doc dir>/<kind>/<id>`, and a document
-that moved under `<site>/<name>/` (2026-10-23, decision 1b) all keep NO
-forwarding node and NO document at the old address. The one-release
-tombstones that did this (`tombstonesFor`, `migrationTombstones`,
-`writeLegacyDocuments`, `legacyGlossaryDocuments`) are gone. A consumer
-holding an old `@id` must re-resolve it. What stays is `placedOut`, so a
+An `@id` that moved — to its owner's document, from a `….jsonld#<kind>/<id>`
+fragment to a `<doc dir>/<kind>/<id>` path, or with its document under
+`<site>/<name>/` — keeps NO forwarding node and NO document at the old
+address. A consumer holding an old `@id` must re-resolve it. What stays is `placedOut`, so a
 deploy step still naming an old `--out` path writes the document where its
 `@id` says it is.
 
@@ -412,22 +330,15 @@ deploy step still naming an old `--out` path writes the document where its
 `exportIdentity` in `kg-export.ts` decides. The base is `--base-url` if
 given; else the instance's own `canonicalUrl`; else, for an instance this
 repository publishes, the host's. With no base at all the `@id` is
-document-relative and a problem is reported, never a guessed absolute one
-(bean `40fl`). **Every instance this site publishes, the host included,
-sits at `<base>/<name>/<stub>.jsonld`** (bean `dyd3`; the host since the
-owner's ruling of 2026-10-23, decision 1b on
-[cat-harness-tools#603](https://github.com/litlfred/cat-harness-tools/issues/603):
-one rule for every layer, with subjects beside their document). Nothing about
-the host is special, so `<doc dir>` for its subjects and Tools is
-`<base>/cat-harness/`, never the site root. **The one case left open is an
-instance declaring its own `canonicalUrl`.** Today it is the host of its own
-base, so its `@id` is `<canonicalUrl>/<stub>.jsonld` (#1548). Where its
-document and subjects go under the one rule is phase 2 of #603,
-[cat-harness-tools#638](https://github.com/litlfred/cat-harness-tools/issues/638).
-The deploy passes such an instance no
-`--base-url` (`declaresOwnCanonical` in `instance-exports.ts`). Measured
-2026-10-05, those are the tools layer, `cat-openapi`, the FHIR IG layer and
-the DAK layer. **This site serves their bytes at `<site>/<stub>/<stub>.jsonld`,
+document-relative and a problem is reported, never a guessed absolute one.
+**Every instance this site publishes, the host included, sits at
+`<base>/<name>/<stub>.jsonld`**, so `<doc dir>` for the host's subjects and
+Tools is `<base>/cat-harness/`, never the site root. **The one exception is an
+instance declaring its own `canonicalUrl`**: it is the host of its own base,
+so its `@id` is `<canonicalUrl>/<stub>.jsonld`, and the deploy passes it no
+`--base-url` (`declaresOwnCanonical` in `instance-exports.ts`) — the tools
+layer, `cat-openapi`, the FHIR IG layer and the DAK layer, for example.
+**This site serves their bytes at `<site>/<stub>/<stub>.jsonld`,
 and that is their STAGING location, not their identity** (§"Three questions
 that must not be merged" above). The root index records both: `@id` is the
 publication identity, `url` is where this site stages it. Anything that names a
@@ -436,8 +347,8 @@ names a document nobody writes. `iriBase` is a different field, for
 identifiers that carry the release (§"Release IRIs" above).
 
 **What goes after the base** is a path, not a `#fragment`: a subject is
-`<doc dir>/<kind>/<id>` (owner, 2026-10-23), served as its own file. The rule, its reasons,
-the `ns#Term` exception and the migration of today's `….jsonld#…` IRIs are in
+`<doc dir>/<kind>/<id>`, served as its own file. The rule, its reasons and
+the `ns#Term` exception are in
 [`kg-export`](kg-export.md) §"Subject IRIs — a path, not a `#fragment`".
 
 ### The schema
@@ -448,16 +359,11 @@ host. That is the JSON Schema of the declaration itself, which every
 `tool-types.schema.json`, `tool-types/<Name>.schema.json` and each skill's I/O
 contract (`skills/<skill>/<io>.schema.json`) in the same directory, each at the
 URL its `$id` names. They sit under the host's own directory, beside its
-document, like everything else it publishes ([litlfred/cat-harness-tools#676](https://github.com/litlfred/cat-harness-tools/issues/676),
-#603 decision 1b(i)). Each old site-root address holds a tombstone for one
-release, as a moved document's does (above): the old
-`$id`, `deprecated`, `isReplacedBy` the new one, and `allOf: [{ "$ref": <new> }]`,
-so it validates as the new document does. `bootstrap`'s schemas are published as they sit, by
-`publish-instance-files.ts`.
+document, like everything else it publishes. `bootstrap`'s schemas are
+published as they sit, by `publish-instance-files.ts`.
 
 **Every instance `instance-exports.ts` publishes also publishes
-`<site>/<stub>/schema/`** (owner ruling 2026-10-05, option B; bean `4ak5`
-item 1). It holds:
+`<site>/<stub>/schema/`.** It holds:
 
 - **the instance's own skill I/O contracts**, at
   `schema/skills/<skill>/<io>.schema.json`. They are read from
@@ -487,25 +393,21 @@ It does so exactly when `instance-exports.ts` writes one, which is when
 `publishesInstanceSchema` finds the instance in the plan. The other two
 exemptions carry no such link. **The host links its own
 `<stub>.schema.json`**, the shared declaration schema, by the `$id`
-`buildDeclarationSchema` mints with the same base (bean `4ak5` follow-up,
-owner-approved 2026-10-05). With no base there is no `$id`, so there is no
-link: never a relative one.
+`buildDeclarationSchema` mints with the same base. With no base there is no
+`$id`, so there is no link: never a relative one.
 
 **A skill links the contract its own instance publishes.** A skill held by a
 planned instance gets `inputSchema` / `outputSchema` set to its contract's
 `$id` as `publishedInstanceSchemas` mints it, which is the function the deploy
 writes the file with. That holds in the instance's own document and in a
-checkout-scope build that stacks it. Before the follow-up those edges were
-left unset, and `hasIOContract` read `false`. A skill whose instance is not in
-the plan, or whose contract gets no absolute `$id`, still has no link. A
-guessed address is worse than none. The host's own skills are unchanged.
+checkout-scope build that stacks it. A skill whose instance is not in the
+plan, or whose contract gets no absolute `$id`, has no link: a guessed address
+is worse than none. The host's own skills are unchanged.
 
 #### Which Zod schemas are public
 
-**Owner ruling 2026-10-05, option C: "every exported \*Schema".** In the
-owner's words: *"Render all exported Zod \*Schema consts per instance now; may
-expose internal schemas."* So an instance's public schemas are **every
-exported const whose name ends in `Schema` and whose value is a Zod schema**,
+An instance's public schemas are **every exported const whose name ends in
+`Schema` and whose value is a Zod schema**,
 in the `.ts` modules (not `*.test.ts`) directly inside its schemas directory.
 That directory is the instance's declared `schemas` graph if it declares one,
 else `<root>/schemas/` by convention. The science layer and the IRIS replica
@@ -515,7 +417,7 @@ The rule is the suffix, literally. A Zod value named otherwise is not public,
 and an export named `notASchema` matches if its value is Zod. A `*Schema`
 export whose value is not Zod is not public either; the scan lists it as
 `notZod` and it is not a failure. Publishing a schema says it is reachable,
-not that it is stable: the owner accepted that internal schemas are exposed.
+not that it is stable; internal schemas may be exposed.
 
 Each one is rendered with `namedJsonSchema` (`to-json-schema.ts`), as the
 host's own schema documents are, and gets an `$id` under the same schema base
@@ -540,7 +442,7 @@ directory, `<site>/<name>/`, not in a per-instance `<name>/schema/`, so it
 gets no `zod/`.
 
 **The JSON-LD document drops `schemas` from its own `omitted` once it links
-the index** (bean `4ak5` follow-up, owner-approved 2026-10-05). Its module-level
+the index.** Its module-level
 `Schema` collector is still instance-bound and does not run for a foreign
 instance. But "not looked for" is false when the schemas are published and
 the document says where. Two cases keep `schemas` listed. One is a document
@@ -553,7 +455,7 @@ renderings.
 
 **Re-exports are public too.** The publisher imports each module and reads
 every key, so `export { FooSchema } from "./x"` and `export { X as YSchema }`
-were always rendered. The gate's text half now reads them as well
+are rendered. The gate's text half reads them as well
 (`declaredExportNames`): `export const`, `export { … }` lists with or without
 `from`, the name after `as`, and `export * as N`. A `type`-only export is not
 a value and is skipped. A bare `export * from` is a **finding**. Its names
@@ -563,30 +465,29 @@ names in an `export { … }` instead.
 
 ### Named subgraphs, and the root index above them
 
-- **Named subgraphs** (bean `c1m4`): `<site>/subgraph/<HARNESS>/<PATH>/`, with
+- **Named subgraphs**: `<site>/subgraph/<HARNESS>/<PATH>/`, with
   `index.jsonld` (direct members as pointers) and `index.hydrated.jsonld`
   (every member inline, deep). **The harness root has `index.jsonld` only**,
-  because a deep hydrated file there is the monolith `f233` forbids.
+  because a deep hydrated file there would be a monolith.
   `gen-subgraph-jsonld.ts` frames each instance from its OWN export, so no
   subgraph names a `cat-harness.jsonld#<foreign>` fragment. The tree is
   committed under `cat-harness/docs/subgraph/`, its `@context` is
   `<site>/ns/subgraph/v1.jsonld`, and heavy bodies are content-addressed
   payloads under `cat-harness/docs/payload/sha256/`, copied verbatim to
   `<site>/payload/`. `bootstrap` and `bootstrap-tools` publish their own
-  subgraphs, and the repository index links them with `rdfs:seeAlso`
-  (bean `t8c4`). The contract: [`kg-export`](kg-export.md) §"Named
+  subgraphs, and the repository index links them with `rdfs:seeAlso`. The
+  contract: [`kg-export`](kg-export.md) §"Named
   subgraphs" and §"Payloads".
-- **The root index** (item 3): `<site>/index.jsonld` and `index.json`, built
-  at publish time by `root-index.ts` and never committed (owner,
-  2026-10-04): a committed copy conflicts whenever two PRs change the set of
-  harnesses. It names every declared instance at depth 1, with no node of
+- **The root index**: `<site>/index.jsonld` and `index.json`, built at
+  publish time by `root-index.ts` and never committed: a committed copy
+  conflicts whenever two PRs change the set of harnesses. It names every declared instance at depth 1, with no node of
   any graph inlined. It exits 1, having written nothing, when an instance's
   export is not where its identity says, rather than publish a shorter map.
 
 ### What is never in a published graph
 
-- **`fsh-guts`.** Owner, 2026-09-19: *"NEVER include fsh-guts, references to
-  fsh-guts stripped out of KG before sending to publication."* The one list is
+- **`fsh-guts`**, and every reference to it, is stripped from the KG before
+  publication. The one list is
   `UNPUBLISHED_GRAPH_TYPOLOGIES` in `schemas/kg/cat-harness.ts`. Every emitter filters
   on it where the document is built, not at upload: `isPublishedGraphTypology`,
   `isPublishedDirectory` (a directory holding ANY unpublished kind),
@@ -603,10 +504,10 @@ names in an `export { … }` instead.
   after the trashcan, the other whether it SAID not to publish it.
 - **The nodes of a `state` graph.** The export carries the declared Directory
   node and its `holdsGraph`. No collector in `kg-export.ts` reads a state
-  graph's files (measured 2026-10-05). Where such contents are published, it
+  graph's files. Where such contents are published, it
   is as their declared Subgraph node's own document (`todos.jsonld`,
   [`directory-conventions`](directory-conventions.md) §"Publishing a
-  subgraph's contents"), as a SQLite slice built at deploy (bean `q8ar`), or
+  subgraph's contents"), as a SQLite slice built at deploy, or
   on a branch rather than the site (QA verdicts, on `qa-reports`).
 
 ### The gates
@@ -637,12 +538,9 @@ way there. It waits for the process, which is somebody's work and not a field.
 
 - **Do not infer a publication state from evidence.** A `canonicalUrl`, a
   GitHub Release, a Pages deployment or a `dependsOn` naming this instance are
-  all things that exist for drafts too. Inferring from them is how a boolean
-  defaulting to `false` erases the difference between "decided" and "nobody
-  looked" — the defect §3.1 was right about even where its model was wrong.
+  all things that exist for drafts too. Inferring from them erases the
+  difference between "decided" and "nobody looked".
 - **Do not mint an id for something that already has one upstream.** Record
   theirs as data, mint ours under the namespace above, and keep them apart.
-- **Do not restate this skill in a bean, a proposal or `AGENTS.md`.** `kn0t`
-  restated `ig-publisher-reduction` and drifted from it in four places within a
-  day, one of which would have let a phase be approved on an impression. Point
-  here instead.
+- **Do not restate this skill in a work item, a proposal or `AGENTS.md`.** A
+  restatement drifts from its source. Point here instead.

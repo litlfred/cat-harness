@@ -109,7 +109,7 @@ and writes it into the IG. *(High confidence.)* The heavy lifting — validation
 snapshot generation, rendering — is the IG Publisher's, which is the weight the
 owner flagged. What is separable in SUSHI is its **package resolver and cache**,
 not a version calculator. *(Medium confidence: would need reading the source,
-and `build.fhir.org` is blocked from this sandbox — bean `267x` recorded the
+and `build.fhir.org` is blocked from this sandbox — work item `267x` recorded the
 same limit.)*
 
 **So the question "can we extract SUSHI's version calculation" is closed with

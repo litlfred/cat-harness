@@ -14,7 +14,7 @@ references:
 `uploads/`, `library/`, manifests, `<name>.config.json`, the root
 `index.config.json` that instantiates it (skill `index-config`), the `content/schema/`
 builder shim, `AGENTS.md` + `CLAUDE.md`/`GEMINI.md` stubs, `.mcp.json`, the
-session-start hook and the beans store.
+session-start hook and the work items store.
 
 - **The builder shim exists so the path to folio-assistant is written down
   once**: block manifests import `../schema/builders`, never the platform

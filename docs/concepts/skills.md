@@ -67,18 +67,12 @@ tools.
 
 A skill is defined across a few layers — not a single file. For any skill:
 
-| Layer | Location | Status |
-|-------|----------|--------|
-| **Definition** (roles, required capabilities, requirements, routing patterns, lifecycle stages, schema ref) | `.claude/skills/local/<skill>.json` | ✅ all 22 authoring skills — validated in CI by `scripts/validate-skills.ts` |
-| **Typed contract** (input/output JSON Schema) | `schemas/skills/<skill>/` | ✅ all 22 — see [reference]({{ site.baseurl }}/reference/skills/) |
-| **Instruction body** (prose how-to the LLM loads) — browse them in the [Skill instructions]({{ site.baseurl }}/reference/skill-instructions/) reference | `skills/authoring/content-lifecycle/*.md`, `skills/folio-*-adapter/*.md`, `src/skills/*.md` | ✅ lifecycle, agent, platform-bundle and **folio-document-adapter** skills; ⏳ **authoring-math / authoring-who-smart-guidelines bodies are TBD** (those packages ship the manifest + JSON definitions) |
-| **Package** (Docker/runtime deps) | `skills/<package>/package-manifest.json` | ✅ all four packages |
-
-So *yes, the skills exist* — as structured definitions + typed schemas, with prose
-bodies shipped for the lifecycle and agent skills. The `skill_fetch` MCP tool
-currently serves the `src/skills/*.md` bodies; the authoring-skill prose bodies
-are the next thing to fill in (the definitions and contracts they'd attach to
-are already in place).
+| Layer | Location |
+|-------|----------|
+| **Definition** (roles, required capabilities, requirements, routing patterns, lifecycle stages, schema ref) | `skills/skill-definitions/<skill>.json` |
+| **Typed contract** (input/output JSON Schema) | `schemas/skills/<skill>/` — see the [reference]({{ site.baseurl }}/reference/skills/) |
+| **Instruction body** (prose how-to the LLM loads, served by `skill_fetch`) — browse them in the [Skill instructions]({{ site.baseurl }}/reference/skill-instructions/) reference | `skills/<topic>/<package>/*.md`, `sdlc/skills/<package>/*.md`, `work-plan/skills/work-plan/*.md` |
+| **Package** (Docker/runtime deps) | `package-manifest.json` beside the package's instruction bodies |
 
 ### Cross-cutting: `content-lifecycle`
 
@@ -128,51 +122,46 @@ The lifecycle stages that apply to **every** content type:
 | [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | Build & publish the IG |
 | [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | QA gates |
 
-### Agent/platform skills (`src/skills`)
+### Agent/platform skills
 
-Skills the LLM uses to work effectively in the repo (loaded via `skill_fetch`,
-package `folio-assistant`):
+Skills the LLM uses to work effectively in the repo (loaded via `skill_fetch`):
 
-| Skill | Purpose |
-|-------|---------|
-| `corpus-grep` | Search across the content corpus |
-
-> `editor`, `readability-editing`, `todo-review`, `symbiotic-interaction`, and
-> `deployment-auth` now live (generalized) in the **`folio-core`** bundle below —
-> fetch them with `package_name="folio-core"`.
+| Skill | Package | Purpose |
+|-------|---------|---------|
+| `corpus-grep` | `kg-core` | Search across the content corpus |
+| `editor`, `readability-editing`, `todo-review` | `authoring-core` | Editing and review of prose |
+| `symbiotic-interaction` | `conduct-core` | Reading the register of author input |
+| `deployment-auth` | `folio-core` | Deployment authentication |
 
 A paper folio wants the `folio-document-adapter` skills too: a paper *is* a
 document plus Lean-bearing blocks, so `document-structure` and
 `document-publishing` apply to both. The two bundles are halves of one content
 model, not alternatives to choose between.
 
-### Local coordination skills (`.claude/skills/local`)
+### Coordination skills (`sdlc-core`, `work-plan`)
 
 | Skill | Purpose |
 |-------|---------|
-| `prepare-merge` | Take a branch to clean/green/mergeable (see also `/watch`) |
+| `prepare-merge` | Take a branch to clean/green/mergeable (see also `watch`) |
 | `bean-coordination` | Multi-agent claim/coordination discipline |
 | `todo-manager` | beans-as-todos discipline |
 
 ### Platform skill bundles (`skills/tools/folio-core`, the content core's `skills/content/folio-document-adapter`, the science layer's `skills/content/folio-paper-adapter`)
 
-Larger **platform bundles**, two of them migrated from the qou content repo (see
-[migration record](https://github.com/litlfred/folio-assistant/issues/202) and
-issue [#27](https://github.com/litlfred/folio-assistant/issues/27)). These are
-content-agnostic and meant to be synced into any folio:
+Larger **platform bundles**, content-agnostic and meant to be synced into any
+folio:
 
 | Bundle | Skills | Scope |
 |--------|-------:|-------|
-| **`folio-core`** | 43 | Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to *any* content type. |
+| **`folio-core`** | 7 | The tool surface: MCP assembly, contract and projection, skills-and-tools, tool authoring, tool coverage, deployment auth — applies to *any* content type. |
 | **`folio-document-adapter`** | 4 | Prose folios: block authoring, chapter/section structure, normative statements, and the TeX-free publication path. Applies to papers too. |
 | **`folio-paper-adapter`** | 40 | Formal-math paper-adapter (any Lean 4 + LaTeX paper): Lean workflow, proof tooling, content-object validation, LaTeX, paper structure, import, simulators. |
 
-Irreducible QOU physics skills were skipped; QOU-specific examples in the rest
-were generalized. Each bundle ships a `package-manifest.json`.
+Each bundle ships a `package-manifest.json`.
 
-> Skill **schemas** (typed input/output for the authoring skills) are generated
-> into the [Skill schema reference]({{ '/reference/skills/' | relative_url }}) — never drift from what
-> the framework validates.
+> Skill **schemas** are generated into the
+> [Skill schema reference]({{ '/reference/skills/' | relative_url }}), so they
+> never drift from what the framework validates.
 
 ---
 

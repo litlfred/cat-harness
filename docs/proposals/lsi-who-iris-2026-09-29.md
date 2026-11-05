@@ -53,7 +53,7 @@ Settings: LSI log-entropy, CA raw, `minDf` 2, `maxDfShare` 0.5, seed 1990;
 - Near-duplicates 114~117, 115~118, 116~119 (0.97–0.999) are **Annex 3 printed
   twice**, English → local then local → English — intended, not a defect.
 - OCR misreads (`nome`, `Manval`, `opproved`) are frequent enough to load LSI
-  dimension 2 → bean `yg4c`.
+  dimension 2 → work item `yg4c`.
 
 ### WPRO style guide — too small to index on its own
 
@@ -61,7 +61,7 @@ Settings: LSI log-entropy, CA raw, `minDf` 2, `maxDfShare` 0.5, seed 1990;
 nothing about structure**, which is the method's own small-corpus caveat.
 Page-level detection still works: pp. 29–31 Lorem-ipsum cover samples (cosine
 ≈ 1.0), pp. 14–15 font specimens, pp. 20–22 table/graph samples, p. 28 Latin
-filler → bean `fnqn`.
+filler → work item `fnqn`.
 
 ## 2. The three together
 
@@ -76,7 +76,7 @@ filler → bean `fnqn`.
   (*currency*, *resolution*).
 - **Hubs.** WPRO p3 is the nearest cross-document unit for 56 units and HQ p78
   for 46; the median best Handbook → HQ cosine is 0.195. "Nearest" mostly
-  means "least unlike" → bean `9udd` (floor and hub penalty).
+  means "least unlike" → work item `9udd` (floor and hub penalty).
 - **HQ vs WPRO** overlap only on book structure and mark-up, purpose
   statements and references. WPRO alone covers fonts, colour/accessibility
   samples and cover/spine specification; HQ alone covers place names,
@@ -93,7 +93,7 @@ soft-hyphen-repaired text.
 - **Vocabulary drift, and the evidence is the text, not a cosine:** *quality of
   the evidence* 77 vs *certainty of the evidence* 1, both in the Handbook, and
   sec-153 itself names them as alternatives (with *confidence in the estimates
-  of effect*, 5) → bean `ftu0`, as a prefLabel/altLabel candidate.
+  of effect*, 5) → work item `ftu0`, as a prefLabel/altLabel candidate.
 - **No British/American drift:** all 9 *-isation* forms are proper names (ILO,
   OECD, Cochrane EPOC) and the 3 *center* forms are one US institution — which
   agrees with the voice rule `who-ed-ize-preferred`. Variants with zero
@@ -104,7 +104,7 @@ soft-hyphen-repaired text.
   strong / conditional / outweigh; PICO / comparator / population;
   capitalization / -ize / -ise.
 - **No glossary is declared** by `who-iris.json` or `who-style-guide.json`.
-  Proposal (bean `ftu0`): who-style-guide owns one, seeded from the HQ
+  Proposal (work item `ftu0`): who-style-guide owns one, seeded from the HQ
   manual's own spelling lists; LSI neighbours are only ever SHOWN as suggested
   `related` links, never written.
 
@@ -115,11 +115,11 @@ the index fingerprint so every older index reads as stale rather than fresh).
 Re-measured before acting: 742 U+00AD in the Handbook's sections, none in
 either style guide, 21 section files in other libraries. The who-iris index
 went from 4,103 to 3,937 terms. The section TEXT still carries them, which is
-an ingestion defect → bean `3spu`.
+an ingestion defect → work item `3spu`.
 
 ## Follow-ups filed
 
-| bean | under | what |
+| work item | under | what |
 |---|---|---|
 | `3spu` | INGEST | normalise U+00AD at ingestion; a check for any left |
 | `fnqn` | INGEST | mark WPRO specimen pages as non-prose |
@@ -127,7 +127,7 @@ an ingestion defect → bean `3spu`.
 | `ftu0` | GLOSSARY | *quality/certainty of the evidence* as altLabels; decide who owns the glossary |
 | `9udd` | this work | a floor and a hub penalty on cross-document link proposals |
 
-Each was checked with `bun run cat lsi:near` first; none had an existing bean at
+Each was checked with `bun run cat lsi:near` first; none had an existing work item at
 ≥ 0.7.
 
 ## Limits

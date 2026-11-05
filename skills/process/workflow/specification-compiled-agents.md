@@ -29,8 +29,8 @@ are on. This says how to behave once you are standing in one.
 When `workflow_next` hands you a step, that step's place in the process is
 settled: what precedes it, what may follow, which gateway decides. Re-deriving
 any of that from the diagram's prose — "I think after this we should…" — is
-rediscovering a plan that was compiled for you, and it is the failure mode this
-whole method exists to remove. Reason **inside** the step, not about the
+rediscovering a plan that was compiled for you, the failure this method exists
+to remove. Reason **inside** the step, not about the
 sequence of steps.
 
 Concretely, three things are not yours while you are in a process:
@@ -39,8 +39,6 @@ the **next step** (the control plane's), the **branch** at a gateway carrying
 `relaxable` and the process's `enforcement`).
 
 ## This repository is ahead on policy and behind on contracts
-
-Both halves are worth knowing, because they change what you can rely on.
 
 **Ahead.** The paper gives each node one "node local policy". Here that is four
 distinct things — `cat-harness.processes:policy enforcement`, `relaxable`, `cat-harness.processes:decision`,
@@ -86,11 +84,9 @@ decision with the owner.
 
 ## What it is evidence FOR, here
 
-`deterministic-and-agentic` is an agenda with more hypotheses than measurements,
-and its owner's question was *"which are safety risks / how much needs to be
-deterministic?"* This paper is the first ingested source that bears on it with
-an experiment rather than an intuition — and what it supports is narrower than
-it first looks:
+`deterministic-and-agentic` asks which judgement points are safety risks and
+how much needs to be deterministic. This paper bears on it with an experiment,
+and what it supports is narrow:
 
 - **Externalising control flow reduces variance**, not just error. The
   coefficient of variation across independent generations was lowest for the

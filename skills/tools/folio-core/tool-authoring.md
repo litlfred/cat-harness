@@ -37,8 +37,8 @@ The platform splits content/schemas from tool implementations:
 
 | layer | repository | role & contents |
 |---|---|---|
-| **Graph & Schemas** | `litlfred/cat-harness` | Declarative Tool nodes in `tools/` (using `defineTool` from `schemas/tools/tool.ts`), schema definitions, and skill contracts. |
-| **Tool Execution** | the tools layer's repository | Executable TypeScript implementations in `src/tools/`, MCP server in `src/server.ts`, ambient moddle/type definitions in `types/`, standalone `package.json` (`@litlfred/<tools-layer>`), `tsconfig.json`, and `bunfig.toml`. |
+| **Graph & Schemas** | `litlfred/cat-harness` | Declarative Tool nodes in `tools/` (JSON data, validated against the Tool schema), and skill contracts. |
+| **Tool Execution** | the tools layer's repository | The Tool schema (`schemas/tools/tool.ts`, `tool-types.ts`) and the Tool loader, executable TypeScript implementations in `src/tools/`, MCP server in `src/server.ts`, ambient moddle/type definitions in `types/`, standalone `package.json` (`@litlfred/<tools-layer>`), `tsconfig.json`, and `bunfig.toml`. |
 
 This split guarantees that a content-only consumer or reader does not drag
 along heavy runtime dependencies, SDKs, or compiler toolchains.
@@ -50,7 +50,7 @@ along heavy runtime dependencies, SDKs, or compiler toolchains.
 ### Step 1: Identify or Author the Skill Contract
 
 Before writing code, identify the generic capability the tool satisfies:
-- Find the skill in `skills/` (e.g., `skills/sdlc/sdlc-core/package-release.md`).
+- Find the skill in `skills/` (e.g., `sdlc/skills/sdlc-core/package-release.md`).
 - If the skill accepts inputs, verify or define its `input:` JSON Schema
   contract in the skill's front matter or under `schemas/skills/`.
 
@@ -92,42 +92,48 @@ In `cat-harness-tools/src/tools/` or `cat-harness-tools/src/server.ts`:
 
 ### Step 4: Declare the Tool Node in the Knowledge Graph
 
-In `tools/<id>/<id>.ts`, one folder per Tool (Step 4b):
-- Default-export `toolFactory((t) => defineTool({ … }))` (`schemas/tools/tool-folders.ts`, `schemas/tools/tool.ts`).
-- Link to the skill via `satisfies: ["<skill-id>"]`.
-- Map I/O ports to shared vocabulary in `schemas/tools/tool-types.ts` via absolute IRIs.
-- Specify invocation target:
-  - In-process: `invoke: { inProcess: "@litlfred/<tools-layer>#<export>" }`
-  - CLI: `invoke: { command: "bun run ...", args: [...] }`
+In `tools/<id>/<id>.json`, one folder per Tool (Step 4b): a
+`"$schema": "tool-definition/v1"` document whose `tool` object carries
+- `id` (the same string as the folder and the file stem), `title` and
+  `description`;
+- `satisfies: ["<skill-id>"]`, linking it to the skill;
+- `io.inputs` / `io.outputs`, each port naming a shared vocabulary type from
+  `schemas/tools/tool-types.ts` as `"schema": { "$type": "<Type>" }`, with
+  `required` and, for a command-line input, `arg`;
+- `invoke`: `shell` (a command), `inProcess` (`{ "module": "<path>" }`), or
+  `mcp` (`{ "tool": "<name>" }`) — never `mcp` alone;
+- `install`, and `selection` when the Tool has a derived alternative.
 
 Example:
-```typescript
-// tools/pack-tarball/pack-tarball.ts
-export default toolFactory((t) => defineTool({
-  id: "pack-tarball",
-  satisfies: ["npm-kg-distribution", "package-release"],
-  title: "Pack Knowledge Graph into npm tarball",
-  description: "Runs `bun pm pack` to build a deterministic .tgz tarball.",
-  io: {
-    inputs: [
-      { name: "instanceRoot", type: "https://schema.org/Text", required: true },
-    ],
-    outputs: [
-      { name: "tarballPath", type: "https://schema.org/Text", required: true },
-      { name: "sha256", type: "https://schema.org/Text", required: true },
-    ],
-  },
-  invoke: {
-    command: "bun cat-harness-tools/scripts/pack-tarball.ts",
-  },
-}));
+```json
+{
+  "$schema": "tool-definition/v1",
+  "tool": {
+    "id": "pack-tarball",
+    "title": "Pack Knowledge Graph into npm tarball",
+    "description": "Runs `bun pm pack` to build a deterministic .tgz tarball.",
+    "satisfies": ["npm-kg-distribution", "package-release"],
+    "install": { "none": true },
+    "invoke": { "shell": "bun cat-harness-tools/scripts/pack-tarball.ts" },
+    "io": {
+      "inputs": [
+        { "name": "instanceRoot", "schema": { "$type": "RepoPath" }, "required": true,
+          "arg": { "positional": 0 } }
+      ],
+      "outputs": [
+        { "name": "tarballPath", "schema": { "$type": "Text" } },
+        { "name": "sha256", "schema": { "$type": "Text" } }
+      ]
+    }
+  }
+}
 ```
 
 ### Step 4b: A new folder is a named subgraph of its harness — declare it
 
 If what you are adding needs a **new folder**, decide first which of three
 kinds of folder it is. Each has exactly one way to be declared, and the place
-the folder sits decides which (owner, 2026-10-14):
+the folder sits decides which:
 
 1. **A folder directly under the harness root** (a new code area, a new
    graph): an entry in the harness's own declaration (`<harness>.json`, e.g.
@@ -137,36 +143,31 @@ the folder sits decides which (owner, 2026-10-14):
    **from within**, in that directory's own `<dir>.json` (as
    `skills/skills.json` declares `voices`). This is not a matter of taste:
    `check:layout-norms` fails a new top-level entry whose path lies inside
-   another declared directory (the pairs it only lists are a baseline). Add `subgraph: true` when the new folder is a subgraph
-   of the INSTANCE rather than a part of its parent's graph (bean `cmsl`:
-   `voices` is the first kind, `beans.json`'s `defs` the second).
+   another declared directory. Add `subgraph: true` when the new folder is a
+   subgraph of the INSTANCE rather than a part of its parent's graph
+   (`voices` is the first kind, `beans.json`'s `defs` the second).
 3. **A folder that holds ONE node** — one Tool, one voice: it is **not
    declared**. It sits inside the declared graph that owns the node and is
    found through that graph's reader, as each voice folder is found by its
    `voice.json`. Never declare one Tool's folder as a `tools` directory:
-   discovery loads ONE `tools/index.ts` per harness and refuses a harness
-   that declares two `tools` directories. The Tool's folder is found by
-   that `index.ts` (`toolsFromFolders`), as each voice is by its `voice.json`.
+   discovery refuses a harness that declares two `tools` directories. The
+   Tool's folder is found by the loader (`toolsFromFolders`, in the tools
+   layer), as each voice is by its `voice.json`.
 
 Both declared forms say what a folder holds the same way, by its
 `graphTypologies`: a from-within entry names its own kind (`voices.json`
 declares `vendors` as `voice-vendors`), it does not inherit its parent's.
 
-**One folder per Tool, always** (bean `tdir`, owner 2026-10-15: *"migrate
-all impacted repos … to sub-folders as is strongly recommended behaviour"*).
-A Tool is declared in `tools/<id>/<id>.ts` inside the harness's declared
-`tools` directory: the folder, the file stem and the Tool's `id` are one
-string, the file default-exports `toolFactory((t) => defineTool({ … }))`, and
-the folder also holds whatever is that Tool's alone (its script, fixtures,
-tests). `tools/index.ts` only calls `toolsFromFolders`
-(`schemas/tools/tool-folders.ts`), which refuses a folder that breaks the
-convention, so discovery is unchanged. Helpers several Tools share go in
-`tools/lib.ts`, which declares no Tool. A `defineTool(` anywhere else in the
-directory is an inline declaration, and `check:tools` reports it.
+**One folder per Tool, always.** A Tool is declared in `tools/<id>/<id>.json`
+inside the harness's declared `tools` directory: the folder, the file stem and
+the Tool's `id` are one string, and the folder also holds whatever is that
+Tool's alone (its script, fixtures, tests). `toolsFromFolders` refuses a folder
+that breaks the convention. The `tools/` directory is data only; the loader and
+shared helpers live in the tools layer.
 
-The source stays TypeScript on the default branch; the JSON-LD of each Tool
-(`<base>/tools/<id>.jsonld`, its own IRI) and the JSON Schema of each I/O type
-are written when the site is published, never committed.
+The JSON-LD of each Tool (`<base>/tools/<id>.jsonld`, its own IRI) and the JSON
+Schema of each I/O type are written when the site is published, never
+committed.
 
 Why declaring is part of the process, not tidying:
 
@@ -175,12 +176,11 @@ Why declaring is part of the process, not tidying:
   only, so a new undeclared folder inside a harness passes it.
 - **Declared directories are what can be mounted and exported.** A remote
   mount lays down declared directories only, so an undeclared code folder is
-  missing downstream (the tools layer's `tools/` was, until 2026-10-14). A
-  harness's package `exports` are derived from its declared, shipped `code`
-  directories (`check:package-exports`, bean `7pvn`), so an undeclared one
-  cannot be imported by package name either. A from-within id cannot yet be
-  mounted on its own: `remote-mount` reads top-level entries only (bean
-  `2j2r`, needed by `mo75`).
+  missing downstream. A harness's package `exports` are derived from its
+  declared, shipped `code` directories (`check:package-exports`), so an
+  undeclared one cannot be imported by package name either. A from-within id
+  cannot yet be mounted on its own: `remote-mount` reads top-level entries
+  only.
 - `bun run cat harness:dirs` then materialises every declared directory, so
   the folder exists in every checkout rather than only in yours.
 

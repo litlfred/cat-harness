@@ -8,17 +8,16 @@ description: >
 
 # Materializing remote content
 
-**One process, and this repository already ran it twice before naming it.**
+**One process for every caller that lands remote content locally.**
 
-| caller | remote source | held locally | refresh today |
+| caller | remote source | held locally | refresh |
 |---|---|---|---|
-| the IRIS replica | IRIS — 1,057,223 files, 361.55 GB | three items | nothing |
+| the IRIS replica | IRIS | selected items | `refresh-materialized` |
 | `bootstrap` | a harness | the `cat-harness` checkout | `upstream-pins.json` |
 
 `bootstrap/workflows/initialize-harness.bpmn` fetches a harness that **is**
 remote content and lands it locally; `upstream-pins.json` exists because that
-copy goes stale. A materialisation and its refresh, in production, named
-neither.
+copy goes stale.
 
 Diagrams: [`materialize-remote.bpmn`](../../../processes/library/materialize-remote.bpmn)
 and [`refresh-materialized.bpmn`](../../../processes/library/refresh-materialized.bpmn).
@@ -44,8 +43,7 @@ obligations it did not yet know.
 ## The five gates
 
 Each is a decision a **person** makes; none is answerable from a file. A gate
-that only warns is a gate nobody fails — the `xom7` shape, where a workflow
-failed all thirty times it ran with nothing in the repository saying so.
+that only warns is a gate nobody fails.
 
 1. **Size** — what fraction, and what the whole would cost. **Refuse when you
    cannot tell**: "three items" with no denominator is not a size answer.
@@ -56,8 +54,8 @@ failed all thirty times it ran with nothing in the repository saying so.
 4. **Retention** — what expires this copy. A copy with no expiry cannot be told
    from an abandoned one.
 5. **Source loss** — what survives if the origin goes. **Only an archival copy
-   discharges this.** Not hypothetical: the one IRIS record here carries a
-   handle on `iris.wpro.who.int`, a regional instance merged away.
+   discharges this.** Origins do disappear: a regional repository instance can
+   be merged away, taking its handles with it.
 
 ## Three states, and no default
 
@@ -73,9 +71,9 @@ agent does not re-litigate it.
 ## Refresh is not re-import
 
 Three answers, not one: what changed upstream, what changed **locally**, and
-what to do when both. `upstream-pins.json` answers the first for one caller;
-nothing answers the second anywhere, and a materialized copy edited in place is
-not a copy — overwriting it destroys work whose existence was never established.
+what to do when both. A materialized copy edited in place is not a copy —
+overwriting it destroys work whose existence was never established;
+`check:materialized-fixity` detects it.
 
 **An archival copy is never refreshed.** Re-fetching it discards the state it
 exists to keep. It gets a **fixity check** instead — has *our* copy rotted —

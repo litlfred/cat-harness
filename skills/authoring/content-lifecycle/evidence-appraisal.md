@@ -5,23 +5,18 @@ declares. This skill supplies the *procedure*; it does not supply the *system*.
 
 ## Why this skill names no grading system
 
-`Task_AppraiseGrade` in `evidence-retrieval.bpmn` says the certainty is judged
-"per the grading system the folio declares", and the diagram's header marks the
-choice deliberately unfixed. That split is the right one and this skill keeps
-it: **which** system applies is a methodological commitment belonging to the
-folio and the body that publishes it. A platform that hardcoded one would be
-writing subject matter into the harness — the failure `AGENTS.md` opens by
-warning about — and every folio that uses a different system would then have to
-work around the platform rather than with it.
+**Which** grading system applies is a methodological commitment of the folio
+and the body that publishes it; the platform holds no subject matter, and a
+hardcoded system would leave every folio that uses another one working around
+the platform.
+`Task_AppraiseGrade` in the `evidence-retrieval.bpmn` process judges certainty
+"per the grading system the folio declares". This skill covers what appraisal
+*is*, what it attaches to, and what has to survive as a record afterwards.
 
-So: the folio declares the system. This skill covers what appraisal *is*, what
-it attaches to, and what has to survive as a record afterwards — the parts that
-are the same whichever system you have declared.
-
-Domain layers stacked on the harness supply concrete grading systems as
-refinement skills and code lists (with their certainty levels, rating reasons,
-and recommendation strength). Each is available when declared, never a
-default — a repository that declares nothing still gets the refusal above.
+Domain layers supply concrete grading systems as refinement skills and code
+lists (certainty levels, rating reasons, recommendation strength). Each applies
+only when declared, never as a default; with nothing declared, appraisal is
+refused.
 
 ## Responsibilities
 
@@ -36,17 +31,13 @@ default — a repository that declares nothing still gets the refusal above.
 The grade attaches to the body of evidence for **one PICO question**. This is
 why `Task_AppraiseGrade` sits after the parallel join in the diagram and not
 inside the fan-out: the three retrieval classes (trusted L1 sources, trusted
-L2/L3 content, data repositories) contribute to one judgement, and grading each
-branch separately would produce three numbers that answer no question anyone
-asked.
-
-A single citation does not carry a certainty grade. If you find yourself
-writing one onto a reference, the unit has slipped.
+L2/L3 content, data repositories) contribute to one judgement; grading each
+branch separately would produce three numbers that answer no question. A single
+citation does not carry a certainty grade.
 
 ## "Cannot appraise" is a third state
 
-The same rule the rest of this platform follows. Three outcomes, and the third
-is not a low grade:
+Three outcomes; "not appraisable" is not a low grade:
 
 | outcome | means |
 |---|---|
@@ -54,11 +45,9 @@ is not a low grade:
 | **not appraisable** | too little retrieved, or no declared system, or the question was not framed as PICO |
 | gap recorded | nothing authoritative was found, and that is the finding |
 
-Collapsing "not appraisable" into the lowest grade is the defect worth naming:
-it reads downstream as *"we looked and the evidence is poor"* when the truth is
-*"we could not look"*. A recommendation resting on the first is weak; one
-resting on the second is unsupported, and only one of those is honest about
-what was done.
+Never collapse "not appraisable" into the lowest grade: *"we looked and the
+evidence is poor"* is not *"we could not look"*. A recommendation resting on
+the first is weak; one resting on the second is unsupported.
 
 ## Inputs
 
@@ -72,8 +61,8 @@ what was done.
 
 - A certainty judgement for the body, in the declared system's own vocabulary
 - **The reasons**, in enough detail that a later reader can tell whether they
-  would still hold — this is what `decision-audit` exists for, and a grade
-  without them cannot be reviewed, only re-litigated
+  would still hold (`decision-audit`); a grade without them cannot be
+  reviewed, only re-litigated
 - Any gap, recorded as a gap rather than as a low grade
 
 ## This has nothing to do with formal content
@@ -82,9 +71,8 @@ A graded body of empirical evidence is **never** an input to a formal
 deductive proof. In a content type with a formal proof layer, a formal claim's
 assertion is discharged by its machine-checked proof sibling and by nothing
 else; certainty grading belongs to empirical guidance about the world, where
-the question is what the evidence supports. The two live in one platform and
-must not meet: an empirical grade appearing in a formal proof obligation is a
-category error.
+the question is what the evidence supports. An empirical grade in a formal
+proof obligation is a category error.
 
 ## Actors
 

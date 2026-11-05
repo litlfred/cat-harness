@@ -7,11 +7,10 @@ description: >-
   for separation (one import seam, the separation guard, a self-contained
   rehearsal), and then, each behind an explicit owner confirmation, create the
   repository, copy the staged contents in with history, re-point the
-  declaration, verify on a fresh clone and delete the in-repo copy. Extracted
-  in retrospect from the staged IG separations of 2026-09-21 to 2026-10-06
-  (beans n3ni, rbz3, kg83, hcpz). The light sibling of kg-separation: use this
-  for a DATA instance that leaves whole, and kg-separation when a graph must
-  split into a content repository and a tools repository.
+  declaration, verify on a fresh clone and delete the in-repo copy. The light
+  sibling of kg-separation: use this for a DATA instance that leaves whole, and
+  kg-separation when a graph must split into a content repository and a tools
+  repository.
 ---
 
 # Sub-KG lifecycle — staged here, separated later
@@ -19,14 +18,9 @@ description: >-
 > Skill id: `sub-kg-lifecycle` · Package: `graph-management`
 > Process: [`sub-kg-lifecycle.bpmn`](../../../processes/kg/sub-kg-lifecycle.bpmn)
 
-Owner, 2026-10-06: *"if user creates it in a folio/, then it can move it to
-another repo later (this is essentially the create a sub-KG process and skills
-we have been doing in last week … once the sub KG is staged for separation in
-a repo, a new repo is created and staging contents copied into it)"*.
-
-This skill is that week, written down. **Nothing in it was designed first.**
-Every stage below is a step some session actually took, and each cites where.
-Where the week did something the hard way, the stage says what to do instead.
+A sub-KG created inside a folio or harnessed repository can move to its own
+repository later: once it is staged for separation, a new repository is created
+and the staged contents are copied into it.
 
 ## Which skill, this one or `kg-separation`?
 
@@ -59,27 +53,27 @@ confirmation rather than at the start.
 
 ## The stages
 
-Each stage names its lane (a role in `cat-harness/scenarios/roles.json`) and
-what decides that it is done. A stage is done when its check is green, never
-when the work looks finished.
+Each stage names its lane (a role in `scenarios/roles.json`) and what decides
+that it is done. A stage is done when its check is green, never when the work
+looks finished.
 
-| # | stage | lane | done when | learned from |
-|---|---|---|---|---|
-| 0 | Brief, claim the bean | `authoring-agent` | bean claimed with `bun run cat beans:claim` | [`opening-brief`](../../sdlc/sdlc-core/opening-brief.md) |
-| 1 | **Declare it in place** | `authoring-agent` | the declaration parses; `instance-repositories.test.ts` green | bean `6rmv` (identity), `dh4f` (declare only what exists) |
-| 2 | **Grow it in place** | `authoring-agent` | the content type's own gates | the content type's skill |
-| 3 | **Push generic down** | `platform-authoring-agent` | `check:import-direction`, `check:reference-direction`, `check:process-bindings` add nothing | stages A–C of `n3ni` (#1768, #1782, #1783); stage D `kg83` (#1795) |
-| 4 | **One import seam** | `platform-authoring-agent` | every climb out of the directory goes through `<name>/platform.ts` | `6f19f9100` (#1767), `a93da7d41` (#1860) |
-| 5 | **Rehearse self-contained** | `build-pipeline` | `bun run cat seed:ready --layer <name> --rehearse` | `rbz3` (fork rehearsal), `hcpz` (#1896) |
-| 6 | **Report what would move** | `authoring-agent` | the report is in the bean | `kg-separation` stage 9 |
-| 7 | **Owner confirms: create the repository** | `administrator` | an answer, recorded in the bean | separation arc G6 |
-| 8 | Create the repository | `administrator` | it exists, empty, and was read before writing | separation arc G6/G7 |
-| — | `Ready to seed?` | `build-pipeline` | `seed-readiness-gate.dmn` answers `settled` | `hcpz` |
-| 9 | **Copy the staged contents in, with history** | `authoring-agent` | a reviewed PR on a branch of the new repository | `n3ni` stage E, the fork's PR #5 |
-| 10 | **Re-point the declaration** | `platform-authoring-agent` | the host is green consuming the new repository | separation arc G5, S8 |
-| 11 | **Verify on a fresh clone** | `build-pipeline` | the new repository's gates green from `git clone` in an empty directory | #2082, `w1gy` |
-| 12 | **Owner confirms: delete the in-repo copy** | `administrator` | an answer, recorded in the bean | `n3ni` stage F, arc S8 |
-| 13 | Cutover commit | `administrator` | one commit, revertable | `kg-separation` stage 13 |
+| # | stage | lane | done when |
+|---|---|---|---|
+| 0 | Brief, claim the work item ([`opening-brief`](../../../sdlc/skills/sdlc-core/opening-brief.md)) | `authoring-agent` | work item claimed with `bun run cat beans:claim` |
+| 1 | **Declare it in place** | `authoring-agent` | the declaration parses; `instance-repositories.test.ts` green |
+| 2 | **Grow it in place** | `authoring-agent` | the content type's own gates |
+| 3 | **Push generic down** | `platform-authoring-agent` | `check:import-direction`, `check:reference-direction`, `check:process-bindings` add nothing |
+| 4 | **One import seam** | `platform-authoring-agent` | every climb out of the directory goes through `<name>/platform.ts` |
+| 5 | **Rehearse self-contained** | `build-pipeline` | `bun run cat seed:ready --layer <name> --rehearse` |
+| 6 | **Report what would move** | `authoring-agent` | the report is in the work item (as `kg-separation` stage 9) |
+| 7 | **Owner confirms: create the repository** | `administrator` | an answer, recorded in the work item |
+| 8 | Create the repository | `administrator` | it exists, empty, and was read before writing |
+| — | `Ready to seed?` | `build-pipeline` | `seed-readiness-gate.dmn` answers `settled` |
+| 9 | **Copy the staged contents in, with history** | `authoring-agent` | a reviewed PR on a branch of the new repository |
+| 10 | **Re-point the declaration** | `platform-authoring-agent` | the host is green consuming the new repository |
+| 11 | **Verify on a fresh clone** | `build-pipeline` | the new repository's gates green from `git clone` in an empty directory |
+| 12 | **Owner confirms: delete the in-repo copy** | `administrator` | an answer, recorded in the work item |
+| 13 | Cutover commit | `administrator` | one commit, revertable (as `kg-separation` stage 13) |
 
 ### 1 · Declare it in place
 
@@ -99,11 +93,9 @@ A directory `<name>/` at the host's root, with `<name>/<name>.json`:
 - **`repository` differs from `livesAt.repository`** — that difference is
   what makes the directory a *staged* instance, and it is what the separation
   guard and `seed:ready` read. Nothing lists the staged instances by hand.
-- **The directory may sit anywhere** — a root sibling is the precedent (the
-  owner chose a root sibling over a nested folder on 2026-09-21), but the
-  tools read `livesAt.path`, so `folio/<name>/` works the same.
-- **Scaffold it with `init-folio --staged <path>`** (owner ruling 1,
-  2026-10-06):
+- **The directory may sit anywhere** — a root sibling is the convention, but
+  the tools read `livesAt.path`, so `folio/<name>/` works the same.
+- **Scaffold it with `init-folio --staged <path>`**:
 
   ```sh
   bun run cat init-folio --staged <path> --title "<title>" \
@@ -114,23 +106,21 @@ A directory `<name>/` at the host's root, with `<name>/<name>.json`:
   `<path>/platform.ts`, and nothing at the host's root;
   `init-folio-staged.test.ts` snapshots the whole host tree to hold that.
   **Never `--instance` inside a host**: it writes a repository's worth of
-  scaffolding (`AGENTS.md`, `.mcp.json`, a beans store, a session hook; 15
+  scaffolding (`AGENTS.md`, `.mcp.json`, a work items store, a session hook; 15
   files, measured with `--dry-run`). `--instance` is for stage 8's repository.
-- **Declare a directory with its files, in one commit** (bean `dh4f`): a
-  declared-but-absent directory is scanned as empty and reported clean.
+- **Declare a directory with its files, in one commit**: a declared-but-absent
+  directory is scanned as empty and reported clean.
 
 ### 3 · Push generic down — before the seam, not after
 
-The week's order was: move everything generic into the harness below
-(stages A–C), consolidate what the sub-KG needs into its own harness
-(stage D), and only then seed. Doing it the other way round copies generic
+Move everything generic into the harness below, consolidate what the sub-KG
+needs into its own harness, and only then seed. The other order copies generic
 code into a repository that has to give it back.
 
-Wrong-direction edges hide in **declarations and data**, not only in imports.
-The separation plan found six, and no import check had caught any of them: a
-skill definition naming a package one layer up, a `dependsOn`, a publication
-target enumerated in an input schema, prose links, and two `needs` edges to an
-empty layer. So run all three direction checks, not one.
+Wrong-direction edges hide in **declarations and data**, not only in imports:
+a skill definition naming a package one layer up, a `dependsOn`, a publication
+target enumerated in an input schema, prose links, a `needs` edge to an empty
+layer. So run all three direction checks, not one.
 
 ### 4 · One import seam: `<name>/platform.ts`
 
@@ -138,18 +128,17 @@ Every symbol the sub-KG uses from the platform is re-exported from **one
 file**, and nothing else in the directory climbs out of it. On the day it
 leaves, re-pointing the platform is a one-file edit instead of a sweep.
 
-`cat-harness-tools/scripts/tests/instance-separation-imports.test.ts` is the guard.
-It covers **every** instance whose `repository` differs from its
-`livesAt.repository` — not only those that opted in, because the opt-in
-version was silent in exactly the case it existed for: the one climb that
-failed in the fork (`pages-markdown.test.ts`, #2082) sat in an instance with no
-seam. Layers other instances build on are an explicit, checked exemption, and
-an instance that still climbs has a ceiling that may only fall.
+`cat-harness-tools/scripts/tests/instance-separation-imports.test.ts` is the
+guard. It covers **every** instance whose `repository` differs from its
+`livesAt.repository`, not only those that opted in, because an opt-in guard
+is silent for exactly the instance that has no seam. Layers other instances
+build on are an explicit, checked exemption, and an instance that still climbs
+has a ceiling that may only fall.
 
-**Create the seam at stage 1, not here.** It costs one file on day one; the
-week paid 25 reroutes in 10 files for one instance, then 17 more after a
-single merge from `main`. A merge is where new climbs arrive, so a red guard
-after one is the expected signal to reroute, not a regression.
+**Create the seam at stage 1, not here.** It costs one file on day one, and
+every later climb is a reroute. A merge from `main` is where new climbs arrive,
+so a red guard after one is the expected signal to reroute, not a
+regression.
 
 ### 5 · Rehearse self-contained — run the gates, do not scan
 
@@ -158,17 +147,15 @@ bun run cat seed:ready --layer <name> --rehearse --text   # exit 0 settled, 1 no
 ```
 
 It copies the layer and what it `needs` into a scratch workspace of sibling
-directories and runs the tests there. The fork rehearsal (`rbz3`) is why
-this is a run rather than a reading:
+directories and runs the tests there. It is a run rather than a reading
+because:
 
-- **a static import scan found 20 of the 23 platform files** the gates
-  actually loaded; the other three load at run time, one of them a JSON code
-  list read by URL;
-- **renaming the directory changed every generated page** (2,153 of them),
-  because the URL prefix and a chrome lookup keyed on the directory name.
-  The fix (`853f9532`) was to take the identity from the declaration's
-  `name`, never from the path. Check for that before seeding into a
-  different directory name.
+- **a static import scan misses files the gates load at run time** — a JSON
+  code list read by URL, for one;
+- **renaming the directory can change every generated page**, when a URL
+  prefix or a chrome lookup keys on the directory name. Take the identity from
+  the declaration's `name`, never from the path, and check for that before
+  seeding into a different directory name.
 
 ### 7 and 12 · The two confirmations
 
@@ -202,16 +189,15 @@ options at most, the recommended one first, with a stated default:
 > **Default if you do not answer: 2.** Nothing is deleted.
 
 When the repository must be created by someone with credentials this session
-lacks, the hand-over is [`agent-handoff`](../../sdlc/sdlc-core/agent-handoff.md):
-one bean, one sentence for the person to relay.
+lacks, the hand-over is [`agent-handoff`](../../../sdlc/skills/sdlc-core/agent-handoff.md):
+one work item, one sentence for the person to relay.
 
 ### 9 · Copy the staged contents in, with history
 
 The staged directory becomes the new repository's content **with its
 history**: `git subtree split --prefix=<name>` in the host, then
-`git subtree add` (or a merge of the split branch) in the new repository.
-The first fork seed carried 378 commits this way. It goes in on a **branch,
-as a draft PR**, never straight to `main` (separation arc S7). The new
+`git subtree add` (or a merge of the split branch) in the new repository. It
+goes in on a **branch, as a draft PR**, never straight to `main`. The new
 repository's own root files — its declaration at the root, its config, its
 `README` — are a second commit in the same PR, so the copy itself stays
 byte-identical and reviewable.
@@ -227,15 +213,16 @@ orphaned. Its criteria and thresholds are in
 |---|---|
 | `livesAt` | removed in the new repository — absent means "sits at the root of `repository`" |
 | the seam | `platform.ts` points at wherever the platform now is: a remote-mounted path, or a sibling checkout |
-| the host | **remote mount** if the host imports code from the sub-KG — a `source.remote` instance in the host's root `index.config.json` ([`remote-mount`](../kg-core/remote-mount.md); never a submodule, owner 2026-10-06); **subscription** (`kg:subscribe`) if it only reads its content (separation arc G5) |
-| pins | the host pins a commit while staging, a version once released ([`upstream-version-adoption`](../../sdlc/sdlc-core/upstream-version-adoption.md)) |
-| its site | the new repository publishes and previews itself ([`feature-staging`](../../sdlc/sdlc-core/feature-staging.md), *Which site*): `"site": { "agentRun": true }` in its `index.config.json` when an agent publishes it, plus whatever workflow its publisher layer's own creation skill requires (an IG's AST-cache refresh, for one) |
+| the host | **remote mount** if the host imports code from the sub-KG — a `source.remote` instance in the host's root `index.config.json` ([`remote-mount`](../kg-core/remote-mount.md); never a submodule); **subscription** (`kg:subscribe`) if it only reads its content |
+| pins | the host pins a commit while staging, a version once released ([`upstream-version-adoption`](../../../sdlc/skills/sdlc-core/upstream-version-adoption.md)) |
+| its site | the new repository publishes and previews itself ([`feature-staging`](../../../sdlc/skills/sdlc-core/feature-staging.md), *Which site*): `"site": { "agentRun": true }` in its `index.config.json` when an agent publishes it, plus whatever workflow its publisher layer's own creation skill requires (an IG's AST-cache refresh, for one) |
 | its checks | `.github/workflows/harness-pr-checks.yml` calling the tools layer's `layer-pr-checks.yml`, so its gates run on every pull request |
+| its QA record | when it declares a `qa` directory with `storage` (`test/results/`, `cat/cat-harness/qa-reports`, keyed by commit): `.github/workflows/publish-qa.yml` calling the tools layer's `layer-qa-publish.yml`, so every push to `main` and every pull request publishes its results to **its own** qa-reports branch, and `test/results/` in `.gitignore`. A host reads them at the commit it pins. Without the job, the declaration names a store nothing writes |
 | `.gitignore` | the mount block, written by the mount tool between its own markers. Never typed: a hand-written marker makes `remote-mount.ts` refuse (*markers unpaired*) |
 
-**Copy these from a sibling repository of the same kind; never type them.**
-Every row above was missing or wrong in a repository scaffolded by hand on
-2026-10-15. Its site could not be built until each was copied in.
+**Copy these from a sibling repository of the same kind; never type them.** A
+repository scaffolded by hand misses them, and its site cannot be built until
+each is copied in.
 
 The host keeps its own copy through this stage. The re-point is additive.
 
@@ -245,43 +232,35 @@ The host keeps its own copy through this stage. The re-point is additive.
 bun run cat sub-kg:verify-clone --repo <owner>/<name> --ref <seeding branch> --text   # exit 0 green, 1 red, 2 unknown
 ```
 
-The Tool `sub-kg-verify-clone` (owner ruling 2, 2026-10-06) clones the new
-repository into an empty scratch directory with its submodules (and each
-`--sibling` beside it), installs, and runs its own `gates` script, else its
-`test` script. An empty tree, a failed clone or a repository with no gate is
-`unknown`, never green. **The measured falsifier**
-(#2082): the first seeded fork's test failed with
-`Cannot find module '../../../<harness>/…'`, because nothing in a seed runs
-standalone until the seam is re-pointed. A rehearsal in the host's scratch
-space is not this check; it shares the host's `node_modules` and network.
+The Tool `sub-kg-verify-clone` clones the new repository into an empty
+scratch directory with its submodules (and each `--sibling` beside it),
+installs, and runs its own `gates` script, else its `test` script. An empty
+tree, a failed clone or a repository with no gate is `unknown`, never green.
+Nothing in a seed runs standalone until the seam is re-pointed, so a test that
+climbs out (`Cannot find module '../../../<harness>/…'`) fails here. A
+rehearsal in the host's scratch space is not this check; it shares the host's
+`node_modules` and network.
 
 The new repository's own site is part of this check:
 `bun run cat stage:local --repo . --dry-run` from the
 fresh clone must build. A refusal names what stage 10 left out.
 
-## What the week did NOT settle
+## Stage 13: the frozen copy
 
-The owner ruled on three questions on 2026-10-06 (bean `3tza`): *"1 2 y / 3
-read only mirror in fsh-guts"*.
-
-- **Ruled and built:** `init-folio --staged` (stage 1) and
-  `sub-kg:verify-clone` (stage 11).
-- **Ruled and built: stage 13** (owner, 2026-10-06, "1"). After cutover the
-  host keeps a **frozen** copy in [`fsh-guts`](../kg-core/fsh-guts.md), not a
-  refreshed mirror and not a deletion. Step 12 asks (1) move to fsh-guts now,
-  (2) keep in place until the first release, (3) show the file list first,
-  default (2). Step 13 deposits the directory into the PARENT's fsh-guts
-  as a verified archive, then removes it from `main` (owner, 2026-10-06,
-  choosing this archive form over plain trees, which CI then audited as
-  live content). The deposit is the one `state:seed --cutover` makes for a
-  state graph: an archive that must extract to the exact tree being
-  removed, plus a provenance note (`movedFrom`, `movedOn`, `sourceCommit`,
-  `tree`), and the removal commit is made only once it has landed. A
-  separation targets the parent's fsh-guts rather than the departing
-  instance's, which `--cutover` does not do; the separation mode is
-  follow-up work to #2322. The live
-  copy is the remote mount (`index.config.json` `source.remote`), npm package retrieval (`kg-retrieve-npm`), or subscription (`kg:subscribe`) from stage 10; the frozen one is
-  never refreshed and never rendered.
+After cutover the host keeps a **frozen** copy in
+[`fsh-guts`](../kg-core/fsh-guts.md), not a refreshed mirror and not a
+deletion. Step 12 asks (1) move to fsh-guts now, (2) keep in place until the
+first release, (3) show the file list first, default (2). Step 13 deposits the
+directory into the PARENT's fsh-guts as a verified archive (not plain trees,
+which CI would audit as live content), then removes it from `main`. The deposit
+is the one `state:seed --cutover` makes for a state graph: an archive that must
+extract to the exact tree being removed, plus a provenance note (`movedFrom`,
+`movedOn`, `sourceCommit`, `tree`), and the removal commit is made only once it
+has landed. A separation targets the parent's fsh-guts rather than the
+departing instance's, which `--cutover` does not yet do. The live copy is the
+remote mount (`index.config.json` `source.remote`), npm package retrieval
+(`kg-retrieve-npm`), or subscription (`kg:subscribe`) from stage 10; the frozen
+one is never refreshed and never rendered.
 
 ### How checks treat a frozen subtree
 
@@ -307,9 +286,8 @@ directory. The page shows it as one row in the `via sidecar` state.
   carry.
 - **The note's `bean:` resolves against main's work plan, with no pending
   escape.** So the deposit lands on the fsh-guts branch in the same step that
-  merges the PR carrying that bean, never before it. The first cutover
-  (2026-10-06, bean `61t6`) was pushed ahead of its PR and turned every PR's
-  CI red until it was held back.
+  merges the PR carrying that work item, never before it; a deposit pushed ahead of
+  its PR turns every PR's CI red.
 
 ## Anti-patterns
 

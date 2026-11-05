@@ -9,7 +9,7 @@ description: >
   prompt-lexicon convention. Carries the STRICT rule that a steer correcting a
   RULE is written into the skill that governs it, in the same turn, quoted and
   dated — use whenever the author corrects, settles or overrules anything.
-  Generic folio-assistant platform skill.
+  Generic platform skill.
 user_invocable: true
 consulted: true
 ---
@@ -53,18 +53,14 @@ session where it looks kept. The proposal is fixed, the rule that produced the
 proposal is not, and the next session is a fresh context that never saw the
 chat. It produces the same proposal, and the author corrects it again.
 
-**Requiring the correction twice is requiring it repeatedly.** The only thing
-the chat-only fix changed is the interval between the repeats, and an author
-who has to re-teach a rule every session is paying the cost this whole skill
-exists to lower. For an author with limited hand function that cost is keystrokes
+**Requiring the correction twice is requiring it repeatedly**, and for an
+author with limited hand function that cost is keystrokes
 ([`interaction-modality`](interaction-modality.md) §0).
 
-The owner stated it as a rule on 2026-09-21: *"update skills in fedback like
-this."*
-
 > **A steer that corrects a rule is not applied — it is WRITTEN DOWN: in the
-> skill that governs the thing corrected, in the same turn, with the author's
-> words quoted and dated.**
+> skill that governs the thing corrected, in the same turn. The rule and its
+> reason go in the narrative; the author's words, quoted and dated, go in that
+> document's provenance log.**
 
 ### Is this steer rule-level? Three questions
 
@@ -80,26 +76,32 @@ author says both in the same register, often in the same sentence. Ask:
    every future placement.
 3. **Is there already a rule that this CONTRADICTS?** Then the edit is not
    optional and not additive: the old rule is wrong and stays wrong until it is
-   replaced. A correction filed beside a rule it contradicts is worse than not
-   filing it, because the next agent finds two answers and picks one.
+   replaced; a correction filed beside it leaves the next agent two answers.
 
 Any yes makes it rule-level. A **gap** or a **seed** (§1) never is — a flagged
 unknown is not a ruling, and treating one as a rule is §3's first anti-pattern
 with a durable artefact attached.
 
-### Same turn, quoted, dated
+### Same turn, quoted, dated — in the provenance log
 
-- **Same turn.** Not "noted for later" and not a bean saying the skill should be
-  updated. A bean that records a rule is a rule in the wrong graph: `beans/` is
+- **Same turn.** Not "noted for later" and not a work item saying the skill should be
+  updated. A work item that records a rule is a rule in the wrong graph: `beans/` is
   `state`, the skills are `context`, and a reader looking up how something is
   decided reads the skill.
 - **Quoted.** The author's own words, verbatim, typos included — they are the
   primary source, and a paraphrase is the agent's reading of them standing in
-  for the ruling itself. `schema-management` §"Where a viewer publishes"
-  is the shape: the quote, then the table it produced.
-- **Dated.** A rule with no date cannot be told from a rule that was superseded,
-  and this repository supersedes its own rules often enough that the
-  distinction is load-bearing.
+  for the ruling itself.
+- **Dated.** A rule with no date cannot be told from a rule that was
+  superseded.
+- **In the log, not the narrative.** The quote and its date go in the
+  document's provenance log, `<document>.prov.jsonld` beside it (PROV-O), which
+  the renderer shows in the page footer. The narrative states the rule and the
+  reason the author gave, in the present tense, so a reader learns what holds
+  without reading who said it when.
+- **A log may name any instance.** It quotes verbatim, so it carries the issue
+  and repository names the original text did, including layers above this one.
+  A log is a record of where a rule came from, not a reference the document
+  depends on, so `check:reference-direction` exempts `*.prov.jsonld`.
 
 ### You do NOT ask permission to fix a rule the author just corrected
 
@@ -113,37 +115,20 @@ failure at the top of this section.
 The two do not overlap, and the line is: **does the rule already have a home?**
 If yes, the correction goes there now. If the correction implies a skill that
 does not exist, that is a new node and `kg-contribution-offer` governs it —
-except where the author said outright it should be one, as in the first worked
-example below.
+except where the author said outright it should be one.
 
-### Worked examples — three from 2026-09-21
+### Worked examples
 
-| the steer | where it landed | why there |
+| the steer | where it lands | why there |
 |---|---|---|
-| *"THAT should be a skill, collision=coordinate, potentail colliosn by looking at beans = coordinate"* | [`coordinate`](../../sdlc/sdlc-core/coordinate.md), two new triggers | rule-level on all three questions, and the author named the destination outright — no offer to make |
-| *"voices should be associated to appropriate home semantically/by judgement"* | `schemas/content/voice-skill.ts`, replacing the ownership rule | question 3: it **contradicted** a standing mechanical rule (the instance that *derived* a voice owns it), which the corpus had already falsified twice. Additive filing would have left two answers |
-| *"harness handler wins."* | `gen-handler-index.ts`'s module doc and bean `8h42` — **and nowhere else, which was the defect** | question 2: it settles a collision between the TWO PATH RULES, so it belongs in [`schema-management`](../../kg/kg-core/schema-management.md) §"Where a viewer publishes" beside them. It was filed as a fact about one generator instead. Found by writing this section, and fixed in the same change |
-
-A fourth, made **after** this section existed and the first to be governed by
-it rather than reconstructed: asked to settle a voice's `provenance`, the owner
-refused the recommended option and gave the reason —
-
-> voices may be comprised of many composite voices w/ unclear attribution.
-> attrinution by rule makes no sense in a collaborative/synethsizing process.
-
-The *decision* was one field left alone. The **reason** is a durable claim
-about what a voice is, and it is what stops the next agent proposing the same
-refactor from the same corpus measurement. It went into
-`schemas/content/voices.ts`'s `VOICE_PROVENANCE` gloss, quoted and dated, in that turn.
+| "that should be a skill: a collision means coordinate" | the named skill ([`coordinate`](../../../sdlc/skills/sdlc-core/coordinate.md)), as new triggers | rule-level on all three questions, and the author named the destination |
+| "voices belong to the instance that owns them semantically" | the schema module that states voice ownership, **replacing** the old rule | question 3: it contradicts a standing rule, so filing it beside that rule would leave two answers |
+| "the harness handler wins" (a collision between two path rules) | [`schema-management`](../../kg/kg-core/schema-management.md) §"Where a viewer publishes — TWO rules, not three", beside the two rules | question 2: it settles every such collision, not one generator's |
 
 **A refusal is a ruling.** An answer that declines your recommendation carries
-at least as much rule as one that accepts it — usually more, because it tells
-you something about the domain your analysis did not have.
-
-The third row is the honest one. It is not a counter-example showing where the
-rule stops — it is this rule catching, on its first application, a case the
-agent that wrote it had got wrong four hours earlier. A rule whose first use
-finds nothing is a rule that was already being followed.
+at least as much rule as one that accepts it — the reason it gives is a
+durable claim about the domain, and it goes into the governing skill or schema
+gloss in that turn, with the quote and date in its provenance log.
 
 ## 3. Measurement spec (new sessions and retroactive)
 
@@ -168,18 +153,15 @@ mapping; no extra ceremony in-session.
 ## 4. Anti-patterns
 
 1. Treating a gap-marked question as a steer (sycophantic capture).
-2. Relitigating a steer the author has already given twice (wasted α).
+2. Relitigating a steer the author has already given (wasted α).
 3. Requiring a derivation before running the cheap probe on a seed —
    or the inverse, promoting an unvalidated seed into prose.
 4. Flattening the registers: answering every input at the same
    evidence threshold.
 5. **Applying a rule-level steer to the artefact and not to the rule**
-   (§2). It looks like compliance for one turn and guarantees the
-   author re-teaches the same rule in the next session — the
-   cross-session form of anti-pattern 2.
-6. **Filing a rule-level steer as a bean** instead of editing the
-   skill. A bean says work is outstanding; the work here is the edit,
-   and it takes less time than the bean.
+   (§2) — the cross-session form of anti-pattern 2.
+6. **Filing a rule-level steer as a work item** instead of editing the
+   skill. A work item says work is outstanding; the work here is the edit.
 
 ## 5. Lexicon maintenance
 

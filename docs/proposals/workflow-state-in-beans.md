@@ -39,7 +39,7 @@ architecture but the *address* — both stores are now at top level and adjacent
 
 The reasoning that made A right survives the move intact: the interpreter keeps
 a file no human is invited to hand-edit, one file per instance means no write
-contention, and the process engine still runs in a repo with no beans CLI
+contention, and the process engine still runs in a repo with no `beans` CLI
 installed. What A was *criticised* for below — "two places to look" — was never
 really about two stores. It was about two **hidden** stores. Putting them side
 by side under one visible directory answers that without giving machine state to
@@ -83,7 +83,7 @@ finds the instance that exists instead of minting a second one.
 `src/workflow/bean-link.ts` is the join. Eleven activities across the diagrams
 carry `<cat-harness.processes:bean op="claim|note|resolve"/>`, and completing such a step **is**
 the work-plan operation rather than a note about it. `resolve` is the careful
-one: a bean completes only when the instance it tracks has itself completed,
+one: a work item completes only when the instance it tracks has itself completed,
 because `AGENTS.md` is explicit that whether work is done is a judgement and not
 the caller's to assert. A still-running instance gets a note.
 
@@ -97,10 +97,10 @@ Four reasons, and they are not equally good.
 1. **One place to look.** A human opening `beans tui` sees the plan; the position
    in the process is in a second directory they have to know about. Two answers
    to "what is happening" is one too many.
-2. **The bean is already the unit of coordination.** Claiming is how sibling
-   sessions avoid each other. If position were bean state, claiming a step and
+2. **The work item is already the unit of coordination.** Claiming is how sibling
+   sessions avoid each other. If position were work item state, claiming a step and
    claiming the work would be the same act.
-3. **Beans have a UI.** `beans tui`, `beans roadmap`, `beans show`, and a
+3. **Work items have a UI.** `beans tui`, `beans roadmap`, `beans show`, and a
    GraphQL endpoint. `beans/workflow/*.json` has none of that and would have to
    grow one.
 4. **Fewer things to keep in sync.** Today a divergence between the two stores is
@@ -117,24 +117,24 @@ consequence of a file people are invited to edit.
 
 ### Option A — two stores, one link *(built)*
 
-Instance JSON for position; a bean for the work; `cat-harness.processes:bean` operations to keep
+Instance JSON for position; a work item for the work; `cat-harness.processes:bean` operations to keep
 them agreeing at the eleven points where it matters.
 
 **Costs:** two places to look. A human has to be told the second exists.
 **Buys:** the interpreter owns a file no human is invited to edit by hand. One
 file per instance means no write contention. `beans` is optional — the process
-engine runs in a repo with no beans CLI installed.
+engine runs in a repo with no `beans` CLI installed.
 
 ### Option B — bean per instance, position in front matter
 
-The instance's token marking moves into the bean's YAML front matter
+The instance's token marking moves into the work item's YAML front matter
 (`workflow_process`, `workflow_tokens`, `workflow_history`); `beans/workflow/`
 disappears.
 
 **Costs:** the front matter becomes machine-owned, and `beans update` is not
 aware of it — an unknown-key write, or a hand edit, can corrupt a marking. Every
 `workflow_complete` is now a read-modify-write of a file a human may have open in
-the TUI. And the engine acquires a hard dependency on the beans layout.
+the TUI. And the engine acquires a hard dependency on the work items layout.
 **Buys:** genuinely one place. `beans show <id>` answers both questions.
 **Verdict:** the attractive option, and the one whose failure mode is worst — a
 malformed marking is not visible until an agent is refused a step it should
@@ -142,17 +142,17 @@ have been allowed.
 
 ### Option C — child bean per enabled activity
 
-The instance is a **milestone** bean; each activity the process reaches is
-created as a child `task` bean, and its status *is* the token: `todo` = enabled,
+The instance is a **milestone** work item; each activity the process reaches is
+created as a child `task` work item, and its status *is* the token: `todo` = enabled,
 `in-progress` = claimed, `completed` = the token has moved on. Position is
 derived by folding the children.
 
-**Costs:** bean volume. Six diagrams with 8–15 activities each means a process
-run is a dozen beans, and `beans create` is not idempotent — the mechanism that
+**Costs:** work item volume. Six diagrams with 8–15 activities each means a process
+run is a dozen work items, and `beans create` is not idempotent — the mechanism that
 produced **14,688** duplicates in the `qou` folio in one afternoon is exactly a
 loop that creates without checking. Parallel forks and joins do not map onto
 child status cleanly: a join waiting on two of three siblings has no status that
-says so. And a human closing a child bean out of sympathy would advance the
+says so. And a human closing a child work item out of sympathy would advance the
 process.
 **Buys:** the plan and the process become one artefact, visible in `beans tui`
 and `beans roadmap` with no new UI. Claiming a step and claiming the work are
@@ -163,7 +163,7 @@ which is what CRDM's six phases are. Worst fit for the short mechanical ones.
 ### Option D — beans as an event log, state as a fold
 
 Nothing stores a marking. Each `cat-harness.processes:bean op="note"` appends a structured line
-to the bean body; the current position is recomputed by replaying the notes
+to the work item body; the current position is recomputed by replaying the notes
 through the process model.
 
 **Costs:** every `workflow_next` is a replay, and a note a human edits or
@@ -180,13 +180,13 @@ which, for CRDM sign-off, it might.
 
 ## 4. Comparison
 
-| | A (built) | B front matter | C child beans | D event log |
+| | A (built) | B front matter | C child work items | D event log |
 |---|---|---|---|---|
 | one place to look | ✗ | ✓ | ✓ | ✓ |
 | human can corrupt the marking | ✗ | ✓ | ✓ | partly |
 | parallel fork / join | ✓ | ✓ | ✗ | ✓ |
-| write contention between agents | none | per bean | per child | append-only |
-| works without the beans CLI | ✓ | ✗ | ✗ | ✗ |
+| write contention between agents | none | per work item | per child | append-only |
+| works without the `beans` CLI | ✓ | ✗ | ✗ | ✗ |
 | existing UI (`tui`, `roadmap`) | ✗ | ✓ | ✓ | ✓ |
 | duplicate-creation risk | none | none | **high** | none |
 | implementation cost from here | — | low | medium | high |
@@ -204,12 +204,12 @@ Not a single answer, because the processes are not one kind of thing:
   position *in the tool they already have open*, and where the sequential shape
   means the fork/join objection does not bite. The duplicate risk is real and
   mitigable by the existing derived-id discipline: `instanceId()` already
-  derives an id from the subject rather than minting one, and a child bean would
+  derives an id from the subject rather than minting one, and a child work item would
   have to do the same.
 - **Treat D as the destination if provenance becomes a requirement**, not as a
   refactor to do for tidiness.
 - **Whatever is chosen, the reporting gap is worth closing on its own.**
-  `work_plan_prime` already reports every instance's position next to its bean;
+  `work_plan_prime` already reports every instance's position next to its work item;
   surfacing that in the session-start sweep beside `beans roadmap` gives most of
   reason 1's benefit without moving any state at all. That is cheap, and it is
   the thing to do first.
@@ -223,7 +223,7 @@ Stated so this does not stay an opinion:
 2. **Does any long-running process need a real parallel fork?** If CRDM does,
    C is out for CRDM too.
 3. **Is a corrupted marking recoverable?** Under B it means hand-repairing YAML.
-   Under C a deleted child bean loses a token with no record that it existed.
+   Under C a deleted child work item loses a token with no record that it existed.
    Under A and D the interpreter can always recompute. This is the question that
    should carry the most weight, and it is the one easiest to skip.
 

@@ -65,7 +65,6 @@ exclude:
   - Gemfile.lock
   - vendor
   - folio-assistant-migration.md
-  - qou-migration-checklist.md
   - sage-mcp.md
   # Content-addressed payloads (bean `f233`) are copied into the site VERBATIM
   # by docs-site.yml / feature-staging.yml after the build. A skill body

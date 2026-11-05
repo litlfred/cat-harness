@@ -2,8 +2,8 @@
 name: readme-sections
 description: >
   A folio's README is the author's file; the platform owns only the marked
-  regions it generates. How the sync/audit split works, why the whole-file
-  generator it replaced could not, and the third state both tools must report.
+  regions it generates. How the sync/audit split works, why the platform never
+  generates a folio's prose, and the third state both tools must report.
 adapters: [document, paper, dak]
 profiles: [document, paper]
 consulted: true
@@ -37,28 +37,23 @@ CLI, the MCP tool and the staleness check all read the registry.
 ## "Could not determine" is a third state, everywhere
 
 A section that cannot establish its answer returns **skip**, and the region is
-left exactly as it was. This is not decoration:
+left exactly as it was:
 
-- A folio configuring its simulators under a platform submodule has no such
-  directory until that submodule is checked out. The first version rendered
-  *directory absent* as *this folio has no simulators* — **replacing a correct
-  nine-row table with a sentence.**
+- A directory configured under a submodule that is not checked out is
+  *absent*, not *empty* — it must not render as "this folio has no
+  simulators".
 - A shallow clone cannot read the publish ref. "Could not read it" must not
-  silently blank a table that was right yesterday.
+  blank a table.
 
 **An empty directory is still a determined empty.** Absent and empty are
 different answers, and only one of them is safe to render.
 
 ## Resolve links; never compose them
 
-The contents table's predecessor built every PDF cell by convention —
-`<pages>/papers/<paper>/chapters/<dir>.pdf` — and checked it against nothing.
-The folio's publish branch had no `chapters/` directory, so **all twenty-three
-chapter links were 404 and always had been**; three of six appendix links
-happened to resolve. Every cell is now looked up in a real listing of the
-publish ref, and a chapter with no published PDF renders `—`.
+Every link cell is looked up in a real listing of the publish ref, never built
+by a path convention, and a chapter with no published PDF renders `—`.
 
-The audit half exists for the same reason and reports three states, never two:
+The audit reports three states, never two:
 an external host, an in-page anchor, and a ref this checkout cannot read are all
 **NOT CHECKED**, so a shallow clone does not produce a wall of false findings.
 
@@ -74,35 +69,21 @@ viewer's session, works whether the repo is public or private, and renders PDFs
 inline. The other styles remain configurable, and each prints a note under the
 table saying who can follow its links.
 
-## Why generating the rest was the wrong instinct
+## Why the platform does not generate the rest
 
-Two defects, both easy to write again.
+**Prose about a folio belongs to that folio.** A platform generator that
+writes a whole README carries one folio's title, badges and structure into
+every other folio, and the author there loses their README. Do not hardcode in a section renderer: a namespace prefix
+(read it from the build file, and leave it **unprefixed** when none names one —
+a wrong namespace is what a reader pastes into an import); a map of one folio's
+filenames consulted before the artefact's own declared name; or a fixed
+directory.
 
-**The predecessor described one folio from inside the platform.** It ended in a
-whole-file copy, carrying one folio's title, badges, a registry of that folio's
-own indices, a project-structure table naming its directories, and a licence
-block. Run it in any other folio and the author loses their README. Only five of
-its sections were derived from the tree at all; **prose about a folio belongs to
-that folio.** Three literals went with it, each worth recognising in new code: a
-namespace prefix applied regardless of the folio's actual build library (now
-read from the build file, and left **unprefixed** when none names one — a wrong
-namespace is worse than none, because it is what a reader pastes into an
-import); descriptions from a hardcoded map of one folio's filenames consulted
-*before* the artefact's own declared name; and a hardcoded simulator directory.
-
-**And the authored half is worth keeping.** One folio's Published Artefacts
-table listed two directories that had never existed on its publish branch —
-both rows dead in both columns. But its labels were prose a generator would have
-had to invent. **The defect was never a stale layout; it was targets that do not
-resolve.** So that half is audited, not generated.
+**The authored half is audited, not generated.** Its labels are prose a
+generator would have to invent; what goes wrong there is targets that do not
+resolve, which the audit catches.
 
 ## `cat-harness:instances` — the root README indexes every instance
-
-Added 2026-09-20 (issue #592). The owner:
-
-> find beans related to readme, associated to harness instances, they must add
-> to main one. should provide both Agent links (agents.md , memories) AND human
-> docuemntaion (docs/) link for each harness.
 
 One row per instance declaring a declaration, with **two entries because two
 readers arrive**: an agent entry (`AGENTS.md`, memories) and a human one
@@ -113,21 +94,17 @@ declared assets for the file links, declared `graphs` for the directory links.
 file that may not be declared, and the criterion in `check:subgraph-coverage`
 rests on an undeclared file being one no checker has a reason to look at.
 Scope is honoured too: a directory declared `scope: "repository"` is linked at
-the repository root, which is how `memory/` was first rendered dead as
-`./cat-harness/memory/`. **A dead link in a generated table is worse than a
+the repository root. **A dead link in a generated table is worse than a
 missing row — the row asserts the entry exists.**
 
 **A gap is rendered AS a gap**: an em dash plus a counted note under the table,
-naming the check that lists them. Never a blank cell, never a guessed path.
-Eight of eleven instances had no agent entry when this was written, and a table
-that quietly omitted them would have read as though the work were done.
+naming the check that lists them. Never a blank cell, never a guessed path: a
+table that quietly omitted the gaps would read as though the work were done.
 
 ### Which README, and the `--dir` flag
 
 `readme:sync` with no `--dir` resolves to whichever instance carries a `folio/`
-— **which is `cat-harness`, not the repository root.** Before #592 the two were
-one file (`cat-harness` declared the root's README with `scope: "repository"`),
-so the difference could not show. Use the pair:
+— **which is `cat-harness`, not the repository root.** Use the pair:
 
 | | |
 |---|---|
@@ -136,24 +113,21 @@ so the difference could not show. Use the pair:
 | `readme:sync:all` | EVERY instance's README, each against its own declaration |
 
 **In an index checkout the root README is not authored at all.** Its root
-declares no instance (owner, 2026-10-08), so nothing could own the file, and
-the owner ruled on 2026-10-09 that it and the root `AGENTS.md` are rendered:
-`bun run cat index:render` writes both — with the `CLAUDE.md` and `GEMINI.md`
+declares no instance, so nothing could own the file; it and the root
+`AGENTS.md` are rendered: `bun run cat index:render` writes both — with the `CLAUDE.md` and `GEMINI.md`
 stubs — from `index.config.json`, each instance's declared `agent-instructions`
 and `instance-readme` assets, bootstrap's `AGENTS.md`, and the sections above,
 and `index:render:check` fails when any of the four is not its current output.
 `readme:sync:root` still agrees with it, because the renderer fills the same
 marker regions through the same registry.
 
-Both are gated in `code-quality-gates.yml`, and that is not belt and braces:
-when the split landed, the bare `readme:audit` silently narrowed to
-cat-harness's and took the root README's 41 links out of the gate **without
-failing anything**. A gate that stops covering something still reports green.
+Both are gated in `code-quality-gates.yml`: the bare `readme:audit` covers only
+cat-harness's README, and a gate that stops covering something still reports
+green.
 
 ## `readme:toc` — every harness README's own table of contents
 
-Owner, 2026-09-30: *"generated README.md ... missing TOC, probably need on all
-harnesses"*. A nested list of the README's **own** h2/h3 headings, linked by the
+A nested list of the README's **own** h2/h3 headings, linked by the
 anchor GitHub assigns them. Every instance README carries it under a bold
 **Contents** line, above its first `##`; the root README too.
 
@@ -183,22 +157,17 @@ would leave the TOC one run behind and `--check` would fail on a README that
 had just been synced.
 
 **Zero h2/h3 is a determined empty** (*"This README has no sections yet."*),
-and a README with nothing to outline is better without the marker — which is
-why the immunizations IG carries none. A renderer called with no README text
+and a README with nothing to outline is better without the marker. A renderer called with no README text
 is **undetermined** and leaves the region alone.
 
-**Gated by `readme:sync:all:check`**, over every declared instance. The three
-single-README checks above name one file each; a generated region in the
-other instances that nothing checked would be a hand-kept list, wrong the
-first time somebody added a heading.
+**Gated by `readme:sync:all:check`**, over every declared instance; the
+single-README checks above name one file each, and a generated region nothing
+checks is a hand-kept list, wrong the first time somebody adds a heading.
 
 ## `kg:processes` and `kg:files` — an instance's diagrams and files, from its declaration
 
 Two sections any instance's README may carry, both read from the instance's
 own declaration and the files it names (`bootstrap-tools/scripts/readme-graph-sections.ts`).
-Owner, 2026-09-29: *"display bpmn(s) etc in README.md"*, *"part of readme.md
-generation is to do rendering"*, and the file list at the end must be *"a
-skill and tool in cat-harness"*.
 
 - **`kg:processes`** — every `.bpmn` in the declared directories, the entry
   Process first (the one no other calls), each with its picture. The picture
@@ -206,8 +175,7 @@ skill and tool in cat-harness"*.
   exempt from `workflow-visualiser` — one with no site of its own, so its
   README is where its diagrams are seen. This section **reads** the SVG and
   never draws; rendering needs a browser, so `render:bpmn` must run first.
-  bootstrap's own README is generated and checked in bootstrap's repository
-  (owner, 2026-10-01: each repo owns its README; litlfred/bootstrap#1).
+  Each repository generates and checks its own README.
   A diagram with no picture beside it leaves the region untouched — never a
   broken image.
 - **`kg:files`** — every file, grouped by declared directory, with "what it
@@ -221,10 +189,9 @@ skill and tool in cat-harness"*.
 instance's README, and the floor instance must not name the layer above it
 — its leak test fails on the word. `kg` is vocabulary every instance has.
 
-**A blank "used by" is a finding, not decoration.** On bootstrap it showed
-`skills/discussion.md` used by nothing although a diagram names it: the file
-has no front matter, so by bootstrap's own rule it is not a Skill. A
-hand-kept table had said "step 2" and hidden that.
+**A blank "used by" is a finding, not decoration** — for example a file a
+diagram names that has no front matter, and so is not a Skill. A hand-kept
+table would hide that.
 
 ## `subgraph-readmes` — one README per declared directory
 
@@ -241,7 +208,7 @@ the kinds its `graphTypologies`, each file row what the file says it is, and "us
 by" only a relation a diagram records.
 
 **The layout is Liquid**, in `bootstrap-tools/scripts/templates/readme/`,
-beside the writer in the tools repository (bean `xsqm`). cat-harness's
+beside the writer in the tools repository. cat-harness's
 `readme:subgraphs` resolves its own Extensions — a directory's `scope`, an
 `absent` directory, the declared README — and calls that writer. Templates may `{% include %}` one another, Jekyll
 style, and read any declared field through `kg`. Change a template, run the
@@ -260,11 +227,10 @@ not failed: filling a declaration is its owner's work. `--check` fails on a
 stale README — the READMEs are docs, committed — and **judges** the record
 rather than comparing it: it fails on a declared directory newly absent or a
 process newly unresolved against a baseline, and a missing baseline is
-UNKNOWN and not gated (bean `0dav`). The record itself is a derived QA result
-whose home is the `qa-reports` branch (arc `3fva`), so it is not something to
-regenerate and commit. A `qa` or `health` directory absent from the checkout
-is not an absent-directory finding: those kinds are leaving `main`
-(`mayLeaveMain`). It runs in CI and in the pre-commit hook
+UNKNOWN and not gated. The record itself is a derived QA result whose home is
+the `qa-reports` branch, so it is not something to regenerate and commit. A
+`qa` or `health` directory absent from the checkout is not an
+absent-directory finding: those kinds may live off `main` (`mayLeaveMain`). It runs in CI and in the pre-commit hook
 (`scripts/git-hooks/pre-commit`).
 
 ### Where the README render sits in the pipeline
@@ -274,10 +240,9 @@ harness render, and **fatal** on failure — it is the file a reader opens first
 The order and the reasoning are in
 [`render-order`](render-order.md); do not restate them here.
 
-## Defined terms are links, everywhere in a README (owner, 2026-09-29)
+## Defined terms are links, everywhere in a README
 
-*"terms in readme like Skills, Process, Role, etc should be links in README.md
-s"*. A capitalized term bootstrap defines links to its row in
+A capitalized term bootstrap defines links to its row in
 `bootstrap/schemas/README.md` wherever it appears in prose — not only at first
 use — so a reader who lands mid-page is one click from the definition.
 
@@ -298,10 +263,7 @@ use — so a reader who lands mid-page is one click from the definition.
 `README.md` and `AGENTS.md` are **declared assets with a declared purpose**
 (`ASSET_ROLES` in `schemas/kg/cat-harness.ts` — one place, per ROLE, not
 per asset). Keeping them true is part of
-[`agent-memory`](../../conduct/conduct-core/agent-memory.md), and the owner put them there:
-
-> it is an asset and has a defined purpose (that is part of skills of mantiaing
-> agent memroies)
+[`agent-memory`](../../conduct/conduct-core/agent-memory.md).
 
 The one distinction that governs how each is written: **a file is read, memory
 is injected.** Nothing truncates a file, so `AGENTS.md` carries what an agent

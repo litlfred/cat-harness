@@ -29,10 +29,6 @@ msgstr "إطار العمل الوكيل"
 msgid "On this page"
 msgstr "في هذه الصفحة"
 
-#: docs/concepts/agentic-harness.md:29
-msgid "The agentic harness is the interaction model that folio-assistant runs on — the rules, states, and workflows that govern how an agent and a user collaborate inside this platform. Much of this behaviour is already described across individual skills and guidance documents; this page consolidates it into one reference so that an agent entering a session can look up the expected behaviour rather than reconstructing it from scattered rules."
-msgstr "إن إطار العمل الوكيل (agentic harness) هو نموذج التفاعل الذي يعمل عليه folio-assistant — القواعد، والحالات، وسير العمل التي تحكم كيفية تعاون الوكيل والمستخدم داخل هذه المنصة. وقد وُصف الكثير من هذا السلوك بالفعل عبر مهارات ووثائق إرشادية فردية؛ وتجمع هذه الصفحة كل ذلك في مرجع واحد حتى يتمكن الوكيل الذي يدخل في جلسة من البحث عن السلوك المتوقع بدلاً من إعادة تركيبه من قواعد متفرقة."
-
 #: docs/concepts/agentic-harness.md:36
 msgid "This is not about the agent's internal architecture. It is about the observable contract between the agent and the user: what states the interaction can be in, how requests are classified, which workflow the agent enters for each class, and what the user should expect at each stage."
 msgstr "لا يتعلق هذا بالهندسة المعمارية الداخلية للوكيل. بل يتعلق بـ العقد الملموس (observable contract) بين الوكيل والمستخدم: ما هي الحالات التي يمكن أن يكون فيها التفاعل، وكيف تُصنَّف الطلبات، وما هو سير العمل الذي يدخله الوكيل لكل فئة، وما يجب أن يتوقعه المستخدم في كل مرحلة."
@@ -56,10 +52,6 @@ msgstr "حالة سير العمل (Workflow state)"
 #: docs/concepts/agentic-harness.md:58
 msgid "The agent is executing a named workflow — each represented by a BPMN process diagram with the agent and user in separate swim lanes. The active workflow determines what the agent does next and what it expects from the user."
 msgstr "يقوم الوكيل بتنفيذ سير عمل مسمى — يتم تمثيل كل منها بمخطط عملية BPMN مع وضع الوكيل والمستخدم في مسارات سباحة (swimlanes) منفصلة. ويحدد سير العمل النشط ما سيفعله الوكيل بعد ذلك وما يتوقعه من المستخدم."
-
-#: docs/concepts/agentic-harness.md:62
-msgid "Active workflows in this platform:"
-msgstr "مسارات العمل النشطة في هذه المنصة:"
 
 #: docs/concepts/agentic-harness.md:64
 msgid "Workflow"
@@ -289,10 +281,6 @@ msgstr "عند عدم اليقين، يسأل الوكيل: \"يبدو أن هذ
 msgid "Content workflows"
 msgstr "سير عمل المحتوى"
 
-#: docs/concepts/agentic-harness.md:150
-msgid "When a request is classified as content work (authoring, review, ingestion), the agent follows the corresponding BPMN workflow. The existing documentation pages describe these in detail:"
-msgstr "عندما يُصنف طلب على أنه عمل محتوى (تأليف، مراجعة، استيعاب)، يتبع الوكيل سير عمل BPMN المقابل. وتصف صفحات التوثيق الحالية هذه المسارات بالتفصيل:"
-
 #: docs/concepts/agentic-harness.md:163
 msgid "Writing guides:"
 msgstr "أدلة الكتابة:"
@@ -312,10 +300,6 @@ msgstr "هذه ليست محورًا واحدًا، ومعاملتها كأنه�
 #: docs/concepts/agentic-harness.md:211
 msgid "BPMN execution: one skill, two engines"
 msgstr "تنفيذ BPMN: مهارة واحدة، ومحركان"
-
-#: docs/concepts/agentic-harness.md:216
-msgid "The owner, 2026-09-23, naming the skill this spectrum is about:"
-msgstr "المالك، 2026-09-23، مسميًا المهارة التي يدور حولها هذا الطيف:"
 
 #: docs/concepts/agentic-harness.md:218
 msgid "BPMN Execution Skill: given a Process, Context, State and Role, utilize one or more Skills in order to execute a Task."
@@ -400,10 +384,6 @@ msgstr "تكتشفها تقارير ضمان/مراقبة الجودة (QA/QC) �
 #: docs/concepts/agentic-harness.md:259
 msgid "Feature-request workflow (CRDM)"
 msgstr "سير عمل طلبات الميزات (CRDM)"
-
-#: docs/concepts/agentic-harness.md:269
-msgid "The feature-request workflow is where this harness document adds the most value, because it describes a behaviour that was previously implicit. The authoring and review workflows have been documented for months; the requirements workflow existed only as ad-hoc conversation."
-msgstr "يعد سير عمل طلبات الميزات هو الموضع الذي تقدم فيه وثيقة إطار العمل هذه أكبر فائدة، لأنها تصف سلوكًا كان ضمنيًا في السابق. فبينما وُثقت مسارات عمل التأليف والمراجعة لعدة أشهر؛ لم يكن سير عمل المتطلبات موجودًا إلا في شكل محادثات ارتجالية."
 
 #: docs/concepts/agentic-harness.md:274
 msgid "How the agent enters CRDM"
@@ -673,10 +653,6 @@ msgstr "قد تمتد المتطلبات عبر مسائل متعددة. ينب�
 msgid "Consolidated skill references"
 msgstr "مراجع المهارات المجمعة"
 
-#: docs/concepts/agentic-harness.md:393
-msgid "The behaviour described on this page draws from skills and guidance documents scattered across the repository. This section maps the consolidated behaviour back to its authoritative sources."
-msgstr "يستمد السلوك الموصوف في هذه الصفحة تفاصيله من مهارات ووثائق إرشادية متفرقة في مختلف أنحاء المستودع. ويربط هذا القسم السلوك المجمع بمصادره المعتمدة."
-
 #: docs/concepts/agentic-harness.md:397
 msgid "Behaviour"
 msgstr "السلوك"
@@ -744,10 +720,6 @@ msgstr "عندما تختلف إحدى المهارات مع هذه الصفحة
 #: docs/concepts/agentic-harness.md:415
 msgid "What is not built yet"
 msgstr "ما لم يُبنَ بعد"
-
-#: docs/concepts/agentic-harness.md:420
-msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
-msgstr "استدامة حالة سير العمل — يصف إطار العمل تعليق سير العمل واستئنافه، ولكن لا توجد آلية للاحتفاظ بحالة سير عمل الوكيل واستدامتها عبر الجلسات. ويعتمد هذا اليوم على الـ beans وتعليقات المسائل كبدائل تمثيلية."
 
 #: docs/concepts/agentic-harness.md:425
 msgid "Automated request classification — the classification table is a reference for agents to read; there is no classifier tool that routes automatically."
@@ -897,3 +869,24 @@ msgstr "مخطط BPMN لإطار العمل الوكيل نفسه — لم يت�
 
 #~ msgid "Tracked in: #203"
 #~ msgstr "يتم تتبعه في: #203"
+
+#~ msgid "The agentic harness is the interaction model that folio-assistant runs on — the rules, states, and workflows that govern how an agent and a user collaborate inside this platform. Much of this behaviour is already described across individual skills and guidance documents; this page consolidates it into one reference so that an agent entering a session can look up the expected behaviour rather than reconstructing it from scattered rules."
+#~ msgstr "إن إطار العمل الوكيل (agentic harness) هو نموذج التفاعل الذي يعمل عليه folio-assistant — القواعد، والحالات، وسير العمل التي تحكم كيفية تعاون الوكيل والمستخدم داخل هذه المنصة. وقد وُصف الكثير من هذا السلوك بالفعل عبر مهارات ووثائق إرشادية فردية؛ وتجمع هذه الصفحة كل ذلك في مرجع واحد حتى يتمكن الوكيل الذي يدخل في جلسة من البحث عن السلوك المتوقع بدلاً من إعادة تركيبه من قواعد متفرقة."
+
+#~ msgid "Active workflows in this platform:"
+#~ msgstr "مسارات العمل النشطة في هذه المنصة:"
+
+#~ msgid "When a request is classified as content work (authoring, review, ingestion), the agent follows the corresponding BPMN workflow. The existing documentation pages describe these in detail:"
+#~ msgstr "عندما يُصنف طلب على أنه عمل محتوى (تأليف، مراجعة، استيعاب)، يتبع الوكيل سير عمل BPMN المقابل. وتصف صفحات التوثيق الحالية هذه المسارات بالتفصيل:"
+
+#~ msgid "The owner, 2026-09-23, naming the skill this spectrum is about:"
+#~ msgstr "المالك، 2026-09-23، مسميًا المهارة التي يدور حولها هذا الطيف:"
+
+#~ msgid "The feature-request workflow is where this harness document adds the most value, because it describes a behaviour that was previously implicit. The authoring and review workflows have been documented for months; the requirements workflow existed only as ad-hoc conversation."
+#~ msgstr "يعد سير عمل طلبات الميزات هو الموضع الذي تقدم فيه وثيقة إطار العمل هذه أكبر فائدة، لأنها تصف سلوكًا كان ضمنيًا في السابق. فبينما وُثقت مسارات عمل التأليف والمراجعة لعدة أشهر؛ لم يكن سير عمل المتطلبات موجودًا إلا في شكل محادثات ارتجالية."
+
+#~ msgid "The behaviour described on this page draws from skills and guidance documents scattered across the repository. This section maps the consolidated behaviour back to its authoritative sources."
+#~ msgstr "يستمد السلوك الموصوف في هذه الصفحة تفاصيله من مهارات ووثائق إرشادية متفرقة في مختلف أنحاء المستودع. ويربط هذا القسم السلوك المجمع بمصادره المعتمدة."
+
+#~ msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
+#~ msgstr "استدامة حالة سير العمل — يصف إطار العمل تعليق سير العمل واستئنافه، ولكن لا توجد آلية للاحتفاظ بحالة سير عمل الوكيل واستدامتها عبر الجلسات. ويعتمد هذا اليوم على الـ beans وتعليقات المسائل كبدائل تمثيلية."

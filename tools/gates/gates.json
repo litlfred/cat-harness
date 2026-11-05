@@ -51,8 +51,8 @@
       "continual-progress"
     ],
     "selection": {
-      "when": "Before any push, and as the answer to \"what checks this?\". It matters most where CI is not: `tools/` is an INHERITED declaration and `.github/workflows/` is not, so a downstream instance gets this Tool and none of the gates it names. #363's self-sovereign topology has no CI at all.",
-      "limits": "It runs what the workflow declares, so a check CI does not run is a check this does not run — that is the point, not a gap. The default omits the browser jobs; `--all` adds them, and `render:bpmn:check` needs Chromium.",
+      "when": "Before any push, and as the answer to \"what checks this?\". It matters most where CI is not: `tools/` is an INHERITED declaration and `.github/workflows/` is not, so a downstream instance gets this Tool and none of the gates it names.",
+      "limits": "It runs what the workflow declares, so a check CI does not run is a check this does not run. The default omits the browser jobs; `--all` adds them, and `render:bpmn:check` needs Chromium.",
       "cost": "The fast set is about a minute, dominated by `bun test`. `--all` adds a browser render."
     },
     "requires": {

@@ -7,19 +7,14 @@ description: >
   Runs before document ingestion, which begins only once a file has landed.
 ---
 
-# Acquisition is the step before ingestion, and it had no home
+# Acquisition is the step before ingestion
 
 `document-ingestion.bpmn` begins at **`StartEvent_Dropped` — "a file lands in
-`uploads/`"**, described in the diagram as *"the only entry point"*. That is
-true of ingestion and says nothing about how the file got there.
-
-Everything before that drop — noticing something is needed, asking for it,
-telling somebody where to put it, seeing it arrive — was unwritten. This is it.
+`uploads/`"**. This skill covers everything before that drop: noticing
+something is needed, asking for it, telling somebody where to put it, seeing
+it arrive.
 
 ## Channels are plural, and the set is open
-
-The owner, 2026-09-20: *"uploads/ is one tool for content acuqistion.
-chat/dsicsuusion is another. could be more."*
 
 | channel | what arrives | what it is good for |
 |---|---|---|
@@ -32,8 +27,7 @@ in chat is an acquired resource: it has a source, it can be wrong, and it
 belongs in the graph with its provenance exactly as a PDF does.
 
 Anything added later — a connector, a watched mailbox, a forge issue with
-attachments — is another row. Nothing in this skill should have to change to
-admit one, and a design that would have to be is the wrong design.
+attachments — is another row, with no change to this skill.
 
 ## Two directions, and the unprompted one is easy to forget
 
@@ -65,22 +59,11 @@ cheaper answers have been offered.
 ## Never write the upload URL by hand
 
 Use **`bun run cat-harness-tools/scripts/upload-url.ts [branch]`**, which composes it
-from the declaration. The reason is a live 404 rather than a preference. The
-owner, 2026-09-20, pointed at
-`github.com/litlfred/folio-assistant/upload/main/uploads`:
-
-> were it to exist, but it doesmt on main!!!!!
-
-Verified against GitHub the same day: **`/tree/main/uploads` → 404**, and
-**`/tree/main/cat-harness/uploads` → 200**.
-
-The cause is one segment. The declaration declares the queue as
-`{ id: "uploads", path: "uploads/" }` with no `scope`, and absent scope means
-**instance** — so the declared path resolves under `cat-harness/`, while a forge
+from the declaration. A declared path is relative to its scope: with no
+`scope`, `{ id: "uploads", path: "uploads/" }` resolves under the
+**instance** (e.g. `cat-harness/uploads/` in an index checkout), while a forge
 URL needs it relative to the **repository**. Pasting the declared path into
-`/upload/<branch>/` drops `cat-harness/` and mints the 404. That is bean `wggr`:
-the two roots were the same directory until the move, so every declared path
-answered both questions at once.
+`/upload/<branch>/` drops the instance segment and mints a 404.
 
 **Every failure is named rather than guessed.** No `origin` remote, a non-GitHub
 forge, a declared-but-absent queue — each returns a reason and a remedy, because

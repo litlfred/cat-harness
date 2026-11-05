@@ -20,8 +20,7 @@ summary: >-
 > repository has adopted; that is [Methodologies]({{ '/methodologies/' | relative_url }}), and a
 > project moves there only when something from it is actually taken on.
 > Each entry was checked against the project's own repository on
-> **2026-09-23** (bean `vq8o`), with `beans` and `Beads` re-measured on
-> **2026-10-24** (bean `q2aj`). Licences and star counts move; re-check before
+> **2026-09-23**, with `beans` and `Beads` re-measured on **2026-10-24**. Licences and star counts move; re-check before
 > relying on one.
 
 ## Summary
@@ -41,7 +40,7 @@ No single project found does what folio-assistant does. Most overlap on
 | [AGENTS.md](#agentsmd) | cross-tool instruction file | MIT |
 | [Agent Skills](#agent-skills-skillmd) | skills loaded on demand | Apache-2.0 / CC-BY-4.0 |
 | [Superpowers](#superpowers) | skill-carried discipline | MIT |
-| [beans](#beans-and-beads) | git-committed work plan | Apache-2.0 |
+| [work items](#beans-and-beads) | git-committed work plan | Apache-2.0 |
 | [Beads](#beans-and-beads) | dependency-aware work plan for agents | MIT |
 | [BMAD-METHOD](#bmad-method) | agent roles + workflows | MIT |
 | [Spec Kit](#spec-kit) | phased, spec-driven process | MIT |
@@ -112,15 +111,13 @@ step that is not enabled.
 **Difference.** Both are the store. What folio-assistant adds on top is the
 coordination discipline ([bean-coordination]({{ '/reference/skill-instructions/bean-coordination.html' | relative_url }}):
 claim before you work, a claim announces rather than reserves, never delete a
-bean) and the link between a bean and a running process instance.
+work item) and the link between a work item and a running process instance.
 Beads' atomic claim (and, from v1.3, leases) is the stronger primitive where
 it is available.
 
-**Health, as observed 2026-09-23 (`vq8o`) and re-measured 2026-10-24 (`q2aj`).**
-The two differ sharply, and the difference matters to anyone choosing between
-them:
+**Health, as observed 2026-09-23 and re-measured 2026-10-24.**
 
-| | beans (2026-09-23) | beans (2026-10-24) | Beads (2026-09-23) | Beads (2026-10-24) |
+| | work items (2026-09-23) | work items (2026-10-24) | Beads (2026-09-23) | Beads (2026-10-24) |
 |---|---|---|---|---|
 | last commit | 2026-04-06 — none in the three months since | 2026-04-06 (`99260bf`) — zero commits since | ~16 commits a day over the last three months | 2026-10-24 — 592 commits since 2026-09-23 (~19/day) |
 | version | v0.4.2, pre-1.0 | v0.4.2 (2026-03-10), pre-1.0; no new releases | v1.3.0 (1.0 on 2026-04-03) | v1.3.2 (2026-10-24), via v1.3.1 (2026-09-30) and 5 RCs |
@@ -129,44 +126,14 @@ them:
 | issues (open / closed) | — | 39 open / 21 closed | — | 1,071 open / 1,807 closed |
 | recorded instability | none found | none found | a retracted release (v1.2.1, untested schema migration); issues on data loss across clones after the SQLite → Dolt migration and on `dolt pull` failing after migrations | no new `go.mod` retractions beyond `v1.1.1` / `v1.2.0` / `v1.2.1`; `#2251` and `#4259` closed, `#4356` still open; `v1.3.2` (fix-only) patched two `v1.3.1` data-loss regressions (`#7031`/`#7041` purge deleting closed root above live work; `#7032`/`#7044` auto-backup watermark skipping mid-sync commits) and a `v1.3.1` fan-in fix that reverted concurrent writes (`#7030`/`#7146`); new open multi-clone migration and `dolt pull`/`bd sync` data-loss issues (`#6727`, `#7037`, `#7039`, `#7073`, `#7294`, `#7757`, `#7781`, `#7783`, `#7795`, `#7811`) |
 
-Beans is **quiet**; Beads is **active but churning** in exactly the layer —
+Work items is **quiet**; Beads is **active but churning** in exactly the layer —
 storage and merge — this repository leans on hardest. Plain files that
-`git diff` and review read directly are also part of why beans fits here: the
-bean store is committed and reviewed like any other content.
+`git diff` and review read directly are also part of why work items fits here: the
+work item store is committed and reviewed like any other content.
 
-**2026-10-24 recheck (`q2aj`) and owner decision question.** One month after
-the 2026-09-23 baseline (`b91x`), the contrast is unchanged in direction:
-
-- **`hmans/beans` remains dormant upstream** — zero commits since 2026-04-06
-  (`99260bf`) and no release since `v0.4.2` (2026-03-10), with 39 open and 21
-  closed issues. No storage or corruption defect has surfaced in our usage, and
-  `scripts/beans-fallback.ts` covers environments without the Go binary.
-- **`gastownhall/beads` continues high-velocity development (592 commits since
-  2026-09-23, `v1.3.1` on 2026-09-30, `v1.3.2` on 2026-10-24) with no new
-  `go.mod` retractions**, and closed earlier migration-gate issues (`#6547`,
-  `#6575`). However, `v1.3.1` introduced a concurrent-write reversion bug in
-  its blocked-state recheck (`#7030`) and two data-loss bugs in retention and
-  auto-backup (`#7031`, `#7032`) that required `v1.3.2` to fix; migration
-  `0059` (`v1.3.0`) over-set stored `is_blocked` flags on embedded Dolt 2.2.0
-  (`#7037`, requiring a manual `bd recompute-blocked` per workspace); `#4356`
-  (dirty working set blocking `bd dolt pull` without manual `DOLT_ADD -f`)
-  remains open; and new multi-clone migration, `bd dolt pull` and `bd sync`
-  conflict/data-loss issues continue to open (`#6727` unmergeable stores after
-  migration 0062, `#7039` empty `events` history on pull-adopting clones,
-  `#7073` fresh-clone pull wedge, `#7294` `bd compact` re-dating commits so
-  tracker pulls overwrite unpushed edits, `#7757` `bd sync` dropping a clone's
-  comment on concurrent edits, `#7783` `bd sync` silently reopening a closed
-  bead on status conflict, `#7811` `bd dolt pull --strategy ours` reverting
-  remote labels, and `#7781`/`#7795` GitHub/GitLab pulls overwriting beads by
-  issue number across projects).
-- **Question for the owner (`b91x` / `q2aj`):** given that `beans` is
-  dormant-but-stable on plain Markdown files while `Beads` (`v1.3.2`) is still
-  working through multi-clone Dolt sync, merge and migration edge cases, should
-  we **(a) keep `beans`** (and either close the watch or recheck again after
-  2026-12-23 as originally scheduled in `b91x`), **(b) trial `Beads` alongside
-  `beans`** in a single isolated workspace, **(c) fork/maintain `beans`** (or
-  lean on our in-tree TypeScript tooling), or **(d) plan a migration to
-  `Beads`**?
+No storage or corruption defect has surfaced in this repository's use of
+`beans`, and `scripts/beans-fallback.ts` covers environments without the Go
+binary.
 
 ## Roles and processes
 
@@ -269,8 +236,7 @@ produces, reads or writes it
 
 ## General agent frameworks
 
-Added 2026-09-23, same session, on the owner's request. These overlap more
-loosely: each is an agent **runtime** you build on, where folio-assistant is a
+These overlap more loosely: each is an agent **runtime** you build on, where folio-assistant is a
 harness around coding agents that already exist.
 
 ### LangGraph

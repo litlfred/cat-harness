@@ -41,7 +41,7 @@ Output schema for DMN decision table authoring.
 | `decisionTableCount` | integer | no |  |
 | `ruleCount` | integer | no |  |
 | `hitPolicy` | `"UNIQUE"` \| `"FIRST"` \| `"PRIORITY"` \| `"ANY"` \| `"COLLECT"` \| `"RULE ORDER"` | no |  |
-| `stagingLinks` | any | no | The staging preview of the work this output asks a person to look at: one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness skills/sdlc/sdlc-core/staging-review.md §"The deep-link rule". |
+| `stagingLinks` | any | no | The staging preview of the work this output asks a person to look at: one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness sdlc/skills/sdlc-core/staging-review.md §"The deep-link rule". |
 
 
 [Raw schema](https://github.com/litlfred/cat-harness/blob/main/schemas/skills/dmn-authoring/output.schema.json){: data-fa-link="source" data-src="schemas/skills/dmn-authoring/output.schema.json" data-repo="litlfred/cat-harness" } · [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/schemas/skills/dmn-authoring/output.schema.json){: .fa-edit-source data-fa-link="edit" data-src="schemas/skills/dmn-authoring/output.schema.json" data-repo="litlfred/cat-harness" }

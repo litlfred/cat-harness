@@ -50,16 +50,16 @@ cat-harness-tools/scripts/session-start-coord-sweep.sh  # CLI-independent equiva
 bun run cat check-deps                     # what this environment can do
 ```
 
-`--check-deps` matters more than it looks. Many checks degrade to `n/a`
-rather than failing when a tool is missing (no Lean toolchain, no Atlas,
-no LaTeX). **An `n/a` is not a pass.** If you report "all clean" without
-knowing what was skipped, you are reporting the absence of data as a
-result.
+Many checks degrade to `n/a` rather than failing when a tool is missing (no
+Lean toolchain, no Atlas, no LaTeX). **An `n/a` is not a pass:** say what was
+skipped and why, because "all clean" over skipped checks reports the absence of
+data as a result.
 
 ## 3. Find the right skill — don't improvise
 
 Skills are the unit of work here. Before hand-rolling a procedure, check
-whether one exists. **Ask for it; do not navigate to it.**
+whether one exists. **Ask for it; do not navigate to it,** because a hardcoded
+path goes missing the moment the layout moves.
 
 ```
 skill_list                                      # every skill, with its summary
@@ -67,10 +67,9 @@ skill_fetch skill="<id>" package_name="<pkg>"   # the instruction body to follow
 work_plan_prime                                 # the work plan — see §6
 ```
 
-No MCP server attached? The same graph is on disk, and reading it is three
-steps rather than a remembered path: open `<name>.json` at the repository
-root, take each `directories[]` entry whose `graphs` includes `cat-harness`,
-and read the `.md` files under it.
+No MCP server attached? The same graph is on disk: open `<name>.json` at the
+repository root, take the `directories[]` entries whose `graphTypologies` hold
+skills, and read the `.md` files under them.
 
 **Read [`kg-navigation`](../reference/skill-instructions/kg-navigation.md)
 before your first search.** It carries both routes in full, what counts as a
@@ -78,14 +77,7 @@ skill (three node kinds under those paths are not skills), and the three ways
 the search goes wrong — including the one where you edit the wrong copy of a
 skill that exists in three.
 
-This section used to list three directory paths instead. That is the practice
-`AGENTS.md` opens by warning against — *"hardcoding a path is how a skill goes
-missing the moment the layout moves"* — and one of the three names a graph typology
-that has since been renamed. The declaration is the answer; a path is a
-snapshot of it.
-
-Two generated references are worth knowing about, and neither is where you
-start:
+Where to read more — not where you start:
 
 | Where | What it gives you |
 |---|---|
@@ -113,8 +105,6 @@ The `.ts` manifest is the source of truth for structure. Formalisation
 
 ## 5. Two dependency relations — do not conflate them
 
-This trips up agents constantly.
-
 - **`uses[]` is editorial.** "What must a reader have read to follow
   this block?" Authored — agent/human maintained.
 - **The formal graph is machine-derived** from `lean.ref`, never
@@ -139,22 +129,22 @@ Auditing whether `uses[]` is well used is its own skill:
 ## 6. Track work in beans, not in your head
 
 `beans` is the **single** todo mechanism — session-local *and*
-cross-agent. `beans/` is committed, so a plan survives a resume in a
-fresh container.
+cross-agent. `beans/` is kept on a state branch and mounted at session start
+(`bun run cat state:mount`), so a plan survives a resume in a fresh container.
 
 ```sh
 beans list
 beans create "<title>"
-beans update <id> --status in-progress    # CLAIM before you work
+bun run cat beans:claim <id>             # CLAIM before you work
 ```
 
 Claim before working so two sessions don't pick the same item, and never
-close a bean a sibling is mid-flight on (a finished one closes on evidence, not on authorship), and never delete ANY bean — scrap it with reasons instead. Do not stand up a parallel todo
+close a work item a sibling is mid-flight on (a finished one closes on evidence, not on authorship), and never delete ANY work item — scrap it with reasons instead. Do not stand up a parallel todo
 store. Do not `beans create` bulk machine-generated queues (`*.qa.json`,
 witness files) — those stay as bulk JSON.
 
-Full discipline: `skills/sdlc/sdlc-core/todo-manager.md`,
-`skills/sdlc/sdlc-core/bean-coordination.md`.
+Full discipline: `work-plan/skills/work-plan/todo-manager.md`,
+`work-plan/skills/work-plan/bean-coordination.md`.
 
 ## 7. QA sidecars and axes
 
@@ -222,17 +212,11 @@ Watching a sibling PR: `/watch <pr|branch>`.
 | The block schema | `schemas/types.ts` |
 | The QA sidecar schema | `schemas/block-qa.ts` |
 | What this environment can do | `cat-harness/scenarios/capabilities/*.json`, `--check-deps` |
-| Lean tooling roadmap | [Lean tooling proposal](https://github.com/litlfred/folio-assistant/issues/198) |
 
 ## 10. Habits that keep you out of trouble
 
-- **`n/a` is not a pass.** Say what was skipped and why.
-- **Claim a bean before durable work.** Others may be running.
 - **Don't hardcode a paper name.** A folio may hold several; resolve
   with `findPapers()` / `soleFolioPaper()` from
   `content/pipeline/repo-root.ts`.
-- **Don't write content into the platform.** If it names a chapter, a
-  constant, or a vocabulary, it is folio data.
-- **Regenerate, never hand-edit,** anything under `docs/reference/`.
 - **Read the criterion description before acting on a finding.** They
   state severity, intent, and what explicitly does *not* count.

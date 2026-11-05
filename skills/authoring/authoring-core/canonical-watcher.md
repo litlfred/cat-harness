@@ -12,15 +12,15 @@ description: >
   ledger, idle sweep, author-ask, watch-prepared-PRs, witness-drift
   recovery, billing-quick-fail flake, post-completion one-voice,
   sibling-PR comment protocol, backlog-found PR spin-up, handover docs)
-  from `local/integration-watcher`.
+  from `sdlc-core/integration-watcher`.
 allowed-tools: Read Edit Write Bash Grep Glob Agent Monitor Skill
 ---
 
 # /canonical-watcher
 
-A concrete instance of `local/integration-watcher`. The parent encodes
-the shared mechanics; this file fills the nine domain-specific slots
-A–I for **derivation discipline**.
+A concrete instance of `sdlc-core/integration-watcher`. The parent encodes
+the shared mechanics; this file fills the domain-specific slots A–J for
+**derivation discipline**.
 
 **Setup:** use `NAME=canonical-watcher` everywhere the parent's §1
 references `${NAME}`. Files at `beans/canonical-watcher-queue.json` and

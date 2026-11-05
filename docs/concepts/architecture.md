@@ -54,9 +54,8 @@ flowchart TD
 
 ## Separation of concerns — current and future state
 
-This repo is today a **Tool repo and a Content repo in one checkout**. Issue
-[#223](https://github.com/litlfred/folio-assistant/issues/223) plans the split
-into five composable folio-assistant instances. Child pages carry it:
+The split of the platform into composable instances is described by the child
+pages:
 
 | page | what it answers |
 |---|---|
@@ -64,32 +63,37 @@ into five composable folio-assistant instances. Child pages carry it:
 | [Current state](architecture/current-state.html) | What is actually in this repo today, measured, and where the mixture is |
 | [Future state](architecture/future-state.html) | The five target repos and which directory lands in which |
 | [Migration plan](architecture/migration-plan.html) | Phase 0/I/II/III, the gates, and what is still undecided |
-| [Minimum `cat-harness`](architecture/cat-harness-minimum.html) | What survives in the harness once "not self-documenting" is applied as a test |
+| [Minimum `cat-harness`](architecture/cat-harness-minimum.html) | What survives in the harness once "renders no content type" is applied as a test |
 | [Harness instances](architecture/harness-instances.html) | What an instance IS — schematics, visualisations, tools; the four directories; the default rendering |
 
-The last two look like they disagree — the minimum says a harness produces
-nothing a human looks at, and the instance page says an instance renders by
-default. They do not: the requirement is a **floor that rises**, with
-`bootstrap` exempt from the visualiser and owing its own `.json`/`.jsonld`
-instead, and `cat-harness` the layer where the rest begins to apply. See
+The minimum says a harness produces nothing a human looks at, and the instance
+page says an instance renders by default; both hold because the rendering
+requirement is a **floor that rises**: `bootstrap` is exempt
+from the visualiser and owes its own `.json`/`.jsonld` instead, and
+`cat-harness` is the layer where the rest applies — see
 [Where the requirement starts](architecture/harness-instances.html#where-the-requirement-starts--bootstrap-is-the-exception).
 
 The rest of this page describes the architecture **as it is now**.
 
 ## Repository layout
 
+The authoritative list is `cat-harness.json`: every directory this layer
+declares, with the kind of graph it holds. The ones a reader looks for first:
+
 | Path | What lives here |
 |------|-----------------|
-| `src/` | The MCP server (`server.ts`), entry point (`index.ts`), core (`git`, `rbac`, `cache`, `feedback`, `logging`), and core tools (`tools/`) |
-| `adapters/` | Content adapters — `paper/` (Lean + LaTeX) and the standalone `mcp-server/` |
-| `schemas/` | The content-object model (`types.ts`, `constraints.ts`, `builders.ts`) and per-skill JSON Schemas (`schemas/skills/*`) |
-| `skills/` | Skill **packages** (`content-lifecycle`, `authoring-math`, `authoring-who-smart-guidelines`) with their Docker manifests |
-| `content/` | Content **pipeline** tooling (validators, QA, render helpers) — not content itself |
-| `ui/`, `viewer/`, `home_page/` | Web UI, interactive viewer, and the example Pages site |
-| `deploy/` | Deployment (Caddy, docker-compose, provisioning, OAuth) |
+| `skills/` | The knowledge graph: skill packages (`skills/<area>/<package>/`, each with a `package-manifest.json`), roles, permissions and requirements |
+| `processes/` | Executable BPMN processes and the DMN tables their gateways compute from |
+| `schemas/` | Per-skill JSON Schemas (`schemas/skills/`) and the schema documents the harness declares |
+| `tools/` | Tool definitions, one `tools/<id>/<id>.json` per tool |
+| `policies/` | What an actor may do, as W3C ODRL 2.2 policies |
+| `sdlc/`, `work-plan/` | The software-delivery and work-plan sub-graphs |
+| `library/`, `uploads/` | Ingested L1 source content, and the queue it is ingested from |
 | `docs/` | This documentation site |
-| `.github/` | CI workflows and scripts (build, publish, QA, docs) |
-| `.claude/skills/` | Local agent skills + capability hooks |
+| `.github/` | CI workflows |
+
+The server code, adapters and scripts named on this page (`src/`, `adapters/`,
+`scripts/`, `deploy/`) are not in this layer; they ship with the tools layer.
 
 ## The MCP server
 
@@ -131,7 +135,7 @@ These are documented in the generated [TypeScript API reference]({{ '/api/' | re
 
 ## Access control — ODRL, checked before every task
 
-There is one permission system, and it is W3C ODRL 2.2 (issue #1180): actions
+There is one permission system, and it is W3C ODRL 2.2: actions
 in `skills/permissions/permissions.json`, grants in `policies/*.jsonld`,
 evaluated by `permits()` / `decide()` in `schemas/odrl.ts`. Two callers ask it:
 
@@ -145,8 +149,7 @@ evaluated by `permits()` / `decide()` in `schemas/odrl.ts`. Two callers ask it:
   auth-gateway's sessions are declared actors whose grants are
   `policies/http-gateway.jsonld`. Here `unknown` refuses.
 
-Until issue #1207 (2026-09-23), `rbac.ts` was a separate viewer < collaborator
-< owner ladder and the executor checked nothing. The discipline is the
+The discipline is the
 [`task-authorization`]({{ '/reference/skill-instructions/task-authorization.html' | relative_url }})
 skill.
 
@@ -164,7 +167,7 @@ See `docs/folio-assistant-migration.md` for the full cross-agent design.
 
 ## Deployment
 
-`deploy/` contains a Caddy reverse-proxy template, `docker-compose.yml`, a
+`deploy/` (tools layer) contains a Caddy reverse-proxy template, `docker-compose.yml`, a
 provisioning script, Google OAuth setup, and a self-update script for running a
 shared HTTP instance. The skill-package Docker manifests aggregate apt/pip/npm
 dependencies into a single image per active package set.

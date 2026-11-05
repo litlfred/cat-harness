@@ -54,9 +54,8 @@ flowchart TD
 
 ## Séparation des préoccupations — état actuel et futur
 
-Ce dépôt est aujourd'hui à la fois un **dépôt d'outils et un dépôt de contenu en un seul checkout**. Le ticket
-[#223](https://github.com/litlfred/folio-assistant/issues/223) prévoit la division
-en cinq instances composables de folio-assistant. Les pages filles le détaillent :
+La division de la plateforme en instances composables est décrite dans les
+pages filles :
 
 | page | ce à quoi elle répond |
 |---|---|
@@ -67,29 +66,36 @@ en cinq instances composables de folio-assistant. Les pages filles le détaillen
 | [`cat-harness` minimal](../architecture/cat-harness-minimum.html) | Ce qui subsiste dans le harnais une fois que le critère « non auto-documenté » est appliqué comme test |
 | [Instances de harnais](../architecture/harness-instances.html) | Ce qu'EST une instance — schémas, visualisations, outils ; les quatre répertoires ; le rendu par défaut |
 
-Les deux dernières semblent se contredire — le minimum indique qu'un harnais ne produit
-rien qu'un humain regarde, et la page des instances indique qu'une instance effectue un rendu
-par défaut. Ce n'est pas le cas : l'exigence est un **plancher qui s'élève**,
-`bootstrap` étant exempté du visualiseur et devant fournir ses propres `.json`/`.jsonld`
-à la place, et `cat-harness` étant la couche où le reste commence à s'appliquer. Voir
+Le minimum indique qu'un harnais ne produit rien qu'un humain regarde, et la
+page des instances qu'une instance effectue un rendu par défaut ; les deux
+tiennent, car l'exigence de rendu est un **plancher qui s'élève** : `bootstrap` est exempté
+du visualiseur et fournit ses propres `.json`/`.jsonld` à la place, et
+`cat-harness` est la couche où le reste s'applique. Voir
 [Où commence l'exigence](../architecture/harness-instances.html#where-the-requirement-starts--bootstrap-is-the-exception).
 
 Le reste de cette page décrit l'architecture **telle qu'elle est actuellement**.
 
 ## Agencement du dépôt
 
+La liste qui fait foi est `cat-harness.json` : chaque répertoire que déclare
+cette couche, avec le type de graphe qu'il contient. Ceux qu'un lecteur cherche
+d'abord :
+
 | Chemin | Ce qui s'y trouve |
 |--------|-------------------|
-| `src/` | Le serveur MCP (`server.ts`), le point d'entrée (`index.ts`), le cœur (`git`, `rbac`, `cache`, `feedback`, `logging`) et les outils de base (`tools/`) |
-| `adapters/` | Adaptateurs de contenu — `paper/` (Lean + LaTeX) et le `mcp-server/` autonome |
-| `schemas/` | Le modèle d'objets de contenu (`types.ts`, `constraints.ts`, `builders.ts`) et les schémas JSON par compétence (`schemas/skills/*`) |
-| `skills/` | Les **paquets** de compétences (`content-lifecycle`, `authoring-math`, `authoring-who-smart-guidelines`) avec leurs manifestes Docker |
-| `content/` | Outillage du **pipeline** de contenu (validateurs, QA, assistants de rendu) — pas le contenu lui-même |
-| `ui/`, `viewer/`, `home_page/` | Interface utilisateur Web, visualiseur interactif et site d'exemple Pages |
-| `deploy/` | Déploiement (Caddy, docker-compose, provisionnement, OAuth) |
+| `skills/` | Le graphe de connaissances : paquets de compétences (`skills/<domaine>/<paquet>/`, chacun avec un `package-manifest.json`), rôles, permissions et exigences |
+| `processes/` | Les processus BPMN exécutables et les tables DMN que calculent leurs passerelles |
+| `schemas/` | Les schémas JSON par compétence (`schemas/skills/`) et les documents de schéma que déclare le harnais |
+| `tools/` | Les définitions d'outils, un `tools/<id>/<id>.json` par outil |
+| `policies/` | Ce qu'un acteur peut faire, sous forme de politiques W3C ODRL 2.2 |
+| `sdlc/`, `work-plan/` | Les sous-graphes de livraison logicielle et de plan de travail |
+| `library/`, `uploads/` | Le contenu source L1 ingéré, et la file d'où il est ingéré |
 | `docs/` | Ce site de documentation |
-| `.github/` | Workflows et scripts CI (compilation, publication, QA, documentation) |
-| `.claude/skills/` | Compétences d'agent locales + points d'ancrage de capacités |
+| `.github/` | Les workflows de CI |
+
+Le code du serveur, les adaptateurs et les scripts nommés sur cette page
+(`src/`, `adapters/`, `scripts/`, `deploy/`) ne sont pas dans cette couche ; ils
+sont livrés avec la couche d'outils.
 
 ## Le serveur MCP
 
@@ -131,7 +137,7 @@ Ceux-ci sont documentés dans la [Référence de l'API TypeScript]({{ '/fr/api/'
 
 ## Contrôle d'accès — ODRL, vérifié avant chaque tâche
 
-Il n'existe qu'un seul système de permissions, et il s'agit de W3C ODRL 2.2 (ticket #1180) : les actions
+Il n'existe qu'un seul système de permissions, et il s'agit de W3C ODRL 2.2 : les actions
 dans `skills/permissions/permissions.json`, les autorisations dans `policies/*.jsonld`,
 évaluées par `permits()` / `decide()` dans `schemas/odrl.ts`. Deux appelants le sollicitent :
 
@@ -145,8 +151,7 @@ dans `skills/permissions/permissions.json`, les autorisations dans `policies/*.j
   sessions de la passerelle d'authentification sont des acteurs déclarés dont les droits sont
   définis dans `policies/http-gateway.jsonld`. Ici, `unknown` refuse.
 
-Jusqu'au ticket #1207 (23-09-2026), `rbac.ts` était une hiérarchie distincte viewer < collaborator
-< owner et l'exécuteur ne vérifiait rien. La règle de conduite est définie par la compétence
+La règle de conduite est définie par la compétence
 [`task-authorization`]({{ '/reference/skill-instructions/task-authorization.html' | relative_url }}).
 
 ## Amorçage du plan de travail (inter-harnais)
@@ -163,7 +168,7 @@ Voir `docs/folio-assistant-migration.md` pour la conception inter-agents complè
 
 ## Déploiement
 
-`deploy/` contient un modèle de proxy inverse Caddy, `docker-compose.yml`, un
+`deploy/` (couche d'outils) contient un modèle de proxy inverse Caddy, `docker-compose.yml`, un
 script de provisionnement, la configuration de Google OAuth et un script de mise à jour automatique pour exécuter une
 instance HTTP partagée. Les manifestes Docker des paquets de compétences regroupent les dépendances apt/pip/npm
 dans une image unique par ensemble de paquets actif.

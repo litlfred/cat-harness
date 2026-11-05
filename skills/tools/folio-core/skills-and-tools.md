@@ -19,8 +19,7 @@ guideline for new ones. A skill that names GitHub, names the `beans` binary, or
 embeds a shell invocation **has swallowed a Tool**, and the swallowing is what
 makes a layer un-portable.
 
-Decided 2026-09-18 by the repository owner. Schema for the Tool node:
-`docs/architecture/cat-harness-minimum.md` §"Strawperson"; carrier
+Schema for the Tool node: `schemas/tools/tool.ts` in the tools layer; carrier
 convention (Zod authoritative, JSON-LD and JSON Schema generated) in
 [`directory-conventions`](../../kg/kg-core/directory-conventions.md) §"What lives in the
 `schemas` graph".
@@ -30,7 +29,7 @@ convention (Zod authoritative, JSON-LD and JSON Schema generated) in
 > **Would this sentence still be true on a different forge, a different
 > binary, a different machine?** If yes it is skill. If no it is Tool.
 
-Applied to the two cases that motivated the rule:
+Applied:
 
 | sentence | verdict |
 |---|---|
@@ -47,16 +46,14 @@ a fallback exists and when to reach for it, because an agent that does not know
 one exists will stop. What it must not do is spell out the edit.
 
 **When the mechanism is itself a procedure**, it is the Tool's subprocess
-(owner, 2026-09-30: *"tools can describe their own specific subprocesses if
-needed to not bog down general skills"*). The Tool node names the BPMN in
+(§"A Tool may describe its own subprocess"). The Tool node names the BPMN in
 `subprocesses` (process ids, checked by `check:tools`), conventionally under
 `processes/tools/`; the skill keeps the portable sentence. See
 [`bpmn-processes`](../../process/workflow/bpmn-processes.md).
 
 ## Every bean skill has (at least) two Tools
 
-The work-plan skills are the worked example, because the harness has carried
-both mechanisms for a while without naming them as two:
+The work-plan skills are the worked example:
 
 | Tool | when |
 |---|---|
@@ -64,20 +61,16 @@ both mechanisms for a while without naming them as two:
 | hand edit / `scripts/beans-fallback.ts` | CLI absent or cannot be installed here |
 
 Both satisfy the same skills. Neither is the skill. A fresh container has no
-`beans` on `PATH`, so an agent that only knows the CLI is an agent that reads
-the plan and touches nothing — which is exactly the 2026-09-18 failure where a
-session completed two merged PRs' worth of durable work **unclaimed**. The
-fallback is not a degraded mode to mention in passing; it is a second Tool with
-equal standing, and the skill must present it that way.
+`beans` on `PATH`, so an agent that only knows the CLI reads the plan and
+touches nothing. The fallback is a second Tool with equal standing, and the
+skill must present it that way.
 
 **An external project is a candidate Tool before it is anything else.** When
 somebody asks whether another project could do a skill's job — Beads for the
 work plan, say — that survey is research, not a proposal and not a skill edit:
 it files under `<instance>/docs/research-and-analysis/` per
 [`placement`](../../kg/kg-core/placement.md), dated, with each project's health measured rather
-than recalled. The first one is `research-and-analysis/prior-art.md`
-(2026-09-23), and the choice it raised is a bean (`b91x`), not a paragraph
-here. Only if a candidate is adopted does it become a Tool node, with the
+than recalled (for example `research-and-analysis/prior-art.md`). Only if a candidate is adopted does it become a Tool node, with the
 `selection` its derived alternatives call for, below.
 
 ## Substitutable Tools are derived, and each says how to choose
@@ -86,7 +79,7 @@ A pair like that is **substitutable**: same job, different mechanism, pick one.
 Nobody declares it. Two Tools are alternatives when they **satisfy a common
 skill AND have the same I/O signature** — the same input names, types and
 required flags, the same outputs, the same `renders` and `maintains`
-(`deriveAlternatives` in `schemas/tools/tool.ts`; #1168, B9a). A shared skill alone
+(`deriveAlternatives` in `schemas/tools/tool.ts`). A shared skill alone
 is not enough: most skills with several Tools have complementary ones, steps
 rather than choices, and their I/O is what tells them apart.
 
@@ -105,8 +98,7 @@ three fields, all required together (`check-tools` fails one without it):
 | `limits` | where it stops, and which sibling picks up |
 | `cost` | what having it available costs |
 
-**`limits` is the one an author is tempted to skip**, and it is the one that
-matters most: without it an agent reaches for the tool and discovers the
+**Do not skip `limits`**: without it an agent reaches for the tool and discovers the
 boundary by failing. State it even when it is "none", for the same reason
 `install.none` exists — so "no limits" is distinguishable from an unfinished
 record.
@@ -116,27 +108,21 @@ what having it costs — CI minutes, a wheel needing a C toolchain, a network
 round trip. Two Tools can be equally easy to install and very differently
 expensive to keep.
 
-**Why not `description`?** It is projected verbatim as the MCP tool description
-and into the exported graph. It answers "what does this do", which is what a
-caller needs at the moment of calling; comparative prose about installation
-cost is noise there, and would degrade the surface an agent reads when choosing
-among tools.
+**Not in `description`.** It is projected verbatim as the MCP tool
+description and into the exported graph, and answers "what does this do";
+comparative prose about cost does not belong there, because it would degrade
+the surface an agent reads when choosing among tools.
 
 ### Sharing a skill does NOT make two Tools alternatives
 
-Deriving substitutability from `satisfies` was the first design, and
-measurement refuted it. **Measured 2026-09-20: 12 of this instance's 25 skills
-carry more than one Tool, and nearly all are complementary** — `workflow-list`,
+Most skills with several Tools have complementary ones: `workflow-list`,
 `-start`, `-next`, `-gate` and `-complete` are five *steps* of `process-state`,
-not five ways to perform it; the five translation tools are the same shape.
-Exactly one pair, `beans-cli` / `beans-manual`, was genuinely substitutable.
-
-A rule keyed on "shares a skill" would therefore have demanded comparative
-prose on twelve skills with nothing to compare, and an author obliged to write
-it writes noise. Substitutability is a judgement about mechanism, so it is
-declared — and `scripts/check-tools.ts` checks that each id resolves and that
-the relation is **mutual**, because a one-sided declaration means an agent
-arriving at the silent end never learns a choice exists.
+not five ways to perform it. Only Tools that also share an I/O signature are
+alternatives, and `scripts/check-tools.ts` checks that the relation is
+**mutual**, because a one-sided one means an agent arriving at the silent end
+never learns a choice exists. Keying substitutability on a shared skill alone
+would demand comparative prose where there is nothing to compare, and an author
+obliged to write it writes noise.
 
 ### The worked pair: stdlib vs extensions
 
@@ -173,8 +159,7 @@ accordingly declares `invoke.mcp` as **one optional arm** beside `shell` and
 `container`. A Tool whose *only* invocation is an MCP call is not usable by the
 harness that defines it.
 
-**Editing a skill goes through `skill_update`, not a raw file write**
-(folio-assistant#875). Where the server runs, it is the write side of
+**Editing a skill goes through `skill_update`, not a raw file write.** Where the server runs, it is the write side of
 `skill_fetch`. It refuses unless every gate passes:
 
 - the skill resolves as `skill_fetch` serves it;
@@ -196,8 +181,7 @@ and [`mcp-contract`](mcp-contract.md) checks the result still matches its
 sources. The harness is the thing that knows the mapping; it just does not need
 the result in order to run.
 
-This is a real constraint and not a formality. It is what makes the harness
-bootstrappable: the layer that defines what a Tool *is* cannot require a tool
+It is what makes the harness bootstrappable: the layer that defines what a Tool *is* cannot require a tool
 server to read its own definitions without arguing in a circle. It is also why
 sovereign-compute and air-gapped operation are reachable later without a second
 design — an instance with no server loses a transport, not a capability.
@@ -208,29 +192,18 @@ is an optimisation an instance may offer.
 
 ## GitHub is a Tool node, not a layer
 
-The four PR-choreography skills — `prepare-merge-auto`, `pickup`, `watch`,
-`coordinate` — assume a forge. The proposal on the table was to split them into
-a sixth repository, `cat-harness-github`, so the harness could run on GitLab
-or on sovereign compute with no forge at all.
-
-**Measured before deciding, on `main` 2026-09-18.** `coordinate.md` is 731
-lines with 94 matches for GitHub-ish terms — but only **12** of those are
-concrete invocations (`mcp__github__*`, `gh pr`, `gh api`). The other 82 are
-conceptual: "pull request", "PR", "GitHub" as a noun. Across all four skills:
-1,404 lines, of which the genuinely forge-bound mechanism is on the order of a
-few dozen lines.
-
-So the split would have moved 1,404 lines of portable prose to isolate about
-twelve lines of mechanism. **Isolate at the Tool layer instead**: the skills
-stay in `agentic-harness`, stated generically, and Tool nodes carry the
-invocations — one per forge operation (table below). Adding GitLab is then
-more Tool nodes satisfying the same skills — not a repository, not a fork, and
-not a rewrite of the prose.
+The PR-choreography skills — `prepare-merge-auto`, `pickup`, `watch`,
+`coordinate` — assume a forge, but most of their text is portable: "pull
+request", "PR", "GitHub" as a noun. Only a few lines are concrete invocations.
+So forge-specificity is **isolated at the Tool layer**: the skills stay in the
+harness, stated generically, and Tool nodes carry the invocations — one per
+forge operation (table below). Adding another forge is more Tool nodes
+satisfying the same skills, not a repository or a fork.
 
 ### The forge operations, one Tool node each
 
-Owner, 2026-10-20 (bean `folio-assistant-4dbr`, option A): **one Tool node per
-forge operation**, using the fields Tools already have. A skill names the
+**One Tool node per forge operation**, using the fields Tools already have. A
+skill names the
 *operation* in neutral words, and this table is where an operation meets its
 nodes. An agent picks the node for the forge the checkout's remote is on; each
 pair is a derived alternative carrying `selection` (`check:tools` holds it).
@@ -246,9 +219,8 @@ pair is a derived alternative carrying `selection` (`check:tools` holds it).
 | *resolve review thread* | `github-pr-resolve-thread` | `gitlab-mr-resolve-thread` |
 | *list branches* | `github-branches` | `gitlab-branches` |
 
-A dash is a gap, not an oversight; each is recorded on the bean. Two
-GitLab nodes run a script rather than `glab` directly (owner, 2026-10-24,
-"Fill both gaps"): `glab mr diff` has no `--name-only`, so `gitlab-mr-files`
+A dash is a known gap. Two GitLab nodes run a script rather than `glab`
+directly: `glab mr diff` has no `--name-only`, so `gitlab-mr-files`
 reads the paths out of the raw diff; and `glab mr update --reviewer NAME`
 replaces the reviewers, so `gitlab-mr-request-review` passes `+NAME`, which
 adds one. Its names are `GitLabUsername`s, since GitLab usernames do not fit
@@ -264,12 +236,11 @@ naming a forge for it.
 
 ### A Tool may describe its own subprocess
 
-Owner, 2026-09-30: *"in general tools can describe their own specific
-subprocesses if needed to not bog down general skills"*. When one mechanism
+When one mechanism
 takes several steps, they belong to **the Tool**, not to the general skill: the
 Tool lists `subprocesses` (process ids, each the stem of a `.bpmn` the checkout declares),
 and a general diagram's call activity is bound by it. **General skills name the
-Tool, never its steps.** First case: `render-kg-to-cdn` is the general step
+Tool, never its steps.** Example: `render-kg-to-cdn` is the general step
 (render a Knowledge Graph for a CDN at a publication root URL; output a status
 and a message), and `gh-pages` is one Tool for it whose subprocess is
 bootstrap-tools' `render-kg-to-github-pages.bpmn` — declared below the harness,
@@ -309,57 +280,25 @@ not fine for the only statement of what to do to be `gh pr create`.
    here: the Tool worked, the Tool is absent and here is the fallback, and *we
    could not tell* — which is never rendered as success.
 
-## Where this stands — the schema is real, the migration is half done
+## The Tool schema, and the remaining debt
 
-**`schemas/tools/tool.ts` exists**, `tools/` holds **24** nodes, and
-`bun run cat check:tools` fails when a `satisfies` names a skill that does not exist.
-So a Tool is something you can reach for rather than a shape described in prose.
+**`schemas/tools/tool.ts`** (in the tools layer) defines a Tool, `tools/` holds
+the nodes, and `bun run cat check:tools` fails when a `satisfies` names a skill
+that does not exist.
 
-Four of the 24 were authored by hand (`beans-cli`, `beans-manual`, `github`,
-`pages-publish`). The other twenty are the **migration of this instance's
-existing MCP surface** into Tool nodes (then `tools/mcp.ts`, now one folder each) — every `server.tool()` registration
-the server serves, now with a declared contract and a declared set of skills it
-satisfies.
+`ToolInput.repeated` marks a list input (rather than a list type per scalar
+type, which would multiply the shared `$defs` and break the identity property
+the shared vocabulary exists for). `invoke.inProcess` names a
+TypeScript function for a Tool with no shell equivalent; it is runnable by the
+harness directly, and is the projection *source* rather than something to
+proxy, so the refusal of an mcp-only Tool does not reach it.
 
-### How that migration was done, because the method matters more than the result
-
-**The contracts were read from the registrars, not from the source text.**
-`bun run cat mcp:capture` mounts each `register*` export against a capture object
-and reads the real Zod shapes. The first attempt regex-scanned
-`server.tool("name", "description", {shape}, handler)` and produced parameter
-names lifted out of the *description prose* — `skill_fetch` appeared to take
-`Examples`, `Local` and `Reference`, and `paper_preferences` an `Action`.
-Authoring `io` from that would have shipped a contract agreeing with nothing,
-which is worse than no contract because the next check trusts it.
-
-A test compares the two sides on every run: every served tool has a node, every
-node's ports are served, and the required/optional split agrees. That is what
-keeps the migration true rather than true-on-the-day.
-
-### Two things the vocabulary could not express, and what was added
-
-**Cardinality.** `folio_init.authors`, `stakeholder_map.paths` and
-`readme_sync.only` are lists, so `ToolInput.repeated` was added rather than
-minting an `ArrayOfRepoPath` beside every scalar type — which would have
-multiplied the `$defs` and broken the identity property the shared vocabulary
-exists for.
-
-**In-process invocation.** Seventeen of the twenty have no shell equivalent at
-all; they are TypeScript functions. `invoke.inProcess` names the module.
-The existing refusal of an mcp-only Tool still stands and does not reach this
-case: an in-process function is runnable by the harness directly, and it is the
-projection *source* rather than something to proxy.
-
-### The remaining debt
-
-**Many skills still carry their invocations inline.** Measured after the
-migration: 24 Tools cover **24 of 143** skills, up from 11. Most of the
-remainder is fine — a great many skills are pure judgement
-(`interaction-modality`, `one-voice-style-guide`) and have no mechanism to name.
-`check:tools` reports the count rather than failing on it, for exactly that
-reason. What it cannot tell you, and what needs a human eye, is which of the
-uncovered skills *describe an action* — those are the ones whose mechanism is
-still swallowed.
+**Many skills still carry their invocations inline.** Most of the remainder is
+fine — a great many skills are pure judgement (`interaction-modality`,
+`one-voice-style-guide`) and have no mechanism to name. `check:tools` reports
+the coverage count rather than failing on it, for exactly that reason. What it
+cannot tell you, and what needs a human eye, is which of the uncovered skills
+*describe an action* — those are the ones whose mechanism is still swallowed.
 
 ### A `satisfies` edge is checkable against the skill's own contract
 
@@ -367,7 +306,7 @@ still swallowed.
 being written on judgement alone.** `bun run cat check:tools` compares a Tool's
 `io` against the input contract of every skill it claims — the contract the
 skill names in its own front matter (`input:`), never one found by directory
-name (#1168). Two rules: **every `required` property of the contract must
+name. Two rules: **every `required` property of the contract must
 appear as an input on the Tool**, and **where a Tool input and a contract
 property share a name, their JSON types must agree** (an `integer` port may
 serve a `number` property). If either fails, the Tool cannot exercise the skill
@@ -390,20 +329,15 @@ contract cannot call the Tool.
 declared but missing or unparseable is reported and **fails**, never counted as
 agreement. An external `https://` contract is not fetched by this offline check.
 
-**It caught two edges on its first run, both written the previous day and both
-wrong.** `translation-validate` claimed `content-validate`, whose contract
-requires `targetPath` — validating a `.po` against its `.pot` is not validating
-a folio's content. `workflow-complete` claimed `dmn-authoring`, whose contract
-requires `decisionName` and `inputVariables` — what you supply to *write* a
-decision table, not to *answer* one. Both edges are dropped, which is why
-coverage reads 24 rather than 26: the earlier number counted two skills as
-covered by Tools that could not perform them.
+For example, a Tool that validates a `.po` against its `.pot` does not satisfy
+`content-validate`, whose contract requires `targetPath`: validating
+translations is not validating a folio's content.
 
 ### Which uncovered skills actually need one — `bun run cat tools:coverage`
 
-The count alone does not say which. A grep for shell blocks over-reports badly:
-52 of the 118 uncovered skills contain one, because a skill may legitimately
-QUOTE a command while stating its capability generically.
+The count alone does not say which. A grep for shell blocks over-reports, because
+a skill may legitimately QUOTE a command while stating its capability
+generically.
 
 The corpus carries a better signal — **BPMN task type**. A process step is a
 `serviceTask` (runs without a person) or a `userTask` (performed by one), and
@@ -412,48 +346,38 @@ the diagrams already say which. Triaged on that, plus an I/O contract under
 (userTask-only), **C** (ambiguous) and **D** (nothing), and only C needs a human
 read.
 
-**Run it for the numbers; do not read them here.** The figures that stood in this
-paragraph until 2026-09-20 — 16 / 3 / 52 / 47 over 118 uncovered — had drifted to
-28 / 4 / 53 / 59 over 144 without anybody noticing, because a count in prose is a
-claim that nothing re-checks. The tiers are the durable part; the tallies belong
-to whichever run you are looking at.
+**Run it for the numbers; do not quote them from prose**: a count in prose is a
+claim that nothing re-checks, and it drifts unnoticed.
 
-**The reframing matters more than the numbers.** `interaction-modality` was the
-standing example of a pure-judgement skill, and two activities name it: a
+Many skills are both: two activities name `interaction-modality`, a
 `serviceTask` that reads the preferences file — a mechanism — and a `userTask`
-about how to frame a question — judgement. Ten of the sixteen strongest
-candidates are both.
+about how to frame a question — judgement.
 
 > **The question is not "is this skill a Tool?" but "which PART of it is."**
 
 A skill with both halves is not mis-modelled. Migrating it is a **split**: the
 mechanical half becomes a Tool, the judgement half stays as prose. Expecting a
-clean move is what makes the migration look bigger than it is.
+clean move makes the migration look bigger than it is.
 
 So when you write or edit a skill: follow the checklist above and reference a
 Tool. When you read one that inlines `gh pr create` or `beans update`, that is
 the debt, not the pattern — do not propagate it.
 
-Authoring a Tool node: `tools/<id>/<id>.ts`, one folder per Tool, default-exporting
-`toolFactory((t) => defineTool({ … }))`; `tools/index.ts` only loads the folders
-(bean `tdir`). It is TypeScript
-rather than JSON so a malformed node fails at `tsc` and in the editor, which is
-the carrier decision applied to instances as well as to the schema. `io` ports
-reference the shared vocabulary in `schemas/tools/tool-types.ts` by absolute IRI —
-never a hand-written string, because a reference nothing checks is a reference
-that is eventually wrong.
+Authoring a Tool node: `tools/<id>/<id>.json`, one folder per Tool, a
+`"$schema": "tool-definition/v1"` document validated against the Tool schema;
+the loader lives in the tools layer. `io` ports reference the shared vocabulary
+in `schemas/tools/tool-types.ts` by its type name (`"$type"`) — never a
+free-form string, because a reference nothing checks is eventually wrong.
 
 For the end-to-end guide on authoring, implementing, packaging, and registering
 concrete tools across separated repositories, see [`tool-authoring`](tool-authoring.md).
 For runtime conventions, test preloading, and TypeScript configuration, see
-[`bun-use`](../../sdlc/sdlc-core/bun-use.md).
+[`bun-use`](../../../sdlc/skills/sdlc-core/bun-use.md).
 
 ## Covered is not reachable — see its own skill
 
 A skill can be satisfied by the **neighbours** of its mechanism while the
 mechanism itself is reachable from nothing, and `check:tools` reports it as
-covered and is right to. Three instances were found in one session.
-
-That discipline, the two questions it keeps apart, what to do when you meet one,
+covered and is right to. That discipline, the two questions it keeps apart, what to do when you meet one,
 and the two reasons *not* to write `maintains`:
 [`covered-is-not-reachable`](covered-is-not-reachable.md).

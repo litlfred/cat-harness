@@ -35,7 +35,4 @@ an app to what it uses.
 **Source:** [Repo taxonomy](architecture/repo-taxonomy.html).
 
 > **Aligned:** slide 10's `who/smart-kg` is a real, separate repository, which
-> is the repo taxonomy's worked example of splitting content from tools. Its
-> stub directory in this checkout was removed because the repository already
-> exists elsewhere (bean `wg7r`), and the taxonomy now says so. An earlier
-> version of this note read that removal as the example going stale.
+> is the repo taxonomy's worked example of splitting content from tools.

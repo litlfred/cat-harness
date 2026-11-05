@@ -29,10 +29,6 @@ msgstr "Premiers pas"
 msgid "1. \"Create a folio\" is five different requests"
 msgstr "1. « Créer un folio » correspond à cinq requêtes distinctes"
 
-#: docs/start/getting-started.md:24
-msgid "Say that sentence to five people and you will get five different pieces of work. The agent's first job is not to start; it is to find out which one you meant."
-msgstr "Dites cette phrase à cinq personnes différentes et vous obtiendrez cinq travaux complètement différents. Le premier travail de l'agent n'est pas de commencer ; c'est de déterminer laquelle de ces intentions était la vôtre."
-
 #: docs/start/getting-started.md:27
 msgid "you mean"
 msgstr "vous voulez dire"
@@ -92,10 +88,6 @@ msgstr "un folio vide tout entier, et le chapitre toujours pas rédigé"
 #: docs/start/getting-started.md:33
 msgid "Something you would rather describe in your own words"
 msgstr "Quelque chose que vous préférez décrire avec vos propres mots"
-
-#: docs/start/getting-started.md:35
-msgid "The fourth row is the one worth pausing on. It is not an error on your part — \"folio\" is an unfamiliar word, and asking for one when you meant a chapter in one is the most natural mistake available. An agent that scaffolds on it has produced an empty repository and not the paragraph you asked for."
-msgstr "La quatrième ligne mérite que l'on s'y attarde. Ce n'est pas une erreur de votre part — « folio » est un terme peu familier, et en demander un alors que vous vouliez un chapitre au sein d'un folio est l'erreur la plus naturelle qui soit. Un agent qui échafaude directement sur cette base produit un dépôt vide au lieu du paragraphe que vous aviez demandé."
 
 #: docs/start/getting-started.md:40
 msgid "2. How the agent decides — and why it is a table, not a judgement"
@@ -172,14 +164,6 @@ msgstr "nouveau folio ici"
 #: docs/start/getting-started.md:89
 msgid "Why two rules return \"ask\", and why that is the point"
 msgstr "Pourquoi deux règles renvoient « ask », et pourquoi c'est là tout l'intérêt"
-
-#: docs/start/getting-started.md:96
-msgid "That matters more than it sounds:"
-msgstr "Cela a beaucoup plus d'importance qu'il n'y paraît :"
-
-#: docs/start/getting-started.md:100
-msgid "An agent cannot route to a branch the table did not return, so the question becomes obligatory rather than polite. An agent left to decide whether to ask will, under any pressure to seem helpful, decide not to — and the three ambiguous cases are exactly where guessing is most expensive."
-msgstr "Un agent ne peut pas emprunter une branche que la table n'a pas renvoyée, ce qui rend la question obligatoire plutôt que polie. Un agent laissé libre de décider s'il doit poser la question choisira, sous la moindre pression visant à paraître serviable, de ne pas la poser — or les trois cas ambigus sont précisément ceux où deviner coûte le plus cher."
 
 #: docs/start/getting-started.md:110
 msgid "Changing it"
@@ -301,10 +285,6 @@ msgstr "Découvrir et charger les instructions d'une compétence"
 msgid "6. Converting a repository you already have"
 msgstr "6. Convertir un dépôt existant"
 
-#: docs/start/getting-started.md:193
-msgid "The third one is deliberate. A classifier that forces every file into one of two buckets has an accuracy nobody can assess, and delivers its mistakes as moved files. This one tells you what it could not place and lets you decide."
-msgstr "La troisième catégorie est délibérée. Un classificateur qui force chaque fichier dans l'une de deux catégories a une précision que nul ne peut évaluer, et matérialise ses erreurs sous la forme de fichiers déplacés. Celui-ci vous indique ce qu'il n'a pas su classer et vous laisse décider."
-
 #: docs/start/getting-started.md:197
 msgid "Then three questions, all answerable by picking, all asked per directory rather than per file:"
 msgstr "Puis trois questions, auxquelles on répond par simple sélection, toutes posées par répertoire plutôt que par fichier :"
@@ -352,10 +332,6 @@ msgstr "could not check"
 #: docs/start/getting-started.md:230
 msgid "no address could be derived, nothing was probed, or the request failed"
 msgstr "aucune adresse n'a pu être déduite, rien n'a été sondé, ou la requête a échoué"
-
-#: docs/start/getting-started.md:232
-msgid "The third is not a softer version of the second, and the agent will not tell you \"it should be up shortly\" on the strength of it. A measured 404 is evidence; a failed request is the absence of evidence, and an author who is told the wrong one goes looking for a site that was never going to appear."
-msgstr "Le troisième état n'est pas une variante adoucie du deuxième, et l'agent ne vous dira pas « il devrait être en ligne sous peu » sur cette seule base. Un 404 mesuré est une preuve ; une requête qui a échoué est une absence de preuve, et un auteur induit en erreur partira à la recherche d'un site qui ne devait jamais voir le jour."
 
 #: docs/start/getting-started.md:242
 msgid "8. Make the landing page yours"
@@ -412,10 +388,6 @@ msgstr "aucune image de fond"
 #: docs/start/getting-started.md:307
 msgid "shows the words alone"
 msgstr "montre les mots seuls"
-
-#: docs/start/getting-started.md:309
-msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
-msgstr "La ligne intermédiaire est délibérée. Un texte positionné au hasard finit par atterrir sur le chat, si bien qu'une zone non déclarée signifie « ne pas superposer », et jamais « n'importe où fera l'affaire ». Et un folio sans illustration graphique est tout à fait ordinaire, pas défectueux."
 
 #: docs/start/getting-started.md:342
 msgid "Next steps"
@@ -549,3 +521,24 @@ msgstr "Prochaines étapes"
 
 #~ msgid "Architecture — adapters, skills, and the block model"
 #~ msgstr "Architecture — adaptateurs, compétences, et le modèle de blocs"
+
+#~ msgid "Say that sentence to five people and you will get five different pieces of work. The agent's first job is not to start; it is to find out which one you meant."
+#~ msgstr "Dites cette phrase à cinq personnes différentes et vous obtiendrez cinq travaux complètement différents. Le premier travail de l'agent n'est pas de commencer ; c'est de déterminer laquelle de ces intentions était la vôtre."
+
+#~ msgid "The fourth row is the one worth pausing on. It is not an error on your part — \"folio\" is an unfamiliar word, and asking for one when you meant a chapter in one is the most natural mistake available. An agent that scaffolds on it has produced an empty repository and not the paragraph you asked for."
+#~ msgstr "La quatrième ligne mérite que l'on s'y attarde. Ce n'est pas une erreur de votre part — « folio » est un terme peu familier, et en demander un alors que vous vouliez un chapitre au sein d'un folio est l'erreur la plus naturelle qui soit. Un agent qui échafaude directement sur cette base produit un dépôt vide au lieu du paragraphe que vous aviez demandé."
+
+#~ msgid "That matters more than it sounds:"
+#~ msgstr "Cela a beaucoup plus d'importance qu'il n'y paraît :"
+
+#~ msgid "An agent cannot route to a branch the table did not return, so the question becomes obligatory rather than polite. An agent left to decide whether to ask will, under any pressure to seem helpful, decide not to — and the three ambiguous cases are exactly where guessing is most expensive."
+#~ msgstr "Un agent ne peut pas emprunter une branche que la table n'a pas renvoyée, ce qui rend la question obligatoire plutôt que polie. Un agent laissé libre de décider s'il doit poser la question choisira, sous la moindre pression visant à paraître serviable, de ne pas la poser — or les trois cas ambigus sont précisément ceux où deviner coûte le plus cher."
+
+#~ msgid "The third one is deliberate. A classifier that forces every file into one of two buckets has an accuracy nobody can assess, and delivers its mistakes as moved files. This one tells you what it could not place and lets you decide."
+#~ msgstr "La troisième catégorie est délibérée. Un classificateur qui force chaque fichier dans l'une de deux catégories a une précision que nul ne peut évaluer, et matérialise ses erreurs sous la forme de fichiers déplacés. Celui-ci vous indique ce qu'il n'a pas su classer et vous laisse décider."
+
+#~ msgid "The third is not a softer version of the second, and the agent will not tell you \"it should be up shortly\" on the strength of it. A measured 404 is evidence; a failed request is the absence of evidence, and an author who is told the wrong one goes looking for a site that was never going to appear."
+#~ msgstr "Le troisième état n'est pas une variante adoucie du deuxième, et l'agent ne vous dira pas « il devrait être en ligne sous peu » sur cette seule base. Un 404 mesuré est une preuve ; une requête qui a échoué est une absence de preuve, et un auteur induit en erreur partira à la recherche d'un site qui ne devait jamais voir le jour."
+
+#~ msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
+#~ msgstr "La ligne intermédiaire est délibérée. Un texte positionné au hasard finit par atterrir sur le chat, si bien qu'une zone non déclarée signifie « ne pas superposer », et jamais « n'importe où fera l'affaire ». Et un folio sans illustration graphique est tout à fait ordinaire, pas défectueux."

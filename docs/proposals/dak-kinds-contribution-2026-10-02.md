@@ -17,7 +17,7 @@ summary: >-
 
 Owner, 2026-10-01, on stage D: *"Split: move 2 now, bean the rest"* — `dak.ts`
 and `dak-content-type.ts` moved to `smart-base/schemas/` in #1795, and the rest
-is bean `1335`. Owner, 2026-10-02: write this note and implement now, stacked
+is work item `1335`. Owner, 2026-10-02: write this note and implement now, stacked
 on #1830.
 
 ## What was measured
@@ -38,7 +38,7 @@ on #1830.
   (`healthIntervention(`, `decisionTable(`, …) occurs in any manifest outside
   `cat-harness/`. The DAK kinds are defined and unexercised — which is what
   makes moving them low-risk, and also why the move must not quietly widen
-  into "support DAK authoring", which is a different bean.
+  into "support DAK authoring", which is a different work item.
 
 ## The one thing that is not a move
 
@@ -86,7 +86,7 @@ folio-assistant-sci's is:
 - **Falsified if** a built-in path needs a DAK kind at compile time for a reason
   other than listing it — a type that must accept a DAK block in core code.
   None was found; if one surfaces, it is reported, not cast around.
-- **Out:** making `paper` a contribution too (bean `zlmp`'s wider aim), and any
+- **Out:** making `paper` a contribution too (work item `zlmp`'s wider aim), and any
   DAK authoring support. This moves what exists; it adds nothing.
 
 ## Verification

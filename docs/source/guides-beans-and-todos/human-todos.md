@@ -1,5 +1,4 @@
-**Not built yet**, and stated here rather than left as an absence somebody has
-to notice.
+**Not built yet.**
 
 A person's todos need a cycle of their own, and none of it exists:
 
@@ -9,9 +8,9 @@ A person's todos need a cycle of their own, and none of it exists:
 - **When a person may create one**, and through what — chat, a command, the
   session-start surface.
 - **How one is retired.** A person abandoning a reminder is ordinary and needs
-  no "reasons for scrapping" section; the bean rules do not transfer.
+  no "reasons for scrapping" section; the work item rules do not transfer.
 
-Until that is designed, **do not repurpose beans for it.** A store whose
+Until that is designed, **do not repurpose work items for it.** A store whose
 entries are claimed by sessions, closed with change summaries and never
 deleted is the wrong shape for a reminder somebody wants to drop without
 ceremony — and mixing the two would put items in the agent work plan that no

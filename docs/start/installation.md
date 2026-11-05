@@ -14,10 +14,10 @@ available_locales: ["ar", "zh", "en", "fr", "ru", "es"]
 
 ---
 
-> Installing is the easy half. What to run **before you push** is
-> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }}) —
-> `bun test` passing is not the gates passing, and the list is derived from the
-> CI workflow rather than written down. If you are laying folio-assistant over
+> What to run **before you push** is
+> [`platform-gates`]({{ '/reference/skill-instructions/platform-gates.html' | relative_url }});
+> `bun test` passing is not the gates passing, because the list is derived from
+> the CI workflow. If you are laying folio-assistant over
 > a repository that already exists, read
 > [`repo-conversion`]({{ '/reference/skill-instructions/repo-conversion.html' | relative_url }}) first.
 
@@ -37,12 +37,8 @@ runtime and can be installed on demand.
 | Java 21 + IG Publisher + SUSHI | WHO SMART IGs (L3) | see [WHO SMART IG guide](https://litlfred.github.io/folio-assistant/smart-base/guides/who-smart-ig.html) | `winget install EclipseAdoptium.Temurin.21.JDK`, then the guide |
 | `pandoc`, `ripgrep` | conversions, search | `apt install pandoc ripgrep` | `winget install JohnMacFarlane.Pandoc BurntSushi.ripgrep.MSVC` |
 
-You do not need all of these — install only what the content types you author
-require. The built-in capability probe tells you what is missing.
-
-> **Only Bun is required.** Every other row is per content type and is probed at
-> runtime, so install nothing else until `check-deps` asks for it.
-
+Only Bun is required. Every other row is per content type and is probed at
+runtime, so install nothing else until `check-deps` asks for it.
 
 ## Clone and install
 
@@ -95,9 +91,7 @@ and `bun run cat bat:sync:check` fails CI if one is missing or stale.
 `cat-harness-tools/scripts/start-folio-assistant.sh` installs Bun if it is missing and
 then starts the server, and
 `cat-harness-tools/adapters/mcp-server/install.sh` is a fuller installer covering TeX
-Live as well. Both were undocumented until 2026-09-21
-([#740](https://github.com/litlfred/folio-assistant/issues/740)) — which is why
-this section exists.
+Live as well.
 
 ## Check your environment
 

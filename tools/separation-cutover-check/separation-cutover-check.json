@@ -83,7 +83,7 @@
     ],
     "selection": {
       "when": "Before calling a separation's cutover (kg-separation stage 13) done, and after any re-pin of a separated repository's layers.",
-      "limits": "It judges ONE repository. A downstream's own CI (lesson 17) and the parent's retirement into fsh-guts are not observed from here.",
+      "limits": "It judges ONE repository. A downstream's own CI and the parent repository's retirement are not observed from here.",
       "cost": "Seconds without `--site`; a full Jekyll build with it."
     },
     "requires": {

@@ -9,18 +9,18 @@ summary: >-
 
 # Does the prose say what the artefact does?
 
-Issue [#1042](https://github.com/litlfred/folio-assistant/issues/1042) · feature bean `flbx` · signed off by the owner on 2026-09-23.
+Issue [#1042](https://github.com/litlfred/folio-assistant/issues/1042) · feature work item `flbx` · signed off by the owner on 2026-09-23.
 
 A reader, human or agent, acts on what the prose says. When prose and
 artefact disagree, the reader either avoids a working feature or rebuilds it.
-Bean `77ex` put it as *"a stale gap notice is worse than none"*.
+Work item `77ex` put it as *"a stale gap notice is worse than none"*.
 
 ## What already existed
 
 | pair | checked by | limit |
 |---|---|---|
-| paper proof prose ↔ `.lean` | `proof-narrative-lean-equivalence` (agent skill) | Lean only; bean `nrv8` found its sweep never read the narrative |
-| `AGENTS.md` ↔ code | `check:agents-claims` (bean `77ex`) | two claim shapes, and it says so on every run |
+| paper proof prose ↔ `.lean` | `proof-narrative-lean-equivalence` (agent skill) | Lean only; work item `nrv8` found its sweep never read the narrative |
+| `AGENTS.md` ↔ code | `check:agents-claims` (work item `77ex`) | two claim shapes, and it says so on every run |
 | BPMN step documentation ↔ `.github/workflows/*.yml` | sourced by hand for 95 steps in PR #1025 | nothing re-checks it when the YAML changes |
 
 `review-task.bpmn` classifies a change as prose, code, or both. For **both**,
@@ -45,7 +45,7 @@ same-stem `.ts`, and a paper block's `lean.ref`.
 
 ## The staged plan
 
-| stage | bean | builds | requirements |
+| stage | work item | builds | requirements |
 |---|---|---|---|
 | **B** | `cuxx` | the staleness flag: `prose-reviewed-since-code-changed` in `kg:audit`, attestations kept in the subject's kg-qa sidecar, `pairs:attest` as the re-review mark | R1 R2 R6 R7 |
 | **A** | `ca4a` | `check:agents-claims` generalised to every declared pair | R3 |

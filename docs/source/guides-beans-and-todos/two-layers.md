@@ -1,21 +1,15 @@
-Two different things can change a bean, and a step that confuses them will
+Two different things can change a work item, and a step that confuses them will
 announce an effect it does not have.
 
 **The workflow engine** performs `claim`, `note` and `resolve` on a process
-instance's own bean when a step marked `<cat-harness.processes:bean op="…"/>` completes.
+instance's own work item when a step marked `<cat-harness.processes:bean op="…"/>` completes.
 `claim` sets `in-progress` and is idempotent; `note` appends; `resolve`
-completes the bean **only once the instance itself has completed**, because
-whether work is done is a judgement and a bean is not closed on someone else's
+completes the work item **only once the instance itself has completed**, because
+whether work is done is a judgement and a work item is not closed on someone else's
 say-so.
 
 **The agent** does everything else with the `beans` CLI: creating, scrapping,
 retitling, setting a blocker. The engine has no operation for any of these.
-
-This is not a hypothetical distinction. An activity in the CRDM diagram
-carried `<cat-harness.processes:bean action="create"/>` — `action`, where the engine reads
-`op` — so it parsed as no operation at all. The step advertised that sign-off
-produced beans, performed nothing, and did so silently until somebody read the
-parser.
 
 **When you add a bean-marked step,** use one of the three operations the
 engine implements, and say in the step's documentation which parts are the
