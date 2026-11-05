@@ -97,7 +97,7 @@ Every agent session follows the same lifecycle:
    routed to the appropriate workflow.
 
 3. **Execute** — the agent works within the active workflow, following its
-   BPMN process. Each turn reports the bean being worked on and what is next.
+   BPMN process. Each turn reports the work item being worked on and what is next.
 
 4. **Commit** — every meaningful unit of work gets its own commit and push.
    PRs are opened at the first commit, not the end. See the
@@ -106,7 +106,7 @@ Every agent session follows the same lifecycle:
 5. **Handoff** — when the session ends (user leaves, context limit, token
    exhaustion), the agent's durable state is:
    - Committed and pushed code
-   - Beans updated with status and notes
+   - Work items updated with status and notes
    - Issue comments with summaries of what was accomplished
    - The chat is ephemeral; everything else survives
 
@@ -126,7 +126,7 @@ classification determines which workflow the agent enters.
 | **Feature request** | Request new platform capability (see [crdm-detect](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md)) | CRDM requirements workflow |
 | **Information request** | Ask about the platform, content, or process | No workflow — answer directly |
 | **Tool invocation** | Run a specific tool (`content_validate`, `qa_sweep`, etc.) | No workflow — execute and report |
-| **Work-plan management** | Create, update, or query beans | No workflow — execute and report |
+| **Work-plan management** | Create, update, or query work items | No workflow — execute and report |
 | **Bug report** | Report broken behaviour in existing features | Triage: fix directly if small, CRDM if redesign needed |
 
 ### The feature-request detection rule
@@ -216,7 +216,7 @@ The skill this spectrum is about:
 > **BPMN Execution Skill:** given a Process, Context, State and Role, utilize
 > one or more Skills in order to execute a Task.
 
-![BPMN execution, from deterministic to agentic. A colour bar runs from "deterministic" (blue, left: managed agent execution of a single task) to "agentic" (green, right: agents across most or all tasks). Left, under a gear-and-engine icon: "BPMN Execution Tool: one of any open-source BPMN engines, state and swimlanes strictly enforced", over a flat swimlane diagram of the folio lifecycle with one sticky note, one bean cluster, a person and a cat-robot beside the lanes. Right, under a cat-robot icon: "BPMN Execution Tool: agentic swarm with ungoverned state. Agents 'relax' swimlanes, mitigated by mechanical + agentic QA/QC reports", over the same diagram tilted in perspective, beans scattered across every lane and many cat-robots beneath it.]({{ '/assets/img/bpmn-execution-spectrum.webp' | relative_url }})
+![BPMN execution, from deterministic to agentic. A colour bar runs from "deterministic" (blue, left: managed agent execution of a single task) to "agentic" (green, right: agents across most or all tasks). Left, under a gear-and-engine icon: "BPMN Execution Tool: one of any open-source BPMN engines, state and swimlanes strictly enforced", over a flat swimlane diagram of the folio lifecycle with one sticky note, one work item cluster, a person and a cat-robot beside the lanes. Right, under a cat-robot icon: "BPMN Execution Tool: agentic swarm with ungoverned state. Agents 'relax' swimlanes, mitigated by mechanical + agentic QA/QC reports", over the same diagram tilted in perspective, work items scattered across every lane and many cat-robots beneath it.]({{ '/assets/img/bpmn-execution-spectrum.webp' | relative_url }})
 
 **One skill, two kinds of Tool.** The skill is the same at both ends: take the
 process, the context, the current state and the role, pick the skills, and do
@@ -274,7 +274,7 @@ Phase 1.
 
 **Existing session, doing content work:**
 → Synthesise the feature need, ask user whether to pause content work and
-address it now or bean it for later.
+address it now or work item it for later.
 
 ### What the user sees
 
@@ -289,7 +289,7 @@ Instead:
 ### How the agent exits CRDM
 
 The CRDM workflow exits when:
-- All beans from the signed-off requirements are resolved, OR
+- All work items from the signed-off requirements are resolved, OR
 - The user explicitly defers the remaining work
 
 On exit, if a content workflow was suspended, the agent resumes it.
@@ -330,17 +330,17 @@ and synthesises them into requirements for the review triage tool.
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-agentic-harness/issue-and-bean-discipline.md){: .fa-node-edit title="Edit docs/source/concepts-agentic-harness/issue-and-bean-discipline.md" data-fa-link="edit" data-src="docs/source/concepts-agentic-harness/issue-and-bean-discipline.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="issue-and-bean-discipline.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/issue-and-bean-discipline.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="issue-and-bean-discipline.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-agentic-harness/issue-and-bean-discipline.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-agentic-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-Feature work must be linked to a GitHub issue. Content work uses beans. The
+Feature work must be linked to a GitHub issue. Content work uses work items. The
 two are related but not synonymous.
 
 ### Issues vs beans
 
-| | GitHub issue | Bean |
+| | GitHub issue | Work item |
 |---|---|---|
 | **Scope** | A feature, requirement set, or user story | A single PR-sized unit of work |
 | **Audience** | Stakeholders, requestor, BA | Agent, developer |
 | **Lifecycle** | Open → requirements → sign-off → implementation → close | Created → in-progress → resolved |
-| **Relation** | One issue has many beans | Each bean references its parent issue |
+| **Relation** | One issue has many work items | Each work item references its parent issue |
 
 ### Rules for agents
 
@@ -357,9 +357,9 @@ two are related but not synonymous.
    Feature changes affect the platform.
 
 4. **Post round summaries to the issue.** After each round of implementation
-   (one or more beans resolved), post a comment on the linked issue containing:
+   (one or more work items resolved), post a comment on the linked issue containing:
    - What was accomplished in this round
-   - What remains to be accomplished (open beans)
+   - What remains to be accomplished (open work items)
    - Links to updated content for review (staging URLs, docs pages)
    - Before/after comparison table for changed pages
 
@@ -370,7 +370,7 @@ two are related but not synonymous.
 6. **Requirements may span multiple issues.** The agent should link to all
    relevant issues and note the relationships.
 
-7. **Beans are not issues.** `beans create` is for work-plan items. Issues are
+7. **Work items are not issues.** `beans create` is for work-plan items. Issues are
    for stakeholder-facing requirements. Do not conflate them.
 
 ## Consolidated skill references
@@ -383,7 +383,7 @@ The skills and documents each behaviour on this page comes from:
 | Behaviour | Source skill / document | Location |
 |---|---|---|
 | Session start sweep | `todo-manager.md § What the session-start sweep emits` | [`work-plan/skills/work-plan/todo-manager.md`](https://github.com/litlfred/cat-harness/blob/main/work-plan/skills/work-plan/todo-manager.md) |
-| Bean protocol | `todo-manager.md`, `bean-coordination.md` | [`work-plan/skills/work-plan/`](https://github.com/litlfred/cat-harness/tree/main/work-plan/skills/work-plan/) |
+| Work item protocol | `todo-manager.md`, `bean-coordination.md` | [`work-plan/skills/work-plan/`](https://github.com/litlfred/cat-harness/tree/main/work-plan/skills/work-plan/) |
 | Commit and PR discipline | `continual-progress.md` | [`sdlc/skills/sdlc-core/continual-progress.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/sdlc-core/continual-progress.md) |
 | Feature-request detection | `crdm-detect.md` | [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md) |
 | CRDM requirements workflow | `crdm-requirements-workflow.md` | [`sdlc/skills/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-requirements-workflow.md) |
@@ -405,13 +405,13 @@ consolidation, not a new authority. If you find a discrepancy, fix this page.
 
 - **Suspended-workflow stack** — workflow instances are persisted in the
   `beans/` graph, but the suspend-and-resume stack described above is not;
-  beans and issue comments stand in for it.
+  work items and issue comments stand in for it.
 
 - **Automated request classification** — the classification table is a
   reference for agents to read; there is no classifier tool that routes
   automatically.
 
-- **BPMN for beans lifecycle** — the beans work-plan has a lifecycle (create →
+- **BPMN for work items lifecycle** — the work items work-plan has a lifecycle (create →
   claim → in-progress → resolve) described in the todo-manager skill but has
   no BPMN diagram.
 
