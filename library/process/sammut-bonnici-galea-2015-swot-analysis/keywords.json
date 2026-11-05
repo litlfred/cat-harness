@@ -3,69 +3,69 @@
   "entry": "sammut-bonnici-galea-2015-swot-analysis",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2267,
-    "terms": 15478,
+    "sections": 2176,
+    "terms": 14971,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "swot analysis",
-      "score": 12.8943,
+      "score": 13.0475,
       "evidence": []
     },
     {
       "term": "industry environment",
-      "score": 12.0658,
+      "score": 12.0893,
       "evidence": []
     },
     {
       "term": "external environment",
-      "score": 9.8536,
+      "score": 9.819,
       "evidence": []
     },
     {
       "term": "internal environment",
-      "score": 9.5006,
+      "score": 9.4634,
       "evidence": []
     },
     {
       "term": "organization internal",
-      "score": 9.3085,
+      "score": 9.3359,
       "evidence": []
     },
     {
       "term": "external opportunities",
-      "score": 9.02,
+      "score": 9.0264,
       "evidence": []
     },
     {
       "term": "competitor environment",
-      "score": 8.4889,
+      "score": 8.444,
       "evidence": []
     },
     {
       "term": "regulatory environment",
-      "score": 8.42,
+      "score": 8.3747,
       "evidence": []
     },
     {
       "term": "internal strengths",
-      "score": 7.9168,
+      "score": 7.9485,
       "evidence": []
     },
     {
       "term": "strategic management",
-      "score": 7.4773,
+      "score": 7.5463,
       "evidence": []
     },
     {
       "term": "general environment",
-      "score": 7.4639,
+      "score": 7.4262,
       "evidence": []
     },
     {
-      "term": "industry average",
-      "score": 6.8521,
+      "term": "analysis identifies",
+      "score": 6.9608,
       "evidence": []
     }
   ],
@@ -73,348 +73,348 @@
     "page-001": [
       {
         "term": "tanya sammut-bonnici",
-        "score": 1.9015,
+        "score": 1.9,
         "evidence": []
       },
       {
         "term": "publications citations",
-        "score": 1.612,
+        "score": 1.6173,
         "evidence": []
       },
       {
         "term": "view project",
-        "score": 1.0179,
+        "score": 1.0358,
         "evidence": []
       }
     ],
     "page-002": [
       {
         "term": "core competencies",
-        "score": 2.0992,
+        "score": 2.0922,
         "evidence": []
       },
       {
         "term": "internal resources",
-        "score": 1.957,
-        "evidence": []
-      },
-      {
-        "term": "internal strengths",
-        "score": 1.8778,
+        "score": 1.9583,
         "evidence": []
       },
       {
         "term": "brand equity",
-        "score": 1.8577,
+        "score": 1.9013,
+        "evidence": []
+      },
+      {
+        "term": "internal strengths",
+        "score": 1.8847,
         "evidence": []
       },
       {
         "term": "swot analysis",
-        "score": 1.8258,
+        "score": 1.8466,
         "evidence": []
       },
       {
         "term": "capabili ties",
-        "score": 1.7437,
+        "score": 1.7523,
         "evidence": []
       },
       {
         "term": "competitive advantage",
-        "score": 1.6809,
+        "score": 1.7064,
         "evidence": []
       },
       {
         "term": "firm",
-        "score": 1.3659,
+        "score": 1.3636,
         "evidence": []
       }
     ],
     "page-003": [
       {
         "term": "swot analysis",
-        "score": 1.8258,
-        "evidence": []
-      },
-      {
-        "term": "internal environment",
-        "score": 1.7007,
+        "score": 1.8466,
         "evidence": []
       },
       {
         "term": "internal strengths",
-        "score": 1.695,
+        "score": 1.7018,
+        "evidence": []
+      },
+      {
+        "term": "internal environment",
+        "score": 1.6951,
         "evidence": []
       },
       {
         "term": "infrastructural",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       },
       {
         "term": "weaknesses",
-        "score": 0.9601,
+        "score": 0.9631,
         "evidence": []
       },
       {
         "term": "micro",
-        "score": 0.83,
+        "score": 0.8286,
         "evidence": []
       },
       {
         "term": "suppliers",
-        "score": 0.8276,
+        "score": 0.8261,
         "evidence": []
       }
     ],
     "page-004": [
       {
         "term": "innovation resources",
-        "score": 1.7338,
+        "score": 1.7605,
         "evidence": []
       },
       {
         "term": "distribution chain",
-        "score": 1.5965,
+        "score": 1.601,
         "evidence": []
       },
       {
         "term": "product development",
-        "score": 1.5494,
+        "score": 1.5679,
         "evidence": []
       },
       {
         "term": "mobile network",
-        "score": 1.5158,
+        "score": 1.5141,
         "evidence": []
       },
       {
         "term": "channel members",
-        "score": 1.4758,
-        "evidence": []
-      },
-      {
-        "term": "network operators",
-        "score": 1.4285,
+        "score": 1.4809,
         "evidence": []
       },
       {
         "term": "management practitioners",
-        "score": 1.3932,
+        "score": 1.4388,
+        "evidence": []
+      },
+      {
+        "term": "network operators",
+        "score": 1.434,
         "evidence": []
       },
       {
         "term": "swot analysis",
-        "score": 1.2586,
+        "score": 1.2732,
         "evidence": []
       }
     ],
     "page-005": [
       {
         "term": "oppor tunities",
-        "score": 2.0162,
+        "score": 2.0152,
         "evidence": []
       },
       {
         "term": "competitive advantage",
-        "score": 1.9741,
+        "score": 2.0077,
         "evidence": []
       },
       {
         "term": "external environment",
-        "score": 1.7018,
+        "score": 1.6968,
         "evidence": []
       },
       {
         "term": "external analysis",
-        "score": 1.6436,
+        "score": 1.6711,
         "evidence": []
       },
       {
         "term": "mobile",
-        "score": 1.388,
+        "score": 1.385,
         "evidence": []
       },
       {
         "term": "environ ment",
-        "score": 1.3696,
+        "score": 1.3713,
         "evidence": []
       },
       {
         "term": "hygiene",
-        "score": 1.1235,
+        "score": 1.1221,
         "evidence": []
       },
       {
         "term": "competitor",
-        "score": 1.0854,
+        "score": 1.0838,
         "evidence": []
       }
     ],
     "page-006": [
       {
         "term": "external opportunities",
-        "score": 1.4019,
+        "score": 1.4028,
         "evidence": []
       },
       {
         "term": "industry environment",
-        "score": 1.3153,
+        "score": 1.3168,
         "evidence": []
       },
       {
         "term": "buyers",
-        "score": 1.2854,
+        "score": 1.2849,
         "evidence": []
       },
       {
         "term": "entrants",
-        "score": 1.2854,
+        "score": 1.2849,
         "evidence": []
       },
       {
         "term": "swot analysis",
-        "score": 1.2586,
+        "score": 1.2732,
         "evidence": []
       },
       {
         "term": "suppliers",
-        "score": 1.2124,
+        "score": 1.2103,
         "evidence": []
       },
       {
         "term": "among competitors",
-        "score": 1.1996,
+        "score": 1.1981,
         "evidence": []
       },
       {
         "term": "five factors",
-        "score": 1.0192,
+        "score": 1.0457,
         "evidence": []
       }
     ],
     "page-007": [
       {
         "term": "external environment",
-        "score": 1.8241,
+        "score": 1.8177,
         "evidence": []
       },
       {
         "term": "environment analysis",
-        "score": 1.7442,
+        "score": 1.758,
         "evidence": []
       },
       {
         "term": "general environment",
-        "score": 1.5497,
+        "score": 1.5431,
         "evidence": []
       },
       {
         "term": "industry",
-        "score": 1.1053,
+        "score": 1.1166,
         "evidence": []
       },
       {
         "term": "increased",
-        "score": 0.9562,
+        "score": 0.9816,
         "evidence": []
       },
       {
         "term": "establishment",
-        "score": 0.9508,
+        "score": 0.95,
         "evidence": []
       },
       {
         "term": "dimensions",
-        "score": 0.9291,
+        "score": 0.9353,
         "evidence": []
       },
       {
         "term": "economic",
-        "score": 0.9118,
+        "score": 0.9198,
         "evidence": []
       }
     ],
     "page-008": [
       {
         "term": "examines strategies",
-        "score": 2.0387,
+        "score": 2.0919,
         "evidence": []
       },
       {
         "term": "tows matrix",
-        "score": 1.9358,
+        "score": 1.928,
         "evidence": []
       },
       {
         "term": "cognitive inertia",
-        "score": 1.754,
+        "score": 1.8053,
         "evidence": []
       },
       {
         "term": "strate gies",
-        "score": 1.6776,
+        "score": 1.6749,
         "evidence": []
       },
       {
         "term": "avoid threats",
-        "score": 1.4994,
+        "score": 1.5104,
         "evidence": []
       },
       {
         "term": "cognitive maps",
-        "score": 1.3555,
+        "score": 1.411,
         "evidence": []
       },
       {
         "term": "external environment",
-        "score": 1.3172,
+        "score": 1.3132,
         "evidence": []
       },
       {
         "term": "swot analysis",
-        "score": 1.2586,
+        "score": 1.2732,
         "evidence": []
       }
     ],
     "page-009": [
       {
         "term": "swot analysis",
-        "score": 2.0675,
+        "score": 2.0852,
         "evidence": []
       },
       {
         "term": "strategic action",
-        "score": 1.7967,
+        "score": 1.7898,
         "evidence": []
       },
       {
         "term": "anal ysis",
-        "score": 1.4908,
+        "score": 1.487,
         "evidence": []
       },
       {
         "term": "publication stats",
-        "score": 1.4317,
+        "score": 1.4296,
         "evidence": []
       },
       {
         "term": "view publication",
-        "score": 1.2787,
+        "score": 1.3051,
         "evidence": []
       },
       {
         "term": "world largest",
-        "score": 1.0388,
+        "score": 1.0345,
         "evidence": []
       },
       {
         "term": "fines",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       },
       {
         "term": "spite",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       }
     ]

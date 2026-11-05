@@ -269,10 +269,6 @@ msgstr "Назначение"
 msgid "Scaffold a folio. Registered as a generic tool, because it runs before the folio has a content type"
 msgstr "Развернуть каркас фолио. Зарегистрирован как универсальный инструмент, поскольку запускается до того, как у фолио появится тип контента"
 
-#: docs/start/getting-started.md:174
-msgid "Surface the work plan (beans)"
-msgstr "Отобразить план работы (beans)"
-
 #: docs/start/getting-started.md:175
 msgid "Probe which toolchains are installed"
 msgstr "Проверить, какие инструментарии установлены"
@@ -542,3 +538,6 @@ msgstr "Следующие шаги"
 
 #~ msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
 #~ msgstr "Средняя строка сделана намеренно. Текст, размещенный наугад, попадет прямо на кота, поэтому необъявленная область означает «не накладывать текст поверх», а не «сойдет в любом месте». А фолио вовсе без графики — это нормальное явление, а не поломка."
+
+#~ msgid "Surface the work plan (beans)"
+#~ msgstr "Отобразить план работы (beans)"
