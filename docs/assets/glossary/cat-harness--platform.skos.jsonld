@@ -573,36 +573,6 @@
         }
       ],
       "dcterms:source": "cat-harness-tools/scripts/skill-contracts.ts"
-    },
-    {
-      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/collaborative-requirements-development-methodology",
-      "@type": "skos:Concept",
-      "skos:inScheme": {
-        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/platform"
-      },
-      "skos:notation": "CRDM",
-      "skos:prefLabel": [
-        {
-          "@value": "Collaborative Requirements Development Methodology (CRDM)"
-        }
-      ],
-      "skos:altLabel": [
-        {
-          "@value": "CRDM"
-        },
-        {
-          "@value": "Collaborative Requirements Development Methodology"
-        }
-      ],
-      "skos:definition": [
-        {
-          "@value": "A process-centric requirements methodology developed by the Public Health Informatics Institute (PHII) that brings subject matter experts together across three concentration areas — Business Process Analysis (how work is done now), Business Process Redesign (how work should be done), and Requirements Definition (how an information system can support that work) — using business process matrices, swimlane task-flow diagrams, and activity-linked functional and non-functional requirements."
-        }
-      ],
-      "rdfs:isDefinedBy": {
-        "@id": "https://phii.org/crdm/"
-      },
-      "dcterms:source": "cat-harness/library/process/phii-2023-crdm/sections/page-001.md"
     }
   ]
 }
