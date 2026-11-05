@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: folio\n"
-"POT-Creation-Date: 2026-11-04T20:47:02.332Z\n"
+"POT-Creation-Date: 2026-11-05T14:29:21.268Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -44,7 +44,7 @@ msgid "<a0>Installation</a0> — prerequisites, clone, {code0}, capability check
 msgstr ""
 
 #: docs/index.md:124
-msgid "<a0>Processes</a0> — every executable BPMN diagram, searchable, each with the workflow instances running it: open one to see where its token sits, what is stuck, and the beans and todos it names."
+msgid "<a0>Processes</a0> — every executable BPMN diagram, searchable, each with the workflow instances running it: open one to see where its token sits, what is stuck, and the work items and todos it names."
 msgstr ""
 
 #: docs/index.md:123
@@ -78,7 +78,7 @@ msgstr ""
 
 #: docs/index.md:37
 #, python-brace-format
-msgid "1. The work plan is where you say what you are doing. Not a chat message, not a comment — <a0>beans</a0>, a committed store any session or agent can read. Claim before you work so a sibling session does not pick up the same item; a bean that turns out not to be wanted is {code0}, with its reasons, never deleted."
+msgid "1. The work plan is where you say what you are doing. Not a chat message, not a comment — <a0>work items</a0>, a committed store any session or agent can read. Claim before you work so a sibling session does not pick up the same item; a work item that turns out not to be wanted is {code0}, with its reasons, never deleted."
 msgstr ""
 
 #: docs/index.md:50

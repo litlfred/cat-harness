@@ -137,10 +137,6 @@ msgstr "تتبع كل جلسة وكيل دورة الحياة ذاتها:"
 msgid "Classify — each user request is classified (see next section) and routed to the appropriate workflow."
 msgstr "التصنيف — يُصنف كل طلب للمستخدم (انظر القسم التالي) ويُوجه إلى سير العمل المناسب."
 
-#: docs/concepts/agentic-harness.md:97
-msgid "Execute — the agent works within the active workflow, following its BPMN process. Each turn reports the bean being worked on and what is next."
-msgstr "التنفيذ — يعمل الوكيل ضمن سير العمل النشط، متبعًا عملية BPMN الخاصة به. وتُبلغ كل جولة عن الـ bean الجاري العمل عليها وما سيأتي بعد ذلك."
-
 #: docs/concepts/agentic-harness.md:104
 msgid "Handoff — when the session ends (user leaves, context limit, token exhaustion), the agent's durable state is:"
 msgstr "التسليم — عندما تنتهي الجلسة (مغادرة المستخدم، حد السياق، استنفاد الرموز المميزة/tokens)، تكون الحالة الدائمة للوكيل متمثلة في:"
@@ -148,10 +144,6 @@ msgstr "التسليم — عندما تنتهي الجلسة (مغادرة ال
 #: docs/concepts/agentic-harness.md:106
 msgid "Committed and pushed code"
 msgstr "شفرة برمجية مثبتة ومرفوعة (committed and pushed)"
-
-#: docs/concepts/agentic-harness.md:107
-msgid "Beans updated with status and notes"
-msgstr "تحديث الـ beans بالحالة والملاحظات"
 
 #: docs/concepts/agentic-harness.md:108
 msgid "Issue comments with summaries of what was accomplished"
@@ -249,10 +241,6 @@ msgstr "لا يوجد سير عمل — التنفيذ والإبلاغ"
 msgid "Work-plan management"
 msgstr "إدارة خطة العمل"
 
-#: docs/concepts/agentic-harness.md:127
-msgid "Create, update, or query beans"
-msgstr "إنشاء الـ beans أو تحديثها أو الاستعلام عنها"
-
 #: docs/concepts/agentic-harness.md:128
 msgid "Bug report"
 msgstr "تقرير خطأ"
@@ -304,10 +292,6 @@ msgstr "تنفيذ BPMN: مهارة واحدة، ومحركان"
 #: docs/concepts/agentic-harness.md:218
 msgid "BPMN Execution Skill: given a Process, Context, State and Role, utilize one or more Skills in order to execute a Task."
 msgstr "مهارة تنفيذ BPMN: بالنظر إلى عملية (Process)، وسياق (Context)، وحالة (State)، ودور (Role)، يتم استخدام مهارة واحدة أو أكثر من أجل تنفيذ مهمة (Task)."
-
-#: docs/concepts/agentic-harness.md:221
-msgid "BPMN execution, from deterministic to agentic. A colour bar runs from \"deterministic\" (blue, left: managed agent execution of a single task) to \"agentic\" (green, right: agents across most or all tasks). Left, under a gear-and-engine icon: \"BPMN Execution Tool: one of any open-source BPMN engines, state and swimlanes strictly enforced\", over a flat swimlane diagram of the folio lifecycle with one sticky note, one bean cluster, a person and a cat-robot beside the lanes. Right, under a cat-robot icon: \"BPMN Execution Tool: agentic swarm with ungoverned state. Agents 'relax' swimlanes, mitigated by mechanical + agentic QA/QC reports\", over the same diagram tilted in perspective, beans scattered across every lane and many cat-robots beneath it."
-msgstr "تنفيذ BPMN، من الحتمي إلى الوكيلي. يمتد شريط ألوان من \"حتمي\" (أزرق، يسار: تنفيذ مدار بواسطة وكيل لمهمة واحدة) إلى \"وكيلي\" (أخضر، يمين: وكلاء عبر معظم أو كل المهام). على اليسار، تحت أيقونة ترس ومحرك: \"أداة تنفيذ BPMN: أحد محركات BPMN مفتوحة المصدر، مع فرض صارم للحالة ومسارات السباحة\"، فوق مخطط مسارات سباحة مسطح لدورة حياة folio مع ملاحظة لاصقة واحدة، ومجموعة beans واحدة، وشخص وروبوت قط بجانب المسارات. على اليمين، تحت أيقونة روبوت قط: \"أداة تنفيذ BPMN: سرب وكيل ذو حالة غير محكومة. يقوم الوكلاء بـ 'تخفيف' مسارات السباحة، مع تخفيف الأثر عبر تقارير ضمان/مراقبة جودة ميكانيكية + وكيلة\"، فوق المخطط ذاته مائلاً في المنظور، مع انتشار beans عبر كل مسار والعديد من روبوتات القطط تحته."
 
 #: docs/concepts/agentic-harness.md:223
 msgid "One skill, two kinds of Tool. The skill is the same at both ends: take the process, the context, the current state and the role, pick the skills, and do the task. What changes is the Tool that runs it, and a Tool is swappable behind a skill in the way every other Tool here is."
@@ -397,10 +381,6 @@ msgstr "جلسة جديدة، والطلب الأول هو ميزة: ← تأك�
 msgid "Existing session, already in CRDM: → Incorporate the new request into the current requirements document, continue."
 msgstr "جلسة موجودة، وتعمل بالفعل في CRDM: ← دمج الطلب الجديد في وثيقة المتطلبات الحالية، والمتابعة."
 
-#: docs/concepts/agentic-harness.md:286
-msgid "Existing session, doing content work: → Synthesise the feature need, ask user whether to pause content work and address it now or bean it for later."
-msgstr "جلسة موجودة، وتؤدي عملاً على المحتوى: ← استخلاص الحاجة إلى الميزة، وسؤال المستخدم عما إذا كان يفضل إيقاف عمل المحتوى مؤقتًا ومعالجتها الآن، أو تسجيلها كـ bean للاحقًا."
-
 #: docs/concepts/agentic-harness.md:290
 msgid "What the user sees"
 msgstr "ما يراه المستخدم"
@@ -420,10 +400,6 @@ msgstr "كيف يخرج الوكيل من CRDM"
 #: docs/concepts/agentic-harness.md:302
 msgid "The CRDM workflow exits when:"
 msgstr "ينتهي سير عمل CRDM عندما:"
-
-#: docs/concepts/agentic-harness.md:303
-msgid "All beans from the signed-off requirements are resolved, OR"
-msgstr "يتم حل جميع الـ beans الناتجة عن المتطلبات المعتمدة، أو"
 
 #: docs/concepts/agentic-harness.md:304
 msgid "The user explicitly defers the remaining work"
@@ -537,10 +513,6 @@ msgstr "مثال: يقوم مستخدم برفع جدول بيانات Excel ي�
 msgid "Issue and bean discipline"
 msgstr "انضباط المسائل وBeans"
 
-#: docs/concepts/agentic-harness.md:344
-msgid "Feature work must be linked to a GitHub issue. Content work uses beans. The two are related but not synonymous."
-msgstr "يجب ربط العمل على الميزات بمسألة في GitHub. بينما يستخدم العمل على المحتوى الـ beans. وهما مرتبطان ولكنهما ليسا مترادفين."
-
 #: docs/concepts/agentic-harness.md:347
 msgid "Issues vs beans"
 msgstr "المسائل مقابل Beans"
@@ -548,10 +520,6 @@ msgstr "المسائل مقابل Beans"
 #: docs/concepts/agentic-harness.md:349
 msgid "GitHub issue"
 msgstr "مسألة GitHub"
-
-#: docs/concepts/agentic-harness.md:349
-msgid "Bean"
-msgstr "Bean"
 
 #: docs/concepts/agentic-harness.md:351
 msgid "Scope"
@@ -593,14 +561,6 @@ msgstr "مُنشأة ← قيد التنفيذ ← محلولة"
 msgid "Relation"
 msgstr "العلاقة"
 
-#: docs/concepts/agentic-harness.md:354
-msgid "One issue has many beans"
-msgstr "المسألة الواحدة لها عدة beans"
-
-#: docs/concepts/agentic-harness.md:354
-msgid "Each bean references its parent issue"
-msgstr "تشير كل bean إلى مسألتها الأصلية"
-
 #: docs/concepts/agentic-harness.md:356
 msgid "Rules for agents"
 msgstr "قواعد للوكلاء"
@@ -621,17 +581,9 @@ msgstr "إذا لم تجد تطابقًا بين المسائل المفتوحة
 msgid "If no match at all, ask the user to create one. Do not create an issue without user permission."
 msgstr "إذا لم تجد أي تطابق على الإطلاق، فاطلب من المستخدم إنشاء مسألة. لا تنشئ مسألة دون إذن المستخدم."
 
-#: docs/concepts/agentic-harness.md:371
-msgid "Post round summaries to the issue. After each round of implementation (one or more beans resolved), post a comment on the linked issue containing:"
-msgstr "انشر ملخصات الجولات في المسألة. بعد كل جولة تنفيذ (حل bean واحدة أو أكثر)، انشر تعليقًا على المسألة المرتبطة يتضمن:"
-
 #: docs/concepts/agentic-harness.md:373
 msgid "What was accomplished in this round"
 msgstr "ما تم إنجازه في هذه الجولة"
-
-#: docs/concepts/agentic-harness.md:374
-msgid "What remains to be accomplished (open beans)"
-msgstr "ما يتبقى لإنجازه (الـ beans المفتوحة)"
 
 #: docs/concepts/agentic-harness.md:375
 msgid "Links to updated content for review (staging URLs, docs pages)"
@@ -668,10 +620,6 @@ msgstr "الموقع"
 #: docs/concepts/agentic-harness.md:399
 msgid "Session start sweep"
 msgstr "مسح بدء الجلسة"
-
-#: docs/concepts/agentic-harness.md:400
-msgid "Bean protocol"
-msgstr "بروتوكول Bean"
 
 #: docs/concepts/agentic-harness.md:401
 msgid "Commit and PR discipline"
@@ -890,3 +838,42 @@ msgstr "مخطط BPMN لإطار العمل الوكيل نفسه — لم يت�
 
 #~ msgid "Workflow state persistence — the harness describes workflow suspension and resumption, but there is no mechanism to persist the agent's workflow state across sessions. Today this relies on beans and issue comments as proxies."
 #~ msgstr "استدامة حالة سير العمل — يصف إطار العمل تعليق سير العمل واستئنافه، ولكن لا توجد آلية للاحتفاظ بحالة سير عمل الوكيل واستدامتها عبر الجلسات. ويعتمد هذا اليوم على الـ beans وتعليقات المسائل كبدائل تمثيلية."
+
+#~ msgid "Execute — the agent works within the active workflow, following its BPMN process. Each turn reports the bean being worked on and what is next."
+#~ msgstr "التنفيذ — يعمل الوكيل ضمن سير العمل النشط، متبعًا عملية BPMN الخاصة به. وتُبلغ كل جولة عن الـ bean الجاري العمل عليها وما سيأتي بعد ذلك."
+
+#~ msgid "Beans updated with status and notes"
+#~ msgstr "تحديث الـ beans بالحالة والملاحظات"
+
+#~ msgid "Create, update, or query beans"
+#~ msgstr "إنشاء الـ beans أو تحديثها أو الاستعلام عنها"
+
+#~ msgid "BPMN execution, from deterministic to agentic. A colour bar runs from \"deterministic\" (blue, left: managed agent execution of a single task) to \"agentic\" (green, right: agents across most or all tasks). Left, under a gear-and-engine icon: \"BPMN Execution Tool: one of any open-source BPMN engines, state and swimlanes strictly enforced\", over a flat swimlane diagram of the folio lifecycle with one sticky note, one bean cluster, a person and a cat-robot beside the lanes. Right, under a cat-robot icon: \"BPMN Execution Tool: agentic swarm with ungoverned state. Agents 'relax' swimlanes, mitigated by mechanical + agentic QA/QC reports\", over the same diagram tilted in perspective, beans scattered across every lane and many cat-robots beneath it."
+#~ msgstr "تنفيذ BPMN، من الحتمي إلى الوكيلي. يمتد شريط ألوان من \"حتمي\" (أزرق، يسار: تنفيذ مدار بواسطة وكيل لمهمة واحدة) إلى \"وكيلي\" (أخضر، يمين: وكلاء عبر معظم أو كل المهام). على اليسار، تحت أيقونة ترس ومحرك: \"أداة تنفيذ BPMN: أحد محركات BPMN مفتوحة المصدر، مع فرض صارم للحالة ومسارات السباحة\"، فوق مخطط مسارات سباحة مسطح لدورة حياة folio مع ملاحظة لاصقة واحدة، ومجموعة beans واحدة، وشخص وروبوت قط بجانب المسارات. على اليمين، تحت أيقونة روبوت قط: \"أداة تنفيذ BPMN: سرب وكيل ذو حالة غير محكومة. يقوم الوكلاء بـ 'تخفيف' مسارات السباحة، مع تخفيف الأثر عبر تقارير ضمان/مراقبة جودة ميكانيكية + وكيلة\"، فوق المخطط ذاته مائلاً في المنظور، مع انتشار beans عبر كل مسار والعديد من روبوتات القطط تحته."
+
+#~ msgid "Existing session, doing content work: → Synthesise the feature need, ask user whether to pause content work and address it now or bean it for later."
+#~ msgstr "جلسة موجودة، وتؤدي عملاً على المحتوى: ← استخلاص الحاجة إلى الميزة، وسؤال المستخدم عما إذا كان يفضل إيقاف عمل المحتوى مؤقتًا ومعالجتها الآن، أو تسجيلها كـ bean للاحقًا."
+
+#~ msgid "All beans from the signed-off requirements are resolved, OR"
+#~ msgstr "يتم حل جميع الـ beans الناتجة عن المتطلبات المعتمدة، أو"
+
+#~ msgid "Feature work must be linked to a GitHub issue. Content work uses beans. The two are related but not synonymous."
+#~ msgstr "يجب ربط العمل على الميزات بمسألة في GitHub. بينما يستخدم العمل على المحتوى الـ beans. وهما مرتبطان ولكنهما ليسا مترادفين."
+
+#~ msgid "Bean"
+#~ msgstr "Bean"
+
+#~ msgid "One issue has many beans"
+#~ msgstr "المسألة الواحدة لها عدة beans"
+
+#~ msgid "Each bean references its parent issue"
+#~ msgstr "تشير كل bean إلى مسألتها الأصلية"
+
+#~ msgid "Post round summaries to the issue. After each round of implementation (one or more beans resolved), post a comment on the linked issue containing:"
+#~ msgstr "انشر ملخصات الجولات في المسألة. بعد كل جولة تنفيذ (حل bean واحدة أو أكثر)، انشر تعليقًا على المسألة المرتبطة يتضمن:"
+
+#~ msgid "What remains to be accomplished (open beans)"
+#~ msgstr "ما يتبقى لإنجازه (الـ beans المفتوحة)"
+
+#~ msgid "Bean protocol"
+#~ msgstr "بروتوكول Bean"
