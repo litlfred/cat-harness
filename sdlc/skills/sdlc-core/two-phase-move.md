@@ -24,8 +24,8 @@ until the dependent layers have switched. Each side is red only because the
 other has not landed.
 
 This happened when cat-harness moved `skills/sdlc` to `sdlc/skills`. The fixes
-in fhir-harness, folio-assistant-sci and smart-base were red only because
-folio-assistant still pinned the old cat-harness. Main was red for about 250
+in three content layers above it were red only because the index checkout
+still pinned the old cat-harness. Main was red for about 250
 commits, and 14 re-pin trains failed on the same links, about 17 % of runner
 time (folio-assistant#2781, #2946, bean `folio-assistant-tsh9`).
 
