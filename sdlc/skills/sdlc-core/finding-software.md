@@ -22,7 +22,7 @@ command, and a workaround produces the wrong output quietly.
 something:
 
 ```sh
-bun run cat software:ensure --for scripts/pdf-ocr.py   # what that script needs
+bun run cat software:ensure --for cat-harness-tools/scripts/pdf-ocr.py  # what that script needs
 bun run cat software:ensure tesseract pdftoppm         # by name
 bun run cat software:check                             # report only
 ```
