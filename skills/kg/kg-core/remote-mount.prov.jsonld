@@ -76,6 +76,9 @@
         },
         {
           "@id": "skills/kg/kg-core/remote-mount.md#provenance-22"
+        },
+        {
+          "@id": "skills/kg/kg-core/remote-mount.md#provenance-23"
         }
       ]
     },
@@ -317,6 +320,17 @@
       "prov:value": "- the pilot (smart-ra drops its submodule);\n- the first real consumer, the cutover tracked by bean `g8jp`.",
       "cat-harness:refs": [
         "bean g8jp"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/remote-mount.md#provenance-23",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "The layers cache: one fetch, every byte still verified",
+      "prov:value": "Owner, 2026-11-05: a shared, verified mount cache, one git ref per lock in the index repository, written by the committer who changes the lock and verified by every reader against the lock; CI only verifies (bean yeg4, \"Shared verified layers cache ref\", child of bean k3vv).",
+      "cat-harness:refs": [
+        "bean yeg4",
+        "bean k3vv"
       ]
     }
   ]

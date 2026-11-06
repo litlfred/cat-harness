@@ -341,6 +341,69 @@ criterion at each.
 
 ---
 
+## A WORK PLAN is an epic or milestone that names the process it runs
+
+Owner, 2026-11-05: *"At the beginning of a large process (like creating a new
+collaborative document, or adding software features,) there should / may be a
+work plan. Not every process needs a work plan. Docs/proposals/ once approved
+become workplans"*, and on the card, **"Epic is the plan"**.
+
+So a work plan is not a new kind of file. It is the epic (or milestone) that
+already groups the work, with two tags saying what it runs and where it came
+from:
+
+```sh
+beans update <epic-id> --tag process:<bpmn:process id>        # what it instantiates; repeat for several
+beans update <epic-id> --tag proposal:<repo-relative path>    # the approved proposal it was made from
+beans list --tag process:<bpmn:process id>                    # every plan that runs that process
+```
+
+- **Tags, not front-matter fields.** The `beans` CLI drops every front-matter
+  key it does not know on its next write (measured 2026-11-05), and keeps tags.
+- **A `process:` tag is what makes it a plan.** A `proposal:` tag alone does
+  not: a proposal with no process to run is not a plan yet. A plan filed as a
+  feature or a story is reported, not refused (the work-plan schema in the
+  tools layer reports it).
+- **Start the process under the plan**: `workflow_start` with `plan: <epic-id>`
+  (`bun run cat workflow:start <process> <subject> --plan <epic-id>`). The
+  instance names its plan, as it names its work item; the plan does not list
+  its instances, because where the work is lives in the instances.
+- **Not every process needs one.** A small process tracked by one work item
+  runs with no plan, exactly as before.
+- **The work items under the plan are its work**: parented to the epic, as
+  always. A work item is a memory record with more structure; a work plan is a
+  work item that says which process it runs.
+
+The work-plan page marks each plan in its tree with its process, its proposal
+and how many instances are running under it.
+
+### Approving a proposal seeds its plan
+
+When the owner approves a proposal (owner, 2026-11-05, card **"Proposal seeds
+plan"**), one command writes both ends, so neither is kept by hand:
+
+```sh
+bun run cat proposal:approve <path/to/proposal.md> --process <bpmn:process id> [--process …] \
+    [--plan <epic or milestone id>] [--parent <goal id>] [--dry-run]
+```
+
+- **With no `--plan`** it creates an epic titled as the proposal. **With
+  `--plan`** it tags that epic or milestone instead; a feature or a story is
+  refused.
+- The plan gets the `process:` and `proposal:` tags. The proposal's front
+  matter gets `status: approved`, `approvedOn: <date>` and `plan: <id>`.
+- At least one `--process` is required, unless `--plan` already names one: a
+  plan is defined by what it runs.
+- **Approve only on the owner's word.** The command records an approval; it
+  does not decide one. Run it with `--dry-run` first and show the owner what
+  it will write.
+- `bun run cat proposal:approve --check <proposals dir>` checks the two ends
+  against each other and reports rather than fails: an approved proposal with
+  no plan, a plan id that is no work item, a plan that names no process, or a
+  plan whose `proposal:` tag names another file.
+
+---
+
 ## After you create — parent it, and re-run the guard before you push
 
 `check-bean-parents` fails on an **open work item with no `parent`**, because such a

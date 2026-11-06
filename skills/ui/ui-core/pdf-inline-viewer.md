@@ -81,7 +81,7 @@ All three are listed under `binds` in the
 
 - **Site root from the browser.** One generated page is served at several
   depths (`/<folio>/`, `/folio-assistant/<folio>/`,
-  `/STAGING/<branch>/<folio>/`). The caller passes the route pattern, using
+  `/branches/<branch>/<folio>/`). The caller passes the route pattern, using
   the `folio-mount.ts` convention (group 1 is the root), and the inlined client
   applies it. A page off the route gets a frame saying so, never a 404 inside
   the frame.

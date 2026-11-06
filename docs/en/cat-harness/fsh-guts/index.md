@@ -17,7 +17,7 @@ description: "Deprecated and throwaway structured content, kept rather than dele
 
 This page is **not on the published site**. It is declared
 `publish: "staging-only"`, so `compose-docs.ts` withholds it from the canonical
-deploy and includes it in a local build or a `STAGING/<slug>/` preview.
+deploy and includes it in a local build or a `branches/<slug>/` preview.
 
 `fsh-guts` holds content that was **relocated rather than deleted**. The rule
 it makes enforceable is the one `AGENTS.md` states for work items and means

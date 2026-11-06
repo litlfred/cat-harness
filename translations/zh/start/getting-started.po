@@ -273,10 +273,6 @@ msgstr "用途"
 msgid "Scaffold a folio. Registered as a generic tool, because it runs before the folio has a content type"
 msgstr "为一个 folio 搭建脚手架。注册为通用工具，因为它在 folio 拥有内容类型之前就要运行"
 
-#: docs/start/getting-started.md:174
-msgid "Surface the work plan (beans)"
-msgstr "呈现工作计划（beans）"
-
 #: docs/start/getting-started.md:175
 msgid "Probe which toolchains are installed"
 msgstr "探测已安装了哪些工具链"
@@ -543,3 +539,6 @@ msgstr "后续步骤"
 
 #~ msgid "The middle row is deliberate. Text positioned by guesswork lands on the cat, so an undeclared region means \"do not overlay\", never \"anywhere is fine\". And a folio with no art is ordinary, not broken."
 #~ msgstr "中间那一行是有意为之的。凭猜测放置的文字会落在猫身上，所以未声明区域意味着“不要叠加”，绝不是“放哪都行”。而一个没有配图的 folio 是寻常的，而不是坏掉的。"
+
+#~ msgid "Surface the work plan (beans)"
+#~ msgstr "呈现工作计划（beans）"

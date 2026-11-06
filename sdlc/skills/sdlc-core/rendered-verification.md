@@ -117,25 +117,25 @@ itself lives in [`theme-artefacts`](../../../skills/ui/theming/theme-artefacts.m
 ## The REAL build is reachable — take it off `gh-pages`
 
 This environment's proxy refuses `litlfred.github.io`, but
-`feature-staging.yml` deploys each preview into `STAGING/<slug>/` on the
+`feature-staging.yml` deploys each preview into `branches/<slug>/` on the
 `gh-pages` branch, and git reaches what HTTP cannot:
 
 ```sh
 git fetch origin gh-pages
 S=claude-my-branch-slug              # the deploy comment names it
-mkdir -p "/tmp/rv/folio-assistant/STAGING/$S"
-git archive "FETCH_HEAD:STAGING/$S" | tar -x -C "/tmp/rv/folio-assistant/STAGING/$S"
+mkdir -p "/tmp/rv/folio-assistant/branches/$S"
+git archive "FETCH_HEAD:branches/$S" | tar -x -C "/tmp/rv/folio-assistant/branches/$S"
 cd /tmp/rv && nohup python3 -m http.server 8091 >/dev/null 2>&1 &
-# → http://127.0.0.1:8091/folio-assistant/STAGING/$S/<page>.html
+# → http://127.0.0.1:8091/folio-assistant/branches/$S/<page>.html
 ```
 
 That is the pinned `remote_theme`, the composed tree, the mounted instances
 and the post-Jekyll steps — the thing CI publishes. A whole preview is
-~90 MB; `git archive FETCH_HEAD:STAGING/$S page.html assets` takes just what a
+~90 MB; `git archive FETCH_HEAD:branches/$S page.html assets` takes just what a
 page needs.
 
-**Mount it at the STAGING path, not at the site root.** A staged page
-requests `/folio-assistant/STAGING/<slug>/assets/…`, so serving the extract at
+**Mount it at the branches/ path, not at the site root.** A staged page
+requests `/folio-assistant/branches/<slug>/assets/…`, so serving the extract at
 `/folio-assistant/` 404s **every** stylesheet.
 
 ## Assert the CONDITIONS, or the check passes over nothing
@@ -168,7 +168,7 @@ navigated pages, the instrument that holds is `<nav class="fa-nav"` OR
 
 For a site-wide count, the `gh-pages` route above scales. Use a
 `--filter=blob:none --sparse` clone of `gh-pages`, with sparse patterns for
-the files counted, and exclude `STAGING/`. All HTML is about 1.7 GB and takes
+the files counted, and exclude `branches/`. All HTML is about 1.7 GB and takes
 minutes; one directory takes seconds.
 
 ## Visible is not usable — hit-test the control's CENTRE

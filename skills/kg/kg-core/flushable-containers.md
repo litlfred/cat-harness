@@ -23,7 +23,7 @@ copies of one rule:
 | container | what it holds | "flush" means |
 |---|---|---|
 | `fsh-guts` | deprecated pages, scripts, proposals — *"the trashcan that is kept"* | a **real, irreversible** delete. It is the last stop |
-| staging previews | one built site per open branch, under `STAGING/<slug>/` on the publish branch | removal from the publish branch — **recoverable** by re-running Feature Staging |
+| staging previews | one built site per open branch, under `branches/<slug>/` on the publish branch | removal from the publish branch — **recoverable** by re-running Feature Staging |
 | console log | what a run printed | truncation |
 
 ## Three actions, and they are not three wrappers on one
@@ -114,7 +114,7 @@ finding is about **item size or the limit**, never about pruning more
 aggressively.
 
 **When you look at item size, look for duplication before content.** Staging
-previews built with an absolute `baseurl` of `/…/STAGING/<slug>` carry the slug
+previews built with an absolute `baseurl` of `/…/branches/<slug>` carry the slug
 on every page, so git's content-hash deduplication shares nothing between them:
 N previews store N copies of a site identical apart from its own address. **A
 container over its limit is a question about the container, and "prune more"

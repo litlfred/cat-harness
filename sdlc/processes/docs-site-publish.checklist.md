@@ -80,7 +80,7 @@ Builds the docs site from this checkout's sources and publishes it to `gh-pages`
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `feature-staging`.
-- What: Copies every open pull request's `STAGING/<slug>/` preview from `gh-pages` into the publish directory before the replace, once per publish attempt (`restore-staging.ts`, run inside `publish-gh-pages.sh`).
+- What: Copies every open pull request's `branches/<slug>/` preview from `gh-pages` into the publish directory before the replace, once per publish attempt (`restore-staging.ts`, run inside `publish-gh-pages.sh`).
 - Record it: `workflow_complete` with `node: "Task_Restore"`.
 - next: → `Task_Publish` (Push to the CDN (full replace))
 

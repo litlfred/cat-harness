@@ -137,7 +137,7 @@ The server sends `localhost` and `[::1]` requests to `127.0.0.1`.
 prefix, so root-relative links and IRI paths line up with
 `https://<owner>.github.io/<repo>/`. It copies the Pages behaviours links
 depend on: `<dir>` redirects to `<dir>/`, `/page` serves `page.html`, and a
-miss serves the site's own `404.html`. `STAGING/<branch>/` previews in a
+miss serves the site's own `404.html`. `branches/<branch>/` previews in a
 gh-pages checkout need no extra rule.
 
 ### Published IRIs open the local copy
@@ -156,7 +156,7 @@ on an extensionless IRI serves its `.jsonld` sibling, which Pages cannot do.
 ### One command — `serve:local`
 
 `--repos a,b` fetches each repo's `gh-pages` branch into a cache (shallow,
-blob-less, sparse, updated each run) and serves them all. `STAGING/` is left
+blob-less, sparse, updated each run) and serves them all. `branches/` is left
 out unless `--staging <branch>` names a preview; a repo with no published
 main site lists its previews. `--site <repo>=<dir>` serves a site you built
 yourself, for changes not yet published. `--offline` uses the cache as it is.

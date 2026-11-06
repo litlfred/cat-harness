@@ -341,4 +341,4 @@ and §3.3 leaves it alone.
    reachable and provisional, which is what made it ambiguous; the tier is
    decided by whether a consumer may DEPEND on it, not by whether they can
    reach it. So a SHA in a preview is correct, and `check:published-refs`
-   excludes `/STAGING/` by design rather than by omission.
+   excludes `/branches/` by design rather than by omission.

@@ -15,7 +15,7 @@ agents:
 
 ## The question it exists to answer
 
-> **What happened to `STAGING/<slug>`, and why?**
+> **What happened to `branches/<slug>`, and why?**
 
 A preview can be cleaned up because its pull request closed, removed by a
 dispatch somebody confirmed, or deleted by an unrelated merge to `main`.
@@ -52,9 +52,9 @@ liveness signal fired leaves no trace otherwise.
 
 `_render-log/<YYYY-MM-DD>.jsonl`, at the **root of the publish branch**.
 
-**Outside `STAGING/`, deliberately.** The cleanup runs
-`rm -rf "STAGING/$SLUG"`, and a branch named to collide with a directory under
-`STAGING/` slugifies to exactly that name. A store outside `STAGING/` is
+**Outside `branches/`, deliberately.** The cleanup runs
+`rm -rf "branches/$SLUG"`, and a branch named to collide with a directory under
+`branches/` slugifies to exactly that name. A store outside `branches/` is
 unreachable by that command whatever the slug says; a guard you have to
 remember is weaker than a location that cannot be reached.
 
@@ -80,7 +80,7 @@ entries persisted.
 `docs-site.yml` runs `restore-staging.ts` **from `main`**, so a change to what
 the restore carries is not in force until it merges.
 
-**`--verify` checks the carried prefixes as well as `STAGING/`**, because a
+**`--verify` checks the carried prefixes as well as `branches/`**, because a
 verifier blind to half of what the restore carried reports a clean run over
 the loss it exists to catch. A lost
 prefix is reported as **not recoverable by re-running anything**: a preview can
@@ -104,13 +104,13 @@ silent report and only the second is a defect.
 
 ## Who writes an entry
 
-Every path that can change `STAGING/` writes one, and
+Every path that can change `branches/` writes one, and
 `scripts/tests/workflow-yaml.test.ts` asserts that by job rather than leaving
 it to be remembered:
 
 | path | event | how it lands |
 |---|---|---|
-| `feature-staging.yml` → `stage` | `rendered` | the **same commit as the deploy**. The entry goes to the root `_render-log/`, never into `_site`, which would land it at `STAGING/<slug>/_render-log/` — inside the directory a cleanup removes |
+| `feature-staging.yml` → `stage` | `rendered` | the **same commit as the deploy**. The entry goes to the root `_render-log/`, never into `_site`, which would land it at `branches/<slug>/_render-log/` — inside the directory a cleanup removes |
 | `feature-staging.yml` → `stage`, preview cap | `removed`, one per rotated preview | the **same commit as the deploy**, written by `staging-rotate.ts`; the reason names the size budget, and the summary gives slug, age and size |
 | `feature-staging.yml` → `cleanup`, confirmed | `removed` | the **same commit as the removal** |
 | `feature-staging.yml` → `cleanup`, refused | `retained` | its own commit |
@@ -136,7 +136,7 @@ from the removal it describes.
 
 ```sh
 bun run cat-harness-tools/scripts/render-log.ts --dir <gh-pages-checkout> \
-  --event rendered --kind staging-preview --path STAGING/<slug> --slug <slug> \
+  --event rendered --kind staging-preview --path branches/<slug> --slug <slug> \
   --summary "preview published" --branch "$BRANCH" --commit "$SHA" --run "$RUN_URL"
 ```
 

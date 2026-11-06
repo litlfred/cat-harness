@@ -3,12 +3,67 @@ name: crdm-requirements-workflow
 graph-typologies:
   - proposals
   - requirements
+uses-methodology:
+  - crdm
 ---
 
 # CRDM requirements workflow
 
 Once a feature request is detected (see `crdm-detect.md`), the agent follows
 this workflow to gather, validate, and implement requirements collaboratively.
+
+## Method origin and how this workflow adapts it
+
+This workflow **adapts** the **Collaborative Requirements Development
+Methodology (CRDM)** developed by the **Public Health Informatics Institute
+(PHII)** and applied to health information systems by **PATH & PHII (2012)** —
+see the [`crdm` methodology node](../../../methodologies/crdm.md) and the
+canonical SKOS glossary concept
+[`https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/collaborative-requirements-development-methodology`](../../../docs/assets/glossary/cat-harness--platform.skos.jsonld):
+
+- **PHII (2021/2023)**, *Collaborative Requirements Development Methodology
+  (CRDM): A Collaborative Approach to Public Health Systems*
+  ([`library/phii-2023-crdm`](../../../library/process/phii-2023-crdm/README.md))
+- **PHII (2016/2021)**, *5. Analyzing Technical Options: Defining and
+  Validating System Requirements Guide*
+  ([`library/phii-2021-defining-and-validating-requirements-guide`](../../../library/process/phii-2021-defining-and-validating-requirements-guide/README.md))
+- **PATH & PHII (2012)**, *Common Requirements for Maternal Health Information
+  Systems: Produced with the Collaborative Requirements Development Methodology*
+  ([`library/path-2012-common-requirements-mhis-crdm`](../../../library/process/path-2012-common-requirements-mhis-crdm/README.md))
+
+The relation to PHII and PATH CRDM is **adapts**:
+
+- **Phases that follow PHII & PATH CRDM:**
+  - **Phase 1 (Needs assessment)** and **Phase 2 (Business process analysis &
+    redesign)** follow PHII's first two concentration areas (*1. Business
+    Process Analysis — think: How do we do our work now?* and *2. Business
+    Process Redesign — rethink: How should we do our work?*), using swimlane
+    task-flow diagrams across pools and actor lanes and a business process / gap
+    matrix.
+  - **Phase 3 (Requirements definition)** follows PHII's third concentration
+    area (*3. Requirements Definition — describe: How can an information system
+    support our work?*) and PATH (2012)'s separation of activity-linked
+    functional user requirements from cross-cutting non-functional / general
+    system requirements, together with PHII's priority scale (`High / Medium /
+    Low` = `Must-have / Should-have / Nice-to-have`) and validation walkthroughs
+    (*Desk checking*, *Walkthrough*, *Peer review*).
+- **Phases and mechanisms that are the platform's own extensions:**
+  - **Agentic BA-only facilitation channel:** An LLM agent facilitates the
+    process with the human BA (`Role_BusinessAnalyst`) over issues and pull
+    requests rather than a multi-day in-person workshop.
+  - **Phase 4 (Codebase impact analysis):** 7-dimension impact analysis across
+    the repository's schemas, skills, BPMN/DMN models, UI components, pipelines,
+    tests, and downstream consumers ([`crdm-impact-analysis.md`](crdm-impact-analysis.md)).
+  - **Phase 4b (Capability area dependency ordering & formalize-first rule):**
+    Grouping requirements into capability areas (`CA-1`, `CA-2`, …) ordered by a
+    dependency DAG and formalizing existing implicit behavior before adding net-new
+    features.
+  - **Phase 5 (Work-plan decomposition & specification filing):** Creating agent
+    work items (`beans/`) and human todos (`todos/`), and filing proposals from
+    `docs/proposals/<slug>.md` to `docs/requirements/<slug>.md`.
+  - **Phase 6 (Implementation, `branches/` preview & merge sign-off):** Feature-branch
+    delivery, automated verification gates, `branches/<branch-slug>/` review, and
+    explicit human owner confirmation before merging (`merge-to-main.md`).
 
 ## Actors
 
@@ -135,7 +190,7 @@ For each requirement:
    assets of the proposal under `docs/proposals/<slug>/wireframes/` on the
    feature branch, and shown where the requester will look, chosen from
    context — the conversation, the issue the request came from, the PR, or
-   several — each place carrying the same STAGING deep links and screenshots
+   several — each place carrying the same branches/ deep links and screenshots
    ([`staging-review`](../sdlc-core/staging-review.md), the deep-link rule,
    point 5). The
    candidates are the options Phase 4's comparison lays out; the requester or
@@ -415,7 +470,7 @@ For each work item:
    chosen candidate beside the after-screenshot.
 3. **Open PR** — link to the work item and the parent issue
 4. **Deploy staging preview** — the `feature-staging.yml` workflow
-   auto-deploys to `STAGING/<branch-slug>/` on `gh-pages`. The magenta
+   auto-deploys to `branches/<branch-slug>/` on `gh-pages`. The magenta
    "FEATURE BRANCH" banner at the top of every page links to the source
    branch and provides a "compare with main" link.
 5. **Post before/after comparison to issue** — use the `staging-review`
@@ -430,7 +485,7 @@ For each work item:
 6. **Iterate on PR feedback** — code review is on the PR; visual review
    uses the staging preview URLs. When the change touches a **folio's
    blocks**, the page a reviewer opens is the preview's **review page**,
-   `STAGING/<slug>/review/`: every changed block before and after, with the
+   `branches/<slug>/review/`: every changed block before and after, with the
    heat map and outline. The review itself runs through
    `content-change-review.bpmn`. The review coordinator slices the change and
    assigns the slices, reviewers work them in `review-task`, disagreements go
@@ -481,6 +536,10 @@ When a round of implementation is complete (one or more work items resolved):
 
 ## Cross-references
 
+- [`../../../methodologies/crdm.md`](../../../methodologies/crdm.md) — the CRDM methodology node (PHII & PATH origin, three concentration areas, and platform adaptation)
+- [`../../../library/process/phii-2023-crdm/README.md`](../../../library/process/phii-2023-crdm/README.md) — PHII (2021/2023) CRDM web page
+- [`../../../library/process/phii-2021-defining-and-validating-requirements-guide/README.md`](../../../library/process/phii-2021-defining-and-validating-requirements-guide/README.md) — PHII (2016/2021) Defining and Validating System Requirements Guide
+- [`../../../library/process/path-2012-common-requirements-mhis-crdm/README.md`](../../../library/process/path-2012-common-requirements-mhis-crdm/README.md) — PATH & PHII (2012) Common Requirements for Maternal Health Information Systems
 - [CRDM methodology page](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/crdm-methodology.html) — the documentation page for users
 - [`interaction-modality.md`](../../../skills/conduct/conduct-core/interaction-modality.md) §4.1 — context before the question; the ordering rule this workflow runs on
 - [`crdm-detect.md`](crdm-detect.md) — feature-request detection skill

@@ -1,7 +1,7 @@
 ---
 name: feature-staging
 description: >
-  Manages feature-branch staging deployments under gh-pages/STAGING/<branch-slug>/
+  Manages feature-branch staging deployments under gh-pages/branches/<branch-slug>/
   for before/after publication review comparison. Handles branch creation, staging
   deployment, commit SHA stamping, and cleanup.
 adapters: [document, paper, dak]
@@ -17,12 +17,12 @@ to **see the rendered result** before merging. The staging deployment puts the
 feature branch's rendered site at:
 
 ```
-https://<owner>.github.io/<repo>/STAGING/<branch-slug>/
+https://<owner>.github.io/<repo>/branches/<branch-slug>/
 ```
 
 **A preview is the general publication step with a different root.** The push
 itself is [`render-kg-to-cdn`](../../../skills/process/workflow/render-kg-to-cdn.md) with
-`STAGING/<branch-slug>/` as the publication root URL and the `gh-pages` Tool as
+`branches/<branch-slug>/` as the publication root URL and the `gh-pages` Tool as
 the target — the same step a release takes with the site root. What this skill
 owns is everything around that call: the slug, the banner and `staging.json`,
 the render log, the PR comment, and taking the preview down.
@@ -35,8 +35,8 @@ repository's `index.config.json` first:
 
 | the change lives in | its preview is at | published by |
 |---|---|---|
-| a repository with its own site (its `index.config.json` has a `site` entry) | `https://<owner>.github.io/<repo>/STAGING/<slug>/`, and the root from its default branch | that repository: `stage-local.ts --repo .` from its checkout when it declares `site.agentRun` (below), else its own `staging.yml` |
-| a layer an index mounts and publishes as part of its own site (no site of its own) | `STAGING/<slug>/` on the **index's** site | a **staging re-pin**: a pull request on the index that points the mount at the branch's commit, recorded with `bun run cat mount:remote --staging` (basis `staging`, no consent needed) |
+| a repository with its own site (its `index.config.json` has a `site` entry) | `https://<owner>.github.io/<repo>/branches/<slug>/`, and the root from its default branch | that repository: `stage-local.ts --repo .` from its checkout when it declares `site.agentRun` (below), else its own `staging.yml` |
+| a layer an index mounts and publishes as part of its own site (no site of its own) | `branches/<slug>/` on the **index's** site | a **staging re-pin**: a pull request on the index that points the mount at the branch's commit, recorded with `bun run cat mount:remote --staging` (basis `staging`, no consent needed) |
 
 A repository with a site of its own is previewed there, even when an index
 also mounts it. The index's site shows it as one instance among its layers,
@@ -60,7 +60,7 @@ included, `feature-staging.yml` automatically:
 4. Comments on the PR that the preview is **staged and queued**, with the
    earliest push time and when it should be live
 5. Waits for the rate-limit window (§8), then deploys to
-   `gh-pages/STAGING/<branch-slug>/` **only the files that differ from the
+   `gh-pages/branches/<branch-slug>/` **only the files that differ from the
    live site** (`staging-share.ts apply`). The preview's
    `staging-sw.js` serves the rest from the live site in the browser and puts
    the banner back on its pages; the live site's root `404.html`
@@ -153,14 +153,14 @@ The reviewer opens both URLs side by side:
 | Surface | URL | What it shows |
 |---|---|---|
 | **Main** (current) | `<pages-url>/` | The published state on `main` |
-| **Staging** (proposed) | `<pages-url>/STAGING/<slug>/` | The feature branch's changes |
+| **Staging** (proposed) | `<pages-url>/branches/<slug>/` | The feature branch's changes |
 
 The commit SHA on each page confirms exactly what is being compared.
 
 ### 5. Cleanup
 
 When the PR is merged or closed, the `cleanup` job in `feature-staging.yml`
-removes `STAGING/<slug>/` from `gh-pages` so stale previews don't accumulate.
+removes `branches/<slug>/` from `gh-pages` so stale previews don't accumulate.
 The full retention rules — merged vs closed-unmerged, the label, the dispatch —
 are in [`staging-review`](staging-review.md) §"Staging retention".
 
@@ -174,10 +174,10 @@ live site.
 
 So every `stage` run, inside its push loop, runs
 `cat-harness-tools/scripts/staging-rotate.ts`: it stamps the preview it is staging
-(`STAGING/<slug>/.staged-at`), keeps that one plus the most recently updated
+(`branches/<slug>/.staged-at`), keeps that one plus the most recently updated
 others while the total fits `MAX_PREVIEW_BYTES` (3 GB, 3 x 1024^3 bytes, defined
 there and nowhere else), and removes the rest, oldest first — each with a `removed` render-log entry, its record retired into
-`STAGING/_retired/`, and a line (slug, age, size) in the commit message and
+`branches/_retired/`, and a line (slug, age, size) in the commit message and
 job log. `_retired/` and non-preview entries are never touched.
 
 Two things to know when editing it:
@@ -297,7 +297,7 @@ so is a release.
 
 | build type | used for | builds |
 |---|---|---|
-| `preview` | every pull request's `STAGING/<slug>/` preview | only what the change can reach (the cone, §7); every whole-corpus **index** is main's copy, put back rather than rebuilt |
+| `preview` | every pull request's `branches/<slug>/` preview | only what the change can reach (the cone, §7); every whole-corpus **index** is main's copy, put back rather than rebuilt |
 | `full` | the main site deploy, a public comment release, a release | everything; every index rebuilt from the tree being published |
 
 An **index** is computed over the whole corpus: the search index, the LSI
@@ -335,7 +335,7 @@ When an author requests a content change:
    deployment happens automatically. On an agent-run repository, run
    `stage-local.ts` (below).
 5. **Report staging URL** — tell the author the preview is at
-   `<pages-url>/STAGING/<slug>/`
+   `<pages-url>/branches/<slug>/`
 6. **Iterate** — each push updates the staging deployment with a new SHA
 
 The BPMN for this workflow is the content core's `processes/content/content-change-review.bpmn`.
@@ -381,7 +381,7 @@ reusable workflow each one calls:
 - a repository that calls both (smart-ra carries an IG under `input/`) gets
   the **folio**, unless `--publisher ig` is given. The folio owns the publish
   root. An IG's root deploy is a clean one, and it is refused on a publish
-  branch that holds a folio's `STAGING/`, `_render-log/` or `_main-site.json`.
+  branch that holds a folio's `branches/`, `_render-log/` or `_main-site.json`.
 
 **Main site or preview** follows the branch, as the workflows do. The default
 branch publishes the main site; any other branch publishes a preview.
@@ -391,8 +391,8 @@ default branch.
 
 | | folio | IG |
 |---|---|---|
-| preview | `STAGING/<slug>/`, replaced wholesale; held by the rate-limit gate (§8); commit `staging(<slug>): from <sha>`; render log `staging-preview` | `branches/<last path component>/`, nothing deleted; commit `Deploy candidate branch` |
-| main site | the root, through `publish-main-site.ts`: only the files the last publish's `_main-site.json` lists are replaced, and `STAGING/`, `_render-log/` and anything a person put at the root are kept; commit `main-site: from <sha>`; render log `main-site` for `/` | the root, cleaned except for the deploy step's `clean-exclude` (`branches`, `sitepreview`) and the action's own exclusions; commit `Deploy main branch` |
+| preview | `branches/<slug>/`, replaced wholesale; held by the rate-limit gate (§8); commit `staging(<slug>): from <sha>`; render log `staging-preview` | `branches/<last path component>/`, nothing deleted; commit `Deploy candidate branch` |
+| main site | the root, through `publish-main-site.ts`: only the files the last publish's `_main-site.json` lists are replaced, and `branches/`, `_render-log/` and anything a person put at the root are kept; commit `main-site: from <sha>`; render log `main-site` for `/` | the root, cleaned except for the deploy step's `clean-exclude` (`branches`, `sitepreview`) and the action's own exclusions; commit `Deploy main branch` |
 
 Every path refuses an empty build before it deletes anything.
 
@@ -445,7 +445,7 @@ match it. It is not a fallback for an agent to take.
 
 | what | agent path | GitHub Actions path (documented, not run) |
 |---|---|---|
-| a folio preview at `STAGING/<slug>/` | `stage-local.ts` from the branch | `folio-staging.yml` job `stage` |
+| a folio preview at `branches/<slug>/` | `stage-local.ts` from the branch | `folio-staging.yml` job `stage` |
 | a folio's main site at the Pages root | `stage-local.ts` from the default branch | `folio-staging.yml` job `publish-main` |
 | an IG preview at `branches/<branch>/` | `stage-local.ts` from the branch | the IG publisher's `ghbuild.yml`, "Deploy candidate" |
 | an IG's main site at the Pages root | `stage-local.ts` from the default branch | the IG publisher's `ghbuild.yml`, "Deploy main" |
@@ -482,7 +482,7 @@ An author needs to change the immunization schedule:
 3. Agent edits all affected blocks, assesses downstream impact
 4. Push → staging deployment → author reviews
 5. Author submits to the guidance review committee
-6. Committee compares `main` vs `STAGING/feature-update-immunization-schedule/`
+6. Committee compares `main` vs `branches/feature-update-immunization-schedule/`
 7. Committee approves → merge → staging cleaned up → main site updated
 
 ## Before you hand a staging URL to a person
@@ -490,7 +490,7 @@ An author needs to change the immunization schedule:
 **Check the ref, then say how long and come back.** A preview push is not a
 served page, and the bot's *"Staging preview"* comment reports at most the
 first, not the second — and while it says **queued**, not even that. List
-`STAGING/<slug>/` on `refs/heads/gh-pages` before relaying the URL; quote the
+`branches/<slug>/` on `refs/heads/gh-pages` before relaying the URL; quote the
 comment's own push and live-by times (the rate limit in §8 can hold a push for
 several windows), or say the `stage` job takes about 22 minutes plus the wait
 and Pages adds 3 to 4 on top; schedule the re-check rather than promising it.
@@ -502,7 +502,7 @@ person (STRICT)". It is the same rule and it is written once, there.
 ## Before you report a staging URL as broken
 
 **Look at the publish ref, not the site.** A staging URL is LOOKED UP in
-`gh-pages` under `STAGING/<branch-slug>/`, never composed from the source
+`gh-pages` under `branches/<branch-slug>/`, never composed from the source
 path — `cat-harness/docs/guides/x.md` publishes to
 `/docs/cat-harness/guides/x.html`, and composing it from the source path
 yields a 404 for a page that is there. From

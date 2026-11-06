@@ -65,7 +65,7 @@ If the answer to the first is yes and to the second is no, it is durable.
 |---|---|---|
 | a **work item** (`beans/defs/*.md`) | records that something was considered; ids are referenced from commits, issues and other work items | set `status: scrapped` with the reasons; `beans archive` MOVES resolved ones |
 | a **todo** (`todos/items/*.md`) | it is a *person's* outstanding work, not an agent's | ask the person; an agent may neither close nor remove one |
-| a **staging preview** (`STAGING/<slug>/` on the publish branch) | it is the artefact a human assesses a rendered change from — **unless the PR merged**, when the main site now shows the same thing | **merged → removed automatically; the merge IS the confirmation.** Otherwise: while the PR is open, the `staging:cleanup` label applied by a person; once closed unmerged, a `feature-staging.yml` dispatch with `cleanup_slug` + a matching `cleanup_confirm`, since the label cannot reach a closed PR |
+| a **staging preview** (`branches/<slug>/` on the publish branch) | it is the artefact a human assesses a rendered change from — **unless the PR merged**, when the main site now shows the same thing | **merged → removed automatically; the merge IS the confirmation.** Otherwise: while the PR is open, the `staging:cleanup` label applied by a person; once closed unmerged, a `feature-staging.yml` dispatch with `cleanup_slug` + a matching `cleanup_confirm`, since the label cannot reach a closed PR |
 | a **published page** on the site | a URL somebody has linked or bookmarked | say what would 404 and let the owner decide; a redirect is often the answer |
 | a **QA verdict or witness** | the previous answer is what separates "this broke today" from "this has been broken since it was written" | regenerate it in place; never remove it to make a sweep clean. Its record is the commit-keyed entry on the `qa-reports` branch; an entry there is removed only by `qa:prune`'s declared retention, never by hand |
 | a **QA attestation** (`test/attestations/**`) | a judgement — agent, human or baseline pair — that no regeneration can reproduce | never removed to clear a finding; a stale one is re-judged, and the new judgement replaces it through its writer |
@@ -97,7 +97,7 @@ somewhere else ([`placement`](../../kg/kg-core/placement.md)).
 **Report, do not act.** The report is the deliverable:
 
 - **Name every artefact.** Assert by naming, never by counting — "4 previews
-  are orphaned" is a statistic; "`STAGING/<slug>` (36.8 MB, last deployed 11
+  are orphaned" is a statistic; "`branches/<slug>` (36.8 MB, last deployed 11
   days ago, its PR merged) matches no open pull request" is something a person
   can answer.
 - **Give the size and the age.**
@@ -125,7 +125,7 @@ confirmation covers the class as the owner last stated it; changing the rule
 is theirs. It does not waive the record: each rotation names the artefact, its
 age and its size — in the commit message, the job log and a `removed`
 render-log entry — and retires its `staging-preview.json` into
-`STAGING/_retired/` rather than deleting it. It covers rotation over the cap
+`branches/_retired/` rather than deleting it. It covers rotation over the cap
 and nothing else on the branch. See
 [`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §"The cap — 3 GB
 of previews in total, the oldest rotated off".
@@ -139,7 +139,7 @@ artefact other workflows put there — for example every open PR's staging
 preview — with no step anyone wrote with that intent, silently, and against
 any explicit retention rule elsewhere. Since there is nobody to ask at push
 time, the workflow must not be shaped that way: restore what it does not own
-(e.g. `STAGING/`) into the publish directory before the push.
+(e.g. `branches/`) into the publish directory before the push.
 
 **A removal policy needs a removal that can actually be confirmed.** If the
 only sanctioned remedy cannot reach the artefacts a report names (a label on
