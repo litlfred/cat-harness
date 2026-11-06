@@ -96,17 +96,17 @@ turn ends with "please look at this", it must carry the **PR link** and a
 [`deployment-awareness`](../../../skills/ui/ui-core/deployment-awareness.md) (e.g. `GitHub Pages`,
 `local server`, `chat discussion only`, or `could not determine`).
 
-> ✗ `https://…/STAGING/claude-my-branch/` *(root only, host unstated)*
+> ✗ `https://…/branches/claude-my-branch/` *(root only, host unstated)*
 >
-> ✗ `https://owner.github.io/repo/STAGING/claude-my-branch/page.html` *(assumed github.io on private repo)*
+> ✗ `https://owner.github.io/repo/branches/claude-my-branch/page.html` *(assumed github.io on private repo)*
 >
 > ✓ **Staging (GitHub Pages):**
-> - [Swarm management](https://…/STAGING/claude-my-branch/swarm-management.html) — new page
-> - [process-state](https://…/STAGING/claude-my-branch/reference/skill-instructions/process-state.html) — new skill
-> - [Architecture](https://…/STAGING/claude-my-branch/architecture.html) — nav entry added
+> - [Swarm management](https://…/branches/claude-my-branch/swarm-management.html) — new page
+> - [process-state](https://…/branches/claude-my-branch/reference/skill-instructions/process-state.html) — new skill
+> - [Architecture](https://…/branches/claude-my-branch/architecture.html) — nav entry added
 >
 > ✓ **Staging (local server at http://127.0.0.1:4007):**
-> - [Swarm management](http://127.0.0.1:4007/<repo>/STAGING/claude-my-branch/swarm-management.html) — new page
+> - [Swarm management](http://127.0.0.1:4007/<repo>/branches/claude-my-branch/swarm-management.html) — new page
 >
 > ✓ **Review (chat discussion only — no web surface):**
 > - `docs/concepts/architecture/swarm-management.md` — new page (outline provided in chat)
@@ -136,11 +136,11 @@ hidden.
 guess:
 1. **GitHub Pages (static host):** When Pages is configured (e.g. `pagesBaseUrl`
    is declared in the instance's `index.config.json` entry), the staging workflow deploys to
-   `…/STAGING/<branch-slug>/`, and Jekyll rewrites `baseurl` so paths mirror
+   `…/branches/<branch-slug>/`, and Jekyll rewrites `baseurl` so paths mirror
    `docs/`. A page at `docs/concepts/architecture/foo.md` is at
-   `…/STAGING/<slug>/architecture/foo.html`; a skill at
+   `…/branches/<slug>/architecture/foo.html`; a skill at
    `skills/<pkg>/bar.md` is at
-   `…/STAGING/<slug>/reference/skill-instructions/bar.html`. Those paths say where a page *would* land; the links themselves come from the
+   `…/branches/<slug>/reference/skill-instructions/bar.html`. Those paths say where a page *would* land; the links themselves come from the
    preview's page list, each looked up in the publish ref, as
    [`staging-review`](staging-review.md) §"The deep-link rule" requires, never built
    from a source path.

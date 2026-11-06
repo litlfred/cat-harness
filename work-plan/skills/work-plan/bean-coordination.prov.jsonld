@@ -394,7 +394,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The measurement",
-      "prov:value": "2026-09-19, bean `plj1` (`docs-site.yml`'s full-replace publish deleting every open PR's `STAGING/` preview). Two sessions set it `in-progress` **61 seconds apart** — 09:28:18Z and 09:29:19Z — and opened two PRs for it, #377 and #379, at ~09:36 and 09:37. Same diagnosis, same design choice, two implementations; #379 was withdrawn.",
+      "prov:value": "2026-09-19, bean `plj1` (`docs-site.yml`'s full-replace publish deleting every open PR's `branches/` preview). Two sessions set it `in-progress` **61 seconds apart** — 09:28:18Z and 09:29:19Z — and opened two PRs for it, #377 and #379, at ~09:36 and 09:37. Same diagnosis, same design choice, two implementations; #379 was withdrawn.",
       "cat-harness:refs": [
         "bean `plj1`",
         "#377",

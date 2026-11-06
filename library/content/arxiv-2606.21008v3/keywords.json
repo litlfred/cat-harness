@@ -3,79 +3,79 @@
   "entry": "arxiv-2606.21008v3",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2267,
-    "terms": 15478,
+    "sections": 2176,
+    "terms": 14971,
     "weighting": "log-entropy"
   },
   "document": [
     {
       "term": "factual rating",
-      "score": 32.7511,
+      "score": 32.742,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "run anchor",
-      "score": 29.0182,
+      "score": 28.8906,
       "evidence": []
     },
     {
       "term": "factual axis",
-      "score": 28.7459,
+      "score": 28.8244,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "anchor score",
-      "score": 27.4101,
+      "score": 27.3647,
       "evidence": []
     },
     {
       "term": "evaluator factual",
-      "score": 27.3313,
+      "score": 27.2416,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "every rating",
-      "score": 26.9008,
+      "score": 27.1353,
+      "evidence": []
+    },
+    {
+      "term": "anchor own",
+      "score": 26.5074,
       "evidence": []
     },
     {
       "term": "reference anchor",
-      "score": 26.5724,
+      "score": 26.4891,
       "evidence": []
     },
     {
       "term": "factual judges",
-      "score": 26.5546,
+      "score": 26.4663,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "anchor own",
-      "score": 26.5338,
-      "evidence": []
-    },
-    {
       "term": "fixed anchor",
-      "score": 25.6922,
+      "score": 25.7248,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "anchor model",
-      "score": 25.4727,
+      "score": 25.6227,
       "evidence": []
     },
     {
       "term": "rating consistency",
-      "score": 24.8822,
+      "score": 24.9236,
       "evidence": [
         "heading"
       ]
@@ -85,918 +85,918 @@
     "sec-000-the-metanym-game": [
       {
         "term": "game",
-        "score": 1.6579,
+        "score": 1.6791,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "ground truth",
-        "score": 1.4997,
+        "score": 1.5018,
         "evidence": []
       },
       {
         "term": "gpqa",
-        "score": 0.9911,
+        "score": 0.9889,
         "evidence": []
       },
       {
         "term": "metanym",
-        "score": 0.9815,
+        "score": 0.9793,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "instantiates",
-        "score": 0.8767,
+        "score": 0.8755,
         "evidence": []
       },
       {
         "term": "judges",
-        "score": 0.8613,
+        "score": 0.8585,
+        "evidence": []
+      },
+      {
+        "term": "ratings",
+        "score": 0.8316,
         "evidence": []
       },
       {
         "term": "generators",
-        "score": 0.8276,
-        "evidence": []
-      },
-      {
-        "term": "rises",
-        "score": 0.8276,
+        "score": 0.8261,
         "evidence": []
       }
     ],
     "sec-001-introduction": [
       {
         "term": "metanym game",
-        "score": 2.5413,
+        "score": 2.5531,
         "evidence": []
       },
       {
         "term": "true sentence",
-        "score": 1.9681,
+        "score": 1.8117,
         "evidence": []
       },
       {
         "term": "archetypal context",
-        "score": 1.6062,
+        "score": 1.6044,
         "evidence": []
       },
       {
         "term": "player",
-        "score": 1.4896,
+        "score": 1.488,
         "evidence": []
       },
       {
         "term": "key-free",
-        "score": 1.1216,
+        "score": 1.1202,
         "evidence": []
       },
       {
         "term": "factual",
-        "score": 1.0972,
+        "score": 1.0935,
         "evidence": []
       },
       {
         "term": "slots",
-        "score": 0.9905,
+        "score": 0.9884,
         "evidence": []
       },
       {
         "term": "template",
-        "score": 0.9612,
+        "score": 0.9676,
         "evidence": []
       }
     ],
     "sec-003-participants-and-protocol": [
       {
         "term": "portfolio",
-        "score": 0.8895,
-        "evidence": []
-      },
-      {
-        "term": "disabled",
-        "score": 0.8519,
+        "score": 0.8868,
         "evidence": []
       },
       {
         "term": "participants",
-        "score": 0.7997,
+        "score": 0.8797,
         "evidence": [
           "heading"
         ]
       },
       {
+        "term": "disabled",
+        "score": 0.8506,
+        "evidence": []
+      },
+      {
         "term": "anchor",
-        "score": 0.6216,
+        "score": 0.6191,
         "evidence": []
       },
       {
         "term": "pools",
-        "score": 0.5946,
+        "score": 0.5941,
         "evidence": []
       }
     ],
     "sec-004-the-rubric-and-the-anchor": [
       {
         "term": "metanym game",
-        "score": 1.7964,
+        "score": 1.8023,
         "evidence": []
       },
       {
         "term": "impressive length",
-        "score": 1.7242,
+        "score": 1.7309,
         "evidence": []
       },
       {
         "term": "idiomatic rewrite",
-        "score": 1.5917,
+        "score": 1.5885,
         "evidence": []
       },
       {
         "term": "rubric",
-        "score": 1.5818,
+        "score": 1.5785,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "anchor",
-        "score": 1.2432,
+        "score": 1.2382,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "parallel context",
-        "score": 1.1938,
+        "score": 1.2042,
         "evidence": []
       },
       {
         "term": "archetypal",
-        "score": 1.1214,
+        "score": 1.1199,
         "evidence": []
       },
       {
         "term": "archetype",
-        "score": 1.0655,
+        "score": 1.0626,
         "evidence": []
       }
     ],
     "sec-005-two-key-free-estimators": [
       {
         "term": "evaluator competence",
-        "score": 2.8109,
+        "score": 2.8031,
         "evidence": []
       },
       {
         "term": "peer centrality",
-        "score": 1.8848,
+        "score": 1.8816,
         "evidence": []
       },
       {
         "term": "anchor model",
-        "score": 1.3529,
+        "score": 1.3592,
         "evidence": []
       },
       {
         "term": "leniency",
-        "score": 1.2854,
+        "score": 1.2849,
         "evidence": []
       },
       {
         "term": "rating",
-        "score": 1.0354,
+        "score": 1.0382,
         "evidence": []
       },
       {
         "term": "rescaled",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       },
       {
         "term": "factual",
-        "score": 0.9855,
+        "score": 0.9822,
         "evidence": []
       },
       {
         "term": "model reads",
-        "score": 0.8364,
+        "score": 0.8445,
         "evidence": []
       }
     ],
     "sec-006-council-total-rating-and-scaling-by-addition": [
       {
         "term": "council",
-        "score": 1.9457,
+        "score": 1.9544,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "metanym game",
-        "score": 1.4348,
+        "score": 1.4414,
         "evidence": []
       },
       {
         "term": "rating",
-        "score": 1.4136,
+        "score": 1.4174,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "total",
-        "score": 1.3224,
+        "score": 1.3208,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "contestant",
-        "score": 1.2158,
+        "score": 1.2149,
         "evidence": []
       },
       {
         "term": "contest",
-        "score": 1.2078,
+        "score": 1.2057,
         "evidence": []
       },
       {
         "term": "seat",
-        "score": 1.1999,
+        "score": 1.1977,
         "evidence": []
       },
       {
         "term": "archived",
-        "score": 1.1216,
+        "score": 1.1202,
         "evidence": []
       }
     ],
     "sec-008-anchoring-doubles-resolution": [
       {
         "term": "doubles",
-        "score": 1.0727,
+        "score": 1.071,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "portfolio",
-        "score": 0.7049,
+        "score": 0.7028,
         "evidence": []
       },
       {
         "term": "bootstrap",
-        "score": 0.6955,
+        "score": 0.6934,
         "evidence": []
       }
     ],
     "sec-009-evaluator-factual-competence": [
       {
         "term": "evaluator",
-        "score": 1.3816,
+        "score": 1.3772,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "claude-opus",
-        "score": 0.9536,
+        "score": 0.9513,
         "evidence": []
       },
       {
         "term": "judges",
-        "score": 0.6825,
+        "score": 0.6803,
         "evidence": []
       }
     ],
     "sec-010-rating-consistency-and-the-council": [
       {
         "term": "claude opus",
-        "score": 1.4505,
+        "score": 1.4435,
         "evidence": []
       },
       {
         "term": "consistency",
-        "score": 1.3534,
+        "score": 1.3528,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "council",
-        "score": 0.838,
+        "score": 0.8417,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "gemini",
-        "score": 0.8087,
+        "score": 0.809,
         "evidence": []
       }
     ],
     "sec-011-the-official-leaderboard-judgement-is-the-bottle": [
       {
         "term": "factual judges",
-        "score": 1.5314,
+        "score": 1.5264,
         "evidence": []
       },
       {
         "term": "council",
-        "score": 1.2569,
+        "score": 1.2626,
         "evidence": []
       },
       {
         "term": "claude-opus",
-        "score": 0.9536,
+        "score": 0.9513,
         "evidence": []
       },
       {
         "term": "leaderboard",
-        "score": 0.9305,
+        "score": 0.9281,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "seat",
-        "score": 0.819,
+        "score": 0.8175,
         "evidence": []
       },
       {
         "term": "five",
-        "score": 0.802,
+        "score": 0.8174,
         "evidence": []
       },
       {
         "term": "anchor",
-        "score": 0.7844,
+        "score": 0.7812,
         "evidence": []
       }
     ],
     "sec-012-a-key-free-benchmark-replicates-a-keyed-one": [
       {
         "term": "gpqa diamond",
-        "score": 2.2813,
+        "score": 2.3153,
         "evidence": []
       },
       {
         "term": "runs pooled",
-        "score": 1.2989,
+        "score": 1.2941,
         "evidence": []
       },
       {
         "term": "leading eight",
-        "score": 1.1867,
+        "score": 1.2218,
         "evidence": []
       },
       {
         "term": "key-free",
-        "score": 1.1216,
+        "score": 1.1202,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "keyed",
-        "score": 1.0371,
+        "score": 1.0353,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "official total",
-        "score": 1.0357,
+        "score": 1.0324,
         "evidence": []
       },
       {
         "term": "twelve models",
-        "score": 0.9333,
+        "score": 0.9227,
         "evidence": []
       },
       {
         "term": "archetype",
-        "score": 0.9177,
+        "score": 0.9152,
         "evidence": []
       }
     ],
     "sec-013-robustness-to-regeneration": [
       {
         "term": "guard",
-        "score": 0.854,
+        "score": 0.8527,
         "evidence": []
       },
       {
         "term": "seat",
-        "score": 0.819,
+        "score": 0.8175,
         "evidence": []
       },
       {
         "term": "apart",
-        "score": 0.7515,
+        "score": 0.7497,
         "evidence": []
       },
       {
-        "term": "run",
-        "score": 0.673,
+        "term": "factual",
+        "score": 0.6705,
         "evidence": []
       }
     ],
     "sec-014-related-work": [
       {
         "term": "metanym game",
-        "score": 1.4348,
+        "score": 1.4414,
         "evidence": []
       },
       {
         "term": "chollet",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       },
       {
         "term": "self-produced",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       },
       {
         "term": "mitchell",
-        "score": 0.8233,
+        "score": 0.8218,
         "evidence": []
       },
       {
         "term": "judge",
-        "score": 0.7916,
+        "score": 0.7933,
         "evidence": []
       },
       {
         "term": "lets",
-        "score": 0.7756,
+        "score": 0.7738,
         "evidence": []
       },
       {
         "term": "aggregation",
-        "score": 0.7091,
+        "score": 0.707,
         "evidence": []
       },
       {
         "term": "agreement",
-        "score": 0.6994,
+        "score": 0.6991,
         "evidence": []
       }
     ],
     "sec-015-discussion": [
       {
         "term": "metanym game",
-        "score": 2.7991,
+        "score": 2.8115,
         "evidence": []
       },
       {
         "term": "reasoning off",
-        "score": 2.0821,
+        "score": 2.1018,
         "evidence": []
       },
       {
         "term": "reasoning channel",
-        "score": 1.7853,
+        "score": 1.8011,
         "evidence": []
       },
       {
         "term": "topic domain",
-        "score": 1.6919,
+        "score": 1.6915,
         "evidence": []
       },
       {
         "term": "gpqa",
-        "score": 1.6461,
+        "score": 1.6426,
         "evidence": []
       },
       {
         "term": "parallel contexts",
-        "score": 1.617,
+        "score": 1.6318,
         "evidence": []
       },
       {
         "term": "claude haiku",
-        "score": 1.4949,
+        "score": 1.5079,
         "evidence": []
       },
       {
-        "term": "claude sonnet",
-        "score": 1.4807,
+        "term": "hypothesis",
+        "score": 1.4805,
         "evidence": []
       }
     ],
     "sec-016-limitations": [
       {
         "term": "optimised against",
-        "score": 1.3819,
+        "score": 1.3809,
         "evidence": []
       },
       {
         "term": "consensus",
-        "score": 1.0623,
+        "score": 1.0669,
+        "evidence": []
+      },
+      {
+        "term": "governing",
+        "score": 0.6306,
         "evidence": []
       },
       {
         "term": "non-council",
-        "score": 0.631,
+        "score": 0.6306,
         "evidence": []
       },
       {
         "term": "dispersion",
-        "score": 0.5999,
-        "evidence": []
-      },
-      {
-        "term": "quar",
-        "score": 0.5999,
+        "score": 0.5994,
         "evidence": []
       }
     ],
     "sec-017-conclusion": [
       {
         "term": "artificial intelligence",
-        "score": 2.1437,
+        "score": 2.1596,
         "evidence": []
       },
       {
         "term": "arxiv",
-        "score": 1.8122,
+        "score": 1.8154,
         "evidence": []
       },
       {
         "term": "reproducibility statement",
-        "score": 1.5688,
+        "score": 1.5682,
         "evidence": []
       },
       {
         "term": "analogical reasoning",
-        "score": 1.553,
+        "score": 1.5624,
         "evidence": []
       },
       {
         "term": "language models",
-        "score": 1.5244,
+        "score": 1.5157,
         "evidence": []
       },
       {
         "term": "every rating",
-        "score": 1.4552,
+        "score": 1.4709,
         "evidence": []
       },
       {
         "term": "iclr",
-        "score": 1.4047,
+        "score": 1.4018,
         "evidence": []
       },
       {
         "term": "gpqa",
-        "score": 1.2809,
+        "score": 1.2782,
         "evidence": []
       }
     ],
     "sec-018-rating-estimators": [
       {
         "term": "rating",
-        "score": 1.4136,
+        "score": 1.4174,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "portfolio",
-        "score": 1.0327,
+        "score": 1.0296,
         "evidence": []
       },
       {
         "term": "anchor",
-        "score": 1.0138,
+        "score": 1.0097,
         "evidence": []
       },
       {
         "term": "grades",
-        "score": 0.9092,
+        "score": 0.9082,
         "evidence": []
       },
       {
         "term": "swept",
-        "score": 0.9092,
+        "score": 0.9082,
         "evidence": []
       },
       {
         "term": "port",
-        "score": 0.8106,
+        "score": 0.8091,
         "evidence": []
       }
     ],
     "sec-019-generation-rating": [
       {
         "term": "generation rating",
-        "score": 2.3324,
+        "score": 2.3364,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "submission",
-        "score": 0.7004,
+        "score": 0.7034,
         "evidence": []
       },
       {
         "term": "bootstrap",
-        "score": 0.6955,
+        "score": 0.6934,
         "evidence": []
       }
     ],
     "sec-020-factual-competence-and-generation-factuality-svd": [
       {
         "term": "factual competence",
-        "score": 3.6036,
+        "score": 3.5932,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "generator own",
-        "score": 1.6243,
+        "score": 1.6262,
         "evidence": []
       },
       {
         "term": "singular vector",
-        "score": 1.1838,
+        "score": 1.1792,
         "evidence": []
       },
       {
         "term": "rating",
-        "score": 1.0354,
+        "score": 1.0382,
         "evidence": []
       },
       {
         "term": "factuality",
-        "score": 1.0132,
+        "score": 1.0112,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "evaluator",
-        "score": 1.012,
+        "score": 1.0088,
         "evidence": []
       },
       {
         "term": "centering",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       },
       {
-        "term": "instantiations",
-        "score": 0.9969,
+        "term": "left singular",
+        "score": 1.0076,
         "evidence": []
       }
     ],
     "sec-021-rating-consistency": [
       {
         "term": "four per-archetype",
-        "score": 1.4728,
+        "score": 1.4773,
         "evidence": []
       },
       {
         "term": "pearson correlation",
-        "score": 1.422,
+        "score": 1.4179,
         "evidence": []
       },
       {
         "term": "claude-opus",
-        "score": 1.3385,
+        "score": 1.3353,
         "evidence": []
       },
       {
         "term": "structural diversity",
-        "score": 1.2374,
+        "score": 1.245,
         "evidence": []
       },
       {
         "term": "factual",
-        "score": 1.1916,
+        "score": 1.1876,
         "evidence": []
       },
       {
         "term": "consistency",
-        "score": 1.0726,
+        "score": 1.0721,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "anchor",
-        "score": 0.9107,
+        "term": "collapsed",
+        "score": 0.95,
         "evidence": []
       },
       {
-        "term": "gemini",
-        "score": 0.9004,
+        "term": "anchor",
+        "score": 0.9069,
         "evidence": []
       }
     ],
     "sec-022-the-council-and-the-total": [
       {
         "term": "bootstrap interval",
-        "score": 1.8349,
+        "score": 1.8604,
         "evidence": []
       },
       {
         "term": "council",
-        "score": 1.6759,
+        "score": 1.6834,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "anchor",
-        "score": 1.101,
+        "score": 1.0965,
         "evidence": []
       },
       {
         "term": "replicate",
-        "score": 0.9859,
+        "score": 0.9837,
         "evidence": []
       },
       {
         "term": "dispersion",
-        "score": 0.9508,
+        "score": 0.95,
         "evidence": []
       },
       {
         "term": "archetype",
-        "score": 0.9177,
+        "score": 0.9152,
         "evidence": []
       },
       {
         "term": "submission",
-        "score": 0.8838,
+        "score": 0.8876,
         "evidence": []
       },
       {
         "term": "axis",
-        "score": 0.7756,
+        "score": 0.7837,
         "evidence": []
       }
     ],
     "sec-023-per-criterion-generator-quality-versus-evaluator": [
       {
         "term": "anchored cosine",
-        "score": 1.799,
+        "score": 1.7941,
         "evidence": []
       },
       {
         "term": "both anchored",
-        "score": 1.4134,
+        "score": 1.414,
         "evidence": []
       },
       {
         "term": "cos",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       },
       {
         "term": "dist",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       }
     ],
     "sec-024-the-contest-the-ballast-and-the-guards": [
       {
         "term": "ballast",
-        "score": 3.7241,
+        "score": 3.7205,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "contest",
-        "score": 3.456,
-        "evidence": [
-          "heading"
-        ]
-      },
-      {
-        "term": "guards",
-        "score": 2.8574,
+        "score": 3.4499,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "ballast blocks",
-        "score": 2.8485,
+        "score": 2.8714,
         "evidence": []
       },
       {
+        "term": "guards",
+        "score": 2.8555,
+        "evidence": [
+          "heading"
+        ]
+      },
+      {
         "term": "seats anchored",
-        "score": 2.066,
+        "score": 2.061,
         "evidence": []
       },
       {
         "term": "factual axis",
-        "score": 1.8513,
+        "score": 1.859,
         "evidence": []
       },
       {
         "term": "council alone",
-        "score": 1.7085,
+        "score": 1.714,
         "evidence": []
       },
       {
         "term": "pooled corpus",
-        "score": 1.6232,
+        "score": 1.6186,
         "evidence": []
       }
     ],
     "sec-025-authority-versus-consistency-on-the-subjective-a": [
       {
         "term": "subjective axes",
-        "score": 2.9457,
+        "score": 2.9349,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "authority",
-        "score": 2.8832,
+        "score": 2.874,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "consistency",
-        "score": 1.7493,
+        "score": 1.7485,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "total preserves",
-        "score": 1.2769,
+        "score": 1.2741,
         "evidence": []
       },
       {
         "term": "spearman",
-        "score": 1.0104,
+        "score": 1.0084,
         "evidence": []
       },
       {
         "term": "judge",
-        "score": 0.919,
+        "score": 0.921,
         "evidence": []
       },
       {
         "term": "credits",
-        "score": 0.9095,
+        "score": 0.9085,
         "evidence": []
       },
       {
         "term": "taste",
-        "score": 0.8303,
+        "score": 0.8289,
         "evidence": []
       }
     ],
     "sec-026-the-two-estimators-compared": [
       {
         "term": "estimators",
-        "score": 0.9558,
+        "score": 0.9535,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "judges",
-        "score": 0.8613,
+        "score": 0.8585,
         "evidence": []
       },
       {
         "term": "truth",
-        "score": 0.7319,
+        "score": 0.7284,
         "evidence": []
       },
       {
         "term": "sweep",
-        "score": 0.7039,
+        "score": 0.7018,
         "evidence": []
       }
     ],
     "sec-027-generation-and-evaluation-prompts": [
       {
         "term": "target submission",
-        "score": 1.4848,
+        "score": 1.4883,
         "evidence": []
       },
       {
         "term": "reference submission",
-        "score": 1.4793,
+        "score": 1.4836,
         "evidence": []
       },
       {
@@ -1005,397 +1005,402 @@
         "evidence": []
       },
       {
-        "term": "bootstrap",
-        "score": 0.8777,
+        "term": "un-anchored",
+        "score": 0.8755,
         "evidence": []
       },
       {
-        "term": "un-anchored",
-        "score": 0.8767,
+        "term": "bootstrap",
+        "score": 0.875,
         "evidence": []
       }
     ],
     "sec-028-generation-prompt": [
       {
         "term": "cell signaling",
-        "score": 4.9356,
+        "score": 5.0243,
         "evidence": []
       },
       {
         "term": "archetypal contexts",
-        "score": 3.8104,
+        "score": 3.8115,
         "evidence": []
       },
       {
         "term": "signaling human",
-        "score": 3.5837,
+        "score": 3.6613,
         "evidence": []
       },
       {
         "term": "five archetypal",
-        "score": 3.4989,
+        "score": 3.5157,
         "evidence": []
       },
       {
         "term": "capital investment",
-        "score": 2.7174,
+        "score": 2.7113,
         "evidence": []
       },
       {
         "term": "parallel contexts",
-        "score": 2.6072,
+        "score": 2.6293,
         "evidence": []
       },
       {
         "term": "metanym table",
-        "score": 2.4895,
+        "score": 2.4523,
         "evidence": []
       },
       {
-        "term": "reversal cost",
-        "score": 2.3299,
+        "term": "investment theory",
+        "score": 2.3255,
         "evidence": []
       }
     ],
     "sec-029-evaluation-prompt-calibratedanchored": [
       {
         "term": "archetypal contexts",
-        "score": 3.6736,
+        "score": 3.674,
         "evidence": []
       },
       {
         "term": "same archetypal",
-        "score": 2.9374,
+        "score": 2.9387,
         "evidence": []
       },
       {
         "term": "reference submission",
-        "score": 2.8953,
+        "score": 2.9026,
         "evidence": []
       },
       {
         "term": "target submission",
-        "score": 2.7278,
+        "score": 2.7331,
         "evidence": []
       },
       {
         "term": "anchor score",
-        "score": 2.4961,
+        "score": 2.4967,
         "evidence": []
       },
       {
         "term": "parallel contexts",
-        "score": 2.449,
+        "score": 2.4712,
         "evidence": []
       },
       {
         "term": "context template",
-        "score": 1.9865,
+        "score": 1.9933,
         "evidence": []
       },
       {
         "term": "metanym table",
-        "score": 1.8772,
+        "score": 1.8531,
         "evidence": []
       }
     ],
     "sec-030-bootstrap-note-the-un-anchored-form-41-initial-s": [
       {
         "term": "reference submission",
-        "score": 2.6718,
+        "score": 2.6788,
         "evidence": []
       },
       {
         "term": "target submission",
-        "score": 2.4951,
+        "score": 2.5006,
         "evidence": []
       },
       {
         "term": "anchor score",
-        "score": 2.1722,
-        "evidence": []
-      },
-      {
-        "term": "integers inclusive",
-        "score": 1.6282,
+        "score": 2.1731,
         "evidence": []
       },
       {
         "term": "six criteria",
-        "score": 1.6113,
+        "score": 1.663,
+        "evidence": []
+      },
+      {
+        "term": "integers inclusive",
+        "score": 1.6379,
         "evidence": []
       },
       {
         "term": "calibration",
-        "score": 1.1807,
+        "score": 1.1784,
         "evidence": []
       },
       {
         "term": "un-anchored",
-        "score": 1.1063,
+        "score": 1.1048,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "justifying",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       }
     ],
     "sec-031-a-council-evaluation-worked": [
       {
         "term": "five evaluators",
-        "score": 1.7158,
+        "score": 1.7287,
         "evidence": []
       },
       {
         "term": "council",
-        "score": 1.6759,
+        "score": 1.6834,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "administrator",
-        "score": 0.9036,
+        "score": 0.9238,
         "evidence": []
       },
       {
         "term": "unit",
-        "score": 0.722,
+        "score": 0.7268,
         "evidence": []
       },
       {
         "term": "portfolio",
-        "score": 0.7049,
+        "score": 0.7028,
         "evidence": []
       },
       {
         "term": "factual",
-        "score": 0.6727,
+        "score": 0.6705,
         "evidence": []
       },
       {
         "term": "score",
-        "score": 0.6449,
+        "score": 0.6481,
         "evidence": []
       }
     ],
     "sec-032-a-plain-error-and-the-council-converges": [
       {
         "term": "natural selections",
-        "score": 2.3471,
+        "score": 2.3516,
         "evidence": []
       },
       {
         "term": "ecosystems",
-        "score": 1.6367,
+        "score": 1.6351,
         "evidence": []
       },
       {
         "term": "idiomatic rewrite",
-        "score": 1.5917,
+        "score": 1.5885,
         "evidence": []
       },
       {
         "term": "reference precise",
-        "score": 1.4991,
+        "score": 1.5193,
         "evidence": []
       },
       {
         "term": "resource allocation",
-        "score": 1.3797,
+        "score": 1.374,
         "evidence": []
       },
       {
         "term": "parallel context",
-        "score": 1.3159,
+        "score": 1.328,
         "evidence": []
       },
       {
         "term": "factual errors",
-        "score": 1.3016,
+        "score": 1.2996,
         "evidence": []
       },
       {
         "term": "awkward",
-        "score": 1.2854,
+        "score": 1.2849,
         "evidence": []
       }
     ],
     "sec-033-judges-disagreeing-on-a-countable-quantity": [
       {
         "term": "reference templates",
-        "score": 1.3827,
+        "score": 1.3833,
         "evidence": []
       },
       {
         "term": "judges",
-        "score": 0.8613,
+        "score": 0.8585,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "words",
-        "score": 0.8074,
+        "score": 0.8112,
         "evidence": []
       },
       {
         "term": "rating",
-        "score": 0.7068,
+        "score": 0.7087,
         "evidence": []
       },
       {
         "term": "gradient-guided",
-        "score": 0.631,
+        "score": 0.6306,
         "evidence": []
       }
     ],
     "sec-034-the-dissent-that-is-better-reasoned-than-the-maj": [
       {
         "term": "six archetypes",
-        "score": 2.6622,
+        "score": 2.6966,
         "evidence": []
       },
       {
         "term": "majority",
-        "score": 1.732,
+        "score": 1.7665,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "resource allocation",
-        "score": 1.2795,
+        "score": 1.2744,
         "evidence": []
       },
       {
         "term": "reasoned",
-        "score": 1.2619,
+        "score": 1.2613,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "iterative refinement",
-        "score": 1.2238,
+        "score": 1.2222,
         "evidence": []
       },
       {
         "term": "contains six",
-        "score": 1.1319,
+        "score": 1.1733,
         "evidence": []
       },
       {
         "term": "emergence",
-        "score": 1.0098,
+        "score": 1.0078,
         "evidence": []
       },
       {
         "term": "containment",
-        "score": 0.9092,
+        "score": 0.9082,
         "evidence": []
       }
     ],
     "sec-036-the-correlation-decomposed": [
       {
         "term": "against gpqa",
-        "score": 2.3564,
+        "score": 2.3522,
         "evidence": []
       },
       {
         "term": "uncertainty propagated",
-        "score": 2.063,
+        "score": 2.0596,
         "evidence": []
       },
       {
         "term": "leading eight",
-        "score": 1.9462,
+        "score": 2.0059,
         "evidence": []
       },
       {
         "term": "correlation",
-        "score": 1.6867,
+        "score": 1.6809,
         "evidence": [
           "heading"
         ]
       },
       {
-        "term": "full roster",
+        "term": "factual axis",
         "score": 1.6297,
         "evidence": []
       },
       {
-        "term": "factual axis",
-        "score": 1.6245,
+        "term": "full roster",
+        "score": 1.6271,
         "evidence": []
       },
       {
         "term": "measurement error",
-        "score": 1.407,
+        "score": 1.4175,
         "evidence": []
       },
       {
         "term": "point estimates",
-        "score": 1.2176,
+        "score": 1.2213,
         "evidence": []
       }
     ],
     "sec-037-the-administration-disclosed": [
       {
         "term": "dedicated reasoning",
-        "score": 1.2474,
+        "score": 1.2537,
         "evidence": []
       },
       {
         "term": "reasoning channel",
-        "score": 1.1823,
+        "score": 1.1883,
         "evidence": []
       },
       {
         "term": "administration",
-        "score": 0.998,
+        "score": 0.996,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "gemini",
-        "score": 0.9778,
+        "score": 0.9781,
         "evidence": []
       },
       {
         "term": "void",
-        "score": 0.9598,
+        "score": 0.9591,
         "evidence": []
       },
       {
         "term": "shuffled",
-        "score": 0.9508,
+        "score": 0.95,
         "evidence": []
       },
       {
         "term": "question",
-        "score": 0.86,
+        "score": 0.8725,
         "evidence": []
       },
       {
         "term": "seat",
-        "score": 0.819,
+        "score": 0.8175,
         "evidence": []
       }
     ],
     "sec-038-the-audit-no-leak-found": [
       {
         "term": "gpqa diamond",
-        "score": 1.9453,
+        "score": 1.98,
         "evidence": []
       },
       {
         "term": "terminal answer",
-        "score": 1.5527,
+        "score": 1.5532,
+        "evidence": []
+      },
+      {
+        "term": "first-pass log",
+        "score": 1.5151,
         "evidence": []
       },
       {
@@ -1404,146 +1409,141 @@
         "evidence": []
       },
       {
-        "term": "first-pass log",
-        "score": 1.4945,
-        "evidence": []
-      },
-      {
         "term": "twelve models",
-        "score": 1.3061,
+        "score": 1.2898,
         "evidence": []
       },
       {
         "term": "audit",
-        "score": 1.2576,
+        "score": 1.2526,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "gemini",
-        "score": 1.1041,
+        "score": 1.1044,
         "evidence": []
       },
       {
         "term": "inflate",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       }
     ],
     "sec-039-the-constructs-of-intelligence-the-metanym-game": [
       {
         "term": "metanym game",
-        "score": 4.1951,
+        "score": 4.2106,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "horn cattell",
-        "score": 2.4276,
+        "score": 2.4261,
         "evidence": []
       },
       {
         "term": "intelligence",
-        "score": 2.3153,
+        "score": 2.3287,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "fluid intelligence",
-        "score": 2.1577,
+        "score": 2.1639,
         "evidence": []
       },
       {
         "term": "convergent production",
-        "score": 1.8789,
+        "score": 1.8745,
         "evidence": []
       },
       {
         "term": "root analogy",
-        "score": 1.8388,
+        "score": 1.8332,
         "evidence": []
       },
       {
         "term": "higher-order relational",
-        "score": 1.784,
+        "score": 1.7967,
         "evidence": []
       },
       {
         "term": "divergent production",
-        "score": 1.78,
+        "score": 1.775,
         "evidence": []
       }
     ],
     "sec-040-the-three-runs-apart-and-pooled": [
       {
         "term": "pooled",
-        "score": 3.0235,
+        "score": 3.0175,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "runs",
-        "score": 2.0008,
+        "score": 1.988,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "run sits",
-        "score": 1.9734,
+        "score": 1.9769,
         "evidence": []
       },
       {
         "term": "twelve-evaluator basis",
-        "score": 1.8786,
+        "score": 1.8807,
         "evidence": []
       },
       {
         "term": "council basis",
-        "score": 1.6881,
+        "score": 1.6957,
         "evidence": []
       },
       {
         "term": "factual axis",
-        "score": 1.6002,
+        "score": 1.6033,
         "evidence": []
       },
       {
         "term": "apart",
-        "score": 1.503,
+        "score": 1.4993,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "claude-opus",
-        "score": 1.4304,
+        "score": 1.4269,
         "evidence": []
       }
     ],
     "sec-041-what-anchoring-does-to-resolution": [
       {
         "term": "doubles",
-        "score": 0.8501,
+        "score": 0.8488,
         "evidence": []
       },
       {
         "term": "band",
-        "score": 0.7794,
-        "evidence": []
-      },
-      {
-        "term": "anchored",
-        "score": 0.7772,
+        "score": 0.7777,
         "evidence": []
       },
       {
         "term": "spread",
-        "score": 0.7515,
+        "score": 0.7764,
+        "evidence": []
+      },
+      {
+        "term": "anchored",
+        "score": 0.7755,
         "evidence": []
       }
     ]

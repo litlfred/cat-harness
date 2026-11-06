@@ -32,8 +32,9 @@ another CI run for nothing.
    touched. One refusal ABORTS the merge and restores the tree. Resolving nine
    generated files and leaving one authored conflict half-done reads as
    progress, and is not.
-2. **Proved, not assumed.** After resolving, `bun run cat regen` asks every check
-   the CI workflow runs and runs each stale one's writer until the tree
+2. **Proved, not assumed.** After resolving, `bun run cat regen` asks the checks
+   the CI workflow runs (under `merge:main`, those whose inputs either side
+   changed since the fork point; `--full-regen` asks every one) and runs each stale one's writer until the tree
    settles. Anything `unrepaired` aborts the merge. No pattern names its own
    check: the gate set is derived from the workflow and cannot drift, a
    hand-kept list of check names can.
@@ -49,14 +50,17 @@ pattern, deliberately, with its reason — never widening a glob on a hunch.
 
 ### Applying rule 3
 
-A stale tree can only ever over-report authored conflicts, never
-under-report, because a pattern is added and an authored path is the
-fallback — and over-reporting sends work to a person that the base already
-declares mechanical. So before classifying anything, `git fetch` and read the patterns from the
-BASE — or classify against
-`git show origin/<base>:cat-harness-tools/scripts/merge-conflict-patterns.ts`. The
-number that decides whether a human is needed must come from the declaration
-the merge will actually be resolved under.
+A stale tree can be wrong in either direction. A pattern the base has added
+makes it over-report authored conflicts, which sends a person work the base
+already declares mechanical. A pattern the base has narrowed, reordered or
+retired makes it under-report: it takes a side on a path the base now
+refuses. So `git fetch`, and classify with the BASE's own `merge-base.ts`
+(from a worktree of the tools at the base, `git worktree add --detach <dir>
+origin/<base>`), run against your checkout with `--root <your checkout> --base origin/<base>`
+(add `--dry-run` to classify and change nothing). `merge-main.yml` does the
+same: it checks out main's tools and runs main's `merge-base.ts --root` on the
+PR's branch. The number that decides whether a human is needed must come from
+the declaration the merge will actually be resolved under.
 
 ## A merge round — run each check ONCE
 
@@ -67,9 +71,13 @@ What each step costs and adds:
 |---|---|---|
 | `merge:main`, including its own regen | 5–10 min — regen 238–309 s with nothing stale, 601–639 s when a writer runs | THE regen; rule 2 above |
 | `skill:register` | 1–2 min | the derived artefacts the merge left owed |
-| a standalone `regen` after `merge:main` | 4–5 min | **nothing** — same tree, same gate set |
+| a standalone `regen` after `merge:main` | 4–5 min | **nothing** for the merge — same tree; it can only add a pair already stale on both parents, which CI reports anyway |
 | full local `bun run cat gates` | ~24 min (1429 s), nearly all `bun test` (~21.8k tests) on 3–4 local cores | what CI's sharded run says in ~5 min, 4 ways |
 | `regen` again in a fresh checkout, to prove a no-op | 4–5 min | what CI's own clean checkout already proves |
+
+The timings in this section were recorded by 2026-10-08, when cat-harness
+was seeded. Re-measure with `bun run cat measure:merge-round`
+before you quote them.
 
 Three of five rows repeat a measurement somebody else, or the same command,
 has already made. So:
@@ -119,8 +127,9 @@ authored change of yours to reconcile.
 
 ### When it is NOT generated-only — keep the full local run
 
-**An AUTHORED file conflicted, or the merge touched code** (yours or `main`'s
-reconciled against yours): run the full local `bun run cat gates` before pushing,
+**An AUTHORED file conflicted, or the merge touched code** (a script, test,
+schema or workflow that conflicted or that you reconciled by hand, on either
+side): run the full local `bun run cat gates` before pushing,
 and read [`prepare-merge`](prepare-merge.md) §"What a green LOCAL run entitles
 you to claim" before quoting it. The targeted list above is chosen for a merge
 that changed only artefacts with one right answer; it cannot see a semantic
@@ -132,10 +141,31 @@ cleanly").
 
 - **`merge:main` has no "continue after a manual fix" mode.** When one path
   blocks it, it aborts and restores the tree (rule 1). Do its steps by hand:
-  `git merge origin/main`, fix the blocking path, take each declared path with
-  `git checkout --theirs <path>` and stage it with `git add -f <path>`, then
-  run the regen it would have run.
-- **Give the regen a long leash.** Cold, it needs ≥1200 s of wall time. Run it
+  `git merge origin/main`, fix the blocking path, then resolve each declared
+  path by **its own pattern's strategy**, never with one command for all of
+  them, and stage each with `git add -f <path>`:
+  - `take-base`: `git checkout --theirs <path>` when `main` kept the file;
+    `git rm <path>` when `main` deleted it, since a modify/delete has no stage
+    to check out (§"When one side deleted the file").
+  - `owned-tree`: take each parent's committed blob, as `takeOwnedTree` does
+    (§"`subgraph-index` and `subgraph-payload`"). Never `--theirs`: in a
+    rename/rename it writes conflict-marked bytes under a hash name.
+  - `readme-generated-regions`: edit the conflict markers in place, hunk by
+    hunk, as `resolveGeneratedRegions` does. A hunk inside a generated region
+    may take either side, because regen rewrites the region. A hunk outside
+    one, or one that moves a region boundary, is an authored conflict. Never `--theirs`: it replaces the whole README
+    and drops the branch's own edits to it, including the ones git merged
+    cleanly.
+
+  Then run the regen it would have run, and both `droppedInMerge` checks it
+  would have run: once after resolving, and once after regen and `git add -A`,
+  before committing. Each path `git diff --cached --name-only --diff-filter=D HEAD`
+  lists must be one `main` deleted since the merge base, and each path
+  `git diff --cached --name-only --diff-filter=D MERGE_HEAD` lists must be one
+  the branch deleted since the merge base. After regen, a writer's own
+  deletion also passes, but only when the file is gone from disk too.
+- **Give the regen a long leash.** Cold, it needed ≥1200 s of wall time
+  (recorded by 2026-10-08; `bun run cat measure:merge-round` re-measures). Run it
   in the background rather than under a default 2-minute tool timeout, which
   kills it part-way and leaves a half-written tree.
 - **`merge:main` commits with git's default message.** Amend that commit to
@@ -586,7 +616,7 @@ generated sidecar (under `scripts/`, a `.json`, its key set derived from
 
 Two facts, either one sufficient:
 
-- `task-io.ts` classifies `check:artefact-verification` as `READ_ONLY`. **No
+- `task-io.ts` classifies `check:artefact-verification` as `TREE_READER`, which has no outputs. **No
   script writes the file**, so `regen` has no writer to run and `take-base` is a
   silent *discard* rather than a resolution.
 - Its own `_comment` requires every `none` entry to carry **a reason, in prose**,
@@ -619,10 +649,24 @@ Uploaded source material: provenance-bearing input, never regenerated.
 
 ## In CI — opt in with the `merge-main` label
 
-`.github/workflows/merge-main.yml` is a second CALLER of the same command,
-never a second resolver. When `main` moves, it runs
-`bun run cat merge:main` on every open, same-repository PR labelled `merge-main`
-that is behind `main`, one live run per PR (a newer run cancels an older one).
+`.github/workflows/merge-main.yml`, which lives in the folio-assistant index
+and not in this repository, is a second CALLER of the same command, never a
+second resolver. It runs main's `merge-base.ts --root` on the PR's branch
+(rule 3). It runs on a push to `main`, when the label is added, when a
+labelled PR is marked ready for review, and by hand:
+
+- **A sweep (a push to `main`, or a dispatch naming no PR) merges only a
+  labelled PR that CONFLICTS with `main`.** A PR that merges cleanly is
+  skipped, because its `pull_request` CI already tests the merge ref (owner
+  ruling 2026-11-05, [`branch-freshness`](branch-freshness.md)). Adding the
+  label, or a dispatch naming the PR, still merges a clean one.
+- **Same-repository PRs only, and never a draft.** A labelled draft is picked
+  up when it is marked ready.
+- **Runs queue; they are not cancelled in progress.** For one PR, runs started
+  by a push to `main` queue behind each other. A run of any other event (the
+  label, ready-for-review, a dispatch) cancels an earlier run of the same
+  event. Runs of different events can run at once, and the one that pushes
+  second is rejected without overwriting anything.
 
 - **It pushes only a proved merge**, as a fast-forward of the branch it checked
   out; if the author pushed meanwhile the push is rejected and nothing is
@@ -643,11 +687,12 @@ that is behind `main`, one live run per PR (a newer run cancels an older one).
   check is still a red job: that is a defect for a person to read, not a
   conflict.
 - **One comment per PR, edited in place** on every run — except a run that
-  was **cancelled** (a newer push to `main` superseded it) or whose merge step
+  was **cancelled** (a newer label or ready-for-review run superseded it) or whose merge step
   reported no status, which leaves the comment untouched. The text is composed by
   `cat-harness-tools/scripts/merge-main-comment.ts`, which is unit-tested.
-- **The merge commit is still judged by CI**: pushed with `MERGE_MAIN_TOKEN`
-  when that secret exists, otherwise followed by a dispatch of
+- **The merge commit is still judged by CI**: pushed with the
+  `PUSH_BRANCH_TRIGGERING_CI` credential (the harness GitHub App, or a
+  repository secret of that name) when one is available, otherwise followed by a dispatch of
   `code-quality-gates.yml` on the branch, because a GITHUB_TOKEN push triggers
   no workflow.
 
@@ -657,10 +702,20 @@ review rather than on its author; leave it off a branch somebody is pushing to.
 
 ## When a merge-train member is refused: bean, hand back, or dispatch
 
-A merge steward builds a **train**: `merge-base.ts --no-regen` for each
-member, then one `bun run cat regen`, then one CI run. A member is **refused**
-when its merge hits an authored or undeclared conflict, or when the train's
-combined result fails a gate that the member alone did not fail. The steward
+A train is built in one of two ways, and they treat conflicts differently.
+The **automated** train (`bun run cat merge:train`, which `merge-train.yml`
+runs; the workflow is proposed in
+[folio-assistant#2960](https://github.com/litlfred/folio-assistant/pull/2960)) runs `merge-base.ts --no-regen` for each member, then one
+`bun run cat regen`, then one CI run. A conflict that a declared
+generated-path pattern covers is resolved at train time, and a conflict in a
+hand-written file refuses the member (owner ruling 2026-11-05, "Resolve
+generated only"; [`merge-queue`](merge-queue.md) §"The automated merge train",
+proposed in [cat-harness#1053](https://github.com/litlfred/cat-harness/pull/1053)).
+A steward's **hand** train admits only members that stack with no conflict at
+all ([`merge-queue`](merge-queue.md) §"A train admits only members that STACK
+cleanly"), so it refuses a conflicted member before merging it. In either
+train, a member is also **refused** when the train's combined result fails a
+gate that the member alone did not fail. The steward
 drops it and the train goes on without it. `sdlc/processes/merge-refusal.bpmn`
 executes what happens to the dropped member. The author's side, the queue
 and the bounce-back are [`merge-queue`](merge-queue.md); the hand-back format
@@ -734,7 +789,10 @@ owner rules on anything authored. The work item carries:
   own log.
 - `## Fails if`, the **fail condition**, which is when the steward takes the
   work item back:
-  - no `started` line on the PR **within 4 hours**;
+  - no `started` line on the PR **within 4 hours** (these hours are as of
+    2026-10-08, when cat-harness was seeded; `merge-manager-watcher` acts at
+    2+ hours and `merge-queue` calls a PR `stale` after 24, and the owner
+    decides which governs);
   - or no push to the PR branch **within 24 hours**;
   - or the owning session is **gone**: archived, failed, or unknown to
     `get_session`;
@@ -743,7 +801,7 @@ owner rules on anything authored. The work item carries:
 Send the hand-back to the session itself (`send_message`), as **one line**
 that names the work item and the branch, never the instructions. The instructions
 are in the work item, on the branch. After that, the steward does not edit the
-work item: anything it learns goes to the PR (`agent-handoff` §1).
+work item, except to add a further refusal (§1), record a dispatch (§3) or close it (§5). Anything else it learns goes to the PR (`agent-handoff` §1).
 
 **The fail condition is a takeover, not a reminder, and that differs from
 `agent-handoff` §7 on purpose.** There, the executor is in another environment
@@ -770,6 +828,16 @@ Its budget is modest: one fix, one push, one report.
   is a choice between authors. The agent writes the question to the owner on
   the PR, with both sides quoted, the options and a default, and stops
   (`interaction-modality` §4.1).
+- **It signs `ready:` only once it is the owning session.** `merge:guard`
+  takes the PR's own session from the last session id in the PR body
+  (`signingSession` in `merge-guard.ts`), and accepts a `ready: <sha>` marker
+  only from that session. When the owning session is gone, the agent becomes
+  the owner the way [`merge-queue`](merge-queue.md) §"Stalled for days" step 3
+  describes, with the owner's go-ahead as there. It edits the body's session line to its own session, records
+  "taken over from <old> (gone)", and then marks the PR ready and signs. The
+  steward never edits that line to itself, and never signs: while a Merge
+  Manager is active, check 2 refuses a merging session that marked the PR
+  ready itself.
 - **The dispatch is recorded on the work item** by the steward, before the agent
   starts: `## Attempts`, with the date, the reason the fail condition fired,
   the agent's session or task id, and the budget.

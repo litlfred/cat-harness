@@ -57,7 +57,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Where it runs in the processes",
-      "prov:value": "It runs after the step \"Choose the before side\", which picks:\n  - **main's site**, at the publish branch's root, published by the same\n    workflow's `publish-main` job on every push to main;\n  - **for a stacked PR**, its base branch's preview, `STAGING/<base-slug>/`,\n    so the pictures and the ChangeSet compare with the same branch (bean\n    `5uuf`)."
+      "prov:value": "It runs after the step \"Choose the before side\", which picks:\n  - **main's site**, at the publish branch's root, published by the same\n    workflow's `publish-main` job on every push to main;\n  - **for a stacked PR**, its base branch's preview, `branches/<base-slug>/`,\n    so the pictures and the ChangeSet compare with the same branch (bean\n    `5uuf`)."
     }
   ]
 }

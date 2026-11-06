@@ -52,7 +52,7 @@ Three things are asked, and they are separable:
 
 | branch | writer | write shape | declared as a graph? |
 |---|---|---|---|
-| `gh-pages` | `docs-site.yml` (full replace), `feature-staging.yml` (`STAGING/<slug>/`), `discoverability-docs.yml` | replace / keep_files | **no** — a `branch:` string in `schemas/staging-preview.ts` |
+| `gh-pages` | `docs-site.yml` (full replace), `feature-staging.yml` (`branches/<slug>/`), `discoverability-docs.yml` | replace / keep_files | **no** — a `branch:` string in `schemas/staging-preview.ts` |
 | `lake-cache/<pkg>-<slug>` | `lake-cache-refresh.yml` via `lake-cache.sh seed --push` | orphan, one key per branch, pruned by deletion | **no** — inferred by name prefix |
 | `qa-reports` | `folio-qa-bot` (arc `3fva`, not on `main` yet) | orphan, commit-keyed, append, never `-f` | **proposed** — a `storage` field on `ContentDirectory` (3fva §2.4) |
 

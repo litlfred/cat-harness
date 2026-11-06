@@ -4,11 +4,13 @@ description: >
   Guide and template for CRDM Phase 3 — Requirements Definition.
   Helps the agent structure requirements from conversation using a
   REQ-### format with acceptance criteria, priority, and traceability.
+uses-methodology:
+  - crdm
 ---
 
 # Phase 3 — Requirements definition (detail)
 
-This skill expands the Phase 3 summary in `crdm-requirements-workflow.md`.
+This skill expands the Phase 3 summary in [`crdm-requirements-workflow.md`](crdm-requirements-workflow.md) and applies the [`crdm` methodology](../../../methodologies/crdm.md).
 
 ## Requirement format
 
@@ -27,21 +29,36 @@ Each requirement has:
 | **ID** | `REQ-###` | `REQ-001` |
 | **Title** | Short phrase | "Beans filtered by epic type" |
 | **Description** | Plain language, no jargon | "The agent can filter work items by their type (epic, story, task)" |
-| **Conformance** | SHALL / SHOULD / MAY / SHALL NOT | SHALL |
+| **Conformance** | `SHALL` / `SHOULD` / `MAY` / `SHALL NOT` (RFC 2119 / RFC 8174) | `SHALL` |
 | **Acceptance criteria** (= success criteria, ≥ 1) | Testable, measurable, each with a key and a verification method (`test` / `inspection` / `review` / `analysis`) | "`SC-1` (test) — Given an epic with 3 child stories, when filtered by epic, then all 3 appear" |
 | **Sign-off owner** | Who says it is met — a named person or role | "The BA" |
-| **Priority** | Must-have / Should-have / Nice-to-have | Must-have |
-| **Source** | Phase 1 needs statement ref | "Needs statement §2 — BA cannot see work grouped by release" |
+| **Priority** | `Must-have` (`High`) / `Should-have` (`Medium`) / `Nice-to-have` (`Low`) | `Must-have` (`High`) |
+| **Source** | Phase 1 needs statement / Phase 2 process activity ref | "Needs statement §2 — BA cannot see work grouped by release" |
 | **Impact** | Phase 4 footprint | "Schema: new `type` field on bean. Pipeline: none" |
 | **Estimated scope** | Work item count / PR sizing | "2 beans, 1 PR" |
 
-### Conformance keywords
+### Priority scale and conformance keywords
 
-Use RFC 2119 in formal statements:
-- `SHALL` — mandatory
-- `SHOULD` — recommended
-- `MAY` — optional
-- `SHALL NOT` — prohibited
+CRDM separates **implementation priority** (how essential a requirement is when sequencing work or trading off scope) from **normative conformance** (how strictly an implementation must behave once it claims conformance to that requirement):
+
+#### 1. Priority scale (`High / Medium / Low` = `Must-have / Should-have / Nice-to-have`)
+
+Aligned with PHII's *Defining and Validating System Requirements Guide* ([`library/phii-2021-defining-and-validating-requirements-guide`, p. 2](../../../library/process/phii-2021-defining-and-validating-requirements-guide/sections/page-002.md)) and PATH & PHII (2012) ([`library/path-2012-common-requirements-mhis-crdm`, p. 1](../../../library/process/path-2012-common-requirements-mhis-crdm/README.md)):
+
+| Priority label | PHII / PATH CRDM scale | Meaning |
+|---|---|---|
+| **Must-have** (`Must`) | **High** | Essential to the core business process; the system cannot satisfy the process goal without this capability. |
+| **Should-have** (`Should`) | **Medium** | Important for operational efficiency or completeness; expected in standard operation, though a temporary workaround may exist. |
+| **Nice-to-have** (`Nice-to-have`) | **Low** | Desirable enhancement that improves convenience or secondary workflows when resources permit. |
+
+#### 2. Normative conformance keywords (`SHALL / SHOULD / MAY / SHALL NOT`)
+
+While PHII's informal prose grammar phrases requirement statements as *"The system must or should…"* ([`phii-2021-defining-and-validating-requirements-guide`, p. 1](../../../library/process/phii-2021-defining-and-validating-requirements-guide/sections/page-001.md)), the separate **Conformance** field uses uppercase normative keywords governed by IETF BCP 14 — [`library/rfc2119-key-words-requirement-levels`](../../../library/content/rfc2119-key-words-requirement-levels/README.md) (RFC 2119) and [`library/rfc8174-uppercase-vs-lowercase-2119-key-words`](../../../library/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md) (RFC 8174, specifying that **only UPPERCASE** words carry RFC 2119 normative meaning):
+
+- `SHALL` (`MUST`) — mandatory requirement of the specification
+- `SHOULD` (`RECOMMENDED`) — recommended; valid reasons may exist in particular circumstances to ignore, but full implications must be understood and weighed
+- `MAY` (`OPTIONAL`) — truly optional capability
+- `SHALL NOT` (`MUST NOT`) — absolute prohibition
 
 ## Generating from conversation
 
@@ -176,6 +193,12 @@ PR (Phase 6)
 
 ## Cross-references
 
+- [`../../../methodologies/crdm.md`](../../../methodologies/crdm.md) — CRDM methodology node (PHII & PATH origin, adaptation table, priority vs. conformance alignment)
+- [`../../../library/process/phii-2023-crdm/README.md`](../../../library/process/phii-2023-crdm/README.md) — PHII (2021/2023) CRDM web page
+- [`../../../library/process/phii-2021-defining-and-validating-requirements-guide/README.md`](../../../library/process/phii-2021-defining-and-validating-requirements-guide/README.md) — PHII (2016/2021) Defining and Validating System Requirements Guide
+- [`../../../library/process/path-2012-common-requirements-mhis-crdm/README.md`](../../../library/process/path-2012-common-requirements-mhis-crdm/README.md) — PATH & PHII (2012) Common Requirements for Maternal Health Information Systems
+- [`../../../library/content/rfc2119-key-words-requirement-levels/README.md`](../../../library/content/rfc2119-key-words-requirement-levels/README.md) — RFC 2119 requirement level keywords
+- [`../../../library/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md`](../../../library/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md) — RFC 8174 uppercase requirement keyword ambiguity clarification
 - [`crdm-requirements-workflow`](crdm-requirements-workflow.md) — Phase 3
 - [`crdm-impact-analysis`](crdm-impact-analysis.md) — Phase 4 follows this
 - [`crdm-detect`](crdm-detect.md) — detection

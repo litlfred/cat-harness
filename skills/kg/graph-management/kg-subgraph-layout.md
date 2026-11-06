@@ -130,7 +130,7 @@ bun run cat uml:overview            # .puml, .mmd, .dot, pages and SVGs from one
 bun run cat uml:overview:check      # stale or orphaned, the .dot included
 bun run cat kg-graph:vendor         # after bumping @hpcc-js/wasm-graphviz in package.json
 bun run cat kg-graph:vendor:check   # the vendored copy is the pinned package
-bun test scripts/tests/uml-overview-dot.test.ts   # every DOT is its .puml's model, and lays out
+bun test cat-harness-tools/scripts/tests/ui/uml-overview-dot.test.ts   # every DOT is its .puml's model, and lays out
 ```
 
 The browser check is `test/kg-graph.e2e.ts`: on a committed overview page it
