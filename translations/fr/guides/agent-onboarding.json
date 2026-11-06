@@ -14,8 +14,8 @@
     "generator": "folio-assistant translation simulation"
   },
   "coverage": {
-    "translated": 26,
-    "total": 26,
+    "translated": 40,
+    "total": 40,
     "pct": 100
   },
   "title": "Intégration de l'agent",
