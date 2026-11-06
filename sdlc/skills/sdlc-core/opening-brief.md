@@ -99,6 +99,36 @@ up front is what stops it becoming either silent scope creep or a silent
 omission — and it puts the scope call where it can still be argued with, which
 is before the diff.
 
+### Briefing a sibling or a subagent — pass `interaction-modality` on (STRICT)
+
+When a coordinating session writes a brief to launch a child session
+(`create_session`, `send_message`) or a background subagent (`Agent`,
+`invoke_subagent`), the brief is the child's only prompt until it reads the
+graph. A child whose brief omits how to ask the owner will default to asking in
+plain prose when it hits a permission wall or a design call.
+
+Every sibling brief and subagent prompt written by a coordinating session MUST
+carry the [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)
+contract explicitly:
+
+1. **If the child can reach the person directly** (a sibling session with its
+   own chat surface): every question to the owner goes out **twice, in order**
+   — first the full question in chat (context, what differs, every identifier
+   expanded, at most four numbered or lettered options with pros, cons,
+   downstream impact and reversibility, recommended option first and marked
+   `(Recommended)`, and the stated default on silence), and second the tappable
+   card (`AskUserQuestion`, `request_decision`, `ask_question`, or
+   `post_widget`) carrying the same option labels. **Never ask in prose alone,
+   and never ask the person to type.**
+2. **If the child is a background subagent or a sibling running beside a live
+   discussion**: it does not ask the person in prose either; it returns any
+   owner-facing decision to the coordinating session in the
+   [`hand-back-to-discussion`](../../../skills/conduct/conduct-core/hand-back-to-discussion.md)
+   schema format so the coordinator presents both the full chat block and the
+   tappable card.
+3. **Pass it on**: if the child itself spawns a helper or a subagent, its brief
+   to that child must carry the same `interaction-modality` block.
+
 ### Before you offer options, check whether it is already ruled (STRICT)
 
 Part two of the brief is *what do I already know, with each measurement's
