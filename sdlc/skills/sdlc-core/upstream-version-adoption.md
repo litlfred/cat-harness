@@ -102,7 +102,7 @@ looking at before they look.
 ## 3 — MVP
 
 **An MVP is a deployed build, not a description of one.** Move the pin on a
-branch, let `feature-staging.yml` publish it under `STAGING/<branch-slug>/`, and
+branch, let `feature-staging.yml` publish it under `branches/<branch-slug>/`, and
 run the row's `mvp` commands. For the theme:
 
 ```sh

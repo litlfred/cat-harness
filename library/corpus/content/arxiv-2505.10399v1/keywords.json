@@ -3,608 +3,608 @@
   "entry": "arxiv-2505.10399v1",
   "corpus": {
     "library": "cat-harness/library",
-    "sections": 2267,
-    "terms": 15478,
+    "sections": 2176,
+    "terms": 14971,
     "weighting": "log-entropy"
   },
   "document": [
     {
+      "term": "ground-truth explanations",
+      "score": 21.588,
+      "evidence": []
+    },
+    {
       "term": "explanation evaluation",
-      "score": 21.3098,
+      "score": 21.5226,
       "evidence": [
         "heading"
       ]
     },
     {
-      "term": "ground-truth explanations",
-      "score": 20.632,
-      "evidence": []
-    },
-    {
       "term": "model explanations",
-      "score": 20.0455,
+      "score": 21.273,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "explanation quality",
-      "score": 19.6438,
+      "score": 19.9823,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "importance explanations",
-      "score": 18.7197,
+      "score": 19.8975,
+      "evidence": []
+    },
+    {
+      "term": "local explanations",
+      "score": 18.846,
       "evidence": []
     },
     {
       "term": "evaluating explanation",
-      "score": 18.5988,
+      "score": 18.786,
       "evidence": [
         "heading"
       ]
     },
     {
+      "term": "truth explanations",
+      "score": 18.3322,
+      "evidence": []
+    },
+    {
       "term": "compare axe",
-      "score": 18.0171,
+      "score": 18.0006,
+      "evidence": [
+        "heading"
+      ]
+    },
+    {
+      "term": "feature-importance explanations",
+      "score": 17.9935,
       "evidence": [
         "heading"
       ]
     },
     {
       "term": "axe satisfies",
-      "score": 17.9867,
+      "score": 17.9556,
       "evidence": []
     },
     {
-      "term": "local explanations",
-      "score": 17.8726,
+      "term": "competing explanations",
+      "score": 17.46,
       "evidence": []
-    },
-    {
-      "term": "truth explanations",
-      "score": 17.3746,
-      "evidence": []
-    },
-    {
-      "term": "axe score",
-      "score": 17.2798,
-      "evidence": []
-    },
-    {
-      "term": "explanation fairwashing",
-      "score": 17.0873,
-      "evidence": [
-        "heading"
-      ]
     }
   ],
   "sections": {
     "sec-000-2-evaluating-model-explanations": [
       {
         "term": "oxford internet",
-        "score": 2.2702,
+        "score": 2.2887,
         "evidence": []
       },
       {
         "term": "internet institute",
-        "score": 1.6647,
+        "score": 1.6724,
         "evidence": []
       },
       {
         "term": "delaney",
-        "score": 0.8081,
+        "score": 0.8065,
         "evidence": []
       }
     ],
     "sec-001-abstract": [
       {
         "term": "model explanations",
-        "score": 1.5986,
+        "score": 1.6982,
         "evidence": []
       },
       {
         "term": "explanation evaluation",
-        "score": 1.5324,
+        "score": 1.5477,
         "evidence": []
       },
       {
         "term": "axe",
-        "score": 1.0619,
+        "score": 1.0601,
         "evidence": []
       },
       {
         "term": "model sensitivity",
-        "score": 1.0371,
+        "score": 1.0522,
         "evidence": []
       },
       {
         "term": "ground-truth",
-        "score": 0.9296,
+        "score": 0.9271,
         "evidence": []
       },
       {
         "term": "ideal",
-        "score": 0.7256,
+        "score": 0.7237,
         "evidence": []
       },
       {
-        "term": "acm",
-        "score": 0.7019,
+        "term": "comparing",
+        "score": 0.7126,
         "evidence": []
       }
     ],
     "sec-002-1-introduction": [
       {
         "term": "feature-importance explanations",
-        "score": 2.9921,
+        "score": 3.1169,
         "evidence": []
       },
       {
         "term": "competing explanation",
-        "score": 2.9689,
+        "score": 2.9828,
         "evidence": []
       },
       {
         "term": "explanation evaluation",
-        "score": 2.8796,
+        "score": 2.908,
         "evidence": []
       },
       {
         "term": "explanation vector",
-        "score": 2.7856,
+        "score": 2.7975,
         "evidence": []
       },
       {
         "term": "explanation disagreement",
-        "score": 2.6775,
+        "score": 2.6926,
+        "evidence": []
+      },
+      {
+        "term": "model explanations",
+        "score": 2.6827,
         "evidence": []
       },
       {
         "term": "signed feature",
-        "score": 2.653,
-        "evidence": []
-      },
-      {
-        "term": "model explanation",
-        "score": 2.629,
+        "score": 2.6566,
         "evidence": []
       },
       {
         "term": "explanation generation",
-        "score": 2.5106,
+        "score": 2.5277,
         "evidence": []
       }
     ],
     "sec-003-21-our-notation": [
       {
         "term": "explanation quality",
-        "score": 2.9768,
+        "score": 3.0297,
         "evidence": []
       },
       {
         "term": "explanation evaluation",
-        "score": 2.9691,
+        "score": 2.9984,
         "evidence": []
       },
       {
         "term": "explanation remain",
-        "score": 2.6947,
-        "evidence": []
-      },
-      {
-        "term": "corresponding explanation",
-        "score": 2.4424,
+        "score": 2.7165,
         "evidence": []
       },
       {
         "term": "local explanations",
-        "score": 2.4234,
+        "score": 2.5314,
         "evidence": []
       },
       {
-        "term": "top-n features",
-        "score": 2.4048,
+        "term": "corresponding explanation",
+        "score": 2.4755,
         "evidence": []
       },
       {
         "term": "metric 𝑞should",
-        "score": 2.4026,
+        "score": 2.4261,
+        "evidence": []
+      },
+      {
+        "term": "top-n features",
+        "score": 2.4099,
         "evidence": []
       },
       {
         "term": "on-manifold evaluation",
-        "score": 2.1858,
+        "score": 2.1954,
         "evidence": []
       }
     ],
     "sec-004-23-prior-approaches": [
       {
         "term": "explanation quality",
-        "score": 2.3877,
+        "score": 2.4323,
         "evidence": []
       },
       {
         "term": "model relativism",
-        "score": 2.1483,
+        "score": 2.176,
         "evidence": []
       },
       {
         "term": "rank agreement",
-        "score": 2.0467,
+        "score": 2.0409,
         "evidence": []
       },
       {
         "term": "feature importances",
-        "score": 1.9222,
+        "score": 1.9276,
         "evidence": []
       },
       {
         "term": "local contextualization",
-        "score": 1.906,
+        "score": 1.9047,
         "evidence": []
       },
       {
         "term": "sign agreement",
-        "score": 1.8795,
+        "score": 1.8772,
         "evidence": []
       },
       {
         "term": "signed rank",
-        "score": 1.8583,
+        "score": 1.8504,
         "evidence": []
       },
       {
         "term": "feature perturbation",
-        "score": 1.768,
+        "score": 1.7725,
         "evidence": []
       }
     ],
     "sec-005-25-inherent-biases-in-sensitivity-metrics": [
       {
         "term": "gaussian tends",
-        "score": 1.6522,
+        "score": 1.6466,
         "evidence": []
       },
       {
         "term": "sensitivity",
-        "score": 1.5807,
+        "score": 1.5744,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "datapoint",
-        "score": 1.3554,
+        "score": 1.353,
         "evidence": []
       },
       {
         "term": "metrics",
-        "score": 1.3315,
+        "score": 1.3482,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "sensitivity based",
-        "score": 1.1611,
+        "score": 1.156,
         "evidence": []
       },
       {
         "term": "explainers",
-        "score": 1.0774,
+        "score": 1.0758,
         "evidence": []
       },
       {
         "term": "lime",
-        "score": 1.0408,
+        "score": 1.039,
         "evidence": []
       },
       {
         "term": "neighborhood",
-        "score": 1.0276,
+        "score": 1.0257,
         "evidence": []
       }
     ],
     "sec-006-3-methodology": [
       {
         "term": "top-n",
-        "score": 1.2619,
+        "score": 1.2601,
         "evidence": []
       },
       {
         "term": "k-nn",
-        "score": 1.1162,
+        "score": 1.1148,
         "evidence": []
       },
       {
         "term": "curacy",
-        "score": 1.0081,
+        "score": 1.0076,
         "evidence": []
       },
       {
         "term": "predictiveness",
-        "score": 0.9508,
+        "score": 0.95,
         "evidence": []
       },
       {
         "term": "axe",
-        "score": 0.8415,
+        "score": 0.8401,
         "evidence": []
       }
     ],
     "sec-007-31-the-axe-framework": [
       {
         "term": "axe",
-        "score": 3.6735,
+        "score": 3.6675,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "datapoint x𝑖",
-        "score": 3.0084,
+        "score": 3.0053,
         "evidence": []
       },
       {
         "term": "axe satisfies",
-        "score": 2.7682,
+        "score": 2.7628,
         "evidence": []
       },
       {
         "term": "k-nn model",
-        "score": 2.4749,
+        "score": 2.4992,
         "evidence": []
       },
       {
         "term": "unique k-nn",
-        "score": 2.4477,
+        "score": 2.4516,
         "evidence": []
       },
       {
         "term": "explanation quality",
-        "score": 1.7693,
-        "evidence": []
-      },
-      {
-        "term": "expla nations",
-        "score": 1.7392,
+        "score": 1.8042,
         "evidence": []
       },
       {
         "term": "contextualization principle",
-        "score": 1.7381,
+        "score": 1.7616,
+        "evidence": []
+      },
+      {
+        "term": "expla nations",
+        "score": 1.7367,
         "evidence": []
       }
     ],
     "sec-008-32-illustrative-example": [
       {
         "term": "k-nn neighborhood",
-        "score": 3.4827,
+        "score": 3.4773,
         "evidence": []
       },
       {
         "term": "axe score",
-        "score": 2.7665,
+        "score": 2.7654,
         "evidence": []
       },
       {
         "term": "perturbation width",
-        "score": 2.5953,
+        "score": 2.6262,
         "evidence": []
       },
       {
         "term": "k-nn models",
-        "score": 2.4704,
+        "score": 2.4541,
         "evidence": []
       },
       {
         "term": "pgi",
-        "score": 2.2166,
+        "score": 2.2139,
         "evidence": []
       },
       {
         "term": "nearest neighbor",
-        "score": 2.0543,
+        "score": 2.0505,
         "evidence": []
       },
       {
         "term": "explanation quality",
-        "score": 1.9377,
+        "score": 1.972,
         "evidence": []
       },
       {
         "term": "feature space",
-        "score": 1.794,
+        "score": 1.8038,
         "evidence": []
       }
     ],
     "sec-010-41-detecting-explanation-fairwashing": [
       {
         "term": "metrics pgi",
-        "score": 3.183,
+        "score": 3.1898,
         "evidence": []
       },
       {
         "term": "manipulated explanations",
-        "score": 2.8498,
+        "score": 2.9698,
         "evidence": []
       },
       {
         "term": "pgu",
-        "score": 2.5246,
-        "evidence": []
-      },
-      {
-        "term": "axe",
-        "score": 2.332,
+        "score": 2.5223,
         "evidence": []
       },
       {
         "term": "generating explanations",
-        "score": 2.2934,
+        "score": 2.4146,
+        "evidence": []
+      },
+      {
+        "term": "axe",
+        "score": 2.3283,
         "evidence": []
       },
       {
         "term": "metric 𝑞should",
-        "score": 2.0224,
+        "score": 2.0378,
         "evidence": []
       },
       {
         "term": "criminal justice",
-        "score": 2.0162,
+        "score": 2.0152,
         "evidence": []
       },
       {
         "term": "adversarial attack",
-        "score": 1.9996,
+        "score": 1.9911,
         "evidence": []
       }
     ],
     "sec-011-42-comparing-axe-with-baselines": [
       {
         "term": "axe",
-        "score": 5.8983,
+        "score": 5.8887,
         "evidence": [
           "heading"
         ]
       },
       {
         "term": "pgu inverted",
-        "score": 3.4811,
+        "score": 3.4784,
         "evidence": []
       },
       {
         "term": "integrated grad",
-        "score": 2.9065,
+        "score": 2.9185,
         "evidence": []
       },
       {
         "term": "smooth grad",
-        "score": 2.8798,
+        "score": 2.8765,
         "evidence": []
       },
       {
         "term": "random explainer",
-        "score": 2.638,
+        "score": 2.6346,
         "evidence": []
       },
       {
         "term": "input grad",
-        "score": 2.6121,
+        "score": 2.6102,
         "evidence": []
       },
       {
         "term": "evaluation metric",
-        "score": 2.5257,
+        "score": 2.5682,
         "evidence": []
       },
       {
         "term": "pgi",
-        "score": 2.319,
+        "score": 2.3163,
         "evidence": []
       }
     ],
     "sec-012-5-conclusion": [
       {
         "term": "model explanations",
-        "score": 1.8745,
+        "score": 1.9931,
         "evidence": []
       },
       {
         "term": "explanation evaluation",
-        "score": 1.8094,
+        "score": 1.8277,
         "evidence": []
       },
       {
         "term": "existing xai",
-        "score": 1.5293,
+        "score": 1.5304,
         "evidence": []
       },
       {
         "term": "axe",
-        "score": 1.4905,
+        "score": 1.4881,
         "evidence": []
       },
       {
         "term": "evaluation frameworks",
-        "score": 1.3263,
+        "score": 1.3468,
         "evidence": []
       },
       {
         "term": "datapoints",
-        "score": 0.8363,
+        "score": 0.8349,
         "evidence": []
       },
       {
         "term": "principles",
-        "score": 0.7433,
+        "score": 0.782,
         "evidence": []
       },
       {
         "term": "local",
-        "score": 0.7094,
+        "score": 0.7095,
         "evidence": []
       }
     ],
     "sec-013-acknowledgments": [
       {
         "term": "grant",
-        "score": 0.8174,
+        "score": 0.8217,
         "evidence": []
       },
       {
         "term": "oxford",
-        "score": 0.7922,
+        "score": 0.8042,
         "evidence": []
       },
       {
-        "term": "programme",
-        "score": 0.631,
+        "term": "funding",
+        "score": 0.5534,
         "evidence": []
       }
     ],
     "sec-014-references": [
       {
         "term": "international conference",
-        "score": 3.461,
+        "score": 3.5072,
         "evidence": []
       },
       {
         "term": "ieee international",
-        "score": 2.9739,
-        "evidence": []
-      },
-      {
-        "term": "computing machinery",
-        "score": 2.9411,
+        "score": 3.0266,
         "evidence": []
       },
       {
         "term": "curran associates",
-        "score": 2.9074,
+        "score": 2.9952,
         "evidence": []
       },
       {
         "term": "acm conference",
-        "score": 2.8895,
+        "score": 2.9355,
+        "evidence": []
+      },
+      {
+        "term": "computing machinery",
+        "score": 2.9353,
         "evidence": []
       },
       {
         "term": "machine learning",
-        "score": 2.8152,
+        "score": 2.8281,
         "evidence": []
       },
       {
         "term": "neural networks",
-        "score": 2.6772,
+        "score": 2.7364,
         "evidence": []
       },
       {
         "term": "ieee cvf",
-        "score": 2.6114,
+        "score": 2.6518,
         "evidence": []
       }
     ]

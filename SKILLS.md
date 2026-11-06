@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_255 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_257 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -259,7 +259,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`crdm-requirements-template`](sdlc/skills/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
 | [`crdm-requirements-workflow`](sdlc/skills/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
 
-**`sdlc/skills/sdlc-core/`** (71)
+**`sdlc/skills/sdlc-core/`** (73)
 
 | Skill | What it is for |
 |---|---|
@@ -273,6 +273,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`branch-archaeology`](sdlc/skills/sdlc-core/branch-archaeology.md) | Classify every remote branch against the default branch (merged, landed by squash or cherry-pick, partially landed, unlanded, undetermined) by commit ancestry, patch-id and merge-tree, not by… |
 | [`branch-freshness`](sdlc/skills/sdlc-core/branch-freshness.md) | Read what changed on main often, and re-analyse the session workplan. |
 | [`bun-use`](sdlc/skills/sdlc-core/bun-use.md) | How Bun is used as the JavaScript/TypeScript execution runtime, test runner, package manager, and tarball packager across separated repositories: standalone subgraph configuration (bunfig.toml,… |
+| [`cache-first-ci`](sdlc/skills/sdlc-core/cache-first-ci.md) | Every CI step is a pure function of its inputs: derive the inputs, hash them into a key, restore on a hit, run and save on a miss. |
 | [`ci-health`](sdlc/skills/sdlc-core/ci-health.md) | A red workflow looks exactly like a green one from inside a checkout. |
 | [`code-review-process`](sdlc/skills/sdlc-core/code-review-process.md) | Where code review sits in the release lifecycle. |
 | [`continual-progress`](sdlc/skills/sdlc-core/continual-progress.md) | Make in-flight work trackable by others in real time — open a PR from the first commit, push small coherent increments continuously (never hoard uncommitted work), keep a live status checklist in… |
@@ -281,7 +282,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`delivery-summary`](sdlc/skills/sdlc-core/delivery-summary.md) | Post-delivery summary with server restart command and viewer links |
 | [`diff`](sdlc/skills/sdlc-core/diff.md) | Show per-block content changes with viewer links, changelog, and undo impact analysis |
 | [`dispatch-agent`](sdlc/skills/sdlc-core/dispatch-agent.md) | Dispatch one or more background sub-agents against parallel research/build fronts with a STANDARDIZED live progress contract, and monitor them on a 2-minute heartbeat. |
-| [`feature-staging`](sdlc/skills/sdlc-core/feature-staging.md) | Manages feature-branch staging deployments under gh-pages/STAGING/<branch-slug>/ for before/after publication review comparison. |
+| [`feature-staging`](sdlc/skills/sdlc-core/feature-staging.md) | Manages feature-branch staging deployments under gh-pages/branches/<branch-slug>/ for before/after publication review comparison. |
 | [`finding-software`](sdlc/skills/sdlc-core/finding-software.md) | A script needs a program or module the container does not have (tesseract, pdftoppm, PyMuPDF, a CLI from a GitHub release). |
 | [`gate-tree-mutation`](sdlc/skills/sdlc-core/gate-tree-mutation.md) | Reading `bun run cat gates`' "NOT clean" verdict. |
 | [`generalise-the-fix`](sdlc/skills/sdlc-core/generalise-the-fix.md) | You have a fix. |
@@ -329,6 +330,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`test-engineer`](sdlc/skills/sdlc-core/test-engineer.md) | Test Engineer Skill |
 | [`test-plan-execution`](sdlc/skills/sdlc-core/test-plan-execution.md) | Run a `test-plan/v1` against a system under test and take it to a certification decision — the five lanes of `test-plan-execution.bpmn` (requester, tester, untainted checker, certifier, attestation… |
 | [`turn-reporting`](sdlc/skills/sdlc-core/turn-reporting.md) | Say which work item you are on, every turn — the opening and closing report formats, the rules that make a report worth reading (two sentences and a link per work item, every mention), and the… |
+| [`two-phase-move`](sdlc/skills/sdlc-core/two-phase-move.md) | Move a path that other layers link to without making the order of their re-pins matter: the moving layer declares the move and keeps answering at the old path for a window, the dependent layers… |
 | [`untainted-verification`](sdlc/skills/sdlc-core/untainted-verification.md) | The party that produced an artefact does not write the verdict on it. |
 | [`upstream-version-adoption`](sdlc/skills/sdlc-core/upstream-version-adoption.md) | Watch a pinned upstream dependency for a new release, and take a candidate version through impact analysis, an MVP build, review and a person's adopt/hold/decline decision. |
 | [`visual-diff`](sdlc/skills/sdlc-core/visual-diff.md) | Pictures of a changed figure, diagram or table, before and after, and how much of it changed. |

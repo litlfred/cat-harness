@@ -888,8 +888,8 @@ that TTL bounds availability, not correctness.
 `<slice>.<hex>.sqlite3` of the same slice from `--out`, along with the legacy
 `<slice>.sqlite3` (`rotateSliceFiles`). Nothing else in the directory is
 touched. On `gh-pages` nothing piles up. `docs-site.yml` publishes as a full
-replace and restores each `STAGING/` preview as it was. `feature-staging.yml`
-empties `STAGING/<slug>/` before copying the build in, and
+replace and restores each `branches/` preview as it was. `feature-staging.yml`
+empties `branches/<slug>/` before copying the build in, and
 `staging-rotate.ts` caps the number of previews. **What a CDN can still
 hold:**
 

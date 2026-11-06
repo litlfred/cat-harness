@@ -46,7 +46,7 @@ python3 src/sage-mcp-server.py --status
 Pre-warm the Docker image ahead of time (optional, so the first call isn't slow):
 
 ```sh
-./scripts/setup-sage.sh --pull
+docker pull sagemath/sagemath:latest   # the image the server pulls (override: SAGE_DOCKER_IMAGE)
 ```
 
 ## Mode 2 — deployed stack (docker compose)

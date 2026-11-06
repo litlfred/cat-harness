@@ -101,14 +101,21 @@ is the method, the skill is this platform's application of it. The skill names
 the node and does not restate it, because two files carrying one definition is
 two copies free to drift.
 
-Three worked cases, each a different answer:
+Three worked cases:
 
 - **`raci`** — both. The four letters and the one-Accountable rule are the
   method (node); reading R from the BPMN lane, the `cat-harness.processes:raci` element and
   `check:raci` are this platform's application (skill).
-- **`crdm`** — skill only, and correctly so. It is a house method with no
-  external origin, and §"Adopting a new one" step 1 says such a thing is a
-  skill. A node for it would be the dressing that rule forbids.
+- **`crdm`** — both ([`methodologies/crdm.md`](../../../methodologies/crdm.md)).
+  PHII's three concentration areas (Business Process Analysis, Business Process
+  Redesign, Requirements Definition), the Business Process Matrix, swimlane
+  Task Flow Diagrams, and PATH's activity-linked requirement structure are the
+  external method (node, backed by `library/phii-2023-crdm`,
+  `library/phii-2021-defining-and-validating-requirements-guide`, and
+  `library/path-2012-common-requirements-mhis-crdm`); agentic facilitation,
+  7-dimension code impact analysis, work-item decomposition, and pull-request
+  merge sign-off are this platform's adaptation (`crdm-requirements-workflow`
+  and `crdm-requirements-template`).
 - **`swot`** — both.
 
 **A methodology in use with no node is invisible to the graph**:

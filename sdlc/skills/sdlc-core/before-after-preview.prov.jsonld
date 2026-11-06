@@ -77,7 +77,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "How this sits beside its neighbours",
-      "prov:value": "**A staging \"after\" is not permanent.** `gh-pages` keeps at most ten\n`STAGING/<slug>/` previews and rotates the least recently updated off (owner\nruling 2026-10-02, issue #1868), so a link in a preview can 404 days later\nwhile the PR is still open.",
+      "prov:value": "**A staging \"after\" is not permanent.** `gh-pages` keeps at most ten\n`branches/<slug>/` previews and rotates the least recently updated off (owner\nruling 2026-10-02, issue #1868), so a link in a preview can 404 days later\nwhile the PR is still open.",
       "cat-harness:refs": [
         "#1868",
         "2026-10-02"

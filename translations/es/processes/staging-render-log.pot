@@ -21,7 +21,7 @@ msgstr ""
 
 #: processes/ui/staging-render-log.bpmn:72
 #. Diagram element documentation
-msgid "`rm -rf STAGING/<slug>`. Cannot reach the log, which lives outside STAGING/ — structural rather than guarded, because a branch named to collide with a directory under STAGING/ slugifies to exactly that name and git permits the ref."
+msgid "`rm -rf branches/<slug>`. Cannot reach the log, which lives outside branches/ — structural rather than guarded, because a branch named to collide with a directory under branches/ slugifies to exactly that name and git permits the ref."
 msgstr ""
 
 #: processes/ui/staging-render-log.bpmn:77
@@ -91,7 +91,7 @@ msgstr ""
 
 #: processes/ui/staging-render-log.bpmn:16
 #. Diagram element documentation
-msgid "Every change to the publish branch appends an entry to `_render-log/<day>.jsonl`. A removal is a NEW entry, never the erasure of the `rendered` one before it — the pair is the history. The lane is the build pipeline because every writer is a workflow job; no agent decides what goes in this log. A system lane runs a fixed program and exercises no judgement, which is exactly what an append-only log wants. The question it exists to answer: what happened to STAGING/<slug>, and why. The publish branch has several publishers and one of them replaces the whole branch, which is why a removed preview needs a record of its own."
+msgid "Every change to the publish branch appends an entry to `_render-log/<day>.jsonl`. A removal is a NEW entry, never the erasure of the `rendered` one before it — the pair is the history. The lane is the build pipeline because every writer is a workflow job; no agent decides what goes in this log. A system lane runs a fixed program and exercises no judgement, which is exactly what an append-only log wants. The question it exists to answer: what happened to branches/<slug>, and why. The publish branch has several publishers and one of them replaces the whole branch, which is why a removed preview needs a record of its own."
 msgstr ""
 
 #: processes/ui/staging-render-log.bpmn:87

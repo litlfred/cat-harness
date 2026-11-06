@@ -12,7 +12,7 @@ references:
 ---
 **First check for a deployment or 404 question is the publish ref, not a
 fetch.** `git fetch origin gh-pages && git ls-tree -r --name-only FETCH_HEAD |
-grep <thing>`; staging previews are `STAGING/<branch-slug>/`.
+grep <thing>`; staging previews are `branches/<branch-slug>/`.
 
 **A published URL is looked up, never composed** — the `docs/<stub>/` segment
 does not reach the site, so a composed URL 404s on a page that is there.

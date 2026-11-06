@@ -30,7 +30,7 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 - Skill: `feature-staging`.
 - What: Build the preview from the PR's head: regenerate the generated docs, trim what this preview does not need, render the BPMN diagrams, then Jekyll, TypeDoc and the knowledge-graph export, with the staging banner and SEO identity claims stripped.
 - Record it: `workflow_complete` with `node: "Task_Build"`.
-- next: → `Task_Deploy` (Push to the CDN under STAGING/)
+- next: → `Task_Deploy` (Push to the CDN under branches/)
 
 ### 2. Derive the slug from the head ref (`Task_Slug`)
 
@@ -48,7 +48,7 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 - Record it: `workflow_complete` with `node: "Task_Validate"`.
 - next: → `Task_Preflight` (Re-evaluate liveness AT REMOVAL TIME)
 
-### 4. Push to the CDN under STAGING/ (`Task_Deploy`)
+### 4. Push to the CDN under branches/ (`Task_Deploy`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-kg-to-cdn`.
@@ -110,7 +110,7 @@ could not tell» → `End_Refused` (REFUSED — nothing removed)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `staging-review`.
-- What: Post, or update in place, one comment on the PR giving the preview URL (STAGING/<slug>/) and the commit it was built from.
+- What: Post, or update in place, one comment on the PR giving the preview URL (branches/<slug>/) and the commit it was built from.
 - Record it: `workflow_complete` with `node: "Task_Comment"`.
 - next: → `End_Staged` (Preview live)
 
@@ -130,7 +130,7 @@ could not tell» → `End_Refused` (REFUSED — nothing removed)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `deletion-requires-confirmation`.
-- What: Say what is going — size and file count — then remove STAGING/<slug>/ and append `removed` to the render log in the SAME commit, so a preview cannot vanish without a record of who dispatched it and why.
+- What: Say what is going — size and file count — then remove branches/<slug>/ and append `removed` to the render log in the SAME commit, so a preview cannot vanish without a record of who dispatched it and why.
 - Record it: `workflow_complete` with `node: "Task_RemoveDisp"`.
 - next: → `End_RemovedDisp` (Preview gone)
 

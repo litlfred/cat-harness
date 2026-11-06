@@ -43,10 +43,10 @@ git ls-tree --name-only FETCH_HEAD              # what is at the root
 git ls-tree -r --name-only FETCH_HEAD | grep -i <thing>   # where does it actually live
 ```
 
-For a staging preview, the subtree is `STAGING/<branch-slug>/`, and
-`git ls-tree --name-only FETCH_HEAD STAGING/` lists every branch with a live
+For a staging preview, the subtree is `branches/<branch-slug>/`, and
+`git ls-tree --name-only FETCH_HEAD branches/` lists every branch with a live
 preview. The slug replaces `/` with `-`: `claude/festive-galileo-s7ibx0`
-becomes `STAGING/claude-festive-galileo-s7ibx0/`.
+becomes `branches/claude-festive-galileo-s7ibx0/`.
 
 The MCP GitHub tools answer the same question without a fetch —
 `get_file_contents` with `ref: "refs/heads/gh-pages"` and a directory path

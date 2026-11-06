@@ -5,7 +5,7 @@ description: >
   regenerating derived references, composing the docs layers and each
   instance's site into one Jekyll source, building it with just-the-docs,
   the post-build passes, the TypeDoc API reference, the knowledge-graph
-  export, and the full-replace publish to gh-pages and its STAGING previews.
+  export, and the full-replace publish to gh-pages and its branches/ previews.
 ---
 
 # Docs generation
@@ -75,7 +75,7 @@ instance that owns the site root is `site.landing` in `index.config.json`
 `check:maintained-artefacts`, `check:escaped-markup` and `publish-verify.ts`
 check the built tree. `publish-gh-pages.sh` then replaces `gh-pages`
 wholesale. Before each push attempt it copies in every open pull request's
-`STAGING/<slug>/` preview (`restore-staging.ts`). After the push,
+`branches/<slug>/` preview (`restore-staging.ts`). After the push,
 `restore-staging.ts --verify` confirms that the previews survived. Any failure
 opens or comments on one publication-manager alert, and the next clean publish
 closes it.
@@ -83,7 +83,7 @@ closes it.
 ## Previews
 
 `.github/workflows/feature-staging.yml` builds the same site for a pull
-request and publishes it under `STAGING/<slug>/`, replacing only that
+request and publishes it under `branches/<slug>/`, replacing only that
 directory. It removes the preview when the pull request closes.
 
 ## Locally
