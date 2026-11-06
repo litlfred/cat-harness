@@ -25,6 +25,8 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-processes`, hold
 | [`bean-lifecycle.checklist.md`](bean-lifecycle.checklist.md) | Checklist — Agent bean lifecycle |  |
 | [`bean-open.bpmn`](bean-open.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Open the bean | "Drain the beans", "Agent bean lifecycle", "Code change and review", "A refused merge-train member", "Test Data Curation — Fixed Sets and Generated Recipes", "Test-plan execution", "Watching a pinned upstream dependency", "Adopting an upstream version bump" |
 | [`bean-open.checklist.md`](bean-open.checklist.md) | Checklist — Open the bean |  |
+| [`cache.bpmn`](cache.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): The cache process: restore and save every cache a run can use |  |
+| [`cache.checklist.md`](cache.checklist.md) | Checklist — The cache process: restore and save every cache a run can use |  |
 | [`ci-health-watch.bpmn`](ci-health-watch.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Is CI actually working on the default branch? |  |
 | [`ci-health-watch.checklist.md`](ci-health-watch.checklist.md) | Checklist — Is CI actually working on the default branch? |  |
 | [`code-change-review.bpmn`](code-change-review.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Code change and review | "Actor and role administration" |
