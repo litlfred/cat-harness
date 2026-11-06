@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/sdlc/processes/cache.bpmn` (process `Process_Cache`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-One optional process for every cache in the harness: the owner's ruling of 2026-11-05, "put them all in one (optional) "cache" process (that can parallelize/have dependencies on components) but is used by render and CI and publish etc".
+One optional process for every cache in the harness, whose components restore and save in parallel where they do not depend on one another, used by render, CI and publish alike.
 
 ## Begin — A consumer asks for its caches (`Start_Cache`)
 
@@ -22,6 +22,7 @@ One optional process for every cache in the harness: the owner's ruling of 2026-
 ### 1. Layers ref: restore / save (`Task_Layers`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
+- Skill: `cache-first-ci`.
 - What: Component 1, which everything else needs.
 - Record it: `workflow_complete` with `node: "Task_Layers"`.
 - next: → `PG_After_Layers` (Independent components)
@@ -38,6 +39,7 @@ One optional process for every cache in the harness: the owner's ruling of 2026-
 ### 2. Prepared image + node_modules (`Task_Image`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
+- Skill: `cache-first-ci`.
 - What: Component 2a.
 - Record it: `workflow_complete` with `node: "Task_Image"`.
 - next: → `PG_Join_Independent`
@@ -45,6 +47,7 @@ One optional process for every cache in the harness: the owner's ruling of 2026-
 ### 3. bun / pip dependencies (`Task_Deps`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
+- Skill: `cache-first-ci`.
 - What: Component 2b.
 - Record it: `workflow_complete` with `node: "Task_Deps"`.
 - next: → `PG_Join_Independent`
@@ -52,6 +55,7 @@ One optional process for every cache in the harness: the owner's ruling of 2026-
 ### 4. Gate results: restore / save (`Task_Gates`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
+- Skill: `cache-first-ci`.
 - What: Component 2c.
 - Record it: `workflow_complete` with `node: "Task_Gates"`.
 - next: → `PG_Join_Independent`
@@ -59,6 +63,7 @@ One optional process for every cache in the harness: the owner's ruling of 2026-
 ### 5. Generated sets: QA copy, pages (`Task_Sets`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
+- Skill: `cache-first-ci`.
 - What: Component 2d.
 - Record it: `workflow_complete` with `node: "Task_Sets"`.
 - next: → `PG_Join_Independent`
@@ -84,6 +89,7 @@ One optional process for every cache in the harness: the owner's ruling of 2026-
 ### 7. Render seed: writer records (`Task_RenderSeed`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
+- Skill: `cache-first-ci`.
 - What: Component 4a, the seed of CI's render (owner, 2026-11-05: CI does not run `render`; its render is `derive:publish`).
 - Record it: `workflow_complete` with `node: "Task_RenderSeed"`.
 - next: → `PG_Join_Render`
@@ -91,6 +97,7 @@ One optional process for every cache in the harness: the owner's ruling of 2026-
 ### 8. FHIR IG ASTs: Process_IgAstCache (`Task_IgAst`)
 
 - Who: the `FHIR IG AST cache (the FHIR IG layer)` lane (role `publication-manager`).
+- Skill: `cache-first-ci`.
 - What: Component 4b, in its own lane: the FHIR IG layer's IG AST cache, `Process_IgAstCache` (declared by that layer), integrated, not replaced.
 - Record it: `workflow_complete` with `node: "Task_IgAst"`.
 - next: → `PG_Join_Render`
@@ -103,6 +110,7 @@ One optional process for every cache in the harness: the owner's ruling of 2026-
 ### 9. Jekyll cache: restore / save (`Task_Jekyll`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
+- Skill: `cache-first-ci`.
 - What: Component 5, last: it caches the rendering of what the components above produce.
 - Record it: `workflow_complete` with `node: "Task_Jekyll"`.
 - next: → `End_Ready` (Caches restored, or saved)
