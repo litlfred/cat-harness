@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: mount-dependency\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.091Z\n"
+"POT-Creation-Date: 2026-11-06T04:17:05.401Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -14,12 +14,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/kg/mount-dependency.bpmn:97
+#: processes/kg/mount-dependency.bpmn:101
 #. Diagram element documentation
-msgid "`index.lock.json` beside the downstream's `index.config.json` (the legacy `<instance>.mount-lock.json` is still read, and is renamed onto the new name when rewritten; both present is an error): the pins it was written for, each instance's repository, SHA and how the pin was found, each directory's tree digest — and what was NOT mounted, with why, so an offline check cannot read a gap as clean."
+msgid "`index.lock.json` beside the downstream's `index.config.json` (the legacy `<instance>.mount-lock.json` is still read, and is renamed onto the new name when rewritten; both present is an error): the pins it was written for, each instance's repository, SHA and how the pin was found, each directory's tree digest — and what was NOT mounted, with why, so an offline check cannot read a gap as clean. Whoever writes the lock writes its layers cache ref (`layers:publish`, which refuses unless every mount hashes to the lock); on main, the index's workflow does it."
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:123
+#: processes/kg/mount-dependency.bpmn:129
 #. Diagram element documentation
 msgid "`mount:remote:check`, with no network: the lock's pins are the declaration's, and every locked directory is on disk and hashes to its digest. Could-not-determine outranks missing, which outranks mounted."
 msgstr ""
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Build pipeline"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:122
+#: processes/kg/mount-dependency.bpmn:128
 #. Diagram label
 msgid "Check disk against lock against declaration"
 msgstr ""
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Downstream author"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:131
+#: processes/kg/mount-dependency.bpmn:137
 #. Diagram label
 msgid "Every instance mounted or local?"
 msgstr ""
@@ -84,17 +84,17 @@ msgstr ""
 msgid "Mount each instance at its declared path"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:146
+#: processes/kg/mount-dependency.bpmn:152
 #. Diagram label
 msgid "no"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:108
+#: processes/kg/mount-dependency.bpmn:114
 #. Diagram label
 msgid "Re-render the agent surface"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:132
+#: processes/kg/mount-dependency.bpmn:138
 #. Diagram element documentation
 msgid "Read off the check's aggregate state. `skipped` and `local` are answers; `missing` and `could-not-determine` are not."
 msgstr ""
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Remote-mount a dependency"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:136
+#: processes/kg/mount-dependency.bpmn:142
 #. Diagram label
 msgid "Reported loudly: missing / could not determine"
 msgstr ""
@@ -116,25 +116,25 @@ msgstr ""
 
 #: processes/kg/mount-dependency.bpmn:86
 #. Diagram element documentation
-msgid "Sparse checkout of the declaration and the chosen directories, copied to the mount path (by default the instance's home path, so relative imports and sibling discovery hold). Never onto tracked bytes; never onto a directory no lock says this mount made; never over edits to a previous mount — those are left untouched and reported."
+msgid "Sparse checkout of the declaration and the chosen directories, copied to the mount path (by default the instance's home path, so relative imports and sibling discovery hold). Never onto tracked bytes; never onto a directory no lock says this mount made; never over edits to a previous mount — those are left untouched and reported. A replay of the lock tries the index's layers cache ref first (`refs/cat/layers/<key>`, then `refs/cat/layers/main`): one shallow fetch, every byte verified against the lock, and any layer that does not verify is fetched from its own repository."
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:135
+#: processes/kg/mount-dependency.bpmn:141
 #. Diagram label
 msgid "The closure is on disk, pinned and locked"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:109
+#: processes/kg/mount-dependency.bpmn:115
 #. Diagram element documentation
 msgid "When the lock changed, the layers an agent's skills and memory are generated from changed with it. `mount:remote` re-runs the generators of what an agent actually reads — `skill:commands` (`.claude/commands/`) and `agent-memory` (`.claude/agent-memory/` and the `.agents/` copies) — from the checkout root, and a generator that fails fails the run. A re-pin commit therefore carries the new layers AND the surface rendered from them, because new layers shipped without their rendered surface fail the agent-memory tests."
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:96
+#: processes/kg/mount-dependency.bpmn:100
 #. Diagram label
 msgid "Write the lock"
 msgstr ""
 
-#: processes/kg/mount-dependency.bpmn:145
+#: processes/kg/mount-dependency.bpmn:151
 #. Diagram label
 msgid "yes"
 msgstr ""

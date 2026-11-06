@@ -244,13 +244,13 @@ execution anywhere on the deterministic-to-agentic spectrum.
 - **Task:** a step in a process; a node in BPMN.
 - <img src="{{ '/assets/img/kg-deck/img-p006-4.webp' | relative_url }}" alt="" height="24" style="height:24px;width:auto;display:inline-block;vertical-align:middle" loading="lazy"> **Skill:** a gated capability with schema-defined inputs and outputs.
 - **Test:** used to compare models, or for author review.
-- <img src="{{ '/assets/img/kg-deck/img-p006-2.webp' | relative_url }}" alt="" height="24" style="height:24px;width:auto;display:inline-block;vertical-align:middle" loading="lazy"> **Agentic state:** *beans*, which agents use to coordinate and track their
+- <img src="{{ '/assets/img/kg-deck/img-p006-2.webp' | relative_url }}" alt="" height="24" style="height:24px;width:auto;display:inline-block;vertical-align:middle" loading="lazy"> **Agentic state:** *work items*, which agents use to coordinate and track their
   state within a process ("changes to the vaccination schedule ready for review in
   staging").
 - <img src="{{ '/assets/img/kg-deck/img-p006-3.webp' | relative_url }}" alt="" height="24" style="height:24px;width:auto;display:inline-block;vertical-align:middle" loading="lazy"> **Human state:** *todos*, attached to process steps or knowledge assets
   ("please review this change in medication").
 
-![Folio lifecycle — one cycle, plan to retire. A BPMN collaboration of five lanes: programme manager, editors and authoring agents, validation and QA, review team and SMEs, publication manager, with the work plan (beans shared by humans and agents) drawn as a data store that the seeding and feedback tasks write to. Tasks in order: plan scope, team and artefacts; seed the work plan; editing and HCI validation; integration test and QA sweep; draft, review and publish; triage published feedback; file feedback as beans; then a gateway, more content, which loops back to editing or ends in retire or archive.]({{ '/assets/img/workflows/content-lifecycle.svg' | relative_url }})
+![Folio lifecycle — one cycle, plan to retire. A BPMN collaboration of five lanes: programme manager, editors and authoring agents, validation and QA, review team and SMEs, publication manager, with the work plan (work items shared by humans and agents) drawn as a data store that the seeding and feedback tasks write to. Tasks in order: plan scope, team and artefacts; seed the work plan; editing and HCI validation; integration test and QA sweep; draft, review and publish; triage published feedback; file feedback as work items; then a gateway, more content, which loops back to editing or ends in retire or archive.]({{ '/assets/img/workflows/content-lifecycle.svg' | relative_url }})
 
 <details markdown="1"><summary>The diagram as it appeared on the slide (2026-09-30)</summary>
 
@@ -268,13 +268,13 @@ BPMN picture and lines tie each one to a part of it:
 - **Task** points at one node in that lane, *Edit Doc* (today: editing and HCI
   validation).
 - **Skill** hangs off that task, and **Test** hangs off the skill.
-- The beans icon sits by agentic state and the sticky note by human state.
+- The work items icon sits by agentic state and the sticky note by human state.
 
 So the slide says a user story names a role, a role is a lane, a task is a node
 in it, a skill belongs to a task, and a test belongs to a skill.
 
 **Sources:** the content core's `processes/content/content-lifecycle.bpmn` (the picture above is generated
-from it); [beans and todos](../guides/beans-and-todos.html).
+from it); [work items and todos](../guides/beans-and-todos.html).
 
 > **Aligned:** the snapshot's diagram and today's process have the same six
 > lanes and the same eight tasks.
@@ -293,13 +293,13 @@ more skills to execute a task.
   swarm with ungoverned state. Agents "relax" swimlanes, and mechanical plus
   agentic QA/QC reports mitigate it.
 
-![BPMN execution, from deterministic to agentic: a blue-to-green bar; on the left the folio lifecycle flat, with one task at a time; on the right the same lanes in perspective with beans scattered across every lane and cat-robots beneath.]({{ '/assets/img/bpmn-execution-spectrum.webp' | relative_url }})
+![BPMN execution, from deterministic to agentic: a blue-to-green bar; on the left the folio lifecycle flat, with one task at a time; on the right the same lanes in perspective with work items scattered across every lane and cat-robots beneath.]({{ '/assets/img/bpmn-execution-spectrum.webp' | relative_url }})
 
 **What the two halves place where.** On the deterministic side the human and
 the agentic actor stand *beside* the flat diagram's lanes, with one sticky note
-on the authoring task and one bean on the test task: one task at a time, each
+on the authoring task and one work item on the test task: one task at a time, each
 state marker where its task is. On the agentic side the human rides *above* the
-board, a row of agents hangs *beneath* it, and beans lie in every lane.
+board, a row of agents hangs *beneath* it, and work items lie in every lane.
 
 **Sources:** [BPMN execution](agentic-harness.html);
 [`specification-compiled-agents`]({{ '/methodologies/index.html' | relative_url }}) (which cites this deck).
@@ -447,7 +447,7 @@ repository: <https://github.com/litlfred/folio-assistant>
 | | | |
 |---|---|---|
 | **Actor** | *who* | a concrete participant, human, agentic or mechanical; carries permissions across all lanes |
-| **Task** | *does what* | an activity in a diagram; names the skill to run and the bean operation to perform |
+| **Task** | *does what* | an activity in a diagram; names the skill to run and the work item operation to perform |
 | **Process** | *where* | an executable BPMN diagram with DMN gateways; its state is committed so sibling sessions agree |
 | **Role** | *as whom* | a swimlane; an actor acts as a reviewer only for the length of a lane |
 | **Skill** | *knowing how* | the instruction body for the task; lives in the knowledge graph and is inherited across instances |
