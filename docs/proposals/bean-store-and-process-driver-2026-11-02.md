@@ -871,7 +871,7 @@ ITB compares them.
 | 4c | The deployment names the store (§4.3) | merged (#1424); deployments updated in cat-harness#1005 |
 | 5 | History and its event model (§4.6) | merged (#1425) |
 | 5b | The history stepper on each work item's page; open/closed filter; all stores on one page | in review (#1426, #1428, #1432) |
-| 6 | Skills say the operation, not the git command; a check keeps it so | next |
+| 6 | Skills say the operation, not the git command; a check keeps it so | in review (cat-harness#1010) |
 | 7 | *Dispatch agent* and the first launch Tool, `launch-beans-serve` (§4.5) | |
 | 8 | A server Tool passes the same conformance tests | |
 | 9 | Run-scoped store; route and context-mode settings; a test case becomes seeded work items and instances (§4.7) | |

@@ -311,7 +311,7 @@ _258 skills in 19 directories. The full list, with what each skill is for, is in
 |---|---|
 | [`skills/authoring/authoring-core/`](skills/authoring/authoring-core/) | 24 |
 | [`skills/authoring/content-lifecycle/`](skills/authoring/content-lifecycle/) | 9 |
-| [`skills/conduct/conduct-core/`](skills/conduct/conduct-core/) | 17 |
+| [`skills/conduct/conduct-core/`](skills/conduct/conduct-core/) | 18 |
 | [`skills/conduct/security/`](skills/conduct/security/) | 4 |
 | [`skills/kg/graph-management/`](skills/kg/graph-management/) | 10 |
 | [`skills/kg/kg-core/`](skills/kg/kg-core/) | 29 |

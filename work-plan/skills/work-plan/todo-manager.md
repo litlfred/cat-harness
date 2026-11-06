@@ -438,9 +438,9 @@ Repository gates (hard) · step 65: "Every declared directory's README is curren
 That is `readme:subgraphs:check`. Run its writer before you push:
 
 ```sh
-bun run cat readme:subgraphs          # updates beans/README.md; push state via branch-store
+bun run cat readme:subgraphs          # updates beans/README.md; push state via the store Tool
 bun run cat readme:subgraphs:check    # must exit 0
-bun cat-harness-tools/scripts/branch-store.ts push --id beans  # or: bun run cat state:push
+bun run cat state:push                # when the store Tool is git-branch (work-plan-store-git-branch.md)
 ```
 
 The check's name gives no hint that adding a work item dirtied it, so a session that
