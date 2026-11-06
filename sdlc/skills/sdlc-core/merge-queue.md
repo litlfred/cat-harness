@@ -666,35 +666,42 @@ histories.
 inherits that red, so no PR can show green, and nothing can be merged on green CI.
 PR sessions start debugging their own diffs for failures that belong to `main`.
 
-### The automated post-merge repair pipeline
+### Where derived artefacts are regenerated
 
-To resolve this asymmetry, `.github/workflows/post-merge-regen.yml` triggers on
-push to `main` and runs `bun run cat post-merge:regen --create-pr`.
+No automation pushes to `main` and none opens a repair PR: the
+`automation/post-merge-regen-<sha>` branches and their PRs piled up with no CI
+once Actions could no longer open PRs here, and they are gone.
 
-1. **Detected and ACTED on:** It audits verify/write pairs on the post-merge tree.
-   If derived artefacts are stale, it does not merely fail silently or log red; it
-   acts by running the generators and generating a reviewable repair.
-2. **Reviewable PR, never a direct push to `main`:** The repair is pushed to an
-   `automation/post-merge-regen-<sha>` branch and opened as a PR targeting
-   `main`. This ensures the repair cannot bypass gates, full PR CI runs on it, and
-   it remains auditable and reviewable.
-3. **NEGATIVE CONTROL:** A merge that changes nothing counted triggers 0 repairs
-   and opens NO PR (`status: "clean"`, exit 0), preventing churn.
+1. **In the PR, before it merges.** `harness-pr-checks.yml`'s `regen` job
+   (the reusable `layer-post-merge-regen.yml`, mode `pr`) runs the regen
+   writers at the PR's head. When a tracked file changed, it commits ONE
+   `chore(derived): regenerate derived artefacts for <sha>` to the PR's own
+   branch; from a fork it commits nothing and fails with the command to run.
+   The PR's checks judge that commit, so the regen reaches `main` through the
+   normal, tested merge. Pushed with GITHUB_TOKEN, the commit starts no CI and
+   the job fails saying so; a `REGEN_PUSH_TOKEN` secret lets the checks start
+   by themselves. A head that is itself a regen commit and still regenerates
+   fails (no fixpoint), so it cannot loop.
+2. **At release.** `release-npm.yml` regenerates into the package it publishes
+   (a patch applied to the release checkout, never committed) and publishes
+   nothing when a check is unrepaired.
+3. **After a merge: verify and warn.** `post-merge-regen.yml` (hourly, when
+   `main` moved) regenerates in its runner, warns with what was stale, and
+   commits, pushes and opens nothing. NEGATIVE CONTROL: a `main` with nothing
+   stale warns about nothing.
+
+Branch and staging preview builds do not regenerate.
 
 ### Merge steward procedure: post-merge verification
 
-**Decision on merge steward role vs automation:**
-- **Automation handles post-merge verification:** The steward does not manually run
-  regen sweeps after every landing. Automation via `post-merge-regen.yml` executes on
-  push to `main` across all types of landings (steward trains, direct pushes, web
-  uploads).
-- **Steward triage when main goes red on a derived gate:** If `main` turns red on a
-  verify/write check (e.g. `readme:subgraphs:check`, `check:prov-qaqc`), the
-  steward checks whether an automated repair PR (`automation/post-merge-regen-...`)
-  has already been opened before dispatching unblockers or opening duplicate PRs.
-- **Priority admission for repair PRs:** When the automated repair PR passes CI,
-  the steward admits and lands it with priority under `merge-priority.dmn` as an
-  unblock-main repair.
+- **Automation verifies; the PR repairs.** The steward does not run regen
+  sweeps after every landing. When `post-merge-regen.yml` warns that `main` is
+  stale, the next PR's `regen` job commits the fix on that PR's branch; a PR
+  opened only to carry it is an ordinary PR, admitted with priority under
+  `merge-priority.dmn` as an unblock-main repair.
+- **A red `regen` job is a PR's own failure**, like any other check: a fork PR
+  runs the regen it names, and a regen commit pushed without CI needs one more
+  push before the PR's checks run.
 
 ## ACK every PR that enters the queue, on its bean (STRICT)
 
