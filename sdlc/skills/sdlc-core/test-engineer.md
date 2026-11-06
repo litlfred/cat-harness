@@ -145,11 +145,13 @@ defect, not missing documentation.
    `test-plan/v1`); the tests that execute the case are found through the
    `@test:` tags of that file, not listed again in the plan.
 
-The check reports orphans both ways: a test that no Scenario names, a tag
-that names no test, and a test named by two Scenarios. Its command is
-`check:test-gherkin` and its QA criterion is `test-has-gherkin`, which depends
-on a block's `feature` companion; both are added in the tools layer (work item
-`cat-harness-724x`). Until they land, check by hand before you push.
+**`bun run cat check:test-gherkin`** reports orphans both ways: a test no
+Scenario names, a tag that names no test, a test named by two Scenarios, a
+Scenario that names no test, and a tag on a `Feature:` line. It reads any tree
+(`--root`, `--under`, `--json`); it is not a gate until a repository has
+backfilled. The kg-audit criterion **`test-has-gherkin`** records the same
+gap for an instance, and adds every test-plan case whose `.feature` is missing
+or does not resolve.
 
 ### Adding a new formal-layer project
 

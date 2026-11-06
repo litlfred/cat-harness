@@ -5,7 +5,7 @@ description: >
   certification decision — the five lanes of `test-plan-execution.bpmn`
   (requester, tester, untainted checker, certifier, attestation service), how
   the test data is bound, what the run and the report must record, the facts
-  the certification table reads, and the four kg-audit criteria that judge a
+  the certification table reads, and the kg-audit criteria that judge a
   run afterwards. Read before executing a plan, re-executing a sample, or
   certifying a result.
 graph-typologies:
@@ -82,7 +82,8 @@ verdict about itself — `test-report/v1` refuses a reviewer whose `id` or
 
 ### Tester
 
-1. **Resolve the plan.** P parses as `test-plan/v1`, names at least one `req:`
+1. **Resolve the plan.** P parses as `test-plan/v1.1` (a `test-plan/v1` plan
+   still parses, deprecated), names at least one `req:`
    requirement, its `exitCriteria.decision` resolves to a
    decision in a `.dmn` that exists, and its `scope.kind` matches the SUT
    actor's facet kind. A plan that does not resolve is not run.
@@ -141,7 +142,7 @@ branch with derived results.
 release authority) is chosen there by the signer's reach. Then the signed
 certification is filed under `attestations`.
 
-## The four kg-audit criteria
+## The kg-audit criteria
 
 Registered in `KG_CRITERIA` (`schemas/sdlc/kg-qa.ts`), implemented in
 `scripts/test-plan-audit.ts`, recorded on the graph roll-up:
@@ -152,6 +153,7 @@ Registered in `KG_CRITERIA` (`schemas/sdlc/kg-qa.ts`), implemented in
 | `test-case-executed-or-skipped` | a terminal report leaves a plan case with no verdict, or names a case the plan lacks | major |
 | `test-data-hash-present` | a plan-run's data hash is `unknown`, or a report's run carries none | major |
 | `test-sut-not-self-judged` | any verdict's reviewer is the system under test | critical |
+| `test-has-gherkin` | a test no Gherkin Scenario names, a `@test:` tag naming no test, or a plan case whose `.feature` is missing or does not resolve ([`test-engineer`](test-engineer.md#every-test-has-a-gherkin-strict)) | major |
 
 Each records `n/a` when there is nothing of its kind to judge — no plan, no
 plan-run, no report — and never a pass over nothing.
