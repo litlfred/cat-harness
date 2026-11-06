@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cache\n"
-"POT-Creation-Date: 2026-11-05T13:47:18.784Z\n"
+"POT-Creation-Date: 2026-11-06T02:46:34.260Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: sdlc/processes/cache.bpmn:124
 #. Diagram element documentation
-msgid "Component 4b, in its own lane: fhir-harness's IG AST cache, `Process_IgAstCache` (`fhir-harness/processes/content/ig-ast-cache.bpmn`), integrated, not replaced. It is drawn as a task because this layer may not name a process of a layer above it; the steps are that process's. RESTORE: read the cached AST from its branch store and judge it — that process's \"valid for this commit?\" IS this component's verify (class a: the AST is judged against this commit's IG sources and tooling); valid → the site is built from it. SAVE: that process's own path, not `cached-step` — a miss dispatches an AST refresh on a Java runner with 10 GB, which rewrites the branch store. The branch store is a `cache` node (`ig-ast`). Owner: the smart-base / fhir-harness session (CI speed 12). It reports one line in `cached-step`'s format — `cached-step <step>: hit|warm|miss (<trust>) — <why>. Key <key>.` — to the job summary, which the daily hit-rate report counts."
+msgid "Component 4b, in its own lane: the FHIR IG layer's IG AST cache, `Process_IgAstCache` (declared by that layer), integrated, not replaced. It is drawn as a task because this layer may not name a process of a layer above it; the steps are that process's. RESTORE: read the cached AST from its branch store and judge it — that process's \"valid for this commit?\" IS this component's verify (class a: the AST is judged against this commit's IG sources and tooling); valid → the site is built from it. SAVE: that process's own path, not `cached-step` — a miss dispatches an AST refresh on a Java runner with 10 GB, which rewrites the branch store. The branch store is a `cache` node (`ig-ast`). Owner: CI speed 12, the IG layers' session. It reports one line in `cached-step`'s format — `cached-step <step>: hit|warm|miss (<trust>) — <why>. Key <key>.` — to the job summary, which the daily hit-rate report counts."
 msgstr ""
 
 #: sdlc/processes/cache.bpmn:134
@@ -91,17 +91,12 @@ msgstr ""
 
 #: sdlc/processes/cache.bpmn:50
 #. Diagram label
-msgid "FHIR IG AST cache (fhir-harness)"
+msgid "FHIR IG AST cache (the FHIR IG layer)"
 msgstr ""
 
 #: sdlc/processes/cache.bpmn:123
 #. Diagram label
 msgid "FHIR IG ASTs: Process_IgAstCache"
-msgstr ""
-
-#: sdlc/processes/cache.bpmn:51
-#. Diagram element documentation
-msgid "fhir-harness's `Process_IgAstCache`, whose site build and AST refresh sit under the publication manager: the component's verify is that process's \"valid for this commit?\", and its save is that process's refresh dispatch."
 msgstr ""
 
 #: sdlc/processes/cache.bpmn:87
@@ -146,7 +141,7 @@ msgstr ""
 
 #: sdlc/processes/cache.bpmn:17
 #. Diagram element documentation
-msgid "One optional process for every cache in the harness: the owner's ruling of 2026-11-05, \"put them all in one (optional) \"cache\" process (that can parallelize/have dependencies on components) but is used by render and CI and publish etc\". The rule every component follows is the skill `cache-first-ci`: a step is a pure function of its inputs; the key is DERIVED from them (`cache:key`, a lock digest, `key.sh`), never hand-listed; on a hit restore and skip, on a miss build and save; the full set still runs on main and nightly. OPTIONAL, AND SKIPPING IS ALWAYS CORRECT. Every consumer — the render pipeline, the code-quality gates, feature staging and the preview, publish, the docs-site publish, the merge train, and a committer's local mount — may call it as a call activity, once with phase `restore` before its own work and once with phase `save` after that work came back green. A consumer that does not call it, or a run that cannot reach a store, simply builds: every component's miss is the consumer doing its own work, so this process can cost a run time, never correctness. PARALLEL WHERE INDEPENDENT, IN ORDER WHERE NOT. The layers come first, because every other component reads mounted content. Then the prepared image and node_modules, the bun/pip downloads, the gate results and the generated sets restore side by side. Then the compiled Lean artefacts. Then the render seed (derive:publish's writer records) and the FHIR IG ASTs side by side; the IG ASTs in their own lane, as fhir-harness's `Process_IgAstCache`, whose \"valid for this commit?\" is the component's verify and whose AST refresh is its save. The Jekyll cache is last, because it caches the rendering of what the rest produce. ONLY WHAT THE TARGET NEEDS, ONLY WHAT IS STALE (owner, 2026-11-05: \"not all rendering/CI/merge processes need all caches. be optimal in what needs caching\" and \"... be optimal in which caches need to be updated to perform a specific render\"). A component runs only when the plan (`cache:plan`, the first gateway) marks it needed for this target; a component the target does not read is passed through untouched, neither restored nor refreshed. A needed component that is fresh is RESTORED, never rebuilt. A needed component that is stale, or whose staleness cannot be determined, is REFRESHED, incrementally where its node says so (the changed writers, the changed Lean modules over the restored .oleans, the IG AST delta, the moved layers), never wholesale when a delta is valid. A stale component no target here needs is left for the next target that needs it, or for main's run. The plan and what actually happened are both reported (`cached-step` phase `report`), and the daily report flags a component restored and never read. EACH COMPONENT, BOTH PHASES. Restore: look up the derived key, verify the entry by its trust class — (a) against a reference derived from THIS tree, so a bad entry is only a miss; (a′) a bundle's own manifest plus a source rule; (b) a committer's verdict, honoured then re-verified off the critical path; (c) main-only entries, by exact key — and report hit, warm or miss with why. Save: only after the consumer's work is green, only from main or into the run's own ref scope, never from `pull_request_target`. Each component is a `cache` node in the knowledge graph (key recipe, derived inputs, producer, consumers, trust class, location, budget), and the cache viewer compares its current key with the key today's pins imply, so staleness is computed, never claimed."
+msgid "One optional process for every cache in the harness: the owner's ruling of 2026-11-05, \"put them all in one (optional) \"cache\" process (that can parallelize/have dependencies on components) but is used by render and CI and publish etc\". The rule every component follows is the skill `cache-first-ci`: a step is a pure function of its inputs; the key is DERIVED from them (`cache:key`, a lock digest, `key.sh`), never hand-listed; on a hit restore and skip, on a miss build and save; the full set still runs on main and nightly. OPTIONAL, AND SKIPPING IS ALWAYS CORRECT. Every consumer — the render pipeline, the code-quality gates, feature staging and the preview, publish, the docs-site publish, the merge train, and a committer's local mount — may call it as a call activity, once with phase `restore` before its own work and once with phase `save` after that work came back green. A consumer that does not call it, or a run that cannot reach a store, simply builds: every component's miss is the consumer doing its own work, so this process can cost a run time, never correctness. PARALLEL WHERE INDEPENDENT, IN ORDER WHERE NOT. The layers come first, because every other component reads mounted content. Then the prepared image and node_modules, the bun/pip downloads, the gate results and the generated sets restore side by side. Then the compiled Lean artefacts. Then the render seed (derive:publish's writer records) and the FHIR IG ASTs side by side; the IG ASTs in their own lane, as the FHIR IG layer's `Process_IgAstCache`, whose \"valid for this commit?\" is the component's verify and whose AST refresh is its save. The Jekyll cache is last, because it caches the rendering of what the rest produce. ONLY WHAT THE TARGET NEEDS, ONLY WHAT IS STALE (owner, 2026-11-05: \"not all rendering/CI/merge processes need all caches. be optimal in what needs caching\" and \"... be optimal in which caches need to be updated to perform a specific render\"). A component runs only when the plan (`cache:plan`, the first gateway) marks it needed for this target; a component the target does not read is passed through untouched, neither restored nor refreshed. A needed component that is fresh is RESTORED, never rebuilt. A needed component that is stale, or whose staleness cannot be determined, is REFRESHED, incrementally where its node says so (the changed writers, the changed Lean modules over the restored .oleans, the IG AST delta, the moved layers), never wholesale when a delta is valid. A stale component no target here needs is left for the next target that needs it, or for main's run. The plan and what actually happened are both reported (`cached-step` phase `report`), and the daily report flags a component restored and never read. EACH COMPONENT, BOTH PHASES. Restore: look up the derived key, verify the entry by its trust class — (a) against a reference derived from THIS tree, so a bad entry is only a miss; (a′) a bundle's own manifest plus a source rule; (b) a committer's verdict, honoured then re-verified off the critical path; (c) main-only entries, by exact key — and report hit, warm or miss with why. Save: only after the consumer's work is green, only from main or into the run's own ref scope, never from `pull_request_target`. Each component is a `cache` node in the knowledge graph (key recipe, derived inputs, producer, consumers, trust class, location, budget), and the cache viewer compares its current key with the key today's pins imply, so staleness is computed, never claimed."
 msgstr ""
 
 #: sdlc/processes/cache.bpmn:77
@@ -174,9 +169,14 @@ msgstr ""
 msgid "The cache process: restore and save every cache a run can use"
 msgstr ""
 
+#: sdlc/processes/cache.bpmn:51
+#. Diagram element documentation
+msgid "the FHIR IG layer's `Process_IgAstCache`, whose site build and AST refresh sit under the publication manager: the component's verify is that process's \"valid for this commit?\", and its save is that process's refresh dispatch."
+msgstr ""
+
 #: sdlc/processes/cache.bpmn:113
 #. Diagram element documentation
-msgid "The render seed (writer records) and the IG ASTs need the layers and the compiled artefacts, and not each other. The IG ASTs run in their own lane: fhir-harness's process."
+msgid "The render seed (writer records) and the IG ASTs need the layers and the compiled artefacts, and not each other. The IG ASTs run in their own lane: the FHIR IG layer's process."
 msgstr ""
 
 #: sdlc/processes/cache.bpmn:32

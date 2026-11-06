@@ -90,8 +90,8 @@ One optional process for every cache in the harness: the owner's ruling of 2026-
 
 ### 8. FHIR IG ASTs: Process_IgAstCache (`Task_IgAst`)
 
-- Who: the `FHIR IG AST cache (fhir-harness)` lane (role `publication-manager`).
-- What: Component 4b, in its own lane: fhir-harness's IG AST cache, `Process_IgAstCache` (`fhir-harness/processes/content/ig-ast-cache.bpmn`), integrated, not replaced.
+- Who: the `FHIR IG AST cache (the FHIR IG layer)` lane (role `publication-manager`).
+- What: Component 4b, in its own lane: the FHIR IG layer's IG AST cache, `Process_IgAstCache` (declared by that layer), integrated, not replaced.
 - Record it: `workflow_complete` with `node: "Task_IgAst"`.
 - next: → `PG_Join_Render`
 
