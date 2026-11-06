@@ -18,6 +18,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `methodologies`, holding 
 | [`agentic-se-literature-synthesis.md`](agentic-se-literature-synthesis.md) | Agentic Software Engineering Literature Synthesis — Cross-Paper Synthesis and Bidirectional Adversarial Analysis |  |
 | [`consensus-grounded-subject-evaluation.md`](consensus-grounded-subject-evaluation.md) | Consensus-grounded subject evaluation: score against where experts agree, and read the panel |  |
 | [`correspondence-analysis.md`](correspondence-analysis.md) | Correspondence analysis: the SVD of the standardised residuals |  |
+| [`crdm.md`](crdm.md) | Collaborative Requirements Development Methodology (CRDM) |  |
 | [`dmn.md`](dmn.md) | DMN — the computable case |  |
 | [`hybrid-llm-deterministic.md`](hybrid-llm-deterministic.md) | Hybrid LLM/deterministic — generate the rule, then execute it |  |
 | [`json-ld-serialisation.md`](json-ld-serialisation.md) | JSON-LD 1.1 — how this graph is written down |  |
