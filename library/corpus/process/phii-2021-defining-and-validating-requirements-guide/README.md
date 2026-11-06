@@ -3,7 +3,7 @@
 
 ingested source material — attributed to its document, not folio content
 
-Held in the library [`cat-harness/library/`](../../README.md) as `phii-2021-defining-and-validating-requirements-guide`.
+Held in the library [`cat-harness/library/corpus/`](../../README.md) as `phii-2021-defining-and-validating-requirements-guide`.
 
 | | |
 |---|---|

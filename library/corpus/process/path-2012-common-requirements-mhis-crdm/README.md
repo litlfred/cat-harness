@@ -3,7 +3,7 @@
 
 ingested source material — attributed to its document, not folio content
 
-Held in the library [`cat-harness/library/`](../../README.md) as `path-2012-common-requirements-mhis-crdm`.
+Held in the library [`cat-harness/library/corpus/`](../../README.md) as `path-2012-common-requirements-mhis-crdm`.
 
 | | |
 |---|---|
