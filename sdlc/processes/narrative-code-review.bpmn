@@ -142,7 +142,7 @@ Three outcomes, each leaving a record: the prose holds (attested, with a reason)
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="Diagram_NarrativeCodeReview">
-    <bpmndi:BPMNPlane id="Plane_NarrativeCodeReview" bpmnElement="Collaboration_NarrativeCodeReview">
+    <bpmndi:BPMNPlane id="Plane_NarrativeCodeReview" bpmnElement="Collab_NarrativeCodeReview">
       <bpmndi:BPMNShape id="Shape_Participant_NarrativeCodeReview" bpmnElement="Participant_NarrativeCodeReview" isHorizontal="true">
         <dc:Bounds x="160" y="50" width="1220" height="410" />
       </bpmndi:BPMNShape>
