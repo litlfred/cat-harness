@@ -65,6 +65,11 @@
       "firstSeen": "2026-11-04",
       "retiredOn": null
     },
+    "kind/building-blocks": {
+      "prefLabel": "Building blocks",
+      "firstSeen": "2026-11-05",
+      "retiredOn": null
+    },
     "kind/business-processes": {
       "prefLabel": "Business processes",
       "firstSeen": "2026-11-04",
@@ -320,6 +325,11 @@
       "firstSeen": "2026-11-04",
       "retiredOn": null
     },
+    "kind/user-scenario": {
+      "prefLabel": "User scenarios",
+      "firstSeen": "2026-11-05",
+      "retiredOn": null
+    },
     "kind/validators": {
       "prefLabel": "Validators",
       "firstSeen": "2026-11-04",
@@ -348,6 +358,11 @@
     "kind/workflow-state": {
       "prefLabel": "Workflow state",
       "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "kind/workshop": {
+      "prefLabel": "Workshops",
+      "firstSeen": "2026-11-05",
       "retiredOn": null
     },
     "node-kind/basic-cdn-site": {

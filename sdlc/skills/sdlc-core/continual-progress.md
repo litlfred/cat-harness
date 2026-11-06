@@ -49,16 +49,18 @@ while you work.
 
 ### Bean edits are pushed to the state branch, not the PR
 
-Under the state branch architecture, work item edits (`beans/defs/*.md`, `beans/workflows/*.json`) do not belong in the
+Work item and workflow-instance edits (`beans/defs/*.md`, `beans/workflows/*.json`) do not belong in the
 PR's commit set. The code PR contains code, test, and documentation changes
 destined for `main`.
 
-Work-plan progress, work item claims, status updates, and notes are pushed directly
-to the branch store (`bun cat-harness-tools/scripts/branch-store.ts push --id beans` or
-`bun run cat state:push`).
+Work-plan progress, work item claims, status updates, and notes are written directly
+to the work-plan store through its configured Tool
+([`work-plan-store`](../../../work-plan/skills/work-plan/work-plan-store.md); on a git
+state branch, `bun run cat state:push` per
+[`work-plan-store-git-branch`](../../../work-plan/skills/work-plan/work-plan-store-git-branch.md)).
 
 The PR description references the work item via `Closes-bean: <id>` (or in the
-status checklist), but git commits on the PR branch must not bundle work item file
+status checklist), but commits on the PR branch must not bundle work item file
 edits. This avoids merge conflicts on work item files and prevents work-plan edits
 from triggering code CI workflows.
 

@@ -71,7 +71,7 @@ msgstr ""
 
 #: sdlc/processes/sme-test-data-review.bpmn:93
 #. Diagram label
-msgid "Judge domain correctness of worked case or indicator cohort"
+msgid "Judge whether the case or cohort is right"
 msgstr ""
 
 #: sdlc/processes/sme-test-data-review.bpmn:138
@@ -86,12 +86,12 @@ msgstr ""
 
 #: sdlc/processes/sme-test-data-review.bpmn:77
 #. Diagram label
-msgid "Prepare cohort: inputs, indicatorRef, expected & computed value"
+msgid "Prepare the cohort: inputs, expected and computed"
 msgstr ""
 
 #: sdlc/processes/sme-test-data-review.bpmn:67
 #. Diagram label
-msgid "Prepare worked case: input, decisionLogicRef and systemOutput"
+msgid "Prepare the worked case: input, logic, output"
 msgstr ""
 
 #: sdlc/processes/sme-test-data-review.bpmn:33

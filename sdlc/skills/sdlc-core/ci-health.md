@@ -284,8 +284,10 @@ history that the commit before it was clean.
 
 **The guard:** The post-merge regeneration pipeline
 (`.github/workflows/post-merge-regen.yml`, `scripts/post-merge-regen.ts`) audits
-derived artefacts after merges to `main` and opens a reviewable repair PR if
-stale. When inspecting CI health on `main`, do not treat an accidental green as
+derived artefacts when dispatched on `main` and warns when they are stale;
+dispatched for a PR, it commits the regeneration to that PR's branch, and the
+release build regenerates into what it publishes (`merge-queue.md`
+§"Where derived artefacts are regenerated"). When inspecting CI health on `main`, do not treat an accidental green as
 evidence of health: verify that post-merge checks run and derive their state
 consistently. Full details in [`merge-queue.md`](merge-queue.md) §"The accidental-repair pattern".
 

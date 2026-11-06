@@ -80,99 +80,99 @@ msgstr "3. Trouvez la bonne compétence — n'improvisez pas"
 
 #: agent-onboarding.md:89
 msgid "Where"
-msgstr ""
+msgstr "Où"
 
 #: agent-onboarding.md:89
 msgid "What it gives you"
-msgstr ""
+msgstr "Ce que ça vous donne"
 
 #: agent-onboarding.md:91
 msgid "generated input/output contract per skill"
-msgstr ""
+msgstr "contrat d'entrée/sortie généré par compétence"
 
 #: agent-onboarding.md:92
 msgid "generated full instruction bodies"
-msgstr ""
+msgstr "corps d'instructions complets générés"
 
 #: agent-onboarding.md:93
 msgid "how skills, roles, and capabilities compose"
-msgstr ""
+msgstr "comment les compétences, rôles et capacités se composent"
 
 #: agent-onboarding.md:99
 msgid "4. The content object model, briefly"
-msgstr ""
+msgstr "4. Le modèle d'objets de contenu, en bref"
 
 #: agent-onboarding.md:101
 msgid "A content block is a triple sharing a root name:"
-msgstr ""
+msgstr "Un bloc de contenu est un triple partageant un nom racine :"
 
 #: agent-onboarding.md:113
 msgid "5. Two dependency relations — do not conflate them"
-msgstr ""
+msgstr "5. Deux relations de dépendance — ne les confondez pas"
 
 #: agent-onboarding.md:137
 msgid "6. Track work in beans, not in your head"
-msgstr ""
+msgstr "6. Suivez le travail dans beans, pas dans votre tête"
 
 #: agent-onboarding.md:157
 msgid "7. QA sidecars and axes"
-msgstr ""
+msgstr "7. Fichiers QA et axes"
 
 #: agent-onboarding.md:177
 msgid "Folio-optional axes. An axis encoding one folio's subject matter is registered only when the folio opts in:"
-msgstr ""
+msgstr "Axes optionnels du folio. Un axe encodant le sujet d'un folio n'est enregistré que lorsque le folio choisit de l'activer :"
 
 #: agent-onboarding.md:189
 msgid "8. Shipping work"
-msgstr ""
+msgstr "8. Livrer le travail"
 
 #: agent-onboarding.md:195
 msgid "Runs the generic recipe plus content-type-specific gates (paper → content_validate / qa_sweep / proof_status / latex_preflight / lean_build), then pushes. It does not merge."
-msgstr ""
+msgstr "Exécute la recette générique ainsi que les portes de contrôle propres au type de contenu (document → content_validate / qa_sweep / proof_status / latex_preflight / lean_build), puis pousse les modifications. Cela ne fusionne pas."
 
 #: agent-onboarding.md:201
 msgid "9. Where to look things up"
-msgstr ""
+msgstr "9. Où chercher les informations"
 
 #: agent-onboarding.md:203
 msgid "Question"
-msgstr ""
+msgstr "Question"
 
 #: agent-onboarding.md:203
 msgid "Answer"
-msgstr ""
+msgstr "Réponse"
 
 #: agent-onboarding.md:205
 msgid "Project commands, conventions"
-msgstr ""
+msgstr "Commandes du projet, conventions"
 
 #: agent-onboarding.md:206
 msgid "What a skill does"
-msgstr ""
+msgstr "Ce que fait une compétence"
 
 #: agent-onboarding.md:207
 msgid "A skill's typed contract"
-msgstr ""
+msgstr "Le contrat typé d'une compétence"
 
 #: agent-onboarding.md:208
 msgid "What a QA criterion means"
-msgstr ""
+msgstr "Ce que signifie un critère QA"
 
 #: agent-onboarding.md:209
 msgid "The block schema"
-msgstr ""
+msgstr "Le schéma des blocs"
 
 #: agent-onboarding.md:210
 msgid "The QA sidecar schema"
-msgstr ""
+msgstr "Le schéma du fichier QA"
 
 #: agent-onboarding.md:211
 msgid "What this environment can do"
-msgstr ""
+msgstr "Ce que cet environnement peut faire"
 
 #: agent-onboarding.md:214
 msgid "10. Habits that keep you out of trouble"
-msgstr ""
+msgstr "10. Habitudes pour éviter les ennuis"
 
 #~ msgid "is editorial. \"What must a reader have read to follow"
 #~ msgstr ""

@@ -19,7 +19,8 @@
     "symbiotic-interaction",
     "untrusted-input",
     "unverified-constraints",
-    "where-does-this-go"
+    "where-does-this-go",
+    "work-context"
   ],
   "docker": {
     "baseImage": "ubuntu:24.04",
