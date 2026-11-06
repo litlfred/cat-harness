@@ -77,7 +77,7 @@ Keep a materialized copy of remote content current: what changed upstream, what 
   - «the remote wins» → `Task_Apply` (Re-materialize and record new fixity)
   - «the local edit wins» → `Task_KeepLocal` (Keep the edit, re-pin)
   - «neither whole — reconcile» → `Task_Reconcile` (Reconcile the two by hand)
-  - «not decidable today» → `Task_RecordConflict` (Record the conflict, decide nothing, and do NOT re-pin)
+  - «not decidable today» → `Task_RecordConflict` (Record the conflict: no decision, no re-pin)
 
 ### 6. Keep the edit, re-pin (`Task_KeepLocal`)
 
@@ -95,7 +95,7 @@ Keep a materialized copy of remote content current: what changed upstream, what 
 - Record it: `workflow_complete` with `node: "Task_Reconcile"`.
 - next: → `Task_Apply` (Re-materialize and record new fixity)
 
-### 8. Record the conflict, decide nothing, and do NOT re-pin (`Task_RecordConflict`)
+### 8. Record the conflict: no decision, no re-pin (`Task_RecordConflict`)
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.

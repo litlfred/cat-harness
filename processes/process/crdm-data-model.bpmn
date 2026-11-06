@@ -168,11 +168,11 @@
         <di:waypoint x="1170" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_DataModel_6" bpmnElement="SF_Process_CRDM_DataModel_6">
-        <di:waypoint x="1195" y="360" />
+                <di:waypoint x="1195" y="360" />
         <di:waypoint x="1195" y="610" />
         <di:waypoint x="420" y="610" />
-        <di:waypoint x="420" y="375" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1199" y="476.5" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="420" y="395" />
+      <bpmndi:BPMNLabel><dc:Bounds x="1199" y="476.5" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_DataModel_7" bpmnElement="SF_Process_CRDM_DataModel_7">
         <di:waypoint x="1220" y="335" />

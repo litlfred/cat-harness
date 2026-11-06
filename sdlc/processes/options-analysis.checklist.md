@@ -53,9 +53,9 @@ A decision reached by a NAMED methodology, with its rejected options recorded.
 - Skill: `methodology-adoption`.
 - What: Follow the selected methodology as written — adopted whole, not blended with another.
 - Record it: `workflow_complete` with `node: "A_Apply"`.
-- next: → `A_Record` (Record the recommendation AND the rejected options)
+- next: → `A_Record` (Record the chosen option AND the rejected ones)
 
-### 5. Record the recommendation AND the rejected options (`A_Record`)
+### 5. Record the chosen option AND the rejected ones (`A_Record`)
 
 - Who: the `Business analyst` lane (role `business-analyst`).
 - Skill: `decision-audit`.

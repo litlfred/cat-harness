@@ -415,11 +415,11 @@ The light sibling of kg-separation, which splits a graph into a content and a to
         <di:waypoint x="1888" y="330" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F11" bpmnElement="F11">
-        <di:waypoint x="1913" y="355" />
-        <di:waypoint x="1913" y="410" />
-        <di:waypoint x="1438" y="410" />
+        <di:waypoint x="1905" y="355" />
+        <di:waypoint x="1905" y="412" />
+        <di:waypoint x="1438" y="412" />
         <di:waypoint x="1438" y="200" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1917" y="359" width="90" height="35" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="1680" y="384" width="160" height="20" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F12" bpmnElement="F12">
         <di:waypoint x="1938" y="330"/>
@@ -427,8 +427,8 @@ The light sibling of kg-separation, which splits a graph into a content and a to
         <bpmndi:BPMNLabel><dc:Bounds x="1936.5" y="296.5" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F13" bpmnElement="F13">
-        <di:waypoint x="1913" y="305" />
-        <di:waypoint x="1913" y="510" />
+        <di:waypoint x="1925" y="355" />
+        <di:waypoint x="1925" y="510" />
         <di:waypoint x="1988" y="510" />
         <bpmndi:BPMNLabel><dc:Bounds x="1917" y="398.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
@@ -454,8 +454,8 @@ The light sibling of kg-separation, which splits a graph into a content and a to
         <di:waypoint x="2828" y="330" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F18" bpmnElement="F18">
-        <di:waypoint x="2853" y="305" />
-        <di:waypoint x="2853" y="550" />
+        <di:waypoint x="2853" y="355" />
+        <di:waypoint x="2853" y="470" />
         <bpmndi:BPMNLabel><dc:Bounds x="2759" y="418.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F19" bpmnElement="F19">
@@ -478,8 +478,8 @@ The light sibling of kg-separation, which splits a graph into a content and a to
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F22" bpmnElement="F22">
         <di:waypoint x="3178" y="510" />
-        <di:waypoint x="3323" y="510" />
-        <di:waypoint x="3323" y="120" />
+        <di:waypoint x="3305" y="510" />
+        <di:waypoint x="3305" y="200" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F23" bpmnElement="F23">
         <di:waypoint x="3398" y="160" />
@@ -489,8 +489,8 @@ The light sibling of kg-separation, which splits a graph into a content and a to
       <bpmndi:BPMNEdge id="Edge_F24" bpmnElement="F24">
         <di:waypoint x="3673" y="355" />
         <di:waypoint x="3673" y="400" />
-        <di:waypoint x="3323" y="400" />
-        <di:waypoint x="3323" y="200" />
+        <di:waypoint x="3340" y="400" />
+        <di:waypoint x="3340" y="200" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F25" bpmnElement="F25">
         <di:waypoint x="3598" y="330" />
