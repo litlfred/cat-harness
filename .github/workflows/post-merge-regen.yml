@@ -1,48 +1,55 @@
-# Post-merge regeneration CHECK — bean `folio-assistant-ey1c`. Verify and warn
-# only (owner, 2026-11-06, options "1 3").
+# Derived-artefact regeneration, BY HAND — bean `folio-assistant-ey1c`.
 #
-# ## The failure this exists for
+# Owner, 2026-11-06: options "1 3", then "full runs only on manual trigger OR
+# release build". A run composes and regenerates the whole folio-assistant
+# index, 50-80 minutes of runner time, so nothing here starts one on a
+# pull_request, push or schedule event. The only automatic full regen is the
+# release build's (`release-npm.yml`, which regenerates into the package it
+# publishes and fails rather than publish stale output).
 #
-# After a PR merges into `main`, a merge that changes an enumerated or counted
-# directory can leave `main` stale on a derived artefact (e.g.
-# `readme:subgraphs:check` step 65 counting files in `uploads/`).
+# Dispatch it (Actions -> this workflow -> Run workflow, or
+# `gh workflow run post-merge-regen.yml -f pr=<number or branch>`):
 #
-# ## Where the regen happens now
+#   - with `pr` set: regenerate THAT PR at its head and, when a tracked file
+#     changed, commit ONE "chore(derived): regenerate derived artefacts for
+#     <sha>" to the PR's own branch. Only for a PR whose branch is in this
+#     repository; a fork's PR is failed with the command to run. A head that
+#     is itself a regen commit and still regenerates fails (no fixpoint).
+#     With the `REGEN_PUSH_TOKEN` secret (a token with contents: write here)
+#     the push starts the PR's checks; without it the push uses GITHUB_TOKEN,
+#     which starts none, and the run comments on the PR and fails saying so.
+#     The PR's checks then judge the commit, so the regen reaches main through
+#     the normal, tested merge.
+#   - with `pr` empty, on main: verify and WARN. Regenerate in the runner, say
+#     what was stale (a warning and the step summary), and commit, push or
+#     open NOTHING.
 #
-# 1. In each PR: `harness-pr-checks.yml`'s `regen` job commits the regen to the
-#    PR's own branch, so it reaches main through the normal, tested merge.
-# 2. At release: `release-npm.yml` regenerates into the package it publishes,
-#    and fails rather than publish stale output.
-# 3. Here, after a merge: regenerate in the runner, say what was stale (a
-#    warning and the step summary), and commit, push or open NOTHING. The
-#    `automation/post-merge-regen-*` repair branches and PRs are gone: they
-#    piled up with no CI once Actions could no longer open PRs here.
+# The `automation/post-merge-regen-*` repair branches and PRs are gone: they
+# piled up with no CI once Actions could no longer open PRs here. The hourly
+# tick that dispatched a regen whenever main moved is gone with them (it was a
+# full run started automatically).
 #
 # Honest reporting stays: a check with no writer, or whose writer fails, is a
 # red run (exit 1), never claimed as current.
-
+#
 # Since the split (bean 70lx) `post-merge:regen` is a cat-harness-tools script
 # that runs in the composed folio-assistant index, not in this repository on
-# its own: here, `bun run cat` found /usr/bin/cat and every run failed. The
-# job is the harness's reusable `layer-post-merge-regen.yml`, which composes
-# the index with this commit in place and regenerates (owner, 2026-10-15: "a"),
-# here in its `verify` mode.
+# its own. The job is the harness's reusable `layer-post-merge-regen.yml`,
+# which composes the index with the commit in place and regenerates (owner,
+# 2026-10-15: "a"). Branch and staging previews never call it (owner,
+# 2026-11-06: "preview builds not required regen").
 
-name: Post-merge regen check and repair
+name: Regen derived artefacts (manual)
 
-# AT MOST HOURLY (owner, 2026-11-01, card Q-PIPE-1 A; folio-assistant#2899).
-# Every push to main used to start a ~38-minute regen: 31 in one day, back to
-# back, each holding one of the account's 40 shared runner slots. Now an hourly
-# `tick` asks whether main moved since the last regen and, only then,
-# dispatches this workflow on main; the dispatched run is the check. Dispatch
-# by hand to check now.
 on:
-  schedule:
-    - cron: '43 * * * *'
   workflow_dispatch:
     inputs:
+      pr:
+        description: "The PR to regenerate and commit to (its number or head branch). Empty: verify main and warn."
+        type: string
+        default: ""
       dry_run:
-        description: "Dry run (audit only, run no writer)"
+        description: "Dry run (audit only, run no writer, commit nothing)"
         type: boolean
         default: false
 
@@ -50,37 +57,24 @@ permissions:
   contents: read
 
 jobs:
-  # A dispatch with GITHUB_TOKEN does start a run (workflow_dispatch is the
-  # exception to "events from GITHUB_TOKEN start nothing").
-  tick:
-    name: Has main moved since the last regen?
-    if: ${{ github.event_name == 'schedule' }}
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    permissions:
-      actions: write
-      contents: read
-    steps:
-      - env:
-          GH_TOKEN: ${{ github.token }}
-          REPO: ${{ github.repository }}
-        run: |
-          main=$(gh api "repos/$REPO/commits/main" --jq .sha)
-          # The newest dispatched regen that was not cancelled, running or done.
-          last=$(gh api "repos/$REPO/actions/workflows/post-merge-regen.yml/runs?event=workflow_dispatch&branch=main&per_page=20" \
-            --jq '[.workflow_runs[] | select(.conclusion != "cancelled")][0].head_sha // ""')
-          if [ "$main" = "$last" ]; then
-            echo "main ${main:0:7} already has a regen run: nothing to do."
-            exit 0
-          fi
-          echo "main moved (${last:0:7} -> ${main:0:7}): dispatching a regen."
-          gh workflow run post-merge-regen.yml --repo "$REPO" --ref main
-
-  regen:
-    if: ${{ github.event_name == 'workflow_dispatch' }}
+  verify:
+    if: ${{ inputs.pr == '' }}
     permissions:
       contents: read
     uses: litlfred/cat-harness-tools/.github/workflows/layer-post-merge-regen.yml@main
     with:
       mode: verify
       dry-run: ${{ inputs.dry_run == true }}
+
+  regen-pr:
+    if: ${{ inputs.pr != '' }}
+    permissions:
+      contents: write
+      pull-requests: write
+    uses: litlfred/cat-harness-tools/.github/workflows/layer-post-merge-regen.yml@main
+    with:
+      mode: pr
+      pr: ${{ inputs.pr }}
+      dry-run: ${{ inputs.dry_run == true }}
+    secrets:
+      regen-push-token: ${{ secrets.REGEN_PUSH_TOKEN }}

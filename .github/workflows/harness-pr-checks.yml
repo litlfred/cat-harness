@@ -25,26 +25,6 @@ jobs:
       # gates are about 6 minutes of work in all, while each extra job waited
       # about 18 minutes for a runner (measured 2026-11-01).
       gate-shards: 1
-  # Each PR regenerates its own derived files before it merges (owner,
-  # 2026-11-06, option 1): the regen writers run at the PR's head and, when a
-  # tracked file changed, ONE `chore(derived)` commit goes to the PR's own
-  # branch (from a fork: none, and this fails with the command to run). The
-  # PR's checks then judge that commit, so the regen reaches main through the
-  # normal, tested merge. A ready PR only: it regenerates the composed index,
-  # about an hour of runner time. `REGEN_PUSH_TOKEN` (a token with contents:
-  # write here) lets the commit's push start the checks; without it the push
-  # uses GITHUB_TOKEN, which starts none, and this job fails saying so. See
-  # https://github.com/litlfred/cat-harness-tools/blob/main/.github/workflows/layer-post-merge-regen.yml
-  regen:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.draft == false }}
-    permissions:
-      contents: write
-      pull-requests: write
-    uses: litlfred/cat-harness-tools/.github/workflows/layer-post-merge-regen.yml@main
-    with:
-      mode: pr
-    secrets:
-      regen-push-token: ${{ secrets.REGEN_PUSH_TOKEN }}
   # Post-merge QA of main (owner, 2026-10-30, "Both"): the push run above
   # judged main's whole gate set; this keeps one `main-red` issue open while
   # main is red and closes it when main is green. See

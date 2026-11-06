@@ -172,6 +172,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-54"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-55"
         }
       ]
     },
@@ -834,6 +837,19 @@
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Where derived artefacts are regenerated",
       "prov:value": "Owner, 2026-11-06: \"preview builds not required regen\".",
+      "cat-harness:refs": [
+        "2026-11-06"
+      ],
+      "dcterms:date": [
+        "2026-11-06"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/merge-queue.md#provenance-55",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Where derived artefacts are regenerated",
+      "prov:value": "Owner, 2026-11-06: \"full runs only on manual trigger OR release build\". The PR regen became a dispatch naming the PR, and the hourly post-merge tick was removed.",
       "cat-harness:refs": [
         "2026-11-06"
       ],
