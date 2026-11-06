@@ -204,4 +204,5 @@ node_modules/
 /docs/_includes/generated/provenance/
 /docs/assets/slices/
 /docs/assets/img/workflows/
+/schemas/kinds/
 # END built at publish

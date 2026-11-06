@@ -144,7 +144,7 @@ Following [`skills/process/process-core/methodology-adoption.md`](../skills/proc
 
 To fulfil Criterion 3 of work item `folio-assistant-qh1s` (*"a filing PROCESS proposed as BPMN, to be put to the owner before it is built"*), the executable BPMN diagram [`sdlc/processes/requirements-filing.bpmn`](../sdlc/processes/requirements-filing.bpmn) (`Process_RequirementsFiling`) models the end-to-end process for filing, organising,superseding, or retiring a requirement in `docs/requirements/`.
 
-![Requirements filing workflow](../docs/assets/img/workflows/requirements-filing.svg)
+![Requirements filing workflow](https://litlfred.github.io/folio-assistant/assets/img/workflows/requirements-filing.svg)
 
 ### 3.1 Where `Process_RequirementsFiling` sits in the lifecycle
 

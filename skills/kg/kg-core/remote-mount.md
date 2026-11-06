@@ -317,6 +317,53 @@ old layer. `--seed` refuses while a mount it moves has such edits, and
 `mount:check` reports an instance entry behind its pin as `missing`. After the re-pin, check that
 the moved instance's `sha` in `index.lock.json` is the new pin.
 
+**The committer re-pins, locally, and CI only verifies.** The person or agent
+who moves a pin does the whole re-pin in their own checkout: `--seed`, a
+fresh `mount:remote`, the regenerated agent surface (`skill:commands`,
+`agent-memory`, `index:render`), and the local checks. That same
+`mount:remote` then publishes the new lock's **layers cache ref** (below)
+alongside the branch, with whatever credential pushes the branch.
+`bun run cat layers:publish` retries it, and `--no-layers-publish` skips it.
+
+CI never builds the ref when it exists: it fetches it and verifies it against
+the lock. Two writers are only fallbacks:
+
+- the re-pin train, for layers nobody re-pinned;
+- main's post-merge workflow, which rebuilds the ref for every push that
+  changes `index.lock.json`.
+
+### The layers cache: one fetch, every byte still verified
+
+Replaying a lock fetches each pinned instance from its own repository. The
+**layers cache** is one git commit in the INDEX repository whose tree is the
+composed overlay a replay lays down: each locked directory at its mount path,
+each declaration and asset, and nothing an install, a state mount or a
+publish build wrote.
+
+- **Ref:** `refs/cat/layers/<key>`, where the key is the sha256 of the lock's
+  `instances`. `refs/cat/layers/main` moves with main's lock.
+- **Reader:** `mount:lock`, and through it `.github/mount-from-lock.sh`, the
+  session-start hook and every CI job, first tries ONE shallow fetch of the
+  key's ref, then of `main`. A layer whose copy verifies is laid down from
+  it. A layer that does not verify, or a ref that is missing, is fetched from
+  its own repository as before. `--no-layers-cache` (or `CAT_LAYERS_CACHE=0`)
+  skips it, and `CAT_LAYERS_URL` points it at another remote.
+- **Writer:** the committer, through `mount:remote` or `layers:publish`.
+  It refuses unless every mount reads `current`, then pushes the overlay.
+  `--main` also moves `main`. `--prune <n>` keeps the newest n lock refs,
+  `main`, and each `--keep <key>`, for example the lock of every open PR.
+
+**The lock stays the sole authority.** The cache is untrusted. Every byte
+taken from it is checked against the lock: the declaration's and each
+asset's sha256, and each directory's `treeDigest`. These are the same checks
+a fetched byte passes. So a stale `main` still serves every layer that did
+not move, and a tampered ref costs time, never correctness. Trust is
+unchanged: consent was checked when the lock was written, and the cache
+cannot add an instance the lock does not name.
+
+A replay that fails is reported loudly, not swallowed: a stale mount makes
+local checks pass falsely.
+
 ## A changed lock re-renders the agent surface
 
 **A mount is not done when the bytes are on disk.** A newly pinned layer can

@@ -377,6 +377,31 @@ beans list --tag process:<bpmn:process id>                    # every plan that 
 The work-plan page marks each plan in its tree with its process, its proposal
 and how many instances are running under it.
 
+### Approving a proposal seeds its plan
+
+When the owner approves a proposal (owner, 2026-11-05, card **"Proposal seeds
+plan"**), one command writes both ends, so neither is kept by hand:
+
+```sh
+bun run cat proposal:approve <path/to/proposal.md> --process <bpmn:process id> [--process …] \
+    [--plan <epic or milestone id>] [--parent <goal id>] [--dry-run]
+```
+
+- **With no `--plan`** it creates an epic titled as the proposal. **With
+  `--plan`** it tags that epic or milestone instead; a feature or a story is
+  refused.
+- The plan gets the `process:` and `proposal:` tags. The proposal's front
+  matter gets `status: approved`, `approvedOn: <date>` and `plan: <id>`.
+- At least one `--process` is required, unless `--plan` already names one: a
+  plan is defined by what it runs.
+- **Approve only on the owner's word.** The command records an approval; it
+  does not decide one. Run it with `--dry-run` first and show the owner what
+  it will write.
+- `bun run cat proposal:approve --check <proposals dir>` checks the two ends
+  against each other and reports rather than fails: an approved proposal with
+  no plan, a plan id that is no work item, a plan that names no process, or a
+  plan whose `proposal:` tag names another file.
+
 ---
 
 ## After you create — parent it, and re-run the guard before you push
