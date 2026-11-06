@@ -285,6 +285,20 @@ So, when you seed a helper session:
 4. **Give the helper a lane it can finish without the owner**: a work item store or a
    set of repositories, the lanes of its siblings, and the report-back channel
    (`send_message` to the coordinator).
+5. **Carry the [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)
+   rule in every seed prompt and subagent brief, and require the helper to pass
+   it on.** A helper that asks the owner directly must present every question
+   twice in order — first the full question in chat (context, what differs,
+   every identifier expanded, ≤ 4 numbered or lettered options with pros/cons/downstream/reversibility,
+   recommended option first and marked `(Recommended)`, and stated default on
+   silence), then the tappable card (`AskUserQuestion`, `request_decision`,
+   `ask_question`, or `post_widget`) with the same option labels — never in
+   prose alone and never asking the owner to type. A subagent or a sibling
+   running beside a live discussion returns any owner question to the
+   coordinator in the
+   [`hand-back-to-discussion`](../../../skills/conduct/conduct-core/hand-back-to-discussion.md)
+   schema format. See [`opening-brief`](opening-brief.md) §"Briefing a sibling
+   or a subagent — pass `interaction-modality` on (STRICT)".
 
 ### Eleven sessions is the normal case, not the exception
 

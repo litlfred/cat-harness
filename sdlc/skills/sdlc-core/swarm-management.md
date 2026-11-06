@@ -105,7 +105,18 @@ One unit, one sub-bean, with:
 - a **disjoint input slice** stated explicitly — which files, which blocks;
 - a **separate output** — its own file, its own findings list, its own branch
   if it writes;
-- the **parent work item** recorded, so the work rolls up.
+- the **parent work item** recorded, so the work rolls up;
+- the **[`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)
+  contract** included in every worker's brief (and passed on to any subagent a
+  worker spawns): a worker with a direct chat surface presents the full question
+  in chat first (≤ 4 options, recommended option first and marked
+  `(Recommended)`, stated default on silence) followed immediately by the
+  tappable card (`AskUserQuestion`, `request_decision`, `ask_question`, or
+  `post_widget`), never asking the owner in prose alone and never asking the
+  owner to type; a background worker or a sibling beside a live discussion
+  returns any owner question to the coordinator in the
+  [`hand-back-to-discussion`](../../../skills/conduct/conduct-core/hand-back-to-discussion.md)
+  schema format.
 
 This is what `bean-blocking.md` means by preferring sub-beans: the same
 decomposition that avoids a spurious block is the one a swarm needs.
