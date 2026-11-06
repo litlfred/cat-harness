@@ -51,9 +51,9 @@ sign-off gates.
 
 | Ingested source | What it establishes | Library entry |
 |---|---|---|
-| **PHII (2021/2023)**, *Collaborative Requirements Development Methodology (CRDM): A Collaborative Approach to Public Health Systems* (`https://phii.org/crdm/`, 10 pp.) | The three concentration areas (Business Process Analysis, Business Process Redesign, Requirements Definition), the Business Process Matrix, and swimlane Task Flow Diagrams | [`library/phii-2023-crdm`](../library/process/phii-2023-crdm/README.md) |
-| **PHII (2016/2021)**, *5. Analyzing Technical Options: Defining and Validating System Requirements Guide* (`EHR Toolkit`, 6 pp.) | Functional vs. non-functional requirement grammar (*"The system must or should…"*), the three-level priority scale (**High / Medium / Low** = **Must-have / Should-have / Nice-to-have**), nine requirement quality criteria, and three validation techniques (*Desk checking*, *Walkthrough*, *Peer review*) | [`library/phii-2021-defining-and-validating-requirements-guide`](../library/process/phii-2021-defining-and-validating-requirements-guide/README.md) |
-| **PATH & PHII (2012)**, *Common Requirements for Maternal Health Information Systems: Produced with the Collaborative Requirements Development Methodology* (36 pp.) | Domain-scale application of CRDM: a four-column Process Framework (Table 1), swimlane Task Flow Diagrams across facility and community pools with numbered activity narratives (Appendix 1), Activity-Linked Functional User Requirements (Appendix 2), and General System Requirements (Appendix 3) | [`library/path-2012-common-requirements-mhis-crdm`](../library/process/path-2012-common-requirements-mhis-crdm/README.md) |
+| **PHII (2021/2023)**, *Collaborative Requirements Development Methodology (CRDM): A Collaborative Approach to Public Health Systems* (`https://phii.org/crdm/`, 10 pp.) | The three concentration areas (Business Process Analysis, Business Process Redesign, Requirements Definition), the Business Process Matrix, and swimlane Task Flow Diagrams | [`library/phii-2023-crdm`](../library/corpus/process/phii-2023-crdm/README.md) |
+| **PHII (2016/2021)**, *5. Analyzing Technical Options: Defining and Validating System Requirements Guide* (`EHR Toolkit`, 6 pp.) | Functional vs. non-functional requirement grammar (*"The system must or should…"*), the three-level priority scale (**High / Medium / Low** = **Must-have / Should-have / Nice-to-have**), nine requirement quality criteria, and three validation techniques (*Desk checking*, *Walkthrough*, *Peer review*) | [`library/phii-2021-defining-and-validating-requirements-guide`](../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/README.md) |
+| **PATH & PHII (2012)**, *Common Requirements for Maternal Health Information Systems: Produced with the Collaborative Requirements Development Methodology* (36 pp.) | Domain-scale application of CRDM: a four-column Process Framework (Table 1), swimlane Task Flow Diagrams across facility and community pools with numbered activity narratives (Appendix 1), Activity-Linked Functional User Requirements (Appendix 2), and General System Requirements (Appendix 3) | [`library/path-2012-common-requirements-mhis-crdm`](../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md) |
 | **IETF BCP 14 — RFC 2119 & RFC 8174** (Bradner 1997; Leiba 2017) | Normative conformance keywords (`MUST` / `SHALL`, `MUST NOT` / `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `MAY`) in uppercase | [`library/rfc2119-key-words-requirement-levels`](../library/content/rfc2119-key-words-requirement-levels/README.md), [`library/rfc8174-uppercase-vs-lowercase-2119-key-words`](../library/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md) |
 
 ---
@@ -64,48 +64,48 @@ PHII developed CRDM as a process-centric methodology grounded in business
 process management that brings multi-disciplinary subject matter experts (SMEs)
 together to document how work is performed, redesign how it should be
 performed, and derive what an information system must do to support that work
-([`phii-2023-crdm`, pp. 1–3](../library/process/phii-2023-crdm/sections/page-001.md);
-[`path-2012-common-requirements-mhis-crdm`, pp. 4–7](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-007-collaborative-requirements-development-methodolo.md)).
+([`phii-2023-crdm`, pp. 1–3](../library/corpus/process/phii-2023-crdm/sections/page-001.md);
+[`path-2012-common-requirements-mhis-crdm`, pp. 4–7](../library/corpus/process/path-2012-common-requirements-mhis-crdm/sections/sec-007-collaborative-requirements-development-methodolo.md)).
 
 ### 1.1 The three concentration areas
 
 PHII organises CRDM around three sequential concentration areas
-([`phii-2023-crdm`, pp. 2–9](../library/process/phii-2023-crdm/sections/page-002.md)):
+([`phii-2023-crdm`, pp. 2–9](../library/corpus/process/phii-2023-crdm/sections/page-002.md)):
 
 | Concentration area | Guiding prompt | Core artefacts | What happens |
 |---|---|---|---|
-| **1. Business Process Analysis (BPA)** | **Think:** *How do we do our work now?* | **Business Process Matrix** (process goal, inputs, activities, outputs, actors/roles, business rules, issues/opportunities) and **Task Flow Diagrams** (swimlane diagrams showing the sequence of tasks across pools and actors) | SMEs map current-state operations end to end, making implicit workflows, hand-offs, and decision points explicit ([`phii-2023-crdm`, pp. 3–6](../library/process/phii-2023-crdm/sections/page-003.md)). |
-| **2. Business Process Redesign (BPR)** | **Rethink:** *How should we do our work?* | Redesigned **Business Process Matrix** and updated **Task Flow Diagrams** | Before automating anything, participants examine the current-state model to eliminate bottlenecks, redundancies, policy barriers, and information gaps ([`phii-2023-crdm`, pp. 7–8](../library/process/phii-2023-crdm/sections/page-007.md)). |
-| **3. Requirements Definition** | **Describe:** *How can an information system support our work?* | **Functional User Requirements** (anchored to numbered task-flow activities) and **Non-Functional / General System Requirements** | Every activity in the redesigned task flow is examined to state the information system capabilities needed to support it, followed by structured SME validation ([`phii-2023-crdm`, pp. 8–9](../library/process/phii-2023-crdm/sections/page-008.md); [`phii-2021-defining-and-validating-requirements-guide`, pp. 1–5](../library/process/phii-2021-defining-and-validating-requirements-guide/sections/page-001.md)). |
+| **1. Business Process Analysis (BPA)** | **Think:** *How do we do our work now?* | **Business Process Matrix** (process goal, inputs, activities, outputs, actors/roles, business rules, issues/opportunities) and **Task Flow Diagrams** (swimlane diagrams showing the sequence of tasks across pools and actors) | SMEs map current-state operations end to end, making implicit workflows, hand-offs, and decision points explicit ([`phii-2023-crdm`, pp. 3–6](../library/corpus/process/phii-2023-crdm/sections/page-003.md)). |
+| **2. Business Process Redesign (BPR)** | **Rethink:** *How should we do our work?* | Redesigned **Business Process Matrix** and updated **Task Flow Diagrams** | Before automating anything, participants examine the current-state model to eliminate bottlenecks, redundancies, policy barriers, and information gaps ([`phii-2023-crdm`, pp. 7–8](../library/corpus/process/phii-2023-crdm/sections/page-007.md)). |
+| **3. Requirements Definition** | **Describe:** *How can an information system support our work?* | **Functional User Requirements** (anchored to numbered task-flow activities) and **Non-Functional / General System Requirements** | Every activity in the redesigned task flow is examined to state the information system capabilities needed to support it, followed by structured SME validation ([`phii-2023-crdm`, pp. 8–9](../library/corpus/process/phii-2023-crdm/sections/page-008.md); [`phii-2021-defining-and-validating-requirements-guide`, pp. 1–5](../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/sections/page-001.md)). |
 
 ### 1.2 PATH (2012): domain-scale health information system artefacts
 
 PATH & PHII (2012) demonstrate how CRDM scales across a clinical and public
-health domain ([`path-2012-common-requirements-mhis-crdm`](../library/process/path-2012-common-requirements-mhis-crdm/README.md)):
+health domain ([`path-2012-common-requirements-mhis-crdm`](../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md)):
 
 1. **Process Framework (Table 1, PDF p. 8):** Inventories all domain business
    processes across functional columns (*Patient Administration*, *Patient
    Care*, *Patient Fees and Accounting*, *Planning, Management & Surveillance*)
    and selects priority processes for deep modeling
-   ([`sec-009-outputs-of-the-crdm-process.md`](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-009-outputs-of-the-crdm-process.md)).
+   ([`sec-009-outputs-of-the-crdm-process.md`](../library/corpus/process/path-2012-common-requirements-mhis-crdm/sections/sec-009-outputs-of-the-crdm-process.md)).
 2. **Task Flow Diagrams with Activity Narratives (Appendix 1, PDF pp. 11–20):**
    Draws each priority process using a ten-element notation (*Pools*, *Swim
    Lanes*, *Start Event*, *End Event*, *Sequence Flow*, *Activity*,
    *Subprocess*, *Decision*, *Multi-Page Connector*, *Annotation*) paired with
    numbered activity details and narratives
-   ([`sec-013-appendix-1-business-process-flows.md`](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-013-appendix-1-business-process-flows.md)).
+   ([`sec-013-appendix-1-business-process-flows.md`](../library/corpus/process/path-2012-common-requirements-mhis-crdm/sections/sec-013-appendix-1-business-process-flows.md)).
 3. **Activity-Linked Functional User Requirements vs. General System Requirements
    (Appendices 2–3, PDF pp. 21–36):** Groups functional requirements by process
    and numbered activity ID, and separates cross-cutting system requirements
    (security, audit logging, reporting, interoperability, offline operation)
    into a dedicated general system requirements catalogue
-   ([`sec-014-appendix-2-requirements.md`](../library/process/path-2012-common-requirements-mhis-crdm/sections/sec-014-appendix-2-requirements.md),
+   ([`sec-014-appendix-2-requirements.md`](../library/corpus/process/path-2012-common-requirements-mhis-crdm/sections/sec-014-appendix-2-requirements.md),
    which also holds the general and nonfunctional requirements).
 
 ### 1.3 Quality criteria and validation techniques
 
 PHII's *Defining and Validating System Requirements Guide*
-([`phii-2021-defining-and-validating-requirements-guide`, pp. 3–5](../library/process/phii-2021-defining-and-validating-requirements-guide/sections/page-003.md))
+([`phii-2021-defining-and-validating-requirements-guide`, pp. 3–5](../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/sections/page-003.md))
 checks every requirement against nine quality criteria — **Correct**,
 **Unambiguous**, **Complete**, **Consistent**, **Ranked for importance and/or
 stability**, **Verifiable**, **Modifiable**, **Traceable**, and
@@ -152,8 +152,8 @@ distinct fields with different semantics and different standards origins:
 ### 3.1 Priority weighting (`High / Medium / Low` = `Must-have / Should-have / Nice-to-have`)
 
 PHII's *Defining and Validating System Requirements Guide*
-([`phii-2021-defining-and-validating-requirements-guide`, p. 2](../library/process/phii-2021-defining-and-validating-requirements-guide/sections/page-002.md))
-and PATH (2012) ([`path-2012-common-requirements-mhis-crdm`, p. 1 / Appendix 2](../library/process/path-2012-common-requirements-mhis-crdm/README.md))
+([`phii-2021-defining-and-validating-requirements-guide`, p. 2](../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/sections/page-002.md))
+and PATH (2012) ([`path-2012-common-requirements-mhis-crdm`, p. 1 / Appendix 2](../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md))
 rank requirements by relative implementation importance using a three-tier
 priority scale. The harness aligns its three priority labels one-to-one with
 PHII's scale:
@@ -167,7 +167,7 @@ PHII's scale:
 ### 3.2 Normative conformance keywords (`SHALL / SHOULD / MAY / SHALL NOT`)
 
 While PHII's informal prose grammar phrases requirement statements as *"The
-system must or should…"* ([`phii-2021-defining-and-validating-requirements-guide`, p. 1](../library/process/phii-2021-defining-and-validating-requirements-guide/sections/page-001.md)),
+system must or should…"* ([`phii-2021-defining-and-validating-requirements-guide`, p. 1](../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/sections/page-001.md)),
 the harness's separate **Conformance** field (`SHALL` / `MUST`, `SHOULD`,
 `MAY`, `SHALL NOT` / `MUST NOT`) uses uppercase normative keywords governed by
 IETF BCP 14:

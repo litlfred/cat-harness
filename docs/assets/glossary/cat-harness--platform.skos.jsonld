@@ -602,7 +602,7 @@
       "rdfs:isDefinedBy": {
         "@id": "https://phii.org/crdm/"
       },
-      "dcterms:source": "cat-harness/library/process/phii-2023-crdm/sections/page-001.md"
+      "dcterms:source": "cat-harness/library/corpus/process/phii-2023-crdm/sections/page-001.md"
     }
   ]
 }
