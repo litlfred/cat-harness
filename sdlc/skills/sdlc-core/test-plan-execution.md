@@ -86,6 +86,9 @@ verdict about itself — `test-report/v1` refuses a reviewer whose `id` or
    requirement, its `exitCriteria.decision` resolves to a
    decision in a `.dmn` that exists, and its `scope.kind` matches the SUT
    actor's facet kind. A plan that does not resolve is not run.
+   Every case names the `.feature` it is written in, and every test that
+   executes it carries that file's `@test:` tag
+   ([`test-engineer`](test-engineer.md#every-test-has-a-gherkin-strict)).
 2. **Bind the test data** ([`test-data-sets`](test-data-sets.md)). A *fixed* set is a committed path and
    is evidence only once reviewed (`isEvidence`). A *generated* set is a
    template + params + **seed** and is never materialised into the repository.
