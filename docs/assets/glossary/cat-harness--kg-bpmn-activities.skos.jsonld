@@ -6476,7 +6476,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "Sparse checkout of the declaration and the chosen directories, copied to the mount path (by default the instance's home path, so relative imports and sibling discovery hold). Never onto tracked bytes; never onto a directory no lock says this mount made; never over edits to a previous mount — those are left untouched and reported."
+          "@value": "Sparse checkout of the declaration and the chosen directories, copied to the mount path (by default the instance's home path, so relative imports and sibling discovery hold). Never onto tracked bytes; never onto a directory no lock says this mount made; never over edits to a previous mount — those are left untouched and reported. A replay of the lock tries the index's layers cache ref first (`refs/cat/layers/<key>`, then `refs/cat/layers/main`): one shallow fetch, every byte verified against the lock, and any layer that does not verify is fetched from its own repository."
         }
       ],
       "skos:notation": "Task_MountInstances",
@@ -6536,7 +6536,7 @@
       ],
       "skos:definition": [
         {
-          "@value": "`index.lock.json` beside the downstream's `index.config.json` (the legacy `<instance>.mount-lock.json` is still read, and is renamed onto the new name when rewritten; both present is an error): the pins it was written for, each instance's repository, SHA and how the pin was found, each directory's tree digest — and what was NOT mounted, with why, so an offline check cannot read a gap as clean."
+          "@value": "`index.lock.json` beside the downstream's `index.config.json` (the legacy `<instance>.mount-lock.json` is still read, and is renamed onto the new name when rewritten; both present is an error): the pins it was written for, each instance's repository, SHA and how the pin was found, each directory's tree digest — and what was NOT mounted, with why, so an offline check cannot read a gap as clean. Whoever writes the lock writes its layers cache ref (`layers:publish`, which refuses unless every mount hashes to the lock); on main, the index's workflow does it."
         }
       ],
       "skos:notation": "Task_WriteLock",

@@ -15,78 +15,115 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-processes`, hold
 |---|---|---|
 | [`activity-log.bpmn`](activity-log.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Agent activity log |  |
 | [`activity-log.checklist.md`](activity-log.checklist.md) | Checklist — Agent activity log |  |
+| [`activity-log.svg`](activity-log.svg) | the picture of `activity-log.bpmn`, generated from it |  |
 | [`adjudication.bpmn`](adjudication.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Adjudication | "Refresh materialized remote content", "CRDM close-out", "CRDM Phase 5 — beans and sign-off", "Criterion adjudication", "Requirements filing: promote, organise, trace, supersede, or retire" |
 | [`adjudication.checklist.md`](adjudication.checklist.md) | Checklist — Adjudication |  |
+| [`adjudication.svg`](adjudication.svg) | the picture of `adjudication.bpmn`, generated from it |  |
 | [`bean-close.bpmn`](bean-close.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Close the bean | "Drain the beans", "Agent bean lifecycle", "Code change and review", "A refused merge-train member", "Test Data Curation — Fixed Sets and Generated Recipes", "Test-plan execution", "Watching a pinned upstream dependency", "Adopting an upstream version bump" |
 | [`bean-close.checklist.md`](bean-close.checklist.md) | Checklist — Close the bean |  |
+| [`bean-close.svg`](bean-close.svg) | the picture of `bean-close.bpmn`, generated from it |  |
 | [`bean-drain.bpmn`](bean-drain.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Drain the beans |  |
 | [`bean-drain.checklist.md`](bean-drain.checklist.md) | Checklist — Drain the beans |  |
+| [`bean-drain.svg`](bean-drain.svg) | the picture of `bean-drain.bpmn`, generated from it |  |
 | [`bean-lifecycle.bpmn`](bean-lifecycle.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Agent bean lifecycle |  |
 | [`bean-lifecycle.checklist.md`](bean-lifecycle.checklist.md) | Checklist — Agent bean lifecycle |  |
+| [`bean-lifecycle.svg`](bean-lifecycle.svg) | the picture of `bean-lifecycle.bpmn`, generated from it |  |
 | [`bean-open.bpmn`](bean-open.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Open the bean | "Drain the beans", "Agent bean lifecycle", "Code change and review", "A refused merge-train member", "Test Data Curation — Fixed Sets and Generated Recipes", "Test-plan execution", "Watching a pinned upstream dependency", "Adopting an upstream version bump" |
 | [`bean-open.checklist.md`](bean-open.checklist.md) | Checklist — Open the bean |  |
+| [`bean-open.svg`](bean-open.svg) | the picture of `bean-open.bpmn`, generated from it |  |
 | [`ci-health-watch.bpmn`](ci-health-watch.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Is CI actually working on the default branch? |  |
 | [`ci-health-watch.checklist.md`](ci-health-watch.checklist.md) | Checklist — Is CI actually working on the default branch? |  |
+| [`ci-health-watch.svg`](ci-health-watch.svg) | the picture of `ci-health-watch.bpmn`, generated from it |  |
 | [`code-change-review.bpmn`](code-change-review.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Code change and review | "Actor and role administration" |
 | [`code-change-review.checklist.md`](code-change-review.checklist.md) | Checklist — Code change and review |  |
+| [`code-change-review.svg`](code-change-review.svg) | the picture of `code-change-review.bpmn`, generated from it |  |
 | [`code-quality-gates.bpmn`](code-quality-gates.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): The gates a change must pass before it can merge | "A merge train" |
 | [`code-quality-gates.checklist.md`](code-quality-gates.checklist.md) | Checklist — The gates a change must pass before it can merge |  |
+| [`code-quality-gates.svg`](code-quality-gates.svg) | the picture of `code-quality-gates.bpmn`, generated from it |  |
 | [`criterion-adjudication.bpmn`](criterion-adjudication.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Criterion adjudication | "Narrative review", "Voice overlay review", "Wireframe design review", "Prose and the code it describes" |
 | [`criterion-adjudication.checklist.md`](criterion-adjudication.checklist.md) | Checklist — Criterion adjudication |  |
+| [`criterion-adjudication.svg`](criterion-adjudication.svg) | the picture of `criterion-adjudication.bpmn`, generated from it |  |
 | [`docs-site-publish.bpmn`](docs-site-publish.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Publishing the docs site, and keeping the previews alive |  |
 | [`docs-site-publish.checklist.md`](docs-site-publish.checklist.md) | Checklist — Publishing the docs site, and keeping the previews alive |  |
+| [`docs-site-publish.svg`](docs-site-publish.svg) | the picture of `docs-site-publish.bpmn`, generated from it |  |
 | [`feature-staging.bpmn`](feature-staging.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Staging a feature branch preview, and taking it down |  |
 | [`feature-staging.checklist.md`](feature-staging.checklist.md) | Checklist — Staging a feature branch preview, and taking it down |  |
+| [`feature-staging.svg`](feature-staging.svg) | the picture of `feature-staging.bpmn`, generated from it |  |
 | [`generated-file-drift.bpmn`](generated-file-drift.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Check a generated file still matches its source | "Are the .jsonld siblings still in sync with their .ts manifests?" |
 | [`generated-file-drift.checklist.md`](generated-file-drift.checklist.md) | Checklist — Check a generated file still matches its source |  |
+| [`generated-file-drift.svg`](generated-file-drift.svg) | the picture of `generated-file-drift.bpmn`, generated from it |  |
 | [`jsonld-drift-check.bpmn`](jsonld-drift-check.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Are the .jsonld siblings still in sync with their .ts manifests? |  |
 | [`jsonld-drift-check.checklist.md`](jsonld-drift-check.checklist.md) | Checklist — Are the .jsonld siblings still in sync with their .ts manifests? |  |
+| [`jsonld-drift-check.svg`](jsonld-drift-check.svg) | the picture of `jsonld-drift-check.bpmn`, generated from it |  |
 | [`merge-base.bpmn`](merge-base.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Merge the base branch in | "Code change and review", "A merge train" |
 | [`merge-base.checklist.md`](merge-base.checklist.md) | Checklist — Merge the base branch in |  |
+| [`merge-base.svg`](merge-base.svg) | the picture of `merge-base.bpmn`, generated from it |  |
 | [`merge-manager-watch.bpmn`](merge-manager-watch.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Merge manager watch: wake, read the queue live, route |  |
 | [`merge-manager-watch.checklist.md`](merge-manager-watch.checklist.md) | Checklist — Merge manager watch: wake, read the queue live, route |  |
+| [`merge-manager-watch.svg`](merge-manager-watch.svg) | the picture of `merge-manager-watch.bpmn`, generated from it |  |
 | [`merge-refusal.bpmn`](merge-refusal.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): A refused merge-train member | "Merge to main", "A merge train" |
 | [`merge-refusal.checklist.md`](merge-refusal.checklist.md) | Checklist — A refused merge-train member |  |
+| [`merge-refusal.svg`](merge-refusal.svg) | the picture of `merge-refusal.bpmn`, generated from it |  |
 | [`merge-to-main.bpmn`](merge-to-main.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Merge to main | "CRDM close-out", "A merge train" |
 | [`merge-to-main.checklist.md`](merge-to-main.checklist.md) | Checklist — Merge to main |  |
+| [`merge-to-main.svg`](merge-to-main.svg) | the picture of `merge-to-main.bpmn`, generated from it |  |
 | [`merge-train.bpmn`](merge-train.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): A merge train | "Merge manager watch: wake, read the queue live, route" |
 | [`merge-train.checklist.md`](merge-train.checklist.md) | Checklist — A merge train |  |
+| [`merge-train.svg`](merge-train.svg) | the picture of `merge-train.bpmn`, generated from it |  |
 | [`narrative-code-review.bpmn`](narrative-code-review.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Prose and the code it describes | "Review task" |
 | [`narrative-code-review.checklist.md`](narrative-code-review.checklist.md) | Checklist — Prose and the code it describes |  |
+| [`narrative-code-review.svg`](narrative-code-review.svg) | the picture of `narrative-code-review.bpmn`, generated from it |  |
 | [`options-analysis.bpmn`](options-analysis.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Options analysis | "CRDM Phase 6 — implement, MVP, acceptance", "Wireframe design review", "Adopting an upstream version bump" |
 | [`options-analysis.checklist.md`](options-analysis.checklist.md) | Checklist — Options analysis |  |
+| [`options-analysis.svg`](options-analysis.svg) | the picture of `options-analysis.bpmn`, generated from it |  |
 | [`pr-checks-present.bpmn`](pr-checks-present.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Which open pull requests have no CI run on their head? | "A merge train" |
 | [`pr-checks-present.checklist.md`](pr-checks-present.checklist.md) | Checklist — Which open pull requests have no CI run on their head? |  |
+| [`pr-checks-present.svg`](pr-checks-present.svg) | the picture of `pr-checks-present.bpmn`, generated from it |  |
 | [`publish-alert.bpmn`](publish-alert.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Alert the publication manager | "Publishing the docs site, and keeping the previews alive" |
 | [`publish-alert.checklist.md`](publish-alert.checklist.md) | Checklist — Alert the publication manager |  |
+| [`publish-alert.svg`](publish-alert.svg) | the picture of `publish-alert.bpmn`, generated from it |  |
 | [`publish-verification.bpmn`](publish-verification.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Verify the export before it is deployed | "A knowledge graph leaves for its own repositories", "Publishing the docs site, and keeping the previews alive" |
 | [`publish-verification.checklist.md`](publish-verification.checklist.md) | Checklist — Verify the export before it is deployed |  |
+| [`publish-verification.svg`](publish-verification.svg) | the picture of `publish-verification.bpmn`, generated from it |  |
 | [`qa-publish.bpmn`](qa-publish.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Publish and keep QA results on qa-reports | "The gates a change must pass before it can merge" |
 | [`qa-publish.checklist.md`](qa-publish.checklist.md) | Checklist — Publish and keep QA results on qa-reports |  |
+| [`qa-publish.svg`](qa-publish.svg) | the picture of `qa-publish.bpmn`, generated from it |  |
 | [`qa-report-signing.bpmn`](qa-report-signing.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): QA report signing | "Test-plan execution" |
 | [`qa-report-signing.checklist.md`](qa-report-signing.checklist.md) | Checklist — QA report signing |  |
+| [`qa-report-signing.svg`](qa-report-signing.svg) | the picture of `qa-report-signing.bpmn`, generated from it |  |
 | [`related-work.bpmn`](related-work.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Related work: find, sort, summarize, ask to coordinate | "Adopt a methodology from a source document", "CRDM — link the work to an issue" |
 | [`related-work.checklist.md`](related-work.checklist.md) | Checklist — Related work: find, sort, summarize, ask to coordinate |  |
+| [`related-work.svg`](related-work.svg) | the picture of `related-work.bpmn`, generated from it |  |
 | [`repository-health-watch.bpmn`](repository-health-watch.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Is the repository itself healthy? |  |
 | [`repository-health-watch.checklist.md`](repository-health-watch.checklist.md) | Checklist — Is the repository itself healthy? |  |
+| [`repository-health-watch.svg`](repository-health-watch.svg) | the picture of `repository-health-watch.bpmn`, generated from it |  |
 | [`requirements-filing.bpmn`](requirements-filing.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Requirements filing: promote, organise, trace, supersede, or retire |  |
 | [`requirements-filing.checklist.md`](requirements-filing.checklist.md) | Checklist — Requirements filing: promote, organise, trace, supersede, or retire |  |
+| [`requirements-filing.svg`](requirements-filing.svg) | the picture of `requirements-filing.bpmn`, generated from it |  |
 | [`saturation-meta-merge.bpmn`](saturation-meta-merge.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Saturation meta-merge: land the ready PRs when the runners are full | "Merge manager watch: wake, read the queue live, route" |
 | [`saturation-meta-merge.checklist.md`](saturation-meta-merge.checklist.md) | Checklist — Saturation meta-merge: land the ready PRs when the runners are full |  |
+| [`saturation-meta-merge.svg`](saturation-meta-merge.svg) | the picture of `saturation-meta-merge.bpmn`, generated from it |  |
 | [`sme-test-data-review.bpmn`](sme-test-data-review.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): SME Review of Decision Support and Indicator Test Data | "Test Data Curation — Fixed Sets and Generated Recipes" |
 | [`sme-test-data-review.checklist.md`](sme-test-data-review.checklist.md) | Checklist — SME Review of Decision Support and Indicator Test Data |  |
+| [`sme-test-data-review.svg`](sme-test-data-review.svg) | the picture of `sme-test-data-review.bpmn`, generated from it |  |
 | [`stalled-agent-triage.bpmn`](stalled-agent-triage.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route | "Merge manager watch: wake, read the queue live, route" |
 | [`stalled-agent-triage.checklist.md`](stalled-agent-triage.checklist.md) | Checklist — Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route |  |
+| [`stalled-agent-triage.svg`](stalled-agent-triage.svg) | the picture of `stalled-agent-triage.bpmn`, generated from it |  |
 | [`test-data-curation.bpmn`](test-data-curation.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Test Data Curation — Fixed Sets and Generated Recipes |  |
 | [`test-data-curation.checklist.md`](test-data-curation.checklist.md) | Checklist — Test Data Curation — Fixed Sets and Generated Recipes |  |
+| [`test-data-curation.svg`](test-data-curation.svg) | the picture of `test-data-curation.bpmn`, generated from it |  |
 | [`test-plan-execution.bpmn`](test-plan-execution.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Test-plan execution |  |
 | [`test-plan-execution.checklist.md`](test-plan-execution.checklist.md) | Checklist — Test-plan execution |  |
+| [`test-plan-execution.svg`](test-plan-execution.svg) | the picture of `test-plan-execution.bpmn`, generated from it |  |
 | [`tracked-watch.bpmn`](tracked-watch.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Report a verdict on one tracking issue | "Is CI actually working on the default branch?", "Which open pull requests have no CI run on their head?", "Is the repository itself healthy?" |
 | [`tracked-watch.checklist.md`](tracked-watch.checklist.md) | Checklist — Report a verdict on one tracking issue |  |
+| [`tracked-watch.svg`](tracked-watch.svg) | the picture of `tracked-watch.bpmn`, generated from it |  |
 | [`upstream-pin-watch.bpmn`](upstream-pin-watch.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Watching a pinned upstream dependency |  |
 | [`upstream-pin-watch.checklist.md`](upstream-pin-watch.checklist.md) | Checklist — Watching a pinned upstream dependency |  |
+| [`upstream-pin-watch.svg`](upstream-pin-watch.svg) | the picture of `upstream-pin-watch.bpmn`, generated from it |  |
 | [`upstream-version-adoption.bpmn`](upstream-version-adoption.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Adopting an upstream version bump | "A knowledge graph leaves for its own repositories", "Watching a pinned upstream dependency" |
 | [`upstream-version-adoption.checklist.md`](upstream-version-adoption.checklist.md) | Checklist — Adopting an upstream version bump |  |
+| [`upstream-version-adoption.svg`](upstream-version-adoption.svg) | the picture of `upstream-version-adoption.bpmn`, generated from it |  |
 | [`decisions/`](decisions/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->
