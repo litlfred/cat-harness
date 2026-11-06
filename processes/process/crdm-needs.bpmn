@@ -134,10 +134,10 @@ statement">
         <di:waypoint x="1310" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Needs_6" bpmnElement="SF_Process_CRDM_Needs_6">
-        <di:waypoint x="1335" y="360" />
+                <di:waypoint x="1335" y="360" />
         <di:waypoint x="1335" y="585" />
         <di:waypoint x="780" y="585" />
-        <di:waypoint x="780" y="375" />
+        <di:waypoint x="780" y="395" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Needs_7" bpmnElement="SF_Process_CRDM_Needs_7">
         <di:waypoint x="1360" y="335" />

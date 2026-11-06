@@ -346,10 +346,11 @@ Only applies when folio contentType includes WHO/DAK content.</bpmn:documentatio
       <!-- Coordinator Shapes -->
       <bpmndi:BPMNShape id="Start_TranslationNeeded_di" bpmnElement="Start_TranslationNeeded">
         <dc:Bounds x="200" y="132" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel>
-          <dc:Bounds x="160" y="175" width="116" height="30" />
-        </bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="195" y="196" width="200" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_IdentifyContent_di" bpmnElement="Task_IdentifyContent">
         <dc:Bounds x="276" y="110" width="180" height="80" />
       </bpmndi:BPMNShape>
@@ -364,7 +365,7 @@ Only applies when folio contentType includes WHO/DAK content.</bpmn:documentatio
         
       <bpmndi:BPMNLabel><dc:Bounds x="1916" y="103" width="130" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_RequestMoreWork_di" bpmnElement="Task_RequestMoreWork">
-        <dc:Bounds x="2066" y="110" width="140" height="80" />
+        <dc:Bounds x="2096" y="90" width="120" height="120" />
       </bpmndi:BPMNShape>
 
       <!-- Translator Shapes -->
@@ -384,10 +385,13 @@ Only applies when folio contentType includes WHO/DAK content.</bpmn:documentatio
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Accurate_di" bpmnElement="Gateway_Accurate" isMarkerVisible="true">
         <dc:Bounds x="2976" y="485" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="3030" y="539" width="130" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="2840" y="558" width="150" height="28" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ReturnForCorrection_di" bpmnElement="Task_ReturnForCorrection">
-        <dc:Bounds x="3056" y="432" width="180" height="81" />
+        <dc:Bounds x="3086" y="430" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Signoff_di" bpmnElement="Task_Signoff">
         <dc:Bounds x="3496" y="470" width="140" height="80" />
@@ -464,13 +468,14 @@ Only applies when folio contentType includes WHO/DAK content.</bpmn:documentatio
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F10_di" bpmnElement="F10">
         <di:waypoint x="2006" y="150" />
-        <di:waypoint x="2066" y="150" />
+        <di:waypoint x="2096" y="150" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2012" y="126" width="76" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F11_di" bpmnElement="F11">
-        <di:waypoint x="2136" y="110" />
-        <di:waypoint x="2136" y="80" />
-        <di:waypoint x="1426" y="80" />
-        <di:waypoint x="1426" y="290" />
+        <di:waypoint x="2156" y="90" />
+        <di:waypoint x="2156" y="78" />
+        <di:waypoint x="1440" y="78" />
+        <di:waypoint x="1440" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F12_di" bpmnElement="F12">
         <di:waypoint x="1981" y="175" />
@@ -496,14 +501,14 @@ Only applies when folio contentType includes WHO/DAK content.</bpmn:documentatio
       <bpmndi:BPMNEdge id="F18_di" bpmnElement="F18">
         <di:waypoint x="3001" y="485" />
         <di:waypoint x="3001" y="470" />
-        <di:waypoint x="3056" y="470" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2960" y="432" width="90" height="35" /></bpmndi:BPMNLabel>
+        <di:waypoint x="3086" y="470" />
+        <bpmndi:BPMNLabel><dc:Bounds x="2955" y="432" width="90" height="35" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F19_di" bpmnElement="F19">
-        <di:waypoint x="3146" y="432" />
-        <di:waypoint x="3146" y="405" />
-        <di:waypoint x="1426" y="405" />
-        <di:waypoint x="1426" y="370" />
+        <di:waypoint x="3146" y="430" />
+        <di:waypoint x="3146" y="66" />
+        <di:waypoint x="1400" y="66" />
+        <di:waypoint x="1400" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F20_di" bpmnElement="F20">
         <di:waypoint x="3001" y="535" />

@@ -441,9 +441,9 @@ NOT MERGED IS A NORMAL ENDING. Hand-back, not-yet, could-not-determine, held and
         <di:waypoint x="1855" y="930" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m16" bpmnElement="m16">
-        <di:waypoint x="1880" y="905" />
-        <di:waypoint x="1880" y="360" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1884" y="623.5" width="90" height="18" /></bpmndi:BPMNLabel>
+                <di:waypoint x="1880" y="905" />
+        <di:waypoint x="1880" y="382" />
+      <bpmndi:BPMNLabel><dc:Bounds x="1884" y="623.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_m17" bpmnElement="m17">
         <di:waypoint x="1905" y="930" />

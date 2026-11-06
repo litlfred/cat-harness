@@ -76,8 +76,8 @@ each option's trade-offs">
 Never quantify the comparison to make it look measured. Where a method scores and sums, this platform takes the structure and refuses the arithmetic: the weights are invented and a total reads as a measurement.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="methodology-adoption"/></bpmn:extensionElements>
     </bpmn:task>
-    <bpmn:task id="A_Record" name="Record the recommendation
-AND the rejected options">
+    <bpmn:task id="A_Record" name="Record the chosen option
+AND the rejected ones">
       <bpmn:documentation>The rejected options and why they lost are part of the output, not an appendix. A rejected option with no record is a dead end nobody marked, and the next agent walks into it — the same argument `bean-coordination` makes for `scrapped` over deleted.
 
 In a bean context the form is MADR's. Which methodology was followed is named here, so a reader can check the method rather than take the conclusion.</bpmn:documentation>
@@ -102,70 +102,73 @@ In a bean context the form is MADR's. Which methodology was followed is named he
   <bpmndi:BPMNDiagram id="Diagram_Process_OptionsAnalysis">
     <bpmndi:BPMNPlane id="Plane_Process_OptionsAnalysis" bpmnElement="Collaboration_Process_OptionsAnalysis">
       <bpmndi:BPMNShape id="Shape_Participant_Process_OptionsAnalysis" bpmnElement="Participant_Process_OptionsAnalysis" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1200" height="203" />
+        <dc:Bounds x="160" y="60" width="1210" height="290" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BusinessAnalyst" bpmnElement="Lane_BusinessAnalyst" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1170" height="203" />
+        <dc:Bounds x="190" y="60" width="1180" height="290" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_OptionsAnalysis" bpmnElement="Start_Process_OptionsAnalysis">
-        <dc:Bounds x="232" y="162" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="221.09" y="197.5" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="236" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="234" y="183" width="52" height="54" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Frame" bpmnElement="A_Frame">
-        <dc:Bounds x="320" y="120" width="120" height="120" />
+        <dc:Bounds x="302" y="100" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Trigger" bpmnElement="GW_Trigger" isMarkerVisible="true">
-        <dc:Bounds x="470" y="155" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="450" y="97" width="90" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="462" y="135" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="442" y="74" width="90" height="54" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_TriggerNotMet" bpmnElement="End_TriggerNotMet">
-        <dc:Bounds x="560" y="235" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="600" y="226" width="180" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="469" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="515" y="262" width="200" height="54" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Select" bpmnElement="A_Select">
-        <dc:Bounds x="560" y="140" width="120" height="80" />
+        <dc:Bounds x="552" y="100" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_CheckEvidence" bpmnElement="A_CheckEvidence">
-        <dc:Bounds x="720" y="120" width="120" height="120" />
+        <dc:Bounds x="712" y="100" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Apply" bpmnElement="A_Apply">
-        <dc:Bounds x="880" y="120" width="120" height="120" />
+        <dc:Bounds x="872" y="100" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Record" bpmnElement="A_Record">
-        <dc:Bounds x="1060" y="120" width="120" height="120" />
+        <dc:Bounds x="1032" y="100" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Process_OptionsAnalysis" bpmnElement="End_Process_OptionsAnalysis">
-        <dc:Bounds x="1260" y="162" width="36" height="36" />
+        <dc:Bounds x="1192" y="142" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1238" y="151" width="124" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_1" bpmnElement="SF_Process_OptionsAnalysis_1">
-        <di:waypoint x="268" y="180" />
-        <di:waypoint x="320" y="180" />
+        <di:waypoint x="272" y="160" />
+        <di:waypoint x="302" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_2" bpmnElement="SF_Process_OptionsAnalysis_2">
-        <di:waypoint x="440" y="180" />
-        <di:waypoint x="470" y="180" />
+        <di:waypoint x="422" y="160" />
+        <di:waypoint x="462" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_2b" bpmnElement="SF_Process_OptionsAnalysis_2b">
-        <di:waypoint x="520" y="180" /><di:waypoint x="560" y="180" />
+        <di:waypoint x="512" y="160" />
+        <di:waypoint x="552" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_2c" bpmnElement="SF_Process_OptionsAnalysis_2c">
-        <di:waypoint x="495" y="205" /><di:waypoint x="495" y="253" /><di:waypoint x="560" y="253" />
+        <di:waypoint x="487" y="185" />
+        <di:waypoint x="487" y="262" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_3" bpmnElement="SF_Process_OptionsAnalysis_3">
-        <di:waypoint x="680" y="180" />
-        <di:waypoint x="720" y="180" />
+        <di:waypoint x="672" y="160" />
+        <di:waypoint x="712" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_3b" bpmnElement="SF_Process_OptionsAnalysis_3b">
-        <di:waypoint x="840" y="180" />
-        <di:waypoint x="880" y="180" />
+        <di:waypoint x="832" y="160" />
+        <di:waypoint x="872" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_4" bpmnElement="SF_Process_OptionsAnalysis_4">
-        <di:waypoint x="1000" y="180" />
-        <di:waypoint x="1060" y="180" />
+        <di:waypoint x="992" y="160" />
+        <di:waypoint x="1032" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_OptionsAnalysis_5" bpmnElement="SF_Process_OptionsAnalysis_5">
-        <di:waypoint x="1180" y="180" />
-        <di:waypoint x="1260" y="180" />
+        <di:waypoint x="1152" y="160" />
+        <di:waypoint x="1192" y="160" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -164,11 +164,11 @@ The entry condition matches exactly rather than approximately: GW_Agree asks whe
         <bpmndi:BPMNLabel><dc:Bounds x="1111" y="144" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_6" bpmnElement="SF_Process_WireframeDesignReview_6">
-        <di:waypoint x="1080" y="190" />
+                <di:waypoint x="1080" y="190" />
         <di:waypoint x="1080" y="238" />
         <di:waypoint x="700" y="238" />
-        <di:waypoint x="700" y="205" />
-        <bpmndi:BPMNLabel><dc:Bounds x="986" y="205.5" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="700" y="225" />
+      <bpmndi:BPMNLabel><dc:Bounds x="986" y="205.5" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_7" bpmnElement="SF_Process_WireframeDesignReview_7">
         <di:waypoint x="1330" y="335" />
@@ -195,10 +195,10 @@ The entry condition matches exactly rather than approximately: GW_Agree asks whe
         <di:waypoint x="2005" y="505" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_12" bpmnElement="SF_Process_WireframeDesignReview_12">
-        <di:waypoint x="2030" y="530" />
+                <di:waypoint x="2030" y="530" />
         <di:waypoint x="2030" y="578" />
         <di:waypoint x="510" y="578" />
-        <di:waypoint x="510" y="205" />
+        <di:waypoint x="510" y="225" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_WireframeDesignReview_13" bpmnElement="SF_Process_WireframeDesignReview_13">
         <di:waypoint x="2055" y="505" />
