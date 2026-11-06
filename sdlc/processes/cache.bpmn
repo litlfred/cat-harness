@@ -242,7 +242,7 @@ EACH COMPONENT, BOTH PHASES. Restore: look up the derived key, verify the entry 
       <bpmndi:BPMNEdge id="Edge_f3" bpmnElement="f3">
         <di:waypoint x="221" y="305" />
         <di:waypoint x="221" y="382" />
-        <bpmndi:BPMNLabel><dc:Bounds x="228" y="326" width="60" height="28" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="226" y="334" width="110" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_f4" bpmnElement="f4">
         <di:waypoint x="416" y="280" />
