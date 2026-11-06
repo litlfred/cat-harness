@@ -67,7 +67,7 @@ it.
 | A ready PR that stacks, and is all green (rule 1 below) | `merge-train` (Process_MergeTrain) |
 | Queued runs 60+ minutes old with nothing landed, or the owner says runners are full | `saturation-meta-merge`: offer the card, never run without the owner's tap |
 | A PR whose owner has not pushed or answered for 2+ hours | `stalled-agent-triage`: tell the owner and take it over |
-| main red | The fix goes to main as its own PR first; an automated `post-merge-regen` repair PR, when one is open, lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green |
+| main red | The fix goes to main as its own PR first; when a dispatched `post-merge-regen` verify run says main is stale, a regen dispatched for the next PR commits the fix and that PR lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green |
 | Nothing to do | End the turn with no message |
 
 ## Merge-sweep rules (STRICT)
