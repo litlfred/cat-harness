@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_256 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_257 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -259,7 +259,7 @@ _256 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`crdm-requirements-template`](sdlc/skills/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
 | [`crdm-requirements-workflow`](sdlc/skills/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
 
-**`sdlc/skills/sdlc-core/`** (72)
+**`sdlc/skills/sdlc-core/`** (73)
 
 | Skill | What it is for |
 |---|---|
@@ -273,6 +273,7 @@ _256 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`branch-archaeology`](sdlc/skills/sdlc-core/branch-archaeology.md) | Classify every remote branch against the default branch (merged, landed by squash or cherry-pick, partially landed, unlanded, undetermined) by commit ancestry, patch-id and merge-tree, not by… |
 | [`branch-freshness`](sdlc/skills/sdlc-core/branch-freshness.md) | Read what changed on main often, and re-analyse the session workplan. |
 | [`bun-use`](sdlc/skills/sdlc-core/bun-use.md) | How Bun is used as the JavaScript/TypeScript execution runtime, test runner, package manager, and tarball packager across separated repositories: standalone subgraph configuration (bunfig.toml,… |
+| [`cache-first-ci`](sdlc/skills/sdlc-core/cache-first-ci.md) | Every CI step is a pure function of its inputs: derive the inputs, hash them into a key, restore on a hit, run and save on a miss. |
 | [`ci-health`](sdlc/skills/sdlc-core/ci-health.md) | A red workflow looks exactly like a green one from inside a checkout. |
 | [`code-review-process`](sdlc/skills/sdlc-core/code-review-process.md) | Where code review sits in the release lifecycle. |
 | [`continual-progress`](sdlc/skills/sdlc-core/continual-progress.md) | Make in-flight work trackable by others in real time — open a PR from the first commit, push small coherent increments continuously (never hoard uncommitted work), keep a live status checklist in… |
