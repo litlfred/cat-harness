@@ -49,7 +49,7 @@ msgstr "1. Déterminez dans quel dépôt vous vous trouvez"
 
 #: agent-onboarding.md:216
 msgid "10. Habits that keep you out of trouble"
-msgstr "10. Habitudes qui vous évitent les ennuis"
+msgstr "10. Habitudes pour éviter les ennuis"
 
 #: agent-onboarding.md:45
 msgid "2. Your first five minutes"
@@ -69,11 +69,11 @@ msgstr "5. Deux relations de dépendance — ne les confondez pas"
 
 #: agent-onboarding.md:129
 msgid "6. Track work in beans, not in your head"
-msgstr "6. Suivez le travail dans les beans, pas dans votre tête"
+msgstr "6. Suivez le travail dans beans, pas dans votre tête"
 
 #: agent-onboarding.md:149
 msgid "7. QA sidecars and axes"
-msgstr "7. Fichiers annexes de QA et axes"
+msgstr "7. Fichiers QA et axes"
 
 #: agent-onboarding.md:192
 msgid "8. Shipping work"
@@ -85,7 +85,7 @@ msgstr "9. Où chercher les informations"
 
 #: agent-onboarding.md:94
 msgid "A content block is a triple sharing a root name:"
-msgstr "Un bloc de contenu est un triplet partageant un même nom racine :"
+msgstr "Un bloc de contenu est un triple partageant un nom racine :"
 
 #: agent-onboarding.md:29
 msgid "A folio (the content repo)"
@@ -155,7 +155,7 @@ msgstr "folio-assistant ne contient aucun contenu. Si vous vous apprêtez à y �
 
 #: agent-onboarding.md:180
 msgid "Folio-optional axes. An axis encoding one folio's subject matter is registered only when the folio opts in:"
-msgstr "Axes optionnels par folio. Un axe qui encode le sujet d'un seul folio n'est enregistré que si ce folio y adhère :"
+msgstr "Axes optionnels du folio. Un axe encodant le sujet d'un folio n'est enregistré que lorsque le folio choisit de l'activer :"
 
 #: agent-onboarding.md:17
 msgid "For the architecture of skills, roles, and capabilities, read <a0>Skills & roles</a0>. This page is the practical version."
@@ -168,11 +168,11 @@ msgstr "La discipline complète : {code0}, {code1}."
 
 #: agent-onboarding.md:85
 msgid "generated full instruction bodies"
-msgstr "texte complet des instructions, généré"
+msgstr "corps d'instructions complets générés"
 
 #: agent-onboarding.md:84
 msgid "generated input/output contract per skill"
-msgstr "contrat d'entrée/sortie généré pour chaque compétence"
+msgstr "contrat d'entrée/sortie généré par compétence"
 
 #: agent-onboarding.md:32
 #, python-brace-format
@@ -181,7 +181,7 @@ msgstr "Contient {code0}"
 
 #: agent-onboarding.md:86
 msgid "how skills, roles, and capabilities compose"
-msgstr "comment compétences, rôles et capacités s'articulent"
+msgstr "comment les compétences, rôles et capacités se composent"
 
 #: agent-onboarding.md:188
 #, python-brace-format
@@ -210,7 +210,7 @@ msgstr "Pas de serveur MCP attaché ? Le même graphe est sur le disque : ouvrez
 
 #: agent-onboarding.md:208
 msgid "Project commands, conventions"
-msgstr "Commandes et conventions du projet"
+msgstr "Commandes du projet, conventions"
 
 #: agent-onboarding.md:206
 msgid "Question"
@@ -227,7 +227,7 @@ msgstr "Lisez la description du critère avant d'agir sur un constat. Elle préc
 
 #: agent-onboarding.md:198
 msgid "Runs the generic recipe plus content-type-specific gates (paper → content_validate / qa_sweep / proof_status / latex_preflight / lean_build), then pushes. It does not merge."
-msgstr "Exécute la recette générique plus les contrôles propres au type de contenu (article → content_validate / qa_sweep / proof_status / latex_preflight / lean_build), puis pousse. Ne fusionne pas."
+msgstr "Exécute la recette générique ainsi que les portes de contrôle propres au type de contenu (document → content_validate / qa_sweep / proof_status / latex_preflight / lean_build), puis pousse les modifications. Cela ne fusionne pas."
 
 #: agent-onboarding.md:60
 msgid "Skills are the unit of work here. Before hand-rolling a procedure, check whether one exists. Ask for it; do not navigate to it, because a hardcoded path goes missing the moment the layout moves."
@@ -262,7 +262,7 @@ msgstr "Le graphe formel est dérivé automatiquement de {code0}, jamais écrit 
 
 #: agent-onboarding.md:213
 msgid "The QA sidecar schema"
-msgstr "Le schéma des fichiers annexes de QA"
+msgstr "Le schéma du fichier QA"
 
 #: agent-onboarding.md:27
 msgid "There are two kinds, and confusing them is the most common early mistake."
@@ -280,7 +280,7 @@ msgstr "Surveiller une PR sœur : {code0}."
 
 #: agent-onboarding.md:211
 msgid "What a QA criterion means"
-msgstr "Ce que signifie un critère de QA"
+msgstr "Ce que signifie un critère QA"
 
 #: agent-onboarding.md:209
 msgid "What a skill does"
@@ -288,11 +288,11 @@ msgstr "Ce que fait une compétence"
 
 #: agent-onboarding.md:82
 msgid "What it gives you"
-msgstr "Ce que cela vous apporte"
+msgstr "Ce que ça vous donne"
 
 #: agent-onboarding.md:214
 msgid "What this environment can do"
-msgstr "Ce que cet environnement sait faire"
+msgstr "Ce que cet environnement peut faire"
 
 #: agent-onboarding.md:82
 msgid "Where"

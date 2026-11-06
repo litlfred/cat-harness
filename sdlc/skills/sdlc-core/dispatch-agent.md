@@ -120,6 +120,14 @@ allow. If you are dispatching work that has no work item, work item it first.
 3. **Name the skills that govern the front** in the brief, by path, and
    quote the rules they set that the work could touch — rendering, layering,
    what is forbidden. An agent cannot follow a rule it was never pointed at.
+   **Always include [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)
+   (and [`hand-back-to-discussion`](../../../skills/conduct/conduct-core/hand-back-to-discussion.md))**
+   in every dispatched brief, and require the child to pass it on to any
+   subagent it spawns: never ask the owner a question in prose alone without a
+   tappable card (`AskUserQuestion`, `request_decision`, `ask_question`, or
+   `post_widget`) after the full chat block (≤ 4 options, recommended first,
+   stated default on silence), or return the question to the coordinating
+   session in the `hand-back-to-discussion` schema format.
    If the skills are
    served over MCP and the server is unreachable, read them from the mounted
    layers (`<layer>/skills/**`) instead: an unreachable server is never a

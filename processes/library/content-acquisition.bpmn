@@ -159,10 +159,10 @@
         <di:waypoint x="1280" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_CA_7" bpmnElement="SF_CA_7">
-        <di:waypoint x="375" y="360" />
-        <di:waypoint x="375" y="395" />
+                        <di:waypoint x="375" y="360" />
+        <di:waypoint x="375" y="415" />
+        <di:waypoint x="1340" y="415" />
         <di:waypoint x="1340" y="395" />
-        <di:waypoint x="1340" y="375" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_CA_8" bpmnElement="SF_CA_8">
         <di:waypoint x="1400" y="335" />

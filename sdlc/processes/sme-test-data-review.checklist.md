@@ -16,10 +16,10 @@ SME review of fixed test data for clinical or scientific decision support and in
 
 - Selects the unit of review required by `SmeCaseVerdictKind` (`schemas/sdlc/test-data.ts`): a worked `case` for `decision-support`, or a `cohort` plus `expectedValue` for `indicator-definition`.
 - Call `workflow_complete` with `node: "GW_SubjectKind"` and `outcome` set to the label that holds:
-  - «decision-support» → `Task_PrepareWorkedCase` (Prepare worked case: input, decisionLogicRef and systemOutput)
-  - «indicator-definition» → `Task_PrepareCohort` (Prepare cohort: inputs, indicatorRef, expected & computed value)
+  - «decision-support» → `Task_PrepareWorkedCase` (Prepare the worked case: input, logic, output)
+  - «indicator-definition» → `Task_PrepareCohort` (Prepare the cohort: inputs, expected and computed)
 
-### 1. Prepare worked case: input, decisionLogicRef and systemOutput (`Task_PrepareWorkedCase`)
+### 1. Prepare the worked case: input, logic, output (`Task_PrepareWorkedCase`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
@@ -27,7 +27,7 @@ SME review of fixed test data for clinical or scientific decision support and in
 - Record it: `workflow_complete` with `node: "Task_PrepareWorkedCase"`.
 - next: → `GW_ReadyForSme` (Review unit prepared)
 
-### 2. Prepare cohort: inputs, indicatorRef, expected & computed value (`Task_PrepareCohort`)
+### 2. Prepare the cohort: inputs, expected and computed (`Task_PrepareCohort`)
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
@@ -38,9 +38,9 @@ SME review of fixed test data for clinical or scientific decision support and in
 ### Merge — Review unit prepared (`GW_ReadyForSme`)
 
 - Nothing to do or decide: the paths meet here and the engine passes through.
-- next: → `Task_SmeJudge` (Judge domain correctness of worked case or indicator cohort)
+- next: → `Task_SmeJudge` (Judge whether the case or cohort is right)
 
-### 3. Judge domain correctness of worked case or indicator cohort (`Task_SmeJudge`)
+### 3. Judge whether the case or cohort is right (`Task_SmeJudge`)
 
 - Who: the `Clinical / scientific SME` lane (role `clinical-sme`).
 - What: Performed by the human SME in `Lane_SME` (`clinical-sme`, `judgementOnly: true`).

@@ -31,7 +31,7 @@ msgstr ""
 
 #: processes/library/translation-workflow.bpmn:112
 #. Diagram label
-msgid "Adjudicate flagged passage (human reviewer)"
+msgid "Adjudicate the flagged passage (human)"
 msgstr ""
 
 #: processes/library/translation-workflow.bpmn:49
@@ -91,7 +91,7 @@ msgstr ""
 
 #: processes/library/translation-workflow.bpmn:83
 #. Diagram label
-msgid "Extract translatable strings (POT generation)"
+msgid "Extract translatable strings (POT)"
 msgstr ""
 
 #: processes/library/translation-workflow.bpmn:66

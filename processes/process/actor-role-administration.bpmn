@@ -303,8 +303,8 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
         <di:waypoint x="940" y="278" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A11" bpmnElement="A11">
-        <di:waypoint x="1000" y="324.5" />
-        <di:waypoint x="1000" y="520" />
+                <di:waypoint x="1000" y="338" />
+        <di:waypoint x="1000" y="512" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_A12" bpmnElement="A12">
         <di:waypoint x="1060" y="572" />

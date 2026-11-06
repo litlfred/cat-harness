@@ -87,11 +87,11 @@ compétence qui existe en trois exemplaires.
 
 Où lire davantage — pas par où commencer :
 
-| Où | Ce que cela vous apporte |
+| Où | Ce que ça vous donne |
 |---|---|
-| [Référence des schémas de compétences]({{ site.baseurl }}/reference/skills/) | contrat d'entrée/sortie généré pour chaque compétence |
-| [Instructions des compétences]({{ site.baseurl }}/reference/skill-instructions/) | texte complet des instructions, généré |
-| [Compétences & rôles](../../concepts/skills.html) | comment compétences, rôles et capacités s'articulent |
+| [Référence des schémas de compétences]({{ site.baseurl }}/reference/skills/) | contrat d'entrée/sortie généré par compétence |
+| [Instructions des compétences]({{ site.baseurl }}/reference/skill-instructions/) | corps d'instructions complets générés |
+| [Compétences & rôles](../../concepts/skills.html) | comment les compétences, rôles et capacités se composent |
 
 Les deux répertoires `reference/` sont **générés** — ne les modifiez jamais à la main.
 Régénérez-les avec `bun run cat-harness-tools/scripts/gen-schema-docs.ts` et
@@ -99,7 +99,7 @@ Régénérez-les avec `bun run cat-harness-tools/scripts/gen-schema-docs.ts` et
 
 ## 4. Le modèle d'objets de contenu, en bref
 
-Un bloc de contenu est un **triplet** partageant un même nom racine :
+Un bloc de contenu est un **triple** partageant un nom racine :
 
 ```
 <block>.ts     manifeste — label, kind, uses[], lean.ref, cites[]
@@ -134,7 +134,7 @@ bun run content/pipeline/content-graph.ts content/<paper>
 Vérifier que `uses[]` est bien utilisé est une compétence à part entière :
 `uses-editorial-review`, plus l'axe de QA mécanique `uses`.
 
-## 6. Suivez le travail dans les beans, pas dans votre tête
+## 6. Suivez le travail dans beans, pas dans votre tête
 
 `beans` est l'**unique** mécanisme de tâches — local à la session *et*
 partagé entre agents. `beans/` est conservé sur une branche d'état et monté au
@@ -155,7 +155,7 @@ fichiers témoins) — elles restent en JSON brut.
 La discipline complète : `work-plan/skills/work-plan/todo-manager.md`,
 `work-plan/skills/work-plan/bean-coordination.md`.
 
-## 7. Fichiers annexes de QA et axes
+## 7. Fichiers QA et axes
 
 Chaque bloc peut porter `<block>.qa.json`, qui consigne, critère par critère, ce que
 chaque relecteur a constaté — `script`, `agent` ou `human`. Les entrées portent les
@@ -186,8 +186,8 @@ Certains critères sont `automated: true` (un script décide) et d'autres
 coûtent de vrais tours — voir `semantic-cone.ts` pour les cibler selon ce qu'ils
 peuvent réellement affecter.
 
-**Axes optionnels par folio.** Un axe qui encode le sujet d'un seul folio n'est
-enregistré que si ce folio y adhère :
+**Axes optionnels du folio.** Un axe encodant le sujet d'un folio n'est
+enregistré que lorsque le folio choisit de l'activer :
 
 ```json
 // harness.config.json
@@ -204,9 +204,9 @@ par exemple `content/<paper>/topic-keywords.json` pilote
 /prepare-merge [base]
 ```
 
-Exécute la recette générique plus les contrôles propres au type de contenu (article →
+Exécute la recette générique ainsi que les portes de contrôle propres au type de contenu (document →
 content_validate / qa_sweep / proof_status / latex_preflight /
-lean_build), puis pousse. **Ne fusionne pas.**
+lean_build), puis pousse les modifications. **Cela ne fusionne pas.**
 
 Surveiller une PR sœur : `/watch <pr|branch>`.
 
@@ -214,15 +214,15 @@ Surveiller une PR sœur : `/watch <pr|branch>`.
 
 | Question | Réponse |
 |---|---|
-| Commandes et conventions du projet | `AGENTS.md` (la source de vérité, valable pour tout agent) |
+| Commandes du projet, conventions | `AGENTS.md` (la source de vérité, valable pour tout agent) |
 | Ce que fait une compétence | `skills/**/`, ou le [texte des instructions]({{ site.baseurl }}/reference/skill-instructions/) généré |
 | Le contrat typé d'une compétence | [Référence des schémas de compétences]({{ site.baseurl }}/reference/skills/) |
-| Ce que signifie un critère de QA | `content/pipeline/qa-criteria-registry.ts` — les descriptions font office de spécification |
+| Ce que signifie un critère QA | `content/pipeline/qa-criteria-registry.ts` — les descriptions font office de spécification |
 | Le schéma des blocs | `schemas/types.ts` |
-| Le schéma des fichiers annexes de QA | `schemas/block-qa.ts` |
-| Ce que cet environnement sait faire | `cat-harness/scenarios/capabilities/*.json`, `--check-deps` |
+| Le schéma du fichier QA | `schemas/block-qa.ts` |
+| Ce que cet environnement peut faire | `cat-harness/scenarios/capabilities/*.json`, `--check-deps` |
 
-## 10. Habitudes qui vous évitent les ennuis
+## 10. Habitudes pour éviter les ennuis
 
 - **Ne codez pas en dur le nom d'un article.** Un folio peut en contenir plusieurs ;
   résolvez-le avec `findPapers()` / `soleFolioPaper()` depuis

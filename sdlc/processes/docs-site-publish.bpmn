@@ -212,7 +212,7 @@
       <bpmndi:BPMNShape id="Shape_Task_CloseAlert" bpmnElement="Task_CloseAlert"><dc:Bounds x="2925" y="85" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Published" bpmnElement="End_Published"><dc:Bounds x="3145" y="127" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="3093" y="169" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Alert" bpmnElement="Call_Alert"><dc:Bounds x="2860" y="283.5" width="180" height="93" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_End_Failed" bpmnElement="End_Failed"><dc:Bounds x="3110" y="312" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="3058" y="354" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Failed" bpmnElement="End_Failed"><dc:Bounds x="3110" y="312" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="3058" y="254" width="140" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_0" bpmnElement="Flow_0"><di:waypoint x="263" y="145"/><di:waypoint x="345" y="145"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_S1" bpmnElement="Flow_S1"><di:waypoint x="465" y="145"/><di:waypoint x="565" y="145"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_S2" bpmnElement="Flow_S2"><di:waypoint x="615" y="145"/><di:waypoint x="715" y="145"/><bpmndi:BPMNLabel><dc:Bounds x="621" y="121" width="80" height="20"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>

@@ -31,6 +31,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-7"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-8"
         }
       ]
     },
@@ -123,6 +126,20 @@
       ],
       "dcterms:date": [
         "2026-09-20"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-8",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "Briefing a sibling or a subagent — pass `interaction-modality` on (STRICT)",
+      "prov:value": "Added 2026-11-05 (bean `55ka`), after siblings spawned from coordinating\nsessions (`session_01VQDpPffYARDQ8juksAZScf` on `k3vv` and\n`session_01VQDpPfGantMCt7AV4LCCK2` on `drnh`) asked the owner questions in\nprose without `AskUserQuestion` cards across nine sessions (`drnh`, `rpc6`,\n`f1nc`, `exrp`, `2lfx`, `70hd`, `xxow`, `akiq`/`ay33`/`hd58`, `asq1`). Owner,\n2026-11-05: *\"did you and your siblings forget I am disabled? why has it not\nbeen heeded lately?\"*",
+      "cat-harness:refs": [
+        "bean 55ka",
+        "2026-11-05"
+      ],
+      "dcterms:date": [
+        "2026-11-05"
       ]
     }
   ]

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: folio-assistant\n"
-"POT-Creation-Date: 2026-11-06T08:41:14.675Z\n"
+"POT-Creation-Date: 2026-11-06T09:13:01.410Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
