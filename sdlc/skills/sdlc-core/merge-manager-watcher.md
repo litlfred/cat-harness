@@ -106,6 +106,12 @@ it.
 6. **Tabulation can be delegated.** A helper agent may tabulate the sweep
    under these rules. The helper never touches the PRs the steward owns, and
    never pushes, comments or closes.
+7. **The train's PRs are the train's.** A PR labelled `merge-train` or
+   `merge-train-batch` is landed by the merge train only, in a batch with one
+   main move and one main CI run. The sweep skips it, as `merge-main.yml`
+   does; every other PR that meets rule 1 merges as before. A sweep that
+   merges a labelled PR one at a time starves the train (owner ruling,
+   2026-11-06: "1. The train").
 
 ## Keeping the swarm in step
 
