@@ -584,6 +584,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills/cache-first-ci",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "cache-first-ci"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Every CI step is a pure function of its inputs: derive the inputs, hash them into a key, restore on a hit, run and save on a miss. Read before adding a cache to a workflow, before writing a cache key, before trusting a restored output or a skipped verdict, and before pushing a change that moves a cached step's key. Covers the one primitive (`cached-step` + `cache:key`), the trust classes, what a committer publishes, the 10 GB budget, and the hit-rate report."
+        }
+      ],
+      "skos:notation": "cache-first-ci",
+      "dcterms:source": "cat-harness/sdlc/skills/sdlc-core/cache-first-ci.md",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills/canonical-watcher",
       "@type": "skos:Concept",
       "skos:inScheme": {
