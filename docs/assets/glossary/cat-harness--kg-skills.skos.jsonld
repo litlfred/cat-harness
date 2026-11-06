@@ -584,6 +584,26 @@
       "skos:note": "candidate"
     },
     {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills/cache-first-ci",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "cache-first-ci"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Every CI step is a pure function of its inputs: derive the inputs, hash them into a key, restore on a hit, run and save on a miss. Read before adding a cache to a workflow, before writing a cache key, before trusting a restored output or a skipped verdict, and before pushing a change that moves a cached step's key. Covers the one primitive (`cached-step` + `cache:key`), the trust classes, what a committer publishes, the 10 GB budget, and the hit-rate report."
+        }
+      ],
+      "skos:notation": "cache-first-ci",
+      "dcterms:source": "cat-harness/sdlc/skills/sdlc-core/cache-first-ci.md",
+      "skos:note": "candidate"
+    },
+    {
       "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills/canonical-watcher",
       "@type": "skos:Concept",
       "skos:inScheme": {
@@ -2226,6 +2246,26 @@
       ],
       "skos:notation": "issue-working",
       "dcterms:source": "cat-harness/sdlc/skills/sdlc-core/issue-working.md",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills/journey-maps",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "journey-maps"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Journeys and workshops as knowledge-graph content: a DAK user scenario told as a journey map (`user-scenario` kind: ordered steps, per person what they do and feel, pain points, enablers, the record's trust state, and edges to stories, BPMN tasks, requirements, FHIR examples and building blocks), the `building-blocks` catalogue its steps use, a workshop that teaches from it (`workshop` kind: modules, objectives, questions for the room on each step, reference tables, sheets, job aids), the `journeys-viewer` visualiser that draws them for an instance and the layers it mounts, and the `check:journey-refs` gate that every reference they name resolves. Read before writing a journey or a workshop, before declaring the viewer, and before building a journey walkthrough app of your own."
+        }
+      ],
+      "skos:notation": "journey-maps",
+      "dcterms:source": "cat-harness/skills/ui/ui-core/journey-maps.md",
       "skos:note": "candidate"
     },
     {
@@ -4871,6 +4911,26 @@
       ],
       "skos:notation": "wireframe-viewport-check",
       "dcterms:source": "cat-harness/skills/ui/ui-core/wireframe-viewport-check.md",
+      "skos:note": "candidate"
+    },
+    {
+      "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills/work-context",
+      "@type": "skos:Concept",
+      "skos:inScheme": {
+        "@id": "https://litlfred.github.io/cat-harness/v0/ns/glossary/kg-skills"
+      },
+      "skos:prefLabel": [
+        {
+          "@value": "work-context"
+        }
+      ],
+      "skos:definition": [
+        {
+          "@value": "Keep a short note on the work you are doing — what you did, what you decided and why, what is left open — with the memory tools, so the next person or agent to pick the work up starts where you stopped. Read when you are handed a piece of work, and before you stop working on it."
+        }
+      ],
+      "skos:notation": "work-context",
+      "dcterms:source": "cat-harness/skills/conduct/conduct-core/work-context.md",
       "skos:note": "candidate"
     },
     {

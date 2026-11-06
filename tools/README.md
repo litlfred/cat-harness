@@ -70,6 +70,8 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`ingest-extended/`](ingest-extended/) | _nothing declares what this holds_ | |
 | [`ingest-stdlib/`](ingest-stdlib/) | _nothing declares what this holds_ | |
 | [`instantiate-harness/`](instantiate-harness/) | _nothing declares what this holds_ | |
+| [`journey-refs/`](journey-refs/) | _nothing declares what this holds_ | |
+| [`journeys-viewer/`](journeys-viewer/) | _nothing declares what this holds_ | |
 | [`judge-tree/`](judge-tree/) | _nothing declares what this holds_ | |
 | [`kg-audit/`](kg-audit/) | _nothing declares what this holds_ | |
 | [`kg-graph-export/`](kg-graph-export/) | _nothing declares what this holds_ | |
