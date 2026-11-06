@@ -32,7 +32,7 @@ page resolves nothing.
 **It fetches the document relative to its own location.** The page is
 `<site>/<stub>/index.html` and reads `../<name>/<stub>.jsonld` (the document's
 own path, under its instance's directory, the host's included), so the same
-bytes work on the canonical site and under `STAGING/<slug>/` with no
+bytes work on the canonical site and under `branches/<slug>/` with no
 configuration, no `--base-url`, and no build-time branch. A staging build that
 needed a different page would test something other than what ships. Which
 documents the site publishes, and where:

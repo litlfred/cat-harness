@@ -121,7 +121,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Who writes an entry",
-      "prov:value": "(bean `bm6d`). The entry goes to the root `_render-log/`, never into `_site`, which would land it at `STAGING/<slug>/_render-log/` — inside the directory a cleanup removes | | `feature-staging.yml` → `stage`, preview cap | `removed`, one per rotated preview | the **same commit as the deploy**, written by `staging-rotate.ts`; the reason names the size budget, the owner ruling of 2026-10-02 (amended 2026-10-04) and issue #1868, and the summary gives slug, age and size | | `feature-staging.yml` → `cleanup`, confirmed | `removed` | the **same commit as the removal**",
+      "prov:value": "(bean `bm6d`). The entry goes to the root `_render-log/`, never into `_site`, which would land it at `branches/<slug>/_render-log/` — inside the directory a cleanup removes | | `feature-staging.yml` → `stage`, preview cap | `removed`, one per rotated preview | the **same commit as the deploy**, written by `staging-rotate.ts`; the reason names the size budget, the owner ruling of 2026-10-02 (amended 2026-10-04) and issue #1868, and the summary gives slug, age and size | | `feature-staging.yml` → `cleanup`, confirmed | `removed` | the **same commit as the removal**",
       "cat-harness:refs": [
         "bean `bm6d`",
         "owner",

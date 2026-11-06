@@ -25,7 +25,9 @@ this layer, so they are linked here rather than there:
    instance declares is what resolves, and a hardcoded path is how a skill
    goes missing the moment the layout moves.
 4. **Say which process you are in**, every turn — the process, the lane, the
-   task, and when you switch. `skills/process/workflow/process-state.md`.
+   task, and when you switch — and record the workflow instance (`workflow_start`
+   with `--bean <id>` on claim, `workflow_complete` as steps advance, completed on
+   close). `skills/process/workflow/process-state.md`.
 
 ## What is specific to THIS layer
 
@@ -303,7 +305,7 @@ declared (`scripts/index-render.ts`).*
 
 <!-- skills:index:begin -->
 
-_255 skills in 19 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_257 skills in 19 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 | Directory | Skills |
 |---|---|
@@ -323,7 +325,7 @@ _255 skills in 19 directories. The full list, with what each skill is for, is in
 | [`skills/ui/theming/`](skills/ui/theming/) | 8 |
 | [`skills/ui/ui-core/`](skills/ui/ui-core/) | 22 |
 | [`sdlc/skills/crdm/`](sdlc/skills/crdm/) | 7 |
-| [`sdlc/skills/sdlc-core/`](sdlc/skills/sdlc-core/) | 71 |
+| [`sdlc/skills/sdlc-core/`](sdlc/skills/sdlc-core/) | 73 |
 | [`sdlc/skills/spec-kit/`](sdlc/skills/spec-kit/) | 3 |
 | [`work-plan/skills/work-plan/`](work-plan/skills/work-plan/) | 8 |
 

@@ -31,13 +31,17 @@
   comment makes the text up to the next "</script>" raw, so headings there
   lose their anchors. Each degrades an anchor; none breaks a script.
 
+  Each piece is EMITTED as it is cut, not appended to an accumulator
+  (`capture out` of `{{ out }}{{ piece }}` copies all that came before, on
+  every piece): the output is the same string, without the O(pieces x page)
+  copying.
+
   Keep in step with the theme when the just-the-docs pin moves
   (upstream/upstream-pins.json): re-copy anchor_headings_core.html from the
   new pin.
 {%- endcomment -%}
 
 {%- if include.html contains '<script' or include.html contains '<style' -%}
-  {%- assign _ahs_out = '' -%}
   {%- assign _ahs_scripts = include.html | split: '<script' -%}
   {%- for _ahs_s in _ahs_scripts -%}
     {%- comment -%} 1. this piece's script (raw) and the markup after it {%- endcomment -%}
@@ -53,7 +57,7 @@
       {%- capture _ahs_raw -%}<script{{ _ahs_s }}{%- endcapture -%}
       {%- assign _ahs_markup = '' -%}
     {%- endif -%}
-    {%- capture _ahs_out -%}{{ _ahs_out }}{{ _ahs_raw }}{%- endcapture -%}
+    {{- _ahs_raw -}}
 
     {%- comment -%} 2. the markup, cut the same way at <style> {%- endcomment -%}
     {%- assign _ahs_styles = _ahs_markup | split: '<style' -%}
@@ -69,7 +73,7 @@
         {%- capture _ahs_traw -%}<style{{ _ahs_t }}{%- endcapture -%}
         {%- assign _ahs_tmarkup = '' -%}
       {%- endif -%}
-      {%- capture _ahs_out -%}{{ _ahs_out }}{{ _ahs_traw }}{%- endcapture -%}
+      {{- _ahs_traw -}}
 
       {%- comment -%} 3. markup: the theme's pass, only where there is a heading to anchor {%- endcomment -%}
       {%- comment -%}
@@ -82,13 +86,12 @@
         {%- assign _ahs_lead = _ahs_tmarkup | split: '<h' | first -%}
         {%- assign _ahs_rest = _ahs_tmarkup | remove_first: _ahs_lead -%}
         {%- capture _ahs_anchored -%}{%- include vendor/anchor_headings_core.html html=_ahs_rest beforeHeading=include.beforeHeading headerAttrs=include.headerAttrs anchorAttrs=include.anchorAttrs anchorBody=include.anchorBody anchorClass=include.anchorClass anchorTitle=include.anchorTitle h_min=include.h_min h_max=include.h_max bodyPrefix=include.bodyPrefix bodySuffix=include.bodySuffix generateId=include.generateId -%}{%- endcapture -%}
-        {%- capture _ahs_out -%}{{ _ahs_out }}{{ _ahs_lead }}{{ _ahs_anchored }}{%- endcapture -%}
+        {{- _ahs_lead -}}{{- _ahs_anchored -}}
       {%- else -%}
-        {%- capture _ahs_out -%}{{ _ahs_out }}{{ _ahs_tmarkup }}{%- endcapture -%}
+        {{- _ahs_tmarkup -}}
       {%- endif -%}
     {%- endfor -%}
   {%- endfor -%}
-  {{- _ahs_out -}}
 {%- else -%}
   {%- include vendor/anchor_headings_core.html html=include.html beforeHeading=include.beforeHeading headerAttrs=include.headerAttrs anchorAttrs=include.anchorAttrs anchorBody=include.anchorBody anchorClass=include.anchorClass anchorTitle=include.anchorTitle h_min=include.h_min h_max=include.h_max bodyPrefix=include.bodyPrefix bodySuffix=include.bodySuffix generateId=include.generateId -%}
 {%- endif -%}

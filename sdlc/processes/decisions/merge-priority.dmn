@@ -58,7 +58,7 @@
   therefore selects all eleven and cannot reproduce the order the steward
   ran. What #1812 and #1875 shared, and the others did not, is that their
   beans descend from the separation goal (`wggr -> vke6 -> vuip`,
-  `63wl -> iirv -> vuip`): they SEED THE STAGING REPOS, which is the reason
+  `63wl -> iirv -> vuip`): they SEED THE branches/ REPOS, which is the reason
   the owner gave for input (a). The test in scripts/tests/merge-queue.test.ts
   pins both halves: the order, and that the path test alone fails it.
 

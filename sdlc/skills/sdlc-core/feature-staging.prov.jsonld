@@ -134,7 +134,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "1. Feature branch → staging deployment",
-      "prov:value": "Waits for the rate-limit window (§7), then deploys to\n   `gh-pages/STAGING/<branch-slug>/` **only the files that differ from the\n   live site** (`staging-share.ts apply`, owner 2026-10-31). The footer build stamp is\n   filled in the browser on every build, the live site's from `build.json`\n   (folio-assistant#2837), so an unchanged page is byte-identical across\n   deploys\n6.",
+      "prov:value": "Waits for the rate-limit window (§7), then deploys to\n   `gh-pages/branches/<branch-slug>/` **only the files that differ from the\n   live site** (`staging-share.ts apply`, owner 2026-10-31). The footer build stamp is\n   filled in the browser on every build, the live site's from `build.json`\n   (folio-assistant#2837), so an unchanged page is byte-identical across\n   deploys\n6.",
       "cat-harness:refs": [
         "folio-assistant#2837",
         "2026-10-31"

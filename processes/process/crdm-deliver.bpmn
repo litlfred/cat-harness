@@ -81,9 +81,9 @@ Called, not inherited: the agent keeps its implementing role and takes on the
 `code-reviewer` lane inside Process_CodeReview for that call path only.</bpmn:documentation>
     </bpmn:callActivity>
     <bpmn:task id="A_DeployStaging" name="Deploy the MVP&#10;to staging">
-      <bpmn:documentation>An MVP is shared AS A STAGING DEPLOY, not as a
+      <bpmn:documentation>An MVP is shared AS A branches/ DEPLOY, not as a
 description of one. `feature-staging.yml` publishes the branch under
-`STAGING/&lt;branch-slug&gt;/` on gh-pages and comments the URL on the PR, so the
+`branches/&lt;branch-slug&gt;/` on gh-pages and comments the URL on the PR, so the
 stakeholder who tests it is looking at the built artefact rather than at a
 screenshot — the same argument the merge discipline makes about rendered work: holding a rendered change back for assessment makes assessment harder, not safer.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="feature-staging"/><cat-harness.processes:no-call reason="Pushing the branch is the step; feature-staging.yml then runs on the pull_request event, not because this diagram called it. A call activity would claim the engine drives CI."/></bpmn:extensionElements>

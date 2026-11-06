@@ -23,7 +23,7 @@ sites hand-roll it.
 **A check returns a refusal, not a cleaned-up value.** A repair silently
 changes which artefact is named: a slug pipeline that replaces disallowed
 characters can turn a branch of `---` into the empty string, so
-`rm -rf "pages/STAGING/$SLUG"` names every preview. A refusal makes the caller
+`rm -rf "pages/branches/$SLUG"` names every preview. A refusal makes the caller
 decide, and only the caller knows whether that is a 400, an `exit 1`, or a skip.
 
 **And check by VALUE, never by provenance.** Re-run a guard after the value

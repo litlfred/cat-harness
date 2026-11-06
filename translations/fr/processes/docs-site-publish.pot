@@ -91,7 +91,7 @@ msgstr ""
 
 #: sdlc/processes/docs-site-publish.bpmn:111
 #. Diagram element documentation
-msgid "Copies every open pull request's `STAGING/<slug>/` preview from `gh-pages` into the publish directory before the replace, once per publish attempt (`restore-staging.ts`, run inside `publish-gh-pages.sh`). Only open PRs' previews are carried; a branch that cannot be read refuses the publish."
+msgid "Copies every open pull request's `branches/<slug>/` preview from `gh-pages` into the publish directory before the replace, once per publish attempt (`restore-staging.ts`, run inside `publish-gh-pages.sh`). Only open PRs' previews are carried; a branch that cannot be read refuses the publish."
 msgstr ""
 
 #: sdlc/processes/docs-site-publish.bpmn:146

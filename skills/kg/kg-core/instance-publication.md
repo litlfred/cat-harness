@@ -339,7 +339,7 @@ so its `@id` is `<canonicalUrl>/<stub>.jsonld`, and the deploy passes it no
 `--base-url` (`declaresOwnCanonical` in `instance-exports.ts`) — the tools
 layer, `cat-openapi`, the FHIR IG layer and the DAK layer, for example.
 **This site serves their bytes at `<site>/<stub>/<stub>.jsonld`,
-and that is their STAGING location, not their identity** (§"Three questions
+and that is their branches/ location, not their identity** (§"Three questions
 that must not be merged" above). The root index records both: `@id` is the
 publication identity, `url` is where this site stages it. Anything that names a
 node in another instance's document mints with `publishedIdentity`, or it

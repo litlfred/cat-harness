@@ -15,7 +15,7 @@
   <bpmn:process id="Process_RenderLog" name="Render log — the publish branch keeps its own history" isExecutable="false">
     <bpmn:documentation>Every change to the publish branch appends an entry to `_render-log/&lt;day&gt;.jsonl`. A removal is a NEW entry, never the erasure of the `rendered` one before it — the pair is the history. The lane is the build pipeline because every writer is a workflow job; no agent decides what goes in this log. A system lane runs a fixed program and exercises no judgement, which is exactly what an append-only log wants.
 
-The question it exists to answer: what happened to STAGING/&lt;slug&gt;, and why. The publish branch has several publishers and one of them replaces the whole branch, which is why a removed preview needs a record of its own.</bpmn:documentation>
+The question it exists to answer: what happened to branches/&lt;slug&gt;, and why. The publish branch has several publishers and one of them replaces the whole branch, which is why a removed preview needs a record of its own.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
@@ -69,7 +69,7 @@ with the reason">
     </bpmn:task>
 
     <bpmn:task id="A_Remove" name="Remove the artefact">
-      <bpmn:documentation>`rm -rf STAGING/&lt;slug&gt;`. Cannot reach the log, which lives outside STAGING/ — structural rather than guarded, because a branch named to collide with a directory under STAGING/ slugifies to exactly that name and git permits the ref.</bpmn:documentation>
+      <bpmn:documentation>`rm -rf branches/&lt;slug&gt;`. Cannot reach the log, which lives outside branches/ — structural rather than guarded, because a branch named to collide with a directory under branches/ slugifies to exactly that name and git permits the ref.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="render-logging"/></bpmn:extensionElements>
     </bpmn:task>
 
