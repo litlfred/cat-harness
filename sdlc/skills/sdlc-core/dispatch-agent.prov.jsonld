@@ -13,6 +13,9 @@
       "prov:wasInfluencedBy": [
         {
           "@id": "sdlc/skills/sdlc-core/dispatch-agent.md#provenance-1"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/dispatch-agent.md#provenance-2"
         }
       ]
     },
@@ -27,6 +30,20 @@
       ],
       "dcterms:date": [
         "2026-10-14"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/dispatch-agent.md#provenance-2",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "2. Dispatch procedure",
+      "prov:value": "Added 2026-11-05 (bean `55ka`): step 3 now explicitly requires every\ndispatched brief to carry `interaction-modality` and `hand-back-to-discussion`\nand pass them on, after nine sibling sessions asked the owner in prose without\ncards on 2026-11-05.",
+      "cat-harness:refs": [
+        "bean 55ka",
+        "2026-11-05"
+      ],
+      "dcterms:date": [
+        "2026-11-05"
       ]
     }
   ]
