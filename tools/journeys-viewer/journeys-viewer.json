@@ -3,7 +3,7 @@
   "tool": {
     "id": "journeys-viewer",
     "title": "Journeys viewer",
-    "description": "Draw every journey (`user-scenario`) and workshop (`workshop`) in the checkout as static pages at the route of the visualiser an instance declares for this Tool, `<locale>/<instance>/<id>/`: an index of all journeys, grouped by instance (each a sub-graph page) and by `partOf`, ordered along `follows`; one page per journey, a journey map with a lane and a feeling curve per persona, then each step with its BPMN drawing (the step's flow nodes highlighted), user stories, requirements, FHIR examples, building blocks and ArchiMate views; and the workshop layer, the questions for the room on each step, a page per workshop and per module, job aids, and printable A3/A4 sheets. Instances below the declaring one are read through their declarations, so a downstream site shows the journeys of the layers it mounts too.",
+    "description": "Draw every journey (`user-scenario`) and workshop (`workshop`) in the checkout as static pages at the route of the visualiser an instance declares for this Tool, `<locale>/<instance>/<id>/`: an index of all journeys, grouped by instance (each a sub-graph page) and by `partOf`, ordered along `follows`; one page per journey, a journey map with a lane and a feeling curve per persona, then each step with its BPMN drawing (the step's flow nodes highlighted), user stories, requirements, FHIR examples, building blocks and ArchiMate views; and the workshop layer, the questions for the room on each step, a page per workshop and per module, job aids, and printable A3/A4 sheets; and each device screen (`device-screen`) that shows a step a workshop presents, drawn as a static device mock (phone, tablet, scanner, desktop, kiosk) with its owner beside it, in the workshop's Device Demo, linked both ways with the walkthrough. A persona's picture (`meta.persona.avatar`) is drawn wherever the persona appears. Instances below the declaring one are read through their declarations, so a downstream site shows the journeys of the layers it mounts too.",
     "install": {
       "none": true
     },
@@ -49,8 +49,8 @@
       "journey-maps"
     ],
     "selection": {
-      "when": "A site build of an instance that declares a `journeys-viewer` visualiser over its `user-scenario` and `workshop` directories; run with the other declared writers (`visualiser-writers.ts`), before the navbar pass.",
-      "limits": "Static pages: the stepper, the filter and the remembered assessment ticks are a small dependency-free script, and every page reads complete without it. A FHIR example links to its page only where an instance declares a `fhir-artifact-index`; an ArchiMate view is drawn only where its instance declares `archimate-pages`.",
+      "when": "A site build of an instance that declares a `journeys-viewer` visualiser over its `user-scenario`, `workshop` and `device-screen` directories; run with the other declared writers (`visualiser-writers.ts`), before the navbar pass.",
+      "limits": "Static pages: the stepper, the filter and the remembered assessment ticks are a small dependency-free script, and every page reads complete without it. A FHIR example links to its page only where an instance declares a `fhir-artifact-index`; an ArchiMate view is drawn only where its instance declares `archimate-pages`. A device screen is drawn in the one state its node says: a toggle is drawn on or off, a button is a label; a workshop that declares no screen for its steps frames its own app (`presentation.deviceDemo`) instead.",
       "cost": "Milliseconds per journey; a BPMN drawing is inlined once per step that names it."
     },
     "requires": {
@@ -61,13 +61,18 @@
     },
     "renders": [
       "user-scenario",
-      "workshop"
+      "workshop",
+      "device-screen"
     ]
   },
   "$comment": [
     {
       "at": "",
       "comment": "Owner, 2026-11-05 (option A): a generic journey and workshop viewer in the harness, so that a demonstrator's journeys and an IG's pilgrim journey are content instances of it rather than apps of their own."
+    },
+    {
+      "at": "",
+      "comment": "Owner, 2026-11-06 (option A): device screens as a kind, so any journey can show what each person sees on their device without an app of its own (cat-harness-tools#1576)."
     }
   ]
 }
