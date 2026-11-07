@@ -217,6 +217,10 @@ event, a merge request or a main run finishing may start a sweep early.
    Name the repositories with `--repo <owner/name>` (repeatable), `--repos
    a,b,c`, or `--config <file.json>` (`{"repos": [...], "staleHours": 2}`).
    `--stale-hours <n>` sets when a silent PR owner is flagged (default 2).
+   The layers whose re-pins need the owner's consent default to `smart-*`
+   (the WHO SMART upstream layers; an entry ending in `*` matches a
+   prefix). `--exclude-layer <name>` (repeatable) or a config's
+   `excludedLayers` replaces the default.
    Per repository it prints:
    - each PR's verdict, with a route flag: workflow changes go to a direct
      merge, a folio-assistant PR to the merge train, a pin on an excluded
