@@ -33,7 +33,7 @@ msgstr "إطار يعرفه هذا الإطار باسمه وموقعه ومست
 #: folio-assistant-core/glossary/cat-harness.glossary.json:51
 #. Glossary term label: https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/actor
 msgid "actor"
-msgstr "فاعل"
+msgstr "الفاعل"
 
 #: folio-assistant-core/glossary/cat-harness.glossary.json:11
 #. Glossary term label: https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/associated-harness
@@ -63,7 +63,7 @@ msgstr "سياسة"
 #: folio-assistant-core/glossary/cat-harness.glossary.json:61
 #. Glossary term label: https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/role
 msgid "role"
-msgstr "دور"
+msgstr "الدور"
 
 #: folio-assistant-core/glossary/cat-harness.glossary.json:41
 #. Glossary term label: https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/task-run
