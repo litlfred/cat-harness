@@ -240,7 +240,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
 | `sampleimport--xlg2-wpro-trial` | (instance) | `Process_SampleImport` | `source-moved` | large-datasets/processes/sample-import.bpmn does not exist; read cat-harness/processes/library/sample-import.bpmn, which defines Process_SampleImport |
-| `sampleimport--xlg2-wpro-trial` | 2 | `Call_Materialize` | `not-eligible` | claude may act as authoring-agent, business-analyst, code-reviewer, not as ingestion-agent |
+| `sampleimport--xlg2-wpro-trial` | 2 | `Call_Materialize` | `not-eligible` | claude may act as authoring-agent, business-analyst, code-reviewer, locale-translator, translation-source-lead, not as ingestion-agent |
 | `sampleimport--xlg2-wpro-trial` | 2 | `Call_Materialize` | `unknown` | no policy grants perform-task for Process_SampleImport/Call_Materialize as ingestion-agent |
 | `sampleimport--xlg2-wpro-trial/Call_Materialize` | (instance) | `Process_MaterializeRemote` | `source-moved` | large-datasets/processes/materialize-remote.bpmn does not exist; read cat-harness/processes/library/materialize-remote.bpmn, which defines Process_MaterializeRemote |
 | `sampleimport--xlg2-wpro-trial/Call_Materialize` | 4 | `Task_Restrictions` | `node-not-in-model` | Task_Restrictions is not a node of Process_MaterializeRemote as the diagram now stands |
@@ -256,7 +256,7 @@ The after-check for the agentic engine (issue #1180, step 5). The deterministic 
 | instance | entry | node | finding | detail |
 |---|---|---|---|---|
 | `sampleimport--xlg2-wpro-trial-original` | (instance) | `Process_SampleImport` | `source-moved` | large-datasets/processes/sample-import.bpmn does not exist; read cat-harness/processes/library/sample-import.bpmn, which defines Process_SampleImport |
-| `sampleimport--xlg2-wpro-trial-original` | 2 | `Call_Materialize` | `not-eligible` | claude may act as authoring-agent, business-analyst, code-reviewer, not as ingestion-agent |
+| `sampleimport--xlg2-wpro-trial-original` | 2 | `Call_Materialize` | `not-eligible` | claude may act as authoring-agent, business-analyst, code-reviewer, locale-translator, translation-source-lead, not as ingestion-agent |
 | `sampleimport--xlg2-wpro-trial-original` | 2 | `Call_Materialize` | `unknown` | no policy grants perform-task for Process_SampleImport/Call_Materialize as ingestion-agent |
 | `sampleimport--xlg2-wpro-trial-original/Call_Materialize` | (instance) | `Process_MaterializeRemote` | `source-moved` | large-datasets/processes/materialize-remote.bpmn does not exist; read cat-harness/processes/library/materialize-remote.bpmn, which defines Process_MaterializeRemote |
 | `sampleimport--xlg2-wpro-trial-original/Call_Materialize` | 4 | `Task_Restrictions` | `node-not-in-model` | Task_Restrictions is not a node of Process_MaterializeRemote as the diagram now stands |
