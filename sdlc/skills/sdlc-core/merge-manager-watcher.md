@@ -27,16 +27,60 @@ loop that runs them: when to look, what to read, and where each reading leads.
 The process is
 [`sdlc/processes/merge-manager-watch.bpmn`](../../processes/merge-manager-watch.bpmn).
 
+## When is a merge manager needed?
+
+The lane is conditional (owner ruling, 2026-11-07: "merge manager needed if
+lots of conflicting CI runners causing merge slowdown"). It is needed while
+both of these hold:
+
+1. **Two or more active sessions have ready PRs in the same repositories.**
+2. **The merges are slowing each other down**, which shows as either of:
+   - the runners are contended: more than about 10 queued runs on a
+     repository (the pacing threshold in
+     [`continual-progress`](continual-progress.md) §"Pace the ready
+     marking"), or the oldest queued run is more than about 30 minutes old;
+   - PRs keep conflicting with or superseding each other: duplicate re-pins,
+     or rebases that invalidate each other's CI.
+
+When the condition stops holding (a quiet queue and few sessions), the lane
+lapses. The merge manager says so to every sibling and to the owner. Each
+session then merges its own green PRs with the owner's approval, by the
+normal rules (`merge-queue` §"When no Merge Manager is active"). The
+six-line merge request (below) still applies.
+
 ## Am I the active merge manager?
 
-Exactly one live session holds the lane on each repository. It holds the lane
-when the owner gave it the lane, or when it took the lane over from a stalled
-holder ([`stalled-agent-triage`](stalled-agent-triage.md)) and told the owner.
-On taking the lane, it says so to the coordinator, so that every sibling
-knows where to send PRs. On handing it over, it says to whom. A session that
-cannot tell whether a merge manager is active asks the owner (`merge-queue`,
-§"When no Merge Manager is active"). A memory that one existed yesterday
-does not count, either way.
+While the lane is needed, exactly one live session holds it on each
+repository. It holds the lane when the owner gave it the lane, when it was
+elected (below), or when it took the lane over from a stalled holder
+([`stalled-agent-triage`](stalled-agent-triage.md)) and told the owner. On
+taking the lane, it announces `merge manager: <session id>` to every sibling
+and to the owner, so that every sibling knows where to send PRs. On handing
+it over, it says to whom. A memory that one existed yesterday does not count,
+either way.
+
+**A lone session is its own merge manager** (owner ruling, 2026-11-07: "if
+single, can merge manage self"). When a session is the only active one in
+its coordination group, it queues its own PRs and asks the owner directly,
+with the same six-line merge request and the same card per batch. It needs
+no election and no hand-off. As soon as a second sibling becomes active, and
+the lane is needed, the election rule applies.
+
+**With no merge manager, the siblings elect one** (owner ruling, 2026-11-07:
+"if no merge manager, siblings self-determine which will play that role").
+No merge manager is active when none has announced itself, or when the last
+one has gone inactive. The owner does not have to appoint one. The rule is
+deterministic, so two sessions cannot both claim the lane:
+
+1. The active session that owns the P0 PR (the fix for a red main, or the
+   re-pin chain) takes the lane.
+2. With no P0 PR, the earliest-created active session in the coordination
+   group takes it (the `created_at` of `list_sessions`).
+3. With two P0 owners, the earlier-created of the two takes it.
+
+The elected session announces itself as above, and hands over explicitly
+when it stops. On 2026-11-07 the previous merge manager, merge-planning, went
+inactive without a hand-off, and the owner had to appoint one.
 
 **Siblings send merge requests here, and the owner approves here** (owner
 ruling, 2026-11-07, card "Approvals", B: "all siblings should communicate
@@ -45,8 +89,7 @@ my approval is here, not in siblings"):
 
 - There is one merge manager session.
 - A sibling never merges its own PR. When the PR is ready, the sibling sends
-  the merge manager `ready: <repo>#<n> <full 40-hex sha>` and one line saying
-  what the PR does.
+  the merge manager a merge request in the six-line format below.
 - The owner approves in the merge manager's session, with one card per batch
   that names each PR. An approval the owner gives in a sibling's session does
   not authorise a merge.
@@ -57,6 +100,25 @@ my approval is here, not in siblings"):
   - **P1**: work those unblock;
   - **P2**: CI speed;
   - **P3**: everything else.
+
+### The merge request: six lines
+
+Owner ruling, 2026-11-07: "anything that indicated to merge should have link
+to PR, claude session, explanation of changes, preview URL", and "put that in
+chat then ask to merge by card". A sibling's `ready:` message carries:
+
+1. the PR URL and the full 40-hex head SHA;
+2. the claude.ai session URL;
+3. an explanation of the changes, in 1-3 sentences;
+4. the rendered preview URL for that head (feature-staging's `branches/`
+   preview, or the layer's equivalent), confirmed rendered, or
+   `no preview: <reason>`;
+5. what to look for in the preview;
+6. `full tier green as judged` (rule 1 below).
+
+The merge manager posts all six lines in its chat, then asks the owner by
+card. A request with no rendered preview and no reason goes back to the
+sibling.
 
 ## What wakes it
 
@@ -84,7 +146,8 @@ it.
 
 | Reading | Process |
 |---|---|
-| A ready PR that is all green (rule 1 below) but not yet approved | Put it on the owner's next batch card (§"Am I the active merge manager?") |
+| A merge request for a PR that is all green (rule 1 below) but not yet approved | Post its six lines in chat, then put it on the owner's next batch card (§"The merge request: six lines"). A request with no rendered preview and no reason goes back |
+| The lane is no longer needed (§"When is a merge manager needed?") | Tell every sibling and the owner that the lane lapses; each session merges its own green PRs with the owner's approval |
 | An approved, all-green folio-assistant PR with no `.github/workflows/` change | `merge-train` (Process_MergeTrain): add the `merge-train` label instead of merging it (rule 8 below) |
 | An approved, all-green PR that changes `.github/workflows/`, or is in a repository with no train | Merge it directly through `merge:guard`. A workflow PR needs no approval beyond the batch card (owner ruling, 2026-11-07, card "Workflow PRs", A) |
 | Queued runs 60+ minutes old with nothing landed, or the owner says runners are full | First relieve the runners (§"Runner relief"). Then `saturation-meta-merge`: offer the card, never run without the owner's tap |

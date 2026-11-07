@@ -18,7 +18,14 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 - Skill: `merge-manager-watcher`.
 - What: Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, and each PR owner's last push or comment.
 - Record it: `workflow_complete` with `node: "Task_Read"`.
-- next: → `Gw_Route` (What does the queue need?)
+- next: → `Gw_Needed` (Merge manager needed?)
+
+### Decide — Merge manager needed? (`Gw_Needed`)
+
+- Yes while two or more active sessions have ready PRs in the same repositories and their merges slow each other down: more than about 10 queued runs on a repository, the oldest queued run older than about 30 minutes, or PRs that conflict with or supersede each other (owner ruling, 2026-11-07).
+- Call `workflow_complete` with `node: "Gw_Needed"` and `outcome` set to the label that holds:
+  - «Yes» → `Gw_Route` (What does the queue need?)
+  - «No» → `Task_Lapse` (Announce that the lane lapses)
 
 ### Decide — What does the queue need? (`Gw_Route`)
 
@@ -29,7 +36,15 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
   - «Stalled» → `Call_Stalled` (Stalled-agent triage)
   - «Nothing» → `End_Idle` (Nothing to do)
 
-### 2. Relieve the runners (`Task_Relieve`)
+### 2. Announce that the lane lapses (`Task_Lapse`)
+
+- Who: the `Merge steward` lane (role `merge-steward`).
+- Skill: `merge-manager-watcher`.
+- What: Tell every sibling and the owner.
+- Record it: `workflow_complete` with `node: "Task_Lapse"`.
+- next: → `End_Lapsed` (Lane lapsed)
+
+### 3. Relieve the runners (`Task_Relieve`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - Skill: `merge-manager-watcher`.
@@ -44,7 +59,7 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
   - «Yes» → `Gw_Approved` (Owner approved?)
   - «No» → `End_NotGreen` (Not green yet)
 
-### 3. Stalled-agent triage (`Call_Stalled`)
+### 4. Stalled-agent triage (`Call_Stalled`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - What: Tell the owner, then take the stalled PR over.
@@ -55,7 +70,11 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 4. Saturation meta-merge (`Call_Meta`)
+## Done — Lane lapsed (`End_Lapsed`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 5. Saturation meta-merge (`Call_Meta`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - What: Offer the card and land only on the owner's tap.
@@ -67,7 +86,7 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 - Yes when the owner tapped this batch's card in the merge manager's session, or said to merge this PR when green.
 - Call `workflow_complete` with `node: "Gw_Approved"` and `outcome` set to the label that holds:
   - «Yes» → `Gw_Train` (Rides the train?)
-  - «No» → `Task_Card` (Put it on the owner's batch card)
+  - «No» → `Task_Card` (Post the request in chat, then the batch card)
 
 ## Done — Not green yet (`End_NotGreen`)
 
@@ -84,22 +103,22 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
   - «Yes» → `Call_Train` (Merge train)
   - «No» → `Task_Direct` (Merge it through merge:guard)
 
-### 5. Put it on the owner's batch card (`Task_Card`)
+### 6. Post the request in chat, then the batch card (`Task_Card`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - Skill: `merge-manager-watcher`.
-- What: One card per batch, naming each PR, in priority order: P0 main-red fixes and the re-pin chain, P1 work they unblock, P2 CI speed, P3 the rest.
+- What: The sibling's six-line merge request (PR URL and full head SHA, session URL, 1-3 sentences on the change, the rendered preview URL or no preview with a reason, what to look for, full tier green as judged) goes into the merge manager's chat first; a request with no rendered preview and no reason goes
 - Record it: `workflow_complete` with `node: "Task_Card"`.
 - next: → `End_AwaitOwner` (Awaiting the owner)
 
-### 6. Merge train (`Call_Train`)
+### 7. Merge train (`Call_Train`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - What: Add the merge-train label instead of merging; the train lands the batch with one CI run.
 - A subprocess (`Process_MergeTrain`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Done` (Wake handled)
 
-### 7. Merge it through merge:guard (`Task_Direct`)
+### 8. Merge it through merge:guard (`Task_Direct`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - Skill: `merge-manager-watcher`.

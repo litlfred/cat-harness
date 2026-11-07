@@ -190,9 +190,19 @@ than a question:
    **Ready for review**, add the label **`ready-to-merge`**, and comment
    **`ready: <head sha>`** — the full sha of the head that went green, so a
    push after it is visibly not what was declared ready.
-3. **The Merge Steward session ("Separation") merges.** It brings `main` in,
+3. **Ask the merge manager to merge, in six lines** (owner ruling,
+   2026-11-07). Send it the PR URL and full head SHA, your session URL, 1-3
+   sentences on what changed, the rendered preview URL for that head (or
+   `no preview: <reason>`), what to look for in the preview, and
+   `full tier green as judged`. It posts them in its chat and asks the owner
+   by card. An approval the owner gives in your own session does not
+   authorise a merge. With no merge manager active, see
+   [`merge-manager-watcher`](merge-manager-watcher.md) §"Am I the active
+   merge manager?": the siblings elect one, and a lone session is its own.
+   The format is in §"The merge request: six lines" there.
+4. **The Merge Steward session ("Separation") merges.** It brings `main` in,
    runs `regen`, re-checks and merges. That is its lane, not yours.
-4. **If it reports red, it is yours again**: fix, push, wait for green on
+5. **If it reports red, it is yours again**: fix, push, wait for green on
    every job, then re-label and comment `ready: <new head sha>`.
 
 Wherever a merge does happen, it is the

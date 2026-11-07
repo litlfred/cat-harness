@@ -19,6 +19,9 @@
         <bpmn:documentation>The merge manager, holding the merge-steward role across one or more repositories. Each wake it reads the open PRs, the runner queue, main's verdict and who owns each PR, then routes to the process the queue needs (merge train, saturation meta-merge, stalled-agent takeover) or stays idle.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Wake</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Read</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_Needed</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Lapse</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_Lapsed</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gw_Route</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_Relieve</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Call_Meta</bpmn:flowNodeRef>
@@ -46,9 +49,25 @@
       <bpmn:incoming>Flow_1</bpmn:incoming>
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
     </bpmn:task>
+    <bpmn:exclusiveGateway id="Gw_Needed" name="Merge manager needed?">
+      <bpmn:documentation>Yes while two or more active sessions have ready PRs in the same repositories and their merges slow each other down: more than about 10 queued runs on a repository, the oldest queued run older than about 30 minutes, or PRs that conflict with or supersede each other (owner ruling, 2026-11-07). A lone session is its own merge manager and answers Yes for its own PRs. With none active, the siblings elect one: the owner of the P0 PR, else the earliest-created active session; it announces merge manager: its session id.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Flow_19</bpmn:outgoing>
+      <bpmn:outgoing>Flow_20</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_Lapse" name="Announce that the lane lapses">
+      <bpmn:documentation>Tell every sibling and the owner. Each session then merges its own green PRs with the owner's approval by the normal rules, still sending the six-line merge request.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
+      <bpmn:incoming>Flow_20</bpmn:incoming>
+      <bpmn:outgoing>Flow_21</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="End_Lapsed" name="Lane lapsed">
+      <bpmn:incoming>Flow_21</bpmn:incoming>
+    </bpmn:endEvent>
     <bpmn:exclusiveGateway id="Gw_Route" name="What does the queue need?">
       <bpmn:documentation>Saturated: queued runs are 60+ minutes old and nothing has landed, or the owner says the runners are full. Stalled: a PR owner has been silent for 2+ hours. Ready: a PR stacks with green owed CI. Otherwise nothing.</bpmn:documentation>
-      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:incoming>Flow_19</bpmn:incoming>
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
@@ -79,8 +98,8 @@
       <bpmn:outgoing>Flow_13</bpmn:outgoing>
       <bpmn:outgoing>Flow_14</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:task id="Task_Card" name="Put it on the owner's batch card">
-      <bpmn:documentation>One card per batch, naming each PR, in priority order: P0 main-red fixes and the re-pin chain, P1 work they unblock, P2 CI speed, P3 the rest.</bpmn:documentation>
+    <bpmn:task id="Task_Card" name="Post the request in chat, then the batch card">
+      <bpmn:documentation>The sibling's six-line merge request (PR URL and full head SHA, session URL, 1-3 sentences on the change, the rendered preview URL or no preview with a reason, what to look for, full tier green as judged) goes into the merge manager's chat first; a request with no rendered preview and no reason goes back to the sibling (owner ruling, 2026-11-07). Then one card per batch, naming each PR, in priority order: P0 main-red fixes and the re-pin chain, P1 work they unblock, P2 CI speed, P3 the rest.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_14</bpmn:incoming>
       <bpmn:outgoing>Flow_15</bpmn:outgoing>
@@ -126,7 +145,10 @@
       <bpmn:incoming>Flow_15</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1" sourceRef="Start_Wake" targetRef="Task_Read"/>
-    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_Read" targetRef="Gw_Route"/>
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_Read" targetRef="Gw_Needed"/>
+    <bpmn:sequenceFlow id="Flow_19" name="Yes" sourceRef="Gw_Needed" targetRef="Gw_Route"/>
+    <bpmn:sequenceFlow id="Flow_20" name="No" sourceRef="Gw_Needed" targetRef="Task_Lapse"/>
+    <bpmn:sequenceFlow id="Flow_21" sourceRef="Task_Lapse" targetRef="End_Lapsed"/>
     <bpmn:sequenceFlow id="Flow_3" name="Saturated" sourceRef="Gw_Route" targetRef="Task_Relieve"/>
     <bpmn:sequenceFlow id="Flow_4" name="Ready" sourceRef="Gw_Route" targetRef="Gw_Green"/>
     <bpmn:sequenceFlow id="Flow_5" name="Stalled" sourceRef="Gw_Route" targetRef="Call_Stalled"/>
@@ -147,10 +169,10 @@
   <bpmndi:BPMNDiagram id="Diagram_Process_MergeManagerWatch">
     <bpmndi:BPMNPlane id="Plane_Process_MergeManagerWatch" bpmnElement="Collaboration_Process_MergeManagerWatch">
       <bpmndi:BPMNShape id="Shape_Participant_Process_MergeManagerWatch" bpmnElement="Participant_Process_MergeManagerWatch" isHorizontal="true">
-        <dc:Bounds x="60" y="60" width="1300" height="740"/>
+        <dc:Bounds x="60" y="60" width="1410" height="740"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Steward" bpmnElement="Lane_Steward" isHorizontal="true">
-        <dc:Bounds x="90" y="60" width="1270" height="740"/>
+        <dc:Bounds x="90" y="60" width="1380" height="740"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Wake" bpmnElement="Start_Wake">
         <dc:Bounds x="212" y="362" width="36" height="36"/>
@@ -160,54 +182,54 @@
         <dc:Bounds x="370" y="320" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gw_Route" bpmnElement="Gw_Route" isMarkerVisible="true">
-        <dc:Bounds x="605" y="355" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="508.59" y="302.5" width="120" height="53"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="715" y="355" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="615" y="395" width="100" height="53"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Relieve" bpmnElement="Task_Relieve">
-        <dc:Bounds x="770" y="95" width="120" height="120"/>
+        <dc:Bounds x="880" y="95" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Meta" bpmnElement="Call_Meta">
-        <dc:Bounds x="950" y="95" width="120" height="120"/>
+        <dc:Bounds x="1060" y="95" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gw_Green" bpmnElement="Gw_Green" isMarkerVisible="true">
-        <dc:Bounds x="680" y="280" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="662.47" y="334" width="85.06" height="35"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="790" y="280" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="772.47" y="334" width="85.06" height="35"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gw_Approved" bpmnElement="Gw_Approved" isMarkerVisible="true">
-        <dc:Bounds x="780" y="280" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="760" y="238" width="90" height="36"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="890" y="280" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="870" y="238" width="90" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Card" bpmnElement="Task_Card">
-        <dc:Bounds x="745" y="385" width="120" height="120"/>
+        <dc:Bounds x="855" y="385" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Gw_Train" bpmnElement="Gw_Train" isMarkerVisible="true">
-        <dc:Bounds x="940" y="280" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="920" y="238" width="90" height="36"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="1050" y="280" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1030" y="238" width="90" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Train" bpmnElement="Call_Train">
-        <dc:Bounds x="1040" y="245" width="120" height="120"/>
+        <dc:Bounds x="1150" y="245" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Direct" bpmnElement="Task_Direct">
-        <dc:Bounds x="905" y="385" width="120" height="120"/>
+        <dc:Bounds x="1015" y="385" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Stalled" bpmnElement="Call_Stalled">
-        <dc:Bounds x="770" y="540" width="120" height="120"/>
+        <dc:Bounds x="880" y="540" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Done" bpmnElement="End_Done">
-        <dc:Bounds x="1262" y="362" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1190" y="362" width="66" height="36"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="1372" y="362" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1300" y="362" width="66" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Idle" bpmnElement="End_Idle">
-        <dc:Bounds x="812" y="702" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="770" y="742" width="120" height="40"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="922" y="702" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="880" y="742" width="120" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_NotGreen" bpmnElement="End_NotGreen">
-        <dc:Bounds x="687" y="200" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="672.06" y="160" width="65.88" height="36"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="797" y="200" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="782.06" y="160" width="65.88" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_AwaitOwner" bpmnElement="End_AwaitOwner">
-        <dc:Bounds x="687" y="427" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="650" y="467" width="110" height="36"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="797" y="427" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="760" y="467" width="110" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_1" bpmnElement="Flow_1">
         <di:waypoint x="248" y="380"/>
@@ -215,89 +237,114 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_2" bpmnElement="Flow_2">
         <di:waypoint x="490" y="380"/>
-        <di:waypoint x="605" y="380"/>
+        <di:waypoint x="530" y="380"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_3" bpmnElement="Flow_3">
-        <di:waypoint x="630" y="355"/>
-        <di:waypoint x="630" y="155"/>
-        <di:waypoint x="770" y="155"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="640" y="131" width="70" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="740" y="355"/>
+        <di:waypoint x="740" y="155"/>
+        <di:waypoint x="880" y="155"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="750" y="131" width="70" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
-        <di:waypoint x="630" y="355"/>
-        <di:waypoint x="630" y="305"/>
-        <di:waypoint x="680" y="305"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="636" y="310" width="44" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="740" y="355"/>
+        <di:waypoint x="740" y="305"/>
+        <di:waypoint x="790" y="305"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="746" y="310" width="44" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
-        <di:waypoint x="630" y="405"/>
-        <di:waypoint x="630" y="600"/>
-        <di:waypoint x="770" y="600"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="640" y="576" width="70" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="740" y="405"/>
+        <di:waypoint x="740" y="600"/>
+        <di:waypoint x="880" y="600"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="750" y="576" width="70" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
-        <di:waypoint x="630" y="405"/>
-        <di:waypoint x="630" y="720"/>
-        <di:waypoint x="812" y="720"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="640" y="696" width="70" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="740" y="405"/>
+        <di:waypoint x="740" y="720"/>
+        <di:waypoint x="922" y="720"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="750" y="696" width="70" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_7" bpmnElement="Flow_7">
-        <di:waypoint x="1070" y="155"/>
-        <di:waypoint x="1280" y="155"/>
-        <di:waypoint x="1280" y="362"/>
+        <di:waypoint x="1180" y="155"/>
+        <di:waypoint x="1390" y="155"/>
+        <di:waypoint x="1390" y="362"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_8" bpmnElement="Flow_8">
-        <di:waypoint x="1160" y="305"/>
-        <di:waypoint x="1280" y="305"/>
-        <di:waypoint x="1280" y="362"/>
+        <di:waypoint x="1270" y="305"/>
+        <di:waypoint x="1390" y="305"/>
+        <di:waypoint x="1390" y="362"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_9" bpmnElement="Flow_9">
-        <di:waypoint x="890" y="600"/>
-        <di:waypoint x="1280" y="600"/>
-        <di:waypoint x="1280" y="398"/>
+        <di:waypoint x="1000" y="600"/>
+        <di:waypoint x="1390" y="600"/>
+        <di:waypoint x="1390" y="398"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_10" bpmnElement="Flow_10">
-        <di:waypoint x="730" y="305"/>
-        <di:waypoint x="780" y="305"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="737" y="285" width="30" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="840" y="305"/>
+        <di:waypoint x="890" y="305"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="847" y="285" width="30" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_11" bpmnElement="Flow_11">
-        <di:waypoint x="705" y="280"/>
-        <di:waypoint x="705" y="236"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="710" y="250" width="30" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="815" y="280"/>
+        <di:waypoint x="815" y="236"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="820" y="250" width="30" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_12" bpmnElement="Flow_12">
-        <di:waypoint x="890" y="155"/>
-        <di:waypoint x="950" y="155"/>
+        <di:waypoint x="1000" y="155"/>
+        <di:waypoint x="1060" y="155"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_13" bpmnElement="Flow_13">
-        <di:waypoint x="830" y="305"/>
         <di:waypoint x="940" y="305"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="845" y="285" width="30" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="1050" y="305"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="955" y="285" width="30" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_14" bpmnElement="Flow_14">
-        <di:waypoint x="805" y="330"/>
-        <di:waypoint x="805" y="385"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="810" y="345" width="30" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="915" y="330"/>
+        <di:waypoint x="915" y="385"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="920" y="345" width="30" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_15" bpmnElement="Flow_15">
-        <di:waypoint x="745" y="445"/>
-        <di:waypoint x="723" y="445"/>
+        <di:waypoint x="855" y="445"/>
+        <di:waypoint x="833" y="445"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_16" bpmnElement="Flow_16">
-        <di:waypoint x="990" y="305"/>
-        <di:waypoint x="1040" y="305"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="995" y="285" width="30" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="1100" y="305"/>
+        <di:waypoint x="1150" y="305"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1105" y="285" width="30" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_17" bpmnElement="Flow_17">
-        <di:waypoint x="965" y="330"/>
-        <di:waypoint x="965" y="385"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="970" y="345" width="30" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="1075" y="330"/>
+        <di:waypoint x="1075" y="385"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1080" y="345" width="30" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_18" bpmnElement="Flow_18">
-        <di:waypoint x="1025" y="445"/>
-        <di:waypoint x="1280" y="445"/>
-        <di:waypoint x="1280" y="398"/>
+        <di:waypoint x="1135" y="445"/>
+        <di:waypoint x="1390" y="445"/>
+        <di:waypoint x="1390" y="398"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Shape_Gw_Needed" bpmnElement="Gw_Needed" isMarkerVisible="true">
+        <dc:Bounds x="530" y="355" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="505" y="300" width="100" height="40"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Lapse" bpmnElement="Task_Lapse">
+        <dc:Bounds x="495" y="520" width="120" height="100"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Lapsed" bpmnElement="End_Lapsed">
+        <dc:Bounds x="537" y="682" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="515" y="722" width="80" height="20"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Edge_Flow_19" bpmnElement="Flow_19">
+        <di:waypoint x="580" y="380"/>
+        <di:waypoint x="715" y="380"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="590" y="360" width="30" height="20"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_20" bpmnElement="Flow_20">
+        <di:waypoint x="555" y="405"/>
+        <di:waypoint x="555" y="520"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="560" y="430" width="30" height="20"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_21" bpmnElement="Flow_21">
+        <di:waypoint x="555" y="620"/>
+        <di:waypoint x="555" y="682"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

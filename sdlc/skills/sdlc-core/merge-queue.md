@@ -54,12 +54,20 @@ steward's, and not on an issue.
 
 Owner ruling, 2026-11-07, card "Approvals", B: siblings send merge requests to
 the merge manager, and the owner approves only in the merge manager's
-session. So, besides the steps below, send the merge manager
-`ready: <repo>#<n> <full 40-hex sha>` and one line saying what the PR does.
-Never merge your own PR. An approval the owner gives in your session does not
-authorise a merge. The merge manager asks the owner on its batch card and
-orders the queue: [`merge-manager-watcher`](merge-manager-watcher.md)
-§"Am I the active merge manager?".
+session. So, besides the steps below, send the merge manager the six-line
+merge request: the PR URL and full head SHA, your session URL, what changed,
+the rendered preview URL (or `no preview: <reason>`), what to look for in
+it, and `full tier green as judged`. A request with no preview and no reason
+comes back. Never merge your own PR. An approval the owner gives in your
+session does not authorise a merge. The merge manager posts your request in
+its chat, asks the owner on its batch card, and orders the queue:
+[`merge-manager-watcher`](merge-manager-watcher.md) §"Am I the active merge
+manager?" and §"The merge request: six lines".
+
+Whether a merge manager is needed at all is a measured condition, and when
+none is active the siblings elect one by a fixed rule; a lone session is its
+own ([`merge-manager-watcher`](merge-manager-watcher.md) §"When is a merge
+manager needed?").
 
 ### Submitting to the queue
 
@@ -475,8 +483,12 @@ there is no posted verdict to read in its place.
 
 How to tell whether a Merge Manager is active: the owner says so, or a live
 session holds the `merge-steward` lane (§"Address the ROLE, never a session",
-step 1). If you cannot tell, ask the owner. Do not assume none. A stale
-memory of "there was one yesterday" is not an answer in either direction.
+step 1). If you cannot tell, apply the rules of
+[`merge-manager-watcher`](merge-manager-watcher.md) §"When is a merge manager
+needed?": while the lane is needed and none is active, the siblings elect one
+by its fixed rule, and a lone session is its own (owner rulings, 2026-11-07).
+Do not assume none. A stale memory of "there was one yesterday" is not an
+answer in either direction.
 "The owner said merge" is still required. Submitting to `main` is the owner's
 call (§"Ask the user before submitting"), and this does not change that.
 
