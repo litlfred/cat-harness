@@ -254,8 +254,29 @@ by message. Every push restarts the full CI run: on 2026-11-07, three
 sessions pushed to folio-assistant#2985 within 10 minutes, and each push
 restarted it.
 
-A stacked PR waits for its base to land, and is then retargeted onto the new
-base. Do not merge the stacked PR into its base branch.
+### Stack instead of waiting
+
+Do not wait for a dependency to merge before starting work that needs it
+(owner ruling, 2026-11-07: "they dont need to wait for a merge to start
+working on a feature branch needing a dependent feature branch. They can
+stack"). The process is the first row of
+[`merge-request.bpmn`](../../processes/merge-request.bpmn).
+
+- **In the same repository:** branch from the dependency PR's branch, and
+  open a draft PR whose base is that branch. Pull later changes of the
+  dependency in with merge commits. Never rebase or force-push another
+  session's branch.
+- **Across layers:** develop against the dependency's branch laid over a
+  fresh mount. A draft may pin the dependency PR's full head SHA (never a
+  branch) so that CI sees it
+  ([`remote-mount`](../../../skills/kg/kg-core/remote-mount.md)
+  §"Stacking across layers").
+- **Say so:** write `stacked on <repo>#<n>` in the PR body, and list the
+  order in the merge request.
+- **When the base lands:** retarget the PR onto main, merge main in (across
+  layers: re-pin to the dependency's merge commit on main), then mark it
+  ready by the queue rule. Never merge the stacked PR into its base branch,
+  and never mark it ready while it pins an unmerged commit.
 
 ### Two green PRs can merge into a red main, and the answer is to fix forward
 

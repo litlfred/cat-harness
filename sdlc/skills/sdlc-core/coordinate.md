@@ -354,6 +354,13 @@ the stall window has stalled, and the siblings re-elect without it: see
 find the merge manager first" and §"Liveness and stalls" (owner rulings,
 2026-11-07).
 
+**5. Stack rather than wait.** Work that needs a sibling's unmerged PR
+starts now, stacked on that PR's branch (or, across layers, on its head
+SHA), with `stacked on <repo>#<n>` in the body. Pull the sibling's changes
+in by merging. Never push to its branch: see
+[`continual-progress`](continual-progress.md) §"Stack instead of waiting"
+(owner ruling, 2026-11-07).
+
 ### The collision surface is FILES, and it is predictable before you touch one
 
 A work item scan finds sessions working the same *subject*. It does not find two

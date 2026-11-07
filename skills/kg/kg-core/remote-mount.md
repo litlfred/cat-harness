@@ -333,6 +333,15 @@ later, and cat-harness-tools at #1564 or later. An asset that a layer commits
 must also match the tools recipe that generates it, such as cat-harness's
 `edit-links.js`.
 
+**Stacking across layers** (owner ruling, 2026-11-07). Work that needs an
+unmerged PR in a lower layer does not wait for it. Develop against that
+PR's branch laid over a fresh mount. A draft PR may pin the dependency
+PR's full 40-hex head SHA so that its CI sees the change. A branch is never
+pinned, as for any pin. That draft is never marked ready or merged while it
+pins an unmerged commit: once the dependency lands, re-pin to its merge
+commit on main. That move goes forward, so "a pin only moves forward" holds
+throughout.
+
 **The re-pin refreshes layer health** (owner ruling, 2026-11-07, card "Layer
 health", A). When a re-pin moves cat-harness-tools, it regenerates the
 checkout's layer health report at the new pins and publishes it. The health

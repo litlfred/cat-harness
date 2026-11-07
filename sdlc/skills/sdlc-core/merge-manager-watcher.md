@@ -328,6 +328,14 @@ ledger entry.
    Merging one PR at a time cost about 6.7 runs per merged PR. A PR that
    changes workflows, and a PR in a repository with no train, merges
    directly.
+9. **Stacks merge bottom-up** (owner ruling, 2026-11-07). A PR whose body
+   says `stacked on <repo>#<n>` waits for that PR. The merge manager lands
+   the base first, the stacked PR's owner retargets it onto main and
+   merges main in, and only then does it count as ready. A stacked
+   folio-assistant PR gets the `merge-train` label only after it has been
+   retargeted to main. A cross-layer stack waits until its pin names the
+   dependency's merge commit on main. The merge request lists the order,
+   and the batch card keeps it.
 
 ## Runner relief
 
