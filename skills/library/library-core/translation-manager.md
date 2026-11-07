@@ -143,9 +143,22 @@ bun run pipeline/pot-extract.ts [--chapter <dir>] [--block <label>]
 Or use the `translation_extract` MCP tool. Produces `.pot` files at the
 configured granularity.
 
-### 2. Translate
+### 2. Build the locale term base, and review it
 
-Options, in order of preference:
+**Before translating**, build the term base for the target locale from the
+layered glossaries, review it, and translate with it. See
+[The locale term base](#the-locale-term-base) for where each layer's glossary
+is and the precedence rule. The term base is the merge
+`translation:glossary:check` checks against, so build it the way that check
+does, not by hand from one layer.
+
+Review it before you use it: a term the more authoritative layer has fixed is
+not re-translated, and a term with no fixed form in any layer is a decision
+you make once, here, not again in every block.
+
+### 3. Translate
+
+Translate with the term base open. Options, in order of preference:
 
 1. **Existing `.po` from SMART Base** — if the DAK already has translations
    from Weblate/Crowdin, use them.
@@ -155,7 +168,7 @@ Options, in order of preference:
    unofficial.
 4. **Human translation** — the gold standard.
 
-### 3. Inject (PO → translated Markdown)
+### 4. Inject (PO → translated Markdown)
 
 ```sh
 bun run pipeline/po-inject.ts --locale <locale> [--chapter <dir>]
@@ -165,7 +178,7 @@ Or use the `translation_inject` MCP tool. Reads `.po` files and produces
 translated `.md` in `docs/<locale>/` for docs pages, or in the content
 directory for content blocks.
 
-### 4. Create TranslationNode manifest
+### 5. Create TranslationNode manifest
 
 After injection, create or update the `.ts` manifest:
 
@@ -177,7 +190,7 @@ translations/<locale>/<stem>.ts
 The manifest carries status, coverage, and round-trip QA results inline.
 Validate with `TranslationNodeSchema` from `schemas/content/translation.ts`.
 
-### 5. Round-trip QA
+### 6. Round-trip QA
 
 After injection, run round-trip translation QA:
 
@@ -191,7 +204,22 @@ node-level summary field: `TranslationNode.roundTripQA` was removed with the
 numbers it held. See §"Per-block translation QA" below, and route drift to a
 human reviewer.
 
-### 6. Sign-off
+### 7. Glossary consistency
+
+**After translating**, check that every glossary term was translated the way
+the term base fixes it, and the same way everywhere:
+
+```sh
+bun run cat translation:glossary:check --instance <dir> --locale <locale>
+```
+
+Fix each violation in the `.po`, not in the injected output, and re-inject.
+Then include the check's glossary section in the KG QA report, so the reviewer
+who signs off sees it. A violation the translator believes is right is not
+fixed by editing the term base in the instance: a term a lower layer fixes is
+changed in that layer, or it goes to the adjudicator.
+
+### 8. Sign-off
 
 A human reviewer signs off at the desired level:
 
@@ -202,7 +230,7 @@ bun run pipeline/translation-signoff.ts --locale <locale> --level <block|section
 Or use the `translation_signoff` MCP tool. Updates the `TranslationNode`
 manifest with sign-off metadata and source hash.
 
-### 7. Staleness watch
+### 9. Staleness watch
 
 On every content change, the pipeline checks whether any official translation's
 `sourceHash` no longer matches the source `.md`. Stale translations are flagged
@@ -366,6 +394,33 @@ translation_status: unverified     # or "official"
 translation_source: index.md       # source file
 available_locales: ["en", "fr"]
 ```
+
+### The locale term base
+{: #the-locale-term-base }
+
+A glossary term must be translated the same way on every page, and the same
+way in every layer that uses it. The term base is the one place that says how.
+
+**Where the terms come from.** Each instance's glossary is the directory it
+declares with the `glossary` graph typology in its `<instance>.json` (a
+`*.glossary.json` SKOS scheme per file); an instance without that declaration
+has no glossary of its own and inherits its dependencies'. The terms'
+translations today are the per-scheme catalogues
+`translations/<locale>/glossary/<instance>--<scheme>.po` written from those
+schemes, and the pins in `translations/<locale>/glossary.po` below.
+
+**Precedence.** The term base for a locale is the glossaries of the instance
+and every layer it `needs`, merged in layer order: **the more authoritative
+(lower) layer fixes a term's translation; an instance layer only adds.** An
+instance may add a term no layer below defines, and may fix its translation.
+It may not give a term a lower layer has fixed a second translation; that is a
+violation, reported by `translation:glossary:check`, never an override.
+
+**How a fixed translation is recorded** is pending the owner's choice (see the
+glossary review on the work item): per-locale labels in the glossary scheme,
+a term-base file beside it, or a `msgstr` marked fixed in the catalogue. Until
+it is settled, a translated `prefLabel` in a scheme's catalogue is the best
+record there is, and a pinned `msgstr` in `glossary.po` is a fixed form.
 
 ### The terminology glossary — `translations/<locale>/glossary.po`
 
@@ -635,6 +690,8 @@ pipeline (IG Publisher) are complementary and independent.
 - **Do not vendor SMART Base translation scripts.** Load from checkout.
 - **Do not translate math, labels, or code.** Exclude in extraction.
 - **Do not auto-sign-off.** Official status requires a human.
+- **Do not re-translate a term a lower layer fixes.** Translate with the
+  locale term base, and fix a violation where the term is fixed.
 - **Do not treat staleness as "wrong".** A stale translation is still useful;
   it just needs re-review.
 - **Do not conflate FHIR resource translation with prose translation.** They

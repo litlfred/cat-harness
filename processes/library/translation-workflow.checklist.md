@@ -19,17 +19,25 @@ The machine half of translation, end to end: extract the translatable strings, i
 - What: Scan the source content and write the translatable strings to .pot files at the configured granularity: segment prose by paragraph, shield what must not be translated (math, code, labels, Lean companions) as placeholders, normalise whitespace, and extract metadata such as titles, alt text and captio
 - Shared step `GT_ExtractPot`.
 - Record it: `workflow_complete` with `node: "Task_PotExtract"`.
-- next: → `Task_Translate` (Produce translation (PO file))
+- next: → `Task_TermBase` (Build and review the locale term base)
 
-### 2. Produce translation (PO file) (`Task_Translate`)
+### 2. Build and review the locale term base (`Task_TermBase`)
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
-- What: Translation of .pot → .po by one of: 1.
+- What: Before translating: build the locale term base from the layered glossaries, review it, and translate with it.
+- Record it: `workflow_complete` with `node: "Task_TermBase"`.
+- next: → `Task_Translate` (Produce translation (PO file))
+
+### 3. Produce translation (PO file) (`Task_Translate`)
+
+- Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
+- Skill: `translation-manager`.
+- What: Translation of .pot → .po, with the locale term base, by one of: 1.
 - Record it: `workflow_complete` with `node: "Task_Translate"`.
 - next: → `Task_PoInject` (Inject translations (PO → Markdown))
 
-### 3. Inject translations (PO → Markdown) (`Task_PoInject`)
+### 4. Inject translations (PO → Markdown) (`Task_PoInject`)
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
@@ -38,23 +46,31 @@ The machine half of translation, end to end: extract the translatable strings, i
 - Record it: `workflow_complete` with `node: "Task_PoInject"`.
 - next: → `Task_RoundTripQA` (Round-trip translation QA (back-translate))
 
-### 4. Round-trip translation QA (back-translate) (`Task_RoundTripQA`)
+### 5. Round-trip translation QA (back-translate) (`Task_RoundTripQA`)
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
 - What: Back-translate the target-language .md into the source language and compare the meaning with the original.
 - Shared step `GT_RoundTripQa`.
 - Record it: `workflow_complete` with `node: "Task_RoundTripQA"`.
+- next: → `Task_GlossaryCheck` (Check glossary terms (translation:glossary:check))
+
+### 6. Check glossary terms (translation:glossary:check) (`Task_GlossaryCheck`)
+
+- Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
+- Skill: `translation-manager`.
+- What: After translating: run `translation:glossary:check --instance <dir> --locale <locale>`, fix the violations, and include its glossary section in the KG QA report.
+- Record it: `workflow_complete` with `node: "Task_GlossaryCheck"`.
 - next: → `Gateway_Drift` (Drift or bad terminology?)
 
 ### Decide — Drift or bad terminology? (`Gateway_Drift`)
 
-- Answered by the round-trip (back-translation) QA: did it flag drift or a terminology miss?
+- Answered by the round-trip (back-translation) QA and the glossary check: did either flag drift or a terminology miss?
 - Call `workflow_complete` with `node: "Gateway_Drift"` and `outcome` set to the label that holds:
   - «Drift detected» → `Task_Adjudicate` (Adjudicate the flagged passage (human))
   - «Clean» → `Task_WriteUnofficial` (Write status.json (unofficial))
 
-### 5. Adjudicate the flagged passage (human) (`Task_Adjudicate`)
+### 7. Adjudicate the flagged passage (human) (`Task_Adjudicate`)
 
 - Who: the `Human reviewer / adjudicator` lane (role `translation-adjudicator`).
 - Skill: `translation-manager`, `adjudication`.
@@ -62,7 +78,7 @@ The machine half of translation, end to end: extract the translatable strings, i
 - A subprocess (`Process_Adjudication`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Gateway_PostQA` (Which of the three?)
 
-### 6. Write status.json (unofficial) (`Task_WriteUnofficial`)
+### 8. Write status.json (unofficial) (`Task_WriteUnofficial`)
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
@@ -86,7 +102,7 @@ The machine half of translation, end to end: extract the translatable strings, i
   - «Yes» → `Task_Signoff` (Sign off translation (human adjudicator))
   - «Not now» → `End_TranslationComplete` (Translation complete)
 
-### 7. Edit the flagged passage and re-inject (`Task_EditTranslation`)
+### 9. Edit the flagged passage and re-inject (`Task_EditTranslation`)
 
 - Who: the `Human reviewer / adjudicator` lane (role `translation-adjudicator`).
 - Skill: `translation-manager`.
@@ -94,7 +110,7 @@ The machine half of translation, end to end: extract the translatable strings, i
 - Record it: `workflow_complete` with `node: "Task_EditTranslation"`.
 - next: → `Task_PoInject` (Inject translations (PO → Markdown))
 
-### 8. Sign off translation (human adjudicator) (`Task_Signoff`)
+### 10. Sign off translation (human adjudicator) (`Task_Signoff`)
 
 - Who: the `Human reviewer / adjudicator` lane (role `translation-adjudicator`).
 - Skill: `translation-manager`.
@@ -106,7 +122,7 @@ The machine half of translation, end to end: extract the translatable strings, i
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 9. Write status.json (official) (`Task_WriteOfficial`)
+### 11. Write status.json (official) (`Task_WriteOfficial`)
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
@@ -115,7 +131,7 @@ The machine half of translation, end to end: extract the translatable strings, i
 - Record it: `workflow_complete` with `node: "Task_WriteOfficial"`.
 - next: → `Task_StalenessCheck` (Check staleness (source hash))
 
-### 10. Check staleness (source hash) (`Task_StalenessCheck`)
+### 12. Check staleness (source hash) (`Task_StalenessCheck`)
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
