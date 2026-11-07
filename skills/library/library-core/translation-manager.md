@@ -216,9 +216,22 @@ the term base fixes it, and the same way everywhere:
 bun run cat translation:glossary:check --instance <dir> --locale <locale>
 ```
 
+The check enforces a fixed term wherever the source uses it **in its glossary
+sense**; see [The locale term base](#the-locale-term-base) for how the sense is
+decided. It exits 1 on an in-sense use whose `msgstr` does not render the fixed
+translation. A use still pending adjudication is listed and fails nothing. To
+have the pending uses ruled on, list them for the adjudicator and record the
+answers:
+
+```sh
+bun run cat translation:glossary:check --instance <dir> --pending --json
+bun run cat translation:glossary:check --instance <dir> --record <verdicts.json>
+```
+
 Fix each violation in the `.po`, not in the injected output, and re-inject.
 Then include the check's glossary section in the KG QA report, so the reviewer
-who signs off sees it. A violation the translator believes is right is not
+who signs off sees it. That section lists violations, exceptions, pending
+uses and other-sense uses. A violation the translator believes is right is not
 fixed by editing the term base in the instance: a term a lower layer fixes is
 changed in that layer, or it goes to the adjudicator.
 
@@ -573,11 +586,34 @@ no layer below defines, and may fix its translation. It may not give a term a
 lower layer has fixed, in the same subject area, a second translation; that is
 a violation, reported by `translation:glossary:check`, never an override.
 
-**Across subject areas it is a sense check, not a violation.** The harness's
-`policy` is fixed as `策略` (an access policy); a health guide's "policy" is
-`政策`. When a fixed term's label turns up in text of another subject area,
-the check writes a *sense check* note for a person to read, and fails nothing:
-the same word is not the same concept.
+**A term used in sense keeps its fixed translation.** Owner, 2026-11-07: if a
+glossary term is used in the narrative in the correct context, the translated
+narrative uses the glossary translation. The same word is not always the same
+concept. The harness's `policy` is fixed as `策略` (an access policy), but a
+health guide's "policy" is `政策`. So the sense of each use is decided by rule
+first, then by an agent:
+
+- **By rule.** A use in a page or catalogue whose subject area is the term's
+  own is in sense automatically.
+- **By an adjudicator.** Any other use is *pending* until an untainted
+  adjudicator agent rules on it. The agent is given the term, its `skos`
+  definition and the source sentence. It rules `in-sense` or `other-sense`
+  with a one-line reason. Alternatively it records an *exception*: in sense,
+  but the fixed term is wrong here because of a reason it gives.
+- **What the check does with each state.** An in-sense use (by rule or by
+  verdict) whose `msgstr` does not render the fixed translation is a
+  violation, and the check fails. A pending use is listed and fails nothing.
+  An `other-sense` use is not checked. An exception passes and is listed.
+- **Keeping the English term.** A `msgstr` that keeps the English term
+  verbatim renders it only where the term is part of a code or resource name.
+  The same term left in English in prose does not render it.
+- **Where verdicts are kept.** They are stored durably in the instance, in a
+  committed file beside its catalogues. Each is keyed by the term's id and a
+  hash of the `msgid`. Sense is a property of the source, so one verdict
+  serves every locale and each use is asked about once. A changed `msgid`
+  invalidates its verdict, and the use is asked again.
+- **Who decides.** Each verdict names who decided it, an agent or person id,
+  never a model. The check itself never asks a model.
 
 **How a fixed translation is recorded.** It is derived, never flagged: a term
 whose status is `authored` and whose scheme catalogue
@@ -866,7 +902,8 @@ pipeline (IG Publisher) are complementary and independent.
   locale's CodeSystem supplement.
 - **Do not re-translate a term a lower layer fixes in the same subject area.**
   Translate with the locale term base, and fix a violation where the term is
-  fixed. A match in another subject area is a sense check, not a violation.
+  fixed. A use in another subject area is enforced once an adjudicator rules
+  it in sense; until then it is pending, not a violation.
 - **Do not treat staleness as "wrong".** A stale translation is still useful;
   it just needs re-review.
 - **Do not conflate FHIR resource translation with prose translation.** They
