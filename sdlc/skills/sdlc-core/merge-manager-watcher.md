@@ -118,9 +118,9 @@ inactive without a hand-off, and the owner had to appoint one.
 ### Liveness and stalls
 
 The merge manager, like any agent, may stall (owner ruling, 2026-11-07). So
-it has a liveness duty: it acknowledges each merge request, and posts a
-heartbeat to the coordination group, within about 10 minutes (the role's
-`holding.heartbeatMinutes`, matching the 10-minute timer below).
+it has a liveness duty: it acknowledges each merge request within about 10
+minutes of receiving it (the role's `holding.heartbeatMinutes`; a request
+wakes it), and posts a heartbeat to the coordination group with each sweep.
 
 A sibling treats the lane as vacant when its request has no acknowledgement
 within about 30 minutes (`holding.stalledAfterMinutes`), or when the merge
@@ -171,8 +171,9 @@ sibling.
 
 ## What wakes it
 
-- **A timer, every 10 minutes** while the merge window is open, and hourly
-  outside it. This is a backstop, not the main signal.
+- **A timer, at the sweep's cadence** (§"The sweep"): every 10-15 minutes
+  while a P0 is in flight, every 30 minutes otherwise. This is a backstop,
+  not the main signal.
 - **A PR event** on a subscribed PR: ready for review, CI finished, review
   submitted, merged or closed. Subscribe to every open non-draft PR in the
   repositories it holds.
@@ -190,6 +191,42 @@ it.
    age of the oldest queued run.
 3. The latest main push run on each repository, and its verdict.
 4. The owners of the PRs: the last push or comment by each owning session.
+
+## The sweep
+
+Owner ruling, 2026-11-07 (card, about 07:55Z): the merge manager's sweep is
+documented and tooled.
+
+**Cadence.** Every 10-15 minutes while a P0 PR (a fix for a red main, or a
+link of the re-pin chain) is in flight; every 30 minutes otherwise. A PR
+event, a merge request or a main run finishing may start a sweep early.
+
+**One sweep**, in this order:
+
+1. Run `merge:watch` over every repository the lane holds. It makes the four
+   readings above, and judges each PR by every judge (rule 1 below).
+2. For each green request, post its six lines in this chat.
+3. Ask the owner with **one** batch card for all of them, in priority order.
+   Leave off any PR in the pre-approval ledger (below).
+4. Land what is approved. A workflow PR, or a PR in a repository with no
+   train, merges through `merge:guard`. A folio-assistant PR that does not
+   change `.github/workflows/` gets the `merge-train` label (rule 8 below).
+5. Send `landed: <repo>#<n> <sha>` to each session that was waiting, or
+   `back: <repo>#<n> <reason>` for a PR that cannot land.
+6. Post the heartbeat, and re-arm the timer at the cadence above.
+
+**A helper may tabulate, never write.** A helper agent may run step 1 and
+tabulate the result (rule 6 below). It never posts, labels, merges,
+comments, closes or pushes. Steps 2-6 are the merge manager's.
+
+**The pre-approval ledger.** When the owner says "merge when green" for a
+named PR, the merge manager records it: the PR, the owner's words, and when.
+It keeps the record on the coordination work item, beside the
+`merge manager:` note, so a successor inherits it. A PR in the ledger needs
+no second card. It lands at the first sweep that finds it green, and then
+leaves the ledger. The ledger covers only the PRs it names. A standing
+instruction to "merge everything green" is rule 2's standing OK, not a
+ledger entry.
 
 ## Where each reading leads
 

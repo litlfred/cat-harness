@@ -8,7 +8,7 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
 
 ## Begin — Timer, PR event, request, main run, or sibling message (`Start_Wake`)
 
-- Begin here: Every 10 minutes in the merge window, and hourly outside it, as a backstop.
+- Begin here: The sweep cadence, as a backstop: every 10-15 minutes while a P0 PR is in flight, every 30 minutes otherwise.
 - Call `workflow_start` with `process: "Process_MergeManagerWatch"` and the subject this run is about; keep the instance id it returns.
 - next: → `Task_Read` (Read the queue, acknowledge requests)
 

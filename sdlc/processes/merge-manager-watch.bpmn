@@ -51,12 +51,12 @@
       <bpmn:outgoing>Flow_22</bpmn:outgoing>
     </bpmn:task>
     <bpmn:startEvent id="Start_Wake" name="Timer, PR event, request, main run, or sibling message">
-      <bpmn:documentation>Every 10 minutes in the merge window, and hourly outside it, as a backstop. Otherwise a subscribed PR event, a sibling's merge request, a main run finishing, or a sibling's message wakes it. Never a polling loop inside a turn.</bpmn:documentation>
+      <bpmn:documentation>The sweep cadence, as a backstop: every 10-15 minutes while a P0 PR is in flight, every 30 minutes otherwise. Otherwise a subscribed PR event, a sibling's merge request, a main run finishing, or a sibling's message wakes it. Never a polling loop inside a turn.</bpmn:documentation>
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
       <bpmn:timerEventDefinition id="Timer_Wake"/>
     </bpmn:startEvent>
     <bpmn:task id="Task_Read" name="Read the queue, acknowledge requests">
-      <bpmn:documentation>Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, and each PR owner's last push or comment. Liveness duty: acknowledge each new merge request, and post a heartbeat, within holding.heartbeatMinutes, so siblings can tell a live merge manager from a stalled one.</bpmn:documentation>
+      <bpmn:documentation>Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, and each PR owner's last push or comment. One sweep runs merge:watch over every repository it holds. Liveness duty: acknowledge each new merge request within holding.heartbeatMinutes, and post a heartbeat with each sweep, so siblings can tell a live merge manager from a stalled one.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_1</bpmn:incoming>
       <bpmn:outgoing>Flow_2</bpmn:outgoing>

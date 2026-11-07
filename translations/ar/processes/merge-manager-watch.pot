@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-manager-watch\n"
-"POT-Creation-Date: 2026-11-07T07:53:04.639Z\n"
+"POT-Creation-Date: 2026-11-07T08:08:43.065Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -57,11 +57,6 @@ msgstr ""
 #: sdlc/processes/merge-manager-watch.bpmn:89
 #. Diagram element documentation
 msgid "Enforce the pacing rule of continual-progress (owner ruling, 2026-11-07, card Cancel CI): close superseded or duplicate PRs, such as a re-pin whose commits another open PR already carries, and cancel their runs; cancel stale queued runs that never started, never a main push run that has started; ask the owners of P3 PRs to return them to draft."
-msgstr ""
-
-#: sdlc/processes/merge-manager-watch.bpmn:54
-#. Diagram element documentation
-msgid "Every 10 minutes in the merge window, and hourly outside it, as a backstop. Otherwise a subscribed PR event, a sibling's merge request, a main run finishing, or a sibling's message wakes it. Never a polling loop inside a turn."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:100
@@ -141,7 +136,7 @@ msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:59
 #. Diagram element documentation
-msgid "Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, and each PR owner's last push or comment. Liveness duty: acknowledge each new merge request, and post a heartbeat, within holding.heartbeatMinutes, so siblings can tell a live merge manager from a stalled one."
+msgid "Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, and each PR owner's last push or comment. One sweep runs merge:watch over every repository it holds. Liveness duty: acknowledge each new merge request within holding.heartbeatMinutes, and post a heartbeat with each sweep, so siblings can tell a live merge manager from a stalled one."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:58
@@ -212,6 +207,11 @@ msgstr ""
 #: sdlc/processes/merge-manager-watch.bpmn:118
 #. Diagram element documentation
 msgid "The sibling's six lines go into the merge manager's chat first; a request with no rendered preview and no reason goes back to the sibling (owner ruling, 2026-11-07). Then one card per batch, naming each PR, in priority order: P0 main-red fixes and the re-pin chain, P1 work they unblock, P2 CI speed, P3 the rest."
+msgstr ""
+
+#: sdlc/processes/merge-manager-watch.bpmn:54
+#. Diagram element documentation
+msgid "The sweep cadence, as a backstop: every 10-15 minutes while a P0 PR is in flight, every 30 minutes otherwise. Otherwise a subscribed PR event, a sibling's merge request, a main run finishing, or a sibling's message wakes it. Never a polling loop inside a turn."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:53
