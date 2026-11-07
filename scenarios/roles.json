@@ -310,6 +310,63 @@
       "persona": "Decides between competing translations, usually a subject expert in the target language. Arrives at a disagreement and needs both options and the reason each was offered."
     },
     {
+      "id": "translation-source-lead",
+      "title": "Source-language lead",
+      "description": "Owns the source-language side of a translation into several locales: extracts every template once, in one shared source PR merged to main before any locale starts, validates each locale PR and merges it inside the owner's merge window, files the one issue for source-text errors the translators report, and keeps the refresh watcher that brings every locale up to date when the source moves. Distinct from `translation-coordinator`, who decides what is translated and accepts it: this position does the source-side work, and an agent can do it.",
+      "actorKinds": [
+        "person",
+        "agent"
+      ],
+      "skills": [
+        "translation-manager",
+        "translation-refresh"
+      ],
+      "persona": "Reads only the source language, and is the one party that may change it. Needs every locale to start from the same templates, and needs to know the moment a template moves."
+    },
+    {
+      "id": "locale-translator",
+      "title": "Locale translator",
+      "description": "Produces one locale's catalogues from the shared templates: the `.po` files, their unofficial translation-node manifests and the locale's terminology supplement, then the gates, the QA report and the locale PR. Never re-extracts and never edits the source; a source-text error is reported, not fixed in the translation. One lane covers every locale, each run once per locale. Distinct from `translator`, a person working in their own tool under human-translation-workflow: this position may be an agent, and what it produces is unofficial until a person signs it off.",
+      "actorKinds": [
+        "agent",
+        "person"
+      ],
+      "skills": [
+        "translation-manager"
+      ],
+      "persona": "Works in one target language at a time and has the source's templates and the fixed terms, nothing more. Needs to know which strings are new or fuzzy, so that a finished catalogue is not translated twice."
+    },
+    {
+      "id": "back-translator",
+      "title": "Back-translator",
+      "description": "The checker of a translation round trip: renders a sample of the target-language text back into the source language from the target text alone, with no tools and without seeing the source. It rules on nothing. Its rendering is the intermediate the adjudicator reads (`untainted-verification`, rule 1: neither party sees what would let it shortcut).",
+      "actorKinds": [
+        "agent",
+        "person"
+      ],
+      "skills": [
+        "untainted-verification",
+        "translation-manager"
+      ],
+      "persona": "Sees only the translated strings, deliberately. Needs to say 'could not render' as plainly as a rendering, because a guess read as a back-translation measures nothing."
+    },
+    {
+      "id": "round-trip-adjudicator",
+      "title": "Round-trip adjudicator",
+      "description": "Rules on a translation round trip: given the source strings and the back-translation, and never the target text, it pre-screens every pair mechanically, reads each flagged pair in full, and records drift or not-drift for each with the reason. A specialisation of `adjudicator` for the translation instance of untainted verification; it adds the translation-specific drift definition.",
+      "actorKinds": [
+        "agent",
+        "person"
+      ],
+      "inherits": [
+        "adjudicator"
+      ],
+      "skills": [
+        "translation-manager"
+      ],
+      "persona": "Arrives with two source-language texts and the question whether they say the same thing. Needs the drift definition in both halves, so that inflection and word order are not ruled as drift."
+    },
+    {
       "id": "adjudicator",
       "title": "Adjudicator",
       "description": "Settles a criterion whose reviewer entries disagree, and records WHY. Inherits `reviewer` because an adjudicator is a reviewer with one added entitlement \u2014 the `adjudication` permission \u2014 and the separation is the point: a reviewer reports, an adjudicator settles, and a process where every reviewer could settle has no way to say who decided. The KNOWLEDGE spreads (several roles carry the `adjudication` skill, because each has to tell an adjudicable disagreement from a complaint); the ENTITLEMENT does not, and lives on the actor as a permission.",

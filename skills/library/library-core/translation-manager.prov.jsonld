@@ -49,6 +49,9 @@
         },
         {
           "@id": "skills/library/library-core/translation-manager.md#provenance-13"
+        },
+        {
+          "@id": "skills/library/library-core/translation-manager.md#provenance-14"
         }
       ]
     },
@@ -170,6 +173,20 @@
       "prov:value": "The file is hand-authored and has no POT — `schemas/content/translation.ts` declares\nthat slot, and `TranslationNode.potFile` is optional for exactly this. Bean\n`he0e`.",
       "cat-harness:refs": [
         "bean he0e"
+      ]
+    },
+    {
+      "@id": "skills/library/library-core/translation-manager.md#provenance-14",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Translating into several locales as a team",
+      "prov:value": "Owner, 2026-11-07: \"English lead should document the process and skills\". The section records the steps the team ran across three instances; the harness commands it lists were merged in cat-harness-tools#1598 (`--instance`) and #1595 (segmentMarkdown in po-inject), with translation:glossary:check in flight (#1599, #1601).",
+      "cat-harness:refs": [
+        "2026-11-07",
+        "cat-harness-tools#1598",
+        "cat-harness-tools#1595",
+        "cat-harness-tools#1599",
+        "cat-harness-tools#1601"
       ]
     }
   ]

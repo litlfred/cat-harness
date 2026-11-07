@@ -305,7 +305,7 @@ declared (`scripts/index-render.ts`).*
 
 <!-- skills:index:begin -->
 
-_259 skills in 19 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_260 skills in 19 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 | Directory | Skills |
 |---|---|
@@ -317,7 +317,7 @@ _259 skills in 19 directories. The full list, with what each skill is for, is in
 | [`skills/kg/kg-core/`](skills/kg/kg-core/) | 29 |
 | [`skills/kg/kg-navigation/`](skills/kg/kg-navigation/) | 1 |
 | [`skills/library/large-datasets/`](skills/library/large-datasets/) | 5 |
-| [`skills/library/library-core/`](skills/library/library-core/) | 11 |
+| [`skills/library/library-core/`](skills/library/library-core/) | 12 |
 | [`skills/process/process-core/`](skills/process/process-core/) | 7 |
 | [`skills/process/raci/`](skills/process/raci/) | 1 |
 | [`skills/process/workflow/`](skills/process/workflow/) | 11 |
