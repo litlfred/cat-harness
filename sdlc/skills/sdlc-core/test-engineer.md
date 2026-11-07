@@ -95,6 +95,64 @@ file that may not be there: it fails when the corpus is absent, or worse,
 - **Never write into `test/attestations/` from a test.** It is the judgement
   store on `main`; a test that needs one builds it in a temporary root.
 
+### Every test has a Gherkin (STRICT)
+
+**A test is not finished until a Gherkin Scenario says what it tests.** The
+Scenario is the specification a reader can review without reading code; the
+test function is one way of executing it. A test with no Scenario is a
+defect, not missing documentation.
+
+1. **Every executable test maps to exactly one Scenario.** An executable test
+   is whatever the language's runner discovers, ignored or skipped ones
+   included: a Rust `#[test]`, a Kotlin/JUnit `@Test`, a bun or vitest
+   `test()` / `it()`, a pytest `test_*`. A parameterised test (`test.each`,
+   `@pytest.mark.parametrize`, `@ParameterizedTest`) is ONE test and maps to
+   one Scenario or Scenario Outline.
+2. **The link is a tag on the Scenario**, never on the `Feature:` line (a
+   Feature tag would be inherited by every Scenario under it):
+
+   ```gherkin
+   @test:tools/verify/tests/signature.rs::rejects_expired_key
+   Scenario: an expired signing key is refused
+   ```
+
+3. **The tag grammar is one grammar for every language** —
+   `@test:<file>::<scope>::…::<name>`:
+   - `<file>` is the test's source file, relative to the repository root, with
+     `/` separators;
+   - then the enclosing scopes in source order (a Rust `mod`, a Kotlin or
+     Python class, a `describe()` title), then the test's own name, each
+     segment separated by `::`;
+   - **whitespace inside a segment is written as `_`**, because a Gherkin tag
+     ends at whitespace. The checker normalises both sides the same way and
+     reports two tests that normalise to one tag as ambiguous.
+
+   | runner | test | tag |
+   |---|---|---|
+   | Rust | `fn parses_cbor()` in `mod tests` of `src/cose.rs` | `@test:src/cose.rs::tests::parses_cbor` |
+   | Rust | `fn round_trip()` in `tests/hcert.rs` | `@test:tests/hcert.rs::round_trip` |
+   | Kotlin | `@Test fun decodes()` in class `QrTest` | `@test:app/src/test/kotlin/x/QrTest.kt::QrTest::decodes` |
+   | bun / vitest | `test("reads a plan")` in `describe("loader")` | `@test:scripts/loader.test.ts::loader::reads_a_plan` |
+   | pytest | `def test_load()` in `class TestPlan` | `@test:tests/test_plan.py::TestPlan::test_load` |
+
+   The pytest form is pytest's own node id, so it can be pasted from the
+   runner's output.
+4. **A Scenario may name more than one test** when several tests execute one
+   behaviour, by carrying one tag per test. A Scenario with no `@test:` tag is
+   specification nobody executes, and is a finding too; mark it `@manual` when
+   a person executes it, and the checker counts it as linked.
+5. **Each test-plan case names its `.feature`** (`testCases[].feature` in
+   `test-plan/v1`); the tests that execute the case are found through the
+   `@test:` tags of that file, not listed again in the plan.
+
+**`bun run cat check:test-gherkin`** reports orphans both ways: a test no
+Scenario names, a tag that names no test, a test named by two Scenarios, a
+Scenario that names no test, and a tag on a `Feature:` line. It reads any tree
+(`--root`, `--under`, `--json`); it is not a gate until a repository has
+backfilled. The kg-audit criterion **`test-has-gherkin`** records the same
+gap for an instance, and adds every test-plan case whose `.feature` is missing
+or does not resolve.
+
 ### Adding a new formal-layer project
 
 When a new formal-layer library is added to the build manifest:

@@ -239,19 +239,14 @@ Tool: translation_signoff MCP tool</bpmn:documentation>
         <bootstrap.processes:skill ref="translation-manager"/>
       </bpmn:extensionElements>
 
-      <bpmn:documentation>Generates or retrieves the domain glossary for the
-target locale. Sources:
-1. Root folio's translations/ glossary
-2. Folio-assistant dependency translations (depth-first walk)
-3. WHO standard terminology (from the WHO SMART Base IG)
-4. Previous translations of related content</bpmn:documentation>
+      <bpmn:documentation>Builds the locale term base for the target locale from the layered glossaries, has it reviewed, and hands it to the translator with the POT. Each layer's glossary is the directory it declares with the `glossary` graph typology. Precedence, within one subject area (the scheme's `subject`): the more authoritative (lower) layer fixes a term's translation; an instance layer only adds, and may not give a fixed term a second translation. A match in another subject area is a sense check for the reviewer, not a violation. Previous translations of related content are evidence for a term with no fixed form, not a source that overrides one. A fixed translation is an authored term with a non-empty, non-fuzzy msgstr in its scheme's catalogue (translation-manager, "The locale term base").</bpmn:documentation>
     </bpmn:serviceTask>
 
     <bpmn:callActivity id="Task_InjectPO" calledElement="GT_InjectPo" name="Inject the PO"/>
 
     <bpmn:callActivity id="Task_RoundTripQA" calledElement="GT_RoundTripQa" name="Round-trip&#10;translation QA">
 
-      <bpmn:documentation>No gateway follows: drift or clean, the translation goes to Task_SMEReview with the findings attached. Which of two readings is right is a human call (translation-manager, &quot;route drift to a human reviewer&quot;), and every translation in this workflow is reviewed and signed off anyway, so a clean result is evidence for the reviewer and never a way around them.</bpmn:documentation>
+      <bpmn:documentation>No gateway follows: drift or clean, the translation goes to Task_SMEReview with the findings attached. Which of two readings is right is a human call (translation-manager, &quot;route drift to a human reviewer&quot;), and every translation in this workflow is reviewed and signed off anyway, so a clean result is evidence for the reviewer and never a way around them. The findings include `translation:glossary:check`'s: every glossary term translated against the locale term base, fixed before sign-off, with its glossary section in the KG QA report.</bpmn:documentation>
     </bpmn:callActivity>
 
 

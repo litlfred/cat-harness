@@ -33,7 +33,7 @@ The human half of translation: a coordinator assigns a locale to a qualified tra
 
 - Who: the `Automated Pipeline` lane (role `build-pipeline`).
 - Skill: `translation-manager`.
-- What: Generates or retrieves the domain glossary for the target locale.
+- What: Builds the locale term base for the target locale from the layered glossaries, has it reviewed, and hands it to the translator with the POT.
 - Record it: `workflow_complete` with `node: "Task_PrepareGlossary"`.
 - next: → `Task_AssignTranslator` (Assign to qualified human translator)
 

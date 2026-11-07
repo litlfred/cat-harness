@@ -32,15 +32,28 @@ the node already links.
 
 ## The `user-scenario` kind
 
-One file per journey (`user-scenario/0.3.0`; `0.2.0` and the draft `0.1.0`
-are read unchanged), in a directory the instance declares with that kind
-(conventionally `scenarios/user-scenarios/`). It keeps the DAK
-`UserScenario` fields — `id`, `title`, `description`, `personas` (actor
-ids) — and adds the ordered `steps`:
+One file per journey (`user-scenario/0.4.0`; `0.3.0`, `0.2.0` and the draft
+`0.1.0` are read unchanged), in a directory the instance declares with that
+kind (conventionally `scenarios/user-scenarios/`).
+
+**A journey IS a DAK user scenario.** The kind `specialises` the DAK
+vocabulary's `user-scenario` block kind (its registry entry says so, and
+`check:journey-refs` reads it). It keeps the DAK `UserScenario` fields —
+`id`, `title`, `description`, `personas` — and everything else is optional
+journey metadata: a file with only those four is a plain DAK user scenario,
+listed by the viewer with no journey map. The two `personas` mean different
+things and are one list: here an entry is an ACTOR (one fictional person)
+or, from 0.4.0, a ROLE (which stands for the actors who play it); the DAK's
+personas are ROLES, the BPMN swimlanes. So the DAK's are **derived**, never
+written: each actor's `roles`, a role as it is (`dakUserScenario`,
+`cat-harness-tools/scripts/journeys/derive.ts`). The check fails when a
+journey's derived roles are empty or name a role no `roles.json` declares.
+
+The journey metadata is the ordered `steps`:
 
 | a step holds | what |
 |---|---|
-| `lead`, `experiences[]` | per person present: `doing`, `feeling` in their words, `emotion` −2..2 |
+| `lead`, `experiences[]` | per person present: `doing`, `feeling` in their words, `emotion` −2..2. From 0.4.0 optional: absent, they are the persona actors who play the lanes of the step's `realisedBy` tasks, doing those tasks, the first leading. Authored, they are the narrative |
 | `painPoint`, `enabler`, `policy` | what goes wrong without it, what makes it work, the policy point in one sentence |
 | `record` | a code of the scenario's `trustLadder` code list, what it means here, where it is held |
 | `handoff` | what passes on: `carrier`, `payload`, `offline` |
@@ -50,11 +63,15 @@ ids) — and adds the ordered `steps`:
 | `requirements`, `examples` | `req:` node ids; FHIR examples as `Type/id` |
 | `uses[]` | a block of a `building-blocks/0.1.0` catalogue, and the ROLE it plays in this step |
 | `illustration` | the step's picture (`src`, instance-relative), its `alt`, and the `prompt` to draw it when there is none yet (0.2.0) |
+| `includes` | the journey this step IS, as a BPMN call activity is a process (0.4.0) |
 | `dak[]` | the DAK assets the step uses, each `{ key, rel? }`: `key` is the asset's artefact-index key (`StructureDefinition/<logical model>`, `PlanDefinition/<decision table>`, `Measure/<indicator>`), `rel` what it is to the step: `data` a data set it records or exchanges, `decides` a decision table that decides something in it, `measures` an indicator that counts it (0.3.0) |
 
-`user-scenario/0.3.0` accepts every `0.2.0` and `0.1.0` file as it is. 0.2.0
-added `partOf`, `views`, `references`, `illustrationStyle` and, on a step,
-`gaps`, `references` and `illustration`; 0.3.0 adds a step's `dak`.
+`user-scenario/0.4.0` accepts every `0.3.0`, `0.2.0` and `0.1.0` file as it
+is, each by its own rules. 0.2.0 added `partOf`, `views`, `references`,
+`illustrationStyle` and, on a step, `gaps`, `references` and `illustration`;
+0.3.0 a step's `dak`; 0.4.0 `parts`, a step's `includes`, role personas, and
+leaves out what can be derived (`personas` of a journey with parts, `steps`,
+a step's `lead` and `experiences`). 0.4.0 refuses `partOf`.
 
 **Derive `dak`, do not type it.** A DAK already says which BPMN tasks each of
 its data sets and decision tables serves, and which journeys each indicator
@@ -75,10 +92,44 @@ across steps) and `notes` (cultural notes, what never to draw) — so a step's
 `prompt` says only its scene. Without a picture, the journey page shows a
 collapsible *Illustration brief* (title, caption, scene, style, cast, notes)
 for whoever draws it.
-Two relations arrange journeys, and they are not the same: **`follows`
-chains** one story told as several journeys (J2 follows J1); **`partOf`
-groups** sub-journeys under a parent, which may have no steps of its own. One
-journey is one BPMN process, usually.
+
+### Composition: the parent lists its parts
+
+Journeys are narrative, so composition is **authored, never inferred from
+the BPMN**: a process with sub-processes or call activities gets no journey
+unless somebody writes one. One direction is written:
+
+- **`parts`**, on the parent, in story order: `[{ scenario, optional?,
+  repeats? }]`, `optional: true` when the story may skip the part, `repeats:
+  true` when it may happen more than once. A journey may be a part of more
+  than one parent. Whose part a journey is, and which part it follows, are
+  derived from the list. A parent's `personas` may be left out: they are its
+  parts'.
+- **`includes`**, on a step: the step IS that journey. When the step's
+  `realisedBy` names a call activity, the check holds them together: the
+  call's `calledElement` must be a process the included journey is realised
+  by. A call activity with no `includes` is fine and silent.
+- **`follows`** still chains journeys no parent lists (J2 follows J1).
+
+`partOf` (0.2.0) said grouping from the child, one parent only. Older files
+keep it; a 0.4.0 file may not carry it, so a checkout has one way to group.
+One journey is one BPMN process, usually.
+
+**Nothing is said twice.** What is derived is not also written:
+`check:journey-refs` reports a `follows` or `partOf` on a journey a parent
+lists, `personas` that are exactly the parts', and a `lead` that is the
+lanes' first actor as *redundant: remove it*.
+
+| field | source | authored or derived |
+|---|---|---|
+| DAK `personas` (roles) | the persona actors' `roles` | derived |
+| a role persona's actors | the actors whose `roles` name it | derived |
+| `personas` of a journey with parts | its parts' personas | derived (authored only when it adds people) |
+| a step's `lead`, `experiences` | the lanes of its `realisedBy` tasks | derived by default; authored as the narrative |
+| a part's parent, and what it follows | the parent's `parts` | derived |
+| `parts`, `includes`, `follows` between top-level journeys, step order | the story | authored |
+| `dak` | the DAK's own trace of which tasks each asset serves | authored, generated and checked by the instance (no generic trace yet) |
+| `requirements`, `examples`, `fhirChanges` | the step | authored (no story or index field links them to a step yet) |
 
 Every person is fictional. A persona's name, role, goal, needs and
 frustrations live on the actor (`meta.persona`), never on the journey. Two
@@ -175,15 +226,16 @@ Declare it in the instance that publishes the site:
 
 A site build runs it with the other declared writers. It writes, under
 `<locale>/<instance>/journeys/`, an index of every journey in the checkout
-(the mounted layers' included, each instance a sub-graph page), a page per
-journey (journey map, then step by step with the step's BPMN flow nodes
+(the mounted layers' included, each instance a sub-graph page, each parent's
+parts nested under it in order, an optional or repeating part marked), a page per
+journey (its parts in order, the journeys it is a part of, journey map, then step by step, a step that `includes` a journey linking to it with the step's BPMN flow nodes
 highlighted and the workshop layer under each step), and a page per workshop,
 per module and for the printable sheets. Everything is static; one small
 script adds the stepper, a filter and remembering a table's ticks in the
 browser. A workshop's walkthrough has a Device Demo (`demo/`): each device
 screen that shows a step it presents, drawn as a static device mock with its
 owner beside it; each step links to the screens that show it ("See what
-<owner> sees") and each screen back to its steps. An edge that resolves to
+`<owner>` sees") and each screen back to its steps. An edge that resolves to
 nothing is drawn as unresolved, never dropped.
 
 A step's `dak` assets are drawn as one small **DAK** row, grouped Data,
@@ -196,7 +248,8 @@ does not list is drawn as text, not linked.
 `check:kind-validators` parses every node of the four kinds against their
 Zod (`cat-harness-tools/schemas/process/user-scenario.ts`, `workshop.ts`,
 `device-screen.ts`):
-step ids unique, every actor a step names among the personas, every module,
+step ids unique, every actor a step names among the personas (before 0.4.0;
+from 0.4.0 `check:journey-refs` holds it against the derived personas), every module,
 table, row and sheet a workshop names declared in it.
 
 `check:journey-refs` (Tool `journey-refs`) checks what crosses files, with
@@ -212,7 +265,11 @@ exactly one that passes:
 | `requirements`, `preconditions[].requirements` | a `req:` node |
 | `examples`, `fhirChanges[].examples`, `dak[].key` | an entry of a `fhir-artifact-index` (could not determine while the index is built at publish) |
 | `illustration.src` | a file relative to the instance root |
-| `follows`, `partOf`, `trustLadder`, `record.state`, `views` | a journey; a code list and a code of it; an ArchiMate view the instance's config names |
+| `follows`, `partOf`, `parts[].scenario`, `includes` | a journey; parts and includes form no cycle |
+| `trustLadder`, `record.state`, `views` | a code list and a code of it; an ArchiMate view the instance's config names |
+| a persona (0.4.0) | an actor, or a role in a `roles.json` |
+| the journey, as a DAK user scenario | derived roles that are not empty, each a declared role |
+| `includes` on a step whose `realisedBy` names a call activity | a journey realised by the called process (could not determine when the call names none) |
 
 and every workshop's `scenarios`, `steps[]` `{scenario, step}`,
 `discussion[].steps` and `resources[].steps` (`<scenario>#<step>`) name a
