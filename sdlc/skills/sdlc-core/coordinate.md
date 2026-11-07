@@ -357,7 +357,8 @@ find the merge manager first" and §"Liveness and stalls" (owner rulings,
 **5. Stack rather than wait.** Work that needs a sibling's unmerged PR
 starts now, stacked on that PR's branch (or, across layers, on its head
 SHA), with `stacked on <repo>#<n>` in the body. Pull the sibling's changes
-in by merging. Never push to its branch: see
+in by merging. A re-pin is its own PR, holding only pins: work that needs
+the new pins stacks on it. Never push to its branch: see
 [`continual-progress`](continual-progress.md) §"Stack instead of waiting"
 (owner ruling, 2026-11-07).
 

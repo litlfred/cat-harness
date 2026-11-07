@@ -333,6 +333,19 @@ later, and cat-harness-tools at #1564 or later. An asset that a layer commits
 must also match the tools recipe that generates it, such as cat-harness's
 `edit-links.js`.
 
+**A re-pin is its own PR** (owner ruling, 2026-11-07: "keep repins on own
+PR so easier to stack dependencies"). A re-pin PR changes the pins and
+nothing else: `index.config.json`, `index.lock.json`, the generated `uses:`
+pins, and what regenerates from them. It carries no feature change, no
+workflow logic and no fix.
+
+- A feature that needs the new pins is stacked on the re-pin PR (below)
+  rather than riding inside it.
+- A fix that the re-pin needs lands in the layer that owns it, and the
+  re-pin then only moves the pin.
+- Counter-example: folio-assistant#2985 carried #2999 (the shared ci-setup
+  move) and its own `caches:viz` gate line inside the re-pin.
+
 **Stacking across layers** (owner ruling, 2026-11-07). Work that needs an
 unmerged PR in a lower layer does not wait for it. Develop against that
 PR's branch laid over a fresh mount. A draft PR may pin the dependency

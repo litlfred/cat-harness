@@ -271,6 +271,11 @@ stack"). The process is the first row of
   branch) so that CI sees it
   ([`remote-mount`](../../../skills/kg/kg-core/remote-mount.md)
   §"Stacking across layers").
+- **A re-pin is its own PR.** Put the pins, and nothing else, in one PR, and
+  stack the work that needs them on it. A fix the re-pin needs lands in
+  its owning layer first (owner ruling, 2026-11-07;
+  [`remote-mount`](../../../skills/kg/kg-core/remote-mount.md)
+  §"Re-pinning").
 - **Say so:** write `stacked on <repo>#<n>` in the PR body, and list the
   order in the merge request.
 - **When the base lands:** retarget the PR onto main, merge main in (across

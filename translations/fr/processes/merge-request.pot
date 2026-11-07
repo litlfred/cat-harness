@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-request\n"
-"POT-Creation-Date: 2026-11-07T08:26:58.646Z\n"
+"POT-Creation-Date: 2026-11-07T08:31:18.140Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -116,7 +116,7 @@ msgstr ""
 
 #: sdlc/processes/merge-request.bpmn:124
 #. Diagram element documentation
-msgid "Same repository: branch from the dependency PR's branch and open a draft PR whose base is that branch; pull the dependency in with merge commits, never rebase or force-push another session's branch. Across layers: develop against the dependency's branch laid over a fresh mount; a draft may pin the dependency PR's full head SHA, never a branch. Write \"stacked on <repo>#<n>\" in the PR body."
+msgid "Same repository: branch from the dependency PR's branch and open a draft PR whose base is that branch; pull the dependency in with merge commits, never rebase or force-push another session's branch. Across layers: develop against the dependency's branch laid over a fresh mount; a draft may pin the dependency PR's full head SHA, never a branch. Write \"stacked on <repo>#<n>\" in the PR body. A re-pin is its own PR holding only pins; work that needs the new pins stacks on it, and a fix the re-pin needs lands in its owning layer (owner ruling, 2026-11-07)."
 msgstr ""
 
 #: sdlc/processes/merge-request.bpmn:77

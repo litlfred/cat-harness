@@ -336,6 +336,14 @@ ledger entry.
    retargeted to main. A cross-layer stack waits until its pin names the
    dependency's merge commit on main. The merge request lists the order,
    and the batch card keeps it.
+10. **A re-pin PR holds only pins** (owner ruling, 2026-11-07: "keep repins
+    on own PR so easier to stack dependencies"). When the sweep finds a
+    re-pin PR (one that changes `index.config.json` or `index.lock.json`)
+    that also carries a feature, workflow logic or a fix, the merge manager
+    does not land it. It sends it back, and asks for the extra change to
+    be split onto a PR stacked on the re-pin, or into the layer that owns
+    the fix. Counter-example: folio-assistant#2985 carried #2999 and a
+    `caches:viz` gate line inside its re-pin.
 
 ## Runner relief
 

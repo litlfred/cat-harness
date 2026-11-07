@@ -121,7 +121,7 @@
       <bpmn:outgoing>Flow_S17</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:task id="Sib_Stack" name="Stack on it and keep working">
-      <bpmn:documentation>Same repository: branch from the dependency PR's branch and open a draft PR whose base is that branch; pull the dependency in with merge commits, never rebase or force-push another session's branch. Across layers: develop against the dependency's branch laid over a fresh mount; a draft may pin the dependency PR's full head SHA, never a branch. Write "stacked on &lt;repo&gt;#&lt;n&gt;" in the PR body.</bpmn:documentation>
+      <bpmn:documentation>Same repository: branch from the dependency PR's branch and open a draft PR whose base is that branch; pull the dependency in with merge commits, never rebase or force-push another session's branch. Across layers: develop against the dependency's branch laid over a fresh mount; a draft may pin the dependency PR's full head SHA, never a branch. Write "stacked on &lt;repo&gt;#&lt;n&gt;" in the PR body. A re-pin is its own PR holding only pins; work that needs the new pins stacks on it, and a fix the re-pin needs lands in its owning layer (owner ruling, 2026-11-07).</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="continual-progress"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_S16</bpmn:incoming>
       <bpmn:outgoing>Flow_S18</bpmn:outgoing>

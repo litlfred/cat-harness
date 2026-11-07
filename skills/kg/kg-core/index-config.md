@@ -237,8 +237,10 @@ and its test holds it to `lockFilesIn`.
 
 **A re-pin ends with one commit per layer, and moves pins only forward**
 (owner ruling, 2026-11-06, card "Pin target", A). Every layer the change
-needs is pinned in the same re-pin. The rules are in
-[`remote-mount`](remote-mount.md) §"Re-pinning".
+needs is pinned in the same re-pin, and the re-pin PR holds the pins and
+nothing else: a change that needs the new pins stacks on it (owner ruling,
+2026-11-07). The rules are in [`remote-mount`](remote-mount.md)
+§"Re-pinning".
 
 ## The reserved `index` stem
 
