@@ -171,6 +171,29 @@ Translate with the term base open. Options, in order of preference:
    unofficial.
 4. **Human translation** — the gold standard.
 
+#### Modal strength: a recommendation stays a recommendation
+
+A lowercase **should** is a recommendation, and its translation is the
+locale's recommendation form, never its obligation form. Turning it into
+"must" strengthens the claim, and in a guide it then reads as a conformance
+rule. Lowercase **must**, **shall** and **needs to** are obligations. The
+uppercase BCP 14 keywords (RFC 2119, RFC 8174: MUST, SHALL, SHOULD, MAY) keep
+the fixed renderings the locale's term base gives them.
+
+| locale | should (recommendation) | must / shall (obligation) |
+|---|---|---|
+| ar | ينبغي، يُستحسن | يجب |
+| es | debería, se recomienda | debe |
+| fr | devrait, il est recommandé de | doit |
+| ru | следует, рекомендуется | должен |
+| zh | 应当, 宜, 建议 | 必须 |
+
+A brief may not normalise one into the other, for consistency or anything
+else. A lexical round-trip screen cannot see this shift either: the words of a
+back-translation overlap whether it says "should" or "must". So the
+adjudicator reads every string whose source has a modal (see "What counts as
+drift").
+
 ### 4. Inject (PO → translated Markdown)
 
 ```sh
@@ -488,6 +511,9 @@ style review and every translation fails.
 > weakened, strengthened or reversed **is**; so is a term of art swapped for
 > something that means a different thing, and a named entity or quantifier
 > moved.
+
+A modal is a claim's strength: "should" read back as "must", or "may" as
+"should", **is** drift, however close the words are.
 
 This is the part that does **not** generalise — the spine requires a `drift`
 statement and checks only that one exists, because "states what is not drift as
