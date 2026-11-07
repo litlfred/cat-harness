@@ -183,7 +183,7 @@ script adds the stepper, a filter and remembering a table's ticks in the
 browser. A workshop's walkthrough has a Device Demo (`demo/`): each device
 screen that shows a step it presents, drawn as a static device mock with its
 owner beside it; each step links to the screens that show it ("See what
-<owner> sees") and each screen back to its steps. An edge that resolves to
+the owner sees") and each screen back to its steps. An edge that resolves to
 nothing is drawn as unresolved, never dropped.
 
 A step's `dak` assets are drawn as one small **DAK** row, grouped Data,
