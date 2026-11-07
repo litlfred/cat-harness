@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-request\n"
-"POT-Creation-Date: 2026-11-07T08:31:18.140Z\n"
+"POT-Creation-Date: 2026-11-07T18:04:59.573Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -171,7 +171,7 @@ msgstr ""
 
 #: sdlc/processes/merge-request.bpmn:16
 #. Diagram element documentation
-msgid "The sibling's side of merging (owner rulings, 2026-11-07). A coding agent whose work depends on an unmerged PR stacks on it rather than waiting, and retargets when it lands. With a PR ready to merge it does not know whether a merge manager exists, so it checks: if one is active and live, it sends the six-line merge request; if none is, it measures whether one is needed, and either runs the merge manager loop for its own PRs or elects one with its siblings by the fixed rule, the winner announcing itself to all and taking the lane. Any agent may stall, the merge manager included: a request not acknowledged within the stall window sends the sibling to stalled-agent triage and a re-election without the stalled session. The merge manager's own loop is Process_MergeManagerWatch."
+msgid "The sibling's side of merging. A coding agent whose work depends on an unmerged PR stacks on it rather than waiting, and retargets when it lands. With a PR ready to merge it does not know whether a merge manager exists, so it checks: if one is active and live, it sends the six-line merge request; if none is, it measures whether one is needed, and either runs the merge manager loop for its own PRs or elects one with its siblings by the fixed rule, the winner announcing itself to all and taking the lane. Any agent may stall, the merge manager included: a request not acknowledged within the stall window sends the sibling to stalled-agent triage and a re-election without the stalled session. The merge manager's own loop is Process_MergeManagerWatch. Source: owner rulings, 2026-11-07."
 msgstr ""
 
 #: sdlc/processes/merge-request.bpmn:83

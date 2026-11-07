@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/sdlc/processes/merge-request.bpmn` (process `Process_MergeRequest`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-The sibling's side of merging (owner rulings, 2026-11-07).
+The sibling's side of merging.
 
 ## Begin — Feature work starts (`Sib_Start`)
 
