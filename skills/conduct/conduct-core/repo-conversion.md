@@ -145,7 +145,7 @@ that layer's build-pipeline skill for how additional paths are added later.
 
 ## 3. Dispatch the ingestion
 
-Ingestion proper is `processes/library/document-ingestion.bpmn` (and the
+Ingestion proper is `library/processes/document-ingestion.bpmn` (and the
 content layer's document-intake refinement skill when converting into a content
 folio). What this skill decides is *how
 much parallelism*, and it is a question for the author because it spends their
