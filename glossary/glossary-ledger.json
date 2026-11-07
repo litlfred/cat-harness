@@ -604,7 +604,7 @@
     "role/health-worker": {
       "prefLabel": "Health worker",
       "firstSeen": "2026-11-07",
-      "retiredOn": "2026-11-07"
+      "retiredOn": null
     },
     "role/ig-publisher-service": {
       "prefLabel": "IG publisher + validator",
@@ -684,7 +684,7 @@
     "role/point-of-care-system": {
       "prefLabel": "Point-of-care system",
       "firstSeen": "2026-11-07",
-      "retiredOn": "2026-11-07"
+      "retiredOn": null
     },
     "role/programme-manager": {
       "prefLabel": "Programme manager",
