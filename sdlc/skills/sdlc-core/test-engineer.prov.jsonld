@@ -19,6 +19,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/test-engineer.md#provenance-3"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/test-engineer.md#provenance-4"
         }
       ]
     },
@@ -59,6 +62,20 @@
       ],
       "dcterms:date": [
         "2026-11-06"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/test-engineer.md#provenance-4",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Every test has a Gherkin (STRICT)",
+      "prov:value": "Owner decision: binding is by tag (no execution engine required); a Scenario may also bind a WHO-ITB GITB TDL test case with @itb:<testSuite id>/<testCase id>, the tag schemes are an extensible list, and Gherkin dialects are allowed so translated .feature files remain valid. Relayed by the session working the ITB side.",
+      "cat-harness:refs": [
+        "2026-11-07",
+        "cat-harness-724x"
+      ],
+      "dcterms:date": [
+        "2026-11-07"
       ]
     }
   ]
