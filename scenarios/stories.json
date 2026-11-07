@@ -592,6 +592,34 @@
       "want": "Choose between two defensible translations"
     },
     {
+      "id": "translation-source-lead-1",
+      "role": {
+        "role": "translation-source-lead"
+      },
+      "want": "Give every locale the same templates, extracted once and merged before anyone starts"
+    },
+    {
+      "id": "locale-translator-1",
+      "role": {
+        "role": "locale-translator"
+      },
+      "want": "Translate only what is new or fuzzy, with the terms already fixed"
+    },
+    {
+      "id": "back-translator-1",
+      "role": {
+        "role": "back-translator"
+      },
+      "want": "Render a translation back without being shown the original"
+    },
+    {
+      "id": "round-trip-adjudicator-1",
+      "role": {
+        "role": "round-trip-adjudicator"
+      },
+      "want": "Tell drift from inflection and word order, and say which each pair is"
+    },
+    {
       "id": "translation-adjudicator-2",
       "role": {
         "role": "translation-adjudicator"
