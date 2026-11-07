@@ -327,11 +327,11 @@ layer. Never move a pin back to an older commit so that two layers agree.
 every layer the change needs, re-pinned to the current mains, and verify on a
 fresh mount (`mount:remote --fresh`). A layer can need another layer's newer
 commit. For example, cat-harness#1100 removed routes that were listed by hand,
-because folio-assistant-core#654 now derives them (`builtOnHostSite`). So
-cat-harness at 6dd3746 or later needs folio-assistant-core at 41d9da9 or
-later, and cat-harness-tools at #1564 or later. An asset that a layer commits
-must also match the tools recipe that generates it, such as cat-harness's
-`edit-links.js`.
+because a content layer above it now derives them (`builtOnHostSite`). So
+cat-harness at 6dd3746 or later needs that content layer's change, and the
+tools layer's matching one, in the same re-pin. An asset that a layer
+commits must also match the tools recipe that generates it, such as
+cat-harness's `edit-links.js`.
 
 **A re-pin is its own PR** (owner ruling, 2026-11-07: "keep repins on own
 PR so easier to stack dependencies"). A re-pin PR changes the pins and
@@ -348,9 +348,9 @@ workflow logic and no fix.
 - **The one exception: mutual dependence** (owner ruling, 2026-11-07, card,
   about 08:43Z, "A. Allow the exception"). A re-pin may share a PR with a
   change only when neither can pass on its own. The PR body must say why.
-  Example: folio-assistant-core#639. Core re-pinned to cat-harness#1032
-  fails `check:tools` without #639's `library` topic, and #639 alone
-  declares the `library` topic twice against the old pin. A change that
+  Example: a content layer re-pinned to cat-harness#1032 failed
+  `check:tools` without its own PR's `library` topic, and that PR alone
+  declared the `library` topic twice against the old pin. A change that
   merely needs the new pins is not mutual: it stacks.
 
 **A lower layer's new gate must not break the next re-pin.** A gate or
@@ -371,10 +371,10 @@ commit on main. That move goes forward, so "a pin only moves forward" holds
 throughout.
 
 **The re-pin refreshes layer health** (owner ruling, 2026-11-07, card "Layer
-health", A). When a re-pin moves cat-harness-tools, it regenerates the
+health", A). When a re-pin moves the tools layer, it regenerates the
 checkout's layer health report at the new pins and publishes it. The health
 check fails a re-pin once the report is more than 26 hours old and the checker
-has moved. The implementation is cat-harness-tools#1603.
+has moved. The tools layer implements it.
 
 **The committer re-pins, locally, and CI only verifies.** The person or agent
 who moves a pin does the whole re-pin in their own checkout: `--seed`, a

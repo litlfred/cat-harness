@@ -354,8 +354,9 @@ ledger entry.
     `caches:viz` gate line inside its re-pin. **Exception** (owner ruling,
     2026-11-07, card "A. Allow the exception"): a change mutually dependent
     with the re-pin, where neither passes alone, may share the PR when its
-    body says why (as folio-assistant-core#639 does). The merge manager
-    checks the reason; a change that only needs the new pins still stacks.
+    body says why (as a content layer's re-pin did on 2026-11-07). The
+    merge manager checks the reason; a change that only needs the new pins
+    still stacks.
 
 ## Runner relief
 
@@ -403,11 +404,9 @@ These come from the role; the watcher is the step that acts on them:
 
 - The timer is each session's own scheduled check-in. No workflow wakes the
   merge manager yet.
-- `merge:watch` makes all four readings once the upgrade from session
-  session_01VQDpPg9URqDhr4fxtYeGmr lands in cat-harness-tools. Until then,
-  the pinned version (cat-harness-tools#1514) prints reading 1 only, and
-  readings 2-4 are made by hand with `gh api`.
-- `merge:request:check` (step 2 of the sweep) arrives with
-  cat-harness-tools#1625, which builds on the `parseMergeRequest` of
-  cat-harness-tools#1624. Until both land and are re-pinned, the merge
-  manager checks the six lines by reading them.
+- `merge:watch` makes all four readings once its upgrade lands in the tools
+  layer and is re-pinned. Until then, the pinned version prints reading 1
+  only, and readings 2-4 are made by hand with `gh api`.
+- `merge:request:check` (step 2 of the sweep) arrives with the tools layer's
+  request check, which builds on its `parseMergeRequest`. Until it lands
+  and is re-pinned, the merge manager checks the six lines by reading them.

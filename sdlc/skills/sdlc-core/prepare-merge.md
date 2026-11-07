@@ -287,7 +287,7 @@ lower layer's main broke every downstream re-pin. New check scripts that no
 downstream workflow ran failed `no check script is unrun`
 (`check:test-gherkin`, and `translation:page-qa:check`, which also had a
 flag mismatch). Checks that walked the file tree without skipping declared
-build outputs failed too (cat-harness-tools#1610, #1616). Each time, the
+build outputs failed too (two such checks in the tools layer). Each time, the
 re-pin became the P0.
 
 So, in the same PR that adds the gate:
