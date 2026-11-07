@@ -591,6 +591,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/health-worker": {
+      "prefLabel": "Health worker",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
     "role/ig-publisher-service": {
       "prefLabel": "IG publisher + validator",
       "firstSeen": "2026-09-21",
@@ -659,6 +664,11 @@
     "role/platform-authoring-agent": {
       "prefLabel": "Platform authoring agent",
       "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/point-of-care-system": {
+      "prefLabel": "Point-of-care system",
+      "firstSeen": "2026-11-07",
       "retiredOn": null
     },
     "role/programme-manager": {
