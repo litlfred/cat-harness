@@ -224,8 +224,8 @@ Declare it in the instance that publishes the site:
 { "id": "journeys", "renderedBy": "journeys-viewer", "coversKinds": ["user-scenario", "workshop", "device-screen"], "subgraphs": "instance" }
 ```
 
-A site build runs it with the other declared writers. It writes, under
-`<locale>/<instance>/journeys/`, an index of every journey in the checkout
+A site build runs it with the other declared writers. It writes, under the
+path `<locale>/<instance>/journeys/`, an index of every journey in the checkout
 (the mounted layers' included, each instance a sub-graph page, each parent's
 parts nested under it in order, an optional or repeating part marked), a page per
 journey (its parts in order, the journeys it is a part of, journey map, then step by step, a step that `includes` a journey linking to it with the step's BPMN flow nodes
@@ -234,9 +234,9 @@ per module and for the printable sheets. Everything is static; one small
 script adds the stepper, a filter and remembering a table's ticks in the
 browser. A workshop's walkthrough has a Device Demo (`demo/`): each device
 screen that shows a step it presents, drawn as a static device mock with its
-owner beside it; each step links to the screens that show it ("See what
-`<owner>` sees") and each screen back to its steps. An edge that resolves to
-nothing is drawn as unresolved, never dropped.
+owner beside it; each step links to the screens that show it
+("See what `<owner>` sees") and each screen back to its steps. An edge that
+resolves to nothing is drawn as unresolved, never dropped.
 
 A step's `dak` assets are drawn as one small **DAK** row, grouped Data,
 Decision logic, Indicators, each asset linked to its page in the IG through
