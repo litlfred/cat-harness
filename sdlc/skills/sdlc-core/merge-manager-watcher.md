@@ -228,7 +228,12 @@ event, a merge request or a main run finishing may start a sweep early.
    Its verdict is rule 1: every "No new failures" judge passes, each
    shard's Q-PIPE-1 table lists 0 new failures, and any run queued or in
    progress on the head blocks.
-2. For each green request, post its six lines in this chat.
+2. Check each green request with `bun run cat merge:request:check -- <file|->`
+   (`--json` for machine output; exit 0 accepted, 1 refused, 2 could not
+   determine). It parses the six lines, and checks that the SHA is the PR's
+   current head and that the preview was built for that head. Send a
+   refused request back with the reason. Post each accepted request's six
+   lines in this chat.
 3. Ask the owner with **one** batch card for all of them, in priority order.
    Leave off any PR in the pre-approval ledger (below).
 4. Land what is approved. A workflow PR, or a PR in a repository with no
@@ -374,8 +379,7 @@ These come from the role; the watcher is the step that acts on them:
   session_01VQDpPg9URqDhr4fxtYeGmr lands in cat-harness-tools. Until then,
   the pinned version (cat-harness-tools#1514) prints reading 1 only, and
   readings 2-4 are made by hand with `gh api`.
-- Checking a merge request mechanically is still to come:
-  `merge:watch -- --check-request <file|->` will parse the six lines with
-  the tools' `parseMergeRequest`, check that the SHA is the PR's current
-  head, and check that the preview was built for that head. Until then the
-  merge manager checks the six lines by reading them.
+- `merge:request:check` (step 2 of the sweep) arrives with
+  cat-harness-tools#1625, which builds on the `parseMergeRequest` of
+  cat-harness-tools#1624. Until both land and are re-pinned, the merge
+  manager checks the six lines by reading them.
