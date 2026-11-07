@@ -75,6 +75,11 @@
       "firstSeen": "2026-11-04",
       "retiredOn": null
     },
+    "kind/cache": {
+      "prefLabel": "CI caches",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
     "kind/cat-harness": {
       "prefLabel": "Harness graph",
       "firstSeen": "2026-11-04",
@@ -594,7 +599,7 @@
     "role/health-worker": {
       "prefLabel": "Health worker",
       "firstSeen": "2026-11-07",
-      "retiredOn": null
+      "retiredOn": "2026-11-07"
     },
     "role/ig-publisher-service": {
       "prefLabel": "IG publisher + validator",
@@ -669,7 +674,7 @@
     "role/point-of-care-system": {
       "prefLabel": "Point-of-care system",
       "firstSeen": "2026-11-07",
-      "retiredOn": null
+      "retiredOn": "2026-11-07"
     },
     "role/programme-manager": {
       "prefLabel": "Programme manager",
