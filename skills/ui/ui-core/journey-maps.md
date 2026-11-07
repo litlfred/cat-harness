@@ -4,7 +4,8 @@ description: >
   Journeys and workshops as knowledge-graph content: a DAK user scenario told
   as a journey map (`user-scenario` kind: ordered steps, per person what they
   do and feel, pain points, enablers, the record's trust state, and edges to
-  stories, BPMN tasks, requirements, FHIR examples and building blocks), the
+  stories, BPMN tasks, requirements, FHIR examples, building blocks and the
+  DAK's data sets, decision tables and indicators), the
   `building-blocks` catalogue its steps use, a workshop that teaches from it
   (`workshop` kind: modules, objectives, questions for the room on each step,
   reference tables, sheets, job aids), the `journeys-viewer` visualiser that
@@ -31,8 +32,8 @@ the node already links.
 
 ## The `user-scenario` kind
 
-One file per journey (`user-scenario/0.2.0`; the draft `0.1.0` is read
-unchanged), in a directory the instance declares with that kind
+One file per journey (`user-scenario/0.3.0`; `0.2.0` and the draft `0.1.0`
+are read unchanged), in a directory the instance declares with that kind
 (conventionally `scenarios/user-scenarios/`). It keeps the DAK
 `UserScenario` fields — `id`, `title`, `description`, `personas` (actor
 ids) — and adds the ordered `steps`:
@@ -49,10 +50,20 @@ ids) — and adds the ordered `steps`:
 | `requirements`, `examples` | `req:` node ids; FHIR examples as `Type/id` |
 | `uses[]` | a block of a `building-blocks/0.1.0` catalogue, and the ROLE it plays in this step |
 | `illustration` | the step's picture (`src`, instance-relative), its `alt`, and the `prompt` to draw it when there is none yet (0.2.0) |
+| `dak[]` | the DAK assets the step uses, each `{ key, rel? }`: `key` is the asset's artefact-index key (`StructureDefinition/<logical model>`, `PlanDefinition/<decision table>`, `Measure/<indicator>`), `rel` what it is to the step: `data` a data set it records or exchanges, `decides` a decision table that decides something in it, `measures` an indicator that counts it (0.3.0) |
 
-`user-scenario/0.2.0` accepts every `0.1.0` file as it is; only 0.2.0 adds
-`partOf`, `views`, `references`, `illustrationStyle` and, on a step, `gaps`,
-`references` and `illustration`.
+`user-scenario/0.3.0` accepts every `0.2.0` and `0.1.0` file as it is. 0.2.0
+added `partOf`, `views`, `references`, `illustrationStyle` and, on a step,
+`gaps`, `references` and `illustration`; 0.3.0 adds a step's `dak`.
+
+**Derive `dak`, do not type it.** A DAK already says which BPMN tasks each of
+its data sets and decision tables serves, and which journeys each indicator
+measures; a step's `realisedBy` names its process and tasks. So the step's
+`dak` list is a join of the two, written by the instance's own script from
+its DAK sources and checked against them, never kept by hand beside them.
+When `rel` is absent, the viewer goes by the key's resource type
+(`StructureDefinition` data, `PlanDefinition` or `Library` decision logic,
+`Measure` indicators).
 
 **A picture carries no text.** The step's title and its caption are
 translatable page text: the viewer renders the step's `title` above the image
@@ -175,6 +186,11 @@ owner beside it; each step links to the screens that show it ("See what
 <owner> sees") and each screen back to its steps. An edge that resolves to
 nothing is drawn as unresolved, never dropped.
 
+A step's `dak` assets are drawn as one small **DAK** row, grouped Data,
+Decision logic, Indicators, each asset linked to its page in the IG through
+the artefact index, as FHIR examples and personas are. An asset the index
+does not list is drawn as text, not linked.
+
 ## Checks
 
 `check:kind-validators` parses every node of the four kinds against their
@@ -194,7 +210,7 @@ exactly one that passes:
 | `realisedBy[].process`, `.tasks` | a BPMN file relative to the instance root, and element ids in it |
 | `uses[].block` | a block of a catalogue in a `building-blocks` directory |
 | `requirements`, `preconditions[].requirements` | a `req:` node |
-| `examples` | an entry of a `fhir-artifact-index` |
+| `examples`, `fhirChanges[].examples`, `dak[].key` | an entry of a `fhir-artifact-index` (could not determine while the index is built at publish) |
 | `illustration.src` | a file relative to the instance root |
 | `follows`, `partOf`, `trustLadder`, `record.state`, `views` | a journey; a code list and a code of it; an ArchiMate view the instance's config names |
 
