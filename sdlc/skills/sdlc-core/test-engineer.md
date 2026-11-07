@@ -107,7 +107,10 @@ defect, not missing documentation.
    included: a Rust `#[test]`, a Kotlin/JUnit `@Test`, a bun or vitest
    `test()` / `it()`, a pytest `test_*`. A parameterised test (`test.each`,
    `@pytest.mark.parametrize`, `@ParameterizedTest`) is ONE test and maps to
-   one Scenario or Scenario Outline.
+   one Scenario or Scenario Outline. **A test's title is a fixed string**: a
+   test titled by a loop variable or a `${…}` template has no name a tag can
+   carry, so the check reports it (`test-name-not-static`). Give it a literal
+   title, or write the loop as `test.each(…)("… %s")`.
 2. **The link is a tag on the Scenario**, never on the `Feature:` line (a
    Feature tag would be inherited by every Scenario under it):
 
