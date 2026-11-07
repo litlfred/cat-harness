@@ -50,6 +50,29 @@ steward's, and not on an issue.
 
 **When you finish your work and are ready to merge, ask the user before submitting to the merge queue.** Do not apply `ready-to-merge` or post the `ready:` marker autonomously without asking the user if you should submit. Submitting to the queue requests landing the code on `main`; the user or owner confirms the submission.
 
+### While a merge manager is active, tell it, and never merge yourself
+
+Owner ruling, 2026-11-07, card "Approvals", B: siblings send merge requests to
+the merge manager, and the owner approves only in the merge manager's
+session. So, besides the steps below, send the merge manager the six-line
+merge request: the PR URL and full head SHA, your session URL, what changed,
+the rendered preview URL (or `no preview: <reason>`), what to look for in
+it, and `full tier green as judged`. A request with no preview and no reason
+comes back. Never merge your own PR. An approval the owner gives in your
+session does not authorise a merge. The merge manager posts your request in
+its chat, asks the owner on its batch card, and orders the queue:
+[`merge-manager-watcher`](merge-manager-watcher.md) §"Am I the active merge
+manager?" and §"The merge request: six lines".
+
+Find the merge manager before you send: the latest `merge manager: <session
+id>` announcement, noted on the coordination work item, names a session that
+must also be live. Whether a merge manager is needed at all is a measured
+condition; when none is active the siblings elect one by a fixed rule; a
+lone session is its own; and one that does not acknowledge within the stall
+window is treated as stalled
+([`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
+find the merge manager first").
+
 ### Submitting to the queue
 
 To submit, do all of these on YOUR PR:
@@ -391,6 +414,8 @@ Where a repository runs `merge-train.yml`, as it does in folio-assistant, the st
 
 `merge-main.yml` skips PRs labelled `merge-train`: they are integrated once, at train time, never on each push to main.
 
+**Owner ruling, 2026-11-07, card "Train", A.** When the owner approves a folio-assistant PR that does not change `.github/workflows/`, the merge manager adds the `merge-train` label instead of merging it, so the train lands it in a batch with one CI run. Merging one PR at a time cost about 6.7 runs per merged PR. Workflow PRs, and repositories with no train, merge directly, and a workflow PR needs no approval beyond the batch card (card "Workflow PRs", A).
+
 ## Regenerate on a clean tree, and check it
 
 **`git status --porcelain` is empty before a member is merged and the tree
@@ -462,8 +487,12 @@ there is no posted verdict to read in its place.
 
 How to tell whether a Merge Manager is active: the owner says so, or a live
 session holds the `merge-steward` lane (§"Address the ROLE, never a session",
-step 1). If you cannot tell, ask the owner. Do not assume none. A stale
-memory of "there was one yesterday" is not an answer in either direction.
+step 1). If you cannot tell, apply the rules of
+[`merge-manager-watcher`](merge-manager-watcher.md) §"When is a merge manager
+needed?": while the lane is needed and none is active, the siblings elect one
+by its fixed rule, and a lone session is its own (owner rulings, 2026-11-07).
+Do not assume none. A stale memory of "there was one yesterday" is not an
+answer in either direction.
 "The owner said merge" is still required. Submitting to `main` is the owner's
 call (§"Ask the user before submitting"), and this does not change that.
 

@@ -190,9 +190,24 @@ than a question:
    **Ready for review**, add the label **`ready-to-merge`**, and comment
    **`ready: <head sha>`** — the full sha of the head that went green, so a
    push after it is visibly not what was declared ready.
-3. **The Merge Steward session ("Separation") merges.** It brings `main` in,
+3. **Ask the merge manager to merge, in six lines** (owner ruling,
+   2026-11-07). First check that a merge manager is active and live: the
+   latest `merge manager: <session id>` announcement, and that session
+   answered within the stall window. Send it the PR URL and full head SHA, your session URL, 1-3
+   sentences on what changed, the rendered preview URL for that head (or
+   `no preview: <reason>`), what to look for in the preview, and
+   `full tier green as judged`. It posts them in its chat and asks the owner
+   by card. An approval the owner gives in your own session does not
+   authorise a merge. With no live merge manager, follow
+   [`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
+   find the merge manager first": measure whether one is needed, then
+   either manage your own PRs or elect one with your siblings. If your
+   request is not acknowledged within the stall window, the merge manager
+   has stalled: re-elect without it. The format is in §"The merge request:
+   six lines" there.
+4. **The Merge Steward session ("Separation") merges.** It brings `main` in,
    runs `regen`, re-checks and merges. That is its lane, not yours.
-4. **If it reports red, it is yours again**: fix, push, wait for green on
+5. **If it reports red, it is yours again**: fix, push, wait for green on
    every job, then re-label and comment `ready: <new head sha>`.
 
 Wherever a merge does happen, it is the
@@ -224,6 +239,57 @@ number of PRs marked ready at once is what fills the queue:
 
 Holding a PR as a draft for pacing is not holding back a green PR: the fast
 tier is green, and the hand-off above waits for the full tier.
+
+The merge manager enforces this rule (owner ruling, 2026-11-07, card "Cancel
+CI"). When the runners are saturated, it closes superseded PRs, cancels stale
+queued runs that never started, and asks the owners of the lowest-priority PRs
+to return them to draft: [`merge-manager-watcher`](merge-manager-watcher.md)
+§"Runner relief".
+
+### A new gate is proven downstream before it lands
+
+A PR that adds a gate or `check:*` script to a lower layer passes on its own
+main, says how downstream layers run it, and shows a dry run over a fresh
+folio-assistant mount. Otherwise the next re-pin inherits the breakage
+([`prepare-merge`](prepare-merge.md) §"A new gate in a lower layer must
+pass downstream").
+
+### One pusher per PR branch
+
+Only the session that owns a PR pushes to its branch (owner ruling,
+2026-11-07). Anyone else sends the owner the change, on the PR's thread or
+by message. Every push restarts the full CI run: on 2026-11-07, three
+sessions pushed to folio-assistant#2985 within 10 minutes, and each push
+restarted it.
+
+### Stack instead of waiting
+
+Do not wait for a dependency to merge before starting work that needs it
+(owner ruling, 2026-11-07: "they dont need to wait for a merge to start
+working on a feature branch needing a dependent feature branch. They can
+stack"). The process is the first row of
+[`merge-request.bpmn`](../../processes/merge-request.bpmn).
+
+- **In the same repository:** branch from the dependency PR's branch, and
+  open a draft PR whose base is that branch. Pull later changes of the
+  dependency in with merge commits. Never rebase or force-push another
+  session's branch.
+- **Across layers:** develop against the dependency's branch laid over a
+  fresh mount. A draft may pin the dependency PR's full head SHA (never a
+  branch) so that CI sees it
+  ([`remote-mount`](../../../skills/kg/kg-core/remote-mount.md)
+  §"Stacking across layers").
+- **A re-pin is its own PR.** Put the pins, and nothing else, in one PR, and
+  stack the work that needs them on it. A fix the re-pin needs lands in
+  its owning layer first (owner ruling, 2026-11-07;
+  [`remote-mount`](../../../skills/kg/kg-core/remote-mount.md)
+  §"Re-pinning").
+- **Say so:** write `stacked on <repo>#<n>` in the PR body, and list the
+  order in the merge request.
+- **When the base lands:** retarget the PR onto main, merge main in (across
+  layers: re-pin to the dependency's merge commit on main), then mark it
+  ready by the queue rule. Never merge the stacked PR into its base branch,
+  and never mark it ready while it pins an unmerged commit.
 
 ### Two green PRs can merge into a red main, and the answer is to fix forward
 

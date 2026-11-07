@@ -49,7 +49,12 @@ Every diagram you write or touch must, when you are done:
 - have **right-angled flows** and **every name inside its box**, pool and
   lane names inside their strips;
 - have **no crossing flows**, and the **lane order that keeps flows between
-  lanes shortest**.
+  lanes shortest**: each lane sits next to the lanes it exchanges flows
+  with, so **no flow crosses a lane it does not stop in**. A lane that talks
+  to only one other lane, such as an owner who only approves the merge
+  steward's card, goes on the outside, next to that lane (owner,
+  2026-11-07: *"swap owner lane down to reduce arrows across non
+  interacting actor lanes"*).
 
 `bun run cat bpmn:detangle <file>` reports all of it, and `--write` fixes
 what it can (lane order, right angles, box and lane sizes, label places).

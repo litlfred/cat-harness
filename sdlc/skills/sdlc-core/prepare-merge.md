@@ -279,6 +279,30 @@ tree, and install dependencies rather than borrowing them: a symlinked root
 location this repository does not contain. Confirming the symlink is
 git-ignored is not enough; path resolution is a separate confound.
 
+## A new gate in a lower layer must pass downstream (STRICT)
+
+A layer that adds a gate or a `check:*` script takes on its downstream
+layers too (owner ruling, 2026-11-07, card "Rule 13": add it): the next re-pin of each one runs it. Twice on 2026-11-07 a
+lower layer's main broke every downstream re-pin. New check scripts that no
+downstream workflow ran failed `no check script is unrun`
+(`check:test-gherkin`, and `translation:page-qa:check`, which also had a
+flag mismatch). Checks that walked the file tree without skipping declared
+build outputs failed too (two such checks in the tools layer). Each time, the
+re-pin became the P0.
+
+So, in the same PR that adds the gate:
+
+1. **It passes on the layer's own main.**
+2. **It says how downstream layers run it**: either wired through the
+   shared reusable workflow, or declared opt-in per layer with an exemption
+   row each downstream layer can carry.
+3. **A downstream dry run proves it**: lay the branch over a fresh mount of
+   folio-assistant main, and run the gate set there. Say in the PR what ran
+   and its result.
+
+Without all three, the gate waits. It never lands for the next re-pin to
+discover.
+
 ## A clean merge can produce a wrong artefact (STRICT)
 
 **`bun run cat regen` after every base merge.** Not only after a conflicted one —
@@ -422,7 +446,13 @@ When the branch is green and pushed, it reaches the Merge Steward only by its
 own state: label `ready-to-merge`, a signed `ready: <head sha>` comment, and no
 `needs-merge-human`. [`merge-queue`](merge-queue.md) §"Handing a PR to the
 queue" has the six points, and when NOT to spend CI keeping up while far back.
-Never post the handover anywhere but the PR.
+
+The PR's state is the record. The request to merge is a message: send the
+merge manager the six-line merge request of
+[`merge-manager-watcher`](merge-manager-watcher.md) §"The merge request: six
+lines", with the PR URL, the session URL, what changed, the rendered preview
+and what to look for in it (owner ruling, 2026-11-07). A lone session posts
+the same six lines in its own chat, then asks the owner by card.
 
 ## Opening the PR (only when asked)
 
