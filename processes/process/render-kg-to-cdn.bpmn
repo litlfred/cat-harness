@@ -149,15 +149,15 @@ TOOL-AGNOSTIC ON PURPOSE: a Tool describes its own specific subprocesses, so the
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_3b" bpmnElement="Flow_3b"><di:waypoint x="558" y="230"/><di:waypoint x="668" y="230"/><bpmndi:BPMNLabel><dc:Bounds x="566" y="236" width="90" height="20"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_5b" bpmnElement="Flow_5b">
-        <di:waypoint x="848" y="135" />
+                <di:waypoint x="848" y="135" />
         <di:waypoint x="978" y="135" />
-        <di:waypoint x="978" y="190" />
+        <di:waypoint x="978" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
-        <di:waypoint x="533" y="255" />
+                <di:waypoint x="533" y="255" />
         <di:waypoint x="533" y="340" />
         <di:waypoint x="978" y="340" />
-        <di:waypoint x="978" y="270" />
+        <di:waypoint x="978" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
         <di:waypoint x="848" y="230" />

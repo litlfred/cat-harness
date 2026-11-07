@@ -92,33 +92,36 @@ Run this before **any** work on the work item, including reading code for it. Th
 trigger is starting work, not claiming ([`bean-coordination`](bean-coordination.md)
 §"The trigger is STARTING WORK").
 
-1. **Fetch every copy**, in its own command:
-   `git fetch origin cat/cat-harness/beans`. A fetch in the same compound command
-   as the read is not a barrier ([`bean-coordination`](bean-coordination.md)
-   §"Re-derive from the REMOTE").
-2. **Read the last commits on the work item's file**, per copy:
-   `git log -3 --format='%an %cI %s' FETCH_HEAD -- 'beans/defs/*<id>--*'`.
-   **Skip** the work item if another agent committed to it in the past 24 hours, or
+1. **Refresh every store copy** from its remote authority in its own step
+   (never cached from session start; [`bean-coordination`](bean-coordination.md)
+   §"Re-derive from the REMOTE", and [`work-plan-store-git-branch`](work-plan-store-git-branch.md)
+   for the git state-branch fetch).
+2. **Read the recent history on the work item**, per copy (`history(id)` in
+   [`work-plan-store`](work-plan-store.md)).
+   **Skip** the work item if another agent wrote to it in the past 24 hours, or
    its last note says it is claimed.
 3. **Look for open work naming the work item**: an open PR whose title, body or
    branch names the id, in every repository the drain touches — the
    `open-work-lookup` Tool. **Skip** if one exists and is not yours. This catches
    a duplicate that exists only on an open PR's head, which step 2 cannot see.
-4. **Claim**: set `status: in-progress`, append a dated note naming you and your
-   session, and make a **plain commit on every copy**. Push it before any other
-   commit of yours, so the next agent's step 2 sees it.
-5. **A rejected push** means somebody wrote first: fetch, rebase, re-read the
-   work item, and go back to step 2. **Never force-push** a work item branch.
+4. **Claim**: set `status: in-progress` (`update`) and append a dated note
+   (`note`) naming you and your session across every store copy, persisted before
+   any other commit of yours so the next agent's step 2 sees it.
+5. **A write conflict** means somebody wrote first: refresh, re-read the
+   work item (`get(id)` / `history(id)`), and go back to step 2. **Never
+   force-push** a state branch ([`work-plan-store-git-branch`](work-plan-store-git-branch.md)).
 
 `status: in-progress` alone is not a claim you can trust. It goes stale
 (§"A quiet claim" in `bean-coordination`), so steps 2 and 3 read activity, not
 status.
 
-**Why plain commits, and why on every copy.** `bun run cat state:push` and
-`bun run cat beans:claim` write the one copy the checkout points at. With more
+**Why every copy must be updated.** `bun run cat state:push` and
+`bun run cat beans:claim` write the one store copy the checkout points at. With more
 than one copy, the others go on saying `todo`. So while there is more than one
-copy, a drainer edits work items with plain git commits on each, and never with
-`state:push`. Where a work item has one copy, `beans:claim` is the claim.
+copy, the `bean-claim-check` Tool writes the claim to each copy directly
+([`work-plan-store-git-branch`](work-plan-store-git-branch.md)), rather than
+through a single-checkout `state:push`. Where a work item has one copy,
+`beans:claim` is the claim.
 
 ## 3. Work it
 

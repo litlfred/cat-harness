@@ -10,9 +10,9 @@ The machine half of translation, end to end: extract the translatable strings, i
 
 - Begin here: Source content exists in the folio's defaultLocale.
 - Call `workflow_start` with `process: "Process_Translation"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_PotExtract` (Extract translatable strings (POT generation))
+- next: → `Task_PotExtract` (Extract translatable strings (POT))
 
-### 1. Extract translatable strings (POT generation) (`Task_PotExtract`)
+### 1. Extract translatable strings (POT) (`Task_PotExtract`)
 
 - Who: the `Agent / platform (automated)` lane (role `authoring-agent`).
 - Skill: `translation-manager`.
@@ -51,10 +51,10 @@ The machine half of translation, end to end: extract the translatable strings, i
 
 - Answered by the round-trip (back-translation) QA: did it flag drift or a terminology miss?
 - Call `workflow_complete` with `node: "Gateway_Drift"` and `outcome` set to the label that holds:
-  - «Drift detected» → `Task_Adjudicate` (Adjudicate flagged passage (human reviewer))
+  - «Drift detected» → `Task_Adjudicate` (Adjudicate the flagged passage (human))
   - «Clean» → `Task_WriteUnofficial` (Write status.json (unofficial))
 
-### 5. Adjudicate flagged passage (human reviewer) (`Task_Adjudicate`)
+### 5. Adjudicate the flagged passage (human) (`Task_Adjudicate`)
 
 - Who: the `Human reviewer / adjudicator` lane (role `translation-adjudicator`).
 - Skill: `translation-manager`, `adjudication`.

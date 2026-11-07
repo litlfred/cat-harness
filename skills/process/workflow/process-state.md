@@ -22,7 +22,7 @@ produces changes nobody authorised.
 
 | level | answers | where it lives |
 |---|---|---|
-| **process instance** | which run of which process is this? | `beans/workflows/` (state graph on the branch store, `cat/cat-harness/beans`) |
+| **process instance** | which run of which process is this? | `beans/workflows/` (`workflow-state` graph in [`work-plan-store`](../../../work-plan/skills/work-plan/work-plan-store.md)) |
 | **swimlane / role** | am I the actor who may do this? | the lane on the activity; checked by the executor ([`task-authorization`](../process-core/task-authorization.md)) |
 | **task** | which step am I on, and is it enabled? | `workflow_next` |
 
@@ -78,13 +78,13 @@ hold.**
 
 > **A turn that is in a process has an INSTANCE under the declared
 > `workflow-state` graph. Naming the process in prose is the report; the
-> recorded instance in the state graph on the branch store is the evidence.**
+> recorded instance in the work-plan store is the evidence.**
 
 Without recorded instances, a reviewer sweeping a window of merged work cannot
 classify a single session by lane.
 
 `workflow_start` creates it, `workflow_next` and `workflow_complete` advance
-it, and the state lives on the branch store precisely so a sibling session
+it, and the state lives in the work-plan store precisely so a sibling session
 reads the same position — [`workflow-state.md`](workflow-state.md) §"Where running instances live".
 
 **Opening or claiming a work item for a process step means starting or resuming its
@@ -106,7 +106,7 @@ workflow instance:**
    workflow:instances --sweep` to close stale instances while preserving their
    `history` and PROV-O trail (`cat-harness#988`).
 
-**The session-start sweep reads the branch store and reports "no instance recorded" as a FINDING, not as
+**The session-start sweep reads the work-plan store and reports "no instance recorded" as a FINDING, not as
 silence**, when the directory holds none. A finding is not a failure — plenty
 of turns are legitimately outside any process — it is the prompt to say which.
 

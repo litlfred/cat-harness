@@ -187,10 +187,10 @@
         <bpmndi:BPMNLabel><dc:Bounds x="2071" y="168" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_MethodologyFromSource_12" bpmnElement="SF_Process_MethodologyFromSource_12">
-        <di:waypoint x="2030" y="190" />
+                <di:waypoint x="2030" y="190" />
         <di:waypoint x="2030" y="408" />
         <di:waypoint x="1080" y="408" />
-        <di:waypoint x="1080" y="375" />
+        <di:waypoint x="1080" y="395" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

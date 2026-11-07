@@ -261,11 +261,11 @@ Either way the decision is written down before the process ends, and the bean is
         <di:waypoint x="2090" y="585" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_UA_8" bpmnElement="SF_UA_8">
-        <di:waypoint x="2115" y="560" />
-        <di:waypoint x="2115" y="105" />
+                        <di:waypoint x="2115" y="560" />
+        <di:waypoint x="2115" y="85" />
+        <di:waypoint x="1080" y="85" />
         <di:waypoint x="1080" y="105" />
-        <di:waypoint x="1080" y="124.5" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2119" y="437.25" width="90" height="18" /></bpmndi:BPMNLabel>
+      <bpmndi:BPMNLabel><dc:Bounds x="2119" y="437.25" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_UA_9" bpmnElement="SF_UA_9">
         <di:waypoint x="2140" y="585" />
@@ -274,8 +274,8 @@ Either way the decision is written down before the process ends, and the bean is
         <di:waypoint x="2300" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_UA_15" bpmnElement="SF_UA_15">
-        <di:waypoint x="2360" y="205" />
-        <di:waypoint x="2360" y="715" />
+                <di:waypoint x="2360" y="225" />
+        <di:waypoint x="2360" y="695" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_UA_10" bpmnElement="SF_UA_10">
         <di:waypoint x="2420" y="755" />

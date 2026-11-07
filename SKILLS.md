@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_257 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_259 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -49,7 +49,7 @@ _257 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`content-validate`](skills/authoring/content-lifecycle/content-validate.md) | Content Validation |
 | [`evidence-appraisal`](skills/authoring/content-lifecycle/evidence-appraisal.md) | Evidence Appraisal |
 
-**`skills/conduct/conduct-core/`** (17)
+**`skills/conduct/conduct-core/`** (18)
 
 | Skill | What it is for |
 |---|---|
@@ -70,6 +70,7 @@ _257 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`untrusted-input`](skills/conduct/conduct-core/untrusted-input.md) | Keep attacker-controlled values out of program text — in GitHub Actions, in command lines, in anything that is parsed before it runs. |
 | [`unverified-constraints`](skills/conduct/conduct-core/unverified-constraints.md) | Never encode a constraint you have not verified — a rule that refuses a working setup is worse than no rule. |
 | [`where-does-this-go`](skills/conduct/conduct-core/where-does-this-go.md) | The router for filing decisions. |
+| [`work-context`](skills/conduct/conduct-core/work-context.md) | Keep a short note on the work you are doing — what you did, what you decided and why, what is left open — with the memory tools, so the next person or agent to pick the work up starts where you… |
 
 **`skills/conduct/security/`** (4)
 
@@ -194,7 +195,7 @@ _257 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`theme-generation`](skills/ui/theming/theme-generation.md) | Turning a declared theme into CSS — `bun run cat themes:css` — and the single consumer-side failure this stage exists to stop: a theme with no CSS rule falls back to an opaque surface and paints… |
 | [`theming`](skills/ui/theming/theming.md) | The map of this subgraph: theming is split on PIPELINE STAGE first — intake, declaration, generation, contrast — with producer/consumer as the direction each stage faces, and per-artefact… |
 
-**`skills/ui/ui-core/`** (22)
+**`skills/ui/ui-core/`** (23)
 
 | Skill | What it is for |
 |---|---|
@@ -207,6 +208,7 @@ _257 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`harness-tiles`](skills/ui/ui-core/harness-tiles.md) | A tile is a function of the harness watching a directory, not of nodes. |
 | [`html-rendering-qc`](skills/ui/ui-core/html-rendering-qc.md) | HTML Rendering QC |
 | [`incremental-render`](skills/ui/ui-core/incremental-render.md) | Rendering only what changed — seeding a build from a previous render, the two edges that decide what must re-run, why a step declares GRAPH TYPOLOGIES rather than paths, and the rule that… |
+| [`journey-maps`](skills/ui/ui-core/journey-maps.md) | Journeys and workshops as knowledge-graph content: a DAK user scenario told as a journey map (`user-scenario` kind: ordered steps, per person what they do and feel, pain points, enablers, the… |
 | [`kg-viewer`](skills/ui/ui-core/kg-viewer.md) | Render a published knowledge-graph document so a person can read it — faceted index, node detail, followable edges, and an honest account of what the document is missing. |
 | [`liquid-templates`](skills/ui/ui-core/liquid-templates.md) | Authoring a Liquid template in this repository — a README template the `subgraph-readmes` Tool renders with liquidjs, or a Jekyll include on the just-the-docs site. |
 | [`markdown-render-check`](skills/ui/ui-core/markdown-render-check.md) | Markdown Render Check |

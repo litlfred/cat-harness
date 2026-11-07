@@ -162,15 +162,39 @@ layout rules are checked by `bpmn:detangle`
 
 **Links.**
 
-- A step's **title** links to the step's own page (`process/P/node/T`). The
-  link wraps the title's text only, never the box, so a badge or the ⓘ drawn
-  on the box is a target of its own.
+- A step's **title** links to the step's own page (`process/P/node/T`), or,
+  on a site that publishes no step pages, to its process's page in the
+  processes viewer. The link wraps the title's text only, never the box, so
+  a badge or the ⓘ drawn on the box is a target of its own.
 - A call activity's **[+]** links to the process it calls. The link is the
   marker and a 24 × 24 hit area around it, never the box.
 - Every link is focusable, shows a focus ring the size of the link, and has
   an accessible name: "Open step: …" or "Open subprocess: …".
 - An overlay drawn over the picture (the process page's `.pt-go`) follows
   the same rule: it covers the [+] only.
+
+**One way to show a drawing, on any page.** A process page, a guide's
+business-processes page and a journey's step show the same drawing through
+the same parts: `render:bpmn`'s SVG at `assets/img/workflows/<stem>.svg`,
+inlined and framed by the site's `docs-ui.js`, and the ⓘ task panel. A page
+other than a process page writes
+
+    <figure class="bpmn-figure pt-diagram" data-panel="<processes route>/<stem>.tasks.json">
+      <img src="assets/img/workflows/<stem>.svg" alt="BPMN diagram: …"></figure>
+
+and loads `task-panel.js` and `task-panel.css` from the processes route. The
+panel draws its markers from the sidecar and resolves its links against it.
+`data-pt-highlight="Task_A Task_B"` picks out steps. Do not embed a drawing
+as a data URI or a copy of the SVG: its links stay inert and it drifts from
+the site's.
+
+**Skills in the panel are the site's switch.** `site.taskSkills` in the
+checkout's `index.config.json`: absent or `true` shows the skills a task
+requires and its role has; `false` hides them, for a site whose processes
+are not modelled with skills (an implementation guide's business
+processes). The rest of the panel (the step, its lane and role, the
+process, a called process) is shown either way, so a site that later models
+skills turns them on with that one line.
 
 **Layout.** The picture is the `BPMNDiagram` as written: bpmn-js lays
 nothing out, so every rule below is fixed in the DI.

@@ -220,10 +220,10 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
   <bpmndi:BPMNDiagram id="Diagram_QaPublish">
     <bpmndi:BPMNPlane id="Plane_QaPublish" bpmnElement="Collaboration_QaPublish">
       <bpmndi:BPMNShape id="Shape_Participant_QaPublish" bpmnElement="Participant_QaPublish" isHorizontal="true">
-        <dc:Bounds x="160" y="40" width="1266" height="580" />
+        <dc:Bounds x="160" y="40" width="1346" height="580" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Ci" bpmnElement="Lane_Ci" isHorizontal="true">
-        <dc:Bounds x="190" y="40" width="1236" height="580" />
+        <dc:Bounds x="190" y="40" width="1316" height="580" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_GatesDone" bpmnElement="Start_GatesDone">
@@ -252,7 +252,7 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
         <dc:Bounds x="1146" y="155" width="50" height="50" />
       <bpmndi:BPMNLabel><dc:Bounds x="1200" y="209" width="80" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Backoff" bpmnElement="Task_Backoff">
-        <dc:Bounds x="911" y="245" width="120" height="120" />
+        <dc:Bounds x="911" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Published" bpmnElement="End_Published">
         
@@ -260,8 +260,8 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
       <bpmndi:BPMNLabel><dc:Bounds x="1276" y="206" width="90" height="27" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_PublishFailed" bpmnElement="End_PublishFailed">
         
-        <dc:Bounds x="1303" y="72" width="36" height="36" />
-      <bpmndi:BPMNLabel><dc:Bounds x="1261" y="116" width="120" height="27" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="1303" y="52" width="36" height="36" />
+      <bpmndi:BPMNLabel><dc:Bounds x="1346" y="52" width="150" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_Daily" bpmnElement="Start_Daily">
         
@@ -322,20 +322,20 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_P08" bpmnElement="P08">
         <di:waypoint x="1146" y="180" />
-        <di:waypoint x="1088.5" y="180" />
-        <di:waypoint x="1088.5" y="305" />
-        <di:waypoint x="1031" y="305" />
+        <di:waypoint x="1088" y="180" />
+        <di:waypoint x="1088" y="335" />
+        <di:waypoint x="1031" y="335" />
         <bpmndi:BPMNLabel><dc:Bounds x="1057.88" y="141" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_P09" bpmnElement="P09">
-        <di:waypoint x="971" y="270" />
-        <di:waypoint x="971" y="220" />
+        <di:waypoint x="971" y="275" />
+        <di:waypoint x="971" y="240" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_P10" bpmnElement="P10">
         <di:waypoint x="1171" y="155" />
-        <di:waypoint x="1171" y="90" />
-        <di:waypoint x="1303" y="90" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1175" y="95.5" width="90" height="54" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1171" y="70" />
+        <di:waypoint x="1303" y="70" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1062" y="92" width="104" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
 
       <bpmndi:BPMNEdge id="Edge_R01" bpmnElement="R01">

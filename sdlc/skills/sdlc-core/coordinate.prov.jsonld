@@ -46,6 +46,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/coordinate.md#provenance-12"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/coordinate.md#provenance-13"
         }
       ]
     },
@@ -197,6 +200,20 @@
         "#1819",
         "#1816",
         "#1766"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/coordinate.md#provenance-13",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "bean",
+      "cat-harness:section": "A spawned helper is reachable, and the owner's authority is not relayed",
+      "prov:value": "Item 5 added 2026-11-05 (bean `55ka`), after helpers spawned by\n`session_01VQDpPffYARDQ8juksAZScf` (`k3vv`) and\n`session_01VQDpPfGantMCt7AV4LCCK2` (`drnh`) asked the owner in prose without\ncards when `add_repo` was refused or a scope decision arose. Owner, 2026-11-05:\n*\"did you and your siblings forget I am disabled? why has it not been heeded\nlately?\"*",
+      "cat-harness:refs": [
+        "bean 55ka",
+        "2026-11-05"
+      ],
+      "dcterms:date": [
+        "2026-11-05"
       ]
     }
   ]
