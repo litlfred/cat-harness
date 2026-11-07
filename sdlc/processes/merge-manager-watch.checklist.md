@@ -4,28 +4,28 @@
 
 > **Generated, and not the authority.** This is `cat-harness/sdlc/processes/merge-manager-watch.bpmn` (process `Process_MergeManagerWatch`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-The loop run by the agent that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher), which coordinates with the swarm siblings whenever a batch lands.
+The loop run by the session that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher): elected, appointed, or holding it for its own PRs only.
 
-## Begin — Timer, PR event, main run done, or sibling message (`Start_Wake`)
+## Begin — Timer, PR event, request, main run, or sibling message (`Start_Wake`)
 
 - Begin here: Every 10 minutes in the merge window, and hourly outside it, as a backstop.
 - Call `workflow_start` with `process: "Process_MergeManagerWatch"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_Read` (Read PRs, runner queue, main verdict and owners)
+- next: → `Task_Read` (Read the queue, acknowledge requests)
 
-### 1. Read PRs, runner queue, main verdict and owners (`Task_Read`)
+### 1. Read the queue, acknowledge requests (`Task_Read`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - Skill: `merge-manager-watcher`.
 - What: Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, and each PR owner's last push or comment.
 - Record it: `workflow_complete` with `node: "Task_Read"`.
-- next: → `Gw_Needed` (Merge manager needed?)
+- next: → `Gw_Needed` (Still holding the lane?)
 
-### Decide — Merge manager needed? (`Gw_Needed`)
+### Decide — Still holding the lane? (`Gw_Needed`)
 
-- Yes while two or more active sessions have ready PRs in the same repositories and their merges slow each other down: more than about 10 queued runs on a repository, the oldest queued run older than about 30 minutes, or PRs that conflict with or supersede each other (owner ruling, 2026-11-07).
+- Yes while the lane is needed (laneNeeded), or while this session manages only its own PRs.
 - Call `workflow_complete` with `node: "Gw_Needed"` and `outcome` set to the label that holds:
   - «Yes» → `Gw_Route` (What does the queue need?)
-  - «No» → `Task_Lapse` (Announce that the lane lapses)
+  - «No» → `Task_Lapse` (Announce the hand-over or the lapse)
 
 ### Decide — What does the queue need? (`Gw_Route`)
 
@@ -36,13 +36,13 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
   - «Stalled» → `Call_Stalled` (Stalled-agent triage)
   - «Nothing» → `End_Idle` (Nothing to do)
 
-### 2. Announce that the lane lapses (`Task_Lapse`)
+### 2. Announce the hand-over or the lapse (`Task_Lapse`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - Skill: `merge-manager-watcher`.
-- What: Tell every sibling and the owner.
+- What: Tell every sibling and the owner, and update the durable note: either the session that holds the lane now, or that the lane lapses and each session merges its own green PRs with the owner's approval, still sending the six-line merge request.
 - Record it: `workflow_complete` with `node: "Task_Lapse"`.
-- next: → `End_Lapsed` (Lane lapsed)
+- next: → `End_Lapsed` (Lane released)
 
 ### 3. Relieve the runners (`Task_Relieve`)
 
@@ -56,21 +56,21 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 
 - Every check run on the head SHA has finished, and anything pending blocks; wait for every tier, e2e included.
 - Call `workflow_complete` with `node: "Gw_Green"` and `outcome` set to the label that holds:
-  - «Yes» → `Gw_Approved` (Owner approved?)
+  - «Yes» → `Gw_Approved` (Pre-approved?)
   - «No» → `End_NotGreen` (Not green yet)
 
 ### 4. Stalled-agent triage (`Call_Stalled`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
-- What: Tell the owner, then take the stalled PR over.
+- What: A PR owner who stalled: tell the owner, then take the stalled PR over.
 - A subprocess (`Process_StalledAgentTriage`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Done` (Wake handled)
+- next: → `End_StalledDone` (Wake handled)
 
 ## Done — Nothing to do (`End_Idle`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-## Done — Lane lapsed (`End_Lapsed`)
+## Done — Lane released (`End_Lapsed`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
@@ -79,11 +79,11 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 - Who: the `Merge steward` lane (role `merge-steward`).
 - What: Offer the card and land only on the owner's tap.
 - A subprocess (`Process_SaturationMetaMerge`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `End_Done` (Wake handled)
+- next: → `End_MetaDone` (Wake handled)
 
-### Decide — Owner approved? (`Gw_Approved`)
+### Decide — Pre-approved? (`Gw_Approved`)
 
-- Yes when the owner tapped this batch's card in the merge manager's session, or said to merge this PR when green.
+- Yes when the owner already said to merge this PR when green, so no second card is needed.
 - Call `workflow_complete` with `node: "Gw_Approved"` and `outcome` set to the label that holds:
   - «Yes» → `Gw_Train` (Rides the train?)
   - «No» → `Task_Card` (Post the request in chat, then the batch card)
@@ -92,7 +92,11 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 
 - The instance completes here: Do not merge. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-## Done — Wake handled (`End_Done`)
+## Done — Wake handled (`End_StalledDone`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+## Done — Wake handled (`End_MetaDone`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
@@ -106,10 +110,10 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 ### 6. Post the request in chat, then the batch card (`Task_Card`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
-- Skill: `merge-manager-watcher`.
-- What: The sibling's six-line merge request (PR URL and full head SHA, session URL, 1-3 sentences on the change, the rendered preview URL or no preview with a reason, what to look for, full tier green as judged) goes into the merge manager's chat first; a request with no rendered preview and no reason goes
+- Skill: `interaction-modality`.
+- What: The sibling's six lines go into the merge manager's chat first; a request with no rendered preview and no reason goes back to the sibling (owner ruling, 2026-11-07).
 - Record it: `workflow_complete` with `node: "Task_Card"`.
-- next: → `End_AwaitOwner` (Awaiting the owner)
+- next: → `Owner_Approve` (Approve the batch card)
 
 ### 7. Merge train (`Call_Train`)
 
@@ -126,6 +130,14 @@ The loop run by the agent that holds the merge-steward lane (actor merge-manager
 - Record it: `workflow_complete` with `node: "Task_Direct"`.
 - next: → `End_Done` (Wake handled)
 
-## Done — Awaiting the owner (`End_AwaitOwner`)
+### 9. Approve the batch card (`Owner_Approve`)
 
-- The instance completes here: Do not merge. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- Who: the `Owner` lane (role `user`).
+- Skill: `interaction-modality`.
+- What: In the merge manager's session only: one card per batch, naming each PR, after its six lines were posted in that chat.
+- Record it: `workflow_complete` with `node: "Owner_Approve"`.
+- next: → `Gw_Train` (Rides the train?)
+
+## Done — Wake handled (`End_Done`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.

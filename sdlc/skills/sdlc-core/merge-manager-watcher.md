@@ -26,6 +26,39 @@ says what the steward may decide. The skills say how: what lands next
 loop that runs them: when to look, what to read, and where each reading leads.
 The process is
 [`sdlc/processes/merge-manager-watch.bpmn`](../../processes/merge-manager-watch.bpmn).
+It is one of two processes (owner ruling, 2026-11-07), split by phase so each
+fits a page:
+
+- [`merge-request.bpmn`](../../processes/merge-request.bpmn), the **sibling
+  session**'s side: find or elect the merge manager, send it the request,
+  and handle a merge manager that stalls;
+- `merge-manager-watch.bpmn`, the **merge steward**'s loop on this page,
+  with the **owner** lane below it for the batch card. The owner lane sits
+  next to the only lane it talks to.
+
+## The sibling's side: find the merge manager first
+
+A coding agent whose PR is ready to merge does not know whether a merge
+manager exists. It checks, in this order:
+
+1. **Is a merge manager active?** Read the latest `merge manager: <session
+   id>` announcement in the coordination group, then check that session is
+   live: active, and it answered within the stall window (§"Liveness and
+   stalls"). If so, send it the six-line merge request (below) and wait for
+   its acknowledgement.
+2. **If none is active, is one needed?** Measure it (§"When is a merge
+   manager needed?"). If not, the session manages its own PRs: it posts the
+   six lines in its own chat and asks the owner by card. It does not
+   announce itself to the others.
+3. **If one is needed, elect it with the siblings** by the fixed rule
+   (§"Am I the active merge manager?"). The winner announces itself and
+   takes the merge steward lane. Every other sibling notes the holder and
+   sends it the request.
+
+**Where the announcement lives, so all can use it.** The holder sends
+`merge manager: <session id>` to every sibling and the owner, and notes it
+durably on the coordination work item. A sibling started later reads the
+note, not anybody's memory. A hand-over or a lapse updates the note.
 
 ## When is a merge manager needed?
 
@@ -81,6 +114,22 @@ deterministic, so two sessions cannot both claim the lane:
 The elected session announces itself as above, and hands over explicitly
 when it stops. On 2026-11-07 the previous merge manager, merge-planning, went
 inactive without a hand-off, and the owner had to appoint one.
+
+### Liveness and stalls
+
+The merge manager, like any agent, may stall (owner ruling, 2026-11-07). So
+it has a liveness duty: it acknowledges each merge request, and posts a
+heartbeat to the coordination group, within about 10 minutes (the role's
+`holding.heartbeatMinutes`, matching the 10-minute timer below).
+
+A sibling treats the lane as vacant when its request has no acknowledgement
+within about 30 minutes (`holding.stalledAfterMinutes`), or when the merge
+manager's session is inactive. It then runs
+[`stalled-agent-triage`](stalled-agent-triage.md): it tells the owner, and
+re-elects without the stalled session. The new holder announces itself,
+takes over the queue, and tells the owner. A stalled coding agent's PR is
+handled the same way, from the other side: the merge manager runs
+`stalled-agent-triage` on it (§"Where each reading leads").
 
 **Siblings send merge requests here, and the owner approves here** (owner
 ruling, 2026-11-07, card "Approvals", B: "all siblings should communicate

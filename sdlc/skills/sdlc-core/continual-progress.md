@@ -191,15 +191,20 @@ than a question:
    **`ready: <head sha>`** — the full sha of the head that went green, so a
    push after it is visibly not what was declared ready.
 3. **Ask the merge manager to merge, in six lines** (owner ruling,
-   2026-11-07). Send it the PR URL and full head SHA, your session URL, 1-3
+   2026-11-07). First check that a merge manager is active and live: the
+   latest `merge manager: <session id>` announcement, and that session
+   answered within the stall window. Send it the PR URL and full head SHA, your session URL, 1-3
    sentences on what changed, the rendered preview URL for that head (or
    `no preview: <reason>`), what to look for in the preview, and
    `full tier green as judged`. It posts them in its chat and asks the owner
    by card. An approval the owner gives in your own session does not
-   authorise a merge. With no merge manager active, see
-   [`merge-manager-watcher`](merge-manager-watcher.md) §"Am I the active
-   merge manager?": the siblings elect one, and a lone session is its own.
-   The format is in §"The merge request: six lines" there.
+   authorise a merge. With no live merge manager, follow
+   [`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
+   find the merge manager first": measure whether one is needed, then
+   either manage your own PRs or elect one with your siblings. If your
+   request is not acknowledged within the stall window, the merge manager
+   has stalled: re-elect without it. The format is in §"The merge request:
+   six lines" there.
 4. **The Merge Steward session ("Separation") merges.** It brings `main` in,
    runs `regen`, re-checks and merges. That is its lane, not yours.
 5. **If it reports red, it is yours again**: fix, push, wait for green on

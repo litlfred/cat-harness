@@ -345,10 +345,14 @@ owner ruling, 2026-11-07).
 siblings never merge their own PRs. Each sends the merge manager a six-line
 merge request (PR and head SHA, session URL, what changed, rendered preview,
 what to look for, `full tier green as judged`), and the owner approves only
-in the merge manager's session. With none active, the siblings elect one by
-a fixed rule, and a lone session is its own: see
-[`merge-manager-watcher`](merge-manager-watcher.md) §"When is a merge manager
-needed?" and §"Am I the active merge manager?" (owner rulings, 2026-11-07).
+in the merge manager's session. Find it first: the latest `merge manager:
+<session id>` announcement, noted on the coordination work item, names a
+live session. With none active, the siblings elect one by a fixed rule, and
+a lone session is its own. A merge manager that does not acknowledge within
+the stall window has stalled, and the siblings re-elect without it: see
+[`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
+find the merge manager first" and §"Liveness and stalls" (owner rulings,
+2026-11-07).
 
 ### The collision surface is FILES, and it is predictable before you touch one
 

@@ -64,10 +64,14 @@ its chat, asks the owner on its batch card, and orders the queue:
 [`merge-manager-watcher`](merge-manager-watcher.md) §"Am I the active merge
 manager?" and §"The merge request: six lines".
 
-Whether a merge manager is needed at all is a measured condition, and when
-none is active the siblings elect one by a fixed rule; a lone session is its
-own ([`merge-manager-watcher`](merge-manager-watcher.md) §"When is a merge
-manager needed?").
+Find the merge manager before you send: the latest `merge manager: <session
+id>` announcement, noted on the coordination work item, names a session that
+must also be live. Whether a merge manager is needed at all is a measured
+condition; when none is active the siblings elect one by a fixed rule; a
+lone session is its own; and one that does not acknowledge within the stall
+window is treated as stalled
+([`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
+find the merge manager first").
 
 ### Submitting to the queue
 
