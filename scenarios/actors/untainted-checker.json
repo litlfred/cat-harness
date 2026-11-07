@@ -6,7 +6,8 @@
   "roles": [
     "feedback-provider",
     "qc-reviewer",
-    "untainted-checker"
+    "untainted-checker",
+    "back-translator"
   ],
   "capabilities": []
 }

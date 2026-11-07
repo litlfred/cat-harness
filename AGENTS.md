@@ -305,7 +305,7 @@ declared (`scripts/index-render.ts`).*
 
 <!-- skills:index:begin -->
 
-_259 skills in 19 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_260 skills in 19 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 | Directory | Skills |
 |---|---|
@@ -323,7 +323,7 @@ _259 skills in 19 directories. The full list, with what each skill is for, is in
 | [`skills/ui/theming/`](skills/ui/theming/) | 8 |
 | [`skills/ui/ui-core/`](skills/ui/ui-core/) | 23 |
 | [`library/skills/large-datasets/`](library/skills/large-datasets/) | 5 |
-| [`library/skills/library-core/`](library/skills/library-core/) | 11 |
+| [`library/skills/library-core/`](library/skills/library-core/) | 12 |
 | [`sdlc/skills/crdm/`](sdlc/skills/crdm/) | 7 |
 | [`sdlc/skills/sdlc-core/`](sdlc/skills/sdlc-core/) | 73 |
 | [`sdlc/skills/spec-kit/`](sdlc/skills/spec-kit/) | 3 |

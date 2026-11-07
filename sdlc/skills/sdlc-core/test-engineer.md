@@ -107,7 +107,10 @@ defect, not missing documentation.
    included: a Rust `#[test]`, a Kotlin/JUnit `@Test`, a bun or vitest
    `test()` / `it()`, a pytest `test_*`. A parameterised test (`test.each`,
    `@pytest.mark.parametrize`, `@ParameterizedTest`) is ONE test and maps to
-   one Scenario or Scenario Outline.
+   one Scenario or Scenario Outline. **A test's title is a fixed string**: a
+   test titled by a loop variable or a `${…}` template has no name a tag can
+   carry, so the check reports it (`test-name-not-static`). Give it a literal
+   title, or write the loop as `test.each(…)("… %s")`.
 2. **The link is a tag on the Scenario**, never on the `Feature:` line (a
    Feature tag would be inherited by every Scenario under it):
 
@@ -141,14 +144,28 @@ defect, not missing documentation.
    behaviour, by carrying one tag per test. A Scenario with no `@test:` tag is
    specification nobody executes, and is a finding too; mark it `@manual` when
    a person executes it, and the checker counts it as linked.
+6. **Binding is by tag, and a Scenario may bind an external test case.**
+   Besides `@test:`, a Scenario may carry `@itb:<testSuite id>/<testCase id>`
+   for a WHO-ITB (GITB TDL) test case, named by the `id` attribute of the
+   `<testsuite>` and of the `<testcase>` it references: ids, not paths, since
+   ITB reports results by id. The tag resolves against a checkout of the
+   suites at a pinned commit; without one it is reported unresolved, never
+   passed. External cases are checked one way only (the tag must name a case
+   that exists), because an external suite is not this repository's to
+   cover. The schemes are an extensible list, so a new kind of external test
+   is a new prefix and a resolver.
+7. **A `.feature` may be written in any Gherkin dialect**, declared by its
+   first-line `# language: <code>` comment. A translated file stays valid; the
+   `@test:` and `@itb:` tags are not translated.
 5. **Each test-plan case names its `.feature`** (`testCases[].feature` in
-   `test-plan/v1`); the tests that execute the case are found through the
+   `test-plan/v1.1`); the tests that execute the case are found through the
    `@test:` tags of that file, not listed again in the plan.
 
 **`bun run cat check:test-gherkin`** reports orphans both ways: a test no
 Scenario names, a tag that names no test, a test named by two Scenarios, a
-Scenario that names no test, and a tag on a `Feature:` line. It reads any tree
-(`--root`, `--under`, `--json`); it is not a gate until a repository has
+Scenario that names no test, a tag on a `Feature:` line, an `@itb:` tag naming
+no case or whose source is not held, and an unknown dialect. It reads any tree
+(`--root`, `--under`, `--itb`, `--json`); it is not a gate until a repository has
 backfilled. The kg-audit criterion **`test-has-gherkin`** records the same
 gap for an instance, and adds every test-plan case whose `.feature` is missing
 or does not resolve.

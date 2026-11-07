@@ -8,73 +8,76 @@
   "dcterms:description": "Provenance moved out of the narrative of translation-manager.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "library/skills/library-core/translation-manager.md",
+      "@id": "skills/library/library-core/translation-manager.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-1"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-1"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-2"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-2"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-3"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-3"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-4"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-4"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-5"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-5"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-6"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-6"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-7"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-7"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-8"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-8"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-9"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-9"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-10"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-10"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-11"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-11"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-12"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-12"
         },
         {
-          "@id": "library/skills/library-core/translation-manager.md#provenance-13"
+          "@id": "skills/library/library-core/translation-manager.md#provenance-13"
+        },
+        {
+          "@id": "skills/library/library-core/translation-manager.md#provenance-14"
         }
       ]
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-1",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The exported GRAPH per locale",
       "prov:value": "The pipeline used to end at the rendered page: a `.po` was injected into a\ndiagram and an SVG rendered per locale, while the graph a machine consumes was\nproduced once, in the source language."
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-2",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "The exported GRAPH per locale",
       "prov:value": "Four rules, and the first is the owner's and is the one an implementation\nbreaks by default."
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-3",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The exported GRAPH per locale",
       "prov:value": "**4. A catalogue is scoped to the asset it was extracted from.** This one was\nlearned the expensive way."
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-4",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The exported GRAPH per locale",
@@ -87,28 +90,28 @@
       ]
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-5",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "proposal",
       "cat-harness:section": "The terminology glossary — `translations/<locale>/glossary.po`",
       "prov:value": "Both halves of the corpus must stamp the same meaning. They did not until issue"
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-6",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "687: the generator stamped the PO-derived list while the hand-authored",
       "prov:value": "The `qa_translation_*` keys are **gone**, along with the badge that read them."
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-7",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "687: the generator stamped the PO-derived list while the hand-authored",
       "prov:value": "**There is no include to add**:\n`_includes/translation-warning.html` is deleted, not deprecated, as is\n`_includes/language-selector.html` — `buildLanguageBar` renders the six UN\nlanguages and greys out the ones not yet translated, which the include only\npromised in a comment."
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-8",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "The navbar filters by locale",
@@ -121,7 +124,7 @@
       ]
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-9",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-9",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "proposal",
       "cat-harness:section": "1. A page is a translation because the PAGE says so",
@@ -131,7 +134,7 @@
       ]
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-10",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-10",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "proposal",
       "cat-harness:section": "1. A page is a translation because the PAGE says so",
@@ -142,14 +145,14 @@
       ]
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-11",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-11",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "2. `nav_exclude` is the half that JavaScript cannot do",
       "prov:value": "It cannot know which locale\nanybody chose, so a translated page left in the nav is in it **for everybody** —\nwhich is the reported bug exactly. A script can swap a nav item; it cannot\nun-render one without a flash of the wrong nav first."
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-12",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-12",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Content-type-specific translation tools",
@@ -163,13 +166,27 @@
       ]
     },
     {
-      "@id": "library/skills/library-core/translation-manager.md#provenance-13",
+      "@id": "skills/library/library-core/translation-manager.md#provenance-13",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The terminology glossary — `translations/<locale>/glossary.po`",
       "prov:value": "The file is hand-authored and has no POT — `schemas/content/translation.ts` declares\nthat slot, and `TranslationNode.potFile` is optional for exactly this. Bean\n`he0e`.",
       "cat-harness:refs": [
         "bean he0e"
+      ]
+    },
+    {
+      "@id": "skills/library/library-core/translation-manager.md#provenance-14",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Translating into several locales as a team",
+      "prov:value": "Owner, 2026-11-07: \"English lead should document the process and skills\". The section records the steps the team ran across three instances; the harness commands it lists were merged in cat-harness-tools#1598 (`--instance`) and #1595 (segmentMarkdown in po-inject), with translation:glossary:check in flight (#1599, #1601).",
+      "cat-harness:refs": [
+        "2026-11-07",
+        "cat-harness-tools#1598",
+        "cat-harness-tools#1595",
+        "cat-harness-tools#1599",
+        "cat-harness-tools#1601"
       ]
     }
   ]

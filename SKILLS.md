@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_259 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_260 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -233,7 +233,7 @@ _259 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`materialize-remote`](library/skills/large-datasets/materialize-remote.md) | Landing remote content locally — the five gates, the three states, and the two purposes. |
 | [`sample-import`](library/skills/large-datasets/sample-import.md) | Testing an import of a SAMPLE of a remote source into a knowledge graph or other structured store: scope it, let materialize-remote gate it, land it in the library (permanent) or the kept,… |
 
-**`library/skills/library-core/`** (11)
+**`library/skills/library-core/`** (12)
 
 | Skill | What it is for |
 |---|---|
@@ -245,6 +245,7 @@ _259 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`literature-search`](library/skills/library-core/literature-search.md) | Finding the source a node cites but does not hold — memory first, then this repository, then open-access services. |
 | [`term-disagreement`](library/skills/library-core/term-disagreement.md) | When a glossary term the extractor minted and an authorised terminology disagree — the corpus spells a concept differently from the authority, or uses a word the authority does not carry — decide… |
 | [`translation-manager`](library/skills/library-core/translation-manager.md) | Translation lifecycle management for folio content. |
+| [`translation-refresh`](library/skills/library-core/translation-refresh.md) | The translation watcher: a scheduled fresh session that keeps every locale of every instance current after the source moves. |
 | [`upload-naming`](library/skills/library-core/upload-naming.md) | What an ingested file may be CALLED. |
 | [`upload-routes`](library/skills/library-core/upload-routes.md) | How a file actually REACHES `uploads/` — the two mechanisms that write bytes into a declared queue, the persona that performs one of them on somebody's behalf, and what each writer owes that the… |
 | [`uploads-watch`](library/skills/library-core/uploads-watch.md) | Notice what has landed in the acquisition queue, and tell an arrival from a backlog. |
