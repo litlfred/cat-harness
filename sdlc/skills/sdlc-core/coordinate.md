@@ -345,9 +345,9 @@ owner ruling, 2026-11-07).
 siblings never merge their own PRs. Each sends the merge manager a six-line
 merge request (PR and head SHA, session URL, what changed, rendered preview,
 what to look for, `full tier green as judged`), and the owner approves only
-in the merge manager's session. Find it first: the latest `merge manager:
-<session id>` announcement, noted on the coordination work item, names a
-live session. With none active, the siblings elect one by a fixed rule, and
+in the merge manager's session. Find it first: the latest
+`merge manager: <session id>` announcement, noted on the coordination work
+item, names a live session. With none active, the siblings elect one by a fixed rule, and
 a lone session is its own. A merge manager that does not acknowledge within
 the stall window has stalled, and the siblings re-elect without it: see
 [`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
@@ -529,8 +529,8 @@ goal. Apply when you hold the flag.
 4. **Push-race coordination with background agents.** When a background
    sub-agent and you both push to the same branch, wrap every push in a
    `fetch → rebase → retry` loop:
-   `for i in 1 2 3 4; do git push && break || { git fetch origin <br> -q;
-   git rebase origin/<br>; sleep $((2**i)); }; done`. The agent's commits
+   `for i in 1 2 3 4; do git push && break || { git fetch origin <br> -q; git rebase origin/<br>; sleep $((2**i)); }; done`.
+   The agent's commits
    may already be in your local history (shared working dir) — check
    `git log` before assuming a divergence.
 
