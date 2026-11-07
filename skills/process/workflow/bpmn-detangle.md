@@ -121,6 +121,14 @@ layout is redone by hand (cat-harness#989: 43 diagrams). What worked:
   channel under it, and comes up into its target's bottom. Two loops into
   one task enter at different x, the longer one further left, so they
   never cross.
+- **Lanes in the order they talk.** Order the lanes so that each one is
+  next to the lanes it exchanges flows with. A flow that crosses a lane it
+  does not stop in is read as an interaction with that lane's actor. So an
+  actor that talks to only one other lane goes on the outside, next to it:
+  the owner who approves the merge steward's card sits below the steward,
+  not between the steward and the sibling sessions (owner, 2026-11-07).
+  `lane-order` measures the total; this is the rule to apply by hand when
+  `--write` cannot.
 - **Hand-offs in one column.** A step in another lane sits straight above
   or below the step that hands to it. Put the lanes a path visits **on the
   same side** of the main lane (both helper lanes above, say), so the loops

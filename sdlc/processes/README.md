@@ -45,10 +45,12 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-processes`, hold
 | [`jsonld-drift-check.checklist.md`](jsonld-drift-check.checklist.md) | Checklist — Are the .jsonld siblings still in sync with their .ts manifests? |  |
 | [`merge-base.bpmn`](merge-base.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Merge the base branch in | "Code change and review", "A merge train" |
 | [`merge-base.checklist.md`](merge-base.checklist.md) | Checklist — Merge the base branch in |  |
-| [`merge-manager-watch.bpmn`](merge-manager-watch.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Merge manager watch: wake, read the queue live, route |  |
+| [`merge-manager-watch.bpmn`](merge-manager-watch.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Merge manager watch: wake, read the queue live, route | "Merge request: find or elect the merge manager" |
 | [`merge-manager-watch.checklist.md`](merge-manager-watch.checklist.md) | Checklist — Merge manager watch: wake, read the queue live, route |  |
 | [`merge-refusal.bpmn`](merge-refusal.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): A refused merge-train member | "Merge to main", "A merge train" |
 | [`merge-refusal.checklist.md`](merge-refusal.checklist.md) | Checklist — A refused merge-train member |  |
+| [`merge-request.bpmn`](merge-request.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Merge request: find or elect the merge manager |  |
+| [`merge-request.checklist.md`](merge-request.checklist.md) | Checklist — Merge request: find or elect the merge manager |  |
 | [`merge-to-main.bpmn`](merge-to-main.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Merge to main | "CRDM close-out", "A merge train" |
 | [`merge-to-main.checklist.md`](merge-to-main.checklist.md) | Checklist — Merge to main |  |
 | [`merge-train.bpmn`](merge-train.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): A merge train | "Merge manager watch: wake, read the queue live, route" |

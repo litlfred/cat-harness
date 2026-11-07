@@ -579,7 +579,7 @@ msgstr "En l'absence de correspondance ouverte, vérifiez les tickets récemment
 
 #: docs/concepts/agentic-harness.md:361
 msgid "If no match at all, ask the user to create one. Do not create an issue without user permission."
-msgstr "Si aucune correspondance n'existe, demandez à l'utilisateur d'en créer un. Ne créez pas de ticket sans l'autorisation de l'utilisateur."
+msgstr "Si aucune correspondance n'existe, demandez à l'utilisateur d'en créer un. Ne créez pas de ticket sans la permission de l'utilisateur."
 
 #: docs/concepts/agentic-harness.md:373
 msgid "What was accomplished in this round"

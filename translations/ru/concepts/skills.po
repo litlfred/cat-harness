@@ -319,7 +319,7 @@ msgstr "Системные действующие лица"
 
 #: docs/concepts/skills.md:215
 msgid "Actor"
-msgstr "Действующее лицо"
+msgstr "Актор"
 
 #: docs/concepts/skills.md:215
 msgid "Provides"

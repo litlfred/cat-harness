@@ -336,6 +336,32 @@ not verify.
 **2. Crossing is permitted; colliding silently is not.** Cross freely, but the
 crossing is what triggers this skill rather than what excuses skipping it.
 
+**3. Crossing never means pushing to a sibling's branch.** Only the PR's
+owner pushes to its branch. Send the owner the change instead
+([`continual-progress`](continual-progress.md) §"One pusher per PR branch",
+owner ruling, 2026-11-07).
+
+**4. Merging goes through one session.** While a merge manager is needed,
+siblings never merge their own PRs. Each sends the merge manager a six-line
+merge request (PR and head SHA, session URL, what changed, rendered preview,
+what to look for, `full tier green as judged`), and the owner approves only
+in the merge manager's session. Find it first: the latest
+`merge manager: <session id>` announcement, noted on the coordination work
+item, names a live session. With none active, the siblings elect one by a fixed rule, and
+a lone session is its own. A merge manager that does not acknowledge within
+the stall window has stalled, and the siblings re-elect without it: see
+[`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
+find the merge manager first" and §"Liveness and stalls" (owner rulings,
+2026-11-07).
+
+**5. Stack rather than wait.** Work that needs a sibling's unmerged PR
+starts now, stacked on that PR's branch (or, across layers, on its head
+SHA), with `stacked on <repo>#<n>` in the body. Pull the sibling's changes
+in by merging. A re-pin is its own PR, holding only pins: work that needs
+the new pins stacks on it. Never push to its branch: see
+[`continual-progress`](continual-progress.md) §"Stack instead of waiting"
+(owner ruling, 2026-11-07).
+
 ### The collision surface is FILES, and it is predictable before you touch one
 
 A work item scan finds sessions working the same *subject*. It does not find two
@@ -503,8 +529,8 @@ goal. Apply when you hold the flag.
 4. **Push-race coordination with background agents.** When a background
    sub-agent and you both push to the same branch, wrap every push in a
    `fetch → rebase → retry` loop:
-   `for i in 1 2 3 4; do git push && break || { git fetch origin <br> -q;
-   git rebase origin/<br>; sleep $((2**i)); }; done`. The agent's commits
+   `for i in 1 2 3 4; do git push && break || { git fetch origin <br> -q; git rebase origin/<br>; sleep $((2**i)); }; done`.
+   The agent's commits
    may already be in your local history (shared working dir) — check
    `git log` before assuming a divergence.
 

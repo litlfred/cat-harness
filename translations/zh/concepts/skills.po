@@ -39,7 +39,7 @@ msgstr "技能并不是定义在单一文件中的，而是跨越若干层次进
 
 #: docs/concepts/skills.md:215
 msgid "Actor"
-msgstr "参与者"
+msgstr "行动者"
 
 #: docs/concepts/skills.md:116
 msgid "Adversarial review of arguments"
