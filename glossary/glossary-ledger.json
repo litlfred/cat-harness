@@ -506,6 +506,11 @@
       "firstSeen": "2026-10-31",
       "retiredOn": null
     },
+    "role/back-translator": {
+      "prefLabel": "Back-translator",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
     "role/board-renderer": {
       "prefLabel": "Board renderer",
       "firstSeen": "2026-09-21",
@@ -646,6 +651,11 @@
       "firstSeen": "2026-09-22",
       "retiredOn": null
     },
+    "role/locale-translator": {
+      "prefLabel": "Locale translator",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
     "role/log": {
       "prefLabel": "Activity log",
       "firstSeen": "2026-09-21",
@@ -716,6 +726,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/round-trip-adjudicator": {
+      "prefLabel": "Round-trip adjudicator",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
     "role/session-coordinator": {
       "prefLabel": "Session coordinator",
       "firstSeen": "2026-09-21",
@@ -759,6 +774,11 @@
     "role/translation-coordinator": {
       "prefLabel": "Translation coordinator",
       "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/translation-source-lead": {
+      "prefLabel": "Source-language lead",
+      "firstSeen": "2026-11-07",
       "retiredOn": null
     },
     "role/translator": {
