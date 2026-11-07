@@ -239,7 +239,7 @@ Tool: translation_signoff MCP tool</bpmn:documentation>
         <bootstrap.processes:skill ref="translation-manager"/>
       </bpmn:extensionElements>
 
-      <bpmn:documentation>Builds the locale term base for the target locale from the layered glossaries, has it reviewed, and hands it to the translator with the POT. Each layer's glossary is the directory it declares with the `glossary` graph typology. Precedence: the more authoritative (lower) layer fixes a term's translation; an instance layer only adds, and may not give a fixed term a second translation. Previous translations of related content are evidence for a term with no fixed form, not a source that overrides one. How a fixed translation is recorded is pending the owner's choice (translation-manager, "The locale term base").</bpmn:documentation>
+      <bpmn:documentation>Builds the locale term base for the target locale from the layered glossaries, has it reviewed, and hands it to the translator with the POT. Each layer's glossary is the directory it declares with the `glossary` graph typology. Precedence, within one subject area (the scheme's `subject`): the more authoritative (lower) layer fixes a term's translation; an instance layer only adds, and may not give a fixed term a second translation. A match in another subject area is a sense check for the reviewer, not a violation. Previous translations of related content are evidence for a term with no fixed form, not a source that overrides one. A fixed translation is an authored term with a non-empty, non-fuzzy msgstr in its scheme's catalogue (translation-manager, "The locale term base").</bpmn:documentation>
     </bpmn:serviceTask>
 
     <bpmn:callActivity id="Task_InjectPO" calledElement="GT_InjectPo" name="Inject the PO"/>

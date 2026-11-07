@@ -409,18 +409,35 @@ translations today are the per-scheme catalogues
 `translations/<locale>/glossary/<instance>--<scheme>.po` written from those
 schemes, and the pins in `translations/<locale>/glossary.po` below.
 
-**Precedence.** The term base for a locale is the glossaries of the instance
-and every layer it `needs`, merged in layer order: **the more authoritative
-(lower) layer fixes a term's translation; an instance layer only adds.** An
-instance may add a term no layer below defines, and may fix its translation.
-It may not give a term a lower layer has fixed a second translation; that is a
-violation, reported by `translation:glossary:check`, never an override.
+**Subject areas.** Owner, 2026-11-07 (glossary review, "scoped fixed
+terms"). Each glossary scheme declares the subject area its translations bind
+in, as `subject` (`dcterms:subject`, a local id such as `harness-vocabulary`
+or `digital-health-trust`); a term may override its scheme's. A term with no
+subject, on itself or its scheme, binds only within its own scheme.
 
-**How a fixed translation is recorded** is pending the owner's choice (see the
-glossary review on the work item): per-locale labels in the glossary scheme,
-a term-base file beside it, or a `msgstr` marked fixed in the catalogue. Until
-it is settled, a translated `prefLabel` in a scheme's catalogue is the best
-record there is, and a pinned `msgstr` in `glossary.po` is a fixed form.
+**Precedence applies within a subject area.** The term base for a locale is
+the glossaries of the instance and every layer it `needs`, merged in layer
+order: **within one subject area, the more authoritative (lower) layer fixes a
+term's translation; an instance layer only adds.** An instance may add a term
+no layer below defines, and may fix its translation. It may not give a term a
+lower layer has fixed, in the same subject area, a second translation; that is
+a violation, reported by `translation:glossary:check`, never an override.
+
+**Across subject areas it is a sense check, not a violation.** The harness's
+`policy` is fixed as `策略` (an access policy); a health guide's "policy" is
+`政策`. When a fixed term's label turns up in text of another subject area,
+the check writes a *sense check* note for a person to read, and fails nothing:
+the same word is not the same concept.
+
+**How a fixed translation is recorded.** It is derived, never flagged: a term
+whose status is `authored` and whose scheme catalogue
+(`translations/<locale>/glossary/<instance>--<scheme>.po`) holds a non-empty,
+non-fuzzy `msgstr` for its `prefLabel` is fixed. There is no `#, fixed` flag
+and no translated label in the glossary JSON, so the catalogue stays the one
+place a translation lives. Whether a person has signed it off is the term's
+`translationStatus`, per locale, `official` or `unofficial` (absent means
+unofficial). A pinned `msgstr` in `glossary.po` below is a QA hint, not a term
+base entry.
 
 ### The terminology glossary — `translations/<locale>/glossary.po`
 
@@ -690,8 +707,9 @@ pipeline (IG Publisher) are complementary and independent.
 - **Do not vendor SMART Base translation scripts.** Load from checkout.
 - **Do not translate math, labels, or code.** Exclude in extraction.
 - **Do not auto-sign-off.** Official status requires a human.
-- **Do not re-translate a term a lower layer fixes.** Translate with the
-  locale term base, and fix a violation where the term is fixed.
+- **Do not re-translate a term a lower layer fixes in the same subject area.**
+  Translate with the locale term base, and fix a violation where the term is
+  fixed. A match in another subject area is a sense check, not a violation.
 - **Do not treat staleness as "wrong".** A stale translation is still useful;
   it just needs re-review.
 - **Do not conflate FHIR resource translation with prose translation.** They

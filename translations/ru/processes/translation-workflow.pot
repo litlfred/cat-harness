@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translation-workflow\n"
-"POT-Creation-Date: 2026-11-07T05:36:07.333Z\n"
+"POT-Creation-Date: 2026-11-07T05:55:25.197Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: processes/library/translation-workflow.bpmn:93
 #. Diagram element documentation
-msgid "Before translating: build the locale term base from the layered glossaries, review it, and translate with it. Precedence: the more authoritative (lower) layer fixes a term's translation; an instance layer only adds. Each layer's glossary is the directory it declares with the `glossary` graph typology. How a fixed translation is recorded is pending the owner's choice."
+msgid "Before translating: build the locale term base from the layered glossaries, review it, and translate with it. Precedence, within one subject area (the scheme's `subject`): the more authoritative (lower) layer fixes a term's translation; an instance layer only adds. A match in another subject area is a sense check, not a violation. Each layer's glossary is the directory it declares with the `glossary` graph typology. A fixed translation is an authored term with a non-empty, non-fuzzy msgstr in its scheme's catalogue."
 msgstr ""
 
 #: processes/library/translation-workflow.bpmn:89
