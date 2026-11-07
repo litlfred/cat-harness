@@ -343,7 +343,11 @@ ledger entry.
     does not land it. It sends it back, and asks for the extra change to
     be split onto a PR stacked on the re-pin, or into the layer that owns
     the fix. Counter-example: folio-assistant#2985 carried #2999 and a
-    `caches:viz` gate line inside its re-pin.
+    `caches:viz` gate line inside its re-pin. **Exception** (owner ruling,
+    2026-11-07, card "A. Allow the exception"): a change mutually dependent
+    with the re-pin, where neither passes alone, may share the PR when its
+    body says why (as folio-assistant-core#639 does). The merge manager
+    checks the reason; a change that only needs the new pins still stacks.
 
 ## Runner relief
 

@@ -345,6 +345,13 @@ workflow logic and no fix.
   re-pin then only moves the pin.
 - Counter-example: folio-assistant#2985 carried #2999 (the shared ci-setup
   move) and its own `caches:viz` gate line inside the re-pin.
+- **The one exception: mutual dependence** (owner ruling, 2026-11-07, card,
+  about 08:43Z, "A. Allow the exception"). A re-pin may share a PR with a
+  change only when neither can pass on its own. The PR body must say why.
+  Example: folio-assistant-core#639. Core re-pinned to cat-harness#1032
+  fails `check:tools` without #639's `library` topic, and #639 alone
+  declares the `library` topic twice against the old pin. A change that
+  merely needs the new pins is not mutual: it stacks.
 
 **Stacking across layers** (owner ruling, 2026-11-07). Work that needs an
 unmerged PR in a lower layer does not wait for it. Develop against that

@@ -239,8 +239,9 @@ and its test holds it to `lockFilesIn`.
 (owner ruling, 2026-11-06, card "Pin target", A). Every layer the change
 needs is pinned in the same re-pin, and the re-pin PR holds the pins and
 nothing else: a change that needs the new pins stacks on it (owner ruling,
-2026-11-07). The rules are in [`remote-mount`](remote-mount.md)
-§"Re-pinning".
+2026-11-07). The one exception is a change mutually dependent with the
+re-pin, where neither passes alone. It may share the PR, and the body says
+why. The rules are in [`remote-mount`](remote-mount.md) §"Re-pinning".
 
 ## The reserved `index` stem
 
