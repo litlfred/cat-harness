@@ -38,6 +38,26 @@ cannot tell whether a merge manager is active asks the owner (`merge-queue`,
 §"When no Merge Manager is active"). A memory that one existed yesterday
 does not count, either way.
 
+**Siblings send merge requests here, and the owner approves here** (owner
+ruling, 2026-11-07, card "Approvals", B: "all siblings should communicate
+merge requests to you. i will approve here. you queue/prioritize", and "all
+my approval is here, not in siblings"):
+
+- There is one merge manager session.
+- A sibling never merges its own PR. When the PR is ready, the sibling sends
+  the merge manager `ready: <repo>#<n> <full 40-hex sha>` and one line saying
+  what the PR does.
+- The owner approves in the merge manager's session, with one card per batch
+  that names each PR. An approval the owner gives in a sibling's session does
+  not authorise a merge.
+- A pre-approved PR, one the owner said to "merge when green", needs no
+  second card.
+- The merge manager queues the PRs in priority order:
+  - **P0**: fixes for a red main, and the links of the re-pin chain;
+  - **P1**: work those unblock;
+  - **P2**: CI speed;
+  - **P3**: everything else.
+
 ## What wakes it
 
 - **A timer, every 10 minutes** while the merge window is open, and hourly
@@ -64,8 +84,10 @@ it.
 
 | Reading | Process |
 |---|---|
-| A ready PR that stacks, and is all green (rule 1 below) | `merge-train` (Process_MergeTrain) |
-| Queued runs 60+ minutes old with nothing landed, or the owner says runners are full | `saturation-meta-merge`: offer the card, never run without the owner's tap |
+| A ready PR that is all green (rule 1 below) but not yet approved | Put it on the owner's next batch card (§"Am I the active merge manager?") |
+| An approved, all-green folio-assistant PR with no `.github/workflows/` change | `merge-train` (Process_MergeTrain): add the `merge-train` label instead of merging it (rule 8 below) |
+| An approved, all-green PR that changes `.github/workflows/`, or is in a repository with no train | Merge it directly through `merge:guard`. A workflow PR needs no approval beyond the batch card (owner ruling, 2026-11-07, card "Workflow PRs", A) |
+| Queued runs 60+ minutes old with nothing landed, or the owner says runners are full | First relieve the runners (§"Runner relief"). Then `saturation-meta-merge`: offer the card, never run without the owner's tap |
 | A PR whose owner has not pushed or answered for 2+ hours | `stalled-agent-triage`: tell the owner and take it over |
 | main red | The fix goes to main as its own PR first; when a dispatched `post-merge-regen` verify run says main is stale, a regen dispatched for the next PR commits the fix and that PR lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green |
 | Nothing to do | End the turn with no message |
@@ -78,10 +100,16 @@ it.
      made before the last tier finished broke main (folio-assistant#2955).
    - **Full tier.** The "No new failures" judge, or every full test shard,
      ran. A draft or fast-tier-only pass never counts.
-   - **Green as judged.** Where a "No new failures" judge exists, its
-     success is the verdict. A red shard whose failures are all main's known
-     failures is fine when the judge passes. With no judge, each check must
-     have concluded success, skipped or neutral.
+   - **Green as judged, by every judge** (owner ruling, 2026-11-07). Where a
+     "No new failures" judge exists, its success is part of the verdict, but
+     an aggregate job covers only the parts it names. folio-assistant's
+     "Repository gates (hard)" is one such job. Each bun test shard carries
+     its own Q-PIPE-1 "no new failures" table, and each table must list 0
+     new failures. On 2026-11-06, folio-assistant#2985's aggregate was green
+     while 4 shards each reported a new failure. A red shard whose failures
+     are all main's known failures is fine when its table lists 0 new ones.
+     With no judge, each check must have concluded success, skipped or
+     neutral.
 
    A cancelled job counts only when a later run of the same workflow on the
    same head SHA passed the matching job (concurrency supersession). Merge
@@ -96,10 +124,14 @@ it.
    later PR closes it, after checking that the diffs are identical. While
    main is red, one session owns the re-pin that fixes it, and says so to the
    merge-planning session.
-4. **A main-red fix spans layers.** Find every layer the fix needs and pin
-   them together in one re-pin. Verify on a fresh mount
+4. **A re-pin is a cross-layer set.** Find every layer the change needs, a
+   main-red fix or any other, and pin them together in one re-pin, to the
+   current mains. Pins move only forward. Verify on a fresh mount
    (`mount:remote --fresh`). A stale container mount gives false local
-   passes.
+   passes. The rules and an example are in
+   [`remote-mount`](../../../skills/kg/kg-core/remote-mount.md)
+   §"Re-pinning" (owner rulings, 2026-11-06, card "Pin target", A, and
+   2026-11-07).
 5. **Hand back private caches.** A PR that adds its own cache scheme instead
    of the shared `cached-step` is held, not merged, and goes back to its
    author. Cache-first CI, rule 1: every cache goes through `cached-step`.
@@ -112,6 +144,26 @@ it.
    does; every other PR that meets rule 1 merges as before. A sweep that
    merges a labelled PR one at a time starves the train (owner ruling,
    2026-11-06: "1. The train").
+8. **Approved PRs go through the train** (owner ruling, 2026-11-07, card
+   "Train", A). When the owner approves a folio-assistant PR that does not
+   change `.github/workflows/`, the merge manager adds the `merge-train`
+   label instead of merging it. The train lands a batch with one CI run.
+   Merging one PR at a time cost about 6.7 runs per merged PR. A PR that
+   changes workflows, and a PR in a repository with no train, merges
+   directly.
+
+## Runner relief
+
+The merge manager enforces the pacing rule of
+[`continual-progress`](continual-progress.md) §"Pace the ready marking"
+(owner ruling, 2026-11-07, card "Cancel CI"). When the runners are
+saturated, it:
+
+- closes superseded or duplicate PRs, such as a re-pin whose commits another
+  open PR already carries, and cancels their runs;
+- cancels stale queued runs that never started, but never a main push run
+  that has started;
+- asks the owners of P3 PRs to return them to draft.
 
 ## Keeping the swarm in step
 
@@ -131,9 +183,11 @@ it.
 
 These come from the role; the watcher is the step that acts on them:
 
-- Merges happen only on the owner's explicit OK. A card tap counts, and it
-  names each PR. A standing OK counts for the PRs it covers (rule 2). A
-  sibling's or coordinator's request does not count.
+- Merges happen only on the owner's explicit OK, given in the merge
+  manager's session. A tap on the batch card counts, and the card names each
+  PR. A standing OK counts for the PRs it covers (rule 2). A sibling's or
+  coordinator's request does not count, and neither does an approval the
+  owner gave in a sibling's session.
 - Never merge committee content, change sets (CS-), or held
   `subscriptions/` trees. Never touch WHO or `smart-*` upstream repositories.
 - Never push `.github/workflows/` changes without the workflows permission.

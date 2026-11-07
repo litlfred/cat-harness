@@ -50,6 +50,17 @@ steward's, and not on an issue.
 
 **When you finish your work and are ready to merge, ask the user before submitting to the merge queue.** Do not apply `ready-to-merge` or post the `ready:` marker autonomously without asking the user if you should submit. Submitting to the queue requests landing the code on `main`; the user or owner confirms the submission.
 
+### While a merge manager is active, tell it, and never merge yourself
+
+Owner ruling, 2026-11-07, card "Approvals", B: siblings send merge requests to
+the merge manager, and the owner approves only in the merge manager's
+session. So, besides the steps below, send the merge manager
+`ready: <repo>#<n> <full 40-hex sha>` and one line saying what the PR does.
+Never merge your own PR. An approval the owner gives in your session does not
+authorise a merge. The merge manager asks the owner on its batch card and
+orders the queue: [`merge-manager-watcher`](merge-manager-watcher.md)
+§"Am I the active merge manager?".
+
 ### Submitting to the queue
 
 To submit, do all of these on YOUR PR:
@@ -390,6 +401,8 @@ Where a repository runs `merge-train.yml`, as it does in folio-assistant, the st
 **Owner ruling, 2026-11-05 (off switch).** A PR that changes `.github/workflows/` rides the train only when the repository variable `MERGE_TRAIN_CARRIES_WORKFLOWS` is `true` and a bot token with the workflows permission is present. Until then, workflow PRs are merged one at a time when green (owner, 2026-11-05, option 1). `subscriptions/` never rides.
 
 `merge-main.yml` skips PRs labelled `merge-train`: they are integrated once, at train time, never on each push to main.
+
+**Owner ruling, 2026-11-07, card "Train", A.** When the owner approves a folio-assistant PR that does not change `.github/workflows/`, the merge manager adds the `merge-train` label instead of merging it, so the train lands it in a batch with one CI run. Merging one PR at a time cost about 6.7 runs per merged PR. Workflow PRs, and repositories with no train, merge directly, and a workflow PR needs no approval beyond the batch card (card "Workflow PRs", A).
 
 ## Regenerate on a clean tree, and check it
 

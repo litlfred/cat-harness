@@ -317,6 +317,28 @@ old layer. `--seed` refuses while a mount it moves has such edits, and
 `mount:check` reports an instance entry behind its pin as `missing`. After the re-pin, check that
 the moved instance's `sha` in `index.lock.json` is the new pin.
 
+**A pin only moves forward** (owner ruling, 2026-11-06, card "Pin target",
+A). When layers pin different commits of a shared layer, align them forward,
+bottom-up: start at the lowest layer, and move each shared layer to the
+newest commit that any layer needs. Stop when every lock names one commit per
+layer. Never move a pin back to an older commit so that two layers agree.
+
+**A re-pin is a cross-layer set** (owner ruling, 2026-11-07). Pin together
+every layer the change needs, re-pinned to the current mains, and verify on a
+fresh mount (`mount:remote --fresh`). A layer can need another layer's newer
+commit. For example, cat-harness#1100 removed routes that were listed by hand,
+because folio-assistant-core#654 now derives them (`builtOnHostSite`). So
+cat-harness at 6dd3746 or later needs folio-assistant-core at 41d9da9 or
+later, and cat-harness-tools at #1564 or later. An asset that a layer commits
+must also match the tools recipe that generates it, such as cat-harness's
+`edit-links.js`.
+
+**The re-pin refreshes layer health** (owner ruling, 2026-11-07, card "Layer
+health", A). When a re-pin moves cat-harness-tools, it regenerates the
+checkout's layer health report at the new pins and publishes it. The health
+check fails a re-pin once the report is more than 26 hours old and the checker
+has moved. The implementation is cat-harness-tools#1603.
+
 **The committer re-pins, locally, and CI only verifies.** The person or agent
 who moves a pin does the whole re-pin in their own checkout: `--seed`, a
 fresh `mount:remote`, the regenerated agent surface (`skill:commands`,
@@ -444,6 +466,8 @@ A worked example is in
 
 - **Never add a submodule** to get a dependency, and never clone into `.deps/`.
 - **Never pin a branch or an abbreviated SHA.** The schema refuses both.
+- **Never move a pin back.** Align layers forward to the newest commit any
+  of them needs (§"Re-pinning").
 - **Never edit a mounted directory and expect a re-mount to keep the edit, or
   to throw it away.** A re-mount leaves edited bytes untouched and reports them
   as missing. Move the edit upstream, or delete the directory and re-mount.

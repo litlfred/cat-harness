@@ -336,6 +336,11 @@ not verify.
 **2. Crossing is permitted; colliding silently is not.** Cross freely, but the
 crossing is what triggers this skill rather than what excuses skipping it.
 
+**3. Crossing never means pushing to a sibling's branch.** Only the PR's
+owner pushes to its branch. Send the owner the change instead
+([`continual-progress`](continual-progress.md) §"One pusher per PR branch",
+owner ruling, 2026-11-07).
+
 ### The collision surface is FILES, and it is predictable before you touch one
 
 A work item scan finds sessions working the same *subject*. It does not find two

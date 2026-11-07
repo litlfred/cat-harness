@@ -225,6 +225,23 @@ number of PRs marked ready at once is what fills the queue:
 Holding a PR as a draft for pacing is not holding back a green PR: the fast
 tier is green, and the hand-off above waits for the full tier.
 
+The merge manager enforces this rule (owner ruling, 2026-11-07, card "Cancel
+CI"). When the runners are saturated, it closes superseded PRs, cancels stale
+queued runs that never started, and asks the owners of the lowest-priority PRs
+to return them to draft: [`merge-manager-watcher`](merge-manager-watcher.md)
+§"Runner relief".
+
+### One pusher per PR branch
+
+Only the session that owns a PR pushes to its branch (owner ruling,
+2026-11-07). Anyone else sends the owner the change, on the PR's thread or
+by message. Every push restarts the full CI run: on 2026-11-07, three
+sessions pushed to folio-assistant#2985 within 10 minutes, and each push
+restarted it.
+
+A stacked PR waits for its base to land, and is then retargeted onto the new
+base. Do not merge the stacked PR into its base branch.
+
 ### Two green PRs can merge into a red main, and the answer is to fix forward
 
 A PR is tested against the main it last merged, not the main it lands on.
