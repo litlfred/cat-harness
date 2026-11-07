@@ -34,7 +34,7 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
         <bpmn:flowNodeRef>Task_TR_Report</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_TR_Lead" name="Source-language lead (watcher)" partitionElementRef="translation-source-lead">
-        <bpmn:documentation>Owns the watcher. It decides whether anything changed from the files, not from memory, refreshes the templates once for every locale, and merges the instance's PR only when it is green and the owner's merge window is open.</bpmn:documentation>
+        <bpmn:documentation>Owns the watcher. It decides whether anything changed from the files, not from memory, refreshes the templates once for every locale, and merges the instance's PR only where the instance declares merge-when-green, every check is green and the round trip records no fail.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_TR</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_TR_ColdStart</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_TR_Detect</bpmn:flowNodeRef>
@@ -156,8 +156,8 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
       <bpmn:outgoing>Flow_TR_10</bpmn:outgoing>
     </bpmn:serviceTask>
 
-    <bpmn:exclusiveGateway id="Gateway_TR_Window" name="Green, and inside the window?">
-      <bpmn:documentation>Two facts, both read live: every check on the PR is green, and the owner's merge window is open now. `Yes` merges. `No` leaves the PR open for the next run; with no window on record, the answer is always `No`.</bpmn:documentation>
+    <bpmn:exclusiveGateway id="Gateway_TR_Window" name="Merge-when-green, and all green?">
+      <bpmn:documentation>Three facts, all read live: the instance's AGENTS.md declares merge-when-green, every check on the PR is green, and the untainted round trip on the changed strings records no fail. `Yes` merges. `No` leaves the PR open and reports it to the owner; the default policy, open only, always answers `No`.</bpmn:documentation>
       <bpmn:incoming>Flow_TR_10</bpmn:incoming>
       <bpmn:outgoing>Flow_TR_WindowYes</bpmn:outgoing>
       <bpmn:outgoing>Flow_TR_WindowNo</bpmn:outgoing>
@@ -177,7 +177,7 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
     </bpmn:endEvent>
 
     <bpmn:endEvent id="End_TR_Waiting" name="PR left open">
-      <bpmn:documentation>Red, or outside the merge window: the PR stays open, and the next run looks again.</bpmn:documentation>
+      <bpmn:documentation>Open only, red, uncertain or failing: the PR stays open, the owner is told, and the next run looks again.</bpmn:documentation>
       <bpmn:incoming>Flow_TR_WindowNo</bpmn:incoming>
     </bpmn:endEvent>
 

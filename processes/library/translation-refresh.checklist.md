@@ -99,11 +99,11 @@ Keep every locale current after the source moves: detect, refresh the templates,
 - Skill: `translation-refresh`.
 - What: Any source-text error the translators found goes into one issue on the source, with its location.
 - Record it: `workflow_complete` with `node: "Task_TR_SourceIssue"`.
-- next: → `Gateway_TR_Window` (Green, and inside the window?)
+- next: → `Gateway_TR_Window` (Merge-when-green, and all green?)
 
-### Decide — Green, and inside the window? (`Gateway_TR_Window`)
+### Decide — Merge-when-green, and all green? (`Gateway_TR_Window`)
 
-- Two facts, both read live: every check on the PR is green, and the owner's merge window is open now.
+- Three facts, all read live: the instance's AGENTS.md declares merge-when-green, every check on the PR is green, and the untainted round trip on the changed strings records no fail.
 - Call `workflow_complete` with `node: "Gateway_TR_Window"` and `outcome` set to the label that holds:
   - «Yes» → `Task_TR_Merge` (Merge the PR)
   - «No» → `End_TR_Waiting` (PR left open)
@@ -118,7 +118,7 @@ Keep every locale current after the source moves: detect, refresh the templates,
 
 ## Done — PR left open (`End_TR_Waiting`)
 
-- The instance completes here: Red, or outside the merge window: the PR stays open, and the next run looks again. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- The instance completes here: Open only, red, uncertain or failing: the PR stays open, the owner is told, and the next run looks again. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
 ## Done — Refreshed (`End_TR_Merged`)
 

@@ -6,7 +6,7 @@ description: >
   instance, detect, refresh the templates, merge them into each locale,
   translate only the new and fuzzy strings with the fixed terms, run the
   gates, round-trip the changed strings, write the QA report, open one PR to
-  main, merge it when green inside the owner's merge window, and report source
+  main, merge it only where the instance declares merge-when-green, and report source
   mistakes as one issue. Use for "refresh the translations", "a template check
   failed", and when scheduling or running the watcher.
 ---
@@ -47,9 +47,10 @@ templates, how its terminology supplements are built), the instance's own
 2. **Attach each repository** the run may push to. In a hosted session that
    is the session's add-repository tool, with push access. A repository the
    run cannot push to is reported, and the run goes on with the others.
-3. **Note the merge window.** The owner set it when the translation began. It
-   is in the instance's `AGENTS.md` or in the issue that scheduled the
-   watcher. With no window on record, the run opens PRs and merges nothing.
+3. **Note the merge policy.** Each instance's `AGENTS.md` (§ Translations)
+   declares it. The default, when nothing is declared, is **open only**: the
+   run opens PRs and merges nothing. An instance may declare
+   **merge-when-green** (step 9).
 
 ## Per instance, in order
 
@@ -66,7 +67,7 @@ takes `--instance <root>`, so one checkout serves every instance.
 | 6. round trip | [`translation-round-trip.bpmn`](../../../processes/library/translation-round-trip.bpmn) on the changed strings | both drift and not-drift are recorded |
 | 7. QA report | `translation:page-qa --instance <root>`, and the report | it is written |
 | 8. one PR | one per instance, based on main and targeting main | it is open |
-| 9. merge | in the owner's window, when green | merged, or left open |
+| 9. merge | only under merge-when-green, all green, round trip no fail | merged, or left open and reported |
 | 10. source mistakes | one issue on the source | filed, or none found |
 
 ### 1. Detect
@@ -178,12 +179,19 @@ One branch from main, one PR to main, carrying every locale this run
 refreshed for that instance. Never push to a source PR's branch, and never
 to a branch that has already merged. The PR body links the QA report.
 
-### 9. Merge in the window
+### 9. Merge, by the instance's policy
 
-Merge when every check is green **and** the owner's merge window is open.
-Outside the window, or while anything is red, leave the PR open; the next run
-looks again. Never merge a PR to a repository the owner has said only a
-person merges.
+The policy is the instance's to declare, in its `AGENTS.md`:
+
+- **open only** (the default): open the PR, merge nothing, report it.
+- **merge-when-green**: merge the run's own refresh PR only when every check
+  is green **and** the untainted round trip on the changed strings records no
+  fail. Anything red, uncertain or failing is left open and reported to the
+  owner; the next run looks again.
+
+Either way the translations stay unofficial: merging is not sign-off. Never
+merge a PR the run did not open, and never one to a repository the owner has
+said only a person merges.
 
 ### 10. Source mistakes: one issue
 
