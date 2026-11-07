@@ -16,6 +16,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/test-engineer.md#provenance-2"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/test-engineer.md#provenance-3"
         }
       ]
     },
@@ -42,6 +45,20 @@
       ],
       "dcterms:date": [
         "2026-10-01"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/test-engineer.md#provenance-3",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Every test has a Gherkin (STRICT)",
+      "prov:value": "Owner ruling: \"A test should always have a Gherkin.\" Made a harness rule with a QA flag under work item cat-harness-724x.",
+      "cat-harness:refs": [
+        "2026-11-06",
+        "cat-harness-724x"
+      ],
+      "dcterms:date": [
+        "2026-11-06"
       ]
     }
   ]

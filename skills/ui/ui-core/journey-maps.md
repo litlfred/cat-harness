@@ -18,7 +18,7 @@ description: >
 # Journey maps — journeys and workshops as nodes
 
 > Skill id: `journey-maps` · Package: `ui-core` · Kinds: `user-scenario`,
-> `building-blocks`, `workshop` · Tools: `journeys-viewer` (`bun run cat
+> `building-blocks`, `workshop`, `device-screen` · Tools: `journeys-viewer` (`bun run cat
 > journeys:viz`), `journey-refs` (`bun run cat check:journey-refs`)
 
 ## The rule
@@ -135,9 +135,13 @@ Every person is fictional. A persona's name, role, goal, needs and
 frustrations live on the actor (`meta.persona`), never on the journey. Two
 presentation fields are **optional** there too: `initials` (up to three
 letters for the avatar) and `color` (`#rrggbb` for the persona's lane and
-feeling curve). Kept on the actor when a demonstrator wants a fixed avatar;
-absent, the viewer derives the initials from `name` and assigns colours in
-order. Nothing else reads them.
+feeling curve), and `avatar`, a square picture of the person (an image path
+from the instance root, `scenarios/avatars/<actor>.webp`). Kept on the actor
+when a demonstrator wants a fixed avatar; absent, the viewer derives the
+initials from `name` and assigns colours in order. The picture, when there is
+one, is drawn wherever the persona appears (cast, map, persona lens,
+walkthrough, hand-offs, beside a device screen), the initials on the colour
+otherwise. Nothing else reads them.
 
 ## The `building-blocks` kind
 
@@ -181,12 +185,43 @@ question:** a module asks a room to name, not to decide.
 The journey never names the workshop. One journey can be taught by several
 workshops to several audiences without changing.
 
+## The `device-screen` kind
+
+What one person sees on their own device at one or more steps: one
+`device-screen/0.1.0` file per screen, in a directory declared
+`device-screen` (conventionally `scenarios/device-screens/` or
+`device-screens/`). It names its `device` (`phone`, `tablet`, `scanner`,
+`desktop`, `kiosk`), its `owner` (the actor whose device it is), the `steps`
+it shows (`{ scenario, step }`), what to `try` on it in the room, and its
+`blocks`, top to bottom:
+
+| block | shows |
+|---|---|
+| `header` | the app's name, a line under it, a brand colour, a status chip |
+| `personCard` | an actor (name and avatar from its persona), with fields and chips; `banner` for a patient bar |
+| `qr` | a QR code of `payload`, shown or being scanned; may name the FHIR example it carries |
+| `passcode` | digits shown, hidden, or being entered |
+| `statusBadge` | verified, unverified, failed, emergency or info, with fields and a verdict |
+| `recordList` | rows of icon, label, code, detail and status (`struck` for an allergy); may take its rows from a FHIR example |
+| `fields` | labelled values, as a form shows them |
+| `consent` | who may see what until when, and whether it is granted |
+| `alert` | a message at a severity |
+| `actions` | buttons, labels only |
+| `note` | small print |
+
+**Data, never markup.** There is no free HTML, and an icon is a name from
+a closed glyph list: the screen says what is shown, the viewer how. A block
+with `column: "side"` goes in a second column on a wide device. **Do not
+build a device-demo app of your own:** a screen is content, like the journey
+it shows. A workshop's `presentation.deviceDemo` (an app framed in an
+iframe) is only a fallback for when no screen is declared.
+
 ## The viewer
 
 Declare it in the instance that publishes the site:
 
 ```json
-{ "id": "journeys", "renderedBy": "journeys-viewer", "coversKinds": ["user-scenario", "workshop"], "subgraphs": "instance" }
+{ "id": "journeys", "renderedBy": "journeys-viewer", "coversKinds": ["user-scenario", "workshop", "device-screen"], "subgraphs": "instance" }
 ```
 
 A site build runs it with the other declared writers. It writes, under
@@ -197,8 +232,11 @@ journey (its parts in order, the journeys it is a part of, journey map, then ste
 highlighted and the workshop layer under each step), and a page per workshop,
 per module and for the printable sheets. Everything is static; one small
 script adds the stepper, a filter and remembering a table's ticks in the
-browser. An edge that resolves to nothing is drawn as unresolved, never
-dropped.
+browser. A workshop's walkthrough has a Device Demo (`demo/`): each device
+screen that shows a step it presents, drawn as a static device mock with its
+owner beside it; each step links to the screens that show it ("See what
+<owner> sees") and each screen back to its steps. An edge that resolves to
+nothing is drawn as unresolved, never dropped.
 
 A step's `dak` assets are drawn as one small **DAK** row, grouped Data,
 Decision logic, Indicators, each asset linked to its page in the IG through
@@ -207,8 +245,9 @@ does not list is drawn as text, not linked.
 
 ## Checks
 
-`check:kind-validators` parses every node of the three kinds against their
-Zod (`cat-harness-tools/schemas/process/user-scenario.ts`, `workshop.ts`):
+`check:kind-validators` parses every node of the four kinds against their
+Zod (`cat-harness-tools/schemas/process/user-scenario.ts`, `workshop.ts`,
+`device-screen.ts`):
 step ids unique, every actor a step names among the personas (before 0.4.0;
 from 0.4.0 `check:journey-refs` holds it against the derived personas), every module,
 table, row and sheet a workshop names declared in it.
@@ -234,7 +273,11 @@ exactly one that passes:
 
 and every workshop's `scenarios`, `steps[]` `{scenario, step}`,
 `discussion[].steps` and `resources[].steps` (`<scenario>#<step>`) name a
-journey and a step of it. A file that does not parse is a finding too. It
+journey and a step of it; every device screen's `owner` and `personCard`
+actors are actors, its `steps` are steps of journeys, and the examples its
+`qr` and `recordList` blocks name are in a `fhir-artifact-index`; and every
+persona's `avatar` is a file of its instance. A file that does not parse is a
+finding too. It
 runs over the whole checkout, so a workshop teaching from another instance's
 journeys is checked whole; the layer pull-request checks run it with every
 other `check:` script.
