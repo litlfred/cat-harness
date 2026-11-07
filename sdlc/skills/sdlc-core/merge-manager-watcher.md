@@ -163,7 +163,11 @@ chat then ask to merge by card". A sibling's `ready:` message carries:
    preview, or the layer's equivalent), confirmed rendered, or
    `no preview: <reason>`;
 5. what to look for in the preview;
-6. `full tier green as judged` (rule 1 below).
+6. `full tier green as judged` (rule 1 below). For a pin-only PR in a layer
+   repository, line 6 reads `pin-only: layer CI judges nothing (it mounts the
+   root's lock)`, because its "No new failures" job runs no tests or gates and
+   passes without judging anything. The evidence for those pins is the root's
+   own re-pin PR, not the layer's green check.
 
 The merge manager posts all six lines in its chat, then asks the owner by
 card. A request with no rendered preview and no reason goes back to the
