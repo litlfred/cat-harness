@@ -353,6 +353,14 @@ workflow logic and no fix.
   declares the `library` topic twice against the old pin. A change that
   merely needs the new pins is not mutual: it stacks.
 
+**A lower layer's new gate must not break the next re-pin.** A gate or
+check script added to a lower layer has passed a downstream dry run before
+it lands, so a re-pin moves pins and nothing else. When a re-pin
+nonetheless fails on a gate a lower layer just added, the fix goes into
+that layer, not into the re-pin
+([`prepare-merge`](../../../sdlc/skills/sdlc-core/prepare-merge.md)
+§"A new gate in a lower layer must pass downstream").
+
 **Stacking across layers** (owner ruling, 2026-11-07). Work that needs an
 unmerged PR in a lower layer does not wait for it. Develop against that
 PR's branch laid over a fresh mount. A draft PR may pin the dependency

@@ -279,6 +279,30 @@ tree, and install dependencies rather than borrowing them: a symlinked root
 location this repository does not contain. Confirming the symlink is
 git-ignored is not enough; path resolution is a separate confound.
 
+## A new gate in a lower layer must pass downstream (STRICT)
+
+A layer that adds a gate or a `check:*` script takes on its downstream
+layers too (owner ruling, 2026-11-07, card "Rule 13": add it): the next re-pin of each one runs it. Twice on 2026-11-07 a
+lower layer's main broke every downstream re-pin. New check scripts that no
+downstream workflow ran failed `no check script is unrun`
+(`check:test-gherkin`, and `translation:page-qa:check`, which also had a
+flag mismatch). Checks that walked the file tree without skipping declared
+build outputs failed too (cat-harness-tools#1610, #1616). Each time, the
+re-pin became the P0.
+
+So, in the same PR that adds the gate:
+
+1. **It passes on the layer's own main.**
+2. **It says how downstream layers run it**: either wired through the
+   shared reusable workflow, or declared opt-in per layer with an exemption
+   row each downstream layer can carry.
+3. **A downstream dry run proves it**: lay the branch over a fresh mount of
+   folio-assistant main, and run the gate set there. Say in the PR what ran
+   and its result.
+
+Without all three, the gate waits. It never lands for the next re-pin to
+discover.
+
 ## A clean merge can produce a wrong artefact (STRICT)
 
 **`bun run cat regen` after every base merge.** Not only after a conflicted one —

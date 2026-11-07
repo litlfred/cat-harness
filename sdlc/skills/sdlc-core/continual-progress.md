@@ -246,6 +246,14 @@ queued runs that never started, and asks the owners of the lowest-priority PRs
 to return them to draft: [`merge-manager-watcher`](merge-manager-watcher.md)
 §"Runner relief".
 
+### A new gate is proven downstream before it lands
+
+A PR that adds a gate or `check:*` script to a lower layer passes on its own
+main, says how downstream layers run it, and shows a dry run over a fresh
+folio-assistant mount. Otherwise the next re-pin inherits the breakage
+([`prepare-merge`](prepare-merge.md) §"A new gate in a lower layer must
+pass downstream").
+
 ### One pusher per PR branch
 
 Only the session that owns a PR pushes to its branch (owner ruling,
