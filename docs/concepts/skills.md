@@ -76,18 +76,16 @@ A skill is defined across a few layers — not a single file. For any skill:
 
 ### Cross-cutting: `content-lifecycle`
 
-The lifecycle stages that apply to **every** content type:
+The lifecycle stages the harness's own processes call, for **every** content type:
 
 | Skill | Stage | Purpose |
 |-------|-------|---------|
-| [`content-plan`]({{ site.baseurl }}/reference/skills/content-plan.html) | plan | Scope, team, timeline, governance |
-| [`content-author`]({{ site.baseurl }}/reference/skills/content-author.html) | author | Create structured artifacts |
 | [`content-validate`]({{ site.baseurl }}/reference/skills/content-validate.html) | validate | Check schema + constraints |
 | [`content-review`]({{ site.baseurl }}/reference/skills/content-review.html) | review | Formal review & approval |
 | [`content-test`]({{ site.baseurl }}/reference/skills/content-test.html) | test | End-to-end QA / build green |
-| [`content-publish`]({{ site.baseurl }}/reference/skills/content-publish.html) | publish | Render & deploy |
 | [`content-feedback`]({{ site.baseurl }}/reference/skills/content-feedback.html) | feedback | Collect & triage feedback |
-| `content-retire` | retire | Deprecate / archive |
+
+Planning, authoring, publication and retirement are operational, so the content layer above this one supplies them.
 
 ### Documents & policy guidance: `folio-document-adapter`
 

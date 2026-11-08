@@ -65,7 +65,6 @@ stays the origin's canonical one even when a CDN serves it.
 
 Not the verification of what a build produced — that is
 [`publish-verification`](../../../sdlc/skills/sdlc-core/publish-verification.md), and it runs
-*before* a caller hands its tree over. Not the decision to release —
-[`content-publish`](../../authoring/content-lifecycle/content-publish.md) and
+*before* a caller hands its tree over. Not the decision to release — the content layer's publication step and
 [`release-lifecycle`](../../../sdlc/skills/sdlc-core/release-lifecycle.md). This step renders, pushes, and says
 whether the push landed.

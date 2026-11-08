@@ -249,7 +249,7 @@ separate, gated, checked act that produces bytes:
 | | |
 |---|---|
 | the content core's `schemas/materialization.ts` | **three states** — `referenced` (we know where, we hold no bytes), `materialized` (the bytes are here), `unknown` (we have not established which) — with **no default**, plus five gates, and `localPath` present **iff** `materialized` |
-| `cat-harness/processes/library/materialize-remote.bpmn` | the act itself, as an executable **STRICT** process running five gates in a fixed order; `unknown` on any one keeps the node `referenced` |
+| `cat-harness/library/processes/materialize-remote.bpmn` | the act itself, as an executable **STRICT** process running five gates in a fixed order; `unknown` on any one keeps the node `referenced` |
 | `skills/kg/kg-core/directory-conventions.md` | the `catalogue` graph typology — *"a remote catalogue modelled BY REFERENCE … Distinct from `library`: that is content which IS here, this is the shape of a collection of which almost none is"* |
 
 **Materialised bytes land in `library/` and `uploads/`, not in a `folio/`

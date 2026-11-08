@@ -51,7 +51,7 @@
     ],
     "selection": {
       "when": "First step of a CI job or session on a checkout whose layers arrive by remote mount, after the lock is committed.",
-      "limits": "It lives in cat-harness, which is itself a mounted layer, so it cannot bootstrap a checkout that does not already hold cat-harness. The parent must carry its own dependency-free entry point that fetches this script at the pin (e.g. a `.github/mount-from-lock.sh`) — never call this path directly from a workflow in a repository that mounts cat-harness.",
+      "limits": "It lives in cat-harness, which is itself a mounted layer, so it cannot bootstrap a checkout that does not already hold cat-harness. The parent must carry its own dependency-free entry point that fetches this script at the pin (e.g. a `.github/mount-from-lock.sh`) — never call this path directly from a workflow in a repository that mounts cat-harness. A downstream root's `cat` script, `bun .github/cat.ts`, runs that entry point when the layers are missing, so `bun run cat <name>` works from `git clone`.",
       "cost": "One shallow, blob-filtered fetch per locked instance; a few seconds each. `--check` needs no network."
     },
     "requires": {
