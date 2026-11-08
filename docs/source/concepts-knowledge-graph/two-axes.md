@@ -30,7 +30,7 @@ tells you nothing about what it is for.
 ***Subgraph* has a second meaning.** [Subgraph viewers](subgraph-viewers.html) uses it for
 one declared directory — the thing a visualiser draws and a Skill governs. This
 page uses it for a branch of the topical taxonomy. One topical subgraph is
-usually several declared directories across several instances, so the two
+usually several declared directories across several layers, so the two
 readings are related but do not count the same things. Where the number
 matters, this page says *declared directory* or *graph typology* and leaves
 *subgraph* for the taxonomy.

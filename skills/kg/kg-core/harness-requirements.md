@@ -1,7 +1,7 @@
 ---
 name: harness-requirements
 description: >
-  What an instance OWES for every directory it declares — a visualiser, a
+  What a layer OWES for every directory it declares — a visualiser, a
   documentation entry, a governing skill, json/jsonld/schema.json
   serialisations at the directory's URL and at every node beneath it, and a
   starting README of its own. Read before declaring a directory, before adding
@@ -13,9 +13,9 @@ consulted: true
 allowed-tools: Read Grep Glob Bash
 ---
 
-# Harness requirements — what an instance owes for what it declares
+# Harness requirements — what a layer owes for what it declares
 
-**Declaring a directory is a promise** that this instance holds a graph of
+**Declaring a directory is a promise** that this layer holds a graph of
 that kind and a consumer may scan it. The obligations below make the promise
 keepable. `bun run cat check:subgraph-coverage` measures them.
 
@@ -27,15 +27,15 @@ keepable. `bun run cat check:subgraph-coverage` measures them.
 | **docs** | by the PAGE: `documents:` in its front matter (or its manifest, or `<meta name="documents">` in generated HTML) names the kind or `<instance>/<id>` | can a person READ ABOUT this? |
 | **skill** | by the SKILL: `graph-typologies:` names the kind, or `governs: [<instance>/<id>]` the one directory | is an agent handed something that GOVERNS this? |
 | **serialisations** | `coverage.serialisations` | is each node ADDRESSABLE as json, jsonld and schema.json? |
-| **README** | an `instance-readme` asset, inside the instance | can a reader ENTER this instance at all? |
+| **README** | an `instance-readme` asset, inside the layer | can a reader ENTER this layer at all? |
 
-The first four are per declared directory. The fifth is per instance and is
-ranked harder: an instance with no starting README of its own cannot be
+The first four are per declared directory. The fifth is per layer and is
+ranked harder: a layer with no starting README of its own cannot be
 entered.
 
 ## Severities
 
-- **major** — an obligation this kind OWES and the instance has not met, or a
+- **major** — an obligation this kind OWES and the layer has not met, or a
   target declared and not resolving.
 - **minor** — nobody has said yet, for a kind that never owed one.
 
@@ -63,9 +63,9 @@ running step writes it) and still owes a visualiser, and a kind moving between
 - **`renderable` kinds are exempt by construction.** `docs` and `folio`
   render to pages, so the pages ARE the view and a separate viewer would be a
   second rendering of the same thing.
-- **Bootstrap is exempt by INSTANCE, not by kind.** `bootstrap` has no
+- **Bootstrap is exempt by LAYER, not by kind.** `bootstrap` has no
   visualiser, but it must have its json/jsonld. The exemption is keyed on the
-  instance name, so every other instance declaring the same kind keeps the
+  layer name, so every other layer declaring the same kind keeps the
   obligation, and an exemption by kind would stop checking the one thing
   bootstrap must have.
 - **An unknown kind owes one.** A kind nobody has classified must not escape
@@ -77,7 +77,7 @@ running step writes it) and still owes a visualiser, and a kind moving between
 | # | URL | what it is |
 |---|---|---|
 | 1 | `<base>/` | the ROOT's rendering — its `docs/` is installed by cat-harness, so no segment |
-| 2 | `<base>/<instance>/` | the instance presented **as itself**, on its own theme |
+| 2 | `<base>/<instance>/` | the layer presented **as itself**, on its own theme |
 | 3 | `<base>/<harness>/<visualiser>/<sub-graph>/` | a visualiser the harness DECLARES, over the full KG it covers (`<base>/<harness>/<visualiser>/`) or one sub-graph of it, with assets beneath (`…/<sub-graph>/<path to asset>`) |
 
 The case-3 segments come from the harness's `visualisers` declaration and are
@@ -106,7 +106,7 @@ authored in cat-harness's `docs/` folder publish under
 `<base>/docs/cat-harness/concepts/architecture.html`, its locale copy at
 `<base>/docs/cat-harness/concepts/fr/architecture.html`. Everything else keeps
 its URL: the landing page `<base>/` and each locale landing `<base>/fr/`, the
-instance sites (case 2), the viewers (case 3), the kind directories the same
+layer sites (case 2), the viewers (case 3), the kind directories the same
 tree publishes (`<base>/processes/`, `<base>/proposals/` …) and every root
 export.
 
@@ -182,7 +182,7 @@ large backlog is a wall somebody switches off. It becomes fatal once the count
 of unmet obligations is low enough to mean something.
 
 - **`undetermined` is never a clean run.** An unreadable declaration is
-  reported as such; a sweep blind on one instance has not cleared the others.
+  reported as such; a sweep blind on one layer has not cleared the others.
 - **Never quote a count from prose.** Run it.
 - **A finding is not a task list.** The obligations belong to whoever
   declared the directory, and `deletion-requires-confirmation` applies to

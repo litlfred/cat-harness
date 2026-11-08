@@ -396,8 +396,8 @@ viewer:
 ## Dependency walking
 {: #dependency-walking }
 
-Folio-assistant instances can declare **content and skill dependencies** on
-other folio-assistant instances, following the same methodology as FHIR/SUSHI
+Folio-assistant layers can declare **content and skill dependencies** on
+other folio-assistant layers, following the same methodology as FHIR/SUSHI
 dependencies but upstream from them.
 
 ### Declaration

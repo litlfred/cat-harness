@@ -39,7 +39,7 @@ A skill states a capability generically; a Tool carries the concrete mechanism
    aspiration is worse than no Tool: it answers "how is this done here?" wrongly
    and with authority.
 3. **IRIs are minted, not written out.** `toolTypeIri` forms I/O type IRIs
-   against the instance's `canonicalUrl` at load. A hardcoded IRI silently
+   against the layer's `canonicalUrl` at load. A hardcoded IRI silently
    breaks when the publication base moves, and nothing fails at build time.
 4. **Coverage is a finding, not a score.** Not every skill has a Tool node. A
    skill with no Tool is a gap worth

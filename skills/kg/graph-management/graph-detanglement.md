@@ -40,13 +40,13 @@ message:
 > is."
 
 **At knowledge-graph scale** — `kg-detangle.ts` (`bun run cat kg:detangle`),
-over the instance stack each `<instance>.json` declares in `needs`.
+over the layer stack each `<instance>.json` declares in `needs`.
 
 The repository and knowledge-graph scales share ONE verdict function,
 `schemas/kg/layer-direction.ts`. An edge is **wrong-direction**
 exactly when its target layer is not among what the source layer declares it
-may reach — `ALLOWED` for repos, `needs` plus itself for instances — and no
-reasoned permit names it. An instance with no `needs` is **undetermined**,
+may reach — `ALLOWED` for repos, `needs` plus itself for layers — and no
+reasoned permit names it. A layer with no `needs` is **undetermined**,
 reported in its own column, never read as clean. The function stops at
 direction: whether an allowed edge is a *restatement* or *essential* is the
 adjudicator's call, so those edges stay `unclassified` with the verdict as
@@ -68,7 +68,7 @@ red run says which question broke.
 Two things that gate **reports and refuses to grade**, both because grading them
 would be grading a could-not-determine:
 
-- **`undetermined` edges** — an endpoint's instance declares no `needs`. Failing
+- **`undetermined` edges** — an endpoint's layer declares no `needs`. Failing
   on these would be the gate deciding a layering nobody declared.
 - **the denominator** — the count is over the edges that **resolve**. Dangling
   refs are excluded before any edge is classified, so a `0` is *"0 among the
@@ -76,9 +76,9 @@ would be grading a could-not-determine:
   a pass cannot hide an edge that failed to resolve.
 
 **It is not `check:partition`'s second opinion.** That tool's root is one
-instance, so it partitions a **future** layout by path rule among that
-instance's own modules; this checks the **present** layout against declared
-`needs` across instances. Either can be green while the other is red, and
+layer, so it partitions a **future** layout by path rule among that
+layer's own modules; this checks the **present** layout against declared
+`needs` across layers. Either can be green while the other is red, and
 Phase I.1 of the migration plan needs both.
 
 **At term scale** — a glossary declared `ordered` (logically tight, non

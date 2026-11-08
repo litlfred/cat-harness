@@ -161,7 +161,7 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
     </bpmn:serviceTask>
 
     <bpmn:exclusiveGateway id="Gateway_AuditClean" name="Audit clean?">
-      <bpmn:documentation>The administrator's call, not the pipeline's: `kg:audit:check` fails on `critical` and `kg:audit:strict` adds `major`, so what holds a change is a policy choice about this instance rather than arithmetic the audit performs.</bpmn:documentation>
+      <bpmn:documentation>The administrator's call, not the pipeline's: `kg:audit:check` fails on `critical` and `kg:audit:strict` adds `major`, so what holds a change is a policy choice about this layer rather than arithmetic the audit performs.</bpmn:documentation>
       <bpmn:incoming>A12</bpmn:incoming>
       <bpmn:outgoing>A13</bpmn:outgoing>
       <bpmn:outgoing>A14</bpmn:outgoing>

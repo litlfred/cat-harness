@@ -3,7 +3,7 @@
   "tool": {
     "id": "workflow-next",
     "title": "What is enabled now",
-    "description": "The activities an instance may work right now, each with the lane that owns it and the skill that implements it.",
+    "description": "The activities a layer may work right now, each with the lane that owns it and the skill that implements it.",
     "install": {
       "none": true
     },

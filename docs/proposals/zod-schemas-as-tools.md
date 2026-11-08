@@ -12,7 +12,7 @@ summary: >-
 # Zod schemas as Tools — audit and analysis
 
 > **Editorial correction, 2026-09-23.** This proposal was written while the
-> instance declaration was a fixed `harness.json`; it is `<name>.json` since
+> layer declaration was a fixed `harness.json`; it is `<name>.json` since
 > the 2026-09-21 split (`<name>.config.json` is the config beside it). The
 > references below were updated so a reader is not sent to a file that does not
 > exist — the proposal's argument is untouched, and only the filename moved.
@@ -55,7 +55,7 @@ Only the second is bound to skills. The owner's question is about the second.
 ## The audit
 
 **Re-measured 2026-09-20 on `c7b5d9a6`**, after [#437](https://github.com/litlfred/folio-assistant/pull/437)
-moved the instance under `cat-harness/`. Every path below is the post-move one;
+moved the layer under `cat-harness/`. Every path below is the post-move one;
 the first pass cited pre-move paths that no longer resolve, and a proposal whose
 paths do not land is the failure [#457](https://github.com/litlfred/folio-assistant/pull/457)
 was about. Two counts moved with the restructure — 198 → 199 exported schemas and
@@ -134,7 +134,7 @@ What makes it possible is that two of the three declarations already exist:
 > The row above said the reference was missing. It is not:
 > **`GraphTypologyDef.schema` has existed all along.** Three of sixteen kinds
 > declare one, **nothing reads it**, and since `#437` all three resolve only
-> relative to the *instance* root while their own doc comment calls them
+> relative to the *layer* root while their own doc comment calls them
 > repo-relative — undetected precisely because nothing read them.
 >
 > And it is **not a validator**, which the corpus settled the moment anyone
@@ -207,6 +207,6 @@ which is why it is named here rather than done.
 ## What this does not claim
 
 That the 66 near-orphans should be removed. The proxy is crude, and an exported
-schema with no caller may be a published contract for a downstream instance —
+schema with no caller may be a published contract for a downstream layer —
 which is the whole point of `kg:schema`. Establishing which is which is its own
 measurement, not a corollary of this one.

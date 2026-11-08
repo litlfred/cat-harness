@@ -3,10 +3,10 @@
 A **named subgraph of cat-harness** (`openapi`, declared in
 [`cat-harness.json`](../cat-harness.json); the graphs inside it are declared
 from within, in [`graph.json`](graph.json)). Until 2026-10-07 this was an
-instance of its own, `cat-openapi`; the owner folded it in: *"put cat-openapi
+layer of its own, `cat-openapi`; the owner folded it in: *"put cat-openapi
 under cat-harness as named subgraph "openapi", not separate repo."*
 
-An instance that holds an OpenAPI 3 document — an API it documents, depends on
+A layer that holds an OpenAPI 3 document — an API it documents, depends on
 or publishes beside its own content — declares it here and gets, for every
 operation in it:
 
@@ -17,7 +17,7 @@ operation in it:
   document it belongs to.
 
 The document itself is held verbatim, with a record of where it was read from.
-The first instance is the trust network gateway (`s4ta`), whose API this was
+The first layer is the trust network gateway (`s4ta`), whose API this was
 built for.
 
 | graph | path | typology |
@@ -36,7 +36,7 @@ parameters, request body and responses are drawn in the browser by one shared
 loader from the served document (`visualizer-loading`). A fix to what an
 operation says is a fix upstream, then a re-ingest.
 
-## What an instance declares
+## What a layer declares
 
 1. A directory of graph typology `openapi`, `served: true`, in its `<instance>.json`.
 2. `cat-openapi.config.json` — the file keeps its name — at its own root, or
@@ -57,7 +57,7 @@ writes the pages and JSON-LD into the same graph. Both take `--check`.
 | an operation | `<doc>/<operation>.jsonld`, `.json`, page `<doc>/<operation>/` | its `@id` is that `.jsonld` address |
 
 In the graph and not in `docs/`: an operation is a node OF the openapi graph,
-and an IG instance's `docs/` belongs to `gen-ig-pages.ts`, which reports
+and an IG layer's `docs/` belongs to `gen-ig-pages.ts`, which reports
 anything else there as an orphan. The graph is `served`, so it publishes
 verbatim at `/<instance>/<path>/` — a thin page needs no Jekyll.
 

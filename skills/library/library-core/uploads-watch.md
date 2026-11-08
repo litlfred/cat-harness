@@ -13,7 +13,7 @@ description: >
 between: seeing that something arrived.
 
 **The queue path is read from the declaration, never written down.** It is
-`uploads/` relative to the *instance*, which is not where a repository-relative
+`uploads/` relative to the *layer*, which is not where a repository-relative
 consumer would look. `queueRepoRelative` in `scripts/upload-url.ts` is the one
 place that arithmetic lives.
 

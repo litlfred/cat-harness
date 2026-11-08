@@ -37,19 +37,19 @@ work item before deciding:
 
 | signal | how it is measured |
 |---|---|
-| files and bytes per instance | `git ls-files \| cut -d/ -f1 \| sort \| uniq -c` |
+| files and bytes per layer | `git ls-files \| cut -d/ -f1 \| sort \| uniq -c` |
 | clone cost | `bun run cat health` → `repository-size` |
 | gate time a content change pays | `bun run cat gates` (the gate count and wall time) |
 | merge contention | commits per day on `main`; PRs re-conflicted before merge |
 | cohesion and cut of the candidate | `bun run cat kg:detangle` |
-| wrong-direction edges **within one instance** — modules bucketed into the proposed repos by path rule | `check:partition` (its root is ONE instance; read the scope it prints) |
-| wrong-direction edges **between instances** — checked against each one's declared `needs` | `bun run cat kg:detangle:direction`, blocking in CI |
+| wrong-direction edges **within one layer** — modules bucketed into the proposed repos by path rule | `check:partition` (its root is ONE layer; read the scope it prints) |
+| wrong-direction edges **between layers** — checked against each one's declared `needs` | `bun run cat kg:detangle:direction`, blocking in CI |
 | wrong-direction **references** — the prose axis, not the import axis | `check:reference-direction` |
 | what the tools would drag along | the import cone of the would-be tools package (`check:tools-closure` once it exists) |
 
 ## An example pointing up is a mention, not a dependency
 
-`check:reference-direction` holds that nothing names an instance that depends
+`check:reference-direction` holds that nothing names a layer that depends
 on it. One kind of pointer does not break that rule: a lower layer citing a
 source **as an example**, where the one copy of that source lives in a layer
 above it. For example, a base IG layer's document kind and voice quote a draft
@@ -78,11 +78,11 @@ copies of one key break the bibliography build, so:
 
 1. **Names agree before the cut** — directory, declared `name`, package name.
    A rename after the cut is a cross-repository change.
-2. **One directory per instance**, so extraction is one move, not a sift.
+2. **One directory per layer**, so extraction is one move, not a sift.
 3. **Every gate that guards the boundary has been watched failing** — plant a
    violation, see it red, remove it. A boundary gate can pass while guarding
    nothing: unable to fail, blind to side-effect imports, or blind across
-   instances.
+   layers.
 4. **The owner's decisions are recorded in the work item** (the list below).
 5. **"Generated output is the contract" is written down**: what crosses the
    boundary is the generated file, and any tool may produce it.
@@ -118,16 +118,16 @@ The rules of the pattern:
 
 ### Staged content with no tools repository yet — the finding, not the silence
 
-An instance can be planned as a content repository before its `-tools` pair
+A layer can be planned as a content repository before its `-tools` pair
 is authorised. Declare it — `separation: "content"` in `<name>.json`; the
-content half of an existing pair is read from the tools instance's `supports`
+content half of an existing pair is read from the tools layer's `supports`
 and needs nothing — and kg:audit's `content-instance-holds-code` records a
 finding naming every code file still inside it. It is a `minor` QA
 **warning**, not a failure, because the tolerated set is small; a warning still
 names each file, so the violation is never silent. The remedy splits by what
 the code is: **generic** code (it works for any instance of its kind — any
-DSpace catalogue, any PDF) moves into the platform and takes the instance root
-as an argument; **instance-specific** code waits for `<name>-tools`.
+DSpace catalogue, any PDF) moves into the platform and takes the layer root
+as an argument; **layer-specific** code waits for `<name>-tools`.
 
 ## The stages
 
@@ -175,12 +175,12 @@ bun run cat seed:ready --layer cat-harness --rehearse --text   # exit 0 settled,
 | layer load | more than five open PRs touch the layer |
 | moves | an open PR deletes a file in the layer, or renames one into or out of it. A generator's own names do not count: an `owned-tree` path in `merge-conflict-patterns.ts` (content-hashed payloads, rail data) is renamed by every regen, so moving one changes what no seeded path means |
 | standalone | `bun test` is red with only the layer and what it `needs` beside it, as sibling directories |
-| upward paths | a path DECLARED in the layer — a Tool module, a QA criterion source, a render target — resolves only in an instance above it, so it breaks the day the layer stands alone |
+| upward paths | a path DECLARED in the layer — a Tool module, a QA criterion source, a render target — resolves only in a layer above it, so it breaks the day the layer stands alone |
 
 **A test about the WHOLE CHECKOUT lives at the top.** A test that reads several
-sibling instances at once, or the aggregate root itself (`.github/`, `.gitignore`, the root
+sibling layers at once, or the aggregate root itself (`.github/`, `.gitignore`, the root
 declaration, `beans/`, `todos/`, `memory/`, `fsh-guts/`), is red in every layer
-it is placed in, so it goes in the root instance's DECLARED test home —
+it is placed in, so it goes in the root layer's DECLARED test home —
 `folio-assistant-tests` in `folio-assistant.json`, at `test/` — never in a layer
 and never at a path a runner hardcodes. Whatever names every layer belongs at the
 top, so each layer below stays standalone-green. Split a file when only some of
@@ -214,21 +214,21 @@ its assertion verbatim and moves to the top-level test home above.
 **`upward paths` counts what breaks, not what is out of sight.** It counts
 declared paths that resolve above the layer, not dependents discovery cannot
 find: discovery is checkout-local on purpose, so a count of what it cannot see
-never reaches zero, and the risk is paths, not instances.
+never reaches zero, and the risk is paths, not layers.
 
-**A seeding pair is not upward.** A higher instance's Tool nodes may resolve
+**A seeding pair is not upward.** A higher layer's Tool nodes may resolve
 into their implementer below through `needs`; the two are seeded in the same
-step, so none of those paths can break on seeding day. The HIGHER instance
-says so, `seedsWith: [<lower>]` in its declaration, because a lower instance
+step, so none of those paths can break on seeding day. The HIGHER layer
+says so, `seedsWith: [<lower>]` in its declaration, because a lower layer
 naming one above it is the wrong direction. `seed:ready` states such paths in
-its note and does not count them; a path into any other instance above still
+its note and does not count them; a path into any other layer above still
 counts.
 
 Four things to keep straight:
 
 - **The layer map is read off the declarations**: `livesAt.path` is the
   directory, the longest `needs` chain is the depth, and the next layer is
-  every instance one level up that needs this one. Nothing in the tool names
+  every layer one level up that needs this one. Nothing in the tool names
   a directory.
 - **Every threshold is in the decision table**,
   `processes/kg/decisions/seed-readiness-gate.dmn`. The script works out each
@@ -285,11 +285,11 @@ path (`check:node-iris`).
 - **After that each is versioned on its own**, by the same rules: semver, the
   bump computed from the exported surface (`check:version-bump`).
 - **Tags are plain `v<major>.<minor>.<patch>` in each new repository**: a
-  standalone repository holds one instance, declared at its
+  standalone repository holds one layer, declared at its
   root, so the tag needs no name. `check:version-bump` reads the plain form
-  only there; a repository of several instances — the parent while the pair
+  only there; a repository of several layers — the parent while the pair
   is staged — keeps `<name>-v<major>.<minor>.<patch>`, because a plain tag
-  could not say which instance it released.
+  could not say which layer it released.
 - **A tools release says which content versions it handles** as a list of
   supported MAJOR versions (`bootstrap: [0]`), never a range expression —
   `instance-versioning` rule 2 forbids range syntax, and within one major a
@@ -309,25 +309,25 @@ path (`check:node-iris`).
 
 ### Separation lessons
 
-1. **Downstream Gitignore Contract**: When remote mounts populate an instance directory in the consumer repository, the consumer's `.gitignore` must ignore the mounted paths. Otherwise, git treats external files as uncommitted local files. `index.config.json` automatically includes all `remoteMounts` paths in the generated `.gitignore`.
-2. **Folded Layer Aliases**: When an instance or subgraph is folded into another (e.g. `cat-openapi` folded into `cat-harness` as named subgraph `openapi`), external forks or dependencies may still carry `needs: ["cat-openapi"]`. `schemas/kg/harness-config.ts` maintains `FOLDED_INSTANCE_ALIASES` to resolve these.
+1. **Downstream Gitignore Contract**: When remote mounts populate a layer directory in the consumer repository, the consumer's `.gitignore` must ignore the mounted paths. Otherwise, git treats external files as uncommitted local files. `index.config.json` automatically includes all `remoteMounts` paths in the generated `.gitignore`.
+2. **Folded Layer Aliases**: When a layer or subgraph is folded into another (e.g. `cat-openapi` folded into `cat-harness` as named subgraph `openapi`), external forks or dependencies may still carry `needs: ["cat-openapi"]`. `schemas/kg/harness-config.ts` maintains `FOLDED_INSTANCE_ALIASES` to resolve these.
 3. **Asset Permission & License Validation**: Pre-separation audits must verify `library/withheld.json` and copyright gates. Materializing or mounting a separated catalogue without verified asset clearance causes 404s and broken links on published documentation.
 4. **NPM Manifest in the KG**: `package.json` is an authored pre-packaging asset in the Knowledge Graph (`role: "package-manifest"`), and `.tgz` release tarballs are tracked as `folio-binary-release/v1` state documents with SHA-256 integrity digests.
 5. **No Relative Directory Climbing Across Repositories**: Once separated into standalone checkouts, climbing `../..` escapes the repository boundary into `.claude/worktrees/` or the parent filesystem and fails with `Cannot find module`. All cross-repository imports MUST be authored as package imports (e.g. `@litlfred/cat-harness/...` or via package `exports`), or resolved through package specifiers / tsconfig paths, NEVER through escaping filesystem `../..` traversals.
 6. **No Fixed-Depth Repository Root Assumptions (`REPO`)**: `const REPO = resolve(import.meta.dir, "..", "..")` points at the checkout root in a monorepo and above it in a standalone repository, so the script cannot find `<instance>.json` or scans sibling worktrees. Resolve the root dynamically — search upward for `<instance>.json`, `index.config.json`, or `.git`.
-7. **Clean Standalone Manifest (`package.json`) and Tooling Scaffolding**: When extracting an instance to an upstream repository, `package.json` must be normalized:
+7. **Clean Standalone Manifest (`package.json`) and Tooling Scaffolding**: When extracting a layer to an upstream repository, `package.json` must be normalized:
    - Operational commands must live under `"scripts"`, not leftover monorepo `"checkoutScripts"`.
    - Script definitions must NOT hardcode monorepo subdirectory paths (e.g. `"bun run cat-harness-tools/scripts/..."` -> `"bun run scripts/..."`).
    - A standalone `tsconfig.json` must be present to prevent `tsc` from walking up to the monorepo root.
    - Explicit `dependencies` and `devDependencies` must be declared.
-8. **Fan-Out Recursion Guard in `declaringInstances`**: When a mounted dependency carries its own nested `remoteMounts`, consumer remote fan-out must not mount sub-instances into roots that are already locked mounts of the parent checkout (`!lockedMountPaths(checkout).has(rel)`). Otherwise `remoteFanOut` mutates the child checkout's tree and `treeDigest` verification fails.
+8. **Fan-Out Recursion Guard in `declaringInstances`**: When a mounted dependency carries its own nested `remoteMounts`, consumer remote fan-out must not mount sub-layers into roots that are already locked mounts of the parent checkout (`!lockedMountPaths(checkout).has(rel)`). Otherwise `remoteFanOut` mutates the child checkout's tree and `treeDigest` verification fails.
 9. **Relative Directory Symlink Handling in Staging & Tarball Scripts**: Recursive copies (`cpSync(..., { recursive: true })`) of trees with internal symlinked directories can recurse forever. Staging, site compilation, and packaging scripts must copy symlinks with `{ dereference: false }` or use archive utilities (such as `tar` or `rsync -a`) that preserve symlink references.
 10. **Purely Declarative Ontologies vs. Companion Toolsets (FR-7)**: Purely declarative base repositories (such as `litlfred/bootstrap`) contain zero runtime execution code, zero test suites, and zero `package.json` manifests (FR-7). All graph compilation (JSON-LD export, BPMN diagram rendering, site staging, and schema validation) is executed by the companion tooling repository (`bootstrap-tools`). The declarative repository marks its render exemption (`renderExemption: true`) in its root manifest, and tooling scripts accept an explicit target repository argument (`--repo <dir>`).
-11. **Toolchain Decentralization (`package.json`, `tsconfig.json`, `bunfig.toml`)**: Tools and harness subgraphs must possess full standalone toolchain autonomy. `package.json` must be a standalone package manifest (e.g. `@litlfred/<tools-layer>`), `bunfig.toml` defines test preloads per instance, and `tsconfig.json` must set `"noEmit": true` and omit `rootDir`/`outDir` to prevent `error TS6059: File is not under rootDir` when cross-subgraph schemas or utilities are imported. See [`bun-use`](../../../sdlc/skills/sdlc-core/bun-use.md).
+11. **Toolchain Decentralization (`package.json`, `tsconfig.json`, `bunfig.toml`)**: Tools and harness subgraphs must possess full standalone toolchain autonomy. `package.json` must be a standalone package manifest (e.g. `@litlfred/<tools-layer>`), `bunfig.toml` defines test preloads per layer, and `tsconfig.json` must set `"noEmit": true` and omit `rootDir`/`outDir` to prevent `error TS6059: File is not under rootDir` when cross-subgraph schemas or utilities are imported. See [`bun-use`](../../../sdlc/skills/sdlc-core/bun-use.md).
 12. **Monorepo Coordinator Demotion**: Once tools and code are extracted to their respective packages, the root `package.json` is demoted to a private coordinator (`"private": true`) with narrowed `tsconfig.json` (`test/**/*.ts`). The root platform coordinates development workspaces, mounts, and integration tests, but never directly exports or publishes tool implementations.
 13. **Ephemeral File Purging and Root Hygiene**: Ephemeral generated directories (`_kg/`, `build/`, `test-results/`) must NEVER be committed to the root repository or left unignored. Build outputs belong to the tool that produces them.
-14. **Instance Memory Preservation**: Root directories `beans/`, `todos/`, and `fsh-guts/` are the instance's own durable working memory (the agent's plan, the user's todo queue, and the archival store). They are never overlaid across instances, never extracted to downstream packages, and stay at root by design.
-15. **A cutover is not done until the instance has re-pointed and can publish itself**: `livesAt` is not a comment — `remote-mount.ts` takes `livesAt.path` as the mount path and `seed-ready` reads it as "still staged". A path that was only ever a mount inside the parent's site build serves nothing on its own, and generated pages keep absolute links to the parent's paths, which 404 once the bytes move. Before stage 13: `livesAt` is gone, `iriBase` is declared, and the instance's own site builds from its own repository.
+14. **Layer Memory Preservation**: Root directories `beans/`, `todos/`, and `fsh-guts/` are the layer's own durable working memory (the agent's plan, the user's todo queue, and the archival store). They are never overlaid across layers, never extracted to downstream packages, and stay at root by design.
+15. **A cutover is not done until the layer has re-pointed and can publish itself**: `livesAt` is not a comment — `remote-mount.ts` takes `livesAt.path` as the mount path and `seed-ready` reads it as "still staged". A path that was only ever a mount inside the parent's site build serves nothing on its own, and generated pages keep absolute links to the parent's paths, which 404 once the bytes move. Before stage 13: `livesAt` is gone, `iriBase` is declared, and the layer's own site builds from its own repository.
 16. **The replayer must never live inside a layer it replays**: if every workflow (and every downstream folio's staging build, through a reusable workflow) bootstraps by running a script inside the directory being retired, the cutover breaks the first step of every job. **Before stage 13**, grep every workflow the parent ships for paths into the directory being retired, and give the parent a bootstrap entry point that lives in the parent and needs nothing mounted (a dependency-free `.github/mount-from-lock.sh` that fetches the pinned replayer).
 17. **A downstream's CI is part of "green" for a cutover**: a reusable workflow called `@main` (`uses: litlfred/folio-assistant/.github/workflows/folio-staging.yml@main`) runs the PARENT's current workflow in the DOWNSTREAM's repository. A cutover that is green in the parent can therefore be red in every folio at once, and the red lands on whatever pull request the folio author opens next — it reads as their failure. Stage 12's "green" includes one dispatched staging run of at least one downstream folio after the cutover commit.
 18. **A separated checkout must run its own tests and type-check its own subgraphs**: run them in a fresh standalone clone. A test that reads `<checkout>/../package.json` fails with `ENOENT` outside the composed tree (lesson 6 by another route), and a `tsconfig.json` whose `include` omits named subgraphs (`openapi/`, `archimate/`) is green while never reading them. A test or type-check that silently depends on the composition, or silently skips part of the repository, is not evidence the separated repository works.
@@ -398,7 +398,7 @@ main commit of these repositories that includes a fix merged in this session,
 listed in the PR") covers only the repositories and the window it names, and
 each pin made under it is listed where the owner will read it. When a
 consented ref turns out not to do (a consented `main` with no declaration of
-the instance), do not substitute another ref: keep the previous pin and report
+the layer), do not substitute another ref: keep the previous pin and report
 it.
 
 ### The order that worked, and the rules for several sessions at once

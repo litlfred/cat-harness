@@ -70,7 +70,7 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
     </bpmn:startEvent>
 
     <bpmn:userTask id="Task_ChooseAsset" name="Select upstream asset&#10;and target folio">
-      <bpmn:documentation>Name the upstream instance (`&lt;owner&gt;/&lt;repo&gt;`), the asset's declared path in that instance, the commit `ref` (when pinned), and the target folio declaration that will receive the copy.</bpmn:documentation>
+      <bpmn:documentation>Name the upstream layer (`&lt;owner&gt;/&lt;repo&gt;`), the asset's declared path in that layer, the commit `ref` (when pinned), and the target folio declaration that will receive the copy.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-affordances"/>
       </bpmn:extensionElements>

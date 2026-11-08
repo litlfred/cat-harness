@@ -10,7 +10,7 @@
      snapshot is taken is orphaned into the monorepo. These four rows are the
      criteria the steward applied by hand before each seeding review
      (2026-10-02), generalised per layer. The layer map (which directory is L,
-     which instances are the next layer) comes from the instance declarations,
+     which layers are the next layer) comes from the layer declarations,
      `livesAt.path` and `needs`, never from this table.
 
   2. THE LAYER CANNOT STAND ALONE YET. `8 · Rehearse` / `Green alone?` asked
@@ -28,7 +28,7 @@
                             renames; owner 2026-10-06)
     standaloneRed           checks red in the sibling-layout rehearsal of L
     upwardPaths             paths DECLARED in L that resolve only in an
-                            instance above L — each one breaks the day L
+                            layer above L — each one breaks the day L
                             stands alone (replaced siblingDiscoveryMisses,
                             owner 2026-10-04: discovery is checkout-local by
                             the cmsl ruling, so that count could never pass)
@@ -128,7 +128,7 @@
         <outputEntry id="OE_Alone"><text>"not yet"</text></outputEntry>
       </rule>
       <rule id="Rule_UpwardPaths">
-        <description>A path declared in this layer resolves only in an instance above it, so it fails the day the layer stands alone.</description>
+        <description>A path declared in this layer resolves only in a layer above it, so it fails the day the layer stands alone.</description>
         <inputEntry id="IE_Upward_1"><text>-</text></inputEntry>
         <inputEntry id="IE_Upward_2"><text>-</text></inputEntry>
         <inputEntry id="IE_Upward_3"><text>-</text></inputEntry>

@@ -32,7 +32,7 @@ Always provide:
   fabricate a URL that will 404.
 - **Commit links**: `https://github.com/<owner>/<repo>/commit/<hash>` for each commit
 - **Branch diff**: `https://github.com/<owner>/<repo>/compare/main...<branch>`
-- **Local viewer**: `http://localhost:<viewer_port>/` (from the instance's
+- **Local viewer**: `http://localhost:<viewer_port>/` (from the layer's
   viewer configuration)
 - **Remote/deployed links** (when applicable):
   - **GitHub Pages**: `https://<owner>.github.io/<repo>/`

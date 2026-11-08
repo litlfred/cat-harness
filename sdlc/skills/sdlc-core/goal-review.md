@@ -43,7 +43,7 @@ section forbids, one level up.
 
 ## Cold start — before any durable read
 
-Run the instance's cold-start line (the top of `AGENTS.md`), so the work-plan
+Run the layer's cold-start line (the top of `AGENTS.md`), so the work-plan
 Tool is in hand and primed.
 
 - **The line can be wrong.** If it fails, the
@@ -309,7 +309,7 @@ question.
 
 ## Tools this skill reaches for
 
-Reached through the tools graph the instance declares, never by a remembered
+Reached through the tools graph the layer declares, never by a remembered
 path: the work-plan CLI and its manual fallback; the forge API for proposals,
 issues and CI runs; version-control history for trailers, branch tips and the
 window's edges; and the session API where it can see siblings. Where one is

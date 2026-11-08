@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/kg/mount-dependency.bpmn` (process `Process_MountDependency`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Laying a harness — and every instance it needs — down from another repository at a pinned commit, as declared directories, with a lock that says exactly what arrived.
+Laying a harness — and every layer it needs — down from another repository at a pinned commit, as declared directories, with a lock that says exactly what arrived.
 
 ## Begin — A layer this checkout does not hold (`Start_LayerNeeded`)
 
@@ -16,7 +16,7 @@ Laying a harness — and every instance it needs — down from another repositor
 
 - Who: the `Downstream author` lane (role `author`).
 - Skill: `remote-mount`, `index-config`.
-- What: An instance `{ name, source: { remote: { repository, ref } } }` in the downstream's root `index.config.json`, written through `writeDeclaredMounts`.
+- What: A layer `{ name, source: { remote: { repository, ref } } }` in the downstream's root `index.config.json`, written through `writeDeclaredMounts`.
 - Record it: `workflow_complete` with `node: "Task_DeclareMount"`.
 - next: → `Task_ResolveClosure` (Resolve the closure at the pin)
 
@@ -26,13 +26,13 @@ Laying a harness — and every instance it needs — down from another repositor
 - Skill: `remote-mount`.
 - What: Fetch the pinned tree (shallow, blobless).
 - Record it: `workflow_complete` with `node: "Task_ResolveClosure"`.
-- next: → `Task_MountInstances` (Mount each instance at its declared path)
+- next: → `Task_MountInstances` (Mount each layer at its declared path)
 
-### 3. Mount each instance at its declared path (`Task_MountInstances`)
+### 3. Mount each layer at its declared path (`Task_MountInstances`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `remote-mount`.
-- What: Sparse checkout of the declaration and the chosen directories, copied to the mount path (by default the instance's home path, so relative imports and sibling discovery hold).
+- What: Sparse checkout of the declaration and the chosen directories, copied to the mount path (by default the layer's home path, so relative imports and sibling discovery hold).
 - Record it: `workflow_complete` with `node: "Task_MountInstances"`.
 - next: → `Task_WriteLock` (Write the lock)
 
@@ -40,7 +40,7 @@ Laying a harness — and every instance it needs — down from another repositor
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `remote-mount`.
-- What: `index.lock.json` beside the downstream's `index.config.json` (the legacy `<instance>.mount-lock.json` is still read, and is renamed onto the new name when rewritten; both present is an error): the pins it was written for, each instance's repository, SHA and how the pin was found, each directory's t
+- What: `index.lock.json` beside the downstream's `index.config.json` (the legacy `<instance>.mount-lock.json` is still read, and is renamed onto the new name when rewritten; both present is an error): the pins it was written for, each layer's repository, SHA and how the pin was found, each directory's tree
 - Record it: `workflow_complete` with `node: "Task_WriteLock"`.
 - next: → `Task_RenderAgentSurface` (Re-render the agent surface)
 
@@ -58,9 +58,9 @@ Laying a harness — and every instance it needs — down from another repositor
 - Skill: `remote-mount`, `ci-health`.
 - What: `mount:remote:check`, with no network: the lock's pins are the declaration's, and every locked directory is on disk and hashes to its digest.
 - Record it: `workflow_complete` with `node: "Task_CheckAgainstLock"`.
-- next: → `GW_State` (Every instance mounted or local?)
+- next: → `GW_State` (Every layer mounted or local?)
 
-### Decide — Every instance mounted or local? (`GW_State`)
+### Decide — Every layer mounted or local? (`GW_State`)
 
 - Read off the check's aggregate state.
 - Call `workflow_complete` with `node: "GW_State"` and `outcome` set to the label that holds:

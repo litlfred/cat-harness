@@ -16,7 +16,7 @@ An ArchiMate model is authored in Archi and committed; everything a reader sees 
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `archimate-models`.
-- What: Tool `archimate-check` (`archimate:validate`, on the instance root): every model the config names is held and parses, every box in every view draws an element the model holds, every relationship's ends are in the model.
+- What: Tool `archimate-check` (`archimate:validate`, on the layer root): every model the config names is held and parses, every box in every view draws an element the model holds, every relationship's ends are in the model.
 - Record it: `workflow_complete` with `node: "A_Check"`.
 - next: → `A_Metamodel` (Derive the metamodel in use)
 
@@ -24,7 +24,7 @@ An ArchiMate model is authored in Archi and committed; everything a reader sees 
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `archimate-models`.
-- What: Tool `archimate-metamodel` (`archimate:metamodel --check`, on the instance root): the element types the model uses and every (source type, relationship, target type) pattern, each checked against ArchiMate's relationship table.
+- What: Tool `archimate-metamodel` (`archimate:metamodel --check`, on the layer root): the element types the model uses and every (source type, relationship, target type) pattern, each checked against ArchiMate's relationship table.
 - Record it: `workflow_complete` with `node: "A_Metamodel"`.
 - next: → `GW_Allowed` (Every relationship allowed by ArchiMate?)
 

@@ -693,7 +693,7 @@
     {
       "id": "external-registry",
       "title": "External registry",
-      "description": "Trusted registries and observatories outside this instance's control. Nothing here instructs it; its skill is the contract the diagrams rely on it for.",
+      "description": "Trusted registries and observatories outside this layer's control. Nothing here instructs it; its skill is the contract the diagrams rely on it for.",
       "actorKinds": [
         "external"
       ],
@@ -704,7 +704,7 @@
     {
       "id": "log",
       "title": "Activity log",
-      "description": "The agent activity log. A MECHANICAL role: it is written to at task start and task end, and emptied by an actor \u2014 one entry, all of them, or on a periodic sweep \u2014 and it decides nothing. Modelled on `work-plan` and `corpus`, the two existing stores; its skill is the contract it is held to. Its entries are held in the instance's unpublished store and never reach a published graph; the `activity-log` skill names the location, which is deliberately not repeated here because a role description IS published.",
+      "description": "The agent activity log. A MECHANICAL role: it is written to at task start and task end, and emptied by an actor \u2014 one entry, all of them, or on a periodic sweep \u2014 and it decides nothing. Modelled on `work-plan` and `corpus`, the two existing stores; its skill is the contract it is held to. Its entries are held in the layer's unpublished store and never reach a published graph; the `activity-log` skill names the location, which is deliberately not repeated here because a role description IS published.",
       "actorKinds": [
         "system"
       ],
@@ -773,7 +773,7 @@
     {
       "id": "docs-authoring-agent",
       "title": "Docs authoring agent",
-      "description": "The authoring agent producing what a person reads ABOUT the instance \u2014 generated references, the glossary, sticky notes, theme art and deployment documentation.",
+      "description": "The authoring agent producing what a person reads ABOUT the layer \u2014 generated references, the glossary, sticky notes, theme art and deployment documentation.",
       "actorKinds": [
         "agent"
       ],
@@ -798,7 +798,7 @@
     {
       "id": "platform-authoring-agent",
       "title": "Platform authoring agent",
-      "description": "The authoring agent working on how this instance PUBLISHES itself — the MCP projection, its contract, and the rendering endpoints.",
+      "description": "The authoring agent working on how this layer PUBLISHES itself — the MCP projection, its contract, and the rendering endpoints.",
       "actorKinds": [
         "agent"
       ],
@@ -823,7 +823,7 @@
         "surprise-to-corpus",
         "remote-mount"
       ],
-      "persona": "Thinks in contracts between this instance and a consumer it cannot see. Knows that a partial graph must never pass for a whole one, and that three states at a boundary are not degrees of two."
+      "persona": "Thinks in contracts between this layer and a consumer it cannot see. Knows that a partial graph must never pass for a whole one, and that three states at a boundary are not degrees of two."
     },
     {
       "id": "session-coordinator",

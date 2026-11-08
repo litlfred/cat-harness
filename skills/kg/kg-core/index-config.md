@@ -3,7 +3,7 @@ name: index-config
 description: >
   `index.config.json` at an instantiation root says which harnesses the
   checkout instantiates, where each one comes from (local, or a remote mount
-  pinned to a SHA), each instance's config INLINE in its entry (a legacy
+  pinned to a SHA), each layer's config INLINE in its entry (a legacy
   `<name>.config.json` is only imported until `--inline` retires it), and
   which harness `/` is. Covers instantiated against declared, landing
   resolution and its error case, `index.lock.json` and its legacy fallback,
@@ -19,11 +19,11 @@ consulted: true
 The schema is `folio-index-config/v1` in
 `cat-harness/schemas/kg/index-config.ts`.
 
-**The index is the ONE config.** Each instance's config is written inline in
+**The index is the ONE config.** Each layer's config is written inline in
 its `instances[]` entry. A `<name>.config.json` is a legacy file: imported
 only as a migration step, then retired with `index-config:migrate --inline
 --write`. **Never create one** — not to make a tool find a recipe, not for a
-new instance. If a reader only finds config in the file, that reader is the
+new layer. If a reader only finds config in the file, that reader is the
 bug; fix it to read the index entry first.
 
 `index.config.json` holds three facts about how a checkout is instantiated:
@@ -50,9 +50,9 @@ root declaration.
 
 ## Instantiated is a different fact from declared
 
-A declaration (`<name>.json`) says what an instance **declares**. It travels
+A declaration (`<name>.json`) says what a layer **declares**. It travels
 with the harness into every checkout that uses the harness. An
-`index.config.json` entry says the instance is instantiated **in this
+`index.config.json` entry says the layer is instantiated **in this
 checkout**. Without an index, a `<name>.config.json` at the root says the
 same thing. Tiles, the landing and the hub listing are all drawn from the
 instantiated set, which `instantiatedHarnessNames(root)` returns. Never
@@ -78,9 +78,9 @@ Each entry's effective config is built like this:
    key by key, and arrays and scalars are replaced. Inline fields win.
 
 `effectiveInstanceConfig(root, name)` computes it. `readHarnessConfig(dir)`
-returns it for any instance that an index lists, walking outward from the
-instance root and stopping at the first directory that holds either the index
-or the instance's own config. An instance the index does not list is read
+returns it for any layer that an index lists, walking outward from the
+layer root and stopping at the first directory that holds either the index
+or the layer's own config. A layer the index does not list is read
 from its own config file. Readers that are handed a root and a name (the site
 recipe in `build-instance-site.ts`) use `readInstanceConfig` in
 `cat-harness-tools/scripts/instance-config.ts`, which reads the same way and
@@ -94,7 +94,7 @@ effective config changes, and the file is deleted.
 ## Local or remote
 
 - `source` absent: local, at `<name>/`.
-- `source.local.at`: local, at that path. Use `.` for the instance declared
+- `source.local.at`: local, at that path. Use `.` for the layer declared
   at the root.
 - `source.remote`: a remote mount. It is a `remoteMounts` entry minus
   `harness`, which is the entry's `name`. It **reuses** `RemoteMountSchema`
@@ -120,11 +120,11 @@ order:
 | condition | `/` is |
 |---|---|
 | the index is unreadable | **`invalid`**: the gate fails. There is no fallback to the flags, because the index was written to override them |
-| the index's `site.landing` names an instance it lists | that instance (`by: "index"`) |
+| the index's `site.landing` names a layer it lists | that layer (`by: "index"`) |
 | the index's `site.landing` is `"hub"` | the neutral hub: the harness listing and the todo panel |
-| the index's `site.landing` names an instance it does not list | **`invalid`**: the gate fails, and it is never a silent fallback |
-| no `site.landing` (or no index), one instance | that instance (`sole`) |
-| no `site.landing`, several instances, exactly one config flags `site.landing: true` | the flagged one |
+| the index's `site.landing` names a layer it does not list | **`invalid`**: the gate fails, and it is never a silent fallback |
+| no `site.landing` (or no index), one layer | that layer (`sole`) |
+| no `site.landing`, several layers, exactly one config flags `site.landing: true` | the flagged one |
 | several flagged | the hub |
 | none flagged | `ambiguous`: `check:landing-instance` fails, because the answer is never guessed |
 | nothing instantiated | `none`: a state of its own, not a default |
@@ -175,7 +175,7 @@ jobs:
   repository over the DAK layer, smart-ra, or a folio. Its own `index.lock.json`
   is replayed.
 - **The gates** are the harness's graph checks over the repository's own
-  instance, plus every `check:*` / `*:check` script of that instance **and
+  layer, plus every `check:*` / `*:check` script of that layer **and
   its whole dependency harness** (its transitive `needs`). Each is named
   `<owning-instance>:<script>`.
 - **A PR fails only on what it newly breaks.** Each gate and test runs on main
@@ -199,7 +199,7 @@ the harness caller stays on.
 `.github/workflows/` belongs to the index, so the steps CI runs there that the
 local gate set does not are exempted HERE, under `gateExemptions.steps`, each
 with a `kind` and a `reason` (`GateExemptionsSchema`, the same shape an
-instance declaration carries). They land in the same change as the workflow
+layer declaration carries). They land in the same change as the workflow
 step, never ahead of it in a layer: an exemption for a step CI does not yet
 run matches nothing, and `gates-workflows.test.ts` refuses a stale exemption
 as it refuses an unclassified step.
@@ -212,7 +212,7 @@ as it refuses an unclassified step.
 }
 ```
 
-An instance still exempts its OWN scripts and steps in its own declaration.
+A layer still exempts its OWN scripts and steps in its own declaration.
 
 ## `index.lock.json`, and the legacy name
 
@@ -252,7 +252,7 @@ why. The rules are in [`remote-mount`](remote-mount.md) §"Re-pinning".
 - `rootConfigStems` skips every `index.*` file. It is the one root scan;
   every other reader calls it or `instantiatedHarnessNames`.
 - `findDeclarationFile` skips every `index.*` file too.
-- The index schema refuses an instance named `index`, and `hub`, because that
+- The index schema refuses a layer named `index`, and `hub`, because that
   is the landing keyword.
 
 Do not add another copy of the scan: a new copy is how the reserved name
@@ -266,10 +266,10 @@ leaks back in.
 # END index mounts
 ```
 
-The block holds one `/<path>/` line per remote instance in the index, where
+The block holds one `/<path>/` line per remote layer in the index, where
 the path is `overrides.<name>.path`, else `<name>/`. After those it lists
-every further instance root the lock records, because a mount's closure can
-land instances that the index never names. Three things write the block:
+every further layer root the lock records, because a mount's closure can
+land layers that the index never names. Three things write the block:
 
 - `mount:remote`
 - `writeDeclaredMounts`
@@ -296,7 +296,7 @@ The converter reads only the files under `--root`, so it runs on a
 standalone clone of any separated repository.
 
 - **Which root configs it imports:** a root `<name>.config.json` is imported
-  only when `name` is an instance the checkout declares (at the root or one
+  only when `name` is a layer the checkout declares (at the root or one
   level down) or mounts. Anything else becomes an **`unmatched-config`
   finding** and is not imported. A repository cut from a fork, for example,
   can carry the fork's own `<fork>.config.json`; importing it would

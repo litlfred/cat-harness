@@ -2,7 +2,7 @@
   "_comment": "The root of the agent-workflow conformance lattice. RECONSTRUCTED 2026-09-18 (bean m4zg): `session-start`, `commit-hygiene` and `content-lifecycle` all declared `derivedFrom: [\"req:agent-workflow\"]` and it had never existed, so three requirements specialised a parent with no obligations in it. Every statement here is the shared obligation those three already assert in their own terms — nothing new is required of anybody by this file. `kg:audit`'s `requirement-derived-from-resolves` criterion is what surfaced the hole.",
   "id": "req:agent-workflow",
   "title": "Agent Workflow",
-  "description": "An agent working in a folio instance works to a declared process, records what it is doing where a human and a sibling session can see it, and does not act outside the role it is acting as.",
+  "description": "An agent working in a folio layer works to a declared process, records what it is doing where a human and a sibling session can see it, and does not act outside the role it is acting as.",
   "actors": ["author", "reviewer", "admin", "authoring-agent"],
   "statements": [
     {

@@ -64,12 +64,12 @@ one level down.
 
 A version typed into a template is stale on the next bump. Read it:
 
-- **README templates** get `release`: `version` (every instance declares one),
-  and — for an instance declaring an `iriBase` — `major`, `agent` (for
+- **README templates** get `release`: `version` (every layer declares one),
+  and — for a layer declaring an `iriBase` — `major`, `agent` (for
   identifiers) and `human` (for pages), both `<iriBase>v<major>/`. Empty strings where not declared: test with
   `!= ""`, and show nothing rather than a guess.
 - **Site templates** read `site.data.harness.releases.<instance>` — the same
-  four fields for every instance, written by `sync-docs-harness` into
+  four fields for every layer, written by `sync-docs-harness` into
   `_data/harness.json` under the `docs:harness:check` gate.
 
 Link a person to `human` and name an identifier with `agent`. They are one

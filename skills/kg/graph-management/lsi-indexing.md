@@ -60,7 +60,7 @@ skipped — too little vocabulary to place.
 
 ## Beyond the beans: other graphs in `lsi:near`
 
-`lsi:near` also searches every graph an instance declares under
+`lsi:near` also searches every graph a layer declares under
 `lsiUnitProviders` in its `<instance>.json`: content **blocks** (core) and
 **Lean declarations** (sci). It prints **one list per graph**. Scores from two
 separately built indexes are not comparable, so the lists are never merged
@@ -196,7 +196,7 @@ merge-conflict magnet. `lsi:epics` rebuilds it each run.
 ## The need-an-index audit
 
 `bun run cat lsi:audit` walks every declared graph of a prose kind across every
-instance and writes `test/results/lsi-need-an-index.qa-results.json`
+layer and writes `test/results/lsi-need-an-index.qa-results.json`
 (`qa-results/v1`).
 
 | result | means |

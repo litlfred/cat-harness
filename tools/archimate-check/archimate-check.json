@@ -2,8 +2,8 @@
   "$schema": "tool-definition/v1",
   "tool": {
     "id": "archimate-check",
-    "title": "Check an instance's ArchiMate models against its config",
-    "description": "The ArchiMate gate (graph typology `archimate`): every model an instance's `cat-archimate.config.json` names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no `.archimate` file is held that the config does not name.",
+    "title": "Check a layer's ArchiMate models against its config",
+    "description": "The ArchiMate gate (graph typology `archimate`): every model a layer's `cat-archimate.config.json` names is held, parses (Archi's native XML or its zipped archive), and resolves — every box in every view draws an element the model holds, every relationship's ends are in the model — and no `.archimate` file is held that the config does not name.",
     "install": {
       "none": true
     },
@@ -17,7 +17,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "The instance root whose `archimate` directory is checked.",
+          "description": "The layer root whose `archimate` directory is checked.",
           "required": true,
           "arg": {
             "flag": "--instance"
@@ -38,7 +38,7 @@
       "archimate-models"
     ],
     "selection": {
-      "when": "Before publishing an instance's ArchiMate models, and in its CI: a model that will not parse, draws an element it does not hold, or is held without being configured.",
+      "when": "Before publishing a layer's ArchiMate models, and in its CI: a model that will not parse, draws an element it does not hold, or is held without being configured.",
       "limits": "Archi's native format only; the Open Group exchange format is not read yet.",
       "cost": "One parse per model. No network, no JVM."
     },

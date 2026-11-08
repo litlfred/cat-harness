@@ -80,7 +80,7 @@ the folder sits decides which:
    `skills/skills.json` declares `voices`). This is not a matter of taste:
    `check:layout-norms` fails a new top-level entry whose path lies inside
    another declared directory (the pairs it only lists are a baseline). Add
-   `subgraph: true` when the new folder is a subgraph of the INSTANCE rather
+   `subgraph: true` when the new folder is a subgraph of the LAYER rather
    than a part of its parent's graph (`voices` is the first kind,
    `beans.json`'s `defs` the second).
 3. **A folder that holds ONE node** — one Tool, one voice: it is **not

@@ -81,7 +81,7 @@ Changing who can do what: adding an actor, opening or closing a role to one, gra
 
 ### Decide — Audit clean? (`Gateway_AuditClean`)
 
-- The administrator's call, not the pipeline's: `kg:audit:check` fails on `critical` and `kg:audit:strict` adds `major`, so what holds a change is a policy choice about this instance rather than arithmetic the audit performs.
+- The administrator's call, not the pipeline's: `kg:audit:check` fails on `critical` and `kg:audit:strict` adds `major`, so what holds a change is a policy choice about this layer rather than arithmetic the audit performs.
 - Call `workflow_complete` with `node: "Gateway_AuditClean"` and `outcome` set to the label that holds:
   - «no» → `Gateway_WhichChange_Join`
   - «yes» → `End_Administered` (Graph changed and audited)

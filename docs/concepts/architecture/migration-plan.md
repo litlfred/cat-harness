@@ -95,7 +95,7 @@ the same reason, so the MCP SDK type never reaches the content model.
 #### Still open under 0.1
 
 There is no content-directory resolver. (`resolveSkillDirs` is wired: the
-cross-instance skill overlay is built from it.) Writing it is finishing work,
+cross-layer skill overlay is built from it.) Writing it is finishing work,
 not a design question, and does not block Phase I.
 
 ### 0.2 — Replace the filename heuristic with a real dependency scan · **done**
@@ -108,9 +108,9 @@ meta-scripts were triaged by hand, and are reported with their own provenance so
 a judgement stays visible as a judgement). Full results in
 [current state](current-state.html#the-wrong-direction-edges--phase-is-worklist).
 
-**Scope.** That scan's root is **one instance**, so its edge count is over modules under
-that instance only and says nothing about imports between the instances already
-sitting side by side in the checkout. The cross-instance axis is a separate
+**Scope.** That scan's root is **one layer**, so its edge count is over modules under
+that layer only and says nothing about imports between the layers already
+sitting side by side in the checkout. The cross-layer axis is a separate
 question with a separate tool — see I.1b below.
 
 Two results change the plan below rather than merely confirming it:
@@ -155,8 +155,8 @@ archaeology.
 | # | work | gate |
 |---|---|---|
 | I.1 | Resolve each wrong-direction cross-edge from 0.2 — invert the dependency, move the module, or record why it is legitimate | **both** axes below are empty, or every survivor has a written reason |
-| I.1a | The **within-instance** axis: modules under this instance's root, bucketed into the five proposed repos by path rule — `bun run cat check:partition`, enforcing in CI | a new wrong-direction edge among this instance's own modules fails the PR that introduces it |
-| I.1b | The **cross-instance** axis: edges between instances that already exist side by side, checked against each one's declared `needs` — `bun run cat kg:detangle:direction`, blocking in CI | a new edge from an instance into one that declares a dependency on it fails the PR that introduces it |
+| I.1a | The **within-layer** axis: modules under this layer's root, bucketed into the five proposed repos by path rule — `bun run cat check:partition`, enforcing in CI | a new wrong-direction edge among this layer's own modules fails the PR that introduces it |
+| I.1b | The **cross-layer** axis: edges between layers that already exist side by side, checked against each one's declared `needs` — `bun run cat kg:detangle:direction`, blocking in CI | a new edge from a layer into one that declares a dependency on it fails the PR that introduces it |
 | I.2 | Introduce the `folio` schema (0.3); a folio holds 0..n content instances | `content_validate` passes on a zero-instance folio **and** a two-instance folio |
 | I.3 | Rename `content/` → `folio/` | no `content/` path literal survives outside intentional content-instance paths; full test suite green **and** a synthetic-folio run proves each moved tool still reads its corpus |
 | I.4 | LHS navbar renders a section per node in the folio instance | a two-instance folio shows two sections; a zero-instance folio renders without error |
@@ -166,15 +166,15 @@ archaeology.
 | I.8 | **Every repo declares `stub` + `canonicalUrl` and publishes `<stub>.jsonld` / `<stub>.schema.json`** | `bun run cat kg:export` in each repo emits artefacts named after that repo, with absolute `@id`s under its own `canonicalUrl` |
 
 **I.1 takes two gates.** `check:partition` resolves its root to **one
-instance**, so its `0 wrong-direction edges` says nothing about edges between
-instances side by side; `kg:detangle:direction` owns that axis. The two are not
+layer**, so its `0 wrong-direction edges` says nothing about edges between
+layers side by side; `kg:detangle:direction` owns that axis. The two are not
 each other's second opinion: `check:partition` partitions a **future** layout by
 path rule, `kg:detangle:direction` checks the **present** layout against
 declared `needs`. Either can be green while the other is red, and a survivor
 recorded against one says nothing about the other. `kg:detangle` owns the
-cross-instance axis because it already sees it; widening `check:partition`'s
-root to the checkout would mean reclassifying every instance's modules, since
-its path rules are written against instance-relative paths. Read
+cross-layer axis because it already sees it; widening `check:partition`'s
+root to the checkout would mean reclassifying every layer's modules, since
+its path rules are written against layer-relative paths. Read
 `check:partition`'s count with the scope it prints beside it.
 
 **I.8 is what keeps five repos from becoming five vocabularies.** Each split
@@ -186,7 +186,7 @@ assert the same node IRI, because the document IRI is part of every node's.
 
 The rule the skill states and a test enforces: **artefacts are stub-named, the
 declaration file is not** — the declaration is `<name>.json`, named for the
-instance's `name` rather than its `stub`, which keeps it out of the stub-named
+layer's `name` rather than its `stub`, which keeps it out of the stub-named
 set. A consumer must be able to open a repository it has never seen without
 knowing what it is called, and a resolver that computes the filename from the
 directory finds nothing when a repo is cloned under a different name. So
@@ -203,7 +203,7 @@ targets.
 
 ## Phase II — separate repos, incrementally
 
-One repo at a time, each becoming a folio-assistant instance in its own right.
+One repo at a time, each becoming a folio-assistant layer in its own right.
 
 **Order, cheapest-first, each proving something the next needs:**
 

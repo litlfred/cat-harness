@@ -3,7 +3,7 @@
   "tool": {
     "id": "workflow-complete",
     "title": "Complete a step",
-    "description": "Record an enabled step as done — or supply the facts a decision gateway is computed from — and advance the instance. Refuses a step that is not enabled.",
+    "description": "Record an enabled step as done — or supply the facts a decision gateway is computed from — and advance the layer. Refuses a step that is not enabled.",
     "install": {
       "none": true
     },
@@ -77,7 +77,7 @@
           "schema": {
             "$type": "Markdown"
           },
-          "description": "Appended to the instance's bean.",
+          "description": "Appended to the layer's bean.",
           "required": false,
           "arg": {
             "stdin": true
@@ -99,7 +99,7 @@
           "schema": {
             "$type": "Markdown"
           },
-          "description": "The instance's new position, and what is enabled next."
+          "description": "The layer's new position, and what is enabled next."
         }
       ]
     },

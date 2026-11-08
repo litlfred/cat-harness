@@ -108,8 +108,8 @@
     },
     {
       "id": "admin-settings",
-      "title": "Change instance settings",
-      "description": "May change the instance's own configuration.",
+      "title": "Change layer settings",
+      "description": "May change the layer's own configuration.",
       "includedIn": [
         "odrl:modify"
       ]

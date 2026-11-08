@@ -13,7 +13,7 @@ documents:
 # Subgraph viewers
 {: .no_toc }
 
-A harness instance declares the directories it holds and the **kind of graph**
+A harness layer declares the directories it holds and the **kind of graph**
 in each. Some of those graphs have a page you can open; the sections below are
 the list, and they are not counted here, because a typed count goes stale the
 moment a viewer is added.
@@ -25,7 +25,7 @@ moment a viewer is added.
 
 ## What a declared subgraph is owed
 
-**Every directory an instance names as a subgraph needs a visualiser, a
+**Every directory a layer names as a subgraph needs a visualiser, a
 documentation entry, and a governing skill,** because a directory nobody can see
 is one nobody checks. They are three requirements because they fail
 differently: nothing renders it, nothing says what it is for, or nothing an
@@ -115,7 +115,7 @@ scanned.
 ### The uningested badge, and what it is computed from
 
 Each queue carries a count of how many units are still waiting, **per
-declaring instance and never merged** — two instances' queues shown as one
+declaring layer and never merged** — two layers' queues shown as one
 would report a set that does not exist.
 
 The relation behind it is not a guess. Each `library/<slug>/manifest.jsonld`
@@ -137,9 +137,9 @@ an entry into a folio, because the write path is not yet decided.
 ## The voices — what each rule cites
 
 **[`/cat-harness/voices/`]({{ '/cat-harness/voices/' | relative_url }})** — every voice
-its instance declares, every rule, and **the passage the rule was read from**.
+its layer declares, every rule, and **the passage the rule was read from**.
 
-A voice is an editorial register asserted by an instance. Every rule carries
+A voice is an editorial register asserted by a layer. Every rule carries
 the page and the quote it was read from, and `check-voices.ts` checks that it
 does. The rule row leads with the quote, and the citation is the one column
 that cannot be filtered away, because a citation that is only machine-checked
@@ -148,7 +148,7 @@ is one the reader takes on trust.
 ### A rule citing nothing is drawn as a finding, not as a blank
 
 `VoiceRuleSourceSchema` requires **exactly one** of an ingested source
-(`libraryId` + `sectionId`) or a node of the instance's own knowledge graph
+(`libraryId` + `sectionId`) or a node of the layer's own knowledge graph
 (`kgRef`), so a rule with neither cannot load. The viewer renders that state
 anyway, in red, saying that something is loading voices without validating
 them, because a reader cannot tell "no citation" from "citation not rendered"
@@ -169,14 +169,14 @@ report a clean run.
 | rule | form | what it is |
 |---|---|---|
 | **1 — a handler renders a kind's assets** | `/<handler>/<kind>/<optional subject>` | `/cat-harness/library/<iris-replica>/` |
-| **2 — an instance presents itself** | `/<instance>/` | `/<iris-replica>/` mocking the IRIS website |
+| **2 — a layer presents itself** | `/<instance>/` | `/<iris-replica>/` mocking the IRIS website |
 
-The handler is the instance doing the rendering; the kind names what it
+The handler is the layer doing the rendering; the kind names what it
 renders; the **subject is optional**, and a page without one is the view over
 every subject.
 
 A subject page is never published at `/<subject>/<kind>/` — that is rule 2's
-namespace, and a viewer there would squat on the instance's own site.
+namespace, and a viewer there would squat on the layer's own site.
 
 ### The subject pages
 
@@ -187,7 +187,7 @@ namespace, and a viewer there would squat on the instance's own site.
 | `/cat-harness/library/agent-skills/` | its two entries |
 | `/cat-harness/library/<science-layer>/` | its one entry |
 | `/cat-harness/schemas/` | every declared `schemas/` |
-| `/cat-harness/schemas/<instance>/` | that instance's modules and declarations |
+| `/cat-harness/schemas/<instance>/` | that layer's modules and declarations |
 
 One projection serves all of them — a scoped page filters client-side, because a
 file per subject would repeat the same facts, free to disagree the moment one
@@ -200,15 +200,15 @@ it shows.
 `/cat-harness/docs/` is where the harness user documentation lives, so
 `/cat-harness/docs/<iris-replica>/` is documentation **about** IRIS — how it is
 ingested, what the handler does with it — and **not IRIS content relocated**.
-The content stays in that instance's own `docs/`, and part of the handler's
+The content stays in that layer's own `docs/`, and part of the handler's
 job is to look for those directories.
 
-Every instance's existing `docs/` is a **member** of the one declared `docs`
+Every layer's existing `docs/` is a **member** of the one declared `docs`
 subgraph, and `docs` is a `perInstance` kind, so a dependent gets its own.
 
 ### Nothing composes a path
 
 The rendered-content root is resolved from the declaration, the handler from
-the instance's declared name, and the page's link back to its projection from
+the layer's declared name, and the page's link back to its projection from
 the page's own depth — so moving a directory moves its source, its URL and its
 data link together.

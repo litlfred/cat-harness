@@ -281,10 +281,10 @@ the same fact `bun run cat gates` exists around: **CI tests the merge**, and so
 does the preview, so a branch behind its base is previewing a tree nobody will
 have.
 
-### A stub where an instance should be is the cone, not a broken build
+### A stub where a layer should be is the cone, not a broken build
 
-A composed instance the branch cannot reach is replaced by a one-page stub
-pointing at the published copy. Which instances a preview carries is decided
+A composed layer the branch cannot reach is replaced by a one-page stub
+pointing at the published copy. Which layers a preview carries is decided
 by the staging cone ([`feature-staging`](feature-staging.md) §7), and the
 build log prints each decision with its reason. Before reporting a missing IG
 as a defect, read that line. If the cone left out something your change does
@@ -359,7 +359,7 @@ When reporting changes to the user:
 https://<owner>.github.io/<repo>/<path>
 ```
 
-Read from the instance's config (its `index.config.json` entry) → `readme.pagesBaseUrl`, or construct from
+Read from the layer's config (its `index.config.json` entry) → `readme.pagesBaseUrl`, or construct from
 the repo's GitHub Pages URL.
 
 ### Staging (after)

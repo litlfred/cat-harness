@@ -22,7 +22,7 @@ this layer, so they are linked here rather than there:
    more than one work item copy, follow `bean-drain` step 2 instead.
 3. **Ask for the skill that governs the task** — `skill_list`, then
    `skill_fetch`. Do not open a path under `skills/` from memory: the graph an
-   instance declares is what resolves, and a hardcoded path is how a skill
+   layer declares is what resolves, and a hardcoded path is how a skill
    goes missing the moment the layout moves.
 4. **Say which process you are in**, every turn — the process, the lane, the
    task, and when you switch — and record the workflow instance (`workflow_start`
@@ -58,7 +58,7 @@ text:
 |---|---|
 | what this layer is, as a reader | [`README.md`](README.md) |
 | what to do first, as an agent | this file |
-| what the repository is, and every instance in it | the checkout root's `README.md` — not linked, because more than one repository includes this layer. In an index checkout it is **rendered** (`bun run cat index:render`), never hand-written |
+| what the repository is, and every layer in it | the checkout root's `README.md` — not linked, because more than one repository includes this layer. In an index checkout it is **rendered** (`bun run cat index:render`), never hand-written |
 | the rules that bind everywhere | the skills linked at the top of this file, and the pointer index below |
 | durable facts a subagent owns | `.claude/agent-memory/<agent>/MEMORY.md` — injected, **first 200 lines only** |
 
@@ -87,15 +87,15 @@ precedent; adding to them widens it
 
 #### Getting skills
 
-Skills are knowledge-graph content, not a directory you memorise: they live in the `kg` graph an instance declares in its own
+Skills are knowledge-graph content, not a directory you memorise: they live in the `kg` graph a layer declares in its own
 `<instance>.json` — here [`cat-harness.json`](cat-harness.json) — and a
-downstream instance **inherits** its dependencies' skills through the same
+downstream layer **inherits** its dependencies' skills through the same
 declaration. Ask with `skill_list`, `skill_fetch` and `work_plan_prime`; with
 no MCP, resolve the `kg` graph from the declaration
 ([`kg-navigation`](skills/kg/kg-navigation/kg-navigation.md),
 [`directory-conventions`](skills/kg/kg-core/directory-conventions.md)).
 **A dependency's skills ARE reachable** — `resolveSkillDirs` in
-`schemas/kg/harness-config.ts` computes the cross-instance overlay and
+`schemas/kg/harness-config.ts` computes the cross-layer overlay and
 `LOCAL_PACKAGES` in `scripts/skill-packages.ts` is built from it. Two nearby
 call sites stay root-only on purpose, and the reasons are on the overlay
 function itself: `kgDirectories` composes repo-relative skill ids, and
@@ -277,7 +277,7 @@ doing ([`opening-brief`](sdlc/skills/sdlc-core/opening-brief.md)).
   [`process-state`](skills/process/workflow/process-state.md),
   [`bean-blocking`](work-plan/skills/work-plan/bean-blocking.md),
   [`swarm-management`](sdlc/skills/sdlc-core/swarm-management.md).
-- **An instance declares the directories it scans** in `<instance>.json`, each
+- **A layer declares the directories it scans** in `<instance>.json`, each
   with the kind of graph it holds; overrides match on the entry's `id`, not its
   `path`, and only what exists is declared
   ([`content-context-and-state-graphs`](skills/kg/kg-core/content-context-and-state-graphs.md),
@@ -295,7 +295,7 @@ doing ([`opening-brief`](sdlc/skills/sdlc-core/opening-brief.md)).
 
 ---
 
-*A declared asset of this instance ([`cat-harness.json`](cat-harness.json), role
+*A declared asset of this layer ([`cat-harness.json`](cat-harness.json), role
 `agent-instructions`). Authored here — it is not a copy of
 [`bootstrap/AGENTS.md`](../bootstrap/AGENTS.md). The checkout root's
 `AGENTS.md` quotes that file as its cold start, and is rendered rather than

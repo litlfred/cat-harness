@@ -10,7 +10,7 @@ consulted: true
 
 # Content, context and state graphs
 
-An instance declares directories, and each says what **kind** of graph it
+A layer declares directories, and each says what **kind** of graph it
 holds. Each kind also says which layer it is on, so a consumer can tell the
 subject matter from a record about it, and a record it may write from one it
 may not.
@@ -22,7 +22,7 @@ may not.
 | layer | the process… | example |
 |---|---|---|
 | **`content`** | produces it — that is usually the point | a skill, a schema, a folio chapter |
-| **`context`** | **reads it and never writes it**. Static for the duration of an instance; it changes only when a human directs an authoring act, outside any process | an agent-memory entry |
+| **`context`** | **reads it and never writes it**. Static for the duration of a layer; it changes only when a human directs an authoring act, outside any process | an agent-memory entry |
 | **`state`** | **writes it as it runs** — a work item's status changes because a step completed | a work item, a workflow instance, a QA verdict |
 | **`derived`** | produces it **from a source**, and would regenerate it rather than re-author it. Not the working corpus | a `library/` section |
 
@@ -64,7 +64,7 @@ obvious from their name**.
 
 **`memory` is `context`.** It is static during a process: a process
 **reads** memory and no step writes it. It changes only when a human directs an
-authoring agent, which is an act **outside** any instance. Todos and work items are
+authoring agent, which is an act **outside** any layer. Todos and work items are
 not static.
 
 **`todos` is `state`, and that is the pair worth understanding.**
@@ -114,7 +114,7 @@ corpus consumer. `library/` is what ingestion produced.
 | means what it says without resolving a reference | yes | no | no |
 | a step may write it | no — authoring writes content, and that is the subject of a governed process, not bookkeeping | **no — a write is a defect** | yes |
 | can be stale | it is wrong or right | yes — against a codebase that moved on | yes |
-| same node in two instances is the same thing | yes | no | no |
+| same node in two layers is the same thing | yes | no | no |
 
 **Of an unregistered kind, nothing.** `graphLayer()` returns `undefined`, and
 the three predicates are deliberately **not** each other's negations. Reading
@@ -265,7 +265,7 @@ another, and the containing declaration is not a claim about its contents.**
 ## The layer is not the source — a branch is not "where state lives"
 
 A declared subgraph also says where its content COMES FROM — the checkout's
-directory or a declared repository branch, overridable by the instance config
+directory or a declared repository branch, overridable by the layer config
 (`source`, [`directory-conventions`](directory-conventions.md) §"Where a
 subgraph gets its content"). **That is a different axis from this one, and
 neither is derived from the other.**
@@ -298,7 +298,7 @@ things.
 **Where an asset's layer is declared is the one difference.** A directory's
 layer is a property of its graph TYPOLOGY; an asset's is a property of its ROLE,
 in `ASSET_ROLES`, because an asset has no kind. A per-asset `layer` would be
-eleven instances answering one question, and `check:asset-roles` rejects it —
+eleven layers answering one question, and `check:asset-roles` rejects it —
 asked of the raw declaration, since `KgAssetSchema` strips an unknown key
 without a word.
 
@@ -333,6 +333,6 @@ copy that drifted — it says so itself.
 - [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)
   — the work plan, and why a work item is never deleted. A state record that
   vanishes leaves a sibling unable to tell abandonment from accident.
-- [`instance-publication`](instance-publication.md#what-each-instance-publishes--graph-address-schema-and-what-is-stripped)
+- [`instance-publication`](instance-publication.md#what-each-layer-publishes--graph-address-schema-and-what-is-stripped)
   — a `state` graph's nodes are never published. That rule, and every other
   rule about what reaches the site, lives there.

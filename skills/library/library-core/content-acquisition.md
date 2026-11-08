@@ -61,9 +61,9 @@ cheaper answers have been offered.
 Use **`bun run cat-harness-tools/scripts/upload-url.ts [branch]`**, which composes it
 from the declaration. A declared path is relative to its scope: with no
 `scope`, `{ id: "uploads", path: "uploads/" }` resolves under the
-**instance** (e.g. `cat-harness/uploads/` in an index checkout), while a forge
+**layer** (e.g. `cat-harness/uploads/` in an index checkout), while a forge
 URL needs it relative to the **repository**. Pasting the declared path into
-`/upload/<branch>/` drops the instance segment and mints a 404.
+`/upload/<branch>/` drops the layer segment and mints a 404.
 
 **Every failure is named rather than guessed.** No `origin` remote, a non-GitHub
 forge, a declared-but-absent queue — each returns a reason and a remedy, because

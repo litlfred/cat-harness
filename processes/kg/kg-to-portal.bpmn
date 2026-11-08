@@ -97,7 +97,7 @@
         <bpmn:flowNodeRef>A_Distribute</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Portal" name="Portal (external consumer)" partitionElementRef="external-registry">
-        <bpmn:documentation>The only lane outside this instance's control, so P_Verify checks against an external trust anchor — the GDHCN trustlist — rather than against anything the pipeline itself asserts. When that trustlist cannot be reached, this lane's answer is `unknown`, and GW_Verified routes it the same way as a mismatch: to the last good version, never to a guessed pass.</bpmn:documentation>
+        <bpmn:documentation>The only lane outside this layer's control, so P_Verify checks against an external trust anchor — the GDHCN trustlist — rather than against anything the pipeline itself asserts. When that trustlist cannot be reached, this lane's answer is `unknown`, and GW_Verified routes it the same way as a mismatch: to the last good version, never to a guessed pass.</bpmn:documentation>
         <bpmn:flowNodeRef>P_Verify</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_Verified</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Served</bpmn:flowNodeRef>

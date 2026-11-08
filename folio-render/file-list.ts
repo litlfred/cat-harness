@@ -50,7 +50,7 @@ import { join, relative, resolve } from "node:path";
 //
 // This helper lives in cat-harness, and cat-harness imports nothing above
 // bootstrap — the schema code it once used moved up a layer (bean `8lcl`).
-// It needs only the instance's title and the directory declared for
+// It needs only the layer's title and the directory declared for
 // the `folio` graph, so it reads the declaration JSON itself.
 
 interface Declared {
@@ -59,7 +59,7 @@ interface Declared {
   directories?: Array<{ path?: string; graphTypologies?: string[] }>;
 }
 
-/** The instance root this module sits in: the directory above `folio-render/`. */
+/** The layer root this module sits in: the directory above `folio-render/`. */
 const INSTANCE_ROOT = resolve(import.meta.dir, "..");
 
 function readOwnDeclaration(root: string): Declared | undefined {
@@ -154,7 +154,7 @@ export function renderFolioPage(instanceTitle: string, files: readonly FolioFile
 }
 
 function main(argv: string[]): number {
-  // The folio is found through the instance's declaration, not by counting
+  // The folio is found through the layer's declaration, not by counting
   // `..` from where this module happens to sit.
   const root = INSTANCE_ROOT;
   const decl = readOwnDeclaration(root);

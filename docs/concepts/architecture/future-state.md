@@ -5,7 +5,7 @@ parent: Architecture
 nav_order: 3
 ---
 
-# Future state — five instances, one dependency mechanism
+# Future state — five layers, one dependency mechanism
 {: .no_toc }
 
 1. TOC
@@ -14,12 +14,12 @@ nav_order: 3
 ---
 
 > **This page is a proposal, not a description.** It maps the directories of the
-> single pre-split checkout onto five instances, and every judgement call is
+> single pre-split checkout onto five layers, and every judgement call is
 > marked as one.
 
 ## The shape
 
-Five folio-assistant instances, composed through the
+Five folio-assistant layers, composed through the
 `dependencies.folioAssistant` mechanism that
 [already exists](current-state.html#the-mechanism-the-split-already-has):
 
@@ -202,7 +202,7 @@ same workflow as SME review of anything else.
 The five repos are not the goal. The goal is that L4 (Consumer apps) and L5
 content can be built off `cat-harness` without inheriting a scientific
 paper's LaTeX toolchain or a WHO guideline's FHIR profile — so that a
-healthworker- or individual-facing workflow (immunizations, for example) composes exactly the three or four instances it needs.
+healthworker- or individual-facing workflow (immunizations, for example) composes exactly the three or four layers it needs.
 
 That is the test to hold the boundary against. If a new consumer-facing folio
 has to depend on the science layer to get a working install, the split has not

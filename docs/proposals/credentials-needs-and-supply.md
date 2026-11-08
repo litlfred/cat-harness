@@ -20,7 +20,7 @@ change.
 > |---|---|---|
 > | **D1** mechanism | **A: one GitHub App owned by the account** | **default applied.** The owner said "no preference", so this can be reopened |
 > | **D2** naming | **A: capability names. (a) becomes `PUBLISH_SITE_BOOTSTRAP` and (b) becomes `PUSH_BRANCH_TRIGGERING_CI`** | **default applied.** The owner said "no preference", so this can be reopened |
-> | **D3** placement | **A: a `credentials/` directory per instance** | **default applied.** The owner did not answer, so this can be reopened |
+> | **D3** placement | **A: a `credentials/` directory per layer** | **default applied.** The owner did not answer, so this can be reopened |
 > | **D4** signing | **A: declare `sign-artefact` now, and build it after wallet-custody Q1 and Q7** | **ruled by the owner** |
 >
 > Four follow-up work items under epic `5a3l` carry the work. None of them is built
@@ -263,7 +263,7 @@ model applied to mechanical actors.
 
 ### 2.4 Where it lives, and which graph kinds
 
-**One `credentials/` directory per instance,** declared in that instance's
+**One `credentials/` directory per layer,** declared in that layer's
 `<instance>.json` like any other graph directory, holding three graph kinds.
 The single question in the content/context/state skill decides each of them:
 
@@ -276,7 +276,7 @@ The single question in the content/context/state skill decides each of them:
 Two constraints shape this.
 
 - **The name `needs` is taken.** `cat-harness.json` already has a `needs`
-  field: the list of layers this instance sits on (`bootstrap`,
+  field: the list of layers this layer sits on (`bootstrap`,
   `bootstrap-tools`). A credential need must never be written into it. Hence a
   directory named `credentials/` and kinds named `credential-*`.
 - **bootstrap-tools has to carry its own `needs.json`,** because its workflow
@@ -513,7 +513,7 @@ always a person:
 
 ### 6.2 The tool: `secrets:check` (outline, not built)
 
-**Inputs, all names-only:** every instance's `needs.json`; every workflow's
+**Inputs, all names-only:** every layer's `needs.json`; every workflow's
 `secrets.NAME` references, excluding non-context matches such as
 `secrets.token_hex` (§1.1 found one); the names present, from
 `/repos/{o}/{r}/actions/secrets`, `/environments/{env}/secrets` and
@@ -672,14 +672,14 @@ repository needs, and what the checker validates.
 
 | option | does | pro | con | reversible |
 |---|---|---|---|---|
-| **A. A `credentials/` directory per instance; three kinds: `context`, `context`, `state`** *(recommended)* | §2.4 | a need lives beside its consumer; the graph kinds are classified by the skill's own question; bootstrap-tools carries its own | three new graph kinds to register; the validator reads bootstrap-tools' file as data | yes |
+| **A. A `credentials/` directory per layer; three kinds: `context`, `context`, `state`** *(recommended)* | §2.4 | a need lives beside its consumer; the graph kinds are classified by the skill's own question; bootstrap-tools carries its own | three new graph kinds to register; the validator reads bootstrap-tools' file as data | yes |
 | B. Comments inside each workflow's YAML | — | nothing new to declare | no schema, nothing to check against, no ODRL rendering | yes |
 | C. One central registry in cat-harness for every repository | — | one file | cat-harness would describe repositories above and beside it, which reverses the dependency direction | costly to undo |
 
 **Recommendation: A.** **If you say nothing:** A, as the follow-up work item's
 design, with the kinds proposed and not registered until that work item is built.
 
-**Question:** should each instance declare its credential needs, profile and
+**Question:** should each layer declare its credential needs, profile and
 expiry registry in its own `credentials/` directory?
 
 ### D4: is provenance signing of published artefacts in scope now?

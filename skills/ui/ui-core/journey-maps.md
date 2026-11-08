@@ -9,7 +9,7 @@ description: >
   `building-blocks` catalogue its steps use, a workshop that teaches from it
   (`workshop` kind: modules, objectives, questions for the room on each step,
   reference tables, sheets, job aids), the `journeys-viewer` visualiser that
-  draws them for an instance and the layers it mounts, and the
+  draws them for a layer and the layers it mounts, and the
   `check:journey-refs` gate that every reference they name resolves. Read
   before writing a journey or a workshop, before declaring the viewer, and
   before building a journey walkthrough app of your own.
@@ -33,7 +33,7 @@ the node already links.
 ## The `user-scenario` kind
 
 One file per journey (`user-scenario/0.4.0`; `0.3.0`, `0.2.0` and the draft
-`0.1.0` are read unchanged), in a directory the instance declares with that
+`0.1.0` are read unchanged), in a directory the layer declares with that
 kind (conventionally `scenarios/user-scenarios/`).
 
 **A journey IS a DAK user scenario.** The kind `specialises` the DAK
@@ -62,7 +62,7 @@ The journey metadata is the ordered `steps`:
 | `realisedBy` | a BPMN file and the flow-node ids that carry the step out |
 | `requirements`, `examples` | `req:` node ids; FHIR examples as `Type/id` |
 | `uses[]` | a block of a `building-blocks/0.1.0` catalogue, and the ROLE it plays in this step |
-| `illustration` | the step's picture (`src`, instance-relative), its `alt`, and the `prompt` to draw it when there is none yet (0.2.0) |
+| `illustration` | the step's picture (`src`, layer-relative), its `alt`, and the `prompt` to draw it when there is none yet (0.2.0) |
 | `includes` | the journey this step IS, as a BPMN call activity is a process (0.4.0) |
 | `dak[]` | the DAK assets the step uses, each `{ key, rel? }`: `key` is the asset's artefact-index key (`StructureDefinition/<logical model>`, `PlanDefinition/<decision table>`, `Measure/<indicator>`), `rel` what it is to the step: `data` a data set it records or exchanges, `decides` a decision table that decides something in it, `measures` an indicator that counts it (0.3.0) |
 
@@ -76,7 +76,7 @@ a step's `lead` and `experiences`). 0.4.0 refuses `partOf`.
 **Derive `dak`, do not type it.** A DAK already says which BPMN tasks each of
 its data sets and decision tables serves, and which journeys each indicator
 measures; a step's `realisedBy` names its process and tasks. So the step's
-`dak` list is a join of the two, written by the instance's own script from
+`dak` list is a join of the two, written by the layer's own script from
 its DAK sources and checked against them, never kept by hand beside them.
 When `rel` is absent, the viewer goes by the key's resource type
 (`StructureDefinition` data, `PlanDefinition` or `Library` decision logic,
@@ -128,7 +128,7 @@ lanes' first actor as *redundant: remove it*.
 | a step's `lead`, `experiences` | the lanes of its `realisedBy` tasks | derived by default; authored as the narrative |
 | a part's parent, and what it follows | the parent's `parts` | derived |
 | `parts`, `includes`, `follows` between top-level journeys, step order | the story | authored |
-| `dak` | the DAK's own trace of which tasks each asset serves | authored, generated and checked by the instance (no generic trace yet) |
+| `dak` | the DAK's own trace of which tasks each asset serves | authored, generated and checked by the layer (no generic trace yet) |
 | `requirements`, `examples`, `fhirChanges` | the step | authored (no story or index field links them to a step yet) |
 
 Every person is fictional. A persona's name, role, goal, needs and
@@ -136,7 +136,7 @@ frustrations live on the actor (`meta.persona`), never on the journey. Two
 presentation fields are **optional** there too: `initials` (up to three
 letters for the avatar) and `color` (`#rrggbb` for the persona's lane and
 feeling curve), and `avatar`, a square picture of the person (an image path
-from the instance root, `scenarios/avatars/<actor>.webp`). Kept on the actor
+from the layer root, `scenarios/avatars/<actor>.webp`). Kept on the actor
 when a demonstrator wants a fixed avatar; absent, the viewer derives the
 initials from `name` and assigns colours in order. The picture, when there is
 one, is drawn wherever the persona appears (cast, map, persona lens,
@@ -149,11 +149,11 @@ One `building-blocks/0.1.0` file per catalogue: its `layers` (each with the
 question it answers) and `blocks` (a `tool`, `system`, `standard` or
 `network`, its layer, jurisdiction, owner, what it is, why it matters, the
 ArchiMate element keys that deploy it, links). A step's `uses[].block` names
-a block by id, looked up in the journey's own instance first, then in every
-instance the checkout mounts.
+a block by id, looked up in the journey's own layer first, then in every
+layer the checkout mounts.
 
 It is a kind of its own, not a family of `user-scenario`, because the
-catalogue describes the architecture: it lives beside the instance's
+catalogue describes the architecture: it lives beside the layer's
 ArchiMate model, where the overlay that draws those blocks reads it. Readers
 find it **by declared kind, never by folder**, so declare the directory that
 holds it:
@@ -218,7 +218,7 @@ iframe) is only a fallback for when no screen is declared.
 
 ## The viewer
 
-Declare it in the instance that publishes the site:
+Declare it in the layer that publishes the site:
 
 ```json
 { "id": "journeys", "renderedBy": "journeys-viewer", "coversKinds": ["user-scenario", "workshop", "device-screen"], "subgraphs": "instance" }
@@ -226,7 +226,7 @@ Declare it in the instance that publishes the site:
 
 A site build runs it with the other declared writers. It writes, under the
 path `<locale>/<instance>/journeys/`, an index of every journey in the checkout
-(the mounted layers' included, each instance a sub-graph page, each parent's
+(the mounted layers' included, each layer a sub-graph page, each parent's
 parts nested under it in order, an optional or repeating part marked), a page per
 journey (its parts in order, the journeys it is a part of, journey map, then step by step, a step that `includes` a journey linking to it with the step's BPMN flow nodes
 highlighted and the workshop layer under each step), and a page per workshop,
@@ -260,13 +260,13 @@ exactly one that passes:
 |---|---|
 | `personas`, `lead`, `experiences[].actor`, `handoff.from`/`to`, `illustrationStyle.cast[].actor` | an actor in a `scenarios` directory |
 | `stories` | a story in a `scenarios` directory's `stories.json` |
-| `realisedBy[].process`, `.tasks` | a BPMN file relative to the instance root, and element ids in it |
+| `realisedBy[].process`, `.tasks` | a BPMN file relative to the layer root, and element ids in it |
 | `uses[].block` | a block of a catalogue in a `building-blocks` directory |
 | `requirements`, `preconditions[].requirements` | a `req:` node |
 | `examples`, `fhirChanges[].examples`, `dak[].key` | an entry of a `fhir-artifact-index` (could not determine while the index is built at publish) |
-| `illustration.src` | a file relative to the instance root |
+| `illustration.src` | a file relative to the layer root |
 | `follows`, `partOf`, `parts[].scenario`, `includes` | a journey; parts and includes form no cycle |
-| `trustLadder`, `record.state`, `views` | a code list and a code of it; an ArchiMate view the instance's config names |
+| `trustLadder`, `record.state`, `views` | a code list and a code of it; an ArchiMate view the layer's config names |
 | a persona (0.4.0) | an actor, or a role in a `roles.json` |
 | the journey, as a DAK user scenario | derived roles that are not empty, each a declared role |
 | `includes` on a step whose `realisedBy` names a call activity | a journey realised by the called process (could not determine when the call names none) |
@@ -276,8 +276,8 @@ and every workshop's `scenarios`, `steps[]` `{scenario, step}`,
 journey and a step of it; every device screen's `owner` and `personCard`
 actors are actors, its `steps` are steps of journeys, and the examples its
 `qr` and `recordList` blocks name are in a `fhir-artifact-index`; and every
-persona's `avatar` is a file of its instance. A file that does not parse is a
+persona's `avatar` is a file of its layer. A file that does not parse is a
 finding too. It
-runs over the whole checkout, so a workshop teaching from another instance's
+runs over the whole checkout, so a workshop teaching from another layer's
 journeys is checked whole; the layer pull-request checks run it with every
 other `check:` script.

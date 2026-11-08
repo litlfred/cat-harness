@@ -13,7 +13,7 @@ A knowledge graph is in a repository. A portal — a Moodle site, a ministry's
 intranet, a department page — needs to show what is in it, to readers the
 repository never hears about, through a data-ingestion pipeline subject to
 operational and deployment constraints (for example, a CDN behind Moodle).
-**This is the shape of that path**, written as a pattern so the next instance
+**This is the shape of that path**, written as a pattern so the next layer
 does not rebuild it unnamed.
 
 ## A CDN is a layer, not a publication host

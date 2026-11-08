@@ -16,7 +16,7 @@ Making a declared subgraph's content available at its declared path, whatever it
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `sub-kg-lifecycle`.
-- What: `declaredSubgraph(start, id)`: the declaring instance, the entry, and the resolved source with `declaredIn` saying which layer answered.
+- What: `declaredSubgraph(start, id)`: the declaring layer, the entry, and the resolved source with `declaredIn` saying which layer answered.
 - Record it: `workflow_complete` with `node: "Task_ResolveSource"`.
 - next: → `GW_SourceKind` (Which source kind?)
 

@@ -6,7 +6,7 @@ from within, in [`graph.json`](graph.json)), on the pattern of the
 [`openapi`](../openapi/README.md) subgraph. Owner, 2026-10-09: *"need new
 specialixed harness (like openapi) for archimate content in the KG"*.
 
-An instance that holds ArchiMate models — an architecture it documents, drawn
+A layer that holds ArchiMate models — an architecture it documents, drawn
 in [Archi](https://www.archimatetool.com/) — declares them here and gets, for
 the model and for every **view, element and relationship** in it:
 
@@ -45,7 +45,7 @@ identity and a pointer. What a page shows is drawn by one shared loader from
 the model, normalised (`<model>/model.json`). A fix to a view is made in
 Archi, and shows on the next build.
 
-## What an instance declares
+## What a layer declares
 
 1. A directory of graph typology `archimate` in its `<instance>.json` —
    `served: true` only if the pages are written into the graph itself.
@@ -84,7 +84,7 @@ view's SVG links relative to its own address, so it works standalone, in its
 page, or embedded in a document as a figure.
 
 In a site build (`--out`) the data stays at the graph's path, so no IRI moves,
-and the **pages** go to the route of the visualiser the instance declares for
+and the **pages** go to the route of the visualiser the layer declares for
 the `archimate-pages` Tool, `<locale>/<harness>/<id>/` (owner, 2026-10-09:
 every visualiser page at `<base>/<harness>/<visualiser>`). smart-ra declares
 
@@ -92,7 +92,7 @@ every visualiser page at `<base>/<harness>/<visualiser>`). smart-ra declares
 "visualisers": [{ "id": "archimate", "renderedBy": "archimate-pages", "covers": ["archimate"] }]
 ```
 
-so its pages are at `en/dpi-h-ra/archimate/`. An instance that declares none
+so its pages are at `en/dpi-h-ra/archimate/`. A layer that declares none
 gets no site pages: the run stops and says what to declare, rather than write
 to a route nobody declared. Every site page carries `rendered-by`, which is
 how `check:visualiser-routes` holds it to the route.

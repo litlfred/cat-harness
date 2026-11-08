@@ -3,7 +3,7 @@
   "tool": {
     "id": "kg-graph-export",
     "title": "Knowledge-graph export",
-    "description": "Dump this instance's knowledge graph — skills, BPMN activities and their lanes, roles, actors, directories — to one JSON-LD document for publication. The export is data; something else draws it.",
+    "description": "Dump this layer's knowledge graph — skills, BPMN activities and their lanes, roles, actors, directories — to one JSON-LD document for publication. The export is data; something else draws it.",
     "install": {
       "none": true
     },
@@ -79,7 +79,7 @@
     },
     {
       "at": "/satisfies",
-      "comment": "Bean `n350`: the Tool that publishes bootstrap's graph, so it also\nsatisfies the two skills that govern that graph. They live in\n`bootstrap/skills/`; `check-tools` resolves them across instances."
+      "comment": "Bean `n350`: the Tool that publishes bootstrap's graph, so it also\nsatisfies the two skills that govern that graph. They live in\n`bootstrap/skills/`; `check-tools` resolves them across layers."
     },
     {
       "at": "/requires",

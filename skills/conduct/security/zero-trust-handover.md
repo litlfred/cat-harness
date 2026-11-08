@@ -92,7 +92,7 @@ table says which rule below answers each:
 | tool output / corpus text → agent | ingested documents, web pages, issue bodies and PR comments are data that may *read* as instructions | H1, H5 |
 | MCP request → tool handler | arguments come from a model that may already be steered | H2, H6 |
 | tool → network | an input-derived URL, or a redirect, reaches an internal endpoint (SSRF) | H7 |
-| dependency KG → instance | a dependency's skills, voices and processes are adopted by `resolveSkillDirs` without any integrity check | H8 |
+| dependency KG → layer | a dependency's skills, voices and processes are adopted by `resolveSkillDirs` without any integrity check | H8 |
 
 ## The rules
 
@@ -117,7 +117,7 @@ table says which rule below answers each:
   delegator to follow. The plan comes from the principal (CaMeL `sec-007`).
 - **H4. A skill is code.** A skill body that will steer an agent is reviewed
   like code before it is trusted: who changed it, in which reviewed PR, and is
-  it the version the instance declared? A skill that arrives through a
+  it the version the layer declared? A skill that arrives through a
   dependency and was never reviewed here is untrusted until it has been.
 - **H5. Mark the boundary where data enters a prompt.** When a tool puts
   foreign text in front of a model, it delimits it as quoted data and labels
@@ -134,10 +134,10 @@ table says which rule below answers each:
   BadHost class).
 - **H8. A graph you depend on is a supply-chain input, and mounting one needs
   trust or consent.** Skills, voices, processes and tools resolved from a
-  dependency instance are pinned to a commit like any other dependency.
+  dependency layer are pinned to a commit like any other dependency.
   A remote graph is mounted (as a dependency, a `remoteGraphs` entry, or a
   materialised asset) only when ONE of these holds: its provenance is
-  signed by a key verifiable through a trust network the instance declares
+  signed by a key verifiable through a trust network the layer declares
   (the WHO Global Digital Health Certification Network is the named
   example), or a person gave explicit consent for that graph at that pin.
   Unsigned and unconsented means not mounted. That gets reported as its own
@@ -293,10 +293,10 @@ detection-based, training-time, prompting and system-level defences
   authors parse the JSON input and *"recursively filter each key and each
   value in the JSON object"*, then rebuild it, because *"if a message comes
   from the tools, it has to be in the JSON format"* (`sec-014`, pp. 6–7).
-  That is prior-work evidence for this instance's practice of keeping skill
+  That is prior-work evidence for this layer's practice of keeping skill
   and tool I/O schemas tight: a declared schema tells the screen where data
   sits and which fields steer control. H9 is written on that basis.
-- **It repairs, and this instance refuses.** DataFilter strips the injected
+- **It repairs, and this layer refuses.** DataFilter strips the injected
   span and passes the rest on. Under [`security`](security.md)'s
   refuse-never-repair rule, stripping is acceptable only where the field is
   data and the original is kept and flagged. A field that steers control is
@@ -306,7 +306,7 @@ detection-based, training-time, prompting and system-level defences
 
 **DefensiveTokens (arXiv:2507.07974v2) is not adoptable here, and it is
 useful for its boundary.** Its tokens are optimised embeddings that *"the LLM
-provider optimizes and releases"* (`sec-005`, p. 3), and this instance calls
+provider optimizes and releases"* (`sec-005`, p. 3), and this layer calls
 hosted models whose embeddings it can't change. Its conclusion states the
 boundary clearly: it *"only defends against prompt injections, where the user
 (instruction) is benign, and application-retrieved external data is
@@ -380,7 +380,7 @@ of what leaves), [`prov-o-provenance`](../../../methodologies/prov-o-provenance.
 | CaMeL's custom interpreter | CaMeL | **not adopted**: a candidate design, too large to take on without a decision |
 | field-wise screening over a declared schema | DataFilter (`sec-014`) | applied here as H9, informed by the source as prior work; not an adopted method |
 | silent stripping of injected spans | DataFilter | **refused**: refuse-never-repair; quarantine with the original kept instead |
-| provider-released defensive tokens | DefensiveTokens | **refused**: needs access to model embeddings this instance does not have |
+| provider-released defensive tokens | DefensiveTokens | **refused**: needs access to model embeddings this layer does not have |
 | "strip the defence in trusted interactions" | DefensiveTokens (`sec-005`) | **refused**: no interaction is trusted by position |
 | mount a remote KG only on signed provenance (e.g. GDHCN) or explicit consent | this platform's policy | applied as H8, built in `schemas/kg/mount-trust.ts` |
 | H1–H9, the sink-based risk table, the release gate | ours | **this skill**: a house application, not part of any adopted method |

@@ -126,7 +126,7 @@ or moving a held pin?">
     </bpmn:exclusiveGateway>
     <bpmn:serviceTask id="Task_Record" name="Write the entry and
 cache the declaration">
-      <bpmn:documentation>The `subscriptions` entry in the subscriber's instance declaration — id, repository, ref, and nothing chosen yet — plus a cached copy of the substrate's declaration at the pin. The entry holds the choice and the pin, never state: whether a part is held is answered by its materialisation record, and a second answer here would be free to disagree with it.</bpmn:documentation>
+      <bpmn:documentation>The `subscriptions` entry in the subscriber's layer declaration — id, repository, ref, and nothing chosen yet — plus a cached copy of the substrate's declaration at the pin. The entry holds the choice and the pin, never state: whether a part is held is answered by its materialisation record, and a second answer here would be free to disagree with it.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-subscription" />
       </bpmn:extensionElements>
@@ -193,7 +193,7 @@ the asset policy, harnesses">
     </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_NeedsHeld" name="Every chosen harness's
 needs held here?">
-      <bpmn:documentation>For each chosen harness, is every instance it `needs` either local to this checkout or itself subscribed? Decided from the two declarations, before any byte moves. `no` goes back to the choice — subscribe the missing dependency first, or leave that harness referenced — because instantiating a harness whose needs cannot load writes a navbar entry that fails check:instance-render.</bpmn:documentation>
+      <bpmn:documentation>For each chosen harness, is every layer it `needs` either local to this checkout or itself subscribed? Decided from the two declarations, before any byte moves. `no` goes back to the choice — subscribe the missing dependency first, or leave that harness referenced — because instantiating a harness whose needs cannot load writes a navbar entry that fails check:instance-render.</bpmn:documentation>
       <bpmn:incoming>Flow_15</bpmn:incoming>
       <bpmn:outgoing>Flow_16</bpmn:outgoing>
       <bpmn:outgoing>Flow_17</bpmn:outgoing>

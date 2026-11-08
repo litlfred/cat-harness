@@ -41,7 +41,7 @@ Asking must not mean hundreds of gigabytes arrive without a number first. Before
 calling `materialize-remote`:
 
 - **Name the subset** in the source's own terms: its identifiers, or a subset
-  strategy its descriptor (in the owning instance's declared `sources/`, e.g.
+  strategy its descriptor (in the owning layer's declared `sources/`, e.g.
   the IRIS replica's `sources/`) supports.
 - **Close it over dependencies** if the descriptor says the subset is not
   self-contained (`subsetIsSelfContained: false`, mathlib). The size that

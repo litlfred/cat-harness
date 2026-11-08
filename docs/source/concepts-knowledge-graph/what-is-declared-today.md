@@ -34,7 +34,7 @@ it is topically Dynamic State. It is read by processes and not written by
 them, which is what `context` asserts.
 
 **How a dependent contributes into a shared body of knowledge.** Through the
-**kind**, and that is the mechanism rather than a stopgap. Each instance that contributes a Voice declares its own `voices/`
+**kind**, and that is the mechanism rather than a stopgap. Each layer that contributes a Voice declares its own `voices/`
 directory of kind `voices`, and the overlay resolves them together. A new
 contributor declares a directory, names the kind, and is done: no nesting, no
 subgraph declaration, nothing added to the schema. Nested subgraph directories

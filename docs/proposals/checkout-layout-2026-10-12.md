@@ -24,7 +24,7 @@ been changed on the strength of this proposal; the one fix that landed with it
 
 Layout C is the only one a downstream folio uses, and the only one the
 separation's own end state (kg-separation stage 11: *"a code dependency as a
-`source.remote` instance in its root `index.config.json`, never a submodule"*)
+`source.remote` layer in its root `index.config.json`, never a submodule"*)
 describes. Layouts A and B are how the platform's own development and CI run.
 
 ## 2. What three layouts cost, measured
@@ -79,7 +79,7 @@ resolve to nothing — and **90** references in its wiring to the monorepo's old
 checkout (`folio-assistant/feedback`, `../../folio-assistant/schemas/` in
 `adapters/mcp-server/tsconfig.json`, …). Run on `smart-ra`, it reports
 **0** monorepo references and no wrong-direction import or reference in its own
-instance. The downstream is cut over; the layer is not, because the layer is
+layer. The downstream is cut over; the layer is not, because the layer is
 only ever run inside A or B.
 
 ## 3. The options
@@ -89,7 +89,7 @@ only ever run inside A or B.
 Every repository, the harness's own tool layers included, is a checkout that
 mounts what it `needs` under its own root from `index.config.json`, pinned and
 digest-verified. cat-harness-tools declares `cat-harness` and `bootstrap-tools`
-as `source.remote` instances; its CI mounts them from its own lock instead of
+as `source.remote` layers; its CI mounts them from its own lock instead of
 checking out folio-assistant. Code across layers is imported as packages (work item
 `f6gq` option 2, already the target), so no import climbs a directory.
 Sibling clones survive only as an explicit development override

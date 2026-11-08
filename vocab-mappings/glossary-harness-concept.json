@@ -3,7 +3,7 @@
   "id": "glossary-harness-concept",
   "title": "Harness → SKOS concept (glossary)",
   "status": "active",
-  "description": "How scripts/glossary-export.ts writes a harness (an instance declaration) as a skos:Concept in that instance's glossary, beside the roles and the node kinds. Work item folio-assistant-dkqd (2026-11-04): a reader met \"C@T Harness\", \"Folio Assistant\" and \"Bootstrap\" with nothing defining them. The label is the declaration's title (else its name), the definition its summary (else its description). The concept's IRI is the declaration's iriBase, the address the harness already has, never a second name. Its sibling for node kinds is glossary-kind-concept.",
+  "description": "How scripts/glossary-export.ts writes a harness (a layer declaration) as a skos:Concept in that layer's glossary, beside the roles and the node kinds. Work item folio-assistant-dkqd (2026-11-04): a reader met \"C@T Harness\", \"Folio Assistant\" and \"Bootstrap\" with nothing defining them. The label is the declaration's title (else its name), the definition its summary (else its description). The concept's IRI is the declaration's iriBase, the address the harness already has, never a second name. Its sibling for node kinds is glossary-kind-concept.",
   "group": [
     {
       "source": "bootstrap:Harness",

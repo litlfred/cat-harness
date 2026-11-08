@@ -16,9 +16,9 @@
   </bpmn:collaboration>
 
   <bpmn:process id="Process_TranslationRefresh" name="Translation refresh (watcher)" isExecutable="false">
-    <bpmn:documentation>Keep every locale current after the source moves: detect, refresh the templates, merge them into each locale, translate only what is new or fuzzy, check it, and land one PR per instance on main.
+    <bpmn:documentation>Keep every locale current after the source moves: detect, refresh the templates, merge them into each locale, translate only what is new or fuzzy, check it, and land one PR per layer on main.
 
-You are in this process when the watcher scheduled by `multi-locale-translation` wakes, or when a template check has failed. It is the loop that process ends with. A fresh session can run it cold: the skill `translation-refresh` gives each step as a command, and each instance's own AGENTS.md names what is particular to it. One run walks every instance in turn, and each instance with something to refresh gets its own PR.
+You are in this process when the watcher scheduled by `multi-locale-translation` wakes, or when a template check has failed. It is the loop that process ends with. A fresh session can run it cold: the skill `translation-refresh` gives each step as a command, and each layer's own AGENTS.md names what is particular to it. One run walks every layer in turn, and each layer with something to refresh gets its own PR.
 
 A refresh never re-translates a finished string. Obsolete strings are kept as `#~` entries, new ones arrive empty, and only new and fuzzy strings are translated, with the terms the term base already fixes. The round trip runs on the changed strings only.</bpmn:documentation>
     <bpmn:extensionElements>
@@ -34,7 +34,7 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
         <bpmn:flowNodeRef>Task_TR_Report</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_TR_Lead" name="Source-language lead (watcher)" partitionElementRef="translation-source-lead">
-        <bpmn:documentation>Owns the watcher. It decides whether anything changed from the files, not from memory, refreshes the templates once for every locale, and merges the instance's PR only where the instance declares merge-when-green, every check is green and the round trip records no fail.</bpmn:documentation>
+        <bpmn:documentation>Owns the watcher. It decides whether anything changed from the files, not from memory, refreshes the templates once for every locale, and merges the layer's PR only where the layer declares merge-when-green, every check is green and the round trip records no fail.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_TR</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_TR_ColdStart</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_TR_Detect</bpmn:flowNodeRef>
@@ -57,7 +57,7 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
     </bpmn:startEvent>
 
     <bpmn:serviceTask id="Task_TR_ColdStart" name="Cold start: mount and attach">
-      <bpmn:documentation>Lay down every pinned layer from each instance's lock, as its AGENTS.md cold start says, and attach each repository the run will change.</bpmn:documentation>
+      <bpmn:documentation>Lay down every pinned layer from each layer's lock, as its AGENTS.md cold start says, and attach each repository the run will change.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="translation-refresh"/>
       </bpmn:extensionElements>
@@ -75,7 +75,7 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
     </bpmn:serviceTask>
 
     <bpmn:exclusiveGateway id="Gateway_TR_Changed" name="Anything to refresh?">
-      <bpmn:documentation>Answered from the detection commands' output: `Yes` when any template check fails or any count of new, obsolete or fuzzy strings is above zero. `No` ends the run for this instance. A command that exits 2 is neither: it is reported for the instance, and the run moves on.</bpmn:documentation>
+      <bpmn:documentation>Answered from the detection commands' output: `Yes` when any template check fails or any count of new, obsolete or fuzzy strings is above zero. `No` ends the run for this layer. A command that exits 2 is neither: it is reported for the layer, and the run moves on.</bpmn:documentation>
       <bpmn:incoming>Flow_TR_3</bpmn:incoming>
       <bpmn:outgoing>Flow_TR_Yes</bpmn:outgoing>
       <bpmn:outgoing>Flow_TR_No</bpmn:outgoing>
@@ -86,7 +86,7 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
     </bpmn:endEvent>
 
     <bpmn:serviceTask id="Task_TR_Templates" name="Refresh the templates">
-      <bpmn:documentation>Re-run the instance's extractors, once for every locale: pages, diagrams, glossary schemes.</bpmn:documentation>
+      <bpmn:documentation>Re-run the layer's extractors, once for every locale: pages, diagrams, glossary schemes.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="translation-refresh"/>
       </bpmn:extensionElements>
@@ -139,7 +139,7 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
     </bpmn:callActivity>
 
     <bpmn:serviceTask id="Task_TR_Report" name="QA report and one PR to main">
-      <bpmn:documentation>Write each locale's QA report, then open one PR for the instance, based on and targeting main.</bpmn:documentation>
+      <bpmn:documentation>Write each locale's QA report, then open one PR for the layer, based on and targeting main.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="translation-manager"/>
       </bpmn:extensionElements>
@@ -157,14 +157,14 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
     </bpmn:serviceTask>
 
     <bpmn:exclusiveGateway id="Gateway_TR_Window" name="Merge-when-green, and all green?">
-      <bpmn:documentation>Three facts, all read live: the instance's AGENTS.md declares merge-when-green, every check on the PR is green, and the untainted round trip on the changed strings records no fail. `Yes` merges. `No` leaves the PR open and reports it to the owner; the default policy, open only, always answers `No`.</bpmn:documentation>
+      <bpmn:documentation>Three facts, all read live: the layer's AGENTS.md declares merge-when-green, every check on the PR is green, and the untainted round trip on the changed strings records no fail. `Yes` merges. `No` leaves the PR open and reports it to the owner; the default policy, open only, always answers `No`.</bpmn:documentation>
       <bpmn:incoming>Flow_TR_10</bpmn:incoming>
       <bpmn:outgoing>Flow_TR_WindowYes</bpmn:outgoing>
       <bpmn:outgoing>Flow_TR_WindowNo</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
     <bpmn:serviceTask id="Task_TR_Merge" name="Merge the PR">
-      <bpmn:documentation>Merge the instance's PR to main, then confirm the template checks pass on main.</bpmn:documentation>
+      <bpmn:documentation>Merge the layer's PR to main, then confirm the template checks pass on main.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="translation-refresh"/>
       </bpmn:extensionElements>

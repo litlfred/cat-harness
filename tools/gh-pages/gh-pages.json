@@ -17,7 +17,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "The instance root whose Knowledge Graph is rendered, or a tree a caller already rendered and verified.",
+          "description": "The layer root whose Knowledge Graph is rendered, or a tree a caller already rendered and verified.",
           "required": true
         },
         {
@@ -66,7 +66,7 @@
       "render-kg-to-cdn"
     ],
     "selection": {
-      "when": "The CDN target is GitHub Pages: this repository's docs site and its review previews, and every instance whose declaration names a GitHub `repository`.",
+      "when": "The CDN target is GitHub Pages: this repository's docs site and its review previews, and every layer whose declaration names a GitHub `repository`.",
       "limits": "GitHub only. Pages cannot serve server-side redirects or custom headers, and a full-replace push to the `gh-pages` branch deletes what the build did not produce unless the caller restores it first (`docs-site-publish`). Another CDN is another Tool satisfying `render-kg-to-cdn`.",
       "cost": "Free for a public repository: Pages and the Actions minutes its workflow uses. A deploy takes a minute or two to be served."
     },
@@ -89,7 +89,7 @@
   "$comment": [
     {
       "at": "/subprocesses",
-      "comment": "Its own subprocess (ruling 6, 2026-09-30), drawn in bootstrap-tools'\ndeclared `processes/` — an instance this one needs, so the arrow points down."
+      "comment": "Its own subprocess (ruling 6, 2026-09-30), drawn in bootstrap-tools'\ndeclared `processes/` — a layer this one needs, so the arrow points down."
     },
     {
       "at": "",

@@ -86,7 +86,7 @@ Per the architectural assessment in `requirements-standards-assessment`:
 - **Bootstrap remains pure**: No ReqIF XML types, OSLC RDF vocabularies, or
   heavy third-party dependencies may be added to `bootstrap/`.
 - **Projection lives above**: Higher layers (`cat-harness`, or a content
-  instance above it) provide conversion tools (e.g. exporting `RequirementSet` to OMG ReqIF 1.2 XML
+  layer above it) provide conversion tools (e.g. exporting `RequirementSet` to OMG ReqIF 1.2 XML
   for DOORS/Polarion, or projecting to OSLC-RM JSON-LD).
 - **Markdown front matter is the canonical authoring form**: Markdown front
   matter + JSON schemas in Git provide fast parsing, clean PR diffs, and zero

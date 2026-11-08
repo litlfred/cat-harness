@@ -63,7 +63,7 @@ apart.
 So a new colour is a token on the node, and the generator decides how it reaches
 CSS. Adding a `@media (prefers-color-scheme: dark)` branch by hand to cover a
 value the node does not carry is rule 1 broken with extra steps: the node still
-does not know about the colour, so the next instance to render it gets the light
+does not know about the colour, so the next layer to render it gets the light
 value in the dark.
 
 ## The third state applies here too

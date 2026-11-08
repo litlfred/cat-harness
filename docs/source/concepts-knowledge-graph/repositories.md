@@ -67,8 +67,8 @@ Each edge has its own carrier in the declaration:
 | relation | runs | carried by |
 |---|---|---|
 | **depends** | Content → Content | `needs` in the declaration — the layer stack, foundation first |
-| **references** | Tool → Content, Test → Content | `remoteGraphs` — a graph this instance knows about and does not hold |
-| **utilizes** | Tool → Tool, Test → Tool, App → Content, App → Test | `dependencies` in the config — what this instance USES, overlaid |
+| **references** | Tool → Content, Test → Content | `remoteGraphs` — a graph this layer knows about and does not hold |
+| **utilizes** | Tool → Tool, Test → Tool, App → Content, App → Test | `dependencies` in the config — what this layer USES, overlaid |
 | **associated** | any harness ↔ any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (skill `associate-harness`) |
 
 **Associated is a fourth, and it fixes no order**: it is how a folio in another repository, such as `ihris`, is listed without being built here.

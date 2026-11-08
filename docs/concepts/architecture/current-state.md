@@ -113,10 +113,10 @@ DAG forbids. Every module **this tool scans** is classified, so this is a
 complete count over that set rather than a floor:
 
 > **It is not a complete count over the checkout.** `check:partition`'s root is
-> **one instance**, so imports between instances that exist side by side are
-> outside the scan. The cross-instance axis is
+> **one layer**, so imports between layers that exist side by side are
+> outside the scan. The cross-layer axis is
 > `bun run cat kg:detangle:direction`, blocking in CI. The table below is the
-> **within-instance** worklist.
+> **within-layer** worklist.
 
 | importer | imports from | edges |
 |---|---|---:|
@@ -156,7 +156,7 @@ once the count is driven down.
 
 This is the most important finding on the page, and it cuts both ways.
 
-`<name>.config.json` already declares cross-instance dependencies:
+`<name>.config.json` already declares cross-layer dependencies:
 
 ```jsonc
 "dependencies": {
@@ -177,7 +177,7 @@ not require inventing composition; it requires finishing it.
 
 ### What is wired, and what is not
 
-`resolveSkillDirs` computes the cross-instance skill overlay, and
+`resolveSkillDirs` computes the cross-layer skill overlay, and
 `LOCAL_PACKAGES` in `scripts/skill-packages.ts` is built from it. The
 translation fallback chain (`content/pipeline/po-resolve.ts`) is the other
 consumer of the module. **Two resolution paths are unbuilt**: content-directory

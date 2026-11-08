@@ -50,10 +50,10 @@ unchanged throughout:
 - A **Task** is a step in a Workflow — a node in the BPMN.
 - A **Skill** is a **Capability with defined inputs and outputs**.
 
-The Knowledge Graph is not one directory, and not one repository. An instance declares
+The Knowledge Graph is not one directory, and not one repository. A layer declares
 the directories it scans and the **kind** of graph each holds, in its
-`<name>.json` root declaration; a dependent instance inherits those and may add
-its own. So the Knowledge Graph of a checkout is the union of what every instance in it
+`<name>.json` root declaration; a dependent layer inherits those and may add
+its own. So the Knowledge Graph of a checkout is the union of what every layer in it
 declares — which is why "where is the Knowledge Graph" has no filesystem answer, and why
 a consumer asks for a kind rather than opening a path.
 
@@ -101,7 +101,7 @@ tells you nothing about what it is for.
 ***Subgraph* has a second meaning.** [Subgraph viewers](subgraph-viewers.html) uses it for
 one declared directory — the thing a visualiser draws and a Skill governs. This
 page uses it for a branch of the topical taxonomy. One topical subgraph is
-usually several declared directories across several instances, so the two
+usually several declared directories across several layers, so the two
 readings are related but do not count the same things. Where the number
 matters, this page says *declared directory* or *graph typology* and leaves
 *subgraph* for the taxonomy.
@@ -372,8 +372,8 @@ Each edge has its own carrier in the declaration:
 | relation | runs | carried by |
 |---|---|---|
 | **depends** | Content → Content | `needs` in the declaration — the layer stack, foundation first |
-| **references** | Tool → Content, Test → Content | `remoteGraphs` — a graph this instance knows about and does not hold |
-| **utilizes** | Tool → Tool, Test → Tool, App → Content, App → Test | `dependencies` in the config — what this instance USES, overlaid |
+| **references** | Tool → Content, Test → Content | `remoteGraphs` — a graph this layer knows about and does not hold |
+| **utilizes** | Tool → Tool, Test → Tool, App → Content, App → Test | `dependencies` in the config — what this layer USES, overlaid |
 | **associated** | any harness ↔ any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (skill `associate-harness`) |
 
 **Associated is a fourth, and it fixes no order**: it is how a folio in another repository, such as `ihris`, is listed without being built here.
@@ -425,7 +425,7 @@ it is topically Dynamic State. It is read by processes and not written by
 them, which is what `context` asserts.
 
 **How a dependent contributes into a shared body of knowledge.** Through the
-**kind**, and that is the mechanism rather than a stopgap. Each instance that contributes a Voice declares its own `voices/`
+**kind**, and that is the mechanism rather than a stopgap. Each layer that contributes a Voice declares its own `voices/`
 directory of kind `voices`, and the overlay resolves them together. A new
 contributor declares a directory, names the kind, and is done: no nesting, no
 subgraph declaration, nothing added to the schema. Nested subgraph directories
@@ -443,7 +443,7 @@ page disagree, **the Skill wins and this page is wrong**.
 
 | question | where it is answered |
 |---|---|
-| How an instance declares its directories, and every graph typology | [`directory-conventions`]({{ site.baseurl }}/reference/skill-instructions/directory-conventions.html) |
+| How a layer declares its directories, and every graph typology | [`directory-conventions`]({{ site.baseurl }}/reference/skill-instructions/directory-conventions.html) |
 | What `content`, `context`, `state` and `derived` each promise a consumer | [`content-context-and-state-graphs`]({{ site.baseurl }}/reference/skill-instructions/content-context-and-state-graphs.html) |
 | Actors, Roles, Permissions, and why a Role is a swimlane | [`role-model`]({{ site.baseurl }}/reference/skill-instructions/role-model.html) |
 | Authoring a Workflow activity, and what a bean-marked step performs | [`bpmn-processes`]({{ site.baseurl }}/reference/skill-instructions/bpmn-processes.html) |

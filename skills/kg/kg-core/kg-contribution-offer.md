@@ -20,7 +20,7 @@ and a conversation, and no later agent finds them.
 ## What this skill is NOT
 
 It is **not** a decision procedure for where a node goes. That is
-[`placement`](placement.md), and it is an *agent's* procedure: which instance,
+[`placement`](placement.md), and it is an *agent's* procedure: which layer,
 which declared graph, which kind of node, which stub convention. Run it **after**
 this skill has an answer, not instead of it.
 
@@ -71,7 +71,7 @@ about the ones that differ. That path is opened by their answer, never assumed.
 
 ## The options are DERIVED, never invented
 
-The destinations are the graphs this instance declares, in `<name>.json` —
+The destinations are the graphs this layer declares, in `<name>.json` —
 read at the time of asking, never a list typed from memory.
 
 **Not every declared graph is an authorable destination.** A store that is
@@ -107,7 +107,7 @@ behind a schema: each is an artefact of the work rather than its output. It is
 not subject matter, so it is not `folio`. It is not a rule an agent follows,
 so it is not a skill (a skill is read by an agent about to act; a design
 record by a person asking *why is it like this*). It is not work outstanding,
-so it is not a work item. **It is memory**, and `docs/` is where an instance keeps
+so it is not a work item. **It is memory**, and `docs/` is where a layer keeps
 memory a person reads.
 
 ### Not `fsh-guts`
@@ -116,11 +116,11 @@ memory a person reads.
 thrown away or lost. A proposal not yet agreed can afford to be lost; the
 reasoning behind something already built cannot.
 
-### WHOSE `docs/` — the owning instance's, not the repository's
+### WHOSE `docs/` — the owning layer's, not the repository's
 
-**`docs/` is not one place.** It is a declared graph, and the instance that
+**`docs/` is not one place.** It is a declared graph, and the layer that
 owns a harness, feature or tool owns its detailed information, design and
-planning. Ask [`placement`](placement.md) Step 1's question: **which instance
+planning. Ask [`placement`](placement.md) Step 1's question: **which layer
 owns this?** A design record for a `cat-harness` feature files in
 `cat-harness/docs/`; one for a folio's own subject matter does not belong in
 the platform at all.
@@ -140,7 +140,7 @@ Background, derivations, options not taken, and an API's full surface when
 the task touches three calls are documentation. Conversely, a rule an agent
 must follow, filed in `docs/`, is a rule `skill_fetch` will never serve.
 
-**Where in that instance's `docs/`** is [`placement`](placement.md)'s question,
+**Where in that layer's `docs/`** is [`placement`](placement.md)'s question,
 not this one.
 
 `none` is a real answer: a requirement whose whole content is *"the button
@@ -148,7 +148,7 @@ should be blue"* becomes a commit and nothing else.
 
 ## What the agent does with the answer
 
-1. Run [`placement`](placement.md) for the chosen kind — it decides instance,
+1. Run [`placement`](placement.md) for the chosen kind — it decides layer,
    graph and node kind, and catches a hardcoded path or a literal naming one
    folio.
 2. Create a **work item** for the authoring work, parented to the feature's epic.

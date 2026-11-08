@@ -1,7 +1,7 @@
 ---
 name: placement
 description: >
-  Establish where a new node belongs BEFORE you create it — which instance,
+  Establish where a new node belongs BEFORE you create it — which layer,
   which declared graph, which kind of node, and which of the two "stub"
   conventions applies. Read before adding a skill, role, actor, workflow,
   decision table, schema, tool or content object, and before writing any
@@ -13,7 +13,7 @@ allowed-tools: Read Grep Glob Bash
 
 **One question, answered before the first file exists:**
 
-> **Which instance owns this, which of its declared graphs does it go in, and
+> **Which layer owns this, which of its declared graphs does it go in, and
 > what kind of node is it?**
 
 An agent that starts writing and works the answer out afterwards produces a
@@ -26,7 +26,7 @@ later steps are meaningless if an earlier one is a guess.
 
 ---
 
-## Step 1 — which instance?
+## Step 1 — which layer?
 
 **`folio-assistant` is the platform, not the content.** It holds skills,
 schemas, the pipeline and the MCP server an agent uses to author a *folio* — a
@@ -57,15 +57,15 @@ literal in a script and never a file the platform has to go and find. A Lake
 prefix, for example, is read from `lakefile.toml`, and left **unprefixed** when
 no lakefile names one, because a wrong namespace is worse than none.
 
-**Do not infer the instance from the directory you are standing in.** Read the
+**Do not infer the layer from the directory you are standing in.** Read the
 declaration at the repository root, carrying `name`, `stub` and
 `directories`. `basename($PWD)` is not an identity — a repo cloned into a
 differently-named directory resolves to nothing, and reports no config rather
 than an error.
 
-## Step 2 — which declared graph, and where does that instance put it?
+## Step 2 — which declared graph, and where does that layer put it?
 
-**A node's location is not a path you memorise.** Every instance declares the
+**A node's location is not a path you memorise.** Every layer declares the
 directories it scans in `<name>.json`, and each entry names the **kind of
 graph** it holds — `cat-harness` (skills, roles, workflows, decisions,
 requirements, permissions), `schemas`, `tools`, `qa`, `beans`, `folio` and the
@@ -76,9 +76,9 @@ rest. The vocabulary is open.
   resolve the graph from the declaration (`readDeclaration` in
   `schemas/kg/cat-harness.ts`) and read the directory it names.
 - **In *this* repository the `skills` graph's path is `skills/`.** That is
-  a fact about this instance, not a convention you may carry to another one.
+  a fact about this layer, not a convention you may carry to another one.
   Ids are stable across a relocation; paths are not.
-- **Overrides match on the entry's `id`, never on its `path`.** An instance
+- **Overrides match on the entry's `id`, never on its `path`.** A layer
   that sites its knowledge graph elsewhere redeclares the same id with a
   different path. Matching on path makes two knowledge graphs out of one
   relocation, and every consumer then scans a directory that is not there.
@@ -103,9 +103,9 @@ that identifies the class and why `fsh-guts` is the tempting wrong answer
 
 **WHOSE `docs/` comes first, and it is Step 1's question again.** Detailed
 information, design and planning for a harness, feature or tool go into that
-harness's `docs/`: `docs` is a declared graph, and the instance that owns the
+harness's `docs/`: `docs` is a declared graph, and the layer that owns the
 feature owns the record of why it is shaped that way. A feature's reasoning
-filed in the wrong instance's `docs/` reads fine and is unreachable from the
+filed in the wrong layer's `docs/` reads fine and is unreachable from the
 place that needs it.
 
 **Then where inside it**, which is this skill's question and not
@@ -145,10 +145,10 @@ context is a rule `skill_fetch` will never serve.
 
 ### Inheritance
 
-An instance **inherits its dependencies' directories and skills**, deepest
+A layer **inherits its dependencies' directories and skills**, deepest
 dependency first and root last so the root wins: `declarationChain` +
 `resolveDirectories` for directories, and `resolveSkillDirs` in
-`schemas/kg/harness-config.ts` for the cross-instance skill overlay. So a
+`schemas/kg/harness-config.ts` for the cross-layer skill overlay. So a
 skill placed in the platform reaches a downstream folio through its
 declaration; never copy a skill into the folio, which mints a second copy free
 to drift.
@@ -214,7 +214,7 @@ one, and register the skill in its package manifest.
 ### The artefact stub — resolve it, never compose it
 
 The declaration carries `stub`, the filename stem of **every artefact this
-instance publishes**. `artefactStub()` is the one function that answers it
+layer publishes**. `artefactStub()` is the one function that answers it
 (`stub` when declared, otherwise `name`), and `renderingPath()` / `siteDir()`
 derive the published paths from it:
 
@@ -223,7 +223,7 @@ derive the published paths from it:
 <base>/<name>/<stub>.schema.json     <base>/<stub>/     docs/<stub>/
 ```
 
-The graph document is under the instance's own directory, the host's
+The graph document is under the layer's own directory, the host's
 included: one rule for every layer, with subjects beside their document
 ([`instance-publication`](instance-publication.md) §"Which base an `@id` is
 minted against").
@@ -231,7 +231,7 @@ minted against").
 **Compose nothing; resolve everything.** A hand-written path such as `/kg/`
 404s, because the real path comes out of `renderingPath`.
 
-**A naive guess is not merely fragile, it is wrong on real instances.** WHO's
+**A naive guess is not merely fragile, it is wrong on real layers.** WHO's
 SMART Base IG publishes under a stub shorter than its repository name, so "the stub is the repo name"
 fails on the reference implementation the convention was modelled on.
 
@@ -243,7 +243,7 @@ fetch those you have read the declaration that names them.
 ## Step 5 — when you cannot tell, stop and ask
 
 Placement has **three** states, like everything else here: **determined**,
-**determined-empty** (this instance genuinely has no such directory — a real
+**determined-empty** (this layer genuinely has no such directory — a real
 answer), and **could-not-determine**. The third is never to be rendered as the
 first.
 
@@ -292,7 +292,7 @@ pair ([`readme-sections`](../../ui/ui-core/readme-sections.md)).
 Before you create a skill, role, actor, workflow, decision, schema, tool or
 content object:
 
-1. **Instance** — platform, folio, or the folio's config? Does anything in it
+1. **Layer** — platform, folio, or the folio's config? Does anything in it
    name one folio?
 2. **Graph** — which declared entry, resolved from `<name>.json` by **id**?
    Not a path you remember.

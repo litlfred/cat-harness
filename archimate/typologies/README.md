@@ -13,6 +13,6 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `archimate-typologies`
 
 | file | what it is | used by |
 |---|---|---|
-| [`archimate.json`](archimate.json) | ArchiMate models an instance holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `a… |  |
+| [`archimate.json`](archimate.json) | ArchiMate models a layer holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archi… |  |
 
 <!-- kg:subgraph:end -->

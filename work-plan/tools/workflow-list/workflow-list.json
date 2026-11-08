@@ -3,7 +3,7 @@
   "tool": {
     "id": "workflow-list",
     "title": "List processes",
-    "description": "The BPMN processes this instance defines, and the instances currently open against them.",
+    "description": "The BPMN processes this layer defines, and the layers currently open against them.",
     "install": {
       "none": true
     },
@@ -23,7 +23,7 @@
           "schema": {
             "$type": "Markdown"
           },
-          "description": "Each process, its policy, and its open instances."
+          "description": "Each process, its policy, and its open layers."
         }
       ]
     },

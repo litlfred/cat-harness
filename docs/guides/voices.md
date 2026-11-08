@@ -23,17 +23,17 @@ Voices are **editorial overlays**, not content adapters or project profiles. The
 
 This layer ships the **mechanism** — the `folio-voice-skill/v1` shape, the
 authoring and review skills, the BPMN process and the viewer — and **no
-voice**. A voice is shipped by the instance that owns the register it encodes:
-a house style by the instance that holds that organisation's style manuals, an
+voice**. A voice is shipped by the layer that owns the register it encodes:
+a house style by the layer that holds that organisation's style manuals, an
 exposition standard by the science layer that holds its exemplar paper. Each of
-those instances documents its own voices beside their `SKILL.md` and
+those layers documents its own voices beside their `SKILL.md` and
 `voice.json`, and links down to this page for the mechanism.
 
 This page does not list them: every one sits **above** this layer, so a link
 from here would point up the dependency arrow, and a list here would be a
 second catalogue free to drift from the first. The catalogue is the
 interactive viewer (`bun run cat voices:viz`, published at
-`cat-harness/docs/cat-harness/voices/`), which re-reads every instance that
+`cat-harness/docs/cat-harness/voices/`), which re-reads every layer that
 declares a `voices` graph on each run; `skill_list` answers the same question
 from an agent.
 

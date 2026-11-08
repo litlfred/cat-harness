@@ -36,7 +36,7 @@ preferences **first**, before the work plan.
 | 1 | the person's **stated preference** | `cat-harness/memory/interaction.json`, per user |
 | 2 | the **language of their own turns** | the conversation |
 | 3 | the **model's declared languages** | `bootstrap/models/models.json` |
-| 4 | the instance's **`defaultLocale`** | its `translation-sources` declaration (`defaultLocale`, default `en`) |
+| 4 | the layer's **`defaultLocale`** | its `translation-sources` declaration (`defaultLocale`, default `en`) |
 
 **A stated preference wins outright.** It is the only input that is a
 *decision* rather than a signal, and a person who has said it once must not be
@@ -63,8 +63,8 @@ what you write into the repository.
 | artefact | language |
 |---|---|
 | chat replies, questions, status reports | **the determination** |
-| commit messages, PR bodies, issue comments | the instance's source language |
-| code comments, skills, work items, schemas | the instance's source language |
+| commit messages, PR bodies, issue comments | the layer's source language |
+| code comments, skills, work items, schemas | the layer's source language |
 | folio CONTENT | [`translation-manager`](../../library/library-core/translation-manager.md), not this skill |
 
 The reason is the reader: a commit message or issue comment is read by

@@ -7,11 +7,11 @@ description: "Why each exists, which way its arrow points, and the options for m
 
 > **Status, 2026-10-01: option A is built** (placement PR0, work item `ejye`).
 > Steps 1–3 landed together: folio-assistant-sci declares `skills/lean/` and
-> `skills/data/` from within its own `skills/skills.json`; the root instance
-> declares Group 1 and `needs` every staged instance; cat-harness declares no
+> `skills/data/` from within its own `skills/skills.json`; the root layer
+> declares Group 1 and `needs` every staged layer; cat-harness declares no
 > `scope: "repository"` entry; corpus-wide tools ask
 > `checkoutDirectories` / `corpusDirectoriesForGraph`; and
-> `check:instance-graph` refuses a new mirror or an unstaged instance. The
+> `check:instance-graph` refuses a new mirror or an unstaged layer. The
 > falsifier below is kept as a test
 > (`scripts/tests/placement-pr0-mechanisms.test.ts`). The rest of this page
 > is the analysis as it stood when the option was chosen.
@@ -43,16 +43,16 @@ flag.
 
 **Why they exist.** They are the harness's own state and context — the work
 plan, agent memory, the interaction profile — and they live at the root because
-they belong to the **checkout**, shared by every instance in it, not to the
+they belong to the **checkout**, shared by every layer in it, not to the
 `cat-harness/` subtree. Nothing else declares them, so these are **not
 duplicates**: they are the only declaration these graphs have.
 
-**The issue is location, not duplication.** The root instance
+**The issue is location, not duplication.** The root layer
 (`folio-assistant.json`, the checkout) declares only `uploads` and `root-tools`.
 The directories that are physically the checkout's are declared by the
 platform, which is why they need the repository scope at all.
 
-## Group 2 — another instance's content (16)
+## Group 2 — another layer's content (16)
 
 | owner (its `needs`) | cat-harness id → owner's id | kinds | `dependents` (cat-harness / owner) |
 |---|---|---|---|
@@ -92,7 +92,7 @@ entry; 4 disagree with the owner on `dependents`. One physical directory
 therefore appears as two `Directory` nodes with two ids in two exported
 documents.
 
-## Group 3 — declared only by cat-harness, owned by an instance (1)
+## Group 3 — declared only by cat-harness, owned by a layer (1)
 
 `folio-assistant-sci-lean-skills` → `folio-assistant-sci/skills/lean/`, kind
 `skills`. folio-assistant-sci does **not** declare it. Nothing else gives it a
@@ -110,20 +110,20 @@ dependents, which is not depending on them.
 
 | | what changes | arrow | cost | risk |
 |---|---|---|---|---|
-| **A. The checkout aggregates** | The root instance (`folio-assistant.json`) takes the aggregator role: it `needs` every instance it stages, and declares Group 1 as its own (they are at its root). Corpus-wide tools resolve a kind over the **root's dependency overlay** (`orderedDependencies` + each dependency's own directories), the mechanism `resolveSkillDirs` already uses for skills. cat-harness keeps only `cat-harness/…`. Group 3 moves into folio-assistant-sci's declaration. | **correct**: the checkout depends on what it contains; nobody depends on the checkout; the platform names no folio | one helper (`checkoutDirectoriesForGraph(kind)`), then the ~25 corpus-wide call sites switch to it; the 24 mirrors are deleted; Group-1 id references are unchanged (same ids, new declarer) | the largest change; a consumer that SHOULD be instance-scoped but was silently aggregating shows up as a behaviour change — which is the point, and each one is a finding |
+| **A. The checkout aggregates** | The root layer (`folio-assistant.json`) takes the aggregator role: it `needs` every layer it stages, and declares Group 1 as its own (they are at its root). Corpus-wide tools resolve a kind over the **root's dependency overlay** (`orderedDependencies` + each dependency's own directories), the mechanism `resolveSkillDirs` already uses for skills. cat-harness keeps only `cat-harness/…`. Group 3 moves into folio-assistant-sci's declaration. | **correct**: the checkout depends on what it contains; nobody depends on the checkout; the platform names no folio | one helper (`checkoutDirectoriesForGraph(kind)`), then the ~25 corpus-wide call sites switch to it; the 24 mirrors are deleted; Group-1 id references are unchanged (same ids, new declarer) | the largest change; a consumer that SHOULD be instance-scoped but was silently aggregating shows up as a behaviour change — which is the point, and each one is a finding |
 | **B. `reads` list on cat-harness** | `reads: ["who-iris#library", …]` replaces the 16 mirrors; resolved through each owner's declaration, so ids and kinds cannot drift | still upward, but explicit | small: one field, one resolver | the platform still names every folio; a new folio must edit the platform to be seen |
 | **C. Pointer entries** | each mirror becomes `ownedBy: "<instance>#<id>"`, no path/kind restated | still upward | smallest | same as B, plus one entry per directory remains |
 | **D. Physical relocation** | move Group 1 into `cat-harness/` | n/a | `beans` CLI config, every state path, 72+ references | churn with no arrow benefit; Group 2 unaffected |
 
 **Recommendation: A**, in three separately reviewable steps: (1) Group 3 —
 folio-assistant-sci declares its own `skills/lean/` (tiny, independent); (2)
-Group 1 — the root instance declares the checkout-level state it physically
+Group 1 — the root layer declares the checkout-level state it physically
 holds (ids unchanged); (3) Group 2 — the overlay helper, the call-site switch,
 the mirrors removed, and a check that refuses a `scope: repository` entry
-whose path another instance's declaration covers.
+whose path another layer's declaration covers.
 
 **Falsifier for A.** If a corpus-wide tool must run from a checkout whose root
-instance does NOT stage the other instances — e.g. cat-harness split into its
+layer does NOT stage the other layers — e.g. cat-harness split into its
 own repository and run against one folio — the root overlay is that folio's
 dependencies only, and the tool sees less than today. That is arguably correct
 (it sees what that checkout contains), but it is a behaviour change to confirm

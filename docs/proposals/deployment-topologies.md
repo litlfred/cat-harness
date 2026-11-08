@@ -11,7 +11,7 @@ summary: >-
 # Deployment topologies and operating modes
 
 > **Editorial correction, 2026-09-23.** This proposal was written while the
-> instance declaration was a fixed `harness.json`; it is `<name>.json` since
+> layer declaration was a fixed `harness.json`; it is `<name>.json` since
 > the 2026-09-21 split (`<name>.config.json` is the config beside it). The
 > references below were updated so a reader is not sent to a file that does not
 > exist — the proposal's argument is untouched, and only the filename moved.
@@ -71,7 +71,7 @@ needs a new entry, combinatorially, forever.
 So this proposal models two orthogonal things and derives the named scenarios
 from their product:
 
-- a **topology** — WHERE the instance and its artefacts live;
+- a **topology** — WHERE the layer and its artefacts live;
 - an **operating mode** — WHAT the harness is doing.
 
 A mode runs *on* a topology. "Self-sovereign cloud with closed models" is not an

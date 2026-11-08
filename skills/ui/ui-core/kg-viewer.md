@@ -8,7 +8,7 @@ description: >
 
 # Rendering the knowledge graph
 
-`kg-export` serialises the instance's graph to one JSON-LD document. This skill
+`kg-export` serialises the layer's graph to one JSON-LD document. This skill
 is **making that document legible to a person.** The two are separate
 capabilities — serialising is mechanical and
 host-agnostic, rendering is a design problem, and posting the result to a host
@@ -20,7 +20,7 @@ The viewer must fetch the graph document, and that document is named after the
 repository — `<stub>.jsonld`, never a generic `kg.json`. A committed page would
 have to either:
 
-- **Hardcode one instance's stub**, so a platform script works in exactly one
+- **Hardcode one layer's stub**, so a platform script works in exactly one
   repository; or
 - **Compose the name at runtime** from the URL or a convention, which breaks
   the "resolve, do not compose" rule: a consumer should never have to
@@ -31,13 +31,13 @@ page resolves nothing.
 
 **It fetches the document relative to its own location.** The page is
 `<site>/<stub>/index.html` and reads `../<name>/<stub>.jsonld` (the document's
-own path, under its instance's directory, the host's included), so the same
+own path, under its layer's directory, the host's included), so the same
 bytes work on the canonical site and under `branches/<slug>/` with no
 configuration, no `--base-url`, and no build-time branch. A staging build that
 needed a different page would test something other than what ships. Which
 documents the site publishes, and where:
 [`instance-publication`](../../kg/kg-core/instance-publication.md) §"What each
-instance publishes".
+layer publishes".
 
 ## No dependencies, and that is a requirement rather than a preference
 
@@ -96,8 +96,8 @@ Four rules, for every viewer that shows addressable things:
   computed by `visualiserRoute`), never authored into the asset. If an index of renderings is useful, generate it; never store it in
   the asset. The library does exactly this: each entry in the GENERATED
   projection (`assets/library/index.json`) carries `view` — the site-root path
-  of the page that renders it (another instance's declared root route for an
-  entry that instance renders; else the entry's own library page) — and the
+  of the page that renders it (another layer's declared root route for an
+  entry that layer renders; else the entry's own library page) — and the
   row's slug links there, so clicking it opens the entry's visualiser.
 
 Reference implementation: `gen-library-viz.ts` (`viewerHtml`, `VIEWER_JS`,
@@ -111,7 +111,7 @@ module so a test runs the same text the page runs.
 ## Do not draw the whole graph
 
 **The instinct is a force-directed node-link diagram of everything. Resist it.**
-At the size of a real instance (on the order of a thousand nodes) it renders
+At the size of a real layer (on the order of a thousand nodes) it renders
 as a hairball that answers no question, while costing a layout library and a
 frame budget.
 
@@ -139,8 +139,8 @@ though it were all part of the graph. Two things the export reports and the view
   and `kg-export` exits non-zero rather than publishing a new one. Mark them in
   the detail panel; do not silently show them as ordinary properties. **Keep
   the marking even while the list is empty** — it is the guard that makes the
-  next one visible, and a viewer for this instance is a viewer for any
-  instance, including one whose export is older or whose
+  next one visible, and a viewer for this layer is a viewer for any
+  layer, including one whose export is older or whose
   context is thinner.
 - **`danglingLinks`** and **`problems`** — a link with no target node, and a
   source that could not be read.
@@ -148,7 +148,7 @@ though it were all part of the graph. Two things the export reports and the view
 ## Three states, on the page as everywhere
 
 A document that **could not be fetched** is never drawn as an empty graph. On
-screen the two are identical and they mean opposite things: "this instance has
+screen the two are identical and they mean opposite things: "this layer has
 no nodes" versus "I could not read it". Say which. The same applies to a
 property that is absent versus one that is present and empty.
 

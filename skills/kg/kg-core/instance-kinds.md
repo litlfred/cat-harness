@@ -1,26 +1,26 @@
 ---
 name: instance-kinds
 description: >
-  How to make a new KIND of harness instance — choosing the prefix family, the
+  How to make a new KIND of harness layer — choosing the prefix family, the
   keep-the-kind's-name default and the owner's right to decline it, which
   inherited files the new owner may repoint, and what a new GRAPH typology must
-  declare. Read before naming a new instance, before adding a value to the
+  declare. Read before naming a new layer, before adding a value to the
   graph-typology registry, and before building a visualiser. Carries the test that
   usually says "this is not a new kind".
 consulted: true
 allowed-tools: Read Grep Glob Bash
 ---
 
-# Instance kinds — naming one, and what a new kind must declare
+# Layer kinds — naming one, and what a new kind must declare
 
 Two different things are called a "kind" here:
 
 | | what it is | where it is declared |
 |---|---|---|
-| **instance kind** | what a repository *is* — `cat-harness`, `bootstrap`, the IRIS replica. It has a name, a prefix family, a `<name>.json`, and files it inherits from whatever it was bootstrapped off | a `<name>.json` at the instance root |
+| **layer kind** | what a repository *is* — `cat-harness`, `bootstrap`, the IRIS replica. It has a name, a prefix family, a `<name>.json`, and files it inherits from whatever it was bootstrapped off | a `<name>.json` at the layer root |
 | **graph typology** | what a declared DIRECTORY holds — `tools`, `docs`, `beans`, `library`. A value in the graph-typology registry, with `renderable`, `holds` and a summary | `defaultGraphTypologies` in `schemas/kg/cat-harness.ts`, or a registration from a layer that owns it |
 
-An instance kind gets a **name**. A graph typology gets a **declaration**.
+A layer kind gets a **name**. A graph typology gets a **declaration**.
 
 ---
 
@@ -47,7 +47,7 @@ So a visualiser is a **Tool node** in the existing `tools` graph that emits a
 
 A registry value is cheap to add and expensive to remove: every consumer that
 switches on a kind gains a case, `check:graph-typology-work` gains a row, and
-the JSON-LD vocabulary gains a term that downstream instances inherit. A kind
+the JSON-LD vocabulary gains a term that downstream layers inherit. A kind
 that describes an activity rather than a shape cannot tell a consumer what it
 will find in the directory.
 
@@ -65,28 +65,28 @@ All three, not a majority:
 
 ---
 
-## Naming an instance — the prefix families
+## Naming a layer — the prefix families
 
-A prefix names the **layer** or the **owner** an instance belongs to.
+A prefix names the **layer** or the **owner** a layer belongs to.
 
-| prefix | what it marks | instances here |
+| prefix | what it marks | layers here |
 |---|---|---|
 | `cat-` | the agentic-harness layer | `cat-harness`, `bootstrap` |
 | `folio-assistant-` | the content/core layer | the content core, the science layer |
 | `who-` | WHO material | the IRIS replica |
 | `litlfred-` | the owner's own | — none yet |
 
-Some instances carry no prefix (`agent-skills`, `detangle`, `kg-navigation`,
+Some layers carry no prefix (`agent-skills`, `detangle`, `kg-navigation`,
 `large-datasets`). An unprefixed name is undecided, not wrong, and is not a
 finding. Do not sweep them into a family to make the table tidy: a rename
-changes what every artefact written into the instance inherits.
+changes what every artefact written into the layer inherits.
 
 **The `cat-` prefix reaches the harness layer and stops there.** It does not
 extend to `folio-assistant-*`.
 
 ### The default is to keep the kind's name
 
-A new instance of a kind **inherits that kind's name** unless somebody chooses
+A new layer of a kind **inherits that kind's name** unless somebody chooses
 otherwise. That is the default, not the rule.
 
 ### And the owner may decline the convention
@@ -95,7 +95,7 @@ otherwise. That is the default, not the rule.
 it is neither, by the owner's decision.
 
 > **Do not "fix" `qou`** or `folio-assist-sci`. A name that does not match the
-> table is a decision until somebody says otherwise, and renaming an instance
+> table is a decision until somebody says otherwise, and renaming a layer
 > changes what every artefact written into it inherits, which cannot be fixed
 > later (`bootstrap/README.md`, §2).
 
@@ -173,22 +173,22 @@ translation overlay, it is describing authored CONTENT and is a `folio`.
 
 ---
 
-## What a new instance inherits, and which of it is yours to edit
+## What a new layer inherits, and which of it is yours to edit
 
-A new instance kind is bootstrapped from an existing one and arrives carrying
-that instance's files. Some of them are **yours**.
+A new layer kind is bootstrapped from an existing one and arrives carrying
+that layer's files. Some of them are **yours**.
 
 ### `bootstrap/README.md` is the first one
 
 It is the page a Bootstrapping Agent reads before it knows anything, and it is
 written for **this** repository: its links into `../cat-harness/` (the schemas
 for DAK blocks, roles, the harness declaration, skill packages and tools, and
-`processes`) are all **term definitions**. In a new instance kind not built on
+`processes`) are all **term definitions**. In a new layer kind not built on
 `cat-harness`, those definitions point into a harness its reader is not using.
 
 **So repointing it is expected, not a modification of platform code.** Point
 the links at whatever layer defines *your* vocabulary, or at your own
-instance kind's schemas. Keep the user-scenario structure — persona, user
+layer kind's schemas. Keep the user-scenario structure — persona, user
 scenario, business process, functional requirement — because that is the
 formalism the page is written in and the bootstrap process reads it; change
 only where the terms resolve.
@@ -206,7 +206,7 @@ only where the terms resolve.
 | what you changed | run |
 |---|---|
 | added a graph typology | `bun run cat check:graph-typology-work`, `bun run cat check:harness-dirs` |
-| added or renamed an instance | `bun run cat check:instance-config`, `bun run cat check:subgraph-coverage` |
+| added or renamed a layer | `bun run cat check:instance-config`, `bun run cat check:subgraph-coverage` |
 | edited this or any skill | `bun run cat check:skills` |
 | anything | `bun run cat gates` |
 
@@ -225,7 +225,7 @@ not the gate set.
 
 ## Related
 
-- [`harness-requirements`](harness-requirements.md) — what an instance OWES for
+- [`harness-requirements`](harness-requirements.md) — what a layer OWES for
   every directory it declares.
 - [`content-context-and-state-graphs`](content-context-and-state-graphs.md) —
   the `holds` axis in full, with every existing kind classified and its reason.

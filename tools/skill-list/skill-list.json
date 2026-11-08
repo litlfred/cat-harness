@@ -3,7 +3,7 @@
   "tool": {
     "id": "skill-list",
     "title": "List skills",
-    "description": "Every skill this instance can resolve, with its one-line summary. The entry point AGENTS.md sends an agent to first.",
+    "description": "Every skill this layer can resolve, with its one-line summary. The entry point AGENTS.md sends an agent to first.",
     "install": {
       "none": true
     },

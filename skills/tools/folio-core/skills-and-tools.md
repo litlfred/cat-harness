@@ -148,12 +148,12 @@ instead of a repository-wide yes/no that no reader of a skill can see.
 ## The harness assumes no MCP — and knows how to emit one
 
 **`agentic-harness` must work with no MCP server running.** Everything it needs
-is files in directories the instance declares: skills in the `kg` graph, Tool
+is files in directories the layer declares: skills in the `kg` graph, Tool
 nodes beside them, the work plan in the `beans` graph. An agent with nothing but
 a filesystem and `<name>.json` can read all of it.
 
 MCP is **acknowledged as a future transport, not assumed as the present one.**
-Where a downstream instance runs a server, `skill_list` / `skill_fetch` /
+Where a downstream layer runs a server, `skill_list` / `skill_fetch` /
 `work_plan_prime` are a convenience over the same files — and `ToolDefinition`
 accordingly declares `invoke.mcp` as **one optional arm** beside `shell` and
 `container`. A Tool whose *only* invocation is an MCP call is not usable by the
@@ -184,11 +184,11 @@ the result in order to run.
 It is what makes the harness bootstrappable: the layer that defines what a Tool *is* cannot require a tool
 server to read its own definitions without arguing in a circle. It is also why
 sovereign-compute and air-gapped operation are reachable later without a second
-design — an instance with no server loses a transport, not a capability.
+design — a layer with no server loses a transport, not a capability.
 
 So when this skill says "reach a Tool through the graph", the floor is: read
 `<name>.json`, find the `kg` entry, open the directory. Anything richer
-is an optimisation an instance may offer.
+is an optimisation a layer may offer.
 
 ## GitHub is a Tool node, not a layer
 
@@ -271,7 +271,7 @@ not fine for the only statement of what to do to be `gh pr create`.
    [`untrusted-input`](../../conduct/conduct-core/untrusted-input.md); `check:tools` fails CI on a
    violation.
 3. **Say a mechanism exists and where to find it** — never inline it. A Tool is
-   reached the same way a skill is: resolve the `kg` graph from the instance's
+   reached the same way a skill is: resolve the `kg` graph from the layer's
    declaration and read from the directory it names. Not a remembered
    path, and — see below — not necessarily a tool call.
 4. **Say when each Tool applies** if there is more than one, because choosing

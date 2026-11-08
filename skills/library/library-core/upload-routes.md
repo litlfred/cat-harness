@@ -46,7 +46,7 @@ you run them.
 
 | | |
 |---|---|
-| put it in the **declared** queue of the instance that will own it | see §"Which queue" |
+| put it in the **declared** queue of the layer that will own it | see §"Which queue" |
 | run the generators the file stales | `uploads/README.md` is generated and lists **every file**, so any addition stales it. `bun run cat readme:subgraphs`, then `bun run cat gates` for the rest |
 | open a PR | so CI judges it, and so a sibling session can see the queue grew |
 | record where it came from | the commit message is the only place this route has for it |
@@ -59,7 +59,7 @@ handing over a file, not an instruction to publish it.
 
 GitHub's **"Add files via upload"**. Never write the URL by hand — run
 `bun run cat-harness-tools/scripts/upload-url.ts [branch]`, which composes it from
-the declaration. The declared path `uploads/` is relative to the *instance*,
+the declaration. The declared path `uploads/` is relative to the *layer*,
 and a forge URL needs it relative to the *repository*.
 
 There is no working tree, so there is **no pre-commit hook and no generator
@@ -119,22 +119,22 @@ the list:
 - **cleaning the queue.** `uploads/` is the raw record of what was handed over
   and a derived `library/` entry does not replace it.
 
-## Which queue — there can be more than one, and they belong to different instances
+## Which queue — there can be more than one, and they belong to different layers
 
-A checkout that includes several instances can carry several `uploads` queues
-— for example `uploads/` declared by the instance at the repository root and
-`cat-harness/uploads/` declared by the `cat-harness` instance. They are not one
-directory declared twice: they are two instances' queues that share an id.
+A checkout that includes several layers can carry several `uploads` queues
+— for example `uploads/` declared by the layer at the repository root and
+`cat-harness/uploads/` declared by the `cat-harness` layer. They are not one
+directory declared twice: they are two layers' queues that share an id.
 
 So **"put it in `uploads/`" is not an instruction** — it does not say whose.
-Resolve the queue from the declaration of the instance that will own the
+Resolve the queue from the declaration of the layer that will own the
 material, which is what `queueRepoRelative` in `scripts/upload-url.ts` does and
-what the `upload-url` Tool exposes. Pass that instance's root; do not paste a
+what the `upload-url` Tool exposes. Pass that layer's root; do not paste a
 path.
 
 ## Unsettled
 
-- **Which instance owns a given file.** Nothing states the rule for choosing
+- **Which layer owns a given file.** Nothing states the rule for choosing
   between two declared queues. Ask, or follow whatever the surrounding work
   already uses.
 - **Whether an arrival without an intake record should be refused.** A gate

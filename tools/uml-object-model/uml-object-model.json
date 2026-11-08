@@ -30,7 +30,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "The object-model diagram, in the instance's declared uml directory."
+          "description": "The object-model diagram, in the layer's declared uml directory."
         }
       ]
     },

@@ -3,14 +3,14 @@ name: mcp-assembly
 description: >
   Compose several Tool nodes into one MCP service — naming, collisions,
   grouping and versioning. Read when a service will expose more than one tool,
-  or when two instances' tools land in the same namespace.
+  or when two layers' tools land in the same namespace.
 ---
 
 # MCP assembly — many Tools, one service, one namespace
 
 [`mcp-projection`](mcp-projection.md) maps **one** Tool node to one MCP tool.
 This is what happens when there are several, which is the normal case and where
-the problems are: a flat namespace shared by tools from an instance, its
+the problems are: a flat namespace shared by tools from a layer, its
 dependencies, and whatever else the agent has mounted.
 
 ## Naming — the model reads these, so they are an interface
@@ -47,19 +47,19 @@ about. Refuse, name both contributors, and make somebody choose.
 reached twice through a dependency graph is a no-op, not a collision. Identical
 means same `id`, same `io`, same `invoke` — not merely the same name.
 
-## Prefixing across instances
+## Prefixing across layers
 
-An instance inherits its dependencies' Tool nodes the same way it inherits
-their skills. When two *different* instances contribute a tool of the same
+A layer inherits its dependencies' Tool nodes the same way it inherits
+their skills. When two *different* layers contribute a tool of the same
 name, the collision rule above applies — but the fix is a **declared prefix on
-the contributing instance**, not an ad-hoc rename at the consumer:
+the contributing layer**, not an ad-hoc rename at the consumer:
 
 ```
 fa_bean_claim        # folio-assistant's
 qou_bean_claim       # the folio's, if it genuinely has its own
 ```
 
-A prefix belongs to the instance and is written down once, so the same tool has
+A prefix belongs to the layer and is written down once, so the same tool has
 the same name everywhere it appears. A consumer that renames what it imports
 produces a namespace nobody else's documentation matches.
 

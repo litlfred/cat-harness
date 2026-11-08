@@ -34,7 +34,7 @@ so `package.json` is declared as an **authored Knowledge Graph asset**
 that defines package identity, exports, dependencies, scripts, and the tarball
 inclusion whitelist (`files` array).
 
-Each instance that publishes an npm package declares `package.json` under `assets`
+Each layer that publishes an npm package declares `package.json` under `assets`
 in its `<instance>.json`:
 
 ```json
@@ -52,7 +52,7 @@ in its `<instance>.json`:
 - **Verification at commit and mount time**: `check:declared-assets` verifies
   that every declared asset exists on disk.
 - **Remote mount resolution**: `remote-mount.ts` and `mount-from-lock.ts` check out,
-  lay down, and verify declared instance assets so that mounted dependencies carry
+  lay down, and verify declared layer assets so that mounted dependencies carry
   their package identity.
 - **Single source of packaging truth**: `package.json`'s `files` field acts as the
   authoritative whitelist for what is bundled into the distribution tarball.
@@ -155,7 +155,7 @@ graph views:
 #### 1. Unhydrated source graph view
 The authored source files as they exist in the repository:
 - `package.json` pre-packaging manifest.
-- `<instance>.json` instance declaration.
+- `<instance>.json` layer declaration.
 - Authored source directories: `skills/` (markdown instructions), `schemas/` (Zod/TS definitions),
   `processes/` (BPMN diagrams), `methodologies/`, text-based metadata.
 - **Binary media assets excluded**: PNGs, JPGs, PDFs and figures under `library/` and `uploads/`

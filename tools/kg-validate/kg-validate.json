@@ -49,7 +49,7 @@
       "kg-navigation"
     ],
     "selection": {
-      "when": "Whenever a node's shape matters and you are not in this repository's CI: `tools/` is an INHERITED declaration and `.github/workflows/` is not, so a downstream instance gets this and none of the CI gates.",
+      "when": "Whenever a node's shape matters and you are not in this repository's CI: `tools/` is an INHERITED declaration and `.github/workflows/` is not, so a downstream layer gets this and none of the CI gates.",
       "limits": "It can only check a kind that declares a validator; a node of any other kind comes back UNDETERMINED and it exits non-zero saying so. `bun run cat check:kind-validators` reports the coverage.",
       "cost": "One module import per kind. Nothing to install, no network."
     },

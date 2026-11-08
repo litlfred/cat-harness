@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Sub-KG lifecycle: a knowledge graph staged as a directory inside a harnessed
-  repository, declared as its own instance, that may later leave whole for a
+  repository, declared as its own layer, that may later leave whole for a
   repository of its own.
 
   Source of truth: this file. The SVG under docs/assets/img/workflows/ is
   generated from it by `bun run cat render:bpmn`; never hand-edit the SVG.
 
   The light sibling of kg-separation.bpmn. That process splits a graph into a
-  content repository and a tools repository; this one moves a DATA instance
+  content repository and a tools repository; this one moves a DATA layer
   whole. The two share their seeding gateway: GW_SeedReady here is the same
   decision table, decisions/seed-readiness-gate.dmn, and returns the same three
   outcomes.
@@ -36,9 +36,9 @@
     <bpmn:participant id="Participant_Process_SubKgLifecycle" name="A sub-KG is staged in place, then leaves for its own repository" processRef="Process_SubKgLifecycle"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_SubKgLifecycle" name="A sub-KG is staged in place, then leaves for its own repository" isExecutable="false">
-    <bpmn:documentation>Create a knowledge graph inside a harnessed repository as an instance of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository. Declared in place with a planned `repository` and a `livesAt` saying where it sits today; staged by one import seam (`&lt;name&gt;/platform.ts`), the separation guard and a self-contained rehearsal; then, each behind an explicit owner confirmation, the repository is created, the staged contents are copied in with their history, the declaration is re-pointed, a fresh clone is verified, and the in-repo copy is frozen in the kept trashcan.
+    <bpmn:documentation>Create a knowledge graph inside a harnessed repository as a layer of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository. Declared in place with a planned `repository` and a `livesAt` saying where it sits today; staged by one import seam (`&lt;name&gt;/platform.ts`), the separation guard and a self-contained rehearsal; then, each behind an explicit owner confirmation, the repository is created, the staged contents are copied in with their history, the declaration is re-pointed, a fresh clone is verified, and the in-repo copy is frozen in the kept trashcan.
 
-The light sibling of kg-separation, which splits a graph into a content and a tools repository; this moves a data instance whole, and shares kg-separation's seeding gateway and decision table.</bpmn:documentation>
+The light sibling of kg-separation, which splits a graph into a content and a tools repository; this moves a data layer whole, and shares kg-separation's seeding gateway and decision table.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
@@ -103,7 +103,7 @@ The light sibling of kg-separation, which splits a graph into a content and a to
       <bpmn:outgoing>F2</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_Grow" name="2 · Grow it in place">
-      <bpmn:documentation>The content type's own authoring process runs here, against the staged instance. Many sub-KGs never leave; this task can last as long as the graph does.</bpmn:documentation>
+      <bpmn:documentation>The content type's own authoring process runs here, against the staged layer. Many sub-KGs never leave; this task can last as long as the graph does.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sub-kg-lifecycle"/>
       </bpmn:extensionElements>
@@ -127,7 +127,7 @@ The light sibling of kg-separation, which splits a graph into a content and a to
       <bpmn:documentation>Move what is generic into the harness below before the seam is closed, and consolidate what the sub-KG needs into the harness it instantiates. Wrong-direction edges hide in declarations and data as well as imports: run check:import-direction, check:reference-direction and check:process-bindings.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="graph-detanglement"/>
-        <cat-harness.processes:no-call reason="Uses the detanglement practice's direction checks on an instance already declared in place. graph-detanglement.bpmn starts from declaring a tangled sub-graph, which stage 1 of this process has already done."/>
+        <cat-harness.processes:no-call reason="Uses the detanglement practice's direction checks on a layer already declared in place. graph-detanglement.bpmn starts from declaring a tangled sub-graph, which stage 1 of this process has already done."/>
       </bpmn:extensionElements>
       <bpmn:incoming>F5</bpmn:incoming>
       <bpmn:outgoing>F6</bpmn:outgoing>
@@ -229,7 +229,7 @@ The light sibling of kg-separation, which splits a graph into a content and a to
       <bpmn:outgoing>F22</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_Repoint" name="10 · Re-point: livesAt,&#10;seam, mount or subscription">
-      <bpmn:documentation>In the new repository `livesAt` goes (absent means it sits at the root of `repository`) and `platform.ts` points at where the platform now is. The host consumes it as a remote mount (a `source.remote` instance in its root `index.config.json`) if it imports its code, or a subscription if it only reads its content, pinned to a commit while staging. Additive: the host keeps its copy.</bpmn:documentation>
+      <bpmn:documentation>In the new repository `livesAt` goes (absent means it sits at the root of `repository`) and `platform.ts` points at where the platform now is. The host consumes it as a remote mount (a `source.remote` layer in its root `index.config.json`) if it imports its code, or a subscription if it only reads its content, pinned to a commit while staging. Additive: the host keeps its copy.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sub-kg-lifecycle"/>
         <bootstrap.processes:skill ref="upstream-version-adoption"/>

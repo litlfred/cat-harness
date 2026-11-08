@@ -3,7 +3,7 @@
   "tool": {
     "id": "uploads-viewer",
     "title": "Uploads viewer",
-    "description": "Render each declared uploads directory's intakes as a page per subject instance.",
+    "description": "Render each declared uploads directory's intakes as a page per subject layer.",
     "install": {
       "none": true
     },

@@ -87,7 +87,7 @@ The board SHALL always be collapsible to a linear rendering, **reachable
 without XSS**: the linear rendering MAY fetch and build its content
 client-side, and MUST NOT be reachable by anything that executes markup it did
 not author. Movement SHALL be **keyboard-operable**; drag MAY be an accelerator
-but SHALL NOT be the only way in — this instance's declared interaction profile
+but SHALL NOT be the only way in — this layer's declared interaction profile
 is low-dexterity.
 
 R4 binds the board. Its linear floor is the todo listing, asserted by the tools
@@ -159,7 +159,7 @@ radius, because dead space is recoverable from a panel and not from a pill.
 
 | | requirement | note |
 |---|---|---|
-| **R24** | the folio visualisation is **`cat-harness`'s**, and SHALL be available by convention on **any** harness, for a consistent feel | the harness supplies the folio; the instance supplies the library |
+| **R24** | the folio visualisation is **`cat-harness`'s**, and SHALL be available by convention on **any** harness, for a consistent feel | the harness supplies the folio; the layer supplies the library |
 | **R25** | a reader SHALL be able to **pull their folio down** over whatever they are browsing | *"the user in visualization should be able to pull down their folio"* |
 | **R26** | `cat-harness` SHALL declare **`folio/`** as the directory of the reader's own content | a declared `ContentDirectory`, like every other graph |
 | **R27** | **materialised** assets from the static KG SHALL live in the folio — see [R27](#r27--where-materialised-assets-live) | *"clarifying if KG is static w/ materizlied…, materialized should live in folio"* |
@@ -167,7 +167,7 @@ radius, because dead space is recoverable from a panel and not from a pill.
 | **R29** | todos and sticky notes MAY reference things **across** KG libraries | *"todo, etc can refernces cross KG library"* |
 
 **A content library is not a folio.** The IRIS replica and the `smart-*`
-instances are things a reader *browses*; each may implement its own landing
+layers are things a reader *browses*; each may implement its own landing
 page and its own harness. What travels with the reader between them is the
 folio — their notes, materialised assets and links — and it looks and behaves
 the same in each because it belongs to `cat-harness`. **Consistency is the

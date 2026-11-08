@@ -32,7 +32,7 @@ Builds the docs site from this checkout's sources and publishes it to `gh-pages`
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - What: Regenerates every derived reference from its source, so the site is never built from committed copies that may be stale: the derived artefacts kept off the commit (`bun run cat derive:publish`), the skill schema and instruction pages (`gen-schema-docs.ts`, `gen-skill-docs.ts`), the content-backed do
 - Record it: `workflow_complete` with `node: "Task_Regenerate"`.
-- next: → `Call_InstanceSites` (Compose each instance's site [its Tool])
+- next: → `Call_InstanceSites` (Compose each layer's site [its Tool])
 
 ### 3. Alert the publication manager (`Call_Alert`)
 
@@ -42,11 +42,11 @@ Builds the docs site from this checkout's sources and publishes it to `gh-pages`
 - A subprocess (`Process_PublishAlert`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Failed` (Job RED — publication manager alerted)
 
-### 4. Compose each instance's site [its Tool] (`Call_InstanceSites`)
+### 4. Compose each layer's site [its Tool] (`Call_InstanceSites`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `docs-generation`.
-- What: `compose-docs.ts` composes the docs layers into one Jekyll source (`cat-harness/docs/` as the base, the checkout root's `docs/` laid over it); then each instance that builds a site of its own composes it into that source at `<instance>/`, so the result is one site with one sidebar, search and langua
+- What: `compose-docs.ts` composes the docs layers into one Jekyll source (`cat-harness/docs/` as the base, the checkout root's `docs/` laid over it); then each layer that builds a site of its own composes it into that source at `<instance>/`, so the result is one site with one sidebar, search and language 
 - Record it: `workflow_complete` with `node: "Call_InstanceSites"`.
 - next: → `Task_Build` (Build the Jekyll site and the API reference)
 

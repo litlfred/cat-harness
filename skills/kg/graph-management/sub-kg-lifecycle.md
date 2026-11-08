@@ -2,13 +2,13 @@
 name: sub-kg-lifecycle
 description: >-
   A sub-KG is a knowledge graph staged as a directory inside a harnessed
-  repository, declared as its own instance, that may later leave for a
+  repository, declared as its own layer, that may later leave for a
   repository of its own. The lifecycle: declare it in place, grow it, stage it
   for separation (one import seam, the separation guard, a self-contained
   rehearsal), and then, each behind an explicit owner confirmation, create the
   repository, copy the staged contents in with history, re-point the
   declaration, verify on a fresh clone and delete the in-repo copy. The light
-  sibling of kg-separation: use this for a DATA instance that leaves whole, and
+  sibling of kg-separation: use this for a DATA layer that leaves whole, and
   kg-separation when a graph must split into a content repository and a tools
   repository.
 ---
@@ -91,8 +91,8 @@ A directory `<name>/` at the host's root, with `<name>/<name>.json`:
 ```
 
 - **`repository` differs from `livesAt.repository`** — that difference is
-  what makes the directory a *staged* instance, and it is what the separation
-  guard and `seed:ready` read. Nothing lists the staged instances by hand.
+  what makes the directory a *staged* layer, and it is what the separation
+  guard and `seed:ready` read. Nothing lists the staged layers by hand.
 - **The directory may sit anywhere** — a root sibling is the convention, but
   the tools read `livesAt.path`, so `folio/<name>/` works the same.
 - **Scaffold it with `init-folio --staged <path>`**:
@@ -129,10 +129,10 @@ file**, and nothing else in the directory climbs out of it. On the day it
 leaves, re-pointing the platform is a one-file edit instead of a sweep.
 
 `cat-harness-tools/scripts/tests/instance-separation-imports.test.ts` is the
-guard. It covers **every** instance whose `repository` differs from its
+guard. It covers **every** layer whose `repository` differs from its
 `livesAt.repository`, not only those that opted in, because an opt-in guard
-is silent for exactly the instance that has no seam. Layers other instances
-build on are an explicit, checked exemption, and an instance that still climbs
+is silent for exactly the layer that has no seam. Layers other layers
+build on are an explicit, checked exemption, and a layer that still climbs
 has a ceiling that may only fall.
 
 **Create the seam at stage 1, not here.** It costs one file on day one, and
@@ -213,7 +213,7 @@ orphaned. Its criteria and thresholds are in
 |---|---|
 | `livesAt` | removed in the new repository — absent means "sits at the root of `repository`" |
 | the seam | `platform.ts` points at wherever the platform now is: a remote-mounted path, or a sibling checkout |
-| the host | **remote mount** if the host imports code from the sub-KG — a `source.remote` instance in the host's root `index.config.json` ([`remote-mount`](../kg-core/remote-mount.md); never a submodule); **subscription** (`kg:subscribe`) if it only reads its content |
+| the host | **remote mount** if the host imports code from the sub-KG — a `source.remote` layer in the host's root `index.config.json` ([`remote-mount`](../kg-core/remote-mount.md); never a submodule); **subscription** (`kg:subscribe`) if it only reads its content |
 | pins | the host pins a commit while staging, a version once released ([`upstream-version-adoption`](../../../sdlc/skills/sdlc-core/upstream-version-adoption.md)) |
 | its site | the new repository publishes and previews itself ([`feature-staging`](../../../sdlc/skills/sdlc-core/feature-staging.md), *Which site*): `"site": { "agentRun": true }` in its `index.config.json` when an agent publishes it, plus whatever workflow its publisher layer's own creation skill requires (an IG's AST-cache refresh, for one) |
 | its checks | `.github/workflows/harness-pr-checks.yml` calling the tools layer's `layer-pr-checks.yml`, so its gates run on every pull request |
@@ -257,7 +257,7 @@ is the one `state:seed --cutover` makes for a state graph: an archive that must
 extract to the exact tree being removed, plus a provenance note (`movedFrom`,
 `movedOn`, `sourceCommit`, `tree`), and the removal commit is made only once it
 has landed. A separation targets the parent's fsh-guts rather than the
-departing instance's, which `--cutover` does not yet do. The live copy is the
+departing layer's, which `--cutover` does not yet do. The live copy is the
 remote mount (`index.config.json` `source.remote`), npm package retrieval
 (`kg-retrieve-npm`), or subscription (`kg:subscribe`) from stage 10; the frozen
 one is never refreshed and never rendered.
@@ -303,7 +303,7 @@ directory. The page shows it as one row in the `via sidecar` state.
 5. **Deleting the in-repo copy because the new repository is green.** Green
    is the precondition for asking, not the answer.
 6. **Committing mounted directories to the host repository.** Remote mounts
-   populate instance directories locally. If `.gitignore` does not ignore the
+   populate layer directories locally. If `.gitignore` does not ignore the
    mounted paths, external files pollute downstream git status. `index.config.json`
    must generate gitignore entries for all `remoteMounts`.
 7. **Breaking dependents when dependencies fold.** If a dependency layer folds

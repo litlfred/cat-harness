@@ -132,7 +132,7 @@ were one action on two targets, and ODRL's `target` says which.
   whose constraints match the task, **and** the actor holding the lane's role.
   Role eligibility (`roles`) and permission stay separate, as `role-model.md`
   already insists.
-- **Inheritance between policies** is `odrl:inheritFrom`. An instance's policy
+- **Inheritance between policies** is `odrl:inheritFrom`. A layer's policy
   inherits cat-harness's defaults, the same way `needs` inherits everything
   else.
 - **Conflict** is ODRL's own `conflict` term (`perm`, `prohibit` or `invalid`), so
@@ -231,7 +231,7 @@ Each step is its own PR with its own QA, and missing QA is a failure:
    `authorizeTask`, `laneBinding` and `ProvActivitySchema` rather than
    restating them. `cat-harness:underPolicy` now takes an array, because
    `decide` evaluates every policy in force and naming one would misstate
-   the verdict. First run, over the 4 committed instances: 55 steps, 55
+   the verdict. First run, over the 4 committed layers: 55 steps, 55
    activities, and every step `unknown` (no policy grants `perform-task`) with
    an undeclared actor (`claude`, `litlfred`). The history records who, not
    which declared actor, so the log is only as good as the name written into
@@ -258,7 +258,7 @@ actions and constraints it is written in.
 
 ## 7. Open questions for the owner
 
-1. **Where policies live.** `policies/` at the instance root, or a declared
+1. **Where policies live.** `policies/` at the layer root, or a declared
    directory with its own graph typology? A graph typology is recommended, because it
    is how everything else gets a viewer and QA.
 2. **Default for an unauthenticated reader.** `cat-harness:visualize` and

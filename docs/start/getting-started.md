@@ -27,7 +27,7 @@ The agent's first job is to find out which one you meant.
 |---|---|---|
 | **A new folio in a new repository** | nothing yet | — |
 | **folio-assistant added to the repository you already have** | your own project, with its own files | a folio scaffolded on top of work nobody looked at first |
-| **Another folio in a repository that already has one** | a folio-assistant instance | a second repository you did not want, and a split corpus |
+| **Another folio in a repository that already has one** | a folio-assistant layer | a second repository you did not want, and a split corpus |
 | **A new document inside the folio you already have** | a folio, and a chapter in mind | an entire empty folio, and the chapter still unwritten |
 | **Something you would rather describe in your own words** | — | — |
 
@@ -234,7 +234,7 @@ script and the table cannot drift.
 
 ## 8. Make the landing page yours
 
-Your site's home page opens with your instance's **own** description, drawn
+Your site's home page opens with your layer's **own** description, drawn
 inside your **own** backdrop. Both come from one file — `<name>.json` at
 the repository root — and nothing about the platform's grumpy cat is written
 into the template. Change the file; the page follows.

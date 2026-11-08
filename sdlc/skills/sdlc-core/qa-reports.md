@@ -30,10 +30,10 @@ reproduce what an agent or a person decided. The two are split on that line:
 | on a merge conflict | take the base's side (`merge:main`), then regenerate | a person reads both sides |
 
 **cat-harness and the content core do not commit the derived files.** Where
-an instance still does, they are a copy on its way out, not the record. Do not
+a layer still does, they are a copy on its way out, not the record. Do not
 regenerate one in order to commit it, and do not hand-resolve one. Every `qa`
 directory declares `storage` and is ignored by version control, so a new file
-there is not committed. Before an instance's removal of its committed copy is
+there is not committed. Before a layer's removal of its committed copy is
 pushed, `bun run cat qa:verify-moved --key main/<head>` must answer IDENTICAL.
 It compares every moved path's blob id with the entry, and an entry it cannot
 read is UNKNOWN (exit 2), never a pass.
@@ -93,13 +93,13 @@ repository that declares a `qa` directory with `storage` (`test/results/`,
 keyed by commit) keeps its results on `cat/cat-harness/qa-reports` of **its
 own** repository, keyed by **its own** commits. Its
 `.github/workflows/publish-qa.yml` calls the tools layer's reusable
-`layer-qa-publish.yml`, which audits that one instance with the layer at the
+`layer-qa-publish.yml`, which audits that one layer with the layer at the
 pushed commit and publishes `main/<sha>` or `pr/<n>/<sha>`.
 
 An index reads a mounted layer's results from that layer's store at the
 commit its lock pins (`scripts/layer-qa.ts`, `readQaTreeAtCommit`), and never
 from its own store. A pin the layer has not published is a `miss` naming the
-commit. cat-harness, and the instances it hosts (`kgQaHomeFor` "hosted"), are
+commit. cat-harness, and the layers it hosts (`kgQaHomeFor` "hosted"), are
 still written by the index's `qa-publish`.
 
 A layer that stops committing `test/results/` without a publisher keeps its
@@ -130,7 +130,7 @@ Each script's docblock says which form it is in.
 - **A writer moves judgements as it saves.** If a writer finds judgements in a
   prior derived file and the store holds no entry for them, it moves them into
   the store as it saves. `bun run cat qa:attestations:migrate` does a whole
-  instance at once, and `:check` exits 1
+  layer at once, and `:check` exits 1
   while any judgement is still only in a derived file.
 - **A corrupt store reads UNKNOWN and is refused.** No writer overwrites it,
   and no writer regenerates past it.

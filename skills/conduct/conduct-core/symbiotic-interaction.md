@@ -98,7 +98,7 @@ with a durable artefact attached.
   the renderer shows in the page footer. The narrative states the rule and the
   reason the author gave, in the present tense, so a reader learns what holds
   without reading who said it when.
-- **A log may name any instance.** It quotes verbatim, so it carries the issue
+- **A log may name any layer.** It quotes verbatim, so it carries the issue
   and repository names the original text did, including layers above this one.
   A log is a record of where a rule came from, not a reference the document
   depends on, so `check:reference-direction` exempts `*.prov.jsonld`.

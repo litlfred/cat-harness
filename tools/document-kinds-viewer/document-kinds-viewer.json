@@ -3,7 +3,7 @@
   "tool": {
     "id": "document-kinds-viewer",
     "title": "Document kinds viewer",
-    "description": "Render each declared document-kinds directory: every kind's structure, sections and sources, one page per subject instance.",
+    "description": "Render each declared document-kinds directory: every kind's structure, sections and sources, one page per subject layer.",
     "install": {
       "none": true
     },

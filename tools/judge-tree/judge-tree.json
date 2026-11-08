@@ -17,7 +17,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "The index.lock.json whose fixity digests name every instance but the caller.",
+          "description": "The index.lock.json whose fixity digests name every layer but the caller.",
           "required": true,
           "arg": {
             "flag": "--lock"
@@ -28,7 +28,7 @@
           "schema": {
             "$type": "RepoFullName"
           },
-          "description": "The caller as owner/name (or its lock instance): the entry replaced by its PR tree. Every runner must name it the same way.",
+          "description": "The caller as owner/name (or its lock layer): the entry replaced by its PR tree. Every runner must name it the same way.",
           "required": true,
           "arg": {
             "flag": "--caller"
@@ -72,7 +72,7 @@
           "schema": {
             "$type": "InstanceId"
           },
-          "description": "The own instance(s) run-gates.py judges; repeatable.",
+          "description": "The own layer(s) run-gates.py judges; repeatable.",
           "required": false,
           "arg": {
             "flag": "--instance"
@@ -139,7 +139,7 @@
     ],
     "selection": {
       "when": "When a PR's tree must be judged and any runner can do it: an agent before pushing, a developer locally, or CI. Then `verdict-check.yml` passes the PR on the published verdict instead of re-running ~300 gates per side.",
-      "limits": "The digest trusts the lock's fixity digests for every instance but the caller, so a run that takes lower layers at main instead of the lock judges a tree the digest does not name. A verdict answers only for its exact digest: a change to the judging scripts is a new digest and needs a new verdict.",
+      "limits": "The digest trusts the lock's fixity digests for every layer but the caller, so a run that takes lower layers at main instead of the lock judges a tree the digest does not name. A verdict answers only for its exact digest: a change to the judging scripts is a new digest and needs a new verdict.",
       "cost": "That of layer-pr-checks for one side, or two when no stored base verdict exists: gates dominate (minutes to tens of minutes). `digest` and `check` are one hash and at most one HTTP request."
     },
     "requires": {
@@ -160,7 +160,7 @@
   "$comment": [
     {
       "at": "",
-      "comment": "── Judge a tree once, on any runner, and say so by digest ─────────────\n\nOwner, 2026-10-16: \"github should be one Tool of\nseveral\". `gates` RUNS the checks in one checkout; this judges a whole\ncomposed TREE head-against-base and leaves a verdict record anyone can\nfind again by the tree's digest. The digest is the index lock's fixity\ndigests (each instance's declaration sha256 and directory treeDigests,\nas mount-from-lock checks them), the caller's entry replaced by its PR\ntree (`git rev-parse HEAD^{tree}`), and the judging-scripts version. Same\nbytes, same digest, whichever runner computed it: an agent container, a\nlocal machine, or GitHub Actions. GitHub is where a verdict is PUBLISHED\n(the commit status `judge-tree`), not where it must be reached.\n\nThe implementation is the tools layer's `scripts/judge-tree.ts`; the\nrecord's shape is its `schemas/verdict-record.schema.json`\n(`cat-harness-verdict-record/v1`)."
+      "comment": "── Judge a tree once, on any runner, and say so by digest ─────────────\n\nOwner, 2026-10-16: \"github should be one Tool of\nseveral\". `gates` RUNS the checks in one checkout; this judges a whole\ncomposed TREE head-against-base and leaves a verdict record anyone can\nfind again by the tree's digest. The digest is the index lock's fixity\ndigests (each layer's declaration sha256 and directory treeDigests,\nas mount-from-lock checks them), the caller's entry replaced by its PR\ntree (`git rev-parse HEAD^{tree}`), and the judging-scripts version. Same\nbytes, same digest, whichever runner computed it: an agent container, a\nlocal machine, or GitHub Actions. GitHub is where a verdict is PUBLISHED\n(the commit status `judge-tree`), not where it must be reached.\n\nThe implementation is the tools layer's `scripts/judge-tree.ts`; the\nrecord's shape is its `schemas/verdict-record.schema.json`\n(`cat-harness-verdict-record/v1`)."
     }
   ]
 }

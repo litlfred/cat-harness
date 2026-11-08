@@ -1,6 +1,6 @@
 ---
 name: getting-started
-description: Triage what a person means when they ask to create a folio, and route them. Five requests share one sentence — a folio in a new repo, folio-assistant overlaid on an existing repo, a second folio in an instance that already has one, a content object they called a folio, or something the filesystem cannot tell apart. Reads the repository facts, runs them through the folio-intent decision table, asks a selectable question for what facts cannot settle, scaffolds, and reports the published URL. Use whenever a user asks to create, start, set up, or initialise a folio, a paper, a DAK, an IG, or "folio-assistant" itself.
+description: Triage what a person means when they ask to create a folio, and route them. Five requests share one sentence — a folio in a new repo, folio-assistant overlaid on an existing repo, a second folio in a layer that already has one, a content object they called a folio, or something the filesystem cannot tell apart. Reads the repository facts, runs them through the folio-intent decision table, asks a selectable question for what facts cannot settle, scaffolds, and reports the published URL. Use whenever a user asks to create, start, set up, or initialise a folio, a paper, a DAK, an IG, or "folio-assistant" itself.
 user_invocable: true
 ---
 
@@ -9,11 +9,11 @@ user_invocable: true
 Process: the content core's `processes/conduct/getting-started.bpmn`.
 Decision table: the content core's `decisions/folio-intent.dmn`.
 
-## The landing page is the instance's own description
+## The landing page is the layer's own description
 
 A folio's home page opens with **its** description inside **its** backdrop, both
 declared in the repository's declaration. Nothing about any
-particular instance is written into the template, so a downstream folio does not
+particular layer is written into the template, so a downstream folio does not
 inherit the platform's grumpy cat.
 
 **Where the markdown node is:** `description` in `<name>.json`. It is
@@ -48,14 +48,14 @@ can decline to overlay rather than place text somewhere nobody chose.
 
 Reader-facing walkthrough: `docs/start/getting-started.md` §8.
 
-**A new instance's `beans/` and `todos/` are not written into its checkout.**
+**A new layer's `beans/` and `todos/` are not written into its checkout.**
 By default `folio_init` declares them on their own branches,
 `cat/<instance>/beans` and `cat/<instance>/todos`, and prints a one-time seed
 command. Say so when you hand the scaffold over: until the seed has been run
 and mounted, an empty `beans list` means *not mounted*, not *no work*. The
 rule, the branch naming and the override live in
 [`directory-conventions`](../../kg/kg-core/directory-conventions.md)
-§"Where a NEW instance's state lives".
+§"Where a NEW layer's state lives".
 
 ## 0. Why this skill exists
 
@@ -68,7 +68,7 @@ is spoken by at least five different people:
 |---|---|---|
 | **new-repo** | nothing yet, or an empty directory | — (this is the safe default, and the only one an agent may assume) |
 | **overlay** | a repository with their own work in it | a folio scaffolded on top of a project the agent never looked at |
-| **add-folio** | a folio-assistant instance already | a second repository they did not want, and a split corpus |
+| **add-folio** | a folio-assistant layer already | a second repository they did not want, and a split corpus |
 | **new-content** | a folio, and they wanted a *document* in it | an entire empty folio, and the chapter they asked for still not written |
 | **ask** | any of the above, undeclared | — |
 
@@ -102,14 +102,14 @@ that sentence is what the five requests have in common.
 > marker a repository carries — `folio`, `harness`, `dak`, `sushi` — with the
 > facts each states and any disagreement between them.
 > `describeRepositoryClosure()` (`schemas/kg/harness-config.ts`) extends that
-> through the dependency tree, attributing each membership to the instance
+> through the dependency tree, attributing each membership to the layer
 > that carried it.
 >
-> **`folio` and `harness` are different types.** The declaration says *this is an instance*; a config that
+> **`folio` and `harness` are different types.** The declaration says *this is a layer*; a config that
 > declares `contentType` says *this authors folio content*. That config is a root
 > `<name>.config.json`, or its entry in `index.config.json`, where inline fields
 > overlay the imported file ([`index-config`](../../kg/kg-core/index-config.md)).
-> Listing an instance in the index makes it instantiated, not a folio. `cat-harness/` carries the first and not
+> Listing a layer in the index makes it instantiated, not a folio. `cat-harness/` carries the first and not
 > the second — it is a harness and is **not** a folio. `isFolio` is exactly
 > membership of `folio`: the DMN documents the input as a config in the
 > working directory that *declares* a `contentType`, not its mere presence.
@@ -198,7 +198,7 @@ explicit permission for that repository. Ask which mode they want, with
 |---|---|
 | `new-repo` | Ask for the name. Create or use the empty directory, then `folio_init`. |
 | `overlay` | Hand off to [`repo-conversion`](repo-conversion.md) — scan first, import second, and never in the other order. The scan's `markers` are offered as picks (§2a, `Task_ChooseHarnessed`): the harness declares only what the person chose — declare, don't slurp. |
-| `add-folio` | `folio_init` against a new top-level slug in the existing instance. Do not re-link the platform; it is already linked. |
+| `add-folio` | `folio_init` against a new top-level slug in the existing layer. Do not re-link the platform; it is already linked. |
 | `new-content` | **Stop.** This process ends here. Hand off to the active content type's authoring skill. Scaffolding anything on this branch is the bug. |
 
 **An empty repository gets `main` before any feature branch.** GitHub makes

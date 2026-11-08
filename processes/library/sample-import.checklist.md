@@ -8,7 +8,7 @@ The SDLC for testing an import of a SAMPLE of a remote source into a knowledge g
 
 ## Begin — A sample of a remote source is proposed (`StartEvent_Proposed`)
 
-- Begin here: The caller names a source (ideally one with a source descriptor in the declared sources/ of the instance that owns the corpus) and a reason to try it.
+- Begin here: The caller names a source (ideally one with a source descriptor in the declared sources/ of the layer that owns the corpus) and a reason to try it.
 - Call `workflow_start` with `process: "Process_SampleImport"` and the subject this run is about; keep the instance id it returns.
 - next: → `Task_Scope` (Scope the sample: items, store, permanence)
 

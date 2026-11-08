@@ -54,7 +54,7 @@ flowchart TD
 
 ## Separation of concerns — current and future state
 
-The split of the platform into composable instances is described by the child
+The split of the platform into composable layers is described by the child
 pages:
 
 | page | what it answers |
@@ -64,10 +64,10 @@ pages:
 | [Future state](architecture/future-state.html) | The five target repos and which directory lands in which |
 | [Migration plan](architecture/migration-plan.html) | Phase 0/I/II/III, the gates, and what is still undecided |
 | [Minimum `cat-harness`](architecture/cat-harness-minimum.html) | What survives in the harness once "renders no content type" is applied as a test |
-| [Harness instances](architecture/harness-instances.html) | What an instance IS — schematics, visualisations, tools; the four directories; the default rendering |
+| [Harness layers](architecture/harness-instances.html) | What a layer IS — schematics, visualisations, tools; the four directories; the default rendering |
 
-The minimum says a harness produces nothing a human looks at, and the instance
-page says an instance renders by default; both hold because the rendering
+The minimum says a harness produces nothing a human looks at, and the layer
+page says a layer renders by default; both hold because the rendering
 requirement is a **floor that rises**: `bootstrap` is exempt
 from the visualiser and owes its own `.json`/`.jsonld` instead, and
 `cat-harness` is the layer where the rest applies — see

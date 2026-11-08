@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/ui/harness-default-rendering.bpmn` (process `Process_HarnessRendering`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Renders a harness instance as its default interface: its left-hand nav and docs on its own theme's art, and a board of its todos and beans from which a reader reads, reviews and, when a write tool is available, proposes changes into the publication review.
+Renders a harness layer as its default interface: its left-hand nav and docs on its own theme's art, and a board of its todos and beans from which a reader reads, reviews and, when a write tool is available, proposes changes into the publication review.
 
 ## Begin — Site build starts (`Start_Process_HarnessRendering`)
 
@@ -16,7 +16,7 @@ Renders a harness instance as its default interface: its left-hand nav and docs 
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `harness-tiles`.
-- What: One themed section per instance in dependency order, from its declaration: its docs, its declared subgraphs (a graph with no viewer is shown inert and labelled), and its theme.
+- What: One themed section per layer in dependency order, from its declaration: its docs, its declared subgraphs (a graph with no viewer is shown inert and labelled), and its theme.
 - Record it: `workflow_complete` with `node: "A_Tiles"`.
 - next: → `A_Ground` (Resolve each harness's page ground)
 

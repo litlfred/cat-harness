@@ -3,7 +3,7 @@
   "id": "glossary-kind-concept",
   "title": "Graph kind → SKOS concept (glossary)",
   "status": "active",
-  "description": "How scripts/glossary-export.ts writes a graph kind (a graph typology: what a declared directory holds) as a skos:Concept in the instance's glossary, beside the roles. Work item folio-assistant-dkqd (2026-11-04): the glossary held roles only, so the words a reader meets for what the harness keeps, such as \"Work item\", and for the harnesses themselves were defined nowhere a reader looks words up. The label is the kind's display name (kindTitle); the definition is the kind's summary. Its siblings are glossary-node-kind-concept (the schema a file is written against) and glossary-harness-concept. The concept's IRI and @type stay in code: they are identity, not mapping. The IRI is the one the kind or harness already has (graphTypologyIri), never a second name.",
+  "description": "How scripts/glossary-export.ts writes a graph kind (a graph typology: what a declared directory holds) as a skos:Concept in the layer's glossary, beside the roles. Work item folio-assistant-dkqd (2026-11-04): the glossary held roles only, so the words a reader meets for what the harness keeps, such as \"Work item\", and for the harnesses themselves were defined nowhere a reader looks words up. The label is the kind's display name (kindTitle); the definition is the kind's summary. Its siblings are glossary-node-kind-concept (the schema a file is written against) and glossary-harness-concept. The concept's IRI and @type stay in code: they are identity, not mapping. The IRI is the one the kind or harness already has (graphTypologyIri), never a second name.",
   "group": [
     {
       "source": "bootstrap:GraphTypology",

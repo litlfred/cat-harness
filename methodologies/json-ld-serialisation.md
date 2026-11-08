@@ -112,7 +112,7 @@ JSON parser reads records; a consumer with a JSON-LD processor reads a graph.
 8. **`@graph`** for a whole-graph export: `kg-export.ts` emits one document
    whose `@graph` holds every node.
 9. **A context binds only what its documents use.** A platform rule, not the
-   spec's: each instance's context, `<iriBase>ns/context/v1.jsonld`, is
+   spec's: each layer's context, `<iriBase>ns/context/v1.jsonld`, is
    GENERATED from the prefixes and content-context terms its documents use
    (`jsonld:contexts`, cat-harness-tools `scripts/gen-instance-contexts.ts`),
    so a bound prefix nothing speaks cannot exist. It replaced

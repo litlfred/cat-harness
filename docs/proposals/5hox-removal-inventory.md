@@ -26,13 +26,13 @@ Measured 2026-10-02 on branch `qa-5hox`, from
 
 ## How the set is derived
 
-The set is not a hand list. It is every file under every directory an instance
+The set is not a hand list. It is every file under every directory a layer
 **declares** as a `qa` graph, resolved by `resolveQaLocation` in
 `cat-harness/scripts/qa-store.ts`. That is the same function `qa:publish` uses
 to pick its roots, so the set that leaves `main` is the set the branch receives.
 `bun run cat qa:verify-moved --inventory` prints it.
 
-Twelve instances declare a `qa` directory, all at `<instance>/test/results/`:
+Twelve layers declare a `qa` directory, all at `<instance>/test/results/`:
 
 ```
 cat-harness  <fhir-ig-layer>  <content-core>  <science-layer>
@@ -102,7 +102,7 @@ When each file last changed, by day:
 | `who-style-guide/test/results/` | 6 | 11,096 | 2026-09-27 | 2026-10-01 |
 | **total** | **1,186** | **8,520,910** | | |
 
-Each of the eleven instances other than cat-harness holds a `kg-qa/` tree, a
+Each of the eleven layers other than cat-harness holds a `kg-qa/` tree, a
 `kg-qa.manifest.json` and a generated `README.md`. The twelve `README.md` files
 are the subgraph READMEs that `readme:subgraphs` generates from the declaration
 and the directory's own files. They describe the working copy, so they leave
@@ -222,7 +222,7 @@ committed copy.
 
 The run with the files absent: 1,288 files from 29 writers. 1,182 of them are
 the inventory's paths. The other four inventory paths are not reproduced: they
-are the `agent-skills/` and `large-datasets/` kg-qa trees of instances folded
+are the `agent-skills/` and `large-datasets/` kg-qa trees of layers folded
 away by `j7ql`, so they are orphans. The 106 new files are block verdicts and
 witnesses for docs blocks no hand sweep had reached.
 

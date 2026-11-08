@@ -7,7 +7,7 @@ generated: "scripts/subgraph-readmes.ts of the bootstrap toolset (https://github
 
 # folio
 
-Authored content of this instance itself, rendered to a website. Holds the landing sticky — the instance's own description and its onboarding links, as a page-global note rather than text composited into the backdrop.
+Authored content of this layer itself, rendered to a website. Holds the landing sticky — the layer's own description and its onboarding links, as a page-global note rather than text composited into the backdrop.
 
 Part of [C@T Harness](../README.md) 0.1.0, declared as `folio`, holding `folio`.
 

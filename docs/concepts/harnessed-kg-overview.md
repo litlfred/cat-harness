@@ -220,7 +220,7 @@ The DAK logical model (SMART Base 1.0.0) is a complete kit with its metadata
 (id, name, title, description, version, status, publication, preview and
 canonical URLs, licence, copyright year, publisher) and its components: nine in this model, ten in this repository's count (see slide 3). Each
 component is held as a **source reference**, not inline: by URL, by canonical or
-as an instance. That indirection is what lets the kit's parts be nodes of a
+as a layer. That indirection is what lets the kit's parts be nodes of a
 larger graph.
 
 <a href="{{ '/assets/img/kg-deck/img-p005-2.webp' | relative_url }}"><img src="{{ '/assets/img/kg-deck/img-p005-2.webp' | relative_url }}" alt="Screenshot of the SMART Base 1.0.0 page for the logical model Digital Adaptation Kit (DAK) — &quot;a complete DAK with metadata and all 9 DAK components&quot;. Its key-elements table lists id, name, title, description (string or URI), version, status, publicationUrl, previewUrl, canonicalUrl, license, copyrightYear, publisher (name, url) and the start of healthInterventions (HealthInterventionsSource, 0..*)." loading="lazy"></a>
@@ -358,8 +358,8 @@ to L3, tools to L3 and L4, tests to L2 to L4, apps to L4.
 
 > **Misaligned — target, not current:** none of these repositories exists under
 > these names. Today it is one monorepo, `litlfred/folio-assistant`, with
-> instance directories (`cat-harness`, the content core, the DAK layer,
-> the IG instances, the IRIS replica, …).
+> layer directories (`cat-harness`, the content core, the DAK layer,
+> the IG layers, the IRIS replica, …).
 > [Current state](architecture/current-state.html) is the measured picture, and
 > the slide is the [future state](architecture/future-state.html).
 
@@ -450,13 +450,13 @@ repository: <https://github.com/litlfred/folio-assistant>
 | **Task** | *does what* | an activity in a diagram; names the skill to run and the work item operation to perform |
 | **Process** | *where* | an executable BPMN diagram with DMN gateways; its state is committed so sibling sessions agree |
 | **Role** | *as whom* | a swimlane; an actor acts as a reviewer only for the length of a lane |
-| **Skill** | *knowing how* | the instruction body for the task; lives in the knowledge graph and is inherited across instances |
+| **Skill** | *knowing how* | the instruction body for the task; lives in the knowledge graph and is inherited across layers |
 
 **Sources:** [platform](../platform.html); the `role-model` skill.
 
 > **Aligned:** the Actor schema spells the three kinds `person`, `agent` and
 > `system` (human, agentic and mechanical), and adds a fourth, `external`: a
-> participant outside this instance, which is never given a task. The
+> participant outside this layer, which is never given a task. The
 > `role-model` skill and the schema's own documentation state the same
 > mapping.
 

@@ -2,7 +2,7 @@
   "$schema": "tool-definition/v1",
   "tool": {
     "id": "mcp-capture",
-    "title": "What this instance's MCP server serves",
+    "title": "What this layer's MCP server serves",
     "description": "Read the real tool surface from the registrars by mounting each against a capture object — the same objects the server asks, so the Zod shapes and their optionality are the served ones rather than a reading of the source.",
     "install": {
       "none": true

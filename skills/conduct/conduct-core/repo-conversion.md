@@ -101,7 +101,7 @@ told to read: a `sushi-config.yaml` (an IG: `contentTypes.ig`), a legacy
 (`contentType: document`). For each it gives the paths, whether it is already
 declared — `declared`, `not-declared`, or `unknown` when there is no readable
 `index.config.json` to ask — and the snippet that would declare it, with where
-it goes (`index.config.json#contentTypes`, or a local instance's
+it goes (`index.config.json#contentTypes`, or a local layer's
 `<name>.json#directories`). Content types come from the registry
 (`defaultContentTypes`; an `{ indexSection }` type is checked against
 `contentTypes.<id>`), directory facets are checked against the registered graph
@@ -131,10 +131,10 @@ Offer only the markers that are `not-declared` (or `unknown`), one option each:
 **The default declares nothing**, and the agent never declares a marker the
 person did not pick. Declare exactly the picks — the scan's `suggestion`
 snippet, at its `suggestion.at` — in the scaffolding commit, or in its own
-commit on an instance that already exists.
+commit on a layer that already exists.
 
-**After setup, too.** The same question fits any instance at any time: "what
-else could this harness declare?" is `--markers` on the instance's repository,
+**After setup, too.** The same question fits any layer at any time: "what
+else could this harness declare?" is `--markers` on the layer's repository,
 then Q0. Rows already `declared` are shown for context and are not offered.
 
 A content type registered by a higher harness layer appears as a hint when that

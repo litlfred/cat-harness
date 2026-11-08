@@ -30,7 +30,7 @@
           "schema": {
             "$type": "RepoPath"
           },
-          "description": "`docs/reference/upload-step/index.md`, under the instance's declared site directory. Never hand-edited."
+          "description": "`docs/reference/upload-step/index.md`, under the layer's declared site directory. Never hand-edited."
         }
       ]
     },

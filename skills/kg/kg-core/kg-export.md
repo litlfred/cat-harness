@@ -1,7 +1,7 @@
 ---
 name: kg-export
 description: >
-  Serialize an instance's knowledge graph to one JSON document, for
+  Serialize a layer's knowledge graph to one JSON document, for
   publication and inspection. Read when asked to visualize, audit or share the
   KG, before adding a node type to the export, and before minting or
   authoring any subject IRI — subjects are `<doc dir>/<kind>/<id>`,
@@ -41,7 +41,7 @@ list of records and a traversable graph, and a test asserts it.
 get the document. WHO SMART Base's type-usage note is explicit about this and it is
 what makes the graph mergeable with anyone else's.
 
-**3. A subject's IRI is a path under its instance, never a `#fragment` of
+**3. A subject's IRI is a path under its layer, never a `#fragment` of
 the document** — `<doc dir>/<kind>/<id>`, each served as its own file. This is the rule for every
 IRI an agent mints or authors; the reasons and the exceptions are in
 §"Subject IRIs — a path, not a `#fragment`" below.
@@ -69,17 +69,17 @@ actor, a decision, a directory, a package, a capability, an asset) is named
 
     <doc dir>/<kind>/<id>
 
-where **`<doc dir>`** is the directory the instance's own document is served
+where **`<doc dir>`** is the directory the layer's own document is served
 from. That is the URL-space rule:
 `<baseurl>/<instantiated harness>/<path to rendered content>`.
 §"Which base an `@id` is minted against" in
 [`instance-publication`](instance-publication.md) says which base applies to
-an instance on this site and to an instance with its own `canonicalUrl`.
+a layer on this site and to a layer with its own `canonicalUrl`.
 It is the form Tools use, `<doc dir>/tools/<id>.jsonld`.
 
 **The host has no special case: one rule for every layer, with subjects
 beside their document.** So `<doc dir>` is
-`<site>/<instance>/` for every instance this site publishes, the host
+`<site>/<instance>/` for every layer this site publishes, the host
 included:
 
 | | IRI |
@@ -116,7 +116,7 @@ takes a path.
 ### Why
 
 - **A `#fragment` never reaches the server.** Dereferencing the subject
-  fetches the whole instance graph, and the subject cannot have a page or a
+  fetches the whole layer graph, and the subject cannot have a page or a
   document of its own.
 - **A subject is a real resource**: its own page, its own JSON-LD, its own
   history and cache, linkable on its own.
@@ -143,7 +143,7 @@ carrying the node as JSON-LD, plus `<id>.jsonld` beside it, as Tools are
 served. Whoever mints the path also publishes the file, in the same change.
 
 **Every rendered link to a subject uses its subject IRI**, meaning its page,
-and never a fragment of the instance document. That covers the ⓘ panel and
+and never a fragment of the layer document. That covers the ⓘ panel and
 the icons on a rendered BPMN diagram, step tables and role links.
 
 bootstrap states the same rule for its own graph, in its own terms, in
@@ -164,7 +164,7 @@ Two things still mint fragments:
   publishes it, so `subjectIri` keeps `bootstrap.jsonld#<kind>/<id>` for a link
   into that document (`FRAGMENT_DOCUMENT_STUBS`). The entry goes in the PR that
   moves that publisher to paths.
-- **own-canonical instances** (the SMART IGs and others), whose subject IRIs do
+- **own-canonical layers** (the SMART IGs and others), whose subject IRIs do
   not load yet.
 
 So:
@@ -239,7 +239,7 @@ failure as a fabricated link.
 Rule 5 above, applied to CONTENT: in every document on the published content
 context, a plain key must be a declared term, or a JSON-LD processor drops it
 without a word. `bun run cat check:content-keys` fails on one
-(it judges documents on the content context and on an instance's own context).
+(it judges documents on the content context and on a layer's own context).
 
 It does **not** descend into a value typed `@json`. Such a value is a JSON
 literal by declaration: its inner keys are data, not properties. That is the
@@ -255,7 +255,7 @@ link to nowhere). So `text`, `leanSource` and `file` are literals, and
 **The upgrade rule:** a path
 term becomes a link — `@type: @id` with ABSOLUTE IRIs minted by the one
 function that mints block IRIs — when, and only when, the files it names are
-SERVED at a URL an instance declares. Until then a link is a promise nothing
+SERVED at a URL a layer declares. Until then a link is a promise nothing
 keeps, and a literal is the honest record: one reading, resolved by our tools
 against the file that carries it.
 
@@ -327,7 +327,7 @@ because the source is wrong the same way — **a drift gate proves agreement,
 never correctness**.
 
 **The two rules, and what enforces them.** Every emitted document names its
-own instance's generated context, `<iriBase>ns/context/v1.jsonld`.
+own layer's generated context, `<iriBase>ns/context/v1.jsonld`.
 `jsonld:contexts --check` (cat-harness-tools `scripts/gen-instance-contexts.ts`)
 enforces rule 1 over every `.jsonld` in the checkout, failing on a prefix used
 in an IRI position that nothing binds; a context generated from use binds
@@ -342,7 +342,7 @@ from the declarations:
    label, which is exactly the hazard `schemas/kg/jsonld.ts` opens with.
 2. **Own namespace ⇒ stub spelling.** A binding onto a `…/<stub>/ns#`
    namespace of ours must be spelt `<stub>`, and `<stub>` must be declared by
-   an instance (`<stub>/<stub>.json`).
+   a layer (`<stub>/<stub>.json`).
 
 A context URL the check cannot resolve is **"could not determine"**, counted
 and listed — never read as clean.
@@ -365,7 +365,7 @@ is making a claim** — a processor will read every colon-key in it as an IRI.
 publication.
 
 **Keeping the CONTENT out of the render pipeline is a different property from
-keeping the REFERENCE out of the graph.** An instance's declared directories
+keeping the REFERENCE out of the graph.** A layer's declared directories
 become nodes in `<stub>.jsonld`, and `fsh-guts/` must be declared (or no tool
 can find it and the never-delete rule has no destination), so its id, path and
 description must be stripped from the published document.
@@ -466,15 +466,15 @@ it.
 ## Naming — artefacts take the repository's name, the config does not
 
 The **stub** (`<name>.json` → `stub`, defaulting to `name`) is the
-filename stem of everything this instance publishes: `<stub>.jsonld`,
+filename stem of everything this layer publishes: `<stub>.jsonld`,
 `<stub>.schema.json`. One helper, `artefactStub()`, computes it, so the two
-exporters cannot disagree about what this instance is called.
+exporters cannot disagree about what this layer is called.
 
 WHO SMART Base does the same and derives its stub by stripping a prefix
 (`smart-<stub>` → `<stub>` → `https://smart.who.int/<stub>`), so stub, directory and
 published path are one word.
 
-**The declaration file is named for the instance's `name`, not its `stub`:**
+**The declaration file is named for the layer's `name`, not its `stub`:**
 `<name>.json`. A consumer finds it without being told its filename:
 `findDeclarationFile()` scans a directory for a `*.json` carrying a `name`
 whose stem EQUALS that name — the file agrees with **itself** — and two such
@@ -525,19 +525,19 @@ and nothing fails — a clean run over a corpus the tool could not read. So:
    of where skills live narrows, the test fails. An invariant checked only
    against the exporter's own collection would not catch it.
 
-## Whose nodes — an instance publishes its own
+## Whose nodes — a layer publishes its own
 
 **The policy is [`instance-publication`](instance-publication.md) §"What each
-instance publishes — graph, address, schema, and what is stripped"**: which
-instance publishes which document where. This section is the exporter's side
+layer publishes — graph, address, schema, and what is stripped"**: which
+layer publishes which document where. This section is the exporter's side
 of it.
 
 `buildExport` takes `scope`, and the CLI `--scope <instance|checkout>`:
 
 | scope | reads | for |
 |---|---|---|
-| `instance` (default) | this instance's declaration alone | the published document, its locale variants, its QA sidecar |
-| `checkout` | this instance plus every instance stacked on it | a corpus-wide consumer that says so — the `kg` search slice |
+| `instance` (default) | this layer's declaration alone | the published document, its locale variants, its QA sidecar |
+| `checkout` | this layer plus every layer stacked on it | a corpus-wide consumer that says so — the `kg` search slice |
 
 An `@id` the checkout-scope document mints and the instance-scope one does
 not is held by its owner's own document, and this one says nothing about it:
@@ -579,7 +579,7 @@ Rules for the pair:
 - **The hydrated file carries KG metadata, never heavy content.** Markdown
   bodies, images and binaries are payloads, reached by a `payload` link
   (§"Payloads — heavy content by content address", below).
-- **The root has `index.jsonld` only.** A harness instance is itself a named
+- **The root has `index.jsonld` only.** A harness layer is itself a named
   subgraph of the repo KG, and the repo KG is the level above it. A *deep*
   hydrated file at the root would be the whole graph in one document — a
   monolith. Hydration is deep, but not at the root.
@@ -601,8 +601,8 @@ Rules for the pair:
   `ns/content/v1.jsonld`.
 - **Where it is built.** `bun run cat subgraph:jsonld`
   (`scripts/gen-subgraph-jsonld.ts`) frames kg-export's in-memory graphs —
-  one per framed instance, each from its OWN export, never a stacked
-  instance's node under this document's name — and
+  one per framed layer, each from its OWN export, never a stacked
+  layer's node under this document's name — and
   writes `docs/subgraph/<HARNESS>/<PATH>/index[.hydrated].jsonld`, which Pages
   serves at the subgraph IRI, plus the context at `ns/subgraph/v1.jsonld`.
   `subgraph:jsonld:check` is the gate. The file shape is
@@ -619,7 +619,7 @@ and a `subgraph-index.json` manifest (`folio-subgraph-index/v1`: repository,
 pin, harness, each file's sha256). It is attached, with its
 `folio-binary-release/v1` record, to the GitHub release `subgraph-index-<sha>`.
 
-- **Not committed:** a committed copy of a build over other instances is
+- **Not committed:** a committed copy of a build over other layers is
   stale on the next re-pin.
 - **Not generated at mount:** reading one file of metadata must not need the
   build toolchain, and one pin must have one set of files.
@@ -639,14 +639,14 @@ pin, harness, each file's sha256). It is attached, with its
 - For a directory of a declared graph, the rule is *containment*: a node is in
   the deepest subgraph directory that contains its source path, and in every
   ancestor of that one, transitively.
-- **An overlaid instance heads its own tree.** kg-export reads the corpus of
-  every instance stacked on this one, so the content core's processes and
-  skills are nodes of this graph. A directory belongs to the instance that
+- **An overlaid layer heads its own tree.** kg-export reads the corpus of
+  every layer stacked on this one, so the content core's processes and
+  skills are nodes of this graph. A directory belongs to the layer that
   declares it, so those nodes sit under `<BASE_URL>/subgraph/<that
-  instance>/…`, framed by this build because this graph publishes them. Their
+  layer>/…`, framed by this build because this graph publishes them. Their
   `@id`s do not change.
 - **Bootstrap gets no tree here.** `bootstrap` and `bootstrap-tools` sit
-  *below* this instance, and their processes are kept out of its graph; they
+  *below* this layer, and their processes are kept out of its graph; they
   publish their own subgraphs, and a tree framed for them here would re-carry
   what was excluded.
 - A harness's own rule, saying which directories are its graph, is its

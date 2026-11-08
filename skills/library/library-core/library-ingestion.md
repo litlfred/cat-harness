@@ -70,7 +70,7 @@ it, what does holding it cost, for what purpose, and what if the source goes
 away.
 
 **Entry one** is `bun run cat ingest uploads/FILE` (`--dry-run` says what it would
-do, and why). **Entry two** starts from `remoteGraphs` in an instance's
+do, and why). **Entry two** starts from `remoteGraphs` in a layer's
 declaration (`schemas/kg/cat-harness.ts`, `RemoteGraph`): assets listed there are
 `referenced` — we know they exist and where, and hold none.
 `materialize-remote.bpmn` asks **purpose** (`working` or `archival`), then the

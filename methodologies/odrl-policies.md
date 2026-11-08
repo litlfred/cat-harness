@@ -111,7 +111,7 @@ stated so nobody reads `@conformsTo w3c-odrl` as full conformance.**
    `hasPolicy`, `transfer` — refused**, for the same reason: no reader.
 3. **`target` is optional; ODRL requires it.** §2.6.1: *"A Permission MUST
    have one target property value of type Asset"* (Prohibition likewise,
-   §2.6.2). Here an absent target means the instance's whole graph. Every live
+   §2.6.2). Here an absent target means the layer's whole graph. Every live
    rule omits it.
 4. **The default conflict strategy is `prohibit`; ODRL's is `invalid`.** §2.10:
    *"If the conflict property is not explicitly set, the default of invalid

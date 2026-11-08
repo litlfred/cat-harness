@@ -43,7 +43,7 @@ Owner, 2026-10-04:
   the schema.
 
 **The `derived` layer is under-declared.** Nine directories across all
-instances are in it: six `library/` entries, `uml/`, `subscriptions/` and
+layers are in it: six `library/` entries, `uml/`, `subscriptions/` and
 smart-trust's `openapi/`. Missing from it:
 
 | what | where it is today | why it is derived |
@@ -78,14 +78,14 @@ convention or by hand:
 ```
 
 - **A list of directory ids, resolved across `needs`**, exactly as
-  `computedFrom` is. An id the instance neither declares nor inherits is
+  `computedFrom` is. An id the layer neither declares nor inherits is
   refused. One resolver serves both, so the two cannot disagree about what
   "reachable" means.
 - **On the derived side, not the source side (the inverse of #1966's
   `rendersTo`).** The derived graph's writer is what knows its inputs. A Tool
   owns its own `satisfies` for the same reason (`bpmn-processes` §"There is no
   `tool` element"). A source-side `rendersTo` would make every upstream graph
-  enumerate consumers in instances it cannot see: smart-trust's index would
+  enumerate consumers in layers it cannot see: smart-trust's index would
   have to name fhir-harness's pages, which is the wrong direction for the
   layering gates.
 - **Directory granularity, deliberately.** File-level reachability inside a
@@ -112,7 +112,7 @@ convention or by hand:
   is their rendering order. A new check, part of the gate below, flags any
   directory that names, via `derivedFrom`, a source declared AFTER it, so the
   interim rule fails loudly rather than rendering stale.
-- **Target.** A topological order over `derivedFrom`, across instances in the
+- **Target.** A topological order over `derivedFrom`, across layers in the
   `needs` order that `dependency-order.ts` already computes. A cycle is
   refused.
 
@@ -122,7 +122,7 @@ convention or by hand:
   `check:document-kind-sources`.
 - No cycles.
 - While the interim rule applies, no consumer is declared before a source in
-  the same instance.
+  the same layer.
 - Every directory in the `derived` layer either names `derivedFrom` or says
   why not, in a field the gate reads. A `library/` is derived from an
   *external* publication, which is not a declared graph. Absence must be a
@@ -135,7 +135,7 @@ convention or by hand:
   on any change over-builds badly. Then the edge needs a selector, and that is
   the staging cone's job (`4j86`), not this schema's.
 - **An edge that cannot resolve across `needs`,** because the source sits in an
-  instance the consumer does not need. That is the chrome case, already met in
+  layer the consumer does not need. That is the chrome case, already met in
   `ig-chrome.ts`: *"there is no `needs` path from smart-trust to smart-base."*
   Such an edge would show a real layering gap. The gate should **report** it as
   that, rather than this proposal inventing a `needs` edge to make it resolve.

@@ -143,7 +143,7 @@ a decision exists.
 Four places to look, in this order:
 
 1. **The proposals — the design corpus.** They live in the `docs/` of the
-   instance whose stub needs them; today that is
+   layer whose stub needs them; today that is
    [`cat-harness/docs/proposals/`](../../../docs/proposals/index.md), and its
    `index.md` is where to start. **Resolve the directory rather than
    remembering this sentence** — a stub's `docs/` is where its proposals are,

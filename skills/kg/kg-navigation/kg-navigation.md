@@ -19,8 +19,8 @@ missing the moment the layout moves.
 ## The one fact everything else follows from
 
 **Skills are content in a declared graph, not files in a directory you
-memorise.** An instance says where its graph is, in its declaration at its
-repository root. It may put it anywhere. In *this* instance the entry reads:
+memorise.** A layer says where its graph is, in its declaration at its
+repository root. It may put it anywhere. In *this* layer the entry reads:
 
 ```json
 { "id": "skills", "path": "skills/", "graphTypologies": ["skills"] }
@@ -30,9 +30,9 @@ Read that as three separate things, because they change independently:
 
 | | what it is | stable? |
 |---|---|---|
-| `id` | this instance's name for the directory | stable across a relocation — that is its job |
+| `id` | this layer's name for the directory | stable across a relocation — that is its job |
 | `path` | where it happens to be **here** | not stable, and not yours to assume |
-| `graphTypologies` | what kind of graph lives there | the vocabulary, shared across instances |
+| `graphTypologies` | what kind of graph lives there | the vocabulary, shared across layers |
 
 An agent that learned `skills/` learned the one column that is allowed to
 change. Ask for the graph; do not navigate to the path.
@@ -40,7 +40,7 @@ change. Ask for the graph; do not navigate to the path.
 > **`kg` is a deprecated alias.** `GRAPH_TYPOLOGY_ALIASES` in
 > `schemas/kg/cat-harness.ts` maps `kg` → `cat-harness`, so a declaration or a
 > query using `kg` resolves and is marked deprecated. **Do not read `kg` as a
-> directory `id`** — in this instance the id is `skills`.
+> directory `id`** — in this layer the id is `skills`.
 >
 > **A Subgraph id is its name inside its Harness**, and the Harness name
 > qualifies it: `cat-harness.skills`, `bootstrap.skills`.
@@ -61,7 +61,7 @@ and each running process's position beside its work item.
 
 **What `skill_list` serves is the package registry.** `LOCAL_PACKAGES` in
 `scripts/skill-packages.ts` is built from `resolveSkillDirs`
-(`schemas/kg/harness-config.ts`), which computes the cross-instance overlay
+(`schemas/kg/harness-config.ts`), which computes the cross-layer overlay
 from the declarations, so **a dependency's skills are reachable**. A package
 the registry omits is invisible to `skill_fetch`, and `workflow_next` would
 hand an agent a skill that answers *"package not found"*; `kg:audit`'s

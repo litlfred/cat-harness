@@ -19,7 +19,7 @@ not part of a post-MVP SDLC step and is not called from `crdm-deliver.bpmn`.
 It looks at the arriving graphical assets laid out in the design they are for,
 so a finding is a decision about what the assets **will be**, taken while it is
 still cheap. The questions: accessibility measured rather than asserted,
-branding against the instance's own declaration, and every declared locale.
+branding against the layer's own declaration, and every declared locale.
 
 **Theme choice is an authoring judgement.** There is no
 role-to-theme mapping ([`theme.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/ui/theme.ts) records why), so
@@ -65,9 +65,9 @@ So a person looks at the assets laid out in their design (`R_Judge`). That is a
 step in the diagram, not an optional extra, because no automated check catches
 either case above.
 
-## Branding is a question about the INSTANCE, not about taste
+## Branding is a question about the LAYER, not about taste
 
-Marks, palettes and art are checked against the instance's own declaration
+Marks, palettes and art are checked against the layer's own declaration
 rather than a remembered style. The sharpest form of the question comes from
 downstream: **would a folio depending on this platform inherit something it did
 not choose?** `landing.html` states it as a rule — *"a downstream folio should

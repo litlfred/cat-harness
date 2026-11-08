@@ -84,7 +84,7 @@ meant to be extractable: a methodology can be lifted out, or replaced, without a
 prose edit here.
 
 So the declared set is **the contents of the `methodology` graph**, read from the
-instance's declaration. Ask for it; do not remember it.
+layer's declaration. Ask for it; do not remember it.
 
 ## Node, skill, or both?
 

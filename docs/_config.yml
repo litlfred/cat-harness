@@ -34,7 +34,7 @@ url: "https://litlfred.github.io"
 # the second was wanted. The repository URL is now resolved from the git
 # remote by `scripts/sync-docs-harness.ts` into `docs/_data/harness.json`,
 # alongside the knowledge-graph and JSON-LD targets, so there is one answer to
-# "where is this instance published" rather than one per consumer. Putting a
+# "where is this layer published" rather than one per consumer. Putting a
 # link back here would restore the header text this removed.
 
 footer_content: >-
@@ -228,7 +228,7 @@ defaults:
   # `default-scope-globs.test.ts` holds each generated list to its glob's
   # match set and the composed config to having no glob left.
   #
-  # The route is the `docs` kind and this instance's declared name
+  # The route is the `docs` kind and this layer's declared name
   # (`scripts/docs-route.ts`); `docs-route.test.ts` holds every permalink here
   # to it and checks the coverage both ways. Generators ask
   # `scripts/lib/jekyll-permalink.ts` rather than swapping `.md` for `.html`.

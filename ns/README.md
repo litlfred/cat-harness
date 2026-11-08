@@ -7,7 +7,7 @@ generated: "scripts/subgraph-readmes.ts of the bootstrap toolset (https://github
 
 # cat-harness-ns
 
-The JSON-LD @contexts this instance publishes, one per namespace, served at `<iriBase>ns/<name>/v1.jsonld`: `content/` (the shared content context, written by `scripts/gen-jsonld-context.ts`) and `subgraph/` (the subgraph context the docs JSON-LD names). Both are committed. `context/v1.jsonld`, the instance context, is NOT committed and stays listed under `builtAtPublish`, because it is computed over the checkout's other instances. Declared 2026-10-24 under bean `0uu2` (owner, card "A. Declare and keep"): before this only `ns/context/v1.jsonld` was named, so the two committed contexts sat in a present-but-undeclared directory that no consumer scanning the declaration could see.
+The JSON-LD @contexts this layer publishes, one per namespace, served at `<iriBase>ns/<name>/v1.jsonld`: `content/` (the shared content context, written by `scripts/gen-jsonld-context.ts`) and `subgraph/` (the subgraph context the docs JSON-LD names). Both are committed. `context/v1.jsonld`, the layer context, is NOT committed and stays listed under `builtAtPublish`, because it is computed over the checkout's other layers. Declared 2026-10-24 under bean `0uu2` (owner, card "A. Declare and keep"): before this only `ns/context/v1.jsonld` was named, so the two committed contexts sat in a present-but-undeclared directory that no consumer scanning the declaration could see.
 
 Part of [C@T Harness](../README.md) 0.1.0, declared as `cat-harness-ns`, holding `schemas`.
 

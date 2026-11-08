@@ -35,7 +35,7 @@ the choices, and a view that shows them.
 | `Process_MaterializeRemote` (`large-datasets/processes/`, #476) | the shared process with five gates: size, restrictions, retention, source loss, purpose | the **only** way bytes arrive |
 | `sync-remote-skills.ts` | pin a 40-character SHA, write byte-for-byte, record fixity, and `--check` it | the **pattern**, generalised from skills to subgraphs and assets |
 | `harness-tiles.ts` | a harness is *instantiated* when `<name>.config.json` sits at the repository root, which puts it in the navbar's bottom region | what **instantiating** a subscribed harness means |
-| `instanceRepositories()` (#1652) | instance ↔ `owner/repo`, with the planned home of every staged instance | where the **known substrates** come from |
+| `instanceRepositories()` (#1652) | layer ↔ `owner/repo`, with the planned home of every staged layer | where the **known substrates** come from |
 
 ### Why not a fifth relation beside needs, references, utilizes and associated
 
@@ -43,7 +43,7 @@ the choices, and a view that shows them.
 `associatedHarnesses` is never loaded. A subscription sits **between** them and
 moves: an item is referenced when you subscribe, and becomes materialised only
 when you choose it. Modelling that as a new relation kind would give two
-answers to "does this instance hold X": the relation and the materialisation
+answers to "does this layer hold X": the relation and the materialisation
 record. So the **state lives on the materialisation record**, and the
 subscription holds only the choice and the pin.
 
@@ -53,7 +53,7 @@ A **substrate** is an external repository that:
 
 1. carries a root declaration meeting bootstrap's schema requirements
    (`bootstrap-tools/schemas/graph.ts`, `KnowledgeGraphDeclarationSchema`), and
-2. declares **at least one** harness instance.
+2. declares **at least one** instantiated harness.
 
 That is the owner's definition. It is checkable without cloning the whole
 repository: the declaration file alone answers both points.
@@ -108,15 +108,15 @@ per substrate:
 | substrate | repository | status | source of the row |
 |---|---|---|---|
 | iHRIS | `litlfred/ihris` | **exists** | `associatedHarnesses` in `cat-harness.json` |
-| WHO IRIS | the IRIS replica's repository | **exists, empty**; the staged instance is the IRIS replica | `<iris-replica>.json` → `repository` |
+| WHO IRIS | the IRIS replica's repository | **exists, empty**; the staged layer is the IRIS replica | `<iris-replica>.json` → `repository` |
 | WHO style guide | none; **merging into the IRIS replica as a subgraph** | owner, 2026-09-30, paraphrased: the WHO voice style guide is KG content derived from the IRIS replica, so merge it, docs included, into a subgraph there | not a separate substrate |
 | WHO World Health Data Hub | none yet | proposed (owner, 2026-09-30) | hand-entered, `status: proposed` |
-| every other staged instance | its planned `repository` | planned | `instanceRepositories()` |
+| every other staged layer | its planned `repository` | planned | `instanceRepositories()` |
 
 **Derived where a fact already exists, hand-entered only where none does.**
-Every staged instance already declares its planned `repository` (#1652), so
+Every staged layer already declares its planned `repository` (#1652), so
 listing those by hand would create a second copy of a fact free to drift.
-Only a substrate with no instance here (the Data Hub, or a third party) is
+Only a substrate with no layer here (the Data Hub, or a third party) is
 entered by hand, and it carries a `status`: `proposed`, `planned`, `exists` or
 `published`.
 

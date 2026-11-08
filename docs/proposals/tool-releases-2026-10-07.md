@@ -153,7 +153,7 @@ families:
 2. **`folio-tool-profile/v1`** (§2 above): a named set of tool releases.
 3. **`folio-run-context/v1`, new**: *what this run ran on*, stated once:
    - `platform`: the commit SHA of the checkout that ran;
-   - `mounts`: the mount-lock digest, plus each mounted instance's pinned SHA,
+   - `mounts`: the mount-lock digest, plus each mounted layer's pinned SHA,
      reusing `CommitShaSchema` and `LockedInstanceSchema`;
    - `profile`: the tool profile's name and digest;
    - `releases[]`: every tool and runtime release that was resolved, as

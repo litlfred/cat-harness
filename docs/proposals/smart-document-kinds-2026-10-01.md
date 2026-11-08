@@ -58,7 +58,7 @@ with that harness follows. One schema, `folio-document-kind/v1`:
 | `sections[]` | `{ id, title, required, description, computedFrom? }` — `computedFrom` names the declared graphs a section is derived from (e.g. `library`), so "computable from smart-base assets" is a checkable claim |
 | `sources[]` | where the structure itself comes from — a library entry and section — so a kind is never invented |
 
-It is a graph typology like `themes` or `voices`: declared in an instance's
+It is a graph typology like `themes` or `voices`: declared in a layer's
 `<instance>.json`, validated by `check:kind-validators`, rendered by a viewer
 Tool. **Core knows that document kinds exist; it never knows which.**
 
@@ -133,7 +133,7 @@ Owner, 2026-10-01:
   with `modelledBy` (`sgkg-l1#recommendation`), and
   `smart-base:document-kinds:check` fails on a term not in the pin, an
   `extends` that names no kind, a loop, or a child redeclaring its parent's
-  section. Work item `pebe`; feeding smart-kg instance documents is work item `8pzh`.
+  section. Work item `pebe`; feeding smart-kg layer documents is work item `8pzh`.
 - **A finding the mapping surfaced:** guideline sections map onto smart-kg
   **L1** classes, DTH sections onto **L2** (DAK) classes — persona, user
   scenario, business process, data element, requirements. A DTH states for a

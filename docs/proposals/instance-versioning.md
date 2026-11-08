@@ -1,17 +1,17 @@
 ---
-title: "Instance versioning and dependency resolution, aligned to FHIR/SUSHI"
+title: "Layer versioning and dependency resolution, aligned to FHIR/SUSHI"
 kind: proposal
 movedFrom: fsh-guts/proposals/
 movedOn: 2026-09-23
 issue: 592
 summary: >-
-  Downstream alignment to FHIR/SUSHI is a hard constraint, which settles exact-version pinning over npm-style ranges. Proposes id + version on publishable instances, a dependsOn-shaped published record, and a version bump COMPUTED by diffing the exported graph rather than asserted by a commit message.
+  Downstream alignment to FHIR/SUSHI is a hard constraint, which settles exact-version pinning over npm-style ranges. Proposes id + version on publishable layers, a dependsOn-shaped published record, and a version bump COMPUTED by diffing the exported graph rather than asserted by a commit message.
 ---
 
-# Instance versioning and dependency resolution
+# Layer versioning and dependency resolution
 
 > **Editorial correction, 2026-09-23.** This proposal was written while the
-> instance declaration was a fixed `harness.json`; it is `<name>.json` since
+> layer declaration was a fixed `harness.json`; it is `<name>.json` since
 > the 2026-09-21 split (`<name>.config.json` is the config beside it). The
 > references below were updated so a reader is not sent to a file that does not
 > exist — the proposal's argument is untouched, and only the filename moved.
@@ -25,7 +25,7 @@ Asked 2026-09-20, in three messages:
 > too, but IG publisher is heavy... sushi maybe has a bit we can extract for
 > calculation of version? or maybe we do node versision + semver.
 
-> \[are instances consumed outside this monorepo?\] **Yes — some are consumed
+> \[are layers consumed outside this monorepo?\] **Yes — some are consumed
 > externally.**
 
 > downstream we need to align to fhir, sushi. **hard constraint.**
@@ -35,7 +35,7 @@ Asked 2026-09-20, in three messages:
 **The hard constraint settles the question this proposal was going to argue.**
 npm-style semver *ranges* are out. FHIR pins exact versions, and a downstream
 that must align to FHIR cannot be handed a dependency set expressed as ranges.
-What remains to design is narrower and more interesting: what an instance's
+What remains to design is narrower and more interesting: what a layer's
 version *means*, and what makes it go up.
 
 ## 1. Measured, 2026-09-20 on `main` at `0206e908`
@@ -46,7 +46,7 @@ version *means*, and what makes it go up.
 | its shape | `{name, path?, git?, ref?, provides?}` — `cat-harness/schemas/harness-config.ts:52-80` |
 | **version field** | **none** |
 | `ref` | a git ref that **defaults to the default branch** |
-| instances declaring their own version | **0 of 11** |
+| layers declaring their own version | **0 of 11** |
 | the default external link | **git submodule**, written by `folio_init` |
 | release machinery | `release-folio-assistant.yml` (tarball via GitHub Releases), `release-please.yml` (semver from conventional commits) |
 | git tags in this repository | **0** |
@@ -125,7 +125,7 @@ a no**, and §4 gives the answer it was reaching for from somewhere better.
 > `kn0t` drifted from its skill in four places within a day.
 
 What this section originally proposed, kept because the reversal is only
-legible against it: *"Every instance does **not** get a version"* — an instance
+legible against it: *"Every instance does **not** get a version"* — a layer
 declared `publishable: true` and **only then** owed an `id` and a `version`,
 which were **refused** otherwise.
 
@@ -142,11 +142,11 @@ does not exist.
 good and its model still could not say what was true. §3.1 argued correctly
 that "we decided this is internal" and "nobody looked" are different facts and
 a boolean defaulting to `false` erases the second. It then shipped a third
-state that could express neither: all 17 instances reported *undecided* while
+state that could express neither: all 17 layers reported *undecided* while
 the answer was known for every one of them. **A third state that cannot say
 what is the case is a missing value, not a third state.**
 
-### 3.2 A publishable instance declares `id` and `version`
+### 3.2 A publishable layer declares `id` and `version`
 
 - **`id`** — reverse-DNS, stable forever, never reused. It is the identity.
 - **`version`** — a semver triple. No range syntax anywhere, ever (rule 2).
@@ -154,14 +154,14 @@ what is the case is a missing value, not a third state.**
 
 **Implemented 2026-09-23**, as a `superRefine` on the declaration rather than a
 discriminated union — a union on a two-valued discriminant cannot express
-*undecided*, which is the state every instance is in. All three are **required**
+*undecided*, which is the state every layer is in. All three are **required**
 under `publishable: true` and **refused** otherwise: an `id` on something
 nothing outside may depend on reads, to any consumer of the export, exactly like
 a published package.
 
 `canonicalUrl` became an obligation rather than a remark, which is an
 interpretation of this section and is flagged as one. The argument is §3.4's:
-its record is `{packageId, version, uri}`, so a publishable instance without one
+its record is `{packageId, version, uri}`, so a publishable layer without one
 cannot be *expressed* as a dependency by anything that depends on it.
 
 `ExactVersionSchema` moved down into `schemas/cat-harness.ts` and is re-exported
@@ -204,8 +204,8 @@ because it is the one that can be written against today's data. It is
 
 ### 3.4 The published graph carries a `dependsOn`-shaped record
 
-`kg-export` emits, per publishable instance, `{packageId, version, uri}` per
-dependency. An external consumer then reads this instance's dependency set the
+`kg-export` emits, per publishable layer, `{packageId, version, uri}` per
+dependency. An external consumer then reads this layer's dependency set the
 same way it reads a FHIR IG's, which is what "align downstream" means in
 practice.
 
@@ -213,17 +213,17 @@ practice.
 checked by `check:published-refs`'s third carrier, which carried this as a
 declared gap until now.
 
-**The part worth stating is what it emits INSTEAD.** Most instances here are not
+**The part worth stating is what it emits INSTEAD.** Most layers here are not
 publishable and §3.1 says that is correct, so most edges out of a publishable
-instance go to something with no `id` and no `version`. `dependsOn: []` would
-state that the instance depends on nothing, which is false; a partial record
+layer go to something with no `id` and no `version`. `dependsOn: []` would
+state that the layer depends on nothing, which is false; a partial record
 with an empty `version` would be worse, since a consumer resolves it and fails.
 So each such edge becomes a gap carrying **which of four reasons** applies —
 `undecided`, `internal`, `unresolved`, `unreadable` — because the remedy differs
 for each, and `undecided` and `internal` are precisely the distinction §3.1
 spent a third state on.
 
-An instance that is not publishable emits no block at all and says why, in
+A layer that is not publishable emits no block at all and says why, in
 `dependsOnUnavailable`. Today every export carries that field, which is the
 honest reading of the repository rather than a silence over it.
 
@@ -233,7 +233,7 @@ This is the part the owner asked to be worked out, and it is where the scheme
 earns its keep.
 
 **A version governs a surface.** For a code library that is the exported API.
-For an instance it is the **declared** surface, and this repository already
+For a layer it is the **declared** surface, and this repository already
 knows how to enumerate it: graph typologies, skill ids, tool ids, block kinds,
 asset roles, declared directories — everything `kg-export` walks.
 
@@ -258,7 +258,7 @@ that removed a skill id yields a minor bump and a broken consumer. The diff
 cannot make that mistake.
 
 **Proposed gate.** `check:version-bump` compares the exported surface at
-`HEAD` against the last released tag for that instance and fails when the
+`HEAD` against the last released tag for that layer and fails when the
 declared `version` is lower than the computed one. It never *writes* the
 version — the author may always bump further than computed (a prose rewrite
 released as minor is their call), but never less.
@@ -311,18 +311,18 @@ and §3.3 leaves it alone.
 
 ## 6. Open questions
 
-1. ~~**Which instances are publishable?**~~ — **ANSWERED 2026-09-23.** All of
+1. ~~**Which layers are publishable?**~~ — **ANSWERED 2026-09-23.** All of
    them carry an id and a version, and all of them are in `draft`. The question
-   was malformed rather than open: it asked which instances had crossed a line
+   was malformed rather than open: it asked which layers had crossed a line
    that nothing was able to draw.
 
-   The remaining question is **not** which instances, it is *what publishing
+   The remaining question is **not** which layers, it is *what publishing
    is*: the owner's *"formal publication process needs to be deinfed/neeeds
    tools/depends on instance"*. That is design work with a per-instance answer,
    not a field somebody fills in.
 
    Two things this section got wrong are worth recording rather than quietly
-   fixing. It said **19 instances**; there are **17** — a count in prose,
+   fixing. It said **19 layers**; there are **17** — a count in prose,
    falsified, which is the failure `directory-conventions` and `ylj7` have both
    already paid for. And it named `cat-harness`, the IRIS replica and
    `who-style-guide` as *"plainly"* or *"probably"* publishable, which under

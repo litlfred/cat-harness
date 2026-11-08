@@ -78,7 +78,7 @@ The harness owns the vocabulary of *work*, not of *content*.
 | `Process` (BPMN) / `Decision` (DMN) | the deterministic workflow itself |
 | `Todo` | user/agent workflow state |
 | `Bean` | the agent work plan; a workflow-state format with no schema cannot be validated, carry a QA sidecar, or be a KG node |
-| `CatHarness` declaration | which directories an instance scans, and each one's graph typology |
+| `CatHarness` declaration | which directories a layer scans, and each one's graph typology |
 | `Content` (abstract) | the *base* only: identity, label, provenance. No block kinds, no profiles. |
 
 ### Skills — 24: 21 from `folio-core`, plus 3 written for MCP projection
@@ -345,7 +345,7 @@ skills are how an agent takes a Tool node describing a CLI and produces a
 working MCP service from it. An MCP tool declaration is a name, a description
 and a JSON Schema for its input; `io.inputs`/`io.outputs` are already the I/O
 contract and `invoke.shell` the mechanism, so **the projection is a rename, not
-a translation**. An instance with no server loses a transport, not a
+a translation**. A layer with no server loses a transport, not a
 capability — which is what keeps sovereign-compute and air-gapped operation
 reachable.
 

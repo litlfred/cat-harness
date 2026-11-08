@@ -167,7 +167,7 @@ Scenario that names no test, a tag on a `Feature:` line, an `@itb:` tag naming
 no case or whose source is not held, and an unknown dialect. It reads any tree
 (`--root`, `--under`, `--itb`, `--json`); it is not a gate until a repository has
 backfilled. The kg-audit criterion **`test-has-gherkin`** records the same
-gap for an instance, and adds every test-plan case whose `.feature` is missing
+gap for a layer, and adds every test-plan case whose `.feature` is missing
 or does not resolve.
 
 ### Adding a new formal-layer project

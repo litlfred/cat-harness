@@ -13,7 +13,7 @@ tested-by:
 
 # Knowledge graph affordances — browse, materialise, instantiate, copy-into-folio
 
-A person or an agent arriving at any conformant instance has **four verbs**
+A person or an agent arriving at any conformant layer has **four verbs**
 available on what they find:
 
 1. **`browse`** — explore the graph, its subgraphs, its skills, its processes,
@@ -50,7 +50,7 @@ front and **degrades cleanly** rather than failing halfway through a procedure.
 - In a checkout with an MCP server attached, `browse` uses `skill-list`,
   `skill-fetch`, `search-graph` and `get-neighbors`.
 - In a bare filesystem checkout with no server and no network, `browse` reads
-  `<name>.json` at the instance root, resolves `directories[]` and `assets[]`,
+  `<name>.json` at the layer root, resolves `directories[]` and `assets[]`,
   and reads the files directly ([`kg-navigation`](../kg-navigation/kg-navigation.md)).
 
 No step of `browse` may require `git-push`, `github-api` or `github-connector`.
@@ -90,7 +90,7 @@ the process is [`copy-into-folio.bpmn`](../../../processes/kg/copy-into-folio.bp
 Like [`copy-out-materialized`](../../library/large-datasets/copy-out-materialized.md),
 copying a knowledge-graph asset into a folio is **two writes and a refusal**:
 
-1. **Never touch the source graph.** The upstream instance is read-only from the
+1. **Never touch the source graph.** The upstream layer is read-only from the
    copier's point of view; the arrow runs out of the source lane and never back.
 2. **Copy the bytes and declare the asset in the target folio's `<name>.json`
    `assets[]`.** A file copied into an undeclared scratch path is invisible to
@@ -120,11 +120,11 @@ from original work:
 |---|---|
 | **present, and `ref` matches upstream** | copied from `instance` at `path` and current with that upstream commit |
 | **present, and `ref` differs or is omitted** | copied from `instance` at `path`, either adapted locally since `ref` or taken without a commit pin (staleness is checkable only when `ref` is recorded) |
-| **absent (`undefined`)** | **authored in this instance** — a third state, never "copied from an unknown place" |
+| **absent (`undefined`)** | **authored in this layer** — a third state, never "copied from an unknown place" |
 
 A copied asset MUST carry `source`: without it the copy is indistinguishable
 from locally authored work, and nothing downstream can reconstruct which
-instance it came from.
+layer it came from.
 
 ### Working on the copy in the target folio
 

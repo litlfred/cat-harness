@@ -74,7 +74,7 @@ Freshness is the QA sweep's own rule, including the `uses`-graph hash that
 graph-scoped criteria depend on; without it every graph-scoped criterion
 reads stale straight after a sweep.
 
-The QA sweep writes verdicts under the instance root; the summary also reads,
+The QA sweep writes verdicts under the layer root; the summary also reads,
 second, under the directory the sweep was run on, so verdicts an older sweep
 wrote there are still found.
 

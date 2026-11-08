@@ -50,7 +50,7 @@ Scope: every generator in `cat-harness/`, `folio-assistant-core/` and
 `bootstrap-tools/` that writes a value into a published vocabulary or a UI
 surface. Found by grepping for vocabulary keys (`skos:`, `dcterms:`,
 `schema:`, `prov:`, `rdfs:`) and for the context aliases (`prefLabel`,
-`title`, `definition`, …), then reading each hit. The domain instances
+`title`, `definition`, …), then reading each hit. The domain layers
 (`smart-*`, `who-*`, `fhir-harness`) were grepped too and hold none in a TypeScript generator. A row is one source type → one target, at one site. Some rows carry
 several fields. Line numbers are at `13620da`.
 
@@ -164,8 +164,8 @@ which predicate.
 | # | source type | source field | target | relation | site |
 |---|---|---|---|---|---|
 | 56 | any graph string with a catalogue translation | the string | `{"@value", "@language": locale}`; a string with no translation stays untagged | conditional on **language** metadata | `cat-harness/scripts/kg-locale-export.ts:306` |
-| 57 | instance declaration | `title` (falling back to `name`), `description` | navbar tile `title`, `label`, `description` | copy with fallback, fan-out | `cat-harness/scripts/harness-tiles.ts:1174-1178` |
-| 58 | instance declaration (duplicate title) | `title`, `name` | tile `label` = `${title} (${name})` | conditional, transform | `:1450` |
+| 57 | layer declaration | `title` (falling back to `name`), `description` | navbar tile `title`, `label`, `description` | copy with fallback, fan-out | `cat-harness/scripts/harness-tiles.ts:1174-1178` |
+| 58 | layer declaration (duplicate title) | `title`, `name` | tile `label` = `${title} (${name})` | conditional, transform | `:1450` |
 | 59 | visualisation | `title` | graph tile `title` | copy | `cat-harness/scripts/graph-tiles.ts:272` |
 
 **Totals:** 59 rows across 17 files. Two of them (44 and 52) are **already
@@ -200,7 +200,7 @@ reference. Four lessons carry over; the vocabulary does not:
    Here that is the `vocabulary-authority` split: *authoritative* versus
    *derived copy of*.
 4. **Hold by reference.** No FHIR, ConceptMap or smart-base term enters the
-   harness. A domain instance's own mappings stay in that instance.
+   harness. A domain layer's own mappings stay in that layer.
 
 **Tool nodes (work item `d308`, `cat-harness/schemas/tool.ts:414`).** An ETL
 mapping is reached through a Tool declared as a KG node. A Tool can run
@@ -457,7 +457,7 @@ plus identity (`@id`, `@type`). Only the field-to-predicate lines moved.
 
 - `_kg/cat-harness-glossary.jsonld`, `_kg/bootstrap-glossary.jsonld` and
   `_kg/cat-harness-code-lists.jsonld` are **byte-identical** before and after
-  (`cmp`). Between them the two instances exercise every table: bootstrap has
+  (`cmp`). Between them the two layers exercise every table: bootstrap has
   the retired and variable-lane nodes, cat-harness the rest.
 - `glossary-export.test.ts` passes: 27 existing tests, plus one new test that
   every key a table writes is bound, in the document's `@context`, to that

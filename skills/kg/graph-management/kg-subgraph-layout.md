@@ -116,9 +116,9 @@ light in both colour schemes, which is what the family tints were measured on.
 
 ## With or without the dependent sub-graphs
 
-The overview draws the sub-graphs an instance **itself** declares
-(`instanceDirectories`), one diagram per instance. It does not compose an
-instance with the layers it `needs`, so a "with dependencies" view does not
+The overview draws the sub-graphs a layer **itself** declares
+(`instanceDirectories`), one diagram per layer. It does not compose an
+layer with the layers it `needs`, so a "with dependencies" view does not
 exist yet. Composing one is a union of declared sub-graphs along `needs`, and
 it belongs in the generator's model, so that all three renderings gain it
 together, not in the DOT alone.

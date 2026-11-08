@@ -17,7 +17,7 @@
   </bpmn:collaboration>
 
   <bpmn:process id="Process_MultiLocaleTranslation" name="Multi-locale translation" isExecutable="false">
-    <bpmn:documentation>Translate one or more instances into several locales at once, as a team: one source-language lead, one translator per locale, an untainted round trip, and the owner's merge window. The result is unofficial, on main, and kept current by a watcher.
+    <bpmn:documentation>Translate one or more layers into several locales at once, as a team: one source-language lead, one translator per locale, an untainted round trip, and the owner's merge window. The result is unofficial, on main, and kept current by a watcher.
 
 You are in this process when more than one locale is being produced from the same source at the same time. `translation-workflow` is the machine half for one catalogue and `human-translation-workflow` is the path to an official, signed-off translation; this process is the team around them. It extracts ONCE: every locale starts from the same templates, merged to main in one source PR before any locale begins, and no translator re-extracts. Each locale then lands as its own PR to main, never into the source branch, and a source PR's branch receives nothing after it merges.
 
@@ -27,7 +27,7 @@ Two things are never done in a translation: fixing the source (a source-text err
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_MultiLocaleTranslation">
       <bpmn:lane id="Lane_ML_Owner" name="Owner" partitionElementRef="user">
-        <bpmn:documentation>Decides which instances and locales are translated, and when locale PRs may be merged. The merge window set here binds the lead's merge step and the refresh watcher alike. Official sign-off is also this person's, and is a separate process.</bpmn:documentation>
+        <bpmn:documentation>Decides which layers and locales are translated, and when locale PRs may be merged. The merge window set here binds the lead's merge step and the refresh watcher alike. Official sign-off is also this person's, and is a separate process.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_ML</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_ML_Scope</bpmn:flowNodeRef>
       </bpmn:lane>
@@ -60,7 +60,7 @@ Two things are never done in a translation: fixing the source (a source-text err
     </bpmn:startEvent>
 
     <bpmn:userTask id="Task_ML_Scope" name="Set locales, scope and merge window">
-      <bpmn:documentation>Which instances, which locales, which assets (pages, diagrams, glossary, FHIR terms), and the window in which locale PRs may be merged.</bpmn:documentation>
+      <bpmn:documentation>Which layers, which locales, which assets (pages, diagrams, glossary, FHIR terms), and the window in which locale PRs may be merged.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:no-skill reason="The owner's decision about what is wanted and when. The skills govern what the lead and the translators do with the answer."/>
       </bpmn:extensionElements>
@@ -69,7 +69,7 @@ Two things are never done in a translation: fixing the source (a source-text err
     </bpmn:userTask>
 
     <bpmn:callActivity id="Task_ML_Extract" calledElement="GT_ExtractPot" name="Extract every template once">
-      <bpmn:documentation>Once, for every locale: the `.pot` templates for the pages, the diagrams (`translate-bpmn --extract`) and the glossary schemes, each by the instance's own extractor. A locale that would need a different template is a defect in the extraction, not a reason to extract again.</bpmn:documentation>
+      <bpmn:documentation>Once, for every locale: the `.pot` templates for the pages, the diagrams (`translate-bpmn --extract`) and the glossary schemes, each by the layer's own extractor. A locale that would need a different template is a defect in the extraction, not a reason to extract again.</bpmn:documentation>
       <bpmn:incoming>Flow_ML_2</bpmn:incoming>
       <bpmn:outgoing>Flow_ML_3</bpmn:outgoing>
     </bpmn:callActivity>
@@ -84,7 +84,7 @@ Two things are never done in a translation: fixing the source (a source-text err
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_ML_Watcher" name="Schedule the refresh watcher">
-      <bpmn:documentation>Schedule a fresh session that follows `translation-refresh` on each instance, so a template that moves after today is caught by its check failing, not by a reader.</bpmn:documentation>
+      <bpmn:documentation>Schedule a fresh session that follows `translation-refresh` on each layer, so a template that moves after today is caught by its check failing, not by a reader.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="translation-refresh"/>
         <cat-harness.processes:no-call reason="This step arms the watcher; it does not run it. translation-refresh starts on its own timer, in a fresh session, after this process has ended."/>
@@ -146,7 +146,7 @@ Two things are never done in a translation: fixing the source (a source-text err
     </bpmn:callActivity>
 
     <bpmn:serviceTask id="Task_ML_Glossary" name="Check glossary consistency">
-      <bpmn:documentation>`translation:glossary:check`, against the layered term base: the normative reference glossaries first, then each layer in the order the index config lists it, the instance's own glossary last and never overriding. A platform term found in text of another subject area is a sense check for a person, not a violation.</bpmn:documentation>
+      <bpmn:documentation>`translation:glossary:check`, against the layered term base: the normative reference glossaries first, then each layer in the order the index config lists it, the layer's own glossary last and never overriding. A platform term found in text of another subject area is a sense check for a person, not a violation.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="translation-manager"/>
       </bpmn:extensionElements>

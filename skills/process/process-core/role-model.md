@@ -25,7 +25,7 @@ Six objects, each with a home:
 |---|---|---|
 | **Actor** | a concrete participant. Human, agentic or mechanical. Persists across every process. | `scenarios/actors/*.json` (the declared `scenarios` graph, beside the roles) |
 | **Role** | **the swimlane** — a persona an actor *takes on* because of the lane it is acting in. Carries a collection of Skills. | `scenarios/roles.json` |
-| **Skill** | an instruction body: what the actor needs to know to perform the task it was handed. | `skills/<pkg>/*.md` (naming its `input:`/`output:` contracts, usually under `schemas/skills/<name>/`); JSON `SkillDefinition`s in each owning instance's `skills/skill-definitions/` |
+| **Skill** | an instruction body: what the actor needs to know to perform the task it was handed. | `skills/<pkg>/*.md` (naming its `input:`/`output:` contracts, usually under `schemas/skills/<name>/`); JSON `SkillDefinition`s in each owning layer's `skills/skill-definitions/` |
 | **Process / Decision** | BPMN and DMN. Lanes bind roles; activities name skills; gateways may compute their branch from a table. | `processes/**/*.bpmn`, `processes/**/decisions/*.dmn` |
 | **Requirement** | a conformance obligation, **pointed at** by what discharges it: a skill or capability names the statement in `satisfies: req:<id>#<key>`. The requirement points at `actors` (who is bound) and `derivedFrom` (the broader requirement it specialises). | `skills/requirements/*.json` |
 | **Permission** | what an actor is **allowed to do**. Cross-cuts roles. A W3C ODRL 2.2 rule, scoped by Process, Task or Role when it needs to be. | actions: `skills/permissions/permissions.json`; who holds them: `policies/*.jsonld` |
@@ -69,7 +69,7 @@ Do not write `roles:` in a skill's front matter.
 adjacent skill's front matter brings the field back. To learn who
 performs a skill, read `scenarios/roles.json`; the registry is the only answer
 that resolves. A role→skill edge for a skill above the harness is an
-`extensions` entry in that instance's role graph (§"A higher instance EXTENDS
+`extensions` entry in that layer's role graph (§"A higher layer EXTENDS
 a role by id").
 
 **`roles:` in a `folio-memory/v1` entry is a DIFFERENT field and stays.**
@@ -155,7 +155,7 @@ for the duration of a lane.
 ```
 
 `kind` takes one of four values, and three of them are the classification that
-matters. `external` is the fourth: a participant outside this instance, which is
+matters. `external` is the fourth: a participant outside this layer, which is
 not ours to task at all.
 
 | `kind` | the kind it names | what it can be handed |
@@ -163,7 +163,7 @@ not ours to task at all.
 | `person` | **human** | a skill to read, and a judgement to make |
 | `agent` | **agentic** | a skill to read, and a judgement to make |
 | `system` | **mechanical** | a program to run, and nothing to decide |
-| `external` | outside this instance | nothing |
+| `external` | outside this layer | nothing |
 
 **The line is judgement.** An agent and a person can both be handed an
 instruction body and asked to decide something; a mechanical system executes a
@@ -354,9 +354,9 @@ resolveRoleStack(graph, ["editor", "viewer"]) // scoped: the union for this call
 skill any caller ever had, and a closure that broad cannot fail an audit, which
 is the same as not having one.
 
-## A higher instance EXTENDS a role by id — it never edits it
+## A higher layer EXTENDS a role by id — it never edits it
 
-A third relation, across instances rather than within one graph. When a skill
+A third relation, across layers rather than within one graph. When a skill
 belongs above the harness (a core cataloguing skill, a sci Lean skill), the
 role→skill edge naming it must not stay in `cat-harness/scenarios/roles.json`
 — that is an upward reference. So the **dependent holds the pointer**, the
@@ -389,12 +389,12 @@ changes or drops anything the lower one said is still refused.
 `schemas/process/scenario-overlay.ts` applies it (`checkoutRoleGraph`,
 `checkoutActors`, `checkoutCapabilities`, `checkoutPolicies`; the
 exception is `onlyAdds`); the layers are the checkout's
-instances that depend on the role's owner, deepest first. Resolved alone, the
+layers that depend on the role's owner, deepest first. Resolved alone, the
 harness sees only its own roles. `kg:audit`, `check:raci`,
 `check:fallback-roles`, `check:actor-reach`, `kg-export` and the
 stakeholder map read the checkout's view on the platform's own run.
 
-The edge stays on a role graph — the graph of the instance that owns the
+The edge stays on a role graph — the graph of the layer that owns the
 skill — never in skill front matter.
 
 ## A lane binds its role with `partitionElementRef`
@@ -470,15 +470,15 @@ committed, under `kg-qa/` beside whatever they audit, so the diff says exactly
 which findings a change introduced. Same argument and same file shape as the
 block sweep's `*.qa.json` and the script sweep's `*.script-qa.json`.
 
-### Where the sidecars for another instance go — hosted, not written into it
+### Where the sidecars for another layer go — hosted, not written into it
 
-An instance that declares no `qa` directory does not receive sidecars inside
+A layer that declares no `qa` directory does not receive sidecars inside
 its own tree: `kgQaHomeFor` (`schemas/kg/cat-harness.ts`) puts them in the
-auditing harness's `qa` directory under the instance's stub —
+auditing harness's `qa` directory under the layer's stub —
 `cat-harness/test/results/bootstrap/` for bootstrap (a working copy, stored
 on the `qa-reports` branch with the rest of that `qa` directory; a JUDGEMENT
 about it is hosted the same way, under `test/attestations/`). A verdict ABOUT an
-instance is the auditor's output, and bootstrap is the layer that must read
+layer is the auditor's output, and bootstrap is the layer that must read
 cleanly with no harness present. The same holds once bootstrap is its own repository: the verdicts stay
 with the harness that computed them, against the pinned bootstrap
 ([`kg-separation`](../../kg/graph-management/kg-separation.md) §"The pair").
@@ -563,7 +563,7 @@ What follows from administration being a lane:
 1. Add it to `scenarios/roles.json` with a **`description`** that says what
    the **position** is, not what it is called. **`actorKinds` is a SET** drawn
    from `person`, `agent`, `system` and `external` — human, agentic,
-   mechanical, or outside this instance. It is what `activity-fulfilment-kind`
+   mechanical, or outside this layer. It is what `activity-fulfilment-kind`
    checks the lane's steps against, so it is a claim about who can actually
    stand there, not a label.
 

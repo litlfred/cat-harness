@@ -1,7 +1,7 @@
 {
   "id": "test-swarm",
   "title": "Test swarm (example)",
-  "description": "A stack of agents exercising one instance with nothing published (bean amom). Reach is left undeclared on purpose: it is unknown, never the deployment's value.",
+  "description": "A stack of agents exercising one layer with nothing published (bean amom). Reach is left undeclared on purpose: it is unknown, never the deployment's value.",
   "topology": {
     "forge": "github",
     "compute": "vendor-cloud",

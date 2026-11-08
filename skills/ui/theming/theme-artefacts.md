@@ -180,7 +180,7 @@ its own background, which is the only rule satisfiable everywhere at once.
 
 ### Absent is a real state
 
-An instance that declares no `mark-dark` renders its one mark in both
+A layer that declares no `mark-dark` renders its one mark in both
 schemes. `imageForRole`
 returns undefined and both templates fall back; nothing downstream
 special-cases a folio that never opted in.

@@ -2,11 +2,11 @@
 name: translation-refresh
 description: >
   The translation watcher: a scheduled fresh session that keeps every locale
-  of every instance current after the source moves. Cold start, then, per
-  instance, detect, refresh the templates, merge them into each locale,
+  of every layer current after the source moves. Cold start, then, per
+  layer, detect, refresh the templates, merge them into each locale,
   translate only the new and fuzzy strings with the fixed terms, run the
   gates, round-trip the changed strings, write the QA report, open one PR to
-  main, merge it only where the instance declares merge-when-green, and report source
+  main, merge it only where the layer declares merge-when-green, and report source
   mistakes as one issue. Use for "refresh the translations", "a template check
   failed", and when scheduling or running the watcher.
 ---
@@ -23,9 +23,9 @@ remembered from the session that scheduled it.
 [`translation-manager`](translation-manager.md) is the reference for every term
 used here; read its §"Translating into several locales as a team" first.
 
-**Generic on purpose.** Nothing here names an instance. Where a step depends
-on the instance (where its pages live, which extractor writes its page
-templates, how its terminology supplements are built), the instance's own
+**Generic on purpose.** Nothing here names a layer. Where a step depends
+on the layer (where its pages live, which extractor writes its page
+templates, how its terminology supplements are built), the layer's own
 `AGENTS.md` names it, and you read it there.
 
 ## What wakes it
@@ -33,12 +33,12 @@ templates, how its terminology supplements are built), the instance's own
 - **The schedule** set when the watcher was armed. A run that finds nothing
   to refresh ends at once, and that is the usual run.
 - **A template check that failed**, on main or on a PR: a source change that
-  did not refresh its templates. Run the watcher for that instance before
+  did not refresh its templates. Run the watcher for that layer before
   anything else touches its catalogues.
 
 ## Cold start, once per run
 
-1. **Clone each instance** the run covers, and follow its `AGENTS.md` cold
+1. **Clone each layer** the run covers, and follow its `AGENTS.md` cold
    start to lay down every pinned layer from its `index.lock.json`. In a
    composed checkout that is, in order: clone the mounts the lock lists,
    `bun install --frozen-lockfile`, `bun run cat mount:lock`,
@@ -47,26 +47,26 @@ templates, how its terminology supplements are built), the instance's own
 2. **Attach each repository** the run may push to. In a hosted session that
    is the session's add-repository tool, with push access. A repository the
    run cannot push to is reported, and the run goes on with the others.
-3. **Note the merge policy.** Each instance's `AGENTS.md` (§ Translations)
+3. **Note the merge policy.** Each layer's `AGENTS.md` (§ Translations)
    declares it. The default, when nothing is declared, is **open only**: the
-   run opens PRs and merges nothing. An instance may declare
+   run opens PRs and merges nothing. A layer may declare
    **merge-when-green** (step 9).
 
-## Per instance, in order
+## Per layer, in order
 
-`<root>` is the instance's directory in the checkout. Every command below
-takes `--instance <root>`, so one checkout serves every instance.
+`<root>` is the layer's directory in the checkout. Every command below
+takes `--instance <root>`, so one checkout serves every layer.
 
 | step | command | moves on when |
 |---|---|---|
-| 1. detect | `translation:status --instance <root>`, `translation:drift:check --instance <root>`, `translation:obsolete:check --instance <root>`, and the instance's template checks | any shows something to do |
-| 2. refresh templates | the instance's extractors (`translate-bpmn --instance <root> --extract` for diagrams; pages and glossary as its `AGENTS.md` names) | the template checks pass |
+| 1. detect | `translation:status --instance <root>`, `translation:drift:check --instance <root>`, `translation:obsolete:check --instance <root>`, and the layer's template checks | any shows something to do |
+| 2. refresh templates | the layer's extractors (`translate-bpmn --instance <root> --extract` for diagrams; pages and glossary as its `AGENTS.md` names) | the template checks pass |
 | 3. merge into each locale | `msgmerge --update --backup=none`, or `translation:obsolete --instance <root>` | every catalogue matches its template |
 | 4. translate new and fuzzy | by hand or by agent, with the locale term base | no empty or fuzzy entry is left |
 | 5. gates | below | every gate passes |
 | 6. round trip | [`translation-round-trip.bpmn`](../../../processes/library/translation-round-trip.bpmn) on the changed strings | both drift and not-drift are recorded |
 | 7. QA report | `translation:page-qa --instance <root>`, and the report | it is written |
-| 8. one PR | one per instance, based on main and targeting main | it is open |
+| 8. one PR | one per layer, based on main and targeting main | it is open |
 | 9. merge | only under merge-when-green, all green, round trip no fail | merged, or left open and reported |
 | 10. source mistakes | one issue on the source | filed, or none found |
 
@@ -78,24 +78,24 @@ bun run cat translation:drift:check --instance <root>   # each .po against the .
 bun run cat translation:obsolete:check --instance <root>  # msgids the source no longer yields
 ```
 
-Then the instance's template checks: `translate-bpmn:check` for its
+Then the layer's template checks: `translate-bpmn:check` for its
 diagrams, and the page and glossary template checks its `AGENTS.md` names.
 Any of them failing, or any count above zero, is a change to refresh.
 
 **Exit 2 is not "nothing to do".** These commands exit 2 when they cannot
-determine the answer, for example when an instance declares no
-`translation-sources` directory. Report it for that instance and go on to
+determine the answer, for example when a layer declares no
+`translation-sources` directory. Report it for that layer and go on to
 the next; never read it as current.
 
 ### 2. Refresh the templates
 
-Re-run the instance's extractors, once, for every locale. Diagrams:
+Re-run the layer's extractors, once, for every locale. Diagrams:
 
 ```sh
 bun run cat translate-bpmn --instance <root> --extract
 ```
 
-Pages and glossary schemes: the extractors the instance's `AGENTS.md`
+Pages and glossary schemes: the extractors the layer's `AGENTS.md`
 names. A generator that writes below a mounted layer leaves that mount
 modified; re-lay it from the lock afterwards, as the cold start says.
 
@@ -112,7 +112,7 @@ With gettext installed,
 `msgmerge --update --backup=none <locale.po> <template.pot>` does all three.
 Without it,
 `bun run cat translation:obsolete --instance <root>` marks the obsolete
-entries, and the instance's `AGENTS.md` names how its new strings are added.
+entries, and the layer's `AGENTS.md` names how its new strings are added.
 Then re-run step 1's `translation:drift:check`: it fails while any catalogue
 still differs from its template.
 
@@ -143,10 +143,10 @@ bun run cat translation:glossary:check --instance <root> --locale <locale>
 ```
 
 The first three read the checkout they run in and take no `--instance`, so
-run them from the checkout that holds the instance. Then the instance's
+run them from the checkout that holds the layer. Then the layer's
 supplement build: the locale's CodeSystem supplements
 compile with no SUSHI error and pass their structural checks (the command is
-in the instance's `AGENTS.md`). Placeholders, tags and URLs are preserved:
+in the layer's `AGENTS.md`). Placeholders, tags and URLs are preserved:
 `translation:page-qa` reports a lost one as `translation-terms-preserved`.
 
 A gate that fails is fixed in the `.po`, the manifest or the supplement, and
@@ -168,21 +168,21 @@ dispatch" with the reason: it is never a pass, and the PR says so.
 bun run cat translation:page-qa --instance <root>
 ```
 
-writes the per-catalogue sidecars under the instance's
+writes the per-catalogue sidecars under the layer's
 `test/results/translation-qa/`. Beside them, write the locale's report: the
 strings refreshed, each gate's result, the round-trip counts (sampled,
 flagged, drift, not drift) with every drift ruling and its fix, the glossary
 violations and sense checks, and the source mistakes found.
 
-### 8. One PR per instance, to main
+### 8. One PR per layer, to main
 
 One branch from main, one PR to main, carrying every locale this run
-refreshed for that instance. Never push to a source PR's branch, and never
+refreshed for that layer. Never push to a source PR's branch, and never
 to a branch that has already merged. The PR body links the QA report.
 
-### 9. Merge, by the instance's policy
+### 9. Merge, by the layer's policy
 
-The policy is the instance's to declare, in its `AGENTS.md`:
+The policy is the layer's to declare, in its `AGENTS.md`:
 
 - **open only** (the default): open the PR, merge nothing, report it.
 - **merge-when-green**: merge the run's own refresh PR only when every check

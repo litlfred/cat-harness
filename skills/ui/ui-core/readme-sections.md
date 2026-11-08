@@ -83,11 +83,11 @@ directory.
 generator would have to invent; what goes wrong there is targets that do not
 resolve, which the audit catches.
 
-## `cat-harness:instances` — the root README indexes every instance
+## `cat-harness:instances` — the root README indexes every layer
 
-One row per instance declaring a declaration, with **two entries because two
+One row per layer declaring a declaration, with **two entries because two
 readers arrive**: an agent entry (`AGENTS.md`, memories) and a human one
-(README, docs). Both halves are resolved from that instance's own declaration —
+(README, docs). Both halves are resolved from that layer's own declaration —
 declared assets for the file links, declared `graphs` for the directory links.
 
 **Never composed from a convention.** `join(root, "AGENTS.md")` would link a
@@ -103,19 +103,19 @@ table that quietly omitted the gaps would read as though the work were done.
 
 ### Which README, and the `--dir` flag
 
-`readme:sync` with no `--dir` resolves to whichever instance carries a `folio/`
+`readme:sync` with no `--dir` resolves to whichever layer carries a `folio/`
 — **which is `cat-harness`, not the repository root.** Use the pair:
 
 | | |
 |---|---|
-| `readme:sync` · `readme:audit` | the cat-harness instance's README |
+| `readme:sync` · `readme:audit` | the cat-harness layer's README |
 | `readme:sync:root` · `readme:audit:root` | the REPOSITORY's README |
-| `readme:sync:all` | EVERY instance's README, each against its own declaration |
+| `readme:sync:all` | EVERY layer's README, each against its own declaration |
 
 **In an index checkout the root README is not authored at all.** Its root
-declares no instance, so nothing could own the file; it and the root
+declares no layer, so nothing could own the file; it and the root
 `AGENTS.md` are rendered: `bun run cat index:render` writes both — with the `CLAUDE.md` and `GEMINI.md`
-stubs — from `index.config.json`, each instance's declared `agent-instructions`
+stubs — from `index.config.json`, each layer's declared `agent-instructions`
 and `instance-readme` assets, bootstrap's `AGENTS.md`, and the sections above,
 and `index:render:check` fails when any of the four is not its current output.
 `readme:sync:root` still agrees with it, because the renderer fills the same
@@ -128,7 +128,7 @@ green.
 ## `readme:toc` — every harness README's own table of contents
 
 A nested list of the README's **own** h2/h3 headings, linked by the
-anchor GitHub assigns them. Every instance README carries it under a bold
+anchor GitHub assigns them. Every layer README carries it under a bold
 **Contents** line, above its first `##`; the root README too.
 
 **Not `folio:toc`.** The shared word hides two different sections: `folio:toc`
@@ -160,18 +160,18 @@ had just been synced.
 and a README with nothing to outline is better without the marker. A renderer called with no README text
 is **undetermined** and leaves the region alone.
 
-**Gated by `readme:sync:all:check`**, over every declared instance; the
+**Gated by `readme:sync:all:check`**, over every declared layer; the
 single-README checks above name one file each, and a generated region nothing
 checks is a hand-kept list, wrong the first time somebody adds a heading.
 
-## `kg:processes` and `kg:files` — an instance's diagrams and files, from its declaration
+## `kg:processes` and `kg:files` — a layer's diagrams and files, from its declaration
 
-Two sections any instance's README may carry, both read from the instance's
+Two sections any layer's README may carry, both read from the layer's
 own declaration and the files it names (`bootstrap-tools/scripts/readme-graph-sections.ts`).
 
 - **`kg:processes`** — every `.bpmn` in the declared directories, the entry
   Process first (the one no other calls), each with its picture. The picture
-  is the SVG `render:bpmn` writes **beside** the `.bpmn` for an instance
+  is the SVG `render:bpmn` writes **beside** the `.bpmn` for a layer
   exempt from `workflow-visualiser` — one with no site of its own, so its
   README is where its diagrams are seen. This section **reads** the SVG and
   never draws; rendering needs a browser, so `render:bpmn` must run first.
@@ -186,8 +186,8 @@ own declaration and the files it names (`bootstrap-tools/scripts/readme-graph-se
   A directory whose files all sit in subdirectories collapses to one row.
 
 **Why `kg:` and not `cat-harness:`.** The marker is written into the
-instance's README, and the floor instance must not name the layer above it
-— its leak test fails on the word. `kg` is vocabulary every instance has.
+layer's README, and the floor layer must not name the layer above it
+— its leak test fails on the word. `kg` is vocabulary every layer has.
 
 **A blank "used by" is a finding, not decoration** — for example a file a
 diagram names that has no front matter, and so is not a Skill. A hand-kept
@@ -195,9 +195,9 @@ table would hide that.
 
 ## `subgraph-readmes` — one README per declared directory
 
-A large instance cannot list every file on one page, but it declares its
+A large layer cannot list every file on one page, but it declares its
 directories, and each declared directory gets its own README
-(`bun run cat readme:subgraphs`, the `subgraph-readmes` Tool). The instance
+(`bun run cat readme:subgraphs`, the `subgraph-readmes` Tool). The layer
 README's `kg:files` then links each directory to it, and above 200 files lists
 directories instead of files. The README is part of the graph: the exported
 Directory node carries `readmePath`.
