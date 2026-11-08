@@ -308,19 +308,19 @@ that failed is never an empty layer.**
 ### A fresh clone: the root's `cat` bootstrap
 
 A downstream root's `cat` script is `bun .github/cat.ts`, not the bare
-runner. The runner (`cat-harness-tools/scripts/run-script.ts`) is itself a
+runner. The runner (`scripts/run-script.ts` of the tools layer) is itself a
 mount, so on a fresh clone it is not on disk. `.github/cat.ts` checks for it
 and, when it is missing, runs `.github/mount-from-lock.sh` (which fetches
-`mount-from-lock.ts` at the commit the lock pins for cat-harness-tools and
+`mount-from-lock.ts` at the commit the lock pins for the tools layer and
 replays the lock, verifying every tree digest) before it hands over with the
 same arguments. So `bun run cat <name>` works from `git clone` with no mount
 step. It checks only that the runner is present, so after a re-pin run
 `bash .github/mount-from-lock.sh` by hand to replace the stale mounts.
 
 `instantiate-harness.ts` writes both files from
-`cat-harness-tools/templates/root-bootstrap/` and sets the `cat` script. A
-root set up before that keeps `"cat": "bun cat-harness-tools/scripts/run-script.ts"`
-until the two files are copied in.
+the tools layer's `templates/root-bootstrap/` and sets the `cat` script. A
+root set up before that keeps a `cat` script that runs the bare runner until
+the two files are copied in.
 
 ### Re-pinning: from a checkout mounted from the lock
 
