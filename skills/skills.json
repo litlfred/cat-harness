@@ -9,12 +9,6 @@
       "description": "How the graph is declared, placed, read, restructured, exported and audited."
     },
     {
-      "id": "library",
-      "path": "library",
-      "title": "Library and information management",
-      "description": "How sources are acquired, ingested, archived, catalogued and described."
-    },
-    {
       "id": "ui",
       "path": "ui",
       "title": "Rendering, UI and publication surfaces",

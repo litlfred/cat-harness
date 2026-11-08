@@ -37,7 +37,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Where the feedback came FROM — this skill starts mid-air without it",
-      "prov:value": "The missing first step is\n[`copy-out-materialized`](../../library/large-datasets/copy-out-materialized.md)\n(diagram:\n`cat-harness/processes/library/copy-out-materialized.bpmn`).\nThe owner's framing, 2026-09-21:\n\n> *\"this is first/early step of review process, checking out local copy to edit,\n> make comments/todos/stickies, etc on it. these feed into the comment review\n> pipeline.\"*",
+      "prov:value": "The missing first step is\n[`copy-out-materialized`](../../../library/skills/large-datasets/copy-out-materialized.md)\n(diagram:\n`cat-harness/library/processes/copy-out-materialized.bpmn`).\nThe owner's framing, 2026-09-21:\n\n> *\"this is first/early step of review process, checking out local copy to edit,\n> make comments/todos/stickies, etc on it. these feed into the comment review\n> pipeline.\"*",
       "cat-harness:refs": [
         "2026-09-21",
         "owner"

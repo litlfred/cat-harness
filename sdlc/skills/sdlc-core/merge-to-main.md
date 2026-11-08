@@ -64,12 +64,38 @@ pass. Its eight checks are listed in [`merge-queue`](merge-queue.md) §"A PR lan
 only through `merge:guard`". Where it does not exist, read the same facts with
 the GitHub tools and write each one down with the URL it came from.
 
-`merge-evidence.dmn` then decides, in this order: `hand-back` on red, `dirty`
+### CI gates a release only (owner, 2026-11-08)
+
+Owner, card Q-CIB-4 A, 2026-11-08, after *"CI not gate on non-release merge
+to main"* and *"not all CI needs to run unless doing a release build"*:
+
+- **A non-release merge does not wait for CI.** `ciState` is still read and
+  written into the report, red included, but it refuses nothing. Mergeability,
+  review, the `ready:` marker, the label and the owner's authorisation all
+  still decide. Content still needs the owner, and committee content still
+  never merges: those are authorisation rules, and they are unchanged.
+- **A release merge is gated.** A merge is a release when the PR carries the
+  `release` label or the guard runs with `--release`. Then every owed job
+  must be green, as before.
+- **Main is judged after the merge**, by the integration run on `main` (the
+  full suite on main's tip, batched; see
+  [`release-lifecycle`](release-lifecycle.md) §"The release gate"). A red
+  integration run files one fix issue naming the merges in its range. It does
+  not hold the queue.
+
+This replaces, for non-release merges only: main-green-first (card Q-CIB-1 B,
+2026-11-08), the 2026-10-23 ruling that a layer PR merges only on a green
+index run with it pinned, and "merge non-content when green" in the merge
+window rules.
+
+`merge-evidence.dmn` then decides, in this order: `hand-back` on red (a release), `dirty`
 or `blocking` (to [`merge-refusal`](../../processes/merge-refusal.bpmn),
 which returns the PR to its owner with the reason); `unknown` when a fact could
 not be read (ends, not merged); `not-yet` while runs are pending or
 mergeability is uncomputed (ends; re-enter later); `no-ci` on a clean, clear
-head with no CI; `ready` when everything is green, clean and clear.
+head with no CI; `ready` when everything is green, clean and clear, and
+`ready` on a non-release merge whose head is clean and clear, whatever CI
+said (its `release` input is false).
 
 ## A repository with no CI is not green (STRICT)
 

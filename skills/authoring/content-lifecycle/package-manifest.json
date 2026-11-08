@@ -1,13 +1,9 @@
 {
   "name": "content-lifecycle",
   "version": "0.1.0",
-  "description": "General content development lifecycle skills: plan, author, validate, review, test, publish, feedback, retire",
+  "description": "General content lifecycle methods the harness's own processes call: validate, review, test and feedback. Planning, authoring, publication and retirement are operational and belong to the content layer above (content split step 1).",
   "skills": [
-    "content-author",
     "content-feedback",
-    "content-plan",
-    "content-publish",
-    "content-retire",
     "content-review",
     "content-test",
     "content-validate",
@@ -48,14 +44,10 @@
     "node-runtime"
   ],
   "lifecycleStages": [
-    "plan",
-    "author",
     "validate",
     "review",
     "test",
-    "publish",
-    "feedback",
-    "retire"
+    "feedback"
   ],
   "schemas": [
     "schemas/generated/SkillDefinition.schema.json",

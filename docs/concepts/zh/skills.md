@@ -62,14 +62,12 @@ flowchart TD
 
 | 技能 | 阶段 | 用途 |
 |-------|-------|---------|
-| [`content-plan`]({{ site.baseurl }}/reference/skills/content-plan.html) | plan | 范围、团队、时间线、治理 |
-| [`content-author`]({{ site.baseurl }}/reference/skills/content-author.html) | author | 创建结构化制品 |
 | [`content-validate`]({{ site.baseurl }}/reference/skills/content-validate.html) | validate | 检查模式（schema）与约束 |
 | [`content-review`]({{ site.baseurl }}/reference/skills/content-review.html) | review | 正式审阅与批准 |
 | [`content-test`]({{ site.baseurl }}/reference/skills/content-test.html) | test | 端到端 QA / 构建绿灯（build green） |
-| [`content-publish`]({{ site.baseurl }}/reference/skills/content-publish.html) | publish | 渲染与部署 |
 | [`content-feedback`]({{ site.baseurl }}/reference/skills/content-feedback.html) | feedback | 收集与分流反馈 |
-| `content-retire` | retire | 弃用 / 归档 |
+
+规划、撰写、发布和退役属于操作性阶段，因此由位于本层之上的内容层提供。
 
 ### 文档与政策指南：`folio-document-adapter`
 
