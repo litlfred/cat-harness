@@ -65,10 +65,6 @@ msgstr "Типизированный контракт (JSON Schema ввода/в
 msgid "Package (Docker/runtime deps)"
 msgstr "Пакет (зависимости среды выполнения/Docker)"
 
-#: docs/concepts/skills.md:85
-msgid "The lifecycle stages that apply to every content type:"
-msgstr "Этапы жизненного цикла, применимые к каждому типу контента:"
-
 #: docs/concepts/skills.md:87
 msgid "Skill"
 msgstr "Навык"
@@ -80,22 +76,6 @@ msgstr "Этап"
 #: docs/concepts/skills.md:87
 msgid "Purpose"
 msgstr "Назначение"
-
-#: docs/concepts/skills.md:89
-msgid "plan"
-msgstr "plan"
-
-#: docs/concepts/skills.md:89
-msgid "Scope, team, timeline, governance"
-msgstr "Определение границ, команда, график, управление (governance)"
-
-#: docs/concepts/skills.md:90
-msgid "author"
-msgstr "author"
-
-#: docs/concepts/skills.md:90
-msgid "Create structured artifacts"
-msgstr "Создание структурированных артефактов"
 
 #: docs/concepts/skills.md:91
 msgid "validate"
@@ -121,14 +101,6 @@ msgstr "test"
 msgid "End-to-end QA / build green"
 msgstr "Сквозной контроль качества (E2E QA) / успешная сборка («зеленый» билд)"
 
-#: docs/concepts/skills.md:94
-msgid "publish"
-msgstr "publish"
-
-#: docs/concepts/skills.md:94
-msgid "Render & deploy"
-msgstr "Рендеринг и развертывание"
-
 #: docs/concepts/skills.md:95
 msgid "feedback"
 msgstr "feedback"
@@ -136,14 +108,6 @@ msgstr "feedback"
 #: docs/concepts/skills.md:95
 msgid "Collect & triage feedback"
 msgstr "Сбор и триаж обратной связи"
-
-#: docs/concepts/skills.md:96
-msgid "retire"
-msgstr "retire"
-
-#: docs/concepts/skills.md:96
-msgid "Deprecate / archive"
-msgstr "Вывод из эксплуатации / архивация"
 
 #: docs/concepts/skills.md:102
 msgid "Create and revise blocks in a prose folio"
@@ -511,3 +475,30 @@ msgstr "См. также"
 
 #~ msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
 #~ msgstr "Координация агентов, фреймворк наблюдателей (watcher), конвейер QA / рендеринга / библиографии / глоссария, документация, развертывание — применимо к любому типу контента."
+
+#~ msgid "The lifecycle stages that apply to every content type:"
+#~ msgstr "Этапы жизненного цикла, применимые к каждому типу контента:"
+
+#~ msgid "plan"
+#~ msgstr "plan"
+
+#~ msgid "Scope, team, timeline, governance"
+#~ msgstr "Определение границ, команда, график, управление (governance)"
+
+#~ msgid "author"
+#~ msgstr "author"
+
+#~ msgid "Create structured artifacts"
+#~ msgstr "Создание структурированных артефактов"
+
+#~ msgid "publish"
+#~ msgstr "publish"
+
+#~ msgid "Render & deploy"
+#~ msgstr "Рендеринг и развертывание"
+
+#~ msgid "retire"
+#~ msgstr "retire"
+
+#~ msgid "Deprecate / archive"
+#~ msgstr "Вывод из эксплуатации / архивация"
