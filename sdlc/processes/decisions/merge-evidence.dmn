@@ -16,6 +16,11 @@
     review    "clear" | "blocking" | "unknown" — open CHANGES_REQUESTED, a
               draft, needs-merge-human, and Claude Approvals where the
               repository runs it (no approval on the head is "blocking").
+    release   true | false — the merge is a release (merge:guard's release flag,
+              or the PR carries the `release` label). Owner, card Q-CIB-4 A,
+              2026-11-08: "CI not gate on non-release merge to main". So CI
+              gates a release only; on any other merge ciState is read and
+              reported, and mergeability and review still decide.
 
   Hit policy FIRST, so the order is the precedence: a defect hands back before
   anything else is asked; could-not-determine is never a pass; "none" is its
@@ -36,12 +41,16 @@
       <input id="In_Review" label="review state, including Claude Approvals where run">
         <inputExpression id="Expr_Review" typeRef="string"><text>review</text></inputExpression>
       </input>
+      <input id="In_Release" label="the merge is a release (CI gates it)">
+        <inputExpression id="Expr_Release" typeRef="boolean"><text>release</text></inputExpression>
+      </input>
       <output id="Out_Evidence" name="outcome" typeRef="string" />
       <rule id="Rule_RedCi">
-        <description>A red owed job is a defect in the PR: it goes back to its owner.</description>
+        <description>On a release, a red owed job is a defect in the PR: it goes back to its owner.</description>
         <inputEntry id="IE_RedCi_1"><text>"red"</text></inputEntry>
         <inputEntry id="IE_RedCi_2"><text>-</text></inputEntry>
         <inputEntry id="IE_RedCi_3"><text>-</text></inputEntry>
+        <inputEntry id="IE_RedCi_4"><text>true</text></inputEntry>
         <outputEntry id="OE_RedCi"><text>"hand-back"</text></outputEntry>
       </rule>
       <rule id="Rule_Dirty">
@@ -49,6 +58,7 @@
         <inputEntry id="IE_Dirty_1"><text>-</text></inputEntry>
         <inputEntry id="IE_Dirty_2"><text>"dirty"</text></inputEntry>
         <inputEntry id="IE_Dirty_3"><text>-</text></inputEntry>
+        <inputEntry id="IE_Dirty_4"><text>-</text></inputEntry>
         <outputEntry id="OE_Dirty"><text>"hand-back"</text></outputEntry>
       </rule>
       <rule id="Rule_Blocking">
@@ -56,6 +66,7 @@
         <inputEntry id="IE_Blocking_1"><text>-</text></inputEntry>
         <inputEntry id="IE_Blocking_2"><text>-</text></inputEntry>
         <inputEntry id="IE_Blocking_3"><text>"blocking"</text></inputEntry>
+        <inputEntry id="IE_Blocking_4"><text>-</text></inputEntry>
         <outputEntry id="OE_Blocking"><text>"hand-back"</text></outputEntry>
       </rule>
       <rule id="Rule_Unreadable">
@@ -63,6 +74,7 @@
         <inputEntry id="IE_Unreadable_1"><text>"unreadable"</text></inputEntry>
         <inputEntry id="IE_Unreadable_2"><text>-</text></inputEntry>
         <inputEntry id="IE_Unreadable_3"><text>-</text></inputEntry>
+        <inputEntry id="IE_Unreadable_4"><text>true</text></inputEntry>
         <outputEntry id="OE_Unreadable"><text>"unknown"</text></outputEntry>
       </rule>
       <rule id="Rule_ReviewUnknown">
@@ -70,6 +82,7 @@
         <inputEntry id="IE_ReviewUnknown_1"><text>-</text></inputEntry>
         <inputEntry id="IE_ReviewUnknown_2"><text>-</text></inputEntry>
         <inputEntry id="IE_ReviewUnknown_3"><text>"unknown"</text></inputEntry>
+        <inputEntry id="IE_ReviewUnknown_4"><text>-</text></inputEntry>
         <outputEntry id="OE_ReviewUnknown"><text>"unknown"</text></outputEntry>
       </rule>
       <rule id="Rule_Pending">
@@ -77,6 +90,7 @@
         <inputEntry id="IE_Pending_1"><text>"pending"</text></inputEntry>
         <inputEntry id="IE_Pending_2"><text>-</text></inputEntry>
         <inputEntry id="IE_Pending_3"><text>-</text></inputEntry>
+        <inputEntry id="IE_Pending_4"><text>true</text></inputEntry>
         <outputEntry id="OE_Pending"><text>"not-yet"</text></outputEntry>
       </rule>
       <rule id="Rule_MergeableUnknown">
@@ -84,6 +98,7 @@
         <inputEntry id="IE_MergeableUnknown_1"><text>-</text></inputEntry>
         <inputEntry id="IE_MergeableUnknown_2"><text>"unknown"</text></inputEntry>
         <inputEntry id="IE_MergeableUnknown_3"><text>-</text></inputEntry>
+        <inputEntry id="IE_MergeableUnknown_4"><text>-</text></inputEntry>
         <outputEntry id="OE_MergeableUnknown"><text>"not-yet"</text></outputEntry>
       </rule>
       <rule id="Rule_NoCi">
@@ -91,13 +106,23 @@
         <inputEntry id="IE_NoCi_1"><text>"none"</text></inputEntry>
         <inputEntry id="IE_NoCi_2"><text>"clean"</text></inputEntry>
         <inputEntry id="IE_NoCi_3"><text>"clear"</text></inputEntry>
+        <inputEntry id="IE_NoCi_4"><text>true</text></inputEntry>
         <outputEntry id="OE_NoCi"><text>"no-ci"</text></outputEntry>
+      </rule>
+      <rule id="Rule_AdvisoryCi">
+        <description>A non-release merge: CI is advisory, not a gate (owner, card Q-CIB-4 A, 2026-11-08). The head merges cleanly and review is clear, so it is ready; what CI said goes in the report.</description>
+        <inputEntry id="IE_AdvisoryCi_1"><text>-</text></inputEntry>
+        <inputEntry id="IE_AdvisoryCi_2"><text>"clean"</text></inputEntry>
+        <inputEntry id="IE_AdvisoryCi_3"><text>"clear"</text></inputEntry>
+        <inputEntry id="IE_AdvisoryCi_4"><text>false</text></inputEntry>
+        <outputEntry id="OE_AdvisoryCi"><text>"ready"</text></outputEntry>
       </rule>
       <rule id="Rule_Ready">
         <description>Every owed job green on the head, the head merges cleanly, and review is clear.</description>
         <inputEntry id="IE_Ready_1"><text>"green"</text></inputEntry>
         <inputEntry id="IE_Ready_2"><text>"clean"</text></inputEntry>
         <inputEntry id="IE_Ready_3"><text>"clear"</text></inputEntry>
+        <inputEntry id="IE_Ready_4"><text>-</text></inputEntry>
         <outputEntry id="OE_Ready"><text>"ready"</text></outputEntry>
       </rule>
       <rule id="Rule_Unclassified">
@@ -105,6 +130,7 @@
         <inputEntry id="IE_Unclassified_1"><text>-</text></inputEntry>
         <inputEntry id="IE_Unclassified_2"><text>-</text></inputEntry>
         <inputEntry id="IE_Unclassified_3"><text>-</text></inputEntry>
+        <inputEntry id="IE_Unclassified_4"><text>-</text></inputEntry>
         <outputEntry id="OE_Unclassified"><text>"unknown"</text></outputEntry>
       </rule>
     </decisionTable>

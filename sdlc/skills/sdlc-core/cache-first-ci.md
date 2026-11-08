@@ -15,8 +15,9 @@ profiles: [document, paper]
 
 **The principle.** Derive a step's inputs, hash them into a key. On a hit,
 restore the output (or the verdict) and skip the step. On a miss, run the
-step, then save. The full set still runs on the default branch and nightly,
-and that is what catches a key that missed an input.
+step, then save. The full set still runs on main's integration run, nightly
+and on every release candidate (release-gated CI, owner card Q-CIB-4 A,
+2026-11-08), and that is what catches a key that missed an input.
 
 ## One primitive, not one cache per author
 
