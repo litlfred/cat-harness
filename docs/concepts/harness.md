@@ -25,15 +25,27 @@ _This page is generated from [`docs/source/concepts-harness/`](https://github.co
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-harness/overview.md){: .fa-node-edit title="Edit docs/source/concepts-harness/overview.md" data-fa-link="edit" data-src="docs/source/concepts-harness/overview.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="overview.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-harness/overview.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="overview.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-harness/overview.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-A **Harness** is the layer that makes a [Knowledge Graph](knowledge-graph.html) usable: it
+A **Harness** is what makes a [Knowledge Graph](knowledge-graph.html) usable: it
 renders the graph, serves an interface over it, and supplies the Skills,
 Workflows and Tools an Agent works the graph with. The Knowledge Graph says what is
 true; the Harness is how anybody reaches it.
 
-A checkout holds several. They stack, bottom to top — `bootstrap`, then
+Four words carry this page, and each means one thing only (cat-harness#1138):
+
+| word | means | never means |
+|---|---|---|
+| **instance** | a node of some node kind: a workflow instance, a bean, a document-kind record | a repository |
+| **Harness** | one node kind: something that renders a graph and supplies Skills, Workflows and Tools for it | a repository as such |
+| **layer** | a repository in the stack, declared by its `<name>.json` and ordered by `needs` | an instance |
+| **instantiated harness** | a Harness that a layer's `index.config.json` names as instantiated there | a layer that is merely mounted |
+
+A checkout holds several layers. They stack, bottom to top — `bootstrap`, then
 `cat-harness`, then the content core, then `folio-assistant` — and each
-inherits what the ones below it declare. That stacking is the subject of this
-page, along with the two things a Harness owes anything it takes charge of.
+inherits what the ones below it declare. Some layers define a Harness
+(`cat-harness`, `fhir-harness`); others hold content and instantiate a Harness
+from a layer below (`smart-trust-phw` instantiates `smart-base`'s). That
+stacking is the subject of this page, along with the two things a Harness owes
+anything it takes charge of.
 
 **The key words MUST, MUST NOT, SHOULD and MAY are used here as
 [RFC 2119](https://www.rfc-editor.org/rfc/rfc2119) defines them**, and only in
@@ -42,34 +54,41 @@ requirement below is **not yet enforced by a gate**, this page says so at the
 requirement, because a conformance statement a reader cannot tell from a
 description of existing behaviour misleads either way.
 
-## Instantiation — a config file at a root
+## Instantiation — named in the index
 {: #instantiation data-fa-label="sec:the-harness-instantiation" }
 
 [✎ Edit](https://github.com/litlfred/cat-harness/edit/main/docs/source/concepts-harness/instantiation.md){: .fa-node-edit title="Edit docs/source/concepts-harness/instantiation.md" data-fa-link="edit" data-src="docs/source/concepts-harness/instantiation.md" data-repo="litlfred/cat-harness" } <span class="fa-qa-badges"><button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-block" lang="en" dir="ltr" data-qa-family="block" data-qa-key="instantiation.block" data-qa-label="Content QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-harness/instantiation.block.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Content QA: loading the verdict…" aria-label="Content QA: loading the verdict…"><span class="fa-qa-tag">QA</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button> <button type="button" class="fa-qa-badge fa-qa-pending fa-qa-fam-translation" lang="en" dir="ltr" data-qa-family="translation" data-qa-key="instantiation.translation" data-qa-label="Translation QA" data-qa-noun="block" data-qa-src="{{ '/assets/qa/concepts-harness/instantiation.translation.json' | relative_url }}" data-qa-index="{{ '/assets/qa/concepts-harness/qa-index.json' | relative_url }}" aria-expanded="false" aria-busy="true" title="Translation QA: loading the verdict…" aria-label="Translation QA: loading the verdict…"><span class="fa-qa-tag">TR</span><span class="fa-qa-glyph" aria-hidden="true">…</span></button></span>
 
-An instance becomes an **instantiated Harness** — as opposed to a dependency
-that merely sits in the tree — by carrying a config file at its root:
+A Harness is **instantiated** on a layer when that layer's `index.config.json`
+names it. The index is the one file that says which harnesses are instantiated
+here, as opposed to which layers are merely mounted for their content:
 
 ```
-<stub>.config.json      the instance is instantiated HERE, and how it is configured
-<stub>.json             what the instance DECLARES — its directories and assets
+index.config.json       which harnesses are instantiated HERE, and where each layer comes from
+<stub>.config.json      how one instantiated harness is configured
+<stub>.json             what a layer DECLARES — its directories and assets
 ```
 
-Two files, two questions, and two filenames: two schemas and two readers
+Three files, three questions, and three filenames: two schemas and two readers
 behind one spelling is a distinction a reader would have to already know.
 
-**The presence of the config is the signal.** It is what the left-hand
-navigation filters on to decide which instances get a tile, so a Harness that
-declares directories but carries no config is a dependency: its content is
-inherited by whoever depends on it, and it has no interface of its own. Nothing
-else is consulted, which is why it cannot be derived from the declarations
-alone.
+**Not yet what the schema says.** Today `index.config.json` has one list,
+`instances[]`, and it does double duty: it says where every mounted layer comes
+from, and every name in it is read as an instantiated harness
+(`instantiatedHarnessNames` returns the whole list). So `smart-trust-phw`, which
+lists nine layers, itself and `bootstrap` included, has all nine counted as
+instantiated harnesses.
+Splitting the list into the harnesses instantiated here and the layers only
+mounted is cat-harness#1138 phase P2. A layer with no `index.config.json` falls
+back to the older rule: a root `<name>.config.json` instantiates that harness,
+and a layer that declares directories but carries no config is a dependency,
+inherited by whoever depends on it, with no interface of its own.
 
-A Harness **MUST** own the visualisation published at `<baseurl>/<stub>`. The
-stem every published artefact is named with is computed in exactly one place —
-`artefactStub`, which returns the declared `stub` when there is one and the
-`name` otherwise — so the site build, the Knowledge Graph export and any future artefact
-cannot disagree about what an instance is called.
+An instantiated Harness **MUST** own the visualisation published at
+`<baseurl>/<stub>`. The stem every published artefact is named with is computed
+in exactly one place — `artefactStub`, which returns the declared `stub` when
+there is one and the `name` otherwise — so the site build, the Knowledge Graph
+export and any future artefact cannot disagree about what a layer is called.
 
 > **The stub is intended to be free of the definition's name.** A Harness
 > *defined* as `folio-assistant` should be instantiable as
@@ -86,26 +105,26 @@ cannot disagree about what an instance is called.
 
 ### Bottom-up, from the bootstrap
 
-The stack is walked **from the lowest instance up**, and each layer overlays
+The stack is walked **from the lowest layer up**, and each layer overlays
 what the ones beneath it declared. A Skill, a Voice or a directory contributed
 low is visible everywhere above it; one contributed high is visible only there.
 Where two layers contribute the same name, **the root wins** — it is resolved
 last precisely so that it can.
 
-The order is **declared, not computed**, in each instance's `needs` array:
+The order is **declared, not computed**, in each layer's `needs` array:
 
 ```json
 { "name": "<content-core>", "needs": ["bootstrap", "cat-harness"] }
 ```
 
-It is declared so that no consumer has to hardcode the instance names.
+It is declared so that no consumer has to hardcode the layer names.
 
 `needs` is **OPTIONAL**, and an absent value means *undetermined* rather than
-*needs nothing*. `[]` is an instance asserting
-it sits on nothing, which is true of exactly one instance here, while absent is
+*needs nothing*. `[]` is a layer asserting
+it sits on nothing, which is true of exactly one layer here, while absent is
 nobody having said. A consumer treating absent as `[]` would place every
-unlabelled instance on the floor beside the bootstrap. Names are used rather
-than paths, because an instance is identified by its `name` everywhere else and
+unlabelled layer on the floor beside the bootstrap. Names are used rather
+than paths, because a layer is identified by its `name` everywhere else and
 a path breaks the moment a directory moves.
 
 ### Three relations, and they are not interchangeable
@@ -117,8 +136,8 @@ own carrier here:
 | relation | runs | carried by |
 |---|---|---|
 | **depends** | Content → Content | `needs` — the layer stack, foundation first |
-| **references** | Tool → Content, Test → Content | `remoteGraphs` — a graph this instance knows about and does not hold |
-| **utilizes** | Tool → Tool, Test → Tool, App → Content | `dependencies` in the config — what this instance USES, overlaid |
+| **references** | Tool → Content, Test → Content | `remoteGraphs` — a graph this layer knows about and does not hold |
+| **utilizes** | Tool → Tool, Test → Tool, App → Content | `dependencies` in the config — what this layer USES, overlaid |
 | **associated** | Content ↔ Content, any harness | `associatedHarnesses` — a harness this one knows, and where it is published; never loaded or materialized (skill `associate-harness`) |
 
 **Only `depends` fixes an order**, so only `depends` can have a cycle in it,
@@ -135,7 +154,7 @@ time" are three questions with three answers.
 footer; what it owes instead is its own `.json` and `.jsonld` — *"that is its
 existence"*. The rendering obligation is a **floor that rises**: it starts at
 `cat-harness`, which is obliged because it supplies the layers above it with
-`folio/`. An instance below that floor declares its exemption in
+`folio/`. A layer below that floor declares its exemption in
 `renderExemption` rather than being silently excused, so the exemption is a
 statement somebody made and not a gap somebody left.
 
@@ -150,7 +169,7 @@ Tools**: the Harness names the Skills that reach the store, and a Tool supplies
 the mechanism. That indirection is what lets the same Harness be driven against
 a different store without rewriting a Skill.
 
-**Declaring a directory is a promise.** It says this instance holds a graph of
+**Declaring a directory is a promise.** It says this layer holds a graph of
 that kind and a consumer may scan it, and the obligations below are what make
 the promise keepable. They are stated in full by
 [`harness-requirements`]({{ '/reference/skill-instructions/harness-requirements.html' | relative_url }})
@@ -164,8 +183,8 @@ and measured by `check:subgraph-coverage`.
 | **skill** | `coverage.skill` | is an agent handed something that GOVERNS this? |
 
 The first four are per declared directory. A fifth, a starting README, is per
-instance and is ranked harder still: without one a reader cannot enter the
-instance.
+layer and is ranked harder still: without one a reader cannot enter the
+layer.
 
 ### `coverage.process` is DECLARED and is not an obligation
 
@@ -210,7 +229,7 @@ that was never going to need one is not carrying a debt.
 
 That difference is why the coverage axis ranks findings **major** and **minor**
 rather than counting them: major is an obligation this kind owes and the
-instance has not met; minor is nobody having said yet, for a kind that never
+layer has not met; minor is nobody having said yet, for a kind that never
 owed one. A single count would rank `beans/` having no viewer alongside a kind
 that never needed one.
 
@@ -229,11 +248,11 @@ Two parts of the model above are intended and **not implemented**. Each says
 what a reader will actually hit, because a page that described them as working
 would send somebody to look for code that is not there.
 
-### 1. There is no `HarnessKind`
+### 1. Harness is not yet a node kind
 
-A Harness is intended to be declared as a **subtype of a HarnessKind** — the
-name is itself unsettled. Nothing in the schemas registers one today: an
-instance declares a `name`, directories, assets and `needs`, and what makes it
+Harness is intended to be **one node kind**, and an instantiated harness an
+instance of it (cat-harness#1138 phase P2). Nothing in the schemas registers
+that kind today: a layer declares a `name`, directories, assets and `needs`, and what makes it
 a Harness rather than a dependency is the presence of a config file, which is a
 fact about the filesystem rather than a declared type.
 
@@ -250,10 +269,10 @@ definition. Three places refuse it, and they refuse it consistently:
 - `instanceConfigFilename` **composes** the filename from the declared name,
   so the stub is derived rather than chosen.
 - The left-hand navigation tests for `<declared name>.config.json` when
-  deciding whether an instance is instantiated — a differently-named config
-  would leave the instance with no tile.
+  deciding whether a harness is instantiated on a layer — a differently-named config
+  would leave the layer with no tile.
 - `check:instance-config` reports a config whose filename does not match its
-  instance's name as a finding, reading it as a rename half-done.
+  layer's name as a finding, reading it as a rename half-done.
 
 And the config carries **no field pointing at a definition**, so even were the
 filename freed there is nothing for it to point with. Freeing the stub means
@@ -277,7 +296,7 @@ this page disagree, **the Skill wins and this page is wrong**.
 | question | where it is answered |
 |---|---|
 | What the Knowledge Graph is, and which way its references run | [The Knowledge Graph](knowledge-graph.html) |
-| How an instance declares its directories, and every graph typology | [`directory-conventions`]({{ site.baseurl }}/reference/skill-instructions/directory-conventions.html) |
+| How a layer declares its directories, and every graph typology | [`directory-conventions`]({{ site.baseurl }}/reference/skill-instructions/directory-conventions.html) |
 | What a visualiser owes a declared directory | [Subgraph viewers](subgraph-viewers.html) |
 | What a Skill states and what a Tool supplies | [`skills-and-tools`]({{ site.baseurl }}/reference/skill-instructions/skills-and-tools.html) |
 | Why a tile belongs to the Harness rather than to a node | [`harness-tiles`]({{ site.baseurl }}/reference/skill-instructions/harness-tiles.html) |
