@@ -14,9 +14,9 @@ behind one spelling is a distinction a reader would have to already know.
 **Not yet what the schema says.** Today `index.config.json` has one list,
 `instances[]`, and it does double duty: it says where every mounted layer comes
 from, and every name in it is read as an instantiated harness
-(`instantiatedHarnessNames` returns the whole list). So `smart-trust-phw`, which
-lists nine layers, itself and `bootstrap` included, has all nine counted as
-instantiated harnesses.
+(`instantiatedHarnessNames` returns the whole list). So a content layer whose
+index lists nine layers, itself and `bootstrap` included, has all nine counted
+as instantiated harnesses.
 Splitting the list into the harnesses instantiated here and the layers only
 mounted is cat-harness#1138 phase P2. A layer with no `index.config.json` falls
 back to the older rule: a root `<name>.config.json` instantiates that harness,

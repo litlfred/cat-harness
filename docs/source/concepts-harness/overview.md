@@ -18,8 +18,9 @@ knowledge. A layer on this page is always a repository, never a knowledge layer.
 A checkout holds several layers. They stack, bottom to top — `bootstrap`, then
 `cat-harness`, then the content core, then `folio-assistant` — and each
 inherits what the ones below it declare. Some layers define a Harness
-(`cat-harness`, `fhir-harness`); others hold content and instantiate a Harness
-from a layer below (`smart-trust-phw` instantiates `smart-base`'s). That
+(`cat-harness` is one); others hold content and instantiate a Harness defined
+by a layer below them, such as an implementation guide instantiating the
+Harness of the guide base it builds on. That
 stacking is the subject of this page, along with the two things a Harness owes
 anything it takes charge of.
 

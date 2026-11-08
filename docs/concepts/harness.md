@@ -45,8 +45,9 @@ knowledge. A layer on this page is always a repository, never a knowledge layer.
 A checkout holds several layers. They stack, bottom to top — `bootstrap`, then
 `cat-harness`, then the content core, then `folio-assistant` — and each
 inherits what the ones below it declare. Some layers define a Harness
-(`cat-harness`, `fhir-harness`); others hold content and instantiate a Harness
-from a layer below (`smart-trust-phw` instantiates `smart-base`'s). That
+(`cat-harness` is one); others hold content and instantiate a Harness defined
+by a layer below them, such as an implementation guide instantiating the
+Harness of the guide base it builds on. That
 stacking is the subject of this page, along with the two things a Harness owes
 anything it takes charge of.
 
@@ -78,9 +79,9 @@ behind one spelling is a distinction a reader would have to already know.
 **Not yet what the schema says.** Today `index.config.json` has one list,
 `instances[]`, and it does double duty: it says where every mounted layer comes
 from, and every name in it is read as an instantiated harness
-(`instantiatedHarnessNames` returns the whole list). So `smart-trust-phw`, which
-lists nine layers, itself and `bootstrap` included, has all nine counted as
-instantiated harnesses.
+(`instantiatedHarnessNames` returns the whole list). So a content layer whose
+index lists nine layers, itself and `bootstrap` included, has all nine counted
+as instantiated harnesses.
 Splitting the list into the harnesses instantiated here and the layers only
 mounted is cat-harness#1138 phase P2. A layer with no `index.config.json` falls
 back to the older rule: a root `<name>.config.json` instantiates that harness,
