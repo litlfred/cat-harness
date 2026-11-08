@@ -491,6 +491,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/auditor": {
+      "prefLabel": "Auditor",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
     "role/author": {
       "prefLabel": "Author",
       "firstSeen": "2026-09-21",
@@ -526,6 +531,16 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/certificate-issuer": {
+      "prefLabel": "Certificate Issuer",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
+    "role/certificate-verifier": {
+      "prefLabel": "Verifier",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
     "role/certifier": {
       "prefLabel": "Certifier",
       "firstSeen": "2026-10-01",
@@ -556,9 +571,29 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/consent-recorder": {
+      "prefLabel": "Consent Recorder",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
+    "role/consent-registry": {
+      "prefLabel": "Consent Registry",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
     "role/corpus": {
       "prefLabel": "Corpus",
       "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/data-provider-administrator": {
+      "prefLabel": "Data Provider Administrator",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
+    "role/data-recipient-system": {
+      "prefLabel": "Data Recipient System",
+      "firstSeen": "2026-11-07",
       "retiredOn": null
     },
     "role/deep-researcher": {
@@ -569,6 +604,11 @@
     "role/docs-authoring-agent": {
       "prefLabel": "Docs authoring agent",
       "firstSeen": "2026-09-21",
+      "retiredOn": null
+    },
+    "role/document-source": {
+      "prefLabel": "Document Source",
+      "firstSeen": "2026-11-07",
       "retiredOn": null
     },
     "role/editor": {
@@ -603,6 +643,11 @@
     },
     "role/health-worker": {
       "prefLabel": "Health worker",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
+    "role/holder": {
+      "prefLabel": "Holder",
       "firstSeen": "2026-11-07",
       "retiredOn": null
     },
@@ -696,6 +741,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/provider-authorization-server": {
+      "prefLabel": "Provider Authorization Server",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
     "role/publication-manager": {
       "prefLabel": "Publication manager",
       "firstSeen": "2026-09-21",
@@ -786,6 +836,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/trust-anchor": {
+      "prefLabel": "Trust Anchor",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
     "role/untainted-checker": {
       "prefLabel": "Untainted checker",
       "firstSeen": "2026-10-01",
@@ -804,6 +859,16 @@
     "role/verifier": {
       "prefLabel": "IRIS CDN verifier",
       "firstSeen": "2026-10-31",
+      "retiredOn": null
+    },
+    "role/vhl-receiver": {
+      "prefLabel": "VHL Receiver",
+      "firstSeen": "2026-11-07",
+      "retiredOn": null
+    },
+    "role/vhl-sharer": {
+      "prefLabel": "VHL Sharer",
+      "firstSeen": "2026-11-07",
       "retiredOn": null
     },
     "role/work-plan": {
