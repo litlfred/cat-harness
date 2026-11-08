@@ -80,14 +80,12 @@ Les étapes du cycle de vie qui s'appliquent à **chaque** type de contenu :
 
 | Compétence | Étape | Objectif |
 |------------|-------|----------|
-| [`content-plan`]({{ site.baseurl }}/reference/skills/content-plan.html) | plan | Périmètre, équipe, calendrier, gouvernance |
-| [`content-author`]({{ site.baseurl }}/reference/skills/content-author.html) | author | Créer des artefacts structurés |
 | [`content-validate`]({{ site.baseurl }}/reference/skills/content-validate.html) | validate | Vérifier le schéma + les contraintes |
 | [`content-review`]({{ site.baseurl }}/reference/skills/content-review.html) | review | Relecture formelle et approbation |
 | [`content-test`]({{ site.baseurl }}/reference/skills/content-test.html) | test | QA de bout en bout / compilation au vert |
-| [`content-publish`]({{ site.baseurl }}/reference/skills/content-publish.html) | publish | Rendu et déploiement |
 | [`content-feedback`]({{ site.baseurl }}/reference/skills/content-feedback.html) | feedback | Recueillir et trier les retours |
-| `content-retire` | retire | Déprécier / archiver |
+
+La planification, la rédaction, la publication et le retrait sont opérationnels : la couche de contenu au-dessus de celle-ci les fournit.
 
 ### Documents et directives politiques : `folio-document-adapter`
 

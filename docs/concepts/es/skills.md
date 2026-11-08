@@ -80,14 +80,12 @@ Las etapas del ciclo de vida que se aplican a **cada** tipo de contenido:
 
 | Habilidad | Etapa | Propósito |
 |-----------|-------|-----------|
-| [`content-plan`]({{ site.baseurl }}/reference/skills/content-plan.html) | plan | Alcance, equipo, cronograma, gobernanza |
-| [`content-author`]({{ site.baseurl }}/reference/skills/content-author.html) | author | Crear artefactos estructurados |
 | [`content-validate`]({{ site.baseurl }}/reference/skills/content-validate.html) | validate | Comprobar esquema + restricciones |
 | [`content-review`]({{ site.baseurl }}/reference/skills/content-review.html) | review | Revisión y aprobación formal |
 | [`content-test`]({{ site.baseurl }}/reference/skills/content-test.html) | test | QA de extremo a extremo / compilación en verde |
-| [`content-publish`]({{ site.baseurl }}/reference/skills/content-publish.html) | publish | Renderizar y desplegar |
 | [`content-feedback`]({{ site.baseurl }}/reference/skills/content-feedback.html) | feedback | Recopilar y clasificar retroalimentación |
-| `content-retire` | retire | Desaprobar / archivar |
+
+La planificación, la autoría, la publicación y la retirada son operativas, así que las aporta la capa de contenido situada por encima de esta.
 
 ### Documentos y guías normativas: `folio-document-adapter`
 

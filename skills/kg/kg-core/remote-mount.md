@@ -428,6 +428,16 @@ publish build wrote.
   It refuses unless every mount reads `current`, then pushes the overlay.
   `--main` also moves `main`. `--prune <n>` keeps the newest n lock refs,
   `main`, and each `--keep <key>`, for example the lock of every open PR.
+- **Gate:** on an index-mode pull request that changes `index.lock.json`,
+  the job `layers-ref` of the tools layer's `layer-pr-checks.yml` runs
+  `layers:check --changed-from <base>`. It only asks (`git ls-remote`) whether
+  the new lock's ref is at the repository, and fails when it is not. The
+  build and the push stay on the re-pinner's machine, never a runner (owner,
+  2026-11-08). A PR that leaves the lock alone owes nothing.
+- **Shared fallback:** an IG whose origin carries no `refs/cat/layers/*` can
+  name a shared cache in `.github/layers-url` (one URL). The root bootstrap's
+  `mount-from-lock.sh` then sets `CAT_LAYERS_URL` to it. Only layers at the
+  same pin hit; the rest are fetched as before.
 
 **The lock stays the sole authority.** The cache is untrusted. Every byte
 taken from it is checked against the lock: the declaration's and each

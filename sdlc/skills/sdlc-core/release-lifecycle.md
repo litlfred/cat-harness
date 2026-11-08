@@ -30,8 +30,43 @@ folio-assistant follows [Semantic Versioning 2.0.0](https://semver.org/):
 | Type | Gate | Who decides |
 |---|---|---|
 | **Draft** | First PR for a planned release merges | Agent creates, BA approves |
-| **Pre-release (RC)** | All must-have work items resolved, CI green | BA decides when to test |
+| **Pre-release (RC)** | All must-have work items resolved, the full suite green on the candidate (§"The release gate") | BA decides when to test |
 | **Named release** | Stakeholder sign-off on the RC | BA + stakeholders |
+
+## The release gate: the full suite runs for a release
+
+Owner, card Q-CIB-4 A, 2026-11-08: *"not all CI needs to run unless doing a
+release build"*, *"you can merge to main and not be release build"*, *"CI
+not gate on non-release merge to main"*. So CI has three lanes, and only the
+last one gates:
+
+| lane | what runs | gates? | where it shows |
+|---|---|---|---|
+| **Pull request** | the fast tier: types, lint, and the tests and gates the change can reach; no re-run of `main` | no: shown on the PR, advisory | a preview at `branches/<slug>/`, on request, and always for content PRs |
+| **`main`** | the integration run: the full suite on main's tip, batched (one run per repository per hour, not one per merge) | no: a red run files ONE fix issue naming the merges in its range | the staging root of the site, not the live root |
+| **Release** | the full tier as an absolute gate: every test, every gate, derive:publish, e2e, the standalone measure, the index at released layer pins | **yes**: nothing publishes from a red release candidate | the live site, the registry, the GitHub release |
+
+**What makes a merge a release:** the PR carries the `release` label (or
+`merge:guard` runs with `--release`). The guard's check 5 then gates the
+merge on green owed CI, as it did for every merge before 2026-11-08. A
+release candidate is cut from `main` after that merge, and only a green
+candidate is published ([`package-release`](package-release.md) step 3).
+
+**What does not change:** content still needs the owner's authorisation;
+committee content never merges; the WHO repositories are not changed without
+the owner; CodeQL keeps its schedule. Those are authorisation and security
+rules, not CI tiers.
+
+**What it replaces:** for non-release merges, main-green-first (card Q-CIB-1
+B, 2026-11-08), the 2026-10-23 ruling that a layer PR merges only on a green
+index run, and "merge non-content when green" in the merge window rules.
+
+**Rollout** (phased, owner's choice A): 1. these skills, the merge DMNs and
+`merge:guard` (check 5 advisory unless a release); 2. cat-harness-tools'
+layer checks (PR fast tier, the hourly integration run, the release run);
+3. folio-assistant's Code-quality gates, previews on request, the site's
+staging root; 4. the other layers and the re-pin train. Until a phase lands,
+its workflows still run in full: they are simply no longer a merge gate.
 
 ## Release planning with epics
 
@@ -87,6 +122,7 @@ The process is identical; the artefacts differ.
 
 - **Never create a release without BA approval**
 - **Never skip the pre-release step** — even for patches
+- **Never publish a red release candidate.** The full suite is the release gate; a merge to `main` is not a release and is not gated by CI
 - **The changelog is written for humans** — no commit hashes or work item IDs
 - **One release per epic** — if scope creeps, split the epic
 - **Draft releases are mutable; named releases are immutable**
