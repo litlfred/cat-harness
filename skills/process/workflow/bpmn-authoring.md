@@ -195,7 +195,10 @@ the page a reader opens, not reuse.
 The same discipline as ArchiMate views ([`archimate-models`](../../ui/ui-core/archimate-models.md)
 §"Untangle every view you touch"), and the same geometry: a change never adds
 a tangle. Run `bun run cat kg:audit` before and after, and compare
-`edge-crossing`, `edge-through-node` and `edge-rectilinear` for the diagram.
+`edge-crossing`, `edge-through-node` and `edge-rectilinear` for the diagram,
+and check that no shape has a flow in and a flow out on the same point and
+that each lane's rows sit at k/(n+1) of its height
+([`bpmn-processes`](bpmn-processes.md) §"Edge routing").
 Say both counts in the PR. Route loop-backs in the channel below the lane
 ([`bpmn-processes`](bpmn-processes.md) §"Edge routing"), then look at the
 rendered SVG.

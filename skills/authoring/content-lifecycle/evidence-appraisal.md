@@ -9,7 +9,7 @@ declares. This skill supplies the *procedure*; it does not supply the *system*.
 and the body that publishes it; the platform holds no subject matter, and a
 hardcoded system would leave every folio that uses another one working around
 the platform.
-`Task_AppraiseGrade` in the `evidence-retrieval.bpmn` process judges certainty
+An evidence-retrieval process in the content layer judges certainty
 "per the grading system the folio declares". This skill covers what appraisal
 *is*, what it attaches to, and what has to survive as a record afterwards.
 
@@ -29,8 +29,8 @@ refused.
 ## The unit is the body, not the citation
 
 The grade attaches to the body of evidence for **one PICO question**. This is
-why `Task_AppraiseGrade` sits after the parallel join in the diagram and not
-inside the fan-out: the three retrieval classes (trusted L1 sources, trusted
+why appraisal sits after retrieval's parallel join and not inside the
+fan-out: the three retrieval classes (trusted L1 sources, trusted
 L2/L3 content, data repositories) contribute to one judgement; grading each
 branch separately would produce three numbers that answer no question. A single
 citation does not carry a certainty grade.
@@ -51,9 +51,9 @@ the first is weak; one resting on the second is unsupported.
 
 ## Inputs
 
-- The PICO question from `Task_FramePico` — without it the search is not
+- The framed PICO question — without it the search is not
   reproducible and the appraisal is not checkable
-- Candidates that passed `Task_VerifyAuthority`, so authority is a resolved
+- Candidates that passed an authority check, so authority is a resolved
   fact rather than an assertion in the citation
 - The grading system declared by the folio
 

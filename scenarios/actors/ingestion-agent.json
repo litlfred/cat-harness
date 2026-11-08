@@ -8,6 +8,6 @@
   ],
   "capabilities": [],
   "meta": {
-    "workflow": "processes/library/document-ingestion.bpmn#Lane_1"
+    "workflow": "library/processes/document-ingestion.bpmn#Lane_1"
   }
 }

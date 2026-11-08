@@ -144,8 +144,8 @@ count nodes, not skills.
    breach first.
 7. **Ingest the source and cite it as `evidence`.** `origin` names the work;
    `evidence: library/<bib-slug>` points at a copy a reader can open from this
-   checkout. Use [`literature-search`](../../library/library-core/literature-search.md) to find it and
-   [`library-ingestion`](../../library/library-core/library-ingestion.md) to bring it in. Where the source
+   checkout. Use [`literature-search`](../../../library/skills/library-core/literature-search.md) to find it and
+   [`library-ingestion`](../../../library/skills/library-core/library-ingestion.md) to bring it in. Where the source
    cannot be fetched, that is an outcome to report — a located-but-unreachable
    document, never a missing one — and the node keeps its `origin` with no
    `evidence` until somebody closes the gap.
@@ -216,5 +216,5 @@ while resting on nothing.
   `bean-coordination` makes for `scrapped` over deleted.
 - **Never write a method from recall and cite a paper nobody fetched.** Read the
   source, or say you read it through another and mark each attribution
-  second-hand. See [`literature-search`](../../library/library-core/literature-search.md) §"Never fill the
+  second-hand. See [`literature-search`](../../../library/skills/library-core/literature-search.md) §"Never fill the
   gap with recall".

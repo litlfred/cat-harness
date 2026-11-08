@@ -33,8 +33,6 @@
       ],
       "skills": [
         "bpmn-authoring",
-        "content-author",
-        "content-plan",
         "content-review",
         "decision-audit",
         "dmn-authoring",
@@ -151,7 +149,6 @@
         "reviewer"
       ],
       "skills": [
-        "content-publish",
         "evidence-review",
         "untainted-verification"
       ],
@@ -199,9 +196,6 @@
         "person"
       ],
       "skills": [
-        "content-plan",
-        "content-publish",
-        "content-retire",
         "decision-audit",
         "methodology-adoption",
         "release-epic-planning",
@@ -218,7 +212,6 @@
         "person"
       ],
       "skills": [
-        "content-publish",
         "content-review",
         "decision-audit",
         "qa-report-signing",
@@ -425,9 +418,7 @@
         "bpmn-authoring",
         "ci-health",
         "confirmation-waiver",
-        "content-author",
         "content-graph",
-        "content-plan",
         "continual-progress",
         "coordinate",
         "crdm-detect",
@@ -548,7 +539,6 @@
         "system"
       ],
       "skills": [
-        "content-publish",
         "content-test",
         "content-validate",
         "feature-staging",

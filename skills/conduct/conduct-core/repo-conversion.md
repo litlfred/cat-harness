@@ -145,7 +145,7 @@ that layer's build-pipeline skill for how additional paths are added later.
 
 ## 3. Dispatch the ingestion
 
-Ingestion proper is `processes/library/document-ingestion.bpmn` (and the
+Ingestion proper is `library/processes/document-ingestion.bpmn` (and the
 content layer's document-intake refinement skill when converting into a content
 folio). What this skill decides is *how
 much parallelism*, and it is a question for the author because it spends their
@@ -204,6 +204,10 @@ git clone --depth 1 https://github.com/litlfred/cat-harness-tools /tmp/cht
 echo "<where the author consented>" | bun run /tmp/cht/scripts/instantiate-harness.ts \
   --repo . --harness <owner/repo> --consent-by <who> [--plan | --local]
 ```
+
+The setup also writes `.github/cat.ts` and `.github/mount-from-lock.sh` and
+sets the root's `cat` script to `bun .github/cat.ts`, so after the merge a
+fresh clone needs no mount step: the first `bun run cat …` mounts the layers.
 
 `--plan` prints the closure and every step and writes nothing; `--local`
 commits on the branch and pushes nothing. The harness's own adoption steps

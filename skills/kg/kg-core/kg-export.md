@@ -666,7 +666,7 @@ pin, harness, each file's sha256). It is attached, with its
   it is held with a sha256 record. A request for the root is refused, with a
   pointer to `index.jsonld`. This is a metadata mode. The byte copy
   (`kg:materialize <subscription> <subgraph>`) keeps its five gates. See
-  [`kg-subscription`](../../library/large-datasets/kg-subscription.md)
+  [`kg-subscription`](../../../library/skills/large-datasets/kg-subscription.md)
   §"metadata mode".
 - A subgraph manifest that lists a child IRI but whose child file is missing is
   a dangling link. It is reported, never skipped.

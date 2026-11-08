@@ -97,7 +97,7 @@
   "$comment": [
     {
       "at": "",
-      "comment": "Owner, 2026-10-12 (task 6): \"a check that proves a repo's cutover from\nthe monorepo is complete — measure it, do not assume it\". The gate after\nkg-separation stage 13 (processes/kg/kg-separation.bpmn, GW_CutoverComplete)."
+      "comment": "Owner, 2026-10-12 (task 6): \"a check that proves a repo's cutover from\nthe monorepo is complete — measure it, do not assume it\". The gate after\nkg-separation stage 13 (processes/kg/kg-separation-cutover.bpmn, GW_CutoverComplete)."
     }
   ]
 }

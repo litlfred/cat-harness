@@ -496,7 +496,7 @@ processes, library and tests. The same from-within rule, one more use of it:
 - **Which kinds group** is a fact about the kind: `GraphTypologyDef.concernGroups`,
   with the kind's `declarationFile` as where groups are named —
   `skills/skills.json` (`topics`), `processes/processes.json`,
-  `schemas/schemas.json`, `library/library.json`, `uml/uml.json`, a test
+  `schemas/schemas.json`, `library/corpus/library.json`, `uml/uml.json`, a test
   directory's `code.json` (`groups`, `"$schema": "concern-groups/v1"`).
 - **A group is a CODE** of `code-lists/concern-group.json`, which carries its
   title and definition once; its directory is the code (`sdlc/processes/`).

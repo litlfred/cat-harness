@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  "Ready to seed?" — GW_SeedReady in kg-separation.bpmn, in front of `10 · Seed`.
+  "Ready to seed?" — GW_SeedReady in kg-separation-move.bpmn, in front of `Seed both repositories`.
 
   A seed is a snapshot: one commit naming the source sha, no history (bean
   `iai8`). Two different things make a snapshot wrong, and this table asks

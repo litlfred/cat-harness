@@ -17,6 +17,7 @@ description: >-
 
 > Skill id: `sub-kg-lifecycle` · Package: `graph-management`
 > Process: [`sub-kg-lifecycle.bpmn`](../../../processes/kg/sub-kg-lifecycle.bpmn)
+> Stages 6 to 13 are drawn as the phases it shares with `kg-separation`: [authorise](../../../processes/kg/kg-separation-authorise.bpmn), [move](../../../processes/kg/kg-separation-move.bpmn) and [cut over](../../../processes/kg/kg-separation-cutover.bpmn).
 
 A sub-KG created inside a folio or harnessed repository can move to its own
 repository later: once it is staged for separation, a new repository is created

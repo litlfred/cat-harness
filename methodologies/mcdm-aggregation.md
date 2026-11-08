@@ -67,7 +67,7 @@ Faire Un Choix Adéquat (FUCA) and Weighted Aggregated Sum Product Assessment
 The chapter illustrates each method on one worked numerical example and shows
 the software output. Two of its figures carry the distinction that actually
 changes which method applies, and both are described in
-`library/image-verdicts.json`:
+`library/corpus/image-verdicts.json`:
 
 - **AHP assumes a strict hierarchy** — Goal over Criteria over Alternatives,
   edges drawn without arrowheads, every criterion joined to every alternative

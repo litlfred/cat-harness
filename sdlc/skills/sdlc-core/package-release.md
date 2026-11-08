@@ -18,9 +18,9 @@ commit.
 
 This skill is **general**: it is for any
 repository that publishes packages, including a folio that ships its own. It is
-**not** the skill for publishing a folio's *content* — that is
-`content-publish`, whose version is supplied by a person at
-`Task_AuthorizeRelease` in `draft-to-publication.bpmn`. The two share the word
+**not** the skill for publishing a folio's *content* — that belongs to the
+content layer above this one, where a person supplies the version when the
+release is authorised. The two share the word
 "publish" and nothing else: a package release versions **code**; a content
 publication versions a **document**.
 
@@ -95,7 +95,7 @@ them with `tool_list` rather than relying on this list.
 
 ## What this skill does not do
 
-- It does not publish a folio's content (`content-publish`).
+- It does not publish a folio's content (the content layer does).
 - It does not take in an upstream's release (`upstream-version-adoption`).
   That is the other side of the same event: someone else's step 3 is the
   start of your adoption.

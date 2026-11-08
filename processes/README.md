@@ -18,7 +18,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `processes`, holding `pro
 | [`processes.json`](processes.json) | data |  |
 | [`content/`](content/) | _nothing declares what this holds_ | |
 | [`kg/`](kg/) | _nothing declares what this holds_ | |
-| [`library/`](library/) | _nothing declares what this holds_ | |
 | [`process/`](process/) | _nothing declares what this holds_ | |
 | [`ui/`](ui/) | _nothing declares what this holds_ | |
 

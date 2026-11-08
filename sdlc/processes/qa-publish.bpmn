@@ -321,11 +321,10 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
         <bpmndi:BPMNLabel><dc:Bounds x="1204.51" y="186.5" width="90" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_P08" bpmnElement="P08">
-        <di:waypoint x="1146" y="180" />
-        <di:waypoint x="1088" y="180" />
-        <di:waypoint x="1088" y="335" />
+        <di:waypoint x="1171" y="205" />
+        <di:waypoint x="1171" y="335" />
         <di:waypoint x="1031" y="335" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1057.88" y="141" width="90" height="36" /></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="1177" y="250" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_P09" bpmnElement="P09">
         <di:waypoint x="971" y="275" />
