@@ -211,7 +211,7 @@ msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:54
 #. Diagram element documentation
-msgid "The sweep cadence, as a backstop: every 10-15 minutes while a P0 PR is in flight, every 30 minutes otherwise. Otherwise a subscribed PR event, a sibling's merge request, a main run finishing, or a sibling's message wakes it. Never a polling loop inside a turn."
+msgid "The sweep cadence, as a backstop: every 10-15 minutes while a P0 PR is in flight, every 30 minutes otherwise. Otherwise a subscribed PR event, a sibling's merge request, a main run finishing, or a sibling's message wakes it. An agent with no chat to the merge manager (a local agent such as agy) signals on the PR itself: ready for review, the label ready-to-merge, and a signed ready: <head sha> comment; each sweep reads every open PR labelled ready-to-merge in the repositories it watches. Never a polling loop inside a turn."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:53
