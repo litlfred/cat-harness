@@ -45,7 +45,7 @@ How a run's derived QA results become a durable, commit-keyed record without bei
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `qa-reports`.
-- What: Keep every `main/<sha>` for 90 days and one per day after that; drop `pr/<n>` 7 days after the PR closed.
+- What: Keep every `main/<sha>` for 14 days and one per day after that; drop `pr/<n>` 7 days after the PR closed.
 - Record it: `workflow_complete` with `node: "Task_PlanPrune"`.
 - next: → `Gateway_Apply` (Apply?)
 
