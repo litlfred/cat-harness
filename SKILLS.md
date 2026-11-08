@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_255 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_256 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -258,7 +258,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`crdm-requirements-template`](sdlc/skills/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
 | [`crdm-requirements-workflow`](sdlc/skills/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
 
-**`sdlc/skills/sdlc-core/`** (72)
+**`sdlc/skills/sdlc-core/`** (73)
 
 | Skill | What it is for |
 |---|---|
@@ -279,6 +279,7 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`coordinate`](sdlc/skills/sdlc-core/coordinate.md) | Coordinate work across multiple in-flight Claude PRs working toward a shared goal. |
 | [`decision-audit`](sdlc/skills/sdlc-core/decision-audit.md) | Record why a decision was made, or why a finding in it was left. |
 | [`delivery-summary`](sdlc/skills/sdlc-core/delivery-summary.md) | Post-delivery summary with server restart command and viewer links |
+| [`diff`](sdlc/skills/sdlc-core/diff.md) | Show per-block content changes with viewer links, changelog, and undo impact analysis |
 | [`dispatch-agent`](sdlc/skills/sdlc-core/dispatch-agent.md) | Dispatch one or more background sub-agents against parallel research/build fronts with a STANDARDIZED live progress contract, and monitor them on a 2-minute heartbeat. |
 | [`feature-staging`](sdlc/skills/sdlc-core/feature-staging.md) | Manages feature-branch staging deployments under gh-pages/branches/<branch-slug>/ for before/after publication review comparison. |
 | [`finding-software`](sdlc/skills/sdlc-core/finding-software.md) | A script needs a program or module the container does not have (tesseract, pdftoppm, PyMuPDF, a CLI from a GitHub release). |
