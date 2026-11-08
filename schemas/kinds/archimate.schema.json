@@ -9,6 +9,9 @@
       "$ref": "#/$defs/cat-archimate-config~1v1"
     },
     {
+      "$ref": "#/$defs/archimate-relationship-rules~1v1"
+    },
+    {
       "$ref": "#/$defs/archimate-model~1v1"
     }
   ],
@@ -159,6 +162,96 @@
         "$schema",
         "directory",
         "models"
+      ],
+      "additionalProperties": false
+    },
+    "archimate-relationship-rules/v1": {
+      "title": "archimate-relationship-rules/v1",
+      "type": "object",
+      "properties": {
+        "$schema": {
+          "type": "string",
+          "const": "archimate-relationship-rules/v1"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relationships": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Za-z]+$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "verb": {
+                "type": "string",
+                "minLength": 1
+              },
+              "icon": {
+                "type": "string",
+                "minLength": 1
+              },
+              "meaning": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "type",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "rules": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Za-z]+$"
+              },
+              "relationship": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Za-z]+$"
+              },
+              "target": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Za-z]+$"
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "source",
+              "relationship",
+              "target",
+              "note"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "$schema",
+        "relationships",
+        "rules"
       ],
       "additionalProperties": false
     },
