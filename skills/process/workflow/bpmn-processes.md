@@ -151,6 +151,13 @@ task on its right leaves that task's next flow from its top or bottom, and a
 gateway that is entered on its left leaves on its other three sides (owner,
 2026-11-08). Flows that only arrive may share a point, as a join does.
 
+**Rows sit evenly in their lane.** A lane holds its steps in rows, and its
+height follows the row count: n rows make a lane n times one row's height,
+so lanes with the same number of rows are the same height. Row k of n has
+its centre at k/(n+1) of the lane: one row in the middle, two rows at one
+third and two thirds, and so on. A step is never pushed to the top or
+bottom of its lane (owner, 2026-11-08).
+
 **This is about the DIAGRAM, not the process.** `BPMNDiagram` carries where a
 thing was drawn and the process carries what is true, so a routing fix changes
 no semantics and needs no re-validation of the flow — the same split
