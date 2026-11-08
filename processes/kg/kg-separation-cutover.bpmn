@@ -14,7 +14,7 @@
     <bpmn:participant id="Participant_Process_KgSeparationCutover" name="Cut over to the separated graph" processRef="Process_KgSeparationCutover"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_KgSeparationCutover" name="Cut over to the separated graph" isExecutable="false">
-    <bpmn:documentation>Retires the parent's copy and measures the cutover with separation:cutover:check until every condition holds. A check that cannot decide ends the phase as unknown, never as complete. Called by kg-separation (bpmn-authoring: split by phase).</bpmn:documentation>
+    <bpmn:documentation>Retires the parent's copy and measures the cutover with separation:cutover:check until every condition holds. A check that cannot decide ends the phase as unknown, never as complete. Called by kg-separation and sub-kg-lifecycle (bpmn-authoring: split by phase).</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>

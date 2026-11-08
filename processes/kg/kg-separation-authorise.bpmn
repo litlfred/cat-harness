@@ -14,7 +14,7 @@
     <bpmn:participant id="Participant_Process_KgSeparationAuthorise" name="Authorise the extraction" processRef="Process_KgSeparationAuthorise"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_KgSeparationAuthorise" name="Authorise the extraction" isExecutable="false">
-    <bpmn:documentation>Reports what would move, with sizes and what breaks, and asks the administrator to authorise the extraction; the gateway after the ask reads the answer. Called by kg-separation (bpmn-authoring: a question is a gateway, never a task).</bpmn:documentation>
+    <bpmn:documentation>Reports what would move, with sizes and what breaks, and asks the administrator to authorise the extraction; the gateway after the ask reads the answer. Called by kg-separation and sub-kg-lifecycle (bpmn-authoring: a question is a gateway, never a task).</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
@@ -43,6 +43,7 @@
       <bpmn:documentation>A repository cut changes the substrate every other process binds to; that is a person's decision. Declining leaves the graph declared, detangled, isolated and split in place.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="deletion-requires-confirmation"/>
+        <cat-harness.processes:policy relaxable="false"/>
       </bpmn:extensionElements>
       <bpmn:incoming>F2</bpmn:incoming>
       <bpmn:outgoing>F3</bpmn:outgoing>
