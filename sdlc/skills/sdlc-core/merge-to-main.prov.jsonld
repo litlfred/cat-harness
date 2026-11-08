@@ -28,6 +28,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/merge-to-main.md#provenance-6"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/merge-to-main.md#provenance-7"
         }
       ]
     },
@@ -98,6 +101,20 @@
       ],
       "dcterms:date": [
         "2026-10-30"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/merge-to-main.md#provenance-7",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "CI gates a release only (owner, 2026-11-08)",
+      "prov:value": "CI gates a release only (owner, card Q-CIB-4 A, 2026-11-08, after *\"CI not gate on non-release merge to main\"*): on a non-release merge `merge:guard` check 5 is advisory.",
+      "cat-harness:refs": [
+        "2026-11-08",
+        "Q-CIB-4"
+      ],
+      "dcterms:date": [
+        "2026-11-08"
       ]
     }
   ]

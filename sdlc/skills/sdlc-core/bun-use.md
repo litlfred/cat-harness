@@ -119,6 +119,9 @@ distinct roles:
    - All instance compositions are declared in `index.config.json` and locked with their
      pinned SHAs and tree digests in `index.lock.json`.
    - Subgraphs and remote instances are mounted from the lock via `bun cat-harness-tools/scripts/mount-from-lock.ts`.
+   - A downstream root's `cat` script is `bun .github/cat.ts`, which mounts from the lock
+     (through `.github/mount-from-lock.sh`) when the layers are missing, so `bun run cat <name>`
+     works on a fresh clone.
    - Whole-checkout integration tests live under the tools layer's `test/coordinator/`.
    - Working state subgraphs (`beans/`, `fsh-guts/`) are branch-mounted subgraphs kept at branch
      tips (`cat/cat-harness/beans`, `cat/cat-harness/fsh-guts`) and mounted via

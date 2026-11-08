@@ -55,6 +55,17 @@ manager exists. It checks, in this order:
    takes the merge steward lane. Every other sibling notes the holder and
    sends it the request.
 
+**An agent with no chat to the merge manager** (a local agent such as
+agy, or any tool that only reaches GitHub) signals on the PR, because the
+PR is the message ([`merge-queue`](merge-queue.md) §"The PR is the message"):
+it marks the PR ready for review, adds the label `ready-to-merge`, and
+comments `ready: <full head sha>` with what signs it. It still asks the
+owner first (§"Ask the user before submitting" in `merge-queue`). Every
+sweep reads the open PRs labelled `ready-to-merge` in the repositories the
+merge manager watches, and treats each as a merge request; one with no
+preview or no `ready:` comment goes back with a comment saying what is
+missing.
+
 **Where the announcement lives, so all can use it.** The holder sends
 `merge manager: <session id>` to every sibling and the owner, and notes it
 durably on the coordination work item. A sibling started later reads the

@@ -65,10 +65,6 @@ msgstr "Contrato tipado (JSON Schema de entrada/salida)"
 msgid "Package (Docker/runtime deps)"
 msgstr "Paquete (dependencias Docker/tiempo de ejecución)"
 
-#: docs/concepts/skills.md:85
-msgid "The lifecycle stages that apply to every content type:"
-msgstr "Las etapas del ciclo de vida que se aplican a cada tipo de contenido:"
-
 #: docs/concepts/skills.md:87
 msgid "Skill"
 msgstr "Habilidad"
@@ -80,22 +76,6 @@ msgstr "Etapa"
 #: docs/concepts/skills.md:87
 msgid "Purpose"
 msgstr "Propósito"
-
-#: docs/concepts/skills.md:89
-msgid "plan"
-msgstr "plan"
-
-#: docs/concepts/skills.md:89
-msgid "Scope, team, timeline, governance"
-msgstr "Alcance, equipo, cronograma, gobernanza"
-
-#: docs/concepts/skills.md:90
-msgid "author"
-msgstr "author"
-
-#: docs/concepts/skills.md:90
-msgid "Create structured artifacts"
-msgstr "Crear artefactos estructurados"
 
 #: docs/concepts/skills.md:91
 msgid "validate"
@@ -121,14 +101,6 @@ msgstr "test"
 msgid "End-to-end QA / build green"
 msgstr "QA de extremo a extremo / compilación en verde"
 
-#: docs/concepts/skills.md:94
-msgid "publish"
-msgstr "publish"
-
-#: docs/concepts/skills.md:94
-msgid "Render & deploy"
-msgstr "Renderizar y desplegar"
-
 #: docs/concepts/skills.md:95
 msgid "feedback"
 msgstr "feedback"
@@ -136,14 +108,6 @@ msgstr "feedback"
 #: docs/concepts/skills.md:95
 msgid "Collect & triage feedback"
 msgstr "Recopilar y clasificar retroalimentación"
-
-#: docs/concepts/skills.md:96
-msgid "retire"
-msgstr "retire"
-
-#: docs/concepts/skills.md:96
-msgid "Deprecate / archive"
-msgstr "Desaprobar / archivar"
 
 #: docs/concepts/skills.md:102
 msgid "Create and revise blocks in a prose folio"
@@ -511,3 +475,30 @@ msgstr "Véase también"
 
 #~ msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
 #~ msgstr "Coordinación de agentes, el marco de trabajo del observador (watcher framework), canalización de QA / renderizado / bibliografía / glosario, documentación, despliegue — se aplica a cualquier tipo de contenido."
+
+#~ msgid "The lifecycle stages that apply to every content type:"
+#~ msgstr "Las etapas del ciclo de vida que se aplican a cada tipo de contenido:"
+
+#~ msgid "plan"
+#~ msgstr "plan"
+
+#~ msgid "Scope, team, timeline, governance"
+#~ msgstr "Alcance, equipo, cronograma, gobernanza"
+
+#~ msgid "author"
+#~ msgstr "author"
+
+#~ msgid "Create structured artifacts"
+#~ msgstr "Crear artefactos estructurados"
+
+#~ msgid "publish"
+#~ msgstr "publish"
+
+#~ msgid "Render & deploy"
+#~ msgstr "Renderizar y desplegar"
+
+#~ msgid "retire"
+#~ msgstr "retire"
+
+#~ msgid "Deprecate / archive"
+#~ msgstr "Desaprobar / archivar"

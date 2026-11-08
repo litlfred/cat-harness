@@ -27,7 +27,7 @@ Backend resolution order (first hit wins):
 Env knobs: `SAGE_DOCKER_IMAGE` (default `sagemath/sagemath:latest`),
 `SAGE_NO_DOCKER=1` (disable the Docker fallback), `SAGE_CMD` (force a command).
 
-Server source: [`src/sage-mcp-server.py`](../src/sage-mcp-server.py) — a
+Server source: [`src/sage-mcp-server.py`](https://github.com/litlfred/cat-harness-tools/blob/main/src/sage-mcp-server.py) — a
 dependency-free JSON-RPC 2.0 stdio server (system Python 3, no `mcp` package).
 
 ## Mode 1 — local / dev (Claude Code)

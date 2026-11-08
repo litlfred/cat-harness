@@ -49,10 +49,6 @@ msgstr "对论证进行对抗性审阅（adversarial review）"
 msgid "Approve — it reports findings only"
 msgstr "批准（Approve） — 仅报告审查发现"
 
-#: docs/concepts/skills.md:90
-msgid "author"
-msgstr "author"
-
 #: docs/concepts/skills.md:112
 msgid "Author LaTeX documents"
 msgstr "撰写 LaTeX 文档"
@@ -117,10 +113,6 @@ msgstr "提交（Commit） — 其输出通过验证门禁流转给编辑人员"
 msgid "Create and revise blocks in a prose folio"
 msgstr "在纯文本（prose）folio 中创建并修订块"
 
-#: docs/concepts/skills.md:90
-msgid "Create structured artifacts"
-msgstr "创建结构化制品"
-
 #: docs/concepts/skills.md:200
 msgid "Create/modify content (inherits reviewer)."
 msgstr "创建/修改内容（继承 ）。"
@@ -132,10 +124,6 @@ msgstr "default"
 #: docs/concepts/skills.md:72
 msgid "Definition (roles, required capabilities, requirements, routing patterns, lifecycle stages, schema ref)"
 msgstr "定义（角色、所需能力、门禁要求、路由模式、生命周期阶段、模式引用）"
-
-#: docs/concepts/skills.md:96
-msgid "Deprecate / archive"
-msgstr "弃用 / 归档"
 
 #: docs/concepts/skills.md:125
 msgid "DMN decision tables"
@@ -250,10 +238,6 @@ msgstr "模式"
 msgid "People"
 msgstr "人员角色"
 
-#: docs/concepts/skills.md:89
-msgid "plan"
-msgstr "plan"
-
 #: docs/concepts/skills.md:231
 msgid "Priority"
 msgstr "优先级"
@@ -278,10 +262,6 @@ msgstr "提供能力"
 msgid "Publication-readiness QA across layers."
 msgstr "跨层次的发布就绪度 QA。"
 
-#: docs/concepts/skills.md:94
-msgid "publish"
-msgstr "publish"
-
 #: docs/concepts/skills.md:87
 #: docs/concepts/skills.md:100
 #: docs/concepts/skills.md:109
@@ -299,17 +279,9 @@ msgstr "质量保证（QA）门禁"
 msgid "Releases, IG config, builds, versioning, publication."
 msgstr "发布版本、IG 配置、构建、版本管理、出版。"
 
-#: docs/concepts/skills.md:94
-msgid "Render & deploy"
-msgstr "渲染与部署"
-
 #: docs/concepts/skills.md:248
 msgid "Requirements are gates that must hold during work:"
 msgstr "要求（Requirements）是工作推进过程中必须满足的门禁条件："
-
-#: docs/concepts/skills.md:96
-msgid "retire"
-msgstr "retire"
 
 #: docs/concepts/skills.md:92
 msgid "review"
@@ -335,10 +307,6 @@ msgstr "范围"
 #: docs/concepts/skills.md:202
 msgid "Scope, team formation, timeline, stakeholder governance."
 msgstr "确定范围、团队组建、时间线、利益相关方治理。"
-
-#: docs/concepts/skills.md:89
-msgid "Scope, team, timeline, governance"
-msgstr "范围、团队、时间线、治理"
 
 #: docs/concepts/skills.md:138
 msgid "Search across the content corpus"
@@ -386,10 +354,6 @@ msgstr "术语治理（ICD-11、SNOMED CT、LOINC）。"
 #: docs/concepts/skills.md:93
 msgid "test"
 msgstr "test"
-
-#: docs/concepts/skills.md:85
-msgid "The lifecycle stages that apply to every content type:"
-msgstr "适用于所有内容类型的生命周期阶段："
 
 #: docs/concepts/skills.md:73
 msgid "Typed contract (input/output JSON Schema)"
@@ -537,3 +501,30 @@ msgstr "技能存放位置（及其当前状态）"
 
 #~ msgid "Status"
 #~ msgstr "状态"
+
+#~ msgid "author"
+#~ msgstr "author"
+
+#~ msgid "Create structured artifacts"
+#~ msgstr "创建结构化制品"
+
+#~ msgid "Deprecate / archive"
+#~ msgstr "弃用 / 归档"
+
+#~ msgid "plan"
+#~ msgstr "plan"
+
+#~ msgid "publish"
+#~ msgstr "publish"
+
+#~ msgid "Render & deploy"
+#~ msgstr "渲染与部署"
+
+#~ msgid "retire"
+#~ msgstr "retire"
+
+#~ msgid "Scope, team, timeline, governance"
+#~ msgstr "范围、团队、时间线、治理"
+
+#~ msgid "The lifecycle stages that apply to every content type:"
+#~ msgstr "适用于所有内容类型的生命周期阶段："
