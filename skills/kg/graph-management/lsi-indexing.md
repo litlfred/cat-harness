@@ -126,16 +126,27 @@ mis-extracted page, and it is cheapest to mark now.
 
 ## Where to LOOK at an index
 
-`bun run cat lsi:viz` writes one page, `/cat-harness/lsi/` ("Latent semantic
-indexes"; `/lsi/` is its declared alias): every stored index with its
-dimensions as two poles, its findings, and the need-an-index verdicts.
-cat-harness DECLARES it — `visualisers` entry `lsi`, `covers: ["qa"]`,
-`renderedBy: lsi-viewer` — which is how a directory's viewer is found; the page
-carries only `rendered-by: lsi-viewer` as provenance. So it appears on the
-navbar, the board and the central **Published graphs** page (`/cat-harness/`,
-§"Every declared viewer") with no further wiring. The page is excluded from
-every index's units: indexing a page that reports on the indexes would never
-reach a fixed point.
+**Its health** is in the repository health report: `bun run cat health`,
+check `lsi-indexes`. It lists every declared prose graph that needs an index
+and lacks a fresh one, with the command that builds it, and each stored
+index's narrow-dimension and near-duplicate counts. **Its content** (the
+dimensions as two poles, the near-duplicate pairs, the narrow-dimension
+units) is the sidecar below; read it with `lsi query` or open the file.
+
+`bun run cat lsi:viz` writes the **Indexing evidence** page at
+`/cat-harness/lsi/` (`/lsi/` is its declared alias). Until cat-harness#1144 it
+drew the indexes; the owner (2026-11-08) made it the evidence chain instead.
+For each indexing method (this one, `correspondence-analysis`,
+`skill-pipeline-subject-indexing`, `consensus-grounded-subject-evaluation`) it
+shows the held papers it rests on, the skills that declare `uses-methodology`
+for it, the Tools that satisfy those skills, and the processes that call
+them. It also lists the indexing skills that apply no method, such as
+glossary work and lexical search, as having no evidence yet. So a skill that
+reads this index (keywords, `lsi:near`, `graph-search --latent`) gets the
+papers as its evidence by declaring `uses-methodology: lsi`. cat-harness
+DECLARES the page (`visualisers` entry `lsi`, `renderedBy: lsi-viewer`), so it
+appears on the navbar and the central **Published graphs** page with no
+further wiring. The page is excluded from every index's units.
 
 ## Where the index lives, and what is stored
 
@@ -148,18 +159,15 @@ That path is the **working copy, and nothing under it is committed**. The
 record is the commit-keyed entry the CI job `qa-publish` stores on the orphan
 `qa-reports` branch (`main/<sha>/`, `pr/<n>/<sha>/`). The readers cope with its
 absence: with no `test/results/lsi/` in the checkout, the verdict
-rebuilds the index in memory and judges that run, writing nothing, and
-`lsi:viz` reads the indexes by ref through `qa-store` (`--ref`, default `main`)
-— anything but a hit exits 2 and writes no page about zero indexes.
+rebuilds the index in memory and judges that run, writing nothing, and the
+health check reads the indexes by ref through `qa-store` (`main`). Anything
+but a hit is `unknown`, never "no index is missing".
 
-**The viewer page is never committed.** It is declared under `builtAtPublish`
-in `cat-harness.json` (`docs/en/cat-harness/lsi/`), because what it shows is a
-function of the checkout and the indexes' pins, not of one commit.
-`bun run cat lsi:viz -- --detail` adds the per-index sections; the docs-site
-build runs it after `qa:fetch` pins the entry to the build's own sha. Any
-committed page taken off a store must stay a function of the tree: read from a
-stored index, the same commit would say `fresh` in one place and `stale` in
-another, depending on when the gate ran.
+**The Indexing evidence page is never committed.** It is declared under
+`builtAtPublish` in `cat-harness.json` (`docs/en/cat-harness/lsi/`), because
+it joins every instance's methodologies, skills, Tools and processes, so it
+moves with the index's pins, not with one commit. It reads no stored index;
+`--detail` and `--ref` are accepted and ignored.
 
 **A merge strategy does not stop a generated file conflicting**, even when the
 file is reproducible and take-base plus a regeneration converges. An SVD

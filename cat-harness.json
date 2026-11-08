@@ -709,7 +709,7 @@
         "qa"
       ],
       "tile": {
-        "title": "Latent semantic indexes",
+        "title": "Indexing evidence",
         "icon": "index"
       }
     },
@@ -1016,7 +1016,7 @@
     {"id": "methodologies", "renderedBy": "methodologies-viewer", "coversKinds": ["methodology"], "alias": "methodologies"},
     {"id": "external-schemas", "renderedBy": "external-schemas-viewer", "covers": ["external-schemas"], "coversKinds": ["external-schema"], "subgraphs": "instance", "subgraphUnder": {"external-schema": "instance"}, "alias": "external-schemas"},
     {"id": "openapi", "renderedBy": "openapi-pages", "coversKinds": ["openapi"], "subgraphs": "instance", "title": "OpenAPI documents"},
-    {"id": "lsi", "renderedBy": "lsi-viewer", "covers": ["qa"], "title": "Latent semantic indexes", "alias": "lsi"},
+    {"id": "lsi", "renderedBy": "lsi-viewer", "covers": ["qa"], "title": "Indexing evidence", "alias": "lsi"},
     {"id": "translation-status", "renderedBy": "translation-status-viewer", "coversKinds": ["translation-sources"], "alias": "translation-status"},
     {"id": "beans", "renderedBy": "state-viewer", "covers": ["beans"], "coversKinds": ["beans", "bean-defs", "bean-notes", "workflow-state", "merge-queue", "session-survey", "sweep-marks"], "subgraphs": "instance", "alias": "beans"},
     {"id": "todos", "renderedBy": "state-viewer", "covers": ["todos"], "coversKinds": ["todo-items", "todo-feedback", "boards", "board-positions"], "alias": "todos"},
@@ -1083,7 +1083,7 @@
     {"path": "docs/assets/tools/index.json", "writer": ["tools:viz"], "because": "checkout", "reason": "the tile count of each page this writer draws that a landing tile opens, keyed by that tile's directory id (folio-assistant#931, owner's ruling 2026-10-29). Build-time data read by docs:harness, never committed"},
     {"path": "docs/cat-harness/auto-docs/", "writer": ["auto:docs"], "because": "checkout", "directory": "auto-docs", "reads": ["docs"], "reason": "listed after the layers' writers it reads (`reads: docs`, so an IG's docs/ built at publish is on disk when it runs; first in the list until 2026-10-23, it indexed none of them). Every index page lists every instance's sub-graphs and their item counts, its own sub-graphs' pages included (measured: a new page in who-iris/docs rewrote 12 of them)"},
     {"path": "docs/assets/auto-docs/index.json", "writer": ["auto:docs"], "because": "checkout", "reason": "the tile count of each page this writer draws that a landing tile opens, keyed by that tile's directory id (folio-assistant#931, owner's ruling 2026-10-29). Build-time data read by docs:harness, never committed"},
-    {"path": "docs/en/cat-harness/lsi/", "writer": ["lsi:viz"], "because": "checkout", "reads": ["library", "skills", "beans", "folio", "docs", "methodology", "memory", "policies", "glossary"], "reason": "the LSI viewer: which declared prose graphs of every instance in the checkout need an index (needOf over the tree), so it moves with the index's pins, not with this commit", "index": true},
+    {"path": "docs/en/cat-harness/lsi/", "writer": ["lsi:viz"], "because": "checkout", "reads": ["methodology", "library", "skills", "tools", "processes"], "reason": "the Indexing evidence page (cat-harness#1144): each indexing method's held evidence joined to every instance's skills, Tools and processes, so it moves with the index's pins, not with this commit", "index": true},
     {"path": "docs/en/cat-harness/translation-status/", "writer": ["translation:status"], "because": "checkout", "reads": ["translation-sources"], "reason": "the translation status page: this instance's catalogues and, beside them, those of every other instance in the checkout declaring a translation-sources directory", "index": true},
     {"path": "docs/assets/translation-status/", "writer": ["translation:status"], "because": "checkout", "reads": ["translation-sources"], "reason": "the projection the translation status page renders, and the tile count docs:harness reads: written with the page, from the same checkout", "index": true},
     {"path": "docs/en/cat-harness/openapi/", "writer": ["openapi:viz"], "because": "checkout", "reads": ["openapi"], "reason": "the OpenAPI viewer: a hub and, for each instance in the checkout declaring an openapi graph, its documents rendered page by page (one per operation) from the documents that graph holds"},
