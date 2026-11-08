@@ -39,6 +39,9 @@ Four words carry this page, and each means one thing only (cat-harness#1138):
 | **layer** | a repository in the stack, declared by its `<name>.json` and ordered by `needs` | an instance |
 | **instantiated harness** | a Harness that a layer's `index.config.json` names as instantiated there | a layer that is merely mounted |
 
+In WHO SMART content, L1 to L5 are **knowledge layers**, layers of guideline
+knowledge. A layer on this page is always a repository, never a knowledge layer.
+
 A checkout holds several layers. They stack, bottom to top — `bootstrap`, then
 `cat-harness`, then the content core, then `folio-assistant` — and each
 inherits what the ones below it declare. Some layers define a Harness
