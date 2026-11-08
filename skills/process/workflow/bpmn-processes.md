@@ -142,6 +142,15 @@ A loop-back belongs in the **channel below the lane's tasks** — out of the row
 back along it, and up into its target. That is where a reader already looks for
 one, and it crosses nothing.
 
+**A flow in and a flow out never share a point.** Where one flow ends on a
+shape, no flow leaves from that same point, and where one leaves, none ends.
+Two arrowheads on one spot, or a line that both arrives and departs there,
+reads as one edge passing through, and the reader cannot tell which way the
+work goes. Give the outgoing flow another side: a loop-back that enters a
+task on its right leaves that task's next flow from its top or bottom, and a
+gateway that is entered on its left leaves on its other three sides (owner,
+2026-11-08). Flows that only arrive may share a point, as a join does.
+
 **This is about the DIAGRAM, not the process.** `BPMNDiagram` carries where a
 thing was drawn and the process carries what is true, so a routing fix changes
 no semantics and needs no re-validation of the flow — the same split

@@ -193,7 +193,7 @@
       <bpmndi:BPMNEdge id="Edge_F5" bpmnElement="F5"><di:waypoint x="640" y="675"/><di:waypoint x="640" y="882"/><bpmndi:BPMNLabel><dc:Bounds x="646" y="675" width="80" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F6" bpmnElement="F6"><di:waypoint x="665" y="650"/><di:waypoint x="905" y="650"/><di:waypoint x="905" y="400"/><di:waypoint x="930" y="400"/><bpmndi:BPMNLabel><dc:Bounds x="745" y="630" width="80" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F7" bpmnElement="F7"><di:waypoint x="1050" y="400"/><di:waypoint x="1080" y="400"/><di:waypoint x="1080" y="1150"/><di:waypoint x="1105" y="1150"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_F11" bpmnElement="F11"><di:waypoint x="1225" y="1150"/><di:waypoint x="1255" y="1150"/><di:waypoint x="1255" y="650"/><di:waypoint x="1280" y="650"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F11" bpmnElement="F11"><di:waypoint x="1165" y="1090"/><di:waypoint x="1165" y="650"/><di:waypoint x="1280" y="650"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F12" bpmnElement="F12"><di:waypoint x="1400" y="650"/><di:waypoint x="1490" y="650"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F13" bpmnElement="F13"><di:waypoint x="1515" y="675"/><di:waypoint x="1515" y="1150"/><di:waypoint x="1225" y="1150"/><bpmndi:BPMNLabel><dc:Bounds x="1420" y="1125" width="40" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F14" bpmnElement="F14"><di:waypoint x="1515" y="625"/><di:waypoint x="1515" y="590"/><di:waypoint x="1655" y="590"/><di:waypoint x="1655" y="632"/><bpmndi:BPMNLabel><dc:Bounds x="1530" y="568" width="80" height="14"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
