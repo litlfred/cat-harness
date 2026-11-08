@@ -1,7 +1,7 @@
 The deck *KG / folio-asst* (2026-09-30), rebuilt as a page. The page
 is generated from the content and assets it describes, so it moves when they
 move. The original is kept, frozen and dated, as the L1 source
-`cat-harness/library/kg-folio-asst-2026-09-30`: thirteen slides, their speaker notes and all 33 images with
+`cat-harness/library/corpus/content/kg-folio-asst-2026-09-30`: thirteen slides, their speaker notes and all 33 images with
 descriptions.
 
 **Two differences from the original:**
