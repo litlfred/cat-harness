@@ -4,7 +4,7 @@ Tools**: the Harness names the Skills that reach the store, and a Tool supplies
 the mechanism. That indirection is what lets the same Harness be driven against
 a different store without rewriting a Skill.
 
-**Declaring a directory is a promise.** It says this instance holds a graph of
+**Declaring a directory is a promise.** It says this layer holds a graph of
 that kind and a consumer may scan it, and the obligations below are what make
 the promise keepable. They are stated in full by
 [`harness-requirements`]({{ '/reference/skill-instructions/harness-requirements.html' | relative_url }})
@@ -18,8 +18,8 @@ and measured by `check:subgraph-coverage`.
 | **skill** | `coverage.skill` | is an agent handed something that GOVERNS this? |
 
 The first four are per declared directory. A fifth, a starting README, is per
-instance and is ranked harder still: without one a reader cannot enter the
-instance.
+layer and is ranked harder still: without one a reader cannot enter the
+layer.
 
 ### `coverage.process` is DECLARED and is not an obligation
 
@@ -64,7 +64,7 @@ that was never going to need one is not carrying a debt.
 
 That difference is why the coverage axis ranks findings **major** and **minor**
 rather than counting them: major is an obligation this kind owes and the
-instance has not met; minor is nobody having said yet, for a kind that never
+layer has not met; minor is nobody having said yet, for a kind that never
 owed one. A single count would rank `beans/` having no viewer alongside a kind
 that never needed one.
 

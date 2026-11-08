@@ -13,6 +13,9 @@
       "prov:wasInfluencedBy": [
         {
           "@id": "docs/source/concepts-harness/instantiation.md#provenance-1"
+        },
+        {
+          "@id": "docs/source/concepts-harness/instantiation.md#provenance-2"
         }
       ]
     },
@@ -27,6 +30,20 @@
       ],
       "dcterms:date": [
         "2026-09-21"
+      ]
+    },
+    {
+      "@id": "docs/source/concepts-harness/instantiation.md#provenance-2",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "history",
+      "cat-harness:section": "(top of block)",
+      "prov:value": "Owner, 2026-11-08: an instance is an instance of a node kind; Harness is one kind; a repository in the stack is a layer; index.config.json declares which harnesses are instantiated on the repository. Before this the page said a layer became an instantiated Harness by carrying a root config file (cat-harness#1138).",
+      "cat-harness:refs": [
+        "2026-11-08",
+        "cat-harness#1138"
+      ],
+      "dcterms:date": [
+        "2026-11-08"
       ]
     }
   ]
