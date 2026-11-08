@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: log-message\n"
-"POT-Creation-Date: 2026-11-05T13:26:11.750Z\n"
+"POT-Creation-Date: 2026-11-08T10:18:45.187Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -24,19 +24,19 @@ msgstr ""
 msgid "Actor"
 msgstr ""
 
-#: processes/log-message.bpmn:52
-#. Diagram label
-msgid "All five present?"
-msgstr ""
-
 #: processes/log-message.bpmn:45
 #. Diagram label
 msgid "An actor has something to record"
 msgstr ""
 
-#: processes/log-message.bpmn:62
+#: processes/log-message.bpmn:64
 #. Diagram element documentation
 msgid "An incomplete message is NOT logged and the actor says it could not log. A log line missing its actor or its task reads as a record while answering nothing, and a reader cannot tell it from a complete one. Silence is recoverable; a misleading entry is not."
+msgstr ""
+
+#: processes/log-message.bpmn:53
+#. Diagram element documentation
+msgid "Checks the composed message against the five required fields of the log-message skill (skills/log-message.md, table \"The message\"): timestamp, actor, process, task and message. The optional body is not counted. If any one of the five is missing or empty, the answer is no."
 msgstr ""
 
 #: processes/log-message.bpmn:47
@@ -59,27 +59,27 @@ msgstr ""
 msgid "Logger"
 msgstr ""
 
-#: processes/log-message.bpmn:67
+#: processes/log-message.bpmn:69
 #. Diagram label
 msgid "no"
 msgstr ""
 
-#: processes/log-message.bpmn:61
+#: processes/log-message.bpmn:63
 #. Diagram label
 msgid "Not recorded — say so"
 msgstr ""
 
-#: processes/log-message.bpmn:56
+#: processes/log-message.bpmn:58
 #. Diagram element documentation
 msgid "Performed by the Logger, which records and decides nothing. In bootstrap the one available destination is the discussion the human actor is already in."
 msgstr ""
 
-#: processes/log-message.bpmn:54
+#: processes/log-message.bpmn:56
 #. Diagram label
 msgid "Record it where a person can read it"
 msgstr ""
 
-#: processes/log-message.bpmn:60
+#: processes/log-message.bpmn:62
 #. Diagram label
 msgid "Recorded"
 msgstr ""
@@ -89,12 +89,17 @@ msgstr ""
 msgid "Records and decides nothing — the composing and the completeness judgement both happen in the Actor's lane before anything reaches here. In bootstrap the one destination available to it is the discussion the human actor is already in."
 msgstr ""
 
+#: processes/log-message.bpmn:52
+#. Diagram label
+msgid "Required fields: all five present?"
+msgstr ""
+
 #: processes/log-message.bpmn:31
 #. Diagram element documentation
 msgid "Whichever process called this sub-process, composing the five required fields and nothing more. GW_Complete then refuses an incomplete message rather than logging it anyway, because a partial entry that reads as a whole one is worse than no entry at all."
 msgstr ""
 
-#: processes/log-message.bpmn:68
+#: processes/log-message.bpmn:70
 #. Diagram label
 msgid "yes"
 msgstr ""
