@@ -54,7 +54,7 @@ sign-off gates.
 | **PHII (2021/2023)**, *Collaborative Requirements Development Methodology (CRDM): A Collaborative Approach to Public Health Systems* (`https://phii.org/crdm/`, 10 pp.) | The three concentration areas (Business Process Analysis, Business Process Redesign, Requirements Definition), the Business Process Matrix, and swimlane Task Flow Diagrams | [`library/phii-2023-crdm`](../library/corpus/process/phii-2023-crdm/README.md) |
 | **PHII (2016/2021)**, *5. Analyzing Technical Options: Defining and Validating System Requirements Guide* (`EHR Toolkit`, 6 pp.) | Functional vs. non-functional requirement grammar (*"The system must or should…"*), the three-level priority scale (**High / Medium / Low** = **Must-have / Should-have / Nice-to-have**), nine requirement quality criteria, and three validation techniques (*Desk checking*, *Walkthrough*, *Peer review*) | [`library/phii-2021-defining-and-validating-requirements-guide`](../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/README.md) |
 | **PATH & PHII (2012)**, *Common Requirements for Maternal Health Information Systems: Produced with the Collaborative Requirements Development Methodology* (36 pp.) | Domain-scale application of CRDM: a four-column Process Framework (Table 1), swimlane Task Flow Diagrams across facility and community pools with numbered activity narratives (Appendix 1), Activity-Linked Functional User Requirements (Appendix 2), and General System Requirements (Appendix 3) | [`library/path-2012-common-requirements-mhis-crdm`](../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md) |
-| **IETF BCP 14 — RFC 2119 & RFC 8174** (Bradner 1997; Leiba 2017) | Normative conformance keywords (`MUST` / `SHALL`, `MUST NOT` / `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `MAY`) in uppercase | [`library/rfc2119-key-words-requirement-levels`](../library/content/rfc2119-key-words-requirement-levels/README.md), [`library/rfc8174-uppercase-vs-lowercase-2119-key-words`](../library/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md) |
+| **IETF BCP 14 — RFC 2119 & RFC 8174** (Bradner 1997; Leiba 2017) | Normative conformance keywords (`MUST` / `SHALL`, `MUST NOT` / `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `MAY`) in uppercase | [`library/rfc2119-key-words-requirement-levels`](../library/corpus/content/rfc2119-key-words-requirement-levels/README.md), [`library/rfc8174-uppercase-vs-lowercase-2119-key-words`](../library/corpus/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md) |
 
 ---
 
@@ -172,13 +172,13 @@ the harness's separate **Conformance** field (`SHALL` / `MUST`, `SHOULD`,
 `MAY`, `SHALL NOT` / `MUST NOT`) uses uppercase normative keywords governed by
 IETF BCP 14:
 
-- **RFC 2119** (Bradner 1997, [`library/rfc2119-key-words-requirement-levels`](../library/content/rfc2119-key-words-requirement-levels/README.md)):
+- **RFC 2119** (Bradner 1997, [`library/rfc2119-key-words-requirement-levels`](../library/corpus/content/rfc2119-key-words-requirement-levels/README.md)):
   Defines `MUST` / `SHALL` (absolute requirement of the specification), `MUST
   NOT` / `SHALL NOT` (absolute prohibition), `SHOULD` (recommended; valid
   reasons may exist in particular circumstances to ignore, but full
   implications must be understood and weighed), `SHOULD NOT` (not recommended),
   and `MAY` (truly optional).
-- **RFC 8174** (Leiba 2017, [`library/rfc8174-uppercase-vs-lowercase-2119-key-words`](../library/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md)):
+- **RFC 8174** (Leiba 2017, [`library/rfc8174-uppercase-vs-lowercase-2119-key-words`](../library/corpus/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md)):
   Clarifies that **only UPPERCASE** words carry the RFC 2119 normative
   meanings; lowercase *"must"*, *"should"*, and *"may"* in surrounding prose
   carry only their normal English meaning.
