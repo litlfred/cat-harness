@@ -65,10 +65,6 @@ msgstr "Contrat typé (JSON Schema d'entrée/sortie)"
 msgid "Package (Docker/runtime deps)"
 msgstr "Paquet (dépendances Docker / exécution)"
 
-#: docs/concepts/skills.md:85
-msgid "The lifecycle stages that apply to every content type:"
-msgstr "Les étapes du cycle de vie qui s'appliquent à chaque type de contenu :"
-
 #: docs/concepts/skills.md:87
 msgid "Skill"
 msgstr "Compétence"
@@ -80,22 +76,6 @@ msgstr "Étape"
 #: docs/concepts/skills.md:87
 msgid "Purpose"
 msgstr "Objectif"
-
-#: docs/concepts/skills.md:89
-msgid "plan"
-msgstr "plan"
-
-#: docs/concepts/skills.md:89
-msgid "Scope, team, timeline, governance"
-msgstr "Périmètre, équipe, calendrier, gouvernance"
-
-#: docs/concepts/skills.md:90
-msgid "author"
-msgstr "author"
-
-#: docs/concepts/skills.md:90
-msgid "Create structured artifacts"
-msgstr "Créer des artefacts structurés"
 
 #: docs/concepts/skills.md:91
 msgid "validate"
@@ -121,14 +101,6 @@ msgstr "test"
 msgid "End-to-end QA / build green"
 msgstr "QA de bout en bout / compilation au vert"
 
-#: docs/concepts/skills.md:94
-msgid "publish"
-msgstr "publish"
-
-#: docs/concepts/skills.md:94
-msgid "Render & deploy"
-msgstr "Rendu et déploiement"
-
 #: docs/concepts/skills.md:95
 msgid "feedback"
 msgstr "feedback"
@@ -136,14 +108,6 @@ msgstr "feedback"
 #: docs/concepts/skills.md:95
 msgid "Collect & triage feedback"
 msgstr "Recueillir et trier les retours"
-
-#: docs/concepts/skills.md:96
-msgid "retire"
-msgstr "retire"
-
-#: docs/concepts/skills.md:96
-msgid "Deprecate / archive"
-msgstr "Déprécier / archiver"
 
 #: docs/concepts/skills.md:102
 msgid "Create and revise blocks in a prose folio"
@@ -511,3 +475,30 @@ msgstr "Voir aussi"
 
 #~ msgid "Agent coordination, the watcher framework, QA / render / bibliography / glossary pipeline, docs, deployment — applies to any content type."
 #~ msgstr "Coordination d'agents, cadre watcher, pipeline QA / rendu / bibliographie / glossaire, documentation, déploiement — s'applique à tout type de contenu."
+
+#~ msgid "The lifecycle stages that apply to every content type:"
+#~ msgstr "Les étapes du cycle de vie qui s'appliquent à chaque type de contenu :"
+
+#~ msgid "plan"
+#~ msgstr "plan"
+
+#~ msgid "Scope, team, timeline, governance"
+#~ msgstr "Périmètre, équipe, calendrier, gouvernance"
+
+#~ msgid "author"
+#~ msgstr "author"
+
+#~ msgid "Create structured artifacts"
+#~ msgstr "Créer des artefacts structurés"
+
+#~ msgid "publish"
+#~ msgstr "publish"
+
+#~ msgid "Render & deploy"
+#~ msgstr "Rendu et déploiement"
+
+#~ msgid "retire"
+#~ msgstr "retire"
+
+#~ msgid "Deprecate / archive"
+#~ msgstr "Déprécier / archiver"

@@ -44,10 +44,6 @@ msgstr "المراجعة النقدية والجدلية للحجج"
 msgid "Approve — it reports findings only"
 msgstr "الاعتماد (Approve) — يقدم تقارير بالنتائج فقط"
 
-#: docs/concepts/skills.md:90
-msgid "author"
-msgstr "author (تأليف)"
-
 #: docs/concepts/skills.md:112
 msgid "Author LaTeX documents"
 msgstr "تأليف مستندات LaTeX"
@@ -112,10 +108,6 @@ msgstr "التثبيت (Commit) — تنتقل مخرجاته إلى المحر�
 msgid "Create and revise blocks in a prose folio"
 msgstr "إنشاء الكتل ومراجعتها في folio نثري"
 
-#: docs/concepts/skills.md:90
-msgid "Create structured artifacts"
-msgstr "إنشاء مخرجات مهيكلة"
-
 #: docs/concepts/skills.md:200
 msgid "Create/modify content (inherits reviewer)."
 msgstr "إنشاء/تعديل المحتوى (يرث صلاحيات reviewer)."
@@ -127,10 +119,6 @@ msgstr "default"
 #: docs/concepts/skills.md:72
 msgid "Definition (roles, required capabilities, requirements, routing patterns, lifecycle stages, schema ref)"
 msgstr "التعريف (الأدوار، القدرات المطلوبة، المتطلبات، أنماط التوجيه، مراحل دورة الحياة، مرجع المخطط)"
-
-#: docs/concepts/skills.md:96
-msgid "Deprecate / archive"
-msgstr "إيقاف الاستخدام / الأرشفة"
 
 #: docs/concepts/skills.md:125
 msgid "DMN decision tables"
@@ -245,10 +233,6 @@ msgstr "النمط"
 msgid "People"
 msgstr "الأشخاص"
 
-#: docs/concepts/skills.md:89
-msgid "plan"
-msgstr "plan (تخطيط)"
-
 #: docs/concepts/skills.md:231
 msgid "Priority"
 msgstr "الأولوية"
@@ -273,10 +257,6 @@ msgstr "ما يوفره"
 msgid "Publication-readiness QA across layers."
 msgstr "ضمان الجودة للجاهزية للنشر عبر مختلف الطبقات."
 
-#: docs/concepts/skills.md:94
-msgid "publish"
-msgstr "publish (نشر)"
-
 #: docs/concepts/skills.md:87
 #: docs/concepts/skills.md:100
 #: docs/concepts/skills.md:109
@@ -294,17 +274,9 @@ msgstr "بوابات ضمان الجودة (QA gates)"
 msgid "Releases, IG config, builds, versioning, publication."
 msgstr "الإصدارات، وتكوين دليل التطبيق (IG config)، وعمليات البناء، وإدارة النسخ، والنشر."
 
-#: docs/concepts/skills.md:94
-msgid "Render & deploy"
-msgstr "التصيير والنشر"
-
 #: docs/concepts/skills.md:248
 msgid "Requirements are gates that must hold during work:"
 msgstr "المتطلبات هي بوابات يجب استيفاؤها أثناء العمل:"
-
-#: docs/concepts/skills.md:96
-msgid "retire"
-msgstr "retire (تقاعد)"
 
 #: docs/concepts/skills.md:92
 msgid "review"
@@ -330,10 +302,6 @@ msgstr "النطاق"
 #: docs/concepts/skills.md:202
 msgid "Scope, team formation, timeline, stakeholder governance."
 msgstr "النطاق، وتشكيل الفريق، والجدول الزمني، وحوكمة أصحاب المصلحة."
-
-#: docs/concepts/skills.md:89
-msgid "Scope, team, timeline, governance"
-msgstr "تحديد النطاق، والفريق، والجدول الزمني، والحوكمة"
 
 #: docs/concepts/skills.md:138
 msgid "Search across the content corpus"
@@ -380,10 +348,6 @@ msgstr "حوكمة المصطلحات (ICD-11، وSNOMED CT، وLOINC)."
 #: docs/concepts/skills.md:93
 msgid "test"
 msgstr "test (اختبار)"
-
-#: docs/concepts/skills.md:85
-msgid "The lifecycle stages that apply to every content type:"
-msgstr "مراحل دورة الحياة التي تنطبق على كل نوع من أنواع المحتوى:"
 
 #: docs/concepts/skills.md:73
 msgid "Typed contract (input/output JSON Schema)"
@@ -531,3 +495,30 @@ msgstr "أين توجد المهارات (وحالتها)"
 
 #~ msgid "Status"
 #~ msgstr "الحالة"
+
+#~ msgid "author"
+#~ msgstr "author (تأليف)"
+
+#~ msgid "Create structured artifacts"
+#~ msgstr "إنشاء مخرجات مهيكلة"
+
+#~ msgid "Deprecate / archive"
+#~ msgstr "إيقاف الاستخدام / الأرشفة"
+
+#~ msgid "plan"
+#~ msgstr "plan (تخطيط)"
+
+#~ msgid "publish"
+#~ msgstr "publish (نشر)"
+
+#~ msgid "Render & deploy"
+#~ msgstr "التصيير والنشر"
+
+#~ msgid "retire"
+#~ msgstr "retire (تقاعد)"
+
+#~ msgid "Scope, team, timeline, governance"
+#~ msgstr "تحديد النطاق، والفريق، والجدول الزمني، والحوكمة"
+
+#~ msgid "The lifecycle stages that apply to every content type:"
+#~ msgstr "مراحل دورة الحياة التي تنطبق على كل نوع من أنواع المحتوى:"
