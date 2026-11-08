@@ -41,7 +41,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Why this exists",
-      "prov:value": "Searched before this skill was written: this repository had a great deal about\nthe language its **content** is in — [`translation-manager`](../../library/library-core/translation-manager.md),\n`defaultLocale`, per-locale `.po` resolution, coverage badges — and **nothing\nat all** about the language an agent SPEAKS IN."
+      "prov:value": "Searched before this skill was written: this repository had a great deal about\nthe language its **content** is in — [`translation-manager`](../../../library/skills/library-core/translation-manager.md),\n`defaultLocale`, per-locale `.po` resolution, coverage badges — and **nothing\nat all** about the language an agent SPEAKS IN."
     },
     {
       "@id": "skills/conduct/conduct-core/communication-language.md#provenance-3",

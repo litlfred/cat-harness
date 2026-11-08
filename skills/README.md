@@ -18,7 +18,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `skills`, holding `skills
 | [`conduct/`](conduct/) | How an agent behaves in the harness: interaction, confirmation, memory, security, and what it may and may not do on its own. | |
 | [`conventions/`](conventions/) | _nothing declares what this holds_ | |
 | [`kg/`](kg/) | How the graph is declared, placed, read, restructured, exported and audited. | |
-| [`library/`](library/) | How sources are acquired, ingested, archived, catalogued and described. | |
 | [`permissions/`](permissions/) | _nothing declares what this holds_ | |
 | [`process/`](process/) | How work is modelled and run: BPMN and DMN, roles and authorization, RACI, methodologies, and the workflow engine's state. | |
 | [`requirements/`](requirements/) | _nothing declares what this holds_ | |

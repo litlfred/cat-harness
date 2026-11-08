@@ -82,7 +82,7 @@ shipped a default answer to either would be asserting on their behalf.
 
 - [`untainted-verification`](../../../sdlc/skills/sdlc-core/untainted-verification.md) — the discipline. Read
   it first; this skill adds only what evidence review instantiates.
-- [`translation-manager`](../../library/library-core/translation-manager.md) §"The agentic round trip" —
+- [`translation-manager`](../../../library/skills/library-core/translation-manager.md) §"The agentic round trip" —
   the other instance.
 - `voice-who-guideline-development` in the IRIS replica's style guide — how a recommendation
   is **worded**: the language of normative statements, not the process that
