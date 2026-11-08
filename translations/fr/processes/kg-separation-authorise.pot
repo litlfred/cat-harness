@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kg-separation-authorise\n"
-"POT-Creation-Date: 2026-11-08T06:36:09.303Z\n"
+"POT-Creation-Date: 2026-11-08T11:49:26.501Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -39,17 +39,17 @@ msgstr ""
 msgid "Authorise the extraction"
 msgstr ""
 
-#: processes/kg/kg-separation-authorise.bpmn:56
+#: processes/kg/kg-separation-authorise.bpmn:57
 #. Diagram label
 msgid "Authorised"
 msgstr ""
 
-#: processes/kg/kg-separation-authorise.bpmn:67
+#: processes/kg/kg-separation-authorise.bpmn:68
 #. Diagram label
 msgid "authorised"
 msgstr ""
 
-#: processes/kg/kg-separation-authorise.bpmn:50
+#: processes/kg/kg-separation-authorise.bpmn:51
 #. Diagram label
 msgid "Authorised?"
 msgstr ""
@@ -59,22 +59,22 @@ msgstr ""
 msgid "Briefs, measures the signals, runs declare-detangle-isolate, reports what would move, seeds the repositories once they exist, and adopts each later release. Verification is always by re-running a gate, never by a change looking right."
 msgstr ""
 
-#: processes/kg/kg-separation-authorise.bpmn:60
+#: processes/kg/kg-separation-authorise.bpmn:61
 #. Diagram label
 msgid "Declined"
 msgstr ""
 
-#: processes/kg/kg-separation-authorise.bpmn:68
+#: processes/kg/kg-separation-authorise.bpmn:69
 #. Diagram label
 msgid "declined"
 msgstr ""
 
-#: processes/kg/kg-separation-authorise.bpmn:61
+#: processes/kg/kg-separation-authorise.bpmn:62
 #. Diagram element documentation
 msgid "Declined: the graph stays in place, ready to leave."
 msgstr ""
 
-#: processes/kg/kg-separation-authorise.bpmn:51
+#: processes/kg/kg-separation-authorise.bpmn:52
 #. Diagram element documentation
 msgid "Reads the administrator's answer to the ask before it."
 msgstr ""
@@ -91,10 +91,10 @@ msgstr ""
 
 #: processes/kg/kg-separation-authorise.bpmn:17
 #. Diagram element documentation
-msgid "Reports what would move, with sizes and what breaks, and asks the administrator to authorise the extraction; the gateway after the ask reads the answer. Called by kg-separation (bpmn-authoring: a question is a gateway, never a task)."
+msgid "Reports what would move, with sizes and what breaks, and asks the administrator to authorise the extraction; the gateway after the ask reads the answer. Called by kg-separation and sub-kg-lifecycle (bpmn-authoring: a question is a gateway, never a task)."
 msgstr ""
 
-#: processes/kg/kg-separation-authorise.bpmn:57
+#: processes/kg/kg-separation-authorise.bpmn:58
 #. Diagram element documentation
 msgid "The administrator authorised the extraction."
 msgstr ""

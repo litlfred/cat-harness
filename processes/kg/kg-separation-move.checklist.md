@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/kg/kg-separation-move.bpmn` (process `Process_KgSeparationMove`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Creates the repositories, drains the open PRs until the source settles, seeds both repositories, has the parent consume the pair additively, makes the first release and checks every identifier dereferences.
+Creates the repositories, drains the open PRs until the source settles, seeds them, re-points the declaration and verifies a fresh clone, then has the parent consume the result additively, makes the first release and checks every identifier dereferences.
 
 ## Begin — Extraction authorised (`Start_Move`)
 
@@ -47,9 +47,37 @@ Creates the repositories, drains the open PRs until the source settles, seeds bo
 - Skill: `kg-separation`.
 - What: Seed main, then bring the content and the tools in as reviewed pull requests with their history, so neither repository's first commit is unreviewable.
 - Record it: `workflow_complete` with `node: "Task_Seed"`.
-- next: → `Task_Consume` (Parent consumes, additively)
+- next: → `Task_Repoint` (Re-point: livesAt, seam, mount or subscription)
 
-### 4. Parent consumes, additively (`Task_Consume`)
+### 4. Re-point: livesAt, seam, mount or subscription (`Task_Repoint`)
+
+- Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
+- Skill: `sub-kg-lifecycle`, `upstream-version-adoption`.
+- What: In the new repository `livesAt` goes (absent means it sits at the root of `repository`) and `platform.ts` points at where the platform now is.
+- Record it: `workflow_complete` with `node: "Task_Repoint"`.
+- next: → `Task_FreshClone` (Verify on a fresh clone)
+
+### 5. Verify on a fresh clone (`Task_FreshClone`)
+
+- Who: the `Build pipeline` lane (role `build-pipeline`).
+- Skill: `sub-kg-lifecycle`.
+- What: `bun run cat sub-kg:verify-clone --repo <owner>/<name> --ref <branch>` (Tool sub-kg-verify-clone): clone into an empty scratch directory with submodules and any sibling it needs, install, and run its own gates.
+- Record it: `workflow_complete` with `node: "Task_FreshClone"`.
+- next: → `GW_Fresh` (Green from a fresh clone?)
+
+### Decide — Green from a fresh clone? (`GW_Fresh`)
+
+- Green goes to the owner.
+- Call `workflow_complete` with `node: "GW_Fresh"` and `outcome` set to the label that holds:
+  - «red» → `Task_Repoint` (Re-point: livesAt, seam, mount or subscription)
+  - «could not run» → `End_FreshUnknown` (UNKNOWN: stop. Not clean)
+  - «green» → `Task_Consume` (Parent consumes, additively)
+
+## Done — UNKNOWN: stop. Not clean (`End_FreshUnknown`)
+
+- The instance completes here: The fresh clone could not be verified. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 6. Parent consumes, additively (`Task_Consume`)
 
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `upstream-version-adoption`.
@@ -57,7 +85,7 @@ Creates the repositories, drains the open PRs until the source settles, seeds bo
 - A subprocess (`Process_UpstreamAdoption`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Task_Release` (First release)
 
-### 5. First release (`Task_Release`)
+### 7. First release (`Task_Release`)
 
 - Who: the `Publication manager` lane (role `publication-manager`).
 - Skill: `package-release`.
@@ -65,7 +93,7 @@ Creates the repositories, drains the open PRs until the source settles, seeds bo
 - Record it: `workflow_complete` with `node: "Task_Release"`.
 - next: → `Task_Verify` (Every identifier dereferences)
 
-### 6. Every identifier dereferences (`Task_Verify`)
+### 8. Every identifier dereferences (`Task_Verify`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - Skill: `publish-verification`.

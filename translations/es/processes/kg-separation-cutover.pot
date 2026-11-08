@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kg-separation-cutover\n"
-"POT-Creation-Date: 2026-11-08T06:36:09.304Z\n"
+"POT-Creation-Date: 2026-11-08T11:49:26.503Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -81,7 +81,7 @@ msgstr ""
 
 #: processes/kg/kg-separation-cutover.bpmn:17
 #. Diagram element documentation
-msgid "Retires the parent's copy and measures the cutover with separation:cutover:check until every condition holds. A check that cannot decide ends the phase as unknown, never as complete. Called by kg-separation (bpmn-authoring: split by phase)."
+msgid "Retires the parent's copy and measures the cutover with separation:cutover:check until every condition holds. A check that cannot decide ends the phase as unknown, never as complete. Called by kg-separation and sub-kg-lifecycle (bpmn-authoring: split by phase)."
 msgstr ""
 
 #: processes/kg/kg-separation-cutover.bpmn:48
