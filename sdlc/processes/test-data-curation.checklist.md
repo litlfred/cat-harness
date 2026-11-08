@@ -50,7 +50,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
-- What: Write the curated `records` and optional `citations` with `$schema: "test-data-fixed/1.0.0"` and `kind: "fixed"` into the instance's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`).
+- What: Write the curated `records` and optional `citations` with `$schema: "test-data-fixed/1.0.0"` and `kind: "fixed"` into the layer's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`).
 - Record it: `workflow_complete` with `node: "Task_CurateFixed"`.
 - next: → `GW_NeedsSmeReview` (Exercises decision support or indicator definition?)
 
@@ -94,7 +94,7 @@ General curation process for fixed (`test-data-fixed/1.0.0`) and generated (`tes
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `test-data-sets`.
-- What: Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: "test-data-generated/1.0.0"` and `kind: "generated"` in the instance's declared `test-data-generated` directory.
+- What: Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: "test-data-generated/1.0.0"` and `kind: "generated"` in the layer's declared `test-data-generated` directory.
 - Record it: `workflow_complete` with `node: "Task_WriteRecipe"`.
 - next: → `GW_MergeKind` (Data set written)
 

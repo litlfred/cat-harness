@@ -131,7 +131,7 @@ the strip's own position, and the same tab hides the tiles again. See
 
 ## The floor, which is not negotiable
 
-This instance's declared interaction profile is **low-dexterity**. Every board
+This layer's declared interaction profile is **low-dexterity**. Every board
 action is keyboard-operable; drag is an accelerator and never the only way in.
 Targets are at least the tile size. And the board is ALWAYS collapsible to a
 linear, tile-based listing — a board that cannot be read linearly cannot be
@@ -163,7 +163,7 @@ generator writes with.
 ## The folio belongs to the HARNESS, not to the library
 
 A **content library** is something a reader browses — a replica, a published
-instance, any folio published as a site. A **folio** is the reader's own
+layer, any folio published as a site. A **folio** is the reader's own
 surface: their notes, the assets they have materialised, the documents they
 created or linked.
 
@@ -212,14 +212,14 @@ what makes closing cheap enough to do freely. When you implement
 close, check that the library offers the way back — not that the glass does.
 
 **Close says where the way back is, at the moment of closing.** The glass's
-`[x]` opens a confirm that names the instance's library and links it; Escape
+`[x]` opens a confirm that names the layer's library and links it; Escape
 and Cancel leave the card where it is, and only the confirm shelves it — after
 which the glass says, with the same link, where the asset went. Naming the
 library matters because a reader holding assets from several libraries would
 otherwise have to remember which one each came from.
 
 **The place is the card's own, so there are three.** A library card goes back
-to its instance's library, a todo to the Todos board, and a landing sticky
+to its layer's library, a todo to the Todos board, and a landing sticky
 pinned to the glass to the page it was pinned from; calling a sticky "your
 Todos" would send the reader to a list it was never on. One function answers
 "where does this card go back to", and the confirm, the status after it and

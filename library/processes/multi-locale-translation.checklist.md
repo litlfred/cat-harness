@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/library/processes/multi-locale-translation.bpmn` (process `Process_MultiLocaleTranslation`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Translate one or more instances into several locales at once, as a team: one source-language lead, one translator per locale, an untainted round trip, and the owner's merge window.
+Translate one or more layers into several locales at once, as a team: one source-language lead, one translator per locale, an untainted round trip, and the owner's merge window.
 
 ## Begin — Locales requested (`Start_ML`)
 
@@ -15,7 +15,7 @@ Translate one or more instances into several locales at once, as a team: one sou
 ### 1. Set locales, scope and merge window (`Task_ML_Scope`)
 
 - Who: the `Owner` lane (role `user`).
-- What: Which instances, which locales, which assets (pages, diagrams, glossary, FHIR terms), and the window in which locale PRs may be merged.
+- What: Which layers, which locales, which assets (pages, diagrams, glossary, FHIR terms), and the window in which locale PRs may be merged.
 - Record it: `workflow_complete` with `node: "Task_ML_Scope"`.
 - next: → `Task_ML_Extract` (Extract every template once)
 
@@ -40,7 +40,7 @@ Translate one or more instances into several locales at once, as a team: one sou
 
 - Who: the `Source-language lead` lane (role `translation-source-lead`).
 - Skill: `translation-refresh`.
-- What: Schedule a fresh session that follows `translation-refresh` on each instance, so a template that moves after today is caught by its check failing, not by a reader.
+- What: Schedule a fresh session that follows `translation-refresh` on each layer, so a template that moves after today is caught by its check failing, not by a reader.
 - Record it: `workflow_complete` with `node: "Task_ML_Watcher"`.
 - next: → `Task_ML_Translate` (Translate one locale)
 
@@ -93,7 +93,7 @@ Translate one or more instances into several locales at once, as a team: one sou
 
 - Who: the `Locale translator (one per locale)` lane (role `locale-translator`).
 - Skill: `translation-manager`.
-- What: `translation:glossary:check`, against the layered term base: the normative reference glossaries first, then each layer in the order the index config lists it, the instance's own glossary last and never overriding.
+- What: `translation:glossary:check`, against the layered term base: the normative reference glossaries first, then each layer in the order the index config lists it, the layer's own glossary last and never overriding.
 - Record it: `workflow_complete` with `node: "Task_ML_Glossary"`.
 - next: → `Task_ML_QAReport` (Write the locale's QA report)
 

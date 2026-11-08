@@ -87,7 +87,7 @@ The failure each rule prevents is stated beside it.
    own pages is as often a card face or a photo. A site build that knows its
    images are drawings stamps the attribute on the page. The IG site build
    does this on every IG page, and its own skill (`ig-site-links`) says
-   where. This skill names no instance, because the viewer belongs to the
+   where. This skill names no layer, because the viewer belongs to the
    platform.
 
    At 100% a plain figure is shown at its **own** width, capped at the column.

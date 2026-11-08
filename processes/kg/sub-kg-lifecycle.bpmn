@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
   Sub-KG lifecycle: a knowledge graph staged as a directory inside a harnessed
-  repository, declared as its own instance, that may later leave whole for a
+  repository, declared as its own layer, that may later leave whole for a
   repository of its own.
 
   Source of truth: this file. The SVG beside it is generated from it by
   `bun run cat render:bpmn`; never hand-edit the SVG.
 
   The light sibling of kg-separation.bpmn. That process splits a graph into a
-  content repository and a tools repository; this one moves a DATA instance
+  content repository and a tools repository; this one moves a DATA layer
   whole. It keeps its own grow-in-place and staging steps and calls the phases
   the two share: kg-separation-authorise, kg-separation-move (whose seeding
   gateway is decisions/seed-readiness-gate.dmn) and kg-separation-cutover.
@@ -36,9 +36,9 @@
     <bpmn:participant id="Participant_Process_SubKgLifecycle" name="A sub-KG is staged in place, then leaves for its own repository" processRef="Process_SubKgLifecycle"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_SubKgLifecycle" name="A sub-KG is staged in place, then leaves for its own repository" isExecutable="false">
-    <bpmn:documentation>Create a knowledge graph inside a harnessed repository as an instance of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository. Declared in place with a planned `repository` and a `livesAt` saying where it sits today; staged by one import seam (`&lt;name&gt;/platform.ts`), the separation guard and a self-contained rehearsal; then, each behind an explicit owner confirmation, the repository is created, the staged contents are copied in with their history, the declaration is re-pointed, a fresh clone is verified, and the in-repo copy is frozen in the kept trashcan.
+    <bpmn:documentation>Create a knowledge graph inside a harnessed repository as a layer of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository. Declared in place with a planned `repository` and a `livesAt` saying where it sits today; staged by one import seam (`&lt;name&gt;/platform.ts`), the separation guard and a self-contained rehearsal; then, each behind an explicit owner confirmation, the repository is created, the staged contents are copied in with their history, the declaration is re-pointed, a fresh clone is verified, and the in-repo copy is frozen in the kept trashcan.
 
-The light sibling of kg-separation, which splits a graph into a content and a tools repository; this moves a data instance whole, and shares kg-separation's seeding gateway and decision table. DRAWN IN PHASES (owner, 2026-11-08, Q-B1-3 A): it keeps its own grow-in-place and staging steps, and calls the authorise, move and cut-over phases it shares with kg-separation.</bpmn:documentation>
+The light sibling of kg-separation, which splits a graph into a content and a tools repository; this moves a data layer whole, and shares kg-separation's seeding gateway and decision table. DRAWN IN PHASES (owner, 2026-11-08, Q-B1-3 A): it keeps its own grow-in-place and staging steps, and calls the authorise, move and cut-over phases it shares with kg-separation.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
@@ -99,7 +99,7 @@ The light sibling of kg-separation, which splits a graph into a content and a to
       <bpmn:outgoing>F2</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_Grow" name="Grow it in place">
-      <bpmn:documentation>The content type's own authoring process runs here, against the staged instance. Many sub-KGs never leave; this task can last as long as the graph does.</bpmn:documentation>
+      <bpmn:documentation>The content type's own authoring process runs here, against the staged layer. Many sub-KGs never leave; this task can last as long as the graph does.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="sub-kg-lifecycle"/>
       </bpmn:extensionElements>
@@ -128,7 +128,7 @@ The light sibling of kg-separation, which splits a graph into a content and a to
       <bpmn:documentation>Move what is generic into the harness below before the seam is closed, and consolidate what the sub-KG needs into the harness it instantiates. Wrong-direction edges hide in declarations and data as well as imports: run check:import-direction, check:reference-direction and check:process-bindings.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="graph-detanglement"/>
-        <cat-harness.processes:no-call reason="Uses the detanglement practice's direction checks on an instance already declared in place. graph-detanglement.bpmn starts from declaring a tangled sub-graph, which stage 1 of this process has already done."/>
+        <cat-harness.processes:no-call reason="Uses the detanglement practice's direction checks on a layer already declared in place. graph-detanglement.bpmn starts from declaring a tangled sub-graph, which stage 1 of this process has already done."/>
       </bpmn:extensionElements>
       <bpmn:incoming>F5</bpmn:incoming>
       <bpmn:outgoing>F6</bpmn:outgoing>

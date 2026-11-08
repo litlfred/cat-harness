@@ -99,7 +99,7 @@ means a translated block reaches a reader in some output. "QA'd" means
 A scratch script ran `extractMarkdown` over one small body per kind. It then
 ran `injectMarkdown` with a fake catalogue that wraps every msgid as
 `FR[…]`, which makes it visible what injection does to structure. This
-instance holds **no** math-kind block: its corpus is 157 `prose` blocks under
+layer holds **no** math-kind block: its corpus is 157 `prose` blocks under
 `content/docs/`. So the math samples were written for the probe, in the
 shapes the paper adapter documents. Selected outputs, verbatim:
 

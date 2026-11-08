@@ -31,11 +31,11 @@ Each job lives in the object that already owns it:
 | `beans/` (via the `beans` CLI) | the **queue** and the **plan**: goals as milestones, epics, tasks |
 | `memory/` | established facts and TRAPs — what not to re-derive, and what not to repeat |
 | Per-PR body | session intent at branch-open; EOS results appended |
-| a root dashboard file | **optional, and this instance has none.** See below |
+| a root dashboard file | **optional, and this layer has none.** See below |
 
 ### The dashboard is optional, and absent is not undetermined
 
-An instance MAY keep a `STATUS.md`-style dashboard. This one does not, and
+A layer MAY keep a `STATUS.md`-style dashboard. This one does not, and
 that is a **determined absence** rather than a gap: the milestones and
 `beans roadmap` answer the same question from the store, so a dashboard here
 would be a second copy free to drift from it.

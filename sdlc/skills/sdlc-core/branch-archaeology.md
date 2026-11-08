@@ -73,7 +73,7 @@ Two flags sit beside the class rather than inside it:
 
 **If an unlanded or partial branch touches content, it goes on the
 salvage-review list and is never offered for deletion, at any age or size.**
-"Content" means any path under a directory the instance declares with a
+"Content" means any path under a directory the layer declares with a
 content kind (`folio`, `library`), any `.lean` file, and the folio's block,
 chapter and computation sources. Read the declaration
 (`<instance>.json`); do not use a hard-coded path list.

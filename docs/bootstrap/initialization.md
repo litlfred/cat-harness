@@ -5,17 +5,17 @@ parent: CatBootstrap
 nav_order: 1
 ---
 
-# Initializing a repository into a `folio-assistant` instance
+# Initializing a repository into a `folio-assistant` layer
 {: .no_toc }
 
 **You arrived here from bootstrap**, having been given one reference and having
-read this instance's declaration. This page is step 2's destination: what to do
-to make the repository you are in an instance of *this* harness.
+read this layer's declaration. This page is step 2's destination: what to do
+to make the repository you are in a layer on *this* harness.
 
-Every cat-harness instance publishes this page at the same place —
+Every cat-harness layer publishes this page at the same place —
 `<stub>/docs/bootstrap/initialization.md` — so bootstrap needs no per-target
 knowledge. If you are initializing into a different harness, you are reading
-the wrong one; read that instance's copy instead.
+the wrong one; read that layer's copy instead.
 
 1. TOC
 {:toc}
@@ -28,9 +28,9 @@ Three things, all read rather than asked:
 
 | | from |
 |---|---|
-| that this repository is **not yet** an instance | no repository's declaration |
-| the instance to become one **of** | the single reference a person supplied |
-| what that instance **is** | its own declaration |
+| that this repository is **not yet** a layer | no repository's declaration |
+| the layer to become one **of** | the single reference a person supplied |
+| what that layer **is** | its own declaration |
 
 If any of those is missing, you are earlier in the process than this page.
 Go back to [`bootstrap/README.md`](https://github.com/litlfred/folio-assistant/blob/main/bootstrap/README.md).
@@ -50,30 +50,30 @@ The order is the load-bearing part, not the individual steps.
 3. **Write `AGENTS.md`**, with `CLAUDE.md` and `GEMINI.md` as thin stubs
    pointing at it. The copy bootstrap brought in could rely on nothing; this
    one may rely on the harness that now exists.
-4. **Publish the instance's JSON-LD context.** Declare its `iriBase`
+4. **Publish the layer's JSON-LD context.** Declare its `iriBase`
    (`https://<owner>.github.io/<repo>/`) and add `.github/workflows/publish-context.yml`,
    the one-line caller of the tools layer's `layer-publish-context.yml`;
    `init-folio --instance` writes both. After its first run on `main`, the
    owner switches GitHub Pages on: *Deploy from a branch: `gh-pages`, `/ (root)`*.
    See [`instance-publication`](https://litlfred.github.io/folio-assistant/reference/skill-instructions/instance-publication.html).
-5. **Publish the instance's QA results.** An instance that declares a `qa`
+5. **Publish the layer's QA results.** A layer that declares a `qa`
    directory with `storage` (`test/results/` on `cat/cat-harness/qa-reports`,
    keyed by commit) keeps its results on that branch of **its own**
    repository: add `.github/workflows/publish-qa.yml`, the caller of the tools
    layer's `layer-qa-publish.yml`, and ignore `test/results/`. `init-folio
    --instance` writes the caller. The branch is created by its first run; an
-   instance with no `qa` directory of its own is skipped with a notice, and its
+   layer with no `qa` directory of its own is skipped with a notice, and its
    results are the index's.
 6. **Re-enter through this harness.** Read *its* next steps rather than any
    list held in bootstrap: the available steps change once the harness is
    present, and the harness is the authority on what they are.
 
-## What this instance expects that a bare one does not
+## What this layer expects that a bare one does not
 
 `folio-assistant` is **the platform, not the content**. A folio — a paper, a
 WHO SMART Guideline, an IG — lives in a *separate* repository that depends on
 this one. If you are initializing a repository meant to hold subject matter,
-you want a folio instance, and `bun run cat init-folio` is the tool for it.
+you want a folio layer, and `bun run cat init-folio` is the tool for it.
 
 Two consequences worth knowing before you write the declaration:
 
@@ -84,10 +84,10 @@ Two consequences worth knowing before you write the declaration:
   rather than from a memorised path — which is why step 1 is the declaration
   and not a directory listing.
 
-## If you are creating a new instance KIND, not a new instance
+## If you are creating a new layer KIND, not a new layer
 
-Everything above assumes you are making **another instance of an existing
-kind** — a `folio-assistant` instance, using this harness's vocabulary. Making
+Everything above assumes you are making **another layer of an existing
+kind** — a `folio-assistant` layer, using this harness's vocabulary. Making
 a new *kind* is a different act, and it changes which of the files you inherit
 are yours.
 
@@ -98,7 +98,7 @@ It is written for *this* repository: every link it resolves into
 `../cat-harness/` is a **term definition** — what a role is, what a DAK block
 is, what a harness declaration is.
 
-Bootstrap a new instance kind that is not built on `cat-harness`, and your
+Bootstrap a new layer kind that is not built on `cat-harness`, and your
 first reader gets a page whose every definition points into a harness they are
 not using. **Repointing it is expected**, not a modification of platform code:
 aim the links at whatever layer defines *your* vocabulary. Keep the

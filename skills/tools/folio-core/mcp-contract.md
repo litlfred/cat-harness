@@ -21,7 +21,7 @@ Four checks, and they fail in different directions:
 | | source | checked against |
 |---|---|---|
 | **schema equivalence** | `ToolDefinition.io` | the served `inputSchema` / `outputSchema` |
-| **coverage** | the instance's Tool nodes | what `tools/list` actually returns |
+| **coverage** | the layer's Tool nodes | what `tools/list` actually returns |
 | **satisfaction** | `ToolDefinition.satisfies` | the skills that claim the capability |
 | **authority** | `ToolInvocation.by` | the role graph — was this actor, in this lane, allowed to run it |
 
@@ -42,7 +42,7 @@ something is being served that nothing declares.
 
 **Satisfaction is the KG edge, and it is the one nobody checks.** A skill says
 "claim the item before you work". `satisfies` is what says which Tools can do
-that. If no served tool satisfies a skill the instance ships, an agent will read
+that. If no served tool satisfies a skill the layer ships, an agent will read
 the skill, find no mechanism, and improvise, which is the failure the
 skill/Tool separation exists to prevent. Report it; do not fail on it by
 default, because a skill may legitimately be satisfied by a manual Tool with

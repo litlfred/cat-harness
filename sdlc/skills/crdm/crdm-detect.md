@@ -252,7 +252,7 @@ nobody can navigate to is one nobody reads. The harness that owns
 the capability owns the link — so a change to cat-harness's
 pipeline is linked from cat-harness's `docs/`, not from wherever the agent
 happened to be working. Which harness owns it is usually answered by which
-instance declares the directory the change lands in.
+layer declares the directory the change lands in.
 
 ### The test
 
@@ -268,7 +268,7 @@ been built.
 It does not mean every small change becomes an epic. The trigger is the same
 one `opening-brief` uses: **irreversibility and surprise**, not size. A
 one-line fix to a typo in a generated file is a fix. A one-line change to a
-schema that three instances resolve against is a feature, because other people
+schema that three layers resolve against is a feature, because other people
 have to live with it.
 
 Nor does it mean stopping work to do paperwork first. `continual-progress`

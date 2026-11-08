@@ -51,7 +51,7 @@
       "continual-progress"
     ],
     "selection": {
-      "when": "Before any push, and as the answer to \"what checks this?\". It matters most where CI is not: `tools/` is an INHERITED declaration and `.github/workflows/` is not, so a downstream instance gets this Tool and none of the gates it names.",
+      "when": "Before any push, and as the answer to \"what checks this?\". It matters most where CI is not: `tools/` is an INHERITED declaration and `.github/workflows/` is not, so a downstream layer gets this Tool and none of the gates it names.",
       "limits": "It runs what the workflow declares, so a check CI does not run is a check this does not run. The default omits the browser jobs; `--all` adds them, and `render:bpmn:check` needs Chromium.",
       "cost": "The fast set is about a minute, dominated by `bun test`. `--all` adds a browser render."
     },
@@ -69,7 +69,7 @@
     },
     {
       "at": "",
-      "comment": "── Running the checks CI runs ────────────────────────────────────────\n\n`tools/` is an INHERITED declaration and `.github/workflows/` is not:\na downstream instance gets this node and none of the gates it names.\nThat asymmetry is the whole business case for the node."
+      "comment": "── Running the checks CI runs ────────────────────────────────────────\n\n`tools/` is an INHERITED declaration and `.github/workflows/` is not:\na downstream layer gets this node and none of the gates it names.\nThat asymmetry is the whole business case for the node."
     }
   ]
 }

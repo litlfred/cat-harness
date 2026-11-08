@@ -24,7 +24,7 @@ One process, called wherever remote content is landed locally: a large remote co
 
 - Who: the `Ingestion engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `materialize-remote`.
-- What: Resolve the request against the source's descriptor (one per corpus, in the declared sources/ of the instance that owns it, e.g.
+- What: Resolve the request against the source's descriptor (one per corpus, in the declared sources/ of the layer that owns it, e.g.
 - Record it: `workflow_complete` with `node: "Task_Enumerate"`.
 - next: → `Task_Size` (Size the take and the whole)
 

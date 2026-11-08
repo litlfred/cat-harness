@@ -23,10 +23,10 @@ unchanged throughout:
 - A **Task** is a step in a Workflow — a node in the BPMN.
 - A **Skill** is a **Capability with defined inputs and outputs**.
 
-The Knowledge Graph is not one directory, and not one repository. An instance declares
+The Knowledge Graph is not one directory, and not one repository. A layer declares
 the directories it scans and the **kind** of graph each holds, in its
-`<name>.json` root declaration; a dependent instance inherits those and may add
-its own. So the Knowledge Graph of a checkout is the union of what every instance in it
+`<name>.json` root declaration; a dependent layer inherits those and may add
+its own. So the Knowledge Graph of a checkout is the union of what every layer in it
 declares — which is why "where is the Knowledge Graph" has no filesystem answer, and why
 a consumer asks for a kind rather than opening a path.
 

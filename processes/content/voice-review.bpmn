@@ -69,7 +69,7 @@ Three outcomes, all legitimate, and the third is the one that needs recording: a
     </bpmn:exclusiveGateway>
 
     <bpmn:endEvent id="End_NoVoice" name="No voice —&#10;nothing to review">
-      <bpmn:documentation>A pass, not a gap. An empty `voices.active` is the default and a legitimate answer: an instance may ship voices and activate none.</bpmn:documentation>
+      <bpmn:documentation>A pass, not a gap. An empty `voices.active` is the default and a legitimate answer: a layer may ship voices and activate none.</bpmn:documentation>
     </bpmn:endEvent>
 
     <bpmn:task id="Task_LoadActive" name="Load the active voices">

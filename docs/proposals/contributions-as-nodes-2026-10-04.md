@@ -28,7 +28,7 @@ Owner, 2026-10-04, on the audit's open question (work item `sod4`): **every cont
 
   smart-base and folio-assistant-sci contribute this way. The `paper` adapter's kinds do not: they are tables in cat-harness, which is sod4 #1.
 - **Validators** are strings. A kind carries `validator: "fhir-harness:schemas/ig-ast.ts#AstManifestSchema"` or `nodeSchemas: { "<tag>": { validator: "…" } }`, which `schemas/kind-validator.ts` resolves through `parseValidatorRef`. Nothing declares a validator: a kind points at code.
-- **The precedent is already built** (work item dmx1, the same day). Graph typologies became `kinds/` nodes (`folio-graph-typology/v1`), loaded lazily on first use across every instance's declared graph, with a name claimed by two files refused. The kind TABLE is now generated from them.
+- **The precedent is already built** (work item dmx1, the same day). Graph typologies became `kinds/` nodes (`folio-graph-typology/v1`), loaded lazily on first use across every layer's declared graph, with a name claimed by two files refused. The kind TABLE is now generated from them.
 
 ## Proposal
 
@@ -49,7 +49,7 @@ A reference is the form validators already use, `<harness>:<path>#<export>`, so 
 ### 2. One loader for every declared node graph
 
 The `kinds/` loader is generalised:
-- scan each instance's declaration for directories of a given graph typology;
+- scan each layer's declaration for directories of a given graph typology;
 - parse each JSON file against that kind's node schema;
 - refuse a name two files claim, naming both files;
 - load lazily, on first use.

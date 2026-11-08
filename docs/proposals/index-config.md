@@ -33,7 +33,7 @@ and none of those files could be read as the whole answer:
 | which one is `/` | a `site.landing: true` flag, in any of those files | a reader has to open every config to learn the answer |
 | where each comes from | `remoteMounts` on `folio-assistant.json`, the root **declaration** | a declaration travels with the harness; *where its mounts come from* is a fact about one checkout |
 
-`gen-landing-data.ts` also hard-wired its instance as the directory it sits
+`gen-landing-data.ts` also hard-wired its layer as the directory it sits
 in (`instanceRootFor(import.meta.dir)`), so the landing stickies were
 cat-harness's because of where the script lived, not because of any
 decision.
@@ -49,7 +49,7 @@ it does not hold.
 - `instantiatedHarnessNames(root)` returned the stem of each root
   `<name>.config.json`.
 - `resolveLandingInstance(root)` returned:
-  - the sole instance, when there was one;
+  - the sole layer, when there was one;
   - the single flagged config;
   - a hub, when two or more configs were flagged;
   - `ambiguous`, when none was flagged (`check:landing-instance` fails on
@@ -80,13 +80,13 @@ that has not migrated sees no change.
 }
 ```
 
-- `name`: an instance name. `index` (the reserved stem) and `hub` (the
+- `name`: a layer name. `index` (the reserved stem) and `hub` (the
   landing keyword) are refused. Each name appears once.
 - `import?`: a root `<file>.config.json`. When absent, the entry imports
   `<name>.config.json` if that file exists. A harness need not have a config.
 - `source?`: absent means local at `<name>/`. Otherwise it takes one of two
   forms:
-  - `{ local: { at } }`, where `at` may be `.` for the root instance.
+  - `{ local: { at } }`, where `at` may be `.` for the root layer.
   - `{ remote: … }`, which is **`RemoteMountSchema.omit({ harness })`**. It is
     reused, not restated, so it keeps `ref`, `overrides.<name>.whole` and
     `.path`, `note` and `trust.consent` exactly as the separation's cutovers
@@ -95,7 +95,7 @@ that has not migrated sees no change.
 - Any other key in an entry is an inline `HarnessConfig` field. It overrides
   the imported one: objects merge key by key, and arrays and scalars are
   replaced.
-- `site.landing?`: an instance the file lists, or `"hub"`. A name the file
+- `site.landing?`: a layer the file lists, or `"hub"`. A name the file
   does not list is refused.
 
 The brief named the remote fields `pin`, `path` and `whole` at the top level.
@@ -115,21 +115,21 @@ Every reader below goes through a shared resolver in
    - If it is unreadable, the reader **throws**. It never falls back to the
      scan the index replaced.
    - Otherwise, `rootConfigStems(root)`, which is the one root scan.
-2. **Effective config** of an indexed instance: the imported file, overlaid by
+2. **Effective config** of an indexed layer: the imported file, overlaid by
    the inline fields (`effectiveInstanceConfig`).
    - `readHarnessConfig(dir)` returns this when the nearest index, walking
-     outward from the instance root, lists the instance.
+     outward from the layer root, lists the layer.
    - The walk stops at the first directory that holds either the index or the
-     instance's own config.
+     layer's own config.
 3. **Landing**:
    - Index unreadable: **`invalid`**.
-   - Index `site.landing` names a listed instance: that instance
+   - Index `site.landing` names a listed layer: that layer
      (`by: "index"`).
    - `"hub"`: the hub.
    - An unlisted name: **`invalid`**. This is an error, never a silent
      fallback.
    - No `site.landing`: today's sole/flag/hub/ambiguous rules, applied to the
-     index's instances and their **effective** configs, so an inline `site`
+     index's layers and their **effective** configs, so an inline `site`
      counts.
 4. **Remote mounts**: `readDeclaredMounts(instanceRoot)`.
    - With an index: its `source.remote` entries.
@@ -182,7 +182,7 @@ across the board:
 - `isReservedIndexFile` covers `index.config.json`, `index.lock.json` and
   `index.json`.
 - `rootConfigStems` and `findDeclarationFile` skip those files.
-- The schema refuses an instance named `index`.
+- The schema refuses a layer named `index`.
 
 The five re-implemented scans are folded into the shared helpers:
 
@@ -200,9 +200,9 @@ The root `.gitignore` carries a marked block:
 
 - It starts with `# BEGIN index mounts (generated from index.config.json — do not edit)`.
 - It ends with `# END index mounts`.
-- Between the markers it holds one `/<path>/` line per remote instance, using
+- Between the markers it holds one `/<path>/` line per remote layer, using
   `overrides.<name>.path` or else `<name>/`, followed by every further
-  instance root the lock records. A mount's closure can land instances that
+  layer root the lock records. A mount's closure can land layers that
   the index never names, and those have to be ignored too.
 
 The block is written by:
@@ -223,7 +223,7 @@ today's behaviour. `check:index-ignores` is the gate, and it is wired into
 
 1. Write `index.config.json` with `bun run cat index-config:migrate --write`.
    It contains:
-   - every configured instance (`folio-assistant` at `.`, `cat-harness`, the
+   - every configured layer (`folio-assistant` at `.`, `cat-harness`, the
      local harnesses above it, and the remote `bootstrap` and the separated
      harnesses that have a root config);
    - the remote `bootstrap-tools` and the other separated harnesses, which
@@ -261,13 +261,13 @@ clone's files. In one step it:
 - moves any `remoteMounts`;
 - renames a legacy lock.
 
-A root config whose stem names no instance the clone declares or mounts is
+A root config whose stem names no layer the clone declares or mounts is
 reported as an `unmatched-config` finding and is **not imported**. That covers
 a `<fork>.config.json` that a repository inherited from the fork it was cut
 from. The decision about the stray file is a person's.
 
-**New folios:** `init-folio` writes an index listing its one instance at `.`.
-It writes no `site.landing`, because a sole instance needs none. It also
+**New folios:** `init-folio` writes an index listing its one layer at `.`.
+It writes no `site.landing`, because a sole layer needs none. It also
 writes the empty ignore block, so `check:index-ignores` holds from the first
 commit. `kg:instantiate` adds the harness it instantiates to an existing
 index.
@@ -275,8 +275,8 @@ index.
 ## 9. Out of scope
 
 - **Moving the landing stickies** (work item `1yd7`). `gen-landing-data.ts` now
-  asks the resolver which instance lands, instead of using its own location.
-  It falls back to its own instance for a hub, and throws when the landing is
+  asks the resolver which layer lands, instead of using its own location.
+  It falls back to its own layer for a hub, and throws when the landing is
   undecided. That makes `1yd7` a data move with no wiring left to do.
 - **Route namespacing and mount-path collisions** (work item `t4xb`). The index is
   where a per-instance path would be declared (`overrides.<name>.path`), and

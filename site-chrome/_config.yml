@@ -3,7 +3,7 @@
 #
 # This is the BASE layer of a composed docs tree (`compose-docs`): the
 # `site-chrome` directory is declared before `docs` in cat-harness.json, so an
-# instance's own `docs/_config.yml` overlays it -- overlay keys win, objects
+# layer's own `docs/_config.yml` overlays it -- overlay keys win, objects
 # merge, lists REPLACE (owner's rule, 2026-09-21). Owner, 2026-10-09: "go ahead
 # with the cat-harness chrome subgraph"; proposal
 # `docs/proposals/semantic-subgraphs-2026-10-09.md`, slice 1. The composed

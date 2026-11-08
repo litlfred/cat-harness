@@ -88,8 +88,8 @@ believe to be an orphan, a directory you believe to be empty, and a file whose
 only reference you have just removed, because in each the belief is exactly
 what would be wrong if you are wrong.
 
-**Establish which instance owns a node before you propose removing it.** In a
-multi-instance layout a file that looks orphaned here may be declared from
+**Establish which layer owns a node before you propose removing it.** In a
+multi-layer layout a file that looks orphaned here may be declared from
 somewhere else ([`placement`](../../kg/kg-core/placement.md)).
 
 ## What to do instead

@@ -266,7 +266,7 @@ already is:
 | step | for a SUBSCRIPTION (you read their content) | for a MOUNT (your code imports theirs) |
 |---|---|---|
 | 1 hydrated, nested subgraph | **exists** — `kg:materialize --nodes <sub> <path>` fetches `<docs>/subgraph/<HARNESS>/<path>/index.hydrated.jsonld`, validated against `SubgraphHydratedSchema` (`c1m4`, completed) | **missing** — named in `nn8e`'s done-when as a follow-up ("remote BRANCH mount of other repos' named subgraphs, hydrated vs not") and **never filed as a work item** |
-| …for Tools | **missing** — `gen-subgraph-jsonld` publishes subgraphs for `kgDirectories(instance)`: `skills/`, `scenarios/`, `processes/` (170 hydrated files across instances today). `tools/` is not among them, so there is no Tools metadata to load | missing, as above |
+| …for Tools | **missing** — `gen-subgraph-jsonld` publishes subgraphs for `kgDirectories(instance)`: `skills/`, `scenarios/`, `processes/` (170 hydrated files across layers today). `tools/` is not among them, so there is no Tools metadata to load | missing, as above |
 | 3 materialize a chosen set | **partly** — `kg:materialize <sub> <subgraph>` copies a whole TOP-LEVEL declared directory through the five gates (`declaredDirectories` reads the raw top level); not a node set, not a nested subgraph | **missing** — `remote-mount.ts` takes top-level ids only (wall 2) |
 
 So the owner's workflow is three gaps, not a new mechanism:

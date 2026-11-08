@@ -57,7 +57,7 @@ GitHub at the time of the merge. Never use a copy from earlier in the session.
 | `mergeable` | `clean`, `dirty`, `unknown` | the PR's `mergeable` / `mergeable_state`. `unknown` stays unknown after a short re-ask. Only `dirty` is believed on its own ([`prepare-merge`](prepare-merge.md) §Guardrails, step 0). |
 | `review` | `clear`, `blocking`, `unknown` | open `CHANGES_REQUESTED` reviews, unresolved threads a reviewer marked blocking, a draft PR, a `needs-merge-human` label, and **Claude Approvals where the repository runs it**: its required review or check must be present and approving on this head. A repository that runs it and has no approval on the head is `blocking`, not `clear`. |
 
-Where the repository has `merge:guard` (cat-harness and the instances composed
+Where the repository has `merge:guard` (cat-harness and the layers composed
 with it), its evaluate mode IS this step. Exit 0 means `green`/`clean`/`clear`,
 exit 1 maps each refused check to its fact, and exit 2 is `unreadable`, never a
 pass. Its eight checks are listed in [`merge-queue`](merge-queue.md) §"A PR lands
@@ -159,7 +159,7 @@ evidence about the change. It is not authorisation to merge it.
   it is not the owner's.
 
 **Why the line is drawn there.** A merge publishes the change to everyone who
-reads `main`, and through `index.config.json` pins to every instance that mounts
+reads `main`, and through `index.config.json` pins to every layer that mounts
 the repository. It cannot be taken back quietly: a revert is a second public
 change. That makes it the same kind of action as a deletion
 ([`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)):
@@ -273,7 +273,7 @@ commit unless told otherwise. **Never delete the branch**
    own workflow publishes its site (`docs-site-publish.bpmn`) needs nothing
    here. With no `site.build`, record "no site to republish".
 3. **`Task_Repin`: re-pin downstream mounts, as PRs, never as part of this
-   merge.** Find the instances whose `index.config.json` names this repository
+   merge.** Find the layers whose `index.config.json` names this repository
    in `source.remote.repository`. For each, open a PR that moves `ref` to the
    merge commit, carries a `trust.consent` whose `evidence` quotes the owner's
    consent to that pin, and regenerates `index.lock.json` with `mount:remote`
@@ -281,7 +281,7 @@ commit unless told otherwise. **Never delete the branch**
    [`index-config`](../../../skills/kg/kg-core/index-config.md)). **Each re-pin PR is a
    merge to `main` in another repository, so it runs this sub-process again.**
    The merge authorisation covers the re-pin only if the owner's words named the
-   re-pin. When no instance mounts the repository, record "no downstream mounts
+   re-pin. When no layer mounts the repository, record "no downstream mounts
    found" and say where you looked.
 4. **`Task_Report`: a note on the work item** with the merge SHA and the
    authorisation block, and a round summary on the issue

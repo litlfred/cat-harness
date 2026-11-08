@@ -25,7 +25,7 @@ Move part of a knowledge graph into repositories of its own: the content (files 
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `kg-separation`.
-- What: Files and bytes per instance, clone cost (`bun run cat health`), gate time, merge contention, the candidate's cohesion and cut (`kg:detangle`), wrong-direction edges, and the would-be tools package's import cone.
+- What: Files and bytes per layer, clone cost (`bun run cat health`), gate time, merge contention, the candidate's cohesion and cut (`kg:detangle`), wrong-direction edges, and the would-be tools package's import cone.
 - Record it: `workflow_complete` with `node: "Task_Measure"`.
 - next: → `Task_Decide` (Ask whether to separate it)
 

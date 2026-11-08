@@ -19,7 +19,7 @@ one Tool for this general step. Drawn as [`render-kg-to-cdn.bpmn`](../../../proc
 
 | input | what |
 |---|---|
-| Knowledge Graph | an instance root — or a tree the caller has already rendered and verified |
+| Knowledge Graph | a layer root — or a tree the caller has already rendered and verified |
 | Subgraphs | optional: declared directory ids; absent means the whole graph |
 | publication root URL | where the rendering is served |
 | CDN target | which Tool performs the push — a Tool that `satisfies: ["render-kg-to-cdn"]` |

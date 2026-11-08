@@ -26,16 +26,16 @@ A harness has four ways to relate to another:
 | utilizes | `dependencies` (config) | resolves another folio's skills and translations |
 | **associated** | `associatedHarnesses` | knows another **harness**, and where it lives |
 
-**`needs` is required of every instance in this repository, and so is a harness
+**`needs` is required of every layer in this repository, and so is a harness
 IRI.** `check:instance-graph` fails on:
 
-- an instance with no `needs` (write `[]` for the floor; absent stays a legal
+- a layer with no `needs` (write `[]` for the floor; absent stays a legal
   runtime state and reports `unknown`, but a repository does not ship it);
 - a `needs` name that resolves to nothing, or a cycle;
-- an instance with no absolute harness IRI, or two sharing one.
+- a layer with no absolute harness IRI, or two sharing one.
 
 The IRI is **derived, never written**: `kg-export`'s `exportIdentity` mints
-`<canonicalUrl>/<stub>.jsonld` for an instance that declares its own base, and
+`<canonicalUrl>/<stub>.jsonld` for a layer that declares its own base, and
 `<host base>/<stub>/<stub>.jsonld` for one published from the host. The gate
 calls that function rather than restating it, so the gate and the published
 `@id` cannot disagree, and the one place to change a base stays one place.
@@ -46,7 +46,7 @@ and its links go to the harness's own site and its own repository.
 
 ## Declare one
 
-Add an entry to `associatedHarnesses` in the declaring instance's `<name>.json`:
+Add an entry to `associatedHarnesses` in the declaring layer's `<name>.json`:
 
 ```json
 "associatedHarnesses": [
@@ -61,7 +61,7 @@ Add an entry to `associatedHarnesses` in the declaring instance's `<name>.json`:
 ]
 ```
 
-- `name` is the harness's instance name as **its** declaration gives it.
+- `name` is the harness's layer name as **its** declaration gives it.
 - `url` is required: where a reader goes.
 - `repository` is where the panel's ✎ points. Leave it out if the harness has no
   public source, and the panel shows no ✎. It never falls back to this

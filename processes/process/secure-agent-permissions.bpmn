@@ -51,7 +51,7 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       <bpmn:outgoing>p1</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:task id="Task_IdentifyTools" name="Identify the agent&#10;Tool(s) acting here">
-      <bpmn:documentation>Which coding-agent Tool is running this session, and which others the instance is configured for (each has its own config files: AGENTS.md is read by many; Claude Code, Gemini CLI, Cursor, Copilot and Codex each add their own). The Tool's adapter says where its permissions live and how a rule is written. A Tool with no adapter is reported, and its permissions are left to the person.</bpmn:documentation>
+      <bpmn:documentation>Which coding-agent Tool is running this session, and which others the layer is configured for (each has its own config files: AGENTS.md is read by many; Claude Code, Gemini CLI, Cursor, Copilot and Codex each add their own). The Tool's adapter says where its permissions live and how a rule is written. A Tool with no adapter is reported, and its permissions are left to the person.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="agent-permissions"/>
       </bpmn:extensionElements>
@@ -59,7 +59,7 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
       <bpmn:outgoing>p2</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_ReadGrants" name="Compare what the&#10;processes need with&#10;what is granted">
-      <bpmn:documentation>The needed set is the agent-permissions skill's list (write generated projections: CI only, never the agent; edit hooks or settings; run the gates; push a feature branch; open a PR), scoped to what this instance's processes actually call. The granted set is the recorded grants plus the Tool's current config, read through its adapter. A config rule with no recorded grant is reported as unrecorded, not treated as granted.</bpmn:documentation>
+      <bpmn:documentation>The needed set is the agent-permissions skill's list (write generated projections: CI only, never the agent; edit hooks or settings; run the gates; push a feature branch; open a PR), scoped to what this layer's processes actually call. The granted set is the recorded grants plus the Tool's current config, read through its adapter. A config rule with no recorded grant is reported as unrecorded, not treated as granted.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="agent-permissions"/>
       </bpmn:extensionElements>
@@ -69,7 +69,7 @@ MERGE IS NOT A GRANTABLE PERMISSION HERE. Merging to main stays a separate owner
     <bpmn:exclusiveGateway id="GW_Gap" name="Anything needed&#10;and not granted?">
       <bpmn:documentation>`none missing` when every needed permission has a recorded grant reflected in the Tool's config; `missing` otherwise, including a rule present in the config with no grant on the record.</bpmn:documentation>
       <bpmn:extensionElements>
-        <cat-harness.processes:judgement reason="The needed set depends on which processes this instance runs and on the Tool's config format, read through its adapter; no table holds both yet. agent-permissions §What this does not do yet."/>
+        <cat-harness.processes:judgement reason="The needed set depends on which processes this layer runs and on the Tool's config format, read through its adapter; no table holds both yet. agent-permissions §What this does not do yet."/>
       </bpmn:extensionElements>
       <bpmn:incoming>p3</bpmn:incoming>
       <bpmn:outgoing>p4</bpmn:outgoing>

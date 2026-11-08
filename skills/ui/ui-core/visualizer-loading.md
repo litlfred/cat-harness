@@ -53,9 +53,9 @@ question for the owner, not a default.
 ## Where the data is served from — `served: true`
 
 The fetched file is the KG's own, published verbatim. A directory declares
-`served: true` in its instance's `<instance>.json`, and `mount-instance-docs`
+`served: true` in its layer's `<instance>.json`, and `mount-instance-docs`
 copies its bytes to `/<instance>/<path>` after Jekyll: no Liquid, no layout, no
-index page. Pages under the instance's composed docs then reach it with a
+index page. Pages under the layer's composed docs then reach it with a
 relative path.
 
 **Never copy the file into `docs/` beside the page instead** — a gate flags it

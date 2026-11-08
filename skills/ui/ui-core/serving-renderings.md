@@ -5,21 +5,21 @@ satisfies:
 
 # Serving a rendering — endpoints, MIME types, and what each host can enforce
 
-A **rendering** is what an instance publishes about itself. Running it produces
-**one or more endpoints under that instance's stub**, and every endpoint has a
+A **rendering** is what a layer publishes about itself. Running it produces
+**one or more endpoints under that layer's stub**, and every endpoint has a
 media type that says what it is.
 
 This skill is about serving: the rendering already knows what it produced, and
 the server must say so, or a `.jsonld` arrives at a client as `text/plain`.
 
-## One stub, several endpoints, per instance in the tree
+## One stub, several endpoints, per layer in the tree
 
 `artefactStub()` in `schemas/kg/cat-harness.ts` is the stem: `stub` when declared,
-otherwise `name`. Every artefact an instance publishes is named with it, so a
+otherwise `name`. Every artefact a layer publishes is named with it, so a
 reader who knows the repository knows the filename.
 
-The dependency tree is **a set of overlaying instances**, and each renders under
-its own stub, so an overlying instance depending on `cat-harness` means both are
+The dependency tree is **a set of overlaying layers**, and each renders under
+its own stub, so an overlying layer depending on `cat-harness` means both are
 present, and both publish.
 
 ```
@@ -30,17 +30,17 @@ present, and both publish.
 <base>/<stub>/                   the viewer                 text/html
 ```
 
-So `…/folio-assistant/harness.jsonld` is the *cat-harness* instance's
+So `…/folio-assistant/harness.jsonld` is the *cat-harness* layer's
 rendering, served from a tree whose root happens to be `folio-assistant`. A
-consumer asking for one instance's graph must not be handed another's because
+consumer asking for one layer's graph must not be handed another's because
 the paths collided.
 
-**The graph sits under the instance's own directory, the host's included.**
+**The graph sits under the layer's own directory, the host's included.**
 There is one rule for every layer, with subjects beside their document, so a
 subject's page `<base>/<name>/<kind>/<id>` sits next to the document that names
 it. Where each document goes:
 [`instance-publication`](../../kg/kg-core/instance-publication.md) §"What each
-instance publishes".
+layer publishes".
 
 **`<stub>/` is a directory because an extensionless URL has to be.** GitHub
 Pages resolves `<base>/<stub>` only to a directory index, so the viewer is what

@@ -1,7 +1,7 @@
 ---
 name: remote-mount
 description: >
-  Bring a harness, and every instance it depends on, into a checkout that does
+  Bring a harness, and every layer it depends on, into a checkout that does
   not hold it, from another repository at a pinned commit, as declared
   directories with a lock: a `source.remote` entry in the downstream's root
   `index.config.json` (legacy: `remoteMounts` on its declaration) and
@@ -65,14 +65,14 @@ sit in a declared directory.
 
 Both fields are optional, and each absence has a meaning:
 
-- `path` absent means the instance's **home path** (`livesAt.path`, else its
+- `path` absent means the layer's **home path** (`livesAt.path`, else its
   directory in its own repository).
 - `directories` absent means **every declared directory whose content is in the
   checkout**. A `branch`, `family` or `remote` source is somebody's state, not
   part of the harness.
 
 **The downstream side** goes in the checkout's root `index.config.json`, as the
-`source.remote` of the instance it brings in. Which instances a checkout
+`source.remote` of the layer it brings in. Which layers a checkout
 instantiates, where each comes from, and the fallback for a folio with no index
 are [`index-config`](index-config.md)'s rule. This skill covers only what a
 `remote` source means once it is declared:
@@ -86,7 +86,7 @@ are [`index-config`](index-config.md)'s rule. This skill covers only what a
 ```
 
 The fields are a `remoteMounts` entry without its `harness`, because the
-instance's `name` is the harness (`RemoteSourceSchema` in
+layer's `name` is the harness (`RemoteSourceSchema` in
 `schemas/kg/index-config.ts`). A folio with no index still reads `remoteMounts` on
 its declaration. **Declaring a mount in both places is an error**:
 `readDeclaredMounts` throws and names both files. `bun run cat
@@ -95,10 +95,10 @@ index-config:migrate --write` moves the entries across.
 **Every tool that writes mounts writes through `writeDeclaredMounts`**, into
 `index.config.json`, and none writes `remoteMounts`.
 
-`overrides` is keyed by instance name, then by directory id:
+`overrides` is keyed by layer name, then by directory id:
 
-- `path` moves an instance.
-- `directories` replaces its default list. An id may be one the instance
+- `path` moves a layer.
+- `directories` replaces its default list. An id may be one the layer
   declares in its `<name>.json` **or from within** one of those directories
   (a `"subgraph": true` entry of `skills/skills.json`, such as `voices`);
   both are resolved at the pin through `instanceDirectories`, the resolver
@@ -108,17 +108,17 @@ index-config:migrate --write` moves the entries across.
   `mountDefaults.directories`.
   An id may also be a **concern name**, a code from
   `code-lists/concern-group.json` such as `sdlc`. It expands to every
-  kind-first member the instance declares, such as `sdlc/processes/` and
+  kind-first member the layer declares, such as `sdlc/processes/` and
   `sdlc/skills/`, read from each grouping kind's own declaration file at the
   pin. Each member is locked as `<directory id>/<code>`. A code that none of
-  the instance's kinds declares is refused like any other unknown id.
+  the layer's kinds declares is refused like any other unknown id.
 - After a review of hydrated metadata, `mount:remote --choose
   <harness>[:<instance>] --directories a,b --tools x,y` writes the choice
   into `overrides.<instance>` (the choice, never the state), so a fresh clone
-  replays it. It ends the review: that instance mounts as files, so its
+  replays it. It ends the review: that layer mounts as files, so its
   `hydrated` is dropped. The pin and consent do not move.
 - `skip` leaves it unmounted, and the lock records it as an answer.
-- `tools` names Tools this instance declares, by id, and mounts each one
+- `tools` names Tools this layer declares, by id, and mounts each one
   **runnable**: its definition, its implementation and their import closure.
   The next section but one says what that brings.
 - `hydrated: true` (here, or on the entry for its harness) mounts each chosen
@@ -141,7 +141,7 @@ hydrated mount fetches them through the Tool its source names (the `hydrated`
 source's `tool`, which is `remote-mount` unless it says otherwise).
 
 - **Not committed in each repository.** The files are `builtAtPublish`:
-  they are computed over the checkout's other instances, so no commit can
+  they are computed over the checkout's other layers, so no commit can
   hold them current, and a committed copy turns every re-pin's check red.
 - **Not generated at mount time.** The downstream would need the whole
   index, kg-export and the framing toolchain to read one file of metadata,
@@ -153,7 +153,7 @@ What that means in practice:
 | | |
 |---|---|
 | the package | `<harness>-subgraph-index@0.0.0-pin.<sha>`: the index files at their published paths, and `subgraph-index.json` (`folio-subgraph-index/v1`) giving each file's sha256 and the repository, pin and harness |
-| where | assets of the GitHub release `subgraph-index-<sha>` in the instance's repository, with the tarball's `folio-binary-release/v1` record beside it. Every name is computed (`subgraphIndexPackage` in `schemas/kg/subgraph-manifest.ts`) |
+| where | assets of the GitHub release `subgraph-index-<sha>` in the layer's repository, with the tarball's `folio-binary-release/v1` record beside it. Every name is computed (`subgraphIndexPackage` in `schemas/kg/subgraph-manifest.ts`) |
 | who publishes | the `subgraph-index-package` Tool, run on every push to `main` by the reusable workflow `layer-publish-subgraph-index.yml` (the tools layer); a harness opts in with one `uses:` line |
 | what a mount checks | the pin's git tree first (a commit that does carry the file still works); otherwise the package: the tarball against its record (size, sha256), the manifest against the repository, pin and harness asked for, each file against its sha256, then the same schema and subgraph-IRI check a tree file gets |
 | the lock | a directory that came from the package records the tarball's URL and sha256 and the file's path in it (`package`), so `mount:lock` fetches the same bytes and refuses any others |
@@ -169,9 +169,9 @@ the git tree at the pin already rests on.
 
 The workflow: load the Tools' metadata, review it, then materialise a chosen
 set. The first step is a hydrated mount of the
-declaring instance's `tools` directory. Its `index.hydrated.jsonld` holds every
+declaring layer's `tools` directory. Its `index.hydrated.jsonld` holds every
 Tool whole, and each Tool is its own `tools/<id>/` subgraph. The last step is
-`tools` on that instance's override:
+`tools` on that layer's override:
 
 ```json
 "overrides": { "cat-harness": { "tools": ["bean-query", "bpmn-checklist", "agent-memory"] } }
@@ -180,13 +180,13 @@ Tool whole, and each Tool is its own `tools/<id>/` subgraph. The last step is
 Three rules govern this step:
 
 1. **A Tool brings both halves.** Its **definition** is
-   `<tools dir>/<id>/<id>.ts` in the instance that declares it, by the folder
+   `<tools dir>/<id>/<id>.ts` in the layer that declares it, by the folder
    convention in `schemas/tools/tool-folders.ts`. Its **implementation** is what its
    `invoke` names:
-   - `inProcess.module`, found in the declarer or in an instance whose `needs`
+   - `inProcess.module`, found in the declarer or in a layer whose `needs`
      names it (`resolveImplementingPath`'s rule; two holders is refused);
    - the script a `bun run cat <key>` command resolves to through the
-     instances' `checkoutScripts`.
+     layers' `checkoutScripts`.
 
    A bare runtime command (`gh`, `beans`) or `manual` brings no code. Both
    halves arrive **with their import closure**. A definition without its code
@@ -203,10 +203,10 @@ Three rules govern this step:
    directory, and an import that resolves to nothing, are refused with the
    file named. Neither is ever dropped.
 
-With `tools` named anywhere in a mount entry, each instance of that entry
+With `tools` named anywhere in a mount entry, each layer of that entry
 mounts the directories the closure touches, plus any its override names in
-`directories`. It does **not** mount its default list. A `whole` instance
-stays whole. A Tool id the instance does not declare at the pin is refused at
+`directories`. It does **not** mount its default list. A `whole` layer
+stays whole. A Tool id the layer does not declare at the pin is refused at
 plan time. `tools` together with `hydrated` is refused, because metadata
 brings no code.
 
@@ -221,7 +221,7 @@ three Tools, materialise them" in the tools layer.
 
 ## Why the default path is the home path
 
-At its home path, a mounted instance keeps its position relative to its
+At its home path, a mounted layer keeps its position relative to its
 siblings. Two things then follow with no extra machinery:
 
 - `instanceRootsIn` scans one level deep, so it finds every mounted sibling and
@@ -229,9 +229,9 @@ siblings. Two things then follow with no extra machinery:
 - A relative import such as `../../cat-harness/schemas/…` finds the file it
   names.
 
-Moving an instance by override is allowed, and the overlay still finds it
+Moving a layer by override is allowed, and the overlay still finds it
 through the lock (`mountedInstanceRoots`, `mountScopeFor`). The override is
-then responsible for any import that climbs out of the moved instance.
+then responsible for any import that climbs out of the moved layer.
 
 ## The closure
 
@@ -242,7 +242,7 @@ then responsible for any import that climbs out of the moved instance.
    A submodule entry is itself a pin, so a need on `bootstrap` resolves to
    `litlfred/bootstrap` at the gitlink's SHA. The downstream gets the bytes and
    never a submodule.
-4. A need the downstream already holds as a local instance is `local`: it is
+4. A need the downstream already holds as a local layer is `local`: it is
    supplied by the checkout and never mounted over.
 5. A need found nowhere is `missing`. It is never dropped.
 
@@ -255,9 +255,9 @@ accept the legacy name `<name>.mount-lock.json`, and both present is an error.
 It records:
 
 - the pins it was written for;
-- for each instance: the repository, the SHA, how the pin was found
+- for each layer: the repository, the SHA, how the pin was found
   (`declared` / `same-tree` / `gitlink`), the declaration's digest, each
-  directory's tree digest, and declared instance assets (such as `package.json`);
+  directory's tree digest, and declared layer assets (such as `package.json`);
 - what was **not** mounted, and why.
 
 The mounted bytes are **not** committed. With an index, each mount path is
@@ -282,7 +282,7 @@ and in route space:
    - a reserved root or site route name;
    - another mount's path.
    When a collision occurs, the error states how to fix it: "set `path`" (on the
-   instance's `overrides.<name>.path` in `index.config.json` or `source.remote.overrides`).
+   layer's `overrides.<name>.path` in `index.config.json` or `source.remote.overrides`).
 3. **Route rules:**
    - **Canonical:** every visualiser is reachable at `<base>/<harness>/<visualizer>/`.
      Every generated link uses that form unless an alias is declared.
@@ -293,14 +293,14 @@ and in route space:
    - The route rule itself is in [`schema-management`](schema-management.md)
      §"Where a viewer publishes".
 
-Every instance ends in exactly one state:
+Every layer ends in exactly one state:
 
 | state | means | exit |
 |---|---|---|
 | mounted | on disk, hashing to the lock | 0 |
 | unverified-approver | mounted, on consent no `mountApprovers` list checked | 0, reported apart |
 | missing | not on disk, edited since mounting, not in the tree, refused, or the lock is for other pins | 1 |
-| could-not-determine | the fetch failed, a declaration or lock is unreadable, or an instance is reached at two pins | 2 |
+| could-not-determine | the fetch failed, a declaration or lock is unreadable, or a layer is reached at two pins | 2 |
 
 Could-not-determine outranks missing, and missing outranks mounted. **A fetch
 that failed is never an empty layer.**
@@ -331,8 +331,8 @@ the lock: a fresh one, or one replayed by `.github/mount-from-lock.sh`. A
 mount with local edits is left untouched by the next mount, at its old
 commit, while the lock's top-level pin moves, so CI would keep testing the
 old layer. `--seed` refuses while a mount it moves has such edits, and
-`mount:check` reports an instance entry behind its pin as `missing`. After the re-pin, check that
-the moved instance's `sha` in `index.lock.json` is the new pin.
+`mount:check` reports a layer entry behind its pin as `missing`. After the re-pin, check that
+the moved layer's `sha` in `index.lock.json` is the new pin.
 
 **A pin only moves forward** (owner ruling, 2026-11-06, card "Pin target",
 A). When layers pin different commits of a shared layer, align them forward,
@@ -410,7 +410,7 @@ the lock. Two writers are only fallbacks:
 
 ### The layers cache: one fetch, every byte still verified
 
-Replaying a lock fetches each pinned instance from its own repository. The
+Replaying a lock fetches each pinned layer from its own repository. The
 **layers cache** is one git commit in the INDEX repository whose tree is the
 composed overlay a replay lays down: each locked directory at its mount path,
 each declaration and asset, and nothing an install, a state mount or a
@@ -445,7 +445,7 @@ asset's sha256, and each directory's `treeDigest`. These are the same checks
 a fetched byte passes. So a stale `main` still serves every layer that did
 not move, and a tampered ref costs time, never correctness. Trust is
 unchanged: consent was checked when the lock was written, and the cache
-cannot add an instance the lock does not name.
+cannot add a layer the lock does not name.
 
 A replay that fails is reported loudly, not swallowed: a stale mount makes
 local checks pass falsely.
@@ -459,7 +459,7 @@ does not read the layer: it reads what is **generated** from it.
 | surface | generated by | from |
 |---|---|---|
 | `.claude/commands/<name>.md` | `skill:commands` | every `user_invocable` skill in the mounted `kg` graphs |
-| `.claude/agent-memory/<agent>/MEMORY.md`, `.agents/skills/`, `.agents/rules/` | `agent-memory` | the `memory` directories the mounted instances declare |
+| `.claude/agent-memory/<agent>/MEMORY.md`, `.agents/skills/`, `.agents/rules/` | `agent-memory` | the `memory` directories the mounted layers declare |
 
 So when a `mount:remote` run **changes the lock**, it runs both generators
 from the checkout root before it exits, and a generator that fails fails the
@@ -482,17 +482,17 @@ A real mount needs a person's consent for that pin (`trust.consent`); a
 `--staging` mount needs none. `schemas/kg/mount-trust.ts` has the rules. Four
 things to know:
 
-- **The lock records the basis** for each instance: `staging`, or `consent`
+- **The lock records the basis** for each layer: `staging`, or `consent`
   with who and when. `mount:remote:check` re-runs the trust check against the
   current declaration, so consent withdrawn later reads `refused`.
-- **A gitlink needs consent of its own.** An instance reached through a
+- **A gitlink needs consent of its own.** A layer reached through a
   gitlink is another repository at another commit. Give its consent on
   `overrides.<name>.trust`, for the gitlink's SHA.
 - **Who may consent.** Declare `mountApprovers` and a `consent.by` not on the
   list is refused. Without the list, mounts report `unverified-approver`: exit
   0, but never shown as clean. A checkout whose mounts `index.config.json`
   lists declares the list there, as its top-level `mountApprovers`; declaring
-  it on the instance declaration as well is an error.
+  it on the layer declaration as well is an error.
 - **A refused mount is not current.** Its old bytes stay on disk (an agent
   does not delete them). The lock records them under `unmounted` as
   `leftOnDisk`, and the check reports them as not mounted.
@@ -500,7 +500,7 @@ things to know:
 ### Standing consent: a site keeps itself on an upstream branch
 
 Pins stay per site. A site may
-declare, on one instance's `trust.standing`, that a named person consents
+declare, on one layer's `trust.standing`, that a named person consents
 to following a branch — `{follows: "main", consentBy, consentAt, require?:
 "green"}`. The repin tool (`cat-harness-tools/scripts/repin-standing.ts`,
 run by its `standing-repin.yml` workflow) then moves that pin to the

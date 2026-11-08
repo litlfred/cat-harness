@@ -1,7 +1,7 @@
 ---
 name: archimate-models
 description: >
-  ArchiMate models as knowledge-graph content: how an instance declares the
+  ArchiMate models as knowledge-graph content: how a layer declares the
   Archi models it holds, what the `archimate` subgraph gives every model,
   view, element and relationship (an IRI, a thin page, and every view drawn as
   SVG from the model's own diagram, and its metamodel derived and checked),
@@ -236,7 +236,7 @@ in the SKOS glossary, read from the source documents. So:
 - The term pages' "depicted by" links read `skosConcept` on each build and
   write nothing into the glossary, so they are allowed.
 - The one exception is an **ingested** model, received from elsewhere and
-  held as a source under the instance's `library/`. It may seed the glossary
+  held as a source under the layer's `library/`. It may seed the glossary
   once (`archimate-from-glossary --seed --from library/…`), like any other
   ingested source. The Tool refuses `--seed` on any model outside
   `library/`.
@@ -264,19 +264,19 @@ The same reasoning applies to any other Java-only ArchiMate tooling (jArchi
 scripts, coArchi). Authors use Archi on their own machines; the pipeline never
 does.
 
-## What an instance declares
+## What a layer declares
 
 1. A directory of graph typology `archimate` in its `<instance>.json`, with a
    `coverage.visualiser` naming `<dir>/index.html` so the navbar carries a tile
    to it (`harness-tiles`). `served: true` only if the pages are written into
    the graph rather than a site build.
-2. `cat-archimate.config.json`, at the instance root or inside that directory:
+2. `cat-archimate.config.json`, at the layer root or inside that directory:
    `{ "$schema": "cat-archimate-config/v1", "directory": "<id>", "models": [{ "id", "file", "title"?, "description"? }] }`.
 3. `cat-harness` in its `needs`, directly or through its closure.
 
 **Order matters when a platform is pinned.** A declaration naming the
 `archimate` typology throws in every platform reader that does not know the
-kind yet (`cat-harness.ts`: *unknown graph typology*). Move the instance's pin
+kind yet (`cat-harness.ts`: *unknown graph typology*). Move the layer's pin
 of cat-harness to a commit carrying this subgraph first, then declare.
 
 ## Versions — one folder per SemVer version
@@ -301,7 +301,7 @@ the navbar pass, so the pages are railed like every other page. `--out` is
 the normal mode: a few models yield thousands of pages, which belong in a
 build, not a commit.
 `gen-archimate-pages.ts` without `--out` writes into the graph and `--check`
-gates it, as the `openapi` subgraph does, for an instance small enough to
+gates it, as the `openapi` subgraph does, for a layer small enough to
 commit its pages.
 
 ## Citing the model from prose
@@ -328,6 +328,6 @@ or `render-view.ts`, in TypeScript.
 - Run Archi, a JVM or `xvfb` in a workflow to render a model.
 - Commit exported view images beside a model; they go stale on the next edit.
 - Name model folders by anything but the version they describe.
-- Declare the `archimate` typology in an instance whose platform pin predates it.
+- Declare the `archimate` typology in a layer whose platform pin predates it.
 - Commit a change to a view without counting its tangles before and after.
 - Publish a view without its key, or name an element from a source in words the source does not use.

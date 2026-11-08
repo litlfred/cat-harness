@@ -16,7 +16,7 @@ tiles, anything future.
 
 ## Why it is load-bearing here, and not boilerplate
 
-**This instance's declared interaction profile is low-dexterity.**
+**This layer's declared interaction profile is low-dexterity.**
 `cat-harness/memory/interaction.json` records it, and it already shapes the form of every
 question the harness asks — numbered options, four or fewer, a stated default.
 

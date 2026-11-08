@@ -7,7 +7,7 @@
 /beans/**
 /fsh-guts/**
 
-# Dependencies: each instance now installs its own (see package.json), so a
+# Dependencies: each layer now installs its own (see package.json), so a
 # standalone `bun install` leaves these here. Never committed.
 node_modules/
 
@@ -42,8 +42,8 @@ node_modules/
 .claude/worktrees/
 
 # BEGIN built at publish (cat-harness.json `builtAtPublish` — kept equal by schemas/built-at-publish.test.ts)
-# Owner, 2026-10-14 (B1): computed over the checkout's other instances, or from a
-# branch-kept graph, so no commit of this instance can hold them current.
+# Owner, 2026-10-14 (B1): computed over the checkout's other layers, or from a
+# branch-kept graph, so no commit of this layer can hold them current.
 /docs/cat-harness/auto-docs/
 /docs/assets/auto-docs/index.json
 /docs/cat-harness/published-graphs.md

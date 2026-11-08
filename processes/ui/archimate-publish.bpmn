@@ -41,13 +41,13 @@ from Archi"/>
 
     <bpmn:task id="A_Check" name="Check the model
 parses and resolves">
-      <bpmn:documentation>Tool `archimate-check` (`archimate:validate`, on the instance root): every model the config names is held and parses, every box in every view draws an element the model holds, every relationship's ends are in the model.</bpmn:documentation>
+      <bpmn:documentation>Tool `archimate-check` (`archimate:validate`, on the layer root): every model the config names is held and parses, every box in every view draws an element the model holds, every relationship's ends are in the model.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="archimate-models"/></bpmn:extensionElements>
     </bpmn:task>
 
     <bpmn:task id="A_Metamodel" name="Derive the
 metamodel in use">
-      <bpmn:documentation>Tool `archimate-metamodel` (`archimate:metamodel --check`, on the instance root): the element types the model uses and every (source type, relationship, target type) pattern, each checked against ArchiMate's relationship table. Placeholder elements named after their own type are reported, never fatal: removing them is the author's call.</bpmn:documentation>
+      <bpmn:documentation>Tool `archimate-metamodel` (`archimate:metamodel --check`, on the layer root): the element types the model uses and every (source type, relationship, target type) pattern, each checked against ArchiMate's relationship table. Placeholder elements named after their own type are reported, never fatal: removing them is the author's call.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="archimate-models"/></bpmn:extensionElements>
     </bpmn:task>
 

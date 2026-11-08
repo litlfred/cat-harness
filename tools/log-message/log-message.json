@@ -101,7 +101,7 @@
     },
     {
       "at": "",
-      "comment": "── Logging ────────────────────────────────────────────────────────\n\nDeclared HERE although the skill and the sub-process it serves live in\n`bootstrap/`, and that is a limitation rather than a decision. Tool\ncollection is import-bound — `tools/index.ts` merges what it imports —\nso a Tool node contributed by a nested instance is not reachable from\nthe barrel yet. Bean `gn4l`. When it is, this node moves to\n`bootstrap/tools/` unchanged, and nothing that references it by id\nnotices."
+      "comment": "── Logging ────────────────────────────────────────────────────────\n\nDeclared HERE although the skill and the sub-process it serves live in\n`bootstrap/`, and that is a limitation rather than a decision. Tool\ncollection is import-bound — `tools/index.ts` merges what it imports —\nso a Tool node contributed by a nested layer is not reachable from\nthe barrel yet. Bean `gn4l`. When it is, this node moves to\n`bootstrap/tools/` unchanged, and nothing that references it by id\nnotices."
     }
   ]
 }

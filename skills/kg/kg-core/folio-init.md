@@ -1,7 +1,7 @@
 ---
 name: folio-init
 description: >
-  Scaffold a new folio instance from the harness — the instantiate affordance
+  Scaffold a new folio layer from the harness — the instantiate affordance
   of the knowledge graph. Covers when to run folio-init vs remote-mount, what
   the scaffold writes, the builder shim, state branch seeding, write capability
   requirements, and --dry-run degradation.
@@ -15,7 +15,7 @@ tested-by:
 
 `folio-init` is the **`instantiate`** affordance of the knowledge graph
 ([`kg-affordances`](kg-affordances.md)): standing up a new folio repository or
-adding a folio instance so an author has a conformant workspace (`folio/`,
+adding a folio layer so an author has a conformant workspace (`folio/`,
 `uploads/`, `library/`, declarations, agent instructions, and work-plan state
 branches) linked back to the harness.
 
@@ -78,7 +78,7 @@ Given `title` and one or more `authors` (plus optional `content_type`, `slug`,
 `dir`, `link`, `assistant_path`, `force`, `dry_run`), `folio-init` lays down:
 
 1. **The folio directories and initial manifests** — `folio/` (or `content/`),
-   `uploads/`, `library/`, the root `<slug>.json` instance declaration and
+   `uploads/`, `library/`, the root `<slug>.json` layer declaration and
    `<slug>.config.json`, and the root `index.config.json` that instantiates it
    ([`index-config`](index-config.md)).
 2. **The builder shim (`content/schema/builders`)** — block manifests in the
@@ -97,13 +97,13 @@ Given `title` and one or more `authors` (plus optional `content_type`, `slug`,
    command; once it has been run, `bun run cat state:mount` mounts a working
    store on the first session start
    ([`directory-conventions`](directory-conventions.md) §"Where a NEW
-   instance's state lives").
+   layer's state lives").
 
 ## What to check afterwards
 
 - `bun run cat check:declaration-resolution` — every directory and asset the new
   `<slug>.json` declares resolves on disk.
 - `bun run cat index:render:check` — the generated `AGENTS.md` matches the
-  new `index.config.json` and instance declaration.
+  new `index.config.json` and layer declaration.
 - `bun run cat state:status` — the `beans` and `todos` stores are mounted and
   writable.

@@ -60,7 +60,7 @@ The target:
 1. **The data store authenticates** (the auth-gateway here) and maps the login
    to an **actor id**. That mapping lives in the data store only; no actor file
    and no policy carries a login.
-2. **It authorizes with the instance's ODRL policies** in `policies/`, by
+2. **It authorizes with the layer's ODRL policies** in `policies/`, by
    calling `permits()` (`schemas/content/odrl.ts`) with the actor, the action and the
    scope. `unknown` is a refusal, never a pass.
 3. **An unauthenticated request is `cat-harness:anyone`**, which the policies allow to

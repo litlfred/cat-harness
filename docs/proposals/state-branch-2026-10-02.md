@@ -3,7 +3,7 @@ title: "State graphs on a declared branch"
 kind: proposal
 summary: >-
   Proposed 2026-10-02: move process-written STATE graphs (beans, workflow
-  instances, todos, issue-marks, health) off main onto one declared `state`
+  layers, todos, issue-marks, health) off main onto one declared `state`
   branch, and make "which ref holds this graph" a declared property of every
   graph — generalising the qa-reports arc (3fva) rather than competing with it.
 ---
@@ -74,7 +74,7 @@ directories declaring them live:
 | todos | `todos/` | `folio-assistant.json` |
 | issue marks | `issue-marks/` | `folio-assistant.json` |
 | health results | `test/health/results/` | `cat-harness/cat-harness.json` |
-| qa | `test/results/` | four instances — **already arc 3fva's** |
+| qa | `test/results/` | four layers — **already arc 3fva's** |
 | uploads, swimlane glossary | `uploads/`, `glossary/` | see §3.3 — **not** proposed to move |
 
 ### 2.3 What it costs

@@ -47,7 +47,7 @@ The shape of a session from the outside: establish who is acting, open a record 
 
 - Who: the `Agent (playing the machine)` lane (role `authoring-agent`).
 - Skill: `agent-permissions`.
-- What: Once the actor is known and the record is open, check that the coding agent acting here holds the permissions this instance's processes need, granted by a person and recorded, and ask for any that are missing.
+- What: Once the actor is known and the record is open, check that the coding agent acting here holds the permissions this layer's processes need, granted by a person and recorded, and ask for any that are missing.
 - A subprocess (`Process_SecureAgentPermissions`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `A_ReadTurn` (Take in the turn)
 

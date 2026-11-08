@@ -17,7 +17,7 @@ description: >
 [`processes/process/secure-agent-permissions.bpmn`](../../../processes/process/secure-agent-permissions.bpmn)
 (`Process_SecureAgentPermissions`) is the process. It is called from
 `session-state-machine.bpmn` (`Call_SecurePermissions`, after the session record
-opens), so it is part of starting work in an instance. It also runs **on
+opens), so it is part of starting work in a layer. It also runs **on
 demand when an agent hits a denied action**. A denial is a reason to ask. It is
 never a reason for the agent to edit its own configuration.
 
@@ -39,7 +39,7 @@ ODRL grants allow. It only decides whether the host stops to ask.
 
 ## The permissions the processes need
 
-Grant only what the instance's processes actually call, and the narrowest form
+Grant only what the layer's processes actually call, and the narrowest form
 that does the job.
 
 | permission | what it allows | why a process needs it | notes |
@@ -127,7 +127,7 @@ permission allow-rules in `.claude/settings*.json`.
   exist, `Task_IdentifyTools` reports "no adapter" and leaves the config write
   to the person.
 - **`GW_Gap` is a judgement.** Computing it needs the needed set (from the
-  processes this instance runs) and the granted set (from the config, through an
+  processes this layer runs) and the granted set (from the config, through an
   adapter). No tool produces both yet.
 - **The permission rows are not yet ODRL actions.** They map onto existing
   actions (`admin-settings`, `content-authoring`) in the table above, but are

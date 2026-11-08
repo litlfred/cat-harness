@@ -39,7 +39,7 @@ repository's `index.config.json` first:
 | a layer an index mounts and publishes as part of its own site (no site of its own) | `branches/<slug>/` on the **index's** site | a **staging re-pin**: a pull request on the index that points the mount at the branch's commit, recorded with `bun run cat mount:remote --staging` (basis `staging`, no consent needed) |
 
 A repository with a site of its own is previewed there, even when an index
-also mounts it. The index's site shows it as one instance among its layers,
+also mounts it. The index's site shows it as one layer among its layers,
 which is the wrong page for that repository's reviewers. If the repository's
 own build cannot run yet (its publisher refuses for a missing cache or an
 undeclared input), say what is missing and ask. Never fall back to the
@@ -207,7 +207,7 @@ A rendered directory is **in the cone** when a changed file is
    --downstream <instance/id>` prints that half on its own).
 
 `cat-harness-tools/scripts/staging-cone.ts` computes it; `compose-docs.ts`
-`carriedInstances` applies it to the composed instances. Three rules:
+`carriedInstances` applies it to the composed layers. Three rules:
 
 - **Any doubt carries.** No file list, a writer that does not exist, or an
   import that does not resolve carries the directory, with the reason in the
@@ -228,11 +228,11 @@ holds these cases as tests.
 
 **Built sites follow the same rule.** An IG's own Jekyll site and its AST
 site are BUILT in the preview from an upstream repository pinned in the
-instance's own files, not composed from the checkout. `stage-ig-sites.ts` and
-`stage-ast-sites.ts` take `--changed-files` and stage only the instances
+layer's own files, not composed from the checkout. `stage-ig-sites.ts` and
+`stage-ast-sites.ts` take `--changed-files` and stage only the layers
 `siteInCone` reaches. Its reasons, in order: no file list; a change to the
 build environment (`SITE_ENVIRONMENT`: the docs Gemfile and this workflow); a
-change under the instance; the cone reaching any of the instance's
+change under the layer; the cone reaching any of the layer's
 directories (a theme change arrives this way); or a change in the stager's
 closure. Each decision is printed with its reason.
 

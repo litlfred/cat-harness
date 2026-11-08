@@ -90,7 +90,7 @@ _256 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`lsi-indexing`](skills/kg/graph-management/lsi-indexing.md) | Build, read and audit a Latent Semantic Indexing index over a declared prose graph — a library, the skills, the work items, docs — to find units that discuss the same thing in different words,… |
 | [`named-query-execution`](skills/kg/graph-management/named-query-execution.md) | How to execute audited SPARQL 1.1 named queries over partitioned W3C N-Quads dataset distributions across CLI, MCP tools, and WebAssembly browser clients. |
 | [`nquads-distribution`](skills/kg/graph-management/nquads-distribution.md) | How to compile, partition by named subgraphs, and distribute W3C N-Quads datasets beside pre-compiled SPARQL 1.1 named queries for static edge and client-side querying. |
-| [`sub-kg-lifecycle`](skills/kg/graph-management/sub-kg-lifecycle.md) | A sub-KG is a knowledge graph staged as a directory inside a harnessed repository, declared as its own instance, that may later leave for a repository of its own. |
+| [`sub-kg-lifecycle`](skills/kg/graph-management/sub-kg-lifecycle.md) | A sub-KG is a knowledge graph staged as a directory inside a harnessed repository, declared as its own layer, that may later leave for a repository of its own. |
 
 **`skills/kg/kg-core/`** (29)
 
@@ -103,22 +103,22 @@ _256 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`content-context-and-state-graphs`](skills/kg/kg-core/content-context-and-state-graphs.md) | Every declared graph is the subject a process produces, static context it reads, or live state it writes. |
 | [`corpus-grep`](skills/kg/kg-core/corpus-grep.md) | Pre-declaration corpus check. |
 | [`data-modelling`](skills/kg/kg-core/data-modelling.md) | Build a data model: identify the entities a body of work is actually about, the relations between them, and the cardinalities — then declare it where the tools can read it. |
-| [`directory-conventions`](skills/kg/kg-core/directory-conventions.md) | Directory conventions — what an instance declares it scans |
-| [`external-registry-contract`](skills/kg/kg-core/external-registry-contract.md) | The contract the `external-registry` role is held to: what a trusted registry outside this instance must provide for a portal to verify what it received, and what the verifier does when it cannot. |
+| [`directory-conventions`](skills/kg/kg-core/directory-conventions.md) | Directory conventions — what a layer declares it scans |
+| [`external-registry-contract`](skills/kg/kg-core/external-registry-contract.md) | The contract the `external-registry` role is held to: what a trusted registry outside this layer must provide for a portal to verify what it received, and what the verifier does when it cannot. |
 | [`flushable-containers`](skills/kg/kg-core/flushable-containers.md) | A flushable container is a named store that accumulates by design — a trash you can recover from, a review preview, a console log. |
-| [`folio-init`](skills/kg/kg-core/folio-init.md) | Scaffold a new folio instance from the harness — the instantiate affordance of the knowledge graph. |
+| [`folio-init`](skills/kg/kg-core/folio-init.md) | Scaffold a new folio layer from the harness — the instantiate affordance of the knowledge graph. |
 | [`fsh-guts`](skills/kg/kg-core/fsh-guts.md) | The trashcan that is kept — where work that is not wanted goes instead of being deleted, what declares itself there, and what does NOT belong. |
-| [`harness-requirements`](skills/kg/kg-core/harness-requirements.md) | What an instance OWES for every directory it declares — a visualiser, a documentation entry, a governing skill, json/jsonld/schema.json serialisations at the directory's URL and at every node… |
-| [`index-config`](skills/kg/kg-core/index-config.md) | `index.config.json` at an instantiation root says which harnesses the checkout instantiates, where each one comes from (local, or a remote mount pinned to a SHA), each instance's config INLINE in… |
-| [`instance-kinds`](skills/kg/kg-core/instance-kinds.md) | How to make a new KIND of harness instance — choosing the prefix family, the keep-the-kind's-name default and the owner's right to decline it, which inherited files the new owner may repoint, and… |
+| [`harness-requirements`](skills/kg/kg-core/harness-requirements.md) | What a layer OWES for every directory it declares — a visualiser, a documentation entry, a governing skill, json/jsonld/schema.json serialisations at the directory's URL and at every node beneath… |
+| [`index-config`](skills/kg/kg-core/index-config.md) | `index.config.json` at an instantiation root says which harnesses the checkout instantiates, where each one comes from (local, or a remote mount pinned to a SHA), each layer's config INLINE in its… |
+| [`instance-kinds`](skills/kg/kg-core/instance-kinds.md) | How to make a new KIND of harness layer — choosing the prefix family, the keep-the-kind's-name default and the owner's right to decline it, which inherited files the new owner may repoint, and what… |
 | [`instance-publication`](skills/kg/kg-core/instance-publication.md) | Every asset carries an id and a version and sits in DRAFT. |
 | [`kg-affordances`](skills/kg/kg-core/kg-affordances.md) | The four affordances of a conformant knowledge graph — browse, materialise, instantiate and copy-into-folio — which capabilities each requires, how each writing verb degrades cleanly when no write… |
 | [`kg-contribution-offer`](skills/kg/kg-core/kg-contribution-offer.md) | Ask whether agreed requirements should become knowledge-graph content, and as what — in a form the person can answer by selecting. |
-| [`kg-export`](skills/kg/kg-core/kg-export.md) | Serialize an instance's knowledge graph to one JSON document, for publication and inspection. |
+| [`kg-export`](skills/kg/kg-core/kg-export.md) | Serialize a layer's knowledge graph to one JSON document, for publication and inspection. |
 | [`kg-to-portal`](skills/kg/kg-core/kg-to-portal.md) | Getting a knowledge graph out to a public portal — the six stages between "the graph is in the repository" and "a reader's browser has the bytes", why a CDN is a layer rather than a publication… |
 | [`npm-kg-distribution`](skills/kg/kg-core/npm-kg-distribution.md) | Package, release, distribute, and retrieve Knowledge Graphs using npm tooling and tarballs: declare `package.json` as an authored pre-packaging asset in the Knowledge Graph, build `.tgz` packages… |
-| [`placement`](skills/kg/kg-core/placement.md) | Establish where a new node belongs BEFORE you create it — which instance, which declared graph, which kind of node, and which of the two "stub" conventions applies. |
-| [`remote-mount`](skills/kg/kg-core/remote-mount.md) | Bring a harness, and every instance it depends on, into a checkout that does not hold it, from another repository at a pinned commit, as declared directories with a lock: a `source.remote` entry in… |
+| [`placement`](skills/kg/kg-core/placement.md) | Establish where a new node belongs BEFORE you create it — which layer, which declared graph, which kind of node, and which of the two "stub" conventions applies. |
+| [`remote-mount`](skills/kg/kg-core/remote-mount.md) | Bring a harness, and every layer it depends on, into a checkout that does not hold it, from another repository at a pinned commit, as declared directories with a lock: a `source.remote` entry in the… |
 | [`schema-management`](skills/kg/kg-core/schema-management.md) | Manage a schema over its life — add one, change one, read the schema graph and its viewer, and act on what the reader could not determine. |
 | [`skill-registration`](skills/kg/kg-core/skill-registration.md) | Adding a skill is never a one-file change. |
 | [`skill-voice-review`](skills/kg/kg-core/skill-voice-review.md) | Reviews a skill against a voice that judges skills — the base `agent-skill-authoring` voice or a vendor override such as Claude's, Gemini CLI's or OpenAI's — rule by rule, with each rule's citation… |
@@ -195,12 +195,12 @@ _256 skills in 19 directories, generated from each skill's front matter. `bun ru
 
 | Skill | What it is for |
 |---|---|
-| [`archimate-models`](skills/ui/ui-core/archimate-models.md) | ArchiMate models as knowledge-graph content: how an instance declares the Archi models it holds, what the `archimate` subgraph gives every model, view, element and relationship (an IRI, a thin page,… |
+| [`archimate-models`](skills/ui/ui-core/archimate-models.md) | ArchiMate models as knowledge-graph content: how a layer declares the Archi models it holds, what the `archimate` subgraph gives every model, view, element and relationship (an IRI, a thin page, and… |
 | [`auto-docs`](skills/ui/ui-core/auto-docs.md) | Derived documentation for a sub-graph — what the handler emits, what it deliberately does not, and the obligation on whoever authors a harness's docs: summarise what the index lists, by reusing it… |
 | [`board-diagram-interchange`](skills/ui/ui-core/board-diagram-interchange.md) | A board is a DIAGRAM OF a folio, not a container of one. |
 | [`board-windows`](skills/ui/ui-core/board-windows.md) | Everything starts as its avatar; opening projects a window onto the board. |
 | [`deployment-awareness`](skills/ui/ui-core/deployment-awareness.md) | The agent must know its UI surface — gh-pages, local server, with/without MCP, or chat discussion only — because deployment surfaces are declared architectural facts that decide which tools apply,… |
-| [`docs-generation`](skills/ui/ui-core/docs-generation.md) | How a checkout of this harness generates and publishes its docs site: regenerating derived references, composing the docs layers and each instance's site into one Jekyll source, building it with… |
+| [`docs-generation`](skills/ui/ui-core/docs-generation.md) | How a checkout of this harness generates and publishes its docs site: regenerating derived references, composing the docs layers and each layer's site into one Jekyll source, building it with… |
 | [`harness-tiles`](skills/ui/ui-core/harness-tiles.md) | A tile is a function of the harness watching a directory, not of nodes. |
 | [`html-rendering-qc`](skills/ui/ui-core/html-rendering-qc.md) | HTML Rendering QC |
 | [`incremental-render`](skills/ui/ui-core/incremental-render.md) | Rendering only what changed — seeding a build from a previous render, the two edges that decide what must re-run, why a step declares GRAPH TYPOLOGIES rather than paths, and the rule that… |
@@ -241,7 +241,7 @@ _256 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`literature-search`](library/skills/library-core/literature-search.md) | Finding the source a node cites but does not hold — memory first, then this repository, then open-access services. |
 | [`term-disagreement`](library/skills/library-core/term-disagreement.md) | When a glossary term the extractor minted and an authorised terminology disagree — the corpus spells a concept differently from the authority, or uses a word the authority does not carry — decide… |
 | [`translation-manager`](library/skills/library-core/translation-manager.md) | Translation lifecycle management for folio content. |
-| [`translation-refresh`](library/skills/library-core/translation-refresh.md) | The translation watcher: a scheduled fresh session that keeps every locale of every instance current after the source moves. |
+| [`translation-refresh`](library/skills/library-core/translation-refresh.md) | The translation watcher: a scheduled fresh session that keeps every locale of every layer current after the source moves. |
 | [`upload-naming`](library/skills/library-core/upload-naming.md) | What an ingested file may be CALLED. |
 | [`upload-routes`](library/skills/library-core/upload-routes.md) | How a file actually REACHES `uploads/` — the two mechanisms that write bytes into a declared queue, the persona that performs one of them on somebody's behalf, and what each writer owes that the… |
 | [`uploads-watch`](library/skills/library-core/uploads-watch.md) | Notice what has landed in the acquisition queue, and tell an arrival from a backlog. |

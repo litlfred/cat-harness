@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/library/processes/translation-refresh.bpmn` (process `Process_TranslationRefresh`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Keep every locale current after the source moves: detect, refresh the templates, merge them into each locale, translate only what is new or fuzzy, check it, and land one PR per instance on main.
+Keep every locale current after the source moves: detect, refresh the templates, merge them into each locale, translate only what is new or fuzzy, check it, and land one PR per layer on main.
 
 ## Begin — Scheduled run (`Start_TR`)
 
@@ -16,7 +16,7 @@ Keep every locale current after the source moves: detect, refresh the templates,
 
 - Who: the `Source-language lead (watcher)` lane (role `translation-source-lead`).
 - Skill: `translation-refresh`.
-- What: Lay down every pinned layer from each instance's lock, as its AGENTS.md cold start says, and attach each repository the run will change.
+- What: Lay down every pinned layer from each layer's lock, as its AGENTS.md cold start says, and attach each repository the run will change.
 - Record it: `workflow_complete` with `node: "Task_TR_ColdStart"`.
 - next: → `Task_TR_Detect` (Detect what moved)
 
@@ -39,7 +39,7 @@ Keep every locale current after the source moves: detect, refresh the templates,
 
 - Who: the `Source-language lead (watcher)` lane (role `translation-source-lead`).
 - Skill: `translation-refresh`.
-- What: Re-run the instance's extractors, once for every locale: pages, diagrams, glossary schemes.
+- What: Re-run the layer's extractors, once for every locale: pages, diagrams, glossary schemes.
 - Record it: `workflow_complete` with `node: "Task_TR_Templates"`.
 - next: → `Task_TR_MergeLocales` (Merge into each locale)
 
@@ -89,7 +89,7 @@ Keep every locale current after the source moves: detect, refresh the templates,
 
 - Who: the `Locale translator` lane (role `locale-translator`).
 - Skill: `translation-manager`.
-- What: Write each locale's QA report, then open one PR for the instance, based on and targeting main.
+- What: Write each locale's QA report, then open one PR for the layer, based on and targeting main.
 - Record it: `workflow_complete` with `node: "Task_TR_Report"`.
 - next: → `Task_TR_SourceIssue` (Report source errors as one issue)
 
@@ -103,7 +103,7 @@ Keep every locale current after the source moves: detect, refresh the templates,
 
 ### Decide — Merge-when-green, and all green? (`Gateway_TR_Window`)
 
-- Three facts, all read live: the instance's AGENTS.md declares merge-when-green, every check on the PR is green, and the untainted round trip on the changed strings records no fail.
+- Three facts, all read live: the layer's AGENTS.md declares merge-when-green, every check on the PR is green, and the untainted round trip on the changed strings records no fail.
 - Call `workflow_complete` with `node: "Gateway_TR_Window"` and `outcome` set to the label that holds:
   - «Yes» → `Task_TR_Merge` (Merge the PR)
   - «No» → `End_TR_Waiting` (PR left open)
@@ -112,7 +112,7 @@ Keep every locale current after the source moves: detect, refresh the templates,
 
 - Who: the `Source-language lead (watcher)` lane (role `translation-source-lead`).
 - Skill: `translation-refresh`.
-- What: Merge the instance's PR to main, then confirm the template checks pass on main.
+- What: Merge the layer's PR to main, then confirm the template checks pass on main.
 - Record it: `workflow_complete` with `node: "Task_TR_Merge"`.
 - next: → `End_TR_Merged` (Refreshed)
 

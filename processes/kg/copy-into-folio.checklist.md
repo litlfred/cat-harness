@@ -16,7 +16,7 @@ Taking an asset from an upstream knowledge graph into your own folio so you can 
 
 - Who: the `Folio author` lane (role `author`).
 - Skill: `kg-affordances`.
-- What: Name the upstream instance (`<owner>/<repo>`), the asset's declared path in that instance, the commit `ref` (when pinned), and the target folio declaration that will receive the copy.
+- What: Name the upstream layer (`<owner>/<repo>`), the asset's declared path in that layer, the commit `ref` (when pinned), and the target folio declaration that will receive the copy.
 - Record it: `workflow_complete` with `node: "Task_ChooseAsset"`.
 - next: → `Task_ProbeWriteCapability` (Probe write capability)
 

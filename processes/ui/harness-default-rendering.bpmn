@@ -15,7 +15,7 @@
     <bpmn:participant id="Participant_Process_HarnessRendering" name="A harness's default rendering" processRef="Process_HarnessRendering"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_HarnessRendering" name="A harness's default rendering" isExecutable="false">
-    <bpmn:documentation>Renders a harness instance as its default interface: its left-hand nav and docs on its own theme's art, and a board of its todos and beans from which a reader reads, reviews and, when a write tool is available, proposes changes into the publication review.
+    <bpmn:documentation>Renders a harness layer as its default interface: its left-hand nav and docs on its own theme's art, and a board of its todos and beans from which a reader reads, reviews and, when a write tool is available, proposes changes into the publication review.
 
 The theme art goes behind every docs page.
 
@@ -25,7 +25,7 @@ Read-only is the floor. Whether the reader may write is a question about the too
     </bpmn:extensionElements>
     <bpmn:laneSet id="LaneSet_Process_HarnessRendering">
       <bpmn:lane id="Lane_Pipeline" name="Build pipeline" partitionElementRef="build-pipeline">
-        <bpmn:documentation>Runs at site build. It composes what each instance declares and decides nothing about content.</bpmn:documentation>
+        <bpmn:documentation>Runs at site build. It composes what each layer declares and decides nothing about content.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_Process_HarnessRendering</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Tiles</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Ground</bpmn:flowNodeRef>
@@ -49,7 +49,7 @@ Read-only is the floor. Whether the reader may write is a question about the too
     <bpmn:startEvent id="Start_Process_HarnessRendering" name="Site build starts"/>
 
     <bpmn:task id="A_Tiles" name="Compose each harness's nav and tile">
-      <bpmn:documentation>One themed section per instance in dependency order, from its declaration: its docs, its declared subgraphs (a graph with no viewer is shown inert and labelled), and its theme. Written to `_data/harness.json` by `sync-docs-harness.ts`.</bpmn:documentation>
+      <bpmn:documentation>One themed section per layer in dependency order, from its declaration: its docs, its declared subgraphs (a graph with no viewer is shown inert and labelled), and its theme. Written to `_data/harness.json` by `sync-docs-harness.ts`.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="harness-tiles"/></bpmn:extensionElements>
     </bpmn:task>
 

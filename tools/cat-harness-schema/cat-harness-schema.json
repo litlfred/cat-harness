@@ -2,8 +2,8 @@
   "$schema": "tool-definition/v1",
   "tool": {
     "id": "cat-harness-schema",
-    "title": "Instance declaration schema",
-    "description": "The zod definition of `<name>.json` — what an instance may declare about itself — and the published JSON Schema generated from it.",
+    "title": "Layer declaration schema",
+    "description": "The zod definition of `<name>.json` — what a layer may declare about itself — and the published JSON Schema generated from it.",
     "install": {
       "none": true
     },

@@ -11,7 +11,7 @@ description: >
 
 # Subscribing to a knowledge graph
 
-A folio instance, or any harness, can **subscribe** to an external knowledge
+A folio layer, or any harness, can **subscribe** to an external knowledge
 graph: choose to materialize some or all of its subgraphs and assets locally,
 and instantiate one or more of its harnesses so they appear in the navbar.
 
@@ -35,14 +35,14 @@ to hold some of it, or just to pin exactly which version you are reading.
 
 | you want | relation |
 |---|---|
-| to load an instance fully, with its skills overlaid | `needs` |
+| to load a layer fully, with its skills overlaid | `needs` |
 | to point at a harness and never load it | `associatedHarnesses` |
 | to consume a remote graph, holding **the parts you choose** | `subscriptions` |
 
 A subscription sits between the other two and **moves**: every part starts
 referenced and becomes materialised only when chosen and let through the gates.
 The schema refuses an id that is also in `needs` or `associatedHarnesses`,
-because two relations to one instance is two answers to "do we hold it".
+because two relations to one layer is two answers to "do we hold it".
 
 ## The substrate rule
 
@@ -50,14 +50,14 @@ You can subscribe only to a **substrate**: a repository whose root declaration
 
 1. parses as bootstrap's `KnowledgeGraphDeclarationSchema`
    (`bootstrap-tools/schemas/graph.ts`), and
-2. declares **at least one** harness instance.
+2. declares **at least one** instantiated harness.
 
 Both are answered by the declaration file alone, so validate with a sparse,
 shallow fetch of that one file — never a full clone. **"Could not fetch" is a
 third answer, never "conforms".** A repository that fails either point is not
 subscribed; record the reason and the pin you asked at, and write no entry.
 
-Known substrates are derived from each staged instance's `repository` and
+Known substrates are derived from each staged layer's `repository` and
 each associated harness, with hand rows (`knownSubstrates`, schema
 `KnownSubstrateSchema`) only where no declaration names one. Start from that
 registry before asking the person for a repository name.
@@ -186,8 +186,8 @@ config. The state directories go under the subscriber's own
 `subscribed-harnesses` directory (graph typology `subscribed-harnesses`,
 `holds: state`), at `<state dir>/<subscription>/<harness>/`; a subscriber that
 declares none is refused, with what to declare. They never go at the
-repository root, where a harness named after a staged instance would write
-into that instance's directory, and never under the snapshot directory, which
+repository root, where a harness named after a staged layer would write
+into that layer's directory, and never under the snapshot directory, which
 holds upstream's bytes and is declared `readOnly`. **Where the checkout has a
 root `index.config.json`, the config goes INLINE in a new `instances[]`
 entry** and no `<harness>.config.json` is written: the index is the one

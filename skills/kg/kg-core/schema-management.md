@@ -37,12 +37,12 @@ is the gate.
 **It reads every declared directory, not one.** `directoryForGraph` throws
 when several directories declare a graph, because returning the first
 silently resolves to the wrong directory on a run that exits 0. Several
-instances declare a `schemas` graph, so **the fix is never to pick one**: a
+layers declare a `schemas` graph, so **the fix is never to pick one**: a
 view of one of several reports a corpus that does not exist.
 
 Resolution is scoped **per directory** for the same reason one level down: two
-instances may each have a `foo.ts`, and a global index by module stem would
-resolve one instance's import to another instance's export — the same failure,
+layers may each have a `foo.ts`, and a global index by module stem would
+resolve one layer's import to another layer's export — the same failure,
 silently, with every edge still computing.
 
 ## Why the AST, and not the two things that look easier
@@ -154,7 +154,7 @@ reader *and* stale relations in the drawing.
 3. **Tag the module** — `@graphNode schema`, or `@graphNode none — <reason>`
    with a reason. `check:schema-nodes` fails an untagged module, because an
    untagged one is silently absent from the published graph and absence is the
-   one failure a consumer cannot tell apart from "this instance has none".
+   one failure a consumer cannot tell apart from "this layer has none".
 4. `bun run cat schema:viz` and look at your declaration in the viewer. Its kind,
    its fields, its generalisation, and what it references — and the three
    answers above.
@@ -189,9 +189,9 @@ already names its module.
 | rule | form | what it is |
 |---|---|---|
 | **1 — a handler renders a kind's assets** | `<base>/<handler>/<kind>/<optional subject>` | cat-harness's machinery over some graph. `<base>/cat-harness/library/<iris-replica>/` |
-| **2 — an instance presents itself** | `<base>/<instance>/` | the IRIS replica mocking the IRIS website |
+| **2 — a layer presents itself** | `<base>/<instance>/` | the IRIS replica mocking the IRIS website |
 
-The handler is the instance doing the rendering, the kind names what it
+The handler is the layer doing the rendering, the kind names what it
 renders, and the **subject is optional** — a page with no subject is the view
 over every subject.
 
@@ -214,30 +214,30 @@ for every page under the canonical route, and refuses one that would replace a
 page; `bun run cat check:visualiser-routes` refuses, before any build, an
 alias that names another alias, a harness, or anything the site already
 publishes at its top level — naming both claimants. The reserved set is READ
-from the site tree and the instance names rather than kept as a literal, so a
+from the site tree and the layer names rather than kept as a literal, so a
 new site-wide route is reserved the day it exists. Link to the canonical form;
 an alias is for a person typing a URL. The disk side — a remote mount landing
 at `<name>/` — is in [`remote-mount`](remote-mount.md).
 
 ### When the two collide — the handler wins
 
-An instance that is **both** — this one renders every graph here AND has a site
+A layer that is **both** — this one renders every graph here AND has a site
 of its own — makes rules 1 and 2 name the same path, `<base>/<instance>/`, and
 nothing above chooses between them. **The harness handler wins.**
 
-So `/cat-harness/` is the handler namespace and nothing else. The instance's
+So `/cat-harness/` is the handler namespace and nothing else. The layer's
 own authored page is `docs/platform.md`, and `gen-handler-index.ts` generates
 the route's index from `harnessTiles`.
 
 **The rule is not "the generated page wins"** — it is that rule 1 is the one
 with a *kind* in it, so it is the rule that can still address everything it
 needs to once it owns the root. Rule 2 has nowhere else to go only if the
-instance has no other name to present itself under, and an instance that is
+layer has no other name to present itself under, and a layer that is
 doing both has exactly that: `docs/platform.md` is reachable, linked from the
 generated index, and no route was lost.
 
 **A subject page must NEVER be published at `<base>/<subject>/<kind>/`.** That
-is rule 2's namespace, and a viewer parked there squats on the instance's own
+is rule 2's namespace, and a viewer parked there squats on the layer's own
 site.
 
 `viewerPlacement` in `gen-schema-viz.ts` is the single implementation, shared
@@ -255,15 +255,15 @@ too: a page never reports the graph-wide edge total.
 
 `<base>/cat-harness/docs/` is where all harness user documentation is, so
 documentation at `<base>/cat-harness/docs/<instance>/` is documentation ABOUT
-that instance — how it is ingested and so on — **not the instance's
-content**, whose source is the instance's own `docs/`.
+that layer — how it is ingested and so on — **not the layer's
+content**, whose source is the layer's own `docs/`.
 
 So a subject page under a handler is **about** its subject, rendered by the
 handler — never the subject's own content relocated. The content stays in the
 subject's own `docs/`, and the handler's job includes looking for those
 directories.
 
-`docs` is a `perInstance` kind, so every instance inheriting it gets its own,
+`docs` is a `perInstance` kind, so every layer inheriting it gets its own,
 and each existing `<instance>/docs/` is a member of the one declared subgraph.
 
 ## The relationship diagram — what is defined here, and HOW it is linked

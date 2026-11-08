@@ -8,7 +8,7 @@ graph-typologies:
 
 ## Role
 
-Extract the personas an instance's BPMN diagrams put in swimlanes as a
+Extract the personas a layer's BPMN diagrams put in swimlanes as a
 SKOS concept scheme, and keep the retirement ledger that lets a dropped
 term be told from an accident.
 
@@ -22,7 +22,7 @@ them on your own initiative.
 
 - A user mentions: swimlane glossary, defined-terms index, SKOS concepts,
   `glossary-export`, the glossary ledger, retiring a term.
-- After adding, renaming or removing a role in an instance's
+- After adding, renaming or removing a role in a layer's
   `scenarios/roles.json`, or a lane in any `.bpmn` under it.
 - Before believing any count of "how many terms does this repository
   define" — the generator's report is the answer, never a number in prose.
@@ -108,7 +108,7 @@ Three rules for it:
 wholesale, while a concept is a term somebody may have cited; ledgering every
 occurrence would bury the records that matter.
 
-## Run it once per instance — never widen the scan
+## Run it once per layer — never widen the scan
 
 `--instance <root>`, the shape `kg-export` and `translate-bpmn` already
 use. Widening cat-harness's scan to reach bootstrap's diagrams is the leak
@@ -120,12 +120,12 @@ use. Widening cat-harness's scan to reach bootstrap's diagrams is the leak
   omitting them would leave the glossary silently short of the
   vocabulary it claims to index. The report says **which walk** found
   nothing ("no swimlane in `<instance>/` draws") and splits the list:
-  a role a lane in ANOTHER instance binds (`partitionElementRef`) is named
+  a role a lane in ANOTHER layer binds (`partitionElementRef`) is named
   with that diagram (`drawnElsewhere`), apart from roles no diagram in the
-  repository draws, because unsplit, a role drawn in another instance reads
+  repository draws, because unsplit, a role drawn in another layer reads
   like one drawn nowhere: a fact about the walk phrased as a fact about the
   corpus. Reporting it is not widening the scan: nothing outside
-  the instance is bound or emitted.
+  the layer is bound or emitted.
 - **A lane binding naming a lane no diagram contains.** Distinct
   from a role whose lane exists but holds no task, which is not a defect.
 - **A lane whose binding is dangling, contradictory or unbound.**

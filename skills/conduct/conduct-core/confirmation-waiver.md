@@ -98,7 +98,7 @@ reviewable.
   words does not exist. If you are composing the sentence, you are the grantor,
   and you may not be.
 - **Widen one.** `session:` does not reach the next session; `process:` does not
-  reach a sibling instance; `deletion` for build artefacts does not reach
+  reach a sibling layer; `deletion` for build artefacts does not reach
   content. When the scope does not plainly cover the case in front of you, it
   does not cover it.
 - **Infer one from tone.** "go ahead", "yes", "do it" discharge the gate they
@@ -113,7 +113,7 @@ reviewable.
 
 `bun run cat check:waivers` reads every node under `memory/waivers/` and fails on a
 missing field, a `gate` outside the table above, a scope that names a
-non-existent session or instance, and a waiver over a non-waivable rule. It
+non-existent session or layer, and a waiver over a non-waivable rule. It
 reports expired waivers as **inert**, never as findings — they are history.
 
 The check reads the same table this skill publishes, so a gate class without

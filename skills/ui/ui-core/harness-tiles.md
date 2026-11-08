@@ -36,12 +36,12 @@ Each visualiser is ONE declaration in the harness that owns it:
 - **`id`** is the URL segment; **`renderedBy`** names a Tool node (the
   implementation may live anywhere); **`covers`** names this harness's own
   directory ids, **`coversKinds`** graph typologies, over every declared
-  directory of them in the checkout. A harness never names another instance's
+  directory of them in the checkout. A harness never names another layer's
   directory — that would be a lower layer naming a higher one.
 - **The URL is computed, never chosen.** `visualiserRoute` in
   `schemas/kg/visualiser-route.ts` is the ONE function every generator and
   reader uses: `<harness>/<id>/` for the full KG, `<harness>/<id>/<sub-graph>/`
-  for one sub-graph (`subgraphs: "instance"` — one per covered instance — or
+  for one sub-graph (`subgraphs: "instance"` — one per covered layer — or
   `"directory"`, nested under `subgraphUnder[kind]` where the visualiser
   declares one), and an asset path below either. Every page is written to that
   route under the site's docs layer, so the file and the URL cannot disagree. A
@@ -68,7 +68,7 @@ Each visualiser is ONE declaration in the harness that owns it:
 ## Instantiated is a different fact from declared
 
 Only the harnesses instantiated in the folio get tiles, not every dependency.
-Which instances are instantiated **here** is answered by the root
+Which layers are instantiated **here** is answered by the root
 `index.config.json` (`instances[]`), or without an index by each root
 `<name>.config.json`. That rule is
 [`index-config`](../../kg/kg-core/index-config.md)'s; the tiles only consume
@@ -90,9 +90,9 @@ a finding on the tile rather than an empty one.
 ## Which harness `/` is — the landing is `index-config`'s rule
 
 The site's landing page is one of the **instantiated** harnesses. It is never
-the instance the generator happens to live in, and never the repository's
+the layer the generator happens to live in, and never the repository's
 name. Which one it is — `site.landing` in the root `index.config.json` (an
-instance name or `"hub"`), or the per-config `site.landing` flag without an
+layer name or `"hub"`), or the per-config `site.landing` flag without an
 index — is [`index-config`](../../kg/kg-core/index-config.md)'s rule.
 `resolveLandingInstance` in `schemas/kg/harness-config.ts` reads both, and
 `check:landing-instance` is the gate.
@@ -120,7 +120,7 @@ its two senses, so it is an **adjudication**, not a check
 word is load-bearing, say which sense — *"instantiated here"* or *"a layer
 downstream repos instantiate"*.
 
-## A tile opens the INSTANCE, not a kind handler's view of it
+## A tile opens the LAYER, not a kind handler's view of it
 
 A viewer page is a RENDERING with its own IRI, separate from the asset it
 shows; see `kg-viewer` §"The asset and its rendering are two resources with
@@ -128,41 +128,41 @@ two IRIs". `scripts/mount-instance-docs.ts` carries the two routes:
 
 | route | handler | what it is |
 |---|---|---|
-| `/<kind>/<instance>/` | the kind's, cat-harness's | the default rendering any instance declaring that kind gets |
-| `/<instance>/` | the instance itself | its own themed root |
+| `/<kind>/<instance>/` | the kind's, cat-harness's | the default rendering any layer declaring that kind gets |
+| `/<instance>/` | the layer itself | its own themed root |
 
-The tile's target is the instance's **own themed root** when it has one, and a
+The tile's target is the layer's **own themed root** when it has one, and a
 handler's viewer only when it does not. The viewers stay reachable, listed
 beneath.
 
-An instance **has** that root when it has its own site directory, read from
-its own declaration — never by probing the BUILT site, where an instance whose
+A layer **has** that root when it has its own site directory, read from
+its own declaration — never by probing the BUILT site, where a layer whose
 pages are generated at build time has none until its generator runs.
 
 ## Order is the declared dependency stack, reversed
 
 Bottom to top, computed from the declared `needs`, never written out as names:
-a name list is a rule true only for the instances somebody remembered.
+a name list is a rule true only for the layers somebody remembered.
 The spine's head keeps the top and its floor keeps the bottom.
 
-**An instance whose layer nobody declared is undetermined** — placed below the
+**A layer whose layer nobody declared is undetermined** — placed below the
 head, alphabetically, carrying a finding that says its place is not derived.
-Absent is not `[]`: one is nobody having said, the other is an instance
+Absent is not `[]`: one is nobody having said, the other is a layer
 asserting it sits on nothing.
 
 **A broken graph does not blank the navbar.** `flattenDependencies` returns an
 empty order on a cycle, which is right for a pipeline and wrong for a sidebar,
-where showing nothing hides every instance over one typo. The problems are
+where showing nothing hides every layer over one typo. The problems are
 reported and the list falls back to alphabetical.
 
 ## Two gaps, reported rather than hidden
 
 Both are the third state, and they are DIFFERENT findings:
 
-- **declared and not rendered** — a graph the instance declares with no
+- **declared and not rendered** — a graph the layer declares with no
   published page. Not linked (a dead link reads as *"this site is broken"*),
   and reported.
-- **rendered and not declared** — a page published under a kind the instance
+- **rendered and not declared** — a page published under a kind the layer
   does not declare. Also not linked, because the declaration decides what a
   tile may claim to show — and reported, because staying silent would hide a
   working viewer behind a rule, and the remedy is one line in a declaration.
@@ -187,7 +187,7 @@ second signal. Do not use `aria-disabled` — nothing is a control, and marking 
 | state | the row says | is it a gap? |
 |---|---|---|
 | declared `publish: "staging-only"` | staging only | **no** — withheld on purpose |
-| instance declares `renderExemption.of: ["visualiser"]` | no viewer by design | **no** |
+| layer declares `renderExemption.of: ["visualiser"]` | no viewer by design | **no** |
 | a viewer exists off the conventional path | viewer not published | yes, and a different one |
 | nothing declares a viewer | no viewer yet | yes |
 
@@ -263,11 +263,11 @@ gated today.
 
 ## The navbar icon row is DECLARED, and three states is not two
 
-`navbarIcons` on the instance declaration. A **closed** set — `close`,
+`navbarIcons` on the layer declaration. A **closed** set — `close`,
 `todos`, `beans`, `processes`, `kg`, `fsh-guts`, `qr`, `launcher` — because a
-free string lets an instance name an icon nothing draws. Seven is the cap and
+free string lets a layer name an icon nothing draws. Seven is the cap and
 it is **refused, never truncated**: silently dropping an eighth entry would
-overrule the instance's decision.
+overrule the layer's decision.
 
 `fsh-guts` is a control, like `launcher`: a button that opens the
 discarded-items list and carries its live count, not a link. It is also the
@@ -279,11 +279,11 @@ otherwise (`board-windows` §"Send to fsh-guts asks first").
 |---|---|
 | absent | **inherit** — walk `needs`, site owner as the floor |
 | `[]` | **show none** |
-| a list | this instance's own answer |
+| a list | this layer's own answer |
 
 Absent and `[]` must not collapse. The guard is `!== undefined`, never a
 truthiness test: a truthiness test turns "nobody has said" into "nothing to
-show", and makes an instance that has not declared the field indistinguishable
+show", and makes a layer that has not declared the field indistinguishable
 from one that wants a bare navbar. The distinction is kept at every layer: `resolveNavbarIcons`
 returns `undefined` for undetermined, `harness-tiles.ts` **omits** the field
 rather than writing `[]`, `sync-docs-harness.ts` emits `null`, and the client
@@ -291,22 +291,22 @@ draws no row and says so once.
 
 **The walk is `needs`**, not a second traversal. Nearest declaration wins,
 breadth-first toward the foundation — the direction `resolveSkillDirs` already
-composes. A new walk would be a second answer to "what is this instance built
+composes. A new walk would be a second answer to "what is this layer built
 on", free to disagree with the first.
 
 **Destinations are looked up, never written down.** They come from the
-instance's own declared visualisations plus `siteLinks`, so an icon whose
-graph this instance does not publish gets no href and renders as a
+layer's own declared visualisations plus `siteLinks`, so an icon whose
+graph this layer does not publish gets no href and renders as a
 **non-link**. `close` and `launcher` carry no href on purpose: they drive
 controls on the page, and an href would make them look like navigation.
 
 ## The theme avatar: the assignment is theme-mediated
 
-The navbar's mark is the instance's **theme card art, clipped** — not its
+The navbar's mark is the layer's **theme card art, clipped** — not its
 `icon`. The chain:
 
-> instance → its sticky contribution → the sticky's `theme` → the theme's
-> `imageRole` → the instance's images carrying that role → the `card` layout →
+> layer → its sticky contribution → the sticky's `theme` → the theme's
+> `imageRole` → the layer's images carrying that role → the `card` layout →
 > its `avatarRegion`
 
 `resolveThemeBackdrop` is the join and returns the `DeclaredImage`, so the crop
@@ -349,7 +349,7 @@ per-instance palette would be a second colour vocabulary beside `theme.ts`.
 
 ## On a folio's own site, a tile describes the FOLIO
 
-**A page's tiles describe the instance whose site the page is on.** A folio's
+**A page's tiles describe the layer whose site the page is on.** A folio's
 own Pages site (an IG repository's `folio-site.yml`, a document folio's
 `folio-staging.yml`) wears the platform's chrome, and the platform's
 `_data/harness.json` comes with it: tiles, counts, icon row, rail scopes and
@@ -364,7 +364,7 @@ data, once, for both passes (`compose-docs --shell --instance`, and
 |---|---|---|
 | the folio's own root (`/<instance>/…`) | resolves inside the folio's baseurl | kept |
 | a page the folio's declaration publishes at its site's root (`/beans/`), when the folio IS the checkout's root (`rootOwnPages`) | stays root-relative, on the folio's own site | kept |
-| another instance's **`state`** graph (work items, todos, QA, health, uploads …) | **is not linked**; the icon says why in words | **none** |
+| another layer's **`state`** graph (work items, todos, QA, health, uploads …) | **is not linked**; the icon says why in words | **none** |
 | a platform content, context or derived graph (skills, processes, tools, schemas, docs …) | is re-based, absolute, onto `DOCS_SITE_BASE`, with its qualifier shown | **none** |
 | a kind nothing classifies | is treated as state | none |
 
@@ -418,7 +418,7 @@ generated rather than a Jekyll tree) needs four more things:
   writes the row's `data-fa-root` as the page's own site root (`rowRoot`),
   while its script and style still load from the platform (`assetRoot`).
 - **Its mark loads from its own site** (`ownsCheckout`).
-- **An image mark can sit on the rail itself.** The rail draws the instance's
+- **An image mark can sit on the rail itself.** The rail draws the layer's
   tone square behind every avatar; a declared image with `ground: "none"`
   (`KgImageSchema`) is drawn with no tone.
 
@@ -426,7 +426,7 @@ generated rather than a Jekyll tree) needs four more things:
 page, as a peek; pinning keeps it open, so `.main` moves over (`docs-ui.css`).
 
 **The gate is `foreign-site-scope.test.ts`.** It runs both foreign-site passes
-over a folio and asserts (a) no tile carries another instance's count or links
+over a folio and asserts (a) no tile carries another layer's count or links
 its state graph, (b) no href is left root-relative unless it is the folio's
 own path, (c) the platform's translation sweep and index are not shipped and
 the rendered `head_custom.html` hands the badge its words, and (d) the fish
@@ -441,7 +441,7 @@ platform's own site the platform's tiles are right by construction.
 out of view from a tile that does not exist.
 
 - **The pinned set is DECLARED, never written into a surface.** `glassStrip`
-  on the instance's declaration lists the pins in order: `{ "chrome": … }` for
+  on the layer's declaration lists the pins in order: `{ "chrome": … }` for
   the glass's own controls (`todos`, `filter`, `settings`) and
   `{ "kind": … }` for a graph typology. It is inherited along `needs` like
   `navbarIcons`, so absent inherits and `[]` pins nothing.

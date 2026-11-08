@@ -197,7 +197,7 @@ Apply four reuse questions:
 
 ### Q3a — Did upstream land a new skill file?
 
-For each main-refresh, check whether a skill directory the instance declares
+For each main-refresh, check whether a skill directory the layer declares
 in its `kg` graph (`skill_list` names them) gained a new file between this
 branch's prior baseline and the new `origin/main`:
 

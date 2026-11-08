@@ -5,7 +5,7 @@ description: >
   state, not a boolean, and `published` is refused by the schema because the
   formal process does not exist yet. Carries the id namespace rule, why a
   mirror never takes its subject's identity, and what a consumer may assume of
-  a draft. Also the one home for which graph each instance publishes, where,
+  a draft. Also the one home for which graph each layer publishes, where,
   under which IRI and schema, and what is stripped from it.
 adapters: [document, paper, dak]
 profiles: [document, paper]
@@ -13,12 +13,12 @@ profiles: [document, paper]
 
 # instance-publication — draft is a state, not an absence of one
 
-> Skill id: `instance-publication` · Package: `folio-core` · Instance:
+> Skill id: `instance-publication` · Package: `folio-core` · Layer:
 > `cat-harness`
 
 All assets get a version and are in `draft` publication; the formal
 publication process is not yet defined, needs tools, and depends on the
-instance. Three rules follow.
+layer. Three rules follow.
 
 ## 1. Every asset carries a `version` — and the `id` is HELD
 
@@ -26,7 +26,7 @@ instance. Three rules follow.
 
 **It is enforced by `check:publishable`, not by the schema**: requiring it in
 the type would break every test fixture that builds a declaration without it,
-and a sweep that size hides real regressions in the noise. A new instance
+and a sweep that size hides real regressions in the noise. A new layer
 without a version fails the gate **by name**, rather than as a parse error in
 a test fixture.
 
@@ -46,7 +46,7 @@ The namespace rule below stands; only its application waits.
 
 `publication` is not a boolean. `draft` is the state **everything is already
 in** — not an undecided-ness, not an absence. `check:publishable` does not
-report a draft instance as undecided.
+report a draft layer as undecided.
 
 Absence still means `draft`. Declaring `publication: "draft"` is legal and
 says nothing extra; the field exists to reserve the axis and to make rule 3
@@ -69,7 +69,7 @@ naming that process, rather than to become a second boolean.
 
 ## The id namespace — one rule, no per-instance invention
 
-Every instance's id is **`io.github.litlfred.folio-assistant.<name>`**. The
+Every layer's id is **`io.github.litlfred.folio-assistant.<name>`**. The
 rule underneath it is mechanical: **reverse the host, append the path.**
 
 | host + path | id |
@@ -94,7 +94,7 @@ real upstream ids are already held — as **data**, in the right place:
 { "id": "smart.who.int.trust", "canonical": "http://smart.who.int/trust" }
 ```
 
-Giving our instance `smart.who.int.trust` would claim our mirror **is** the
+Giving our layer `smart.who.int.trust` would claim our mirror **is** the
 thing it mirrors. Anything resolving that id would then find two different
 artefacts answering to it.
 
@@ -106,25 +106,25 @@ canonical is describing what it mirrors, not asserting where it lives.
 
 ### Three questions that must not be merged — publication, staging, mirroring
 
-Three different questions answer to "what is this instance's address", and
+Three different questions answer to "what is this layer's address", and
 each has its own field:
 
 | question | answered by | example |
 |---|---|---|
-| **Publication identity** — where the artefact lives once formally published | the `@id` its document mints; for an instance staged here for publication elsewhere, its declared `canonicalUrl` | `smart-base` → `http://smart.who.int/base/smart-base.jsonld` |
+| **Publication identity** — where the artefact lives once formally published | the `@id` its document mints; for a layer staged here for publication elsewhere, its declared `canonicalUrl` | `smart-base` → `http://smart.who.int/base/smart-base.jsonld` |
 | **Staging location** — where this repository's site serves a draft copy now | the root index's `url`, never the `@id` | a DAK layer → `<site>/<name>/<name>.jsonld` |
 | **True mirror** — this repository's index *about* someone else's artefact | its own identity on this site; the subject's ids are held as **data** | the trust-IG mirror is not the WHO SMART Trust IG |
 
-**An instance staged here for publication at its `canonicalUrl` is not a
+**A layer staged here for publication at its `canonicalUrl` is not a
 mirror.** It IS the thing that will be published there, so its `@id` is the
 publication identity and this site is only where it is staged. The mirror rule
 above applies to the third row and to nothing else. Never read this site's
-address as an instance's identity: it would mint ids that change the day the
+address as a layer's identity: it would mint ids that change the day the
 artefact is published.
 
 ## Release IRIs — one address, the major, derived from the version
 
-Every address an instance mints carries its **major version only** —
+Every address a layer mints carries its **major version only** —
 `<iriBase>v<major>/…` — whoever reads it. A namespace, a schema `$id`, a BPMN `xmlns` and
 `bpmn:import`, a JSON-LD `@id`, a code-list value, and a page a person reads
 all take the one form:
@@ -137,7 +137,7 @@ all take the one form:
 **The exact release comes from the pin, not the address.** A reader is handed
 a commit by `index.lock.json` and the `needs` pins, which already name it
 exactly; an address that also named the patch would make every patch release
-rewrite every literal copy of the instance's addresses. Within one major a minor or patch adds and never breaks — the promise a
+rewrite every literal copy of the layer's addresses. Within one major a minor or patch adds and never breaks — the promise a
 `$schema` tag already makes, where a reader accepts any tag of the same major
 (`tagCompatible`, below) — so **only a breaking change, a new major, changes an
 address.**
@@ -177,7 +177,7 @@ to `v<major>/`; a full version of another major, or an id at the wrong path,
 still fails. The tolerance lives in `legacyExactSemver` / `withLegacyMoved` in
 `bootstrap-tools/schemas/release-iri.ts`.
 
-**A `$schema` tag carries its SCHEMA's semver**, not the instance's:
+**A `$schema` tag carries its SCHEMA's semver**, not the layer's:
 `model-registry/1.0.0`. A reader accepts any tag of the same major
 (`tagCompatible`); a tag change that breaks a reader is a new major. An old
 tag is accepted until that schema's next major, and a published schema never
@@ -190,7 +190,7 @@ would make it dangle. It moves when the bootstrap repository publishes.
 
 ## The release site — what is served where
 
-The IRI rule above says what an identifier IS; this says what the instance's
+The IRI rule above says what an identifier IS; this says what the layer's
 own site must serve so that every identifier dereferences.
 
 | path | holds | changes |
@@ -214,42 +214,42 @@ Three rules follow from the table:
   own declaration on this site today (the workflow keeps the graph at that
   address and says so). On bootstrap's own site the collision cannot occur,
   because the exported graph is not published there (next rule).
-- **An instance's own site serves only what its tools generate.** For bootstrap that is bootstrap's files as
+- **A layer's own site serves only what its tools generate.** For bootstrap that is bootstrap's files as
   they sit, the schemas and diagram vocabulary among them, the `bs:` term
   vocabulary, and the person-facing pages — all produced by bootstrap-tools.
-  **Output a harness computes ABOUT the instance stays on the harness's site,
-  under the harness's addresses, naming the instance as its subject**: the
+  **Output a harness computes ABOUT the layer stays on the harness's site,
+  under the harness's addresses, naming the layer as its subject**: the
   exported graph `bootstrap.jsonld`, the swimlane glossary, the QA verdicts,
   the translation templates. So a new toolset over the same content never has
   to reproduce a harness's output to publish the content, and a harness's
-  output never takes the instance's identity
+  output never takes the layer's identity
   ([`kg-separation`](../graph-management/kg-separation.md) §"The pair").
 
-### The JSON-LD context: `<iriBase>ns/context/v1.jsonld`, published by the instance
+### The JSON-LD context: `<iriBase>ns/context/v1.jsonld`, published by the layer
 
-One path sits outside the versioned tree: the instance's `@context`, generated
+One path sits outside the versioned tree: the layer's `@context`, generated
 from the prefixes its own documents use (`gen-instance-contexts.ts`). It is
 `@protected`, so a change that rebinds a term is a new `v2` beside it, never an
 edit under a cached URL. Each repository publishes its own context, through
 ONE reusable workflow, and **the initiation process sets that up**.
 
-**Where its `ns` is a document, the context goes beside it.** An instance
+**Where its `ns` is a document, the context goes beside it.** A layer
 holding its vocabulary as `ns.jsonld` at its
 root (bootstrap) has `ns` staged as a FILE (the extensionless `ns`, and
 `v<major>/ns`), so `ns/` cannot also be the directory `ns/context/v1.jsonld`
 needs, and a static host cannot serve both. Its context is
 `<iriBase>ns.context.v1.jsonld`, same `v1` rule. The generator decides by what
-the instance holds (`contextPathFor` in `gen-instance-contexts.ts`), the
-instance's `builtAtPublish` and `.gitignore` name that path, and the workflow
+the layer holds (`contextPathFor` in `gen-instance-contexts.ts`), the
+layer's `builtAtPublish` and `.gitignore` name that path, and the workflow
 publishes at the path the build reports.
 
 - **The workflow** is the tools layer's
   `.github/workflows/layer-publish-context.yml`. A repository calls it from a
   `publish-context.yml` of one `uses:` line, on push to `main`, with
-  `contents: write` (`path-in-repo:` when the instance is a sub-directory, as
+  `contents: write` (`path-in-repo:` when the layer is a sub-directory, as
   the DAK layer's is). It builds only the caller's context, judges only the
   caller's findings, and writes that one path to the caller's `gh-pages`. It
-  skips with a notice when the instance declares no `iriBase` or has no
+  skips with a notice when the layer declares no `iriBase` or has no
   `.jsonld` documents, and it creates `gh-pages` when it is absent.
 - **A site that rebuilds `gh-pages` must keep `ns/`.** An IG deploy or a
   folio site that cleans the branch lists `ns` in its `clean-exclude`, or the
@@ -263,39 +263,39 @@ publishes at the path the build reports.
   `gh-pages`, `/ (root)`*. Then `curl -sI <iriBase>ns/context/v1.jsonld`
   answers 200 with `content-type: application/ld+json`.
 
-`publish-instance-files.ts` is the step that copies an instance's files into a
+`publish-instance-files.ts` is the step that copies a layer's files into a
 site today — each file as it sits, `.md` also as `.html`, `README.md` as
 `index.html`. It serves bootstrap under this site until bootstrap's own
 repository publishes itself, at which point the job is bootstrap-tools'.
 
 ### Tags
 
-A standalone repository — one instance, declared at its root — tags a release
-plainly, `v<major>.<minor>.<patch>`; a repository of several instances tags
+A standalone repository — one layer, declared at its root — tags a release
+plainly, `v<major>.<minor>.<patch>`; a repository of several layers tags
 `<name>-v<major>.<minor>.<patch>`, because a plain tag could not say which
-instance it released. `check:version-bump` reads both
+layer it released. `check:version-bump` reads both
 accordingly. The tag is what a site deploy writes `/v<major>/` from, so an
 untagged commit is never an agent-facing release; the tag, like the pin, names
 the exact version that the address no longer does.
 
-## What each instance publishes — graph, address, schema, and what is stripped
+## What each layer publishes — graph, address, schema, and what is stripped
 
 **This section is where the publication policy is stated.** The files that
 carry the mechanics point here for the policy.
 
-### One document per declared instance, of its own directories
+### One document per declared layer, of its own directories
 
 **Every directory carrying a declaration publishes ONE JSON-LD document, and
 it holds only the directories that declaration names.** A dependency is
 referenced by IRI, never inlined. The set is read from the declarations
 (`instanceRootsIn`), never listed in a workflow, where it would go stale.
 
-| instance | document on this site | built by |
+| layer | document on this site | built by |
 |---|---|---|
 | the host, `cat-harness` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --scope instance`, its own line in `docs-site.yml` |
 | the checkout root, `folio-assistant` | `<site>/<stub>/<stub>.jsonld` | `kg-export.ts --instance .` |
 | `bootstrap` | `<site>/bootstrap/bootstrap.jsonld` | `bootstrap-tools/scripts/export-graph.ts` |
-| every other declared instance | `<site>/<stub>/<stub>.jsonld` | [`cat-harness-tools/scripts/instance-exports.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/scripts/instance-exports.ts) |
+| every other declared layer | `<site>/<stub>/<stub>.jsonld` | [`cat-harness-tools/scripts/instance-exports.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/scripts/instance-exports.ts) |
 
 - **Each document has a `.json` copy beside it**, the same bytes. Pages serves
   `.jsonld` as octet-stream, and `.json` is the only way to get a correct
@@ -308,13 +308,13 @@ referenced by IRI, never inlined. The set is read from the declarations
 - **The first three rows are the only exemptions**, and they are
   `PUBLISHED_ELSEWHERE` in `instance-exports.ts`, each with its reason. No
   other list exists.
-- **The host is built in instance scope**, so its document carries only its
+- **The host is built in layer scope**, so its document carries only its
   own nodes. `--scope checkout` remains for a corpus-wide consumer that says
   so (the `kg` search slice). It is never published under the host's name:
   `PUBLISHED_ELSEWHERE`'s pattern for the host refuses it.
 
 The exporter's contract (the two scopes, what each collector reads) is
-[`kg-export`](kg-export.md) §"Whose nodes — an instance publishes its own".
+[`kg-export`](kg-export.md) §"Whose nodes — a layer publishes its own".
 
 ### An `@id` that moved is not forwarded
 
@@ -328,13 +328,13 @@ deploy step still naming an old `--out` path writes the document where its
 ### Which base an `@id` is minted against
 
 `exportIdentity` in `kg-export.ts` decides. The base is `--base-url` if
-given; else the instance's own `canonicalUrl`; else, for an instance this
+given; else the layer's own `canonicalUrl`; else, for a layer this
 repository publishes, the host's. With no base at all the `@id` is
 document-relative and a problem is reported, never a guessed absolute one.
-**Every instance this site publishes, the host included, sits at
+**Every layer this site publishes, the host included, sits at
 `<base>/<name>/<stub>.jsonld`**, so `<doc dir>` for the host's subjects and
 Tools is `<base>/cat-harness/`, never the site root. **The one exception is an
-instance declaring its own `canonicalUrl`**: it is the host of its own base,
+layer declaring its own `canonicalUrl`**: it is the host of its own base,
 so its `@id` is `<canonicalUrl>/<stub>.jsonld`, and the deploy passes it no
 `--base-url` (`declaresOwnCanonical` in `instance-exports.ts`) — the tools
 layer, `cat-openapi`, the FHIR IG layer and the DAK layer, for example.
@@ -342,7 +342,7 @@ layer, `cat-openapi`, the FHIR IG layer and the DAK layer, for example.
 and that is their branches/ location, not their identity** (§"Three questions
 that must not be merged" above). The root index records both: `@id` is the
 publication identity, `url` is where this site stages it. Anything that names a
-node in another instance's document mints with `publishedIdentity`, or it
+node in another layer's document mints with `publishedIdentity`, or it
 names a document nobody writes. `iriBase` is a different field, for
 identifiers that carry the release (§"Release IRIs" above).
 
@@ -362,10 +362,10 @@ URL its `$id` names. They sit under the host's own directory, beside its
 document, like everything else it publishes. `bootstrap`'s schemas are
 published as they sit, by `publish-instance-files.ts`.
 
-**Every instance `instance-exports.ts` publishes also publishes
+**Every layer `instance-exports.ts` publishes also publishes
 `<site>/<stub>/schema/`.** It holds:
 
-- **the instance's own skill I/O contracts**, at
+- **the layer's own skill I/O contracts**, at
   `schema/skills/<skill>/<io>.schema.json`. They are read from
   `<instance>/schemas/skills/`, the directory its skills' `input:` and
   `output:` refs name. The declared `schemas` graph is not the answer:
@@ -377,9 +377,9 @@ published as they sit, by `publish-instance-files.ts`.
   schema (the host's `<stub>.schema.json`, by the `$id` the same build gives
   it) and lists every contract and every Zod rendering in `$defs` by `$id`.
 
-**Every `$id` is the instance's publication identity, not this site's
+**Every `$id` is the layer's publication identity, not this site's
 address.** The schema base is `schema/` beside the document `publishedIdentity`
-mints: `<site>/<stub>/schema/` for an instance with no `canonicalUrl`, and
+mints: `<site>/<stub>/schema/` for a layer with no `canonicalUrl`, and
 `<canonicalUrl>/schema/` for one that declares its own. So the DAK layer's
 contracts are `http://smart.who.int/base/schema/skills/…`, and this site stages
 the bytes at `<site>/<dak-layer>/schema/` (§"Three questions that must not be
@@ -390,26 +390,26 @@ replaces it, and with no base the contract has none.
 
 **The document links its index** with `conformsTo` (`dcterms:conformsTo`).
 It does so exactly when `instance-exports.ts` writes one, which is when
-`publishesInstanceSchema` finds the instance in the plan. The other two
+`publishesInstanceSchema` finds the layer in the plan. The other two
 exemptions carry no such link. **The host links its own
 `<stub>.schema.json`**, the shared declaration schema, by the `$id`
 `buildDeclarationSchema` mints with the same base. With no base there is no
 `$id`, so there is no link: never a relative one.
 
-**A skill links the contract its own instance publishes.** A skill held by a
-planned instance gets `inputSchema` / `outputSchema` set to its contract's
+**A skill links the contract its own layer publishes.** A skill held by a
+planned layer gets `inputSchema` / `outputSchema` set to its contract's
 `$id` as `publishedInstanceSchemas` mints it, which is the function the deploy
-writes the file with. That holds in the instance's own document and in a
-checkout-scope build that stacks it. A skill whose instance is not in the
+writes the file with. That holds in the layer's own document and in a
+checkout-scope build that stacks it. A skill whose layer is not in the
 plan, or whose contract gets no absolute `$id`, has no link: a guessed address
 is worse than none. The host's own skills are unchanged.
 
 #### Which Zod schemas are public
 
-An instance's public schemas are **every exported const whose name ends in
+A layer's public schemas are **every exported const whose name ends in
 `Schema` and whose value is a Zod schema**,
 in the `.ts` modules (not `*.test.ts`) directly inside its schemas directory.
-That directory is the instance's declared `schemas` graph if it declares one,
+That directory is the layer's declared `schemas` graph if it declares one,
 else `<root>/schemas/` by convention. The science layer and the IRIS replica
 declare `sources/`, which holds JSON descriptors, so they publish none.
 
@@ -444,12 +444,12 @@ gets no `zod/`.
 **The JSON-LD document drops `schemas` from its own `omitted` once it links
 the index.** Its module-level
 `Schema` collector is still instance-bound and does not run for a foreign
-instance. But "not looked for" is false when the schemas are published and
+layer. But "not looked for" is false when the schemas are published and
 the document says where. Two cases keep `schemas` listed. One is a document
-with no `conformsTo`: an exemption, or no base. The other is an instance whose
+with no `conformsTo`: an exemption, or no base. The other is a layer whose
 schemas directory cannot be resolved (`zodSchemaScanDetermined`, the scan's
 own first step), because its index then says `omitted: ["schemas"]` too, and
-the two must not disagree. The gate fails the day an instance's export lists a
+the two must not disagree. The gate fails the day a layer's export lists a
 `Schema` node, because nothing yet maps a module node to its per-export
 renderings.
 
@@ -469,7 +469,7 @@ names in an `export { … }` instead.
   `index.jsonld` (direct members as pointers) and `index.hydrated.jsonld`
   (every member inline, deep). **The harness root has `index.jsonld` only**,
   because a deep hydrated file there would be a monolith.
-  `gen-subgraph-jsonld.ts` frames each instance from its OWN export, so no
+  `gen-subgraph-jsonld.ts` frames each layer from its OWN export, so no
   subgraph names a `cat-harness.jsonld#<foreign>` fragment. The tree is
   committed under `cat-harness/docs/subgraph/`, its `@context` is
   `<site>/ns/subgraph/v1.jsonld`, and heavy bodies are content-addressed
@@ -480,8 +480,8 @@ names in an `export { … }` instead.
   subgraphs" and §"Payloads".
 - **The root index**: `<site>/index.jsonld` and `index.json`, built at
   publish time by `root-index.ts` and never committed: a committed copy
-  conflicts whenever two PRs change the set of harnesses. It names every declared instance at depth 1, with no node of
-  any graph inlined. It exits 1, having written nothing, when an instance's
+  conflicts whenever two PRs change the set of harnesses. It names every declared layer at depth 1, with no node of
+  any graph inlined. It exits 1, having written nothing, when a layer's
   export is not where its identity says, rather than publish a shorter map.
 
 ### What is never in a published graph
@@ -514,8 +514,8 @@ names in an `export { … }` instead.
 
 | gate | fails when |
 |---|---|
-| `check:published-instance-exports` | the deploy does not run `instance-exports.ts`, a workflow running it drops an exempt instance's own publisher, an exemption names no declared instance, or a published export fails or mints a relative `@id`; or, for a planned instance, a contract its skills name is not written to `<stub>/schema/`, the index is missing, the document's `conformsTo` is not the index's `$id`, or the document lists a `Schema` node the publisher does not render; or an exported Zod `*Schema` (read from the module text, re-exports included, confirmed Zod by import) is not written to `<stub>/schema/zod/` and listed in the index, a module has a bare `export * from` (undetermined), the publisher did not scan, or it reports an import or render failure |
-| `root-index.ts` at deploy | an instance's export is missing; the deploy fails rather than publish a shorter map |
+| `check:published-instance-exports` | the deploy does not run `instance-exports.ts`, a workflow running it drops an exempt layer's own publisher, an exemption names no declared layer, or a published export fails or mints a relative `@id`; or, for a planned layer, a contract its skills name is not written to `<stub>/schema/`, the index is missing, the document's `conformsTo` is not the index's `$id`, or the document lists a `Schema` node the publisher does not render; or an exported Zod `*Schema` (read from the module text, re-exports included, confirmed Zod by import) is not written to `<stub>/schema/zod/` and listed in the index, a module has a bare `export * from` (undetermined), the publisher did not scan, or it reports an import or render failure |
+| `root-index.ts` at deploy | a layer's export is missing; the deploy fails rather than publish a shorter map |
 | `subgraph:jsonld:check` | the committed subgraph tree or its payloads are stale |
 | `check:process-index` | a declared BPMN has no `Process` node in the published subgraphs |
 | `kg-export.test.ts` | the published graph holds a forwarding node, or a published `@id` dangles |
@@ -531,13 +531,13 @@ names in an `export { … }` instead.
   Draft is not "published somewhere quiet"; it is "the process that would make
   this depend-on-able has not been built".
 
-An instance that wants to be depended upon from outside does not declare its
+A layer that wants to be depended upon from outside does not declare its
 way there. It waits for the process, which is somebody's work and not a field.
 
 ## Do not
 
 - **Do not infer a publication state from evidence.** A `canonicalUrl`, a
-  GitHub Release, a Pages deployment or a `dependsOn` naming this instance are
+  GitHub Release, a Pages deployment or a `dependsOn` naming this layer are
   all things that exist for drafts too. Inferring from them erases the
   difference between "decided" and "nobody looked".
 - **Do not mint an id for something that already has one upstream.** Record

@@ -4,7 +4,7 @@
 
 > **Generated, and not the authority.** This is `cat-harness/processes/kg/sub-kg-lifecycle.bpmn` (process `Process_SubKgLifecycle`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Create a knowledge graph inside a harnessed repository as an instance of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository.
+Create a knowledge graph inside a harnessed repository as a layer of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository.
 
 ## Begin — A sub-KG is wanted in this repository (`Start_Wanted`)
 
@@ -33,7 +33,7 @@ Create a knowledge graph inside a harnessed repository as an instance of its own
 
 - Who: the `Authoring agent` lane (role `authoring-agent`).
 - Skill: `sub-kg-lifecycle`.
-- What: The content type's own authoring process runs here, against the staged instance.
+- What: The content type's own authoring process runs here, against the staged layer.
 - Record it: `workflow_complete` with `node: "Task_Grow"`.
 - next: → `Task_DecideLeave` (Ask whether it should leave now)
 

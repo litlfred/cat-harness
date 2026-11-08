@@ -114,7 +114,7 @@ the skill that now states that one.)
   somewhere to point is a Tool with front matter.
 
 Authoring the skill is a **design act** — a claim about the platform's capability
-vocabulary, inherited by every dependent instance — so it goes to the owner rather
+vocabulary, inherited by every dependent layer — so it goes to the owner rather
 than being decided in passing. Write the skill before the nodes. Once the gap
 is closed, remove any note announcing it: an agent that believes a stale gap
 either avoids the capability or rebuilds it.

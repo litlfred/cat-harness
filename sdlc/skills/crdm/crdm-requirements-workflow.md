@@ -370,11 +370,11 @@ the thing built.
 Three rules, and the first is the one a run skips:
 
 - **Ask; never pick silently.** The destinations are DERIVED from the owning
-  instance's declared graphs at the time of asking, `none` is a listed answer,
+  layer's declared graphs at the time of asking, `none` is a listed answer,
   and if nobody answers **nothing is created** and *"asked, answered none"* is
   recorded. `kg-contribution-offer` carries the option set and the question
   that identifies a design-memory asset.
-- **It goes in the OWNING instance's `docs/`** — a `cat-harness` feature's
+- **It goes in the OWNING layer's `docs/`** — a `cat-harness` feature's
   reasoning in `cat-harness/docs/`, a folio's subject matter not in the
   platform at all. `placement` decides where inside it: `architecture/` for why
   it is shaped this way, `guides/` for how a person does something with it,
@@ -496,7 +496,7 @@ For each work item:
    before the issue is closed, and run the same way for any increment the owner
    asks to land earlier. A stakeholder sign-off or the BA's confirmation is
    acceptance of the feature, not authorisation to merge it.
-8. **Update documentation** — the OWNING instance's `docs/` pages and the
+8. **Update documentation** — the OWNING layer's `docs/` pages and the
    workflow BPMNs. For the harness's own feature, **file its proposal as its
    requirements** once the merge is agreed: see *"A harness feature's
    documents"* above. If Phase 5's offer chose a `docs/` destination, this is

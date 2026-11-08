@@ -129,7 +129,7 @@ cd /tmp/rv && nohup python3 -m http.server 8091 >/dev/null 2>&1 &
 # → http://127.0.0.1:8091/folio-assistant/branches/$S/<page>.html
 ```
 
-That is the pinned `remote_theme`, the composed tree, the mounted instances
+That is the pinned `remote_theme`, the composed tree, the mounted layers
 and the post-Jekyll steps — the thing CI publishes. A whole preview is
 ~90 MB; `git archive FETCH_HEAD:branches/$S page.html assets` takes just what a
 page needs.
@@ -259,7 +259,7 @@ This skill stops a false **red** as well as a false **green**.
 
 A library viewer, for example, carries
 `DATA_HREF = "../../../assets/library/index.json"`, fetches it, and filters by
-instance. Its committed `index.html` never holds the entry names, so grepping
+layer. Its committed `index.html` never holds the entry names, so grepping
 it for them returns the same answer for a working page and a broken one.
 Loading it in Chromium settles it in one command.
 

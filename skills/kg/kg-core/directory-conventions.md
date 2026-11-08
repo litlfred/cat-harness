@@ -2,16 +2,16 @@
 consulted: true
 ---
 
-# Directory conventions — what an instance declares it scans
+# Directory conventions — what a layer declares it scans
 
-Every instance carries a **declaration** at its repository root — a `*.json` whose `name` field equals its own filename stem, found with `findDeclarationFile` and never composed from a path. It declares the directories the instance scans for content,
+Every layer carries a **declaration** at its repository root — a `*.json` whose `name` field equals its own filename stem, found with `findDeclarationFile` and never composed from a path. It declares the directories the layer scans for content,
 and what **kind of graph** each one holds.
 
 Schema and resolution: `schemas/kg/cat-harness.ts`.
 
 **It is the *harness's* schema, not folio-assistant's.** `agentic-harness` is
 the layer that defines Roles, Skills, Tools and these conventions, and every
-other instance inherits from it — so an instance need not be a folio-assistant
+other layer inherits from it — so a layer need not be a folio-assistant
 to carry one. A Tool repo or a Test repo carries the same declaration.
 
 ## Why directories rather than a content type
@@ -23,15 +23,15 @@ multi-repository split:
 **The things `agentic-harness` holds are not folios.** They are Tool
 definitions, a knowledge graph of skills and workflows, and a schema graph.
 None renders as a document and none has a `contentType` in the
-`document | paper` sense. A model that gives every instance a content type
+`document | paper` sense. A model that gives every layer a content type
 forces the harness to claim one it does not have.
 
-So the general object is **an instance with directories, each holding a
+So the general object is **a layer with directories, each holding a
 graph**. `folio` is one graph typology among several.
 
 ## Node Kinds are declared: `nodeSchemas`
 
-An instance lists every `$schema` value its files carry, and the published
+A layer lists every `$schema` value its files carry, and the published
 schema that defines it, in its declaration's **`nodeSchemas`** — a path
 relative to the declaration, or an IRI for a published standard. It is
 bootstrap's field (`KnowledgeGraphDeclarationSchema` in `graph.ts`), so a
@@ -56,7 +56,7 @@ not decided does not compile.
 > ### An old kind spelling still reads
 >
 > The `cat-harness` kind was once spelled `kg`. Renaming a kind is a
-> CROSS-INSTANCE breaking change: a downstream instance declaring
+> CROSS-INSTANCE breaking change: a downstream layer declaring
 > `graphs: ["kg"]` would resolve nothing **silently** — scanning, finding
 > nothing, reporting a clean run. So `GRAPH_TYPOLOGY_ALIASES` in
 > `schemas/kg/cat-harness.ts` maps `kg` → `cat-harness`, resolved once at the
@@ -65,7 +65,7 @@ not decided does not compile.
 > an alias nobody ever removes.
 >
 > **A directory `id` survives a rename of anything else.** An id is the
-> instance's own handle. A Subgraph id is its name inside its Harness, and the
+> layer's own handle. A Subgraph id is its name inside its Harness, and the
 > Harness name qualifies it (`cat-harness.skills`). `RENAMED_DIRECTORY_IDS`
 > reads an old id as the new one, so an older declaration still overrides the
 > entry it meant.
@@ -86,7 +86,7 @@ answer is `graphTypologiesOfLayer()` in
 hand-maintained copy would drift from the registry.
 
 **The table of every kind is a published page, not this skill.** Each row is a
-kind's `description`, and the rows span every instance in the checkout. The
+kind's `description`, and the rows span every layer in the checkout. The
 table is built at publish, by `bun run cat kind:table`, at
 `<base>/cat-harness/kind-table/` (`docs/cat-harness/kind-table.md`, declared in
 cat-harness's `builtAtPublish`), because a table kept in this skill goes stale
@@ -95,7 +95,7 @@ kind.
 
 > ### `test/` is the one test tree
 >
-> This instance declares `qa` at **`test/results/`** and `health` at
+> This layer declares `qa` at **`test/results/`** and `health` at
 > **`test/health/results/`**, and everything a test runner reads is under
 > `test/`: the Playwright `*.e2e.ts` specs, their `support/` fixtures, and the
 > health sweep's own `*.test.ts`.
@@ -103,7 +103,7 @@ kind.
 > **When two trees compete, move the cheap side.** An id in a declaration is
 > the expensive thing to move; a path reached by one line of one config file is
 > cheap. Change a directory's `path` and keep its **`id`**, so an inheriting
-> instance's override still matches: `resolveDirectories` matches on id, never
+> layer's override still matches: `resolveDirectories` matches on id, never
 > on path. Move a declared directory in a change of its own: relocating one as
 > a side effect of adding a graph typology is how a directory quietly goes
 > missing.
@@ -126,7 +126,7 @@ kind.
 > silently showing a `pt-BR/` or `translated-fr/` one.
 >
 > Translatability is a property of a **format within a content type**, which
-> the owning instance declares under `contentTranslations` (collected by
+> the owning layer declares under `contentTranslations` (collected by
 > `schemas/library/translation-tools.ts`) and `isTranslatable` answers — not a
 > property of a directory. A kind per locale subtree would restate what every
 > file already says and grow as O(locales x subtrees).
@@ -147,7 +147,7 @@ kind.
 > **They are also the reason `materialiseDirectories` exists.** Declare only
 > what exists: absent and empty are indistinguishable to a consumer, so
 > declaring a directory without creating it converts a real gap into a false
-> pass. `bun run cat harness:dirs` creates every directory an instance declares
+> pass. `bun run cat harness:dirs` creates every directory a layer declares
 > or inherits; the session-start sweep and `init-folio` both call it, so a
 > declaration is never left without the directory it names.
 
@@ -195,7 +195,7 @@ kind.
 > plan must not be handed BPMN instance state.
 
 **Why the work plan is the harness's and not core's.** The test is whether the
-harness *has* one, and it does: an instance has work whether or not it has
+harness *has* one, and it does: a layer has work whether or not it has
 content, and `agentic-harness` carries a `beans/` store for its own. A Tool repo
 and a Test repo have work plans too. That is a different test from the one that
 sent `folio` to core, which is about capability — only core can render.
@@ -225,7 +225,7 @@ Two copies survive because neither can be removed, and **both are checked**:
   directory would cost more than the duplication saves.
 
 The rule is not "never duplicate". It is: **an unavoidable duplicate is fine; an
-unchecked one is not.** In this instance `bun run cat check:harness-dirs` is what
+unchecked one is not.** In this layer `bun run cat check:harness-dirs` is what
 makes the difference.
 
 ### The dot-prefix guard tests every segment, not just the first
@@ -254,14 +254,14 @@ cat-harness/              <content-core>/
 directories. The content core declares **only** `folio/` and inherits the
 rest.
 
-### Where a NEW instance puts its code: `<stub>/src`
+### Where a NEW layer puts its code: `<stub>/src`
 
-**A new instance puts its source under `<stub>/src/` and declares it as
+**A new layer puts its source under `<stub>/src/` and declares it as
 `code`.** One directory, one declaration. (Stated here as well as in the `code`
-kind, because somebody starting an instance reads the layout, not the kind
+kind, because somebody starting a layer reads the layout, not the kind
 table.)
 
-**The existing instances are the exception.** `schemas/` is already a declared
+**The existing layers are the exception.** `schemas/` is already a declared
 graph of its own kind, and adding `code` to it would give one directory two
 kinds; `pipeline/` is core's subject, not the harness's; and `scripts/` hold
 entry points named **by path** from `package.json` and the CI workflows, which
@@ -308,7 +308,7 @@ under `vendors/` loads, a voice under any other nested directory does not.
 ## Assets sit at `<stub>/<asset>` — no declaration reaches down (ENFORCED)
 
 **A declared directory never sits inside another declared directory.** An
-instance's assets hang directly off its stub — `cat-harness/skills/`,
+layer's assets hang directly off its stub — `cat-harness/skills/`,
 the IRIS replica's `library/`, the DAK layer's `methodologies/` — and a package inside one of
 those is a package, not a second graph.
 
@@ -341,7 +341,7 @@ both the basename and the declaration id).
 `bun run cat check:layout-norms`, a **ratchet** rather than a corpus-wide gate. The
 nestings that exist today are baselined in
 `scripts/layout-norms-baseline.json`; **a pair not in the baseline fails.**
-An instance with no baseline entry cannot regress, while the instances with
+A layer with no baseline entry cannot regress, while the layers with
 outstanding work do not turn CI red.
 
 Removing a nesting prints as `FIXED` and never fails: a guard must not punish
@@ -351,12 +351,12 @@ page.**
 
 ## Inheritance
 
-An instance inherits its dependencies' directories, walked depth-first through
+A layer inherits its dependencies' directories, walked depth-first through
 `dependencies.folioAssistant` — the same order `schemas/kg/harness-config.ts` uses
 for skills and translations. Deepest dependency first, root last, so the root
 wins.
 
-**Overrides match on the directory's `id`, never on its `path`.** An instance
+**Overrides match on the directory's `id`, never on its `path`.** A layer
 that wants a graph somewhere else redeclares its id with a different path:
 
 ```jsonc
@@ -368,14 +368,14 @@ relocation, and every consumer would scan a directory that is not there. An
 override also **keeps the inherited position** in the scan order rather than
 moving to the end — a relocation should not reshuffle what is scanned first.
 
-### A subgraph is declared ONCE; every instance that has it is a MEMBER
+### A subgraph is declared ONCE; every layer that has it is a MEMBER
 
-If an instance depends on one where `docs/` is a declared subgraph and has a
-`docs/` of its own, the viewer detects it: that instance is a named member of
+If a layer depends on one where `docs/` is a declared subgraph and has a
+`docs/` of its own, the viewer detects it: that layer is a named member of
 the `docs` graph, with no per-entry field to set.
 
 So inheritance is **automatic**. `resolveDirectories` returns, for every
-instance-scoped entry, one **member** per instance in the chain whose
+instance-scoped entry, one **member** per layer in the chain whose
 `<root>/<path>` exists — `ResolvedDirectory.member` names it. The declarer's
 member comes first, so a consumer looking a subgraph up by id is handed the
 same directory as before; the rest follow in chain order. Existence-filtered
@@ -389,18 +389,18 @@ definition and gets no members.
   `library`, `docs`, `qa`, `beans`, `todos`, `voices`, `folio`, `glossary`,
   `translation-sources`, `external-schema`. `materialiseDirectories` creates
   the dependent's own, empty, with a keep marker.
-- **absent** — merely where an instance's content lives: `schemas`, `tools`,
+- **absent** — merely where a layer's content lives: `schemas`, `tools`,
   `code`, `processes`, `methodology`. A dependent that HAS one is a member of
   the subgraph; one that does not gets nothing created.
 
 Creation is a property of the kind, stated once, because a per-entry field
-disagrees with itself across entries. **An instance always materialises what
+disagrees with itself across entries. **A layer always materialises what
 it declared itself**, whatever its kind. A legacy `dependents` key still parses and is dropped. A nested entry
-that is a subgraph of the INSTANCE (`skills.json`'s `voices`, as opposed to
+that is a subgraph of the LAYER (`skills.json`'s `voices`, as opposed to
 `beans.json`'s `defs`, which is part of its parent's graph) says so with
 `"subgraph": true`.
 
-### The checkout aggregates — no instance declares another's directory (STRICT)
+### The checkout aggregates — no layer declares another's directory (STRICT)
 
 A platform that named its dependents' directories (so a corpus-wide tool could
 ask it for "every library") would be naming its users, and those entries drift
@@ -408,25 +408,25 @@ from the owners' own ids.
 
 The rule now:
 
-- **The checkout's root instance aggregates.** `folio-assistant.json` `needs`
-  every instance the checkout stages, and declares the checkout-level state
+- **The checkout's root layer aggregates.** `folio-assistant.json` `needs`
+  every layer the checkout stages, and declares the checkout-level state
   it physically holds (`beans`, `todos`, `memory`, `interaction`,
   `issue-marks`, `fsh-guts`, `root-docs`).
-- **Only that instance declares at the checkout's scope.** A
+- **Only that layer declares at the checkout's scope.** A
   `scope: "repository"` entry anywhere else is a MIRROR, and
   `check:instance-graph` refuses it (`repository-mirror`), as it refuses an
-  instance the root does not reach (`unstaged`).
+  layer the root does not reach (`unstaged`).
 - **A corpus-wide question is asked of the checkout, not the platform.**
   `checkoutDirectories` / `checkoutDirectoriesForGraph` in
-  `schemas/kg/harness-config.ts` resolve every staged instance through its OWN
-  chain and union the members — per instance, because one long chain would
+  `schemas/kg/harness-config.ts` resolve every staged layer through its OWN
+  chain and union the members — per layer, because one long chain would
   override sibling ids (the DAK layer's `processes` would replace the
-  harness's). A tool shipped BY an instance asks
-  `corpusDirectoriesForGraph(instance, kind)`: that instance plus everything
+  harness's). A tool shipped BY a layer asks
+  `corpusDirectoriesForGraph(instance, kind)`: that layer plus everything
   stacked on it, never its own dependencies (those are its overlay).
   Known-skills callers say which question they ask: `CorpusScope`
   (`"instance"` | `"checkout"`), and `corpusScopeFor(root)` gives the rule —
-  the platform's own run is corpus-wide, `--instance <x>` is that instance
+  the platform's own run is corpus-wide, `--instance <x>` is that layer
   alone.
 - **Falsifier, kept as a test:** the platform resolved ALONE sees nothing
   above it. A split checkout running against one folio sees that folio and
@@ -438,7 +438,7 @@ The rule now:
 Nesting is allowed only one way: a (Sub)KGraph node within the first
 subdirectory labels the other subdirectories within it, and that structure is
 inherited.
-**A declaration never reaches down a path.** An instance declares a directory;
+**A declaration never reaches down a path.** A layer declares a directory;
 that directory's own contents are described by **a node inside its first
 subdirectory**, which names the sibling subdirectories present there. Depth is
 carried one level at a time, by the level that can see itself.
@@ -454,31 +454,31 @@ The root cannot tell you what is under `docs/`; it can only assert it. A node
 that lives there can be wrong in a way somebody notices, because it sits beside
 the thing it describes.
 
-**And the structure is INHERITED.** A dependent instance gets the nesting the
+**And the structure is INHERITED.** A dependent layer gets the nesting the
 same way it gets the directory — through the overlay, resolved by id, in scan
 order. It does not re-describe a dependency's interior, and it does not have to:
 the describing node came with the directory.
 
-### A from-within entry can be an INSTANCE directory
+### A from-within entry can be a LAYER directory
 
 A kind's `declarationFile` names the node. What an entry in it IS depends on
-one field: **an entry marked `"subgraph": true` is an instance directory**, and
+one field: **an entry marked `"subgraph": true` is a layer directory**, and
 `resolveDirectories` lists it exactly as if `<instance>.json` had declared it.
 It carries `within` (the id of the directory that declared it), and
 `check:layout-norms` treats that pair as the sanctioned shape. An entry without
 the marker (`beans.json`'s `defs`, `docs.json`'s `proposals`, `voices.json`'s
-`vendors`) is a part of one graph and stays out of the instance list.
+`vendors`) is a part of one graph and stays out of the layer list.
 
 `skills/skills.json` is the worked case. It is one node with two lists:
-`topics` (subdirectories that hold skill packages) and `directories` (instance
+`topics` (subdirectories that hold skill packages) and `directories` (layer
 directories inside `skills/`, such as `voices/`, and `lean/` in the science
 layer).
 
 Three rules the resolver holds:
 
 - **Never through a mirror.** A `scope: "repository"` entry points at ANOTHER
-  instance's directory; following its declaration file would resolve that
-  instance's subgraph as one's own. The guard stays for a downstream folio
+  layer's directory; following its declaration file would resolve that
+  layer's subgraph as one's own. The guard stays for a downstream folio
   that still carries a mirror.
 - **A declaration beats a default.** `skills/voices` is also a built-in
   default; a from-within declaration replaces that convention, while an
@@ -502,9 +502,9 @@ processes, library and tests. The same from-within rule, one more use of it:
   title and definition once; its directory is the code (`sdlc/processes/`).
   A ninth code is a ruling, not an edit.
 - **Declared once, inherited as members** — option A one level down. The
-  harness declares a group; each higher instance's same-named
+  harness declares a group; each higher layer's same-named
   `<dir>/<group>/` is a member (core's `skills/library/` of the harness's
-  `library`). A higher instance adds no group of its own; content-type work
+  `library`). A higher layer adds no group of its own; content-type work
   goes in as PACKAGES under `content/`.
 - **Declare only what exists.** A group is declared in the PR that first
   fills it; a declared-but-absent group throws.
@@ -557,7 +557,7 @@ several sessions are editing at once:
 ## Where a subgraph gets its content — `source`
 
 A subgraph declares where it gets its content: mounting a directory, mounting a
-branch, and later perhaps a graph database. The harness instance config can
+branch, and later perhaps a graph database. The harness layer config can
 override it. A "directory subgraph" and a "branch subgraph" are **one thing
 with two sources**, so there is one field and one resolver, never a branch
 concept beside a directory concept. Schema `schemas/kg/subgraph-source.ts`.
@@ -575,12 +575,12 @@ concept beside a directory concept. Schema `schemas/kg/subgraph-source.ts`.
   built-in names only as a fallback (`cache-family-fallbacks.test.ts` keeps
   those in step). A branch no declaration names is a finding
   (`subgraph-source.test.ts`), never a guess at what to fetch.
-- **The instance config overrides it, by id.** `"subgraphSources":
+- **The layer config overrides it, by id.** `"subgraphSources":
   { "<dir-id>": <source> }` inline on the instance's `index.config.json`
   entry ([`index-config`](index-config.md); a legacy `<instance>.config.json`
   is still read).
   `subgraphSources` moves a declared directory's content. Bringing in a whole
-  instance from another repository is the entry's `source.remote`, which is a
+  layer from another repository is the entry's `source.remote`, which is a
   different field. The declaration says what the
   subgraph IS; the config says how THIS instantiation is set up, and where
   content is mounted from is that kind of fact. Matched on `id`, never `path`
@@ -618,7 +618,7 @@ concept beside a directory concept. Schema `schemas/kg/subgraph-source.ts`.
 graph could be mounted from a branch and stays read-only. See
 [`content-context-and-state-graphs`](content-context-and-state-graphs.md).
 
-### Where a NEW instance's state lives — on its own branch, by default
+### Where a NEW layer's state lives — on its own branch, by default
 
 **This subsection owns the rule.** The scaffold skills
 ([`getting-started`](../../conduct/conduct-core/getting-started.md), `folio_init`)
@@ -629,18 +629,18 @@ plan lives, so the scaffold asks the `source` resolver.
 - **The default is a property of the KIND, read once at scaffold time.** A
   graph typology may carry `newInstanceSource: { kind: "branch", keyedBy:
   "tip" }`, beside `perInstance`. `beans`, `todos` and `fsh-guts` carry it
-  (`fsh-guts` so a new instance's first cutover has somewhere to deposit —
+  (`fsh-guts` so a new layer's first cutover has somewhere to deposit —
   see the main half below). It is a storage fact and says nothing about
   `holds`: `fsh-guts` stays `context`. It has no `branch`, because a kind has
   no branch name to give. `folio_init` composes the name and writes a
-  **complete** `source` into the new instance's own `<instance>.json`. After
+  **complete** `source` into the new layer's own `<instance>.json`. After
   that the declaration is the one answer. The resolver never reads
   `newInstanceSource`, so it is not a second place answering where the content
-  lives. It also cannot move an existing instance whose entry declares no
+  lives. It also cannot move an existing layer whose entry declares no
   source.
 - **The branch name is `cat/<instance>/<directory-id>`**, built by
   `instanceStateBranch` in `schemas/kg/subgraph-source.ts`. For example, the
-  `dpi-h-ra` instance's branches are `cat/dpi-h-ra/beans` and
+  `dpi-h-ra` layer's branches are `cat/dpi-h-ra/beans` and
   `cat/dpi-h-ra/todos` (the `cat/<harness>/<name>` convention applied to a
   folio). One name does three jobs:
   - it names the declaration (`<instance>.json`);
@@ -666,15 +666,15 @@ plan lives, so the scaffold asks the `source` resolver.
   So `folio_init` prints a self-contained shell block. Run it once from the
   new repository. It pushes an orphan tip branch holding:
   - a `state-manifest/v1` manifest marked `authoritative: true`, because a
-    new instance has no `main` copy;
+    new layer has no `main` copy;
   - a README;
   - the graph's starting files. For `beans`, those are `beans/beans.json`
     and `beans/defs/`, and the seed must carry them: `beans:claim` reads
     `beans.json` from the branch and refuses to guess where `defs` is.
 
   Then `state:mount` puts each branch at its declared path.
-- **Cutting an EXISTING instance over is two halves, and both have a command.**
-  Run both from the instance's own repository. Every default is the cwd's git
+- **Cutting an EXISTING layer over is two halves, and both have a command.**
+  Run both from the layer's own repository. Every default is the cwd's git
   toplevel, and `--repo-root <dir>` overrides it.
 
   1. **The branch half:** `state:seed --id <id> --authoritative`. The branch
@@ -691,7 +691,7 @@ plan lives, so the scaffold asks the `source` resolver.
      - nothing under the path is uncommitted;
      - `HEAD:<path>` and the branch's `<path>` are the same tree id, so the
        two copies are byte-identical;
-     - the directory's **own** instance declares a `fsh-guts` graph kept at a
+     - the directory's **own** layer declares a `fsh-guts` graph kept at a
        branch tip, and the deposit into it lands and re-reads verified.
 
   **What a cutover removes goes to `fsh-guts` first — the one rule for it.**
@@ -703,7 +703,7 @@ plan lives, so the scaffold asks the `source` resolver.
   overwrites): `retired/cutover-<instance>-<dir>-<tree12>.tar.gz` plus a
   same-basename `.md` declaring `folio-fsh-guts/v1`, `kind:
   cutover-snapshot`, `movedFrom`, `movedOn`, `reason: cutover`, the
-  instance, `sourceCommit`, `tree` and `authoritativeBranch`. It re-reads
+  layer, `sourceCommit`, `tree` and `authoritativeBranch`. It re-reads
   the tip, and only if both blobs are there does it make the removal
   commit. No trashcan declared, a trashcan not on a tip, a branch that is
   not there, or a push that did not land: **refused, `main` untouched**,
@@ -826,20 +826,20 @@ graph, a library index) does NOT mint its own collection node for them. It:
 The helpers are `subgraphContainer` and `memberOf` in `scripts/subgraph-node.ts`,
 and `subgraphPublicationFindings` is the check: `subgraph-node.test.ts` runs it
 over every adopting publisher. **Converting a publisher adds its row there.**
-The declaring instance's document must be published for the `@id` to
+The declaring layer's document must be published for the `@id` to
 dereference. Which documents are published, and where:
-[`instance-publication`](instance-publication.md) §"What each instance
+[`instance-publication`](instance-publication.md) §"What each layer
 publishes".
 
 Do not restate the subgraph's `name` on a container written to
 `<dir>/<id>.json`. A file whose `name` equals its stem is what
-`findDeclarationFile` reads as an INSTANCE declaration, and the site directory
-becomes an instance root that hides the checkout from every resolver.
+`findDeclarationFile` reads as a LAYER declaration, and the site directory
+becomes a layer root that hides the checkout from every resolver.
 
 ### A consumer never spells a declared directory's path (ENFORCED)
 
 Because a subgraph's source can move — from a directory to a branch, and then
-somewhere else, overridable per instance — a literal `"fsh-guts/…"` or
+somewhere else, overridable per layer — a literal `"fsh-guts/…"` or
 `join(root, "beans", "defs")` breaks on the move, or goes vacuous and reads
 nothing. So read the location through its resolver (`directoryForGraph`,
 `fshGutsDirectory`, `beanDefsDir`, `declaredSubgraph`, …). Two ratchets
@@ -847,19 +847,19 @@ enforce this, and neither fails just because a count goes down:
 
 | gate | what it scans | baseline |
 |---|---|---|
-| `check:declared-paths` | an instance's literals into its OWN declared directories | `cat-harness-tools/scripts/declared-path-baseline.json` |
-| `check:foreign-paths` | an instance's literals into ANOTHER instance's directories, across the whole checkout | `cat-harness-tools/scripts/foreign-path-baseline.json` — **empty** |
+| `check:declared-paths` | a layer's literals into its OWN declared directories | `cat-harness-tools/scripts/declared-path-baseline.json` |
+| `check:foreign-paths` | a layer's literals into ANOTHER layer's directories, across the whole checkout | `cat-harness-tools/scripts/foreign-path-baseline.json` — **empty** |
 
 - **Classify a hit by what it READS, not by how it is spelled.** A name counts
-  as foreign only if the scanning instance does not declare the same name. A
-  `docs/` joined onto a STAGED instance's root, or matched inside that
-  instance's own declaration, belongs to that instance even though the name
+  as foreign only if the scanning layer does not declare the same name. A
+  `docs/` joined onto a STAGED layer's root, or matched inside that
+  layer's own declaration, belongs to that layer even though the name
   coincides.
 - **A site that cannot read a declaration says why**, on the line above:
   `// declared-path-literal: <reason>`. The reason is required. A marked site
   is still reported, just not counted. Legitimate cases: the convention
-  fallback for an instance that declares nothing, an ignore file, and a path
-  inside another instance's declaration.
+  fallback for a layer that declares nothing, an ignore file, and a path
+  inside another layer's declaration.
 - **A file that exists today is not a stable path.** The move is the expected
   case, so literals naming an existing file are a one-way baseline: a NEW
   literal naming an existing file fails the gate, and `--update` may drop a
@@ -872,7 +872,7 @@ enforce this, and neither fails just because a count goes down:
 ## Three states, as everywhere else here
 
 - **No declaration** → `readDeclaration` returns `undefined`. An
-  instance not yet migrated is ordinary, and callers fall back to today's
+  layer not yet migrated is ordinary, and callers fall back to today's
   conventions. Not an error.
 - **Present but unreadable** → **throws.** A declaration nobody can parse
   leaves every consumer scanning the wrong directories, which is strictly worse
@@ -908,7 +908,7 @@ its modern `source: { kind: "branch", ... }` spelling in
 
 **A graph on another ref is still a declared directory, mounted at the declared path.**
 Declaring `storage` or a branch `source` does not make it a separate concept
-from a directory. The instance still accesses the graph at its declared path
+from a directory. The layer still accesses the graph at its declared path
 (`beans/`, `todos/`, `test/results/`), whether via a working mount (e.g. worktree
 mounted by `state:mount` at session start) or an in-memory branch store.
 
@@ -950,8 +950,8 @@ They are KG already, in two places, and the README is rendered from both by
 `bun run cat branch:readme` (cat-harness-tools):
 
 - the **declarations** — every `directories[]` entry whose `storage` or branch
-  `source` names the branch, read where each instance declares it. Never a
-  central table of branches: each harness (and each instance) declares its
+  `source` names the branch, read where each layer declares it. Never a
+  central table of branches: each harness (and each layer) declares its
   own;
 - the branch's root **`manifest.json`**, `state-manifest/v1`, whose field set
   is `schemas/kg/state-manifest.ts`: one shape for a tip-keyed branch (seed
@@ -1025,7 +1025,7 @@ The declaration carries three publication fields beside `name`:
 
 | field | meaning |
 |---|---|
-| `stub` | filename stem of every artefact this instance publishes. Defaults to `name`. |
+| `stub` | filename stem of every artefact this layer publishes. Defaults to `name`. |
 | `canonicalUrl` | where those artefacts live — the base every `@id`/`$id` is minted against |
 | `previewUrl` | where CI previews are served, when that differs |
 
@@ -1040,13 +1040,13 @@ so stub, directory and published path are one word.
 - **Every published artefact is named `<stub>.*`** — `<stub>.jsonld`,
   `<stub>.schema.json`. Never a generic `kg.json`. Compute it with
   `artefactStub()`, never by re-deriving it, so two exporters cannot disagree
-  about what this instance is called.
-- **The declaration file is `<name>.json` — named for the instance's `name`,
+  about what this layer is called.
+- **The declaration file is `<name>.json` — named for the layer's `name`,
   NOT its stub.** It is the one file here not computed with `artefactStub()`:
   `instanceDeclarationFilename()` spells it, and `instanceConfigFilename()`
   spells the `<name>.config.json` beside it. `artefactStub()` is
-  `stub ?? name`, so the two coincide for every instance declaring no
-  `stub`. **A coincidence in the data is not the rule**: an instance declaring
+  `stub ?? name`, so the two coincide for every layer declaring no
+  `stub`. **A coincidence in the data is not the rule**: a layer declaring
   a differing `stub` publishes `<stub>.jsonld` beside a `<name>.json`, and
   composing either from the other resolves to nothing.
 - **The renderable site lives at `docs/<stub>/`.** Compute it with
@@ -1054,15 +1054,15 @@ so stub, directory and published path are one word.
 
 Where each `<stub>.jsonld` is served, which base its `@id`s are minted
 against, and what is stripped from it are not naming rules:
-[`instance-publication`](instance-publication.md) §"What each instance
+[`instance-publication`](instance-publication.md) §"What each layer
 publishes — graph, address, schema, and what is stripped".
 
 ### Identity: `repository` and `livesAt`
 
 `name` is what `needs` edges and filenames resolve against, but it is not an
-identity outside the instance: it names no forge or owner, and two owners may
-each publish an instance of the same name. So the declaration also says which repository the
-instance **is**:
+identity outside the layer: it names no forge or owner, and two owners may
+each publish a layer of the same name. So the declaration also says which repository the
+layer **is**:
 
 | field | meaning |
 |---|---|
@@ -1070,21 +1070,21 @@ instance **is**:
 | `livesAt` | `{ repository, path }`: where it sits **today**, when not at the root of `repository` |
 
 It is **planned** rather than current because IRIs are keyed by it and must
-survive a split. Where the instance sits before the split lives in `livesAt`
+survive a split. Where the layer sits before the split lives in `livesAt`
 (for example, a directory of a monorepo). Leaving `livesAt` out asserts that
-the instance already sits at its own repository's root.
+the layer already sits at its own repository's root.
 
 **Never keep an `owner/repo` table by hand.**
 `instanceRepositories(checkoutRoot, folioRoot?)` in
 `schemas/kg/instance-repositories.ts` derives the `owner/repo ↔ name ↔ root`
 map. It reads the declarations in the checkout and in the folio's dependency
-overlay, and it throws when two instances claim one repository.
+overlay, and it throws when two layers claim one repository.
 `instance-repositories.test.ts` is the gate. It checks three things:
-- every instance declares `repository`;
-- every `livesAt.path` is where the instance actually sits;
+- every layer declares `repository`;
+- every `livesAt.path` is where the layer actually sits;
 - every `livesAt` names one host.
 
-**A reference to another instance names its `repository`, never its
+**A reference to another layer names its `repository`, never its
 `name`.** The `instance` field of a voice rule's source, a voice's
 `sources[]`, a `RoleRef`, a `ThemeRef` and an `AssetSource` is typed
 `RepoFullName`, so a bare name does not parse. Every resolver matches the
@@ -1096,13 +1096,13 @@ resolves.
 **The `owner/repo → IRI` map is derived too.** `repositoryNamespaces()` gives
 each repository's vocabulary namespace. One rule, `instanceNamespace`,
 produces it, and the glossary uses the same rule:
-- an instance that declares `iriBase` mints under its own release's major,
+- a layer that declares `iriBase` mints under its own release's major,
   `<iriBase>v<major>/ns#`;
 - one that declares none mints under the platform site, `<stem><stub>/ns#`.
 
 `code-lists/own-namespaces.json` still lists these namespaces, because code
 reads them by code. The gate fails when the list spells one differently from
-what the declaration derives. So moving an instance's IRIs is one edit, to
+what the declaration derives. So moving a layer's IRIs is one edit, to
 its declaration's `iriBase`, and the list follows.
 
 `cat-harness` and the content core declare an `iriBase` on their planned
@@ -1137,7 +1137,7 @@ owns.
 `*.json` only when its `name` field EQUALS its own filename stem, and
 `findInstanceRoot` calls it rather than testing a word agreed in advance. So
 `beans/beans.json`, which shares the `{name, directories}` shape but declares
-`"name": "folio-assistant"` against the stem `beans`, is not an instance root
+`"name": "folio-assistant"` against the stem `beans`, is not a layer root
 — refused by what the file says it is, not by a path exception. Discovery
 still works, because a consumer matches on the file agreeing with itself.
 
@@ -1180,7 +1180,7 @@ it reads beside the marker, and read nothing else.
 ### `docs/<stub>/` — the site is packaged for the split (STRICT)
 
 The stub that names `<stub>.jsonld` also names the directory holding this
-instance's renderable site: `docs/<stub>/`, not `docs/`. Each layer is its own
+layer's renderable site: `docs/<stub>/`, not `docs/`. Each layer is its own
 repository, so under its own stub a split is a directory move rather than a
 file-by-file sift, and two layers can be checked out side by side.
 
@@ -1193,7 +1193,7 @@ the `folio` kind in the harness makes readers that do not load core's
 registration throw `unknown graph typology "folio"`, because `folio` is
 contributed by **core**.
 
-**`siteDirFor` throws rather than defaulting** when an instance declares
+**`siteDirFor` throws rather than defaulting** when a layer declares
 neither `stub` nor `name` — a guessed site root writes the whole site where
 nothing serves it, and "could not determine" is not an answer.
 
@@ -1204,7 +1204,7 @@ clean merge from a branch cut before a move.
 ## The declaration is itself a graph
 
 `toJsonLd()` projects a declaration into the folio namespace: each directory is
-a node with an `@id` and an `@type`. The set of directories an instance scans
+a node with an `@id` and an `@type`. The set of directories a layer scans
 is then queryable by the same machinery as anything else in the knowledge
 graph, rather than being configuration only one module understands.
 
@@ -1219,8 +1219,8 @@ what a directory holds.
 The `skills` graph is where skills live, and that is why they are addressed
 through the declaration rather than by path. An agent asks `skill_list` /
 `skill_fetch` for a skill; it does not open `skills/<something>.md` from
-memory. An instance may site its skills anywhere — this repo's `skills` id
-points at `skills/` — and a downstream instance inherits its dependencies'
+memory. A layer may site its skills anywhere — this repo's `skills` id
+points at `skills/` — and a downstream layer inherits its dependencies'
 skills through the same inheritance rules above. A hardcoded path breaks on
 the first relocation, which is the whole reason overrides match on `id`.
 
@@ -1394,7 +1394,7 @@ the tag is the key. The three reference forms record three different facts:
 
 **A reference may name the harness that owns the module**:
 `folio-assistant-core:schemas/catalogue.ts#CatalogueSchema`. It resolves through
-the instance that declares that name, never through `../`. An escaping path is
+the layer that declares that name, never through `../`. An escaping path is
 still refused, because it resolves into whatever checkout sits next door. This
 is how a harness kind whose node shapes live in core (`catalogue`, `uploads`,
 `external-schema`) says so honestly.
@@ -1472,5 +1472,5 @@ It reports each carrier's count **even when that count is nought**, because a
 gate that silently covers nothing and exits 0 is the most expensive recurring
 defect.
 
-Full scheme, including what an instance's version means and what makes it go
+Full scheme, including what a layer's version means and what makes it go
 up: [`docs/proposals/instance-versioning.md`](../../../docs/proposals/instance-versioning.md).

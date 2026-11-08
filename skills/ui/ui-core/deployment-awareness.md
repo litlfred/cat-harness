@@ -134,7 +134,7 @@ A deployment surface is a **declared architectural fact**, not a
    sparse checkouts, or before deployment. Whether a site renders to a static
    host is a fact declared by whoever configured it.
 2. **Where the declaration lives:**
-   Deployment surfaces and topologies are declared in instance configurations
+   Deployment surfaces and topologies are declared in layer configurations
    (`<instance>.json`, `<name>.config.json`), role graphs, or workflow
    definitions (`scenarios/*.json`, `beans/workflows/`). The agent reads these
    declared facts from the context rather than probing.

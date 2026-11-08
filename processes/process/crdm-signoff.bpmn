@@ -94,7 +94,7 @@ result recorded in the bean before the first edit.</bpmn:documentation>
 
 ONE question for the SET, not one per requirement: a six-phase run can agree many, and asking six times is the same failure as a form that re-asks what it was already told.
 
-The options are DERIVED from the graphs this instance declares in `&lt;name&gt;.json`, read at the time of asking, so an instance that adds a graph gets it in the offer without anybody editing a skill. Never a list typed from memory.</bpmn:documentation>
+The options are DERIVED from the graphs this layer declares in `&lt;name&gt;.json`, read at the time of asking, so a layer that adds a graph gets it in the offer without anybody editing a skill. Never a list typed from memory.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-contribution-offer"/>
       </bpmn:extensionElements>
@@ -122,7 +122,7 @@ The default creates NOTHING. An agent that decides on its own that a requirement
       <bpmn:outgoing>SF_Kg_None</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:serviceTask id="A_RecordKg" name="Run placement, file a bean">
-      <bpmn:documentation>The offer produces a DECISION, not a node. `placement` then decides instance, graph and node kind — it is the step that catches a hardcoded path or a literal naming one folio — and the authoring itself becomes a bean, because work here is a bean before it is a file.
+      <bpmn:documentation>The offer produces a DECISION, not a node. `placement` then decides layer, graph and node kind — it is the step that catches a hardcoded path or a literal naming one folio — and the authoring itself becomes a bean, because work here is a bean before it is a file.
 
 `op="note"` and not `create`, for the reason `A_CreateBeans` above states: the engine has no `create` op — it claims, notes and resolves the instance's OWN bean. The agent mints the authoring bean itself with `beans create`, running the exact-title existence check first, and what this step records is a note that the decision was taken.</bpmn:documentation>
       <bpmn:extensionElements>

@@ -260,7 +260,7 @@ is still on disk, which is the case that local checks cannot see.
 
 ### `kg-qa-manifest` — take the base, regenerate
 
-`**/test/results/**/kg-qa.manifest.json`. One per instance (hosted ones one level deeper), holding only the
+`**/test/results/**/kg-qa.manifest.json`. One per layer (hosted ones one level deeper), holding only the
 auditor's script hash, so any change to `kg-audit.ts` restamps every one at
 once. It holds no attestation.
 
@@ -380,7 +380,7 @@ graph and declared viewer, written whole by `gen-handler-index.ts`
 
 `**/docs/assets/glossary/*.skos.jsonld`: the published SKOS export, written
 whole by `glossary:export` (`glossary-export.ts`, gated by `glossary:check`).
-Every instance's export restamps whenever any declared role, skill or term moves, so
+Every layer's export restamps whenever any declared role, skill or term moves, so
 two PRs that touch unrelated skills still collide here.
 
 **It is not the ledger, and that distinction is the whole safety argument.**
@@ -458,7 +458,7 @@ declared before `docs-pages`, so the first match gives it the right owner.
 `cat-harness/docs/source/process-publication-workflow/every-workflow-in-the-repo.md`
 is the hand-written INPUT for `docs/process/publication-workflow.md`. Even
 when both sides only *added* rows, a union of additions is a property of that
-instance and not of the path. A test pins the pair, and pins that nothing under `content/`
+layer and not of the path. A test pins the pair, and pins that nothing under `content/`
 is claimed at any depth.
 
 ### `health-report` — take the base's measurement

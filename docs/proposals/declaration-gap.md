@@ -4,7 +4,7 @@ kind: proposal
 issue: 1223
 bean: folio-assistant-0uu2
 summary: >-
-  The first half of the owner's 2026-09-23 subgraph ruling, measured. 80 top-level directories across 17 instances; 62 declared; 18 not. Twelve of the 18 hold at least one file no declared directory covers, and one of those twelve (cat-harness/content, 718 files) is already another bean's. Outside it the entire remaining gap is 11 directories and 26 files. Each is classified declare / fold / remove / already-declared / not-mine, with the evidence for the classification. Three separate corrections to an earlier count are recorded, because the way that count went wrong is the same defect the ruling is about.
+  The first half of the owner's 2026-09-23 subgraph ruling, measured. 80 top-level directories across 17 layers; 62 declared; 18 not. Twelve of the 18 hold at least one file no declared directory covers, and one of those twelve (cat-harness/content, 718 files) is already another bean's. Outside it the entire remaining gap is 11 directories and 26 files. Each is classified declare / fold / remove / already-declared / not-mine, with the evidence for the classification. Three separate corrections to an earlier count are recorded, because the way that count went wrong is the same defect the ruling is about.
 ---
 
 # Which top-level directories are not declared subgraphs?
@@ -23,7 +23,7 @@ sub1"* — is a separate question with its own session and is not touched here.
 ## Why an undeclared directory is a defect and not an untidiness
 
 Discovery in this repository reads **declarations**, not the tree.
-`resolveDirectories` walks the `directories` list an instance declares; nothing
+`resolveDirectories` walks the `directories` list a layer declares; nothing
 walks `readdirSync` looking for graphs. So a directory that is not declared is
 not part of the graph however many files sit in it — the `v8gh` property this
 corpus already relies on everywhere else: **an undeclared file is one no
@@ -40,16 +40,16 @@ Three framings of "undeclared" give three different answers, and only the third
 is the defect.
 
 1. **Top-level directories of the repository root.** Wrong: it counts the 16
-   sibling instances as subdirectories of the root instance. They are instances
+   sibling layers as subdirectories of the root layer. They are layers
    in their own right, with their own declarations. This framing reported
    **38 directories holding 13,315 files** and every one of the sixteen was an
    artefact of the framing.
-2. **Top-level directories of each instance, minus that instance's own
+2. **Top-level directories of each layer, minus that layer's own
    `directories` list.** Better, and still wrong, for a reason worth writing
    down: a declaration entry may carry `scope: "repository"`, which resolves
-   against the **repository** root rather than the declaring instance's root.
+   against the **repository** root rather than the declaring layer's root.
    Eight root-level directories are declared exactly this way — by
-   `cat-harness`, not by the root instance — so joining each entry onto its
+   `cat-harness`, not by the root layer — so joining each entry onto its
    declarer's root loses them. This framing reported 20, of which 8 were
    phantom.
 3. **Files covered by no declared directory, wherever declared from.** This is
@@ -58,13 +58,13 @@ is the defect.
 
 Framing 2's error is the same shape as the one `check-declared-dirs.ts` records
 in its own header, where a first measurement joined repo-scoped paths onto the
-instance root and reported ten phantom absences out of 35. It is an easy error
+layer root and reported ten phantom absences out of 35. It is an easy error
 to make twice, which is the argument for `resolveDeclaredPath` being exported
 and named.
 
 ## Measured, 2026-09-23, on `7c4c7fd23`, and re-measured after merging `main`
 
-Instances discovered with `instanceRootsIn`, never by globbing — a path literal
+Layers discovered with `instanceRootsIn`, never by globbing — a path literal
 is what `check:declared-paths` refuses, and one written earlier was silently
 missing six nodes (64 → 70 once resolved properly).
 
@@ -151,7 +151,7 @@ contains exactly one entry, `voices/`, and nothing else. They are therefore not
 the `v8gh` defect: no file is invisible. Whether the ruling nonetheless wants a
 declaration on the parent is a real question, but it is a question about the
 *model*, not about a gap, and it is the one question in this document that five
-instances would answer identically. It is listed separately for that reason.
+layers would answer identically. It is listed separately for that reason.
 
 ## The split
 
@@ -165,7 +165,7 @@ Declaring it now would either give one directory two kinds or pre-empt a
 boundary `scripts/repo-partition.ts` exists to enforce. Left alone.
 
 The science layer's `content/` (1 file, `pipeline/qa-checkers-cost.ts`) is the
-same question one instance along and travels with it.
+same question one layer along and travels with it.
 
 ### declare — 4 directories, 13 files
 
@@ -408,14 +408,14 @@ paths carrying more than one entry:                              15
 ```
 
 **`bun run cat check:declared-dirs` reports `91 declared director(ies) across 17
-instance(s) … 0 finding(s)`.** Seventy-six directories exist. The gate that
+layer(s) … 0 finding(s)`.** Seventy-six directories exist. The gate that
 guards the declaration layer counts fifteen of them twice and calls the result
 clean, because the only question it asks is whether each declared path is on
 disk — and a path declared twice is on disk twice over.
 
 Every one of the fifteen has the same shape: **`cat-harness` declares the
-directory with `scope: "repository"`, and the instance that owns it declares it
-too**, at instance scope.
+directory with `scope: "repository"`, and the layer that owns it declares it
+too**, at layer scope.
 
 | path | cat-harness's id | the owner's id |
 |---|---|---|
@@ -437,7 +437,7 @@ states the resolution rule: *"Overrides match on the entry's `id`, not its
 every consumer then scans a directory that is not there."* That rule is right,
 and it is exactly what makes these eleven bite: **two entries with different ids
 over one path are not one entry overriding another. They are two graphs.** A
-consumer that fans out over instances resolves both and scans the directory
+consumer that fans out over layers resolves both and scans the directory
 twice.
 
 The remaining four — `bootstrap-tools/schemas`, `large-datasets/skills`,
@@ -452,7 +452,7 @@ to them reports a count that already includes them.
 
 **Not fixed here**, because the fix is a decision and not an edit. Deleting
 cat-harness's repository-scoped copy is the obvious move and it is not
-obviously right: those entries are what let the root instance see a sibling's
+obviously right: those entries are what let the root layer see a sibling's
 directories without depending on it, which is the same mechanism that correctly
 declares `beans/`, `memory/` and `issue-marks/`. Whether the duplicate should be
 removed, or the ids reconciled so the override collapses them, or the checker
@@ -509,7 +509,7 @@ attempt and every one was generated-artefact staleness: `gen-schema-docs`,
 and `kg:audit` all derive from the declaration, so adding an entry is never a
 one-file change.
 
-`tools/` is declared by the **root** instance rather than by `cat-harness` with
+`tools/` is declared by the **root** layer rather than by `cat-harness` with
 `scope: "repository"`. Both would work. The root owns its own top-level
 directory, and repository-scoped entries from `cat-harness` are exactly what put
 15 paths under two declarations each.
@@ -526,7 +526,7 @@ root, and this call site expects one:
   schemas → …/cat-harness/schemas; cat-harness-ns → …/cat-harness/ns
 ```
 
-`instanceDirectoryForGraph` enforces one directory per graph typology per instance,
+`instanceDirectoryForGraph` enforces one directory per graph typology per layer,
 and `schemasRoot` in `gen-schema-docs.ts` calls it. `cat-harness/schemas/` is
 already that one. **`code` has no such constraint** — `cat-harness` declares six
 code directories and nothing objects — because no call site resolves "the code
@@ -562,7 +562,7 @@ candidate and gives it a route at the site root.
 
 **`mountable()` never consults `renderable`.** The word appears six times in that
 file and every one is in prose; `mountRoutes` filters only `kind === "docs"` for
-the built instance. So the reasoning the ruling rests on — *these pages are
+the built layer. So the reasoning the ruling rests on — *these pages are
 served, not site-built, so `renderable: false` is right* — is correct about the
 declaration and **not enforced by the pipeline that would publish them**. The
 prose says renderable, the predicate says `index.html`, and `ui/` is where they

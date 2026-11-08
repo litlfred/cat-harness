@@ -50,8 +50,8 @@ There is no role-to-theme mapping — theme choice remains an authoring judgemen
       <bpmn:documentation>Contrast COMPUTED against the real ground, including the worst case a backdrop can present; a non-colour channel wherever colour carries meaning (SC 1.4.1); an accessible name on every region; keyboard and focus order. An automated pass is necessary and not sufficient — axe accepts a non-empty placeholder as an accessible name, and a CSS selector that matches nothing raises no error at all.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="theme-ui-review"/></bpmn:extensionElements>
     </bpmn:task>
-    <bpmn:task id="A_Branding" name="Branding:&#10;does it read as this instance?">
-      <bpmn:documentation>Marks, palettes and art against the instance's own declaration rather than a remembered style. The question a downstream folio makes sharp: would this instance inherit something it did not choose?</bpmn:documentation>
+    <bpmn:task id="A_Branding" name="Branding:&#10;does it read as this layer?">
+      <bpmn:documentation>Marks, palettes and art against the layer's own declaration rather than a remembered style. The question a downstream folio makes sharp: would this layer inherit something it did not choose?</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="theme-ui-review"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="A_Locales" name="Languages: extracted,&#10;rendered, and RTL">

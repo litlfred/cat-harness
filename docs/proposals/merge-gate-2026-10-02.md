@@ -363,7 +363,7 @@ without a reproducible observation cannot be blocking. It is recorded as a
 | `irreversible` | deletes or overwrites a durable artefact without confirmation | `plj1` (a workflow deleted every open PR's preview) |
 | `security` | secret exposure, injection, an escalated workflow permission, untrusted input reaching a shell | an `agent-review.yml`-style job holding API keys on PR code |
 | `correctness` | a concrete input gives a wrong result | none recorded; it must name the input |
-| `contract` | breaks a declared schema, API or cross-instance reference | the `kgQaSidecarPath` `..` escape (work item `7u3g`) |
+| `contract` | breaks a declared schema, API or cross-layer reference | the `kgQaSidecarPath` `..` escape (work item `7u3g`) |
 | `provenance` | a claim in a PR, work item, commit or skill that the evidence does not support | `w4tq` (numeric claims re-run, one wrong) |
 | `scope` | changes outside the work item or issue, or hand-edits a generated directory | |
 | `process` | skips a strict step: merging without the required confirmation, or closing an issue on an agent's own say-so | |

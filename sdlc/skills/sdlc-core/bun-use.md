@@ -116,9 +116,9 @@ distinct roles:
 1. **Top-Level Declarative Coordinator**:
    - The coordinator repository is **purely declarative**: it holds no root `package.json`,
      `tsconfig.json`, `bunfig.toml`, or `bun.lock`.
-   - All instance compositions are declared in `index.config.json` and locked with their
+   - All layer compositions are declared in `index.config.json` and locked with their
      pinned SHAs and tree digests in `index.lock.json`.
-   - Subgraphs and remote instances are mounted from the lock via `bun cat-harness-tools/scripts/mount-from-lock.ts`.
+   - Subgraphs and remote layers are mounted from the lock via `bun cat-harness-tools/scripts/mount-from-lock.ts`.
    - A downstream root's `cat` script is `bun .github/cat.ts`, which mounts from the lock
      (through `.github/mount-from-lock.sh`) when the layers are missing, so `bun run cat <name>`
      works on a fresh clone.

@@ -74,7 +74,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
     </bpmn:exclusiveGateway>
 
     <bpmn:task id="Task_CurateFixed" name="Author the fixed test data set">
-      <bpmn:documentation>Write the curated `records` and optional `citations` with `$schema: &quot;test-data-fixed/1.0.0&quot;` and `kind: &quot;fixed&quot;` into the instance's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema.</bpmn:documentation>
+      <bpmn:documentation>Write the curated `records` and optional `citations` with `$schema: &quot;test-data-fixed/1.0.0&quot;` and `kind: &quot;fixed&quot;` into the layer's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
         <cat-harness.processes:bean op="note"/>
@@ -129,7 +129,7 @@ CONTENT-TYPE SPECIALISATION AS A CALLED SUBPROCESS. How a recipe synthesises tes
     </bpmn:callActivity>
 
     <bpmn:task id="Task_WriteRecipe" name="Write the generated-data recipe">
-      <bpmn:documentation>Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: &quot;test-data-generated/1.0.0&quot;` and `kind: &quot;generated&quot;` in the instance's declared `test-data-generated` directory. Never store materialised records.</bpmn:documentation>
+      <bpmn:documentation>Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: &quot;test-data-generated/1.0.0&quot;` and `kind: &quot;generated&quot;` in the layer's declared `test-data-generated` directory. Never store materialised records.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="test-data-sets"/>
         <cat-harness.processes:bean op="note"/>

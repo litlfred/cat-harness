@@ -13,10 +13,10 @@ clear, and against what.
 
 ## The measurement is over PURE BLACK
 
-> Ink over this scrim laid on **pure black** — the darkest art any instance
+> Ink over this scrim laid on **pure black** — the darkest art any layer
 > could declare, and the binding case.
 
-Arbitrary art sits behind that text. An instance can declare its own art for a
+Arbitrary art sits behind that text. A layer can declare its own art for a
 role, so the art a value was tuned against is **not** the art it will meet.
 A ratio measured over one picture is true of that picture; one measured over
 pure black is true of any.

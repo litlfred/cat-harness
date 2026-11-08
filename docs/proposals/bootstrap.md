@@ -4,13 +4,13 @@ kind: proposal
 movedOn: 2026-09-19
 movedFrom: "docs/folio-assistant/proposals/bootstrap.md"
 summary: >-
-  Design for `bootstrap/` — the graph an agent reads before it knows whether the repository is an instance, what kind, or what for. NOTHING HERE IS BUILT. Arrived on main in docs/ the same day proposals left the rendered site; moved here by the same rule, since a design a folio's readers do not need is not a page. Bean `x3bd`.
+  Design for `bootstrap/` — the graph an agent reads before it knows whether the repository is a layer, what kind, or what for. NOTHING HERE IS BUILT. Arrived on main in docs/ the same day proposals left the rendered site; moved here by the same rule, since a design a folio's readers do not need is not a page. Bean `x3bd`.
 ---
 
 # `bootstrap/` — the graph an agent can read before it knows anything
 
 > **Editorial correction, 2026-09-23.** This proposal was written while the
-> instance declaration was a fixed `harness.json`; it is `<name>.json` since
+> layer declaration was a fixed `harness.json`; it is `<name>.json` since
 > the 2026-09-21 split (`<name>.config.json` is the config beside it). The
 > references below were updated so a reader is not sent to a file that does not
 > exist — the proposal's argument is untouched, and only the filename moved.
@@ -22,7 +22,7 @@ summary: >-
 Every other graph in this repository assumes a reader who already knows what a
 folio is, what a lane is, and which tools are connected. **CatBootstrap assumes
 none of that.** It is the graph an agent loads when it has just been pointed at
-a repository and does not yet know whether that repository is an instance, what
+a repository and does not yet know whether that repository is a layer, what
 kind, or what it is for.
 
 This sets out what bootstrap is, what it deliberately excludes, and the two
@@ -42,7 +42,7 @@ A proposal that cannot say what would change its mind is an opinion wearing a
 heading. Four things would:
 
 - **A real `f-a-sci` declaration.** §5's central claim — that a named upstream
-  instance's own declaration answers the harness type, the knowledge graph and
+  layer's own declaration answers the harness type, the knowledge graph and
   the voice, so nothing else need be asked — is checkable against one file the
   moment `folio-asst-sci` exists. If that declaration turns out not to carry
   what §5 assumes, the intent skill needs a second question and the design
@@ -51,7 +51,7 @@ heading. Four things would:
   writing the two skills turns out to require one — to resolve a dependency, to
   read a remote declaration — then bootstrap is not standalone and the
   boundary is in the wrong place.
-- **The size of the cached subset.** §6 assumes the named instance's
+- **The size of the cached subset.** §6 assumes the named layer's
   declaration is itself the selector for what to replicate. If the honest
   answer is "most of cat-harness", bootstrap is not lean and the cache is a
   vendoring problem rather than a stub.
@@ -67,9 +67,9 @@ heading. Four things would:
 
 **`bootstrap/` is its own knowledge graph, not a directory inside the harness
 one.** It declares itself, it is loadable on its own, and cat-harness is an
-*instance loaded through it* rather than its parent.
+*layer loaded through it* rather than its parent.
 
-> **Sharpened in §7**: it is an **instance**, not merely a standalone graph.
+> **Sharpened in §7**: it is a **layer**, not merely a standalone graph.
 > The wording here is kept as written because everything it says stays true —
 > §7 names the mechanism it was reaching for.
 
@@ -81,11 +81,11 @@ harness (core may import harness; harness may not import core) extends by one
 link: **bootstrap may not import harness.**
 
 It is also the one exception to the stub pattern. `tools/`, `skills/`,
-`library/` and `docs/` subdivide by contributing instance —
-`tools/<stub>/` — so a composed instance adds its own without colliding on a
+`library/` and `docs/` subdivide by contributing layer —
+`tools/<stub>/` — so a composed layer adds its own without colliding on a
 filename. `beans/` and `todos/` do not, because they are never overlaid.
 `bootstrap/` is neither: it is a top-level directory of its own, because it is
-what runs *before* there is an instance to name a stub after.
+what runs *before* there is a layer to name a stub after.
 
 ## 2. `README.md` is the content, and it is brief
 
@@ -118,7 +118,7 @@ has found a gap in the graph.
 
 One process, and it is small: **initialize, or load.**
 
-- The repository is already an instance → *load* its declaration and proceed.
+- The repository is already a layer → *load* its declaration and proceed.
 - It is not → *initialize*, which requires **user input**, and the diagram says
   so with a request-user-input step rather than guessing.
 
@@ -156,7 +156,7 @@ That concession is also the rule `check:declared-paths` now enforces repo-wide:
 permitted and discouraged means **declared and checked**, not forbidden and not
 free.
 
-## 5. Intent is an instance reference, not an enum
+## 5. Intent is a layer reference, not an enum
 
 This is the part that changed late, and the correction is worth keeping.
 
@@ -169,12 +169,12 @@ DAK, smart guideline IG or whatever)"* suggests the intent skill produces a
 > into a folio with the f-a-sci knowledge graph loaded and using milnor as
 > voice.
 
-**The user names an upstream instance, and everything else is read from that
-instance's declaration.** One reference yields the harness type (folio), the
+**The user names an upstream layer, and everything else is read from that
+layer's declaration.** One reference yields the harness type (folio), the
 knowledge graph to load (f-a-sci's), and the voice (milnor). Nobody is asked
 three questions.
 
-So the intent skill's output is **an instance reference**. An enum would be a
+So the intent skill's output is **a layer reference**. An enum would be a
 second answer to "what kind of thing is this repo", free to disagree with the
 upstream declaration it came from, and a fourth place the harness type is
 written down — the drift this repository keeps paying for.
@@ -190,7 +190,7 @@ decoration.
 
 ### The order is load-bearing
 
-**instance reference → read ITS declaration → write this repo's declaration
+**layer reference → read ITS declaration → write this repo's declaration
 from what that says → cache what the declaration needs.**
 
 Not: ask the type, write a declaration, fetch things. Writing a declaration
@@ -202,7 +202,7 @@ would believe it.
 step, *after* installing cat-harness, is to **re-read the active harness's own
 bootstrap next-steps**. So the full order is:
 
-> instance reference → read ITS declaration → write this repo's declaration →
+> layer reference → read ITS declaration → write this repo's declaration →
 > cache what the declaration needs → **re-enter, through the now-active
 > harness**.
 
@@ -220,7 +220,7 @@ bootstrapped against a different harness re-enters through *that* one.
 
 ## 6. The cache is the stub pattern, not a new mechanism
 
-When bootstrap instantiates a repository that is not yet an instance, the
+When bootstrap instantiates a repository that is not yet a layer, the
 upstream library is **replicated under `bootstrap/<instance>/`** as a local
 cache — `bootstrap/cat-harness/`, and under §5 `bootstrap/f-a-sci/` beside it —
 and those directories are **declared in bootstrap's own `<name>.json`**, so
@@ -230,10 +230,10 @@ That is deliberately the same shape as `tools/<stub>/` (shipped 2026-09-19) and
 the planned `skills/`, `library/`, `docs/` layout. A cache needing its own
 lookup path would be a second answer to "where do skills live"; a cache that is
 just another declared directory is not. Naming each cached directory for the
-instance it came from is what makes two upstreams composable rather than
+layer it came from is what makes two upstreams composable rather than
 colliding — which is what the stub pattern is *for*.
 
-## 7. `AGENTS.md` is a declared asset of the bootstrap instance
+## 7. `AGENTS.md` is a declared asset of the bootstrap layer
 
 The owner, 2026-09-19: *"agents.md should itself be an asset as part of
 bootstrap"*, and *"bootstrap should be an instance and contain its own
@@ -244,11 +244,11 @@ directories live in **bootstrap's own `<name>.json`**. Saying *instance*
 rather than *standalone graph* closes the gap, because an instance is a thing
 this repository already knows how to compose, inherit from and override **by
 `id`**. CatBootstrap then stops being a directory the platform must know about
-and becomes the smallest possible instance, with cat-harness composed on top.
+and becomes the smallest possible layer, with cat-harness composed on top.
 
 `AGENTS.md` is the artefact that move is worth making for. It is the first
 file a cold agent reads, and today — measured 2026-09-19 — it is the **only**
-root artefact this instance does not declare: `<name>.json` declares
+root artefact this layer does not declare: `<name>.json` declares
 `directories[]` and `images[]`, and `AGENTS.md` appears in neither.
 
 ### The default is to copy, and the copy is the problem
@@ -303,15 +303,15 @@ carries the falsifier it does. If phase 1 turns out to need *deleting* rather
 than extending, this is a template and not an asset, and the staleness
 argument above goes with it.
 
-### Generation is an instance's business, not a rule here
+### Generation is a layer's business, not a rule here
 
 The owner: *"maybe it is auto-generated based on metadata… it's up to harness
-instance behaviour."*
+layer behaviour."*
 
 That fits without a new mechanism, and the phasing says why. Generating from
 metadata requires metadata, and the declaration does not exist until step 3 of
-§5 has run — so generation is inherently a **phase-2** option. An instance that
-wants it generates from its own declaration at re-entry; an instance that wants
+§5 has run — so generation is inherently a **phase-2** option. A layer that
+wants it generates from its own declaration at re-entry; a layer that wants
 a hand-written file keeps one. What this proposal fixes is that the file is
 **declared**, so a consumer can tell which it is; it deliberately does not fix
 how the bytes are produced.
@@ -339,7 +339,7 @@ the third state this repository applies everywhere else.
 ### What subset is replicated
 
 `f-a-sci`'s knowledge graph is not all of cat-harness, and a bootstrap that
-copies everything stops being lean. Under §5 the named instance's own
+copies everything stops being lean. Under §5 the named layer's own
 declaration is the obvious selector — it already says which directories it has,
 which would mean the subset needs no separate rule.
 
@@ -363,11 +363,11 @@ adjacent work that has shipped and that bootstrap depends on:
 | `check:declared-paths` | enforces §4's "declared and checked" rule corpus-wide |
 
 Still outstanding before bootstrap can be built as described: `resolveSkillDirs`
-in `schemas/harness-config.ts` computes the cross-instance skill overlay and has
+in `schemas/harness-config.ts` computes the cross-layer skill overlay and has
 **no caller**, so a dependency's skills are not reachable today — which is
 precisely what §6's cache assumes works.
 
-**§7 is the part that does not wait on that.** Declaring the bootstrap instance,
+**§7 is the part that does not wait on that.** Declaring the bootstrap layer,
 declaring `AGENTS.md` as its asset with a source ref, and authoring a
 phase-1-valid `bootstrap/AGENTS.md` are all statements about *bootstrap's own*
 declaration. None of them resolves a dependency's skills, so none of them needs

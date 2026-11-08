@@ -135,7 +135,7 @@ hidden.
 ([`deployment-awareness`](../../../skills/ui/ui-core/deployment-awareness.md)), never a
 guess:
 1. **GitHub Pages (static host):** When Pages is configured (e.g. `pagesBaseUrl`
-   is declared in the instance's `index.config.json` entry), the staging workflow deploys to
+   is declared in the layer's `index.config.json` entry), the staging workflow deploys to
    `…/branches/<branch-slug>/`, and Jekyll rewrites `baseurl` so paths mirror
    `docs/`. A page at `docs/concepts/architecture/foo.md` is at
    `…/branches/<slug>/architecture/foo.html`; a skill at

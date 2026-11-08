@@ -80,7 +80,7 @@ that measurement, as `LINK_FLOOR` came from 15 labelled pairs.
 The join must not make the tools layer import core or sci, because that would
 point upward (ruling C1, `check:import-direction`).
 
-**Proposed:** each instance **declares** its LSI unit provider in its
+**Proposed:** each layer **declares** its LSI unit provider in its
 `<instance>.json`, the way sci declares `contentAdapters`:
 
 ```json
@@ -90,7 +90,7 @@ point upward (ruling C1, `check:import-direction`).
 ```
 
 - **cat-harness-tools** gains a generic `nearAcross(text, providers)`. It
-  reads the declarations of the instances in the checkout, builds or loads
+  reads the declarations of the layers in the checkout, builds or loads
   each graph's index, and returns one list per graph. It names no block kind
   and no Lean.
 - **core** declares `blocks`. `lsi-blocks.ts` already exports `blockUnits`.

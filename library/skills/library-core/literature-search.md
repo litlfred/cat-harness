@@ -16,7 +16,7 @@ a file exists.
 
 **It runs on a measurable trigger, not a feeling:** a `origin`, `evidence`,
 `source` or bibliography reference whose target does not resolve to an entry in
-any library the instance declares. The methodology graph is where this bites
+any library the layer declares. The methodology graph is where this bites
 hardest — `methodology-adoption` requires that an adopted methodology be
 "external and named", with "an origin: authors, a publication, a standards
 body" — and a front-matter string nothing can follow satisfies that requirement
@@ -30,7 +30,7 @@ recording; re-deriving that costs the same search twice and reaches the same
 wall.
 
 **2. This repository.** Every declared `library` and `uploads` directory, not
-one of them. An instance may declare several — ask the declaration, do not
+one of them. A layer may declare several — ask the declaration, do not
 assume a path. A file sitting in `uploads/` is **found but not ingested**, which
 is a different finding from not found, and it is the cheapest possible outcome:
 hand it to `library-ingestion` and stop.

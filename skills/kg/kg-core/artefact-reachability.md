@@ -83,7 +83,7 @@ artefact**.
 ## A diagram is reachable when the ENGINE's resolver reaches it
 
 Same discipline, one layer out. The denominator is every `.bpmn` that any
-instance *declares*; the numerator is `processFiles` — the list `workflow_list`
+layer *declares*; the numerator is `processFiles` — the list `workflow_list`
 prints and `workflow_start` resolves against.
 
 `processFiles` keys by **file stem** and keeps the first claimant
@@ -250,7 +250,7 @@ repository.
 
 ## Adding an artefact
 
-- **A new `.dmn`**: it is examined the moment any instance declares the
+- **A new `.dmn`**: it is examined the moment any layer declares the
   directory it sits in. Expect `unevaluable` until every cell is in the subset
   `decision-table.ts` documents, and **widen the evaluator** rather than
   weakening the gate.

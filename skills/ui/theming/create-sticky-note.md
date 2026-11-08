@@ -58,7 +58,7 @@ a clause.
 
 Two mechanical facts:
 
-- A theme whose art the instance does not declare resolves to **palette only**,
+- A theme whose art the layer does not declare resolves to **palette only**,
   not to a broken image — `resolveThemeBackdrop` reports that third state rather
   than serving art that is not there.
 - An incomplete backdrop is refused **wholesale**. Two of three layouts renders
@@ -71,7 +71,7 @@ Two mechanical facts:
 |---|---|---|
 | **`todos/items/`** — the default | somebody has an outstanding item | a `todo/1.0.0` node: `status`, `priority`, `origin`, plus the tags below |
 | **`todos/feedback/`** | it is about a specific block, with the submitter's identity | the content-review feedback workflow the `todo-review` skill reads |
-| **`folio/`** | it belongs on a rendered page | a landing sticky — but a *page's* sticky is a layer's **contribution**, so it is declared in that layer's `<name>.json`, not written here. A landing sticky lives in the `folio/` of **the instance it describes**, never in another instance's, so a mounted instance's sticky arrives with the mount |
+| **`folio/`** | it belongs on a rendered page | a landing sticky — but a *page's* sticky is a layer's **contribution**, so it is declared in that layer's `<name>.json`, not written here. A landing sticky lives in the `folio/` of **the layer it describes**, never in another layer's, so a mounted layer's sticky arrives with the mount |
 | **nowhere** | it was worth showing and not worth keeping | previewed in the conversation and left there |
 
 **`todos/` is not `beans/`.** A todo is a *person's* outstanding item; a work item is the *agent* work

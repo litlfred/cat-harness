@@ -146,7 +146,7 @@ the pointer lives on the task.
 | a Tool satisfies a skill | the Tool (`satisfies`) | the skill (`scripts`, `validators`, `mcpServices`) | several Tools may satisfy one skill, and a script is added without editing the skill |
 | a skill or capability discharges a requirement statement | the skill's front matter or the capability (`satisfies: req:<id>#<key>`) | the statement (`satisfiedBy`) | a requirement is written once; what discharges it arrives later |
 | a skill says how to read a graph typology | the skill's front matter (`graph-typologies:`) | the kind (`skill`) | a kind is registered once; skills that read it come and go |
-| a skill takes and produces a contract | the skill's front matter (`input:`, `output:` — a path into the instance or an https IRI) | a directory named after the skill | the skill can then say its contract is elsewhere, and a contract no skill names is visible as unclaimed |
+| a skill takes and produces a contract | the skill's front matter (`input:`, `output:` — a path into the layer or an https IRI) | a directory named after the skill | the skill can then say its contract is elsewhere, and a contract no skill names is visible as unclaimed |
 | a test checks a skill's contract | the test run (`skill`, with its `cases` checked against the skill's `input:`/`output:`) | the skill | tests come and go; the contract does not |
 
 **Prose counts.** A skill body that says *"the only step of
@@ -203,11 +203,11 @@ than inventing one:
 |---|---|---|
 | `KgRefSchema` (`schemas/kg/carried-note.ts`) | `{kind, id, note?}` | any KG node |
 | `TaskRefSchema` (`schemas/kg/carried-note.ts`) | `{process, task}` | a BPMN task: the pair, never a bare task id |
-| `VoiceRefSchema` (`schemas/content/voices.ts`) | `{instance?, voiceId}` | a voice, possibly in another instance |
+| `VoiceRefSchema` (`schemas/content/voices.ts`) | `{instance?, voiceId}` | a voice, possibly in another layer |
 | `SkillNameSchema` (`schemas/tools/tool-types.ts`) | kebab id | a skill id, where a whole ref is not needed |
 | `module#Export`, `instance:module#Export` (`parseValidatorRef`) | string with a checked grammar | a schema |
 
-A reference that crosses into another instance says which instance. And a
+A reference that crosses into another layer says which layer. And a
 reference is **resolved by a check**, not trusted: the audit that reads the
 field fails on one that points at nothing.
 
@@ -222,7 +222,7 @@ break is a diagram.
 
 | test | what it catches |
 |---|---|
-| name two instances that differ only in a field you called an identifier | the identifier is not one |
+| name two layers that differ only in a field you called an identifier | the identifier is not one |
 | find a fact you would have to update in two places | it is on the wrong entity, or duplicated |
 | find a relation whose cardinality changes under a plausible future | the model states today's data, not the domain |
 | count the facts nothing reads | the part you modelled for its own sake |

@@ -3,7 +3,7 @@ name: docs-generation
 description: >
   How a checkout of this harness generates and publishes its docs site:
   regenerating derived references, composing the docs layers and each
-  instance's site into one Jekyll source, building it with just-the-docs,
+  layer's site into one Jekyll source, building it with just-the-docs,
   the post-build passes, the TypeDoc API reference, the knowledge-graph
   export, and the full-replace publish to gh-pages and its branches/ previews.
 ---
@@ -38,11 +38,11 @@ writes.
 ## Compose one source
 
 `cat-harness-tools/scripts/compose-docs.ts --out ./_docs` lays the checkout
-root's `docs/` over `cat-harness/docs/`, the base. An instance that builds a
+root's `docs/` over `cat-harness/docs/`, the base. A layer that builds a
 site of its own then has its Tool compose that site into the host source at
 `<instance>/`. For example, the FHIR IG layer's `stage-ig-sites.ts
---compose-into ./_docs` stages each IG whose instance records its source.
-Which instances compose is data in their declarations. The result is one site
+--compose-into ./_docs` stages each IG whose layer records its source.
+Which layers compose is data in their declarations. The result is one site
 with one sidebar, one search and one language selector.
 
 ## Build
@@ -52,7 +52,7 @@ with one sidebar, one search and one language selector.
 `.github/pages-jekyll/Gemfile`. Post-build passes then run over `_site`:
 
 - each composing Tool's own pass (for IGs, `build-ig-site.ts --dedupe-ids`);
-- `mount-instance-docs.ts`, which mounts every other instance's rendered
+- `mount-instance-docs.ts`, which mounts every other layer's rendered
   pages under its kind;
 - the inline PDF viewer, `set-html-lang.ts`, `search-split.ts` and
   `minify-site.ts`;
@@ -61,13 +61,13 @@ with one sidebar, one search and one language selector.
 
 ## Export the knowledge graph
 
-`kg-export.ts` writes the instance's graph to `<stub>/<stub>.jsonld`, with a
+`kg-export.ts` writes the layer's graph to `<stub>/<stub>.jsonld`, with a
 `.json` copy so that Pages serves a JSON media type.
 `harness-schema-export.ts` writes its schema, and `kg-viewer.ts` writes the
 viewer. Where each endpoint lives and which media type it carries:
 [`serving-renderings`](serving-renderings.md) and
 [`instance-publication`](../../kg/kg-core/instance-publication.md). The
-instance that owns the site root is `site.landing` in `index.config.json`
+layer that owns the site root is `site.landing` in `index.config.json`
 ([`index-config`](../../kg/kg-core/index-config.md)).
 
 ## Check and publish

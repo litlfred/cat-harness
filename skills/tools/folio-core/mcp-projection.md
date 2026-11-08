@@ -11,7 +11,7 @@ consulted: true
 
 **The harness does not require MCP. It knows how to emit it.** `agentic-harness` runs on a filesystem alone (see
 [`skills-and-tools`](skills-and-tools.md) §"The harness assumes no MCP"), and
-MCP is something an instance *produces* from its Tool nodes when it wants
+MCP is something a layer *produces* from its Tool nodes when it wants
 agents to reach them over a protocol rather than by reading files.
 
 So this is a **bootstrap skill**: it stands a service up. An agent with a CLI
@@ -64,9 +64,9 @@ MCP is not re-wrapped; the projector skips it. A generator that treats every
 arm uniformly will emit a server that proxies itself.
 
 **`invoke.inProcess` is the opposite case, and looks deceptively similar.** It
-is a function in the instance's own code, so the server calls it directly rather
+is a function in the layer's own code, so the server calls it directly rather
 than spawning anything — there is no argv, and asking for one is an error rather
-than a gap in the node. Most of a mature instance's Tools are in-process, and
+than a gap in the node. Most of a mature layer's Tools are in-process, and
 few have a shell equivalent, so a projector that handles `shell` alone finds
 little to project.
 
@@ -94,7 +94,7 @@ Easy to lose in a generator:
 - **Could not determine** — the Tool node will not parse, or its `io.*.schema`
   reference does not resolve. **This is not "omit quietly".** Fail the
   projection loudly: a server that silently drops a tool it could not read is
-  indistinguishable from an instance that never had it.
+  indistinguishable from a layer that never had it.
 
 ## What a projector must not do
 
@@ -124,7 +124,7 @@ Easy to lose in a generator:
 
 MCP servers speak stdio or streamable HTTP. **The harness has no preference and
 should express none**: stdio is what a local agent spawns, HTTP is what a shared
-service exposes, and the choice belongs to the instance deploying it. Record it
+service exposes, and the choice belongs to the layer deploying it. Record it
 in the deployment, not in the Tool node — a Tool that names a transport has
 swallowed a deployment decision the same way a skill that names a forge has
 swallowed a Tool.

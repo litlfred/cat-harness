@@ -29,7 +29,7 @@ the dependency arrow to what includes it.
 ## What is in here
 
 The authoritative list is [`cat-harness.json`](cat-harness.json) — every directory this
-instance declares, and the kind of graph each one holds; a second list here
+layer declares, and the kind of graph each one holds; a second list here
 could disagree with it when a directory moves. Four entries a reader looks for
 by name:
 
@@ -229,6 +229,6 @@ instructions: [installation](docs/start/installation.md).
 
 ---
 
-*`README.md` and [`AGENTS.md`](AGENTS.md) are declared assets of this instance
+*`README.md` and [`AGENTS.md`](AGENTS.md) are declared assets of this layer
 ([`cat-harness.json`](cat-harness.json), roles `instance-readme` and
 `agent-instructions`).*

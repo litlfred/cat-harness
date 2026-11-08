@@ -121,7 +121,7 @@ thrown into it.
 
 ## It is exported, and it is not rendered — and it is not in the KG either
 
-- served as `<base>/fsh-guts.jsonld`, alongside the instance's other
+- served as `<base>/fsh-guts.jsonld`, alongside the layer's other
   renderings, so a consumer can walk it **by name** — built by
   `scripts/fsh-guts-export.ts`, published by `docs-site.yml`, with a
   `.json` alias because Pages has no media type for `.jsonld` and serves it
@@ -136,7 +136,7 @@ thrown into it.
 
 **Those last two are different properties and the second is easy to miss.**
 Keeping the CONTENT out of the render pipeline does not keep the REFERENCE
-out of the graph: an instance's declared directories become nodes in
+out of the graph: a layer's declared directories become nodes in
 `<stub>.jsonld`, so declaring this directory — required, or nothing can find
 it — would put its id, path and description into the published document
 unless it is filtered.
@@ -145,7 +145,7 @@ A consumer may fetch `fsh-guts.jsonld` deliberately. It must never **arrive**
 there by following an edge. Mechanism and the emitters that filter it: [`kg-export`](kg-export.md) §"`fsh-guts` NEVER reaches a published
 graph". Where this sits among everything else the site publishes, and what
 else is never published: [`instance-publication`](instance-publication.md)
-§"What each instance publishes".
+§"What each layer publishes".
 
 A human viewer (an icon under settings, with a node counter and a select
 dialog) is not built; the files are reachable through the repository and the
@@ -189,7 +189,7 @@ it is ingested", and that skill is the one to change if the rule moves.
   stay live on their branch, and the archive is the copy `main` last held.
   The rule and its format are in
   [`directory-conventions`](directory-conventions.md) §"Cutting an EXISTING
-  instance over".
+  layer over".
 - **Secrets, credentials or personal data.** This is not rendered; it is still
   committed, still public in a public repository, and still in the JSON-LD.
   Not-rendered is not private, and treating it as private is the one way this

@@ -1,5 +1,5 @@
 {
-  "_comment": "The graphs inside cat-harness's `archimate` subgraph, declared FROM WITHIN (#980), as `openapi/graph.json` declares its own: the `archimate` entry of `cat-harness.json` names this directory, and this node names what it holds. Each entry is `subgraph: true` — a directory of the INSTANCE (cat-harness), listed by `resolveDirectories` as if `cat-harness.json` had declared it, with `within: \"archimate\"`. Paths are relative to THIS directory.",
+  "_comment": "The graphs inside cat-harness's `archimate` subgraph, declared FROM WITHIN (#980), as `openapi/graph.json` declares its own: the `archimate` entry of `cat-harness.json` names this directory, and this node names what it holds. Each entry is `subgraph: true` — a directory of the LAYER (cat-harness), listed by `resolveDirectories` as if `cat-harness.json` had declared it, with `within: \"archimate\"`. Paths are relative to THIS directory.",
   "name": "archimate",
   "directories": [
     {

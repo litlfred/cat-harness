@@ -43,7 +43,7 @@ For a move of a path that another layer links to:
    ]
    ```
 
-   `from` and `to` are directories relative to the instance root. While the
+   `from` and `to` are directories relative to the layer root. While the
    entry is in force, the link checks resolve a link into `from` at the same
    path under `to`. So the old path keeps working for every layer, and the
    new one works too.

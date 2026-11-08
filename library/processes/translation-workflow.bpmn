@@ -90,7 +90,7 @@ A change to source content also triggers this event for staleness re-evaluation.
       <extensionElements>
         <bootstrap.processes:skill ref="translation-manager"/>
       </extensionElements>
-      <documentation>Before translating: build the locale term base from the layered glossaries, review it, and translate with it. Precedence, within one subject area (the scheme's `subject`): the more authoritative (lower) layer fixes a term's translation; an instance layer only adds. A match in another subject area is a sense check, not a violation. Each layer's glossary is the directory it declares with the `glossary` graph typology. A fixed translation is an authored term with a non-empty, non-fuzzy msgstr in its scheme's catalogue.</documentation>
+      <documentation>Before translating: build the locale term base from the layered glossaries, review it, and translate with it. Precedence, within one subject area (the scheme's `subject`): the more authoritative (lower) layer fixes a term's translation; a layer only adds. A match in another subject area is a sense check, not a violation. Each layer's glossary is the directory it declares with the `glossary` graph typology. A fixed translation is an authored term with a non-empty, non-fuzzy msgstr in its scheme's catalogue.</documentation>
     </serviceTask>
 
     <!-- ── Translate ──────────────────────────────────────────── -->

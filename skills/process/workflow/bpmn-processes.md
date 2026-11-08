@@ -45,8 +45,8 @@ answering the same question, free to disagree with the first.
 It would also put the edge on the wrong side. `satisfies` is owned by the Tool,
 which knows what it implements and is versioned with it; a `tool` ref would be
 owned by the diagram author, who would have to track Tools across every
-instance: Tools are discovered from the `tools/` graphs of several instances,
-so a diagram in one instance would be asserting facts about others.
+layer: Tools are discovered from the `tools/` graphs of several layers,
+so a diagram in one layer would be asserting facts about others.
 
 **The join is not fully populated**, and that is reported rather than gated:
 `activity-skill-has-tool` (`minor`) locates each activity whose skill no Tool
@@ -66,7 +66,7 @@ directory, a two-pass mode) names that diagram in **`subprocesses`**, a list
 of process ids on its Tool node; `check:tools` refuses one no `.bpmn` in the
 checkout has as its stem. The general process stays general and reaches the
 detail by `calledElement` only where it has chosen that Tool. By convention
-the diagram sits in the declaring instance's `processes/tools/` concern
+the diagram sits in the declaring layer's `processes/tools/` concern
 group, beside other tools' procedures rather than among the general
 processes.
 
@@ -75,24 +75,24 @@ processes.
 `processes/processes.json` (`"$schema": "concern-groups/v1"`) names the
 groups — codes of `code-lists/concern-group.json` — and each is
 `processes/<group>/`, a DMN under `processes/<group>/decisions/`. A higher
-instance's same-named `processes/<group>/` is a member of the harness's group
+layer's same-named `processes/<group>/` is a member of the harness's group
 and declares none of its own. `workflowFiles` walks recursively, so grouping
 moves no diagram out of reach; the rules are in
 [`directory-conventions`](../../kg/kg-core/directory-conventions.md) §"Concern
 groups", checked by `check:concern-groups`.
 
-### A process binds only skills its instance can reach (STRICT)
+### A process binds only skills its layer can reach (STRICT)
 
 A process may bind only skills (and, through them, Tools) from **its own
-instance or one it `needs`**, transitively. A `<bootstrap.processes:skill ref>` to a skill that only
-a HIGHER instance holds is a wrong-direction edge, the same as an upward
+layer or one it `needs`**, transitively. A `<bootstrap.processes:skill ref>` to a skill that only
+a HIGHER layer holds is a wrong-direction edge, the same as an upward
 import: the diagram cannot be lifted into its own repository without the layer
 above it.
 
 `bun run cat check:process-bindings` gates it, with the same `allowedFromNeeds`
 direction as `check:import-direction` and `check:reference-direction`.
 **`skill-ref-resolves` does not catch this:** it resolves against
-`knownSkills(root)`, which in a multi-instance checkout is checkout-scoped, so
+`knownSkills(root)`, which in a multi-layer checkout is checkout-scoped, so
 "resolves" means "exists somewhere". `skill-ref-resolves` is existence only,
 and its own summary names this gate as the answer on direction, so there is
 one implementation of "may this process bind this skill", not two free to
@@ -102,7 +102,7 @@ wrong-direction bindings are held in a ratchet baseline.
 When it fires there are two fixes, and choosing between them is a placement
 decision, not a mechanical one:
 
-- **move the process up** to the instance that holds the skill, when the
+- **move the process up** to the layer that holds the skill, when the
   process is about that layer's concern;
 - **move the skill down**, when the skill is generic and only happens to live
   too high.

@@ -149,14 +149,14 @@ The agents defer to `skills/` as the source of truth. **Memory summarises; the
 skill governs. Where the two disagree, the skill wins and the memory entry is
 wrong — fix it.**
 
-## The instance's two declared assets are maintained here too
+## The layer's two declared assets are maintained here too
 
 `README.md` and `AGENTS.md` are **declared assets with a declared purpose**,
 and their upkeep belongs to this skill.
 
 | role | purpose | layer | delivery |
 |---|---|---|---|
-| `instance-readme` | what the instance **is**, for a reader | `context` | read as a file |
+| `instance-readme` | what the layer **is**, for a reader | `context` | read as a file |
 | `agent-instructions` | what a cold agent **does** here, in order | `context` | read as a file |
 | agent memory | durable facts an agent must have without asking | `context` | **injected** |
 
@@ -182,13 +182,13 @@ because its delivery is `file`.
 
 **`AGENTS.md` augments the README; it never restates it.** The README answers
 *what is this*; `AGENTS.md` answers *what do I do, in what order*. A session
-that establishes a durable fact about an instance updates the one whose
+that establishes a durable fact about a layer updates the one whose
 question it answers — and if it answers neither, it is a memory entry.
 
-`bun run cat check:subgraph-coverage` reports any instance missing either
-asset; both are required of every instance, because one with a README and no
+`bun run cat check:subgraph-coverage` reports any layer missing either
+asset; both are required of every layer, because one with a README and no
 `AGENTS.md` is mute to an agent, and the reverse leaves a reader with nothing
-saying what the instance is. `bun run cat check:asset-roles`
+saying what the layer is. `bun run cat check:asset-roles`
 keeps the declaration single: it reports a required role `ASSET_ROLES` does
 not govern, a role a running process would be allowed to write, or an asset
 restating `purpose`, `layer` or `delivery` on itself. That last check reads the

@@ -3,7 +3,7 @@
   "id": "glossary-node-kind-concept",
   "title": "Node kind → SKOS concept (glossary)",
   "status": "active",
-  "description": "How scripts/glossary-export.ts writes a node kind (the schema a file is written against, such as `bean/1.0.0`) as a skos:Concept in the instance's glossary, with the kind's parents as skos:broader. Work item folio-assistant-dkqd (2026-11-04): so \"Work item\" reads as a narrower term of \"Memory record\", which is what `schemas/kg/memory-record.ts` says it is. The label is the kind's declared term, else its id read as words; the definition is its declared summary. The concept's IRI and @type stay in code. Its siblings are glossary-kind-concept (graph kinds) and glossary-harness-concept.",
+  "description": "How scripts/glossary-export.ts writes a node kind (the schema a file is written against, such as `bean/1.0.0`) as a skos:Concept in the layer's glossary, with the kind's parents as skos:broader. Work item folio-assistant-dkqd (2026-11-04): so \"Work item\" reads as a narrower term of \"Memory record\", which is what `schemas/kg/memory-record.ts` says it is. The label is the kind's declared term, else its id read as words; the definition is its declared summary. The concept's IRI and @type stay in code. Its siblings are glossary-kind-concept (graph kinds) and glossary-harness-concept.",
   "group": [
     {
       "source": "bootstrap:NodeKind",

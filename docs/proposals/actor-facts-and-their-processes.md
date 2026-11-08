@@ -12,7 +12,7 @@ summary: >-
 # Actor facts and the processes that must read them
 
 > **Editorial correction, 2026-09-23.** This proposal was written while the
-> instance declaration was a fixed `harness.json`; it is `<name>.json` since
+> layer declaration was a fixed `harness.json`; it is `<name>.json` since
 > the 2026-09-21 split (`<name>.config.json` is the config beside it). The
 > references below were updated so a reader is not sent to a file that does not
 > exist — the proposal's argument is untouched, and only the filename moved.
@@ -223,13 +223,13 @@ a single picture of itself, so there is no view of it in another context.
 
 ## 4. The same-way resolution
 
-One rule, two instances, two checks.
+One rule, two layers, two checks.
 
 **The rule.** A declared actor fact must have a consuming process, and a
 degradation must be able to name an **actor** as its fallback, not only a
 capability.
 
-| instance | the fact | the consumer it needs |
+| layer | the fact | the consumer it needs |
 |---|---|---|
 | signing | an actor's network reach | a two-route signing process, human lane on the unreachable branch |
 | administration | `role-management` on `admin` | `actor-role-administration.bpmn` |

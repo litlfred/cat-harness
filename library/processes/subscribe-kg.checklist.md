@@ -58,7 +58,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 
 - Who: the `Ingestion Engine (agent, runs unattended)` lane (role `ingestion-agent`).
 - Skill: `kg-subscription`.
-- What: The `subscriptions` entry in the subscriber's instance declaration — id, repository, ref, and nothing chosen yet — plus a cached copy of the substrate's declaration at the pin.
+- What: The `subscriptions` entry in the subscriber's layer declaration — id, repository, ref, and nothing chosen yet — plus a cached copy of the substrate's declaration at the pin.
 - Record it: `workflow_complete` with `node: "Task_Record"`.
 - next: → `Task_Review` (Review what the substrate offers)
 
@@ -108,7 +108,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 
 ### Decide — Every chosen harness's needs held here? (`Gateway_NeedsHeld`)
 
-- For each chosen harness, is every instance it `needs` either local to this checkout or itself subscribed?
+- For each chosen harness, is every layer it `needs` either local to this checkout or itself subscribed?
 - Call `workflow_complete` with `node: "Gateway_NeedsHeld"` and `outcome` set to the label that holds:
   - «no — choose again» → `Task_Choose` (Choose subgraphs, the asset policy, harnesses)
   - «yes» → `Gateway_NextPart_Join`

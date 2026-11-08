@@ -96,7 +96,7 @@ prose claim names while `AGENTS.md` itself is a node of no declared graph.
 
 | state | what it means | the case that earns the name |
 |---|---|---|
-| `no-directory` | no instance declares one of this kind | `bean-defs`, declared inside `beans/beans.json`, reached through its parent — and carrying gates |
+| `no-directory` | no layer declares one of this kind | `bean-defs`, declared inside `beans/beans.json`, reached through its parent — and carrying gates |
 | `empty` | a directory exists and holds nothing | a determined empty |
 | `typed-only` | a declared validator TYPES its nodes; nothing judges them | none here |
 | `unaudited` | files, and nothing at all — not even a validator | none here |

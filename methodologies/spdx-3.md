@@ -19,7 +19,7 @@ applies-when: >
   **Describing an artefact that LEAVES this repository so that a party who
   does not run our tooling can check what is in it, what it depends on, under
   which licences, and that it arrived intact** — a release, a signed package, a
-  published instance's dependency set, the licences of what we redistribute.
+  published layer's dependency set, the licences of what we redistribute.
   It answers *what is this, what is it made of, who supplied it, under what
   licence, with what known vulnerabilities*. It does NOT answer what happened
   inside the repository or who answers for it (`prov-o-provenance`), what an
@@ -99,7 +99,7 @@ held text, and none is adopted.
 | `status: unknown` + `searched[]` | `hasDeclaredLicense` → `NoAssertionLicense`, the search log in the relationship's `comment` | exact. The three states survive: SPDX's absent relationship is our absent record |
 | `bun.lock`, `python-deps.ts` | `software_Package` + purl (`packageUrl`) + `dependsOn` | exact for npm. Python is blocked: `requirements*.txt` pin no versions |
 | `kg-to-portal`'s manifest of digests | `software_File` with `verifiedUsing: Hash` inside a `software_Sbom` | exact |
-| a published instance's `needs[]` / FHIR `dependsOn` | `dependsOn` between `software_Package`s | exact, but only GENERATED from one authoritative record (#592) |
+| a published layer's `needs[]` / FHIR `dependsOn` | `dependsOn` between `software_Package`s | exact, but only GENERATED from one authoritative record (#592) |
 | `folio-tool-run/v1`, `attribution.ts` `toolchain` / `inputDigest` | `build_Build` (`buildType`, `configSourceDigest`, `parameter`, `environment`) | close, and it competes with `prov-o-provenance` for "what ran" |
 | a QA or test report about a released package | `ExternalRef` with `externalRefType: qualityAssessmentReport`, *"A reference to a quality assessment for a package"* (`sec-123`) | exact as a POINTER. The report stays ours |
 | `bun audit` advisories | `security_Vulnerability` + `security_Vex*VulnAssessmentRelationship` | exact, and a VEX `not_affected` needs a person's decision |

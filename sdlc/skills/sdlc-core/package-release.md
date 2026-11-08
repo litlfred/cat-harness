@@ -48,7 +48,7 @@ below.
   change, not the change.** A `feat:` commit that removed something a
   consumer uses gives a minor bump and a broken consumer.
 - **From the declared surface**: diff what the package exports (for an
-  instance, the graph `kg-export` walks: graph typologies, skill ids, tool ids,
+  layer, the graph `kg-export` walks: graph typologies, skill ids, tool ids,
   block kinds) between the last tag and `HEAD`. A removal is major; an
   addition is minor; neither is patch.
 
@@ -63,9 +63,9 @@ tagged is **never reused**, even if its release was deleted.
 - **The package must build from the commit being tagged.** Check its
   manifest's file list: every entry must exist. A release of a package that
   cannot be built is worse than no release, because it looks like one.
-- **Only a package declared publishable is released.** For an instance, that
+- **Only a package declared publishable is released.** For a layer, that
   means `publishable: true` in its `<name>.json` (`check:publishable`). An
-  instance that has not declared it is *undecided*, not *no*, and is not
+  layer that has not declared it is *undecided*, not *no*, and is not
   released.
 - **The configuration names only what exists.** A release tool pointed at a
   config file that is missing either fails or falls back to guesses. Neither
@@ -80,11 +80,11 @@ them with `tool_list` rather than relying on this list.
   commit messages: it opens a release PR, and merging that PR creates the tag
   and the release. **In this repository it is declared but not configured**:
   there is no config. Before one is written, the package must build and the
-  instances to release must declare `publishable: true`.
+  layers to release must declare `publishable: true`.
 - **By hand** — `git tag`, a CHANGELOG entry and the host's release form. The
   same four steps and the same rules; slower, and nothing to misconfigure.
 - **`pack-tarball`** (`bun run cat-harness-tools/scripts/pack-tarball.ts`) — packages an
-  instance into an npm `.tgz` tarball using `bun pm pack`, computing size and
+  layer into an npm `.tgz` tarball using `bun pm pack`, computing size and
   SHA-256 digest into a `folio-binary-release/v1` release record. See the
   [`npm-kg-distribution`](../../../skills/kg/kg-core/npm-kg-distribution.md) skill.
 - **`package-release-workflow`** (`gh workflow run release-npm.yml`) — dispatches

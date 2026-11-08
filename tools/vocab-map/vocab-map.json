@@ -20,7 +20,7 @@
           "schema": {
             "$type": "Slug"
           },
-          "description": "The table's id, resolved from this instance's declared `vocab-mapping` directories. An unknown id is an error naming the directories searched, never an empty result.",
+          "description": "The table's id, resolved from this layer's declared `vocab-mapping` directories. An unknown id is an error naming the directories searched, never an empty result.",
           "required": true
         },
         {
@@ -52,7 +52,7 @@
   "$comment": [
     {
       "at": "",
-      "comment": "The Tool node for applying a vocabulary mapping table.\n\nBean `k74z`. The owner, 2026-09-23: *\"need Tools for this type of ETL\nprocedure depending on source / target content type and other metadata\"*;\nruled 2026-10-02: option 1, mapping tables as KG data applied by ONE\nin-process Tool. This is that Tool. The tables are the `vocab-mapping`\ngraph (`vocab-mappings/`); the function is `applyVocabMapping` in\n`schemas/content/vocab-mapping.ts`, and its ConceptMap boundary is\n`schemas/vocab-mapping-fhir.ts`.\n\nIts own module for the reason `sessions.ts` gives: `mcp.ts` holds the tools\nthis instance already serves over MCP, and this one is not served.\n\n@module tools/vocab-map"
+      "comment": "The Tool node for applying a vocabulary mapping table.\n\nBean `k74z`. The owner, 2026-09-23: *\"need Tools for this type of ETL\nprocedure depending on source / target content type and other metadata\"*;\nruled 2026-10-02: option 1, mapping tables as KG data applied by ONE\nin-process Tool. This is that Tool. The tables are the `vocab-mapping`\ngraph (`vocab-mappings/`); the function is `applyVocabMapping` in\n`schemas/content/vocab-mapping.ts`, and its ConceptMap boundary is\n`schemas/vocab-mapping-fhir.ts`.\n\nIts own module for the reason `sessions.ts` gives: `mcp.ts` holds the tools\nthis layer already serves over MCP, and this one is not served.\n\n@module tools/vocab-map"
     }
   ]
 }

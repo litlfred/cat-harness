@@ -53,7 +53,7 @@ Where it churns, in `cat-harness/test/results/`:
 | `tool-runs/` | 3 | 0.6 K | 28 |
 | `block-qa/` | 122 | 3.60 M | — |
 
-There are 14 more instances, each with its own `test/results/`. Together they hold
+There are 14 more layers, each with its own `test/results/`. Together they hold
 about 190 files: `folio-assistant-sci` has 75, `fhir-harness` 28, `smart-base` 22,
 and the rest have 3 to 15 each.
 

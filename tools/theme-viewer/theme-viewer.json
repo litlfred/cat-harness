@@ -3,7 +3,7 @@
   "tool": {
     "id": "theme-viewer",
     "title": "Themes viewer",
-    "description": "Render every theme in the checkout, the platform's and each instance's declared themes, with palette, contrast and art.",
+    "description": "Render every theme in the checkout, the platform's and each layer's declared themes, with palette, contrast and art.",
     "install": {
       "none": true
     },

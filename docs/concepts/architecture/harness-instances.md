@@ -1,11 +1,11 @@
 ---
 layout: default
-title: Harness instances
+title: Harness layers
 parent: Architecture
 nav_order: 6
 ---
 
-# What a harness instance IS — schematics, visualisations, tools
+# What a harness layer IS — schematics, visualisations, tools
 {: .no_toc }
 
 1. TOC
@@ -15,10 +15,10 @@ nav_order: 6
 
 ## The sentence
 
-> **A harness instance adds schematics to a knowledge graph, builds
+> **A harness layer adds schematics to a knowledge graph, builds
 > visualisations for them, and describes the tools to use and manage them.**
 
-Each clause is a different obligation, and an instance that does one without
+Each clause is a different obligation, and a layer that does one without
 the others is incomplete rather than minimal:
 
 | clause | what it obliges | where it is declared |
@@ -27,12 +27,12 @@ the others is incomplete rather than minimal:
 | *builds visualisations for it* | a declared subgraph a reader cannot see is a subgraph nobody checks | the renderer, per subgraph |
 | *describes the tools* | a Tool is a KG node, not a shell string somebody remembers | `tools/` |
 
-**Every time an instance names a directory as a subgraph, it needs a
+**Every time a layer names a directory as a subgraph, it needs a
 visualiser and a documentation entry**, and it is a finding if there is no
 skill and no tool for it. The declaration is cheap to write; the other two
 are what make it real.
 
-## The four directories every instance has
+## The four directories every layer has
 
 | directory | what it holds | who writes it |
 |---|---|---|
@@ -43,23 +43,23 @@ are what make it real.
 
 **`folio/` is not `docs/`.** `docs/` is what a
 reader browses after the work is done; `folio/` is where the work happens —
-publishing, managing the process, authoring and reviewing content. An instance
+publishing, managing the process, authoring and reviewing content. A layer
 with a populated `docs/` and an empty `folio/` has a published record and no
 workshop.
 
 ## The default rendering
 
-A harness instance renders, by default, as one thing with two halves:
+A harness layer renders, by default, as one thing with two halves:
 
 - **LHS navigation + `docs/`** — the documentation pipeline, one themed section
-  per instance in dependency order. Collapsed, a section is information about
-  that instance; opened, it shows that instance's docs navigation and the
-  display subgraphs **that instance declares**. Attribution follows
-  declaration, so a directory renders under the instance that declared it.
+  per layer in dependency order. Collapsed, a section is information about
+  that layer; opened, it shows that layer's docs navigation and the
+  display subgraphs **that layer declares**. Attribution follows
+  declaration, so a directory renders under the layer that declared it.
 - **A folio/Miro-like board** — for accessing, authoring and reviewing content,
   with `beans/` and `todos/` managing the pipeline.
 
-Both sit on the instance's **own theme's ground**: the theme's avatar art is
+Both sit on the layer's **own theme's ground**: the theme's avatar art is
 the background, the way a shared Miro board has one. Arbitrary art sits behind
 the text, so scrim contrast is measured over pure black
 ([Theming](theming.html#contrast-is-measured-over-pure-black)).
@@ -81,7 +81,7 @@ admission test:
 
 > **If it produces something a human looks at, it is not the harness.**
 
-That and "an instance renders by default" both hold because the requirement is
+That and "a layer renders by default" both hold because the requirement is
 a *floor that rises*, not a rule applied uniformly.
 
 | layer | visualiser / workflow visualiser | its own `.json` / `.jsonld` |
@@ -98,8 +98,8 @@ It trades the visualiser for a criterion it cannot fail quietly.
 
 `bootstrap/bootstrap.json` carries a `renderExemption` — `of`, `reason` and
 `owes` — and the render check reads it through `isExemptFrom` rather than
-testing an instance name: a name literal states a rule true only for the
-instance somebody remembered, and a vendored or renamed bootstrap would
+testing a layer name: a name literal states a rule true only for the
+layer somebody remembered, and a vendored or renamed bootstrap would
 silently reacquire the obligation it was excused from.
 
 **`owes` is required by the schema**: an exemption with no substitute is a
@@ -107,7 +107,7 @@ hole, and a list of holes is a silence list. bootstrap's names the two skills th
 a test asserts the files it names exist.
 
 **The guard against spreading is global.** The declaration is local because
-only the instance knows why; `renderExemptionProblems` takes every instance in
+only the layer knows why; `renderExemptionProblems` takes every layer in
 the repository, because "only the bottom layer may claim this" is a fact about
 the stack that a per-instance check cannot see. A second claimant fails
 `check:instance-render`. At most one, not exactly one: a repository that
@@ -151,7 +151,7 @@ first two are expensive to get wrong:
 
 `bootstrap/scenarios/roles.json` declares a role with this id. Its machine is a
 git repository, reached through the git CLI or a forge's API: it is where a
-declaration and its graph are READ from and where a new instance's declaration
+declaration and its graph are READ from and where a new layer's declaration
 is WRITTEN to. Like any role played by a mechanical actor, it is a real role
 whose skills are its **contract** — what it must do, which a test can hold it
 to.

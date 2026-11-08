@@ -94,7 +94,7 @@ fallback). Later entries override earlier for the same msgid.
 
 The graph a machine consumes is translated per locale, not only the rendered
 page: `bun run cat kg:locale` writes it (`kg:locale:bootstrap` for the nested
-instance, `kg:locale:check` in the gate set).
+layer, `kg:locale:check` in the gate set).
 
 Four rules; an implementation breaks the first by default.
 
@@ -255,7 +255,7 @@ Fix each violation in the `.po`, not in the injected output, and re-inject.
 Then include the check's glossary section in the KG QA report, so the reviewer
 who signs off sees it. That section lists violations, exceptions, pending
 uses and other-sense uses. A violation the translator believes is right is not
-fixed by editing the term base in the instance: a term a lower layer fixes is
+fixed by editing the term base in the layer: a term a lower layer fixes is
 changed in that layer, or it goes to the adjudicator.
 
 ### 8. Sign-off
@@ -333,14 +333,14 @@ Before any round trip, every gate passes:
 
 | gate | command |
 |---|---|
-| templates current | `translate-bpmn:check`, and the instance's page and glossary template checks |
+| templates current | `translate-bpmn:check`, and the layer's page and glossary template checks |
 | every catalogue matches its template | `translation:drift:check --instance <root>`, `translation:obsolete:check --instance <root>` |
 | coverage | `translation:status --instance <root>`; a published page has its catalogue: `translation:catalogue:check` |
 | placeholders, tags and URLs preserved | `translation:page-qa --instance <root>` (`translation-terms-preserved`) |
 | officiality agrees | `check:translation-officiality` |
 | the graph per locale | `kg:locale:check` |
 | translated links resolve | `translated-links:check` |
-| supplements compile | the instance's supplement build: 0 SUSHI errors, structural checks pass |
+| supplements compile | the layer's supplement build: 0 SUSHI errors, structural checks pass |
 
 ### The untainted round trip, as run
 
@@ -374,8 +374,8 @@ locales.
 ### Glossary precedence, and sense checks
 
 The term base is layered, in this order: **the normative reference glossaries
-first** (the standards bodies' own term lists the instance declares), **then
-each layer in the order the index config lists it, and the instance's own
+first** (the standards bodies' own term lists the layer declares), **then
+each layer in the order the index config lists it, and the layer's own
 glossary last**. A later layer adds terms; it never overrides a translation an
 earlier one fixed in the same subject area. `translation:glossary:check
 --instance <dir> --locale <locale>` checks a locale against that merge.
@@ -393,25 +393,25 @@ drift, and every drift ruling with its fix), the glossary violations and sense
 checks, and the source errors reported. The lead reads it before merging the
 locale's PR, inside the owner's merge window.
 
-### Harness commands for another instance's catalogues
+### Harness commands for another layer's catalogues
 
-Every command here reads an instance through its own declaration, so one
-composed checkout serves every instance it mounts:
+Every command here reads a layer through its own declaration, so one
+composed checkout serves every layer it mounts:
 
 - **`--instance <dir>`** on `translation:drift:check` (each locale's `.po`
-  against the `.pot` beside it, in the instance's `translation-sources`
-  directory; an instance with no site has its catalogues compared and its
+  against the `.pot` beside it, in the layer's `translation-sources`
+  directory; a layer with no site has its catalogues compared and its
   pages reported unreadable), `translation:obsolete:check` (msgids a
   catalogue carries that its source no longer yields; exits 2 when the
-  instance declares no catalogue directory), `translation:index:check` (the
-  instance's own site; exits 2 when it declares no Jekyll site) and
+  layer declares no catalogue directory), `translation:index:check` (the
+  layer's own site; exits 2 when it declares no Jekyll site) and
   `translation:status` (prints the per-locale table, writes nothing; exits 2
   without a `translation-sources` declaration).
 - **`translation:page-qa`** (`translation-block-qa.ts --catalogues`): every
   `<translations>/<locale>/<rel>.po` with its `.pot` beside it, not already
   measured as a block or page, is measured against its template, with a
   sidecar at `test/results/translation-qa/translations/<rel>.<locale>.translation-qa.json`
-  in the instance's QA tree. `--instance <dir>` sweeps another instance.
+  in the layer's QA tree. `--instance <dir>` sweeps another layer.
 - **`po-inject`** takes its units from `segmentMarkdown` in `pot-extract.ts`,
   the same segmentation the extractor writes the catalogue from, so a wrapped
   paragraph, list item or blockquote is looked up as the one `msgid` it was
@@ -590,9 +590,9 @@ available_locales: ["en", "fr"]
 A glossary term must be translated the same way on every page, and the same
 way in every layer that uses it. The term base is the one place that says how.
 
-**Where the terms come from.** Each instance's glossary is the directory it
+**Where the terms come from.** Each layer's glossary is the directory it
 declares with the `glossary` graph typology in its `<instance>.json` (a
-`*.glossary.json` SKOS scheme per file); an instance without that declaration
+`*.glossary.json` SKOS scheme per file); a layer without that declaration
 has no glossary of its own and inherits its dependencies'. The terms'
 translations today are the per-scheme catalogues
 `translations/<locale>/glossary/<instance>--<scheme>.po` written from those
@@ -605,9 +605,9 @@ or `digital-health-trust`); a term may override its scheme's. A term with no
 subject, on itself or its scheme, binds only within its own scheme.
 
 **Precedence applies within a subject area.** The term base for a locale is
-the glossaries of the instance and every layer it `needs`, merged in layer
+the glossaries of the layer and every layer it `needs`, merged in layer
 order: **within one subject area, the more authoritative (lower) layer fixes a
-term's translation; an instance layer only adds.** An instance may add a term
+term's translation; a layer only adds.** A layer may add a term
 no layer below defines, and may fix its translation. It may not give a term a
 lower layer has fixed, in the same subject area, a second translation; that is
 a violation, reported by `translation:glossary:check`, never an override.
@@ -633,7 +633,7 @@ first, then by an agent:
 - **Keeping the English term.** A `msgstr` that keeps the English term
   verbatim renders it only where the term is part of a code or resource name.
   The same term left in English in prose does not render it.
-- **Where verdicts are kept.** They are stored durably in the instance, in a
+- **Where verdicts are kept.** They are stored durably in the layer, in a
   committed file beside its catalogues. Each is keyed by the term's id and a
   hash of the `msgid`. Sense is a property of the source, so one verdict
   serves every locale and each use is asked about once. A changed `msgid`
@@ -731,7 +731,7 @@ translation_source: index.md          # which page it expresses
 ```
 
 `pipeline/translation-index.ts` walks the site and reads those. A page
-with no `lang` is the instance's **source language** — absent means the
+with no `lang` is the layer's **source language** — absent means the
 default, not unknown.
 
 **Never match a directory name against a list of language subtags.** A
@@ -746,7 +746,7 @@ called `fr/` and it is left alone.
 declaration per locale subtree restates what every page already says and
 grows as O(locales × subtrees). What is translatable is a node's content
 (Markdown, BPMN, …), not its schema: translatability is a property of a
-**format within a content type**. Each instance that owns a content type
+**format within a content type**. Each layer that owns a content type
 declares, under `contentTranslations` in its own `<instance>.json`, which
 formats have an extract/inject pair, and
 `schemas/library/translation-tools.ts` collects them — Markdown, LaTeX, PlantUML,
@@ -836,7 +836,7 @@ reader, whatever locale they chose, which is the bug this section records.
 
 ## Six UN languages
 
-The default `supportedLocales` in the instance's config (its `index.config.json` entry):
+The default `supportedLocales` in the layer's config (its `index.config.json` entry):
 
 | Code | Language | Native |
 |---|---|---|
@@ -861,11 +861,11 @@ The `translations/` directory contains **only** three file types:
 Rendered output lives in `docs/<locale>/`; QA and status are properties of
 the TranslationNode manifest.
 
-**An instance with no `translations` directory of its own is hosted.**
+**A layer with no `translations` directory of its own is hosted.**
 `translationsHomeFor` (`schemas/kg/cat-harness.ts`) puts its templates in the
 extracting harness's `translations/<locale>/<stub>/` —
 `cat-harness/translations/<locale>/bootstrap/processes/*.pot` for bootstrap's
-three diagrams — rather than inside the instance, which holds no translation
+three diagrams — rather than inside the layer, which holds no translation
 machinery. The templates are extracted from the bootstrap the harness has
 pinned; when bootstrap is its own repository they stay here, since a
 template is the harness's work over bootstrap's text, not part of it
@@ -939,11 +939,11 @@ pipeline (IG Publisher) are complementary and independent.
 ## Content-type-specific translation tools
 
 Each content type declares what formats it can translate and what scripts
-handle each format. The declaration belongs to the instance that OWNS the
+handle each format. The declaration belongs to the layer that OWNS the
 content type, under `contentTranslations` in its `<instance>.json`;
-`schemas/library/translation-tools.ts` collects every present instance's profiles and
+`schemas/library/translation-tools.ts` collects every present layer's profiles and
 refuses a content type declared twice. A module or diagram path in a profile
-resolves from the declaring instance, then down its `needs` chain. The
+resolves from the declaring layer, then down its `needs` chain. The
 profiles:
 
 | Content type | Formats | RTL |

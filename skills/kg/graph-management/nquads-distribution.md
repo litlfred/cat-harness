@@ -60,7 +60,7 @@ To prevent browser V8 heap exhaustion on edge devices, datasets are never delive
 | **NQ-4** | **Partition Budget Cap (< 5 MB gzipped / 50k quads)** | Prevents V8 heap exhaustion on mobile and edge devices |
 | **NQ-5** | **Topology Manifest (`subgraph-manifest.json`)** | Informs clients of partition quad counts, item counts, and relative URLs |
 | **NQ-6** | **Pre-compiled Named Queries (`queries.json`)** | Replaces arbitrary runtime queries with audited, injection-proof SPARQL |
-| **NQ-7** | **Served via Instance Declaration (`served: true`)** | `mount-instance-docs.ts` publishes files to `_site/` without manual copy steps |
+| **NQ-7** | **Served via Layer Declaration (`served: true`)** | `mount-instance-docs.ts` publishes files to `_site/` without manual copy steps |
 | **NQ-8** | **Single Source of Truth** | CLI, MCP tools, and web browsers consume the exact same `.nq.gz` files |
 
 ---
@@ -72,7 +72,7 @@ To prevent browser V8 heap exhaustion on edge devices, datasets are never delive
 * **Spine Graph**: `<https://example.org/graph/spine>` $\to$ `catalogue-spine.nq.gz` (communities, collections, handles, titles, copyright gates).
 * **Subgraph Partitions**: `<https://example.org/graph/community/{id}>` $\to$ `community_{id}.nq.gz` (Qualified Dublin Core, descriptors, spatial coverage).
 * **Queries**: `search_by_mesh`, `filter_by_community`, `licensed_bitstreams`.
-* **Declared Served Directory**: `dist/oxigraph/` with `"served": true` in instance configuration.
+* **Declared Served Directory**: `dist/oxigraph/` with `"served": true` in layer configuration.
 
 ### Implementation B: Folio Assistant Beans Work Plan
 * **Compiler**: `cat-harness-tools/scripts/beans-query.ts`

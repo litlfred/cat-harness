@@ -26,13 +26,13 @@ Reviewing GRAPHICAL ASSETS AS THEY ARE INGESTED — accessibility, branding, lan
 - Skill: `theme-ui-review`.
 - What: Contrast COMPUTED against the real ground, including the worst case a backdrop can present; a non-colour channel wherever colour carries meaning (SC 1.4.1); an accessible name on every region; keyboard and focus order.
 - Record it: `workflow_complete` with `node: "A_Accessibility"`.
-- next: → `A_Branding` (Branding: does it read as this instance?)
+- next: → `A_Branding` (Branding: does it read as this layer?)
 
-### 3. Branding: does it read as this instance? (`A_Branding`)
+### 3. Branding: does it read as this layer? (`A_Branding`)
 
 - Who: the `Agent` lane (role `ingestion-agent`).
 - Skill: `theme-ui-review`.
-- What: Marks, palettes and art against the instance's own declaration rather than a remembered style.
+- What: Marks, palettes and art against the layer's own declaration rather than a remembered style.
 - Record it: `workflow_complete` with `node: "A_Branding"`.
 - next: → `A_Locales` (Languages: extracted, rendered, and RTL)
 

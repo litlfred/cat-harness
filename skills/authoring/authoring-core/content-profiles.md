@@ -47,14 +47,14 @@ can say which answer was meant.
 If only rules, it is **a profile plus a subclass**, not an adapter, because a
 new adapter is the expensive answer and usually the wrong one.
 
-**The instance that ships a content adapter declares it; the harness never
-names it.** `contentAdapters` in that instance's `<instance>.json` —
-`contentType`, instance-relative `module`, `className`, and `extends` for the
+**The layer that ships a content adapter declares it; the harness never
+names it.** `contentAdapters` in that layer's `<instance>.json` —
+`contentType`, layer-relative `module`, `className`, and `extends` for the
 type it specialises — is what `src/builtin-adapters.ts` discovers. `extends`
 orders the fallback: the specialisation leads, because falling back *to* a
 superset loses nothing and falling back *from* it loses its tools. The harness
 holds no `../<instance>/adapters/…` path, because such a variable import is
-invisible to static gates and ties the harness to the instance's repository;
+invisible to static gates and ties the harness to the layer's repository;
 `check:import-direction` fails on that shape.
 
 ## What profile enforcement catches that schema validation cannot
@@ -65,7 +65,7 @@ A profile check runs on every validation. It covers a structural gap:
   `theorem` whatever folio it sits in — the type says nothing about whether
   *this* folio may contain one.
 - **The constraint layer cannot read the folio's configuration.** Which profile
-  is active is an instance fact; the schema is a shared artefact. So the check
+  is active is a layer fact; the schema is a shared artefact. So the check
   has to live between them.
 
 Two rules follow:

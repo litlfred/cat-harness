@@ -98,7 +98,7 @@ It matches on **sha256 against every declared library's recorded
   directory** (the IRIS replica's `uploads/<slug>/` holds the PDF beside an
   `intake.json` and an `iris-capture/`). Moving the PDF alone would leave that
   record naming a file that is not there, so whether such a source retires as
-  a file or as a directory is that instance's layout decision. Reported on
+  a file or as a directory is that layer's layout decision. Reported on
   every run with its count; **not** exempted.
 
 It refuses rather than passing when no library records a `source_sha256`. It

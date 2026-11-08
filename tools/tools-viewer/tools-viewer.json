@@ -3,7 +3,7 @@
   "tool": {
     "id": "tools-viewer",
     "title": "Tools viewer",
-    "description": "Render this instance's Tool nodes, and the skills each satisfies, as one page.",
+    "description": "Render this layer's Tool nodes, and the skills each satisfies, as one page.",
     "install": {
       "none": true
     },

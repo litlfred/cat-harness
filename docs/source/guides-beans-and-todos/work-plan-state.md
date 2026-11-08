@@ -22,10 +22,10 @@ and the page computes age when you open it. Age therefore moves without the
 file moving, which is the right way round.
 
 **There is a fuller view, and it is browsable.** Every declared state graph
-gets its own visualiser at the path this instance already uses for that graph —
+gets its own visualiser at the path this layer already uses for that graph —
 `/beans/`, `/todos/`, and one for each of the others. A rendered asset is
-addressed by its instance's **name** with the **declared graph as a path
-segment**; this instance elides its own name because its `docs/` is what the
+addressed by its layer's **name** with the **declared graph as a path
+segment**; this layer elides its own name because its `docs/` is what the
 site serves. The `harness-requirements` skill names that URL as the
 obligation. There is no index above them,
 because `/` is the documentation site's, so each page lists its siblings.

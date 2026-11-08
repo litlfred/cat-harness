@@ -71,8 +71,8 @@
       <bpmn:incoming>Flow_S2</bpmn:incoming>
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
     </bpmn:task>
-    <bpmn:callActivity id="Call_InstanceSites" name="Compose each&#10;instance's site&#10;[its Tool]">
-      <bpmn:documentation>`compose-docs.ts` composes the docs layers into one Jekyll source (`cat-harness/docs/` as the base, the checkout root's `docs/` laid over it); then each instance that builds a site of its own composes it into that source at `&lt;instance&gt;/`, so the result is one site with one sidebar, search and language selector. The step is bound by the Tool, not by a `calledElement`: the step names skill `docs-generation`, each Tool that satisfies it and composes a site lists its own `subprocesses`, and those carry the steps; which instances compose a site is data in their declarations. A composing Tool may name a post-build pass, which `Task_Build` runs after the Jekyll build. With nothing to compose, the source is left as `compose-docs` wrote it, and that is reported.</bpmn:documentation>
+    <bpmn:callActivity id="Call_InstanceSites" name="Compose each&#10;layer's site&#10;[its Tool]">
+      <bpmn:documentation>`compose-docs.ts` composes the docs layers into one Jekyll source (`cat-harness/docs/` as the base, the checkout root's `docs/` laid over it); then each layer that builds a site of its own composes it into that source at `&lt;instance&gt;/`, so the result is one site with one sidebar, search and language selector. The step is bound by the Tool, not by a `calledElement`: the step names skill `docs-generation`, each Tool that satisfies it and composes a site lists its own `subprocesses`, and those carry the steps; which layers compose a site is data in their declarations. A composing Tool may name a post-build pass, which `Task_Build` runs after the Jekyll build. With nothing to compose, the source is left as `compose-docs` wrote it, and that is reported.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="docs-generation"/>
       </bpmn:extensionElements>

@@ -13,7 +13,7 @@
 
   Facts:
 
-    ownDeclaration  the sub-graph carries its own instance declaration, whose
+    ownDeclaration  the sub-graph carries its own layer declaration, whose
                     paths resolve against ITS directory — so the whole graph
                     relocates by moving one folder
     ownNamespace    it mints its own terms, and `ns:check` finds every one of

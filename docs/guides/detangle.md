@@ -104,9 +104,9 @@ one dependency stated 36 times, not 36 problems.
 - **Only `wrong-direction` is classified mechanically**, by the same function
   `repo-partition.ts` uses on the module graph
   (`cat-harness/schemas/layer-direction.ts`). Here a node's layer is its
-  instance, and what it may reach is its declared `needs` plus itself. The
+  layer, and what it may reach is its declared `needs` plus itself. The
   report's `wdir` column counts wrong-direction outbound edges and `undet`
-  counts edges whose source instance declares no `needs` — undetermined, not
+  counts edges whose source layer declares no `needs` — undetermined, not
   clean. `restatement` and `essential` stay `unclassified`: they are the
   adjudication, and `--group` prints each edge's basis so the adjudicator
   starts from it. These counts are reported, not pinned; the pinned

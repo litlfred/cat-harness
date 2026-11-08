@@ -16,7 +16,7 @@ Secure the permissions a coding agent needs to take part in this harness's proce
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `agent-permissions`.
-- What: Which coding-agent Tool is running this session, and which others the instance is configured for (each has its own config files: AGENTS.md is read by many; Claude Code, Gemini CLI, Cursor, Copilot and Codex each add their own).
+- What: Which coding-agent Tool is running this session, and which others the layer is configured for (each has its own config files: AGENTS.md is read by many; Claude Code, Gemini CLI, Cursor, Copilot and Codex each add their own).
 - Record it: `workflow_complete` with `node: "Task_IdentifyTools"`.
 - next: → `Task_ReadGrants` (Compare what the processes need with what is granted)
 
@@ -24,7 +24,7 @@ Secure the permissions a coding agent needs to take part in this harness's proce
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `agent-permissions`.
-- What: The needed set is the agent-permissions skill's list (write generated projections: CI only, never the agent; edit hooks or settings; run the gates; push a feature branch; open a PR), scoped to what this instance's processes actually call.
+- What: The needed set is the agent-permissions skill's list (write generated projections: CI only, never the agent; edit hooks or settings; run the gates; push a feature branch; open a PR), scoped to what this layer's processes actually call.
 - Record it: `workflow_complete` with `node: "Task_ReadGrants"`.
 - next: → `GW_Gap` (Anything needed and not granted?)
 
