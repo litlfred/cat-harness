@@ -411,9 +411,9 @@
         "skos:Concept"
       ],
       "label": "archimate",
-      "comment": "ArchiMate models an instance holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.",
+      "comment": "ArchiMate models a layer holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.",
       "prefLabel": "archimate",
-      "definition": "ArchiMate models an instance holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.",
+      "definition": "ArchiMate models a layer holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.",
       "notation": "cat-harness:graphTypology/archimate",
       "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
@@ -1101,9 +1101,9 @@
         "skos:Concept"
       ],
       "label": "openapi",
-      "comment": "OpenAPI 3 documents an instance holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the instance's docs.",
+      "comment": "OpenAPI 3 documents a layer holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the layer's docs.",
       "prefLabel": "openapi",
-      "definition": "OpenAPI 3 documents an instance holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the instance's docs.",
+      "definition": "OpenAPI 3 documents a layer holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the layer's docs.",
       "notation": "cat-harness:graphTypology/openapi",
       "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
