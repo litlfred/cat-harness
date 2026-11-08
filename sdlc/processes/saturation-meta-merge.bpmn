@@ -206,11 +206,8 @@
         <di:waypoint x="505" y="450"/>
         <di:waypoint x="505" y="570"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
-        <di:waypoint x="565" y="630"/>
-        <di:waypoint x="655" y="630"/>
-        <di:waypoint x="655" y="415"/>
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5"><di:waypoint x="565" y="630"/><di:waypoint x="600" y="630"/><di:waypoint x="600" y="390"/><di:waypoint x="630" y="390"/>
+        </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
         <di:waypoint x="655" y="415"/>
         <di:waypoint x="655" y="470"/>
