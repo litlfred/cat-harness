@@ -205,6 +205,10 @@ echo "<where the author consented>" | bun run /tmp/cht/scripts/instantiate-harne
   --repo . --harness <owner/repo> --consent-by <who> [--plan | --local]
 ```
 
+The setup also writes `.github/cat.ts` and `.github/mount-from-lock.sh` and
+sets the root's `cat` script to `bun .github/cat.ts`, so after the merge a
+fresh clone needs no mount step: the first `bun run cat …` mounts the layers.
+
 `--plan` prints the closure and every step and writes nothing; `--local`
 commits on the branch and pushes nothing. The harness's own adoption steps
 are its checkout scripts `instantiate:<harness>` (files it declares, committed
