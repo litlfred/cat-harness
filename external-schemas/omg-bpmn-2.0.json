@@ -121,6 +121,10 @@
       "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
+      "term": "bpmn:parallelGateway",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "bpmn:participant",
       "operative": "Swimlane participant representing a collaboration role or system boundary."
     },
@@ -139,6 +143,10 @@
     {
       "term": "bpmn:serviceTask",
       "operative": "Automated system task invoked during workflow execution."
+    },
+    {
+      "term": "bpmn:sourceRef",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "bpmn:startEvent",
