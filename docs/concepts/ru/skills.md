@@ -80,14 +80,12 @@ flowchart TD
 
 | Навык | Этап | Назначение |
 |-------|------|------------|
-| [`content-plan`]({{ site.baseurl }}/reference/skills/content-plan.html) | plan | Определение границ, команда, график, управление (governance) |
-| [`content-author`]({{ site.baseurl }}/reference/skills/content-author.html) | author | Создание структурированных артефактов |
 | [`content-validate`]({{ site.baseurl }}/reference/skills/content-validate.html) | validate | Проверка схемы и ограничений |
 | [`content-review`]({{ site.baseurl }}/reference/skills/content-review.html) | review | Официальное рецензирование и утверждение |
 | [`content-test`]({{ site.baseurl }}/reference/skills/content-test.html) | test | Сквозной контроль качества (E2E QA) / успешная сборка («зеленый» билд) |
-| [`content-publish`]({{ site.baseurl }}/reference/skills/content-publish.html) | publish | Рендеринг и развертывание |
 | [`content-feedback`]({{ site.baseurl }}/reference/skills/content-feedback.html) | feedback | Сбор и триаж обратной связи |
-| `content-retire` | retire | Вывод из эксплуатации / архивация |
+
+Планирование, авторская работа, публикация и вывод из эксплуатации — операционные этапы, поэтому их предоставляет слой контента над этим.
 
 ### Документы и нормативные руководства: `folio-document-adapter`
 
