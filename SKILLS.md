@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_260 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_256 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -35,15 +35,11 @@ _260 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`voice-editorial-review`](skills/authoring/authoring-core/voice-editorial-review.md) | Adjudicate a `voice-*` finding — read the flagged passage as a reader of THAT genre would and decide whether the register is wrong, the criterion is out of scope, or the block is a stated exception. |
 | [`voice-overlay-review`](skills/authoring/authoring-core/voice-overlay-review.md) | Review a block against the active voices' rules and record the verdict on its QA sidecar. |
 
-**`skills/authoring/content-lifecycle/`** (9)
+**`skills/authoring/content-lifecycle/`** (5)
 
 | Skill | What it is for |
 |---|---|
-| [`content-author`](skills/authoring/content-lifecycle/content-author.md) | Content Authoring |
 | [`content-feedback`](skills/authoring/content-lifecycle/content-feedback.md) | Content Feedback Collection |
-| [`content-plan`](skills/authoring/content-lifecycle/content-plan.md) | Content Planning |
-| [`content-publish`](skills/authoring/content-lifecycle/content-publish.md) | Content Publication |
-| [`content-retire`](skills/authoring/content-lifecycle/content-retire.md) | Content Retirement |
 | [`content-review`](skills/authoring/content-lifecycle/content-review.md) | Content Review |
 | [`content-test`](skills/authoring/content-lifecycle/content-test.md) | Content Testing |
 | [`content-validate`](skills/authoring/content-lifecycle/content-validate.md) | Content Validation |

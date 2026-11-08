@@ -79,14 +79,12 @@ flowchart TD
 
 | المهارة | المرحلة | الغرض |
 |-------|-------|---------|
-| [`content-plan`]({{ site.baseurl }}/reference/skills/content-plan.html) | plan (تخطيط) | تحديد النطاق، والفريق، والجدول الزمني، والحوكمة |
-| [`content-author`]({{ site.baseurl }}/reference/skills/content-author.html) | author (تأليف) | إنشاء مخرجات مهيكلة |
 | [`content-validate`]({{ site.baseurl }}/reference/skills/content-validate.html) | validate (تحقق) | فحص المخطط + القيود |
 | [`content-review`]({{ site.baseurl }}/reference/skills/content-review.html) | review (مراجعة) | المراجعة والاعتماد الرسمي |
 | [`content-test`]({{ site.baseurl }}/reference/skills/content-test.html) | test (اختبار) | ضمان جودة شامل من البداية للنهاية / بناء ناجح |
-| [`content-publish`]({{ site.baseurl }}/reference/skills/content-publish.html) | publish (نشر) | التصيير والنشر |
 | [`content-feedback`]({{ site.baseurl }}/reference/skills/content-feedback.html) | feedback (ملاحظات) | جمع الملاحظات وتصنيفها وتوجيهها |
-| `content-retire` | retire (تقاعد) | إيقاف الاستخدام / الأرشفة |
+
+التخطيط والتأليف والنشر والتقاعد مراحل تشغيلية، لذلك توفرها طبقة المحتوى التي تعلو هذه الطبقة.
 
 ### المستندات وإرشادات السياسات: `folio-document-adapter`
 
