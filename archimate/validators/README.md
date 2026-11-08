@@ -7,7 +7,7 @@ generated: "scripts/subgraph-readmes.ts of the bootstrap toolset (https://github
 
 # archimate-validators
 
-The validators the archimate subgraph's code provides, one folio-validator/v1 node each naming the graph typology and $schema family it checks — `cat-archimate-config/v1` for the config, and `archimate-model/v1`, the model as `readArchimate` reads it (a derived family: no file carries it).
+The validators the archimate subgraph's code provides, one folio-validator/v1 node each naming the graph typology and $schema family it checks — `cat-archimate-config/v1` for the config, and `archimate-model/v1`, the model as `readArchimate` reads it (a derived family: no file carries it), and `archimate-relationship-rules/v1`, a reference architecture's relationship rules.
 
 Part of [C@T Harness](../../README.md) 0.1.0, declared as `archimate-validators`, holding `validators`.
 
@@ -15,5 +15,6 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `archimate-validators`
 |---|---|---|
 | [`archimate-config.json`](archimate-config.json) | data |  |
 | [`archimate-model.json`](archimate-model.json) | data |  |
+| [`archimate-relationship-rules.json`](archimate-relationship-rules.json) | data |  |
 
 <!-- kg:subgraph:end -->
