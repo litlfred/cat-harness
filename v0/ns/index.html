@@ -419,9 +419,9 @@
         "skos:Concept"
       ],
       "label": "archimate",
-      "comment": "ArchiMate models an instance holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.",
+      "comment": "ArchiMate models a layer holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.",
       "prefLabel": "archimate",
-      "definition": "ArchiMate models an instance holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.",
+      "definition": "ArchiMate models a layer holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.",
       "notation": "cat-harness:graphTypology/archimate",
       "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
@@ -1109,9 +1109,9 @@
         "skos:Concept"
       ],
       "label": "openapi",
-      "comment": "OpenAPI 3 documents an instance holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the instance's docs.",
+      "comment": "OpenAPI 3 documents a layer holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the layer's docs.",
       "prefLabel": "openapi",
-      "definition": "OpenAPI 3 documents an instance holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the instance's docs.",
+      "definition": "OpenAPI 3 documents a layer holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the layer's docs.",
       "notation": "cat-harness:graphTypology/openapi",
       "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
@@ -4444,7 +4444,7 @@
 <li><code>cat-harness:Block</code> Block — One addressable unit of a folio's content — a paragraph, a theorem, a table — typed further by its block kind.</li>
 <li><code>cat-harness:SourceDocument</code> SourceDocument — An external source a library holds — a paper, a report, a dataset — that blocks are ingested from and cite.</li>
 <li><code>cat-harness:WebPage</code> WebPage — A page of a published site, as a node whose sections and assets are its parts.</li>
-<li><code>cat-harness:graphTypology/archimate</code> archimate — ArchiMate models an instance holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.</li>
+<li><code>cat-harness:graphTypology/archimate</code> archimate — ArchiMate models a layer holds, as Archi `.archimate` files (plain XML or Archi's zipped archive), named by `cat-archimate.config.json` (cat-harness's `archimate` subgraph). Every view, element and relationship in a model is a node of its own: a page and an IRI, keyed by Archi's own id, and every view is drawn as SVG from the model's diagram.</li>
 <li><code>cat-harness:graphTypology/attestations</code> attestations — QA attestations — the judgements a QA family carries across runs (pair attestations, voice reviews, agent and human verdicts, bibliography verifications and human reviews), one `qa-attestations/v1` file per subject, mirroring the derived family's tree. Kept on main where deleting derived results cannot reach them; each entry pins the hash it attested, so a stale one is detectable.</li>
 <li><code>cat-harness:graphTypology/auto-docs</code> auto-docs — Derived indexes over the other graphs — one page per auto-doc TYPE crossed with each SUB-GRAPH that type reaches. A sub-graph of `docs`, written by `scripts/gen-auto-docs.ts` and never by hand. Distinct from `docs` itself by the one question that settles the layer: a docs page is re-authored, an index is regenerated.</li>
 <li><code>cat-harness:graphTypology/basic-cdn-site</code> basic-cdn-site — A published static site on a CDN that serves files by path only (GitHub Pages): its routes, the commit it was built from, and its files as archive entries. Built from the renderable graphs its directory names, and deployed by the Tool its storage names.</li>
@@ -4490,7 +4490,7 @@
 <li><code>cat-harness:graphTypology/merge-reviews</code> merge-reviews — The adversarial review verdict on a pull request's head, one file per head sha.</li>
 <li><code>cat-harness:graphTypology/methodology</code> methodology — Judgement methodologies, adopted whole and kept independent — parallel ways to reach a decision, selected by context.</li>
 <li><code>cat-harness:graphTypology/notes</code> notes — A folio's derivation notes, scoping docs and ledgers as declared context, not rendered content.</li>
-<li><code>cat-harness:graphTypology/openapi</code> openapi — OpenAPI 3 documents an instance holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the instance's docs.</li>
+<li><code>cat-harness:graphTypology/openapi</code> openapi — OpenAPI 3 documents a layer holds, each verbatim beside a provenance node naming the repository, path and commit it was ingested from (cat-harness's `openapi` subgraph). Every operation in a document is a node of its own: a page and an IRI under the layer's docs.</li>
 <li><code>cat-harness:graphTypology/pipeline-plugins</code> pipeline-plugins — The generic pipeline slots a harness fills, one node per slot naming the table of implementations; registered for a folio through its dependency tree.</li>
 <li><code>cat-harness:graphTypology/policies</code> policies — W3C ODRL 2.2 policies: which Actor may do which action, scoped by Process, Task and Role constraints. Actions are the folio profile in skills/permissions/permissions.json.</li>
 <li><code>cat-harness:graphTypology/proposals</code> proposals — Proposals for the harness's own features — initial analysis, MVP, options — argued before anything is agreed. A sub-graph of `docs`. When the feature ships, its proposal is MOVED to `requirements` and filed against the `Requirement` schema.</li>
