@@ -39,7 +39,7 @@ How a downstream folio gets the layers it is built on:
 | you want | relation | what arrives |
 |---|---|---|
 | to **build on** a harness: run its scripts, import its schemas, read its skills as your own | **remote mount** (`source.remote` in `index.config.json`) | the harness's declared directories and those of everything it needs, at one pin |
-| to **read** another graph and hold chosen parts of it | **subscription** (`subscriptions`): the [`kg-subscription`](../../library/large-datasets/kg-subscription.md) skill | a snapshot of its declaration, then parts you materialise one at a time through the five gates |
+| to **read** another graph and hold chosen parts of it | **subscription** (`subscriptions`): the [`kg-subscription`](../../../library/skills/large-datasets/kg-subscription.md) skill | a snapshot of its declaration, then parts you materialise one at a time through the five gates |
 | to **know of** a harness and link to it | **association** (`associatedHarnesses`): the [`associate-harness`](associate-harness.md) skill | nothing |
 | to **retrieve or distribute as a package** | **npm distribution** (`kg-retrieve-npm`, `source.npm`): the [`npm-kg-distribution`](npm-kg-distribution.md) skill | an npm `.tgz` tarball (unhydrated source or hydrated view) |
 
@@ -428,6 +428,16 @@ publish build wrote.
   It refuses unless every mount reads `current`, then pushes the overlay.
   `--main` also moves `main`. `--prune <n>` keeps the newest n lock refs,
   `main`, and each `--keep <key>`, for example the lock of every open PR.
+- **Gate:** on an index-mode pull request that changes `index.lock.json`,
+  the job `layers-ref` of the tools layer's `layer-pr-checks.yml` runs
+  `layers:check --changed-from <base>`. It only asks (`git ls-remote`) whether
+  the new lock's ref is at the repository, and fails when it is not. The
+  build and the push stay on the re-pinner's machine, never a runner (owner,
+  2026-11-08). A PR that leaves the lock alone owes nothing.
+- **Shared fallback:** an IG whose origin carries no `refs/cat/layers/*` can
+  name a shared cache in `.github/layers-url` (one URL). The root bootstrap's
+  `mount-from-lock.sh` then sets `CAT_LAYERS_URL` to it. Only layers at the
+  same pin hit; the rest are fetched as before.
 
 **The lock stays the sole authority.** The cache is untrusted. Every byte
 taken from it is checked against the lock: the declaration's and each

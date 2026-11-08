@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_260 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_256 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -35,15 +35,11 @@ _260 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`voice-editorial-review`](skills/authoring/authoring-core/voice-editorial-review.md) | Adjudicate a `voice-*` finding — read the flagged passage as a reader of THAT genre would and decide whether the register is wrong, the criterion is out of scope, or the block is a stated exception. |
 | [`voice-overlay-review`](skills/authoring/authoring-core/voice-overlay-review.md) | Review a block against the active voices' rules and record the verdict on its QA sidecar. |
 
-**`skills/authoring/content-lifecycle/`** (9)
+**`skills/authoring/content-lifecycle/`** (5)
 
 | Skill | What it is for |
 |---|---|
-| [`content-author`](skills/authoring/content-lifecycle/content-author.md) | Content Authoring |
 | [`content-feedback`](skills/authoring/content-lifecycle/content-feedback.md) | Content Feedback Collection |
-| [`content-plan`](skills/authoring/content-lifecycle/content-plan.md) | Content Planning |
-| [`content-publish`](skills/authoring/content-lifecycle/content-publish.md) | Content Publication |
-| [`content-retire`](skills/authoring/content-lifecycle/content-retire.md) | Content Retirement |
 | [`content-review`](skills/authoring/content-lifecycle/content-review.md) | Content Review |
 | [`content-test`](skills/authoring/content-lifecycle/content-test.md) | Content Testing |
 | [`content-validate`](skills/authoring/content-lifecycle/content-validate.md) | Content Validation |
@@ -136,33 +132,6 @@ _260 skills in 19 directories, generated from each skill's front matter. `bun ru
 |---|---|
 | [`kg-navigation`](skills/kg/kg-navigation/kg-navigation.md) | How a cold agent finds and loads the skill that governs its task. |
 
-**`skills/library/large-datasets/`** (5)
-
-| Skill | What it is for |
-|---|---|
-| [`copy-out-materialized`](skills/library/large-datasets/copy-out-materialized.md) | Materialized content is read-only. |
-| [`kg-subscription`](skills/library/large-datasets/kg-subscription.md) | Subscribing a folio or harness to an external knowledge graph — a substrate — and walking its parts from referenced to materialised, one at a time and only through the shared materialisation gates. |
-| [`materialize-on-demand`](skills/library/large-datasets/materialize-on-demand.md) | After bootstrap, a person asks for part of a remote subgraph to be held locally. |
-| [`materialize-remote`](skills/library/large-datasets/materialize-remote.md) | Landing remote content locally — the five gates, the three states, and the two purposes. |
-| [`sample-import`](skills/library/large-datasets/sample-import.md) | Testing an import of a SAMPLE of a remote source into a knowledge graph or other structured store: scope it, let materialize-remote gate it, land it in the library (permanent) or the kept,… |
-
-**`skills/library/library-core/`** (12)
-
-| Skill | What it is for |
-|---|---|
-| [`adopt-methodology-from-source`](skills/library/library-core/adopt-methodology-from-source.md) | The general process for turning a shared paper, book or standard into an adopted methodology: establish origin and licence, ingest the source, find and summarize related work items and issues and… |
-| [`asset-extraction`](skills/library/library-core/asset-extraction.md) | Reading a container — a zip, a PDF, a saved web page — into the knowledge graph. |
-| [`code-lists`](skills/library/library-core/code-lists.md) | Author, extend or consume a code list: a closed set of codes, each with a label, a definition and a source, kept as a node and published as SKOS. |
-| [`content-acquisition`](skills/library/library-core/content-acquisition.md) | Getting a resource INTO the graph in the first place — accepting one offered unprompted, or asking for one and then asking for it to be uploaded. |
-| [`library-ingestion`](skills/library/library-core/library-ingestion.md) | The BASIC ingestion flow every asset takes: an upload is accepted, its metadata goes into the knowledge graph, and the asset lands in `library/<slug>/` if it is materialized. |
-| [`literature-search`](skills/library/library-core/literature-search.md) | Finding the source a node cites but does not hold — memory first, then this repository, then open-access services. |
-| [`term-disagreement`](skills/library/library-core/term-disagreement.md) | When a glossary term the extractor minted and an authorised terminology disagree — the corpus spells a concept differently from the authority, or uses a word the authority does not carry — decide… |
-| [`translation-manager`](skills/library/library-core/translation-manager.md) | Translation lifecycle management for folio content. |
-| [`translation-refresh`](skills/library/library-core/translation-refresh.md) | The translation watcher: a scheduled fresh session that keeps every locale of every instance current after the source moves. |
-| [`upload-naming`](skills/library/library-core/upload-naming.md) | What an ingested file may be CALLED. |
-| [`upload-routes`](skills/library/library-core/upload-routes.md) | How a file actually REACHES `uploads/` — the two mechanisms that write bytes into a declared queue, the persona that performs one of them on somebody's behalf, and what each writer owes that the… |
-| [`uploads-watch`](skills/library/library-core/uploads-watch.md) | Notice what has landed in the acquisition queue, and tell an arrival from a backlog. |
-
 **`skills/process/process-core/`** (7)
 
 | Skill | What it is for |
@@ -249,6 +218,33 @@ _260 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`visualizer-loading`](skills/ui/ui-core/visualizer-loading.md) | The general strategy for a complex visualizer: the generated page carries identity, layout and a pointer, and its bulky or repeated content is fetched from the Knowledge Graph in the browser rather… |
 | [`wireframe-design-review`](skills/ui/ui-core/wireframe-design-review.md) | Design a user interface (a page, a visualiser, a navbar) by the WireGen methodology: a written design intent, at least two mid-fidelity HTML candidates, each with a web AND a mobile layout,… |
 | [`wireframe-viewport-check`](skills/ui/ui-core/wireframe-viewport-check.md) | Render wireframe candidates at a web viewport (1280x800) and a mobile viewport (390x844), and record, per candidate and viewport, a pass or fail entry with a note for each mechanical criterion:… |
+
+**`library/skills/large-datasets/`** (5)
+
+| Skill | What it is for |
+|---|---|
+| [`copy-out-materialized`](library/skills/large-datasets/copy-out-materialized.md) | Materialized content is read-only. |
+| [`kg-subscription`](library/skills/large-datasets/kg-subscription.md) | Subscribing a folio or harness to an external knowledge graph — a substrate — and walking its parts from referenced to materialised, one at a time and only through the shared materialisation gates. |
+| [`materialize-on-demand`](library/skills/large-datasets/materialize-on-demand.md) | After bootstrap, a person asks for part of a remote subgraph to be held locally. |
+| [`materialize-remote`](library/skills/large-datasets/materialize-remote.md) | Landing remote content locally — the five gates, the three states, and the two purposes. |
+| [`sample-import`](library/skills/large-datasets/sample-import.md) | Testing an import of a SAMPLE of a remote source into a knowledge graph or other structured store: scope it, let materialize-remote gate it, land it in the library (permanent) or the kept,… |
+
+**`library/skills/library-core/`** (12)
+
+| Skill | What it is for |
+|---|---|
+| [`adopt-methodology-from-source`](library/skills/library-core/adopt-methodology-from-source.md) | The general process for turning a shared paper, book or standard into an adopted methodology: establish origin and licence, ingest the source, find and summarize related work items and issues and… |
+| [`asset-extraction`](library/skills/library-core/asset-extraction.md) | Reading a container — a zip, a PDF, a saved web page — into the knowledge graph. |
+| [`code-lists`](library/skills/library-core/code-lists.md) | Author, extend or consume a code list: a closed set of codes, each with a label, a definition and a source, kept as a node and published as SKOS. |
+| [`content-acquisition`](library/skills/library-core/content-acquisition.md) | Getting a resource INTO the graph in the first place — accepting one offered unprompted, or asking for one and then asking for it to be uploaded. |
+| [`library-ingestion`](library/skills/library-core/library-ingestion.md) | The BASIC ingestion flow every asset takes: an upload is accepted, its metadata goes into the knowledge graph, and the asset lands in `library/<slug>/` if it is materialized. |
+| [`literature-search`](library/skills/library-core/literature-search.md) | Finding the source a node cites but does not hold — memory first, then this repository, then open-access services. |
+| [`term-disagreement`](library/skills/library-core/term-disagreement.md) | When a glossary term the extractor minted and an authorised terminology disagree — the corpus spells a concept differently from the authority, or uses a word the authority does not carry — decide… |
+| [`translation-manager`](library/skills/library-core/translation-manager.md) | Translation lifecycle management for folio content. |
+| [`translation-refresh`](library/skills/library-core/translation-refresh.md) | The translation watcher: a scheduled fresh session that keeps every locale of every instance current after the source moves. |
+| [`upload-naming`](library/skills/library-core/upload-naming.md) | What an ingested file may be CALLED. |
+| [`upload-routes`](library/skills/library-core/upload-routes.md) | How a file actually REACHES `uploads/` — the two mechanisms that write bytes into a declared queue, the persona that performs one of them on somebody's behalf, and what each writer owes that the… |
+| [`uploads-watch`](library/skills/library-core/uploads-watch.md) | Notice what has landed in the acquisition queue, and tell an arrival from a backlog. |
 
 **`sdlc/skills/crdm/`** (7)
 

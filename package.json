@@ -10,6 +10,8 @@
     "tools/",
     "sdlc/",
     "work-plan/",
+    "library/graph.json",
+    "library/skills/",
     "folio-render/",
     "README.md",
     "LICENSE",

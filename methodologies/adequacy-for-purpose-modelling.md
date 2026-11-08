@@ -110,7 +110,7 @@ itself.
 **Refused: the thesis's own models are not adopted.** The improving-bandit
 results, the pessimism-trap subsidy scheme and the grit model are this author's
 research, not a method for anyone else's, and nothing here depends on them.
-Their figures are described in `library/image-verdicts.json` as readings of
+Their figures are described in `library/corpus/image-verdicts.json` as readings of
 charts, never as findings imported into this corpus.
 
 **Refused: this is not a licence to put empirical claims into formal work.** The

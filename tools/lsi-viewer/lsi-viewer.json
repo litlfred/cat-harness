@@ -2,8 +2,8 @@
   "$schema": "tool-definition/v1",
   "tool": {
     "id": "lsi-viewer",
-    "title": "Latent semantic index viewer",
-    "description": "Render every committed LSI index — dimensions as two poles, narrow-dimension and near-duplicate findings — and which declared prose graphs still need one.",
+    "title": "Indexing evidence viewer",
+    "description": "Render the Indexing evidence page: for each indexing method, the held papers it rests on and the skills, Tools and processes that apply it, and the indexing skills with no evidence yet. Index health is the `lsi-indexes` check of `bun run cat health`.",
     "install": {
       "none": true
     },

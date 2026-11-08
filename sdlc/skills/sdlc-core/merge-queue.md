@@ -77,7 +77,7 @@ find the merge manager first").
 
 To submit, do all of these on YOUR PR:
 
-1. **Owed CI is green on the head.** See §"Admission asks which runs are OWED".
+1. **Owed CI is green on the head, for a release.** See §"Admission asks which runs are OWED". On a non-release merge CI is advisory (owner, card Q-CIB-4 A, 2026-11-08): it is read and reported, and it does not hold the PR ([`merge-to-main`](merge-to-main.md) §"CI gates a release only").
 2. **The PR is ready for review**, not a draft.
 3. **It carries the label `ready-to-merge`.**
 4. **It has a comment `ready: <full head sha>`, signed** with your session link
@@ -314,7 +314,7 @@ rides alone.
 
 ## Admission asks which runs are OWED, never whether anything is red
 
-**A member is admitted on `ownCi == "green"` and `green` means every workflow
+**On a release, a member is admitted on `ownCi == "green"` (on a non-release merge `ownCi` is reported, not required; owner, card Q-CIB-4 A, 2026-11-08), and `green` means every workflow
 owed for the head's event ran and succeeded.** It does not mean "nothing is
 failing". A head can have every expected job name present, no `failure`
 anywhere, and still have runs `in_progress` and suites `completed` with
@@ -508,7 +508,7 @@ The eight checks, each named in a refusal by number and id:
    session link** (the one in its body), naming the head, or with only
    merge-main bot merges after it.
 4. **`labels`** — `ready-to-merge` present, `needs-merge-human` absent.
-5. **`ci`** — every `pull_request` run on the head is `success` or `skipped`,
+5. **`ci`** — **gates a release only** (`--release`, or the `release` label; owner, card Q-CIB-4 A, 2026-11-08). On any other merge the judgement below is made and reported, and the check passes as advisory. The judgement: every `pull_request` run on the head is `success` or `skipped`,
    and every workflow owed for that event ran. A `workflow_dispatch` run
    counts **only** as the stand-in for a `pull_request` run GitHub held for
    approval (`action_required`) on a head that is a merge-main
