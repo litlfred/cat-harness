@@ -30,7 +30,7 @@ Land ONE pull request on `main`, in any repository, as its own step with its own
 
 ### Decide — What does the evidence say? (`GW_Evidence`)
 
-- Computed by decisions/merge-evidence.dmn over ciState, mergeable and review.
+- Computed by decisions/merge-evidence.dmn over ciState, mergeable, review and release.
 - Computed by the DMN table `decisions/merge-evidence.dmn#Decision_MergeEvidence`: call `workflow_complete` with `node: "GW_Evidence"` and the `facts` it reads — the table returns the branch; pass no `outcome`.
   - «ready» → `Task_ReadAuthorisation` (Find the owner's authorisation for THIS merge)
   - «no-ci» → `Task_LocalGates` (No CI: run the repo's own gates locally)

@@ -2,7 +2,7 @@
 
 ## Covers
 
-- Declared visualisers (cat-harness `visualisers`, `renderedBy: state-viewer`, `coversKinds` + `subgraphs: "instance"`): `cat-harness/graph-typologies`, `cat-harness/validators`, `cat-harness/qa-checkers`, `cat-harness/block-kinds`, `cat-harness/content-adapters`, `cat-harness/code-lists`, `cat-harness/pipeline-plugins` and `cat-harness/memory`. Editor checkers moved to `folio-assistant-sci/editor-checkers`, the layer that registers the kind, with its own wireframe there (cat-harness#1150, item 3). Memory's layer page is a variant: its subtitle counts lessons (and archived ones) against other nodes, and its table adds a `label` column.
+- Declared visualisers (cat-harness `visualisers`, `renderedBy: state-viewer`, `coversKinds` + `subgraphs: "instance"`): `cat-harness/graph-typologies`, `cat-harness/validators`, `cat-harness/qa-checkers`, `cat-harness/block-kinds`, `cat-harness/content-adapters`, `cat-harness/code-lists`, `cat-harness/pipeline-plugins` and `cat-harness/memory`. Editor checkers moved to the layer that registers the kind, with its own wireframe there (cat-harness#1150, item 3). Memory's layer page is a variant: its subtitle counts lessons (and archived ones) against other nodes, and its table adds a `label` column.
 - Generator: `cat-harness-tools/scripts/state-visualizer.ts` — a hub page at `<base>/cat-harness/<id>/` listing the layers that hold a directory of the kind, and one page per layer at `<base>/cat-harness/<id>/<instance>/`. All are built at publish.
 - Drawn from the generated `validators/` hub and `validators/<fhir-ig-layer>/` layer page; the other registries use the same template.
 
