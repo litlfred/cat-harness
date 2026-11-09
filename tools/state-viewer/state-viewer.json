@@ -33,6 +33,17 @@
           "arg": {
             "flag": "--site"
           }
+        },
+        {
+          "name": "scope",
+          "schema": {
+            "$type": "Text"
+          },
+          "description": "A scoped site build: the comma-separated instances whose pages this writer writes (the IG and the layer it lands on); every other instance's pages are linked on that layer's own site. Passed by the tools layer's `visualiser-writers.ts` (owner, 2026-11-08, Q-SZ-2 \"B\"). Absent: every instance.",
+          "required": false,
+          "arg": {
+            "flag": "--scope"
+          }
         }
       ],
       "outputs": [
