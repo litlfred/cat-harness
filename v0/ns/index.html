@@ -644,9 +644,9 @@
         "skos:Concept"
       ],
       "label": "catalogue",
-      "comment": "A remote catalogue modelled by reference — communities, collections and items of a corpus the instance does not hold. Every node declares whether its bytes are here (`materialized`), elsewhere (`referenced`) or unestablished (`unknown`), with no default. Distinct from `library`, which is content that IS here.",
+      "comment": "A remote catalogue modelled by reference — communities, collections and items of a corpus the layer does not hold. Every node declares whether its bytes are here (`materialized`), elsewhere (`referenced`) or unestablished (`unknown`), with no default. Distinct from `library`, which is content that IS here.",
       "prefLabel": "catalogue",
-      "definition": "A remote catalogue modelled by reference — communities, collections and items of a corpus the instance does not hold. Every node declares whether its bytes are here (`materialized`), elsewhere (`referenced`) or unestablished (`unknown`), with no default. Distinct from `library`, which is content that IS here.",
+      "definition": "A remote catalogue modelled by reference — communities, collections and items of a corpus the layer does not hold. Every node declares whether its bytes are here (`materialized`), elsewhere (`referenced`) or unestablished (`unknown`), with no default. Distinct from `library`, which is content that IS here.",
       "notation": "cat-harness:graphTypology/catalogue",
       "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
       "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
@@ -4459,7 +4459,7 @@
 <li><code>cat-harness:graphTypology/business-processes</code> business-processes — BPMN that describes work as content (a guideline's business processes), drawn by the processes viewer and never run.</li>
 <li><code>cat-harness:graphTypology/cache</code> cache — CI caches -- one `cache/1.0.0` node per cache a layer declares: key recipe, trust class, location, producer, consumers, save policy, verify and budget. Never the entries; the stored key, size and hit rate come from the daily cache report, so staleness is computed, never claimed.</li>
 <li><code>cat-harness:graphTypology/cat-harness</code> cat-harness — A Subgraph holding a Harness's own parts, such as Skills, Processes and Roles, where one directory holds more than one of them.</li>
-<li><code>cat-harness:graphTypology/catalogue</code> catalogue — A remote catalogue modelled by reference — communities, collections and items of a corpus the instance does not hold. Every node declares whether its bytes are here (`materialized`), elsewhere (`referenced`) or unestablished (`unknown`), with no default. Distinct from `library`, which is content that IS here.</li>
+<li><code>cat-harness:graphTypology/catalogue</code> catalogue — A remote catalogue modelled by reference — communities, collections and items of a corpus the layer does not hold. Every node declares whether its bytes are here (`materialized`), elsewhere (`referenced`) or unestablished (`unknown`), with no default. Distinct from `library`, which is content that IS here.</li>
 <li><code>cat-harness:graphTypology/cdn-site</code> cdn-site — A published site on a CDN that also controls media types, redirects and headers: a `basic-cdn-site` plus those three. No instance declares one yet.</li>
 <li><code>cat-harness:graphTypology/code</code> code — Source code -- the modules, scripts and entry points an instance holds. Declared so that code is scannable at all: an undeclared file is one no checker has a reason to look at. Being declared here says nothing about whether a Tool node claims it, which is a separate question and a separate axis.</li>
 <li><code>cat-harness:graphTypology/code-list</code> code-list — Closed sets of codes — adjudication answers, the namespaces this project mints — one file per list, every code carrying its definition and source, published as SKOS.</li>
