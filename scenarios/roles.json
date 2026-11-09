@@ -832,7 +832,6 @@
         "goal-review",
         "pending-show",
         "idle-backlog",
-        "diff",
         "corpus-grep",
         "process-state",
         "task-authorization",
