@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: actor-role-administration\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.133Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.613Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -156,7 +156,7 @@ msgstr ""
 
 #: processes/process/actor-role-administration.bpmn:164
 #. Diagram element documentation
-msgid "The administrator's call, not the pipeline's: `kg:audit:check` fails on `critical` and `kg:audit:strict` adds `major`, so what holds a change is a policy choice about this instance rather than arithmetic the audit performs."
+msgid "The administrator's call, not the pipeline's: `kg:audit:check` fails on `critical` and `kg:audit:strict` adds `major`, so what holds a change is a policy choice about this layer rather than arithmetic the audit performs."
 msgstr ""
 
 #: processes/process/actor-role-administration.bpmn:109

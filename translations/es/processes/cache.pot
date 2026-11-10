@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cache\n"
-"POT-Creation-Date: 2026-11-06T04:50:36.273Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.645Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -41,7 +41,7 @@ msgstr ""
 
 #: sdlc/processes/cache.bpmn:69
 #. Diagram element documentation
-msgid "Component 1, which everything else needs. RESTORE: `mount-from-lock` replays the lock from `refs/cat/layers/<key>` (key = sha256 of the lock's instances), verifying every layer's tree digest, declaration and asset sha256 against the committed lock — class (a), verified against THIS tree, so a bad entry is only a miss, and a stale `refs/cat/layers/main` still serves every layer that did not move. SAVE: the committer (`layers:publish`, run by `mount:remote` after it changes the lock), with the re-pin train and main as fallbacks. Not wrapped in `cached-step`: its per-layer verify is finer than one hit. Owner role: the layers-ref session (CI speed 13). `cache` node: `layers`. It reports one line in `cached-step`'s format — `cached-step <step>: hit|warm|miss (<trust>) — <why>. Key <key>.` — to the job summary, which the daily hit-rate report counts."
+msgid "Component 1, which everything else needs. RESTORE: `mount-from-lock` replays the lock from `refs/cat/layers/<key>` (key = sha256 of the lock's layers), verifying every layer's tree digest, declaration and asset sha256 against the committed lock — class (a), verified against THIS tree, so a bad entry is only a miss, and a stale `refs/cat/layers/main` still serves every layer that did not move. SAVE: the committer (`layers:publish`, run by `mount:remote` after it changes the lock), with the re-pin train and main as fallbacks. Not wrapped in `cached-step`: its per-layer verify is finer than one hit. Owner role: the layers-ref session (CI speed 13). `cache` node: `layers`. It reports one line in `cached-step`'s format — `cached-step <step>: hit|warm|miss (<trust>) — <why>. Key <key>.` — to the job summary, which the daily hit-rate report counts."
 msgstr ""
 
 #: sdlc/processes/cache.bpmn:85
