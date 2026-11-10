@@ -6,7 +6,7 @@ generated: cat-harness-tools/scripts/gen-skill-commands.ts
 
 # /exposition-swarm-drain
 
-Run the `exposition-swarm-drain` skill. Read [`skills/authoring/authoring-core/exposition-swarm-drain.md`](../../skills/authoring/authoring-core/exposition-swarm-drain.md) and follow it.
+Run the `exposition-swarm-drain` skill. Read [`editorial/skills/editorial-audits/exposition-swarm-drain.md`](../../editorial/skills/editorial-audits/exposition-swarm-drain.md) and follow it.
 
 This command is a pointer, generated from that skill's `user_invocable: true`; the
 instructions live in the skill and nowhere else. The same skill is also served as the

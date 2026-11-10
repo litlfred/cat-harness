@@ -8,29 +8,29 @@
   "dcterms:description": "Provenance moved out of the narrative of voice-authoring-guidance.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "skills/authoring/authoring-core/voice-authoring-guidance.md",
+      "@id": "editorial/skills/editorial-audits/voice-authoring-guidance.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "skills/authoring/authoring-core/voice-authoring-guidance.md#provenance-1"
+          "@id": "editorial/skills/editorial-audits/voice-authoring-guidance.md#provenance-1"
         },
         {
-          "@id": "skills/authoring/authoring-core/voice-authoring-guidance.md#provenance-2"
+          "@id": "editorial/skills/editorial-audits/voice-authoring-guidance.md#provenance-2"
         },
         {
-          "@id": "skills/authoring/authoring-core/voice-authoring-guidance.md#provenance-3"
+          "@id": "editorial/skills/editorial-audits/voice-authoring-guidance.md#provenance-3"
         }
       ]
     },
     {
-      "@id": "skills/authoring/authoring-core/voice-authoring-guidance.md#provenance-1",
+      "@id": "editorial/skills/editorial-audits/voice-authoring-guidance.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Read the voices before the first sentence, not after the first review",
       "prov:value": "The active set is in the instance's config, its `index.config.json` entry\n(inline; a legacy `<name>.config.json` only until `index-config:migrate --inline`):\n\n```json\n{ \"voices\": { \"active\": [\"milnor\"] } }\n```"
     },
     {
-      "@id": "skills/authoring/authoring-core/voice-authoring-guidance.md#provenance-2",
+      "@id": "editorial/skills/editorial-audits/voice-authoring-guidance.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "Read the voices before the first sentence, not after the first review",
@@ -40,7 +40,7 @@
       ]
     },
     {
-      "@id": "skills/authoring/authoring-core/voice-authoring-guidance.md#provenance-3",
+      "@id": "editorial/skills/editorial-audits/voice-authoring-guidance.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "pr",
       "cat-harness:section": "The rules most often broken by drafting on instinct",

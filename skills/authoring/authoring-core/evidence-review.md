@@ -53,7 +53,7 @@ a block: a verdict with no expiry cannot be told from an abandoned one.
 
 ## The fencing analysis — which rules are the platform's, and which are not
 
-Run through [`domain-fencing`](../../kg/graph-management/domain-fencing.md)'s three
+Run through [`domain-fencing`](../../../kg-ops/skills/kg-ops/domain-fencing.md)'s three
 questions, in order, first-to-answer wins:
 
 | candidate rule | Q1 rationale survives translation? | Q2 domain in mechanism or vocabulary? | Q3 needs the domain installed? | verdict |
@@ -87,5 +87,5 @@ shipped a default answer to either would be asserting on their behalf.
 - `voice-who-guideline-development` in the IRIS replica's style guide — how a recommendation
   is **worded**: the language of normative statements, not the process that
   produces them, which is this skill.
-- [`domain-fencing`](../../kg/graph-management/domain-fencing.md) — the three
+- [`domain-fencing`](../../../kg-ops/skills/kg-ops/domain-fencing.md) — the three
   questions, and why a fenced rule is correctly located rather than missing.

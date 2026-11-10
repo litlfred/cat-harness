@@ -12,6 +12,8 @@
     "work-plan/",
     "integrations/",
     "research/",
+    "editorial/",
+    "kg-ops/",
     "library/graph.json",
     "library/skills/",
     "folio-render/",

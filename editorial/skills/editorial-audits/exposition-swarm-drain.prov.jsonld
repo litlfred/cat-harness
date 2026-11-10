@@ -8,31 +8,31 @@
   "dcterms:description": "Provenance moved out of the narrative of exposition-swarm-drain.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md",
+      "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-1"
+          "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-1"
         },
         {
-          "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-2"
+          "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-2"
         },
         {
-          "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-3"
+          "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-3"
         },
         {
-          "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-4"
+          "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-4"
         },
         {
-          "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-5"
+          "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-5"
         },
         {
-          "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-6"
+          "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-6"
         }
       ]
     },
     {
-      "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-1",
+      "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "1. The pattern (three roles)",
@@ -46,7 +46,7 @@
       ]
     },
     {
-      "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-2",
+      "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "1. The pattern (three roles)",
@@ -56,7 +56,7 @@
       ]
     },
     {
-      "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-3",
+      "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "2. The audit rubric (what each agent scores)",
@@ -70,7 +70,7 @@
       ]
     },
     {
-      "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-4",
+      "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "pr",
       "cat-harness:section": "4. Conservative-edit discipline (STRICT — the resolve half)",
@@ -84,14 +84,14 @@
       ]
     },
     {
-      "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-5",
+      "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "4. Conservative-edit discipline (STRICT — the resolve half)",
       "prov:value": "**The review layer is the backstop, not the gate.** Every swarm PR still\ngoes through `/prepare-merge-auto` (Gemini + Copilot) before merge; that\nlayer caught the incident above. Do not merge a content batch on the\nswarm's self-check alone."
     },
     {
-      "@id": "skills/authoring/authoring-core/exposition-swarm-drain.md#provenance-6",
+      "@id": "editorial/skills/editorial-audits/exposition-swarm-drain.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "pr",
       "cat-harness:section": "7. Interaction with the flag-preservation guard",
