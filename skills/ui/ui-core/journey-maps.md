@@ -55,7 +55,7 @@ journeys with four system actors and a journeys viewer, but no ArchiMate
 model. The owner expected the journeys to show through ArchiMate, as
 smart-trust-demo's do, and found the ArchiMate subgraph off. If a layer's
 overview figure draws those systems, rebuild it as a view of that model
-in the figure's own layout (folio-assistant-core `figure-rebuild`).
+in the figure's own layout (`figure-rebuild`).
 
 ## The `user-scenario` kind
 

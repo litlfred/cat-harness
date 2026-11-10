@@ -56,7 +56,7 @@ changed, and keep the path of a changing file the same.
 - Fix the formatting: one indent, one newline at the end, one number format.
   Two writers of one file must agree byte for byte.
 - An archive that must be committed is written reproducibly (fixed mtimes,
-  owner and order, `gzip -n`), as `fhir-harness#257` did for `package.tgz`.
+  owner and order, `gzip -n`), as https://github.com/litlfred/fhir-harness/issues/257 did for `package.tgz`.
 
 ### 2. A file that changes keeps its path
 
@@ -70,7 +70,7 @@ changed, and keep the path of a changing file the same.
 - Keep a record in one file across builds. Do not shard by something that
   moves, such as a position in a list or a page number.
 
-Measured on the WHO SMART Immunizations AST cache (`fhir-harness#325`,
+Measured on the WHO SMART Immunizations AST cache (https://github.com/litlfred/fhir-harness/issues/325,
 2026-11-10): resources were written as `<id>--<hash of canonical|version>.json`,
 so 712 of 756 paths changed on every version bump while their contents
 barely did. They are now `<id>.json`, with the hash kept only for two
@@ -83,7 +83,7 @@ branch) goes in ONE small file that pages fetch at load time, not into every
 page. The staging banner's `staging.json` and the main site's `build.json`
 are the pattern (`staging-banner.ts`, bean `g196`). The code that reads
 them is a constant file too, served once, so it is not repeated in every page
-(`cat-harness-tools#1763`).
+(https://github.com/litlfred/cat-harness-tools/pull/1763).
 
 ### 4. Large files with small internal churn
 
@@ -130,6 +130,6 @@ apart should add a few KB. If they add a whole copy, look for a stamp (rule
 
 - [`compiled-artefact-cache`](compiled-artefact-cache.md): the cache branches
   these rules keep small.
-- `staging-banner.ts` and `staging-share.ts` (cat-harness-tools): the
+- `cat-harness-tools/src/staging/staging-banner.ts` and `cat-harness-tools/src/staging/staging-share.ts`: the
   constant banner and the preview pages served from the live site.
-- fhir-harness `ig-binary-artefacts`: where binary build outputs go.
+- `ig-binary-artefacts`: where binary build outputs go.
