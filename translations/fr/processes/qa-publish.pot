@@ -111,7 +111,7 @@ msgstr ""
 
 #: sdlc/processes/qa-publish.bpmn:170
 #. Diagram element documentation
-msgid "Keep every `main/<sha>` for 90 days and one per day after that; drop `pr/<n>` 7 days after the PR closed. The rule is `planPrune` in `scripts/qa-store.ts`, pinned by its tests, and the plan is printed whether or not it is applied."
+msgid "Keep every `main/<sha>` for 14 days and one per day after that; drop `pr/<n>` 7 days after the PR closed. The rule is `planPrune` in `scripts/qa-store.ts`, pinned by its tests, and the plan is printed whether or not it is applied."
 msgstr ""
 
 #: sdlc/processes/qa-publish.bpmn:215

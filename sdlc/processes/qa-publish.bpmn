@@ -167,7 +167,7 @@ The record it writes is what a later `--against &lt;ref&gt;` reads as a baseline
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_PlanPrune" name="Plan the prune">
-      <bpmn:documentation>Keep every `main/&lt;sha&gt;` for 90 days and one per day after that; drop `pr/&lt;n&gt;` 7 days after the PR closed. The rule is `planPrune` in `scripts/qa-store.ts`, pinned by its tests, and the plan is printed whether or not it is applied.</bpmn:documentation>
+      <bpmn:documentation>Keep every `main/&lt;sha&gt;` for 14 days and one per day after that; drop `pr/&lt;n&gt;` 7 days after the PR closed. The rule is `planPrune` in `scripts/qa-store.ts`, pinned by its tests, and the plan is printed whether or not it is applied.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="qa-reports" />
       </bpmn:extensionElements>

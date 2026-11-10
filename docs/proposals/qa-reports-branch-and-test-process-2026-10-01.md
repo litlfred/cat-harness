@@ -126,7 +126,8 @@ qa-reports  (orphan; never merged; author folio-qa-bot)
   does: `git fetch --depth=1 --filter=blob:none origin +qa-reports:refs/qa-reports-read`,
   then `git show` on only the paths needed. Exit codes follow lake-cache:
   0 hit, 1 miss, 2 usage, 3 corrupt. **A miss is never read as clean.**
-- **Retention.** Keep every `main/<sha>` for 90 days. After that keep one per
+- **Retention.** Keep every `main/<sha>` for 14 days (90 days until 2026-11-01,
+  cat-harness-tools#1244). After that keep one per
   day; delete `pr/<n>` 7 days after close. The prune job must have a trigger
   that fires. The lake-cache prune is guarded on `push` in a dispatch-only
   workflow, so it has never run.
