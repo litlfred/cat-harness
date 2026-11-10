@@ -102,7 +102,7 @@ So:
 - **Take it from the preview's page list**, never from memory or a source
   path: a branch slug is exactly the kind of string that is almost right. The
   rule, and where the list comes from, is
-  [`staging-review`](staging-review.md) §"The deep-link rule".
+  [`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md).
 - **The root is the right link for precisely one thing** — a change to the
   landing page itself.
 
