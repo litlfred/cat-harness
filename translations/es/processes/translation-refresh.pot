@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translation-refresh\n"
-"POT-Creation-Date: 2026-11-07T14:50:12.452Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.579Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: library/processes/translation-refresh.bpmn:78
 #. Diagram element documentation
-msgid "Answered from the detection commands' output: `Yes` when any template check fails or any count of new, obsolete or fuzzy strings is above zero. `No` ends the run for this instance. A command that exits 2 is neither: it is reported for the instance, and the run moves on."
+msgid "Answered from the detection commands' output: `Yes` when any template check fails or any count of new, obsolete or fuzzy strings is above zero. `No` ends the run for this layer. A command that exits 2 is neither: it is reported for the layer, and the run moves on."
 msgstr ""
 
 #: library/processes/translation-refresh.bpmn:151
@@ -66,12 +66,12 @@ msgstr ""
 
 #: library/processes/translation-refresh.bpmn:19
 #. Diagram element documentation
-msgid "Keep every locale current after the source moves: detect, refresh the templates, merge them into each locale, translate only what is new or fuzzy, check it, and land one PR per instance on main. You are in this process when the watcher scheduled by `multi-locale-translation` wakes, or when a template check has failed. It is the loop that process ends with. A fresh session can run it cold: the skill `translation-refresh` gives each step as a command, and each instance's own AGENTS.md names what is particular to it. One run walks every instance in turn, and each instance with something to refresh gets its own PR. A refresh never re-translates a finished string. Obsolete strings are kept as `#~` entries, new ones arrive empty, and only new and fuzzy strings are translated, with the terms the term base already fixes. The round trip runs on the changed strings only."
+msgid "Keep every locale current after the source moves: detect, refresh the templates, merge them into each locale, translate only what is new or fuzzy, check it, and land one PR per layer on main. You are in this process when the watcher scheduled by `multi-locale-translation` wakes, or when a template check has failed. It is the loop that process ends with. A fresh session can run it cold: the skill `translation-refresh` gives each step as a command, and each layer's own AGENTS.md names what is particular to it. One run walks every layer in turn, and each layer with something to refresh gets its own PR. A refresh never re-translates a finished string. Obsolete strings are kept as `#~` entries, new ones arrive empty, and only new and fuzzy strings are translated, with the terms the term base already fixes. The round trip runs on the changed strings only."
 msgstr ""
 
 #: library/processes/translation-refresh.bpmn:60
 #. Diagram element documentation
-msgid "Lay down every pinned layer from each instance's lock, as its AGENTS.md cold start says, and attach each repository the run will change."
+msgid "Lay down every pinned layer from each layer's lock, as its AGENTS.md cold start says, and attach each repository the run will change."
 msgstr ""
 
 #: library/processes/translation-refresh.bpmn:28
@@ -91,7 +91,7 @@ msgstr ""
 
 #: library/processes/translation-refresh.bpmn:167
 #. Diagram element documentation
-msgid "Merge the instance's PR to main, then confirm the template checks pass on main."
+msgid "Merge the layer's PR to main, then confirm the template checks pass on main."
 msgstr ""
 
 #: library/processes/translation-refresh.bpmn:166
@@ -131,7 +131,7 @@ msgstr ""
 
 #: library/processes/translation-refresh.bpmn:37
 #. Diagram element documentation
-msgid "Owns the watcher. It decides whether anything changed from the files, not from memory, refreshes the templates once for every locale, and merges the instance's PR only where the instance declares merge-when-green, every check is green and the round trip records no fail."
+msgid "Owns the watcher. It decides whether anything changed from the files, not from memory, refreshes the templates once for every locale, and merges the layer's PR only where the layer declares merge-when-green, every check is green and the round trip records no fail."
 msgstr ""
 
 #: library/processes/translation-refresh.bpmn:179
@@ -151,7 +151,7 @@ msgstr ""
 
 #: library/processes/translation-refresh.bpmn:89
 #. Diagram element documentation
-msgid "Re-run the instance's extractors, once for every locale: pages, diagrams, glossary schemes."
+msgid "Re-run the layer's extractors, once for every locale: pages, diagrams, glossary schemes."
 msgstr ""
 
 #: library/processes/translation-refresh.bpmn:88
@@ -196,7 +196,7 @@ msgstr ""
 
 #: library/processes/translation-refresh.bpmn:160
 #. Diagram element documentation
-msgid "Three facts, all read live: the instance's AGENTS.md declares merge-when-green, every check on the PR is green, and the untainted round trip on the changed strings records no fail. `Yes` merges. `No` leaves the PR open and reports it to the owner; the default policy, open only, always answers `No`."
+msgid "Three facts, all read live: the layer's AGENTS.md declares merge-when-green, every check on the PR is green, and the untainted round trip on the changed strings records no fail. `Yes` merges. `No` leaves the PR open and reports it to the owner; the default policy, open only, always answers `No`."
 msgstr ""
 
 #: library/processes/translation-refresh.bpmn:106
@@ -216,7 +216,7 @@ msgstr ""
 
 #: library/processes/translation-refresh.bpmn:142
 #. Diagram element documentation
-msgid "Write each locale's QA report, then open one PR for the instance, based on and targeting main."
+msgid "Write each locale's QA report, then open one PR for the layer, based on and targeting main."
 msgstr ""
 
 #: library/processes/translation-refresh.bpmn:187

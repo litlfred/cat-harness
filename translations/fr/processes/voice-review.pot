@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: voice-review\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.068Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.586Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: processes/content/voice-review.bpmn:72
 #. Diagram element documentation
-msgid "A pass, not a gap. An empty `voices.active` is the default and a legitimate answer: an instance may ship voices and activate none."
+msgid "A pass, not a gap. An empty `voices.active` is the default and a legitimate answer: a layer may ship voices and activate none."
 msgstr ""
 
 #: processes/content/voice-review.bpmn:95

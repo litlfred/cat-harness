@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: subscribe-kg\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.128Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.577Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -96,7 +96,7 @@ msgstr ""
 
 #: library/processes/subscribe-kg.bpmn:196
 #. Diagram element documentation
-msgid "For each chosen harness, is every instance it `needs` either local to this checkout or itself subscribed? Decided from the two declarations, before any byte moves. `no` goes back to the choice — subscribe the missing dependency first, or leave that harness referenced — because instantiating a harness whose needs cannot load writes a navbar entry that fails check:instance-render."
+msgid "For each chosen harness, is every layer it `needs` either local to this checkout or itself subscribed? Decided from the two declarations, before any byte moves. `no` goes back to the choice — subscribe the missing dependency first, or leave that harness referenced — because instantiating a harness whose needs cannot load writes a navbar entry that fails check:instance-render."
 msgstr ""
 
 #: library/processes/subscribe-kg.bpmn:52
@@ -231,7 +231,7 @@ msgstr ""
 
 #: library/processes/subscribe-kg.bpmn:129
 #. Diagram element documentation
-msgid "The `subscriptions` entry in the subscriber's instance declaration — id, repository, ref, and nothing chosen yet — plus a cached copy of the substrate's declaration at the pin. The entry holds the choice and the pin, never state: whether a part is held is answered by its materialisation record, and a second answer here would be free to disagree with it."
+msgid "The `subscriptions` entry in the subscriber's layer declaration — id, repository, ref, and nothing chosen yet — plus a cached copy of the substrate's declaration at the pin. The entry holds the choice and the pin, never state: whether a part is held is answered by its materialisation record, and a second answer here would be free to disagree with it."
 msgstr ""
 
 #: library/processes/subscribe-kg.bpmn:216

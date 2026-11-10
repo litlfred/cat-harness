@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kg-to-portal\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.089Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.600Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -231,7 +231,7 @@ msgstr ""
 
 #: processes/kg/kg-to-portal.bpmn:100
 #. Diagram element documentation
-msgid "The only lane outside this instance's control, so P_Verify checks against an external trust anchor — the GDHCN trustlist — rather than against anything the pipeline itself asserts. When that trustlist cannot be reached, this lane's answer is `unknown`, and GW_Verified routes it the same way as a mismatch: to the last good version, never to a guessed pass."
+msgid "The only lane outside this layer's control, so P_Verify checks against an external trust anchor — the GDHCN trustlist — rather than against anything the pipeline itself asserts. When that trustlist cannot be reached, this lane's answer is `unknown`, and GW_Verified routes it the same way as a mismatch: to the last good version, never to a guessed pass."
 msgstr ""
 
 #: processes/kg/kg-to-portal.bpmn:141
