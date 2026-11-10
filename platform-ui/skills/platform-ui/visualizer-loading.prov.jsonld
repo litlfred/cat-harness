@@ -8,37 +8,37 @@
   "dcterms:description": "Provenance moved out of the narrative of visualizer-loading.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "skills/ui/ui-core/visualizer-loading.md",
+      "@id": "platform-ui/skills/platform-ui/visualizer-loading.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-1"
+          "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-1"
         },
         {
-          "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-2"
+          "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-2"
         },
         {
-          "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-3"
+          "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-3"
         },
         {
-          "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-4"
+          "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-4"
         },
         {
-          "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-5"
+          "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-5"
         },
         {
-          "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-6"
+          "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-6"
         },
         {
-          "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-7"
+          "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-7"
         },
         {
-          "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-8"
+          "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-8"
         }
       ]
     },
     {
-      "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-1",
+      "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Visualizer loading — the page is layout, the graph is fetched",
@@ -49,7 +49,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-2",
+      "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Visualizer loading — the page is layout, the graph is fetched",
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-3",
+      "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The rule",
@@ -73,7 +73,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-4",
+      "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Where the data is served from — `served: true`",
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-5",
+      "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Stay equivalent to the render you replace",
@@ -99,7 +99,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-6",
+      "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "date",
       "cat-harness:section": "Printing and PDFs",
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-7",
+      "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "date",
       "cat-harness:section": "Verify in a browser, not in the HTML",
@@ -125,7 +125,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/visualizer-loading.md#provenance-8",
+      "@id": "platform-ui/skills/platform-ui/visualizer-loading.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Finding what to move",

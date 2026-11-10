@@ -111,7 +111,7 @@ so while the new file is in flight the page has no ground but the browser's
 white canvas, and it flashes white. A scheme check that only reads the
 SETTLED page cannot see it — hold the new sheet in flight with `page.route`
 and read the ground then, as `first-paint-scheme.e2e.ts` does. The rule
-itself lives in [`theme-artefacts`](../../../skills/ui/theming/theme-artefacts.md)
+itself lives in [`theme-artefacts`](../../../platform-ui/skills/platform-ui/theme-artefacts.md)
 §"The page ground: the first paint is DARK".
 
 ## The REAL build is reachable — take it off `gh-pages`

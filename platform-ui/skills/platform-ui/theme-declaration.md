@@ -93,6 +93,6 @@ patch of sky are compatible. So:
 
 ## Related
 
-- [`theme-art-intake`](theme-art-intake.md) — the stage before: what may enter at all
+- [`theme-art-intake`](../../../skills/ui/theming/theme-art-intake.md) — the stage before: what may enter at all
 - [`theme-generation`](theme-generation.md) — the stage after: what is emitted from this
 - [`theme-artefacts`](theme-artefacts.md) — the per-surface specialisation

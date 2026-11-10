@@ -164,6 +164,6 @@ so use `--seed` only where the previous output is already in place.
 
 - `scripts/render-selection.ts` — the selection, the manifest, and the hash.
 - `scripts/declared-dirs.ts` — the graph-typology resolver, and why it is a process.
-- [`directory-conventions`](../../kg/kg-core/directory-conventions.md) — what a graph typology is
+- [`directory-conventions`](../../../skills/kg/kg-core/directory-conventions.md) — what a graph typology is
   and where `<name>.json` declares it.
 - [`ci-health`](../../../sdlc/skills/sdlc-core/ci-health.md) — the same third-state discipline one level out.

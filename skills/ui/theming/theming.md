@@ -31,10 +31,10 @@ stage faces, and per-artefact specialisation last.
 | | stage | faces | what it owns |
 |---|---|---|---|
 | 1 | [`theme-art-intake`](theme-art-intake.md) | **producer** | art arrives; accepted with its declaration written, or refused with a named reason |
-| 2 | [`theme-declaration`](theme-declaration.md) | **producer** | what a theme IS as data — palette, three layouts, `textRegion`, `avatarRegion` |
-| 3 | [`theme-generation`](theme-generation.md) | **consumer** | `themes.css`, and the fallback that paints over its own art |
-| 4 | [`theme-contrast`](theme-contrast.md) | **consumer** | scrims, WCAG, and why the measurement is over pure black |
-| — | [`theme-artefacts`](theme-artefacts.md) | specialisation | sticky, landing board, docs background, navbar avatar — only what DIFFERS |
+| 2 | [`theme-declaration`](../../../platform-ui/skills/platform-ui/theme-declaration.md) | **producer** | what a theme IS as data — palette, three layouts, `textRegion`, `avatarRegion` |
+| 3 | [`theme-generation`](../../../platform-ui/skills/platform-ui/theme-generation.md) | **consumer** | `themes.css`, and the fallback that paints over its own art |
+| 4 | [`theme-contrast`](../../../platform-ui/skills/platform-ui/theme-contrast.md) | **consumer** | scrims, WCAG, and why the measurement is over pure black |
+| — | [`theme-artefacts`](../../../platform-ui/skills/platform-ui/theme-artefacts.md) | specialisation | sticky, landing board, docs background, navbar avatar — only what DIFFERS |
 
 **Stage is primary because that is how failures arrive**: each one is at one
 stage. **Going artefact-first would duplicate intake and contrast into every

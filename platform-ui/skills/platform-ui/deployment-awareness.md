@@ -41,7 +41,7 @@ On a static host like GitHub Pages, files are served directly from storage:
    insert it as **text** (`textContent`, `createTextNode`), never through
    `innerHTML`, or the page is open to cross-site scripting.
 2. **No custom header enforcement:**
-   As detailed in [`serving-renderings`](serving-renderings.md), GitHub Pages
+   As detailed in [`serving-renderings`](../../../skills/ui/ui-core/serving-renderings.md), GitHub Pages
    serves files according to its own extension table. It cannot set
    `Content-Type: application/ld+json` for `.jsonld`. The harness accommodates
    this by publishing `.json` alongside `.jsonld`, rather than pretending Pages
@@ -98,8 +98,8 @@ or an IDE assistant panel with no webview attached.
 ### Graceful degradation rules
 
 1. **Never assume a rendered DOM:**
-   Skills governing visual artefacts—such as [`harness-tiles`](harness-tiles.md),
-   [`board-windows`](board-windows.md), and [`kg-viewer`](kg-viewer.md)—must
+   Skills governing visual artefacts—such as [`harness-tiles`](../../../skills/ui/ui-core/harness-tiles.md),
+   [`board-windows`](../../../skills/ui/ui-core/board-windows.md), and [`kg-viewer`](../../../skills/ui/ui-core/kg-viewer.md)—must
    treat the visual UI as a *projection* of underlying data, not the source of
    truth.
 2. **Degrade to chat-native structured text:**

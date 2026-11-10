@@ -21,7 +21,7 @@ A generated page for a complex visualizer holds three things:
 1. **Identity:** the title, description and front matter that navigation,
    search and a link preview read.
 2. **Layout:** headings, tabs and links, arranged by a template
-   ([`liquid-templates`](liquid-templates.md)).
+   ([`liquid-templates`](../../../skills/ui/ui-core/liquid-templates.md)).
 3. **A pointer:** the KG file the content comes from, resolved by the generator.
 
 The **content** (a sidecar file, a node's properties at length, a table derived
@@ -29,7 +29,7 @@ from the graph) is fetched by the browser from the committed KG artefact. It is
 never copied into the page.
 
 Each copy is a second answer, free to drift from the first, and copied into a
-thousand pages it is most of the site's bytes. [`kg-viewer`](kg-viewer.md) is
+thousand pages it is most of the site's bytes. [`kg-viewer`](../../../skills/ui/ui-core/kg-viewer.md) is
 an instance of the pattern: one page that fetches its sibling graph document
 and computes back-links at load.
 
@@ -65,7 +65,7 @@ served writes no page that would fetch it, and says why.
 ## How to fetch
 
 - **Relative to the page's own location**, never via a configured base URL, so
-  the same bytes work in production and in a staging preview ([`kg-viewer`](kg-viewer.md)
+  the same bytes work in production and in a staging preview ([`kg-viewer`](../../../skills/ui/ui-core/kg-viewer.md)
   §"The page is generated, not committed").
 - **One shared loader per visualizer kind**, published once and referenced by
   every page, never inlined in each page.
