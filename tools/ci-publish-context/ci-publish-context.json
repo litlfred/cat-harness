@@ -3,7 +3,7 @@
   "tool": {
     "id": "ci-publish-context",
     "title": "Publish a layer's JSON-LD context",
-    "description": "Dispatch the layer's `publish-context.yml`, which calls cat-harness-tools' `layer-publish-context.yml` to publish the layer's graph context at the needs it is pinned to. Started with the standard GitHub CLI; the run is watched with `gh run watch`.",
+    "description": "Dispatch the layer's `publish-context.yml`, which calls the tools layer's reusable `layer-publish-context.yml` to publish the layer's graph context at the needs it is pinned to. Started with the standard GitHub CLI; the run is watched with `gh run watch`.",
     "install": {
       "cli": "gh"
     },
