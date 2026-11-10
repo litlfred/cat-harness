@@ -10,30 +10,30 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 
 | Skill | What it is for |
 |---|---|
-| [`block-density`](skills/authoring/authoring-core/block-density.md) | Audits individual content blocks for single-topic coherence, length, and embedded tables. |
+| [`block-density`](editorial/skills/editorial-audits/block-density.md) | Audits individual content blocks for single-topic coherence, length, and embedded tables. |
 | [`canonical-watcher`](skills/authoring/authoring-core/canonical-watcher.md) | Derivation-discipline integration watcher — watches the default branch + open active PRs + newly-opened PRs for non-canonical empirical / fitting / calibration inputs beyond the project's declared… |
-| [`chapter-complexity-review`](skills/authoring/authoring-core/chapter-complexity-review.md) | Analyse a chapter's internal dependency graph to find backward edges (blocks that reference something defined later), compute graph energy, and suggest section/block reorderings that minimise… |
+| [`chapter-complexity-review`](editorial/skills/editorial-audits/chapter-complexity-review.md) | Analyse a chapter's internal dependency graph to find backward edges (blocks that reference something defined later), compute graph energy, and suggest section/block reorderings that minimise… |
 | [`content-graph`](skills/authoring/authoring-core/content-graph.md) | Editorial graph analysis skill — builds a content graph from uses[], interprets, proofs, and examples relationships; builds a chapter/section topology graph; and applies heuristics to identify… |
 | [`content-profiles`](skills/authoring/authoring-core/content-profiles.md) | Adapters and profiles are different axes and conflating them is costly. |
-| [`devils-advocate-watcher`](skills/authoring/authoring-core/devils-advocate-watcher.md) | Logical devil's-advocate integration watcher — for every content block (.ts/.md) and formal sibling, constructs the strongest adversarial case that it is WRONG: the objection a hostile-but-… |
+| [`devils-advocate-watcher`](editorial/skills/editorial-audits/devils-advocate-watcher.md) | Logical devil's-advocate integration watcher — for every content block (.ts/.md) and formal sibling, constructs the strongest adversarial case that it is WRONG: the objection a hostile-but-… |
 | [`editor`](skills/authoring/authoring-core/editor.md) | Editor Skill |
 | [`evidence-review`](skills/authoring/authoring-core/evidence-review.md) | Evidence review as an instance of untainted verification — the separation of the appraising party from the drafting party, what recurring surveillance in a living guideline shares with a stale QA… |
-| [`exposition-swarm-drain`](skills/authoring/authoring-core/exposition-swarm-drain.md) | Drain the paper's narrative blocks through an exposition-quality swarm: a small fleet of grouped-batch agents each audit their batch against the Milnor exposition gate (expo-milnor-clarity, H1–H8)… |
-| [`integration-audit`](skills/authoring/authoring-core/integration-audit.md) | Sidecar-invalidation utility for the integration-watcher pipeline. |
+| [`exposition-swarm-drain`](editorial/skills/editorial-audits/exposition-swarm-drain.md) | Drain the paper's narrative blocks through an exposition-quality swarm: a small fleet of grouped-batch agents each audit their batch against the Milnor exposition gate (expo-milnor-clarity, H1–H8)… |
+| [`integration-audit`](editorial/skills/editorial-audits/integration-audit.md) | Sidecar-invalidation utility for the integration-watcher pipeline. |
 | [`md-authoring`](skills/authoring/authoring-core/md-authoring.md) | Markdown Authoring Conventions |
-| [`one-voice-audit`](skills/authoring/authoring-core/one-voice-audit.md) | One-Voice Audit |
-| [`one-voice-integration-watcher`](skills/authoring/authoring-core/one-voice-integration-watcher.md) | One-voice integration watcher — watches origin/main + open active PRs + newly-opened PRs for content-block changes (`.md`, `.ts`, proof files), runs the per-block QA suite covering scholarly voice,… |
+| [`one-voice-audit`](editorial/skills/editorial-audits/one-voice-audit.md) | One-Voice Audit |
+| [`one-voice-integration-watcher`](editorial/skills/editorial-audits/one-voice-integration-watcher.md) | One-voice integration watcher — watches origin/main + open active PRs + newly-opened PRs for content-block changes (`.md`, `.ts`, proof files), runs the per-block QA suite covering scholarly voice,… |
 | [`one-voice-style-guide`](skills/authoring/authoring-core/one-voice-style-guide.md) | Author voice profile and narrative style guide. |
-| [`production-vs-exploratory-discipline`](skills/authoring/authoring-core/production-vs-exploratory-discipline.md) | Distinguish PRODUCTION (derived-only, no fits) from EXPLORATORY (empirical-fit probes OK as shape-hints) from NUMEROLOGY (post-hoc fits to known constants). |
-| [`readability-editing`](skills/authoring/authoring-core/readability-editing.md) | Readability Editing Skill |
+| [`production-vs-exploratory-discipline`](editorial/skills/editorial-audits/production-vs-exploratory-discipline.md) | Distinguish PRODUCTION (derived-only, no fits) from EXPLORATORY (empirical-fit probes OK as shape-hints) from NUMEROLOGY (post-hoc fits to known constants). |
+| [`readability-editing`](editorial/skills/editorial-audits/readability-editing.md) | Readability Editing Skill |
 | [`review-heatmap`](skills/authoring/authoring-core/review-heatmap.md) | The review page's heat map: a section-by-metric table that tells a reviewer of a large document where to look first. |
 | [`scientific-accuracy`](skills/authoring/authoring-core/scientific-accuracy.md) | Scientific Accuracy Skill |
 | [`technical-documentation`](skills/authoring/authoring-core/technical-documentation.md) | Write and review technical documentation of standards, software and knowledge assets as an SDO writes. |
 | [`todo-review`](skills/authoring/authoring-core/todo-review.md) | Monitor and triage open feedback across all content blocks. |
 | [`uses-editorial-review`](skills/authoring/authoring-core/uses-editorial-review.md) | Adjudicate `uses-editorial-completeness` — read a block as a reader would and judge whether its `uses[]` is complete and genuinely expository. |
-| [`voice-authoring-guidance`](skills/authoring/authoring-core/voice-authoring-guidance.md) | Load the active voices' rules BEFORE writing, so a block is drafted in the register it will be reviewed against. |
-| [`voice-editorial-review`](skills/authoring/authoring-core/voice-editorial-review.md) | Adjudicate a `voice-*` finding — read the flagged passage as a reader of THAT genre would and decide whether the register is wrong, the criterion is out of scope, or the block is a stated exception. |
-| [`voice-overlay-review`](skills/authoring/authoring-core/voice-overlay-review.md) | Review a block against the active voices' rules and record the verdict on its QA sidecar. |
+| [`voice-authoring-guidance`](editorial/skills/editorial-audits/voice-authoring-guidance.md) | Load the active voices' rules BEFORE writing, so a block is drafted in the register it will be reviewed against. |
+| [`voice-editorial-review`](editorial/skills/editorial-audits/voice-editorial-review.md) | Adjudicate a `voice-*` finding — read the flagged passage as a reader of THAT genre would and decide whether the register is wrong, the criterion is out of scope, or the block is a stated exception. |
+| [`voice-overlay-review`](editorial/skills/editorial-audits/voice-overlay-review.md) | Review a block against the active voices' rules and record the verdict on its QA sidecar. |
 
 **`skills/authoring/content-lifecycle/`** (5)
 
@@ -81,15 +81,15 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 
 | Skill | What it is for |
 |---|---|
-| [`domain-fencing`](skills/kg/graph-management/domain-fencing.md) | How a domain-specific rule is kept out of the platform without being lost — the opt-in axis mechanism, why a profile is not a fence, and the test for whether a rule generalizes at all. |
-| [`edge-kinds-and-blast-radius`](skills/kg/graph-management/edge-kinds-and-blast-radius.md) | A graph has more than one kind of edge, and conflating them corrupts both the ordering and the impact answer. |
+| [`domain-fencing`](kg-ops/skills/kg-ops/domain-fencing.md) | How a domain-specific rule is kept out of the platform without being lost — the opt-in axis mechanism, why a profile is not a fence, and the test for whether a rule generalizes at all. |
+| [`edge-kinds-and-blast-radius`](kg-ops/skills/kg-ops/edge-kinds-and-blast-radius.md) | A graph has more than one kind of edge, and conflating them corrupts both the ordering and the impact answer. |
 | [`graph-detanglement`](skills/kg/graph-management/graph-detanglement.md) | Drive a tangled graph toward a clean partition, so a sub-graph can be split off when it grows too large or when a business reason separates it. |
 | [`graph-rendering`](skills/kg/graph-management/graph-rendering.md) | Draw any graph in a harness (schemas, processes, a folio's block graph and any formal relation its content type adds, a detangle partition) so the picture is derived, checkable and readable. |
 | [`kg-separation`](skills/kg/graph-management/kg-separation.md) | Separate a Knowledge Graph into its own repository — as a CONTENT repository (files to read, no code) and a TOOLS repository (the code that writes and checks it) — once it is too large, or its… |
 | [`kg-subgraph-layout`](skills/kg/graph-management/kg-subgraph-layout.md) | Lay out one declared sub-graph of a knowledge graph (a harness's schema overview, one named sub-graph, a declaration's kinds) as a single Graphviz diagram in the i2ce Form Documentor's convention,… |
 | [`lsi-indexing`](skills/kg/graph-management/lsi-indexing.md) | Build, read and audit a Latent Semantic Indexing index over a declared prose graph — a library, the skills, the work items, docs — to find units that discuss the same thing in different words,… |
-| [`named-query-execution`](skills/kg/graph-management/named-query-execution.md) | How to execute audited SPARQL 1.1 named queries over partitioned W3C N-Quads dataset distributions across CLI, MCP tools, and WebAssembly browser clients. |
-| [`nquads-distribution`](skills/kg/graph-management/nquads-distribution.md) | How to compile, partition by named subgraphs, and distribute W3C N-Quads datasets beside pre-compiled SPARQL 1.1 named queries for static edge and client-side querying. |
+| [`named-query-execution`](kg-ops/skills/kg-ops/named-query-execution.md) | How to execute audited SPARQL 1.1 named queries over partitioned W3C N-Quads dataset distributions across CLI, MCP tools, and WebAssembly browser clients. |
+| [`nquads-distribution`](kg-ops/skills/kg-ops/nquads-distribution.md) | How to compile, partition by named subgraphs, and distribute W3C N-Quads datasets beside pre-compiled SPARQL 1.1 named queries for static edge and client-side querying. |
 | [`sub-kg-lifecycle`](skills/kg/graph-management/sub-kg-lifecycle.md) | A sub-KG is a knowledge graph staged as a directory inside a harnessed repository, declared as its own layer, that may later leave for a repository of its own. |
 
 **`skills/kg/kg-core/`** (29)

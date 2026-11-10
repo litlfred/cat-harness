@@ -174,6 +174,5 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`voices-viewer/`](voices-viewer/) | _nothing declares what this holds_ | |
 | [`wireframe-check/`](wireframe-check/) | _nothing declares what this holds_ | |
 | [`witness-conformance/`](witness-conformance/) | _nothing declares what this holds_ | |
-| [`witness-parity/`](witness-parity/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->

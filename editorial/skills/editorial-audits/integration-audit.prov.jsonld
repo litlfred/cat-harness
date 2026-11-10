@@ -8,16 +8,16 @@
   "dcterms:description": "Provenance moved out of the narrative of integration-audit.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "skills/authoring/authoring-core/integration-audit.md",
+      "@id": "editorial/skills/editorial-audits/integration-audit.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "skills/authoring/authoring-core/integration-audit.md#provenance-1"
+          "@id": "editorial/skills/editorial-audits/integration-audit.md#provenance-1"
         }
       ]
     },
     {
-      "@id": "skills/authoring/authoring-core/integration-audit.md#provenance-1",
+      "@id": "editorial/skills/editorial-audits/integration-audit.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "When to invoke",

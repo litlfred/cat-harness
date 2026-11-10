@@ -883,6 +883,24 @@
       ]
     },
     {
+      "id": "editorial",
+      "path": "editorial/",
+      "optIn": true,
+      "description": "The editorial sub-graph — a NAMED SUB-GRAPH of the harness, OPT-IN like `sdlc`: off in every layer unless that layer lists `cat-harness.editorial` in its own `enableSubgraphs` (owner, 2026-11-10, card Q-SG-1 C, wave 2). It holds the `editorial-audits` skill package: the one-voice, devil's-advocate and integration watchers, voice reviews, readability, block density, chapter complexity, the exposition swarm drain and the production-vs-exploratory discipline. The editor, content graph, content profiles, Markdown authoring and the review skills that always-on skills cite stay in `authoring-core`. Declared FROM WITHIN in `editorial/graph.json`.",
+      "graphTypologies": [
+        "cat-harness"
+      ]
+    },
+    {
+      "id": "kg-ops",
+      "path": "kg-ops/",
+      "optIn": true,
+      "description": "The KG operations sub-graph — a NAMED SUB-GRAPH of the harness, OPT-IN like `sdlc`: off in every layer unless that layer lists `cat-harness.kg-ops` in its own `enableSubgraphs` (owner, 2026-11-10, card Q-SG-1 C, wave 2). It holds the `kg-ops` skill package (N-Quads distribution, named SPARQL queries, edge kinds and blast radius, domain fencing), their two processes and `witness-parity`. KG separation, sub-KG life cycle, LSI and rendering stay in `graph-management`, because always-on skills, Tools and visualisers cite them. Declared FROM WITHIN in `kg-ops/graph.json`.",
+      "graphTypologies": [
+        "cat-harness"
+      ]
+    },
+    {
       "id": "archimate",
       "path": "archimate/",
       "description": "The ArchiMate subgraph — a NAMED SUBGRAPH of the harness, on the `openapi` subgraph's pattern (owner, 2026-10-09: *\"need new specialixed harness (like openapi) for archimate content in the KG\"*). It holds the machinery for ArchiMate models rather than models: the graph typology `archimate` a layer declares to hold them, the validator for the layer's `cat-archimate.config.json`, the reader for Archi's native format, and the rendering sub-pipeline that gives every view, element and relationship a page and an IRI and draws every view as SVG from the model's own diagram — no Archi install. Of graph typology `cat-harness` because it holds MORE THAN ONE of the harness's parts; the graphs inside it — `archimate-validators` and `archimate-typologies` — are declared FROM WITHIN, in `archimate/graph.json` (#980); its schema and scripts are code, so the tools layer (https://github.com/litlfred/cat-harness-tools) holds them (`cat-harness-tools-archimate-schemas`, `cat-harness-tools-archimate`; beans `70lx`, `8lcl`). First layer: smart-ra's DPI-H reference architecture models.",
@@ -1148,7 +1166,7 @@
     {"path": "schemas/kinds/", "writer": ["kind:json-schemas"], "because": "checkout", "reason": "one JSON Schema per harness kind, generated from cat-harness-tools' Zod, a layer above this one: committed here, each layer's CI checked it against the other's main, so a schema change could go green in neither (owner card via the merge steward, 2026-11-05: build it at publish)"}
   ],
   "_enableSubgraphs_comment": "cat-harness switches its own opt-in sub-graphs on for ITSELF, so its gates, generators and site still see `sdlc`, `work-plan` and the `library` corpus (`library/corpus/`, 2026-11-04). Not inherited: every layer above has them off unless it lists them in its own `enableSubgraphs` (cat-harness#991 step 23.2; folio-assistant enables both in step 23.4).",
-  "enableSubgraphs": ["cat-harness.sdlc", "cat-harness.work-plan", "cat-harness.library"],
+  "enableSubgraphs": ["cat-harness.sdlc", "cat-harness.work-plan", "cat-harness.library", "cat-harness.editorial", "cat-harness.kg-ops"],
   "_needs_comment": "The layer this layer sits on. Owner, 2026-09-20: \"So bootsteap, cat harness, fa-core, f-a, from bottom to top.\" Declared rather than hardcoded in the navbar, so the ordering is a fact of the repository and not of whichever consumer needed it first. `bootstrap-tools` added 2026-09-30 (bean `0lj4`, owner's ruling): bean `xsqm` moved that code OUT of this layer into its own, and this list was not updated with it, so 20 imports under `cat-harness/` reached a layer this file did not name. `allowedFromNeeds` gives a layer `{layer} U ancestors(layer)`, and `bootstrap-tools` is a SIBLING of `cat-harness` rather than an ancestor, so every one of those 20 was `wrong-direction` by the declared rule while four separate checks reported clean. The reverse arrow stays forbidden and is guarded by `check:tools-closure`. REMOVED again 2026-10-30 (bean `8lcl`, owner card \"A. One coordinated move\"): the code those imports sat in moved to cat-harness-tools, which names `bootstrap-tools` in its own `needs`. Measured after the move, no file under `cat-harness/` imports `bootstrap-tools`, so the edge named nothing.",
   "needs": [
     "bootstrap"
