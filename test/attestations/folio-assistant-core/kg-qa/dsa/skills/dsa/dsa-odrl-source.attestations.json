@@ -4,7 +4,7 @@
   "subject": {
     "kind": "skill",
     "id": "dsa-odrl-source",
-    "path": "skills/content/folio-document-adapter/dsa-odrl-source.md"
+    "path": "dsa/skills/dsa/dsa-odrl-source.md"
   },
   "voice_reviews": [
     {
