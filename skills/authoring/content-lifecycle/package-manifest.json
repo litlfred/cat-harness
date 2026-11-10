@@ -4,11 +4,11 @@
   "description": "General content lifecycle methods the harness's own processes call: validate, review, test and feedback. Planning, authoring, publication and retirement are operational and belong to the content layer above (content split step 1).",
   "skills": [
     "content-feedback",
-    "feedback-deep-links",
     "content-review",
     "content-test",
     "content-validate",
-    "evidence-appraisal"
+    "evidence-appraisal",
+    "feedback-deep-links"
   ],
   "docker": {
     "baseImage": "ubuntu:24.04",
