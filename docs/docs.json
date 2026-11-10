@@ -8,7 +8,8 @@
       "graphTypologies": [
         "proposals"
       ],
-      "description": "Proposals for this harness's own features — initial analysis, MVP, options — argued, and updated in place, before and while they are built."
+      "description": "Proposals for this harness's own features — initial analysis, MVP, options — argued, and updated in place, before and while they are built. OPT-IN (owner, 2026-11-10, card Q-SG-1 C): off in every layer below unless it lists `cat-harness.proposals` in its `enableSubgraphs`, so a whole mount leaves it out.",
+      "optIn": true
     },
     {
       "id": "requirements",
@@ -17,6 +18,15 @@
         "requirements"
       ],
       "description": "What this harness promises, one page per shipped feature: a proposal MOVED here when its feature ships, its front matter a `Requirement` (`bootstrap/schemas/requirement.schema.json`), checked by `check:requirements`."
+    },
+    {
+      "id": "wireframes",
+      "path": "wireframes",
+      "graphTypologies": [
+        "doc-group"
+      ],
+      "optIn": true,
+      "description": "Wireframes of the harness's own visualisers and chrome, one folder per topic with its intent, candidates and check report, and `index.json` naming which visualiser each covers (read by `check:wireframes`). OPT-IN (owner, 2026-11-10, card Q-SG-1 C): design work for this harness, which no layer below reads, so a whole mount leaves it out unless the layer lists `cat-harness.wireframes` in its `enableSubgraphs`."
     },
     {
       "id": "start",
