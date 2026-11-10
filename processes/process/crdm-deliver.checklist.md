@@ -38,7 +38,7 @@ One phase and not three, because the loops say so: an increment the BA rejects, 
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - Skill: `delivery-summary`, `staging-review`.
-- What: What was accomplished, what remains, and the staging links: one deep link per changed page on the preview, with the same page on main (staging-review, "The deep-link rule").
+- What: What was accomplished, what remains, and the staging links: one deep link per changed page on the preview, with the same page on main (feedback-deep-links).
 - Record it: `workflow_complete` with `node: "A_Summary"`.
 - next: → `BA_ReviewIncrement` (Review increment (test behaviour))
 

@@ -142,7 +142,7 @@ guess:
    `skills/<pkg>/bar.md` is at
    `…/branches/<slug>/reference/skill-instructions/bar.html`. Those paths say where a page *would* land; the links themselves come from the
    preview's page list, each looked up in the publish ref, as
-   [`staging-review`](staging-review.md) §"The deep-link rule" requires, never built
+   [`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md) requires, never built
    from a source path.
 2. **Local server (dynamic host):** When running a local preview (e.g. Bun
    `serve:rendering`), report the local loopback host and port.

@@ -91,7 +91,7 @@ screenshot — the same argument the merge discipline makes about rendered work:
     <bpmn:task id="A_Summary" name="Post summary
 to issue">
       <bpmn:documentation>What was accomplished, what remains, and the staging links: one deep link per
-changed page on the preview, with the same page on main (staging-review, "The deep-link rule").</bpmn:documentation>
+changed page on the preview, with the same page on main (feedback-deep-links).</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="delivery-summary"/><bootstrap.processes:skill ref="staging-review"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="BA_ReviewIncrement" name="Review increment
