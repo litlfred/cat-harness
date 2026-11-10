@@ -270,6 +270,33 @@ Decision logic, Indicators, each asset linked to its page in the IG through
 the artefact index, as FHIR examples and personas are. An asset the index
 does not list is drawn as text, not linked.
 
+## The VaxLink overview: what a guide declares to get it
+
+A workshop's `overview/` is the VaxLink overview, drawn by the shared viewer
+(the generic address is `<locale>/<instance>/journeys/<instance>/workshops/<id>/overview/`;
+never build or keep a walkthrough app of your own, and point an old app's
+address at this one). It is only as complete as the data behind it, and a part
+with no data is left out silently, so a guide that wants the full overview
+declares all of this:
+
+| on the page | comes from |
+|---|---|
+| the app bar, the story in one sentence, the lede, the outward links | the workshop's `presentation`: `name`, `tagline`, `story`, `lede`, `links`, `about`, `views`, `closingQuestion`. Without a `story` the hero shows the workshop's `description`, which is the room's question, not the story |
+| a picture per moment | each step's `illustration` |
+| the icon strip under each moment | the journey's `scene`: three or so `{ icon, label }`, icons from the closed list `check:journey-refs` names |
+| "Follow the record" and each step's meter | a `code-list` (conventionally `code-lists/record-trust.code-list.json`) named by every journey's `trustLadder`, each step's `record.state` one of its codes, and `presentation.recordOf` naming whose record it is |
+| the people | the journeys' personas, through the actors |
+| the Device Demo | `device-screen` nodes for the steps |
+
+**Link it from the guide.** The guide's own journey page and its landing page
+lead into the overview (a hero with "Start the walkthrough" and "See the whole
+journey map", generated from the same `presentation`), so a reader of the IG
+finds it. An overview no page links to is as good as missing: the owner asked
+for one that already existed (2026-11-10, smart-ips-pilgrimage).
+
+`check:journey-refs` reports each of these that a workshop's journeys lack as
+a warning (`overview-gap`), so a gap is seen at check time, not in review.
+
 ## Checks
 
 `check:kind-validators` parses every node of the four kinds against their
