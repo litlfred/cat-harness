@@ -128,7 +128,8 @@ built for, and it is why C-value is the statistical measure this node names.
 ## How it is performed here
 
 The glossary skills that read prose for terms name this node in their
-`uses-methodology`; they live in the content layer, which links down to here.
-**No C-value implementation exists in the platform yet.** Until one does, the
-node is the method a person or agent follows by hand, and the Indexing
-evidence page shows it as a method with skills and no Tool.
+`uses-methodology`, and the Tool that computes C-value satisfies them. Both
+live in the content layer, which links down to here. The Tool's test
+reproduces Table 2 of the 1996 paper. By default it applies the paper's
+method as published, which on ordinary prose ranks function phrases such as
+"it is" first (the paper: many candidates *"may seem unimportant"*, §4).
