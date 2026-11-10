@@ -69,13 +69,14 @@
       "id": "graphviz",
       "title": "Graphviz dot layout engine (tool-release)",
       "repo": "https://gitlab.com/graphviz/graphviz",
-      "pinnedIn": "tool-releases/graphviz-16.1.0-linux-x64-ubuntu-24.04.json",
+      "pinnedIn": "tool-releases/graphviz-16.1.1-linux-x64-ubuntu-24.04.json",
       "pattern": "^\\s*\"version\":\\s*\"([^\"]+)\"",
       "tagPattern": "^\\d+\\.\\d+\\.\\d+$",
       "binds": [
-        "cat-harness/tool-releases/graphviz-16.1.0-linux-x64-ubuntu-24.04.json — `digest.digest` and `source.url` must be updated to the new `.deb` and sha256.",
+        "cat-harness/tool-releases/graphviz-16.1.1-linux-x64-ubuntu-24.04.json — `digest.digest` and `source.url` must be updated to the new `.deb` and sha256.",
         "cat-harness/tool-releases/plantuml-1.2026.9.json — `runtimes[]` injects `graphviz@<version>` onto `PATH` so `plantuml` finds `dot`.",
-        "cat-harness/tool-releases/default.profile.json — `tools.graphviz` selects `graphviz@<version>`."
+        "cat-harness/tool-releases/default.profile.json — `tools.graphviz` selects `graphviz@<version>`.",
+        "cat-harness/tool-releases/ci-2026-10.profile.json and cat-harness/tool-releases/lean-4.35-test.profile.json — `tools.graphviz` selects `graphviz@<version>`."
       ]
     },
     {

@@ -17,7 +17,7 @@
   "licenceSource": "the jar's own `java -jar plantuml-1.2026.9.jar -license`: GNU GPL version 3, or (at your option) any later version",
   "runtimes": [
     { "release": "temurin-jre@21.0.4+7", "inject": "JAVA_HOME" },
-    { "release": "graphviz@16.1.0", "inject": "PATH" }
+    { "release": "graphviz@16.1.1", "inject": "PATH" }
   ],
   "entry": {
     "template": "java -jar {path}"
