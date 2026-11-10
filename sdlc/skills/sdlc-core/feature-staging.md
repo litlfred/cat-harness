@@ -323,6 +323,47 @@ for the branch with `build_type: full`, then run `pc:release freeze`. Freeze
 refuses a copy whose `staging.json` says `buildType: "preview"`, and records
 the build type in `release.json`.
 
+### 10. Agent-built previews — deferred on the critical path, verified by a full CI rebuild
+
+When an agent builds and pushes a preview with `stage-local.ts`, it writes
+`branches/<slug>/_build-record.json` (`scripts/preview-record.ts`)
+recording `builder: "agent"`, the git tree hash `tree` of the source tree it
+built (`HEAD^{tree}` or the merge tree with `origin/main`), the `head` and
+`base` commit SHAs, and the SHA-256 of every deployed file outside the
+per-build metadata (`staging.json`, `_build-record.json`, `.staged-at`,
+`build.yml`).
+
+When `feature-staging.yml` runs on the pull request:
+
+1. **Defer on the critical path.** `conflict-gate` checks
+   `branches/<slug>/_build-record.json` on `gh-pages`. When `builder` is
+   `"agent"` and `record.tree` equals `MERGE_SHA^{tree}` (`refs/pull/<n>/merge`),
+   the preview is already live for that exact merge tree: the workflow sets the
+   `preview/agent-build` commit status on the PR head to `pending`, posts a
+   `<!-- preview-build-verify -->` notice on the PR, and skips the critical-path
+   `stage` build so the runner is free. Any missing record, CI-built record, or
+   tree mismatch (including when `main` moved under the branch) builds on the
+   critical path as usual.
+2. **Verify off the critical path.** `preview-verify-sweep.yml` (triggered when
+   `feature-staging.yml` completes and on a 15-minute schedule) checks that no
+   Feature Staging run is queued or in progress, finds the oldest open PR whose
+   head commit has `preview/agent-build` in state `pending`, and dispatches
+   `feature-staging.yml` with `verify_pr=<number>`.
+3. **Compare or replace.** The verify run rebuilds `refs/pull/<n>/merge` in full
+   and runs `preview-record.ts compare` against the agent's `_build-record.json`
+   on `gh-pages`:
+   - **Files match (`same=true`)**: nothing is redeployed; `preview/agent-build`
+     is set to `success` (or `failure` if a built-site check failed) and the PR
+     comment records the verified tree.
+   - **Files differ (`same=false`) or the base moved (`same=stale`)**: CI's
+     build is deployed to `branches/<slug>/` (guarded so a newer preview tree is
+     never overwritten) with a `rendered` log entry, and when the agent's build
+     differed, `preview/agent-build` is set to `failure` with the differing file
+     paths listed in the PR comment.
+   - **Merge guard**: `merge-guard` check 5 (`src/coordinator/merge-guard.ts`)
+     reads `preview/agent-build` alongside check runs; `pending` holds the PR as
+     not ready, and `failure` refuses the merge.
+
 ## Agent workflow
 
 When an author requests a content change:

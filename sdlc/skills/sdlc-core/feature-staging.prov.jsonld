@@ -100,6 +100,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-30"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-31"
         }
       ]
     },
@@ -438,6 +441,20 @@
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Before you report a staging URL as broken",
       "prov:value": "Full rule and the measured failure:\n[`github-state-inspection`](github-state-inspection.md)."
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-31",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "10. Agent-built previews — deferred on the critical path, verified by a full CI rebuild",
+      "prov:value": "Owner ruling, 2026-11-02 (#2881, PR #2885): an agent-built preview whose `_build-record.json` matches the PR's merge tree is deferred on the critical path (`preview/agent-build` set to `pending`), then verified off the critical path by `preview-verify-sweep.yml` via a full CI rebuild that either confirms the agent's files in place or replaces them on mismatch.",
+      "cat-harness:refs": [
+        "#2881",
+        "2026-11-02"
+      ],
+      "dcterms:date": [
+        "2026-11-02"
+      ]
     }
   ]
 }
