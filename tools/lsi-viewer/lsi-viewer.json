@@ -3,7 +3,7 @@
   "tool": {
     "id": "lsi-viewer",
     "title": "Indexing evidence viewer",
-    "description": "Render the Indexing evidence page: for each indexing method, the held papers it rests on and the skills, Tools and processes that apply it, and the indexing skills with no evidence yet. Index health is the `lsi-indexes` check of `bun run cat health`.",
+    "description": "Render the Indexing evidence page: for each indexing method, the held papers it rests on and the skills, Tools and processes that apply it, and the indexing skills with no evidence yet; and its Keywords page (`keywords/`), the derived keywords graph as an A–Z index with the six extraction variants side by side and their agreement with headings, author keywords and the glossaries. Index health is the `lsi-indexes` check of `bun run cat health`.",
     "install": {
       "none": true
     },

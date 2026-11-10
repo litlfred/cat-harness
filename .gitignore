@@ -53,6 +53,7 @@ node_modules/
 /docs/subgraph/
 /docs/payload/
 /docs/assets/library/
+/docs/assets/keywords/
 /docs/en/cat-harness/library/
 /docs/assets/voices/index.json
 /docs/en/cat-harness/voices/
@@ -123,7 +124,6 @@ node_modules/
 /docs/en/cat-harness/code/
 /docs/en/cat-harness/memory/
 /docs/en/cat-harness/pipeline-plugins/
-/docs/en/cat-harness/editor-checkers/
 /docs/en/cat-harness/scenarios/
 /docs/en/cat-harness/policies/
 /docs/en/cat-harness/test-plans/

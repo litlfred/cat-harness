@@ -7,6 +7,10 @@
     },
     {
       "typology": "archimate",
+      "family": "archimate-relationship-rules/v1"
+    },
+    {
+      "typology": "archimate",
       "family": "cat-archimate-config/v1"
     },
     {
