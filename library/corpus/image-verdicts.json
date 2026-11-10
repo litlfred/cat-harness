@@ -8,6 +8,28 @@
   },
   "inspected_at": "2026-09-29",
   "verdicts": {
+    "arxiv-2301.06767v1": {
+      "img-p004-1": {
+        "role": "figure",
+        "saw": "page 4, above the caption 'Fig. 1. The combination of keywords to search for term datasets and systems'; the boxes hold the search words, so this raster IS Figure 1",
+        "draft": "Figure 1: the literature-search query as four groups of alternative words joined left to right \u2014 {Automatic, Automated, \u2026} \u2192 {Term, Terminology, \u2026} \u2192 {Extraction, Recognition, Detection, Retrieval, \u2026} \u2192 {Data, Dataset, Corpus, Corpora, \u2026}. A bracket under the first three groups is labelled 'Methods/Systems', and a longer bracket under all four is labelled 'Datasets': the first three groups found the systems surveyed, all four found the datasets."
+      },
+      "img-p010-1": {
+        "role": "figure",
+        "saw": "page 10, above the caption 'Fig. 2. Feature group and subgroup for machine learning models'; a tree whose leaves include C-Value and TF-IDF, matching \u00a75's feature groups, so this raster IS Figure 2",
+        "draft": "Figure 2: a tree of the features used by feature-engineering term extractors. 'Features' branches into six groups: shape (SHAP: length, alphanumeric, capitalisation), linguistic (LING: POS, NER, chunk, stopword), frequency (FREQ: relative frequency in the specialised corpus and in a referral corpus), statistical (STAT), contextual (CTXT: before/after parentheses) and variational (VARI: number of variations, variation statistics). Statistical features split into those computed without a reference corpus (C-Value, TF-IDF, lexicon cohesion) and those computed against one (domain pertinence, domain relevance, weirdness, relevance, termhood)."
+      },
+      "img-p012-1": {
+        "role": "figure",
+        "saw": "page 12, above the caption 'Fig. 3. An example of how three types of neural ATE classifiers work'; three panels titled Sequence, Token and Seq2Seq classifier, so this raster IS Figure 3",
+        "draft": "Figure 3: three ways a neural model extracts terms, side by side, each fed the sentence 'We meta-analyzed mortality using random-effect models.' Left, a sequence classifier reads a candidate paired with its sentence ('random-effect models.' then the sentence) and a linear layer with softmax answers 'Term?'. Centre, a token classifier labels every token O (not a term), B (beginning of term) or I (inside a term) through a shared linear layer with softmax. Right, a sequence-to-sequence model writes out the list of terms directly: 'meta-analyzed ; mortality ; random-effect models'."
+      },
+      "img-p016-1": {
+        "role": "figure",
+        "saw": "page 16, above the caption 'Fig. 4. The overview of different evaluation metrics in ATE task'; boxes for evaluation methods and scope of results, so this raster IS Figure 4",
+        "draft": "Figure 4: how term extraction is evaluated, on two axes. 'Evaluation levels' splits into evaluation methods (human judges, dictionary-based, gold standard-based) and scope of results (entire results, part of results, top-k results). Beneath both sit the three measures used throughout: precision, recall and F1-score."
+      }
+    },
     "arxiv-2202.02427v1": {
       "img-p003-1": {
         "role": "decorative",
@@ -3056,6 +3078,15 @@
     }
   },
   "attribution": {
+    "arxiv-2301.06767v1": {
+      "inspected_by": {
+        "kind": "agent",
+        "id": "claude",
+        "model": "claude-opus-5-5",
+        "session": "https://claude.ai/code/session_01Qmmkt5HtqnterAfxauAG12"
+      },
+      "inspected_at": "2026-11-10"
+    },
     "kg-folio-asst-2026-09-30": {
       "inspected_by": {
         "kind": "agent",
