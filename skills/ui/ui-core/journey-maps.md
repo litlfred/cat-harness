@@ -30,6 +30,33 @@ from it with a `workshop` node that points at its step ids; declare the
 in TypeScript, or in a page: each copy drifts from the BPMN and the stories
 the node already links.
 
+## Journeys with systems get an ArchiMate model
+
+The `journeys-viewer` draws the story; it does not draw the architecture.
+When a layer's journeys name **system** actors (`actorKinds: ["system"]` in
+`roles.json`), declare an ArchiMate model too, so the systems and who uses
+them in each moment are drawn as architecture:
+
+- a directory of graph typology `archimate` with its `cat-archimate.config.json`,
+  and the `archimate` visualiser (`renderedBy: "archimate-pages"`) beside the
+  `journeys` one in the layer's declaration. Declaring them is what turns the
+  ArchiMate subgraph on; nothing infers it from the journeys;
+- the model generated from the same nodes, never typed again: the roles as
+  business roles and application components, each journey a business
+  process with the people assigned and the systems serving it (see
+  smart-trust-demo `tools/archimate/` and smart-ips-pilgrimage
+  `archimate/build.py`);
+- a landing page that shows one card per journey moment, linking the
+  walkthrough, the story and the moment's ArchiMate view, generated from the
+  `user-scenario` nodes (smart-trust-demo's "Four moments that matter").
+
+Failure this prevents (smart-ips-pilgrimage, 2026-11-10): the IG had
+journeys with four system actors and a journeys viewer, but no ArchiMate
+model. The owner expected the journeys to show through ArchiMate, as
+smart-trust-demo's do, and found the ArchiMate subgraph off. If a layer's
+overview figure draws those systems, rebuild it as a view of that model
+in the figure's own layout (folio-assistant-core `figure-rebuild`).
+
 ## The `user-scenario` kind
 
 One file per journey (`user-scenario/0.4.0`; `0.3.0`, `0.2.0` and the draft
