@@ -24,6 +24,8 @@ restore  ──▶  draft / edit  ──▶  build  ──▶  contribute
 
 Artefacts are stored on orphan branches named for their package and toolchain (e.g. `lake-cache/<package>-<toolchain>`). This keeps the repository clean while persisting large derived outputs across builds.
 
+A branch that keeps every seed grows by what each seed's writer changes. Write seeds by [`git-friendly-churn`](git-friendly-churn.md): the same bytes when nothing changed, and a stable path for each file, so a new seed costs deltas, not copies.
+
 ## Validity checking (3-valued)
 
 The validity of a cache is not a simple boolean. It relies on the `CompiledInputsSchema` defined in the content core's `schemas/materialization.ts`. Validity is checked BEFORE use via `compiledValidity()` and returns one of three states:

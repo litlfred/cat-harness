@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_255 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_256 skills in 19 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (24)
 
@@ -132,12 +132,13 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 |---|---|
 | [`kg-navigation`](skills/kg/kg-navigation/kg-navigation.md) | How a cold agent finds and loads the skill that governs its task. |
 
-**`skills/process/process-core/`** (7)
+**`skills/process/process-core/`** (8)
 
 | Skill | What it is for |
 |---|---|
 | [`compiled-artefact-cache`](skills/process/process-core/compiled-artefact-cache.md) | The general pattern for caching expensive compiled artefacts (Lean .oleans, FHIR ASTs) across builds. |
 | [`decision-methodology-selector`](skills/process/process-core/decision-methodology-selector.md) | Given a decision context, select the applicable methodology from the methodology graph. |
+| [`git-friendly-churn`](skills/process/process-core/git-friendly-churn.md) | Write files that git keeps many versions of (caches, published sites, generated indexes) so each new version costs a small delta, not a whole copy. |
 | [`methodology-adoption`](skills/process/process-core/methodology-adoption.md) | How a named external methodology enters the knowledge graph, and how an agent picks which one applies. |
 | [`role-model`](skills/process/process-core/role-model.md) | Actors, roles and skills — who performs a BPMN task, under which swimlane, with which skills. |
 | [`swimlane-glossary`](skills/process/process-core/swimlane-glossary.md) | Swimlane Glossary Skill |
