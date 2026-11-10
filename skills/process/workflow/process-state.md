@@ -152,7 +152,7 @@ So, **when you clone a harness repository after the session started**:
 3. **Name the process before the first edit.** A code fix in a layer is
    `sdlc/code-change-review`; a repin is `sdlc/upstream-version-adoption`; a
    preview is `sdlc/feature-staging`. A delivery is `delivery-summary` plus the
-   deep-link rule in `staging-review`.
+   deep-link rule in `feedback-deep-links`.
 4. **With no `workflow_*` tools, say so.** "Process X, not recorded: this
    session has no workflow engine" is the true third state. Never write it as
    recorded, and never leave it out.

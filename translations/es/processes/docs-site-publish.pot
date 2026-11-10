@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: docs-site-publish\n"
-"POT-Creation-Date: 2026-11-04T06:58:46.821Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.655Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: sdlc/processes/docs-site-publish.bpmn:75
 #. Diagram element documentation
-msgid "`compose-docs.ts` composes the docs layers into one Jekyll source (`cat-harness/docs/` as the base, the checkout root's `docs/` laid over it); then each instance that builds a site of its own composes it into that source at `<instance>/`, so the result is one site with one sidebar, search and language selector. The step is bound by the Tool, not by a `calledElement`: the step names skill `docs-generation`, each Tool that satisfies it and composes a site lists its own `subprocesses`, and those carry the steps; which instances compose a site is data in their declarations. A composing Tool may name a post-build pass, which `Task_Build` runs after the Jekyll build. With nothing to compose, the source is left as `compose-docs` wrote it, and that is reported."
+msgid "`compose-docs.ts` composes the docs layers into one Jekyll source (`cat-harness/docs/` as the base, the checkout root's `docs/` laid over it); then each layer that builds a site of its own composes it into that source at `<instance>/`, so the result is one site with one sidebar, search and language selector. The step is bound by the Tool, not by a `calledElement`: the step names skill `docs-generation`, each Tool that satisfies it and composes a site lists its own `subprocesses`, and those carry the steps; which layers compose a site is data in their declarations. A composing Tool may name a post-build pass, which `Task_Build` runs after the Jekyll build. With nothing to compose, the source is left as `compose-docs` wrote it, and that is reported."
 msgstr ""
 
 #: sdlc/processes/docs-site-publish.bpmn:59
@@ -86,7 +86,7 @@ msgstr ""
 
 #: sdlc/processes/docs-site-publish.bpmn:74
 #. Diagram label
-msgid "Compose each instance's site [its Tool]"
+msgid "Compose each layer's site [its Tool]"
 msgstr ""
 
 #: sdlc/processes/docs-site-publish.bpmn:111

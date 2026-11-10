@@ -183,7 +183,7 @@ than run it to completion at $N\times$ the cost of serial work.
 ## Agentic SE literature synthesis & cross-paper methodology
 
 For the comprehensive cross-cutting synthesis, epistemic partition (Measured vs. Recommended vs. Claimed), and bidirectional adversarial analysis across all five foundation papers (He et al., SWE-Debate, SWE-Router, TCAndon-Router, CodeAgent), see:
-- [`methodologies/agentic-se-literature-synthesis.md`](../../../methodologies/agentic-se-literature-synthesis.md)
+- [`research/methodologies/agentic-se-literature-synthesis.md`](../../../research/methodologies/agentic-se-literature-synthesis.md)
 
 ## Known gaps
 

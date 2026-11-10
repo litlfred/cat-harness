@@ -231,7 +231,7 @@ where the terms are defined.
 **And when a link IS the right thing — a rendered page the reader has to see
 for themselves — it points at the page, not at the site it is on.** The rule
 and where the page list comes from:
-[`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §"The deep-link rule"; the failure it also
+[`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md); the failure it also
 hides: [`continual-progress`](../../../sdlc/skills/sdlc-core/continual-progress.md) §"Link the PAGE, never the
 site root".
 

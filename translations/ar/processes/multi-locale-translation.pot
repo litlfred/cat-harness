@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: multi-locale-translation\n"
-"POT-Creation-Date: 2026-11-07T14:50:12.441Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.569Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:149
 #. Diagram element documentation
-msgid "`translation:glossary:check`, against the layered term base: the normative reference glossaries first, then each layer in the order the index config lists it, the instance's own glossary last and never overriding. A platform term found in text of another subject area is a sense check for a person, not a violation."
+msgid "`translation:glossary:check`, against the layered term base: the normative reference glossaries first, then each layer in the order the index config lists it, the layer's own glossary last and never overriding. A platform term found in text of another subject area is a sense check for a person, not a violation."
 msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:78
@@ -46,7 +46,7 @@ msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:30
 #. Diagram element documentation
-msgid "Decides which instances and locales are translated, and when locale PRs may be merged. The merge window set here binds the lead's merge step and the refresh watcher alike. Official sign-off is also this person's, and is a separate process."
+msgid "Decides which layers and locales are translated, and when locale PRs may be merged. The merge window set here binds the lead's merge step and the refresh watcher alike. Official sign-off is also this person's, and is a separate process."
 msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:108
@@ -121,7 +121,7 @@ msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:72
 #. Diagram element documentation
-msgid "Once, for every locale: the `.pot` templates for the pages, the diagrams (`translate-bpmn --extract`) and the glossary schemes, each by the instance's own extractor. A locale that would need a different template is a defect in the extraction, not a reason to extract again."
+msgid "Once, for every locale: the `.pot` templates for the pages, the diagrams (`translate-bpmn --extract`) and the glossary schemes, each by the layer's own extractor. A locale that would need a different template is a defect in the extraction, not a reason to extract again."
 msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:115
@@ -166,7 +166,7 @@ msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:87
 #. Diagram element documentation
-msgid "Schedule a fresh session that follows `translation-refresh` on each instance, so a template that moves after today is caught by its check failing, not by a reader."
+msgid "Schedule a fresh session that follows `translation-refresh` on each layer, so a template that moves after today is caught by its check failing, not by a reader."
 msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:86
@@ -211,7 +211,7 @@ msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:20
 #. Diagram element documentation
-msgid "Translate one or more instances into several locales at once, as a team: one source-language lead, one translator per locale, an untainted round trip, and the owner's merge window. The result is unofficial, on main, and kept current by a watcher. You are in this process when more than one locale is being produced from the same source at the same time. `translation-workflow` is the machine half for one catalogue and `human-translation-workflow` is the path to an official, signed-off translation; this process is the team around them. It extracts ONCE: every locale starts from the same templates, merged to main in one source PR before any locale begins, and no translator re-extracts. Each locale then lands as its own PR to main, never into the source branch, and a source PR's branch receives nothing after it merges. Two things are never done in a translation: fixing the source (a source-text error is reported as one issue to the lead), and editing a FHIR resource inline (terms go into one CodeSystem supplement per locale). Officiality is not decided here: every catalogue is written unofficial, and a person makes it official through human-translation-workflow."
+msgid "Translate one or more layers into several locales at once, as a team: one source-language lead, one translator per locale, an untainted round trip, and the owner's merge window. The result is unofficial, on main, and kept current by a watcher. You are in this process when more than one locale is being produced from the same source at the same time. `translation-workflow` is the machine half for one catalogue and `human-translation-workflow` is the path to an official, signed-off translation; this process is the team around them. It extracts ONCE: every locale starts from the same templates, merged to main in one source PR before any locale begins, and no translator re-extracts. Each locale then lands as its own PR to main, never into the source branch, and a source PR's branch receives nothing after it merges. Two things are never done in a translation: fixing the source (a source-text error is reported as one issue to the lead), and editing a FHIR resource inline (terms go into one CodeSystem supplement per locale). Officiality is not decided here: every catalogue is written unofficial, and a person makes it official through human-translation-workflow."
 msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:141
@@ -226,7 +226,7 @@ msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:63
 #. Diagram element documentation
-msgid "Which instances, which locales, which assets (pages, diagrams, glossary, FHIR terms), and the window in which locale PRs may be merged."
+msgid "Which layers, which locales, which assets (pages, diagrams, glossary, FHIR terms), and the window in which locale PRs may be merged."
 msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:158

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: theme-ui-review\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.164Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.634Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: processes/ui/theme-ui-review.bpmn:53
 #. Diagram label
-msgid "Branding: does it read as this instance?"
+msgid "Branding: does it read as this layer?"
 msgstr ""
 
 #: processes/ui/theme-ui-review.bpmn:50
@@ -86,7 +86,7 @@ msgstr ""
 
 #: processes/ui/theme-ui-review.bpmn:54
 #. Diagram element documentation
-msgid "Marks, palettes and art against the instance's own declaration rather than a remembered style. The question a downstream folio makes sharp: would this instance inherit something it did not choose?"
+msgid "Marks, palettes and art against the layer's own declaration rather than a remembered style. The question a downstream folio makes sharp: would this layer inherit something it did not choose?"
 msgstr ""
 
 #: processes/ui/theme-ui-review.bpmn:83

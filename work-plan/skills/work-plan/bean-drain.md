@@ -143,7 +143,7 @@ question recorded, so that it does not hold the queue.
 When the question is about changed pages, it carries the staging preview: one
 deep link per changed page, with the same page on main, in the output
 contract's `stagingLinks` field
-([`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §"The deep-link rule").
+([`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md)).
 
 ## 5. Close it, and refill
 

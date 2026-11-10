@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: archimate-publish\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.155Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.630Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -91,12 +91,12 @@ msgstr ""
 
 #: processes/ui/archimate-publish.bpmn:44
 #. Diagram element documentation
-msgid "Tool `archimate-check` (`archimate:validate`, on the instance root): every model the config names is held and parses, every box in every view draws an element the model holds, every relationship's ends are in the model."
+msgid "Tool `archimate-check` (`archimate:validate`, on the layer root): every model the config names is held and parses, every box in every view draws an element the model holds, every relationship's ends are in the model."
 msgstr ""
 
 #: processes/ui/archimate-publish.bpmn:50
 #. Diagram element documentation
-msgid "Tool `archimate-metamodel` (`archimate:metamodel --check`, on the instance root): the element types the model uses and every (source type, relationship, target type) pattern, each checked against ArchiMate's relationship table. Placeholder elements named after their own type are reported, never fatal: removing them is the author's call."
+msgid "Tool `archimate-metamodel` (`archimate:metamodel --check`, on the layer root): the element types the model uses and every (source type, relationship, target type) pattern, each checked against ArchiMate's relationship table. Placeholder elements named after their own type are reported, never fatal: removing them is the author's call."
 msgstr ""
 
 #: processes/ui/archimate-publish.bpmn:67

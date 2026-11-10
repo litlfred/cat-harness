@@ -98,14 +98,14 @@ review or sign-off carries it: one deep link per changed page, to the anchor
 where the change sits, with the same page on main as *before*. Where the skill
 declares an output contract, they go in its `stagingLinks` field. The rule, and
 where the page list comes from:
-[`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §"The deep-link rule".
+[`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md).
 
 ## Showing it to the requester
 
 Design use from CRDM ends in a person's choice, so the candidates must be in front of that person before implementation starts:
 
 1. **Commit** the candidates, `intent.md`, `checks/` (screenshots) and `reviews/` under `docs/proposals/<slug>/wireframes/` **on the feature branch**, so `feature-staging` publishes them with the rest of the branch.
-2. **Show** them where the requester will look, chosen from context: the conversation, the issue the request came from, the pull request, or more than one of these. Where it goes is a judgement ([`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md), the deep-link rule, point 5); every place chosen carries the same content: a short narrative of what each candidate does differently; branches/ deep links to each candidate's HTML (not the site root); and its web and mobile screenshots shown as images, not only linked. Say which could not be linked or rendered, and why.
+2. **Show** them where the requester will look, chosen from context: the conversation, the issue the request came from, the pull request, or more than one of these. Where it goes is a judgement ([`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md), point 5); every place chosen carries the same content: a short narrative of what each candidate does differently; branches/ deep links to each candidate's HTML (not the site root); and its web and mobile screenshots shown as images, not only linked. Say which could not be linked or rendered, and why.
 3. **Ask** the requester or BA to choose, with the comparison (one row per candidate, from `A_CompareOptions`) and a recommendation, per [`interaction-modality`](../../conduct/conduct-core/interaction-modality.md) where it applies.
 4. **Record** their choice in the proposal and in the output's `chosen`. An agent never chooses on their behalf. Implementation (CRDM Phase 6) builds against the chosen candidate, and the delivery summary links it beside the after-screenshot.
 

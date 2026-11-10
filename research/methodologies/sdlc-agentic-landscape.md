@@ -99,7 +99,7 @@ software and knowledge engineering. Below is the mapping against the repository'
 ### D. Software Quality Assurance & Testing: Rigorous Evidence-Based Coverage
 - **Code Quality Gates (`sdlc/processes/code-quality-gates.bpmn`, `bun run cat gates`)**:
   - Derived dynamically from CI workflows; gates run both static lints, typechecks, schema checks, and browser suites.
-- **Verifiable AI Guideline Evaluation (`methodologies/verifiable-ai-guideline-evaluation.md`)**:
+- **Verifiable AI Guideline Evaluation (`research/methodologies/verifiable-ai-guideline-evaluation.md`)**:
   - Multi-agent cross-examination with statistical consensus (e.g., Fleiss' kappa, Gwet's AC1).
 - **QA Reports & Attestations (`sdlc/processes/qa-report-signing.bpmn`, `sdlc/processes/decisions/signing-route.dmn`)**:
   - Commit-keyed QA verdicts stored on orphan branches (`qa-reports`) and signed attestations.

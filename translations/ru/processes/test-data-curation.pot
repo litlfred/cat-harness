@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: test-data-curation\n"
-"POT-Creation-Date: 2026-11-02T07:02:49.181Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.688Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -151,7 +151,7 @@ msgstr ""
 
 #: sdlc/processes/test-data-curation.bpmn:132
 #. Diagram element documentation
-msgid "Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: \"test-data-generated/1.0.0\"` and `kind: \"generated\"` in the instance's declared `test-data-generated` directory. Never store materialised records."
+msgid "Record `contentType`, `specialisation`, `template`, `params`, `seed`, and the canonical `sha256` digest (`computeGeneratedSetDigest`) with `$schema: \"test-data-generated/1.0.0\"` and `kind: \"generated\"` in the layer's declared `test-data-generated` directory. Never store materialised records."
 msgstr ""
 
 #: sdlc/processes/test-data-curation.bpmn:67
@@ -211,7 +211,7 @@ msgstr ""
 
 #: sdlc/processes/test-data-curation.bpmn:77
 #. Diagram element documentation
-msgid "Write the curated `records` and optional `citations` with `$schema: \"test-data-fixed/1.0.0\"` and `kind: \"fixed\"` into the instance's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema."
+msgid "Write the curated `records` and optional `citations` with `$schema: \"test-data-fixed/1.0.0\"` and `kind: \"fixed\"` into the layer's declared `test-data-fixed` directory (`schemas/sdlc/test-data.ts`). Recipe fields (`template`, `params`, `seed`) are refused by the strict schema."
 msgstr ""
 
 #: sdlc/processes/test-data-curation.bpmn:131

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: secure-agent-permissions\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.150Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.626Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -146,7 +146,7 @@ msgstr ""
 
 #: processes/process/secure-agent-permissions.bpmn:62
 #. Diagram element documentation
-msgid "The needed set is the agent-permissions skill's list (write generated projections: CI only, never the agent; edit hooks or settings; run the gates; push a feature branch; open a PR), scoped to what this instance's processes actually call. The granted set is the recorded grants plus the Tool's current config, read through its adapter. A config rule with no recorded grant is reported as unrecorded, not treated as granted."
+msgid "The needed set is the agent-permissions skill's list (write generated projections: CI only, never the agent; edit hooks or settings; run the gates; push a feature branch; open a PR), scoped to what this layer's processes actually call. The granted set is the recorded grants plus the Tool's current config, read through its adapter. A config rule with no recorded grant is reported as unrecorded, not treated as granted."
 msgstr ""
 
 #: processes/process/secure-agent-permissions.bpmn:90
@@ -156,7 +156,7 @@ msgstr ""
 
 #: processes/process/secure-agent-permissions.bpmn:54
 #. Diagram element documentation
-msgid "Which coding-agent Tool is running this session, and which others the instance is configured for (each has its own config files: AGENTS.md is read by many; Claude Code, Gemini CLI, Cursor, Copilot and Codex each add their own). The Tool's adapter says where its permissions live and how a rule is written. A Tool with no adapter is reported, and its permissions are left to the person."
+msgid "Which coding-agent Tool is running this session, and which others the layer is configured for (each has its own config files: AGENTS.md is read by many; Claude Code, Gemini CLI, Cursor, Copilot and Codex each add their own). The Tool's adapter says where its permissions live and how a rule is written. A Tool with no adapter is reported, and its permissions are left to the person."
 msgstr ""
 
 #: processes/process/secure-agent-permissions.bpmn:120
