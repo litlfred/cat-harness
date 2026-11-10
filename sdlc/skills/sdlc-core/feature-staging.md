@@ -401,6 +401,27 @@ It prints its plan first, every time: which workflow it mirrors, where the
 output lands, what it replaces and what it keeps, the commit message, and
 what it does not run.
 
+**The size review.** Owner, 2026-11-10: *"add size review as part of
+authoring process"*. Every build, preview or main, prints a size report
+before its push (`site-size.ts`, `bun run cat site:size`). The report gives
+the total against the published root, the top directories, the size by
+extension, the biggest files, byte-identical duplicates, source maps, the
+directories named after another layer of `index.lock.json`, and the
+directories the shared-assets host could serve. It writes `site-size.json`
+beside the build, never into the site. The review is advisory: growth over
+10% or 10 MB is a warning, and nothing is refused. Read the report before you
+hand over the preview. The usual culprits each have one fix:
+
+- another layer's pages copied in: link that layer's own site;
+- the same bytes under several names: publish one index, and serve each file
+  once;
+- vendored libraries: serve them from the shared-assets host;
+- `.map` files: do not publish them.
+
+When the growth holds and none of these fixes applies, raise a decision card
+with the owner, with the comparison line and the top contributing directories
+on it.
+
 **Which publisher** is read from the repository's own workflow files, from the
 reusable workflow each one calls:
 
