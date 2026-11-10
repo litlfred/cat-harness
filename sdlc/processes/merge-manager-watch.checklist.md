@@ -16,7 +16,7 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - Skill: `merge-manager-watcher`.
-- What: Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, and each PR owner's last push or comment.
+- What: Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, each PR owner's last push or comment, and every harness repository's open main-red issue with its newest fa
 - Record it: `workflow_complete` with `node: "Task_Read"`.
 - next: → `Gw_Needed` (Still holding the lane?)
 
@@ -35,6 +35,7 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
   - «Ready» → `Gw_Green` (All green per rule 1?)
   - «Stalled» → `Call_Stalled` (Stalled-agent triage)
   - «Nothing» → `End_Idle` (Nothing to do)
+  - «Main red» → `Gw_RedOwned` (Owned?)
 
 ### 2. Announce the hand-over or the lapse (`Task_Lapse`)
 
@@ -70,6 +71,13 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
+### Decide — Owned? (`Gw_RedOwned`)
+
+- Coordinate, never duplicate.
+- Call `workflow_complete` with `node: "Gw_RedOwned"` and `outcome` set to the label that holds:
+  - «Yes» → `End_RedOwned` (Owned: coordinate)
+  - «No» → `Gw_RedCause` (Which cause?)
+
 ## Done — Lane released (`End_Lapsed`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
@@ -96,6 +104,17 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
+## Done — Owned: coordinate (`End_RedOwned`)
+
+- The instance completes here: Tell the owning thread what the sweep saw (the failing run, and any other repository it reddens), track its PR like any other in the lane, and open no second fixer. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### Decide — Which cause? (`Gw_RedCause`)
+
+- Sort each failure into one cause before dispatching, because the fix lands in a different place for each.
+- Call `workflow_complete` with `node: "Gw_RedCause"` and `outcome` set to the label that holds:
+  - «Infrastructure» → `Task_Rerun` (Re-run the failed job once)
+  - «Code or pins» → `Task_DispatchFixer` (Dispatch a fixer)
+
 ## Done — Wake handled (`End_MetaDone`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
@@ -115,14 +134,30 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
 - Record it: `workflow_complete` with `node: "Task_Card"`.
 - next: → `Owner_Approve` (Approve the batch card)
 
-### 7. Merge train (`Call_Train`)
+### 7. Re-run the failed job once (`Task_Rerun`)
+
+- Who: the `Merge steward` lane (role `merge-steward`).
+- Skill: `merge-manager-watcher`.
+- What: Infrastructure is re-run, not fixed: re-run the failed job once.
+- Record it: `workflow_complete` with `node: "Task_Rerun"`.
+- next: → `End_RedHandled` (Fix under way)
+
+### 8. Dispatch a fixer (`Task_DispatchFixer`)
+
+- Who: the `Merge steward` lane (role `merge-steward`).
+- Skill: `merge-manager-watcher`.
+- What: One fixer agent per cause, never one per repository.
+- Record it: `workflow_complete` with `node: "Task_DispatchFixer"`.
+- next: → `End_RedHandled` (Fix under way)
+
+### 9. Merge train (`Call_Train`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - What: Add the merge-train label instead of merging; the train lands the batch with one CI run.
 - A subprocess (`Process_MergeTrain`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Done` (Wake handled)
 
-### 8. Merge it through merge:guard (`Task_Direct`)
+### 10. Merge it through merge:guard (`Task_Direct`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - Skill: `merge-manager-watcher`.
@@ -130,13 +165,17 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
 - Record it: `workflow_complete` with `node: "Task_Direct"`.
 - next: → `End_Done` (Wake handled)
 
-### 9. Approve the batch card (`Owner_Approve`)
+### 11. Approve the batch card (`Owner_Approve`)
 
 - Who: the `Owner` lane (role `user`).
 - Skill: `interaction-modality`.
 - What: In the merge manager's session only: one card per batch, naming each PR, after its six lines were posted in that chat.
 - Record it: `workflow_complete` with `node: "Owner_Approve"`.
 - next: → `Gw_Train` (Rides the train?)
+
+## Done — Fix under way (`End_RedHandled`)
+
+- The instance completes here: The next wake reads main again; the red stays on the sweep until the next main run is green. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
 ## Done — Wake handled (`End_Done`)
 

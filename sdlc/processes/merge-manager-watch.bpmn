@@ -14,7 +14,7 @@
     <bpmn:participant id="Participant_Process_MergeManagerWatch" name="Merge manager watch: wake, read the queue live, route" processRef="Process_MergeManagerWatch"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_MergeManagerWatch" name="Merge manager watch: wake, read the queue live, route" isExecutable="false">
-    <bpmn:documentation>The loop run by the session that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher): elected, appointed, or holding it for its own PRs only. Each wake reads the open PRs, the runner queue, main's verdict and the PR owners live, acknowledges merge requests within the heartbeat, and routes to the train, a direct merge, runner relief, a saturation meta-merge or a stalled-agent takeover. Every merge waits for the owner's own OK, given in the merge manager's session as one card per batch (owner ruling, 2026-11-07, card Approvals, B). How a sibling finds or elects the merge manager and sends it a request is Process_MergeRequest.</bpmn:documentation>
+    <bpmn:documentation>The loop run by the session that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher): elected, appointed, or holding it for its own PRs only. Each wake reads the open PRs, the runner queue, main's verdict and the PR owners live, acknowledges merge requests within the heartbeat, and routes to the train, a direct merge, runner relief, a saturation meta-merge, a stalled-agent takeover, or a fixer for a red main in any harness repository (owner, 2026-11-10: "That should be a part of merge manager (dispatch an agent to fix them)", "Add to process"). Every merge waits for the owner's own OK, given in the merge manager's session as one card per batch (owner ruling, 2026-11-07, card Approvals, B). How a sibling finds or elects the merge manager and sends it a request is Process_MergeRequest.</bpmn:documentation>
     <bpmn:laneSet id="LaneSet_Process_MergeManagerWatch">
       <bpmn:lane id="Lane_Steward" name="Merge steward" partitionElementRef="merge-steward">
         <bpmn:documentation>The merge manager: the one session holding the merge-steward lane, by the owner's word, by election, or for its own PRs only. Each wake it reads the open PRs, the runner queue, main's verdict and who owns each PR, acknowledges requests within the heartbeat, then routes to the process the queue needs or stays idle. It hands over explicitly when it stops; like any agent it may stall, and the siblings then re-elect.</bpmn:documentation>
@@ -38,6 +38,12 @@
         <bpmn:flowNodeRef>End_MetaDone</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_StalledDone</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_Idle</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_RedOwned</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_RedOwned</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gw_RedCause</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Rerun</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_DispatchFixer</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_RedHandled</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Owner" name="Owner" partitionElementRef="user">
         <bpmn:documentation>Approves in the merge manager's session only, one card per batch. An approval given in a sibling's session does not authorise a merge.</bpmn:documentation>
@@ -56,7 +62,7 @@
       <bpmn:timerEventDefinition id="Timer_Wake"/>
     </bpmn:startEvent>
     <bpmn:task id="Task_Read" name="Read the queue, acknowledge requests">
-      <bpmn:documentation>Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, and each PR owner's last push or comment. One sweep runs merge:watch over every repository it holds. Liveness duty: acknowledge each new merge request within holding.heartbeatMinutes, and post a heartbeat with each sweep, so siblings can tell a live merge manager from a stalled one.</bpmn:documentation>
+      <bpmn:documentation>Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, each PR owner's last push or comment, and every harness repository's open main-red issue with its newest failed runs on main and gh-pages, whether or not the lane holds a PR there (gh api repos/&lt;owner&gt;/&lt;repo&gt;/actions/runs?branch=&lt;default&gt;&amp;event=push: the latest completed push run per workflow, conclusion failure). One sweep runs merge:watch over every repository it holds. Liveness duty: acknowledge each new merge request within holding.heartbeatMinutes, and post a heartbeat with each sweep, so siblings can tell a live merge manager from a stalled one.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_1</bpmn:incoming>
       <bpmn:outgoing>Flow_2</bpmn:outgoing>
@@ -78,12 +84,13 @@
       <bpmn:incoming>Flow_21</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:exclusiveGateway id="Gw_Route" name="What does the queue need?">
-      <bpmn:documentation>Saturated: queued runs are 60+ minutes old and nothing has landed, or the owner says the runners are full. Stalled: a PR owner has been silent for 2+ hours. Ready: a merge request is in, with green owed CI. Otherwise nothing.</bpmn:documentation>
+      <bpmn:documentation>Saturated: queued runs are 60+ minutes old and nothing has landed, or the owner says the runners are full. Stalled: a PR owner has been silent for 2+ hours. Ready: a merge request is in, with green owed CI. Main red: the main-red issue is open, or the latest completed push run of a workflow on a harness repository's main (or a gh-pages deploy) failed. Otherwise nothing.</bpmn:documentation>
       <bpmn:incoming>Flow_19</bpmn:incoming>
       <bpmn:outgoing>Flow_3</bpmn:outgoing>
       <bpmn:outgoing>Flow_4</bpmn:outgoing>
       <bpmn:outgoing>Flow_5</bpmn:outgoing>
       <bpmn:outgoing>Flow_6</bpmn:outgoing>
+      <bpmn:outgoing>Flow_23</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:task id="Task_Relieve" name="Relieve the runners">
       <bpmn:documentation>Enforce the pacing rule of continual-progress (owner ruling, 2026-11-07, card Cancel CI): close superseded or duplicate PRs, such as a re-pin whose commits another open PR already carries, and cancel their runs; cancel stale queued runs that never started, never a main push run that has started; ask the owners of P3 PRs to return them to draft.</bpmn:documentation>
@@ -157,6 +164,41 @@
     <bpmn:endEvent id="End_Idle" name="Nothing to do">
       <bpmn:incoming>Flow_6</bpmn:incoming>
     </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gw_RedOwned" name="Owned?">
+      <bpmn:documentation>Coordinate, never duplicate. Yes when a thread, agent or open PR already owns this failure: a draft fix PR linked from the main-red issue, an open PR in that repository touching the same files (rule 3), or a sibling's claim in the coordination group. One fixer per cause, never one per repository: a single lower-layer bug can redden every layer above it, so a red that shares a cause with an owned one is owned too.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
+      <bpmn:incoming>Flow_23</bpmn:incoming>
+      <bpmn:outgoing>Flow_24</bpmn:outgoing>
+      <bpmn:outgoing>Flow_25</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:endEvent id="End_RedOwned" name="Owned: coordinate">
+      <bpmn:documentation>Tell the owning thread what the sweep saw (the failing run, and any other repository it reddens), track its PR like any other in the lane, and open no second fixer.</bpmn:documentation>
+      <bpmn:incoming>Flow_24</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gw_RedCause" name="Which cause?">
+      <bpmn:documentation>Sort each failure into one cause before dispatching, because the fix lands in a different place for each. Infrastructure: "The runner has received a shutdown signal", a cancelled job, a Pages deploy stuck at syncing_files until it times out. Pins out of step: the failure names a file or test of another layer whose own main already differs. The layer's own bug: it names this layer's own file and fails at this layer's own main. A lower layer's bug: it names a lower layer's file and fails at that layer's main too.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
+      <bpmn:incoming>Flow_25</bpmn:incoming>
+      <bpmn:outgoing>Flow_26</bpmn:outgoing>
+      <bpmn:outgoing>Flow_27</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:task id="Task_Rerun" name="Re-run the failed job once">
+      <bpmn:documentation>Infrastructure is re-run, not fixed: re-run the failed job once. A second failure is real and goes back through the sort; a Pages timeout goes to the site-size work. A train that fails only on infrastructure gets its failed job re-run once. Never cancel a main push run that has started.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
+      <bpmn:incoming>Flow_26</bpmn:incoming>
+      <bpmn:outgoing>Flow_28</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Task_DispatchFixer" name="Dispatch a fixer">
+      <bpmn:documentation>One fixer agent per cause, never one per repository. Give it the failing run, the cause and the repository: pins out of step go to the next re-pin train on the index; the layer's own bug to a fix PR in that layer; a lower layer's bug to a fix PR in the lower layer, then a re-pin. It opens a draft fix PR, linked from the main-red issue. The fix is a non-content P0 PR and follows the normal merge rules: the six-line request, the owner's batch card, full-tier CI green as judged. Close the loop when the next main run is green and the main-red issue closes. Never silence the failure, and never skip, disable or quarantine a gate or a test.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
+      <bpmn:incoming>Flow_27</bpmn:incoming>
+      <bpmn:outgoing>Flow_29</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="End_RedHandled" name="Fix under way">
+      <bpmn:documentation>The next wake reads main again; the red stays on the sweep until the next main run is green.</bpmn:documentation>
+      <bpmn:incoming>Flow_28</bpmn:incoming>
+      <bpmn:incoming>Flow_29</bpmn:incoming>
+    </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1" sourceRef="Start_Wake" targetRef="Task_Read"/>
     <bpmn:sequenceFlow id="Flow_2" sourceRef="Task_Read" targetRef="Gw_Needed"/>
     <bpmn:sequenceFlow id="Flow_19" name="Yes" sourceRef="Gw_Needed" targetRef="Gw_Route"/>
@@ -179,6 +221,13 @@
     <bpmn:sequenceFlow id="Flow_17" name="No" sourceRef="Gw_Train" targetRef="Task_Direct"/>
     <bpmn:sequenceFlow id="Flow_8" sourceRef="Call_Train" targetRef="End_Done"/>
     <bpmn:sequenceFlow id="Flow_18" sourceRef="Task_Direct" targetRef="End_Done"/>
+    <bpmn:sequenceFlow id="Flow_23" name="Main red" sourceRef="Gw_Route" targetRef="Gw_RedOwned"/>
+    <bpmn:sequenceFlow id="Flow_24" name="Yes" sourceRef="Gw_RedOwned" targetRef="End_RedOwned"/>
+    <bpmn:sequenceFlow id="Flow_25" name="No" sourceRef="Gw_RedOwned" targetRef="Gw_RedCause"/>
+    <bpmn:sequenceFlow id="Flow_26" name="Infrastructure" sourceRef="Gw_RedCause" targetRef="Task_Rerun"/>
+    <bpmn:sequenceFlow id="Flow_27" name="Code or pins" sourceRef="Gw_RedCause" targetRef="Task_DispatchFixer"/>
+    <bpmn:sequenceFlow id="Flow_28" sourceRef="Task_Rerun" targetRef="End_RedHandled"/>
+    <bpmn:sequenceFlow id="Flow_29" sourceRef="Task_DispatchFixer" targetRef="End_RedHandled"/>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="Diagram_Process_MergeManagerWatch">
     <bpmndi:BPMNPlane id="Plane_Process_MergeManagerWatch" bpmnElement="Collaboration_Process_MergeManagerWatch">
@@ -224,11 +273,11 @@
         <bpmndi:BPMNLabel><dc:Bounds x="928" y="162" width="80" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_Stalled" bpmnElement="Call_Stalled">
-        <dc:Bounds x="630" y="220" width="120" height="120"/>
+        <dc:Bounds x="650" y="220" width="120" height="120"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_StalledDone" bpmnElement="End_StalledDone">
-        <dc:Bounds x="790" y="262" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="768" y="302" width="80" height="20"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="810" y="262" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="788" y="302" width="80" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Idle" bpmnElement="End_Idle">
         <dc:Bounds x="567" y="560" width="36" height="36"/>
@@ -266,6 +315,28 @@
         <dc:Bounds x="1232" y="412" width="36" height="36"/>
         <bpmndi:BPMNLabel><dc:Bounds x="1210" y="452" width="80" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Gw_RedOwned" bpmnElement="Gw_RedOwned" isMarkerVisible="true">
+        <dc:Bounds x="470" y="255" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="502" y="222" width="66" height="22"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_RedOwned" bpmnElement="End_RedOwned">
+        <dc:Bounds x="477" y="122" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="460" y="80" width="80" height="36"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Gw_RedCause" bpmnElement="Gw_RedCause" isMarkerVisible="true">
+        <dc:Bounds x="370" y="255" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="402" y="210" width="86" height="40"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Rerun" bpmnElement="Task_Rerun">
+        <dc:Bounds x="335" y="80" width="120" height="120"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_DispatchFixer" bpmnElement="Task_DispatchFixer">
+        <dc:Bounds x="160" y="220" width="120" height="120"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_RedHandled" bpmnElement="End_RedHandled">
+        <dc:Bounds x="202" y="122" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="110" y="85" width="80" height="36"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_1" bpmnElement="Flow_1">
         <di:waypoint x="168" y="430"/>
         <di:waypoint x="250" y="430"/>
@@ -292,7 +363,7 @@
         <di:waypoint x="585" y="405"/>
         <di:waypoint x="585" y="140"/>
         <di:waypoint x="630" y="140"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="520" y="150" width="60" height="20"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="514" y="165" width="66" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_4" bpmnElement="Flow_4">
         <di:waypoint x="610" y="430"/>
@@ -302,8 +373,8 @@
       <bpmndi:BPMNEdge id="Edge_Flow_5" bpmnElement="Flow_5">
         <di:waypoint x="585" y="405"/>
         <di:waypoint x="585" y="280"/>
-        <di:waypoint x="630" y="280"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="530" y="290" width="50" height="20"/></bpmndi:BPMNLabel>
+        <di:waypoint x="650" y="280"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="592" y="288" width="54" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_6" bpmnElement="Flow_6">
         <di:waypoint x="585" y="455"/>
@@ -319,8 +390,8 @@
         <di:waypoint x="950" y="140"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_9" bpmnElement="Flow_9">
-        <di:waypoint x="750" y="280"/>
-        <di:waypoint x="790" y="280"/>
+        <di:waypoint x="770" y="280"/>
+        <di:waypoint x="810" y="280"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_10" bpmnElement="Flow_10">
         <di:waypoint x="730" y="430"/>
@@ -369,6 +440,40 @@
         <di:waypoint x="1045" y="280"/>
         <di:waypoint x="1250" y="280"/>
         <di:waypoint x="1250" y="412"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_23" bpmnElement="Flow_23">
+        <di:waypoint x="585" y="405"/>
+        <di:waypoint x="585" y="280"/>
+        <di:waypoint x="520" y="280"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="522" y="290" width="58" height="20"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_24" bpmnElement="Flow_24">
+        <di:waypoint x="495" y="255"/>
+        <di:waypoint x="495" y="158"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="460" y="170" width="30" height="20"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_25" bpmnElement="Flow_25">
+        <di:waypoint x="470" y="280"/>
+        <di:waypoint x="420" y="280"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="430" y="258" width="30" height="20"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_26" bpmnElement="Flow_26">
+        <di:waypoint x="395" y="255"/>
+        <di:waypoint x="395" y="200"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="300" y="205" width="90" height="20"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_27" bpmnElement="Flow_27">
+        <di:waypoint x="370" y="280"/>
+        <di:waypoint x="280" y="280"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="290" y="288" width="76" height="20"/></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_28" bpmnElement="Flow_28">
+        <di:waypoint x="335" y="140"/>
+        <di:waypoint x="238" y="140"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_29" bpmnElement="Flow_29">
+        <di:waypoint x="220" y="220"/>
+        <di:waypoint x="220" y="158"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
