@@ -6,7 +6,7 @@ origin: >
   Sidong Feng, Mingyue Yuan, Jieshan Chen, Zhenchang Xing and Chunyang Chen,
   "Designing with Language: Wireframing UI Design Intent with Generative Large
   Language Models", arXiv:2312.07755v1 [cs.HC], 12 Dec 2023. Ingested in full at
-  `cat-harness/library/arxiv-2312.07755v1/`. The source states no licence, and
+  `cat-harness/library/corpus/ui/arxiv-2312.07755v1/`. The source states no licence, and
   its licence could not be established (see `check:source-licence`).
 evidence:
   - library/arxiv-2312.07755v1
