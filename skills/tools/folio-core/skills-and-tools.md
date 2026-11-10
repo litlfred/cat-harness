@@ -207,6 +207,9 @@ skill names the
 *operation* in neutral words, and this table is where an operation meets its
 nodes. An agent picks the node for the forge the checkout's remote is on; each
 pair is a derived alternative carrying `selection` (`check:tools` holds it).
+These Tool nodes sit in the opt-in `integrations` sub-graph
+(`integrations/tools/`): a layer that uses them lists `cat-harness.integrations`
+in its `enableSubgraphs`.
 
 | operation (as a skill names it) | GitHub | GitLab |
 |---|---|---|
