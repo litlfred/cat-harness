@@ -8,19 +8,19 @@
   "dcterms:description": "Provenance moved out of the narrative of mcp-capture.json: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "tools/mcp-capture/mcp-capture.json",
+      "@id": "integrations/tools/mcp-capture/mcp-capture.json",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "tools/mcp-capture/mcp-capture.json#provenance-1"
+          "@id": "integrations/tools/mcp-capture/mcp-capture.json#provenance-1"
         },
         {
-          "@id": "tools/mcp-capture/mcp-capture.json#provenance-2"
+          "@id": "integrations/tools/mcp-capture/mcp-capture.json#provenance-2"
         }
       ]
     },
     {
-      "@id": "tools/mcp-capture/mcp-capture.json#provenance-1",
+      "@id": "integrations/tools/mcp-capture/mcp-capture.json#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "tool.selection.when",
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "@id": "tools/mcp-capture/mcp-capture.json#provenance-2",
+      "@id": "integrations/tools/mcp-capture/mcp-capture.json#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "tool.selection.limits",
