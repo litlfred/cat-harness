@@ -8,43 +8,43 @@
   "dcterms:description": "Provenance moved out of the narrative of theme-artefacts.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "skills/ui/theming/theme-artefacts.md",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "skills/ui/theming/theme-artefacts.md#provenance-1"
+          "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-1"
         },
         {
-          "@id": "skills/ui/theming/theme-artefacts.md#provenance-2"
+          "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-2"
         },
         {
-          "@id": "skills/ui/theming/theme-artefacts.md#provenance-3"
+          "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-3"
         },
         {
-          "@id": "skills/ui/theming/theme-artefacts.md#provenance-4"
+          "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-4"
         },
         {
-          "@id": "skills/ui/theming/theme-artefacts.md#provenance-5"
+          "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-5"
         },
         {
-          "@id": "skills/ui/theming/theme-artefacts.md#provenance-6"
+          "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-6"
         },
         {
-          "@id": "skills/ui/theming/theme-artefacts.md#provenance-7"
+          "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-7"
         },
         {
-          "@id": "skills/ui/theming/theme-artefacts.md#provenance-8"
+          "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-8"
         },
         {
-          "@id": "skills/ui/theming/theme-artefacts.md#provenance-9"
+          "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-9"
         },
         {
-          "@id": "skills/ui/theming/theme-artefacts.md#provenance-10"
+          "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-10"
         }
       ]
     },
     {
-      "@id": "skills/ui/theming/theme-artefacts.md#provenance-1",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The surfaces",
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "@id": "skills/ui/theming/theme-artefacts.md#provenance-2",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Sticky: art backs it, text does not sit IN it",
@@ -64,14 +64,14 @@
       ]
     },
     {
-      "@id": "skills/ui/theming/theme-artefacts.md#provenance-3",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Navbar avatar: the box is per-image and measured",
       "prov:value": "**Two of these were wrong twice, and both times only a render caught it.** The\nfirst pass put the library and analyst boxes on scenery. The operations box was\nsquare, in bounds, and clipped the crown off the hard hat; the owner saw it and\nsaid so. **The schema cannot see a hat.** So:"
     },
     {
-      "@id": "skills/ui/theming/theme-artefacts.md#provenance-4",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "The page ground: the first paint is DARK",
@@ -84,14 +84,14 @@
       ]
     },
     {
-      "@id": "skills/ui/theming/theme-artefacts.md#provenance-5",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The page ground: the first paint is DARK",
       "prov:value": "1. **Decide the scheme before any stylesheet paints.** An inline, render-\n   blocking script in `<head>` sets `data-fa-scheme` on `<html>` from the\n   reader's stored choice (`fa-color-scheme`, the key `docs-ui.js` writes),\n   else `prefers-color-scheme`, else **dark**. On the Jekyll site this is the\n   `fa-first-paint` block at the top of `_includes/head_custom.html`, and it\n   also switches the theme's stylesheet while the head is still being parsed,\n   so a light reader is light from the first frame too.\n2. **Paint `html` dark from the very first CSS** (light only when the\n   attribute says light). A page ground that nothing paints is the browser's\n   WHITE canvas whenever the theme's sheet is missing — a slow CDN, or a swap.\n3. **Never swap a stylesheet the page is already painting with.**\n   `jtd.setTheme(name)` swaps just-the-docs' first stylesheet, and a swap\n   UNLOADS the sheet until the new file arrives. Applying a stored \"dark\" on\n   this dark-configured site swapped `-default.css` for `-dark.css` — the same\n   colours — on every load: that was the white flash, for every reader who had\n   ever pressed the toggle. `applyScheme` in `docs-ui.js` now asks\n   `jtdShows(name)` first."
     },
     {
-      "@id": "skills/ui/theming/theme-artefacts.md#provenance-6",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "date",
       "cat-harness:section": "The page ground: the first paint is DARK",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "@id": "skills/ui/theming/theme-artefacts.md#provenance-7",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The mark: one geometry, two inks, and the pair is a MEASUREMENT",
@@ -118,21 +118,21 @@
       ]
     },
     {
-      "@id": "skills/ui/theming/theme-artefacts.md#provenance-8",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Absent is a real state",
       "prov:value": "An instance that declares no `mark-dark` renders its one mark in both\nschemes — what every instance did before the role existed. `imageForRole`\nreturns undefined and both templates fall back; nothing downstream\nspecial-cases a folio that never opted in."
     },
     {
-      "@id": "skills/ui/theming/theme-artefacts.md#provenance-9",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-9",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Tracing supplied art",
       "prov:value": "When the owner hands over a raster mark, trace it rather than approximating\nit by hand — the mark this replaced was a hand-drawn approximation that\ndiffered in kind from the original (a solid silhouette where the art was line\nwork). Three things that cost a cycle each here, worth knowing before the next\none:"
     },
     {
-      "@id": "skills/ui/theming/theme-artefacts.md#provenance-10",
+      "@id": "platform-ui/skills/platform-ui/theme-artefacts.md#provenance-10",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Tracing supplied art",

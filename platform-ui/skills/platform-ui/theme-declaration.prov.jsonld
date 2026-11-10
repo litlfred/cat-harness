@@ -8,25 +8,25 @@
   "dcterms:description": "Provenance moved out of the narrative of theme-declaration.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "skills/ui/theming/theme-declaration.md",
+      "@id": "platform-ui/skills/platform-ui/theme-declaration.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "skills/ui/theming/theme-declaration.md#provenance-1"
+          "@id": "platform-ui/skills/platform-ui/theme-declaration.md#provenance-1"
         },
         {
-          "@id": "skills/ui/theming/theme-declaration.md#provenance-2"
+          "@id": "platform-ui/skills/platform-ui/theme-declaration.md#provenance-2"
         },
         {
-          "@id": "skills/ui/theming/theme-declaration.md#provenance-3"
+          "@id": "platform-ui/skills/platform-ui/theme-declaration.md#provenance-3"
         },
         {
-          "@id": "skills/ui/theming/theme-declaration.md#provenance-4"
+          "@id": "platform-ui/skills/platform-ui/theme-declaration.md#provenance-4"
         }
       ]
     },
     {
-      "@id": "skills/ui/theming/theme-declaration.md#provenance-1",
+      "@id": "platform-ui/skills/platform-ui/theme-declaration.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "A theme is a palette AND a geometry",
@@ -36,21 +36,21 @@
       ]
     },
     {
-      "@id": "skills/ui/theming/theme-declaration.md#provenance-2",
+      "@id": "platform-ui/skills/platform-ui/theme-declaration.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "All three layouts, or the theme is invalid",
       "prov:value": "`laptop`, `mobile`, `card`. The owner: *\"themes need all three layouts to be\ndefined to be considered valid.\"* Not a new vocabulary — exactly the set\n`<name>.json`'s `images[].layout` already uses."
     },
     {
-      "@id": "skills/ui/theming/theme-declaration.md#provenance-3",
+      "@id": "platform-ui/skills/platform-ui/theme-declaration.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Nothing derives a theme",
       "prov:value": "`ThemedTodoFields.theme` and the landing sticky's required `theme` are the\nwhole selection surface: an id, set by an author. **This is a rule, not a\ngap**, and it has read as a gap to two agents already."
     },
     {
-      "@id": "skills/ui/theming/theme-declaration.md#provenance-4",
+      "@id": "platform-ui/skills/platform-ui/theme-declaration.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "What the declaration cannot tell you, ever",

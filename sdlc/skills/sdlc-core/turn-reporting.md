@@ -93,7 +93,7 @@ name it: say "nothing outstanding" or describe the work without the id.
 turn ends with "please look at this", it must carry the **PR link** and a
 **direct link to every page that changed**, not the staging root. It must also
 **explicitly state which host rendered it**, drawn from declared architecture /
-[`deployment-awareness`](../../../skills/ui/ui-core/deployment-awareness.md) (e.g. `GitHub Pages`,
+[`deployment-awareness`](../../../platform-ui/skills/platform-ui/deployment-awareness.md) (e.g. `GitHub Pages`,
 `local server`, `chat discussion only`, or `could not determine`).
 
 > ✗ `https://…/branches/claude-my-branch/` *(root only, host unstated)*
@@ -132,7 +132,7 @@ partial withholding** — the artefact is technically reachable and practically
 hidden.
 
 **Where to get the links.** Look to the declared topology and configuration
-([`deployment-awareness`](../../../skills/ui/ui-core/deployment-awareness.md)), never a
+([`deployment-awareness`](../../../platform-ui/skills/platform-ui/deployment-awareness.md)), never a
 guess:
 1. **GitHub Pages (static host):** When Pages is configured (e.g. `pagesBaseUrl`
    is declared in the layer's `index.config.json` entry), the staging workflow deploys to

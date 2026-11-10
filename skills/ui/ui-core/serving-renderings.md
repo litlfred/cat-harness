@@ -93,7 +93,7 @@ the honest handling is the one this repository applies everywhere else:
   from "enforced wrongly".
 
 The architectural boundary between what a static host and a local dynamic server
-can enforce is part of deployment awareness — see [`deployment-awareness`](deployment-awareness.md)
+can enforce is part of deployment awareness — see [`deployment-awareness`](../../../platform-ui/skills/platform-ui/deployment-awareness.md)
 for the four deployment surfaces, their constraints on tool usage, and why render-time
 escaping is the required line of defence on static hosts.
 

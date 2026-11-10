@@ -182,13 +182,13 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 
 | Skill | What it is for |
 |---|---|
-| [`create-sticky-note`](skills/ui/theming/create-sticky-note.md) | Draft a sticky note from the conversation, choose its theme and its place, preview it, and only then attach it to a node. |
+| [`create-sticky-note`](platform-ui/skills/platform-ui/create-sticky-note.md) | Draft a sticky note from the conversation, choose its theme and its place, preview it, and only then attach it to a node. |
 | [`site-presentation-assets`](skills/ui/theming/site-presentation-assets.md) | A visual fact — a colour, a glyph, a theme — lives in a graph node, and the stylesheet the site serves is a rendering of it. |
 | [`theme-art-intake`](skills/ui/theming/theme-art-intake.md) | Accept or refuse a set of three theme/avatar layouts arriving through document ingestion, with a named reason for every refusal. |
-| [`theme-artefacts`](skills/ui/theming/theme-artefacts.md) | The per-surface SPECIALISATION layer — sticky, landing board, docs background, navbar avatar. |
-| [`theme-contrast`](skills/ui/theming/theme-contrast.md) | Why every scrim is measured over PURE BLACK rather than over the art actually in use, what the AAA floor is, and why the high-contrast pair declares no backdrop at all. |
-| [`theme-declaration`](skills/ui/theming/theme-declaration.md) | What a theme IS as data — the palette, the three required layouts, and the per-image regions (`textRegion`, `avatarRegion`). |
-| [`theme-generation`](skills/ui/theming/theme-generation.md) | Turning a declared theme into CSS — `bun run cat themes:css` — and the single consumer-side failure this stage exists to stop: a theme with no CSS rule falls back to an opaque surface and paints… |
+| [`theme-artefacts`](platform-ui/skills/platform-ui/theme-artefacts.md) | The per-surface SPECIALISATION layer — sticky, landing board, docs background, navbar avatar. |
+| [`theme-contrast`](platform-ui/skills/platform-ui/theme-contrast.md) | Why every scrim is measured over PURE BLACK rather than over the art actually in use, what the AAA floor is, and why the high-contrast pair declares no backdrop at all. |
+| [`theme-declaration`](platform-ui/skills/platform-ui/theme-declaration.md) | What a theme IS as data — the palette, the three required layouts, and the per-image regions (`textRegion`, `avatarRegion`). |
+| [`theme-generation`](platform-ui/skills/platform-ui/theme-generation.md) | Turning a declared theme into CSS — `bun run cat themes:css` — and the single consumer-side failure this stage exists to stop: a theme with no CSS rule falls back to an opaque surface and paints… |
 | [`theming`](skills/ui/theming/theming.md) | The map of this subgraph: theming is split on PIPELINE STAGE first — intake, declaration, generation, contrast — with producer/consumer as the direction each stage faces, and per-artefact… |
 
 **`skills/ui/ui-core/`** (23)
@@ -199,23 +199,23 @@ _255 skills in 19 directories, generated from each skill's front matter. `bun ru
 | [`auto-docs`](skills/ui/ui-core/auto-docs.md) | Derived documentation for a sub-graph — what the handler emits, what it deliberately does not, and the obligation on whoever authors a harness's docs: summarise what the index lists, by reusing it… |
 | [`board-diagram-interchange`](skills/ui/ui-core/board-diagram-interchange.md) | A board is a DIAGRAM OF a folio, not a container of one. |
 | [`board-windows`](skills/ui/ui-core/board-windows.md) | Everything starts as its avatar; opening projects a window onto the board. |
-| [`deployment-awareness`](skills/ui/ui-core/deployment-awareness.md) | The agent must know its UI surface — gh-pages, local server, with/without MCP, or chat discussion only — because deployment surfaces are declared architectural facts that decide which tools apply,… |
+| [`deployment-awareness`](platform-ui/skills/platform-ui/deployment-awareness.md) | The agent must know its UI surface — gh-pages, local server, with/without MCP, or chat discussion only — because deployment surfaces are declared architectural facts that decide which tools apply,… |
 | [`docs-generation`](skills/ui/ui-core/docs-generation.md) | How a checkout of this harness generates and publishes its docs site: regenerating derived references, composing the docs layers and each layer's site into one Jekyll source, building it with… |
 | [`harness-tiles`](skills/ui/ui-core/harness-tiles.md) | A tile is a function of the harness watching a directory, not of nodes. |
-| [`html-rendering-qc`](skills/ui/ui-core/html-rendering-qc.md) | HTML Rendering QC |
-| [`incremental-render`](skills/ui/ui-core/incremental-render.md) | Rendering only what changed — seeding a build from a previous render, the two edges that decide what must re-run, why a step declares GRAPH TYPOLOGIES rather than paths, and the rule that… |
+| [`html-rendering-qc`](platform-ui/skills/platform-ui/html-rendering-qc.md) | HTML Rendering QC |
+| [`incremental-render`](platform-ui/skills/platform-ui/incremental-render.md) | Rendering only what changed — seeding a build from a previous render, the two edges that decide what must re-run, why a step declares GRAPH TYPOLOGIES rather than paths, and the rule that… |
 | [`journey-maps`](skills/ui/ui-core/journey-maps.md) | Journeys and workshops as knowledge-graph content: a DAK user scenario told as a journey map (`user-scenario` kind: ordered steps, per person what they do and feel, pain points, enablers, the… |
 | [`kg-viewer`](skills/ui/ui-core/kg-viewer.md) | Render a published knowledge-graph document so a person can read it — faceted index, node detail, followable edges, and an honest account of what the document is missing. |
 | [`liquid-templates`](skills/ui/ui-core/liquid-templates.md) | Authoring a Liquid template in this repository — a README template the `subgraph-readmes` Tool renders with liquidjs, or a Jekyll include on the just-the-docs site. |
 | [`markdown-render-check`](skills/ui/ui-core/markdown-render-check.md) | Markdown Render Check |
-| [`pdf-inline-viewer`](skills/ui/ui-core/pdf-inline-viewer.md) | Show a published PDF inside a generated page — search, scroll, jump to page, print and download — with the pinned pdf.js viewer the site build installs. |
+| [`pdf-inline-viewer`](platform-ui/skills/platform-ui/pdf-inline-viewer.md) | Show a published PDF inside a generated page — search, scroll, jump to page, print and download — with the pinned pdf.js viewer the site build installs. |
 | [`readme-sections`](skills/ui/ui-core/readme-sections.md) | A folio's README is the author's file; the platform owns only the marked regions it generates. |
 | [`render-logging`](skills/ui/ui-core/render-logging.md) | Log every render to the publish branch — what was published, removed, restored or deliberately retained — to an append-only log that lives beside what it describes. |
 | [`render-order`](skills/ui/ui-core/render-order.md) | Render order — flattening a dependency hierarchy, and the three stages |
 | [`serving-renderings`](skills/ui/ui-core/serving-renderings.md) | Serving a rendering — endpoints, MIME types, and what each host can enforce |
 | [`theme-ui-review`](skills/ui/ui-core/theme-ui-review.md) | Review graphical assets AS THEY ARE INGESTED, in the context of the website or app design they are for — accessibility, branding, languages — to determine what the assets and the UI will be. |
 | [`ui-accessibility`](skills/ui/ui-core/ui-accessibility.md) | Every user interface this project produces must be operable by keyboard, legible at measured contrast, and comfortable to hit. |
-| [`visualizer-loading`](skills/ui/ui-core/visualizer-loading.md) | The general strategy for a complex visualizer: the generated page carries identity, layout and a pointer, and its bulky or repeated content is fetched from the Knowledge Graph in the browser rather… |
+| [`visualizer-loading`](platform-ui/skills/platform-ui/visualizer-loading.md) | The general strategy for a complex visualizer: the generated page carries identity, layout and a pointer, and its bulky or repeated content is fetched from the Knowledge Graph in the browser rather… |
 | [`wireframe-design-review`](skills/ui/ui-core/wireframe-design-review.md) | Design a user interface (a page, a visualiser, a navbar) by the WireGen methodology: a written design intent, at least two mid-fidelity HTML candidates, each with a web AND a mobile layout,… |
 | [`wireframe-viewport-check`](skills/ui/ui-core/wireframe-viewport-check.md) | Render wireframe candidates at a web viewport (1280x800) and a mobile viewport (390x844), and record, per candidate and viewport, a pass or fail entry with a note for each mechanical criterion:… |
 

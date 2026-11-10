@@ -8,25 +8,25 @@
   "dcterms:description": "Provenance moved out of the narrative of pdf-inline-viewer.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "skills/ui/ui-core/pdf-inline-viewer.md",
+      "@id": "platform-ui/skills/platform-ui/pdf-inline-viewer.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "skills/ui/ui-core/pdf-inline-viewer.md#provenance-1"
+          "@id": "platform-ui/skills/platform-ui/pdf-inline-viewer.md#provenance-1"
         },
         {
-          "@id": "skills/ui/ui-core/pdf-inline-viewer.md#provenance-2"
+          "@id": "platform-ui/skills/platform-ui/pdf-inline-viewer.md#provenance-2"
         },
         {
-          "@id": "skills/ui/ui-core/pdf-inline-viewer.md#provenance-3"
+          "@id": "platform-ui/skills/platform-ui/pdf-inline-viewer.md#provenance-3"
         },
         {
-          "@id": "skills/ui/ui-core/pdf-inline-viewer.md#provenance-4"
+          "@id": "platform-ui/skills/platform-ui/pdf-inline-viewer.md#provenance-4"
         }
       ]
     },
     {
-      "@id": "skills/ui/ui-core/pdf-inline-viewer.md#provenance-1",
+      "@id": "platform-ui/skills/platform-ui/pdf-inline-viewer.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Inline PDF viewer — a pinned pdf.js, installed at build time",
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/pdf-inline-viewer.md#provenance-2",
+      "@id": "platform-ui/skills/platform-ui/pdf-inline-viewer.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Inline PDF viewer — a pinned pdf.js, installed at build time",
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/pdf-inline-viewer.md#provenance-3",
+      "@id": "platform-ui/skills/platform-ui/pdf-inline-viewer.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Caching: why the frame's address carries a version tag",
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/pdf-inline-viewer.md#provenance-4",
+      "@id": "platform-ui/skills/platform-ui/pdf-inline-viewer.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The site's own post-build passes leave the viewer alone",

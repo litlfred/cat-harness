@@ -8,22 +8,22 @@
   "dcterms:description": "Provenance moved out of the narrative of deployment-awareness.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "skills/ui/ui-core/deployment-awareness.md",
+      "@id": "platform-ui/skills/platform-ui/deployment-awareness.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "skills/ui/ui-core/deployment-awareness.md#provenance-1"
+          "@id": "platform-ui/skills/platform-ui/deployment-awareness.md#provenance-1"
         },
         {
-          "@id": "skills/ui/ui-core/deployment-awareness.md#provenance-2"
+          "@id": "platform-ui/skills/platform-ui/deployment-awareness.md#provenance-2"
         },
         {
-          "@id": "skills/ui/ui-core/deployment-awareness.md#provenance-3"
+          "@id": "platform-ui/skills/platform-ui/deployment-awareness.md#provenance-3"
         }
       ]
     },
     {
-      "@id": "skills/ui/ui-core/deployment-awareness.md#provenance-1",
+      "@id": "platform-ui/skills/platform-ui/deployment-awareness.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Deployment awareness — UI surfaces, host constraints, and chat degradation",
@@ -37,7 +37,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/deployment-awareness.md#provenance-2",
+      "@id": "platform-ui/skills/platform-ui/deployment-awareness.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Deployment awareness — UI surfaces, host constraints, and chat degradation",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "@id": "skills/ui/ui-core/deployment-awareness.md#provenance-3",
+      "@id": "platform-ui/skills/platform-ui/deployment-awareness.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Graceful degradation rules",

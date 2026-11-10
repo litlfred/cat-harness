@@ -8,25 +8,25 @@
   "dcterms:description": "Provenance moved out of the narrative of create-sticky-note.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "skills/ui/theming/create-sticky-note.md",
+      "@id": "platform-ui/skills/platform-ui/create-sticky-note.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "skills/ui/theming/create-sticky-note.md#provenance-1"
+          "@id": "platform-ui/skills/platform-ui/create-sticky-note.md#provenance-1"
         },
         {
-          "@id": "skills/ui/theming/create-sticky-note.md#provenance-2"
+          "@id": "platform-ui/skills/platform-ui/create-sticky-note.md#provenance-2"
         },
         {
-          "@id": "skills/ui/theming/create-sticky-note.md#provenance-3"
+          "@id": "platform-ui/skills/platform-ui/create-sticky-note.md#provenance-3"
         },
         {
-          "@id": "skills/ui/theming/create-sticky-note.md#provenance-4"
+          "@id": "platform-ui/skills/platform-ui/create-sticky-note.md#provenance-4"
         }
       ]
     },
     {
-      "@id": "skills/ui/theming/create-sticky-note.md#provenance-1",
+      "@id": "platform-ui/skills/platform-ui/create-sticky-note.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Create a sticky note",
@@ -39,7 +39,7 @@
       ]
     },
     {
-      "@id": "skills/ui/theming/create-sticky-note.md#provenance-2",
+      "@id": "platform-ui/skills/platform-ui/create-sticky-note.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "3. Choose the theme — a judgement, not a lookup",
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "@id": "skills/ui/theming/create-sticky-note.md#provenance-3",
+      "@id": "platform-ui/skills/platform-ui/create-sticky-note.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "4. Decide where it goes — `todos/` is the default, not the only answer",
@@ -62,7 +62,7 @@
       ]
     },
     {
-      "@id": "skills/ui/theming/create-sticky-note.md#provenance-4",
+      "@id": "platform-ui/skills/platform-ui/create-sticky-note.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "6. Preview, on the surface the reader is on",

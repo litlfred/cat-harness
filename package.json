@@ -10,6 +10,7 @@
     "tools/",
     "sdlc/",
     "work-plan/",
+    "platform-ui/",
     "library/graph.json",
     "library/skills/",
     "folio-render/",

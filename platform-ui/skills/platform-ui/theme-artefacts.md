@@ -205,5 +205,5 @@ ink fraction from 16px to 32px.
 
 ## Related
 
-- [`theming`](theming.md) — which stage owns your question
+- [`theming`](../../../skills/ui/theming/theming.md) — which stage owns your question
 - [`theme-declaration`](theme-declaration.md) — the rule these specialise
