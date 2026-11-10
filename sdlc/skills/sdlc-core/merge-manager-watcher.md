@@ -206,6 +206,44 @@ it.
    age of the oldest queued run.
 3. The latest main push run on each repository, and its verdict.
 4. The owners of the PRs: the last push or comment by each owning session.
+5. Every harness repository's open `main-red` issue and its newest failed
+   runs on `main` and `gh-pages` (§"Red mains and failing runs").
+
+## Red mains and failing runs: dispatch a fixer
+
+Owner, 2026-11-10: *"That should be a part of merge manager (dispatch an
+agent to fix them)"*, *"Add to process"*. A red main mails the owner on
+every push to it, so watching every harness repository's main is part of
+the lane, not something a sibling notices by chance.
+
+**What it watches.** Every repository that runs the layer checks (the
+harness layers and the layers above them, and the index), whether or not
+the lane holds a PR there:
+
+- the open `main-red` issue (kept by `layer-main-qa.yml`): its failing gates,
+  tests and jobs;
+- the newest failed run on `main`, and on `gh-pages` for Pages deploys.
+
+**Sort each failure into one cause before dispatching**, because the fix
+lands in a different place for each:
+
+| Cause | How to tell | Where the fix goes |
+|---|---|---|
+| Pins out of step | The failure names a file or test of ANOTHER layer, and that layer's own `main` already differs (a test reads a page the newer layer removed; a heading or type the newer tools already have) | The next re-pin train on the index. A train that fails only on infrastructure gets its failed job re-run once |
+| The layer's own bug | The failure names this layer's own file, and it fails at this layer's own `main` | A fix PR in that layer, opened as a draft by the dispatched agent |
+| A lower layer's bug | The failure names a lower layer's file, and it fails at that layer's `main` too | A fix PR in the lower layer, then a re-pin |
+| Infrastructure | "The runner has received a shutdown signal", a Pages deploy stuck at `syncing_files` until it times out | Re-run once. A second failure is real: a Pages timeout goes to the site-size work |
+
+**Dispatch.** One fixer agent per cause, never one per repository: a single
+lower-layer bug can redden every layer above it. Give it the failing run,
+the cause row above and the repository, and have it open a draft fix PR,
+linked from the `main-red` issue. The fix is a P0 (§"Liveness and
+stalls"). Track it like any other PR in the lane, and close the loop when the
+next main run is green and the `main-red` issue closes.
+
+**What it never does.** It does not silence the failure: the report job
+stays red while main is red (owner, 2026-11-10, card "Merge #1812?", B
+"Don't merge"). It does not skip, disable or quarantine a gate or a test.
 
 ## The sweep
 
@@ -285,7 +323,7 @@ ledger entry.
 | An approved, all-green PR that changes `.github/workflows/`, or is in a repository with no train | Merge it directly through `merge:guard`. A workflow PR needs no approval beyond the batch card (owner ruling, 2026-11-07, card "Workflow PRs", A) |
 | Queued runs 60+ minutes old with nothing landed, or the owner says runners are full | First relieve the runners (§"Runner relief"). Then `saturation-meta-merge`: offer the card, never run without the owner's tap |
 | A PR whose owner has not pushed or answered for 2+ hours | `stalled-agent-triage`: tell the owner and take it over |
-| main red | The fix goes to main as its own PR first; when a dispatched `post-merge-regen` verify run says main is stale, a regen dispatched for the next PR commits the fix and that PR lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green |
+| main red, in any harness repository | §"Red mains and failing runs": sort the cause, dispatch a fixer. The fix goes to main as its own PR first; when a dispatched `post-merge-regen` verify run says main is stale, a regen dispatched for the next PR commits the fix and that PR lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green |
 | Nothing to do | End the turn with no message |
 
 ## Merge-sweep rules (STRICT)
