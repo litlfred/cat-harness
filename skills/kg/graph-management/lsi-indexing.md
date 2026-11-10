@@ -13,6 +13,7 @@ graph-typologies:
   - docs
 uses-methodology:
   - lsi
+  - correspondence-analysis
 ---
 
 # LSI indexing — the platform's application of `methodologies/lsi.md`
