@@ -259,18 +259,29 @@ commit unless told otherwise. **Never delete the branch**
    not report it as green.
 2. **`Task_Republish`: rebuild and republish the repository's site.** A
    merge that changes what a published site shows is not done until the site
-   shows it. When the merged repository's `index.config.json`
-   declares `site.build`, build from the merge commit and publish:
+   shows it. A repository that declares `site.build` publishes on its own:
+   its `.github/workflows/site-publish.yml` calls
+   cat-harness-tools' `folio-site-publish.yml` on every push to `main`, so
+   the merge itself starts the publish (owner, 2026-11-10). Your step is to
+   check that run on the merge commit finished green and that the live page
+   shows the change; a red or missing run is fixed forward, never published
+   over. Runs queue one at a time per repository, so two quick merges
+   publish in turn.
+
+   A repository that declares `site.build` but has no `site-publish.yml`
+   gets one from `cat-harness-tools/templates/document/github/workflows/`
+   in its own PR. Until then, build from the merge commit and publish
+   agent-run:
 
    ```sh
    bun run cat-harness-tools/scripts/build-instance-site.ts --root . \
      --instance <name> --publish --remote https://github.com/<owner>/<repo>
    ```
 
-   This is agent-run, never a GitHub Actions workflow. The build's gates stay
-   in force: an unresolved link refuses the publish, and that refusal goes on
-   the issue and is fixed forward, never published over. A repository whose
-   own workflow publishes its site (`docs-site-publish.bpmn`) needs nothing
+   The build's gates stay in force either way: an unresolved link refuses
+   the publish, and that refusal goes on the issue and is fixed forward. A
+   repository whose own workflow publishes its site (`docs-site-publish.bpmn`)
+   needs nothing
    here. With no `site.build`, record "no site to republish".
 3. **`Task_Repin`: re-pin downstream mounts, as PRs, never as part of this
    merge.** Find the layers whose `index.config.json` names this repository
