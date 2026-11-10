@@ -116,7 +116,7 @@ Placed after the base voice adjudication because a voice OVERLAYS the house voic
   <bpmndi:BPMNDiagram id="Diagram_NarrativeReview">
     <bpmndi:BPMNPlane id="Plane_NarrativeReview" bpmnElement="Process_NarrativeReview">
       <bpmndi:BPMNShape id="S_Lane_NarrativeReviewer" bpmnElement="Lane_NarrativeReviewer" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1540" height="260" />
+        <dc:Bounds x="160" y="80" width="1360" height="260" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Start_ProseChanged" bpmnElement="Start_ProseChanged">
         <dc:Bounds x="200" y="192" width="36" height="36" />
@@ -131,19 +131,19 @@ Placed after the base voice adjudication because a voice OVERLAYS the house voic
         <dc:Bounds x="695" y="150" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_Translated" bpmnElement="GW_Translated" isMarkerVisible="true">
-        <dc:Bounds x="1070" y="185" width="50" height="50" />
+        <dc:Bounds x="890" y="185" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_ReviewTranslation" bpmnElement="Task_ReviewTranslation">
-        <dc:Bounds x="1160" y="100" width="170" height="70" />
+        <dc:Bounds x="980" y="100" width="170" height="70" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_GW_Join" bpmnElement="GW_Join" isMarkerVisible="true">
-        <dc:Bounds x="1370" y="185" width="50" height="50" />
+        <dc:Bounds x="1190" y="185" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_Task_RecordFindings" bpmnElement="Task_RecordFindings">
-        <dc:Bounds x="1485" y="150" width="120" height="120" />
+        <dc:Bounds x="1305" y="150" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="S_End_NarrativeReviewed" bpmnElement="End_NarrativeReviewed">
-        <dc:Bounds x="1650" y="192" width="36" height="36" />
+        <dc:Bounds x="1470" y="192" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="E_F_N1" bpmnElement="F_N1">
         <di:waypoint x="236" y="210" />
@@ -159,24 +159,24 @@ Placed after the base voice adjudication because a voice OVERLAYS the house voic
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_N3b" bpmnElement="F_N3b">
         <di:waypoint x="815" y="210" />
-        <di:waypoint x="1070" y="210" />
+        <di:waypoint x="890" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_N5" bpmnElement="F_N5">
-        <di:waypoint x="1095" y="185"/><di:waypoint x="1095" y="135"/><di:waypoint x="1160" y="135"/>
+        <di:waypoint x="915" y="185"/><di:waypoint x="915" y="135"/><di:waypoint x="980" y="135"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_N6" bpmnElement="F_N6">
-        <di:waypoint x="1120" y="210"/><di:waypoint x="1370" y="210"/>
+        <di:waypoint x="940" y="210"/><di:waypoint x="1190" y="210"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_N7" bpmnElement="F_N7">
-        <di:waypoint x="1330" y="135"/><di:waypoint x="1395" y="135"/><di:waypoint x="1395" y="185"/>
+        <di:waypoint x="1150" y="135"/><di:waypoint x="1215" y="135"/><di:waypoint x="1215" y="185"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_N8" bpmnElement="F_N8">
-        <di:waypoint x="1420" y="210" />
-        <di:waypoint x="1485" y="210" />
+        <di:waypoint x="1240" y="210" />
+        <di:waypoint x="1305" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="E_F_N9" bpmnElement="F_N9">
-        <di:waypoint x="1605" y="210" />
-        <di:waypoint x="1650" y="210" />
+        <di:waypoint x="1425" y="210" />
+        <di:waypoint x="1470" y="210" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
