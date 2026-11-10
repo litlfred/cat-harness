@@ -19,7 +19,7 @@ consulted: true
 
 Resolve the block's audience first — its lane's role, the role's `persona`,
 the voice profiles that address it and the user stories told as it — as
-[`one-voice-audit`](one-voice-audit.md) §"The voice is addressed TO the role,
+[`one-voice-audit`](../../../editorial/skills/editorial-audits/one-voice-audit.md) §"The voice is addressed TO the role,
 not carried by it" describes. Where a voice addresses the role, that wins; this file is the
 default when no role has been resolved.
 

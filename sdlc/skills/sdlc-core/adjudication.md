@@ -231,8 +231,8 @@ matches. This skill does not generalise it.
   each is given. Adjudication is what happens when they disagree.
 - `q-usage-watcher` (the science layer) — the
   dispensation mechanism, documented where it was first applied.
-- [`code-node-review`](../../../skills/kg/kg-core/code-node-review.md), [`voice-editorial-review`](../../../skills/authoring/authoring-core/voice-editorial-review.md),
-  [`voice-overlay-review`](../../../skills/authoring/authoring-core/voice-overlay-review.md) — the reviews that produce
+- [`code-node-review`](../../../skills/kg/kg-core/code-node-review.md), [`voice-editorial-review`](../../../editorial/skills/editorial-audits/voice-editorial-review.md),
+  [`voice-overlay-review`](../../../editorial/skills/editorial-audits/voice-overlay-review.md) — the reviews that produce
   the findings this settles.
 - `schemas/sdlc/block-qa.ts` — the reviewer kinds, and why a model's own claim is
   not the same kind of evidence as a person's.

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sub-kg-lifecycle\n"
-"POT-Creation-Date: 2026-11-08T11:49:26.678Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.611Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -111,7 +111,7 @@ msgstr ""
 
 #: processes/kg/sub-kg-lifecycle.bpmn:39
 #. Diagram element documentation
-msgid "Create a knowledge graph inside a harnessed repository as an instance of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository. Declared in place with a planned `repository` and a `livesAt` saying where it sits today; staged by one import seam (`<name>/platform.ts`), the separation guard and a self-contained rehearsal; then, each behind an explicit owner confirmation, the repository is created, the staged contents are copied in with their history, the declaration is re-pointed, a fresh clone is verified, and the in-repo copy is frozen in the kept trashcan. The light sibling of kg-separation, which splits a graph into a content and a tools repository; this moves a data instance whole, and shares kg-separation's seeding gateway and decision table. DRAWN IN PHASES (owner, 2026-11-08, Q-B1-3 A): it keeps its own grow-in-place and staging steps, and calls the authorise, move and cut-over phases it shares with kg-separation."
+msgid "Create a knowledge graph inside a harnessed repository as a layer of its own, grow it there, and when it should leave, stage it for separation and move it whole into a new repository. Declared in place with a planned `repository` and a `livesAt` saying where it sits today; staged by one import seam (`<name>/platform.ts`), the separation guard and a self-contained rehearsal; then, each behind an explicit owner confirmation, the repository is created, the staged contents are copied in with their history, the declaration is re-pointed, a fresh clone is verified, and the in-repo copy is frozen in the kept trashcan. The light sibling of kg-separation, which splits a graph into a content and a tools repository; this moves a data layer whole, and shares kg-separation's seeding gateway and decision table. DRAWN IN PHASES (owner, 2026-11-08, Q-B1-3 A): it keeps its own grow-in-place and staging steps, and calls the authorise, move and cut-over phases it shares with kg-separation."
 msgstr ""
 
 #: processes/kg/sub-kg-lifecycle.bpmn:186
@@ -326,7 +326,7 @@ msgstr ""
 
 #: processes/kg/sub-kg-lifecycle.bpmn:102
 #. Diagram element documentation
-msgid "The content type's own authoring process runs here, against the staged instance. Many sub-KGs never leave; this task can last as long as the graph does."
+msgid "The content type's own authoring process runs here, against the staged layer. Many sub-KGs never leave; this task can last as long as the graph does."
 msgstr ""
 
 #: processes/kg/sub-kg-lifecycle.bpmn:215

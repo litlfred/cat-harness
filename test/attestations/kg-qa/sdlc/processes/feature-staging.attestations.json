@@ -11,10 +11,10 @@
       "kind": "implements",
       "prose": "cat-harness/sdlc/processes/feature-staging.bpmn",
       "code": ".github/workflows/feature-staging.yml",
-      "prose_hash": "16908b97ea23",
-      "code_hash": "839467f13df9",
+      "prose_hash": "4584a4c28d5f",
+      "code_hash": "a4c6c7c29d28",
       "by": "agent",
-      "reason": "Re-hashed after cat-harness#375's global tasks (owner 2026-10-20, a1 b1 c1): the step that appends a `retained` entry with why it stays became a call activity naming GT_LogRetained, shared with staging-render-log; its documentation moved to the global task unchanged in meaning, and the call keeps its id, lane and name. Nothing the workflow does changed. Lane A, session https://claude.ai/code/session_01Kymnx79TxWvxVoLzcAjBRr."
+      "reason": "Updated Process_FeatureStaging to model the agent-built preview defer-and-verify loop (#2881, PR #2885): GW_AgentBuilt checks branches/<slug>/_build-record.json against MERGE_SHA^{tree}, Task_Defer marks preview/agent-build pending and queues preview-verify-sweep.yml off the critical path, and GW_VerifyMatch skips deploy/render-log when the full CI rebuild matches the agent record or replaces branches/<slug>/ on mismatch."
     }
   ]
 }

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: session-state-machine\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.152Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.627Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -91,7 +91,7 @@ msgstr ""
 
 #: processes/process/session-state-machine.bpmn:127
 #. Diagram element documentation
-msgid "Once the actor is known and the record is open, check that the coding agent acting here holds the permissions this instance's processes need, granted by a person and recorded, and ask for any that are missing. This is where initiating the harness for an actor secures them, rather than the first denied command. A run that finds them current returns without asking anything; the same process is called on demand when an action is denied later in the session. Vendor-neutral: the agent is a Tool, and its config is written through that Tool's adapter. Skill: agent-permissions."
+msgid "Once the actor is known and the record is open, check that the coding agent acting here holds the permissions this layer's processes need, granted by a person and recorded, and ask for any that are missing. This is where initiating the harness for an actor secures them, rather than the first denied command. A run that finds them current returns without asking anything; the same process is called on demand when an action is denied later in the session. Vendor-neutral: the agent is a Tool, and its config is written through that Tool's adapter. Skill: agent-permissions."
 msgstr ""
 
 #: processes/process/session-state-machine.bpmn:116

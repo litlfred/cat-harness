@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: sample-import\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.124Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.574Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -171,7 +171,7 @@ msgstr ""
 
 #: library/processes/sample-import.bpmn:65
 #. Diagram element documentation
-msgid "The caller names a source (ideally one with a source descriptor in the declared sources/ of the instance that owns the corpus) and a reason to try it. Nothing about size, licence or permanence is assumed at this point."
+msgid "The caller names a source (ideally one with a source descriptor in the declared sources/ of the layer that owns the corpus) and a reason to try it. Nothing about size, licence or permanence is assumed at this point."
 msgstr ""
 
 #: library/processes/sample-import.bpmn:118

@@ -10,7 +10,7 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 
 - Begin here.
 - Call `workflow_start` with `process: "Process_FeatureStaging"` and the subject this run is about; keep the instance id it returns.
-- next: → `Task_Build` (Build the docs site)
+- next: → `GW_AgentBuilt` (Agent build matches tree?)
 
 ## Begin — Pull request closed (`Start_Closed`)
 
@@ -24,15 +24,15 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 - Call `workflow_start` with `process: "Process_FeatureStaging"` and the subject this run is about; keep the instance id it returns.
 - next: → `Task_Validate` (Check the slug and its confirmation)
 
-### 1. Build the docs site (`Task_Build`)
+### Decide — Agent build matches tree? (`GW_AgentBuilt`)
 
-- Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
-- Skill: `feature-staging`.
-- What: Build the preview from the PR's head: regenerate the generated docs, trim what this preview does not need, render the BPMN diagrams, then Jekyll, TypeDoc and the knowledge-graph export, with the staging banner and SEO identity claims stripped.
-- Record it: `workflow_complete` with `node: "Task_Build"`.
-- next: → `Task_Deploy` (Push to the CDN under branches/)
+- Check whether branches/<slug>/_build-record.json on gh-pages was written by the agent (builder = "agent") for the exact git tree of refs/pull/<n>/merge (record.tree = MERGE_SHA^{tree}).
+- Call `workflow_complete` with `node: "GW_AgentBuilt"` and `outcome` set to the label that holds:
+  - «yes —
+defer» → `Task_Defer` (Defer build and queue verify sweep)
+  - «no — build now» → `GW_MergeBuild`
 
-### 2. Derive the slug from the head ref (`Task_Slug`)
+### 1. Derive the slug from the head ref (`Task_Slug`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `feature-staging`.
@@ -40,7 +40,7 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 - Record it: `workflow_complete` with `node: "Task_Slug"`.
 - next: → `GW_Confirmed` (Removal confirmed?)
 
-### 3. Check the slug and its confirmation (`Task_Validate`)
+### 2. Check the slug and its confirmation (`Task_Validate`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `deletion-requires-confirmation`.
@@ -48,13 +48,18 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
 - Record it: `workflow_complete` with `node: "Task_Validate"`.
 - next: → `Task_Preflight` (Re-evaluate liveness AT REMOVAL TIME)
 
-### 4. Push to the CDN under branches/ (`Task_Deploy`)
+### 3. Defer build and queue verify sweep (`Task_Defer`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
-- Skill: `render-kg-to-cdn`.
-- What: A PREVIEW IS THE GENERAL STEP WITH A DIFFERENT ROOT (owner, 2026-09-30: "independent of staging vs publication … just rendering").
-- A subprocess (`Process_RenderKgToCdn`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Task_LogRendered` (Append `rendered` to the render log)
+- Skill: `feature-staging`.
+- What: Set the preview/agent-build commit status on the PR head to pending, post the preview-build-verify notice on the PR, and exit the critical-path run so the runner is free.
+- Record it: `workflow_complete` with `node: "Task_Defer"`.
+- next: → `GW_MergeBuild`
+
+### Merge — `GW_MergeBuild`
+
+- Nothing to do or decide: the paths meet here and the engine passes through.
+- next: → `Task_Build` (Build the docs site)
 
 ### Decide — Removal confirmed? (`GW_Confirmed`)
 
@@ -64,7 +69,7 @@ The lifecycle of a feature branch's review preview: staged on a push, taken down
   - «closed unmerged,
 no label» → `Task_LogRetained` (Append `retained`, with why it stays)
 
-### 5. Re-evaluate liveness AT REMOVAL TIME (`Task_Preflight`)
+### 4. Re-evaluate liveness AT REMOVAL TIME (`Task_Preflight`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `deletion-requires-confirmation`.
@@ -72,15 +77,15 @@ no label» → `Task_LogRetained` (Append `retained`, with why it stays)
 - Record it: `workflow_complete` with `node: "Task_Preflight"`.
 - next: → `GW_Live` (Still in use?)
 
-### 6. Append `rendered` to the render log (`Task_LogRendered`)
+### 5. Build the docs site (`Task_Build`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
-- Skill: `render-logging`.
-- What: Its OWN commit, not part of the deploy.
-- Record it: `workflow_complete` with `node: "Task_LogRendered"`.
-- next: → `Task_Comment` (Comment the preview URL on the PR)
+- Skill: `feature-staging`.
+- What: Build the preview from the PR's head (or, on an off-critical-path verify_pr dispatch, rebuild refs/pull/<n>/merge in full to verify an agent-built preview) and write _build-record.json: regenerate the generated docs, trim what this preview does not need, render the BPMN diagrams, then Jekyll, TypeDo
+- Record it: `workflow_complete` with `node: "Task_Build"`.
+- next: → `GW_VerifyMatch` (Verified identical to agent build?)
 
-### 7. Remove the preview and log it (`Task_Remove`)
+### 6. Remove the preview and log it (`Task_Remove`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `deletion-requires-confirmation`.
@@ -88,7 +93,7 @@ no label» → `Task_LogRetained` (Append `retained`, with why it stays)
 - Record it: `workflow_complete` with `node: "Task_Remove"`.
 - next: → `End_Removed` (Preview gone, with its reason)
 
-### 8. Append `retained`, with why it stays (`Task_LogRetained`)
+### 7. Append `retained`, with why it stays (`Task_LogRetained`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `render-logging`.
@@ -106,19 +111,19 @@ safe to remove» → `Task_RemoveDisp` (Remove it AND append `removed` — one c
   - «live, OR
 could not tell» → `End_Refused` (REFUSED — nothing removed)
 
-### 9. Comment the preview URL on the PR (`Task_Comment`)
+### Decide — Verified identical to agent build? (`GW_VerifyMatch`)
 
-- Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
-- Skill: `staging-review`.
-- What: Post, or update in place, one comment on the PR giving the preview URL (branches/<slug>/) and the commit it was built from.
-- Record it: `workflow_complete` with `node: "Task_Comment"`.
-- next: → `End_Staged` (Preview live)
+- On an off-critical-path verify run (verify_pr), preview-record.ts compare checks the CI rebuild's _build-record.json against the agent's record on gh-pages across every file outside the per-build metadata (staging.json, _build-record.json, .staged-at, build.yml).
+- Call `workflow_complete` with `node: "GW_VerifyMatch"` and `outcome` set to the label that holds:
+  - «no, or
+CI build» → `Task_Deploy` (Push to the CDN under branches/)
+  - «yes — keep agent files» → `GW_MergeComment`
 
 ## Done — Preview gone, with its reason (`End_Removed`)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 10. Post the retention notice on the PR (`Task_Notice`)
+### 8. Post the retention notice on the PR (`Task_Notice`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `staging-review`.
@@ -126,7 +131,7 @@ could not tell» → `End_Refused` (REFUSED — nothing removed)
 - Record it: `workflow_complete` with `node: "Task_Notice"`.
 - next: → `End_Retained` (Preview kept)
 
-### 11. Remove it AND append `removed` — one commit (`Task_RemoveDisp`)
+### 9. Remove it AND append `removed` — one commit (`Task_RemoveDisp`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
 - Skill: `deletion-requires-confirmation`.
@@ -138,9 +143,18 @@ could not tell» → `End_Refused` (REFUSED — nothing removed)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-## Done — Preview live (`End_Staged`)
+### 10. Push to the CDN under branches/ (`Task_Deploy`)
 
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
+- Skill: `render-kg-to-cdn`.
+- What: A PREVIEW IS THE GENERAL STEP WITH A DIFFERENT ROOT (owner, 2026-09-30: "independent of staging vs publication … just rendering").
+- A subprocess (`Process_RenderKgToCdn`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `Task_LogRendered` (Append `rendered` to the render log)
+
+### Merge — `GW_MergeComment`
+
+- Nothing to do or decide: the paths meet here and the engine passes through.
+- next: → `Task_Comment` (Comment the preview URL on the PR)
 
 ## Done — Preview kept (`End_Retained`)
 
@@ -150,7 +164,27 @@ could not tell» → `End_Refused` (REFUSED — nothing removed)
 
 - The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 12. Repeat the slug, exactly, to confirm (`H_Confirm`)
+### 11. Append `rendered` to the render log (`Task_LogRendered`)
+
+- Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
+- Skill: `render-logging`.
+- What: Its OWN commit, not part of the deploy.
+- Record it: `workflow_complete` with `node: "Task_LogRendered"`.
+- next: → `GW_MergeComment`
+
+### 12. Comment the preview URL on the PR (`Task_Comment`)
+
+- Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
+- Skill: `staging-review`.
+- What: Post, or update in place, one comment on the PR giving the preview URL (branches/<slug>/) and the commit it was built from.
+- Record it: `workflow_complete` with `node: "Task_Comment"`.
+- next: → `End_Staged` (Preview live)
+
+## Done — Preview live (`End_Staged`)
+
+- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 13. Repeat the slug, exactly, to confirm (`H_Confirm`)
 
 - Who: the `Human actor` lane (role `user`).
 - Skill: `deletion-requires-confirmation`.

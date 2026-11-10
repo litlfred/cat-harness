@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kg-separation\n"
-"POT-Creation-Date: 2026-11-08T06:36:09.312Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.598Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -101,7 +101,7 @@ msgstr ""
 
 #: processes/kg/kg-separation.bpmn:66
 #. Diagram element documentation
-msgid "Files and bytes per instance, clone cost (`bun run cat health`), gate time, merge contention, the candidate's cohesion and cut (`kg:detangle`), wrong-direction edges, and the would-be tools package's import cone. Recorded in the work context; none alone is a trigger."
+msgid "Files and bytes per layer, clone cost (`bun run cat health`), gate time, merge contention, the candidate's cohesion and cut (`kg:detangle`), wrong-direction edges, and the would-be tools package's import cone. Recorded in the work context; none alone is a trigger."
 msgstr ""
 
 #: processes/kg/kg-separation.bpmn:175

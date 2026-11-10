@@ -4,7 +4,7 @@
   "subject": {
     "kind": "skill",
     "id": "dsa-checksum",
-    "path": "skills/content/folio-document-adapter/dsa-checksum.md"
+    "path": "dsa/skills/dsa/dsa-checksum.md"
   },
   "voice_reviews": [
     {

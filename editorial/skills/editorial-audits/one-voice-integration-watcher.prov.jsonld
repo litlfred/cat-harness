@@ -8,16 +8,16 @@
   "dcterms:description": "Provenance moved out of the narrative of one-voice-integration-watcher.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "skills/authoring/authoring-core/one-voice-integration-watcher.md",
+      "@id": "editorial/skills/editorial-audits/one-voice-integration-watcher.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "skills/authoring/authoring-core/one-voice-integration-watcher.md#provenance-1"
+          "@id": "editorial/skills/editorial-audits/one-voice-integration-watcher.md#provenance-1"
         }
       ]
     },
     {
-      "@id": "skills/authoring/authoring-core/one-voice-integration-watcher.md#provenance-1",
+      "@id": "editorial/skills/editorial-audits/one-voice-integration-watcher.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "/one-voice-integration-watcher",

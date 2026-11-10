@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: copy-into-folio\n"
-"POT-Creation-Date: 2026-11-03T06:57:11.095Z\n"
+"POT-Creation-Date: 2026-11-10T17:57:41.589Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:73
 #. Diagram element documentation
-msgid "Name the upstream instance (`<owner>/<repo>`), the asset's declared path in that instance, the commit `ref` (when pinned), and the target folio declaration that will receive the copy."
+msgid "Name the upstream layer (`<owner>/<repo>`), the asset's declared path in that layer, the commit `ref` (when pinned), and the target folio declaration that will receive the copy."
 msgstr ""
 
 #: processes/kg/copy-into-folio.bpmn:166

@@ -191,7 +191,7 @@ For each requirement:
    feature branch, and shown where the requester will look, chosen from
    context — the conversation, the issue the request came from, the PR, or
    several — each place carrying the same branches/ deep links and screenshots
-   ([`staging-review`](../sdlc-core/staging-review.md), the deep-link rule,
+   ([`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md),
    point 5). The
    candidates are the options Phase 4's comparison lays out; the requester or
    BA chooses one at the review. Record "N/A — no rendered surface" in the
@@ -556,4 +556,4 @@ review or sign-off carries it: one deep link per changed page, to the anchor
 where the change sits, with the same page on main as *before*. Where the skill
 declares an output contract, they go in its `stagingLinks` field. The rule, and
 where the page list comes from:
-[`staging-review`](../sdlc-core/staging-review.md) §"The deep-link rule".
+[`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md).
