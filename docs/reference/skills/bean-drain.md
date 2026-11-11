@@ -52,7 +52,7 @@ What a drain produces: the queue, one claim check per bean taken, and what each 
 | `queue` | any | **yes** |  |
 | `checks` | array<any> | **yes** | One per bean a drainer tried to take, skips included. |
 | `results` | array<object> | **yes** | What each claimed bean ended as. |
-| `stagingLinks` | any | no | The staging preview behind any request the drain puts to the owner (an asked-owner question, a PR left for review): one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness sdlc/skills/sdlc-core/staging-review.md §"The deep-link rule". |
+| `stagingLinks` | any | no | The staging preview behind any request the drain puts to the owner (an asked-owner question, a PR left for review): one deep link per changed page, with the same page on main. Required whenever a preview exists; when it does not, say so in `missing`. Rule: cat-harness skills/authoring/content-lifecycle/feedback-deep-links.md. |
 
 ### `results[]`
 
