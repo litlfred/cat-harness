@@ -150,100 +150,143 @@ actionable direction: new beans or bean updates for the agent.</bpmn:documentati
   <bpmndi:BPMNDiagram id="Diagram_Process_CRDM_Deliver">
     <bpmndi:BPMNPlane id="Plane_Process_CRDM_Deliver" bpmnElement="Collaboration_Process_CRDM_Deliver">
       <bpmndi:BPMNShape id="Shape_Participant_Process_CRDM_Deliver" bpmnElement="Participant_Process_CRDM_Deliver" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="2666" height="652" />
+        <dc:Bounds x="160" y="80" width="1380" height="650" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BA_Process_CRDM_Deliver" bpmnElement="Lane_BA" isHorizontal="true">
-        <dc:Bounds x="190" y="250" width="2636" height="170" />
+        <dc:Bounds x="190" y="250" width="1350" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent_Process_CRDM_Deliver" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="2636" height="170" />
+        <dc:Bounds x="190" y="80" width="1350" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Stakeholders_Process_CRDM_Deliver" bpmnElement="Lane_Stakeholders" isHorizontal="true">
-        <dc:Bounds x="190" y="420" width="2636" height="170" />
+        <dc:Bounds x="190" y="420" width="1350" height="310" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_CRDM_Deliver" bpmnElement="Start_Process_CRDM_Deliver">
-        <dc:Bounds x="310" y="147" width="36" height="36" />
+        <dc:Bounds x="230" y="147" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="208" y="190" width="80" height="20" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_OptionsAnalysis" bpmnElement="Call_OptionsAnalysis">
-        <dc:Bounds x="510" y="125" width="140" height="80" />
+        <dc:Bounds x="295" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Implement" bpmnElement="A_Implement">
-        <dc:Bounds x="710" y="105" width="120" height="120" />
+        <dc:Bounds x="440" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_CodeAudit" bpmnElement="A_CodeAudit">
-        <dc:Bounds x="925" y="105" width="120" height="120" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_A_DeployStaging" bpmnElement="A_DeployStaging">
-        <dc:Bounds x="1725" y="105" width="120" height="120" />
+        <dc:Bounds x="585" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Summary" bpmnElement="A_Summary">
-        <dc:Bounds x="1120" y="105" width="120" height="120" />
+        <dc:Bounds x="730" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_BA_ReviewIncrement" bpmnElement="BA_ReviewIncrement">
-        <dc:Bounds x="1120" y="275" width="120" height="120" />
+        <dc:Bounds x="730" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_IncrementOK" bpmnElement="GW_IncrementOK" isMarkerVisible="true">
-        <dc:Bounds x="1310" y="310" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="1290" y="271" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="880" y="310" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="860" y="271" width="90" height="35" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_MVPReady" bpmnElement="GW_MVPReady" isMarkerVisible="true">
-        <dc:Bounds x="1510" y="310" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="1467.5" y="252" width="135" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="995" y="310" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1050" y="265" width="95" height="40" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_DeployStaging" bpmnElement="A_DeployStaging">
+        <dc:Bounds x="960" y="105" width="120" height="120" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_BA_ShareMVP" bpmnElement="BA_ShareMVP">
-        <dc:Bounds x="1920" y="275" width="120" height="120" />
+        <dc:Bounds x="1155" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_S_TestMVP" bpmnElement="S_TestMVP">
-        <dc:Bounds x="2120" y="445" width="120" height="120" />
+        <dc:Bounds x="1155" y="455" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_StakeholderOK" bpmnElement="GW_StakeholderOK" isMarkerVisible="true">
-        <dc:Bounds x="2310" y="480" width="50" height="50" />
+        <dc:Bounds x="1310" y="490" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1295" y="546" width="80" height="20" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_BA_TranslateFeedback" bpmnElement="BA_TranslateFeedback"><dc:Bounds x="2510" y="275" width="120" height="120" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_End_Process_CRDM_Deliver" bpmnElement="End_Process_CRDM_Deliver"><dc:Bounds x="2420" y="317" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="2393" y="265" width="90" height="48" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_BA_TranslateFeedback" bpmnElement="BA_TranslateFeedback">
+        <dc:Bounds x="1390" y="275" width="120" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_End_Process_CRDM_Deliver" bpmnElement="End_Process_CRDM_Deliver">
+        <dc:Bounds x="1317" y="317" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1295" y="275" width="80" height="36" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_1" bpmnElement="SF_Process_CRDM_Deliver_1">
-        <di:waypoint x="346" y="165" />
-        <di:waypoint x="510" y="165" />
+        <di:waypoint x="266" y="165" />
+        <di:waypoint x="295" y="165" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_1b" bpmnElement="SF_Process_CRDM_Deliver_1b">
+        <di:waypoint x="415" y="165" />
+        <di:waypoint x="440" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_2" bpmnElement="SF_Process_CRDM_Deliver_2">
-        <di:waypoint x="830" y="165" />
-        <di:waypoint x="925" y="165" />
+        <di:waypoint x="560" y="165" />
+        <di:waypoint x="585" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_2b" bpmnElement="SF_Process_CRDM_Deliver_2b">
-        <di:waypoint x="1045" y="165" />
-        <di:waypoint x="1120" y="165" />
+        <di:waypoint x="705" y="165" />
+        <di:waypoint x="730" y="165" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_3" bpmnElement="SF_Process_CRDM_Deliver_3"><di:waypoint x="1180" y="225" /><di:waypoint x="1180" y="275" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_3" bpmnElement="SF_Process_CRDM_Deliver_3">
+        <di:waypoint x="790" y="225" />
+        <di:waypoint x="790" y="275" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_4" bpmnElement="SF_Process_CRDM_Deliver_4">
-        <di:waypoint x="1240" y="335" />
-        <di:waypoint x="1310" y="335" />
+        <di:waypoint x="850" y="335" />
+        <di:waypoint x="880" y="335" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_5" bpmnElement="SF_Process_CRDM_Deliver_5"><di:waypoint x="1335" y="360" /><di:waypoint x="1335" y="585" /><di:waypoint x="800" y="585" /><di:waypoint x="800" y="225" /><bpmndi:BPMNLabel><dc:Bounds x="1342" y="380" width="30" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_5" bpmnElement="SF_Process_CRDM_Deliver_5">
+        <di:waypoint x="905" y="360" />
+        <di:waypoint x="905" y="610" />
+        <di:waypoint x="530" y="610" />
+        <di:waypoint x="530" y="225" />
+        <bpmndi:BPMNLabel><dc:Bounds x="911" y="380" width="30" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_6" bpmnElement="SF_Process_CRDM_Deliver_6">
-        <di:waypoint x="1360" y="335" />
-        <di:waypoint x="1510" y="335" />
+        <di:waypoint x="930" y="335" />
+        <di:waypoint x="995" y="335" />
+        <bpmndi:BPMNLabel><dc:Bounds x="950" y="313" width="30" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_7" bpmnElement="SF_Process_CRDM_Deliver_7"><di:waypoint x="1535" y="360" /><di:waypoint x="1535" y="615" /><di:waypoint x="770" y="615" /><di:waypoint x="770" y="225" /><bpmndi:BPMNLabel><dc:Bounds x="1542" y="380" width="55" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_8" bpmnElement="SF_Process_CRDM_Deliver_8"><di:waypoint x="1560" y="335" /><di:waypoint x="1785" y="335" /><di:waypoint x="1785" y="225" /><bpmndi:BPMNLabel><dc:Bounds x="1620" y="312" width="30" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_7" bpmnElement="SF_Process_CRDM_Deliver_7">
+        <di:waypoint x="1020" y="360" />
+        <di:waypoint x="1020" y="650" />
+        <di:waypoint x="500" y="650" />
+        <di:waypoint x="500" y="225" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1026" y="430" width="55" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_8" bpmnElement="SF_Process_CRDM_Deliver_8">
+        <di:waypoint x="1020" y="310" />
+        <di:waypoint x="1020" y="225" />
+        <bpmndi:BPMNLabel><dc:Bounds x="985" y="260" width="30" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_8b" bpmnElement="SF_Process_CRDM_Deliver_8b">
-        <di:waypoint x="1845" y="165" />
-        <di:waypoint x="1882.5" y="165" />
-        <di:waypoint x="1882.5" y="335" />
-        <di:waypoint x="1920" y="335" />
+        <di:waypoint x="1080" y="165" />
+        <di:waypoint x="1215" y="165" />
+        <di:waypoint x="1215" y="275" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_9" bpmnElement="SF_Process_CRDM_Deliver_9">
-        <di:waypoint x="2040" y="335" />
-        <di:waypoint x="2080" y="335" />
-        <di:waypoint x="2080" y="505" />
-        <di:waypoint x="2120" y="505" />
+        <di:waypoint x="1215" y="395" />
+        <di:waypoint x="1215" y="455" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_10" bpmnElement="SF_Process_CRDM_Deliver_10">
-        <di:waypoint x="2240" y="505" />
-        <di:waypoint x="2310" y="505" />
+        <di:waypoint x="1275" y="515" />
+        <di:waypoint x="1310" y="515" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_11" bpmnElement="SF_Process_CRDM_Deliver_11"><di:waypoint x="2360" y="505" /><di:waypoint x="2570" y="505" /><di:waypoint x="2570" y="395" /><bpmndi:BPMNLabel><dc:Bounds x="2430" y="482" width="60" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_12" bpmnElement="SF_Process_CRDM_Deliver_12"><di:waypoint x="2630" y="335" /><di:waypoint x="2680" y="335" /><di:waypoint x="2680" y="645" /><di:waypoint x="740" y="645" /><di:waypoint x="740" y="225" /></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_13" bpmnElement="SF_Process_CRDM_Deliver_13"><di:waypoint x="2335" y="480" /><di:waypoint x="2335" y="335" /><di:waypoint x="2420" y="335" /><bpmndi:BPMNLabel><dc:Bounds x="2342" y="390" width="65" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_11" bpmnElement="SF_Process_CRDM_Deliver_11">
+        <di:waypoint x="1360" y="515" />
+        <di:waypoint x="1450" y="515" />
+        <di:waypoint x="1450" y="395" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1456" y="450" width="60" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_12" bpmnElement="SF_Process_CRDM_Deliver_12">
+        <di:waypoint x="1510" y="335" />
+        <di:waypoint x="1525" y="335" />
+        <di:waypoint x="1525" y="690" />
+        <di:waypoint x="470" y="690" />
+        <di:waypoint x="470" y="225" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_13" bpmnElement="SF_Process_CRDM_Deliver_13">
+        <di:waypoint x="1335" y="490" />
+        <di:waypoint x="1335" y="353" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1340" y="435" width="60" height="18" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
