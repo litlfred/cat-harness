@@ -365,6 +365,11 @@
       "firstSeen": "2026-11-04",
       "retiredOn": null
     },
+    "kind/web-app": {
+      "prefLabel": "Web apps",
+      "firstSeen": "2026-11-11",
+      "retiredOn": null
+    },
     "kind/workflow-state": {
       "prefLabel": "Workflow state",
       "firstSeen": "2026-11-04",
@@ -469,6 +474,11 @@
     "node-kind/todo": {
       "prefLabel": "Todo",
       "firstSeen": "2026-11-04",
+      "retiredOn": null
+    },
+    "node-kind/web-app": {
+      "prefLabel": "Web app",
+      "firstSeen": "2026-11-11",
       "retiredOn": null
     },
     "node-kind/work-plan": {
