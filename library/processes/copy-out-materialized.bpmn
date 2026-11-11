@@ -151,90 +151,90 @@ no copy needed">
   <bpmndi:BPMNDiagram id="Diagram_CopyOutMaterialized">
     <bpmndi:BPMNPlane id="Plane_CopyOutMaterialized" bpmnElement="Collaboration_CopyOutMaterialized">
       <bpmndi:BPMNShape id="Participant_CopyOutMaterialized_di" bpmnElement="Participant_CopyOutMaterialized" isHorizontal="true">
-        <dc:Bounds x="130" y="60" width="1760" height="800" />
+        <dc:Bounds x="130" y="60" width="1360" height="800" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Reader_di" bpmnElement="Lane_Reader" isHorizontal="true">
-        <dc:Bounds x="160" y="60" width="1730" height="200" />
+        <dc:Bounds x="160" y="60" width="1330" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Source_di" bpmnElement="Lane_Source" isHorizontal="true">
-        <dc:Bounds x="160" y="260" width="1730" height="200" />
+        <dc:Bounds x="160" y="260" width="1330" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Folio_di" bpmnElement="Lane_Folio" isHorizontal="true">
-        <dc:Bounds x="160" y="460" width="1730" height="200" />
+        <dc:Bounds x="160" y="460" width="1330" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Verify_di" bpmnElement="Lane_Verify" isHorizontal="true">
-        <dc:Bounds x="160" y="660" width="1730" height="200" />
+        <dc:Bounds x="160" y="660" width="1330" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="StartEvent_WantToEdit_di" bpmnElement="StartEvent_WantToEdit">
-        <dc:Bounds x="220" y="142" width="36" height="36" />
+        <dc:Bounds x="210" y="142" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="260" y="182" width="119.23" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="250" y="182" width="119.23" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Frozen_di" bpmnElement="Gateway_Frozen" isMarkerVisible="true">
-        <dc:Bounds x="400" y="135" width="50" height="50" />
+        <dc:Bounds x="370" y="135" width="50" height="50" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="360" y="77" width="130" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="330" y="77" width="130" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_EditDirectly_di" bpmnElement="Task_EditDirectly">
-        <dc:Bounds x="655" y="100" width="120" height="120" />
+        <dc:Bounds x="580" y="100" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_NotFrozen_di" bpmnElement="EndEvent_NotFrozen">
-        <dc:Bounds x="900" y="142" width="36" height="36" />
+        <dc:Bounds x="780" y="142" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="860" y="183" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="740" y="183" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ReadSource_di" bpmnElement="Task_ReadSource">
-        <dc:Bounds x="655" y="300" width="120" height="120" />
+        <dc:Bounds x="580" y="300" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Land_di" bpmnElement="Task_Land">
-        <dc:Bounds x="935" y="500" width="120" height="120" />
+        <dc:Bounds x="780" y="500" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_RecordProvenance_di" bpmnElement="Task_RecordProvenance">
-        <dc:Bounds x="1215" y="500" width="120" height="120" />
+        <dc:Bounds x="980" y="500" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_VerifySourceUntouched_di" bpmnElement="Task_VerifySourceUntouched">
-        <dc:Bounds x="1495" y="700" width="120" height="120" />
+        <dc:Bounds x="1180" y="700" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_Copied_di" bpmnElement="EndEvent_Copied">
-        <dc:Bounds x="1740" y="742" width="36" height="36" />
+        <dc:Bounds x="1380" y="742" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="1700" y="783" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="1340" y="783" width="116" height="30" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1_di" bpmnElement="Flow_1">
-        <di:waypoint x="256" y="160" />
-        <di:waypoint x="400" y="160" />
+        <di:waypoint x="246" y="160" />
+        <di:waypoint x="370" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Writable_di" bpmnElement="Flow_Writable">
-        <di:waypoint x="450" y="160" />
-        <di:waypoint x="655" y="160" />
-        <bpmndi:BPMNLabel><dc:Bounds x="507.5" y="104" width="90" height="53" /></bpmndi:BPMNLabel>
+        <di:waypoint x="420" y="160" />
+        <di:waypoint x="580" y="160" />
+        <bpmndi:BPMNLabel><dc:Bounds x="455" y="104" width="90" height="53" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_NotFrozen_di" bpmnElement="Flow_NotFrozen">
-        <di:waypoint x="775" y="160" />
-        <di:waypoint x="900" y="160" />
+        <di:waypoint x="700" y="160" />
+        <di:waypoint x="780" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_Frozen_di" bpmnElement="Flow_Frozen">
-        <di:waypoint x="450" y="160" />
-        <di:waypoint x="552.5" y="160" />
-        <di:waypoint x="552.5" y="360" />
-        <di:waypoint x="655" y="360" />
-        <bpmndi:BPMNLabel><dc:Bounds x="556.5" y="192" width="90" height="36" /></bpmndi:BPMNLabel>
+        <di:waypoint x="420" y="160" />
+        <di:waypoint x="475" y="160" />
+        <di:waypoint x="475" y="360" />
+        <di:waypoint x="580" y="360" />
+        <bpmndi:BPMNLabel><dc:Bounds x="480" y="192" width="90" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_3_di" bpmnElement="Flow_3">
-        <di:waypoint x="775" y="360" />
-        <di:waypoint x="855" y="360" />
-        <di:waypoint x="855" y="560" />
-        <di:waypoint x="935" y="560" />
+        <di:waypoint x="700" y="360" />
+        <di:waypoint x="740" y="360" />
+        <di:waypoint x="740" y="560" />
+        <di:waypoint x="780" y="560" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_4_di" bpmnElement="Flow_4">
-        <di:waypoint x="1055" y="560" />
-        <di:waypoint x="1215" y="560" />
+        <di:waypoint x="900" y="560" />
+        <di:waypoint x="980" y="560" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_5_di" bpmnElement="Flow_5">
-        <di:waypoint x="1335" y="560" />
-        <di:waypoint x="1415" y="560" />
-        <di:waypoint x="1415" y="760" />
-        <di:waypoint x="1495" y="760" />
+        <di:waypoint x="1100" y="560" />
+        <di:waypoint x="1140" y="560" />
+        <di:waypoint x="1140" y="760" />
+        <di:waypoint x="1180" y="760" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_6_di" bpmnElement="Flow_6">
-        <di:waypoint x="1615" y="760" />
-        <di:waypoint x="1740" y="760" />
+        <di:waypoint x="1300" y="760" />
+        <di:waypoint x="1380" y="760" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
