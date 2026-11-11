@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/skill-authoring-best-practices---claude-platform-docs/manifest.jsonld",
+  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/skill-authoring-best-practices---claude-platform-docs",
   "@type": [
     "cat-harness:SourceDocument"
   ],

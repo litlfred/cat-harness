@@ -108,7 +108,7 @@ once it has loaded and not before: a PDF taken at `domcontentloaded` holds
 A static check cannot see fetched content: the built HTML holds only
 "Loading…". Verification therefore means loading each page in a browser
 (Playwright, with the pre-installed Chromium) and comparing what it
-**displays** against the reference, as [`rendered-verification`](../../../sdlc/skills/sdlc-core/rendered-verification.md)
+**displays** against the reference, as `rendered-verification` (opt-in `cat-harness.sdlc`)
 requires of any rendered artefact.
 
 ## Finding what to move

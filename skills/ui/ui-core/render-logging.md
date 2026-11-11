@@ -148,7 +148,7 @@ knows how to push, this one knows what to write.
 Reading back: `--read [--day YYYY-MM-DD]`. It **exits 1 when any line could
 not be read**, and prints which — a short count must be visible as short,
 never passed off as complete. Same rule as
-[`ci-health`](../../../sdlc/skills/sdlc-core/ci-health.md): could-not-determine is never rendered as clean.
+`ci-health` (opt-in `cat-harness.sdlc`): could-not-determine is never rendered as clean.
 
 ## A path is checked by VALUE, never trusted by provenance
 

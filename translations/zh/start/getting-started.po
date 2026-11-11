@@ -66,10 +66,6 @@ msgid "Another folio in a repository that already has one"
 msgstr "在已有 folio 的仓库中再加一个 folio"
 
 #: docs/start/getting-started.md:31
-msgid "a folio-assistant instance"
-msgstr "一个 folio-assistant 实例"
-
-#: docs/start/getting-started.md:31
 msgid "a second repository you did not want, and a split corpus"
 msgstr "一个你并不想要的第二个仓库，以及一份被拆散的语料"
 
@@ -542,3 +538,6 @@ msgstr "后续步骤"
 
 #~ msgid "Surface the work plan (beans)"
 #~ msgstr "呈现工作计划（beans）"
+
+#~ msgid "a folio-assistant instance"
+#~ msgstr "一个 folio-assistant 实例"

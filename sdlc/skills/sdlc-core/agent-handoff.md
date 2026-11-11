@@ -24,7 +24,7 @@ cannot do one step, usually because of network or credentials. The
 Often the only link between them is a person, retyping. Every rule below is
 about that gap.
 
-This is not [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md), which governs sibling
+This is not `bean-coordination` (opt-in `cat-harness.work-plan`), which governs sibling
 sessions sharing one store and racing for one claim. It is not
 [`dispatch-agent`](dispatch-agent.md) either: that governs subagents you spawn
 and can read directly. Here you **cannot see the executor's checkout**. The
@@ -195,7 +195,7 @@ clone, another environment, CI), the executor cannot close the work item:
 
 - the executor tags it `ready-to-close` and quotes under `## Evidence` what it
   measured. This is the third state of
-  [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"When you cannot re-derive it
+  `bean-coordination` §"When you cannot re-derive it
   yourself";
 - the **verifier** runs the named check and closes the work item, or records the
   failure and reopens the work.
@@ -232,7 +232,7 @@ reports** instead of carrying on. At minimum:
 - it cannot reach the report channel.
 
 The work item also carries an **expiry**: the time by which the first `started`
-line is due. As [`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md) §"An external block's
+line is due. As `bean-blocking` §"An external block's
 expiry" says, an executor in another environment is an external party, so the
 expiry is a date to **ask again, not a takeover**. The coordinator cannot do
 the step in any case, which is why it handed the step off.
@@ -242,7 +242,7 @@ same way every time:
 
 | failure | how you see it | response |
 |---|---|---|
-| **silent**: no `started` line by the expiry | no line in the report channel; no liveness signal ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"A quiet claim") | ask the person **once**, in the channel, re-posting the one sentence (§3); set the next expiry. Never re-hand to a second executor while the first claim may be live |
+| **silent**: no `started` line by the expiry | no line in the report channel; no liveness signal (`bean-coordination` §"A quiet claim") | ask the person **once**, in the channel, re-posting the one sentence (§3); set the next expiry. Never re-hand to a second executor while the first claim may be live |
 | **stopped**: `refused` or `blocked` | its report line | the coordinator settles the cause if it is in this repository; a boundary or an exception goes to the **owner** (§6) with the numbers. The executor waits |
 | **wrong result**: the step ran, `## Done when` fails | the verifier's check | record the failure under `## Attempts` (attempt *n*: inputs, what was measured, the cause); the work item goes back to `todo` with a holder note, never `completed` or `scrapped`; fix what the cause names (usually the work item) and re-hand |
 | **out of protocol**: created a work item, wrote another work item, pushed outside the boundaries | an unexpected file or ref | a duplicate work item is re-identified and `scrapped` with a pointer, never deleted; a stray push is **reported to the owner**, never reverted by the coordinator ([`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)) |

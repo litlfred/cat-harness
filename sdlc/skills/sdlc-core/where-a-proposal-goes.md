@@ -5,7 +5,7 @@ consulted: true
 # Where a proposal goes — `docs/proposals/`
 
 **A design proposal is a document in `docs/proposals/<slug>.md`**, with
-`kind: proposal` and a row in [`docs/proposals/index.md`](../../../docs/proposals/index.md).
+`kind: proposal` and a row in `docs/proposals/index.md` (opt-in `cat-harness.proposals`).
 Its assets go beside it, in `docs/proposals/<slug>/` (wireframe candidates in
 `docs/proposals/<slug>/wireframes/`). It is committed on the feature branch, so
 the branch's staging preview publishes it with the rest of the change.

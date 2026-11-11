@@ -44,9 +44,9 @@ This skill holds the **work item mechanics**: installing the CLI, the STRICT che
 before `beans create`, the fallback when the CLI is absent, the status
 vocabulary, and the coordination rules below. Report formats are elsewhere:
 
-- [`opening-brief.md`](../../../sdlc/skills/sdlc-core/opening-brief.md) — what you say **before** starting a
+- `opening-brief.md` (opt-in `cat-harness.sdlc`) — what you say **before** starting a
   work item or a topic.
-- [`turn-reporting.md`](../../../sdlc/skills/sdlc-core/turn-reporting.md) — what you say **during and after**
+- `turn-reporting.md` — what you say **during and after**
   each turn, including the STRICT "next"-line rule.
 
 ## Installing beans (fresh sandbox / cloud container)
@@ -98,7 +98,7 @@ first minutes reading it.
 1. **A session is a LOG, never an epic or a milestone.** Do **not** create a
    `Session: …` work item. What one sitting did is recorded in two places that
    already exist and are already read: the **PR body** (`## Intent` /
-   `## Session results`, [`session-intent`](../../../sdlc/skills/sdlc-core/session-intent.md)) and a **work item
+   `## Session results`, `session-intent`) and a **work item
    note** on each work item you worked — `bun run cat beans:note <id> --title "…"`,
    written to the declared `notes` directory of `beans/beans.json` and keyed by
    branch, so it is one file per session per work item by construction
@@ -286,10 +286,10 @@ level into a diary, and:
 
 | what the session wants to keep | where |
 |---|---|
-| what it intended and what it got done | the PR body, `## Intent` / `## Session results` ([`session-intent`](../../../sdlc/skills/sdlc-core/session-intent.md)) |
+| what it intended and what it got done | the PR body, `## Intent` / `## Session results` (`session-intent`) |
 | what it found about a work item | a note: `bun run cat beans:note <id>` → `beans/notes/<bean>--<date>--<branch>.md` |
 | a survey of a commit window it read | `beans/surveys/` (`session-survey`) — only if it surveyed one |
-| a handover to whoever comes next | a note on the work item being handed over, plus [`handover-report`](../../../sdlc/skills/sdlc-core/handover-report.md) |
+| a handover to whoever comes next | a note on the work item being handed over, plus `handover-report` |
 
 **A handover is the same case.** A `Handoff: …` or `Handover: …` work item typed
 `epic` or `milestone` is a session log with a different title.
@@ -677,7 +677,7 @@ node:
    announces the item is taken, but a sibling may already have a PR. Full rule:
    [`bean-coordination.md` §"Claims are global via the branch store"](bean-coordination.md).
    **Brief it in the same turn you claim it** —
-   [`opening-brief.md`](../../../sdlc/skills/sdlc-core/opening-brief.md). The claim tells a sibling the item is
+   `opening-brief.md`. The claim tells a sibling the item is
    taken; the brief tells them, and the author, what it is being taken *for*.
 2. **One source of truth per concern.** Do not fork a work item into a parallel
    `todos/*.json` queue; link to the queue from the work item instead.

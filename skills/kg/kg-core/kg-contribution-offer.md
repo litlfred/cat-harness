@@ -155,7 +155,7 @@ should be blue"* becomes a commit and nothing else.
    The offer produces a decision, not a node; writing it is work, and work is
    a work item before it is a file.
 3. Record the answer where the next agent will see it — on the issue, with the
-   round summary [`issue-working`](../../../sdlc/skills/sdlc-core/issue-working.md) already requires.
+   round summary `issue-working` (opt-in `cat-harness.sdlc`) already requires.
 
 On `none`, record that too (*"asked, answered none, because the requirement
 is carried by the code"*): otherwise it is indistinguishable from never having
@@ -169,5 +169,5 @@ asked.
 | a correction to a rule that already exists — no offer | [`symbiotic-interaction`](../../conduct/conduct-core/symbiotic-interaction.md) §2 |
 | where the answer lands | [`placement`](placement.md) |
 | the process step | [`crdm-signoff.bpmn`](../../../processes/process/crdm-signoff.bpmn) |
-| the round summary that records it | [`issue-working`](../../../sdlc/skills/sdlc-core/issue-working.md) |
-| why work becomes a work item first | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) |
+| the round summary that records it | `issue-working` |
+| why work becomes a work item first | `todo-manager` (opt-in `cat-harness.work-plan`) |

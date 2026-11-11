@@ -9,7 +9,7 @@ bean: folio-assistant-2ngl
 
 # Developer Mode: Topology, Tool Parity, and Capability Guard
 
-> **Topology reference**: [Deployment topologies and operating modes](../proposals/deployment-topologies.md)
+> **Topology reference**: Deployment topologies and operating modes (opt-in `cat-harness.proposals`)
 
 Developer mode represents a local workstation environment for folio authors and platform developers.
 It is modeled as a **point in the topology product**, paired with a **measured tool parity evaluation** and a **capability refusal guard**.

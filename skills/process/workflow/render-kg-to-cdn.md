@@ -34,7 +34,7 @@ one Tool for this general step. Drawn as [`render-kg-to-cdn.bpmn`](../../../proc
 A preview is this with a root under the release root; a release is this with
 the release root. **What differs belongs to the caller**: who may start it,
 what must be reviewed or verified first, what else lives on the same host and
-must survive the push. That is why [`feature-staging`](../../../sdlc/skills/sdlc-core/feature-staging.md)
+must survive the push. That is why `feature-staging` (opt-in `cat-harness.sdlc`)
 and `docs-site-publish` both *call* this process rather than restating it, and
 keep their own steps — the slug, the render log, restoring the open previews,
 the publication-manager alert — around the call.
@@ -64,7 +64,7 @@ stays the origin's canonical one even when a CDN serves it.
 ## What this is not
 
 Not the verification of what a build produced — that is
-[`publish-verification`](../../../sdlc/skills/sdlc-core/publish-verification.md), and it runs
+`publish-verification`, and it runs
 *before* a caller hands its tree over. Not the decision to release — the content layer's publication step and
-[`release-lifecycle`](../../../sdlc/skills/sdlc-core/release-lifecycle.md). This step renders, pushes, and says
+`release-lifecycle`. This step renders, pushes, and says
 whether the push landed.

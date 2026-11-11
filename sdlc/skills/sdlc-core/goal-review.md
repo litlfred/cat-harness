@@ -101,7 +101,7 @@ measurements the store's own status field cannot give you:
 
 - **Claims without activity** — items `in-progress` with no change in the
   window. `in-progress` records a claim; it
-  does not record that anyone is working ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)
+  does not record that anyone is working (`bean-coordination` (opt-in `cat-harness.work-plan`)
   §"A quiet claim").
 - **Items that exist only on a branch.** The store is committed per branch,
   so a long-running proposal can carry an entire epic the default branch has
@@ -181,7 +181,7 @@ For each goal, in this order:
    question verbatim from the item; a paraphrase is a second question.
 4. **Done in all but name** — items whose body says everything is finished
    but whose status is not `completed`. Report them; **never resolve a
-   sibling's item** ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)). Where
+   sibling's item** (`bean-coordination`). Where
    the body says "not resolving unilaterally, awaiting the owner", that is
    the owner's line to close, and it is the same rule seen from the other
    side.

@@ -97,10 +97,10 @@ arrived, not that the commit is good.
 ## Where running instances live — the state graph on the branch store
 
 Running instances are part of the work-plan store (`workflow-state` graph typology;
-`positions` in [`work-plan-store`](../../../work-plan/skills/work-plan/work-plan-store.md)).
+`positions` in `work-plan-store` (opt-in `cat-harness.work-plan`)).
 Where the deployment uses the git state-branch Tool, the store is mounted and
 pushed as described in
-[`work-plan-store-git-branch`](../../../work-plan/skills/work-plan/work-plan-store-git-branch.md).
+`work-plan-store-git-branch`.
 
 The container is ephemeral and **a work plan only one agent can see is not a
 work plan**. Instance state lives in the shared work-plan store for the same reason
@@ -123,8 +123,8 @@ Before acting on an instance you did not start, ask what it is waiting on. A
 work item's status defaults to **non-blocking**; a real block carries what it waits
 on, since when, an **expiry** and a handoff — because a block with no expiry
 cannot be told from abandoned work.
-[`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md) carries that, and
-[`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) carries the rule that
+`bean-blocking` carries that, and
+`bean-coordination` carries the rule that
 a claim **announces rather than reserves** until your PR exists.
 
 ## See also
@@ -135,5 +135,5 @@ a claim **announces rather than reserves** until your PR exists.
   five detectors for being out of process, and the recovery.
 - [`content-context-and-state-graphs`](../../kg/kg-core/content-context-and-state-graphs.md)
   — the layer each store sits on, and why memory is not writable by a step.
-- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) — the work plan's own store.
+- `todo-manager` — the work plan's own store.
   A todo is a **person's** outstanding item and is not a second work plan.

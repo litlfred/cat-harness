@@ -375,7 +375,7 @@ free-form string, because a reference nothing checks is eventually wrong.
 For the end-to-end guide on authoring, implementing, packaging, and registering
 concrete tools across separated repositories, see [`tool-authoring`](tool-authoring.md).
 For runtime conventions, test preloading, and TypeScript configuration, see
-[`bun-use`](../../../sdlc/skills/sdlc-core/bun-use.md).
+`bun-use` (opt-in `cat-harness.sdlc`).
 
 ## Covered is not reachable — see its own skill
 

@@ -63,9 +63,9 @@ Full cycle, as a diagram: [Work items and todos](https://litlfred.github.io/foli
 - [`todo-manager.md`](todo-manager.md) — work item lifecycle: `beans create` /
   `update` / `list`, parent/child epics, status transitions. This is the
   authoritative *local* usage spec.
-- [`session-intent.md`](../../../sdlc/skills/sdlc-core/session-intent.md) — session-start intent + session-end
+- `session-intent.md` (opt-in `cat-harness.sdlc`) — session-start intent + session-end
   results protocol against the master ledger and the work item queue.
-- [`pending-show.md`](../../../sdlc/skills/sdlc-core/pending-show.md) — read-only "what is this session
+- `pending-show.md` — read-only "what is this session
   working on?" display.
 - [`idle-backlog.md`](idle-backlog.md) — pull right-scoped work items while idle.
 
@@ -163,7 +163,7 @@ A duplicate-detecting test punishes **whoever merges second**, not whoever
 duplicated. Merging first does not mean you were first.
 
 **Starting any new unit of work runs the collision review in
-[`coordinate`](../../../sdlc/skills/sdlc-core/coordinate.md) §"Starting new work"**, scaled to its blast
+`coordinate` §"Starting new work"**, scaled to its blast
 radius and recorded in the workplan work item before the first edit.
 
 ### And ASK AGAIN before you open the PR — looking once is not enough
@@ -389,7 +389,7 @@ requirements — what it waits on, since when, an expiry and a handoff:
 ### Reconciling closes in bulk — and an owner's reopen outranks your evidence
 
 A sweep that closes many work items on evidence (patch-ids on main from
-[`branch-archaeology`](../../../sdlc/skills/sdlc-core/branch-archaeology.md), a gate that now passes, commits
+`branch-archaeology`, a gate that now passes, commits
 naming the work item) is these same three obligations applied per row. It adds one
 of its own: the owner may have moved work items from `completed` back to `todo` or
 `in-progress` because the earlier close was not good enough, and those work items
@@ -691,6 +691,6 @@ reporting (0 = pass, 1 = finding, 2 = could not determine).
   work items (see todo-manager.md disambiguation block).
 - **A sibling session** sharing this store (this skill) ≠ **an agent in another
   environment** you hand ONE task to, which you cannot see and which a person
-  may relay to: [`agent-handoff`](../../../sdlc/skills/sdlc-core/agent-handoff.md). That covers who writes
+  may relay to: `agent-handoff`. That covers who writes
   which work item, where the receiver reports, the one line the person pastes, and
   why the receiver's own measurement is evidence rather than the close.

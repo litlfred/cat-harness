@@ -155,13 +155,13 @@ tokens:
 |---|---|---|
 | **inline** | under ~10 documents | do it here, no subagents |
 | **one agent** | tens of documents, one kind | a single background agent, reporting per document |
-| **small swarm** | hundreds, or several distinct kinds | [`dispatch-agent`](../../../sdlc/skills/sdlc-core/dispatch-agent.md) — 2–4 agents partitioned **by directory**, never by file count |
+| **small swarm** | hundreds, or several distinct kinds | `dispatch-agent` (opt-in `cat-harness.sdlc`) — 2–4 agents partitioned **by directory**, never by file count |
 
 Partition by directory because a per-file partition puts two agents in the same
 manifest, and the conflicts cost more than the parallelism saves.
 
 Open one work item per ingestion front before dispatching — running the existence
-check in [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) §"Check before you create" first —
+check in `todo-manager.md` (opt-in `cat-harness.work-plan`) §"Check before you create" first —
 so a session that dies mid-import leaves a plan behind rather than a half-full
 `library/`.
 

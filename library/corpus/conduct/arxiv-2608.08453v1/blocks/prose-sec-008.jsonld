@@ -16,7 +16,7 @@
   "pageStart": 3,
   "pageEnd": 4,
   "text": "../sections/sec-008-34-routing-stress-test.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2608.08453v1/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2608.08453v1/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2608.08453v1",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2608.08453v1",
   "provenance": "ingested"
 }

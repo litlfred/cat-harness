@@ -17,7 +17,7 @@ to this file.
 
 ## 0b. Idle-time backlog policy (5-minute trigger)
 
-Per [`idle-backlog`](../../../../work-plan/skills/work-plan/idle-backlog.md) (the 5-minute idle
+Per `idle-backlog` (opt-in `cat-harness.work-plan`) (the 5-minute idle
 trigger): when this watcher has been idle for > 5 minutes (no
 substantive output beyond TICK heartbeats or empty acks),
 automatically start processing backlog without waiting for the user

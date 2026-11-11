@@ -115,4 +115,4 @@ A requirements document is governed as a **`RequirementSet`** (`reqset:<slug>`):
   template and elicitation guide.
 - [`spec-kit`](../spec-kit/spec-kit.md) — Platform feature spec-driven development.
 - [`adjudication`](adjudication.md) — Settle review disagreements and record human sign-offs.
-- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) — Work item work-plan management and claim discipline.
+- `todo-manager` (opt-in `cat-harness.work-plan`) — Work item work-plan management and claim discipline.

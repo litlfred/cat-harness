@@ -16,7 +16,7 @@
   "pageStart": 47,
   "pageEnd": 47,
   "text": "../sections/sec-046-731-identify-actors-on-the-enterprise.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/nist-sp-800-207/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/nist-sp-800-207",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/nist-sp-800-207",
   "provenance": "ingested"
 }

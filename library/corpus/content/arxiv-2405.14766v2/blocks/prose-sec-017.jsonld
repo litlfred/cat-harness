@@ -16,7 +16,7 @@
   "pageStart": 13,
   "pageEnd": 14,
   "text": "../sections/sec-017-gpt-4-and-gpt-4o-comparison.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2405.14766v2/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2405.14766v2/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2405.14766v2",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2405.14766v2",
   "provenance": "ingested"
 }

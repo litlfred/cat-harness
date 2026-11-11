@@ -321,7 +321,7 @@ there. `note` stays on the steps where the work happens. `check:bean-calls`
 process that calls one of the pair without the other, because claim and close
 drawn ad hoc leave work items resolved and never archived, and processes that claim
 and never close. See
-[`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"Archiving — two dispositions".
+`todo-manager` (opt-in `cat-harness.work-plan`) §"Archiving — two dispositions".
 
 Work-plan priming reports every instance's position next to its work item, so the
 plan and the process are one answer rather than two.

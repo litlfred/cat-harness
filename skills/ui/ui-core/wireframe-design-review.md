@@ -25,7 +25,7 @@ Method: [`wiregen`](../../../methodologies/wiregen.md). Process: [`processes/ui/
 | use | directory |
 |---|---|
 | **As-is** | `<instance>/docs/wireframes/<topic>/`, in the layer that declares the visualiser: `cat-harness/docs/wireframes/<topic>/` for this harness's own pages, and a content layer's own `docs/wireframes/<topic>/` for a page it declares |
-| **Design**, from a CRDM request | `docs/proposals/<slug>/wireframes/`, beside the request's proposal `docs/proposals/<slug>.md`: the candidates are **assets of the proposal**. When the proposal is filed (`git mv` to `docs/requirements/`, [`crdm-requirements-workflow`](../../../sdlc/skills/crdm/crdm-requirements-workflow.md)), its asset directory moves with it in the same commit. |
+| **Design**, from a CRDM request | `docs/proposals/<slug>/wireframes/`, beside the request's proposal `docs/proposals/<slug>.md`: the candidates are **assets of the proposal**. When the proposal is filed (`git mv` to `docs/requirements/`, `crdm-requirements-workflow` (opt-in `cat-harness.sdlc`)), its asset directory moves with it in the same commit. |
 
 Either directory holds:
 - `intent.md`
@@ -43,7 +43,7 @@ The contract is [`input.schema.json`](../../../schemas/skills/wireframe-design-r
 - **In:** the `use` (`design` or `as-is`), the `topic` (for CRDM, the proposal slug), the `surface`, and, from CRDM, the `requirements` that change it, the `proposal` path, the `humanReviewer` (requester or BA), the `channels` the candidates are shown in, and the `branch`.
 - **Out — the renderings:** `assetDir`, `intent`, and one `candidates[]` entry per candidate: its `source` HTML path, its `screenshots.web` and `screenshots.mobile` paths (from `wireframe-check`), their `staging` deep links, its per-criterion `entries`, and its `outcome` with the `reason`. `chosen` names the candidate, who chose it and the comment that records it; it is absent until a person chooses.
 - **Out — as changed assets:** `changedAssets[]` lists every wireframe file the branch adds, changes or removes (candidate HTML, screenshots, intent, reviews) in the record shape a staging preview's graph carries (`change`, `kind`, `title`, `before`, `after`, `source`, `pages` or `pagesUnknown`; `ChangedAsset` in cat-harness-tools `scripts/kg-changed-assets.ts`). The review therefore lists the drawings the same way it lists every other changed asset.
-- **Out — staging links:** `stagingLinks`, the shape every request for feedback carries ([`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md)), copied inline as `definitions.stagingLinks`.
+- **Out — staging links:** `stagingLinks`, the shape every request for feedback carries (`staging-review`), copied inline as `definitions.stagingLinks`.
 
 ## Two uses
 
@@ -112,5 +112,5 @@ Design use from CRDM ends in a person's choice, so the candidates must be in fro
 ## Related
 
 - [`theme-ui-review`](theme-ui-review.md): reviews the **ingested graphical assets** in their design, also at both viewports. At ingestion only; it does not review the built result.
-- [`adjudication`](../../../sdlc/skills/sdlc-core/adjudication.md)
+- `adjudication`
 - [`methodology-adoption`](../../process/process-core/methodology-adoption.md)

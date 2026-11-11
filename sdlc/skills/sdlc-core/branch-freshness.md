@@ -139,5 +139,5 @@ Or:
 ## Cross-references
 
 - [`../../sdlc/skills/sdlc-core/coordinate.md`](coordinate.md) — multi-agent coordination
-- [`../../work-plan/skills/work-plan/todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — work item management
-- [`../../work-plan/skills/work-plan/bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) — cross-session work items
+- `../../work-plan/skills/work-plan/todo-manager.md` (opt-in `cat-harness.work-plan`) — work item management
+- `../../work-plan/skills/work-plan/bean-coordination.md` — cross-session work items

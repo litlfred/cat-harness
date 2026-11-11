@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/figl-strembeck-2015-flow-direction-experiment/manifest.jsonld",
+  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/figl-strembeck-2015-flow-direction-experiment",
   "@type": [
     "cat-harness:SourceDocument"
   ],

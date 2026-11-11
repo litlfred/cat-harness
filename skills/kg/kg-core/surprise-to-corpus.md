@@ -124,7 +124,7 @@ pick up rather than rediscover.
 happened. Most turns produce nothing and should say nothing — a loop that
 reports "no surprises" every turn is a loop people stop reading.
 
-It pairs with [`turn-reporting`](../../../sdlc/skills/sdlc-core/turn-reporting.md), which governs the shape
+It pairs with `turn-reporting` (opt-in `cat-harness.sdlc`), which governs the shape
 of the report you were already writing.
 
 ## What this skill deliberately does not do

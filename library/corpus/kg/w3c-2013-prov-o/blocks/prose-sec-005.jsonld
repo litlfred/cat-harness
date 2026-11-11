@@ -16,7 +16,7 @@
   "pageStart": 2,
   "pageEnd": 2,
   "text": "../sections/sec-005-endorsed-by-w3c.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/w3c-2013-prov-o/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/w3c-2013-prov-o/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/w3c-2013-prov-o",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/w3c-2013-prov-o",
   "provenance": "ingested"
 }

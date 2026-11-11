@@ -11,7 +11,7 @@ description: >-
 
 > Skill id: `evidence-review` · Package: `folio-core`
 
-[`untainted-verification`](../../../sdlc/skills/sdlc-core/untainted-verification.md)
+`untainted-verification` (opt-in `cat-harness.sdlc`)
 states a generic discipline. Evidence review — the appraisal of the evidence
 behind a recommendation — is one instance of it; the translation round trip is
 another. Two unrelated instances are evidence that the discipline is generic,
@@ -48,12 +48,12 @@ not covered. Either way, *"verified on DATE against THESE inputs"* is a
 different claim from *"verified"*, because a reader given the second cannot
 tell a current verdict from a lapsed one. A folio implementing surveillance gives each
 verdict an explicit expiry, as
-[`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md) does for
+`bean-blocking` (opt-in `cat-harness.work-plan`) does for
 a block: a verdict with no expiry cannot be told from an abandoned one.
 
 ## The fencing analysis — which rules are the platform's, and which are not
 
-Run through [`domain-fencing`](../../../kg-ops/skills/kg-ops/domain-fencing.md)'s three
+Run through `domain-fencing` (opt-in `cat-harness.kg-ops`)'s three
 questions, in order, first-to-answer wins:
 
 | candidate rule | Q1 rationale survives translation? | Q2 domain in mechanism or vocabulary? | Q3 needs the domain installed? | verdict |
@@ -80,12 +80,12 @@ shipped a default answer to either would be asserting on their behalf.
 
 ## Related
 
-- [`untainted-verification`](../../../sdlc/skills/sdlc-core/untainted-verification.md) — the discipline. Read
+- `untainted-verification` — the discipline. Read
   it first; this skill adds only what evidence review instantiates.
 - [`translation-manager`](../../../library/skills/library-core/translation-manager.md) §"The agentic round trip" —
   the other instance.
 - `voice-who-guideline-development` in the IRIS replica's style guide — how a recommendation
   is **worded**: the language of normative statements, not the process that
   produces them, which is this skill.
-- [`domain-fencing`](../../../kg-ops/skills/kg-ops/domain-fencing.md) — the three
+- `domain-fencing` — the three
   questions, and why a fenced rule is correctly located rather than missing.

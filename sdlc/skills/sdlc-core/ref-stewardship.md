@@ -109,7 +109,7 @@ one and double-pushes. **So the window is committed state, in the
 
 The four fields are `HoldSchema`'s (`schemas/sdlc/merge-queue.ts`), for the
 same reason
-([`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md)'s `## Blocked on`):
+(`bean-blocking` (opt-in `cat-harness.work-plan`)'s `## Blocked on`):
 a window with no expiry cannot be told from an abandoned one.
 
 `schemas/sdlc/ref-window.ts` is the type. Three fields are `HoldSchema`'s verbatim

@@ -2,8 +2,8 @@
   "$schema": "tool-definition/v1",
   "tool": {
     "id": "ci-pr-tests",
-    "title": "Run cat-harness-tools' own test suite",
-    "description": "Dispatch cat-harness-tools' `pr-tests.yml`: the unit and standalone tests, sharded, with the failures compared against main's. Started with the standard GitHub CLI; the run is watched with `gh run watch`.",
+    "title": "Run the tools layer's own test suite",
+    "description": "Dispatch the tools layer's `pr-tests.yml`: the unit and standalone tests, sharded, with the failures compared against main's. Started with the standard GitHub CLI; the run is watched with `gh run watch`.",
     "install": {
       "cli": "gh"
     },

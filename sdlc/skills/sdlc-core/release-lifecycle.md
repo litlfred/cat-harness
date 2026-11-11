@@ -134,4 +134,4 @@ The process is identical; the artefacts differ.
 - [`crdm-requirements-workflow.md`](../crdm/crdm-requirements-workflow.md) — Phase 6 feeds into release
 - [`staging-review.md`](staging-review.md) — staging previews for RCs
 - [`release-epic-planning.md`](release-epic-planning.md) — epic structure and readiness checklist
-- [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — work item management within epics
+- `todo-manager.md` (opt-in `cat-harness.work-plan`) — work item management within epics

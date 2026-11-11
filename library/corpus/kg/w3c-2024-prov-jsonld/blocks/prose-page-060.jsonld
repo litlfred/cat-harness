@@ -16,7 +16,7 @@
   "pageStart": 60,
   "pageEnd": 60,
   "text": "../sections/page-060.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/w3c-2024-prov-jsonld/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/w3c-2024-prov-jsonld/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/w3c-2024-prov-jsonld",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/w3c-2024-prov-jsonld",
   "provenance": "ingested"
 }

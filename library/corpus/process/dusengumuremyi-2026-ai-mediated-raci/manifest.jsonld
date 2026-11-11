@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/dusengumuremyi-2026-ai-mediated-raci/manifest.jsonld",
+  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/dusengumuremyi-2026-ai-mediated-raci",
   "@type": [
     "cat-harness:SourceDocument"
   ],

@@ -13,7 +13,7 @@ consulted: true
 
 This skill governs what you say **during and after** the work;
 [`opening-brief.md`](opening-brief.md) governs what you say before starting
-it; [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md)
+it; `todo-manager.md` (opt-in `cat-harness.work-plan`)
 keeps the work item mechanics.
 
 ## Say which bean you are on — every turn
@@ -93,7 +93,7 @@ name it: say "nothing outstanding" or describe the work without the id.
 turn ends with "please look at this", it must carry the **PR link** and a
 **direct link to every page that changed**, not the staging root. It must also
 **explicitly state which host rendered it**, drawn from declared architecture /
-[`deployment-awareness`](../../../platform-ui/skills/platform-ui/deployment-awareness.md) (e.g. `GitHub Pages`,
+`deployment-awareness` (opt-in `cat-harness.platform-ui`) (e.g. `GitHub Pages`,
 `local server`, `chat discussion only`, or `could not determine`).
 
 > ✗ `https://…/branches/claude-my-branch/` *(root only, host unstated)*
@@ -132,7 +132,7 @@ partial withholding** — the artefact is technically reachable and practically
 hidden.
 
 **Where to get the links.** Look to the declared topology and configuration
-([`deployment-awareness`](../../../platform-ui/skills/platform-ui/deployment-awareness.md)), never a
+(`deployment-awareness`), never a
 guess:
 1. **GitHub Pages (static host):** When Pages is configured (e.g. `pagesBaseUrl`
    is declared in the layer's `index.config.json` entry), the staging workflow deploys to

@@ -43,7 +43,7 @@ CRDM separates **implementation priority** (how essential a requirement is when 
 
 #### 1. Priority scale (`High / Medium / Low` = `Must-have / Should-have / Nice-to-have`)
 
-Aligned with PHII's *Defining and Validating System Requirements Guide* ([`library/phii-2021-defining-and-validating-requirements-guide`, p. 2](../../../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/sections/page-002.md)) and PATH & PHII (2012) ([`library/path-2012-common-requirements-mhis-crdm`, p. 1](../../../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md)):
+Aligned with PHII's *Defining and Validating System Requirements Guide* ([`library/phii-2021-defining-and-validating-requirements-guide`, p. 2](https://phii.org/wp-content/uploads/2021/07/Defining-and-Validating-Requirements-Guide_0.pdf#page=2)) and PATH & PHII (2012) ([`library/path-2012-common-requirements-mhis-crdm`, p. 1](https://media.path.org/documents/MCHN_mhis_crdm.pdf)):
 
 | Priority label | PHII / PATH CRDM scale | Meaning |
 |---|---|---|
@@ -53,7 +53,7 @@ Aligned with PHII's *Defining and Validating System Requirements Guide* ([`libra
 
 #### 2. Normative conformance keywords (`SHALL / SHOULD / MAY / SHALL NOT`)
 
-While PHII's informal prose grammar phrases requirement statements as *"The system must or should…"* ([`phii-2021-defining-and-validating-requirements-guide`, p. 1](../../../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/sections/page-001.md)), the separate **Conformance** field uses uppercase normative keywords governed by IETF BCP 14 — [`library/rfc2119-key-words-requirement-levels`](../../../library/corpus/content/rfc2119-key-words-requirement-levels/README.md) (RFC 2119) and [`library/rfc8174-uppercase-vs-lowercase-2119-key-words`](../../../library/corpus/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md) (RFC 8174, specifying that **only UPPERCASE** words carry RFC 2119 normative meaning):
+While PHII's informal prose grammar phrases requirement statements as *"The system must or should…"* ([`phii-2021-defining-and-validating-requirements-guide`, p. 1](https://phii.org/wp-content/uploads/2021/07/Defining-and-Validating-Requirements-Guide_0.pdf#page=1)), the separate **Conformance** field uses uppercase normative keywords governed by IETF BCP 14 — [`library/rfc2119-key-words-requirement-levels`](https://www.rfc-editor.org/rfc/rfc2119) (RFC 2119) and [`library/rfc8174-uppercase-vs-lowercase-2119-key-words`](https://www.rfc-editor.org/rfc/rfc8174) (RFC 8174, specifying that **only UPPERCASE** words carry RFC 2119 normative meaning):
 
 - `SHALL` (`MUST`) — mandatory requirement of the specification
 - `SHOULD` (`RECOMMENDED`) — recommended; valid reasons may exist in particular circumstances to ignore, but full implications must be understood and weighed
@@ -194,15 +194,15 @@ PR (Phase 6)
 ## Cross-references
 
 - [`../../../methodologies/crdm.md`](../../../methodologies/crdm.md) — CRDM methodology node (PHII & PATH origin, adaptation table, priority vs. conformance alignment)
-- [`../../../library/corpus/process/phii-2023-crdm/README.md`](../../../library/corpus/process/phii-2023-crdm/README.md) — PHII (2021/2023) CRDM web page
-- [`../../../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/README.md`](../../../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/README.md) — PHII (2016/2021) Defining and Validating System Requirements Guide
-- [`../../../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md`](../../../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md) — PATH & PHII (2012) Common Requirements for Maternal Health Information Systems
-- [`../../../library/corpus/content/rfc2119-key-words-requirement-levels/README.md`](../../../library/corpus/content/rfc2119-key-words-requirement-levels/README.md) — RFC 2119 requirement level keywords
-- [`../../../library/corpus/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md`](../../../library/corpus/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md) — RFC 8174 uppercase requirement keyword ambiguity clarification
+- [`../../../library/corpus/process/phii-2023-crdm/README.md`](https://phii.org/crdm/) — PHII (2021/2023) CRDM web page
+- [`../../../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/README.md`](https://phii.org/wp-content/uploads/2021/07/Defining-and-Validating-Requirements-Guide_0.pdf) — PHII (2016/2021) Defining and Validating System Requirements Guide
+- [`../../../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md`](https://media.path.org/documents/MCHN_mhis_crdm.pdf) — PATH & PHII (2012) Common Requirements for Maternal Health Information Systems
+- [`../../../library/corpus/content/rfc2119-key-words-requirement-levels/README.md`](https://www.rfc-editor.org/rfc/rfc2119) — RFC 2119 requirement level keywords
+- [`../../../library/corpus/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md`](https://www.rfc-editor.org/rfc/rfc8174) — RFC 8174 uppercase requirement keyword ambiguity clarification
 - [`crdm-requirements-workflow`](crdm-requirements-workflow.md) — Phase 3
 - [`crdm-impact-analysis`](crdm-impact-analysis.md) — Phase 4 follows this
 - [`crdm-detect`](crdm-detect.md) — detection
-- [`../../work-plan/skills/work-plan/todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — work item creation
+- `../../work-plan/skills/work-plan/todo-manager.md` (opt-in `cat-harness.work-plan`) — work item creation
 - [`../../sdlc/skills/sdlc-core/specification-management.md`](../sdlc-core/specification-management.md) — governance and EARS/ISO statement quality
 - [`../../../methodologies/requirements-standards-assessment.md`](../../../methodologies/requirements-standards-assessment.md) — open standards (ReqIF, OSLC-RM, EARS, ISO 29148) assessment
 

@@ -5,7 +5,7 @@
       "@base": "https://litlfred.github.io/folio/"
     }
   ],
-  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/qi-hessen-vanderheijden-2023-ca-vs-lsa/manifest.jsonld",
+  "@id": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/qi-hessen-vanderheijden-2023-ca-vs-lsa",
   "@type": [
     "cat-harness:SourceDocument"
   ],

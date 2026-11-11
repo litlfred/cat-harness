@@ -16,7 +16,7 @@
   "pageStart": 38,
   "pageEnd": 38,
   "text": "../sections/sec-073-leakage-prevention.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2602.12670v4/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2602.12670v4/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2602.12670v4",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2602.12670v4",
   "provenance": "ingested"
 }

@@ -21,7 +21,7 @@ Each job lives in the object that already owns it:
 
 | job | here |
 |---|---|
-| goals, and what serves each | a `milestone` work item per goal, with the epics parented to it — [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"A GOAL is a `milestone` bean"; `beans roadmap` renders it |
+| goals, and what serves each | a `milestone` work item per goal, with the epics parented to it — `todo-manager` (opt-in `cat-harness.work-plan`) §"A GOAL is a `milestone` bean"; `beans roadmap` renders it |
 | canonical status of an item | the work item itself. There is no second copy to disagree with it |
 | flip-flop history | a `scrapped` work item keeps the rejected approach *with its reasons*, and a `trap` node under the declared `memory` graph keeps the failure signature — [`agent-memory`](../../../skills/conduct/conduct-core/agent-memory.md) |
 | session log | the work item's body notes, plus the PR. Both are durable and both are read by the next session; a third place would be a third answer |
@@ -47,7 +47,7 @@ Three states, and the third is the one that gets collapsed:
    missing.
 3. **The work plan could not be read** — no CLI, no store, an unreadable
    declaration → **that is not an empty plan.** Say so and fix it before
-   declaring intent; [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"When the `beans` CLI
+   declaring intent; `todo-manager` §"When the `beans` CLI
    is not there" has the fallback, which writes as well as reads.
 
 ## Session-start protocol (5 steps)
@@ -78,7 +78,7 @@ then their open children.
   **Do not repeat any pattern recorded there.**
 - **What is in flight** — an `in-progress` work item, with the caveat that a claim
   is branch-local and announces rather than reserves
-  ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)).
+  (`bean-coordination`).
 
 ### 3. Read the queue
 
@@ -113,13 +113,13 @@ log to keep in step with it.
 > **Check before you create (STRICT).** `beans create` is not idempotent — it
 > mints a fresh ID every call and dedupes on nothing, so re-entering this step
 > duplicates the whole plan rather than no-op'ing. Run the existence check in
-> [`todo-manager.md` §Check before you create](../../../work-plan/skills/work-plan/todo-manager.md) before **every**
+> `todo-manager.md` §Check before you create before **every**
 > `beans create` below.
 
 - **Do not create a `Session: …` milestone or epic.** A session is a LOG, and
   its log is the PR body (part c) plus a work item note on each work item worked
   (`bun run cat beans:note <id>`, keyed by branch).
-  [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) §"A session is a log, not a
+  `todo-manager` §"A session is a log, not a
   parent" has the reasoning.
 - For each NEW task you pick up, create it under the epic whose subject it is:
   `beans create "<Task>" --type task --parent <subject-epic-id>`, then claim
@@ -246,7 +246,7 @@ or partial result):
 
 ## See also
 
-- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) (the work-plan rules)
+- `todo-manager` (the work-plan rules)
 - [`continual-progress`](continual-progress.md) (the ALWAYS-PR rule)
 - [`coordinate`](coordinate.md) (sibling-PR coordination)
 - [`watch`](watch.md) (main-watching)

@@ -16,7 +16,7 @@
   "pageStart": 1,
   "pageEnd": 1,
   "text": "../sections/sec-000-prov-o-the-prov-ontology.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/w3c-2013-prov-o/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/w3c-2013-prov-o/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/w3c-2013-prov-o",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/w3c-2013-prov-o",
   "provenance": "ingested"
 }

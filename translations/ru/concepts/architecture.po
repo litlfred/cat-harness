@@ -61,10 +61,6 @@ msgstr "Пять целевых репозиториев и то, какой к�
 msgid "Phase 0/I/II/III, the gates, and what is still undecided"
 msgstr "Фазы 0/I/II/III, контрольные точки (gates) и то, что пока остается нерешенным"
 
-#: docs/concepts/architecture.md:68
-msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
-msgstr "Чем ЯВЛЯЕТСЯ инстанс — схемы, визуализации, инструменты; четыре каталога; рендеринг по умолчанию"
-
 #: docs/concepts/architecture.md:77
 msgid "The rest of this page describes the architecture as it is now."
 msgstr "В остальной части этой страницы описывается архитектура в ее текущем виде."
@@ -224,3 +220,6 @@ msgstr "Развертывание"
 
 #~ msgid "Local agent skills + capability hooks"
 #~ msgstr "Локальные навыки агента + хуки возможностей"
+
+#~ msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
+#~ msgstr "Чем ЯВЛЯЕТСЯ инстанс — схемы, визуализации, инструменты; четыре каталога; рендеринг по умолчанию"

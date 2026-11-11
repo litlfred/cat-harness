@@ -23,13 +23,13 @@ canonical SKOS glossary concept
 
 - **PHII (2021/2023)**, *Collaborative Requirements Development Methodology
   (CRDM): A Collaborative Approach to Public Health Systems*
-  ([`library/phii-2023-crdm`](../../../library/corpus/process/phii-2023-crdm/README.md))
+  ([`library/phii-2023-crdm`](https://phii.org/crdm/))
 - **PHII (2016/2021)**, *5. Analyzing Technical Options: Defining and
   Validating System Requirements Guide*
-  ([`library/phii-2021-defining-and-validating-requirements-guide`](../../../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/README.md))
+  ([`library/phii-2021-defining-and-validating-requirements-guide`](https://phii.org/wp-content/uploads/2021/07/Defining-and-Validating-Requirements-Guide_0.pdf))
 - **PATH & PHII (2012)**, *Common Requirements for Maternal Health Information
   Systems: Produced with the Collaborative Requirements Development Methodology*
-  ([`library/path-2012-common-requirements-mhis-crdm`](../../../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md))
+  ([`library/path-2012-common-requirements-mhis-crdm`](https://media.path.org/documents/MCHN_mhis_crdm.pdf))
 
 The relation to PHII and PATH CRDM is **adapts**:
 
@@ -537,15 +537,15 @@ When a round of implementation is complete (one or more work items resolved):
 ## Cross-references
 
 - [`../../../methodologies/crdm.md`](../../../methodologies/crdm.md) — the CRDM methodology node (PHII & PATH origin, three concentration areas, and platform adaptation)
-- [`../../../library/corpus/process/phii-2023-crdm/README.md`](../../../library/corpus/process/phii-2023-crdm/README.md) — PHII (2021/2023) CRDM web page
-- [`../../../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/README.md`](../../../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/README.md) — PHII (2016/2021) Defining and Validating System Requirements Guide
-- [`../../../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md`](../../../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md) — PATH & PHII (2012) Common Requirements for Maternal Health Information Systems
+- [`../../../library/corpus/process/phii-2023-crdm/README.md`](https://phii.org/crdm/) — PHII (2021/2023) CRDM web page
+- [`../../../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/README.md`](https://phii.org/wp-content/uploads/2021/07/Defining-and-Validating-Requirements-Guide_0.pdf) — PHII (2016/2021) Defining and Validating System Requirements Guide
+- [`../../../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md`](https://media.path.org/documents/MCHN_mhis_crdm.pdf) — PATH & PHII (2012) Common Requirements for Maternal Health Information Systems
 - [CRDM methodology page](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/crdm-methodology.html) — the documentation page for users
 - [`interaction-modality.md`](../../../skills/conduct/conduct-core/interaction-modality.md) §4.1 — context before the question; the ordering rule this workflow runs on
 - [`crdm-detect.md`](crdm-detect.md) — feature-request detection skill
 - [`staging-review.md`](../sdlc-core/staging-review.md) — before/after staging comparison skill
-- [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) — work item creation protocol
-- [`bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) — cross-session work item coordination
+- `todo-manager.md` (opt-in `cat-harness.work-plan`) — work item creation protocol
+- `bean-coordination.md` — cross-session work item coordination
 - [`coordinate.md`](../sdlc-core/coordinate.md) — session coordination
 - [Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) — the content lifecycle this fits within
 

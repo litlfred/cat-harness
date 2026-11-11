@@ -15,7 +15,7 @@
   "contains": [
     "library/github-docs-actions-secure-use-reference/blocks/prose-page-010"
   ],
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/github-docs-actions-secure-use-reference/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/github-docs-actions-secure-use-reference/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/github-docs-actions-secure-use-reference",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/github-docs-actions-secure-use-reference",
   "provenance": "ingested"
 }

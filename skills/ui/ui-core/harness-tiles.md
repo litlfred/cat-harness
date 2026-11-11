@@ -116,7 +116,7 @@ nothing checks; ask the filesystem.
 
 **Do not write a checker for this.** A predicate on the word cannot separate
 its two senses, so it is an **adjudication**, not a check
-([`adjudication`](../../../sdlc/skills/sdlc-core/adjudication.md)). When the
+(`adjudication` (opt-in `cat-harness.sdlc`)). When the
 word is load-bearing, say which sense — *"instantiated here"* or *"a layer
 downstream repos instantiate"*.
 

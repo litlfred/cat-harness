@@ -93,7 +93,7 @@ needs consent.
 before it reads any evidence. CI regenerates the projections on the head and
 commits them to the PR branch, and the evidence is then read on that new head.
 A PR whose projections are stale therefore cannot reach the merge gate looking
-green ([`merge-to-main`](../../../sdlc/skills/sdlc-core/merge-to-main.md)).
+green (`merge-to-main` (opt-in `cat-harness.sdlc`)).
 
 ## What this does not do yet
 
