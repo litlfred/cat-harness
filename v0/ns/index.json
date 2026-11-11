@@ -1665,6 +1665,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:graphTypology/web-app",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "web-app",
+      "comment": "A web app held as source and published as its own chrome-less page, built at publish by the web-app-build Tool and loaded only when a reader opens its route.",
+      "prefLabel": "web-app",
+      "definition": "A web app held as source and published as its own chrome-less page, built at publish by the web-app-build Tool and loaded only when a reader opens its route.",
+      "notation": "cat-harness:graphTypology/web-app",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:graphTypology/workflow-state",
       "@type": [
         "bootstrap:GraphTypology",
