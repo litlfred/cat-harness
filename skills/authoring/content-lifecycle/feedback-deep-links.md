@@ -31,7 +31,7 @@ guideline) points here rather than restating it.
    the files that differ from the published root but were NOT in the cone
    (each of those is a page to list, and a cone defect to report). Otherwise read
    `rendered-impact.json` beside the preview when the staging build wrote one
-   (skill [`rendered-impact`](../../../sdlc/skills/sdlc-core/rendered-impact.md)), or run the renderer's
+   (skill `rendered-impact` (opt-in `cat-harness.sdlc`)), or run the renderer's
    impact Tool for the branch. Never build a URL from a source path: look each
    one up in the publish ref (`staging-review` §"You can open it yourself").
 4. **The third state is said, not hidden.** No preview yet: say so, and when it

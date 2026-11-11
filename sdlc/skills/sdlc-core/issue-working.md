@@ -135,7 +135,7 @@ the open branches when the claim is *nobody has built this*.
 Grepping your checkout answers *"is this in my base"*, not *"does this exist"*,
 and a `git fetch` earlier in the same compound command is not a barrier when
 siblings merge every few minutes.
-[`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"Re-derive from the REMOTE" has
+`bean-coordination` (opt-in `cat-harness.work-plan`) §"Re-derive from the REMOTE" has
 the two guards. For the third case, a path that exists
 only on an open PR's head, ask the
 [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.json) Tool.

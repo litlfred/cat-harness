@@ -1473,4 +1473,4 @@ gate that silently covers nothing and exits 0 is the most expensive recurring
 defect.
 
 Full scheme, including what a layer's version means and what makes it go
-up: [`docs/proposals/instance-versioning.md`](../../../docs/proposals/instance-versioning.md).
+up: `docs/proposals/instance-versioning.md` (opt-in `cat-harness.proposals`).

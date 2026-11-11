@@ -376,7 +376,7 @@ merges. Merging still needs the explicit confirmation the processes require.
 
 - A choice of 2 or 3, or a comment on the preview, becomes a **work item** with
   the pair's label, the status line's SHA and the position
-  ([`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md); check before you create).
+  (`todo-manager` (opt-in `cat-harness.work-plan`); check before you create).
 - On a folio, a comment tagged `block: <label>` on the PR becomes a
   `review-comment/1.0.0` todo (`review-comments`).
 - Feedback on published content goes through

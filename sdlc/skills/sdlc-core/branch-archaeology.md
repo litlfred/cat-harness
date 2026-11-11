@@ -66,7 +66,7 @@ Two flags sit beside the class rather than inside it:
 - **`open-pr: #n`** — any branch backing an open PR is live, whatever its class.
 - **`beans: […]`** — work item ids named in its commit messages, the same
   extraction `lsi:epics` performs. This is the link that lets
-  [`work-plan-restructure`](../../../work-plan/skills/work-plan/work-plan-restructure.md) close a work item whose work
+  `work-plan-restructure` (opt-in `cat-harness.work-plan`) close a work item whose work
   this census shows `landed`.
 
 ## 2. Content protection: a content branch is salvage-review, never delete-candidate
@@ -120,7 +120,7 @@ For a branch on the salvage list, the question is which of its content is
 
 **Salvage is filed per CLUSTER, not per branch.** 461 branches are not 461
 work items. Work items are not sidecars, and one work item per branch is the generated-template
-flood [`work-plan-restructure`](../../../work-plan/skills/work-plan/work-plan-restructure.md) exists to clean up.
+flood `work-plan-restructure` exists to clean up.
 Group the salvage list by the subject its unique paths touch (a chapter, a Lean
 namespace), and propose one work item per group to the owner.
 

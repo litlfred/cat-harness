@@ -66,6 +66,6 @@ answer.
 
 | | |
 |---|---|
-| the three states, and never rendering the third as clean | [`ci-health`](../../../sdlc/skills/sdlc-core/ci-health.md) |
+| the three states, and never rendering the third as clean | `ci-health` (opt-in `cat-harness.sdlc`) |
 | where a new rule belongs before you write it | [`placement`](../../kg/kg-core/placement.md) |
 | re-measure rather than quoting a number | [`uses-editorial-review`](../../authoring/authoring-core/uses-editorial-review.md) |

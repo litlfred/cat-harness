@@ -60,7 +60,7 @@ looks finished.
 
 | # | stage | lane | done when |
 |---|---|---|---|
-| 0 | Brief, claim the work item ([`opening-brief`](../../../sdlc/skills/sdlc-core/opening-brief.md)) | `authoring-agent` | work item claimed with `bun run cat beans:claim` |
+| 0 | Brief, claim the work item (`opening-brief` (opt-in `cat-harness.sdlc`)) | `authoring-agent` | work item claimed with `bun run cat beans:claim` |
 | 1 | **Declare it in place** | `authoring-agent` | the declaration parses; `instance-repositories.test.ts` green |
 | 2 | **Grow it in place** | `authoring-agent` | the content type's own gates |
 | 3 | **Push generic down** | `platform-authoring-agent` | `check:import-direction`, `check:reference-direction`, `check:process-bindings` add nothing |
@@ -190,7 +190,7 @@ options at most, the recommended one first, with a stated default:
 > **Default if you do not answer: 2.** Nothing is deleted.
 
 When the repository must be created by someone with credentials this session
-lacks, the hand-over is [`agent-handoff`](../../../sdlc/skills/sdlc-core/agent-handoff.md):
+lacks, the hand-over is `agent-handoff`:
 one work item, one sentence for the person to relay.
 
 ### 9 · Copy the staged contents in, with history
@@ -215,8 +215,8 @@ orphaned. Its criteria and thresholds are in
 | `livesAt` | removed in the new repository — absent means "sits at the root of `repository`" |
 | the seam | `platform.ts` points at wherever the platform now is: a remote-mounted path, or a sibling checkout |
 | the host | **remote mount** if the host imports code from the sub-KG — a `source.remote` layer in the host's root `index.config.json` ([`remote-mount`](../kg-core/remote-mount.md); never a submodule); **subscription** (`kg:subscribe`) if it only reads its content |
-| pins | the host pins a commit while staging, a version once released ([`upstream-version-adoption`](../../../sdlc/skills/sdlc-core/upstream-version-adoption.md)) |
-| its site | the new repository publishes and previews itself ([`feature-staging`](../../../sdlc/skills/sdlc-core/feature-staging.md), *Which site*): `"site": { "agentRun": true }` in its `index.config.json` when an agent publishes it, plus whatever workflow its publisher layer's own creation skill requires (an IG's AST-cache refresh, for one) |
+| pins | the host pins a commit while staging, a version once released (`upstream-version-adoption`) |
+| its site | the new repository publishes and previews itself (`feature-staging`, *Which site*): `"site": { "agentRun": true }` in its `index.config.json` when an agent publishes it, plus whatever workflow its publisher layer's own creation skill requires (an IG's AST-cache refresh, for one) |
 | its checks | `.github/workflows/harness-pr-checks.yml` calling the tools layer's `layer-pr-checks.yml`, so its gates run on every pull request |
 | its QA record | when it declares a `qa` directory with `storage` (`test/results/`, `cat/cat-harness/qa-reports`, keyed by commit): `.github/workflows/publish-qa.yml` calling the tools layer's `layer-qa-publish.yml`, so every push to `main` and every pull request publishes its results to **its own** qa-reports branch, and `test/results/` in `.gitignore`. A host reads them at the commit it pins. Without the job, the declaration names a store nothing writes |
 | `.gitignore` | the mount block, written by the mount tool between its own markers. Never typed: a hand-written marker makes `remote-mount.ts` refuse (*markers unpaired*) |

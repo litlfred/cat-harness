@@ -55,9 +55,9 @@ destined for `main`.
 
 Work-plan progress, work item claims, status updates, and notes are written directly
 to the work-plan store through its configured Tool
-([`work-plan-store`](../../../work-plan/skills/work-plan/work-plan-store.md); on a git
+(`work-plan-store` (opt-in `cat-harness.work-plan`); on a git
 state branch, `bun run cat state:push` per
-[`work-plan-store-git-branch`](../../../work-plan/skills/work-plan/work-plan-store-git-branch.md)).
+`work-plan-store-git-branch`).
 
 The PR description references the work item via `Closes-bean: <id>` (or in the
 status checklist), but commits on the PR branch must not bundle work item file
@@ -345,6 +345,6 @@ requirement.** So:
   a stricter merge gate — `litlfred/qou` §"Branch + PR workflow" is the worked
   case. This skill is the platform-side statement; where a folio is stricter,
   the folio wins.
-- [`/todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) — the session work-plan; the
+- `/todo-manager` — the session work-plan; the
   PR-body status checklist (invariant 3) is its externally-visible
   projection, so a watcher needs no access to the session's work item queue.

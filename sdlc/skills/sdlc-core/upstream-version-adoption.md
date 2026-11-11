@@ -155,7 +155,7 @@ Three outcomes:
   range changed in rendered output. Record the evidence you used, not just the
   verdict.
 - **Hold** — record it as a **block with an expiry and a revisit trigger**
-  ([`bean-blocking.md`](../../../work-plan/skills/work-plan/bean-blocking.md)). A hold with no expiry cannot be told
+  (`bean-blocking.md` (opt-in `cat-harness.work-plan`)). A hold with no expiry cannot be told
   from abandoned work, and the next watcher run will re-raise the same pin with
   no memory of why it was left.
 - **Decline** — record the reasons on the work item and scrap it. A scrapped work item is

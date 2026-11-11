@@ -23,7 +23,7 @@ source graphs, pre-compiled hydrated graph views, or both.
 | the retrieval tool | `kg-retrieve-npm` (`bun run cat-harness-tools/scripts/kg-retrieve-npm.ts`) |
 | the release schema | `schemas/sdlc/binary-release.ts` (`folio-binary-release/v1`) |
 | asset verification | `cat-harness-tools/scripts/check-declared-assets.ts` |
-| related skills | [`remote-mount`](remote-mount.md), [`kg-export`](kg-export.md), [`package-release`](../../../sdlc/skills/sdlc-core/package-release.md), [`kg-subscription`](../../../library/skills/large-datasets/kg-subscription.md) |
+| related skills | [`remote-mount`](remote-mount.md), [`kg-export`](kg-export.md), `package-release` (opt-in `cat-harness.sdlc`), [`kg-subscription`](../../../library/skills/large-datasets/kg-subscription.md) |
 
 ---
 

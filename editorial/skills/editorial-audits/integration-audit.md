@@ -123,9 +123,9 @@ Multi-select (`multiSelect: true`).
 - **Built on**: `integration-watcher` (the audit pipeline this skill
   maintains)
 - **Sibling commands**:
-  - [`/integration-watch`](../../../sdlc/skills/sdlc-core/integration-watch.md) — read-only monitor
+  - `/integration-watch` (opt-in `cat-harness.sdlc`) — read-only monitor
     over the sidecars
-  - [`/integration-backlog`](../../../sdlc/skills/sdlc-core/integration-backlog.md) — write-side drain
+  - `/integration-backlog` — write-side drain
     of the open findings
 - **CLI**: `pipeline/integration-audit.ts`
 

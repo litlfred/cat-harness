@@ -20,7 +20,7 @@ recommendation, and a coordinated restart.
 
 It **reads and recommends**. It does not finish anyone's work, close their PRs
 or delete their branches. Picking up a theme is a separate, claimed piece of
-work ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)).
+work (`bean-coordination` (opt-in `cat-harness.work-plan`)).
 
 ## Inputs
 
@@ -42,7 +42,7 @@ returns 403 in agent sessions):
 | handover reports | `beans/notes/*` whose title starts `handover:`, on `main` and on every open PR branch | the agent's own account; **read these first** |
 | open PRs | `repos/…/pulls?state=open`, filtered by author session (`Claude-Session:` in bodies and commits) or by `updated_at` in the window | PR, branch, head, CI, mergeability |
 | branches | `git ls-remote --heads origin` and commit dates | work with no PR yet |
-| work items | `beans list` with `in-progress`, plus holder notes ([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)) | claims, blocks, `## Done when` |
+| work items | `beans list` with `in-progress`, plus holder notes (`bean-coordination`) | claims, blocks, `## Done when` |
 | workflow instances | `beans/workflows/*.json` updated in the window | where in which process each one stopped |
 | discussions | the last comments on each PR and issue | owner rulings and open questions |
 
@@ -85,7 +85,7 @@ For each theme, say one of:
 - **New epic or work item:** with a title, a `## Done when`, and the members it
   takes over.
 - **Park:** status `todo` with a block that has an expiry
-  ([`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md)).
+  (`bean-blocking`).
 - **Scrap:** only with the owner's say. Never delete a work item, a branch or a PR
   ([`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)).
 

@@ -121,7 +121,7 @@ except where the author said outright it should be one.
 
 | the steer | where it lands | why there |
 |---|---|---|
-| "that should be a skill: a collision means coordinate" | the named skill ([`coordinate`](../../../sdlc/skills/sdlc-core/coordinate.md)), as new triggers | rule-level on all three questions, and the author named the destination |
+| "that should be a skill: a collision means coordinate" | the named skill (`coordinate` (opt-in `cat-harness.sdlc`)), as new triggers | rule-level on all three questions, and the author named the destination |
 | "voices belong to the instance that owns them semantically" | the schema module that states voice ownership, **replacing** the old rule | question 3: it contradicts a standing rule, so filing it beside that rule would leave two answers |
 | "the harness handler wins" (a collision between two path rules) | [`schema-management`](../../kg/kg-core/schema-management.md) §"Where a viewer publishes — TWO rules, not three", beside the two rules | question 2: it settles every such collision, not one generator's |
 

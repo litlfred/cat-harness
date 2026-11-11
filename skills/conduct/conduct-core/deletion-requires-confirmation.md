@@ -47,7 +47,7 @@ in a report and one word back; a wrong deletion costs whatever it took to
 produce the thing, and may never be discovered.
 
 This skill is the general rule; the work item rule in
-[`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) is one
+`todo-manager` (opt-in `cat-harness.work-plan`) is one
 instance of it.
 
 ## What counts as durable
@@ -127,7 +127,7 @@ age and its size — in the commit message, the job log and a `removed`
 render-log entry — and retires its `staging-preview.json` into
 `branches/_retired/` rather than deleting it. It covers rotation over the cap
 and nothing else on the branch. See
-[`staging-review`](../../../sdlc/skills/sdlc-core/staging-review.md) §"The cap — 3 GB
+`staging-review` (opt-in `cat-harness.sdlc`) §"The cap — 3 GB
 of previews in total, the oldest rotated off".
 
 ## A workflow whose shape deletes something
@@ -162,7 +162,7 @@ A hand-derived list SHORTER than the instrument's is a harmless miss. One that
 is LONGER extracts a permission the instrument never justified — for example a
 slug rule re-implemented inline that names live previews of open PRs as
 orphans. So **do not re-derive what a committed check already computes**
-([`goal-review`](../../../sdlc/skills/sdlc-core/goal-review.md) rule 2, stated
+(`goal-review` rule 2, stated
 there for the reviewing side).
 
 ## Applying it to your own code

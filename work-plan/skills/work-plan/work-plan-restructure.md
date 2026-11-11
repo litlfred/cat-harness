@@ -46,7 +46,7 @@ applies:
 
 Defaults are the ones this repository already states:
 [`todo-manager`](todo-manager.md) for goals, subjects and *a session is a
-log*, and [`release-epic-planning`](../../../sdlc/skills/sdlc-core/release-epic-planning.md)
+log*, and `release-epic-planning` (opt-in `cat-harness.sdlc`)
 for epic → feature → task. **The types must be the ones `.beans.yml` lets the
 CLI write.** A level the store cannot hold, such as a `story` type it does not
 configure, is a proposal to the owner. It is not a row.
@@ -75,7 +75,7 @@ it:
 | reparent an open work item | `lsi:epics`: a `parent:` chain or a work item id in commits first, cosine second | `explicit`, else `latent` |
 | session log typed as epic or milestone | `sessionLogRootBeans` in `test/health/checks.ts` (the `bean-session-log-roots` finding) | `rule:session-log` |
 | duplicate | the `bean-store` duplicate groups; the target-object key in [`todo-manager`](todo-manager.md) §"Check before you create" | `rule:same-title`, `rule:same-target` |
-| landed work still open | [`branch-archaeology`](../../../sdlc/skills/sdlc-core/branch-archaeology.md): patch-id equivalence on main | `explicit` |
+| landed work still open | `branch-archaeology`: patch-id equivalence on main | `explicit` |
 | stale claim | `bean-stale-in-progress` / `bean-quiet-claims` in `bun run cat health`, network-checked by `check:quiet-claims` | `rule:stale-claim` |
 | unparented | `check:bean-parents` | `rule:orphan` |
 

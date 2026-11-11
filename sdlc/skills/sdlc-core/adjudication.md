@@ -210,7 +210,7 @@ settle has no way to say who decided.
 | `todos/feedback/` | a person's feedback ON content — the **intake** | [`todo-review`](../../../skills/authoring/authoring-core/todo-review.md) |
 | `test/attestations/block-qa/` | the adjudicated (non-script) reviewer entries per criterion — the **record**, on `main` | the `qa-*` family; schema `qa-attestations/v1` |
 | `test/results/block-qa/` | the derived report, which keeps a **projection** composed from the store; its record is on the `qa-reports` branch | the `qa-*` family |
-| `beans/` | the work plan | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md) |
+| `beans/` | the work plan | `todo-manager` (opt-in `cat-harness.work-plan`) |
 
 Adjudication **consumes an intake and writes a record**. It is not a rival to
 either, and `todo-review`'s own disambiguation block — which separates itself
@@ -231,8 +231,8 @@ matches. This skill does not generalise it.
   each is given. Adjudication is what happens when they disagree.
 - `q-usage-watcher` (the science layer) — the
   dispensation mechanism, documented where it was first applied.
-- [`code-node-review`](../../../skills/kg/kg-core/code-node-review.md), [`voice-editorial-review`](../../../editorial/skills/editorial-audits/voice-editorial-review.md),
-  [`voice-overlay-review`](../../../editorial/skills/editorial-audits/voice-overlay-review.md) — the reviews that produce
+- [`code-node-review`](../../../skills/kg/kg-core/code-node-review.md), `voice-editorial-review` (opt-in `cat-harness.editorial`),
+  `voice-overlay-review` — the reviews that produce
   the findings this settles.
 - `schemas/sdlc/block-qa.ts` — the reviewer kinds, and why a model's own claim is
   not the same kind of evidence as a person's.

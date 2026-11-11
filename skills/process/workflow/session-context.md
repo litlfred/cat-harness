@@ -76,13 +76,13 @@ record that treated empty as a defect would report every reading session as one.
 
 **`claimed` is by reference because a claim announces rather than reserves.**
 The work item is the authority on its own status
-([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)); a status copied
+(`bean-coordination` (opt-in `cat-harness.work-plan`)); a status copied
 here would be free to contradict it, and a sibling reading the copy would act
 on a claim that had already been released.
 
 **`waitingOn` carries `since` or it carries nothing.** A wait with no start
 cannot be told from abandoned work — the same argument
-[`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md) makes for requiring an
+`bean-blocking` makes for requiring an
 expiry. `what` is free text on purpose: a human answer, a CI run, a sibling's
 PR is an open set no enum would survive.
 

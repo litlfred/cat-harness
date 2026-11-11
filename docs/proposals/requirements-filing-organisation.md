@@ -11,18 +11,18 @@ summary: >-
 - **Work item**: `folio-assistant-qh1s`
 - **Issue**: [#1164](https://github.com/litlfred/folio-assistant/issues/1164)
 - **Methodology node**: [`methodologies/requirements-filing-and-organisation.md`](../../methodologies/requirements-filing-and-organisation.md)
-- **Proposed BPMN diagram**: [`processes/sdlc/requirements-filing.bpmn`](../../sdlc/processes/requirements-filing.bpmn) ([checklist](../../sdlc/processes/requirements-filing.checklist.md))
+- **Proposed BPMN diagram**: `processes/sdlc/requirements-filing.bpmn` (opt-in `cat-harness.sdlc`) (checklist)
 - **Status**: Proposed — put to the owner before any automation beyond `check:requirements` is built.
 
 ---
 
 ## 1. Question and scope
 
-[`docs/requirements/index.md`](../requirements/index.md) currently holds only its index, and [`skills/sdlc/crdm/crdm-requirements-workflow.md`](../../sdlc/skills/crdm/crdm-requirements-workflow.md) explicitly deferred the corpus-level organisation and lifecycle rules to work item `folio-assistant-qh1s`:
+[`docs/requirements/index.md`](../requirements/index.md) currently holds only its index, and `skills/sdlc/crdm/crdm-requirements-workflow.md` explicitly deferred the corpus-level organisation and lifecycle rules to work item `folio-assistant-qh1s`:
 
 > *"Today the directory is empty and a flat list in `index.md` is enough. Once it is not, how requirements are grouped, cross-referenced, superseded and retired needs a method rather than an ad-hoc table — tracked as `folio-assistant-qh1s`, which begins with a literature search over requirements-management practice and proposes the filing process as BPMN before anything is built."*
 
-This proposal summarizes the literature search and methodology adoption recorded in [`methodologies/requirements-filing-and-organisation.md`](../../methodologies/requirements-filing-and-organisation.md), presents the proposed executable BPMN process ([`processes/sdlc/requirements-filing.bpmn`](../../sdlc/processes/requirements-filing.bpmn)), and sets out the three design decisions for the owner before any new code or schema field is added.
+This proposal summarizes the literature search and methodology adoption recorded in [`methodologies/requirements-filing-and-organisation.md`](../../methodologies/requirements-filing-and-organisation.md), presents the proposed executable BPMN process (`processes/sdlc/requirements-filing.bpmn`), and sets out the three design decisions for the owner before any new code or schema field is added.
 
 ---
 
@@ -37,8 +37,8 @@ Full source notes and citations are in [`methodologies/requirements-filing-and-o
 | **IREB CPRE** (Pohl & Rupp, 3rd ed.) | **Decoupling IDs from Views & 3-Axis Traceability**: Separates immutable requirement IDs and flat storage paths from **faceted navigation views** so reorganising how requirements are browsed never renumbers IDs or breaks links; formalises backward (`derivedFrom`), horizontal (`dependsOn`), and forward trace axes. |
 | **Doorstop** (Browning & Adams, JOSS 2014) | **Git-Native One-File-Per-Requirement & In-Place Retirement**: Stores each requirement as a version-controlled text file with YAML front matter + Markdown body (`docs/requirements/<slug>.md`) so requirement changes travel in the same PR as code and tests, and retires items in place via status flags rather than `git rm`. |
 | **Nygard ADRs & MADR 3.0.0** ([`methodologies/madr.md`](../../methodologies/madr.md)) | **Slug Continuity (`git mv`) & Immutable Supersession Chains**: Promotes `docs/proposals/<slug>.md` → `docs/requirements/<slug>.md` via `git mv` (preserving `git log --follow` and recording `proposedIn`), and models scope-changing replacements as `status: superseded` + `supersededBy: req:<new-slug>` without deleting old records. |
-| **W3C PROV-O** ([`library/w3c-2013-prov-o`](../../library/corpus/kg/w3c-2013-prov-o/README.md)) | **Provenance Graph Semantics**: Grounds `proposedIn` and `derivedFrom` in `prov:wasDerivedFrom`, sign-off attestations in `prov:wasAttributedTo`, and retirement/supersession in `prov:wasInvalidatedBy` / `prov:wasRevisionOf`. |
-| **RFC 2119 & RFC 8174** ([`library/rfc2119-key-words-requirement-levels`](../../library/corpus/content/rfc2119-key-words-requirement-levels/README.md), [`library/rfc8174-uppercase-vs-lowercase-2119-key-words`](../../library/corpus/content/rfc8174-uppercase-vs-lowercase-2119-key-words/README.md)) | **Sub-Statement Normative Addressing**: Grounds `statements[].modality` (`MUST`, `SHOULD`, `MAY`) and statement-level URI addressing (`req:<slug>#<key>`) so individual normative clauses can be attested independently. |
+| **W3C PROV-O** ([`library/w3c-2013-prov-o`](https://www.w3.org/TR/2013/REC-prov-o-20130430/)) | **Provenance Graph Semantics**: Grounds `proposedIn` and `derivedFrom` in `prov:wasDerivedFrom`, sign-off attestations in `prov:wasAttributedTo`, and retirement/supersession in `prov:wasInvalidatedBy` / `prov:wasRevisionOf`. |
+| **RFC 2119 & RFC 8174** ([`library/rfc2119-key-words-requirement-levels`](https://www.rfc-editor.org/rfc/rfc2119), [`library/rfc8174-uppercase-vs-lowercase-2119-key-words`](https://www.rfc-editor.org/rfc/rfc8174)) | **Sub-Statement Normative Addressing**: Grounds `statements[].modality` (`MUST`, `SHOULD`, `MAY`) and statement-level URI addressing (`req:<slug>#<key>`) so individual normative clauses can be attested independently. |
 | **IEEE Std 830-1998** (superseded SRS standard) | **Negative Baseline**: Demonstrates why monolithic single-file SRS documents and positional section numbers (`§3.2.1.4`) fail in distributed Git workflows (renumbering cascades and merge conflicts). |
 
 ---
@@ -79,7 +79,7 @@ Full adoption bindings and partial-adoption boundaries are in [`methodologies/re
 
 ![Requirements filing workflow](../assets/img/workflows/requirements-filing.svg)
 
-The diagram [`processes/sdlc/requirements-filing.bpmn`](../../sdlc/processes/requirements-filing.bpmn) (`Process_RequirementsFiling`, step-by-step checklist at [`processes/sdlc/requirements-filing.checklist.md`](../../sdlc/processes/requirements-filing.checklist.md)) models the filing workflow across two lanes (`BA / Feature Requestor` and `Authoring Agent`):
+The diagram `processes/sdlc/requirements-filing.bpmn` (`Process_RequirementsFiling`, step-by-step checklist at `processes/sdlc/requirements-filing.checklist.md`) models the filing workflow across two lanes (`BA / Feature Requestor` and `Authoring Agent`):
 
 1. **`A_ClassifyFiling`** (`crdm-requirements-workflow`): Classify the transition (`promote` from `docs/proposals/<slug>.md`, `amend-or-supersede` an existing requirement, or `retire` an obsolete requirement), assign the primary concern group from `code-lists/concern-group.json`, and check `req:<slug>` uniqueness.
 2. **`GW_FilingMode`**: Route by transition kind (`promote` | `amend-or-supersede` | `retire`).

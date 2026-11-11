@@ -64,7 +64,7 @@ state rarer. It never converts it into a pass or a finding.
 
 A check that retried and still could not look has **not** established
 anything, and must not render as clean
-([`ci-health`](../../../sdlc/skills/sdlc-core/ci-health.md)).
+(`ci-health` (opt-in `cat-harness.sdlc`)).
 
 ## Jitter is not decoration here
 
@@ -98,5 +98,5 @@ rejected push.
 
 | | |
 |---|---|
-| the three states, and never rendering the third as clean | [`ci-health`](../../../sdlc/skills/sdlc-core/ci-health.md) |
+| the three states, and never rendering the third as clean | `ci-health` |
 | do not encode a constraint you have not verified | [`unverified-constraints`](unverified-constraints.md) |

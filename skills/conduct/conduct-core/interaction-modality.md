@@ -232,7 +232,7 @@ where the terms are defined.
 for themselves — it points at the page, not at the site it is on.** The rule
 and where the page list comes from:
 [`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md); the failure it also
-hides: [`continual-progress`](../../../sdlc/skills/sdlc-core/continual-progress.md) §"Link the PAGE, never the
+hides: `continual-progress` (opt-in `cat-harness.sdlc`) §"Link the PAGE, never the
 site root".
 
 Six parts, in order:
@@ -259,7 +259,7 @@ explicit question tool: the end-of-turn "next" line, a work item's `## Done when
 PR body asking the author to choose, a comment on an issue. Those are where it
 is most often broken, because they feel like reporting rather than asking.
 A PR body as a whole, not only its question, is governed by
-[`pr-description`](../../../sdlc/skills/sdlc-core/pr-description.md).
+`pr-description`.
 
 #### The prose does not travel — the question object must stand alone (STRICT)
 

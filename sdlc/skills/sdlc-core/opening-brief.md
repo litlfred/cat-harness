@@ -12,7 +12,7 @@ allowed-tools: Read Grep Glob AskUserQuestion
 
 This skill governs what you say **before** the work;
 [`turn-reporting.md`](turn-reporting.md) governs what you say during and after
-it; [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md)
+it; `todo-manager.md` (opt-in `cat-harness.work-plan`)
 keeps the work item mechanics.
 
 ## Opening brief
@@ -144,7 +144,7 @@ Four places to look, in this order:
 
 1. **The proposals — the design corpus.** They live in the `docs/` of the
    layer whose stub needs them; today that is
-   [`cat-harness/docs/proposals/`](../../../docs/proposals/index.md), and its
+   `cat-harness/docs/proposals/` (opt-in `cat-harness.proposals`), and its
    `index.md` is where to start. **Resolve the directory rather than
    remembering this sentence** — a stub's `docs/` is where its proposals are,
    and this path is an example of the rule, not the rule.

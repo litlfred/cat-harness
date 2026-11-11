@@ -81,7 +81,7 @@ Two things a test run produces are not derived, and they stay on `main`:
   because no re-run can reproduce it.
 - **A certification** — an accountable decision taken on a plan's rollup —
   also stays on `main`, beside the attestations, and is then signed through
-  [`qa-report-signing`](../../../sdlc/skills/sdlc-core/qa-report-signing.md).
+  `qa-report-signing` (opt-in `cat-harness.sdlc`).
 
 "Regression comparison" against a previous version is a comparison against
 its **stored** results: `--against <ref>` on a gate, or `qa:fetch --ref` for a

@@ -76,7 +76,7 @@ commit.
   find, because it is the one found BEFORE either of you has written
   anything. How to read a sibling's state out of the
   store, and the boundary of that inference, is
-  [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"Where a sibling
+  `bean-coordination` (opt-in `cat-harness.work-plan`) §"Where a sibling
   session is visible from" — not restated here.
 - **When you START any new unit of work — before the first edit.** A
   new story, epic, feature or task work item, an issue, CRDM Phase 6, a
@@ -446,10 +446,10 @@ is why it gets the full review and does not rely on either trigger.
    `beans list --status in-progress --search <term>`, and search the subject
    as well as the ids: the file names, the generator, the page type. A work item id finds nothing
    when the overlapping work has no work item of its own; see
-   [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"The trigger is STARTING WORK".
+   `bean-coordination` §"The trigger is STARTING WORK".
 3. **Name the owning sessions.** Use `list_sessions`, the `Claude-Session:`
    trailers on each PR's commits, and `bun run cat sessions --since <window>`.
-   [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"Where a sibling session is
+   `bean-coordination` §"Where a sibling session is
    visible from" says how far that inference goes.
 4. **Message each owner with your intent and your asks.** State what you will
    change, phase by phase, and the files each phase touches. Then ask two
@@ -544,9 +544,9 @@ goal. Apply when you hold the flag.
 ## SDLC multi-agent landscape & coverage
 
 For systematic evaluation of multi-agent SDLC workflows (comparing Waterfall, Agile, and dynamic process models against this repository's 69 BPMN processes) and the architectural gap checklist, see:
-- Methodology: [`research/methodologies/sdlc-agentic-landscape.md`](../../../research/methodologies/sdlc-agentic-landscape.md) (derived from arXiv:2404.04834v4, He, Treude, and Lo)
+- Methodology: `research/methodologies/sdlc-agentic-landscape.md` (opt-in `cat-harness.research`) (derived from arXiv:2404.04834v4, He, Treude, and Lo)
 - Architectural analysis: [`docs/architecture/sdlc-agentic-coverage.md`](../../../docs/architecture/sdlc-agentic-coverage.md)
-- Cross-paper literature synthesis & bidirectional adversarial pass: [`research/methodologies/agentic-se-literature-synthesis.md`](../../../research/methodologies/agentic-se-literature-synthesis.md) (synthesizing arXiv:2404.04834v4, arXiv:2507.23348v1, arXiv:2607.00053v1, arXiv:2601.04544v1, arXiv:2402.02172v5 under epic `0ipy`)
+- Cross-paper literature synthesis & bidirectional adversarial pass: `research/methodologies/agentic-se-literature-synthesis.md` (synthesizing arXiv:2404.04834v4, arXiv:2507.23348v1, arXiv:2607.00053v1, arXiv:2601.04544v1, arXiv:2402.02172v5 under epic `0ipy`)
 
 
 

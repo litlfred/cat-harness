@@ -39,7 +39,7 @@ The failure each rule prevents is stated beside it.
    why. A node whose shape could not be determined is drawn dashed, as a
    finding, never as a quiet empty shape.
 4. **Edge kinds are drawn distinctly and never merged.** A graph has more
-   than one kind of edge ([`edge-kinds-and-blast-radius`](../../../kg-ops/skills/kg-ops/edge-kinds-and-blast-radius.md)).
+   than one kind of edge (`edge-kinds-and-blast-radius` (opt-in `cat-harness.kg-ops`)).
    Editorial `uses[]` and a content type's formal edges, enforced and prose-only
    references, and a field-carried link versus one declared elsewhere (the
    UML's dashed `bootstrap.processes:skill` edge) each get their own line style and a
@@ -155,7 +155,7 @@ the drawing keeps them apart.
 
 - [`graph-detanglement`](graph-detanglement.md): restructuring the graph this
   skill draws.
-- [`edge-kinds-and-blast-radius`](../../../kg-ops/skills/kg-ops/edge-kinds-and-blast-radius.md): why edge
+- `edge-kinds-and-blast-radius`: why edge
   kinds must stay distinct (rule 4).
 - [`uml-overview`](../kg-core/uml-overview.md): the schema diagrams, where
   these rules were first learned.

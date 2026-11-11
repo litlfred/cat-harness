@@ -151,5 +151,5 @@ repeating the usual story as fact.
 - [`evidence-appraisal`](../../../skills/authoring/content-lifecycle/evidence-appraisal.md) — appraising
   what was found
 - [`evidence-review`](../../../skills/authoring/authoring-core/evidence-review.md) — separation of appraiser from drafter
-- [`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md) — recording outcome 2 so it does not read
+- `bean-blocking` (opt-in `cat-harness.work-plan`) — recording outcome 2 so it does not read
   as abandoned
