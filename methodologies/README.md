@@ -14,6 +14,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `methodologies`, holding 
 | file | what it is | used by |
 |---|---|---|
 | [`adequacy-for-purpose-modelling.md`](adequacy-for-purpose-modelling.md) | Adequacy-for-purpose modelling |  |
+| [`automatic-term-extraction.md`](automatic-term-extraction.md) | Automatic term extraction: candidates from prose, ranked, judged by a person |  |
 | [`consensus-grounded-subject-evaluation.md`](consensus-grounded-subject-evaluation.md) | Consensus-grounded subject evaluation: score against where experts agree, and read the panel |  |
 | [`correspondence-analysis.md`](correspondence-analysis.md) | Correspondence analysis: the SVD of the standardised residuals |  |
 | [`dmn.md`](dmn.md) | DMN — the computable case |  |
