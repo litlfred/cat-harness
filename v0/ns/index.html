@@ -1673,6 +1673,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:graphTypology/web-app",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "web-app",
+      "comment": "A web app held as source and published as its own chrome-less page, built at publish by the web-app-build Tool and loaded only when a reader opens its route.",
+      "prefLabel": "web-app",
+      "definition": "A web app held as source and published as its own chrome-less page, built at publish by the web-app-build Tool and loaded only when a reader opens its route.",
+      "notation": "cat-harness:graphTypology/web-app",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:graphTypology/workflow-state",
       "@type": [
         "bootstrap:GraphTypology",
@@ -4543,6 +4558,7 @@
 <li><code>cat-harness:graphTypology/voices</code> voices — Editorial voice profiles — one JSON each, carrying `&quot;$schema&quot;: &quot;folio-voice/v1&quot;`. Every rule cites the ingested source or KG node it was derived from. Opt-in per folio.</li>
 <li><code>cat-harness:graphTypology/waiver</code> waiver — Confirmations a person granted in advance — each naming one gate, scoped to a session or a process run, each expiring.</li>
 <li><code>cat-harness:graphTypology/web-annex</code> web-annex — A WHO publication's web annexes, L1 or L2, held as data in the knowledge graph rather than as the files WHO attaches to the publication: a DAK's core data dictionary workbook as JSON (`dak-data-dictionary/v1`, loaded on demand by the IG site's annex view), and the declared mapping from its generic personas to the swimlanes of its business-process figures (`dak-swimlanes/v1`). Every node says which publication it is an annex of (`annexOf`: a library entry when one is held, else the parent's IRIS handle), what the publication calls it (`label`, e.g. &quot;Web Annex A&quot;), its own IRIS handle only when WHO gave it a record (`iris`), and the document-kind section it serves (`section`, e.g. `dak#core-data-elements` or `l1#annexes`).</li>
+<li><code>cat-harness:graphTypology/web-app</code> web-app — A web app held as source and published as its own chrome-less page, built at publish by the web-app-build Tool and loaded only when a reader opens its route.</li>
 <li><code>cat-harness:graphTypology/workflow-state</code> workflow-state — Running BPMN instances — one JSON file each, carrying `&quot;$schema&quot;: &quot;folio-workflow-instance/v1&quot;`. Owned by the interpreter, never hand-edited.</li>
 <li><code>cat-harness:graphTypology/workshop</code> workshop — Workshops over journeys -- modules, learning objectives, questions for the room per journey step, reference tables, printable sheets, job aids and readings.</li>
 <li><code>cat-harness:partOf</code> partOf — The node this one belongs to.</li>
