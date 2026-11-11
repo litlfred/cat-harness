@@ -66,10 +66,6 @@ msgid "Another folio in a repository that already has one"
 msgstr "folio آخر في مستودع يحتوي على واحد بالفعل"
 
 #: docs/start/getting-started.md:31
-msgid "a folio-assistant instance"
-msgstr "نسخة من folio-assistant"
-
-#: docs/start/getting-started.md:31
 msgid "a second repository you did not want, and a split corpus"
 msgstr "مستودع ثانٍ لم تكن تريده، ومجموعة نصوص مجزأة"
 
@@ -541,3 +537,6 @@ msgstr "الخطوات التالية"
 
 #~ msgid "Surface the work plan (beans)"
 #~ msgstr "إظهار خطة العمل (beans)"
+
+#~ msgid "a folio-assistant instance"
+#~ msgstr "نسخة من folio-assistant"

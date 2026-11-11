@@ -61,10 +61,6 @@ msgstr "Les cinq dépôts cibles et dans lequel chaque répertoire atterrit"
 msgid "Phase 0/I/II/III, the gates, and what is still undecided"
 msgstr "Phases 0/I/II/III, les étapes clés (gates) et ce qui reste à trancher"
 
-#: docs/concepts/architecture.md:68
-msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
-msgstr "Ce qu'EST une instance — schémas, visualisations, outils ; les quatre répertoires ; le rendu par défaut"
-
 #: docs/concepts/architecture.md:77
 msgid "The rest of this page describes the architecture as it is now."
 msgstr "Le reste de cette page décrit l'architecture telle qu'elle est actuellement."
@@ -224,3 +220,6 @@ msgstr "Déploiement"
 
 #~ msgid "Local agent skills + capability hooks"
 #~ msgstr "Compétences d'agent locales + points d'ancrage de capacités"
+
+#~ msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
+#~ msgstr "Ce qu'EST une instance — schémas, visualisations, outils ; les quatre répertoires ; le rendu par défaut"

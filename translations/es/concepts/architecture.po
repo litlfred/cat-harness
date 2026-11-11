@@ -61,10 +61,6 @@ msgstr "Los cinco repositorios de destino y qué directorio va a parar a cuál"
 msgid "Phase 0/I/II/III, the gates, and what is still undecided"
 msgstr "Fases 0/I/II/III, las puertas de validación y lo que aún no se ha decidido"
 
-#: docs/concepts/architecture.md:68
-msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
-msgstr "Qué ES una instancia — esquemas, visualizaciones, herramientas; los cuatro directorios; el renderizado por defecto"
-
 #: docs/concepts/architecture.md:77
 msgid "The rest of this page describes the architecture as it is now."
 msgstr "El resto de esta página describe la arquitectura tal como es ahora."
@@ -224,3 +220,6 @@ msgstr "Despliegue"
 
 #~ msgid "Local agent skills + capability hooks"
 #~ msgstr "Habilidades del agente local + hooks de capacidades"
+
+#~ msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
+#~ msgstr "Qué ES una instancia — esquemas, visualizaciones, herramientas; los cuatro directorios; el renderizado por defecto"

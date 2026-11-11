@@ -66,10 +66,6 @@ msgid "Another folio in a repository that already has one"
 msgstr "Еще одно фолио в репозитории, где уже есть одно"
 
 #: docs/start/getting-started.md:31
-msgid "a folio-assistant instance"
-msgstr "инстанс folio-assistant"
-
-#: docs/start/getting-started.md:31
 msgid "a second repository you did not want, and a split corpus"
 msgstr "второй репозиторий, который вам не был нужен, и разделенный корпус"
 
@@ -541,3 +537,6 @@ msgstr "Следующие шаги"
 
 #~ msgid "Surface the work plan (beans)"
 #~ msgstr "Отобразить план работы (beans)"
+
+#~ msgid "a folio-assistant instance"
+#~ msgstr "инстанс folio-assistant"
