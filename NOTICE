@@ -29,3 +29,9 @@ Third-party components redistributed in this repository under their own terms:
     scripts/vendor-graphviz-wasm.ts:
     site-chrome/assets/js/vendor/wasm-graphviz/index.js
     Licence and notice: site-chrome/assets/js/vendor/wasm-graphviz/LICENSE.txt
+
+  * highlight.js 11.11.1 by Ivan Sagalaev and contributors — BSD 3-Clause
+    licence. Its core with the json and xml languages only, bundled and
+    minified with bun (the build is described in the file's first comment):
+    site-chrome/assets/js/vendor/highlight/highlight.min.js
+    Full licence text: site-chrome/assets/js/vendor/highlight/LICENSE.txt
