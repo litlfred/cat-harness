@@ -24,7 +24,7 @@ What is to be wireframed and why: the use (design of a new or changed surface, o
 | `requirements` | array<string> | no | Design use from CRDM: the requirement keys or sentences that change this surface, verbatim. |
 | `proposal` | string | no | Design use from CRDM: repository-relative path of the request's proposal (docs/proposals/<slug>.md), whose assets the candidates become. |
 | `humanReviewer` | string | no | Who chooses between candidates. From CRDM: the requester or the BA, by GitHub handle. |
-| `channels` | array<object> | no | Where the candidates are shown: where the requester will look, chosen from context, and more than one may be right (staging-review, the deep-link rule, point 5). Each carries the same staging deep links and screenshots. |
+| `channels` | array<object> | no | Where the candidates are shown: where the requester will look, chosen from context, and more than one may be right (feedback-deep-links, point 5). Each carries the same staging deep links and screenshots. |
 | `branch` | string | no | The feature branch the candidates are committed on, so feature-staging publishes them. |
 
 ### `channels[]`

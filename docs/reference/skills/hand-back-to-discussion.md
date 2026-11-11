@@ -68,7 +68,7 @@ The record of one hand-back: where it was shown, its state, the person's answer 
 | `answeredIn` | `"discussion"` \| `"own-thread"` \| `"project-chat"` \| `"review-sheet"` \| `"github-issue"` \| `"github-pr"` \| `null` | no | Which copy the answer came from. |
 | `marked` | array<object> | no | How each copy was closed once answered or withdrawn. A chat copy keeps its text: the question is struck through and "[Edit: <letter> chosen by <who>, <time>]" added, so the record still says what was asked. A sheet copy's "Decision needed" block is replaced by the decision and who made it. |
 | `deliveredBack` | object \| null | **yes** | Proof the answer reached the sibling; null only while open or for state informed. |
-| `stagingLinks` | any | no | When the question asks the person to look at changed pages: the staging preview, one deep link per changed page with the same page on main, shown in the chat copy. When there is no preview, say so in `missing`. Rule: cat-harness sdlc/skills/sdlc-core/staging-review.md §"The deep-link rule". |
+| `stagingLinks` | any | no | When the question asks the person to look at changed pages: the staging preview, one deep link per changed page with the same page on main, shown in the chat copy. When there is no preview, say so in `missing`. Rule: cat-harness skills/authoring/content-lifecycle/feedback-deep-links.md. |
 
 ### `shown[]`
 
