@@ -16,7 +16,7 @@
   "pageStart": 127,
   "pageEnd": 129,
   "text": "../sections/sec-094-extension-of-algorithm-1.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2607.20636v1/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2607.20636v1/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2607.20636v1",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2607.20636v1",
   "provenance": "ingested"
 }

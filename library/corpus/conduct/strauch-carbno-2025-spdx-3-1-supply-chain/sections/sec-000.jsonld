@@ -39,7 +39,7 @@
     "library/strauch-carbno-2025-spdx-3-1-supply-chain/blocks/figure-img-p037-3",
     "library/strauch-carbno-2025-spdx-3-1-supply-chain/blocks/figure-img-p040-3"
   ],
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/strauch-carbno-2025-spdx-3-1-supply-chain/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/strauch-carbno-2025-spdx-3-1-supply-chain/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/strauch-carbno-2025-spdx-3-1-supply-chain",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/strauch-carbno-2025-spdx-3-1-supply-chain",
   "provenance": "ingested"
 }

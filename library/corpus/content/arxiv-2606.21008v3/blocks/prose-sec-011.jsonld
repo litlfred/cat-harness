@@ -16,7 +16,7 @@
   "pageStart": 7,
   "pageEnd": 7,
   "text": "../sections/sec-011-the-official-leaderboard-judgement-is-the-bottle.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2606.21008v3/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2606.21008v3/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2606.21008v3",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2606.21008v3",
   "provenance": "ingested"
 }

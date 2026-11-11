@@ -16,7 +16,7 @@
   "pageStart": 6,
   "pageEnd": 6,
   "text": "../sections/sec-007-collaborative-requirements-development-methodolo.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/path-2012-common-requirements-mhis-crdm/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/path-2012-common-requirements-mhis-crdm/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/path-2012-common-requirements-mhis-crdm",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/path-2012-common-requirements-mhis-crdm",
   "provenance": "ingested"
 }

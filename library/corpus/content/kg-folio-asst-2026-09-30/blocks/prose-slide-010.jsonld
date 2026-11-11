@@ -16,7 +16,7 @@
   "pageStart": 10,
   "pageEnd": 10,
   "text": "../sections/slide-010.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/kg-folio-asst-2026-09-30/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/kg-folio-asst-2026-09-30/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/kg-folio-asst-2026-09-30",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/kg-folio-asst-2026-09-30",
   "provenance": "ingested"
 }

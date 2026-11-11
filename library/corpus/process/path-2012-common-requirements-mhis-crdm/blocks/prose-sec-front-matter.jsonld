@@ -16,7 +16,7 @@
   "pageStart": 1,
   "pageEnd": 2,
   "text": "../sections/sec-front-matter.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/path-2012-common-requirements-mhis-crdm/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/path-2012-common-requirements-mhis-crdm/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/path-2012-common-requirements-mhis-crdm",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/path-2012-common-requirements-mhis-crdm",
   "provenance": "ingested"
 }

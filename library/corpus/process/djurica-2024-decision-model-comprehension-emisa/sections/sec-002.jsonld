@@ -15,7 +15,7 @@
   "contains": [
     "library/djurica-2024-decision-model-comprehension-emisa/blocks/prose-sec-002"
   ],
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/djurica-2024-decision-model-comprehension-emisa/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/djurica-2024-decision-model-comprehension-emisa/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/djurica-2024-decision-model-comprehension-emisa",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/djurica-2024-decision-model-comprehension-emisa",
   "provenance": "ingested"
 }

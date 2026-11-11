@@ -15,7 +15,7 @@
   "contains": [
     "library/gurel-tat-2017-swot-analysis/blocks/prose-page-013"
   ],
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/gurel-tat-2017-swot-analysis/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/gurel-tat-2017-swot-analysis/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/gurel-tat-2017-swot-analysis",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/gurel-tat-2017-swot-analysis",
   "provenance": "ingested"
 }
