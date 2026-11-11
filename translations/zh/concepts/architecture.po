@@ -61,10 +61,6 @@ msgstr "五个目标仓库以及各目录分别落入哪个仓库"
 msgid "Phase 0/I/II/III, the gates, and what is still undecided"
 msgstr "Phase 0/I/II/III、各项关卡以及尚未决定的事项"
 
-#: docs/concepts/architecture.md:68
-msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
-msgstr "实例的本质是什么 —— 原理图、可视化、工具；四个目录；默认渲染"
-
 #: docs/concepts/architecture.md:77
 msgid "The rest of this page describes the architecture as it is now."
 msgstr "本页的其余部分描述当前现状下的架构。"
@@ -224,3 +220,6 @@ msgstr "部署"
 
 #~ msgid "Local agent skills + capability hooks"
 #~ msgstr "本地智能体技能 + 能力钩子"
+
+#~ msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
+#~ msgstr "实例的本质是什么 —— 原理图、可视化、工具；四个目录；默认渲染"

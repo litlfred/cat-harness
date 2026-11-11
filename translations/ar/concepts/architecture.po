@@ -100,10 +100,6 @@ msgstr "يصف باقي هذه الصفحة الهندسة المعمارية ك
 msgid "This documentation site"
 msgstr "موقع التوثيق هذا"
 
-#: docs/concepts/architecture.md:68
-msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
-msgstr "ما هي الحالة (instance) في واقعها — المخططات، والتصورات المرئية، والأدوات؛ والأدلة الأربعة؛ والتصيير الافتراضي"
-
 #: docs/concepts/architecture.md:64
 msgid "What is actually in this repo today, measured, and where the mixture is"
 msgstr "ما هو موجود بالفعل في هذا المستودع اليوم، بالأرقام المقاسة، وأين يكمن المزيج"
@@ -231,3 +227,6 @@ msgstr "تهيئة خطة العمل (عبر أطر العمل المختلفة)
 
 #~ msgid "What survives in the harness once \"not self-documenting\" is applied as a test"
 #~ msgstr "ما يتبقى في إطار العمل (harness) بمجرد تطبيق معيار \"ليس توثيقًا ذاتيًا\" كاختبار"
+
+#~ msgid "What an instance IS — schematics, visualisations, tools; the four directories; the default rendering"
+#~ msgstr "ما هي الحالة (instance) في واقعها — المخططات، والتصورات المرئية، والأدوات؛ والأدلة الأربعة؛ والتصيير الافتراضي"
