@@ -133,7 +133,7 @@ node_modules/
 /docs/en/cat-harness/site/
 /docs/todos.json
 /docs/todos.jsonld
-/docs/todos/
+/docs/todo/
 /docs/_data/todo_listing.json
 /docs/_includes/generated/todo-listing.html
 /docs/_includes/generated/todo-listing/
