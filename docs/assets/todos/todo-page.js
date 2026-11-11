@@ -25,11 +25,13 @@
     if (cls) n.className = cls;
     return n;
   }
+  // An href is resolved against the page and kept only if it is http(s):
+  // the URL's own parse decides the scheme, so no "javascript:" survives.
   function safeHref(h) {
     if (typeof h !== "string" || h === "") return null;
-    var m = /^([a-z][a-z0-9+.-]*):/i.exec(h);
-    if (m && !/^https?$/i.test(m[1])) return null;
-    return h;
+    var u;
+    try { u = new URL(h, document.baseURI); } catch (_e) { return null; }
+    return u.protocol === "http:" || u.protocol === "https:" ? u.href : null;
   }
   function link(text, href) {
     var safe = safeHref(href);
