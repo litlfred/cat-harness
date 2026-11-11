@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: crdm-requirements-definition\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.141Z\n"
+"POT-Creation-Date: 2026-11-11T12:38:31.250Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ru\n"
@@ -51,7 +51,7 @@ msgstr ""
 
 #: processes/process/crdm-requirements-definition.bpmn:67
 #. Diagram element documentation
-msgid "Design use of wireframe-design-review, before implementation: a written design intent, at least two mid-fidelity candidates each with a web and a mobile layout, the mechanical checks, and a blind review. The candidates are committed as assets of the request's proposal, under docs/proposals/<slug>/wireframes/ beside docs/proposals/<slug>.md, on the feature branch so feature-staging publishes them, and shown where the requester will look, chosen from context — the conversation, the issue the request came from, the pull request, or several of these — each place carrying the same staging deep links and screenshots (staging-review, the deep-link rule, point 5: where it goes is a judgement). The requester or BA is the human reviewer and chooses one at BA_ReviewReqs. A wireframe is part of the design process for adjudication (methodologies/wiregen.md). The candidates ARE the options A_CompareOptions lays out, so this merges into it rather than producing a second comparison."
+msgid "Design use of wireframe-design-review, before implementation: a written design intent, at least two mid-fidelity candidates each with a web and a mobile layout, the mechanical checks, and a blind review. The candidates are committed as assets of the request's proposal, under docs/proposals/<slug>/wireframes/ beside docs/proposals/<slug>.md, on the feature branch so feature-staging publishes them, and shown where the requester will look, chosen from context — the conversation, the issue the request came from, the pull request, or several of these — each place carrying the same staging deep links and screenshots (feedback-deep-links, point 5: where it goes is a judgement). The requester or BA is the human reviewer and chooses one at BA_ReviewReqs. A wireframe is part of the design process for adjudication (methodologies/wiregen.md). The candidates ARE the options A_CompareOptions lays out, so this merges into it rather than producing a second comparison."
 msgstr ""
 
 #: processes/process/crdm-requirements-definition.bpmn:63
