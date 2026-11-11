@@ -1088,6 +1088,7 @@
     {"id": "swimlane-glossary", "renderedBy": "state-viewer", "covers": ["swimlane-glossary"], "alias": "swimlane-glossary"},
     {"id": "uploads-queue", "renderedBy": "state-viewer", "covers": ["uploads"], "title": "Uploads queue", "alias": "uploads"},
     {"id": "site", "renderedBy": "site-viewer", "coversKinds": ["basic-cdn-site"], "title": "Published site"},
+    {"id": "apps", "renderedBy": "web-app-build", "coversKinds": ["web-app"], "title": "Apps"},
     {"id": "kg", "renderedBy": "kg-viewer", "covers": ["skills", "scenarios", "processes", "openapi", "sdlc", "work-plan", "archimate", "tools", "schemas"], "title": "Knowledge graph"},
     {"id": "fsh-guts", "renderedBy": "staging-graph-viewer", "covers": ["fsh-guts"], "title": "fsh-guts", "publish": "staging-only", "writer": ["scripts/gen-fsh-guts-viz.ts"]}
   ],
