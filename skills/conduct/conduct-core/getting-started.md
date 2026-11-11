@@ -225,7 +225,7 @@ the owner's confirmation.
 
 1. **Seed the work plan.** One work item per top-level thing the author named in
    step 3. Run the exact-title existence check in
-   [`todo-manager.md`](../../../work-plan/skills/work-plan/todo-manager.md) §"Check before you create" first —
+   `todo-manager.md` (opt-in `cat-harness.work-plan`) §"Check before you create" first —
    `beans create` is not idempotent.
 2. **Provision `gh-pages` — before Pages is switched on.** This is
    `Task_ProvisionGhPages` in the process, and it carries the semantics of

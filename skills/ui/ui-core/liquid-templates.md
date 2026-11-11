@@ -22,7 +22,7 @@ which one you are writing for before you write a line:
 | lives in | `templates/readme/` beside the writer, in the tools repository (`bootstrap-tools/scripts/templates/readme/`) | `cat-harness/docs/_includes/` — just-the-docs' extension points (`head_custom.html`, `footer_custom.html`, `nav_footer_custom.html`) plus our own |
 | output | `<directory>/README.md`, **committed**, read on GitHub where no Liquid runs | `_site/`, **never committed**, published to Pages |
 | data | only what the generator passes: `subgraph`, `instance`, `kg`, `files`, `subdirs`, `summary` | `site`, `page`, `include`, and `_data/*.json` written by the pipeline |
-| verified by | `bun run cat readme:subgraphs:check` — the diff is the output | building the site: [`rendered-verification`](../../../sdlc/skills/sdlc-core/rendered-verification.md), `bun run cat preview:site` |
+| verified by | `bun run cat readme:subgraphs:check` — the diff is the output | building the site: `rendered-verification` (opt-in `cat-harness.sdlc`), `bun run cat preview:site` |
 
 ## Where a template lives
 
@@ -101,7 +101,7 @@ a reader would want its own row for it — not to hide logic.
 template emits clean Markdown. It is also how a separator the output needs
 disappears — a stripped space between two HTML attributes makes the page print
 its own markup as text, past every gate
-([`continual-progress`](../../../sdlc/skills/sdlc-core/continual-progress.md)
+(`continual-progress`
 §"A template is not a page"). Strip freely inside a tag's own lines; think before stripping
 next to a table row's newline, the blank line before a heading or table, or
 an attribute boundary. `subgraph-readmes` also collapses three or more
@@ -170,6 +170,6 @@ is part of `bun run cat gates`.
   `relative_url`, never a literal `/…`.
 - Override just-the-docs through its extension-point includes, not by copying
   a theme layout — a copied layout silently stops tracking the pinned version
-  ([`upstream-version-adoption`](../../../sdlc/skills/sdlc-core/upstream-version-adoption.md)).
+  (`upstream-version-adoption`).
 - A generated reference directory (`reference/skill-instructions/`,
   `reference/skills/`, `auto-docs/`) is never hand-edited; change its generator.

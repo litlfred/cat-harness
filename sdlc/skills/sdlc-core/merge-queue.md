@@ -765,7 +765,7 @@ owner), the steward writes three things in the same change:
    `MergeQueueEntrySchema`.
 2. **A note on each work item the PR serves**, one file per work item per branch:
    `beans/notes/<bean>--<date>--<branch>.md`. A note, never an append to the
-   work item def; [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) says why. Then run
+   work item def; `bean-coordination` (opt-in `cat-harness.work-plan`) says why. Then run
    `bun run cat beans:notes`, or CI's `beans:notes:check` goes red.
 3. **One comment on the PR** naming the entry and the work items. Before the work items
    cutover, items 1 and 2 reach `main` only through the steward's own PR, a
@@ -990,7 +990,7 @@ Until all three criteria are empirically proven, the agentic review remains **wa
 
 ## Tool-integrated agentic pre-merge review (CodeAgent / 2402.02172v5)
 
-Codified in [`research/methodologies/agentic-pre-merge-review.md`](../../../research/methodologies/agentic-pre-merge-review.md).
+Codified in `research/methodologies/agentic-pre-merge-review.md` (opt-in `cat-harness.research`).
 
 Multi-agent tool-integrated code review architectures (Tang et al., arXiv:2402.02172v5)
 structure automated pre-merge evaluation into specialized roles (Reviewer, Coder,

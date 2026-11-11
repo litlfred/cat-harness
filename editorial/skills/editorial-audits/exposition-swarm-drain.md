@@ -210,5 +210,5 @@ of `needs_owner` blocks for the author.
 - Rubric: the `expo-milnor-clarity` criterion
 - Author voice: the active content layer's exposition-standard skill
 - Merge pipeline: `sdlc/skills/sdlc-core/prepare-merge-auto.md`
-- Sister drain: [`integration-backlog`](../../../sdlc/skills/sdlc-core/integration-backlog.md)
+- Sister drain: `integration-backlog` (opt-in `cat-harness.sdlc`)
 - Flag guard: `qa-flag-preservation-audit.ts` (the folio's pipeline)

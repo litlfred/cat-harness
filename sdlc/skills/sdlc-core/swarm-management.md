@@ -68,7 +68,7 @@ shape; you have a task you have not understood yet.
 
 Model choice dominates a swarm's token cost, and only a minority of software
 engineering subtasks need a frontier model. SWE-Router
-([`arxiv-2607.00053v1`](../../../library/corpus/sdlc/arxiv-2607.00053v1/)) routes on
+([`arxiv-2607.00053v1`](https://arxiv.org/abs/2607.00053v1)) routes on
 the agent's partial trajectory rather than the task description alone: a
 description cannot tell a one-line fix from a multi-module refactor, but the
 first few exploratory turns (grep, reading the tree, reproducing a failure)
@@ -137,7 +137,7 @@ price. The Andon-cord conditions below list the other stop signals.
 
 ## Adaptive reasoning routing and Andon-cord stopping (TCAndon-Router / 2601.04544v1)
 
-TCAndon-Router ([`arxiv-2601.04544v1`](../../../library/corpus/sdlc/arxiv-2601.04544v1/README.md))
+TCAndon-Router ([`arxiv-2601.04544v1`](https://arxiv.org/abs/2601.04544v1))
 refines two assumptions: **uniform model allocation** and **run-to-completion
 fan-out**.
 
@@ -183,7 +183,7 @@ than run it to completion at $N\times$ the cost of serial work.
 ## Agentic SE literature synthesis & cross-paper methodology
 
 For the comprehensive cross-cutting synthesis, epistemic partition (Measured vs. Recommended vs. Claimed), and bidirectional adversarial analysis across all five foundation papers (He et al., SWE-Debate, SWE-Router, TCAndon-Router, CodeAgent), see:
-- [`research/methodologies/agentic-se-literature-synthesis.md`](../../../research/methodologies/agentic-se-literature-synthesis.md)
+- `research/methodologies/agentic-se-literature-synthesis.md` (opt-in `cat-harness.research`)
 
 ## Known gaps
 

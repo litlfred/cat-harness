@@ -455,7 +455,7 @@ merges nothing.
 downstream consumer must never have to string-manipulate or infer a rule to
 follow a link**: a rule a consumer has to know is a rule a consumer can get
 wrong. See
-[`crdm-requirements-workflow`](../../../sdlc/skills/crdm/crdm-requirements-workflow.md) §"Consumer burden
+`crdm-requirements-workflow` (opt-in `cat-harness.sdlc`) §"Consumer burden
 is a requirement".
 
 **Vocabulary nodes get no `alternateOf`.** Graph typologies are minted under the

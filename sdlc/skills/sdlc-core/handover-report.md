@@ -47,7 +47,7 @@ git add -A && git commit && git push
 ```
 
 One file per branch per work item, so two agents writing handovers never conflict
-([`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"Adding to a bean — a note, not
+(`bean-coordination` (opt-in `cat-harness.work-plan`) §"Adding to a bean — a note, not
 an append"). **Write it in your own worktree.** Some tools write into the main
 checkout instead; if you are a subagent, check `git status` there afterwards.
 
@@ -108,7 +108,7 @@ Do bean folio-assistant-<id> on branch <branch-to-create> of repo <owner>/<repo>
 3. **Owner rulings verbatim**, with the date. A ruling paraphrased in a
    handover becomes a different ruling by the second handover.
 4. **Never put secrets in it.** Name secrets, never give their values.
-5. **Blocks follow [`bean-blocking`](../../../work-plan/skills/work-plan/bean-blocking.md):** what it waits on,
+5. **Blocks follow `bean-blocking`:** what it waits on,
    since when, and when to re-check, so a stale block can be told from a live
    one.
 6. **Update in place.** Re-run `beans:note` on the same branch and work item, which

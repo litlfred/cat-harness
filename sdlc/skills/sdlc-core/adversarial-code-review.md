@@ -30,7 +30,7 @@ not record the reviewer's session and model.
 
 *Construct the strongest case that this change is wrong, unsafe, or not what
 it claims.* It is the stance of [`generalise-the-fix`](generalise-the-fix.md)
-and [`devils-advocate-watcher`](../../../editorial/skills/editorial-audits/devils-advocate-watcher.md),
+and `devils-advocate-watcher` (opt-in `cat-harness.editorial`),
 applied to a diff. The claim under test is the
 pull request's description and the `## Done when` of the work item it names.
 

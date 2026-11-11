@@ -31,7 +31,7 @@ cat-harness-tools `schemas/kg/memory-record.ts`, owner ruling Q17 of
 2026-11-03), and a *work item* is a memory record with more structure: a
 status, a type, a priority, a parent and what it blocks. Both are worked with
 the same memory Tools (`memory_note`, `memory_checkpoint`, `memory_recall`);
-see [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md).
+see `todo-manager` (opt-in `cat-harness.work-plan`).
 
 ## Every entry carries exactly one of three labels
 

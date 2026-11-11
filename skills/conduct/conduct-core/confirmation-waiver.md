@@ -29,7 +29,7 @@ an agent making an exception for itself.
 | `quote` | **the grantor's own words, verbatim** | the agent's paraphrase is the thing under suspicion; a summary can widen a scope without anyone noticing |
 | `gate` | which gate class is waived (below) — never "everything" | a blanket waiver is indistinguishable from no rule, and nobody can audit what it covered |
 | `scope` | `session:<id>`, `process:<instance-id>`, or `until:<ISO-8601>` | an unscoped waiver outlives the situation that justified it |
-| `expires` | a timestamp, always | same argument [`bean-blocking.md`](../../../work-plan/skills/work-plan/bean-blocking.md) makes for a block: **a waiver with no expiry cannot be told from one nobody remembered to withdraw** |
+| `expires` | a timestamp, always | same argument `bean-blocking.md` (opt-in `cat-harness.work-plan`) makes for a block: **a waiver with no expiry cannot be told from one nobody remembered to withdraw** |
 
 A waiver missing any field is **not a waiver**, and the gate stands. An agent
 that finds a malformed one asks, exactly as if none existed.
@@ -44,15 +44,15 @@ non-destructive move (`scrapped`, with reasons) is always available.
 
 | gate class | the rule it relaxes | waivable |
 |---|---|---|
-| `merge-to-main` | [`merge-to-main`](../../../sdlc/skills/sdlc-core/merge-to-main.md) — the owner's authorisation for each merge (and [`crdm-requirements-workflow`](../../../sdlc/skills/crdm/crdm-requirements-workflow.md) §Phase 6) | yes, **for green heads only**: a head in a repository with no CI is never covered |
-| `bean-close` | [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md) §"When you cannot re-derive it yourself" — the `ready-to-close` batch | yes |
+| `merge-to-main` | `merge-to-main` (opt-in `cat-harness.sdlc`) — the owner's authorisation for each merge (and `crdm-requirements-workflow` §Phase 6) | yes, **for green heads only**: a head in a repository with no CI is never covered |
+| `bean-close` | `bean-coordination` §"When you cannot re-derive it yourself" — the `ready-to-close` batch | yes |
 | `deletion` | [`deletion-requires-confirmation`](deletion-requires-confirmation.md) — report and wait | yes, **per artefact class**, never blanket |
-| `swarm-spawn` | [`swarm-management`](../../../sdlc/skills/sdlc-core/swarm-management.md) — asked every time, per swarm | yes, with the agent count and model level named in the quote |
+| `swarm-spawn` | `swarm-management` — asked every time, per swarm | yes, with the agent count and model level named in the quote |
 | `process-reentry` | [`process-state`](../../process/workflow/process-state.md) — confirm before re-entering | yes |
-| `issue-close` | [`issue-working`](../../../sdlc/skills/sdlc-core/issue-working.md) — an agent never closes an issue on its own say-so | yes; the waiver names the issues |
+| `issue-close` | `issue-working` — an agent never closes an issue on its own say-so | yes; the waiver names the issues |
 | *agent permission grants* | [`agent-permissions`](agent-permissions.md) — a person grants what a coding agent may do | **no — never self-granted, and granted per permission** |
 | *hand-edited agent config* | [`harness-projections`](harness-projections.md) — consent per change to `.claude/settings.json` and the like | **no — consent is per change** |
-| *work item deletion* | [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), never delete a work item | **no — a prohibition, not a gate** |
+| *work item deletion* | `todo-manager`, never delete a work item | **no — a prohibition, not a gate** |
 | *fabricating evidence* | anywhere a rule says re-derive rather than quote | **no** |
 
 A *never* that somebody wants waived is a change to the skill that owns it —

@@ -375,7 +375,7 @@ check script added to a lower layer has passed a downstream dry run before
 it lands, so a re-pin moves pins and nothing else. When a re-pin
 nonetheless fails on a gate a lower layer just added, the fix goes into
 that layer, not into the re-pin
-([`prepare-merge`](../../../sdlc/skills/sdlc-core/prepare-merge.md)
+(`prepare-merge` (opt-in `cat-harness.sdlc`)
 §"A new gate in a lower layer must pass downstream").
 
 **Stacking across layers** (owner ruling, 2026-11-07). Work that needs an

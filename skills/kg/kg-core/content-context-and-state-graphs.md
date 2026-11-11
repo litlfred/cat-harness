@@ -330,7 +330,7 @@ copy that drifted — it says so itself.
 - [`process-state`](../../process/workflow/process-state.md), [`bpmn-processes`](../../process/workflow/bpmn-processes.md) —
   the largest writer of a live-state graph: a workflow instance is a token's
   position in a diagram that lives in a content graph.
-- [`todo-manager`](../../../work-plan/skills/work-plan/todo-manager.md), [`bean-coordination`](../../../work-plan/skills/work-plan/bean-coordination.md)
+- `todo-manager` (opt-in `cat-harness.work-plan`), `bean-coordination`
   — the work plan, and why a work item is never deleted. A state record that
   vanishes leaves a sibling unable to tell abandonment from accident.
 - [`instance-publication`](instance-publication.md#what-each-layer-publishes--graph-address-schema-and-what-is-stripped)

@@ -16,12 +16,12 @@ output: schemas/skills/bean-drain/output.schema.json
 A drain is the delivery loop run over a queue instead of over one item. Each
 work item in it still goes through the ordinary lifecycle
 ([`bean-coordination`](bean-coordination.md), [`todo-manager`](todo-manager.md),
-[`continual-progress`](../../../sdlc/skills/sdlc-core/continual-progress.md)). What this skill adds is what goes
+`continual-progress` (opt-in `cat-harness.sdlc`)). What this skill adds is what goes
 wrong only when **several agents drain the same store at once**: two of them
 starting the same work item.
 
 The drain is drawn as a process: `Process_BeanDrain`
-([`sdlc/processes/bean-drain.bpmn`](../../../sdlc/processes/bean-drain.bpmn)).
+(`sdlc/processes/bean-drain.bpmn`).
 It builds the queue (the `drain-queue` Tool), then for each work item
 calls OPEN (`Process_BeanOpen`, whose check is the `bean-claim-check` Tool),
 works it, calls CLOSE (`Process_BeanClose`), and refills. The steps below are
@@ -50,7 +50,7 @@ in the table is treated as "another agent".
 ## Spawning drainers
 
 A queue keeper that starts drain threads seeds each one as
-[`coordinate`](../../../sdlc/skills/sdlc-core/coordinate.md) §"A spawned helper is reachable, and
+`coordinate` §"A spawned helper is reachable, and
 the owner's authority is not relayed" says: the owner's words verbatim, no
 relayed rulings (a merge window included), and a finishable list. Give each
 drainer this skill and its list, not a copy of the rules.
@@ -126,7 +126,7 @@ through a single-checkout `state:push`. Where a work item has one copy,
 ## 3. Work it
 
 - Open the PR **at the first commit**, with `Closes-bean: <id>` in the body
-  ([`continual-progress`](../../../sdlc/skills/sdlc-core/continual-progress.md), [`pr-description`](../../../sdlc/skills/sdlc-core/pr-description.md)).
+  (`continual-progress`, `pr-description`).
   An open PR is the claim every other agent can see without the work item branch.
 - Add the PR's link to the work item with a dated note, on every copy.
 - Work only the work item you claimed. A cause you find inside it that is a separate

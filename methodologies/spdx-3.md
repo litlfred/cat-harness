@@ -33,7 +33,7 @@ applies-when: >
 **Status: ingested and analysed, NOT adopted.** The owner asked for the
 analysis on 2026-10-03 and supplied the source the same day with *"ingest as
 part of methodologies"*. Which parts are adopted is open as five decisions in
-[the applicability proposal](../docs/proposals/spdx-3-applicability-2026-10-03.md)
+the applicability proposal (opt-in `cat-harness.proposals`)
 §9, work item `sd5v`. This node records what the source says and where it would and
 would not fit. It does not adopt anything.
 

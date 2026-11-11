@@ -22,7 +22,7 @@ produces changes nobody authorised.
 
 | level | answers | where it lives |
 |---|---|---|
-| **process instance** | which run of which process is this? | `beans/workflows/` (`workflow-state` graph in [`work-plan-store`](../../../work-plan/skills/work-plan/work-plan-store.md)) |
+| **process instance** | which run of which process is this? | `beans/workflows/` (`workflow-state` graph in `work-plan-store` (opt-in `cat-harness.work-plan`)) |
 | **swimlane / role** | am I the actor who may do this? | the lane on the activity; checked by the executor ([`task-authorization`](../process-core/task-authorization.md)) |
 | **task** | which step am I on, and is it enabled? | `workflow_next` |
 
@@ -264,7 +264,7 @@ what it needs to avoid re-deriving the same mistake.
 
 A work item tidied to show only the correct conclusion reads as though the work had
 always been aimed there. That is why
-[`bean-coordination.md`](../../../work-plan/skills/work-plan/bean-coordination.md) has unwanted work
+`bean-coordination.md` has unwanted work
 `scrapped` **with its reasons** rather than deleted: a record that shows only
 outcomes cannot distinguish a dead end somebody ruled out from one nobody tried.
 
@@ -282,7 +282,7 @@ outcomes cannot distinguish a dead end somebody ruled out from one nobody tried.
 
 ## Relationship to the opening brief
 
-The brief you open a turn with ([`turn-reporting.md`](../../../sdlc/skills/sdlc-core/turn-reporting.md))
+The brief you open a turn with (`turn-reporting.md` (opt-in `cat-harness.sdlc`))
 is what makes detector 5 usable: without a stated plan there is nothing for the
 current work to have diverged *from*. The two skills are one loop — brief the
 route, notice the divergence, confirm the recovery.

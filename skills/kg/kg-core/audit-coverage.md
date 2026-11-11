@@ -189,7 +189,7 @@ this change's defect.
 
 **A checker that mutates its own subject cannot be falsified** (red once, green
 on the rerun, the file still stale), which is the one property
-[`generalise-the-fix`](../../../sdlc/skills/sdlc-core/generalise-the-fix.md)
+`generalise-the-fix` (opt-in `cat-harness.sdlc`)
 Move 3 asks a guard to have.
 
 **A kind whose directory is declared but absent from the checkout reads
