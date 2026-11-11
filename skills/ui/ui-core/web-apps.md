@@ -22,7 +22,7 @@ graph-typologies: [web-app]
 
 **A layer that carries an app declares it; it does not publish it.** Owner,
 2026-11-11 (cards Q-GAME-5 A and Q-GAME-7 A): a content layer with an app
-(the GDHCN onboarding game in smart-trust) must not become a harness to ship
+(a WHO onboarding game was the first) must not become a harness to ship
 it, and the one-off route VaxLink used (`web/` + its own `publish.sh` +
 `site.build.keep`) is retired. The kind and its visualiser are the harness's,
 so every layer that mounts cat-harness gets them.
@@ -39,8 +39,8 @@ cannot be: a game, a simulation, a 3D world.
    installs exact versions only.
 2. Declare the directory in the layer's `<name>.json` with
    `"graphTypologies": ["web-app"]`.
-3. Put a `web-app.json` (`web-app/0.1.0`, `schemas/ui/web-app.ts` in
-   cat-harness-tools) at its root:
+3. Put a `web-app.json` (`web-app/0.1.0`, the schema the Tool
+   `web-app-build` reads) at its root:
 
 ```json
 {
