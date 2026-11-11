@@ -2984,6 +2984,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:jsonSchema",
+      "@type": [
+        "rdf:Property",
+        "skos:Concept"
+      ],
+      "label": "jsonSchema",
+      "comment": "The published JSON Schema rendering of one of a schema module's public exports.",
+      "prefLabel": "jsonSchema",
+      "definition": "The published JSON Schema rendering of one of a schema module's public exports.",
+      "notation": "cat-harness:jsonSchema",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:conformsTo",
       "@type": [
         "rdf:Property",
