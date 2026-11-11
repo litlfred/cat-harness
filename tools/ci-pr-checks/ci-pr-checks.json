@@ -3,7 +3,7 @@
   "tool": {
     "id": "ci-pr-checks",
     "title": "Run a layer's PR checks",
-    "description": "Dispatch the layer's `harness-pr-checks.yml`, which calls cat-harness-tools' reusable `layer-pr-checks.yml` (mount the pinned layers, run every gate of the layer's dependency harness, compare head against base) and, on main, `layer-main-qa.yml`. The workflow is the Tool: its helper scripts (run-gates, compare-gates, main-verdict, …) are its steps. Started with the standard GitHub CLI; the run is watched with `gh run watch`.",
+    "description": "Dispatch the layer's `harness-pr-checks.yml`, which calls the tools layer's reusable `layer-pr-checks.yml` (mount the pinned layers, run every gate of the layer's dependency harness, compare head against base) and, on main, `layer-main-qa.yml`. The workflow is the Tool: its helper scripts (run-gates, compare-gates, main-verdict, …) are its steps. Started with the standard GitHub CLI; the run is watched with `gh run watch`.",
     "install": {
       "cli": "gh"
     },
