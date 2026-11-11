@@ -36,6 +36,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `proposals`, holding `
 | [`index-config.md`](index-config.md) | index.config.json: who controls index.html |  |
 | [`index.md`](index.md) | Proposals |  |
 | [`instance-versioning.md`](instance-versioning.md) | Layer versioning and dependency resolution |  |
+| [`itb-deployment-2026-11-10.md`](itb-deployment-2026-11-10.md) | Deploying the Interoperability Test Bed with the harness |  |
 | [`kg-subscriptions.md`](kg-subscriptions.md) | KG subscriptions |  |
 | [`lsi-applicability.md`](lsi-applicability.md) | Latent Semantic Indexing: where it applies here, measured |  |
 | [`lsi-cross-graph-near-2026-10-24.md`](lsi-cross-graph-near-2026-10-24.md) | Cross-graph lsi:near: design draft |  |

@@ -85,85 +85,85 @@ There is no role-to-theme mapping — theme choice remains an authoring judgemen
   <bpmndi:BPMNDiagram id="Diagram_Process_ThemeUIReview">
     <bpmndi:BPMNPlane id="Plane_Process_ThemeUIReview" bpmnElement="Collaboration_Process_ThemeUIReview">
       <bpmndi:BPMNShape id="Shape_Participant_Process_ThemeUIReview" bpmnElement="Participant_Process_ThemeUIReview" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1620" height="340" />
+        <dc:Bounds x="160" y="80" width="1350" height="340" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Reviewer" bpmnElement="Lane_Reviewer" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1590" height="170" />
+        <dc:Bounds x="190" y="80" width="1320" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Agent" bpmnElement="Lane_Agent" isHorizontal="true">
-        <dc:Bounds x="190" y="250" width="1590" height="170" />
+        <dc:Bounds x="190" y="250" width="1320" height="170" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_TUR" bpmnElement="Start_TUR">
         <dc:Bounds x="240" y="317" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Inventory" bpmnElement="A_Inventory">
-        <dc:Bounds x="340" y="275" width="120" height="120" />
+        <dc:Bounds x="305" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Accessibility" bpmnElement="A_Accessibility">
-        <dc:Bounds x="540" y="275" width="120" height="120" />
+        <dc:Bounds x="460" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Branding" bpmnElement="A_Branding">
-        <dc:Bounds x="740" y="275" width="120" height="120" />
+        <dc:Bounds x="615" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Locales" bpmnElement="A_Locales">
-        <dc:Bounds x="940" y="275" width="120" height="120" />
+        <dc:Bounds x="770" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_R_Judge" bpmnElement="R_Judge">
-        <dc:Bounds x="1140" y="105" width="120" height="120" />
+        <dc:Bounds x="940" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Findings" bpmnElement="GW_Findings" isMarkerVisible="true">
-        <dc:Bounds x="1330" y="310" width="50" height="50" />
+        <dc:Bounds x="1110" y="310" width="50" height="50" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="1310" y="288" width="90" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="1090" y="288" width="90" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_RaiseFindings" bpmnElement="A_RaiseFindings">
-        <dc:Bounds x="1450" y="275" width="120" height="120" />
+        <dc:Bounds x="1220" y="275" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_TUR" bpmnElement="End_TUR">
-        <dc:Bounds x="1660" y="317" width="36" height="36" />
+        <dc:Bounds x="1410" y="317" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="1633" y="278" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="1383" y="278" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_TUR_1" bpmnElement="SF_TUR_1">
         <di:waypoint x="276" y="335" />
-        <di:waypoint x="340" y="335" />
+        <di:waypoint x="305" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_TUR_2" bpmnElement="SF_TUR_2">
+        <di:waypoint x="425" y="335" />
         <di:waypoint x="460" y="335" />
-        <di:waypoint x="540" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_TUR_3" bpmnElement="SF_TUR_3">
-        <di:waypoint x="660" y="335" />
-        <di:waypoint x="740" y="335" />
+        <di:waypoint x="580" y="335" />
+        <di:waypoint x="615" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_TUR_4" bpmnElement="SF_TUR_4">
-        <di:waypoint x="860" y="335" />
-        <di:waypoint x="940" y="335" />
+        <di:waypoint x="735" y="335" />
+        <di:waypoint x="770" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_TUR_5" bpmnElement="SF_TUR_5">
-        <di:waypoint x="1060" y="335" />
-        <di:waypoint x="1100" y="335" />
-        <di:waypoint x="1100" y="165" />
-        <di:waypoint x="1140" y="165" />
+        <di:waypoint x="890" y="335" />
+        <di:waypoint x="915" y="335" />
+        <di:waypoint x="915" y="165" />
+        <di:waypoint x="940" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_TUR_6" bpmnElement="SF_TUR_6">
-        <di:waypoint x="1260" y="165" />
-        <di:waypoint x="1295" y="165" />
-        <di:waypoint x="1295" y="335" />
-        <di:waypoint x="1330" y="335" />
+        <di:waypoint x="1060" y="165" />
+        <di:waypoint x="1085" y="165" />
+        <di:waypoint x="1085" y="335" />
+        <di:waypoint x="1110" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_TUR_7" bpmnElement="SF_TUR_7">
-        <di:waypoint x="1380" y="335" />
-        <di:waypoint x="1450" y="335" />
+        <di:waypoint x="1160" y="335" />
+        <di:waypoint x="1220" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_TUR_8" bpmnElement="SF_TUR_8">
-        <di:waypoint x="1570" y="335" />
-        <di:waypoint x="1660" y="335" />
+        <di:waypoint x="1340" y="335" />
+        <di:waypoint x="1410" y="335" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_TUR_9" bpmnElement="SF_TUR_9">
-        <di:waypoint x="1355" y="360" />
-        <di:waypoint x="1355" y="400" />
-        <di:waypoint x="1678" y="400" />
-        <di:waypoint x="1678" y="353" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1359" y="371.5" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="1135" y="360" />
+        <di:waypoint x="1135" y="405" />
+        <di:waypoint x="1428" y="405" />
+        <di:waypoint x="1428" y="353" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1139" y="376.5" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

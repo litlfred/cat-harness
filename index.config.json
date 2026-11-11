@@ -1,9 +1,6 @@
 {
   "$schema": "folio-index-config/v1",
-  "site": {
-    "landing": "cat-harness"
-  },
-  "instances": [
+  "layers": [
     {
       "name": "cat-harness",
       "source": {
@@ -62,5 +59,16 @@
         }
       }
     }
-  ]
+  ],
+  "harnesses": [
+    {
+      "name": "cat-harness"
+    },
+    {
+      "name": "bootstrap"
+    }
+  ],
+  "site": {
+    "landing": "cat-harness"
+  }
 }
