@@ -16,7 +16,7 @@
   "pageStart": 28,
   "pageEnd": 29,
   "text": "../sections/sec-037-the-administration-disclosed.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2606.21008v3/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2606.21008v3/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2606.21008v3",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2606.21008v3",
   "provenance": "ingested"
 }

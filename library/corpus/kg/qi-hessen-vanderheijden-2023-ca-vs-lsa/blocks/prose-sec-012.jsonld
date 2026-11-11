@@ -16,7 +16,7 @@
   "pageStart": 11,
   "pageEnd": 11,
   "text": "../sections/sec-012-4-results-for-euclidean-distance.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/qi-hessen-vanderheijden-2023-ca-vs-lsa/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/qi-hessen-vanderheijden-2023-ca-vs-lsa/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/qi-hessen-vanderheijden-2023-ca-vs-lsa",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/qi-hessen-vanderheijden-2023-ca-vs-lsa",
   "provenance": "ingested"
 }

@@ -16,7 +16,7 @@
   "pageStart": 7,
   "pageEnd": 7,
   "text": "../sections/sec-016-effect-of-synthetic-data.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2504.19675v2/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2504.19675v2/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2504.19675v2",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2504.19675v2",
   "provenance": "ingested"
 }

@@ -16,7 +16,7 @@
   "pageStart": 7,
   "pageEnd": 8,
   "text": "../sections/sec-016-evaluation-benchmarks-and-attacks.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2510.19207v2/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2510.19207v2/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2510.19207v2",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2510.19207v2",
   "provenance": "ingested"
 }

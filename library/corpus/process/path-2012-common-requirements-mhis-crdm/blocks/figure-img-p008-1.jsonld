@@ -84,6 +84,6 @@
     }
   ],
   "derivedFrom": "library/path-2012-common-requirements-mhis-crdm/sections/sec-009",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/path-2012-common-requirements-mhis-crdm/manifest.jsonld",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/path-2012-common-requirements-mhis-crdm",
   "provenance": "ingested"
 }

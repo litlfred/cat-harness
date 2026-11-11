@@ -16,7 +16,7 @@
   "pageStart": 41,
   "pageEnd": 41,
   "text": "../sections/sec-030-scope-and-relationship-to-the-original-applicati.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2608.18294v2/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/arxiv-2608.18294v2/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2608.18294v2",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2608.18294v2",
   "provenance": "ingested"
 }

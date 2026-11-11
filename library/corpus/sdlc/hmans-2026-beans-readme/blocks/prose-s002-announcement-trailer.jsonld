@@ -14,7 +14,7 @@
   "kind": "prose",
   "title": "Announcement Trailer ✨",
   "text": "../sections/s002-announcement-trailer.md",
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/hmans-2026-beans-readme/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/hmans-2026-beans-readme/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/hmans-2026-beans-readme",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/hmans-2026-beans-readme",
   "provenance": "ingested"
 }
