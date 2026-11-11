@@ -1180,7 +1180,7 @@
     {"path": "docs/en/cat-harness/site/", "writer": ["site:viz"], "because": "state", "from": ["site"], "reason": "the published-site viewer (bean folio-assistant-6gme, owner 2026-10-20: \"Build route listing\"): the top-level routes and staging previews of the gh-pages branch, read from its tree, which moves with every publish and never with a commit"},
     {"path": "docs/todos.json", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "the todos graph's projection"},
     {"path": "docs/todos.jsonld", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "the same, as JSON-LD"},
-    {"path": "docs/todos/", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "one page and node per todo"},
+    {"path": "docs/todo/", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "one page and node per todo, at its IRI <site>/todo/<id> (cat-harness-tools dbc369d4)"},
     {"path": "docs/_data/todo_listing.json", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "the todo listing's data"},
     {"path": "docs/_includes/generated/todo-listing.html", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "the todo listing include"},
     {"path": "docs/_includes/generated/todo-listing/", "writer": ["docs:pages"], "because": "state", "from": ["todos"], "reason": "the per-page todo listing includes"},
