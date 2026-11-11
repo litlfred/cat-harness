@@ -340,21 +340,21 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
         
       <bpmndi:BPMNLabel><dc:Bounds x="470" y="35" width="90" height="36" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Admit" bpmnElement="Task_Admit"><dc:Bounds x="585" y="40" width="120" height="120" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Call_HandBack" bpmnElement="Call_HandBack"><dc:Bounds x="580" y="190" width="130" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Call_HandBack" bpmnElement="Call_HandBack"><dc:Bounds x="585" y="170" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_PG_HandBack" bpmnElement="PG_HandBack"><dc:Bounds x="750" y="205" width="50" height="50" />
         
       <bpmndi:BPMNLabel><dc:Bounds x="730" y="147" width="90" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Next" bpmnElement="GW_Next" isMarkerVisible="true"><dc:Bounds x="830" y="75" width="50" height="50" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_More" bpmnElement="GW_More" isMarkerVisible="true"><dc:Bounds x="920" y="75" width="50" height="50" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Bisect" bpmnElement="Task_Bisect"><dc:Bounds x="1805" y="40" width="120" height="120" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Call_EjectHandBack" bpmnElement="Call_EjectHandBack"><dc:Bounds x="1230" y="190" width="170" height="80" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Eject" bpmnElement="Task_Eject"><dc:Bounds x="1530" y="190" width="130" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Call_EjectHandBack" bpmnElement="Call_EjectHandBack"><dc:Bounds x="1255" y="170" width="120" height="120" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Eject" bpmnElement="Task_Eject"><dc:Bounds x="1535" y="170" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Culprit" bpmnElement="GW_Culprit" isMarkerVisible="true"><dc:Bounds x="1840" y="205" width="50" height="50" /></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_Attribute" bpmnElement="Task_Attribute"><dc:Bounds x="1970" y="190" width="130" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_Attribute" bpmnElement="Task_Attribute"><dc:Bounds x="1975" y="170" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_MergeToMain" bpmnElement="Call_MergeToMain"><dc:Bounds x="2275" y="40" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Landed" bpmnElement="End_Landed"><dc:Bounds x="2460" y="82" width="36" height="36" /></bpmndi:BPMNShape>
 
-      <bpmndi:BPMNShape id="Shape_Task_SiblingFix" bpmnElement="Task_SiblingFix"><dc:Bounds x="740" y="330" width="130" height="80" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_SiblingFix" bpmnElement="Task_SiblingFix"><dc:Bounds x="745" y="310" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Requeued" bpmnElement="End_Requeued"><dc:Bounds x="920" y="352" width="36" height="36" /></bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Call_ChecksPresent" bpmnElement="Call_ChecksPresent"><dc:Bounds x="1040" y="452" width="120" height="120" /></bpmndi:BPMNShape>
@@ -376,7 +376,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
 
       <bpmndi:BPMNShape id="Shape_Start_Override" bpmnElement="Start_Override"><dc:Bounds x="80" y="764" width="36" height="36" />
         
-      <bpmndi:BPMNLabel><dc:Bounds x="61.01" y="799.5" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+      <bpmndi:BPMNLabel><dc:Bounds x="61.01" y="803.5" width="90" height="35" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_Override" bpmnElement="Task_Override"><dc:Bounds x="155" y="722" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_OverrideRecorded" bpmnElement="End_OverrideRecorded"><dc:Bounds x="320" y="764" width="36" height="36" /></bpmndi:BPMNShape>
 
@@ -396,14 +396,14 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
         <di:waypoint x="540" y="100" />
         <di:waypoint x="585" y="100" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_t5" bpmnElement="t5"><di:waypoint x="515" y="125"/><di:waypoint x="515" y="230"/><di:waypoint x="580" y="230"/>
+      <bpmndi:BPMNEdge id="Edge_t5" bpmnElement="t5"><di:waypoint x="515" y="125" /><di:waypoint x="515" y="230" /><di:waypoint x="585" y="230" />
         <bpmndi:BPMNLabel><dc:Bounds x="519" y="169" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t6" bpmnElement="t6">
         <di:waypoint x="705" y="100" />
         <di:waypoint x="830" y="100" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_t7" bpmnElement="t7"><di:waypoint x="710" y="230"/><di:waypoint x="750" y="230"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_t7" bpmnElement="t7"><di:waypoint x="705" y="230" /><di:waypoint x="750" y="230" /></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t8" bpmnElement="t8"><di:waypoint x="800" y="230"/><di:waypoint x="855" y="230"/><di:waypoint x="855" y="125"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t9" bpmnElement="t9">
         <di:waypoint x="945" y="75" />
@@ -437,7 +437,7 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
         <di:waypoint x="1465" y="485" />
         <di:waypoint x="1465" y="380" />
         <di:waypoint x="1595" y="380" />
-        <di:waypoint x="1595" y="270" />
+        <di:waypoint x="1595" y="290" />
         <bpmndi:BPMNLabel><dc:Bounds x="1472" y="420" width="60" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t16" bpmnElement="t16">
@@ -465,8 +465,8 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
         <di:waypoint x="1965" y="605" />
         <di:waypoint x="2010" y="605" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_t20" bpmnElement="t20"><di:waypoint x="775" y="255"/><di:waypoint x="775" y="330"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_t21" bpmnElement="t21"><di:waypoint x="870" y="370"/><di:waypoint x="920" y="370"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_t20" bpmnElement="t20"><di:waypoint x="775" y="255" /><di:waypoint x="775" y="310" /></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_t21" bpmnElement="t21"><di:waypoint x="865" y="370" /><di:waypoint x="920" y="370" /></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t22" bpmnElement="t22">
         <di:waypoint x="2060" y="605" />
         <di:waypoint x="2300" y="605" />
@@ -477,16 +477,16 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t23" bpmnElement="t23">
         <di:waypoint x="2035" y="580" />
-        <di:waypoint x="2035" y="270" />
+        <di:waypoint x="2035" y="290" />
         <bpmndi:BPMNLabel><dc:Bounds x="2042" y="510" width="35" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t24" bpmnElement="t24">
-        <di:waypoint x="1970" y="230" />
+        <di:waypoint x="1975" y="230" />
         <di:waypoint x="1890" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t25" bpmnElement="t25">
         <di:waypoint x="1840" y="230" />
-        <di:waypoint x="1660" y="230" />
+        <di:waypoint x="1655" y="230" />
         <bpmndi:BPMNLabel><dc:Bounds x="1705" y="233" width="90" height="17" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t26" bpmnElement="t26">
@@ -498,18 +498,18 @@ FROM THE LITERATURE (requirements note `cat-harness/docs/proposals/merge-pipelin
         <di:waypoint x="1805" y="100" />
         <di:waypoint x="1732.5" y="100" />
         <di:waypoint x="1732.5" y="230" />
-        <di:waypoint x="1660" y="230" />
+        <di:waypoint x="1655" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t29" bpmnElement="t29">
         <di:waypoint x="2395" y="100" />
         <di:waypoint x="2460" y="100" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t30" bpmnElement="t30">
-        <di:waypoint x="1530" y="230" />
-        <di:waypoint x="1400" y="230" />
+        <di:waypoint x="1535" y="230" />
+        <di:waypoint x="1375" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_t31" bpmnElement="t31">
-        <di:waypoint x="1315" y="270" />
+        <di:waypoint x="1315" y="290" />
         <di:waypoint x="1315" y="452" />
         <bpmndi:BPMNLabel><dc:Bounds x="1210" y="340" width="98" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>

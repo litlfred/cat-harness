@@ -165,7 +165,7 @@ actionable direction: new beans or bean updates for the agent.</bpmn:documentati
         <dc:Bounds x="310" y="147" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Call_OptionsAnalysis" bpmnElement="Call_OptionsAnalysis">
-        <dc:Bounds x="510" y="125" width="140" height="80" />
+        <dc:Bounds x="520" y="105" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Implement" bpmnElement="A_Implement">
         <dc:Bounds x="710" y="105" width="120" height="120" />
@@ -203,7 +203,7 @@ actionable direction: new beans or bean updates for the agent.</bpmn:documentati
       <bpmndi:BPMNShape id="Shape_End_Process_CRDM_Deliver" bpmnElement="End_Process_CRDM_Deliver"><dc:Bounds x="2420" y="317" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="2393" y="265" width="90" height="48" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_1" bpmnElement="SF_Process_CRDM_Deliver_1">
         <di:waypoint x="346" y="165" />
-        <di:waypoint x="510" y="165" />
+        <di:waypoint x="520" y="165" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_CRDM_Deliver_2" bpmnElement="SF_Process_CRDM_Deliver_2">
         <di:waypoint x="830" y="165" />
