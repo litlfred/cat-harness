@@ -2992,6 +2992,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:jsonSchema",
+      "@type": [
+        "rdf:Property",
+        "skos:Concept"
+      ],
+      "label": "jsonSchema",
+      "comment": "The published JSON Schema rendering of one of a schema module's public exports.",
+      "prefLabel": "jsonSchema",
+      "definition": "The published JSON Schema rendering of one of a schema module's public exports.",
+      "notation": "cat-harness:jsonSchema",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:conformsTo",
       "@type": [
         "rdf:Property",
@@ -4615,6 +4630,7 @@
 <li><code>cat-harness:maintains</code> maintains — An artefact this tool generates and keeps current.</li>
 <li><code>cat-harness:maintainsFrom</code> maintainsFrom — The source a maintained artefact is generated from.</li>
 <li><code>cat-harness:maintainedBy</code> maintainedBy — The tool that generates and keeps this artefact current.</li>
+<li><code>cat-harness:jsonSchema</code> jsonSchema — The published JSON Schema rendering of one of a schema module's public exports.</li>
 <li><code>cat-harness:conformsTo</code> conformsTo — A published specification this node's files are written in, e.g. BPMN 2.0 for a process.</li>
 <li><code>cat-harness:validator</code> validator — The schema node that runtime-validates a node of this kind.</li>
 <li><code>cat-harness:validatorRef</code> validatorRef — The `module#Export` a kind names as its validator, where no schema node for it is in this graph.</li>
