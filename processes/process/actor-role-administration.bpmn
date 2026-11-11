@@ -191,13 +191,13 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
   <bpmndi:BPMNDiagram id="Diagram_ActorRoleAdministration">
     <bpmndi:BPMNPlane id="Plane_ActorRoleAdministration" bpmnElement="Collaboration_ActorRoleAdministration">
       <bpmndi:BPMNShape id="Shape_Participant_ActorRoleAdministration" bpmnElement="Participant_ActorRoleAdministration" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1550" height="564" />
+        <dc:Bounds x="160" y="80" width="1320" height="564" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Administrator" bpmnElement="Lane_Administrator" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1520" height="420" />
+        <dc:Bounds x="190" y="80" width="1290" height="420" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Audit" bpmnElement="Lane_Audit" isHorizontal="true">
-        <dc:Bounds x="190" y="500" width="1520" height="144" />
+        <dc:Bounds x="190" y="500" width="1290" height="144" />
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Shape_Start_AdminRequest" bpmnElement="Start_AdminRequest">
