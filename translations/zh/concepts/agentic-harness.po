@@ -23,7 +23,7 @@ msgstr ""
 
 #: docs/concepts/agentic-harness.md:13
 msgid "Agentic harness"
-msgstr "智能代理框架"
+msgstr "智能代理工具框架"
 
 #: docs/concepts/agentic-harness.md:18
 msgid "On this page"
@@ -275,7 +275,7 @@ msgstr "撰写指南："
 
 #: docs/concepts/agentic-harness.md:169
 msgid "The harness does not redefine these workflows. It provides the entry point — classifying the request and routing to the right one — and the exit point — returning to idle state when the workflow completes, or suspending if the user switches context."
-msgstr "本框架并未重新定义这些工作流。它提供了入口点——对请求进行分类并路由至正确的工作流——以及出口点——在工作流完成时返回空闲状态，或在用户切换上下文时予以挂起。"
+msgstr "本工具框架并未重新定义这些工作流。它提供了入口点——对请求进行分类并路由至正确的工作流——以及出口点——在工作流完成时返回空闲状态，或在用户切换上下文时予以挂起。"
 
 #: docs/concepts/agentic-harness.md:174
 msgid "Deterministic and agentic processing"
@@ -675,7 +675,7 @@ msgstr "自动化请求分类 — 分类表供智能体查阅参考；目前尚�
 
 #: docs/concepts/agentic-harness.md:433
 msgid "BPMN for the agentic harness itself — a top-level BPMN diagram showing the idle/workflow state machine and the classification routing is not yet authored."
-msgstr "智能代理框架本身的 BPMN 图 — 展示空闲/工作流状态机以及分类路由的顶层 BPMN 图尚未绘制。"
+msgstr "智能代理工具框架本身的 BPMN 图 — 展示空闲/工作流状态机以及分类路由的顶层 BPMN 图尚未绘制。"
 
 #~ msgid "TR"
 #~ msgstr "TR"

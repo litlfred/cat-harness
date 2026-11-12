@@ -63,7 +63,7 @@ msgstr "目的"
 
 #: docs/guides/beans-and-todos.md:57
 msgid "Process state for work in flight"
-msgstr "进行中工作的过程状态"
+msgstr "进行中工作的流程状态"
 
 #: docs/guides/beans-and-todos.md:57
 msgid "A reminder of intent"

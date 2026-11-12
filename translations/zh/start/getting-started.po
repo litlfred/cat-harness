@@ -251,7 +251,7 @@ msgstr "4. 安装与验证"
 
 #: docs/start/getting-started.md:162
 msgid "5. Connect your LLM harness"
-msgstr "5. 连接你的 LLM harness"
+msgstr "5. 连接你的 LLM 工具框架"
 
 #: docs/start/getting-started.md:168
 msgid "The tools most relevant to this page:"

@@ -21,7 +21,7 @@ msgstr "folio-assistant"
 
 #: docs/index.md
 msgid "A content-agnostic agent skills framework for authoring rigorous content with a large language model — scientific papers and books, WHO SMART Guidelines, and FHIR Implementation Guides — backed by an MCP server, role-based access control, and a typed content-object model."
-msgstr "Не зависящий от контента фреймворк навыков агента для создания строгого контента с помощью большой языковой модели — научных статей и книг, руководств ВОЗ SMART Guidelines и руководств по реализации FHIR — на базе MCP-сервера, управления доступом на основе ролей и типизированной объектной модели контента."
+msgstr "Не зависящий от содержимого фреймворк навыков агента для создания строгого содержимого с помощью большой языковой модели — научных статей и книг, руководств ВОЗ SMART Guidelines и руководств по реализации FHIR — на базе MCP-сервера, управления доступом на основе ролей и типизированной объектной модели содержимого."
 
 #: docs/index.md
 msgid "Get started{: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } Install{: .btn .fs-5 .mb-4 .mb-md-0 .mr-2 } View on GitHub{: .btn .fs-5 .mb-4 .mb-md-0 }"
@@ -45,7 +45,7 @@ msgstr "фреймворка и способы использования folio-
 
 #: docs/index.md
 msgid "any specific content**. Where content appears in these pages, it is purely"
-msgstr "какого-либо конкретного контента**. Если контент встречается на этих страницах, он носит чисто"
+msgstr "какого-либо конкретного содержимого**. Если содержимое встречается на этих страницах, оно носит чисто"
 
 #: docs/index.md
 msgid "illustrative (an example), never the canonical artifact."
@@ -53,15 +53,15 @@ msgstr "иллюстративный характер (пример) и нико
 
 #: docs/index.md
 msgid "Supported content types"
-msgstr "Поддерживаемые типы контента"
+msgstr "Поддерживаемые типы содержимого"
 
 #: docs/index.md
 msgid "folio-assistant is pluggable — each content type is handled by a content adapter and a matching skill package. The currently supported types:"
-msgstr "folio-assistant расширяем — каждый тип контента обрабатывается адаптером контента и соответствующим пакетом навыков. В настоящее время поддерживаются следующие типы:"
+msgstr "folio-assistant расширяем — каждый тип содержимого обрабатывается адаптером содержимого и соответствующим пакетом навыков. В настоящее время поддерживаются следующие типы:"
 
 #: docs/index.md
 msgid "Content type"
-msgstr "Тип контента"
+msgstr "Тип содержимого"
 
 #: docs/index.md
 msgid "Artifacts"
@@ -105,11 +105,11 @@ msgstr "Расширяемость — добавьте новый адапте�
 
 #: docs/index.md
 msgid "Adding a content type"
-msgstr "Добавление типа контента"
+msgstr "Добавление типа содержимого"
 
 #: docs/index.md
 msgid "The cross-cutting  package (plan → author → validate → review → test → publish → feedback → retire) applies to every content type. The  models it properly — as BPMN swimlanes, with the roles, the HCI validation gate, and the shared work plan."
-msgstr "Сквозной жизненный цикл (планирование → написание → валидация → рецензирование → тестирование → публикация → обратная связь → вывод из эксплуатации) применим ко всем типам контента. Процесс публикации моделирует его должным образом — в виде дорожек BPMN (swimlanes), с ролями, этапом валидации HCI и общим планом работ."
+msgstr "Сквозной жизненный цикл (планирование → написание → валидация → рецензирование → тестирование → публикация → обратная связь → вывод из эксплуатации) применим ко всем типам содержимого. Процесс публикации моделирует его должным образом — в виде дорожек BPMN (swimlanes), с ролями, этапом валидации HCI и общим планом работ."
 
 #: docs/index.md
 msgid "Where to go next"
@@ -129,7 +129,7 @@ msgstr "Руководство: Написание статьи с помощь�
 
 #: docs/index.md
 msgid "Content types — the formalism of each authoring domain."
-msgstr "Типы контента — формализм каждого предметного домена создания контента."
+msgstr "Типы содержимого — формализм каждого предметного домена создания содержимого."
 
 #: docs/index.md
 msgid "Publication workflow — BPMN swimlane diagrams of the editing and publication processes: the HCI validation gate, who reviews what, and the shared work plan."

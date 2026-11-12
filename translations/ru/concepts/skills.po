@@ -179,7 +179,7 @@ msgstr "Рубежи контроля качества (QA gates)"
 
 #: docs/concepts/skills.md:138
 msgid "Search across the content corpus"
-msgstr "Поиск по корпусу контента"
+msgstr "Поиск по корпусу содержимого"
 
 #: docs/concepts/skills.md:154
 msgid "Multi-agent claim/coordination discipline"
@@ -223,7 +223,7 @@ msgstr "Что они могут делать"
 
 #: docs/concepts/skills.md:198
 msgid "Base read-only. View content, no changes."
-msgstr "Базовый доступ только для чтения. Просмотр контента, без внесения изменений."
+msgstr "Базовый доступ только для чтения. Просмотр содержимого, без внесения изменений."
 
 #: docs/concepts/skills.md:199
 msgid "View + review comments; no direct changes."
@@ -231,11 +231,11 @@ msgstr "Просмотр + комментарии рецензента; без �
 
 #: docs/concepts/skills.md:200
 msgid "Create/modify content (inherits reviewer)."
-msgstr "Создание/модификация контента (наследует права )."
+msgstr "Создание/модификация содержимого (наследует права )."
 
 #: docs/concepts/skills.md:201
 msgid "Full administrative access — roles, settings, all content."
-msgstr "Полный административный доступ — роли, настройки, весь контент."
+msgstr "Полный административный доступ — роли, настройки, всё содержимое."
 
 #: docs/concepts/skills.md:202
 msgid "Scope, team formation, timeline, stakeholder governance."
@@ -295,7 +295,7 @@ msgstr "Что не может делать"
 
 #: docs/concepts/skills.md:217
 msgid "Drafts and revises a proposed change to a content block"
-msgstr "Составляет черновики и дорабатывает предлагаемое изменение в блоке контента"
+msgstr "Составляет черновики и дорабатывает предлагаемое изменение в блоке содержимого"
 
 #: docs/concepts/skills.md:217
 msgid "Commit — its output goes to the editor through the validation gate"

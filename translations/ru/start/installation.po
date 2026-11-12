@@ -63,7 +63,7 @@ msgstr "Git + git-lfs"
 
 #: docs/start/installation.md:34
 msgid "content repositories"
-msgstr "репозитории контента"
+msgstr "репозитории содержимого"
 
 #: docs/start/installation.md:35
 msgid "rendering papers"
@@ -115,15 +115,15 @@ msgstr "Настройка под ваше фолио"
 
 #: docs/start/installation.md:140
 msgid "Copy the example config into your content repository (not into folio-assistant) and adjust it for your content type:"
-msgstr "Скопируйте пример конфигурации в свой репозиторий контента (не в folio-assistant) и настройте его под ваш тип контента:"
+msgstr "Скопируйте пример конфигурации в свой репозиторий содержимого (не в folio-assistant) и настройте его под ваш тип содержимого:"
 
 #: docs/start/installation.md:167
 msgid "Connecting an LLM harness"
-msgstr "Подключение LLM-харнесса"
+msgstr "Подключение LLM-обвязки"
 
 #: docs/start/installation.md:169
 msgid "folio-assistant exposes its tools over MCP, so any MCP-capable agent harness can drive it. Below are configurations for the common ones. In every case the agent launches the server over stdio."
-msgstr "folio-assistant предоставляет свои инструменты через MCP, поэтому им может управлять любой харнесс агентов с поддержкой MCP. Ниже приведены конфигурации для распространенных харнессов. Во всех случаях агент запускает сервер через stdio."
+msgstr "folio-assistant предоставляет свои инструменты через MCP, поэтому им может управлять любая обвязка агентов с поддержкой MCP. Ниже приведены конфигурации для распространенных харнессов. Во всех случаях агент запускает сервер через stdio."
 
 #: docs/start/installation.md:173
 msgid "Claude Code"

@@ -187,7 +187,7 @@ msgstr "А затем — к работе над чем приступить —
 
 #: docs/start/getting-started.md:141
 msgid "content type"
-msgstr "тип контента"
+msgstr "тип содержимого"
 
 #: docs/start/getting-started.md:141
 msgid "what it is"
@@ -247,7 +247,7 @@ msgstr "4. Установка и проверка"
 
 #: docs/start/getting-started.md:162
 msgid "5. Connect your LLM harness"
-msgstr "5. Подключите ваш LLM-харнесс"
+msgstr "5. Подключите вашу LLM-обвязку"
 
 #: docs/start/getting-started.md:168
 msgid "The tools most relevant to this page:"
@@ -263,7 +263,7 @@ msgstr "Назначение"
 
 #: docs/start/getting-started.md:172
 msgid "Scaffold a folio. Registered as a generic tool, because it runs before the folio has a content type"
-msgstr "Развернуть каркас фолио. Зарегистрирован как универсальный инструмент, поскольку запускается до того, как у фолио появится тип контента"
+msgstr "Развернуть каркас фолио. Зарегистрирован как универсальный инструмент, поскольку запускается до того, как у фолио появится тип содержимого"
 
 #: docs/start/getting-started.md:175
 msgid "Probe which toolchains are installed"

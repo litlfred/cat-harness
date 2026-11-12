@@ -31,7 +31,7 @@ msgstr "Обзор"
 
 #: docs/concepts/architecture.md:33
 msgid "folio-assistant is an MCP server with a pluggable content adapter layer, a skill system, a typed content-object model, RBAC, and a deploy story. The content it operates on lives in a separate repository — the platform is content-agnostic."
-msgstr "folio-assistant — это MCP-сервер с подключаемым уровнем адаптеров контента, системой навыков, типизированной объектной моделью контента, RBAC и стратегией развертывания. Контент, с которым он работает, находится в отдельном репозитории — платформа не зависит от контента."
+msgstr "folio-assistant — это MCP-сервер с подключаемым уровнем адаптеров содержимого, системой навыков, типизированной объектной моделью содержимого, RBAC и стратегией развертывания. Содержимое, с которым он работает, находится в отдельном репозитории — платформа не зависит от содержимого."
 
 #: docs/concepts/architecture.md:55
 msgid "Separation of concerns — current and future state"
@@ -87,7 +87,7 @@ msgstr "Сервер MCP"
 
 #: docs/concepts/architecture.md:101
 msgid "Content adapters"
-msgstr "Адаптеры контента"
+msgstr "Адаптеры содержимого"
 
 #: docs/concepts/architecture.md:111
 msgid "Skills and skill packages"
@@ -99,7 +99,7 @@ msgstr "Объектная модель контента"
 
 #: docs/concepts/architecture.md:124
 msgid "For papers, content is a tree of typed blocks validated at runtime with Zod:"
-msgstr "Для статей контент представляет собой дерево типизированных блоков, валидируемых во время выполнения с помощью Zod:"
+msgstr "Для статей содержимое представляет собой дерево типизированных блоков, валидируемых во время выполнения с помощью Zod:"
 
 #: docs/concepts/architecture.md:132
 msgid "Access control — ODRL, checked before every task"
