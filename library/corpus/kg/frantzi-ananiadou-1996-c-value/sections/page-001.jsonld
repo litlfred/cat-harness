@@ -15,7 +15,7 @@
   "contains": [
     "library/frantzi-ananiadou-1996-c-value/blocks/prose-page-001"
   ],
-  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/frantzi-ananiadou-1996-c-value/manifest.jsonld",
-  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/frantzi-ananiadou-1996-c-value/manifest.jsonld",
+  "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/frantzi-ananiadou-1996-c-value",
+  "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/frantzi-ananiadou-1996-c-value",
   "provenance": "ingested"
 }
