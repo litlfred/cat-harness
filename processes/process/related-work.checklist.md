@@ -15,7 +15,6 @@ Before new work takes shape, find the work it touches.
 ### 1. Search beans for relevance (`A_SearchBeans`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `related-work-coordination`.
 - What: beans list --json / beans query over titles AND bodies, open and recently completed.
 - Record it: `workflow_complete` with `node: "A_SearchBeans"`.
 - next: → `A_SearchIssues` (Search issues and open PRs)
@@ -23,7 +22,6 @@ Before new work takes shape, find the work it touches.
 ### 2. Search issues and open PRs (`A_SearchIssues`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `related-work-coordination`.
 - What: The repository's issues (open and closed) and its open pull requests.
 - Record it: `workflow_complete` with `node: "A_SearchIssues"`.
 - next: → `A_Categorize` (Categorize and summarize)
@@ -31,7 +29,6 @@ Before new work takes shape, find the work it touches.
 ### 3. Categorize and summarize (`A_Categorize`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `related-work-coordination`.
 - What: Each hit gets a category (overlaps: coordinate; affected by; out of scope; unrelated) and a one-line summary with its state.
 - Record it: `workflow_complete` with `node: "A_Categorize"`.
 - next: → `U_Coordinate` (Coordinate? How?)
@@ -46,7 +43,6 @@ Before new work takes shape, find the work it touches.
 ### 5. Record and act on the answer (`A_Record`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `related-work-coordination`.
 - What: Write the chosen coordination where it will be found: bean links (--blocked-by, --parent), a line in the issue or PR body, or 'note only'.
 - Record it: `workflow_complete` with `node: "A_Record"`.
 - next: → `End_RW` (Related work known and decided)

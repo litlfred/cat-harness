@@ -54,7 +54,7 @@ Section numbers below are the paper's.
 ## How it plugs into existing processes
 
 - **Review record:** each criterion gets entries from a `script` (the mechanical checks), an `agent` and a `human`, in `block-qa/v1` sidecars. This is folio-assistant's existing multi-reviewer primitive.
-- **Disagreement:** when entries for one criterion disagree, the candidate set enters **`Process_Adjudication`** (`sdlc/processes/adjudication.bpmn`). The adjudication leads, the checker's entry is kept, and the dispensation carries its reason.
+- **Disagreement:** when entries for one criterion disagree, the candidate set enters **`Process_Adjudication`** (`processes/process/adjudication.bpmn`). The adjudication leads, the checker's entry is kept, and the dispensation carries its reason.
 - **Choice between surviving candidates:** a one-off choice, so it uses the decision-analysis methodology. Rejected candidates are kept with the reason they lost.
 - **After build:** the rendered result does **not** go through `theme-ui-review.bpmn` any more. Theme and UI review moved to ingestion only, by owner ruling (work item `9fdi`, 2026-09-24): it runs when the graphical assets arrive, from `ingest-theme.bpmn`, and still requires both web and mobile layouts (#1023). A post-build visual look for a wiregen output is therefore not provided by that process — recorded so it is not assumed.
 

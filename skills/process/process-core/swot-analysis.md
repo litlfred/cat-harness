@@ -73,4 +73,4 @@ decision, or computing a recurring branch, you want a different methodology.
 - [`methodology-adoption`](methodology-adoption.md) — the selection question, and
   why methodologies are parallel rather than composable
 - `processes/process/swot-analysis.bpmn` — the executable process
-- `sdlc/processes/options-analysis.bpmn` — where the candidates go next
+- `processes/process/options-analysis.bpmn` — where the candidates go next

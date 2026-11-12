@@ -36,22 +36,18 @@
     <bpmn:startEvent id="Start_RW" name="Work started or changed in chat"/>
     <bpmn:task id="A_SearchBeans" name="Search beans for relevance">
       <bpmn:documentation>beans list --json / beans query over titles AND bodies, open and recently completed. A completed bean is evidence of a decision already made.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="related-work-coordination"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="A_SearchIssues" name="Search issues and open PRs">
       <bpmn:documentation>The repository's issues (open and closed) and its open pull requests. An open PR touching the same files is the collision most worth finding early.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="related-work-coordination"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="A_Categorize" name="Categorize and summarize">
       <bpmn:documentation>Each hit gets a category (overlaps: coordinate; affected by; out of scope; unrelated) and a one-line summary with its state. Judgement, not a keyword score: say why each is in its category.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="related-work-coordination"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:callActivity id="U_Coordinate" calledElement="Process_AskThePerson" name="Coordinate? How?">
       <bpmn:extensionElements><bootstrap.processes:skill ref="interaction-modality"/></bpmn:extensionElements>
     </bpmn:callActivity>
     <bpmn:task id="A_Record" name="Record and act on the answer">
       <bpmn:documentation>Write the chosen coordination where it will be found: bean links (--blocked-by, --parent), a line in the issue or PR body, or 'note only'. A declined coordination is recorded too.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="related-work-coordination"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:endEvent id="End_RW" name="Related work known and decided"/>
     <bpmn:sequenceFlow id="SF_Process_RelatedWork_1" sourceRef="Start_RW" targetRef="A_SearchBeans"/>
