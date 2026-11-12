@@ -76,7 +76,7 @@ msgstr ""
 
 #: processes/ui/web-app-publish.bpmn:18
 #. Diagram element documentation
-msgid "How any layer publishes an interactive app it holds as source, without becoming a harness (owner, 2026-11-11: cards Q-GAME-5 A and Q-GAME-7 A). The layer declares a `web-app` directory; the app's UI strings go through the harness's own translation process; the harness's `apps` visualiser (Tool `web-app-build`) checks, builds and publishes it at `<locale>/<harness>/apps/<id>/`, with no site chrome, loaded only when a reader opens it (skill `web-apps`)."
+msgid "How any layer publishes an interactive app it holds as source, without becoming a harness. The layer declares a `web-app` directory; the app's UI strings go through the harness's own translation process; the harness's `apps` visualiser (Tool `web-app-build`) checks, builds and publishes it at `<locale>/<harness>/apps/<id>/`, with no site chrome, loaded only when a reader opens it (skill `web-apps`)."
 msgstr ""
 
 #: processes/ui/web-app-publish.bpmn:102
