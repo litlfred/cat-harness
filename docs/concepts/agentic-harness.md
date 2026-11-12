@@ -123,7 +123,7 @@ classification determines which workflow the agent enters.
 | **Content authoring** | Write, edit, extend folio content (chapters, blocks, sections) | Authoring workflow (paper or document) |
 | **Content review** | Review, validate, provide feedback on existing content | Content lifecycle / editing-HCI workflow |
 | **Content ingestion** | Ingest a source document into the folio | Document ingestion workflow |
-| **Feature request** | Request new platform capability (see [crdm-detect](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md)) | CRDM requirements workflow |
+| **Feature request** | Request new platform capability (see [crdm-detect](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-detect.md)) | CRDM requirements workflow |
 | **Information request** | Ask about the platform, content, or process | No workflow — answer directly |
 | **Tool invocation** | Run a specific tool (`content_validate`, `qa_sweep`, etc.) | No workflow — execute and report |
 | **Work-plan management** | Create, update, or query work items | No workflow — execute and report |
@@ -133,7 +133,7 @@ classification determines which workflow the agent enters.
 
 The critical classification boundary is between **content authoring** and
 **feature request**. The `crdm-detect` skill
-([`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md))
+([`skills/process/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-detect.md))
 provides the detailed detection signals. The summary rule:
 
 > If implementing the request would require changes to **folio-assistant**
@@ -262,7 +262,7 @@ When a request is classified as a feature request, the agent enters the
 
 ### How the agent enters CRDM
 
-The detection logic is in [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md).
+The detection logic is in [`skills/process/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-detect.md).
 Three scenarios:
 
 **New session, first request is a feature:**
@@ -385,8 +385,8 @@ The skills and documents each behaviour on this page comes from:
 | Session start sweep | `todo-manager.md § What the session-start sweep emits` | [`work-plan/skills/work-plan/todo-manager.md`](https://github.com/litlfred/cat-harness/blob/main/work-plan/skills/work-plan/todo-manager.md) |
 | Work item protocol | `todo-manager.md`, `bean-coordination.md` | [`work-plan/skills/work-plan/`](https://github.com/litlfred/cat-harness/tree/main/work-plan/skills/work-plan/) |
 | Commit and PR discipline | `continual-progress.md` | [`sdlc/skills/sdlc-core/continual-progress.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/sdlc-core/continual-progress.md) |
-| Feature-request detection | `crdm-detect.md` | [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md) |
-| CRDM requirements workflow | `crdm-requirements-workflow.md` | [`sdlc/skills/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-requirements-workflow.md) |
+| Feature-request detection | `crdm-detect.md` | [`skills/process/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-detect.md) |
+| CRDM requirements workflow | `crdm-requirements-workflow.md` | [`skills/process/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-requirements-workflow.md) |
 | Content authoring (paper) | authoring-math skills | shipped by the layer that registers the `paper` content type, not by this one — ask `skill_list` |
 | Content authoring (document) | folio-document-adapter skills | shipped by the layer that registers the `document` content type, not by this one — ask `skill_list` |
 | Content lifecycle | content-lifecycle skills | [`skills/authoring/content-lifecycle/`](https://github.com/litlfred/cat-harness/tree/main/skills/authoring/content-lifecycle/) |

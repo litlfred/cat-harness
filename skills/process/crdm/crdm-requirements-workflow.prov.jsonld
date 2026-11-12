@@ -8,63 +8,63 @@
   "dcterms:description": "Provenance moved out of the narrative of crdm-requirements-workflow.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-1"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-1"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-2"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-2"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-3"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-3"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-4"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-4"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-5"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-5"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-6"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-6"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-7"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-7"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-8"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-8"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-9"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-9"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-10"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-10"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-11"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-11"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-12"
+          "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-12"
         }
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-1",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "BPMN reference",
       "prov:value": "**Nothing about running it changes.** Step ids are unchanged, so\n`workflow_complete` still takes `A_Implement`, `A_Close`, `BA_Signoff` by name;\nthe interpreter enters a phase by itself and `workflow_next` tells you which one\nyou are in (`inside: Phase 6 Implement + acceptance`)."
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-2",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "BPMN reference",
       "prov:value": "**Phase 6 is one subprocess and not three** because the loops say so: a rejected\nincrement, an MVP that is not ready, and stakeholder findings all route back into\nimplementation. A subprocess has one exit and cannot be re-entered once finished,\nso splitting that region would have changed what the diagram says."
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-3",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Phase 3 — Requirements definition",
@@ -77,14 +77,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-4",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Consumer burden is a requirement, not a nicety (STRICT)",
       "prov:value": "The standing rule, from the repository owner: *a downstream consumer must never\nhave to string-manipulate, re-derive, or assume a rule in order to use what we\npublish.* If an artefact makes a consumer parse a name, strip a prefix,\nsubstitute a base URL, or know a convention that is written down only in prose,\nthe requirement is not met."
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-5",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "Phase 5 — Sign-off and bean creation",
@@ -95,7 +95,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-6",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "The agreed set is an ASSET, and Phase 5 is where it gets a home",
@@ -108,7 +108,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-7",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "A harness feature's documents: proposed in `docs/proposals/`, filed in `docs/requirements/` (STRICT)",
@@ -122,7 +122,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-8",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "A harness feature's documents: proposed in `docs/proposals/`, filed in `docs/requirements/` (STRICT)",
@@ -133,7 +133,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-9",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-9",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "A harness feature's documents: proposed in `docs/proposals/`, filed in `docs/requirements/` (STRICT)",
@@ -146,7 +146,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-10",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-10",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Phase 6 — Iterative development",
@@ -159,7 +159,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-11",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-11",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Theme and UI review is NOT a Phase 6 step — it happens at ingestion",
@@ -173,7 +173,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-workflow.md#provenance-12",
+      "@id": "skills/process/crdm/crdm-requirements-workflow.md#provenance-12",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "Cross-references",

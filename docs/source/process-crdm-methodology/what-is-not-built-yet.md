@@ -5,7 +5,7 @@ there.
 
 **Built:**
 
-- **CRDM detection skill** — [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md)
+- **CRDM detection skill** — [`skills/process/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-detect.md)
   gives the agent five categories of detection phrasing, an explicit "what is
   *not* a feature request" list, and the session-state rules (new session,
   existing session already in the process, existing session doing content
@@ -24,7 +24,7 @@ there.
   [`processes/process/crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn),
   with lanes for the BA / feature requestor, the agent, and stakeholders.
 - **The six-phase workflow as a skill** —
-  [`sdlc/skills/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-requirements-workflow.md),
+  [`skills/process/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-requirements-workflow.md),
   including the actors table and the issue-association rules.
 
 **Not yet implemented:**

@@ -139,7 +139,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Feature requests and CRDM",
-      "prov:value": "A feature request enters the CRDM requirements workflow rather than being implemented directly ([`crdm-detect`](sdlc/skills/crdm/crdm-detect.md), [`crdm-requirements-workflow`](sdlc/skills/crdm/crdm-requirements-workflow.md), [the methodology](docs/process/crdm-methodology.md)). **The process is executable — do not hand-roll a phase tracker**: `workflow_start` / `workflow_next` / `workflow_complete` run it, and `crdm_start` / `crdm_status` should not be built. The interaction model as a whole is [the agentic harness page](docs/concepts/agentic-harness.md)."
+      "prov:value": "A feature request enters the CRDM requirements workflow rather than being implemented directly ([`crdm-detect`](skills/process/crdm/crdm-detect.md), [`crdm-requirements-workflow`](skills/process/crdm/crdm-requirements-workflow.md), [the methodology](docs/process/crdm-methodology.md)). **The process is executable — do not hand-roll a phase tracker**: `workflow_start` / `workflow_next` / `workflow_complete` run it, and `crdm_start` / `crdm_status` should not be built. The interaction model as a whole is [the agentic harness page](docs/concepts/agentic-harness.md)."
     }
   ]
 }

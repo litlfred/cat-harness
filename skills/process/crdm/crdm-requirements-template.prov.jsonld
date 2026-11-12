@@ -8,19 +8,19 @@
   "dcterms:description": "Provenance moved out of the narrative of crdm-requirements-template.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-template.md",
+      "@id": "skills/process/crdm/crdm-requirements-template.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-template.md#provenance-1"
+          "@id": "skills/process/crdm/crdm-requirements-template.md#provenance-1"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-requirements-template.md#provenance-2"
+          "@id": "skills/process/crdm/crdm-requirements-template.md#provenance-2"
         }
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-template.md#provenance-1",
+      "@id": "skills/process/crdm/crdm-requirements-template.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "Requirement format",
@@ -31,7 +31,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-requirements-template.md#provenance-2",
+      "@id": "skills/process/crdm/crdm-requirements-template.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "4-step elicitation",

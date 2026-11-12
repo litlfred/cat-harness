@@ -102,7 +102,7 @@ subprocess has one exit and cannot be re-entered once finished.
 
 Every phase of this process hands the BA a decision they were not inside the
 analysis for. **The ordering rule in
-[`interaction-modality.md` §4.1](../../../skills/conduct/conduct-core/interaction-modality.md) governs this whole
+[`interaction-modality.md` §4.1](../../conduct/conduct-core/interaction-modality.md) governs this whole
 workflow, not just its explicit checkpoints: context → options → recommendation
 → question.** Its test applies unchanged:
 
@@ -184,14 +184,14 @@ For each requirement:
    `docs/source/`, existing skills, existing workflows
 6. **Wireframe candidates, when a requirement changes a rendered surface** — a
    page, a visualiser, the navbar, a form, an app screen. Before anything is
-   built, run [`wireframe-design-review`](../../../skills/ui/ui-core/wireframe-design-review.md)
+   built, run [`wireframe-design-review`](../../ui/ui-core/wireframe-design-review.md)
    in Design use (`Call_Wireframe` in `crdm-requirements-definition.bpmn`):
    at least two candidates, each with a web and a mobile layout, committed as
    assets of the proposal under `docs/proposals/<slug>/wireframes/` on the
    feature branch, and shown where the requester will look, chosen from
    context — the conversation, the issue the request came from, the PR, or
    several — each place carrying the same branches/ deep links and screenshots
-   ([`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md),
+   ([`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md),
    point 5). The
    candidates are the options Phase 4's comparison lays out; the requester or
    BA chooses one at the review. Record "N/A — no rendered surface" in the
@@ -235,7 +235,7 @@ Three checks that catch most of it:
 This is also why the declaration file keeps a fixed name while artefacts are
 stub-named: a consumer must be able to open a repository it has never seen
 without first deriving a filename. See
-[`directory-conventions`](../../../skills/kg/kg-core/directory-conventions.md) §Naming.
+[`directory-conventions`](../../kg/kg-core/directory-conventions.md) §Naming.
 
 **Post to the issue:** structured requirements with acceptance criteria.
 
@@ -265,7 +265,7 @@ without first deriving a filename. See
 Phase 4 often ends with a **choice** rather than a plan, and that is the moment
 the BA is handed a decision. Not a list of approach names with the analysis
 linked: a **comparison**, per
-[`decision-comparison`](../../../skills/conduct/conduct-core/decision-comparison.md) — per option its pro, its con,
+[`decision-comparison`](../../conduct/conduct-core/decision-comparison.md) — per option its pro, its con,
 what it changes **downstream** and how reversible it is, laid out where the rows
 can be read against each other, then one recommendation and a stated default.
 
@@ -448,7 +448,7 @@ standard. A harness that follows a particular standard maps that standard's
 fields onto these fields **in its own layer**, never in the base.
 
 **How filed requirements are organised, traced, superseded, and retired:**
-- The assessment of open requirements standards is in [`methodologies/requirements-standards-assessment.md`](../../../methodologies/requirements-standards-assessment.md), and the literature search, adopted/rejected methodologies, and the BPMN filing workflow (`Process_RequirementsFiling`, [`sdlc/processes/requirements-filing.bpmn`](../../processes/requirements-filing.bpmn)) are in [`methodologies/requirements-filing-and-organisation.md`](../../../methodologies/requirements-filing-and-organisation.md).
+- The assessment of open requirements standards is in [`methodologies/requirements-standards-assessment.md`](../../../methodologies/requirements-standards-assessment.md), and the literature search, adopted/rejected methodologies, and the BPMN filing workflow (`Process_RequirementsFiling`, `sdlc/processes/requirements-filing.bpmn` (opt-in `cat-harness.sdlc`)) are in [`methodologies/requirements-filing-and-organisation.md`](../../../methodologies/requirements-filing-and-organisation.md).
 - Physical files stay flat at `docs/requirements/<slug>.md` (`id: req:<slug>`, statement keys `req:<slug>#<key>`), organised in `docs/requirements/index.md` under the eight canonical concern groups (`code-lists/concern-group.json`), with three-axis traceability (`proposedIn`, `derivedFrom`, `dependsOn`, `beans`, `skills`, `processes`, `test/attestations/`) and an immutable lifecycle (`proposed → in-force → superseded | retired`, never `git rm`).
 
 **A folio's features are not filed here.** This applies to the harness's own
@@ -462,7 +462,7 @@ says.
 For each work item:
 
 1. **Create feature branch** — always, no exceptions. Before the first edit,
-   run the collision review in [`coordinate`](../sdlc-core/coordinate.md)
+   run the collision review in `coordinate` (opt-in `cat-harness.sdlc`)
    §"Starting new work".
 2. **Implement** — following the accepted requirements, and, where a
    requirement changes a rendered surface, **against the wireframe candidate
@@ -491,7 +491,7 @@ For each work item:
    assigns the slices, reviewers work them in `review-task`, disagreements go
    to `adjudication`, and the coverage gate must pass before sign-off.
 7. **Ask user for explicit confirmation before merging to main.** This is the
-   [`merge-to-main`](../sdlc-core/merge-to-main.md) sub-process, called from
+   `merge-to-main` (opt-in `cat-harness.sdlc`) sub-process, called from
    `crdm-close.bpmn` (`Call_MergeToMain`) once the sign-off is recorded and
    before the issue is closed, and run the same way for any increment the owner
    asks to land earlier. A stakeholder sign-off or the BA's confirmation is
@@ -509,13 +509,13 @@ For each work item:
    PR that will not be merged is open, the user adds the `staging:cleanup`
    label; **once it is closed the label can no longer reach it**, and removal
    is a `feature-staging.yml` dispatch the user runs with `cleanup_slug` and a
-   matching `cleanup_confirm` (see [`staging-review`](../sdlc-core/staging-review.md)).
+   matching `cleanup_confirm` (see `staging-review` (opt-in `cat-harness.sdlc`)).
    **Never remove a staging preview any other way, and never on your own
    initiative.**
 
 ### Theme and UI review is NOT a Phase 6 step — it happens at ingestion
 
-[`theme-ui-review`](../../../skills/ui/ui-core/theme-ui-review.md) runs only at
+[`theme-ui-review`](../../ui/ui-core/theme-ui-review.md) runs only at
 ingestion of graphical assets for a website or app design, from
 `ingest-theme.bpmn`. `GW_StakeholderOK`'s `accepted` branch in
 `crdm-deliver.bpmn` closes the phase directly. Accessibility, branding and
@@ -541,12 +541,12 @@ When a round of implementation is complete (one or more work items resolved):
 - [`../../../library/corpus/process/phii-2021-defining-and-validating-requirements-guide/README.md`](https://phii.org/wp-content/uploads/2021/07/Defining-and-Validating-Requirements-Guide_0.pdf) — PHII (2016/2021) Defining and Validating System Requirements Guide
 - [`../../../library/corpus/process/path-2012-common-requirements-mhis-crdm/README.md`](https://media.path.org/documents/MCHN_mhis_crdm.pdf) — PATH & PHII (2012) Common Requirements for Maternal Health Information Systems
 - [CRDM methodology page](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/crdm-methodology.html) — the documentation page for users
-- [`interaction-modality.md`](../../../skills/conduct/conduct-core/interaction-modality.md) §4.1 — context before the question; the ordering rule this workflow runs on
+- [`interaction-modality.md`](../../conduct/conduct-core/interaction-modality.md) §4.1 — context before the question; the ordering rule this workflow runs on
 - [`crdm-detect.md`](crdm-detect.md) — feature-request detection skill
-- [`staging-review.md`](../sdlc-core/staging-review.md) — before/after staging comparison skill
+- `staging-review.md` (opt-in `cat-harness.sdlc`) — before/after staging comparison skill
 - `todo-manager.md` (opt-in `cat-harness.work-plan`) — work item creation protocol
 - `bean-coordination.md` — cross-session work item coordination
-- [`coordinate.md`](../sdlc-core/coordinate.md) — session coordination
+- `coordinate.md` (opt-in `cat-harness.sdlc`) — session coordination
 - [Publication workflow](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html) — the content lifecycle this fits within
 
 ## Staging links
@@ -556,4 +556,4 @@ review or sign-off carries it: one deep link per changed page, to the anchor
 where the change sits, with the same page on main as *before*. Where the skill
 declares an output contract, they go in its `stagingLinks` field. The rule, and
 where the page list comes from:
-[`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md).
+[`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md).
