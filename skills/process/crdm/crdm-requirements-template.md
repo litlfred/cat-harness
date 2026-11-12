@@ -153,7 +153,7 @@ Format as a markdown checklist:
 Every requirement set carries this section, filled or marked not applicable.
 When a requirement changes a rendered surface (a page, a visualiser, the
 navbar, a form, an app screen), the wireframe is designed and chosen **before**
-implementation, by [`wireframe-design-review`](../../../skills/ui/ui-core/wireframe-design-review.md)
+implementation, by [`wireframe-design-review`](../../ui/ui-core/wireframe-design-review.md)
 in Design use; its output (`schemas/skills/wireframe-design-review/output.schema.json`)
 supplies every row:
 
@@ -203,7 +203,7 @@ PR (Phase 6)
 - [`crdm-impact-analysis`](crdm-impact-analysis.md) — Phase 4 follows this
 - [`crdm-detect`](crdm-detect.md) — detection
 - `../../work-plan/skills/work-plan/todo-manager.md` (opt-in `cat-harness.work-plan`) — work item creation
-- [`../../sdlc/skills/sdlc-core/specification-management.md`](../sdlc-core/specification-management.md) — governance and EARS/ISO statement quality
+- `../../sdlc/skills/sdlc-core/specification-management.md` (opt-in `cat-harness.sdlc`) — governance and EARS/ISO statement quality
 - [`../../../methodologies/requirements-standards-assessment.md`](../../../methodologies/requirements-standards-assessment.md) — open standards (ReqIF, OSLC-RM, EARS, ISO 29148) assessment
 
 ## Staging links
@@ -213,4 +213,4 @@ review or sign-off carries it: one deep link per changed page, to the anchor
 where the change sits, with the same page on main as *before*. Where the skill
 declares an output contract, they go in its `stagingLinks` field. The rule, and
 where the page list comes from:
-[`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md).
+[`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md).

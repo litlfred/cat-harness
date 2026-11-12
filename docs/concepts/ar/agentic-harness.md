@@ -121,7 +121,7 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 | **تأليف المحتوى** | كتابة محتوى folio أو تعديله أو توسيعه (فصول، كتل، أقسام) | سير عمل التأليف (paper أو document) |
 | **مراجعة المحتوى** | مراجعة المحتوى الحالي والتحقق منه وتقديم ملاحظات بشأنه | سير عمل دورة حياة المحتوى / تحرير تفاعل الإنسان والحاسوب (HCI) |
 | **استيعاب المحتوى** | استيعاب مستند مصدر في الـ folio | سير عمل استيعاب المستندات |
-| **طلب ميزة** | طلب قدرة جديدة للمنصة (انظر [crdm-detect](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md)) | سير عمل متطلبات CRDM |
+| **طلب ميزة** | طلب قدرة جديدة للمنصة (انظر [crdm-detect](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-detect.md)) | سير عمل متطلبات CRDM |
 | **طلب معلومات** | الاستفسار عن المنصة أو المحتوى أو العملية | لا يوجد سير عمل — الإجابة مباشرة |
 | **استدعاء أداة** | تشغيل أداة محددة (`content_validate`، و`qa_sweep`، إلخ) | لا يوجد سير عمل — التنفيذ والإبلاغ |
 | **إدارة خطة العمل** | إنشاء الـ beans أو تحديثها أو الاستعلام عنها | لا يوجد سير عمل — التنفيذ والإبلاغ |
@@ -131,7 +131,7 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 
 يقع الحد الفاصل الحرج للتصنيف بين **تأليف المحتوى** و**طلب ميزة**.
 وتوفر مهارة `crdm-detect`
-([`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md))
+([`skills/process/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-detect.md))
 إشارات الاكتشاف التفصيلية. والقاعدة التلخيصية هي:
 
 > إذا كان تنفيذ الطلب يتطلب تغييرات في **folio-assistant**
@@ -272,7 +272,7 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 
 ### كيف يدخل الوكيل في CRDM
 
-يوجد منطق الاكتشاف في [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md).
+يوجد منطق الاكتشاف في [`skills/process/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-detect.md).
 ثلاثة سيناريوهات:
 
 **جلسة جديدة، والطلب الأول هو ميزة:**
@@ -398,8 +398,8 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 | مسح بدء الجلسة | `AGENTS.md § At session start` | [`AGENTS.md`](https://github.com/litlfred/cat-harness/blob/main/AGENTS.md) |
 | بروتوكول Bean | `todo-manager.md`، و`bean-coordination.md` | [`skills/tools/folio-core/`](https://github.com/litlfred/cat-harness/tree/main/skills/tools/folio-core/) |
 | انضباط التثبيت وطلبات السحب | `AGENTS.md § Commit early, commit often` | [`AGENTS.md`](https://github.com/litlfred/cat-harness/blob/main/AGENTS.md) |
-| اكتشاف طلبات الميزات | `crdm-detect.md` | [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md) |
-| سير عمل متطلبات CRDM | `crdm-requirements-workflow.md` | [`sdlc/skills/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-requirements-workflow.md) |
+| اكتشاف طلبات الميزات | `crdm-detect.md` | [`skills/process/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-detect.md) |
+| سير عمل متطلبات CRDM | `crdm-requirements-workflow.md` | [`skills/process/crdm/crdm-requirements-workflow.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-requirements-workflow.md) |
 | تأليف المحتوى (paper) | مهارات authoring-math | `skill_list` → `authoring-math` |
 | تأليف المحتوى (document) | مهارات folio-document-adapter | `skill_list` → `folio-document-adapter` |
 | دورة حياة المحتوى | مهارات content-lifecycle | [`skills/authoring/content-lifecycle/`](https://github.com/litlfred/cat-harness/tree/main/skills/authoring/content-lifecycle/) |

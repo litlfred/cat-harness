@@ -8,40 +8,40 @@
   "dcterms:description": "Provenance moved out of the narrative of crdm-detect.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "sdlc/skills/crdm/crdm-detect.md",
+      "@id": "skills/process/crdm/crdm-detect.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-1"
+          "@id": "skills/process/crdm/crdm-detect.md#provenance-1"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-2"
+          "@id": "skills/process/crdm/crdm-detect.md#provenance-2"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-3"
+          "@id": "skills/process/crdm/crdm-detect.md#provenance-3"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-4"
+          "@id": "skills/process/crdm/crdm-detect.md#provenance-4"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-5"
+          "@id": "skills/process/crdm/crdm-detect.md#provenance-5"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-6"
+          "@id": "skills/process/crdm/crdm-detect.md#provenance-6"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-7"
+          "@id": "skills/process/crdm/crdm-detect.md#provenance-7"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-8"
+          "@id": "skills/process/crdm/crdm-detect.md#provenance-8"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-9"
+          "@id": "skills/process/crdm/crdm-detect.md#provenance-9"
         }
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-1",
+      "@id": "skills/process/crdm/crdm-detect.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Which requirements methodology — the fork this detection now carries",
@@ -55,7 +55,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-2",
+      "@id": "skills/process/crdm/crdm-detect.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Which requirements methodology — the fork this detection now carries",
@@ -68,14 +68,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-3",
+      "@id": "skills/process/crdm/crdm-detect.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Which requirements methodology — the fork this detection now carries",
       "prov:value": "**Most of the signals listed below are now spec-kit's**, not CRDM's — the\n\"Platform-level change requests\" and \"Direct capability requests\" categories\nespecially, since both describe somebody building the tooling."
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-4",
+      "@id": "skills/process/crdm/crdm-detect.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "A request for a plan",
@@ -89,7 +89,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-5",
+      "@id": "skills/process/crdm/crdm-detect.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "A request for a plan",
@@ -102,7 +102,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-6",
+      "@id": "skills/process/crdm/crdm-detect.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Self-declared genre",
@@ -117,7 +117,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-7",
+      "@id": "skills/process/crdm/crdm-detect.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "A feature is a COLLABORATION you are joining, not a fix you are making",
@@ -130,14 +130,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-8",
+      "@id": "skills/process/crdm/crdm-detect.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "What to do instead",
       "prov:value": "**4. Write the artefacts, and LINK them from `docs/`.** The owner's\ninstruction is specific and it is the part most often skipped: *\"update/create\nneeded artefacts and link to them under the appropriate harnesse's docs/\npage.\"*\n\nAn artefact nobody can navigate to is an artefact nobody will read. The\nharness that owns the capability owns the link"
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-detect.md#provenance-9",
+      "@id": "skills/process/crdm/crdm-detect.md#provenance-9",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "Related work first",

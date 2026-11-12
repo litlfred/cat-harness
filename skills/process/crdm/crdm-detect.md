@@ -33,7 +33,7 @@ whose.
 | | governs | requester | the answer depends on |
 |---|---|---|---|
 | **`crdm`** — this methodology | stakeholder-facing WHO/IG work: needs assessment, BPA, stakeholder sign-off | content developers, via a BA | a folio's subject matter |
-| **[`spec-kit`](../spec-kit/spec-kit.md)** | folio-assistant feature development; software-development best practice, closer to a scrum process | **tool developers** | nothing a folio says — **content-agnostic** |
+| **`spec-kit` (opt-in `cat-harness.sdlc`)** | folio-assistant feature development; software-development best practice, closer to a scrum process | **tool developers** | nothing a folio says — **content-agnostic** |
 
 **Most of the signals listed below are spec-kit's**, not CRDM's — the
 "Platform-level change requests" and "Direct capability requests" categories
@@ -277,4 +277,4 @@ that the *record* is collaborative, not that the *work* pauses.
 
 ## Related work first
 
-When a requirement is **initiated or updated** in chat, find the related work before anything else. That means work items, issues and open PRs, each categorized and summarized, followed by one question to the user about whether and how to coordinate. The procedure is [`related-work-coordination`](../sdlc-core/related-work-coordination.md), and `crdm-issue-linking.bpmn` calls it as `Process_RelatedWork`.
+When a requirement is **initiated or updated** in chat, find the related work before anything else. That means work items, issues and open PRs, each categorized and summarized, followed by one question to the user about whether and how to coordinate. The procedure is `related-work-coordination` (opt-in `cat-harness.sdlc`), and `crdm-issue-linking.bpmn` calls it as `Process_RelatedWork`.

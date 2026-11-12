@@ -69,7 +69,7 @@ the arbiter. If ambiguous, ask the BA.
 - [`release-lifecycle`](release-lifecycle.md) — the broader release flow
 - [`prepare-merge-auto.md`](prepare-merge-auto.md) — merge mechanics
 - [`staging-review.md`](staging-review.md) — visual comparison
-- [`../../sdlc/skills/crdm/crdm-requirements-template.md`](../crdm/crdm-requirements-template.md) — acceptance criteria
+- [`skills/process/crdm/crdm-requirements-template.md`](../../../skills/process/crdm/crdm-requirements-template.md) — acceptance criteria
 
 ## Staging links
 

@@ -6,7 +6,7 @@
       "id": "sdlc-skills",
       "path": "skills/",
       "subgraph": true,
-      "description": "Software-delivery practice for agents and people working in the harness, as skill packages: `sdlc-core` (issues and PRs, review and merge, CI and gates, release, coordinating sessions and swarms), `crdm` (the requirements methodology) and `spec-kit`. Was the `sdlc` topic of `skills/` until cat-harness#991 step 23.2.",
+      "description": "Software-delivery practice for agents and people working in the harness, as skill packages: `sdlc-core` (issues and PRs, review and merge, CI and gates, release, coordinating sessions and swarms) and `spec-kit`. `crdm`, the requirements methodology, is always on in `skills/process/crdm/` (owner card Q-CORE-SKILLS A, 2026-11-12). Was the `sdlc` topic of `skills/` until cat-harness#991 step 23.2.",
       "graphTypologies": [
         "skills"
       ]

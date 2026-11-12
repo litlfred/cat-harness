@@ -5,7 +5,7 @@ When a request is classified as a feature request, the agent enters the
 
 ### How the agent enters CRDM
 
-The detection logic is in [`sdlc/skills/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/sdlc/skills/crdm/crdm-detect.md).
+The detection logic is in [`skills/process/crdm/crdm-detect.md`](https://github.com/litlfred/cat-harness/blob/main/skills/process/crdm/crdm-detect.md).
 Three scenarios:
 
 **New session, first request is a feature:**

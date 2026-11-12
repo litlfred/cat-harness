@@ -316,6 +316,7 @@ _258 skills in 22 directories. The full list, with what each skill is for, is in
 | [`skills/kg/graph-management/`](skills/kg/graph-management/) | 6 |
 | [`skills/kg/kg-core/`](skills/kg/kg-core/) | 29 |
 | [`skills/kg/kg-navigation/`](skills/kg/kg-navigation/) | 1 |
+| [`skills/process/crdm/`](skills/process/crdm/) | 7 |
 | [`skills/process/process-core/`](skills/process/process-core/) | 8 |
 | [`skills/process/raci/`](skills/process/raci/) | 1 |
 | [`skills/process/workflow/`](skills/process/workflow/) | 11 |
@@ -324,7 +325,6 @@ _258 skills in 22 directories. The full list, with what each skill is for, is in
 | [`skills/ui/ui-core/`](skills/ui/ui-core/) | 19 |
 | [`library/skills/large-datasets/`](library/skills/large-datasets/) | 5 |
 | [`library/skills/library-core/`](library/skills/library-core/) | 12 |
-| `sdlc/skills/crdm/` (opt-in `cat-harness.sdlc`) | 7 |
 | `sdlc/skills/sdlc-core/` (opt-in `cat-harness.sdlc`) | 72 |
 | `sdlc/skills/spec-kit/` (opt-in `cat-harness.sdlc`) | 3 |
 | `work-plan/skills/work-plan/` (opt-in `cat-harness.work-plan`) | 8 |
