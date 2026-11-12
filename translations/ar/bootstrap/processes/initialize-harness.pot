@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: initialize-harness\n"
-"POT-Creation-Date: 2026-11-12T16:18:08.734Z\n"
+"POT-Creation-Date: 2026-11-05T13:26:11.746Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -31,7 +31,7 @@ msgstr ""
 
 #: processes/initialize-harness.bpmn:62
 #. Diagram element documentation
-msgid "Ask the location, not your memory of it: a Knowledge Graph Data Store that carries a declaration at its root is ALREADY a layer, and it says so itself. `<name>.json` present and parsing is the whole test, and `bootstrap-kg-navigation` says what the three answers mean — absent (not a layer yet), present, and present-but-unreadable, which is a layer asserting something broken and is not a green light either. Done before reading the chosen harness: a location held by another harness ends the process here."
+msgid "Ask the location, not your memory of it: a Knowledge Graph Data Store that carries a declaration at its root is ALREADY an instance, and it says so itself. `<name>.json` present and parsing is the whole test, and `bootstrap-kg-navigation` says what the three answers mean — absent (not an instance yet), present, and present-but-unreadable, which is an instance asserting something broken and is not a green light either. Done before reading the chosen harness: a location held by another harness ends the process here."
 msgstr ""
 
 #: processes/initialize-harness.bpmn:52
@@ -176,17 +176,17 @@ msgstr ""
 
 #: processes/initialize-harness.bpmn:100
 #. Diagram element documentation
-msgid "The repository now IS a layer instantiating a harness, and nothing at its root says so. It carries a LINK to the harness that was installed and the OVERALL install status across every location — WHEN ABSENT, never replacing: where a README is already there, the link and status go in a marker pair the harness's own README tool maintains. Initialization may create the README: the rule that a running process never writes an `instance-readme` governs a layer that already exists."
+msgid "The repository now IS an instance of something, and nothing at its root says so. It carries a LINK to the harness that was installed and the OVERALL install status across every location — WHEN ABSENT, never replacing: where a README is already there, the link and status go in a marker pair the harness's own README tool maintains. Initialization may create the README: the rule that a running process never writes an `instance-readme` governs an instance that already exists."
 msgstr ""
 
 #: processes/initialize-harness.bpmn:74
 #. Diagram element documentation
-msgid "Three answers, not two. NOT YET: install. ALREADY, AS THE CHOSEN HARNESS: the install is not repeated — it goes straight to `complete-initialization`, which checks each step the declarations name and adds only what is missing, replacing nothing. ALREADY, AS SOMETHING ELSE (or a declaration that does not parse): logged and stopped, because re-initialising over a layer that has content, history and dependents is not recoverable by running anything again; what the Requestor does next is a new decision."
+msgid "Three answers, not two. NOT YET: install. ALREADY, AS THE CHOSEN HARNESS: the install is not repeated — it goes straight to `complete-initialization`, which checks each step the declarations name and adds only what is missing, replacing nothing. ALREADY, AS SOMETHING ELSE (or a declaration that does not parse): logged and stopped, because re-initialising over an instance that has content, history and dependents is not recoverable by running anything again; what the Requestor does next is a new decision."
 msgstr ""
 
 #: processes/initialize-harness.bpmn:120
 #. Diagram element documentation
-msgid "Three ways in, and all are logged rather than retried: no harness was chosen, a location is already a layer instantiating something else, or the instructions were not at the predetermined spot. Guessing a harness produces a repository set up as the wrong thing, which is worse than one not set up at all."
+msgid "Three ways in, and all are logged rather than retried: no harness was chosen, a location is already an instance of something else, or the instructions were not at the predetermined spot. Guessing a harness produces a repository set up as the wrong thing, which is worse than one not set up at all."
 msgstr ""
 
 #: processes/initialize-harness.bpmn:99
