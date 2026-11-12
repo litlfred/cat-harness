@@ -14,8 +14,9 @@
   <bpmn:collaboration id="Collaboration_Process_WebAppPublish">
     <bpmn:participant id="Participant_Process_WebAppPublish" name="Publish a web app — declared, translated, built at its own route" processRef="Process_WebAppPublish"/>
   </bpmn:collaboration>
+  <!-- Provenance: owner, 2026-11-11, cards Q-GAME-5 A and Q-GAME-7 A. Kept out of the documentation, which says what the process IS (process-index summary rule). -->
   <bpmn:process id="Process_WebAppPublish" name="Publish a web app — declared, translated, built at its own route" isExecutable="false">
-    <bpmn:documentation>How any layer publishes an interactive app it holds as source, without becoming a harness (owner, 2026-11-11: cards Q-GAME-5 A and Q-GAME-7 A). The layer declares a `web-app` directory; the app's UI strings go through the harness's own translation process; the harness's `apps` visualiser (Tool `web-app-build`) checks, builds and publishes it at `&lt;locale&gt;/&lt;harness&gt;/apps/&lt;id&gt;/`, with no site chrome, loaded only when a reader opens it (skill `web-apps`).</bpmn:documentation>
+    <bpmn:documentation>How any layer publishes an interactive app it holds as source, without becoming a harness. The layer declares a `web-app` directory; the app's UI strings go through the harness's own translation process; the harness's `apps` visualiser (Tool `web-app-build`) checks, builds and publishes it at `&lt;locale&gt;/&lt;harness&gt;/apps/&lt;id&gt;/`, with no site chrome, loaded only when a reader opens it (skill `web-apps`).</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
