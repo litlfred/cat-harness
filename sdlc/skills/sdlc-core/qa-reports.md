@@ -83,7 +83,7 @@ file lands goes red naming the unclaimed path.
 concluded (the evidence of a red commit is evidence too). It is the only job
 holding `contents: write`, and `bun run cat gates` never runs it locally. Its red
 means the record was not stored, never that the commit is bad
-([`ci-health`](ci-health.md)). Diagram: `sdlc/processes/qa-publish.bpmn`, called
+([`ci-health`](../../../skills/process/process-core/ci-health.md)). Diagram: `sdlc/processes/qa-publish.bpmn`, called
 from `Task_QaPublish` in `code-quality-gates.bpmn`.
 
 ### Whose branch: each layer publishes its own
@@ -146,7 +146,7 @@ Each script's docblock says which form it is in.
 | regenerate a `test/results` file and commit it | regenerate it so the gates see the tree; `qa-publish` stores the record |
 | resolve a conflict in `test/results/` | `bun run cat merge:main` takes the base's side, then `bun run cat regen` ([`prepare-merge`](prepare-merge.md)) |
 | resolve a conflict in `test/attestations/` | read both sides. Keep both judgements unless they are the same one |
-| cite a derived result | `qa-reports:main/<sha>/<path>` ([`decision-audit`](decision-audit.md)) |
+| cite a derived result | `qa-reports:main/<sha>/<path>` ([`decision-audit`](../../../skills/process/process-core/decision-audit.md)) |
 | read a result in a test | build a fixture, or read it through `readQa` and assert the state ([`test-engineer`](test-engineer.md)) |
 | delete a result to clear a sweep | don't ([`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)) |
 

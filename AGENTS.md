@@ -309,26 +309,26 @@ _258 skills in 22 directories. The full list, with what each skill is for, is in
 
 | Directory | Skills |
 |---|---|
-| [`skills/authoring/authoring-core/`](skills/authoring/authoring-core/) | 12 |
+| [`skills/authoring/authoring-core/`](skills/authoring/authoring-core/) | 14 |
 | [`skills/authoring/content-lifecycle/`](skills/authoring/content-lifecycle/) | 6 |
-| [`skills/conduct/conduct-core/`](skills/conduct/conduct-core/) | 18 |
+| [`skills/conduct/conduct-core/`](skills/conduct/conduct-core/) | 20 |
 | [`skills/conduct/security/`](skills/conduct/security/) | 4 |
 | [`skills/kg/graph-management/`](skills/kg/graph-management/) | 6 |
 | [`skills/kg/kg-core/`](skills/kg/kg-core/) | 29 |
 | [`skills/kg/kg-navigation/`](skills/kg/kg-navigation/) | 1 |
 | [`skills/process/crdm/`](skills/process/crdm/) | 7 |
-| [`skills/process/process-core/`](skills/process/process-core/) | 8 |
+| [`skills/process/process-core/`](skills/process/process-core/) | 14 |
 | [`skills/process/raci/`](skills/process/raci/) | 1 |
 | [`skills/process/workflow/`](skills/process/workflow/) | 11 |
 | [`skills/tools/folio-core/`](skills/tools/folio-core/) | 7 |
 | [`skills/ui/theming/`](skills/ui/theming/) | 3 |
-| [`skills/ui/ui-core/`](skills/ui/ui-core/) | 19 |
+| [`skills/ui/ui-core/`](skills/ui/ui-core/) | 22 |
 | [`library/skills/large-datasets/`](library/skills/large-datasets/) | 5 |
 | [`library/skills/library-core/`](library/skills/library-core/) | 12 |
-| `sdlc/skills/sdlc-core/` (opt-in `cat-harness.sdlc`) | 72 |
+| `sdlc/skills/sdlc-core/` (opt-in `cat-harness.sdlc`) | 61 |
 | `sdlc/skills/spec-kit/` (opt-in `cat-harness.sdlc`) | 3 |
 | `work-plan/skills/work-plan/` (opt-in `cat-harness.work-plan`) | 8 |
-| `editorial/skills/editorial-audits/` (opt-in `cat-harness.editorial`) | 12 |
+| `editorial/skills/editorial-audits/` (opt-in `cat-harness.editorial`) | 10 |
 | `kg-ops/skills/kg-ops/` (opt-in `cat-harness.kg-ops`) | 4 |
 | `platform-ui/skills/platform-ui/` (opt-in `cat-harness.platform-ui`) | 10 |
 

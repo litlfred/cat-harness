@@ -8,109 +8,109 @@
   "dcterms:description": "Provenance moved out of the narrative of staging-review.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md",
+      "@id": "skills/ui/ui-core/staging-review.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-1"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-1"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-2"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-2"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-3"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-3"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-4"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-4"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-5"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-5"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-6"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-6"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-7"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-7"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-8"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-8"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-9"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-9"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-10"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-10"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-11"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-11"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-12"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-12"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-13"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-13"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-14"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-14"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-15"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-15"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-16"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-16"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-17"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-17"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-18"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-18"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-19"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-19"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-20"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-20"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-21"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-21"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-22"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-22"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-23"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-23"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-24"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-24"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-25"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-25"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-26"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-26"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-27"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-27"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-28"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-28"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-29"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-29"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-30"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-30"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-31"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-31"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-32"
+          "@id": "skills/ui/ui-core/staging-review.md#provenance-32"
         }
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-1",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "The deep-link rule — every request for feedback",
@@ -124,7 +124,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-2",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "The deep-link rule — every request for feedback",
@@ -137,7 +137,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-3",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Output",
@@ -150,7 +150,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-4",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The third column is the one with value",
@@ -160,7 +160,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-5",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "date",
       "cat-harness:section": "You can open it yourself — the publish ref is a git branch",
@@ -173,7 +173,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-6",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "You can open it yourself — the publish ref is a git branch",
@@ -183,14 +183,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-7",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "You can open it yourself — the publish ref is a git branch",
       "prov:value": "Over a hundred green\ngates were fine with it, and the owner found it by clicking one — which is\nexactly `rptk`'s shape one layer out."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-8",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "You can open it yourself — the publish ref is a git branch",
@@ -203,7 +203,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-9",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-9",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "You can open it yourself — the publish ref is a git branch",
@@ -213,21 +213,21 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-10",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-10",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Report the absent count, and read it before anything else",
       "prov:value": "This page's own technique produced, on a deploy that was in fact correct:"
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-11",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-11",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Report the absent count, and read it before anything else",
       "prov:value": "`dh4f` is this repository's name for scanning nothing and reporting it clean."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-12",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-12",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The commit in the bot's comment is NOT your branch head",
@@ -240,21 +240,21 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-13",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-13",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Finding your way on the review page (bean `eb4l`)",
       "prov:value": "- By the owner's ruling it is **on the review page only**."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-14",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-14",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Finding your way on the review page (bean `eb4l`)",
       "prov:value": "The \"no toc\"\n    ruling for normal pages stands."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-15",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-15",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Finding your way on the review page (bean `eb4l`)",
@@ -264,7 +264,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-16",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-16",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The review page, and choosing how to see a change",
@@ -274,7 +274,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-17",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-17",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The review page, and choosing how to see a change",
@@ -284,7 +284,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-18",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-18",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Staging retention",
@@ -297,14 +297,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-19",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-19",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Staging retention",
       "prov:value": "**The store DRAINS, and the size threshold depends on it.** Under the old\nretain-on-everything policy the total only ever grew, so any warning point was\nbreached once and stayed breached — a permanent verdict rather than a signal."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-20",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-20",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "date",
       "cat-harness:section": "Staging retention",
@@ -317,7 +317,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-21",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-21",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Staging retention",
@@ -327,7 +327,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-22",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-22",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "The cap — 3 GB of previews in total, the oldest rotated off",
@@ -343,7 +343,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-23",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-23",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "date",
       "cat-harness:section": "The cap — 3 GB of previews in total, the oldest rotated off",
@@ -356,21 +356,21 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-24",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-24",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "The cap — 3 GB of previews in total, the oldest rotated off",
       "prov:value": "**This DOES reach open pull requests, and that is the ruling, not a defect.**\nThe paragraphs above say nothing here touches an open PR; under the cap, the\noldest preview goes whatever its PR's state."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-25",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-25",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "The cap — 3 GB of previews in total, the oldest rotated off",
       "prov:value": "The ruling is the confirmation\n[`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)\nasks for, given for the class."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-26",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-26",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "date",
       "cat-harness:section": "A closed PR is not an abandoned preview",
@@ -383,14 +383,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-27",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-27",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Before you hand a staging URL to a person (STRICT)",
       "prov:value": "**A staging URL is not a deliverable until you have checked the ref, and it is\nnever \"live\" on your say-so.** The rule exists because it was broken here: in\none session an agent relayed the same preview URL to the owner **five times**\nwithout once checking anything, each time off the back of the bot's comment —\nwhich says a workflow *pushed*, not that a site *serves*."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-28",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-28",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "date",
       "cat-harness:section": "Before you hand a staging URL to a person (STRICT)",
@@ -403,7 +403,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-29",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-29",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "date",
       "cat-harness:section": "Say how long, and come back",
@@ -416,7 +416,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-30",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-30",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Say how long, and come back",
@@ -429,7 +429,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-31",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-31",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "Say how long, and come back",
@@ -439,7 +439,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/staging-review.md#provenance-32",
+      "@id": "skills/ui/ui-core/staging-review.md#provenance-32",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Check for newer cleanup commits on gh-pages",

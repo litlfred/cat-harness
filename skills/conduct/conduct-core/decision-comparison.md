@@ -14,7 +14,7 @@ context → options → recommendation → question — and requires each option
 carry what it costs. This says what "the comparison" has to contain, and where
 it has to live.
 
-**Not to be merged with `decision-audit` (opt-in `cat-harness.sdlc`).** That records
+**Not to be merged with [`decision-audit`](../../process/process-core/decision-audit.md).** That records
 why a decision *was* made, after the fact, and governs overruling a QA finding.
 This is about what a person is shown *before* they decide; a skill that tried
 to be both would be read at the wrong moment.

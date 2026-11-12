@@ -26,7 +26,7 @@ read a wall of it.
 ## Make the determination before the first substantive turn
 
 Beside the other opening steps — the session-start sweep and
-`opening-brief` (opt-in `cat-harness.sdlc`). The sweep prints the interaction
+[`opening-brief`](opening-brief.md). The sweep prints the interaction
 preferences **first**, before the work plan.
 
 ## Four inputs, and the order is not negotiable

@@ -509,7 +509,7 @@ For each work item:
    PR that will not be merged is open, the user adds the `staging:cleanup`
    label; **once it is closed the label can no longer reach it**, and removal
    is a `feature-staging.yml` dispatch the user runs with `cleanup_slug` and a
-   matching `cleanup_confirm` (see `staging-review` (opt-in `cat-harness.sdlc`)).
+   matching `cleanup_confirm` (see [`staging-review`](../../ui/ui-core/staging-review.md)).
    **Never remove a staging preview any other way, and never on your own
    initiative.**
 

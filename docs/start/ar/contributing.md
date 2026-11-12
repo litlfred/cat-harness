@@ -83,7 +83,7 @@ bundle exec jekyll serve
 ## شحن التغيير
 
 افتح طلب السحب (PR) عند أول إيداع (commit) وادفع زيادات صغيرة
-(`sdlc/skills/sdlc-core/continual-progress.md`)؛ ثم أوصل الفرع إلى حالة نظيفة وخضراء
+(`skills/conduct/conduct-core/continual-progress.md`)؛ ثم أوصل الفرع إلى حالة نظيفة وخضراء
 ومدفوعة باستخدام `sdlc/skills/sdlc-core/prepare-merge.md`. حافظ على **فصل الصياغة الرسمية لإطار العمل
 عن المحتوى** — فالمحتوى ينتمي إلى مستودعه الخاص، وأي محتوى
 في هذه المستندات هو توضيحي فقط.

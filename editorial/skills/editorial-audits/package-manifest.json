@@ -12,9 +12,7 @@
     "one-voice-integration-watcher",
     "production-vs-exploratory-discipline",
     "readability-editing",
-    "voice-authoring-guidance",
-    "voice-editorial-review",
-    "voice-overlay-review"
+    "voice-authoring-guidance"
   ],
   "docker": {
     "baseImage": "ubuntu:24.04",

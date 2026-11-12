@@ -74,7 +74,7 @@ a clean corpus.**
 So a corpus sweep prints the denominator. `grep -c` for the crude marker, parse
 for the real one, and show both — if they disagree, the parse is the thing to
 fix before reading anything into the result. This is
-[`rendered-verification`](rendered-verification.md)'s "assert the conditions"
+[`rendered-verification`](../../../skills/ui/ui-core/rendered-verification.md)'s "assert the conditions"
 rule with the browser taken out of it: **a check that cannot tell an empty walk
 from a clean one is not a check.**
 
@@ -201,7 +201,7 @@ is a complete and common answer to 1.2, and one worked example is not a class.
 The cost of the pass is a few minutes; the cost of inventing a class that is
 not there is a rule nobody can satisfy.
 
-**It does not replace [`rendered-verification`](rendered-verification.md) or a
+**It does not replace [`rendered-verification`](../../../skills/ui/ui-core/rendered-verification.md) or a
 test.** It asks whether the fix is aimed correctly. Whether it *works* is a
 different question and comes first.
 

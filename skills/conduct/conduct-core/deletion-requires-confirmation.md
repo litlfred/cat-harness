@@ -127,7 +127,7 @@ age and its size — in the commit message, the job log and a `removed`
 render-log entry — and retires its `staging-preview.json` into
 `branches/_retired/` rather than deleting it. It covers rotation over the cap
 and nothing else on the branch. See
-`staging-review` (opt-in `cat-harness.sdlc`) §"The cap — 3 GB
+[`staging-review`](../../ui/ui-core/staging-review.md) §"The cap — 3 GB
 of previews in total, the oldest rotated off".
 
 ## A workflow whose shape deletes something

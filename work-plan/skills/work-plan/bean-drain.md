@@ -16,7 +16,7 @@ output: schemas/skills/bean-drain/output.schema.json
 A drain is the delivery loop run over a queue instead of over one item. Each
 work item in it still goes through the ordinary lifecycle
 ([`bean-coordination`](bean-coordination.md), [`todo-manager`](todo-manager.md),
-`continual-progress` (opt-in `cat-harness.sdlc`)). What this skill adds is what goes
+[`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md)). What this skill adds is what goes
 wrong only when **several agents drain the same store at once**: two of them
 starting the same work item.
 

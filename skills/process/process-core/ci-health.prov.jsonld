@@ -8,52 +8,52 @@
   "dcterms:description": "Provenance moved out of the narrative of ci-health.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md",
+      "@id": "skills/process/process-core/ci-health.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-1"
+          "@id": "skills/process/process-core/ci-health.md#provenance-1"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-2"
+          "@id": "skills/process/process-core/ci-health.md#provenance-2"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-3"
+          "@id": "skills/process/process-core/ci-health.md#provenance-3"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-4"
+          "@id": "skills/process/process-core/ci-health.md#provenance-4"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-5"
+          "@id": "skills/process/process-core/ci-health.md#provenance-5"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-6"
+          "@id": "skills/process/process-core/ci-health.md#provenance-6"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-7"
+          "@id": "skills/process/process-core/ci-health.md#provenance-7"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-8"
+          "@id": "skills/process/process-core/ci-health.md#provenance-8"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-9"
+          "@id": "skills/process/process-core/ci-health.md#provenance-9"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-10"
+          "@id": "skills/process/process-core/ci-health.md#provenance-10"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-11"
+          "@id": "skills/process/process-core/ci-health.md#provenance-11"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-12"
+          "@id": "skills/process/process-core/ci-health.md#provenance-12"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-13"
+          "@id": "skills/process/process-core/ci-health.md#provenance-13"
         }
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-1",
+      "@id": "skills/process/process-core/ci-health.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "For ONE commit, zero checks is not a pass",
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-2",
+      "@id": "skills/process/process-core/ci-health.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "`qa-publish` is a job in the gate workflow, and it is not a gate",
@@ -77,14 +77,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-3",
+      "@id": "skills/process/process-core/ci-health.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "`qa-publish` is a job in the gate workflow, and it is not a gate",
       "prov:value": "The owner's merge policy counts it like any job: a PR is handed to the Merge\nSteward only when CI is green on **every** job\n([`continual-progress`](continual-progress.md) §\"Green means handed to the\nMerge Steward\")."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-4",
+      "@id": "skills/process/process-core/ci-health.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "The report answers about the default branch — and Pages is not on it",
@@ -97,7 +97,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-5",
+      "@id": "skills/process/process-core/ci-health.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Two more, for the question the three above do not cover",
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-6",
+      "@id": "skills/process/process-core/ci-health.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The second instance: merge-main's in-place comment",
@@ -117,7 +117,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-7",
+      "@id": "skills/process/process-core/ci-health.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "A superseded PR run is cancelled — and only a PR's",
@@ -131,7 +131,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-8",
+      "@id": "skills/process/process-core/ci-health.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "A green step can be a SKIPPED one: the CI cone",
@@ -142,7 +142,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-9",
+      "@id": "skills/process/process-core/ci-health.md#provenance-9",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "A green step can be a SKIPPED one: the CI cone",
@@ -152,7 +152,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-10",
+      "@id": "skills/process/process-core/ci-health.md#provenance-10",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "A green step can be a SKIPPED one: the CI cone",
@@ -165,7 +165,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-11",
+      "@id": "skills/process/process-core/ci-health.md#provenance-11",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Step names describe what the check does, not merely its passing invariant",
@@ -175,7 +175,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-12",
+      "@id": "skills/process/process-core/ci-health.md#provenance-12",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The accidental-repair trap on derived gates",
@@ -185,7 +185,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/ci-health.md#provenance-13",
+      "@id": "skills/process/process-core/ci-health.md#provenance-13",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "pr",
       "cat-harness:section": "The accidental-repair trap on derived gates",

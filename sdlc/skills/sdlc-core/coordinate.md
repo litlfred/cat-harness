@@ -34,7 +34,7 @@ inconsistencies, and they cherry-pick from each other.
 
 This skill assumes you've already created a branch + opened a PR for
 the work tranche being coordinated. Per
-[`continual-progress`](continual-progress.md) (STRICT, supersedes default
+[`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) (STRICT, supersedes default
 "no auto-PR" guidance for this repo): **always create a
 branch and open a PR at the start of every work tranche** — ASAP, and
 **never ask the user "want me to open the PR?"** Branch + PR creation
@@ -297,7 +297,7 @@ So, when you seed a helper session:
    running beside a live discussion returns any owner question to the
    coordinator in the
    [`hand-back-to-discussion`](../../../skills/conduct/conduct-core/hand-back-to-discussion.md)
-   schema format. See [`opening-brief`](opening-brief.md) §"Briefing a sibling
+   schema format. See [`opening-brief`](../../../skills/conduct/conduct-core/opening-brief.md) §"Briefing a sibling
    or a subagent — pass `interaction-modality` on (STRICT)".
 
 ### Eleven sessions is the normal case, not the exception
@@ -338,7 +338,7 @@ crossing is what triggers this skill rather than what excuses skipping it.
 
 **3. Crossing never means pushing to a sibling's branch.** Only the PR's
 owner pushes to its branch. Send the owner the change instead
-([`continual-progress`](continual-progress.md) §"One pusher per PR branch",
+([`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) §"One pusher per PR branch",
 owner ruling, 2026-11-07).
 
 **4. Merging goes through one session.** While a merge manager is needed,
@@ -359,7 +359,7 @@ starts now, stacked on that PR's branch (or, across layers, on its head
 SHA), with `stacked on <repo>#<n>` in the body. Pull the sibling's changes
 in by merging. A re-pin is its own PR, holding only pins: work that needs
 the new pins stacks on it. Never push to its branch: see
-[`continual-progress`](continual-progress.md) §"Stack instead of waiting"
+[`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) §"Stack instead of waiting"
 (owner ruling, 2026-11-07).
 
 ### The collision surface is FILES, and it is predictable before you touch one

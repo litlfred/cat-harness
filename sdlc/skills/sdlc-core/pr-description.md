@@ -33,13 +33,13 @@ can read it.
 | 5 | **The solution** | what changed, grouped by idea, not by commit | a table or short list, at most one line per idea |
 | 6 | **How to use it** | the commands, flags or pages a reader runs or opens | copy-pasteable, with prerequisites stated |
 | 7 | **What is not done** | untested paths, known gaps, follow-ups | nothing a reviewer would be surprised by later |
-| 8 | **Status** | the live checklist ([`continual-progress`](continual-progress.md) invariant 3) | CI state on the CURRENT head |
+| 8 | **Status** | the live checklist ([`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) invariant 3) | CI state on the CURRENT head |
 
 Scale it to the change. A one-file fix can be three short paragraphs:
 problem, fix, verified by. The order still holds, and so does "why", because
 "why" is the section a reviewer cannot reconstruct from the diff.
 
-These are the questions [`opening-brief`](opening-brief.md) asks in chat
+These are the questions [`opening-brief`](../../../skills/conduct/conduct-core/opening-brief.md) asks in chat
 before the work starts. The PR description is their durable form, updated
 with what the work found.
 
@@ -50,9 +50,9 @@ with what the work found.
    packages.fhir.org". Not "W7", but "W7, the incremental rebuild".
 2. **Every number carries its provenance:** measured on which head, by
    which command, or carried from where. The table in
-   [`opening-brief`](opening-brief.md) §"The four parts" applies unchanged.
+   [`opening-brief`](../../../skills/conduct/conduct-core/opening-brief.md) §"The four parts" applies unchanged.
 3. **Say what is not verified in its own section.** Not as a hedge buried in
-   a bullet. [`continual-progress`](continual-progress.md) §"What to do with
+   a bullet. [`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) §"What to do with
    the thing you could not verify" is the rule; this is where it goes.
 4. **A decision you hand the reader follows
    [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)
@@ -73,7 +73,7 @@ review answered, a decision taken.
 
 1. **Status is updated in place.** It has two parts, and both stay current:
    - **structured:** the status checklist
-     ([`continual-progress`](continual-progress.md) invariant 3), with the
+     ([`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) invariant 3), with the
      work item and its epic, each linked, and the CI state on the current head;
    - **narrative:** two or three sentences on where the work stands and what
      it waits on.
@@ -134,10 +134,10 @@ and after.
 
 ## Relationship to other skills
 
-- [`continual-progress`](continual-progress.md) owns the **status checklist**
+- [`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) owns the **status checklist**
   and the rule to open the PR at the first commit. This skill owns everything
   above that checklist.
-- [`opening-brief`](opening-brief.md) asks the same questions in chat before
+- [`opening-brief`](../../../skills/conduct/conduct-core/opening-brief.md) asks the same questions in chat before
   the work starts. The description answers them for a reader after it.
 - [`prepare-merge`](prepare-merge.md) records gate results in the body, in
   the gate's own terms, and adds them under **Status**.

@@ -11,7 +11,7 @@ allowed-tools: Read Grep Glob AskUserQuestion
 # Opening brief — brief the topic before you touch anything
 
 This skill governs what you say **before** the work;
-[`turn-reporting.md`](turn-reporting.md) governs what you say during and after
+`turn-reporting.md` (opt-in `cat-harness.sdlc`) governs what you say during and after
 it; `todo-manager.md` (opt-in `cat-harness.work-plan`)
 keeps the work item mechanics.
 
@@ -52,7 +52,7 @@ advance can be corrected by the author in one line. The same route discovered in
 a finished diff costs a review cycle and, often, a revert.
 
 It is the same discipline as the question frame in
-[`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md) §4.1, applied to work instead
+[`interaction-modality`](interaction-modality.md) §4.1, applied to work instead
 of decisions: a terse start, like a terse question, makes the author go and
 find context the agent already had.
 
@@ -85,7 +85,7 @@ underneath it moved. So say which tree, and re-run anything load-bearing after
 a branch change — the re-run costs one command and it is the same command.
 
 **Part 2 includes** the result of the collision review in
-[`coordinate`](coordinate.md) §"Starting new work": the siblings that overlap,
+`coordinate` (opt-in `cat-harness.sdlc`) §"Starting new work": the siblings that overlap,
 or "no overlap found" and what you checked.
 
 **3. The route and the gate.** How you plan to do it, what you will verify
@@ -108,7 +108,7 @@ graph. A child whose brief omits how to ask the owner will default to asking in
 plain prose when it hits a permission wall or a design call.
 
 Every sibling brief and subagent prompt written by a coordinating session MUST
-carry the [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)
+carry the [`interaction-modality`](interaction-modality.md)
 contract explicitly:
 
 1. **If the child can reach the person directly** (a sibling session with its
@@ -123,7 +123,7 @@ contract explicitly:
 2. **If the child is a background subagent or a sibling running beside a live
    discussion**: it does not ask the person in prose either; it returns any
    owner-facing decision to the coordinating session in the
-   [`hand-back-to-discussion`](../../../skills/conduct/conduct-core/hand-back-to-discussion.md)
+   [`hand-back-to-discussion`](hand-back-to-discussion.md)
    schema format so the coordinator presents both the full chat block and the
    tappable card.
 3. **Pass it on**: if the child itself spawns a helper or a subagent, its brief
@@ -221,5 +221,5 @@ the topic.** A task you cannot brief is one you have not understood well enough
 to begin.
 
 The brief's durable form is the PR description. Once the work exists,
-[`pr-description`](pr-description.md) answers the same questions for a
+`pr-description` (opt-in `cat-harness.sdlc`) answers the same questions for a
 reader who arrives after it.

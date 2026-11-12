@@ -184,7 +184,7 @@ every gate can pass and the run still exit 1:
 
 The gates after the mutation were handed the repaired tree, so their verdicts
 describe a state you have not committed.
-[`gate-tree-mutation`](gate-tree-mutation.md) carries the two causes, the one
+`gate-tree-mutation` (opt-in `cat-harness.sdlc`) carries the two causes, the one
 command that tells them apart, and the question that settles the second: does
 the churning field describe the **subject** the artefact is about, or the **run**
 that produced it? Only the first is a reason to write.
@@ -223,7 +223,7 @@ renamed or restructured and the reader needs fixing — not the gate list.
 |---|---|
 | `.github/workflows/code-quality-gates.yml` | the authority, with a comment per gate saying what it catches |
 | `scripts/gates.ts` | the reader, and the vacuity guard |
-| [`continual-progress`](continual-progress.md) | commit early, open the PR at the first commit — this is the step before the push |
-| [`prepare-merge`](prepare-merge.md) | the pre-merge recipe, which runs these plus content-type gates |
+| [`continual-progress`](../../conduct/conduct-core/continual-progress.md) | commit early, open the PR at the first commit — this is the step before the push |
+| `prepare-merge` (opt-in `cat-harness.sdlc`) | the pre-merge recipe, which runs these plus content-type gates |
 | [`ci-health`](ci-health.md) | whether the workflows themselves are working — a different question |
-| [`gate-tree-mutation`](gate-tree-mutation.md) | reading `NOT clean` — a green gate set over a tree a gate repaired |
+| `gate-tree-mutation` (opt-in `cat-harness.sdlc`) | reading `NOT clean` — a green gate set over a tree a gate repaired |

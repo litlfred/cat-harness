@@ -121,6 +121,6 @@ ids. A claim without run ids is a guess.
 
 - [`prepare-merge`](prepare-merge.md): the local checks before a push include
   the `cache:publish` above.
-- [`ci-health`](ci-health.md): a cached SKIPPED is not a pass. Read verdicts
+- [`ci-health`](../../../skills/process/process-core/ci-health.md): a cached SKIPPED is not a pass. Read verdicts
   as that skill says.
-- [`platform-gates`](platform-gates.md): which gates run where.
+- [`platform-gates`](../../../skills/process/process-core/platform-gates.md): which gates run where.

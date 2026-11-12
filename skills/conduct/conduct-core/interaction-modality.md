@@ -232,7 +232,7 @@ where the terms are defined.
 for themselves — it points at the page, not at the site it is on.** The rule
 and where the page list comes from:
 [`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md); the failure it also
-hides: `continual-progress` (opt-in `cat-harness.sdlc`) §"Link the PAGE, never the
+hides: [`continual-progress`](continual-progress.md) §"Link the PAGE, never the
 site root".
 
 Six parts, in order:

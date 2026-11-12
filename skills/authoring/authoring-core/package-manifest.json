@@ -14,7 +14,9 @@
     "scientific-accuracy",
     "technical-documentation",
     "todo-review",
-    "uses-editorial-review"
+    "uses-editorial-review",
+    "voice-editorial-review",
+    "voice-overlay-review"
   ],
   "docker": {
     "baseImage": "ubuntu:24.04",
