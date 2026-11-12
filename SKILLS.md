@@ -121,6 +121,18 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 |---|---|
 | [`kg-navigation`](skills/kg/kg-navigation/kg-navigation.md) | How a cold agent finds and loads the skill that governs its task. |
 
+**`skills/process/crdm/`** (7)
+
+| Skill | What it is for |
+|---|---|
+| [`crdm-data-model`](skills/process/crdm/crdm-data-model.md) | The CRDM data-modelling phase — when in the requirements process a model is built, what it is built from, who confirms it, and what it hands to the phases either side. |
+| [`crdm-detect`](skills/process/crdm/crdm-detect.md) | Detect when a request needs requirements agreed before anything is built, and which of the two parallel requirements methodologies governs it. |
+| [`crdm-impact-analysis`](skills/process/crdm/crdm-impact-analysis.md) | Guide for CRDM Phase 4 — Impact Analysis and Migration Planning. |
+| [`crdm-needs-assessment`](skills/process/crdm/crdm-needs-assessment.md) | Facilitate Phase 1 (Needs Assessment) of the CRDM requirements workflow. |
+| [`crdm-recorded-walkthrough`](skills/process/crdm/crdm-recorded-walkthrough.md) | Turn a recorded requirements walkthrough (a video call where a business analyst demonstrates a feature and a stakeholder asks for changes) into CRDM Phase 3 requirements with evidence: transcripts… |
+| [`crdm-requirements-template`](skills/process/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
+| [`crdm-requirements-workflow`](skills/process/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
+
 **`skills/process/process-core/`** (14)
 
 | Skill | What it is for |
@@ -235,18 +247,6 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`upload-naming`](library/skills/library-core/upload-naming.md) | What an ingested file may be CALLED. |
 | [`upload-routes`](library/skills/library-core/upload-routes.md) | How a file actually REACHES `uploads/` — the two mechanisms that write bytes into a declared queue, the persona that performs one of them on somebody's behalf, and what each writer owes that the… |
 | [`uploads-watch`](library/skills/library-core/uploads-watch.md) | Notice what has landed in the acquisition queue, and tell an arrival from a backlog. |
-
-**`sdlc/skills/crdm/`** (7) (opt-in `cat-harness.sdlc`)
-
-| Skill | What it is for |
-|---|---|
-| `crdm-data-model` | The CRDM data-modelling phase — when in the requirements process a model is built, what it is built from, who confirms it, and what it hands to the phases either side. |
-| `crdm-detect` | Detect when a request needs requirements agreed before anything is built, and which of the two parallel requirements methodologies governs it. |
-| `crdm-impact-analysis` | Guide for CRDM Phase 4 — Impact Analysis and Migration Planning. |
-| `crdm-needs-assessment` | Facilitate Phase 1 (Needs Assessment) of the CRDM requirements workflow. |
-| `crdm-recorded-walkthrough` | Turn a recorded requirements walkthrough (a video call where a business analyst demonstrates a feature and a stakeholder asks for changes) into CRDM Phase 3 requirements with evidence: transcripts… |
-| `crdm-requirements-template` | Guide and template for CRDM Phase 3 — Requirements Definition. |
-| `crdm-requirements-workflow` | CRDM requirements workflow |
 
 **`sdlc/skills/sdlc-core/`** (61) (opt-in `cat-harness.sdlc`)
 

@@ -32,7 +32,7 @@ page for a reader never depends on it:
 |---|---|
 | a design proposal, an options analysis, an impact assessment | **`docs/proposals/<slug>.md`** |
 | the discussion while it is open | a comment on the **issue** it is for |
-| a harness feature's agreed requirements, once the feature ships | **`docs/requirements/<slug>.md`**, by `git mv` from `docs/proposals/` ([`crdm-requirements-workflow`](../crdm/crdm-requirements-workflow.md)) |
+| a harness feature's agreed requirements, once the feature ships | **`docs/requirements/<slug>.md`**, by `git mv` from `docs/proposals/` ([`crdm-requirements-workflow`](../../../skills/process/crdm/crdm-requirements-workflow.md)) |
 | the rule a decision established | the **skill** it governs |
 | who decided, when, and under which issue | the skill's **provenance log** |
 | structured content worth keeping but not publishing | **`fsh-guts/`** — see [`fsh-guts`](../../../skills/kg/kg-core/fsh-guts.md) |
@@ -42,7 +42,7 @@ page for a reader never depends on it:
 
 - [`placement`](../../../skills/kg/kg-core/placement.md) — the same row: options
   for a decision not yet taken go in `<instance>/docs/proposals/`
-- [`crdm-requirements-workflow`](../crdm/crdm-requirements-workflow.md) — how a
+- [`crdm-requirements-workflow`](../../../skills/process/crdm/crdm-requirements-workflow.md) — how a
   proposal is filed as a requirement when its feature ships
 - [`symbiotic-interaction`](../../../skills/conduct/conduct-core/symbiotic-interaction.md)
   — a ruling goes in the governing skill, its quote and date in the provenance log

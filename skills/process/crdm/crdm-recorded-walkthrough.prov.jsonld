@@ -8,25 +8,25 @@
   "dcterms:description": "Provenance moved out of the narrative of crdm-recorded-walkthrough.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "sdlc/skills/crdm/crdm-recorded-walkthrough.md",
+      "@id": "skills/process/crdm/crdm-recorded-walkthrough.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "sdlc/skills/crdm/crdm-recorded-walkthrough.md#provenance-1"
+          "@id": "skills/process/crdm/crdm-recorded-walkthrough.md#provenance-1"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-recorded-walkthrough.md#provenance-2"
+          "@id": "skills/process/crdm/crdm-recorded-walkthrough.md#provenance-2"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-recorded-walkthrough.md#provenance-3"
+          "@id": "skills/process/crdm/crdm-recorded-walkthrough.md#provenance-3"
         },
         {
-          "@id": "sdlc/skills/crdm/crdm-recorded-walkthrough.md#provenance-4"
+          "@id": "skills/process/crdm/crdm-recorded-walkthrough.md#provenance-4"
         }
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-recorded-walkthrough.md#provenance-1",
+      "@id": "skills/process/crdm/crdm-recorded-walkthrough.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Requirements from a recorded walkthrough",
@@ -41,7 +41,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-recorded-walkthrough.md#provenance-2",
+      "@id": "skills/process/crdm/crdm-recorded-walkthrough.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "1. Inventory what was actually uploaded",
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-recorded-walkthrough.md#provenance-3",
+      "@id": "skills/process/crdm/crdm-recorded-walkthrough.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "4. Screenshots: where the screen changed and where a speaker points",
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/crdm/crdm-recorded-walkthrough.md#provenance-4",
+      "@id": "skills/process/crdm/crdm-recorded-walkthrough.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "5. From transcript to requirements",

@@ -7,7 +7,7 @@ generated: "scripts/subgraph-readmes.ts of the bootstrap toolset (https://github
 
 # sdlc
 
-The software-delivery sub-graph — a NAMED SUB-GRAPH of the harness on the pattern of `openapi/`, and OPT-IN: off in every layer, this one included, unless that layer lists `cat-harness.sdlc` in its own `enableSubgraphs` (owner, 2026-11-03, rulings Q12 and Q18: named folders, a clean break, no redirects; cat-harness#991 step 23.2). It holds the development processes (branch, review, merge, gates, QA, publication, release) and the skills that teach them (`sdlc-core`, `crdm`, `spec-kit`); the graphs inside it — `sdlc-skills` and `sdlc-processes` — are declared FROM WITHIN, in `sdlc/graph.json` (#980). Its processes and skills use the work plan, so a layer enabling it enables `cat-harness.work-plan` too. Off, the material is left out of what an agent is given (skills, Tools, a mount's default list), so a content layer's knowledge graph does not teach the agent the harness's own delivery process (proposal §4.13).
+The software-delivery sub-graph — a NAMED SUB-GRAPH of the harness on the pattern of `openapi/`, and OPT-IN: off in every layer, this one included, unless that layer lists `cat-harness.sdlc` in its own `enableSubgraphs` (owner, 2026-11-03, rulings Q12 and Q18: named folders, a clean break, no redirects; cat-harness#991 step 23.2). It holds the development processes (branch, review, merge, gates, QA, publication, release) and the skills that teach them (`sdlc-core`, `spec-kit`; `crdm`, the requirements methodology, moved to the always-on `skills/process/crdm/` on owner card Q-CORE-SKILLS A, 2026-11-12); the graphs inside it — `sdlc-skills`, `sdlc-processes` and `sdlc-tools` — are declared FROM WITHIN, in `sdlc/graph.json` (#980). Its processes and skills use the work plan, so a layer enabling it enables `cat-harness.work-plan` too. Off, the material is left out of what an agent is given (skills, Tools, a mount's default list), so a content layer's knowledge graph does not teach the agent the harness's own delivery process (proposal §4.13).
 
 Part of [C@T Harness](../README.md) 0.1.0, declared as `sdlc`, holding `cat-harness`.
 
@@ -16,5 +16,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `sdlc`, holding `cat-harn
 | [`graph.json`](graph.json) | data |  |
 | [`processes/`](processes/README.md) | described in its own README | |
 | [`skills/`](skills/README.md) | described in its own README | |
+| [`tools/`](tools/README.md) | described in its own README | |
 
 <!-- kg:subgraph:end -->

@@ -423,7 +423,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The part that is easy to get wrong",
-      "prov:value": "That is not a judgement call made in prose: on 2026-09-22 CRDM's skills were\nrepointed from `methodologies/crdm/` to `sdlc/skills/crdm/` with the entry kept, and\n`gen-skill-docs` immediately demanded a category under **both** the basename\nand the declaration id, because both discovery branches found the one\ndirectory. The three entries were dropped and `methodologies/` now holds its\nfour nodes and no subgraph.",
+      "prov:value": "That is not a judgement call made in prose: on 2026-09-22 CRDM's skills were\nrepointed from `methodologies/crdm/` to `skills/process/crdm/` with the entry kept, and\n`gen-skill-docs` immediately demanded a category under **both** the basename\nand the declaration id, because both discovery branches found the one\ndirectory. The three entries were dropped and `methodologies/` now holds its\nfour nodes and no subgraph.",
       "cat-harness:refs": [
         "2026-09-22"
       ],

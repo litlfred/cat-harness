@@ -73,7 +73,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 - Skill: `kg-subscription`.
 - What: Every subgraph, asset class and harness the cached declaration names, each with its current state — referenced, materialised, unknown, stale, or refused by a gate.
 - Record it: `workflow_complete` with `node: "Task_Review"`.
-- next: → `Task_Choose` (Choose subgraphs, the asset policy, harnesses)
+- next: → `Task_Choose` (Choose subgraphs, assets, harnesses)
 
 ### Decide — Another held part not yet refreshed? (`Gateway_NextHeld`)
 
@@ -82,7 +82,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
   - «yes» → `Call_Refresh` (Refresh the held part)
   - «no, all refreshed» → `Task_RePin` (Move the entry's ref and re-cache the declaration)
 
-### 6. Choose subgraphs, the asset policy, harnesses (`Task_Choose`)
+### 6. Choose subgraphs, assets, harnesses (`Task_Choose`)
 
 - Who: the `Subscriber (the folio's owner)` lane (role `user`).
 - Skill: `kg-subscription`.
@@ -110,7 +110,7 @@ Subscribe a folio or harness to an external knowledge graph pinned to a full com
 
 - For each chosen harness, is every layer it `needs` either local to this checkout or itself subscribed?
 - Call `workflow_complete` with `node: "Gateway_NeedsHeld"` and `outcome` set to the label that holds:
-  - «no — choose again» → `Task_Choose` (Choose subgraphs, the asset policy, harnesses)
+  - «no — choose again» → `Task_Choose` (Choose subgraphs, assets, harnesses)
   - «yes» → `Gateway_NextPart_Join`
 
 ### Merge — `Gateway_NextPart_Join`

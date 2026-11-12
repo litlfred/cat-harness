@@ -86,7 +86,7 @@ Post this table to the GitHub issue:
 | Pipeline | Yes/No | `pipeline/validate.ts` | ... | ... |
 | Adapter | Yes/No | `adapters/paper/` | ... | ... |
 | Folio | Yes/No | `qou`, `who-smart` | ... | ... |
-| Skills | Yes/No | `sdlc/skills/crdm/` | ... | ... |
+| Skills | Yes/No | `skills/process/crdm/` | ... | ... |
 | Migration | Yes/No | — | ... | ... |
 | Tests/Docs | Yes/No | `scripts/tests/` | ... | ... |
 
@@ -129,5 +129,5 @@ rg "CONCEPT" cat-harness/docs/
 - [`crdm-requirements-workflow`](crdm-requirements-workflow.md) — Phase 4
 - [`crdm-requirements-template`](crdm-requirements-template.md) — Phase 3 feeds this
 - [`crdm-detect`](crdm-detect.md) — detection
-- [`skills/ui/ui-core/staging-review.md`](../../../skills/ui/ui-core/staging-review.md) — staging
+- `../../sdlc/skills/sdlc-core/staging-review.md` (opt-in `cat-harness.sdlc`) — staging
 - `../../work-plan/skills/work-plan/todo-manager.md` (opt-in `cat-harness.work-plan`) — work items

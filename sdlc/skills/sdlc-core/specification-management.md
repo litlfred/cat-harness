@@ -111,7 +111,7 @@ A requirements document is governed as a **`RequirementSet`** (`reqset:<slug>`):
 
 - [`requirements-standards-assessment`](../../../methodologies/requirements-standards-assessment.md) —
   Formal evaluation of open requirements standards (ReqIF, OSLC-RM, EARS, ISO 29148, ISO 25010).
-- [`crdm-requirements-template`](../crdm/crdm-requirements-template.md) — CRDM Phase 3
+- [`crdm-requirements-template`](../../../skills/process/crdm/crdm-requirements-template.md) — CRDM Phase 3
   template and elicitation guide.
 - [`spec-kit`](../spec-kit/spec-kit.md) — Platform feature spec-driven development.
 - [`adjudication`](../../../skills/process/process-core/adjudication.md) — Settle review disagreements and record human sign-offs.
