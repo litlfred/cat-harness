@@ -144,7 +144,6 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
     <bpmn:callActivity id="CallActivity_CodeChangeReview" name="Branch, gates, PR and review" calledElement="Process_CodeChangeReview">
       <bpmn:documentation>Called rather than restated. The mechanics of getting an edit reviewed and merged are not specific to the role graph, and a second description of them is a second thing free to disagree with the first.</bpmn:documentation>
       <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="prepare-merge" />
         <bootstrap.processes:skill ref="continual-progress" />
       </bpmn:extensionElements>
       <bpmn:incoming>A10</bpmn:incoming>

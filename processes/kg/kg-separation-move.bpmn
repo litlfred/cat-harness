@@ -122,17 +122,11 @@
     </bpmn:callActivity>
     <bpmn:task id="Task_Release" name="First release">
       <bpmn:documentation>Tag each repository, publish /v&lt;major&gt;/. From here the two are versioned independently; a tools release lists the content majors it supports.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="package-release"/>
-      </bpmn:extensionElements>
       <bpmn:incoming>F8</bpmn:incoming>
       <bpmn:outgoing>F9</bpmn:outgoing>
     </bpmn:task>
     <bpmn:callActivity id="Task_Verify" name="Every identifier&#10;dereferences" calledElement="Process_PublishVerification">
       <bpmn:documentation>After the release is live, every published identifier resolves to the file it names.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="publish-verification"/>
-      </bpmn:extensionElements>
       <bpmn:incoming>F9</bpmn:incoming>
       <bpmn:outgoing>F10</bpmn:outgoing>
     </bpmn:callActivity>

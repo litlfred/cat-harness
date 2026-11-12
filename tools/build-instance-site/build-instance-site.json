@@ -141,7 +141,6 @@
       ]
     },
     "satisfies": [
-      "deployment-awareness",
       "remote-mount"
     ],
     "selection": {

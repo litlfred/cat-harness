@@ -97,7 +97,6 @@
       ]
     },
     "satisfies": [
-      "package-release",
       "npm-kg-distribution"
     ],
     "requires": {

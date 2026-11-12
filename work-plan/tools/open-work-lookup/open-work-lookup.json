@@ -90,8 +90,7 @@
       ]
     },
     "satisfies": [
-      "bean-coordination",
-      "issue-working"
+      "bean-coordination"
     ],
     "selection": {
       "when": "Before starting work that a sibling may already have in flight, and before publishing that a path or a piece of work does not exist.",

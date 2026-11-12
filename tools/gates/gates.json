@@ -47,7 +47,6 @@
     },
     "satisfies": [
       "platform-gates",
-      "prepare-merge",
       "continual-progress"
     ],
     "selection": {

@@ -40,7 +40,7 @@
       ]
     },
     "satisfies": [
-      "package-release"
+      "npm-kg-distribution"
     ],
     "selection": {
       "when": "A first release, a rare one, or a repository whose commit messages carry no conventional prefixes.",

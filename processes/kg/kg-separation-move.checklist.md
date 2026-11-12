@@ -88,7 +88,6 @@ Creates the repositories, drains the open PRs until the source settles, seeds th
 ### 7. First release (`Task_Release`)
 
 - Who: the `Publication manager` lane (role `publication-manager`).
-- Skill: `package-release`.
 - What: Tag each repository, publish /v<major>/.
 - Record it: `workflow_complete` with `node: "Task_Release"`.
 - next: → `Task_Verify` (Every identifier dereferences)
@@ -96,7 +95,6 @@ Creates the repositories, drains the open PRs until the source settles, seeds th
 ### 8. Every identifier dereferences (`Task_Verify`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
-- Skill: `publish-verification`.
 - What: After the release is live, every published identifier resolves to the file it names.
 - A subprocess (`Process_PublishVerification`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Moved` (Released and dereferencing)

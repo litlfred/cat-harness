@@ -65,9 +65,6 @@ wireframe candidate the requester or BA chose in Phases 3–4
 against a fresh design; and the delivery summary links the chosen candidate
 beside the after-screenshot, so the reviewer can see the build matches what was
 approved.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="prepare-merge"/>
-      </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:callActivity id="A_CodeAudit" name="Audit the code nodes&#10;the increment adds" calledElement="Process_Review">
       <bpmn:documentation>Descend into the review task for what this increment
@@ -92,7 +89,7 @@ screenshot — the same argument the merge discipline makes about rendered work:
 to issue">
       <bpmn:documentation>What was accomplished, what remains, and the staging links: one deep link per
 changed page on the preview, with the same page on main (feedback-deep-links).</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="delivery-summary"/><bootstrap.processes:skill ref="staging-review"/></bpmn:extensionElements>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="staging-review"/></bpmn:extensionElements>
     </bpmn:task>
     <bpmn:task id="BA_ReviewIncrement" name="Review increment
 (test behaviour)">

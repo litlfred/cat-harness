@@ -149,7 +149,6 @@ This is the fourth knowledge-graph affordance (`copy-into-folio` in `kg-affordan
       <bpmn:documentation>The copied asset is now writable content of the target folio with recorded upstream provenance (`KgAsset.source`). The folio author may edit it in place, attach review comments, or raise todos (`todo-manager`) against it.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-affordances"/>
-        <bootstrap.processes:skill ref="todo-manager"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_ValidateToWork</bpmn:incoming>
       <bpmn:outgoing>Flow_WorkToEnd</bpmn:outgoing>
