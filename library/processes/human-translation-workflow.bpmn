@@ -40,6 +40,12 @@ What makes a translation OFFICIAL is the reviewer's sign-off, never the file bei
 
     <!-- ── Lanes ──────────────────────────────────────────────── -->
     <bpmn:laneSet id="LaneSet_Main">
+      <bpmn:lane id="Lane_Translator" name="Human Translator" partitionElementRef="translator">
+        <bpmn:documentation>Task_TranslateInTool is where both loops in this process land — an incompleteness request from the coordinator and a correction from the reviewer — so nothing in the task itself says which one sent the work back; only the annotations that travel with each loop carry that distinction.</bpmn:documentation>
+        <bpmn:flowNodeRef>Task_ReceiveAssignment</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_TranslateInTool</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_SubmitPO</bpmn:flowNodeRef>
+      </bpmn:lane>
       <bpmn:lane id="Lane_Coordinator" name="Translation Coordinator" partitionElementRef="translation-coordinator">
         <bpmn:documentation>Owns the completeness gate, Gateway_Complete, a different question from the accuracy Lane_Reviewer judges later: this lane can send work back to the translator for missing or fuzzy strings before a single sentence has been checked for meaning.</bpmn:documentation>
         <bpmn:flowNodeRef>Start_TranslationNeeded</bpmn:flowNodeRef>
@@ -49,20 +55,6 @@ What makes a translation OFFICIAL is the reviewer's sign-off, never the file bei
         <bpmn:flowNodeRef>Gateway_Complete</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RequestMoreWork</bpmn:flowNodeRef>
       </bpmn:lane>
-      <bpmn:lane id="Lane_Translator" name="Human Translator" partitionElementRef="translator">
-        <bpmn:documentation>Task_TranslateInTool is where both loops in this process land — an incompleteness request from the coordinator and a correction from the reviewer — so nothing in the task itself says which one sent the work back; only the annotations that travel with each loop carry that distinction.</bpmn:documentation>
-        <bpmn:flowNodeRef>Task_ReceiveAssignment</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_TranslateInTool</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_SubmitPO</bpmn:flowNodeRef>
-      </bpmn:lane>
-      <bpmn:lane id="Lane_Reviewer" name="Subject-Matter Expert / Reviewer" partitionElementRef="reviewer">
-        <bpmn:documentation>The one reviewer lane in this corpus where sign-off is acceptance: Task_Signoff makes the translation official directly, with no separate editor lane after it, because translation fidelity is the acceptance criterion and there is no different judgement left for an editor to add.</bpmn:documentation>
-        <bpmn:flowNodeRef>Task_SMEReview</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_Accurate</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_ReturnForCorrection</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Task_Signoff</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>End_OfficialTranslation</bpmn:flowNodeRef>
-      </bpmn:lane>
       <bpmn:lane id="Lane_Pipeline" name="Automated Pipeline" partitionElementRef="build-pipeline">
         <bpmn:documentation>Owns extraction, glossary preparation, injection and round-trip QA — the only machine check for semantic drift — whose findings go to Task_SMEReview whatever they say, so a clean round-trip is evidence for the reviewer, never a bypass of them. The same lane writes the final status.json once sign-off lands, so the official record sits beside the checks that fed it.</bpmn:documentation>
         <bpmn:flowNodeRef>Task_ExtractPOT</bpmn:flowNodeRef>
@@ -71,6 +63,14 @@ What makes a translation OFFICIAL is the reviewer's sign-off, never the file bei
         <bpmn:flowNodeRef>Task_RoundTripQA</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_AppendDisclaimer</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_WriteStatus</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_Reviewer" name="Subject-Matter Expert / Reviewer" partitionElementRef="reviewer">
+        <bpmn:documentation>The one reviewer lane in this corpus where sign-off is acceptance: Task_Signoff makes the translation official directly, with no separate editor lane after it, because translation fidelity is the acceptance criterion and there is no different judgement left for an editor to add.</bpmn:documentation>
+        <bpmn:flowNodeRef>Task_SMEReview</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_Accurate</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_ReturnForCorrection</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_Signoff</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>End_OfficialTranslation</bpmn:flowNodeRef>
       </bpmn:lane>
     </bpmn:laneSet>
 
@@ -196,7 +196,7 @@ force in the target language.</bpmn:documentation>
       </bpmn:extensionElements>
     </bpmn:userTask>
 
-    <bpmn:exclusiveGateway id="Gateway_Accurate" name="Translation accurate?">
+    <bpmn:exclusiveGateway id="Gateway_Accurate" name="Translation&#10;accurate?">
       <bpmn:documentation>The SME's result. `Needs correction` returns the translation with annotations; `Accurate` goes on to the WHO disclaimer, sign-off and status.</bpmn:documentation>
     </bpmn:exclusiveGateway>
 
@@ -309,7 +309,7 @@ Only applies when folio contentType includes WHO/DAK content.</bpmn:documentatio
 
     <!-- Reviewer -->
     <bpmn:sequenceFlow id="F17" sourceRef="Task_SMEReview" targetRef="Gateway_Accurate" />
-    <bpmn:sequenceFlow id="F18" name="Needs correction" sourceRef="Gateway_Accurate" targetRef="Task_ReturnForCorrection" />
+    <bpmn:sequenceFlow id="F18" name="Needs&#10;correction" sourceRef="Gateway_Accurate" targetRef="Task_ReturnForCorrection" />
     <bpmn:sequenceFlow id="F19" sourceRef="Task_ReturnForCorrection" targetRef="Task_TranslateInTool" />
     <bpmn:sequenceFlow id="F20" name="Accurate" sourceRef="Gateway_Accurate" targetRef="Task_AppendDisclaimer" />
 
@@ -323,211 +323,201 @@ Only applies when folio contentType includes WHO/DAK content.</bpmn:documentatio
   <bpmndi:BPMNDiagram id="BPMNDiagram_HumanTranslation">
     <bpmndi:BPMNPlane id="BPMNPlane_HumanTranslation" bpmnElement="Collab_HumanTranslation">
       <bpmndi:BPMNShape id="Pool_HumanTranslation_di" bpmnElement="Pool_HumanTranslation" isHorizontal="true">
-        <dc:Bounds x="120" y="60" width="3876" height="720" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_Coordinator_di" bpmnElement="Lane_Coordinator" isHorizontal="true">
-        <dc:Bounds x="150" y="60" width="3846" height="180" />
+        <dc:Bounds x="80" y="60" width="1360" height="780" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Translator_di" bpmnElement="Lane_Translator" isHorizontal="true">
-        <dc:Bounds x="150" y="240" width="3846" height="180" />
+        <dc:Bounds x="110" y="60" width="1330" height="190" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Lane_Reviewer_di" bpmnElement="Lane_Reviewer" isHorizontal="true">
-        <dc:Bounds x="150" y="420" width="3846" height="180" />
+      <bpmndi:BPMNShape id="Lane_Coordinator_di" bpmnElement="Lane_Coordinator" isHorizontal="true">
+        <dc:Bounds x="110" y="250" width="1330" height="200" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_Pipeline_di" bpmnElement="Lane_Pipeline" isHorizontal="true">
-        <dc:Bounds x="150" y="600" width="3846" height="180" />
+        <dc:Bounds x="110" y="450" width="1330" height="190" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_Reviewer_di" bpmnElement="Lane_Reviewer" isHorizontal="true">
+        <dc:Bounds x="110" y="640" width="1330" height="200" />
       </bpmndi:BPMNShape>
 
       <!-- Coordinator Shapes -->
       <bpmndi:BPMNShape id="Start_TranslationNeeded_di" bpmnElement="Start_TranslationNeeded">
-        <dc:Bounds x="200" y="132" width="36" height="36" />
-      
+        <dc:Bounds x="150" y="332" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="195" y="196" width="200" height="28" />
+          <dc:Bounds x="142" y="375" width="95" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_IdentifyContent_di" bpmnElement="Task_IdentifyContent">
-        <dc:Bounds x="276" y="110" width="180" height="80" />
+        <dc:Bounds x="245" y="290" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_AssignTranslator_di" bpmnElement="Task_AssignTranslator">
-        <dc:Bounds x="896" y="110" width="180" height="80" />
+        <dc:Bounds x="410" y="290" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_CheckCompleteness_di" bpmnElement="Task_CheckCompleteness">
-        <dc:Bounds x="1736" y="110" width="180" height="80" />
+        <dc:Bounds x="590" y="290" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Complete_di" bpmnElement="Gateway_Complete" isMarkerVisible="true">
-        <dc:Bounds x="1956" y="125" width="50" height="50" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="1916" y="103" width="130" height="18" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="740" y="325" width="50" height="50" />
+        <bpmndi:BPMNLabel><dc:Bounds x="715" y="275" width="100" height="24" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_RequestMoreWork_di" bpmnElement="Task_RequestMoreWork">
-        <dc:Bounds x="2096" y="90" width="120" height="120" />
+        <dc:Bounds x="860" y="290" width="120" height="120" />
       </bpmndi:BPMNShape>
 
       <!-- Translator Shapes -->
       <bpmndi:BPMNShape id="Task_ReceiveAssignment_di" bpmnElement="Task_ReceiveAssignment">
-        <dc:Bounds x="1116" y="289.5" width="180" height="81" />
+        <dc:Bounds x="290" y="100" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_TranslateInTool_di" bpmnElement="Task_TranslateInTool">
-        <dc:Bounds x="1336" y="290" width="180" height="80" />
+        <dc:Bounds x="440" y="100" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_SubmitPO_di" bpmnElement="Task_SubmitPO">
-        <dc:Bounds x="1556" y="290" width="140" height="80" />
+        <dc:Bounds x="590" y="100" width="120" height="120" />
       </bpmndi:BPMNShape>
 
       <!-- Reviewer Shapes -->
       <bpmndi:BPMNShape id="Task_SMEReview_di" bpmnElement="Task_SMEReview">
-        <dc:Bounds x="2776" y="470" width="140" height="80" />
+        <dc:Bounds x="660" y="670" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_Accurate_di" bpmnElement="Gateway_Accurate" isMarkerVisible="true">
-        <dc:Bounds x="2976" y="485" width="50" height="50" />
-      
+        <dc:Bounds x="815" y="705" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="2840" y="558" width="150" height="28" />
+          <dc:Bounds x="795" y="662" width="90" height="32" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_ReturnForCorrection_di" bpmnElement="Task_ReturnForCorrection">
-        <dc:Bounds x="3086" y="430" width="120" height="120" />
+        <dc:Bounds x="930" y="670" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_Signoff_di" bpmnElement="Task_Signoff">
-        <dc:Bounds x="3496" y="470" width="140" height="80" />
+        <dc:Bounds x="1100" y="670" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_OfficialTranslation_di" bpmnElement="End_OfficialTranslation">
-        <dc:Bounds x="3896" y="492" width="36" height="36" />
-        
-      <bpmndi:BPMNLabel><dc:Bounds x="3846" y="471" width="136" height="17" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
+        <dc:Bounds x="1365" y="712" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1330" y="756" width="95" height="32" /></bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
 
       <!-- Pipeline Shapes -->
       <bpmndi:BPMNShape id="Task_ExtractPOT_di" bpmnElement="Task_ExtractPOT">
-        <dc:Bounds x="496" y="650" width="140" height="80" />
+        <dc:Bounds x="245" y="485" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_PrepareGlossary_di" bpmnElement="Task_PrepareGlossary">
-        <dc:Bounds x="676" y="650" width="180" height="80" />
+        <dc:Bounds x="410" y="485" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_InjectPO_di" bpmnElement="Task_InjectPO">
-        <dc:Bounds x="2256" y="650" width="140" height="80" />
+        <dc:Bounds x="590" y="485" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_RoundTripQA_di" bpmnElement="Task_RoundTripQA">
-        <dc:Bounds x="2436" y="650" width="180" height="80" />
+        <dc:Bounds x="745" y="485" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_AppendDisclaimer_di" bpmnElement="Task_AppendDisclaimer">
-        <dc:Bounds x="3276" y="650" width="180" height="80" />
+        <dc:Bounds x="1055" y="485" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_WriteStatus_di" bpmnElement="Task_WriteStatus">
-        <dc:Bounds x="3676" y="650" width="180" height="80" />
+        <dc:Bounds x="1220" y="485" width="120" height="120" />
       </bpmndi:BPMNShape>
 
       <!-- Edges -->
       <bpmndi:BPMNEdge id="F01_di" bpmnElement="F01">
-        <di:waypoint x="236" y="150" />
-        <di:waypoint x="276" y="150" />
+        <di:waypoint x="186" y="350" />
+        <di:waypoint x="245" y="350" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F02_di" bpmnElement="F02">
-        <di:waypoint x="456" y="150" />
-        <di:waypoint x="486" y="150" />
-        <di:waypoint x="486" y="690" />
-        <di:waypoint x="496" y="690" />
+        <di:waypoint x="305" y="410" />
+        <di:waypoint x="305" y="485" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F03_di" bpmnElement="F03">
-        <di:waypoint x="636" y="690" />
-        <di:waypoint x="676" y="690" />
+        <di:waypoint x="365" y="545" />
+        <di:waypoint x="410" y="545" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F04_di" bpmnElement="F04">
-        <di:waypoint x="856" y="690" />
-        <di:waypoint x="886" y="690" />
-        <di:waypoint x="886" y="150" />
-        <di:waypoint x="896" y="150" />
+        <di:waypoint x="470" y="485" />
+        <di:waypoint x="470" y="410" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F05_di" bpmnElement="F05">
-        <di:waypoint x="1076" y="150" />
-        <di:waypoint x="1106" y="150" />
-        <di:waypoint x="1106" y="330" />
-        <di:waypoint x="1116" y="330" />
+        <di:waypoint x="425" y="290" />
+        <di:waypoint x="425" y="235" />
+        <di:waypoint x="350" y="235" />
+        <di:waypoint x="350" y="220" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F06_di" bpmnElement="F06">
-        <di:waypoint x="1296" y="330" />
-        <di:waypoint x="1336" y="330" />
+        <di:waypoint x="410" y="160" />
+        <di:waypoint x="440" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F07_di" bpmnElement="F07">
-        <di:waypoint x="1516" y="330" />
-        <di:waypoint x="1556" y="330" />
+        <di:waypoint x="560" y="160" />
+        <di:waypoint x="590" y="160" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F08_di" bpmnElement="F08">
-        <di:waypoint x="1696" y="330" />
-        <di:waypoint x="1726" y="330" />
-        <di:waypoint x="1726" y="150" />
-        <di:waypoint x="1736" y="150" />
+        <di:waypoint x="650" y="220" />
+        <di:waypoint x="650" y="290" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F09_di" bpmnElement="F09">
-        <di:waypoint x="1916" y="150" />
-        <di:waypoint x="1956" y="150" />
+        <di:waypoint x="710" y="350" />
+        <di:waypoint x="740" y="350" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F10_di" bpmnElement="F10">
-        <di:waypoint x="2006" y="150" />
-        <di:waypoint x="2096" y="150" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2012" y="126" width="76" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="790" y="350" />
+        <di:waypoint x="860" y="350" />
+        <bpmndi:BPMNLabel><dc:Bounds x="792" y="326" width="66" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F11_di" bpmnElement="F11">
-        <di:waypoint x="2156" y="90" />
-        <di:waypoint x="2156" y="78" />
-        <di:waypoint x="1440" y="78" />
-        <di:waypoint x="1440" y="290" />
+        <di:waypoint x="920" y="290" />
+        <di:waypoint x="920" y="82" />
+        <di:waypoint x="520" y="82" />
+        <di:waypoint x="520" y="100" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F12_di" bpmnElement="F12">
-        <di:waypoint x="1981" y="175" />
-        <di:waypoint x="1981" y="690" />
-        <di:waypoint x="2256" y="690" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1985" y="423.5" width="90" height="18" /></bpmndi:BPMNLabel>
+        <di:waypoint x="765" y="375" />
+        <di:waypoint x="765" y="435" />
+        <di:waypoint x="650" y="435" />
+        <di:waypoint x="650" y="485" />
+        <bpmndi:BPMNLabel><dc:Bounds x="675" y="413" width="65" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F13_di" bpmnElement="F13">
-        <di:waypoint x="2396" y="690" />
-        <di:waypoint x="2436" y="690" />
+        <di:waypoint x="710" y="545" />
+        <di:waypoint x="745" y="545" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F14_di" bpmnElement="F14">
-        <di:waypoint x="2616" y="690" />
-        <di:waypoint x="2706" y="690" />
-        <di:waypoint x="2706" y="510" />
-        <di:waypoint x="2776" y="510" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2616" y="652" width="90" height="35" /></bpmndi:BPMNLabel>
+        <di:waypoint x="805" y="605" />
+        <di:waypoint x="805" y="625" />
+        <di:waypoint x="630" y="625" />
+        <di:waypoint x="630" y="730" />
+        <di:waypoint x="660" y="730" />
+        <bpmndi:BPMNLabel><dc:Bounds x="525" y="685" width="95" height="32" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F17_di" bpmnElement="F17">
-        <di:waypoint x="2916" y="510" />
-        <di:waypoint x="2976" y="510" />
+        <di:waypoint x="780" y="730" />
+        <di:waypoint x="815" y="730" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F18_di" bpmnElement="F18">
-        <di:waypoint x="3001" y="485" />
-        <di:waypoint x="3001" y="470" />
-        <di:waypoint x="3086" y="470" />
-        <bpmndi:BPMNLabel><dc:Bounds x="2955" y="432" width="90" height="35" /></bpmndi:BPMNLabel>
+        <di:waypoint x="865" y="730" />
+        <di:waypoint x="930" y="730" />
+        <bpmndi:BPMNLabel><dc:Bounds x="868" y="736" width="58" height="32" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F19_di" bpmnElement="F19">
-        <di:waypoint x="3146" y="430" />
-        <di:waypoint x="3146" y="66" />
-        <di:waypoint x="1400" y="66" />
-        <di:waypoint x="1400" y="290" />
+        <di:waypoint x="1015" y="670" />
+        <di:waypoint x="1015" y="68" />
+        <di:waypoint x="480" y="68" />
+        <di:waypoint x="480" y="100" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F20_di" bpmnElement="F20">
-        <di:waypoint x="3001" y="535" />
-        <di:waypoint x="3001" y="690" />
-        <di:waypoint x="3276" y="690" />
-        <bpmndi:BPMNLabel><dc:Bounds x="3005" y="604" width="90" height="17" /></bpmndi:BPMNLabel>
+        <di:waypoint x="840" y="755" />
+        <di:waypoint x="840" y="815" />
+        <di:waypoint x="1075" y="815" />
+        <di:waypoint x="1075" y="605" />
+        <bpmndi:BPMNLabel><dc:Bounds x="848" y="792" width="65" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F21_di" bpmnElement="F21">
-        <di:waypoint x="3456" y="690" />
-        <di:waypoint x="3486" y="690" />
-        <di:waypoint x="3486" y="510" />
-        <di:waypoint x="3496" y="510" />
+        <di:waypoint x="1140" y="605" />
+        <di:waypoint x="1140" y="670" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F22_di" bpmnElement="F22">
-        <di:waypoint x="3636" y="510" />
-        <di:waypoint x="3666" y="510" />
-        <di:waypoint x="3666" y="690" />
-        <di:waypoint x="3676" y="690" />
+        <di:waypoint x="1220" y="730" />
+        <di:waypoint x="1280" y="730" />
+        <di:waypoint x="1280" y="605" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="F23_di" bpmnElement="F23">
-        <di:waypoint x="3856" y="690" />
-        <di:waypoint x="3886" y="690" />
-        <di:waypoint x="3886" y="510" />
-        <di:waypoint x="3896" y="510" />
+        <di:waypoint x="1340" y="545" />
+        <di:waypoint x="1383" y="545" />
+        <di:waypoint x="1383" y="712" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
