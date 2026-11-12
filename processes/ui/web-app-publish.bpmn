@@ -13,7 +13,7 @@
   <bpmn:resource id="translation-source-lead" name="Source-language lead"/>
   <bpmn:collaboration id="Collaboration_Process_WebAppPublish">
     <bpmn:participant id="Participant_Process_WebAppPublish" name="Publish a web app — declared, translated, built at its own route" processRef="Process_WebAppPublish"/>
-  </bpmn:collaboration>
+  </bpmn:collaboration><!-- Provenance of Process_WebAppPublish: owner, 2026-11-11, cards Q-GAME-5 A and Q-GAME-7 A; kept out of its documentation, which says what the process is. -->
   <bpmn:process id="Process_WebAppPublish" name="Publish a web app — declared, translated, built at its own route" isExecutable="false">
     <bpmn:documentation>How any layer publishes an interactive app it holds as source, without becoming a harness. The layer declares a `web-app` directory; the app's UI strings go through the harness's own translation process; the harness's `apps` visualiser (Tool `web-app-build`) checks, builds and publishes it at `&lt;locale&gt;/&lt;harness&gt;/apps/&lt;id&gt;/`, with no site chrome, loaded only when a reader opens it (skill `web-apps`).</bpmn:documentation>
     <bpmn:extensionElements>
