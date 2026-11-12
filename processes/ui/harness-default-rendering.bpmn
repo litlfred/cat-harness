@@ -65,6 +65,9 @@ Read-only is the floor. Whether the reader may write is a question about the too
 
     <bpmn:task id="A_Board" name="Draw the board of todos and beans">
       <bpmn:documentation>The todo board mounts inside the landing board, so harness cards and todo stickies share one surface. Each card carries an edit link only when the build composed one.</bpmn:documentation>
+      <bpmn:extensionElements>
+        <bootstrap.processes:skill ref="board-windows"/>
+      </bpmn:extensionElements>
     </bpmn:task>
 
     <bpmn:userTask id="A_Read" name="Read a page or a card">

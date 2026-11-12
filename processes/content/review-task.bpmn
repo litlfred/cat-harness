@@ -104,6 +104,9 @@ The accept-or-send-back decision lives here and nowhere beneath it. The subproce
         could not settle (a stale pair, a false or undetermined claim), and send
         a disagreement with a checker to adjudication.
        Where `cat-harness.sdlc` is switched on, this step is the opt-in process `narrative-code-review` (`Process_NarrativeCodeReview`, sdlc/processes/narrative-code-review.bpmn); it is not called from here, because a layer without that sub-graph does not have it (owner card Q-OPTIN-CALLS A, 2026-11-12).</bpmn:documentation>
+      <bpmn:extensionElements>
+        <cat-harness.processes:no-skill reason="Implemented by the opt-in sdlc process narrative-code-review, which an always-on diagram may not call (owner card Q-OPTIN-CALLS A, 2026-11-12); no always-on skill teaches judging prose against the code it describes."/>
+      </bpmn:extensionElements>
     </bpmn:task>
 
     <bpmn:exclusiveGateway id="GW_Join"/>

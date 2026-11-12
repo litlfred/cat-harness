@@ -44,6 +44,9 @@
 `beans create`, running the exact-title existence check first. The engine has
 no `create` op — it claims, notes and resolves the instance's OWN bean — so
 what this step records here is a note that the plan now exists.</bpmn:documentation>
+      <bpmn:extensionElements>
+        <cat-harness.processes:no-skill reason="Creating beans is taught by the opt-in work-plan skills (todo-manager, coordinate), which an always-on diagram may not name (owner card Q-CORE-SKILLS A, 2026-11-12); no always-on skill covers the work plan."/>
+      </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:callActivity id="BA_Signoff" name="Sign off on&#10;requirements" calledElement="Process_Adjudication">
       <bpmn:documentation>The business analyst / requester signs off on the agreed requirement set, on the issue: what was agreed and what was deferred. Recorded as their decision, with its reason, never by an agent on their behalf. It IS an adjudication: it calls Process_Adjudication with the requirement-set answers, and every answer goes through A_RecordSignoff before anything follows it.</bpmn:documentation>
