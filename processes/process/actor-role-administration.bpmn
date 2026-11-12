@@ -141,15 +141,15 @@ Retirement, never deletion. An actor id is referenced from commits, sidecars and
       <bpmn:outgoing>A10</bpmn:outgoing>
     </bpmn:exclusiveGateway>
 
-    <bpmn:callActivity id="CallActivity_CodeChangeReview" name="Branch, gates, PR and review" calledElement="Process_CodeChangeReview">
-      <bpmn:documentation>Called rather than restated. The mechanics of getting an edit reviewed and merged are not specific to the role graph, and a second description of them is a second thing free to disagree with the first.</bpmn:documentation>
+    <bpmn:task id="CallActivity_CodeChangeReview" name="Branch, gates, PR and review">
+      <bpmn:documentation>Called rather than restated. The mechanics of getting an edit reviewed and merged are not specific to the role graph, and a second description of them is a second thing free to disagree with the first. Where `cat-harness.sdlc` is switched on, this step is the opt-in process `code-change-review` (`Process_CodeChangeReview`, sdlc/processes/code-change-review.bpmn); it is not called from here, because a layer without that sub-graph does not have it (owner card Q-OPTIN-CALLS A, 2026-11-12).</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="prepare-merge" />
         <bootstrap.processes:skill ref="continual-progress" />
       </bpmn:extensionElements>
       <bpmn:incoming>A10</bpmn:incoming>
       <bpmn:outgoing>A11</bpmn:outgoing>
-    </bpmn:callActivity>
+    </bpmn:task>
 
     <bpmn:serviceTask id="Task_RunKgAudit" name="Audit the graph">
       <bpmn:documentation>AFTER the change, not before. Every criterion here is a join — role to lane, actor to role, activity to skill — so what an administrative edit breaks is not in the file it edited. The sidecars under `test/results/kg-qa/` are committed for the reason a printed verdict is not: without them, "unbound since it was drawn" and "broken by this change" are indistinguishable. Runs `kg:audit`.</bpmn:documentation>

@@ -15,8 +15,6 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-processes`, hold
 |---|---|---|
 | [`activity-log.bpmn`](activity-log.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Agent activity log |  |
 | [`activity-log.checklist.md`](activity-log.checklist.md) | Checklist — Agent activity log |  |
-| [`adjudication.bpmn`](adjudication.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Adjudication | "Refresh materialized remote content", "CRDM close-out", "CRDM Phase 5 — beans and sign-off", "Criterion adjudication", "Requirements filing: promote, organise, trace, supersede, or retire" |
-| [`adjudication.checklist.md`](adjudication.checklist.md) | Checklist — Adjudication |  |
 | [`bean-close.bpmn`](bean-close.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Close the bean | "Drain the beans", "Agent bean lifecycle", "Code change and review", "A refused merge-train member", "Test Data Curation — Fixed Sets and Generated Recipes", "Test-plan execution", "Watching a pinned upstream dependency", "Adopting an upstream version bump" |
 | [`bean-close.checklist.md`](bean-close.checklist.md) | Checklist — Close the bean |  |
 | [`bean-drain.bpmn`](bean-drain.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Drain the beans |  |
@@ -33,8 +31,6 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-processes`, hold
 | [`code-change-review.checklist.md`](code-change-review.checklist.md) | Checklist — Code change and review |  |
 | [`code-quality-gates.bpmn`](code-quality-gates.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): The gates a change must pass before it can merge | "A merge train" |
 | [`code-quality-gates.checklist.md`](code-quality-gates.checklist.md) | Checklist — The gates a change must pass before it can merge |  |
-| [`criterion-adjudication.bpmn`](criterion-adjudication.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Criterion adjudication | "Narrative review", "Voice overlay review", "Wireframe design review", "Prose and the code it describes" |
-| [`criterion-adjudication.checklist.md`](criterion-adjudication.checklist.md) | Checklist — Criterion adjudication |  |
 | [`docs-site-publish.bpmn`](docs-site-publish.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Publishing the docs site, and keeping the previews alive |  |
 | [`docs-site-publish.checklist.md`](docs-site-publish.checklist.md) | Checklist — Publishing the docs site, and keeping the previews alive |  |
 | [`feature-staging.bpmn`](feature-staging.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Staging a feature branch preview, and taking it down |  |
@@ -57,8 +53,6 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-processes`, hold
 | [`merge-train.checklist.md`](merge-train.checklist.md) | Checklist — A merge train |  |
 | [`narrative-code-review.bpmn`](narrative-code-review.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Prose and the code it describes | "Review task" |
 | [`narrative-code-review.checklist.md`](narrative-code-review.checklist.md) | Checklist — Prose and the code it describes |  |
-| [`options-analysis.bpmn`](options-analysis.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Options analysis | "CRDM Phase 6 — implement, MVP, acceptance", "Wireframe design review", "Adopting an upstream version bump" |
-| [`options-analysis.checklist.md`](options-analysis.checklist.md) | Checklist — Options analysis |  |
 | [`pr-checks-present.bpmn`](pr-checks-present.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Which open pull requests have no CI run on their head? | "A merge train" |
 | [`pr-checks-present.checklist.md`](pr-checks-present.checklist.md) | Checklist — Which open pull requests have no CI run on their head? |  |
 | [`publish-alert.bpmn`](publish-alert.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Alert the publication manager | "Publishing the docs site, and keeping the previews alive" |
@@ -69,8 +63,6 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-processes`, hold
 | [`qa-publish.checklist.md`](qa-publish.checklist.md) | Checklist — Publish and keep QA results on qa-reports |  |
 | [`qa-report-signing.bpmn`](qa-report-signing.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): QA report signing | "Test-plan execution" |
 | [`qa-report-signing.checklist.md`](qa-report-signing.checklist.md) | Checklist — QA report signing |  |
-| [`related-work.bpmn`](related-work.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Related work: find, sort, summarize, ask to coordinate | "Adopt a methodology from a source document", "CRDM — link the work to an issue" |
-| [`related-work.checklist.md`](related-work.checklist.md) | Checklist — Related work: find, sort, summarize, ask to coordinate |  |
 | [`repository-health-watch.bpmn`](repository-health-watch.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Is the repository itself healthy? |  |
 | [`repository-health-watch.checklist.md`](repository-health-watch.checklist.md) | Checklist — Is the repository itself healthy? |  |
 | [`requirements-filing.bpmn`](requirements-filing.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Requirements filing: promote, organise, trace, supersede, or retire |  |

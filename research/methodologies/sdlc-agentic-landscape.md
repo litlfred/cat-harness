@@ -79,7 +79,7 @@ software and knowledge engineering. Below is the mapping against the repository'
 ### B. Software Design: Full Coverage
 - **Executable Process & Decision Modeling (`processes/`)**:
   - System architecture is modeled in OMG standard BPMN 2.0.2 and DMN 1.5, serving as the machine-verifiable source of truth rather than informal diagrams.
-- **Architecture Decision Records (`methodologies/madr.md`, `sdlc/processes/options-analysis.bpmn`)**:
+- **Architecture Decision Records (`methodologies/madr.md`, `processes/process/options-analysis.bpmn`)**:
   - Structured decision logging capturing context, options, decision drivers, and trade-offs.
 - **Role & Swimlane Topology (`processes/process/actor-role-administration.bpmn`, `methodologies/raci.md`)**:
   - Strict separation between persistent actors, process roles, and skill bundles.
@@ -111,7 +111,7 @@ software and knowledge engineering. Below is the mapping against the repository'
   - `sdlc/processes/code-change-review.bpmn`, `narrative-code-review.bpmn`, and `processes/content/voice-review.bpmn` evaluate changes across competing perspectives (pedantry, security, architecture, user experience).
 - **Upstream Version & Pin Management**:
   - `sdlc/processes/upstream-pin-watch.bpmn` and `upstream-version-adoption.bpmn` guard against dependency drift.
-- **Criterion Adjudication (`sdlc/processes/adjudication.bpmn`, `criterion-adjudication.bpmn`)**:
+- **Criterion Adjudication (`processes/process/adjudication.bpmn`, `criterion-adjudication.bpmn`)**:
   - Evidence-backed resolution of audit findings and defects.
 
 ### F. Software Management & Collaboration: Industrial-Grade Governance
