@@ -14,6 +14,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `external-schemas`, holdi
 | file | what it is | used by |
 |---|---|---|
 | [`dcmi-terms.json`](dcmi-terms.json) | DCMI Metadata Terms |  |
+| [`foaf.json`](foaf.json) | FOAF Vocabulary Specification |  |
 | [`hl7-fhir.json`](hl7-fhir.json) | HL7 FHIR |  |
 | [`ietf-handle-system.json`](ietf-handle-system.json) | Handle System Overview (RFC 3650), with its namespace (RFC 3651) and protocol (RFC 3652) |  |
 | [`omg-bpmn-2.0.json`](omg-bpmn-2.0.json) | Business [Process](https://litlfred.github.io/bootstrap/schemas/#process) Model and Notation (BPMN) |  |
@@ -30,6 +31,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `external-schemas`, holdi
 | [`w3c-hydra.json`](w3c-hydra.json) | Hydra Core Vocabulary |  |
 | [`w3c-n-quads.json`](w3c-n-quads.json) | RDF 1.1 N-Quads: A line-based syntax for RDF datasets |  |
 | [`w3c-odrl.json`](w3c-odrl.json) | ODRL Information Model 2.2 |  |
+| [`w3c-org.json`](w3c-org.json) | The Organization Ontology |  |
 | [`w3c-owl2.json`](w3c-owl2.json) | OWL 2 Web Ontology Language Document Overview (Second Edition) |  |
 | [`w3c-prov-jsonld.json`](w3c-prov-jsonld.json) | The PROV-JSONLD Serialization: A JSON-LD Representation for the PROV Data Model |  |
 | [`w3c-prov-o.json`](w3c-prov-o.json) | PROV-O: The PROV Ontology |  |
