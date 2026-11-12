@@ -8,16 +8,16 @@
   "dcterms:description": "Provenance moved out of the narrative of merge-train.json: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "tools/merge-train/merge-train.json",
+      "@id": "sdlc/tools/merge-train/merge-train.json",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "tools/merge-train/merge-train.json#provenance-1"
+          "@id": "sdlc/tools/merge-train/merge-train.json#provenance-1"
         }
       ]
     },
     {
-      "@id": "tools/merge-train/merge-train.json#provenance-1",
+      "@id": "sdlc/tools/merge-train/merge-train.json#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "tool.selection.cost",
