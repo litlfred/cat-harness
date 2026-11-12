@@ -38,7 +38,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "9d158c932856885a7c6025045a0d59b26b5d7827",
+          "ref": "bbdaffb757007bf0c4fe0ce4d21018491df308a9",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -52,8 +52,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-12",
-              "ref": "9d158c932856885a7c6025045a0d59b26b5d7827",
-              "evidence": "litlfred, 2026-11-12, merge-manager thread: owner card Q-CONSENT-1 = A (re-pin + merge window to ~21:05Z 11-12, Q-WIN-1 C); bottom-up re-pin T1', follow-up to Q-RA-241 A (Q-CASCADE-FREEZE B: mains read at re-pin). Coordinator session session_01EucfRpkvK7d4FJyuqypQzm."
+              "ref": "bbdaffb757007bf0c4fe0ce4d21018491df308a9",
+              "evidence": "litlfred, 2026-11-12, merge-manager thread: owner card Q-CONSENT-1 = A (re-pin + merge window, Q-WIN-1 C); bottom-up re-pin T1'' (bootstrap-tools moved by bootstrap-tools#90, core T2 pins it), smart-ra#242, Q-CASCADE-FREEZE B"
             }
           }
         }
