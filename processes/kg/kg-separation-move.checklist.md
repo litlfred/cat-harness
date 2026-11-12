@@ -82,7 +82,7 @@ Creates the repositories, drains the open PRs until the source settles, seeds th
 - Who: the `Platform authoring agent` lane (role `platform-authoring-agent`).
 - Skill: `upstream-version-adoption`.
 - What: The parent pins the pair (a commit while staging, a version once released) — a code dependency as a `source.remote` instance in its root `index.config.json` (remote-mount skill), never a submodule — repoints its imports, and keeps its own copy until it is green with the dependency declared.
-- A subprocess (`Process_UpstreamAdoption`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- Record it: `workflow_complete` with `node: "Task_Consume"`.
 - next: → `Task_Release` (First release)
 
 ### 7. First release (`Task_Release`)
@@ -96,7 +96,7 @@ Creates the repositories, drains the open PRs until the source settles, seeds th
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
 - What: After the release is live, every published identifier resolves to the file it names.
-- A subprocess (`Process_PublishVerification`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- Record it: `workflow_complete` with `node: "Task_Verify"`.
 - next: → `End_Moved` (Released and dereferencing)
 
 ## Done — Released and dereferencing (`End_Moved`)

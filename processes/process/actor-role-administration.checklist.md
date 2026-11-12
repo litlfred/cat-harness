@@ -68,7 +68,7 @@ Changing who can do what: adding an actor, opening or closing a role to one, gra
 - Who: the `Administrator` lane (role `administrator`).
 - Skill: `continual-progress`.
 - What: Called rather than restated.
-- A subprocess (`Process_CodeChangeReview`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- Record it: `workflow_complete` with `node: "CallActivity_CodeChangeReview"`.
 - next: → `Task_RunKgAudit` (Audit the graph)
 
 ### 6. Audit the graph (`Task_RunKgAudit`)
