@@ -8,106 +8,106 @@
   "dcterms:description": "Provenance moved out of the narrative of feature-staging.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md",
+      "@id": "skills/ui/ui-core/feature-staging.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-1"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-1"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-2"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-2"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-3"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-3"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-4"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-4"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-5"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-5"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-6"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-6"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-7"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-7"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-8"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-8"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-9"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-9"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-10"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-10"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-11"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-11"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-12"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-12"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-13"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-13"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-14"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-14"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-15"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-15"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-16"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-16"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-17"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-17"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-18"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-18"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-19"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-19"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-20"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-20"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-21"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-21"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-22"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-22"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-23"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-23"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-24"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-24"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-25"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-25"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-26"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-26"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-27"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-27"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-28"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-28"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-29"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-29"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-30"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-30"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-31"
+          "@id": "skills/ui/ui-core/feature-staging.md#provenance-31"
         }
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-1",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Which site — the repository the change lives in",
@@ -120,7 +120,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-2",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "1. Feature branch → staging deployment",
@@ -133,7 +133,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-3",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "1. Feature branch → staging deployment",
@@ -147,7 +147,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-4",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "2. The staging banner",
@@ -157,7 +157,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-5",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The facts are fetched, not baked — and that is a storage decision",
@@ -171,28 +171,28 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-6",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The facts are fetched, not baked — and that is a storage decision",
       "prov:value": "The bash version interpolated the branch name into a string;\n  the client builds nodes."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-7",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The facts are fetched, not baked — and that is a storage decision",
       "prov:value": "Those are coupled to the\nlanguage switcher and are `g196`'s remaining half — not fixed here."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-8",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "3. Commit SHA stamping — and the four fields staging must NOT write",
       "prov:value": "`site-chrome/_includes/footer_custom.html` renders\n`short_sha`, `built_at` and `run_url` into the footer of **every** page. A\nfresh `date -u` per run therefore changed every page on every deploy — the\nsame defect as the old bash banner, one include along, and it **survived the\nbanner fix** because it lives in a Jekyll include rather than in the\nworkflow's injection step. Measured on two deploys of one branch three\nminutes apart, both already shipping the constant banner: 613 files,\n1466 insertions, 1465 deletions, **one insertion and one deletion on every\nHTML page**."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-9",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-9",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "3. Commit SHA stamping — and the four fields staging must NOT write",
@@ -202,7 +202,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-10",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-10",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "6. The cap — 3 GB of previews in total, the oldest rotated off",
@@ -220,14 +220,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-11",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-11",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "6. The cap — 3 GB of previews in total, the oldest rotated off",
       "prov:value": "It can reach an OPEN PR's preview; that is the ruling, and why the cost is a\n  404 until the author pushes rather than lost work."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-12",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-12",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "7. The cone — a preview rebuilds only what a changed file can reach",
@@ -241,14 +241,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-13",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-13",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "7. The cone — a preview rebuilds only what a changed file can reach",
       "prov:value": "A preview missing the pages under review misleads a reviewer; an\n  oversized one costs bytes. Those are not symmetric. - **The old instance-prefix match is a floor."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-14",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-14",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "7. The cone — a preview rebuilds only what a changed file can reach",
@@ -261,7 +261,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-15",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-15",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "8. The rate limit — a preview never cancels the main site's Pages build",
@@ -277,7 +277,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-16",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-16",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "8. The rate limit — a preview never cancels the main site's Pages build",
@@ -290,14 +290,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-17",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-17",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "8. The rate limit — a preview never cancels the main site's Pages build",
       "prov:value": "The `cleanup` and `cleanup-dispatch` jobs do NOT pass through the gate yet. They push once per closed PR rather than once per push, so they are far rarer;\ngating them is the next step if cancellations by cleanup are ever measured."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-18",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-18",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "9. Build types — `preview` and `full`",
@@ -310,7 +310,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-19",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-19",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "9. Build types — `preview` and `full`",
@@ -323,7 +323,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-20",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-20",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "pr",
       "cat-harness:section": "Agent workflow",
@@ -333,7 +333,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-21",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-21",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Publishing without a runner — `stage-local.ts`, one command (#2410)",
@@ -346,7 +346,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-22",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-22",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Publishing without a runner — `stage-local.ts`, one command (#2410)",
@@ -356,7 +356,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-23",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-23",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Publishing without a runner — `stage-local.ts`, one command (#2410)",
@@ -370,7 +370,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-24",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-24",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Publishing without a runner — `stage-local.ts`, one command (#2410)",
@@ -383,7 +383,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-25",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-25",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Agent-run repositories — the GitHub Actions path is documented, not run (owner, 2026-10-10)",
@@ -399,7 +399,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-26",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-26",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Agent-run repositories — the GitHub Actions path is documented, not run (owner, 2026-10-10)",
@@ -412,14 +412,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-27",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-27",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Agent-run repositories — the GitHub Actions path is documented, not run (owner, 2026-10-10)",
       "prov:value": "The owner's ruling for now: **skills that drive GitHub Actions are not to be\nimplemented**."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-28",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-28",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "Staleness detection",
@@ -429,21 +429,21 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-29",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-29",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Before you hand a staging URL to a person",
       "prov:value": "The reason it is a rule: an agent relayed one preview URL to the owner **five\ntimes in a session** without checking anything, each time straight off the\nbot's comment. Whether the site served it was never established in either\ndirection."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-30",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-30",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Before you report a staging URL as broken",
       "prov:value": "Full rule and the measured failure:\n[`github-state-inspection`](github-state-inspection.md)."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/feature-staging.md#provenance-31",
+      "@id": "skills/ui/ui-core/feature-staging.md#provenance-31",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "10. Agent-built previews — deferred on the critical path, verified by a full CI rebuild",

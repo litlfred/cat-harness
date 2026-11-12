@@ -85,7 +85,7 @@ bundle exec jekyll serve
 ## Publicar un cambio
 
 Abre el PR en el primer commit y haz push de incrementos pequeños
-(`sdlc/skills/sdlc-core/continual-progress.md`); lleva la rama a un estado limpio, en verde
+(`skills/conduct/conduct-core/continual-progress.md`); lleva la rama a un estado limpio, en verde
 y publicado con `sdlc/skills/sdlc-core/prepare-merge.md`. Mantén el **formalismo del marco de trabajo
 separado del contenido** — el contenido pertenece a su propio repositorio, y cualquier contenido
 en esta documentación es solo ilustrativo.

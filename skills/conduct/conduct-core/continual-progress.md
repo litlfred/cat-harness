@@ -10,7 +10,7 @@ Sibling agents and the author can only coordinate with work they can
 *see*. This skill makes every in-flight task **trackable in real time**:
 the PR is open from the first commit, progress lands as a stream of
 small pushed commits, and the PR body carries a live status checklist.
-It is the visibility complement to [`/coordinate`](coordinate.md) (which
+It is the visibility complement to `/coordinate` (opt-in `cat-harness.sdlc`) (which
 triages *across* PRs); this one governs how *your own* PR stays legible
 while you work.
 
@@ -42,7 +42,7 @@ while you work.
    `<theme>` on `<files>`; flag conflicts"). Don't *stream* comments —
    update the checklist (invariant 3) for routine progress; comment only
    for genuine coordination (overlap, a blocker, a handoff-relevant
-   finding). Defer to [`/coordinate`](coordinate.md) for the full
+   finding). Defer to `/coordinate` (opt-in `cat-harness.sdlc`) for the full
    cross-PR triage protocol. New work posts its intent only after the
    collision review in `coordinate` §"Starting new work" has been run
    and recorded in the workplan work item.
@@ -102,7 +102,7 @@ So:
 - **Take it from the preview's page list**, never from memory or a source
   path: a branch slug is exactly the kind of string that is almost right. The
   rule, and where the list comes from, is
-  [`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md).
+  [`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md).
 - **The root is the right link for precisely one thing** — a change to the
   landing page itself.
 
@@ -199,7 +199,7 @@ than a question:
    `full tier green as judged`. It posts them in its chat and asks the owner
    by card. An approval the owner gives in your own session does not
    authorise a merge. With no live merge manager, follow
-   [`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
+   `merge-manager-watcher` (opt-in `cat-harness.sdlc`) §"The sibling's side:
    find the merge manager first": measure whether one is needed, then
    either manage your own PRs or elect one with your siblings. If your
    request is not acknowledged within the stall window, the merge manager
@@ -211,7 +211,7 @@ than a question:
    every job, then re-label and comment `ready: <new head sha>`.
 
 Wherever a merge does happen, it is the
-[`merge-to-main`](merge-to-main.md) sub-process: evidence on the head, the
+`merge-to-main` (opt-in `cat-harness.sdlc`) sub-process: evidence on the head, the
 owner's authorisation for that merge, recorded, then the merge.
 
 So "merge anyway" in §"What to do with the thing you could not verify" reads
@@ -243,7 +243,7 @@ tier is green, and the hand-off above waits for the full tier.
 The merge manager enforces this rule (owner ruling, 2026-11-07, card "Cancel
 CI"). When the runners are saturated, it closes superseded PRs, cancels stale
 queued runs that never started, and asks the owners of the lowest-priority PRs
-to return them to draft: [`merge-manager-watcher`](merge-manager-watcher.md)
+to return them to draft: `merge-manager-watcher` (opt-in `cat-harness.sdlc`)
 §"Runner relief".
 
 ### A new gate is proven downstream before it lands
@@ -251,7 +251,7 @@ to return them to draft: [`merge-manager-watcher`](merge-manager-watcher.md)
 A PR that adds a gate or `check:*` script to a lower layer passes on its own
 main, says how downstream layers run it, and shows a dry run over a fresh
 folio-assistant mount. Otherwise the next re-pin inherits the breakage
-([`prepare-merge`](prepare-merge.md) §"A new gate in a lower layer must
+(`prepare-merge` (opt-in `cat-harness.sdlc`) §"A new gate in a lower layer must
 pass downstream").
 
 ### One pusher per PR branch
@@ -268,7 +268,7 @@ Do not wait for a dependency to merge before starting work that needs it
 (owner ruling, 2026-11-07: "they dont need to wait for a merge to start
 working on a feature branch needing a dependent feature branch. They can
 stack"). The process is the first row of
-[`merge-request.bpmn`](../../processes/merge-request.bpmn).
+`merge-request.bpmn` (opt-in `cat-harness.sdlc`).
 
 - **In the same repository:** branch from the dependency PR's branch, and
   open a draft PR whose base is that branch. Pull later changes of the
@@ -277,12 +277,12 @@ stack"). The process is the first row of
 - **Across layers:** develop against the dependency's branch laid over a
   fresh mount. A draft may pin the dependency PR's full head SHA (never a
   branch) so that CI sees it
-  ([`remote-mount`](../../../skills/kg/kg-core/remote-mount.md)
+  ([`remote-mount`](../../kg/kg-core/remote-mount.md)
   §"Stacking across layers").
 - **A re-pin is its own PR.** Put the pins, and nothing else, in one PR, and
   stack the work that needs them on it. A fix the re-pin needs lands in
   its owning layer first (owner ruling, 2026-11-07;
-  [`remote-mount`](../../../skills/kg/kg-core/remote-mount.md)
+  [`remote-mount`](../../kg/kg-core/remote-mount.md)
   §"Re-pinning").
 - **Say so:** write `stacked on <repo>#<n>` in the PR body, and list the
   order in the merge request.
@@ -335,10 +335,10 @@ requirement.** So:
 
 ## Relationship to other skills
 
-- [`pr-description`](pr-description.md): what the PR body says ABOVE the
+- `pr-description` (opt-in `cat-harness.sdlc`): what the PR body says ABOVE the
   status checklist (the problem, why, approach, constraints, solution, usage,
   what is not done), for a reader who was not here.
-- [`/coordinate`](coordinate.md) — cross-PR triage (scope map, sibling
+- `/coordinate` (opt-in `cat-harness.sdlc`) — cross-PR triage (scope map, sibling
   intent, cherry-picks, ledger). `continual-progress` keeps *your* PR
   legible so `/coordinate` (yours or a sibling's) has something to triage.
 - **A folio's own `AGENTS.md`** may carry these rules for that repository, and

@@ -23,11 +23,11 @@ feature branch. This is part of every review or feedback session involving
 visual content.
 
 URLs tell the reviewer where to look. The captured, measured pair that goes
-with them is [`before-after-preview`](before-after-preview.md).
+with them is `before-after-preview` (opt-in `cat-harness.sdlc`).
 
 ## The deep-link rule — every request for feedback
 
-The rule now lives in [`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md),
+The rule now lives in [`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md),
 outside the opt-in `sdlc` sub-graph, so every layer has it (owner, 2026-11-10,
 card Q-SG-2 option A). This skill builds the links that rule asks for.
 
@@ -47,7 +47,7 @@ one each caller re-derives.
 | **absent** | the whole preview: every page this branch changed |
 
 Keep the wording **verbatim** wherever the output echoes it — the same rule
-[`goal-review`](goal-review.md) applies to a goal: a request the agent
+`goal-review` (opt-in `cat-harness.sdlc`) applies to a goal: a request the agent
 paraphrased is a different request, and the reader cannot tell which one the
 list was built for.
 
@@ -79,7 +79,7 @@ not dropped.
    the reviewer (sent as images where the surface allows it), not only
    linked. A link asks the reviewer to do the comparison; a pair does it
    for them. How to make a fair pair is
-   [`before-after-preview`](before-after-preview.md). If a pair could not be
+   `before-after-preview` (opt-in `cat-harness.sdlc`). If a pair could not be
    made, say which and why — that is part 5, not a silent gap.
 5. **What could not be checked**, per the three states below.
 
@@ -258,7 +258,7 @@ declaration, not a rule to always carry it.
 
 When the change is a Change Set, do not choose the before/after pages by
 judgement: take them from its rendered list (skill
-[`rendered-impact`](rendered-impact.md)), every content page on it, and say
+`rendered-impact` (opt-in `cat-harness.sdlc`)), every content page on it, and say
 which inputs the renderer could not place. A page the list does not name and
 you add anyway is fine; a page on the list that you leave out is a gap the
 reviewer cannot see.
@@ -433,7 +433,7 @@ at the top applies to every block:
 |---|---|---|---|
 | **Word diff of the source** | the Markdown with removed words struck and added words marked: exactly what the author typed | any kind not listed below | the block's prose |
 | **Inline, as rendered** | the block as a reader sees it now, with the change marked in place | `prose`, `remark`, `definition`, `example` | the block's prose |
-| **Pictures, before and after** | a picture of the block on each side, the changed pixels marked, and the share changed in words ([`visual-diff`](visual-diff.md)) | `table`, `figure`, `diagram`, `equation`, `simulator` | `visual-diff.json` from the `folio-block-screenshots` Tool |
+| **Pictures, before and after** | a picture of the block on each side, the changed pixels marked, and the share changed in words (`visual-diff` (opt-in `cat-harness.sdlc`)) | `table`, `figure`, `diagram`, `equation`, `simulator` | `visual-diff.json` from the `folio-block-screenshots` Tool |
 | **Side by side** | `main` and the preview next to each other, each scrolled to the block | the same kinds, as the second choice when a build published no pictures | a page on either side |
 
 - **Where the data comes from.** The ChangeSet step's `--text-out` writes
@@ -474,7 +474,7 @@ not by cumulative history, so a size warning stays a signal rather than
 becoming a permanent verdict.
 
 **This applies
-[`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md);
+[`deletion-requires-confirmation`](../../conduct/conduct-core/deletion-requires-confirmation.md);
 it does not relax it.** The merge *is* the confirmation: a person decided this
 content belongs on `main`. What the label guards is the case where nobody
 decided anything. Removal is one preview directory at a time.
@@ -501,7 +501,7 @@ nothing either** — a re-run replays the stored event payload, which still
 carries no label. So for an orphan the health sweep's
 `staging-preview-orphans` finding names, option 2 is the remedy. If you find
 yourself reaching for a hand-pushed `gh-pages` commit instead, stop: that is the unilateral removal
-[`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md) exists to
+[`deletion-requires-confirmation`](../../conduct/conduct-core/deletion-requires-confirmation.md) exists to
 stop, and option 2 exists so you do not have to.
 
 ### The cap — 3 GB of previews in total, the oldest rotated off
@@ -531,7 +531,7 @@ What the `stage` job does, on every deploy, before its one push:
 
 **This DOES reach open pull requests.** Under the cap, the oldest preview goes
 whatever its PR's state; the owner's cap is the confirmation
-[`deletion-requires-confirmation`](../../../skills/conduct/conduct-core/deletion-requires-confirmation.md)
+[`deletion-requires-confirmation`](../../conduct/conduct-core/deletion-requires-confirmation.md)
 asks for, given for the class. It is recoverable because a preview is a build,
 not content: **the next push to that PR's branch re-stages it**, and the run
 that re-stages it can never rotate it off. So when a reviewer's preview link
@@ -674,4 +674,4 @@ composing it from the source path yields a 404 for a page that is there. From
 an agent container a `curl` against a Pages URL fails on the proxy regardless,
 so a failed fetch is not evidence either way.
 
-Full rule: [`github-state-inspection`](github-state-inspection.md).
+Full rule: `github-state-inspection` (opt-in `cat-harness.sdlc`).

@@ -483,7 +483,7 @@ harness git instructions). Do not include the model identifier in the PR.
   green on every job: mark the PR Ready for review, add the label
   `ready-to-merge`, and comment `ready: <head sha>`. The Merge Steward session
   brings `main` in, regenerates and merges. If it reports red: fix, then
-  re-label. The policy is in [`continual-progress`](continual-progress.md)
+  re-label. The policy is in [`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md)
   §"Green means handed to the Merge Steward".
 - **Check the change against the skills that govern it before calling it
   ready**, an agent's PR above all. Green CI says the code does what its

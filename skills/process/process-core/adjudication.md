@@ -207,7 +207,7 @@ settle has no way to say who decided.
 
 | store | holds | skill |
 |---|---|---|
-| `todos/feedback/` | a person's feedback ON content — the **intake** | [`todo-review`](../../../skills/authoring/authoring-core/todo-review.md) |
+| `todos/feedback/` | a person's feedback ON content — the **intake** | [`todo-review`](../../authoring/authoring-core/todo-review.md) |
 | `test/attestations/block-qa/` | the adjudicated (non-script) reviewer entries per criterion — the **record**, on `main` | the `qa-*` family; schema `qa-attestations/v1` |
 | `test/results/block-qa/` | the derived report, which keeps a **projection** composed from the store; its record is on the `qa-reports` branch | the `qa-*` family |
 | `beans/` | the work plan | `todo-manager` (opt-in `cat-harness.work-plan`) |
@@ -221,7 +221,7 @@ from `todo-manager` and is silent about verdicts — is the seam it fits into.
 **The narrative-asserts-code axis.** Whether prose asserts what an artefact
 actually does is a different question, currently answered only for Lean
 (`proof-narrative-lean-equiv`).
-[`code-node-review`](../../../skills/kg/kg-core/code-node-review.md) asks whether a NODE is correct — that
+[`code-node-review`](../../kg/kg-core/code-node-review.md) asks whether a NODE is correct — that
 it declares what it is, that its references resolve — not whether the prose
 matches. This skill does not generalise it.
 
@@ -231,7 +231,7 @@ matches. This skill does not generalise it.
   each is given. Adjudication is what happens when they disagree.
 - `q-usage-watcher` (the science layer) — the
   dispensation mechanism, documented where it was first applied.
-- [`code-node-review`](../../../skills/kg/kg-core/code-node-review.md), `voice-editorial-review` (opt-in `cat-harness.editorial`),
+- [`code-node-review`](../../kg/kg-core/code-node-review.md), [`voice-editorial-review`](../../authoring/authoring-core/voice-editorial-review.md),
   `voice-overlay-review` — the reviews that produce
   the findings this settles.
 - `schemas/sdlc/block-qa.ts` — the reviewer kinds, and why a model's own claim is

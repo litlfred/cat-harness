@@ -344,7 +344,7 @@ Before any round trip, every gate passes:
 
 ### The untainted round trip, as run
 
-The discipline is `untainted-verification` (opt-in `cat-harness.sdlc`)
+The discipline is [`untainted-verification`](../../../skills/process/process-core/untainted-verification.md)
 and §"The agentic round trip" below; this is how it was run across several
 locales.
 

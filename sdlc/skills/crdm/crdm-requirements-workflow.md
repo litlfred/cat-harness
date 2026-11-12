@@ -509,7 +509,7 @@ For each work item:
    PR that will not be merged is open, the user adds the `staging:cleanup`
    label; **once it is closed the label can no longer reach it**, and removal
    is a `feature-staging.yml` dispatch the user runs with `cleanup_slug` and a
-   matching `cleanup_confirm` (see [`staging-review`](../sdlc-core/staging-review.md)).
+   matching `cleanup_confirm` (see [`staging-review`](../../../skills/ui/ui-core/staging-review.md)).
    **Never remove a staging preview any other way, and never on your own
    initiative.**
 
@@ -543,7 +543,7 @@ When a round of implementation is complete (one or more work items resolved):
 - [CRDM methodology page](https://litlfred.github.io/folio-assistant/docs/cat-harness/process/crdm-methodology.html) — the documentation page for users
 - [`interaction-modality.md`](../../../skills/conduct/conduct-core/interaction-modality.md) §4.1 — context before the question; the ordering rule this workflow runs on
 - [`crdm-detect.md`](crdm-detect.md) — feature-request detection skill
-- [`staging-review.md`](../sdlc-core/staging-review.md) — before/after staging comparison skill
+- [`staging-review.md`](../../../skills/ui/ui-core/staging-review.md) — before/after staging comparison skill
 - `todo-manager.md` (opt-in `cat-harness.work-plan`) — work item creation protocol
 - `bean-coordination.md` — cross-session work item coordination
 - [`coordinate.md`](../sdlc-core/coordinate.md) — session coordination

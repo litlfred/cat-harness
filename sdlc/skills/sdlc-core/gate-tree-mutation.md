@@ -36,7 +36,7 @@ before you decide which one you have.**
 
 ## Cause 1 — you changed an input and did not regenerate
 
-The ordinary case, and [`platform-gates`](platform-gates.md) §"What a `*:check`
+The ordinary case, and [`platform-gates`](../../../skills/process/process-core/platform-gates.md) §"What a `*:check`
 failure is telling you" is the whole of it: run the generator, commit its output,
 and run the gates **after** the last edit. Never hand-edit the artefact into
 agreement.
@@ -140,8 +140,8 @@ this: the gate is telling you something new, and cause 1 is the likelier answer.
 
 | | |
 |---|---|
-| [`platform-gates`](platform-gates.md) | which gates to run, and cause 1 in full |
+| [`platform-gates`](../../../skills/process/process-core/platform-gates.md) | which gates to run, and cause 1 in full |
 | `scripts/gate-tree-guard.ts` | why the detector cannot live in a gate |
 | `pipeline/qa-utils.ts` | `saveQaScriptSidecar`'s comparison |
 | [`generalise-the-fix`](generalise-the-fix.md) | the same shape one level up: fix the class, not the instance |
-| [`upstream-version-adoption`](upstream-version-adoption.md) | moving a pin forward — a person's decision, never a gate's |
+| [`upstream-version-adoption`](../../../skills/process/process-core/upstream-version-adoption.md) | moving a pin forward — a person's decision, never a gate's |

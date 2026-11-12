@@ -60,7 +60,7 @@ looks finished.
 
 | # | stage | lane | done when |
 |---|---|---|---|
-| 0 | Brief, claim the work item (`opening-brief` (opt-in `cat-harness.sdlc`)) | `authoring-agent` | work item claimed with `bun run cat beans:claim` |
+| 0 | Brief, claim the work item ([`opening-brief`](../../conduct/conduct-core/opening-brief.md)) | `authoring-agent` | work item claimed with `bun run cat beans:claim` |
 | 1 | **Declare it in place** | `authoring-agent` | the declaration parses; `instance-repositories.test.ts` green |
 | 2 | **Grow it in place** | `authoring-agent` | the content type's own gates |
 | 3 | **Push generic down** | `platform-authoring-agent` | `check:import-direction`, `check:reference-direction`, `check:process-bindings` add nothing |

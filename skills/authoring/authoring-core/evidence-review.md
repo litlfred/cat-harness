@@ -11,7 +11,7 @@ description: >-
 
 > Skill id: `evidence-review` · Package: `folio-core`
 
-`untainted-verification` (opt-in `cat-harness.sdlc`)
+[`untainted-verification`](../../process/process-core/untainted-verification.md)
 states a generic discipline. Evidence review — the appraisal of the evidence
 behind a recommendation — is one instance of it; the translation round trip is
 another. Two unrelated instances are evidence that the discipline is generic,

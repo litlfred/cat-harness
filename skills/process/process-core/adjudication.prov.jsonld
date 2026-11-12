@@ -8,46 +8,46 @@
   "dcterms:description": "Provenance moved out of the narrative of adjudication.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md",
+      "@id": "skills/process/process-core/adjudication.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-1"
+          "@id": "skills/process/process-core/adjudication.md#provenance-1"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-2"
+          "@id": "skills/process/process-core/adjudication.md#provenance-2"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-3"
+          "@id": "skills/process/process-core/adjudication.md#provenance-3"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-4"
+          "@id": "skills/process/process-core/adjudication.md#provenance-4"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-5"
+          "@id": "skills/process/process-core/adjudication.md#provenance-5"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-6"
+          "@id": "skills/process/process-core/adjudication.md#provenance-6"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-7"
+          "@id": "skills/process/process-core/adjudication.md#provenance-7"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-8"
+          "@id": "skills/process/process-core/adjudication.md#provenance-8"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-9"
+          "@id": "skills/process/process-core/adjudication.md#provenance-9"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-10"
+          "@id": "skills/process/process-core/adjudication.md#provenance-10"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-11"
+          "@id": "skills/process/process-core/adjudication.md#provenance-11"
         }
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-1",
+      "@id": "skills/process/process-core/adjudication.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Adjudication — judgement, when the mechanism ran out of facts",
@@ -62,14 +62,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-2",
+      "@id": "skills/process/process-core/adjudication.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Why this exists",
       "prov:value": "The first two are the same sentence twice, written by different hands about\ndifferent subjects. The last two are an HTTP route and a schema that share no\ncode with the diagrams and arrived at the diagrams' rule anyway.\n\n**\"Named nowhere\" would be the easy summary and it is wrong.** It is named\nonce — `translation-workflow.bpmn`'s `Lane_Reviewer` documentation states the\nentry condition, the accountability and the dispensation rule together:\n\n> *\"a reviewer reports, an adjudicator settles. The word is used here because\n> the passage reaching this lane is one where a checker and a translator\n> disagree, and somebody has to choose between them WITH a reason. That reason\n> is the record, not the choice.\"*\n\nWhich is the whole skill, in one lane's documentation, in one diagram, reachable\nonly by somebody already reading that diagram. **The gap was never vocabulary.\nIt was that nothing generalised the one statement of it**, so each new subject\nrestated it and the eighth would have restated it again."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-3",
+      "@id": "skills/process/process-core/adjudication.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Why this exists",
@@ -84,7 +84,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-4",
+      "@id": "skills/process/process-core/adjudication.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "One judgement, six questions — and the split that followed",
@@ -95,7 +95,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-5",
+      "@id": "skills/process/process-core/adjudication.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "One judgement, six questions — and the split that followed",
@@ -105,21 +105,21 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-6",
+      "@id": "skills/process/process-core/adjudication.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "What that means when you call it",
       "prov:value": "- **Declaring nothing** is legal and **reported** by `check:workflow-refs` —\n  the four callers above are in that state on purpose. What each should ask is\n  open, and guessing would make an undecided thing look checked."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-7",
+      "@id": "skills/process/process-core/adjudication.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "What that means when you call it",
       "prov:value": "**a judgement\nnobody wrote down is indistinguishable from a checker that was never run.** It\nis `relaxable=\"false\"` wherever it lands, which is now with the caller that\nrecords, because the entry written depends on what was adjudicated."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-8",
+      "@id": "skills/process/process-core/adjudication.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The dispensation is a VERSION, never a precedent",
@@ -134,21 +134,21 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-9",
+      "@id": "skills/process/process-core/adjudication.md#provenance-9",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Who adjudicates — a skill that spreads, an entitlement that does not",
       "prov:value": "**Plural by design**: the owner's *\"Judgment of >= 1 Feedback Provider's feedback\"*. |\n| `adjudicator` (role) | settles it, with a reason."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-10",
+      "@id": "skills/process/process-core/adjudication.md#provenance-10",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Who adjudicates — a skill that spreads, an entitlement that does not",
       "prov:value": "`translation-adjudicator` is the first specialisation and was the only\nadjudicator role before this skill existed."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/adjudication.md#provenance-11",
+      "@id": "skills/process/process-core/adjudication.md#provenance-11",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "What this does NOT cover",

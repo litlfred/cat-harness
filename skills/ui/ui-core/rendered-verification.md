@@ -6,7 +6,7 @@ user_invocable: true
 
 # /rendered-verification — look at it, then send the picture
 
-[`continual-progress`](continual-progress.md) holds that **a human cannot
+[`continual-progress`](../../conduct/conduct-core/continual-progress.md) holds that **a human cannot
 assess a rendered artefact from a description of it.** Neither can the agent
 that wrote it. A stylesheet is not a rendering, a generator's output is not a
 page, and a green gate set is not a screenshot.
@@ -69,7 +69,7 @@ origin/main --detach` is the cheap way; symlink `node_modules` and the docs
 `vendor`/`.bundle` into it rather than re-installing.
 
 When the pair goes to a **reviewer** rather than confirming the change to
-yourself, [`before-after-preview`](before-after-preview.md) governs it:
+yourself, `before-after-preview` (opt-in `cat-harness.sdlc`) governs it:
 one build with one variable where possible, stable capture, a *k of n* count
 with its method, the status line, and where the preview sits in the review
 processes. It also covers papers, FHIR IGs and slide decks.

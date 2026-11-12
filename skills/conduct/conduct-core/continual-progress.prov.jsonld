@@ -8,49 +8,49 @@
   "dcterms:description": "Provenance moved out of the narrative of continual-progress.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md",
+      "@id": "skills/conduct/conduct-core/continual-progress.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-1"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-1"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-2"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-2"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-3"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-3"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-4"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-4"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-5"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-5"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-6"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-6"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-7"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-7"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-8"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-8"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-9"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-9"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-10"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-10"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-11"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-11"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-12"
+          "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-12"
         }
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-1",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "proposal",
       "cat-harness:section": "Bean edits are pushed to the state branch, not the PR",
@@ -64,7 +64,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-2",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The fifth invariant, and the one agents get wrong",
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-3",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Link the PAGE, never the site root",
@@ -90,7 +90,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-4",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "A pipe discards the exit code — so a piped run cannot verify anything",
@@ -104,7 +104,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-5",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "A template is not a page — verify the BUILD, not the source of it",
@@ -117,14 +117,14 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-6",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "A template is not a page — verify the BUILD, not the source of it",
       "prov:value": "The general form of the gap now has a check — `check:escaped-markup`, run in\n`docs-site.yml` against the assembled `_site/`, because that is the only place\nthe answer exists. But a check written after the fact does not retire the rule:\nthe next defect of this shape will be in whatever the build does that no source\ngate can see."
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-7",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Green means handed to the Merge Steward — an agent never merges to `main` here",
@@ -138,7 +138,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-8",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Pace the ready marking — the runner pool is shared",
@@ -152,7 +152,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-9",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-9",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Pace the ready marking — the runner pool is shared",
@@ -165,7 +165,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-10",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-10",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Two green PRs can merge into a red main, and the answer is to fix forward",
@@ -180,7 +180,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-11",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-11",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "issue",
       "cat-harness:section": "Two green PRs can merge into a red main, and the answer is to fix forward",
@@ -191,7 +191,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/continual-progress.md#provenance-12",
+      "@id": "skills/conduct/conduct-core/continual-progress.md#provenance-12",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Two green PRs can merge into a red main, and the answer is to fix forward",

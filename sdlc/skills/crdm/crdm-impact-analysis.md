@@ -129,5 +129,5 @@ rg "CONCEPT" cat-harness/docs/
 - [`crdm-requirements-workflow`](crdm-requirements-workflow.md) — Phase 4
 - [`crdm-requirements-template`](crdm-requirements-template.md) — Phase 3 feeds this
 - [`crdm-detect`](crdm-detect.md) — detection
-- [`../../sdlc/skills/sdlc-core/staging-review.md`](../sdlc-core/staging-review.md) — staging
+- [`skills/ui/ui-core/staging-review.md`](../../../skills/ui/ui-core/staging-review.md) — staging
 - `../../work-plan/skills/work-plan/todo-manager.md` (opt-in `cat-harness.work-plan`) — work items
