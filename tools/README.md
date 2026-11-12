@@ -86,8 +86,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`pages-index/`](pages-index/) | _nothing declares what this holds_ | |
 | [`pages-publish/`](pages-publish/) | _nothing declares what this holds_ | |
 | [`pdf-cover/`](pdf-cover/) | _nothing declares what this holds_ | |
-| [`pdf-viewer-embed/`](pdf-viewer-embed/) | _nothing declares what this holds_ | |
-| [`pdf-viewer-install/`](pdf-viewer-install/) | _nothing declares what this holds_ | |
 | [`pin-actions/`](pin-actions/) | _nothing declares what this holds_ | |
 | [`pin-spdx-license-list/`](pin-spdx-license-list/) | _nothing declares what this holds_ | |
 | [`processes-viewer/`](processes-viewer/) | _nothing declares what this holds_ | |
