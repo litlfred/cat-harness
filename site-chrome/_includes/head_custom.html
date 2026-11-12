@@ -713,6 +713,10 @@
   recipe (cat-harness-tools/src/core/edit-links.ts, bean v433): links carry their
   facts and this builds the hrefs. {%- endcomment -%}
 <script src="{{ '/assets/js/edit-links.js' | relative_url }}?v={{ '/assets/js/edit-links.js' | fa_asset_version }}" defer></script>
+{%- comment -%} Syntax colours for JSON and XML blocks, including those a script fills
+  after load (cat-harness#1241). It loads highlight.js and its stylesheet only on a
+  page that shows such a block. {%- endcomment -%}
+<script src="{{ '/assets/js/code-highlight.js' | relative_url }}?v={{ '/assets/js/code-highlight.js' | fa_asset_version }}" defer></script>
 
 {%- comment -%}
   The work-plan dashboard. SELF-MOUNTING on any page carrying
