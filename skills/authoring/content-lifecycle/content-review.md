@@ -30,7 +30,7 @@ Formal review and approval of validated content before publication.
 
 ## Outputs
 Findings and a decision — two things, not one. See
-`decision-audit` (opt-in `cat-harness.sdlc`) and
+[`decision-audit`](../../process/process-core/decision-audit.md) and
 [`schemas/sdlc/qa-review.ts`](https://github.com/litlfred/cat-harness-tools/blob/main/schemas/sdlc/qa-review.ts).
 
 - **Findings** — one per observation, each carrying the axis this reviewer can

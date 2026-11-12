@@ -19,9 +19,9 @@ user_invocable: true
 > Skill id: `before-after-preview` · Package: `sdlc-core` · Worked example: the
 > Folio tab
 
-[`continual-progress`](continual-progress.md) holds that **a human cannot
+[`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) holds that **a human cannot
 assess a rendered artefact from a description of it.**
-[`rendered-verification`](rendered-verification.md) adds that the agent that
+[`rendered-verification`](../../../skills/ui/ui-core/rendered-verification.md) adds that the agent that
 wrote the change cannot either. This skill is about **what goes to the
 reviewer**: a before/after preview that is a fair comparison, carries a number,
 and can be read without opening anything else. It covers every content type
@@ -33,9 +33,9 @@ This skill does not replace any of these. It tells you which one to use.
 
 | skill | what it answers | use it for |
 |---|---|---|
-| [`rendered-verification`](rendered-verification.md) | *does it work?* — the agent checks in a browser | the tools: computed style, hit tests, `pageerror`, and asserting that the page actually loaded its styles |
+| [`rendered-verification`](../../../skills/ui/ui-core/rendered-verification.md) | *does it work?* — the agent checks in a browser | the tools: computed style, hit tests, `pageerror`, and asserting that the page actually loaded its styles |
 | [`visual-diff`](visual-diff.md) | *how much of this figure changed?* | automatic pixel pictures of changed blocks on a folio's review page |
-| [`staging-review`](staging-review.md) | *where do I look?* | the before (main) and after (staging) URL pairs, and what to review at each |
+| [`staging-review`](../../../skills/ui/ui-core/staging-review.md) | *where do I look?* | the before (main) and after (staging) URL pairs, and what to review at each |
 | **this skill** | *is the reviewer's comparison fair, measured and findable?* | the preview itself, for any content type, and where it fits in the processes |
 
 If the change is a folio block and the staging job already made its pictures,
@@ -46,7 +46,7 @@ behaviour on scroll, a PDF page, an IG page, a slide.
 `branches/<slug>/` previews and rotates the least recently updated off, so a link in a preview can 404 days later
 while the PR is still open. The next push to the branch re-stages it. Where the
 comparison must outlive that, publish the captures themselves (§6) rather than
-only the staging URL. Detail: [`staging-review`](staging-review.md) §"The cap".
+only the staging URL. Detail: [`staging-review`](../../../skills/ui/ui-core/staging-review.md) §"The cap".
 
 **Which pages to picture.** For a Change Set, the pages come from its
 rendered list (skill [`rendered-impact`](rendered-impact.md)), so the "k of n
@@ -75,7 +75,7 @@ silently.
 **Build only the cone.** For any rendered kind, the "after" build need only
 cover what the change can reach: its own files, its generator's import closure,
 and what is derived from those. That is the general rule, written once in
-[`feature-staging`](feature-staging.md) §7. Anything the cone leaves out is
+[`feature-staging`](../../../skills/ui/ui-core/feature-staging.md) §7. Anything the cone leaves out is
 identical to the "before" by construction, so leaving it out loses no
 comparison.
 

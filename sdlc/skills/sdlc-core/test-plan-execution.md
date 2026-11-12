@@ -27,7 +27,7 @@ This skill is the PROCESS. How to write a test is
 [`test-engineer`](test-engineer.md); how a folio's content is tested is
 [`content-test`](../../../skills/authoring/content-lifecycle/content-test.md); why the
 checker sees only a controlled context is
-[`untainted-verification`](untainted-verification.md); how a signature is
+[`untainted-verification`](../../../skills/process/process-core/untainted-verification.md); how a signature is
 routed by reach is [`qa-report-signing`](qa-report-signing.md). Read those for
 their halves — this one does not restate them.
 

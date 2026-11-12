@@ -114,5 +114,5 @@ A requirements document is governed as a **`RequirementSet`** (`reqset:<slug>`):
 - [`crdm-requirements-template`](../../../skills/process/crdm/crdm-requirements-template.md) — CRDM Phase 3
   template and elicitation guide.
 - [`spec-kit`](../spec-kit/spec-kit.md) — Platform feature spec-driven development.
-- [`adjudication`](adjudication.md) — Settle review disagreements and record human sign-offs.
+- [`adjudication`](../../../skills/process/process-core/adjudication.md) — Settle review disagreements and record human sign-offs.
 - `todo-manager` (opt-in `cat-harness.work-plan`) — Work item work-plan management and claim discipline.

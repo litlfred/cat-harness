@@ -21,7 +21,7 @@ https://<owner>.github.io/<repo>/branches/<branch-slug>/
 ```
 
 **A preview is the general publication step with a different root.** The push
-itself is [`render-kg-to-cdn`](../../../skills/process/workflow/render-kg-to-cdn.md) with
+itself is [`render-kg-to-cdn`](../../process/workflow/render-kg-to-cdn.md) with
 `branches/<branch-slug>/` as the publication root URL and the `gh-pages` Tool as
 the target — the same step a release takes with the site root. What this skill
 owns is everything around that call: the slug, the banner and `staging.json`,
@@ -572,7 +572,7 @@ an agent container a `curl` against a Pages URL fails on the proxy regardless,
 so a failed fetch is not evidence either way.
 
 Full rule:
-[`github-state-inspection`](github-state-inspection.md).
+`github-state-inspection` (opt-in `cat-harness.sdlc`).
 
 ## Staging links
 
@@ -581,4 +581,4 @@ review or sign-off carries it: one deep link per changed page, to the anchor
 where the change sits, with the same page on main as *before*. Where the skill
 declares an output contract, they go in its `stagingLinks` field. The rule, and
 where the page list comes from:
-[`feedback-deep-links`](../../../skills/authoring/content-lifecycle/feedback-deep-links.md).
+[`feedback-deep-links`](../../authoring/content-lifecycle/feedback-deep-links.md).

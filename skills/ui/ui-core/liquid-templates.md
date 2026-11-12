@@ -22,7 +22,7 @@ which one you are writing for before you write a line:
 | lives in | `templates/readme/` beside the writer, in the tools repository (`bootstrap-tools/scripts/templates/readme/`) | `cat-harness/docs/_includes/` — just-the-docs' extension points (`head_custom.html`, `footer_custom.html`, `nav_footer_custom.html`) plus our own |
 | output | `<directory>/README.md`, **committed**, read on GitHub where no Liquid runs | `_site/`, **never committed**, published to Pages |
 | data | only what the generator passes: `subgraph`, `instance`, `kg`, `files`, `subdirs`, `summary` | `site`, `page`, `include`, and `_data/*.json` written by the pipeline |
-| verified by | `bun run cat readme:subgraphs:check` — the diff is the output | building the site: `rendered-verification` (opt-in `cat-harness.sdlc`), `bun run cat preview:site` |
+| verified by | `bun run cat readme:subgraphs:check` — the diff is the output | building the site: [`rendered-verification`](rendered-verification.md), `bun run cat preview:site` |
 
 ## Where a template lives
 

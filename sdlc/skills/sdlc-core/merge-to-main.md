@@ -100,7 +100,7 @@ said (its `release` input is false).
 ## A repository with no CI is not green (STRICT)
 
 **`none` means nothing tested this head.** It is the third state that
-[`ci-health`](ci-health.md) and `prepare-merge` §"NO CHECKS IS NOT GREEN"
+[`ci-health`](../../../skills/process/process-core/ci-health.md) and `prepare-merge` §"NO CHECKS IS NOT GREEN"
 describe, reached by a different route. There, runs were owed and did not
 appear. Here, the repository declares no workflow, so no run is owed and none
 will ever appear. Zero runs, zero failures: "nothing red" is true and tells
@@ -254,7 +254,7 @@ commit unless told otherwise. **Never delete the branch**
 ## After the merge
 
 1. **`Task_ConfirmBase`: read `main`'s CI on the merge commit.** If it is red,
-   fix forward ([`continual-progress`](continual-progress.md) §"Two green PRs
+   fix forward ([`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) §"Two green PRs
    can merge into a red main"). With no CI, report "not verified: no CI". Do
    not report it as green.
 2. **`Task_Republish`: rebuild and republish the repository's site.** A

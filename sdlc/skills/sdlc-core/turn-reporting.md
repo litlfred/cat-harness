@@ -12,7 +12,7 @@ consulted: true
 # Turn reporting — say which bean you are on, every turn
 
 This skill governs what you say **during and after** the work;
-[`opening-brief.md`](opening-brief.md) governs what you say before starting
+[`opening-brief.md`](../../../skills/conduct/conduct-core/opening-brief.md) governs what you say before starting
 it; `todo-manager.md` (opt-in `cat-harness.work-plan`)
 keeps the work item mechanics.
 
@@ -127,7 +127,7 @@ inference from a remote name.
 
 A human cannot assess a rendered artefact from a description, and
 withholding it makes assessment harder rather than safer
-([`continual-progress`](continual-progress.md)). **A root-only link is a
+([`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md)). **A root-only link is a
 partial withholding** — the artefact is technically reachable and practically
 hidden.
 

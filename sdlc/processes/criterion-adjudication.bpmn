@@ -36,7 +36,7 @@
        on WHAT WAS ASKED lives with the asker, and this is the asker for
        the QA-criterion question.
 
-       Skill: sdlc/skills/sdlc-core/adjudication.md
+       Skill: skills/process/process-core/adjudication.md
        ═══════════════════════════════════════════════════════════ -->
 
   <bpmn:collaboration id="Collab_CriterionAdjudication">

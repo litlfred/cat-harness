@@ -64,7 +64,7 @@ state rarer. It never converts it into a pass or a finding.
 
 A check that retried and still could not look has **not** established
 anything, and must not render as clean
-(`ci-health` (opt-in `cat-harness.sdlc`)).
+([`ci-health`](../../process/process-core/ci-health.md)).
 
 ## Jitter is not decoration here
 

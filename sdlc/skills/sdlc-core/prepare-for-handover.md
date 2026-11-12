@@ -59,7 +59,7 @@ git -C <worktree> log --oneline @{u}..HEAD            # must print nothing
 - If a push is refused (permissions, a protected branch), stop and record the
   refusal in the report. Do not route around it.
 - **Open a draft PR** for a branch that has none
-  ([`continual-progress`](continual-progress.md)), so the work is findable
+  ([`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md)), so the work is findable
   from the PR list and not only from `git ls-remote`.
 
 ## 3. Note what cannot be pushed

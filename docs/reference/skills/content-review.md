@@ -28,7 +28,7 @@ Input schema for formal content review and approval workflow.
 
 ## Output
 
-What a review produces: findings, a decision about them, and the audit notes that justify it. A finding is an observation; a decision is an act about a set of findings; neither determines the other. Mirrors schemas/sdlc/qa-review.ts — see sdlc/skills/sdlc-core/decision-audit.md.
+What a review produces: findings, a decision about them, and the audit notes that justify it. A finding is an observation; a decision is an act about a set of findings; neither determines the other. Mirrors schemas/sdlc/qa-review.ts — see skills/process/process-core/decision-audit.md.
 
 | Field | Type | Required | Description |
 |-------|------|----------|-------------|

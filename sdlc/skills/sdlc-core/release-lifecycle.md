@@ -132,6 +132,6 @@ The process is identical; the artefacts differ.
 - [`package-release.md`](package-release.md) — release mechanics
 - [`code-review-process.md`](code-review-process.md) — review in release context
 - [`crdm-requirements-workflow.md`](../../../skills/process/crdm/crdm-requirements-workflow.md) — Phase 6 feeds into release
-- [`staging-review.md`](staging-review.md) — staging previews for RCs
+- [`staging-review.md`](../../../skills/ui/ui-core/staging-review.md) — staging previews for RCs
 - [`release-epic-planning.md`](release-epic-planning.md) — epic structure and readiness checklist
 - `todo-manager.md` (opt-in `cat-harness.work-plan`) — work item management within epics

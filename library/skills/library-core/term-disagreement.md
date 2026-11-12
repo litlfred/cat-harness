@@ -28,7 +28,7 @@ outcome writes, as data. This skill says when to use it and how to choose.
    CONTENT decision: what the corpus should say.
 2. **Two judges disagree about a mapping.** That includes a person who
    thinks an automated match is wrong. It is
-   `adjudication` (opt-in `cat-harness.sdlc`) plus
+   [`adjudication`](../../../skills/process/process-core/adjudication.md) plus
    `untainted-verification`,
    and it is **not built**; it waits until something maps. Do not answer it
    with an outcome from this skill:

@@ -13,7 +13,7 @@ governs:
 # Two-phase move
 
 > Skill id: `two-phase-move` · Package: `sdlc-core`
-> Related: [`kg-separation`](../../../skills/kg/graph-management/kg-separation.md) (the post-move sweep), [`upstream-version-adoption`](upstream-version-adoption.md)
+> Related: [`kg-separation`](../../../skills/kg/graph-management/kg-separation.md) (the post-move sweep), [`upstream-version-adoption`](../../../skills/process/process-core/upstream-version-adoption.md)
 
 ## Why
 

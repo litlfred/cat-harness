@@ -90,7 +90,7 @@ statement about the **evidence**, not about the commit:
 
 The merge policy counts it like any job: a PR is handed to the Merge
 Steward only when CI is green on **every** job
-([`continual-progress`](continual-progress.md) §"Green means handed to the
+([`continual-progress`](../../conduct/conduct-core/continual-progress.md) §"Green means handed to the
 Merge Steward").
 
 ## The report answers about the default branch — and Pages is not on it
@@ -289,6 +289,6 @@ dispatched for a PR, it commits the regeneration to that PR's branch, and the
 release build regenerates into what it publishes (`merge-queue.md`
 §"Where derived artefacts are regenerated"). When inspecting CI health on `main`, do not treat an accidental green as
 evidence of health: verify that post-merge checks run and derive their state
-consistently. Full details in [`merge-queue.md`](merge-queue.md) §"The accidental-repair pattern".
+consistently. Full details in `merge-queue.md` (opt-in `cat-harness.sdlc`) §"The accidental-repair pattern".
 
 

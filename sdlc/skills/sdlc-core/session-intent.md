@@ -247,7 +247,7 @@ or partial result):
 ## See also
 
 - `todo-manager` (the work-plan rules)
-- [`continual-progress`](continual-progress.md) (the ALWAYS-PR rule)
+- [`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) (the ALWAYS-PR rule)
 - [`coordinate`](coordinate.md) (sibling-PR coordination)
 - [`watch`](watch.md) (main-watching)
 - [`pending-show`](pending-show.md) (showing current pending)

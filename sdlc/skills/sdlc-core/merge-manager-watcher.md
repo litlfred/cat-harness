@@ -81,7 +81,7 @@ both of these hold:
 2. **The merges are slowing each other down**, which shows as either of:
    - the runners are contended: more than about 10 queued runs on a
      repository (the pacing threshold in
-     [`continual-progress`](continual-progress.md) §"Pace the ready
+     [`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) §"Pace the ready
      marking"), or the oldest queued run is more than about 30 minutes old;
    - PRs keep conflicting with or superseding each other: duplicate re-pins,
      or rebases that invalidate each other's CI.
@@ -424,7 +424,7 @@ ledger entry.
 ## Runner relief
 
 The merge manager enforces the pacing rule of
-[`continual-progress`](continual-progress.md) §"Pace the ready marking"
+[`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) §"Pace the ready marking"
 (owner ruling, 2026-11-07, card "Cancel CI"). When the runners are
 saturated, it:
 

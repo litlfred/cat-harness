@@ -83,7 +83,7 @@ bundle exec jekyll serve
 ## Shipping a change
 
 Open the PR at the first commit and push small increments
-(`sdlc/skills/sdlc-core/continual-progress.md`); take the branch to a clean,
+(`skills/conduct/conduct-core/continual-progress.md`); take the branch to a clean,
 green, pushed state with `sdlc/skills/sdlc-core/prepare-merge.md`. Keep the **formalism of the framework
 separate from content** — content belongs in its own repository, and any content
 in these docs is illustrative only.

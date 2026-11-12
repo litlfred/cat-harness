@@ -6,7 +6,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 _258 skills in 22 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
-**`skills/authoring/authoring-core/`** (12)
+**`skills/authoring/authoring-core/`** (14)
 
 | Skill | What it is for |
 |---|---|
@@ -22,6 +22,8 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`technical-documentation`](skills/authoring/authoring-core/technical-documentation.md) | Write and review technical documentation of standards, software and knowledge assets as an SDO writes. |
 | [`todo-review`](skills/authoring/authoring-core/todo-review.md) | Monitor and triage open feedback across all content blocks. |
 | [`uses-editorial-review`](skills/authoring/authoring-core/uses-editorial-review.md) | Adjudicate `uses-editorial-completeness` — read a block as a reader would and judge whether its `uses[]` is complete and genuinely expository. |
+| [`voice-editorial-review`](skills/authoring/authoring-core/voice-editorial-review.md) | Adjudicate a `voice-*` finding — read the flagged passage as a reader of THAT genre would and decide whether the register is wrong, the criterion is out of scope, or the block is a stated exception. |
+| [`voice-overlay-review`](skills/authoring/authoring-core/voice-overlay-review.md) | Review a block against the active voices' rules and record the verdict on its QA sidecar. |
 
 **`skills/authoring/content-lifecycle/`** (6)
 
@@ -34,7 +36,7 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`evidence-appraisal`](skills/authoring/content-lifecycle/evidence-appraisal.md) | Evidence Appraisal |
 | [`feedback-deep-links`](skills/authoring/content-lifecycle/feedback-deep-links.md) | The deep-link rule for every request for feedback, review, sign-off or acceptance on something rendered: carry the staging preview, one deep link per changed page with the same page on main, pages… |
 
-**`skills/conduct/conduct-core/`** (18)
+**`skills/conduct/conduct-core/`** (20)
 
 | Skill | What it is for |
 |---|---|
@@ -43,12 +45,14 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`ask-the-person`](skills/conduct/conduct-core/ask-the-person.md) | Put one question or decision to a person: the full question, context and every option written in the chat FIRST, then the same options as a tappable card. |
 | [`communication-language`](skills/conduct/conduct-core/communication-language.md) | Determine the language an agent SPEAKS IN — the language of a turn, as against the language of content. |
 | [`confirmation-waiver`](skills/conduct/conduct-core/confirmation-waiver.md) | A human may waive a confirmation they are owed — for a session, for a process run, or until a stated time. |
+| [`continual-progress`](skills/conduct/conduct-core/continual-progress.md) | Make in-flight work trackable by others in real time — open a PR from the first commit, push small coherent increments continuously (never hoard uncommitted work), keep a live status checklist in… |
 | [`decision-comparison`](skills/conduct/conduct-core/decision-comparison.md) | Lay a decision out as a comparison before you ask it — what each option does, its pro, its con, what it changes downstream, and how reversible it is — in the prose that precedes the question, never… |
 | [`deletion-requires-confirmation`](skills/conduct/conduct-core/deletion-requires-confirmation.md) | An agent never removes a durable artefact on its own initiative. |
 | [`getting-started`](skills/conduct/conduct-core/getting-started.md) | Triage what a person means when they ask to create a folio, and route them. |
 | [`hand-back-to-discussion`](skills/conduct/conduct-core/hand-back-to-discussion.md) | A sibling agent, spawned during or working beside a live agent-human discussion, hands every card, question, decision, result, blocker or piece of context back to the discussion agent that is… |
 | [`harness-projections`](skills/conduct/conduct-core/harness-projections.md) | Who may write under `.claude/`, and when. |
 | [`interaction-modality`](skills/conduct/conduct-core/interaction-modality.md) | Establish how to talk to the person in front of you before deciding what to say — audio, ordinary chat, selectable options for limited hand function, large-type for low vision, plain language — and… |
+| [`opening-brief`](skills/conduct/conduct-core/opening-brief.md) | Brief a work item or a topic BEFORE touching anything: what you are doing and why it is worth doing, what you already know and with what provenance, how you plan to do it and what would falsify the… |
 | [`repo-conversion`](skills/conduct/conduct-core/repo-conversion.md) | Lay folio-assistant over a repository that already exists, without losing or silently moving what is in it. |
 | [`retry-backoff`](skills/conduct/conduct-core/retry-backoff.md) | Every error gets a falling-off retry rate — each wait doubles, with jitter. |
 | [`symbiotic-interaction`](skills/conduct/conduct-core/symbiotic-interaction.md) | Recognize and respond to the three epistemic registers of author input — Socratic steer (known-answer correction), honest gap (flagged unknown), and intuition seed (tenuous cross-domain… |
@@ -129,18 +133,24 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`crdm-requirements-template`](skills/process/crdm/crdm-requirements-template.md) | Guide and template for CRDM Phase 3 — Requirements Definition. |
 | [`crdm-requirements-workflow`](skills/process/crdm/crdm-requirements-workflow.md) | CRDM requirements workflow |
 
-**`skills/process/process-core/`** (8)
+**`skills/process/process-core/`** (14)
 
 | Skill | What it is for |
 |---|---|
+| [`adjudication`](skills/process/process-core/adjudication.md) | Settle a review that reached no mechanical or consensus agreement. |
+| [`ci-health`](skills/process/process-core/ci-health.md) | A red workflow looks exactly like a green one from inside a checkout. |
 | [`compiled-artefact-cache`](skills/process/process-core/compiled-artefact-cache.md) | The general pattern for caching expensive compiled artefacts (Lean .oleans, FHIR ASTs) across builds. |
+| [`decision-audit`](skills/process/process-core/decision-audit.md) | Record why a decision was made, or why a finding in it was left. |
 | [`decision-methodology-selector`](skills/process/process-core/decision-methodology-selector.md) | Given a decision context, select the applicable methodology from the methodology graph. |
 | [`git-friendly-churn`](skills/process/process-core/git-friendly-churn.md) | Write files that git keeps many versions of (caches, published sites, generated indexes) so each new version costs a small delta, not a whole copy. |
 | [`methodology-adoption`](skills/process/process-core/methodology-adoption.md) | How a named external methodology enters the knowledge graph, and how an agent picks which one applies. |
+| [`platform-gates`](skills/process/process-core/platform-gates.md) | `bun test` passing is not the gates passing. |
 | [`role-model`](skills/process/process-core/role-model.md) | Actors, roles and skills — who performs a BPMN task, under which swimlane, with which skills. |
 | [`swimlane-glossary`](skills/process/process-core/swimlane-glossary.md) | Swimlane Glossary Skill |
 | [`swot-analysis`](skills/process/process-core/swot-analysis.md) | Running a SWOT situation analysis — the activities of `swot-analysis.bpmn`, what each step must produce, and the one thing the technique must never be used for. |
 | [`task-authorization`](skills/process/process-core/task-authorization.md) | The check every BPMN task execution runs before anything is recorded: is the actor authenticated, assigned to the role the lane binds, authorized by an ODRL policy to perform the task, and allowed… |
+| [`untainted-verification`](skills/process/process-core/untainted-verification.md) | The party that produced an artefact does not write the verdict on it. |
+| [`upstream-version-adoption`](skills/process/process-core/upstream-version-adoption.md) | Watch a pinned upstream dependency for a new release, and take a candidate version through impact analysis, an MVP build, review and a person's adopt/hold/decline decision. |
 
 **`skills/process/raci/`** (1)
 
@@ -184,7 +194,7 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`theme-art-intake`](skills/ui/theming/theme-art-intake.md) | Accept or refuse a set of three theme/avatar layouts arriving through document ingestion, with a named reason for every refusal. |
 | [`theming`](skills/ui/theming/theming.md) | The map of this subgraph: theming is split on PIPELINE STAGE first — intake, declaration, generation, contrast — with producer/consumer as the direction each stage faces, and per-artefact… |
 
-**`skills/ui/ui-core/`** (19)
+**`skills/ui/ui-core/`** (22)
 
 | Skill | What it is for |
 |---|---|
@@ -193,6 +203,7 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`board-diagram-interchange`](skills/ui/ui-core/board-diagram-interchange.md) | A board is a DIAGRAM OF a folio, not a container of one. |
 | [`board-windows`](skills/ui/ui-core/board-windows.md) | Everything starts as its avatar; opening projects a window onto the board. |
 | [`docs-generation`](skills/ui/ui-core/docs-generation.md) | How a checkout of this harness generates and publishes its docs site: regenerating derived references, composing the docs layers and each layer's site into one Jekyll source, building it with… |
+| [`feature-staging`](skills/ui/ui-core/feature-staging.md) | Manages feature-branch staging deployments under gh-pages/branches/<branch-slug>/ for before/after publication review comparison. |
 | [`harness-tiles`](skills/ui/ui-core/harness-tiles.md) | A tile is a function of the harness watching a directory, not of nodes. |
 | [`journey-maps`](skills/ui/ui-core/journey-maps.md) | Journeys and workshops as knowledge-graph content: a DAK user scenario told as a journey map (`user-scenario` kind: ordered steps, per person what they do and feel, pain points, enablers, the… |
 | [`kg-viewer`](skills/ui/ui-core/kg-viewer.md) | Render a published knowledge-graph document so a person can read it — faceted index, node detail, followable edges, and an honest account of what the document is missing. |
@@ -201,7 +212,9 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`readme-sections`](skills/ui/ui-core/readme-sections.md) | A folio's README is the author's file; the platform owns only the marked regions it generates. |
 | [`render-logging`](skills/ui/ui-core/render-logging.md) | Log every render to the publish branch — what was published, removed, restored or deliberately retained — to an append-only log that lives beside what it describes. |
 | [`render-order`](skills/ui/ui-core/render-order.md) | Render order — flattening a dependency hierarchy, and the three stages |
+| [`rendered-verification`](skills/ui/ui-core/rendered-verification.md) | Confirm a UI change by LOOKING at it in a browser and sending the screenshots to the author, rather than describing it. |
 | [`serving-renderings`](skills/ui/ui-core/serving-renderings.md) | Serving a rendering — endpoints, MIME types, and what each host can enforce |
+| [`staging-review`](skills/ui/ui-core/staging-review.md) | Staging preview and before/after comparison for content review. |
 | [`theme-ui-review`](skills/ui/ui-core/theme-ui-review.md) | Review graphical assets AS THEY ARE INGESTED, in the context of the website or app design they are for — accessibility, branding, languages — to determine what the assets and the UI will be. |
 | [`ui-accessibility`](skills/ui/ui-core/ui-accessibility.md) | Every user interface this project produces must be operable by keyboard, legible at measured contrast, and comfortable to hit. |
 | [`web-apps`](skills/ui/ui-core/web-apps.md) | Interactive web apps as knowledge-graph content: a layer holds an app's source in a directory of kind `web-app` (one `web-app.json`), its UI strings go through the harness's translation process like… |
@@ -235,12 +248,11 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`upload-routes`](library/skills/library-core/upload-routes.md) | How a file actually REACHES `uploads/` — the two mechanisms that write bytes into a declared queue, the persona that performs one of them on somebody's behalf, and what each writer owes that the… |
 | [`uploads-watch`](library/skills/library-core/uploads-watch.md) | Notice what has landed in the acquisition queue, and tell an arrival from a backlog. |
 
-**`sdlc/skills/sdlc-core/`** (72) (opt-in `cat-harness.sdlc`)
+**`sdlc/skills/sdlc-core/`** (61) (opt-in `cat-harness.sdlc`)
 
 | Skill | What it is for |
 |---|---|
 | `activity-log` | Activity log — what an agent did, kept out of the graph |
-| `adjudication` | Settle a review that reached no mechanical or consensus agreement. |
 | `adversarial-code-review` | Review a pull request an agent touched by building the strongest case that it is wrong, unsafe, or not what it claims, and record the verdict where the merge gate reads it: one `merge-review/v1`… |
 | `agent-handoff` | Governs handing ONE task to an agent in another environment — a local agent with network the cloud session lacks, a sibling on a different machine, anything that cannot read the coordinator's… |
 | `before-after-preview` | Make a reviewer-facing BEFORE/AFTER preview of a change to anything that is rendered — a docs site, a paper's PDF, a FHIR IG, a slide deck, a website — and put it where the review and feedback… |
@@ -250,14 +262,10 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `branch-freshness` | Read what changed on main often, and re-analyse the session workplan. |
 | `bun-use` | How Bun is used as the JavaScript/TypeScript execution runtime, test runner, package manager, and tarball packager across separated repositories: standalone subgraph configuration (bunfig.toml,… |
 | `cache-first-ci` | Every CI step is a pure function of its inputs: derive the inputs, hash them into a key, restore on a hit, run and save on a miss. |
-| `ci-health` | A red workflow looks exactly like a green one from inside a checkout. |
 | `code-review-process` | Where code review sits in the release lifecycle. |
-| `continual-progress` | Make in-flight work trackable by others in real time — open a PR from the first commit, push small coherent increments continuously (never hoard uncommitted work), keep a live status checklist in… |
 | `coordinate` | Coordinate work across multiple in-flight Claude PRs working toward a shared goal. |
-| `decision-audit` | Record why a decision was made, or why a finding in it was left. |
 | `delivery-summary` | Post-delivery summary with server restart command and viewer links |
 | `dispatch-agent` | Dispatch one or more background sub-agents against parallel research/build fronts with a STANDARDIZED live progress contract, and monitor them on a 2-minute heartbeat. |
-| `feature-staging` | Manages feature-branch staging deployments under gh-pages/branches/<branch-slug>/ for before/after publication review comparison. |
 | `finding-software` | A script needs a program or module the container does not have (tesseract, pdftoppm, PyMuPDF, a CLI from a GitHub release). |
 | `gate-tree-mutation` | Reading `bun run cat gates`' "NOT clean" verdict. |
 | `generalise-the-fix` | You have a fix. |
@@ -274,11 +282,9 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `merge-to-main` | Merging to `main` is its own step with its own gate: the `merge-to-main` sub-process, which every process that lands work CALLS rather than inlines. |
 | `minimal-change` | Three rules for any edit to a repository: make the smallest change that does the job and keep the diff minimal; read the repository's code-style files before writing code; and write Markdown without… |
 | `narrative-asserts-code` | Judge whether the prose side of a declared prose ↔ code pair still says what the code does, when the machine could not settle it. |
-| `opening-brief` | Brief a work item or a topic BEFORE touching anything: what you are doing and why it is worth doing, what you already know and with what provenance, how you plan to do it and what would falsify the… |
 | `package-release` | Cut a release of a repository's packages: decide the next version, write the release notes, tag, and create the release — for any repository, the platform or a folio. |
 | `pending-show` | Show the current session's pending work — work items list + ledger intent. |
 | `pickup` | Pick up / continue work on one or more existing open PRs efficiently. |
-| `platform-gates` | `bun test` passing is not the gates passing. |
 | `pr-description` | Write or update a pull request's description so that someone who has never seen the work can follow it: the problem, why it matters, how it was approached, what constrained it, the solution, how to… |
 | `prepare-for-handover` | Prepare for a handover: commit and push everything you hold, then write a handover report that cites the commits. |
 | `prepare-merge-auto` | Full prepare-merge → resolve → merge pipeline. |
@@ -292,13 +298,11 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `release-epic-planning` | Plan and track releases using work item epics. |
 | `release-lifecycle` | Governs the release lifecycle: semver policy, draft/named releases, changelogs, release gating, and the relationship between feature branches, PRs, work items, and releases. |
 | `rendered-impact` | The list of rendered files a Change Set alters, and how a reviewer approves against it. |
-| `rendered-verification` | Confirm a UI change by LOOKING at it in a browser and sending the screenshots to the author, rather than describing it. |
 | `saturation-meta-merge` | When the CI runners have been full for a long time, drain a repository's ready PRs in one step: hold the swarm, cancel the queued PR runs, stack every admitted PR onto one meta-merge branch with… |
 | `secrets` | Adding, rotating and revoking the credentials the harness's automation needs, one mechanism at a time, with the exact GitHub UI path for each step. |
 | `session-intent` | Session-start intent declaration + session-end results recording, against the work plan's goals (milestone work items) and their open work items. |
 | `signing` | What any signature in the harness must answer, whatever it covers: who signs, what bytes are signed, which signature suites are accepted and who decides that, where the key is kept, which route… |
 | `specification-management` | Governs the lifecycle, syntax, and traceability of specifications and requirements across the harness. |
-| `staging-review` | Staging preview and before/after comparison for content review. |
 | `stalled-agent-triage` | Triage incoming work from stalled agents. |
 | `swarm-management` | Decide whether to run parallel agents at all, and if so how many, at which model level, against which decomposition. |
 | `test-data-sets` | Curating fixed (committed, cited, SME-reviewed) and generated (template + params + seed recipe, never stored materialised) test data sets in separately declared graph directories, with… |
@@ -306,8 +310,6 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `test-plan-execution` | Run a `test-plan/v1` against a system under test and take it to a certification decision — the five lanes of `test-plan-execution.bpmn` (requester, tester, untainted checker, certifier, attestation… |
 | `turn-reporting` | Say which work item you are on, every turn — the opening and closing report formats, the rules that make a report worth reading (two sentences and a link per work item, every mention), and the… |
 | `two-phase-move` | Move a path that other layers link to without making the order of their re-pins matter: the moving layer declares the move and keeps answering at the old path for a window, the dependent layers… |
-| `untainted-verification` | The party that produced an artefact does not write the verdict on it. |
-| `upstream-version-adoption` | Watch a pinned upstream dependency for a new release, and take a candidate version through impact analysis, an MVP build, review and a person's adopt/hold/decline decision. |
 | `visual-diff` | Pictures of a changed figure, diagram or table, before and after, and how much of it changed. |
 | `watch` | Background-watch a branch (default origin/main) or a GitHub PR for new activity while you work, and on every event report whether to integrate / whether it conflicts with the current branch /… |
 | `where-a-proposal-goes` | Where a proposal goes — `docs/proposals/` |
@@ -333,7 +335,7 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `work-plan-store-git-branch` | How the git state branch Tool performs the work-plan store's operations: the branch per graph, the mount at beans/, which command does get, list, create, update, note, history and positions, and how… |
 | `work-plan-store` | The contract the work plan (work items) keeps as a data store, as operations any Tool must provide: get, list, create, update with ifMatch, note, history, and where a work item is in its processes. |
 
-**`editorial/skills/editorial-audits/`** (12) (opt-in `cat-harness.editorial`)
+**`editorial/skills/editorial-audits/`** (10) (opt-in `cat-harness.editorial`)
 
 | Skill | What it is for |
 |---|---|
@@ -347,8 +349,6 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `production-vs-exploratory-discipline` | Distinguish PRODUCTION (derived-only, no fits) from EXPLORATORY (empirical-fit probes OK as shape-hints) from NUMEROLOGY (post-hoc fits to known constants). |
 | `readability-editing` | Readability Editing Skill |
 | `voice-authoring-guidance` | Load the active voices' rules BEFORE writing, so a block is drafted in the register it will be reviewed against. |
-| `voice-editorial-review` | Adjudicate a `voice-*` finding — read the flagged passage as a reader of THAT genre would and decide whether the register is wrong, the criterion is out of scope, or the block is a stated exception. |
-| `voice-overlay-review` | Review a block against the active voices' rules and record the verdict on its QA sidecar. |
 
 **`kg-ops/skills/kg-ops/`** (4) (opt-in `cat-harness.kg-ops`)
 

@@ -8,37 +8,37 @@
   "dcterms:description": "Provenance moved out of the narrative of opening-brief.md: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "sdlc/skills/sdlc-core/opening-brief.md",
+      "@id": "skills/conduct/conduct-core/opening-brief.md",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-1"
+          "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-1"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-2"
+          "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-2"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-3"
+          "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-3"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-4"
+          "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-4"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-5"
+          "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-5"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-6"
+          "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-6"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-7"
+          "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-7"
         },
         {
-          "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-8"
+          "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-8"
         }
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-1",
+      "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Opening brief — brief the topic before you touch anything",
@@ -52,7 +52,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-2",
+      "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "The four parts",
@@ -65,7 +65,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-3",
+      "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-3",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "proposal",
       "cat-harness:section": "Before you offer options, check whether it is already ruled (STRICT)",
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-4",
+      "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-4",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Before you offer options, check whether it is already ruled (STRICT)",
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-5",
+      "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-5",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "history",
       "cat-harness:section": "Before you offer options, check whether it is already ruled (STRICT)",
@@ -101,7 +101,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-6",
+      "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-6",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "The failure this is written from",
@@ -115,7 +115,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-7",
+      "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-7",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "proposal",
       "cat-harness:section": "The failure this is written from",
@@ -129,7 +129,7 @@
       ]
     },
     {
-      "@id": "sdlc/skills/sdlc-core/opening-brief.md#provenance-8",
+      "@id": "skills/conduct/conduct-core/opening-brief.md#provenance-8",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "Briefing a sibling or a subagent — pass `interaction-modality` on (STRICT)",
