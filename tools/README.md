@@ -44,7 +44,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`folio-init/`](folio-init/) | _nothing declares what this holds_ | |
 | [`folio-viewer/`](folio-viewer/) | _nothing declares what this holds_ | |
 | [`gates/`](gates/) | _nothing declares what this holds_ | |
-| [`gates-merged/`](gates-merged/) | _nothing declares what this holds_ | |
 | [`get-graph-stats/`](get-graph-stats/) | _nothing declares what this holds_ | |
 | [`get-neighbors/`](get-neighbors/) | _nothing declares what this holds_ | |
 | [`gh-pages/`](gh-pages/) | _nothing declares what this holds_ | |
@@ -55,7 +54,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`ingest-extended/`](ingest-extended/) | _nothing declares what this holds_ | |
 | [`ingest-stdlib/`](ingest-stdlib/) | _nothing declares what this holds_ | |
 | [`instantiate-harness/`](instantiate-harness/) | _nothing declares what this holds_ | |
-| [`judge-tree/`](judge-tree/) | _nothing declares what this holds_ | |
 | [`kg-audit/`](kg-audit/) | _nothing declares what this holds_ | |
 | [`kg-graph-export/`](kg-graph-export/) | _nothing declares what this holds_ | |
 | [`kg-retrieve-npm/`](kg-retrieve-npm/) | _nothing declares what this holds_ | |
@@ -70,9 +68,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`memory-checkpoint/`](memory-checkpoint/) | _nothing declares what this holds_ | |
 | [`memory-note/`](memory-note/) | _nothing declares what this holds_ | |
 | [`memory-recall/`](memory-recall/) | _nothing declares what this holds_ | |
-| [`merge-leftover/`](merge-leftover/) | _nothing declares what this holds_ | |
-| [`merge-overlap/`](merge-overlap/) | _nothing declares what this holds_ | |
-| [`merge-train/`](merge-train/) | _nothing declares what this holds_ | |
 | [`methodologies-viewer/`](methodologies-viewer/) | _nothing declares what this holds_ | |
 | [`mount-from-lock/`](mount-from-lock/) | _nothing declares what this holds_ | |
 | [`narrative-queue/`](narrative-queue/) | _nothing declares what this holds_ | |
@@ -80,7 +75,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`node-kind-pages/`](node-kind-pages/) | _nothing declares what this holds_ | |
 | [`npm/`](npm/) | _nothing declares what this holds_ | |
 | [`ns-vocabulary/`](ns-vocabulary/) | _nothing declares what this holds_ | |
-| [`open-work-lookup/`](open-work-lookup/) | _nothing declares what this holds_ | |
 | [`openapi-ingest-rendered/`](openapi-ingest-rendered/) | _nothing declares what this holds_ | |
 | [`openapi-ingest-source/`](openapi-ingest-source/) | _nothing declares what this holds_ | |
 | [`openapi-pages/`](openapi-pages/) | _nothing declares what this holds_ | |
@@ -91,8 +85,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`pages-index/`](pages-index/) | _nothing declares what this holds_ | |
 | [`pages-publish/`](pages-publish/) | _nothing declares what this holds_ | |
 | [`pdf-cover/`](pdf-cover/) | _nothing declares what this holds_ | |
-| [`pdf-viewer-embed/`](pdf-viewer-embed/) | _nothing declares what this holds_ | |
-| [`pdf-viewer-install/`](pdf-viewer-install/) | _nothing declares what this holds_ | |
 | [`pin-actions/`](pin-actions/) | _nothing declares what this holds_ | |
 | [`pin-spdx-license-list/`](pin-spdx-license-list/) | _nothing declares what this holds_ | |
 | [`processes-viewer/`](processes-viewer/) | _nothing declares what this holds_ | |
@@ -100,7 +92,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`rail-standalone-pages/`](rail-standalone-pages/) | _nothing declares what this holds_ | |
 | [`readme-audit/`](readme-audit/) | _nothing declares what this holds_ | |
 | [`readme-sync/`](readme-sync/) | _nothing declares what this holds_ | |
-| [`release-please/`](release-please/) | _nothing declares what this holds_ | |
 | [`remote-mount/`](remote-mount/) | _nothing declares what this holds_ | |
 | [`render-log/`](render-log/) | _nothing declares what this holds_ | |
 | [`render-order/`](render-order/) | _nothing declares what this holds_ | |
@@ -113,7 +104,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`separation-cutover-check/`](separation-cutover-check/) | _nothing declares what this holds_ | |
 | [`serve-rendering/`](serve-rendering/) | _nothing declares what this holds_ | |
 | [`serve-rendering-py/`](serve-rendering-py/) | _nothing declares what this holds_ | |
-| [`sibling-sessions/`](sibling-sessions/) | _nothing declares what this holds_ | |
 | [`site-build-local/`](site-build-local/) | _nothing declares what this holds_ | |
 | [`site-search-index/`](site-search-index/) | _nothing declares what this holds_ | |
 | [`site-search-scopes/`](site-search-scopes/) | _nothing declares what this holds_ | |

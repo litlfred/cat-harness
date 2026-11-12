@@ -10,6 +10,15 @@
       "graphTypologies": [
         "skills"
       ]
+    },
+    {
+      "id": "platform-ui-tools",
+      "path": "tools/",
+      "subgraph": true,
+      "description": "Tool definitions that serve only the platform UI, one folder per Tool (`tools/<id>/<id>.json`, as in cat-harness's own `tools/`): `pdf-viewer-install` and `pdf-viewer-embed`, which satisfy only `pdf-inline-viewer`. Moved out of `tools/` for owner card Q-OPTIN-REFS A (2026-11-12): off, their `satisfies` named a skill a downstream does not have.",
+      "graphTypologies": [
+        "tools"
+      ]
     }
   ]
 }

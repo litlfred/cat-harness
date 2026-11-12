@@ -47,7 +47,6 @@ The stakeholders sign off, the BA confirms every criterion is met, the feature l
 ### 4. Land the feature's PRs (`Call_MergeToMain`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `merge-to-main`.
 - What: Phase 6's "explicit confirmation before merging to main", made a step that can refuse.
 - A subprocess (`Process_MergeToMain`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `A_Close` (Close issue ONLY on BA authorisation)

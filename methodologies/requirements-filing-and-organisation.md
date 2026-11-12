@@ -148,7 +148,7 @@ To fulfil Criterion 3 of work item `folio-assistant-qh1s` (*"a filing PROCESS pr
 
 ### 3.1 Where `Process_RequirementsFiling` sits in the lifecycle
 
-In the CRDM lifecycle (`sdlc/skills/crdm/crdm-requirements-workflow.md`):
+In the CRDM lifecycle (`skills/process/crdm/crdm-requirements-workflow.md`):
 1. Phases 1–4 (`crdm-needs.bpmn`, `crdm-requirements-definition.bpmn`, `crdm-data-model.bpmn`, `crdm-signoff.bpmn`) produce and sign off a proposal in `docs/proposals/<slug>.md` (and optionally a `RequirementSet` moving from `draft` → `proposed` → `approved`).
 2. Phase 5 (`crdm-deliver.bpmn`) builds and verifies the MVP in code, skills, and processes.
 3. **At Phase 6 (`crdm-close.bpmn`), when the feature ships and stakeholders/BA confirm acceptance criteria are met**, `Process_RequirementsFiling` (`sdlc/processes/requirements-filing.bpmn`) governs the transition of the proposal into `docs/requirements/<slug>.md` (or the amendment, supersession, or retirement of an existing filed requirement).

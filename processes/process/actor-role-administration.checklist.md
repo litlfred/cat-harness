@@ -66,7 +66,7 @@ Changing who can do what: adding an actor, opening or closing a role to one, gra
 ### 5. Branch, gates, PR and review (`CallActivity_CodeChangeReview`)
 
 - Who: the `Administrator` lane (role `administrator`).
-- Skill: `prepare-merge`, `continual-progress`.
+- Skill: `continual-progress`.
 - What: Called rather than restated.
 - A subprocess (`Process_CodeChangeReview`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Task_RunKgAudit` (Audit the graph)

@@ -22,7 +22,6 @@ One phase and not three, because the loops say so: an increment the BA rejects, 
 ### 2. Phase 6: Implement (feature branch + PR) (`A_Implement`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `prepare-merge`.
 - What: Inner loop: agent claims a bean, implements on feature branch, opens PR, posts summary to the issue.
 - Record it: `workflow_complete` with `node: "A_Implement"`.
 - next: → `A_CodeAudit` (Audit the code nodes the increment adds)
@@ -37,7 +36,7 @@ One phase and not three, because the loops say so: an increment the BA rejects, 
 ### 4. Post summary to issue (`A_Summary`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `delivery-summary`, `staging-review`.
+- Skill: `staging-review`.
 - What: What was accomplished, what remains, and the staging links: one deep link per changed page on the preview, with the same page on main (feedback-deep-links).
 - Record it: `workflow_complete` with `node: "A_Summary"`.
 - next: → `BA_ReviewIncrement` (Review increment (test behaviour))

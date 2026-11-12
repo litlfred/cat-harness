@@ -18,6 +18,8 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `work-plan-tools`, hol
 | [`beans-cli/`](beans-cli/) | _nothing declares what this holds_ | |
 | [`beans-manual/`](beans-manual/) | _nothing declares what this holds_ | |
 | [`drain-queue/`](drain-queue/) | _nothing declares what this holds_ | |
+| [`open-work-lookup/`](open-work-lookup/) | _nothing declares what this holds_ | |
+| [`sibling-sessions/`](sibling-sessions/) | _nothing declares what this holds_ | |
 | [`work-plan-prime/`](work-plan-prime/) | _nothing declares what this holds_ | |
 | [`workflow-complete/`](workflow-complete/) | _nothing declares what this holds_ | |
 | [`workflow-gate/`](workflow-gate/) | _nothing declares what this holds_ | |

@@ -7,13 +7,12 @@ generated: "scripts/subgraph-readmes.ts of the bootstrap toolset (https://github
 
 # sdlc-skills
 
-Software-delivery practice for agents and people working in the harness, as skill packages: `sdlc-core` (issues and PRs, review and merge, CI and gates, release, coordinating sessions and swarms), `crdm` (the requirements methodology) and `spec-kit`. Was the `sdlc` topic of `skills/` until cat-harness#991 step 23.2.
+Software-delivery practice for agents and people working in the harness, as skill packages: `sdlc-core` (issues and PRs, review and merge, CI and gates, release, coordinating sessions and swarms) and `spec-kit`. `crdm`, the requirements methodology, is always on in `skills/process/crdm/` (owner card Q-CORE-SKILLS A, 2026-11-12). Was the `sdlc` topic of `skills/` until cat-harness#991 step 23.2.
 
 Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-skills`, holding `skills`.
 
 | file | what it is | used by |
 |---|---|---|
-| [`crdm/`](crdm/) | _nothing declares what this holds_ | |
 | [`sdlc-core/`](sdlc-core/) | _nothing declares what this holds_ | |
 | [`spec-kit/`](spec-kit/) | _nothing declares what this holds_ | |
 

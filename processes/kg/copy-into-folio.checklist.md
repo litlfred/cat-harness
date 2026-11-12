@@ -82,7 +82,7 @@ Taking an asset from an upstream knowledge graph into your own folio so you can 
 ### 8. Edit, comment or raise todos on the folio's copy (`Task_WorkOnCopy`)
 
 - Who: the `Folio author` lane (role `author`).
-- Skill: `kg-affordances`, `todo-manager`.
+- Skill: `kg-affordances`.
 - What: The copied asset is now writable content of the target folio with recorded upstream provenance (`KgAsset.source`).
 - Record it: `workflow_complete` with `node: "Task_WorkOnCopy"`.
 - next: → `End_CopiedAndEditable` (Working copy in folio with KgAsset.source stamped)
