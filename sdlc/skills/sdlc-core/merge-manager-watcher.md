@@ -234,6 +234,20 @@ lands in a different place for each:
 | A lower layer's bug | The failure names a lower layer's file, and it fails at that layer's `main` too | A fix PR in the lower layer, then a re-pin |
 | Infrastructure | "The runner has received a shutdown signal", a Pages deploy stuck at `syncing_files` until it times out | Re-run once. A second failure is real: a Pages timeout goes to the site-size work |
 
+**Re-run policy (owner, card Q-RERUN-1 B, 2026-11-12).** Every run of a
+PR emails the owner when it fails, and on 11-11 more than half of the
+failure emails came from re-runs. So a "re-run once" in the table above is
+bounded by these rules:
+- Re-run a PR's CI only when that PR is about to merge, which means it is
+  approved (or non-content inside a merge window) and nothing else blocks it.
+- Never re-run held content or committee PRs (smart-ra `CS-` items, `dth-*`
+  content, anything without an owner approval).
+- After a GitHub outage, wait until GitHub status reports healthy before
+  re-running anything. Never re-run PRs in a batch.
+- Before re-running a re-pin PR, first refresh its pins to the current mains,
+  so the lock-coherence gate does not fail again.
+- An update-branch also starts a run, so it follows the same rules.
+
 **Dispatch.** One fixer agent per cause, never one per repository: a single
 lower-layer bug can redden every layer above it. Give it the failing run,
 the cause row above and the repository, and have it open a draft fix PR,

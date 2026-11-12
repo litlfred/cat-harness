@@ -603,6 +603,7 @@ them:**
 |---|---|
 | **at most ONE push per PR**, after `bun run cat gates` locally — or, when every conflict was generated, after the targeted checks of [`merge-conflict-patterns`](merge-conflict-patterns.md) §"A merge round — run each check ONCE" | each push runs full CI **and** deploys a staging preview into `gh-pages`, which has a size budget. Pushing speculatively spends both |
 | no `workflow_dispatch`, re-run, empty commit or close/reopen | the same budget, and a dispatched run is not an owed run (above) |
+| the merge manager re-runs only a PR it is about to merge, never held content, never in a batch, never during a GitHub outage, and refreshes a re-pin PR's pins first ([`merge-manager-watcher`](merge-manager-watcher.md) §"Re-run policy") | every failed run emails the owner; re-runs were most of the 11-11 failure emails (card Q-RERUN-1 B) |
 | merge commits only: no rebase, amend or force-push | it is somebody else's branch |
 | authored conflict → resolve only dead code, or a pure addition carried over verbatim; otherwise quote both sides and stand down | choosing between two behaviours is the author's call |
 | `git submodule update --init` and `bun run cat state:mount` before `regen` | without the submodules `merge:steward` cannot load. Without the mount, `fsh-guts:viz:check` exits non-zero (it judges that the mounted graph renders; the page itself is built at publish) and `audit:coverage:strict` goes red |
