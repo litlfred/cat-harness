@@ -19,6 +19,15 @@
       "graphTypologies": [
         "processes"
       ]
+    },
+    {
+      "id": "sdlc-tools",
+      "path": "tools/",
+      "subgraph": true,
+      "description": "Tool definitions that serve only software delivery, one folder per Tool (`tools/<id>/<id>.json`, as in cat-harness's own `tools/`): the CI workflow dispatchers (`ci-*`), the merge train and its helpers (`merge-train`, `merge-overlap`, `merge-leftover`, `gates-merged`, `judge-tree`) and `release-please`. Each satisfies only `sdlc` skills, so off, it named skills a downstream does not have. Moved out of `tools/` for owner card Q-OPTIN-REFS A (2026-11-12).",
+      "graphTypologies": [
+        "tools"
+      ]
     }
   ]
 }
