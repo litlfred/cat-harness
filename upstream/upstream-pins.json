@@ -54,13 +54,14 @@
       "id": "plantuml",
       "title": "PlantUML diagram renderer (tool-release)",
       "repo": "https://github.com/plantuml/plantuml",
-      "pinnedIn": "tool-releases/plantuml-1.2026.9.json",
+      "pinnedIn": "tool-releases/plantuml-1.2026.10.json",
       "pattern": "^\\s*\"version\":\\s*\"([^\"]+)\"",
       "tagPattern": "^v\\d+\\.\\d{4}\\.\\d+$",
       "tagPrefix": "v",
       "binds": [
-        "cat-harness/tool-releases/plantuml-1.2026.9.json — `digest.digest` and `source.url` must be updated to the new release's jar and sha256, and the file renamed to match the version.",
+        "cat-harness/tool-releases/plantuml-1.2026.10.json — `digest.digest` and `source.url` must be updated to the new release's jar and sha256, and the file renamed to match the version.",
         "cat-harness/tool-releases/default.profile.json — `tools.plantuml` selects `plantuml@<version>`.",
+        "cat-harness/tool-releases/ci-2026-10.profile.json and cat-harness/tool-releases/lean-4.35-test.profile.json — `tools.plantuml` selects `plantuml@<version>`.",
         "cat-harness-tools/scripts/plantuml-render.ts — `PLANTUML` re-exports the release pin and resolves it through `tool-releases.ts`.",
         "Copies outside this registry that do not read it, and so must move by hand: `PLANTUML_VERSION` in https://github.com/litlfred/fhir-harness/blob/main/scripts/ig-repo-site.ts, and the jar URL in folio-assistant `.github/workflows/docs-site.yml` and `feature-staging.yml`."
       ]
@@ -74,7 +75,7 @@
       "tagPattern": "^\\d+\\.\\d+\\.\\d+$",
       "binds": [
         "cat-harness/tool-releases/graphviz-16.1.1-linux-x64-ubuntu-24.04.json — `digest.digest` and `source.url` must be updated to the new `.deb` and sha256.",
-        "cat-harness/tool-releases/plantuml-1.2026.9.json — `runtimes[]` injects `graphviz@<version>` onto `PATH` so `plantuml` finds `dot`.",
+        "cat-harness/tool-releases/plantuml-1.2026.10.json — `runtimes[]` injects `graphviz@<version>` onto `PATH` so `plantuml` finds `dot`.",
         "cat-harness/tool-releases/default.profile.json — `tools.graphviz` selects `graphviz@<version>`.",
         "cat-harness/tool-releases/ci-2026-10.profile.json and cat-harness/tool-releases/lean-4.35-test.profile.json — `tools.graphviz` selects `graphviz@<version>`."
       ]
@@ -96,12 +97,12 @@
       "id": "node-22",
       "title": "Node.js 22 LTS runtime (tool-release)",
       "repo": "https://github.com/nodejs/node",
-      "pinnedIn": "tool-releases/node-22.23.4-linux-x64.json",
+      "pinnedIn": "tool-releases/node-22.23.5-linux-x64.json",
       "pattern": "^\\s*\"version\":\\s*\"([^\"]+)\"",
       "tagPattern": "^v22\\.\\d+\\.\\d+$",
       "tagPrefix": "v",
       "binds": [
-        "cat-harness/tool-releases/node-22.23.4-linux-x64.json — `digest.digest`, `source.url` and `entry.home` must be updated to the new Node 22 LTS tarball and sha256.",
+        "cat-harness/tool-releases/node-22.23.5-linux-x64.json — `digest.digest`, `source.url` and `entry.home` must be updated to the new Node 22 LTS tarball and sha256.",
         "cat-harness/tool-releases/fsh-sushi-3.21.0.json — `runtimes[]` injects `node@<version>` onto `PATH`."
       ]
     },

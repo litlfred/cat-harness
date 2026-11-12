@@ -19,8 +19,8 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tool-releases`, holding 
 | [`graphviz-16.1.1-linux-x64-ubuntu-24.04.json`](graphviz-16.1.1-linux-x64-ubuntu-24.04.json) | data |  |
 | [`lean-4.35-test.profile.json`](lean-4.35-test.profile.json) | Test profile for Lean 4.35 formalisation and diagram rendering. |  |
 | [`lean-toolchain-4.35.0.json`](lean-toolchain-4.35.0.json) | data |  |
-| [`node-22.23.4-linux-x64.json`](node-22.23.4-linux-x64.json) | data |  |
-| [`plantuml-1.2026.9.json`](plantuml-1.2026.9.json) | data |  |
+| [`node-22.23.5-linux-x64.json`](node-22.23.5-linux-x64.json) | data |  |
+| [`plantuml-1.2026.10.json`](plantuml-1.2026.10.json) | data |  |
 | [`temurin-jre-17.0.12_7-linux-x64.json`](temurin-jre-17.0.12_7-linux-x64.json) | data |  |
 | [`temurin-jre-21.0.4_7-linux-x64.json`](temurin-jre-21.0.4_7-linux-x64.json) | data |  |
 | [`texlive-2024.2-oci.json`](texlive-2024.2-oci.json) | data |  |

@@ -5,6 +5,6 @@
   "tools": {
     "graphviz": "graphviz@16.1.1",
     "lean-toolchain": "lean-toolchain@4.35.0",
-    "plantuml": "plantuml@1.2026.9"
+    "plantuml": "plantuml@1.2026.10"
   }
 }
