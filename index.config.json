@@ -14,7 +14,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap",
-          "ref": "531a96d2adddec62c2363e125c19d6648a07fc11",
+          "ref": "17204fe9ed49e87b165bf0a8b626b6c69329a2a6",
           "overrides": {
             "bootstrap": {
               "whole": true
@@ -25,8 +25,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-12",
-              "ref": "531a96d2adddec62c2363e125c19d6648a07fc11",
-              "evidence": "litlfred, 2026-11-12, merge-manager thread: owner card Q-CONSENT-1 = A (re-pin + merge window to ~21:05Z 11-12, Q-WIN-1 C); bottom-up coherent re-pin T1, follow-up to Q-RA-241 A. Coordinator session session_01EucfRpkvK7d4FJyuqypQzm."
+              "ref": "17204fe9ed49e87b165bf0a8b626b6c69329a2a6",
+              "evidence": "litlfred, 2026-11-12, merge-manager thread: owner card Q-CONSENT-1 = A (re-pin + merge window to ~21:05Z 11-12, Q-WIN-1 C); bottom-up re-pin T1' (bootstrap moved by bootstrap#56), follow-up to Q-RA-241 A. Coordinator session session_01EucfRpkvK7d4FJyuqypQzm."
             }
           }
         }
@@ -38,7 +38,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "b31c5346b0b2803354423511b6d18b599b7bdc41",
+          "ref": "9d158c932856885a7c6025045a0d59b26b5d7827",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -52,8 +52,8 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-12",
-              "ref": "b31c5346b0b2803354423511b6d18b599b7bdc41",
-              "evidence": "litlfred, 2026-11-12, merge-manager thread: owner card Q-CONSENT-1 = A (re-pin + merge window to ~21:05Z 11-12, Q-WIN-1 C); bottom-up coherent re-pin T1, follow-up to Q-RA-241 A. Coordinator session session_01EucfRpkvK7d4FJyuqypQzm."
+              "ref": "9d158c932856885a7c6025045a0d59b26b5d7827",
+              "evidence": "litlfred, 2026-11-12, merge-manager thread: owner card Q-CONSENT-1 = A (re-pin + merge window to ~21:05Z 11-12, Q-WIN-1 C); bottom-up re-pin T1', follow-up to Q-RA-241 A (Q-CASCADE-FREEZE B: mains read at re-pin). Coordinator session session_01EucfRpkvK7d4FJyuqypQzm."
             }
           }
         }
