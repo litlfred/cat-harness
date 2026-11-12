@@ -211,7 +211,7 @@
       <bpmndi:BPMNShape id="Shape_GW_Judged" bpmnElement="GW_Judged" isMarkerVisible="true"><dc:Bounds x="2775" y="120" width="50" height="50" /><bpmndi:BPMNLabel><dc:Bounds x="2730" y="70" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_CloseAlert" bpmnElement="Task_CloseAlert"><dc:Bounds x="2925" y="85" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Published" bpmnElement="End_Published"><dc:Bounds x="3145" y="127" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="3093" y="169" width="140" height="40"/></bpmndi:BPMNLabel></bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Call_Alert" bpmnElement="Call_Alert"><dc:Bounds x="2860" y="283.5" width="180" height="93" /></bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Call_Alert" bpmnElement="Call_Alert"><dc:Bounds x="2890" y="270" width="120" height="120" /></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Failed" bpmnElement="End_Failed"><dc:Bounds x="3110" y="312" width="36" height="36" /><bpmndi:BPMNLabel><dc:Bounds x="3058" y="254" width="140" height="54" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_Flow_0" bpmnElement="Flow_0"><di:waypoint x="263" y="145"/><di:waypoint x="345" y="145"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_S1" bpmnElement="Flow_S1"><di:waypoint x="465" y="145"/><di:waypoint x="565" y="145"/></bpmndi:BPMNEdge>
@@ -228,11 +228,11 @@
       <bpmndi:BPMNEdge id="Edge_Flow_J1" bpmnElement="Flow_J1"><di:waypoint x="2675" y="145"/><di:waypoint x="2775" y="145"/></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_J2" bpmnElement="Flow_J2"><di:waypoint x="2825" y="145"/><di:waypoint x="2925" y="145"/><bpmndi:BPMNLabel><dc:Bounds x="2831" y="121" width="80" height="20"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_C1" bpmnElement="Flow_C1"><di:waypoint x="3045" y="145"/><di:waypoint x="3145" y="145"/></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_S3" bpmnElement="Flow_S3"><di:waypoint x="590" y="170"/><di:waypoint x="590" y="330"/><di:waypoint x="2860" y="330"/><bpmndi:BPMNLabel><dc:Bounds x="594" y="226" width="90" height="53"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_D2" bpmnElement="Flow_D2"><di:waypoint x="2280" y="170"/><di:waypoint x="2280" y="330"/><di:waypoint x="2860" y="330"/><bpmndi:BPMNLabel><dc:Bounds x="2284" y="226" width="90" height="53"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_9" bpmnElement="Flow_9"><di:waypoint x="2430" y="170"/><di:waypoint x="2430" y="330"/><di:waypoint x="2860" y="330"/><bpmndi:BPMNLabel><dc:Bounds x="2434" y="226" width="90" height="53"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_J3" bpmnElement="Flow_J3"><di:waypoint x="2800" y="170"/><di:waypoint x="2800" y="330"/><di:waypoint x="2860" y="330"/><bpmndi:BPMNLabel><dc:Bounds x="2804" y="226" width="90" height="53"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_A1" bpmnElement="Flow_A1"><di:waypoint x="3040" y="330"/><di:waypoint x="3110" y="330"/></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_S3" bpmnElement="Flow_S3"><di:waypoint x="590" y="170" /><di:waypoint x="590" y="330" /><di:waypoint x="2890" y="330" /><bpmndi:BPMNLabel><dc:Bounds x="594" y="226" width="90" height="53"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_D2" bpmnElement="Flow_D2"><di:waypoint x="2280" y="170" /><di:waypoint x="2280" y="330" /><di:waypoint x="2890" y="330" /><bpmndi:BPMNLabel><dc:Bounds x="2284" y="226" width="90" height="53"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_9" bpmnElement="Flow_9"><di:waypoint x="2430" y="170" /><di:waypoint x="2430" y="330" /><di:waypoint x="2890" y="330" /><bpmndi:BPMNLabel><dc:Bounds x="2434" y="226" width="90" height="53"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_J3" bpmnElement="Flow_J3"><di:waypoint x="2800" y="170" /><di:waypoint x="2800" y="330" /><di:waypoint x="2890" y="330" /><bpmndi:BPMNLabel><dc:Bounds x="2804" y="226" width="90" height="53"/></bpmndi:BPMNLabel></bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_Flow_A1" bpmnElement="Flow_A1"><di:waypoint x="3010" y="330" /><di:waypoint x="3110" y="330" /></bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
