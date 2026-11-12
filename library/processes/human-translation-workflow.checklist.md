@@ -122,7 +122,8 @@ The human half of translation: a coordinator assigns a locale to a qualified tra
 
 - The SME's result.
 - Call `workflow_complete` with `node: "Gateway_Accurate"` and `outcome` set to the label that holds:
-  - «Needs correction» → `Task_ReturnForCorrection` (Return for correction with annotations)
+  - «Needs
+correction» → `Task_ReturnForCorrection` (Return for correction with annotations)
   - «Accurate» → `Task_AppendDisclaimer` (Append WHO disclaimer (if DAK))
 
 ### 13. Return for correction with annotations (`Task_ReturnForCorrection`)
