@@ -43,7 +43,7 @@ msgstr "Агент, задавший хороший вопрос в неприг
 
 #: docs/start/accessibility.md:33
 msgid "The usual shape of it: a long open prompt — \"Tell me about the folio you have in mind, what content types you expect, and how you'd like it organised\" — sent to somebody for whom typing is slow and painful. The reply comes back short. The agent reads shortness as low engagement and asks another open question. Nobody in that exchange has done anything obviously wrong, and the conversation is already failing."
-msgstr "Обычно это выглядит так: длинный открытый запрос — «Расскажите о фолио, которое вы задумали, какие типы контента вы ожидаете и как вы хотели бы его организовать», — отправленный человеку, для которого ввод текста медленный и болезненный. Ответ приходит коротким. Агент воспринимает краткость как слабую вовлеченность и задает еще один открытый вопрос. Никто в этом диалоге не сделал ничего явно предосудительного, но разговор уже терпит крах."
+msgstr "Обычно это выглядит так: длинный открытый запрос — «Расскажите о фолио, которое вы задумали, какие типы содержимого вы ожидаете и как вы хотели бы его организовать», — отправленный человеку, для которого ввод текста медленный и болезненный. Ответ приходит коротким. Агент воспринимает краткость как слабую вовлеченность и задает еще один открытый вопрос. Никто в этом диалоге не сделал ничего явно предосудительного, но разговор уже терпит крах."
 
 #: docs/start/accessibility.md:43
 msgid "A question's cost is paid by the person answering it. Design the question so that the cheapest possible answer is still a complete one."
@@ -251,7 +251,7 @@ msgstr "ATAG 2.0"
 
 #: docs/start/accessibility.md:112
 msgid "tools that produce content"
-msgstr "инструменты, создающие контент"
+msgstr "инструменты, создающие содержимое"
 
 #: docs/start/accessibility.md:112
 msgid "the one usually missed. folio-assistant is an authoring tool: Part A is the tool being usable, Part B is the tool helping the author produce accessible output"

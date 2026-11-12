@@ -23,7 +23,7 @@ msgstr ""
 
 #: docs/concepts/agentic-harness.md:13
 msgid "Agentic harness"
-msgstr "Агентная оснастка"
+msgstr "Агентная обвязка"
 
 #: docs/concepts/agentic-harness.md:18
 msgid "On this page"
@@ -71,7 +71,7 @@ msgstr "Создание контента (paper)"
 
 #: docs/concepts/agentic-harness.md:66
 msgid "User requests content authoring in a paper folio"
-msgstr "Пользователь запрашивает создание контента в фолио статьи (paper)"
+msgstr "Пользователь запрашивает создание содержимого в фолио статьи (paper)"
 
 #: docs/concepts/agentic-harness.md:67
 msgid "Authoring (document)"
@@ -79,15 +79,15 @@ msgstr "Создание контента (document)"
 
 #: docs/concepts/agentic-harness.md:67
 msgid "User requests content authoring in a document folio"
-msgstr "Пользователь запрашивает создание контента в фолио документа (document)"
+msgstr "Пользователь запрашивает создание содержимого в фолио документа (document)"
 
 #: docs/concepts/agentic-harness.md:68
 msgid "Content lifecycle"
-msgstr "Жизненный цикл контента"
+msgstr "Жизненный цикл содержимого"
 
 #: docs/concepts/agentic-harness.md:68
 msgid "Content moves through validate → render → publish"
-msgstr "Контент проходит этапы validate → render → publish"
+msgstr "Содержимое проходит этапы validate → render → publish"
 
 #: docs/concepts/agentic-harness.md:69
 msgid "Document ingestion"
@@ -99,7 +99,7 @@ msgstr "От черновика к публикации"
 
 #: docs/concepts/agentic-harness.md:70
 msgid "Content moves from draft to published"
-msgstr "Контент переходит из состояния черновика в опубликованное"
+msgstr "Содержимое переходит из состояния черновика в опубликованное"
 
 #: docs/concepts/agentic-harness.md:71
 msgid "CRDM requirements"
@@ -175,11 +175,11 @@ msgstr "Запускаемый рабочий процесс"
 
 #: docs/concepts/agentic-harness.md:121
 msgid "Content authoring"
-msgstr "Создание контента"
+msgstr "Создание содержимого"
 
 #: docs/concepts/agentic-harness.md:121
 msgid "Write, edit, extend folio content (chapters, blocks, sections)"
-msgstr "Написание, редактирование, расширение контента фолио (главы, блоки, разделы)"
+msgstr "Написание, редактирование, расширение содержимого фолио (главы, блоки, разделы)"
 
 #: docs/concepts/agentic-harness.md:121
 msgid "Authoring workflow (paper or document)"
@@ -187,19 +187,19 @@ msgstr "Рабочий процесс создания (paper или document)"
 
 #: docs/concepts/agentic-harness.md:122
 msgid "Content review"
-msgstr "Рецензирование контента"
+msgstr "Рецензирование содержимого"
 
 #: docs/concepts/agentic-harness.md:122
 msgid "Review, validate, provide feedback on existing content"
-msgstr "Проверка, валидация, обратная связь по существующему контенту"
+msgstr "Проверка, валидация, обратная связь по существующему содержимому"
 
 #: docs/concepts/agentic-harness.md:122
 msgid "Content lifecycle / editing-HCI workflow"
-msgstr "Жизненный цикл контента / рабочий процесс editing-HCI"
+msgstr "Жизненный цикл содержимого / рабочий процесс editing-HCI"
 
 #: docs/concepts/agentic-harness.md:123
 msgid "Content ingestion"
-msgstr "Импорт контента"
+msgstr "Импорт содержимого"
 
 #: docs/concepts/agentic-harness.md:123
 msgid "Ingest a source document into the folio"
@@ -223,7 +223,7 @@ msgstr "Информационный запрос"
 
 #: docs/concepts/agentic-harness.md:125
 msgid "Ask about the platform, content, or process"
-msgstr "Вопрос о платформе, контенте или процессе"
+msgstr "Вопрос о платформе, содержимом или процессе"
 
 #: docs/concepts/agentic-harness.md:125
 msgid "No workflow — answer directly"
@@ -263,11 +263,11 @@ msgstr "Если реализация запроса потребует изме
 
 #: docs/concepts/agentic-harness.md:141
 msgid "When uncertain, the agent asks: \"This sounds like it might need a platform change — is that right, or is this something I can do within the current content model?\""
-msgstr "При возникновении сомнений агент уточняет: «Похоже, для этого могут потребоваться изменения платформы — так ли это, или я могу выполнить эту задачу в рамках текущей модели контента?»"
+msgstr "При возникновении сомнений агент уточняет: «Похоже, для этого могут потребоваться изменения платформы — так ли это, или я могу выполнить эту задачу в рамках текущей модели содержимого?»"
 
 #: docs/concepts/agentic-harness.md:145
 msgid "Content workflows"
-msgstr "Рабочие процессы контента"
+msgstr "Рабочие процессы содержимого"
 
 #: docs/concepts/agentic-harness.md:163
 msgid "Writing guides:"
@@ -275,7 +275,7 @@ msgstr "Руководства по написанию:"
 
 #: docs/concepts/agentic-harness.md:169
 msgid "The harness does not redefine these workflows. It provides the entry point — classifying the request and routing to the right one — and the exit point — returning to idle state when the workflow completes, or suspending if the user switches context."
-msgstr "Оснастка не переопределяет эти рабочие процессы. Она обеспечивает точку входа — классификацию запроса и маршрутизацию к нужному процессу — и точку выхода — возврат в состояние ожидания по завершении рабочего процесса или его приостановку, если пользователь переключает контекст."
+msgstr "Обвязка не переопределяет эти рабочие процессы. Она обеспечивает точку входа — классификацию запроса и маршрутизацию к нужному процессу — и точку выхода — возврат в состояние ожидания по завершении рабочего процесса или его приостановку, если пользователь переключает контекст."
 
 #: docs/concepts/agentic-harness.md:174
 msgid "Deterministic and agentic processing"
@@ -407,15 +407,15 @@ msgstr "Пользователь прямо откладывает оставш�
 
 #: docs/concepts/agentic-harness.md:306
 msgid "On exit, if a content workflow was suspended, the agent resumes it."
-msgstr "При выходе, если рабочий процесс работы с контентом был приостановлен, агент возобновляет его."
+msgstr "При выходе, если рабочий процесс работы с содержимым был приостановлен, агент возобновляет его."
 
 #: docs/concepts/agentic-harness.md:308
 msgid "User-provided content and sources"
-msgstr "Предоставляемый пользователем контент и источники"
+msgstr "Предоставляемое пользователем содержимое и источники"
 
 #: docs/concepts/agentic-harness.md:313
 msgid "Users provide content and source material through multiple channels. The agent should accept all of them and route them into the appropriate pipeline:"
-msgstr "Пользователи предоставляют контент и исходные материалы по различным каналам. Агент должен принимать их все и направлять в соответствующий конвейер:"
+msgstr "Пользователи предоставляют содержимое и исходные материалы по различным каналам. Агент должен принимать их все и направлять в соответствующий конвейер:"
 
 #: docs/concepts/agentic-harness.md:316
 msgid "Channel"
@@ -443,11 +443,11 @@ msgstr "Пользователь ссылается на ранее импорт
 
 #: docs/concepts/agentic-harness.md:319
 msgid "Direct citation in content"
-msgstr "Прямое цитирование в контенте"
+msgstr "Прямое цитирование в содержимом"
 
 #: docs/concepts/agentic-harness.md:320
 msgid "Content authoring workflow"
-msgstr "Рабочий процесс создания контента"
+msgstr "Рабочий процесс создания содержимого"
 
 #: docs/concepts/agentic-harness.md:321
 msgid "GitHub issue attachments"
@@ -487,7 +487,7 @@ msgstr "Особенности для CRDM"
 
 #: docs/concepts/agentic-harness.md:327
 msgid "During requirements gathering, user-provided content is input to requirements, not content to author. The agent should:"
-msgstr "В ходе сбора требований материалы, предоставленные пользователем, представляют собой входные данные для требований, а не контент для создания. Агенту следует:"
+msgstr "В ходе сбора требований материалы, предоставленные пользователем, представляют собой входные данные для требований, а не содержимое для создания. Агенту следует:"
 
 #: docs/concepts/agentic-harness.md:330
 msgid "Read and understand the provided material"
@@ -507,7 +507,7 @@ msgstr "Сослаться на источник в комментарии к з
 
 #: docs/concepts/agentic-harness.md:335
 msgid "Example: a user uploads a public consultation feedback Excel spreadsheet. The agent does not try to ingest it as folio content; it reads the feedback items and synthesises them into requirements for the review triage tool."
-msgstr "Пример: пользователь загружает таблицу Excel с отзывами по итогам общественных консультаций. Агент не пытается импортировать ее как контент фолио; он считывает пункты отзывов и обобщает их в требования для инструмента сортировки рецензий (review triage tool)."
+msgstr "Пример: пользователь загружает таблицу Excel с отзывами по итогам общественных консультаций. Агент не пытается импортировать ее как содержимое фолио; он считывает пункты отзывов и обобщает их в требования для инструмента сортировки рецензий (review triage tool)."
 
 #: docs/concepts/agentic-harness.md:339
 msgid "Issue and bean discipline"
@@ -587,7 +587,7 @@ msgstr "Что было сделано в этом раунде"
 
 #: docs/concepts/agentic-harness.md:375
 msgid "Links to updated content for review (staging URLs, docs pages)"
-msgstr "Ссылки на обновленный контент для проверки (staging URL, страницы документации)"
+msgstr "Ссылки на обновленное содержимое для проверки (staging URL, страницы документации)"
 
 #: docs/concepts/agentic-harness.md:376
 msgid "Before/after comparison table for changed pages"
@@ -631,7 +631,7 @@ msgstr "Обнаружение запросов функциональности
 
 #: docs/concepts/agentic-harness.md:404
 msgid "Content authoring (paper)"
-msgstr "Создание контента (paper)"
+msgstr "Создание содержимого (paper)"
 
 #: docs/concepts/agentic-harness.md:404
 msgid "authoring-math skills"
@@ -639,7 +639,7 @@ msgstr "навыки authoring-math"
 
 #: docs/concepts/agentic-harness.md:405
 msgid "Content authoring (document)"
-msgstr "Создание контента (document)"
+msgstr "Создание содержимого (document)"
 
 #: docs/concepts/agentic-harness.md:405
 msgid "folio-document-adapter skills"
@@ -655,7 +655,7 @@ msgstr "Диспетчеризация и координация"
 
 #: docs/concepts/agentic-harness.md:409
 msgid "Content types and adapters"
-msgstr "Типы контента и адаптеры"
+msgstr "Типы содержимого и адаптеры"
 
 #: docs/concepts/agentic-harness.md:410
 msgid "BPMN diagram authoring"
@@ -675,7 +675,7 @@ msgstr "Автоматическая классификация запросов
 
 #: docs/concepts/agentic-harness.md:433
 msgid "BPMN for the agentic harness itself — a top-level BPMN diagram showing the idle/workflow state machine and the classification routing is not yet authored."
-msgstr "BPMN для самой агентной оснастки — высокоуровневая диаграмма BPMN, иллюстрирующая конечный автомат состояний ожидания / рабочего процесса и маршрутизацию по классификации, еще не создана."
+msgstr "BPMN для самой агентной обвязки — высокоуровневая диаграмма BPMN, иллюстрирующая конечный автомат состояний ожидания / рабочего процесса и маршрутизацию по классификации, еще не создана."
 
 #~ msgid "TR"
 #~ msgstr "TR"

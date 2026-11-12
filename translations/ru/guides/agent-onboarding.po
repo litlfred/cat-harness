@@ -24,7 +24,7 @@ msgstr "3. Найдите подходящий навык — не импров�
 
 #: agent-onboarding.md:74
 msgid "4. The content object model, briefly"
-msgstr "4. Объектная модель контента, кратко"
+msgstr "4. Объектная модель содержимого, кратко"
 
 #: agent-onboarding.md:88
 msgid "5. Two dependency relations — do not conflate them"
@@ -48,11 +48,11 @@ msgstr "9. Где искать информацию"
 
 #: agent-onboarding.md:76
 msgid "A content block is a triple sharing a root name:"
-msgstr "Блок контента представляет собой тройку с общим корневым именем:"
+msgstr "Блок содержимого представляет собой тройку с общим корневым именем:"
 
 #: agent-onboarding.md:27
 msgid "A folio (the content repo)"
-msgstr "Фолио (репозиторий контента)"
+msgstr "Фолио (репозиторий содержимого)"
 
 #: agent-onboarding.md:182
 msgid "A skill's typed contract"

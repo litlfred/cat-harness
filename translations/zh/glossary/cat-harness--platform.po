@@ -28,7 +28,7 @@ msgstr "一个具体的参与者，可以是人、智能体或机械程序，贯
 #: folio-assistant-core/glossary/cat-harness.glossary.json:11
 #. Glossary term definition: https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/associated-harness
 msgid "A harness this one knows by name, site and repository, and never loads, builds or copies. The fourth relation beside depends (needs), references (remoteGraphs) and utilizes (dependencies)."
-msgstr "本框架按名称、站点和仓库知晓、但从不加载、构建或复制的另一个框架。这是依赖（needs）、引用（remoteGraphs）和使用（dependencies）之外的第四种关系。"
+msgstr "本工具框架按名称、站点和仓库知晓、但从不加载、构建或复制的另一个工具框架。这是依赖（needs）、引用（remoteGraphs）和使用（dependencies）之外的第四种关系。"
 
 #: folio-assistant-core/glossary/cat-harness.glossary.json:51
 #. Glossary term label: https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/actor
@@ -38,7 +38,7 @@ msgstr "行动者"
 #: folio-assistant-core/glossary/cat-harness.glossary.json:11
 #. Glossary term label: https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/associated-harness
 msgid "associated harness"
-msgstr "关联框架"
+msgstr "关联工具框架"
 
 #: folio-assistant-core/glossary/cat-harness.glossary.json:28
 #. Glossary term definition: https://litlfred.github.io/cat-harness/v0/ns/glossary/platform/permission

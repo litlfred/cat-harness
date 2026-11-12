@@ -119,11 +119,11 @@ msgstr "将示例配置复制到你的内容仓库中（而不是复制到 folio
 
 #: docs/start/installation.md:167
 msgid "Connecting an LLM harness"
-msgstr "连接 LLM harness"
+msgstr "连接 LLM 工具框架"
 
 #: docs/start/installation.md:169
 msgid "folio-assistant exposes its tools over MCP, so any MCP-capable agent harness can drive it. Below are configurations for the common ones. In every case the agent launches the server over stdio."
-msgstr "folio-assistant 通过 MCP 暴露其工具，因此任何支持 MCP 的智能体 harness 都可以驱动它。以下是常见 harness 的配置。在所有情况下，智能体都通过 stdio 启动服务器。"
+msgstr "folio-assistant 通过 MCP 暴露其工具，因此任何支持 MCP 的智能体工具框架都可以驱动它。以下是常见工具框架的配置。在所有情况下，智能体都通过 stdio 启动服务器。"
 
 #: docs/start/installation.md:173
 msgid "Claude Code"

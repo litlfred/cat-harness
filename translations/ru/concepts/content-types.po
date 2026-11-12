@@ -23,7 +23,7 @@ msgstr ""
 
 #: docs/concepts/content-types.md:13
 msgid "Content types"
-msgstr "Типы контента"
+msgstr "Типы содержимого"
 
 #: docs/concepts/content-types.md:18
 msgid "On this page"
@@ -31,11 +31,11 @@ msgstr "На этой странице"
 
 #: docs/concepts/content-types.md:29
 msgid "folio-assistant is content-agnostic: the platform knows nothing about any particular paper or guideline. Each kind of content is supported by a content adapter (code that knows how to validate/build/render that kind) and a skill package (the authoring formalism — what an author and the LLM do)."
-msgstr "folio-assistant не зависит от контента: платформе ничего не известно о какой-либо конкретной статье или руководстве. Каждый вид контента поддерживается адаптером контента (код, который умеет валидировать, собирать и отображать этот вид) и пакетом навыков (формализм создания — то, что делают автор и LLM)."
+msgstr "folio-assistant не зависит от содержимого: платформе ничего не известно о какой-либо конкретной статье или руководстве. Каждый вид содержимого поддерживается адаптером содержимого (код, который умеет валидировать, собирать и отображать этот вид) и пакетом навыков (формализм создания — то, что делают автор и LLM)."
 
 #: docs/concepts/content-types.md:34
 msgid "This page describes the formalism of each content type. It is intentionally kept separate from any concrete content; concrete artifacts live in their own content repository."
-msgstr "На этой странице описан формализм каждого типа контента. Он намеренно отделен от какого-либо конкретного контента; конкретные артефакты располагаются в собственном репозитории контента."
+msgstr "На этой странице описан формализм каждого типа содержимого. Он намеренно отделен от какого-либо конкретного содержимого; конкретные артефакты располагаются в собственном репозитории содержимого."
 
 #: docs/concepts/content-types.md:139
 msgid "Scientific papers & books"
