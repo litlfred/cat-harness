@@ -75,7 +75,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`node-kind-pages/`](node-kind-pages/) | _nothing declares what this holds_ | |
 | [`npm/`](npm/) | _nothing declares what this holds_ | |
 | [`ns-vocabulary/`](ns-vocabulary/) | _nothing declares what this holds_ | |
-| [`open-work-lookup/`](open-work-lookup/) | _nothing declares what this holds_ | |
 | [`openapi-ingest-rendered/`](openapi-ingest-rendered/) | _nothing declares what this holds_ | |
 | [`openapi-ingest-source/`](openapi-ingest-source/) | _nothing declares what this holds_ | |
 | [`openapi-pages/`](openapi-pages/) | _nothing declares what this holds_ | |
@@ -105,7 +104,6 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`separation-cutover-check/`](separation-cutover-check/) | _nothing declares what this holds_ | |
 | [`serve-rendering/`](serve-rendering/) | _nothing declares what this holds_ | |
 | [`serve-rendering-py/`](serve-rendering-py/) | _nothing declares what this holds_ | |
-| [`sibling-sessions/`](sibling-sessions/) | _nothing declares what this holds_ | |
 | [`site-build-local/`](site-build-local/) | _nothing declares what this holds_ | |
 | [`site-search-index/`](site-search-index/) | _nothing declares what this holds_ | |
 | [`site-search-scopes/`](site-search-scopes/) | _nothing declares what this holds_ | |

@@ -42,8 +42,7 @@
       ]
     },
     "satisfies": [
-      "role-model",
-      "coordinate"
+      "role-model"
     ],
     "requires": {
       "network": false

@@ -33,8 +33,7 @@
     },
     "satisfies": [
       "npm-kg-distribution",
-      "remote-mount",
-      "package-release"
+      "remote-mount"
     ],
     "requires": {
       "runtime": [

@@ -44,9 +44,6 @@
 `beans create`, running the exact-title existence check first. The engine has
 no `create` op — it claims, notes and resolves the instance's OWN bean — so
 what this step records here is a note that the plan now exists.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="todo-manager"/>
-      </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:callActivity id="BA_Signoff" name="Sign off on&#10;requirements" calledElement="Process_Adjudication">
       <bpmn:documentation>The business analyst / requester signs off on the agreed requirement set, on the issue: what was agreed and what was deferred. Recorded as their decision, with its reason, never by an agent on their behalf. It IS an adjudication: it calls Process_Adjudication with the requirement-set answers, and every answer goes through A_RecordSignoff before anything follows it.</bpmn:documentation>
@@ -83,7 +80,6 @@ against the branch's files and subject, scaled to the blast radius, and the
 result recorded in the bean before the first edit.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="crdm-requirements-workflow"/>
-        <bootstrap.processes:skill ref="coordinate"/>
       </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:endEvent id="End_Process_CRDM_Signoff" name="Phase complete"/>

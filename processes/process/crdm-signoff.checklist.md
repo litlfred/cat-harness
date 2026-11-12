@@ -15,7 +15,6 @@ The approved requirements become work-plan items, the BA signs off, and the bran
 ### 1. Phase 5: Create beans (`A_CreateBeans`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `todo-manager`.
 - What: The agent mints the implementation beans itself with `beans create`, running the exact-title existence check first.
 - Record it: `workflow_complete` with `node: "A_CreateBeans"`.
 - next: → `BA_Signoff` (Sign off on requirements)
@@ -84,7 +83,7 @@ as an answer» → `A_AnnounceBranch` (Announce the branch on the issue)
 ### 7. Announce the branch on the issue (`A_AnnounceBranch`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
-- Skill: `crdm-requirements-workflow`, `coordinate`.
+- Skill: `crdm-requirements-workflow`.
 - What: On CREATING the feature branch, comment on the issue: the branch name, the process and phase, and the beans claimed.
 - Record it: `workflow_complete` with `node: "A_AnnounceBranch"`.
 - next: → `End_Process_CRDM_Signoff` (Phase complete)

@@ -1,4 +1,4 @@
-The diagram above is the whole cycle. Three of its edges matter most.
+The bean lifecycle is a process of its own, `bean-lifecycle` (opt-in `cat-harness.sdlc`). Three of its edges matter most.
 
 **The first step is a search, not a creation.** `beans create` is not
 idempotent: it mints a fresh identifier on every call and de-duplicates on
