@@ -8,19 +8,19 @@
   "dcterms:description": "Provenance moved out of the narrative of release-please.json: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "tools/release-please/release-please.json",
+      "@id": "sdlc/tools/release-please/release-please.json",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "tools/release-please/release-please.json#provenance-1"
+          "@id": "sdlc/tools/release-please/release-please.json#provenance-1"
         },
         {
-          "@id": "tools/release-please/release-please.json#provenance-2"
+          "@id": "sdlc/tools/release-please/release-please.json#provenance-2"
         }
       ]
     },
     {
-      "@id": "tools/release-please/release-please.json#provenance-1",
+      "@id": "sdlc/tools/release-please/release-please.json#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "tool.description",
@@ -30,7 +30,7 @@
       ]
     },
     {
-      "@id": "tools/release-please/release-please.json#provenance-2",
+      "@id": "sdlc/tools/release-please/release-please.json#provenance-2",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "bean",
       "cat-harness:section": "tool.selection.limits",

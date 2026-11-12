@@ -105,7 +105,7 @@ Read-only is the floor. Whether the reader may write is a question about the too
   <bpmndi:BPMNDiagram id="Diagram_Process_HarnessRendering">
     <bpmndi:BPMNPlane id="Plane_Process_HarnessRendering" bpmnElement="Collaboration_Process_HarnessRendering">
       <bpmndi:BPMNShape id="Shape_Participant_HR" bpmnElement="Participant_Process_HarnessRendering" isHorizontal="true">
-        <dc:Bounds x="100" y="60" width="1240" height="540" />
+        <dc:Bounds x="100" y="60" width="1240" height="610" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Pipeline_HR" bpmnElement="Lane_Pipeline" isHorizontal="true">
         <dc:Bounds x="130" y="60" width="1210" height="160" />
@@ -114,76 +114,88 @@ Read-only is the floor. Whether the reader may write is a question about the too
         <dc:Bounds x="130" y="220" width="1210" height="160" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Reviewer_HR" bpmnElement="Lane_Reviewer" isHorizontal="true">
-        <dc:Bounds x="130" y="380" width="1210" height="220" />
+        <dc:Bounds x="130" y="380" width="1210" height="290" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_HR" bpmnElement="Start_Process_HarnessRendering">
         <dc:Bounds x="180" y="122" width="36" height="36" />
         <bpmndi:BPMNLabel><dc:Bounds x="150" y="165" width="96" height="40" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Tiles" bpmnElement="A_Tiles">
-        <dc:Bounds x="270" y="95" width="120" height="90" />
+        <dc:Bounds x="270" y="80" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Ground" bpmnElement="A_Ground">
-        <dc:Bounds x="440" y="95" width="120" height="90" />
+        <dc:Bounds x="440" y="80" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Publish" bpmnElement="A_Publish">
-        <dc:Bounds x="610" y="95" width="120" height="90" />
+        <dc:Bounds x="610" y="80" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Board" bpmnElement="A_Board">
-        <dc:Bounds x="610" y="255" width="120" height="90" />
+        <dc:Bounds x="610" y="240" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Read" bpmnElement="A_Read">
-        <dc:Bounds x="610" y="445" width="120" height="90" />
+        <dc:Bounds x="610" y="430" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Write" bpmnElement="GW_Write" isMarkerVisible="true">
         <dc:Bounds x="790" y="465" width="50" height="50" />
         <bpmndi:BPMNLabel><dc:Bounds x="725" y="400" width="110" height="40" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Propose" bpmnElement="A_Propose">
-        <dc:Bounds x="910" y="395" width="120" height="90" />
+        <dc:Bounds x="910" y="395" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Todo" bpmnElement="A_Todo">
-        <dc:Bounds x="910" y="500" width="120" height="90" />
+        <dc:Bounds x="910" y="535" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Proposed" bpmnElement="End_Proposed">
-        <dc:Bounds x="1100" y="422" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1150" y="420" width="140" height="40" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="1100" y="437" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1150" y="435" width="140" height="40" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Noted" bpmnElement="End_Noted">
-        <dc:Bounds x="1100" y="527" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1150" y="525" width="140" height="40" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="1100" y="577" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1150" y="575" width="140" height="40" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_HR_1" bpmnElement="SF_HR_1">
-        <di:waypoint x="216" y="140" /><di:waypoint x="270" y="140" />
+        <di:waypoint x="216" y="140" />
+        <di:waypoint x="270" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_2" bpmnElement="SF_HR_2">
-        <di:waypoint x="390" y="140" /><di:waypoint x="440" y="140" />
+        <di:waypoint x="390" y="140" />
+        <di:waypoint x="440" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_3" bpmnElement="SF_HR_3">
-        <di:waypoint x="560" y="140" /><di:waypoint x="610" y="140" />
+        <di:waypoint x="560" y="140" />
+        <di:waypoint x="610" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_4" bpmnElement="SF_HR_4">
-        <di:waypoint x="670" y="185" /><di:waypoint x="670" y="255" />
+        <di:waypoint x="670" y="200" />
+        <di:waypoint x="670" y="240" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_5" bpmnElement="SF_HR_5">
-        <di:waypoint x="670" y="345" /><di:waypoint x="670" y="445" />
+        <di:waypoint x="670" y="360" />
+        <di:waypoint x="670" y="430" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_6" bpmnElement="SF_HR_6">
-        <di:waypoint x="730" y="490" /><di:waypoint x="790" y="490" />
+        <di:waypoint x="730" y="490" />
+        <di:waypoint x="790" y="490" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_7" bpmnElement="SF_HR_7">
-        <di:waypoint x="815" y="465" /><di:waypoint x="815" y="440" /><di:waypoint x="910" y="440" />
-        <bpmndi:BPMNLabel><dc:Bounds x="872" y="418" width="30" height="20" /></bpmndi:BPMNLabel>
+        <di:waypoint x="815" y="465" />
+        <di:waypoint x="815" y="455" />
+        <di:waypoint x="910" y="455" />
+        <bpmndi:BPMNLabel><dc:Bounds x="835" y="430" width="40" height="20" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_8" bpmnElement="SF_HR_8">
-        <di:waypoint x="815" y="515" /><di:waypoint x="815" y="545" /><di:waypoint x="910" y="545" />
-        <bpmndi:BPMNLabel><dc:Bounds x="872" y="548" width="30" height="20" /></bpmndi:BPMNLabel>
+        <di:waypoint x="815" y="515" />
+        <di:waypoint x="815" y="595" />
+        <di:waypoint x="910" y="595" />
+        <bpmndi:BPMNLabel><dc:Bounds x="835" y="570" width="40" height="20" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_9" bpmnElement="SF_HR_9">
-        <di:waypoint x="1030" y="440" /><di:waypoint x="1100" y="440" />
+        <di:waypoint x="1030" y="455" />
+        <di:waypoint x="1100" y="455" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_10" bpmnElement="SF_HR_10">
-        <di:waypoint x="1030" y="545" /><di:waypoint x="1100" y="545" />
+        <di:waypoint x="1030" y="595" />
+        <di:waypoint x="1100" y="595" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

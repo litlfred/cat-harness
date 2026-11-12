@@ -8,16 +8,16 @@
   "dcterms:description": "Provenance moved out of the narrative of gates-merged.json: who decided, when, and under which work item or proposal. The document keeps the rules and their reasons; this log is rendered in its footer.",
   "@graph": [
     {
-      "@id": "tools/gates-merged/gates-merged.json",
+      "@id": "sdlc/tools/gates-merged/gates-merged.json",
       "@type": "prov:Entity",
       "prov:wasInfluencedBy": [
         {
-          "@id": "tools/gates-merged/gates-merged.json#provenance-1"
+          "@id": "sdlc/tools/gates-merged/gates-merged.json#provenance-1"
         }
       ]
     },
     {
-      "@id": "tools/gates-merged/gates-merged.json#provenance-1",
+      "@id": "sdlc/tools/gates-merged/gates-merged.json#provenance-1",
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "tool.selection.limits",

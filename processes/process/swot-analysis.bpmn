@@ -122,79 +122,89 @@ What is handed over includes the ambiguities from A_RecordAmbiguous and the fact
   <bpmndi:BPMNDiagram id="Diagram_Process_SwotAnalysis">
     <bpmndi:BPMNPlane id="Plane_Process_SwotAnalysis" bpmnElement="Collaboration_Process_SwotAnalysis">
       <bpmndi:BPMNShape id="Shape_Participant_Process_SwotAnalysis" bpmnElement="Participant_Process_SwotAnalysis" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="1340" height="280" />
+        <dc:Bounds x="160" y="80" width="1340" height="334" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_BusinessAnalyst" bpmnElement="Lane_BusinessAnalyst" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="1310" height="180" />
+        <dc:Bounds x="190" y="80" width="1310" height="190" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Lane_Stakeholder" bpmnElement="Lane_Stakeholder" isHorizontal="true">
-        <dc:Bounds x="190" y="260" width="1310" height="100" />
+        <dc:Bounds x="190" y="270" width="1310" height="144" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_Process_SwotAnalysis" bpmnElement="Start_Process_SwotAnalysis">
         <dc:Bounds x="232" y="152" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="221" y="187.5" width="90" height="53" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="221" y="187.5" width="90" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_FrameSubject" bpmnElement="A_FrameSubject">
-        <dc:Bounds x="320" y="130" width="120" height="80" />
+        <dc:Bounds x="320" y="110" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ScanExternal" bpmnElement="A_ScanExternal">
-        <dc:Bounds x="480" y="130" width="120" height="80" />
+        <dc:Bounds x="480" y="110" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_ScanInternal" bpmnElement="A_ScanInternal">
-        <dc:Bounds x="640" y="130" width="120" height="80" />
+        <dc:Bounds x="640" y="110" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_GroupReview" bpmnElement="A_GroupReview">
-        <dc:Bounds x="640" y="270" width="120" height="80" />
+        <dc:Bounds x="640" y="282" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_RecordAmbiguous" bpmnElement="A_RecordAmbiguous">
-        <dc:Bounds x="800" y="130" width="120" height="80" />
+        <dc:Bounds x="800" y="110" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Cross" bpmnElement="A_Cross">
-        <dc:Bounds x="960" y="130" width="120" height="80" />
+        <dc:Bounds x="960" y="110" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_DecisionFollows" bpmnElement="GW_DecisionFollows" isMarkerVisible="true">
         <dc:Bounds x="1120" y="145" width="50" height="50" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1100" y="88" width="90" height="53" /></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
+        
+      <bpmndi:BPMNLabel><dc:Bounds x="1100" y="88" width="90" height="53" /></bpmndi:BPMNLabel></bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_HandOff" bpmnElement="A_HandOff">
-        <dc:Bounds x="1220" y="130" width="120" height="80" />
+        <dc:Bounds x="1220" y="110" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_HandedToDecision" bpmnElement="End_HandedToDecision">
         <dc:Bounds x="1400" y="152" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_SituationRecorded" bpmnElement="End_SituationRecorded">
-        <dc:Bounds x="1127" y="222" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="1167" y="222" width="180" height="36" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="1127" y="235" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1170.5" y="233.06" width="180" height="36" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_1" bpmnElement="SF_Process_SwotAnalysis_1">
-        <di:waypoint x="268" y="170" /><di:waypoint x="320" y="170" />
+        <di:waypoint x="268" y="170" />
+        <di:waypoint x="320" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_2" bpmnElement="SF_Process_SwotAnalysis_2">
-        <di:waypoint x="440" y="170" /><di:waypoint x="480" y="170" />
+        <di:waypoint x="440" y="170" />
+        <di:waypoint x="480" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_3" bpmnElement="SF_Process_SwotAnalysis_3">
-        <di:waypoint x="600" y="170" /><di:waypoint x="640" y="170" />
+        <di:waypoint x="600" y="170" />
+        <di:waypoint x="640" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_4" bpmnElement="SF_Process_SwotAnalysis_4">
-        <di:waypoint x="700" y="210" /><di:waypoint x="700" y="270" />
+        <di:waypoint x="700" y="230" />
+        <di:waypoint x="700" y="282" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_5" bpmnElement="SF_Process_SwotAnalysis_5">
-        <di:waypoint x="760" y="310" /><di:waypoint x="860" y="310" /><di:waypoint x="860" y="210" />
+        <di:waypoint x="760" y="342" />
+        <di:waypoint x="860" y="342" />
+        <di:waypoint x="860" y="230" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_6" bpmnElement="SF_Process_SwotAnalysis_6">
-        <di:waypoint x="920" y="170" /><di:waypoint x="960" y="170" />
+        <di:waypoint x="920" y="170" />
+        <di:waypoint x="960" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_7" bpmnElement="SF_Process_SwotAnalysis_7">
-        <di:waypoint x="1080" y="170" /><di:waypoint x="1120" y="170" />
+        <di:waypoint x="1080" y="170" />
+        <di:waypoint x="1120" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_8" bpmnElement="SF_Process_SwotAnalysis_8">
-        <di:waypoint x="1170" y="170" /><di:waypoint x="1220" y="170" />
+        <di:waypoint x="1170" y="170" />
+        <di:waypoint x="1220" y="170" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_9" bpmnElement="SF_Process_SwotAnalysis_9">
-        <di:waypoint x="1145" y="195" /><di:waypoint x="1145" y="222" />
+        <di:waypoint x="1145" y="195" /><di:waypoint x="1145" y="235" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_Process_SwotAnalysis_10" bpmnElement="SF_Process_SwotAnalysis_10">
-        <di:waypoint x="1340" y="170" /><di:waypoint x="1400" y="170" />
+        <di:waypoint x="1340" y="170" />
+        <di:waypoint x="1400" y="170" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
