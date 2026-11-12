@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: kg-separation-move\n"
-"POT-Creation-Date: 2026-11-08T11:49:26.507Z\n"
+"POT-Creation-Date: 2026-11-12T15:12:55.862Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -24,9 +24,9 @@ msgstr ""
 msgid "Administrator"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:132
+#: processes/kg/kg-separation-move.bpmn:129
 #. Diagram element documentation
-msgid "After the release is live, every published identifier resolves to the file it names."
+msgid "After the release is live, every published identifier resolves to the file it names. Where `cat-harness.sdlc` is switched on, this step is the opt-in process `publish-verification` (`Process_PublishVerification`, sdlc/processes/publish-verification.bpmn); it is not called from here, because a layer without that sub-graph does not have it (owner card Q-OPTIN-CALLS A, 2026-11-12)."
 msgstr ""
 
 #: processes/kg/kg-separation-move.bpmn:67
@@ -39,7 +39,7 @@ msgstr ""
 msgid "Authoring agent"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:140
+#: processes/kg/kg-separation-move.bpmn:134
 #. Diagram element documentation
 msgid "Both repositories seeded, the parent consumes them, and the first release dereferences."
 msgstr ""
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Build pipeline"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:161
+#: processes/kg/kg-separation-move.bpmn:155
 #. Diagram label
 msgid "could not run"
 msgstr ""
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Drain: land, close or re-target the open PRs"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:131
+#: processes/kg/kg-separation-move.bpmn:128
 #. Diagram label
 msgid "Every identifier dereferences"
 msgstr ""
@@ -89,7 +89,7 @@ msgstr ""
 msgid "First release"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:162
+#: processes/kg/kg-separation-move.bpmn:156
 #. Diagram label
 msgid "green"
 msgstr ""
@@ -114,7 +114,7 @@ msgstr ""
 msgid "Move the graph into its repositories"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:153
+#: processes/kg/kg-separation-move.bpmn:147
 #. Diagram label
 msgid "not yet"
 msgstr ""
@@ -144,7 +144,7 @@ msgstr ""
 msgid "Re-point: livesAt, seam, mount or subscription"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:144
+#: processes/kg/kg-separation-move.bpmn:138
 #. Diagram element documentation
 msgid "Readiness could not be decided. Nothing was seeded; not clean."
 msgstr ""
@@ -154,12 +154,12 @@ msgstr ""
 msgid "Ready to seed?"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:160
+#: processes/kg/kg-separation-move.bpmn:154
 #. Diagram label
 msgid "red"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:139
+#: processes/kg/kg-separation-move.bpmn:133
 #. Diagram label
 msgid "Released and dereferencing"
 msgstr ""
@@ -179,7 +179,7 @@ msgstr ""
 msgid "Seed main, then bring the content and the tools in as reviewed pull requests with their history, so neither repository's first commit is unreviewable. The seed includes every publisher the declaration promises (`sub-kg-lifecycle` stage 10): a `qa` directory with `storage` needs `.github/workflows/publish-qa.yml`, the caller of the tools layer's `layer-qa-publish.yml`, and `test/results/` ignored. Without it the declared store is never written, and once the layer stops committing its results no reader finds them."
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:156
+#: processes/kg/kg-separation-move.bpmn:150
 #. Diagram label
 msgid "settled"
 msgstr ""
@@ -189,7 +189,7 @@ msgstr ""
 msgid "Tag each repository, publish /v<major>/. From here the two are versioned independently; a tools release lists the content majors it supports."
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:148
+#: processes/kg/kg-separation-move.bpmn:142
 #. Diagram element documentation
 msgid "The fresh clone could not be verified. Reported as could-not-check; the in-repo copy is not touched."
 msgstr ""
@@ -201,7 +201,7 @@ msgstr ""
 
 #: processes/kg/kg-separation-move.bpmn:116
 #. Diagram element documentation
-msgid "The parent pins the pair (a commit while staging, a version once released) — a code dependency as a `source.remote` instance in its root `index.config.json` (remote-mount skill), never a submodule — repoints its imports, and keeps its own copy until it is green with the dependency declared."
+msgid "The parent pins the pair (a commit while staging, a version once released) — a code dependency as a `source.remote` instance in its root `index.config.json` (remote-mount skill), never a submodule — repoints its imports, and keeps its own copy until it is green with the dependency declared. Where `cat-harness.sdlc` is switched on, this step is the opt-in process `upstream-version-adoption` (`Process_UpstreamAdoption`, sdlc/processes/upstream-version-adoption.bpmn); it is not called from here, because a layer without that sub-graph does not have it (owner card Q-OPTIN-CALLS A, 2026-11-12)."
 msgstr ""
 
 #: processes/kg/kg-separation-move.bpmn:26
@@ -214,17 +214,17 @@ msgstr ""
 msgid "The platform-side stages: the graph's identity (version, iriBase, nodeSchemas), moving harness output about it into the host, splitting the content from its tools, and making the parent consume the pair additively."
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:155
+#: processes/kg/kg-separation-move.bpmn:149
 #. Diagram label
 msgid "unknown"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:143
+#: processes/kg/kg-separation-move.bpmn:137
 #. Diagram label
 msgid "UNKNOWN: do not seed"
 msgstr ""
 
-#: processes/kg/kg-separation-move.bpmn:147
+#: processes/kg/kg-separation-move.bpmn:141
 #. Diagram label
 msgid "UNKNOWN: stop. Not clean"
 msgstr ""

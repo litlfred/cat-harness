@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: actor-role-administration\n"
-"POT-Creation-Date: 2026-11-10T17:57:41.614Z\n"
+"POT-Creation-Date: 2026-11-12T15:12:55.891Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -29,7 +29,7 @@ msgstr ""
 msgid "Actor and role administration"
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:175
+#: processes/process/actor-role-administration.bpmn:174
 #. Diagram label
 msgid "add actor"
 msgstr ""
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Administrator"
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:155
+#: processes/process/actor-role-administration.bpmn:154
 #. Diagram element documentation
 msgid "AFTER the change, not before. Every criterion here is a join — role to lane, actor to role, activity to skill — so what an administrative edit breaks is not in the file it edited. The sidecars under `test/results/kg-qa/` are committed for the reason a printed verdict is not: without them, \"unbound since it was drawn\" and \"broken by this change\" are indistinguishable. Runs `kg:audit`."
 msgstr ""
@@ -59,17 +59,17 @@ msgstr ""
 msgid "An actor id is referenced from roles, diagrams, beans and commits, so removing the file leaves every one of those unable to tell retirement from accident. Same rule, and the same reason, as a scrapped bean."
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:176
+#: processes/process/actor-role-administration.bpmn:175
 #. Diagram label
 msgid "assign roles"
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:163
+#: processes/process/actor-role-administration.bpmn:162
 #. Diagram label
 msgid "Audit clean?"
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:154
+#: processes/process/actor-role-administration.bpmn:153
 #. Diagram label
 msgid "Audit the graph"
 msgstr ""
@@ -86,7 +86,7 @@ msgstr ""
 
 #: processes/process/actor-role-administration.bpmn:145
 #. Diagram element documentation
-msgid "Called rather than restated. The mechanics of getting an edit reviewed and merged are not specific to the role graph, and a second description of them is a second thing free to disagree with the first."
+msgid "Called rather than restated. The mechanics of getting an edit reviewed and merged are not specific to the role graph, and a second description of them is a second thing free to disagree with the first. Where `cat-harness.sdlc` is switched on, this step is the opt-in process `code-change-review` (`Process_CodeChangeReview`, sdlc/processes/code-change-review.bpmn); it is not called from here, because a layer without that sub-graph does not have it (owner card Q-OPTIN-CALLS A, 2026-11-12)."
 msgstr ""
 
 #: processes/process/actor-role-administration.bpmn:40
@@ -109,7 +109,7 @@ msgstr ""
 msgid "Graph audit (system)"
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:170
+#: processes/process/actor-role-administration.bpmn:169
 #. Diagram label
 msgid "Graph changed and audited"
 msgstr ""
@@ -119,7 +119,7 @@ msgstr ""
 msgid "Human, agentic or mechanical. A userTask because the agentic/mechanical line is JUDGEMENT — role-model.md says so — and reading it wrong disqualifies the actor from every judgement task it exists to perform, silently."
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:186
+#: processes/process/actor-role-administration.bpmn:185
 #. Diagram label
 msgid "no"
 msgstr ""
@@ -129,7 +129,7 @@ msgstr ""
 msgid "Open or close a role to an actor"
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:177
+#: processes/process/actor-role-administration.bpmn:176
 #. Diagram label
 msgid "permission"
 msgstr ""
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Read from the request. Deliberately NOT DMN-backed: the four branches are not computable from a fact anyone reports — they are what was asked for, and a table that pretended otherwise would return an answer that is not the request."
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:178
+#: processes/process/actor-role-administration.bpmn:177
 #. Diagram label
 msgid "retire"
 msgstr ""
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Runs only after CallActivity_CodeChangeReview has already completed its own review, because the breakage this lane exists to catch — a join across role, lane, actor and skill — is invisible to a code reviewer reading the diff in isolation; ordinary code review clears the edit, and only this lane's whole-graph pass can tell whether it silently broke something three diagrams away."
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:164
+#: processes/process/actor-role-administration.bpmn:163
 #. Diagram element documentation
 msgid "The administrator's call, not the pipeline's: `kg:audit:check` fails on `critical` and `kg:audit:strict` adds `major`, so what holds a change is a policy choice about this layer rather than arithmetic the audit performs."
 msgstr ""
@@ -169,7 +169,7 @@ msgstr ""
 msgid "Which administration change?"
 msgstr ""
 
-#: processes/process/actor-role-administration.bpmn:188
+#: processes/process/actor-role-administration.bpmn:187
 #. Diagram label
 msgid "yes"
 msgstr ""

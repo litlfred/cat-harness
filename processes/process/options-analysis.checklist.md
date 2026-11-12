@@ -1,8 +1,8 @@
-<!-- GENERATED from cat-harness/sdlc/processes/options-analysis.bpmn by cat-harness-tools/scripts/bpmn-checklist.ts. Do not edit: change the diagram and regenerate (bun run cat bpmn:checklist). -->
+<!-- GENERATED from cat-harness/processes/process/options-analysis.bpmn by cat-harness-tools/scripts/bpmn-checklist.ts. Do not edit: change the diagram and regenerate (bun run cat bpmn:checklist). -->
 
 # Checklist — Options analysis
 
-> **Generated, and not the authority.** This is `cat-harness/sdlc/processes/options-analysis.bpmn` (process `Process_OptionsAnalysis`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
+> **Generated, and not the authority.** This is `cat-harness/processes/process/options-analysis.bpmn` (process `Process_OptionsAnalysis`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
 A decision reached by a NAMED methodology, with its rejected options recorded.
 

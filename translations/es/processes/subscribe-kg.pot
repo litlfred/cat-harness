@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: subscribe-kg\n"
-"POT-Creation-Date: 2026-11-10T17:57:41.577Z\n"
+"POT-Creation-Date: 2026-11-12T15:12:55.827Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: library/processes/subscribe-kg.bpmn:184
 #. Diagram label
-msgid "Choose subgraphs, the asset policy, harnesses"
+msgid "Choose subgraphs, assets, harnesses"
 msgstr ""
 
 #: library/processes/subscribe-kg.bpmn:290

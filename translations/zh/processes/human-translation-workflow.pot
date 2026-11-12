@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: human-translation-workflow\n"
-"POT-Creation-Date: 2026-11-10T17:57:41.565Z\n"
+"POT-Creation-Date: 2026-11-12T15:12:55.800Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Assign to qualified human translator"
 msgstr ""
 
-#: library/processes/human-translation-workflow.bpmn:66
+#: library/processes/human-translation-workflow.bpmn:58
 #. Diagram label
 msgid "Automated Pipeline"
 msgstr ""
@@ -94,7 +94,7 @@ msgstr ""
 msgid "Human Translation Workflow"
 msgstr ""
 
-#: library/processes/human-translation-workflow.bpmn:52
+#: library/processes/human-translation-workflow.bpmn:43
 #. Diagram label
 msgid "Human Translator"
 msgstr ""
@@ -124,12 +124,12 @@ msgstr ""
 msgid "No gateway follows: drift or clean, the translation goes to Task_SMEReview with the findings attached. Which of two readings is right is a human call (translation-manager, \"route drift to a human reviewer\"), and every translation in this workflow is reviewed and signed off anyway, so a clean result is evidence for the reviewer and never a way around them. The findings include `translation:glossary:check`'s: every glossary term translated against the locale term base, fixed before sign-off, with its glossary section in the KG QA report."
 msgstr ""
 
-#: library/processes/human-translation-workflow.bpmn:67
+#: library/processes/human-translation-workflow.bpmn:59
 #. Diagram element documentation
 msgid "Owns extraction, glossary preparation, injection and round-trip QA — the only machine check for semantic drift — whose findings go to Task_SMEReview whatever they say, so a clean round-trip is evidence for the reviewer, never a bypass of them. The same lane writes the final status.json once sign-off lands, so the official record sits beside the checks that fed it."
 msgstr ""
 
-#: library/processes/human-translation-workflow.bpmn:44
+#: library/processes/human-translation-workflow.bpmn:50
 #. Diagram element documentation
 msgid "Owns the completeness gate, Gateway_Complete, a different question from the accuracy Lane_Reviewer judges later: this lane can send work back to the translator for missing or fuzzy strings before a single sentence has been checked for meaning."
 msgstr ""
@@ -174,7 +174,7 @@ msgstr ""
 msgid "Sign off translation as official"
 msgstr ""
 
-#: library/processes/human-translation-workflow.bpmn:58
+#: library/processes/human-translation-workflow.bpmn:67
 #. Diagram label
 msgid "Subject-Matter Expert / Reviewer"
 msgstr ""
@@ -184,7 +184,7 @@ msgstr ""
 msgid "Submit completed .po file"
 msgstr ""
 
-#: library/processes/human-translation-workflow.bpmn:53
+#: library/processes/human-translation-workflow.bpmn:44
 #. Diagram element documentation
 msgid "Task_TranslateInTool is where both loops in this process land — an incompleteness request from the coordinator and a correction from the reviewer — so nothing in the task itself says which one sent the work back; only the annotations that travel with each loop carry that distinction."
 msgstr ""
@@ -204,7 +204,7 @@ msgstr ""
 msgid "The human half of translation: a coordinator assigns a locale to a qualified translator, the translator works in their own tool, a subject-matter expert judges accuracy, and only then is the result official. You are in this process when a person is doing the translating. `translation-workflow` is the machine half — extraction, injection, staleness — and it hands off to this one at exactly the point a judgement is needed. The two are separate because completeness is mechanical and accuracy is not: the coordinator's gate asks whether enough strings are filled, the reviewer's asks whether they are right, and no amount of the first substitutes for the second. What makes a translation OFFICIAL is the reviewer's sign-off, never the file being complete."
 msgstr ""
 
-#: library/processes/human-translation-workflow.bpmn:59
+#: library/processes/human-translation-workflow.bpmn:68
 #. Diagram element documentation
 msgid "The one reviewer lane in this corpus where sign-off is acceptance: Task_Signoff makes the translation official directly, with no separate editor lane after it, because translation fidelity is the acceptance criterion and there is no different judgement left for an editor to add."
 msgstr ""
@@ -249,7 +249,7 @@ msgstr ""
 msgid "Translation accurate?"
 msgstr ""
 
-#: library/processes/human-translation-workflow.bpmn:43
+#: library/processes/human-translation-workflow.bpmn:49
 #. Diagram label
 msgid "Translation Coordinator"
 msgstr ""

@@ -46,7 +46,7 @@ The generic review position: classify what changed, descend into the review that
 
 - Who: the `Reviewer / SME` lane (role `reviewer`).
 - What: Descend into Process_NarrativeCodeReview: judge what the pair checks could not settle (a stale pair, a false or undetermined claim), and send a disagreement with a checker to adjudication.
-- A subprocess (`Process_NarrativeCodeReview`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- Record it: `workflow_complete` with `node: "Call_NarrativeCodeReview"`.
 - next: → `GW_Join`
 
 ### Merge — `GW_Join`

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: review-task\n"
-"POT-Creation-Date: 2026-11-04T20:47:21.065Z\n"
+"POT-Creation-Date: 2026-11-12T15:12:55.844Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -56,7 +56,7 @@ msgstr ""
 
 #: processes/content/review-task.bpmn:102
 #. Diagram element documentation
-msgid "Descend into Process_NarrativeCodeReview: judge what the pair checks could not settle (a stale pair, a false or undetermined claim), and send a disagreement with a checker to adjudication."
+msgid "Descend into Process_NarrativeCodeReview: judge what the pair checks could not settle (a stale pair, a false or undetermined claim), and send a disagreement with a checker to adjudication. Where `cat-harness.sdlc` is switched on, this step is the opt-in process `narrative-code-review` (`Process_NarrativeCodeReview`, sdlc/processes/narrative-code-review.bpmn); it is not called from here, because a layer without that sub-graph does not have it (owner card Q-OPTIN-CALLS A, 2026-11-12)."
 msgstr ""
 
 #: processes/content/review-task.bpmn:88

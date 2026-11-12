@@ -48,7 +48,7 @@ The stakeholders sign off, the BA confirms every criterion is met, the feature l
 
 - Who: the `Agent` lane (role `authoring-agent`).
 - What: Phase 6's "explicit confirmation before merging to main", made a step that can refuse.
-- A subprocess (`Process_MergeToMain`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- Record it: `workflow_complete` with `node: "Call_MergeToMain"`.
 - next: → `A_Close` (Close issue ONLY on BA authorisation)
 
 ## Done — Not accepted — recorded, with its reason (`End_NotAccepted`)
