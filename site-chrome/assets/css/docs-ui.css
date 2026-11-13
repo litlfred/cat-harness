@@ -4595,7 +4595,13 @@ a.fa-glass-asset-tool svg { width: 1.2rem; height: 1.2rem; fill: currentColor; }
   .fa-glass-panel[data-fa-panel="glass-settings"] .fa-glass-setting:nth-of-type(2) { grid-area: avatars; }
   .fa-glass-panel[data-fa-panel="glass-settings"] .fa-glass-setting:nth-of-type(3) { grid-area: opacity; align-self: start; }
   .fa-glass-panel[data-fa-panel="glass-settings"] .fa-glass-settings-actions { grid-area: actions; margin-top: 0.25rem; gap: 0.5rem; }
-  .fa-glass-panel[data-fa-panel="glass-settings"] .fa-glass-settings-actions .fa-glass-reset { margin: 0; }
+  /* The three actions in one row, in the same font one step down the scale
+     (owner, 2026-11-13: "use same font, but scale as needed"). At the
+     browser's button size their labels outgrew 60rem in DejaVu Sans, the system-ui of
+     a Linux runner, and the third wrapped to a second row that put "Back to
+     the default glass" under the dock at 1280x800. Their height is still the
+     2.75rem touch target. */
+  .fa-glass-panel[data-fa-panel="glass-settings"] .fa-glass-settings-actions .fa-glass-reset { margin: 0; font-size: var(--fa-text-xs); }
   .fa-glass-panel[data-fa-panel="glass-settings"] .fa-glass-settings-actions .fa-glass-settings-note { flex: 0 1 auto; margin: 0; }
 }
 .fa-glass-panel-head { display: flex; align-items: center; gap: 0.5rem; }
