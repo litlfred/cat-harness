@@ -136,9 +136,6 @@ EACH COMPONENT, BOTH PHASES. Restore: look up the derived key, verify the entry 
     </bpmn:parallelGateway>
     <bpmn:task id="Task_RenderSeed" name="Render seed:&#10;writer records">
       <bpmn:documentation>Component 4a, the seed of CI's render (owner, 2026-11-05: CI does not run `render`; its render is `derive:publish`). SAVE: main's `writer-records.yml` records each publish-time writer under trace (`writer-cone`): its read set, the state of every path it read, and the outputs it wrote. RESTORE: a run with `CAT_WRITER_SKIP=1` (a pull request, staging, the preview) skips every writer whose recorded reads all still match and puts back main's recorded outputs; a writer whose reads moved runs. The key is the writer's recorded read set; trust (a′): the outputs are the recording's own, so their PROVENANCE is checked — they come only from main's recording run, never from a run a pull request could write. Owner roles: the integrator and the preview session (CI speed 2). `cache` node: `writer-records`. It reports one line in `cached-step`'s format — `cached-step &lt;step&gt;: hit|warm|miss (&lt;trust&gt;) — &lt;why&gt;. Key &lt;key&gt;.` — to the job summary, which the daily hit-rate report counts.</bpmn:documentation>
-      <bpmn:extensionElements>
-        <bootstrap.processes:skill ref="incremental-render"/>
-      </bpmn:extensionElements>
       <bpmn:incoming>f90</bpmn:incoming>
       <bpmn:outgoing>f100</bpmn:outgoing>
     </bpmn:task>

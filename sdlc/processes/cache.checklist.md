@@ -89,7 +89,6 @@ One optional process for every cache in the harness, used by render, CI, publish
 ### 7. Render seed: writer records (`Task_RenderSeed`)
 
 - Who: the `Build pipeline` lane (role `build-pipeline`).
-- Skill: `incremental-render`.
 - What: Component 4a, the seed of CI's render (owner, 2026-11-05: CI does not run `render`; its render is `derive:publish`).
 - Record it: `workflow_complete` with `node: "Task_RenderSeed"`.
 - next: → `PG_Join_Render`
