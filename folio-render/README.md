@@ -13,6 +13,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `folio-render`, holding `
 
 | file | what it is | used by |
 |---|---|---|
+| [`file-list.feature`](file-list.feature) | a file |  |
 | [`file-list.test.ts`](file-list.test.ts) | a file |  |
 | [`file-list.ts`](file-list.ts) | a file |  |
 | [`folio-file-list.md`](folio-file-list.md) | >- |  |
