@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: review-task\n"
-"POT-Creation-Date: 2026-11-12T15:12:55.844Z\n"
+"POT-Creation-Date: 2026-11-13T07:51:53.984Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: processes/content/review-task.bpmn:119
+#: processes/content/review-task.bpmn:122
 #. Diagram label
 msgid "Accept, or send back"
 msgstr ""
@@ -34,17 +34,17 @@ msgstr ""
 msgid "Code node review"
 msgstr ""
 
-#: processes/content/review-task.bpmn:132
+#: processes/content/review-task.bpmn:135
 #. Diagram label
 msgid "code nodes"
 msgstr ""
 
-#: processes/content/review-task.bpmn:111
+#: processes/content/review-task.bpmn:114
 #. Diagram label
 msgid "Consolidate findings"
 msgstr ""
 
-#: processes/content/review-task.bpmn:127
+#: processes/content/review-task.bpmn:130
 #. Diagram label
 msgid "Decision recorded"
 msgstr ""
@@ -84,12 +84,12 @@ msgstr ""
 msgid "Narrative review"
 msgstr ""
 
-#: processes/content/review-task.bpmn:112
+#: processes/content/review-task.bpmn:115
 #. Diagram element documentation
 msgid "One report from however many subprocesses ran. Findings are advice: a reviewer cannot accept the change."
 msgstr ""
 
-#: processes/content/review-task.bpmn:131
+#: processes/content/review-task.bpmn:134
 #. Diagram label
 msgid "prose"
 msgstr ""
@@ -99,7 +99,7 @@ msgstr ""
 msgid "Prose and the code it describes"
 msgstr ""
 
-#: processes/content/review-task.bpmn:133
+#: processes/content/review-task.bpmn:136
 #. Diagram label
 msgid "prose and the code it describes"
 msgstr ""
@@ -124,7 +124,7 @@ msgstr ""
 msgid "Reviewer / SME"
 msgstr ""
 
-#: processes/content/review-task.bpmn:120
+#: processes/content/review-task.bpmn:123
 #. Diagram element documentation
 msgid "The editor's lane, kept separate on purpose: the reviewer who judged the change is not the position that accepts it."
 msgstr ""
