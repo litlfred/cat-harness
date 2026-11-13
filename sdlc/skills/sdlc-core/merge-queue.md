@@ -46,6 +46,12 @@ The steward reads open PRs labelled `ready-to-merge`, and nothing else. A
 comment posted anywhere else reaches nobody: not on a PR you believe is the
 steward's, and not on an issue.
 
+
+A session that cannot message the merge manager labels its own PR
+instead: `ready-to-merge` when it is green, `needs-repin` when it is green
+except for a re-pin. Only the merge manager acts on either label
+([`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
+find the merge manager first"; owner, 2026-11-13).
 ### Ask the user before submitting
 
 **When you finish your work and are ready to merge, ask the user before submitting to the merge queue.** Do not apply `ready-to-merge` or post the `ready:` marker autonomously without asking the user if you should submit. Submitting to the queue requests landing the code on `main`; the user or owner confirms the submission.

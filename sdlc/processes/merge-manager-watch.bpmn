@@ -57,7 +57,7 @@
       <bpmn:outgoing>Flow_22</bpmn:outgoing>
     </bpmn:task>
     <bpmn:startEvent id="Start_Wake" name="Timer, PR event, request, main run, or sibling message">
-      <bpmn:documentation>The sweep cadence, as a backstop: every 10-15 minutes while a P0 PR is in flight, every 30 minutes otherwise. Otherwise a subscribed PR event, a sibling's merge request, a main run finishing, or a sibling's message wakes it. An agent with no chat to the merge manager (a local agent such as agy) signals on the PR itself: ready for review, the label ready-to-merge, and a signed ready: &lt;head sha&gt; comment; each sweep reads every open PR labelled ready-to-merge in the repositories it watches. Never a polling loop inside a turn.</bpmn:documentation>
+      <bpmn:documentation>The sweep cadence, as a backstop: every 10-15 minutes while a P0 PR is in flight, every 30 minutes otherwise. Otherwise a subscribed PR event, a sibling's merge request, a main run finishing, or a sibling's message wakes it. An agent with no chat to the merge manager (a local agent such as agy) signals on its own PR: ready for review and the label ready-to-merge (green) or needs-repin (green except for a re-pin; the merge manager re-pins, then merges), with a signed ready: &lt;head sha&gt; comment until merge:guard accepts the label; each sweep reads every open PR carrying either label in the repositories it watches, and only the merge manager acts on them (owner, 2026-11-13). Never a polling loop inside a turn.</bpmn:documentation>
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
       <bpmn:timerEventDefinition id="Timer_Wake"/>
     </bpmn:startEvent>

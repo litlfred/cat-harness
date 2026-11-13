@@ -75,15 +75,28 @@ manager exists. It checks, in this order:
    while no merge manager holds the lane.
 
 **An agent with no chat to the merge manager** (a local agent such as
-agy, or any tool that only reaches GitHub) signals on the PR, because the
-PR is the message ([`merge-queue`](merge-queue.md) §"The PR is the message"):
-it marks the PR ready for review, adds the label `ready-to-merge`, and
-comments `ready: <full head sha>` with what signs it. It still asks the
-owner first (§"Ask the user before submitting" in `merge-queue`). Every
-sweep reads the open PRs labelled `ready-to-merge` in the repositories the
-merge manager watches, and treats each as a merge request; one with no
-preview or no `ready:` comment goes back with a comment saying what is
-missing.
+agy, a GitHub Actions job, a scheduled routine, or any tool that only
+reaches GitHub) signals on its own PR with a label, because the PR is the
+message ([`merge-queue`](merge-queue.md) §"The PR is the message"; owner,
+2026-11-13: "need a way to mark this for agents not able to
+communicate... label PR?"). It marks the PR ready for review and adds one
+of two labels:
+
+- `ready-to-merge`: green; the merge manager merges it.
+- `needs-repin`: green except for a re-pin, or for being behind its pins;
+  the merge manager re-pins, then merges. This is the label form of
+  `repin+merge:`.
+
+A label is a request, never a merge: only the merge manager acts on
+either label (§"Only the merge manager merges and re-pins"). The agent
+puts the six lines in the PR body or a comment, and still asks the owner
+first (§"Ask the user before submitting" in `merge-queue`). Every sweep
+reads the open PRs carrying either label in the repositories the merge
+manager watches, and treats each as a request. One with no preview, or no
+six lines, goes back with a comment saying what is missing. Until the
+tools layer's `merge:guard` accepts the label in place of a signed
+`ready: <full head sha>` comment (§"What this does not do yet"), the agent
+also posts that comment on its own PR.
 
 **Where the announcement lives, so all can use it.** The holder sends
 `merge manager: <session id>` to every sibling and the owner, and notes it
@@ -498,10 +511,19 @@ These come from the role; the watcher is the step that acts on them:
   post the marker on its own PR, and then sends the six lines to the merge
   manager. What it cannot cover is a PR whose session can neither post nor
   reach GitHub, because nobody else may post the marker for it (rule 1).
-  Follow-up for the tools layer: check 3 also accepts a marker posted by
-  the active merge manager that names the PR's own session and quotes its
-  request (`relayed for <session>`), and `--no-merge-manager` is renamed to
-  say what it now means: the merge manager landing a PR of its own.
+  Follow-up for the tools layer (owner, 2026-11-13: "update process and
+  tools"):
+  - check 3 accepts the `ready-to-merge` label, alone or with a pinned
+    head, in place of the `ready:` comment, so sessions stop posting ready
+    comments;
+  - `merge:watch` lists the PRs labelled `ready-to-merge` and `needs-repin`
+    as the merge manager's queue, each with its CI verdict;
+  - every merge path (`merge:guard --merge`, any standing re-pin
+    auto-merge) says that only the merge manager runs it;
+  - `--no-merge-manager` is renamed to say what it now means: the merge
+    manager landing a PR of its own.
+- The `needs-repin` label must exist in each repository the merge manager
+  watches before an agent can use it.
 
 - The timer is each session's own scheduled check-in. No workflow wakes the
   merge manager yet.
