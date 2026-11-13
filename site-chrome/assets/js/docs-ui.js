@@ -5851,8 +5851,8 @@
     { id: "leaded", label: "Leaded grid", hint: "modern stained glass panes — suits Architecture, Engineer", opacity: 30 },
   ];
   var GLASS_AVATAR_STYLES = [
-    { id: "pictures", label: "Pictures", hint: "a book's cover when it has one, otherwise its kind avatar" },
-    { id: "kinds", label: "Kind avatars", hint: "the harness's avatar for each kind, never a picture" },
+    { id: "pictures", label: "Pictures", hint: "a book's cover, else its kind avatar" },
+    { id: "kinds", label: "Kind avatars", hint: "each kind's avatar, never a picture" },
     { id: "text", label: "Text only", hint: "no pictures at all" },
   ];
   var GLASS_DEFAULTS = { theme: "glass", avatars: "pictures", opacity: 20, blur: true };
