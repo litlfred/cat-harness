@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-manager-watch\n"
-"POT-Creation-Date: 2026-11-10T22:05:00.262Z\n"
+"POT-Creation-Date: 2026-11-13T21:00:04.452Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -36,7 +36,7 @@ msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:77
 #. Diagram label
-msgid "Announce the hand-over or the lapse"
+msgid "Announce the hand-over"
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:53
@@ -191,7 +191,7 @@ msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:65
 #. Diagram element documentation
-msgid "Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, each PR owner's last push or comment, and every harness repository's open main-red issue with its newest failed runs on main and gh-pages, whether or not the lane holds a PR there (gh api repos/<owner>/<repo>/actions/runs?branch=<default>&event=push: the latest completed push run per workflow, conclusion failure). One sweep runs merge:watch over every repository it holds. Liveness duty: acknowledge each new merge request within holding.heartbeatMinutes, and post a heartbeat with each sweep, so siblings can tell a live merge manager from a stalled one."
+msgid "Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, each PR owner's last push or comment, and every harness repository's open main-red issue with its newest failed runs on main and gh-pages, whether or not the lane holds a PR there (gh api repos/<owner>/<repo>/actions/runs?branch=<default>&event=push: the latest completed push run per workflow, conclusion failure). One sweep runs merge:watch over every repository it holds. Liveness duty: acknowledge each new merge request within holding.heartbeatMinutes, and post a heartbeat with each sweep, so siblings can tell a live merge manager from a stalled one. A repin+merge: request is re-pinned by the merge manager itself, as its own re-pin PR in a re-pin train, before the requested PR lands; only the merge manager merges or re-pins, and a scheduled routine never merges (owner rulings, 2026-11-13)."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:64
@@ -251,7 +251,7 @@ msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:78
 #. Diagram element documentation
-msgid "Tell every sibling and the owner, and update the durable note: either the session that holds the lane now, or that the lane lapses and each session merges its own green PRs with the owner's approval, still sending the six-line merge request."
+msgid "Tell every sibling and the owner, and update the durable note with the session that holds the lane now. Nobody merges between holders."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:175
@@ -321,5 +321,5 @@ msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:71
 #. Diagram element documentation
-msgid "Yes while the lane is needed (laneNeeded), or while this session manages only its own PRs. No when it stops: the condition no longer holds, or it hands over to a named session."
+msgid "Yes while this session holds the lane. The lane does not lapse (owner ruling, 2026-11-13): a quiet queue still goes through the merge manager, and laneNeeded only says when the queue is contended. No when it hands over to a named session."
 msgstr ""

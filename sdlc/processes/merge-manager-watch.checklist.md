@@ -22,10 +22,10 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
 
 ### Decide — Still holding the lane? (`Gw_Needed`)
 
-- Yes while the lane is needed (laneNeeded), or while this session manages only its own PRs.
+- Yes while this session holds the lane.
 - Call `workflow_complete` with `node: "Gw_Needed"` and `outcome` set to the label that holds:
   - «Yes» → `Gw_Route` (What does the queue need?)
-  - «No» → `Task_Lapse` (Announce the hand-over or the lapse)
+  - «No» → `Task_Lapse` (Announce the hand-over)
 
 ### Decide — What does the queue need? (`Gw_Route`)
 
@@ -37,11 +37,11 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
   - «Nothing» → `End_Idle` (Nothing to do)
   - «Main red» → `Gw_RedOwned` (Owned?)
 
-### 2. Announce the hand-over or the lapse (`Task_Lapse`)
+### 2. Announce the hand-over (`Task_Lapse`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - Skill: `merge-manager-watcher`.
-- What: Tell every sibling and the owner, and update the durable note: either the session that holds the lane now, or that the lane lapses and each session merges its own green PRs with the owner's approval, still sending the six-line merge request.
+- What: Tell every sibling and the owner, and update the durable note with the session that holds the lane now.
 - Record it: `workflow_complete` with `node: "Task_Lapse"`.
 - next: → `End_Lapsed` (Lane released)
 

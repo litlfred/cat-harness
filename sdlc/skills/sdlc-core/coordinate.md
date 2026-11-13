@@ -341,14 +341,15 @@ owner pushes to its branch. Send the owner the change instead
 ([`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) §"One pusher per PR branch",
 owner ruling, 2026-11-07).
 
-**4. Merging goes through one session.** While a merge manager is needed,
-siblings never merge their own PRs. Each sends the merge manager a six-line
-merge request (PR and head SHA, session URL, what changed, rendered preview,
-what to look for, `full tier green as judged`), and the owner approves only
-in the merge manager's session. Find it first: the latest
+**4. Merging and re-pinning go through one session.** Siblings never merge
+(owner ruling, 2026-11-13). Each sends the merge manager a six-line merge
+request (PR and head SHA, session URL, what changed, rendered preview, what
+to look for, the CI verdict on that head), or `repin+merge:` when the PR is
+green except for a re-pin, and the owner approves only in the merge
+manager's session. Find it first: the latest
 `merge manager: <session id>` announcement, noted on the coordination work
 item, names a live session. With none active, the siblings elect one by a fixed rule, and
-a lone session is its own. A merge manager that does not acknowledge within
+a lone session is elected alone. A merge manager that does not acknowledge within
 the stall window has stalled, and the siblings re-elect without it: see
 [`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
 find the merge manager first" and §"Liveness and stalls" (owner rulings,

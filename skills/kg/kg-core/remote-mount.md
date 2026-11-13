@@ -393,6 +393,13 @@ checkout's layer health report at the new pins and publishes it. The health
 check fails a re-pin once the report is more than 26 hours old and the checker
 has moved. The tools layer implements it.
 
+**The merge manager re-pins for a merge** (owner ruling, 2026-11-13: "send
+to you as merge manager to handle merge AND repin so you can handle trains
+and CI"). A session whose PR is green except for a re-pin sends it to the
+merge manager as `repin+merge:`, and does not re-pin it just in time. The
+merge manager makes the re-pin as its own PR and sequences re-pin trains
+and CI. The rules below are how it does so.
+
 **The committer re-pins, locally, and CI only verifies.** The person or agent
 who moves a pin does the whole re-pin in their own checkout: `--seed`, a
 fresh `mount:remote`, the regenerated agent surface (`skill:commands`,

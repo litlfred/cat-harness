@@ -66,10 +66,10 @@ manager?" and §"The merge request: six lines".
 
 Find the merge manager before you send: the latest `merge manager: <session
 id>` announcement, noted on the coordination work item, names a session that
-must also be live. Whether a merge manager is needed at all is a measured
-condition; when none is active the siblings elect one by a fixed rule; a
-lone session is its own; and one that does not acknowledge within the stall
-window is treated as stalled
+must also be live. When none is active the siblings elect one by a fixed
+rule; a lone session is elected alone; the lane never lapses into
+self-merging (owner ruling, 2026-11-13); and one that does not acknowledge
+within the stall window is treated as stalled
 ([`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
 find the merge manager first").
 
@@ -461,13 +461,13 @@ first (with none active, see §"When no Merge Manager is active"). The script
 the PUT, pinned to the head it evaluated, only when every one passes. A direct
 PUT lands a PR whatever its state.
 
-### When no Merge Manager is active, the owning session merges
+### When no Merge Manager is active, elect one; only it merges
 
-The separation between the session that marks a PR ready and the session that
-merges it exists **only while a Merge Manager is active**.
-
-With no Merge Manager active, the PR's own session lands it once the owner has
-said to merge. It still goes through the guard:
+Owner ruling, 2026-11-13: only the merge manager merges ([`merge-manager-watcher`](merge-manager-watcher.md)
+§"Only the merge manager merges and re-pins"). With none active, the siblings
+elect one first, and a lone session is elected alone. A PR's own session
+lands its PR only when it is that merge manager, once the owner has said to
+merge, and still through the guard:
 
 ```
 bun run cat merge:guard <pr> --merge --session <your session id> --no-merge-manager
@@ -488,9 +488,10 @@ there is no posted verdict to read in its place.
 How to tell whether a Merge Manager is active: the owner says so, or a live
 session holds the `merge-steward` lane (§"Address the ROLE, never a session",
 step 1). If you cannot tell, apply the rules of
-[`merge-manager-watcher`](merge-manager-watcher.md) §"When is a merge manager
-needed?": while the lane is needed and none is active, the siblings elect one
-by its fixed rule, and a lone session is its own (owner rulings, 2026-11-07).
+[`merge-manager-watcher`](merge-manager-watcher.md) §"The sibling's side:
+find the merge manager first": with none active, the siblings elect one by
+its fixed rule, and a lone session is elected alone (owner rulings,
+2026-11-07 and 2026-11-13).
 Do not assume none. A stale memory of "there was one yesterday" is not an
 answer in either direction.
 "The owner said merge" is still required. Submitting to `main` is the owner's
@@ -502,8 +503,8 @@ The eight checks, each named in a refusal by number and id:
    a merged PR. A stacked PR is retargeted by its owning session first.
 2. **`ready-for-review`** — not a draft, and the latest `ready_for_review`
    event is attributable to the PR's **own** session, never to yours.
-   With no Merge Manager active, `--no-merge-manager` lifts the "never to
-   yours" half (§"When no Merge Manager is active").
+   When the merge manager lands a PR of its own, `--no-merge-manager` lifts
+   the "never to yours" half (§"When no Merge Manager is active").
 3. **`ready-marker`** — a `ready: <sha>` comment **signed with the PR's own
    session link** (the one in its body), naming the head, or with only
    merge-main bot merges after it.

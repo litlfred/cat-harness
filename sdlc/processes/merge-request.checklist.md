@@ -39,7 +39,7 @@ The sibling's side of merging.
 
 - Who: the `Sibling session` lane (role `sibling-session`).
 - Skill: `continual-progress`.
-- What: Retarget the PR onto main and merge main in; across layers, re-pin to the dependency's merge commit on main, so pins only move forward.
+- What: Retarget the PR onto main and merge main in; across layers, send repin+merge: the merge manager re-pins to the dependency's merge commit on main, so pins only move forward (owner ruling, 2026-11-13).
 - Record it: `workflow_complete` with `node: "Sib_Retarget"`.
 - next: → `Sib_Ready` (Make the PR ready)
 
@@ -48,7 +48,7 @@ The sibling's side of merging.
 - Yes when the latest "merge manager: <session id>" announcement in the coordination group names a session that is live: active, and it answered within the stall window (holding.stalledAfterMinutes).
 - Call `workflow_complete` with `node: "Sib_GwActive"` and `outcome` set to the label that holds:
   - «Yes» → `Sib_Send` (Send the six-line merge request)
-  - «No» → `Sib_GwNeeded` (Merge manager needed?)
+  - «No» → `Sib_Elect` (Elect the merge manager with the siblings)
 
 ### 4. Send the six-line merge request (`Sib_Send`)
 
@@ -58,20 +58,6 @@ The sibling's side of merging.
 - Record it: `workflow_complete` with `node: "Sib_Send"`.
 - next: → `Sib_GwAcked` (Acknowledged in time?)
 
-### Decide — Merge manager needed? (`Sib_GwNeeded`)
-
-- The measured condition (laneNeeded): two or more active sessions have ready PRs in the same repositories, and either the runners are contended (more than about 10 queued runs on a repository, or the oldest queued run older than about 30 minutes) or PRs conflict with or supersede each other (owner ru
-- Call `workflow_complete` with `node: "Sib_GwNeeded"` and `outcome` set to the label that holds:
-  - «Yes» → `Sib_Elect` (Elect the merge manager with the siblings)
-  - «No» → `Sib_Self` (Merge manager for its own PRs)
-
-### Decide — Acknowledged in time? (`Sib_GwAcked`)
-
-- Yes when the merge manager acknowledged the request within the stall window.
-- Call `workflow_complete` with `node: "Sib_GwAcked"` and `outcome` set to the label that holds:
-  - «Yes» → `Sib_EndQueued` (With the merge manager)
-  - «No» → `Sib_CallStalled` (Stalled-agent triage)
-
 ### 5. Elect the merge manager with the siblings (`Sib_Elect`)
 
 - Who: the `Sibling session` lane (role `sibling-session`).
@@ -80,23 +66,12 @@ The sibling's side of merging.
 - Record it: `workflow_complete` with `node: "Sib_Elect"`.
 - next: → `Sib_GwWon` (Elected this session?)
 
-### 6. Merge manager for its own PRs (`Sib_Self`)
+### Decide — Acknowledged in time? (`Sib_GwAcked`)
 
-- Who: the `Sibling session` lane (role `sibling-session`).
-- What: No merge manager is needed (a lone session, or a lapsed lane): the session is its own merge manager for its own PRs only, so it runs the merge manager loop for them.
-- A subprocess (`Process_MergeManagerWatch`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Sib_EndSelf` (Own PRs landed)
-
-## Done — With the merge manager (`Sib_EndQueued`)
-
-- The instance completes here: The merge manager owns the landing from here: it reports landed, or hands the PR back with the reason. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
-
-### 7. Stalled-agent triage (`Sib_CallStalled`)
-
-- Who: the `Sibling session` lane (role `sibling-session`).
-- What: Tell the owner that the merge manager stalled, then re-elect with the stalled session excluded.
-- A subprocess (`Process_StalledAgentTriage`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Sib_Elect` (Elect the merge manager with the siblings)
+- Yes when the merge manager acknowledged the request within the stall window.
+- Call `workflow_complete` with `node: "Sib_GwAcked"` and `outcome` set to the label that holds:
+  - «Yes» → `Sib_EndQueued` (With the merge manager)
+  - «No» → `Sib_CallStalled` (Stalled-agent triage)
 
 ### Decide — Elected this session? (`Sib_GwWon`)
 
@@ -104,11 +79,18 @@ The sibling's side of merging.
   - «Yes» → `Sib_Announce` (Announce and note the merge manager)
   - «No» → `Sib_Send` (Send the six-line merge request)
 
-## Done — Own PRs landed (`Sib_EndSelf`)
+## Done — With the merge manager (`Sib_EndQueued`)
 
-- The instance completes here. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- The instance completes here: The merge manager owns the landing from here: it reports landed, or hands the PR back with the reason. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 8. Announce and note the merge manager (`Sib_Announce`)
+### 6. Stalled-agent triage (`Sib_CallStalled`)
+
+- Who: the `Sibling session` lane (role `sibling-session`).
+- What: Tell the owner that the merge manager stalled, then re-elect with the stalled session excluded.
+- A subprocess (`Process_StalledAgentTriage`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
+- next: → `Sib_Elect` (Elect the merge manager with the siblings)
+
+### 7. Announce and note the merge manager (`Sib_Announce`)
 
 - Who: the `Sibling session` lane (role `sibling-session`).
 - Skill: `merge-manager-watcher`.
@@ -116,7 +98,7 @@ The sibling's side of merging.
 - Record it: `workflow_complete` with `node: "Sib_Announce"`.
 - next: → `Sib_CallWatch` (Merge manager watch)
 
-### 9. Merge manager watch (`Sib_CallWatch`)
+### 8. Merge manager watch (`Sib_CallWatch`)
 
 - Who: the `Sibling session` lane (role `sibling-session`).
 - What: The elected session holds the merge steward lane and runs its loop until it hands over or the lane lapses.
