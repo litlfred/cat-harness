@@ -8,6 +8,7 @@
     "kg-separation",
     "kg-subgraph-layout",
     "lsi-indexing",
+    "nquads-distribution",
     "sub-kg-lifecycle"
   ],
   "docker": {
