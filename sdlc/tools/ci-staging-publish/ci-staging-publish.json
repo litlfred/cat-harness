@@ -46,7 +46,7 @@
       ]
     },
     "satisfies": [
-      "feature-staging"
+      "ref-stewardship"
     ],
     "selection": {
       "when": "Running the `staging-publish.yml` workflow on demand instead of waiting for its trigger, or finding which workflow a CI step belongs to.",

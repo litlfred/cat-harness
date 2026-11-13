@@ -47,7 +47,7 @@ changed, and keep the path of a changing file the same.
 ### 1. The same input writes the same bytes
 
 - No clock. A build time, a run id or a commit sha in a file makes every
-  build a new blob, and if that file is every page, every page is new. Bean
+  build a new blob, and if that file is every page, every page is new. Work item
   `g196` measured it: one timestamp in the staging banner made 0 of ~390 HTML
   blobs shared between previews.
 - Sort what has no order of its own: object keys you build from a map,
@@ -81,7 +81,7 @@ resources that share a type and id.
 What really is different on every build (the sha, the time, the run, the
 branch) goes in ONE small file that pages fetch at load time, not into every
 page. The staging banner's `staging.json` and the main site's `build.json`
-are the pattern (`staging-banner.ts`, bean `g196`). The code that reads
+are the pattern (`staging-banner.ts`, work item `g196`). The code that reads
 them is a constant file too, served once, so it is not repeated in every page
 (https://github.com/litlfred/cat-harness-tools/pull/1763).
 
@@ -103,7 +103,7 @@ a branch that keeps every version.
 
 A test of one writer is not a measurement of the branch: the staging banner
 was proven constant and the pages still changed every build, because of the
-footer (bean `g196`). Measure the artefact.
+footer (work item `g196`). Measure the artefact.
 
 ```sh
 # Bytes a new commit adds to a branch (run in a clone with both commits).

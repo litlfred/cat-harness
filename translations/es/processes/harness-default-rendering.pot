@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: harness-default-rendering\n"
-"POT-Creation-Date: 2026-11-12T15:12:55.929Z\n"
+"POT-Creation-Date: 2026-11-13T07:51:54.044Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -34,7 +34,7 @@ msgstr ""
 msgid "Build pipeline"
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:89
+#: processes/ui/harness-default-rendering.bpmn:92
 #. Diagram label
 msgid "Change in the content review"
 msgstr ""
@@ -44,7 +44,7 @@ msgstr ""
 msgid "Compose each harness's nav and tile"
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:76
+#: processes/ui/harness-default-rendering.bpmn:79
 #. Diagram element documentation
 msgid "Does this session have a write tool (a checkout with git-push, the forge API, or a host connector) and the permission to use it? A capability is what the environment provides; a permission is what the actor may do. Both are needed."
 msgstr ""
@@ -54,17 +54,17 @@ msgstr ""
 msgid "Draw the board of todos and beans"
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:90
+#: processes/ui/harness-default-rendering.bpmn:93
 #. Diagram label
 msgid "Feedback recorded"
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:84
+#: processes/ui/harness-default-rendering.bpmn:87
 #. Diagram label
 msgid "Leave it as feedback"
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:99
+#: processes/ui/harness-default-rendering.bpmn:102
 #. Diagram label
 msgid "no"
 msgstr ""
@@ -74,7 +74,7 @@ msgstr ""
 msgid "One themed section per layer in dependency order, from its declaration: its docs, its declared subgraphs (a graph with no viewer is shown inert and labelled), and its theme. Written to `_data/harness.json` by `sync-docs-harness.ts`."
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:79
+#: processes/ui/harness-default-rendering.bpmn:82
 #. Diagram label
 msgid "Propose the change"
 msgstr ""
@@ -84,7 +84,7 @@ msgstr ""
 msgid "Publish docs on their theme's art"
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:70
+#: processes/ui/harness-default-rendering.bpmn:73
 #. Diagram label
 msgid "Read a page or a card"
 msgstr ""
@@ -119,7 +119,7 @@ msgstr ""
 msgid "Site build starts"
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:71
+#: processes/ui/harness-default-rendering.bpmn:74
 #. Diagram element documentation
 msgid "The floor of the interface: everything a harness publishes can be read with no account and no tool."
 msgstr ""
@@ -139,22 +139,22 @@ msgstr ""
 msgid "The todo board mounts inside the landing board, so harness cards and todo stickies share one surface. Each card carries an edit link only when the build composed one."
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:80
+#: processes/ui/harness-default-rendering.bpmn:83
 #. Diagram element documentation
 msgid "Through whichever write tool the session has. The change is a proposal: it goes into the content change review, which decides whether it is published."
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:85
+#: processes/ui/harness-default-rendering.bpmn:88
 #. Diagram element documentation
 msgid "With no write tool the reader's point is not lost: it is recorded as feedback for someone who can write."
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:75
+#: processes/ui/harness-default-rendering.bpmn:78
 #. Diagram label
 msgid "Write tool available?"
 msgstr ""
 
-#: processes/ui/harness-default-rendering.bpmn:98
+#: processes/ui/harness-default-rendering.bpmn:101
 #. Diagram label
 msgid "yes"
 msgstr ""

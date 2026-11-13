@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: human-agent-discussion\n"
-"POT-Creation-Date: 2026-11-05T13:26:11.740Z\n"
+"POT-Creation-Date: 2026-11-13T11:45:03.765Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -66,7 +66,7 @@ msgstr ""
 
 #: processes/human-agent-discussion.bpmn:81
 #. Diagram element documentation
-msgid "Before composing anything: what is already known, each fact with where it came from; which declaration governs the matter (the instance's `<name>.json`, the diagram the caller is in, the Skill its task names); what state is recorded; and whether the question has ALREADY been decided — by the person earlier in the conversation, or in a declaration that quotes their ruling. A settled question is not asked again: asking it reopens a decision and spends the person's attention twice. Read it, do not remember it: cite what you read. What the caller handed in is checked here, not re-derived."
+msgid "Before composing anything: what is already known, each fact with where it came from; which declaration governs the matter (the layer's `<name>.json`, the diagram the caller is in, the Skill its task names); what state is recorded; and whether the question has ALREADY been decided — by the person earlier in the conversation, or in a declaration that quotes their ruling. A settled question is not asked again: asking it reopens a decision and spends the person's attention twice. Read it, do not remember it: cite what you read. What the caller handed in is checked here, not re-derived."
 msgstr ""
 
 #: processes/human-agent-discussion.bpmn:95

@@ -38,7 +38,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "bbdaffb757007bf0c4fe0ce4d21018491df308a9",
+          "ref": "0f88368db7560afac6d3e16fd905cbb974350f82",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -51,9 +51,9 @@
           "trust": {
             "consent": {
               "by": "litlfred",
-              "on": "2026-11-12",
-              "ref": "bbdaffb757007bf0c4fe0ce4d21018491df308a9",
-              "evidence": "litlfred, 2026-11-12, merge-manager thread: owner card Q-CONSENT-1 = A (re-pin + merge window, Q-WIN-1 C); bottom-up re-pin T1'' (bootstrap-tools moved by bootstrap-tools#90, core T2 pins it), smart-ra#242, Q-CASCADE-FREEZE B"
+              "on": "2026-11-13",
+              "ref": "0f88368db7560afac6d3e16fd905cbb974350f82",
+              "evidence": "owner (litlfred) cards in merge-manager session session_01EucfRpkvK7d4FJyuqypQzm, 2026-11-13: Q-BT-PIN A ~10:02Z (bootstrap-tools to main 0f88368d); cascade card A ~12:05Z (each downstream re-pin to main, merged when green); train-fix card ~16:05Z (fix the train 3111 reds)"
             }
           }
         }
