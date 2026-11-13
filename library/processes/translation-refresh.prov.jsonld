@@ -13,6 +13,9 @@
       "prov:wasInfluencedBy": [
         {
           "@id": "processes/library/translation-refresh.bpmn#provenance-1"
+        },
+        {
+          "@id": "processes/library/translation-refresh.bpmn#provenance-2"
         }
       ]
     },
@@ -24,6 +27,17 @@
       "prov:value": "Owner, 2026-11-07: \"English lead should document the process and skills\" for the multi-locale translation flow the team had just run across three implementation-guide and harness instances, written generically.",
       "cat-harness:refs": [
         "2026-11-07"
+      ]
+    },
+    {
+      "@id": "processes/library/translation-refresh.bpmn#provenance-2",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "(top of file); Task_TR_PruneRulings",
+      "prov:value": "Owner, 2026-11-13, after removing two strings from who-iris's site catalogue (litlfred/who-iris#260) failed its round-trip report, which paired rulings with strings by position: \"this will happen a lot. we need a mechanical process as much as possible. update skills/process/tools.\" Rulings are paired by content, and the rulings of removed strings are pruned mechanically.",
+      "cat-harness:refs": [
+        "2026-11-13",
+        "litlfred/who-iris#260"
       ]
     }
   ]

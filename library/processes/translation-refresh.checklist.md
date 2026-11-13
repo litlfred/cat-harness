@@ -114,11 +114,19 @@ Keep every locale current after the source moves: detect, refresh the templates,
 - Skill: `translation-refresh`.
 - What: Merge the layer's PR to main, then confirm the template checks pass on main.
 - Record it: `workflow_complete` with `node: "Task_TR_Merge"`.
-- next: → `End_TR_Merged` (Refreshed)
+- next: → `Task_TR_PruneRulings` (Prune the rulings of removed strings)
 
 ## Done — PR left open (`End_TR_Waiting`)
 
 - The instance completes here: Open only, red, uncertain or failing: the PR stays open, the owner is told, and the next run looks again. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+
+### 11. Prune the rulings of removed strings (`Task_TR_PruneRulings`)
+
+- Who: the `Source-language lead (watcher)` lane (role `translation-source-lead`).
+- Skill: `translation-refresh`.
+- What: Drop the round-trip rulings of strings main no longer holds, with the layer's prune command (its AGENTS.md names it, by convention `translation-qa:prune`), once the PR is on main.
+- Record it: `workflow_complete` with `node: "Task_TR_PruneRulings"`.
+- next: → `End_TR_Merged` (Refreshed)
 
 ## Done — Refreshed (`End_TR_Merged`)
 
