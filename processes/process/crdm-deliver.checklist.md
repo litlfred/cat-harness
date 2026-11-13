@@ -22,6 +22,7 @@ One phase and not three, because the loops say so: an increment the BA rejects, 
 ### 2. Phase 6: Implement (feature branch + PR) (`A_Implement`)
 
 - Who: the `Agent` lane (role `authoring-agent`).
+- Skill: `continual-progress`.
 - What: Inner loop: agent claims a bean, implements on feature branch, opens PR, posts summary to the issue.
 - Record it: `workflow_complete` with `node: "A_Implement"`.
 - next: → `A_CodeAudit` (Audit the code nodes the increment adds)

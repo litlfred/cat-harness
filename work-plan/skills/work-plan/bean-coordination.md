@@ -431,7 +431,7 @@ sessions merge every few minutes, so the ref can be stale when read.
 
 **A file that exists only on an open PR's head.** When the claim is *"nobody
 has built this"*, check the open branches too, with the
-[`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.json)
+[`open-work-lookup`](../../tools/open-work-lookup/open-work-lookup.json)
 Tool: a path, a prefix or a work item id, against `main` and every open PR head
 (see also [`bean-drain`](bean-drain.md)).
 

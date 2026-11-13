@@ -158,7 +158,7 @@ instead of picking from another owner's list.
 |---|---|---|
 | [`drain-queue`](../../tools/drain-queue/drain-queue.json) | which open work items, grouped by owner, with what was left out and why | `definitions.queue` in the output schema |
 | [`bean-claim-check`](../../tools/bean-claim-check/bean-claim-check.json) | may I take this work item; if so, claim it on every copy | `definitions.claimCheck` |
-| [`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.json) | does a path, a path prefix or a work item id appear on `main` or any open PR head, and where | `definitions.lookup` |
+| [`open-work-lookup`](../../tools/open-work-lookup/open-work-lookup.json) | does a path, a path prefix or a work item id appear on `main` or any open PR head, and where | `definitions.lookup` |
 
 Run from an index checkout, with one `--copy` per work item copy checkout:
 
