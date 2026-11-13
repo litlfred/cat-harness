@@ -52,12 +52,12 @@ _本页面生成自 [`content/docs/agentic-harness/`](https://github.com/litlfre
 | 工作流 | BPMN 源文件 | 进入时机 |
 |---|---|---|
 | **撰写（论文）** | [`authoring-a-paper.bpmn`](../../../../folio-assistant-sci/processes/content/authoring-a-paper.bpmn) | 用户请求在论文 folio 中撰写内容 |
-| **撰写（文档）** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/processes/content/authoring-a-document.bpmn) | 用户请求在文档 folio 中撰写内容 |
-| **内容生命周期** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/processes/content/content-lifecycle.bpmn) | 内容经过 validate → render → publish 阶段 |
+| **撰写（文档）** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/collab/processes/content/authoring-a-document.bpmn) | 用户请求在文档 folio 中撰写内容 |
+| **内容生命周期** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/collab/processes/content/content-lifecycle.bpmn) | 内容经过 validate → render → publish 阶段 |
 | **文档摄取** | [`document-ingestion.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/library/document-ingestion.bpmn) | 用户将文件放入 `uploads/` |
-| **草稿至发布** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/processes/content/draft-to-publication.bpmn) | 内容从草稿状态转为已发布状态 |
+| **草稿至发布** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/collab/processes/content/draft-to-publication.bpmn) | 内容从草稿状态转为已发布状态 |
 | **CRDM 需求** | [`crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn) | 智能体检测到功能需求 |
-| **证据检索** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/processes/content/evidence-retrieval.bpmn) | 智能体检索证据以支持某项主张 |
+| **证据检索** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/collab/processes/content/evidence-retrieval.bpmn) | 智能体检索证据以支持某项主张 |
 
 **状态转换：** 当用户要求切换上下文时，工作流可以被**挂起**。智能体会记录当前所在位置（当前的 BPMN 活动），以便稍后恢复。同一时刻只能有一个处于活动状态的工作流，但挂起的工作流会构成一个栈——最近挂起的工作流最先被恢复。
 
