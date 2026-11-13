@@ -370,6 +370,24 @@ locales.
 6. Each drift is fixed on the locale's PR, and the fix is noted beside the
    ruling. When two separate parties cannot be dispatched, the producer
    records "could not dispatch" with the reason: never a pass.
+7. **Each ruling is keyed by content, never by position.** A ruling on a
+   catalogue string is pinned by `field_hash.msgid`, the hash of the source
+   it judged, and `field_hash.msgstr`, the hash of the translation; a reader
+   pairs strings with rulings by those hashes. Its `index` is only an order
+   for reading. So:
+
+   | the catalogue | what follows |
+   |---|---|
+   | gains a string | no ruling is found for it, and the report fails loudly: run the round trip on that string |
+   | changes a translation | its ruling's msgstr hash no longer matches: reported **stale**, never counted as a pass; run the round trip on that string |
+   | loses or reorders strings | nothing is invalidated, and **no agent is re-run**; once the removal is on main, the layer's prune command (who-iris: `translation-qa:prune`) drops the removed strings' rulings and renumbers the rest |
+
+   Rulings may be recorded before the PR whose strings they judge merges
+   (they live on a state branch, the strings on main), so a ruling no string
+   claims is not an error. The prune command is a dry run until `--write`,
+   drops only rulings whose string main once held and no longer does, and
+   never changes or invents a verdict. Run it after the removal merges, never
+   on the removing branch: the state branch serves main too.
 
 ### Glossary precedence, and sense checks
 
