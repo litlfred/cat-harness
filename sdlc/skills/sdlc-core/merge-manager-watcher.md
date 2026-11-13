@@ -467,9 +467,3 @@ These come from the role; the watcher is the step that acts on them:
 
 - The timer is each session's own scheduled check-in. No workflow wakes the
   merge manager yet.
-- `merge:watch` makes all four readings once its upgrade lands in the tools
-  layer and is re-pinned. Until then, the pinned version prints reading 1
-  only, and readings 2-4 are made by hand with `gh api`.
-- `merge:request:check` (step 2 of the sweep) arrives with the tools layer's
-  request check, which builds on its `parseMergeRequest`. Until it lands
-  and is re-pinned, the merge manager checks the six lines by reading them.
