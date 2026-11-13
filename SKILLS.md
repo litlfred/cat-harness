@@ -70,7 +70,7 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`security`](skills/conduct/security/security.md) | The security sub-KG's entry point. |
 | [`zero-trust-handover`](skills/conduct/security/zero-trust-handover.md) | How this platform applies zero trust (the zero-trust-architecture methodology, NIST SP 800-207) to every hand-over between agents, skills, tools and graphs: rules H1-H9, the hand-over screen and… |
 
-**`skills/kg/graph-management/`** (6)
+**`skills/kg/graph-management/`** (7)
 
 | Skill | What it is for |
 |---|---|
@@ -79,6 +79,7 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`kg-separation`](skills/kg/graph-management/kg-separation.md) | Separate a Knowledge Graph into its own repository — as a CONTENT repository (files to read, no code) and a TOOLS repository (the code that writes and checks it) — once it is too large, or its… |
 | [`kg-subgraph-layout`](skills/kg/graph-management/kg-subgraph-layout.md) | Lay out one declared sub-graph of a knowledge graph (a harness's schema overview, one named sub-graph, a declaration's kinds) as a single Graphviz diagram in the i2ce Form Documentor's convention,… |
 | [`lsi-indexing`](skills/kg/graph-management/lsi-indexing.md) | Build, read and audit a Latent Semantic Indexing index over a declared prose graph — a library, the skills, the work items, docs — to find units that discuss the same thing in different words,… |
+| [`nquads-distribution`](skills/kg/graph-management/nquads-distribution.md) | How to compile, partition by named subgraphs, and distribute W3C N-Quads datasets beside pre-compiled SPARQL 1.1 named queries for static edge and client-side querying. |
 | [`sub-kg-lifecycle`](skills/kg/graph-management/sub-kg-lifecycle.md) | A sub-KG is a knowledge graph staged as a directory inside a harnessed repository, declared as its own layer, that may later leave for a repository of its own. |
 
 **`skills/kg/kg-core/`** (29)
@@ -350,14 +351,13 @@ _258 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `readability-editing` | Readability Editing Skill |
 | `voice-authoring-guidance` | Load the active voices' rules BEFORE writing, so a block is drafted in the register it will be reviewed against. |
 
-**`kg-ops/skills/kg-ops/`** (4) (opt-in `cat-harness.kg-ops`)
+**`kg-ops/skills/kg-ops/`** (3) (opt-in `cat-harness.kg-ops`)
 
 | Skill | What it is for |
 |---|---|
 | `domain-fencing` | How a domain-specific rule is kept out of the platform without being lost — the opt-in axis mechanism, why a profile is not a fence, and the test for whether a rule generalizes at all. |
 | `edge-kinds-and-blast-radius` | A graph has more than one kind of edge, and conflating them corrupts both the ordering and the impact answer. |
 | `named-query-execution` | How to execute audited SPARQL 1.1 named queries over partitioned W3C N-Quads dataset distributions across CLI, MCP tools, and WebAssembly browser clients. |
-| `nquads-distribution` | How to compile, partition by named subgraphs, and distribute W3C N-Quads datasets beside pre-compiled SPARQL 1.1 named queries for static edge and client-side querying. |
 
 **`platform-ui/skills/platform-ui/`** (10) (opt-in `cat-harness.platform-ui`)
 
