@@ -2594,6 +2594,48 @@ button.fa-qa-badge[aria-busy="true"] { opacity: 0.6; }
   font-size: var(--fa-text-sm);
 }
 
+/* PROMINENT (owner, 2026-11-13: "need VERY prominent disclaimer when any
+   translated text on page has not been human translated/adjudicated"),
+   superseding the one-line form above for an unreviewed translation. It is
+   full width, first in the content, and in the page's language then English.
+   The colour pair is the same `--fa-trwarn-*` tokens, so both schemes keep
+   their measured contrast; only the weight changes. */
+.fa-translation-warning--prominent {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border-width: 3px;
+  border-inline-start-width: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.fa-translation-warning--prominent p { margin: 0 0 0.35rem; }
+
+.fa-translation-warning__title { font-size: 1.25rem; }
+
+.fa-translation-warning--prominent .fa-translation-warning__text {
+  white-space: normal;
+  overflow: visible;
+}
+
+.fa-translation-warning__lang + .fa-translation-warning__lang {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--fa-trwarn-border);
+  font-size: 0.95rem;
+}
+
+.fa-translation-warning__source {
+  color: inherit;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.fa-translation-warning__more { margin-top: 0.5rem; font-size: var(--fa-text-sm); }
+
 /* The summary IS the notice, so it carries the whole line and stays on one
    where there is room. `list-style: none` plus the WebKit pseudo-element:
    Safari ignores the former on a summary and keeps drawing its own triangle,

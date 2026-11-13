@@ -11705,6 +11705,28 @@
   var TR_STATUS = {};
   var TR_SEQ = 0;
 
+  /* The unreviewed-translation notice, in the six UN languages. The same
+     words as fhir-harness `UNREVIEWED_NOTICE` (scripts/ig-page-translations.ts).
+     These sentences are themselves not reviewed by native speakers, which is
+     why English is always shown beside them. */
+  var UNREVIEWED_NOTICE = {
+    en: { title: "Machine translation \u2014 not reviewed by a person",
+          body: "This page was translated automatically. No person has reviewed or adjudicated this translation, and it may contain errors. The source-language page is the authoritative text.",
+          link: "Read the original (English)" },
+    fr: { title: "Traduction automatique \u2014 non relue par une personne",
+          body: "Cette page a \u00E9t\u00E9 traduite automatiquement. Aucune personne n\u2019a relu ni valid\u00E9 cette traduction, qui peut contenir des erreurs. Seule la page dans la langue source fait foi.",
+          link: "Lire l\u2019original (anglais)" },
+    es: { title: "Traducci\u00F3n autom\u00E1tica \u2014 no revisada por una persona",
+          body: "Esta p\u00E1gina se tradujo autom\u00E1ticamente. Ninguna persona ha revisado ni validado esta traducci\u00F3n, que puede contener errores. Solo la p\u00E1gina en el idioma original es la de referencia.",
+          link: "Leer el original (ingl\u00E9s)" },
+    ru: { title: "\u041C\u0430\u0448\u0438\u043D\u043D\u044B\u0439 \u043F\u0435\u0440\u0435\u0432\u043E\u0434 \u2014 \u043D\u0435 \u043F\u0440\u043E\u0432\u0435\u0440\u0435\u043D \u0447\u0435\u043B\u043E\u0432\u0435\u043A\u043E\u043C",
+          body: "\u042D\u0442\u0430 \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u043F\u0435\u0440\u0435\u0432\u0435\u0434\u0435\u043D\u0430 \u0430\u0432\u0442\u043E\u043C\u0430\u0442\u0438\u0447\u0435\u0441\u043A\u0438. \u041D\u0438 \u043E\u0434\u0438\u043D \u0447\u0435\u043B\u043E\u0432\u0435\u043A \u043D\u0435 \u043F\u0440\u043E\u0432\u0435\u0440\u044F\u043B \u0438 \u043D\u0435 \u0443\u0442\u0432\u0435\u0440\u0436\u0434\u0430\u043B \u044D\u0442\u043E\u0442 \u043F\u0435\u0440\u0435\u0432\u043E\u0434, \u043F\u043E\u044D\u0442\u043E\u043C\u0443 \u043E\u043D \u043C\u043E\u0436\u0435\u0442 \u0441\u043E\u0434\u0435\u0440\u0436\u0430\u0442\u044C \u043E\u0448\u0438\u0431\u043A\u0438. \u0410\u0432\u0442\u043E\u0440\u0438\u0442\u0435\u0442\u043D\u043E\u0439 \u044F\u0432\u043B\u044F\u0435\u0442\u0441\u044F \u0442\u043E\u043B\u044C\u043A\u043E \u0441\u0442\u0440\u0430\u043D\u0438\u0446\u0430 \u043D\u0430 \u044F\u0437\u044B\u043A\u0435 \u043E\u0440\u0438\u0433\u0438\u043D\u0430\u043B\u0430.",
+          link: "\u0427\u0438\u0442\u0430\u0442\u044C \u043E\u0440\u0438\u0433\u0438\u043D\u0430\u043B (\u0430\u043D\u0433\u043B\u0438\u0439\u0441\u043A\u0438\u0439)" },
+    zh: { title: "\u673A\u5668\u7FFB\u8BD1\u2014\u2014\u672A\u7ECF\u4EBA\u5DE5\u5BA1\u6821", body: "\u672C\u9875\u9762\u4E3A\u81EA\u52A8\u7FFB\u8BD1\u3002\u5C1A\u65E0\u4EFB\u4F55\u4EBA\u5BA1\u6821\u6216\u88C1\u5B9A\u6B64\u8BD1\u6587\uFF0C\u53EF\u80FD\u5B58\u5728\u9519\u8BEF\u3002\u4EE5\u6E90\u8BED\u8A00\u9875\u9762\u4E3A\u51C6\u3002", link: "\u9605\u8BFB\u539F\u6587\uFF08\u82F1\u6587\uFF09" },
+    ar: { title: "\u062A\u0631\u062C\u0645\u0629 \u0622\u0644\u064A\u0629 \u2014 \u0644\u0645 \u064A\u0631\u0627\u062C\u0639\u0647\u0627 \u0623\u064A \u0634\u062E\u0635", body: "\u062A\u064F\u0631\u062C\u0645\u062A \u0647\u0630\u0647 \u0627\u0644\u0635\u0641\u062D\u0629 \u0622\u0644\u064A\u064B\u0627. \u0644\u0645 \u064A\u0631\u0627\u062C\u0639 \u0623\u064A \u0634\u062E\u0635 \u0647\u0630\u0647 \u0627\u0644\u062A\u0631\u062C\u0645\u0629 \u0623\u0648 \u064A\u0639\u062A\u0645\u062F\u0647\u0627\u060C \u0648\u0642\u062F \u062A\u062D\u062A\u0648\u064A \u0639\u0644\u0649 \u0623\u062E\u0637\u0627\u0621. \u0627\u0644\u0635\u0641\u062D\u0629 \u0628\u0644\u063A\u0629 \u0627\u0644\u0645\u0635\u062F\u0631 \u0647\u064A \u0627\u0644\u0646\u0635 \u0627\u0644\u0645\u0631\u062C\u0639\u064A.", link: "\u0627\u0642\u0631\u0623 \u0627\u0644\u0646\u0635 \u0627\u0644\u0623\u0635\u0644\u064A (\u0628\u0627\u0644\u0625\u0646\u062C\u0644\u064A\u0632\u064A\u0629)" }
+  };
+  var RTL_LOCALES = ["ar", "he", "fa", "ur"];
+
   var TR_PAGE_STATE = {
     unverified: "translated automatically; not reviewed by a subject-matter expert",
     verified: "reviewed and signed off",
@@ -12146,34 +12168,54 @@
      * badge — a page with no projection — the control is not drawn at all
      * rather than drawn dead (`pb04`).
      */
-    if (meta.translationStatus === "unverified" && !document.querySelector(".fa-translation-warning")) {
-      // The WHOLE notice is English, so the `<details>` carries `lang`/`dir`
-      // and the summary, the drawer and the report button all inherit it
-      // (bean `giiw`). Built from nodes rather than innerHTML: the drawer
-      // used to interpolate `meta.translationSource` into markup.
-      var warning = chromeText(el("details", { class: "fa-translation-warning" }));
-      var warnSummary = el("summary", { class: "fa-translation-warning__line" });
-      // ONE flex item holding the whole sentence. As loose text and <strong>s
-      // each piece was its own flex item at min-content width, so the line
-      // overflowed instead of truncating \u2014 and under an inherited `rtl` it
-      // overflowed off the LEFT edge, taking the sentence's start with it.
-      // One item can carry `text-overflow: ellipsis`, which with `dir="ltr"`
-      // falls at the logical end.
-      var warnText = el("span", { class: "fa-translation-warning__text" });
-      var warnLine = [
-        "\u26A0\uFE0F ", ["strong", "Unverified translation"], " \u2014 ",
-        "This page has been translated automatically and has ",
-        ["strong", "not been reviewed"], " by a subject-matter expert."
-      ];
-      warnLine.forEach(function (part) {
-        warnText.appendChild(typeof part === "string"
-          ? document.createTextNode(part)
-          : el(part[0], null, part[1]));
+    /* PROMINENT, and FAIL CLOSED (owner, 2026-11-13: "need VERY prominent
+     * disclaimer when any translated text on page has not been human
+     * translated/adjudicated"). This supersedes the 2026-09-21 one-line
+     * notice: the line was easy to miss, and it appeared only for the one
+     * status "unverified", so a translated page with no status, or a stale
+     * one, said nothing.
+     *
+     * A page counts as a translation when it names its source or carries a
+     * status; it counts as reviewed ONLY when its status is "verified". No
+     * status, "unverified" and "stale" all get the notice. "missing" (no
+     * translated words on the page) does not.
+     *
+     * The notice is in the page's language when there are words for it, then
+     * in English, and links to the source-language page. The detail that the
+     * one-line notice opened to is kept, behind a "Translation details"
+     * disclosure under it. The IG layouts in fhir-harness render the same
+     * notice server-side with the same words; a page that already carries one
+     * (`.fa-translation-warning`) is left alone. */
+    var trState = meta.translationStatus || "";
+    var trIsTranslation = !!meta.translationSource || trState === "unverified" || trState === "stale";
+    if (trIsTranslation && trState !== "verified" && trState !== "missing" && !document.querySelector(".fa-translation-warning")) {
+      var trPageLang = meta.lang || "en";
+      var warning = el("div", {
+        class: "fa-translation-warning fa-translation-warning--prominent",
+        role: "note",
+        "aria-label": UNREVIEWED_NOTICE.en.title
       });
-      // The full sentence on hover, for the width at which the ellipsis bites.
-      warnSummary.setAttribute("title", warnText.textContent);
-      warnSummary.appendChild(warnText);
-      warning.appendChild(warnSummary);
+      var srcHref = safeHref(deriveBasePath(window.location.pathname, trPageLang));
+      var noticeBlock = function (loc) {
+        var n = UNREVIEWED_NOTICE[loc];
+        var block = el("div", { class: "fa-translation-warning__lang" });
+        block.setAttribute("lang", loc);
+        block.setAttribute("dir", RTL_LOCALES.indexOf(loc) !== -1 ? "rtl" : "ltr");
+        var title = el("p", { class: "fa-translation-warning__title" });
+        title.appendChild(document.createTextNode("\u26A0\uFE0F "));
+        title.appendChild(el("strong", null, n.title));
+        block.appendChild(title);
+        var body = el("p", { class: "fa-translation-warning__text" });
+        body.appendChild(document.createTextNode(n.body + " "));
+        if (srcHref) body.appendChild(el("a", { class: "fa-translation-warning__source", href: srcHref }, n.link));
+        block.appendChild(body);
+        return block;
+      };
+      if (trPageLang !== "en" && UNREVIEWED_NOTICE[trPageLang]) warning.appendChild(noticeBlock(trPageLang));
+      warning.appendChild(noticeBlock("en"));
+      var warnMore = chromeText(el("details", { class: "fa-translation-warning__more" }));
+      warnMore.appendChild(el("summary", { class: "fa-translation-warning__line" }, "Translation details"));
+      warning.appendChild(warnMore);
 
       var warnBody = el("div", { class: "fa-translation-warning__body" });
       if (meta.translationSource) {
@@ -12202,7 +12244,7 @@
         else if (t) { var d = document.getElementById(t.getAttribute("aria-controls")); if (d) d.focus(); }
       });
       warnBody.appendChild(openDrawer);
-      warning.appendChild(warnBody);
+      warnMore.appendChild(warnBody);
 
       if (meta.translationQa && meta.translationQa.src) {
         // Hidden until a badge with a projection behind it exists: since bean
@@ -12228,10 +12270,11 @@
         warnBody.appendChild(openReport);
       }
 
+      // First in the content. An empty content column still gets it: a notice
+      // that needs the column to have a first child is one that can vanish.
       var mainContent = document.querySelector(".main-content, #main-content");
-      if (mainContent && mainContent.firstChild) {
-        mainContent.insertBefore(warning, mainContent.firstChild);
-      }
+      if (mainContent) mainContent.insertBefore(warning, mainContent.firstChild);
+      else document.body.insertBefore(warning, document.body.firstChild);
     }
 
     // A HAND-AUTHORED page has no generator to write its badge into the
