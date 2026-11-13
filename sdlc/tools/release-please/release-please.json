@@ -43,7 +43,8 @@
       ]
     },
     "satisfies": [
-      "package-release"
+      "package-release",
+      "npm-kg-distribution"
     ],
     "selection": {
       "when": "A repository whose commits follow conventional-commit messages and that releases often enough that doing it by hand is the bottleneck. Several packages in one repository, each with its own tag, is its strength.",

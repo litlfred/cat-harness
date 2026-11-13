@@ -46,8 +46,7 @@
       ]
     },
     "satisfies": [
-      "render-kg-to-cdn",
-      "docs-generation"
+      "render-kg-to-cdn"
     ],
     "selection": {
       "when": "Running the `docs-site.yml` workflow on demand instead of waiting for its trigger, or finding which workflow a CI step belongs to.",
