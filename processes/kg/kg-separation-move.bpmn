@@ -122,11 +122,17 @@
     </bpmn:task>
     <bpmn:task id="Task_Release" name="First release">
       <bpmn:documentation>Tag each repository, publish /v&lt;major&gt;/. From here the two are versioned independently; a tools release lists the content majors it supports.</bpmn:documentation>
+      <bpmn:extensionElements>
+        <cat-harness.processes:no-skill reason="Tagging and publishing a release is taught by the opt-in sdlc skill package-release, which an always-on diagram may not name (owner card Q-CORE-SKILLS A, 2026-11-12); no always-on skill covers it."/>
+      </bpmn:extensionElements>
       <bpmn:incoming>F8</bpmn:incoming>
       <bpmn:outgoing>F9</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_Verify" name="Every identifier&#10;dereferences">
       <bpmn:documentation>After the release is live, every published identifier resolves to the file it names. Where `cat-harness.sdlc` is switched on, this step is the opt-in process `publish-verification` (`Process_PublishVerification`, sdlc/processes/publish-verification.bpmn); it is not called from here, because a layer without that sub-graph does not have it (owner card Q-OPTIN-CALLS A, 2026-11-12).</bpmn:documentation>
+      <bpmn:extensionElements>
+        <cat-harness.processes:no-skill reason="Implemented by the opt-in sdlc process publish-verification, which an always-on diagram may not call (owner card Q-OPTIN-CALLS A, 2026-11-12); no always-on skill covers dereferencing published identifiers."/>
+      </bpmn:extensionElements>
       <bpmn:incoming>F9</bpmn:incoming>
       <bpmn:outgoing>F10</bpmn:outgoing>
     </bpmn:task>

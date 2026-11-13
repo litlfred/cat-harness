@@ -39,6 +39,7 @@ Renders a harness layer as its default interface: its left-hand nav and docs on 
 ### 4. Draw the board of todos and beans (`A_Board`)
 
 - Who: the `Board renderer` lane (role `board-renderer`).
+- Skill: `board-windows`.
 - What: The todo board mounts inside the landing board, so harness cards and todo stickies share one surface.
 - Record it: `workflow_complete` with `node: "A_Board"`.
 - next: → `A_Read` (Read a page or a card)

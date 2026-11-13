@@ -65,6 +65,9 @@ wireframe candidate the requester or BA chose in Phases 3–4
 against a fresh design; and the delivery summary links the chosen candidate
 beside the after-screenshot, so the reviewer can see the build matches what was
 approved.</bpmn:documentation>
+      <bpmn:extensionElements>
+        <bootstrap.processes:skill ref="continual-progress"/>
+      </bpmn:extensionElements>
     </bpmn:task>
     <bpmn:callActivity id="A_CodeAudit" name="Audit the code nodes&#10;the increment adds" calledElement="Process_Review">
       <bpmn:documentation>Descend into the review task for what this increment

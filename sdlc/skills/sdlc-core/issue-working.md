@@ -138,7 +138,7 @@ siblings merge every few minutes.
 `bean-coordination` (opt-in `cat-harness.work-plan`) §"Re-derive from the REMOTE" has
 the two guards. For the third case, a path that exists
 only on an open PR's head, ask the
-[`open-work-lookup`](../../../tools/open-work-lookup/open-work-lookup.json) Tool.
+`open-work-lookup` Tool (opt-in `cat-harness.work-plan`, `work-plan/tools/open-work-lookup/`).
 
 ## When the work has a BEAN and no issue (STRICT)
 
