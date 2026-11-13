@@ -398,6 +398,7 @@
     var stored = null;
     try { stored = localStorage.getItem("fa-locale"); } catch (_e) { return false; }
     if (!stored) return false;
+    if (cameFromLocaleFallback()) return false;
     try {
       if (new URL(window.location.href).searchParams.get("lang")) return false;
     } catch (_e) { return false; }
@@ -405,7 +406,7 @@
     var available = localesAvailable(meta, meta.supportedLocales || UN_LOCALES);
     var target = rememberedLocale(currentLang, available);
     if (!target) return false;
-    var dest = localePath(deriveBasePath(window.location.pathname, currentLang), target);
+    var dest = translationHref(deriveBasePath(window.location.pathname, currentLang), target, window.location.pathname, currentLang);
     if (dest === window.location.pathname) return false;
     window.location.replace(dest + window.location.search + window.location.hash);
     return true;
@@ -421,6 +422,65 @@
   function deriveBasePath(path, currentLang) {
     if (currentLang === "en") return path;
     return path.replace(new RegExp("/" + currentLang + "/"), "/");
+  }
+
+  /**
+   * The page's own translations, as it declares them: every
+   * `<link rel="alternate" hreflang="xx" href="...">` in the document, keyed
+   * by locale, each resolved to a same-origin path. A page that says where
+   * its French version is has answered the question; the `/<locale>/`
+   * convention below is a guess about a layout it may not have.
+   *
+   * Owner, 2026-11-13: the who-iris home's tabs linked `/who-iris/fr/`, a
+   * 404, while the page's own alternates (and its own language links) named
+   * `who-iris/fr/index.html`, which is there. The tabs guessed; the page knew.
+   */
+  function declaredAlternates() {
+    var out = {};
+    var links = document.querySelectorAll('link[rel~="alternate"][hreflang]');
+    for (var i = 0; i < links.length; i++) {
+      var type = links[i].getAttribute("type");
+      if (type && type !== "text/html") continue;
+      var raw = links[i].getAttribute("href");
+      var lang = (links[i].getAttribute("hreflang") || "").toLowerCase();
+      if (!raw || !lang) continue;
+      try {
+        var u = new URL(raw, document.baseURI);
+        if (u.origin !== window.location.origin) continue;
+        var p = u.pathname + u.search;
+        if (!out[lang]) out[lang] = p;
+        var primary = lang.split("-")[0];
+        if (!out[primary]) out[primary] = p;
+      } catch (_e) { /* an href we cannot resolve declares nothing */ }
+    }
+    return out;
+  }
+
+  /**
+   * Where `locale`'s version of this page is: the page's declared alternate
+   * when it has one, else the `/<locale>/` sibling the translation pipeline
+   * writes. The publish link check (`build-instance-site.ts` `checkLinks`,
+   * via `scripts/lib/lang-tabs.ts` in cat-harness-tools) computes the same
+   * answer from the built HTML and refuses a publish where it is a 404.
+   */
+  function translationHref(basePath, locale, path, currentLang) {
+    var declared = declaredAlternates();
+    if (declared[locale]) return declared[locale];
+    // A translated page's sibling in another translation is its own path with
+    // the locale segment swapped, wherever that segment sits: `/r/fr/x/` (the
+    // whole site under a locale) as well as `/r/x/fr/a.html`. Rebuilding it from
+    // the English path put the segment before the file, a 404 for the first.
+    var seg = "/" + currentLang + "/";
+    if (currentLang !== "en" && locale !== "en" && path.indexOf(seg) !== -1) return path.replace(seg, "/" + locale + "/");
+    return localePath(basePath, locale);
+  }
+
+  /* The 404 page's English fallback (cat-harness-tools
+     `scripts/lib/locale-fallback-404.ts`) leaves the page it landed on here,
+     so a remembered language never sends the reader straight back to the
+     translation that was missing: that would be a loop. */
+  function cameFromLocaleFallback() {
+    try { return sessionStorage.getItem("fa-locale-fallback") === window.location.pathname; } catch (_e) { return false; }
   }
 
   /**
@@ -505,7 +565,7 @@
       // #ffffff on #3b82f6 at 3.67:1. The per-page bar was fixed first and
       // this one kept the literals, because the gate never opened this view.
       var tab = el(isAvailable ? "a" : "span", {
-        href: isAvailable ? safeHref(localePath(basePath, loc)) : undefined,
+        href: isAvailable ? safeHref(translationHref(basePath, loc, path, currentLang)) : undefined,
         // Says "unavailable" to a screen reader too, not only by its strike-through (Q-TRP-2).
         "aria-disabled": isAvailable ? undefined : "true",
         "data-locale": loc,
@@ -639,7 +699,7 @@
       var isRemembered = loc === remembered;
 
       var tab = el(isAvailable ? "a" : "span", {
-        href: isAvailable ? safeHref(localePath(basePath, loc)) : undefined,
+        href: isAvailable ? safeHref(translationHref(basePath, loc, path, currentLang)) : undefined,
         // Says "unavailable" to a screen reader too, not only by its strike-through (Q-TRP-2).
         "aria-disabled": isAvailable ? undefined : "true",
         title: isAvailable
