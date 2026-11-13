@@ -55,10 +55,17 @@
 /* The theme's own stacks (just-the-docs sets `-apple-system, …` on body and
  * `"SFMono-Regular", …` on code) and the browser's Arial on form controls are
  * brought onto the same tokens, so the sidebar, the page and a search box are
- * one face. */
-body { font-family: var(--fa-font-sans); }
-code, kbd, pre, samp, tt { font-family: var(--fa-font-mono); }
-button, input, select, textarea { font-family: inherit; }
+ * one face.
+ *
+ * NOT ON A REPLICA. A library page that `folio-mount.ts` mounts the folio on
+ * (`data-fa-folio-mount`) is an ingested copy whose own type is the point, and
+ * this file reaches it too: unscoped, these three rules repainted every element
+ * of who-iris in system-ui (`folio-mount.e2e`). `:where()` keeps each rule at
+ * the specificity of its bare element selector, so it still wins over the theme
+ * by order and loses, as before, to anything more specific. */
+:where(html:not(:has(script[data-fa-folio-mount]))) body { font-family: var(--fa-font-sans); }
+:where(html:not(:has(script[data-fa-folio-mount]))) :is(code, kbd, pre, samp, tt) { font-family: var(--fa-font-mono); }
+:where(html:not(:has(script[data-fa-folio-mount]))) :is(button, input, select, textarea) { font-family: inherit; }
 
 /*
  * Docs-site UI affordances: the header QR toggle, and zoom / full-width
@@ -4720,6 +4727,11 @@ a.fa-glass-asset-tool svg { width: 1.2rem; height: 1.2rem; fill: currentColor; }
  * and ends in an ellipsis rather than running underneath it. */
 @media not all and (min-width: 50rem) {
   .site-header .site-title {
+    /* The width below is the WHOLE box, padding included, or the padding
+       carries the box past the pill: content-box at 390px ended it at 161px
+       against a pill from 157px. The theme sets border-box globally; this
+       does not lean on it. */
+    box-sizing: border-box;
     max-width: calc(50vw - 3rem);
     overflow: hidden;
     text-overflow: ellipsis;
