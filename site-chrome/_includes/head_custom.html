@@ -504,6 +504,19 @@
   `docs-ui.js` and `navbar-row.js` resolves it back to an absolute path.
 {%- endcomment -%}
 <meta name="fa-baseurl" content="{{ site.baseurl }}">
+{%- comment -%}
+  This page's own Markdown source and the headings it writes, for the ✎ edit
+  and ✍ suggest on its sections (owner, 2026-11-13: "own-text sections
+  only"). `compose-docs.ts` writes `_data/page_sources.json` keyed by
+  `page.path`, in the shape the IG pages' `ig-source-lines` use, so
+  `edit-links.js` reads both the same way. A page it does not list (its layer
+  declares no repository, or it is not Markdown) gets nothing, and keeps its
+  📣 alone. `</` is escaped so a heading cannot close the script.
+{%- endcomment -%}
+{%- assign _fa_page_src = site.data.page_sources[page.path] -%}
+{%- if _fa_page_src %}
+<script type="application/json" id="fa-page-source">{{ _fa_page_src | jsonify | replace: "</", "<\/" }}</script>
+{%- endif %}
 
 {%- comment -%}
   WHETHER THIS IS A PREVIEW, for the tiles above.
