@@ -511,11 +511,12 @@
   `page.path`, in the shape the IG pages' `ig-source-lines` use, so
   `edit-links.js` reads both the same way. A page it does not list (its layer
   declares no repository, or it is not Markdown) gets nothing, and keeps its
-  📣 alone. `</` is escaped so a heading cannot close the script.
+  📣 alone. Every `<` is written `\u003c`, so a heading cannot close the
+  script and no end-tag opener reaches the page outside it.
 {%- endcomment -%}
 {%- assign _fa_page_src = site.data.page_sources[page.path] -%}
 {%- if _fa_page_src %}
-<script type="application/json" id="fa-page-source">{{ _fa_page_src | jsonify | replace: "</", "<\/" }}</script>
+<script type="application/json" id="fa-page-source">{{ _fa_page_src | jsonify | replace: "<", "\u003c" }}</script>
 {%- endif %}
 
 {%- comment -%}
