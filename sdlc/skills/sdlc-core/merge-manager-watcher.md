@@ -58,19 +58,30 @@ repin so you can handle trains and CI".
    green PR reports a `ready:` line to the merge manager, and does nothing
    else.
 4. **Standing re-pins and site repositories are the merge manager's**
-   (owner cards, 2026-11-13: "A. MM dispatches, auto-merge OK" and "A. Give
-   MM access"). Only the merge manager dispatches a standing re-pin; its
-   auto-merge on green counts as the merge manager's merge. The merge
-   manager attaches each site repository and runs its re-pin: it
-   dispatches the run, approves the held bot runs, and merges when green.
-   A `cron` or `repository_dispatch` trigger, if kept, only opens the PR
+   (owner cards, 2026-11-13: "C. No auto-merge", replacing "A. MM
+   dispatches, auto-merge OK", and "A. Give MM access"). A standing re-pin
+   run opens or updates its PR, labels it `needs-repin`, and never merges
+   itself: the merge manager judges it once CI is green and merges it. The
+   merge manager attaches each site repository and runs its re-pin: it
+   dispatches the run, approves the held bot runs, and merges when green
    ([`remote-mount`](../../../skills/kg/kg-core/remote-mount.md)
    §"Standing consent").
 5. **Held runs are approved by the merge manager.** A re-pin commit pushed
    by a bot gets runs held at `action_required`, and the merge manager
    approves them before judging the PR. A held run executed nothing, so it
    is neither red nor green.
-6. **A one-time consent is quoted where it acts.** The owner's card, with
+6. **`merge-guard` becomes a required check** (owner card, 2026-11-13,
+   "A. merge-guard required status"). Once the tools layer's workflow
+   posts the `merge-guard` commit status (full tier, plus ready), the merge
+   manager makes it a required status check on `main` in the layer
+   repositories, through branch protection. Until then, `merge-queue`
+   §"A PR lands only through `merge:guard`" holds as written.
+7. **A red index main pauses the re-pin train** (owner card, 2026-11-13,
+   "A. #3119, fix main, pause"). While the index repository's main is red,
+   the merge manager disables the re-pin train workflow, so no re-pin lands
+   on a red base. It re-enables the workflow once main is green, and says
+   so to the siblings and the owner both times.
+8. **A one-time consent is quoted where it acts.** The owner's card, with
    its date, goes in the re-pin PR's body and in `trust.consent`'s evidence
    in `index.config.json` (`remote-mount` §"Trust").
 
@@ -392,7 +403,7 @@ ledger entry.
 | An approved, all-green PR that changes `.github/workflows/`, or is in a repository with no train | Merge it directly through `merge:guard`. A workflow PR needs no approval beyond the batch card (owner ruling, 2026-11-07, card "Workflow PRs", A) |
 | Queued runs 60+ minutes old with nothing landed, or the owner says runners are full | First relieve the runners (§"Runner relief"). Then `saturation-meta-merge`: offer the card, never run without the owner's tap |
 | A PR whose owner has not pushed or answered for 2+ hours | `stalled-agent-triage`: tell the owner and take it over |
-| main red, in any harness repository | §"Red mains and failing runs": sort the cause, dispatch a fixer. The fix goes to main as its own PR first; when a dispatched `post-merge-regen` verify run says main is stale, a regen dispatched for the next PR commits the fix and that PR lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green |
+| main red, in any harness repository | §"Red mains and failing runs": sort the cause, dispatch a fixer. The fix goes to main as its own PR first; when a dispatched `post-merge-regen` verify run says main is stale, a regen dispatched for the next PR commits the fix and that PR lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green  If it is the index repository's main, disable the re-pin train until it is green (rule 7 of §"Only the merge manager merges and re-pins") |
 | Nothing to do | End the turn with no message |
 
 ## Merge-sweep rules (STRICT)
@@ -534,8 +545,11 @@ These come from the role; the watcher is the step that acts on them:
     comments;
   - `merge:watch` lists the PRs labelled `ready-to-merge` and `needs-repin`
     as the merge manager's queue, each with its CI verdict;
-  - every merge path (`merge:guard --merge`, any standing re-pin
-    auto-merge) says that only the merge manager runs it;
+  - every merge path (`merge:guard --merge`) says that only the merge
+    manager runs it, and a standing re-pin run opens a `needs-repin` PR
+    and never merges (card "C. No auto-merge");
+  - a workflow posts the `merge-guard` status, so that it can be required
+    on `main` (card "A. merge-guard required status");
   - `--no-merge-manager` is renamed to say what it now means: the merge
     manager landing a PR of its own.
 - The `needs-repin` label must exist in each repository the merge manager

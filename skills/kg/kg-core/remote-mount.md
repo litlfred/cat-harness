@@ -521,12 +521,12 @@ branch's newest (green) commit and writes `trust.consent` for the new pin,
 same rule is still declared: withdraw or edit it and those pins ask again.
 A pin moved by hand still asks again, rule or not.
 
-**Only the merge manager starts a standing re-pin** (owner ruling,
-2026-11-13, card "A. MM dispatches, auto-merge OK"). The merge manager runs
-`standing-repin.yml` by `workflow_dispatch`, and the run's auto-merge on
-green counts as the merge manager's merge. A `cron` or
-`repository_dispatch` trigger, if kept, is only a fallback: it opens the
-re-pin PR and never merges, and the merge manager lands it. The tools layer
+**A standing re-pin never merges itself** (owner ruling, 2026-11-13, card
+"C. No auto-merge", which replaces "A. MM dispatches, auto-merge OK"). A
+standing re-pin run, however it is triggered, opens or updates its PR,
+labels it `needs-repin`, and stops. The merge manager judges it once CI is
+green and merges it. The reason was measured: the self-merges landed 3-4
+seconds after the PR opened, before any check had run. The tools layer
 decides the mechanism. A re-pin commit pushed by a bot gets runs held at
 `action_required`, and the merge manager approves them, so the re-pin is
 judged on runs that executed (`github-state-inspection`).
