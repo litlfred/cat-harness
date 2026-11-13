@@ -158,17 +158,19 @@ defect, not missing documentation.
    first-line `# language: <code>` comment. A translated file stays valid; the
    `@test:` and `@itb:` tags are not translated.
 8. **A specification for implementers is not a test of this tree** (owner,
-   2026-11-13). A WHO DAK's (L2) `.feature` files specify tests for whoever
-   implements the DAK; they do not test the repository's code. A repository
-   says so **by declaration**, never by a path that names one repository: a
-   root `dak.json` with `resourceType: "DAK"`. If its `testScenarios` list
-   `url` sources that are paths in the tree, only the `.feature` files under
-   them are specifications; otherwise every `.feature` file in the DAK is. In
-   a declared specification a Scenario with no binding is counted as a
+   2026-11-13). Some `.feature` files specify tests for whoever implements the
+   content (a DAK's L2 scenarios, for one); they do not test the repository's
+   code. A repository says so **in its harness configuration**, never by a
+   path or a type the checker names: `testSpecifications`, a list of
+   repository-relative paths (a directory ends in `/`), on the section of
+   `contentTypes` in its `index.config.json` whose specifications they are,
+   for example `"dak": { …, "testSpecifications": ["input/testing/"] }`. The
+   key reads the same on every type. Only the `.feature` files under those
+   paths are specifications. A malformed list is refused, not read as empty.
+   In a declared specification a Scenario with no binding is counted as a
    specification, not reported. Once it carries a binding (`@itb:` to an
    external suite, or `@test:`) it is checked like any other. Nothing else is
-   relaxed: every test still needs its Scenario. A new kind of declaration is
-   a new entry in the checker's list of specification declarations.
+   relaxed: every test still needs its Scenario.
 5. **Each test-plan case names its `.feature`** (`testCases[].feature` in
    `test-plan/v1.1`); the tests that execute the case are found through the
    `@test:` tags of that file, not listed again in the plan.
