@@ -251,7 +251,7 @@
     ".fa-suggest-status{color:#5b6770;font-size:.9rem;margin:.25rem .75rem}",
     ".fa-suggest-status:empty{display:none}",
     ".fa-suggest-editor{flex:1;min-height:8rem;overflow:auto;margin:0}",
-    ".fa-suggest-editor textarea{width:100%;height:100%;min-height:12rem;box-sizing:border-box;font-family:var(--fa-font-mono,monospace);font-size:.9rem;border:0;padding:.75rem;resize:none}",
+    ".fa-suggest-editor textarea{width:100%;height:100%;min-height:12rem;box-sizing:border-box;font-family:var(--fa-font-mono,Menlo,Consolas,monospace);font-size:.9rem;border:0;padding:.75rem;resize:none}",
     "dialog.fa-suggest .milkdown .ProseMirror{padding:.75rem 1rem}",
     "dialog.fa-suggest .ProseMirror a{text-decoration-style:dotted}",
     "ins.fa-sg-ins,.fa-sg-ins-block{color:#0b6b2a;background:#e6f4ea;text-decoration:underline 3px;text-underline-offset:3px}",
@@ -790,6 +790,11 @@
     // A standalone page (an IG's thin layout) has no .main-content-wrap to
     // pad, so its column leaves the same gutter itself.
     "html.fa-bp .fa-page-main.main-content:has(>.fa-sec-actions){margin-right:2.5rem}}" +
+    // Below 50rem there is no gutter, so a section's box sits in the text
+    // column under its heading. Owner, 2026-11-13 ("phone first"): there it is
+    // ONE row, right-aligned, not the gutter's column, which left two icon
+    // heights of empty space under every heading on a phone.
+    "@media (max-width:49.99rem){html.fa-bp .main-content .fa-sec-actions{flex-direction:row;justify-content:flex-end;align-items:center;gap:8px}}" +
     // A section's QA / TR chips, under its 📣 and 🔖 in the gutter; pressed,
     // they open the section's panel, where each badge says what it found.
     "html.fa-bp .main-content .fa-sec-actions>.fa-sec-qa{order:9;margin:0;display:flex;flex-direction:column;align-items:center;gap:2px}" +
