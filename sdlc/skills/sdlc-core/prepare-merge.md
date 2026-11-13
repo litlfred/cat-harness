@@ -451,8 +451,11 @@ The PR's state is the record. The request to merge is a message: send the
 merge manager the six-line merge request of
 [`merge-manager-watcher`](merge-manager-watcher.md) §"The merge request: six
 lines", with the PR URL, the session URL, what changed, the rendered preview
-and what to look for in it (owner ruling, 2026-11-07). A lone session posts
-the same six lines in its own chat, then asks the owner by card.
+and what to look for in it (owner ruling, 2026-11-07). Never merge it
+yourself, and never re-pin to make it green: send `repin+merge:` instead
+(owner ruling, 2026-11-13). A lone session is elected merge manager alone,
+so it posts the same six lines in its own chat, then asks the owner by
+card.
 
 ## Opening the PR (only when asked)
 

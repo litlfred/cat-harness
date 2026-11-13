@@ -393,6 +393,13 @@ checkout's layer health report at the new pins and publishes it. The health
 check fails a re-pin once the report is more than 26 hours old and the checker
 has moved. The tools layer implements it.
 
+**The merge manager re-pins for a merge** (owner ruling, 2026-11-13: "send
+to you as merge manager to handle merge AND repin so you can handle trains
+and CI"). A session whose PR is green except for a re-pin sends it to the
+merge manager as `repin+merge:`, and does not re-pin it just in time. The
+merge manager makes the re-pin as its own PR and sequences re-pin trains
+and CI. The rules below are how it does so.
+
 **The committer re-pins, locally, and CI only verifies.** The person or agent
 who moves a pin does the whole re-pin in their own checkout: `--seed`, a
 fresh `mount:remote`, the regenerated agent surface (`skill:commands`,
@@ -493,6 +500,11 @@ things to know:
   0, but never shown as clean. A checkout whose mounts `index.config.json`
   lists declares the list there, as its top-level `mountApprovers`; declaring
   it on the layer declaration as well is an error.
+- **A one-time consent is recorded where it acts** (owner ruling,
+  2026-11-13). Quote the owner's card, with its date, in the re-pin PR's
+  body and in `trust.consent`'s evidence in `index.config.json`. Example:
+  folio-assistant#3119 re-pointed a content layer's pin to that layer's
+  main under the card "A. Re-point to main".
 - **A refused mount is not current.** Its old bytes stay on disk (an agent
   does not delete them). The lock records them under `unmounted` as
   `leftOnDisk`, and the check reports them as not mounted.
@@ -508,6 +520,21 @@ branch's newest (green) commit and writes `trust.consent` for the new pin,
 `by` that person and marked `standing`. The mount accepts it only while the
 same rule is still declared: withdraw or edit it and those pins ask again.
 A pin moved by hand still asks again, rule or not.
+
+**A standing re-pin never merges itself** (owner ruling, 2026-11-13, card
+"C. No auto-merge", which replaces "A. MM dispatches, auto-merge OK"). A
+standing re-pin run, however it is triggered, opens or updates its PR,
+labels it `needs-repin`, and stops. The merge manager judges it once CI is
+green and merges it. The reason was measured: the self-merges landed 3-4
+seconds after the PR opened, before any check had run. The tools layer
+decides the mechanism. A re-pin commit pushed by a bot gets runs held at
+`action_required`, and the merge manager approves them, so the re-pin is
+judged on runs that executed (`github-state-inspection`).
+
+**Site repositories** (owner ruling, 2026-11-13, card "A. Give MM access").
+The merge manager attaches each site repository and runs its re-pin: it
+dispatches the run, approves the held bot runs, and merges when green. A
+site's own sessions do not re-pin it.
 
 ## Publishing a remote-mounted downstream — provision `gh-pages` first
 
