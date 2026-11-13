@@ -157,6 +157,18 @@ defect, not missing documentation.
 7. **A `.feature` may be written in any Gherkin dialect**, declared by its
    first-line `# language: <code>` comment. A translated file stays valid; the
    `@test:` and `@itb:` tags are not translated.
+8. **A specification for implementers is not a test of this tree** (owner,
+   2026-11-13). A WHO DAK's (L2) `.feature` files specify tests for whoever
+   implements the DAK; they do not test the repository's code. A repository
+   says so **by declaration**, never by a path that names one repository: a
+   root `dak.json` with `resourceType: "DAK"`. If its `testScenarios` list
+   `url` sources that are paths in the tree, only the `.feature` files under
+   them are specifications; otherwise every `.feature` file in the DAK is. In
+   a declared specification a Scenario with no binding is counted as a
+   specification, not reported. Once it carries a binding (`@itb:` to an
+   external suite, or `@test:`) it is checked like any other. Nothing else is
+   relaxed: every test still needs its Scenario. A new kind of declaration is
+   a new entry in the checker's list of specification declarations.
 5. **Each test-plan case names its `.feature`** (`testCases[].feature` in
    `test-plan/v1.1`); the tests that execute the case are found through the
    `@test:` tags of that file, not listed again in the plan.
@@ -166,7 +178,9 @@ Scenario names, a tag that names no test, a test named by two Scenarios, a
 Scenario that names no test, a tag on a `Feature:` line, an `@itb:` tag naming
 no case or whose source is not held, and an unknown dialect. It reads any tree
 (`--root`, `--under`, `--itb`, `--json`); it is not a gate until a repository has
-backfilled. The kg-audit criterion **`test-has-gherkin`** records the same
+backfilled. Once a layer reports 0 findings, it gates on it: a
+`check:test-gherkin:<layer>` entry beside the layer's other `check:*` gates
+(a script name may be declared by only one layer). The kg-audit criterion **`test-has-gherkin`** records the same
 gap for a layer, and adds every test-plan case whose `.feature` is missing
 or does not resolve.
 
