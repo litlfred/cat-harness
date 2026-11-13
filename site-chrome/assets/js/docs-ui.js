@@ -7996,15 +7996,22 @@
 
       // THE HARNESSES PANEL (issue #1146): each harness's properties and the
       // skill that edits each. A Settings view, as candidate H drew it.
-      var hc = el("button", { type: "button", class: "fa-glass-reset fa-glass-harnesses" },
-        "Harnesses — properties, and the skill that edits each");
+      // SHORT VISIBLE LABELS, FULL WORDING AS THE TITLE. At 1280×800 in a
+      // wide system face (DejaVu Sans, on the Linux CI runner) the long labels
+      // wrapped this row onto a second line and pushed "Back to the default
+      // glass" under the panel's frame. Each label is the start of its title,
+      // so the accessible name is the visible text (WCAG 2.5.3, label in
+      // name). The title becomes the button's accessible description, so a
+      // screen reader still hears the full wording. No aria-label is set.
+      var hc = el("button", { type: "button", class: "fa-glass-reset fa-glass-harnesses",
+        title: "Harnesses — properties, and the skill that edits each" }, "Harnesses");
       hc.addEventListener("click", function () { openHarnesses(null); });
       actions.appendChild(hc);
 
       // THE WAY BACK FROM A MESSY GLASS. Every card returns to the grid;
       // nothing leaves the folio and nothing leaves the glass.
-      var tidy = el("button", { type: "button", class: "fa-glass-reset fa-glass-tidy" },
-        "Tidy the glass (put every card back in the grid)");
+      var tidy = el("button", { type: "button", class: "fa-glass-reset fa-glass-tidy",
+        title: "Tidy the glass (put every card back in the grid)" }, "Tidy the glass");
       tidy.addEventListener("click", tidyGlass);
       actions.appendChild(tidy);
 
