@@ -57,6 +57,22 @@ repin so you can handle trains and CI".
 3. **A scheduled routine never merges.** A routine or check-in that finds a
    green PR reports a `ready:` line to the merge manager, and does nothing
    else.
+4. **Standing re-pins and site repositories are the merge manager's**
+   (owner cards, 2026-11-13: "A. MM dispatches, auto-merge OK" and "A. Give
+   MM access"). Only the merge manager dispatches a standing re-pin; its
+   auto-merge on green counts as the merge manager's merge. The merge
+   manager attaches each site repository and runs its re-pin: it
+   dispatches the run, approves the held bot runs, and merges when green.
+   A `cron` or `repository_dispatch` trigger, if kept, only opens the PR
+   ([`remote-mount`](../../../skills/kg/kg-core/remote-mount.md)
+   §"Standing consent").
+5. **Held runs are approved by the merge manager.** A re-pin commit pushed
+   by a bot gets runs held at `action_required`, and the merge manager
+   approves them before judging the PR. A held run executed nothing, so it
+   is neither red nor green.
+6. **A one-time consent is quoted where it acts.** The owner's card, with
+   its date, goes in the re-pin PR's body and in `trust.consent`'s evidence
+   in `index.config.json` (`remote-mount` §"Trust").
 
 ## The sibling's side: find the merge manager first
 

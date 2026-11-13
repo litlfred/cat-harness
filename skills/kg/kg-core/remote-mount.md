@@ -500,6 +500,11 @@ things to know:
   0, but never shown as clean. A checkout whose mounts `index.config.json`
   lists declares the list there, as its top-level `mountApprovers`; declaring
   it on the layer declaration as well is an error.
+- **A one-time consent is recorded where it acts** (owner ruling,
+  2026-11-13). Quote the owner's card, with its date, in the re-pin PR's
+  body and in `trust.consent`'s evidence in `index.config.json`. Example:
+  folio-assistant#3119 re-pointed a content layer's pin to that layer's
+  main under the card "A. Re-point to main".
 - **A refused mount is not current.** Its old bytes stay on disk (an agent
   does not delete them). The lock records them under `unmounted` as
   `leftOnDisk`, and the check reports them as not mounted.
@@ -515,6 +520,21 @@ branch's newest (green) commit and writes `trust.consent` for the new pin,
 `by` that person and marked `standing`. The mount accepts it only while the
 same rule is still declared: withdraw or edit it and those pins ask again.
 A pin moved by hand still asks again, rule or not.
+
+**Only the merge manager starts a standing re-pin** (owner ruling,
+2026-11-13, card "A. MM dispatches, auto-merge OK"). The merge manager runs
+`standing-repin.yml` by `workflow_dispatch`, and the run's auto-merge on
+green counts as the merge manager's merge. A `cron` or
+`repository_dispatch` trigger, if kept, is only a fallback: it opens the
+re-pin PR and never merges, and the merge manager lands it. The tools layer
+decides the mechanism. A re-pin commit pushed by a bot gets runs held at
+`action_required`, and the merge manager approves them, so the re-pin is
+judged on runs that executed (`github-state-inspection`).
+
+**Site repositories** (owner ruling, 2026-11-13, card "A. Give MM access").
+The merge manager attaches each site repository and runs its re-pin: it
+dispatches the run, approves the held bot runs, and merges when green. A
+site's own sessions do not re-pin it.
 
 ## Publishing a remote-mounted downstream — provision `gh-pages` first
 
