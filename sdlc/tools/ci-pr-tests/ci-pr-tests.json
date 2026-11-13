@@ -46,7 +46,7 @@
       ]
     },
     "satisfies": [
-      "platform-gates"
+      "test-engineer"
     ],
     "selection": {
       "when": "Running the `pr-tests.yml` workflow on demand instead of waiting for its trigger, or finding which workflow a CI step belongs to.",

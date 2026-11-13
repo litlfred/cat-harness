@@ -46,7 +46,7 @@
       ]
     },
     "satisfies": [
-      "render-kg-to-github-pages"
+      "kg-to-portal"
     ],
     "selection": {
       "when": "Running the `pages.yml` workflow on demand instead of waiting for its trigger, or finding which workflow a CI step belongs to.",

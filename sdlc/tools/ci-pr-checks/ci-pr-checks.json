@@ -46,7 +46,7 @@
       ]
     },
     "satisfies": [
-      "platform-gates"
+      "cache-first-ci"
     ],
     "selection": {
       "when": "Running the `harness-pr-checks.yml` workflow on demand instead of waiting for its trigger, or finding which workflow a CI step belongs to.",

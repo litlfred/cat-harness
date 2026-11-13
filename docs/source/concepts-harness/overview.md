@@ -7,7 +7,7 @@ Four words carry this page, and each means one thing only (cat-harness#1138):
 
 | word | means | never means |
 |---|---|---|
-| **instance** | a node of some node kind: a workflow instance, a bean, a document-kind record | a repository |
+| **instance** | a node of some node kind: a workflow instance, a work item, a document-kind record | a repository |
 | **Harness** | one node kind: something that renders a graph and supplies Skills, Workflows and Tools for it | a repository as such |
 | **layer** | a repository in the stack, declared by its `<name>.json` and ordered by `needs` | an instance |
 | **instantiated harness** | a Harness that a layer's `index.config.json` names as instantiated there | a layer that is merely mounted |

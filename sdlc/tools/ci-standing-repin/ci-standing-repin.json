@@ -46,7 +46,7 @@
       ]
     },
     "satisfies": [
-      "upstream-version-adoption"
+      "remote-mount"
     ],
     "selection": {
       "when": "Running the `standing-repin.yml` workflow on demand instead of waiting for its trigger, or finding which workflow a CI step belongs to.",
