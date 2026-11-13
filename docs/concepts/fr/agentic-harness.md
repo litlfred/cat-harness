@@ -64,12 +64,12 @@ Flux de travail actifs sur cette plateforme :
 | Flux de travail | Source BPMN | Activé quand |
 |---|---|---|
 | **Rédaction (article)** | [`authoring-a-paper.bpmn`](../../../../folio-assistant-sci/processes/content/authoring-a-paper.bpmn) | L'utilisateur demande la rédaction de contenu dans un folio d'article |
-| **Rédaction (document)** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/processes/content/authoring-a-document.bpmn) | L'utilisateur demande la rédaction de contenu dans un folio de document |
-| **Cycle de vie du contenu** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/processes/content/content-lifecycle.bpmn) | Le contenu passe par valider → restituer → publier |
+| **Rédaction (document)** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/collab/processes/content/authoring-a-document.bpmn) | L'utilisateur demande la rédaction de contenu dans un folio de document |
+| **Cycle de vie du contenu** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/collab/processes/content/content-lifecycle.bpmn) | Le contenu passe par valider → restituer → publier |
 | **Ingestion de documents** | [`document-ingestion.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/library/document-ingestion.bpmn) | L'utilisateur dépose un fichier dans `uploads/` |
-| **Du brouillon à la publication** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/processes/content/draft-to-publication.bpmn) | Le contenu passe de brouillon à publié |
+| **Du brouillon à la publication** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/collab/processes/content/draft-to-publication.bpmn) | Le contenu passe de brouillon à publié |
 | **Exigences CRDM** | [`crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn) | L'agent détecte une demande de fonctionnalité |
-| **Récupération de preuves** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/processes/content/evidence-retrieval.bpmn) | L'agent recherche des preuves à l'appui d'une affirmation |
+| **Récupération de preuves** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/collab/processes/content/evidence-retrieval.bpmn) | L'agent recherche des preuves à l'appui d'une affirmation |
 
 **Transitions d'état :** un flux de travail peut être **suspendu** lorsque l'utilisateur demande
 de changer de contexte. L'agent enregistre où il en était (l'activité BPMN en cours) et

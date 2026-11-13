@@ -64,12 +64,12 @@ Flujos de trabajo activos en esta plataforma:
 | Flujo de trabajo | Origen BPMN | Se inicia cuando |
 |---|---|---|
 | **Autoría (paper)** | [`authoring-a-paper.bpmn`](../../../../folio-assistant-sci/processes/content/authoring-a-paper.bpmn) | El usuario solicita autoría de contenido en un folio de paper |
-| **Autoría (document)** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/processes/content/authoring-a-document.bpmn) | El usuario solicita autoría de contenido en un folio de documento |
-| **Ciclo de vida de contenido** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/processes/content/content-lifecycle.bpmn) | El contenido avanza a través de validar → renderizar → publicar |
+| **Autoría (document)** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/collab/processes/content/authoring-a-document.bpmn) | El usuario solicita autoría de contenido en un folio de documento |
+| **Ciclo de vida de contenido** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/collab/processes/content/content-lifecycle.bpmn) | El contenido avanza a través de validar → renderizar → publicar |
 | **Ingesta de documentos** | [`document-ingestion.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/library/document-ingestion.bpmn) | El usuario deposita un archivo en `uploads/` |
-| **De borrador a publicación** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/processes/content/draft-to-publication.bpmn) | El contenido pasa de borrador a publicado |
+| **De borrador a publicación** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/collab/processes/content/draft-to-publication.bpmn) | El contenido pasa de borrador a publicado |
 | **Requisitos CRDM** | [`crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn) | El agente detecta una solicitud de funcionalidad (*feature request*) |
-| **Recuperación de evidencias** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/processes/content/evidence-retrieval.bpmn) | El agente busca evidencias para respaldar una afirmación |
+| **Recuperación de evidencias** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/collab/processes/content/evidence-retrieval.bpmn) | El agente busca evidencias para respaldar una afirmación |
 
 **Transiciones de estado:** un flujo de trabajo puede **suspenderse** cuando el usuario solicita
 cambiar de contexto. El agente registra dónde se encontraba (la actividad BPMN actual) y
