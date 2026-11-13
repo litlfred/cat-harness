@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: docs/concepts/content-types.md:237
-msgid "✎ Edit{: .fa-node-edit title=\"Edit ../fhir-harness/processes/content/l3-fhir-pipeline.bpmn\" } QA… TR… KG…"
+msgid "✎ Edit{: .fa-node-edit title=\"Edit ../fhir-harness/collab/processes/content/l3-fhir-pipeline.bpmn\" } QA… TR… KG…"
 msgstr ""
 
 #: docs/concepts/content-types.md:84
