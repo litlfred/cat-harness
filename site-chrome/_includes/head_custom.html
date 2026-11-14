@@ -680,7 +680,15 @@
   `state-visualizer.ts` can inline exactly these bytes into the generated
   `<base>/<stub>/state-visualizer/` pages. One rule, two surfaces.
 {%- endcomment -%}
+{%- comment -%}
+  ONLY ON A PAGE THAT HAS A DASHBOARD (owner, 2026-11-14: "do lazy load content
+  and libs"): 25 KB of render-blocking CSS every other page paid for nothing.
+  `content` is the page's rendered body here, as in
+  `components/mermaid.html`, and the dashboard's container is in it.
+{%- endcomment -%}
+{%- if content contains 'data-fa-workplan' %}
 <link rel="stylesheet" href="{{ '/assets/css/work-plan.css' | relative_url }}?v={{ '/assets/css/work-plan.css' | fa_asset_version }}">
+{%- endif -%}
 {%- comment -%} Sticky themes. GENERATED from the theme nodes in `schemas/ui/themes.ts` by
      `bun run cat themes:css`; `themes:css:check` fails the build when it is stale.
      Loaded AFTER docs-ui.css deliberately: it supplies the `--fa-sticky-*`
@@ -722,9 +730,14 @@
   long as GitHub Pages' cache (about 10 minutes), and the pages stay the same.
 {%- endcomment -%}
 <script src="{{ '/assets/js/harness-data.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/vendor/qrcode.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/vendor/qrcode_UTF8.js' | relative_url }}" defer></script>
-{%- comment -%} BEFORE docs-ui.js and work-plan.js: both read window.faRender. {%- endcomment -%}
+{%- comment -%}
+  NO QR ENCODER HERE (owner, 2026-11-14: "do lazy load content and libs").
+  vendor/qrcode.js and qrcode_UTF8.js (59 KB) were loaded on every page for a
+  code most readers never open; `navbar-row.js` loads them the first time a QR
+  code is shown (`window.faEnsureQrcode`), for its row and for the
+  `docs-ui.js` tile alike. The sidebar holding both is not printed.
+{%- endcomment %}
+{%- comment -%} BEFORE docs-ui.js and work-plan.js (where a page loads it): both read window.faRender. {%- endcomment -%}
 <script src="{{ '/assets/js/kg-render.js' | relative_url }}" defer></script>
 {%- comment -%} BEFORE docs-ui.js, which calls it: the one drawing of the harness icon row (beans `lhvt`, `9rq1`). {%- endcomment -%}
 <script src="{{ '/assets/js/navbar-row.js' | relative_url }}?v={{ '/assets/js/navbar-row.js' | fa_asset_version }}" defer></script>
@@ -748,12 +761,17 @@
   page without that container pays one failed querySelector. The same file is
   inlined verbatim into the generated state-visualiser pages.
 {%- endcomment -%}
+{%- comment -%} ONLY where a page carries the container (owner, 2026-11-14), as work-plan.css above. {%- endcomment -%}
+{%- if content contains 'data-fa-workplan' %}
 <script src="{{ '/assets/js/work-plan.js' | relative_url }}" defer></script>
+{%- endif -%}
 {%- comment -%}
   The process index, self-mounting on `[data-fa-process-index]` the same way.
   Its rows are the diagrams' own documentation, from the published subgraph JSON-LD.
 {%- endcomment -%}
+{%- if content contains 'data-fa-process-index' %}
 <script src="{{ '/assets/js/process-index.js' | relative_url }}" defer></script>
+{%- endif -%}
 
 {%- comment -%}
   The landing panel — the instance's declared description drawn inside the
