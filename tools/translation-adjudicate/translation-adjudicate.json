@@ -8,7 +8,7 @@
       "none": true
     },
     "invoke": {
-      "shell": "bun run cat translation:adjudicate"
+      "manual": true
     },
     "io": {
       "inputs": [
@@ -74,6 +74,10 @@
     {
       "at": "/io/inputs/1",
       "comment": "A runner path, so `FilesystemPath` and no `arg`: it is not an injection-safe command-line word. The script also takes `--event <file>` and `--summary <file>` when run by hand."
+    },
+    {
+      "at": "/invoke",
+      "comment": "`manual` until the tools layer the lock pins declares the checkout script `translation:adjudicate`: `check:tools` refuses a `bun run cat <key>` no mounted layer declares. Once the pin moves past it, `invoke.shell` is `bun run cat translation:adjudicate` and `manual` goes. Until then the reusable workflow `translation-adjudication-workflow` is how it runs."
     }
   ]
 }

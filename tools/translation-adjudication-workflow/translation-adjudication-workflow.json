@@ -3,7 +3,7 @@
   "tool": {
     "id": "translation-adjudication-workflow",
     "title": "Translation adjudication workflow (reusable)",
-    "description": "cat-harness-tools' reusable `layer-translation-adjudication.yml`, called by a layer on `issues` events: runs once per issue labelled `translation-adjudication` or titled `[translation review] …`, mounts the platform's layers, runs `translation:adjudicate` on the event, and either commits the records on `translation-adjudication/issue-<n>` (authored by the issue's author) and opens a ready PR, or comments why nothing was recorded. It never merges.",
+    "description": "The tools layer's reusable `layer-translation-adjudication.yml`, called by a layer on `issues` events: runs once per issue labelled `translation-adjudication` or titled `[translation review] …`, mounts the platform's layers, runs `translation:adjudicate` on the event, and either commits the records on `translation-adjudication/issue-<n>` (authored by the issue's author) and opens a ready PR, or comments why nothing was recorded. It never merges.",
     "install": {
       "none": true
     },
@@ -33,7 +33,7 @@
           "schema": {
             "$type": "Text"
           },
-          "description": "`lock` (the caller's pin of cat-harness-tools) or a 40-hex commit.",
+          "description": "`lock` (the caller's lock pin of the tools layer) or a 40-hex commit.",
           "required": false
         }
       ],
@@ -70,7 +70,7 @@
   "$comment": [
     {
       "at": "/invoke",
-      "comment": "`manual`, honestly: a reusable workflow is not dispatched; a layer's caller (`on: issues`, `uses: litlfred/cat-harness-tools/.github/workflows/layer-translation-adjudication.yml@<lock sha>`) runs it when an issue is filed. The `ig-folio-site-workflow` node is the precedent for a node over a workflow."
+      "comment": "`manual`, honestly: a reusable workflow is not dispatched; a layer's caller (`on: issues`, `uses: <tools layer>/.github/workflows/layer-translation-adjudication.yml@<lock sha>`) runs it when an issue is filed. The `ig-folio-site-workflow` node is the precedent for a node over a workflow."
     }
   ]
 }
