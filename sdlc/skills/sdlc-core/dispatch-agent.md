@@ -191,6 +191,7 @@ Every ~120 s while any agent is still `[live]`:
 
    | label | DID (evidence) | DOING (live) | NEXT | BLOCKERS |
    |-------|----------------|--------------|------|----------|
+   | `agent-1` | pushed `abc1234` | running the tests | open the PR | none |
 
    Keep it to one screen. If a block is stale (same step counter as last
    heartbeat and > 3 min old), flag it `⚠ stale` and note you'll

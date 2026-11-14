@@ -144,4 +144,6 @@ node_modules/
 /docs/assets/slices/
 /docs/assets/img/workflows/
 /schemas/kinds/
+/docs/en/cat-harness/work-plan/
+/docs/en/cat-harness/qa-script/
 # END built at publish
