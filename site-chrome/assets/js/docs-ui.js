@@ -11282,7 +11282,10 @@
   }
 
   function mountFigures() {
-    document.querySelectorAll(".bpmn-figure").forEach(function (f) { mountFigure(f, false); });
+    document.querySelectorAll(".bpmn-figure").forEach(function (f) {
+      if (f.querySelector("[data-fa-inline-pending]")) return;
+      mountFigure(f, false);
+    });
 
     // Any other SVG in the body gets the same controls -- but only if it is a
     // FIGURE. The first version of this matched `.main-content svg`, which in
@@ -11318,6 +11321,10 @@
       (rasterOk ? ", .main-content img" : "");
 
     document.querySelectorAll(sel).forEach(function (node) {
+      // A drawing still waiting to be inlined is mounted once it is, by
+      // `inlineDiagrams` calling back here: wrapped now, the scan would see
+      // an <img> and size its controls for that.
+      if (node.hasAttribute("data-fa-inline-pending")) return;
       if (node.closest(".bpmn-figure") || node.closest(".fa-qr-host")) return;
       if (node.closest(".fa-figure-scope")) return;
       // An <svg> nested in another is part of that drawing, never its own figure.
@@ -11457,6 +11464,22 @@
     return svg;
   }
 
+  // LAZY, AS THEY NEAR THE VIEWPORT (owner, 2026-11-14: "do lazy load content
+  // and libs"). Every drawing used to be fetched and parsed at load, wherever
+  // it sat, and the figure controls of the whole page waited for the slowest.
+  // Now `done` (mountFigures) runs at once for everything already drawable,
+  // each drawing is inlined when it comes within INLINE_MARGIN of the
+  // viewport, and its own controls are mounted when it is. A drawing still an
+  // <img> carries `data-fa-inline-pending`, which mountFigures skips.
+  //
+  // PRINT (owner, 2026-11-14: "Make sure printing loads all of the content
+  // before it renders the PDF"): an un-inlined drawing is still its own
+  // <img>, which prints; `beforeprint` turns any `loading="lazy"` image in
+  // the content eager and starts inlining every pending drawing, and
+  // `faInlineAllDiagrams()` returns a promise for a caller that can wait
+  // (a Print button would await it, then call window.print()).
+  var INLINE_MARGIN = "1000px 0px";
+  var inlineQueue = [];
   function inlineDiagrams(done) {
     var imgs = [].slice.call(
       document.querySelectorAll(
@@ -11468,13 +11491,55 @@
       done();
       return;
     }
-    var pending = imgs.length;
-    function settle() { if (--pending === 0) done(); }
+    imgs.forEach(function (img) { img.setAttribute("data-fa-inline-pending", ""); });
+    inlineQueue = imgs;
+    done();
+    if (typeof window.IntersectionObserver !== "function") {
+      // No observer: the old behaviour, every drawing now.
+      inlineAll();
+      return;
+    }
+    var io = new window.IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        inlineOne(e.target);
+      });
+    }, { rootMargin: INLINE_MARGIN });
+    imgs.forEach(function (img) { io.observe(img); });
+  }
 
-    imgs.forEach(function (img) {
+  /** Inline every drawing not yet inlined; resolves when all have settled. */
+  function inlineAll() {
+    return Promise.all(inlineQueue.map(inlineOne));
+  }
+  window.faInlineAllDiagrams = inlineAll;
+
+  window.addEventListener("beforeprint", function () {
+    [].forEach.call(document.querySelectorAll('.main-content img[loading="lazy"], .bpmn-figure img[loading="lazy"]'), function (img) {
+      img.loading = "eager";
+    });
+    inlineAll();
+  });
+
+  var remountPending = null;
+  function remountSoon() {
+    if (remountPending !== null) return;
+    remountPending = window.setTimeout(function () { remountPending = null; mountFigures(); }, 30);
+  }
+
+  /** Inline one drawing, once; the same promise however often it is asked. */
+  function inlineOne(img) {
+    if (img.faInlined) return img.faInlined;
+    if (!img.hasAttribute("data-fa-inline-pending")) return Promise.resolve();
+    function settle() {
+      img.removeAttribute("data-fa-inline-pending");
+      remountSoon();
+    }
+    img.faInlined = (function () {
       var isObject = img.tagName.toLowerCase() === "object";
       var src = img.getAttribute(isObject ? "data" : "src");
-      window
+      return window
         .fetch(src)
         .then(function (r) {
           if (!r.ok) throw new Error("HTTP " + r.status);
@@ -11517,7 +11582,8 @@
           console.warn("docs-ui: could not inline " + src + " (" + e.message + "); it stays a static image, so its links will not work.");
         })
         .then(settle, settle);
-    });
+    })();
+    return img.faInlined;
   }
 
   /* ── The navbar filters by the selected locale ───────────────────────── */
@@ -13793,6 +13859,10 @@
     // Figures are mounted only after the inlining settles, so the scan sees the
     // real <svg> rather than the <img> it replaces and does not wrap both.
     inlineDiagrams(mountFigures);
+    // A diagram drawn LATER -- a Mermaid block rendered as it nears the
+    // viewport (`_includes/components/mermaid.html`) -- says so, and gets its
+    // controls then; the observer below stops watching after ten seconds.
+    document.addEventListener("fa:figures-changed", remountSoon);
 
     // Mermaid renders AFTER this runs, and nothing tells us when.
     //
