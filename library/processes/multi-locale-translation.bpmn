@@ -94,7 +94,7 @@ Two things are never done in a translation: fixing the source (a source-text err
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_ML_Translate" name="Translate one locale">
-      <bpmn:documentation>From the merged templates, with the locale term base: `translations/&lt;locale&gt;/**.po`, a translation-node manifest beside each (`official: false`, `generatedBy: "agent"`; no `status.json`), and the FHIR terms as CodeSystem supplements, all in one file for the locale rather than edits inside the resources.</bpmn:documentation>
+      <bpmn:documentation>From the merged templates, with the locale term base: `translations/&lt;locale&gt;/**.po`, a translation-node manifest beside each (`official: false`, `generatedBy: "agent"`, or `"machine"` where `translation:candidates` filled an empty entry with its first candidate, which stays fuzzy; no `status.json`), and the FHIR terms as CodeSystem supplements, all in one file for the locale rather than edits inside the resources.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="translation-manager"/>
       </bpmn:extensionElements>

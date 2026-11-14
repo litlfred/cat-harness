@@ -52,6 +52,9 @@
         },
         {
           "@id": "skills/library/library-core/translation-manager.md#provenance-14"
+        },
+        {
+          "@id": "skills/library/library-core/translation-manager.md#provenance-15"
         }
       ]
     },
@@ -187,6 +190,16 @@
         "cat-harness-tools#1595",
         "cat-harness-tools#1599",
         "cat-harness-tools#1601"
+      ]
+    },
+    {
+      "@id": "skills/library/library-core/translation-manager.md#provenance-15",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "### 3. Translate",
+      "prov:value": "Owner, 2026-11-14: an unrestricted, open machine-translation step for the gettext catalogues, so no freemium API quota is involved — OPUS-MT run locally or a self-hosted LibreTranslate (Tool translation-candidates). The same day: several sources per string as CANDIDATES a reviewer chooses among, never a barrier to having a translation, so an empty msgstr gets the first good candidate as fuzzy. The DeepL / Google Translate route is no longer recommended; paid services are mentioned, not added.",
+      "cat-harness:refs": [
+        "2026-11-14"
       ]
     }
   ]
