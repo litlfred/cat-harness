@@ -10,6 +10,8 @@
     "library-ingestion",
     "literature-search",
     "term-disagreement",
+    "translation-adjudication",
+    "translation-candidate-source",
     "translation-manager",
     "translation-refresh",
     "upload-naming",
