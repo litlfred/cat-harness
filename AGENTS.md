@@ -313,7 +313,7 @@ _258 skills in 22 directories. The full list, with what each skill is for, is in
 | [`skills/authoring/content-lifecycle/`](skills/authoring/content-lifecycle/) | 6 |
 | [`skills/conduct/conduct-core/`](skills/conduct/conduct-core/) | 20 |
 | [`skills/conduct/security/`](skills/conduct/security/) | 4 |
-| [`skills/kg/graph-management/`](skills/kg/graph-management/) | 6 |
+| [`skills/kg/graph-management/`](skills/kg/graph-management/) | 7 |
 | [`skills/kg/kg-core/`](skills/kg/kg-core/) | 29 |
 | [`skills/kg/kg-navigation/`](skills/kg/kg-navigation/) | 1 |
 | [`skills/process/crdm/`](skills/process/crdm/) | 7 |
@@ -329,7 +329,7 @@ _258 skills in 22 directories. The full list, with what each skill is for, is in
 | `sdlc/skills/spec-kit/` (opt-in `cat-harness.sdlc`) | 3 |
 | `work-plan/skills/work-plan/` (opt-in `cat-harness.work-plan`) | 8 |
 | `editorial/skills/editorial-audits/` (opt-in `cat-harness.editorial`) | 10 |
-| `kg-ops/skills/kg-ops/` (opt-in `cat-harness.kg-ops`) | 4 |
+| `kg-ops/skills/kg-ops/` (opt-in `cat-harness.kg-ops`) | 3 |
 | `platform-ui/skills/platform-ui/` (opt-in `cat-harness.platform-ui`) | 10 |
 
 <!-- skills:index:end -->
