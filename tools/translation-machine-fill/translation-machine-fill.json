@@ -1,0 +1,145 @@
+{
+  "$schema": "tool-definition/v1",
+  "tool": {
+    "id": "translation-machine-fill",
+    "title": "Machine-fill empty translations with an open engine",
+    "description": "Fill the EMPTY msgstr entries of a layer's gettext catalogues with an open, self-hosted machine translator — OPUS-MT (Helsinki-NLP Marian models, CC-BY 4.0, run locally) or a self-hosted LibreTranslate (AGPL, Argos models) — so no freemium API quota is involved. A non-empty msgstr is never overwritten, every machine string is written `#, fuzzy`, and a string whose placeholders or markup do not round-trip is left empty and reported. The catalogue's translation node records `generatedBy: \"machine\"`, the engine and model, and the time; `official` is never set. A catalogue that says DO NOT MACHINE-FILL, or whose node is official, is not filled.",
+    "install": {
+      "none": true
+    },
+    "invoke": {
+      "shell": "bun run cat translation:machine-fill"
+    },
+    "io": {
+      "inputs": [
+        {
+          "name": "instance",
+          "schema": {
+            "$type": "RepoPath"
+          },
+          "description": "The layer root whose declared `translation-sources` directory is filled. Default: the current directory.",
+          "required": false,
+          "arg": {
+            "flag": "--instance"
+          }
+        },
+        {
+          "name": "engine",
+          "schema": {
+            "$type": "MtEngine"
+          },
+          "description": "`opus-mt` runs the bundled local runner (`opus-mt-runner.py`, which needs the extended Python tier); `libretranslate` calls the URL below. Absent, the command exits 2 with its usage.",
+          "required": true,
+          "arg": {
+            "flag": "--engine"
+          }
+        },
+        {
+          "name": "url",
+          "schema": {
+            "$type": "Url"
+          },
+          "description": "A self-hosted LibreTranslate's base URL (default `http://localhost:5000`). The hosted libretranslate.com / .de services are refused.",
+          "required": false,
+          "arg": {
+            "flag": "--url"
+          }
+        },
+        {
+          "name": "locales",
+          "schema": {
+            "$type": "IdList"
+          },
+          "description": "Comma-separated locales to fill, e.g. `es,fr`. Default: every locale directory except the source locale.",
+          "required": false,
+          "arg": {
+            "flag": "--locale"
+          }
+        },
+        {
+          "name": "init",
+          "schema": {
+            "$type": "Flag"
+          },
+          "description": "Start a `.po` from each template that has none (locale named, `X-Folio-Official: no`, every msgstr empty) and fill it. Never the default: starting a catalogue is a decision.",
+          "required": false,
+          "arg": {
+            "flag": "--init"
+          }
+        },
+        {
+          "name": "noCreateNode",
+          "schema": {
+            "$type": "Flag"
+          },
+          "description": "Skip a catalogue that has no translation node beside it, instead of writing a minimal `translation-node/v1` for it.",
+          "required": false,
+          "arg": {
+            "flag": "--no-create-node"
+          }
+        },
+        {
+          "name": "noMask",
+          "schema": {
+            "$type": "Flag"
+          },
+          "description": "Send placeholders to the engine as they are, instead of as numbered stand-ins. The round-trip check runs either way.",
+          "required": false,
+          "arg": {
+            "flag": "--no-mask"
+          }
+        },
+        {
+          "name": "dryRun",
+          "schema": {
+            "$type": "Flag"
+          },
+          "description": "Translate and report, writing nothing.",
+          "required": false,
+          "arg": {
+            "flag": "--dry-run"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "catalogues",
+          "schema": {
+            "$type": "RepoPath"
+          },
+          "description": "The `<locale>/<name>.po` catalogues written, each new string `#, fuzzy`, and their `<name>.json` translation nodes. Exit 0 something was filled · 3 nothing was · 2 could not determine · 1 the engine failed."
+        }
+      ]
+    },
+    "satisfies": [
+      "translation-refresh"
+    ],
+    "selection": {
+      "when": "A catalogue has empty entries and a first draft is wanted before a person reviews it on the translation review page. The machine draft is fuzzy and unofficial until a person adjudicates it.",
+      "limits": "Singular entries only: plural entries are left for a person. Catalogues that say DO NOT MACHINE-FILL, and catalogues whose node is official, are refused. Machine output into a language nobody on the project reads cannot be checked here; it is a draft for review, never a sign-off. The LibreTranslate host is whatever `--url` names (normally one on this machine), so it has no fixed remedy; without one, use `--engine opus-mt`.",
+      "cost": "OPUS-MT: a model download per language pair on first use (hundreds of MB) and CPU time, no per-string fee. LibreTranslate: whatever running your own instance costs."
+    },
+    "requires": {
+      "runtime": [
+        "bun"
+      ],
+      "network": true
+    },
+    "remedies": [
+      {
+        "host": "huggingface.co",
+        "none": "OPUS-MT downloads each model once; with HF_HUB_OFFLINE=1 and a model already in the cache, or `--runner` pointing at a runner with `--model-dir`, it runs with no network."
+      }
+    ]
+  },
+  "$comment": [
+    {
+      "at": "",
+      "comment": "The owner, 2026-11-14: an unrestricted, open machine-translation step for the gettext catalogues, so no freemium API quota is involved. It replaces the DeepL / Google Translate `po-translate` route `translation-manager` §3 used to recommend. The rules (never overwrite, fuzzy, placeholder round-trip, node provenance) are in cat-harness-tools `scripts/lib/machine-translation.ts`."
+    },
+    {
+      "at": "/satisfies",
+      "comment": "`translation-refresh` §4 is where a first draft of the new and fuzzy strings is made, and the step that names this Tool. A machine string stays fuzzy, so §4's own rule (clear `#, fuzzy` only on an entry actually re-translated) still holds: this Tool never clears one."
+    }
+  ]
+}

@@ -62,7 +62,7 @@ takes `--instance <root>`, so one checkout serves every layer.
 | 1. detect | `translation:status --instance <root>`, `translation:drift:check --instance <root>`, `translation:obsolete:check --instance <root>`, and the layer's template checks | any shows something to do |
 | 2. refresh templates | the layer's extractors (`translate-bpmn --instance <root> --extract` for diagrams; pages and glossary as its `AGENTS.md` names) | the template checks pass |
 | 3. merge into each locale | `msgmerge --update --backup=none`, or `translation:obsolete --instance <root>` | every catalogue matches its template |
-| 4. translate new and fuzzy | by hand or by agent, with the locale term base | no empty or fuzzy entry is left |
+| 4. translate new and fuzzy | optionally a first draft with `translation:machine-fill --instance <root> --engine opus-mt` (Tool [`translation-machine-fill`](../../../tools/translation-machine-fill/translation-machine-fill.json)), then by hand or by agent, with the locale term base | no empty entry is left, and every fuzzy entry is either re-translated or a machine draft awaiting review |
 | 5. gates | below | every gate passes |
 | 6. round trip | [`translation-round-trip.bpmn`](../../processes/translation-round-trip.bpmn) on the changed strings | both drift and not-drift are recorded |
 | 7. QA report | `translation:page-qa --instance <root>`, and the report | it is written |
@@ -132,9 +132,21 @@ worded it differently today. Translate with the locale term base
 a term a lower layer fixes keeps its fixed form. Clear `#, fuzzy` only on an
 entry you have actually re-translated.
 
+**A machine first draft is allowed, and stays a draft.** `bun run cat
+translation:machine-fill --instance <root> --engine opus-mt` (or
+`--engine libretranslate --url <self-hosted>`) fills only the EMPTY entries
+with an open engine, never a hosted freemium API. Each string it writes is
+`#, fuzzy`, and a string whose placeholders do not round-trip is left empty
+for you. It does not touch a fuzzy entry that already has text, a plural
+entry, a catalogue that says `DO NOT MACHINE-FILL`, or a catalogue whose node
+is official. Its strings stay fuzzy until you re-translate them or a person
+accepts them on the translation review page. Do not clear the flag because a
+machine wrote the string.
+
 FHIR terms go into the locale's one CodeSystem supplement, never into the
-resource. Translation-node manifests stay `official: false`,
-`generatedBy: "agent"`. Write no `status.json`.
+resource. Translation-node manifests stay `official: false`, with
+`generatedBy: "agent"`, or `"machine"` where the machine-fill step wrote
+them. Write no `status.json`.
 
 **A mistake in the source is not fixed here.** Translate what the source says,
 and note the location for step 10.

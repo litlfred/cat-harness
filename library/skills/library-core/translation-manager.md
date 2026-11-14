@@ -165,11 +165,28 @@ Translate with the term base open. Options, in order of preference:
 
 1. **Existing `.po` from SMART Base** — if the DAK already has translations
    from Weblate/Crowdin, use them.
-2. **FHIR/translation-utils** — the `po-translate` CLI for batch machine
-   translation via DeepL/Google Translate. Tags results `# fuzzy`.
+2. **Open machine translation** — `bun run cat translation:machine-fill
+   --instance <root> --engine opus-mt` (OPUS-MT, Helsinki-NLP Marian models,
+   CC-BY 4.0, run locally) or `--engine libretranslate --url <yours>` (a
+   self-hosted LibreTranslate). The Tool is
+   [`translation-machine-fill`](../../../tools/translation-machine-fill/translation-machine-fill.json).
+   It fills only EMPTY `msgstr` entries, writes each one `#, fuzzy`, and
+   leaves empty any string whose placeholders or markup do not round-trip. It
+   records `generatedBy: "machine"` and the engine and model on the
+   translation node, and never sets `official`. `--init` starts a `.po` from
+   a template that has none. No hosted freemium API is used: the DeepL /
+   Google Translate route through `po-translate` is no longer recommended,
+   because it needs a quota and sends the text to a third party.
 3. **Agent translation** — LLM translation of `.pot` → `.po`. Also tagged
    unofficial.
 4. **Human translation** — the gold standard.
+
+A machine or agent draft is a draft. It reaches a person through the
+translation review page (`review.html`, beside the status page), where a
+reviewer ticks the acceptable strings or suggests better text, and the
+resulting issue becomes the recorded adjudication. A catalogue whose author
+wrote `DO NOT MACHINE-FILL` in its header (the viewer's `kg-viewer.po`) is
+never machine-filled: the tool refuses it, and so does an agent.
 
 #### Modal strength: a recommendation stays a recommendation
 
