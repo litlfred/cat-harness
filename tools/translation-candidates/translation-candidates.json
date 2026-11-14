@@ -28,7 +28,7 @@
           "schema": {
             "$type": "IdList"
           },
-          "description": "Comma-separated candidate sources, tried in this order for an empty msgstr: `opus-mt` (the bundled local runner `opus-mt-runner.py`, which needs the extended Python tier) and/or `libretranslate` (the URL below). Absent, the command exits 2.",
+          "description": "Comma-separated candidate sources, tried in this order for an empty msgstr: `opus-mt` (the local runner `scripts/translation/opus_mt_runner.py`, shared with `translate-pot`, which needs the extended Python tier) and/or `libretranslate` (the URL below). Absent, the command exits 2.",
           "required": true,
           "arg": {
             "flag": "--engine"
