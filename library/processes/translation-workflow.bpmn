@@ -101,11 +101,11 @@ A change to source content also triggers this event for staleness re-evaluation.
 
       <documentation>Translation of .pot → .po, with the locale term base, by one of:
 1. Existing PO from the WHO SMART Base IG (Weblate/Crowdin/Launchpad)
-2. Open machine translation: `translation:machine-fill` (Tool translation-machine-fill), OPUS-MT run locally or a self-hosted LibreTranslate, no freemium API. Fills only empty entries, each tagged #, fuzzy; a string whose placeholders do not round-trip stays empty; the node records generatedBy "machine", never official. Refuses a catalogue marked DO NOT MACHINE-FILL.
+2. Open machine translation as candidates: `translation:candidates` (Tool translation-candidates), OPUS-MT run locally and/or a self-hosted LibreTranslate, no freemium API. Each source's text is a candidate in &lt;catalogue&gt;.candidates.json for the reviewer to choose among; a candidate whose placeholders do not round-trip is not recorded; an empty msgstr gets the first good candidate, tagged #, fuzzy; the node records generatedBy "machine", never official. A catalogue marked DO NOT MACHINE-FILL gets candidates only.
 3. Agent (LLM) translation
 4. Human translator
 
-Result: &lt;locale&gt;/block.po with msgid/msgstr pairs. A machine or agent string stays fuzzy and unofficial until a person accepts it (translation review page) or signs it off (Task_Signoff).</documentation>
+Result: &lt;locale&gt;/block.po with msgid/msgstr pairs. A machine or agent string stays fuzzy and unofficial until a person picks or accepts it (translation review page) or signs it off (Task_Signoff).</documentation>
     </serviceTask>
 
     <!-- ── Inject ─────────────────────────────────────────────── -->

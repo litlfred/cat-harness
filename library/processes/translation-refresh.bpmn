@@ -107,7 +107,7 @@ Round-trip rulings are keyed by content: each is pinned by the hash of the msgid
     </bpmn:serviceTask>
 
     <bpmn:serviceTask id="Task_TR_Translate" name="Translate new and fuzzy only">
-      <bpmn:documentation>Only the empty and fuzzy entries, in every locale, with the terms the term base fixes. A finished string is not touched. A first draft of the EMPTY entries may come from `translation:machine-fill` (Tool translation-machine-fill: an open engine, OPUS-MT or self-hosted LibreTranslate); its strings are written fuzzy and stay fuzzy until re-translated here or accepted by a person on the review page.</bpmn:documentation>
+      <bpmn:documentation>Only the empty and fuzzy entries, in every locale, with the terms the term base fixes. A finished string is not touched. Candidates for the empty and fuzzy entries may come first from `translation:candidates` (Tool translation-candidates: open engines, OPUS-MT and/or self-hosted LibreTranslate), recorded in &lt;catalogue&gt;.candidates.json; an empty entry also gets the first good candidate, fuzzy, until it is re-translated here or a person picks or accepts one on the review page.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="translation-manager"/>
       </bpmn:extensionElements>
