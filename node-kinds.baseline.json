@@ -176,6 +176,10 @@
     },
     {
       "typology": "library",
+      "family": "folio-library-extraction/v1"
+    },
+    {
+      "typology": "library",
       "family": "folio-recording/v1"
     },
     {
