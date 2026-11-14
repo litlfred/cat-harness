@@ -68,6 +68,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`memory-checkpoint/`](memory-checkpoint/) | _nothing declares what this holds_ | |
 | [`memory-note/`](memory-note/) | _nothing declares what this holds_ | |
 | [`memory-recall/`](memory-recall/) | _nothing declares what this holds_ | |
+| [`merge-guard/`](merge-guard/) | _nothing declares what this holds_ | |
 | [`methodologies-viewer/`](methodologies-viewer/) | _nothing declares what this holds_ | |
 | [`mount-from-lock/`](mount-from-lock/) | _nothing declares what this holds_ | |
 | [`narrative-queue/`](narrative-queue/) | _nothing declares what this holds_ | |
@@ -133,6 +134,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`transcribe-whisper-cpp/`](transcribe-whisper-cpp/) | _nothing declares what this holds_ | |
 | [`translation-extract/`](translation-extract/) | _nothing declares what this holds_ | |
 | [`translation-inject/`](translation-inject/) | _nothing declares what this holds_ | |
+| [`translation-platforms/`](translation-platforms/) | _nothing declares what this holds_ | |
 | [`translation-roundtrip-record/`](translation-roundtrip-record/) | _nothing declares what this holds_ | |
 | [`translation-signoff/`](translation-signoff/) | _nothing declares what this holds_ | |
 | [`translation-status/`](translation-status/) | _nothing declares what this holds_ | |

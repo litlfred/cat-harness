@@ -8,7 +8,7 @@
       "none": true
     },
     "invoke": {
-      "manual": true
+      "shell": "bun run cat translation:adjudicate"
     },
     "io": {
       "inputs": [
@@ -77,7 +77,7 @@
     },
     {
       "at": "/invoke",
-      "comment": "`manual` until the tools layer the lock pins declares the checkout script `translation:adjudicate`: `check:tools` refuses a `bun run cat <key>` no mounted layer declares. Once the pin moves past it, `invoke.shell` is `bun run cat translation:adjudicate` and `manual` goes. Until then the reusable workflow `translation-adjudication-workflow` is how it runs."
+      "comment": "`bun run cat translation:adjudicate`, now that the tools layer declares the key (it was `manual` until then). The reusable workflow `translation-adjudication-workflow` still runs it on an `issues` event."
     }
   ]
 }
