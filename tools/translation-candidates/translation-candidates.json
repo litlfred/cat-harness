@@ -119,7 +119,8 @@
       ]
     },
     "satisfies": [
-      "translation-refresh"
+      "translation-refresh",
+      "translation-candidate-source"
     ],
     "selection": {
       "when": "A catalogue has empty or fuzzy entries and machine drafts are wanted for a reviewer to choose among on the translation review page. Every candidate is a draft; a person's adjudication decides.",
@@ -146,7 +147,7 @@
     },
     {
       "at": "/satisfies",
-      "comment": "`translation-refresh` §4 is where a first draft of the new and fuzzy strings is made, and the step that names this Tool. A machine string stays fuzzy, so §4's own rule (clear `#, fuzzy` only on an entry actually re-translated) still holds: this Tool never clears one."
+      "comment": "`translation-refresh` §4 is where a first draft of the new and fuzzy strings is made, and the step that names this Tool. A machine string stays fuzzy, so §4's own rule (clear `#, fuzzy` only on an entry actually re-translated) still holds: this Tool never clears one. `translation-candidate-source` (cat-harness#1331) is the interface every candidate engine meets: what it writes, the translation-candidates/v1 sidecar and the fuzzy seed of an empty msgstr. This Tool writes exactly that, through the shared writer."
     }
   ]
 }
