@@ -187,6 +187,7 @@ can answer without opening anything. For a merge, that means one row per PR:
 
 | repo | PR | head | CI on head | mergeable | review | local gates (if no CI) |
 |---|---|---|---|---|---|---|
+| `owner/repo` | #123 | `abc1234` | green | yes | approved | n/a |
 
 Then the recommendation, then one question that covers the batch: *"Merge these
 N?"* Several repositories are several merges, but one question can authorise
