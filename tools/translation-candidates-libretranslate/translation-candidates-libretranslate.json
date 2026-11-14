@@ -1,0 +1,76 @@
+{
+  "$schema": "tool-definition/v1",
+  "tool": {
+    "id": "translation-candidates-libretranslate",
+    "title": "Candidate translations — LibreTranslate / Argos",
+    "description": "LibreTranslate (a self-hosted web service) or its engine Argos Translate (offline, installed packages) proposes a translation for each string and appends them to the catalogue's candidates sidecar with `source.kind: web-service` and the server or package. Seeds an empty `msgstr` with the first candidate, fuzzy.",
+    "install": {
+      "cli": "pip install argostranslate (offline), or pip install libretranslate",
+      "container": "libretranslate/libretranslate"
+    },
+    "invoke": {
+      "manual": true
+    },
+    "io": {
+      "inputs": [
+        {
+          "name": "locale",
+          "schema": {
+            "$type": "Locale"
+          },
+          "description": "The target locale.",
+          "required": true,
+          "arg": {
+            "flag": "--locale"
+          }
+        },
+        {
+          "name": "catalogue",
+          "schema": {
+            "$type": "RepoPath"
+          },
+          "description": "The `.po` catalogue to propose translations for.",
+          "required": true,
+          "arg": {
+            "positional": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "candidates",
+          "schema": {
+            "$type": "RepoPath"
+          },
+          "description": "`<locale>/<catalogue>.candidates.json` (`translation-candidates/v1`), appended to; and the `.po`, where an empty `msgstr` now holds the first candidate marked `#, fuzzy`."
+        }
+      ]
+    },
+    "satisfies": [
+      "translation-candidate-source"
+    ],
+    "selection": {
+      "when": "An open engine that can run as a local service or fully offline, for a team that already hosts one or cannot install PyTorch.",
+      "limits": "Quality below OPUS-MT on most pairs, context-blind like it, and a public instance rate-limits and sees the text. Prose that needs context: `translation-candidates-agent`.",
+      "cost": "A small Python package and about 100 MB per language package offline, or one container; a public instance needs an API key."
+    },
+    "requires": {
+      "runtime": [
+        "python3"
+      ],
+      "network": true
+    },
+    "remedies": [
+      {
+        "host": "libretranslate.com",
+        "none": "Run it locally instead: `argostranslate` offline, or the `libretranslate/libretranslate` container on localhost. The public instance is a convenience, not a dependency."
+      }
+    ]
+  },
+  "$comment": [
+    {
+      "at": "/invoke",
+      "comment": "`manual` for now: the engine script is being built in cat-harness-tools, and `check:tools` refuses a `bun run cat <key>` that no layer declares. When its checkout-script key lands, `invoke.shell` names it and `manual` goes."
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "tool-definition/v1",
+  "tool": {
+    "id": "translation-candidates-agent",
+    "title": "Candidate translations — agent model",
+    "description": "An agent model proposes a translation for each string of a catalogue, with the locale term base and the string's source context in front of it, and appends them to the catalogue's candidates sidecar with `source.kind: agent` and the model's id. Seeds an empty `msgstr` with the first candidate, fuzzy.",
+    "install": {
+      "none": true
+    },
+    "invoke": {
+      "manual": true
+    },
+    "io": {
+      "inputs": [
+        {
+          "name": "locale",
+          "schema": {
+            "$type": "Locale"
+          },
+          "description": "The target locale.",
+          "required": true,
+          "arg": {
+            "flag": "--locale"
+          }
+        },
+        {
+          "name": "catalogue",
+          "schema": {
+            "$type": "RepoPath"
+          },
+          "description": "The `.po` catalogue to propose translations for.",
+          "required": true,
+          "arg": {
+            "positional": 0
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "candidates",
+          "schema": {
+            "$type": "RepoPath"
+          },
+          "description": "`<locale>/<catalogue>.candidates.json` (`translation-candidates/v1`), appended to; and the `.po`, where an empty `msgstr` now holds the first candidate marked `#, fuzzy`."
+        }
+      ]
+    },
+    "satisfies": [
+      "translation-candidate-source"
+    ],
+    "selection": {
+      "when": "Prose that needs the surrounding meaning — paragraphs, diagram labels whose sense depends on the process, terms the locale term base fixes — and when an agent session is already running.",
+      "limits": "Not reproducible run to run, and the model's output is as unreviewed as any engine's. For a large catalogue of short, literal strings, `translation-candidates-opus-mt` is cheaper and repeatable; with no model at all, `translation-candidates-libretranslate`.",
+      "cost": "Model tokens per string, in a session that has a model; nothing to install."
+    },
+    "requires": {
+      "network": false
+    }
+  },
+  "$comment": [
+    {
+      "at": "/invoke",
+      "comment": "`manual` for now: the engine script is being built in cat-harness-tools, and `check:tools` refuses a `bun run cat <key>` that no layer declares. When its checkout-script key lands, `invoke.shell` names it and `manual` goes."
+    },
+    {
+      "at": "/requires/network",
+      "comment": "The agent is the session already running; it reaches no host this Tool adds."
+    }
+  ]
+}
