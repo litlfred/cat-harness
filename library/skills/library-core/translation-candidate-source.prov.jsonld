@@ -24,7 +24,7 @@
       "@type": "prov:Entity",
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "(top of file)",
-      "prov:value": "Owner, 2026-11-14: \"There are other tools for translations that could be used in this workflow\" — the candidate-producing engines as interchangeable Tools behind one interface (a translation-candidate-source kind, if the typology allows). The Tool schema has no kind field; interchangeability is derived from a shared skill and an identical I/O signature, so the interface is this skill.",
+      "prov:value": "Owner, 2026-11-14: \"There are other tools for translations that could be used in this workflow\" — the candidate-producing engines as interchangeable Tools behind one interface (a translation-candidate-source kind, if the typology allows). The Tool schema has no kind field; interchangeability is derived from a shared skill and an identical I/O signature, so the interface is this skill. Coordinated 2026-11-14 with the session building `translation:candidates` (cat-harness-tools#2144, cat-harness#1329): the open machine-translation engines are ONE Tool selected by `--engine`, not a node per engine; the agent model is a separate Tool.",
       "cat-harness:refs": [
         "2026-11-14"
       ]

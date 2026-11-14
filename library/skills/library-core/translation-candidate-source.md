@@ -1,13 +1,13 @@
 ---
 name: translation-candidate-source
 description: >
-  The one interface every candidate-translation engine meets: given a locale
-  and a catalogue, append candidate translations per string to the
+  The one interface every candidate-translation engine meets: for a layer's
+  catalogues, append candidate translations per string to the
   `translation-candidates/v1` sidecar, each carrying its source, and seed an
-  empty `msgstr` with the first candidate marked fuzzy. An agent model, an
-  open machine-translation model (OPUS-MT) and a web service or offline
-  engine (LibreTranslate / Argos) are interchangeable Tools of this skill.
-  Use when adding an engine, choosing one, or producing candidates for review.
+  empty `msgstr` with the first candidate marked fuzzy. An agent model and the
+  open machine-translation engines (OPUS-MT, LibreTranslate / Argos) are
+  interchangeable behind it. Use when adding an engine, choosing one, or
+  producing candidates for review.
 graph-typologies:
   - translation-sources
 ---
@@ -18,23 +18,28 @@ graph-typologies:
 
 A **candidate** is a translation somebody or something proposes for one
 string. This skill states what producing candidates means, independent of
-the engine; each engine is a Tool that `satisfies` it. Which engine produced
-a candidate is recorded on the candidate, and the reviewer's choice among
-them is a step of
+the engine. A Tool that `satisfies` it runs one engine or several — the
+open machine-translation Tool picks its engine by flag — and which engine
+produced a candidate is recorded on the candidate.
+The reviewer's choice among candidates is a step of
 [`translation-adjudication`](translation-adjudication.md).
 
 ## The contract
 
-Every Tool of this skill has the same inputs and the same output, so the
-harness derives that they are alternatives (a shared skill and an identical
-I/O signature) and asks each for its `selection` — when to reach for it,
-where it stops, what it costs.
+What makes engines interchangeable is what they WRITE, not how they are
+called: every Tool of this skill walks a layer's catalogues for the locales
+asked and leaves the same two things behind.
 
 | | |
 |---|---|
-| **input** `locale` | the target locale tag (`--locale`) |
-| **input** `catalogue` | the `.po` catalogue to propose for (positional) |
-| **output** `candidates` | `translations/<locale>/<catalogue>.candidates.json`, `translation-candidates/v1` |
+| **input** `instance` | the layer root whose catalogues to propose for |
+| **input** locales | the target locales; absent means every locale the layer declares |
+| **output** `candidates` | `translations/<locale>/<catalogue>.candidates.json`, `translation-candidates/v1`, appended to |
+| **output** `catalogues` | the `.po` catalogues whose empty `msgstr` got the first candidate, `#, fuzzy` |
+
+Engine-specific inputs (which engine, a server's URL, a model) belong to the
+Tool that runs that engine. Each Tool states its `selection` — when to reach
+for it, where it stops, what it costs — so an agent can choose among them.
 
 The sidecar holds, per string (`msgid`, with `msgctxt` when there is one), a
 list of `{ text, source }`. `source.kind` is one of `agent`, `open-mt`,
@@ -60,8 +65,11 @@ list of `{ text, source }`. `source.kind` is one of `agent`, `open-mt`,
 
 ## Adding an engine
 
-A new engine is a new Tool node under `tools/<id>/<id>.json` that satisfies
-this skill with the I/O above, a `selection`, and — when it reaches a host —
-`requires.network: true` with a `remedies` entry naming what to do when that
-host is refused. Nothing in the process changes: the process names this
+A new engine is either a new value of an existing Tool's engine flag — the
+open machine-translation engines are one Tool, `translation:candidates
+--engine opus-mt,libretranslate` — or, when it is a different mechanism (a
+person, an agent, a paid service), a new Tool node under
+`tools/<id>/<id>.json` that satisfies this skill, writes the outputs above,
+states a `selection`, and — when it reaches a host — `requires.network: true`
+with a `remedies` entry naming what to do when that host is refused. Nothing in the process changes: the process names this
 skill, never an engine.

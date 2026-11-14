@@ -74,7 +74,7 @@ GitHub is one Tool here, not the process: the issue is the carrier of the verdic
     </bpmn:startEvent>
 
     <bpmn:serviceTask id="Task_TRA_Candidates" name="Produce candidate&#10;translations (any engine)">
-      <bpmn:documentation>One or more candidate sources write alternatives per string to `translations/&lt;locale&gt;/&lt;catalogue&gt;.candidates.json` (`translation-candidates/v1`), each candidate carrying its source: an agent model, an open machine-translation model, a web service, or a person. The engines are interchangeable Tools behind one skill, `translation-candidate-source`: same inputs, same sidecar out. Writers append; a candidate is never a verdict.</bpmn:documentation>
+      <bpmn:documentation>One or more candidate sources write alternatives per string to `translations/&lt;locale&gt;/&lt;catalogue&gt;.candidates.json` (`translation-candidates/v1`), each candidate carrying its source: an agent model, an open machine-translation model, a web service, or a person. The engines are interchangeable behind one skill, `translation-candidate-source`: whichever runs, the same sidecar comes out. Writers append; a candidate is never a verdict.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="translation-candidate-source"/>
       </bpmn:extensionElements>

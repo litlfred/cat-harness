@@ -113,7 +113,7 @@ engine is another Tool satisfying the same skill.
 
 | step | Tool |
 |---|---|
-| produce candidates | any [`translation-candidate-source`](translation-candidate-source.md) Tool |
+| produce candidates | any [`translation-candidate-source`](translation-candidate-source.md) Tool: `translation-candidates-agent`, or the open machine-translation engines through `translation:candidates` |
 | build the review page | `translation-status-viewer` (`translation:status` writes `review.html`) |
 | read and submit a verdict | `translation-review-page` |
 | carry the issue, run the workflow, hold the PR | `github` |

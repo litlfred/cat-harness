@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translation-review-adjudication\n"
-"POT-Creation-Date: 2026-11-14T08:05:40.674Z\n"
+"POT-Creation-Date: 2026-11-14T08:13:01.049Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -201,7 +201,7 @@ msgstr ""
 
 #: library/processes/translation-review-adjudication.bpmn:77
 #. Diagram element documentation
-msgid "One or more candidate sources write alternatives per string to `translations/<locale>/<catalogue>.candidates.json` (`translation-candidates/v1`), each candidate carrying its source: an agent model, an open machine-translation model, a web service, or a person. The engines are interchangeable Tools behind one skill, `translation-candidate-source`: same inputs, same sidecar out. Writers append; a candidate is never a verdict."
+msgid "One or more candidate sources write alternatives per string to `translations/<locale>/<catalogue>.candidates.json` (`translation-candidates/v1`), each candidate carrying its source: an agent model, an open machine-translation model, a web service, or a person. The engines are interchangeable behind one skill, `translation-candidate-source`: whichever runs, the same sidecar comes out. Writers append; a candidate is never a verdict."
 msgstr ""
 
 #: library/processes/translation-review-adjudication.bpmn:224
