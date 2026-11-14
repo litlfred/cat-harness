@@ -252,12 +252,12 @@ GitHub is one Tool here, not the process: the issue is the carrier of the verdic
       <bpmn:incoming>Flow_TRA_MergedNo</bpmn:incoming>
     </bpmn:endEvent>
 
-    <bpmn:inclusiveGateway id="Gateway_TRA_PerCatalogue" name="Per catalogue">
-      <bpmn:documentation>One issue can carry several catalogues, so both branches can be taken: each catalogue ends in exactly one of them, by its verdict.</bpmn:documentation>
+    <bpmn:exclusiveGateway id="Gateway_TRA_PerCatalogue" name="Verdict?">
+      <bpmn:documentation>Decided once for each catalogue the merged PR records, by that catalogue's verdict: `Accepted` when it was found acceptable, `Suggestion applied` when its suggestions went in. One issue can carry several catalogues, so one merge can end in both, a catalogue at a time.</bpmn:documentation>
       <bpmn:incoming>Flow_TRA_MergedYes</bpmn:incoming>
       <bpmn:outgoing>Flow_TRA_Accepted</bpmn:outgoing>
       <bpmn:outgoing>Flow_TRA_Suggested</bpmn:outgoing>
-    </bpmn:inclusiveGateway>
+    </bpmn:exclusiveGateway>
 
     <bpmn:endEvent id="End_TRA_Reviewed" name="Catalogue reviewed&#10;(not official)">
       <bpmn:documentation>The review page shows the catalogue `reviewed`, and `stale` once its bytes change. It is still not official: locale sign-off is `human-translation-workflow`'s `Task_Signoff`, a separate act by the translation coordinator.</bpmn:documentation>
@@ -303,16 +303,16 @@ GitHub is one Tool here, not the process: the issue is the carrier of the verdic
   <bpmndi:BPMNDiagram id="Diagram_TranslationReviewAdjudication">
     <bpmndi:BPMNPlane id="Plane_TranslationReviewAdjudication" bpmnElement="Collaboration_TranslationReviewAdjudication">
       <bpmndi:BPMNShape id="Participant_TranslationReviewAdjudication_di" bpmnElement="Participant_TranslationReviewAdjudication" isHorizontal="true">
-        <dc:Bounds x="160" y="80" width="2280" height="700"/>
+        <dc:Bounds x="160" y="80" width="2640" height="700"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_TRA_Pipeline_di" bpmnElement="Lane_TRA_Pipeline" isHorizontal="true">
-        <dc:Bounds x="190" y="80" width="2250" height="260"/>
+        <dc:Bounds x="190" y="80" width="2610" height="260"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_TRA_Reviewer_di" bpmnElement="Lane_TRA_Reviewer" isHorizontal="true">
-        <dc:Bounds x="190" y="340" width="2250" height="220"/>
+        <dc:Bounds x="190" y="340" width="2610" height="220"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Lane_TRA_Maintainer_di" bpmnElement="Lane_TRA_Maintainer" isHorizontal="true">
-        <dc:Bounds x="190" y="560" width="2250" height="220"/>
+        <dc:Bounds x="190" y="560" width="2610" height="220"/>
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Start_TRA_di" bpmnElement="Start_TRA">
@@ -362,57 +362,57 @@ GitHub is one Tool here, not the process: the issue is the carrier of the verdic
         <dc:Bounds x="1420" y="150" width="120" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_TRA_Determined_di" bpmnElement="Gateway_TRA_Determined" isMarkerVisible="true">
-        <dc:Bounds x="1580" y="165" width="50" height="50"/>
+        <dc:Bounds x="1600" y="165" width="50" height="50"/>
         <bpmndi:BPMNLabel><dc:Bounds x="1545" y="222" width="120" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_TRA_CouldNotDetermine_di" bpmnElement="End_TRA_CouldNotDetermine">
-        <dc:Bounds x="1587" y="95" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1630" y="96" width="120" height="36"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="1607" y="95" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1650" y="96" width="120" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_TRA_Author_di" bpmnElement="Gateway_TRA_Author" isMarkerVisible="true">
-        <dc:Bounds x="1680" y="165" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1650" y="128" width="130" height="36"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="1720" y="165" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1670" y="128" width="130" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_TRA_Hash_di" bpmnElement="Gateway_TRA_Hash" isMarkerVisible="true">
-        <dc:Bounds x="1780" y="165" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1760" y="128" width="90" height="36"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="1860" y="165" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1800" y="128" width="90" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_TRA_Refuse_di" bpmnElement="Task_TRA_Refuse">
-        <dc:Bounds x="1880" y="245" width="120" height="80"/>
+        <dc:Bounds x="1980" y="245" width="120" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_TRA_NotRecorded_di" bpmnElement="End_TRA_NotRecorded">
-        <dc:Bounds x="2040" y="267" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2025" y="308" width="70" height="18"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="2140" y="267" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="2125" y="308" width="70" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_TRA_Write_di" bpmnElement="Task_TRA_Write">
-        <dc:Bounds x="1880" y="150" width="120" height="80"/>
+        <dc:Bounds x="1980" y="150" width="120" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_TRA_OpenPR_di" bpmnElement="Task_TRA_OpenPR">
-        <dc:Bounds x="2120" y="150" width="120" height="80"/>
+        <dc:Bounds x="2240" y="150" width="120" height="80"/>
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNShape id="Task_TRA_Merge_di" bpmnElement="Task_TRA_Merge">
-        <dc:Bounds x="2120" y="630" width="120" height="80"/>
+        <dc:Bounds x="2240" y="630" width="120" height="80"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_TRA_Merged_di" bpmnElement="Gateway_TRA_Merged" isMarkerVisible="true">
-        <dc:Bounds x="2270" y="645" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2270" y="620" width="50" height="18"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="2530" y="645" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="2530" y="620" width="50" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_TRA_Closed_di" bpmnElement="End_TRA_Closed">
-        <dc:Bounds x="2277" y="725" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2150" y="734" width="120" height="18"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="2537" y="725" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="2270" y="734" width="120" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_TRA_PerCatalogue_di" bpmnElement="Gateway_TRA_PerCatalogue">
-        <dc:Bounds x="2340" y="645" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2325" y="700" width="80" height="18"/></bpmndi:BPMNLabel>
+      <bpmndi:BPMNShape id="Gateway_TRA_PerCatalogue_di" bpmnElement="Gateway_TRA_PerCatalogue" isMarkerVisible="true">
+        <dc:Bounds x="2660" y="645" width="50" height="50"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="2560" y="700" width="100" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_TRA_Reviewed_di" bpmnElement="End_TRA_Reviewed">
-        <dc:Bounds x="2397" y="582" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2290" y="572" width="105" height="36"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="2717" y="582" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="2550" y="572" width="105" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_TRA_Flagged_di" bpmnElement="End_TRA_Flagged">
-        <dc:Bounds x="2397" y="730" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2330" y="740" width="100" height="36"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="2717" y="730" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="2590" y="740" width="100" height="36"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
 
       <bpmndi:BPMNEdge id="Flow_TRA_1_di" bpmnElement="Flow_TRA_1">
@@ -464,56 +464,56 @@ GitHub is one Tool here, not the process: the issue is the carrier of the verdic
         <bpmndi:BPMNLabel><dc:Bounds x="1388" y="170" width="20" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_9_di" bpmnElement="Flow_TRA_9">
-        <di:waypoint x="1540" y="190"/><di:waypoint x="1580" y="190"/>
+        <di:waypoint x="1540" y="190"/><di:waypoint x="1600" y="190"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_DetNo_di" bpmnElement="Flow_TRA_DetNo">
-        <di:waypoint x="1605" y="165"/><di:waypoint x="1605" y="131"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1580" y="140" width="20" height="18"/></bpmndi:BPMNLabel>
+        <di:waypoint x="1625" y="165"/><di:waypoint x="1625" y="131"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1600" y="140" width="20" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_DetYes_di" bpmnElement="Flow_TRA_DetYes">
-        <di:waypoint x="1630" y="190"/><di:waypoint x="1680" y="190"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1640" y="193" width="24" height="18"/></bpmndi:BPMNLabel>
+        <di:waypoint x="1650" y="190"/><di:waypoint x="1720" y="190"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1660" y="193" width="24" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_AuthorNo_di" bpmnElement="Flow_TRA_AuthorNo">
-        <di:waypoint x="1705" y="215"/><di:waypoint x="1705" y="305"/><di:waypoint x="1880" y="305"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1712" y="285" width="20" height="18"/></bpmndi:BPMNLabel>
+        <di:waypoint x="1745" y="215"/><di:waypoint x="1745" y="305"/><di:waypoint x="1980" y="305"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1752" y="285" width="20" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_AuthorYes_di" bpmnElement="Flow_TRA_AuthorYes">
-        <di:waypoint x="1730" y="190"/><di:waypoint x="1780" y="190"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1740" y="193" width="24" height="18"/></bpmndi:BPMNLabel>
+        <di:waypoint x="1770" y="190"/><di:waypoint x="1860" y="190"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1780" y="193" width="24" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_HashNo_di" bpmnElement="Flow_TRA_HashNo">
-        <di:waypoint x="1805" y="215"/><di:waypoint x="1805" y="265"/><di:waypoint x="1880" y="265"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1812" y="240" width="20" height="18"/></bpmndi:BPMNLabel>
+        <di:waypoint x="1885" y="215"/><di:waypoint x="1885" y="265"/><di:waypoint x="1980" y="265"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1892" y="240" width="20" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_HashYes_di" bpmnElement="Flow_TRA_HashYes">
-        <di:waypoint x="1830" y="190"/><di:waypoint x="1880" y="190"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1838" y="170" width="24" height="18"/></bpmndi:BPMNLabel>
+        <di:waypoint x="1910" y="190"/><di:waypoint x="1980" y="190"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1918" y="170" width="24" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_10_di" bpmnElement="Flow_TRA_10">
-        <di:waypoint x="2000" y="285"/><di:waypoint x="2040" y="285"/>
+        <di:waypoint x="2100" y="285"/><di:waypoint x="2140" y="285"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_11_di" bpmnElement="Flow_TRA_11">
-        <di:waypoint x="2000" y="190"/><di:waypoint x="2120" y="190"/>
+        <di:waypoint x="2100" y="190"/><di:waypoint x="2240" y="190"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_12_di" bpmnElement="Flow_TRA_12">
-        <di:waypoint x="2180" y="230"/><di:waypoint x="2180" y="630"/>
+        <di:waypoint x="2300" y="230"/><di:waypoint x="2300" y="630"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_13_di" bpmnElement="Flow_TRA_13">
-        <di:waypoint x="2240" y="670"/><di:waypoint x="2270" y="670"/>
+        <di:waypoint x="2360" y="670"/><di:waypoint x="2530" y="670"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_MergedNo_di" bpmnElement="Flow_TRA_MergedNo">
-        <di:waypoint x="2295" y="695"/><di:waypoint x="2295" y="725"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="2300" y="700" width="20" height="18"/></bpmndi:BPMNLabel>
+        <di:waypoint x="2555" y="695"/><di:waypoint x="2555" y="725"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="2560" y="700" width="20" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_MergedYes_di" bpmnElement="Flow_TRA_MergedYes">
-        <di:waypoint x="2320" y="670"/><di:waypoint x="2340" y="670"/>
+        <di:waypoint x="2580" y="670"/><di:waypoint x="2660" y="670"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_Accepted_di" bpmnElement="Flow_TRA_Accepted">
-        <di:waypoint x="2365" y="645"/><di:waypoint x="2365" y="600"/><di:waypoint x="2397" y="600"/>
+        <di:waypoint x="2685" y="645"/><di:waypoint x="2685" y="600"/><di:waypoint x="2717" y="600"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TRA_Suggested_di" bpmnElement="Flow_TRA_Suggested">
-        <di:waypoint x="2365" y="695"/><di:waypoint x="2365" y="748"/><di:waypoint x="2397" y="748"/>
+        <di:waypoint x="2685" y="695"/><di:waypoint x="2685" y="748"/><di:waypoint x="2717" y="748"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
