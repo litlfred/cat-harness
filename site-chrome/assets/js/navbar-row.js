@@ -95,6 +95,48 @@
     return siteBaseurl() + href;
   }
 
+  /* THE QR ENCODER, LOADED ON FIRST USE — and the one loader for it (owner,
+   * 2026-11-14: "do lazy load content and libs"). The page head no longer
+   * loads vendor/qrcode.js and qrcode_UTF8.js; the row's QR button and the
+   * docs-ui.js QR tile both come here, so the two files are fetched once,
+   * the first time either shows a code. `cb` runs when `qrcode` exists;
+   * `onFail`, if given, when it cannot be loaded. */
+  var qrWaiting = null;
+  function ensureQrcode(cb, onFail) {
+    if (typeof qrcode === "function") {
+      cb();
+      return;
+    }
+    if (!qrWaiting) {
+      qrWaiting = { ok: [], fail: [] };
+      var settle = function (good) {
+        var list = good ? qrWaiting.ok : qrWaiting.fail;
+        qrWaiting = null;
+        list.forEach(function (f) { f(); });
+      };
+      var s1 = document.createElement("script");
+      s1.src = withBase("/assets/js/vendor/qrcode.js");
+      s1.onload = function () {
+        var s2 = document.createElement("script");
+        s2.src = withBase("/assets/js/vendor/qrcode_UTF8.js");
+        s2.onload = function () { settle(typeof qrcode === "function"); };
+        s2.onerror = function () {
+          console.warn("navbar-row: failed to load vendor/qrcode_UTF8.js");
+          settle(false);
+        };
+        document.head.appendChild(s2);
+      };
+      s1.onerror = function () {
+        console.warn("navbar-row: failed to load vendor/qrcode.js");
+        settle(false);
+      };
+      document.head.appendChild(s1);
+    }
+    qrWaiting.ok.push(cb);
+    if (onFail) qrWaiting.fail.push(onFail);
+  }
+  window.faEnsureQrcode = ensureQrcode;
+
   var ALLOWED_URL_SCHEMES = ["http:", "https:", "mailto:", "tel:"];
 
   /** The same href guard as `docs-ui.js` (`href-safety.test.ts` holds both). */
@@ -423,27 +465,7 @@
             caption.textContent = url;
           }
 
-          function ensure(cb) {
-            if (typeof qrcode === "function") {
-              cb();
-              return;
-            }
-            var s1 = document.createElement("script");
-            s1.src = withBase("/assets/js/vendor/qrcode.js");
-            s1.onload = function () {
-              var s2 = document.createElement("script");
-              s2.src = withBase("/assets/js/vendor/qrcode_UTF8.js");
-              s2.onload = function () { cb(); };
-              s2.onerror = function () {
-                console.warn("navbar-row: failed to load vendor/qrcode_UTF8.js");
-              };
-              document.head.appendChild(s2);
-            };
-            s1.onerror = function () {
-              console.warn("navbar-row: failed to load vendor/qrcode.js");
-            };
-            document.head.appendChild(s1);
-          }
+          var ensure = ensureQrcode;
 
           /* THE CODE NEEDS THE BAR OPEN (bean 5rmf, measured 2026-10-12). The
            * panel lives inside the bar, and the pointer that clicked the icon

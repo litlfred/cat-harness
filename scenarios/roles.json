@@ -56,7 +56,8 @@
       ],
       "skills": [
         "content-validate",
-        "voice-authoring-guidance"
+        "voice-authoring-guidance",
+        "translation-adjudication"
       ],
       "persona": "Author plus the authority to accept. Sees QA findings and decides which are real. Under time pressure and accountable for what lands, so they need the evidence before the argument."
     },
@@ -298,7 +299,8 @@
         "adjudicator"
       ],
       "skills": [
-        "translation-manager"
+        "translation-manager",
+        "translation-adjudication"
       ],
       "persona": "Decides between competing translations, usually a subject expert in the target language. Arrives at a disagreement and needs both options and the reason each was offered."
     },
@@ -564,7 +566,9 @@
         "qa-reports",
         "compiled-artefact-cache",
         "remote-mount",
-        "harness-projections"
+        "harness-projections",
+        "translation-candidate-source",
+        "translation-adjudication"
       ]
     },
     {

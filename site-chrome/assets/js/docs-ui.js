@@ -8,7 +8,8 @@
  * set through textContent. The only innerHTML assignment takes the vendored
  * encoder's own <svg>, which is built from bits rather than from the string.
  *
- * Depends on vendor/qrcode.js and vendor/qrcode_UTF8.js being loaded first.
+ * The QR encoder (vendor/qrcode.js, qrcode_UTF8.js) is loaded on first use by
+ * navbar-row.js's `window.faEnsureQrcode`.
  * Cross-checked by scripts/tests/qr.test.ts, which decodes the encoder's
  * output with an independent reader.
  *
@@ -2491,7 +2492,22 @@
     var views = {};
     var openTile = null;   // the tile to return focus to when Back is pressed
 
+    // The encoder is loaded the first time the tile opens (owner, 2026-11-14:
+    // "do lazy load content and libs"), by navbar-row.js's shared loader.
     function renderQr() {
+      if (typeof qrcode === "function") { drawQr(); return; }
+      qrCaption.textContent = "Loading the QR code\u2026";
+      var ensure = window.faEnsureQrcode;
+      if (typeof ensure !== "function") {
+        qrCaption.textContent = "The QR code could not be drawn: its encoder is not available on this page.";
+        return;
+      }
+      ensure(drawQr, function () {
+        qrCaption.textContent = "The QR code could not be drawn: its encoder did not load.";
+      });
+    }
+
+    function drawQr() {
       var url = window.location.href;
       var q = qrcode(0, "M");
       q.addData(url);
@@ -2653,12 +2669,10 @@
 
       views.language = buildLanguageBar();
 
-      if (typeof qrcode === "function") {
-        var qr = el("div", { class: "fa-qr-panel fa-tile-content", "data-open": "true" });
-        qr.appendChild(qrArt);
-        qr.appendChild(qrCaption);
-        views.qr = qr;
-      }
+      var qr = el("div", { class: "fa-qr-panel fa-tile-content", "data-open": "true" });
+      qr.appendChild(qrArt);
+      qr.appendChild(qrCaption);
+      views.qr = qr;
     }
 
     /* ── Navigation between the grid and a view ────────────────────────── */
@@ -2771,16 +2785,13 @@
       showView("settings", SETTINGS_NAMES.page, pageSettingsTile);
     };
     grid.appendChild(tileButton(GLOBE_GLYPH, "Language", "language"));
-    // The encoder is a separate vendor script. Without it the OTHER tiles must
-    // still work -- the old code returned early from the whole mount when it
-    // was missing, so a failed vendor request took the theme switch, the
-    // reading preferences and the language switch down with the QR code.
-    if (typeof qrcode === "function") {
-      grid.appendChild(tileButton(GLYPH, "QR code", "qr"));
-    } else {
-      console.warn("docs-ui: QR encoder not loaded (vendor/qrcode.js must be included " +
-                   "first); the other action tiles were mounted without it.");
-    }
+    // The encoder is a separate vendor script, loaded when the tile first
+    // opens (renderQr), so the tile is always offered. If it cannot load, the
+    // QR view says so; the OTHER tiles never depend on it -- the old code
+    // returned early from the whole mount when it was missing, so a failed
+    // vendor request took the theme switch, the reading preferences and the
+    // language switch down with the QR code.
+    grid.appendChild(tileButton(GLYPH, "QR code", "qr"));
 
     // A tile that DOES something rather than opening a sidebar view. The board
     // lives in the main display, so `showView` is the wrong machinery for it.

@@ -305,7 +305,7 @@ declared (`scripts/index-render.ts`).*
 
 <!-- skills:index:begin -->
 
-_258 skills in 22 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_260 skills in 22 directories. The full list, with what each skill is for, is in [`SKILLS.md`](SKILLS.md): here it would take this file past 32 KiB, the most of an `AGENTS.md` some agents read. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 | Directory | Skills |
 |---|---|
@@ -324,7 +324,7 @@ _258 skills in 22 directories. The full list, with what each skill is for, is in
 | [`skills/ui/theming/`](skills/ui/theming/) | 3 |
 | [`skills/ui/ui-core/`](skills/ui/ui-core/) | 22 |
 | [`library/skills/large-datasets/`](library/skills/large-datasets/) | 5 |
-| [`library/skills/library-core/`](library/skills/library-core/) | 12 |
+| [`library/skills/library-core/`](library/skills/library-core/) | 14 |
 | `sdlc/skills/sdlc-core/` (opt-in `cat-harness.sdlc`) | 61 |
 | `sdlc/skills/spec-kit/` (opt-in `cat-harness.sdlc`) | 3 |
 | `work-plan/skills/work-plan/` (opt-in `cat-harness.work-plan`) | 8 |
