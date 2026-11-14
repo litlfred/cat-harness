@@ -9271,7 +9271,7 @@
         return;
       }
       setOpen(false);
-      handle.focus();
+      focusFolioControl(handle);
     });
 
     /* HOW MANY ARE WAITING, on the handle — bean `c132`. On a phone a closed
@@ -9326,6 +9326,7 @@
     }
 
     layer.__faSetGlassOpen = setOpen;
+    bindFolioIcon();
     return layer;
   }
 
@@ -13243,6 +13244,56 @@
     }
   }
 
+  /* THE FOLIO IN THE ROW — owner, 2026-11-13: *"remove the folio purple tab
+   * at top instead add an icon to the controls for the folio."* The icon
+   * drives the EXISTING handle (one control over one state, `l4zi`): a click
+   * clicks it, and its name and pressed state follow the handle's, count and
+   * all. While the row carries it, `docs-ui.css` hides the handle; a page
+   * with no row keeps the tab, so the glass is never out of reach. */
+  var FOLIO_GLYPH =
+    '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+    '<rect x="4" y="6.5" width="12" height="14.5" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.6"/>' +
+    '<path d="M8 6.5V4.5A1.5 1.5 0 0 1 9.5 3H18.5A1.5 1.5 0 0 1 20 4.5V16.5A1.5 1.5 0 0 1 18.5 18H16" ' +
+    'fill="none" stroke="currentColor" stroke-width="1.6"/>' +
+    '<path d="M7 11h6M7 14h6M7 17h4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>' +
+    "</svg>";
+  function folioIcon() {
+    var b = el("button", {
+      type: "button", class: "fa-nav-icon fa-nav-folio", "aria-expanded": "false",
+      "aria-label": "Pull down your folio", title: "Pull down your folio", "data-fa-tip": "Pull down your folio"
+    });
+    b.innerHTML = FOLIO_GLYPH;
+    b.addEventListener("click", function () {
+      var h = document.querySelector(".fa-glass-handle");
+      if (h) h.click();
+      bindFolioIcon();
+    });
+    return b;
+  }
+  /** Mirror the handle's name and state onto the row's folio icon. Idempotent; called from both sides, whichever mounts last. */
+  function bindFolioIcon() {
+    var b = document.querySelector(".fa-nav-folio");
+    var h = document.querySelector(".fa-glass-handle");
+    if (!b || !h) return;
+    function sync() {
+      var name = h.getAttribute("aria-label") || "Pull down your folio";
+      b.setAttribute("aria-label", name);
+      b.setAttribute("data-fa-tip", name);
+      b.title = name;
+      b.setAttribute("aria-expanded", h.getAttribute("aria-expanded") === "true" ? "true" : "false");
+    }
+    sync();
+    if (b.__faFolioBound === h || typeof MutationObserver !== "function") return;
+    b.__faFolioBound = h;
+    new MutationObserver(sync).observe(h, { attributes: true, attributeFilter: ["aria-label", "aria-expanded"] });
+  }
+  /** Where focus goes back to when the glass closes: the handle, or the row's folio icon while the handle is hidden. */
+  function focusFolioControl(handle) {
+    var b = document.querySelector(".fa-nav-folio");
+    if (b && handle.getClientRects().length === 0) b.focus();
+    else handle.focus();
+  }
+
   function mountNavIconRow() {
     // THE ROW IS DRAWN BY `navbar-row.js` — beans `lhvt`, `9rq1`. That file is
     // the one drawing for every navbar: it also runs on the 2,709 railed pages
@@ -13284,6 +13335,7 @@
         });
         scheme.addEventListener("click", toggleScheme);
         host.appendChild(scheme);
+        host.appendChild(folioIcon());
         // A row mounted LATE (the path below) has a fish nobody wired yet.
         // Idempotent per button, so the synchronous path is unaffected.
         mountFshGutsNav();
