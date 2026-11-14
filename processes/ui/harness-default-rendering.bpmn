@@ -30,6 +30,7 @@ Read-only is the floor. Whether the reader may write is a question about the too
         <bpmn:flowNodeRef>A_Tiles</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Ground</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>A_Publish</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>A_NodeViews</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_Board" name="Board renderer" partitionElementRef="board-renderer">
         <bpmn:documentation>Runs where the reader is, once per page. It draws and performs what the reader decided; every choice sits in the reviewer's lane.</bpmn:documentation>
@@ -63,6 +64,11 @@ Read-only is the floor. Whether the reader may write is a question about the too
       <bpmn:extensionElements><bootstrap.processes:skill ref="liquid-templates"/></bpmn:extensionElements>
     </bpmn:task>
 
+    <bpmn:serviceTask id="A_NodeViews" name="Report node-view coverage">
+      <bpmn:documentation>The Tool `node-view-coverage` (`bun run cat node-views:report -- --site &lt;built site&gt;`) counts, per layer, folder and kind, which nodes have an IRI, a `.jsonld`, a page and a row on their folder page, and which folder links are dead or point at the raw repository. A QA report, not a gate: it always exits 0 and feeds no gateway, and its results go to `test/results/node-views/` and on to the `qa-reports` branch. A graph with no viewer is still shown inert and labelled by the tile step; this says how many of its nodes are owed a page.</bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="kg-viewer"/></bpmn:extensionElements>
+    </bpmn:serviceTask>
+
     <bpmn:task id="A_Board" name="Draw the board of todos and beans">
       <bpmn:documentation>The todo board mounts inside the landing board, so harness cards and todo stickies share one surface. Each card carries an edit link only when the build composed one.</bpmn:documentation>
       <bpmn:extensionElements>
@@ -95,7 +101,8 @@ Read-only is the floor. Whether the reader may write is a question about the too
     <bpmn:sequenceFlow id="SF_HR_1" sourceRef="Start_Process_HarnessRendering" targetRef="A_Tiles"/>
     <bpmn:sequenceFlow id="SF_HR_2" sourceRef="A_Tiles" targetRef="A_Ground"/>
     <bpmn:sequenceFlow id="SF_HR_3" sourceRef="A_Ground" targetRef="A_Publish"/>
-    <bpmn:sequenceFlow id="SF_HR_4" sourceRef="A_Publish" targetRef="A_Board"/>
+    <bpmn:sequenceFlow id="SF_HR_4" sourceRef="A_Publish" targetRef="A_NodeViews"/>
+    <bpmn:sequenceFlow id="SF_HR_4b" sourceRef="A_NodeViews" targetRef="A_Board"/>
     <bpmn:sequenceFlow id="SF_HR_5" sourceRef="A_Board" targetRef="A_Read"/>
     <bpmn:sequenceFlow id="SF_HR_6" sourceRef="A_Read" targetRef="GW_Write"/>
     <bpmn:sequenceFlow id="SF_HR_7" name="yes" sourceRef="GW_Write" targetRef="A_Propose"/>
@@ -130,6 +137,9 @@ Read-only is the floor. Whether the reader may write is a question about the too
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Publish" bpmnElement="A_Publish">
         <dc:Bounds x="610" y="80" width="120" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_A_NodeViews" bpmnElement="A_NodeViews">
+        <dc:Bounds x="780" y="80" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_A_Board" bpmnElement="A_Board">
         <dc:Bounds x="610" y="240" width="120" height="120" />
@@ -168,8 +178,13 @@ Read-only is the floor. Whether the reader may write is a question about the too
         <di:waypoint x="610" y="140" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_4" bpmnElement="SF_HR_4">
-        <di:waypoint x="670" y="200" />
-        <di:waypoint x="670" y="240" />
+        <di:waypoint x="730" y="140" />
+        <di:waypoint x="780" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_SF_HR_4b" bpmnElement="SF_HR_4b">
+        <di:waypoint x="840" y="200" />
+        <di:waypoint x="840" y="300" />
+        <di:waypoint x="730" y="300" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_SF_HR_5" bpmnElement="SF_HR_5">
         <di:waypoint x="670" y="360" />

@@ -73,6 +73,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`narrative-queue/`](narrative-queue/) | _nothing declares what this holds_ | |
 | [`navbar-include/`](navbar-include/) | _nothing declares what this holds_ | |
 | [`node-kind-pages/`](node-kind-pages/) | _nothing declares what this holds_ | |
+| [`node-view-coverage/`](node-view-coverage/) | _nothing declares what this holds_ | |
 | [`npm/`](npm/) | _nothing declares what this holds_ | |
 | [`ns-vocabulary/`](ns-vocabulary/) | _nothing declares what this holds_ | |
 | [`openapi-ingest-rendered/`](openapi-ingest-rendered/) | _nothing declares what this holds_ | |
