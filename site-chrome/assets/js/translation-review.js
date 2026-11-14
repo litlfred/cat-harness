@@ -134,7 +134,7 @@
       L.push("### Mistranslations, with suggestions", "");
       mis.forEach((i) => {
         L.push("- `" + i.locale + "` " + code(i.catalogue) + (i.note ? " — " + i.note : ""));
-        i.suggestions.forEach((s) => L.push("  - " + code(s.msgid) + (s.msgctxt ? " (context " + code(s.msgctxt) + ")" : "") + ": " + code(s.current) + " → " + code(s.suggested)));
+        i.suggestions.forEach((s) => L.push("  - " + code(s.msgid) + (s.msgctxt ? " (context " + code(s.msgctxt) + ")" : "") + ": " + code(s.current) + " → " + code(s.suggested) + (s.source ? " (candidate from " + s.source.kind + " " + code(s.source.id) + ")" : "") + (s.note ? " — " + s.note : "")));
       });
       L.push("");
     }
@@ -176,6 +176,7 @@
       block.split("\n").forEach((l) => {
         if (l.indexOf("#~") === 0) obsolete = true;
         if (l.indexOf("#:") === 0) { e.refs.push(...l.slice(2).trim().split(/\s+/).filter(Boolean)); return; }
+        if (l.indexOf("#,") === 0) { if (/\bfuzzy\b/.test(l)) e.fuzzy = true; return; }
         if (l.charAt(0) === "#") return;
         const m = /^(msgctxt|msgid_plural|msgid|msgstr(?:\[(\d+)\])?)\s/.exec(l);
         if (m) { f = m[1] === "msgstr[0]" ? "msgstr" : m[1]; if (/^msgstr\[[1-9]/.test(m[1])) f = "skip"; if (f !== "skip") e[f] = unq(l); return; }
@@ -216,6 +217,21 @@
       body.replaceChildren(el("p", { textContent: "Could not load the catalogue " + url + ": " + err.message }));
       return;
     }
+    // Candidate translations from other sources, the sidecar beside the .po
+    // (translation-candidates/v1). Absent or unreadable: the reviewer types their own.
+    const issue = doc.issue || {};
+    const candSchema = issue.candidatesSchema || "translation-candidates/v1";
+    const cands = {};
+    try {
+      const rc = await fetch(url.replace(/\.po$/, issue.candidatesSuffix || ".candidates.json"));
+      if (rc.ok) {
+        const cf = await rc.json();
+        if (cf && cf.$schema === candSchema && Array.isArray(cf.entries)) for (const e of cf.entries) {
+          if (e && typeof e.msgid === "string" && Array.isArray(e.candidates))
+            cands[(e.msgctxt || "") + "\u0004" + e.msgid] = e.candidates.filter((c) => c && typeof c.text === "string" && c.source && typeof c.source.kind === "string" && typeof c.source.id === "string");
+        }
+      }
+    } catch { /* no candidates */ }
     let hash;
     try { hash = await sha16(text); } catch (err) {
       // crypto.subtle exists only on a secure (https) page.
@@ -232,15 +248,27 @@
       body.replaceChildren(...kids);
       return;
     }
-    kids.push(el("p", { textContent: "Type a better translation under each string you find wrong. Leave the others empty." }));
+    kids.push(el("p", { textContent: "For each string you find wrong, pick one of the candidate translations (each names its source) or type your own. Leave the others empty." }));
     const list = el("ol", { className: "fa-trf-strings" });
     const boxes = mine.map((e, i) => {
       const id = "fa-trf-s" + i;
       const ta = el("textarea", { id: id, rows: 2 });
       ta.dataset.i = String(i);
+      // A choice fills the suggestion and records its source; editing the
+      // text makes it the reviewer's own (as the review page does).
+      const choices = el("fieldset", { className: "fa-trf-cands" });
+      choices.append(el("legend", { textContent: "Candidates" }));
+      for (const c of cands[(e.msgctxt || "") + "\u0004" + e.msgid] || []) {
+        if (c.text === e.msgstr) continue;
+        const r = el("input", { type: "radio", name: "fa-trf-cand-" + i });
+        r.onchange = () => { ta.value = c.text; ta.dataset.srcText = c.text; ta.dataset.src = JSON.stringify({ kind: c.source.kind, id: c.source.id }); };
+        choices.append(el("label", { className: "fa-trf-cand" }, [r, el("span", { lang: locale, textContent: c.text }), el("span", { className: "fa-trf-dim", textContent: " \u2014 " + c.source.kind + " " + c.source.id })]));
+      }
       list.append(el("li", {}, [
         el("div", { className: "fa-trf-src" }, [el("span", { className: "fa-trf-dim", textContent: "Source: " }), el("span", { lang: "en", textContent: e.msgid + (e.msgctxt ? " [" + e.msgctxt + "]" : "") })]),
-        el("div", { className: "fa-trf-cur" }, [el("span", { className: "fa-trf-dim", textContent: "Now: " }), el("span", { lang: locale, textContent: e.msgstr || "(empty)" })]),
+        el("div", { className: "fa-trf-cur" }, [el("span", { className: "fa-trf-dim", textContent: "Now: " }), el("span", { lang: locale, textContent: e.msgstr || "(empty)" }),
+          e.fuzzy ? el("span", { className: "fa-trf-dim", textContent: " (machine default, not reviewed)" }) : null]),
+        choices.childElementCount > 1 ? choices : null,
         el("label", { htmlFor: id, textContent: "Your suggestion" }),
         ta,
       ]));
@@ -257,6 +285,8 @@
         if (!v) continue;
         const e = mine[+ta.dataset.i];
         const s = { msgid: e.msgid, current: e.msgstr || "", suggested: v };
+        // The candidate's source only while its text is unedited.
+        if (ta.dataset.src && ta.dataset.srcText === v) s.source = JSON.parse(ta.dataset.src);
         if (e.msgctxt !== undefined) s.msgctxt = e.msgctxt;
         sugg.push(s);
       }
@@ -305,6 +335,7 @@
         li.dataset.faTrCatalogue = m.row.catalogue;
         li.dataset.faTrState = c.state;
         if (found.length > 1) li.append(el("span", { className: "fa-trf-dim", textContent: " · " + m.row.catalogue }));
+        if (c.fuzzy) li.append(el("p", { className: "fa-trf-dim", textContent: c.fuzzy + " string" + (c.fuzzy === 1 ? "" : "s") + " show a machine default that no person has reviewed." }));
         if (c.state === "flagged" && c.flagReason) li.append(el("p", { className: "fa-trf-dim fa-trf-why", textContent: c.flagReason }));
         if (m.layer.repository && ADJUDICABLE.indexOf(c.state) >= 0 && (c.translated || 0) + (c.fuzzy || 0) > 0 && c.hash) {
           const out = el("div", { className: "fa-trf-out" });

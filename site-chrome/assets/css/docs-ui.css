@@ -2592,6 +2592,10 @@ button.fa-qa-badge[aria-busy="true"] { opacity: 0.6; }
 .fa-trf-strings { padding-left: 1.4em; }
 .fa-trf-strings li { margin: 0 0 1em; }
 .fa-trf-strings label { display: block; font-weight: 600; margin-top: 0.3em; }
+.fa-trf-cands { border: 1px solid rgba(128, 128, 128, 0.5); border-radius: 6px; margin: 0.4em 0 0; padding: 0.2em 0.6em 0.4em; }
+.fa-trf-cands legend { font-size: var(--fa-text-sm); font-weight: 600; }
+.fa-trf-strings .fa-trf-cand { display: flex; align-items: center; gap: 0.5em; min-height: 44px; margin: 0; font-weight: normal; cursor: pointer; }
+.fa-trf-cand input[type="radio"] { width: 1.4rem; height: 1.4rem; flex: none; }
 .fa-trf-strings textarea, .fa-trf-dialog input[type="text"] { width: 100%; min-height: 44px; font: inherit; font-size: var(--fa-text-base); box-sizing: border-box; }
 
 /* The unverified-translation notice. It is the `partial` pair at panel size,
