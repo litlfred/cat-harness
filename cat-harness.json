@@ -20,12 +20,10 @@
   "icon": "mark",
   "navbarIcons": [
     "close",
-    "todos",
-    "beans",
-    "fsh-guts",
     "qr",
     "launcher"
   ],
+  "_navbarIcons_comment": "todos, beans and fsh-guts left the row on 2026-11-13 (owner: \"remove the fsh-guts, beans and todos\"); they are still reached from the glass strip, the Folders list and Page settings. The row is now at the foot of the rail, and the rail and docs-ui.js add the Folio and Harnesses icons to it, which are not declared slots: each is drawn where its panel exists.",
   "glassStrip": [
     { "chrome": "todos" },
     { "chrome": "settings" },
