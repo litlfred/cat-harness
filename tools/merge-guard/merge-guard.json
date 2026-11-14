@@ -79,7 +79,7 @@
       ]
     },
     "satisfies": [
-      "merge-to-main"
+      "ci-health"
     ],
     "selection": {
       "when": "Before a pull request lands on its base, by the merge manager or a steward, and on every pull request event through the merge-guard workflow.",
