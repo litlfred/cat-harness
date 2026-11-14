@@ -142,7 +142,7 @@
   "$comment": [
     {
       "at": "",
-      "comment": "The owner, 2026-11-14: an unrestricted, open machine-translation step for the gettext catalogues, so no freemium API quota is involved; then, the same day, several translation sources per string as CANDIDATES a reviewer chooses among, and candidates are never a barrier to having a translation. It replaces the DeepL / Google Translate `po-translate` route `translation-manager` §3 used to recommend. Paid services (DeepL, Google Cloud Translation, Azure Translator, Amazon Translate) are deliberately not engines here (owner: mention, do not add). The engines are adapters in cat-harness-tools `scripts/lib/translation-sources/`; the one writer is `scripts/lib/translation-candidates.ts` `addCandidates`, which a translation-platform import (Weblate, Crowdin, Transifex, `kind: \"web-service\"`) calls too."
+      "comment": "The owner, 2026-11-14: an unrestricted, open machine-translation step for the gettext catalogues, so no freemium API quota is involved; then, the same day, several translation sources per string as CANDIDATES a reviewer chooses among, and candidates are never a barrier to having a translation. It replaces the DeepL / Google Translate `po-translate` route `translation-manager` §3 used to recommend. Paid services (DeepL, Google Cloud Translation, Azure Translator, Amazon Translate) are deliberately not engines here (owner: mention, do not add). The engines are adapters in the implementing layer's `scripts/lib/translation-sources/`; the one writer is `scripts/lib/translation-candidates.ts` `addCandidates`, which a translation-platform import (Weblate, Crowdin, Transifex, `kind: \"web-service\"`) calls too."
     },
     {
       "at": "/satisfies",
