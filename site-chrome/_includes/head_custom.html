@@ -324,7 +324,13 @@
     (bean `cat-tools-bbnd`). A PATH only: per-locale coverage and officiality
     are fetched when the drawer opens, never baked into the page. A site that
     publishes none gets a 404, which the drawer reports as "not published".
-  {%- endcomment -%}"{{ '/assets/translation-status/index.json' | relative_url }}"
+  {%- endcomment -%}"{{ '/assets/translation-status/index.json' | relative_url }}",
+  "reviewSrc": {%- comment -%}
+    Its sibling, the review matrix (`folio-translation-review/v1`), which a
+    block's feedback panel reads to show that block's translation state and
+    to file an adjudication issue (translation-review.js). A PATH only,
+    fetched when a panel opens.
+  {%- endcomment -%}"{{ '/assets/translation-status/review.json' | relative_url }}"
 }</script>
 {%- comment -%}
   Where the action tiles point.
@@ -727,6 +733,10 @@
   recipe (cat-harness-tools/src/core/edit-links.ts, bean v433): links carry their
   facts and this builds the hrefs. {%- endcomment -%}
 <script src="{{ '/assets/js/edit-links.js' | relative_url }}?v={{ '/assets/js/edit-links.js' | fa_asset_version }}" defer></script>
+{%- comment -%} AFTER edit-links.js, whose block panel it extends: on a translated page, each
+  block's panel shows that block's translation state and files a translation
+  review issue (translation-review.js). It does nothing on a source-language page. {%- endcomment -%}
+<script src="{{ '/assets/js/translation-review.js' | relative_url }}?v={{ '/assets/js/translation-review.js' | fa_asset_version }}" defer></script>
 {%- comment -%} Syntax colours for JSON and XML blocks, including those a script fills
   after load (cat-harness#1241). It loads highlight.js and its stylesheet only on a
   page that shows such a block. {%- endcomment -%}
