@@ -137,6 +137,21 @@
       "seeAlso": "https://litlfred.github.io/folio-assistant/ns/docs/cat-harness/concepts/agentic-harness.html"
     },
     {
+      "@id": "cat-harness:QaAttestation",
+      "@type": [
+        "rdfs:Class",
+        "skos:Concept"
+      ],
+      "label": "QaAttestation",
+      "comment": "One subject's QA judgements — pair attestations, voice reviews, agent and human verdicts, bibliography verifications — kept as one `qa-attestations/v1` file in a layer's attestations store, each judgement pinned to the hash it attested so a stale one is detectable. The judgement half of a QA verdict: unlike a derived result, it cannot be regenerated.",
+      "prefLabel": "QaAttestation",
+      "definition": "One subject's QA judgements — pair attestations, voice reviews, agent and human verdicts, bibliography verifications — kept as one `qa-attestations/v1` file in a layer's attestations store, each judgement pinned to the hash it attested so a stale one is detectable. The judgement half of a QA verdict: unlike a derived result, it cannot be regenerated.",
+      "notation": "cat-harness:QaAttestation",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:Requirement",
       "@type": [
         "rdfs:Class",
@@ -4456,6 +4471,7 @@
 <li><code>cat-harness:Folio</code> Folio — A repository that authors folio content — it declares a content type, and `folio_init` wrote its config. Distinct from an Instance: this repository's `cat-harness/` is an Instance and is not a Folio.</li>
 <li><code>cat-harness:SushiProject</code> SushiProject — A repository SUSHI will build — FSH compiled to a FHIR implementation guide. Minted here because SUSHI publishes no logical model for its own config; this is our name for the membership, not a claim to define SUSHI.</li>
 <li><code>cat-harness:Convention</code> Convention — A standing rule an actor must hold while performing a task, bound to a process, a lane or an activity rather than loaded unconditionally. Resolution is first-binding-wins along that order, not a merge, so a reader asking why a rule applies here gets one answer.</li>
+<li><code>cat-harness:QaAttestation</code> QaAttestation — One subject's QA judgements — pair attestations, voice reviews, agent and human verdicts, bibliography verifications — kept as one `qa-attestations/v1` file in a layer's attestations store, each judgement pinned to the hash it attested so a stale one is detectable. The judgement half of a QA verdict: unlike a derived result, it cannot be regenerated.</li>
 <li><code>cat-harness:Requirement</code> Requirement — A stated need a change must satisfy, elicited and signed off in the CRDM process before implementation begins. Distinct from the issue that tracks it and the bean that plans the work.</li>
 <li><code>cat-harness:Lane</code> Lane — A swimlane of one BPMN process: part of that process, naming the Role its tasks are performed in (`bindsRole`, BPMN's `partitionElementRef`). Not itself a role — a role is a registry node, and many lanes in many processes name it (#1168, B9b; owner, 2026-10-16).</li>
 <li><code>cat-harness:LaneUsage</code> LaneUsage — One appearance of a glossary concept as a swimlane in one BPMN process — the process it is in, the label that process gave the lane, and that lane's own documentation. A usage is an occurrence, not a term: it is regenerated wholesale and never retired, while a concept is a term somebody may have cited.</li>
