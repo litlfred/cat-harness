@@ -13,7 +13,8 @@
   "pageStart": 2,
   "pageEnd": 4,
   "contains": [
-    "library/arxiv-2505.10399v1/blocks/prose-sec-003"
+    "library/arxiv-2505.10399v1/blocks/prose-sec-003",
+    "library/arxiv-2505.10399v1/blocks/figure-vfig-p004"
   ],
   "derivedFrom": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2505.10399v1",
   "sourceDocument": "https://litlfred.github.io/folio-assistant/assets/library/jsonld/cat-harness/source/arxiv-2505.10399v1",
