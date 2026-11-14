@@ -4,8 +4,8 @@
 # status page): catalogues a person found acceptable, and mistranslations
 # with suggested text. The issue's author is the reviewer; only owners,
 # members and collaborators are recorded. The logic is the harness's,
-# called here: litlfred/cat-harness-tools
-# .github/workflows/layer-translation-adjudication.yml.
+# called here:
+# https://github.com/litlfred/cat-harness-tools/blob/main/.github/workflows/layer-translation-adjudication.yml
 name: Translation adjudication
 
 on:
@@ -19,7 +19,7 @@ permissions:
 
 jobs:
   adjudicate:
-    uses: litlfred/cat-harness-tools/.github/workflows/layer-translation-adjudication.yml@71c795eba5ece6c958c24a54e5817087cb69eb39 # main, with litlfred/cat-harness-tools#2140
+    uses: litlfred/cat-harness-tools/.github/workflows/layer-translation-adjudication.yml@71c795eba5ece6c958c24a54e5817087cb69eb39 # main, with https://github.com/litlfred/cat-harness-tools/pull/2140
     with:
       path-in-repo: .
       # The script at the same commit as the workflow.
