@@ -68,12 +68,12 @@
   },
   "$comment": [
     {
-      "at": "/invoke",
-      "comment": "`manual` for now: the engine script is being built in cat-harness-tools, and `check:tools` refuses a `bun run cat <key>` that no layer declares. When its checkout-script key lands, `invoke.shell` names it and `manual` goes."
-    },
-    {
       "at": "/remedies/0",
       "comment": "The network is needed once, to fetch a model; a cached model runs offline. When the model host is refused, Argos models through `translation-candidates-libretranslate` are the offline alternative."
+    },
+    {
+      "at": "/invoke",
+      "comment": "Today the same engines fill catalogues through `translation:machine-fill` (`translation-machine-fill`, cat-harness#1329), which writes the `msgstr` directly, fuzzy, with no candidates sidecar. This node is the candidates form of the engine: provisional until the sidecar writer and its checkout-script key land, at which point `invoke.shell` names it and `manual` goes."
     }
   ]
 }
