@@ -55,7 +55,8 @@ kind: source
 movedOn: 2026-09-29
 movedFrom: "uploads/wang-rangaiah-2026-mcdm-aggregation.pdf"
 summary: >-
-  Ingested to `cat-harness/library/corpus/content/wang-rangaiah-2026-mcdm-aggregation/`;
+  Ingested to `cat-harness/library/corpus/process/wang-rangaiah-2026-mcdm-aggregation/`
+  (filed under `content/` until 2026-11-15, cat-harness#1352);
   cited by `methodologies/mcdm-aggregation.md`. Archived here after promotion.
 ---
 ```
