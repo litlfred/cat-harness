@@ -91,18 +91,18 @@ flowchart TD
 
 | Навык | Назначение |
 |-------|------------|
-| [`document-authoring`]({{ site.baseurl }}/reference/skills/document-authoring.html) | Создание и редактирование блоков в текстовом фолио (prose folio) |
-| [`document-structure`]({{ site.baseurl }}/reference/skills/document-structure.html) | Главы и разделы — добавление, удаление, изменение порядка |
-| [`normative-statements`]({{ site.baseurl }}/reference/skills/normative-statements.html) | Формулирование рекомендаций, требований или правил |
-| [`document-publishing`]({{ site.baseurl }}/reference/skills/document-publishing.html) | Markdown → HTML / PDF, без TeX |
+| [`document-authoring`]({{ site.baseurl }}/reference/skill-instructions/document-authoring.html) | Создание и редактирование блоков в текстовом фолио (prose folio) |
+| [`document-structure`]({{ site.baseurl }}/reference/skill-instructions/document-structure.html) | Главы и разделы — добавление, удаление, изменение порядка |
+| [`normative-statements`]({{ site.baseurl }}/reference/skill-instructions/normative-statements.html) | Формулирование рекомендаций, требований или правил |
+| [`document-publishing`]({{ site.baseurl }}/reference/skill-instructions/document-publishing.html) | Markdown → HTML / PDF, без TeX |
 
 ### Статьи и книги: `authoring-math`
 
 | Навык | Назначение |
 |-------|------------|
-| [`lean-formalization`]({{ site.baseurl }}/reference/skills/lean-formalization.html) | Формализация утверждений и доказательств в Lean 4 |
-| [`latex-authoring`]({{ site.baseurl }}/reference/skills/latex-authoring.html) | Создание документов LaTeX |
-| [`proof-verification`]({{ site.baseurl }}/reference/skills/proof-verification.html) | Верификация доказательств, аудит `sorry` и аксиом |
+| [`lean-formalization`]({{ site.baseurl }}/reference/skill-instructions/lean-formalization.html) | Формализация утверждений и доказательств в Lean 4 |
+| [`latex-authoring`]({{ site.baseurl }}/reference/skill-instructions/latex-authoring.html) | Создание документов LaTeX |
+| [`proof-verification`]({{ site.baseurl }}/reference/skill-instructions/proof-verification.html) | Верификация доказательств, аудит `sorry` и аксиом |
 | `scientific-visualization` | Рисунки и диаграммы |
 | `hypothesis-generation` | Формулирование гипотез и направлений исследований |
 | `scientific-critical-thinking` | Критическое (состязательное) рецензирование аргументов |
@@ -111,14 +111,14 @@ flowchart TD
 
 | Навык | Назначение |
 |-------|------------|
-| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skills/l2-dak-authoring.html) | Артефакты L2 DAK (словарь данных и др.) |
-| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skills/l3-fhir-authoring.html) | Ресурсы L3 FHIR через FSH |
+| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skill-instructions/l2-dak-authoring.html) | Артефакты L2 DAK (словарь данных и др.) |
+| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skill-instructions/l3-fhir-authoring.html) | Ресурсы L3 FHIR через FSH |
 | [`bpmn-authoring`]({{ site.baseurl }}/reference/skills/bpmn-authoring.html) | Бизнес-процессы BPMN 2.0 |
 | [`dmn-authoring`]({{ site.baseurl }}/reference/skills/dmn-authoring.html) | Таблицы решений DMN |
-| [`terminology-management`]({{ site.baseurl }}/reference/skills/terminology-management.html) | Системы кодирования / наборы значений |
-| [`fhir-validation`]({{ site.baseurl }}/reference/skills/fhir-validation.html) | Валидация на соответствие профилям FHIR |
-| [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | Сборка и публикация IG |
-| [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | Рубежи контроля качества (QA gates) |
+| [`terminology-management`]({{ site.baseurl }}/reference/skill-instructions/terminology-management.html) | Системы кодирования / наборы значений |
+| [`fhir-validation`]({{ site.baseurl }}/reference/skill-instructions/fhir-validation.html) | Валидация на соответствие профилям FHIR |
+| [`ig-publication`]({{ site.baseurl }}/reference/skill-instructions/ig-publication.html) | Сборка и публикация IG |
+| [`quality-control`]({{ site.baseurl }}/reference/skill-instructions/quality-control.html) | Рубежи контроля качества (QA gates) |
 
 ### Навыки агента и платформы
 

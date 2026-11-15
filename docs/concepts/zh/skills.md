@@ -73,18 +73,18 @@ flowchart TD
 
 | 技能 | 用途 |
 |-------|---------|
-| [`document-authoring`]({{ site.baseurl }}/reference/skills/document-authoring.html) | 在纯文本（prose）folio 中创建并修订块 |
-| [`document-structure`]({{ site.baseurl }}/reference/skills/document-structure.html) | 章节与小节 — 添加、删除、重新排序 |
-| [`normative-statements`]({{ site.baseurl }}/reference/skills/normative-statements.html) | 承载建议、要求或规则 |
-| [`document-publishing`]({{ site.baseurl }}/reference/skills/document-publishing.html) | Markdown → HTML / PDF，无需 TeX |
+| [`document-authoring`]({{ site.baseurl }}/reference/skill-instructions/document-authoring.html) | 在纯文本（prose）folio 中创建并修订块 |
+| [`document-structure`]({{ site.baseurl }}/reference/skill-instructions/document-structure.html) | 章节与小节 — 添加、删除、重新排序 |
+| [`normative-statements`]({{ site.baseurl }}/reference/skill-instructions/normative-statements.html) | 承载建议、要求或规则 |
+| [`document-publishing`]({{ site.baseurl }}/reference/skill-instructions/document-publishing.html) | Markdown → HTML / PDF，无需 TeX |
 
 ### 论文与专著：`authoring-math`
 
 | 技能 | 用途 |
 |-------|---------|
-| [`lean-formalization`]({{ site.baseurl }}/reference/skills/lean-formalization.html) | 在 Lean 4 中形式化陈述与证明 |
-| [`latex-authoring`]({{ site.baseurl }}/reference/skills/latex-authoring.html) | 撰写 LaTeX 文档 |
-| [`proof-verification`]({{ site.baseurl }}/reference/skills/proof-verification.html) | 验证证明，审计 `sorry` / 公理 |
+| [`lean-formalization`]({{ site.baseurl }}/reference/skill-instructions/lean-formalization.html) | 在 Lean 4 中形式化陈述与证明 |
+| [`latex-authoring`]({{ site.baseurl }}/reference/skill-instructions/latex-authoring.html) | 撰写 LaTeX 文档 |
+| [`proof-verification`]({{ site.baseurl }}/reference/skill-instructions/proof-verification.html) | 验证证明，审计 `sorry` / 公理 |
 | `scientific-visualization` | 图表与示意图 |
 | `hypothesis-generation` | 提出猜想与研究方向 |
 | `scientific-critical-thinking` | 对论证进行对抗性审阅（adversarial review） |
@@ -93,14 +93,14 @@ flowchart TD
 
 | 技能 | 用途 |
 |-------|---------|
-| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skills/l2-dak-authoring.html) | L2 DAK 制品（数据字典等） |
-| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skills/l3-fhir-authoring.html) | 通过 FSH 编写 L3 FHIR 资源 |
+| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skill-instructions/l2-dak-authoring.html) | L2 DAK 制品（数据字典等） |
+| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skill-instructions/l3-fhir-authoring.html) | 通过 FSH 编写 L3 FHIR 资源 |
 | [`bpmn-authoring`]({{ site.baseurl }}/reference/skills/bpmn-authoring.html) | BPMN 2.0 业务流程 |
 | [`dmn-authoring`]({{ site.baseurl }}/reference/skills/dmn-authoring.html) | DMN 决策表 |
-| [`terminology-management`]({{ site.baseurl }}/reference/skills/terminology-management.html) | 代码系统（code systems）与值集（value sets） |
-| [`fhir-validation`]({{ site.baseurl }}/reference/skills/fhir-validation.html) | 对照 FHIR Profile（配置文件）进行验证 |
-| [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | 构建并发布 IG（实施指南） |
-| [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | 质量保证（QA）门禁 |
+| [`terminology-management`]({{ site.baseurl }}/reference/skill-instructions/terminology-management.html) | 代码系统（code systems）与值集（value sets） |
+| [`fhir-validation`]({{ site.baseurl }}/reference/skill-instructions/fhir-validation.html) | 对照 FHIR Profile（配置文件）进行验证 |
+| [`ig-publication`]({{ site.baseurl }}/reference/skill-instructions/ig-publication.html) | 构建并发布 IG（实施指南） |
+| [`quality-control`]({{ site.baseurl }}/reference/skill-instructions/quality-control.html) | 质量保证（QA）门禁 |
 
 ### 智能体／平台技能
 

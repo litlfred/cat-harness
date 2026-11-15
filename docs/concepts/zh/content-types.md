@@ -66,9 +66,9 @@ folio-assistant 是**与内容无关的**：该平台对任何特定的论文或
 其中有两行值得进一步审视。`definition` 是整个划分中最明确的分水岭——它是唯一一个其 `lean` 字段为*必需*而非可选的类型，因此即便配置文件允许，文档 folio 也无法容纳它。而“共享”（`shared`）类型仍然*声明*了一个可选的 `lean`：类型系统允许了配置文件所禁止的内容，这正是为什么 `content_profile_check` 在“该类型是否被允许”之外还有第二条规则。
 
 相关的技能模式：
-[`latex-authoring`]({{ '/reference/skills/latex-authoring.html' | relative_url }})、
-[`lean-formalization`]({{ '/reference/skills/lean-formalization.html' | relative_url }})、
-[`proof-verification`]({{ '/reference/skills/proof-verification.html' | relative_url }})。
+[`latex-authoring`]({{ '/reference/skill-instructions/latex-authoring.html' | relative_url }})、
+[`lean-formalization`]({{ '/reference/skill-instructions/lean-formalization.html' | relative_url }})、
+[`proof-verification`]({{ '/reference/skill-instructions/proof-verification.html' | relative_url }})。
 
 ---
 

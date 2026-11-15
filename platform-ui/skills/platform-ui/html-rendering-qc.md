@@ -1,85 +1,62 @@
 ---
 name: html-rendering-qc
+description: >
+  Check that a folio's content blocks render correctly as HTML on its
+  published site, and report each defect with its source file and line. The
+  generic half: what the HTML path is, which patterns break it, and how to look
+  at the result. A content type adds its own rows through a refinement skill.
 ---
 
-# HTML Rendering QC
+# HTML rendering QC
 
 ## Role
 
-Audit `.md` content files for patterns that cause rendering failures
-in the HTML viewer (`ui/app.js`). Report issues with specific file
-paths and line numbers.
+Find the content-block patterns that render wrongly on the folio's HTML site,
+and report each one with the block's source path and line number. The
+verdict is about the RENDERED page: a block whose source looks right and whose
+page is broken has failed.
 
-## Renderer: `mdToHtml()`
+## The HTML path
 
-Located in `ui/app.js`. Processing order:
+A folio's HTML is produced in two steps, and a defect belongs to one of them:
 
-1. Display math `$$...$$` → KaTeX display spans (content types with math)
-2. Inline math `$...$` → KaTeX inline spans (content types with math)
-3. Fenced code blocks `` ```lang `` → `<pre>` or `<div class="txb">`
-4. Tables `|...|` → `<table class="md-table">`
-5. Headings `##`, `###` → `<h3>`, `<h4>`
-6. Bold `**...**` → `<strong>` (multiline OK)
-7. Italic `*...*` → `<em>` (single line only)
-8. Inline code `` `...` `` → `<code>`
-9. Citations `\cite{key}` → `<span class="cite">[key]</span>`
-10. En/em dash `--`/`---` → `–`/`—`
-11. Cross-refs `[text](#label)` → `<a class="uref">`
-12. List items `1.` / `-` → `<li>`
-13. Paragraphs `\n\n` → `</p><p>`
+1. **Assembly.** The content pipeline assembles the blocks, in manifest order,
+   into Markdown pages: block headers, labels, anchors and cross-reference
+   links are added; the block bodies pass through unchanged.
+2. **Site build.** The site builder (Jekyll, with kramdown) turns those pages
+   into HTML. Math reaches the page as `code.math-inline` and
+   `pre > code.math-display` elements, which KaTeX renders in the browser.
 
-## Known limitations
+So a pattern that kramdown parses differently from GitHub's renderer fails
+here even when the block looks right on GitHub. [`markdown-render-check`](../../../skills/ui/ui-core/markdown-render-check.md)
+is the GitHub-side check; this one is the site-side check, and a block can pass
+one and fail the other.
+
+## Known limitations of the path
 
 | Pattern | Issue | Fix |
 |---------|-------|-----|
-| `*italic*` spanning lines | Won't match (single-line regex) | Keep italic on one line |
-| Nested lists | Not supported | Flatten or use prose |
-| `\cite{key}` | No bibliography lookup | Accept `[key]` display |
+| `\cite{key}` | Left verbatim: the Markdown assembly resolves no citations | Accept the visible key, or cite through the content type's bibliography |
+| A cross-reference to a label that is not assembled on the same site | The anchor link has no target | Link to a block that the site publishes |
+| A raw HTML block inside Markdown | kramdown may stop parsing Markdown inside it | Keep Markdown outside raw HTML, or mark the block `markdown="1"` |
+| A list directly after a paragraph line, with no blank line | Rendered as part of the paragraph | Put a blank line before the list |
 
-A content type with math adds its own rows: the layer shipping that content
-type supplies its math-rendering check skill with the KaTeX, display-math, and
-TeX rules.
-
-## Interactive features
-
-### Hover preview
-
-Cross-ref links (`a.uref`) show a popup on hover with the
-referenced block's content. The popup has:
-- Expand (⛶) → fullscreen modal
-- Close (×)
-
-### Copy button
-
-Blocks whose status the content type marks as a stub (for example
-`stated` or `not_started`) show a 📋 button on hover. Copies block
-metadata + markdown + the stub the content type supplies.
-
-### Index page
-
-Index entries are clickable — expands the definition inline in the
-table row. Click again to collapse. Does not navigate away.
+A content type with math, diagrams or other typeset material adds its own rows:
+the layer that ships that content type supplies a refinement skill (its
+math-rendering check, for example) with the rules for its own constructs.
 
 ## Audit procedure
 
-1. Run `bun run pipeline/export-json.ts` to build the folio JSON
-2. Serve locally and inspect in browser
-3. For bulk checking, grep `.md` files for the known problem patterns of
-   the table above and of the content type's own skill. Unclosed bold or
-   italic needs manual review: a regex can't reliably detect it.
+1. Build the site the way publication builds it, and open the changed pages.
+   [`rendered-verification`](../../../skills/ui/ui-core/rendered-verification.md)
+   says how to look and what to send the author.
+2. For bulk checking, grep the blocks' `.md` files for the patterns in the
+   table above and in the content type's refinement. Unclosed emphasis needs a
+   person: a regex cannot reliably detect it.
+3. Report each finding as `path:line`, the pattern, and what the page shows.
 
-## Sidebar behavior
+## What this skill does not cover
 
-The sidebar collapses to a strip showing tab letters. Hovering
-expands it to full width.
-
-- **☰** button: hides sidebar completely
-- **⇔** button: toggles wide mode
-- Both preferences persist to localStorage
-
-## Diff view
-
-Diff computation can be expensive. The diff fetch:
-- Shows a cancel button during loading
-- Aborts the fetch if the user switches to another mode
-- Uses `AbortController` for clean cancellation
+The site's navigation, theme and interactive widgets are not content QC: their
+rules belong to the skills of the UI they belong to. This skill judges whether
+a block's content survives the HTML path.

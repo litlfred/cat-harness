@@ -91,9 +91,9 @@ the profile forbids, so `content_profile_check` has a second rule beyond "is
 this kind allowed".
 
 Relevant skill schemas:
-[`latex-authoring`]({{ '/reference/skills/latex-authoring.html' | relative_url }}),
-[`lean-formalization`]({{ '/reference/skills/lean-formalization.html' | relative_url }}),
-[`proof-verification`]({{ '/reference/skills/proof-verification.html' | relative_url }}).
+[`latex-authoring`]({{ '/reference/skill-instructions/latex-authoring.html' | relative_url }}),
+[`lean-formalization`]({{ '/reference/skill-instructions/lean-formalization.html' | relative_url }}),
+[`proof-verification`]({{ '/reference/skill-instructions/proof-verification.html' | relative_url }}).
 
 ---
 

@@ -85,9 +85,9 @@ folio-assistant **не зависит от контента**: платформ�
 есть второе правило помимо «разрешен ли этот вид».
 
 Соответствующие схемы навыков:
-[`latex-authoring`]({{ '/reference/skills/latex-authoring.html' | relative_url }}),
-[`lean-formalization`]({{ '/reference/skills/lean-formalization.html' | relative_url }}),
-[`proof-verification`]({{ '/reference/skills/proof-verification.html' | relative_url }}).
+[`latex-authoring`]({{ '/reference/skill-instructions/latex-authoring.html' | relative_url }}),
+[`lean-formalization`]({{ '/reference/skill-instructions/lean-formalization.html' | relative_url }}),
+[`proof-verification`]({{ '/reference/skill-instructions/proof-verification.html' | relative_url }}).
 
 ---
 

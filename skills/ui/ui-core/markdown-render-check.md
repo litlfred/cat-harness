@@ -74,5 +74,5 @@ If all checks pass, say so explicitly and still print the blob URLs
 ## Cross-references
 
 - `md-authoring` — the authoring conventions this skill verifies.
-- `html-rendering-qc` — HTML viewer (`mdToHtml`) rendering.
+- `html-rendering-qc` — the site-side check: the same blocks as the folio's HTML site renders them.
 - A content type's own render checks, named by the layer that ships it.
