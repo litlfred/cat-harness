@@ -269,6 +269,21 @@ bun run pipeline/translation-signoff.ts --locale <locale> --level <block|section
 Or use the `translation_signoff` MCP tool. Updates the `TranslationNode`
 manifest with sign-off metadata and source hash.
 
+#### Before sign-off: review and adjudication, catalogue by catalogue
+
+A reviewer who reads one catalogue and finds it acceptable, or finds a
+mistranslation and picks a candidate or writes their own text, records that
+through the review page, a `translation-adjudication/v1` issue and a PR — the
+loop in [`translation-adjudication`](translation-adjudication.md), drawn as
+[`translation-review-adjudication.bpmn`](../../processes/translation-review-adjudication.bpmn).
+It marks a catalogue **reviewed** (or **flagged**, when a suggestion was
+applied) and never official: the sign-off above stays a separate act.
+Candidate translations from any engine — an agent model, OPUS-MT,
+LibreTranslate / Argos — are produced through
+[`translation-candidate-source`](translation-candidate-source.md), and **an
+empty `msgstr` gets the first candidate, marked fuzzy**: candidates are never
+a barrier to having a translation.
+
 ### 9. Staleness watch
 
 On every content change, the pipeline checks whether any official translation's
@@ -370,6 +385,24 @@ locales.
 6. Each drift is fixed on the locale's PR, and the fix is noted beside the
    ruling. When two separate parties cannot be dispatched, the producer
    records "could not dispatch" with the reason: never a pass.
+7. **Each ruling is keyed by content, never by position.** A ruling on a
+   catalogue string is pinned by `field_hash.msgid`, the hash of the source
+   it judged, and `field_hash.msgstr`, the hash of the translation; a reader
+   pairs strings with rulings by those hashes. Its `index` is only an order
+   for reading. So:
+
+   | the catalogue | what follows |
+   |---|---|
+   | gains a string | no ruling is found for it, and the report fails loudly: run the round trip on that string |
+   | changes a translation | its ruling's msgstr hash no longer matches: reported **stale**, never counted as a pass; run the round trip on that string |
+   | loses or reorders strings | nothing is invalidated, and **no agent is re-run**; once the removal is on main, the layer's prune command (who-iris: `translation-qa:prune`) drops the removed strings' rulings and renumbers the rest |
+
+   Rulings may be recorded before the PR whose strings they judge merges
+   (they live on a state branch, the strings on main), so a ruling no string
+   claims is not an error. The prune command is a dry run until `--write`,
+   drops only rulings whose string main once held and no longer does, and
+   never changes or invents a verdict. Run it after the removal merges, never
+   on the removing branch: the state branch serves main too.
 
 ### Glossary precedence, and sense checks
 

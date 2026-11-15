@@ -82,6 +82,22 @@ downloads an app only by opening its route. Inside the app, put heavy parts
 (a 3D engine, films) behind a dynamic `import()` or `preload="none"` so the
 first screen paints first.
 
+### Lazy on screen, complete in print
+
+Defer what a reader may never reach (owner, 2026-11-14: *"do lazy load
+content and libs"*): images with `loading="lazy"` and `decoding="async"`,
+libraries behind a dynamic `import()` on first use, a hidden panel or a
+closed `<details>` drawn on its first open, a popout built when it is opened.
+
+**Every deferral has a print path** (owner, 2026-11-14: *"make sure printing
+loads all of the content before it renders the PDF on the browser"*). On
+`beforeprint`, and in a Print button that waits before it calls
+`window.print()`: switch lazy images to eager and wait for them, build and
+open what is built on toggle, and write out text that only a popout shows.
+`afterprint` closes again what the preparation opened. The library entry
+page (`cat-harness-tools/scripts/lib/library-document.ts`, `docPrintPrep`) is
+the worked example.
+
 ## Translating an app — the harness's process, not a second one
 
 An app's UI strings are one more template to the translation process

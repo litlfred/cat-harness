@@ -16,7 +16,7 @@ Held in the library [`cat-harness/library/corpus/`](../../README.md) as `arxiv-2
 | holds | count |
 |---|---|
 | [sections](sections/) | 62 |
-| [blocks](blocks/) | 31 |
+| [blocks](blocks/) | 35 |
 | images | 115 |
 
 <!-- kg:subgraph:end -->

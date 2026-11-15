@@ -324,7 +324,13 @@
     (bean `cat-tools-bbnd`). A PATH only: per-locale coverage and officiality
     are fetched when the drawer opens, never baked into the page. A site that
     publishes none gets a 404, which the drawer reports as "not published".
-  {%- endcomment -%}"{{ '/assets/translation-status/index.json' | relative_url }}"
+  {%- endcomment -%}"{{ '/assets/translation-status/index.json' | relative_url }}",
+  "reviewSrc": {%- comment -%}
+    Its sibling, the review matrix (`folio-translation-review/v1`), which a
+    block's feedback panel reads to show that block's translation state and
+    to file an adjudication issue (translation-review.js). A PATH only,
+    fetched when a panel opens.
+  {%- endcomment -%}"{{ '/assets/translation-status/review.json' | relative_url }}"
 }</script>
 {%- comment -%}
   Where the action tiles point.
@@ -504,6 +510,20 @@
   `docs-ui.js` and `navbar-row.js` resolves it back to an absolute path.
 {%- endcomment -%}
 <meta name="fa-baseurl" content="{{ site.baseurl }}">
+{%- comment -%}
+  This page's own Markdown source and the headings it writes, for the ✎ edit
+  and ✍ suggest on its sections (owner, 2026-11-13: "own-text sections
+  only"). `compose-docs.ts` writes `_data/page_sources.json` keyed by
+  `page.path`, in the shape the IG pages' `ig-source-lines` use, so
+  `edit-links.js` reads both the same way. A page it does not list (its layer
+  declares no repository, or it is not Markdown) gets nothing, and keeps its
+  📣 alone. Every `<` is written `\u003c`, so a heading cannot close the
+  script and no end-tag opener reaches the page outside it.
+{%- endcomment -%}
+{%- assign _fa_page_src = site.data.page_sources[page.path] -%}
+{%- if _fa_page_src %}
+<script type="application/json" id="fa-page-source">{{ _fa_page_src | jsonify | replace: "<", "\u003c" }}</script>
+{%- endif %}
 
 {%- comment -%}
   WHETHER THIS IS A PREVIEW, for the tiles above.
@@ -660,7 +680,15 @@
   `state-visualizer.ts` can inline exactly these bytes into the generated
   `<base>/<stub>/state-visualizer/` pages. One rule, two surfaces.
 {%- endcomment -%}
+{%- comment -%}
+  ONLY ON A PAGE THAT HAS A DASHBOARD (owner, 2026-11-14: "do lazy load content
+  and libs"): 25 KB of render-blocking CSS every other page paid for nothing.
+  `content` is the page's rendered body here, as in
+  `components/mermaid.html`, and the dashboard's container is in it.
+{%- endcomment -%}
+{%- if content contains 'data-fa-workplan' %}
 <link rel="stylesheet" href="{{ '/assets/css/work-plan.css' | relative_url }}?v={{ '/assets/css/work-plan.css' | fa_asset_version }}">
+{%- endif -%}
 {%- comment -%} Sticky themes. GENERATED from the theme nodes in `schemas/ui/themes.ts` by
      `bun run cat themes:css`; `themes:css:check` fails the build when it is stale.
      Loaded AFTER docs-ui.css deliberately: it supplies the `--fa-sticky-*`
@@ -702,9 +730,14 @@
   long as GitHub Pages' cache (about 10 minutes), and the pages stay the same.
 {%- endcomment -%}
 <script src="{{ '/assets/js/harness-data.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/vendor/qrcode.js' | relative_url }}" defer></script>
-<script src="{{ '/assets/js/vendor/qrcode_UTF8.js' | relative_url }}" defer></script>
-{%- comment -%} BEFORE docs-ui.js and work-plan.js: both read window.faRender. {%- endcomment -%}
+{%- comment -%}
+  NO QR ENCODER HERE (owner, 2026-11-14: "do lazy load content and libs").
+  vendor/qrcode.js and qrcode_UTF8.js (59 KB) were loaded on every page for a
+  code most readers never open; `navbar-row.js` loads them the first time a QR
+  code is shown (`window.faEnsureQrcode`), for its row and for the
+  `docs-ui.js` tile alike. The sidebar holding both is not printed.
+{%- endcomment %}
+{%- comment -%} BEFORE docs-ui.js and work-plan.js (where a page loads it): both read window.faRender. {%- endcomment -%}
 <script src="{{ '/assets/js/kg-render.js' | relative_url }}" defer></script>
 {%- comment -%} BEFORE docs-ui.js, which calls it: the one drawing of the harness icon row (beans `lhvt`, `9rq1`). {%- endcomment -%}
 <script src="{{ '/assets/js/navbar-row.js' | relative_url }}?v={{ '/assets/js/navbar-row.js' | fa_asset_version }}" defer></script>
@@ -713,6 +746,10 @@
   recipe (cat-harness-tools/src/core/edit-links.ts, bean v433): links carry their
   facts and this builds the hrefs. {%- endcomment -%}
 <script src="{{ '/assets/js/edit-links.js' | relative_url }}?v={{ '/assets/js/edit-links.js' | fa_asset_version }}" defer></script>
+{%- comment -%} AFTER edit-links.js, whose block panel it extends: on a translated page, each
+  block's panel shows that block's translation state and files a translation
+  review issue (translation-review.js). It does nothing on a source-language page. {%- endcomment -%}
+<script src="{{ '/assets/js/translation-review.js' | relative_url }}?v={{ '/assets/js/translation-review.js' | fa_asset_version }}" defer></script>
 {%- comment -%} Syntax colours for JSON and XML blocks, including those a script fills
   after load (cat-harness#1241). It loads highlight.js and its stylesheet only on a
   page that shows such a block. {%- endcomment -%}
@@ -724,12 +761,17 @@
   page without that container pays one failed querySelector. The same file is
   inlined verbatim into the generated state-visualiser pages.
 {%- endcomment -%}
+{%- comment -%} ONLY where a page carries the container (owner, 2026-11-14), as work-plan.css above. {%- endcomment -%}
+{%- if content contains 'data-fa-workplan' %}
 <script src="{{ '/assets/js/work-plan.js' | relative_url }}" defer></script>
+{%- endif -%}
 {%- comment -%}
   The process index, self-mounting on `[data-fa-process-index]` the same way.
   Its rows are the diagrams' own documentation, from the published subgraph JSON-LD.
 {%- endcomment -%}
+{%- if content contains 'data-fa-process-index' %}
 <script src="{{ '/assets/js/process-index.js' | relative_url }}" defer></script>
+{%- endif -%}
 
 {%- comment -%}
   The landing panel — the instance's declared description drawn inside the

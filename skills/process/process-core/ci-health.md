@@ -261,6 +261,49 @@ Wire it in when those checks become recordable.
 
 A failed traced run is asked again untraced, so the verdict is always the check's own.
 
+## A slow workflow can be mostly waiting: fold tiny serial jobs into one
+
+Owner ruling, 2026-11-13 (card "A. Collapse into one job", then "update
+skills and processes to see when need to do so"). Each job waits for its
+own runner, so a chain of small jobs pays that wait once per link.
+Measured: one content layer's run took 23 minutes for about 2.5
+minutes of work. Its five small serial jobs each queued for a runner, for
+9m29s, 1m, 1m45s, 3m43s and 4m22s.
+
+**When to act.** A job is a candidate to become a step of its neighbour
+when either holds:
+
+- its median queue wait is longer than its median run time; or
+- it is one of more than 2 jobs in a serial chain (`needs:`) that each run
+  in under 1 minute.
+
+**How to see it.** Measure each job from the Actions API (`GET
+/repos/<owner>/<repo>/actions/runs/<run>/jobs`):
+
+- its wait is `started_at − created_at`;
+- its run time is `completed_at − started_at`.
+
+Take the median over the workflow's recent runs on the default branch,
+not one run, because a single wait says more about the runner pool that
+minute than about the workflow. The tools layer will add the report. Until
+it does, the weekly review below measures by hand.
+
+**What stays a separate job**, even when it is small:
+
+- a heavy job, or a set of parallel shards: folding them makes the run
+  longer, not shorter;
+- a job that needs different permissions, a different runner, or a
+  different environment;
+- a job whose check name something reads: `merge:guard`, branch
+  protection's required checks, or verdict reuse. Fold it only together
+  with every reader of that name, in the same change.
+
+**Who looks, and when.** The weekly CI health review
+(`ci-health-watch.bpmn`, the `check:ci-health` step) also looks at job
+shape. When a workflow crosses either threshold, it opens a work item
+naming the workflow, the jobs, the measured medians, and which of them
+must stay separate. The fold itself is an ordinary PR.
+
 ## Step names describe what the check does, not merely its passing invariant
 
 A CI step named solely after its passing invariant misdescribes any failure

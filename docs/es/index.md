@@ -37,7 +37,7 @@ de objetos de contenido tipado.
 ## Cuatro cosas, en orden
 
 **1. El plan de trabajo es donde dices lo que estás haciendo.**
-No un mensaje de chat, no un comentario: [work items]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}), un almacén versionado que cualquier sesión o agente puede leer. Reclama antes de trabajar para que una sesión hermana no tome el mismo elemento; un work item que resulta no ser necesario se marca `scrapped`, con sus razones, y nunca se elimina.
+No un mensaje de chat, no un comentario: [elementos de trabajo]({{ '/docs/cat-harness/guides/beans-and-todos.html' | relative_url }}), un almacén confirmado en el repositorio que cualquier sesión o agente puede leer. Reclama antes de trabajar para que una sesión hermana no tome el mismo elemento; un elemento de trabajo que resulta no ser necesario se marca `scrapped`, con sus razones, y nunca se elimina.
 
 ```sh
 cat-harness-tools/scripts/install-beans.sh && export PATH="$HOME/.local/bin:$PATH"
@@ -110,15 +110,16 @@ carriles BPMN, con los roles, la puerta de validación HCI y el plan de trabajo 
 - **[Tutorial: Redactar un artículo con folio-assistant](https://litlfred.github.io/folio-assistant/folio-assistant-sci/guides/writing-a-paper.html)** — un recorrido completo guiado por LLM con una sesión de chat simulada.
 - **[Tipos de contenido]({{ '/docs/cat-harness/concepts/content-types.html' | relative_url }})** — el formalismo de cada dominio de autoría.
 - **[Flujo de publicación](https://litlfred.github.io/folio-assistant/folio-assistant-core/process/publication-workflow.html)** — diagramas de carriles BPMN de los procesos de edición y publicación: la puerta de validación de HCI, quién revisa qué y el plan de trabajo compartido.
+- **[Procesos]({{ '/processes/' | relative_url }})** — todos los diagramas BPMN ejecutables, con búsqueda, cada uno con las instancias de flujo de trabajo que lo ejecutan: abre uno para ver dónde está su token, qué está atascado y los elementos de trabajo y las tareas pendientes (todos) que nombra.
 - **[Incorporación del agente]({{ '/docs/cat-harness/guides/agent-onboarding.html' | relative_url }})** — orientación para un agente LLM situado en un folio: primeros pasos, búsqueda de habilidades, el modelo de objetos de contenido, sidecars de QA.
 - **[Habilidades y roles]({{ '/docs/cat-harness/concepts/skills.html' | relative_url }})** — cada habilidad y rol, y cómo interactúan junto con el LLM.
 - **[Referencia del esquema de habilidades](../reference/skills/)** — contratos de entrada/salida generados para cada habilidad.
 - **[Referencia de la API de TypeScript](../api/)** — el modelo de objetos de contenido (`Block`, `Chapter`, `Paper`, builders, restricciones Zod).
 - **[Arquitectura]({{ '/docs/cat-harness/concepts/architecture.html' | relative_url }})** — adaptadores, servidor MCP, RBAC, el modelo de bloques.
-- **[El grafo de conocimiento]({{ '/docs/cat-harness/concepts/knowledge-graph.html' | relative_url }})** — la taxonomía de subgrafos, en qué sentido van las referencias y cómo dividen el trabajo los repositorios.
-- **[The Harness]({{ '/docs/cat-harness/concepts/harness.html' | relative_url }})** — la instanciación, el recorrido de dependencias y a qué obliga incorporar un directorio al arnés.
+- **[El Grafo de conocimiento]({{ '/docs/cat-harness/concepts/knowledge-graph.html' | relative_url }})** — la taxonomía de subgrafos, en qué sentido van las referencias y cómo dividen el trabajo los repositorios.
+- **[El Arnés]({{ '/docs/cat-harness/concepts/harness.html' | relative_url }})** — la instanciación, el recorrido de dependencias y a qué obliga incorporar un directorio al arnés.
 
-Vale la pena leer dos habilidades antes que las páginas anteriores, porque todo lo demás
+Vale la pena leer dos Habilidades antes que las páginas anteriores, porque todo lo demás
 las asume: [`getting-started`](../reference/skill-instructions/getting-started.html)
 enruta lo que realmente estás intentando hacer, y
 [`placement`](../reference/skill-instructions/placement.html) determina a dónde

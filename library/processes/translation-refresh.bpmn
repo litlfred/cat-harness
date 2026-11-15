@@ -20,7 +20,9 @@
 
 You are in this process when the watcher scheduled by `multi-locale-translation` wakes, or when a template check has failed. It is the loop that process ends with. A fresh session can run it cold: the skill `translation-refresh` gives each step as a command, and each layer's own AGENTS.md names what is particular to it. One run walks every layer in turn, and each layer with something to refresh gets its own PR.
 
-A refresh never re-translates a finished string. Obsolete strings are kept as `#~` entries, new ones arrive empty, and only new and fuzzy strings are translated, with the terms the term base already fixes. The round trip runs on the changed strings only.</bpmn:documentation>
+A refresh never re-translates a finished string. Obsolete strings are kept as `#~` entries, new ones arrive empty, and only new and fuzzy strings are translated, with the terms the term base already fixes. The round trip runs on the changed strings only.
+
+Round-trip rulings are keyed by content: each is pinned by the hash of the msgid it judged (and of the msgstr), never by its position in the catalogue. So removing or reordering strings invalidates no ruling and needs no agent re-run. Once main no longer holds a removed string, its ruling is dropped mechanically by the prune step.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="advisory"/>
     </bpmn:extensionElements>
@@ -45,6 +47,7 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
         <bpmn:flowNodeRef>Task_TR_SourceIssue</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_TR_Window</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_TR_Merge</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_TR_PruneRulings</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_TR_Merged</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>End_TR_Waiting</bpmn:flowNodeRef>
       </bpmn:lane>
@@ -172,8 +175,17 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
       <bpmn:outgoing>Flow_TR_11</bpmn:outgoing>
     </bpmn:serviceTask>
 
-    <bpmn:endEvent id="End_TR_Merged" name="Refreshed">
+    <bpmn:serviceTask id="Task_TR_PruneRulings" name="Prune the rulings of removed strings">
+      <bpmn:documentation>Drop the round-trip rulings of strings main no longer holds, with the layer's prune command (its AGENTS.md names it, by convention `translation-qa:prune`), once the PR is on main. Only a layer that keeps per-string rulings on an attestations state branch has one. Run it as a dry run first: it lists each ruling whose msgid main no longer holds but once did, and the indices it renumbers to catalogue order. Push the result (`--write`, then the state-branch push) only when the diff is purely dropped and renumbered rulings. It never changes or invents a verdict, and it keeps a ruling recorded ahead of a PR that has not merged. Never run it before the removal is on main: the state branch serves main too, and main would be left with strings that have no ruling. Nothing to prune is the usual result, and this step then writes nothing.</bpmn:documentation>
+      <bpmn:extensionElements>
+        <bootstrap.processes:skill ref="translation-refresh"/>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_TR_11</bpmn:incoming>
+      <bpmn:outgoing>Flow_TR_12</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:endEvent id="End_TR_Merged" name="Refreshed">
+      <bpmn:incoming>Flow_TR_12</bpmn:incoming>
     </bpmn:endEvent>
 
     <bpmn:endEvent id="End_TR_Waiting" name="PR left open">
@@ -197,7 +209,8 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
     <bpmn:sequenceFlow id="Flow_TR_10" sourceRef="Task_TR_SourceIssue" targetRef="Gateway_TR_Window"/>
     <bpmn:sequenceFlow id="Flow_TR_WindowYes" name="Yes" sourceRef="Gateway_TR_Window" targetRef="Task_TR_Merge"/>
     <bpmn:sequenceFlow id="Flow_TR_WindowNo" name="No" sourceRef="Gateway_TR_Window" targetRef="End_TR_Waiting"/>
-    <bpmn:sequenceFlow id="Flow_TR_11" sourceRef="Task_TR_Merge" targetRef="End_TR_Merged"/>
+    <bpmn:sequenceFlow id="Flow_TR_11" sourceRef="Task_TR_Merge" targetRef="Task_TR_PruneRulings"/>
+    <bpmn:sequenceFlow id="Flow_TR_12" sourceRef="Task_TR_PruneRulings" targetRef="End_TR_Merged"/>
   </bpmn:process>
 
   <bpmndi:BPMNDiagram id="Diagram_TranslationRefresh">
@@ -246,9 +259,12 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
       <bpmndi:BPMNShape id="Task_TR_Merge_di" bpmnElement="Task_TR_Merge">
         <dc:Bounds x="1120" y="290" width="120" height="120"/>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_TR_PruneRulings_di" bpmnElement="Task_TR_PruneRulings">
+        <dc:Bounds x="1120" y="450" width="120" height="120"/>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_TR_Merged_di" bpmnElement="End_TR_Merged">
-        <dc:Bounds x="1050" y="332" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="1036" y="373" width="64" height="18"/></bpmndi:BPMNLabel>
+        <dc:Bounds x="1050" y="492" width="36" height="36"/>
+        <bpmndi:BPMNLabel><dc:Bounds x="1036" y="533" width="64" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="End_TR_Waiting_di" bpmnElement="End_TR_Waiting">
         <dc:Bounds x="1277" y="492" width="36" height="36"/>
@@ -345,8 +361,12 @@ A refresh never re-translates a finished string. Obsolete strings are kept as `#
         <bpmndi:BPMNLabel><dc:Bounds x="1300" y="470" width="24" height="18"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_TR_11_di" bpmnElement="Flow_TR_11">
-        <di:waypoint x="1120" y="350"/>
-        <di:waypoint x="1086" y="350"/>
+        <di:waypoint x="1180" y="410"/>
+        <di:waypoint x="1180" y="450"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_TR_12_di" bpmnElement="Flow_TR_12">
+        <di:waypoint x="1120" y="510"/>
+        <di:waypoint x="1086" y="510"/>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

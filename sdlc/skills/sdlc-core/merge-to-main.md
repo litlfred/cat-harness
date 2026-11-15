@@ -42,9 +42,11 @@ answers: merge, hold or refuse. The merging session records the answer (not
 relaxable), merges pinned to the head, confirms `main`, republishes the
 repository's site, re-pins downstream mounts and reports. Each step's own text is in the diagram.
 
-The merging session is the `merge-steward` lane. With a Merge Manager active,
-that is the steward. With none active, the PR's own session takes the lane
-([`merge-queue`](merge-queue.md) §"When no Merge Manager is active"). The gate is the same for both.
+The merging session is the `merge-steward` lane, and only it merges (owner
+ruling, 2026-11-13). With none active, the siblings elect one first, and the
+PR's own session merges only when it is the one elected
+([`merge-queue`](merge-queue.md) §"When no Merge Manager is active"). The
+gate is the same either way.
 
 ## Evidence — read on the head, live, every time
 
@@ -185,6 +187,7 @@ can answer without opening anything. For a merge, that means one row per PR:
 
 | repo | PR | head | CI on head | mergeable | review | local gates (if no CI) |
 |---|---|---|---|---|---|---|
+| `owner/repo` | #123 | `abc1234` | green | yes | approved | n/a |
 
 Then the recommendation, then one question that covers the batch: *"Merge these
 N?"* Several repositories are several merges, but one question can authorise

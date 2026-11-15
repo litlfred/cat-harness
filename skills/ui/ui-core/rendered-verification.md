@@ -21,6 +21,28 @@ computed result, and attached the image to the turn. Sending the screenshot
 is **part of the rule, not a courtesy**: an image lets the author disagree
 with you in one glance.
 
+## Check the page the owner opened, and that it is LIVE
+
+Owner, 2026-11-14: *"why I am having to ask for the same requests multiple
+times?"* An audit of five repeated requests found the same four failures:
+
+- **Merged and pinned is not live.** The layer's publish run failed at a
+  guard, nothing recorded it, and the site kept serving pages from an older
+  pin, so three merged fixes never reached the owner. Before saying a fix is
+  done, find the layer's latest publish run for the pinned commit and say
+  whether it succeeded; if it failed, say so and hand it on.
+- **The fix went to a different surface.** "Cap + hover" for long titles was
+  applied to the library table and not to the rail the owner was looking at.
+  Screenshot the URL the owner named, not a page you chose.
+- **The fix covered a batch, not the owner's entry.** A figures fix scoped to
+  one family of entries left the owner's entry with none. Check the entry
+  the owner named, and say which entries the fix does not reach.
+- **An older ruling outlived a newer one.** A November 10 card chose wrapping
+  for short menu names; three days later the owner asked for one line with
+  hover for long titles, and the code still cited the old ruling. When a new
+  request contradicts a recorded ruling, ask on a card which one wins, then
+  change the code comment and the test that cite the old ruling.
+
 ## Why a green gate set does not cover this
 
 Defect classes no test catches, because **the source was right and the
@@ -166,6 +188,11 @@ in **prose**, a link count takes a stylesheet `href` as a way out. For
 navigated pages, the instrument that holds is `<nav class="fa-nav"` OR
 `id="site-nav"`.
 
+For a count of NODES with a page, an IRI and a folder-page row, do not write
+an instrument: `bun run cat node-views:report -- --site <dir>` is that count,
+validated by its tests, and it says `unknown` rather than 0 where it could not
+ask. It reads a folder's data files, so rows a script draws are counted.
+
 For a site-wide count, the `gh-pages` route above scales. Use a
 `--filter=blob:none --sparse` clone of `gh-pages`, with sparse patterns for
 the files counted, and exclude `branches/`. All HTML is about 1.7 GB and takes
@@ -271,6 +298,15 @@ reads as thoroughly evidenced.
 cheap to check: a `fetch`, an `XMLHttpRequest`, a `DATA_HREF`, a `<script>`
 that writes into the DOM. Finding one means a static read cannot answer the
 question, and `§"Running it here"` above is how to answer it instead.
+
+## Print it too, when the page defers anything
+
+A page that lazy-loads (images, a tree built on toggle, a listing drawn on
+first open, text kept for a popout) must print complete (owner, 2026-11-14).
+Check it the way a reader prints: emulate print media, run the page's print
+preparation (its Print button with `window.print` stubbed, or a dispatched
+`beforeprint`), assert every image is loaded (`complete && naturalWidth`) and
+the deferred text is present, then `page.pdf()` and look at a page of it.
 
 ## What this does NOT replace
 

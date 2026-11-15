@@ -13,14 +13,12 @@
     <bpmn:participant id="Participant_Process_MergeRequest" name="Merge request: find or elect the merge manager" processRef="Process_MergeRequest"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_MergeRequest" name="Merge request: find or elect the merge manager" isExecutable="false">
-    <bpmn:documentation>The sibling's side of merging. A coding agent whose work depends on an unmerged PR stacks on it rather than waiting, and retargets when it lands. With a PR ready to merge it does not know whether a merge manager exists, so it checks: if one is active and live, it sends the six-line merge request; if none is, it measures whether one is needed, and either runs the merge manager loop for its own PRs or elects one with its siblings by the fixed rule, the winner announcing itself to all and taking the lane. Any agent may stall, the merge manager included: a request not acknowledged within the stall window sends the sibling to stalled-agent triage and a re-election without the stalled session. The merge manager's own loop is Process_MergeManagerWatch. Source: owner rulings, 2026-11-07.</bpmn:documentation>
+    <bpmn:documentation>The sibling's side of merging. A coding agent whose work depends on an unmerged PR stacks on it rather than waiting, and retargets when it lands. With a PR ready to merge it does not know whether a merge manager exists, so it checks: if one is active and live, it sends the six-line merge request; if none is, it elects one with its siblings by the fixed rule (a lone session is elected alone), the winner announcing itself to all and taking the lane. Only the merge manager merges and re-pins (owner rulings, 2026-11-13): no other session merges, and a PR green except for a re-pin is sent as repin+merge. Any agent may stall, the merge manager included: a request not acknowledged within the stall window sends the sibling to stalled-agent triage and a re-election without the stalled session. The merge manager's own loop is Process_MergeManagerWatch. Source: owner rulings, 2026-11-07 and 2026-11-13.</bpmn:documentation>
     <bpmn:laneSet id="LaneSet_Process_MergeRequest">
       <bpmn:lane id="Lane_Sibling" name="Sibling session" partitionElementRef="sibling-session">
         <bpmn:documentation>Any coding agent with a PR ready to merge. It first checks whether a merge manager is active; if none is and one is needed, it elects one with its siblings by the fixed rule; a lone or lapsed session manages its own PRs. It never merges another session's PR, never pushes to another session's branch, and treats a merge manager that does not acknowledge within the stall window as stalled. It never waits for a dependency to merge: it stacks on the dependency PR and keeps working.</bpmn:documentation>
         <bpmn:flowNodeRef>Sib_Start</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Sib_GwActive</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Sib_GwNeeded</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Sib_Self</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Sib_Elect</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Sib_GwWon</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Sib_Announce</bpmn:flowNodeRef>
@@ -30,7 +28,6 @@
         <bpmn:flowNodeRef>Sib_EndQueued</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Sib_CallWatch</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Sib_EndHolds</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Sib_EndSelf</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Sib_GwDepends</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Sib_Stack</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Sib_Retarget</bpmn:flowNodeRef>
@@ -48,22 +45,10 @@
       <bpmn:outgoing>Flow_S2</bpmn:outgoing>
       <bpmn:outgoing>Flow_S3</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Sib_GwNeeded" name="Merge manager needed?">
-      <bpmn:documentation>The measured condition (laneNeeded): two or more active sessions have ready PRs in the same repositories, and either the runners are contended (more than about 10 queued runs on a repository, or the oldest queued run older than about 30 minutes) or PRs conflict with or supersede each other (owner ruling, 2026-11-07).</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
-      <bpmn:incoming>Flow_S3</bpmn:incoming>
-      <bpmn:outgoing>Flow_S4</bpmn:outgoing>
-      <bpmn:outgoing>Flow_S5</bpmn:outgoing>
-    </bpmn:exclusiveGateway>
-    <bpmn:callActivity id="Sib_Self" name="Merge manager for its own PRs" calledElement="Process_MergeManagerWatch">
-      <bpmn:documentation>No merge manager is needed (a lone session, or a lapsed lane): the session is its own merge manager for its own PRs only, so it runs the merge manager loop for them. It does not announce itself to the others; it posts the six lines in its own chat and asks the owner by card.</bpmn:documentation>
-      <bpmn:incoming>Flow_S5</bpmn:incoming>
-      <bpmn:outgoing>Flow_S15</bpmn:outgoing>
-    </bpmn:callActivity>
     <bpmn:task id="Sib_Elect" name="Elect the merge manager with the siblings">
       <bpmn:documentation>The deterministic rule (electHolder): the active session that owns the P0 PR, else the earliest-created active session, the session id breaking a tie. Stalled sessions are not candidates. Every sibling computes the same answer from the same listing (owner ruling, 2026-11-07).</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
-      <bpmn:incoming>Flow_S4</bpmn:incoming>
+      <bpmn:incoming>Flow_S3</bpmn:incoming>
       <bpmn:incoming>Flow_S12</bpmn:incoming>
       <bpmn:outgoing>Flow_S6</bpmn:outgoing>
     </bpmn:task>
@@ -80,7 +65,7 @@
       <bpmn:outgoing>Flow_S13</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Sib_Send" name="Send the six-line merge request">
-      <bpmn:documentation>To the merge manager: the PR URL and full head SHA, the session URL, 1-3 sentences on the change, the rendered preview URL or no preview with a reason, what to look for, and full tier green as judged (owner ruling, 2026-11-07). Never merge it yourself, and never push to another session's branch.</bpmn:documentation>
+      <bpmn:documentation>To the merge manager: the PR URL and full head SHA, the session URL, 1-3 sentences on the change, the rendered preview URL or no preview with a reason, what to look for, and full tier green as judged (owner ruling, 2026-11-07). Never merge it yourself, and never push to another session's branch. A PR green except for a re-pin is sent as repin+merge: &lt;owner/repo&gt;#&lt;n&gt; &lt;sha&gt; with the same six lines; never re-pin it yourself, and never merge (owner ruling, 2026-11-13).</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="merge-manager-watcher"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_S2</bpmn:incoming>
       <bpmn:incoming>Flow_S8</bpmn:incoming>
@@ -110,9 +95,6 @@
     <bpmn:endEvent id="Sib_EndHolds" name="Lane handed over or lapsed">
       <bpmn:incoming>Flow_S14</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:endEvent id="Sib_EndSelf" name="Own PRs landed">
-      <bpmn:incoming>Flow_S15</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:exclusiveGateway id="Sib_GwDepends" name="Depends on an unmerged PR?">
       <bpmn:documentation>Yes when the work needs a change that is still in an open, unmerged PR, in this repository or in a lower layer. Do not wait for it to merge: stack on it (owner ruling, 2026-11-07).</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="continual-progress"/></bpmn:extensionElements>
@@ -127,7 +109,7 @@
       <bpmn:outgoing>Flow_S18</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Sib_Retarget" name="When the base lands, retarget">
-      <bpmn:documentation>Retarget the PR onto main and merge main in; across layers, re-pin to the dependency's merge commit on main, so pins only move forward. Never merge the stacked PR into its base branch, and never mark it ready while it pins an unmerged commit.</bpmn:documentation>
+      <bpmn:documentation>Retarget the PR onto main and merge main in; across layers, send repin+merge: the merge manager re-pins to the dependency's merge commit on main, so pins only move forward (owner ruling, 2026-11-13). Never merge the stacked PR into its base branch, and never mark it ready while it pins an unmerged commit.</bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="continual-progress"/></bpmn:extensionElements>
       <bpmn:incoming>Flow_S18</bpmn:incoming>
       <bpmn:outgoing>Flow_S19</bpmn:outgoing>
@@ -140,9 +122,7 @@
       <bpmn:outgoing>Flow_S20</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_S2" name="Yes" sourceRef="Sib_GwActive" targetRef="Sib_Send"/>
-    <bpmn:sequenceFlow id="Flow_S3" name="No" sourceRef="Sib_GwActive" targetRef="Sib_GwNeeded"/>
-    <bpmn:sequenceFlow id="Flow_S4" name="Yes" sourceRef="Sib_GwNeeded" targetRef="Sib_Elect"/>
-    <bpmn:sequenceFlow id="Flow_S5" name="No" sourceRef="Sib_GwNeeded" targetRef="Sib_Self"/>
+    <bpmn:sequenceFlow id="Flow_S3" name="No" sourceRef="Sib_GwActive" targetRef="Sib_Elect"/>
     <bpmn:sequenceFlow id="Flow_S6" sourceRef="Sib_Elect" targetRef="Sib_GwWon"/>
     <bpmn:sequenceFlow id="Flow_S7" name="Yes" sourceRef="Sib_GwWon" targetRef="Sib_Announce"/>
     <bpmn:sequenceFlow id="Flow_S8" name="No" sourceRef="Sib_GwWon" targetRef="Sib_Send"/>
@@ -152,7 +132,6 @@
     <bpmn:sequenceFlow id="Flow_S12" sourceRef="Sib_CallStalled" targetRef="Sib_Elect"/>
     <bpmn:sequenceFlow id="Flow_S13" sourceRef="Sib_Announce" targetRef="Sib_CallWatch"/>
     <bpmn:sequenceFlow id="Flow_S14" sourceRef="Sib_CallWatch" targetRef="Sib_EndHolds"/>
-    <bpmn:sequenceFlow id="Flow_S15" sourceRef="Sib_Self" targetRef="Sib_EndSelf"/>
     <bpmn:sequenceFlow id="Flow_S1" sourceRef="Sib_Start" targetRef="Sib_GwDepends"/>
     <bpmn:sequenceFlow id="Flow_S16" name="Yes" sourceRef="Sib_GwDepends" targetRef="Sib_Stack"/>
     <bpmn:sequenceFlow id="Flow_S17" name="No" sourceRef="Sib_GwDepends" targetRef="Sib_Ready"/>
@@ -176,10 +155,6 @@
         <dc:Bounds x="200" y="375" width="50" height="50"/>
         <bpmndi:BPMNLabel><dc:Bounds x="185" y="432" width="80" height="50"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Sib_GwNeeded" bpmnElement="Sib_GwNeeded" isMarkerVisible="true">
-        <dc:Bounds x="320" y="375" width="50" height="50"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="295" y="320" width="100" height="50"/></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Sib_Elect" bpmnElement="Sib_Elect">
         <dc:Bounds x="420" y="340" width="120" height="120"/>
       </bpmndi:BPMNShape>
@@ -200,13 +175,6 @@
       <bpmndi:BPMNShape id="Shape_Sib_EndQueued" bpmnElement="Sib_EndQueued">
         <dc:Bounds x="1172" y="382" width="36" height="36"/>
         <bpmndi:BPMNLabel><dc:Bounds x="1140" y="422" width="100" height="40"/></bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Sib_Self" bpmnElement="Sib_Self">
-        <dc:Bounds x="285" y="500" width="120" height="120"/>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Sib_EndSelf" bpmnElement="Sib_EndSelf">
-        <dc:Bounds x="437" y="542" width="36" height="36"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="410" y="582" width="70" height="40"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Sib_CallWatch" bpmnElement="Sib_CallWatch">
         <dc:Bounds x="690" y="500" width="120" height="120"/>
@@ -240,18 +208,8 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_S3" bpmnElement="Flow_S3">
         <di:waypoint x="250" y="400"/>
-        <di:waypoint x="320" y="400"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="262" y="380" width="30" height="20"/></bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_S4" bpmnElement="Flow_S4">
-        <di:waypoint x="370" y="400"/>
         <di:waypoint x="420" y="400"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="378" y="380" width="30" height="20"/></bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_S5" bpmnElement="Flow_S5">
-        <di:waypoint x="345" y="425"/>
-        <di:waypoint x="345" y="500"/>
-        <bpmndi:BPMNLabel><dc:Bounds x="350" y="462" width="30" height="20"/></bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel><dc:Bounds x="262" y="380" width="30" height="20"/></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_S6" bpmnElement="Flow_S6">
         <di:waypoint x="540" y="400"/>
@@ -296,10 +254,6 @@
       <bpmndi:BPMNEdge id="Edge_Flow_S14" bpmnElement="Flow_S14">
         <di:waypoint x="810" y="560"/>
         <di:waypoint x="852" y="560"/>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Edge_Flow_S15" bpmnElement="Flow_S15">
-        <di:waypoint x="405" y="560"/>
-        <di:waypoint x="437" y="560"/>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_Flow_S1" bpmnElement="Flow_S1">
         <di:waypoint x="156" y="130"/>

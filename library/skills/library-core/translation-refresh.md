@@ -69,6 +69,7 @@ takes `--instance <root>`, so one checkout serves every layer.
 | 8. one PR | one per layer, based on main and targeting main | it is open |
 | 9. merge | only under merge-when-green, all green, round trip no fail | merged, or left open and reported |
 | 10. source mistakes | one issue on the source | filed, or none found |
+| 11. prune rulings | the layer's prune command, after the removal is on main | dry run clean, or a pure drop-and-renumber pushed |
 
 ### 1. Detect
 
@@ -107,6 +108,12 @@ Merge each refreshed template into every locale's catalogue:
 - **changed strings arrive fuzzy**, with the old translation kept as a hint;
 - **obsolete strings are kept as `#~` entries**, never deleted, so the
   translation can be revived if the source comes back.
+
+A string that leaves the catalogue costs no round trip. Rulings are paired
+with strings by the hash of the msgid they judged, not by position
+([`translation-manager`](translation-manager.md) §"The untainted round trip,
+as run"), so removing or reordering strings invalidates none of them. The
+removed strings' rulings are dropped by step 11, after merge.
 
 With gettext installed,
 `msgmerge --update --backup=none <locale.po> <template.pot>` does all three.
@@ -201,11 +208,33 @@ the source repository, with the location and the reading the translation
 took. Not one per locale, and not a fix in the translation: a fix to the
 source is a source PR, and the next run carries it to every locale.
 
+### 11. Prune the rulings of removed strings, after merge
+
+Only where the layer keeps per-string round-trip rulings on an attestations
+state branch; its `AGENTS.md` names the command, by convention
+`translation-qa:prune`. Run it once the PR that removed strings is on main,
+whoever merged it:
+
+```sh
+bun run cat translation-qa:prune            # dry run against origin/main: each dropped ruling, each renumbered span
+bun run cat translation-qa:prune --write    # apply it to the mounted attestations
+bun run cat state:push                      # push that one commit to the state branch
+```
+
+Push only when the dry run shows nothing but dropped and renumbered
+rulings. It drops a ruling only when main once held its string and no longer
+does, so a ruling recorded ahead of an unmerged PR stays; it never changes or
+adds a verdict. **Never run it from the removing branch before that branch
+merges**: the state branch serves main as well, and main would be left with
+strings that have no ruling. Nothing to prune is the usual result.
+
 ## Never
 
 - **Never re-extract per locale.** Templates are refreshed once, for every
   locale.
 - **Never re-translate a finished string**, and never delete an obsolete one.
+- **Never re-run the round trip because strings were removed or reordered.**
+  Rulings are keyed by content; step 11 tidies them mechanically.
 - **Never write `official: true`.** A person makes a translation official
   ([`human-translation-workflow`](../../processes/human-translation-workflow.bpmn)).
 - **Never read exit 2 as clean.** "Could not tell" is reported, every time.

@@ -20,12 +20,10 @@
   "icon": "mark",
   "navbarIcons": [
     "close",
-    "todos",
-    "beans",
-    "fsh-guts",
     "qr",
     "launcher"
   ],
+  "_navbarIcons_comment": "todos, beans and fsh-guts left the row on 2026-11-13 (owner: \"remove the fsh-guts, beans and todos\"); they are still reached from the glass strip, the Folders list and Page settings. The row is now at the foot of the rail, and the rail and docs-ui.js add the Folio and Harnesses icons to it, which are not declared slots: each is drawn where its panel exists.",
   "glassStrip": [
     { "chrome": "todos" },
     { "chrome": "settings" },
@@ -869,9 +867,10 @@
       "path": "sdlc/",
       "optIn": true,
       "requires": [
-        "cat-harness.work-plan"
+        "cat-harness.work-plan",
+        "cat-harness.platform-ui"
       ],
-      "description": "The software-delivery sub-graph — a NAMED SUB-GRAPH of the harness on the pattern of `openapi/`, and OPT-IN: off in every layer, this one included, unless that layer lists `cat-harness.sdlc` in its own `enableSubgraphs` (owner, 2026-11-03, rulings Q12 and Q18: named folders, a clean break, no redirects; cat-harness#991 step 23.2). It holds the development processes (branch, review, merge, gates, QA, publication, release) and the skills that teach them (`sdlc-core`, `spec-kit`; `crdm`, the requirements methodology, moved to the always-on `skills/process/crdm/` on owner card Q-CORE-SKILLS A, 2026-11-12); the graphs inside it — `sdlc-skills`, `sdlc-processes` and `sdlc-tools` — are declared FROM WITHIN, in `sdlc/graph.json` (#980). Its processes and skills use the work plan, so it `requires` `cat-harness.work-plan`: a layer enabling it gets the work plan too (owner, 2026-11-13: a requirement is implied). Off, the material is left out of what an agent is given (skills, Tools, a mount's default list), so a content layer's knowledge graph does not teach the agent the harness's own delivery process (proposal §4.13).",
+      "description": "The software-delivery sub-graph — a NAMED SUB-GRAPH of the harness on the pattern of `openapi/`, and OPT-IN: off in every layer, this one included, unless that layer lists `cat-harness.sdlc` in its own `enableSubgraphs` (owner, 2026-11-03, rulings Q12 and Q18: named folders, a clean break, no redirects; cat-harness#991 step 23.2). It holds the development processes (branch, review, merge, gates, QA, publication, release) and the skills that teach them (`sdlc-core`, `spec-kit`; `crdm`, the requirements methodology, moved to the always-on `skills/process/crdm/` on owner card Q-CORE-SKILLS A, 2026-11-12); the graphs inside it — `sdlc-skills`, `sdlc-processes` and `sdlc-tools` — are declared FROM WITHIN, in `sdlc/graph.json` (#980). Its processes and skills use the work plan, so it `requires` `cat-harness.work-plan`: a layer enabling it gets the work plan too (owner, 2026-11-13: a requirement is implied). Its `cache.bpmn` runs `incremental-render`, which `platform-ui` holds, so it `requires` `cat-harness.platform-ui` as well (owner card, 2026-11-13: move diagrams into groups that require what they name). Off, the material is left out of what an agent is given (skills, Tools, a mount's default list), so a content layer's knowledge graph does not teach the agent the harness's own delivery process (proposal §4.13).",
       "graphTypologies": [
         "cat-harness"
       ]
@@ -1122,6 +1121,9 @@
     {"path": "docs/en/cat-harness/cat-harness-declaration/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "a page per instance declaration in the checkout", "index": true},
     {"path": "docs/en/cat-harness/document-kind/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "the document-kind kind's pages: every node is a higher layer's document kind (smart-base/document-kinds/), so a smart-base change moved the committed pages and turned node-kind:pages:check red downstream (cat-harness#331)", "index": true},
     {"path": "docs/en/cat-harness/document-kind-coverage/", "writer": ["node-kind:pages"], "because": "checkout", "reads": ["document-kinds"], "reason": "the document-kind-coverage kind's pages: every node is a higher layer's coverage record (smart-base/document-kinds/*.coverage.*.json), stale for the same reason (cat-harness#331)", "index": true},
+    {"path": "docs/en/cat-harness/work-plan/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "the work-plan kind's pages: a kind declared without a version, which got pages from 2026-11-13 (every declared kind does; the schemas page links it). Its nodes are beans, kept on the state branch, as the bean kind's are", "index": true},
+    {"path": "docs/en/cat-harness/qa-script/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "the qa-script kind's pages: a kind declared without a version, which got pages from 2026-11-13 (every declared kind does; the schemas page links it). Its nodes are QA sidecars under test/results/, a working copy published to qa-reports, never committed", "index": true},
+    {"path": "docs/en/cat-harness-tools/qa-attestations/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "the qa-attestations kind's pages, one per attestation file (owner, 2026-11-13, node-kind audit: every listed node kind gets per-node pages). The kind is cat-harness-tools' (its validators/qa-attestations-kind.json); its nodes are this layer's test/attestations/, which every QA run and reviewer judgement changes, so the pages are built at publish rather than committed", "index": true},
     {"path": "docs/en/folio-assistant-core/changeset/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "the pages of a node kind folio-assistant-core declares, a layer above this one, the same case as document-kind/ (cat-harness#362)", "index": true},
     {"path": "docs/en/folio-assistant-core/public-comment/", "writer": ["node-kind:pages"], "because": "checkout", "reason": "the pages of a node kind folio-assistant-core declares, a layer above this one (cat-harness#362)", "index": true},
     {"path": "docs/en/folio-assistant-core/bibliography/", "writer": ["bibliography:page"], "because": "checkout", "reason": "the bibliography folio-assistant-core renders over every instance in the checkout: one page per layer's references, catalogue and library directories, so its bytes are a function of the consuming index's lock. Never committed, but no entry named it, so `check:bibliography` judged a fresh mount (no pages yet) as 582 stale files (dth-hrh#105, run 42366701605)"},
@@ -1194,6 +1196,7 @@
     {"path": "docs/assets/slices/", "writer": ["slice:sqlite"], "because": "state", "from": ["beans", "todos"], "reason": "the kg slice is framed over the checkout, and the beans and todos slices over branch-kept graphs", "index": true},
     {"path": "docs/assets/img/workflows/", "writer": ["render:bpmn"], "because": "checkout", "reason": "the site's drawing of every instance's diagrams, each step and [+] linked to this site's pages, so it changes with the index's pins; each layer commits its own plain drawing beside its .bpmn instead (bean folio-assistant-akiq)"},
     {"path": "docs/en/cat-harness/processes/", "writer": ["processes:viz"], "because": "checkout", "reason": "a page per diagram of every instance, 32 of 100 of them other instances' (measured: a foreign task name rewrote public-comment.md); listed after the render:bpmn drawings, because its Findings section reports which diagrams have one. It also reads the bean stores' workflow instances (beans/workflows/, kept on the beans branch and mounted by state:mount before this runs) to link each diagram's running instances (bean v49e, cat-harness-tools#684), so a state:push moves it as well as a re-pin"},
+    {"path": "docs/en/cat-harness/fsh-guts/", "writer": ["fsh-guts:viz"], "because": "state", "from": ["fsh-guts"], "reason": "the fsh-guts viewer page, drawn from the cat/cat-harness/fsh-guts state branch, so no commit of this layer can hold it current; committing it made every re-render (a test, qa:refresh) rewrite it (bean cat-tools-sm8r, item 4, step 6)"},
     {"path": "docs/assets/processes/index.json", "writer": ["processes:viz"], "because": "checkout", "reason": "the tile count of each page this writer draws that a landing tile opens, keyed by that tile's directory id (folio-assistant#931, owner's ruling 2026-10-29). Build-time data read by docs:harness, never committed. docs:harness in derive:publish runs before this writer, so the tile reads it from the publish workflow's own later docs:harness step"},
     {"path": "schemas/kinds/", "writer": ["kind:json-schemas"], "because": "checkout", "reason": "one JSON Schema per harness kind, generated from cat-harness-tools' Zod, a layer above this one: committed here, each layer's CI checked it against the other's main, so a schema change could go green in neither (owner card via the merge steward, 2026-11-05: build it at publish)"}
   ],

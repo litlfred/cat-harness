@@ -195,13 +195,14 @@ than a question:
    latest `merge manager: <session id>` announcement, and that session
    answered within the stall window. Send it the PR URL and full head SHA, your session URL, 1-3
    sentences on what changed, the rendered preview URL for that head (or
-   `no preview: <reason>`), what to look for in the preview, and
-   `full tier green as judged`. It posts them in its chat and asks the owner
-   by card. An approval the owner gives in your own session does not
+   `no preview: <reason>`), what to look for in the preview, and the CI
+   verdict on that head. A PR green except for a re-pin is sent as
+   `repin+merge:`: do not re-pin it yourself (owner ruling, 2026-11-13). It
+   posts them in its chat and asks the owner by card. An approval the owner gives in your own session does not
    authorise a merge. With no live merge manager, follow
    `merge-manager-watcher` (opt-in `cat-harness.sdlc`) §"The sibling's side:
-   find the merge manager first": measure whether one is needed, then
-   either manage your own PRs or elect one with your siblings. If your
+   find the merge manager first": elect one with your siblings, and never
+   merge yourself unless you are the one elected. If your
    request is not acknowledged within the stall window, the merge manager
    has stalled: re-elect without it. The format is in §"The merge request:
    six lines" there.
@@ -286,9 +287,9 @@ stack"). The process is the first row of
   §"Re-pinning").
 - **Say so:** write `stacked on <repo>#<n>` in the PR body, and list the
   order in the merge request.
-- **When the base lands:** retarget the PR onto main, merge main in (across
-  layers: re-pin to the dependency's merge commit on main), then mark it
-  ready by the queue rule. Never merge the stacked PR into its base branch,
+- **When the base lands:** retarget the PR onto main and merge main in, then
+  mark it ready by the queue rule. Across layers, send `repin+merge:`: the
+  merge manager re-pins to the dependency's merge commit on main. Never merge the stacked PR into its base branch,
   and never mark it ready while it pins an unmerged commit.
 
 ### Two green PRs can merge into a red main, and the answer is to fix forward
