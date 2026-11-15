@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: multi-locale-translation\n"
-"POT-Creation-Date: 2026-11-10T17:57:41.569Z\n"
+"POT-Creation-Date: 2026-11-15T18:04:37.740Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -76,7 +76,7 @@ msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:97
 #. Diagram element documentation
-msgid "From the merged templates, with the locale term base: `translations/<locale>/**.po`, a translation-node manifest beside each (`official: false`, `generatedBy: \"agent\"`; no `status.json`), and the FHIR terms as CodeSystem supplements, all in one file for the locale rather than edits inside the resources."
+msgid "From the merged templates, with the locale term base: `translations/<locale>/**.po`, a translation-node manifest beside each (`official: false`, `generatedBy: \"agent\"`, or `\"machine\"` where `translation:candidates` filled an empty entry with its first candidate, which stays fuzzy; no `status.json`), and the FHIR terms as CodeSystem supplements, all in one file for the locale rather than edits inside the resources."
 msgstr ""
 
 #: library/processes/multi-locale-translation.bpmn:134

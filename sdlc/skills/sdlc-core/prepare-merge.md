@@ -454,9 +454,9 @@ review process needs to be documented as part of making it ready".
 text or what a reader of the folio sees as its substance: block wording,
 tables, figures and the models they are drawn from (ArchiMate, BPMN, DMN),
 glossary terms and definitions, references, a change set (`CS-`), a public
-comment response, or a summary re-derivation (who-iris). It is not content
-when it changes only harness or tool code, workflows, pins
-(`index.lock.json`), beans, tests or docs about the platform. A PR that
+comment response, or a re-derivation of a content layer's generated
+summaries. It is not content when it changes only harness or tool code, workflows, pins
+(`index.lock.json`), work items, tests or docs about the platform. A PR that
 regenerates a content table or figure from its source is content too: what
 the reader sees changes. When in doubt, label it `content`; the owner can
 take the label off.
@@ -477,7 +477,7 @@ take the label off.
      corpus-gate waiver card;
    - the committee decision or public-comment review-log entry (a link);
    - the editing-hci-validation instance of the changed blocks (its path or
-     bean), the record `check:corpus-gate` reads;
+     work item), the record `check:corpus-gate` reads;
    - the review page of the preview with its verdicts (a link), and the
      review coverage numbers of §"Recipe" step 5.
    Say what is still open, if anything. A placeholder ("TODO", "pending")
