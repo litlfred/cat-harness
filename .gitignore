@@ -89,6 +89,8 @@ node_modules/
 /docs/en/folio-assistant-core/changeset/
 /docs/en/folio-assistant-core/public-comment/
 /docs/en/folio-assistant-core/bibliography/
+/docs/en/fhir-harness/ig-ast/
+/docs/en/smart-base/l1-extraction/
 /docs/assets/glossary/
 /docs/smart-base/
 /ns/context/v1.jsonld
