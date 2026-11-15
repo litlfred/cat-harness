@@ -305,6 +305,13 @@ So, in the same PR that adds the gate:
 Without all three, the gate waits. It never lands for the next re-pin to
 discover.
 
+The converse holds too: **a gate judges a repository against its own
+dependencies, never against a dependent's pins of it.** A gate that mounts a
+downstream index and so tests an older copy of the repository under review
+is a defect in the gate, and its red never holds the lower PR
+([`merge-queue`](merge-queue.md) §"A lower repository never waits on a
+higher one").
+
 ## A clean merge can produce a wrong artefact (STRICT)
 
 **`bun run cat regen` after every base merge.** Not only after a conflicted one —
@@ -493,6 +500,9 @@ in the merge manager's status table, even with `ready-to-merge` on it.
 Content PRs go to the owner one by one, by card.
 
 ## Shipping is not merging — hand over on the PR itself
+
+A PR is handed over when it is **ready to merge** as defined in
+[`merge-queue`](merge-queue.md) §"What 'ready to merge' means".
 
 What happens after the handover is [`merge-to-main`](merge-to-main.md), called
 by `merge-train.bpmn` for a queued PR and by `crdm-close.bpmn` for a CRDM

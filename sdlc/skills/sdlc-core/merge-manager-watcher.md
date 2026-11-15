@@ -510,7 +510,8 @@ depended on; "dependent" means it consumes a lower repository.
     stands for the PRs it named.
 15. **Ignored repositories.** A repository the owner says to ignore is left
     out of the work and out of every report until the owner says otherwise.
-16. **A lower repository never waits on a higher one** (owner, 2026-11-15:
+16. **A lower repository never waits on a higher one** ([`merge-queue`](merge-queue.md)
+    §"A lower repository never waits on a higher one" has the CI side) (owner, 2026-11-15:
     "why are the 2 not merged? they are lowest"). A PR in a lower repository
     is never blocked on a dependent's lock or pins. When its only red is a
     gate that also fails on its own main because CI mounted a dependent's
@@ -518,7 +519,9 @@ depended on; "dependent" means it consumes a lower repository.
     version pinned in a downstream index), that red is not the PR's, and the
     PR merges. The lasting fix is for each repository's CI to test against
     its own dependencies, never a dependent's pins.
-17. **Ready and green merges at once, lowest first.** A ready PR that is
+17. **Ready and green merges at once, lowest first** ("ready to merge" is
+    defined in [`merge-queue`](merge-queue.md) §"What 'ready to merge'
+    means"). A ready PR that is
     green on the fast checks, or red only on reds that also fail on main and
     that it does not cause, merges in the same sweep, in dependency order.
     It does not wait for the next batch.

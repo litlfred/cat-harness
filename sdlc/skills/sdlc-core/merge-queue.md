@@ -30,6 +30,76 @@ placement, a hold, an ejection — with who decided it, when, and the evidence
 URL it acted on. `FORBIDDEN_FACT_KEYS` in the schema refuses an entry that
 carries a fact.
 
+## What "ready to merge" means (STRICT)
+
+Owner, 2026-11-15: "clarify what ready to merge means (e.g. Ready, green
+PRs, CI passes etc. need generic ready and cat-harness specific
+processes)". Two layers: a generic definition for any repository, and what
+a cat-harness layer adds on top of it.
+
+### Generic: any repository
+
+A PR is **ready to merge** when all of these hold:
+
+1. **Out of draft**: its author marked it ready for review.
+2. **No conflicts** with its base branch.
+3. **CI passes**: every required check on its head has finished and is
+   green, judged against the repository's own dependencies. A red that also
+   fails on the base branch's own main, and that the PR does not cause, does
+   not block it; the PR says so, and that red has someone fixing it.
+4. **Its description is complete**: what it changes and why, how it was
+   verified, and no unticked checklist item.
+5. **Every approval it needs is given**: any review the repository requires,
+   and any owner decision the change depends on.
+
+**A ready PR merges right away**, in the same pass, lowest dependency first.
+It does not wait for a batch, for a later PR, or for anything in a
+repository that depends on it.
+
+### cat-harness layers: in addition
+
+Every repository built on cat-harness (the harness, its tools, the content
+layers and the index) adds these to the generic list:
+
+6. **The content rule.** A PR labelled `content` is ready only when the
+   owner has asked to review it and its `## Content review` section names
+   the review record ([`prepare-merge`](prepare-merge.md) §"Content PRs").
+   It merges on the owner's approval, never from the queue. Every other PR
+   is non-content and goes through the queue.
+7. **The hand-over.** Its own session marked it ready and labelled it
+   `ready-to-merge` (or `needs-repin` when only a re-pin is missing), or
+   sent the merge manager its request
+   ([`merge-manager-watcher`](merge-manager-watcher.md) §"The merge request:
+   six lines"). Only the merge manager merges.
+8. **`merge:guard` passes**: base, ready-for-review, ready marker, labels,
+   CI, checklist, open question, mergeable, and content review. The
+   `merge-guard` commit status is `success`. Where the guard and this list
+   disagree, fix the guard.
+9. **Linked to its issue**, with a comment on that issue for each push.
+10. **Pins.** A PR that changes `index.lock.json` (a re-pin or an
+    integration PR) moves each pinned layer to that layer's current main,
+    with the pins agreeing with each other, and needs the full tier green on
+    its head, not only the fast tier. Any other PR is judged against its
+    own layer's pins, never a dependent's (§"A lower repository never waits
+    on a higher one").
+
+## A lower repository never waits on a higher one (STRICT)
+
+Owner, 2026-11-15: "A lower layer never waits on a higher one". A PR in a
+repository is judged only against the repositories it depends on:
+
+- **Merging:** a lower repository's PR is never held for a dependent's lock,
+  pins, train or red main. A dependent catches up through its own re-pin.
+- **CI design:** each repository's checks run against its own dependencies at
+  the versions it pins, never against a dependent's pins of it. A gate that
+  mounts a dependent's index and therefore tests an older copy of the
+  repository under review is a defect in that gate: file it, and do not let
+  its red block the PR (generic rule 3 above).
+- **Fixes flow up:** when a lower change breaks a dependent, the fix lands in
+  the dependent (or in the lower repository, if it is the lower one's bug)
+  after the lower PR merges; the lower PR is not reverted for it unless its
+  own main is red.
+
 ## Handing a PR to the queue — the sibling session's side (STRICT)
 
 `merge-train.bpmn` has two lanes that matter here:
