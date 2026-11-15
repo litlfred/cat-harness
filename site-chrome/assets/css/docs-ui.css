@@ -9623,3 +9623,11 @@ a.fa-block-kind:hover, a.fa-block-kind:focus-visible { text-decoration: underlin
 .fa-ext-glossaries-note {
   opacity: 0.75;
 }
+
+/* THE FOLIO TAB GIVES WAY TO THE ROW'S FOLIO ICON — owner, 2026-11-13:
+ * "remove the folio purple tab at top instead add an icon to the controls for
+ * the folio". Only where the row carries that icon (`folioIcon` in
+ * `docs-ui.js`), which drives this same handle: a page with no row keeps the
+ * tab, so the glass is never out of reach. The handle stays in the page for
+ * the icon to click. */
+html:has(.fa-nav-icons .fa-nav-folio) body > .fa-glass-handle { display: none !important; }
