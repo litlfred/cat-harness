@@ -1,6 +1,10 @@
 ---
 input: schemas/skills/bpmn-authoring/input.schema.json
 output: schemas/skills/bpmn-authoring/output.schema.json
+conformsTo:
+  - omg-bpmn-2.0
+  - omg-dd-1.0
+  - bpmn-io-di
 ---
 
 # bpmn-authoring
