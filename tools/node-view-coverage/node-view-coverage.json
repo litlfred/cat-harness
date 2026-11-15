@@ -48,7 +48,7 @@
         {
           "name": "against",
           "schema": {
-            "$type": "Text"
+            "$type": "Branch"
           },
           "required": false,
           "arg": {
