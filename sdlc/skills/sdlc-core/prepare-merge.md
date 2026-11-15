@@ -168,7 +168,9 @@ artefact and runs in `bun test`. The mechanism is in
    resolved comment is not a reviewer's verdict on the block.
 
    This REPORTS; it does not merge or refuse. The gate belongs to the review
-   process, and the committee decides the outcome. Say so when coverage could
+   process, and the committee decides the outcome. A branch like this is a
+   content PR: label it `content` and write its `## Content review` section
+   before it is ready (§"Content PRs"). Say so when coverage could
    not be measured, because a branch passed with unmeasured coverage reads as
    "reviewed".
 6. **Push** the feature branch (retry/backoff as in step 2):
@@ -435,6 +437,53 @@ before pushing, so CI only verifies the entry instead of rebuilding it. Today
 that is `cat-mount` when `index.lock.json` changes. Verdicts are never
 published this way. The rule, the trust classes and the budget are in
 [`cache-first-ci`](cache-first-ci.md).
+
+## Content PRs: label `content`, and document the review before ready (STRICT)
+
+Owner, 2026-11-15: "content PRs get a label and that indicates a content
+review process needs to be documented as part of making it ready".
+
+**What is content.** A PR is a content PR when it changes folio content
+text or what a reader of the folio sees as its substance: block wording,
+tables, figures and the models they are drawn from (ArchiMate, BPMN, DMN),
+glossary terms and definitions, references, a change set (`CS-`), a public
+comment response, or a summary re-derivation (who-iris). It is not content
+when it changes only harness or tool code, workflows, pins
+(`index.lock.json`), beans, tests or docs about the platform. A PR that
+regenerates a content table or figure from its source is content too: what
+the reader sees changes. When in doubt, label it `content`; the owner can
+take the label off.
+
+**What the agent does.**
+
+1. **Label it `content` when you open it** (or as soon as you see it is
+   content). The label exists in every content repository; create it with
+   colour `0e8a16` if a new repository lacks it.
+2. **Open it as a draft, and keep it a draft** until the review is
+   documented. Never merge it, and never ask the merge manager to: content is
+   the owner's or the committee's decision
+   ([`merge-manager-watcher`](merge-manager-watcher.md) §"Safety rules").
+3. **Before marking it ready, add a `## Content review` section** to the PR
+   body that says which review process it went through and points to its
+   record. One or more of:
+   - the owner's decision card id (`Q-…`) approving the wording, or a
+     corpus-gate waiver card;
+   - the committee decision or public-comment review-log entry (a link);
+   - the editing-hci-validation instance of the changed blocks (its path or
+     bean), the record `check:corpus-gate` reads;
+   - the review page of the preview with its verdicts (a link), and the
+     review coverage numbers of §"Recipe" step 5.
+   Say what is still open, if anything. A placeholder ("TODO", "pending")
+   is not a record. Never invent a review step that did not happen: a
+   recorded waiver is better than a made-up history.
+4. **Then mark it ready.** `merge:guard` check 9 (`content-review`) reads
+   that section: a content draft without it is `pending`, and a content PR
+   marked ready without it is a `failure`.
+
+**What the merge manager does.** `merge:watch`, both the report and
+`--queue`, leaves out every PR labelled `content`, so content never appears
+in the merge manager's status table, even with `ready-to-merge` on it.
+Content PRs go to the owner one by one, by card.
 
 ## Shipping is not merging — hand over on the PR itself
 

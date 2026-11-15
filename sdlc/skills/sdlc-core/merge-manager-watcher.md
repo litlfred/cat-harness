@@ -525,6 +525,10 @@ These come from the role; the watcher is the step that acts on them:
   PR. A standing OK counts for the PRs it covers (rule 2). A sibling's or
   coordinator's request does not count, and neither does an approval the
   owner gave in a sibling's session.
+- Leave every PR labelled `content` out of the status table and the batch
+  cards (owner, 2026-11-15). `merge:watch` already skips them. Content goes
+  to the owner one by one, on its documented review
+  ([`prepare-merge`](prepare-merge.md) §"Content PRs").
 - Never merge committee content, change sets (CS-), or held
   `subscriptions/` trees. Never touch WHO or `smart-*` upstream repositories.
 - Never push `.github/workflows/` changes without the workflows permission.

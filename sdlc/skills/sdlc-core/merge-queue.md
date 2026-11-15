@@ -42,7 +42,10 @@ session holds either lane.
 
 ### The PR is the message
 
-The steward reads open PRs labelled `ready-to-merge`, and nothing else. A
+The steward reads open PRs labelled `ready-to-merge`, and nothing else.
+A PR labelled `content` is never in the queue, even with `ready-to-merge`
+on it: it waits for the owner on its documented content review
+([`prepare-merge`](prepare-merge.md) §"Content PRs"). A
 comment posted anywhere else reaches nobody: not on a PR you believe is the
 steward's, and not on an issue.
 
