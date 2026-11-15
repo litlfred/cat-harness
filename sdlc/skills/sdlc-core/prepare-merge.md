@@ -480,6 +480,13 @@ take the label off.
    that section: a content draft without it is `pending`, and a content PR
    marked ready without it is a `failure`.
 
+**Keep functional changes out of it.** A code, configuration, pin, schema,
+CI or tooling change found inside a content PR is split into its own
+non-content PR, and removed from the content PR with an ordinary revert
+commit. Bring a content PR up to current main only after every repository it
+depends on is stable ([`merge-manager-watcher`](merge-manager-watcher.md)
+§"Merging across dependent repositories", rules 4 and 5).
+
 **What the merge manager does.** `merge:watch`, both the report and
 `--queue`, leaves out every PR labelled `content`, so content never appears
 in the merge manager's status table, even with `ready-to-merge` on it.

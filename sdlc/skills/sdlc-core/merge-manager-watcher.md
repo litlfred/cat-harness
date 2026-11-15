@@ -406,6 +406,56 @@ ledger entry.
 | main red, in any harness repository | §"Red mains and failing runs": sort the cause, dispatch a fixer. The fix goes to main as its own PR first; when a dispatched `post-merge-regen` verify run says main is stale, a regen dispatched for the next PR commits the fix and that PR lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green  If it is the index repository's main, disable the re-pin train until it is green (rule 7 of §"Only the merge manager merges and re-pins") |
 | Nothing to do | End the turn with no message |
 
+## Merging across dependent repositories (STRICT)
+
+Owner rulings, 2026-11-15 ("prioritize in order of layer dependency";
+"update merge manager skills with these (say more generally in terms of
+dependencies in software PRs)"). They hold for any set of repositories where
+one consumes another, by package, by pin or by submodule. "Lower" means
+depended on; "dependent" means it consumes a lower repository.
+
+1. **Dependency order.** Merge PRs and fix red mains in the lowest repository
+   first. Move up to a dependent only when every repository below it has a
+   green main and none of its ready PRs is left unmerged. Within one
+   repository, finish its ready PRs and fix its red main before leaving it.
+   One exception: a pin update (re-pin) that carries a lower repository's fix
+   may land as soon as that fix is on the lower repository's main.
+2. **CI queue in dependency order.** When runners are scarce, cancel runs that
+   are *queued* (never running) for dependent repositories, and re-queue
+   them lowest dependency first, feeding each level as runners free up.
+   Never cancel an integration run on main or a re-pin run that has started.
+3. **Batching.** Combine a repository's ready non-content PRs into one CI run
+   (a batch or train), merge the batch on the fast checks, and run the full
+   checks on main after it lands. Fix any red on main at once, as a P0. When
+   a batch goes red, split it to find the member at fault, and land the rest.
+4. **Stable point.** The work is stable when all of these hold, each one
+   checkable: every repository's main is green on its latest run of each push
+   workflow; every integration and re-pin has landed, so each dependent pins
+   the current main of everything below it and is green on that pin; no
+   ready non-content PR is left unmerged; and every published site is at or
+   after its main's last publish-relevant commit. Report progress per
+   repository in dependency order, with counts of open, CI running, ready,
+   red and conflicting PRs, and main's state. Leave content PRs out of the
+   report (they are listed, not counted).
+5. **Content PRs** ([`prepare-merge`](prepare-merge.md) §"Content PRs"):
+   labelled `content`, never in the queue or the report. They stay drafts
+   until the owner asks to review them. A functional change inside one
+   (code, configuration, pins, schema, CI, tooling) is split out into its
+   own non-content PR and goes through the normal batch. A content PR is
+   brought up to its base's current main only once every repository it
+   depends on is stable (rule 4), so it is merged once, not chased.
+6. **Reviving stale drafts.** A draft picked up again is brought in line
+   with current decisions and infrastructure: current main merged in,
+   current pins, current rules, current shared tools in place of older local
+   copies, and anything superseded since it was written dropped. Where it
+   clashes with a later decision, flag it to the owner (a card) instead of
+   pushing the old approach.
+7. **Never commit to a shared state branch from a sparse or partial
+   checkout.** A commit records the whole tree, so files missing from a
+   sparse checkout are recorded as deleted. On 2026-11-15 one such commit
+   wiped the beans branch. Use a full checkout (a worktree of the branch, or
+   a full clone at depth 1) for any write to a state branch.
+
 ## Merge-sweep rules (STRICT)
 
 1. **"All green" is exact.** It has three parts.
