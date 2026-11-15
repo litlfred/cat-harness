@@ -840,6 +840,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:graphTypology/fhir-core-definitions",
+      "@type": [
+        "bootstrap:GraphTypology",
+        "skos:Concept"
+      ],
+      "label": "fhir-core-definitions",
+      "comment": "The FHIR core specification's StructureDefinitions for each stable release (R4 4.0.1, R4B 4.3.0, R5 5.0.0): resources, complex and primitive datatypes and the root types, one graph per release keyed by canonical URL (http://hl7.org/fhir/StructureDefinition/<id>). A pins node says which hl7.fhir.<release>.core package each is read from, by version, sha1 and sha512; a manifest per release lists every definition with its kind, base and the sha256 of its bytes; the bodies are the package's own files.",
+      "prefLabel": "fhir-core-definitions",
+      "definition": "The FHIR core specification's StructureDefinitions for each stable release (R4 4.0.1, R4B 4.3.0, R5 5.0.0): resources, complex and primitive datatypes and the root types, one graph per release keyed by canonical URL (http://hl7.org/fhir/StructureDefinition/<id>). A pins node says which hl7.fhir.<release>.core package each is read from, by version, sha1 and sha512; a manifest per release lists every definition with its kind, base and the sha256 of its bytes; the bodies are the package's own files.",
+      "notation": "cat-harness:graphTypology/fhir-core-definitions",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:graphTypology/folio",
       "@type": [
         "bootstrap:GraphTypology",
