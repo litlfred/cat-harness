@@ -410,7 +410,9 @@ ledger entry.
 
 Owner rulings, 2026-11-15 ("prioritize in order of layer dependency";
 "update merge manager skills with these (say more generally in terms of
-dependencies in software PRs)"). They hold for any set of repositories where
+dependencies in software PRs)"; "and with all the improvements we made in
+this thread to process"). The rules are written for any project; names in
+them are examples only. They hold for any set of repositories where
 one consumes another, by package, by pin or by submodule. "Lower" means
 depended on; "dependent" means it consumes a lower repository.
 
@@ -428,6 +430,24 @@ depended on; "dependent" means it consumes a lower repository.
    (a batch or train), merge the batch on the fast checks, and run the full
    checks on main after it lands. Fix any red on main at once, as a P0. When
    a batch goes red, split it to find the member at fault, and land the rest.
+   **CI backlog playbook** (owner, 2026-11-15: "if we get a backlog of CI,
+   then stack PRs and merge together/fix fallout"). Rule 3 is the normal
+   mode; this is what it becomes when CI cannot keep up.
+   - *Switch in* when, in one repository, the oldest queued run is 60+
+     minutes old and nothing has landed in that time (the "Saturated" route),
+     or three or more ready PRs are each waiting on their own CI run.
+   - *Do:* stop running CI per PR. Stack the waiting ready non-content PRs
+     of that repository onto one branch, one merge each, run CI once on the
+     stack, and merge them together when it passes the fast checks. Then
+     watch main's full run and fix any red on main at once (rule 3), splitting
+     out the member at fault if it cannot be fixed quickly. Cancel the now
+     redundant queued per-PR runs (queued only, rule 2). Re-pins and
+     integration PRs are not stacked with ordinary PRs: they still need full
+     green (rule 9), and content PRs are never stacked (rule 5).
+   - *Switch back* when that repository's oldest queued run is under 15
+     minutes old and its main is green: return to one batch per sweep.
+   - Say in the status report (rule 10) which repositories are in backlog
+     mode, and since when.
 4. **Stable point.** The work is stable when all of these hold, each one
    checkable: every repository's main is green on its latest run of each push
    workflow; every integration and re-pin has landed, so each dependent pins
@@ -454,7 +474,42 @@ depended on; "dependent" means it consumes a lower repository.
    checkout.** A commit records the whole tree, so files missing from a
    sparse checkout are recorded as deleted. On 2026-11-15 one such commit
    wiped the beans branch. Use a full checkout (a worktree of the branch, or
-   a full clone at depth 1) for any write to a state branch.
+   a full clone at depth 1) for any write to a state branch. A state branch
+   is checked out the same way every time, so a write never depends on how
+   the last session happened to clone it.
+8. **One merge manager.** Exactly one session merges and re-pins. Every
+   other session hands its PR to it (§"Only the merge manager merges and
+   re-pins") and never merges, even its own PR.
+9. **Re-pins and integration PRs merge only on full green**: the full tier
+   on the head, never a fast-tier pass. Small, verified fixes in one
+   repository may stack (land one after another without waiting for main's
+   full run between them); the merge manager then fixes any fallout on main
+   at once (rule 3).
+10. **Status reports at a fixed interval.** One report per interval, per
+    repository in dependency order, with total, left and in-progress counts,
+    what is running, blockers, and progress towards the stable point
+    (rule 4). Link the thread or session that owns each item. While the
+    owner is away, hold the reports and send one catch-up when they return.
+11. **A draft register.** Keep one file (for example `drafts.md`) listing
+    every open draft PR with its owner and either "being worked on" or "not
+    worked on: <why>". Act on every stale draft: revive it (rule 6), close
+    it as superseded, or ask the owner.
+12. **No idle agents.** An agent with nothing in flight either resumes its
+    own to-dos or stands down and says so. Nobody sits idle holding open
+    questions; a question goes to the owner (rule 13) and the agent carries
+    on with what does not depend on it.
+13. **Owner questions on tappable cards.** Write the question out in full
+    first, with every option, its trade-off and a recommendation, then post
+    one card with the same options. One card per question, and one session
+    asks it: before posting, check that no other session has the same
+    question open.
+14. **Approvals are recorded durably.** An owner approval is written where
+    the next agent will find it: the PR's own record (for content, its
+    `## Content review` section) or the standing-rules record, citing the
+    card or message. An approval given before a later hold rule still
+    stands for the PRs it named.
+15. **Ignored repositories.** A repository the owner says to ignore is left
+    out of the work and out of every report until the owner says otherwise.
 
 ## Merge-sweep rules (STRICT)
 
