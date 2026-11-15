@@ -91,9 +91,9 @@ _تم توليد هذه الصفحة من [`content/docs/content-types/`](https:
 على قاعدة ثانية تتجاوز مجرد السؤال "هل هذا النوع مسموح به".
 
 مخططات المهارات ذات الصلة:
-[`latex-authoring`]({{ '/reference/skills/latex-authoring.html' | relative_url }})،
-[`lean-formalization`]({{ '/reference/skills/lean-formalization.html' | relative_url }})،
-[`proof-verification`]({{ '/reference/skills/proof-verification.html' | relative_url }}).
+[`latex-authoring`]({{ '/reference/skill-instructions/latex-authoring.html' | relative_url }})،
+[`lean-formalization`]({{ '/reference/skill-instructions/lean-formalization.html' | relative_url }})،
+[`proof-verification`]({{ '/reference/skill-instructions/proof-verification.html' | relative_url }}).
 
 ---
 

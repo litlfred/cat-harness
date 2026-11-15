@@ -90,18 +90,18 @@ flowchart TD
 
 | المهارة | الغرض |
 |-------|---------|
-| [`document-authoring`]({{ site.baseurl }}/reference/skills/document-authoring.html) | إنشاء الكتل ومراجعتها في folio نثري |
-| [`document-structure`]({{ site.baseurl }}/reference/skills/document-structure.html) | الفصول والأقسام — إضافة، وحذف، وإعادة ترتيب |
-| [`normative-statements`]({{ site.baseurl }}/reference/skills/normative-statements.html) | تضمين توصية أو متطلب أو قاعدة |
-| [`document-publishing`]({{ site.baseurl }}/reference/skills/document-publishing.html) | من Markdown إلى HTML / PDF، دون الحاجة إلى TeX |
+| [`document-authoring`]({{ site.baseurl }}/reference/skill-instructions/document-authoring.html) | إنشاء الكتل ومراجعتها في folio نثري |
+| [`document-structure`]({{ site.baseurl }}/reference/skill-instructions/document-structure.html) | الفصول والأقسام — إضافة، وحذف، وإعادة ترتيب |
+| [`normative-statements`]({{ site.baseurl }}/reference/skill-instructions/normative-statements.html) | تضمين توصية أو متطلب أو قاعدة |
+| [`document-publishing`]({{ site.baseurl }}/reference/skill-instructions/document-publishing.html) | من Markdown إلى HTML / PDF، دون الحاجة إلى TeX |
 
 ### الأوراق والكتب العلمية: `authoring-math`
 
 | المهارة | الغرض |
 |-------|---------|
-| [`lean-formalization`]({{ site.baseurl }}/reference/skills/lean-formalization.html) | الصياغة الرياضية الرسمية للعبارات/البراهين في Lean 4 |
-| [`latex-authoring`]({{ site.baseurl }}/reference/skills/latex-authoring.html) | تأليف مستندات LaTeX |
-| [`proof-verification`]({{ site.baseurl }}/reference/skills/proof-verification.html) | التحقق من البراهين، وتدقيق `sorry`/المسلّمات |
+| [`lean-formalization`]({{ site.baseurl }}/reference/skill-instructions/lean-formalization.html) | الصياغة الرياضية الرسمية للعبارات/البراهين في Lean 4 |
+| [`latex-authoring`]({{ site.baseurl }}/reference/skill-instructions/latex-authoring.html) | تأليف مستندات LaTeX |
+| [`proof-verification`]({{ site.baseurl }}/reference/skill-instructions/proof-verification.html) | التحقق من البراهين، وتدقيق `sorry`/المسلّمات |
 | `scientific-visualization` | الأشكال والرسوم البيانية |
 | `hypothesis-generation` | اقتراح تخمينات / توجهات بحثية |
 | `scientific-critical-thinking` | المراجعة النقدية والجدلية للحجج |
@@ -110,14 +110,14 @@ flowchart TD
 
 | المهارة | الغرض |
 |-------|---------|
-| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skills/l2-dak-authoring.html) | مخرجات DAK للمستوى L2 (قاموس البيانات، وما إلى ذلك) |
-| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skills/l3-fhir-authoring.html) | موارد FHIR للمستوى L3 عبر FSH |
+| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skill-instructions/l2-dak-authoring.html) | مخرجات DAK للمستوى L2 (قاموس البيانات، وما إلى ذلك) |
+| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skill-instructions/l3-fhir-authoring.html) | موارد FHIR للمستوى L3 عبر FSH |
 | [`bpmn-authoring`]({{ site.baseurl }}/reference/skills/bpmn-authoring.html) | العمليات التجارية بـ BPMN 2.0 |
 | [`dmn-authoring`]({{ site.baseurl }}/reference/skills/dmn-authoring.html) | جداول قرارات DMN |
-| [`terminology-management`]({{ site.baseurl }}/reference/skills/terminology-management.html) | أنظمة الترميز / مجموعات القيم |
-| [`fhir-validation`]({{ site.baseurl }}/reference/skills/fhir-validation.html) | التحقق مقابل ملفات تعريف FHIR |
-| [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | بناء دليل التطبيق (IG) ونشره |
-| [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | بوابات ضمان الجودة (QA gates) |
+| [`terminology-management`]({{ site.baseurl }}/reference/skill-instructions/terminology-management.html) | أنظمة الترميز / مجموعات القيم |
+| [`fhir-validation`]({{ site.baseurl }}/reference/skill-instructions/fhir-validation.html) | التحقق مقابل ملفات تعريف FHIR |
+| [`ig-publication`]({{ site.baseurl }}/reference/skill-instructions/ig-publication.html) | بناء دليل التطبيق (IG) ونشره |
+| [`quality-control`]({{ site.baseurl }}/reference/skill-instructions/quality-control.html) | بوابات ضمان الجودة (QA gates) |
 
 ### مهارات الوكيل/المنصة
 

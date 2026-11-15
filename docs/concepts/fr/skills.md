@@ -91,18 +91,18 @@ La planification, la rédaction, la publication et le retrait sont opérationnel
 
 | Compétence | Objectif |
 |------------|----------|
-| [`document-authoring`]({{ site.baseurl }}/reference/skills/document-authoring.html) | Créer et réviser des blocs dans un folio de prose |
-| [`document-structure`]({{ site.baseurl }}/reference/skills/document-structure.html) | Chapitres et sections — ajouter, supprimer, réordonner |
-| [`normative-statements`]({{ site.baseurl }}/reference/skills/normative-statements.html) | Porter une recommandation, une exigence ou une règle |
-| [`document-publishing`]({{ site.baseurl }}/reference/skills/document-publishing.html) | Markdown → HTML / PDF, sans TeX |
+| [`document-authoring`]({{ site.baseurl }}/reference/skill-instructions/document-authoring.html) | Créer et réviser des blocs dans un folio de prose |
+| [`document-structure`]({{ site.baseurl }}/reference/skill-instructions/document-structure.html) | Chapitres et sections — ajouter, supprimer, réordonner |
+| [`normative-statements`]({{ site.baseurl }}/reference/skill-instructions/normative-statements.html) | Porter une recommandation, une exigence ou une règle |
+| [`document-publishing`]({{ site.baseurl }}/reference/skill-instructions/document-publishing.html) | Markdown → HTML / PDF, sans TeX |
 
 ### Articles scientifiques et livres : `authoring-math`
 
 | Compétence | Objectif |
 |------------|----------|
-| [`lean-formalization`]({{ site.baseurl }}/reference/skills/lean-formalization.html) | Formaliser des énoncés/preuves en Lean 4 |
-| [`latex-authoring`]({{ site.baseurl }}/reference/skills/latex-authoring.html) | Rédiger des documents LaTeX |
-| [`proof-verification`]({{ site.baseurl }}/reference/skills/proof-verification.html) | Vérifier les preuves, auditer les `sorry`/axiomes |
+| [`lean-formalization`]({{ site.baseurl }}/reference/skill-instructions/lean-formalization.html) | Formaliser des énoncés/preuves en Lean 4 |
+| [`latex-authoring`]({{ site.baseurl }}/reference/skill-instructions/latex-authoring.html) | Rédiger des documents LaTeX |
+| [`proof-verification`]({{ site.baseurl }}/reference/skill-instructions/proof-verification.html) | Vérifier les preuves, auditer les `sorry`/axiomes |
 | `scientific-visualization` | Figures et diagrammes |
 | `hypothesis-generation` | Proposer des conjectures / orientations |
 | `scientific-critical-thinking` | Examen contradictoire des arguments |
@@ -111,14 +111,14 @@ La planification, la rédaction, la publication et le retrait sont opérationnel
 
 | Compétence | Objectif |
 |------------|----------|
-| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skills/l2-dak-authoring.html) | Artefacts DAK L2 (dictionnaire de données, etc.) |
-| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skills/l3-fhir-authoring.html) | Ressources FHIR L3 via FSH |
+| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skill-instructions/l2-dak-authoring.html) | Artefacts DAK L2 (dictionnaire de données, etc.) |
+| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skill-instructions/l3-fhir-authoring.html) | Ressources FHIR L3 via FSH |
 | [`bpmn-authoring`]({{ site.baseurl }}/reference/skills/bpmn-authoring.html) | Processus métier BPMN 2.0 |
 | [`dmn-authoring`]({{ site.baseurl }}/reference/skills/dmn-authoring.html) | Tables de décision DMN |
-| [`terminology-management`]({{ site.baseurl }}/reference/skills/terminology-management.html) | Systèmes de codage / jeux de valeurs |
-| [`fhir-validation`]({{ site.baseurl }}/reference/skills/fhir-validation.html) | Valider par rapport aux profils FHIR |
-| [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | Compiler et publier l'IG |
-| [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | Points de contrôle QA (QA gates) |
+| [`terminology-management`]({{ site.baseurl }}/reference/skill-instructions/terminology-management.html) | Systèmes de codage / jeux de valeurs |
+| [`fhir-validation`]({{ site.baseurl }}/reference/skill-instructions/fhir-validation.html) | Valider par rapport aux profils FHIR |
+| [`ig-publication`]({{ site.baseurl }}/reference/skill-instructions/ig-publication.html) | Compiler et publier l'IG |
+| [`quality-control`]({{ site.baseurl }}/reference/skill-instructions/quality-control.html) | Points de contrôle QA (QA gates) |
 
 ### Compétences d'agent/de plateforme
 

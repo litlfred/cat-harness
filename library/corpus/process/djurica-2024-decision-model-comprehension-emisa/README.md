@@ -16,7 +16,7 @@ Held in the library [`cat-harness/library/corpus/`](../../README.md) as `djurica
 | holds | count |
 |---|---|
 | [sections](sections/) | 10 |
-| [blocks](blocks/) | 5 |
+| [blocks](blocks/) | 6 |
 | images | 0 |
 
 <!-- kg:subgraph:end -->

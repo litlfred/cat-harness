@@ -64,12 +64,12 @@ _تم توليد هذه الصفحة من [`content/docs/agentic-harness/`](http
 | سير العمل | مصدر BPMN | يُدخل إليه عندما |
 |---|---|---|
 | **التأليف (paper)** | [`authoring-a-paper.bpmn`](../../../../folio-assistant-sci/processes/content/authoring-a-paper.bpmn) | يطلب المستخدم تأليف محتوى في folio من نوع paper |
-| **التأليف (document)** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/processes/content/authoring-a-document.bpmn) | يطلب المستخدم تأليف محتوى في folio من نوع document |
-| **دورة حياة المحتوى** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/processes/content/content-lifecycle.bpmn) | ينتقل المحتوى عبر التحقق → التصيير → النشر |
+| **التأليف (document)** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/collab/processes/content/authoring-a-document.bpmn) | يطلب المستخدم تأليف محتوى في folio من نوع document |
+| **دورة حياة المحتوى** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/collab/processes/content/content-lifecycle.bpmn) | ينتقل المحتوى عبر التحقق → التصيير → النشر |
 | **استيعاب المستندات** | [`document-ingestion.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/library/document-ingestion.bpmn) | يُسقط المستخدم ملفًا في `uploads/` |
-| **من المسودة إلى النشر** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/processes/content/draft-to-publication.bpmn) | ينتقل المحتوى من مسودة إلى منشور |
+| **من المسودة إلى النشر** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/collab/processes/content/draft-to-publication.bpmn) | ينتقل المحتوى من مسودة إلى منشور |
 | **متطلبات CRDM** | [`crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn) | يكتشف الوكيل طلب ميزة |
-| **استرجاع الأدلة** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/processes/content/evidence-retrieval.bpmn) | يبحث الوكيل عن أدلة لدعم ادعاء |
+| **استرجاع الأدلة** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/collab/processes/content/evidence-retrieval.bpmn) | يبحث الوكيل عن أدلة لدعم ادعاء |
 
 **انتقالات الحالة:** يمكن **تعليق (suspend)** سير العمل عندما يطلب المستخدم
 تبديل السياق. يسجل الوكيل أين كان (نشاط BPMN الحالي) ويمكنه

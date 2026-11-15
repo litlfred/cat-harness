@@ -91,18 +91,18 @@ Planning, authoring, publication and retirement are operational, so the content 
 
 | Skill | Purpose |
 |-------|---------|
-| [`document-authoring`]({{ site.baseurl }}/reference/skills/document-authoring.html) | Create and revise blocks in a prose folio |
-| [`document-structure`]({{ site.baseurl }}/reference/skills/document-structure.html) | Chapters and sections — add, remove, reorder |
-| [`normative-statements`]({{ site.baseurl }}/reference/skills/normative-statements.html) | Carry a recommendation, requirement or rule |
-| [`document-publishing`]({{ site.baseurl }}/reference/skills/document-publishing.html) | Markdown → HTML / PDF, no TeX |
+| [`document-authoring`]({{ site.baseurl }}/reference/skill-instructions/document-authoring.html) | Create and revise blocks in a prose folio |
+| [`document-structure`]({{ site.baseurl }}/reference/skill-instructions/document-structure.html) | Chapters and sections — add, remove, reorder |
+| [`normative-statements`]({{ site.baseurl }}/reference/skill-instructions/normative-statements.html) | Carry a recommendation, requirement or rule |
+| [`document-publishing`]({{ site.baseurl }}/reference/skill-instructions/document-publishing.html) | Markdown → HTML / PDF, no TeX |
 
 ### Papers & books: `authoring-math`
 
 | Skill | Purpose |
 |-------|---------|
-| [`lean-formalization`]({{ site.baseurl }}/reference/skills/lean-formalization.html) | Formalize statements/proofs in Lean 4 |
-| [`latex-authoring`]({{ site.baseurl }}/reference/skills/latex-authoring.html) | Author LaTeX documents |
-| [`proof-verification`]({{ site.baseurl }}/reference/skills/proof-verification.html) | Verify proofs, audit `sorry`/axioms |
+| [`lean-formalization`]({{ site.baseurl }}/reference/skill-instructions/lean-formalization.html) | Formalize statements/proofs in Lean 4 |
+| [`latex-authoring`]({{ site.baseurl }}/reference/skill-instructions/latex-authoring.html) | Author LaTeX documents |
+| [`proof-verification`]({{ site.baseurl }}/reference/skill-instructions/proof-verification.html) | Verify proofs, audit `sorry`/axioms |
 | `scientific-visualization` | Figures & diagrams |
 | `hypothesis-generation` | Propose conjectures / directions |
 | `scientific-critical-thinking` | Adversarial review of arguments |
@@ -111,14 +111,14 @@ Planning, authoring, publication and retirement are operational, so the content 
 
 | Skill | Purpose |
 |-------|---------|
-| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skills/l2-dak-authoring.html) | L2 DAK artifacts (data dictionary, etc.) |
-| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skills/l3-fhir-authoring.html) | L3 FHIR resources via FSH |
+| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skill-instructions/l2-dak-authoring.html) | L2 DAK artifacts (data dictionary, etc.) |
+| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skill-instructions/l3-fhir-authoring.html) | L3 FHIR resources via FSH |
 | [`bpmn-authoring`]({{ site.baseurl }}/reference/skills/bpmn-authoring.html) | BPMN 2.0 business processes |
 | [`dmn-authoring`]({{ site.baseurl }}/reference/skills/dmn-authoring.html) | DMN decision tables |
-| [`terminology-management`]({{ site.baseurl }}/reference/skills/terminology-management.html) | Code systems / value sets |
-| [`fhir-validation`]({{ site.baseurl }}/reference/skills/fhir-validation.html) | Validate against FHIR profiles |
-| [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | Build & publish the IG |
-| [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | QA gates |
+| [`terminology-management`]({{ site.baseurl }}/reference/skill-instructions/terminology-management.html) | Code systems / value sets |
+| [`fhir-validation`]({{ site.baseurl }}/reference/skill-instructions/fhir-validation.html) | Validate against FHIR profiles |
+| [`ig-publication`]({{ site.baseurl }}/reference/skill-instructions/ig-publication.html) | Build & publish the IG |
+| [`quality-control`]({{ site.baseurl }}/reference/skill-instructions/quality-control.html) | QA gates |
 
 ### Agent/platform skills
 

@@ -91,18 +91,18 @@ La planificación, la autoría, la publicación y la retirada son operativas, as
 
 | Habilidad | Propósito |
 |-----------|-----------|
-| [`document-authoring`]({{ site.baseurl }}/reference/skills/document-authoring.html) | Crear y revisar bloques en un folio en prosa |
-| [`document-structure`]({{ site.baseurl }}/reference/skills/document-structure.html) | Capítulos y secciones — añadir, eliminar, reordenar |
-| [`normative-statements`]({{ site.baseurl }}/reference/skills/normative-statements.html) | Portar una recomendación, requisito o regla |
-| [`document-publishing`]({{ site.baseurl }}/reference/skills/document-publishing.html) | Markdown → HTML / PDF, sin TeX |
+| [`document-authoring`]({{ site.baseurl }}/reference/skill-instructions/document-authoring.html) | Crear y revisar bloques en un folio en prosa |
+| [`document-structure`]({{ site.baseurl }}/reference/skill-instructions/document-structure.html) | Capítulos y secciones — añadir, eliminar, reordenar |
+| [`normative-statements`]({{ site.baseurl }}/reference/skill-instructions/normative-statements.html) | Portar una recomendación, requisito o regla |
+| [`document-publishing`]({{ site.baseurl }}/reference/skill-instructions/document-publishing.html) | Markdown → HTML / PDF, sin TeX |
 
 ### Artículos y libros: `authoring-math`
 
 | Habilidad | Propósito |
 |-----------|-----------|
-| [`lean-formalization`]({{ site.baseurl }}/reference/skills/lean-formalization.html) | Formalizar enunciados/demostraciones en Lean 4 |
-| [`latex-authoring`]({{ site.baseurl }}/reference/skills/latex-authoring.html) | Redactar documentos LaTeX |
-| [`proof-verification`]({{ site.baseurl }}/reference/skills/proof-verification.html) | Verificar demostraciones, auditar `sorry`/axiomas |
+| [`lean-formalization`]({{ site.baseurl }}/reference/skill-instructions/lean-formalization.html) | Formalizar enunciados/demostraciones en Lean 4 |
+| [`latex-authoring`]({{ site.baseurl }}/reference/skill-instructions/latex-authoring.html) | Redactar documentos LaTeX |
+| [`proof-verification`]({{ site.baseurl }}/reference/skill-instructions/proof-verification.html) | Verificar demostraciones, auditar `sorry`/axiomas |
 | `scientific-visualization` | Figuras y diagramas |
 | `hypothesis-generation` | Proponer conjeturas / líneas de investigación |
 | `scientific-critical-thinking` | Revisión crítica adversarial de argumentos |
@@ -111,14 +111,14 @@ La planificación, la autoría, la publicación y la retirada son operativas, as
 
 | Habilidad | Propósito |
 |-----------|-----------|
-| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skills/l2-dak-authoring.html) | Artefactos DAK L2 (diccionario de datos, etc.) |
-| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skills/l3-fhir-authoring.html) | Recursos FHIR L3 mediante FSH |
+| [`l2-dak-authoring`]({{ site.baseurl }}/reference/skill-instructions/l2-dak-authoring.html) | Artefactos DAK L2 (diccionario de datos, etc.) |
+| [`l3-fhir-authoring`]({{ site.baseurl }}/reference/skill-instructions/l3-fhir-authoring.html) | Recursos FHIR L3 mediante FSH |
 | [`bpmn-authoring`]({{ site.baseurl }}/reference/skills/bpmn-authoring.html) | Procesos de negocio BPMN 2.0 |
 | [`dmn-authoring`]({{ site.baseurl }}/reference/skills/dmn-authoring.html) | Tablas de decisiones DMN |
-| [`terminology-management`]({{ site.baseurl }}/reference/skills/terminology-management.html) | Sistemas de códigos / conjuntos de valores |
-| [`fhir-validation`]({{ site.baseurl }}/reference/skills/fhir-validation.html) | Validar contra perfiles FHIR |
-| [`ig-publication`]({{ site.baseurl }}/reference/skills/ig-publication.html) | Compilar y publicar la IG |
-| [`quality-control`]({{ site.baseurl }}/reference/skills/quality-control.html) | Compuertas de control de calidad (*QA gates*) |
+| [`terminology-management`]({{ site.baseurl }}/reference/skill-instructions/terminology-management.html) | Sistemas de códigos / conjuntos de valores |
+| [`fhir-validation`]({{ site.baseurl }}/reference/skill-instructions/fhir-validation.html) | Validar contra perfiles FHIR |
+| [`ig-publication`]({{ site.baseurl }}/reference/skill-instructions/ig-publication.html) | Compilar y publicar la IG |
+| [`quality-control`]({{ site.baseurl }}/reference/skill-instructions/quality-control.html) | Compuertas de control de calidad (*QA gates*) |
 
 ### Habilidades de agente/plataforma
 
