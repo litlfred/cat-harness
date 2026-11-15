@@ -510,6 +510,28 @@ depended on; "dependent" means it consumes a lower repository.
     stands for the PRs it named.
 15. **Ignored repositories.** A repository the owner says to ignore is left
     out of the work and out of every report until the owner says otherwise.
+16. **A lower repository never waits on a higher one** (owner, 2026-11-15:
+    "why are the 2 not merged? they are lowest"). A PR in a lower repository
+    is never blocked on a dependent's lock or pins. When its only red is a
+    gate that also fails on its own main because CI mounted a dependent's
+    older pins of it (for example, a generated-file check run with the tools
+    version pinned in a downstream index), that red is not the PR's, and the
+    PR merges. The lasting fix is for each repository's CI to test against
+    its own dependencies, never a dependent's pins.
+17. **Ready and green merges at once, lowest first.** A ready PR that is
+    green on the fast checks, or red only on reds that also fail on main and
+    that it does not cause, merges in the same sweep, in dependency order.
+    It does not wait for the next batch.
+18. **Every red PR has an active fixer.** A red PR is never left waiting on
+    something else. In the same sweep the merge manager names the thread or
+    session that owns the fix, or dispatches a fix agent, and the draft
+    register (rule 11) and the status report (rule 10) show who is fixing
+    it.
+19. **Stall watchdog** (owner, 2026-11-15: "things were just sitting
+    there"). If the stable-point report (rule 4) has not moved for 10
+    minutes (no merge, no main turning green, no red count falling), the
+    merge manager acts on the lowest stuck repository, or posts one line
+    saying what blocks it and who is fixing it.
 
 ## Merge-sweep rules (STRICT)
 
