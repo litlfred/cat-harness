@@ -15,19 +15,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: docs/concepts/content-types.md:237
-msgid "✎ Edit{: .fa-node-edit title=\"Edit ../fhir-harness/processes/content/l3-fhir-pipeline.bpmn\" } QA… TR… KG…"
+msgid "✎ Edit{: .fa-node-edit title=\"Edit ../fhir-harness/collab/processes/content/l3-fhir-pipeline.bpmn\" } QA… TR… KG…"
 msgstr ""
 
 #: docs/concepts/content-types.md:84
-msgid "✎ Edit{: .fa-node-edit title=\"Edit ../folio-assistant-core/processes/content/authoring-a-document.bpmn\" } KG…"
+msgid "✎ Edit{: .fa-node-edit title=\"Edit ../folio-assistant-core/collab/processes/content/authoring-a-document.bpmn\" } KG…"
 msgstr ""
 
 #: docs/concepts/content-types.md:44
-msgid "✎ Edit{: .fa-node-edit title=\"Edit ../folio-assistant-core/processes/content/content-lifecycle.bpmn\" } QA… TR… KG…"
+msgid "✎ Edit{: .fa-node-edit title=\"Edit ../folio-assistant-core/collab/processes/content/content-lifecycle.bpmn\" } QA… TR… KG…"
 msgstr ""
 
 #: docs/concepts/content-types.md:203
-msgid "✎ Edit{: .fa-node-edit title=\"Edit ../smart-base/processes/content/l2-dak-authoring.bpmn\" } QA… TR… KG…"
+msgid "✎ Edit{: .fa-node-edit title=\"Edit ../smart-base/collab/processes/content/l2-dak-authoring.bpmn\" } QA… TR… KG…"
 msgstr ""
 
 #: docs/concepts/content-types.md:123

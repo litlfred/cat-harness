@@ -64,12 +64,12 @@ _Эта страница сгенерирована из [`content/docs/agentic-
 | Рабочий процесс | Источник BPMN | Условие входа |
 |---|---|---|
 | **Создание контента (paper)** | [`authoring-a-paper.bpmn`](../../../../folio-assistant-sci/processes/content/authoring-a-paper.bpmn) | Пользователь запрашивает создание контента в фолио статьи (paper) |
-| **Создание контента (document)** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/processes/content/authoring-a-document.bpmn) | Пользователь запрашивает создание контента в фолио документа (document) |
-| **Жизненный цикл контента** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/processes/content/content-lifecycle.bpmn) | Контент проходит этапы validate → render → publish |
+| **Создание контента (document)** | [`authoring-a-document.bpmn`](../../../../folio-assistant-core/collab/processes/content/authoring-a-document.bpmn) | Пользователь запрашивает создание контента в фолио документа (document) |
+| **Жизненный цикл контента** | [`content-lifecycle.bpmn`](../../../../folio-assistant-core/collab/processes/content/content-lifecycle.bpmn) | Контент проходит этапы validate → render → publish |
 | **Импорт документов** | [`document-ingestion.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/library/document-ingestion.bpmn) | Пользователь помещает файл в `uploads/` |
-| **От черновика к публикации** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/processes/content/draft-to-publication.bpmn) | Контент переходит из состояния черновика в опубликованное |
+| **От черновика к публикации** | [`draft-to-publication.bpmn`](../../../../folio-assistant-core/collab/processes/content/draft-to-publication.bpmn) | Контент переходит из состояния черновика в опубликованное |
 | **Требования CRDM** | [`crdm-requirements.bpmn`](https://github.com/litlfred/cat-harness/blob/main/processes/process/crdm-requirements.bpmn) | Агент обнаруживает запрос новой функциональности (feature request) |
-| **Поиск свидетельств** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/processes/content/evidence-retrieval.bpmn) | Агент ищет свидетельства для подтверждения утверждения |
+| **Поиск свидетельств** | [`evidence-retrieval.bpmn`](../../../../folio-assistant-core/collab/processes/content/evidence-retrieval.bpmn) | Агент ищет свидетельства для подтверждения утверждения |
 
 **Переходы состояний:** рабочий процесс может быть **приостановлен**, когда пользователь просит
 переключить контекст. Агент фиксирует, где он находился (текущее действие BPMN), и
