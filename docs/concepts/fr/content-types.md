@@ -91,9 +91,9 @@ autorise ce que le profil interdit, raison pour laquelle `content_profile_check`
 seconde règle au-delà de « ce genre est-il autorisé ? ».
 
 Schémas de compétences pertinents :
-[`latex-authoring`]({{ '/reference/skills/latex-authoring.html' | relative_url }}),
-[`lean-formalization`]({{ '/reference/skills/lean-formalization.html' | relative_url }}),
-[`proof-verification`]({{ '/reference/skills/proof-verification.html' | relative_url }}).
+[`latex-authoring`]({{ '/reference/skill-instructions/latex-authoring.html' | relative_url }}),
+[`lean-formalization`]({{ '/reference/skill-instructions/lean-formalization.html' | relative_url }}),
+[`proof-verification`]({{ '/reference/skill-instructions/proof-verification.html' | relative_url }}).
 
 ---
 
