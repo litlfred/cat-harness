@@ -367,7 +367,7 @@ _260 skills in 22 directories, generated from each skill's front matter. `bun ru
 |---|---|
 | `create-sticky-note` | Draft a sticky note from the conversation, choose its theme and its place, preview it, and only then attach it to a node. |
 | `deployment-awareness` | The agent must know its UI surface — gh-pages, local server, with/without MCP, or chat discussion only — because deployment surfaces are declared architectural facts that decide which tools apply,… |
-| `html-rendering-qc` | HTML Rendering QC |
+| `html-rendering-qc` | Check that a folio's content blocks render correctly as HTML on its published site, and report each defect with its source file and line. |
 | `incremental-render` | Rendering only what changed — seeding a build from a previous render, the two edges that decide what must re-run, why a step declares GRAPH TYPOLOGIES rather than paths, and the rule that… |
 | `pdf-inline-viewer` | Show a published PDF inside a generated page — search, scroll, jump to page, print and download — with the pinned pdf.js viewer the site build installs. |
 | `theme-artefacts` | The per-surface SPECIALISATION layer — sticky, landing board, docs background, navbar avatar. |
