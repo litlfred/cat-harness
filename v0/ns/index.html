@@ -183,6 +183,21 @@
       "seeAlso": "https://litlfred.github.io/folio-assistant/ns/docs/cat-harness/process/crdm-methodology.html"
     },
     {
+      "@id": "cat-harness:TranslationSource",
+      "@type": [
+        "rdfs:Class",
+        "skos:Concept"
+      ],
+      "label": "TranslationSource",
+      "comment": "One gettext source of a layer's translations: a `.po` catalogue of one locale's translated strings, or the `.pot` template it is made from. The input to injection; the rendered output declares its own `lang`.",
+      "prefLabel": "TranslationSource",
+      "definition": "One gettext source of a layer's translations: a `.po` catalogue of one locale's translated strings, or the `.pot` template it is made from. The input to injection; the rendered output declares its own `lang`.",
+      "notation": "cat-harness:TranslationSource",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:Lane",
       "@type": [
         "rdfs:Class",
@@ -4534,6 +4549,7 @@
 <li><code>cat-harness:QaAttestation</code> QaAttestation — One subject's QA judgements — pair attestations, voice reviews, agent and human verdicts, bibliography verifications — kept as one `qa-attestations/v1` file in a layer's attestations store, each judgement pinned to the hash it attested so a stale one is detectable. The judgement half of a QA verdict: unlike a derived result, it cannot be regenerated.</li>
 <li><code>cat-harness:Voice</code> Voice — A named editorial voice: a `folio-voice/v1` set of writing rules, each citing the passage of an ingested source or the knowledge-graph node it was read from. Opt-in per folio: shipping a voice does not apply it.</li>
 <li><code>cat-harness:Requirement</code> Requirement — A stated need a change must satisfy, elicited and signed off in the CRDM process before implementation begins. Distinct from the issue that tracks it and the bean that plans the work.</li>
+<li><code>cat-harness:TranslationSource</code> TranslationSource — One gettext source of a layer's translations: a `.po` catalogue of one locale's translated strings, or the `.pot` template it is made from. The input to injection; the rendered output declares its own `lang`.</li>
 <li><code>cat-harness:Lane</code> Lane — A swimlane of one BPMN process: part of that process, naming the Role its tasks are performed in (`bindsRole`, BPMN's `partitionElementRef`). Not itself a role — a role is a registry node, and many lanes in many processes name it (#1168, B9b; owner, 2026-10-16).</li>
 <li><code>cat-harness:LaneUsage</code> LaneUsage — One appearance of a glossary concept as a swimlane in one BPMN process — the process it is in, the label that process gave the lane, and that lane's own documentation. A usage is an occurrence, not a term: it is regenerated wholesale and never retired, while a concept is a term somebody may have cited.</li>
 <li><code>cat-harness:Theme</code> Theme — A theme a layer derived from a source it holds — a served stylesheet or a style guide's stated rules: a palette and, for a sticky, its art, every value citing where it was measured. Kind `sticky`, `webpage` or `publication`.</li>
