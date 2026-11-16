@@ -152,6 +152,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:Voice",
+      "@type": [
+        "rdfs:Class",
+        "skos:Concept"
+      ],
+      "label": "Voice",
+      "comment": "A named editorial voice: a `folio-voice/v1` set of writing rules, each citing the passage of an ingested source or the knowledge-graph node it was read from. Opt-in per folio: shipping a voice does not apply it.",
+      "prefLabel": "Voice",
+      "definition": "A named editorial voice: a `folio-voice/v1` set of writing rules, each citing the passage of an ingested source or the knowledge-graph node it was read from. Opt-in per folio: shipping a voice does not apply it.",
+      "notation": "cat-harness:Voice",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:Requirement",
       "@type": [
         "rdfs:Class",
@@ -198,6 +213,21 @@
       "layer": "harness"
     },
     {
+      "@id": "cat-harness:Theme",
+      "@type": [
+        "rdfs:Class",
+        "skos:Concept"
+      ],
+      "label": "Theme",
+      "comment": "A theme a layer derived from a source it holds — a served stylesheet or a style guide's stated rules: a palette and, for a sticky, its art, every value citing where it was measured. Kind `sticky`, `webpage` or `publication`.",
+      "prefLabel": "Theme",
+      "definition": "A theme a layer derived from a source it holds — a served stylesheet or a style guide's stated rules: a palette and, for a sticky, its art, every value citing where it was measured. Kind `sticky`, `webpage` or `publication`.",
+      "notation": "cat-harness:Theme",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "layer": "harness"
+    },
+    {
       "@id": "cat-harness:SkillPackage",
       "@type": [
         "rdfs:Class",
@@ -212,6 +242,21 @@
       "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
       "layer": "harness",
       "seeAlso": "https://litlfred.github.io/folio-assistant/ns/docs/cat-harness/concepts/skills.html"
+    },
+    {
+      "@id": "cat-harness:SoftwareLibrary",
+      "@type": [
+        "rdfs:Class",
+        "skos:Concept"
+      ],
+      "label": "SoftwareLibrary",
+      "comment": "An outside software package a layer's code imports, as its lockfile pins it: the version, the registry tarball and its digest, the SPDX licence, and the files that import it.",
+      "prefLabel": "SoftwareLibrary",
+      "definition": "An outside software package a layer's code imports, as its lockfile pins it: the version, the registry tarball and its digest, the SPDX licence, and the files that import it.",
+      "notation": "cat-harness:SoftwareLibrary",
+      "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+      "layer": "harness"
     },
     {
       "@id": "cat-harness:Tool",
@@ -4487,10 +4532,13 @@
 <li><code>cat-harness:SushiProject</code> SushiProject — A repository SUSHI will build — FSH compiled to a FHIR implementation guide. Minted here because SUSHI publishes no logical model for its own config; this is our name for the membership, not a claim to define SUSHI.</li>
 <li><code>cat-harness:Convention</code> Convention — A standing rule an actor must hold while performing a task, bound to a process, a lane or an activity rather than loaded unconditionally. Resolution is first-binding-wins along that order, not a merge, so a reader asking why a rule applies here gets one answer.</li>
 <li><code>cat-harness:QaAttestation</code> QaAttestation — One subject's QA judgements — pair attestations, voice reviews, agent and human verdicts, bibliography verifications — kept as one `qa-attestations/v1` file in a layer's attestations store, each judgement pinned to the hash it attested so a stale one is detectable. The judgement half of a QA verdict: unlike a derived result, it cannot be regenerated.</li>
+<li><code>cat-harness:Voice</code> Voice — A named editorial voice: a `folio-voice/v1` set of writing rules, each citing the passage of an ingested source or the knowledge-graph node it was read from. Opt-in per folio: shipping a voice does not apply it.</li>
 <li><code>cat-harness:Requirement</code> Requirement — A stated need a change must satisfy, elicited and signed off in the CRDM process before implementation begins. Distinct from the issue that tracks it and the bean that plans the work.</li>
 <li><code>cat-harness:Lane</code> Lane — A swimlane of one BPMN process: part of that process, naming the Role its tasks are performed in (`bindsRole`, BPMN's `partitionElementRef`). Not itself a role — a role is a registry node, and many lanes in many processes name it (#1168, B9b; owner, 2026-10-16).</li>
 <li><code>cat-harness:LaneUsage</code> LaneUsage — One appearance of a glossary concept as a swimlane in one BPMN process — the process it is in, the label that process gave the lane, and that lane's own documentation. A usage is an occurrence, not a term: it is regenerated wholesale and never retired, while a concept is a term somebody may have cited.</li>
+<li><code>cat-harness:Theme</code> Theme — A theme a layer derived from a source it holds — a served stylesheet or a style guide's stated rules: a palette and, for a sticky, its art, every value citing where it was measured. Kind `sticky`, `webpage` or `publication`.</li>
 <li><code>cat-harness:SkillPackage</code> SkillPackage — A directory of skills shipped and versioned together.</li>
+<li><code>cat-harness:SoftwareLibrary</code> SoftwareLibrary — An outside software package a layer's code imports, as its lockfile pins it: the version, the registry tarball and its digest, the SPDX licence, and the files that import it.</li>
 <li><code>cat-harness:Tool</code> Tool — A Node Instance describing a program an Actor may run while carrying out a Task: what it takes, what it produces, and how to run it.</li>
 <li><code>cat-harness:Schema</code> Schema — A schema definition, itself a node in the knowledge graph rather than an island beside one.</li>
 <li><code>cat-harness:ExternalSchema</code> ExternalSchema — A published specification this corpus conforms to or reads — BPMN, DMN, ODRL, PROV-O — recorded by name and edition rather than copied in.</li>
