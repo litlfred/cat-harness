@@ -1054,7 +1054,7 @@
     {"id": "uploads", "renderedBy": "uploads-viewer", "coversKinds": ["uploads"], "subgraphs": "instance"},
     {"id": "schemas", "renderedBy": "schemas-viewer", "coversKinds": ["schemas"], "subgraphs": "instance"},
     {"id": "voices", "renderedBy": "voices-viewer", "coversKinds": ["voices", "voice-vendors"], "subgraphs": "instance"},
-    {"id": "themes", "renderedBy": "theme-viewer", "coversKinds": ["themes"], "title": "Themes"},
+    {"id": "themes", "renderedBy": "theme-viewer", "coversKinds": ["themes"], "subgraphs": "instance", "title": "Themes"},
     {"id": "document-kinds", "renderedBy": "document-kinds-viewer", "coversKinds": ["document-kinds"], "subgraphs": "instance"},
     {"id": "folio", "renderedBy": "folio-viewer", "covers": ["folio"], "coversKinds": ["folio"], "subgraphs": "instance"},
     {"id": "auto-docs", "renderedBy": "auto-docs-viewer", "coversKinds": ["skills", "docs", "swimlane-glossary", "uml"], "subgraphs": "directory", "subgraphUnder": {"skills": "index/skills", "docs": "index/docs", "swimlane-glossary": "glossary", "uml": "uml"}},
