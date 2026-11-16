@@ -1064,7 +1064,7 @@
     {"id": "external-schemas", "renderedBy": "external-schemas-viewer", "covers": ["external-schemas"], "coversKinds": ["external-schema"], "subgraphs": "instance", "subgraphUnder": {"external-schema": "instance"}, "alias": "external-schemas"},
     {"id": "openapi", "renderedBy": "openapi-pages", "coversKinds": ["openapi"], "subgraphs": "instance", "title": "OpenAPI documents"},
     {"id": "lsi", "renderedBy": "lsi-viewer", "covers": ["qa"], "title": "Indexing evidence", "alias": "lsi"},
-    {"id": "translation-status", "renderedBy": "translation-status-viewer", "coversKinds": ["translation-sources"], "alias": "translation-status"},
+    {"id": "translation-status", "renderedBy": "translation-status-viewer", "coversKinds": ["translation-sources"], "subgraphs": "instance", "alias": "translation-status"},
     {"id": "beans", "renderedBy": "state-viewer", "covers": ["beans"], "coversKinds": ["beans", "bean-defs", "bean-notes", "workflow-state", "merge-queue", "session-survey", "sweep-marks"], "subgraphs": "instance", "alias": "beans"},
     {"id": "todos", "renderedBy": "state-viewer", "covers": ["todos"], "coversKinds": ["todo-items", "todo-feedback", "boards", "board-positions"], "alias": "todos"},
     {"id": "issue-marks", "renderedBy": "state-viewer", "covers": ["issue-marks"], "alias": "issue-marks"},
