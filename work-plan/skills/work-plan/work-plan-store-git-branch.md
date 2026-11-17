@@ -28,6 +28,13 @@ the `beans` entry's `source` in `cat-harness.json`. It is mounted at `beans/` wh
 bun run cat state:mount
 ```
 
+The layer creates its own state branches at initialization. If
+`cat/<instance>/beans` (or `todos`) is declared and missing on the layer's own
+remote, `state:mount` creates it, seeded empty with `beans/beans.json` and
+`defs/`, then mounts it. By hand, run `bun run cat state:seed --init`. A
+mounted dependency's missing branch is never created from a downstream
+checkout. The mount names that repository, and the command is run there.
+
 `beans/beans.json` declares the parts: `defs/` (work items), `defs/archive/`,
 `notes/`, `workflows/` (instances), `queue/`, `surveys/`, `marks/`.
 
