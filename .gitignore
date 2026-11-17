@@ -104,6 +104,8 @@ node_modules/
 /docs/assets/todos/count.json
 /docs/assets/todos/index.json
 /docs/assets/qa/index.json
+/docs/assets/prov/
+/docs/prov-qaqc/index.md
 /docs/assets/folio/folio-assistant-core/
 /docs/assets/folio/who-iris/
 /docs/en/cat-harness/beans/
