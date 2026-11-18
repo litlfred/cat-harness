@@ -82,7 +82,7 @@
     <bpmn:task id="Task_Build" name="Build the Jekyll site&#10;and the API reference">
 
 
-      <bpmn:documentation>Builds the composed source with Jekyll 4 and just-the-docs (`bundle exec jekyll build`), runs each composing Tool's post-build pass, mounts instance-rendered content (`mount-instance-docs.ts`), and generates the TypeScript API reference with TypeDoc (`.github/actions/typedoc-api`). The main deploy is a full build: every index is rebuilt from the tree being published. See skill `feature-staging`, section Build types.</bpmn:documentation>
+      <bpmn:documentation>Builds the composed source with Jekyll 4 and just-the-docs (`bundle exec jekyll build`), runs each composing Tool's post-build pass, mounts instance-rendered content (`mount-instance-docs.ts`), publishes the translation review projections wherever the checkout has translations (`publish-translation-review.ts`: `assets/translation-status/review.json` and each catalogue's strings projection under `assets/translation-status/strings/`, which a block's 🌐 pane reads), and generates the TypeScript API reference with TypeDoc (`.github/actions/typedoc-api`). The main deploy is a full build: every index is rebuilt from the tree being published. See skill `feature-staging`, section Build types.</bpmn:documentation>
       <bpmn:extensionElements>
         <cat-harness.processes:no-skill reason="A mechanical actor runs this — GitHub Actions executes a command in a runner. There is no instruction body an agent could be handed, and a skill here would describe somebody else&apos;s behaviour."/>
       </bpmn:extensionElements>
