@@ -3,7 +3,7 @@
   "tool": {
     "id": "precheck",
     "title": "Precheck a push",
-    "description": "Run, before a push leaves the machine, only the fast checks whose inputs the push changed: `lock:coherence:check` (agreement and freshness) and `mount:remote:check` for a change to `index.lock.json` or `index.config.json`, `check:workflow-pins` for a change under `.github/workflows/`, and the typecheck for a `.ts` change. Nothing runs when the push changed none of them, and the full tier never runs. It is git's `pre-push` hook (`scripts/git-hooks/pre-push`), installed by the session-start primer; the same command runs it by hand.",
+    "description": "Run, before a push leaves the machine, only the fast checks whose inputs the push changed: `lock:coherence:check` (agreement and freshness) and `mount:remote:check` for a change to `index.lock.json` or `index.config.json`, `check:workflow-pins` for a change under `.github/workflows/`, and the typecheck for a `.ts` change. Nothing runs when the push changed none of them, and the full tier never runs. It is git's `pre-push` hook (`scripts/git-hooks/pre-push`), installed by the session-start primer; the same command runs it by hand (as the hook it is `--git-hook <remote>`, with the pushed refs on stdin).",
     "install": {
       "none": true
     },
@@ -21,17 +21,6 @@
           "required": false,
           "arg": {
             "flag": "--dry-run"
-          }
-        },
-        {
-          "name": "git-hook",
-          "schema": {
-            "$type": "Text"
-          },
-          "description": "Run as git's pre-push hook for this remote; the pushed refs come on stdin and are diffed against the remote's tip.",
-          "required": false,
-          "arg": {
-            "flag": "--git-hook"
           }
         }
       ],
