@@ -330,6 +330,16 @@ function initSearchPanel(manifest) {
   wider.type = 'button';
   foot.appendChild(more);
   foot.appendChild(wider);
+  // The site's knowledge-graph search, when the build published it (the
+  // manifest's `kgSearch`, written by cat-harness-tools' search-split): a
+  // page of its own that downloads the KG slice only when opened, never
+  // here. It carries the reader's query.
+  var kg = null;
+  if (manifest && typeof manifest.kgSearch === 'string') {
+    kg = el('a', 'fa-search-panel-kg');
+    kg.setAttribute('data-base', searchUrl(manifest.kgSearch));
+    foot.appendChild(kg);
+  }
   box.appendChild(head);
   box.appendChild(facets);
   box.appendChild(list);
@@ -402,6 +412,11 @@ function initSearchPanel(manifest) {
     var everywhere = document.querySelector('.search-everywhere');
     wider.hidden = !everywhere;
     if (everywhere) wider.textContent = everywhere.textContent;
+    if (kg) {
+      var q = input.value.trim();
+      kg.href = kg.getAttribute('data-base') + (q ? '&q=' + encodeURIComponent(q) : '');
+      kg.textContent = q ? 'Search the knowledge graph for \u201c' + q + '\u201d \u2192' : 'Search the knowledge graph \u2192';
+    }
   };
 
   var refreshShowAll = function() {
