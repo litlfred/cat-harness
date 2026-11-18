@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>inSubgraph — cat-harness vocabulary</title>
+<link rel="canonical" href="https://litlfred.github.io/cat-harness/v0/ns/inSubgraph">
+<script type="application/ld+json">
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "bootstrap": "https://litlfred.github.io/bootstrap/v0/ns/",
+    "cat-harness": "https://litlfred.github.io/cat-harness/v0/ns/",
+    "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns/",
+    "folio-assistant-sci": "https://litlfred.github.io/folio-assistant-sci/v0/ns/",
+    "smart-base": "https://litlfred.github.io/smart-base/v0/ns/",
+    "label": "rdfs:label",
+    "comment": "rdfs:comment",
+    "isDefinedBy": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "seeAlso": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    },
+    "prefLabel": "skos:prefLabel",
+    "definition": "skos:definition",
+    "notation": "skos:notation",
+    "title": "dcterms:title",
+    "inScheme": {
+      "@id": "skos:inScheme",
+      "@type": "@id"
+    },
+    "requires": {
+      "@id": "dcterms:requires",
+      "@type": "@id"
+    },
+    "deprecated": {
+      "@id": "owl:deprecated",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "isReplacedBy": {
+      "@id": "dcterms:isReplacedBy",
+      "@type": "@id"
+    },
+    "layer": "https://litlfred.github.io/cat-harness/v0/ns/layer"
+  },
+  "@id": "https://litlfred.github.io/cat-harness/v0/ns/inSubgraph",
+  "@type": [
+    "rdf:Property",
+    "skos:Concept"
+  ],
+  "label": "inSubgraph",
+  "comment": "The DECLARED DIRECTORY a node was projected from — the named subgraph it belongs to, as a link to that directory's own node rather than a bare id. Derived from the instance's declaration, longest path prefix winning, and INHERITED through `partOf` for nodes that have no path of their own (a ProcessNode is part of a diagram, not a file). A node with no value belongs to no declared directory — vocabulary nodes are minted from the namespace rather than from any file — and that absence is reported as its own state rather than folded into a default. Its own term, NOT `dcterms:isPartOf`: membership of a subgraph is a view of the graph, while `partOf` is structural containment, and one predicate for both made the two indistinguishable once compacted (bean `3f5f`).",
+  "prefLabel": "inSubgraph",
+  "definition": "The DECLARED DIRECTORY a node was projected from — the named subgraph it belongs to, as a link to that directory's own node rather than a bare id. Derived from the instance's declaration, longest path prefix winning, and INHERITED through `partOf` for nodes that have no path of their own (a ProcessNode is part of a diagram, not a file). A node with no value belongs to no declared directory — vocabulary nodes are minted from the namespace rather than from any file — and that absence is reported as its own state rather than folded into a default. Its own term, NOT `dcterms:isPartOf`: membership of a subgraph is a view of the graph, while `partOf` is structural containment, and one predicate for both made the two indistinguishable once compacted (bean `3f5f`).",
+  "notation": "cat-harness:inSubgraph",
+  "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+  "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+  "layer": "harness"
+}
+</script>
+</head>
+<body>
+<h1>inSubgraph</h1>
+<p><code>https://litlfred.github.io/cat-harness/v0/ns/inSubgraph</code></p>
+<p>The DECLARED DIRECTORY a node was projected from — the named subgraph it belongs to, as a link to that directory's own node rather than a bare id. Derived from the instance's declaration, longest path prefix winning, and INHERITED through `partOf` for nodes that have no path of their own (a ProcessNode is part of a diagram, not a file). A node with no value belongs to no declared directory — vocabulary nodes are minted from the namespace rather than from any file — and that absence is reported as its own state rather than folded into a default. Its own term, NOT `dcterms:isPartOf`: membership of a subgraph is a view of the graph, while `partOf` is structural containment, and one predicate for both made the two indistinguishable once compacted (bean `3f5f`).</p>
+<p>Defined by <a href="https://litlfred.github.io/cat-harness/v0/ns/">https://litlfred.github.io/cat-harness/v0/ns/</a>.</p>
+<p>A term of the <a href="../">cat-harness vocabulary</a> (<code>https://litlfred.github.io/cat-harness/v0/ns/</code>; machine-readable: <a href="../index.jsonld">index.jsonld</a>).</p>
+</body>
+</html>
