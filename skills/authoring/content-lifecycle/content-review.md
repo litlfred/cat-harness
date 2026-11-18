@@ -43,6 +43,16 @@ Findings and a decision — two things, not one. See
   At least one per decision, each citing corpus evidence. Approving over an open
   `critical` or `blocking` finding without overruling it is a reported problem.
 
+## Translations are reviewed in their own loop
+
+A content review judges the source text. A translation of it is judged
+string by string in
+[`translation-adjudication`](../../../library/skills/library-core/translation-adjudication.md):
+anyone proposes from the review page or a block's 🌐 pane, and an owner,
+member or collaborator adjudicates. Approving a source change does not
+approve its translations. When the change rewrites source text, those strings
+go stale and re-enter that loop; that does not hold back the content review.
+
 ## Staging links
 
 When a staging preview exists, every request this skill makes for feedback,
