@@ -2579,6 +2579,22 @@ button.fa-qa-badge[aria-busy="true"] { opacity: 0.6; }
 .fa-trf .fa-trf-state[data-fa-tr-state="reviewed"],
 .fa-trf .fa-trf-state[data-fa-tr-state="official"] { border-style: double; border-width: 3px; }
 .fa-trf-dim { opacity: 0.85; font-size: var(--fa-text-sm); }
+/* Every locale's translation of a block's strings (owner, 2026-11-18): the status is a word, and
+   its border says the same thing again for those who scan: dashed = nobody with authority chose it,
+   double = a collaborator or an official source did, dotted = missing or stale. */
+.fa-trf .fa-trf-head { font-weight: 600; margin: 0.6em 0 0.2em; }
+.fa-trf .fa-trf-every { padding-left: 1.4em; margin: 0; }
+.fa-trf .fa-trf-every > li { margin: 0 0 0.6em; }
+.fa-trf .fa-trf-loc { margin: 0.2em 0; overflow-wrap: anywhere; }
+.fa-trf .fa-trf-loc .fa-trf-state { font-weight: normal; font-size: var(--fa-text-sm); }
+.fa-trf .fa-trf-state[data-fa-tr-state="proposed"],
+.fa-trf .fa-trf-state[data-fa-tr-state="agent"],
+.fa-trf .fa-trf-state[data-fa-tr-state="mt"],
+.fa-trf .fa-trf-state[data-fa-tr-state="unattributed"] { border-style: dashed; border-width: 2px; }
+.fa-trf .fa-trf-state[data-fa-tr-state="adjudicated"] { border-style: double; border-width: 3px; }
+.fa-trf .fa-trf-state[data-fa-tr-state="missing"],
+.fa-trf .fa-trf-state[data-fa-tr-state="stale"] { border-style: dotted; border-width: 2px; }
+.fa-trf-cand[data-fa-tr-stale="true"], .fa-trf-cand[data-fa-tr-qa="fail"] { opacity: 0.8; }
 .fa-trf-why { margin: 0.3em 0 0; }
 .fa-trf-warn { font-weight: 600; }
 .fa-trf-actions { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 0.5em 0 0; }
