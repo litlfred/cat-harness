@@ -67,9 +67,9 @@ is how they are produced. The rule that binds every writer:
 ## The rank, and the default pick
 
 When no collaborator has chosen, a string shows its best-ranked candidate.
-The rank is one function, `rankCandidates` in cat-harness-tools
-`scripts/lib/translation-strings.ts`; the 🌐 pane ranks the same way, and a
-test in cat-harness-tools holds the two equal.
+The rank is one function, `rankCandidates`: the tool that writes the strings
+projection ranks with it, the 🌐 pane restates it for a bare candidates
+sidecar, and a test holds the two equal, fixture for fixture.
 
 | tier | score |
 |---|---|
