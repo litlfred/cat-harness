@@ -650,15 +650,6 @@
       "graphTypologies": [
         "skills"
       ],
-      "coverage": {
-        "visualiser": [
-          {
-            "ref": "cat-harness/docs/reference/skill-instructions/index.md",
-            "title": "Skills",
-            "icon": "skills"
-          }
-        ]
-      },
       "tile": {
         "icon": "skills"
       }
