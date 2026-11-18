@@ -304,6 +304,11 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         change the reviewer reads the agent's before/after preview rather
         than building one. On agent-touched changes, an adversarial code review
         evaluates against the RED FLAG taxonomy and writes a committed verdict.
+        A change to translatable source text marks the strings it rewrote
+        stale in every locale (their candidates' `msgidHash` no longer
+        matches). The translations re-enter `translation-adjudication`
+        afterwards; they never block this PR, and the reviewer does not wait
+        for them.
       </bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="code-node-review"/>

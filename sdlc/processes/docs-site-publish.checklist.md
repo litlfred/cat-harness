@@ -57,7 +57,7 @@ Builds the docs site from this checkout's sources and publishes it to `gh-pages`
 ### 5. Build the Jekyll site and the API reference (`Task_Build`)
 
 - Who: the `CI/CD Pipeline` lane (role `build-pipeline`).
-- What: Builds the composed source with Jekyll 4 and just-the-docs (`bundle exec jekyll build`), runs each composing Tool's post-build pass, mounts instance-rendered content (`mount-instance-docs.ts`), and generates the TypeScript API reference with TypeDoc (`.github/actions/typedoc-api`).
+- What: Builds the composed source with Jekyll 4 and just-the-docs (`bundle exec jekyll build`), runs each composing Tool's post-build pass, mounts instance-rendered content (`mount-instance-docs.ts`), publishes the translation review projections wherever the checkout has translations (`publish-translation-
 - Record it: `workflow_complete` with `node: "Task_Build"`.
 - next: → `Task_Export` (Export the knowledge graph and its schema)
 
