@@ -2595,6 +2595,9 @@ button.fa-qa-badge[aria-busy="true"] { opacity: 0.6; }
 .fa-trf .fa-trf-state[data-fa-tr-state="missing"],
 .fa-trf .fa-trf-state[data-fa-tr-state="stale"] { border-style: dotted; border-width: 2px; }
 .fa-trf-cand[data-fa-tr-stale="true"], .fa-trf-cand[data-fa-tr-qa="fail"] { opacity: 0.8; }
+.fa-trf .fa-trf-others summary { min-height: 44px; line-height: 44px; cursor: pointer; }
+.fa-trf-choose-row { margin: 0.4em 0 0; }
+.fa-trf-choose { width: 1.4rem; height: 1.4rem; flex: none; }
 .fa-trf-why { margin: 0.3em 0 0; }
 .fa-trf-warn { font-weight: 600; }
 .fa-trf-actions { display: flex; flex-wrap: wrap; gap: 0.5em; margin: 0.5em 0 0; }

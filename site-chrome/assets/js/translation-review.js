@@ -157,7 +157,7 @@
       L.push("### Mistranslations, with suggestions", "");
       mis.forEach((i) => {
         L.push("- `" + i.locale + "` " + code(i.catalogue) + (i.note ? " — " + i.note : ""));
-        i.suggestions.forEach((s) => L.push("  - " + code(s.msgid) + (s.msgctxt ? " (context " + code(s.msgctxt) + ")" : "") + ": " + code(s.current) + " → " + code(s.suggested) + (s.source ? " (candidate from " + s.source.kind + " " + code(s.source.id) + ")" : "") + (s.note ? " — " + s.note : "")));
+        i.suggestions.forEach((s) => L.push("  - " + (s.choose ? "chooses " : "proposes ") + code(s.msgid) + (s.msgctxt ? " (context " + code(s.msgctxt) + ")" : "") + ": " + code(s.current) + " → " + code(s.suggested) + (s.source ? " (candidate from " + s.source.kind + " " + code(s.source.id) + ")" : "") + (s.reason ? " because " + s.reason : "") + (s.note ? " — " + s.note : "")));
       });
       L.push("");
     }
@@ -238,12 +238,14 @@
     const p = [];
     if (c.source.version) p.push("version " + c.source.version);
     if (c.source.at) p.push(String(c.source.at).slice(0, 10));
-    if (c.author) p.push("by " + c.author);
-    if (c.source.issue) p.push("from " + c.source.issue.replace(/^https:\/\/github\.com\//, ""));
+    if (c.source.by) p.push("by " + String(c.source.by).replace(/^github:/, ""));
+    if (c.source.issue) p.push("issue #" + c.source.issue);
+    if (c.source.kind === "official" && c.exactMatch !== undefined) p.push(c.exactMatch ? "matches the official source exactly" : "not an exact match to the official source");
     if (c.stale) p.push("stale: made for an older source text");
     const qa = c.qa || {};
-    if (qa.glossary) p.push(qa.glossary.missing && qa.glossary.missing.length ? "glossary: " + qa.glossary.missing.join(", ") + " missing" : "glossary ✓");
-    if (qa.roundTrip && typeof qa.roundTrip.score === "number") p.push("round trip " + qa.roundTrip.score.toFixed(2));
+    if (qa.glossary) p.push(qa.glossary.pass ? "glossary ✓" : "glossary ✗" + (qa.glossary.missing && qa.glossary.missing.length ? ": " + qa.glossary.missing.join(", ") + " missing" : ""));
+    if (qa.placeholders) p.push(qa.placeholders.pass ? "placeholders ✓" : "placeholders ✗");
+    if (qa.roundtrip && typeof qa.roundtrip.score === "number") p.push("round trip " + qa.roundtrip.score.toFixed(2) + (qa.roundtrip.pass ? " ✓" : " ✗"));
     if (c.current) p.push("current");
     return p;
   };
@@ -282,7 +284,7 @@
       const l = x.locales && x.locales[locale];
       if (!l) continue;
       cands[keyOf(x.msgctxt, x.msgid)] = (l.candidates || []).filter((c) => c && typeof c.text === "string" && c.source);
-      if (l.pick) picks[keyOf(x.msgctxt, x.msgid)] = l.pick.text;
+      if (l.pick) picks[keyOf(x.msgctxt, x.msgid)] = l.pick;
     }
     if (!proj) try {
       const rc = await fetch(url.replace(/\.po$/, issue.candidatesSuffix || ".candidates.json"));
@@ -310,7 +312,7 @@
       body.replaceChildren(...kids);
       return;
     }
-    kids.push(el("p", { textContent: "For each string you find wrong, pick one of the candidate translations (each names its source) or type your own. Leave the others empty. If you are a collaborator of the repository, your choice becomes the translation; otherwise it is recorded as a proposal beside the others." }));
+    kids.push(el("p", { textContent: "For each string you find wrong, pick one of the candidate translations (each names its source) or type your own. Leave the others empty. Every suggestion is recorded as a proposal beside the others. Tick \u201cChoose as the translation\u201d to decide: only a collaborator's choice is recorded as the translation; anyone else's stays a proposal." }));
     const list = el("ol", { className: "fa-trf-strings" });
     const boxes = mine.map((e, i) => {
       const id = "fa-trf-s" + i;
@@ -327,14 +329,25 @@
         const r = el("input", { type: "radio", name: "fa-trf-cand-" + i });
         r.onchange = () => { ta.value = c.text; ta.dataset.srcText = c.text; ta.dataset.src = JSON.stringify({ kind: c.source.kind, id: c.source.id }); };
         const extra = provenance(Object.assign({}, c, { current: c.current || c.text === e.msgstr }));
-        const isPick = !picked && picks[k] === c.text;
-        if (isPick) { picked = true; extra.unshift("★ default pick (unofficial)"); }
+        const isPick = !picked && !!picks[k] && picks[k].text === c.text;
+        if (isPick) { picked = true; extra.unshift(picks[k].unofficial === false ? "★ default (official)" : "★ default pick (unofficial)"); }
         const lab = el("label", { className: "fa-trf-cand" }, [r, el("span", { lang: locale, textContent: c.text }),
           el("span", { className: "fa-trf-dim", textContent: " \u2014 " + c.source.kind + " " + c.source.id + (extra.length ? " · " + extra.join(" · ") : "") })]);
         if (c.stale) lab.dataset.faTrStale = "true";
         if (c.qaFailures && c.qaFailures.length) lab.dataset.faTrQa = "fail";
         choices.append(lab);
       }
+      // "Choose as the translation": recorded only for a collaborator (the workflow decides).
+      const chooseId = "fa-trf-choose-" + i;
+      const choose = el("input", { type: "checkbox", id: chooseId, className: "fa-trf-choose" });
+      const reason = el("input", { type: "text", id: "fa-trf-reason-" + i, className: "fa-trf-reason" });
+      ta.choose = choose;
+      ta.reason = reason;
+      const chooseRow = el("div", { className: "fa-trf-choose-row" }, [
+        el("label", { className: "fa-trf-cand", htmlFor: chooseId }, [choose, el("span", { textContent: "Choose as the translation" })]),
+        el("label", { htmlFor: "fa-trf-reason-" + i, textContent: "Why (optional)" }),
+        reason,
+      ]);
       list.append(el("li", {}, [
         el("div", { className: "fa-trf-src" }, [el("span", { className: "fa-trf-dim", textContent: "Source: " }), el("span", { lang: "en", textContent: e.msgid + (e.msgctxt ? " [" + e.msgctxt + "]" : "") })]),
         el("div", { className: "fa-trf-cur" }, [el("span", { className: "fa-trf-dim", textContent: "Now: " }), el("span", { lang: locale, textContent: e.msgstr || "(empty)" }),
@@ -342,6 +355,7 @@
         choices.childElementCount > 1 ? choices : null,
         el("label", { htmlFor: id, textContent: "Your suggestion" }),
         ta,
+        chooseRow,
       ]));
       return ta;
     });
@@ -359,6 +373,8 @@
         // The candidate's source only while its text is unedited.
         if (ta.dataset.src && ta.dataset.srcText === v) s.source = JSON.parse(ta.dataset.src);
         if (e.msgctxt !== undefined) s.msgctxt = e.msgctxt;
+        if (ta.choose.checked) s.choose = true;
+        if (ta.reason.value.trim()) s.reason = ta.reason.value.trim();
         sugg.push(s);
       }
       if (!sugg.length) { out.replaceChildren(el("p", { className: "fa-trf-warn", textContent: "Type at least one suggestion first." })); return; }
@@ -392,7 +408,8 @@
     return out;
   };
   // Every locale's translation of this block's strings, with its status.
-  const everyLocale = async (doc, root, m, source) => {
+  const HOW_TEXT = { adjudicated: "chosen by ", "auto-official": "auto-picked: exact official match", auto: "auto-picked, unofficial" };
+  const everyLocale = async (doc, root, m, source, own) => {
     const box = el("div", { className: "fa-trf-locales" });
     box.append(el("p", { className: "fa-trf-head", textContent: "In every language" }));
     const proj = await loadStrings(doc, root, m.row);
@@ -414,19 +431,33 @@
     const list = el("ol", { className: "fa-trf-strings fa-trf-every" });
     for (const x of mine) {
       const ul = el("ul", { className: "fa-trf-list" });
-      for (const l of Object.keys(x.locales || {}).sort()) {
+      // A translated page: its own locale first, the others collapsed below.
+      const all = Object.keys(x.locales || {}).sort();
+      const first = own && all.indexOf(own) >= 0 ? [own] : all;
+      const rest = own && all.indexOf(own) >= 0 ? all.filter((l) => l !== own) : [];
+      const more = rest.length ? el("details", { className: "fa-trf-others" }, [el("summary", { textContent: "Other languages (" + rest.length + ")" })]) : null;
+      const moreUl = more ? el("ul", { className: "fa-trf-list" }) : null;
+      if (more) more.append(moreUl);
+      for (const l of first.concat(rest)) {
         const t = x.locales[l];
         const st = el("span", { className: "fa-trf-state", textContent: STRING_TEXT[t.status] || t.status });
         st.dataset.faTrState = t.status;
         const kids = [el("strong", { textContent: l + " " }), el("span", { lang: l, textContent: t.text || "—" }), " ", st];
-        if (t.adjudication) kids.push(el("span", { className: "fa-trf-dim", textContent: " " + String(t.adjudication.by).replace(/^github:/, "") + ", " + String(t.adjudication.at).slice(0, 10) + (t.adjudication.why ? ": " + t.adjudication.why : "") }));
-        else if (t.pick && t.pick.text !== t.text) kids.push(el("span", { className: "fa-trf-dim", textContent: " · default pick (unofficial): " + t.pick.text }));
+        const ch = t.chosen && t.chosen.text === t.text ? t.chosen : null;
+        if (ch) {
+          const who = ch.how === "adjudicated" ? HOW_TEXT.adjudicated + String(ch.by || "").replace(/^github:/, "") + ", " + String(ch.at).slice(0, 10) + (ch.reason ? ": " + ch.reason : "") : HOW_TEXT[ch.how] || ch.how;
+          const sp = el("span", { className: "fa-trf-dim fa-trf-how", textContent: " · " + who });
+          sp.dataset.faTrHow = ch.how;
+          kids.push(sp);
+        }
+        if (t.pick && t.pick.text !== t.text) kids.push(el("span", { className: "fa-trf-dim", textContent: " · default pick (" + (t.pick.unofficial === false ? "official" : "unofficial") + "): " + t.pick.text }));
         if ((t.candidates || []).length > 1) kids.push(el("span", { className: "fa-trf-dim", textContent: " · " + t.candidates.length + " candidates" }));
         const li = el("li", { className: "fa-trf-loc" }, kids);
         li.dataset.faTrLocale = l;
         li.dataset.faTrStatus = t.status;
-        ul.append(li);
+        (first.indexOf(l) >= 0 ? ul : moreUl).append(li);
       }
+      if (more) ul.append(el("li", {}, [more]));
       list.append(el("li", {}, [el("div", { className: "fa-trf-src" }, [el("span", { className: "fa-trf-dim", textContent: "Source: " }), el("span", { lang: "en", textContent: x.msgid + (x.msgctxt ? " [" + x.msgctxt + "]" : "") })]), ul]));
     }
     box.append(list);
@@ -495,7 +526,7 @@
             if (acts.childElementCount) li.append(acts);
           }
         }
-        li.append(await everyLocale(doc, root, m, source));
+        li.append(await everyLocale(doc, root, m, source, facts.translated ? facts.locale : null));
         list.append(li);
       }
       if (found.length) kids.push(list);
