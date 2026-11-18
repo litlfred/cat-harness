@@ -232,6 +232,45 @@
     return stringsCache[url];
   };
   const keyOf = (msgctxt, msgid) => (msgctxt || "") + "\u0004" + msgid;
+
+  // ── The rank, the tools layer's rankCandidates restated ──
+  // The strings projection arrives ranked (cat-harness-tools
+  // scripts/lib/translation-strings.ts), and the pane draws that order. This
+  // ranks a bare candidates sidecar the same way, for a site that publishes
+  // no projection; a cat-harness-tools test holds the two equal, fixture for
+  // fixture. Tiers best first; a QA failure costs QA_PENALTY; a stale
+  // candidate (made for another source text) goes last and is never the pick.
+  const PICK_TIERS = ["official", "human-adjudicated", "human-proposed", "platform", "agent", "mt"];
+  const PLATFORM_IDS = ["weblate", "crowdin", "transifex"];
+  const QA_PENALTY = 10;
+  const pickTier = (c, chosenText) => {
+    const k = c.source.kind;
+    if (k === "official") return "official";
+    if (chosenText !== undefined && c.text === chosenText) return "human-adjudicated";
+    if (k === "human") return "human-proposed";
+    if (k === "web-service" && PLATFORM_IDS.indexOf(String(c.source.id).toLowerCase()) >= 0) return "platform";
+    if (k === "agent") return "agent";
+    return "mt";
+  };
+  // A check not run is not a failure.
+  const qaFailures = (c) => {
+    const q = c.qa || {}, out = [];
+    if (q.glossary && !q.glossary.pass) out.push("glossary: " + ((q.glossary.missing || []).join(", ") || "terms") + " not translated as the glossary fixes");
+    if (q.placeholders && !q.placeholders.pass) out.push("placeholders do not round-trip");
+    if (q.roundtrip && !q.roundtrip.pass) out.push("round trip " + Number(q.roundtrip.score).toFixed(2) + " < " + q.roundtrip.threshold);
+    return out;
+  };
+  // `hash`: the string's msgidHash now, sha16(msgctxt U+0004 msgid U+0000 msgid_plural).
+  const rankCandidates = (entry, hash) => {
+    if (!entry) return [];
+    const chosenText = entry.chosen && entry.chosen.how === "adjudicated" ? entry.chosen.text : undefined;
+    const ranked = (entry.candidates || []).map((candidate, index) => {
+      const tier = pickTier(candidate, chosenText), qa = qaFailures(candidate);
+      return { index: index, candidate: candidate, tier: tier, score: PICK_TIERS.indexOf(tier) + (qa.length ? QA_PENALTY : 0), qaFailures: qa, stale: candidate.msgidHash !== undefined && candidate.msgidHash !== hash };
+    });
+    const at = (x) => x.candidate.source.at || "";
+    return ranked.sort((a, b) => Number(a.stale) - Number(b.stale) || a.score - b.score || at(b).localeCompare(at(a)) || a.index - b.index);
+  };
   const ofBlock = (proj, source) => (proj.strings || []).filter((x) => !source || (x.sources || []).some((f) => samePath(f, source.src)));
   // A candidate's provenance, in words: source and version, date, author, issue, staleness, QA.
   const provenance = (c) => {
@@ -279,6 +318,7 @@
     const candSchema = issue.candidatesSchema || "translation-candidates/v1";
     const cands = {};
     const picks = {};
+    const bare = {};
     const proj = await loadStrings(doc, root || "", m.row);
     if (proj) for (const x of proj.strings) {
       const l = x.locales && x.locales[locale];
@@ -292,7 +332,7 @@
         const cf = await rc.json();
         if (cf && cf.$schema === candSchema && Array.isArray(cf.entries)) for (const e of cf.entries) {
           if (e && typeof e.msgid === "string" && Array.isArray(e.candidates))
-            cands[(e.msgctxt || "") + "\u0004" + e.msgid] = e.candidates.filter((c) => c && typeof c.text === "string" && c.source && typeof c.source.kind === "string" && typeof c.source.id === "string");
+            bare[keyOf(e.msgctxt, e.msgid)] = { candidates: e.candidates.filter((c) => c && typeof c.text === "string" && c.source && typeof c.source.kind === "string" && typeof c.source.id === "string"), chosen: e.chosen };
         }
       }
     } catch { /* no candidates */ }
@@ -303,6 +343,13 @@
       return;
     }
     const all = parsePo(text);
+    // A bare sidecar, ranked here as the projection would have ranked it.
+    for (const e of all) {
+      const k = keyOf(e.msgctxt, e.msgid);
+      if (!bare[k]) continue;
+      const ranked = rankCandidates(bare[k], await sha16(k + "\u0000"));
+      cands[k] = ranked.map((x) => Object.assign({}, x.candidate, { tier: x.tier, score: x.score, stale: x.stale, qaFailures: x.qaFailures, current: x.candidate.text === e.msgstr }));
+    }
     // This block's strings: those whose #: reference names its source file.
     const mine = source ? all.filter((e) => e.refs.some((r) => samePath(r.replace(/:\d+$/, ""), source.src))) : all;
     const kids = [];
@@ -557,7 +604,7 @@
     }).observe(document.body, { childList: true, subtree: true });
     return true;
   };
-  window.faTranslationReview = { render: render, matches: matches, parsePo: parsePo, issueOf: issueOf };
+  window.faTranslationReview = { render: render, matches: matches, parsePo: parsePo, issueOf: issueOf, rankCandidates: rankCandidates };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", mount);
   else mount();
 })();
