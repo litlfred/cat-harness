@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>l1-extraction — cat-harness vocabulary</title>
+<link rel="canonical" href="https://litlfred.github.io/cat-harness/v0/ns/graphTypology/l1-extraction">
+<script type="application/ld+json">
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "bootstrap": "https://litlfred.github.io/bootstrap/v0/ns/",
+    "cat-harness": "https://litlfred.github.io/cat-harness/v0/ns/",
+    "folio-assistant-core": "https://litlfred.github.io/folio-assistant-core/v0/ns/",
+    "folio-assistant-sci": "https://litlfred.github.io/folio-assistant-sci/v0/ns/",
+    "smart-base": "https://litlfred.github.io/smart-base/v0/ns/",
+    "label": "rdfs:label",
+    "comment": "rdfs:comment",
+    "isDefinedBy": {
+      "@id": "rdfs:isDefinedBy",
+      "@type": "@id"
+    },
+    "seeAlso": {
+      "@id": "rdfs:seeAlso",
+      "@type": "@id"
+    },
+    "prefLabel": "skos:prefLabel",
+    "definition": "skos:definition",
+    "notation": "skos:notation",
+    "title": "dcterms:title",
+    "inScheme": {
+      "@id": "skos:inScheme",
+      "@type": "@id"
+    },
+    "requires": {
+      "@id": "dcterms:requires",
+      "@type": "@id"
+    },
+    "deprecated": {
+      "@id": "owl:deprecated",
+      "@type": "http://www.w3.org/2001/XMLSchema#boolean"
+    },
+    "isReplacedBy": {
+      "@id": "dcterms:isReplacedBy",
+      "@type": "@id"
+    },
+    "layer": "https://litlfred.github.io/cat-harness/v0/ns/layer"
+  },
+  "@id": "https://litlfred.github.io/cat-harness/v0/ns/graphTypology/l1-extraction",
+  "@type": [
+    "bootstrap:GraphTypology",
+    "skos:Concept"
+  ],
+  "label": "l1-extraction",
+  "comment": "What the recommendation-extraction skill read out of ONE library entry, held beside it at `library/<entry>/l1-extraction/` when the same instance holds the entry, or at `l1-extractions/<entry>/` when the entry lives in another instance (smart-base's handbook extraction, whose source moved to who-iris on 2026-10-30, who-iris#107): the L1 A-Box graph (`l1.json`, JSON-LD against the WHO SMART L1 ontology), the L2 scenario candidates derived from it (`scenarios/scenario-candidates.l2.json`), and the curation, vocabulary and run context that produced them. A sub-graph of `library`: nested in an entry, it is published with the entry beside the entry's manifest; held apart, its own viewer (`scripts/gen-l1-extraction-pages.ts`) publishes it. It is never a folder named for an entry another library holds, which reads as a second copy of that entry and makes the library ingest refuse the duplicate slug.",
+  "prefLabel": "l1-extraction",
+  "definition": "What the recommendation-extraction skill read out of ONE library entry, held beside it at `library/<entry>/l1-extraction/` when the same instance holds the entry, or at `l1-extractions/<entry>/` when the entry lives in another instance (smart-base's handbook extraction, whose source moved to who-iris on 2026-10-30, who-iris#107): the L1 A-Box graph (`l1.json`, JSON-LD against the WHO SMART L1 ontology), the L2 scenario candidates derived from it (`scenarios/scenario-candidates.l2.json`), and the curation, vocabulary and run context that produced them. A sub-graph of `library`: nested in an entry, it is published with the entry beside the entry's manifest; held apart, its own viewer (`scripts/gen-l1-extraction-pages.ts`) publishes it. It is never a folder named for an entry another library holds, which reads as a second copy of that entry and makes the library ingest refuse the duplicate slug.",
+  "notation": "cat-harness:graphTypology/l1-extraction",
+  "inScheme": "https://litlfred.github.io/cat-harness/v0/ns/",
+  "isDefinedBy": "https://litlfred.github.io/cat-harness/v0/ns/",
+  "layer": "harness"
+}
+</script>
+</head>
+<body>
+<h1>l1-extraction</h1>
+<p><code>https://litlfred.github.io/cat-harness/v0/ns/graphTypology/l1-extraction</code></p>
+<p>What the recommendation-extraction skill read out of ONE library entry, held beside it at `library/&lt;entry&gt;/l1-extraction/` when the same instance holds the entry, or at `l1-extractions/&lt;entry&gt;/` when the entry lives in another instance (smart-base's handbook extraction, whose source moved to who-iris on 2026-10-30, who-iris#107): the L1 A-Box graph (`l1.json`, JSON-LD against the WHO SMART L1 ontology), the L2 scenario candidates derived from it (`scenarios/scenario-candidates.l2.json`), and the curation, vocabulary and run context that produced them. A sub-graph of `library`: nested in an entry, it is published with the entry beside the entry's manifest; held apart, its own viewer (`scripts/gen-l1-extraction-pages.ts`) publishes it. It is never a folder named for an entry another library holds, which reads as a second copy of that entry and makes the library ingest refuse the duplicate slug.</p>
+<p>Defined by <a href="https://litlfred.github.io/cat-harness/v0/ns/">https://litlfred.github.io/cat-harness/v0/ns/</a>.</p>
+<p>A term of the <a href="../../">cat-harness vocabulary</a> (<code>https://litlfred.github.io/cat-harness/v0/ns/</code>; machine-readable: <a href="../../index.jsonld">index.jsonld</a>).</p>
+</body>
+</html>
