@@ -22,7 +22,7 @@ layout: null
 //
 // Keeping it in step. `remote_theme` in `_config.yml` pins v0.12.0; when that
 // pin moves, re-copy the new version's file and re-apply every hunk marked
-// `2tfy`, `mm2n`, `1br0`, `lrzn`, `fa-search-panel` or `fa-theme-switch` (cat-harness#820) — `initSearch` and the helpers above it, the setter at the top of
+// `2tfy`, `mm2n`, `1br0`, `lrzn`, `fa-search-panel`, `fa-lazy-lunr` or `fa-theme-switch` (cat-harness#820) — `initSearch` and the helpers above it, the setter at the top of
 // `searchLoaded`, and the focus trigger in `jtd.onReady`. Everything else must
 // stay byte-identical to the gem.
 (function (jtd, undefined) {
@@ -330,6 +330,16 @@ function initSearchPanel(manifest) {
   wider.type = 'button';
   foot.appendChild(more);
   foot.appendChild(wider);
+  // The site's knowledge-graph search, when the build published it (the
+  // manifest's `kgSearch`, written by cat-harness-tools' search-split): a
+  // page of its own that downloads the KG slice only when opened, never
+  // here. It carries the reader's query.
+  var kg = null;
+  if (manifest && typeof manifest.kgSearch === 'string') {
+    kg = el('a', 'fa-search-panel-kg');
+    kg.setAttribute('data-base', searchUrl(manifest.kgSearch));
+    foot.appendChild(kg);
+  }
   box.appendChild(head);
   box.appendChild(facets);
   box.appendChild(list);
@@ -402,6 +412,11 @@ function initSearchPanel(manifest) {
     var everywhere = document.querySelector('.search-everywhere');
     wider.hidden = !everywhere;
     if (everywhere) wider.textContent = everywhere.textContent;
+    if (kg) {
+      var q = input.value.trim();
+      kg.href = kg.getAttribute('data-base') + (q ? '&q=' + encodeURIComponent(q) : '');
+      kg.textContent = q ? 'Search the knowledge graph for \u201c' + q + '\u201d \u2192' : 'Search the knowledge graph \u2192';
+    }
   };
 
   var refreshShowAll = function() {
@@ -464,8 +479,29 @@ function initSearchPanel(manifest) {
   });
 }
 
+// fa-lazy-lunr (owner, 2026-11-18: "lazy load the search indices"): the
+// indices were already fetched on first use (`2tfy`), but lunr itself was a
+// <script> in every page's head, fetched and parsed on pages where nobody
+// searches. The site's `_includes/head.html` no longer writes that tag, and
+// the site bar no longer writes it on pages the theme did not lay out; the
+// library is loaded here, once, when the reader first reaches for search, in
+// parallel with the manifest. A page that still carries the tag (an older
+// build) has `lunr` already and loads nothing more.
+var lunrWaiting = null;
+function withLunr(done) {
+  if (typeof window.lunr !== 'undefined') return done();
+  if (lunrWaiting) { lunrWaiting.push(done); return; }
+  lunrWaiting = [done];
+  var tag = document.createElement('script');
+  tag.src = searchUrl('assets/js/vendor/lunr.min.js');
+  tag.onload = function(){ var w = lunrWaiting; lunrWaiting = null; w.forEach(function(f){ f(); }); };
+  tag.onerror = function(){ lunrWaiting = null; };
+  document.head.appendChild(tag);
+}
+
 function initSearch() {
-  getJson(searchUrl('assets/js/search/manifest.json'), function(manifest){
+  withLunr(function(){}); // start the download now, beside the manifest's
+  getJson(searchUrl('assets/js/search/manifest.json'), function(manifest){ withLunr(function(){
     var scope = manifest ? scopeForPage(manifest) : null;
     var url = scope ? searchUrl(scope.path) : '{{ "assets/js/search-data.json" | relative_url }}';
     var ready = function(index, docs){
@@ -485,7 +521,7 @@ function initSearch() {
         ready(index || buildSearchIndex(docs), docs);
       });
     });
-  });
+  }); });
 }
 
 function searchLoaded(index, docs) {

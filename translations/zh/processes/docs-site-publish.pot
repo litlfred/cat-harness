@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: docs-site-publish\n"
-"POT-Creation-Date: 2026-11-10T17:57:41.655Z\n"
+"POT-Creation-Date: 2026-11-18T07:18:59.478Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -61,7 +61,7 @@ msgstr ""
 
 #: sdlc/processes/docs-site-publish.bpmn:85
 #. Diagram element documentation
-msgid "Builds the composed source with Jekyll 4 and just-the-docs (`bundle exec jekyll build`), runs each composing Tool's post-build pass, mounts instance-rendered content (`mount-instance-docs.ts`), and generates the TypeScript API reference with TypeDoc (`.github/actions/typedoc-api`). The main deploy is a full build: every index is rebuilt from the tree being published. See skill `feature-staging`, section Build types."
+msgid "Builds the composed source with Jekyll 4 and just-the-docs (`bundle exec jekyll build`), runs each composing Tool's post-build pass, mounts instance-rendered content (`mount-instance-docs.ts`), publishes the translation review projections wherever the checkout has translations (`publish-translation-review.ts`: `assets/translation-status/review.json` and each catalogue's strings projection under `assets/translation-status/strings/`, which a block's 🌐 pane reads), and generates the TypeScript API reference with TypeDoc (`.github/actions/typedoc-api`). The main deploy is a full build: every index is rebuilt from the tree being published. See skill `feature-staging`, section Build types."
 msgstr ""
 
 #: sdlc/processes/docs-site-publish.bpmn:16

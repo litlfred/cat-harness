@@ -8385,6 +8385,12 @@ a.fa-harness-tab__body:focus-visible {
   padding: 0.5rem 0.9rem;
 }
 .fa-search-panel-foot [hidden] { display: none; }
+.fa-search-panel-kg {
+  align-self: center;
+  margin-inline-start: auto;
+  color: var(--link-color, #7253ed);
+  font-size: var(--fa-text-xs, 0.8rem);
+}
 .fa-search-home .search-show-all {
   box-sizing: border-box;
   height: auto;
