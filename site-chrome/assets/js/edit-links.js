@@ -748,6 +748,36 @@
   // and edit, and its public comments. The other icons stay in the box, so
   // a layer can still add a pane, but only the trigger shows on the page.
   const panes = { edit: { icon: "📣", title: "Help improve this section" } };
+  // Owner, 2026-11-19: a ∀ beside the 📣 for a block a Lean declaration
+  // formalises. It is NOT folded into the 📣 panel: it opens its own, with the
+  // declaration, its status (the PDF ∀ mark's colours) and links to the
+  // rendered Lean docs and the source. The facts are the box's data-lean-*
+  // attributes (leanDataAttrs); a link the build could not resolve is absent.
+  const LEAN_STATUS = {
+    compiled: ["Compiled", "sorry-free: Lean checks the statement and its proof", "#2e7d32"],
+    drafted: ["Drafted", "stated in Lean, not yet sorry-free", "#6a1b9a"],
+    stubbed: ["Stub", "a placeholder, not yet a formalisation", "#c62828"],
+  };
+  panes.lean = {
+    icon: "∀",
+    title: "Lean formalisation",
+    render: (label, body, box) => {
+      const d = (box && box.dataset) || {};
+      if (!d.lean) return;
+      body.append(el("p", {}, [el("code", { className: "bp-lean-decl", textContent: d.lean })]));
+      const st = LEAN_STATUS[d.leanStatus];
+      if (st) {
+        const dot = el("span", { className: "bp-lean-dot", textContent: "● " });
+        dot.style.color = st[2];
+        body.append(el("p", { className: "bp-lean-status" }, [dot, el("b", { textContent: st[0] }), document.createTextNode(": " + st[1])]));
+      }
+      const links = [];
+      if (d.leanDoc) links.push(el("a", { href: d.leanDoc, textContent: "📘 Open in the Lean viewer", title: "The declaration in the folio's rendered Lean (its Lean graph viewer)" }));
+      if (d.leanSrc) links.push(el("a", { href: d.leanSrc, textContent: "∀ Lean source on GitHub", title: "The declaration in its .lean file" }));
+      for (const a of links) { a.className = "bp-lean-link"; body.append(a); }
+      if (!links.length) body.append(el("p", { className: "bp-sub", textContent: "No published page or source link for this declaration." }));
+    },
+  };
   // Owner, 2026-11-02 (18:16Z): "already anchor in lhs gutter ... needs to
   // be greyed out. we only need one. put feedback in left gutter. no right
   // gutter", and (18:17Z) "anchor hover should appear when over title AND
@@ -769,7 +799,7 @@
     ".ba-ic.ba-copied{border-color:#2e7d32;background:#2e7d32;color:#fff}" +
     ".ba-ic{position:relative;width:28px;height:28px;padding:0;border:1px solid #8885;border-radius:7px;background:color-mix(in srgb,currentColor 5%,transparent);color:inherit;font-size:14px;line-height:1;cursor:pointer}" +
     "html.fa-bp .block-actions{opacity:1}" +
-    "html.fa-bp .block-actions>.ba-ic:not(.ba-trigger):not(.ba-bookmark),html.fa-bp .fa-block-panel .block-actions>.ba-ic{display:none}" +
+    "html.fa-bp .block-actions>.ba-ic:not(.ba-trigger):not(.ba-bookmark):not(.ba-lean),html.fa-bp .fa-block-panel .block-actions>.ba-ic{display:none}" +
     // Owner, 2026-11-02 (dth-pc): "need a bit of padding between content and
     // grill", kept: .75rem of backdrop either side of the white panel, 1rem
     // inside it (owner, 2026-11-06: "need bit padding to left of text and
@@ -810,7 +840,7 @@
     "html.fa-bp .fa-hot+.fa-sec-actions>.ba-ic" + ON +
     // Its feedback link is the panel's content, not a second icon on the page.
     "html.fa-bp .fa-sec-actions>a{display:none}html.fa-bp .fa-block-panel .fa-sec-actions>a{display:block;margin:.5rem 0;padding:.55rem .7rem;border:1px solid #8885;border-radius:8px;text-decoration:none}" +
-    "html.fa-bp .block-actions>.ba-trigger,html.fa-bp .block-actions>.ba-bookmark{width:20px;height:20px;border:0;background:none;font-size:13px;opacity:.35;filter:grayscale(1)}" +
+    "html.fa-bp .block-actions>.ba-trigger,html.fa-bp .block-actions>.ba-bookmark,html.fa-bp .block-actions>.ba-lean{width:20px;height:20px;border:0;background:none;font-size:13px;opacity:.35;filter:grayscale(1)}" +
     "html.fa-bp .block-actions>.ba-trigger .ba-n{top:-4px;right:-6px;font-size:9px;padding:0 3px}" +
     "html.fa-bp .block-actions:hover>.ba-trigger,html.fa-bp .ba-trigger:focus-visible,html.fa-bp .ba-trigger[aria-expanded=true],html.fa-bp :not(.main-content,.fa-doc,main):hover>.block-actions>.ba-trigger,html.fa-bp p:has(+.fa-blk:hover)>.block-actions>.ba-trigger" + ON +
     // Owner, 2026-11-09: "anchor is only highlighted on the content block it
@@ -818,13 +848,16 @@
     // content block". A section's box hangs straight off .main-content, so
     // ":hover>" matched the whole page and lit every box at once. The page
     // column is not a block: a section's box lights from its .fa-hot heading.
+    // The ∀ lights with its block like the 📣, in its status colour.
+    "html.fa-bp .block-actions:hover>.ba-lean,html.fa-bp .ba-lean:focus-visible,html.fa-bp .ba-lean[aria-expanded=true],html.fa-bp :not(.main-content,.fa-doc,main):hover>.block-actions>.ba-lean,html.fa-bp p:has(+.fa-blk:hover)>.block-actions>.ba-lean" + ON +
+    "html.fa-bp .block-actions>.ba-lean{font-weight:700;font-family:serif}html.fa-bp .ba-lean[data-status=compiled]{color:#2e7d32}html.fa-bp .ba-lean[data-status=drafted]{color:#6a1b9a}html.fa-bp .ba-lean[data-status=stubbed]{color:#c62828}" +
     "html.fa-bp .block-actions:hover>.ba-bookmark,html.fa-bp .ba-bookmark:focus-visible,html.fa-bp .ba-bookmark[aria-pressed=true],html.fa-bp :not(.main-content,.fa-doc,main):hover>.block-actions>.ba-bookmark,html.fa-bp p:has(+.fa-blk:hover)>.block-actions>.ba-bookmark" + ON +
     // Owner, 2026-11-08: "pin icon does not get highlighted on hover". A
     // pressed 🔖 is always in full colour, so hovering it changed nothing.
     // Every gutter icon now lights a tinted tile under the pointer, pressed
     // or not, so the one you are about to press is always the one that shows.
-    "html.fa-bp .block-actions>.ba-trigger,html.fa-bp .block-actions>.ba-bookmark,html.fa-bp .main-content .anchor-heading{border-radius:5px;transition:background-color .12s}" +
-    "html.fa-bp .block-actions>.ba-trigger:hover,html.fa-bp .block-actions>.ba-bookmark:hover,html.fa-bp .main-content .anchor-heading:hover{opacity:1;filter:none;background:color-mix(in srgb,var(--link,#0b5cad) 18%,transparent)}" +
+    "html.fa-bp .block-actions>.ba-trigger,html.fa-bp .block-actions>.ba-bookmark,html.fa-bp .block-actions>.ba-lean,html.fa-bp .main-content .anchor-heading{border-radius:5px;transition:background-color .12s}" +
+    "html.fa-bp .block-actions>.ba-trigger:hover,html.fa-bp .block-actions>.ba-bookmark:hover,html.fa-bp .block-actions>.ba-lean:hover,html.fa-bp .main-content .anchor-heading:hover{opacity:1;filter:none;background:color-mix(in srgb,var(--link,#0b5cad) 18%,transparent)}" +
     // Owner, 2026-11-09: "no indication if a bookmark has been selected or
     // not". Hovering a block lights every gutter icon in full colour, so a
     // pressed 🔖 looked the same as one that was not. A pressed 🔖 now keeps
@@ -845,12 +878,13 @@
     // text and off the right edge of the window (smart-trust-demo, 11-11).
     "html.fa-bp .main-content .fa-sec-actions{right:-3rem;margin:0}" +
     "html.fa-bp .fa-page-main.main-content:has(>.fa-sec-actions){margin-right:3.25rem}" +
-    "html.fa-bp .block-actions>.ba-trigger,html.fa-bp .block-actions>.ba-bookmark{width:30px;height:30px;font-size:20px}" +
+    "html.fa-bp .block-actions>.ba-trigger,html.fa-bp .block-actions>.ba-bookmark,html.fa-bp .block-actions>.ba-lean{width:30px;height:30px;font-size:20px}" +
     "html.fa-bp .block-actions>.ba-trigger .ba-n{top:-5px;right:-8px;font-size:12px;padding:0 4px}}" +
     "html.fa-bp .main-content .fa-hot>.anchor-heading svg,html.fa-bp .main-content :hover>.anchor-heading svg,html.fa-bp .main-content .anchor-heading:focus svg" + ON +
     ".fa-block-panel .bp-copy{font:inherit;font-size:.82rem;margin:.1rem .35rem .3rem 0;padding:.3rem .6rem;border:1px solid #8886;border-radius:6px;background:none;color:inherit;cursor:pointer}" +
     ".fa-block-panel .bp-copy.ba-copied,.fa-block-panel .bp-bookmark[aria-pressed=true]{border-color:#2e7d32;background:#2e7d32;color:#fff}" +
-    ".fa-block-panel .bp-pane{margin-top:1rem}.fa-block-panel .bp-pane>h4{margin:0 0 .3rem;font-size:.9rem}";
+    ".fa-block-panel .bp-pane{margin-top:1rem}.fa-block-panel .bp-pane>h4{margin:0 0 .3rem;font-size:.9rem}" +
+    ".fa-block-panel .bp-lean-decl{word-break:break-all}.fa-block-panel .bp-lean-link{display:block;margin:.5rem 0;padding:.55rem .7rem;border:1px solid #8885;border-radius:8px;text-decoration:none}.fa-block-panel .bp-lean-link:hover{border-color:var(--link,#0b5cad)}";
   const EXPLAIN = {
     suggest: ["✍ Suggest a change", "Propose new wording in an editor. It is sent as a GitHub issue with your change, and the editors decide on it."],
     feedback: ["📣 Give feedback", "Raise a question, concern or error without proposing text. Opens a GitHub issue that names this section."],
@@ -883,12 +917,25 @@
     const label = box.dataset.block || "";
     state = { box: box, id: id, from: from };
     document.querySelectorAll('.ba-ic[aria-expanded="true"]').forEach((b) => b.setAttribute("aria-expanded", "false"));
+    // The ∀ opens its own panel: the Lean pane alone, not the 📣's links.
+    if (id === "lean") {
+      const lb = box.querySelector(":scope > .ba-lean");
+      if (lb) lb.setAttribute("aria-expanded", "true");
+      const lx = el("button", { className: "bp-x", type: "button", textContent: "✕", title: "Close (Esc)" });
+      lx.onclick = close;
+      const lbody = el("div", { className: "bp-body" });
+      panel.replaceChildren(lx, el("h3", { textContent: panes.lean.icon + " " + panes.lean.title }), el("div", { className: "bp-sub", textContent: titleOf(box) }), lbody);
+      panes.lean.render(label, lbody, box);
+      panel.classList.add("open");
+      panel.focus({ preventScroll: true });
+      return;
+    }
     const trigger = box.querySelector(":scope > .ba-trigger");
     if (trigger) trigger.setAttribute("aria-expanded", "true");
     // One panel for the block: its link, its own links, then every other
     // pane a layer added (public comments), in that order.
     const hasLinks = !!box.querySelector(":scope > a[data-fa-link]");
-    const others = Array.from(box.querySelectorAll(":scope > .ba-ic:not(.ba-link):not(.ba-bookmark)")).map((b) => b.dataset.pane).filter((k) => k !== "edit" && panes[k] && panes[k].render);
+    const others = Array.from(box.querySelectorAll(":scope > .ba-ic:not(.ba-link):not(.ba-bookmark):not(.ba-lean)")).map((b) => b.dataset.pane).filter((k) => k !== "edit" && panes[k] && panes[k].render);
     const x = el("button", { className: "bp-x", type: "button", textContent: "✕", title: "Close (Esc)" });
     x.onclick = close;
     const p = hasLinks ? panes.edit : panes[others[0]] || { title: id };
@@ -938,7 +985,7 @@
       const inner = el("div");
       sec.append(inner);
       body.append(sec);
-      panes[k].render(label, inner);
+      panes[k].render(label, inner, box);
     }
     panel.classList.add("open");
     panel.focus({ preventScroll: true });
@@ -959,7 +1006,7 @@
   // The one icon a block shows: 📣 when it has links, else the first pane's
   // own icon. The 📣 carries the count of the other panes (public comments).
   const retrigger = (box) => {
-    const ics = Array.from(box.querySelectorAll(":scope > .ba-ic:not(.ba-link):not(.ba-bookmark)"));
+    const ics = Array.from(box.querySelectorAll(":scope > .ba-ic:not(.ba-link):not(.ba-bookmark):not(.ba-lean)"));
     if (!ics.length) return;
     const t = box.querySelector(':scope > .ba-ic[data-pane="edit"]') || ics[0];
     for (const b of ics) b.classList.toggle("ba-trigger", b === t);
@@ -985,6 +1032,21 @@
     b.setAttribute("aria-label", "Copy link to this " + what);
     b.append(el("span", { textContent: "🔗" }));
     box.insertBefore(b, box.firstChild);
+  };
+  // ∀ Lean: one per box whose build gave it a declaration, beside the 📣
+  // and before the 🔖.
+  const leanIcon = (box) => {
+    const d = box.dataset.lean;
+    if (!d || box.querySelector(":scope > .ba-lean")) return;
+    const st = LEAN_STATUS[box.dataset.leanStatus];
+    const t = "Lean: " + d + (st ? " (" + st[0].toLowerCase() + ")" : "");
+    const b = el("button", { className: "ba-ic ba-lean", type: "button", title: t });
+    b.dataset.pane = "lean";
+    if (box.dataset.leanStatus) b.dataset.status = box.dataset.leanStatus;
+    b.setAttribute("aria-expanded", "false");
+    b.setAttribute("aria-label", t);
+    b.append(el("span", { textContent: "∀" }));
+    box.insertBefore(b, box.querySelector(":scope > .ba-bookmark"));
   };
   const copyLink = (b) => {
     const url = location.href.replace(/#.*$/, "") + "#" + encodeURIComponent(b.dataset.anchor).replace(/%3A/g, ":").replace(/%2F/g, "/");
@@ -1168,6 +1230,7 @@
         for (const a of document.querySelectorAll("a.block-anchor")) if (a.getAttribute("href") === "#" + label) a.classList.add("ba-moved");
       }
       if (label) bookmarkIcon(box, label);
+      leanIcon(box);
     }
   };
   // The heading whose section the pointer is in: walk up to the document's
@@ -1192,7 +1255,7 @@
     if (b && !(panel && panel.contains(b))) {
       e.preventDefault();
       const box = b.closest(".block-actions");
-      if (state && state.box === box) close();
+      if (state && state.box === box && (state.id === b.dataset.pane || (b.dataset.pane !== "lean" && state.id !== "lean"))) close();
       else if (box) open(box, b.dataset.pane, b);
       return;
     }
