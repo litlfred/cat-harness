@@ -184,7 +184,10 @@ The loop back through "root-cause the failure" is the point of drawing this at a
         never asked for it. Holding a green PR back for someone to look at
         is not caution — it is a blocked reviewer. A change to a rendered
         surface carries a before/after preview in the PR body
-        (skill before-after-preview).
+        (skill before-after-preview). The push runs the precheck first
+        (`bun run cat precheck`, the pre-push hook; owner, card 2026-11-18):
+        only the fast checks whose inputs it changed, and a red one refuses
+        the push, since every red CI run emails the owner.
       </bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="continual-progress"/>
