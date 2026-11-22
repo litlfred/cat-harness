@@ -8,7 +8,7 @@
       "none": true
     },
     "invoke": {
-      "shell": "bun run cat-harness-tools/scripts/site-publish-after.ts"
+      "shell": "bun run cat site:publish-after"
     },
     "io": {
       "inputs": [
