@@ -4,7 +4,7 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_260 skills in 22 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_261 skills in 22 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
 **`skills/authoring/authoring-core/`** (14)
 
@@ -251,7 +251,7 @@ _260 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`upload-routes`](library/skills/library-core/upload-routes.md) | How a file actually REACHES `uploads/` — the two mechanisms that write bytes into a declared queue, the persona that performs one of them on somebody's behalf, and what each writer owes that the… |
 | [`uploads-watch`](library/skills/library-core/uploads-watch.md) | Notice what has landed in the acquisition queue, and tell an arrival from a backlog. |
 
-**`sdlc/skills/sdlc-core/`** (61) (opt-in `cat-harness.sdlc`)
+**`sdlc/skills/sdlc-core/`** (62) (opt-in `cat-harness.sdlc`)
 
 | Skill | What it is for |
 |---|---|
@@ -268,7 +268,7 @@ _260 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `code-review-process` | Where code review sits in the release lifecycle. |
 | `coordinate` | Coordinate work across multiple in-flight Claude PRs working toward a shared goal. |
 | `delivery-summary` | Post-delivery summary with server restart command and viewer links |
-| `dispatch-agent` | Dispatch one or more background sub-agents against parallel research/build fronts with a STANDARDIZED live progress contract, and monitor them on a 2-minute heartbeat. |
+| `dispatch-agent` | Dispatches one or more background subagents against disjoint workstreams with a standardized live progress contract, reactive wakeup plus fallback timer heartbeat, and human-consumable status… |
 | `finding-software` | A script needs a program or module the container does not have (tesseract, pdftoppm, PyMuPDF, a CLI from a GitHub release). |
 | `gate-tree-mutation` | Reading `bun run cat gates`' "NOT clean" verdict. |
 | `generalise-the-fix` | You have a fix. |
@@ -308,6 +308,7 @@ _260 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `specification-management` | Governs the lifecycle, syntax, and traceability of specifications and requirements across the harness. |
 | `stalled-agent-triage` | Triage incoming work from stalled agents. |
 | `swarm-management` | Decide whether to run parallel agents at all, and if so how many, at which model level, against which decomposition. |
+| `swarm-monitor` | Supervises an active multi-agent swarm on an event-driven wakeup and 2-to-4-minute fallback timer: extracts live worker progress, checks CPU load, disk headroom, and compressed or swapped memory… |
 | `test-data-sets` | Curating fixed (committed, cited, SME-reviewed) and generated (template + params + seed recipe, never stored materialised) test data sets in separately declared graph directories, with… |
 | `test-engineer` | Test Engineer Skill |
 | `test-plan-execution` | Run a `test-plan/v1` against a system under test and take it to a certification decision — the five lanes of `test-plan-execution.bpmn` (requester, tester, untainted checker, certifier, attestation… |

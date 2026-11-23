@@ -123,11 +123,11 @@ decomposition that avoids a spurious block is the one a swarm needs.
 
 ## While it runs
 
-- **Do not block on the swarm.** The parent work item stays in progress; you report
-  partial results as they land.
-- **One writer per file.** Two agents editing one file is not parallelism.
-- **Report the fan-out in the turn report** — how many, at what level, against
-  which decomposition — so the author can see what their tokens bought.
+- **Run the [`swarm-monitor`](swarm-monitor.md) companion loop (`STRICT`).** Whenever two or more background workers run, supervise them through `Process_SwarmDispatchAndMonitor` ([`sdlc/processes/swarm-dispatch-and-monitor.bpmn`](../../processes/swarm-dispatch-and-monitor.bpmn)) on event-driven wakeups plus a `2–4 min` fallback timer (never busy-polling).
+- **Do not block on the swarm.** The parent work item stays in progress in the shared `beans` store (never in a private coordinator scratchpad); as workers complete and pass independent verification, hand ready PRs to the merge steward ([`merge-manager-watcher`](merge-manager-watcher.md)) and refill freed worker slots from unclaimed `beans` items.
+- **One writer per file.** Two agents editing one file is not parallelism; isolate mutating workers in separate git worktrees.
+- **Monitor total memory + compressed/swap footprint and disk headroom, not `ps -o rss` alone.** Compressed and swapped pages (`top -l 1 -o mem -stats pid,command,mem,cmprs` on macOS, `VmSwap` + `VmRSS` on Linux, alongside `df -h /`) expose runaway subprocess leaks that resident set size hides until root disk hits `ENOSPC` ([`swarm-monitor`](swarm-monitor.md) §4a).
+- **Report with the anti-shorthand Dual Scoreboard + Milestone/Epic Rollup ([`swarm-monitor`](swarm-monitor.md) §3).** Report the initial fan-out (how many, at what model tier, against which decomposition) so the author sees what their tokens bought, and make every subsequent human status update self-contained: ban bare worker codes (`W2`), bare PR ranges (`#104..#109`), and unglossed work-item IDs, and include both the Live Repository Queue Scoreboard (`PRs | Work Items (beans) | Issues`) and the four-part Milestone & Epic Progress Rollups.
 
 ## Stopping
 
@@ -187,8 +187,13 @@ For the comprehensive cross-cutting synthesis, epistemic partition (Measured vs.
 
 ## Known gaps
 
-There is no swarm runner in this repo that enforces the sizing above, no
-per-unit wall-clock bound, and no cost estimate to show the author when
-asking, so the numbers here are guidance an agent applies by hand.
-[`dispatch-agent`](dispatch-agent.md) covers the mechanics of dispatching
-background agents; this covers whether and how big.
+There is no mechanical daemon in this repo that enforces the sizing caps above,
+no hard per-unit wall-clock kill timer, and no pre-spawn token cost calculator
+to show the author when asking, so those bounds are still applied by the
+coordinating agent. Once a swarm is approved, [`dispatch-agent`](dispatch-agent.md)
+governs worker briefs and `⟦PROGRESS⟧` telemetry, [`swarm-monitor`](swarm-monitor.md)
+governs the reactive supervision loop, compressed/swap resource checks, slot
+refill, and human-consumable scoreboard/milestone reporting, and
+[`sdlc/processes/swarm-dispatch-and-monitor.bpmn`](../../processes/swarm-dispatch-and-monitor.bpmn)
+(`Process_SwarmDispatchAndMonitor`) models the end-to-end process across owner,
+coordinator, worker, monitor, and merge-steward lanes.

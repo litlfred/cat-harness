@@ -8,6 +8,8 @@
     "business-analyst",
     "code-reviewer",
     "locale-translator",
+    "session-coordinator",
+    "swarm-monitor",
     "translation-source-lead"
   ],
   "capabilities": []
