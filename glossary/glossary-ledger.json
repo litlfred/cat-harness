@@ -811,6 +811,11 @@
       "firstSeen": "2026-09-21",
       "retiredOn": null
     },
+    "role/swarm-monitor": {
+      "prefLabel": "Swarm monitor",
+      "firstSeen": "2026-11-24",
+      "retiredOn": null
+    },
     "role/terminologist": {
       "prefLabel": "Terminologist",
       "firstSeen": "2026-09-21",

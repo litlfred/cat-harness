@@ -211,7 +211,7 @@ Never invent a parallel or ad-hoc merge procedure inside a swarm. Every pull req
 
 The [`swarm-epic-sync`](../../tools/swarm-epic-sync/swarm-epic-sync.json) Tool node specifies the portable contract for `Task_InitOrClaimSwarmEpic` and `Task_RefreshSwarmHandover`. Because the `cat-harness` layer is declarative data only, save the standalone Python 3 standard-library reference script below as `/tmp/swarm_epic_sync.py` (or invoke `python3 -m swarm_epic_sync` when installed on `PYTHONPATH`) in any repository checkout to idempotently create/update any Swarm Work Item's Cold-Start Handover Runbook from live `git worktree list`, forge REST `/pulls`, `ps`/`top`, and `beans`, and push it to `cat/cat-harness/beans`:
 
-````python
+~~~python
 #!/usr/bin/env python3
 """swarm_epic_sync.py — Generic Swarm Work Item & Cold-Start Handover Runbook sync.
 
@@ -427,7 +427,7 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-````
+~~~
 
 ---
 
