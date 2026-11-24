@@ -38,7 +38,7 @@
       "source": {
         "remote": {
           "repository": "litlfred/bootstrap-tools",
-          "ref": "e70acfd9c93d1cd94cf913b5e00ca392dd0206b3",
+          "ref": "979b33c8ec50d1d1150b22a3ad44a9c343fb9761",
           "overrides": {
             "bootstrap-tools": {
               "whole": true
@@ -52,7 +52,7 @@
             "consent": {
               "by": "litlfred",
               "on": "2026-11-24",
-              "ref": "e70acfd9c93d1cd94cf913b5e00ca392dd0206b3",
+              "ref": "979b33c8ec50d1d1150b22a3ad44a9c343fb9761",
               "evidence": "standing consent by litlfred given 2026-11-24: follow `main` — Owner litlfred, merge-manager session https://claude.ai/code/session_01EucfRnjwjC8CPYgVnsFuHS, 2026-11-24: chose 'Standing, all layers' on card 'Re-pin OK' (~08:00Z) and wrote \"standing re-pin consent, all layers incl. smart-base\" (~08:30Z). Every litlfred instance may re-pin every layer to its current main; the merge manager merges each re-pin on full green; pins move only forward.",
               "standing": {
                 "follows": "main",
