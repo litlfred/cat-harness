@@ -1039,7 +1039,6 @@
     },
     {
       "id": "cat-harness-libraries",
-      "coverage": { "exempt": { "visualiser": "Owner, 2026-10-29 (cat-harness#691): no viewer by design. Each node is an outside package whose registry tarball and SPDX licence the node already links, so a viewer would only repeat the registry." } },
       "path": "libraries/",
       "title": "Software libraries",
       "description": "The outside libraries this layer's code imports, one `software-library` node each: the version and sha512 `bun.lock` pins, the registry tarball, the SPDX licence read from the installed package, the range, whether it is a dev dependency, and the files that import it (`usedBy`). GENERATED, never hand-edited: `bun run cat libraries:derive` writes it and `libraries:check` fails on a stale node, an import no node names, or a shim no node names. The kind is this layer's own (`schemas/library/software-library.ts`, bean `jbvi`); each layer keeps its own nodes because it pins its own versions.",
@@ -1086,6 +1085,7 @@
     {"id": "policies", "renderedBy": "state-viewer", "coversKinds": ["policies"], "subgraphs": "instance", "title": "Policies"},
     {"id": "test-plans", "renderedBy": "state-viewer", "coversKinds": ["test-plan"], "subgraphs": "instance", "title": "Test plans"},
     {"id": "tool-releases", "renderedBy": "state-viewer", "coversKinds": ["tool-release"], "subgraphs": "instance", "title": "Tool releases"},
+    {"id": "software-libraries", "renderedBy": "state-viewer", "coversKinds": ["software-library"], "subgraphs": "instance", "title": "Software libraries"},
     {"id": "vocab-mappings", "renderedBy": "state-viewer", "coversKinds": ["vocab-mapping"], "subgraphs": "instance", "title": "Vocab mappings"},
     {"id": "substrate-snapshots", "renderedBy": "state-viewer", "coversKinds": ["substrate-snapshot"], "subgraphs": "instance", "title": "Substrate snapshots"},
     {"id": "swimlane-glossary", "renderedBy": "state-viewer", "covers": ["swimlane-glossary"], "alias": "swimlane-glossary"},
@@ -1186,6 +1186,7 @@
     {"path": "docs/en/cat-harness/policies/", "writer": ["state:visualizer"], "because": "checkout", "reason": "the policies viewer (bean folio-assistant-6gme, owner 2026-10-20: every kind gets a viewer): a hub and one page per instance in the checkout declaring a policies directory, listing each ODRL policy (.jsonld)"},
     {"path": "docs/en/cat-harness/test-plans/", "writer": ["state:visualizer"], "because": "checkout", "reason": "the test-plans viewer (bean folio-assistant-6gme, owner 2026-10-20: every kind gets a viewer): a hub and one page per instance in the checkout declaring a test-plan directory, listing each test-plan/v1 node"},
     {"path": "docs/en/cat-harness/tool-releases/", "writer": ["state:visualizer"], "because": "checkout", "reason": "the tool-releases viewer (bean folio-assistant-6gme, owner 2026-10-20: every kind gets a viewer): a hub and one page per instance in the checkout declaring a tool-release directory, listing each folio-tool-release/v1 node and profile"},
+    {"path": "docs/en/cat-harness/software-libraries/", "writer": ["state:visualizer"], "because": "checkout", "reason": "the software-libraries viewer (owner, 2026-11-13, node-kind audit: every listed node kind has an IRI, a JSON-LD document, a row and a page, no waivers): a hub and one page per instance in the checkout declaring a software-library directory, listing each library with its node-kind page, IRI and JSON-LD"},
     {"path": "docs/en/cat-harness/vocab-mappings/", "writer": ["state:visualizer"], "because": "checkout", "reason": "the vocab-mappings viewer (bean folio-assistant-6gme, owner 2026-10-20: every kind gets a viewer): a hub and one page per instance in the checkout declaring a vocab-mapping directory, listing each folio-vocab-mapping/v1 node"},
     {"path": "docs/en/cat-harness/substrate-snapshots/", "writer": ["state:visualizer"], "because": "checkout", "reason": "the substrate-snapshots viewer (bean folio-assistant-6gme, owner 2026-10-20: every kind gets a viewer): a hub and one page per instance in the checkout declaring a substrate-snapshot directory, listing each cached <id>.substrate.json, which kg:subscribe writes and nothing commits"},
     {"path": "docs/en/cat-harness/site/", "writer": ["site:viz"], "because": "state", "from": ["site"], "reason": "the published-site viewer (bean folio-assistant-6gme, owner 2026-10-20: \"Build route listing\"): the top-level routes and staging previews of the gh-pages branch, read from its tree, which moves with every publish and never with a commit"},
