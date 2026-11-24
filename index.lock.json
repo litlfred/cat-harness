@@ -1,6 +1,6 @@
 {
   "$schema": "cat-harness-mount-lock/v1",
-  "pinnedAt": "2026-11-24T15:17:29Z",
+  "pinnedAt": "2026-11-24T19:34:48Z",
   "mounts": [
     {
       "harness": "bootstrap",
@@ -10,7 +10,7 @@
     {
       "harness": "bootstrap-tools",
       "repository": "litlfred/bootstrap-tools",
-      "ref": "e70acfd9c93d1cd94cf913b5e00ca392dd0206b3"
+      "ref": "979b33c8ec50d1d1150b22a3ad44a9c343fb9761"
     }
   ],
   "instances": [
@@ -46,7 +46,7 @@
     {
       "instance": "bootstrap-tools",
       "repository": "litlfred/bootstrap-tools",
-      "sha": "e70acfd9c93d1cd94cf913b5e00ca392dd0206b3",
+      "sha": "979b33c8ec50d1d1150b22a3ad44a9c343fb9761",
       "upstreamRoot": "",
       "path": "bootstrap-tools",
       "via": "bootstrap-tools",
@@ -60,7 +60,7 @@
           "id": "*",
           "path": "bootstrap-tools",
           "upstreamPath": ".",
-          "treeDigest": "93148d5258a73a1e0db74e931fb2994a4053e3de94285389b84f18de29faab59",
+          "treeDigest": "6f55872e8b346457098e928d6b1dd7a50987f015fadf2b01660770e842344ba5",
           "files": 138
         }
       ],
@@ -68,7 +68,7 @@
         "basis": "consent",
         "by": "litlfred",
         "on": "2026-11-24",
-        "ref": "e70acfd9c93d1cd94cf913b5e00ca392dd0206b3",
+        "ref": "979b33c8ec50d1d1150b22a3ad44a9c343fb9761",
         "approver": "declared",
         "standing": {
           "follows": "main",
