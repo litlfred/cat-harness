@@ -42,7 +42,10 @@
         "bun"
       ],
       "network": false
-    }
+    },
+    "renders": [
+      "skills"
+    ]
   },
   "$comment": [
     {

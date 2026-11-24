@@ -79,6 +79,9 @@
         },
         {
           "@id": "skills/kg/kg-core/remote-mount.md#provenance-23"
+        },
+        {
+          "@id": "skills/kg/kg-core/remote-mount.md#provenance-24"
         }
       ]
     },
@@ -331,6 +334,16 @@
       "cat-harness:refs": [
         "bean yeg4",
         "bean k3vv"
+      ]
+    },
+    {
+      "@id": "skills/kg/kg-core/remote-mount.md#provenance-24",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "When the session-start hook did not run",
+      "prov:value": "Owner, 2026-11-22: a cloud session attached litlfred/qou after it started, so the qou session-start hook never ran, the platform was never cloned, and the agent reported qa-sweep and the validator as unavailable. Owner asked that the instructions be updated in the knowledge graph so other agents do not hit this again.",
+      "cat-harness:refs": [
+        "litlfred/qou#8986"
       ]
     }
   ]

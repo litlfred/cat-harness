@@ -236,6 +236,15 @@ q.addEventListener("input", () => {
       : baseline;
   }, 150);
 });
+
+// A query handed over in the address, `?slice=kg&q=<text>`: the site search's
+// results panel links here with the reader's query (owner, 2026-11-18, KG
+// search on every site), so the search runs on arrival without retyping.
+const handed = new URLSearchParams(location.search).get("q");
+if (handed && !q.disabled) {
+  q.value = handed;
+  q.dispatchEvent(new Event("input"));
+}
 </script>
 </body>
 </html>

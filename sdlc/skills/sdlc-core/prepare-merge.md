@@ -177,7 +177,21 @@ artefact and runs in `bun test`. The mechanism is in
    `git push -u origin <branch>`. Then **ask whether the push produced a run**:
    `bun run cat check:head-has-run`.
 
-   **The push runs the fast gates first, where the pre-push hook is on.** Git's
+   **The push runs the precheck first** (owner, card 2026-11-18). Git's
+   `pre-push` hook, which the session-start primer installs, runs
+   `bun run cat precheck` (`cat-harness-tools/scripts/precheck.ts`): only the
+   fast checks whose inputs this push changed, 15–60 s, and nothing when it
+   changed none of them. `index.lock.json` / `index.config.json` →
+   `lock:coherence:check` (agreement and freshness) and `mount:remote:check`;
+   `.github/workflows/` → `check:workflow-pins`; a `.ts` file → the typecheck.
+   Never the full tier. A red check refuses the push: fix it, since CI would
+   fail on it and email the owner. Without bun, a `cat` runner or
+   `node_modules`, or when a check could not determine or ran past its time,
+   it says so in one line and the push goes. Run it before pushing with
+   `bun run cat precheck` (or `--dry-run` for the plan); `git push --no-verify`
+   skips it, and is for a red you have reported, not one you have not read.
+
+   **Then the fast gates, where the pre-push hook is on.** Git's
    `pre-push` hook (installed by `cat-harness-tools/scripts/git-hooks/install.sh`)
    and, for agents, a Claude Code `PreToolUse` hook on `git push` both run
    `cat-harness-tools/scripts/pre-push-gates.ts` on the checked-out tree, before

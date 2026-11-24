@@ -79,7 +79,7 @@
       <bpmn:outgoing>F4</bpmn:outgoing>
     </bpmn:callActivity>
     <bpmn:task id="Task_Seed" name="Seed both&#10;repositories">
-      <bpmn:documentation>Seed main, then bring the content and the tools in as reviewed pull requests with their history, so neither repository's first commit is unreviewable. The seed includes every publisher the declaration promises (`sub-kg-lifecycle` stage 10): a `qa` directory with `storage` needs `.github/workflows/publish-qa.yml`, the caller of the tools layer's `layer-qa-publish.yml`, and `test/results/` ignored. Without it the declared store is never written, and once the layer stops committing its results no reader finds them.</bpmn:documentation>
+      <bpmn:documentation>Seed main, then bring the content and the tools in as reviewed pull requests with their history, so neither repository's first commit is unreviewable. The seed includes every publisher the declaration promises (`sub-kg-lifecycle` stage 10): a `qa` directory with `storage` needs `.github/workflows/publish-qa.yml`, the caller of the tools layer's `layer-qa-publish.yml`, and `test/results/` ignored. Without it the declared store is never written, and once the layer stops committing its results no reader finds them. Once `main` is on each new repository, create the state branches its declaration names (`bun run cat state:seed --init` from a checkout of that repository, the same step `state:mount` and `folio_init` run): the layer that declares a state branch creates it, and a layer that mounts it never does.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="kg-separation"/>
       </bpmn:extensionElements>
