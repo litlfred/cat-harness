@@ -308,7 +308,7 @@ _261 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `specification-management` | Governs the lifecycle, syntax, and traceability of specifications and requirements across the harness. |
 | `stalled-agent-triage` | Triage incoming work from stalled agents. |
 | `swarm-management` | Decide whether to run parallel agents at all, and if so how many, at which model level, against which decomposition. |
-| `swarm-monitor` | Supervises an active multi-agent swarm on an event-driven wakeup and 2-to-4-minute fallback timer: extracts live worker progress, checks CPU load, disk headroom, and compressed or swapped memory… |
+| `swarm-monitor` | Supervises any active multi-agent swarm bound to a parent Swarm Work Item (`epic` or `milestone` in `beans`) on event-driven wakeups and a 2-to-4-minute fallback timer: maintains measurable exit… |
 | `test-data-sets` | Curating fixed (committed, cited, SME-reviewed) and generated (template + params + seed recipe, never stored materialised) test data sets in separately declared graph directories, with… |
 | `test-engineer` | Test Engineer Skill |
 | `test-plan-execution` | Run a `test-plan/v1` against a system under test and take it to a certification decision — the five lanes of `test-plan-execution.bpmn` (requester, tester, untainted checker, certifier, attestation… |

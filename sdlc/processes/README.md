@@ -103,6 +103,10 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-processes`, hold
 | [`stalled-agent-triage.bpmn`](stalled-agent-triage.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route | "Merge manager watch: wake, read the queue live, route", "Merge request: find or elect the merge manager" |
 | [`stalled-agent-triage.checklist.md`](stalled-agent-triage.checklist.md) | Checklist — Stalled-agent triage: collect handovers, consolidate themes, recommend, re-route |  |
 | [`stalled-agent-triage.svg`](stalled-agent-triage.svg) | the picture of `stalled-agent-triage.bpmn`, generated from it |  |
+| [`swarm-dispatch-and-monitor-sweep.bpmn`](swarm-dispatch-and-monitor-sweep.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Swarm monitor sweep and handover sync | "Swarm dispatch and monitor" |
+| [`swarm-dispatch-and-monitor-sweep.checklist.md`](swarm-dispatch-and-monitor-sweep.checklist.md) | Checklist — Swarm monitor sweep and handover sync |  |
+| [`swarm-dispatch-and-monitor-sweep.prov.jsonld`](swarm-dispatch-and-monitor-sweep.prov.jsonld) | data |  |
+| [`swarm-dispatch-and-monitor-sweep.svg`](swarm-dispatch-and-monitor-sweep.svg) | the picture of `swarm-dispatch-and-monitor-sweep.bpmn`, generated from it |  |
 | [`swarm-dispatch-and-monitor.bpmn`](swarm-dispatch-and-monitor.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Swarm dispatch and monitor |  |
 | [`swarm-dispatch-and-monitor.checklist.md`](swarm-dispatch-and-monitor.checklist.md) | Checklist — Swarm dispatch and monitor |  |
 | [`swarm-dispatch-and-monitor.prov.jsonld`](swarm-dispatch-and-monitor.prov.jsonld) | data |  |

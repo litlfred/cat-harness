@@ -14,6 +14,7 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-skills`, holding
 | file | what it is | used by |
 |---|---|---|
 | [`sdlc-core/`](sdlc-core/) | _nothing declares what this holds_ | |
+| [`skill-definitions/`](skill-definitions/) | _nothing declares what this holds_ | |
 | [`spec-kit/`](spec-kit/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->

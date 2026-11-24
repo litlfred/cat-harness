@@ -193,10 +193,12 @@ it has a liveness duty: it acknowledges each merge request within about 10
 minutes of receiving it (the role's `holding.heartbeatMinutes`; a request
 wakes it), and posts a heartbeat to the coordination group with each sweep.
 
+**Live Swarm Epic handover continuity (`STRICT`).** Whenever the merge manager coordinates a multi-PR drain or swarm (for example a `'Stability'` stabilization/merge epic, a re-pin wave epic, or any goal-specific Swarm Work Item in `beans`), it binds that parent Swarm Work Item at startup (`Task_InitOrClaimSwarmEpic`) and refreshes + pushes its **Cold-Start Handover Runbook** (`origin/<default-branch>` SHA, `EC-1..EC-k` exit-gate state, Wave A/B/C PR queues, `worktree -> branch -> HEAD SHA -> active role/PID` map, standing owner directives/fences, and `< 60 s` cold-takeover commands) to the shared `beans` state branch (`cat/cat-harness/beans` via [`swarm-epic-sync`](../../tools/swarm-epic-sync/swarm-epic-sync.json) or `state:push`) on **every routine check-in sweep** ([`swarm-monitor`](swarm-monitor.md) §1). That guarantees any successor elected below can resume in under 60 seconds from `beans show <epic-id>` alone without reconstructing queue state from chat scrollback.
+
 A sibling treats the lane as vacant when its request has no acknowledgement
 within about 30 minutes (`holding.stalledAfterMinutes`), or when the merge
 manager's session is inactive. It then runs
-[`stalled-agent-triage`](stalled-agent-triage.md): it tells the owner, and
+[`stalled-agent-triage`](stalled-agent-triage.md): it reads the parent Swarm Work Item's Cold-Start Handover Runbook first, tells the owner, and
 re-elects without the stalled session. The new holder announces itself,
 takes over the queue, and tells the owner. A stalled coding agent's PR is
 handled the same way, from the other side: the merge manager runs
@@ -241,8 +243,8 @@ chat then ask to merge by card". A sibling's `ready:` message carries:
    passes without judging anything. The evidence for those pins is the root's
    own re-pin PR, not the layer's green check.
 
-A PR that is green except for a re-pin is requested as `repin+merge:
-<owner/repo>#<n> <sha>` with the same six lines; line 6 then names what
+A PR that is green except for a re-pin is requested as `repin+merge: <owner/repo>#<n> <sha>`
+with the same six lines; line 6 then names what
 the re-pin must move. The merge manager re-pins it (§"Only the merge
 manager merges and re-pins").
 
@@ -351,8 +353,7 @@ event, a merge request or a main run finishing may start a sweep early.
    prefix). `--exclude-layer <name>` (repeatable) or a config's
    `excludedLayers` replaces the default.
    Per repository it prints:
-   - each PR's verdict, with a route flag: workflow changes go to a direct
-     merge, a folio-assistant PR to the merge train, a pin on an excluded
+   - each PR's verdict, with a route flag: workflow or `subscriptions/` changes (and lone queue-depth-1 PRs) go to a single-PR merge via [`merge-to-main`](merge-to-main.md), `>= 2` ready non-content PRs in ANY repository go to [`merge-queue`](merge-queue.md) (`Process_MergeTrain` — automated CI train or steward-run local-gate train), a pin on an excluded
      layer needs the owner's consent, and `superseded-by #N` marks a
      duplicate;
    - the runner queue: queued and in-progress runs, the oldest queued run's
@@ -373,9 +374,7 @@ event, a merge request or a main run finishing may start a sweep early.
    lines in this chat.
 3. Ask the owner with **one** batch card for all of them, in priority order.
    Leave off any PR in the pre-approval ledger (below).
-4. Land what is approved. A workflow PR, or a PR in a repository with no
-   train, merges through `merge:guard`. A folio-assistant PR that does not
-   change `.github/workflows/` gets the `merge-train` label (rule 8 below).
+4. Land what is approved (`Gw_Train` in [`merge-manager-watch.bpmn`](../../processes/merge-manager-watch.bpmn)). Whenever **two or more non-content ready PRs** are queued in **any** repository (excluding `.github/workflows/` unless `MERGE_TRAIN_CARRIES_WORKFLOWS` is `true`, and `subscriptions/`), route them through `Process_MergeTrain` ([`merge-queue`](merge-queue.md), rule 8 below): in a CI-runner repository apply the `merge-train` label (or `bun run cat merge:train`) so CI judges the batch once; in a local-gate or dispatch-only repository (`ciState: none`) run `merge:overlap` on `authoredPaths`, compose `4–8` mutually independent PRs onto a clean local `merge-train/<base>-<n>` branch regenerating declared additive/generated regions once, run the combined `Task_LocalGates` suite once on the train, bisect and eject **only** any red culprit via `Process_MergeRefusal`, and land each surviving member in train order through [`merge-to-main`](merge-to-main.md) followed by `verify-merge-replay`. A lone ready PR (queue depth `1`), a workflow PR, or a `subscriptions/` PR lands individually through `Process_MergeToMain` (`merge:guard` where present, or head-SHA-pinned merge after `Task_LocalGates`).
 5. Send `landed: <repo>#<n> <sha>` to each session that was waiting, or
    `back: <repo>#<n> <reason>` for a PR that cannot land.
 6. Post the heartbeat, and re-arm the timer at the cadence above.
@@ -399,8 +398,8 @@ ledger entry.
 |---|---|
 | A merge request for a PR that is all green (rule 1 below) but not yet approved | Post its six lines in chat, then put it on the owner's next batch card (§"The merge request: six lines"). A request with no rendered preview and no reason goes back |
 | A `repin+merge:` request | Make the re-pin as its own PR, in a re-pin train with any others due, then land the requested PR on top of it (§"Only the merge manager merges and re-pins") |
-| An approved, all-green folio-assistant PR with no `.github/workflows/` change | `merge-train` (Process_MergeTrain): add the `merge-train` label instead of merging it (rule 8 below) |
-| An approved, all-green PR that changes `.github/workflows/`, or is in a repository with no train | Merge it directly through `merge:guard`. A workflow PR needs no approval beyond the batch card (owner ruling, 2026-11-07, card "Workflow PRs", A) |
+| Two or more approved, ready non-content PRs in ANY repository (with no `.github/workflows/` or `subscriptions/` change) | `merge-train` (`Process_MergeTrain` in [`merge-queue`](merge-queue.md)): in a CI-runner repository add the `merge-train` label so CI tests the batch once; in a local-gate or dispatch-only repository compose `4–8` mutually independent PRs (`merge:overlap` on `authoredPaths`) onto `merge-train/<base>-<n>`, regenerate declared regions once, run `Task_LocalGates` once, bisect/eject only any culprit via `Process_MergeRefusal`, and land surviving members in train order with `verify-merge-replay` (rule 8 below) |
+| A lone approved ready PR (queue depth `1`), or an approved PR changing `.github/workflows/` or `subscriptions/` | Land individually through [`merge-to-main`](merge-to-main.md) (`merge:guard` where present, or head-SHA-pinned merge after `Task_LocalGates`). A workflow PR needs no approval beyond the batch card (owner ruling, 2026-11-07, card "Workflow PRs", A) |
 | Queued runs 60+ minutes old with nothing landed, or the owner says runners are full | First relieve the runners (§"Runner relief"). Then `saturation-meta-merge`: offer the card, never run without the owner's tap |
 | A PR whose owner has not pushed or answered for 2+ hours | `stalled-agent-triage`: tell the owner and take it over |
 | main red, in any harness repository | §"Red mains and failing runs": sort the cause, dispatch a fixer. The fix goes to main as its own PR first; when a dispatched `post-merge-regen` verify run says main is stale, a regen dispatched for the next PR commits the fix and that PR lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green  If it is the index repository's main, disable the re-pin train until it is green (rule 7 of §"Only the merge manager merges and re-pins") |
@@ -588,13 +587,10 @@ depended on; "dependent" means it consumes a lower repository.
    does; every other PR that meets rule 1 merges as before. A sweep that
    merges a labelled PR one at a time starves the train (owner ruling,
    2026-11-06: "1. The train").
-8. **Approved PRs go through the train** (owner ruling, 2026-11-07, card
-   "Train", A). When the owner approves a folio-assistant PR that does not
-   change `.github/workflows/`, the merge manager adds the `merge-train`
-   label instead of merging it. The train lands a batch with one CI run.
-   Merging one PR at a time cost about 6.7 runs per merged PR. A PR that
-   changes workflows, and a PR in a repository with no train, merges
-   directly.
+8. **Approved multi-PR queues go through `Process_MergeTrain` in every repository (`>= 2` ready PRs)** (owner rulings, 2026-11-07, card "Train", A, and 2026-11-24). Whenever two or more non-content ready PRs are approved in the same repository (and do not touch `.github/workflows/` without `MERGE_TRAIN_CARRIES_WORKFLOWS` or `subscriptions/`), route them through `Call_Train` (`Process_MergeTrain` in [`merge-queue`](merge-queue.md)):
+   - **CI-runner repository:** add the `merge-train` label instead of merging one by one, so `merge-train.yml` lands the batch with one CI run (merging one PR at a time cost ~6.7 runs per merged PR).
+   - **Local-gate or dispatch-only repository (`ciState: none`):** run [`merge-overlap`](../../tools/merge-overlap/merge-overlap.json) on `authoredPaths`, compose `4–8` mutually independent PRs onto a clean local `merge-train/<base>-<n>` branch regenerating declared additive/generated regions once, run the combined `Task_LocalGates` suite **once** on the composed stack, bisect and eject/hand back **only** any red culprit via [`merge-refusal.bpmn`](../../processes/merge-refusal.bpmn) (`Process_MergeRefusal`), and land each surviving member in exact train order via [`merge-to-main`](merge-to-main.md) (pinned to its 40-hex head SHA, never deleting branches) with `verify-merge-replay` base parity verification.
+   - **Single-PR / workflow bypass (`Task_Direct`):** a lone ready PR (`queue depth == 1`), a `.github/workflows/` PR, or a `subscriptions/` PR merges individually through `Process_MergeToMain`.
 9. **Stacks merge bottom-up** (owner ruling, 2026-11-07). A PR whose body
    says `stacked on <repo>#<n>` waits for that PR. The merge manager lands
    the base first, the stacked PR's owner retargets it onto main and

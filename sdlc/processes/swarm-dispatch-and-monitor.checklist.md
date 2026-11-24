@@ -4,19 +4,27 @@
 
 > **Generated, and not the authority.** This is `cat-harness/sdlc/processes/swarm-dispatch-and-monitor.bpmn` (process `Process_SwarmDispatchAndMonitor`) walked as a state machine. The diagram and the workflow engine decide; this list only reads them. Follow the `next:` line of each step rather than the order on the page, and record each step with the call it names, so the engine's committed state — not this list — says which edge was taken.
 
-Dispatches parallel isolated-worktree worker agents against disjoint sub-beans under an approved or waived swarm-spawn gate, then supervises them on reactive completion wakeups and a 2-to-4-minute fallback timer until the queue drains or halts.
+Binds or cold-resumes any multi-agent swarm on a parent Swarm Work Item (epic or milestone in beans, for example a repository Stability epic, a proof-closure epic, or a literature-audit epic) carrying measurable exit criteria (EC-1..EC-k), structured child queues (completed, active, queued, idle-bac
 
-## Begin — Parallel work requested (`Swarm_Start`)
+## Begin — Swarm start or takeover (`Swarm_Start`)
 
-- Begin here: Two or more independent workstreams are candidates for parallel background execution, or the owner asks to drain an epic with monitored workers.
+- Begin here: Parallel workstreams are requested for a goal epic, or a successor coordinator/merge-steward takes over cold after a session stall exceeding the liveness window.
 - Call `workflow_start` with `process: "Process_SwarmDispatchAndMonitor"` and the subject this run is about; keep the instance id it returns.
-- next: → `Swarm_Decompose` (Decompose disjoint sub-beans)
+- next: → `Task_InitOrClaimSwarmEpic` (Bind or resume swarm epic)
 
-### 1. Decompose disjoint sub-beans (`Swarm_Decompose`)
+### 1. Bind or resume swarm epic (`Task_InitOrClaimSwarmEpic`)
 
 - Who: the `Coordinator` lane (role `session-coordinator`).
 - Skill: `bean-coordination`.
-- What: Verify that a swarm is justified over serial execution (swarm-management), partition the work into sub-beans with non-overlapping writable paths and explicit Done-when criteria in the shared beans store, and size worker count, model tiers (cost-aware routing), and host concurrency bounds.
+- What: Query beans for an active parent Swarm Work Item (epic or milestone, parameterized by --epic-id or --swarm-title; check before creating).
+- Record it: `workflow_complete` with `node: "Task_InitOrClaimSwarmEpic"`.
+- next: → `Swarm_Decompose` (Decompose disjoint sub-beans)
+
+### 2. Decompose disjoint sub-beans (`Swarm_Decompose`)
+
+- Who: the `Coordinator` lane (role `session-coordinator`).
+- Skill: `bean-coordination`.
+- What: Verify that a swarm is justified over serial execution (swarm-management), partition the goal into child work items with disjoint writable paths, explicit Done-when criteria, and non-compute-heavy idle-backlog items, and size worker count, model tiers (cost-aware routing), and host concurrency bound
 - Record it: `workflow_complete` with `node: "Swarm_Decompose"`.
 - next: → `Swarm_GwWaived` (Swarm-spawn waived?)
 
@@ -27,21 +35,21 @@ Dispatches parallel isolated-worktree worker agents against disjoint sub-beans u
   - «No» → `Owner_DecideSpawn` (Decide swarm card)
   - «Yes» → `Swarm_OpenBean` (Open the swarm epic)
 
-### 2. Decide swarm card (`Owner_DecideSpawn`)
+### 3. Decide swarm card (`Owner_DecideSpawn`)
 
 - Who: the `Owner` lane (role `user`).
 - Skill: `interaction-modality`.
-- What: Coordinator posts the full context, worker count, model tiers, relative token cost, options, and recommendation in chat, followed immediately by a tappable card; the owner approves or declines.
+- What: Coordinator posts the full context, exit criteria, worker count, model tiers, relative token cost, reporting mode (on-demand vs periodic), options, and recommendation in chat, followed immediately by a tappable card; the owner approves or declines.
 - Record it: `workflow_complete` with `node: "Owner_DecideSpawn"`.
 - next: → `Swarm_GwApproved` (Spawn approved?)
 
-### 3. Open the swarm epic (`Swarm_OpenBean`)
+### 4. Open the swarm epic (`Swarm_OpenBean`)
 
 - Who: the `Coordinator` lane (role `session-coordinator`).
 - Skill: `bean-coordination`.
-- What: Claim the parent swarm epic and initial worker sub-beans in the shared beans store through Process_BeanOpen and push state to the branch store so sibling sessions see every active claim.
+- What: Claim the parent Swarm Work Item and initial worker sub-beans in the shared beans store through Process_BeanOpen and push state to the branch store so sibling sessions see every active claim and handover header.
 - A subprocess (`Process_BeanOpen`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
-- next: → `Swarm_Dispatch` (Dispatch workers and arm timer)
+- next: → `Task_DispatchWorker` (Dispatch workers with skill brief)
 
 ### Decide — Spawn approved? (`Swarm_GwApproved`)
 
@@ -50,55 +58,32 @@ Dispatches parallel isolated-worktree worker agents against disjoint sub-beans u
   - «No» → `Swarm_EndSerial` (Run serially)
   - «Yes» → `Swarm_OpenBean` (Open the swarm epic)
 
-### 4. Dispatch workers and arm timer (`Swarm_Dispatch`)
+### 5. Dispatch workers with skill brief (`Task_DispatchWorker`)
 
 - Who: the `Coordinator` lane (role `session-coordinator`).
 - Skill: `dispatch-agent`.
-- What: Launch workers in isolated git worktrees with the verbatim progress contract, governing skill paths, interaction-modality and hand-back-to-discussion rules, and CPU thread caps; arm the 2-to-4-minute one-shot fallback wakeup timer.
-- Record it: `workflow_complete` with `node: "Swarm_Dispatch"`.
-- next: → `Work_Execute` (Execute slice and emit progress)
+- What: Spawned siblings start with a blank context: inject the mandatory role-specific Process & Skill Launch Block into every worker prompt (for a Merge Steward: repo local skills, merge-manager-watcher, merge-queue / Process_MergeTrain + merge-overlap + Process_MergeRefusal, merge-to-main + Task_LocalGat
+- Record it: `workflow_complete` with `node: "Task_DispatchWorker"`.
+- next: → `Work_Execute` (Execute slice or idle backlog)
 
 ## Done — Run serially (`Swarm_EndSerial`)
 
-- The instance completes here: Swarm declined or unjustified; work proceeds sequentially one sub-bean at a time. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- The instance completes here: Swarm declined or unjustified; work proceeds sequentially one child work item at a time. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
 
-### 5. Execute slice and emit progress (`Work_Execute`)
+### 6. Execute slice or idle backlog (`Work_Execute`)
 
 - Who: the `Worker agents` lane (role `authoring-agent`).
 - Skill: `continual-progress`.
-- What: Each worker executes its claimed disjoint slice in its worktree, tees long commands to logs, emits live progress blocks every ~90 seconds and at each step, runs verification, pushes its branch and draft/ready PR, and emits a final DONE block without merging.
+- What: Each worker executes its claimed disjoint slice in its worktree (or advances a right-scoped non-heavy idle-backlog item in a separate worktree while waiting on single-core compute, never checking out mid-build), emits live progress blocks, runs verification, pushes its branch and PR, and emits DONE 
 - Record it: `workflow_complete` with `node: "Work_Execute"`.
-- next: → `Mon_Sweep` (Sweep progress, queues and swap)
+- next: → `Call_MonitorSweep` (Sweep, triage and sync handover)
 
-### 6. Sweep progress, queues and swap (`Mon_Sweep`)
-
-- Who: the `Swarm monitor` lane (role `swarm-monitor`).
-- Skill: `swarm-monitor`.
-- What: Woken reactively by worker completion/messages or by the 2-to-4-minute fallback timer: run the targeted JSONL progress extractor, query live forge PR/issue counts and synced beans states, and inspect CPU load, root disk free space (df -h /), and total plus compressed/swap memory (top -l 1 -o mem -st
-- Record it: `workflow_complete` with `node: "Mon_Sweep"`.
-- next: → `Mon_GwHealthy` (Stall, drift or swap leak?)
-
-### Decide — Stall, drift or swap leak? (`Mon_GwHealthy`)
-
-- Yes when any worker subprocess breaches the memory+compressed/swap or root-disk floor, a worker is silent for over 3 minutes or repeats step counters across two sweeps, workers collide on a path, or completed slices diverge structurally.
-- Call `workflow_complete` with `node: "Mon_GwHealthy"` and `outcome` set to the label that holds:
-  - «Yes» → `Mon_Triage` (Nudge, kill leak or pull Andon)
-  - «No» → `Mon_Report` (Publish scoreboard and rollup)
-
-### 7. Nudge, kill leak or pull Andon (`Mon_Triage`)
+### 7. Sweep, triage and sync handover (`Call_MonitorSweep`)
 
 - Who: the `Swarm monitor` lane (role `swarm-monitor`).
 - Skill: `swarm-monitor`.
-- What: Immediately SIGKILL any runaway subprocess leaking into compressed memory or swapfiles and message its worker; nudge a silent worker via SendMessage; route dead sessions through stalled-agent-triage; or pull the Andon cord to halt remaining workers on structural divergence or host exhaustion.
-- Record it: `workflow_complete` with `node: "Mon_Triage"`.
-- next: → `Mon_Report` (Publish scoreboard and rollup)
-
-### 8. Publish scoreboard and rollup (`Mon_Report`)
-
-- Who: the `Swarm monitor` lane (role `swarm-monitor`).
-- Skill: `swarm-monitor`.
-- What: Synthesize a self-contained human status update with zero naked worker codes, bare PR ranges, or unglossed bean IDs: (A) Live Repository Queue Scoreboard across PRs, Work Items, and Issues, and (B) Milestone and Epic Progress Rollups stating the track goal, landed verified results with metrics, read
-- Record it: `workflow_complete` with `node: "Mon_Report"`.
+- What: Run Process_SwarmMonitorSweep on reactive wakeups, routine check-in ticks, or on-demand status requests: inspect worker progress, queues, and compressed/swap memory, triage leaks or stalls, assign non-heavy idle-backlog items to compute-bound workers, push a fresh Cold-Start Handover Runbook to bean
+- A subprocess (`Process_SwarmMonitorSweep`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Mon_GwReadyPr` (Verified PR ready?)
 
 ### Decide — Verified PR ready? (`Mon_GwReadyPr`)
@@ -108,7 +93,7 @@ Dispatches parallel isolated-worktree worker agents against disjoint sub-beans u
   - «Yes» → `Steward_QueuePr` (Queue PR in merge watch)
   - «No» → `Mon_GwJoinNext`
 
-### 9. Queue PR in merge watch (`Steward_QueuePr`)
+### 8. Queue PR in merge watch (`Steward_QueuePr`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - Skill: `merge-manager-watcher`.
@@ -123,27 +108,27 @@ Dispatches parallel isolated-worktree worker agents against disjoint sub-beans u
 
 ### Decide — Slots active or refillable? (`Mon_GwContinue`)
 
-- Yes while workers remain live or unclaimed, unblocked sub-beans remain in the shared beans queue with healthy host headroom and no Andon halt.
+- Yes while workers remain live or unclaimed, unblocked child items remain before exit criteria EC-1..EC-k are all met, with healthy host headroom and no Andon halt.
 - Call `workflow_complete` with `node: "Mon_GwContinue"` and `outcome` set to the label that holds:
   - «Yes» → `Mon_Refill` (Refill slots and re-arm timer)
   - «Drained» → `Mon_CloseBean` (Close or park swarm epic)
 
-### 10. Refill slots and re-arm timer (`Mon_Refill`)
+### 9. Refill slots and re-arm timer (`Mon_Refill`)
 
 - Who: the `Swarm monitor` lane (role `swarm-monitor`).
 - Skill: `swarm-monitor`.
-- What: Claim the next unblocked sub-beans in the shared beans store (pushing claims to the branch store), dispatch fresh isolated-worktree workers into freed slots, and re-arm the 2-to-4-minute one-shot fallback timer before ending the turn.
+- What: Claim the next unblocked child work items in the shared beans store (pushing updated queue and handover state to the branch store), dispatch fresh isolated-worktree workers into freed slots with the mandatory role-specific Process & Skill Launch Block and progress contract, and re-arm the 2-to-4-min
 - Record it: `workflow_complete` with `node: "Mon_Refill"`.
-- next: → `Work_Execute` (Execute slice and emit progress)
+- next: → `Work_Execute` (Execute slice or idle backlog)
 
-### 11. Close or park swarm epic (`Mon_CloseBean`)
+### 10. Close or park swarm epic (`Mon_CloseBean`)
 
 - Who: the `Swarm monitor` lane (role `swarm-monitor`).
 - Skill: `todo-manager`.
-- What: Cancel any remaining wakeup timer and run Process_BeanClose on the swarm epic: complete and archive when all sub-beans landed, or record explicit blockers/owner decisions in beans and hand back cleanly.
+- What: Cancel any remaining wakeup or periodic report timer and run Process_BeanClose on the parent Swarm Work Item: complete and archive once EC-1..EC-k are satisfied, or record explicit blockers and cold-takeover dispatch lines in beans and hand back cleanly.
 - A subprocess (`Process_BeanClose`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Mon_EndClosed` (Swarm closed)
 
 ## Done — Swarm closed (`Mon_EndClosed`)
 
-- The instance completes here: All swarm slots have drained or halted cleanly, final Dual Scoreboard and Milestone Rollup is published, and shared work-plan state is synced. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
+- The instance completes here: All swarm exit criteria have been met or cleanly parked, the final two-table Human-Consumable Swarm Status Report is published, and the Swarm Work Item state is synced. `workflow_next` then reports nothing enabled — that, not this line, is the record of completion.
