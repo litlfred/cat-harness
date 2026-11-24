@@ -107,6 +107,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `tools`, holding `tools`.
 | [`serve-rendering/`](serve-rendering/) | _nothing declares what this holds_ | |
 | [`serve-rendering-py/`](serve-rendering-py/) | _nothing declares what this holds_ | |
 | [`site-build-local/`](site-build-local/) | _nothing declares what this holds_ | |
+| [`site-publish-after/`](site-publish-after/) | _nothing declares what this holds_ | |
 | [`site-search-index/`](site-search-index/) | _nothing declares what this holds_ | |
 | [`site-search-scopes/`](site-search-scopes/) | _nothing declares what this holds_ | |
 | [`site-viewer/`](site-viewer/) | _nothing declares what this holds_ | |

@@ -13,6 +13,19 @@
   ],
   "statements": [
     {
+      "key": "session-start-hook-ran",
+      "label": "Confirm the session-start hook ran",
+      "conformance": "SHALL",
+      "requirement": "Before its first durable step the agent MUST confirm that the checkout's session-start hook ran, and MUST run its commands by hand, from the checkout root and in order, when it did not. The hook runs only when a session starts inside the checkout, so a repository attached or cloned partway through a session, or a session opened outside the checkout, never runs it. The skill remote-mount, section \"When the session-start hook did not run\", gives the commands and the checks.",
+      "successCriteria": [
+        {
+          "key": "hook-state-checked",
+          "criterion": "Before the agent reports any mounted path, state graph or platform tool as unavailable, the declared state graphs and remote-mounted layers are on disk, either because the hook ran or because the agent ran its commands by hand.",
+          "verification": "inspection"
+        }
+      ]
+    },
+    {
       "key": "detect-role",
       "label": "Detect user role",
       "conformance": "SHALL",
@@ -24,6 +37,9 @@
           "criterion": "The agent session log records the resolved user role derived from role-assignments.json.",
           "verification": "test"
         }
+      ],
+      "dependsOn": [
+        "session-start-hook-ran"
       ]
     },
     {
