@@ -480,12 +480,16 @@ Resolving conflicts inside a train blocks everything else from landing. The
 `overlapKind` table above still says what a collision NEEDS; the steward
 provides only the `none` row. Every other kind goes back to its owner.
 
-## The automated merge train (folio-assistant, work item `folio-assistant-hd58`)
+## Two execution modes of `Process_MergeTrain` (`>= 2` ready PRs in any repository — STRICT)
 
-Where a repository runs `merge-train.yml`, as it does in folio-assistant, the steward's hand train is a workflow. A person opts a PR in by adding the `merge-train` label (a bot's label does not count) or by approving it. Every 15 minutes, when there is work, the train:
+`Process_MergeTrain` (`sdlc/processes/merge-train.bpmn`, entered via `Gw_Train` → `Call_Train` in [`merge-manager-watch.bpmn`](../../processes/merge-manager-watch.bpmn)) applies to **every repository whenever two or more non-content ready PRs are queued** — both repositories with automated GitHub Actions CI runners and repositories gated locally or via dispatch-only workflows. Only a lone ready PR (`queue depth == 1`), a `.github/workflows/` PR (when `MERGE_TRAIN_CARRIES_WORKFLOWS` is unset), or a `subscriptions/` PR bypasses the train into single-PR `Process_MergeToMain`.
+
+### Mode A — Automated CI-runner merge train (`merge-train.yml`)
+
+Where a repository runs `.github/workflows/merge-train.yml`, the steward's train executes as a workflow. A person opts a PR in by adding the `merge-train` label (a bot's label does not count) or by approving it. Every 15 minutes, when there is work, the train:
 1. judges the open train PR (`merge-train-batch`) as the re-pin train is judged: every check finished, the full tier ran, and no check fails that passes on main, check by check. When green, it merges the train PR with a merge commit, and every member is then on main;
-2. on red, ejects a batch of one (label removed, failures listed), or splits a larger batch in halves and tests the first half next (about log₂ k extra runs for one culprit);
-3. otherwise stacks the ready opted-in PRs on main with `merge:train` (in folio-assistant) and opens ONE train PR, which CI judges once.
+2. on red, ejects a batch of one (label removed, failures listed), or splits a larger batch in halves and tests the first half next (about $\log_2 k$ extra runs for one culprit);
+3. otherwise stacks the ready opted-in PRs on main with `merge:train` and opens ONE train PR, which CI judges once.
 
 **Owner ruling, 2026-11-05 ("Resolve generated only").** For the automated train this supersedes §"A train admits only members that STACK cleanly" for GENERATED paths only. A conflict that a declared generated-path pattern covers is resolved mechanically at train time and proved by the candidate's CI. A conflict in any hand-written file ejects that PR with a comment, and it waits for its author. No person resolves conflicts in the train.
 
@@ -493,7 +497,17 @@ Where a repository runs `merge-train.yml`, as it does in folio-assistant, the st
 
 `merge-main.yml` skips PRs labelled `merge-train`: they are integrated once, at train time, never on each push to main.
 
-**Owner ruling, 2026-11-07, card "Train", A.** When the owner approves a folio-assistant PR that does not change `.github/workflows/`, the merge manager adds the `merge-train` label instead of merging it, so the train lands it in a batch with one CI run. Merging one PR at a time cost about 6.7 runs per merged PR. Workflow PRs, and repositories with no train, merge directly, and a workflow PR needs no approval beyond the batch card (card "Workflow PRs", A).
+**Owner ruling, 2026-11-07, card "Train", A.** When the owner approves an eligible non-workflow PR in a CI-train repository, the merge manager adds the `merge-train` label instead of merging it directly, so the train lands it in a batch with one CI run (merging one PR at a time cost ~6.7 runs per merged PR).
+
+### Mode B — Steward-run local-gate merge train (`ciState: none` or dispatch-only repositories)
+
+In a repository with no automated pull-request CI (`ciState: none` in [`merge-to-main`](merge-to-main.md)) or dispatch-only workflows, running full local builds/verifiers serially across $N$ PRs wastes $N\times$ wall-clock compute and stalls sibling throughput. Whenever `>= 2` ready non-content PRs are queued, the `merge-steward` runs `Process_MergeTrain` locally across **`4–8` mutually independent PRs per train**:
+
+1. **Classify pairwise independence on `authoredPaths` ([`merge-overlap`](../../tools/merge-overlap/merge-overlap.json)):** Read each candidate's `base.ref`, 40-hex head SHA, and diff against `origin/<base>`. Admit `4–8` candidates whose pairwise `overlapKind` is `none` or `generated-only` (declared additive/generated regions). Hand back any candidate with conflicting `authored` overlap or dirty mergeability immediately through [`merge-refusal.bpmn`](../../processes/merge-refusal.bpmn) (`Process_MergeRefusal`).
+2. **Compose `merge-train/<base>-<n>` on a clean worktree (`Task_Admit` → `Call_MergeMembers`):** Confirm `git status --porcelain` is empty, create `merge-train/<base>-<n>` from fresh `origin/<base>`, merge each admitted PR head in queue order with `--no-ff`, and regenerate declared additive/generated regions **once** across the composed stack.
+3. **Run the combined `Task_LocalGates` suite ONCE (`Call_Gates`):** Execute the repository's full local gate suite (proof/code build, test suite, schema/witness/audit validators, and derived-file checks) **once** on `merge-train/<base>-<n>`, recording exact commands, exit codes, and the composed train tree SHA.
+4. **Attribute, bisect, and eject ONLY the culprit on red (`Task_Attribute` → `Task_Bisect` → `Task_Eject` → `Process_MergeRefusal`):** Never discard a `4–8` PR train because one member broke a gate. Attribute from per-PR pre-checks first; if every member passed alone, bisect the stack ($\lceil \log_2 k \rceil$ local gate runs), eject **only** the offending PR, file its blocking `Merge refused: #<n> <cause>` bug work item via `Process_MergeRefusal`, and re-verify the surviving stack.
+5. **Land in train order and verify merge replay (`Call_MergeToMain` + `verify-merge-replay`):** Under recorded owner batch authorisation ([`merge-to-main`](merge-to-main.md) §"Recording the authorisation"), land each surviving member onto `<base>` in exact train order pinned to its evaluated 40-hex head SHA (**never passing `--delete-branch`**; applying the single regenerated additive commit if required by the repo's merge workflow), then run **post-merge replay verification (`verify-merge-replay`)**: fetch `origin/<base>`, verify `git diff <tested-train-tree> origin/<base>` is empty (zero drift and zero silently dropped tracked files), and record `"not verified: no CI (verified via local merge-train replay @ <sha>)"` on the parent Swarm Work Item and linked issues.
 
 ## Regenerate on a clean tree, and check it
 

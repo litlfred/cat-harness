@@ -16,6 +16,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/dispatch-agent.md#provenance-2"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/dispatch-agent.md#provenance-3"
         }
       ]
     },
@@ -44,6 +47,20 @@
       ],
       "dcterms:date": [
         "2026-11-05"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/dispatch-agent.md#provenance-3",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "issue",
+      "cat-harness:section": "3. Parent-side heartbeat and Swarm Monitor synthesis",
+      "prov:value": "Updated in cat-harness#1396 (2026-11-23): wired swarm-monitor.md and Process_SwarmDispatchAndMonitor whenever two or more background workers run, separating internal progress extraction from human-consumable status reports (Dual Scoreboard + Milestone/Epic Progress Rollups, zero bare worker/PR/bean shorthands) and replacing folio-specific examples with platform-generic software/documentation examples.",
+      "cat-harness:refs": [
+        "cat-harness#1396",
+        "2026-11-23"
+      ],
+      "dcterms:date": [
+        "2026-11-23"
       ]
     }
   ]

@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-manager-watch\n"
-"POT-Creation-Date: 2026-11-15T18:04:37.894Z\n"
+"POT-Creation-Date: 2026-11-24T08:58:07.964Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -14,19 +14,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: sdlc/processes/merge-manager-watch.bpmn:144
+#. Diagram element documentation
+msgid "A lone ready PR (queue depth 1), a .github/workflows/ PR (when MERGE_TRAIN_CARRIES_WORKFLOWS is unset), or a subscriptions/ PR lands individually through Process_MergeToMain (merge:guard where present, or head-SHA-pinned merge after Task_LocalGates on no-CI repositories). A workflow PR needs no approval beyond the batch card (owner ruling, 2026-11-07, card Workflow PRs, A)."
+msgstr ""
+
 #: sdlc/processes/merge-manager-watch.bpmn:150
 #. Diagram element documentation
 msgid "A PR owner who stalled: tell the owner, then take the stalled PR over."
-msgstr ""
-
-#: sdlc/processes/merge-manager-watch.bpmn:144
-#. Diagram element documentation
-msgid "A workflow PR, or a PR in a repository with no train, merges directly. A workflow PR needs no approval beyond the batch card (owner ruling, 2026-11-07, card Workflow PRs, A)."
-msgstr ""
-
-#: sdlc/processes/merge-manager-watch.bpmn:139
-#. Diagram element documentation
-msgid "Add the merge-train label instead of merging; the train lands the batch with one CI run."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:106
@@ -76,7 +71,7 @@ msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:107
 #. Diagram element documentation
-msgid "Every check run on the head SHA has finished, and anything pending blocks; wait for every tier, e2e included. The full tier ran (the No new failures judge, or every full test shard); a draft or fast-tier-only pass never counts. Every judge passes (owner ruling, 2026-11-07): an aggregate job covers only the parts it names, and each test shard's own no-new-failures table lists 0 new failures; with no judge, each check concluded success, skipped or neutral. A cancelled job counts only when a later run of the same workflow on the same head passed that job. merge:watch prints this verdict per PR."
+msgid "Every check run on the head SHA has finished, and anything pending blocks; wait for every tier, e2e included. The full tier ran (the No new failures judge, or every full test shard); a draft or fast-tier-only pass never counts. Every judge passes (owner ruling, 2026-11-07): an aggregate job covers only the parts it names, and each test shard's own no-new-failures table lists 0 new failures; with no judge, each check concluded success, skipped or neutral. A cancelled job counts only when a later run of the same workflow on the same head passed that job. merge:watch prints this verdict per PR. In a local-gate or dispatch-only repository (ciState: none), head readiness requires out-of-draft, clean mergeability against base, and passing author pre-checks; the combined Task_LocalGates suite then gates the composed merge train (or single merge result) before landing."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:197
@@ -109,14 +104,14 @@ msgstr ""
 msgid "Main red"
 msgstr ""
 
-#: sdlc/processes/merge-manager-watch.bpmn:143
-#. Diagram label
-msgid "Merge it through merge:guard"
-msgstr ""
-
 #: sdlc/processes/merge-manager-watch.bpmn:14
 #. Diagram label
 msgid "Merge manager watch: wake, read the queue live, route"
+msgstr ""
+
+#: sdlc/processes/merge-manager-watch.bpmn:143
+#. Diagram label
+msgid "Merge single PR to main"
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:19
@@ -212,6 +207,11 @@ msgstr ""
 #: sdlc/processes/merge-manager-watch.bpmn:130
 #. Diagram label
 msgid "Rides the train?"
+msgstr ""
+
+#: sdlc/processes/merge-manager-watch.bpmn:139
+#. Diagram element documentation
+msgid "Run Process_MergeTrain across the queued ready PRs: in a CI-runner repository add the merge-train label (or run merge:train) so CI judges the combined batch once; in a local-gate or dispatch-only repository compose 4-8 mutually independent PRs (merge-overlap on authoredPaths) onto merge-train/<base>-<n>, regenerate declared regions once, run Task_LocalGates once on the stack, bisect and eject only any culprit via Process_MergeRefusal, and land surviving members in train order with verify-merge-replay."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:207
@@ -311,7 +311,7 @@ msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:131
 #. Diagram element documentation
-msgid "Yes for a folio-assistant PR that does not change .github/workflows/. No for a workflow PR, or a PR in a repository with no train (owner ruling, 2026-11-07, card Train, A)."
+msgid "Yes in ANY repository when 2 or more non-content ready PRs are queued (excluding .github/workflows/ unless MERGE_TRAIN_CARRIES_WORKFLOWS is true, and subscriptions/): covers both CI-runner repositories (where the merge-train label / merge-train.yml lands the batch in one CI run) and local-gate or dispatch-only repositories (where the merge steward runs merge-overlap on authoredPaths, composes 4-8 mutually independent PRs onto a local merge-train/<base>-<n> branch regenerating declared additive/generated regions once, runs the combined Task_LocalGates suite once on the train, bisects and ejects only any red culprit via Process_MergeRefusal, and lands each surviving member in train order through Process_MergeToMain with verify-merge-replay). No when only 1 ready PR is queued, or for a workflow or subscriptions PR."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:118

@@ -30,6 +30,7 @@ next, which may be no one in particular.
 - **Before a long or risky step**: a 30-minute regenerate, a big merge, a
   disk-heavy run.
 - **At the end of an arc**, even a successful one, if anything stays open.
+- **On every routine Swarm Monitor or Merge Steward check-in tick** when coordinating a multi-agent swarm (`Process_SwarmMonitorSweep` in [`sdlc/processes/swarm-dispatch-and-monitor-sweep.bpmn`](../../processes/swarm-dispatch-and-monitor-sweep.bpmn)): refresh the parent Swarm Work Item's Cold-Start Handover Runbook via [`swarm-epic-sync`](../../tools/swarm-epic-sync/swarm-epic-sync.json) and push to `cat/cat-harness/beans` continuously (whether chat reporting is `periodic` or `on-demand`) so a session stall never leaves the successor without a `< 60 s` takeover snapshot ([`swarm-monitor`](swarm-monitor.md) §1).
 - **When a steward or the owner asks.**
 
 Write it **short and early**, then update it. A 20-line report pushed now is

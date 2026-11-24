@@ -31,5 +31,6 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-tools`, holding 
 | [`merge-train/`](merge-train/) | _nothing declares what this holds_ | |
 | [`precheck/`](precheck/) | _nothing declares what this holds_ | |
 | [`release-please/`](release-please/) | _nothing declares what this holds_ | |
+| [`swarm-epic-sync/`](swarm-epic-sync/) | _nothing declares what this holds_ | |
 
 <!-- kg:subgraph:end -->

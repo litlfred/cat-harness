@@ -121,10 +121,10 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
 
 ### Decide — Rides the train? (`Gw_Train`)
 
-- Yes for a folio-assistant PR that does not change .github/workflows/.
+- Yes in ANY repository when 2 or more non-content ready PRs are queued (excluding .github/workflows/ unless MERGE_TRAIN_CARRIES_WORKFLOWS is true, and subscriptions/): covers both CI-runner repositories (where the merge-train label / merge-train.yml lands the batch in one CI run) and local-gate or di
 - Call `workflow_complete` with `node: "Gw_Train"` and `outcome` set to the label that holds:
   - «Yes» → `Call_Train` (Merge train)
-  - «No» → `Task_Direct` (Merge it through merge:guard)
+  - «No» → `Task_Direct` (Merge single PR to main)
 
 ### 6. Post the request in chat, then the batch card (`Task_Card`)
 
@@ -153,15 +153,15 @@ The loop run by the session that holds the merge-steward lane (actor merge-manag
 ### 9. Merge train (`Call_Train`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
-- What: Add the merge-train label instead of merging; the train lands the batch with one CI run.
+- What: Run Process_MergeTrain across the queued ready PRs: in a CI-runner repository add the merge-train label (or run merge:train) so CI judges the combined batch once; in a local-gate or dispatch-only repository compose 4-8 mutually independent PRs (merge-overlap on authoredPaths) onto merge-train/<base>
 - A subprocess (`Process_MergeTrain`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `End_Done` (Wake handled)
 
-### 10. Merge it through merge:guard (`Task_Direct`)
+### 10. Merge single PR to main (`Task_Direct`)
 
 - Who: the `Merge steward` lane (role `merge-steward`).
 - Skill: `merge-manager-watcher`.
-- What: A workflow PR, or a PR in a repository with no train, merges directly.
+- What: A lone ready PR (queue depth 1), a .github/workflows/ PR (when MERGE_TRAIN_CARRIES_WORKFLOWS is unset), or a subscriptions/ PR lands individually through Process_MergeToMain (merge:guard where present, or head-SHA-pinned merge after Task_LocalGates on no-CI repositories).
 - Record it: `workflow_complete` with `node: "Task_Direct"`.
 - next: → `End_Done` (Wake handled)
 

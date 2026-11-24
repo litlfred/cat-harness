@@ -56,6 +56,7 @@
     "specification-management",
     "stalled-agent-triage",
     "swarm-management",
+    "swarm-monitor",
     "test-data-sets",
     "test-engineer",
     "test-plan-execution",

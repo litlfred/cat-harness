@@ -115,15 +115,15 @@ Four consequences:
    `merge-authorisation.dmn` routes `waiver` + `none` to `ask`.
 2. **The merging session runs the repository's own gates locally**
    (`Task_LocalGates`), on the merge result rather than the branch: `bun test`,
-   the typecheck, and whatever the repository's README or `package.json` names.
-   Record each command, its exit code and the SHA it ran on. A local run is
+   the typecheck, and whatever the repository's README, `package.json`, or `.claude/skills/local/*.md` names.
+   When `>= 2` ready PRs are queued, `Process_MergeTrain` Mode B ([`merge-queue`](merge-queue.md) §"Mode B — Steward-run local-gate merge train") composes `4–8` mutually independent PRs (`merge:overlap` on `authoredPaths`) onto a local `merge-train/<base>-<n>` branch, regenerates declared additive/generated regions once, and runs `Task_LocalGates` **once** on the composed stack (bisecting and ejecting only any culprit via `Process_MergeRefusal`). Record each command, its exit code, and the composed train SHA (plus member head SHAs) it ran on. A local run is
    evidence the owner can weigh. It is not CI: the container was contended, the
    tree was yours, and nobody else can re-run it. Say that.
 3. **The question to the owner says so in words**: *"This repository runs no
    CI. Nothing but my local run tested this head."* An authorisation given
    without that sentence was given about a different merge.
-4. **After the merge, "main is green" is reported as "not verified: no CI".**
-   It is never "green".
+4. **After the merge, "main is green" is reported as "not verified: no CI" (plus `verify-merge-replay` evidence on a local train).**
+   It is never reported as automated CI "green". When landing a local-gate merge train in train order, run **merge-replay verification (`verify-merge-replay`)** at `Task_ConfirmBase` confirming `git diff <tested-train-tree> origin/<base>` is empty (zero tree drift and zero silently dropped tracked files) and record `"not verified: no CI (verified via local merge-train replay @ <sha>)"`.
 
 `unreadable` is different. It means the runs could not be asked about: no
 token, an API error, a rate limit. The remedy is to make the read work, not to
