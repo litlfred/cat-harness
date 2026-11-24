@@ -33,6 +33,7 @@ can read it.
 | 5 | **The solution** | what changed, grouped by idea, not by commit | a table or short list, at most one line per idea |
 | 6 | **How to use it** | the commands, flags or pages a reader runs or opens | copy-pasteable, with prerequisites stated |
 | 7 | **What is not done** | untested paths, known gaps, follow-ups | nothing a reviewer would be surprised by later |
+| 7a | **Content review** (`content` PRs only) | which review process the content went through, and where its record is: owner card id, committee or review-log link, editing-hci-validation instance, review page | a `## Content review` section with at least one pointer; `merge:guard` check 9 reads it ([`prepare-merge`](prepare-merge.md) §"Content PRs") |
 | 8 | **Status** | the live checklist ([`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) invariant 3) | CI state on the CURRENT head |
 
 Scale it to the change. A one-file fix can be three short paragraphs:

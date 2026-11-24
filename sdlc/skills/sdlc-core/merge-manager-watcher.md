@@ -406,6 +406,136 @@ ledger entry.
 | main red, in any harness repository | §"Red mains and failing runs": sort the cause, dispatch a fixer. The fix goes to main as its own PR first; when a dispatched `post-merge-regen` verify run says main is stale, a regen dispatched for the next PR commits the fix and that PR lands with priority (`merge-queue` §"Merge steward procedure: post-merge verification"). Trains wait for main to be green  If it is the index repository's main, disable the re-pin train until it is green (rule 7 of §"Only the merge manager merges and re-pins") |
 | Nothing to do | End the turn with no message |
 
+## Merging across dependent repositories (STRICT)
+
+Owner rulings, 2026-11-15 ("prioritize in order of layer dependency";
+"update merge manager skills with these (say more generally in terms of
+dependencies in software PRs)"; "and with all the improvements we made in
+this thread to process"). The rules are written for any project; names in
+them are examples only. They hold for any set of repositories where
+one consumes another, by package, by pin or by submodule. "Lower" means
+depended on; "dependent" means it consumes a lower repository.
+
+1. **Dependency order.** Merge PRs and fix red mains in the lowest repository
+   first. Move up to a dependent only when every repository below it has a
+   green main and none of its ready PRs is left unmerged. Within one
+   repository, finish its ready PRs and fix its red main before leaving it.
+   One exception: a pin update (re-pin) that carries a lower repository's fix
+   may land as soon as that fix is on the lower repository's main.
+2. **CI queue in dependency order.** When runners are scarce, cancel runs that
+   are *queued* (never running) for dependent repositories, and re-queue
+   them lowest dependency first, feeding each level as runners free up.
+   Never cancel an integration run on main or a re-pin run that has started.
+3. **Batching.** Combine a repository's ready non-content PRs into one CI run
+   (a batch or train), merge the batch on the fast checks, and run the full
+   checks on main after it lands. Fix any red on main at once, as a P0. When
+   a batch goes red, split it to find the member at fault, and land the rest.
+   **CI backlog playbook** (owner, 2026-11-15: "if we get a backlog of CI,
+   then stack PRs and merge together/fix fallout"). Rule 3 is the normal
+   mode; this is what it becomes when CI cannot keep up.
+   - *Switch in* when, in one repository, the oldest queued run is 60+
+     minutes old and nothing has landed in that time (the "Saturated" route),
+     or three or more ready PRs are each waiting on their own CI run.
+   - *Do:* stop running CI per PR. Stack the waiting ready non-content PRs
+     of that repository onto one branch, one merge each, run CI once on the
+     stack, and merge them together when it passes the fast checks. Then
+     watch main's full run and fix any red on main at once (rule 3), splitting
+     out the member at fault if it cannot be fixed quickly. Cancel the now
+     redundant queued per-PR runs (queued only, rule 2). Re-pins and
+     integration PRs are not stacked with ordinary PRs: they still need full
+     green (rule 9), and content PRs are never stacked (rule 5).
+   - *Switch back* when that repository's oldest queued run is under 15
+     minutes old and its main is green: return to one batch per sweep.
+   - Say in the status report (rule 10) which repositories are in backlog
+     mode, and since when.
+4. **Stable point.** The work is stable when all of these hold, each one
+   checkable: every repository's main is green on its latest run of each push
+   workflow; every integration and re-pin has landed, so each dependent pins
+   the current main of everything below it and is green on that pin; no
+   ready non-content PR is left unmerged; and every published site is at or
+   after its main's last publish-relevant commit. Report progress per
+   repository in dependency order, with counts of open, CI running, ready,
+   red and conflicting PRs, and main's state. Leave content PRs out of the
+   report (they are listed, not counted).
+5. **Content PRs** ([`prepare-merge`](prepare-merge.md) §"Content PRs"):
+   labelled `content`, never in the queue or the report. They stay drafts
+   until the owner asks to review them. A functional change inside one
+   (code, configuration, pins, schema, CI, tooling) is split out into its
+   own non-content PR and goes through the normal batch. A content PR is
+   brought up to its base's current main only once every repository it
+   depends on is stable (rule 4), so it is merged once, not chased.
+6. **Reviving stale drafts.** A draft picked up again is brought in line
+   with current decisions and infrastructure: current main merged in,
+   current pins, current rules, current shared tools in place of older local
+   copies, and anything superseded since it was written dropped. Where it
+   clashes with a later decision, flag it to the owner (a card) instead of
+   pushing the old approach.
+7. **Never commit to a shared state branch from a sparse or partial
+   checkout.** A commit records the whole tree, so files missing from a
+   sparse checkout are recorded as deleted. On 2026-11-15 one such commit
+   wiped the work-item branch. Use a full checkout (a worktree of the branch, or
+   a full clone at depth 1) for any write to a state branch. A state branch
+   is checked out the same way every time, so a write never depends on how
+   the last session happened to clone it.
+8. **One merge manager.** Exactly one session merges and re-pins. Every
+   other session hands its PR to it (§"Only the merge manager merges and
+   re-pins") and never merges, even its own PR.
+9. **Re-pins and integration PRs merge only on full green**: the full tier
+   on the head, never a fast-tier pass. Small, verified fixes in one
+   repository may stack (land one after another without waiting for main's
+   full run between them); the merge manager then fixes any fallout on main
+   at once (rule 3).
+10. **Status reports at a fixed interval.** One report per interval, per
+    repository in dependency order, with total, left and in-progress counts,
+    what is running, blockers, and progress towards the stable point
+    (rule 4). Link the thread or session that owns each item. While the
+    owner is away, hold the reports and send one catch-up when they return.
+11. **A draft register.** Keep one file (for example `drafts.md`) listing
+    every open draft PR with its owner and either "being worked on" or "not
+    worked on: <why>". Act on every stale draft: revive it (rule 6), close
+    it as superseded, or ask the owner.
+12. **No idle agents.** An agent with nothing in flight either resumes its
+    own to-dos or stands down and says so. Nobody sits idle holding open
+    questions; a question goes to the owner (rule 13) and the agent carries
+    on with what does not depend on it.
+13. **Owner questions on tappable cards.** Write the question out in full
+    first, with every option, its trade-off and a recommendation, then post
+    one card with the same options. One card per question, and one session
+    asks it: before posting, check that no other session has the same
+    question open.
+14. **Approvals are recorded durably.** An owner approval is written where
+    the next agent will find it: the PR's own record (for content, its
+    `## Content review` section) or the standing-rules record, citing the
+    card or message. An approval given before a later hold rule still
+    stands for the PRs it named.
+15. **Ignored repositories.** A repository the owner says to ignore is left
+    out of the work and out of every report until the owner says otherwise.
+16. **A lower repository never waits on a higher one** ([`merge-queue`](merge-queue.md)
+    §"A lower repository never waits on a higher one" has the CI side) (owner, 2026-11-15:
+    "why are the 2 not merged? they are lowest"). A PR in a lower repository
+    is never blocked on a dependent's lock or pins. When its only red is a
+    gate that also fails on its own main because CI mounted a dependent's
+    older pins of it (for example, a generated-file check run with the tools
+    version pinned in a downstream index), that red is not the PR's, and the
+    PR merges. The lasting fix is for each repository's CI to test against
+    its own dependencies, never a dependent's pins.
+17. **Ready and green merges at once, lowest first** ("ready to merge" is
+    defined in [`merge-queue`](merge-queue.md) §"What 'ready to merge'
+    means"). A ready PR that is
+    green on the fast checks, or red only on reds that also fail on main and
+    that it does not cause, merges in the same sweep, in dependency order.
+    It does not wait for the next batch.
+18. **Every red PR has an active fixer.** A red PR is never left waiting on
+    something else. In the same sweep the merge manager names the thread or
+    session that owns the fix, or dispatches a fix agent, and the draft
+    register (rule 11) and the status report (rule 10) show who is fixing
+    it.
+19. **Stall watchdog** (owner, 2026-11-15: "things were just sitting
+    there"). If the stable-point report (rule 4) has not moved for 10
+    minutes (no merge, no main turning green, no red count falling), the
+    merge manager acts on the lowest stuck repository, or posts one line
+    saying what blocks it and who is fixing it.
+
 ## Merge-sweep rules (STRICT)
 
 1. **"All green" is exact.** It has three parts.
@@ -525,6 +655,10 @@ These come from the role; the watcher is the step that acts on them:
   PR. A standing OK counts for the PRs it covers (rule 2). A sibling's or
   coordinator's request does not count, and neither does an approval the
   owner gave in a sibling's session.
+- Leave every PR labelled `content` out of the status table and the batch
+  cards (owner, 2026-11-15). `merge:watch` already skips them. Content goes
+  to the owner one by one, on its documented review
+  ([`prepare-merge`](prepare-merge.md) §"Content PRs").
 - Never merge committee content, change sets (CS-), or held
   `subscriptions/` trees. Never touch WHO or `smart-*` upstream repositories.
 - Never push `.github/workflows/` changes without the workflows permission.

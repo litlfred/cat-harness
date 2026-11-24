@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: merge-manager-watch\n"
-"POT-Creation-Date: 2026-11-13T21:12:58.295Z\n"
+"POT-Creation-Date: 2026-11-15T18:04:37.895Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -191,7 +191,7 @@ msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:65
 #. Diagram element documentation
-msgid "Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, each PR owner's last push or comment, and every harness repository's open main-red issue with its newest failed runs on main and gh-pages, whether or not the lane holds a PR there (gh api repos/<owner>/<repo>/actions/runs?branch=<default>&event=push: the latest completed push run per workflow, conclusion failure). One sweep runs merge:watch over every repository it holds. Liveness duty: acknowledge each new merge request within holding.heartbeatMinutes, and post a heartbeat with each sweep, so siblings can tell a live merge manager from a stalled one. A repin+merge: request is re-pinned by the merge manager itself, as its own re-pin PR in a re-pin train, before the requested PR lands; only the merge manager merges or re-pins, and a scheduled routine never merges (owner rulings, 2026-11-13)."
+msgid "Read live, never from a stored copy: the open PRs (draft, head, mergeable, owed checks, open owner decisions), the queued and running runs with the age of the oldest, the latest main push run, each PR owner's last push or comment, and every harness repository's open main-red issue with its newest failed runs on main and gh-pages, whether or not the lane holds a PR there (gh api repos/<owner>/<repo>/actions/runs?branch=<default>&event=push: the latest completed push run per workflow, conclusion failure). One sweep runs merge:watch over every repository it holds, in dependency order (lowest first); merge:watch leaves out PRs labelled content. Liveness duty: acknowledge each new merge request within holding.heartbeatMinutes, and post a heartbeat with each sweep, so siblings can tell a live merge manager from a stalled one. A repin+merge: request is re-pinned by the merge manager itself, as its own re-pin PR in a re-pin train, before the requested PR lands; only the merge manager merges or re-pins, and a scheduled routine never merges (owner rulings, 2026-11-13)."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:64
@@ -261,7 +261,7 @@ msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:17
 #. Diagram element documentation
-msgid "The loop run by the session that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher): elected, appointed, or holding it for its own PRs only. Each wake reads the open PRs, the runner queue, main's verdict and the PR owners live, acknowledges merge requests within the heartbeat, and routes to the train, a direct merge, runner relief, a saturation meta-merge, a stalled-agent takeover, or a fixer for a red main in any harness repository (owner, 2026-11-10: \"That should be a part of merge manager (dispatch an agent to fix them)\", \"Add to process\"). Every merge waits for the owner's own OK, given in the merge manager's session as one card per batch (owner ruling, 2026-11-07, card Approvals, B). How a sibling finds or elects the merge manager and sends it a request is Process_MergeRequest."
+msgid "The loop run by the session that holds the merge-steward lane (actor merge-manager, skill merge-manager-watcher): elected, appointed, or holding it for its own PRs only. Each wake reads the open PRs, the runner queue, main's verdict and the PR owners live, acknowledges merge requests within the heartbeat, and routes to the train, a direct merge, runner relief, a saturation meta-merge, a stalled-agent takeover, or a fixer for a red main in any harness repository (owner, 2026-11-10: \"That should be a part of merge manager (dispatch an agent to fix them)\", \"Add to process\"). Every merge waits for the owner's own OK, given in the merge manager's session as one card per batch (owner ruling, 2026-11-07, card Approvals, B). How a sibling finds or elects the merge manager and sends it a request is Process_MergeRequest. Across dependent repositories the loop follows merge-manager-watcher §\"Merging across dependent repositories\" (owner, 2026-11-15): lowest dependency first, queued CI re-ordered the same way, batches per repository, a checkable stable point, content PRs (label content) kept out of the queue and the reports, one merge manager, full green for re-pins, reports at a fixed interval, a draft register, no idle agents, one card per owner question, approvals recorded durably, ignored repositories left out, and no state-branch commit from a sparse checkout. A lower repository never waits on a higher one, and a ready PR (merge-queue §\"What 'ready to merge' means\": the generic list, out of draft, no conflicts, CI green against its own dependencies with reds that also fail on main and are not its own excused, description complete, approvals given; then the cat-harness additions, content rule, hand-over label, merge:guard success, issue link, and pins with full tier for re-pins) merges in the same sweep, lowest dependency first."
 msgstr ""
 
 #: sdlc/processes/merge-manager-watch.bpmn:20

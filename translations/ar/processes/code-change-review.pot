@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: code-change-review\n"
-"POT-Creation-Date: 2026-11-01T09:16:44.150Z\n"
+"POT-Creation-Date: 2026-11-18T07:18:59.472Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -14,24 +14,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: sdlc/processes/code-change-review.bpmn:206
+#: sdlc/processes/code-change-review.bpmn:209
 #. Diagram element documentation
 msgid "\"Flake\" is not a root cause. A red PR is work now, whatever its review state — only a green, mergeable head waits on reviewers."
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:244
+#: sdlc/processes/code-change-review.bpmn:247
 #. Diagram element documentation
 msgid "`prepare-merge` brings the base in, re-runs the gates and pushes — it does NOT merge. Bringing the base in IS `merge-base.bpmn` (`bun run cat merge:main`): conflicts a declared pattern covers are resolved and proved by the gate set; anything else aborts the merge and comes back to the agent (bean `y7b3`, #1707). `watch` follows the PR until it is merged or closed, because webhooks do not reliably deliver CI success or a merge-conflict transition."
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:261
+#: sdlc/processes/code-change-review.bpmn:264
 #. Diagram element documentation
 msgid "A closed work item is read later by somebody deciding whether to reopen the subject, so \"completed\" with nothing behind it cannot be audited. An ISSUE is never closed on the agent's own say-so."
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:301
+#: sdlc/processes/code-change-review.bpmn:304
 #. Diagram element documentation
-msgid "A human or an agent acting AS reviewer. Nothing is a reviewer; somebody acts as one for the duration of this lane. For a rendered change the reviewer reads the agent's before/after preview rather than building one. On agent-touched changes, an adversarial code review evaluates against the RED FLAG taxonomy and writes a committed verdict."
+msgid "A human or an agent acting AS reviewer. Nothing is a reviewer; somebody acts as one for the duration of this lane. For a rendered change the reviewer reads the agent's before/after preview rather than building one. On agent-touched changes, an adversarial code review evaluates against the RED FLAG taxonomy and writes a committed verdict. A change to translatable source text marks the strings it rewrote stale in every locale (their candidates' `msgidHash` no longer matches). The translations re-enter `translation-adjudication` afterwards; they never block this PR, and the reviewer does not wait for them."
 msgstr ""
 
 #: sdlc/processes/code-change-review.bpmn:123
@@ -39,7 +39,7 @@ msgstr ""
 msgid "A platform change is needed"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:224
+#: sdlc/processes/code-change-review.bpmn:227
 #. Diagram label
 msgid "Address the review"
 msgstr ""
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Announce the branch WHEN IT IS CREATED, not when the work is done. The gap between one agent's view of an issue and everyone else's is what this closes."
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:199
+#: sdlc/processes/code-change-review.bpmn:202
 #. Diagram element documentation
 msgid "Answered by the gates run against the merge of head into base. `green` goes to review; `red` goes to root-causing the failure first, since a red change is never waiting on review."
 msgstr ""
@@ -59,7 +59,7 @@ msgstr ""
 msgid "Authoring agent"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:318
+#: sdlc/processes/code-change-review.bpmn:326
 #. Diagram label
 msgid "Bean claimed?"
 msgstr ""
@@ -74,12 +74,12 @@ msgstr ""
 msgid "Branch, and announce it"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:198
+#: sdlc/processes/code-change-review.bpmn:201
 #. Diagram label
 msgid "CI green?"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:286
+#: sdlc/processes/code-change-review.bpmn:289
 #. Diagram element documentation
 msgid "CI tests the MERGE, not the branch. That is why a locally green tree can go red here: the agent's tree and the merge result are different trees, and the difference is invisible from a checkout."
 msgstr ""
@@ -89,17 +89,17 @@ msgstr ""
 msgid "CI/CD pipeline"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:329
+#: sdlc/processes/code-change-review.bpmn:337
 #. Diagram label
 msgid "claimed"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:341
+#: sdlc/processes/code-change-review.bpmn:349
 #. Diagram label
 msgid "clear"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:273
+#: sdlc/processes/code-change-review.bpmn:276
 #. Diagram label
 msgid "Close the bean"
 msgstr ""
@@ -119,7 +119,7 @@ msgstr ""
 msgid "Commit, push, open the PR"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:225
+#: sdlc/processes/code-change-review.bpmn:228
 #. Diagram element documentation
 msgid "Every finding is answered — implemented, or replied to with why not. A design question does not excuse skipping the nits in the same review."
 msgstr ""
@@ -129,7 +129,7 @@ msgstr ""
 msgid "Exists as a separate lane for one reason: what it tests — the merge of head into base — is not a claim the Agent lane could make about its own tree, so GW_CIGreen has to be fed by an independent run rather than by the agent reporting its own gates as done."
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:339
+#: sdlc/processes/code-change-review.bpmn:347
 #. Diagram label
 msgid "findings"
 msgstr ""
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Getting a change to the PLATFORM from \"this is needed\" to merged: claim the work, branch and announce it, make the change, prove it against the platform's own gates, and carry it through review to a merge somebody else is not left holding. You are in this process for a change to folio-assistant itself. `content-change-review` is the same shape for a folio's content, and the acceptance differs: here a code reviewer judges the engineering, there a review committee judges the editorial. The loop back through \"root-cause the failure\" is the point of drawing this at all. Red CI is not a state you report and leave; it is a state you re-enter the process from. The same is true of a review that is not clear."
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:335
+#: sdlc/processes/code-change-review.bpmn:343
 #. Diagram label
 msgid "green"
 msgstr ""
@@ -154,17 +154,17 @@ msgstr ""
 msgid "Make the change"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:279
+#: sdlc/processes/code-change-review.bpmn:282
 #. Diagram label
 msgid "Merged"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:346
+#: sdlc/processes/code-change-review.bpmn:354
 #. Diagram label
 msgid "not yours"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:324
+#: sdlc/processes/code-change-review.bpmn:332
 #. Diagram label
 msgid "Not yours — left alone"
 msgstr ""
@@ -179,12 +179,12 @@ msgstr ""
 msgid "Platform change — claim to merge"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:243
+#: sdlc/processes/code-change-review.bpmn:246
 #. Diagram label
 msgid "Prepare the merge, and watch it through"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:274
+#: sdlc/processes/code-change-review.bpmn:277
 #. Diagram element documentation
 msgid "Process_BeanClose: end the bean in a state that says why — complete and archive it, scrap it with its reasons and archive it, or record the blocker and hand it back. The one place resolve and archive are drawn (bean m8gz, owner 2026-10-24); placed straight before the end so the engine's resolve sees nothing left but the archive step."
 msgstr ""
@@ -194,37 +194,37 @@ msgstr ""
 msgid "Process_BeanOpen: check before you create, find out whose the bean is, and claim it — or leave it alone when it is someone else's. The one place a claim is drawn (bean m8gz, owner 2026-10-24); the gateway after this reads which end it reached."
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:319
+#: sdlc/processes/code-change-review.bpmn:327
 #. Diagram element documentation
 msgid "Reads which end Process_BeanOpen reached. `claimed`: the bean is in progress and this process works it. `not yours`: a sibling session or a human holds it, nothing was written to it, and this process stops here rather than work a bean it does not own (bean-coordination)."
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:260
+#: sdlc/processes/code-change-review.bpmn:263
 #. Diagram label
 msgid "Record what was done"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:336
+#: sdlc/processes/code-change-review.bpmn:344
 #. Diagram label
 msgid "red"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:217
+#: sdlc/processes/code-change-review.bpmn:220
 #. Diagram label
 msgid "Review clear?"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:300
+#: sdlc/processes/code-change-review.bpmn:303
 #. Diagram label
 msgid "Review the change"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:205
+#: sdlc/processes/code-change-review.bpmn:208
 #. Diagram label
 msgid "Root-cause the failure"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:285
+#: sdlc/processes/code-change-review.bpmn:288
 #. Diagram label
 msgid "Run the gates against the merge of head into base"
 msgstr ""
@@ -234,7 +234,7 @@ msgstr ""
 msgid "Run the platform's own gates"
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:325
+#: sdlc/processes/code-change-review.bpmn:333
 #. Diagram element documentation
 msgid "Someone else holds the bean; this run stops without touching it."
 msgstr ""
@@ -251,10 +251,10 @@ msgstr ""
 
 #: sdlc/processes/code-change-review.bpmn:182
 #. Diagram element documentation
-msgid "The PR opens at the FIRST commit, even on a stub, and permission is never asked for it. Holding a green PR back for someone to look at is not caution — it is a blocked reviewer. A change to a rendered surface carries a before/after preview in the PR body (skill before-after-preview)."
+msgid "The PR opens at the FIRST commit, even on a stub, and permission is never asked for it. Holding a green PR back for someone to look at is not caution — it is a blocked reviewer. A change to a rendered surface carries a before/after preview in the PR body (skill before-after-preview). The push runs the precheck first (`bun run cat precheck`, the pre-push hook; owner, card 2026-11-18): only the fast checks whose inputs it changed, and a red one refuses the push, since every red CI run emails the owner."
 msgstr ""
 
-#: sdlc/processes/code-change-review.bpmn:218
+#: sdlc/processes/code-change-review.bpmn:221
 #. Diagram element documentation
 msgid "The reviewer's result. `findings` go back to be addressed; `clear` goes to preparing the merge and watching it through."
 msgstr ""

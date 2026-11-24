@@ -29,7 +29,7 @@
 
 You are in this process whenever a step is about to read or write the contents of a declared subgraph — beans, todos, fsh-guts, or any directory a declaration names. The source is resolved once, by `declaredSubgraph` (`schemas/kg/harness-config.ts`) through `resolveSubgraphSource` (`schemas/kg/subgraph-source.ts`): the layer config's `subgraphSources` override by id, then the entry's `source`, then a legacy `storage`, then the `directory` default.
 
-The gateway is on the source KIND, and its flows are the only places the kinds differ. A `directory` subgraph is already where its path says, and writing it is an ordinary commit. A `branch` subgraph is mounted from the declared branch's tip into its path, and written back by splicing onto the tip without force. A `remote` subgraph is another repository's tree at a pinned commit, laid down by `Process_MountDependency` and read-only here. An `npm` subgraph is an npm package or tarball retrieved via `kg-retrieve-npm` or `npm`. A kind with no flow here is refused.</bpmn:documentation>
+The gateway is on the source KIND, and its flows are the only places the kinds differ. A `directory` subgraph is already where its path says, and writing it is an ordinary commit. A `branch` subgraph's branch is first created if it is missing and the root layer declares it (the layer's initialization owns its state branches), then mounted from the declared branch's tip into its path, and written back by splicing onto the tip without force. A `remote` subgraph is another repository's tree at a pinned commit, laid down by `Process_MountDependency` and read-only here. An `npm` subgraph is an npm package or tarball retrieved via `kg-retrieve-npm` or `npm`. A kind with no flow here is refused.</bpmn:documentation>
     <bpmn:extensionElements>
       <cat-harness.processes:policy enforcement="strict"/>
     </bpmn:extensionElements>
@@ -41,6 +41,7 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
         <bpmn:flowNodeRef>Task_ResolveSource</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>GW_SourceKind</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_UseCheckoutPath</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Task_CreateStateBranch</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_MountBranchTip</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_MountRemotePin</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Task_RetrieveNpmPackage</bpmn:flowNodeRef>
@@ -74,6 +75,23 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
         A `directory` source IS its declared path. Nothing is mounted; a write is
         an ordinary commit on the working branch, which is why `branch-store
         push` answers "commit through git" for it rather than pushing anything.
+      </bpmn:documentation>
+      <bpmn:extensionElements><bootstrap.processes:skill ref="sub-kg-lifecycle"/></bpmn:extensionElements>
+    </bpmn:task>
+
+    <bpmn:task id="Task_CreateStateBranch" name="Create the declared&#10;state branch if missing">
+      <bpmn:documentation>
+        A state branch the root layer declares and its own remote lacks is created by `bun run cat state:seed --init`, seeded empty with the standard layout.
+        The layer that declares a state branch creates it at initialization
+        (owner, 2026-11-17): `state:mount`, the session-start hook and a new
+        layer's scaffold all run this step. The seed is a `state-manifest/v1`
+        manifest with `authoritative: true`, a README, and the graph's
+        starting files. A branch that exists is left as it is, and no branch
+        is pushed onto an empty remote, where it would become the default
+        branch. A MOUNTED layer's branch is never created from a downstream
+        checkout: its miss names that layer's repository and the command to
+        run there. Where the token cannot push, the mount stops with one line
+        naming `state:seed --init`, rather than three gates failing downstream.
       </bpmn:documentation>
       <bpmn:extensionElements><bootstrap.processes:skill ref="sub-kg-lifecycle"/></bpmn:extensionElements>
     </bpmn:task>
@@ -130,7 +148,8 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
     <bpmn:sequenceFlow id="F_M1" sourceRef="Start_SubgraphWanted" targetRef="Task_ResolveSource"/>
     <bpmn:sequenceFlow id="F_M2" sourceRef="Task_ResolveSource" targetRef="GW_SourceKind"/>
     <bpmn:sequenceFlow id="F_M3" name="directory" sourceRef="GW_SourceKind" targetRef="Task_UseCheckoutPath"/>
-    <bpmn:sequenceFlow id="F_M4" name="branch" sourceRef="GW_SourceKind" targetRef="Task_MountBranchTip"/>
+    <bpmn:sequenceFlow id="F_M4" name="branch" sourceRef="GW_SourceKind" targetRef="Task_CreateStateBranch"/>
+    <bpmn:sequenceFlow id="F_M14" sourceRef="Task_CreateStateBranch" targetRef="Task_MountBranchTip"/>
     <bpmn:sequenceFlow id="F_M5" name="any other kind" sourceRef="GW_SourceKind" targetRef="Task_RefuseUnknownKind"/>
     <bpmn:sequenceFlow id="F_M6" sourceRef="Task_UseCheckoutPath" targetRef="GW_Join"/>
     <bpmn:sequenceFlow id="F_M7" sourceRef="Task_MountBranchTip" targetRef="GW_Join"/>
@@ -146,7 +165,7 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
   <bpmndi:BPMNDiagram id="Diagram_MountSubgraph">
     <bpmndi:BPMNPlane id="Plane_MountSubgraph" bpmnElement="Process_MountSubgraph">
       <bpmndi:BPMNShape id="Shape_Lane_MountPipeline" bpmnElement="Lane_MountPipeline" isHorizontal="true">
-        <dc:Bounds x="160" y="60" width="880" height="720" />
+        <dc:Bounds x="160" y="60" width="1050" height="720" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Start_SubgraphWanted" bpmnElement="Start_SubgraphWanted">
         <dc:Bounds x="206" y="402" width="36" height="36" />
@@ -166,30 +185,33 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_UseCheckoutPath" bpmnElement="Task_UseCheckoutPath">
-        <dc:Bounds x="610" y="80" width="120" height="120" />
+        <dc:Bounds x="780" y="80" width="120" height="120" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Shape_Task_MountBranchTip" bpmnElement="Task_MountBranchTip">
+      <bpmndi:BPMNShape id="Shape_Task_CreateStateBranch" bpmnElement="Task_CreateStateBranch">
         <dc:Bounds x="610" y="220" width="120" height="120" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Shape_Task_MountBranchTip" bpmnElement="Task_MountBranchTip">
+        <dc:Bounds x="780" y="220" width="120" height="120" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_MountRemotePin" bpmnElement="Task_MountRemotePin">
-        <dc:Bounds x="610" y="360" width="120" height="120" />
+        <dc:Bounds x="780" y="360" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_RetrieveNpmPackage" bpmnElement="Task_RetrieveNpmPackage">
-        <dc:Bounds x="610" y="500" width="120" height="120" />
+        <dc:Bounds x="780" y="500" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_Task_RefuseUnknownKind" bpmnElement="Task_RefuseUnknownKind">
-        <dc:Bounds x="610" y="640" width="120" height="120" />
+        <dc:Bounds x="780" y="640" width="120" height="120" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_GW_Join" bpmnElement="GW_Join" isMarkerVisible="true">
-        <dc:Bounds x="815" y="325" width="50" height="50" />
+        <dc:Bounds x="985" y="325" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Mounted" bpmnElement="End_Mounted">
-        <dc:Bounds x="915" y="332" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="890" y="375" width="90" height="54" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="1085" y="332" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1060" y="375" width="90" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Shape_End_Refused" bpmnElement="End_Refused">
-        <dc:Bounds x="915" y="682" width="36" height="36" />
-        <bpmndi:BPMNLabel><dc:Bounds x="890" y="620" width="90" height="54" /></bpmndi:BPMNLabel>
+        <dc:Bounds x="1085" y="682" width="36" height="36" />
+        <bpmndi:BPMNLabel><dc:Bounds x="1060" y="620" width="90" height="54" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Edge_F_M1" bpmnElement="F_M1">
         <di:waypoint x="242" y="420" />
@@ -202,7 +224,7 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
       <bpmndi:BPMNEdge id="Edge_F_M3" bpmnElement="F_M3">
         <di:waypoint x="495" y="395" />
         <di:waypoint x="495" y="140" />
-        <di:waypoint x="610" y="140" />
+        <di:waypoint x="780" y="140" />
         <bpmndi:BPMNLabel><dc:Bounds x="505" y="116" width="80" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_M4" bpmnElement="F_M4">
@@ -213,50 +235,54 @@ The gateway is on the source KIND, and its flows are the only places the kinds d
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_M10" bpmnElement="F_M10">
         <di:waypoint x="520" y="420" />
-        <di:waypoint x="610" y="420" />
+        <di:waypoint x="780" y="420" />
         <bpmndi:BPMNLabel><dc:Bounds x="528" y="396" width="70" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_M12" bpmnElement="F_M12">
         <di:waypoint x="510" y="445" />
         <di:waypoint x="510" y="560" />
-        <di:waypoint x="610" y="560" />
+        <di:waypoint x="780" y="560" />
         <bpmndi:BPMNLabel><dc:Bounds x="520" y="536" width="50" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_M5" bpmnElement="F_M5">
         <di:waypoint x="495" y="445" />
         <di:waypoint x="495" y="700" />
-        <di:waypoint x="610" y="700" />
+        <di:waypoint x="780" y="700" />
         <bpmndi:BPMNLabel><dc:Bounds x="505" y="676" width="100" height="18" /></bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_M6" bpmnElement="F_M6">
-        <di:waypoint x="730" y="140" />
-        <di:waypoint x="840" y="140" />
-        <di:waypoint x="840" y="325" />
+        <di:waypoint x="900" y="140" />
+        <di:waypoint x="1010" y="140" />
+        <di:waypoint x="1010" y="325" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_M7" bpmnElement="F_M7">
-        <di:waypoint x="730" y="280" />
-        <di:waypoint x="775" y="280" />
-        <di:waypoint x="775" y="340" />
-        <di:waypoint x="815" y="340" />
+        <di:waypoint x="900" y="280" />
+        <di:waypoint x="945" y="280" />
+        <di:waypoint x="945" y="340" />
+        <di:waypoint x="985" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_M11" bpmnElement="F_M11">
-        <di:waypoint x="730" y="420" />
-        <di:waypoint x="775" y="420" />
-        <di:waypoint x="775" y="360" />
-        <di:waypoint x="815" y="360" />
+        <di:waypoint x="900" y="420" />
+        <di:waypoint x="945" y="420" />
+        <di:waypoint x="945" y="360" />
+        <di:waypoint x="985" y="360" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_M13" bpmnElement="F_M13">
-        <di:waypoint x="730" y="560" />
-        <di:waypoint x="840" y="560" />
-        <di:waypoint x="840" y="375" />
+        <di:waypoint x="900" y="560" />
+        <di:waypoint x="1010" y="560" />
+        <di:waypoint x="1010" y="375" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Edge_F_M14" bpmnElement="F_M14">
+        <di:waypoint x="730" y="280" />
+        <di:waypoint x="780" y="280" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_M8" bpmnElement="F_M8">
-        <di:waypoint x="865" y="350" />
-        <di:waypoint x="915" y="350" />
+        <di:waypoint x="1035" y="350" />
+        <di:waypoint x="1085" y="350" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Edge_F_M9" bpmnElement="F_M9">
-        <di:waypoint x="730" y="700" />
-        <di:waypoint x="915" y="700" />
+        <di:waypoint x="900" y="700" />
+        <di:waypoint x="1085" y="700" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

@@ -89,6 +89,8 @@ node_modules/
 /docs/en/folio-assistant-core/changeset/
 /docs/en/folio-assistant-core/public-comment/
 /docs/en/folio-assistant-core/bibliography/
+/docs/en/fhir-harness/ig-ast/
+/docs/en/smart-base/l1-extraction/
 /docs/assets/glossary/
 /docs/smart-base/
 /ns/context/v1.jsonld
@@ -126,6 +128,7 @@ node_modules/
 /docs/en/cat-harness/code/
 /docs/en/cat-harness/memory/
 /docs/en/cat-harness/pipeline-plugins/
+/docs/en/cat-harness/skills/
 /docs/en/cat-harness/scenarios/
 /docs/en/cat-harness/policies/
 /docs/en/cat-harness/test-plans/

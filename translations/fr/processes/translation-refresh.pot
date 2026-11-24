@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: translation-refresh\n"
-"POT-Creation-Date: 2026-11-13T22:27:35.075Z\n"
+"POT-Creation-Date: 2026-11-15T18:04:37.754Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: fr\n"
@@ -126,7 +126,7 @@ msgstr ""
 
 #: library/processes/translation-refresh.bpmn:110
 #. Diagram element documentation
-msgid "Only the empty and fuzzy entries, in every locale, with the terms the term base fixes. A finished string is not touched."
+msgid "Only the empty and fuzzy entries, in every locale, with the terms the term base fixes. A finished string is not touched. Candidates for the empty and fuzzy entries may come first from `translation:candidates` (Tool translation-candidates: open engines, OPUS-MT and/or self-hosted LibreTranslate), recorded in <catalogue>.candidates.json; an empty entry also gets the first good candidate, fuzzy, until it is re-translated here or a person picks or accepts one on the review page."
 msgstr ""
 
 #: library/processes/translation-refresh.bpmn:192

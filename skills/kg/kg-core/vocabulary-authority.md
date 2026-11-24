@@ -6,6 +6,12 @@ description: >-
   here, the pros and cons behind each ruling, how DC and SKOS overlap and what
   stops them drifting, and the normalisation-first rule for any modelling or
   mapping exercise.
+conformsTo:
+  - w3c-skos
+  - dcmi-terms
+  - hl7-fhir
+  - schema-org
+  - w3c-dcat-3
 ---
 
 # Vocabulary authority — one fact, one home, N renderings

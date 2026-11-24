@@ -655,24 +655,44 @@ plan lives, so the scaffold asks the `source` resolver.
 
   | resolved | what `folio_init` does |
   |---|---|
-  | `branch` | Declares the graph. Does **not** write it into the checkout. Adds `/<path>/**` to `.gitignore` so a mount is never committed. Prints the seed command. |
+  | `branch` | Declares the graph. Does **not** write it into the checkout. Adds `/<path>/**` to `.gitignore` so a mount is never committed. Creates the branch (below). |
   | `directory` | Writes the graph **and** declares it. |
 
-- **Seeding is printed, not performed.** No platform command creates a new
-  state branch:
-  - `branch-store` refuses to ("seeding … is a steward act");
-  - `state:seed` only refreshes an existing seed.
+- **The layer that declares a state branch creates it, at initialization**
+  (owner, 2026-11-17). The command is `bun run cat state:seed --init`
+  (`--id <id>` for one, `--dry-run` to see what it would create). Every
+  initialization path runs the same code:
+  - `folio_init`, once `main` is on the new repository's remote;
+  - `state:mount`, so the session-start hook and the first `mount:remote` or
+    `mount:lock` run create a missing branch and then mount it.
 
-  So `folio_init` prints a self-contained shell block. Run it once from the
-  new repository. It pushes an orphan tip branch holding:
+  It pushes a tip branch holding:
   - a `state-manifest/v1` manifest marked `authoritative: true`, because a
     new layer has no `main` copy;
   - a README;
   - the graph's starting files. For `beans`, those are `beans/beans.json`
     and `beans/defs/`, and the seed must carry them: `beans:claim` reads
-    `beans.json` from the branch and refuses to guess where `defs` is.
+    `beans.json` from the branch and refuses to guess where `defs` is. For
+    `todos`, `todos.json` and its `items/`, `feedback/` and `verdicts/`. For
+    `fsh-guts`, `retired/`.
 
-  Then `state:mount` puts each branch at its declared path.
+  It is bounded:
+  - **only the root layer's own branches**, read from the checkout's own
+    `origin`. A mounted dependency's branch is never created downstream. Its
+    miss names the dependency's repository and says to run `state:seed --init`
+    there;
+  - **only when missing**. An existing branch is left as it is, and a branch a
+    sibling creates first wins, because the push is never forced;
+  - **never onto an empty remote**, where the first branch pushed becomes the
+    default branch. Push `main` first;
+  - **only where the token can push**. Otherwise the mount fails with one line
+    naming `state:seed --init`, instead of three gates failing in every layer
+    that mounts this one.
+
+  `state:mount --no-init` or `CAT_STATE_INIT=0` turns the creation off. CI's
+  direct mount never creates, because its origin points at pinned mirrors.
+  `folio_init` still returns the same branch as a shell block, for a
+  container with no Bun.
 - **Cutting an EXISTING layer over is two halves, and both have a command.**
   Run both from the layer's own repository. Every default is the cwd's git
   toplevel, and `--repo-root <dir>` overrides it.

@@ -13,6 +13,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `external-schemas`, holdi
 
 | file | what it is | used by |
 |---|---|---|
+| [`bpmn-io-di.json`](bpmn-io-di.json) | bpmn.io Diagram Interchange [Extensions](https://litlfred.github.io/bootstrap/schemas/#extension) (bioc 1.0, biodi 2.0) |  |
 | [`dcmi-terms.json`](dcmi-terms.json) | DCMI Metadata Terms |  |
 | [`foaf.json`](foaf.json) | FOAF Vocabulary Specification |  |
 | [`hl7-fhir.json`](hl7-fhir.json) | HL7 FHIR |  |
@@ -28,6 +29,7 @@ Part of [C@T Harness](../README.md) 0.1.0, declared as `external-schemas`, holdi
 | [`spdx-license-list.json`](spdx-license-list.json) | SPDX License List |  |
 | [`spdx-license-list.terminology.json`](spdx-license-list.terminology.json) | data |  |
 | [`w3c-csvw.json`](w3c-csvw.json) | Metadata Vocabulary for Tabular Data |  |
+| [`w3c-dcat-3.json`](w3c-dcat-3.json) | Data Catalog Vocabulary (DCAT) - Version 3 |  |
 | [`w3c-hydra.json`](w3c-hydra.json) | Hydra Core Vocabulary |  |
 | [`w3c-n-quads.json`](w3c-n-quads.json) | RDF 1.1 N-Quads: A line-based syntax for RDF datasets |  |
 | [`w3c-odrl.json`](w3c-odrl.json) | ODRL Information Model 2.2 |  |

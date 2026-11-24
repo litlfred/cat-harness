@@ -168,14 +168,30 @@ artefact and runs in `bun test`. The mechanism is in
    resolved comment is not a reviewer's verdict on the block.
 
    This REPORTS; it does not merge or refuse. The gate belongs to the review
-   process, and the committee decides the outcome. Say so when coverage could
+   process, and the committee decides the outcome. A branch like this is a
+   content PR: label it `content` and write its `## Content review` section
+   before it is ready (§"Content PRs"). Say so when coverage could
    not be measured, because a branch passed with unmeasured coverage reads as
    "reviewed".
 6. **Push** the feature branch (retry/backoff as in step 2):
    `git push -u origin <branch>`. Then **ask whether the push produced a run**:
    `bun run cat check:head-has-run`.
 
-   **The push runs the fast gates first, where the pre-push hook is on.** Git's
+   **The push runs the precheck first** (owner, card 2026-11-18). Git's
+   `pre-push` hook, which the session-start primer installs, runs
+   `bun run cat precheck` (`cat-harness-tools/scripts/precheck.ts`): only the
+   fast checks whose inputs this push changed, 15–60 s, and nothing when it
+   changed none of them. `index.lock.json` / `index.config.json` →
+   `lock:coherence:check` (agreement and freshness) and `mount:remote:check`;
+   `.github/workflows/` → `check:workflow-pins`; a `.ts` file → the typecheck.
+   Never the full tier. A red check refuses the push: fix it, since CI would
+   fail on it and email the owner. Without bun, a `cat` runner or
+   `node_modules`, or when a check could not determine or ran past its time,
+   it says so in one line and the push goes. Run it before pushing with
+   `bun run cat precheck` (or `--dry-run` for the plan); `git push --no-verify`
+   skips it, and is for a red you have reported, not one you have not read.
+
+   **Then the fast gates, where the pre-push hook is on.** Git's
    `pre-push` hook (installed by `cat-harness-tools/scripts/git-hooks/install.sh`)
    and, for agents, a Claude Code `PreToolUse` hook on `git push` both run
    `cat-harness-tools/scripts/pre-push-gates.ts` on the checked-out tree, before
@@ -302,6 +318,13 @@ So, in the same PR that adds the gate:
 
 Without all three, the gate waits. It never lands for the next re-pin to
 discover.
+
+The converse holds too: **a gate judges a repository against its own
+dependencies, never against a dependent's pins of it.** A gate that mounts a
+downstream index and so tests an older copy of the repository under review
+is a defect in the gate, and its red never holds the lower PR
+([`merge-queue`](merge-queue.md) §"A lower repository never waits on a
+higher one").
 
 ## A clean merge can produce a wrong artefact (STRICT)
 
@@ -436,7 +459,64 @@ that is `cat-mount` when `index.lock.json` changes. Verdicts are never
 published this way. The rule, the trust classes and the budget are in
 [`cache-first-ci`](cache-first-ci.md).
 
+## Content PRs: label `content`, and document the review before ready (STRICT)
+
+Owner, 2026-11-15: "content PRs get a label and that indicates a content
+review process needs to be documented as part of making it ready".
+
+**What is content.** A PR is a content PR when it changes folio content
+text or what a reader of the folio sees as its substance: block wording,
+tables, figures and the models they are drawn from (ArchiMate, BPMN, DMN),
+glossary terms and definitions, references, a change set (`CS-`), a public
+comment response, or a re-derivation of a content layer's generated
+summaries. It is not content when it changes only harness or tool code, workflows, pins
+(`index.lock.json`), work items, tests or docs about the platform. A PR that
+regenerates a content table or figure from its source is content too: what
+the reader sees changes. When in doubt, label it `content`; the owner can
+take the label off.
+
+**What the agent does.**
+
+1. **Label it `content` when you open it** (or as soon as you see it is
+   content). The label exists in every content repository; create it with
+   colour `0e8a16` if a new repository lacks it.
+2. **Open it as a draft, and keep it a draft** until the review is
+   documented. Never merge it, and never ask the merge manager to: content is
+   the owner's or the committee's decision
+   ([`merge-manager-watcher`](merge-manager-watcher.md) §"Safety rules").
+3. **Before marking it ready, add a `## Content review` section** to the PR
+   body that says which review process it went through and points to its
+   record. One or more of:
+   - the owner's decision card id (`Q-…`) approving the wording, or a
+     corpus-gate waiver card;
+   - the committee decision or public-comment review-log entry (a link);
+   - the editing-hci-validation instance of the changed blocks (its path or
+     work item), the record `check:corpus-gate` reads;
+   - the review page of the preview with its verdicts (a link), and the
+     review coverage numbers of §"Recipe" step 5.
+   Say what is still open, if anything. A placeholder ("TODO", "pending")
+   is not a record. Never invent a review step that did not happen: a
+   recorded waiver is better than a made-up history.
+4. **Then mark it ready.** `merge:guard` check 9 (`content-review`) reads
+   that section: a content draft without it is `pending`, and a content PR
+   marked ready without it is a `failure`.
+
+**Keep functional changes out of it.** A code, configuration, pin, schema,
+CI or tooling change found inside a content PR is split into its own
+non-content PR, and removed from the content PR with an ordinary revert
+commit. Bring a content PR up to current main only after every repository it
+depends on is stable ([`merge-manager-watcher`](merge-manager-watcher.md)
+§"Merging across dependent repositories", rules 4 and 5).
+
+**What the merge manager does.** `merge:watch`, both the report and
+`--queue`, leaves out every PR labelled `content`, so content never appears
+in the merge manager's status table, even with `ready-to-merge` on it.
+Content PRs go to the owner one by one, by card.
+
 ## Shipping is not merging — hand over on the PR itself
+
+A PR is handed over when it is **ready to merge** as defined in
+[`merge-queue`](merge-queue.md) §"What 'ready to merge' means".
 
 What happens after the handover is [`merge-to-main`](merge-to-main.md), called
 by `merge-train.bpmn` for a queued PR and by `crdm-close.bpmn` for a CRDM

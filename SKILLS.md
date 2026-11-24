@@ -243,7 +243,7 @@ _260 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`library-ingestion`](library/skills/library-core/library-ingestion.md) | The BASIC ingestion flow every asset takes: an upload is accepted, its metadata goes into the knowledge graph, and the asset lands in `library/<slug>/` if it is materialized. |
 | [`literature-search`](library/skills/library-core/literature-search.md) | Finding the source a node cites but does not hold — memory first, then this repository, then open-access services. |
 | [`term-disagreement`](library/skills/library-core/term-disagreement.md) | When a glossary term the extractor minted and an authorised terminology disagree — the corpus spells a concept differently from the authority, or uses a word the authority does not carry — decide… |
-| [`translation-adjudication`](library/skills/library-core/translation-adjudication.md) | A person's verdict on a machine translation, carried from the translation review page to the record: the reviewer accepts a catalogue, or flags a mistranslation and picks a candidate or writes their… |
+| [`translation-adjudication`](library/skills/library-core/translation-adjudication.md) | A person's word on a translation, carried from the translation review page or a block's 🌐 pane to the record: anyone proposes text, which joins the ranked candidates; an owner, member or… |
 | [`translation-candidate-source`](library/skills/library-core/translation-candidate-source.md) | The one interface every candidate-translation engine meets: for a layer's catalogues, append candidate translations per string to the `translation-candidates/v1` sidecar, each carrying its source,… |
 | [`translation-manager`](library/skills/library-core/translation-manager.md) | Translation lifecycle management for folio content. |
 | [`translation-refresh`](library/skills/library-core/translation-refresh.md) | The translation watcher: a scheduled fresh session that keeps every locale of every layer current after the source moves. |
@@ -367,7 +367,7 @@ _260 skills in 22 directories, generated from each skill's front matter. `bun ru
 |---|---|
 | `create-sticky-note` | Draft a sticky note from the conversation, choose its theme and its place, preview it, and only then attach it to a node. |
 | `deployment-awareness` | The agent must know its UI surface — gh-pages, local server, with/without MCP, or chat discussion only — because deployment surfaces are declared architectural facts that decide which tools apply,… |
-| `html-rendering-qc` | HTML Rendering QC |
+| `html-rendering-qc` | Check that a folio's content blocks render correctly as HTML on its published site, and report each defect with its source file and line. |
 | `incremental-render` | Rendering only what changed — seeding a build from a previous render, the two edges that decide what must re-run, why a step declares GRAPH TYPOLOGIES rather than paths, and the rule that… |
 | `pdf-inline-viewer` | Show a published PDF inside a generated page — search, scroll, jump to page, print and download — with the pinned pdf.js viewer the site build installs. |
 | `theme-artefacts` | The per-surface SPECIALISATION layer — sticky, landing board, docs background, navbar avatar. |
