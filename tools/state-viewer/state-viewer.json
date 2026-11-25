@@ -100,7 +100,8 @@
       "test-plan",
       "tool-release",
       "vocab-mapping",
-      "substrate-snapshot"
+      "substrate-snapshot",
+      "software-library"
     ]
   },
   "$comment": [

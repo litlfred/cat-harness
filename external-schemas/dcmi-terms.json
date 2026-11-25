@@ -49,6 +49,10 @@
       "operative": "Spatial or geographic coverage of the publication or resource."
     },
     {
+      "term": "dc.creator",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "dc.date.accessed",
       "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
@@ -67,6 +71,10 @@
     {
       "term": "dc.date.issued",
       "operative": "Formal publication or issue date asserted by the publisher."
+    },
+    {
+      "term": "dc.date.issuedOnline",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "dc.description",
@@ -97,6 +105,10 @@
       "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
+      "term": "dc.identifier",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "dc.identifier.doi",
       "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
@@ -107,6 +119,22 @@
     {
       "term": "dc.identifier.isbn",
       "operative": "International Standard Book Number (ISBN) for the published work."
+    },
+    {
+      "term": "dc.identifier.issn",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.identifier.other",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.identifier.pmc",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "dc.identifier.pubmed",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
     },
     {
       "term": "dc.identifier.uri",

@@ -37,6 +37,14 @@
       "operative": "Reference listing a declared dataInput inside an ioSpecification inputSet."
     },
     {
+      "term": "bpmn:dataObject",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
+      "term": "bpmn:dataObjectReference",
+      "operative": "derived from the corpus; what this repository does with it is not yet described"
+    },
+    {
       "term": "bpmn:dataOutputAssociation",
       "operative": "Binding that records an activity writing to a dataStoreReference (such as work-plan, log, or session-record)."
     },
