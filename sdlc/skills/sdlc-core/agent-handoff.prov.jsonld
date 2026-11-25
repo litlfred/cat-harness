@@ -34,6 +34,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/agent-handoff.md#provenance-8"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/agent-handoff.md#provenance-9"
         }
       ]
     },
@@ -126,6 +129,14 @@
         "bean mac1",
         "bean 8ao5"
       ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/agent-handoff.md#provenance-9",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "0. The handoff envelope — every agent-to-agent handoff opens with it",
+      "prov:value": "Owner (litlfred), 2026-11-25: \"improve swarm managem,etc. process, when passing to child sibling, then give them the porcess/task they are enging in , their role, your role. this should be a part of general agent to agenet communication use by swarm/merge managers, etc.\"",
+      "cat-harness:refs": []
     }
   ]
 }

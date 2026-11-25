@@ -10,8 +10,13 @@ description: >
   executor), what the receiver checks before acting, who closes, who may grant an
   exception, and how to recognise and answer the five ways an executor
   fails. Use when writing a work item for another agent to execute, and as the
-  receiver before acting on one.
+  receiver before acting on one. §0 is the HANDOFF ENVELOPE that opens EVERY
+  agent-to-agent handoff — a spawned subagent, a child session, a message to a
+  sibling, swarm or merge-manager session — and is the one place that rule
+  lives; dispatch-agent, swarm-management, swarm-monitor and
+  merge-manager-watcher point here.
   Triggers on: hand off, handoff, local agent, agy, mac agent, needs network,
+  envelope, brief a subagent, launch a sibling, message a sibling, child session,
   executor failed, agent went silent, re-hand,
   "give me a branch and bean for them", relay, the other agent.
 ---
@@ -33,6 +38,46 @@ only things you will ever see are what it pushes and what it posts.
 **Needs** the `beans` CLI on both sides (`cat-harness-tools/scripts/install-beans.sh`)
 and `bun run cat beans:claim`. An executor without them reports that it is
 blocked; it does not edit work item files by hand.
+
+## 0. The handoff envelope — every agent-to-agent handoff opens with it
+
+This section applies more widely than the rest of this skill. It covers
+**every** handoff from one agent to another: a subagent spawned with the
+`Agent` tool, a child session created with `create_session`, and a
+`send_message` to a sibling, swarm-manager or merge-manager session. The
+recipient starts with none of your context, so it cannot work out what process
+it has entered, what it may decide, or who sent it. Tell it, first, in four to
+six lines:
+
+```
+PROCESS / TASK: <the process or skill it is engaging in, by name — e.g.
+                "merge (prepare-merge-auto)", "research swarm front",
+                "library intake (document-intake)"> — <the concrete task>;
+                done when <done-criteria>.
+YOUR ROLE:      <merge manager | research child | verifier | executor | …>.
+                You decide: <…>. Escalate <…> to <the owner directly | me>.
+MY ROLE:        <coordinator | swarm manager | …>, session <id>.
+                Reply by <send_message to <id> | a comment on <PR URL>>.
+```
+
+Then the body, as before: the owner's words verbatim, constraints, fences, and
+the reporting format (for a dispatched worker, `dispatch-agent` §1; for a
+merge request, `merge-manager-watcher` §"The merge request: six lines").
+
+- **Name the process, not a paraphrase of it.** Use the BPMN process or the
+  skill name, so the recipient can open it.
+- **Say where escalation goes.** "Ask" alone leaves the recipient guessing
+  whether the owner or the sender answers. Name one.
+- **A reply needs an address.** An envelope with no session id or PR gives the
+  recipient no way to report.
+- **Keep it short.** The envelope is a header, not the brief; the cross-environment
+  brief of §3 still follows it when the recipient is in another environment.
+- **Rules about questions to the owner are unchanged**
+  ([`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)).
+  The envelope is between agents.
+
+**Check before sending.** Could the recipient name its process, its role, and
+your session id from the first six lines alone?
 
 ## 1. One bean, one writer, and the receiver claims it
 
