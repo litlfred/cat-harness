@@ -248,6 +248,11 @@ with the same six lines; line 6 then names what
 the re-pin must move. The merge manager re-pins it (§"Only the merge
 manager merges and re-pins").
 
+The request, and any message the merge manager sends a sibling or a fixer
+it dispatches, opens with the handoff envelope of
+[`agent-handoff`](agent-handoff.md) §0: the process and task, the
+recipient's role, and the sender's role with its session id.
+
 The merge manager posts all six lines in its chat, then asks the owner by
 card. A request with no rendered preview and no reason goes back to the
 sibling.

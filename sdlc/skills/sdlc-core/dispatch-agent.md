@@ -76,7 +76,7 @@ Why this exact shape: the parent's extractor (below) greps for the `⟦PROGRESS�
 
 Every spawned subagent or sibling worker starts with a **completely blank conversation context** (`Task_DispatchWorker` and `Mon_Refill` in [`sdlc/processes/swarm-dispatch-and-monitor.bpmn`](../../processes/swarm-dispatch-and-monitor.bpmn)). If the Swarm Manager assumes a freshly launched worker already knows which harness processes, repo-local cached build skills, idle-compute backlog rules, or merge-steward boundaries apply, the worker will predictably fail — self-merging onto `main`, running uncached builds from scratch, sleeping on passive timers while single-core compute runs, or emitting internal shorthands into reader-facing artifacts.
 
-**Rule (`STRICT`):** Every Swarm Manager MUST paste the matching **Canonical Process & Skill Launch Prompt Template** below verbatim into **every** spawned worker's prompt (alongside the §1 `⟦PROGRESS⟧` block above):
+**Rule (`STRICT`):** Every Swarm Manager MUST open every spawned worker's prompt with the **handoff envelope** of [`agent-handoff`](agent-handoff.md) §0 (PROCESS / TASK, YOUR ROLE, MY ROLE with session id and reply route), then paste the matching **Canonical Process & Skill Launch Prompt Template** below verbatim (alongside the §1 `⟦PROGRESS⟧` block above):
 
 #### Canonical Template A — Launching a Merge Steward (`merge-manager` / `merge-steward` lane)
 
