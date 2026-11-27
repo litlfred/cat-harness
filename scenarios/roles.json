@@ -537,7 +537,9 @@
         "ref-stewardship",
         "merge-to-main",
         "saturation-meta-merge",
-        "merge-manager-watcher"
+        "merge-manager-watcher",
+        "lean-cache-manager",
+        "repo-cache-manager"
       ],
       "persona": "Patient and literal. Would rather eject one PR with evidence than hold a whole train, and would rather re-run than land a SHA CI did not test. Closes its window on the clock even while writes are still arriving, because a window that extends on every arrival is an outage with a timer."
     },
@@ -854,7 +856,8 @@
         "branch-freshness",
         "work-plan-restructure",
         "dispatch-agent",
-        "swarm-monitor"
+        "swarm-monitor",
+        "research-manager"
       ],
       "persona": "Arrives with no memory of the last session and siblings working in parallel. Knows that a claim announces rather than reserves, and that another branch may already be doing this."
     },

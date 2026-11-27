@@ -75,7 +75,8 @@ layers and the index) adds these to the generic list:
    CI, checklist, open question, mergeable, and content review. The
    `merge-guard` commit status is `success`. Where the guard and this list
    disagree, fix the guard.
-9. **Linked to its issue**, with a comment on that issue for each push.
+9. **Linked to its bean** (beans are the tracker; a GitHub issue, if the
+   work came in as one, is linked too and mirrored to the bean).
 10. **Pins.** A PR that changes `index.lock.json` (a re-pin or an
     integration PR) moves each pinned layer to that layer's current main,
     with the pins agreeing with each other, and needs the full tier green on
@@ -127,7 +128,7 @@ except for a re-pin. Only the merge manager acts on either label
 find the merge manager first"; owner, 2026-11-13).
 ### Ask the user before submitting
 
-**When you finish your work and are ready to merge, ask the user before submitting to the merge queue.** Do not apply `ready-to-merge` or post the `ready:` marker autonomously without asking the user if you should submit. Submitting to the queue requests landing the code on `main`; the user or owner confirms the submission.
+**When you finish your work and are ready to merge, send it to the merge manager.** Sending the PR number and full head SHA is a request, not a merge: the merge manager lands it under a live time-boxed merge grant, or asks the owner on its batch card ([`merge-manager-watcher`](merge-manager-watcher.md) §"Operating rules (owner, 2026-11-27)"). Where no merge manager is reachable, ask the owner on a card before applying `ready-to-merge` or posting the `ready:` marker.
 
 ### While a merge manager is active, tell it, and never merge yourself
 
@@ -136,7 +137,8 @@ the merge manager, and the owner approves only in the merge manager's
 session. So, besides the steps below, send the merge manager the six-line
 merge request: the PR URL and full head SHA, your session URL, what changed,
 the rendered preview URL (or `no preview: <reason>`), what to look for in
-it, and `full tier green as judged`. A request with no preview and no reason
+it, and the KG JSON-LD publication check's verdict on that head (the only red
+pre-merge gate; all other QA runs after the merge). A request with no preview and no reason
 comes back. Never merge your own PR. An approval the owner gives in your
 session does not authorise a merge. The merge manager posts your request in
 its chat, asks the owner on its batch card, and orders the queue:

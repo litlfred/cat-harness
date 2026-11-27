@@ -135,6 +135,34 @@ Every spawned subagent or sibling worker starts with a **blank conversation cont
 - **When spawning a Merge Steward (`merge-manager` / [`dispatch-agent`](dispatch-agent.md) §1b Template A):** explicitly require reading target-repo `AGENTS.md` + `.claude/skills/local/*.md` first, `beans show <epic-id>`, [`merge-manager-watcher`](merge-manager-watcher.md) (`Process_MergeManagerWatch` + `swarm-epic-sync` handover refresh every sweep), [`merge-queue`](merge-queue.md) (`Process_MergeTrain` for `>= 2` ready PRs in **any** repo — CI train or local `merge-train/<base>-<n>` `4–8` PR stack using `merge:overlap` on `authoredPaths`, single regen + single `Task_LocalGates` run, and `Process_MergeRefusal` culprit-only hand-back), [`merge-to-main`](merge-to-main.md) (`Process_MergeToMain` + `verify-merge-replay`, never `--delete-branch`), [`merge-conflict-patterns`](merge-conflict-patterns.md), and [`swarm-monitor`](swarm-monitor.md).
 - **When spawning ANY Authoring / Proof / Prose / Compute Sibling ([`dispatch-agent`](dispatch-agent.md) §1b Template B):** explicitly require reading (a) target-repo `.claude/skills/local/*.md` & `AGENTS.md` FIRST, (b) [`continual-progress`](../../../skills/conduct/conduct-core/continual-progress.md) (early draft PR, continuous push, zero unticked `- [ ]` at ready), (c) [`integration-watcher/idle-backlog.md`](integration-watcher/idle-backlog.md) & `work-plan/skills/work-plan/idle-backlog.md` (opt-in `cat-harness.work-plan` — pull non-compute-heavy `idle-backlog` work items while waiting on single-core compute; zero passive sleep timers, zero `git checkout` mid-build), (d) [`merge-request.bpmn`](../../processes/merge-request.bpmn) & [`merge-queue`](merge-queue.md) §"Handing a PR to the queue — the sibling session's side" (**never self-merge**; apply `ready-to-merge` / `needs-repin`, post signed `ready: <full 40-hex head sha>`, and send the six-line merge request to the active `merge-steward`), and (e) [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md), [`hand-back-to-discussion`](../../../skills/conduct/conduct-core/hand-back-to-discussion.md), [`one-voice-style-guide`](../../../skills/authoring/authoring-core/one-voice-style-guide.md), and repo-specific path/branch fences.
 
+## Swarm lanes: research, merge, caches (owner, 2026-11-27)
+
+A swarm has three standing lanes besides its workers. Each is a skill:
+
+- **Research manager** ([`research-manager`](research-manager.md)): when the
+  goal has more than one way forward, every alternative goes on a
+  `New research path` card with cost, risk and commitment and one
+  recommended; a prioritisation picks what is pursued; each chosen path gets
+  a bean and a sibling; rejected paths are recorded in the bean. Stalled
+  children are prodded; children paused on a usage limit are reported, not
+  prodded.
+- **Merge manager** ([`merge-manager-watcher`](merge-manager-watcher.md)
+  §"Operating rules (owner, 2026-11-27)"): siblings send PR number and full
+  head SHA and never self-merge; the KG JSON-LD publication check is the only
+  red pre-merge gate and all other QA runs after the merge; merges run under
+  time-boxed merge grants, and a repository outside a grant needs the
+  owner's card.
+- **Cache managers**, sub-lanes of the merge manager:
+  [`lean-cache-manager`](lean-cache-manager.md) (Lake cache branch and
+  overlays, direct Lean verification for threads without Lean, toolchain
+  and Mathlib pin drift) and [`repo-cache-manager`](repo-cache-manager.md)
+  (LaTeX/PDF, FHIR AST, generated-artefact caches).
+
+Every worker brief also carries: questions only on cards, beans as the
+tracker, no repository secrets, no second non-constructive axiom, and no
+unverified external report used as a source (`req:agent-workflow`,
+`req:content-lifecycle`).
+
 ## While it runs
 
 - **Run the [`swarm-monitor`](swarm-monitor.md) companion loop and handover sync (`STRICT`).** Whenever two or more background workers run, supervise them through `Process_SwarmDispatchAndMonitor` ([`sdlc/processes/swarm-dispatch-and-monitor.bpmn`](../../processes/swarm-dispatch-and-monitor.bpmn)) and `Process_SwarmMonitorSweep` ([`sdlc/processes/swarm-dispatch-and-monitor-sweep.bpmn`](../../processes/swarm-dispatch-and-monitor-sweep.bpmn)) on event-driven wakeups plus a `2–4 min` fallback timer (never busy-polling). Refresh and push the parent Swarm Work Item's Cold-Start Handover Runbook (`swarm-epic-sync`) on every routine check-in — even when chat reporting is set to quiet `on-demand` mode.
