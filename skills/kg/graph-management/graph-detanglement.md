@@ -5,6 +5,8 @@ description: >-
   off when it grows too large or when a business reason separates it. The
   staged practice — declare in place, detangle, isolate, extract — and the
   seventeen moves for measurement, ordering, judgement and enforcement.
+satisfies:
+  - "req:content-lifecycle#one-nonconstructive-axiom"
 ---
 
 # Graph detanglement — the practice, not the migration
@@ -224,6 +226,18 @@ one that passed.
 **17. Merge main before trusting a local green; CI builds the merge ref.** A
 gate that passes locally and fails in CI can be a newer, stricter gate on the
 merge commit, not flakiness.
+
+## Strangler migration onto one shared foundation
+
+When many nodes each carry their own copy of an assumption, do not rewrite them
+at once. Introduce the shared foundation node beside them, move dependents onto
+it one at a time with the graph valid after every move, and delete an old
+route only when nothing points at it (the strangler pattern). The same applies
+to mathematics: whatever cannot be made constructive and algebraic is isolated
+as one shared non-constructive axiom, and every other such result is derived
+from it ([`req:content-lifecycle#one-nonconstructive-axiom`](../../requirements/content-lifecycle.json)).
+If two dependents cannot share the foundation, ask the owner on a card rather
+than adding a second one.
 
 ## Declare a falsifier, and mean it
 
