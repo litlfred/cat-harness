@@ -8,6 +8,10 @@ description: >
   composed question; output is the answer, or the default taken.
 input: schemas/skills/ask-the-person/input.schema.json
 output: schemas/skills/ask-the-person/output.schema.json
+satisfies:
+  - "req:agent-workflow#question-on-a-card"
+  - "req:agent-workflow#no-close-with-open-question"
+  - "req:agent-workflow#research-paths-on-a-card"
 ---
 
 # Ask the person
@@ -53,6 +57,17 @@ and [`output.schema.json`](../../../schemas/skills/ask-the-person/output.schema.
    composed input back with [`hand-back-to-discussion`](hand-back-to-discussion.md),
    so the discussion agent asks it where the person is, and the answer comes
    back to you. Your own thread is never the only copy.
-6. **Return the output.** A dismissal is not an answer. A rule-level answer is
+6. **Do not close over it.** While the card is unanswered, the thread, session
+   or task stays open: never resolve it, end it, or post a closing summary
+   that carries the question in prose
+   ([`req:agent-workflow#no-close-with-open-question`](../../requirements/agent-workflow.json)).
+   A closing report is checked for questions before it is sent; any question
+   in it goes on a card first.
+7. **Follow-up research paths are options, not prose.** When work ends with
+   possible next directions, each one is an option on a card labelled
+   `New research path: <name>`, one recommended, so the person starts it with
+   one tap ([`req:agent-workflow#research-paths-on-a-card`](../../requirements/agent-workflow.json)).
+   In a project with many threads, a path named only in prose is lost.
+8. **Return the output.** A dismissal is not an answer. A rule-level answer is
    written into the governing skill in the same turn
    ([`symbiotic-interaction`](symbiotic-interaction.md) §2).

@@ -2,6 +2,8 @@
 name: continual-progress
 description: Make in-flight work trackable by others in real time — open a PR from the first commit, push small coherent increments continuously (never hoard uncommitted work), keep a live status checklist in the PR body, and post brief intent on the PR + any overlapping sibling PRs. Use on any multi-step or long-running task, especially when siblings/agents or the author may need to follow, cherry-pick, or take over mid-flight.
 user_invocable: true
+satisfies:
+  - "req:agent-workflow#never-self-merge"
 ---
 
 # /continual-progress — trackable, always-PR'd, continually-committed work

@@ -55,6 +55,9 @@
         },
         {
           "@id": "skills/conduct/conduct-core/interaction-modality.md#provenance-15"
+        },
+        {
+          "@id": "skills/conduct/conduct-core/interaction-modality.md#provenance-16"
         }
       ]
     },
@@ -260,6 +263,13 @@
       "cat-harness:refs": [
         "#232"
       ]
+    },
+    {
+      "@id": "skills/conduct/conduct-core/interaction-modality.md#provenance-16",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Asking the person — the canonical rule (STRICT, read this first)",
+      "prov:value": "Owner, 2026-11-27, after a project thread closed with a follow-up research question in prose: *\"this session closed out with an open question but not as a card. not evident new research path was there ... so message gets lost when lots of threads ... need to use cards\"*, and: *\"make it not a project instruction but a KG process instruction. NO PROJECT MEMORY.... put in KG\"*. Recorded as req:agent-workflow statements question-on-a-card, no-close-with-open-question and research-paths-on-a-card."
     }
   ]
 }

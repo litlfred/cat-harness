@@ -50,6 +50,19 @@ the card.
 - a request for a typed reply (*"answer 1y 2n"*, *"reply A or B"*): the owner
   has very limited hand function, and typing is the cost this rule removes;
 - a pointer instead of the question (*"see the card"*, *"see the issue"*).
+- a question in prose with no card after it: in a project with many threads
+  it is lost ([`req:agent-workflow#question-on-a-card`](../../requirements/agent-workflow.json));
+- closing a thread, session or task while a question is open, or a closing
+  summary that ends on a question
+  ([`req:agent-workflow#no-close-with-open-question`](../../requirements/agent-workflow.json));
+- follow-up research directions named only in prose: each is a card option
+  labelled `New research path: <name>`
+  ([`req:agent-workflow#research-paths-on-a-card`](../../requirements/agent-workflow.json)).
+
+**Commands for the owner** are one paste-ready line, relative to
+`~/space_cats` and with the branch switch first:
+`reset; cd ~/space_cats/<repo> && git fetch && git switch <branch> && git pull && <command>`
+(`memory/interaction.json`, `users.litlfred.commands`).
 
 If no card tool exists in this host, post the numbered options in chat, say
 the card tool is unavailable, and keep each answer to a single short choice.
