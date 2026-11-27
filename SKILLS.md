@@ -279,6 +279,7 @@ _261 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `integration-watch` | Dispatcher for the `/integration-watch` slash command. |
 | `integration-watcher` | Abstract parent skill for domain-specific **integration watchers**. |
 | `issue-working` | Working a tracked issue — announce the branch when you create it rather than when you finish, and re-check the issue for new AND edited comments while you work. |
+| `lean-cache-manager` | The merge manager's Lean sub-lane: own the Lake cache branch and its addon overlays, run direct Lean verification (`lean` against the restored cache, plus `#print axioms`) for threads that have no… |
 | `merge-conflict-patterns` | Merge the base branch in and resolve, without a person, only the conflicts a DECLARED pattern covers — generated files, generated README regions, QA sidecars — then prove the result with the gate set. |
 | `merge-manager-watcher` | The merge manager agent's watch loop: what wakes it, how often it looks, how it tells whether it is the active merge manager, what it reads each time, which process each reading sends it to (merge… |
 | `merge-queue` | Order the ready PRs and land them as a train: read each PR's live facts, let the reprioritisation table place it, merge the members together, run the gate set on the combination, and on red… |
@@ -301,6 +302,8 @@ _261 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `release-epic-planning` | Plan and track releases using work item epics. |
 | `release-lifecycle` | Governs the release lifecycle: semver policy, draft/named releases, changelogs, release gating, and the relationship between feature branches, PRs, work items, and releases. |
 | `rendered-impact` | The list of rendered files a Change Set alters, and how a reviewer approves against it. |
+| `repo-cache-manager` | The merge manager's sub-lane for every repository cache other than Lean: LaTeX/PDF build caches, FHIR AST branches, generated-artefact and render caches, CI step caches. |
+| `research-manager` | Run research as a managed portfolio of alternatives: when a goal has more than one way forward, put every alternative on a research-path card with its cost, risk and commitment and one… |
 | `saturation-meta-merge` | When the CI runners have been full for a long time, drain a repository's ready PRs in one step: hold the swarm, cancel the queued PR runs, stack every admitted PR onto one meta-merge branch with… |
 | `secrets` | Adding, rotating and revoking the credentials the harness's automation needs, one mechanism at a time, with the exact GitHub UI path for each step. |
 | `session-intent` | Session-start intent declaration + session-end results recording, against the work plan's goals (milestone work items) and their open work items. |

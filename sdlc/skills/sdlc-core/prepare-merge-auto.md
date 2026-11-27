@@ -88,8 +88,11 @@ user a concise **status briefing**:
    ```
 6. **CI status**: green / failing / pending
 
-The user can reply with overrides (e.g. "reject 4", "skip 2,3").
-If no override within ~30 seconds, proceed with the stated plan.
+Offer the plan on a card (`ask-the-person`): "Proceed with this plan"
+(recommended), "Reject the rejects too", "Stop and let me review". Never ask
+the person to type overrides such as "reject 4". Where the owner's standing
+pick is "take the recommended option", proceed with the plan and leave the
+card open for a redirect.
 
 ### Phase 2: Resolve review comments
 
@@ -129,6 +132,14 @@ architectural decision, multiple valid approaches), use
 
 After all review comments are resolved (or the user has answered
 all escalated questions):
+
+**Only the merge manager runs this phase** (`req:agent-workflow`
+`never-self-merge`; [`merge-manager-watcher`](merge-manager-watcher.md)
+§"Operating rules (owner, 2026-11-27)"). Any other session stops after
+Phase 3 and sends the PR number and full head SHA to the merge manager. For
+the merge manager, the owner's authorisation in step 2 is a live time-boxed
+merge grant for the repository or the owner's card, and the only red
+pre-merge gate is the KG JSON-LD publication check.
 
 1. Run `bun run scripts/run-validate.ts content/<paper>` one final time.
 2. **Run the [`merge-to-main`](merge-to-main.md) sub-process**

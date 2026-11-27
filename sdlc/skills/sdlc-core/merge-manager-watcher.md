@@ -36,6 +36,49 @@ fits a page:
   with the **owner** lane below it for the batch card. The owner lane sits
   next to the only lane it talks to.
 
+## Operating rules (owner, 2026-11-27) (STRICT)
+
+These are the KG statements of `req:agent-workflow` as the merge manager
+applies them. Where an older rule on this page differs, this section wins.
+
+1. **A request is a PR number and its full head SHA.** A sibling sends
+   `<owner/repo>#<n> <40-hex head sha>`, plus the six lines below where it
+   has them. The merge manager merges that head and no other. A new push is
+   a new request. A sibling that wrote Lean without a compiler says so, and
+   asks for verification ([`lean-cache-manager`](lean-cache-manager.md) §1).
+2. **Threads never self-merge.** No session but the merge manager merges,
+   enables auto-merge or pushes to `main`, in any repository
+   (`never-self-merge`).
+3. **One red gate before the merge: the KG JSON-LD publication check.**
+   The generated JSON-LD must be up to date for the PR's head (for a folio,
+   its block JSON-LD check; for a layer, its KG publication check). Every
+   other check (the full tier, builds, precision or render gates, Lean, PDF)
+   is informational before the merge and runs again after it. A red after
+   the merge is fixed forward (§"Red mains and failing runs"). A red that
+   was already on main is not the PR's.
+4. **Merges run under time-boxed merge grants.** The owner grants merges for
+   named repositories for a stated period. Record each grant where the sweep
+   reads it (the merge manager's swarm bean or sweep note): the owner's
+   words, the date, the repositories, and when it expires. A grant always
+   has an end. If the owner's words give none, ask once on a card for one,
+   recommending the end of the owner's day. Inside a live grant, a request
+   that passes rule 3 is merged without a per-batch card.
+5. **Outside a grant, ask on a card.** A repository with no live grant, an
+   expired grant, or a PR the grant's words exclude goes on the owner's
+   batch card (§"The merge request: six lines"). The owner's standing
+   "take the recommended option" answers the card only when the owner's own
+   message carrying it is cited (by the coordinator's relay, for example).
+   A sibling's or a peer agent's say-so is never the owner's approval.
+6. **No repository secrets.** The merge manager never adds, requests or uses
+   a repository secret to merge, re-pin or refresh a cache.
+7. **Caches are sub-lanes of this role.** The Lean cache
+   ([`lean-cache-manager`](lean-cache-manager.md)) and every other
+   repository cache ([`repo-cache-manager`](repo-cache-manager.md)) are kept
+   by the merge manager, in the same sweep, so a refresh follows the merge
+   that made it stale.
+8. **Work items are beans.** A merged PR's bean is updated (or the sibling
+   is told to). GitHub issues are intake only (`beans-primary-tracker`).
+
 ## Only the merge manager merges and re-pins (STRICT)
 
 Owner rulings, 2026-11-13: "they should not merge and only send to you to
@@ -213,7 +256,8 @@ my approval is here, not in siblings"):
 - A sibling never merges its own PR. When the PR is ready, the sibling sends
   the merge manager a merge request in the six-line format below.
 - The owner approves in the merge manager's session, with one card per batch
-  that names each PR. An approval the owner gives in a sibling's session does
+  that names each PR, unless a live time-boxed merge grant covers the
+  repository (§"Operating rules (owner, 2026-11-27)" rules 4 and 5). An approval the owner gives in a sibling's session does
   not authorise a merge.
 - A pre-approved PR, one the owner said to "merge when green", needs no
   second card.
@@ -236,8 +280,11 @@ chat then ask to merge by card". A sibling's `ready:` message carries:
    preview, or the layer's equivalent), confirmed rendered, or
    `no preview: <reason>`;
 5. what to look for in the preview;
-6. the CI verdict on that head (owner ruling, 2026-11-13): `full tier green
-   as judged` (rule 1 below). For a pin-only PR in a layer
+6. the CI verdict on that head: the KG JSON-LD publication check's result,
+   which is the only red gate (§"Operating rules (owner, 2026-11-27)" rule
+   3), and any other red named as already on main or as informational.
+   (Until 2026-11-27 this line read `full tier green as judged` (owner
+   ruling, 2026-11-13, rule 1 below).) For a pin-only PR in a layer
    repository, line 6 reads `pin-only: layer CI judges nothing (it mounts the
    root's lock)`, because its "No new failures" job runs no tests or gates and
    passes without judging anything. The evidence for those pins is the root's
