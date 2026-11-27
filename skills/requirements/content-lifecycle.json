@@ -91,6 +91,20 @@
           "verification": "inspection"
         }
       ]
+    },
+    {
+      "key": "no-measured-values-in-proofs",
+      "label": "Formal proofs use no measured values",
+      "conformance": "SHALL",
+      "requirement": "A formal proof, theorem, lemma or Lean declaration SHALL NOT depend on an empirical or measured value. Measured values appear only in comparison blocks, after the mathematics is complete. Where both are available, a constructive algebraic argument is preferred over an analytic one.",
+      "actors": ["author", "reviewer"],
+      "successCriteria": [
+        {
+          "key": "proofs-free-of-measurement",
+          "criterion": "No proof block or Lean declaration cites a measured constant; every measured value sits in a comparison block.",
+          "verification": "review"
+        }
+      ]
     }
   ],
   "tags": ["common", "lifecycle"]
