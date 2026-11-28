@@ -224,6 +224,48 @@
           "verification": "review"
         }
       ]
+    },
+    {
+      "key": "foreground-nonblocking-delegation",
+      "label": "Foreground discussion turns delegate work exceeding ~15–20 seconds",
+      "conformance": "SHALL",
+      "requirement": "Even in foreground discussion mode, when answering, verifying or analysing requires more than a brief single-step lookup (> ~15–20 s), the foreground or coordinator agent SHALL NOT block the foreground turn; it SHALL dispatch a background research or analysis agent immediately so the foreground stays open for user input, and report in the same turn: (a) what is being investigated in the background, (b) expected duration (ETA), (c) potential outcomes and their implications, and (d) any upfront clarification question written in full in chat prose followed by a tappable card, then report promptly when the background agent returns.",
+      "actors": ["authoring-agent"],
+      "successCriteria": [
+        {
+          "key": "foreground-turn-stays-open",
+          "criterion": "No foreground discussion turn blocks on multi-step exploration exceeding ~15–20 s; every background dispatch reply states the investigation scope, ETA, potential outcomes with implications, and any upfront clarification card.",
+          "verification": "review"
+        }
+      ]
+    },
+    {
+      "key": "research-niche-continuity-and-cross-fertilization",
+      "label": "Research agents stay specialized by deep niche, with fan-out on cross-niche bridges",
+      "conformance": "SHALL",
+      "requirement": "When maintaining a queue or pool of research agents, the coordinator or research manager SHALL keep active research agents alive and specialized by deep technical or mathematical niche so each accumulates domain vocabulary, theorem inventory, and negative-result memory, routing related follow-up questions to the same niche specialist rather than spawning cold agents; when a question or finding touches an interface between niches, it SHALL fan the bridging question out to multiple niche specialists in parallel to test whether a connection or theorem emerges and synthesize agreements and tensions for the user.",
+      "actors": ["authoring-agent"],
+      "successCriteria": [
+        {
+          "key": "niche-routing-and-bridge-fanout",
+          "criterion": "Follow-up questions within an active research domain are routed to the standing niche specialist, and cross-niche interface questions are dispatched in parallel across the relevant niche specialists with a synthesized comparison.",
+          "verification": "review"
+        }
+      ]
+    },
+    {
+      "key": "native-crates-workspace-and-tools-kg",
+      "label": "Native crates and fast witness evaluators live in a declared crates/ workspace and tools KG",
+      "conformance": "SHALL",
+      "requirement": "A layer or folio carrying native Rust compute crates or a fast witnessed-value CLI evaluator SHALL organise them in a top-level crates/ Cargo workspace separating domain-agnostic core computer-algebra crates (zero C-FFI, reusable across downstream layers without application clutter) from high-precision (MPFR) evaluation and solver layers and application probes built on top, SHALL declare id 'crates' with graphTypologies ['code'] in its instance declaration, and SHALL register every crate CLI and fast witnessed-value evaluator as a validated tool-definition/v1 node in its tools graph (check:tools), using two-phase-move when migrating legacy paths.",
+      "actors": ["authoring-agent"],
+      "successCriteria": [
+        {
+          "key": "crates-declared-and-registered-in-tools-kg",
+          "criterion": "Every instance with native Rust crates declares 'crates' under directories with graphTypologies ['code'], keeps zero C-FFI in core computer-algebra crates, and passes check:tools with a tool-definition/v1 node per executable crate or witnessed-value evaluator.",
+          "verification": "inspection"
+        }
+      ]
     }
   ]
 }

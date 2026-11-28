@@ -373,7 +373,10 @@ in `schemas/tools/tool-types.ts` by its type name (`"$type"`) — never a
 free-form string, because a reference nothing checks is eventually wrong.
 
 For the end-to-end guide on authoring, implementing, packaging, and registering
-concrete tools across separated repositories, see [`tool-authoring`](tool-authoring.md).
+concrete tools across separated repositories — including native Rust `crates/`
+workspaces (zero-C-FFI core computer-algebra crates, MPFR evaluation/solver
+layers, and fast `<folio>-values` witnessed-value CLI evaluators registered as
+`tool-definition/v1` nodes) — see [`tool-authoring`](tool-authoring.md) §4.
 For runtime conventions, test preloading, and TypeScript configuration, see
 `bun-use` (opt-in `cat-harness.sdlc`).
 

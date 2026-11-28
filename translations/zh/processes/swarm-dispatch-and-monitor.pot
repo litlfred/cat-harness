@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: swarm-dispatch-and-monitor\n"
-"POT-Creation-Date: 2026-11-24T08:58:08.012Z\n"
+"POT-Creation-Date: 2026-11-28T12:49:20.863Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -231,7 +231,7 @@ msgstr ""
 
 #: sdlc/processes/swarm-dispatch-and-monitor.bpmn:81
 #. Diagram element documentation
-msgid "Verify that a swarm is justified over serial execution (swarm-management), partition the goal into child work items with disjoint writable paths, explicit Done-when criteria, and non-compute-heavy idle-backlog items, and size worker count, model tiers (cost-aware routing), and host concurrency bounds."
+msgid "Verify that a swarm is justified over serial execution (swarm-management), partition the goal into child work items with disjoint writable paths (or persistent deep-niche domains for research agents, with cross-fertilization fan-out reserved for interface questions), explicit Done-when criteria, and non-compute-heavy idle-backlog items, and size worker count, model tiers (cost-aware routing), and host concurrency bounds."
 msgstr ""
 
 #: sdlc/processes/swarm-dispatch-and-monitor.bpmn:200

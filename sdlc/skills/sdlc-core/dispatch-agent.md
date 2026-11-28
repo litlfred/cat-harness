@@ -3,6 +3,9 @@ name: dispatch-agent
 description: Dispatches one or more background subagents against disjoint workstreams with a standardized live progress contract, reactive wakeup plus fallback timer heartbeat, and human-consumable status synthesis through swarm-monitor. Every dispatched worker emits machine-greppable DID/DOING/NEXT/BLOCKERS blocks with live command evidence; the coordinator extracts the latest block on event wakeup or a 2-to-4-minute fallback timer and translates multi-worker state into anti-shorthand queue scoreboards and milestone rollups. Use when asked to dispatch agents, fan out parallel work with monitoring, or launch two or more background workers.
 user_invocable: true
 allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Agent, SendMessage, ScheduleWakeup, ToolSearch, AskUserQuestion
+satisfies:
+  - "req:agent-workflow#foreground-nonblocking-delegation"
+  - "req:agent-workflow#research-niche-continuity-and-cross-fertilization"
 ---
 
 # Parallel worker dispatch with live progress telemetry and human-consumable monitoring
@@ -19,11 +22,13 @@ Do not dispatch without both the worker contract and the monitor loop: a worker 
 
 ## 0. When to use
 
+- **Foreground non-blocking discussion (`> ~15–20 s`, `STRICT`):** Even in interactive foreground discussion mode, whenever answering, verifying, or thinking requires more than a brief single-step lookup (`> ~15–20 s`), **never block the foreground turn** ([`Process_ResearchDelegationAndNicheRouting`](../../processes/research-delegation-and-niche-routing.bpmn), [`turn-reporting`](turn-reporting.md)). Dispatch a background research or analysis agent immediately (`run_in_background: true` / background subagent) so the foreground remains open for user input, and report in that same turn: (a) what is being investigated, (b) expected duration (ETA), (c) potential outcomes and their implications, and (d) any upfront `🟡` clarification card (`AskUserQuestion` / host card preceded by full chat prose per [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)), then update the user promptly on completion.
+- **Deep niche research queues & cross-fertilization (`STRICT`):** Keep active research agents specialized by deep technical or mathematical niche and route follow-up questions in that domain to the **same** specialist (`SendMessage`), fanning bridging questions across **multiple** niche specialists in parallel whenever an interface connection appears ([`swarm-management`](swarm-management.md), [`research-manager`](research-manager.md)).
 - Launching **$\ge 2$ background `Agent` calls** on independent fronts (disjoint modules, validation slices, schema/test migrations, or parallel investigations) — **requires [`swarm-monitor`](swarm-monitor.md)**.
 - The user asks for **periodic status** (*"update me every 2 minutes"*, *"keep me posted"*, *"monitor these"*).
 - A single long-running background worker whose live progress the user wants tracked.
 
-For a single quick synchronous subagent whose result you need before the next step, skip this and call `Agent(run_in_background: false)`.
+Only a sub-15-second single-step lookup may run synchronously inline; anything longer delegates to the background so the foreground stays open.
 
 ---
 
@@ -103,6 +108,7 @@ You start in a fresh context on isolated worktree `<WORKTREE_PATH>` (branch `<BR
 3. Idle-on-compute rule (`sdlc/skills/sdlc-core/integration-watcher/idle-backlog.md` & `work-plan/skills/work-plan/idle-backlog.md`): while waiting on any single-core or long-running background build/solver (`> 60 s`), tee logs to `/tmp/<LABEL>-<step>.log` and pull a right-scoped, non-compute-heavy `idle-backlog` bean in a separate worktree — ZERO passive sleep/poll loops and ZERO `git checkout` / `git switch` inside an active build's worktree.
 4. Merge handoff (`sdlc/processes/merge-request.bpmn` & `sdlc/skills/sdlc-core/merge-queue.md` §"Handing a PR to the queue — the sibling session's side"): **NEVER self-merge, enable auto-merge, push to `main`, or delete any branch.** When the KG JSON-LD publication check is green on your head (the only red pre-merge gate; all other QA runs after the merge), push final head, mark ready for review, apply `ready-to-merge` (or `needs-repin`), post signed `ready: <full-40-hex-head-sha>`, and send the PR number, full head SHA and six-line merge request to the active `merge-steward`. If you wrote Lean without a compiler, say so and ask for verification (`lean-cache-manager` §1). Never add or use a repository secret.
 5. Owner questions & reader voice (`skills/conduct/conduct-core/interaction-modality.md`, `skills/conduct/conduct-core/hand-back-to-discussion.md`, `skills/authoring/authoring-core/one-voice-style-guide.md`): never guess on an ambiguous spec — return blocking owner decisions to the coordinator in `hand-back-to-discussion` format (or full chat context + tappable card if user-facing); keep external-reader prose strictly in `one-voice` (zero internal bean IDs, PR numbers, worker tags, or session history in reader-facing content); and obey all worktree/path safety fences: `<REPO_FENCES>`.
+6. Topic research & authoring provenance (`skills/authoring/authoring-core/evidence-gathering-and-provenance.md`, `Process_EvidenceGatheringAndProvenance` in `processes/content/evidence-gathering-and-provenance.bpmn`): whenever investigating external literature or datasets, decompose topic areas, compile a source shortlist, query accessible scholarly and data APIs (Crossref/DOI, arXiv, PubMed, InspireHEP, OpenAlex, Semantic Scholar, Google Scholar), ingest into declared KG subgraphs (`references/`, `library/`, `sources/`, `attestations/`), record exact relevancy and claim boundaries, and wire authoring provenance notes and formal citations into authored blocks.
 ````
 
 ---

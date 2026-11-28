@@ -37,6 +37,7 @@
         "decision-audit",
         "dmn-authoring",
         "evidence-appraisal",
+        "evidence-gathering-and-provenance",
         "kg-affordances",
         "staging-review",
         "todo-manager",
@@ -429,6 +430,7 @@
         "deletion-requires-confirmation",
         "delivery-summary",
         "directory-conventions",
+        "evidence-gathering-and-provenance",
         "feature-staging",
         "folio-init",
         "gate-tree-mutation",
@@ -437,6 +439,7 @@
         "issue-working",
         "kg-affordances",
         "library-ingestion",
+        "literature-search",
         "methodology-adoption",
         "opening-brief",
         "placement",
@@ -478,6 +481,7 @@
       ],
       "skills": [
         "asset-extraction",
+        "evidence-gathering-and-provenance",
         "kg-subscription",
         "library-ingestion",
         "materialize-remote",
@@ -857,7 +861,9 @@
         "work-plan-restructure",
         "dispatch-agent",
         "swarm-monitor",
-        "research-manager"
+        "research-manager",
+        "turn-reporting",
+        "interaction-modality"
       ],
       "persona": "Arrives with no memory of the last session and siblings working in parallel. Knows that a claim announces rather than reserves, and that another branch may already be doing this."
     },

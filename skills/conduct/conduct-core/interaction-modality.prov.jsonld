@@ -58,6 +58,9 @@
         },
         {
           "@id": "skills/conduct/conduct-core/interaction-modality.md#provenance-16"
+        },
+        {
+          "@id": "skills/conduct/conduct-core/interaction-modality.md#provenance-17"
         }
       ]
     },
@@ -270,6 +273,20 @@
       "cat-harness:provenanceKind": "owner-decision",
       "cat-harness:section": "Asking the person — the canonical rule (STRICT, read this first)",
       "prov:value": "Owner, 2026-11-27, after a project thread closed with a follow-up research question in prose: *\"this session closed out with an open question but not as a card. not evident new research path was there ... so message gets lost when lots of threads ... need to use cards\"*, and: *\"make it not a project instruction but a KG process instruction. NO PROJECT MEMORY.... put in KG\"*. Recorded as req:agent-workflow statements question-on-a-card, no-close-with-open-question and research-paths-on-a-card."
+    },
+    {
+      "@id": "skills/conduct/conduct-core/interaction-modality.md#provenance-17",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "4.2a Foreground non-blocking discussion & immediate delegation (> ~15–20 s) (STRICT)",
+      "prov:value": "Owner directive, 2026-11-28: even in foreground discussion mode, any investigation or thinking exceeding a brief single-step lookup (> ~15–20 s) must not block the foreground turn; dispatch a background research or analysis agent immediately so the foreground stays open for user input, report (a) what is being investigated, (b) expected duration (ETA), (c) potential outcomes and their implications, and (d) any structured clarification card (🟡 + full chat mirror) up front, and update the user promptly on completion. Recorded as req:agent-workflow#foreground-nonblocking-delegation.",
+      "cat-harness:refs": [
+        "2026-11-28",
+        "owner"
+      ],
+      "dcterms:date": [
+        "2026-11-28"
+      ]
     }
   ]
 }

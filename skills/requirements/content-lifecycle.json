@@ -125,6 +125,20 @@
           "verification": "inspection"
         }
       ]
+    },
+    {
+      "key": "evidence-gathering-and-authoring-provenance",
+      "label": "Topic evidence is shortlisted, retrieved across scholarly databases, ingested into the KG, assessed for relevancy, and linked with provenance during authoring",
+      "conformance": "SHALL",
+      "requirement": "Research and authoring agents SHALL execute a five-step evidence-gathering and provenance cycle as part of document authoring: (1) decompose research topic areas and compile a shortlist of needed papers, reference datasets, and foundational sources before drafting claims; (2) query accessible scholarly and data databases (Crossref / DOI doi.org and api.crossref.org, arXiv export.arxiv.org, PubMed / NCBI E-utilities / EuropePMC, InspireHEP, OpenAlex, Semantic Scholar, Google Scholar, and domain data registries) for authoritative CSL-JSON metadata and open-access full texts; (3) ingest retrieved references, documents, and datasets into the instance's declared KG subgraphs (references/, library/, sources/, extracted-references/, and verification attestations) rather than leaving unindexed URLs in scratch notes; (4) record a relevancy and claim-boundary assessment naming the exact locator, hypotheses, and non-claims; and (5) record retrieval and verification provenance in authoring notes or attestation nodes and wire formal citation edges in authored blocks wherever relevant.",
+      "actors": ["author", "reviewer"],
+      "successCriteria": [
+        {
+          "key": "sources-ingested-assessed-and-provenance-linked",
+          "criterion": "Every researched source backing an authored claim is ingested into the declared KG subgraphs, carries a recorded relevancy and claim-boundary assessment with retrieval provenance in authoring notes or attestations, and is linked by formal citation edges in the citing blocks.",
+          "verification": "inspection"
+        }
+      ]
     }
   ],
   "tags": ["common", "lifecycle"]

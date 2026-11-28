@@ -11,6 +11,9 @@ description: >
   "research manager", and whenever a thread ends with more than one possible
   next direction.
 user_invocable: true
+satisfies:
+  - "req:agent-workflow#research-niche-continuity-and-cross-fertilization"
+  - "req:content-lifecycle#evidence-gathering-and-authoring-provenance"
 ---
 
 # Research manager — alternatives on cards, chosen by priority, pursued by siblings
@@ -96,6 +99,55 @@ Beans are the tracker (`beans-primary-tracker`). For each chosen path:
 - The brief carries the constraints of §2 point 2, the cards-only rule, and
   "never self-merge: send PR number and full head SHA to the merge manager"
   ([`merge-manager-watcher`](merge-manager-watcher.md)).
+
+### 4a. Deep niche continuity & deliberate cross-fertilization (`STRICT`)
+
+Manage active research agents as persistent domain specialists rather than
+disposable single-question workers
+([`req:agent-workflow#research-niche-continuity-and-cross-fertilization`](../../../skills/requirements/agent-workflow.json),
+[`Process_ResearchDelegationAndNicheRouting`](../../processes/research-delegation-and-niche-routing.bpmn)):
+
+1. **Deep niche continuity:** Keep each active research agent focused on a
+   well-defined mathematical or technical niche so it retains domain vocabulary,
+   ingested literature locators, proved/available lemma inventory, and refuted
+   dead ends. Route follow-up questions in that topic area back to the **same**
+   standing specialist rather than spawning a cold agent that would re-read the
+   corpus from scratch.
+2. **Cross-fertilization fan-out on domain interfaces:** When a question or
+   intermediate result touches an interface between two or more niches (for
+   example, connecting geometric/topological invariants to spectral determinants
+   or transport equations), fan the bridging question out to **multiple**
+   standing niche specialists simultaneously. Compare their independent answers,
+   identify shared invariants or obstruction mismatches, and synthesize both
+   agreements and tensions for the owner.
+
+### 4b. Mandatory evidence gathering, multi-database KG ingestion & provenance (`STRICT`)
+
+Every research agent investigating a topic MUST execute the five-step
+[`evidence-gathering-and-provenance`](../../../skills/authoring/authoring-core/evidence-gathering-and-provenance.md)
+workflow (`Process_EvidenceGatheringAndProvenance` in
+[`processes/content/evidence-gathering-and-provenance.bpmn`](../../../processes/content/evidence-gathering-and-provenance.bpmn))
+as part of document authoring:
+
+1. **Topic decomposition & shortlist** — write up explicit topic areas and
+   compile a shortlist of required papers, monographs, and reference datasets
+   before drafting claims;
+2. **Multi-database retrieval** — query accessible scholarly and data APIs
+   (Crossref / DOI `doi.org` & `api.crossref.org`, arXiv `export.arxiv.org`,
+   PubMed / NCBI E-utilities / EuropePMC, InspireHEP, OpenAlex, Semantic
+   Scholar, Google Scholar, and domain data registries) for authoritative
+   CSL-JSON metadata and open-access full texts;
+3. **Knowledge Graph ingestion** — ingest retrieved references, PDFs, and
+   datasets into declared KG subgraphs (`references/`, `library/`, `sources/`,
+   `extracted-references/`, `attestations/`), never leaving raw URLs only in
+   scratch notes;
+4. **Relevancy & claim-boundary assessment** — open the ingested source and
+   record exact locators, hypotheses/conventions, and what the source does *not*
+   establish;
+5. **Authoring provenance & citation linkage** — record retrieval and
+   verification provenance in authoring notes (`authorNotes` / attestations /
+   work-item notes) and link formal citations and Liquid dataset values in
+   authored blocks.
 
 ## 5. Keep the children moving
 

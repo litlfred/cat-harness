@@ -8,6 +8,8 @@ description: >-
 governs:
   - cat-harness-tools/src/tools
   - cat-harness/tools
+satisfies:
+  - "req:agent-workflow#native-crates-workspace-and-tools-kg"
 ---
 
 # Tool Authoring — from capability to concrete mechanism
@@ -218,3 +220,54 @@ bun run cat tools:coverage          # checks automated coverage across skills
 3. **Packaging**:
    The tools package is packaged and published using `bun pm pack` as
    `@litlfred/<tools-layer>`.
+
+---
+
+## 4. Native Rust Crate Workspaces (`crates/`) & Fast Witnessed-Value Evaluators
+
+When a scientific layer or folio builds native Rust kernels, arbitrary-precision
+evaluators, conic/LP solvers, or fast witnessed-value CLIs
+([`req:agent-workflow#native-crates-workspace-and-tools-kg`](../../requirements/agent-workflow.json)),
+organise them in a single top-level **`crates/` Cargo workspace** (`crates/Cargo.toml`)
+with strict three-tier dependency separation:
+
+| Tier | Crate role | Dependency & portability boundary |
+|---|---|---|
+| **Tier 1 — Core computer-algebra crates** (`crates/<algebra-core>/`) | Exact big-integer / rational arithmetic, polynomial & Laurent rings, Gröbner / normal-form bases, combinatorics | **Zero C-FFI (`0` system C links)** and **zero folio- or application-specific clutter**, so the crate compiles cleanly anywhere and can be shared or promoted across downstream scientific layers. |
+| **Tier 2 — High-precision (`MPFR`) evaluation & solver crates** (`crates/<eval-or-solver>/`) | Arbitrary-precision interval / MPFR numerical evaluation, interior-point / conic / LP solvers (such as `Clarabel.rs` MPFR) | Depends on Tier 1 + high-precision / solver libraries; isolates `libmpfr` / `libgmp` C-FFI linkage away from pure algebraic kernels. |
+| **Tier 3 — Fast witnessed-value evaluators & application probes** (`crates/<folio>-values/`, `crates/<probe>/`) | High-precision observable / witness CLI evaluators (`<folio>-values` pattern) and domain probes built on top of Tiers 1–2 | Evaluates canonical witnessed values and assertions in one batch native call and emits deterministic `.witness.json` envelopes. |
+
+### Declaring `crates/` and registering crate CLIs in the Knowledge Graph (`STRICT`)
+
+1. **Declare the `crates` code subgraph on the instance** (Step 4b rule 1,
+   [`directory-conventions`](../../kg/kg-core/directory-conventions.md)): add an
+   entry to `<instance>.json` under `directories`:
+
+   ```json
+   {
+     "id": "crates",
+     "path": "crates/",
+     "description": "Cargo workspace separating zero-C-FFI core computer-algebra crates from MPFR evaluation/solver crates and fast witnessed-value CLIs.",
+     "graphTypologies": ["code"]
+   }
+   ```
+
+2. **Register every executable crate CLI and fast witnessed-value evaluator as a
+   `tool-definition/v1` Tool node** in the instance's `tools` graph
+   (`tools/<tool-id>/<tool-id>.json`, Step 4 above):
+   - `id` matches the folder and file stem (for example `<folio>-values` or
+     `<solver>-lp`);
+   - `satisfies` names the generic capability skill(s) the binary exercises;
+   - `invoke.shell` invokes the workspace binary deterministically (for example
+     `cargo run --release --manifest-path crates/Cargo.toml --bin <tool-id>`);
+   - `io.inputs` and `io.outputs` use shared vocabulary types from
+     `schemas/tools/tool-types.ts`;
+   - validate with `bun run cat check:tools` (`exit 0`).
+
+3. **Migrate legacy native paths with `two-phase-move`** (`two-phase-move`,
+   opt-in `cat-harness.sdlc`): when relocating legacy per-tool crates (such as
+   `tools/<engine>/` or ad-hoc subdirectories) into `crates/`, declare a timed
+   `moves` entry (`{ "from": "tools/<engine>", "to": "crates/<engine>", "until": "YYYY-MM-DD", "because": "..." }`)
+   in `<instance>.json`, update CI workflows and `tool-definition/v1` `invoke`
+   commands cleanly, and remove the `moves` entry only after `check:subgraphs`
+   reports zero remaining links to the old path.

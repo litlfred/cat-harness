@@ -19,6 +19,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/dispatch-agent.md#provenance-3"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/dispatch-agent.md#provenance-4"
         }
       ]
     },
@@ -61,6 +64,20 @@
       ],
       "dcterms:date": [
         "2026-11-23"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/dispatch-agent.md#provenance-4",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "0. When to use",
+      "prov:value": "Owner directives, 2026-11-28: (1) foreground discussion turns delegate any lookup or analysis exceeding ~15-20 s to a background agent immediately, reporting scope, ETA, potential outcomes + implications, and any upfront clarification card; (2) active research agents stay specialized by deep niche with cross-fertilization fan-out on domain bridges; (3) task and research siblings execute evidence-gathering-and-provenance (Process_EvidenceGatheringAndProvenance).",
+      "cat-harness:refs": [
+        "2026-11-28",
+        "owner"
+      ],
+      "dcterms:date": [
+        "2026-11-28"
       ]
     }
   ]

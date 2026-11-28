@@ -4,6 +4,7 @@ description: Establish how to talk to the person in front of you before deciding
 user_invocable: true
 satisfies:
   - "req:agent-workflow#context-before-question"
+  - "req:agent-workflow#foreground-nonblocking-delegation"
 graph-typologies:
   - interaction
 ---
@@ -470,6 +471,32 @@ Before any question, all five:
 And the negative rule: **do not ask a question whose answer you could look up.**
 Every fact `getting-started` reads from the filesystem is a question not asked.
 This is the largest accessibility win available, and it is invisible.
+
+### 4.2a Foreground non-blocking discussion & immediate delegation (> ~15–20 s) (STRICT)
+
+Even in foreground discussion mode, **never block the foreground turn on multi-step
+exploration, deep corpus search, proof checking, or analysis that takes longer
+than a brief single-step lookup (`> ~15–20 s`)**
+([`req:agent-workflow#foreground-nonblocking-delegation`](../../requirements/agent-workflow.json),
+`turn-reporting` and `dispatch-agent` in opt-in `cat-harness.sdlc`). Blocking
+the foreground chat locks out a person who may want to steer, add context, or
+pivot while the investigation runs.
+
+Instead, dispatch a background research or analysis agent immediately and end
+the foreground turn right away with a four-part dispatch brief:
+
+1. **What is being investigated** in the background (exact question, files or
+   sources, and which specialist agent holds it);
+2. **Expected duration (ETA)** in wall-clock time;
+3. **Potential outcomes and their implications** — what each plausible result
+   changes for the design, proof, or work plan;
+4. **Any upfront clarification card** if a choice from the person can narrow or
+   redirect the work now — written in full in chat prose first (prefixed with
+   `🟡` when waiting on input, ≤ 4 options, `(Recommended)` first, stated
+   default on silence) and followed immediately by the tappable card.
+
+When the background agent reports back, synthesize and present the result and
+its implications promptly in the foreground chat.
 
 ### 4.3 After the answer — a ruling is a skill edit, not just an applied answer
 
