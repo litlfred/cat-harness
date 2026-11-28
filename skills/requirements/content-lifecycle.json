@@ -139,6 +139,21 @@
           "verification": "inspection"
         }
       ]
+    },
+    {
+      "key": "online-sequence-and-invariant-databases",
+      "label": "Integer sequences, rational series coefficients, constants, and topological or arithmetic invariants are rescaled to natural units and cross-checked against online mathematical databases",
+      "conformance": "SHALL",
+      "requirement": "Whenever computational or mathematical research encounters integer sequences, rational series coefficients, composite denominators, unexplained high-precision constants, or knot/link/3-manifold and number-theoretic invariants, agents SHALL rescale coefficients into natural geometric or 1-loop torsion units, test canonical generating-function transforms (raw, factorial-cleared, torsion-cleared, logged cumulants, and unlogged exponentials) against the OEIS JSON API, cross-check knot/link/manifold invariants against KnotInfo, LinkInfo, SnapPy, and Regina censuses, query LMFDB for number fields, Dirichlet L-values, and modular/quantum-modular data, run lattice-reduction constant recognition (PSLQ) at >= 80 decimal places (never float64) with held-out higher-precision verification, and record matched catalogue identifiers and ingested primary papers in witnesses, authoring notes, and formal declarations.",
+      "actors": ["author", "reviewer"],
+      "dependsOn": ["evidence-gathering-and-authoring-provenance"],
+      "successCriteria": [
+        {
+          "key": "sequences-constants-and-invariants-cross-checked",
+          "criterion": "Computed integer/rational coefficient sequences, constants, and topological or number-theoretic invariants carry natural-unit rescalings, OEIS / KnotInfo / LinkInfo / SnapPy / LMFDB lookup provenance (or a logged negative-search basis at >= 80 dps), and ingested primary-source citations.",
+          "verification": "inspection"
+        }
+      ]
     }
   ],
   "tags": ["common", "lifecycle"]

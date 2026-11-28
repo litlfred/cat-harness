@@ -79,8 +79,8 @@ Keeps foreground discussion turns unblocked whenever answering or analysing exce
 ### 6. Investigate niche and ingest KG evidence (`Call_EvidenceAndResearch`)
 
 - Who: the `Niche research specialists` lane (role `authoring-agent`).
-- Skill: `evidence-gathering-and-provenance`.
-- What: Specialists investigate the question within their deep niche and execute Process_EvidenceGatheringAndProvenance to shortlist, retrieve across scholarly APIs, ingest into the Knowledge Graph, assess relevancy, and record provenance.
+- Skill: `evidence-gathering-and-provenance`, `online-sequence-and-knot-databases`.
+- What: Specialists investigate the question within their deep niche and execute Process_EvidenceGatheringAndProvenance (including online sequence, knot-census, number-theory, and >= 80 dps constant-recognition lookups across OEIS, KnotInfo/LinkInfo/SnapPy/Regina, and LMFDB whenever sequences, series coeffi
 - A subprocess (`Process_EvidenceGatheringAndProvenance`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Task_SynthesizeAndUpdateUser` (Synthesize agreements, tensions and report)
 

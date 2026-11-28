@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: research-delegation-and-niche-routing\n"
-"POT-Creation-Date: 2026-11-28T12:55:19.140Z\n"
+"POT-Creation-Date: 2026-11-28T16:12:16.533Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Claim a child work item and launch a fresh background specialist dedicated to the new niche with the mandatory skill launch briefing and progress contract."
 msgstr ""
 
-#: sdlc/processes/research-delegation-and-niche-routing.bpmn:151
+#: sdlc/processes/research-delegation-and-niche-routing.bpmn:154
 #. Diagram label
 msgid "cross-niche bridge"
 msgstr ""
@@ -79,7 +79,7 @@ msgstr ""
 msgid "Foreground non-blocking delegation and niche research routing"
 msgstr ""
 
-#: sdlc/processes/research-delegation-and-niche-routing.bpmn:140
+#: sdlc/processes/research-delegation-and-niche-routing.bpmn:143
 #. Diagram label
 msgid "Foreground updated with findings"
 msgstr ""
@@ -104,7 +104,7 @@ msgstr ""
 msgid "Merge niche routing branches into background specialist execution."
 msgstr ""
 
-#: sdlc/processes/research-delegation-and-niche-routing.bpmn:152
+#: sdlc/processes/research-delegation-and-niche-routing.bpmn:155
 #. Diagram label
 msgid "new niche"
 msgstr ""
@@ -119,7 +119,7 @@ msgstr ""
 msgid "Niche routing mode?"
 msgstr ""
 
-#: sdlc/processes/research-delegation-and-niche-routing.bpmn:146
+#: sdlc/processes/research-delegation-and-niche-routing.bpmn:149
 #. Diagram label
 msgid "No"
 msgstr ""
@@ -139,7 +139,7 @@ msgstr ""
 msgid "Post scope, ETA, outcomes and card"
 msgstr ""
 
-#: sdlc/processes/research-delegation-and-niche-routing.bpmn:131
+#: sdlc/processes/research-delegation-and-niche-routing.bpmn:134
 #. Diagram element documentation
 msgid "Promptly on background completion, synthesize single-specialist results or cross-niche agreements and tensions, state concrete implications, and offer any follow-up research paths on a decision card."
 msgstr ""
@@ -154,7 +154,7 @@ msgstr ""
 msgid "Route to standing niche specialist"
 msgstr ""
 
-#: sdlc/processes/research-delegation-and-niche-routing.bpmn:150
+#: sdlc/processes/research-delegation-and-niche-routing.bpmn:153
 #. Diagram label
 msgid "same niche"
 msgstr ""
@@ -176,10 +176,10 @@ msgstr ""
 
 #: sdlc/processes/research-delegation-and-niche-routing.bpmn:124
 #. Diagram element documentation
-msgid "Specialists investigate the question within their deep niche and execute Process_EvidenceGatheringAndProvenance to shortlist, retrieve across scholarly APIs, ingest into the Knowledge Graph, assess relevancy, and record provenance."
+msgid "Specialists investigate the question within their deep niche and execute Process_EvidenceGatheringAndProvenance (including online sequence, knot-census, number-theory, and >= 80 dps constant-recognition lookups across OEIS, KnotInfo/LinkInfo/SnapPy/Regina, and LMFDB whenever sequences, series coefficients, constants, or topological/arithmetic invariants arise) to shortlist, retrieve across APIs, ingest into the Knowledge Graph, assess relevancy, and record provenance."
 msgstr ""
 
-#: sdlc/processes/research-delegation-and-niche-routing.bpmn:130
+#: sdlc/processes/research-delegation-and-niche-routing.bpmn:133
 #. Diagram label
 msgid "Synthesize agreements, tensions and report"
 msgstr ""
@@ -189,12 +189,12 @@ msgstr ""
 msgid "Topic arrives"
 msgstr ""
 
-#: sdlc/processes/research-delegation-and-niche-routing.bpmn:141
+#: sdlc/processes/research-delegation-and-niche-routing.bpmn:144
 #. Diagram element documentation
 msgid "User receives synthesized findings, provenance links, and any follow-up path cards without foreground blocking."
 msgstr ""
 
-#: sdlc/processes/research-delegation-and-niche-routing.bpmn:147
+#: sdlc/processes/research-delegation-and-niche-routing.bpmn:150
 #. Diagram label
 msgid "Yes"
 msgstr ""
