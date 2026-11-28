@@ -39,6 +39,7 @@
         "evidence-appraisal",
         "evidence-gathering-and-provenance",
         "kg-affordances",
+        "online-sequence-and-knot-databases",
         "staging-review",
         "todo-manager",
         "voice-authoring-guidance"
@@ -441,6 +442,7 @@
         "library-ingestion",
         "literature-search",
         "methodology-adoption",
+        "online-sequence-and-knot-databases",
         "opening-brief",
         "placement",
         "platform-gates",

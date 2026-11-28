@@ -51,10 +51,11 @@
     </bpmn:task>
 
     <bpmn:task id="Task_MultiDbSearch" name="Query scholarly&#10;and data APIs">
-      <bpmn:documentation>Query accessible bibliographic, preprint, biomedical, and data databases (Crossref/DOI doi.org and api.crossref.org, arXiv export.arxiv.org, PubMed / EuropePMC, InspireHEP, OpenAlex, Semantic Scholar, Google Scholar, and domain data registries) to retrieve authoritative CSL-JSON metadata and open-access full texts or datasets.</bpmn:documentation>
+      <bpmn:documentation>Query accessible bibliographic, preprint, biomedical, mathematical-catalogue, and data databases (Crossref/DOI doi.org and api.crossref.org, arXiv export.arxiv.org, PubMed / EuropePMC, InspireHEP, OpenAlex, Semantic Scholar, Google Scholar, OEIS across unit-rescaled / logged / unlogged / factorial-cleared forms, KnotInfo / LinkInfo / SnapPy / Regina censuses, LMFDB, &gt;= 80 dps PSLQ constant recognition, and domain data registries) to retrieve authoritative CSL-JSON metadata, exact catalogue identifiers, and open-access full texts or datasets.</bpmn:documentation>
       <bpmn:extensionElements>
         <bootstrap.processes:skill ref="literature-search"/>
         <bootstrap.processes:skill ref="evidence-gathering-and-provenance"/>
+        <bootstrap.processes:skill ref="online-sequence-and-knot-databases"/>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_EG_2</bpmn:incoming>
       <bpmn:outgoing>Flow_EG_3</bpmn:outgoing>

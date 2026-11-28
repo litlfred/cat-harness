@@ -121,8 +121,11 @@
     </bpmn:exclusiveGateway>
 
     <bpmn:callActivity id="Call_EvidenceAndResearch" name="Investigate niche and&#10;ingest KG evidence" calledElement="Process_EvidenceGatheringAndProvenance">
-      <bpmn:documentation>Specialists investigate the question within their deep niche and execute Process_EvidenceGatheringAndProvenance to shortlist, retrieve across scholarly APIs, ingest into the Knowledge Graph, assess relevancy, and record provenance.</bpmn:documentation>
-      <bpmn:extensionElements><bootstrap.processes:skill ref="evidence-gathering-and-provenance"/></bpmn:extensionElements>
+      <bpmn:documentation>Specialists investigate the question within their deep niche and execute Process_EvidenceGatheringAndProvenance (including online sequence, knot-census, number-theory, and &gt;= 80 dps constant-recognition lookups across OEIS, KnotInfo/LinkInfo/SnapPy/Regina, and LMFDB whenever sequences, series coefficients, constants, or topological/arithmetic invariants arise) to shortlist, retrieve across APIs, ingest into the Knowledge Graph, assess relevancy, and record provenance.</bpmn:documentation>
+      <bpmn:extensionElements>
+        <bootstrap.processes:skill ref="evidence-gathering-and-provenance"/>
+        <bootstrap.processes:skill ref="online-sequence-and-knot-databases"/>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_RD_7</bpmn:incoming>
       <bpmn:outgoing>Flow_RD_8</bpmn:outgoing>
     </bpmn:callActivity>

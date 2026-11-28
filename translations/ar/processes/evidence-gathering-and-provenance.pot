@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: evidence-gathering-and-provenance\n"
-"POT-Creation-Date: 2026-11-28T12:49:20.695Z\n"
+"POT-Creation-Date: 2026-11-28T16:12:16.375Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language: ar\n"
@@ -19,12 +19,12 @@ msgstr ""
 msgid "A research or authoring agent begins investigating a topic area before drafting or revising claims."
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:95
+#: processes/content/evidence-gathering-and-provenance.bpmn:96
 #. Diagram label
 msgid "Assess relevancy and claim boundaries"
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:117
+#: processes/content/evidence-gathering-and-provenance.bpmn:118
 #. Diagram label
 msgid "blocked or missing"
 msgstr ""
@@ -49,12 +49,12 @@ msgstr ""
 msgid "Evidence gathering, KG ingestion and authoring provenance"
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:109
+#: processes/content/evidence-gathering-and-provenance.bpmn:110
 #. Diagram label
 msgid "Evidence ingested and linked"
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:118
+#: processes/content/evidence-gathering-and-provenance.bpmn:119
 #. Diagram label
 msgid "fetched"
 msgstr ""
@@ -64,12 +64,12 @@ msgstr ""
 msgid "Five-step research and authoring-provenance workflow executed whenever a research or authoring agent investigates a topic: decompose topic areas and shortlist needed papers and datasets, query accessible scholarly and data APIs (Crossref/DOI, arXiv, PubMed, InspireHEP, OpenAlex, Semantic Scholar, Google Scholar, and reference data registries), ingest retrieved references, texts, and datasets into the declared Knowledge Graph subgraphs via Process_Ingestion, assess relevancy and claim boundaries against the opened sources, and record retrieval/verification provenance in authoring notes alongside formal citations in authored blocks."
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:78
+#: processes/content/evidence-gathering-and-provenance.bpmn:79
 #. Diagram label
 msgid "Ingest into declared KG"
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:79
+#: processes/content/evidence-gathering-and-provenance.bpmn:80
 #. Diagram element documentation
 msgid "Ingest retrieved CSL-JSON reference nodes (references/), open-access PDFs and sections (uploads/ to library/ via Process_Ingestion), reference datasets, and verification attestations into the instance's declared Knowledge Graph subgraphs."
 msgstr ""
@@ -84,19 +84,19 @@ msgstr ""
 msgid "Ingests retrieved CSL-JSON reference records, open-access documents, and tabular datasets into declared Knowledge Graph directories (references/, library/, sources/, extracted-references/, attestations/) through Process_Ingestion rather than leaving raw URLs in scratch notes."
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:89
+#: processes/content/evidence-gathering-and-provenance.bpmn:90
 #. Diagram element documentation
 msgid "Merge after Knowledge Graph ingestion or blocked/missing source logging."
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:96
+#: processes/content/evidence-gathering-and-provenance.bpmn:97
 #. Diagram element documentation
 msgid "Open the ingested library sections or dataset rows and record the exact locator (theorem, section, equation, or table slug), hypotheses and conventions, and claim boundaries (what the source does not establish)."
 msgstr ""
 
 #: processes/content/evidence-gathering-and-provenance.bpmn:54
 #. Diagram element documentation
-msgid "Query accessible bibliographic, preprint, biomedical, and data databases (Crossref/DOI doi.org and api.crossref.org, arXiv export.arxiv.org, PubMed / EuropePMC, InspireHEP, OpenAlex, Semantic Scholar, Google Scholar, and domain data registries) to retrieve authoritative CSL-JSON metadata and open-access full texts or datasets."
+msgid "Query accessible bibliographic, preprint, biomedical, mathematical-catalogue, and data databases (Crossref/DOI doi.org and api.crossref.org, arXiv export.arxiv.org, PubMed / EuropePMC, InspireHEP, OpenAlex, Semantic Scholar, Google Scholar, OEIS across unit-rescaled / logged / unlogged / factorial-cleared forms, KnotInfo / LinkInfo / SnapPy / Regina censuses, LMFDB, >= 80 dps PSLQ constant recognition, and domain data registries) to retrieve authoritative CSL-JSON metadata, exact catalogue identifiers, and open-access full texts or datasets."
 msgstr ""
 
 #: processes/content/evidence-gathering-and-provenance.bpmn:53
@@ -104,22 +104,22 @@ msgstr ""
 msgid "Query scholarly and data APIs"
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:102
+#: processes/content/evidence-gathering-and-provenance.bpmn:103
 #. Diagram label
 msgid "Record authoring provenance and cite"
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:71
+#: processes/content/evidence-gathering-and-provenance.bpmn:72
 #. Diagram label
 msgid "Record blocked fetch or search gap"
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:103
+#: processes/content/evidence-gathering-and-provenance.bpmn:104
 #. Diagram element documentation
 msgid "Record retrieval and verification provenance (database/API, DOI/arXiv/PMID, date, locator, and relevancy summary) in authoring notes and attestations, and wire formal citation edges and Liquid dataset values in authored blocks."
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:72
+#: processes/content/evidence-gathering-and-provenance.bpmn:73
 #. Diagram element documentation
 msgid "Record the full citation, direct download URL, and fetch blocker (so a person can drop the file into uploads/) or log the databases searched and rejected candidates so later sessions never repeat a dead end."
 msgstr ""
@@ -129,17 +129,17 @@ msgstr ""
 msgid "Research and authoring agent"
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:63
+#: processes/content/evidence-gathering-and-provenance.bpmn:64
 #. Diagram label
 msgid "Source fetched?"
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:110
+#: processes/content/evidence-gathering-and-provenance.bpmn:111
 #. Diagram element documentation
 msgid "Sources are ingested into the Knowledge Graph, assessed for relevancy, and linked with provenance in the authored content."
 msgstr ""
 
-#: processes/content/evidence-gathering-and-provenance.bpmn:64
+#: processes/content/evidence-gathering-and-provenance.bpmn:65
 #. Diagram element documentation
 msgid "Three-state retrieval check: `fetched` when open-access full text, dataset, or CSL-JSON metadata is retrieved for ingestion; `blocked or missing` when a runtime proxy/paywall blocks transfer or no open-access copy resolves."
 msgstr ""

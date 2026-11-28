@@ -4,9 +4,9 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_265 skills in 22 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_266 skills in 22 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
-**`skills/authoring/authoring-core/`** (15)
+**`skills/authoring/authoring-core/`** (16)
 
 | Skill | What it is for |
 |---|---|
@@ -18,6 +18,7 @@ _265 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`evidence-review`](skills/authoring/authoring-core/evidence-review.md) | Evidence review as an instance of untainted verification — the separation of the appraising party from the drafting party, what recurring surveillance in a living guideline shares with a stale QA… |
 | [`md-authoring`](skills/authoring/authoring-core/md-authoring.md) | Markdown Authoring Conventions |
 | [`one-voice-style-guide`](skills/authoring/authoring-core/one-voice-style-guide.md) | Author voice profile and narrative style guide. |
+| [`online-sequence-and-knot-databases`](skills/authoring/authoring-core/online-sequence-and-knot-databases.md) | Mandatory online integer-sequence, knot/link-census, number-theory, and high-precision constant-recognition lookup protocol (OEIS JSON API, KnotInfo / LinkInfo / SnapPy / Regina, LMFDB, and >= 80… |
 | [`review-heatmap`](skills/authoring/authoring-core/review-heatmap.md) | The review page's heat map: a section-by-metric table that tells a reviewer of a large document where to look first. |
 | [`scientific-accuracy`](skills/authoring/authoring-core/scientific-accuracy.md) | Scientific Accuracy Skill |
 | [`technical-documentation`](skills/authoring/authoring-core/technical-documentation.md) | Write and review technical documentation of standards, software and knowledge assets as an SDO writes. |

@@ -77,6 +77,7 @@ texts or dataset files:
 | **Biomedical & life-science databases** | **PubMed / NCBI E-utilities** (`eutils.ncbi.nlm.nih.gov`), **PubMed Central / EuropePMC** (`www.ebi.ac.uk/europepmc/webservices/rest`) | PMID / PMCID records, MeSH descriptors, structured abstracts, and open-access full-text XML or PDFs |
 | **Broad scholarly indexes** | **OpenAlex** (`https://api.openalex.org/works`), **Semantic Scholar** (`https://api.semanticscholar.org/graph/v1/paper`), **Google Scholar** (when accessible to the agent or user), Unpaywall, DOAJ, CORE | Citation graphs, open-access PDF locations (`best_oa_location`), disambiguated author/venue records, and forward/backward citation trails |
 | **Reference data registries** | Publisher constants & evaluation tables (for example NIST / CODATA, AME, PDG, WHO GHO, clinical value-set servers) | Exact machine-readable ASCII/CSV/JSON releases with edition identifier, SHA-256 checksum, and stated reuse license |
+| **Mathematical sequence, knot & number-theory databases** | **OEIS** (`https://oeis.org/search?fmt=json&q=...` across unit-rescaled, factorial-cleared, logged cumulant, and unlogged exponential forms), **KnotInfo / LinkInfo / SnapPy / Regina**, **LMFDB** (`https://www.lmfdb.org/api/`), plus `>= 80 dps` PSLQ constant recognition ([`online-sequence-and-knot-databases`](online-sequence-and-knot-databases.md)) | Exact sequence IDs (`OEIS Axxxxxx`), topological/hyperbolic/polynomial invariants, number-field & $L$-value labels, verified closed forms, and cited primary literature to ingest |
 
 **Preserve the three-state retrieval outcome** from
 [`literature-search`](../../../library/skills/library-core/literature-search.md):
@@ -172,6 +173,7 @@ the authoring record and in the published artifact:
 ## Related skills
 
 - [`literature-search`](../../../library/skills/library-core/literature-search.md) — three-state open-access lookup and the ban on paraphrasing unopened sources.
+- [`online-sequence-and-knot-databases`](online-sequence-and-knot-databases.md) — mandatory OEIS (logged/unlogged/torsion-rescaled), KnotInfo/LinkInfo/SnapPy/Regina, LMFDB, and `>= 80 dps` PSLQ lookup protocol for computational and mathematical research.
 - [`library-ingestion`](../../../library/skills/library-core/library-ingestion.md) — `uploads/` $\to$ `library/<slug>/` ingestion (`Process_Ingestion`), covers, and upload retirement.
 - [`content-acquisition`](../../../library/skills/library-core/content-acquisition.md) — accepting unprompted drops and asking the person for unreachable sources.
 - [`evidence-review`](evidence-review.md) & [`evidence-appraisal`](../content-lifecycle/evidence-appraisal.md) — untainted appraisal of an assembled body of evidence.

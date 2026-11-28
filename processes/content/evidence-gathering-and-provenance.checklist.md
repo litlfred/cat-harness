@@ -23,8 +23,8 @@ Five-step research and authoring-provenance workflow executed whenever a researc
 ### 2. Query scholarly and data APIs (`Task_MultiDbSearch`)
 
 - Who: the `Research and authoring agent` lane (role `authoring-agent`).
-- Skill: `literature-search`, `evidence-gathering-and-provenance`.
-- What: Query accessible bibliographic, preprint, biomedical, and data databases (Crossref/DOI doi.org and api.crossref.org, arXiv export.arxiv.org, PubMed / EuropePMC, InspireHEP, OpenAlex, Semantic Scholar, Google Scholar, and domain data registries) to retrieve authoritative CSL-JSON metadata and open-ac
+- Skill: `literature-search`, `evidence-gathering-and-provenance`, `online-sequence-and-knot-databases`.
+- What: Query accessible bibliographic, preprint, biomedical, mathematical-catalogue, and data databases (Crossref/DOI doi.org and api.crossref.org, arXiv export.arxiv.org, PubMed / EuropePMC, InspireHEP, OpenAlex, Semantic Scholar, Google Scholar, OEIS across unit-rescaled / logged / unlogged / factorial-c
 - Record it: `workflow_complete` with `node: "Task_MultiDbSearch"`.
 - next: → `GW_FetchOutcome` (Source fetched?)
 

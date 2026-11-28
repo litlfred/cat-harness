@@ -132,11 +132,16 @@ as part of document authoring:
 1. **Topic decomposition & shortlist** — write up explicit topic areas and
    compile a shortlist of required papers, monographs, and reference datasets
    before drafting claims;
-2. **Multi-database retrieval** — query accessible scholarly and data APIs
-   (Crossref / DOI `doi.org` & `api.crossref.org`, arXiv `export.arxiv.org`,
-   PubMed / NCBI E-utilities / EuropePMC, InspireHEP, OpenAlex, Semantic
-   Scholar, Google Scholar, and domain data registries) for authoritative
-   CSL-JSON metadata and open-access full texts;
+2. **Multi-database retrieval** — query accessible scholarly, mathematical, and
+   data APIs (Crossref / DOI `doi.org` & `api.crossref.org`, arXiv
+   `export.arxiv.org`, PubMed / NCBI E-utilities / EuropePMC, InspireHEP,
+   OpenAlex, Semantic Scholar, Google Scholar, domain data registries, and —
+   whenever integer sequences, rational series coefficients, constants, or
+   knot/number-theoretic invariants appear — OEIS, KnotInfo/LinkInfo/SnapPy/Regina,
+   LMFDB, and `>= 80 dps` PSLQ per
+   [`online-sequence-and-knot-databases`](../../../skills/authoring/authoring-core/online-sequence-and-knot-databases.md))
+   for authoritative CSL-JSON metadata, exact catalogue IDs, and open-access
+   full texts;
 3. **Knowledge Graph ingestion** — ingest retrieved references, PDFs, and
    datasets into declared KG subgraphs (`references/`, `library/`, `sources/`,
    `extracted-references/`, `attestations/`), never leaving raw URLs only in
