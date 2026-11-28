@@ -16,6 +16,9 @@
         },
         {
           "@id": "sdlc/processes/swarm-dispatch-and-monitor.bpmn#provenance-2"
+        },
+        {
+          "@id": "sdlc/processes/swarm-dispatch-and-monitor.bpmn#provenance-3"
         }
       ]
     },
@@ -45,6 +48,20 @@
       ],
       "dcterms:date": [
         "2026-11-24"
+      ]
+    },
+    {
+      "@id": "sdlc/processes/swarm-dispatch-and-monitor.bpmn#provenance-3",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Swarm_Decompose",
+      "prov:value": "Owner directive, 2026-11-28: research-agent queues stay specialized by deep mathematical or technical niche so related follow-up questions route to the same specialist, with cross-fertilization fan-out across multiple specialists when an interface connection is suspected (Process_ResearchDelegationAndNicheRouting).",
+      "cat-harness:refs": [
+        "2026-11-28",
+        "owner"
+      ],
+      "dcterms:date": [
+        "2026-11-28"
       ]
     }
   ]

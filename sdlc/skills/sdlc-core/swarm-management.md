@@ -6,6 +6,9 @@ description: >
   one background agent — a swarm spends the author's tokens and the decision
   is theirs.
 consulted: true
+satisfies:
+  - "req:agent-workflow#foreground-nonblocking-delegation"
+  - "req:agent-workflow#research-niche-continuity-and-cross-fertilization"
 ---
 
 # Swarm management
@@ -162,6 +165,56 @@ Every worker brief also carries: questions only on cards, beans as the
 tracker, no repository secrets, no second non-constructive axiom, and no
 unverified external report used as a source (`req:agent-workflow`,
 `req:content-lifecycle`).
+
+## Foreground non-blocking delegation & research-agent niche continuity (`STRICT`)
+
+Two orchestration rules govern every discussion coordinator and research queue
+([`sdlc/processes/research-delegation-and-niche-routing.bpmn`](../../processes/research-delegation-and-niche-routing.bpmn),
+`Process_ResearchDelegationAndNicheRouting`):
+
+### 1. Foreground non-blocking discussion (`> ~15–20 s`)
+
+Even during interactive foreground discussion, **never block the foreground turn
+on any multi-step lookup, proof check, corpus sweep, or analysis exceeding
+`~15–20 s`** ([`req:agent-workflow#foreground-nonblocking-delegation`](../../../skills/requirements/agent-workflow.json),
+[`turn-reporting`](turn-reporting.md)). Dispatch a background research or
+analysis agent immediately so the foreground turn returns at once and stays open
+for user input. In that immediate dispatch reply, state:
+
+- **(a) What is being investigated** in the background (scope, files/sources, and target specialist);
+- **(b) Expected duration (ETA)**;
+- **(c) Potential outcomes and their implications** for the design, proof, or work plan; and
+- **(d) Any upfront clarification card** (`🟡` + full chat mirror followed by the tappable card per [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)), then update the user promptly as soon as the agent reports back.
+
+### 2. Deep niche continuity & deliberate cross-fertilization
+
+When maintaining a queue or pool of active research agents
+([`req:agent-workflow#research-niche-continuity-and-cross-fertilization`](../../../skills/requirements/agent-workflow.json),
+[`research-manager`](research-manager.md)):
+
+- **Keep research agents specialized by deep niche.** Rather than spawning cold
+  one-off agents for every follow-up question, keep active research agents alive
+  within deep mathematical or technical niches so each specialist accumulates
+  domain vocabulary, theorem and lemma inventory, ingested corpus locators, and
+  negative-result memory. Route related follow-up questions in that domain to
+  the **same** niche specialist (`SendMessage` / resuming that specialist's
+  thread).
+- **Fan out deliberate cross-fertilization queries across interfaces.** When a
+  user question or an agent's finding hints at a bridge between niches (for
+  example, hyperbolic tessellations and geodesic flows $\leftrightarrow$ twisted
+  torsion determinants and Stokes factors $\leftrightarrow$ non-commutative
+  fluid transport), dispatch the bridging question to **multiple** niche
+  specialists in parallel so independent domain perspectives test whether a
+  concrete theorem or structural connection emerges, then synthesize agreements,
+  dictionary translations, and tensions for the user.
+- **Ground every topic in the Knowledge Graph.** Every research agent executes
+  [`evidence-gathering-and-provenance`](../../../skills/authoring/authoring-core/evidence-gathering-and-provenance.md)
+  (`Process_EvidenceGatheringAndProvenance`): decomposing topic areas,
+  shortlisting needed papers and datasets, querying accessible scholarly and
+  data APIs (Crossref/DOI, arXiv, PubMed, InspireHEP, OpenAlex, Semantic
+  Scholar, Google Scholar), ingesting into declared KG subgraphs, assessing
+  relevancy and claim boundaries, and recording authoring provenance notes and
+  formal citations.
 
 ## While it runs
 

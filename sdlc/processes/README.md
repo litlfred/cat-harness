@@ -94,6 +94,10 @@ Part of [C@T Harness](../../README.md) 0.1.0, declared as `sdlc-processes`, hold
 | [`requirements-filing.bpmn`](requirements-filing.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Requirements filing: promote, organise, trace, supersede, or retire |  |
 | [`requirements-filing.checklist.md`](requirements-filing.checklist.md) | Checklist — Requirements filing: promote, organise, trace, supersede, or retire |  |
 | [`requirements-filing.svg`](requirements-filing.svg) | the picture of `requirements-filing.bpmn`, generated from it |  |
+| [`research-delegation-and-niche-routing.bpmn`](research-delegation-and-niche-routing.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Research delegation and niche routing |  |
+| [`research-delegation-and-niche-routing.checklist.md`](research-delegation-and-niche-routing.checklist.md) | Checklist — Research delegation and niche routing |  |
+| [`research-delegation-and-niche-routing.prov.jsonld`](research-delegation-and-niche-routing.prov.jsonld) | data |  |
+| [`research-delegation-and-niche-routing.svg`](research-delegation-and-niche-routing.svg) | the picture of `research-delegation-and-niche-routing.bpmn`, generated from it |  |
 | [`saturation-meta-merge.bpmn`](saturation-meta-merge.bpmn) | a [Process](https://litlfred.github.io/bootstrap/schemas/#process): Saturation meta-merge: land the ready PRs when the runners are full | "Merge manager watch: wake, read the queue live, route" |
 | [`saturation-meta-merge.checklist.md`](saturation-meta-merge.checklist.md) | Checklist — Saturation meta-merge: land the ready PRs when the runners are full |  |
 | [`saturation-meta-merge.svg`](saturation-meta-merge.svg) | the picture of `saturation-meta-merge.bpmn`, generated from it |  |

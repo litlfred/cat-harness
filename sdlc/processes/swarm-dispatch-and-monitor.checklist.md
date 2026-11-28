@@ -24,7 +24,7 @@ Binds or cold-resumes any multi-agent swarm on a parent Swarm Work Item (epic or
 
 - Who: the `Coordinator` lane (role `session-coordinator`).
 - Skill: `bean-coordination`.
-- What: Verify that a swarm is justified over serial execution (swarm-management), partition the goal into child work items with disjoint writable paths, explicit Done-when criteria, and non-compute-heavy idle-backlog items, and size worker count, model tiers (cost-aware routing), and host concurrency bound
+- What: Verify that a swarm is justified over serial execution (swarm-management), partition the goal into child work items with disjoint writable paths (or persistent deep-niche domains for research agents, with cross-fertilization fan-out reserved for interface questions), explicit Done-when criteria, and
 - Record it: `workflow_complete` with `node: "Swarm_Decompose"`.
 - next: → `Swarm_GwWaived` (Swarm-spawn waived?)
 

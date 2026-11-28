@@ -4,9 +4,9 @@ The skills this repository publishes. Generated; edit each skill's front matter,
 
 <!-- skills:index:begin -->
 
-_261 skills in 22 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
+_265 skills in 22 directories, generated from each skill's front matter. `bun run cat readme:sync` rewrites this list and `readme:sync:check` fails when it is stale. Skills this repository inherits are listed by the repositories that publish them._
 
-**`skills/authoring/authoring-core/`** (14)
+**`skills/authoring/authoring-core/`** (15)
 
 | Skill | What it is for |
 |---|---|
@@ -14,6 +14,7 @@ _261 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`content-graph`](skills/authoring/authoring-core/content-graph.md) | Editorial graph analysis skill — builds a content graph from uses[], interprets, proofs, and examples relationships; builds a chapter/section topology graph; and applies heuristics to identify… |
 | [`content-profiles`](skills/authoring/authoring-core/content-profiles.md) | Adapters and profiles are different axes and conflating them is costly. |
 | [`editor`](skills/authoring/authoring-core/editor.md) | Editor Skill |
+| [`evidence-gathering-and-provenance`](skills/authoring/authoring-core/evidence-gathering-and-provenance.md) | Five-step research, scholarly retrieval, Knowledge Graph ingestion, relevancy assessment, and authoring-provenance workflow required of research and authoring agents: decompose topic areas and… |
 | [`evidence-review`](skills/authoring/authoring-core/evidence-review.md) | Evidence review as an instance of untainted verification — the separation of the appraising party from the drafting party, what recurring surveillance in a living guideline shares with a stale QA… |
 | [`md-authoring`](skills/authoring/authoring-core/md-authoring.md) | Markdown Authoring Conventions |
 | [`one-voice-style-guide`](skills/authoring/authoring-core/one-voice-style-guide.md) | Author voice profile and narrative style guide. |
@@ -251,7 +252,7 @@ _261 skills in 22 directories, generated from each skill's front matter. `bun ru
 | [`upload-routes`](library/skills/library-core/upload-routes.md) | How a file actually REACHES `uploads/` — the two mechanisms that write bytes into a declared queue, the persona that performs one of them on somebody's behalf, and what each writer owes that the… |
 | [`uploads-watch`](library/skills/library-core/uploads-watch.md) | Notice what has landed in the acquisition queue, and tell an arrival from a backlog. |
 
-**`sdlc/skills/sdlc-core/`** (62) (opt-in `cat-harness.sdlc`)
+**`sdlc/skills/sdlc-core/`** (65) (opt-in `cat-harness.sdlc`)
 
 | Skill | What it is for |
 |---|---|
@@ -303,7 +304,7 @@ _261 skills in 22 directories, generated from each skill's front matter. `bun ru
 | `release-lifecycle` | Governs the release lifecycle: semver policy, draft/named releases, changelogs, release gating, and the relationship between feature branches, PRs, work items, and releases. |
 | `rendered-impact` | The list of rendered files a Change Set alters, and how a reviewer approves against it. |
 | `repo-cache-manager` | The merge manager's sub-lane for every repository cache other than Lean: LaTeX/PDF build caches, FHIR AST branches, generated-artefact and render caches, CI step caches. |
-| `research-manager` | Run research as a managed portfolio of alternatives: when a goal has more than one way forward, put every alternative on a research-path card with its cost, risk and commitment and one… |
+| `research-manager` | Run research as a managed portfolio of alternatives: when a goal has more than one way forward, put every alternative on a research-path card with its cost, risk and commitment and one recommended,… |
 | `saturation-meta-merge` | When the CI runners have been full for a long time, drain a repository's ready PRs in one step: hold the swarm, cancel the queued PR runs, stack every admitted PR onto one meta-merge branch with… |
 | `secrets` | Adding, rotating and revoking the credentials the harness's automation needs, one mechanism at a time, with the exact GitHub UI path for each step. |
 | `session-intent` | Session-start intent declaration + session-end results recording, against the work plan's goals (milestone work items) and their open work items. |

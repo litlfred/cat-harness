@@ -37,6 +37,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/turn-reporting.md#provenance-9"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/turn-reporting.md#provenance-10"
         }
       ]
     },
@@ -146,6 +149,20 @@
       "prov:value": "> **Beans**\n> - **worked** `fwr8` — Re-baseline the forward-ref arc endpoints. Re-ran both with the fixed parser: the arc is 274 → 195, not 274 → 192. This corrects my own earlier claim that the start figure was understated — only the post-mid-arc figures are short, and only by 3.\n> - **next** `fwr7` — Retarget seven `uses[]` edges that point at the wrong block. Two of the seven are now confirmed detangler findings rather than reader reports, which raises their priority above the remaining five.",
       "cat-harness:refs": [
         "bean fwr8"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/turn-reporting.md#provenance-10",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "Foreground non-blocking discussion & immediate delegation (`> ~15–20 s`) (`STRICT`)",
+      "prov:value": "Owner directive, 2026-11-28: even in foreground discussion mode, if answering or thinking requires more than a brief single-step lookup (> ~15-20 s), the foreground/coordinator agent must not block the foreground turn; it dispatches a background research/analysis agent immediately so the foreground stays open for user input, and reports (a) what is being investigated, (b) expected duration (ETA), (c) potential outcomes and their implications, and (d) any structured clarification card (🟡 + full chat mirror) up front, updating the user promptly on completion.",
+      "cat-harness:refs": [
+        "2026-11-28",
+        "owner"
+      ],
+      "dcterms:date": [
+        "2026-11-28"
       ]
     }
   ]

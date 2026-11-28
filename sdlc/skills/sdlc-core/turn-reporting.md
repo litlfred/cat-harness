@@ -7,6 +7,8 @@ description: >
   question and must carry its own context.
 allowed-tools: Read Grep Glob AskUserQuestion
 consulted: true
+satisfies:
+  - "req:agent-workflow#foreground-nonblocking-delegation"
 ---
 
 # Turn reporting — say which bean you are on, every turn
@@ -28,6 +30,37 @@ attempting — before the first tool call, not after the work lands:
 
 > **Starting `fwr7`** — retargeting the seven edges the forward-ref arc left
 > alone, because the edge is wrong rather than the block's position.
+
+### Foreground non-blocking discussion & immediate delegation (`> ~15–20 s`) (`STRICT`)
+
+Even in **foreground discussion mode**, if answering, verifying, or thinking
+requires more than a brief single-step lookup (`> ~15–20 s`), the foreground or
+coordinator agent **must not block the foreground turn**
+([`req:agent-workflow#foreground-nonblocking-delegation`](../../../skills/requirements/agent-workflow.json),
+[`Process_ResearchDelegationAndNicheRouting`](../../processes/research-delegation-and-niche-routing.bpmn)).
+Dispatch a background research or analysis agent immediately so the foreground
+conversation stays open for user input, steering, or follow-up questions.
+
+Immediately upon dispatch — in that same foreground turn — report four items to
+the user:
+
+1. **What is being investigated in the background** — exact question, files or
+   corpus slices, and which specialist agent holds it (reusing an active niche
+   specialist when one already covers that domain per [`swarm-management`](swarm-management.md));
+2. **Expected duration (ETA)** — realistic wall-clock estimate (for example,
+   `~2–4 min`);
+3. **Potential outcomes and their implications** — the candidate branches of the
+   finding and what each outcome changes for the proof, architecture, or work
+   plan;
+4. **Any upfront structured clarification card** — when an immediate user choice
+   can narrow or redirect the background work, write the full question, context,
+   glossed identifiers, options ($\le 4$, `(Recommended)` first), trade-offs, and
+   default-on-silence in chat prose prefixed with `🟡`, followed immediately by
+   the tappable card (`AskUserQuestion`, `request_decision`, or host equivalent
+   per [`interaction-modality`](../../../skills/conduct/conduct-core/interaction-modality.md)).
+
+As soon as the background agent wakes the foreground session, synthesize and
+report the concrete findings and implications promptly to the user.
 
 ### Closing a turn
 
