@@ -266,6 +266,20 @@
           "verification": "inspection"
         }
       ]
+    },
+    {
+      "key": "bidirectional-relay-continuity",
+      "label": "Coordinators write-ahead to the epic bean at dispatch, and takeover or returning agents reconcile non-destructively on re-entry",
+      "conformance": "SHALL",
+      "requirement": "A coordinator or research manager SHALL update and push the parent epic bean on the beans branch at dispatch time (not only post-merge) with newly opened child beans, active research and compute hypotheses, negative or excluded routes, and a Worktree/Branch/Scratch Lease Table so any successor can take over within 60 seconds of a quota, context, or network stall with zero lost research or duplicated compute; conversely, any agent taking over from a stalled session OR returning on a subsequent turn after another agent advanced the repository SHALL execute the five-step non-destructive re-entry reconciliation (audit default-branch and beans deltas since its last known SHA, read the epic Live Relay Snapshot, classify all open and draft PRs, inspect local worktrees, /tmp overlays, and Cargo/Lean donor caches without git reset --hard while rescuing dirty unpushed stalled work onto a claude/salvage-* branch or resuming in place, and reconcile the epic lease table plus sibling coordination notes) before dispatching new work.",
+      "actors": ["authoring-agent"],
+      "successCriteria": [
+        {
+          "key": "write-ahead-checkpoint-and-reentry-reconciliation",
+          "criterion": "Active epics on the beans branch record dispatch-time child beans, active/excluded hypotheses, and a Worktree/Branch/Scratch Lease Table, and takeover or returning sessions reconcile remote commits, PR classes, and worktrees non-destructively before new dispatches.",
+          "verification": "inspection"
+        }
+      ]
     }
   ]
 }

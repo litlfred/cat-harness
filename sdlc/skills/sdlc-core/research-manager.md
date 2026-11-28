@@ -13,6 +13,7 @@ description: >
 user_invocable: true
 satisfies:
   - "req:agent-workflow#research-niche-continuity-and-cross-fertilization"
+  - "req:agent-workflow#bidirectional-relay-continuity"
   - "req:content-lifecycle#evidence-gathering-and-authoring-provenance"
 ---
 
@@ -87,6 +88,20 @@ Beans are the tracker (`beans-primary-tracker`). For each chosen path:
    - the exit criterion: what result closes the bean, either way.
 3. A negative result is a result. The research agent closes the bean with
    what it refuted and why, and the manager offers the next card.
+4. **Write-ahead checkpoint the parent epic AT DISPATCH TIME (`STRICT`):**
+   Immediately upon opening/claiming a child path — before waiting for the
+   specialist to return — update and push the parent epic bean on
+   `cat/cat-harness/beans` with the new child bean ID, active research/compute
+   hypothesis, negative/excluded routes already ruled out, and the updated
+   **Worktree / Branch / Scratch Lease Table**
+   ([`stalled-agent-triage`](stalled-agent-triage.md) §0a,
+   [`agent-handoff`](agent-handoff.md) §8). If the coordinator stalls mid-flight,
+   the next agent resumes in `< 60 s` without re-running dead ends.
+5. **Returning-turn re-entry reconciliation (`STRICT`):** Whenever this
+   research manager resumes on a later turn after another agent or session
+   advanced `main`, PRs, or `beans`, run the 5-step non-destructive
+   reconciliation in [`stalled-agent-triage`](stalled-agent-triage.md) §0b
+   before dispatching follow-ups.
 
 ## 4. Dispatch one sibling per path
 
