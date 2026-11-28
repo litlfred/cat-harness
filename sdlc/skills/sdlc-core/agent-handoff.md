@@ -13,7 +13,10 @@ description: >
   receiver before acting on one.
   Triggers on: hand off, handoff, local agent, agy, mac agent, needs network,
   executor failed, agent went silent, re-hand,
-  "give me a branch and bean for them", relay, the other agent.
+  "give me a branch and bean for them", relay, the other agent, stall takeover,
+  returning turn, pick up where they left off.
+satisfies:
+  - "req:agent-workflow#bidirectional-relay-continuity"
 ---
 
 # One task, two agents, one human between them
@@ -274,3 +277,33 @@ step, the environment, or the executor.
 - [ ] report channel re-read for corrections
 - [ ] after the step: report in the channel's format, tag `ready-to-close`
       with `## Evidence` unless you can run the `## Done when` check yourself
+
+## 8. Bidirectional Relay Continuity: Write-Ahead Checkpointing & Returning Re-Entry
+
+Beyond handing off a single isolated task, multi-agent relays regularly cross
+**unplanned quota/context/network stalls** and **alternating turns** where Agent
+B advances the repository while Agent A is paused, and Agent A later resumes.
+Both directions follow [`stalled-agent-triage`](stalled-agent-triage.md) §0:
+
+1. **Write-Ahead Epic Checkpointing (Outgoing Readiness — at dispatch time):**
+   Whenever a coordinator opens child beans, launches research/compute routes,
+   or assigns worktrees, it write-ahead checkpoints the parent epic body and/or
+   a parent Epic note (`beans/notes/*` titled `checkpoint: <epic/wave> <UTC>`,
+   `handover:`, `triage:`, or `reentry:`) on `cat/cat-harness/beans` **at
+   dispatch** (never waiting for post-merge, and **never** mutating a claimed
+   child executor bean's `.md` file per §1):
+   - newly created/claimed child work items and canonical 3-slot dispatch lines
+     (`Do bean <bean-id> on branch <branch-to-create> of repo <owner>/<repo>.`);
+   - active research and compute hypotheses (pinned SHAs, scripts, target claims);
+   - negative / falsified routes already ruled out (with witness/commit citations);
+   - a **Worktree / Branch / Scratch / Donor-Cache Lease Table** recording each
+     worktree path, branch, PR, `/tmp` overlay, and `Cargo`/`Lean` donor cache.
+2. **Cold-Start Takeover & Returning-Agent Re-Entry (Incoming Re-Entry):**
+   When taking over a stalled coordinator/worker OR resuming on your next turn
+   after another agent advanced the repo, run the 5-step non-destructive
+   reconciliation before dispatching or editing:
+   - **(1) Remote delta:** fetch `origin/<default-branch>` and `origin/cat/cat-harness/beans`; inspect `git log <last-known-sha>..origin/<default-branch>`.
+   - **(2) Epic snapshot:** read the epic bean's Live Relay Snapshot and `checkpoint:` / `handover:` / `triage:` / `reentry:` notes, newly opened/closed child beans, active hypotheses, and excluded routes.
+   - **(3) Four-way PR classification:** partition open/draft PRs into `ready-to-merge`, `active external sibling draft`, `stalled with uncommitted/unpushed work`, and `owner-fenced`.
+   - **(4) Non-destructive worktree, donor-cache & unfreeze safety:** inspect every local worktree (`git status --short --branch`, ahead/behind `origin`), `/tmp` overlay, and `Cargo`/`Lean` donor cache. **Never `git reset --hard` or overwrite dirty/unpushed stalled work** — cold triage rescues dirty/ahead state onto `claude/salvage-<topic>-<yyyymmdd>` (and pushes it) or resumes in place. Conversely, if a returning/unfrozen agent finds `holder != self`, OR a `triage:` note superseded its claim, OR remote `<branch>` advanced, it **MUST NOT push to `<branch>` or `--force`**; if `@{u}..HEAD` is non-empty or edits exist, quarantine-save onto `wip/reentry-<bean-id>-<short-session>`, write a `reentry:` pointer note, and yield cleanly.
+   - **(5) Lease reconciliation & queue restart:** update the epic lease table on `beans`, post sibling coordination notes where landed commits shifted scope, and resume Merge Steward + worker queues.

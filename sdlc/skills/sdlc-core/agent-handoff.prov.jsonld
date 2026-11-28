@@ -34,6 +34,9 @@
         },
         {
           "@id": "sdlc/skills/sdlc-core/agent-handoff.md#provenance-8"
+        },
+        {
+          "@id": "sdlc/skills/sdlc-core/agent-handoff.md#provenance-9"
         }
       ]
     },
@@ -125,6 +128,19 @@
       "cat-harness:refs": [
         "bean mac1",
         "bean 8ao5"
+      ]
+    },
+    {
+      "@id": "sdlc/skills/sdlc-core/agent-handoff.md#provenance-9",
+      "@type": "prov:Entity",
+      "cat-harness:provenanceKind": "owner-decision",
+      "cat-harness:section": "8. Bidirectional Relay Continuity: Write-Ahead Checkpointing & Returning Re-Entry",
+      "prov:value": "Owner directive (2026-11-28): keep the active stability/coordination epic continuously write-ahead checkpointed at dispatch time (without mutating claimed child beans) and require returning or takeover agents to reconcile remote commits, open/draft PRs, active/stalled work items, and local worktrees non-destructively (quarantining unpushed commits on wip/reentry-* when superseded) before resuming.",
+      "cat-harness:refs": [
+        "2026-11-28"
+      ],
+      "dcterms:date": [
+        "2026-11-28"
       ]
     }
   ]

@@ -13,6 +13,8 @@ description: >
   session shorthands.
 user_invocable: true
 allowed-tools: Read, Grep, Glob, Bash, Edit, Write, Agent, SendMessage, ScheduleWakeup, ToolSearch, AskUserQuestion
+satisfies:
+  - "req:agent-workflow#bidirectional-relay-continuity"
 ---
 
 # Supervising active swarms, maintaining cold-start handover continuity, and translating worker state for humans
@@ -63,11 +65,12 @@ Any cold successor agent reading `beans show <epic-id>` (plus its branch-keyed `
    - **`active`:** Currently claimed in an isolated worker worktree (`bean-id`, branch, worker role/label).
    - **`queued`:** Unblocked `todo` child items and ordered PR waves (e.g. Wave A foundation fixes → Wave B dependent refactors → Wave C docs/cleanup) ready to refill freed slots.
    - **`idle-backlog`:** Right-scoped, **non-compute-heavy** child items (documentation, metadata, review checklists, small disjoint edits) reserved for workers waiting on single-core or long-running background compute (§4b).
-3. **Continuously Updated Cold-Start Handover Runbook (`Task_RefreshSwarmHandover`):**
-   Refreshed on **every routine monitor check-in tick** and at every milestone/wave transition using the [`swarm-epic-sync`](../../tools/swarm-epic-sync/swarm-epic-sync.json) Tool (or `bun run cat beans:note` + `bun run cat state:push`), and pushed immediately to `origin` on the shared `beans` state branch (`cat/cat-harness/beans` — never from a sparse checkout, per [`merge-manager-watcher`](merge-manager-watcher.md) §"Merging across dependent repositories" rule 7):
+3. **Continuously Updated Cold-Start Handover Runbook (`Task_RefreshSwarmHandover` — Write-Ahead at Dispatch Time):**
+   Refreshed **at worker/wave dispatch time** (never waiting until post-merge!), on **every routine monitor check-in tick**, and at every milestone/wave transition using the [`swarm-epic-sync`](../../tools/swarm-epic-sync/swarm-epic-sync.json) Tool (or `bun run cat beans:note` + `bun run cat state:push`), and pushed immediately to `origin` on the shared `beans` state branch (`cat/cat-harness/beans` — never from a sparse checkout, per [`merge-manager-watcher`](merge-manager-watcher.md) §"Merging across dependent repositories" rule 7). Whenever a coordinator returns on a later turn after another session advanced the repo, it executes the 5-step non-destructive re-entry reconciliation in [`stalled-agent-triage`](stalled-agent-triage.md) §0b before dispatching:
    - **Baseline header:** UTC timestamp, `origin/<default-branch>` 40-hex SHA, active coordinator/merge-steward session ID, and selected status reporting mode (`periodic` vs `on-demand`).
+   - **Active research/compute hypotheses & negative/excluded routes:** Newly opened child beans, hypotheses currently under test, and falsified routes already ruled out so a takeover agent never re-runs dead ends.
    - **PR wave & merge-train queues:** Merged in window, `Ready-to-Merge` (verified green, handed to merge steward for [`merge-queue`](merge-queue.md) / `Process_MergeTrain` batching and [`merge-to-main`](merge-to-main.md) / `merge:guard` landing), `Preparing` (active worker branches/drafts), and `Held / Blocked` (`content` PRs or owner cards).
-   - **Live worktree & process map:** `worktree path -> branch -> 40-hex HEAD SHA -> clean/dirty state -> active worker role & live subprocess PID`.
+   - **Live Worktree / Branch / Scratch / Donor-Cache Lease Table:** `worktree path -> branch -> 40-hex HEAD SHA -> clean/dirty/ahead state -> /tmp overlay & Cargo/Lean donor-cache guard -> active worker role & live subprocess PID`.
    - **Standing owner directives & safety fences:** Verbatim owner rulings, active confirmation waivers (with dates and scope bounds), resource caps, and hands-off paths/branches.
    - **`< 60 s` cold-takeover runbook & copy-paste `DISPATCH LINES`:** The exact commands for a successor coordinator/merge-steward to fetch `origin`, mount `beans`, inspect live PIDs/PRs, and dispatch the next unstarted items using [`handover-report`](handover-report.md) rule 7 (`Do bean <id> on branch <branch-to-create> of repo <owner>/<repo>.`).
 

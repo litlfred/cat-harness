@@ -25,6 +25,7 @@ next, which may be no one in particular.
 
 ## When to write one
 
+- **Write-ahead at dispatch time (`STRICT`):** Whenever a coordinator or research manager opens new child beans, launches research/compute routes, or assigns local worktrees, update and push the parent epic bean's Live Relay Snapshot (new child beans, active hypotheses, negative/excluded routes, and the Worktree/Branch/Scratch Lease Table) **at dispatch** — never wait for post-merge ([`stalled-agent-triage`](stalled-agent-triage.md) §0a).
 - **When told a stall is likely.** Write it first, before continuing any work.
   A report written after the stall is never written.
 - **Before a long or risky step**: a 30-minute regenerate, a big merge, a

@@ -74,9 +74,17 @@ Keeps foreground discussion turns unblocked whenever answering or analysing exce
 ### Merge — `GW_DispatchJoin`
 
 - Nothing to do or decide: the paths meet here and the engine passes through.
+- next: → `Task_WriteAheadEpicCheckpoint` (Write-ahead checkpoint epic & lease table)
+
+### 6. Write-ahead checkpoint epic & lease table (`Task_WriteAheadEpicCheckpoint`)
+
+- Who: the `Foreground coordinator` lane (role `session-coordinator`).
+- Skill: `research-manager`, `agent-handoff`, `handover-report`.
+- What: At dispatch time (never waiting for post-merge, and never mutating a claimed child executor bean's .md file), write-ahead checkpoint the parent epic body and/or a branch-keyed `checkpoint: <epic/wave> <UTC>` note on cat/cat-harness/beans with newly opened child bean IDs, canonical 3-slot dispatch li
+- Record it: `workflow_complete` with `node: "Task_WriteAheadEpicCheckpoint"`.
 - next: → `Call_EvidenceAndResearch` (Investigate niche and ingest KG evidence)
 
-### 6. Investigate niche and ingest KG evidence (`Call_EvidenceAndResearch`)
+### 7. Investigate niche and ingest KG evidence (`Call_EvidenceAndResearch`)
 
 - Who: the `Niche research specialists` lane (role `authoring-agent`).
 - Skill: `evidence-gathering-and-provenance`, `online-sequence-and-knot-databases`.
@@ -84,7 +92,7 @@ Keeps foreground discussion turns unblocked whenever answering or analysing exce
 - A subprocess (`Process_EvidenceGatheringAndProvenance`): `workflow_next` reports its own steps; complete those — this call activity itself is not completable.
 - next: → `Task_SynthesizeAndUpdateUser` (Synthesize agreements, tensions and report)
 
-### 7. Synthesize agreements, tensions and report (`Task_SynthesizeAndUpdateUser`)
+### 8. Synthesize agreements, tensions and report (`Task_SynthesizeAndUpdateUser`)
 
 - Who: the `Foreground coordinator` lane (role `session-coordinator`).
 - Skill: `research-manager`, `turn-reporting`.
